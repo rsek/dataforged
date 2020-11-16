@@ -23,4 +23,4 @@ I've used markdown to retain the formatting of the original rules text where pos
 
 Thanks to Shawn Tomkin for his excellent solo/co-op GM-less table-top role-playing games, [Starforged and Ironsworn](https://www.ironswornrpg.com/).
 
-Thanks to [XenotropicDev](https://github.com/XenotropicDev) for letting me use the data from [TheOracle](https://github.com/XenotropicDev/TheOracle) as a starting point.
+Thanks to [XenotropicDev](https://github.com/XenotropicDev) for letting me use the data from [TheOracle](https://github.com/XenotropicDev/TheOracle) (a Discord bot for use with Ironsworn and Starforged) as a starting point.
