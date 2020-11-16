@@ -4,6 +4,13 @@ Starforged playtest rules data for use in community tools, because there's no us
 
 Currently just JSON and a markdown doc of formatted moves, other formats TBA.
 
+## Version/Sources
+
+  * Oracles-Preview-091420-Ironsworn-Starforged (most oracles)
+  * Assets-Single-092620-Ironsworn-Starforged
+  * Moves-Reference-101120-Ironsworn-Starforged (move text, move-related oracles)
+  * Launching-Your-Campaign-101020-Ironsworn-Starforged (setting Truth oracles \[not done yet\], character creation prompt oracles)
+
 ## Oracle Tables
 
 Square brackets in an oracle result represent a reference to another oracle, or a special result like "roll twice".
