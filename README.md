@@ -9,7 +9,7 @@ Currently just JSON and a markdown doc of formatted moves, other formats TBA.
   * **Oracles-Preview-091420** (most oracles)
   * **Assets-Single-092620**
   * **Moves-Reference-101120** (move text, move-related oracles)
-  * **Launching-Your-Campaign-101020** (setting Truth oracles \[not done yet\], character creation prompt oracles)
+  * **Launching-Your-Campaign-101020** (setting Truth oracles, character creation prompt oracles)
 
 ## Oracle Tables
 
