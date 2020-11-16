@@ -1,6 +1,6 @@
 # Dataforged
 
-JSON files of Starforged playtest rules data for use in community tools, because there's no use in duplicating labour on the data entry. Other formats TBA.
+Starforged playtest rules data for use in community tools, because there's no use in duplicating labour on the data entry. Other formats TBA.
 
 ## Oracle Tables
 
