@@ -704,4 +704,5 @@ On a **miss**, you encounter an unexpected complication. __Pay the Price__.
 ### Leave a Legacy
 
 ***Progress Move***
+
 Pending Update
