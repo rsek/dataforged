@@ -4,7 +4,7 @@ Starforged playtest rules data for use in community tools, because there's no us
 
 Currently just JSON and a markdown doc of formatted moves, other formats TBA.
 
-## Version/Sources
+## Current Version/Sources
 
   * **Oracles-Preview-091420**
   * **Assets-Single-092620**
