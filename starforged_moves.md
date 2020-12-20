@@ -46,6 +46,12 @@ On a **miss**, your quest is undone. Envision what happens (__Ask the Oracle__ i
 
 ## Adventure Moves
 
+### Aid Your Ally
+
+**When you act in direct support of an ally**, envision how you aid them. Then, __Secure an Advantage__ or __Gain Ground__ to take action. If you score a hit, they (instead of you) take the benefits of the move.
+
+If you __Gain Ground__ and score a strong hit, you are both in control. On a weak hit, your ally is in control but you are in a bad spot.
+
 ### Face Danger
 
 **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
@@ -115,12 +121,6 @@ On a **weak hit**, you have it, but must choose one.
   * It's not quite right, and causes a complication or delay: __Lose Momentum (-2)__
 
 On a **miss**, you don't have it and the situation grows more perilous. __Pay the Price__.
-
-### Aid Your Ally
-
-**When you act in direct support of an ally**, envision how you aid them. Then, __Secure an Advantage__ or __Gain Ground__ to take action. If you score a hit, they (instead of you) take the benefits of the move.
-
-If you __Gain Ground__ and score a strong hit, you are both in control. On a weak hit, your ally is in control but you are in a bad spot.
 
 ## Exploration Moves
 
