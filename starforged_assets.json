@@ -2,7 +2,7 @@
   "Title": "Starforged Assets",
   "Source": {
     "Name": "Starforged Playtest Assets",
-    "Version": "122020"
+    "Version": "012421"
   },
   "Assets": {
     "Starship": {
@@ -16,10 +16,10 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Finish an Expedition__ (formidable or greater) and score a hit, this journey strengthened your ties to your ship and any fellow travelers. You and your allies may mark 1 tick on your bonds legacy track."
+          "Text": "When you __Finish an Expedition__ (dangerous or greater) and score a hit, this journey strengthened your ties to your ship and any fellow travelers. You and your allies may mark 1 tick on your bonds legacy track."
         },
         {
-          "Text": "When you __Withstand Damage__, you may roll +heart. If you do, __Endure Stress (-1)__."
+          "Text": "When you __Withstand Damage__, you may roll +heart. If you do, __Endure Stress (-1)__ on a weak hit or miss."
         }
       ],
       "Integrity": 5
@@ -28,7 +28,7 @@
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "Your vehicle’s finely-tuned engines speed your travels. When you __Undertake an Expedition__ (+edge) and roll a strong hit with 6 on your action die, take +2 momentum.",
+          "Text": "Your vehicle's finely-tuned engines speed your travels. When you __Undertake an Expedition__ (+edge) and roll a strong hit with 6 on your action die, take +2 momentum.",
           "Enabled": true
         },
         {
@@ -43,7 +43,7 @@
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "Your vehicle carries up to +3 cargo. When you earn +supply, you may convert it to +cargo. When you have access to your vehicle and make a move +supply, you may add +cargo. When you __Sacrifice Resources__, you may instead suffer -cargo for any portion of the cost.",
+          "Text": "Your vehicle carries up to +3 cargo. When you gain +supply, you may convert it to +cargo. When you have access to your vehicle and make a move +supply, you may add +cargo. When you __Sacrifice Resources__, you may instead suffer -cargo for any portion of the cost.",
           "Enabled": true
         },
         {
@@ -63,7 +63,7 @@
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "When you aim your cannons and use them to __Strike__, choose one:\n\n  * Strafing run: Add +1 and take +1 momentum on a hit\n  * Focus fire: Mark progress on a hit, but suffer -1 momentum",
+          "Text": "When you aim your cannons and use them to __Strike__, choose one.\n\n  * Strafing run: Add +1 and take +1 momentum on a hit.\n  * Focus fire: Mark progress on a hit, but __Lose Momentum (-1)__.",
           "Enabled": true
         },
         {
@@ -93,11 +93,11 @@
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "When you use your medbay to __Heal__ yourself or another patient, you may reroll your action die if its value is less than your vehicle’s integrity.",
+          "Text": "When you use your medbay to __Heal__ yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.",
           "Enabled": true
         },
         {
-          "Text": "When you or an ally mark the *permanently harmed* impact and are brought to the medbay without delay (less than an hour or so), you have a shot at making things right. If you __Heal__ and score a strong hit, clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident."
+          "Text": "When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so), you have a shot at making things right. If you __Heal__ and score a strong hit, clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident."
         },
         {
           "Text": "When you __Face Danger__ by performing a risky medical procedure, or if you __Gather Information__ through an autopsy or internal scan, reroll any dice and take +1 momentum on a hit."
@@ -131,14 +131,14 @@
       ],
       "Asset Fields": [
         {
-          "Text": "Your AI module keeps watch over the vehicle’s systems and sensor data. When you __Secure an Advantage__ or __Gain Ground__ by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.",
+          "Text": "Your AI module keeps watch over the vehicle's systems and sensor data. When you __Secure an Advantage__ or __Gain Ground__ by talking through a situation with the overseer, you may roll +your vehicle's integrity. If you do, take +1 momentum on a hit.",
           "Enabled": true
         },
         {
-          "Text": "When you __Withstand Damage__ and are forced to roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result."
+          "Text": "When you __Withstand Damage__ and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result."
         },
         {
-          "Text": "The overseer can pilot the vehicle independently. When you __Face Danger__ to hand over temporary control in an emergency, or to summon the vehicle remotely, you may roll +integrity. If you do, take +1 momentum on a hit."
+          "Text": "The overseer can pilot the vehicle independently. When you __Face Danger__ to hand over control to the AI in an emergency, or to summon the vehicle remotely, you may roll +your vehicle's integrity. If you do, take +1 momentum on a hit."
         }
       ]
     },
@@ -150,10 +150,10 @@
           "Enabled": true
         },
         {
-          "Text": "Your plated hull is given a fierce and distinctive color or design. When you land in a place where your reputation is a factor, take +1 momentum. When you __Enter the Fray__ against a foe who would recognize your ship, take +momentum equal to your ship’s integrity on a strong hit."
+          "Text": "Your plated hull is given a fierce and distinctive color or design. When you arrive at a place where your reputation is a factor, take +1 momentum. When you __Enter the Fray__ against a foe who would know your reputation, take +momentum equal to your vehicle's integrity on a strong hit."
         },
         {
-          "Text": "When you __React Under Fire__ by letting your plated hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, __Pay the Price__ by marking this component as disabled"
+          "Text": "When you __React Under Fire__ by letting your plated hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, __Pay the Price__ by marking this component as broken."
         }
       ]
     },
@@ -172,18 +172,18 @@
         }
       ]
     },
-    "Sensor Array": {
+    "Sensor Aray": {
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "Your advanced sensors scan the paths ahead to help spot dangers. When you __Undertake an Expedition__ (+wits), and roll a 10 on only one challenge die, you may reroll it.",
+          "Text": "Your advanced sensors scan the paths ahead to help spot dangers. When you __Undertake an Expedition__ (+wits), and roll a 10 on only one challenge die, you may reroll that die.",
           "Enabled": true
         },
         {
-          "Text": "When you __Secure an Advantage__ or __Gather Information__ by scanning your vehicle’s surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.\n\n  * Controlled scan: Add +1\n  * Automated scan: Instead of rolling the action die, make it the value of your vehicle’s integrity"
+          "Text": "When you __Secure an Advantage__ or __Gather Information__ by scanning your vehicle's surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.\n\n  * Manual scan: Add +1\n  * Automated scan: Instead of rolling the action die, make it the value of your vehicle's integrity"
         },
         {
-          "Text": "When you __Enter the Fray__ against an ambush, or __Face Danger__ to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit."
+          "Text": "When you __Enter the Fray__ against an ambush, or __Face Danger__ to detect a hidden threat, you may roll +your vehicle's integrity. If you do, reroll any dice and take +1 momentum on a hit."
         }
       ]
     },
@@ -191,7 +191,7 @@
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "When you raise your shields, roll +integrity or +wits, whichever is higher. On a strong hit, set your shields to +4. On a weak hit, make them +3. On a miss, you may make them +2 but must __Lose Momentum (-1)__. Then, if you __Withstand Damage__, ignore damage up to the value of your shields and suffer -1 shields. Raised shields only last for a few minutes. Once reduced to 0, shields cannot be raised again for an hour or so.",
+          "Text": "When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to +4. On a weak hit, make them +3. On a miss, make them +2 but __Lose Momentum (-1)__. Then, if you __Withstand Damage__, ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.",
           "Enabled": true
         },
         {
@@ -218,7 +218,7 @@
           "Text": "When you make a move against a specific foe or threat to avoid detection, add +1. If you __Enter the Fray__ by ambushing an unaware foe, add +1 and mark progress on a strong hit."
         },
         {
-          "Text": "When you are poised to __Strike__ from hiding, you may roll +shadow. If you do, choose one (before rolling).\n\n  * __Strike__ true: Reroll any dice.\n  * __Strike__ hard: Mark progress on a hit.\n\nOn a strong hit with a match, you also remain totally undetected; take +2 momentum."
+          "Text": "When you are poised to __Strike__ from hiding, you may roll +shadow. If you do, choose one (before rolling).\n\n  * __Strike__ true: Reroll any dice.\n  * __Strike__ hard: Mark progress on a hit.\n\nOn a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next __Strike__."
         }
       ]
     },
@@ -226,11 +226,11 @@
       "Asset Type": "Module",
       "Asset Fields": [
         {
-          "Text": "You may purchase or upgrade a support vehicle for 1 less experience. When you __Repair__ a battered support vehicle, use 1 repair point (instead of 2).",
+          "Text": "You may purchase or upgrade a support vehicle for 1 less experience. When you __Repair__ a battered support vehicle, spend 1 repair point (instead of 2).",
           "Enabled": true
         },
         {
-          "Text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may __Ask the Oracle__ using the yes/no table if something can be salvaged from the mess. Make it ‘50/50’. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you __Repair__ and bring it back to full working order, the vehicle is battered with 0 integrity."
+          "Text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may __Ask the Oracle__ using the yes/no table if something can be salvaged from the mess. Make it '50/50'. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you __Repair__ and bring it back to full working order, the vehicle is battered with 0 integrity."
         },
         {
           "Text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit."
@@ -245,7 +245,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle’s integrity."
+          "Text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle's integrity."
         },
         {
           "Text": "When you __Swear an Iron Vow__ to undertake a long-term engineering project, reroll any dice. When you obtain a crucial part or resource, __Reach a Milestone__. When you have what you need and devote extended time in your workshop to the project, __Face Danger__ and add +1 to see how you fare. On a hit, __Reach a Milestone__. On a strong hit with a match, mark progress. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic)."
@@ -259,11 +259,11 @@
       ],
       "Asset Fields": [
         {
-          "Text": "Your lumbering exoskeleton rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig’s integrity; if you do, __Lose Momentum (-1)__.",
+          "Text": "Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, __Lose Momentum (-1)__.",
           "Enabled": true
         },
         {
-          "Text": "Your exosuit is equipped with thrusters. You can maneuver in zero-g, make thrust-assisted leaps, and drop to a surface from altitude. When you burn fuel to overcome a critical obstacle (decide after rolling), you may reroll any dice. If you do, __Lose Resources (-1)__."
+          "Text": "Your exosuit is equipped with thrusters. You can maneuver in zero-g, make thrust-assisted leaps, and drop to a surface from altitude. When you burn fuel to overcome a critical obstacle (decide after rolling), you may reroll any dice. If you do, __Sacrifice Resources (-1)__."
         },
         {
           "Text": "When you __Withstand Damage__, you may reroll one challenge die."
@@ -307,6 +307,25 @@
           "Text": "Your rover is kept fully stocked. When you __Check Your Gear__, add +1 and take +1 momentum on a hit."
         }
       ],
+      "Integrity": 5
+    },
+    "Service Pod": {
+      "Asset Type": "Support Vehicle",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your utility vehicle houses one pilot for short- range, low gravity operations. When you make a move using the pod's manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Face Danger__, __Gain Ground__, or __React Under Fire__ by maneuvering your pod through a hazardous or obstructed area, choose an approach and roll +integrity.\n\n  * Careful: Add +2 and __Lose Momentum (-1)__\n  * Reckless: Take +1 momentum on a hit"
+        },
+        {
+          "Text": "When you make a move while controllingthe pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, __Withstand Damage (-2)__."
+        }
+      ],
       "Integrity": 4
     },
     "Shuttle": {
@@ -316,11 +335,11 @@
       ],
       "Asset Fields": [
         {
-          "Text": "Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive",
+          "Text": "Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive.",
           "Enabled": true
         },
         {
-          "Text": "When you __Face Danger__ or __React Under Fire__ by navigating through hazardous skies, within tight spaces, or around obstacles, add +1 and take +1 momentum on a hit."
+          "Text": "When you __Face Danger__ or __React Under Fire__ to navigate through hazardous skies or around obstacles, add +1 and take +1 momentum on a hit."
         },
         {
           "Text": "You shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you __Withstand Damage__, add +1."
@@ -335,7 +354,7 @@
       ],
       "Asset Fields": [
         {
-          "Text": "Your snub fighter carries a single pilot for space or atmospheric flight and combat. When you __Enter the Fray__, you may roll +integrity; if you do, take +1 momentum on a hit.",
+          "Text": "Your snub fighter carries a single pilot for space or atmospheric flight and combat. When you __Enter the Fray__, you may roll +integrity; if you do, take +2 momentum on a hit.",
           "Enabled": true
         },
         {
@@ -351,149 +370,15 @@
         "Starting Value": 0
       }
     },
-    "Combat Bot": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "Your combat bot fights at your side. When you __Strike__ aided by your bot, add +1; if you __Clash__, take +1 momentum on a hit.",
-          "Enabled": true
-        },
-        {
-          "Text": "When you use the threat of violence to __Compel__ or __Gain Ground__ while your bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot’s display is especially persuasive; take another +1 momentum."
-        },
-        {
-          "Text": "Once per fight, when you __React Under Fire__ by using your bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control."
-        }
-      ],
-      "Health": 5
-    },
-    "Glowcat": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you __Secure an Advantage__ (+heart) by studying your glowcat’s reactions in a charged situation, you may add +your companion’s health.",
-          "Enabled": true
-        },
-        {
-          "Text": "When you __Compel__, your glowcat’s reactions will help guide your approach. If the value of your action die is less than your glowcat’s health, you may reroll it."
-        },
-        {
-          "Text": "When you __Endure Stress__ in the company of your glowcat, add +1. On a strong hit with a match, take +momentum equal to their health."
-        }
-      ],
-      "Health": 3
-    },
-    "Rockhorn": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "Your rockhorn uses its resilient, stone-like carapace and brute strength to overcome threats. When you make a move by sending your rockhorn to directly attack a foe or smash an obstacle, roll +its health.",
-          "Enabled": true
-        },
-        {
-          "Text": "When you make the __Companion Takes a Hit__ move for your rockhorn, count a weak hit as a strong hit. On a strong hit with a match, give it another +1 health or take +1 momentum."
-        },
-        {
-          "Text": "Your rockhorn will come to your aid in your most vulnerable moments. When you __Endure Harm__ or __Endure Stress__ and roll a miss, you may reroll your action die if its less than your rockhorn’s health."
-        }
-      ],
-      "Health": 5
-    },
-    "Sidekick": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name",
-        "Expertise"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "When you make a move outside of a fight directly aided by your sidekick’s expertise, you may reroll your action die if its value is less than your sidekick’s health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.",
-          "Enabled": true
-        },
-        {
-          "Text": "When you __Enter the Fray__ with the support of your sidekick, take +2 momentum on a hit. When you __Clash__ together, add +1."
-        },
-        {
-          "Text": "When your sidekick acts to get you out of a tough spot, you may __Face Danger__ or __React Under Fire__ and roll +their health (instead of your own stat). On a hit, take +1 momentum."
-        }
-      ],
-      "Health": 4
-    },
-    "Survey Bot": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "Your survey bot scans the path ahead. When you __Undertake an Expedition__ (+wits) within a site or on an overland journey, add +1.",
-          "Enabled": true
-        },
-        {
-          "Text": "Once per expedition, when you __Secure an Advantage__ by sending your bot to scout ahead, roll +its health. On a strong hit, also mark progress on the expedition. On a strong hit with a match, your bot uncovers an unexpected feature or location; envision what it reveals and take +2 momentum."
-        },
-        {
-          "Text": "When you __Gather Information__ using your bot’s sensors to analyze an object or carefully search a location, or __Face Danger__ to detect a threat, roll +its health and take +1 momentum on a hit."
-        }
-      ],
-      "Health": 3
-    },
-    "Utility Bot": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "Your utility bot has helpful tools at-hand When you __Repair__ aided by your bot, add +1. On a miss, your companion reveals an alternative approach at a cost; you may reroll any dice, but first __Lose Momentum (-2)__ or __Sacrifice Resources (-2)__.",
-          "Enabled": true
-        },
-        {
-          "Text": "When you make a move by commanding your bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit."
-        },
-        {
-          "Text": "When you use one of the bot’s abilities and score a strong hit with a match, your companion also reveals an unexpected advantage or insight. Take +2 momentum."
-        }
-      ],
-      "Health": 3
-    },
-    "Voidglider": {
-      "Asset Type": "Companion",
-      "Input Fields": [
-        "Name"
-      ],
-      "Asset Fields": [
-        {
-          "Text": "Your voidglider cruises in your starship’s energy wake, and helps guide the way on spacebound expeditions. When you __Undertake an Expedition__ and roll a strong hit, take +1 momentum.",
-          "Enabled": true
-        },
-        {
-          "Text": "Your voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding your voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health."
-        },
-        {
-          "Text": "When you make a move by signaling your voidglider to distract or attack a spacebound foe, roll +its health and take +1 momentum on a hit."
-        }
-      ],
-      "Health": 4
-    },
     "Ace": {
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you __Face Danger__ or __React Under Fire__ by guiding your vehicle through a hazard or out of harm’s way, add +1 and take +1 momentum on a hit.",
+          "Text": "When you __Face Danger__ or __React Under Fire__ by guiding your vehicle through a hazard or out of harm's way, add +1 and take +1 momentum on a hit.",
           "Enabled": true
         },
         {
-          "Text": "When you __Gain Ground__ by maneuvering your vehicle against a foe, add +1. If you roll a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set side the action die or note its value. If you or an ally __Strike__ using the vehicle’s weapons, use that value for the action die (rolling only the challenge dice). This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle’s position."
+          "Text": "When you __Gain Ground__ by maneuvering your vehicle against a foe, add +1. If you roll a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set side the action die or note its value. If you or an ally __Strike__ using the vehicle's weapons, use that value for the action die (rolling only the challenge dice). This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle's position."
         },
         {
           "Text": "When you must __Endure Stress__ while piloting a vehicle, you may roll +integrity. If you do, take +1 momentum on a strong hit."
@@ -504,14 +389,14 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you make a move to break into a secure site, or to hack or manipulate a secure system, add +1 and take +1 momentum on a hit.",
+          "Text": "When you make a move to break into a secure site, infiltrate a protected area, or hack or manipulate a secure system, add +1 and take +1 momentum on a hit.",
           "Enabled": true
         },
         {
           "Text": "When you __Face Danger__ or __Secure an Advantage__ to establish a false identity, add +1. On a hit, you may add +1 when using that identity to deceive or influence others. If you roll a miss with a match when using that identity, your deception is completely and dramatically undone."
         },
         {
-          "Text": "When you covertly __Gather Information__, you may roll +shadow. If you do, take +1 momentum on a hit. On a strong hit with a match, you uncover a surprising aspect of an adversary’s plan or a connection to another quest or relationship; take +2 momentum and __Reach a Milestone__."
+          "Text": "When you covertly __Gather Information__, you may roll +shadow. If you do, take +1 momentum on a hit. On a strong hit with a match, you uncover a surprising aspect of an adversary's plan or a connection to another quest or relationship; take +2 momentum and __Reach a Milestone__."
         }
       ]
     },
@@ -519,14 +404,14 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "You are the bearer of a digital archive of esoteric knowledge. When you __Secure an Advantage__ or __Gather Information__ using lore recalled from your studies, add +1. If you have ample time to search the archive, add +2. On a hit, envision the obscure but helpful knowledge you put to use (__Ask the Oracle__ if unsure), and take +1 momentum.",
+          "Text": "You wield an archive of esoteric knowledge. When you recall lore from your studies to __Secure an Advantage__ or __Gather Information__, add +1. If you have ample time to search the archive, add +2. On a hit, envision the obscure but helpful knowledge you put to use (__Ask the Oracle__ if unsure), and take +1 momentum.",
           "Enabled": true
         },
         {
-          "Text": "When you __Swear an Iron Vow__ (formidable or greater) to recover data from a perilous location, reroll any dice. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your discoveries legacy track."
+          "Text": "When you __Swear an Iron Vow__ (formidable or greater) to recover knowledge from a perilous location, reroll any dice. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your discoveries legacy track."
         },
         {
-          "Text": "One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark troubled or __Face Desolation__ (ignoring momentum)."
+          "Text": "One time only, once you fill 6 boxes on your discoveries legacy track, you may browse the archive's forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-2, also mark traumatized or __Face Desolation__ (ignore momentum)."
         }
       ]
     },
@@ -535,14 +420,14 @@
       "Description": "If you wear your finely crafted set of personal armor...",
       "Asset Fields": [
         {
-          "Text": "When you __Face Danger__, __React Under Fire__, or __Clash__ against physical attacks or impact, you may put trust in your armor’s protection. If you do, set the value of your action die to 4 and roll only the challenge dice.",
+          "Text": "When you __Face Danger__, __React Under Fire__, or __Clash__ against physical attacks or impact, you may put trust in your armor's protection. If you do, set the value of your action die to 4 and roll only the challenge dice.",
           "Enabled": true
         },
         {
           "Text": "You add an important new piece to your set of armor, or upgrade its materials. As above, but set the value of your action die to 5 instead of 4."
         },
         {
-          "Text": "Your recognizable armor marks you as someone of note. When you __Enter the Fray__, in personal combat, add +1. When you __Compel__ in a situation where strength of arms or reputation is a factor, add +1 and take +1 momentum on a hit."
+          "Text": "When you must __Endure Harm__, you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must __Repair__ and spend 5 repair points to bring it back to working condition."
         }
       ]
     },
@@ -554,11 +439,11 @@
       ],
       "Asset Fields": [
         {
-          "Text": "You are rigged with an advanced prosthetic, implant, or mechanical enhancement. When you make a move directly aided by the augment, envision how it gives you exceptional capabilities, and add +1. On a strong hit with a match, your augment exceeds expectations; take +2 momentum. On a miss with a match, the augment is broken; you must __Repair__ and spend 3 repair points to bring it back to working condition.",
+          "Text": "You are rigged with an advanced prosthetic, implant, or mechanical enhancement. When you make a move directly aided by the augment, envision how it gives you exceptional capabilities and add +1. On a strong hit with a match, your augment exceeds expectations; take +2 momentum. On a miss with a match, the augment is broken; you must __Repair__ and spend 3 repair points to bring it back to working condition.",
           "Enabled": true
         },
         {
-          "Text": "You are rigged with a second augment. It functions as above, but benefits do not stack."
+          "Text": "You are rigged with a second augment. It functions as above, but benefits for the two augments do not stack."
         },
         {
           "Text": "When you must __Endure Harm__ or __Face Death__, you may instead mark an augment as broken. __Repair__ it as detailed above."
@@ -576,7 +461,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you or an ally __Sojourn__ and score a strong hit with a match, you may envision meeting someone of the same ideology.\n\nIf you __Make a Connection__ with them and score a hit, mark 1 tick on your bonds legacy track. When you __Forge a Bond__ with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic)."
+          "Text": "When you or an ally __Sojourn__ and score a strong hit with a match, you may envision meeting someone of the same ideology. If you __Make a Connection__ with them and score a hit, mark 1 tick on your bonds legacy track. When you __Forge a Bond__ with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic)."
         },
         {
           "Text": "When you make a progress move in direct service to your ideology, you may reroll 1 challenge die. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track."
@@ -603,7 +488,7 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you __Swear an Iron Vow__ to bring in a bounty, add +1. On a strong hit, you’ve got a lead and may immediately __Reach a Milestone__. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic).",
+          "Text": "When you __Swear an Iron Vow__ to bring in a bounty, add +1. On a strong hit, you've got a lead and may immediately __Reach a Milestone__. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic).",
           "Enabled": true
         },
         {
@@ -623,7 +508,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Clash__ in close-quarters, you may draw on your momentum to gain advantage. If you do, __Lose Momentum (-2)__ and choose one (before rolling).\n\n  * Offensive style: Count a weak hit as a strong hit.\n  * Defensive style: Count a miss as weak hit."
+          "Text": "When you __Clash__ in close-quarters, you may draw on your momentum to gain advantage. If you do, __Lose Momentum (-2)__ and choose one (before rolling).\n\n  * Aggressive: Count a weak hit as a strong hit.\n  * Defensive: Count a miss as a weak hit."
         },
         {
           "Text": "When you __Enter the Fray__ already positioned in close-quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum."
@@ -641,15 +526,15 @@
           "Text": "When you __Enter the Fray__ (+heart) by coordinating with your team as they wade into the fight, make your move before your allies act. On a strong hit, all allies may take an automatic strong hit. On a strong hit with a match, also mark progress on any objectives in this fight."
         },
         {
-          "Text": "When an ally must __Endure Stress__ or __Face Desolation__ under your direct command, they add +1. If they score a hit, you take +1 momentum."
+          "Text": "When you make a move to influence someone (not an ally) through leadership, add +1 and take +1 momentum on a hit. On a strong hit with a match, your command galvanizes them into unexpected action. Take another +1 momentum, and mark one tick on your bonds legacy track."
         }
       ]
     },
     "Devotant": {
       "Asset Type": "Path",
       "Input Fields": [
-        "Name",
-        "Stat"
+        "Stat",
+        "Name"
       ],
       "Asset Fields": [
         {
@@ -679,11 +564,26 @@
         }
       ]
     },
+    "Empath": {
+      "Asset Type": "Path",
+      "Asset Fields": [
+        {
+          "Text": "When you read the intent, emotions, or memories of a being in your presence, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 as you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; __Pay the Price__.",
+          "Enabled": true
+        },
+        {
+          "Text": "As above, and on a hit you may subtly influence their attitude or actions, such as making a hostile being hesitate. Take another +1 momentum. If in a fight, mark progress."
+        },
+        {
+          "Text": "When you __Face Danger__ to soothe a being's emotional distress through an empathic bond, you may roll +spirit. If you do, take +1 momentum on a hit. If they are an ally, also give them +2 spirit on a hit."
+        }
+      ]
+    },
     "Explorer": {
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you __Explore a Waypoint__, take +1 momentum on a hit. When you __Finish an Expedition__ and score a hit, mark one extra tick on your discoveries legacy track.",
+          "Text": "When you __Explore a Waypoint__, take +1 momentum on a hit. When you __Finish an Expedition__ and score a hit, mark 1 extra tick on your discoveries legacy track.",
           "Enabled": true
         },
         {
@@ -698,11 +598,11 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "You wield fiery mystical energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but __Endure Harm (-2)__. Your max fire is +5. You may make moves aided by this energy to attack or overcome obstacles; when you do, add +2 and suffer -1 fire.",
+          "Text": "You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but __Endure Harm (-2)__. Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.",
           "Enabled": true
         },
         {
-          "Text": "When you __Endure Harm__ and roll a strong hit with a match, you may take +fire equal to the amount of harm faced (+1 for minor, +2 for serious, or +3 for major)."
+          "Text": "When you __Endure Harm__ and roll a strong hit with a match, you may instead ignore the harm and take +fire equal to the amount of harm faced (+1, +2, or +3)."
         },
         {
           "Text": "When you have at least +3 fire, you may __Gain Ground__ or __Strike__ by unleashing hell. If you do, take an automatic strong hit and mark progress. Then, set your fire to 0."
@@ -731,18 +631,20 @@
     },
     "Gunner": {
       "Asset Type": "Path",
-      "Description": "If you wield a heavy ranged weapon...",
+      "Description": "If you wield a heavy ranged personal weapon...",
       "Asset Fields": [
         {
-          "Text": "When you __Strike__, choose one (before rolling).\n\n  * Make them hurt: Mark progress on a hit.\n  * Pin them down: Add +1 and take +1 momentum on a hit.",
+          "Text": "When you __Strike__, choose one (before rolling).\n\n  * Pin them down: Add +1 and take +1 momentum on a hit.\n  * Make them hurt: Mark progress on a hit.",
           "Enabled": true
         },
         {
-          "Text": "When you __Take Decisive Action__ by emptying your gun (decide before rolling), you may __Sacrifice Resources (-1)__ and reroll one challenge die."
+          "Text": "When you __Take Decisive Action__ by emptying your gun (decide before rolling), you may __Sacrifice Resources (-1)__ and reroll one challenge die. If the fight continues or you are caught up another fight, __Check Your Gear__ to see if you have more ammo on-hand."
         },
         {
           "Text": "Give your favorite gun a name. When you __Clash__ with it, add +1. When you __Enter the Fray__ or __Endure Stress__ while wielding it, add +1 and take +1 momentum on a hit.",
-          "Input Fields": ["Name"]
+          "Input Fields": [
+            "Name"
+          ]
         }
       ]
     },
@@ -755,7 +657,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Gain Ground__ or __React Under Fire__ by moving into cover, add +1. On a strong hit, you may then add +2 if you immediately __Strike__."
+          "Text": "When you __Gain Ground__ or __React Under Fire__ by moving into cover, add +1. On a strong hit, you may then add +2 (one time only) if you pop out of cover to __Strike__."
         },
         {
           "Text": "When you __Compel__ or __Gain Ground__ with the threat of violence by holding someone at gunpoint, add +1 and take +1 momentum on a hit."
@@ -773,7 +675,7 @@
           "Text": "When you __Face Death__ guided by the spirit, add +1. On a strong hit, envision what you learn from them or about them, and mark 2 ticks on your bonds legacy track."
         },
         {
-          "Text": "One time only, when you successfully __Fulfill Your Vow__ (formidable or greater) in service to the spirit, choose one.\n\n  * Let them go: Mark 4 ticks on your bonds legacy track for each marked ability, and discard this asset.\n  * Bolster your link: When you leverage an asset ability, take +1 momentum on a hit."
+          "Text": "One time only, when you __Fulfill Your Vow__ (extreme or greater) in service to the spirit, take this ability at no cost and choose one.\n\n  * Let them go: Mark 2 ticks on your bonds legacy track for each marked ability, and discard this asset.\n  * Bolster your link: When you leverage an asset ability, take +1 momentum on a hit."
         }
       ]
     },
@@ -788,7 +690,7 @@
           "Text": "When you __Gather Information__ by studying medical evidence or biological remains, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also reveal an unexpected medical anomaly; mark 1 tick on your discoveries legacy track."
         },
         {
-          "Text": "Once every day or so, when you are in a safe place with plenty of time on your hands, you may __Sacrifice Resources (-1)__ and provide basic medical care for yourself, companions, or allies without effort or risk. If you do, automatically give +1 health to everyone whose health is greater than 0."
+          "Text": "Once every day or so, when you are in a safe place with plenty of time on your hands, you may __Sacrifice Resources (-1)__ and provide basic medical care for yourself, companions, or allies without risk. If you do, automatically give +1 health to everyone whose health is greater than 0."
         }
       ]
     },
@@ -826,7 +728,7 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you agree to wage war or defend others from war in exchange for payment or promises, you may __Swear an Iron Vow__ to see the mission done. If you do, reroll any dice. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic)",
+          "Text": "When you agree to wage war or defend others from war in exchange for payment or promises, you may __Swear an Iron Vow__ to see the mission done. If you do, reroll any dice. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic).",
           "Enabled": true
         },
         {
@@ -841,14 +743,14 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you __Secure an Advantage__ or __Gather Information__ using your knowledge of lifeforms or planetside ecosystems, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.",
+          "Text": "When you __Secure an Advantage__ or __Gather Information__ using your knowledge of lifeforms or planetside ecosystems, add +1 and take + 1 momentum on a hit. On a strong hit with a match, you also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.",
           "Enabled": true
         },
         {
-          "Text": "When you make a move by taking a risky action to pacify, avoid, or outwit an aggressive creature (decide before rolling), you may reroll any dice, but must __Lose Momentum (-2)__."
+          "Text": "When you make a move by taking a risky action to pacify, avoid, or outwit a creature (decide before rolling), you may reroll any dice, but must __Lose Momentum (-2)__."
         },
         {
-          "Text": "You are skilled at planetside survival. When you __Resupply__ to scavenge resources in a life- bearing natural environment, take +1 supply on a hit. When you __Face Danger__ against an environmental threat, add +1 and take +1 momentum on a hit."
+          "Text": "You are skilled at planetside survival. When you __Resupply__ to scavenge resources in a life-bearing natural environment, take +1 supply on a hit. When you __Face Danger__ against an environmental threat, add +1 and take +1 momentum on a hit."
         }
       ]
     },
@@ -856,14 +758,29 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you __Set a Course__, choose one.\n\n  * Follow the fastest path: Take +2 momentum on a hit.\n  * Follow the safest path: Add +1\n\nOn a strong hit with a match, you charted a new path during the journey; mark 1 tick on your discoveries legacy track.",
+          "Text": "When you __Set a Course__, choose one.\n\n  * Follow the fastest path: Take +2 momentum on a hit.\n  * Follow the safest path: Add +1\n\n On a strong hit with a match, you charted a new path during the journey; mark 1 tick on your discoveries legacy track.",
           "Enabled": true
         },
         {
           "Text": "When you __Secure an Advantage__ by charting the way forward, __Face Danger__ to find a path around a hazard, or __Gather Information__ about a location by studying your charts, add +1 and take +1 momentum on a hit."
         },
         {
-          "Text": "Once per expedition, when you or an ally __Undertake an Expedition__ and score a miss, you may ignore that result, plot an alternate path, and make it an automatic weak hit."
+          "Text": "Once per expedition, when you or an ally __Undertake an Expedition__ and score a weak hit or miss, you may ignore that result, plot an alternate path, and make it an automatic strong hit."
+        }
+      ]
+    },
+    "Outcast": {
+      "Asset Type": "Path",
+      "Asset Fields": [
+        {
+          "Text": "When you __Hearten__ in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Sacrifice Resources__ and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -1 momentum in exchange for +1 supply. On a miss, your supply remains at 0 and you __Lose Momentum (-1)__."
+        },
+        {
+          "Text": "When you __Sojourn__ and score a strong hit with a match, you encounter someone who knows or understands you. You may __Make a Connection__ with an automatic strong hit and mark one extra tick on your bonds legacy track."
         }
       ]
     },
@@ -886,14 +803,14 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "When you make a move by lying, bluffing, stealing, or cheating, add +1.",
+          "Text": "When you make a move by lying, bluffing, stealing, or cheating, add +1. On a strong hit with a match, your deception creates an unexpected opportunity; take the value of your shadow as +momentum.",
           "Enabled": true
         },
         {
           "Text": "When you __Make a Connection__ to search out a new contact, you may roll +shadow. If you do, reroll any dice on a miss and envision how your reputation or underworld contacts lead you to a disreputable connection."
         },
         {
-          "Text": "When you __Gather Information__ by asking questions of a connection, add +1 and take +1 momentum on a hit. On a strong hit with a match, they reveal a surprising link to your quest or a personal stake in seeing it done; if you are not yet bonded with this connection, __Develop Your Relationship__ and mark progress. If you already have a bond, mark 2 ticks on your bonds legacy track."
+          "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track."
         }
       ]
     },
@@ -901,18 +818,48 @@
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "Through focused meditation, you may peer through the veils of reality to __Gather Information__ about a place, being, or event. If you do, roll +spirit. On a strong hit with a match, you experience a surprising but helpful revelation; take +2 momentum.\n\nOn a miss with a match, you are plagued by visions of a dire threat or complication; __Endure Stress (-3)__.",
+          "Text": "Through focused meditation, you may peer through the veils of reality to __Gather Information__ about a place, being, or event (in person or at a distance). If you do, roll +spirit. On a strong hit with a match, you experience a surprising but helpful revelation; take +2 momentum. On a miss with a match, you are plagued by visions of a dire threat or complication; __Endure Stress (-3)__.",
           "Enabled": true
         },
         {
-          "Text": "When you __Endure Harm__ or __Endure Stress__ and score a miss, you may roll twice on the miss table and pick either result. If you do, take +1 momentum and envision how this moment was foreseen."
+          "Text": "When you __Endure Harm__ or __Endure Stress__ and roll on the miss table, you may roll twice and pick either result. If you do, take +1 momentum and envision how this moment was foreseen."
         },
         {
-          "Text": "When you make a move to interact with someone and roll a miss, you may open yourself to visions of their nature or intent. If you do, reroll any dice but __Endure Stress (-2)__."
+          "Text": "When you __Sojourn__ and roll a match, you may gain insight about this place through an unbidden vision; take +2 momentum on a strong hit and +1 momentum on a miss."
         }
       ]
     },
-    "Sharpshooter": {
+    "Shade": {
+      "Asset Type": "Path",
+      "Asset Fields": [
+        {
+          "Text": "Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. While you are veiled and make a move to ambush, hide, or sneak, set the value of your action die as 5 instead of rolling that die. In places of shadow or darkness, make it 6. On a miss, you are revealed and can't veil yourself again until the current situation is resolved.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention."
+        },
+        {
+          "Text": "When you __Secure an Advantage__ by dropping your veil in a dramatic moment, take +1 momentum (before rolling) and add +1."
+        }
+      ]
+    },
+    "Slayer": {
+      "Asset Type": "Path",
+      "Asset Fields": [
+        {
+          "Text": "When you make a move to investigate, track, or stalk a hostile creature, add +1 and take +1 momentum on a hit.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Swear an Iron Vow__ to slay a hostile creature in service to a community, reroll any dice. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your bonds legacy track."
+        },
+        {
+          "Text": "When you __Enter the Fray__ against a hostile creature (dangerous or greater), take +2 momentum. If you choose to face the creature on its own terms, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you __Take Decisive Action__ after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track."
+        }
+      ]
+    },
+    "Sniper": {
       "Asset Type": "Path",
       "Description": "If you wield a rifle...",
       "Asset Fields": [
@@ -924,22 +871,7 @@
           "Text": "When you __Strike__ from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a hit."
         },
         {
-          "Text": "When you __Secure an Advantage__ by studying a distant situation through the scope of your rifle, or __Gain Ground__ by readying your shot and taking careful aim, you may sacrifice time in exchange for greater certainty. If you do (decide before rolling), __Lose Momentum (-1, -2, or -3)__ and add that amount. Then, take +1 momentum on a strong hit."
-        }
-      ]
-    },
-    "Slayer": {
-      "Asset Type": "Path",
-      "Asset Fields": [
-        {
-          "Text": "When you make a move to investigate, stalk, or track a hostile creature, add +1 and take +1 momentum on a hit.",
-          "Enabled": true
-        },
-        {
-          "Text": "When you __Swear an Iron Vow__ to slay a hostile creature in service to a community, reroll any dice. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your bonds legacy track."
-        },
-        {
-          "Text": "When you __Enter the Fray__ against a hostile creature, take +2 momentum. If you choose to face the creature on its own terms, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you __Take Decisive Action__ after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track; on a weak hit, mark 1."
+          "Text": "When you __Secure an Advantage__ by studying a distant situation through the scope of your rifle, or __Gain Ground__ by readying your shot and taking careful aim, you may sacrifice time in exchange for greater certainty. If you do (decide before rolling), __Lose Momentum__ (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit."
         }
       ]
     },
@@ -976,18 +908,18 @@
     "Vestige": {
       "Asset Type": "Path",
       "Input Fields": [
-        "Last of"
+        "Last Of"
       ],
       "Asset Fields": [
         {
-          "Text": "You are all that remains of a people, culture, or tradition. When you __Secure an Advantage__ or __Compel__ through a tale, performance, or ceremony, envision what you reveal of your legacy. Then, add +1 and take +2 momentum on a hit.",
+          "Text": "You are all that remains of a people, culture, or tradition. When you __Face Death__ or __Face Desolation__, memories or visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice. On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.",
           "Enabled": true
         },
         {
-          "Text": "When you __Hearten__ by taking solace in the power of your legacy, add +1 and take +1 momentum on a hit."
+          "Text": "When you __Secure an Advantage__ or __Compel__ through a tale, performance, or ceremony, envision what you reveal of your legacy. Then, add +1 and take +2 momentum on a hit."
         },
         {
-          "Text": "When you __Face Death__ or __Face Desolation__, memories or visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice. On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track."
+          "Text": "When you __Hearten__ by taking solace in the power of your legacy, add +1 and take +1 momentum on a hit."
         }
       ]
     },
@@ -999,10 +931,10 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Make a Connection__, add +1. If you roll a match, you have a history.\n  * On a strong hit with a match, you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and __Develop Your Relationship__ now.\n  * On a miss with a match, you once fought against them, and they hold a grudge."
+          "Text": "When you __Make a Connection__, add +1. If you roll a match, you have a history.\n\n  * On a strong hit with a match, you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and __Develop Your Relationship__ now.\n  * On a miss with a match, you once fought against them, and they hold a grudge."
         },
         {
-          "Text": "When you __Secure an Advantage__ or __Gain Ground__ by recounting or recalling a hard-won lesson from your battlefield experiences, envision the memory and add +1. On a hit, take +1 momentum or +1 spirit."
+          "Text": "When you __Secure an Advantage__ or __Gain Ground__ by recounting or recalling a hard-won lesson from your battlefield experiences, envision the memory and add +1. On a hit, take +1 momentum."
         }
       ]
     },
@@ -1021,11 +953,11 @@
         }
       ]
     },
-    "Weaponmaster": {
+    "Weapon Master": {
       "Asset Type": "Path",
       "Asset Fields": [
         {
-          "Text": "You are a walking arsenal. When you __Enter the Fray__ in personal combat, add +1 and take +1 momentum on a hit. Once per fight, when you __Gain Ground__ by switching weapons or changing tactics, you may take an automatic strong hit.",
+          "Text": "You are a walking armory, with a weapon for every occassion. When you __Enter the Fray__ in personal combat, add +1 and take +1 momentum on a hit. Once per fight, when you __Gain Ground__ by switching weapons or changing tactics, take an automatic strong hit.",
           "Enabled": true
         },
         {
@@ -1036,7 +968,160 @@
         }
       ]
     },
-    "Home": {
+    "Combat Bot": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your combat bot fights at your side. When you __Strike__ aided by your bot, add +1; if you __Clash__, take +1 momentum on a hit.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you use the threat of violence to __Compel__ or __Gain Ground__ while your bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum."
+        },
+        {
+          "Text": "Once per fight, when you __React Under Fire__ by using your bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control."
+        }
+      ],
+      "Health": 5
+    },
+    "Glowcat": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you __Secure an Advantage__ by studying your glowcat's reactions in a charged situation, you may add +your companion's health.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Compel__, your glowcat's reactions will help guide your approach. If the value of your action die is less than your glowcat's health, you may reroll it."
+        },
+        {
+          "Text": "When you __Endure Stress__ in the company of your glowcat, add +1. On a strong hit with a match, take +momentum equal to their health."
+        }
+      ],
+      "Health": 3
+    },
+    "Rockhorn": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your rockhorn uses its resilient, stone-like carapace and brute strength to overcome threats. When you make a move by sending your rockhorn to directly attack a foe or smash an obstacle, roll +its health.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you make the __Companion Takes a Hit__ move for your rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it instoppable; give it another +1 health or take +1 momentum."
+        },
+        {
+          "Text": "Your rockhorn will come to your aid in your most vulnerable moments. When you __Endure Harm__ or __Endure Stress__ and roll a miss, you may reroll your action die if its value is less than your rockhorn's health."
+        }
+      ],
+      "Health": 5
+    },
+    "Sidekick": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name",
+        "Expertise"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by your sidekick's expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Enter the Fray__ with the support of your sidekick, take +2 momentum on a hit. When you __Clash__ together, add +1."
+        },
+        {
+          "Text": "When your sidekick acts to get you out of a tough spot, you may __Face Danger__ or __React Under Fire__ and roll +their health (instead of your own stat). On a hit, take +1 momentum."
+        }
+      ],
+      "Health": 4
+    },
+    "Survey Bot": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your survey bot scans the path ahead. When you __Undertake an Expedition__ (+wits) overland or within a site or journey, add +1.",
+          "Enabled": true
+        },
+        {
+          "Text": "Once per expedition, when you __Secure an Advantage__ by sending your bot to scout ahead, roll +its health. On a strong hit, also mark progress on the expedition. On a strong hit with a match, your bot uncovers an unexpected feature or location; envision what it reveals and take +2 momentum."
+        },
+        {
+          "Text": "When you __Gather Information__ using your bot's sensors to analyze an object or carefully search a location, or __Face Danger__ to detect a threat, roll +its health and take +1 momentum on a hit."
+        }
+      ],
+      "Health": 3
+    },
+    "Symbiote": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "You are physically bound to a being with +2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the __Endure Harm__ or __Companion Takes a Hit__ move. To restore the symbiote's health, you must __Endure Stress__ and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you make a move and heed the symbiote's guidance (decide after rolling), you may reroll any dice. Then, __Endure Stress (-2)__."
+        },
+        {
+          "Text": "The symbiote gains power and has +3 health."
+        }
+      ],
+      "Health": 2
+    },
+    "Utility Bot": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your utility bot has helpful tools at-hand. When you make a move by commanding your bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Repair__ aided by your bot, add +1. On a miss, your companion reveals an alternative approach at a cost; you may reroll any dice, but first __Lose Momentum (-2)__ or __Sacrifice Resources (-2)__."
+        },
+        {
+          "Text": "When you use one of the bot's abilities and score a strong hit with a match, your companion also reveals an unexpected advantage or insight; take +2 momentum."
+        }
+      ],
+      "Health": 4
+    },
+    "Voidglider": {
+      "Asset Type": "Companion",
+      "Input Fields": [
+        "Name"
+      ],
+      "Asset Fields": [
+        {
+          "Text": "Your voidglider cruises in your starship's energy wake, and helps guide the way on spacebound expeditions. When you __Undertake an Expedition__ and roll a strong hit, take +1 momentum.",
+          "Enabled": true
+        },
+        {
+          "Text": "Your voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding your voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health."
+        },
+        {
+          "Text": "When you make a move by signaling your voidglider to distract or attack a spacebound foe, roll +its health and take +1 momentum on a hit."
+        }
+      ],
+      "Health": 4
+    },
+    "Homesteader": {
       "Asset Type": "Deed",
       "Input Fields": [
         "Name"
@@ -1044,11 +1129,11 @@
       "Description": "Once you fill 4 boxes on your bonds legacy track...",
       "Asset Fields": [
         {
-          "Text": "When you __Swear an Iron Vow__ (formidable or greater) in service to your home, reroll any dice. On a hit, mark 1 tick on your bonds legacy track. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your bonds legacy track.",
+          "Text": "You have chosen or established a community as your home. When you __Swear an Iron Vow__ (formidable or greater) in service to your home, reroll any dice. On a hit, mark 1 tick on your bonds legacy track. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your bonds legacy track.",
           "Enabled": true
         },
         {
-          "Text": "When you __Sojourn__ in your home, choose one.\n\n  * Don’t linger: Take an automatic weak hit\n  * Stay a bit: Add +1 and take +1 momentum on a hit"
+          "Text": "When you __Sojourn__ in your home, choose one.\n\n  * Don't linger: Take an automatic weak hit\n  * Stay a bit: Add +1 and take +1 momentum on a hit"
         },
         {
           "Text": "When you __Set a Course__ for home, you may reroll your action die if its value is less than your spirit."
@@ -1058,16 +1143,16 @@
     "Marked": {
       "Asset Type": "Deed",
       "Input Fields": [
-        "Sigil/Title"
+        "Identifier"
       ],
-      "Description": "Once you fill 6 boxes on your quests legacy track...",
+      "Description": "Once you fill 5 boxes on your quests legacy track...",
       "Asset Fields": [
         {
-          "Text": "Envision the sigil or title you now bear in recognition of your most famous or notorious achievement. When you __Compel__ or __Make a Connection__ among those who would know of your reputation, add +1 and take +1 momentum on a hit. On a strong hit with a match, your repuation grows; mark 1 tick on your bonds legacy track.",
+          "Text": "Envision the title, sigil, uniform, or tattoo you bear in recognition of your achievements. When you __Compel__ or __Make a Connection__ among those who would know or recognize your reputation, add +1 and take +1 momentum on a hit. On a strong hit with a match, your notoriety grows; mark 2 ticks on your bonds legacy track.",
           "Enabled": true
         },
         {
-          "Text": "When you __Forge a Bond__ and roll a weak hit or miss, you may reroll one challenge die."
+          "Text": "When you risk your reputation to overcome failure, reroll any dice. If you score a miss, make a mark on this asset. When you have 5 such marks, discard this asset."
         },
         {
           "Text": "Once per fight, when you __Gain Ground__ through threat or leadership, you may reroll any dice and mark progress on a hit."
@@ -1092,17 +1177,33 @@
     },
     "Revenant": {
       "Asset Type": "Deed",
-      "Description": "Once you __Face Death__ and live to tell the tale...",
+      "Description": "Once you __Face Death__...",
       "Asset Fields": [
         {
           "Text": "When you are at 0 health, and __Endure Harm__ or __Face Death__, add +1. You may then reroll your action die if its value is less than your spirit.",
           "Enabled": true
         },
         {
-          "Text": "When you __Take Decisive Action__ by bringing death to a foe, you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, __Endure Stress (-2)__."
+          "Text": "When you __Take Decisive Action__ by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, __Endure Stress (-2)__."
         },
         {
           "Text": "When you __Gather Information__ by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more."
+        }
+      ]
+    },
+    "Vanguard": {
+      "Asset Type": "Deed",
+      "Description": "Once you fill 6 boxes on your discoveries legacy track...",
+      "Asset Fields": [
+        {
+          "Text": "When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you find or establish a safe location and may add +2 whenever you make a recovery move there. If you roll a miss when making a recovery move, the place is no longer safe. On a weak hit, as above, but add +1 when you make a recovery move. On a miss, you are drawn into a bad situation and must __Pay the Price__.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum."
+        },
+        {
+          "Text": "When you __Endure Stress__, you may roll +wits. If you do, take +1 momentum on a hit."
         }
       ]
     }
