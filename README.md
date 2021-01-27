@@ -7,7 +7,7 @@ Currently just JSON and a markdown doc of formatted moves, other formats TBA.
 ## Current Version/Sources
 
   * **Oracles-Preview-091420**
-  * **Assets-Singles-122020**
+  * **Assets-Sheet-012421**
   * **Moves-Reference-122020** (move text, move-related oracles)
   * **Launching-Your-Campaign-112220** (setting Truth oracles, character creation prompt oracles)
 
