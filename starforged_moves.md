@@ -172,7 +172,7 @@ On a match, an extreme result or twist has occurred.
 
 ## Connection Moves
 
-### Make A Connection
+### Make a Connection
 
 **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
