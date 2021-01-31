@@ -677,13 +677,15 @@ On a **weak hit**, as above, but you must first deal with a cost, complication, 
 
 On a **miss**, you encounter an unexpected complication. __Pay the Price__.
 
+## Legacy Moves
+
 ### Advance
 
 **When you fill a box (four ticks) on any legacy track**, take 2 experience. You may spend 2 experience to upgrade an asset, or 3 experience to add a new asset.
 
 Once you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress.
 
-### Continue A Legacy
+### Continue a Legacy
 
 ***Progress Move***
 
