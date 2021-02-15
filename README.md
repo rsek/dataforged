@@ -6,15 +6,13 @@ Currently just JSON and a markdown doc of formatted moves, other formats TBA.
 
 ## Current Version/Sources
 
-  * **Oracles-Preview-091420**
+  * **Oracles-Preview-091420** (+ some previewed as images on discord on Feb 14)
   * **Assets-Sheet-012421**
   * **Moves-Reference-012521** (move text, move-related oracles)
   * **Launching-Your-Campaign-112220** (setting Truth oracles, character creation prompt oracles)
 
-## Semantic vs. Programmatic Versions
-Most of the JSON data is formatted to reflect the semantics of the information (as opposed to practical use right out of the box). Since I can't predict what they'll be used for (and pretty much anyone using them will need to edit them to some extent), the idea is that the data should be logical and human-readable so that they're easy to reformat.
-
-Some files have a "programmatic" version, with information formatted in arrays.
+## New Format
+I'm no longer maintaining the "semantic" versions, but the old files are in a folder marked as such.
 
 ## Oracle Tables
 
