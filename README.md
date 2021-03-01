@@ -1,18 +1,13 @@
 # Dataforged
 
-Starforged playtest rules data for use in community tools, because there's no use in duplicating labour on the data entry.
-
-Currently just JSON and a markdown doc of formatted moves, other formats TBA.
+Starforged playtest rules data in JSON for use in community tools, because there's no use in duplicating labour on the data entry.
 
 ## Current Version/Sources
 
-  * **Oracles-Preview-091420** (+ some previewed as images on discord on Feb 14)
+  * **Oracles-Preview-022821**
   * **Assets-Sheet-012421**
   * **Moves-Reference-012521** (move text, move-related oracles)
   * **Launching-Your-Campaign-112220** (setting Truth oracles, character creation prompt oracles)
-
-## New Format
-I'm no longer maintaining the "semantic" versions, but the old files are in a folder marked as such.
 
 ## Oracle Tables
 
