@@ -2,10 +2,10 @@
   "Title": "Starship Oracles",
   "Source": {
     "Name": "Starforged Playtest Oracles",
-    "Version": "091420"
+    "Version": "022821"
   },
   "Oracles": [ {
-    "Name": "Starship Type",
+    "Name": "Type",
     "Oracle Table": [ {
       "Chance": 2,
       "Class": "Carrier",
@@ -81,13 +81,13 @@
     }, {
       "Chance": 80,
       "Class": "Multipurpose",
-      "Typical Role": "[Starship mission]"
+      "Typical Role": "[Starship Mission]"
     }, {
       "Chance": 90,
       "Class": "[Fleet]"
     }, {
       "Chance": 100,
-      "Class": "Ships in conflict: [Roll twice]"
+      "Class": "Ships in conflict [roll twice]"
     } ]
   }, {
     "Name": "Fleet",
@@ -95,23 +95,23 @@
       "Chance": 15,
       "Description": "Transport and escorts"
     }, {
-      "Chance": 65,
-      "Description": "Salvager hive"
-    }, {
       "Chance": 25,
       "Description": "Attack wing"
-    }, {
-      "Chance": 80,
-      "Description": "Raider clan"
     }, {
       "Chance": 40,
       "Description": "Trade caravan"
     }, {
-      "Chance": 90,
-      "Description": "Battle fleet"
-    }, {
       "Chance": 55,
       "Description": "Settler caravan"
+    }, {
+      "Chance": 65,
+      "Description": "Salvager hive"
+    }, {
+      "Chance": 80,
+      "Description": "Raider horde"
+    }, {
+      "Chance": 90,
+      "Description": "Battle fleet"
     }, {
       "Chance": 100,
       "Description": "[Starship Mission]"
@@ -157,6 +157,7 @@
     } ]
   }, {
     "Name": "First Look",
+    "Max rolls": 2,
     "Oracle Table": [ {
       "Chance": 4,
       "Description": "Abnormal sensor readings"
@@ -526,6 +527,9 @@
     } ]
   }, {
     "Name": "Starship Name",
-    "Oracle Table": [ "not yet available" ]
+    "Oracle Table": [ {
+      "Chance": 100,
+      "Description": "Not yet available"
+    } ]
   } ]
 }
