@@ -2,12 +2,14 @@
   "Name": "Desert World",
   "Source": {
     "Name": "Starforged Playtest Oracles",
-    "Version": "091420"
+    "Version": "022821"
   },
+  "Names": [ "Abalos", "Audun", "Bishop", "Datura", "Desolation", "Dykuma", "Fallow", "Helios", "Mirage", "Morricone", "Nux", "Ordos", "Petra", "Pyla", "Sabulo", "Sirocco", "Solitude", "Sulis", "Torrid", "Umber" ],
   "Description": "A pitiless planet of searing heat, blowing sand, and sunbaked rock.",
   "Thumbnail": "https://i.imgur.com/YLNEHp9.png",
   "Oracles": [ {
     "Name": "Atmosphere",
+    "Initial": true,
     "Oracle Table": [ {
       "Chance": 10,
       "Description": "None / thin"
@@ -29,6 +31,7 @@
     } ]
   }, {
     "Name": "Settlements",
+    "Initial": true,
     "Region": "Terminus",
     "Oracle Table": [ {
       "Chance": 50,
@@ -48,6 +51,7 @@
     } ]
   }, {
     "Name": "Settlements",
+    "Initial": true,
     "Region": "Outlands",
     "Oracle Table": [ {
       "Chance": 75,
@@ -63,10 +67,11 @@
       "Description": "Multiple settlements"
     }, {
       "Chance": 100,
-      "Description": "Settlements in conflict"
+      "Name": "Settlements in conflict"
     } ]
   }, {
     "Name": "Settlements",
+    "Initial": true,
     "Region": "Expanse",
     "Oracle Table": [ {
       "Chance": 90,
@@ -75,11 +80,13 @@
       "Chance": 96,
       "Description": "Orbital settlement"
     }, {
-      "Chance": 100,
+      "Name": "Atmosphere",
+      "Initial": true,
       "Description": "Planetside settlement"
     } ]
   }, {
     "Name": "Observed From Space",
+    "Initial": true,
     "Oracle Table": [ {
       "Chance": 11,
       "Description": "Dry seabeds"
@@ -180,6 +187,5 @@
       "Chance": 100,
       "Description": "Overrun"
     } ]
-  } ],
-  "Names": [ "Abalos", "Audun", "Bishop", "Datura", "Desolation", "Dykuma", "Fallow", "Helios", "Mirage", "Morricone", "Nux", "Ordos", "Petra", "Pyla", "Sabulo", "Sirocco", "Solitude", "Sulis", "Torrid", "Umber" ]
+  } ]
 }
