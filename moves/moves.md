@@ -1,49 +1,5 @@
 # Starforged Playtest Moves (012521)
 
-## Quest Moves
-
-### Swear an Iron Vow
-
-**When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
-
-On a **strong hit**, you are emboldened and it is clear what you must do next (__Ask the Oracle__ if unsure). Take +2 momentum.
-
-On a **weak hit**, you are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.
-
-On a **miss**, you face a significant obstacle before you can make progress on your quest. Envision what stands in your way (__Ask the Oracle__ if unsure), and do what you must to overcome this obstacle.
-
-### Reach a Milestone
-
-**When you make significant progress in your quest** by doing any of the following...
-
-  * overcoming a critical obstacle
-  * completing a perilous expedition
-  * solving a complex mystery
-  * defeating a powerful foe
-  * gaining vital support
-  * acquiring a crucial item or resource
-
-...you may mark progress per the rank of the vow.
-
-### Forsake Your Vow
-
-**When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow. Then, envision how this failure impacts you and __Pay the Price__. If the vow was made to a connection, __Test Your Relationship__ when you next interact.
-
-### Fulfill Your Vow
-
-***Progress Move***
-
-**When you reach the end of your quest**, roll the challenge dice and compare to your progress.
-
-On a **strong hit**, your vow is fulfilled. Mark a reward on your quests legacy track per the vow’s rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes.
-
-On a **weak hit**, as above, but there is more to be done or you realize the truth of your quest. If you __Swear an Iron Vow__ to set things right, take your full legacy reward. Otherwise, make the reward one rank lower.
-
-On a **miss**, your quest is undone. Envision what happens (__Ask the Oracle__ if unsure), and choose one.
-
-  * Recommit: Clear all but one progress box, and raise the vow’s rank by one (if not already epic).
-  * Give up: __Forsake Your Vow__.
-
 ## Adventure Moves
 
 ### Face Danger
@@ -118,57 +74,49 @@ On a **strong hit**, you have it, and are ready to act. Take +1 momentum. On a *
   * Your supply is diminished: __Sacrifice Resources (-1)__
   * It’s not quite right, and causes a complication or delay: __Lose Momentum (-2)__ On a **miss**, you don’t have it and the situation grows more perilous. __Pay the Price__.
 
-## Fate Moves
+## Quest Moves
 
-### Pay the Price
+### Swear an Iron Vow
 
-**When you suffer the outcome of a move**, choose one.
+**When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
-  * Make the most obvious negative outcome happen.
-  * Envision two negative outcomes. Rate one as ‘likely’, and __Ask the Oracle__ using the yes/no table. On a ‘yes’, make that outcome happen. Otherwise, make it the other.
-  * Roll on the following table. If you have difficulty interpreting the result to fit the current situation, roll again.
+On a **strong hit**, you are emboldened and it is clear what you must do next (__Ask the Oracle__ if unsure). Take +2 momentum.
 
-Roll   | Result
--------|---------------------------------------------------------------------
-1-2    | A trusted individual or community acts against you
-3-4    | An individual or community you care about is exposed to danger
-5-7    | You encounter signs of a looming threat or complication
-8-10   | You create an opportunity for an enemy
-11-14  | You face a tough choice
-15-18  | You face the consequences of an earlier choice
-19-22  | A surprising development complicates your quest
-23-26  | You are separated from something or someone
-27-32  | Your action causes collateral damage or has an unintended effect
-33-38  | Something of value is lost or destroyed
-39-44  | The environment or terrain introduces a new hazard
-45-50  | A new enemy is revealed
-51-56  | Your equipment or vehicle malfunctions
-57-62  | A friend, companion, or ally is in harm’s way (or you are, if alone)
-63-68  | Your vehicle suffers damage
-69-74  | You waste resources
-75-81  | You are harmed
-82-88  | You are stressed
-89-95  | You are delayed or put at a disadvantage
-96-100 | Roll twice
+On a **weak hit**, you are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.
 
-### Ask the Oracle
+On a **miss**, you face a significant obstacle before you can make progress on your quest. Envision what stands in your way (__Ask the Oracle__ if unsure), and do what you must to overcome this obstacle.
 
-**When you seek to resolve questions, discover details, reveal locations, determine how other characters respond, or trigger encounters or events**, you may...
+### Reach a Milestone
 
-  * Draw a conclusion: Decide the answer based on the most interesting and obvious result.
-  * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.
-  * Pick two: Envision two options. Rate one as ‘likely’, and roll on the table below to see if it is true. If not, it is the other.
-  * Spark an idea: Use a random prompt.
+**When you make significant progress in your quest** by doing any of the following...
 
-Odds           | The answer is ‘yes’ if you roll...
----------------|-----------------------------------
-Almost Certain | 11 or greater
-Likely         | 26 or greater
-50/50          | 51 or greater
-Unlikely       | 76 or greater
-Small Chance   | 91 or greater
+  * overcoming a critical obstacle
+  * completing a perilous expedition
+  * solving a complex mystery
+  * defeating a powerful foe
+  * gaining vital support
+  * acquiring a crucial item or resource
 
-On a match, an extreme result or twist has occurred.
+...you may mark progress per the rank of the vow.
+
+### Forsake Your Vow
+
+**When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow. Then, envision how this failure impacts you and __Pay the Price__. If the vow was made to a connection, __Test Your Relationship__ when you next interact.
+
+### Fulfill Your Vow
+
+***Progress Move***
+
+**When you reach the end of your quest**, roll the challenge dice and compare to your progress.
+
+On a **strong hit**, your vow is fulfilled. Mark a reward on your quests legacy track per the vow’s rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes.
+
+On a **weak hit**, as above, but there is more to be done or you realize the truth of your quest. If you __Swear an Iron Vow__ to set things right, take your full legacy reward. Otherwise, make the reward one rank lower.
+
+On a **miss**, your quest is undone. Envision what happens (__Ask the Oracle__ if unsure), and choose one.
+
+  * Recommit: Clear all but one progress box, and raise the vow’s rank by one (if not already epic).
+  * Give up: __Forsake Your Vow__.
 
 ## Connection Moves
 
@@ -713,3 +661,55 @@ For each **miss**, choose one.
   * Deal with the aftermath: Envision how one of your former character’s foes has gained power or influence.
   * Switch loyalties: Envision how you begin in opposition to your former character’s beliefs, goals, or allegiances.
   * Open Pandora’s Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
+
+## Fate Moves
+
+### Pay the Price
+
+**When you suffer the outcome of a move**, choose one.
+
+  * Make the most obvious negative outcome happen.
+  * Envision two negative outcomes. Rate one as ‘likely’, and __Ask the Oracle__ using the yes/no table. On a ‘yes’, make that outcome happen. Otherwise, make it the other.
+  * Roll on the following table. If you have difficulty interpreting the result to fit the current situation, roll again.
+
+Roll   | Result
+-------|---------------------------------------------------------------------
+1-2    | A trusted individual or community acts against you
+3-4    | An individual or community you care about is exposed to danger
+5-7    | You encounter signs of a looming threat or complication
+8-10   | You create an opportunity for an enemy
+11-14  | You face a tough choice
+15-18  | You face the consequences of an earlier choice
+19-22  | A surprising development complicates your quest
+23-26  | You are separated from something or someone
+27-32  | Your action causes collateral damage or has an unintended effect
+33-38  | Something of value is lost or destroyed
+39-44  | The environment or terrain introduces a new hazard
+45-50  | A new enemy is revealed
+51-56  | Your equipment or vehicle malfunctions
+57-62  | A friend, companion, or ally is in harm’s way (or you are, if alone)
+63-68  | Your vehicle suffers damage
+69-74  | You waste resources
+75-81  | You are harmed
+82-88  | You are stressed
+89-95  | You are delayed or put at a disadvantage
+96-100 | Roll twice
+
+### Ask the Oracle
+
+**When you seek to resolve questions, discover details, reveal locations, determine how other characters respond, or trigger encounters or events**, you may...
+
+  * Draw a conclusion: Decide the answer based on the most interesting and obvious result.
+  * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.
+  * Pick two: Envision two options. Rate one as ‘likely’, and roll on the table below to see if it is true. If not, it is the other.
+  * Spark an idea: Use a random prompt.
+
+Odds           | The answer is ‘yes’ if you roll...
+---------------|-----------------------------------
+Almost Certain | 11 or greater
+Likely         | 26 or greater
+50/50          | 51 or greater
+Unlikely       | 76 or greater
+Small Chance   | 91 or greater
+
+On a match, an extreme result or twist has occurred.
