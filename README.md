@@ -7,7 +7,7 @@ Starforged playtest rules data in JSON for use in community tools, because there
   * **Oracles-Preview-022821**
   * **Derelict-Precursor-Vault-Oracles-040521**
   * **Assets-Sheet-012421**
-  * **Moves-Reference-030921** (move text, move-related oracles)
+  * **Moves-Reference-040521** (move text, move-related oracles)
   * **Launching-Your-Campaign-112220** (setting Truth oracles, character creation prompt oracles)
 
 ## Recommended Usage
