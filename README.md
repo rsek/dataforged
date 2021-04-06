@@ -2,6 +2,9 @@
 
 Starforged playtest rules data in JSON for use in community tools, because there's no use in duplicating labour on the data entry.
 
+## Recommended Usage
+Due to this being playtest content, this repo is fairly unstable! As the game grows and evolves, I will almost certainly make changes in how it's organized. I recommend forking or otherwise copying this repo's contents rather than pulling from it directly.
+
 ## Current Version/Sources
 
   * **Oracles-Preview-022821**
@@ -9,9 +12,6 @@ Starforged playtest rules data in JSON for use in community tools, because there
   * **Assets-Sheet-012421**
   * **Moves-Reference-040521** (move text, move-related oracles)
   * **Launching-Your-Campaign-112220** (setting Truth oracles, character creation prompt oracles)
-
-## Recommended Usage
-Due to this being playtest content, this repo is fairly unstable! As the game grows and evolves, I will almost certainly make changes in how it's organized. I recommend forking or otherwise copying this repo's contents rather than pulling from it directly.
 
 ## Oracle Tables
 
