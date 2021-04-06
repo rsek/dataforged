@@ -1,4 +1,4 @@
-# Starforged Playtest Moves (030921)
+# Starforged Playtest Moves (040521)
 
 ## Adventure Moves
 
@@ -41,7 +41,7 @@ On a **miss**, you fail or your assumptions betray you. [Pay the Price](#Pay-the
 
 On a **strong hit**, you discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn. Then, take +2 momentum.
 
-On a **weak hit**, the information provides new insight, but also introduces a complication. Envision what you discover. Then, take +1 momentum.
+On a **weak hit**, the information provides new insight, but also complicates your quest. Envision what you discover. Then, take +1 momentum.
 
 On a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](#Pay-the-Price).
 
@@ -92,29 +92,28 @@ On a **miss**, you face a significant obstacle before you can make progress on y
 
 ### Reach a Milestone
 
-**When you make significant progress in your quest** by doing any of the following...
+**When you make headway in your quest** by doing any of the following...
 
   * overcoming a critical obstacle
+  * gaining meaningful insight
   * completing a perilous expedition
-  * solving a complex mystery
-  * defeating a powerful foe
-  * gaining vital support
   * acquiring a crucial item or resource
+  * earning vital support
+  * defeating a notable foe
 
 ...you may mark progress per the rank of the vow.
 
 ### Forsake Your Vow
 
 **When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.
-
 Then, envision the impact of this failure and choose one or more as appropriate to the nature of the vow. Any allies who shared this vow may also envision a cost.
 
   * You are demoralized or dispirited: [Endure Stress](#Endure-Stress).
   * A connection loses faith: [Test Your Relationship](#Test-Your-Relationship) when you next interact.
   * You must abandon a path or resource: Discard an asset.
-  * Someone else pays a price: Envision how a person, being, or community will bear the cost of the failure.
-  * Someone else takes advantage: Envision how an enemy person, being, or faction will gain power.
-  * Your reputation suffers: Envision how this failure will mark you.
+  * Someone else pays a price: Envision how a person, being, or community bears the cost of the failure.
+  * Someone else takes advantage: Envision how an enemy gains power.
+  * Your reputation suffers: Envision how this failure marks you.
 
 ### Fulfill Your Vow
 
@@ -128,8 +127,8 @@ On a **weak hit**, as above, but there is more to be done or you realize the tru
 
 On a **miss**, your vow is undone through an unexpected complication or realization. Envision what happens and choose one.
 
-  * Give up: [Forsake Your Vow](#Forsake-Your-Vow).
-  * Recommit: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow’s rank by one (if not already epic).
+  * Give up on the quest: [Forsake Your Vow](#Forsake-Your-Vow).
+  * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow’s rank by one (if not already epic).
 
 ## Connection Moves
 
@@ -182,15 +181,14 @@ On a **weak hit**, as above, but maintaining the relationship comes with a deman
 
 On a **miss**, this relationship does not survive the test. Choose one.
 
-  * Lose this connection: Envision how this impacts you and [Pay the Price](#Pay-the-Price).
-  * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to see it done. Until you complete the quest, take no benefits for this connection. If you refuse or fail the quest, the connection is permnanently undone.
+  * Lose the connection: Envision how this impacts you and [Pay the Price](#Pay-the-Price).
+  * Prove your loyalty to the connection: Envision what you offer or what they demand, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to see it done. Until you complete the quest, take no benefits for this connection. If you refuse or fail the quest, the connection is permanently undone.
 
 ## Exploration Moves
 
 ### Undertake an Expedition
 
-**When you trailblaze a route through perilous space, journey over unexplored terrain, or survey a mysterious site**, give the expedition a name and rank.
-
+When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site, give the expedition a name and rank.
 Then, for each segment of the expedition, envision your approach. If you...
 
   * Move at speed: Roll +edge
@@ -202,7 +200,7 @@ On a **strong hit**, you reach a waypoint. Envision the location and mark progre
 On a **weak hit**, as above, but this progress costs you. Choose one.
 
   * Suffer costs en route: Make a suffer move (-2), or two suffer moves (-1).
-  * Face a complication or obstacle at the waypoint: Envision what you encounter.
+  * Face a peril at the waypoint: Envision what you encounter.
 
 On a **miss**, you are waylaid by a crisis, or arrive at a waypoint to confront an immediate hardship or threat. Do not mark progress, and [Pay the Price](#Pay-the-Price).
 
@@ -212,12 +210,12 @@ On a **miss**, you are waylaid by a crisis, or arrive at a waypoint to confront 
 
 On a **strong hit**, choose one. On a **strong hit with a match**, you may instead [Make a Discovery](#Make-a-Discovery).
 
-  * Find an opportunity: Envision a favorable situation, resource, or encounter. Then, take +2 momentum.
+  * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.
   * Gain progress: Mark progress on your expedition, per its rank.
 
-On a **weak hit**, you uncover something interesting, but it is bound up in a complication or reveals an ominous new aspect of this place. Envision what you encounter. Then, take +1 momentum.
+On a **weak hit**, you uncover something interesting, but it is bound up in a peril or reveals an ominous aspect of this place. Envision what you encounter. Then, take +1 momentum.
 
-On a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](#Pay-the-Price). On a **miss with a match**, you instead [Confront Chaos](#Confront-Chaos).
+On a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](#Pay-the-Price). On a **miss with a match**, you may instead [Confront Chaos](#Confront-Chaos).
 
 ### Finish an Expedition
 
@@ -227,16 +225,16 @@ On a **miss** you encounter an immediate hardship or threat, and must [Pay the P
 
 On a **strong hit**, you reach your destination or complete your survey. Mark a reward on your discoveries legacy track per expedition’s rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes. Any allies who shared this expedition also mark the reward.
 
-On a **weak hit**, as above, but you face an unforeseen complication. Make the legacy reward one rank lower, and envision what you encounter at the end of your expedition.
+On a **weak hit**, as above, but you face an unforeseen complication at the end of your expedition. Make the legacy reward one rank lower, and envision what you encounter.
 
-On a **miss**, Choose one.
+On a **miss**, your destination is lost to you, or you come to understand the true nature or cost of the expedition. Envision what happens and choose one.
 
-  * Abandon the expedition: Envision how this failure sets you back and [Pay the Price](#Pay-the-Price).
-  * Find your path: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition’s rank by one (if not already epic).
+  * Abandon the expedition: Envision the cost of this setback and [Pay the Price](#Pay-the-Price).
+  * Return to the expedition: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition’s rank by one (if not already epic).
 
 ### Set a Course
 
-**When you follow a known route through perilous space or across hazardous terrain**, roll +supply.
+**When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.
 
 On a **strong hit**, you reach your destination and the situation there favors you. Take +1 momentum.
 
@@ -245,7 +243,7 @@ On a **weak hit**, you arrive, but face a cost or complication. Choose one.
   * Suffer costs en route: Make a suffer move (-2), or two suffer moves (-1).
   * Face a complication at the destination: Envision what you encounter.
 
-On a **miss**, you are waylaid by a threat, and must [Pay the Price](#Pay-the-Price). If you survive, you may push on safely to your destination.
+On a **miss**, you are waylaid by a significant threat, and must [Pay the Price](#Pay-the-Price). If you overcome this obstacle, you may push on safely to your destination.
 
 ### Make a Discovery
 
@@ -346,7 +344,7 @@ On a **hit**, you stay in control. On a **strong hit**, choose two. On a **weak 
   * Take +2 momentum
   * Add +1 on your next move (not a progress move)
 
-On a **miss**, your foe gains the upper hand, the fight moves to a new location, or you encounter a new complication. You are in a bad spot and must [Pay the Price](#Pay-the-Price).
+On a **miss**, your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](#Pay-the-Price).
 
 ### React Under Fire
 
@@ -405,7 +403,7 @@ On a **weak hit**, you achieve your objective, but not without cost. Roll on the
 Roll   | Result
 -------|-----------------------------------------------------------------------
 1-40   | It’s worse than you thought: You or an ally make a suffer move (-2)
-41-52  | The victory is short-lived: A new complication or foe is revealed
+41-52  | The victory is short-lived: A new peril or foe is revealed
 53-64  | You face collateral damage: Something is lost, damaged, or broken
 65-76  | Others pay the price: Someone else suffers the cost
 77-88  | Others won’t forget: You are marked for vengeance
@@ -500,12 +498,12 @@ On a **weak hit**, if your vehicle is not battered, you may [Lose Momentum](#Los
 
 On a **miss**, it’s worse than you thought. Suffer an additional -1 integrity or [Lose Momentum](#Lose-Momentum) (-2). If your integrity is 0, also suffer a cost according to the vehicle type.
 
-  * Command vehicle: Mark the vehicle as battered or cursed, mark a module as broken, destroy a broken module by discarding it, or roll on the table below. If the command vehicle is destroyed, [Overcome Destruction](#Overcome-Destruction).
-  * Support vehicle: Mark the vehicle as battered or roll on the table below. If the vehicle is destroyed, discard the asset.
-  * Incidental vehicle: Roll on the table below.
+  * **Command vehicle:** Mark the vehicle as battered or cursed, mark a module as broken, destroy a broken module by discarding it, or roll on the table below. If the command vehicle is destroyed, [Overcome Destruction](#Overcome-Destruction).
+  * **Support vehicle:** Mark the vehicle as battered or roll on the table below. If the vehicle is destroyed, discard the asset.
+  * **Incidental vehicle:** Roll on the table below.
 
 Roll   | Result
--------|-------------------------------------------------------------------------------------------------------------------------------------------------
+-------|---------------------------------------------------------------------------------------------------------------------------------------------------------
 1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), as appropriate.
 11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), as appropriate.
 26-40  | Destruction is imminent, but can be averted if you [Repair](#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.
@@ -544,7 +542,7 @@ On a **strong hit**, you are cast back into the mortal world.
 On a **weak hit**, choose one.
 
   * You die, but not before making a noble sacrifice. Envision your final moments.
-  * There is more to be done. Envision what is revealed to you or asked of you at death’s door, and [Swear an Iron Vow](#Swear-an-Iron-Vow) to complete an extreme quest. You return to the mortal world and must mark **doomed**. When you complete the death-bound quest, clear the impact.
+  * There is more to be done. Envision what is revealed to you or asked of you at death’s door, and [Swear an Iron Vow](#Swear-an-Iron-Vow) to complete an extreme quest. You return to the mortal world and must mark **doomed**. When you complete the deathbound quest, clear the impact.
 
 On a **miss**, you are dead.
 
@@ -566,7 +564,6 @@ On a **miss**, you succumb to despair or horror and are lost.
 ***Progress Move***
 
 **When your command vehicle is destroyed**, you must discard the asset, along with any modules and docked support vehicles.
-
 If you survive, you may use your connections to replace some of what was lost. To learn the cost, roll the challenge dice and compare to the progress on your bonds legacy track.
 
 On a **strong hit**, you may call in a favor. This comes without conditions.
@@ -652,14 +649,14 @@ On a **miss**, the repairs are not made and the situation worsens. [Pay the Pric
   * Steal or swindle: Roll +shadow
   * Scavenge or craft: Roll +wits
 
-On a **strong hit**, choose one:
+On a **strong hit**, choose one.
 
   * If you are unprepared, clear the impact and take +1 supply. Otherwise, take +2 supply.
   * If you are in need of a specific item or resource which can reasonably be obtained, you acquire it. Take +1 momentum.
 
 On a **weak hit**, as above, but you must first deal with a cost, complication, or demand. Envision the nature of this obstacle.
 
-On a **miss**, you encounter an unexpected complication. [Pay the Price](#Pay-the-Price).
+On a **miss**, you encounter an unexpected peril. [Pay the Price](#Pay-the-Price).
 
 ## Legacy Moves
 
@@ -700,14 +697,14 @@ For each **miss**, choose one.
 **When you suffer the outcome of an action**, choose one.
 
   * Make the most obvious negative outcome happen.
-  * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a negative outcome or complication appropriate to the current situation.
+  * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the current situation.
   * Roll on the table below. If you have difficulty interpreting the result to fit the current situation, roll again.
 
 Roll   | Result
 -------|---------------------------------------------------------------------
 1-2    | A trusted individual or community acts against you
 3-4    | An individual or community you care about is exposed to danger
-5-7    | You encounter signs of a looming threat or complication
+5-7    | You encounter signs of a looming threat
 8-10   | You create an opportunity for an enemy
 11-14  | You face a tough choice
 15-18  | You face the consequences of an earlier choice
@@ -717,8 +714,8 @@ Roll   | Result
 33-38  | Something of value is lost or destroyed
 39-44  | The environment or terrain introduces a new hazard
 45-50  | A new enemy is revealed
-51-56  | Your equipment or vehicle malfunctions
-57-62  | A friend, companion, or ally is in harm’s way (or you are, if alone)
+51-56  | A friend, companion, or ally is in harm’s way (or you are, if alone)
+57-62  | Your equipment or vehicle malfunctions
 63-68  | Your vehicle suffers damage
 69-74  | You waste resources
 75-81  | You are harmed
@@ -731,9 +728,9 @@ Roll   | Result
 **When you seek to resolve questions, discover details, reveal locations, determine how other characters respond, or trigger encounters or events**, you may...
 
   * Draw a conclusion: Decide the answer based on the most interesting and obvious result.
+  * Spark an idea: Use an oracle table or other random prompt.
   * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.
   * Pick two: Envision two options. Rate one as ‘likely’, and roll on the table below to see if it is true. If not, it is the other.
-  * Spark an idea: Use a random prompt.
 
 Odds           | The answer is ‘yes’ if you roll...
 ---------------|-----------------------------------
