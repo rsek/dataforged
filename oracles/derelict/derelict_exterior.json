@@ -154,5 +154,42 @@
       "Chance": 100,
       "Description": "Time or reality distortions"
     } ]
+  } ],
+  "Inherits": [
+  {
+    "From": "Settlement",
+    "Oracles": [ "Name", "Population", "First Look", "Projects", "Trouble" ],
+    "Requires": [
+    {
+      "Property": "Type",
+      "Value": "Derelict settlement"
+    } ]
+  },
+  {
+    "From": "Starship",
+    "Oracles": [ "Name", "Type", "First Look" ],
+    "Requires": [
+    {
+      "Property": "Type",
+      "Value": "Derelict starship"
+    } ]
+  },
+  {
+    "From": "Space",
+    "Oracles": [ "Peril", "Opportunity" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": [ "Orbital", "Deep Space" ]
+    } ]
+  },
+  {
+    "From": "Planet",
+    "Oracles": [ "Peril", "Opportunity" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": [ "Planetside" ]
+    } ]
   } ]
 }
