@@ -1,5 +1,8 @@
 {
-  "Title": "Planet Oracles",
+  "Name": "Planet",
+  "Aliases": [ "World" ],
+  "Tags": [ "oracles", "template", "location" ],
+  "Children": [ "Desert World", "Furnace World", "Grave World", "Ice World", "Jovian World", "Jungle World", "Ocean World", "Rocky World", "Shattered World", "Tainted World", "Vital World" ],
   "Source":
   {
     "Name": "Starforged Playtest Oracles",
@@ -8,6 +11,7 @@
   "Oracles": [
   {
     "Name": "Planetary Class",
+    "Initial": true,
     "Oracle Table": [
     {
       "Chance": 15,
@@ -56,6 +60,16 @@
   },
   {
     "Name": "Lifebearing Planetside Complication",
+    "Tags": [ "repeatable", "peril" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": "Planetside"
+    },
+    {
+      "Property": "Life",
+      "Value": [ "Simple", "Sparse", "Diverse", "Bountiful", "Overrun" ]
+    } ],
     "Oracle Table": [
     {
       "Chance": 3,
@@ -196,6 +210,16 @@
   },
   {
     "Name": "Lifeless Planetside Complication",
+    "Tags": [ "repeatable", "peril" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": "Planetside"
+    },
+    {
+      "Property": "Life",
+      "Value": [ "None", "Extinct" ]
+    } ],
     "Oracle Table": [
     {
       "Chance": 3,
@@ -304,6 +328,16 @@
   },
   {
     "Name": "Lifebearing Planetside Opportunity",
+    "Tags": [ "repeatable", "opportunity" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": "Planetside"
+    },
+    {
+      "Property": "Life",
+      "Value": [ "Simple", "Sparse", "Diverse", "Bountiful", "Overrun" ]
+    } ],
     "Oracle Table": [
     {
       "Chance": 4,
@@ -371,7 +405,7 @@
     },
     {
       "Chance": 68,
-      "Description": "Helpful resource is in ample supply"
+      "Descriptkkion": "Helpful resource is in ample supply"
     },
     {
       "Chance": 72,
@@ -408,6 +442,16 @@
   },
   {
     "Name": "Lifeless Planetside Opportunity",
+    "Tags": [ "repeatable", "opportunity" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": "Planetside"
+    },
+    {
+      "Property": "Life",
+      "Value": [ "None", "Extinct" ]
+    } ],
     "Oracle Table": [
     {
       "Chance": 5,

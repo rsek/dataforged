@@ -1,199 +1,280 @@
 {
   "Name": "Ocean World",
-  "Source": {
+  "Aliases": [ "Ocean" ],
+  "Tags": [ "oracles" ],
+  "Parent": "Planet",
+  "Requires":
+  {
+    "Property": "Planetary Class",
+    "Value": "Ocean World"
+  },
+  "Source":
+  {
     "Name": "Starforged Playtest Oracles",
     "Version": "022821"
   },
   "Sample Names": [ "Abyss", "Aegir", "Alon", "Clarion", "Darya", "Eldoris", "Horizon", "Hydra", "Kai", "Lotan", "Mira", "Navini", "Nerida", "Oceanus", "Pelagic", "Proteus", "Russalka", "Siren", "Thalassa", "Triton" ],
   "Description": "A planet completely or mostly covered by a boundless ocean.",
   "Thumbnail": "https://i.imgur.com/BUCW1rB.png",
-  "Oracles": [ {
+  "Oracles": [
+  {
     "Name": "Atmosphere",
     "Initial": true,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 5,
       "Description": "None / thin"
-    }, {
+    },
+    {
       "Chance": 20,
       "Description": "Toxic"
-    }, {
+    },
+    {
       "Chance": 25,
       "Description": "Corrosive"
-    }, {
+    },
+    {
       "Chance": 60,
       "Description": "Marginal"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Breathable"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Ideal"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Terminus",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    },
+    "Oracle Table": [
+    {
       "Chance": 40,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 80,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 92,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Outlands",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    },
+    "Oracle Table": [
+    {
       "Chance": 65,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 75,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 92,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 97,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Expanse",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    },
+    "Oracle Table": [
+    {
       "Chance": 85,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 97,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 99,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Observed From Space",
     "Initial": true,
     "Max rolls": 2,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 11,
       "Description": "Complex reef systems"
-    }, {
+    },
+    {
       "Chance": 22,
       "Description": "Emerging volcanoes"
-    }, {
+    },
+    {
       "Chance": 33,
       "Description": "Floating forests"
-    }, {
+    },
+    {
       "Chance": 44,
       "Description": "Global hurricanes"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Large moon and strong tides"
-    }, {
+    },
+    {
       "Chance": 66,
       "Description": "Scattered islands"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Semi-frozen oceans"
-    }, {
+    },
+    {
       "Chance": 88,
       "Description": "Unusual water color"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous site (orbital)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Closer Look",
     "Max rolls": 3,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 7,
       "Description": "Abyssal trenches"
-    }, {
+    },
+    {
       "Chance": 14,
       "Description": "Living islands"
-    }, {
+    },
+    {
       "Chance": 21,
       "Description": "Roaming icebergs"
-    }, {
+    },
+    {
       "Chance": 28,
       "Description": "Shallow-water plains"
-    }, {
+    },
+    {
       "Chance": 35,
       "Description": "Subsurface volcanoes"
-    }, {
+    },
+    {
       "Chance": 42,
       "Description": "Superheated geysers"
-    }, {
+    },
+    {
       "Chance": 49,
       "Description": "Titanic waves"
-    }, {
+    },
+    {
       "Chance": 56,
       "Description": "Undersea air pockets"
-    }, {
+    },
+    {
       "Chance": 63,
       "Description": "Undersea caves"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Undersea forests"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Unrelenting rainfall"
-    }, {
+    },
+    {
       "Chance": 84,
       "Description": "Violent currents"
-    }, {
+    },
+    {
       "Chance": 91,
       "Description": "Windborne waterspouts"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous Site (planetside)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Life",
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 5,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 15,
       "Description": "Extinct"
-    }, {
+    },
+    {
       "Chance": 25,
       "Description": "Simple"
-    }, {
+    },
+    {
       "Chance": 45,
       "Description": "Sparse"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Diverse"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Bountiful"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Overrun"
     } ]

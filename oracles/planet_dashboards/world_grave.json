@@ -1,175 +1,248 @@
 {
   "Name": "Grave World",
-  "Source": {
+  "Aliases": [ "Grave" ],
+  "Tags": [ "oracles" ],
+  "Parent": "Planet",
+  "Requires":
+  {
+    "Property": "Planetary Class",
+    "Value": "Grave World"
+  },
+  "Source":
+  {
     "Name": "Starforged Playtest Oracles",
     "Version": "022821"
   },
   "Sample Names": [ "Anubis", "Banshee", "Barrow", "Cairn", "Cerberus", "Charon", "Corvus", "Erra", "Keen", "Kur", "Lament", "Mantus", "Morrigan", "Mourn", "Necropolis", "Orcus", "Osiris", "Styx", "Thrace", "Veris" ],
   "Description": "A once-thriving world—now a grim monument to a fallen civilization.",
   "Thumbnail": "https://i.imgur.com/88R1WP1.png",
-  "Oracles": [ {
+  "Oracles": [
+  {
     "Name": "Atmosphere",
     "Initial": true,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 10,
       "Description": "None / thin"
-    }, {
+    },
+    {
       "Chance": 45,
       "Description": "Toxic"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Corrosive"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Marginal"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Breathable"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Terminus",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    },
+    "Oracle Table": [
+    {
       "Chance": 80,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 95,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Outlands",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    },
+    "Oracle Table": [
+    {
       "Chance": 90,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 97,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Planetside settlement"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Expanse",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    },
+    "Oracle Table": [
+    {
       "Chance": 95,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Planetside settlement"
     } ]
-  }, {
+  },
+  {
     "Name": "Observed From Space",
     "Initial": true,
     "Max rolls": 2,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 11,
       "Description": "Broken moon"
-    }, {
+    },
+    {
       "Chance": 66,
       "Description": "Perpetual overcast"
-    }, {
+    },
+    {
       "Chance": 22,
       "Description": "Cratered surface"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Sky-breaching ruins"
-    }, {
+    },
+    {
       "Chance": 33,
       "Description": "Dry seabeds"
-    }, {
+    },
+    {
       "Chance": 88,
       "Description": "Vast wastelands"
-    }, {
+    },
+    {
       "Chance": 44,
       "Description": "Irradiated atmosphere"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Orbiting ship graveyard"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous site (orbital)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Closer Look",
     "Max rolls": 3,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 7,
       "Description": "Acid pools"
-    }, {
+    },
+    {
       "Chance": 14,
       "Description": "Ash dunes"
-    }, {
+    },
+    {
       "Chance": 21,
       "Description": "Corrosive rains"
-    }, {
+    },
+    {
       "Chance": 28,
       "Description": "Dead forests"
-    }, {
+    },
+    {
       "Chance": 35,
       "Description": "Fetid mudflats"
-    }, {
+    },
+    {
       "Chance": 42,
       "Description": "Mass graves"
-    }, {
+    },
+    {
       "Chance": 49,
       "Description": "Moldering bones"
-    }, {
+    },
+    {
       "Chance": 56,
       "Description": "Noxious fog"
-    }, {
+    },
+    {
       "Chance": 63,
       "Description": "Radioactive hotspots"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Ravaged cities"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Scarred battlefields"
-    }, {
+    },
+    {
       "Chance": 84,
       "Description": "Ship graveyards"
-    }, {
+    },
+    {
       "Chance": 91,
       "Description": "Whispers of the dead"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous Site (planetside)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Life",
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 25,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 85,
       "Description": "Extinct"
-    }, {
+    },
+    {
       "Chance": 95,
       "Description": "Simple"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Sparse"
     } ]

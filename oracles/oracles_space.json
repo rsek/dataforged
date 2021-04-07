@@ -1,5 +1,6 @@
 {
-  "Title": "Space Oracles",
+  "Name": "Space",
+  "Tags": [ "oracles" ],
   "Source":
   {
     "Name": "Starforged Playtest Oracles",
@@ -8,7 +9,11 @@
   "Oracles": [
   {
     "Name": "Space Sighting",
-    "Region": "Terminus",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    } ],
     "Oracle Table": [
     {
       "Chance": 15,
@@ -20,7 +25,7 @@
     },
     {
       "Chance": 45,
-      "Description": "[Settlement (deep space)]"
+      "Description": "[Settlement (Deep Space)]"
     },
     {
       "Chance": 55,
@@ -32,7 +37,7 @@
     },
     {
       "Chance": 60,
-      "Description": "[Anomalous Site (deep space)]"
+      "Description": "[Anomalous Site (Deep Space)]"
     },
     {
       "Chance": 65,
@@ -93,7 +98,11 @@
   },
   {
     "Name": "Space Sighting",
-    "Region": "Outlands",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    } ],
     "Oracle Table": [
     {
       "Chance": 15,
@@ -105,7 +114,7 @@
     },
     {
       "Chance": 37,
-      "Description": "[Settlement (deep space)]"
+      "Description": "[Settlement (Deep Space)]"
     },
     {
       "Chance": 39,
@@ -117,7 +126,7 @@
     },
     {
       "Chance": 48,
-      "Description": "[Anomalous Site (deep space)]"
+      "Description": "[Anomalous Site (Deep Space)]"
     },
     {
       "Chance": 55,
@@ -178,7 +187,11 @@
   },
   {
     "Name": "Space Sighting",
-    "Region": "Expanse",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    } ],
     "Oracle Table": [
     {
       "Chance": 15,
@@ -190,7 +203,7 @@
     },
     {
       "Chance": 40,
-      "Description": "[Settlement (deep space)]"
+      "Description": "[Settlement (Deep Space)]"
     },
     {
       "Chance": 47,
@@ -202,7 +215,7 @@
     },
     {
       "Chance": 54,
-      "Description": "[Anomalous Site (deep space)]"
+      "Description": "[Anomalous Site (Deep Space)]"
     },
     {
       "Chance": 60,
@@ -758,6 +771,12 @@
   },
   {
     "Name": "Spaceborne Complication",
+    "Tags": [ "repeatable", "peril" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": [ "Orbital", "Deep Space" ]
+    } ],
     "Description": "Use this oracle as an alternative to the __Pay the Price__ table and the creative prompt oracles when you want inspiration for a trouble on an interstellar journey, or to generate a perilous event at a spaceborne facility.",
     "Oracle Table": [
     {
@@ -899,6 +918,12 @@
   },
   {
     "Name": "Spaceborne Opportunity",
+    "Tags": [ "repeatable", "opportunity" ],
+    "Requires": [
+    {
+      "Property": "Location",
+      "Value": [ "Orbital", "Deep Space" ]
+    } ],
     "Description": "Roll on this table when you need inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you __Undertake an Expedition__, or if you __Explore a Waypoint__ and find an opportunity.",
     "Oracle Table": [
     {

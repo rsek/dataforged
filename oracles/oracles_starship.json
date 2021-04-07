@@ -1,5 +1,7 @@
 {
-  "Title": "Starship Oracles",
+  "Name": "Starship",
+  "Aliases": [ "Ship" ],
+  "Tags": [ "oracles", "template", "actor", "location" ],
   "Source":
   {
     "Name": "Starforged Playtest Oracles",
@@ -103,19 +105,24 @@
     {
       "Chance": 80,
       "Class": "Multipurpose",
-      "Typical Role": "[Starship Mission]"
+      "Typical Role": "[Mission]"
     },
     {
       "Chance": 90,
-      "Class": "[Fleet]"
+      "Class": "Fleet"
     },
     {
       "Chance": 100,
-      "Class": "Ships in conflict [roll twice]"
+      "Class": "Ships in conflict: [Roll twice]"
     } ]
   },
   {
     "Name": "Fleet",
+    "Requires": [
+    {
+      "Property": "Type",
+      "Value": "Fleet"
+    } ],
     "Oracle Table": [
     {
       "Chance": 15,
@@ -299,7 +306,11 @@
   },
   {
     "Name": "Mission",
-    "Region": "Terminus",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    } ],
     "Oracle Table": [
     {
       "Chance": 3,
@@ -432,7 +443,11 @@
   },
   {
     "Name": "Mission",
-    "Region": "Outlands",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    } ],
     "Oracle Table": [
     {
       "Chance": 2,
@@ -565,7 +580,11 @@
   },
   {
     "Name": "Mission",
-    "Region": "Expanse",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    } ],
     "Oracle Table": [
     {
       "Chance": 2,

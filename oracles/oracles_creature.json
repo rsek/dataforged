@@ -1,5 +1,6 @@
 {
-  "Title": "Creature Oracles",
+  "Name": "Creature",
+  "Tags": [ "oracles", "template", "actor" ],
   "Source":
   {
     "Name": "Starforged Playtest Oracles",
@@ -8,6 +9,7 @@
   "Oracles": [
   {
     "Name": "Environment",
+    "Initial": true,
     "Oracle Table": [
     {
       "Chance": 5,
@@ -32,6 +34,7 @@
   },
   {
     "Name": "Scale",
+    "Initial": true,
     "Oracle Table": [
     {
       "Chance": 3,
@@ -59,11 +62,17 @@
     },
     {
       "Chance": 100,
-      "Description": "[Ultra-scale]"
+      "Description": "Ultra-scale"
     } ]
   },
   {
     "Name": "Ultra-scale",
+    "Initial": true,
+    "Requires": [
+    {
+      "Property": "Scale",
+      "Value": "Ultra-scale"
+    } ],
     "Oracle Table": [
     {
       "Chance": 89,
@@ -80,7 +89,12 @@
   },
   {
     "Name": "Basic Form",
-    "Environment": "Space",
+    "Initial": true,
+    "Requires": [
+    {
+      "Property": "Environment",
+      "Value": "Space"
+    } ],
     "Oracle Table": [
     {
       "Chance": 5,
@@ -157,7 +171,12 @@
   },
   {
     "Name": "Basic Form",
-    "Environment": "Interior",
+    "Initial": true,
+    "Requires": [
+    {
+      "Property": "Environment",
+      "Value": "Interior"
+    } ],
     "Oracle Table": [
     {
       "Chance": 3,
@@ -234,7 +253,12 @@
   },
   {
     "Name": "Basic Form",
-    "Environment": "Land",
+    "Initial": true,
+    "Requires": [
+    {
+      "Property": "Environment",
+      "Value": "Land"
+    } ],
     "Oracle Table": [
     {
       "Chance": 2,
@@ -311,7 +335,12 @@
   },
   {
     "Name": "Basic Form",
-    "Environment": "Liquid",
+    "Initial": true,
+    "Requires": [
+    {
+      "Property": "Environment",
+      "Value": "Liquid"
+    } ],
     "Oracle Table": [
     {
       "Chance": 5,
@@ -388,7 +417,12 @@
   },
   {
     "Name": "Basic Form",
-    "Environment": "Air",
+    "Initial": true,
+    "Requires": [
+    {
+      "Property": "Environment",
+      "Value": "Air"
+    } ],
     "Oracle Table": [
     {
       "Chance": 2,
@@ -465,6 +499,7 @@
   },
   {
     "Name": "First Look",
+    "Initial": true,
     "Min rolls": 2,
     "Max rolls": 3,
     "Oracle Table": [

@@ -1,175 +1,248 @@
 {
   "Name": "Tainted World",
-  "Source": {
+  "Aliases": [ "Tainted" ],
+  "Tags": [ "oracles" ],
+  "Parent": "Planet",
+  "Requires":
+  {
+    "Property": "Planetary Class",
+    "Value": "Tainted World"
+  },
+  "Source":
+  {
     "Name": "Starforged Playtest Oracles",
     "Version": "022821"
   },
   "Sample Names": [ "Achlys", "Animus", "Bane", "Blight", "Carrion", "Chitin", "Datura", "Dreck", "Erra", "Febris", "Malacia", "Miasma", "Morbus", "Pathosis", "Pestis", "Scourge", "Telium", "Timoris", "Verus", "Xanthous" ],
   "Description": "A foul planet wracked by a poisonous climate and virulent growths.",
   "Thumbnail": "https://i.imgur.com/TPb8p6L.png",
-  "Oracles": [ {
+  "Oracles": [
+  {
     "Name": "Atmosphere",
     "Initial": true,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 65,
       "Description": "Toxic"
-    }, {
+    },
+    {
       "Chance": 85,
       "Description": "Corrosive"
-    }, {
+    },
+    {
       "Chance": 95,
       "Description": "Marginal"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Breathable"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Terminus",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    },
+    "Oracle Table": [
+    {
       "Chance": 80,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 95,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Outlands",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    },
+    "Oracle Table": [
+    {
       "Chance": 90,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 97,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Planetside settlement"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Expanse",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    },
+    "Oracle Table": [
+    {
       "Chance": 95,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Planetside settlement"
     } ]
-  }, {
+  },
+  {
     "Name": "Observed From Space",
     "Initial": true,
     "Max rolls": 2,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 11,
       "Description": "Expansive fungal plains"
-    }, {
+    },
+    {
       "Chance": 22,
       "Description": "Fungal forests"
-    }, {
+    },
+    {
       "Chance": 33,
       "Description": "Scabrous, infected terrain"
-    }, {
+    },
+    {
       "Chance": 44,
       "Description": "Sky-breaching fungus"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Sludge-filled river networks"
-    }, {
+    },
+    {
       "Chance": 66,
       "Description": "Stagnant cloud cover"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Thick, murky atmosphere"
-    }, {
+    },
+    {
       "Chance": 88,
       "Description": "Toxic seas"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous site (orbital)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Closer Look",
     "Max rolls": 3,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 7,
       "Description": "Caustic gas storms"
-    }, {
+    },
+    {
       "Chance": 14,
       "Description": "Corrosive, low-lying fog"
-    }, {
+    },
+    {
       "Chance": 21,
       "Description": "Fungus-encrusted caves"
-    }, {
+    },
+    {
       "Chance": 28,
       "Description": "Gelatinous ponds"
-    }, {
+    },
+    {
       "Chance": 35,
       "Description": "Hallucinogenic toxins"
-    }, {
+    },
+    {
       "Chance": 42,
       "Description": "Layers of fast-growing lichen"
-    }, {
+    },
+    {
       "Chance": 49,
       "Description": "Moldering bones"
-    }, {
+    },
+    {
       "Chance": 56,
       "Description": "Mutated flora"
-    }, {
+    },
+    {
       "Chance": 63,
       "Description": "Poisonous gas vents"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Spore clouds"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Terrain marred by fleshy pustules"
-    }, {
+    },
+    {
       "Chance": 84,
       "Description": "Toxic rain"
-    }, {
+    },
+    {
       "Chance": 91,
       "Description": "Virulent fungal infestations"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous Site (planetside)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Life",
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 5,
       "Description": "Simple"
-    }, {
+    },
+    {
       "Chance": 15,
       "Description": "Sparse"
-    }, {
+    },
+    {
       "Chance": 30,
       "Description": "Diverse"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Bountiful"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Overrun"
     } ]

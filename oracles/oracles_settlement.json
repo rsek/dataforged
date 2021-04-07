@@ -1,5 +1,6 @@
 {
-  "Title": "Settlement Oracles",
+  "Name": "Settlement",
+  "Tags": [ "oracles", "template", "location" ],
   "Source":
   {
     "Name": "Starforged Playtest Oracles",
@@ -20,13 +21,17 @@
     },
     {
       "Chance": 100,
-      "Description": "Deep space"
+      "Description": "Deep Space"
     } ]
   },
   {
     "Name": "Population",
     "Initial": true,
-    "Region": "Terminus",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    } ],
     "Oracle Table": [
     {
       "Chance": 10,
@@ -52,7 +57,11 @@
   {
     "Name": "Population",
     "Initial": true,
-    "Region": "Outlands",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    } ],
     "Oracle Table": [
     {
       "Chance": 15,
@@ -78,7 +87,11 @@
   {
     "Name": "Population",
     "Initial": true,
-    "Region": "Expanse",
+    "Requires": [
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    } ],
     "Oracle Table": [
     {
       "Chance": 20,

@@ -1,265 +1,366 @@
 {
   "Name": "Vital World",
-  "Source": {
+  "Aliases": [ "Vital" ],
+  "Tags": [ "oracles" ],
+  "Parent": "Planet",
+  "Requires":
+  {
+    "Property": "Planetary Class",
+    "Value": "Vital World"
+  },
+  "Source":
+  {
     "Name": "Starforged Playtest Oracles",
     "Version": "022821"
   },
   "Sample Names": [ "Chiron", "Demeter", "Erebos", "Erembour", "Feronia", "Fortuna", "Gaia", "Harbinger", "Haven", "Hope", "Kishar", "Morpheus", "Nemus", "Oasis", "Serenity", "Sif", "Silva", "Sirona", "Vale", "Valinor" ],
   "Description": "This diverse, life-bearing planet might provide some small measure of hope.",
   "Thumbnail": "https://i.imgur.com/Syhr8rp.png",
-  "Oracles": [ {
+  "Oracles": [
+  {
     "Name": "Atmosphere",
     "Initial": true,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 20,
       "Description": "Marginal"
-    }, {
+    },
+    {
       "Chance": 50,
       "Description": "Breathable"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Ideal"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Terminus",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Terminus"
+    },
+    "Oracle Table": [
+    {
       "Chance": 20,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 30,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Outlands",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Outlands"
+    },
+    "Oracle Table": [
+    {
       "Chance": 50,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 85,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 95,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Settlements",
     "Initial": true,
-    "Region": "Expanse",
-    "Oracle Table": [ {
+    "Requires":
+    {
+      "Property": "Region",
+      "Value": "Expanse"
+    },
+    "Oracle Table": [
+    {
       "Chance": 80,
       "Description": "None"
-    }, {
+    },
+    {
       "Chance": 83,
       "Description": "Orbital settlement"
-    }, {
+    },
+    {
       "Chance": 93,
       "Description": "Planetside settlement"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "Multiple settlements"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Settlements in conflict"
     } ]
-  }, {
+  },
+  {
     "Name": "Observed From Space",
     "Initial": true,
     "Max rolls": 2,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 11,
       "Description": "Complex ring system"
-    }, {
+    },
+    {
       "Chance": 22,
       "Description": "Dramatic seasonal variation"
-    }, {
+    },
+    {
       "Chance": 33,
       "Description": "High gravity"
-    }, {
+    },
+    {
       "Chance": 44,
       "Description": "Large moon"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Narrow livable band"
-    }, {
+    },
+    {
       "Chance": 66,
       "Description": "Numerous small moons"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Unusual day/night cycle"
-    }, {
+    },
+    {
       "Chance": 88,
       "Description": "Vibrantly colored landscapes"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous Site (orbital)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Closer Look",
     "Max rolls": 3,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 7,
       "Description": "Background radiation"
-    }, {
+    },
+    {
       "Chance": 14,
       "Description": "Chaotically juxtaposed biomes"
-    }, {
+    },
+    {
       "Chance": 21,
       "Description": "Creature boneyards"
-    }, {
+    },
+    {
       "Chance": 28,
       "Description": "Creature lairs or watering holes"
-    }, {
+    },
+    {
       "Chance": 35,
       "Description": "Crystalline formations"
-    }, {
+    },
+    {
       "Chance": 42,
       "Description": "Fierce electrical storms"
-    }, {
+    },
+    {
       "Chance": 49,
       "Description": "Floating terrain"
-    }, {
+    },
+    {
       "Chance": 56,
       "Description": "Frequent seismic activity"
-    }, {
+    },
+    {
       "Chance": 63,
       "Description": "Magnetic disturbances"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Scarred or excavated terrain"
-    }, {
+    },
+    {
       "Chance": 77,
       "Description": "Signs of an engineered biosphere"
-    }, {
+    },
+    {
       "Chance": 84,
       "Description": "Sudden weather fluctuations"
-    }, {
+    },
+    {
       "Chance": 91,
       "Description": "Towering geological formations"
-    }, {
+    },
+    {
       "Chance": 98,
       "Description": "[Descriptor/Focus]"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "[Anomalous Site (planetside)]"
     } ]
-  }, {
+  },
+  {
     "Name": "Life",
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 10,
       "Description": "Sparse"
-    }, {
+    },
+    {
       "Chance": 45,
       "Description": "Diverse"
-    }, {
+    },
+    {
       "Chance": 85,
       "Description": "Bountiful"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Overrun"
     } ]
-  }, {
+  },
+  {
     "Name": "Diversity",
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 20,
       "Description": "Simple (two biomes)",
       "Amount": 2
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Diverse (three biomes)",
       "Amount": 3
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Complex (four biomes)",
       "Amount": 4
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Garden world (five or more biomes)",
       "Amount": 5
     } ]
-  }, {
+  },
+  {
     "Name": "Biomes",
     "Min rolls": 2,
     "Max rolls": 5,
-    "Oracle Table": [ {
+    "Oracle Table": [
+    {
       "Chance": 5,
       "Description": "Caves"
-    }, {
+    },
+    {
       "Chance": 10,
       "Description": "Cold forest"
-    }, {
+    },
+    {
       "Chance": 15,
       "Description": "Fungal"
-    }, {
+    },
+    {
       "Chance": 20,
       "Description": "Glacial / snow"
-    }, {
+    },
+    {
       "Chance": 25,
       "Description": "Grassland"
-    }, {
+    },
+    {
       "Chance": 30,
       "Description": "Islands"
-    }, {
+    },
+    {
       "Chance": 35,
       "Description": "Jungle"
-    }, {
+    },
+    {
       "Chance": 40,
       "Description": "Mountainous"
-    }, {
+    },
+    {
       "Chance": 45,
       "Description": "Ocean"
-    }, {
+    },
+    {
       "Chance": 50,
       "Description": "Rocky desert"
-    }, {
+    },
+    {
       "Chance": 55,
       "Description": "Sandy desert"
-    }, {
+    },
+    {
       "Chance": 60,
       "Description": "Savanna"
-    }, {
+    },
+    {
       "Chance": 65,
       "Description": "Shallow seas"
-    }, {
+    },
+    {
       "Chance": 70,
       "Description": "Shrubland"
-    }, {
+    },
+    {
       "Chance": 75,
       "Description": "Temperate rainforest"
-    }, {
+    },
+    {
       "Chance": 80,
       "Description": "Temperate forest"
-    }, {
+    },
+    {
       "Chance": 85,
       "Description": "Tundra"
-    }, {
+    },
+    {
       "Chance": 90,
       "Description": "Volcanic"
-    }, {
+    },
+    {
       "Chance": 95,
       "Description": "Waterways"
-    }, {
+    },
+    {
       "Chance": 100,
       "Description": "Wetland"
     } ]
