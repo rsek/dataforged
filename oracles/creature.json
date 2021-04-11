@@ -1,0 +1,1017 @@
+{
+	"Name": "Creature",
+	"Tags": ["oracles", "template", "actor"],
+	"Source": {
+		"Name": "Starforged Playtest Oracles",
+		"Version": "022821"
+	},
+	"Oracles": [
+		{
+			"Name": "Environment",
+			"Initial": true,
+			"Oracle Table": [
+				{
+					"Chance": 5,
+					"Description": "Space"
+				},
+				{
+					"Chance": 15,
+					"Description": "Interior"
+				},
+				{
+					"Chance": 55,
+					"Description": "Land"
+				},
+				{
+					"Chance": 80,
+					"Description": "Liquid"
+				},
+				{
+					"Chance": 100,
+					"Description": "Air"
+				}
+			]
+		},
+		{
+			"Name": "Scale",
+			"Initial": true,
+			"Oracle Table": [
+				{
+					"Chance": 3,
+					"Description": "Minuscule (bug-sized)"
+				},
+				{
+					"Chance": 10,
+					"Description": "Tiny (rodent-sized)"
+				},
+				{
+					"Chance": 25,
+					"Description": "Small (dog-sized)"
+				},
+				{
+					"Chance": 60,
+					"Description": "Medium (person-sized)"
+				},
+				{
+					"Chance": 90,
+					"Description": "Large (vehicle-sized)"
+				},
+				{
+					"Chance": 99,
+					"Description": "Huge (whale-sized)"
+				},
+				{
+					"Chance": 100,
+					"Description": "Ultra-scale"
+				}
+			]
+		},
+		{
+			"Name": "Ultra-scale",
+			"Initial": true,
+			"Requires": [
+				{
+					"Property": "Scale",
+					"Value": "Ultra-scale"
+				}
+			],
+			"Oracle Table": [
+				{
+					"Chance": 89,
+					"Description": "Titanic (hill-sized)"
+				},
+				{
+					"Chance": 99,
+					"Description": "Colossal (mountain-sized)"
+				},
+				{
+					"Chance": 100,
+					"Description": "Vast (planet-sized)"
+				}
+			]
+		},
+		{
+			"Name": "Basic Form",
+			"Initial": true,
+			"Requires": [
+				{
+					"Property": "Environment",
+					"Value": "Space"
+				}
+			],
+			"Oracle Table": [
+				{
+					"Chance": 5,
+					"Description": "Amoeba / pseudopods"
+				},
+				{
+					"Chance": 20,
+					"Description": "Amorphous / elemental"
+				},
+				{
+					"Chance": 30,
+					"Description": "Avian / winged"
+				},
+				{
+					"Chance": 32,
+					"Description": "Beast / mammal"
+				},
+				{
+					"Chance": 34,
+					"Description": "Crustacean / shelled"
+				},
+				{
+					"Chance": 37,
+					"Description": "Fish / torpedo-shaped"
+				},
+				{
+					"Chance": 39,
+					"Description": "Humanoid / bipedal"
+				},
+				{
+					"Chance": 41,
+					"Description": "Insectoid / exoskeletal"
+				},
+				{
+					"Chance": 60,
+					"Description": "Jellyfish / gasbag"
+				},
+				{
+					"Chance": 62,
+					"Description": "Lizard / reptilian"
+				},
+				{
+					"Chance": 67,
+					"Description": "Octopoid / tentacled"
+				},
+				{
+					"Chance": 72,
+					"Description": "Plant / fungus"
+				},
+				{
+					"Chance": 82,
+					"Description": "Ray / flat-bodied"
+				},
+				{
+					"Chance": 84,
+					"Description": "Snake / eel"
+				},
+				{
+					"Chance": 86,
+					"Description": "Spider / web-weaver"
+				},
+				{
+					"Chance": 88,
+					"Description": "Starfish / symmetrical"
+				},
+				{
+					"Chance": 90,
+					"Description": "Worm / slug / larva"
+				},
+				{
+					"Chance": 100,
+					"Description": "[Roll twice]"
+				}
+			]
+		},
+		{
+			"Name": "Basic Form",
+			"Initial": true,
+			"Requires": [
+				{
+					"Property": "Environment",
+					"Value": "Interior"
+				}
+			],
+			"Oracle Table": [
+				{
+					"Chance": 3,
+					"Description": "Amoeba / pseudopods"
+				},
+				{
+					"Chance": 6,
+					"Description": "Amorphous / elemental"
+				},
+				{
+					"Chance": 12,
+					"Description": "Avian / winged"
+				},
+				{
+					"Chance": 19,
+					"Description": "Beast / mammal"
+				},
+				{
+					"Chance": 22,
+					"Description": "Crustacean / shelled"
+				},
+				{
+					"Chance": 24,
+					"Description": "Fish / torpedo-shaped"
+				},
+				{
+					"Chance": 37,
+					"Description": "Humanoid / bipedal"
+				},
+				{
+					"Chance": 49,
+					"Description": "Insectoid / exoskeletal"
+				},
+				{
+					"Chance": 51,
+					"Description": "Jellyfish / gasbag"
+				},
+				{
+					"Chance": 56,
+					"Description": "Lizard / reptilian"
+				},
+				{
+					"Chance": 58,
+					"Description": "Octopoid / tentacled"
+				},
+				{
+					"Chance": 63,
+					"Description": "Plant / fungus"
+				},
+				{
+					"Chance": 65,
+					"Description": "Ray / flat-bodied"
+				},
+				{
+					"Chance": 68,
+					"Description": "Snake / eel"
+				},
+				{
+					"Chance": 83,
+					"Description": "Spider / web-weaver"
+				},
+				{
+					"Chance": 85,
+					"Description": "Starfish / symmetrical"
+				},
+				{
+					"Chance": 90,
+					"Description": "Worm / slug / larva"
+				},
+				{
+					"Chance": 100,
+					"Description": "[Roll twice]"
+				}
+			]
+		},
+		{
+			"Name": "Basic Form",
+			"Initial": true,
+			"Requires": [
+				{
+					"Property": "Environment",
+					"Value": "Land"
+				}
+			],
+			"Oracle Table": [
+				{
+					"Chance": 2,
+					"Description": "Amoeba / pseudopods"
+				},
+				{
+					"Chance": 5,
+					"Description": "Amorphous / elemental"
+				},
+				{
+					"Chance": 10,
+					"Description": "Avian / winged"
+				},
+				{
+					"Chance": 25,
+					"Description": "Beast / mammal"
+				},
+				{
+					"Chance": 32,
+					"Description": "Crustacean / shelled"
+				},
+				{
+					"Chance": 34,
+					"Description": "Fish / torpedo-shaped"
+				},
+				{
+					"Chance": 39,
+					"Description": "Humanoid / bipedal"
+				},
+				{
+					"Chance": 49,
+					"Description": "Insectoid / exoskeletal"
+				},
+				{
+					"Chance": 51,
+					"Description": "Jellyfish / gasbag"
+				},
+				{
+					"Chance": 58,
+					"Description": "Lizard / reptilian"
+				},
+				{
+					"Chance": 60,
+					"Description": "Octopoid / tentacled"
+				},
+				{
+					"Chance": 65,
+					"Description": "Plant / fungus"
+				},
+				{
+					"Chance": 67,
+					"Description": "Ray / flat-bodied"
+				},
+				{
+					"Chance": 74,
+					"Description": "Snake / eel"
+				},
+				{
+					"Chance": 81,
+					"Description": "Spider / web-weaver"
+				},
+				{
+					"Chance": 83,
+					"Description": "Starfish / symmetrical"
+				},
+				{
+					"Chance": 90,
+					"Description": "Worm / slug / larva"
+				},
+				{
+					"Chance": 100,
+					"Description": "[Roll twice]"
+				}
+			]
+		},
+		{
+			"Name": "Basic Form",
+			"Initial": true,
+			"Requires": [
+				{
+					"Property": "Environment",
+					"Value": "Liquid"
+				}
+			],
+			"Oracle Table": [
+				{
+					"Chance": 5,
+					"Description": "Amoeba / pseudopods"
+				},
+				{
+					"Chance": 8,
+					"Description": "Amorphous / elemental"
+				},
+				{
+					"Chance": 11,
+					"Description": "Avian / winged"
+				},
+				{
+					"Chance": 17,
+					"Description": "Beast / mammal"
+				},
+				{
+					"Chance": 24,
+					"Description": "Crustacean / shelled"
+				},
+				{
+					"Chance": 39,
+					"Description": "Fish / torpedo-shaped"
+				},
+				{
+					"Chance": 42,
+					"Description": "Humanoid / bipedal"
+				},
+				{
+					"Chance": 45,
+					"Description": "Insectoid / exoskeletal"
+				},
+				{
+					"Chance": 53,
+					"Description": "Jellyfish / gasbag"
+				},
+				{
+					"Chance": 56,
+					"Description": "Lizard / reptilian"
+				},
+				{
+					"Chance": 63,
+					"Description": "Octopoid / tentacled"
+				},
+				{
+					"Chance": 68,
+					"Description": "Plant / fungus"
+				},
+				{
+					"Chance": 75,
+					"Description": "Ray / flat-bodied"
+				},
+				{
+					"Chance": 80,
+					"Description": "Snake / eel"
+				},
+				{
+					"Chance": 82,
+					"Description": "Spider / web-weaver"
+				},
+				{
+					"Chance": 87,
+					"Description": "Starfish / symmetrical"
+				},
+				{
+					"Chance": 90,
+					"Description": "Worm / slug / larva"
+				},
+				{
+					"Chance": 100,
+					"Description": "[Roll twice]"
+				}
+			]
+		},
+		{
+			"Name": "Basic Form",
+			"Initial": true,
+			"Requires": [
+				{
+					"Property": "Environment",
+					"Value": "Air"
+				}
+			],
+			"Oracle Table": [
+				{
+					"Chance": 2,
+					"Description": "Amoeba / pseudopods"
+				},
+				{
+					"Chance": 12,
+					"Description": "Amorphous / elemental"
+				},
+				{
+					"Chance": 37,
+					"Description": "Avian / winged"
+				},
+				{
+					"Chance": 40,
+					"Description": "Beast / mammal"
+				},
+				{
+					"Chance": 42,
+					"Description": "Crustacean / shelled"
+				},
+				{
+					"Chance": 47,
+					"Description": "Fish / torpedo-shaped"
+				},
+				{
+					"Chance": 49,
+					"Description": "Humanoid / bipedal"
+				},
+				{
+					"Chance": 51,
+					"Description": "Insectoid / exoskeletal"
+				},
+				{
+					"Chance": 66,
+					"Description": "Jellyfish / gasbag"
+				},
+				{
+					"Chance": 68,
+					"Description": "Lizard / reptilian"
+				},
+				{
+					"Chance": 70,
+					"Description": "Octopoid / tentacled"
+				},
+				{
+					"Chance": 72,
+					"Description": "Plant / fungus"
+				},
+				{
+					"Chance": 82,
+					"Description": "Ray / flat-bodied"
+				},
+				{
+					"Chance": 84,
+					"Description": "Snake / eel"
+				},
+				{
+					"Chance": 86,
+					"Description": "Spider / web-weaver"
+				},
+				{
+					"Chance": 88,
+					"Description": "Starfish / symmetrical"
+				},
+				{
+					"Chance": 90,
+					"Description": "Worm / slug / larva"
+				},
+				{
+					"Chance": 100,
+					"Description": "[Roll twice]"
+				}
+			]
+		},
+		{
+			"Name": "First Look",
+			"Initial": true,
+			"Min rolls": 2,
+			"Max rolls": 3,
+			"Oracle Table": [
+				{
+					"Chance": 2,
+					"Description": "Antennae / sensory organs"
+				},
+				{
+					"Chance": 4,
+					"Description": "Armored"
+				},
+				{
+					"Chance": 6,
+					"Description": "Beautiful"
+				},
+				{
+					"Chance": 8,
+					"Description": "Biotech"
+				},
+				{
+					"Chance": 10,
+					"Description": "Bony / gaunt"
+				},
+				{
+					"Chance": 12,
+					"Description": "Brutish / muscled"
+				},
+				{
+					"Chance": 14,
+					"Description": "Camouflaged"
+				},
+				{
+					"Chance": 16,
+					"Description": "Claws / talons"
+				},
+				{
+					"Chance": 18,
+					"Description": "Compound eyes"
+				},
+				{
+					"Chance": 20,
+					"Description": "Comprised of many creatures"
+				},
+				{
+					"Chance": 22,
+					"Description": "Corrupted"
+				},
+				{
+					"Chance": 24,
+					"Description": "Crystalline"
+				},
+				{
+					"Chance": 26,
+					"Description": "Dead / undead"
+				},
+				{
+					"Chance": 28,
+					"Description": "Distinctive markings"
+				},
+				{
+					"Chance": 30,
+					"Description": "Distinctive smell"
+				},
+				{
+					"Chance": 32,
+					"Description": "Distinctive sound"
+				},
+				{
+					"Chance": 34,
+					"Description": "Dripping mucus"
+				},
+				{
+					"Chance": 36,
+					"Description": "Elongated Neck"
+				},
+				{
+					"Chance": 38,
+					"Description": "Energy emissions"
+				},
+				{
+					"Chance": 40,
+					"Description": "Extra limbs"
+				},
+				{
+					"Chance": 42,
+					"Description": "Faceless / inexpressive"
+				},
+				{
+					"Chance": 44,
+					"Description": "Fangs / rows of teeth"
+				},
+				{
+					"Chance": 46,
+					"Description": "Feathered"
+				},
+				{
+					"Chance": 48,
+					"Description": "Fungal growth"
+				},
+				{
+					"Chance": 50,
+					"Description": "Fur / hair / filaments"
+				},
+				{
+					"Chance": 52,
+					"Description": "Graceful"
+				},
+				{
+					"Chance": 54,
+					"Description": "Hideous"
+				},
+				{
+					"Chance": 56,
+					"Description": "Hooded / crested"
+				},
+				{
+					"Chance": 58,
+					"Description": "Immobile / trapped"
+				},
+				{
+					"Chance": 60,
+					"Description": "Injured / scarred"
+				},
+				{
+					"Chance": 62,
+					"Description": "Iridescent"
+				},
+				{
+					"Chance": 64,
+					"Description": "Long-limbed"
+				},
+				{
+					"Chance": 66,
+					"Description": "Luminescent"
+				},
+				{
+					"Chance": 68,
+					"Description": "Mandibles / pincers"
+				},
+				{
+					"Chance": 70,
+					"Description": "Many-eyed"
+				},
+				{
+					"Chance": 72,
+					"Description": "Mineral / metallic"
+				},
+				{
+					"Chance": 74,
+					"Description": "Multi-jointed"
+				},
+				{
+					"Chance": 76,
+					"Description": "Multi-segmented body"
+				},
+				{
+					"Chance": 78,
+					"Description": "Ornamented / colorful"
+				},
+				{
+					"Chance": 80,
+					"Description": "Oversized mouth"
+				},
+				{
+					"Chance": 82,
+					"Description": "Prominent tail"
+				},
+				{
+					"Chance": 84,
+					"Description": "Prominent wings / fins"
+				},
+				{
+					"Chance": 86,
+					"Description": "Ridges / plates"
+				},
+				{
+					"Chance": 88,
+					"Description": "Scaled"
+				},
+				{
+					"Chance": 90,
+					"Description": "Single eye / oversized eyes"
+				},
+				{
+					"Chance": 92,
+					"Description": "Spikes / spines"
+				},
+				{
+					"Chance": 94,
+					"Description": "Stinger / barbs"
+				},
+				{
+					"Chance": 96,
+					"Description": "Tentacles / tendrils"
+				},
+				{
+					"Chance": 98,
+					"Description": "Translucent"
+				},
+				{
+					"Chance": 100,
+					"Description": "Visible symbiote"
+				}
+			]
+		},
+		{
+			"Name": "Behavior",
+			"Oracle Table": [
+				{
+					"Chance": 5,
+					"Description": "Ambusher"
+				},
+				{
+					"Chance": 10,
+					"Description": "Apex predator"
+				},
+				{
+					"Chance": 14,
+					"Description": "Builder"
+				},
+				{
+					"Chance": 19,
+					"Description": "Camouflager"
+				},
+				{
+					"Chance": 24,
+					"Description": "Forager"
+				},
+				{
+					"Chance": 29,
+					"Description": "Grazer"
+				},
+				{
+					"Chance": 33,
+					"Description": "Herder"
+				},
+				{
+					"Chance": 37,
+					"Description": "Hibernator"
+				},
+				{
+					"Chance": 41,
+					"Description": "Hoarder"
+				},
+				{
+					"Chance": 46,
+					"Description": "Hunter"
+				},
+				{
+					"Chance": 51,
+					"Description": "Lurer"
+				},
+				{
+					"Chance": 55,
+					"Description": "Migratory"
+				},
+				{
+					"Chance": 60,
+					"Description": "Mimic"
+				},
+				{
+					"Chance": 65,
+					"Description": "Nester"
+				},
+				{
+					"Chance": 70,
+					"Description": "Pack hunter"
+				},
+				{
+					"Chance": 75,
+					"Description": "Prey"
+				},
+				{
+					"Chance": 80,
+					"Description": "Protector"
+				},
+				{
+					"Chance": 85,
+					"Description": "Scavenger"
+				},
+				{
+					"Chance": 90,
+					"Description": "Tracker"
+				},
+				{
+					"Chance": 95,
+					"Description": "Trapper"
+				},
+				{
+					"Chance": 100,
+					"Description": "[Roll twice]"
+				}
+			]
+		},
+		{
+			"Name": "Aspects",
+			"Max rolls": 3,
+			"Oracle Table": [
+				{
+					"Chance": 2,
+					"Description": "Alternative environment"
+				},
+				{
+					"Chance": 4,
+					"Description": "Alternative movement"
+				},
+				{
+					"Chance": 6,
+					"Description": "Alternative senses"
+				},
+				{
+					"Chance": 8,
+					"Description": "Burrower"
+				},
+				{
+					"Chance": 10,
+					"Description": "Chameleon"
+				},
+				{
+					"Chance": 12,
+					"Description": "Clever"
+				},
+				{
+					"Chance": 14,
+					"Description": "Consumes energy"
+				},
+				{
+					"Chance": 16,
+					"Description": "Consumes inorganic matter"
+				},
+				{
+					"Chance": 18,
+					"Description": "Controlled / puppeteered"
+				},
+				{
+					"Chance": 20,
+					"Description": "Controls lesser creatures"
+				},
+				{
+					"Chance": 22,
+					"Description": "Corrosive excretion"
+				},
+				{
+					"Chance": 24,
+					"Description": "Crusher / constrictor"
+				},
+				{
+					"Chance": 26,
+					"Description": "Egg sac / carried offspring"
+				},
+				{
+					"Chance": 28,
+					"Description": "Electric shock"
+				},
+				{
+					"Chance": 30,
+					"Description": "Electromagnetic pulse"
+				},
+				{
+					"Chance": 32,
+					"Description": "Energy breath"
+				},
+				{
+					"Chance": 34,
+					"Description": "Energy manipulation"
+				},
+				{
+					"Chance": 36,
+					"Description": "Engineered biology"
+				},
+				{
+					"Chance": 38,
+					"Description": "Enhanced senses"
+				},
+				{
+					"Chance": 40,
+					"Description": "Enhanced strength"
+				},
+				{
+					"Chance": 42,
+					"Description": "Entangling secretion"
+				},
+				{
+					"Chance": 44,
+					"Description": "Extradimensional"
+				},
+				{
+					"Chance": 46,
+					"Description": "Hallucinogen secretion"
+				},
+				{
+					"Chance": 48,
+					"Description": "Hidden symbiote"
+				},
+				{
+					"Chance": 50,
+					"Description": "Hive mind"
+				},
+				{
+					"Chance": 52,
+					"Description": "Illusionary"
+				},
+				{
+					"Chance": 54,
+					"Description": "Infectious"
+				},
+				{
+					"Chance": 56,
+					"Description": "Infested with parasites"
+				},
+				{
+					"Chance": 58,
+					"Description": "Intimidating threat display"
+				},
+				{
+					"Chance": 60,
+					"Description": "Limited sense"
+				},
+				{
+					"Chance": 62,
+					"Description": "Magnetic"
+				},
+				{
+					"Chance": 64,
+					"Description": "Mental influence / control"
+				},
+				{
+					"Chance": 66,
+					"Description": "Metamorphic"
+				},
+				{
+					"Chance": 68,
+					"Description": "Noxious cloud / spores"
+				},
+				{
+					"Chance": 70,
+					"Description": "Paralytic toxin"
+				},
+				{
+					"Chance": 72,
+					"Description": "Parasitic"
+				},
+				{
+					"Chance": 74,
+					"Description": "Pheromones"
+				},
+				{
+					"Chance": 76,
+					"Description": "Poisonous"
+				},
+				{
+					"Chance": 78,
+					"Description": "Powerful bite"
+				},
+				{
+					"Chance": 80,
+					"Description": "Proboscis / inner jaw"
+				},
+				{
+					"Chance": 82,
+					"Description": "Projectile attack"
+				},
+				{
+					"Chance": 84,
+					"Description": "Radioactive"
+				},
+				{
+					"Chance": 86,
+					"Description": "Regeneration"
+				},
+				{
+					"Chance": 88,
+					"Description": "Replication"
+				},
+				{
+					"Chance": 90,
+					"Description": "Sacrificial defense"
+				},
+				{
+					"Chance": 92,
+					"Description": "Shapechanger"
+				},
+				{
+					"Chance": 94,
+					"Description": "Telekinetic"
+				},
+				{
+					"Chance": 96,
+					"Description": "Teleportation"
+				},
+				{
+					"Chance": 98,
+					"Description": "Territorial"
+				},
+				{
+					"Chance": 100,
+					"Description": "Toxic spew"
+				}
+			]
+		}
+	]
+}
