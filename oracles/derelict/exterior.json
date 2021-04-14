@@ -177,7 +177,14 @@
   "Inherits": [
     {
       "From": "Settlement",
-      "Oracles": ["Name", "Population", "First Look", "Projects", "Trouble"],
+      "Oracles": [
+        "Name",
+        "Population",
+        "First Look",
+        "Projects",
+        "Trouble",
+        "Authority"
+      ],
       "Requires": [
         {
           "Property": "Type",
@@ -187,7 +194,7 @@
     },
     {
       "From": "Starship",
-      "Oracles": ["Name", "Type", "First Look"],
+      "Oracles": ["Name", "First Look", "Type"],
       "Requires": [
         {
           "Property": "Type",
@@ -206,12 +213,26 @@
       ]
     },
     {
+      "From": "Space",
+      "Oracles": ["Stellar Object"],
+      "Requires": [
+        {
+          "Property": "Location",
+          "Value": ["Deep Space"]
+        },
+        {
+          "Property": "Type",
+          "Value": ["Derelict settlement"]
+        }
+      ]
+    },
+    {
       "From": "Planet",
       "Oracles": ["Peril", "Opportunity"],
       "Requires": [
         {
           "Property": "Location",
-          "Value": ["Planetside"]
+          "Value": "Planetside"
         }
       ]
     }
