@@ -1,0 +1,128 @@
+{
+  "__meta": {
+    "Name": "Jovian World",
+    "Aliases": ["Jovian"],
+    "Tags": ["oracles", "template", "location"],
+    "Parent": "Planet",
+    "Category": "Planetary Class",
+    "Requires": { "Planetary Class": "Jovian World" },
+    "Source": { "Name": "Starforged Playtest Oracles", "Version": "022821" },
+    "Description": "A massive planet with vast layers of dense gases surrounding a small rocky core.",
+    "Thumbnail": "https://i.imgur.com/xRT70k8.png",
+    "Inherits": [{ "From": "Planet", "Oracles": ["Peril, Opportunity"] }]
+  },
+  "Name": {
+    "Initial": true,
+    "Table": [
+      "Aether",
+      "Arrokoth",
+      "Esen",
+      "Hanish",
+      "Magnus",
+      "Magonia",
+      "Mistral",
+      "Nephele",
+      "Nimbus",
+      "Nuada",
+      "Nubium",
+      "Serein",
+      "Stratus",
+      "Taranis",
+      "Tempest",
+      "Tenzin",
+      "Tyr",
+      "Veil",
+      "Velum",
+      "Zephyr"
+    ]
+  },
+  "Atmosphere": {
+    "Initial": true,
+    "Table": [
+      [1, 50, "Toxic"],
+      [51, 65, "Corrosive"],
+      [66, 85, "Marginal"],
+      [86, 100, "Breathable"]
+    ]
+  },
+  "Settlements": [
+    {
+      "Initial": true,
+      "Requires": { "Region": "Terminus" },
+      "Table": [
+        [1, 50, "None"],
+        [51, 70, "Orbital settlement"],
+        [71, 85, "Planetside settlement"],
+        [86, 95, "Multiple settlements"],
+        [96, 100, "Settlements in conflict"]
+      ]
+    },
+    {
+      "Initial": true,
+      "Requires": { "Region": "Outlands" },
+      "Table": [
+        [1, 75, "None"],
+        [76, 87, "Orbital settlement"],
+        [88, 95, "Planetside settlement"],
+        [96, 98, "Multiple settlements"],
+        [99, 100, "Settlements in conflict"]
+      ]
+    },
+    {
+      "Initial": true,
+      "Requires": { "Region": "Expanse" },
+      "Table": [
+        [1, 90, "None"],
+        [91, 96, "Orbital settlement"],
+        [97, 100, "Planetside settlement"]
+      ]
+    }
+  ],
+  "Observed From Space": {
+    "Initial": true,
+    "Max rolls": 2,
+    "Table": [
+      [1, 11, "Complex ring system"],
+      [12, 22, "Intense gravity well"],
+      [23, 33, "Numerous moons"],
+      [34, 44, "Perpetual superstorm"],
+      [45, 55, "Powerful magnetic field"],
+      [56, 66, "Severe electrical storms"],
+      [67, 77, "Superheated atmosphere"],
+      [78, 88, "Unusual atmospheric colors"],
+      [89, 98, "[Descriptor/Focus]"],
+      [99, 100, "[Anomalous site (orbital)]"]
+    ]
+  },
+  "Closer Look": {
+    "Max rolls": 3,
+    "Table": [
+      [1, 7, "Clouds of metal particles"],
+      [8, 14, "Crystalline rains"],
+      [15, 21, "Floating glaciers"],
+      [22, 28, "Floating islands"],
+      [29, 35, "Layer of suspended liquid"],
+      [36, 42, "Pockets of explosive gases"],
+      [43, 49, "Powerful vortexes"],
+      [50, 56, "Radiation fields"],
+      [57, 63, "Storm-swept rocky debris"],
+      [64, 70, "Torrential rain"],
+      [71, 77, "Towering thunderheads"],
+      [78, 84, "Violent turbulence"],
+      [85, 91, "Zones of localized atmosphere"],
+      [92, 98, "[Descriptor/Focus]"],
+      [99, 100, "[Anomalous Site (planetside)]"]
+    ]
+  },
+  "Life": {
+    "Table": [
+      [1, 50, "None"],
+      [51, 55, "Extinct"],
+      [56, 70, "Simple"],
+      [71, 82, "Sparse"],
+      [83, 92, "Diverse"],
+      [93, 97, "Bountiful"],
+      [98, 100, "Overrun"]
+    ]
+  }
+}

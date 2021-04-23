@@ -1,0 +1,124 @@
+{
+  "__meta": {
+    "Name": "Tainted World",
+    "Aliases": ["Tainted"],
+    "Tags": ["oracles", "template", "location"],
+    "Parent": "Planet",
+    "Category": "Planetary Class",
+    "Requires": { "Planetary Class": "Tainted World" },
+    "Source": { "Name": "Starforged Playtest Oracles", "Version": "022821" },
+    "Description": "A foul planet wracked by a poisonous climate and virulent growths.",
+    "Thumbnail": "https://i.imgur.com/TPb8p6L.png",
+    "Inherits": [{ "From": "Planet", "Oracles": ["Peril, Opportunity"] }]
+  },
+  "Name": {
+    "Initial": true,
+    "Table": [
+      "Achlys",
+      "Animus",
+      "Bane",
+      "Blight",
+      "Carrion",
+      "Chitin",
+      "Datura",
+      "Dreck",
+      "Erra",
+      "Febris",
+      "Malacia",
+      "Miasma",
+      "Morbus",
+      "Pathosis",
+      "Pestis",
+      "Scourge",
+      "Telium",
+      "Timoris",
+      "Verus",
+      "Xanthous"
+    ]
+  },
+  "Atmosphere": {
+    "Initial": true,
+    "Table": [
+      [1, 65, "Toxic"],
+      [66, 85, "Corrosive"],
+      [86, 95, "Marginal"],
+      [96, 100, "Breathable"]
+    ]
+  },
+  "Settlements": [
+    {
+      "Initial": true,
+      "Requires": { "Region": "Terminus" },
+      "Table": [
+        [1, 80, "None"],
+        [81, 90, "Orbital settlement"],
+        [91, 95, "Planetside settlement"],
+        [96, 98, "Multiple settlements"],
+        [99, 100, "Settlements in conflict"]
+      ]
+    },
+    {
+      "Initial": true,
+      "Requires": { "Region": "Outlands" },
+      "Table": [
+        [1, 90, "None"],
+        [91, 97, "Orbital settlement"],
+        [98, 100, "Planetside settlement"]
+      ]
+    },
+    {
+      "Initial": true,
+      "Requires": { "Region": "Expanse" },
+      "Table": [
+        [1, 95, "None"],
+        [96, 98, "Orbital settlement"],
+        [99, 100, "Planetside settlement"]
+      ]
+    }
+  ],
+  "Observed From Space": {
+    "Initial": true,
+    "Max rolls": 2,
+    "Table": [
+      [1, 11, "Expansive fungal plains"],
+      [12, 22, "Fungal forests"],
+      [23, 33, "Scabrous, infected terrain"],
+      [34, 44, "Sky-breaching fungus"],
+      [45, 55, "Sludge-filled river networks"],
+      [56, 66, "Stagnant cloud cover"],
+      [67, 77, "Thick, murky atmosphere"],
+      [78, 88, "Toxic seas"],
+      [89, 98, "[Descriptor/Focus]"],
+      [99, 100, "[Anomalous site (orbital)]"]
+    ]
+  },
+  "Closer Look": {
+    "Max rolls": 3,
+    "Table": [
+      [1, 7, "Caustic gas storms"],
+      [8, 14, "Corrosive, low-lying fog"],
+      [15, 21, "Fungus-encrusted caves"],
+      [22, 28, "Gelatinous ponds"],
+      [29, 35, "Hallucinogenic toxins"],
+      [36, 42, "Layers of fast-growing lichen"],
+      [43, 49, "Moldering bones"],
+      [50, 56, "Mutated flora"],
+      [57, 63, "Poisonous gas vents"],
+      [64, 70, "Spore clouds"],
+      [71, 77, "Terrain marred by fleshy pustules"],
+      [78, 84, "Toxic rain"],
+      [85, 91, "Virulent fungal infestations"],
+      [92, 98, "[Descriptor/Focus]"],
+      [99, 100, "[Anomalous Site (planetside)]"]
+    ]
+  },
+  "Life": {
+    "Table": [
+      [1, 5, "Simple"],
+      [6, 15, "Sparse"],
+      [16, 30, "Diverse"],
+      [31, 55, "Bountiful"],
+      [56, 100, "Overrun"]
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "__meta": {
+    "Name": "Precursor Vault",
+    "Aliases": ["Vault"],
+    "Tags": ["oracles", "template", "location"],
+    "Source": {
+      "Name": "Derelict-Precursor-Vault-Oracles",
+      "Version": "040521"
+    },
+    "Inherits": [
+      {
+        "From": "Space",
+        "Oracles": ["Peril", "Opportunity"],
+        "Requires": { "Location": ["Orbital", "Deep Space"] }
+      },
+      {
+        "From": "Planet",
+        "Oracles": ["Peril", "Opportunity"],
+        "Requires": { "Location": ["Planetside"] }
+      }
+    ]
+  },
+  "Location": {
+    "Initial": true,
+    "Table": [
+      [1, 50, "Planetside"],
+      [51, 75, "Orbital"],
+      [76, 100, "Deep Space"]
+    ]
+  },
+  "Scale": {
+    "Initial": true,
+    "Table": [
+      [1, 30, "Minor, confined site"],
+      [31, 65, "Typical site of limited scope"],
+      [66, 90, "Large, elaborate site"],
+      [91, 99, "Vast site of unfathomable complexity"],
+      [100, 100, "World-spanning site or megastructure"]
+    ]
+  },
+  "Form": {
+    "Initial": true,
+    "Table": [
+      [1, 35, "Structure"],
+      [36, 60, "Vessel"],
+      [61, 80, "Monument"],
+      [81, 95, "Machine"],
+      [96, 100, "Incomprehensible"]
+    ]
+  },
+  "Shape": {
+    "Initial": true,
+    "Table": [
+      [1, 15, "Practical or functional"],
+      [16, 20, "Geometric (complex shape)"],
+      [21, 25, "Geometric (cube)"],
+      [26, 30, "Geometric (obelisk)"],
+      [31, 35, "Geometric (pyramid)"],
+      [36, 40, "Geometric (ring or torus)"],
+      [41, 45, "Geometric (sphere)"],
+      [46, 55, "Organic or curved"],
+      [56, 60, "Platform or disc"],
+      [61, 65, "Spires or towers"],
+      [66, 68, "Domed"],
+      [69, 73, "Spiky"],
+      [74, 76, "Sculptural or effigy"],
+      [77, 79, "Amorphous"],
+      [80, 85, "Transforming"],
+      [86, 100, "[Roll twice]"]
+    ]
+  },
+  "Material": {
+    "Initial": true,
+    "Table": [
+      [1, 30, "Metallic (industrial)"],
+      [31, 60, "Metallic (smooth)"],
+      [61, 70, "Rocky or stone-like"],
+      [71, 74, "Crystalline or glass-like"],
+      [75, 78, "Bone-like"],
+      [79, 82, "Flesh-like"],
+      [83, 86, "Plant-like"],
+      [87, 88, "Energy"],
+      [89, 90, "Liquid"],
+      [91, 100, "[Roll twice]"]
+    ]
+  },
+  "Exterior First Look": {
+    "Type": "First Look",
+    "Initial": true,
+    "Max rolls": 2,
+    "Table": [
+      [1, 3, "Corrupting its environment"],
+      [4, 7, "Automated defenses"],
+      [8, 10, "Breached exterior"],
+      [11, 14, "Broken or fragmented"],
+      [15, 17, "Camouflaged or hidden"],
+      [18, 20, "Cavernous opening"],
+      [21, 23, "Dispersed structures"],
+      [24, 26, "Dreadful premonitions"],
+      [27, 30, "Electromagnetic field"],
+      [31, 33, "Embedded within terrain"],
+      [34, 36, "Encased in an energy field"],
+      [37, 40, "Energy core or conduit"],
+      [41, 43, "Fractal patterns"],
+      [44, 47, "Glyphs or symbols"],
+      [48, 51, "Hazardous readings"],
+      [52, 54, "Levitating or in motion"],
+      [55, 58, "Lighted or illuminated"],
+      [59, 61, "No obvious point of entry"],
+      [62, 64, "Overgrown or entangled"],
+      [65, 67, "Perfectly preserved"],
+      [68, 70, "Phasing in and out of reality"],
+      [71, 73, "Physical barrier"],
+      [74, 76, "Pitted or scarred"],
+      [77, 79, "Scaled for outsized beings"],
+      [80, 82, "Shrouded in mist or haze"],
+      [83, 85, "Signs of invaders"],
+      [86, 89, "Sound or signal"],
+      [90, 92, "Strong gravity well"],
+      [93, 95, "Surrounded by destruction"],
+      [96, 100, "[Descriptor/Focus]"]
+    ]
+  }
+}
