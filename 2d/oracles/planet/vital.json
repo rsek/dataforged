@@ -1,13 +1,12 @@
 {
   "__meta": {
     "Name": "Vital World",
-    "Aliases": ["Vital"],
+    "Aliases": ["Vital World"],
     "Tags": ["oracles", "template", "location"],
     "Parent": "Planet",
     "Category": "Planetary Class",
     "Requires": { "Planetary Class": "Vital World" },
-    "Source": { "Name": "Starforged Playtest Oracles", "Version": "022821" },
-    "Description": "This diverse, life-bearing planet might provide some small measure of hope.",
+    "Source": { "Name": "Starforged Backer Preview", "Version": "042721" },
     "Thumbnail": "https://i.imgur.com/Syhr8rp.png",
     "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }]
   },
@@ -24,14 +23,14 @@
       "Harbinger",
       "Haven",
       "Hope",
-      "Kishar",
       "Morpheus",
       "Nemus",
-      "Oasis",
+      "Sapphire",
       "Serenity",
       "Sif",
       "Silva",
       "Sirona",
+      "Solstice",
       "Vale",
       "Valinor"
     ]
@@ -89,14 +88,14 @@
       [34, 44, "Large moon"],
       [45, 55, "Narrow livable band"],
       [56, 66, "Numerous small moons"],
-      [67, 77, "Unusual day/night cycle"],
+      [67, 77, "Unusual day or night cycle"],
       [78, 88, "Vibrantly colored landscapes"],
       [89, 98, "▶️Descriptor + Focus"],
-      [99, 100, "▶️Anomalous Site (orbital)"]
+      [99, 100, "▶️Precursor Vault (orbital)"]
     ]
   },
-  "Closer Look": {
-    "Max rolls": 3,
+  "Planetside Feature": {
+    "Max rolls": 2,
     "Table": [
       [1, 7, "Background radiation"],
       [8, 14, "Chaotically juxtaposed biomes"],
@@ -112,7 +111,7 @@
       [78, 84, "Sudden weather fluctuations"],
       [85, 91, "Towering geological formations"],
       [92, 98, "▶️Descriptor + Focus"],
-      [99, 100, "▶️Anomalous Site (planetside)"]
+      [99, 100, "▶️Precursor Vault (planetside)"]
     ]
   },
   "Life": {
@@ -123,22 +122,12 @@
       [86, 100, "Overrun"]
     ]
   },
-  "Diversity": {
-    "Table": [
-      [1, 20, "Simple (two biomes)", 2],
-      [21, 70, "Diverse (three biomes)", 3],
-      [71, 90, "Complex (four biomes)", 4],
-      [91, 100, "Garden world (five or more biomes)", 5]
-    ]
-  },
   "Biomes": {
-    "Min rolls": 2,
-    "Max rolls": 5,
     "Table": [
       [1, 5, "Caves"],
       [6, 10, "Cold forest"],
       [11, 15, "Fungal"],
-      [16, 20, "Glacial / snow"],
+      [16, 20, "Glacial or snow"],
       [21, 25, "Grassland"],
       [26, 30, "Islands"],
       [31, 35, "Jungle"],
@@ -155,6 +144,16 @@
       [86, 90, "Volcanic"],
       [91, 95, "Waterways"],
       [96, 100, "Wetland"]
+    ],
+    "Min rolls": 2,
+    "Max rolls": 5
+  },
+  "Diversity": {
+    "Table": [
+      [1, 20, "Simple (two biomes)"],
+      [21, 70, "Diverse (three biomes)"],
+      [71, 90, "Complex (four biomes)"],
+      [91, 100, "Garden world (five or more biomes)"]
     ]
   }
 }
