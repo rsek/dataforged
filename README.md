@@ -3,7 +3,7 @@
 *Ironsworn: Starforged* playtest rules data in JSON for use in community tools, because there's no use in duplicating labour on the data entry.
 
 ## Recommended Usage
-Due to this being playtest content, this repo is fairly unstable! As the game grows and evolves, I will almost certainly make changes in how it's organized. I recommend forking or otherwise copying this repo's contents rather than pulling from it directly.
+Due to this being preview content, this repo is fairly unstable! As the game grows and evolves, I will almost certainly make changes in how it's organized. I recommend forking or otherwise copying this repo's contents rather than pulling from it directly.
 
 ## Current Version/Sources
 
