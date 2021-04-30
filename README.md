@@ -7,15 +7,18 @@ Due to this being playtest content, this repo is fairly unstable! As the game gr
 
 ## Current Version/Sources
 
-  * **Oracles-Preview-022821**
-  * **Derelict-Precursor-Vault-Oracles-040521**
-  * **Assets-Sheet-012421**
-  * **Moves-Reference-040521** (move text, move-related oracles)
-  * **Launching-Your-Campaign-112220** (setting Truth oracles, character creation prompt oracles)
+  * **Kickstarter Backer Preview - 042721** (all oracles and assets)
+  * **Moves-Reference-040521** (move text - needs an update still!)
+
+## TBA
+  * NPC entries from backer preview
+  * move glossary entries from backer preview
 
 ## Oracle Tables
 
-Square brackets in an oracle result represent a reference to another oracle, or a special result like "roll twice".
+Square brackets in an oracle result represent a special result like "roll twice".
+
+References to other oracle tables are prefixed with ▶️
 
 ## A Note on Markdown
 
