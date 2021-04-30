@@ -1,31 +1,23 @@
 {
   "Name": "Furnace World",
   "Aliases": ["Furnace"],
+  "Description": "A planet with relentless volcanic activity, wreathed in fire and ash.",
   "Tags": ["oracles", "template", "location"],
   "Parent": "Planet",
   "Category": "Planetary Class",
-  "Inherits": [{ "From": "Planet", "Oracles": ["Peril, Opportunity"] }],
-  "Requires": [
-    {
-      "Property": "Planetary Class",
-      "Value": "Furnace World"
-    }
-  ],
-  "Source": {
-    "Name": "Starforged Playtest Oracles",
-    "Version": "022821"
-  },
-  "Description": "A planet with relentless volcanic activity, wreathed in fire and ash.",
+  "Requires": { "Planetary Class": "Furnace World" },
+  "Source": { "Name": "Starforged Backer Preview", "Version": "042721" },
   "Thumbnail": "https://i.imgur.com/YS5rlDR.png",
+  "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
   "Oracles": [
     {
       "Name": "Name",
+      "Tags": ["proper noun"],
       "Initial": true,
-      "Oracle Table": [
+      "Table": [
         "Ash",
         "Azula",
         "Cinder",
-        "Cinerarium",
         "Cyrus",
         "Draconus",
         "Effigy",
@@ -38,123 +30,57 @@
         "Ishum",
         "Kresnik",
         "Nemesis",
-        "Pyre",
+        "Obsidian",
         "Scorch",
         "Tana",
-        "Vesta"
+        "Vesta",
+        "Vesuvius"
       ]
     },
     {
       "Name": "Atmosphere",
       "Initial": true,
-      "Oracle Table": [
-        {
-          "Chance": 10,
-          "Description": "None / thin"
-        },
-        {
-          "Chance": 50,
-          "Description": "Toxic"
-        },
-        {
-          "Chance": 65,
-          "Description": "Corrosive"
-        },
-        {
-          "Chance": 90,
-          "Description": "Marginal"
-        },
-        {
-          "Chance": 100,
-          "Description": "Breathable"
-        }
+      "Table": [
+        { "Chance": 10, "Description": "None / thin" },
+        { "Chance": 50, "Description": "Toxic" },
+        { "Chance": 65, "Description": "Corrosive" },
+        { "Chance": 90, "Description": "Marginal" },
+        { "Chance": 100, "Description": "Breathable" }
       ]
     },
     {
       "Name": "Settlements",
-      "Initial": true,
-      "Requires": [
+      "Tables": [
         {
-          "Property": "Region",
-          "Value": "Terminus"
-        }
-      ],
-      "Oracle Table": [
-        {
-          "Chance": 60,
-          "Description": "None"
+          "Initial": true,
+          "Requires": { "Region": "Terminus" },
+          "Table": [
+            { "Chance": 60, "Description": "None" },
+            { "Chance": 75, "Description": "Orbital settlement" },
+            { "Chance": 87, "Description": "Planetside settlement" },
+            { "Chance": 96, "Description": "Multiple settlements" },
+            { "Chance": 100, "Description": "Settlements in conflict" }
+          ]
         },
         {
-          "Chance": 75,
-          "Description": "Orbital settlement"
+          "Initial": true,
+          "Requires": { "Region": "Outlands" },
+          "Table": [
+            { "Chance": 85, "Description": "None" },
+            { "Chance": 92, "Description": "Orbital settlement" },
+            { "Chance": 97, "Description": "Planetside settlement" },
+            { "Chance": 99, "Description": "Multiple settlements" },
+            { "Chance": 100, "Description": "Settlements in conflict" }
+          ]
         },
         {
-          "Chance": 87,
-          "Description": "Planetside settlement"
-        },
-        {
-          "Chance": 96,
-          "Description": "Multiple settlements"
-        },
-        {
-          "Chance": 100,
-          "Description": "Settlements in conflict"
-        }
-      ]
-    },
-    {
-      "Name": "Settlements",
-      "Initial": true,
-      "Requires": [
-        {
-          "Property": "Region",
-          "Value": "Outlands"
-        }
-      ],
-      "Oracle Table": [
-        {
-          "Chance": 85,
-          "Description": "None"
-        },
-        {
-          "Chance": 92,
-          "Description": "Orbital settlement"
-        },
-        {
-          "Chance": 97,
-          "Description": "Planetside settlement"
-        },
-        {
-          "Chance": 99,
-          "Description": "Multiple settlements"
-        },
-        {
-          "Chance": 100,
-          "Description": "Settlements in conflict"
-        }
-      ]
-    },
-    {
-      "Name": "Settlements",
-      "Initial": true,
-      "Requires": [
-        {
-          "Property": "Region",
-          "Value": "Expanse"
-        }
-      ],
-      "Oracle Table": [
-        {
-          "Chance": 95,
-          "Description": "None"
-        },
-        {
-          "Chance": 98,
-          "Description": "Orbital settlement"
-        },
-        {
-          "Chance": 100,
-          "Description": "Planetside settlement"
+          "Initial": true,
+          "Requires": { "Region": "Expanse" },
+          "Table": [
+            { "Chance": 95, "Description": "None" },
+            { "Chance": 98, "Description": "Orbital settlement" },
+            { "Chance": 100, "Description": "Planetside settlement" }
+          ]
         }
       ]
     },
@@ -162,146 +88,50 @@
       "Name": "Observed From Space",
       "Initial": true,
       "Max rolls": 2,
-      "Oracle Table": [
-        {
-          "Chance": 11,
-          "Description": "Fiery world-spanning chasms"
-        },
-        {
-          "Chance": 22,
-          "Description": "Glowing rivers of lava"
-        },
-        {
-          "Chance": 33,
-          "Description": "Lightning-wracked ash clouds"
-        },
-        {
-          "Chance": 44,
-          "Description": "Magma seas"
-        },
-        {
-          "Chance": 55,
-          "Description": "Massive supervolcano"
-        },
-        {
-          "Chance": 66,
-          "Description": "Once verdant terrain"
-        },
-        {
-          "Chance": 77,
-          "Description": "Towering mountain ranges"
-        },
-        {
-          "Chance": 88,
-          "Description": "World-spanning fissures"
-        },
-        {
-          "Chance": 98,
-          "Description": "[Descriptor/Focus]"
-        },
-        {
-          "Chance": 100,
-          "Description": "[Anomalous site (orbital)]"
-        }
+      "Table": [
+        { "Chance": 11, "Description": "Fiery world-spanning chasms" },
+        { "Chance": 22, "Description": "Glowing rivers of lava" },
+        { "Chance": 33, "Description": "Lightning-wracked ash clouds" },
+        { "Chance": 44, "Description": "Magma seas" },
+        { "Chance": 55, "Description": "Massive supervolcano" },
+        { "Chance": 66, "Description": "Once verdant terrain" },
+        { "Chance": 77, "Description": "Towering mountain ranges" },
+        { "Chance": 88, "Description": "World-spanning fissures" },
+        { "Chance": 98, "Description": "▶️Descriptor + Focus" },
+        { "Chance": 100, "Description": "▶️Precursor Vault (orbital)" }
       ]
     },
     {
-      "Name": "Closer Look",
-      "Max rolls": 3,
-      "Oracle Table": [
-        {
-          "Chance": 7,
-          "Description": "Blinding ash storms"
-        },
-        {
-          "Chance": 14,
-          "Description": "Catastrophic earthquakes"
-        },
-        {
-          "Chance": 21,
-          "Description": "Colorful geothermal springs"
-        },
-        {
-          "Chance": 28,
-          "Description": "Intricate volcanic rock formations"
-        },
-        {
-          "Chance": 35,
-          "Description": "Lava tube tunnel networks"
-        },
-        {
-          "Chance": 42,
-          "Description": "Masses of scorched bones"
-        },
-        {
-          "Chance": 49,
-          "Description": "Plains of volcanic glass"
-        },
-        {
-          "Chance": 56,
-          "Description": "Pools of liquid metal"
-        },
-        {
-          "Chance": 63,
-          "Description": "Rocky islands adrift on magma"
-        },
-        {
-          "Chance": 70,
-          "Description": "Roiling clouds of superheated gas"
-        },
-        {
-          "Chance": 77,
-          "Description": "Scalding geysers"
-        },
-        {
-          "Chance": 84,
-          "Description": "Silica / metal storms"
-        },
-        {
-          "Chance": 91,
-          "Description": "Steaming mudflats"
-        },
-        {
-          "Chance": 98,
-          "Description": "[Descriptor/Focus]"
-        },
-        {
-          "Chance": 100,
-          "Description": "[Anomalous Site (planetside)]"
-        }
+      "Name": "Planetside Feature",
+      "Max rolls": 2,
+      "Table": [
+        { "Chance": 7, "Description": "Blinding ash storms" },
+        { "Chance": 14, "Description": "Catastrophic earthquakes" },
+        { "Chance": 21, "Description": "Colorful geothermal springs" },
+        { "Chance": 28, "Description": "Intricate volcanic rock formations" },
+        { "Chance": 35, "Description": "Lava tube tunnel networks" },
+        { "Chance": 42, "Description": "Masses of scorched bones" },
+        { "Chance": 49, "Description": "Plains of volcanic glass" },
+        { "Chance": 56, "Description": "Pools of liquid metal" },
+        { "Chance": 63, "Description": "Rocky islands adrift on magma" },
+        { "Chance": 70, "Description": "Roiling clouds of superheated gas" },
+        { "Chance": 77, "Description": "Scalding geysers" },
+        { "Chance": 84, "Description": "Silica or metal storms" },
+        { "Chance": 91, "Description": "Steaming mudflats" },
+        { "Chance": 98, "Description": "▶️Descriptor + Focus" },
+        { "Chance": 100, "Description": "▶️Precursor Vault (planetside)" }
       ]
     },
     {
       "Name": "Life",
-      "Oracle Table": [
-        {
-          "Chance": 30,
-          "Description": "None"
-        },
-        {
-          "Chance": 50,
-          "Description": "Extinct"
-        },
-        {
-          "Chance": 70,
-          "Description": "Simple"
-        },
-        {
-          "Chance": 85,
-          "Description": "Sparse"
-        },
-        {
-          "Chance": 95,
-          "Description": "Diverse"
-        },
-        {
-          "Chance": 98,
-          "Description": "Bountiful"
-        },
-        {
-          "Chance": 100,
-          "Description": "Overrun"
-        }
+      "Table": [
+        { "Chance": 30, "Description": "None" },
+        { "Chance": 50, "Description": "Extinct" },
+        { "Chance": 70, "Description": "Simple" },
+        { "Chance": 85, "Description": "Sparse" },
+        { "Chance": 95, "Description": "Diverse" },
+        { "Chance": 98, "Description": "Bountiful" },
+        { "Chance": 100, "Description": "Overrun" }
       ]
     }
   ]
