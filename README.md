@@ -13,6 +13,7 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
 ## TBA
   * NPC entries from backer preview
   * move glossary entries from backer preview
+  * documentation of json keys and oracle meta-information
 
 ## Oracle Tables
 
