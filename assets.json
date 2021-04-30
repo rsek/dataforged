@@ -1,7 +1,7 @@
 {
   "Name": "Assets",
   "Tags": ["assets"],
-  "Source": { "Name": "Starforged Playtest" },
+  "Source": { "Name": "Starforged Backer Preview", "Version": "042721" },
   "Assets": [
     {
       "Name": "Ace",
@@ -98,9 +98,27 @@
           "Text": "When you or an ally __Sojourn__ and score a strong hit with a match, you may envision meeting someone of the same ideology. If you __Make a Connection__ with them and score a hit, mark 1 tick on your bonds legacy track. When you __Forge a Bond__ with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic)."
         },
         {
-          "Text": "When you make a progress move in direct service to your ideology, you may reroll 1 challenge die. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track."
+          "Text": "When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track."
         }
       ]
+    },
+    {
+      "Name": "Banshee",
+      "Category": "Companion",
+      "Fields": ["Name"],
+      "Abilities": [
+        {
+          "Text": "Your banshee accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you __Undertake an Expedition__ or __Set a Course__, you may roll +its health.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you make a move astride your banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you’re gone in a flash; take another +1 momentum."
+        },
+        {
+          "Text": "When you make a combat move and roll a 1 on your action die, your banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die, but must first __Lose Momentum__ (-1)."
+        }
+      ],
+      "Track": { "Name": "Health", "Value": 4 }
     },
     {
       "Name": "Blademaster",
@@ -124,11 +142,11 @@
       "Category": "Path",
       "Abilities": [
         {
-          "Text": "When you __Swear an Iron Vow__ to bring in a bounty, add +1. On a strong hit, you’ve got a lead and may immediately __Reach a Milestone__. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic).",
+          "Text": "When you take a bounty contract and __Swear an Iron Vow__ to see it done, add +1. On a strong hit, you’ve got a solid lead and may immediately __Reach a Milestone__. When you __Fulfill Your Vow__, make the legacy reward one rank higher (1 extra box if already epic).",
           "Enabled": true
         },
         {
-          "Text": "When you __Gather Information__ related to a bounty, add +2. On a strong hit with a match, you reveal a surprising aspect of the contract; envision what you discover, and choose one.\n  - Forge ahead: Reach a Waypoint and mark progress.\n  - Change loyalties: __Forsake Your Vow__ and mark 2 ticks on your bonds legacy track."
+          "Text": "When you __Gather Information__ related to a bounty, add +2. On a strong hit with a match, you reveal a surprising aspect of the contract; envision what you discover, and choose one.\n  - Forge ahead: __Reach a Milestone__ and mark progress.\n  - Change loyalties: __Forsake Your Vow__ and mark 2 ticks on your bonds legacy track."
         },
         {
           "Text": "When you __Take Decisive Action__ in a fight against a bounty target or their agents, you may reroll one challenge die."
@@ -138,7 +156,7 @@
     {
       "Name": "Brawler",
       "Category": "Path",
-      "Description": "If you fighting unarmed or with a close-quarters weapon...",
+      "Description": "If you fight unarmed or with a close-quarters weapon...",
       "Abilities": [
         {
           "Text": "When you __Gain Ground__ by attempting to disarm, trip, shove, grapple, or stun your foe, add +1 and take +1 momentum on a hit.",
@@ -189,11 +207,6 @@
     {
       "Name": "Courier",
       "Category": "Path",
-      "Source": {
-        "Name": "Twitter",
-        "URL": "https://twitter.com/ShawnTomkin/status/1367502192555524107",
-        "Date": "March 4"
-      },
       "Abilities": [
         {
           "Text": "When you __Swear an Iron Vow__ to transport and protect something precious, set its safety to 5. When you __Undertake an Expedition__ or __Set a Course__ and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, __Reach a Milestone__ and mark progress twice. Then, set safety to 3.",
@@ -203,7 +216,7 @@
           "Text": "When you __Sojourn__ during a courier mission, you may roll +safety. On a strong hit, take +1 safety or +1 momentum."
         },
         {
-          "Text": "When you __Fulfill Your Vow__ to a connection by finishing a courier mission, you may __Advance a Relationship__ and mark progress twice."
+          "Text": "When you __Fulfill Your Vow__ to a connection by finishing a courier mission, you may __Develop Your Relationship__ and mark progress twice."
         }
       ],
       "Track": { "Name": "Safety", "Value": 5 }
@@ -296,14 +309,14 @@
       "Category": "Module",
       "Abilities": [
         {
-          "Text": "Your vehicle carries up to +3 cargo. When you gain +supply, you may convert it to +cargo. When you have access to your vehicle and make a move +supply, you may add +cargo. When you __Sacrifice Resources__, you may instead suffer -cargo for any portion of the cost.",
+          "Text": "Your vehicle carries up to 3 cargo. When you gain +supply, you may convert it to +cargo. When you make a move +supply, you may add +cargo. When you __Sacrifice Resources__, you may instead suffer -cargo for any portion of the cost.",
           "Enabled": true
         },
         {
-          "Text": "When you __Compel__ or __Sojourn__ and roll a miss or weak hit, and have at least +1 cargo, you may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo."
+          "Text": "When you roll a miss or weak hit as you make a move to barter or negotiate, and you have at least 1 cargo, you may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo."
         },
         {
-          "Text": "When you __Swear an Iron Vow__ (formidable or greater) to transport crucial payload under perilous circumstances, reroll any dice. When you __Fulfill Your Vow__ and score a hit, also mark 2 ticks on your bonds legacy track."
+          "Text": "When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit."
         }
       ],
       "Track": { "Name": "Cargo", "Value": 3, "Starts At": 0 }
@@ -321,6 +334,22 @@
         },
         {
           "Text": "When you __Secure an Advantage__ by studying a newfound place from a safe position, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum and envision an unusual aspect of the site."
+        }
+      ]
+    },
+    {
+      "Name": "Fated",
+      "Category": "Path",
+      "Abilities": [
+        {
+          "Text": "Once you fill a box on your background vow progress track, mark 1 tick on your quests legacy track. When you __Fulfill Your Vow__ on the background vow, your fate is at hand. Envision your final sacrifice and take an automatic strong hit.",
+          "Enabled": true
+        },
+        {
+          "Text": "When you __Face Death__ or __Face Desolation__ while your background vow is unfulfilled, it is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as an impact (and you no longer have this protection) until you next __Reach a Milestone__ on the background vow."
+        },
+        {
+          "Text": "When you make any progress move directly related to your background vow, and roll a 10 on either challenge die, you may reroll that die. On a strong hit, take +2 momentum."
         }
       ]
     },
@@ -385,7 +414,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Take Decisive Action__ by emptying your gun (decide before rolling), you may __Sacrifice Resources__ (-2) and reroll one challenge die. If the fight continues or you are caught up another fight, __Check Your Gear__ to see if you have more ammo on-hand."
+          "Text": "When you __Take Decisive Action__ by emptying your gun (decide before rolling), you may __Sacrifice Resources__ (-1) and reroll one challenge die. If the fight continues or you are caught up another fight, __Check Your Gear__ to see if you have more ammo on-hand."
         },
         {
           "Text": "Give your favorite gun a name. When you __Clash__ with it, add +1. When you __Enter the Fray__ or __Endure Stress__ while wielding it, add +1 and take +1 momentum on a hit.",
@@ -415,7 +444,7 @@
       "Category": "Path",
       "Abilities": [
         {
-          "Text": "You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also __Endure Stress__ (-2). On a strong hit with a match, mark 1 tick on your bonds legacy track.",
+          "Text": "You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also __Endure Stress__ (-1). On a strong hit with a match, mark 1 tick on your bonds legacy track.",
           "Enabled": true
         },
         {
@@ -438,7 +467,7 @@
           "Text": "When you __Gather Information__ by studying medical evidence or biological remains, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also reveal an unexpected medical anomaly; mark 1 tick on your discoveries legacy track."
         },
         {
-          "Text": "Once every day or so, when you are in a safe place with plenty of time on your hands, you may __Sacrifice Resources__ (-2) and provide basic medical care for yourself, companions, or allies without risk. If you do, automatically give +1 health to everyone whose health is greater than 0."
+          "Text": "Once every day or so, when you are in a safe place with plenty of time on your hands, you may __Sacrifice Resources__ (-1) and provide basic medical care for yourself, companions, or allies without risk. If you do, automatically give +1 health to everyone whose health is greater than 0."
         }
       ]
     },
@@ -447,7 +476,7 @@
       "Category": "Module",
       "Abilities": [
         {
-          "Text": "When you aim your cannons and use them to __Strike__, choose one.\n  - Strafing run: Add +1 and take +1 momentum on a hit.\n  - Focus fire: Mark progress on a hit, but __Lose Momentum__ (-2).",
+          "Text": "When you aim your cannons and use them to __Strike__, choose one.\n  - Strafing run: Add +1 and take +1 momentum on a hit.\n  - Focus fire: Mark progress on a hit, but __Lose Momentum__ (-1).",
           "Enabled": true
         },
         {
@@ -519,10 +548,10 @@
           "Enabled": true
         },
         {
-          "Text": "As above, but you may instead draw on your powers in a last-ditch effort to change the outcome of an action. If you do, add +2 (after you roll) and __Lose Momentum__ (-2)."
+          "Text": "As above, but you may instead draw on your powers in a desperate effort to change the outcome of an action. If you do, add +2 (after you roll) and __Lose Momentum__ (-3)."
         },
         {
-          "Text": "If you have at least +8 momentum, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, first reset your momentum. Then, as you make a move fueled by your powers, add +1 and reroll any dice. If you are in a fight and score a hit, mark progress."
+          "Text": "If you have at least +8 momentum, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, first reset your momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress."
         }
       ]
     },
@@ -535,7 +564,7 @@
           "Enabled": true
         },
         {
-          "Text": "When any ally must __Pay the Price__, and you are in a position to bear the the cost, they take +1 momentum."
+          "Text": "When any ally must __Pay the Price__, and you are in a position to suffer the the cost of that move, your ally may take +1 momentum."
         },
         {
           "Text": "When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours."
@@ -597,17 +626,17 @@
       "Category": "Module",
       "Abilities": [
         {
-          "Text": "You have +5 missiles. When you __Strike__ or __Clash__ with a missile attack, suffer -1 missile and mark progress on a hit. If you __Resupply__ in a place where your missiles can be replenished, you may exchange any earned +supply for +missile.",
+          "Text": "You have 5 ammo. When you __Strike__ or __Clash__ with a missile attack, suffer -1 ammo and mark progress on a hit. If you __Resupply__ in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.",
           "Enabled": true
         },
         {
-          "Text": "When you __Gain Ground__ by locking a missile on target, add +1 and take +1 momentum on a hit."
+          "Text": "When you have at least 1 ammo and __Gain Ground__ by locking a missile on target, add +1 and take +1 momentum on a hit."
         },
         {
-          "Text": "If you have at least +2 missiles and __Take Decisive Action__ by unleashing them all, roll an action die before making the progress roll. If your action die is equal to or less than +missiles, you may reroll each challenge die. Then, set missiles to 0."
+          "Text": "When you have at least 3 ammo and __Take Decisive Action__ by unleashing them all, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll each challenge die. Then, set ammo to 0."
         }
       ],
-      "Track": { "Name": "Missiles", "Value": 5 }
+      "Track": { "Name": "Ammo", "Value": 5 }
     },
     {
       "Name": "Naturalist",
@@ -630,7 +659,7 @@
       "Category": "Path",
       "Abilities": [
         {
-          "Text": "When you __Set a Course__, choose one.\n  - Follow the fastest path: Take +2 momentum on a hit.\n  - Follow the safest path: Add +1\n\nOn a strong hit with a match, you charted a new path during the journey; mark 1 tick on your discoveries legacy track.",
+          "Text": "When you __Set a Course__, choose one.\n  - Follow the fastest path: Take +2 momentum on a hit.\n  - Follow the safest path: Add +1 On a strong hit with a match, you charted a new path during the journey; mark 1 tick on your discoveries legacy track.",
           "Enabled": true
         },
         {
@@ -654,7 +683,7 @@
           "Text": "When you __Secure an Advantage__ or __Compel__ by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit."
         },
         {
-          "Text": "When you __Fulfill Your Vow__ on the marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset."
+          "Text": "When you __Fulfill Your Vow__ on the marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset. Once the asset is discarded, you may not take it again."
         }
       ]
     },
@@ -667,7 +696,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Sacrifice Resources__ and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -1 momentum in exchange for +1 supply. On a miss, your supply remains at 0 and you __Lose Momentum__ (-2)."
+          "Text": "When you __Sacrifice Resources__ and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -1 momentum in exchange for +1 supply. On a miss, your supply remains at 0 and you __Lose Momentum__ (-1)."
         },
         {
           "Text": "When you __Sojourn__ and score a strong hit with a match, you encounter someone who knows or understands you. You may __Make a Connection__ with an automatic strong hit and mark one extra tick on your bonds legacy track."
@@ -680,14 +709,14 @@
       "Fields": ["Name"],
       "Abilities": [
         {
-          "Text": "Your AI module keeps watch over the vehicle’s systems and sensor data. When you __Secure an Advantage__ or __Gain Ground__ by talking through a situation with the overseer, you may roll +your vehicle’s integrity. If you do, take +1 momentum on a hit.",
+          "Text": "Your AI module keeps watch over the vehicle’s systems and sensor data. When you __Secure an Advantage__ or __Gain Ground__ by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.",
           "Enabled": true
         },
         {
           "Text": "When you __Withstand Damage__ and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result."
         },
         {
-          "Text": "The overseer can pilot the vehicle independently. When you __Face Danger__ to hand over control to the AI in an emergency, or to summon the vehicle remotely, you may roll +your vehicle’s integrity. If you do, take +1 momentum on a hit."
+          "Text": "The overseer can pilot the vehicle independently. When you __Face Danger__ to hand over control to the AI in an emergency, or to summon the vehicle remotely, you may roll +integrity. If you do, take +1 momentum on a hit."
         }
       ]
     },
@@ -746,11 +775,11 @@
       "Fields": ["Name"],
       "Abilities": [
         {
-          "Text": "Your rockhorn uses its resilient, stone-like carapace and brute strength to overcome threats. When you make a move by sending your rockhorn to directly attack a foe or smash an obstacle, roll +its health.",
+          "Text": "Your rockhorn uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending your rockhorn to directly attack a foe or smash an obstacle, roll +its health.",
           "Enabled": true
         },
         {
-          "Text": "When you make the __Companion Takes a Hit__ move for your rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it instoppable; give it another +1 health or take +1 momentum."
+          "Text": "When you make the __Companion Takes a Hit__ move for your rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum."
         },
         {
           "Text": "Your rockhorn will come to your aid in your most vulnerable moments. When you __Endure Harm__ or __Endure Stress__ and roll a miss, you may reroll your action die if its value is less than your rockhorn’s health."
@@ -813,7 +842,7 @@
       "Category": "Path",
       "Abilities": [
         {
-          "Text": "Through focused meditation, you may peer through the veils of reality to __Gather Information__ about a place, being, or event (in person or at a distance). If you do, roll +spirit. On a strong hit with a match, you experience a surprising but helpful revelation; take +2 momentum. On a miss with a match, you are plagued by visions of a dire threat or complication; __Endure Stress__ (-2).",
+          "Text": "Through focused meditation, you may peer through the veils of reality to __Gather Information__ about a place, being, or event (in person or at a distance). If you do, roll +spirit. On a strong hit with a match, you experience a surprising but helpful revelation; take +2 momentum. On a miss with a match, you are plagued by visions of a dire threat or complication; __Endure Stress__ (-3).",
           "Enabled": true
         },
         {
@@ -836,7 +865,7 @@
           "Text": "When you __Secure an Advantage__ or __Gather Information__ by scanning your vehicle’s surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.\n  - Manual scan: Add +1\n  - Automated scan: Instead of rolling the action die, make it the value of your vehicle’s integrity"
         },
         {
-          "Text": "When you __Enter the Fray__ against an ambush, or __Face Danger__ to detect a hidden threat, you may roll +your vehicle’s integrity. If you do, reroll any dice and take +1 momentum on a hit."
+          "Text": "When you __Enter the Fray__ against an ambush, or __Face Danger__ to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit."
         }
       ]
     },
@@ -853,7 +882,7 @@
           "Text": "When you __Face Danger__, __Gain Ground__, or __React Under Fire__ by maneuvering your pod through a hazardous or obstructed area, choose an approach and roll +integrity.\n  - Careful: Add +2 and __Lose Momentum__ (-1)\n  - Reckless: Take +1 momentum on a hit"
         },
         {
-          "Text": "When you make a move while controllingthe pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, __Withstand Damage__ (-1)."
+          "Text": "When you make a move while controllingthe pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, __Withstand Damage__ (-2)."
         }
       ],
       "Track": { "Name": "Integrity", "Value": 4 }
@@ -879,7 +908,7 @@
       "Category": "Module",
       "Abilities": [
         {
-          "Text": "When you raise your shields, roll +your vehicle’s integrity or +wits. On a strong hit, set your shields to +4. On a weak hit, make them +3. On a miss, make them +2 but __Lose Momentum__ (-2). Then, if you __Withstand Damage__, ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.",
+          "Text": "When you raise your shields, roll +your vehicle’s integrity or +wits. On a strong hit, set your shields to +4. On a weak hit, make them +3. On a miss, make them +2 but __Lose Momentum__ (-1). Then, if you __Withstand Damage__, ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.",
           "Enabled": true
         },
         {
@@ -915,7 +944,7 @@
       "Fields": ["Name", "Expertise"],
       "Abilities": [
         {
-          "Text": "Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by your sidekick’s expertise, you may reroll your action die if its value is less than your sidekick’s health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.",
+          "Text": "Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick’s health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.",
           "Enabled": true
         },
         {
@@ -998,18 +1027,18 @@
       "Track": { "Name": "Integrity", "Value": 5 }
     },
     {
-      "Name": "Stealth Refit",
+      "Name": "Stealth Tech",
       "Category": "Module",
       "Abilities": [
         {
-          "Text": "Your vehicle is equipped with stealth tech. When you __Undertake an Expedition__ (+shadow), and roll a 1 on your action die, you may reroll it.",
+          "Text": "When you make a move against a specific foe or threat to avoid detection, add +1. If you __Enter the Fray__ by ambushing an unaware foe, add +1 and mark progress on a strong hit.",
           "Enabled": true
         },
         {
-          "Text": "When you make a move against a specific foe or threat to avoid detection, add +1. If you __Enter the Fray__ by ambushing an unaware foe, add +1 and mark progress on a strong hit."
+          "Text": "When you __Undertake an Expedition__ (+shadow), and roll a 1 on your action die, you may reroll it."
         },
         {
-          "Text": "When you are poised to __Strike__ from hiding, you may roll +shadow. If you do, choose one (before rolling).\n  - __Strike__ true: Reroll any dice.\n  - __Strike__ hard: Mark progress on a hit.\n\nOn a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next __Strike__."
+          "Text": "When you are poised to __Strike__ from hiding, you may roll +shadow. If you do, choose one (before rolling).\n  - __Strike__ true: Reroll any dice.\n  - __Strike__ hard: Mark progress on a hit. On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next __Strike__."
         }
       ]
     },
@@ -1019,11 +1048,11 @@
       "Fields": ["Name"],
       "Abilities": [
         {
-          "Text": "Your survey bot scans the path ahead. When you __Undertake an Expedition__ (+wits) overland or within a site or journey, add +1.",
+          "Text": "Your survey bot scans the path ahead. When you __Undertake an Expedition__ (+wits) overland or within a site, add +1.",
           "Enabled": true
         },
         {
-          "Text": "Once per expedition, when you __Secure an Advantage__ by sending your bot to scout ahead, roll +its health. On a strong hit, also mark progress on the expedition. On a strong hit with a match, your bot uncovers an unexpected feature or location; envision what it reveals and take +2 momentum."
+          "Text": "Once per expedition, when you __Secure an Advantage__ by sending your bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, your bot uncovers an unexpected feature or location; envision what it reveals and take +2 momentum."
         },
         {
           "Text": "When you __Gather Information__ using your bot’s sensors to analyze an object or carefully search a location, or __Face Danger__ to detect a threat, roll +its health and take +1 momentum on a hit."
@@ -1073,7 +1102,7 @@
       "Category": "Path",
       "Abilities": [
         {
-          "Text": "When you __Sojourn__ or __Compel__, you may roll +supply. If you do, suffer -1 supply.",
+          "Text": "When you __Sojourn__ or __Compel__, you may roll +supply. If you do, __Sacrifice Resources__ (-1).",
           "Enabled": true
         },
         {
@@ -1090,14 +1119,14 @@
       "Fields": ["Name"],
       "Abilities": [
         {
-          "Text": "Your utility bot has helpful tools at-hand. When you make a move by commanding your bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit.",
+          "Text": "Your utility bot has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.",
           "Enabled": true
         },
         {
-          "Text": "When you __Repair__ aided by your bot, add +1. On a miss, your companion reveals an alternative approach at a cost; you may reroll any dice, but first __Lose Momentum__ (-2) or __Sacrifice Resources__ (-2)."
+          "Text": "When you __Repair__ aided by your bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first __Lose Momentum__ (-2)."
         },
         {
-          "Text": "When you use one of the bot’s abilities and score a strong hit with a match, your companion also reveals an unexpected advantage or insight; take +2 momentum."
+          "Text": "When you __Check Your Gear__ to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit."
         }
       ],
       "Track": { "Name": "Health", "Value": 4 }
@@ -1128,7 +1157,7 @@
           "Enabled": true
         },
         {
-          "Text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may __Ask the Oracle__ using the yes/no table if something can be salvaged from the mess. Make it '50/50'. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you __Repair__ and bring it back to full working order, the vehicle is battered with 0 integrity."
+          "Text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may __Ask the Oracle__ using the yes/no table if something can be salvaged from the mess. Make it ‘50/50’. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you __Repair__ and bring it back to full working order, the vehicle is battered with 0 integrity."
         },
         {
           "Text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit."
@@ -1173,7 +1202,7 @@
       "Category": "Path",
       "Abilities": [
         {
-          "Text": "You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, __Lose Momentum__ (-2).",
+          "Text": "You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, __Lose Momentum__ (-1).",
           "Enabled": true
         },
         {
@@ -1211,7 +1240,7 @@
           "Enabled": true
         },
         {
-          "Text": "When you __Strike__ using a personal weapon which has limited ammo or a single-use mode, add +1 and mark progress on a hit. Then, __Sacrifice Resources__ (-2). If you score a strong hit on this attack and immediately __Take Decisive Action__, you may retain the value of one challenge die from your __Strike__ action instead of rolling that die."
+          "Text": "When you __Strike__ using a personal weapon which has limited ammo or a single-use mode, add +1 and mark progress on a hit. Then, __Sacrifice Resources__ (-1). If you score a strong hit on this attack and immediately __Take Decisive Action__, you may retain the value of one challenge die from your __Strike__ action instead of rolling that die."
         },
         {
           "Text": "When you __Secure an Advantage__ by suiting up and gathering your gear for a perilous encounter or mission, you may roll +supply. If you do, take +2 momentum on a hit."
