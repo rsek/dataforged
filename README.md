@@ -15,6 +15,11 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
   * move glossary entries from backer preview
   * documentation of json keys and oracle meta-information
 
+## Licensing
+*Ironsworn: Starforged* is in development, and this content is not yet licensed for non-personal use without explicit permission of [Shawn Tomkin](https://www.ironswornrpg.com/).
+
+A permissive Creative Commons license for non-commercial and commercial projects will be attached to this content in the future.
+
 ## Oracle Tables
 
 Square brackets in an oracle result represent a special result like "roll twice".
