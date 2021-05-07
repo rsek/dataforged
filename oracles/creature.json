@@ -17,24 +17,30 @@
     {
       "Name": "Scale",
       "Initial": true,
+      "Tags": ["adjective"],
       "Table": [
-        { "Chance": 3, "Description": "Minuscule (bug-sized)" },
-        { "Chance": 10, "Description": "Tiny (rodent-sized)" },
-        { "Chance": 25, "Description": "Small (dog-sized)" },
-        { "Chance": 60, "Description": "Medium (person-sized)" },
-        { "Chance": 90, "Description": "Large (vehicle-sized)" },
-        { "Chance": 99, "Description": "Huge (whale-sized)" },
+        { "Chance": 3, "Description": "Minuscule", "Details": "bug-sized" },
+        { "Chance": 10, "Description": "Tiny", "Details": "rodent-sized" },
+        { "Chance": 25, "Description": "Small", "Details": "dog-sized" },
+        { "Chance": 60, "Description": "Medium", "Details": "person-sized" },
+        { "Chance": 90, "Description": "Large", "Details": "vehicle-sized" },
+        { "Chance": 99, "Description": "Huge", "Details": "whale-sized" },
         { "Chance": 100, "Description": "▶️Ultra-scale" }
       ]
     },
     {
       "Name": "Ultra-scale",
       "Initial": true,
+      "Tags": ["adjective"],
       "Requires": { "Scale": "Ultra-scale" },
       "Table": [
-        { "Chance": 89, "Description": "Titanic (hill-sized)" },
-        { "Chance": 99, "Description": "Colossal (mountain-sized)" },
-        { "Chance": 100, "Description": "Vast (planet-sized)" }
+        { "Chance": 89, "Description": "Titanic", "Details": "hill-sized" },
+        {
+          "Chance": 99,
+          "Description": "Colossal",
+          "Details": "mountain-sized"
+        },
+        { "Chance": 100, "Description": "Vast", "Details": "planet-sized" }
       ]
     },
     {
@@ -42,6 +48,7 @@
       "Tables": [
         {
           "Initial": true,
+          "Tags": ["fragment"],
           "Requires": { "Environment": "Space" },
           "Table": [
             { "Chance": 5, "Description": "Amoeba / pseudopods" },
@@ -66,6 +73,7 @@
         },
         {
           "Initial": true,
+          "Tags": ["fragment"],
           "Requires": { "Environment": "Interior" },
           "Table": [
             { "Chance": 3, "Description": "Amoeba / pseudopods" },
@@ -90,6 +98,7 @@
         },
         {
           "Initial": true,
+          "Tags": ["fragment"],
           "Requires": { "Environment": "Land" },
           "Table": [
             { "Chance": 2, "Description": "Amoeba / pseudopods" },
@@ -114,6 +123,7 @@
         },
         {
           "Initial": true,
+          "Tags": ["fragment"],
           "Requires": { "Environment": "Liquid" },
           "Table": [
             { "Chance": 5, "Description": "Amoeba / pseudopods" },
@@ -138,6 +148,7 @@
         },
         {
           "Initial": true,
+          "Tags": ["fragment"],
           "Requires": { "Environment": "Air" },
           "Table": [
             { "Chance": 2, "Description": "Amoeba / pseudopods" },
@@ -165,6 +176,7 @@
     {
       "Name": "First Look",
       "Initial": true,
+      "Tags": ["fragment"],
       "Min rolls": 2,
       "Max rolls": 2,
       "Table": [
@@ -222,6 +234,7 @@
     },
     {
       "Name": "Encountered Behavior",
+      "Tags": ["noun"],
       "Initial": true,
       "Table": [
         { "Chance": 5, "Description": "Ambusher" },
@@ -249,6 +262,7 @@
     },
     {
       "Name": "Revealed Aspect",
+      "Tags": ["fragment"],
       "Max rolls": 2,
       "Table": [
         { "Chance": 2, "Description": "Alternative environment" },
