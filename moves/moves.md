@@ -1,4 +1,4 @@
-# Starforged Playtest Moves (040521)
+# Starforged Playtest Moves (042721)
 
 ## Adventure Moves
 
@@ -188,7 +188,8 @@ On a **miss**, this relationship does not survive the test. Choose one.
 
 ### Undertake an Expedition
 
-When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site, give the expedition a name and rank.
+**When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank.
+
 Then, for each segment of the expedition, envision your approach. If you...
 
   * Move at speed: Roll +edge
@@ -249,31 +250,31 @@ On a **miss**, you are waylaid by a significant threat, and must [Pay the Price]
 
 **When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.
 
-Roll   | Result
--------|---------------------------------------------------------------
-1-4    | Advanced technology waiting to be harnessed or salvaged
-5-8    | Ancient archive or message
-9-10   | Artificial consciousness evolved to a higher state
-11-12  | Clues to a crucial resource or uncharted domain
-13-14  | Envoy from another time or reality
-15-22  | Extraordinary natural phenomenon
-23-24  | First contact with intelligent life
-25-26  | Gateway to another time or alternate reality
-27-28  | Key to unlocking a language or method of communication
-29-34  | Lost or hidden people
-35-42  | Majestic or unusual lifeforms
-43-46  | Marvel of ancient engineering
-47-50  | Miraculously preserved artifact or specimen
-51-56  | Monumental architecture or artistry of an ancient civilization
-57-62  | Mysterious device or artifact of potential value
-63-66  | New understanding of an enduring mystery
-67-68  | Pathway or means of travel to a distant location
-69-70  | Person or lifeform with phenomenal abilities
-71-78  | Place of awe-inspiring beauty
-79-86  | Rare and valuable resource
-87-88  | Safeguarded or idyllic location
-89-90  | Visions or prophesies of the future
-91-100 | Roll Twice
+| Roll   | Result                                                         |
+| ------ | -------------------------------------------------------------- |
+| 1-4    | Advanced technology waiting to be harnessed or salvaged        |
+| 5-8    | Ancient archive or message                                     |
+| 9-10   | Artificial consciousness evolved to a higher state             |
+| 11-12  | Clues to a crucial resource or uncharted domain                |
+| 13-14  | Envoy from another time or reality                             |
+| 15-22  | Extraordinary natural phenomenon                               |
+| 23-24  | First contact with intelligent life                            |
+| 25-26  | Gateway to another time or alternate reality                   |
+| 27-28  | Key to unlocking a language or method of communication         |
+| 29-34  | Lost or hidden people                                          |
+| 35-42  | Majestic or unusual lifeforms                                  |
+| 43-46  | Marvel of ancient engineering                                  |
+| 47-50  | Miraculously preserved artifact or specimen                    |
+| 51-56  | Monumental architecture or artistry of an ancient civilization |
+| 57-62  | Mysterious device or artifact of potential value               |
+| 63-66  | New understanding of an enduring mystery                       |
+| 67-68  | Pathway or means of travel to a distant location               |
+| 69-70  | Person or lifeform with phenomenal abilities                   |
+| 71-78  | Place of awe-inspiring beauty                                  |
+| 79-86  | Rare and valuable resource                                     |
+| 87-88  | Safeguarded or idyllic location                                |
+| 89-90  | Visions or prophesies of the future                            |
+| 91-100 | Roll Twice                                                     |
 
 ### Confront Chaos
 
@@ -281,31 +282,31 @@ Roll   | Result
 
 For each result, when you first confront that aspect within the scope of the encounter, you and your allies may mark one tick on your discoveries legacy track.
 
-Roll   | Result
--------|---------------------------------------------
-1-4    | Baneful weapon of mass destruction
-5-9    | Cataclysmic environmental effects
-10-12  | Dead given unnatural life
-13-17  | Destructive lifeform of monstrous proportion
-18-20  | Dread hallucinations or illusions
-21-24  | Harbingers of an imminent invasion
-25-27  | Horde of insatiable hunger or fury
-28-32  | Horrific lifeforms of inscrutable purpose
-33-36  | Impostors in human form
-37-41  | Machines made enemy
-42-45  | Malignant contagion or parasite
-46-50  | Messenger or signal with a dire warning
-51-53  | Passage to a grim alternate reality
-54-58  | People corrupted by chaos
-59-63  | Powerful distortions of time or space
-64-68  | Signs of an impending catastrophe
-69-72  | Site of a baffling disappearance
-73-77  | Site of a horrible disaster
-78-82  | Site of terrible carnage
-83-87  | Technology nullified or made unstable
-88-92  | Technology warped for dark purpose
-93-96  | Vault of dread technology or power
-97-100 | Worshipers of great and malevolent powers
+| Roll   | Result                                       |
+| ------ | -------------------------------------------- |
+| 1-4    | Baneful weapon of mass destruction           |
+| 5-9    | Cataclysmic environmental effects            |
+| 10-12  | Dead given unnatural life                    |
+| 13-17  | Destructive lifeform of monstrous proportion |
+| 18-20  | Dread hallucinations or illusions            |
+| 21-24  | Harbingers of an imminent invasion           |
+| 25-27  | Horde of insatiable hunger or fury           |
+| 28-32  | Horrific lifeforms of inscrutable purpose    |
+| 33-36  | Impostors in human form                      |
+| 37-41  | Machines made enemy                          |
+| 42-45  | Malignant contagion or parasite              |
+| 46-50  | Messenger or signal with a dire warning      |
+| 51-53  | Passage to a grim alternate reality          |
+| 54-58  | People corrupted by chaos                    |
+| 59-63  | Powerful distortions of time or space        |
+| 64-68  | Signs of an impending catastrophe            |
+| 69-72  | Site of a baffling disappearance             |
+| 73-77  | Site of a horrible disaster                  |
+| 78-82  | Site of terrible carnage                     |
+| 83-87  | Technology nullified or made unstable        |
+| 88-92  | Technology warped for dark purpose           |
+| 93-96  | Vault of dread technology or power           |
+| 97-100 | Worshipers of great and malevolent powers    |
 
 ## Combat Moves
 
@@ -400,14 +401,14 @@ On a **strong hit**, you prevail. Take +1 momentum. If any objectives remain and
 
 On a **weak hit**, you achieve your objective, but not without cost. Roll on the table below or choose one. If the fight continues, you are in a bad spot.
 
-Roll   | Result
--------|-----------------------------------------------------------------------
-1-40   | It’s worse than you thought: You or an ally make a suffer move (-2)
-41-52  | The victory is short-lived: A new peril or foe is revealed
-53-64  | You face collateral damage: Something is lost, damaged, or broken
-65-76  | Others pay the price: Someone else suffers the cost
-77-88  | Others won’t forget: You are marked for vengeance
-89-100 | It gets complicated: The true nature of a foe or objective is revealed
+| Roll   | Result                                                                 |
+| ------ | ---------------------------------------------------------------------- |
+| 1-40   | It’s worse than you thought: You or an ally make a suffer move (-2)    |
+| 41-52  | The victory is short-lived: A new peril or foe is revealed             |
+| 53-64  | You face collateral damage: Something is lost, damaged, or broken      |
+| 65-76  | Others pay the price: Someone else suffers the cost                    |
+| 77-88  | Others won’t forget: You are marked for vengeance                      |
+| 89-100 | It gets complicated: The true nature of a foe or objective is revealed |
 
 On a **miss**, you are defeated or your objective is lost. [Pay the Price](#Pay-the-Price).
 
@@ -453,17 +454,17 @@ On a **weak hit**, if you are not wounded, you may [Lose Momentum](#Lose-Momentu
 
 On a **miss**, it’s worse than you thought. Suffer an additional -1 health or [Lose Momentum](#Lose-Momentum) (-2). If your health is 0, you must also mark **wounded** or **permanently harmed**, or roll on the table below.
 
-Roll   | Result
--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1-10   | You suffer mortal harm. [Face Death](#Face-Death).
-11-20  | You are dying. Within an hour or two, you must [Heal](#Heal) and raise your health above 0, or [Face Death](#Face-Death).
-21-35  | You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](#Face-Death).
-36-50  | You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move).
-51-100 | You are still standing.
+| Roll   | Result  |
+|--------|---------|
+| 1-10   | You suffer mortal harm. [Face Death](#Face-Death). |
+| 11-20  | You are dying. Within an hour or two, you must [Heal](#Heal) and raise your health above 0, or [Face Death](#Face-Death). |
+| 21-35  | You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](#Face-Death). |
+| 36-50  | You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move). |
+| 51-100 | You are still standing. |
 
 ### Endure Stress
 
-**When you face mental strain, shock, or despair**, suffer -1 spirit for minor stress, -2 for serious stress, or -3 for major stress. If your spirit is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining stress
+**When you face mental strain, shock, or despair**, suffer -1 spirit for minor stress, -2 for serious stress, or -3 for major stress. If your spirit is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining stress.
 
 Then, if your spirit is 0 or you choose to resist the stress, roll +spirit or +heart, whichever is higher.
 
@@ -476,12 +477,12 @@ On a **weak hit**, if you are not shaken, you may [Lose Momentum](#Lose-Momentum
 
 On a **miss**, it’s worse than you thought. Suffer an additional -1 spirit or [Lose Momentum](#Lose-Momentum) (-2). If your spirit is 0, you must also mark shaken or traumatized, or roll on the table below.
 
-Roll   | Result
--------|--------------------------------------------------------------------------
-1-10   | You are overwhelmed. [Face Desolation](#Face-Desolation).
-11-25  | You give up. [Forsake Your Vow](#Forsake-Your-Vow).
-26-50  | You give in to fear or compulsion, and act against your better instincts.
-51-100 | You persevere.
+| Roll   | Result                                                                    |
+| ------ | ------------------------------------------------------------------------- |
+| 1-10   | You are overwhelmed. [Face Desolation](#Face-Desolation).                 |
+| 11-25  | You give up. [Forsake Your Vow](#Forsake-Your-Vow).                       |
+| 26-50  | You give in to fear or compulsion, and act against your better instincts. |
+| 51-100 | You persevere.                                                            |
 
 ### Withstand Damage
 
@@ -502,16 +503,16 @@ On a **miss**, it’s worse than you thought. Suffer an additional -1 integrity 
   * **Support vehicle:** Mark the vehicle as battered or roll on the table below. If the vehicle is destroyed, discard the asset.
   * **Incidental vehicle:** Roll on the table below.
 
-Roll   | Result
--------|---------------------------------------------------------------------------------------------------------------------------------------------------------
-1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), as appropriate.
-11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), as appropriate.
-26-40  | Destruction is imminent, but can be averted if you [Repair](#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.
-41-55  | You cannot [Repair](#Repair) this vehicle until you [Resupply](#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.
-56-70  | The vehicle is crippled or out of your control. To get it back in action, you must [Repair](#Repair) and raise its integrity above 0.
-71-85  | It’s a rough ride. All aboard suffer must make the [Endure Harm](#Endure-Harm), [Endure Stress](#Endure-Stress), or [Companion Takes a Hit](#Companion-Takes-a-Hit) move, suffering a serious (-2) cost.
-86-95  | You’ve lost fuel, energy, or cargo. [Sacrifice Resources](#Sacrifice-Resources) (-2).
-96-100 | Against all odds, the vehicle holds together.
+| Roll   | Result                                                                                                                                                                                                   |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), as appropriate.                                                                            |
+| 11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), as appropriate.                               |
+| 26-40  | Destruction is imminent, but can be averted if you [Repair](#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.                                                               |
+| 41-55  | You cannot [Repair](#Repair) this vehicle until you [Resupply](#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.                                 |
+| 56-70  | The vehicle is crippled or out of your control. To get it back in action, you must [Repair](#Repair) and raise its integrity above 0.                                                                    |
+| 71-85  | It’s a rough ride. All aboard suffer must make the [Endure Harm](#Endure-Harm), [Endure Stress](#Endure-Stress), or [Companion Takes a Hit](#Companion-Takes-a-Hit) move, suffering a serious (-2) cost. |
+| 86-95  | You’ve lost fuel, energy, or cargo. [Sacrifice Resources](#Sacrifice-Resources) (-2).                                                                                                                    |
+| 96-100 | Against all odds, the vehicle holds together.                                                                                                                                                            |
 
 ### Companion Takes a Hit
 
@@ -563,7 +564,8 @@ On a **miss**, you succumb to despair or horror and are lost.
 
 ***Progress Move***
 
-**When your command vehicle is destroyed**, you must discard the asset, along with any modules and docked support vehicles.
+**When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
+
 If you survive, you may use your connections to replace some of what was lost. To learn the cost, roll the challenge dice and compare to the progress on your bonds legacy track.
 
 On a **strong hit**, you may call in a favor. This comes without conditions.
@@ -623,11 +625,11 @@ On a **miss**, you take no comfort and the situation worsens. [Pay the Price](#P
 
 On a **hit**, you gain repair points as appropriate to the situation, per the table below. Additionally, you may [Sacrifice Resources](#Sacrifice-Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).
 
-Situation     | Strong Hit | Weak Hit
---------------|------------|---------
-At a facility | 5 points   | 3 points
-In the field  | 3 points   | 1 points
-Under fire    | 2 points   | 0 points
+| Situation     | Strong Hit | Weak Hit |
+| ------------- | ---------- | -------- |
+| At a facility | 5 points   | 3 points |
+| In the field  | 3 points   | 1 points |
+| Under fire    | 2 points   | 0 points |
 
 Spend repair points as follows. Unused points are discarded.
 
@@ -700,28 +702,28 @@ For each **miss**, choose one.
   * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the current situation.
   * Roll on the table below. If you have difficulty interpreting the result to fit the current situation, roll again.
 
-Roll   | Result
--------|---------------------------------------------------------------------
-1-2    | A trusted individual or community acts against you
-3-4    | An individual or community you care about is exposed to danger
-5-7    | You encounter signs of a looming threat
-8-10   | You create an opportunity for an enemy
-11-14  | You face a tough choice
-15-18  | You face the consequences of an earlier choice
-19-22  | A surprising development complicates your quest
-23-26  | You are separated from something or someone
-27-32  | Your action causes collateral damage or has an unintended effect
-33-38  | Something of value is lost or destroyed
-39-44  | The environment or terrain introduces a new hazard
-45-50  | A new enemy is revealed
-51-56  | A friend, companion, or ally is in harm’s way (or you are, if alone)
-57-62  | Your equipment or vehicle malfunctions
-63-68  | Your vehicle suffers damage
-69-74  | You waste resources
-75-81  | You are harmed
-82-88  | You are stressed
-89-95  | You are delayed or put at a disadvantage
-96-100 | Roll twice
+| Roll   | Result                                                               |
+| ------ | -------------------------------------------------------------------- |
+| 1-2    | A trusted individual or community acts against you                   |
+| 3-4    | An individual or community you care about is exposed to danger       |
+| 5-7    | You encounter signs of a looming threat                              |
+| 8-10   | You create an opportunity for an enemy                               |
+| 11-14  | You face a tough choice                                              |
+| 15-18  | You face the consequences of an earlier choice                       |
+| 19-22  | A surprising development complicates your quest                      |
+| 23-26  | You are separated from something or someone                          |
+| 27-32  | Your action causes collateral damage or has an unintended effect     |
+| 33-38  | Something of value is lost or destroyed                              |
+| 39-44  | The environment or terrain introduces a new hazard                   |
+| 45-50  | A new enemy is revealed                                              |
+| 51-56  | A friend, companion, or ally is in harm’s way (or you are, if alone) |
+| 57-62  | Your equipment or vehicle malfunctions                               |
+| 63-68  | Your vehicle suffers damage                                          |
+| 69-74  | You waste resources                                                  |
+| 75-81  | You are harmed                                                       |
+| 82-88  | You are stressed                                                     |
+| 89-95  | You are delayed or put at a disadvantage                             |
+| 96-100 | Roll twice                                                           |
 
 ### Ask the Oracle
 
@@ -732,12 +734,12 @@ Roll   | Result
   * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.
   * Pick two: Envision two options. Rate one as ‘likely’, and roll on the table below to see if it is true. If not, it is the other.
 
-Odds           | The answer is ‘yes’ if you roll...
----------------|-----------------------------------
-Almost Certain | 11 or greater
-Likely         | 26 or greater
-50/50          | 51 or greater
-Unlikely       | 76 or greater
-Small Chance   | 91 or greater
+| Odds           | The answer is ‘yes’ if you roll... |
+| -------------- | ---------------------------------- |
+| Almost Certain | 11 or greater                      |
+| Likely         | 26 or greater                      |
+| 50/50          | 51 or greater                      |
+| Unlikely       | 76 or greater                      |
+| Small Chance   | 91 or greater                      |
 
 On a match, an extreme result or twist has occurred.
