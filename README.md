@@ -39,4 +39,6 @@ This doesn't apply to `moves/moves.md`, which formats move references as inline 
 
 ## Credits
 
-Dataforged began as an unofficial personal project of [rsek](https://github.com/XenotropicDev) and continues to be maintained by them in its official capacity. Thanks to [XenotropicDev](https://github.com/XenotropicDev) for letting me use the data from [TheOracle](https://github.com/XenotropicDev/TheOracle) (a Discord bot for use with Ironsworn and Starforged) as the nucleus of the original!
+Dataforged began as an unofficial personal project of [rsek](https://github.com/rsek) and continues to be maintained by them in its official capacity.
+
+Thanks to [XenotropicDev](https://github.com/XenotropicDev) for allowing me to use [TheOracle](https://github.com/XenotropicDev/TheOracle) (a Discord bot for use with Ironsworn and Starforged) as the nucleus of the original!
