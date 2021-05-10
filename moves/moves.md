@@ -106,6 +106,7 @@ On a **miss**, you face a significant obstacle before you can make progress on y
 ### Forsake Your Vow
 
 **When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.
+
 Then, envision the impact of this failure and choose one or more as appropriate to the nature of the vow. Any allies who shared this vow may also envision a cost.
 
   * You are demoralized or dispirited: [Endure Stress](#Endure-Stress).
