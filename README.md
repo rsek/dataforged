@@ -31,12 +31,6 @@ Square brackets in an oracle result represent a special result like "Roll twice"
 
 References to other oracle tables are prefixed with ▶️
 
-## A Note on Markdown
-
-In the JSON files, markdown is used to convey the formatting of the original rules text where possible. There's no standard markdown for underlining (which is typically reserved for links), so instead double underscores like `__text__` represents underlined text (which is what Discord uses), while `**text**` for bold text. Most MD implementations (including Github's) interpret `__text__` as bolded text, though.
-
-This doesn't apply to `moves/moves.md`, which formats move references as inline links instead.
-
 ## Credits
 
 Dataforged began as an unofficial personal project of [rsek](https://github.com/rsek) and continues to be maintained by them in its official capacity.
