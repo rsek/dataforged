@@ -31,12 +31,12 @@
           "Trouble",
           "Authority"
         ],
-        "Requires": { "Type": "Derelict settlement" }
+        "Requires": { "Derelict Type": "Settlement" }
       },
       {
         "From": "Starship",
-        "Oracles": ["Name", "First Look", "Type"],
-        "Requires": { "Type": "Derelict starship" }
+        "Oracles": ["Name", "First Look", "Starship Type"],
+        "Requires": { "Derelict Type": "Starship" }
       },
       {
         "From": "Space",
@@ -48,7 +48,7 @@
         "Oracles": ["Stellar Object"],
         "Requires": {
           "Location": ["Deep Space"],
-          "Type": ["Derelict settlement"]
+          "Derelict Type": ["Settlement"]
         }
       },
       {
@@ -66,29 +66,29 @@
       [61, 100, "Deep Space"]
     ]
   },
-  "Type": [
+  "Derelict Type": [
     {
       "Requires": { "Location": "Planetside" },
       "Initial": true,
       "Table": [
-        [1, 25, "Derelict starship"],
-        [26, 100, "Derelict settlement"]
+        [1, 25, "Starship"],
+        [26, 100, "Settlement"]
       ]
     },
     {
       "Requires": { "Location": "Orbital" },
       "Initial": true,
       "Table": [
-        [1, 40, "Derelict starship"],
-        [41, 100, "Derelict settlement"]
+        [1, 40, "Starship"],
+        [41, 100, "Settlement"]
       ]
     },
     {
       "Requires": { "Location": "Deep Space" },
       "Initial": true,
       "Table": [
-        [1, 75, "Derelict starship"],
-        [76, 100, "Derelict settlement"]
+        [1, 75, "Starship"],
+        [76, 100, "Settlement"]
       ]
     }
   ],
