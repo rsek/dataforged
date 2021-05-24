@@ -9,34 +9,29 @@
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Thumbnail": "https://i.imgur.com/Syhr8rp.png",
   "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+  "Sample Names": [
+    "Chiron",
+    "Demeter",
+    "Erebos",
+    "Erembour",
+    "Feronia",
+    "Fortuna",
+    "Gaia",
+    "Harbinger",
+    "Haven",
+    "Hope",
+    "Morpheus",
+    "Nemus",
+    "Sapphire",
+    "Serenity",
+    "Sif",
+    "Silva",
+    "Sirona",
+    "Solstice",
+    "Vale",
+    "Valinor"
+  ],
   "Oracles": [
-    {
-      "Name": "Name",
-      "Tags": ["proper noun", "noun"],
-      "Initial": true,
-      "Table": [
-        "Chiron",
-        "Demeter",
-        "Erebos",
-        "Erembour",
-        "Feronia",
-        "Fortuna",
-        "Gaia",
-        "Harbinger",
-        "Haven",
-        "Hope",
-        "Morpheus",
-        "Nemus",
-        "Sapphire",
-        "Serenity",
-        "Sif",
-        "Silva",
-        "Sirona",
-        "Solstice",
-        "Vale",
-        "Valinor"
-      ]
-    },
     {
       "Name": "Atmosphere",
       "Initial": true,
@@ -134,7 +129,21 @@
       ]
     },
     {
+      "Name": "Diversity",
+      "Table": [
+        { "Chance": 20, "Description": "Simple (two biomes)", "Value": 2 },
+        { "Chance": 70, "Description": "Diverse (three biomes)", "Value": 3 },
+        { "Chance": 90, "Description": "Complex (four biomes)", "Value": 4 },
+        {
+          "Chance": 100,
+          "Description": "Garden world (five or more biomes)",
+          "Value": 5
+        }
+      ]
+    },
+    {
       "Name": "Biomes",
+      "Tags": ["noun"],
       "Table": [
         { "Chance": 5, "Description": "Caves" },
         { "Chance": 10, "Description": "Cold forest" },
@@ -159,19 +168,6 @@
       ],
       "Min rolls": 2,
       "Max rolls": 5
-    },
-    {
-      "Name": "Diversity",
-      "Table": [
-        { "Chance": 20, "Description": "Simple (two biomes)", "Value": 2 },
-        { "Chance": 70, "Description": "Diverse (three biomes)", "Value": 3 },
-        { "Chance": 90, "Description": "Complex (four biomes)", "Value": 4 },
-        {
-          "Chance": 100,
-          "Description": "Garden world (five or more biomes)",
-          "Value": 5
-        }
-      ]
     }
   ]
 }
