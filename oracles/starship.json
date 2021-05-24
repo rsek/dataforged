@@ -8,7 +8,6 @@
     {
       "Name": "Name",
       "Tags": ["proper noun", "noun"],
-      "Initial": true,
       "Table": [
         { "Chance": 1, "Description": "Arclight" },
         { "Chance": 2, "Description": "Argent Arrow" },
@@ -113,7 +112,7 @@
       ]
     },
     {
-      "Name": "Type",
+      "Name": "Starship Type",
       "Initial": true,
       "Tags": ["noun", "fragment-details"],
       "Table": [
@@ -204,7 +203,8 @@
     {
       "Name": "Fleet",
       "Tags": ["noun"],
-      "Requires": { "Type": "Fleet" },
+      "Initial": true,
+      "Requires": { "Starship Type": "Fleet" },
       "Table": [
         { "Chance": 10, "Description": "Battle fleet" },
         { "Chance": 25, "Description": "Pirate wing" },
