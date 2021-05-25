@@ -31,12 +31,12 @@
           "Trouble",
           "Authority"
         ],
-        "Requires": { "Derelict Type": "Settlement" }
+        "Requires": { "Derelict Type": ["Settlement"] }
       },
       {
         "From": "Starship",
         "Oracles": ["Name", "First Look", "Starship Type"],
-        "Requires": { "Derelict Type": "Starship" }
+        "Requires": { "Derelict Type": ["Starship"] }
       },
       {
         "From": "Space",
@@ -54,7 +54,7 @@
       {
         "From": "Planet",
         "Oracles": ["Peril", "Opportunity"],
-        "Requires": { "Location": "Planetside" }
+        "Requires": { "Location": ["Planetside"] }
       }
     ]
   },
@@ -68,7 +68,7 @@
   },
   "Derelict Type": [
     {
-      "Requires": { "Location": "Planetside" },
+      "Requires": { "Location": ["Planetside"] },
       "Initial": true,
       "Table": [
         [1, 25, "Starship"],
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "Requires": { "Location": "Orbital" },
+      "Requires": { "Location": ["Orbital"] },
       "Initial": true,
       "Table": [
         [1, 40, "Starship"],
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "Requires": { "Location": "Deep Space" },
+      "Requires": { "Location": ["Deep Space"] },
       "Initial": true,
       "Table": [
         [1, 75, "Starship"],
