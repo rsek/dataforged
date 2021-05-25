@@ -5,7 +5,7 @@
   "Tags": ["oracles", "template", "location"],
   "Parent": "Planet",
   "Category": "Planetary Class",
-  "Requires": { "Planetary Class": "Tainted World" },
+  "Requires": { "Planetary Class": ["Tainted World"] },
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Thumbnail": "https://i.imgur.com/TPb8p6L.png",
   "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
@@ -47,7 +47,7 @@
       "Tables": [
         {
           "Initial": true,
-          "Requires": { "Region": "Terminus" },
+          "Requires": { "Region": ["Terminus"] },
           "Table": [
             { "Chance": 80, "Description": "None" },
             { "Chance": 90, "Description": "Orbital settlement" },
@@ -58,7 +58,7 @@
         },
         {
           "Initial": true,
-          "Requires": { "Region": "Outlands" },
+          "Requires": { "Region": ["Outlands"] },
           "Table": [
             { "Chance": 90, "Description": "None" },
             { "Chance": 97, "Description": "Orbital settlement" },
@@ -67,7 +67,7 @@
         },
         {
           "Initial": true,
-          "Requires": { "Region": "Expanse" },
+          "Requires": { "Region": ["Expanse"] },
           "Table": [
             { "Chance": 95, "Description": "None" },
             { "Chance": 98, "Description": "Orbital settlement" },

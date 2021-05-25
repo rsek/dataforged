@@ -5,7 +5,7 @@
   "Tags": ["oracles", "template", "location"],
   "Parent": "Planet",
   "Category": "Planetary Class",
-  "Requires": { "Planetary Class": "Jovian World" },
+  "Requires": { "Planetary Class": ["Jovian World"] },
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Thumbnail": "https://i.imgur.com/xRT70k8.png",
   "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
@@ -47,7 +47,7 @@
       "Tables": [
         {
           "Initial": true,
-          "Requires": { "Region": "Terminus" },
+          "Requires": { "Region": ["Terminus"] },
           "Table": [
             { "Chance": 50, "Description": "None" },
             { "Chance": 70, "Description": "Orbital settlement" },
@@ -58,7 +58,7 @@
         },
         {
           "Initial": true,
-          "Requires": { "Region": "Outlands" },
+          "Requires": { "Region": ["Outlands"] },
           "Table": [
             { "Chance": 75, "Description": "None" },
             { "Chance": 87, "Description": "Orbital settlement" },
@@ -69,7 +69,7 @@
         },
         {
           "Initial": true,
-          "Requires": { "Region": "Expanse" },
+          "Requires": { "Region": ["Expanse"] },
           "Table": [
             { "Chance": 90, "Description": "None" },
             { "Chance": 96, "Description": "Orbital settlement" },

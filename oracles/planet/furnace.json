@@ -5,7 +5,7 @@
   "Tags": ["oracles", "template", "location"],
   "Parent": "Planet",
   "Category": "Planetary Class",
-  "Requires": { "Planetary Class": "Furnace World" },
+  "Requires": { "Planetary Class": ["Furnace World"] },
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Thumbnail": "https://i.imgur.com/YS5rlDR.png",
   "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
@@ -48,7 +48,7 @@
       "Tables": [
         {
           "Initial": true,
-          "Requires": { "Region": "Terminus" },
+          "Requires": { "Region": ["Terminus"] },
           "Table": [
             { "Chance": 60, "Description": "None" },
             { "Chance": 75, "Description": "Orbital settlement" },
@@ -59,7 +59,7 @@
         },
         {
           "Initial": true,
-          "Requires": { "Region": "Outlands" },
+          "Requires": { "Region": ["Outlands"] },
           "Table": [
             { "Chance": 85, "Description": "None" },
             { "Chance": 92, "Description": "Orbital settlement" },
@@ -70,7 +70,7 @@
         },
         {
           "Initial": true,
-          "Requires": { "Region": "Expanse" },
+          "Requires": { "Region": ["Expanse"] },
           "Table": [
             { "Chance": 95, "Description": "None" },
             { "Chance": 98, "Description": "Orbital settlement" },

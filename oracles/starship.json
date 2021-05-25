@@ -204,7 +204,7 @@
       "Name": "Fleet",
       "Tags": ["noun"],
       "Initial": true,
-      "Requires": { "Starship Type": "Fleet" },
+      "Requires": { "Starship Type": ["Fleet"] },
       "Table": [
         { "Chance": 10, "Description": "Battle fleet" },
         { "Chance": 25, "Description": "Pirate wing" },
@@ -269,7 +269,7 @@
       "Name": "Mission",
       "Tables": [
         {
-          "Requires": { "Region": "Terminus" },
+          "Requires": { "Region": ["Terminus"] },
           "Tags": ["fragment"],
           "Table": [
             { "Chance": 3, "Description": "Blockade a location" },
@@ -307,7 +307,7 @@
           ]
         },
         {
-          "Requires": { "Region": "Outlands" },
+          "Requires": { "Region": ["Outlands"] },
           "Tags": ["fragment"],
           "Table": [
             { "Chance": 2, "Description": "Blockade a location" },
@@ -345,7 +345,7 @@
           ]
         },
         {
-          "Requires": { "Region": "Expanse" },
+          "Requires": { "Region": ["Expanse"] },
           "Tags": ["fragment"],
           "Table": [
             { "Chance": 2, "Description": "Blockade a location" },
