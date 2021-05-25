@@ -1,0 +1,109 @@
+{
+  "definitions": {
+    "Move": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Progress Move": {
+          "type": "boolean"
+        },
+        "Text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Category",
+        "Name",
+        "Progress Move",
+        "Text"
+      ]
+    },
+    "Source": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Name",
+        "Page",
+        "Version"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Moves": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Move"
+      }
+    },
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Source": {
+      "$ref": "#/definitions/Source"
+    },
+    "Tags": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "required": [
+    "Moves",
+    "Name",
+    "Source",
+    "Tags"
+  ]
+}

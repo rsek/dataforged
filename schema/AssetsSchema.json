@@ -1,0 +1,234 @@
+{
+  "definitions": {
+    "Ability": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "Fields": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Alter Properties": {
+          "$ref": "#/definitions/AlterProperties"
+        }
+      },
+      "required": [
+        "Text",
+        "Enabled",
+        "Fields",
+        "Alter Properties"
+      ]
+    },
+    "AlterProperties": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Track": {
+          "$ref": "#/definitions/Track"
+        }
+      },
+      "required": [
+        "Track"
+      ]
+    },
+    "Asset": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Abilities": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Ability"
+          }
+        },
+        "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Fields": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Track": {
+          "$ref": "#/definitions/Track"
+        },
+        "Counter": {
+          "$ref": "#/definitions/Counter"
+        }
+      },
+      "required": [
+        "Name",
+        "Category",
+        "Abilities",
+        "Description",
+        "Fields",
+        "Track",
+        "Counter"
+      ]
+    },
+    "Counter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Starts At": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Name",
+        "Starts At"
+      ]
+    },
+    "Source": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Name",
+        "Page",
+        "Version"
+      ]
+    },
+    "Track": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Value": {
+          "type": "integer"
+        },
+        "Starts At": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Name",
+        "Value",
+        "Starts At"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Tags": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Source": {
+      "$ref": "#/definitions/Source"
+    },
+    "Assets": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Asset"
+      }
+    }
+  },
+  "required": [
+    "Name",
+    "Tags",
+    "Source",
+    "Assets"
+  ]
+}

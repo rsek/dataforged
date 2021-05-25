@@ -1,0 +1,99 @@
+{
+  "definitions": {
+    "GlossaryTerm": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Color": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Name",
+        "Color",
+        "Description"
+      ]
+    },
+    "Source": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Name",
+        "Page",
+        "Version"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Source": {
+      "$ref": "#/definitions/Source"
+    },
+    "Terms": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/GlossaryTerm"
+      }
+    }
+  },
+  "required": [
+    "Name",
+    "Category",
+    "Source",
+    "Terms"
+  ]
+}
