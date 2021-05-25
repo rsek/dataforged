@@ -1,0 +1,548 @@
+{
+  "definitions": {
+    "Inherit": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "From": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Oracles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Requires": {
+          "$ref": "#/definitions/Requires"
+        }
+      },
+      "required": [
+        "From",
+        "Oracles",
+        "Requires"
+      ]
+    },
+    "Oracle": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Aliases": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Character": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Initial": {
+          "type": "boolean"
+        },
+        "Ironsworn PlaceHolder": {
+          "type": "boolean"
+        },
+        "Max rolls": {
+          "type": "integer"
+        },
+        "Min rolls": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Requires": {
+          "$ref": "#/definitions/Requires"
+        },
+        "Source": {
+          "$ref": "#/definitions/Source"
+        },
+        "Table": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Table"
+          }
+        },
+        "Tables": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Tables"
+          }
+        },
+        "Tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "required": [
+        "Aliases",
+        "Character",
+        "Description",
+        "Initial",
+        "Ironsworn PlaceHolder",
+        "Max rolls",
+        "Min rolls",
+        "Name",
+        "Requires",
+        "Source",
+        "Table",
+        "Tables",
+        "Tags"
+      ]
+    },
+    "Requires": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Derelict Type": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Environment": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Location": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Planetary Class": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Region": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Scale": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Starship Type": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Theme Type": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Type": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Zone": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "required": [
+        "Derelict Type",
+        "Environment",
+        "Location",
+        "Planetary Class",
+        "Region",
+        "Scale",
+        "Starship Type",
+        "Theme Type",
+        "Type",
+        "Zone"
+      ]
+    },
+    "Source": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Name",
+        "Page",
+        "Version"
+      ]
+    },
+    "Table": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Chance": {
+          "type": "integer"
+        },
+        "Table": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Table"
+          }
+        },
+        "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Details": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Quest Starter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Thumbnail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Chance",
+        "Table",
+        "Description",
+        "Details",
+        "Quest Starter",
+        "Thumbnail"
+      ]
+    },
+    "Tables": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Chance": {
+          "type": "integer"
+        },
+        "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Initial": {
+          "type": "boolean"
+        },
+        "Requires": {
+          "$ref": "#/definitions/Requires"
+        },
+        "Table": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Table"
+          }
+        },
+        "Tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Thumbnail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Chance",
+        "Description",
+        "Initial",
+        "Requires",
+        "Table",
+        "Tags",
+        "Thumbnail"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Aliases": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Children": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Inherits": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Inherit"
+      }
+    },
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Oracles": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Oracle"
+      }
+    },
+    "Parent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Requires": {
+      "$ref": "#/definitions/Requires"
+    },
+    "Sample Names": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Source": {
+      "$ref": "#/definitions/Source"
+    },
+    "Tags": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Thumbnail": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "Aliases",
+    "Category",
+    "Children",
+    "Description",
+    "Inherits",
+    "Name",
+    "Oracles",
+    "Parent",
+    "Requires",
+    "Sample Names",
+    "Source",
+    "Tags",
+    "Thumbnail",
+    "Type"
+  ]
+}
