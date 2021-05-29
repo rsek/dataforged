@@ -1,0 +1,110 @@
+__meta:
+  Name: Derelict
+  Display name: Derelicts
+  Source:
+    Name: Starforged Backer Preview
+    Version: 050821
+  Aliases: [Derelict Exterior]
+  Tags: [oracles, template, location]
+  Children:
+    - Interior
+    - Access
+    - Community
+    - Engineering
+    - Living
+    - Medical
+    - Operations
+    - Production
+    - Research
+  Description: Derelicts are the forsaken relics of human endeavors. Use these
+    First Look tables for your initial survey of the derelict. To reveal more
+    about the look and original function or nature of the site, roll on
+    appropriate tables in the Starship or Settlement oracles. If you explore the
+    depths of a derelict, you may use the zone oracles on the following pages to
+    help envision what you find.
+  Inherits:
+    - From: Settlement
+      Oracles: [Name, Population, First Look, Projects, Trouble, Authority]
+      Requires:
+        Derelict Type:
+          - Settlement
+    - From: Starship
+      Oracles: [Name, First Look, Starship Type]
+      Requires:
+        Derelict Type:
+          - Starship
+    - From: Space
+      Oracles: [Peril, Opportunity]
+      Requires:
+        Location:
+          - Orbital
+          - Deep Space
+    - From: Space
+      Oracles:
+        - Stellar Object
+      Requires:
+        Location:
+          - Deep Space
+        Derelict Type:
+          - Settlement
+    - From: Planet
+      Oracles: [Peril, Opportunity]
+      Requires:
+        Location:
+          - Planetside
+Location:
+  Initial: true
+  Table:
+    - [1, 40, Planetside]
+    - [41, 60, Orbital]
+    - [61, 100, Deep Space]
+Derelict Type:
+  - Display name: Type - Planetside
+    Requires:
+      Location:
+        - Planetside
+    Initial: true
+    Table:
+      - [1, 25, Starship]
+      - [26, 100, Settlement]
+  - Display name: Type - Orbital
+    Requires:
+      Location:
+        - Orbital
+    Initial: true
+    Table:
+      - [1, 40, Starship]
+      - [41, 100, Settlement]
+  - Display name: Type - Deep Space
+    Requires:
+      Location:
+        - Deep Space
+    Initial: true
+    Table:
+      - [1, 75, Starship]
+      - [76, 100, Settlement]
+Condition:
+  Initial: true
+  Tags: [fragment]
+  Table:
+    - [1, 10, Functional]
+    - [11, 30, Limited power]
+    - [31, 60, Cold and dark]
+    - [61, 90, Damaged or breached]
+    - [91, 98, Heavily damaged]
+    - [99, 100, Impending destruction]
+First Look:
+  Display name: Outer First Look
+  Initial: true
+  Tags: [fragment]
+  Table:
+    - [1, 15, Blocked access]
+    - [16, 30, Corpses]
+    - [31, 45, Hazardous readings]
+    - [46, 50, Mutated structure]
+    - [51, 60, Odd orientation]
+    - [61, 65, Overgrown or entangled]
+    - [66, 80, Sending a signal or message]
+    - [81, 85, Signs that others are here]
+    - [86, 95, Stripped exterior]
+    - [96, 100, Time or reality distortions]

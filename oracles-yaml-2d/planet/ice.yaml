@@ -1,0 +1,118 @@
+__meta:
+  Name: Ice World
+  Aliases: [Ice]
+  Description: A rugged, frozen world—locked in an unending winter.
+  Tags: [oracles, template, location]
+  Parent: Planet
+  Category: Planetary Class
+  Requires:
+    Planetary Class: [Ice World]
+  Source:
+    Name: Starforged Backer Preview
+    Version: 050821
+  Thumbnail: https://i.imgur.com/r6DIkqJ.png
+  Inherits:
+    - From: Planet
+      Oracles: [Peril, Opportunity]
+  Sample Names:
+    - Beira
+    - Boreas
+    - Caradhras
+    - Cicero
+    - Demetria
+    - Enten
+    - Fissure
+    - Frost
+    - Gelida
+    - Jotunn
+    - Kanna
+    - Karn
+    - Kheimon
+    - Moroz
+    - Nix
+    - Olwen
+    - Osolok
+    - Taiga
+    - Thule
+    - Varnholme
+Atmosphere:
+  Initial: true
+  Table:
+    - [1, 15, None / thin]
+    - [16, 35, Toxic]
+    - [36, 40, Corrosive]
+    - [41, 70, Marginal]
+    - [71, 95, Breathable]
+    - [96, 100, Ideal]
+Settlements:
+  - Initial: true
+    Display name: Settlements - Terminus
+    Requires:
+      Region: [Terminus]
+    Table:
+      - [1, 50, None]
+      - [51, 60, Orbital settlement]
+      - [61, 80, Planetside settlement]
+      - [81, 92, Multiple settlements]
+      - [93, 100, Settlements in conflict]
+  - Initial: true
+    Display name: Settlements - Outlands
+    Requires:
+      Region: [Outlands]
+    Table:
+      - [1, 75, None]
+      - [76, 83, Orbital settlement]
+      - [84, 95, Planetside settlement]
+      - [96, 98, Multiple settlements]
+      - [99, 100, Settlements in conflict]
+  - Initial: true
+    Display name: Settlements - Expanse
+    Requires:
+      Region: [Expanse]
+    Table:
+      - [1, 90, None]
+      - [91, 96, Orbital settlement]
+      - [97, 100, Planetside settlement]
+Observed From Space:
+  Initial: true
+  Tags: [fragment]
+  Max rolls: 2
+  Table:
+    - [1, 11, Feeble sunlight]
+    - [12, 22, Frozen oceans]
+    - [23, 33, Rocky glacial islands]
+    - [34, 44, Snowbound mountains]
+    - [45, 55, Sky-breaching geysers]
+    - [56, 66, Supersized ice volcano]
+    - [67, 77, Vibrantly colored ice]
+    - [78, 88, World-spanning ice canyon]
+    - [89, 98, ▶️Descriptor + Focus]
+    - [99, 100, ▶️Precursor Vault (orbital)]
+Planetside Feature:
+  Tags: [fragment]
+  Max rolls: 2
+  Table:
+    - [1, 7, Abyssal ice fissures]
+    - [8, 14, Blinding snow storms]
+    - [15, 21, Clusters of ice spikes]
+    - [22, 28, Colossal ice caves]
+    - [29, 35, Glistening ice spires]
+    - [36, 42, Massive snow drifts]
+    - [43, 49, Preserved carcasses]
+    - [50, 56, Rocky islands amid icy wastes]
+    - [57, 63, Shattered plains of pack ice]
+    - [64, 70, Steaming hot springs]
+    - [71, 77, Subsurface liquid oceans]
+    - [78, 84, Vibrant auroras]
+    - [85, 91, Wind-carved ice formations]
+    - [92, 98, ▶️Descriptor + Focus]
+    - [99, 100, ▶️Precursor Vault (planetside)]
+Life:
+  Table:
+    - [1, 25, None]
+    - [26, 45, Extinct]
+    - [46, 60, Simple]
+    - [61, 75, Sparse]
+    - [76, 90, Diverse]
+    - [91, 97, Bountiful]
+    - [98, 100, Overrun]
