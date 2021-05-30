@@ -52,6 +52,9 @@
             ]
           }
         },
+        "Allow duplicate rolls": {
+          "type": "boolean"
+        },
         "Character": {
           "type": [
             "string",
@@ -59,6 +62,12 @@
           ]
         },
         "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Display name": {
           "type": [
             "string",
             "null"
@@ -117,12 +126,23 @@
               "null"
             ]
           }
+        },
+        "Use with": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/UseWith"
+          }
         }
       },
       "required": [
         "Aliases",
+        "Allow duplicate rolls",
         "Character",
         "Description",
+        "Display name",
         "Initial",
         "Ironsworn Placeholder",
         "Max rolls",
@@ -132,7 +152,8 @@
         "Source",
         "Table",
         "Tables",
-        "Tags"
+        "Tags",
+        "Use with"
       ]
     },
     "Requires": {
@@ -154,6 +175,18 @@
           }
         },
         "Environment": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Life": {
           "type": [
             "array",
             "null"
@@ -265,6 +298,7 @@
       "required": [
         "Derelict Type",
         "Environment",
+        "Life",
         "Location",
         "Planetary Class",
         "Region",
@@ -347,6 +381,9 @@
             "string",
             "null"
           ]
+        },
+        "Value": {
+          "type": "integer"
         }
       },
       "required": [
@@ -355,7 +392,8 @@
         "Description",
         "Details",
         "Quest Starter",
-        "Thumbnail"
+        "Thumbnail",
+        "Value"
       ]
     },
     "Tables": {
@@ -364,10 +402,31 @@
         "null"
       ],
       "properties": {
+        "Aliases": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Allow duplicate rolls": {
+          "type": "boolean"
+        },
         "Chance": {
           "type": "integer"
         },
         "Description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Display name": {
           "type": [
             "string",
             "null"
@@ -408,13 +467,40 @@
         }
       },
       "required": [
+        "Aliases",
+        "Allow duplicate rolls",
         "Chance",
         "Description",
+        "Display name",
         "Initial",
         "Requires",
         "Table",
         "Tags",
         "Thumbnail"
+      ]
+    },
+    "UseWith": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "Category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "Category",
+        "Name"
       ]
     }
   },
@@ -451,6 +537,12 @@
       }
     },
     "Description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "Display name": {
       "type": [
         "string",
         "null"
@@ -534,6 +626,7 @@
     "Category",
     "Children",
     "Description",
+    "Display name",
     "Inherits",
     "Name",
     "Oracles",
