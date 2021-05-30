@@ -6,12 +6,6 @@
         "null"
       ],
       "properties": {
-        "Name": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
         "Color": {
           "type": [
             "string",
@@ -23,12 +17,18 @@
             "string",
             "null"
           ]
+        },
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
-        "Name",
         "Color",
-        "Description"
+        "Description",
+        "Name"
       ]
     },
     "Source": {
@@ -65,13 +65,13 @@
   },
   "type": "object",
   "properties": {
-    "Name": {
+    "Category": {
       "type": [
         "string",
         "null"
       ]
     },
-    "Category": {
+    "Name": {
       "type": [
         "string",
         "null"
@@ -91,8 +91,8 @@
     }
   },
   "required": [
-    "Name",
     "Category",
+    "Name",
     "Source",
     "Terms"
   ]

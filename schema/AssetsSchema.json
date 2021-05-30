@@ -6,11 +6,8 @@
         "null"
       ],
       "properties": {
-        "Text": {
-          "type": [
-            "string",
-            "null"
-          ]
+        "Alter Properties": {
+          "$ref": "#/definitions/AlterProperties"
         },
         "Enabled": {
           "type": "boolean"
@@ -27,15 +24,18 @@
             ]
           }
         },
-        "Alter Properties": {
-          "$ref": "#/definitions/AlterProperties"
+        "Text": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
-        "Text",
+        "Alter Properties",
         "Enabled",
         "Fields",
-        "Alter Properties"
+        "Text"
       ]
     },
     "AlterProperties": {
@@ -58,18 +58,6 @@
         "null"
       ],
       "properties": {
-        "Name": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "Category": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
         "Abilities": {
           "type": [
             "array",
@@ -78,6 +66,15 @@
           "items": {
             "$ref": "#/definitions/Ability"
           }
+        },
+        "Category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Counter": {
+          "$ref": "#/definitions/Counter"
         },
         "Description": {
           "type": [
@@ -97,21 +94,24 @@
             ]
           }
         },
+        "Name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "Track": {
           "$ref": "#/definitions/Track"
-        },
-        "Counter": {
-          "$ref": "#/definitions/Counter"
         }
       },
       "required": [
-        "Name",
-        "Category",
         "Abilities",
+        "Category",
+        "Counter",
         "Description",
         "Fields",
-        "Track",
-        "Counter"
+        "Name",
+        "Track"
       ]
     },
     "Counter": {
@@ -178,27 +178,39 @@
             "null"
           ]
         },
-        "Value": {
+        "Starts At": {
           "type": "integer"
         },
-        "Starts At": {
+        "Value": {
           "type": "integer"
         }
       },
       "required": [
         "Name",
-        "Value",
-        "Starts At"
+        "Starts At",
+        "Value"
       ]
     }
   },
   "type": "object",
   "properties": {
+    "Assets": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Asset"
+      }
+    },
     "Name": {
       "type": [
         "string",
         "null"
       ]
+    },
+    "Source": {
+      "$ref": "#/definitions/Source"
     },
     "Tags": {
       "type": [
@@ -211,24 +223,12 @@
           "null"
         ]
       }
-    },
-    "Source": {
-      "$ref": "#/definitions/Source"
-    },
-    "Assets": {
-      "type": [
-        "array",
-        "null"
-      ],
-      "items": {
-        "$ref": "#/definitions/Asset"
-      }
     }
   },
   "required": [
+    "Assets",
     "Name",
-    "Tags",
     "Source",
-    "Assets"
+    "Tags"
   ]
 }
