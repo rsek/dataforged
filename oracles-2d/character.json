@@ -1,6 +1,7 @@
 {
   "__meta": {
     "Name": "Character",
+    "Display name": "Characters",
     "Aliases": ["NPC"],
     "Tags": ["oracles", "template", "actor"],
     "Source": {
@@ -9,6 +10,11 @@
     }
   },
   "Given Name": {
+    "Display name": "Character Name: Given Name",
+    "Use with": [
+      { "Category": "Character", "Name": "Callsign" },
+      { "Category": "Character", "Name": "Family Name" }
+    ],
     "Tags": ["noun", "proper noun"],
     "Initial": true,
     "Table": [
@@ -115,7 +121,12 @@
     ]
   },
   "Family Name": {
+    "Display name": "Character Name: Family Name",
     "Tags": ["noun", "proper noun"],
+    "Use with": [
+      { "Category": "Character", "Name": "Given Name" },
+      { "Category": "Character", "Name": "Callsign" }
+    ],
     "Initial": true,
     "Table": [
       [1, 1, "Kuzmin"],
@@ -221,6 +232,11 @@
     ]
   },
   "Callsign": {
+    "Display name": "Character Name: Callsign",
+    "Use with": [
+      { "Category": "Character", "Name": "Given Name" },
+      { "Category": "Character", "Name": "Family Name" }
+    ],
     "Tags": ["noun", "proper noun"],
     "Table": [
       [1, 1, "Albatross"],
@@ -391,6 +407,7 @@
     ]
   },
   "Role": {
+    "Display name": "Character Role",
     "Tags": ["noun"],
     "Initial": true,
     "Table": [
@@ -445,6 +462,7 @@
     ]
   },
   "Goal": {
+    "Display name": "Character Goal",
     "Tags": ["fragment"],
     "Table": [
       [1, 2, "Avenge a wrong"],
@@ -490,6 +508,7 @@
     ]
   },
   "Revealed Aspect": {
+    "Display name": "Revealed Character Aspect",
     "Tags": ["adjective"],
     "Max rolls": 3,
     "Table": [

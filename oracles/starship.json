@@ -7,6 +7,7 @@
   "Oracles": [
     {
       "Name": "Name",
+      "Display name": "Starship Name",
       "Tags": ["proper noun", "noun"],
       "Table": [
         { "Chance": 1, "Description": "Arclight" },
@@ -113,6 +114,8 @@
     },
     {
       "Name": "Starship Type",
+      "Display name": "Type",
+      "Allow duplicate rolls": true,
       "Initial": true,
       "Tags": ["noun", "fragment-details"],
       "Table": [
@@ -266,9 +269,10 @@
       ]
     },
     {
-      "Name": "Mission",
+      "Name": "Starship Mission",
       "Tables": [
         {
+          "Display name": "Starship Mission: Terminus",
           "Requires": { "Region": ["Terminus"] },
           "Tags": ["fragment"],
           "Table": [
@@ -307,6 +311,7 @@
           ]
         },
         {
+          "Display name": "Starship Mission: Outlands",
           "Requires": { "Region": ["Outlands"] },
           "Tags": ["fragment"],
           "Table": [
@@ -345,6 +350,7 @@
           ]
         },
         {
+          "Display name": "Starship Mission: Expanse",
           "Requires": { "Region": ["Expanse"] },
           "Tags": ["fragment"],
           "Table": [

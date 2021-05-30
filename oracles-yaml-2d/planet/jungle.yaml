@@ -1,0 +1,118 @@
+__meta:
+  Name: Jungle World
+  Aliases: [Jungle]
+  Description: A humid, rain-soaked planet which keeps its secrets under a thick
+    canopy of vegetation.
+  Tags: [oracles, template, location]
+  Parent: Planet
+  Category: Planetary Class
+  Requires:
+    Planetary Class: [Jungle World]
+  Source:
+    Name: Starforged Backer Preview
+    Version: 050821
+  Thumbnail: https://i.imgur.com/jr90Bnh.png
+  Inherits:
+    - From: Planet
+      Oracles: [Peril, Opportunity]
+  Sample Names:
+    - Acacia
+    - Aster
+    - Beryl
+    - Celadon
+    - Ceres
+    - Damu
+    - Dryad
+    - Flora
+    - Iridum
+    - Iris
+    - Kishar
+    - Penumbra
+    - Roris
+    - Sylva
+    - Tangle
+    - Thorn
+    - Venom
+    - Verdure
+    - Veris
+    - Viridian
+Atmosphere:
+  Initial: true
+  Table:
+    - [1, 25, Toxic]
+    - [26, 30, Corrosive]
+    - [31, 60, Marginal]
+    - [61, 90, Breathable]
+    - [91, 100, Ideal]
+Settlements:
+  - Initial: true
+    Display name: Settlements - Terminus
+    Requires:
+      Region: [Terminus]
+    Table:
+      - [1, 40, None]
+      - [41, 55, Orbital settlement]
+      - [56, 80, Planetside settlement]
+      - [81, 92, Multiple settlements]
+      - [93, 100, Settlements in conflict]
+  - Initial: true
+    Display name: Settlements - Outlands
+    Requires:
+      Region: [Outlands]
+    Table:
+      - [1, 65, None]
+      - [66, 75, Orbital settlement]
+      - [76, 92, Planetside settlement]
+      - [93, 97, Multiple settlements]
+      - [98, 100, Settlements in conflict]
+  - Initial: true
+    Display name: Settlements - Expanse
+    Requires:
+      Region: [Expanse]
+    Table:
+      - [1, 85, None]
+      - [86, 90, Orbital settlement]
+      - [91, 97, Planetside settlement]
+      - [98, 99, Multiple settlements]
+      - [100, 100, Settlements in conflict]
+Observed From Space:
+  Initial: true
+  Tags: [fragment]
+  Max rolls: 2
+  Table:
+    - [1, 11, Cloud-breaching trees]
+    - [12, 22, Expansive rivers or wetlands]
+    - [23, 33, Inland seas]
+    - [34, 44, Massive canyons]
+    - [45, 55, Persistent cloud cover]
+    - [56, 66, Towering mountains]
+    - [67, 77, Unbroken canopy]
+    - [78, 88, Unusual vegetation color]
+    - [89, 98, ▶️Descriptor + Focus]
+    - [99, 100, ▶️Precursor Vault (orbital)]
+Planetside Feature:
+  Tags: [fragment]
+  Max rolls: 2
+  Table:
+    - [1, 7, Bioluminescent flora]
+    - [8, 14, Deep river gorges]
+    - [15, 21, Extensive exposed root systems]
+    - [22, 28, Immense tiered waterfalls]
+    - [29, 35, Languid rivers]
+    - [36, 42, Low-lying fog]
+    - [43, 49, Plunging sinkholes]
+    - [50, 56, Scarred clearings]
+    - [57, 63, Sinking quagmires]
+    - [64, 70, Surging rivers]
+    - [71, 77, Torrential rainstorms]
+    - [78, 84, Violent electrical storms]
+    - [85, 91, Waterlogged caves]
+    - [92, 98, ▶️Descriptor + Focus]
+    - [99, 100, ▶️Precursor Vault (planetside)]
+Life:
+  Table:
+    - [1, 5, Simple]
+    - [6, 20, Sparse]
+    - [21, 45, Diverse]
+    - [46, 80, Bountiful]
+    - [81, 100, Overrun]

@@ -1,11 +1,17 @@
 {
   "Name": "Character",
+  "Display name": "Characters",
   "Aliases": ["NPC"],
   "Tags": ["oracles", "template", "actor"],
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Oracles": [
     {
       "Name": "Given Name",
+      "Display name": "Character Name: Given Name",
+      "Use with": [
+        { "Category": "Character", "Name": "Callsign" },
+        { "Category": "Character", "Name": "Family Name" }
+      ],
       "Tags": ["noun", "proper noun"],
       "Initial": true,
       "Table": [
@@ -113,7 +119,12 @@
     },
     {
       "Name": "Family Name",
+      "Display name": "Character Name: Family Name",
       "Tags": ["noun", "proper noun"],
+      "Use with": [
+        { "Category": "Character", "Name": "Given Name" },
+        { "Category": "Character", "Name": "Callsign" }
+      ],
       "Initial": true,
       "Table": [
         { "Chance": 1, "Description": "Kuzmin" },
@@ -220,6 +231,11 @@
     },
     {
       "Name": "Callsign",
+      "Display name": "Character Name: Callsign",
+      "Use with": [
+        { "Category": "Character", "Name": "Given Name" },
+        { "Category": "Character", "Name": "Family Name" }
+      ],
       "Tags": ["noun", "proper noun"],
       "Table": [
         { "Chance": 1, "Description": "Albatross" },
@@ -393,6 +409,7 @@
     },
     {
       "Name": "Role",
+      "Display name": "Character Role",
       "Tags": ["noun"],
       "Initial": true,
       "Table": [
@@ -448,6 +465,7 @@
     },
     {
       "Name": "Goal",
+      "Display name": "Character Goal",
       "Tags": ["fragment"],
       "Table": [
         { "Chance": 2, "Description": "Avenge a wrong" },
@@ -494,6 +512,7 @@
     },
     {
       "Name": "Revealed Aspect",
+      "Display name": "Revealed Character Aspect",
       "Tags": ["adjective"],
       "Max rolls": 3,
       "Table": [
