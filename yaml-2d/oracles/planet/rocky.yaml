@@ -1,0 +1,126 @@
+Rocky World:
+  _meta:
+    Name: Rocky World
+    Aliases: [Rocky]
+    Description: *Rocky
+    Tags: [oracles, template, location]
+    Subcategory of: Planet
+    Category: Planetary Class
+    Requires:
+      Planetary Class: [Rocky World]
+    Source:
+      Name: Starforged Backer Preview
+      Version: "050821"
+    Thumbnail: "https://i.imgur.com/wRpdlc1.png"
+    Inherits:
+      - From: Planet
+        Oracles: [Peril, Opportunity]
+    Sample Names:
+      - Aphelion
+      - Artemis
+      - Capella
+      - Cobalt
+      - Crag
+      - Dusk
+      - Eos
+      - Hecate
+      - Imbrium
+      - Latona
+      - Losna
+      - Orpheus
+      - Ory
+      - Quietus
+      - Selene
+      - Silas
+      - Silex
+      - Slate
+      - Themis
+      - Umbra
+  Atmosphere:
+    Initial: true
+    Table:
+      - [1, 65, None / thin, *None_thin]
+      - [66, 85, Toxic, *Toxic]
+      - [86, 90, Corrosive, *Corrosive]
+      - [91, 100, Marginal, *Marginal]
+ 
+  Settlements:
+    - Initial: true
+      Display name: Settlements - Terminus
+      Requires:
+        Region: [Terminus]
+      Table:
+        - [1, 50, None]
+        - [51, 70, Orbital settlement, *Settlement_orbital]
+        - [71, 85, Planetside settlement, *Settlement_planetside]
+        - [86, 95, Multiple settlements, *Settlements_multiple]
+        - [96, 100, Settlements in conflict, *Settlements_conflict]
+ 
+    - Initial: true
+      Display name: Settlements - Outlands
+      Requires:
+        Region: [Outlands]
+      Table:
+        - [1, 75, None]
+        - [76, 87, Orbital settlement, *Settlement_orbital]
+        - [88, 95, Planetside settlement, *Settlement_planetside]
+        - [96, 98, Multiple settlements, *Settlements_multiple]
+        - [99, 100, Settlements in conflict, *Settlements_conflict]
+ 
+    - Initial: true
+      Display name: Settlements - Expanse
+      Requires:
+        Region: [Expanse]
+      Table:
+        - [1, 90, None]
+        - [91, 96, Orbital settlement, *Settlement_orbital]
+        - [97, 100, Planetside settlement, *Settlement_planetside]
+ 
+  Observed From Space:
+    Initial: true
+    Tags: [fragment]
+    Max rolls: 2
+    Table:
+      - [1, 11, Barren plains]
+      - [12, 22, Constant asteroid strikes]
+      - [23, 33, Dense ring system]
+      - [34, 44, Jagged mountains]
+      - [45, 55, Massive impact crater]
+      - [56, 66, Misshapen form (low gravity)]
+      - [67, 77, Perpetual night]
+      - [78, 88, Towering plateaus]
+      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+ 
+  Planetside Feature:
+    Tags: [fragment]
+    Max rolls: 2
+    Table:
+      - [1, 7, Crystalline formations]
+      - [8, 14, Crystalline caves]
+      - [15, 21, Exposed mineral deposits]
+      - [22, 28, Geometric terrain features]
+      - [29, 35, Geothermal vents]
+      - [36, 42, Glassy impact craters]
+      - [43, 49, Massive dust dunes]
+      - [50, 56, Powerful magnetic fields]
+      - [57, 63, Rubble-strewn lava fields]
+      - [64, 70, Steam-heated caves]
+      - [71, 77, Subsurface magma flows]
+      - [78, 84, Swirling low-lying gases]
+      - [85, 91, Towering rocky spires]
+      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+ 
+  Life:
+    Table:
+      - [1, 55, None]
+      - [56, 65, Extinct]
+      - [66, 80, Simple]
+      - [81, 90, Sparse]
+      - [91, 95, Diverse]
+      - [96, 98, Bountiful]
+      - [99, 100, Overrun]
+ 
+
+

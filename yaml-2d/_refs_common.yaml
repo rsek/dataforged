@@ -1,0 +1,121 @@
+# rows common across various oracle;
+# YAML can't reference across files but
+# these could be used when merging all oracles
+# into a master file, which is probably the best way to distribute them anyways
+_refs:
+  Planetary Class:
+    - &Desert A pitiless planet of searing heat, blowing sand, and sunbaked rock.
+    - &Furnace A planet with relentless volcanic activity, wreathed in fire and ash.
+    - &Grave A once-thriving world—now a grim monument to a fallen civilization.
+    - &Ice A rugged, frozen world—locked in an unending winter.
+    - &Jovian A massive planet with vast layers of dense gases surrounding a small rocky core.
+    - &Jungle A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation.
+    - &Ocean A planet completely or mostly covered by a boundless ocean.
+    - &Rocky A rugged planet scarred by eons of destructive asteroid impacts.
+    - &Shattered A planet sundered by cataclysmic destruction.
+    - &Tainted A foul planet wracked by a poisonous climate and virulent growths.
+    - &Vital This diverse, life-bearing planet might provide some small measure of hope.
+  Location Theme:
+    - &Chaotic Reality is corrupted or warped in this place.
+    - &Fortified Enemies defend this place against intruders.
+    - &Haunted Restless spirits are bound to this place.
+    - &Infested Foul creatures have overrun this place.
+    - &Inhabited People have built a community in this place.
+    - &Ruined "Time, disaster, or war have ravaged this place."
+    - &Sacred The faithful worship inscrutable powers in this place.
+  Atmosphere:
+    - &None_thin This planet is airless, or it's atmosphere is so thin as to be useless for humans.
+    - &Toxic This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
+    - &Corrosive This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
+    - &Marginal It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time.
+    - &Breathable This atmosphere is not perfect, but it's good enough to sustain human life.
+    - &Ideal This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air.
+  Multiple rolls:
+    - &Roll_twice Roll twice
+    - &Roll_three_times Roll three times
+
+  Oracles:
+    Starship Mission: &Starship_Mission
+      - Category: Starship
+        Oracle: Mission
+    Stellar Object: &Stellar_Object
+      - Category: Space
+        Oracle: Stellar Object
+    Action + Theme: &Action_Theme
+      - Category: Core
+        Oracle: Action
+      - Category: Core
+        Oracle: Theme
+    Descriptor + Focus: &Descriptor_Focus
+      - Category: Core
+        Oracle: Descriptor
+      - Category: Core
+        Oracle: Focus
+
+  Game objects:
+    # consider a way to do precursor vault sanctums?
+    Precursor Vault: &Vault
+      Object type: Precursor Vault
+    Precursor Vault (orbital): &Vault_orbital
+      Object type: Precursor Vault
+      Attributes: { Location: Orbital }
+    Precursor Vault (planetside): &Vault_planetside
+      Object type: Precursor Vault
+      Attributes: { Location: Planetside }
+    Derelict: &Derelict
+      Object type: Derelict
+    Creature: &Creature
+      Object type: Creature
+    Settlement: &Settlement
+      Object type: Settlement
+    Planet: &Planet
+      Object type: Planet
+    Starship: &Starship
+      Object type: Starship
+    Settlement (orbital): &Settlement_orbital
+      Object type: Settlement
+      Attributes: { Location: Orbital }
+    Settlement (planetside): &Settlement_planetside
+      Object type: Settlement
+      Attributes: { Location: Planetside }
+    Settlements (multiple): &Settlements_multiple
+      Object type: Settlement
+      Number: 2
+      Attributes: { Location: [Orbital, Planetside] }
+    Settlements (conflict): &Settlements_conflict
+      Object type: Settlement
+      Number: 2
+      Attributes: { Location: [Orbital, Planetside] }
+    Zone: &Zone
+      Object type: Derelict zone
+    Zone (via Access): &Zone_via_Access
+      Object type: Derelict zone
+      Attributes: { Zone: Access }
+    Precursor Vault Sanctum: &Vault_Sanctum
+      Object type: Precursor Vault Sanctum
+    Character: &Character
+      Object type: Character
+    # TODO: various zone references
+
+    # the below specifically for "initial contact" tables that turn up derelict starships, settlements
+    Derelict starship: &Derelict_starship
+      Template type: Derelict
+      Attributes: { Derelict type: Starship }
+    Derelict settlement: &Derelict_settlement
+      Template type: Derelict
+      Attributes: { Derelict type: Settlement }
+
+  Planet Life:
+    - &life_None None
+    - &life_Extinct Extinct
+    - &life_Simple Simple
+    - &life_Sparse Sparse
+    - &life_Diverse Diverse
+    - &life_Bountiful Bountiful
+    - &life_Overrun Overrun
+  Settlement Population:
+    - &pop00 Few
+    - &pop01 Dozens
+    - &pop02 Hundreds
+    - &pop03 Thousands
+    - &pop04 Tens of thousands
