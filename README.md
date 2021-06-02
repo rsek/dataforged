@@ -18,18 +18,22 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
 
 ## Current Version/Sources
 
-  * **Kickstarter Backer Preview - 050821** (all oracles, assets, and moves)
+  * **Kickstarter Backer Preview - 050821**
+    * oracles
+    * assets
+    * moves
+    * encounters/NPCs
 
 ## TODO
-  * NPC entries from backer preview
-  * move glossary entries from backer preview
-  * documentation of json keys and oracle meta-information
+  * [x] ~~implement standardized keys for references to other game objects, oracle tables, and multiple rolls~~
+  * [x] ~~normalize case of table strings (leaving only initialisms, proper nouns, and full sentences capitalized)~~
+  * [x] ~~all-in-one oracle file~~
+  * [x] ~~NPC entries from backer preview~~
+  * [ ] make moves more programmatically accessible
+  * [ ] make assets more progrmmatically accessible
+  * [ ] data for move glossary entries from backer preview
+  * [ ] documentation of json keys and oracle meta-information
 
-## Oracle Tables
-
-Square brackets in an oracle result represent a special result like "Roll twice".
-
-References to other oracle tables are prefixed with ▶️
 
 ## Credits
 
