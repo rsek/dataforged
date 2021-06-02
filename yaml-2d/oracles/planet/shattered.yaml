@@ -39,11 +39,11 @@ Shattered World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 93, None / thin, *None_thin]
-      - [94, 95, Toxic, *Toxic]
-      - [96, 97, Corrosive, *Corrosive]
-      - [98, 99, Marginal, *Marginal]
-      - [100, 100, Breathable, *Breathable]
+      - [1, 93, *None_thin]
+      - [94, 95, *Toxic]
+      - [96, 97, *Corrosive]
+      - [98, 99, *Marginal]
+      - [100, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -52,10 +52,10 @@ Shattered World:
         Region: [Terminus]
       Table:
         - [1, 70, None]
-        - [71, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [71, 90, *Orbital_settlement]
+        - [91, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -63,9 +63,9 @@ Shattered World:
         Region: [Outlands]
       Table:
         - [1, 85, None]
-        - [86, 96, Orbital settlement, *Settlement_orbital]
-        - [97, 99, Planetside settlement, *Settlement_planetside]
-        - [100, 100, Multiple settlements, *Settlements_multiple]
+        - [86, 96, *Orbital_settlement]
+        - [97, 99, *Planetside_settlement]
+        - [100, 100, *Multiple_settlements]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -73,15 +73,15 @@ Shattered World:
         Region: [Expanse]
       Table:
         - [1, 95, None]
-        - [96, 99, Orbital settlement, *Settlement_orbital]
-        - [100, 100, Planetside settlement, *Settlement_planetside]
+        - [96, 99, *Orbital_settlement]
+        - [100, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
     Tags: [fragment]
     Max rolls: 2
     Table:
-      - [1, 11, Demolished space fleet]
+      - [1, 11, Demolished space fleet, *suggestDerelictStarship]
       - [12, 22, Dense ring system]
       - [23, 33, Fiery planetary core]
       - [34, 44, Geomagnetic storms]
@@ -89,8 +89,8 @@ Shattered World:
       - [56, 66, Preserved planetary fragment]
       - [67, 77, Swirling debris field]
       - [78, 88, Unbroken moon]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -109,8 +109,8 @@ Shattered World:
       - [71, 77, Swirling corrosive gases]
       - [78, 84, Unstable and fracturing terrain]
       - [85, 91, Venting magma]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:

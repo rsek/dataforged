@@ -457,10 +457,14 @@
       [
         93,
         95,
-        "▶️Action + Theme",
         [
-          { "Category": "Core", "Oracle": "Action" },
-          { "Category": "Core", "Oracle": "Theme" }
+          "▶️Action + Theme",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
+            ]
+          }
         ]
       ],
       [96, 100, "Roll twice"]
@@ -470,51 +474,346 @@
     "Display name": "Character Goal",
     "Tags": ["fragment"],
     "Table": [
-      [1, 2, "Avenge a wrong"],
+      [
+        1,
+        2,
+        "Avenge a wrong",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
       [3, 4, "Build a home"],
-      [5, 7, "Build a relationship"],
-      [8, 10, "Claim a resource"],
+      [
+        5,
+        7,
+        "Build a relationship",
+        { "Suggest": [{ "Object type": "Character" }] }
+      ],
+      [
+        8,
+        10,
+        "Claim a resource",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
       [11, 12, "Collect a debt"],
-      [13, 14, "Craft an object"],
+      [
+        13,
+        14,
+        "Craft an object",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
       [15, 16, "Cure an ill"],
-      [17, 18, "Defeat a rival"],
-      [19, 20, "Defend a person"],
-      [21, 23, "Defend a place"],
-      [24, 25, "Discover a truth"],
-      [26, 27, "End a conflict"],
+      [
+        17,
+        18,
+        "Defeat a rival",
+        { "Suggest": [{ "Object type": "Character" }] }
+      ],
+      [
+        19,
+        20,
+        "Defend a person",
+        { "Suggest": [{ "Object type": "Character" }] }
+      ],
+      [
+        21,
+        23,
+        "Defend a place",
+        {
+          "Suggest": [
+            { "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }] }
+          ]
+        }
+      ],
+      [
+        24,
+        25,
+        "Discover a truth",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        26,
+        27,
+        "End a conflict",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
       [28, 29, "Escape a captor"],
       [30, 31, "Fight injustice"],
-      [32, 33, "Find a person"],
+      [
+        32,
+        33,
+        "Find a person",
+        { "Suggest": [{ "Object type": "Character" }] }
+      ],
       [34, 35, "Forge an alliance"],
-      [36, 37, "Gain knowledge"],
+      [
+        36,
+        37,
+        "Gain knowledge",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
       [38, 39, "Gain riches"],
       [40, 41, "Maintain order"],
-      [42, 43, "Make an agreement"],
-      [44, 45, "Obtain an object"],
+      [
+        42,
+        43,
+        "Make an agreement",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        44,
+        45,
+        "Obtain an object",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
       [46, 47, "Pay a debt"],
-      [48, 49, "Protect a lifeform"],
-      [50, 51, "Protect a secret"],
-      [52, 53, "Prove worthiness"],
+      [
+        48,
+        49,
+        "Protect a lifeform",
+        { "Suggest": [{ "Object type": "Creature" }] }
+      ],
+      [
+        50,
+        51,
+        "Protect a secret",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        52,
+        53,
+        "Prove worthiness",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
       [54, 55, "Rebel against power"],
       [56, 57, "Refute a falsehood"],
-      [58, 59, "Repair a technology"],
-      [60, 61, "Resolve a dispute"],
-      [62, 63, "Restore a relationship"],
-      [64, 65, "Sabotage a technology"],
-      [66, 68, "Secure a resource"],
-      [69, 70, "Seek redemption"],
-      [71, 72, "Seize power"],
-      [73, 74, "Solve a mystery"],
+      [
+        58,
+        59,
+        "Repair a technology",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        60,
+        61,
+        "Resolve a dispute",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        62,
+        63,
+        "Restore a relationship",
+        { "Suggest": [{ "Object type": "Character" }] }
+      ],
+      [
+        64,
+        65,
+        "Sabotage a technology",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        66,
+        68,
+        "Secure a resource",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        69,
+        70,
+        "Seek redemption",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        71,
+        72,
+        "Seize power",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        73,
+        74,
+        "Solve a mystery",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        }
+      ],
       [75, 76, "Spread faith"],
-      [77, 78, "Travel to a place"],
-      [79, 80, "Undermine a relationship"],
+      [
+        77,
+        78,
+        "Travel to a place",
+        {
+          "Suggest": [
+            { "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }] }
+          ]
+        }
+      ],
+      [
+        79,
+        80,
+        "Undermine a relationship",
+        { "Suggest": [{ "Object type": "Character" }] }
+      ],
       [
         81,
         90,
-        "▶️Action + Theme",
         [
-          { "Category": "Core", "Oracle": "Action" },
-          { "Category": "Core", "Oracle": "Theme" }
+          "▶️Action + Theme",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
+            ]
+          }
         ]
       ],
       [91, 100, "Roll twice"]

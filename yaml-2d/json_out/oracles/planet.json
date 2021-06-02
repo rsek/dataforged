@@ -106,15 +106,57 @@
         ]
       },
       "Table": [
-        [1, 3, "Corrupted or mutated lifeform"],
-        [4, 6, "Signs of a lifeform's power or cunning"],
+        [
+          1,
+          3,
+          "Corrupted or mutated lifeform",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          4,
+          6,
+          "Signs of a lifeform's power or cunning",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
         [7, 9, "Hazardous plant life or malignant spores"],
-        [10, 12, "Lifeform hunts for prey"],
-        [13, 15, "Lifeform lairs here"],
-        [16, 18, "Lifeforms guided by a greater threat"],
-        [19, 21, "Lifeforms spooked or stampeding"],
-        [22, 24, "Threatening lifeform draws near"],
-        [25, 27, "Life is revealed or takes an unexpected form"],
+        [
+          10,
+          12,
+          "Lifeform hunts for prey",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          13,
+          15,
+          "Lifeform lairs here",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          16,
+          18,
+          "Lifeforms guided by a greater threat",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          19,
+          21,
+          "Lifeforms spooked or stampeding",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          22,
+          24,
+          "Threatening lifeform draws near",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          25,
+          27,
+          [
+            "Life is revealed or takes an unexpected form",
+            { "Suggest": [{ "Object type": "Creature" }] }
+          ]
+        ],
         [28, 30, "Blocked or impassible path"],
         [31, 33, "Corrosive substance or environment"],
         [34, 36, "Disturbing remains or evidence of death"],
@@ -139,17 +181,23 @@
         [
           91,
           93,
-          "Worrying arrival of a ship or vehicle",
-          { "Object type": "Starship" }
+          [
+            "Worrying arrival of a ship or vehicle",
+            { "Suggest": [{ "Object type": "Starship" }] }
+          ]
         ],
         [94, 96, "Wreckage or ruins portend a new threat"],
         [
           97,
           99,
-          "▶️Action + Theme",
           [
-            { "Category": "Core", "Oracle": "Action" },
-            { "Category": "Core", "Oracle": "Theme" }
+            "▶️Action + Theme",
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
           ]
         ],
         [100, 100, "Roll twice"]
@@ -163,7 +211,14 @@
         "Life": ["Lifeless", "None", "Extinct"]
       },
       "Table": [
-        [1, 3, "Life is revealed or takes an unexpected form"],
+        [
+          1,
+          3,
+          [
+            "Life is revealed or takes an unexpected form",
+            { "Suggest": [{ "Object type": "Creature" }] }
+          ]
+        ],
         [4, 7, "Blocked or impassible path"],
         [8, 11, "Corrosive substance or environment"],
         [12, 15, "Disturbing remains or evidence of death"],
@@ -185,9 +240,28 @@
         [76, 79, "Treacherous or arduous path"],
         [80, 83, "Troubling visions or apparitions"],
         [84, 87, "Visibility hindered by atmospheric effects"],
-        [88, 91, "Worrying arrival of a ship or vehicle"],
+        [
+          88,
+          91,
+          [
+            "Worrying arrival of a ship or vehicle",
+            { "Suggest": [{ "Object type": "Starship" }] }
+          ]
+        ],
         [92, 95, "Wreckage or ruins portend a new threat"],
-        [96, 99, "▶️Action + Theme"],
+        [
+          96,
+          99,
+          [
+            "▶️Action + Theme",
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Action" },
+                { "Category": "Core", "Oracle": "Theme" }
+              ]
+            }
+          ]
+        ],
         [100, 100, "Roll twice"]
       ]
     }
@@ -208,13 +282,51 @@
         ]
       },
       "Table": [
-        [1, 4, "Clue to a lifeform's nature or vulnerabilities"],
-        [5, 8, "Friendly interaction with a benign lifeform"],
+        [
+          1,
+          4,
+          "Clue to a lifeform's nature or vulnerabilities",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
+        [
+          5,
+          8,
+          "Friendly interaction with a benign lifeform",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
         [9, 12, "Hunting or foraging opportunities are plentiful"],
-        [13, 16, "Interesting or helpful aspect of benign creatures"],
+        [
+          13,
+          16,
+          "Interesting or helpful aspect of benign creatures",
+          { "Suggest": [{ "Object type": "Creature" }] }
+        ],
         [17, 20, "Interesting or helpful aspect of local plant life"],
-        [21, 24, "Encounter reveals unexpected benign lifeforms"],
-        [25, 28, "Abandoned camp or vehicle"],
+        [
+          21,
+          24,
+          [
+            "Encounter reveals unexpected benign lifeforms",
+            { "Suggest": [{ "Object type": "Creature" }] }
+          ]
+        ],
+        [
+          25,
+          28,
+          [
+            "Abandoned camp or vehicle",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [29, 32, "Advance warning of an environmental threat"],
         [33, 36, "Clear path through otherwise perilous terrain"],
         [37, 40, "Clue offers insight into a current quest or mystery"],
@@ -223,15 +335,79 @@
         [49, 52, "Foe reveals themselves or tips their hand"],
         [53, 56, "Fortuitous change in the weather or atmosphere"],
         [57, 60, "Friendly traveler crosses your path"],
-        [61, 64, "Helpful resource is in ample supply"],
+        [
+          61,
+          64,
+          [
+            "Helpful resource is in ample supply",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [65, 68, "Impressive vista offers comfort or inspiration"],
-        [69, 72, "Interesting artifact or device"],
-        [73, 76, "Interesting site offers opportunities for exploration"],
+        [
+          69,
+          72,
+          [
+            "Interesting artifact or device",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          73,
+          76,
+          [
+            "Interesting site offers opportunities for exploration",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [77, 80, "Moment of fellowship or inner peace"],
         [81, 84, "Opening to distract, escape, or avoid foes"],
         [85, 88, "Opening to get the drop on a foe"],
         [89, 92, "Plea for help from a potential benefactor"],
-        [93, 96, "Refuge offers a place to hide, plan, or recover"],
+        [
+          93,
+          96,
+          [
+            "Refuge offers a place to hide, plan, or recover",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [97, 100, "Vantage point reveals the lay of the land"]
       ]
     },
@@ -243,8 +419,31 @@
         "Life": ["Lifeless", "None", "Extinct"]
       },
       "Table": [
-        [1, 5, "Encounter reveals unexpected benign lifeforms"],
-        [6, 10, "Abandoned camp or vehicle"],
+        [
+          1,
+          5,
+          [
+            "Encounter reveals unexpected benign lifeforms",
+            { "Suggest": [{ "Object type": "Creature" }] }
+          ]
+        ],
+        [
+          6,
+          10,
+          [
+            "Abandoned camp or vehicle",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [11, 15, "Advance warning of an environmental threat"],
         [16, 20, "Clear path through otherwise perilous terrain"],
         [21, 25, "Clue offers insight into a current quest or mystery"],
@@ -253,15 +452,79 @@
         [36, 40, "Foe reveals themselves or tips their hand"],
         [41, 45, "Fortuitous change in the weather or atmosphere"],
         [46, 50, "Friendly traveler crosses your path"],
-        [51, 55, "Helpful resource is in ample supply"],
+        [
+          51,
+          55,
+          [
+            "Helpful resource is in ample supply",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [56, 60, "Impressive vista offers comfort or inspiration"],
-        [61, 65, "Interesting artifact or device"],
-        [66, 70, "Interesting site offers opportunities for exploration"],
+        [
+          61,
+          65,
+          [
+            "Interesting artifact or device",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
+        [
+          66,
+          70,
+          [
+            "Interesting site offers opportunities for exploration",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [71, 75, "Moment of fellowship or inner peace"],
         [76, 80, "Opening to distract, escape, or avoid foes"],
         [81, 85, "Opening to get the drop on a foe"],
         [86, 90, "Plea for help from a potential benefactor"],
-        [91, 95, "Refuge offers a place to hide, plan, or recover"],
+        [
+          91,
+          95,
+          [
+            "Refuge offers a place to hide, plan, or recover",
+            {
+              "Suggest": [
+                {
+                  "Oracles": [
+                    { "Category": "Core", "Oracle": "Descriptor" },
+                    { "Category": "Core", "Oracle": "Focus" }
+                  ]
+                }
+              ]
+            }
+          ]
+        ],
         [96, 100, "Vantage point reveals the lay of the land"]
       ]
     }

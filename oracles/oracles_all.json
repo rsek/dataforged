@@ -11,102 +11,102 @@
           {
             "Chance": 5,
             "Description": "adept",
-            "Details": ["KINETIC", "VESTIGE"]
+            "Assets": ["KINETIC", "VESTIGE"]
           },
           {
             "Chance": 10,
             "Description": "battlefield medic",
-            "Details": ["HEALER", "VETERAN"]
+            "Assets": ["HEALER", "VETERAN"]
           },
           {
             "Chance": 15,
             "Description": "bodyguard*",
-            "Details": ["BRAWLER", "LOYALIST"]
+            "Assets": ["BRAWLER", "LOYALIST"]
           },
           {
             "Chance": 20,
             "Description": "delegate",
-            "Details": ["BANNERSWORN", "DIPLOMAT"]
+            "Assets": ["BANNERSWORN", "DIPLOMAT"]
           },
           {
             "Chance": 25,
             "Description": "exobiologist",
-            "Details": ["ARCHIVIST", "NATURALIST"]
+            "Assets": ["ARCHIVIST", "NATURALIST"]
           },
           {
             "Chance": 30,
             "Description": "far trader",
-            "Details": ["NAVIGATOR", "TRADER"]
+            "Assets": ["NAVIGATOR", "TRADER"]
           },
           {
             "Chance": 35,
             "Description": "fugitive hunter",
-            "Details": ["ARMORED", "BOUNTY HUNTER"]
+            "Assets": ["ARMORED", "BOUNTY HUNTER"]
           },
           {
             "Chance": 40,
             "Description": "hacker",
-            "Details": ["AGENT", "TECH"]
+            "Assets": ["AGENT", "TECH"]
           },
           {
             "Chance": 45,
             "Description": "hotshot pilot",
-            "Details": ["ACE", "GUNSLINGER"]
+            "Assets": ["ACE", "GUNSLINGER"]
           },
           {
             "Chance": 50,
             "Description": "monster hunter",
-            "Details": ["GUNNER", "SLAYER"]
+            "Assets": ["GUNNER", "SLAYER"]
           },
           {
             "Chance": 55,
             "Description": "occultist",
-            "Details": ["OUTCAST", "SHADE"]
+            "Assets": ["OUTCAST", "SHADE"]
           },
           {
             "Chance": 60,
             "Description": "operative",
-            "Details": ["AGENT", "BLADEMASTER"]
+            "Assets": ["AGENT", "BLADEMASTER"]
           },
           {
             "Chance": 65,
             "Description": "pilgrim",
-            "Details": ["DEVOTANT", "EXPLORER"]
+            "Assets": ["DEVOTANT", "EXPLORER"]
           },
           {
             "Chance": 70,
             "Description": "prophet",
-            "Details": ["DEVOTANT", "SEER"]
+            "Assets": ["DEVOTANT", "SEER"]
           },
           {
             "Chance": 75,
             "Description": "smuggler",
-            "Details": ["COURIER", "SCOUNDREL"]
+            "Assets": ["COURIER", "SCOUNDREL"]
           },
           {
             "Chance": 80,
             "Description": "spiritualist",
-            "Details": ["HAUNTED", "EMPATH"]
+            "Assets": ["HAUNTED", "EMPATH"]
           },
           {
             "Chance": 85,
             "Description": "starship captain*",
-            "Details": ["COMMANDER", "EXPLORER"]
+            "Assets": ["COMMANDER", "EXPLORER"]
           },
           {
             "Chance": 90,
             "Description": "starship mechanic",
-            "Details": ["GEARHEAD", "VOIDBORN"]
+            "Assets": ["GEARHEAD", "VOIDBORN"]
           },
           {
             "Chance": 95,
             "Description": "supersoldier",
-            "Details": ["AUGMENTED", "MERCENARY"]
+            "Assets": ["AUGMENTED", "MERCENARY"]
           },
           {
             "Chance": 100,
             "Description": "tomb raider",
-            "Details": ["SCAVENGER", "SCOUNDREL"]
+            "Assets": ["SCAVENGER", "SCOUNDREL"]
           }
         ]
       },
@@ -306,7 +306,7 @@
           {
             "Chance": 10,
             "Description": "bounty hunters search for an infamous fugitive",
-            "Game object": { "Object type": "Character" }
+            "Suggest": [{ "Object type": "Character" }]
           },
           {
             "Chance": 15,
@@ -327,7 +327,15 @@
           },
           {
             "Chance": 40,
-            "Description": "newly found resource lures greedy fortune hunters to the sector"
+            "Description": "newly found resource lures greedy fortune hunters to the sector",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 45,
@@ -336,12 +344,12 @@
           {
             "Chance": 50,
             "Description": "parasitic lifeforms spread like a plague",
-            "Game object": { "Object type": "Creature" }
+            "Suggest": [{ "Object type": "Creature" }]
           },
           {
             "Chance": 55,
             "Description": "precursor sites throughout the sector emit strange signals",
-            "Game object": { "Object type": "Precursor Vault" }
+            "Suggest": [{ "Object type": "Precursor Vault" }]
           },
           {
             "Chance": 60,
@@ -362,7 +370,7 @@
           {
             "Chance": 80,
             "Description": "settlements or factions are on the brink of war",
-            "Game object": { "Object type": "Settlement" }
+            "Suggest": [{ "Object type": "Settlement" }]
           },
           { "Chance": 85, "Description": "ships regularly go missing" },
           {
@@ -373,7 +381,7 @@
           {
             "Chance": 100,
             "Description": "titanic spaceborne lifeform stalks the spaceways",
-            "Game object": { "Object type": "Creature" }
+            "Suggest": [{ "Object type": "Creature" }]
           }
         ]
       },
@@ -384,36 +392,41 @@
           {
             "Chance": 5,
             "Description": "aid a starship caught in a spacetime fracture",
-            "Game object": { "Object type": "Starship" }
+            "Suggest": [{ "Object type": "Starship" }]
           },
           {
             "Chance": 10,
             "Description": "broker peace between two feuding settlements",
-            "Game object": { "Object type": "Settlement" }
+            "Suggest": [{ "Object type": "Settlement" }]
           },
           {
             "Chance": 15,
             "Description": "chart a new passage between isolated settlements",
-            "Game object": { "Object type": "Settlement" }
+            "Suggest": [{ "Object type": "Settlement" }]
           },
           {
             "Chance": 20,
             "Description": "defend the people of a beleaguered settlement against raiders",
-            "Game object": { "Object type": "Settlement" }
+            "Suggest": [{ "Object type": "Settlement" }]
           },
           {
             "Chance": 25,
             "Description": "discover who sabotaged a settlement's air processors",
-            "Game object": { "Object type": "Settlement" }
+            "Suggest": [{ "Object type": "Settlement" }]
           },
           {
             "Chance": 30,
             "Description": "escort a tradeship carrying a prized cargo",
-            "Game object": { "Object type": "Starship" }
+            "Suggest": [{ "Object type": "Starship" }]
           },
           {
             "Chance": 35,
-            "Description": "ferry a rescue team to a perilous disaster site"
+            "Description": "ferry a rescue team to a perilous disaster site",
+            "Suggest": [
+              {
+                "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }]
+              }
+            ]
           },
           {
             "Chance": 40,
@@ -422,51 +435,73 @@
           {
             "Chance": 45,
             "Description": "investigate terrifying manifestations at a remote settlement",
-            "Game object": { "Object type": "Settlement" }
+            "Suggest": [{ "Object type": "Settlement" }]
           },
           {
             "Chance": 50,
-            "Description": "liberate prisoners at a cruel labor camp"
+            "Description": "liberate prisoners at a cruel labor camp",
+            "Suggest": [
+              {
+                "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }]
+              }
+            ]
           },
           {
             "Chance": 55,
             "Description": "locate a downed spacer on an uninhabited planet",
-            "Game object": { "Object type": "Planet" }
+            "Suggest": [{ "Object type": "Planet" }]
           },
           {
             "Chance": 60,
             "Description": "protect a fugitive from a relentless bounty hunter",
-            "Game object": { "Object type": "Character" }
+            "Suggest": [{ "Object type": "Character" }]
           },
           {
             "Chance": 65,
-            "Description": "recover a cherished pre-exodus artifact from an enemy"
+            "Description": "recover a cherished pre-exodus artifact from an enemy",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 70,
             "Description": "rescue a starship crew held captive by mutineers",
-            "Game object": { "Object type": "Starship" }
+            "Suggest": [{ "Object type": "Starship" }]
           },
           {
             "Chance": 75,
             "Description": "retrieve a cache of stolen weapons from a pirate ship",
-            "Game object": { "Object type": "Starship" }
+            "Suggest": [{ "Object type": "Starship" }]
           },
           { "Chance": 80, "Description": "sabotage an enemy installation" },
           {
             "Chance": 85,
             "Description": "search for a missing expedition in the depths of a precursor vault",
-            "Game object": { "Object type": "Precursor Vault" }
+            "Suggest": [{ "Object type": "Precursor Vault" }]
           },
           {
             "Chance": 90,
             "Description": "shield a wondrous lifeform from those who seek to destroy it",
-            "Game object": { "Object type": "Creature" }
+            "Suggest": [{ "Object type": "Creature" }]
           },
-          { "Chance": 95, "Description": "track and slay a marauding beast" },
+          {
+            "Chance": 95,
+            "Description": "track and slay a marauding beast",
+            "Suggest": [{ "Object type": "Creature" }]
+          },
           {
             "Chance": 100,
-            "Description": "transport a displaced people to their new home"
+            "Description": "transport a displaced people to their new home",
+            "Suggest": [
+              {
+                "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }]
+              }
+            ]
           }
         ]
       }
@@ -937,8 +972,8 @@
             "Chance": 95,
             "Description": "▶️Action + Theme",
             "Oracles": [
-              { "Category": "Core", "Name": "Action" },
-              { "Category": "Core", "Name": "Theme" }
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
             ]
           },
           { "Chance": 100, "Description": "Roll twice" }
@@ -949,50 +984,281 @@
         "Display name": "Character Goal",
         "Tags": ["fragment"],
         "Table": [
-          { "Chance": 2, "Description": "avenge a wrong" },
+          {
+            "Chance": 2,
+            "Description": "avenge a wrong",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           { "Chance": 4, "Description": "build a home" },
-          { "Chance": 7, "Description": "build a relationship" },
-          { "Chance": 10, "Description": "claim a resource" },
+          {
+            "Chance": 7,
+            "Description": "build a relationship",
+            "Suggest": [{ "Object type": "Character" }]
+          },
+          {
+            "Chance": 10,
+            "Description": "claim a resource",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 12, "Description": "collect a debt" },
-          { "Chance": 14, "Description": "craft an object" },
+          {
+            "Chance": 14,
+            "Description": "craft an object",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 16, "Description": "cure an ill" },
-          { "Chance": 18, "Description": "defeat a rival" },
-          { "Chance": 20, "Description": "defend a person" },
-          { "Chance": 23, "Description": "defend a place" },
-          { "Chance": 25, "Description": "discover a truth" },
-          { "Chance": 27, "Description": "end a conflict" },
+          {
+            "Chance": 18,
+            "Description": "defeat a rival",
+            "Suggest": [{ "Object type": "Character" }]
+          },
+          {
+            "Chance": 20,
+            "Description": "defend a person",
+            "Suggest": [{ "Object type": "Character" }]
+          },
+          {
+            "Chance": 23,
+            "Description": "defend a place",
+            "Suggest": [
+              {
+                "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }]
+              }
+            ]
+          },
+          {
+            "Chance": 25,
+            "Description": "discover a truth",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 27,
+            "Description": "end a conflict",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           { "Chance": 29, "Description": "escape a captor" },
           { "Chance": 31, "Description": "fight injustice" },
-          { "Chance": 33, "Description": "find a person" },
+          {
+            "Chance": 33,
+            "Description": "find a person",
+            "Suggest": [{ "Object type": "Character" }]
+          },
           { "Chance": 35, "Description": "forge an alliance" },
-          { "Chance": 37, "Description": "gain knowledge" },
+          {
+            "Chance": 37,
+            "Description": "gain knowledge",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           { "Chance": 39, "Description": "gain riches" },
           { "Chance": 41, "Description": "maintain order" },
-          { "Chance": 43, "Description": "make an agreement" },
-          { "Chance": 45, "Description": "obtain an object" },
+          {
+            "Chance": 43,
+            "Description": "make an agreement",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 45,
+            "Description": "obtain an object",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 47, "Description": "pay a debt" },
-          { "Chance": 49, "Description": "protect a lifeform" },
-          { "Chance": 51, "Description": "protect a secret" },
-          { "Chance": 53, "Description": "prove worthiness" },
+          {
+            "Chance": 49,
+            "Description": "protect a lifeform",
+            "Suggest": [{ "Object type": "Creature" }]
+          },
+          {
+            "Chance": 51,
+            "Description": "protect a secret",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 53,
+            "Description": "prove worthiness",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           { "Chance": 55, "Description": "rebel against power" },
           { "Chance": 57, "Description": "refute a falsehood" },
-          { "Chance": 59, "Description": "repair a technology" },
-          { "Chance": 61, "Description": "resolve a dispute" },
-          { "Chance": 63, "Description": "restore a relationship" },
-          { "Chance": 65, "Description": "sabotage a technology" },
-          { "Chance": 68, "Description": "secure a resource" },
-          { "Chance": 70, "Description": "seek redemption" },
-          { "Chance": 72, "Description": "seize power" },
-          { "Chance": 74, "Description": "solve a mystery" },
+          {
+            "Chance": 59,
+            "Description": "repair a technology",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 61,
+            "Description": "resolve a dispute",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 63,
+            "Description": "restore a relationship",
+            "Suggest": [{ "Object type": "Character" }]
+          },
+          {
+            "Chance": 65,
+            "Description": "sabotage a technology",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 68,
+            "Description": "secure a resource",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 70,
+            "Description": "seek redemption",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 72,
+            "Description": "seize power",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 74,
+            "Description": "solve a mystery",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           { "Chance": 76, "Description": "spread faith" },
-          { "Chance": 78, "Description": "travel to a place" },
-          { "Chance": 80, "Description": "undermine a relationship" },
+          {
+            "Chance": 78,
+            "Description": "travel to a place",
+            "Suggest": [
+              {
+                "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }]
+              }
+            ]
+          },
+          {
+            "Chance": 80,
+            "Description": "undermine a relationship",
+            "Suggest": [{ "Object type": "Character" }]
+          },
           {
             "Chance": 90,
             "Description": "▶️Action + Theme",
             "Oracles": [
-              { "Category": "Core", "Name": "Action" },
-              { "Category": "Core", "Name": "Theme" }
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
             ]
           },
           { "Chance": 100, "Description": "Roll twice" }
@@ -1571,7 +1837,11 @@
           { "Chance": 60, "Description": "medium", "Details": "person-sized" },
           { "Chance": 90, "Description": "large", "Details": "vehicle-sized" },
           { "Chance": 99, "Description": "huge", "Details": "whale-sized" },
-          { "Chance": 100, "Description": "▶️Ultra-scale" }
+          {
+            "Chance": 100,
+            "Description": "▶️Ultra-scale",
+            "Oracles": [{ "Category": "Creature", "Oracle": "Ultra-scale" }]
+          }
         ]
       },
       {
@@ -2029,8 +2299,8 @@
             "Chance": 100,
             "Description": "▶️Descriptor + Focus",
             "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
             ]
           }
         ]
@@ -2113,8 +2383,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2142,8 +2412,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2214,8 +2484,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2246,8 +2516,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2318,8 +2588,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2347,8 +2617,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2416,8 +2686,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2448,8 +2718,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2523,8 +2793,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2555,8 +2825,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2618,8 +2888,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2659,8 +2929,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2728,8 +2998,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2760,8 +3030,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2823,8 +3093,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -2858,8 +3128,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -2979,8 +3249,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3021,8 +3291,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3103,8 +3373,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3148,8 +3418,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3224,8 +3494,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3275,8 +3545,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3348,8 +3618,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3399,8 +3669,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3478,8 +3748,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3523,8 +3793,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3608,8 +3878,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3656,8 +3926,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3738,8 +4008,8 @@
                 "Chance": 100,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               }
             ]
@@ -3792,8 +4062,8 @@
                 "Chance": 98,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -3855,10 +4125,29 @@
         "Tags": ["fragment"],
         "Description": "This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the Pay the Price table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.",
         "Table": [
-          { "Chance": 4, "Description": "crucial equipment or device fails" },
+          {
+            "Chance": 4,
+            "Description": "crucial equipment or device fails",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           {
             "Chance": 7,
-            "Description": "crucial equipment or device is sabotaged"
+            "Description": "crucial equipment or device is sabotaged",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           { "Chance": 10, "Description": "debt or promise comes due" },
           {
@@ -3917,11 +4206,27 @@
           },
           {
             "Chance": 72,
-            "Description": "trusted information is shown to be false"
+            "Description": "trusted information is shown to be false",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 76,
-            "Description": "two seemingly unrelated problems are shown to be connected"
+            "Description": "two seemingly unrelated problems are shown to be connected",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 80,
@@ -3930,12 +4235,28 @@
           { "Chance": 84, "Description": "unexpected enemies appear" },
           {
             "Chance": 88,
-            "Description": "urgent message distracts you from your quest"
+            "Description": "urgent message distracts you from your quest",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           { "Chance": 92, "Description": "you are tracked or followed" },
           {
             "Chance": 95,
-            "Description": "you were diverted from the true crisis"
+            "Description": "you were diverted from the true crisis",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           { "Chance": 100, "Description": "Roll twice" }
         ]
@@ -4103,64 +4424,171 @@
         "Table": [
           {
             "Chance": 4,
-            "Description": "advanced technology waiting to be harnessed or salvaged"
+            "Description": "advanced technology waiting to be harnessed or salvaged",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
-          { "Chance": 8, "Description": "ancient archive or message" },
+          {
+            "Chance": 8,
+            "Description": "ancient archive or message",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           {
             "Chance": 10,
             "Description": "artificial consciousness evolved to a higher state"
           },
           {
             "Chance": 12,
-            "Description": "clues to a crucial resource or uncharted domain"
+            "Description": "clues to a crucial resource or uncharted domain",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           { "Chance": 14, "Description": "envoy from another time or reality" },
           { "Chance": 22, "Description": "extraordinary natural phenomenon" },
           {
             "Chance": 24,
-            "Description": "first contact with intelligent life"
+            "Description": "first contact with intelligent life",
+            "Suggest": [{ "Object type": "Creature" }]
           },
           {
             "Chance": 26,
-            "Description": "gateway to another time or alternate reality"
+            "Description": "gateway to another time or alternate reality",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 28,
             "Description": "key to unlocking a language or method of communication"
           },
           { "Chance": 34, "Description": "lost or hidden people" },
-          { "Chance": 42, "Description": "majestic or unusual lifeforms" },
-          { "Chance": 46, "Description": "marvel of ancient engineering" },
+          {
+            "Chance": 42,
+            "Description": "majestic or unusual lifeforms",
+            "Suggest": [{ "Object type": "Creature" }]
+          },
+          {
+            "Chance": 46,
+            "Description": "marvel of ancient engineering",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           {
             "Chance": 50,
-            "Description": "miraculously preserved artifact or specimen"
+            "Description": "miraculously preserved artifact or specimen",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 56,
-            "Description": "monumental architecture or artistry of an ancient civilization"
+            "Description": "monumental architecture or artistry of an ancient civilization",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 62,
-            "Description": "mysterious device or artifact of potential value"
+            "Description": "mysterious device or artifact of potential value",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 66,
-            "Description": "new understanding of an enduring mystery"
+            "Description": "new understanding of an enduring mystery",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 68,
-            "Description": "pathway or means of travel to a distant location"
+            "Description": "pathway or means of travel to a distant location",
+            "Suggest": [
+              {
+                "Oracles": [{ "Category": "Space", "Oracle": "Space Sighting" }]
+              }
+            ]
           },
           {
             "Chance": 70,
             "Description": "person or lifeform with phenomenal abilities"
           },
           { "Chance": 78, "Description": "place of awe-inspiring beauty" },
-          { "Chance": 86, "Description": "rare and valuable resource" },
+          {
+            "Chance": 86,
+            "Description": "rare and valuable resource",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 88, "Description": "safeguarded or idyllic location" },
           {
             "Chance": 90,
-            "Description": "visions or prophesies of the future"
+            "Description": "visions or prophesies of the future",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           { "Chance": 100, "Description": "Roll twice" }
         ]
@@ -4169,26 +4597,58 @@
         "Name": "Confront Chaos",
         "Tags": ["fragment"],
         "Table": [
-          { "Chance": 4, "Description": "baneful weapon of mass destruction" },
+          {
+            "Chance": 4,
+            "Description": "baneful weapon of mass destruction",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 9, "Description": "cataclysmic environmental effects" },
           { "Chance": 12, "Description": "dead given unnatural life" },
           {
             "Chance": 17,
-            "Description": "destructive lifeform of monstrous proportion"
+            "Description": "destructive lifeform of monstrous proportion",
+            "Suggest": [{ "Object type": "Creature" }]
           },
           { "Chance": 20, "Description": "dread hallucinations or illusions" },
           { "Chance": 24, "Description": "harbingers of an imminent invasion" },
           { "Chance": 27, "Description": "horde of insatiable hunger or fury" },
           {
             "Chance": 32,
-            "Description": "horrific lifeforms of inscrutable purpose"
+            "Description": "horrific lifeforms of inscrutable purpose",
+            "Suggest": [{ "Object type": "Creature" }]
           },
           { "Chance": 36, "Description": "impostors in human form" },
-          { "Chance": 41, "Description": "machines made enemy" },
+          {
+            "Chance": 41,
+            "Description": "machines made enemy",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 45, "Description": "malignant contagion or parasite" },
           {
             "Chance": 50,
-            "Description": "messenger or signal with a dire warning"
+            "Description": "messenger or signal with a dire warning",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 53,
@@ -4201,14 +4661,37 @@
           },
           { "Chance": 68, "Description": "signs of an impending catastrophe" },
           { "Chance": 72, "Description": "site of a baffling disappearance" },
-          { "Chance": 77, "Description": "site of a horrible disaster" },
+          {
+            "Chance": 77,
+            "Description": "site of a horrible disaster",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              }
+            ]
+          },
           { "Chance": 82, "Description": "site of terrible carnage" },
           {
             "Chance": 87,
-            "Description": "technology nullified or made unstable"
+            "Description": "technology nullified or made unstable",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
           },
           { "Chance": 92, "Description": "technology warped for dark purpose" },
-          { "Chance": 96, "Description": "vault of dread technology or power" },
+          {
+            "Chance": 96,
+            "Description": "vault of dread technology or power",
+            "Suggest": [{ "Object type": "Precursor Vault" }]
+          },
           {
             "Chance": 100,
             "Description": "worshipers of great and malevolent powers"
@@ -4475,32 +4958,49 @@
               ]
             },
             "Table": [
-              { "Chance": 3, "Description": "corrupted or mutated lifeform" },
+              {
+                "Chance": 3,
+                "Description": "corrupted or mutated lifeform",
+                "Suggest": [{ "Object type": "Creature" }]
+              },
               {
                 "Chance": 6,
-                "Description": "signs of a lifeform's power or cunning"
+                "Description": "signs of a lifeform's power or cunning",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 9,
                 "Description": "hazardous plant life or malignant spores"
               },
-              { "Chance": 12, "Description": "lifeform hunts for prey" },
-              { "Chance": 15, "Description": "lifeform lairs here" },
+              {
+                "Chance": 12,
+                "Description": "lifeform hunts for prey",
+                "Suggest": [{ "Object type": "Creature" }]
+              },
+              {
+                "Chance": 15,
+                "Description": "lifeform lairs here",
+                "Suggest": [{ "Object type": "Creature" }]
+              },
               {
                 "Chance": 18,
-                "Description": "lifeforms guided by a greater threat"
+                "Description": "lifeforms guided by a greater threat",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 21,
-                "Description": "lifeforms spooked or stampeding"
+                "Description": "lifeforms spooked or stampeding",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 24,
-                "Description": "threatening lifeform draws near"
+                "Description": "threatening lifeform draws near",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 27,
-                "Description": "life is revealed or takes an unexpected form"
+                "Description": "life is revealed or takes an unexpected form",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               { "Chance": 30, "Description": "blocked or impassible path" },
               {
@@ -4550,7 +5050,7 @@
               {
                 "Chance": 93,
                 "Description": "worrying arrival of a ship or vehicle",
-                "Game object": { "Object type": "Starship" }
+                "Suggest": [{ "Object type": "Starship" }]
               },
               {
                 "Chance": 96,
@@ -4560,8 +5060,8 @@
                 "Chance": 99,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -4577,7 +5077,8 @@
             "Table": [
               {
                 "Chance": 3,
-                "Description": "life is revealed or takes an unexpected form"
+                "Description": "life is revealed or takes an unexpected form",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               { "Chance": 7, "Description": "blocked or impassible path" },
               {
@@ -4626,13 +5127,21 @@
               },
               {
                 "Chance": 91,
-                "Description": "worrying arrival of a ship or vehicle"
+                "Description": "worrying arrival of a ship or vehicle",
+                "Suggest": [{ "Object type": "Starship" }]
               },
               {
                 "Chance": 95,
                 "Description": "wreckage or ruins portend a new threat"
               },
-              { "Chance": 99, "Description": "▶️Action + Theme" },
+              {
+                "Chance": 99,
+                "Description": "▶️Action + Theme",
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              },
               { "Chance": 100, "Description": "Roll twice" }
             ]
           }
@@ -4658,11 +5167,13 @@
             "Table": [
               {
                 "Chance": 4,
-                "Description": "clue to a lifeform's nature or vulnerabilities"
+                "Description": "clue to a lifeform's nature or vulnerabilities",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 8,
-                "Description": "friendly interaction with a benign lifeform"
+                "Description": "friendly interaction with a benign lifeform",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 12,
@@ -4670,7 +5181,8 @@
               },
               {
                 "Chance": 16,
-                "Description": "interesting or helpful aspect of benign creatures"
+                "Description": "interesting or helpful aspect of benign creatures",
+                "Suggest": [{ "Object type": "Creature" }]
               },
               {
                 "Chance": 20,
@@ -4678,9 +5190,21 @@
               },
               {
                 "Chance": 24,
-                "Description": "encounter reveals unexpected benign lifeforms"
+                "Description": "encounter reveals unexpected benign lifeforms",
+                "Suggest": [{ "Object type": "Creature" }]
               },
-              { "Chance": 28, "Description": "abandoned camp or vehicle" },
+              {
+                "Chance": 28,
+                "Description": "abandoned camp or vehicle",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               {
                 "Chance": 32,
                 "Description": "advance warning of an environmental threat"
@@ -4715,16 +5239,43 @@
               },
               {
                 "Chance": 64,
-                "Description": "helpful resource is in ample supply"
+                "Description": "helpful resource is in ample supply",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
               },
               {
                 "Chance": 68,
                 "Description": "impressive vista offers comfort or inspiration"
               },
-              { "Chance": 72, "Description": "interesting artifact or device" },
+              {
+                "Chance": 72,
+                "Description": "interesting artifact or device",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               {
                 "Chance": 76,
-                "Description": "interesting site offers opportunities for exploration"
+                "Description": "interesting site offers opportunities for exploration",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
               },
               {
                 "Chance": 80,
@@ -4744,7 +5295,15 @@
               },
               {
                 "Chance": 96,
-                "Description": "refuge offers a place to hide, plan, or recover"
+                "Description": "refuge offers a place to hide, plan, or recover",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
               },
               {
                 "Chance": 100,
@@ -4762,9 +5321,21 @@
             "Table": [
               {
                 "Chance": 5,
-                "Description": "encounter reveals unexpected benign lifeforms"
+                "Description": "encounter reveals unexpected benign lifeforms",
+                "Suggest": [{ "Object type": "Creature" }]
               },
-              { "Chance": 10, "Description": "abandoned camp or vehicle" },
+              {
+                "Chance": 10,
+                "Description": "abandoned camp or vehicle",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               {
                 "Chance": 15,
                 "Description": "advance warning of an environmental threat"
@@ -4799,16 +5370,43 @@
               },
               {
                 "Chance": 55,
-                "Description": "helpful resource is in ample supply"
+                "Description": "helpful resource is in ample supply",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
               },
               {
                 "Chance": 60,
                 "Description": "impressive vista offers comfort or inspiration"
               },
-              { "Chance": 65, "Description": "interesting artifact or device" },
+              {
+                "Chance": 65,
+                "Description": "interesting artifact or device",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               {
                 "Chance": 70,
-                "Description": "interesting site offers opportunities for exploration"
+                "Description": "interesting site offers opportunities for exploration",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
               },
               {
                 "Chance": 75,
@@ -4828,7 +5426,15 @@
               },
               {
                 "Chance": 95,
-                "Description": "refuge offers a place to hide, plan, or recover"
+                "Description": "refuge offers a place to hide, plan, or recover",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
               },
               {
                 "Chance": 100,
@@ -4939,7 +5545,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -4948,7 +5554,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -4981,7 +5587,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -4990,7 +5596,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -5040,8 +5646,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5085,8 +5691,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5207,7 +5813,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -5216,7 +5822,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -5249,7 +5855,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -5258,7 +5864,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -5308,8 +5914,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5350,8 +5956,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5472,7 +6078,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -5481,7 +6087,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -5547,16 +6153,34 @@
               { "Chance": 22, "Description": "cratered surface" },
               { "Chance": 33, "Description": "dry seabeds" },
               { "Chance": 44, "Description": "irradiated atmosphere" },
-              { "Chance": 55, "Description": "orbiting ship graveyard" },
+              {
+                "Chance": 55,
+                "Description": "orbiting ship graveyard",
+                "Suggest": [
+                  {
+                    "Object type": "Derelict",
+                    "Attributes": { "Derelict type": "Starship" }
+                  }
+                ]
+              },
               { "Chance": 66, "Description": "perpetual overcast" },
-              { "Chance": 77, "Description": "sky-breaching ruins" },
+              {
+                "Chance": 77,
+                "Description": "sky-breaching ruins",
+                "Suggest": [
+                  {
+                    "Object type": "Derelict",
+                    "Attributes": { "Derelict type": "Settlement" }
+                  }
+                ]
+              },
               { "Chance": 88, "Description": "vast wastelands" },
               {
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5583,16 +6207,34 @@
               { "Chance": 49, "Description": "moldering bones" },
               { "Chance": 56, "Description": "noxious fog" },
               { "Chance": 63, "Description": "radioactive hotspots" },
-              { "Chance": 70, "Description": "ravaged cities" },
+              {
+                "Chance": 70,
+                "Description": "ravaged cities",
+                "Suggest": [
+                  {
+                    "Object type": "Derelict",
+                    "Attributes": { "Derelict type": "Settlement" }
+                  }
+                ]
+              },
               { "Chance": 77, "Description": "scarred battlefields" },
-              { "Chance": 84, "Description": "ship graveyards" },
+              {
+                "Chance": 84,
+                "Description": "ship graveyards",
+                "Suggest": [
+                  {
+                    "Object type": "Derelict",
+                    "Attributes": { "Derelict type": "Starship" }
+                  }
+                ]
+              },
               { "Chance": 91, "Description": "whispers of the dead" },
               {
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5715,7 +6357,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -5724,7 +6366,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -5757,7 +6399,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -5766,7 +6408,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -5816,8 +6458,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5852,8 +6494,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -5969,7 +6611,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -5978,7 +6620,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6011,7 +6653,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6020,7 +6662,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6070,8 +6712,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6106,8 +6748,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6228,7 +6870,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6237,7 +6879,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6270,7 +6912,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6279,7 +6921,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6312,7 +6954,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6321,7 +6963,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6347,8 +6989,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6383,8 +7025,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6508,7 +7150,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6517,7 +7159,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6550,7 +7192,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6559,7 +7201,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6592,7 +7234,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6601,7 +7243,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6627,8 +7269,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6663,8 +7305,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6780,7 +7422,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6789,7 +7431,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6822,7 +7464,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -6831,7 +7473,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -6881,8 +7523,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -6917,8 +7559,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7039,7 +7681,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -7048,7 +7690,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -7081,7 +7723,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -7119,7 +7761,16 @@
             "Tags": ["fragment"],
             "Max rolls": 2,
             "Table": [
-              { "Chance": 11, "Description": "demolished space fleet" },
+              {
+                "Chance": 11,
+                "Description": "demolished space fleet",
+                "Suggest": [
+                  {
+                    "Object type": "Derelict",
+                    "Attributes": { "Derelict type": "Starship" }
+                  }
+                ]
+              },
               { "Chance": 22, "Description": "dense ring system" },
               { "Chance": 33, "Description": "fiery planetary core" },
               { "Chance": 44, "Description": "geomagnetic storms" },
@@ -7131,8 +7782,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7170,8 +7821,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7285,7 +7936,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -7294,7 +7945,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -7368,8 +8019,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7407,8 +8058,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7517,7 +8168,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -7526,7 +8177,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -7559,7 +8210,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -7568,7 +8219,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -7601,7 +8252,7 @@
                     "Description": "Multiple settlements",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   },
@@ -7610,7 +8261,7 @@
                     "Description": "Settlements in conflict",
                     "Game object": {
                       "Object type": "Settlement",
-                      "Number": 2,
+                      "Amount": 2,
                       "Attributes": { "Location": ["Orbital", "Planetside"] }
                     }
                   }
@@ -7636,8 +8287,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7678,8 +8329,8 @@
                 "Chance": 98,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -7896,8 +8547,8 @@
             "Chance": 100,
             "Description": "▶️Descriptor + Focus",
             "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
             ]
           }
         ]
@@ -7950,8 +8601,8 @@
             "Chance": 100,
             "Description": "▶️Descriptor + Focus",
             "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
             ]
           }
         ]
@@ -8029,8 +8680,8 @@
                 "Chance": 95,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -8082,8 +8733,8 @@
                 "Chance": 99,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -8220,8 +8871,8 @@
                 "Chance": 95,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -8314,8 +8965,8 @@
                 "Chance": 95,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -8397,8 +9048,8 @@
                 "Chance": 99,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -8553,14 +9204,15 @@
           {
             "Chance": 90,
             "Description": "Within or near ▶️Precursor Vault",
+            "Details": "▶️Precursor Vault",
             "Game object": { "Object type": "Precursor Vault" }
           },
           {
             "Chance": 100,
             "Description": "▶️Descriptor + Focus",
             "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
             ]
           }
         ]
@@ -8646,8 +9298,8 @@
             "Chance": 100,
             "Description": "▶️Action + Theme",
             "Oracles": [
-              { "Category": "Core", "Name": "Action" },
-              { "Category": "Core", "Name": "Theme" }
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
             ]
           }
         ]
@@ -8658,7 +9310,18 @@
         "Tags": ["fragment"],
         "Table": [
           { "Chance": 3, "Description": "betrayal from within" },
-          { "Chance": 7, "Description": "blocked resource" },
+          {
+            "Chance": 7,
+            "Description": "blocked resource",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           { "Chance": 9, "Description": "caught in the crossfire" },
           { "Chance": 13, "Description": "changing environment" },
           { "Chance": 15, "Description": "clash of cultures" },
@@ -8681,16 +9344,53 @@
           { "Chance": 66, "Description": "someone is ill or injured" },
           { "Chance": 68, "Description": "someone is missing" },
           { "Chance": 70, "Description": "stolen technology or object" },
-          { "Chance": 73, "Description": "strange phenomenon" },
-          { "Chance": 76, "Description": "toxic waste or pollution" },
-          { "Chance": 78, "Description": "volatile energy source" },
-          { "Chance": 80, "Description": "vulnerable lifeforms" },
+          {
+            "Chance": 73,
+            "Description": "strange phenomenon",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 76,
+            "Description": "toxic waste or pollution",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 78,
+            "Description": "volatile energy source",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 80,
+            "Description": "vulnerable lifeforms",
+            "Suggest": [{ "Object type": "Creature" }]
+          },
           {
             "Chance": 90,
             "Description": "▶️Action + Theme",
             "Oracles": [
-              { "Category": "Core", "Name": "Action" },
-              { "Category": "Core", "Name": "Theme" }
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
             ]
           },
           { "Chance": 100, "Description": "Roll twice" }
@@ -8825,7 +9525,7 @@
               {
                 "Chance": 15,
                 "Description": "▶️Stellar Object",
-                "Oracles": [{ "Category": "Space", "Name": "Stellar Object" }]
+                "Oracles": [{ "Category": "Space", "Oracle": "Stellar Object" }]
               },
               {
                 "Chance": 35,
@@ -8861,8 +9561,8 @@
                 "Chance": 60,
                 "Description": "▶️Descriptor + Focus",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Descriptor" },
-                  { "Category": "Core", "Name": "Focus" }
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
                 ]
               },
               {
@@ -8901,14 +9601,49 @@
             "Requires": { "Region": ["Outlands"] },
             "Tags": ["fragment"],
             "Table": [
-              { "Chance": 15, "Description": "▶️Stellar Object" },
-              { "Chance": 35, "Description": "▶️Planet" },
-              { "Chance": 38, "Description": "▶️Settlement" },
-              { "Chance": 43, "Description": "▶️Starship" },
-              { "Chance": 46, "Description": "▶️Derelict" },
-              { "Chance": 49, "Description": "▶️Precursor Vault" },
-              { "Chance": 52, "Description": "▶️Creature" },
-              { "Chance": 58, "Description": "▶️Descriptor + Focus" },
+              {
+                "Chance": 15,
+                "Description": "▶️Stellar Object",
+                "Oracles": [{ "Category": "Space", "Oracle": "Stellar Object" }]
+              },
+              {
+                "Chance": 35,
+                "Description": "▶️Planet",
+                "Game object": { "Object type": "Planet" }
+              },
+              {
+                "Chance": 38,
+                "Description": "▶️Settlement",
+                "Game object": { "Object type": "Settlement" }
+              },
+              {
+                "Chance": 43,
+                "Description": "▶️Starship",
+                "Game object": { "Object type": "Starship" }
+              },
+              {
+                "Chance": 46,
+                "Description": "▶️Derelict",
+                "Game object": { "Object type": "Derelict" }
+              },
+              {
+                "Chance": 49,
+                "Description": "▶️Precursor Vault",
+                "Game object": { "Object type": "Precursor Vault" }
+              },
+              {
+                "Chance": 52,
+                "Description": "▶️Creature",
+                "Game object": { "Object type": "Creature" }
+              },
+              {
+                "Chance": 58,
+                "Description": "▶️Descriptor + Focus",
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              },
               {
                 "Chance": 63,
                 "Description": "debris field: Mineral asteroids"
@@ -8945,14 +9680,49 @@
             "Requires": { "Region": ["Expanse"] },
             "Tags": ["fragment"],
             "Table": [
-              { "Chance": 15, "Description": "▶️Stellar Object" },
-              { "Chance": 35, "Description": "▶️Planet" },
-              { "Chance": 37, "Description": "▶️Settlement" },
-              { "Chance": 39, "Description": "▶️Starship" },
-              { "Chance": 41, "Description": "▶️Derelict" },
-              { "Chance": 45, "Description": "▶️Precursor Vault" },
-              { "Chance": 49, "Description": "▶️Creature" },
-              { "Chance": 56, "Description": "▶️Descriptor + Focus" },
+              {
+                "Chance": 15,
+                "Description": "▶️Stellar Object",
+                "Oracles": [{ "Category": "Space", "Oracle": "Stellar Object" }]
+              },
+              {
+                "Chance": 35,
+                "Description": "▶️Planet",
+                "Game object": { "Object type": "Planet" }
+              },
+              {
+                "Chance": 37,
+                "Description": "▶️Settlement",
+                "Game object": { "Object type": "Settlement" }
+              },
+              {
+                "Chance": 39,
+                "Description": "▶️Starship",
+                "Game object": { "Object type": "Starship" }
+              },
+              {
+                "Chance": 41,
+                "Description": "▶️Derelict",
+                "Game object": { "Object type": "Derelict" }
+              },
+              {
+                "Chance": 45,
+                "Description": "▶️Precursor Vault",
+                "Game object": { "Object type": "Precursor Vault" }
+              },
+              {
+                "Chance": 49,
+                "Description": "▶️Creature",
+                "Game object": { "Object type": "Creature" }
+              },
+              {
+                "Chance": 56,
+                "Description": "▶️Descriptor + Focus",
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              },
               {
                 "Chance": 61,
                 "Description": "debris field: Mineral asteroids"
@@ -9207,12 +9977,20 @@
             "Description": "familiar foe appears or sends an ominous message"
           },
           { "Chance": 24, "Description": "gravity well or vortex takes hold" },
-          { "Chance": 27, "Description": "imperiled ship calls for help" },
+          {
+            "Chance": 27,
+            "Description": "imperiled ship calls for help",
+            "Suggest": [{ "Object type": "Starship" }]
+          },
           {
             "Chance": 30,
             "Description": "important device fails or malfunctions"
           },
-          { "Chance": 33, "Description": "infestation is revealed" },
+          {
+            "Chance": 33,
+            "Description": "infestation is revealed",
+            "Suggest": [{ "Object type": "Creature" }]
+          },
           {
             "Chance": 36,
             "Description": "intruder or stowaway creates trouble"
@@ -9224,7 +10002,11 @@
             "Chance": 48,
             "Description": "mysterious wreckage portends a new threat"
           },
-          { "Chance": 51, "Description": "nearby settlement calls for help" },
+          {
+            "Chance": 51,
+            "Description": "nearby settlement calls for help",
+            "Suggest": [{ "Object type": "Settlement" }]
+          },
           { "Chance": 54, "Description": "old repair or patch fails" },
           {
             "Chance": 57,
@@ -9268,8 +10050,8 @@
             "Chance": 99,
             "Description": "▶️Action + Theme",
             "Oracles": [
-              { "Category": "Core", "Name": "Action" },
-              { "Category": "Core", "Name": "Theme" }
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
             ]
           },
           { "Chance": 100, "Description": "Roll twice" }
@@ -9290,7 +10072,18 @@
             "Chance": 8,
             "Description": "automated signal offers a helpful message or warning"
           },
-          { "Chance": 12, "Description": "cache of cargo or supplies" },
+          {
+            "Chance": 12,
+            "Description": "cache of cargo or supplies",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Descriptor" },
+                  { "Category": "Core", "Oracle": "Focus" }
+                ]
+              }
+            ]
+          },
           {
             "Chance": 16,
             "Description": "chance for fellowship or a moment of inner peace"
@@ -9307,17 +10100,30 @@
             "Chance": 28,
             "Description": "clue to a lifeform's nature or vulnerabilities"
           },
-          { "Chance": 32, "Description": "derelict ripe for the picking" },
+          {
+            "Chance": 32,
+            "Description": "derelict ripe for the picking",
+            "Suggest": [{ "Object type": "Derelict" }]
+          },
           {
             "Chance": 36,
             "Description": "foe inadvertently reveals themselves or tips their hand"
           },
           {
             "Chance": 40,
-            "Description": "friendly interaction with a benign lifeform"
+            "Description": "friendly interaction with a benign lifeform",
+            "Suggest": [{ "Object type": "Creature" }]
           },
-          { "Chance": 44, "Description": "friendly settlement in range" },
-          { "Chance": 48, "Description": "friendly spacers at work here" },
+          {
+            "Chance": 44,
+            "Description": "friendly settlement in range",
+            "Suggest": [{ "Object type": "Settlement" }]
+          },
+          {
+            "Chance": 48,
+            "Description": "friendly spacers at work here",
+            "Suggest": [{ "Object type": "Character" }]
+          },
           {
             "Chance": 52,
             "Description": "friendly starship crosses your path"
@@ -9572,13 +10378,14 @@
             "Chance": 82,
             "Description": "multipurpose",
             "Details": "▶️Starship Mission",
-            "Oracles": [{ "Category": "Starship", "Name": "Mission" }]
+            "Oracles": [{ "Category": "Starship", "Oracle": "Mission" }]
           },
           { "Chance": 84, "Description": "unusual or unknown" },
           { "Chance": 94, "Description": "▶️Fleet" },
           {
             "Chance": 100,
             "Description": "Ships in conflict (Roll twice)",
+            "Details": "▶️Starship",
             "Game object": { "Object type": "Starship" }
           }
         ]
@@ -9599,7 +10406,7 @@
           {
             "Chance": 100,
             "Description": "▶️Starship Mission",
-            "Oracles": [{ "Category": "Starship", "Name": "Mission" }]
+            "Oracles": [{ "Category": "Starship", "Oracle": "Mission" }]
           }
         ]
       },
@@ -9660,8 +10467,8 @@
             "Chance": 100,
             "Description": "▶️Descriptor + Focus",
             "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
             ]
           }
         ]
@@ -9674,9 +10481,30 @@
             "Requires": { "Region": ["Terminus"] },
             "Tags": ["fragment"],
             "Table": [
-              { "Chance": 3, "Description": "blockade a location" },
+              {
+                "Chance": 3,
+                "Description": "blockade a location",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Space", "Oracle": "Space Sighting" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 6, "Description": "break a blockade" },
-              { "Chance": 9, "Description": "collect a resource" },
+              {
+                "Chance": 9,
+                "Description": "collect a resource",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 11, "Description": "command others" },
               { "Chance": 14, "Description": "conduct diplomacy" },
               { "Chance": 17, "Description": "conduct espionage" },
@@ -9685,31 +10513,101 @@
               { "Chance": 26, "Description": "defend against an attack" },
               { "Chance": 29, "Description": "deliver messages or data" },
               { "Chance": 32, "Description": "establish a settlement" },
-              { "Chance": 35, "Description": "evacuate a location" },
+              {
+                "Chance": 35,
+                "Description": "evacuate a location",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
               { "Chance": 37, "Description": "explore a region" },
               { "Chance": 39, "Description": "hold prisoners" },
-              { "Chance": 42, "Description": "hunt down another ship" },
+              {
+                "Chance": 42,
+                "Description": "hunt down another ship",
+                "Suggest": [{ "Object type": "Starship" }]
+              },
               { "Chance": 45, "Description": "launch an attack" },
               { "Chance": 48, "Description": "patrol an area" },
               { "Chance": 51, "Description": "provide medical aid" },
               { "Chance": 54, "Description": "provide repairs" },
               { "Chance": 57, "Description": "provide shelter" },
-              { "Chance": 59, "Description": "quarantine a danger" },
-              { "Chance": 62, "Description": "raid a settlement" },
-              { "Chance": 65, "Description": "resupply a settlement" },
+              {
+                "Chance": 59,
+                "Description": "quarantine a danger",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Action" },
+                      { "Category": "Core", "Oracle": "Theme" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 62,
+                "Description": "raid a settlement",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
+              {
+                "Chance": 65,
+                "Description": "resupply a settlement",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
               { "Chance": 68, "Description": "retrieve salvage" },
               { "Chance": 71, "Description": "search and rescue" },
-              { "Chance": 74, "Description": "smuggle cargo" },
-              { "Chance": 77, "Description": "survey a site" },
-              { "Chance": 79, "Description": "test a technology" },
-              { "Chance": 82, "Description": "transport cargo" },
+              {
+                "Chance": 74,
+                "Description": "smuggle cargo",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 77,
+                "Description": "survey a site",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Space", "Oracle": "Space Sighting" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 79,
+                "Description": "test a technology",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 82,
+                "Description": "transport cargo",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 85, "Description": "transport passengers" },
               {
                 "Chance": 90,
                 "Description": "▶️Action + Theme",
                 "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
                 ]
               },
               { "Chance": 100, "Description": "Roll twice" }
@@ -9722,7 +10620,18 @@
             "Table": [
               { "Chance": 2, "Description": "blockade a location" },
               { "Chance": 4, "Description": "break a blockade" },
-              { "Chance": 7, "Description": "collect a resource" },
+              {
+                "Chance": 7,
+                "Description": "collect a resource",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 9, "Description": "command others" },
               { "Chance": 11, "Description": "conduct diplomacy" },
               { "Chance": 13, "Description": "conduct espionage" },
@@ -9731,26 +10640,103 @@
               { "Chance": 24, "Description": "defend against an attack" },
               { "Chance": 28, "Description": "deliver messages or data" },
               { "Chance": 32, "Description": "establish a settlement" },
-              { "Chance": 36, "Description": "evacuate a location" },
+              {
+                "Chance": 36,
+                "Description": "evacuate a location",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
               { "Chance": 40, "Description": "explore a region" },
               { "Chance": 42, "Description": "hold prisoners" },
-              { "Chance": 45, "Description": "hunt down another ship" },
+              {
+                "Chance": 45,
+                "Description": "hunt down another ship",
+                "Suggest": [{ "Object type": "Starship" }]
+              },
               { "Chance": 48, "Description": "launch an attack" },
               { "Chance": 50, "Description": "patrol an area" },
               { "Chance": 53, "Description": "provide medical aid" },
               { "Chance": 56, "Description": "provide repairs" },
               { "Chance": 59, "Description": "provide shelter" },
-              { "Chance": 61, "Description": "quarantine a danger" },
-              { "Chance": 64, "Description": "raid a settlement" },
-              { "Chance": 68, "Description": "resupply a settlement" },
+              {
+                "Chance": 61,
+                "Description": "quarantine a danger",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Action" },
+                      { "Category": "Core", "Oracle": "Theme" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 64,
+                "Description": "raid a settlement",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
+              {
+                "Chance": 68,
+                "Description": "resupply a settlement",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
               { "Chance": 71, "Description": "retrieve salvage" },
               { "Chance": 73, "Description": "search and rescue" },
-              { "Chance": 75, "Description": "smuggle cargo" },
-              { "Chance": 78, "Description": "survey a site" },
-              { "Chance": 80, "Description": "test a technology" },
-              { "Chance": 83, "Description": "transport cargo" },
+              {
+                "Chance": 75,
+                "Description": "smuggle cargo",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 78,
+                "Description": "survey a site",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Space", "Oracle": "Space Sighting" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 80,
+                "Description": "test a technology",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 83,
+                "Description": "transport cargo",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 85, "Description": "transport passengers" },
-              { "Chance": 90, "Description": "▶️Action + Theme" },
+              {
+                "Chance": 90,
+                "Description": "▶️Action + Theme",
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              },
               { "Chance": 100, "Description": "Roll twice" }
             ]
           },
@@ -9761,7 +10747,18 @@
             "Table": [
               { "Chance": 2, "Description": "blockade a location" },
               { "Chance": 4, "Description": "break a blockade" },
-              { "Chance": 8, "Description": "collect a resource" },
+              {
+                "Chance": 8,
+                "Description": "collect a resource",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 10, "Description": "command others" },
               { "Chance": 12, "Description": "conduct diplomacy" },
               { "Chance": 14, "Description": "conduct espionage" },
@@ -9770,26 +10767,103 @@
               { "Chance": 25, "Description": "defend against an attack" },
               { "Chance": 29, "Description": "deliver messages or data" },
               { "Chance": 35, "Description": "establish a settlement" },
-              { "Chance": 39, "Description": "evacuate a location" },
+              {
+                "Chance": 39,
+                "Description": "evacuate a location",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
               { "Chance": 45, "Description": "explore a region" },
               { "Chance": 47, "Description": "hold prisoners" },
-              { "Chance": 49, "Description": "hunt down another ship" },
+              {
+                "Chance": 49,
+                "Description": "hunt down another ship",
+                "Suggest": [{ "Object type": "Starship" }]
+              },
               { "Chance": 51, "Description": "launch an attack" },
               { "Chance": 53, "Description": "patrol an area" },
               { "Chance": 55, "Description": "provide medical aid" },
               { "Chance": 57, "Description": "provide repairs" },
               { "Chance": 61, "Description": "provide shelter" },
-              { "Chance": 63, "Description": "quarantine a danger" },
-              { "Chance": 65, "Description": "raid a settlement" },
-              { "Chance": 69, "Description": "resupply a settlement" },
+              {
+                "Chance": 63,
+                "Description": "quarantine a danger",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Action" },
+                      { "Category": "Core", "Oracle": "Theme" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 65,
+                "Description": "raid a settlement",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
+              {
+                "Chance": 69,
+                "Description": "resupply a settlement",
+                "Suggest": [{ "Object type": "Settlement" }]
+              },
               { "Chance": 71, "Description": "retrieve salvage" },
               { "Chance": 73, "Description": "search and rescue" },
-              { "Chance": 75, "Description": "smuggle cargo" },
-              { "Chance": 77, "Description": "survey a site" },
-              { "Chance": 79, "Description": "test a technology" },
-              { "Chance": 83, "Description": "transport cargo" },
+              {
+                "Chance": 75,
+                "Description": "smuggle cargo",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 77,
+                "Description": "survey a site",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Space", "Oracle": "Space Sighting" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 79,
+                "Description": "test a technology",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Chance": 83,
+                "Description": "transport cargo",
+                "Suggest": [
+                  {
+                    "Oracles": [
+                      { "Category": "Core", "Oracle": "Descriptor" },
+                      { "Category": "Core", "Oracle": "Focus" }
+                    ]
+                  }
+                ]
+              },
               { "Chance": 85, "Description": "transport passengers" },
-              { "Chance": 90, "Description": "▶️Action + Theme" },
+              {
+                "Chance": 90,
+                "Description": "▶️Action + Theme",
+                "Oracles": [
+                  { "Category": "Core", "Oracle": "Action" },
+                  { "Category": "Core", "Oracle": "Theme" }
+                ]
+              },
               { "Chance": 100, "Description": "Roll twice" }
             ]
           }

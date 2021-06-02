@@ -24,86 +24,206 @@ _refs:
     - &Ruined "Time, disaster, or war have ravaged this place."
     - &Sacred The faithful worship inscrutable powers in this place.
   Atmosphere:
-    - &None_thin This planet is airless, or it's atmosphere is so thin as to be useless for humans.
-    - &Toxic This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
-    - &Corrosive This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
-    - &Marginal It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time.
-    - &Breathable This atmosphere is not perfect, but it's good enough to sustain human life.
-    - &Ideal This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air.
+    - &None_thin [
+        None / thin,
+        "This planet is airless, or it's atmosphere is so thin as to be useless for humans.",
+      ]
+    - &Toxic [
+        Toxic,
+        "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.",
+      ]
+    - &Corrosive [
+        Corrosive,
+        "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.",
+      ]
+    - &Marginal [
+        Marginal,
+        "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time.",
+      ]
+    - &Breathable [
+        Breathable,
+        "This atmosphere is not perfect, but it's good enough to sustain human life.",
+      ]
+    - &Ideal [
+        Ideal,
+        "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air.",
+      ]
   Multiple rolls:
     - &Roll_twice Roll twice
     - &Roll_three_times Roll three times
 
   Oracles:
     Starship Mission: &Starship_Mission
-      - Category: Starship
-        Oracle: Mission
+      - ▶️Starship Mission
+      - Oracles:
+          - Category: Starship
+            Oracle: Mission
     Stellar Object: &Stellar_Object
-      - Category: Space
-        Oracle: Stellar Object
-    Action + Theme: &Action_Theme
-      - Category: Core
-        Oracle: Action
-      - Category: Core
-        Oracle: Theme
-    Descriptor + Focus: &Descriptor_Focus
-      - Category: Core
-        Oracle: Descriptor
-      - Category: Core
-        Oracle: Focus
+      - ▶️Stellar Object
+      - Oracles:
+          - Category: Space
+            Oracle: Stellar Object
+    Action + Theme: &Action+Theme
+      - ▶️Action + Theme
+      - Oracles:
+          - Category: Core
+            Oracle: Action
+          - Category: Core
+            Oracle: Theme
+    Descriptor + Focus: &Descriptor+Focus
+      - ▶️Descriptor + Focus
+      - Oracles:
+          - Category: Core
+            Oracle: Descriptor
+          - Category: Core
+            Oracle: Focus
+    Ultra-Scale: &Ultra-scale
+      - ▶️Ultra-scale
+      - Oracles:
+          - Category: Creature
+            Oracle: Ultra-scale
 
   Game objects:
     # consider a way to do precursor vault sanctums?
     Precursor Vault: &Vault
-      Object type: Precursor Vault
+      - ▶️Precursor Vault
+      - Game object:
+          Object type: Precursor Vault
     Precursor Vault (orbital): &Vault_orbital
-      Object type: Precursor Vault
-      Attributes: { Location: Orbital }
+      - ▶️Precursor Vault (orbital)
+      - Game object:
+          Object type: Precursor Vault
+          Attributes: { Location: Orbital }
     Precursor Vault (planetside): &Vault_planetside
-      Object type: Precursor Vault
-      Attributes: { Location: Planetside }
+      - ▶️Precursor Vault (planetside)
+      - Game object:
+          Object type: Precursor Vault
+          Attributes: { Location: Planetside }
     Derelict: &Derelict
-      Object type: Derelict
+      - ▶️Derelict
+      - Game object:
+          Object type: Derelict
     Creature: &Creature
-      Object type: Creature
+      - ▶️Creature
+      - Game object:
+          Object type: Creature
     Settlement: &Settlement
-      Object type: Settlement
+      - ▶️Settlement
+      - Game object:
+          Object type: Settlement
     Planet: &Planet
-      Object type: Planet
+      - ▶️Planet
+      - Game object:
+          Object type: Planet
     Starship: &Starship
-      Object type: Starship
-    Settlement (orbital): &Settlement_orbital
-      Object type: Settlement
-      Attributes: { Location: Orbital }
-    Settlement (planetside): &Settlement_planetside
-      Object type: Settlement
-      Attributes: { Location: Planetside }
-    Settlements (multiple): &Settlements_multiple
-      Object type: Settlement
-      Number: 2
-      Attributes: { Location: [Orbital, Planetside] }
-    Settlements (conflict): &Settlements_conflict
-      Object type: Settlement
-      Number: 2
-      Attributes: { Location: [Orbital, Planetside] }
+      - ▶️Starship
+      - Game object:
+          Object type: Starship
+    Settlement (orbital): &Orbital_settlement
+      - Orbital settlement
+      - Game object:
+          Object type: Settlement
+          Attributes: { Location: Orbital }
+    Settlement (planetside): &Planetside_settlement
+      - Planetside settlement
+      - Game object:
+          Object type: Settlement
+          Attributes: { Location: Planetside }
+    Settlements (multiple): &Multiple_settlements
+      - Multiple settlements
+      - Game object:
+          Object type: Settlement
+          Amount: 2
+          Attributes: { Location: [Orbital, Planetside] }
+    Settlements (conflict): &Settlements_in_conflict
+      - Settlements in conflict
+      - Game object:
+          Object type: Settlement
+          Amount: 2
+          Attributes: { Location: [Orbital, Planetside] }
     Zone: &Zone
-      Object type: Derelict zone
+      - Game object:
+          Object type: Derelict zone
     Zone (via Access): &Zone_via_Access
-      Object type: Derelict zone
-      Attributes: { Zone: Access }
+      - Game object:
+          Object type: Derelict zone
+          Attributes: { Zone: Access }
     Precursor Vault Sanctum: &Vault_Sanctum
-      Object type: Precursor Vault Sanctum
+      - Game object:
+          Object type: Precursor Vault Sanctum
     Character: &Character
-      Object type: Character
+      - Game object:
+          Object type: Character
     # TODO: various zone references
-
-    # the below specifically for "initial contact" tables that turn up derelict starships, settlements
     Derelict starship: &Derelict_starship
-      Template type: Derelict
-      Attributes: { Derelict type: Starship }
+      - Game object:
+          Object type: Derelict
+          Attributes: { Derelict type: Starship }
     Derelict settlement: &Derelict_settlement
-      Template type: Derelict
-      Attributes: { Derelict type: Settlement }
+      - Game object:
+          Object type: Derelict
+          Attributes: { Derelict type: Settlement }
+    # the below specifically for "initial contact" tables that turn up derelict starships, settlements
+    Derelict starship template: &tpl_Derelict_starship
+      - ▶️Derelict
+      - Add template:
+          Template type: Derelict
+          Attributes: { Derelict type: Starship }
+    Derelict settlement template: &tpl_Derelict_settlement
+      - ▶️Derelict
+      - Add template:
+          Template type: Derelict
+          Attributes: { Derelict type: Settlement }
+
+  Oracle and object suggestions:
+    Planet: &suggestPlanet
+      Suggest:
+        - Object type: Planet
+    Character: &suggestNpc
+      Suggest:
+        - Object type: Character
+    Creature: &suggestCreature
+      Suggest:
+        - Object type: Creature
+    Starship: &suggestShip
+      Suggest:
+        - Object type: Starship
+    Precursor Vault: &suggestVault
+      Suggest:
+        - Object type: Precursor Vault
+    Settlement: &suggestSettlement
+      Suggest:
+        - Object type: Settlement
+    Derelict: &suggestDerelict
+      Suggest:
+        - Object type: Derelict
+    Derelict settlement: &suggestDerelictSettlement
+      Suggest:
+        - Object type: Derelict
+          Attributes: { Derelict type: Settlement }
+    Derelict starship: &suggestDerelictStarship
+      Suggest:
+        - Object type: Derelict
+          Attributes: { Derelict type: Starship }
+    Place: &suggestPlace # space sighting
+      Suggest:
+        - Oracles:
+            - Category: Space
+              Oracle: Space Sighting
+    Object: &suggestObject # descriptor + focus
+      Suggest:
+        - Oracles:
+            - Category: Core
+              Oracle: Descriptor
+            - Category: Core
+              Oracle: Focus
+    Event: &suggestEvent # action + theme
+      Suggest:
+        - Oracles:
+            - Category: Core
+              Oracle: Action
+            - Category: Core
+              Oracle: Theme
 
   Planet Life:
     - &life_None None

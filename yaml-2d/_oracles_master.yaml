@@ -24,86 +24,206 @@ _refs:
     - &Ruined "Time, disaster, or war have ravaged this place."
     - &Sacred The faithful worship inscrutable powers in this place.
   Atmosphere:
-    - &None_thin This planet is airless, or it's atmosphere is so thin as to be useless for humans.
-    - &Toxic This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
-    - &Corrosive This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
-    - &Marginal It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time.
-    - &Breathable This atmosphere is not perfect, but it's good enough to sustain human life.
-    - &Ideal This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air.
+    - &None_thin [
+        None / thin,
+        "This planet is airless, or it's atmosphere is so thin as to be useless for humans.",
+      ]
+    - &Toxic [
+        Toxic,
+        "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.",
+      ]
+    - &Corrosive [
+        Corrosive,
+        "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.",
+      ]
+    - &Marginal [
+        Marginal,
+        "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time.",
+      ]
+    - &Breathable [
+        Breathable,
+        "This atmosphere is not perfect, but it's good enough to sustain human life.",
+      ]
+    - &Ideal [
+        Ideal,
+        "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air.",
+      ]
   Multiple rolls:
     - &Roll_twice Roll twice
     - &Roll_three_times Roll three times
 
   Oracles:
     Starship Mission: &Starship_Mission
-      - Category: Starship
-        Oracle: Mission
+      - ▶️Starship Mission
+      - Oracles:
+          - Category: Starship
+            Oracle: Mission
     Stellar Object: &Stellar_Object
-      - Category: Space
-        Oracle: Stellar Object
-    Action + Theme: &Action_Theme
-      - Category: Core
-        Oracle: Action
-      - Category: Core
-        Oracle: Theme
-    Descriptor + Focus: &Descriptor_Focus
-      - Category: Core
-        Oracle: Descriptor
-      - Category: Core
-        Oracle: Focus
+      - ▶️Stellar Object
+      - Oracles:
+          - Category: Space
+            Oracle: Stellar Object
+    Action + Theme: &Action+Theme
+      - ▶️Action + Theme
+      - Oracles:
+          - Category: Core
+            Oracle: Action
+          - Category: Core
+            Oracle: Theme
+    Descriptor + Focus: &Descriptor+Focus
+      - ▶️Descriptor + Focus
+      - Oracles:
+          - Category: Core
+            Oracle: Descriptor
+          - Category: Core
+            Oracle: Focus
+    Ultra-Scale: &Ultra-scale
+      - ▶️Ultra-scale
+      - Oracles:
+          - Category: Creature
+            Oracle: Ultra-scale
 
   Game objects:
     # consider a way to do precursor vault sanctums?
     Precursor Vault: &Vault
-      Object type: Precursor Vault
+      - ▶️Precursor Vault
+      - Game object:
+          Object type: Precursor Vault
     Precursor Vault (orbital): &Vault_orbital
-      Object type: Precursor Vault
-      Attributes: { Location: Orbital }
+      - ▶️Precursor Vault (orbital)
+      - Game object:
+          Object type: Precursor Vault
+          Attributes: { Location: Orbital }
     Precursor Vault (planetside): &Vault_planetside
-      Object type: Precursor Vault
-      Attributes: { Location: Planetside }
+      - ▶️Precursor Vault (planetside)
+      - Game object:
+          Object type: Precursor Vault
+          Attributes: { Location: Planetside }
     Derelict: &Derelict
-      Object type: Derelict
+      - ▶️Derelict
+      - Game object:
+          Object type: Derelict
     Creature: &Creature
-      Object type: Creature
+      - ▶️Creature
+      - Game object:
+          Object type: Creature
     Settlement: &Settlement
-      Object type: Settlement
+      - ▶️Settlement
+      - Game object:
+          Object type: Settlement
     Planet: &Planet
-      Object type: Planet
+      - ▶️Planet
+      - Game object:
+          Object type: Planet
     Starship: &Starship
-      Object type: Starship
-    Settlement (orbital): &Settlement_orbital
-      Object type: Settlement
-      Attributes: { Location: Orbital }
-    Settlement (planetside): &Settlement_planetside
-      Object type: Settlement
-      Attributes: { Location: Planetside }
-    Settlements (multiple): &Settlements_multiple
-      Object type: Settlement
-      Number: 2
-      Attributes: { Location: [Orbital, Planetside] }
-    Settlements (conflict): &Settlements_conflict
-      Object type: Settlement
-      Number: 2
-      Attributes: { Location: [Orbital, Planetside] }
+      - ▶️Starship
+      - Game object:
+          Object type: Starship
+    Settlement (orbital): &Orbital_settlement
+      - Orbital settlement
+      - Game object:
+          Object type: Settlement
+          Attributes: { Location: Orbital }
+    Settlement (planetside): &Planetside_settlement
+      - Planetside settlement
+      - Game object:
+          Object type: Settlement
+          Attributes: { Location: Planetside }
+    Settlements (multiple): &Multiple_settlements
+      - Multiple settlements
+      - Game object:
+          Object type: Settlement
+          Amount: 2
+          Attributes: { Location: [Orbital, Planetside] }
+    Settlements (conflict): &Settlements_in_conflict
+      - Settlements in conflict
+      - Game object:
+          Object type: Settlement
+          Amount: 2
+          Attributes: { Location: [Orbital, Planetside] }
     Zone: &Zone
-      Object type: Derelict zone
+      - Game object:
+          Object type: Derelict zone
     Zone (via Access): &Zone_via_Access
-      Object type: Derelict zone
-      Attributes: { Zone: Access }
+      - Game object:
+          Object type: Derelict zone
+          Attributes: { Zone: Access }
     Precursor Vault Sanctum: &Vault_Sanctum
-      Object type: Precursor Vault Sanctum
+      - Game object:
+          Object type: Precursor Vault Sanctum
     Character: &Character
-      Object type: Character
+      - Game object:
+          Object type: Character
     # TODO: various zone references
-
-    # the below specifically for "initial contact" tables that turn up derelict starships, settlements
     Derelict starship: &Derelict_starship
-      Template type: Derelict
-      Attributes: { Derelict type: Starship }
+      - Game object:
+          Object type: Derelict
+          Attributes: { Derelict type: Starship }
     Derelict settlement: &Derelict_settlement
-      Template type: Derelict
-      Attributes: { Derelict type: Settlement }
+      - Game object:
+          Object type: Derelict
+          Attributes: { Derelict type: Settlement }
+    # the below specifically for "initial contact" tables that turn up derelict starships, settlements
+    Derelict starship template: &tpl_Derelict_starship
+      - ▶️Derelict
+      - Add template:
+          Template type: Derelict
+          Attributes: { Derelict type: Starship }
+    Derelict settlement template: &tpl_Derelict_settlement
+      - ▶️Derelict
+      - Add template:
+          Template type: Derelict
+          Attributes: { Derelict type: Settlement }
+
+  Oracle and object suggestions:
+    Planet: &suggestPlanet
+      Suggest:
+        - Object type: Planet
+    Character: &suggestNpc
+      Suggest:
+        - Object type: Character
+    Creature: &suggestCreature
+      Suggest:
+        - Object type: Creature
+    Starship: &suggestShip
+      Suggest:
+        - Object type: Starship
+    Precursor Vault: &suggestVault
+      Suggest:
+        - Object type: Precursor Vault
+    Settlement: &suggestSettlement
+      Suggest:
+        - Object type: Settlement
+    Derelict: &suggestDerelict
+      Suggest:
+        - Object type: Derelict
+    Derelict settlement: &suggestDerelictSettlement
+      Suggest:
+        - Object type: Derelict
+          Attributes: { Derelict type: Settlement }
+    Derelict starship: &suggestDerelictStarship
+      Suggest:
+        - Object type: Derelict
+          Attributes: { Derelict type: Starship }
+    Place: &suggestPlace # space sighting
+      Suggest:
+        - Oracles:
+            - Category: Space
+              Oracle: Space Sighting
+    Object: &suggestObject # descriptor + focus
+      Suggest:
+        - Oracles:
+            - Category: Core
+              Oracle: Descriptor
+            - Category: Core
+              Oracle: Focus
+    Event: &suggestEvent # action + theme
+      Suggest:
+        - Oracles:
+            - Category: Core
+              Oracle: Action
+            - Category: Core
+              Oracle: Theme
 
   Planet Life:
     - &life_None None
@@ -130,26 +250,26 @@ Campaign:
   Background Assets:
     Tags: [noun]
     Table:
-      - [1, 5, Adept, [KINETIC, VESTIGE]]
-      - [6, 10, Battlefield Medic, [HEALER, VETERAN]]
-      - [11, 15, Bodyguard*, [BRAWLER, LOYALIST]]
-      - [16, 20, Delegate, [BANNERSWORN, DIPLOMAT]]
-      - [21, 25, Exobiologist, [ARCHIVIST, NATURALIST]]
-      - [26, 30, Far Trader, [NAVIGATOR, TRADER]]
-      - [31, 35, Fugitive Hunter, [ARMORED, BOUNTY HUNTER]]
-      - [36, 40, Hacker, [AGENT, TECH]]
-      - [41, 45, Hotshot Pilot, [ACE, GUNSLINGER]]
-      - [46, 50, Monster Hunter, [GUNNER, SLAYER]]
-      - [51, 55, Occultist, [OUTCAST, SHADE]]
-      - [56, 60, Operative, [AGENT, BLADEMASTER]]
-      - [61, 65, Pilgrim, [DEVOTANT, EXPLORER]]
-      - [66, 70, Prophet, [DEVOTANT, SEER]]
-      - [71, 75, Smuggler, [COURIER, SCOUNDREL]]
-      - [76, 80, Spiritualist, [HAUNTED, EMPATH]]
-      - [81, 85, Starship Captain*, [COMMANDER, EXPLORER]]
-      - [86, 90, Starship Mechanic, [GEARHEAD, VOIDBORN]]
-      - [91, 95, Supersoldier, [AUGMENTED, MERCENARY]]
-      - [96, 100, Tomb Raider, [SCAVENGER, SCOUNDREL]]
+      - [1, 5, Adept, { Assets: [KINETIC, VESTIGE]}]
+      - [6, 10, Battlefield Medic, { Assets: [HEALER, VETERAN] }]
+      - [11, 15, Bodyguard*, { Assets: [BRAWLER, LOYALIST] }]
+      - [16, 20, Delegate, { Assets: [BANNERSWORN, DIPLOMAT] }]
+      - [21, 25, Exobiologist, { Assets: [ARCHIVIST, NATURALIST] }]
+      - [26, 30, Far Trader, { Assets: [NAVIGATOR, TRADER] }]
+      - [31, 35, Fugitive Hunter, { Assets: [ARMORED, BOUNTY HUNTER] }]
+      - [36, 40, Hacker, { Assets: [AGENT, TECH] }]
+      - [41, 45, Hotshot Pilot, { Assets: [ACE, GUNSLINGER] }]
+      - [46, 50, Monster Hunter, { Assets: [GUNNER, SLAYER] }]
+      - [51, 55, Occultist, { Assets: [OUTCAST, SHADE] }]
+      - [56, 60, Operative, { Assets: [AGENT, BLADEMASTER] }]
+      - [61, 65, Pilgrim, { Assets: [DEVOTANT, EXPLORER] }]
+      - [66, 70, Prophet, { Assets: [DEVOTANT, SEER] }]
+      - [71, 75, Smuggler, { Assets: [COURIER, SCOUNDREL] }]
+      - [76, 80, Spiritualist, { Assets: [HAUNTED, EMPATH] }]
+      - [81, 85, Starship Captain*, { Assets: [COMMANDER, EXPLORER] }]
+      - [86, 90, Starship Mechanic, { Assets: [GEARHEAD, VOIDBORN] }]
+      - [91, 95, Supersoldier, { Assets: [AUGMENTED, MERCENARY] }]
+      - [96, 100, Tomb Raider, { Assets: [SCAVENGER, SCOUNDREL] }]
  
   Backstory Prompts:
     Tags: [fragment]
@@ -214,52 +334,50 @@ Campaign:
     Tags: [fragment]
     Table:
       - [1, 5, Blockade prevents trade with other sectors]
-      - [6, 10, Bounty hunters search for an infamous fugitive, *Character]
+      - [6, 10, Bounty hunters search for an infamous fugitive, *suggestNpc]
       - [11, 15, Chaotic breaches in spacetime spread like wildfire]
       - [16, 20, Criminal faction corrupts local authorities]
       - [21, 25, Devastating superweapon has fallen into the wrong hands]
       - [26, 30, Energy storms are rampant]
       - [31, 35, Magnetic disturbances disrupt communication]
-      - [36, 40, Newly found resource lures greedy fortune hunters to the sector]
+      - [36, 40, Newly found resource lures greedy fortune hunters to the sector, *suggestObject]
       - [41, 45, Notorious pirate clan preys on starships]
-      - [46, 50, Parasitic lifeforms spread like a plague, *Creature]
-      - [51, 55, Precursor sites throughout the sector emit strange signals, *Vault]
+      - [46, 50, Parasitic lifeforms spread like a plague, *suggestCreature]
+      - [51, 55, Precursor sites throughout the sector emit strange signals, *suggestVault]
       - [56, 60, Prophecies foretell an imminent awakening of a dreadful power]
       - [61, 65, Raider clan emerges as a dominant threat under a new leader]
       - [66, 70, Religious zealots overrun the sector]
       - [71, 75, Rogue AI infiltrates systems throughout the sector]
-      - [76, 80, Settlements or factions are on the brink of war, *Settlement]
+      - [76, 80, Settlements or factions are on the brink of war, *suggestSettlement]
       - [81, 85, Ships regularly go missing]
       - [86, 90, Sickness spreads among ships and settlements]
       - [91, 95, Supernova is imminent]
-      - [96, 100, Titanic spaceborne lifeform stalks the spaceways, *Creature]
+      - [96, 100, Titanic spaceborne lifeform stalks the spaceways, *suggestCreature]
  
   Inciting Incident:
     Tags: [fragment]
     Table:
-      - [1, 5, Aid a starship caught in a spacetime fracture, *Starship]
-      - [6, 10, Broker peace between two feuding settlements, *Settlement]
-      - [11, 15, Chart a new passage between isolated settlements, *Settlement]
-      - [16, 20, Defend the people of a beleaguered settlement against raiders, *Settlement]
-      - [21, 25, Discover who sabotaged a settlement's air processors, *Settlement]
-      - [26, 30, Escort a tradeship carrying a prized cargo, *Starship]
-      - [31, 35, Ferry a rescue team to a perilous disaster site]
+      - [1, 5, Aid a starship caught in a spacetime fracture, *suggestShip]
+      - [6, 10, Broker peace between two feuding settlements, *suggestSettlement]
+      - [11, 15, Chart a new passage between isolated settlements, *suggestSettlement]
+      - [16, 20, Defend the people of a beleaguered settlement against raiders, *suggestSettlement]
+      - [21, 25, Discover who sabotaged a settlement's air processors, *suggestSettlement]
+      - [26, 30, Escort a tradeship carrying a prized cargo, *suggestShip]
+      - [31, 35, Ferry a rescue team to a perilous disaster site, *suggestPlace]
       - [36, 40, Infiltrate a fortified base to steal crucial data]
-      - [41, 45, Investigate terrifying manifestations at a remote settlement, *Settlement]
-      - [46, 50, Liberate prisoners at a cruel labor camp]
-      - [51, 55, Locate a downed spacer on an uninhabited planet, *Planet]
-      - [56, 60, Protect a fugitive from a relentless bounty hunter, *Character]
-      - [61, 65, Recover a cherished pre-exodus artifact from an enemy]
-      - [66, 70, Rescue a starship crew held captive by mutineers, *Starship]
-      - [71, 75, Retrieve a cache of stolen weapons from a pirate ship, *Starship]
+      - [41, 45, Investigate terrifying manifestations at a remote settlement, *suggestSettlement]
+      - [46, 50, Liberate prisoners at a cruel labor camp, *suggestPlace]
+      - [51, 55, Locate a downed spacer on an uninhabited planet, *suggestPlanet]
+      - [56, 60, Protect a fugitive from a relentless bounty hunter, *suggestNpc]
+      - [61, 65, Recover a cherished pre-exodus artifact from an enemy, *suggestObject]
+      - [66, 70, Rescue a starship crew held captive by mutineers, *suggestShip]
+      - [71, 75, Retrieve a cache of stolen weapons from a pirate ship, *suggestShip]
       - [76, 80, Sabotage an enemy installation]
-      - [81, 85, Search for a missing expedition in the depths of a precursor vault, *Vault]
-      - [86, 90, Shield a wondrous lifeform from those who seek to destroy it, *Creature]
-      - [91, 95, Track and slay a marauding beast]
-      - [96, 100, Transport a displaced people to their new home]
+      - [81, 85, Search for a missing expedition in the depths of a precursor vault, *suggestVault]
+      - [86, 90, Shield a wondrous lifeform from those who seek to destroy it, *suggestCreature]
+      - [91, 95, Track and slay a marauding beast, *suggestCreature]
+      - [96, 100, Transport a displaced people to their new home, *suggestPlace]
  
-
-
 
 Character:
   _meta:
@@ -716,52 +834,52 @@ Character:
       - [87, 88, Spacer]
       - [89, 90, Technician]
       - [91, 92, Thief]
-      - [93, 95, ▶️Action + Theme, *Action_Theme] 
+      - [93, 95, *Action+Theme] 
       - [96, 100, Roll twice]
  
   Goal:
     Display name: Character Goal
     Tags: [fragment]
     Table:
-      - [1, 2, Avenge a wrong]
+      - [1, 2, Avenge a wrong, *suggestEvent]
       - [3, 4, Build a home]
-      - [5, 7, Build a relationship]
-      - [8, 10, Claim a resource]
+      - [5, 7, Build a relationship, *suggestNpc]
+      - [8, 10, Claim a resource, *suggestObject]
       - [11, 12, Collect a debt]
-      - [13, 14, Craft an object]
+      - [13, 14, Craft an object, *suggestObject]
       - [15, 16, Cure an ill]
-      - [17, 18, Defeat a rival]
-      - [19, 20, Defend a person]
-      - [21, 23, Defend a place]
-      - [24, 25, Discover a truth]
-      - [26, 27, End a conflict]
+      - [17, 18, Defeat a rival, *suggestNpc]
+      - [19, 20, Defend a person, *suggestNpc]
+      - [21, 23, Defend a place, *suggestPlace]
+      - [24, 25, Discover a truth, *suggestEvent]
+      - [26, 27, End a conflict, *suggestEvent]
       - [28, 29, Escape a captor]
       - [30, 31, Fight injustice]
-      - [32, 33, Find a person]
+      - [32, 33, Find a person, *suggestNpc]
       - [34, 35, Forge an alliance]
-      - [36, 37, Gain knowledge]
+      - [36, 37, Gain knowledge, *suggestEvent]
       - [38, 39, Gain riches]
       - [40, 41, Maintain order]
-      - [42, 43, Make an agreement]
-      - [44, 45, Obtain an object]
+      - [42, 43, Make an agreement, *suggestEvent]
+      - [44, 45, Obtain an object, *suggestObject]
       - [46, 47, Pay a debt]
-      - [48, 49, Protect a lifeform]
-      - [50, 51, Protect a secret]
-      - [52, 53, Prove worthiness]
+      - [48, 49, Protect a lifeform, *suggestCreature]
+      - [50, 51, Protect a secret, *suggestEvent]
+      - [52, 53, Prove worthiness, *suggestEvent]
       - [54, 55, Rebel against power]
       - [56, 57, Refute a falsehood]
-      - [58, 59, Repair a technology]
-      - [60, 61, Resolve a dispute]
-      - [62, 63, Restore a relationship]
-      - [64, 65, Sabotage a technology]
-      - [66, 68, Secure a resource]
-      - [69, 70, Seek redemption]
-      - [71, 72, Seize power]
-      - [73, 74, Solve a mystery]
+      - [58, 59, Repair a technology, *suggestObject]
+      - [60, 61, Resolve a dispute, *suggestEvent]
+      - [62, 63, Restore a relationship, *suggestNpc]
+      - [64, 65, Sabotage a technology, *suggestObject]
+      - [66, 68, Secure a resource, *suggestObject]
+      - [69, 70, Seek redemption, *suggestEvent]
+      - [71, 72, Seize power, *suggestEvent]
+      - [73, 74, Solve a mystery, *suggestEvent]
       - [75, 76, Spread faith]
-      - [77, 78, Travel to a place]
-      - [79, 80, Undermine a relationship]
-      - [81, 90, ▶️Action + Theme, *Action_Theme] 
+      - [77, 78, Travel to a place, *suggestPlace]
+      - [79, 80, Undermine a relationship, *suggestNpc]
+      - [81, 90, *Action+Theme] 
       - [91, 100, Roll twice]
  
   Revealed Aspect:
@@ -870,8 +988,6 @@ Character:
       - [99, 99, Wild]
       - [100, 100, Wise]
  
-
-
 
 Core:
   _meta:
@@ -1309,8 +1425,6 @@ Core:
       - [100, 100, Wreckage]
  
 
-
-
 Creature:
   _meta:
     Name: Creature
@@ -1338,7 +1452,7 @@ Creature:
       - [26, 60, Medium, person-sized]
       - [61, 90, Large, vehicle-sized]
       - [91, 99, Huge, whale-sized]
-      - [100, 100, ▶️Ultra-scale]
+      - [100, 100, *Ultra-scale]
  
   Ultra-scale:
     Initial: true
@@ -1617,8 +1731,6 @@ Creature:
       - [99, 100, Toxic spew]
  
 
-
-
 Miscellaneous:
   _meta:
     Name: Miscellaneous
@@ -1650,8 +1762,8 @@ Miscellaneous:
       when you encounter a negative outcome at a crucial moment. In particular,
       you might use this table after rolling matched 10s on the challenge dice.
     Table:
-      - [1, 4, Crucial equipment or device fails]
-      - [5, 7, Crucial equipment or device is sabotaged]
+      - [1, 4, Crucial equipment or device fails, *suggestObject]
+      - [5, 7, Crucial equipment or device is sabotaged, *suggestObject]
       - [8, 10, Debt or promise comes due]
       - [11, 14, "Enemy reveals unexpected powers, abilities, or influence"]
       - [15, 17, Enemy reveals their true agenda or nature]
@@ -1671,13 +1783,13 @@ Miscellaneous:
       - [58, 61, Time pressure suddenly increases]
       - [62, 65, Trap is sprung]
       - [66, 68, True agenda of a connection or patron is revealed]
-      - [69, 72, Trusted information is shown to be false]
-      - [73, 76, Two seemingly unrelated problems are shown to be connected]
+      - [69, 72, Trusted information is shown to be false, *suggestEvent]
+      - [73, 76, Two seemingly unrelated problems are shown to be connected, *suggestEvent]
       - [77, 80, Undermined by self-doubt or vulnerabilities]
       - [81, 84, Unexpected enemies appear]
-      - [85, 88, Urgent message distracts you from your quest]
+      - [85, 88, Urgent message distracts you from your quest, *suggestEvent]
       - [89, 92, You are tracked or followed]
-      - [93, 95, You were diverted from the true crisis]
+      - [93, 95, You were diverted from the true crisis, *suggestEvent]
       - [96, 100, Roll twice]
  
   Combat Action:
@@ -1764,8 +1876,6 @@ Miscellaneous:
       - [97, 100, Roll twice]
  
 
-
-
 Move:
   _meta:
     Name: Move
@@ -1776,55 +1886,55 @@ Move:
   Make a Discovery:
     Tags: [fragment]
     Table:
-      - [1, 4, Advanced technology waiting to be harnessed or salvaged]
-      - [5, 8, Ancient archive or message]
+      - [1, 4, Advanced technology waiting to be harnessed or salvaged, *suggestObject]
+      - [5, 8, Ancient archive or message, *suggestEvent]
       - [9, 10, Artificial consciousness evolved to a higher state]
-      - [11, 12, Clues to a crucial resource or uncharted domain]
+      - [11, 12, Clues to a crucial resource or uncharted domain, *suggestObject]
       - [13, 14, Envoy from another time or reality]
       - [15, 22, Extraordinary natural phenomenon]
-      - [23, 24, First contact with intelligent life]
-      - [25, 26, Gateway to another time or alternate reality]
+      - [23, 24, First contact with intelligent life, *suggestCreature]
+      - [25, 26, Gateway to another time or alternate reality, *suggestEvent]
       - [27, 28, Key to unlocking a language or method of communication]
       - [29, 34, Lost or hidden people]
-      - [35, 42, Majestic or unusual lifeforms]
-      - [43, 46, Marvel of ancient engineering]
-      - [47, 50, Miraculously preserved artifact or specimen]
-      - [51, 56, Monumental architecture or artistry of an ancient civilization]
-      - [57, 62, Mysterious device or artifact of potential value]
-      - [63, 66, New understanding of an enduring mystery]
-      - [67, 68, Pathway or means of travel to a distant location]
+      - [35, 42, Majestic or unusual lifeforms, *suggestCreature]
+      - [43, 46, Marvel of ancient engineering, *suggestObject]
+      - [47, 50, Miraculously preserved artifact or specimen, *suggestObject]
+      - [51, 56, Monumental architecture or artistry of an ancient civilization, *suggestObject]
+      - [57, 62, Mysterious device or artifact of potential value, *suggestObject]
+      - [63, 66, New understanding of an enduring mystery, *suggestEvent]
+      - [67, 68, Pathway or means of travel to a distant location, *suggestPlace]
       - [69, 70, Person or lifeform with phenomenal abilities]
       - [71, 78, Place of awe-inspiring beauty]
-      - [79, 86, Rare and valuable resource]
+      - [79, 86, Rare and valuable resource, *suggestObject]
       - [87, 88, Safeguarded or idyllic location]
-      - [89, 90, Visions or prophesies of the future]
+      - [89, 90, Visions or prophesies of the future, *suggestEvent]
       - [91, 100, Roll twice]
  
   Confront Chaos:
     Tags: [fragment]
     Table:
-      - [1, 4, Baneful weapon of mass destruction]
+      - [1, 4, Baneful weapon of mass destruction, *suggestObject]
       - [5, 9, Cataclysmic environmental effects]
       - [10, 12, Dead given unnatural life]
-      - [13, 17, Destructive lifeform of monstrous proportion]
+      - [13, 17, Destructive lifeform of monstrous proportion, *suggestCreature]
       - [18, 20, Dread hallucinations or illusions]
       - [21, 24, Harbingers of an imminent invasion]
       - [25, 27, Horde of insatiable hunger or fury]
-      - [28, 32, Horrific lifeforms of inscrutable purpose]
+      - [28, 32, Horrific lifeforms of inscrutable purpose, *suggestCreature]
       - [33, 36, Impostors in human form]
-      - [37, 41, Machines made enemy]
+      - [37, 41, Machines made enemy, *suggestObject]
       - [42, 45, Malignant contagion or parasite]
-      - [46, 50, Messenger or signal with a dire warning]
+      - [46, 50, Messenger or signal with a dire warning, *suggestEvent]
       - [51, 53, Passage to a grim alternate reality]
       - [54, 58, People corrupted by chaos]
       - [59, 63, Powerful distortions of time or space]
       - [64, 68, Signs of an impending catastrophe]
       - [69, 72, Site of a baffling disappearance]
-      - [73, 77, Site of a horrible disaster]
+      - [73, 77, Site of a horrible disaster, *suggestEvent]
       - [78, 82, Site of terrible carnage]
-      - [83, 87, Technology nullified or made unstable]
+      - [83, 87, Technology nullified or made unstable, *suggestObject]
       - [88, 92, Technology warped for dark purpose]
-      - [93, 96, Vault of dread technology or power]
+      - [93, 96, Vault of dread technology or power, *suggestVault]
       - [97, 100, Worshipers of great and malevolent powers]
  
   Take Decisive Action:
@@ -1904,8 +2014,6 @@ Move:
       - [89, 95, You are delayed or put at a disadvantage]
       - [96, 100, Roll twice]
  
-
-
 
 Settlement:
   _meta:
@@ -1994,7 +2102,7 @@ Settlement:
       - [81, 83, Temporary or seasonal location]
       - [84, 87, Toxic or polluted habitat]
       - [88, 90, Within or near ▶️Precursor Vault, *Vault]
-      - [91, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [91, 100, *Descriptor+Focus] 
  
   Initial Contact:
     Initial: true
@@ -2010,7 +2118,7 @@ Settlement:
       - [87, 89, Captured]
       - [90, 92, Unresponsive]
       - [93, 95, Destroyed]
-      - [96, 100, ▶️Derelict, *Derelict_settlement]
+      - [96, 100, *tpl_Derelict_settlement]
  
   Authority:
     Initial: true
@@ -2061,14 +2169,14 @@ Settlement:
       - [87, 88, Terraforming]
       - [89, 92, Trade]
       - [93, 95, Warfare]
-      - [96, 100, ▶️Action + Theme, *Action_Theme] 
+      - [96, 100, *Action+Theme] 
  
   Trouble:
     Display name: Settlement Trouble
     Tags: [fragment]
     Table:
       - [1, 3, Betrayal from within]
-      - [4, 7, Blocked resource]
+      - [4, 7, Blocked resource, *suggestObject]
       - [8, 9, Caught in the crossfire]
       - [10, 13, Changing environment]
       - [14, 15, Clash of cultures]
@@ -2091,11 +2199,11 @@ Settlement:
       - [65, 66, Someone is ill or injured]
       - [67, 68, Someone is missing]
       - [69, 70, Stolen technology or object]
-      - [71, 73, Strange phenomenon]
-      - [74, 76, Toxic waste or pollution]
-      - [77, 78, Volatile energy source]
-      - [79, 80, Vulnerable lifeforms]
-      - [81, 90, ▶️Action + Theme, *Action_Theme] 
+      - [71, 73, Strange phenomenon, *suggestObject]
+      - [74, 76, Toxic waste or pollution, *suggestObject]
+      - [77, 78, Volatile energy source, *suggestObject]
+      - [79, 80, Vulnerable lifeforms, *suggestCreature]
+      - [81, 90, *Action+Theme] 
       - [91, 100, Roll twice]
  
   Name:
@@ -2205,8 +2313,6 @@ Settlement:
       - [100, 100, Wreck]
  
 
-
-
 Space:
   _meta:
     Name: Space
@@ -2223,14 +2329,14 @@ Space:
         Region: [Terminus]
       Tags: [fragment]
       Table:
-        - [1, 15, &ss00 ▶️Stellar Object, *Stellar_Object]
-        - [16, 35, &ss01 ▶️Planet, *Planet]
-        - [36, 40, &ss02 ▶️Settlement, *Settlement]
-        - [41, 47, &ss03 ▶️Starship, *Starship]
-        - [48, 51, &ss04 ▶️Derelict, *Derelict]
-        - [52, 53, &ss05 ▶️Precursor Vault, *Vault]
-        - [54, 55, &ss06 ▶️Creature, *Creature]
-        - [56, 60, &ss07 ▶️Descriptor + Focus, *Descriptor_Focus] 
+        - [1, 15, *Stellar_Object]
+        - [16, 35, *Planet]
+        - [36, 40, *Settlement]
+        - [41, 47, *Starship]
+        - [48, 51, *Derelict]
+        - [52, 53, *Vault]
+        - [54, 55, *Creature]
+        - [56, 60, *Descriptor+Focus]
         - [61, 65, &ss08 Debris field - Mineral asteroids]
         - [66, 68, &ss09 Debris field - Frozen asteroids]
         - [69, 70, &ss10 Debris field - Crystalline asteroids]
@@ -2251,14 +2357,14 @@ Space:
         Region: [Outlands]
       Tags: [fragment]
       Table:
-        - [1, 15, *ss00]
-        - [16, 35, *ss01]
-        - [36, 38, *ss02]
-        - [39, 43, *ss03]
-        - [44, 46, *ss04]
-        - [47, 49, *ss05]
-        - [50, 52, *ss06]
-        - [53, 58, *ss07]
+        - [1, 15, *Stellar_Object]
+        - [16, 35, *Planet]
+        - [36, 38, *Settlement]
+        - [39, 43, *Starship]
+        - [44, 46, *Derelict]
+        - [47, 49, *Vault]
+        - [50, 52, *Creature]
+        - [53, 58, *Descriptor+Focus]
         - [59, 63, *ss08]
         - [64, 66, *ss09]
         - [67, 68, *ss10]
@@ -2279,14 +2385,14 @@ Space:
         Region: [Expanse]
       Tags: [fragment]
       Table:
-        - [1, 15, *ss00]
-        - [16, 35, *ss01]
-        - [36, 37, *ss02]
-        - [38, 39, *ss03]
-        - [40, 41, *ss04]
-        - [42, 45, *ss05]
-        - [46, 49, *ss06]
-        - [50, 56, *ss07]
+        - [1, 15, *Stellar_Object]
+        - [16, 35, *Planet]
+        - [36, 37, *Settlement]
+        - [38, 39, *Starship]
+        - [40, 41, *Derelict]
+        - [42, 45, *Vault]
+        - [46, 49, *Creature]
+        - [50, 56, *Descriptor+Focus]
         - [57, 61, *ss08]
         - [62, 64, *ss09]
         - [65, 66, *ss10]
@@ -2451,15 +2557,15 @@ Space:
       - [16, 18, Energy storm looms]
       - [19, 21, Familiar foe appears or sends an ominous message]
       - [22, 24, Gravity well or vortex takes hold]
-      - [25, 27, Imperiled ship calls for help]
+      - [25, 27, Imperiled ship calls for help, *suggestShip]
       - [28, 30, Important device fails or malfunctions]
-      - [31, 33, Infestation is revealed]
+      - [31, 33, Infestation is revealed, *suggestCreature]
       - [34, 36, Intruder or stowaway creates trouble]
       - [37, 39, Isolation or fear presses in]
       - [40, 42, Life support system malfunctions]
       - [43, 45, Meteoroid storm fills the sky]
       - [46, 48, Mysterious wreckage portends a new threat]
-      - [49, 51, Nearby settlement calls for help]
+      - [49, 51, Nearby settlement calls for help, *suggestSettlement]
       - [52, 54, Old repair or patch fails]
       - [55, 57, Onboard dispute or inner turmoil causes a disruption]
       - [58, 60, Others obstruct your path or form a blockade]
@@ -2475,7 +2581,7 @@ Space:
       - [88, 90, Troubling visions or apparitions]
       - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
       - [94, 96, Unsettling sounds or disturbances]
-      - [97, 99, ▶️Action + Theme, *Action_Theme] 
+      - [97, 99, *Action+Theme] 
       - [100, 100, Roll twice]
  
   Opportunity:
@@ -2487,16 +2593,16 @@ Space:
     Table:
       - [1, 4, Advance warning of an environmental threat]
       - [5, 8, Automated signal offers a helpful message or warning]
-      - [9, 12, Cache of cargo or supplies]
+      - [9, 12, Cache of cargo or supplies, *suggestObject]
       - [13, 16, Chance for fellowship or a moment of inner peace]
       - [17, 20, Clear path through otherwise perilous space]
       - [21, 24, Clue offers insight into a current quest or mystery]
       - [25, 28, Clue to a lifeform's nature or vulnerabilities]
-      - [29, 32, Derelict ripe for the picking]
+      - [29, 32, Derelict ripe for the picking, *suggestDerelict]
       - [33, 36, Foe inadvertently reveals themselves or tips their hand]
-      - [37, 40, Friendly interaction with a benign lifeform]
-      - [41, 44, Friendly settlement in range]
-      - [45, 48, Friendly spacers at work here]
+      - [37, 40, Friendly interaction with a benign lifeform, *suggestCreature]
+      - [41, 44, Friendly settlement in range, *suggestSettlement]
+      - [45, 48, Friendly spacers at work here, *suggestNpc]
       - [49, 52, Friendly starship crosses your path]
       - [53, 56, Helpful or encouraging message from an acquaintance]
       - [57, 60, Impressive vista offers comfort or inspiration]
@@ -2511,8 +2617,6 @@ Space:
       - [93, 96, Sensors reveal helpful or interesting environmental data]
       - [97, 100, Vehicle or equipment performs beyond expectations]
  
-
-
 
 Starship:
   _meta:
@@ -2654,7 +2758,7 @@ Starship:
       - [57, 61, Reclaimer, Salvage or rescue]
       - [62, 64, Shuttle, Short-range transport]
       - [65, 67, Snub fighter, Small attack craft]
-      - [68, 82, Multipurpose, ▶️Starship Mission, *Starship_Mission]
+      - [68, 82, Multipurpose, *Starship_Mission]
       - [83, 84, Unusual or unknown]
       - [85, 94, ▶️Fleet]
       - [95, 100, Ships in conflict (Roll twice), *Starship]
@@ -2672,7 +2776,7 @@ Starship:
       - [51, 60, Settler caravan]
       - [61, 70, Trade caravan]
       - [71, 90, Transport and escorts]
-      - [91, 100, ▶️Starship Mission,*Starship_Mission]
+      - [91, 100, *Starship_Mission]
  
   Initial Contact:
     Initial: true
@@ -2689,7 +2793,7 @@ Starship:
       - [81, 85, In battle]
       - [86, 90, Unresponsive]
       - [91, 95, Destroyed]
-      - [96, 100, ▶️Derelict, *Derelict_starship]
+      - [96, 100, *tpl_Derelict_starship]
  
   First Look:
     Initial: true
@@ -2717,7 +2821,7 @@ Starship:
       - [81, 85, Scarred hull]
       - [86, 90, Built from scrap]
       - [91, 94, Towing or linked]
-      - [95, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [95, 100, *Descriptor+Focus] 
  
   Starship Mission:
     - Display name: Starship Mission - Terminus
@@ -2725,9 +2829,9 @@ Starship:
         Region: [Terminus]
       Tags: [fragment]
       Table:
-        - [1, 3, &sm00 Blockade a location]
+        - [1, 3, &sm00 Blockade a location, *suggestPlace]
         - [4, 6, &sm01 Break a blockade]
-        - [7, 9, &sm02 Collect a resource]
+        - [7, 9, &sm02 [Collect a resource, *suggestObject]]
         - [10, 11, &sm03 Command others]
         - [12, 14, &sm04 Conduct diplomacy]
         - [15, 17, &sm05 Conduct espionage]
@@ -2736,26 +2840,26 @@ Starship:
         - [24, 26, &sm08 Defend against an attack]
         - [27, 29, &sm09 Deliver messages or data]
         - [30, 32, &sm10 Establish a settlement]
-        - [33, 35, &sm11 Evacuate a location]
+        - [33, 35, &sm11 [Evacuate a location, *suggestSettlement]]
         - [36, 37, &sm12 Explore a region]
         - [38, 39, &sm13 Hold prisoners]
-        - [40, 42, &sm14 Hunt down another ship]
+        - [40, 42, &sm14 [Hunt down another ship, *suggestShip]]
         - [43, 45, &sm15 Launch an attack]
         - [46, 48, &sm16 Patrol an area]
         - [49, 51, &sm17 Provide medical aid]
         - [52, 54, &sm18 Provide repairs]
         - [55, 57, &sm19 Provide shelter]
-        - [58, 59, &sm20 Quarantine a danger]
-        - [60, 62, &sm21 Raid a settlement]
-        - [63, 65, &sm22 Resupply a settlement]
+        - [58, 59, &sm20 [Quarantine a danger, *suggestEvent]]
+        - [60, 62, &sm21 [Raid a settlement,*suggestSettlement]]
+        - [63, 65, &sm22 [Resupply a settlement,*suggestSettlement]]
         - [66, 68, &sm23 Retrieve salvage]
         - [69, 71, &sm24 Search and rescue]
-        - [72, 74, &sm25 Smuggle cargo]
-        - [75, 77, &sm26 Survey a site]
-        - [78, 79, &sm27 Test a technology]
-        - [80, 82, &sm28 Transport cargo]
+        - [72, 74, &sm25 [Smuggle cargo, *suggestObject]]
+        - [75, 77, &sm26 [Survey a site, *suggestPlace]]
+        - [78, 79, &sm27 [Test a technology, *suggestObject]]
+        - [80, 82, &sm28 [Transport cargo, *suggestObject]]
         - [83, 85, &sm29 Transport passengers]
-        - [86, 90, &sm30 ▶️Action + Theme, *Action_Theme] 
+        - [86, 90, &sm30 [*Action+Theme]] 
         - [91, 100, &sm31 Roll twice]
  
     - Display name: Starship Mission - Outlands
@@ -2834,8 +2938,6 @@ Starship:
         - [86, 90, *sm30]
         - [91, 100, *sm31]
  
-
-
 
 Derelict:
   _meta:
@@ -2988,7 +3090,7 @@ Derelict:
       - [85, 87, Thick haze or smoke]
       - [88, 90, Unstable energy surges]
       - [91, 93, Watchful AI]
-      - [94, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [94, 100, *Descriptor+Focus] 
  
   Zone:
     - Requires:
@@ -3043,7 +3145,7 @@ Chaotic:
       - [73, 80, Lifeforms mutated or altered by chaos]
       - [81, 88, Lifeforms spawned from chaos]
       - [89, 96, Visions of your past or future]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3058,7 +3160,7 @@ Chaotic:
       - [64, 72, Foes harness or wield chaos]
       - [73, 81, Hazardous environmental changes]
       - [82, 90, Lifeforms made hostile by chaos]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3070,8 +3172,6 @@ Chaotic:
       - [61, 80, Chaotic changes hamper your foes]
       - [81, 100, Insight into the source or nature of the chaos]
  
-
-
 
 Fortified:
   _meta:
@@ -3101,7 +3201,7 @@ Fortified:
       - [73, 80, Prototype technology or equipment]
       - [81, 88, Robotic assistant or watchful AI]
       - [89, 96, Support personnel at work]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3116,7 +3216,7 @@ Fortified:
       - [64, 72, Problematic alliance or affiliations is revealed]
       - [73, 81, Revealed schemes of an enemy leader create new urgency]
       - [82, 90, Your plan is undone by an unexpected complication]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3128,8 +3228,6 @@ Fortified:
       - [61, 80, Potential collaborator or informant reveals themselves]
       - [81, 100, Access to useful equipment or weapons]
  
-
-
 
 Haunted:
   _meta:
@@ -3159,7 +3257,7 @@ Haunted:
       - [73, 80, Twisted or altered architecture or terrain]
       - [81, 88, "Unnatural blight, decay, or ruin"]
       - [89, 96, Unnatural mists or darkness]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3174,7 +3272,7 @@ Haunted:
       - [64, 72, "Sudden, shocking reveal of a ghostly manifestation or undead form"]
       - [73, 81, Trickery leads you into danger]
       - [82, 90, Visions reveal a horrifying aspect of this place]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3186,8 +3284,6 @@ Haunted:
       - [61, 80, Secret area or path is revealed]
       - [81, 100, Useful or interesting artifact or device]
  
-
-
 
 Infested:
   _meta:
@@ -3217,7 +3313,7 @@ Infested:
       - [73, 80, Remains of a creature or remnants of a previous form]
       - [81, 88, Territorial markings]
       - [89, 96, Trail or evidence of a creature's passage]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3232,7 +3328,7 @@ Infested:
       - [64, 72, Lured or driven into a trap or dead-end]
       - [73, 81, Powerful or dominant creature reveals itself]
       - [82, 90, Toxic or sickening environment]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3244,8 +3340,6 @@ Infested:
       - [61, 80, External event provides a helpful distraction]
       - [81, 100, Helpful resource or equipment]
  
-
-
 
 Inhabited:
   _meta:
@@ -3275,7 +3369,7 @@ Inhabited:
       - [73, 80, Unrepaired damage]
       - [81, 88, Unusually empty or quiet area]
       - [89, 96, Vendor or merchant hawking their wares]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3290,7 +3384,7 @@ Inhabited:
       - [64, 72, Signs of unrest or rebellion]
       - [73, 81, Signs that you are being watched or followed]
       - [82, 90, Unwanted attention from authority or enemies]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3302,8 +3396,6 @@ Inhabited:
       - [61, 80, "Needed item, resource, or buyer is available"]
       - [81, 100, Old friend or connection resurfaces]
  
-
-
 
 Location Theme:
   _meta:
@@ -3326,8 +3418,6 @@ Location Theme:
       - [71, 85, Ruined, *Ruined]
       - [86, 100, Sacred, *Sacred]
  
-
-
 
 Ruined:
   _meta:
@@ -3357,7 +3447,7 @@ Ruined:
       - [73, 80, Sights or sounds of structural instability]
       - [81, 88, Signs of looting or scavenging]
       - [89, 96, Survivors or guardians dwell among the ruins]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3372,7 +3462,7 @@ Ruined:
       - [64, 72, Unearthed secrets best left buried]
       - [73, 81, Unstable or broken path]
       - [82, 90, Volatile device or artifact]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3384,8 +3474,6 @@ Ruined:
       - [61, 80, Salvageable equipment or resources]
       - [81, 100, Shortcut or passage through the destruction]
  
-
-
 
 Sacred:
   _meta:
@@ -3415,7 +3503,7 @@ Sacred:
       - [73, 80, Religious art or idols]
       - [81, 88, Subtle manifestations of mystical power or visions]
       - [89, 96, Tokens or motifs representing the faith's domain]
-      - [97, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [97, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -3430,7 +3518,7 @@ Sacred:
       - [64, 72, Religious artifact evokes unnerving power]
       - [73, 81, Unnatural corruption or decay fouls the environment]
       - [82, 90, Zealots enact a ceremony to unlock forbidden powers]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -3442,8 +3530,6 @@ Sacred:
       - [61, 80, Insight into the schemes or methods of religious zealots]
       - [81, 100, Interesting or valuable artifact or device]
  
-
-
 
 Desert World:
   _meta:
@@ -3486,12 +3572,12 @@ Desert World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 10, None / thin, *None_thin]
-      - [11, 25, Toxic, *Toxic]
-      - [26, 40, Corrosive, *Corrosive]
-      - [41, 70, Marginal, *Marginal]
-      - [71, 95, Breathable, *Breathable]
-      - [96, 100, Ideal, *Ideal]
+      - [1, 10, *None_thin]
+      - [11, 25, *Toxic]
+      - [26, 40, *Corrosive]
+      - [41, 70, *Marginal]
+      - [71, 95, *Breathable]
+      - [96, 100, *Ideal]
  
   Settlements:
     - Initial: true
@@ -3500,10 +3586,10 @@ Desert World:
         Region: [Terminus]
       Table:
         - [1, 50, None]
-        - [51, 60, Orbital settlement, *Settlement_orbital]
-        - [61, 80, Planetside settlement, *Settlement_planetside]
-        - [81, 92, Multiple settlements, *Settlements_multiple]
-        - [93, 100, Settlements in conflict, *Settlements_conflict]
+        - [51, 60, *Orbital_settlement]
+        - [61, 80, *Planetside_settlement]
+        - [81, 92, *Multiple_settlements]
+        - [93, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -3511,10 +3597,10 @@ Desert World:
         Region: [Outlands]
       Table:
         - [1, 75, None]
-        - [76, 83, Orbital settlement, *Settlement_orbital]
-        - [84, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [76, 83, *Orbital_settlement]
+        - [84, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -3522,8 +3608,8 @@ Desert World:
         Region: [Expanse]
       Table:
         - [1, 90, None]
-        - [91, 96, Orbital settlement, *Settlement_orbital]
-        - [97, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 96, *Orbital_settlement]
+        - [97, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -3538,8 +3624,8 @@ Desert World:
       - [56, 66, Sprawling salt flats]
       - [67, 77, Vast plateaus]
       - [78, 88, Vibrant terrain colors]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -3558,8 +3644,8 @@ Desert World:
       - [71, 77, Towering rock formations]
       - [78, 84, Violent electrical storms]
       - [85, 91, Windborne metallic sand]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -3571,8 +3657,6 @@ Desert World:
       - [91, 97, Bountiful]
       - [98, 100, Overrun]
  
-
-
 
 Furnace World:
   _meta:
@@ -3615,11 +3699,11 @@ Furnace World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 10, None / thin, *None_thin]
-      - [11, 50, Toxic, *Toxic]
-      - [51, 65, Corrosive, *Corrosive]
-      - [66, 90, Marginal, *Marginal]
-      - [91, 100, Breathable, *Breathable]
+      - [1, 10, *None_thin]
+      - [11, 50, *Toxic]
+      - [51, 65, *Corrosive]
+      - [66, 90, *Marginal]
+      - [91, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -3628,10 +3712,10 @@ Furnace World:
         Region: [Terminus]
       Table:
         - [1, 60, None]
-        - [61, 75, Orbital settlement, *Settlement_orbital]
-        - [76, 87, Planetside settlement, *Settlement_planetside]
-        - [88, 96, Multiple settlements, *Settlements_multiple]
-        - [97, 100, Settlements in conflict, *Settlements_conflict]
+        - [61, 75, *Orbital_settlement]
+        - [76, 87, *Planetside_settlement]
+        - [88, 96, *Multiple_settlements]
+        - [97, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -3639,10 +3723,10 @@ Furnace World:
         Region: [Outlands]
       Table:
         - [1, 85, None]
-        - [86, 92, Orbital settlement, *Settlement_orbital]
-        - [93, 97, Planetside settlement, *Settlement_planetside]
-        - [98, 99, Multiple settlements, *Settlements_multiple]
-        - [100, 100, Settlements in conflict, *Settlements_conflict]
+        - [86, 92, *Orbital_settlement]
+        - [93, 97, *Planetside_settlement]
+        - [98, 99, *Multiple_settlements]
+        - [100, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -3650,8 +3734,8 @@ Furnace World:
         Region: [Expanse]
       Table:
         - [1, 95, None]
-        - [96, 98, Orbital settlement, *Settlement_orbital]
-        - [99, 100, Planetside settlement, *Settlement_planetside]
+        - [96, 98, *Orbital_settlement]
+        - [99, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -3666,8 +3750,8 @@ Furnace World:
       - [56, 66, Once verdant terrain]
       - [67, 77, Towering mountain ranges]
       - [78, 88, World-spanning fissures]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -3686,8 +3770,8 @@ Furnace World:
       - [71, 77, Scalding geysers]
       - [78, 84, Silica or metal storms]
       - [85, 91, Steaming mudflats]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -3699,8 +3783,6 @@ Furnace World:
       - [96, 98, Bountiful]
       - [99, 100, Overrun]
  
-
-
 
 Grave World:
   _meta:
@@ -3743,11 +3825,11 @@ Grave World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 10, None / thin, *None_thin]
-      - [11, 45, Toxic, *Toxic]
-      - [46, 70, Corrosive, *Corrosive]
-      - [71, 90, Marginal, *Marginal]
-      - [91, 100, Breathable, *Breathable]
+      - [1, 10, *None_thin]
+      - [11, 45, *Toxic]
+      - [46, 70, *Corrosive]
+      - [71, 90, *Marginal]
+      - [91, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -3756,10 +3838,10 @@ Grave World:
         Region: [Terminus]
       Table:
         - [1, 80, None]
-        - [81, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [81, 90, *Orbital_settlement]
+        - [91, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -3767,8 +3849,8 @@ Grave World:
         Region: [Outlands]
       Table:
         - [1, 90, None]
-        - [91, 97, Orbital settlement, *Settlement_orbital]
-        - [98, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 97, *Orbital_settlement]
+        - [98, 100, *Planetside_settlement]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -3776,8 +3858,8 @@ Grave World:
         Region: [Expanse]
       Table:
         - [1, 95, None]
-        - [96, 98, Orbital settlement, *Settlement_orbital]
-        - [99, 100, Planetside settlement, *Settlement_planetside]
+        - [96, 98, *Orbital_settlement]
+        - [99, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -3788,12 +3870,12 @@ Grave World:
       - [12, 22, Cratered surface]
       - [23, 33, Dry seabeds]
       - [34, 44, Irradiated atmosphere]
-      - [45, 55, Orbiting ship graveyard]
+      - [45, 55, Orbiting ship graveyard,*suggestDerelictStarship]
       - [56, 66, Perpetual overcast]
-      - [67, 77, Sky-breaching ruins]
+      - [67, 77, Sky-breaching ruins, *suggestDerelictSettlement]
       - [78, 88, Vast wastelands]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -3808,12 +3890,12 @@ Grave World:
       - [43, 49, Moldering bones]
       - [50, 56, Noxious fog]
       - [57, 63, Radioactive hotspots]
-      - [64, 70, Ravaged cities]
+      - [64, 70, Ravaged cities, *suggestDerelictSettlement]
       - [71, 77, Scarred battlefields]
-      - [78, 84, Ship graveyards]
+      - [78, 84, Ship graveyards, *suggestDerelictStarship]
       - [85, 91, Whispers of the dead]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -3822,8 +3904,6 @@ Grave World:
       - [86, 95, Simple]
       - [96, 100, Sparse]
  
-
-
 
 Ice World:
   _meta:
@@ -3866,12 +3946,12 @@ Ice World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 15, None / thin, *None_thin]
-      - [16, 35, Toxic, *Toxic]
-      - [36, 40, Corrosive, *Corrosive]
-      - [41, 70, Marginal, *Marginal]
-      - [71, 95, Breathable, *Breathable]
-      - [96, 100, Ideal, *Ideal]
+      - [1, 15, *None_thin]
+      - [16, 35, *Toxic]
+      - [36, 40, *Corrosive]
+      - [41, 70, *Marginal]
+      - [71, 95, *Breathable]
+      - [96, 100, *Ideal]
  
   Settlements:
     - Initial: true
@@ -3880,10 +3960,10 @@ Ice World:
         Region: [Terminus]
       Table:
         - [1, 50, None]
-        - [51, 60, Orbital settlement, *Settlement_orbital]
-        - [61, 80, Planetside settlement, *Settlement_planetside]
-        - [81, 92, Multiple settlements, *Settlements_multiple]
-        - [93, 100, Settlements in conflict, *Settlements_conflict]
+        - [51, 60, *Orbital_settlement]
+        - [61, 80, *Planetside_settlement]
+        - [81, 92, *Multiple_settlements]
+        - [93, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -3891,10 +3971,10 @@ Ice World:
         Region: [Outlands]
       Table:
         - [1, 75, None]
-        - [76, 83, Orbital settlement, *Settlement_orbital]
-        - [84, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [76, 83, *Orbital_settlement]
+        - [84, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -3902,8 +3982,8 @@ Ice World:
         Region: [Expanse]
       Table:
         - [1, 90, None]
-        - [91, 96, Orbital settlement, *Settlement_orbital]
-        - [97, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 96, *Orbital_settlement]
+        - [97, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -3918,8 +3998,8 @@ Ice World:
       - [56, 66, Supersized ice volcano]
       - [67, 77, Vibrantly colored ice]
       - [78, 88, World-spanning ice canyon]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -3938,8 +4018,8 @@ Ice World:
       - [71, 77, Subsurface liquid oceans]
       - [78, 84, Vibrant auroras]
       - [85, 91, Wind-carved ice formations]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -3951,8 +4031,6 @@ Ice World:
       - [91, 97, Bountiful]
       - [98, 100, Overrun]
  
-
-
 
 Jovian World:
   _meta:
@@ -3995,10 +4073,10 @@ Jovian World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 50, Toxic, *Toxic]
-      - [51, 65, Corrosive, *Corrosive]
-      - [66, 85, Marginal, *Marginal]
-      - [86, 100, Breathable, *Breathable]
+      - [1, 50, *Toxic]
+      - [51, 65, *Corrosive]
+      - [66, 85, *Marginal]
+      - [86, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -4007,10 +4085,10 @@ Jovian World:
         Region: [Terminus]
       Table:
         - [1, 50, None]
-        - [51, 70, Orbital settlement, *Settlement_orbital]
-        - [71, 85, Planetside settlement, *Settlement_planetside]
-        - [86, 95, Multiple settlements, *Settlements_multiple]
-        - [96, 100, Settlements in conflict, *Settlements_conflict]
+        - [51, 70, *Orbital_settlement]
+        - [71, 85, *Planetside_settlement]
+        - [86, 95, *Multiple_settlements]
+        - [96, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4018,10 +4096,10 @@ Jovian World:
         Region: [Outlands]
       Table:
         - [1, 75, None]
-        - [76, 87, Orbital settlement, *Settlement_orbital]
-        - [88, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [76, 87, *Orbital_settlement]
+        - [88, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4029,8 +4107,8 @@ Jovian World:
         Region: [Expanse]
       Table:
         - [1, 90, None]
-        - [91, 96, Orbital settlement, *Settlement_orbital]
-        - [97, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 96, *Orbital_settlement]
+        - [97, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -4045,8 +4123,8 @@ Jovian World:
       - [56, 66, Severe electrical storms]
       - [67, 77, Superheated atmosphere]
       - [78, 88, Unusual atmospheric colors]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -4065,8 +4143,8 @@ Jovian World:
       - [71, 77, Towering thunderheads]
       - [78, 84, Violent turbulence]
       - [85, 91, Zones of localized atmosphere]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -4078,8 +4156,6 @@ Jovian World:
       - [93, 97, Bountiful]
       - [98, 100, Overrun]
  
-
-
 
 Jungle World:
   _meta:
@@ -4122,11 +4198,11 @@ Jungle World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 25, Toxic, *Toxic]
-      - [26, 30, Corrosive, *Corrosive]
-      - [31, 60, Marginal, *Marginal]
-      - [61, 90, Breathable, *Breathable]
-      - [91, 100, Ideal, *Ideal]
+      - [1, 25, *Toxic]
+      - [26, 30, *Corrosive]
+      - [31, 60, *Marginal]
+      - [61, 90, *Breathable]
+      - [91, 100, *Ideal]
  
   Settlements:
     - Initial: true
@@ -4135,10 +4211,10 @@ Jungle World:
         Region: [Terminus]
       Table:
         - [1, 40, None]
-        - [41, 55, Orbital settlement, *Settlement_orbital]
-        - [56, 80, Planetside settlement, *Settlement_planetside]
-        - [81, 92, Multiple settlements, *Settlements_multiple]
-        - [93, 100, Settlements in conflict, *Settlements_conflict]
+        - [41, 55, *Orbital_settlement]
+        - [56, 80, *Planetside_settlement]
+        - [81, 92, *Multiple_settlements]
+        - [93, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4146,10 +4222,10 @@ Jungle World:
         Region: [Outlands]
       Table:
         - [1, 65, None]
-        - [66, 75, Orbital settlement, *Settlement_orbital]
-        - [76, 92, Planetside settlement, *Settlement_planetside]
-        - [93, 97, Multiple settlements, *Settlements_multiple]
-        - [98, 100, Settlements in conflict, *Settlements_conflict]
+        - [66, 75, *Orbital_settlement]
+        - [76, 92, *Planetside_settlement]
+        - [93, 97, *Multiple_settlements]
+        - [98, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4157,10 +4233,10 @@ Jungle World:
         Region: [Expanse]
       Table:
         - [1, 85, None]
-        - [86, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 97, Planetside settlement, *Settlement_planetside]
-        - [98, 99, Multiple settlements, *Settlements_multiple]
-        - [100, 100, Settlements in conflict, *Settlements_conflict]
+        - [86, 90, *Orbital_settlement]
+        - [91, 97, *Planetside_settlement]
+        - [98, 99, *Multiple_settlements]
+        - [100, 100, *Settlements_in_conflict]
  
   Observed From Space:
     Initial: true
@@ -4175,8 +4251,8 @@ Jungle World:
       - [56, 66, Towering mountains]
       - [67, 77, Unbroken canopy]
       - [78, 88, Unusual vegetation color]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -4195,8 +4271,8 @@ Jungle World:
       - [71, 77, Torrential rainstorms]
       - [78, 84, Violent electrical storms]
       - [85, 91, Waterlogged caves]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -4206,8 +4282,6 @@ Jungle World:
       - [46, 80, Bountiful]
       - [81, 100, Overrun]
  
-
-
 
 Ocean World:
   _meta:
@@ -4250,12 +4324,12 @@ Ocean World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 5, None / thin, *None_thin]
-      - [6, 20, Toxic, *Toxic]
-      - [21, 25, Corrosive, *Corrosive]
-      - [26, 60, Marginal, *Marginal]
-      - [61, 90, Breathable, *Breathable]
-      - [91, 100, Ideal, *Ideal]
+      - [1, 5, *None_thin]
+      - [6, 20, *Toxic]
+      - [21, 25, *Corrosive]
+      - [26, 60, *Marginal]
+      - [61, 90, *Breathable]
+      - [91, 100, *Ideal]
  
   Settlements:
     - Initial: true
@@ -4264,10 +4338,10 @@ Ocean World:
         Region: [Terminus]
       Table:
         - [1, 40, None]
-        - [41, 55, Orbital settlement, *Settlement_orbital]
-        - [56, 80, Planetside settlement, *Settlement_planetside]
-        - [81, 92, Multiple settlements, *Settlements_multiple]
-        - [93, 100, Settlements in conflict, *Settlements_conflict]
+        - [41, 55, *Orbital_settlement]
+        - [56, 80, *Planetside_settlement]
+        - [81, 92, *Multiple_settlements]
+        - [93, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4275,10 +4349,10 @@ Ocean World:
         Region: [Outlands]
       Table:
         - [1, 65, None]
-        - [66, 75, Orbital settlement, *Settlement_orbital]
-        - [76, 92, Planetside settlement, *Settlement_planetside]
-        - [93, 97, Multiple settlements, *Settlements_multiple]
-        - [98, 100, Settlements in conflict, *Settlements_conflict]
+        - [66, 75, *Orbital_settlement]
+        - [76, 92, *Planetside_settlement]
+        - [93, 97, *Multiple_settlements]
+        - [98, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4286,10 +4360,10 @@ Ocean World:
         Region: [Expanse]
       Table:
         - [1, 85, None]
-        - [86, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 97, Planetside settlement, *Settlement_planetside]
-        - [98, 99, Multiple settlements, *Settlements_multiple]
-        - [100, 100, Settlements in conflict, *Settlements_conflict]
+        - [86, 90, *Orbital_settlement]
+        - [91, 97, *Planetside_settlement]
+        - [98, 99, *Multiple_settlements]
+        - [100, 100, *Settlements_in_conflict]
  
   Observed From Space:
     Initial: true
@@ -4304,8 +4378,8 @@ Ocean World:
       - [56, 66, Scattered islands]
       - [67, 77, Semi-frozen oceans]
       - [78, 88, Unusual water color]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -4324,8 +4398,8 @@ Ocean World:
       - [71, 77, Unrelenting rainfall]
       - [78, 84, Violent currents]
       - [85, 91, Windborne waterspouts]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -4337,8 +4411,6 @@ Ocean World:
       - [71, 90, Bountiful]
       - [91, 100, Overrun]
  
-
-
 
 Planet:
   _meta:
@@ -4385,15 +4457,15 @@ Planet:
         Location: [Planetside]
         Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
       Table:
-        - [1, 3, Corrupted or mutated lifeform]
-        - [4, 6, Signs of a lifeform's power or cunning]
+        - [1, 3, Corrupted or mutated lifeform, *suggestCreature]
+        - [4, 6, Signs of a lifeform's power or cunning, *suggestCreature]
         - [7, 9, Hazardous plant life or malignant spores]
-        - [10, 12, Lifeform hunts for prey]
-        - [13, 15, Lifeform lairs here]
-        - [16, 18, Lifeforms guided by a greater threat]
-        - [19, 21, Lifeforms spooked or stampeding]
-        - [22, 24, Threatening lifeform draws near]
-        - [25, 27, &pPeril00 Life is revealed or takes an unexpected form]
+        - [10, 12, Lifeform hunts for prey, *suggestCreature]
+        - [13, 15, Lifeform lairs here, *suggestCreature]
+        - [16, 18, Lifeforms guided by a greater threat, *suggestCreature]
+        - [19, 21, Lifeforms spooked or stampeding, *suggestCreature]
+        - [22, 24, Threatening lifeform draws near, *suggestCreature]
+        - [25, 27, &pPeril00 [Life is revealed or takes an unexpected form, *suggestCreature]]
         - [28, 30, &pPeril01 Blocked or impassible path]
         - [31, 33, &pPeril02 Corrosive substance or environment]
         - [34, 36, &pPeril03 Disturbing remains or evidence of death]
@@ -4415,9 +4487,9 @@ Planet:
         - [82, 84, &pPeril19 Treacherous or arduous path]
         - [85, 87, &pPeril20 Troubling visions or apparitions]
         - [88, 90, &pPeril21 Visibility hindered by atmospheric effects]
-        - [91, 93, &pPeril22 Worrying arrival of a ship or vehicle, *Starship]
+        - [91, 93, &pPeril22 [Worrying arrival of a ship or vehicle, *suggestShip]]
         - [94, 96, &pPeril23 Wreckage or ruins portend a new threat]
-        - [97, 99, &pPeril24 ▶️Action + Theme, *Action_Theme] 
+        - [97, 99, *Action+Theme] 
         - [100, 100, &pPeril25 Roll twice]
  
     - Display name: Planetside Peril - Lifeless
@@ -4450,7 +4522,7 @@ Planet:
         - [84, 87, *pPeril21 ]
         - [88, 91, *pPeril22 ]
         - [92, 95, *pPeril23 ]
-        - [96, 99, *pPeril24 ]
+        - [96, 99, *Action+Theme]
         - [100, 100, *pPeril25 ]
  
   Opportunity:
@@ -4460,13 +4532,13 @@ Planet:
         Location: [Planetside]
         Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
       Table:
-        - [1, 4, Clue to a lifeform's nature or vulnerabilities]
-        - [5, 8, Friendly interaction with a benign lifeform]
+        - [1, 4, Clue to a lifeform's nature or vulnerabilities, *suggestCreature]
+        - [5, 8, Friendly interaction with a benign lifeform, *suggestCreature]
         - [9, 12, Hunting or foraging opportunities are plentiful]
-        - [13, 16, Interesting or helpful aspect of benign creatures]
+        - [13, 16, Interesting or helpful aspect of benign creatures, *suggestCreature]
         - [17, 20, Interesting or helpful aspect of local plant life]
-        - [21, 24, &pOpp00 Encounter reveals unexpected benign lifeforms]
-        - [25, 28, &pOpp01 Abandoned camp or vehicle]
+        - [21, 24, &pOpp00 [Encounter reveals unexpected benign lifeforms, *suggestCreature]]
+        - [25, 28, &pOpp01 [Abandoned camp or vehicle, *suggestObject]]
         - [29, 32, &pOpp02 Advance warning of an environmental threat]
         - [33, 36, &pOpp03 Clear path through otherwise perilous terrain]
         - [37, 40, &pOpp04 Clue offers insight into a current quest or mystery]
@@ -4475,15 +4547,15 @@ Planet:
         - [49, 52, &pOpp07 Foe reveals themselves or tips their hand]
         - [53, 56, &pOpp08 Fortuitous change in the weather or atmosphere]
         - [57, 60, &pOpp09 Friendly traveler crosses your path]
-        - [61, 64, &pOpp10 Helpful resource is in ample supply]
+        - [61, 64, &pOpp10 [Helpful resource is in ample supply, *suggestObject]]
         - [65, 68, &pOpp11 Impressive vista offers comfort or inspiration]
-        - [69, 72, &pOpp12 Interesting artifact or device]
-        - [73, 76, &pOpp13 Interesting site offers opportunities for exploration]
+        - [69, 72, &pOpp12 [Interesting artifact or device, *suggestObject]]
+        - [73, 76, &pOpp13 [Interesting site offers opportunities for exploration, *suggestObject]]
         - [77, 80, &pOpp14 Moment of fellowship or inner peace]
         - [81, 84, &pOpp15 "Opening to distract, escape, or avoid foes"]
         - [85, 88, &pOpp16 Opening to get the drop on a foe]
         - [89, 92, &pOpp17 Plea for help from a potential benefactor]
-        - [93, 96, &pOpp18 "Refuge offers a place to hide, plan, or recover"]
+        - [93, 96, &pOpp18 ["Refuge offers a place to hide, plan, or recover", *suggestObject]]
         - [97, 100, &pOpp19 Vantage point reveals the lay of the land]
  
     - Display name: Planetside Opportunity - Lifeless
@@ -4513,8 +4585,6 @@ Planet:
         - [91, 95, *pOpp18] 
         - [96, 100, *pOpp19] 
  
-
-
 
 Rocky World:
   _meta:
@@ -4557,10 +4627,10 @@ Rocky World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 65, None / thin, *None_thin]
-      - [66, 85, Toxic, *Toxic]
-      - [86, 90, Corrosive, *Corrosive]
-      - [91, 100, Marginal, *Marginal]
+      - [1, 65, *None_thin]
+      - [66, 85, *Toxic]
+      - [86, 90, *Corrosive]
+      - [91, 100, *Marginal]
  
   Settlements:
     - Initial: true
@@ -4569,10 +4639,10 @@ Rocky World:
         Region: [Terminus]
       Table:
         - [1, 50, None]
-        - [51, 70, Orbital settlement, *Settlement_orbital]
-        - [71, 85, Planetside settlement, *Settlement_planetside]
-        - [86, 95, Multiple settlements, *Settlements_multiple]
-        - [96, 100, Settlements in conflict, *Settlements_conflict]
+        - [51, 70, *Orbital_settlement]
+        - [71, 85, *Planetside_settlement]
+        - [86, 95, *Multiple_settlements]
+        - [96, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4580,10 +4650,10 @@ Rocky World:
         Region: [Outlands]
       Table:
         - [1, 75, None]
-        - [76, 87, Orbital settlement, *Settlement_orbital]
-        - [88, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [76, 87, *Orbital_settlement]
+        - [88, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4591,8 +4661,8 @@ Rocky World:
         Region: [Expanse]
       Table:
         - [1, 90, None]
-        - [91, 96, Orbital settlement, *Settlement_orbital]
-        - [97, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 96, *Orbital_settlement]
+        - [97, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -4607,8 +4677,8 @@ Rocky World:
       - [56, 66, Misshapen form (low gravity)]
       - [67, 77, Perpetual night]
       - [78, 88, Towering plateaus]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -4627,8 +4697,8 @@ Rocky World:
       - [71, 77, Subsurface magma flows]
       - [78, 84, Swirling low-lying gases]
       - [85, 91, Towering rocky spires]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -4640,8 +4710,6 @@ Rocky World:
       - [96, 98, Bountiful]
       - [99, 100, Overrun]
  
-
-
 
 Shattered World:
   _meta:
@@ -4684,11 +4752,11 @@ Shattered World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 93, None / thin, *None_thin]
-      - [94, 95, Toxic, *Toxic]
-      - [96, 97, Corrosive, *Corrosive]
-      - [98, 99, Marginal, *Marginal]
-      - [100, 100, Breathable, *Breathable]
+      - [1, 93, *None_thin]
+      - [94, 95, *Toxic]
+      - [96, 97, *Corrosive]
+      - [98, 99, *Marginal]
+      - [100, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -4697,10 +4765,10 @@ Shattered World:
         Region: [Terminus]
       Table:
         - [1, 70, None]
-        - [71, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [71, 90, *Orbital_settlement]
+        - [91, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4708,9 +4776,9 @@ Shattered World:
         Region: [Outlands]
       Table:
         - [1, 85, None]
-        - [86, 96, Orbital settlement, *Settlement_orbital]
-        - [97, 99, Planetside settlement, *Settlement_planetside]
-        - [100, 100, Multiple settlements, *Settlements_multiple]
+        - [86, 96, *Orbital_settlement]
+        - [97, 99, *Planetside_settlement]
+        - [100, 100, *Multiple_settlements]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4718,15 +4786,15 @@ Shattered World:
         Region: [Expanse]
       Table:
         - [1, 95, None]
-        - [96, 99, Orbital settlement, *Settlement_orbital]
-        - [100, 100, Planetside settlement, *Settlement_planetside]
+        - [96, 99, *Orbital_settlement]
+        - [100, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
     Tags: [fragment]
     Max rolls: 2
     Table:
-      - [1, 11, Demolished space fleet]
+      - [1, 11, Demolished space fleet, *suggestDerelictStarship]
       - [12, 22, Dense ring system]
       - [23, 33, Fiery planetary core]
       - [34, 44, Geomagnetic storms]
@@ -4734,8 +4802,8 @@ Shattered World:
       - [56, 66, Preserved planetary fragment]
       - [67, 77, Swirling debris field]
       - [78, 88, Unbroken moon]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -4754,8 +4822,8 @@ Shattered World:
       - [71, 77, Swirling corrosive gases]
       - [78, 84, Unstable and fracturing terrain]
       - [85, 91, Venting magma]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -4765,8 +4833,6 @@ Shattered World:
       - [91, 96, Sparse]
       - [97, 100, Diverse]
  
-
-
 
 Tainted World:
   _meta:
@@ -4809,10 +4875,10 @@ Tainted World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 65, Toxic, *Toxic]
-      - [66, 85, Corrosive, *Corrosive]
-      - [86, 95, Marginal, *Marginal]
-      - [96, 100, Breathable, *Breathable]
+      - [1, 65, *Toxic]
+      - [66, 85, *Corrosive]
+      - [86, 95, *Marginal]
+      - [96, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -4821,10 +4887,10 @@ Tainted World:
         Region: [Terminus]
       Table:
         - [1, 80, None]
-        - [81, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [81, 90, *Orbital_settlement]
+        - [91, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4832,8 +4898,8 @@ Tainted World:
         Region: [Outlands]
       Table:
         - [1, 90, None]
-        - [91, 97, Orbital settlement, *Settlement_orbital]
-        - [98, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 97, *Orbital_settlement]
+        - [98, 100, *Planetside_settlement]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4841,8 +4907,8 @@ Tainted World:
         Region: [Expanse]
       Table:
         - [1, 95, None]
-        - [96, 98, Orbital settlement, *Settlement_orbital]
-        - [99, 100, Planetside settlement, *Settlement_planetside]
+        - [96, 98, *Orbital_settlement]
+        - [99, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -4857,8 +4923,8 @@ Tainted World:
       - [56, 66, Stagnant cloud cover]
       - [67, 77, "Thick, murky atmosphere"]
       - [78, 88, Toxic seas]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -4877,8 +4943,8 @@ Tainted World:
       - [71, 77, Terrain marred by fleshy pustules]
       - [78, 84, Toxic rain]
       - [85, 91, Virulent fungal infestations]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -4888,8 +4954,6 @@ Tainted World:
       - [31, 55, Bountiful]
       - [56, 100, Overrun]
  
-
-
 
 Vital World:
   _meta:
@@ -4932,9 +4996,9 @@ Vital World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 20, Marginal, *Marginal]
-      - [21, 50, Breathable, *Breathable]
-      - [51, 100, Ideal, *Ideal]
+      - [1, 20, *Marginal]
+      - [21, 50, *Breathable]
+      - [51, 100, *Ideal]
  
   Settlements:
     - Initial: true
@@ -4943,10 +5007,10 @@ Vital World:
         Region: [Terminus]
       Table:
         - [1, 20, None]
-        - [21, 30, Orbital settlement, *Settlement_orbital]
-        - [31, 70, Planetside settlement, *Settlement_planetside]
-        - [71, 90, Multiple settlements, *Settlements_multiple]
-        - [91, 100, Settlements in conflict, *Settlements_conflict]
+        - [21, 30, *Orbital_settlement]
+        - [31, 70, *Planetside_settlement]
+        - [71, 90, *Multiple_settlements]
+        - [91, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -4954,10 +5018,10 @@ Vital World:
         Region: [Outlands]
       Table:
         - [1, 50, None]
-        - [51, 55, Orbital settlement, *Settlement_orbital]
-        - [56, 85, Planetside settlement, *Settlement_planetside]
-        - [86, 95, Multiple settlements, *Settlements_multiple]
-        - [96, 100, Settlements in conflict, *Settlements_conflict]
+        - [51, 55, *Orbital_settlement]
+        - [56, 85, *Planetside_settlement]
+        - [86, 95, *Multiple_settlements]
+        - [96, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -4965,10 +5029,10 @@ Vital World:
         Region: [Expanse]
       Table:
         - [1, 80, None]
-        - [81, 83, Orbital settlement, *Settlement_orbital]
-        - [84, 93, Planetside settlement, *Settlement_planetside]
-        - [94, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [81, 83, *Orbital_settlement]
+        - [84, 93, *Planetside_settlement]
+        - [94, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
   Observed From Space:
     Initial: true
@@ -4983,8 +5047,8 @@ Vital World:
       - [56, 66, Numerous small moons]
       - [67, 77, Unusual day or night cycle]
       - [78, 88, Vibrantly colored landscapes]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -5003,8 +5067,8 @@ Vital World:
       - [71, 77, Signs of an engineered biosphere]
       - [78, 84, Sudden weather fluctuations]
       - [85, 91, Towering geological formations]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:
@@ -5045,9 +5109,6 @@ Vital World:
       - [86, 90, Volcanic]
       - [91, 95, Waterways]
       - [96, 100, Wetland]
- 
-
-
 
 Vault Interior:
   _meta:
@@ -5098,7 +5159,7 @@ Vault Interior:
       - [80, 82, Vaulted chamber]
       - [83, 85, Vertical shaft]
       - [86, 90, Transition into the Sanctum, *Vault_Sanctum]
-      - [91, 95, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [91, 95, *Descriptor+Focus] 
       - [96, 100, Roll twice]
  
   Peril:
@@ -5124,7 +5185,7 @@ Vault Interior:
       - [81, 85, Tempting location or object holds hidden dangers]
       - [86, 90, Toxic atmosphere]
       - [91, 95, Unnerving sound or sensation]
-      - [96, 99, ▶️Action + Theme, *Action_Theme] 
+      - [96, 99, *Action+Theme] 
       - [100, 100, Roll twice]
  
   Opportunity:
@@ -5142,8 +5203,6 @@ Vault Interior:
       - [81, 90, Secure area offers a moment of peace]
       - [91, 100, Shortcut or less perilous path speeds your way]
  
-
-
 
 Precursor Vault:
   _meta:
@@ -5262,7 +5321,7 @@ Precursor Vault:
       - [86, 89, Sound or signal]
       - [90, 92, Strong gravity well]
       - [93, 95, Surrounded by destruction]
-      - [96, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [96, 100, *Descriptor+Focus] 
 
   Inner First Look:
     Oracle Type: First Look
@@ -5301,10 +5360,8 @@ Precursor Vault:
       - [85, 87, Toxic residue]
       - [88, 90, Well-preserved]
       - [91, 93, Wet or humid]
-      - [94, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [94, 100, *Descriptor+Focus] 
  
-
-
 
 Vault Sanctum:
   _meta:
@@ -5348,7 +5405,7 @@ Vault Sanctum:
       - [81, 83, Surveying or monitoring of a location]
       - [84, 87, Transformation of terrain or environments]
       - [88, 90, Worship of a god or being]
-      - [91, 95, ▶️Action + Theme, *Action_Theme] 
+      - [91, 95, *Action+Theme] 
       - [96, 100, Roll twice]
  
   Feature:
@@ -5388,7 +5445,7 @@ Vault Sanctum:
       - [83, 85, Visions or reflections of another reality]
       - [86, 88, Warped or misshapen spaces]
       - [89, 90, Whispering voices speak to you]
-      - [91, 95, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [91, 95, *Descriptor+Focus] 
       - [96, 100, Roll twice]
  
   Peril:
@@ -5414,7 +5471,7 @@ Vault Sanctum:
       - [81, 85, Sudden structural collapse or failure]
       - [86, 90, Temptations to linger or remain in this site]
       - [91, 95, You are marked by physical corruption or mutation]
-      - [96, 99, ▶️Action + Theme, *Action_Theme] 
+      - [96, 99, *Action+Theme] 
       - [100, 100, Roll twice]
  
   Opportunity:
@@ -5432,8 +5489,6 @@ Vault Sanctum:
       - [81, 90, Key offers control of a function or aspect of this site]
       - [91, 100, Shortcut or less perilous path speeds your way]
  
-
-
 
 Access:
   _meta:
@@ -5480,7 +5535,7 @@ Access:
       - [81, 85, Wandering bot]
       - [86, 90, Windows or viewports]
       - [91, 95, Wrecked passage or debris]
-      - [96, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [96, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5494,7 +5549,7 @@ Access:
       - [61, 70, Hazardous environmental change]
       - [71, 80, Path is trapped]
       - [81, 90, Unsettling sound or disturbance]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5506,8 +5561,6 @@ Access:
       - [61, 80, Opening to outmaneuver or escape a threat or foe]
       - [81, 100, Useful equipment]
  
-
-
 
 Community:
   _meta:
@@ -5550,7 +5603,7 @@ Community:
       - [65, 72, Mass grave or corpses]
       - [73, 80, Panoramic viewport]
       - [81, 88, Rubble or debris]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5564,7 +5617,7 @@ Community:
       - [61, 70, Haunting vision of life here before the fall]
       - [71, 80, Hazardous environmental change]
       - [81, 90, Heartbreaking memento of lost lives]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5576,8 +5629,6 @@ Community:
       - [61, 80, Terminal with access to site details]
       - [81, 100, Valuable item]
  
-
-
 
 Engineering:
   _meta:
@@ -5620,7 +5671,7 @@ Engineering:
       - [65, 72, Sharp ozone smell]
       - [73, 80, Unfinished project]
       - [81, 88, Utility bots]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5634,7 +5685,7 @@ Engineering:
       - [61, 70, Sabotaged equipment]
       - [71, 80, Shrouded atmosphere conceals a lurking foe]
       - [81, 90, Unstable or failing power core]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5646,8 +5697,6 @@ Engineering:
       - [61, 80, Helpful utility bot]
       - [81, 100, Useful tool or device]
  
-
-
 
 Living:
   _meta:
@@ -5690,7 +5739,7 @@ Living:
       - [65, 72, Scuttling vermin]
       - [73, 80, Shrine or altar]
       - [81, 88, Unusual art]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5704,7 +5753,7 @@ Living:
       - [61, 70, Restless dead]
       - [71, 80, Signs of a horrific death]
       - [81, 90, Signs of broken quarantine]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5716,8 +5765,6 @@ Living:
       - [61, 80, Recorded message reveals helpful aspects of this site]
       - [81, 100, Useful personal gear]
  
-
-
 
 Medical:
   _meta:
@@ -5760,7 +5807,7 @@ Medical:
       - [65, 72, Medical monitors]
       - [73, 80, Medical records or scans]
       - [81, 88, Stacks of body bags]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5774,7 +5821,7 @@ Medical:
       - [61, 70, Restless dead]
       - [71, 80, Signs of a horrific death]
       - [81, 90, Signs of broken quarantine]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5786,8 +5833,6 @@ Medical:
       - [61, 80, Unusual or rare specimen]
       - [81, 100, Useful medical equipment]
  
-
-
 
 Operations:
   _meta:
@@ -5830,7 +5875,7 @@ Operations:
       - [65, 72, Recorded message]
       - [73, 80, Video surveillance monitors]
       - [81, 88, Written logs]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5844,7 +5889,7 @@ Operations:
       - [61, 70, Hostile AI]
       - [71, 80, Sealed blast doors block access]
       - [81, 90, Sensors indicate the arrival of an external threat]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5856,8 +5901,6 @@ Operations:
       - [61, 80, Log offers insight into this site's downfall]
       - [81, 100, Secure area offers a moment of peace]
  
-
-
 
 Production:
   _meta:
@@ -5900,7 +5943,7 @@ Production:
       - [65, 72, Tools]
       - [73, 80, Vats of chemicals or gas]
       - [81, 88, Written manifest]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5914,7 +5957,7 @@ Production:
       - [61, 70, Malfunctioning automation]
       - [71, 80, Rivals seek to secure these resources]
       - [81, 90, Signs of an unearthed or manufactured threat]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5926,8 +5969,6 @@ Production:
       - [61, 80, Useful equipment]
       - [81, 100, Valuable cargo]
  
-
-
 
 Research:
   _meta:
@@ -5970,7 +6011,7 @@ Research:
       - [65, 72, Invasive plant growth]
       - [73, 80, Recorded research log]
       - [81, 88, Spilled chemicals]
-      - [89, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [89, 100, *Descriptor+Focus] 
  
   Peril:
     Tags: [repeatable, fragment]
@@ -5984,7 +6025,7 @@ Research:
       - [61, 70, Signs of broken containment]
       - [71, 80, Toxic environment]
       - [81, 90, Unstable technology]
-      - [91, 98, ▶️Action + Theme, *Action_Theme] 
+      - [91, 98, *Action+Theme] 
       - [99, 100, Roll twice]
  
   Opportunity:
@@ -5996,5 +6037,4 @@ Research:
       - [61, 80, Unique prototype]
       - [81, 100, Useful navigational data]
  
-
 

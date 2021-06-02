@@ -39,11 +39,11 @@ Grave World:
   Atmosphere:
     Initial: true
     Table:
-      - [1, 10, None / thin, *None_thin]
-      - [11, 45, Toxic, *Toxic]
-      - [46, 70, Corrosive, *Corrosive]
-      - [71, 90, Marginal, *Marginal]
-      - [91, 100, Breathable, *Breathable]
+      - [1, 10, *None_thin]
+      - [11, 45, *Toxic]
+      - [46, 70, *Corrosive]
+      - [71, 90, *Marginal]
+      - [91, 100, *Breathable]
  
   Settlements:
     - Initial: true
@@ -52,10 +52,10 @@ Grave World:
         Region: [Terminus]
       Table:
         - [1, 80, None]
-        - [81, 90, Orbital settlement, *Settlement_orbital]
-        - [91, 95, Planetside settlement, *Settlement_planetside]
-        - [96, 98, Multiple settlements, *Settlements_multiple]
-        - [99, 100, Settlements in conflict, *Settlements_conflict]
+        - [81, 90, *Orbital_settlement]
+        - [91, 95, *Planetside_settlement]
+        - [96, 98, *Multiple_settlements]
+        - [99, 100, *Settlements_in_conflict]
  
     - Initial: true
       Display name: Settlements - Outlands
@@ -63,8 +63,8 @@ Grave World:
         Region: [Outlands]
       Table:
         - [1, 90, None]
-        - [91, 97, Orbital settlement, *Settlement_orbital]
-        - [98, 100, Planetside settlement, *Settlement_planetside]
+        - [91, 97, *Orbital_settlement]
+        - [98, 100, *Planetside_settlement]
  
     - Initial: true
       Display name: Settlements - Expanse
@@ -72,8 +72,8 @@ Grave World:
         Region: [Expanse]
       Table:
         - [1, 95, None]
-        - [96, 98, Orbital settlement, *Settlement_orbital]
-        - [99, 100, Planetside settlement, *Settlement_planetside]
+        - [96, 98, *Orbital_settlement]
+        - [99, 100, *Planetside_settlement]
  
   Observed From Space:
     Initial: true
@@ -84,12 +84,12 @@ Grave World:
       - [12, 22, Cratered surface]
       - [23, 33, Dry seabeds]
       - [34, 44, Irradiated atmosphere]
-      - [45, 55, Orbiting ship graveyard]
+      - [45, 55, Orbiting ship graveyard,*suggestDerelictStarship]
       - [56, 66, Perpetual overcast]
-      - [67, 77, Sky-breaching ruins]
+      - [67, 77, Sky-breaching ruins, *suggestDerelictSettlement]
       - [78, 88, Vast wastelands]
-      - [89, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (orbital), *Vault_orbital]
+      - [89, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_orbital]
  
   Planetside Feature:
     Tags: [fragment]
@@ -104,12 +104,12 @@ Grave World:
       - [43, 49, Moldering bones]
       - [50, 56, Noxious fog]
       - [57, 63, Radioactive hotspots]
-      - [64, 70, Ravaged cities]
+      - [64, 70, Ravaged cities, *suggestDerelictSettlement]
       - [71, 77, Scarred battlefields]
-      - [78, 84, Ship graveyards]
+      - [78, 84, Ship graveyards, *suggestDerelictStarship]
       - [85, 91, Whispers of the dead]
-      - [92, 98, ▶️Descriptor + Focus, *Descriptor_Focus] 
-      - [99, 100, ▶️Precursor Vault (planetside), *Vault_planetside]
+      - [92, 98, *Descriptor+Focus] 
+      - [99, 100, *Vault_planetside]
  
   Life:
     Table:

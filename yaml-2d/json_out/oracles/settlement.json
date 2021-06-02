@@ -96,15 +96,22 @@
         88,
         90,
         "Within or near ▶️Precursor Vault",
-        { "Object type": "Precursor Vault" }
+        [
+          "▶️Precursor Vault",
+          { "Game object": { "Object type": "Precursor Vault" } }
+        ]
       ],
       [
         91,
         100,
-        "▶️Descriptor + Focus",
         [
-          { "Category": "Core", "Oracle": "Descriptor" },
-          { "Category": "Core", "Oracle": "Focus" }
+          "▶️Descriptor + Focus",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
+            ]
+          }
         ]
       ]
     ]
@@ -126,11 +133,15 @@
       [
         96,
         100,
-        "▶️Derelict",
-        {
-          "Template type": "Derelict",
-          "Attributes": { "Derelict type": "Settlement" }
-        }
+        [
+          "▶️Derelict",
+          {
+            "Add template": {
+              "Template type": "Derelict",
+              "Attributes": { "Derelict type": "Settlement" }
+            }
+          }
+        ]
       ]
     ]
   },
@@ -187,10 +198,14 @@
       [
         96,
         100,
-        "▶️Action + Theme",
         [
-          { "Category": "Core", "Oracle": "Action" },
-          { "Category": "Core", "Oracle": "Theme" }
+          "▶️Action + Theme",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
+            ]
+          }
         ]
       ]
     ]
@@ -200,7 +215,21 @@
     "Tags": ["fragment"],
     "Table": [
       [1, 3, "Betrayal from within"],
-      [4, 7, "Blocked resource"],
+      [
+        4,
+        7,
+        "Blocked resource",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
       [8, 9, "Caught in the crossfire"],
       [10, 13, "Changing environment"],
       [14, 15, "Clash of cultures"],
@@ -223,17 +252,68 @@
       [65, 66, "Someone is ill or injured"],
       [67, 68, "Someone is missing"],
       [69, 70, "Stolen technology or object"],
-      [71, 73, "Strange phenomenon"],
-      [74, 76, "Toxic waste or pollution"],
-      [77, 78, "Volatile energy source"],
-      [79, 80, "Vulnerable lifeforms"],
+      [
+        71,
+        73,
+        "Strange phenomenon",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        74,
+        76,
+        "Toxic waste or pollution",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        77,
+        78,
+        "Volatile energy source",
+        {
+          "Suggest": [
+            {
+              "Oracles": [
+                { "Category": "Core", "Oracle": "Descriptor" },
+                { "Category": "Core", "Oracle": "Focus" }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        79,
+        80,
+        "Vulnerable lifeforms",
+        { "Suggest": [{ "Object type": "Creature" }] }
+      ],
       [
         81,
         90,
-        "▶️Action + Theme",
         [
-          { "Category": "Core", "Oracle": "Action" },
-          { "Category": "Core", "Oracle": "Theme" }
+          "▶️Action + Theme",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Action" },
+              { "Category": "Core", "Oracle": "Theme" }
+            ]
+          }
         ]
       ],
       [91, 100, "Roll twice"]

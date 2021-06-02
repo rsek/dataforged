@@ -39,20 +39,26 @@
       [
         1,
         20,
-        "Marginal",
-        "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
+        [
+          "Marginal",
+          "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
+        ]
       ],
       [
         21,
         50,
-        "Breathable",
-        "This atmosphere is not perfect, but it's good enough to sustain human life."
+        [
+          "Breathable",
+          "This atmosphere is not perfect, but it's good enough to sustain human life."
+        ]
       ],
       [
         51,
         100,
-        "Ideal",
-        "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air."
+        [
+          "Ideal",
+          "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air."
+        ]
       ]
     ]
   },
@@ -66,40 +72,56 @@
         [
           21,
           30,
-          "Orbital settlement",
-          {
-            "Object type": "Settlement",
-            "Attributes": { "Location": "Orbital" }
-          }
+          [
+            "Orbital settlement",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Attributes": { "Location": "Orbital" }
+              }
+            }
+          ]
         ],
         [
           31,
           70,
-          "Planetside settlement",
-          {
-            "Object type": "Settlement",
-            "Attributes": { "Location": "Planetside" }
-          }
+          [
+            "Planetside settlement",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Attributes": { "Location": "Planetside" }
+              }
+            }
+          ]
         ],
         [
           71,
           90,
-          "Multiple settlements",
-          {
-            "Object type": "Settlement",
-            "Number": 2,
-            "Attributes": { "Location": ["Orbital", "Planetside"] }
-          }
+          [
+            "Multiple settlements",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Amount": 2,
+                "Attributes": { "Location": ["Orbital", "Planetside"] }
+              }
+            }
+          ]
         ],
         [
           91,
           100,
-          "Settlements in conflict",
-          {
-            "Object type": "Settlement",
-            "Number": 2,
-            "Attributes": { "Location": ["Orbital", "Planetside"] }
-          }
+          [
+            "Settlements in conflict",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Amount": 2,
+                "Attributes": { "Location": ["Orbital", "Planetside"] }
+              }
+            }
+          ]
         ]
       ]
     },
@@ -112,40 +134,56 @@
         [
           51,
           55,
-          "Orbital settlement",
-          {
-            "Object type": "Settlement",
-            "Attributes": { "Location": "Orbital" }
-          }
+          [
+            "Orbital settlement",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Attributes": { "Location": "Orbital" }
+              }
+            }
+          ]
         ],
         [
           56,
           85,
-          "Planetside settlement",
-          {
-            "Object type": "Settlement",
-            "Attributes": { "Location": "Planetside" }
-          }
+          [
+            "Planetside settlement",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Attributes": { "Location": "Planetside" }
+              }
+            }
+          ]
         ],
         [
           86,
           95,
-          "Multiple settlements",
-          {
-            "Object type": "Settlement",
-            "Number": 2,
-            "Attributes": { "Location": ["Orbital", "Planetside"] }
-          }
+          [
+            "Multiple settlements",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Amount": 2,
+                "Attributes": { "Location": ["Orbital", "Planetside"] }
+              }
+            }
+          ]
         ],
         [
           96,
           100,
-          "Settlements in conflict",
-          {
-            "Object type": "Settlement",
-            "Number": 2,
-            "Attributes": { "Location": ["Orbital", "Planetside"] }
-          }
+          [
+            "Settlements in conflict",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Amount": 2,
+                "Attributes": { "Location": ["Orbital", "Planetside"] }
+              }
+            }
+          ]
         ]
       ]
     },
@@ -158,40 +196,56 @@
         [
           81,
           83,
-          "Orbital settlement",
-          {
-            "Object type": "Settlement",
-            "Attributes": { "Location": "Orbital" }
-          }
+          [
+            "Orbital settlement",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Attributes": { "Location": "Orbital" }
+              }
+            }
+          ]
         ],
         [
           84,
           93,
-          "Planetside settlement",
-          {
-            "Object type": "Settlement",
-            "Attributes": { "Location": "Planetside" }
-          }
+          [
+            "Planetside settlement",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Attributes": { "Location": "Planetside" }
+              }
+            }
+          ]
         ],
         [
           94,
           98,
-          "Multiple settlements",
-          {
-            "Object type": "Settlement",
-            "Number": 2,
-            "Attributes": { "Location": ["Orbital", "Planetside"] }
-          }
+          [
+            "Multiple settlements",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Amount": 2,
+                "Attributes": { "Location": ["Orbital", "Planetside"] }
+              }
+            }
+          ]
         ],
         [
           99,
           100,
-          "Settlements in conflict",
-          {
-            "Object type": "Settlement",
-            "Number": 2,
-            "Attributes": { "Location": ["Orbital", "Planetside"] }
-          }
+          [
+            "Settlements in conflict",
+            {
+              "Game object": {
+                "Object type": "Settlement",
+                "Amount": 2,
+                "Attributes": { "Location": ["Orbital", "Planetside"] }
+              }
+            }
+          ]
         ]
       ]
     }
@@ -212,20 +266,28 @@
       [
         89,
         98,
-        "▶️Descriptor + Focus",
         [
-          { "Category": "Core", "Oracle": "Descriptor" },
-          { "Category": "Core", "Oracle": "Focus" }
+          "▶️Descriptor + Focus",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
+            ]
+          }
         ]
       ],
       [
         99,
         100,
-        "▶️Precursor Vault (orbital)",
-        {
-          "Object type": "Precursor Vault",
-          "Attributes": { "Location": "Orbital" }
-        }
+        [
+          "▶️Precursor Vault (orbital)",
+          {
+            "Game object": {
+              "Object type": "Precursor Vault",
+              "Attributes": { "Location": "Orbital" }
+            }
+          }
+        ]
       ]
     ]
   },
@@ -249,20 +311,28 @@
       [
         92,
         98,
-        "▶️Descriptor + Focus",
         [
-          { "Category": "Core", "Oracle": "Descriptor" },
-          { "Category": "Core", "Oracle": "Focus" }
+          "▶️Descriptor + Focus",
+          {
+            "Oracles": [
+              { "Category": "Core", "Oracle": "Descriptor" },
+              { "Category": "Core", "Oracle": "Focus" }
+            ]
+          }
         ]
       ],
       [
         99,
         100,
-        "▶️Precursor Vault (planetside)",
-        {
-          "Object type": "Precursor Vault",
-          "Attributes": { "Location": "Planetside" }
-        }
+        [
+          "▶️Precursor Vault (planetside)",
+          {
+            "Game object": {
+              "Object type": "Precursor Vault",
+              "Attributes": { "Location": "Planetside" }
+            }
+          }
+        ]
       ]
     ]
   },

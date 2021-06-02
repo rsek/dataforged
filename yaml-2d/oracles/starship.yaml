@@ -138,7 +138,7 @@ Starship:
       - [57, 61, Reclaimer, Salvage or rescue]
       - [62, 64, Shuttle, Short-range transport]
       - [65, 67, Snub fighter, Small attack craft]
-      - [68, 82, Multipurpose, ▶️Starship Mission, *Starship_Mission]
+      - [68, 82, Multipurpose, *Starship_Mission]
       - [83, 84, Unusual or unknown]
       - [85, 94, ▶️Fleet]
       - [95, 100, Ships in conflict (Roll twice), *Starship]
@@ -156,7 +156,7 @@ Starship:
       - [51, 60, Settler caravan]
       - [61, 70, Trade caravan]
       - [71, 90, Transport and escorts]
-      - [91, 100, ▶️Starship Mission,*Starship_Mission]
+      - [91, 100, *Starship_Mission]
  
   Initial Contact:
     Initial: true
@@ -173,7 +173,7 @@ Starship:
       - [81, 85, In battle]
       - [86, 90, Unresponsive]
       - [91, 95, Destroyed]
-      - [96, 100, ▶️Derelict, *Derelict_starship]
+      - [96, 100, *tpl_Derelict_starship]
  
   First Look:
     Initial: true
@@ -201,7 +201,7 @@ Starship:
       - [81, 85, Scarred hull]
       - [86, 90, Built from scrap]
       - [91, 94, Towing or linked]
-      - [95, 100, ▶️Descriptor + Focus, *Descriptor_Focus] 
+      - [95, 100, *Descriptor+Focus] 
  
   Starship Mission:
     - Display name: Starship Mission - Terminus
@@ -209,9 +209,9 @@ Starship:
         Region: [Terminus]
       Tags: [fragment]
       Table:
-        - [1, 3, &sm00 Blockade a location]
+        - [1, 3, &sm00 Blockade a location, *suggestPlace]
         - [4, 6, &sm01 Break a blockade]
-        - [7, 9, &sm02 Collect a resource]
+        - [7, 9, &sm02 [Collect a resource, *suggestObject]]
         - [10, 11, &sm03 Command others]
         - [12, 14, &sm04 Conduct diplomacy]
         - [15, 17, &sm05 Conduct espionage]
@@ -220,26 +220,26 @@ Starship:
         - [24, 26, &sm08 Defend against an attack]
         - [27, 29, &sm09 Deliver messages or data]
         - [30, 32, &sm10 Establish a settlement]
-        - [33, 35, &sm11 Evacuate a location]
+        - [33, 35, &sm11 [Evacuate a location, *suggestSettlement]]
         - [36, 37, &sm12 Explore a region]
         - [38, 39, &sm13 Hold prisoners]
-        - [40, 42, &sm14 Hunt down another ship]
+        - [40, 42, &sm14 [Hunt down another ship, *suggestShip]]
         - [43, 45, &sm15 Launch an attack]
         - [46, 48, &sm16 Patrol an area]
         - [49, 51, &sm17 Provide medical aid]
         - [52, 54, &sm18 Provide repairs]
         - [55, 57, &sm19 Provide shelter]
-        - [58, 59, &sm20 Quarantine a danger]
-        - [60, 62, &sm21 Raid a settlement]
-        - [63, 65, &sm22 Resupply a settlement]
+        - [58, 59, &sm20 [Quarantine a danger, *suggestEvent]]
+        - [60, 62, &sm21 [Raid a settlement,*suggestSettlement]]
+        - [63, 65, &sm22 [Resupply a settlement,*suggestSettlement]]
         - [66, 68, &sm23 Retrieve salvage]
         - [69, 71, &sm24 Search and rescue]
-        - [72, 74, &sm25 Smuggle cargo]
-        - [75, 77, &sm26 Survey a site]
-        - [78, 79, &sm27 Test a technology]
-        - [80, 82, &sm28 Transport cargo]
+        - [72, 74, &sm25 [Smuggle cargo, *suggestObject]]
+        - [75, 77, &sm26 [Survey a site, *suggestPlace]]
+        - [78, 79, &sm27 [Test a technology, *suggestObject]]
+        - [80, 82, &sm28 [Transport cargo, *suggestObject]]
         - [83, 85, &sm29 Transport passengers]
-        - [86, 90, &sm30 ▶️Action + Theme, *Action_Theme] 
+        - [86, 90, &sm30 [*Action+Theme]] 
         - [91, 100, &sm31 Roll twice]
  
     - Display name: Starship Mission - Outlands
