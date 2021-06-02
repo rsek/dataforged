@@ -140,8 +140,9 @@ Starship:
       - [65, 67, Snub fighter, Small attack craft]
       - [68, 82, Multipurpose, *Starship_Mission]
       - [83, 84, Unusual or unknown]
-      - [85, 94, ▶️Fleet]
-      - [95, 100, Ships in conflict (Roll twice), *Starship]
+      - [85, 94, *Fleet]
+      - [95, 100, Ships in conflict (roll twice), *Starship]
+      # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
  
   Fleet:
     Tags: [noun]
@@ -239,8 +240,8 @@ Starship:
         - [78, 79, &sm27 [Test a technology, *suggestObject]]
         - [80, 82, &sm28 [Transport cargo, *suggestObject]]
         - [83, 85, &sm29 Transport passengers]
-        - [86, 90, &sm30 [*Action+Theme]] 
-        - [91, 100, &sm31 Roll twice]
+        - [86, 90, *Action+Theme] 
+        - [91, 100, *Roll_twice]
  
     - Display name: Starship Mission - Outlands
       Requires:
@@ -277,8 +278,8 @@ Starship:
         - [79, 80, *sm27]
         - [81, 83, *sm28]
         - [84, 85, *sm29]
-        - [86, 90, *sm30]
-        - [91, 100, *sm31]
+        - [86, 90, *Action+Theme]
+        - [91, 100, *Roll_twice]
  
     - Display name: Starship Mission - Expanse
       Requires:
@@ -315,8 +316,5 @@ Starship:
         - [78, 79, *sm27]
         - [80, 83, *sm28]
         - [84, 85, *sm29]
-        - [86, 90, *sm30]
-        - [91, 100, *sm31]
- 
-
-
+        - [86, 90, *Action+Theme]
+        - [91, 100, *Roll_twice]

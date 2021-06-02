@@ -49,8 +49,26 @@ _refs:
         "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air.",
       ]
   Multiple rolls:
-    - &Roll_twice Roll twice
-    - &Roll_three_times Roll three times
+    Roll twice: &Roll_twice
+      - Roll twice
+      - Multiple rolls:
+          Amount: 2
+          Allow duplicates: false
+    Roll three times: &Roll_three_times
+      - Roll three times
+      - Multiple rolls:
+          Amount: 3
+          Allow duplicates: false
+    Roll twice (rep ok): &Roll_twice_Rep_ok
+      - Roll twice
+      - Multiple rolls:
+          Amount: 2
+          Allow duplicates: true
+    Roll three times (rep ok): &Roll_three_times_Rep_ok
+      - Roll three times
+      - Multiple rolls:
+          Amount: 3
+          Allow duplicates: true
 
   Oracles:
     Starship Mission: &Starship_Mission
@@ -58,6 +76,11 @@ _refs:
       - Oracles:
           - Category: Starship
             Oracle: Mission
+    Fleet: &Fleet
+      - ▶️Fleet
+      - Oracles:
+          - Category: Starship
+            Oracle: Fleet
     Stellar Object: &Stellar_Object
       - ▶️Stellar Object
       - Oracles:
