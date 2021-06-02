@@ -30,8 +30,9 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
   * [x] ~~all-in-one oracle file~~
   * [x] ~~NPC entries from backer preview~~
   * [ ] make moves more programmatically accessible
-  * [ ] make assets more progrmmatically accessible
+  * [ ] make assets more programmatically accessible
   * [ ] data for move glossary entries from backer preview
+  * [ ] do proper schemas for everything
   * [ ] documentation of json keys and oracle meta-information
 
 
