@@ -1,7 +1,4 @@
-# rows common across various oracle;
-# YAML can't reference across files but
-# these could be used when merging all oracles
-# into a master file, which is probably the best way to distribute them anyways
+# references common across various oracle categories; all oracle files are concatencated to this before being converted to JSON.
 _refs:
   Planetary Class:
     - &Desert A pitiless planet of searing heat, blowing sand, and sunbaked rock.
@@ -24,6 +21,7 @@ _refs:
     - &Ruined "Time, disaster, or war have ravaged this place."
     - &Sacred The faithful worship inscrutable powers in this place.
   Atmosphere:
+    # this and many of the keys that follow contain arrays, because YAML has certain restrictions on what anchors can be used where. the end result is that the 2d rows must be flattened before conversion into row objects, which is less than ideal... but the real point of those 2d arrays is maintenance and readability, anyways, so it'd NBD.
     - &None_thin [
         None / thin,
         "This planet is airless, or it's atmosphere is so thin as to be useless for humans.",
@@ -199,6 +197,7 @@ _refs:
           Attributes: { Derelict type: Settlement }
 
   Oracle and object suggestions:
+    # 'non-canonical' suggestions for game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
     Planet: &suggestPlanet
       Suggest:
         - Game object:
@@ -256,7 +255,7 @@ _refs:
               Oracle: Action
             - Category: Core
               Oracle: Theme
-
+  # these are just simple strings at the moment, but if i do want to change them en masse, here they are
   Planet Life:
     - &life_None None
     - &life_Extinct Extinct
