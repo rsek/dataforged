@@ -1,81 +1,96 @@
 {
-  "_meta": {
-    "Name": "Chaotic",
-    "Display name": "Location Theme - Chaotic",
-    "Subcategory of": "Location Theme",
-    "Category": "Theme",
-    "Tags": ["oracles"],
-    "Description": "Reality is corrupted or warped in this place.",
-    "Requires": { "Theme Type": ["Chaotic"] },
-    "Source": { "Name": "Starforged Backer Preview", "Version": "050821" }
-  },
-  "Feature": {
-    "Tags": ["repeatable", "fragment"],
-    "Table": [
-      [1, 8, "Alterations in the flow of time"],
-      [9, 16, "Chaotic portal, focus, or conduit"],
-      [17, 24, "Corrupted or warped architecture or terrain"],
-      [25, 32, "Corrupted or warped environment or ecosystem"],
-      [33, 40, "Corrupted or warped technology"],
-      [41, 48, "Cryptic device harnesses or powers chaos"],
-      [49, 56, "Distortions of gravity or physics"],
-      [57, 64, "Energy field or barrier"],
-      [65, 72, "Glimpses of alternate realities"],
-      [73, 80, "Lifeforms mutated or altered by chaos"],
-      [81, 88, "Lifeforms spawned from chaos"],
-      [89, 96, "Visions of your past or future"],
-      [
-        97,
-        100,
+  "Name": "Chaotic",
+  "Display name": "Location Theme - Chaotic",
+  "Subcategory of": "Location Theme",
+  "Category": "Theme",
+  "Content type": "oracles",
+  "Description": "Reality is corrupted or warped in this place.",
+  "Requires": { "Theme Type": ["Chaotic"] },
+  "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+  "Oracles": [
+    {
+      "Name": "Feature",
+      "Repeatable": true,
+      "Semantics": { "Part of speech": "fragment" },
+      "Table": [
+        [1, 8, "Alterations in the flow of time"],
+        [9, 16, "Chaotic portal, focus, or conduit"],
+        [17, 24, "Corrupted or warped architecture or terrain"],
+        [25, 32, "Corrupted or warped environment or ecosystem"],
+        [33, 40, "Corrupted or warped technology"],
+        [41, 48, "Cryptic device harnesses or powers chaos"],
+        [49, 56, "Distortions of gravity or physics"],
+        [57, 64, "Energy field or barrier"],
+        [65, 72, "Glimpses of alternate realities"],
+        [73, 80, "Lifeforms mutated or altered by chaos"],
+        [81, 88, "Lifeforms spawned from chaos"],
+        [89, 96, "Visions of your past or future"],
         [
-          "▶️Descriptor + Focus",
-          {
-            "Oracles": [
-              { "Category": "Core", "Oracle": "Descriptor" },
-              { "Category": "Core", "Oracle": "Focus" }
-            ]
-          }
+          97,
+          100,
+          [
+            "▶️Descriptor + Focus",
+            {
+              "Oracles": [
+                { "Category": "Core", "Name": "Descriptor" },
+                { "Category": "Core", "Name": "Focus" }
+              ]
+            }
+          ]
         ]
       ]
-    ]
-  },
-  "Peril": {
-    "Tags": ["repeatable", "fragment"],
-    "Table": [
-      [1, 9, "Chaos makes its mark upon you"],
-      [10, 18, "Chaos spreads or intensifies"],
-      [19, 27, "Chaos tempts or lures you"],
-      [28, 36, "Chaotic energies block the path or assail you"],
-      [37, 45, "Disorienting changes in time or location"],
-      [46, 54, "Dreadful scene of those who fell prey to chaos"],
-      [55, 63, "Equipment is made unstable or dangerous"],
-      [64, 72, "Foes harness or wield chaos"],
-      [73, 81, "Hazardous environmental changes"],
-      [82, 90, "Lifeforms made hostile by chaos"],
-      [
-        91,
-        98,
+    },
+    {
+      "Name": "Peril",
+      "Oracle type": "peril",
+      "Repeatable": true,
+      "Semantics": { "Part of speech": "fragment" },
+      "Table": [
+        [1, 9, "Chaos makes its mark upon you"],
+        [10, 18, "Chaos spreads or intensifies"],
+        [19, 27, "Chaos tempts or lures you"],
+        [28, 36, "Chaotic energies block the path or assail you"],
+        [37, 45, "Disorienting changes in time or location"],
+        [46, 54, "Dreadful scene of those who fell prey to chaos"],
+        [55, 63, "Equipment is made unstable or dangerous"],
+        [64, 72, "Foes harness or wield chaos"],
+        [73, 81, "Hazardous environmental changes"],
+        [82, 90, "Lifeforms made hostile by chaos"],
         [
-          "▶️Action + Theme",
-          {
-            "Oracles": [
-              { "Category": "Core", "Oracle": "Action" },
-              { "Category": "Core", "Oracle": "Theme" }
-            ]
-          }
+          91,
+          98,
+          [
+            "▶️Action + Theme",
+            {
+              "Oracles": [
+                { "Category": "Core", "Name": "Action" },
+                { "Category": "Core", "Name": "Theme" }
+              ]
+            }
+          ]
+        ],
+        [
+          99,
+          100,
+          [
+            "Roll twice",
+            { "Multiple rolls": { "Amount": 2, "Allow duplicates": false } }
+          ]
         ]
-      ],
-      [99, 100, "Roll twice"]
-    ]
-  },
-  "Opportunity": {
-    "Tags": ["repeatable", "fragment"],
-    "Table": [
-      [1, 20, "Chaos ebbs or withdraws for a time"],
-      [21, 40, "Chaos empowers you with strange but useful abilities"],
-      [41, 60, "Chaos manifests as comforting or inspiring visions"],
-      [61, 80, "Chaotic changes hamper your foes"],
-      [81, 100, "Insight into the source or nature of the chaos"]
-    ]
-  }
+      ]
+    },
+    {
+      "Name": "Opportunity",
+      "Oracle type": "opportunity",
+      "Repeatable": true,
+      "Semantics": { "Part of speech": "fragment" },
+      "Table": [
+        [1, 20, "Chaos ebbs or withdraws for a time"],
+        [21, 40, "Chaos empowers you with strange but useful abilities"],
+        [41, 60, "Chaos manifests as comforting or inspiring visions"],
+        [61, 80, "Chaotic changes hamper your foes"],
+        [81, 100, "Insight into the source or nature of the chaos"]
+      ]
+    }
+  ]
 }

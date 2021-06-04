@@ -1,122 +1,128 @@
 Grave World:
-  _meta:
-    Name: Grave World
-    Aliases: [Grave]
-    Description: *Grave
-    Tags: [oracles, template, location]
-    Subcategory of: Planet
-    Category: Planetary Class
-    Requires:
-      Planetary Class: [Grave World]
-    Source:
-      Name: Starforged Backer Preview
-      Version: "050821"
-    Thumbnail: "https://i.imgur.com/88R1WP1.png"
-    Inherits:
-      - From: Planet
-        Oracles: [Peril, Opportunity]
-    Sample Names:
-      - Anubis
-      - Banshee
-      - Barrow
-      - Cairn
-      - Cerberus
-      - Charon
-      - Elysia
-      - Keen
-      - Kur
-      - Lament
-      - Mantus
-      - Morrigan
-      - Mourn
-      - Necropolis
-      - Orcus
-      - Osiris
-      - Requim
-      - Stygia
-      - Tartarus
-      - Thrace
-  Atmosphere:
-    Initial: true
-    Table:
-      - [1, 10, *None_thin]
-      - [11, 45, *Toxic]
-      - [46, 70, *Corrosive]
-      - [71, 90, *Marginal]
-      - [91, 100, *Breathable]
- 
-  Settlements:
-    - Initial: true
-      Display name: Settlements - Terminus
-      Requires:
-        Region: [Terminus]
+  Name: Grave World
+  Aliases: [Grave]
+  Description: *Grave
+  Content type: oracles
+  Templates:
+    - Name: Grave World
+      Roles: [place]
+  Subcategory of: Planet
+  Category: Planetary Class
+  Requires:
+    Planetary Class: [Grave World]
+  Source:
+    Name: Starforged Backer Preview
+    Version: "050821"
+  Thumbnail: "https://i.imgur.com/88R1WP1.png"
+  Inherits:
+    - From: Planet
+      Oracles: [Peril, Opportunity]
+  Sample Names:
+    - Anubis
+    - Banshee
+    - Barrow
+    - Cairn
+    - Cerberus
+    - Charon
+    - Elysia
+    - Keen
+    - Kur
+    - Lament
+    - Mantus
+    - Morrigan
+    - Mourn
+    - Necropolis
+    - Orcus
+    - Osiris
+    - Requim
+    - Stygia
+    - Tartarus
+    - Thrace
+  Oracles:
+    - Name: Atmosphere
+      Initial: true
       Table:
-        - [1, 80, None]
-        - [81, 90, *Orbital_settlement]
-        - [91, 95, *Planetside_settlement]
-        - [96, 98, *Multiple_settlements]
-        - [99, 100, *Settlements_in_conflict]
- 
-    - Initial: true
-      Display name: Settlements - Outlands
-      Requires:
-        Region: [Outlands]
+        - [1, 10, *None_thin]
+        - [11, 45, *Toxic]
+        - [46, 70, *Corrosive]
+        - [71, 90, *Marginal]
+        - [91, 100, *Breathable]
+   
+    - Name: Settlements
+      Tables:
+        - Initial: true
+          Display name: Settlements - Terminus
+          Requires:
+            Region: [Terminus]
+          Table:
+            - [1, 80, None]
+            - [81, 90, *Orbital_settlement]
+            - [91, 95, *Planetside_settlement]
+            - [96, 98, *Multiple_settlements]
+            - [99, 100, *Settlements_in_conflict]
+    
+        - Initial: true
+          Display name: Settlements - Outlands
+          Requires:
+            Region: [Outlands]
+          Table:
+            - [1, 90, None]
+            - [91, 97, *Orbital_settlement]
+            - [98, 100, *Planetside_settlement]
+    
+        - Initial: true
+          Display name: Settlements - Expanse
+          Requires:
+            Region: [Expanse]
+          Table:
+            - [1, 95, None]
+            - [96, 98, *Orbital_settlement]
+            - [99, 100, *Planetside_settlement]
+   
+    - Name: Observed From Space
+      Initial: true
+      Semantics:
+        Part of speech: fragment
+      Max rolls: 2
       Table:
-        - [1, 90, None]
-        - [91, 97, *Orbital_settlement]
-        - [98, 100, *Planetside_settlement]
- 
-    - Initial: true
-      Display name: Settlements - Expanse
-      Requires:
-        Region: [Expanse]
+        - [1, 11, Broken moon]
+        - [12, 22, Cratered surface]
+        - [23, 33, Dry seabeds]
+        - [34, 44, Irradiated atmosphere]
+        - [45, 55, Orbiting ship graveyard,*suggestDerelictStarship]
+        - [56, 66, Perpetual overcast]
+        - [67, 77, Sky-breaching ruins, *suggestDerelictSettlement]
+        - [78, 88, Vast wastelands]
+        - [89, 98, *Descriptor+Focus] 
+        - [99, 100, *Vault_orbital]
+   
+    - Name: Planetside Feature
+      Semantics:
+        Part of speech: fragment
+      Max rolls: 2
       Table:
-        - [1, 95, None]
-        - [96, 98, *Orbital_settlement]
-        - [99, 100, *Planetside_settlement]
- 
-  Observed From Space:
-    Initial: true
-    Tags: [fragment]
-    Max rolls: 2
-    Table:
-      - [1, 11, Broken moon]
-      - [12, 22, Cratered surface]
-      - [23, 33, Dry seabeds]
-      - [34, 44, Irradiated atmosphere]
-      - [45, 55, Orbiting ship graveyard,*suggestDerelictStarship]
-      - [56, 66, Perpetual overcast]
-      - [67, 77, Sky-breaching ruins, *suggestDerelictSettlement]
-      - [78, 88, Vast wastelands]
-      - [89, 98, *Descriptor+Focus] 
-      - [99, 100, *Vault_orbital]
- 
-  Planetside Feature:
-    Tags: [fragment]
-    Max rolls: 2
-    Table:
-      - [1, 7, Acid pools]
-      - [8, 14, Ash dunes]
-      - [15, 21, Corrosive rains]
-      - [22, 28, Dead forests]
-      - [29, 35, Fetid mudflats]
-      - [36, 42, Mass graves]
-      - [43, 49, Moldering bones]
-      - [50, 56, Noxious fog]
-      - [57, 63, Radioactive hotspots]
-      - [64, 70, Ravaged cities, *suggestDerelictSettlement]
-      - [71, 77, Scarred battlefields]
-      - [78, 84, Ship graveyards, *suggestDerelictStarship]
-      - [85, 91, Whispers of the dead]
-      - [92, 98, *Descriptor+Focus] 
-      - [99, 100, *Vault_planetside]
- 
-  Life:
-    Table:
-      - [1, 25, None]
-      - [26, 85, Extinct]
-      - [86, 95, Simple]
-      - [96, 100, Sparse]
- 
-
-
+        - [1, 7, Acid pools]
+        - [8, 14, Ash dunes]
+        - [15, 21, Corrosive rains]
+        - [22, 28, Dead forests]
+        - [29, 35, Fetid mudflats]
+        - [36, 42, Mass graves]
+        - [43, 49, Moldering bones]
+        - [50, 56, Noxious fog]
+        - [57, 63, Radioactive hotspots]
+        - [64, 70, Ravaged cities, *suggestDerelictSettlement]
+        - [71, 77, Scarred battlefields]
+        - [78, 84, Ship graveyards, *suggestDerelictStarship]
+        - [85, 91, Whispers of the dead]
+        - [92, 98, *Descriptor+Focus] 
+        - [99, 100, *Vault_planetside]
+   
+    - Name: Life
+      Table:
+        - [1, 25, None]
+        - [26, 85, Extinct]
+        - [86, 95, Simple]
+        - [96, 100, Sparse]
+   
+  
+  

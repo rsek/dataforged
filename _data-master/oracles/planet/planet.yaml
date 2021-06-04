@@ -1,175 +1,188 @@
 Planet:
-  _meta:
-    Name: Planet
-    Aliases: [World]
-    Tags: [oracles, template, location]
-    Subcategories:
-      - Desert World
-      - Furnace World
-      - Grave World
-      - Ice World
-      - Jovian World
-      - Jungle World
-      - Ocean World
-      - Rocky World
-      - Shattered World
-      - Tainted World
-      - Vital World
-    Source:
-      Name: Starforged Backer Preview
-      Version: "050821"
-    Inherits:
-      - From: Space
-        Oracles: [Stellar Object]
-  Planetary Class:
-    Initial: true
-    Table:
-      - [1, 15, ▶️Desert World, *Desert]
-      - [16, 30, ▶️Furnace World, *Furnace]
-      - [31, 35, ▶️Grave World, *Grave]
-      - [36, 50, ▶️Ice World, *Ice]
-      - [51, 65, ▶️Jovian World, *Jovian]
-      - [66, 70, ▶️Jungle World, *Jungle]
-      - [71, 75, ▶️Ocean World, *Ocean]
-      - [76, 90, ▶️Rocky World, *Rocky]
-      - [91, 92, ▶️Shattered World, *Shattered]
-      - [93, 98, ▶️Tainted World, *Tainted]
-      - [99, 100, ▶️Vital World, *Vital]
- 
-  Peril:
-    - Display name: Planetside Peril - Lifebearing
-      Tags: [repeatable, fragment]
-      Requires:
-        Location: [Planetside]
-        Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
+  Name: Planet
+  Aliases: [World]
+  Content type: oracles
+  Subcategories:
+    - Desert World
+    - Furnace World
+    - Grave World
+    - Ice World
+    - Jovian World
+    - Jungle World
+    - Ocean World
+    - Rocky World
+    - Shattered World
+    - Tainted World
+    - Vital World
+  Source:
+    Name: Starforged Backer Preview
+    Version: "050821"
+  Inherits:
+    - From: Space
+      Oracles: [Stellar Object]
+  Oracles:
+    - Name: Planetary Class
+      Initial: true
       Table:
-        - [1, 3, Corrupted or mutated lifeform, *suggestCreature]
-        - [4, 6, Signs of a lifeform's power or cunning, *suggestCreature]
-        - [7, 9, Hazardous plant life or malignant spores]
-        - [10, 12, Lifeform hunts for prey, *suggestCreature]
-        - [13, 15, Lifeform lairs here, *suggestCreature]
-        - [16, 18, Lifeforms guided by a greater threat, *suggestCreature]
-        - [19, 21, Lifeforms spooked or stampeding, *suggestCreature]
-        - [22, 24, Threatening lifeform draws near, *suggestCreature]
-        - [25, 27, &pPeril00 [Life is revealed or takes an unexpected form, *suggestCreature]]
-        - [28, 30, &pPeril01 Blocked or impassible path]
-        - [31, 33, &pPeril02 Corrosive substance or environment]
-        - [34, 36, &pPeril03 Disturbing remains or evidence of death]
-        - [37, 39, &pPeril04 Drastic environmental change]
-        - [40, 42, &pPeril05 Enemy holds this area]
-        - [43, 45, &pPeril06 Entangling or engulfing hazard]
-        - [46, 48, &pPeril07 Equipment fails or malfunctions]
-        - [49, 51, &pPeril08 Guarded or patrolled path]
-        - [52, 54, &pPeril09 Led astray]
-        - [55, 57, &pPeril10 Lost the path]
-        - [58, 60, &pPeril11 Meteorites fall from the sky]
-        - [61, 63, &pPeril12 Radiated area or object]
-        - [64, 66, &pPeril13 Realization that something was left behind]
-        - [67, 69, &pPeril14 Seismic or volcanic upheaval]
-        - [70, 72, &pPeril15 Signs of a lurking or trailing foe]
-        - [73, 75, &pPeril16 Storm or atmospheric disruption]
-        - [76, 78, &pPeril17 Toxic or sickening environment]
-        - [79, 81, &pPeril18 Trap or alarm]
-        - [82, 84, &pPeril19 Treacherous or arduous path]
-        - [85, 87, &pPeril20 Troubling visions or apparitions]
-        - [88, 90, &pPeril21 Visibility hindered by atmospheric effects]
-        - [91, 93, &pPeril22 [Worrying arrival of a ship or vehicle, *suggestShip]]
-        - [94, 96, &pPeril23 Wreckage or ruins portend a new threat]
-        - [97, 99, *Action+Theme] 
-        - [100, 100, &pPeril25 Roll twice]
- 
-    - Display name: Planetside Peril - Lifeless
-      Tags: [repeatable, fragment]
-      Requires:
-        Location: [Planetside]
-        Life: [Lifeless, None, Extinct]
-      Table:
-        - [1, 3, *pPeril00 ]
-        - [4, 7, *pPeril01 ]
-        - [8, 11, *pPeril02 ]
-        - [12, 15, *pPeril03 ]
-        - [16, 19, *pPeril04 ]
-        - [20, 23, *pPeril05 ]
-        - [24, 27, *pPeril06 ]
-        - [28, 31, *pPeril07 ]
-        - [32, 35, *pPeril08 ]
-        - [36, 39, *pPeril09 ]
-        - [40, 43, *pPeril10 ]
-        - [44, 47, *pPeril11 ]
-        - [48, 51, *pPeril12 ]
-        - [52, 55, *pPeril13 ]
-        - [56, 59, *pPeril14 ]
-        - [60, 63, *pPeril15 ]
-        - [64, 67, *pPeril16 ]
-        - [68, 71, *pPeril17 ]
-        - [72, 75, *pPeril18 ]
-        - [76, 79, *pPeril19 ]
-        - [80, 83, *pPeril20 ]
-        - [84, 87, *pPeril21 ]
-        - [88, 91, *pPeril22 ]
-        - [92, 95, *pPeril23 ]
-        - [96, 99, *Action+Theme]
-        - [100, 100, *pPeril25 ]
- 
-  Opportunity:
-    - Display name: Planetside Opportunity - Lifebearing
-      Tags: [repeatable, opportunity, fragment]
-      Requires:
-        Location: [Planetside]
-        Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
-      Table:
-        - [1, 4, Clue to a lifeform's nature or vulnerabilities, *suggestCreature]
-        - [5, 8, Friendly interaction with a benign lifeform, *suggestCreature]
-        - [9, 12, Hunting or foraging opportunities are plentiful]
-        - [13, 16, Interesting or helpful aspect of benign creatures, *suggestCreature]
-        - [17, 20, Interesting or helpful aspect of local plant life]
-        - [21, 24, &pOpp00 [Encounter reveals unexpected benign lifeforms, *suggestCreature]]
-        - [25, 28, &pOpp01 [Abandoned camp or vehicle, *suggestObject]]
-        - [29, 32, &pOpp02 Advance warning of an environmental threat]
-        - [33, 36, &pOpp03 Clear path through otherwise perilous terrain]
-        - [37, 40, &pOpp04 Clue offers insight into a current quest or mystery]
-        - [41, 44, &pOpp05 Clue to the history or nature of this place]
-        - [45, 48, &pOpp06 Evidence that others have passed this way]
-        - [49, 52, &pOpp07 Foe reveals themselves or tips their hand]
-        - [53, 56, &pOpp08 Fortuitous change in the weather or atmosphere]
-        - [57, 60, &pOpp09 Friendly traveler crosses your path]
-        - [61, 64, &pOpp10 [Helpful resource is in ample supply, *suggestObject]]
-        - [65, 68, &pOpp11 Impressive vista offers comfort or inspiration]
-        - [69, 72, &pOpp12 [Interesting artifact or device, *suggestObject]]
-        - [73, 76, &pOpp13 [Interesting site offers opportunities for exploration, *suggestObject]]
-        - [77, 80, &pOpp14 Moment of fellowship or inner peace]
-        - [81, 84, &pOpp15 "Opening to distract, escape, or avoid foes"]
-        - [85, 88, &pOpp16 Opening to get the drop on a foe]
-        - [89, 92, &pOpp17 Plea for help from a potential benefactor]
-        - [93, 96, &pOpp18 ["Refuge offers a place to hide, plan, or recover", *suggestObject]]
-        - [97, 100, &pOpp19 Vantage point reveals the lay of the land]
- 
-    - Display name: Planetside Opportunity - Lifeless
-      Tags: [repeatable, fragment]
-      Requires:
-        Location: [Planetside]
-        Life: [Lifeless, None, Extinct]
-      Table:
-        - [1, 5, *pOpp00] 
-        - [6, 10, *pOpp01] 
-        - [11, 15, *pOpp02] 
-        - [16, 20, *pOpp03] 
-        - [21, 25, *pOpp04]
-        - [26, 30, *pOpp05] 
-        - [31, 35, *pOpp06] 
-        - [36, 40, *pOpp07] 
-        - [41, 45, *pOpp08] 
-        - [46, 50, *pOpp09] 
-        - [51, 55, *pOpp10] 
-        - [56, 60, *pOpp11] 
-        - [61, 65, *pOpp12] 
-        - [66, 70, *pOpp13]
-        - [71, 75, *pOpp14] 
-        - [76, 80, *pOpp15] 
-        - [81, 85, *pOpp16] 
-        - [86, 90, *pOpp17] 
-        - [91, 95, *pOpp18] 
-        - [96, 100, *pOpp19] 
- 
-
-
+        - [1, 15, ▶️Desert World, *Desert]
+        - [16, 30, ▶️Furnace World, *Furnace]
+        - [31, 35, ▶️Grave World, *Grave]
+        - [36, 50, ▶️Ice World, *Ice]
+        - [51, 65, ▶️Jovian World, *Jovian]
+        - [66, 70, ▶️Jungle World, *Jungle]
+        - [71, 75, ▶️Ocean World, *Ocean]
+        - [76, 90, ▶️Rocky World, *Rocky]
+        - [91, 92, ▶️Shattered World, *Shattered]
+        - [93, 98, ▶️Tainted World, *Tainted]
+        - [99, 100, ▶️Vital World, *Vital]
+   
+    - Name: Peril
+      Oracle type: peril
+      Tables:
+        - Display name: Planetside Peril - Lifebearing
+          Repeatable: true
+          Semantics:
+            Part of speech: fragment
+          Requires:
+            Location: [Planetside]
+            Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
+          Table:
+            - [1, 3, Corrupted or mutated lifeform, *suggestCreature]
+            - [4, 6, Signs of a lifeform's power or cunning, *suggestCreature]
+            - [7, 9, Hazardous plant life or malignant spores]
+            - [10, 12, Lifeform hunts for prey, *suggestCreature]
+            - [13, 15, Lifeform lairs here, *suggestCreature]
+            - [16, 18, Lifeforms guided by a greater threat, *suggestCreature]
+            - [19, 21, Lifeforms spooked or stampeding, *suggestCreature]
+            - [22, 24, Threatening lifeform draws near, *suggestCreature]
+            - [25, 27, &pPeril00 [Life is revealed or takes an unexpected form, *suggestCreature]]
+            - [28, 30, &pPeril01 Blocked or impassible path]
+            - [31, 33, &pPeril02 Corrosive substance or environment]
+            - [34, 36, &pPeril03 Disturbing remains or evidence of death]
+            - [37, 39, &pPeril04 Drastic environmental change]
+            - [40, 42, &pPeril05 Enemy holds this area]
+            - [43, 45, &pPeril06 Entangling or engulfing hazard]
+            - [46, 48, &pPeril07 Equipment fails or malfunctions]
+            - [49, 51, &pPeril08 Guarded or patrolled path]
+            - [52, 54, &pPeril09 Led astray]
+            - [55, 57, &pPeril10 Lost the path]
+            - [58, 60, &pPeril11 Meteorites fall from the sky]
+            - [61, 63, &pPeril12 Radiated area or object]
+            - [64, 66, &pPeril13 Realization that something was left behind]
+            - [67, 69, &pPeril14 Seismic or volcanic upheaval]
+            - [70, 72, &pPeril15 Signs of a lurking or trailing foe]
+            - [73, 75, &pPeril16 Storm or atmospheric disruption]
+            - [76, 78, &pPeril17 Toxic or sickening environment]
+            - [79, 81, &pPeril18 Trap or alarm]
+            - [82, 84, &pPeril19 Treacherous or arduous path]
+            - [85, 87, &pPeril20 Troubling visions or apparitions]
+            - [88, 90, &pPeril21 Visibility hindered by atmospheric effects]
+            - [91, 93, &pPeril22 [Worrying arrival of a ship or vehicle, *suggestShip]]
+            - [94, 96, &pPeril23 Wreckage or ruins portend a new threat]
+            - [97, 99, *Action+Theme] 
+            - [100, 100, *Roll_twice]
+  
+        - Display name: Planetside Peril - Lifeless
+          Repeatable: true
+          Semantics:
+            Part of speech: fragment
+          Requires:
+            Location: [Planetside]
+            Life: [Lifeless, None, Extinct]
+          Table:
+            - [1, 3, *pPeril00 ]
+            - [4, 7, *pPeril01 ]
+            - [8, 11, *pPeril02 ]
+            - [12, 15, *pPeril03 ]
+            - [16, 19, *pPeril04 ]
+            - [20, 23, *pPeril05 ]
+            - [24, 27, *pPeril06 ]
+            - [28, 31, *pPeril07 ]
+            - [32, 35, *pPeril08 ]
+            - [36, 39, *pPeril09 ]
+            - [40, 43, *pPeril10 ]
+            - [44, 47, *pPeril11 ]
+            - [48, 51, *pPeril12 ]
+            - [52, 55, *pPeril13 ]
+            - [56, 59, *pPeril14 ]
+            - [60, 63, *pPeril15 ]
+            - [64, 67, *pPeril16 ]
+            - [68, 71, *pPeril17 ]
+            - [72, 75, *pPeril18 ]
+            - [76, 79, *pPeril19 ]
+            - [80, 83, *pPeril20 ]
+            - [84, 87, *pPeril21 ]
+            - [88, 91, *pPeril22 ]
+            - [92, 95, *pPeril23 ]
+            - [96, 99, *Action+Theme]
+            - [100, 100, *Roll_twice]
+  
+    - Name: Opportunity
+      Oracle type: opportunity
+      Tables:
+        - Display name: Planetside Opportunity - Lifebearing
+          Repeatable: true
+          Oracle type: opportunity
+          Semantics:
+            Part of speech: fragment
+          Requires:
+            Location: [Planetside]
+            Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
+          Table:
+            - [1, 4, Clue to a lifeform's nature or vulnerabilities, *suggestCreature]
+            - [5, 8, Friendly interaction with a benign lifeform, *suggestCreature]
+            - [9, 12, Hunting or foraging opportunities are plentiful]
+            - [13, 16, Interesting or helpful aspect of benign creatures, *suggestCreature]
+            - [17, 20, Interesting or helpful aspect of local plant life]
+            - [21, 24, &pOpp00 [Encounter reveals unexpected benign lifeforms, *suggestCreature]]
+            - [25, 28, &pOpp01 [Abandoned camp or vehicle, *suggestObject]]
+            - [29, 32, &pOpp02 Advance warning of an environmental threat]
+            - [33, 36, &pOpp03 Clear path through otherwise perilous terrain]
+            - [37, 40, &pOpp04 Clue offers insight into a current quest or mystery]
+            - [41, 44, &pOpp05 Clue to the history or nature of this place]
+            - [45, 48, &pOpp06 Evidence that others have passed this way]
+            - [49, 52, &pOpp07 Foe reveals themselves or tips their hand]
+            - [53, 56, &pOpp08 Fortuitous change in the weather or atmosphere]
+            - [57, 60, &pOpp09 Friendly traveler crosses your path]
+            - [61, 64, &pOpp10 [Helpful resource is in ample supply, *suggestObject]]
+            - [65, 68, &pOpp11 Impressive vista offers comfort or inspiration]
+            - [69, 72, &pOpp12 [Interesting artifact or device, *suggestObject]]
+            - [73, 76, &pOpp13 [Interesting site offers opportunities for exploration, *suggestObject]]
+            - [77, 80, &pOpp14 Moment of fellowship or inner peace]
+            - [81, 84, &pOpp15 "Opening to distract, escape, or avoid foes"]
+            - [85, 88, &pOpp16 Opening to get the drop on a foe]
+            - [89, 92, &pOpp17 [Plea for help from a potential benefactor, *suggestNpc]]
+            - [93, 96, &pOpp18 ["Refuge offers a place to hide, plan, or recover", *suggestObject]]
+            - [97, 100, &pOpp19 [Vantage point reveals the lay of the land, *suggestObject]]
+  
+        - Display name: Planetside Opportunity - Lifeless
+          Repeatable: true
+          Semantics:
+            Part of speech: fragment
+          Requires:
+            Location: [Planetside]
+            Life: [Lifeless, None, Extinct]
+          Table:
+            - [1, 5, *pOpp00] 
+            - [6, 10, *pOpp01] 
+            - [11, 15, *pOpp02] 
+            - [16, 20, *pOpp03] 
+            - [21, 25, *pOpp04]
+            - [26, 30, *pOpp05] 
+            - [31, 35, *pOpp06] 
+            - [36, 40, *pOpp07] 
+            - [41, 45, *pOpp08] 
+            - [46, 50, *pOpp09] 
+            - [51, 55, *pOpp10] 
+            - [56, 60, *pOpp11] 
+            - [61, 65, *pOpp12] 
+            - [66, 70, *pOpp13]
+            - [71, 75, *pOpp14] 
+            - [76, 80, *pOpp15] 
+            - [81, 85, *pOpp16] 
+            - [86, 90, *pOpp17] 
+            - [91, 95, *pOpp18] 
+            - [96, 100, *pOpp19] 
+  
+  
+  

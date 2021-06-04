@@ -1,127 +1,271 @@
 {
-  "_meta": {
-    "Name": "Grave World",
-    "Aliases": ["Grave"],
-    "Description": "A once-thriving world—now a grim monument to a fallen civilization.",
-    "Tags": ["oracles", "template", "location"],
-    "Subcategory of": "Planet",
-    "Category": "Planetary Class",
-    "Requires": { "Planetary Class": ["Grave World"] },
-    "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
-    "Thumbnail": "https://i.imgur.com/88R1WP1.png",
-    "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
-    "Sample Names": [
-      "Anubis",
-      "Banshee",
-      "Barrow",
-      "Cairn",
-      "Cerberus",
-      "Charon",
-      "Elysia",
-      "Keen",
-      "Kur",
-      "Lament",
-      "Mantus",
-      "Morrigan",
-      "Mourn",
-      "Necropolis",
-      "Orcus",
-      "Osiris",
-      "Requim",
-      "Stygia",
-      "Tartarus",
-      "Thrace"
-    ]
-  },
-  "Atmosphere": {
-    "Initial": true,
-    "Table": [
-      [
-        1,
-        10,
-        [
-          "None / thin",
-          "This planet is airless, or it's atmosphere is so thin as to be useless for humans."
-        ]
-      ],
-      [
-        11,
-        45,
-        [
-          "Toxic",
-          "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes."
-        ]
-      ],
-      [
-        46,
-        70,
-        [
-          "Corrosive",
-          "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time."
-        ]
-      ],
-      [
-        71,
-        90,
-        [
-          "Marginal",
-          "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
-        ]
-      ],
-      [
-        91,
-        100,
-        [
-          "Breathable",
-          "This atmosphere is not perfect, but it's good enough to sustain human life."
-        ]
-      ]
-    ]
-  },
-  "Settlements": [
+  "Name": "Grave World",
+  "Aliases": ["Grave"],
+  "Description": "A once-thriving world—now a grim monument to a fallen civilization.",
+  "Content type": "oracles",
+  "Templates": [{ "Name": "Grave World", "Roles": ["place"] }],
+  "Subcategory of": "Planet",
+  "Category": "Planetary Class",
+  "Requires": { "Planetary Class": ["Grave World"] },
+  "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+  "Thumbnail": "https://i.imgur.com/88R1WP1.png",
+  "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+  "Sample Names": [
+    "Anubis",
+    "Banshee",
+    "Barrow",
+    "Cairn",
+    "Cerberus",
+    "Charon",
+    "Elysia",
+    "Keen",
+    "Kur",
+    "Lament",
+    "Mantus",
+    "Morrigan",
+    "Mourn",
+    "Necropolis",
+    "Orcus",
+    "Osiris",
+    "Requim",
+    "Stygia",
+    "Tartarus",
+    "Thrace"
+  ],
+  "Oracles": [
     {
+      "Name": "Atmosphere",
       "Initial": true,
-      "Display name": "Settlements - Terminus",
-      "Requires": { "Region": ["Terminus"] },
       "Table": [
-        [1, 80, "None"],
         [
-          81,
+          1,
+          10,
+          [
+            "None / thin",
+            "This planet is airless, or it's atmosphere is so thin as to be useless for humans."
+          ]
+        ],
+        [
+          11,
+          45,
+          [
+            "Toxic",
+            "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes."
+          ]
+        ],
+        [
+          46,
+          70,
+          [
+            "Corrosive",
+            "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time."
+          ]
+        ],
+        [
+          71,
           90,
           [
-            "Orbital settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Orbital" }
-              }
-            }
+            "Marginal",
+            "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
           ]
         ],
         [
           91,
-          95,
+          100,
           [
-            "Planetside settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Planetside" }
-              }
-            }
+            "Breathable",
+            "This atmosphere is not perfect, but it's good enough to sustain human life."
           ]
-        ],
+        ]
+      ]
+    },
+    {
+      "Name": "Settlements",
+      "Tables": [
+        {
+          "Initial": true,
+          "Display name": "Settlements - Terminus",
+          "Requires": { "Region": ["Terminus"] },
+          "Table": [
+            [1, 80, "None"],
+            [
+              81,
+              90,
+              [
+                "Orbital settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Orbital" }
+                  }
+                }
+              ]
+            ],
+            [
+              91,
+              95,
+              [
+                "Planetside settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Planetside" }
+                  }
+                }
+              ]
+            ],
+            [
+              96,
+              98,
+              [
+                "Multiple settlements",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Amount": 2,
+                    "Attributes": { "Location": ["Orbital", "Planetside"] }
+                  }
+                }
+              ]
+            ],
+            [
+              99,
+              100,
+              [
+                "Settlements in conflict",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Amount": 2,
+                    "Attributes": { "Location": ["Orbital", "Planetside"] }
+                  }
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "Initial": true,
+          "Display name": "Settlements - Outlands",
+          "Requires": { "Region": ["Outlands"] },
+          "Table": [
+            [1, 90, "None"],
+            [
+              91,
+              97,
+              [
+                "Orbital settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Orbital" }
+                  }
+                }
+              ]
+            ],
+            [
+              98,
+              100,
+              [
+                "Planetside settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Planetside" }
+                  }
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "Initial": true,
+          "Display name": "Settlements - Expanse",
+          "Requires": { "Region": ["Expanse"] },
+          "Table": [
+            [1, 95, "None"],
+            [
+              96,
+              98,
+              [
+                "Orbital settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Orbital" }
+                  }
+                }
+              ]
+            ],
+            [
+              99,
+              100,
+              [
+                "Planetside settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Planetside" }
+                  }
+                }
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Observed From Space",
+      "Initial": true,
+      "Semantics": { "Part of speech": "fragment" },
+      "Max rolls": 2,
+      "Table": [
+        [1, 11, "Broken moon"],
+        [12, 22, "Cratered surface"],
+        [23, 33, "Dry seabeds"],
+        [34, 44, "Irradiated atmosphere"],
         [
-          96,
+          45,
+          55,
+          "Orbiting ship graveyard",
+          {
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Derelict",
+                  "Attributes": { "Derelict type": "Starship" }
+                }
+              }
+            ]
+          }
+        ],
+        [56, 66, "Perpetual overcast"],
+        [
+          67,
+          77,
+          "Sky-breaching ruins",
+          {
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Derelict",
+                  "Attributes": { "Derelict type": "Settlement" }
+                }
+              }
+            ]
+          }
+        ],
+        [78, 88, "Vast wastelands"],
+        [
+          89,
           98,
           [
-            "Multiple settlements",
+            "▶️Descriptor + Focus",
             {
-              "Game object": {
-                "Object type": "Settlement",
-                "Amount": 2,
-                "Attributes": { "Location": ["Orbital", "Planetside"] }
-              }
+              "Oracles": [
+                { "Category": "Core", "Name": "Descriptor" },
+                { "Category": "Core", "Name": "Focus" }
+              ]
             }
           ]
         ],
@@ -129,12 +273,11 @@
           99,
           100,
           [
-            "Settlements in conflict",
+            "▶️Precursor Vault (orbital)",
             {
               "Game object": {
-                "Object type": "Settlement",
-                "Amount": 2,
-                "Attributes": { "Location": ["Orbital", "Planetside"] }
+                "Object type": "Precursor Vault",
+                "Attributes": { "Location": "Orbital" }
               }
             }
           ]
@@ -142,55 +285,61 @@
       ]
     },
     {
-      "Initial": true,
-      "Display name": "Settlements - Outlands",
-      "Requires": { "Region": ["Outlands"] },
+      "Name": "Planetside Feature",
+      "Semantics": { "Part of speech": "fragment" },
+      "Max rolls": 2,
       "Table": [
-        [1, 90, "None"],
+        [1, 7, "Acid pools"],
+        [8, 14, "Ash dunes"],
+        [15, 21, "Corrosive rains"],
+        [22, 28, "Dead forests"],
+        [29, 35, "Fetid mudflats"],
+        [36, 42, "Mass graves"],
+        [43, 49, "Moldering bones"],
+        [50, 56, "Noxious fog"],
+        [57, 63, "Radioactive hotspots"],
         [
-          91,
-          97,
-          [
-            "Orbital settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Orbital" }
+          64,
+          70,
+          "Ravaged cities",
+          {
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Derelict",
+                  "Attributes": { "Derelict type": "Settlement" }
+                }
               }
-            }
-          ]
+            ]
+          }
         ],
+        [71, 77, "Scarred battlefields"],
         [
-          98,
-          100,
-          [
-            "Planetside settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Planetside" }
+          78,
+          84,
+          "Ship graveyards",
+          {
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Derelict",
+                  "Attributes": { "Derelict type": "Starship" }
+                }
               }
-            }
-          ]
-        ]
-      ]
-    },
-    {
-      "Initial": true,
-      "Display name": "Settlements - Expanse",
-      "Requires": { "Region": ["Expanse"] },
-      "Table": [
-        [1, 95, "None"],
+            ]
+          }
+        ],
+        [85, 91, "Whispers of the dead"],
         [
-          96,
+          92,
           98,
           [
-            "Orbital settlement",
+            "▶️Descriptor + Focus",
             {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Orbital" }
-              }
+              "Oracles": [
+                { "Category": "Core", "Name": "Descriptor" },
+                { "Category": "Core", "Name": "Focus" }
+              ]
             }
           ]
         ],
@@ -198,174 +347,25 @@
           99,
           100,
           [
-            "Planetside settlement",
+            "▶️Precursor Vault (planetside)",
             {
               "Game object": {
-                "Object type": "Settlement",
+                "Object type": "Precursor Vault",
                 "Attributes": { "Location": "Planetside" }
               }
             }
           ]
         ]
+      ]
+    },
+    {
+      "Name": "Life",
+      "Table": [
+        [1, 25, "None"],
+        [26, 85, "Extinct"],
+        [86, 95, "Simple"],
+        [96, 100, "Sparse"]
       ]
     }
-  ],
-  "Observed From Space": {
-    "Initial": true,
-    "Tags": ["fragment"],
-    "Max rolls": 2,
-    "Table": [
-      [1, 11, "Broken moon"],
-      [12, 22, "Cratered surface"],
-      [23, 33, "Dry seabeds"],
-      [34, 44, "Irradiated atmosphere"],
-      [
-        45,
-        55,
-        "Orbiting ship graveyard",
-        {
-          "Suggest": [
-            {
-              "Game object": [
-                {
-                  "Object type": "Derelict",
-                  "Attributes": { "Derelict type": "Starship" }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      [56, 66, "Perpetual overcast"],
-      [
-        67,
-        77,
-        "Sky-breaching ruins",
-        {
-          "Suggest": [
-            {
-              "Game object": [
-                {
-                  "Object type": "Derelict",
-                  "Attributes": { "Derelict type": "Settlement" }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      [78, 88, "Vast wastelands"],
-      [
-        89,
-        98,
-        [
-          "▶️Descriptor + Focus",
-          {
-            "Oracles": [
-              { "Category": "Core", "Oracle": "Descriptor" },
-              { "Category": "Core", "Oracle": "Focus" }
-            ]
-          }
-        ]
-      ],
-      [
-        99,
-        100,
-        [
-          "▶️Precursor Vault (orbital)",
-          {
-            "Game object": {
-              "Object type": "Precursor Vault",
-              "Attributes": { "Location": "Orbital" }
-            }
-          }
-        ]
-      ]
-    ]
-  },
-  "Planetside Feature": {
-    "Tags": ["fragment"],
-    "Max rolls": 2,
-    "Table": [
-      [1, 7, "Acid pools"],
-      [8, 14, "Ash dunes"],
-      [15, 21, "Corrosive rains"],
-      [22, 28, "Dead forests"],
-      [29, 35, "Fetid mudflats"],
-      [36, 42, "Mass graves"],
-      [43, 49, "Moldering bones"],
-      [50, 56, "Noxious fog"],
-      [57, 63, "Radioactive hotspots"],
-      [
-        64,
-        70,
-        "Ravaged cities",
-        {
-          "Suggest": [
-            {
-              "Game object": [
-                {
-                  "Object type": "Derelict",
-                  "Attributes": { "Derelict type": "Settlement" }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      [71, 77, "Scarred battlefields"],
-      [
-        78,
-        84,
-        "Ship graveyards",
-        {
-          "Suggest": [
-            {
-              "Game object": [
-                {
-                  "Object type": "Derelict",
-                  "Attributes": { "Derelict type": "Starship" }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      [85, 91, "Whispers of the dead"],
-      [
-        92,
-        98,
-        [
-          "▶️Descriptor + Focus",
-          {
-            "Oracles": [
-              { "Category": "Core", "Oracle": "Descriptor" },
-              { "Category": "Core", "Oracle": "Focus" }
-            ]
-          }
-        ]
-      ],
-      [
-        99,
-        100,
-        [
-          "▶️Precursor Vault (planetside)",
-          {
-            "Game object": {
-              "Object type": "Precursor Vault",
-              "Attributes": { "Location": "Planetside" }
-            }
-          }
-        ]
-      ]
-    ]
-  },
-  "Life": {
-    "Table": [
-      [1, 25, "None"],
-      [26, 85, "Extinct"],
-      [86, 95, "Simple"],
-      [96, 100, "Sparse"]
-    ]
-  }
+  ]
 }

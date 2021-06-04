@@ -1,17 +1,17 @@
 # references common across various oracle categories; all oracle files are concatencated to this before being converted to JSON.
 _refs:
   Planetary Class:
-    - &Desert A pitiless planet of searing heat, blowing sand, and sunbaked rock.
-    - &Furnace A planet with relentless volcanic activity, wreathed in fire and ash.
-    - &Grave A once-thriving world—now a grim monument to a fallen civilization.
-    - &Ice A rugged, frozen world—locked in an unending winter.
-    - &Jovian A massive planet with vast layers of dense gases surrounding a small rocky core.
-    - &Jungle A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation.
-    - &Ocean A planet completely or mostly covered by a boundless ocean.
-    - &Rocky A rugged planet scarred by eons of destructive asteroid impacts.
-    - &Shattered A planet sundered by cataclysmic destruction.
-    - &Tainted A foul planet wracked by a poisonous climate and virulent growths.
-    - &Vital This diverse, life-bearing planet might provide some small measure of hope.
+    - &Desert "A pitiless planet of searing heat, blowing sand, and sunbaked rock."
+    - &Furnace "A planet with relentless volcanic activity, wreathed in fire and ash."
+    - &Grave "A once-thriving world—now a grim monument to a fallen civilization."
+    - &Ice "A rugged, frozen world—locked in an unending winter."
+    - &Jovian "A massive planet with vast layers of dense gases surrounding a small rocky core."
+    - &Jungle "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation."
+    - &Ocean "A planet completely or mostly covered by a boundless ocean."
+    - &Rocky "A rugged planet scarred by eons of destructive asteroid impacts."
+    - &Shattered "A planet sundered by cataclysmic destruction."
+    - &Tainted "A foul planet wracked by a poisonous climate and virulent growths."
+    - &Vital "This diverse, life-bearing planet might provide some small measure of hope."
   Location Theme:
     - &Chaotic Reality is corrupted or warped in this place.
     - &Fortified Enemies defend this place against intruders.
@@ -73,36 +73,36 @@ _refs:
       - ▶️Starship Mission
       - Oracles:
           - Category: Starship
-            Oracle: Mission
+            Name: Mission
     Fleet: &Fleet
       - ▶️Fleet
       - Oracles:
           - Category: Starship
-            Oracle: Fleet
+            Name: Fleet
     Stellar Object: &Stellar_Object
       - ▶️Stellar Object
       - Oracles:
           - Category: Space
-            Oracle: Stellar Object
+            Name: Stellar Object
     Action + Theme: &Action+Theme
       - ▶️Action + Theme
       - Oracles:
           - Category: Core
-            Oracle: Action
+            Name: Action
           - Category: Core
-            Oracle: Theme
+            Name: Theme
     Descriptor + Focus: &Descriptor+Focus
       - ▶️Descriptor + Focus
       - Oracles:
           - Category: Core
-            Oracle: Descriptor
+            Name: Descriptor
           - Category: Core
-            Oracle: Focus
+            Name: Focus
     Ultra-Scale: &Ultra-scale
       - ▶️Ultra-scale
       - Oracles:
           - Category: Creature
-            Oracle: Ultra-scale
+            Name: Ultra-scale
 
   Game objects:
     # consider a way to do precursor vault sanctums?
@@ -201,60 +201,60 @@ _refs:
     Planet: &suggestPlanet
       Suggest:
         - Game object:
-            - Object type: Planet
+            Object type: Planet
     Character: &suggestNpc
       Suggest:
         - Game object:
-            - Object type: Character
+            Object type: Character
     Creature: &suggestCreature
       Suggest:
         - Game object:
-            - Object type: Creature
+            Object type: Creature
     Starship: &suggestShip
       Suggest:
         - Game object:
-            - Object type: Starship
+            Object type: Starship
     Precursor Vault: &suggestVault
       Suggest:
         - Game object:
-            - Object type: Precursor Vault
+            Object type: Precursor Vault
     Settlement: &suggestSettlement
       Suggest:
         - Game object:
-            - Object type: Settlement
+            Object type: Settlement
     Derelict: &suggestDerelict
       Suggest:
         - Game object:
-            - Object type: Derelict
+            Object type: Derelict
     Derelict settlement: &suggestDerelictSettlement
       Suggest:
         - Game object:
-            - Object type: Derelict
-              Attributes: { Derelict type: Settlement }
+            Object type: Derelict
+            Attributes: { Derelict type: Settlement }
     Derelict starship: &suggestDerelictStarship
       Suggest:
         - Game object:
-            - Object type: Derelict
-              Attributes: { Derelict type: Starship }
+            Object type: Derelict
+            Attributes: { Derelict type: Starship }
     Place: &suggestPlace # space sighting
       Suggest:
         - Oracles:
             - Category: Space
-              Oracle: Space Sighting
+              Name: Space Sighting
     Object: &suggestObject # descriptor + focus
       Suggest:
         - Oracles:
             - Category: Core
-              Oracle: Descriptor
+              Name: Descriptor
             - Category: Core
-              Oracle: Focus
+              Name: Focus
     Event: &suggestEvent # action + theme
       Suggest:
         - Oracles:
             - Category: Core
-              Oracle: Action
+              Name: Action
             - Category: Core
-              Oracle: Theme
+              Name: Theme
   # these are just simple strings at the moment, but if i do want to change them en masse, here they are
   Planet Life:
     - &life_None None

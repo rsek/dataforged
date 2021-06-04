@@ -1,69 +1,78 @@
 Production:
-  _meta:
-    Name: Production
-    Subcategory of: Derelict
-    Category: Derelict Zones
-    Requires:
-      Zone:
-        - Production
-    Source:
-      Name: Starforged Backer Preview
-      Version: "050821"
-  Area:
-    Tags: [repeatable, fragment]
-    Table:
-      - [1, 8, Airlock or staging area]
-      - [9, 16, Assembly or processing]
-      - [17, 24, Cargo bay]
-      - [25, 32, Equipment storage]
-      - [33, 40, Exosuit bay]
-      - [41, 48, Harvesting or mining platform]
-      - [49, 56, Monitoring or control room]
-      - [57, 64, Processed goods storage]
-      - [65, 72, Raw materials storage]
-      - [73, 80, Scrapyard]
-      - [81, 85, New zone]
-      - [86, 100, New zone via ▶️Access]
- 
-  Feature:
-    Tags: [repeatable, fragment]
-    Table:
-      - [1, 8, Cargo lifts]
-      - [9, 16, Control panels]
-      - [17, 24, Disassembled machinery]
-      - [25, 32, Elevated walkways]
-      - [33, 40, Environment suits]
-      - [41, 48, Ill-fated workers]
-      - [49, 56, Immense machinery]
-      - [57, 64, Sealed or locked containers]
-      - [65, 72, Tools]
-      - [73, 80, Vats of chemicals or gas]
-      - [81, 88, Written manifest]
-      - [89, 100, *Descriptor+Focus] 
- 
-  Peril:
-    Tags: [repeatable, fragment]
-    Table:
-      - [1, 10, Claustrophobic spaces]
-      - [11, 20, Dangerous machinery]
-      - [21, 30, Disturbing evidence of exploited labor]
-      - [31, 40, Extreme temperatures]
-      - [41, 50, Hazardous materials]
-      - [51, 60, Impending industrial disaster]
-      - [61, 70, Malfunctioning automation]
-      - [71, 80, Rivals seek to secure these resources]
-      - [81, 90, Signs of an unearthed or manufactured threat]
-      - [91, 98, *Action+Theme] 
-      - [99, 100, Roll twice]
- 
-  Opportunity:
-    Tags: [repeatable, fragment]
-    Table:
-      - [1, 20, Helpful vehicle or transport]
-      - [21, 40, Rare or valuable resource]
-      - [41, 60, Salvageable materials]
-      - [61, 80, Useful equipment]
-      - [81, 100, Valuable cargo]
- 
-
-
+  Name: Production
+  Subcategory of: Derelict
+  Category: Derelict Zones
+  Requires:
+      - Zone: [ Production]
+  Source:
+    Name: Starforged Backer Preview
+    Version: "050821"
+  Oracles:
+    - Name: Area
+      Repeatable: true
+      Semantics:
+        Part of speech: fragment
+      Table:
+        - [1, 8, Airlock or staging area]
+        - [9, 16, Assembly or processing]
+        - [17, 24, Cargo bay]
+        - [25, 32, Equipment storage]
+        - [33, 40, Exosuit bay]
+        - [41, 48, Harvesting or mining platform]
+        - [49, 56, Monitoring or control room]
+        - [57, 64, Processed goods storage]
+        - [65, 72, Raw materials storage]
+        - [73, 80, Scrapyard]
+        - [81, 85, New zone]
+        - [86, 100, New zone via ▶️Access]
+   
+    - Name: Feature
+      Repeatable: true
+      Semantics:
+        Part of speech: fragment
+      Table:
+        - [1, 8, Cargo lifts]
+        - [9, 16, Control panels]
+        - [17, 24, Disassembled machinery]
+        - [25, 32, Elevated walkways]
+        - [33, 40, Environment suits]
+        - [41, 48, Ill-fated workers]
+        - [49, 56, Immense machinery]
+        - [57, 64, Sealed or locked containers]
+        - [65, 72, Tools]
+        - [73, 80, Vats of chemicals or gas]
+        - [81, 88, Written manifest]
+        - [89, 100, *Descriptor+Focus] 
+   
+    - Name: Peril
+      Oracle type: peril
+      Repeatable: true
+      Semantics:
+        Part of speech: fragment
+      Table:
+        - [1, 10, Claustrophobic spaces]
+        - [11, 20, Dangerous machinery]
+        - [21, 30, Disturbing evidence of exploited labor]
+        - [31, 40, Extreme temperatures]
+        - [41, 50, Hazardous materials]
+        - [51, 60, Impending industrial disaster]
+        - [61, 70, Malfunctioning automation]
+        - [71, 80, Rivals seek to secure these resources]
+        - [81, 90, Signs of an unearthed or manufactured threat]
+        - [91, 98, *Action+Theme] 
+        - [99, 100, *Roll_twice]
+   
+    - Name: Opportunity
+      Oracle type: opportunity
+      Repeatable: true
+      Semantics:
+        Part of speech: fragment
+      Table:
+        - [1, 20, Helpful vehicle or transport]
+        - [21, 40, Rare or valuable resource]
+        - [41, 60, Salvageable materials]
+        - [61, 80, Useful equipment]
+        - [81, 100, Valuable cargo]
+   
+  
+  

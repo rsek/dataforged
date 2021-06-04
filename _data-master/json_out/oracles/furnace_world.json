@@ -1,140 +1,283 @@
 {
-  "_meta": {
-    "Name": "Furnace World",
-    "Aliases": ["Furnace"],
-    "Description": "A planet with relentless volcanic activity, wreathed in fire and ash.",
-    "Tags": ["oracles", "template", "location"],
-    "Subcategory of": "Planet",
-    "Category": "Planetary Class",
-    "Requires": { "Planetary Class": ["Furnace World"] },
-    "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
-    "Thumbnail": "https://i.imgur.com/YS5rlDR.png",
-    "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
-    "Sample Names": [
-      "Ash",
-      "Azula",
-      "Cinder",
-      "Cyrus",
-      "Draconus",
-      "Effigy",
-      "Ember",
-      "Flint",
-      "Hades",
-      "Hera",
-      "Ignis",
-      "Inferno",
-      "Ishum",
-      "Kresnik",
-      "Nemesis",
-      "Obsidian",
-      "Scorch",
-      "Tana",
-      "Vesta",
-      "Vesuvius"
-    ]
-  },
-  "Atmosphere": {
-    "Initial": true,
-    "Table": [
-      [
-        1,
-        10,
-        [
-          "None / thin",
-          "This planet is airless, or it's atmosphere is so thin as to be useless for humans."
-        ]
-      ],
-      [
-        11,
-        50,
-        [
-          "Toxic",
-          "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes."
-        ]
-      ],
-      [
-        51,
-        65,
-        [
-          "Corrosive",
-          "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time."
-        ]
-      ],
-      [
-        66,
-        90,
-        [
-          "Marginal",
-          "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
-        ]
-      ],
-      [
-        91,
-        100,
-        [
-          "Breathable",
-          "This atmosphere is not perfect, but it's good enough to sustain human life."
-        ]
-      ]
-    ]
-  },
-  "Settlements": [
+  "Name": "Furnace World",
+  "Aliases": ["Furnace"],
+  "Description": "A planet with relentless volcanic activity, wreathed in fire and ash.",
+  "Content type": "oracles",
+  "Templates": [{ "Name": "Furnace World", "Roles": ["place"] }],
+  "Subcategory of": "Planet",
+  "Category": "Planetary Class",
+  "Requires": { "Planetary Class": ["Furnace World"] },
+  "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+  "Thumbnail": "https://i.imgur.com/YS5rlDR.png",
+  "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+  "Sample Names": [
+    "Ash",
+    "Azula",
+    "Cinder",
+    "Cyrus",
+    "Draconus",
+    "Effigy",
+    "Ember",
+    "Flint",
+    "Hades",
+    "Hera",
+    "Ignis",
+    "Inferno",
+    "Ishum",
+    "Kresnik",
+    "Nemesis",
+    "Obsidian",
+    "Scorch",
+    "Tana",
+    "Vesta",
+    "Vesuvius"
+  ],
+  "Oracles": [
     {
+      "Name": "Atmosphere",
       "Initial": true,
-      "Display name": "Settlements - Terminus",
-      "Requires": { "Region": ["Terminus"] },
       "Table": [
-        [1, 60, "None"],
         [
-          61,
-          75,
+          1,
+          10,
           [
-            "Orbital settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Orbital" }
-              }
-            }
+            "None / thin",
+            "This planet is airless, or it's atmosphere is so thin as to be useless for humans."
           ]
         ],
         [
-          76,
-          87,
+          11,
+          50,
           [
-            "Planetside settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Planetside" }
-              }
-            }
+            "Toxic",
+            "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes."
           ]
         ],
         [
-          88,
-          96,
+          51,
+          65,
           [
-            "Multiple settlements",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Amount": 2,
-                "Attributes": { "Location": ["Orbital", "Planetside"] }
-              }
-            }
+            "Corrosive",
+            "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time."
           ]
         ],
         [
-          97,
+          66,
+          90,
+          [
+            "Marginal",
+            "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
+          ]
+        ],
+        [
+          91,
           100,
           [
-            "Settlements in conflict",
+            "Breathable",
+            "This atmosphere is not perfect, but it's good enough to sustain human life."
+          ]
+        ]
+      ]
+    },
+    {
+      "Name": "Settlements",
+      "Tables": [
+        {
+          "Initial": true,
+          "Display name": "Settlements - Terminus",
+          "Requires": { "Region": ["Terminus"] },
+          "Table": [
+            [1, 60, "None"],
+            [
+              61,
+              75,
+              [
+                "Orbital settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Orbital" }
+                  }
+                }
+              ]
+            ],
+            [
+              76,
+              87,
+              [
+                "Planetside settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Planetside" }
+                  }
+                }
+              ]
+            ],
+            [
+              88,
+              96,
+              [
+                "Multiple settlements",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Amount": 2,
+                    "Attributes": { "Location": ["Orbital", "Planetside"] }
+                  }
+                }
+              ]
+            ],
+            [
+              97,
+              100,
+              [
+                "Settlements in conflict",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Amount": 2,
+                    "Attributes": { "Location": ["Orbital", "Planetside"] }
+                  }
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "Initial": true,
+          "Display name": "Settlements - Outlands",
+          "Requires": { "Region": ["Outlands"] },
+          "Table": [
+            [1, 85, "None"],
+            [
+              86,
+              92,
+              [
+                "Orbital settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Orbital" }
+                  }
+                }
+              ]
+            ],
+            [
+              93,
+              97,
+              [
+                "Planetside settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Planetside" }
+                  }
+                }
+              ]
+            ],
+            [
+              98,
+              99,
+              [
+                "Multiple settlements",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Amount": 2,
+                    "Attributes": { "Location": ["Orbital", "Planetside"] }
+                  }
+                }
+              ]
+            ],
+            [
+              100,
+              100,
+              [
+                "Settlements in conflict",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Amount": 2,
+                    "Attributes": { "Location": ["Orbital", "Planetside"] }
+                  }
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "Initial": true,
+          "Display name": "Settlements - Expanse",
+          "Requires": { "Region": ["Expanse"] },
+          "Table": [
+            [1, 95, "None"],
+            [
+              96,
+              98,
+              [
+                "Orbital settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Orbital" }
+                  }
+                }
+              ]
+            ],
+            [
+              99,
+              100,
+              [
+                "Planetside settlement",
+                {
+                  "Game object": {
+                    "Object type": "Settlement",
+                    "Attributes": { "Location": "Planetside" }
+                  }
+                }
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Observed From Space",
+      "Initial": true,
+      "Semantics": { "Part of speech": "fragment" },
+      "Max rolls": 2,
+      "Table": [
+        [1, 11, "Fiery world-spanning chasms"],
+        [12, 22, "Glowing rivers of lava"],
+        [23, 33, "Lightning-wracked ash clouds"],
+        [34, 44, "Magma seas"],
+        [45, 55, "Massive supervolcano"],
+        [56, 66, "Once verdant terrain"],
+        [67, 77, "Towering mountain ranges"],
+        [78, 88, "World-spanning fissures"],
+        [
+          89,
+          98,
+          [
+            "▶️Descriptor + Focus",
+            {
+              "Oracles": [
+                { "Category": "Core", "Name": "Descriptor" },
+                { "Category": "Core", "Name": "Focus" }
+              ]
+            }
+          ]
+        ],
+        [
+          99,
+          100,
+          [
+            "▶️Precursor Vault (orbital)",
             {
               "Game object": {
-                "Object type": "Settlement",
-                "Amount": 2,
-                "Attributes": { "Location": ["Orbital", "Planetside"] }
+                "Object type": "Precursor Vault",
+                "Attributes": { "Location": "Orbital" }
               }
             }
           ]
@@ -142,61 +285,45 @@
       ]
     },
     {
-      "Initial": true,
-      "Display name": "Settlements - Outlands",
-      "Requires": { "Region": ["Outlands"] },
+      "Name": "Planetside Feature",
+      "Semantics": { "Part of speech": "fragment" },
+      "Max rolls": 2,
       "Table": [
-        [1, 85, "None"],
+        [1, 7, "Blinding ash storms"],
+        [8, 14, "Catastrophic earthquakes"],
+        [15, 21, "Colorful geothermal springs"],
+        [22, 28, "Intricate volcanic rock formations"],
+        [29, 35, "Lava tube tunnel networks"],
+        [36, 42, "Masses of scorched bones"],
+        [43, 49, "Plains of volcanic glass"],
+        [50, 56, "Pools of liquid metal"],
+        [57, 63, "Rocky islands adrift on magma"],
+        [64, 70, "Roiling clouds of superheated gas"],
+        [71, 77, "Scalding geysers"],
+        [78, 84, "Silica or metal storms"],
+        [85, 91, "Steaming mudflats"],
         [
-          86,
           92,
-          [
-            "Orbital settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Orbital" }
-              }
-            }
-          ]
-        ],
-        [
-          93,
-          97,
-          [
-            "Planetside settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Planetside" }
-              }
-            }
-          ]
-        ],
-        [
           98,
-          99,
           [
-            "Multiple settlements",
+            "▶️Descriptor + Focus",
             {
-              "Game object": {
-                "Object type": "Settlement",
-                "Amount": 2,
-                "Attributes": { "Location": ["Orbital", "Planetside"] }
-              }
+              "Oracles": [
+                { "Category": "Core", "Name": "Descriptor" },
+                { "Category": "Core", "Name": "Focus" }
+              ]
             }
           ]
         ],
         [
-          100,
+          99,
           100,
           [
-            "Settlements in conflict",
+            "▶️Precursor Vault (planetside)",
             {
               "Game object": {
-                "Object type": "Settlement",
-                "Amount": 2,
-                "Attributes": { "Location": ["Orbital", "Planetside"] }
+                "Object type": "Precursor Vault",
+                "Attributes": { "Location": "Planetside" }
               }
             }
           ]
@@ -204,135 +331,16 @@
       ]
     },
     {
-      "Initial": true,
-      "Display name": "Settlements - Expanse",
-      "Requires": { "Region": ["Expanse"] },
+      "Name": "Life",
       "Table": [
-        [1, 95, "None"],
-        [
-          96,
-          98,
-          [
-            "Orbital settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Orbital" }
-              }
-            }
-          ]
-        ],
-        [
-          99,
-          100,
-          [
-            "Planetside settlement",
-            {
-              "Game object": {
-                "Object type": "Settlement",
-                "Attributes": { "Location": "Planetside" }
-              }
-            }
-          ]
-        ]
+        [1, 30, "None"],
+        [31, 50, "Extinct"],
+        [51, 70, "Simple"],
+        [71, 85, "Sparse"],
+        [86, 95, "Diverse"],
+        [96, 98, "Bountiful"],
+        [99, 100, "Overrun"]
       ]
     }
-  ],
-  "Observed From Space": {
-    "Initial": true,
-    "Tags": ["fragment"],
-    "Max rolls": 2,
-    "Table": [
-      [1, 11, "Fiery world-spanning chasms"],
-      [12, 22, "Glowing rivers of lava"],
-      [23, 33, "Lightning-wracked ash clouds"],
-      [34, 44, "Magma seas"],
-      [45, 55, "Massive supervolcano"],
-      [56, 66, "Once verdant terrain"],
-      [67, 77, "Towering mountain ranges"],
-      [78, 88, "World-spanning fissures"],
-      [
-        89,
-        98,
-        [
-          "▶️Descriptor + Focus",
-          {
-            "Oracles": [
-              { "Category": "Core", "Oracle": "Descriptor" },
-              { "Category": "Core", "Oracle": "Focus" }
-            ]
-          }
-        ]
-      ],
-      [
-        99,
-        100,
-        [
-          "▶️Precursor Vault (orbital)",
-          {
-            "Game object": {
-              "Object type": "Precursor Vault",
-              "Attributes": { "Location": "Orbital" }
-            }
-          }
-        ]
-      ]
-    ]
-  },
-  "Planetside Feature": {
-    "Tags": ["fragment"],
-    "Max rolls": 2,
-    "Table": [
-      [1, 7, "Blinding ash storms"],
-      [8, 14, "Catastrophic earthquakes"],
-      [15, 21, "Colorful geothermal springs"],
-      [22, 28, "Intricate volcanic rock formations"],
-      [29, 35, "Lava tube tunnel networks"],
-      [36, 42, "Masses of scorched bones"],
-      [43, 49, "Plains of volcanic glass"],
-      [50, 56, "Pools of liquid metal"],
-      [57, 63, "Rocky islands adrift on magma"],
-      [64, 70, "Roiling clouds of superheated gas"],
-      [71, 77, "Scalding geysers"],
-      [78, 84, "Silica or metal storms"],
-      [85, 91, "Steaming mudflats"],
-      [
-        92,
-        98,
-        [
-          "▶️Descriptor + Focus",
-          {
-            "Oracles": [
-              { "Category": "Core", "Oracle": "Descriptor" },
-              { "Category": "Core", "Oracle": "Focus" }
-            ]
-          }
-        ]
-      ],
-      [
-        99,
-        100,
-        [
-          "▶️Precursor Vault (planetside)",
-          {
-            "Game object": {
-              "Object type": "Precursor Vault",
-              "Attributes": { "Location": "Planetside" }
-            }
-          }
-        ]
-      ]
-    ]
-  },
-  "Life": {
-    "Table": [
-      [1, 30, "None"],
-      [31, 50, "Extinct"],
-      [51, 70, "Simple"],
-      [71, 85, "Sparse"],
-      [86, 95, "Diverse"],
-      [96, 98, "Bountiful"],
-      [99, 100, "Overrun"]
-    ]
-  }
+  ]
 }
