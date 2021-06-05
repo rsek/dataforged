@@ -16,13 +16,16 @@ Planet:
     - Vital World
   Source:
     Name: Starforged Backer Preview
-    Version: "050821"
+    Version: "060121"
   Inherits:
     - From: Space
       Oracles: [Stellar Object]
   Oracles:
     - Name: Planetary Class
       Initial: true
+      Use with:
+        - Name: Descriptor
+          Category: Core
       Table:
         - [1, 15, ▶️Desert World, *Desert]
         - [16, 30, ▶️Furnace World, *Furnace]
@@ -38,11 +41,13 @@ Planet:
    
     - Name: Peril
       Oracle type: peril
+      Repeatable: true
+      Semantics:
+        Part of speech: [fragment]
+      Description: |-
+        Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
       Tables:
         - Display name: Planetside Peril - Lifebearing
-          Repeatable: true
-          Semantics:
-            Part of speech: fragment
           Requires:
             Location: [Planetside]
             Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
@@ -67,7 +72,7 @@ Planet:
             - [52, 54, &pPeril09 Led astray]
             - [55, 57, &pPeril10 Lost the path]
             - [58, 60, &pPeril11 Meteorites fall from the sky]
-            - [61, 63, &pPeril12 Radiated area or object]
+            - [61, 63, &pPeril12 Irradiated area or object]
             - [64, 66, &pPeril13 Realization that something was left behind]
             - [67, 69, &pPeril14 Seismic or volcanic upheaval]
             - [70, 72, &pPeril15 Signs of a lurking or trailing foe]
@@ -83,9 +88,6 @@ Planet:
             - [100, 100, *Roll_twice]
   
         - Display name: Planetside Peril - Lifeless
-          Repeatable: true
-          Semantics:
-            Part of speech: fragment
           Requires:
             Location: [Planetside]
             Life: [Lifeless, None, Extinct]
@@ -119,12 +121,13 @@ Planet:
   
     - Name: Opportunity
       Oracle type: opportunity
+      Repeatable: true
+      Description: |-
+        Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
+      Semantics:
+        Part of speech: [fragment]
       Tables:
         - Display name: Planetside Opportunity - Lifebearing
-          Repeatable: true
-          Oracle type: opportunity
-          Semantics:
-            Part of speech: fragment
           Requires:
             Location: [Planetside]
             Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
@@ -156,9 +159,6 @@ Planet:
             - [97, 100, &pOpp19 [Vantage point reveals the lay of the land, *suggestObject]]
   
         - Display name: Planetside Opportunity - Lifeless
-          Repeatable: true
-          Semantics:
-            Part of speech: fragment
           Requires:
             Location: [Planetside]
             Life: [Lifeless, None, Extinct]

@@ -6,24 +6,29 @@ Space:
   Source:
     Name: Starforged Backer Preview
     Version: "050821"
-  Templates:
-    - Name: Anchorage
-      Roles: [place]
-      Attributes:
-        - Oracle: Space Sighting
-          As: Near object
-          Initial: true
-        - Oracle: Space Sighting
-          As: Far object
+  # Templates:
+  #   - Name: Anchorage
+  #     Roles: [place]
+  #     Attributes:
+  #       - Oracle: Space Sighting
+  #         As: Near object
+  #         Initial: true
+  #       - Oracle: Space Sighting
+  #         As: Far object
   Oracles:
     - Name: Space Sighting
+      Use with:
+        - Name: Descriptor
+          Category: Core
+      Allow duplicate rolls: true
+      Semantics:
+        Part of speech: [fragment]
+      Description: |-
+        Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you Ask the Oracle to envision the primary feature of a waypoint as you Undertake an Expedition. Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
       Tables:
       - Display name: Space Sighting - Terminus
-        Allow duplicate rolls: true
         Requires:
           Region: [Terminus]
-        Semantics:
-          Part of speech: fragment
         Table:
           - [1, 15, *Stellar_Object]
           - [16, 35, *Planet]
@@ -47,11 +52,8 @@ Space:
           - [94, 98, *Roll_twice_Rep_ok]
           - [99, 100, *Roll_three_times_Rep_ok]
       - Display name: Space Sighting - Outlands
-        Allow duplicate rolls: true
         Requires:
           Region: [Outlands]
-        Semantics:
-          Part of speech: fragment
         Table:
           - [1, 15, *Stellar_Object]
           - [16, 35, *Planet]
@@ -75,11 +77,8 @@ Space:
           - [94, 98, *Roll_twice_Rep_ok]
           - [99, 100, *Roll_three_times_Rep_ok]
       - Display name: Space Sighting - Expanse
-        Allow duplicate rolls: true
         Requires:
           Region: [Expanse]
-        Semantics:
-          Part of speech: fragment
         Table:
           - [1, 15, *Stellar_Object]
           - [16, 35, *Planet]
@@ -104,8 +103,11 @@ Space:
           - [99, 100, *Roll_three_times_Rep_ok]
    
     - Name: Stellar Object
+      Use with:
+        - Name: Descriptor
+          Category: Core
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Table:
         - [1, 15, Smoldering red star, "https://i.imgur.com/M3UenpW.jpg"]
         - [16, 30, Glowing orange star, "https://i.imgur.com/2zM2NAr.jpg"]
@@ -128,7 +130,7 @@ Space:
           Name: Sector Name - Suffix
       Initial: true
       Semantics:
-        Part of speech: adjective
+        Part of speech: [adjective]
         Capitalize: true
       Table:
         - [1, 2, Accursed]
@@ -189,7 +191,7 @@ Space:
           Name: Sector Name - Prefix
       Initial: true
       Semantics:
-        Part of speech: proper noun
+        Part of speech: [proper noun]
         Capitalize: true
       Table:
         - [1, 2, Abyss]
@@ -248,7 +250,7 @@ Space:
       Display name: Spaceborne Peril
       Repeatable: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Requires:
         Location: [Spaceborne, Orbital, Deep Space]
       Description: Use this oracle as an alternative to the __Pay the Price__ table and the creative prompt oracles when you want inspiration for a trouble on an interstellar journey, or to generate a perilous event at a spaceborne facility.
@@ -293,7 +295,7 @@ Space:
       Display name: Spaceborne Opportunity
       Repeatable: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Requires:
         Location: [Spaceborne, Orbital, Deep Space]
       Description: Roll on this table when you need inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you __Undertake an Expedition__, or if you __Explore a Waypoint__ and find an opportunity.

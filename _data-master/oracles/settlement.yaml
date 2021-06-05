@@ -21,7 +21,7 @@ Settlement:
           Location: [Planetside]
   Source:
     Name: Starforged Backer Preview
-    Version: "050821"
+    Version: "060121"
   Oracles:
     - Name: Location
       Initial: true
@@ -31,9 +31,9 @@ Settlement:
         - [76, 100, Deep Space]
    
     - Name: Population
+      Initial: true
       Tables:
         - Display name: Population - Terminus
-          Initial: true
           Requires:
             Region: [Terminus]
           Table:
@@ -44,7 +44,6 @@ Settlement:
             - [86, 100, *pop04]
     
         - Display name: Population - Outlands
-          Initial: true
           Requires:
             Region: [Outlands]
           Table:
@@ -55,7 +54,6 @@ Settlement:
             - [91, 100, *pop04]
     
         - Display name: Population - Expanse
-          Initial: true
           Requires:
             Region: [Expanse]
           Table:
@@ -68,7 +66,7 @@ Settlement:
     - Name: First Look
       Initial: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
         Content: description
       Max rolls: 2
       Table:
@@ -97,7 +95,7 @@ Settlement:
     - Name: Initial Contact
       Initial: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
         Content: description
       Table:
         - [1, 20, Welcoming]
@@ -115,7 +113,7 @@ Settlement:
     - Name: Authority
       Initial: true
       Semantics:
-        Part of speech: adjective
+        Part of speech: [adjective]
       Table:
         - [1, 15, None / lawless]
         - [16, 30, Ineffectual]
@@ -128,7 +126,7 @@ Settlement:
     - Name: Projects
       Display name: Settlement Projects
       Semantics:
-        Part of speech: noun
+        Part of speech: [noun]
         Content: abstract noun
       Max rolls: 2
       Table:
@@ -170,7 +168,7 @@ Settlement:
       Display name: Settlement Trouble
       Oracle type: peril
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Table:
         - [1, 3, Betrayal from within]
         - [4, 7, Blocked resource, *suggestObject]
@@ -205,9 +203,11 @@ Settlement:
    
     - Name: Name
       Display name: Settlement Name
+      Description: |-
+        Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
       Initial: true
       Semantics:
-        Part of speech: proper noun
+        Part of speech: [proper noun]
       Table:
         - [1, 1, Aegis]
         - [2, 2, Altair]
@@ -287,7 +287,7 @@ Settlement:
         - [76, 76, Rockhome]
         - [77, 77, Rust]
         - [78, 78, Sagan]
-        - [79, 79, Scirocco]
+        - [79, 79, Sanctity]
         - [80, 80, Selena]
         - [81, 81, Sepulcher]
         - [82, 82, Sigil]

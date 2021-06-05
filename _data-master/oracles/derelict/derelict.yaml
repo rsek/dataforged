@@ -17,12 +17,8 @@ Derelict:
     - Operations
     - Production
     - Research
-  Description: Derelicts are the forsaken relics of human endeavors. Use these
-    First Look tables for your initial survey of the derelict. To reveal more
-    about the look and original function or nature of the site, roll on
-    appropriate tables in the Starship or Settlement oracles. If you explore the
-    depths of a derelict, you may use the zone oracles on the following pages to
-    help envision what you find.
+  Description: |-
+    Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
   Inherits:
     - From: Settlement
       Oracles: [Name, Population, First Look, Projects, Trouble, Authority]
@@ -62,12 +58,12 @@ Derelict:
         - [61, 100, Deep Space]
    
     - Name: Derelict Type
+      Initial: true
       Tables:
       - Display name: Type - Planetside
         Requires:
           Location:
             - Planetside
-        Initial: true
         Table:
           - [1, 25, Starship]
           - [26, 100, Settlement]
@@ -76,7 +72,6 @@ Derelict:
         Requires:
           Location:
             - Orbital
-        Initial: true
         Table:
           - [1, 40, Starship]
           - [41, 100, Settlement]
@@ -85,7 +80,6 @@ Derelict:
         Requires:
           Location:
             - Deep Space
-        Initial: true
         Table:
           - [1, 75, Starship]
           - [76, 100, Settlement]
@@ -93,7 +87,7 @@ Derelict:
     - Name: Condition
       Initial: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Table:
         - [1, 10, Functional]
         - [11, 30, Limited power]
@@ -106,7 +100,7 @@ Derelict:
       Oracle type: First Look
       Initial: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Table:
         - [1, 15, Blocked access]
         - [16, 30, Corpses]
@@ -122,7 +116,7 @@ Derelict:
     - Name: Inner First Look
       Oracle type: First Look
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Max rolls: 2
       Table:
         - [1, 3, Abnormal gravity]
@@ -159,6 +153,7 @@ Derelict:
         - [94, 100, *Descriptor+Focus] 
    
     - Name: Zone
+      Display name: Derelict Zone
       Tables:
         - Requires:
             Derelict Type:

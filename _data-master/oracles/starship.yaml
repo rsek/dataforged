@@ -14,8 +14,11 @@ Starship:
   Oracles:
     - Name: Name
       Display name: Starship Name
+      Description: |-
+        Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
       Semantics:
-        Part of speech: noun
+        Part of speech: [proper noun]
+        Content: [name]
       Table:
         - [1, 1, Arclight]
         - [2, 2, Argent Arrow]
@@ -151,7 +154,7 @@ Starship:
    
     - Name: Fleet
       Semantics:
-        Part of speech: noun
+        Part of speech: [common noun]
       Initial: true
       Requires:
         Starship Type: [Fleet]
@@ -168,7 +171,7 @@ Starship:
     - Name: Initial Contact
       Initial: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
       Table:
         - [1, 3, Familiar]
         - [4, 15, Friendly]
@@ -186,7 +189,8 @@ Starship:
     - Name: First Look
       Initial: true
       Semantics:
-        Part of speech: fragment
+        Part of speech: [fragment]
+        Content: [description]
       Max rolls: 2
       Table:
         - [1, 4, Abnormal sensor readings]
@@ -213,12 +217,15 @@ Starship:
         - [95, 100, *Descriptor+Focus] 
    
     - Name: Starship Mission
+      Semantics:
+        Part of speech: [fragment]
+        Content: [quest]
+      Description: |-
+        Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
       Tables:
         - Display name: Starship Mission - Terminus
           Requires:
             Region: [Terminus]
-          Semantics:
-            Part of speech: fragment
           Table:
             - [1, 3, &sm00 Blockade a location, *suggestPlace]
             - [4, 6, &sm01 Break a blockade]
@@ -256,8 +263,6 @@ Starship:
         - Display name: Starship Mission - Outlands
           Requires:
             Region: [Outlands]
-          Semantics:
-            Part of speech: fragment
           Table:
             - [1, 2, *sm00]
             - [3, 4, *sm01]
@@ -295,8 +300,6 @@ Starship:
         - Display name: Starship Mission - Expanse
           Requires:
             Region: [Expanse]
-          Semantics:
-            Part of speech: fragment
           Table:
             - [1, 2, *sm00]
             - [3, 4, *sm01]
