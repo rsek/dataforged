@@ -4,25 +4,18 @@
   "Aliases": ["Spaceborne"],
   "Content type": "oracles",
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
-  "Templates": [
-    {
-      "Name": "Anchorage",
-      "Roles": ["place"],
-      "Attributes": [
-        { "Oracle": "Space Sighting", "As": "Near object", "Initial": true },
-        { "Oracle": "Space Sighting", "As": "Far object" }
-      ]
-    }
-  ],
   "Oracles": [
     {
       "Name": "Space Sighting",
+      "Use with": [{ "Name": "Descriptor", "Category": "Core" }],
+      "Allow duplicate rolls": true,
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Description": "Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you Ask the Oracle to envision the primary feature of a waypoint as you Undertake an Expedition. Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.",
+      "Select table by": "Region",
       "Tables": [
         {
           "Display name": "Space Sighting - Terminus",
-          "Allow duplicate rolls": true,
           "Requires": { "Region": ["Terminus"] },
-          "Semantics": { "Part of speech": "fragment" },
           "Table": [
             [
               1,
@@ -114,9 +107,7 @@
         },
         {
           "Display name": "Space Sighting - Outlands",
-          "Allow duplicate rolls": true,
           "Requires": { "Region": ["Outlands"] },
-          "Semantics": { "Part of speech": "fragment" },
           "Table": [
             [
               1,
@@ -208,9 +199,7 @@
         },
         {
           "Display name": "Space Sighting - Expanse",
-          "Allow duplicate rolls": true,
           "Requires": { "Region": ["Expanse"] },
-          "Semantics": { "Part of speech": "fragment" },
           "Table": [
             [
               1,
@@ -304,7 +293,8 @@
     },
     {
       "Name": "Stellar Object",
-      "Semantics": { "Part of speech": "fragment" },
+      "Use with": [{ "Name": "Descriptor", "Category": "Core" }],
+      "Semantics": { "Part of speech": ["fragment"] },
       "Table": [
         [1, 15, "Smoldering red star", "https://i.imgur.com/M3UenpW.jpg"],
         [16, 30, "Glowing orange star", "https://i.imgur.com/2zM2NAr.jpg"],
@@ -371,7 +361,7 @@
       "Description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
       "Use with": [{ "Category": "Space", "Name": "Sector Name - Suffix" }],
       "Initial": true,
-      "Semantics": { "Part of speech": "adjective", "Capitalize": true },
+      "Semantics": { "Part of speech": ["adjective"], "Capitalize": true },
       "Table": [
         [1, 2, "Accursed"],
         [3, 4, "Ashen"],
@@ -430,7 +420,7 @@
       "Description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
       "Use with": [{ "Category": "Space", "Name": "Sector Name - Prefix" }],
       "Initial": true,
-      "Semantics": { "Part of speech": "proper noun", "Capitalize": true },
+      "Semantics": { "Part of speech": ["proper noun"], "Capitalize": true },
       "Table": [
         [1, 2, "Abyss"],
         [3, 4, "Anvil"],
@@ -489,7 +479,7 @@
       "Oracle type": "peril",
       "Display name": "Spaceborne Peril",
       "Repeatable": true,
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Requires": { "Location": ["Spaceborne", "Orbital", "Deep Space"] },
       "Description": "Use this oracle as an alternative to the __Pay the Price__ table and the creative prompt oracles when you want inspiration for a trouble on an interstellar journey, or to generate a perilous event at a spaceborne facility.",
       "Table": [
@@ -568,7 +558,7 @@
       "Oracle type": "opportunity",
       "Display name": "Spaceborne Opportunity",
       "Repeatable": true,
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Requires": { "Location": ["Spaceborne", "Orbital", "Deep Space"] },
       "Description": "Roll on this table when you need inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you __Undertake an Expedition__, or if you __Explore a Waypoint__ and find an opportunity.",
       "Table": [

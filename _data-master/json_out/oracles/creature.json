@@ -6,7 +6,7 @@
     {
       "Name": "Creature",
       "Roles": ["actor"],
-      "Inherits": [{ "From": "Miscellaneous", "Oracle": "Challenge Rank" }]
+      "Inherits": [{ "Category": "Miscellaneous", "Oracle": "Challenge Rank" }]
     }
   ],
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
@@ -25,7 +25,7 @@
     {
       "Name": "Scale",
       "Initial": true,
-      "Semantics": { "Part of speech": "adjective" },
+      "Semantics": { "Part of speech": ["adjective"] },
       "Table": [
         [1, 3, "Minuscule", "bug-sized"],
         [4, 10, "Tiny", "rodent-sized"],
@@ -46,7 +46,7 @@
     {
       "Name": "Ultra-scale",
       "Initial": true,
-      "Semantics": { "Part of speech": "adjective" },
+      "Semantics": { "Part of speech": ["adjective"] },
       "Requires": { "Scale": ["Ultra-scale"] },
       "Table": [
         [1, 89, "Titanic", "hill-sized"],
@@ -56,11 +56,12 @@
     },
     {
       "Name": "Basic Form",
+      "Initial": true,
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Select table by": "Environment",
       "Tables": [
         {
           "Display name": "Basic Creature Form - Space",
-          "Initial": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": { "Environment": ["Space"] },
           "Table": [
             [1, 5, "Amoeba / pseudopods"],
@@ -92,8 +93,6 @@
         },
         {
           "Display name": "Basic Creature Form - Interior",
-          "Initial": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": { "Environment": ["Interior"] },
           "Table": [
             [1, 3, "Amoeba / pseudopods"],
@@ -125,8 +124,6 @@
         },
         {
           "Display name": "Basic Creature Form - Land",
-          "Initial": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": { "Environment": ["Land"] },
           "Table": [
             [1, 2, "Amoeba / pseudopods"],
@@ -158,8 +155,6 @@
         },
         {
           "Display name": "Basic Creature Form - Liquid",
-          "Initial": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": { "Environment": ["Liquid"] },
           "Table": [
             [1, 5, "Amoeba / pseudopods"],
@@ -191,8 +186,6 @@
         },
         {
           "Display name": "Basic Creature Form - Air",
-          "Initial": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": { "Environment": ["Air"] },
           "Table": [
             [1, 2, "Amoeba / pseudopods"],
@@ -228,7 +221,10 @@
       "Name": "First Look",
       "Display name": "Creature First Look",
       "Initial": true,
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": {
+        "Part of speech": ["fragment"],
+        "Content": ["description"]
+      },
       "Min rolls": 2,
       "Max rolls": 2,
       "Table": [
@@ -286,7 +282,7 @@
     },
     {
       "Name": "Encountered Behavior",
-      "Semantics": { "Part of speech": "common noun" },
+      "Semantics": { "Part of speech": ["common noun"] },
       "Initial": true,
       "Table": [
         [1, 5, "Ambusher"],
@@ -322,7 +318,7 @@
     {
       "Name": "Revealed Aspect",
       "Display name": "Revealed Creature Aspect",
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Max rolls": 2,
       "Table": [
         [1, 2, "Alternative environment"],

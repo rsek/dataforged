@@ -9,7 +9,7 @@
   "Requires": { "Planetary Class": ["Jungle World"] },
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Thumbnail": "https://i.imgur.com/jr90Bnh.png",
-  "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+  "Inherits": [{ "Category": "Planet", "Name": ["Peril", "Opportunity"] }],
   "Sample Names": [
     "Acacia",
     "Aster",
@@ -81,9 +81,9 @@
     },
     {
       "Name": "Settlements",
+      "Select table by": "Region",
       "Tables": [
         {
-          "Initial": true,
           "Display name": "Settlements - Terminus",
           "Requires": { "Region": ["Terminus"] },
           "Table": [
@@ -145,7 +145,6 @@
           ]
         },
         {
-          "Initial": true,
           "Display name": "Settlements - Outlands",
           "Requires": { "Region": ["Outlands"] },
           "Table": [
@@ -207,7 +206,6 @@
           ]
         },
         {
-          "Initial": true,
           "Display name": "Settlements - Expanse",
           "Requires": { "Region": ["Expanse"] },
           "Table": [
@@ -272,8 +270,7 @@
     },
     {
       "Name": "Observed From Space",
-      "Initial": true,
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Max rolls": 2,
       "Table": [
         [1, 11, "Cloud-breaching trees"],
@@ -314,7 +311,7 @@
     },
     {
       "Name": "Planetside Feature",
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Max rolls": 2,
       "Table": [
         [1, 7, "Bioluminescent flora"],

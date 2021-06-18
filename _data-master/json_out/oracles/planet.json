@@ -15,12 +15,13 @@
     "Tainted World",
     "Vital World"
   ],
-  "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
-  "Inherits": [{ "From": "Space", "Oracles": ["Stellar Object"] }],
+  "Source": { "Name": "Starforged Backer Preview", "Version": "060121" },
+  "Inherits": [{ "Category": "Space", "Name": ["Stellar Object"] }],
   "Oracles": [
     {
       "Name": "Planetary Class",
       "Initial": true,
+      "Use with": [{ "Name": "Descriptor", "Category": "Core" }],
       "Table": [
         [
           1,
@@ -93,11 +94,13 @@
     {
       "Name": "Peril",
       "Oracle type": "peril",
+      "Repeatable": true,
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
+      "Select table by": "Region",
       "Tables": [
         {
           "Display name": "Planetside Peril - Lifebearing",
-          "Repeatable": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": {
             "Location": ["Planetside"],
             "Life": [
@@ -174,7 +177,7 @@
             [52, 54, "Led astray"],
             [55, 57, "Lost the path"],
             [58, 60, "Meteorites fall from the sky"],
-            [61, 63, "Radiated area or object"],
+            [61, 63, "Irradiated area or object"],
             [64, 66, "Realization that something was left behind"],
             [67, 69, "Seismic or volcanic upheaval"],
             [70, 72, "Signs of a lurking or trailing foe"],
@@ -220,8 +223,6 @@
         },
         {
           "Display name": "Planetside Peril - Lifeless",
-          "Repeatable": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": {
             "Location": ["Planetside"],
             "Life": ["Lifeless", "None", "Extinct"]
@@ -248,7 +249,7 @@
             [36, 39, "Led astray"],
             [40, 43, "Lost the path"],
             [44, 47, "Meteorites fall from the sky"],
-            [48, 51, "Radiated area or object"],
+            [48, 51, "Irradiated area or object"],
             [52, 55, "Realization that something was left behind"],
             [56, 59, "Seismic or volcanic upheaval"],
             [60, 63, "Signs of a lurking or trailing foe"],
@@ -297,12 +298,13 @@
     {
       "Name": "Opportunity",
       "Oracle type": "opportunity",
+      "Repeatable": true,
+      "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.",
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Select table by": "Region",
       "Tables": [
         {
           "Display name": "Planetside Opportunity - Lifebearing",
-          "Repeatable": true,
-          "Oracle type": "opportunity",
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": {
             "Location": ["Planetside"],
             "Life": [
@@ -473,8 +475,6 @@
         },
         {
           "Display name": "Planetside Opportunity - Lifeless",
-          "Repeatable": true,
-          "Semantics": { "Part of speech": "fragment" },
           "Requires": {
             "Location": ["Planetside"],
             "Life": ["Lifeless", "None", "Extinct"]

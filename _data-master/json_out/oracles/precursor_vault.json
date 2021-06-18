@@ -9,14 +9,19 @@
       "Roles": ["place"],
       "Inherits": [
         {
-          "From": "Space",
-          "Oracles": ["Peril", "Opportunity"],
+          "Category": "Space",
+          "Name": ["Peril", "Opportunity"],
           "Requires": { "Location": ["Orbital", "Deep Space", "Spaceborne"] }
         },
         {
-          "From": "Planet",
-          "Oracles": ["Peril", "Opportunity"],
+          "Category": "Planet",
+          "Name": ["Peril", "Opportunity"],
           "Requires": { "Location": ["Planetside"] }
+        },
+        {
+          "Category": "Space",
+          "Name": ["Stellar Object"],
+          "Requires": { "Location": ["Deep Space"] }
         }
       ]
     }
@@ -36,7 +41,7 @@
     {
       "Name": "Scale",
       "Initial": true,
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Table": [
         [1, 30, "Minor, confined site"],
         [31, 65, "Typical site of limited scope"],
@@ -48,7 +53,7 @@
     {
       "Name": "Form",
       "Initial": true,
-      "Semantics": { "Part of speech": "noun" },
+      "Semantics": { "Part of speech": ["noun"] },
       "Table": [
         [1, 35, "Structure"],
         [36, 60, "Vessel"],
@@ -60,7 +65,7 @@
     {
       "Name": "Shape",
       "Initial": true,
-      "Semantics": { "Part of speech": "adjective" },
+      "Semantics": { "Part of speech": ["adjective"] },
       "Table": [
         [1, 15, "Practical or functional"],
         [16, 20, "Geometric (complex shape)"],
@@ -90,7 +95,7 @@
     {
       "Name": "Material",
       "Initial": true,
-      "Semantics": { "Part of speech": "adjective" },
+      "Semantics": { "Part of speech": ["adjective"] },
       "Table": [
         [1, 30, "Metallic (industrial)"],
         [31, 60, "Metallic (smooth)"],
@@ -114,7 +119,7 @@
     {
       "Name": "First Look",
       "Display name": "Outer First Look",
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Initial": true,
       "Max rolls": 2,
       "Table": [

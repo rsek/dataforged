@@ -5,7 +5,7 @@
     "Oracles": [
       {
         "Name": "Background Assets",
-        "Semantics": { "Part of speech": "common noun" },
+        "Semantics": { "Part of speech": ["common noun"] },
         "Table": [
           {
             "Chance": 5,
@@ -111,7 +111,7 @@
       },
       {
         "Name": "Backstory Prompts",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 7,
@@ -167,7 +167,7 @@
       },
       {
         "Name": "Starship History",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 8,
@@ -212,7 +212,7 @@
       },
       {
         "Name": "Starship Quirks",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Max rolls": 2,
         "Table": [
           {
@@ -297,7 +297,7 @@
       {
         "Name": "Sector Trouble",
         "Oracle type": "peril",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 5,
@@ -387,7 +387,7 @@
       },
       {
         "Name": "Inciting Incident",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 5,
@@ -506,6 +506,7 @@
     "Display name": "Characters",
     "Aliases": ["NPC"],
     "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+    "Inherits": [{ "Category": "Miscellaneous", "Name": ["Challenge Rank"] }],
     "Oracles": [
       {
         "Name": "Given Name",
@@ -514,8 +515,7 @@
           { "Category": "Character", "Name": "Callsign" },
           { "Category": "Character", "Name": "Family Name" }
         ],
-        "Repeatable": true,
-        "Semantics": { "Part of speech": "proper noun" },
+        "Semantics": { "Part of speech": ["proper noun"] },
         "Initial": true,
         "Table": [
           { "Chance": 1, "Description": "Akim" },
@@ -621,9 +621,120 @@
         ]
       },
       {
+        "Name": "Callsign",
+        "Display name": "Character Name - Callsign",
+        "Use with": [
+          { "Category": "Character", "Name": "Given Name" },
+          { "Category": "Character", "Name": "Family Name" }
+        ],
+        "Semantics": { "Part of speech": ["proper noun"] },
+        "Table": [
+          { "Chance": 1, "Description": "Albatross" },
+          { "Chance": 2, "Description": "Angler" },
+          { "Chance": 3, "Description": "Anvil" },
+          { "Chance": 4, "Description": "Badger" },
+          { "Chance": 5, "Description": "Bandit" },
+          { "Chance": 6, "Description": "Bash" },
+          { "Chance": 7, "Description": "Basilisk" },
+          { "Chance": 8, "Description": "Bingo" },
+          { "Chance": 9, "Description": "Blackbird" },
+          { "Chance": 10, "Description": "Blade" },
+          { "Chance": 11, "Description": "Bloodshot" },
+          { "Chance": 12, "Description": "Bluewing" },
+          { "Chance": 13, "Description": "Bonfire" },
+          { "Chance": 14, "Description": "Book" },
+          { "Chance": 15, "Description": "Breaker" },
+          { "Chance": 16, "Description": "Brick" },
+          { "Chance": 17, "Description": "Buzz" },
+          { "Chance": 18, "Description": "Buzzard" },
+          { "Chance": 19, "Description": "Centurion" },
+          { "Chance": 20, "Description": "Chimera" },
+          { "Chance": 21, "Description": "Circuit" },
+          { "Chance": 22, "Description": "Clank" },
+          { "Chance": 23, "Description": "Cleric" },
+          { "Chance": 24, "Description": "Crash" },
+          { "Chance": 25, "Description": "Cutter" },
+          { "Chance": 26, "Description": "Cutthroat" },
+          { "Chance": 27, "Description": "Cypher" },
+          { "Chance": 28, "Description": "Dagger" },
+          { "Chance": 29, "Description": "Dancer" },
+          { "Chance": 30, "Description": "Dash" },
+          { "Chance": 31, "Description": "Deadeye" },
+          { "Chance": 32, "Description": "Deuce" },
+          { "Chance": 33, "Description": "Failsafe" },
+          { "Chance": 34, "Description": "Farseer" },
+          { "Chance": 35, "Description": "Fidget" },
+          { "Chance": 36, "Description": "Firestarter" },
+          { "Chance": 37, "Description": "Fixer" },
+          { "Chance": 38, "Description": "Flatline" },
+          { "Chance": 39, "Description": "Ghost" },
+          { "Chance": 40, "Description": "Grudge" },
+          { "Chance": 41, "Description": "Gutshot" },
+          { "Chance": 42, "Description": "Harrow" },
+          { "Chance": 43, "Description": "Havoc" },
+          { "Chance": 44, "Description": "Hellhound" },
+          { "Chance": 45, "Description": "Hellion" },
+          { "Chance": 46, "Description": "Hex" },
+          { "Chance": 47, "Description": "Hush" },
+          { "Chance": 48, "Description": "Ironclad" },
+          { "Chance": 49, "Description": "Jackal" },
+          { "Chance": 50, "Description": "Jackpot" },
+          { "Chance": 51, "Description": "Jester" },
+          { "Chance": 52, "Description": "Link" },
+          { "Chance": 53, "Description": "Longshot" },
+          { "Chance": 54, "Description": "Mainframe" },
+          { "Chance": 55, "Description": "Mantis" },
+          { "Chance": 56, "Description": "Mimic" },
+          { "Chance": 57, "Description": "Mole" },
+          { "Chance": 58, "Description": "Monarch" },
+          { "Chance": 59, "Description": "Mongoose" },
+          { "Chance": 60, "Description": "Nails" },
+          { "Chance": 61, "Description": "Ogre" },
+          { "Chance": 62, "Description": "Omega" },
+          { "Chance": 63, "Description": "Overload" },
+          { "Chance": 64, "Description": "Packrat" },
+          { "Chance": 65, "Description": "Paladin" },
+          { "Chance": 66, "Description": "Phantom" },
+          { "Chance": 67, "Description": "Phoenix" },
+          { "Chance": 68, "Description": "Pyro" },
+          { "Chance": 69, "Description": "Quickdraw" },
+          { "Chance": 70, "Description": "Razor" },
+          { "Chance": 71, "Description": "Rogue" },
+          { "Chance": 72, "Description": "Rook" },
+          { "Chance": 73, "Description": "Rover" },
+          { "Chance": 74, "Description": "Scout" },
+          { "Chance": 75, "Description": "Shadow" },
+          { "Chance": 76, "Description": "Shark" },
+          { "Chance": 77, "Description": "Shutdown" },
+          { "Chance": 78, "Description": "Slack" },
+          { "Chance": 79, "Description": "Slag" },
+          { "Chance": 80, "Description": "Snipe" },
+          { "Chance": 81, "Description": "Spider" },
+          { "Chance": 82, "Description": "Splinter" },
+          { "Chance": 83, "Description": "Static" },
+          { "Chance": 84, "Description": "Stinger" },
+          { "Chance": 85, "Description": "Straggler" },
+          { "Chance": 86, "Description": "Swindle" },
+          { "Chance": 87, "Description": "Tinker" },
+          { "Chance": 88, "Description": "Touchdown" },
+          { "Chance": 89, "Description": "Tycoon" },
+          { "Chance": 90, "Description": "Vagabond" },
+          { "Chance": 91, "Description": "Valkyrie" },
+          { "Chance": 92, "Description": "Vanguard" },
+          { "Chance": 93, "Description": "Vertigo" },
+          { "Chance": 94, "Description": "Warden" },
+          { "Chance": 95, "Description": "Watchdog" },
+          { "Chance": 96, "Description": "Wayfinder" },
+          { "Chance": 97, "Description": "Whisper" },
+          { "Chance": 98, "Description": "Wraith" },
+          { "Chance": 99, "Description": "Wrongway" },
+          { "Chance": 100, "Description": "Zephyr" }
+        ]
+      },
+      {
         "Name": "Family Name",
         "Display name": "Character Name - Family Name",
-        "Semantics": { "Part of speech": "proper noun" },
+        "Semantics": { "Part of speech": ["proper noun"] },
         "Use with": [
           { "Category": "Character", "Name": "Given Name" },
           { "Category": "Character", "Name": "Callsign" }
@@ -733,119 +844,8 @@
         ]
       },
       {
-        "Name": "Callsign",
-        "Display name": "Character Name - Callsign",
-        "Use with": [
-          { "Category": "Character", "Name": "Given Name" },
-          { "Category": "Character", "Name": "Family Name" }
-        ],
-        "Semantics": { "Part of speech": "proper noun" },
-        "Table": [
-          { "Chance": 1, "Description": "Albatross" },
-          { "Chance": 2, "Description": "Angler" },
-          { "Chance": 3, "Description": "Anvil" },
-          { "Chance": 4, "Description": "Badger" },
-          { "Chance": 5, "Description": "Bandit" },
-          { "Chance": 6, "Description": "Bash" },
-          { "Chance": 7, "Description": "Basilisk" },
-          { "Chance": 8, "Description": "Bingo" },
-          { "Chance": 9, "Description": "Blackbird" },
-          { "Chance": 10, "Description": "Blade" },
-          { "Chance": 11, "Description": "Bloodshot" },
-          { "Chance": 12, "Description": "Bluewing" },
-          { "Chance": 13, "Description": "Bonfire" },
-          { "Chance": 14, "Description": "Book" },
-          { "Chance": 15, "Description": "Breaker" },
-          { "Chance": 16, "Description": "Brick" },
-          { "Chance": 17, "Description": "Buzz" },
-          { "Chance": 18, "Description": "Buzzard" },
-          { "Chance": 19, "Description": "Centurion" },
-          { "Chance": 20, "Description": "Chimera" },
-          { "Chance": 21, "Description": "Circuit" },
-          { "Chance": 22, "Description": "Clank" },
-          { "Chance": 23, "Description": "Cleric" },
-          { "Chance": 24, "Description": "Crash" },
-          { "Chance": 25, "Description": "Cutter" },
-          { "Chance": 26, "Description": "Cutthroat" },
-          { "Chance": 27, "Description": "Cypher" },
-          { "Chance": 28, "Description": "Dagger" },
-          { "Chance": 29, "Description": "Dancer" },
-          { "Chance": 30, "Description": "Dash" },
-          { "Chance": 31, "Description": "Deadeye" },
-          { "Chance": 32, "Description": "Deuce" },
-          { "Chance": 33, "Description": "Failsafe" },
-          { "Chance": 34, "Description": "Farseer" },
-          { "Chance": 35, "Description": "Fidget" },
-          { "Chance": 36, "Description": "Firestarter" },
-          { "Chance": 37, "Description": "Fixer" },
-          { "Chance": 38, "Description": "Flatline" },
-          { "Chance": 39, "Description": "Ghost" },
-          { "Chance": 40, "Description": "Grudge" },
-          { "Chance": 41, "Description": "Gutshot" },
-          { "Chance": 42, "Description": "Harrow" },
-          { "Chance": 43, "Description": "Havoc" },
-          { "Chance": 44, "Description": "Hellhound" },
-          { "Chance": 45, "Description": "Hellion" },
-          { "Chance": 46, "Description": "Hex" },
-          { "Chance": 47, "Description": "Hush" },
-          { "Chance": 48, "Description": "Ironclad" },
-          { "Chance": 49, "Description": "Jackal" },
-          { "Chance": 50, "Description": "Jackpot" },
-          { "Chance": 51, "Description": "Jester" },
-          { "Chance": 52, "Description": "Link" },
-          { "Chance": 53, "Description": "Longshot" },
-          { "Chance": 54, "Description": "Mainframe" },
-          { "Chance": 55, "Description": "Mantis" },
-          { "Chance": 56, "Description": "Mimic" },
-          { "Chance": 57, "Description": "Mole" },
-          { "Chance": 58, "Description": "Monarch" },
-          { "Chance": 59, "Description": "Mongoose" },
-          { "Chance": 60, "Description": "Nails" },
-          { "Chance": 61, "Description": "Ogre" },
-          { "Chance": 62, "Description": "Omega" },
-          { "Chance": 63, "Description": "Overload" },
-          { "Chance": 64, "Description": "Packrat" },
-          { "Chance": 65, "Description": "Paladin" },
-          { "Chance": 66, "Description": "Phantom" },
-          { "Chance": 67, "Description": "Phoenix" },
-          { "Chance": 68, "Description": "Pyro" },
-          { "Chance": 69, "Description": "Quickdraw" },
-          { "Chance": 70, "Description": "Razor" },
-          { "Chance": 71, "Description": "Rogue" },
-          { "Chance": 72, "Description": "Rook" },
-          { "Chance": 73, "Description": "Rover" },
-          { "Chance": 74, "Description": "Scout" },
-          { "Chance": 75, "Description": "Shadow" },
-          { "Chance": 76, "Description": "Shark" },
-          { "Chance": 77, "Description": "Shutdown" },
-          { "Chance": 78, "Description": "Slack" },
-          { "Chance": 79, "Description": "Slag" },
-          { "Chance": 80, "Description": "Snipe" },
-          { "Chance": 81, "Description": "Spider" },
-          { "Chance": 82, "Description": "Splinter" },
-          { "Chance": 83, "Description": "Static" },
-          { "Chance": 84, "Description": "Stinger" },
-          { "Chance": 85, "Description": "Straggler" },
-          { "Chance": 86, "Description": "Swindle" },
-          { "Chance": 87, "Description": "Tinker" },
-          { "Chance": 88, "Description": "Touchdown" },
-          { "Chance": 89, "Description": "Tycoon" },
-          { "Chance": 90, "Description": "Vagabond" },
-          { "Chance": 91, "Description": "Valkyrie" },
-          { "Chance": 92, "Description": "Vanguard" },
-          { "Chance": 93, "Description": "Vertigo" },
-          { "Chance": 94, "Description": "Warden" },
-          { "Chance": 95, "Description": "Watchdog" },
-          { "Chance": 96, "Description": "Wayfinder" },
-          { "Chance": 97, "Description": "Whisper" },
-          { "Chance": 98, "Description": "Wraith" },
-          { "Chance": 99, "Description": "Wrongway" },
-          { "Chance": 100, "Description": "Zephyr" }
-        ]
-      },
-      {
         "Name": "First Look",
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Initial": true,
         "Min rolls": 2,
         "Max rolls": 2,
@@ -893,7 +893,7 @@
       },
       {
         "Name": "Disposition",
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Initial": true,
         "Table": [
           { "Chance": 6, "Description": "helpful" },
@@ -913,7 +913,10 @@
       {
         "Name": "Role",
         "Display name": "Character Role",
-        "Semantics": { "Part of speech": "common noun", "Content": ["people"] },
+        "Semantics": {
+          "Part of speech": ["common noun"],
+          "Content": ["people"]
+        },
         "Initial": true,
         "Table": [
           { "Chance": 2, "Description": "agent" },
@@ -980,7 +983,7 @@
       {
         "Name": "Goal",
         "Display name": "Character Goal",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 2,
@@ -1265,7 +1268,7 @@
       {
         "Name": "Revealed Aspect",
         "Display name": "Revealed Character Aspect",
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Max rolls": 3,
         "Table": [
           { "Chance": 1, "Description": "addicted" },
@@ -1379,7 +1382,8 @@
       {
         "Name": "Action",
         "Use with": [{ "Category": "Core", "Name": "Theme" }],
-        "Semantics": { "Part of speech": "verb" },
+        "Semantics": { "Part of speech": ["verb"] },
+        "Description": "Use these oracle tables to reveal details about a goal, situation, or event.\n\nThey provide a word or phrase that can be taken literally or interpreted\nas an abstraction.\n\nAction and Theme can answer questions such as:\n  \n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
         "Table": [
           { "Chance": 1, "Description": "abandon" },
           { "Chance": 2, "Description": "acquire" },
@@ -1487,9 +1491,10 @@
         "Name": "Theme",
         "Use with": [{ "Category": "Core", "Name": "Action" }],
         "Semantics": {
-          "Part of speech": "common noun",
+          "Part of speech": ["common noun"],
           "Content": ["abstract noun"]
         },
+        "Description": "Use these oracle tables to reveal details about a goal, situation, or event.\n\nThey provide a word or phrase that can be taken literally or interpreted\nas an abstraction.\n\nAction and Theme can answer questions such as:\n  \n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
         "Table": [
           { "Chance": 1, "Description": "ability" },
           { "Chance": 2, "Description": "advantage" },
@@ -1596,7 +1601,8 @@
       {
         "Name": "Descriptor",
         "Use with": [{ "Category": "Core", "Name": "Focus" }],
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
+        "Description": "Use these oracles to generate the details of a location, discovery, or encounter. The Descriptor oracle is particularly handy for quick generation of a location. For example, use it to describe the basic nature of a planet instead of rolling on the detailed planet oracles.\n\nDescriptor and Focus can answer questions such as:\n  * What is this ship’s cargo?\n  * What is the nature of this planet?\n  * What is inside this station?\n  * What hazard do I encounter?",
         "Table": [
           { "Chance": 1, "Description": "abandoned" },
           { "Chance": 2, "Description": "abundant" },
@@ -1704,9 +1710,10 @@
         "Name": "Focus",
         "Use with": [{ "Category": "Core", "Name": "Descriptor" }],
         "Semantics": {
-          "Part of speech": "common noun",
+          "Part of speech": ["common noun"],
           "Content": "concrete noun"
         },
+        "Description": "Use these oracles to generate the details of a location, discovery, or encounter. The Descriptor oracle is particularly handy for quick generation of a location. For example, use it to describe the basic nature of a planet instead of rolling on the detailed planet oracles.\n\nDescriptor and Focus can answer questions such as:\n  * What is this ship’s cargo?\n  * What is the nature of this planet?\n  * What is inside this station?\n  * What hazard do I encounter?",
         "Table": [
           { "Chance": 1, "Description": "AI" },
           { "Chance": 2, "Description": "alarm" },
@@ -1831,7 +1838,7 @@
       {
         "Name": "Scale",
         "Initial": true,
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Table": [
           { "Chance": 3, "Description": "minuscule", "Details": "bug-sized" },
           { "Chance": 10, "Description": "tiny", "Details": "rodent-sized" },
@@ -1849,7 +1856,7 @@
       {
         "Name": "Ultra-scale",
         "Initial": true,
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Requires": { "Scale": ["Ultra-scale"] },
         "Table": [
           { "Chance": 89, "Description": "titanic", "Details": "hill-sized" },
@@ -1863,30 +1870,31 @@
       },
       {
         "Name": "Basic Form",
+        "Initial": true,
+        "Semantics": { "Part of speech": ["fragment"] },
+        "Select table by": "Environment",
         "Tables": [
           {
             "Display name": "Basic Creature Form - Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": { "Environment": ["Space"] },
             "Table": [
-              { "Chance": 5, "Description": "amoeba / pseudopods" },
-              { "Chance": 20, "Description": "amorphous / elemental" },
-              { "Chance": 30, "Description": "avian / winged" },
-              { "Chance": 32, "Description": "beast / mammal" },
-              { "Chance": 34, "Description": "crustacean / shelled" },
-              { "Chance": 37, "Description": "fish / torpedo-shaped" },
-              { "Chance": 39, "Description": "humanoid / bipedal" },
-              { "Chance": 41, "Description": "insectoid / exoskeletal" },
-              { "Chance": 60, "Description": "jellyfish / gasbag" },
-              { "Chance": 62, "Description": "lizard / reptilian" },
-              { "Chance": 67, "Description": "octopoid / tentacled" },
-              { "Chance": 72, "Description": "plant / fungus" },
-              { "Chance": 82, "Description": "ray / flat-bodied" },
-              { "Chance": 84, "Description": "snake / eel" },
-              { "Chance": 86, "Description": "spider / web-weaver" },
-              { "Chance": 88, "Description": "starfish / symmetrical" },
-              { "Chance": 90, "Description": "worm / slug / larva" },
+              { "Chance": 5, "Description": "Amoeba / pseudopods" },
+              { "Chance": 20, "Description": "Amorphous / elemental" },
+              { "Chance": 30, "Description": "Avian / winged" },
+              { "Chance": 32, "Description": "Beast / mammal" },
+              { "Chance": 34, "Description": "Crustacean / shelled" },
+              { "Chance": 37, "Description": "Fish / torpedo-shaped" },
+              { "Chance": 39, "Description": "Humanoid / bipedal" },
+              { "Chance": 41, "Description": "Insectoid / exoskeletal" },
+              { "Chance": 60, "Description": "Jellyfish / gasbag" },
+              { "Chance": 62, "Description": "Lizard / reptilian" },
+              { "Chance": 67, "Description": "Octopoid / tentacled" },
+              { "Chance": 72, "Description": "Plant / fungus" },
+              { "Chance": 82, "Description": "Ray / flat-bodied" },
+              { "Chance": 84, "Description": "Snake / eel" },
+              { "Chance": 86, "Description": "Spider / web-weaver" },
+              { "Chance": 88, "Description": "Starfish / symmetrical" },
+              { "Chance": 90, "Description": "Worm / slug / larva" },
               {
                 "Chance": 100,
                 "Description": "Roll twice",
@@ -1896,27 +1904,25 @@
           },
           {
             "Display name": "Basic Creature Form - Interior",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": { "Environment": ["Interior"] },
             "Table": [
-              { "Chance": 3, "Description": "amoeba / pseudopods" },
-              { "Chance": 6, "Description": "amorphous / elemental" },
-              { "Chance": 12, "Description": "avian / winged" },
-              { "Chance": 19, "Description": "beast / mammal" },
-              { "Chance": 22, "Description": "crustacean / shelled" },
-              { "Chance": 24, "Description": "fish / torpedo-shaped" },
-              { "Chance": 37, "Description": "humanoid / bipedal" },
-              { "Chance": 49, "Description": "insectoid / exoskeletal" },
-              { "Chance": 51, "Description": "jellyfish / gasbag" },
-              { "Chance": 56, "Description": "lizard / reptilian" },
-              { "Chance": 58, "Description": "octopoid / tentacled" },
-              { "Chance": 63, "Description": "plant / fungus" },
-              { "Chance": 65, "Description": "ray / flat-bodied" },
-              { "Chance": 68, "Description": "snake / eel" },
-              { "Chance": 83, "Description": "spider / web-weaver" },
-              { "Chance": 85, "Description": "starfish / symmetrical" },
-              { "Chance": 90, "Description": "worm / slug / larva" },
+              { "Chance": 3, "Description": "Amoeba / pseudopods" },
+              { "Chance": 6, "Description": "Amorphous / elemental" },
+              { "Chance": 12, "Description": "Avian / winged" },
+              { "Chance": 19, "Description": "Beast / mammal" },
+              { "Chance": 22, "Description": "Crustacean / shelled" },
+              { "Chance": 24, "Description": "Fish / torpedo-shaped" },
+              { "Chance": 37, "Description": "Humanoid / bipedal" },
+              { "Chance": 49, "Description": "Insectoid / exoskeletal" },
+              { "Chance": 51, "Description": "Jellyfish / gasbag" },
+              { "Chance": 56, "Description": "Lizard / reptilian" },
+              { "Chance": 58, "Description": "Octopoid / tentacled" },
+              { "Chance": 63, "Description": "Plant / fungus" },
+              { "Chance": 65, "Description": "Ray / flat-bodied" },
+              { "Chance": 68, "Description": "Snake / eel" },
+              { "Chance": 83, "Description": "Spider / web-weaver" },
+              { "Chance": 85, "Description": "Starfish / symmetrical" },
+              { "Chance": 90, "Description": "Worm / slug / larva" },
               {
                 "Chance": 100,
                 "Description": "Roll twice",
@@ -1926,27 +1932,25 @@
           },
           {
             "Display name": "Basic Creature Form - Land",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": { "Environment": ["Land"] },
             "Table": [
-              { "Chance": 2, "Description": "amoeba / pseudopods" },
-              { "Chance": 5, "Description": "amorphous / elemental" },
-              { "Chance": 10, "Description": "avian / winged" },
-              { "Chance": 25, "Description": "beast / mammal" },
-              { "Chance": 32, "Description": "crustacean / shelled" },
-              { "Chance": 34, "Description": "fish / torpedo-shaped" },
-              { "Chance": 39, "Description": "humanoid / bipedal" },
-              { "Chance": 49, "Description": "insectoid / exoskeletal" },
-              { "Chance": 51, "Description": "jellyfish / gasbag" },
-              { "Chance": 58, "Description": "lizard / reptilian" },
-              { "Chance": 60, "Description": "octopoid / tentacled" },
-              { "Chance": 65, "Description": "plant / fungus" },
-              { "Chance": 67, "Description": "ray / flat-bodied" },
-              { "Chance": 74, "Description": "snake / eel" },
-              { "Chance": 81, "Description": "spider / web-weaver" },
-              { "Chance": 83, "Description": "starfish / symmetrical" },
-              { "Chance": 90, "Description": "worm / slug / larva" },
+              { "Chance": 2, "Description": "Amoeba / pseudopods" },
+              { "Chance": 5, "Description": "Amorphous / elemental" },
+              { "Chance": 10, "Description": "Avian / winged" },
+              { "Chance": 25, "Description": "Beast / mammal" },
+              { "Chance": 32, "Description": "Crustacean / shelled" },
+              { "Chance": 34, "Description": "Fish / torpedo-shaped" },
+              { "Chance": 39, "Description": "Humanoid / bipedal" },
+              { "Chance": 49, "Description": "Insectoid / exoskeletal" },
+              { "Chance": 51, "Description": "Jellyfish / gasbag" },
+              { "Chance": 58, "Description": "Lizard / reptilian" },
+              { "Chance": 60, "Description": "Octopoid / tentacled" },
+              { "Chance": 65, "Description": "Plant / fungus" },
+              { "Chance": 67, "Description": "Ray / flat-bodied" },
+              { "Chance": 74, "Description": "Snake / eel" },
+              { "Chance": 81, "Description": "Spider / web-weaver" },
+              { "Chance": 83, "Description": "Starfish / symmetrical" },
+              { "Chance": 90, "Description": "Worm / slug / larva" },
               {
                 "Chance": 100,
                 "Description": "Roll twice",
@@ -1956,27 +1960,25 @@
           },
           {
             "Display name": "Basic Creature Form - Liquid",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": { "Environment": ["Liquid"] },
             "Table": [
-              { "Chance": 5, "Description": "amoeba / pseudopods" },
-              { "Chance": 8, "Description": "amorphous / elemental" },
-              { "Chance": 11, "Description": "avian / winged" },
-              { "Chance": 17, "Description": "beast / mammal" },
-              { "Chance": 24, "Description": "crustacean / shelled" },
-              { "Chance": 39, "Description": "fish / torpedo-shaped" },
-              { "Chance": 42, "Description": "humanoid / bipedal" },
-              { "Chance": 45, "Description": "insectoid / exoskeletal" },
-              { "Chance": 53, "Description": "jellyfish / gasbag" },
-              { "Chance": 56, "Description": "lizard / reptilian" },
-              { "Chance": 63, "Description": "octopoid / tentacled" },
-              { "Chance": 68, "Description": "plant / fungus" },
-              { "Chance": 75, "Description": "ray / flat-bodied" },
-              { "Chance": 80, "Description": "snake / eel" },
-              { "Chance": 82, "Description": "spider / web-weaver" },
-              { "Chance": 87, "Description": "starfish / symmetrical" },
-              { "Chance": 90, "Description": "worm / slug / larva" },
+              { "Chance": 5, "Description": "Amoeba / pseudopods" },
+              { "Chance": 8, "Description": "Amorphous / elemental" },
+              { "Chance": 11, "Description": "Avian / winged" },
+              { "Chance": 17, "Description": "Beast / mammal" },
+              { "Chance": 24, "Description": "Crustacean / shelled" },
+              { "Chance": 39, "Description": "Fish / torpedo-shaped" },
+              { "Chance": 42, "Description": "Humanoid / bipedal" },
+              { "Chance": 45, "Description": "Insectoid / exoskeletal" },
+              { "Chance": 53, "Description": "Jellyfish / gasbag" },
+              { "Chance": 56, "Description": "Lizard / reptilian" },
+              { "Chance": 63, "Description": "Octopoid / tentacled" },
+              { "Chance": 68, "Description": "Plant / fungus" },
+              { "Chance": 75, "Description": "Ray / flat-bodied" },
+              { "Chance": 80, "Description": "Snake / eel" },
+              { "Chance": 82, "Description": "Spider / web-weaver" },
+              { "Chance": 87, "Description": "Starfish / symmetrical" },
+              { "Chance": 90, "Description": "Worm / slug / larva" },
               {
                 "Chance": 100,
                 "Description": "Roll twice",
@@ -1986,27 +1988,25 @@
           },
           {
             "Display name": "Basic Creature Form - Air",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": { "Environment": ["Air"] },
             "Table": [
-              { "Chance": 2, "Description": "amoeba / pseudopods" },
-              { "Chance": 12, "Description": "amorphous / elemental" },
-              { "Chance": 37, "Description": "avian / winged" },
-              { "Chance": 40, "Description": "beast / mammal" },
-              { "Chance": 42, "Description": "crustacean / shelled" },
-              { "Chance": 47, "Description": "fish / torpedo-shaped" },
-              { "Chance": 49, "Description": "humanoid / bipedal" },
-              { "Chance": 51, "Description": "insectoid / exoskeletal" },
-              { "Chance": 66, "Description": "jellyfish / gasbag" },
-              { "Chance": 68, "Description": "lizard / reptilian" },
-              { "Chance": 70, "Description": "octopoid / tentacled" },
-              { "Chance": 72, "Description": "plant / fungus" },
-              { "Chance": 82, "Description": "ray / flat-bodied" },
-              { "Chance": 84, "Description": "snake / eel" },
-              { "Chance": 86, "Description": "spider / web-weaver" },
-              { "Chance": 88, "Description": "starfish / symmetrical" },
-              { "Chance": 90, "Description": "worm / slug / larva" },
+              { "Chance": 2, "Description": "Amoeba / pseudopods" },
+              { "Chance": 12, "Description": "Amorphous / elemental" },
+              { "Chance": 37, "Description": "Avian / winged" },
+              { "Chance": 40, "Description": "Beast / mammal" },
+              { "Chance": 42, "Description": "Crustacean / shelled" },
+              { "Chance": 47, "Description": "Fish / torpedo-shaped" },
+              { "Chance": 49, "Description": "Humanoid / bipedal" },
+              { "Chance": 51, "Description": "Insectoid / exoskeletal" },
+              { "Chance": 66, "Description": "Jellyfish / gasbag" },
+              { "Chance": 68, "Description": "Lizard / reptilian" },
+              { "Chance": 70, "Description": "Octopoid / tentacled" },
+              { "Chance": 72, "Description": "Plant / fungus" },
+              { "Chance": 82, "Description": "Ray / flat-bodied" },
+              { "Chance": 84, "Description": "Snake / eel" },
+              { "Chance": 86, "Description": "Spider / web-weaver" },
+              { "Chance": 88, "Description": "Starfish / symmetrical" },
+              { "Chance": 90, "Description": "Worm / slug / larva" },
               {
                 "Chance": 100,
                 "Description": "Roll twice",
@@ -2020,7 +2020,10 @@
         "Name": "First Look",
         "Display name": "Creature First Look",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": {
+          "Part of speech": ["fragment"],
+          "Content": ["description"]
+        },
         "Min rolls": 2,
         "Max rolls": 2,
         "Table": [
@@ -2078,7 +2081,7 @@
       },
       {
         "Name": "Encountered Behavior",
-        "Semantics": { "Part of speech": "common noun" },
+        "Semantics": { "Part of speech": ["common noun"] },
         "Initial": true,
         "Table": [
           { "Chance": 5, "Description": "ambusher" },
@@ -2111,7 +2114,7 @@
       {
         "Name": "Revealed Aspect",
         "Display name": "Revealed Creature Aspect",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Max rolls": 2,
         "Table": [
           { "Chance": 2, "Description": "alternative environment" },
@@ -2175,38 +2178,28 @@
     "Description": "Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.",
     "Inherits": [
       {
-        "From": "Settlement",
-        "Oracles": [
-          "Name",
-          "Population",
-          "First Look",
-          "Projects",
-          "Trouble",
-          "Authority"
-        ],
+        "Category": "Settlement",
+        "Exclude": ["Location", "Initial Contact"],
         "Requires": { "Derelict Type": ["Settlement"] }
       },
       {
-        "From": "Starship",
-        "Oracles": ["Name", "First Look", "Starship Type"],
+        "Category": "Starship",
+        "Exclude": ["Location", "Initial Contact"],
         "Requires": { "Derelict Type": ["Starship"] }
       },
       {
-        "From": "Space",
-        "Oracles": ["Peril", "Opportunity"],
+        "Category": "Space",
+        "Name": ["Peril", "Opportunity"],
         "Requires": { "Location": ["Orbital", "Deep Space"] }
       },
       {
-        "From": "Space",
-        "Oracles": ["Stellar Object"],
-        "Requires": {
-          "Location": ["Deep Space"],
-          "Derelict Type": ["Settlement"]
-        }
+        "Category": "Space",
+        "Name": ["Stellar Object"],
+        "Requires": { "Location": ["Deep Space"] }
       },
       {
-        "From": "Planet",
-        "Oracles": ["Peril", "Opportunity"],
+        "Category": "Planet",
+        "Name": ["Peril", "Opportunity"],
         "Requires": { "Location": ["Planetside"] }
       }
     ],
@@ -2222,11 +2215,12 @@
       },
       {
         "Name": "Derelict Type",
+        "Initial": true,
+        "Select table by": "Location",
         "Tables": [
           {
             "Display name": "Type - Planetside",
             "Requires": { "Location": ["Planetside"] },
-            "Initial": true,
             "Table": [
               { "Chance": 25, "Description": "Starship" },
               { "Chance": 100, "Description": "Settlement" }
@@ -2235,7 +2229,6 @@
           {
             "Display name": "Type - Orbital",
             "Requires": { "Location": ["Orbital"] },
-            "Initial": true,
             "Table": [
               { "Chance": 40, "Description": "Starship" },
               { "Chance": 100, "Description": "Settlement" }
@@ -2244,7 +2237,6 @@
           {
             "Display name": "Type - Deep Space",
             "Requires": { "Location": ["Deep Space"] },
-            "Initial": true,
             "Table": [
               { "Chance": 75, "Description": "Starship" },
               { "Chance": 100, "Description": "Settlement" }
@@ -2255,7 +2247,7 @@
       {
         "Name": "Condition",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           { "Chance": 10, "Description": "functional" },
           { "Chance": 30, "Description": "limited power" },
@@ -2269,7 +2261,7 @@
         "Name": "Outer First Look",
         "Oracle type": "First Look",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           { "Chance": 15, "Description": "blocked access" },
           { "Chance": 30, "Description": "corpses" },
@@ -2286,7 +2278,7 @@
       {
         "Name": "Inner First Look",
         "Oracle type": "First Look",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Max rolls": 2,
         "Table": [
           { "Chance": 3, "Description": "abnormal gravity" },
@@ -2332,8 +2324,12 @@
       },
       {
         "Name": "Zone",
+        "Display name": "Derelict Zone",
+        "Repeatable": true,
+        "Select table by": "Derelict Type",
         "Tables": [
           {
+            "Display name": "Derelict Zone - Starship",
             "Requires": { "Derelict Type": ["Starship"] },
             "Table": [
               { "Chance": 5, "Description": "▶️Community" },
@@ -2346,6 +2342,7 @@
             ]
           },
           {
+            "Display name": "Derelict Zone - Settlement",
             "Requires": { "Derelict Type": ["Settlement"] },
             "Table": [
               { "Chance": 20, "Description": "▶️Community" },
@@ -2370,7 +2367,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 50, "Description": "corridor" },
               { "Chance": 60, "Description": "stairs" },
@@ -2385,7 +2382,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 5, "Description": "abandoned gear" },
               { "Chance": 10, "Description": "blood trail" },
@@ -2420,7 +2417,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "alarm or failsafe is triggered" },
               { "Chance": 20, "Description": "automated defenses" },
@@ -2456,7 +2453,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -2485,7 +2482,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "bar or club" },
               { "Chance": 16, "Description": "temple or chapel" },
@@ -2504,7 +2501,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "ad-hoc memorials" },
               { "Chance": 16, "Description": "art depicting historic event" },
@@ -2531,7 +2528,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "biological infestation" },
               { "Chance": 20, "Description": "breached or broken structure" },
@@ -2570,7 +2567,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -2599,7 +2596,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "control room" },
               { "Chance": 16, "Description": "engine room or power core" },
@@ -2618,7 +2615,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "cluttered workbench" },
               { "Chance": 16, "Description": "control terminal" },
@@ -2645,7 +2642,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "corrosive leak" },
               { "Chance": 20, "Description": "erratic utility bots" },
@@ -2681,7 +2678,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -2707,7 +2704,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "food storage" },
               { "Chance": 16, "Description": "galley or kitchen" },
@@ -2726,7 +2723,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "abandoned pet" },
               { "Chance": 16, "Description": "audible music" },
@@ -2753,7 +2750,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "disgusting sight / smell" },
               {
@@ -2792,7 +2789,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -2824,7 +2821,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "crematorium" },
               { "Chance": 16, "Description": "emergency or triage" },
@@ -2843,7 +2840,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "autopsied corpse" },
               { "Chance": 16, "Description": "biological specimens" },
@@ -2870,7 +2867,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "disgusting sight / smell" },
               {
@@ -2909,7 +2906,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 20, "Description": "cache of medicine" },
               { "Chance": 40, "Description": "clues to a medical mystery" },
@@ -2929,7 +2926,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "admin or command offices" },
               { "Chance": 16, "Description": "armory" },
@@ -2948,7 +2945,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "automated warning" },
               { "Chance": 16, "Description": "buckled blast doors" },
@@ -2975,7 +2972,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "automated defenses target you" },
               {
@@ -3023,7 +3020,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 20, "Description": "cache of weapons or ammo" },
               { "Chance": 40, "Description": "helpful AI" },
@@ -3049,7 +3046,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "airlock or staging area" },
               { "Chance": 16, "Description": "assembly or processing" },
@@ -3068,7 +3065,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "cargo lifts" },
               { "Chance": 16, "Description": "control panels" },
@@ -3095,7 +3092,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 10, "Description": "claustrophobic spaces" },
               { "Chance": 20, "Description": "dangerous machinery" },
@@ -3134,7 +3131,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 20, "Description": "helpful vehicle or transport" },
               { "Chance": 40, "Description": "rare or valuable resource" },
@@ -3154,7 +3151,7 @@
           {
             "Name": "Area",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "clean room" },
               { "Chance": 16, "Description": "cold storage" },
@@ -3173,7 +3170,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "aquarium or tank" },
               { "Chance": 16, "Description": "biological specimens" },
@@ -3200,7 +3197,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 10,
@@ -3242,7 +3239,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 20, "Description": "helpful research data" },
               { "Chance": 40, "Description": "records of a notable discovery" },
@@ -3314,7 +3311,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "alterations in the flow of time" },
               {
@@ -3363,7 +3360,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 9, "Description": "chaos makes its mark upon you" },
               { "Chance": 18, "Description": "chaos spreads or intensifies" },
@@ -3412,7 +3409,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -3449,7 +3446,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "captives or prisoners" },
               { "Chance": 16, "Description": "control area or terminal" },
@@ -3495,7 +3492,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 9, "Description": "alarm is triggered" },
               {
@@ -3547,7 +3544,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -3584,7 +3581,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "disembodied voices" },
               { "Chance": 16, "Description": "eerie cold" },
@@ -3624,7 +3621,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 9,
@@ -3682,7 +3679,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -3716,7 +3713,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 8, "Description": "corpse of an unfortunate victim" },
               { "Chance": 16, "Description": "eggs, cocoons, or nest" },
@@ -3756,7 +3753,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 9,
@@ -3814,7 +3811,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -3845,7 +3842,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 8,
@@ -3894,7 +3891,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 9,
@@ -3946,7 +3943,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -3983,7 +3980,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 8,
@@ -4032,7 +4029,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 9,
@@ -4087,7 +4084,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -4124,7 +4121,7 @@
           {
             "Name": "Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 8,
@@ -4170,7 +4167,7 @@
             "Name": "Peril",
             "Oracle type": "peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 9,
@@ -4231,7 +4228,7 @@
             "Name": "Opportunity",
             "Oracle type": "opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 20,
@@ -4269,7 +4266,7 @@
         "Ironsworn Placeholder": true,
         "Aliases": ["Rank"],
         "Source": { "Name": "Ironsworn Rulebook", "Page": 190 },
-        "Description": "Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.",
+        "Description": "Use this oracle when you want to randomly determine th∆urney, or foe.",
         "Table": [
           { "Chance": 20, "Description": "Troublesome" },
           { "Chance": 55, "Description": "Dangerous" },
@@ -4282,7 +4279,7 @@
         "Name": "Story Complication",
         "Oracle type": "peril",
         "Aliases": ["complication"],
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"], "Content": ["event"] },
         "Description": "This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the Pay the Price table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.",
         "Table": [
           {
@@ -4428,7 +4425,7 @@
       {
         "Name": "Combat Action",
         "Oracle type": "peril",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"], "Content": ["event"] },
         "Description": "Use this oracle to help inspire an action for a foe in a fight. When you’re not sure what an enemy does next, particularly when they have you in a bad spot, roll on this table and interpret the result as appropriate to the nature of the enemy and your objective.",
         "Table": [
           {
@@ -4495,7 +4492,7 @@
         "Name": "Anomaly Effect",
         "Aliases": ["Anomaly"],
         "Oracle type": "peril",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"], "Content": ["event"] },
         "Description": "Meddling with alien artifacts or forbidden magic may put you at the mercy of chaos. Use this table to resolve the effects of ancient tech, rituals, or other strange forces. Results on this table may prompt devastating implications, so use it only in rare and dramatic moments.",
         "Table": [
           { "Chance": 3, "Description": "alters or focuses gravity" },
@@ -4592,8 +4589,49 @@
     "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
     "Oracles": [
       {
+        "Name": "Ask the Oracle",
+        "Semantics": { "Part of speech": ["noun"] },
+        "Tables": [
+          {
+            "Display name": "Ask the Oracle - Almost Certain",
+            "Table": [
+              { "Chance": 10, "Description": "No" },
+              { "Chance": 100, "Description": "Yes" }
+            ]
+          },
+          {
+            "Display name": "Ask the Oracle - Likely",
+            "Table": [
+              { "Chance": 25, "Description": "No" },
+              { "Chance": 100, "Description": "Yes" }
+            ]
+          },
+          {
+            "Display name": "Ask the Oracle - 50/50",
+            "Table": [
+              { "Chance": 50, "Description": "No" },
+              { "Chance": 100, "Description": "Yes" }
+            ]
+          },
+          {
+            "Display name": "Ask the Oracle - Unlikely",
+            "Table": [
+              { "Chance": 75, "Description": "No" },
+              { "Chance": 100, "Description": "Yes" }
+            ]
+          },
+          {
+            "Display name": "Ask the Oracle - Small Chance",
+            "Table": [
+              { "Chance": 90, "Description": "No" },
+              { "Chance": 100, "Description": "Yes" }
+            ]
+          }
+        ]
+      },
+      {
         "Name": "Make a Discovery",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 4,
@@ -4770,7 +4808,7 @@
       },
       {
         "Name": "Confront Chaos",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 4,
@@ -4875,7 +4913,7 @@
       },
       {
         "Name": "Take Decisive Action",
-        "Semantics": { "Part of speech": "sentences" },
+        "Semantics": { "Part of speech": ["sentences"] },
         "Table": [
           {
             "Chance": 40,
@@ -4905,7 +4943,7 @@
       },
       {
         "Name": "Endure Harm",
-        "Semantics": { "Part of speech": "sentences" },
+        "Semantics": { "Part of speech": ["sentences"] },
         "Table": [
           {
             "Chance": 10,
@@ -4928,7 +4966,7 @@
       },
       {
         "Name": "Endure Stress",
-        "Semantics": { "Part of speech": "sentences" },
+        "Semantics": { "Part of speech": ["sentences"] },
         "Table": [
           {
             "Chance": 10,
@@ -4944,7 +4982,7 @@
       },
       {
         "Name": "Withstand Damage",
-        "Semantics": { "Part of speech": "sentences" },
+        "Semantics": { "Part of speech": ["sentences"] },
         "Table": [
           {
             "Chance": 10,
@@ -4982,7 +5020,7 @@
       },
       {
         "Name": "Pay the Price",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 2,
@@ -5054,12 +5092,13 @@
   {
     "Name": "Planet",
     "Aliases": ["World"],
-    "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
-    "Inherits": [{ "From": "Space", "Oracles": ["Stellar Object"] }],
+    "Source": { "Name": "Starforged Backer Preview", "Version": "060121" },
+    "Inherits": [{ "Category": "Space", "Name": ["Stellar Object"] }],
     "Oracles": [
       {
         "Name": "Planetary Class",
         "Initial": true,
+        "Use with": [{ "Name": "Descriptor", "Category": "Core" }],
         "Table": [
           {
             "Chance": 15,
@@ -5121,11 +5160,13 @@
       {
         "Name": "Peril",
         "Oracle type": "peril",
+        "Repeatable": true,
+        "Semantics": { "Part of speech": ["fragment"] },
+        "Description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
+        "Select table by": "Region",
         "Tables": [
           {
             "Display name": "Planetside Peril - Lifebearing",
-            "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": {
               "Location": ["Planetside"],
               "Life": [
@@ -5140,101 +5181,101 @@
             "Table": [
               {
                 "Chance": 3,
-                "Description": "corrupted or mutated lifeform",
+                "Description": "Corrupted or mutated lifeform",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 6,
-                "Description": "signs of a lifeform's power or cunning",
+                "Description": "Signs of a lifeform's power or cunning",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 9,
-                "Description": "hazardous plant life or malignant spores"
+                "Description": "Hazardous plant life or malignant spores"
               },
               {
                 "Chance": 12,
-                "Description": "lifeform hunts for prey",
+                "Description": "Lifeform hunts for prey",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 15,
-                "Description": "lifeform lairs here",
+                "Description": "Lifeform lairs here",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 18,
-                "Description": "lifeforms guided by a greater threat",
+                "Description": "Lifeforms guided by a greater threat",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 21,
-                "Description": "lifeforms spooked or stampeding",
+                "Description": "Lifeforms spooked or stampeding",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 24,
-                "Description": "threatening lifeform draws near",
+                "Description": "Threatening lifeform draws near",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 27,
-                "Description": "life is revealed or takes an unexpected form",
+                "Description": "Life is revealed or takes an unexpected form",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
-              { "Chance": 30, "Description": "blocked or impassible path" },
+              { "Chance": 30, "Description": "Blocked or impassible path" },
               {
                 "Chance": 33,
-                "Description": "corrosive substance or environment"
+                "Description": "Corrosive substance or environment"
               },
               {
                 "Chance": 36,
-                "Description": "disturbing remains or evidence of death"
+                "Description": "Disturbing remains or evidence of death"
               },
-              { "Chance": 39, "Description": "drastic environmental change" },
-              { "Chance": 42, "Description": "enemy holds this area" },
-              { "Chance": 45, "Description": "entangling or engulfing hazard" },
+              { "Chance": 39, "Description": "Drastic environmental change" },
+              { "Chance": 42, "Description": "Enemy holds this area" },
+              { "Chance": 45, "Description": "Entangling or engulfing hazard" },
               {
                 "Chance": 48,
-                "Description": "equipment fails or malfunctions"
+                "Description": "Equipment fails or malfunctions"
               },
-              { "Chance": 51, "Description": "guarded or patrolled path" },
-              { "Chance": 54, "Description": "led astray" },
-              { "Chance": 57, "Description": "lost the path" },
-              { "Chance": 60, "Description": "meteorites fall from the sky" },
-              { "Chance": 63, "Description": "radiated area or object" },
+              { "Chance": 51, "Description": "Guarded or patrolled path" },
+              { "Chance": 54, "Description": "Led astray" },
+              { "Chance": 57, "Description": "Lost the path" },
+              { "Chance": 60, "Description": "Meteorites fall from the sky" },
+              { "Chance": 63, "Description": "Irradiated area or object" },
               {
                 "Chance": 66,
-                "Description": "realization that something was left behind"
+                "Description": "Realization that something was left behind"
               },
-              { "Chance": 69, "Description": "seismic or volcanic upheaval" },
+              { "Chance": 69, "Description": "Seismic or volcanic upheaval" },
               {
                 "Chance": 72,
-                "Description": "signs of a lurking or trailing foe"
+                "Description": "Signs of a lurking or trailing foe"
               },
               {
                 "Chance": 75,
-                "Description": "storm or atmospheric disruption"
+                "Description": "Storm or atmospheric disruption"
               },
-              { "Chance": 78, "Description": "toxic or sickening environment" },
-              { "Chance": 81, "Description": "trap or alarm" },
-              { "Chance": 84, "Description": "treacherous or arduous path" },
+              { "Chance": 78, "Description": "Toxic or sickening environment" },
+              { "Chance": 81, "Description": "Trap or alarm" },
+              { "Chance": 84, "Description": "Treacherous or arduous path" },
               {
                 "Chance": 87,
-                "Description": "troubling visions or apparitions"
+                "Description": "Troubling visions or apparitions"
               },
               {
                 "Chance": 90,
-                "Description": "visibility hindered by atmospheric effects"
+                "Description": "Visibility hindered by atmospheric effects"
               },
               {
                 "Chance": 93,
-                "Description": "worrying arrival of a ship or vehicle",
+                "Description": "Worrying arrival of a ship or vehicle",
                 "Suggest": [{ "Game object": { "Object type": "Starship" } }]
               },
               {
                 "Chance": 96,
-                "Description": "wreckage or ruins portend a new threat"
+                "Description": "Wreckage or ruins portend a new threat"
               },
               {
                 "Chance": 99,
@@ -5253,8 +5294,6 @@
           },
           {
             "Display name": "Planetside Peril - Lifeless",
-            "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": {
               "Location": ["Planetside"],
               "Life": ["Lifeless", "None", "Extinct"]
@@ -5262,62 +5301,62 @@
             "Table": [
               {
                 "Chance": 3,
-                "Description": "life is revealed or takes an unexpected form",
+                "Description": "Life is revealed or takes an unexpected form",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
-              { "Chance": 7, "Description": "blocked or impassible path" },
+              { "Chance": 7, "Description": "Blocked or impassible path" },
               {
                 "Chance": 11,
-                "Description": "corrosive substance or environment"
+                "Description": "Corrosive substance or environment"
               },
               {
                 "Chance": 15,
-                "Description": "disturbing remains or evidence of death"
+                "Description": "Disturbing remains or evidence of death"
               },
-              { "Chance": 19, "Description": "drastic environmental change" },
-              { "Chance": 23, "Description": "enemy holds this area" },
-              { "Chance": 27, "Description": "entangling or engulfing hazard" },
+              { "Chance": 19, "Description": "Drastic environmental change" },
+              { "Chance": 23, "Description": "Enemy holds this area" },
+              { "Chance": 27, "Description": "Entangling or engulfing hazard" },
               {
                 "Chance": 31,
-                "Description": "equipment fails or malfunctions"
+                "Description": "Equipment fails or malfunctions"
               },
-              { "Chance": 35, "Description": "guarded or patrolled path" },
-              { "Chance": 39, "Description": "led astray" },
-              { "Chance": 43, "Description": "lost the path" },
-              { "Chance": 47, "Description": "meteorites fall from the sky" },
-              { "Chance": 51, "Description": "radiated area or object" },
+              { "Chance": 35, "Description": "Guarded or patrolled path" },
+              { "Chance": 39, "Description": "Led astray" },
+              { "Chance": 43, "Description": "Lost the path" },
+              { "Chance": 47, "Description": "Meteorites fall from the sky" },
+              { "Chance": 51, "Description": "Irradiated area or object" },
               {
                 "Chance": 55,
-                "Description": "realization that something was left behind"
+                "Description": "Realization that something was left behind"
               },
-              { "Chance": 59, "Description": "seismic or volcanic upheaval" },
+              { "Chance": 59, "Description": "Seismic or volcanic upheaval" },
               {
                 "Chance": 63,
-                "Description": "signs of a lurking or trailing foe"
+                "Description": "Signs of a lurking or trailing foe"
               },
               {
                 "Chance": 67,
-                "Description": "storm or atmospheric disruption"
+                "Description": "Storm or atmospheric disruption"
               },
-              { "Chance": 71, "Description": "toxic or sickening environment" },
-              { "Chance": 75, "Description": "trap or alarm" },
-              { "Chance": 79, "Description": "treacherous or arduous path" },
+              { "Chance": 71, "Description": "Toxic or sickening environment" },
+              { "Chance": 75, "Description": "Trap or alarm" },
+              { "Chance": 79, "Description": "Treacherous or arduous path" },
               {
                 "Chance": 83,
-                "Description": "troubling visions or apparitions"
+                "Description": "Troubling visions or apparitions"
               },
               {
                 "Chance": 87,
-                "Description": "visibility hindered by atmospheric effects"
+                "Description": "Visibility hindered by atmospheric effects"
               },
               {
                 "Chance": 91,
-                "Description": "worrying arrival of a ship or vehicle",
+                "Description": "Worrying arrival of a ship or vehicle",
                 "Suggest": [{ "Game object": { "Object type": "Starship" } }]
               },
               {
                 "Chance": 95,
-                "Description": "wreckage or ruins portend a new threat"
+                "Description": "Wreckage or ruins portend a new threat"
               },
               {
                 "Chance": 99,
@@ -5339,12 +5378,13 @@
       {
         "Name": "Opportunity",
         "Oracle type": "opportunity",
+        "Repeatable": true,
+        "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.",
+        "Semantics": { "Part of speech": ["fragment"] },
+        "Select table by": "Region",
         "Tables": [
           {
             "Display name": "Planetside Opportunity - Lifebearing",
-            "Repeatable": true,
-            "Oracle type": "opportunity",
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": {
               "Location": ["Planetside"],
               "Life": [
@@ -5359,35 +5399,35 @@
             "Table": [
               {
                 "Chance": 4,
-                "Description": "clue to a lifeform's nature or vulnerabilities",
+                "Description": "Clue to a lifeform's nature or vulnerabilities",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 8,
-                "Description": "friendly interaction with a benign lifeform",
+                "Description": "Friendly interaction with a benign lifeform",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 12,
-                "Description": "hunting or foraging opportunities are plentiful"
+                "Description": "Hunting or foraging opportunities are plentiful"
               },
               {
                 "Chance": 16,
-                "Description": "interesting or helpful aspect of benign creatures",
+                "Description": "Interesting or helpful aspect of benign creatures",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 20,
-                "Description": "interesting or helpful aspect of local plant life"
+                "Description": "Interesting or helpful aspect of local plant life"
               },
               {
                 "Chance": 24,
-                "Description": "encounter reveals unexpected benign lifeforms",
+                "Description": "Encounter reveals unexpected benign lifeforms",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 28,
-                "Description": "abandoned camp or vehicle",
+                "Description": "Abandoned camp or vehicle",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5399,39 +5439,39 @@
               },
               {
                 "Chance": 32,
-                "Description": "advance warning of an environmental threat"
+                "Description": "Advance warning of an environmental threat"
               },
               {
                 "Chance": 36,
-                "Description": "clear path through otherwise perilous terrain"
+                "Description": "Clear path through otherwise perilous terrain"
               },
               {
                 "Chance": 40,
-                "Description": "clue offers insight into a current quest or mystery"
+                "Description": "Clue offers insight into a current quest or mystery"
               },
               {
                 "Chance": 44,
-                "Description": "clue to the history or nature of this place"
+                "Description": "Clue to the history or nature of this place"
               },
               {
                 "Chance": 48,
-                "Description": "evidence that others have passed this way"
+                "Description": "Evidence that others have passed this way"
               },
               {
                 "Chance": 52,
-                "Description": "foe reveals themselves or tips their hand"
+                "Description": "Foe reveals themselves or tips their hand"
               },
               {
                 "Chance": 56,
-                "Description": "fortuitous change in the weather or atmosphere"
+                "Description": "Fortuitous change in the weather or atmosphere"
               },
               {
                 "Chance": 60,
-                "Description": "friendly traveler crosses your path"
+                "Description": "Friendly traveler crosses your path"
               },
               {
                 "Chance": 64,
-                "Description": "helpful resource is in ample supply",
+                "Description": "Helpful resource is in ample supply",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5443,11 +5483,11 @@
               },
               {
                 "Chance": 68,
-                "Description": "impressive vista offers comfort or inspiration"
+                "Description": "Impressive vista offers comfort or inspiration"
               },
               {
                 "Chance": 72,
-                "Description": "interesting artifact or device",
+                "Description": "Interesting artifact or device",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5459,7 +5499,7 @@
               },
               {
                 "Chance": 76,
-                "Description": "interesting site offers opportunities for exploration",
+                "Description": "Interesting site offers opportunities for exploration",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5471,24 +5511,24 @@
               },
               {
                 "Chance": 80,
-                "Description": "moment of fellowship or inner peace"
+                "Description": "Moment of fellowship or inner peace"
               },
               {
                 "Chance": 84,
-                "Description": "opening to distract, escape, or avoid foes"
+                "Description": "Opening to distract, escape, or avoid foes"
               },
               {
                 "Chance": 88,
-                "Description": "opening to get the drop on a foe"
+                "Description": "Opening to get the drop on a foe"
               },
               {
                 "Chance": 92,
-                "Description": "plea for help from a potential benefactor",
+                "Description": "Plea for help from a potential benefactor",
                 "Suggest": [{ "Game object": { "Object type": "Character" } }]
               },
               {
                 "Chance": 96,
-                "Description": "refuge offers a place to hide, plan, or recover",
+                "Description": "Refuge offers a place to hide, plan, or recover",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5500,7 +5540,7 @@
               },
               {
                 "Chance": 100,
-                "Description": "vantage point reveals the lay of the land",
+                "Description": "Vantage point reveals the lay of the land",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5514,8 +5554,6 @@
           },
           {
             "Display name": "Planetside Opportunity - Lifeless",
-            "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
             "Requires": {
               "Location": ["Planetside"],
               "Life": ["Lifeless", "None", "Extinct"]
@@ -5523,12 +5561,12 @@
             "Table": [
               {
                 "Chance": 5,
-                "Description": "encounter reveals unexpected benign lifeforms",
+                "Description": "Encounter reveals unexpected benign lifeforms",
                 "Suggest": [{ "Game object": { "Object type": "Creature" } }]
               },
               {
                 "Chance": 10,
-                "Description": "abandoned camp or vehicle",
+                "Description": "Abandoned camp or vehicle",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5540,39 +5578,39 @@
               },
               {
                 "Chance": 15,
-                "Description": "advance warning of an environmental threat"
+                "Description": "Advance warning of an environmental threat"
               },
               {
                 "Chance": 20,
-                "Description": "clear path through otherwise perilous terrain"
+                "Description": "Clear path through otherwise perilous terrain"
               },
               {
                 "Chance": 25,
-                "Description": "clue offers insight into a current quest or mystery"
+                "Description": "Clue offers insight into a current quest or mystery"
               },
               {
                 "Chance": 30,
-                "Description": "clue to the history or nature of this place"
+                "Description": "Clue to the history or nature of this place"
               },
               {
                 "Chance": 35,
-                "Description": "evidence that others have passed this way"
+                "Description": "Evidence that others have passed this way"
               },
               {
                 "Chance": 40,
-                "Description": "foe reveals themselves or tips their hand"
+                "Description": "Foe reveals themselves or tips their hand"
               },
               {
                 "Chance": 45,
-                "Description": "fortuitous change in the weather or atmosphere"
+                "Description": "Fortuitous change in the weather or atmosphere"
               },
               {
                 "Chance": 50,
-                "Description": "friendly traveler crosses your path"
+                "Description": "Friendly traveler crosses your path"
               },
               {
                 "Chance": 55,
-                "Description": "helpful resource is in ample supply",
+                "Description": "Helpful resource is in ample supply",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5584,11 +5622,11 @@
               },
               {
                 "Chance": 60,
-                "Description": "impressive vista offers comfort or inspiration"
+                "Description": "Impressive vista offers comfort or inspiration"
               },
               {
                 "Chance": 65,
-                "Description": "interesting artifact or device",
+                "Description": "Interesting artifact or device",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5600,7 +5638,7 @@
               },
               {
                 "Chance": 70,
-                "Description": "interesting site offers opportunities for exploration",
+                "Description": "Interesting site offers opportunities for exploration",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5612,24 +5650,24 @@
               },
               {
                 "Chance": 75,
-                "Description": "moment of fellowship or inner peace"
+                "Description": "Moment of fellowship or inner peace"
               },
               {
                 "Chance": 80,
-                "Description": "opening to distract, escape, or avoid foes"
+                "Description": "Opening to distract, escape, or avoid foes"
               },
               {
                 "Chance": 85,
-                "Description": "opening to get the drop on a foe"
+                "Description": "Opening to get the drop on a foe"
               },
               {
                 "Chance": 90,
-                "Description": "plea for help from a potential benefactor",
+                "Description": "Plea for help from a potential benefactor",
                 "Suggest": [{ "Game object": { "Object type": "Character" } }]
               },
               {
                 "Chance": 95,
-                "Description": "refuge offers a place to hide, plan, or recover",
+                "Description": "Refuge offers a place to hide, plan, or recover",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5641,7 +5679,7 @@
               },
               {
                 "Chance": 100,
-                "Description": "vantage point reveals the lay of the land",
+                "Description": "Vantage point reveals the lay of the land",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -5687,7 +5725,9 @@
           "Vermillion"
         ],
         "Requires": { "Planetary Class": ["Desert World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -5727,9 +5767,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -5771,7 +5811,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -5813,7 +5852,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -5840,8 +5878,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "dry seabeds" },
@@ -5872,7 +5909,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "cavernous sinkholes" },
@@ -5959,7 +5996,9 @@
           "Vesuvius"
         ],
         "Requires": { "Planetary Class": ["Furnace World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -5994,9 +6033,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -6038,7 +6077,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -6080,7 +6118,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -6107,8 +6144,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "fiery world-spanning chasms" },
@@ -6139,7 +6175,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "blinding ash storms" },
@@ -6223,7 +6259,9 @@
           "Thrace"
         ],
         "Requires": { "Planetary Class": ["Grave World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -6258,9 +6296,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -6302,7 +6340,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -6326,7 +6363,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -6353,8 +6389,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "broken moon" },
@@ -6368,7 +6403,7 @@
                   {
                     "Game object": {
                       "Object type": "Derelict",
-                      "Attributes": { "Derelict type": "Starship" }
+                      "Attributes": { "Derelict Type": "Starship" }
                     }
                   }
                 ]
@@ -6381,7 +6416,7 @@
                   {
                     "Game object": {
                       "Object type": "Derelict",
-                      "Attributes": { "Derelict type": "Settlement" }
+                      "Attributes": { "Derelict Type": "Settlement" }
                     }
                   }
                 ]
@@ -6407,7 +6442,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "acid pools" },
@@ -6426,7 +6461,7 @@
                   {
                     "Game object": {
                       "Object type": "Derelict",
-                      "Attributes": { "Derelict type": "Settlement" }
+                      "Attributes": { "Derelict Type": "Settlement" }
                     }
                   }
                 ]
@@ -6439,7 +6474,7 @@
                   {
                     "Game object": {
                       "Object type": "Derelict",
-                      "Attributes": { "Derelict type": "Starship" }
+                      "Attributes": { "Derelict Type": "Starship" }
                     }
                   }
                 ]
@@ -6504,7 +6539,9 @@
           "Varnholme"
         ],
         "Requires": { "Planetary Class": ["Ice World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -6544,9 +6581,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -6588,7 +6625,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -6630,7 +6666,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -6657,8 +6692,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "feeble sunlight" },
@@ -6689,7 +6723,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "abyssal ice fissures" },
@@ -6767,7 +6801,9 @@
           "Zephyr"
         ],
         "Requires": { "Planetary Class": ["Jovian World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -6797,9 +6833,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -6841,7 +6877,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -6883,7 +6918,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -6910,8 +6944,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "complex ring system" },
@@ -6942,7 +6975,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "clouds of metal particles" },
@@ -7020,7 +7053,9 @@
           "Viridian"
         ],
         "Requires": { "Planetary Class": ["Jungle World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -7055,9 +7090,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -7099,7 +7134,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -7141,7 +7175,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -7186,8 +7219,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "cloud-breaching trees" },
@@ -7218,7 +7250,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "bioluminescent flora" },
@@ -7294,7 +7326,9 @@
           "Triton"
         ],
         "Requires": { "Planetary Class": ["Ocean World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -7334,9 +7368,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -7378,7 +7412,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -7420,7 +7453,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -7465,8 +7497,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "complex reef systems" },
@@ -7497,7 +7528,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "abyssal trenches" },
@@ -7575,7 +7606,9 @@
           "Umbra"
         ],
         "Requires": { "Planetary Class": ["Rocky World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -7605,9 +7638,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -7649,7 +7682,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -7691,7 +7723,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -7718,8 +7749,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "barren plains" },
@@ -7750,7 +7780,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "crystalline formations" },
@@ -7828,7 +7858,9 @@
           "Zix"
         ],
         "Requires": { "Planetary Class": ["Shattered World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -7863,9 +7895,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -7907,7 +7939,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -7940,7 +7971,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -7967,8 +7997,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               {
@@ -7978,7 +8007,7 @@
                   {
                     "Game object": {
                       "Object type": "Derelict",
-                      "Attributes": { "Derelict type": "Starship" }
+                      "Attributes": { "Derelict Type": "Starship" }
                     }
                   }
                 ]
@@ -8010,7 +8039,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "broken cities" },
@@ -8100,7 +8129,9 @@
           "Xanthous"
         ],
         "Requires": { "Planetary Class": ["Tainted World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -8130,9 +8161,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -8174,7 +8205,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -8198,7 +8228,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -8225,8 +8254,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "expansive fungal plains" },
@@ -8257,7 +8285,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "caustic gas storms" },
@@ -8336,7 +8364,9 @@
           "Valinor"
         ],
         "Requires": { "Planetary Class": ["Vital World"] },
-        "Inherits": [{ "From": "Planet", "Oracles": ["Peril", "Opportunity"] }],
+        "Inherits": [
+          { "Category": "Planet", "Name": ["Peril", "Opportunity"] }
+        ],
         "Oracles": [
           {
             "Name": "Atmosphere",
@@ -8361,9 +8391,9 @@
           },
           {
             "Name": "Settlements",
+            "Select table by": "Region",
             "Tables": [
               {
-                "Initial": true,
                 "Display name": "Settlements - Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
@@ -8405,7 +8435,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
@@ -8447,7 +8476,6 @@
                 ]
               },
               {
-                "Initial": true,
                 "Display name": "Settlements - Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
@@ -8492,8 +8520,7 @@
           },
           {
             "Name": "Observed From Space",
-            "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 11, "Description": "complex ring system" },
@@ -8524,7 +8551,7 @@
           },
           {
             "Name": "Planetside Feature",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 7, "Description": "background radiation" },
@@ -8602,7 +8629,7 @@
             "Name": "Biomes",
             "Min rolls": 2,
             "Max rolls": 5,
-            "Semantics": { "Part of speech": "noun" },
+            "Semantics": { "Part of speech": ["noun"] },
             "Table": [
               { "Chance": 5, "Description": "caves" },
               { "Chance": 10, "Description": "cold forest" },
@@ -8649,7 +8676,7 @@
       {
         "Name": "Scale",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           { "Chance": 30, "Description": "minor, confined site" },
           { "Chance": 65, "Description": "typical site of limited scope" },
@@ -8667,7 +8694,7 @@
       {
         "Name": "Form",
         "Initial": true,
-        "Semantics": { "Part of speech": "noun" },
+        "Semantics": { "Part of speech": ["noun"] },
         "Table": [
           { "Chance": 35, "Description": "structure" },
           { "Chance": 60, "Description": "vessel" },
@@ -8679,7 +8706,7 @@
       {
         "Name": "Shape",
         "Initial": true,
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Table": [
           { "Chance": 15, "Description": "practical or functional" },
           { "Chance": 20, "Description": "geometric (complex shape)" },
@@ -8706,7 +8733,7 @@
       {
         "Name": "Material",
         "Initial": true,
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Table": [
           { "Chance": 30, "Description": "metallic (industrial)" },
           { "Chance": 60, "Description": "metallic (smooth)" },
@@ -8727,7 +8754,7 @@
       {
         "Name": "First Look",
         "Display name": "Outer First Look",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Initial": true,
         "Max rolls": 2,
         "Table": [
@@ -8782,7 +8809,7 @@
             "Name": "First Look",
             "Display name": "Inner First Look",
             "Initial": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Max rolls": 2,
             "Table": [
               { "Chance": 3, "Description": "abnormal gravity" },
@@ -8842,7 +8869,7 @@
             "Name": "Feature",
             "Display name": "Interior Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 3, "Description": "ascending or descending path" },
               { "Chance": 6, "Description": "biological growths" },
@@ -8919,7 +8946,7 @@
             "Oracle type": "peril",
             "Display name": "Interior Peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 5, "Description": "broken path" },
               {
@@ -8978,7 +9005,7 @@
             "Oracle type": "opportunity",
             "Display name": "Interior Opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 10,
@@ -9021,13 +9048,13 @@
       {
         "Name": "Vault Sanctum",
         "Display name": "Precursor Vault - Sanctum",
-        "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+        "Source": { "Name": "Starforged Backer Preview", "Version": "060121" },
         "Requires": { "Zone": ["Vault Sanctum"] },
         "Oracles": [
           {
             "Name": "Purpose",
             "Display name": "Vault Purpose",
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 3,
@@ -9062,7 +9089,7 @@
                 "Description": "generation or transformation of energy"
               },
               { "Chance": 41, "Description": "harvesting of resources" },
-              { "Chance": 44, "Description": "internment of the dead" },
+              { "Chance": 44, "Description": "interment of the dead" },
               { "Chance": 47, "Description": "manipulation of spacetime" },
               { "Chance": 50, "Description": "manufacturing of lifeforms" },
               {
@@ -9120,7 +9147,7 @@
             "Name": "Feature",
             "Display name": "Sanctum Feature",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               { "Chance": 2, "Description": "abyssal pit or chasm" },
               { "Chance": 5, "Description": "altered gravity" },
@@ -9220,7 +9247,7 @@
             "Oracle type": "peril",
             "Display name": "Sanctum Peril",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 5,
@@ -9309,7 +9336,7 @@
             "Oracle type": "opportunity",
             "Display name": "Sanctum Opportunity",
             "Repeatable": true,
-            "Semantics": { "Part of speech": "fragment" },
+            "Semantics": { "Part of speech": ["fragment"] },
             "Table": [
               {
                 "Chance": 10,
@@ -9354,7 +9381,7 @@
   {
     "Name": "Settlement",
     "Display name": "Settlements",
-    "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+    "Source": { "Name": "Starforged Backer Preview", "Version": "060121" },
     "Oracles": [
       {
         "Name": "Location",
@@ -9367,10 +9394,11 @@
       },
       {
         "Name": "Population",
+        "Initial": true,
+        "Select table by": "Region",
         "Tables": [
           {
             "Display name": "Population - Terminus",
-            "Initial": true,
             "Requires": { "Region": ["Terminus"] },
             "Table": [
               { "Chance": 10, "Description": "Few" },
@@ -9382,7 +9410,6 @@
           },
           {
             "Display name": "Population - Outlands",
-            "Initial": true,
             "Requires": { "Region": ["Outlands"] },
             "Table": [
               { "Chance": 15, "Description": "Few" },
@@ -9394,7 +9421,6 @@
           },
           {
             "Display name": "Population - Expanse",
-            "Initial": true,
             "Requires": { "Region": ["Expanse"] },
             "Table": [
               { "Chance": 20, "Description": "Few" },
@@ -9409,7 +9435,10 @@
       {
         "Name": "First Look",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment", "Content": "description" },
+        "Semantics": {
+          "Part of speech": ["fragment"],
+          "Content": "description"
+        },
         "Max rolls": 2,
         "Table": [
           { "Chance": 3, "Description": "beautiful architecture" },
@@ -9453,7 +9482,10 @@
       {
         "Name": "Initial Contact",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment", "Content": "description" },
+        "Semantics": {
+          "Part of speech": ["fragment"],
+          "Content": "description"
+        },
         "Table": [
           { "Chance": 20, "Description": "welcoming" },
           { "Chance": 30, "Description": "neutral / automated" },
@@ -9470,7 +9502,7 @@
             "Description": "▶️Derelict",
             "Add template": {
               "Template type": "Derelict",
-              "Attributes": { "Derelict type": "Settlement" }
+              "Attributes": { "Derelict Type": "Settlement" }
             }
           }
         ]
@@ -9478,7 +9510,7 @@
       {
         "Name": "Authority",
         "Initial": true,
-        "Semantics": { "Part of speech": "adjective" },
+        "Semantics": { "Part of speech": ["adjective"] },
         "Table": [
           { "Chance": 15, "Description": "none / lawless" },
           { "Chance": 30, "Description": "ineffectual" },
@@ -9492,7 +9524,7 @@
       {
         "Name": "Projects",
         "Display name": "Settlement Projects",
-        "Semantics": { "Part of speech": "noun", "Content": "abstract noun" },
+        "Semantics": { "Part of speech": ["noun"], "Content": "abstract noun" },
         "Max rolls": 2,
         "Table": [
           { "Chance": 5, "Description": "agriculture" },
@@ -9541,7 +9573,7 @@
         "Name": "Trouble",
         "Display name": "Settlement Trouble",
         "Oracle type": "peril",
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           { "Chance": 3, "Description": "betrayal from within" },
           {
@@ -9763,8 +9795,9 @@
       {
         "Name": "Name",
         "Display name": "Settlement Name",
+        "Description": "Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.",
         "Initial": true,
-        "Semantics": { "Part of speech": "proper noun" },
+        "Semantics": { "Part of speech": ["proper noun"] },
         "Table": [
           { "Chance": 1, "Description": "Aegis" },
           { "Chance": 2, "Description": "Altair" },
@@ -9844,7 +9877,7 @@
           { "Chance": 76, "Description": "Rockhome" },
           { "Chance": 77, "Description": "Rust" },
           { "Chance": 78, "Description": "Sagan" },
-          { "Chance": 79, "Description": "Scirocco" },
+          { "Chance": 79, "Description": "Sanctity" },
           { "Chance": 80, "Description": "Selena" },
           { "Chance": 81, "Description": "Sepulcher" },
           { "Chance": 82, "Description": "Sigil" },
@@ -9878,12 +9911,15 @@
     "Oracles": [
       {
         "Name": "Space Sighting",
+        "Use with": [{ "Name": "Descriptor", "Category": "Core" }],
+        "Allow duplicate rolls": true,
+        "Semantics": { "Part of speech": ["fragment"] },
+        "Description": "Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you Ask the Oracle to envision the primary feature of a waypoint as you Undertake an Expedition. Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.",
+        "Select table by": "Region",
         "Tables": [
           {
             "Display name": "Space Sighting - Terminus",
-            "Allow duplicate rolls": true,
             "Requires": { "Region": ["Terminus"] },
-            "Semantics": { "Part of speech": "fragment" },
             "Table": [
               {
                 "Chance": 15,
@@ -9930,30 +9966,33 @@
               },
               {
                 "Chance": 65,
-                "Description": "debris field: Mineral asteroids"
+                "Description": "Debris field - Mineral asteroids"
               },
-              { "Chance": 68, "Description": "debris field: Frozen asteroids" },
+              {
+                "Chance": 68,
+                "Description": "Debris field - Frozen asteroids"
+              },
               {
                 "Chance": 70,
-                "Description": "debris field: Crystalline asteroids"
+                "Description": "Debris field - Crystalline asteroids"
               },
               {
                 "Chance": 72,
-                "Description": "debris field: Creature boneyard"
+                "Description": "Debris field - Creature boneyard"
               },
               {
                 "Chance": 74,
-                "Description": "debris field: Metallic wreckage"
+                "Description": "Debris field - Metallic wreckage"
               },
-              { "Chance": 76, "Description": "large rogue asteroid" },
+              { "Chance": 76, "Description": "Large rogue asteroid" },
               {
                 "Chance": 78,
-                "Description": "comet with a tail of ionized gas"
+                "Description": "Comet with a tail of ionized gas"
               },
-              { "Chance": 81, "Description": "fiery energy storm" },
-              { "Chance": 83, "Description": "chaotic meteoroid storm" },
-              { "Chance": 85, "Description": "turbulent gravitational wave" },
-              { "Chance": 93, "Description": "dense nebula cloud" },
+              { "Chance": 81, "Description": "Fiery energy storm" },
+              { "Chance": 83, "Description": "Chaotic meteoroid storm" },
+              { "Chance": 85, "Description": "Turbulent gravitational wave" },
+              { "Chance": 93, "Description": "Dense nebula cloud" },
               {
                 "Chance": 98,
                 "Description": "Roll twice",
@@ -9968,9 +10007,7 @@
           },
           {
             "Display name": "Space Sighting - Outlands",
-            "Allow duplicate rolls": true,
             "Requires": { "Region": ["Outlands"] },
-            "Semantics": { "Part of speech": "fragment" },
             "Table": [
               {
                 "Chance": 15,
@@ -10017,30 +10054,33 @@
               },
               {
                 "Chance": 63,
-                "Description": "debris field: Mineral asteroids"
+                "Description": "Debris field - Mineral asteroids"
               },
-              { "Chance": 66, "Description": "debris field: Frozen asteroids" },
+              {
+                "Chance": 66,
+                "Description": "Debris field - Frozen asteroids"
+              },
               {
                 "Chance": 68,
-                "Description": "debris field: Crystalline asteroids"
+                "Description": "Debris field - Crystalline asteroids"
               },
               {
                 "Chance": 70,
-                "Description": "debris field: Creature boneyard"
+                "Description": "Debris field - Creature boneyard"
               },
               {
                 "Chance": 72,
-                "Description": "debris field: Metallic wreckage"
+                "Description": "Debris field - Metallic wreckage"
               },
-              { "Chance": 74, "Description": "large rogue asteroid" },
+              { "Chance": 74, "Description": "Large rogue asteroid" },
               {
                 "Chance": 76,
-                "Description": "comet with a tail of ionized gas"
+                "Description": "Comet with a tail of ionized gas"
               },
-              { "Chance": 80, "Description": "fiery energy storm" },
-              { "Chance": 82, "Description": "chaotic meteoroid storm" },
-              { "Chance": 85, "Description": "turbulent gravitational wave" },
-              { "Chance": 93, "Description": "dense nebula cloud" },
+              { "Chance": 80, "Description": "Fiery energy storm" },
+              { "Chance": 82, "Description": "Chaotic meteoroid storm" },
+              { "Chance": 85, "Description": "Turbulent gravitational wave" },
+              { "Chance": 93, "Description": "Dense nebula cloud" },
               {
                 "Chance": 98,
                 "Description": "Roll twice",
@@ -10055,9 +10095,7 @@
           },
           {
             "Display name": "Space Sighting - Expanse",
-            "Allow duplicate rolls": true,
             "Requires": { "Region": ["Expanse"] },
-            "Semantics": { "Part of speech": "fragment" },
             "Table": [
               {
                 "Chance": 15,
@@ -10104,30 +10142,33 @@
               },
               {
                 "Chance": 61,
-                "Description": "debris field: Mineral asteroids"
+                "Description": "Debris field - Mineral asteroids"
               },
-              { "Chance": 64, "Description": "debris field: Frozen asteroids" },
+              {
+                "Chance": 64,
+                "Description": "Debris field - Frozen asteroids"
+              },
               {
                 "Chance": 66,
-                "Description": "debris field: Crystalline asteroids"
+                "Description": "Debris field - Crystalline asteroids"
               },
               {
                 "Chance": 68,
-                "Description": "debris field: Creature boneyard"
+                "Description": "Debris field - Creature boneyard"
               },
               {
                 "Chance": 70,
-                "Description": "debris field: Metallic wreckage"
+                "Description": "Debris field - Metallic wreckage"
               },
-              { "Chance": 72, "Description": "large rogue asteroid" },
+              { "Chance": 72, "Description": "Large rogue asteroid" },
               {
                 "Chance": 74,
-                "Description": "comet with a tail of ionized gas"
+                "Description": "Comet with a tail of ionized gas"
               },
-              { "Chance": 79, "Description": "fiery energy storm" },
-              { "Chance": 81, "Description": "chaotic meteoroid storm" },
-              { "Chance": 85, "Description": "turbulent gravitational wave" },
-              { "Chance": 93, "Description": "dense nebula cloud" },
+              { "Chance": 79, "Description": "Fiery energy storm" },
+              { "Chance": 81, "Description": "Chaotic meteoroid storm" },
+              { "Chance": 85, "Description": "Turbulent gravitational wave" },
+              { "Chance": 93, "Description": "Dense nebula cloud" },
               {
                 "Chance": 98,
                 "Description": "Roll twice",
@@ -10144,7 +10185,8 @@
       },
       {
         "Name": "Stellar Object",
-        "Semantics": { "Part of speech": "fragment" },
+        "Use with": [{ "Name": "Descriptor", "Category": "Core" }],
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           {
             "Chance": 15,
@@ -10218,7 +10260,7 @@
         "Description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
         "Use with": [{ "Category": "Space", "Name": "Sector Name - Suffix" }],
         "Initial": true,
-        "Semantics": { "Part of speech": "adjective", "Capitalize": true },
+        "Semantics": { "Part of speech": ["adjective"], "Capitalize": true },
         "Table": [
           { "Chance": 2, "Description": "accursed" },
           { "Chance": 4, "Description": "ashen" },
@@ -10277,7 +10319,7 @@
         "Description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
         "Use with": [{ "Category": "Space", "Name": "Sector Name - Prefix" }],
         "Initial": true,
-        "Semantics": { "Part of speech": "proper noun", "Capitalize": true },
+        "Semantics": { "Part of speech": ["proper noun"], "Capitalize": true },
         "Table": [
           { "Chance": 2, "Description": "Abyss" },
           { "Chance": 4, "Description": "Anvil" },
@@ -10336,7 +10378,7 @@
         "Oracle type": "peril",
         "Display name": "Spaceborne Peril",
         "Repeatable": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Requires": { "Location": ["Spaceborne", "Orbital", "Deep Space"] },
         "Description": "Use this oracle as an alternative to the __Pay the Price__ table and the creative prompt oracles when you want inspiration for a trouble on an interstellar journey, or to generate a perilous event at a spaceborne facility.",
         "Table": [
@@ -10455,7 +10497,7 @@
         "Oracle type": "opportunity",
         "Display name": "Spaceborne Opportunity",
         "Repeatable": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Requires": { "Location": ["Spaceborne", "Orbital", "Deep Space"] },
         "Description": "Roll on this table when you need inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you __Undertake an Expedition__, or if you __Explore a Waypoint__ and find an opportunity.",
         "Table": [
@@ -10574,108 +10616,109 @@
       {
         "Name": "Name",
         "Display name": "Starship Name",
-        "Semantics": { "Part of speech": "noun" },
+        "Description": "Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.",
+        "Semantics": { "Part of speech": ["proper noun"], "Content": ["name"] },
         "Table": [
-          { "Chance": 1, "Description": "arclight" },
-          { "Chance": 2, "Description": "argent arrow" },
-          { "Chance": 3, "Description": "artemis" },
-          { "Chance": 4, "Description": "astral explorer" },
-          { "Chance": 5, "Description": "atlas" },
-          { "Chance": 6, "Description": "aurora" },
-          { "Chance": 7, "Description": "avari's wake" },
-          { "Chance": 8, "Description": "banshee's cry" },
-          { "Chance": 9, "Description": "beowulf" },
-          { "Chance": 10, "Description": "bloody jaw" },
-          { "Chance": 11, "Description": "broken sword" },
-          { "Chance": 12, "Description": "buccaneer" },
-          { "Chance": 13, "Description": "cerelis nine" },
-          { "Chance": 14, "Description": "clarion call" },
-          { "Chance": 15, "Description": "dawn's herald" },
-          { "Chance": 16, "Description": "dead reckoning" },
-          { "Chance": 17, "Description": "drift runner" },
-          { "Chance": 18, "Description": "eclipse" },
-          { "Chance": 19, "Description": "elara five" },
-          { "Chance": 20, "Description": "enchantress" },
-          { "Chance": 21, "Description": "endurance" },
-          { "Chance": 22, "Description": "excalibur" },
-          { "Chance": 23, "Description": "eye of the void" },
-          { "Chance": 24, "Description": "fall of icarus" },
-          { "Chance": 25, "Description": "fallen light" },
-          { "Chance": 26, "Description": "false hope" },
-          { "Chance": 27, "Description": "firebreak" },
-          { "Chance": 28, "Description": "first light" },
-          { "Chance": 29, "Description": "forge flier" },
-          { "Chance": 30, "Description": "fortune's favor" },
-          { "Chance": 31, "Description": "freya’s wrath" },
-          { "Chance": 32, "Description": "ghost" },
-          { "Chance": 33, "Description": "guiding star" },
-          { "Chance": 34, "Description": "hand of fate" },
-          { "Chance": 35, "Description": "herald of doom" },
-          { "Chance": 36, "Description": "implacable" },
-          { "Chance": 37, "Description": "implicit" },
-          { "Chance": 38, "Description": "inferno" },
-          { "Chance": 39, "Description": "invictus" },
-          { "Chance": 40, "Description": "iron cairn" },
-          { "Chance": 41, "Description": "karena's reverie" },
-          { "Chance": 42, "Description": "kraken" },
-          { "Chance": 43, "Description": "kuno's hammer" },
-          { "Chance": 44, "Description": "lightline" },
-          { "Chance": 45, "Description": "lodestar" },
-          { "Chance": 46, "Description": "long haul" },
-          { "Chance": 47, "Description": "lost fortune" },
-          { "Chance": 48, "Description": "luminous sorrow" },
-          { "Chance": 49, "Description": "manta" },
-          { "Chance": 50, "Description": "mercy" },
-          { "Chance": 51, "Description": "mutara" },
-          { "Chance": 52, "Description": "nebula prowler" },
-          { "Chance": 53, "Description": "newton's folly" },
-          { "Chance": 54, "Description": "nightfall" },
-          { "Chance": 55, "Description": "nomad" },
-          { "Chance": 56, "Description": "obsidian trident" },
-          { "Chance": 57, "Description": "onslaught" },
-          { "Chance": 58, "Description": "orca" },
-          { "Chance": 59, "Description": "outward bound" },
-          { "Chance": 60, "Description": "phantom" },
-          { "Chance": 61, "Description": "photon" },
-          { "Chance": 62, "Description": "poltergeist" },
-          { "Chance": 63, "Description": "profit margin" },
-          { "Chance": 64, "Description": "raven's call" },
-          { "Chance": 65, "Description": "raya's promise" },
-          { "Chance": 66, "Description": "reaper" },
-          { "Chance": 67, "Description": "reforged hope" },
-          { "Chance": 68, "Description": "relentless" },
-          { "Chance": 69, "Description": "royal signet" },
-          { "Chance": 70, "Description": "rubicon" },
-          { "Chance": 71, "Description": "sareea's tribute" },
-          { "Chance": 72, "Description": "second chance" },
-          { "Chance": 73, "Description": "shard of the sun" },
-          { "Chance": 74, "Description": "shattered siege" },
-          { "Chance": 75, "Description": "shattered star" },
-          { "Chance": 76, "Description": "silver talon" },
-          { "Chance": 77, "Description": "smoldering flame" },
-          { "Chance": 78, "Description": "sovereign skies" },
-          { "Chance": 79, "Description": "sparrowhawk" },
-          { "Chance": 80, "Description": "stardust" },
-          { "Chance": 81, "Description": "starfall" },
-          { "Chance": 82, "Description": "stellar hawk" },
-          { "Chance": 83, "Description": "stormswept" },
-          { "Chance": 84, "Description": "sundered aegis" },
-          { "Chance": 85, "Description": "sundown" },
-          { "Chance": 86, "Description": "sureshot" },
-          { "Chance": 87, "Description": "terminus clipper" },
-          { "Chance": 88, "Description": "terrapin" },
-          { "Chance": 89, "Description": "timber wolf" },
-          { "Chance": 90, "Description": "tip of the spear" },
-          { "Chance": 91, "Description": "titan" },
-          { "Chance": 92, "Description": "tormentor" },
-          { "Chance": 93, "Description": "trithia six" },
-          { "Chance": 94, "Description": "ultraviolet" },
-          { "Chance": 95, "Description": "valora's comet" },
-          { "Chance": 96, "Description": "vengeance" },
-          { "Chance": 97, "Description": "venture" },
-          { "Chance": 98, "Description": "vigilant" },
-          { "Chance": 99, "Description": "voidtreader" },
-          { "Chance": 100, "Description": "vulture" }
+          { "Chance": 1, "Description": "Arclight" },
+          { "Chance": 2, "Description": "Argent Arrow" },
+          { "Chance": 3, "Description": "Artemis" },
+          { "Chance": 4, "Description": "Astral Explorer" },
+          { "Chance": 5, "Description": "Atlas" },
+          { "Chance": 6, "Description": "Aurora" },
+          { "Chance": 7, "Description": "Avari's Wake" },
+          { "Chance": 8, "Description": "Banshee's Cry" },
+          { "Chance": 9, "Description": "Beowulf" },
+          { "Chance": 10, "Description": "Bloody Jaw" },
+          { "Chance": 11, "Description": "Broken Sword" },
+          { "Chance": 12, "Description": "Buccaneer" },
+          { "Chance": 13, "Description": "Cerelis Nine" },
+          { "Chance": 14, "Description": "Clarion Call" },
+          { "Chance": 15, "Description": "Dawn's Herald" },
+          { "Chance": 16, "Description": "Dead Reckoning" },
+          { "Chance": 17, "Description": "Drift Runner" },
+          { "Chance": 18, "Description": "Eclipse" },
+          { "Chance": 19, "Description": "Elara Five" },
+          { "Chance": 20, "Description": "Enchantress" },
+          { "Chance": 21, "Description": "Endurance" },
+          { "Chance": 22, "Description": "Excalibur" },
+          { "Chance": 23, "Description": "Eye of the Void" },
+          { "Chance": 24, "Description": "Fall of Icarus" },
+          { "Chance": 25, "Description": "Fallen Light" },
+          { "Chance": 26, "Description": "False Hope" },
+          { "Chance": 27, "Description": "Firebreak" },
+          { "Chance": 28, "Description": "First Light" },
+          { "Chance": 29, "Description": "Forge Flier" },
+          { "Chance": 30, "Description": "Fortune's Favor" },
+          { "Chance": 31, "Description": "Freya’s Wrath" },
+          { "Chance": 32, "Description": "Ghost" },
+          { "Chance": 33, "Description": "Guiding Star" },
+          { "Chance": 34, "Description": "Hand of Fate" },
+          { "Chance": 35, "Description": "Herald of Doom" },
+          { "Chance": 36, "Description": "Implacable" },
+          { "Chance": 37, "Description": "Implicit" },
+          { "Chance": 38, "Description": "Inferno" },
+          { "Chance": 39, "Description": "Invictus" },
+          { "Chance": 40, "Description": "Iron Cairn" },
+          { "Chance": 41, "Description": "Karena's Reverie" },
+          { "Chance": 42, "Description": "Kraken" },
+          { "Chance": 43, "Description": "Kuno's Hammer" },
+          { "Chance": 44, "Description": "Lightline" },
+          { "Chance": 45, "Description": "Lodestar" },
+          { "Chance": 46, "Description": "Long Haul" },
+          { "Chance": 47, "Description": "Lost Fortune" },
+          { "Chance": 48, "Description": "Luminous Sorrow" },
+          { "Chance": 49, "Description": "Manta" },
+          { "Chance": 50, "Description": "Mercy" },
+          { "Chance": 51, "Description": "Mutara" },
+          { "Chance": 52, "Description": "Nebula Prowler" },
+          { "Chance": 53, "Description": "Newton's Folly" },
+          { "Chance": 54, "Description": "Nightfall" },
+          { "Chance": 55, "Description": "Nomad" },
+          { "Chance": 56, "Description": "Obsidian Trident" },
+          { "Chance": 57, "Description": "Onslaught" },
+          { "Chance": 58, "Description": "Orca" },
+          { "Chance": 59, "Description": "Outward Bound" },
+          { "Chance": 60, "Description": "Phantom" },
+          { "Chance": 61, "Description": "Photon" },
+          { "Chance": 62, "Description": "Poltergeist" },
+          { "Chance": 63, "Description": "Profit Margin" },
+          { "Chance": 64, "Description": "Raven's Call" },
+          { "Chance": 65, "Description": "Raya's Promise" },
+          { "Chance": 66, "Description": "Reaper" },
+          { "Chance": 67, "Description": "Reforged Hope" },
+          { "Chance": 68, "Description": "Relentless" },
+          { "Chance": 69, "Description": "Royal Signet" },
+          { "Chance": 70, "Description": "Rubicon" },
+          { "Chance": 71, "Description": "Sareea's Tribute" },
+          { "Chance": 72, "Description": "Second Chance" },
+          { "Chance": 73, "Description": "Shard of the Sun" },
+          { "Chance": 74, "Description": "Shattered Siege" },
+          { "Chance": 75, "Description": "Shattered Star" },
+          { "Chance": 76, "Description": "Silver Talon" },
+          { "Chance": 77, "Description": "Smoldering Flame" },
+          { "Chance": 78, "Description": "Sovereign Skies" },
+          { "Chance": 79, "Description": "Sparrowhawk" },
+          { "Chance": 80, "Description": "Stardust" },
+          { "Chance": 81, "Description": "Starfall" },
+          { "Chance": 82, "Description": "Stellar Hawk" },
+          { "Chance": 83, "Description": "Stormswept" },
+          { "Chance": 84, "Description": "Sundered Aegis" },
+          { "Chance": 85, "Description": "Sundown" },
+          { "Chance": 86, "Description": "Sureshot" },
+          { "Chance": 87, "Description": "Terminus Clipper" },
+          { "Chance": 88, "Description": "Terrapin" },
+          { "Chance": 89, "Description": "Timber Wolf" },
+          { "Chance": 90, "Description": "Tip of the Spear" },
+          { "Chance": 91, "Description": "Titan" },
+          { "Chance": 92, "Description": "Tormentor" },
+          { "Chance": 93, "Description": "Trithia Six" },
+          { "Chance": 94, "Description": "Ultraviolet" },
+          { "Chance": 95, "Description": "Valora's Comet" },
+          { "Chance": 96, "Description": "Vengeance" },
+          { "Chance": 97, "Description": "Venture" },
+          { "Chance": 98, "Description": "Vigilant" },
+          { "Chance": 99, "Description": "Voidtreader" },
+          { "Chance": 100, "Description": "Vulture" }
         ]
       },
       {
@@ -10789,7 +10832,7 @@
       },
       {
         "Name": "Fleet",
-        "Semantics": { "Part of speech": "noun" },
+        "Semantics": { "Part of speech": ["common noun"] },
         "Initial": true,
         "Requires": { "Starship Type": ["Fleet"] },
         "Table": [
@@ -10810,7 +10853,7 @@
       {
         "Name": "Initial Contact",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": { "Part of speech": ["fragment"] },
         "Table": [
           { "Chance": 3, "Description": "familiar" },
           { "Chance": 15, "Description": "friendly" },
@@ -10828,7 +10871,7 @@
             "Description": "▶️Derelict",
             "Add template": {
               "Template type": "Derelict",
-              "Attributes": { "Derelict type": "Starship" }
+              "Attributes": { "Derelict Type": "Starship" }
             }
           }
         ]
@@ -10836,7 +10879,10 @@
       {
         "Name": "First Look",
         "Initial": true,
-        "Semantics": { "Part of speech": "fragment" },
+        "Semantics": {
+          "Part of speech": ["fragment"],
+          "Content": ["description"]
+        },
         "Max rolls": 2,
         "Table": [
           { "Chance": 4, "Description": "abnormal sensor readings" },
@@ -10871,16 +10917,19 @@
         ]
       },
       {
-        "Name": "Starship Mission",
+        "Name": "Mission",
+        "Display name": "Starship Mission",
+        "Semantics": { "Part of speech": ["fragment"], "Content": ["quest"] },
+        "Description": "Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.",
+        "Select table by": "Region",
         "Tables": [
           {
             "Display name": "Starship Mission - Terminus",
             "Requires": { "Region": ["Terminus"] },
-            "Semantics": { "Part of speech": "fragment" },
             "Table": [
               {
                 "Chance": 3,
-                "Description": "blockade a location",
+                "Description": "Blockade a location",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10889,10 +10938,10 @@
                   }
                 ]
               },
-              { "Chance": 6, "Description": "break a blockade" },
+              { "Chance": 6, "Description": "Break a blockade" },
               {
                 "Chance": 9,
-                "Description": "collect a resource",
+                "Description": "Collect a resource",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10902,34 +10951,34 @@
                   }
                 ]
               },
-              { "Chance": 11, "Description": "command others" },
-              { "Chance": 14, "Description": "conduct diplomacy" },
-              { "Chance": 17, "Description": "conduct espionage" },
-              { "Chance": 20, "Description": "conduct piracy" },
-              { "Chance": 23, "Description": "conduct research" },
-              { "Chance": 26, "Description": "defend against an attack" },
-              { "Chance": 29, "Description": "deliver messages or data" },
-              { "Chance": 32, "Description": "establish a settlement" },
+              { "Chance": 11, "Description": "Command others" },
+              { "Chance": 14, "Description": "Conduct diplomacy" },
+              { "Chance": 17, "Description": "Conduct espionage" },
+              { "Chance": 20, "Description": "Conduct piracy" },
+              { "Chance": 23, "Description": "Conduct research" },
+              { "Chance": 26, "Description": "Defend against an attack" },
+              { "Chance": 29, "Description": "Deliver messages or data" },
+              { "Chance": 32, "Description": "Establish a settlement" },
               {
                 "Chance": 35,
-                "Description": "evacuate a location",
+                "Description": "Evacuate a location",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
-              { "Chance": 37, "Description": "explore a region" },
-              { "Chance": 39, "Description": "hold prisoners" },
+              { "Chance": 37, "Description": "Explore a region" },
+              { "Chance": 39, "Description": "Hold prisoners" },
               {
                 "Chance": 42,
-                "Description": "hunt down another ship",
+                "Description": "Hunt down another ship",
                 "Suggest": [{ "Game object": { "Object type": "Starship" } }]
               },
-              { "Chance": 45, "Description": "launch an attack" },
-              { "Chance": 48, "Description": "patrol an area" },
-              { "Chance": 51, "Description": "provide medical aid" },
-              { "Chance": 54, "Description": "provide repairs" },
-              { "Chance": 57, "Description": "provide shelter" },
+              { "Chance": 45, "Description": "Launch an attack" },
+              { "Chance": 48, "Description": "Patrol an area" },
+              { "Chance": 51, "Description": "Provide medical aid" },
+              { "Chance": 54, "Description": "Provide repairs" },
+              { "Chance": 57, "Description": "Provide shelter" },
               {
                 "Chance": 59,
-                "Description": "quarantine a danger",
+                "Description": "Quarantine a danger",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10941,19 +10990,19 @@
               },
               {
                 "Chance": 62,
-                "Description": "raid a settlement",
+                "Description": "Raid a settlement",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
               {
                 "Chance": 65,
-                "Description": "resupply a settlement",
+                "Description": "Resupply a settlement",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
-              { "Chance": 68, "Description": "retrieve salvage" },
-              { "Chance": 71, "Description": "search and rescue" },
+              { "Chance": 68, "Description": "Retrieve salvage" },
+              { "Chance": 71, "Description": "Search and rescue" },
               {
                 "Chance": 74,
-                "Description": "smuggle cargo",
+                "Description": "Smuggle cargo",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10965,7 +11014,7 @@
               },
               {
                 "Chance": 77,
-                "Description": "survey a site",
+                "Description": "Survey a site",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10976,7 +11025,7 @@
               },
               {
                 "Chance": 79,
-                "Description": "test a technology",
+                "Description": "Test a technology",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10988,7 +11037,7 @@
               },
               {
                 "Chance": 82,
-                "Description": "transport cargo",
+                "Description": "Transport cargo",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -10998,7 +11047,7 @@
                   }
                 ]
               },
-              { "Chance": 85, "Description": "transport passengers" },
+              { "Chance": 85, "Description": "Transport passengers" },
               {
                 "Chance": 90,
                 "Description": "▶️Action + Theme",
@@ -11017,13 +11066,12 @@
           {
             "Display name": "Starship Mission - Outlands",
             "Requires": { "Region": ["Outlands"] },
-            "Semantics": { "Part of speech": "fragment" },
             "Table": [
-              { "Chance": 2, "Description": "blockade a location" },
-              { "Chance": 4, "Description": "break a blockade" },
+              { "Chance": 2, "Description": "Blockade a location" },
+              { "Chance": 4, "Description": "Break a blockade" },
               {
                 "Chance": 7,
-                "Description": "collect a resource",
+                "Description": "Collect a resource",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11033,34 +11081,34 @@
                   }
                 ]
               },
-              { "Chance": 9, "Description": "command others" },
-              { "Chance": 11, "Description": "conduct diplomacy" },
-              { "Chance": 13, "Description": "conduct espionage" },
-              { "Chance": 16, "Description": "conduct piracy" },
-              { "Chance": 20, "Description": "conduct research" },
-              { "Chance": 24, "Description": "defend against an attack" },
-              { "Chance": 28, "Description": "deliver messages or data" },
-              { "Chance": 32, "Description": "establish a settlement" },
+              { "Chance": 9, "Description": "Command others" },
+              { "Chance": 11, "Description": "Conduct diplomacy" },
+              { "Chance": 13, "Description": "Conduct espionage" },
+              { "Chance": 16, "Description": "Conduct piracy" },
+              { "Chance": 20, "Description": "Conduct research" },
+              { "Chance": 24, "Description": "Defend against an attack" },
+              { "Chance": 28, "Description": "Deliver messages or data" },
+              { "Chance": 32, "Description": "Establish a settlement" },
               {
                 "Chance": 36,
-                "Description": "evacuate a location",
+                "Description": "Evacuate a location",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
-              { "Chance": 40, "Description": "explore a region" },
-              { "Chance": 42, "Description": "hold prisoners" },
+              { "Chance": 40, "Description": "Explore a region" },
+              { "Chance": 42, "Description": "Hold prisoners" },
               {
                 "Chance": 45,
-                "Description": "hunt down another ship",
+                "Description": "Hunt down another ship",
                 "Suggest": [{ "Game object": { "Object type": "Starship" } }]
               },
-              { "Chance": 48, "Description": "launch an attack" },
-              { "Chance": 50, "Description": "patrol an area" },
-              { "Chance": 53, "Description": "provide medical aid" },
-              { "Chance": 56, "Description": "provide repairs" },
-              { "Chance": 59, "Description": "provide shelter" },
+              { "Chance": 48, "Description": "Launch an attack" },
+              { "Chance": 50, "Description": "Patrol an area" },
+              { "Chance": 53, "Description": "Provide medical aid" },
+              { "Chance": 56, "Description": "Provide repairs" },
+              { "Chance": 59, "Description": "Provide shelter" },
               {
                 "Chance": 61,
-                "Description": "quarantine a danger",
+                "Description": "Quarantine a danger",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11072,19 +11120,19 @@
               },
               {
                 "Chance": 64,
-                "Description": "raid a settlement",
+                "Description": "Raid a settlement",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
               {
                 "Chance": 68,
-                "Description": "resupply a settlement",
+                "Description": "Resupply a settlement",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
-              { "Chance": 71, "Description": "retrieve salvage" },
-              { "Chance": 73, "Description": "search and rescue" },
+              { "Chance": 71, "Description": "Retrieve salvage" },
+              { "Chance": 73, "Description": "Search and rescue" },
               {
                 "Chance": 75,
-                "Description": "smuggle cargo",
+                "Description": "Smuggle cargo",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11096,7 +11144,7 @@
               },
               {
                 "Chance": 78,
-                "Description": "survey a site",
+                "Description": "Survey a site",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11107,7 +11155,7 @@
               },
               {
                 "Chance": 80,
-                "Description": "test a technology",
+                "Description": "Test a technology",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11119,7 +11167,7 @@
               },
               {
                 "Chance": 83,
-                "Description": "transport cargo",
+                "Description": "Transport cargo",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11129,7 +11177,7 @@
                   }
                 ]
               },
-              { "Chance": 85, "Description": "transport passengers" },
+              { "Chance": 85, "Description": "Transport passengers" },
               {
                 "Chance": 90,
                 "Description": "▶️Action + Theme",
@@ -11148,13 +11196,12 @@
           {
             "Display name": "Starship Mission - Expanse",
             "Requires": { "Region": ["Expanse"] },
-            "Semantics": { "Part of speech": "fragment" },
             "Table": [
-              { "Chance": 2, "Description": "blockade a location" },
-              { "Chance": 4, "Description": "break a blockade" },
+              { "Chance": 2, "Description": "Blockade a location" },
+              { "Chance": 4, "Description": "Break a blockade" },
               {
                 "Chance": 8,
-                "Description": "collect a resource",
+                "Description": "Collect a resource",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11164,34 +11211,34 @@
                   }
                 ]
               },
-              { "Chance": 10, "Description": "command others" },
-              { "Chance": 12, "Description": "conduct diplomacy" },
-              { "Chance": 14, "Description": "conduct espionage" },
-              { "Chance": 16, "Description": "conduct piracy" },
-              { "Chance": 22, "Description": "conduct research" },
-              { "Chance": 25, "Description": "defend against an attack" },
-              { "Chance": 29, "Description": "deliver messages or data" },
-              { "Chance": 35, "Description": "establish a settlement" },
+              { "Chance": 10, "Description": "Command others" },
+              { "Chance": 12, "Description": "Conduct diplomacy" },
+              { "Chance": 14, "Description": "Conduct espionage" },
+              { "Chance": 16, "Description": "Conduct piracy" },
+              { "Chance": 22, "Description": "Conduct research" },
+              { "Chance": 25, "Description": "Defend against an attack" },
+              { "Chance": 29, "Description": "Deliver messages or data" },
+              { "Chance": 35, "Description": "Establish a settlement" },
               {
                 "Chance": 39,
-                "Description": "evacuate a location",
+                "Description": "Evacuate a location",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
-              { "Chance": 45, "Description": "explore a region" },
-              { "Chance": 47, "Description": "hold prisoners" },
+              { "Chance": 45, "Description": "Explore a region" },
+              { "Chance": 47, "Description": "Hold prisoners" },
               {
                 "Chance": 49,
-                "Description": "hunt down another ship",
+                "Description": "Hunt down another ship",
                 "Suggest": [{ "Game object": { "Object type": "Starship" } }]
               },
-              { "Chance": 51, "Description": "launch an attack" },
-              { "Chance": 53, "Description": "patrol an area" },
-              { "Chance": 55, "Description": "provide medical aid" },
-              { "Chance": 57, "Description": "provide repairs" },
-              { "Chance": 61, "Description": "provide shelter" },
+              { "Chance": 51, "Description": "Launch an attack" },
+              { "Chance": 53, "Description": "Patrol an area" },
+              { "Chance": 55, "Description": "Provide medical aid" },
+              { "Chance": 57, "Description": "Provide repairs" },
+              { "Chance": 61, "Description": "Provide shelter" },
               {
                 "Chance": 63,
-                "Description": "quarantine a danger",
+                "Description": "Quarantine a danger",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11203,19 +11250,19 @@
               },
               {
                 "Chance": 65,
-                "Description": "raid a settlement",
+                "Description": "Raid a settlement",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
               {
                 "Chance": 69,
-                "Description": "resupply a settlement",
+                "Description": "Resupply a settlement",
                 "Suggest": [{ "Game object": { "Object type": "Settlement" } }]
               },
-              { "Chance": 71, "Description": "retrieve salvage" },
-              { "Chance": 73, "Description": "search and rescue" },
+              { "Chance": 71, "Description": "Retrieve salvage" },
+              { "Chance": 73, "Description": "Search and rescue" },
               {
                 "Chance": 75,
-                "Description": "smuggle cargo",
+                "Description": "Smuggle cargo",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11227,7 +11274,7 @@
               },
               {
                 "Chance": 77,
-                "Description": "survey a site",
+                "Description": "Survey a site",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11238,7 +11285,7 @@
               },
               {
                 "Chance": 79,
-                "Description": "test a technology",
+                "Description": "Test a technology",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11250,7 +11297,7 @@
               },
               {
                 "Chance": 83,
-                "Description": "transport cargo",
+                "Description": "Transport cargo",
                 "Suggest": [
                   {
                     "Oracles": [
@@ -11260,7 +11307,7 @@
                   }
                 ]
               },
-              { "Chance": 85, "Description": "transport passengers" },
+              { "Chance": 85, "Description": "Transport passengers" },
               {
                 "Chance": 90,
                 "Description": "▶️Action + Theme",

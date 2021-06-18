@@ -4,8 +4,49 @@
   "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
   "Oracles": [
     {
+      "Name": "Ask the Oracle",
+      "Semantics": { "Part of speech": ["noun"] },
+      "Tables": [
+        {
+          "Display name": "Ask the Oracle - Almost Certain",
+          "Table": [
+            [1, 10, "No"],
+            [11, 100, "Yes"]
+          ]
+        },
+        {
+          "Display name": "Ask the Oracle - Likely",
+          "Table": [
+            [1, 25, "No"],
+            [26, 100, "Yes"]
+          ]
+        },
+        {
+          "Display name": "Ask the Oracle - 50/50",
+          "Table": [
+            [1, 50, "No"],
+            [51, 100, "Yes"]
+          ]
+        },
+        {
+          "Display name": "Ask the Oracle - Unlikely",
+          "Table": [
+            [1, 75, "No"],
+            [76, 100, "Yes"]
+          ]
+        },
+        {
+          "Display name": "Ask the Oracle - Small Chance",
+          "Table": [
+            [1, 90, "No"],
+            [91, 100, "Yes"]
+          ]
+        }
+      ]
+    },
+    {
       "Name": "Make a Discovery",
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Table": [
         [
           1,
@@ -214,7 +255,7 @@
     },
     {
       "Name": "Confront Chaos",
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Table": [
         [
           1,
@@ -330,7 +371,7 @@
     },
     {
       "Name": "Take Decisive Action",
-      "Semantics": { "Part of speech": "sentences" },
+      "Semantics": { "Part of speech": ["sentences"] },
       "Table": [
         [
           1,
@@ -354,7 +395,7 @@
     },
     {
       "Name": "Endure Harm",
-      "Semantics": { "Part of speech": "sentences" },
+      "Semantics": { "Part of speech": ["sentences"] },
       "Table": [
         [1, 10, "You suffer mortal harm. __Face Death__."],
         [
@@ -377,7 +418,7 @@
     },
     {
       "Name": "Endure Stress",
-      "Semantics": { "Part of speech": "sentences" },
+      "Semantics": { "Part of speech": ["sentences"] },
       "Table": [
         [1, 10, "You are overwhelmed. __Face Desolation__."],
         [11, 25, "You give up. __Forsake Your Vow__."],
@@ -391,7 +432,7 @@
     },
     {
       "Name": "Withstand Damage",
-      "Semantics": { "Part of speech": "sentences" },
+      "Semantics": { "Part of speech": ["sentences"] },
       "Table": [
         [
           1,
@@ -433,7 +474,7 @@
     },
     {
       "Name": "Pay the Price",
-      "Semantics": { "Part of speech": "fragment" },
+      "Semantics": { "Part of speech": ["fragment"] },
       "Table": [
         [1, 2, "A trusted individual or community acts against you"],
         [
