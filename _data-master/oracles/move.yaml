@@ -5,6 +5,31 @@ Move:
     Name: Starforged Backer Preview
     Version: "050821"
   Oracles:
+    - Name: Ask the Oracle
+      Semantics:
+        Part of speech: [noun]
+      Tables:
+        - Display name: Ask the Oracle - Almost Certain
+          Table:
+            - [1, 10, "No"]
+            - [11, 100, "Yes"]
+        - Display name: Ask the Oracle - Likely
+          Table:
+            - [1, 25, "No"]
+            - [26, 100, "Yes"]
+        - Display name: Ask the Oracle - 50/50
+          Table:
+            - [1, 50, "No"]
+            - [51, 100, "Yes"]
+        - Display name: Ask the Oracle - Unlikely
+          Table:
+            - [1, 75, "No"]
+            - [76, 100, "Yes"]
+        - Display name: Ask the Oracle - Small Chance
+          Table:
+            - [1, 90, "No"]
+            - [91, 100, "Yes"]
+
     - Name: Make a Discovery
       Semantics:
         Part of speech: [fragment]
