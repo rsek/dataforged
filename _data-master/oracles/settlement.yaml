@@ -6,17 +6,17 @@ Settlement:
     - Name: Settlement
       Roles: [place]
       Inherits:
-      - From: Space
-        Oracles: [Stellar Object]
+      - Category: Space
+        Name: [Stellar Object]
         # TODO: an 'as' tag for renaming attributes?
         Requires:
           Location: [Deep Space]
-      - From: Space
-        Oracles: [Peril, Opportunity]
+      - Category: Space
+        Name: [Peril, Opportunity]
         Requires:
           Location: [Orbital, Deep Space]
-      - From: Planet
-        Oracles: [Peril, Opportunity]
+      - Category: Planet
+        Name: [Peril, Opportunity]
         Requires:
           Location: [Planetside]
   Source:
@@ -32,6 +32,7 @@ Settlement:
    
     - Name: Population
       Initial: true
+      Select table by: Region
       Tables:
         - Display name: Population - Terminus
           Requires:

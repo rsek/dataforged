@@ -15,8 +15,8 @@ Vital World:
     Version: "050821"
   Thumbnail: "https://i.imgur.com/Syhr8rp.png"
   Inherits:
-    - From: Planet
-      Oracles: [Peril, Opportunity]
+    - Category: Planet
+      Name: [Peril, Opportunity]
   Sample Names:
     - Chiron
     - Demeter
@@ -47,9 +47,9 @@ Vital World:
         - [51, 100, *Ideal]
   
     - Name: Settlements
+      Select table by: Region
       Tables:
-        - Initial: true
-          Display name: Settlements - Terminus
+        - Display name: Settlements - Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -59,8 +59,7 @@ Vital World:
             - [71, 90, *Multiple_settlements]
             - [91, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Outlands
+        - Display name: Settlements - Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -70,8 +69,7 @@ Vital World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Expanse
+        - Display name: Settlements - Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -82,7 +80,6 @@ Vital World:
             - [99, 100, *Settlements_in_conflict]
    
     - Name: Observed From Space
-      Initial: true
       Semantics:
         Part of speech: [fragment]
       Max rolls: 2

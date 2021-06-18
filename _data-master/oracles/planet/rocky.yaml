@@ -15,8 +15,8 @@ Rocky World:
     Version: "050821"
   Thumbnail: "https://i.imgur.com/wRpdlc1.png"
   Inherits:
-    - From: Planet
-      Oracles: [Peril, Opportunity]
+    - Category: Planet
+      Name: [Peril, Opportunity]
   Sample Names:
     - Aphelion
     - Artemis
@@ -48,9 +48,9 @@ Rocky World:
         - [91, 100, *Marginal]
    
     - Name: Settlements
+      Select table by: Region
       Tables:
-        - Initial: true
-          Display name: Settlements - Terminus
+        - Display name: Settlements - Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -60,8 +60,7 @@ Rocky World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Outlands
+        - Display name: Settlements - Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -71,8 +70,7 @@ Rocky World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Expanse
+        - Display name: Settlements - Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -81,7 +79,6 @@ Rocky World:
             - [97, 100, *Planetside_settlement]
     
     - Name: Observed From Space
-      Initial: true
       Semantics:
         Part of speech: [fragment]
       Max rolls: 2

@@ -20,32 +20,29 @@ Derelict:
   Description: |-
     Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
   Inherits:
-    - From: Settlement
-      Oracles: [Name, Population, First Look, Projects, Trouble, Authority]
+    - Category: Settlement
+      Exclude: [Location, Initial Contact]
       Requires:
         Derelict Type:
           - Settlement
-    - From: Starship
-      Oracles: [Name, First Look, Starship Type]
+    - Category: Starship
+      Exclude: [Location, Initial Contact]
       Requires:
         Derelict Type:
           - Starship
-    - From: Space
-      Oracles: [Peril, Opportunity]
+    - Category: Space
+      Name: [Peril, Opportunity]
       Requires:
         Location:
           - Orbital
           - Deep Space
-    - From: Space
-      Oracles:
-        - Stellar Object
+    - Category: Space
+      Name: [Stellar Object]
       Requires:
         Location:
           - Deep Space
-        Derelict Type:
-          - Settlement
-    - From: Planet
-      Oracles: [Peril, Opportunity]
+    - Category: Planet
+      Name: [Peril, Opportunity]
       Requires:
         Location:
           - Planetside
@@ -59,6 +56,7 @@ Derelict:
    
     - Name: Derelict Type
       Initial: true
+      Select table by: Location
       Tables:
       - Display name: Type - Planetside
         Requires:
@@ -154,8 +152,11 @@ Derelict:
    
     - Name: Zone
       Display name: Derelict Zone
+      Repeatable: true
+      Select table by: Derelict Type
       Tables:
-        - Requires:
+        - Display name: Derelict Zone - Starship
+          Requires:
             Derelict Type:
               - Starship
           Table:
@@ -167,7 +168,8 @@ Derelict:
             - [86, 90, ▶️Production]
             - [91, 100, ▶️Research]
     
-        - Requires:
+        - Display name: Derelict Zone - Settlement
+          Requires:
             Derelict Type:
               - Settlement
           Table:

@@ -15,8 +15,8 @@ Furnace World:
     Version: "050821"
   Thumbnail: "https://i.imgur.com/YS5rlDR.png"
   Inherits:
-    - From: Planet
-      Oracles: [Peril, Opportunity]
+    - Category: Planet
+      Name: [Peril, Opportunity]
   Sample Names:
     - Ash
     - Azula
@@ -49,9 +49,9 @@ Furnace World:
         - [91, 100, *Breathable]
    
     - Name: Settlements
+      Select table by: Region
       Tables:
-        - Initial: true
-          Display name: Settlements - Terminus
+        - Display name: Settlements - Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -61,8 +61,7 @@ Furnace World:
             - [88, 96, *Multiple_settlements]
             - [97, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Outlands
+        - Display name: Settlements - Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -72,8 +71,7 @@ Furnace World:
             - [98, 99, *Multiple_settlements]
             - [100, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Expanse
+        - Display name: Settlements - Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -82,7 +80,6 @@ Furnace World:
             - [99, 100, *Planetside_settlement]
    
     - Name: Observed From Space
-      Initial: true
       Semantics:
         Part of speech: [fragment]
       Max rolls: 2

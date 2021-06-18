@@ -15,8 +15,8 @@ Desert World:
     Version: "050821"
   Thumbnail: "https://i.imgur.com/YLNEHp9.png"
   Inherits:
-    - From: Planet
-      Oracles: [Peril, Opportunity]
+    - Category: Planet
+      Name: [Peril, Opportunity]
   Sample Names:
     - Abalos
     - Audun
@@ -50,9 +50,9 @@ Desert World:
         - [96, 100, *Ideal]
    
     - Name: Settlements
+      Select table by: Region
       Tables:
-        - Initial: true
-          Display name: Settlements - Terminus
+        - Display name: Settlements - Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -62,8 +62,7 @@ Desert World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Outlands
+        - Display name: Settlements - Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -73,8 +72,7 @@ Desert World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Expanse
+        - Display name: Settlements - Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -83,7 +81,6 @@ Desert World:
             - [97, 100, *Planetside_settlement]
    
     - Name: Observed From Space
-      Initial: true
       Semantics:
         Part of speech: [fragment]
       Max rolls: 2

@@ -6,8 +6,8 @@ Starship:
     - Name: Starship
       Roles: [actor, place]
       Inherits:
-        - From: Space
-          Oracles: [Peril, Opportunity]
+        - Category: Space
+          Name: [Peril, Opportunity]
   Source:
     Name: Starforged Backer Preview
     Version: "050821"
@@ -216,12 +216,14 @@ Starship:
         - [91, 94, Towing or linked]
         - [95, 100, *Descriptor+Focus] 
    
-    - Name: Starship Mission
+    - Name: Mission
+      Display name: Starship Mission
       Semantics:
         Part of speech: [fragment]
         Content: [quest]
       Description: |-
         Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
+      Select table by: Region
       Tables:
         - Display name: Starship Mission - Terminus
           Requires:

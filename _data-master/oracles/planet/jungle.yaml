@@ -15,8 +15,8 @@ Jungle World:
     Version: "050821"
   Thumbnail: "https://i.imgur.com/jr90Bnh.png"
   Inherits:
-    - From: Planet
-      Oracles: [Peril, Opportunity]
+    - Category: Planet
+      Name: [Peril, Opportunity]
   Sample Names:
     - Acacia
     - Aster
@@ -49,9 +49,9 @@ Jungle World:
         - [91, 100, *Ideal]
    
     - Name: Settlements
+      Select table by: Region
       Tables:
-        - Initial: true
-          Display name: Settlements - Terminus
+        - Display name: Settlements - Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -61,8 +61,7 @@ Jungle World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Outlands
+        - Display name: Settlements - Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -72,8 +71,7 @@ Jungle World:
             - [93, 97, *Multiple_settlements]
             - [98, 100, *Settlements_in_conflict]
     
-        - Initial: true
-          Display name: Settlements - Expanse
+        - Display name: Settlements - Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -84,7 +82,6 @@ Jungle World:
             - [100, 100, *Settlements_in_conflict]
    
     - Name: Observed From Space
-      Initial: true
       Semantics:
         Part of speech: [fragment]
       Max rolls: 2
