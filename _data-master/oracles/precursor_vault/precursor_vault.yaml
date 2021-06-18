@@ -7,14 +7,18 @@ Precursor Vault:
     - Name: Precursor Vault
       Roles: [place]
       Inherits:
-        - From: Space
-          Oracles: [Peril, Opportunity]
+        - Category: Space
+          Name: [Peril, Opportunity]
           Requires:
             Location: [Orbital, Deep Space, Spaceborne]
-        - From: Planet
-          Oracles: [Peril, Opportunity]
+        - Category: Planet
+          Name: [Peril, Opportunity]
           Requires:
             Location: [Planetside]
+        - Category: Space
+          Name: [Stellar Object]
+          Requires:
+            Location: [Deep Space]
   Subcategories: [Vault Interior, Vault Sanctum]
   Source:
     Name: Starforged Backer Preview
