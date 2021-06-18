@@ -1,7 +1,7 @@
 Name: Assets
 Source:
   Name: Starforged Backer Preview
-  Version: "050821"
+  Version: "060121"
 Assets:
   - Name: Ace
     Category: Path
@@ -30,7 +30,7 @@ Assets:
         #     Trigger: If you roll a miss with a match when using that identity
         #     Effect: If you roll a miss with a match when using that identity, your deception is completely and dramatically undone.
       - Text: |-
-          When you covertly [Gather Information](#Gather-Information), you may roll +shadow. If you do, take +1 momentum on a hit. On a strong hit with a match, you uncover a surprising aspect of an adversary’s plan or a connection to another quest or relationship; take +2 momentum and [Reach a Milestone](#Reach-a-Milestone).
+          When you covertly Gather Information, you may roll +shadow. If you do, take +1 momentum on a hit. On a strong hit with a match, you also uncover a surprising aspect of an adversary’s plan or a connection to another quest or relationship; mark progress twice on a related quest.
         Alternate stat:
           Moves: [Gather Information]
           Stat: Shadow
@@ -66,10 +66,10 @@ Assets:
     Fields: [One, Two]
     Abilities:
       - Text: |-
-          You are rigged with an advanced prosthetic, implant, or mechanical enhancement. When you make a move directly aided by the augment, envision how it gives you exceptional capabilities and add +1. On a strong hit with a match, your augment exceeds expectations; take +2 momentum. On a miss with a match, the augment is broken; you must [Repair](#Repair) and spend 3 repair points to bring it back to working condition.
+          You are equipped with an advanced prosthetic, implant, or mechanical enhancement. When you make a move directly aided by the augment, envision how it gives you exceptional capabilities and add +1. On a strong hit with a match, your augment exceeds expectations; take +2 momentum. On a miss with a match, the augment is broken; you must Repair and spend 3 repair points to bring it back to working condition.
         Enabled: true
       - Text: |-
-          You are rigged with a second augment. It functions as above, but benefits for the two augments do not stack.
+          You are equipped with a second augment. It functions as above, but the benefits of the two augments do not stack.
       - Text: |-
           When you must [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), you may instead mark an augment as broken. [Repair](#Repair) it as detailed above.
   - Name: Bannersworn
@@ -118,12 +118,14 @@ Assets:
     Category: Path
     Abilities:
       - Text: |-
-          When you take a bounty contract and [Swear an Iron Vow](#Swear-an-Iron-Vow) to see it done, add +1. On a strong hit, you’ve got a solid lead and may immediately [Reach a Milestone](#Reach-a-Milestone). When you [Fulfill Your Vow](#Fulfill-Your-Vow), make the legacy reward one rank higher (1 extra box if already epic).
+          When you take a bounty contract and Swear an Iron Vow to see it done, add +1. On a strong hit, you’ve got a solid lead and may immediately mark progress. When you Fulfill Your Vow, make the legacy reward one rank higher (1 extra box if already epic).
         Enabled: true
       - Text: |-
-          When you [Gather Information](#Gather-Information) related to a bounty, add +2. On a strong hit with a match, you reveal a surprising aspect of the contract; envision what you discover, and choose one.
-          * Forge ahead: [Reach a Milestone](#Reach-a-Milestone) and mark progress.
-          * Change loyalties: [Forsake Your Vow](#Forsake-Your-Vow) and mark 2 ticks on your bonds legacy track.
+          When you Gather Information related to a bounty, add +2. On a strong hit with a match, you reveal a surprising aspect of the contract; envision what you discover, and choose one.
+
+           * Forge ahead: Mark progress twice.
+           * Change loyalties: Forsake Your Vow and mark 2 ticks on your bonds legacy track.
+
       - Text: |-
           When you [Take Decisive Action](#Take-Decisive-Action) in a fight against a bounty target or their agents, you may reroll one challenge die.
   - Name: Brawler
@@ -175,7 +177,7 @@ Assets:
     Category: Path
     Abilities:
       - Text: |-
-          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, [Reach a Milestone](#Reach-a-Milestone) and mark progress twice. Then, set safety to 3.
+          When you Swear an Iron Vow to transport and protect something precious, set its safety to 5. When you Undertake an Expedition or Set a Course and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
         Enabled: true
       - Text: |-
           When you [Sojourn](#Sojourn) during a courier mission, you may roll +safety. On a strong hit, take +1 safety or +1 momentum.
@@ -190,13 +192,13 @@ Assets:
       Value: 5
   - Name: Devotant
     Category: Path
-    Fields: [Name, Stat]
+    Fields: [Name, Linked Stat]
     Abilities:
       - Text: |-
           You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by calling on it for guidance or blessings, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
         Enabled: true
       - Text: |-
-          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) in service to your faith, roll +linked stat. On a strong hit, [Reach a Milestone](#Reach-a-Milestone). When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your bonds legacy track.
+          When you Swear an Iron Vow in service to your faith, roll +linked stat. On a strong hit, mark progress. When you Fulfill Your Vow on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
         Alternate stat:
           Moves: [Swear an Iron Vow]
           Stat: &any { Any of: [Edge, Heart, Iron, Shadow, Wits] }
@@ -211,7 +213,7 @@ Assets:
     Category: Path
     Abilities:
       - Text: |-
-          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to resolve a dispute, negotiate an agreement, or gather allies, add +1. On a strong hit, [Reach a Milestone](#Reach-a-Milestone). When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your bonds legacy track.
+          When you Swear an Iron Vow to resolve a dispute, negotiate an agreement, or gather allies, add +1. On a strong hit, mark progress. When you Fulfill Your Vow on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
         Enabled: true
       - Text: |-
           When you make a move in a charged situation to defuse, reason, or negotiate, add +1. If you roll a miss, you may try a different tact. Envision this new approach and reroll all dice. If you roll a miss yet again, face a dire complication or blow to your reputation as you [Pay the Price](#Pay-the-Price).
@@ -220,7 +222,7 @@ Assets:
   - Name: Empath
     Category: Path
     Abilities:
-      - Text:   &move_empath |-
+      - Text: &move_empath |-
           When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 if you use that insight while making a move to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](#Pay-the-Price).
         Enabled: true
         Move:
@@ -305,7 +307,7 @@ Assets:
   - Name: Firebrand
     Category: Path
     Abilities:
-      - Text:   &move_firebrand |-
+      - Text: &move_firebrand |-
           You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](#Endure-Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
         Enabled: true
         Move:
@@ -450,7 +452,7 @@ Assets:
       - Text: |-
           You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](#Undertake-an-Expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
         Enabled: true
-      - Text:   &move_internal_refit |-
+      - Text: &move_internal_refit |-
           Your vessel is stocked with reserves. When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
         Move:
           Name: Internal Refit
@@ -499,7 +501,7 @@ Assets:
       - Text: |-
           When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so), you have a shot at making things right. If you [Heal](#Heal) and score a strong hit, clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident.
       - Text: |-
-          When you [Face Danger](#Face-Danger) by performing a risky medical procedure, or if you [Gather Information](#Gather-Information) through an autopsy or internal scan, reroll any dice and take +1 momentum on a hit.
+          When you Face Danger by performing a risky medical procedure, or if you Gather Information through an autopsy or medical examination, reroll any dice and take +1 momentum on a hit.
   - Name: Mercenary
     Category: Path
     Abilities:
@@ -565,7 +567,7 @@ Assets:
       - Text: |-
           When you [Hearten](#Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
         Enabled: true
-      - Text:   &move_outcast |-
+      - Text: &move_outcast |-
           When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -1 momentum in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](#Lose-Momentum) (-1).
         Move:
           Name: Outcast
@@ -591,7 +593,7 @@ Assets:
       - Text: |-
           When you [Withstand Damage](#Withstand-Damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
       - Text: |-
-          The overseer can pilot the vehicle independently. When you [Face Danger](#Face-Danger) to hand over control to the AI in an emergency, or to summon the vehicle remotely, you may roll +integrity. If you do, take +1 momentum on a hit.
+          The overseer can pilot the vehicle independently. When you Face Danger by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation, you may roll +integrity. If you do, take +1 momentum on a hit.
         Alternate stat:
           Moves: [Command Vehicle Integrity]
           Stat: Face Danger
@@ -615,7 +617,7 @@ Assets:
       - Text: |-
           When you [Face Danger](#Face-Danger) to isolate or secure a hazardous specimen, reroll any dice.
       - Text: |-
-          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to undertake a long-term research project, reroll any dice. When you obtain crucial samples, equipment, or data, [Reach a Milestone](#Reach-a-Milestone). When you have what you need and devote extended time to the project in your lab, [Face Danger](#Face-Danger) and add +1 to see how you fare. On a hit, [Reach a Milestone](#Reach-a-Milestone). On a strong hit with a match, mark progress. When you [Fulfill Your Vow](#Fulfill-Your-Vow), make the legacy reward one rank higher (1 extra box if already epic).
+          When you Swear an Iron Vow to undertake a long-term research project (extreme or greater), reroll any dice. When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your lab, Face Danger and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you Fulfill Your Vow and score a hit, also mark one box on your discoveries legacy track.
   - Name: Revenant
     Category: Deed
     Description: Once you [Face Death](#Face-Death)...
@@ -744,25 +746,25 @@ Assets:
     Category: Path
     Abilities:
       - Text: |-
-          Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. While you are veiled and make a move to ambush, hide, or sneak, set the value of your action die as 5 instead of rolling that die. In places of shadow or darkness, make it 6. On a miss, you are revealed and can’t veil yourself again until the current situation is resolved.
+          Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, set the value of your action die as 5 instead of rolling that die. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself until the current situation is resolved.
         Enabled: true
-      - Text:   &move_shade |-
+      - Text: &move_shade |-
           When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention.
         Move:
           - Name: Shade
-          Category: Asset Moves
-          Stat: Asset Track
-          Text: *move_shade
+            Category: Asset Moves
+            Stat: Asset Track
+            Text: *move_shade
           # Trigger: When you expand your veil to immerse your surroundings in darkness, roll +shadow.
           # Strong hit: On a strong hit, the darkness extends to all adjacent spaces.
           # Weak hit: On a weak hit, only your immediate surroundings are made dark.
           # Miss: On a miss, you fail and draw unwanted attention.
       - Text: |-
-          When you [Secure an Advantage](#Secure-an-Advantage) by dropping your veil in a dramatic moment, take +1 momentum (before rolling) and add +1.
+          When you intentionally drop your veil to reveal yourself for dramatic effect, foregoing its use in this situation, take +2 momentum.
   - Name: Shields
     Category: Module
     Abilities:
-      - Text:   &move_shields |-
+      - Text: &move_shields |-
           When you raise your shields, roll +your vehicle’s integrity or +wits. On a strong hit, set your shields to +4. On a weak hit, make them +3. On a miss, make them +2 but [Lose Momentum](#Lose-Momentum) (-1). Then, if you [Withstand Damage](#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
         Enabled: true
         Move:
@@ -994,7 +996,7 @@ Assets:
     Category: Deed
     Description: Once you fill 6 boxes on your discoveries legacy track...
     Abilities:
-      - Text:   &move_vanguard |-
+      - Text: &move_vanguard |-
           When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you find or establish a safe location and may add +2 whenever you make a recovery move there. If you roll a miss when making a recovery move, the place is no longer safe. On a weak hit, as above, but add +1 when you make a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](#Pay-the-Price).
         Enabled: true
         Move:
@@ -1119,7 +1121,7 @@ Assets:
       - Text: |-
           When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle’s integrity.
       - Text: |-
-          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to undertake a long-term engineering project, reroll any dice. When you obtain a crucial part or resource, [Reach a Milestone](#Reach-a-Milestone). When you have what you need and devote extended time in your workshop to the project, [Face Danger](#Face-Danger) and add +1 to see how you fare. On a hit, [Reach a Milestone](#Reach-a-Milestone). On a strong hit with a match, mark progress. When you [Fulfill Your Vow](#Fulfill-Your-Vow), make the legacy reward one rank higher (1 extra box if already epic).
+          When you Swear an Iron Vow to undertake a long-term engineering project (extreme or greater), reroll any dice. When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your workshop, Face Danger and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you Fulfill Your Vow and score a hit, mark one extra box on your quests legacy track.
         # Match rider:
         #   - On a: Strong hit
         #     Moves: [Face Danger]
