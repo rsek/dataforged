@@ -23,6 +23,7 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
     * assets
     * moves
     * encounters/NPCs
+  * Discord preview from Aug 9th 2021 (new assets, asset revisions)
 
 ## TODO
   * [x] ~~implement standardized keys for references to other game objects, oracle tables, and multiple rolls~~
