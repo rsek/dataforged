@@ -1,95 +1,8 @@
 Name: Assets
 Source:
-  Name: Starforged Backer Preview (Discord preview)
+  Name: Starforged Backer Preview
   Version: "081621"
 Assets:
-  - Name: Archer
-    Category: Path
-    Abilities:
-      - Text: |-
-          Your bow has 6 ammo. When you [Strike](#Strike) or [Clash](#Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take your action die value as +ammo. On a weak hit, as above, but [Sacrifice Resources](#Sacrifice-Resources) (-1). On a miss, [Sacrifice Resources](#Sacrifice-Resources) (-1).
-        Enabled: true
-      - Text: |-
-          You may [Enter the Fray](#Enter-the-Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
-      - Text: |-
-          When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. When you then take your shot by making a move, you may set the value of your action die to 5. On a hit, envision the effects and take +1 momentum.
-  - Name: Sprite
-    Category: Companion
-    Fields: [Name]
-    Abilities:
-      - Text: |-
-          Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
-        Enabled: true
-      - Text: |-
-          You are attuned to the resonance of the sprite's crystalline structure, and can communicate with it at a distance and perceive through its senses. When you [Secure an Advantage](#Secure-an-Advantage) by observing a situation from its perspective, or remotely [Gather Information](#Gather-Information), add +its health.
-      - Text: |-
-          With a moment's rest, the sprite can mend its form and return automatically to max health.
-    Track:
-      Name: Health
-      Value: 2
-  - Name: Bonded
-    Category: Deed
-    Fields: [Bond-mate]
-    Description: One time only, once you [Forge a Bond](#Forge-a-Bond) with a special individual...
-    Abilities:
-      - Text: |-
-          This person is your bond-mate. When you [Sojourn](#Sojourn) at their home, [Hearten](#Hearten) in their presence, or [Test Your Relationship](#Test-Your-Relationship) or [Develop Your Relationship](#Develop-Your-Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
-        Enabled: true
-      - Text: |-
-          When you [Set a Course](#Set-a-Course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.
-      - Text: |-
-          When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](#Face-Desolation).
-  - Name: Grappler
-    Category: Module
-    Abilities:
-      - Text: |-
-          Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
-      - Text: |-
-          If you score a strong hit when readying the grappler, you may [Sacrifice Resources](#Sacrifice-Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
-      - Text: |-
-          When you [Take Decisive Action](#Take-Decisive-Action) by firing the grappler, you may reroll one challenge die.
-  - Name: Protocol Bot
-    Category: Companion
-    Fields: [Name]
-    Abilities:
-      - Text: |-
-          Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
-        Enabled: true
-      - Text: |-
-          When you first visit or interact with a new community or culture, you may ask for the bot's insight. If you do, envision what you learn and take +1 momentum.
-      - Text: |-
-          If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.
-    Track:
-      Name: Health
-      Value: 3
-  - Name: Fugitive
-    Category: Path
-    Abilities:
-      - Text: |-
-          You are hunted by a power or authority. When you make a move, you may rely on your resourcefulness to improve the result to a strong hit. If you do, mark a box above to represent hunters closing in on you. On the third mark, a notable foe or force has tracked you down. If you overcome them or escape, clear the boxes and mark 1 tick on your quests legacy track.
-        Enabled: true
-      - Text: |-
-          When you make a move by hiding, concealing your identity, or fleeing from a pursuer, add +1 and take +1 momentum on a hit.
-      - Text: |-
-          When you [Fulfill Your Vow](#Fulfill-Your-Vow) (extreme or greater) by clearing your name or defeating the power or authority who marked you as a fugitive, gain this ability at no cost. You may then exchange this asset for another with the same number of marked abilities.
-    Track:
-      Name: Fugitive
-      Value: 3
-      Starts At: 0
-  - Name: Skiff
-    Category: Support Vehicle
-    Fields: [Name]
-    Abilities:
-      - Text: |-
-          Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course), you may rely on the skiff's simple reliability and roll +integrity. If you do, take +1 momentum on a hit.
-        Enabled: true
-      - Text: |-
-          Your skiff is armed with a turreted cannon. When you [Strike](#Strike) or [Clash](#Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
-      - Text: |-
-          Your skiff is fully stocked. When you [Check Your Gear](#Check-Your-Gear), add +1 and take +1 momentum on a hit.
-    Track:
-      Name: Integrity
-      Value: 4
   - Name: Ace
     Category: Path
     Abilities:
@@ -127,17 +40,16 @@ Assets:
         #     On a: Strong hit
         #     Trigger: When you covertly [Gather Information](#Gather-Information)
         #     Effect: On a strong hit with a match, you uncover a surprising aspect of an adversary's plan or a connection to another quest or relationship; take +2 momentum and [Reach a Milestone](#Reach-a-Milestone).
-  - Name: Lore Hunter
-    Aliases: [Archivist]
+  - Name: Archer
     Category: Path
     Abilities:
       - Text: |-
-          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to recover valuable knowledge or a powerful relic, reroll any dice. When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
+          Your bow has 6 ammo. When you [Strike](#Strike) or [Clash](#Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take your action die value as +ammo. On a weak hit, as above, but [Sacrifice Resources](#Sacrifice-Resources) (-1). On a miss, [Sacrifice Resources](#Sacrifice-Resources) (-1).
         Enabled: true
       - Text: |-
-          When you make a move to conduct extended research or study, you may reroll your action die if its value is less than your wits. On a hit, take +1 momentum. On a match, you piece together a surprising or harrowing new theory; also mark 1 tick on your discoveries legacy track.
+          You may [Enter the Fray](#Enter-the-Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
       - Text: |-
-          When you recall esoteric knowledge to [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground), add +1. On a hit, envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
+          When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. When you then take your shot by making a move, you may set the value of your action die to 5. On a hit, envision the effects and take +1 momentum.
   - Name: Armored
     Category: Path
     Description: If you wear your finely crafted set of personal armor...
@@ -203,6 +115,18 @@ Assets:
             * Evade: Roll +edge, and take +1 momentum on a hit.
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) and bind the oath to your blade, add +1. On a hit, take +2 momentum or +2 spirit.
+  - Name: Bonded
+    Category: Deed
+    Fields: [Bond-mate]
+    Description: One time only, once you [Forge a Bond](#Forge-a-Bond) with a special individual...
+    Abilities:
+      - Text: |-
+          This person is your bond-mate. When you [Sojourn](#Sojourn) at their home, [Hearten](#Hearten) in their presence, or [Test Your Relationship](#Test-Your-Relationship) or [Develop Your Relationship](#Develop-Your-Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
+        Enabled: true
+      - Text: |-
+          When you [Set a Course](#Set-a-Course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.
+      - Text: |-
+          When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](#Face-Desolation).
   - Name: Bounty Hunter
     Category: Path
     Abilities:
@@ -418,6 +342,20 @@ Assets:
       Name: Fire
       Value: 5
       Starts At: 0
+  - Name: Fugitive
+    Category: Path
+    Abilities:
+      - Text: |-
+          You are hunted by a power or authority. When you make a move, you may rely on your resourcefulness to improve the result to a strong hit. If you do, mark a box above to represent hunters closing in on you. On the third mark, a notable foe or force has tracked you down. If you overcome them or escape, clear the boxes and mark 1 tick on your quests legacy track.
+        Enabled: true
+      - Text: |-
+          When you make a move by hiding, concealing your identity, or fleeing from a pursuer, add +1 and take +1 momentum on a hit.
+      - Text: |-
+          When you [Fulfill Your Vow](#Fulfill-Your-Vow) (extreme or greater) by clearing your name or defeating the power or authority who marked you as a fugitive, gain this ability at no cost. You may then exchange this asset for another with the same number of marked abilities.
+    Track:
+      Name: Fugitive
+      Value: 3
+      Starts At: 0
   - Name: Gearhead
     Category: Path
     Abilities:
@@ -442,6 +380,15 @@ Assets:
     Track:
       Name: Health
       Value: 3
+  - Name: Grappler
+    Category: Module
+    Abilities:
+      - Text: |-
+          Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+      - Text: |-
+          If you score a strong hit when readying the grappler, you may [Sacrifice Resources](#Sacrifice-Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
+      - Text: |-
+          When you [Take Decisive Action](#Take-Decisive-Action) by firing the grappler, you may reroll one challenge die.
   - Name: Gunner
     Category: Path
     Description: If you wield a heavy ranged personal weapon...
@@ -562,6 +509,17 @@ Assets:
           As above, but you may instead draw on your powers in a desperate effort to change the outcome of an action. If you do, add +2 (after you roll) and [Lose Momentum](#Lose-Momentum) (-3).
       - Text: |-
           If you have at least +8 momentum, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, first reset your momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
+  - Name: Lore Hunter
+    Aliases: [Archivist]
+    Category: Path
+    Abilities:
+      - Text: |-
+          When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to recover valuable knowledge or a powerful relic, reroll any dice. When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
+        Enabled: true
+      - Text: |-
+          When you make a move to conduct extended research or study, you may reroll your action die if its value is less than your wits. On a hit, take +1 momentum. On a match, you piece together a surprising or harrowing new theory; also mark 1 tick on your discoveries legacy track.
+      - Text: |-
+          When you recall esoteric knowledge to [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground), add +1. On a hit, envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
   - Name: Loyalist
     Category: Path
     Abilities:
@@ -690,6 +648,20 @@ Assets:
         #   Moves: [Command Vehicle Integrity]
         #   Stat: [Face Danger](#Face-Danger)
         #   Trigger: When you [Face Danger](#Face-Danger) to hand over control to the AI in an emergency, or to summon the vehicle remotely
+  - Name: Protocol Bot
+    Category: Companion
+    Fields: [Name]
+    Abilities:
+      - Text: |-
+          Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
+        Enabled: true
+      - Text: |-
+          When you first visit or interact with a new community or culture, you may ask for the bot's insight. If you do, envision what you learn and take +1 momentum.
+      - Text: |-
+          If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.
+    Track:
+      Name: Health
+      Value: 3
   - Name: Reinforced Hull
     Category: Module
     Abilities:
@@ -898,6 +870,20 @@ Assets:
     Track:
       Name: Integrity
       Value: 4
+  - Name: Skiff
+    Category: Support Vehicle
+    Fields: [Name]
+    Abilities:
+      - Text: |-
+          Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course), you may rely on the skiff's simple reliability and roll +integrity. If you do, take +1 momentum on a hit.
+        Enabled: true
+      - Text: |-
+          Your skiff is armed with a turreted cannon. When you [Strike](#Strike) or [Clash](#Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
+      - Text: |-
+          Your skiff is fully stocked. When you [Check Your Gear](#Check-Your-Gear), add +1 and take +1 momentum on a hit.
+    Track:
+      Name: Integrity
+      Value: 4
   - Name: Sidekick
     Category: Companion
     Fields: [Name, Expertise]
@@ -962,6 +948,20 @@ Assets:
     Counter:
       Name: Victory Marks
       Starts At: 0
+  - Name: Sprite
+    Category: Companion
+    Fields: [Name]
+    Abilities:
+      - Text: |-
+          Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
+        Enabled: true
+      - Text: |-
+          You are attuned to the resonance of the sprite's crystalline structure, and can communicate with it at a distance and perceive through its senses. When you [Secure an Advantage](#Secure-an-Advantage) by observing a situation from its perspective, or remotely [Gather Information](#Gather-Information), add +its health.
+      - Text: |-
+          With a moment's rest, the sprite can mend its form and return automatically to max health.
+    Track:
+      Name: Health
+      Value: 2
   - Name: Starship
     Category: Command Vehicle
     Fields: [Name]
@@ -1121,7 +1121,7 @@ Assets:
           You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](#Repair) a battered support vehicle, spend 1 repair point (instead of 2).
         Enabled: true
       - Text: |-
-          When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](#Ask-the-Oracle) using the yes/no table if something can be salvaged from the mess. Make it ‘50/50'. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](#Repair) and bring it back to full working order, the vehicle is battered with 0 integrity.
+          When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](#Ask-the-Oracle) using the yes/no table if something can be salvaged from the mess. Make it '50/50'. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](#Repair) and bring it back to full working order, the vehicle is battered with 0 integrity.
       - Text: |-
           When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit.
   - Name: Vestige
