@@ -270,154 +270,123 @@ _refs:
     - &pop03 Thousands
     - &pop04 Tens of thousands
 
-
-Campaign:
-  Name: Campaign
+Ask the Oracle:
+  Name: Ask the Oracle
+  Aliases: [Ask]
   Content type: oracles
   Source:
     Name: Starforged Backer Preview
     Version: "050821"
   Oracles:
-    - Name: Background Assets
-      Semantics:
-        Part of speech: [common noun]
+    - Name: Almost Certain
+      Aliases: ["90"]
       Table:
-        - [1, 5, Adept, { Assets: [Kinetic, Vestige]}]
-        - [6, 10, Battlefield Medic, { Assets: [Healer, Veteran] }]
-        - [11, 15, Bodyguard*, { Assets: [Brawler, Loyalist] }]
-        - [16, 20, Delegate, { Assets: [Bannersworn, Diplomat] }]
-        - [21, 25, Exobiologist, { Assets: [Archivist, Naturalist] }]
-        - [26, 30, Far Trader, { Assets: [Navigator, Trader] }]
-        - [31, 35, Fugitive Hunter, { Assets: [Armored, Bounty hunter] }]
-        - [36, 40, Hacker, { Assets: [Agent, Tech] }]
-        - [41, 45, Hotshot Pilot, { Assets: [Ace, Gunslinger] }]
-        - [46, 50, Monster Hunter, { Assets: [Gunner, Slayer] }]
-        - [51, 55, Occultist, { Assets: [Outcast, Shade] }]
-        - [56, 60, Operative, { Assets: [Agent, Blademaster] }]
-        - [61, 65, Pilgrim, { Assets: [Devotant, Explorer] }]
-        - [66, 70, Prophet, { Assets: [Devotant, Seer] }]
-        - [71, 75, Smuggler, { Assets: [Courier, Scoundrel] }]
-        - [76, 80, Spiritualist, { Assets: [Haunted, Empath] }]
-        - [81, 85, Starship Captain*, { Assets: [Commander, Explorer] }]
-        - [86, 90, Starship Mechanic, { Assets: [Gearhead, Voidborn] }]
-        - [91, 95, Supersoldier, { Assets: [Augmented, Mercenary] }]
-        - [96, 100, Tomb Raider, { Assets: [Scavenger, Scoundrel] }]
-   
-    - Name: Backstory Prompts
-      Semantics:
-        Part of speech: [fragment]
+        - [1, 10, "No"]
+        - [11, 11, HELL YES!]
+        - [12, 21, "Yes"]
+        - [22, 22, HELL YES!]
+        - [23, 32, "Yes"]
+        - [33, 33, HELL YES!]
+        - [34, 43, "Yes"]
+        - [44, 44, HELL YES!]
+        - [45, 54, "Yes"]
+        - [55, 55, HELL YES!]
+        - [56, 65, "Yes"]
+        - [66, 66, HELL YES!]
+        - [67, 76, "Yes"]
+        - [77, 77, HELL YES!]
+        - [78, 87, "Yes"]
+        - [88, 88, HELL YES!]
+        - [89, 98, "Yes"]
+        - [99, 100, HELL YES!]
+    - Name: Likely
+      Aliases: ["75"]
       Table:
-        - [1, 7, You abandoned your kin after learning a troubling truth]
-        - [8, 14, You are guided by a vision or prophesy]
-        - [15, 21, You are haunted by past actions or failures]
-        - [22, 28, You are running from a criminal past]
-        - [29, 36, You are the sole survivor of an attack or calamity]
-        - [37, 43, You escaped an abusive or unjust situation]
-        - [44, 50, You have no memory of your former life]
-        - [51, 57, You rejected a duty or destiny]
-        - [58, 65, You were cast out of your former home]
-        - [66, 72, You were denied a birthright]
-        - [73, 79, You were on your own for as long as you can remember]
-        - [80, 86, You were taken or lured away by someone]
-        - [87, 93, Your ambitions outgrew your humble origins]
-        - [94, 100, Your wanderlust carried you far away]
-   
-    - Name: Starship History
-      Semantics:
-        Part of speech: [fragment]
+        - [1, 10, "No"]
+        - [11, 11, HELL NO!]
+        - [12, 21, "No"]
+        - [22, 22, HELL NO!]
+        - [23, 25, "No"]
+        - [26, 32, "Yes"]
+        - [33, 33, HELL YES!]
+        - [34, 43, "Yes"]
+        - [44, 44, HELL YES!]
+        - [45, 54, "Yes"]
+        - [55, 55, HELL YES!]
+        - [56, 65, "Yes"]
+        - [66, 66, HELL YES!]
+        - [67, 76, "Yes"]
+        - [77, 77, HELL YES!]
+        - [78, 87, "Yes"]
+        - [88, 88, HELL YES!]
+        - [89, 98, "Yes"]
+        - [99, 100, HELL YES!]
+    - Name: 50/50
+      Aliases: ["50", "5050"]
       Table:
-        - [1, 8, Acquired in trade for a precious family heirloom]
-        - [9, 17, Built out of re-purposed scrap]
-        - [18, 25, Claimed as spoils of war]
-        - [26, 34, "Discovered as a derelict, and patched back together"]
-        - [35, 42, Earned in exchange for a promise or vow]
-        - [43, 50, Found abandoned in perfect condition]
-        - [51, 58, Granted by an organization or community]
-        - [59, 67, Inherited from a relative or mentor]
-        - [68, 75, Purchased at a suspiciously cheap price]
-        - [76, 84, Stolen from a notorious crime boss or criminal organization]
-        - [85, 92, Taken while fleeing an attack or disaster]
-        - [93, 100, Won in a bet]
-   
-    - Name: Starship Quirks
-      Semantics:
-        Part of speech: [fragment]
-      Max rolls: 2
+        - [1, 10, "No"]
+        - [11, 11, HELL NO!]
+        - [12, 21, "No"]
+        - [22, 22, HELL NO!]
+        - [23, 32, "No"]
+        - [33, 33, HELL NO!]
+        - [34, 43, "No"]
+        - [44, 44, HELL NO!]
+        - [45, 50, "No"]
+        - [51, 54, "Yes"]
+        - [55, 55, HELL YES!]
+        - [56, 65, "Yes"]
+        - [66, 66, HELL YES!]
+        - [67, 76, "Yes"]
+        - [77, 77, HELL YES!]
+        - [78, 87, "Yes"]
+        - [88, 88, HELL YES!]
+        - [89, 98, "Yes"]
+        - [99, 100, HELL YES!]
+    - Name: Unlikely
+      Aliases: ["25"]
       Table:
-        - [1, 5, Engine room is scorched with old burn marks]
-        - [6, 10, Exterior is marred by rust and grime]
-        - [11, 15, "Faint, phantom music sometimes echoes through the corridors"]
-        - [16, 20, Gravity generator is notoriously fickle]
-        - [21, 25, Hull is fused with organic growths]
-        - [26, 30, Hull rattles and groans in atmospheric flight]
-        - [31, 35, Interior spaces are crowded with exposed cables and conduits]
-        - [36, 40, "Looks defenseless, but exterior panels open to reveal weapons"]
-        - [41, 45, Navigation logs contain coordinates to locations that do not—or should not—exist]
-        - [46, 50, Old bloodstain in the airlock reappears even when painted over]
-        - [51, 55, "Once a beautiful ship, now scarred by a devastating battle"]
-        - [56, 60, Patched hull covers a recent catastrophic breach]
-        - [61, 65, Placards and control labels are in an uncommon language]
-        - [66, 70, Removable plate decks provide access to hidden storage]
-        - [71, 75, Segmented landing gear unfold like gangly spider legs]
-        - [76, 80, Ship is powered by an ancient precursor device]
-        - [81, 85, Someone marked the hull with graffiti during a recent layover]
-        - [86, 90, Strange symbols are scrawled on the deck and bulkheads in the main corridor]
-        - [91, 95, Things tend to go missing for no logical reason]
-        - [96, 100, Timers and clocks are always just a bit off]
-   
-    - Name: Sector Trouble
-      Oracle type: peril
-      Semantics:
-        Part of speech: [fragment]
+        - [1, 10, "No"]
+        - [11, 11, HELL NO!]
+        - [12, 21, "No"]
+        - [22, 22, HELL NO!]
+        - [23, 32, "No"]
+        - [33, 33, HELL NO!]
+        - [34, 43, "No"]
+        - [44, 44, HELL NO!]
+        - [45, 54, "No"]
+        - [55, 55, HELL NO!]
+        - [56, 65, "No"]
+        - [66, 66, HELL NO!]
+        - [67, 75, "No"]
+        - [76, 76, "Yes"]
+        - [77, 77, HELL YES!]
+        - [78, 87, "Yes"]
+        - [88, 88, HELL YES!]
+        - [89, 98, "Yes"]
+        - [99, 100, HELL YES!]
+    - Name: Small Chance
+      Aliases: ["10"]
       Table:
-        - [1, 5, Blockade prevents trade with other sectors]
-        - [6, 10, Bounty hunters search for an infamous fugitive, *suggestNpc]
-        - [11, 15, Chaotic breaches in spacetime spread like wildfire]
-        - [16, 20, Criminal faction corrupts local authorities]
-        - [21, 25, Devastating superweapon has fallen into the wrong hands]
-        - [26, 30, Energy storms are rampant]
-        - [31, 35, Magnetic disturbances disrupt communication]
-        - [36, 40, Newly found resource lures greedy fortune hunters to the sector, *suggestObject]
-        - [41, 45, Notorious pirate clan preys on starships]
-        - [46, 50, Parasitic lifeforms spread like a plague, *suggestCreature]
-        - [51, 55, Precursor sites throughout the sector emit strange signals, *suggestVault]
-        - [56, 60, Prophecies foretell an imminent awakening of a dreadful power]
-        - [61, 65, Raider clan emerges as a dominant threat under a new leader]
-        - [66, 70, Religious zealots overrun the sector]
-        - [71, 75, Rogue AI infiltrates systems throughout the sector]
-        - [76, 80, Settlements or factions are on the brink of war, *suggestSettlement]
-        - [81, 85, Ships regularly go missing]
-        - [86, 90, Sickness spreads among ships and settlements]
-        - [91, 95, Supernova is imminent]
-        - [96, 100, Titanic spaceborne lifeform stalks the spaceways, *suggestCreature]
-   
-    - Name: Inciting Incident
-      Semantics:
-        Part of speech: [fragment]
-      Table:
-        - [1, 5, Aid a starship caught in a spacetime fracture, *suggestShip]
-        - [6, 10, Broker peace between two feuding settlements, *suggestSettlement]
-        - [11, 15, Chart a new passage between isolated settlements, *suggestSettlement]
-        - [16, 20, Defend the people of a beleaguered settlement against raiders, *suggestSettlement]
-        - [21, 25, Discover who sabotaged a settlement's air processors, *suggestSettlement]
-        - [26, 30, Escort a tradeship carrying a prized cargo, *suggestShip]
-        - [31, 35, Ferry a rescue team to a perilous disaster site, *suggestPlace]
-        - [36, 40, Infiltrate a fortified base to steal crucial data]
-        - [41, 45, Investigate terrifying manifestations at a remote settlement, *suggestSettlement]
-        - [46, 50, Liberate prisoners at a cruel labor camp, *suggestPlace]
-        - [51, 55, Locate a downed spacer on an uninhabited planet, *suggestPlanet]
-        - [56, 60, Protect a fugitive from a relentless bounty hunter, *suggestNpc]
-        - [61, 65, Recover a cherished pre-exodus artifact from an enemy, *suggestObject]
-        - [66, 70, Rescue a starship crew held captive by mutineers, *suggestShip]
-        - [71, 75, Retrieve a cache of stolen weapons from a pirate ship, *suggestShip]
-        - [76, 80, Sabotage an enemy installation]
-        - [81, 85, Search for a missing expedition in the depths of a precursor vault, *suggestVault]
-        - [86, 90, Shield a wondrous lifeform from those who seek to destroy it, *suggestCreature]
-        - [91, 95, Track and slay a marauding beast, *suggestCreature]
-        - [96, 100, Transport a displaced people to their new home, *suggestPlace]
-   
-  
-  
+        - [1, 10, "No"]
+        - [11, 11, HELL NO!]
+        - [12, 21, "No"]
+        - [22, 22, HELL NO!]
+        - [23, 32, "No"]
+        - [33, 33, HELL NO!]
+        - [34, 43, "No"]
+        - [44, 44, HELL NO!]
+        - [45, 54, "No"]
+        - [55, 55, HELL NO!]
+        - [56, 65, "No"]
+        - [66, 66, HELL NO!]
+        - [67, 76, "No"]
+        - [77, 77, HELL NO!]
+        - [78, 87, "No"]
+        - [88, 88, HELL NO!]
+        - [89, 90, "No"]
+        - [91, 98, "Yes"]
+        - [99, 100, HELL YES!]
 
 Character:
   Name: Character
@@ -1049,6 +1018,155 @@ Character:
   
   
   
+Character Creation:
+  Name: Character Creation
+  Aliases: [Creation]
+  Content type: oracles
+  Source:
+    Name: Starforged Backer Preview
+    Version: "050821"
+  Oracles:
+    - Name: Background Assets
+      Semantics:
+        Part of speech: [common noun]
+      Table:
+        - [1, 5, Adept, { Assets: [Kinetic, Vestige]}]
+        - [6, 10, Battlefield Medic, { Assets: [Healer, Veteran] }]
+        - [11, 15, Bodyguard*, { Assets: [Brawler, Loyalist] }]
+        - [16, 20, Delegate, { Assets: [Bannersworn, Diplomat] }]
+        - [21, 25, Exobiologist, { Assets: [Archivist, Naturalist] }]
+        - [26, 30, Far Trader, { Assets: [Navigator, Trader] }]
+        - [31, 35, Fugitive Hunter, { Assets: [Armored, Bounty hunter] }]
+        - [36, 40, Hacker, { Assets: [Agent, Tech] }]
+        - [41, 45, Hotshot Pilot, { Assets: [Ace, Gunslinger] }]
+        - [46, 50, Monster Hunter, { Assets: [Gunner, Slayer] }]
+        - [51, 55, Occultist, { Assets: [Outcast, Shade] }]
+        - [56, 60, Operative, { Assets: [Agent, Blademaster] }]
+        - [61, 65, Pilgrim, { Assets: [Devotant, Explorer] }]
+        - [66, 70, Prophet, { Assets: [Devotant, Seer] }]
+        - [71, 75, Smuggler, { Assets: [Courier, Scoundrel] }]
+        - [76, 80, Spiritualist, { Assets: [Haunted, Empath] }]
+        - [81, 85, Starship Captain*, { Assets: [Commander, Explorer] }]
+        - [86, 90, Starship Mechanic, { Assets: [Gearhead, Voidborn] }]
+        - [91, 95, Supersoldier, { Assets: [Augmented, Mercenary] }]
+        - [96, 100, Tomb Raider, { Assets: [Scavenger, Scoundrel] }]
+   
+    - Name: Backstory Prompts
+      Semantics:
+        Part of speech: [fragment]
+      Table:
+        - [1, 7, You abandoned your kin after learning a troubling truth]
+        - [8, 14, You are guided by a vision or prophesy]
+        - [15, 21, You are haunted by past actions or failures]
+        - [22, 28, You are running from a criminal past]
+        - [29, 36, You are the sole survivor of an attack or calamity]
+        - [37, 43, You escaped an abusive or unjust situation]
+        - [44, 50, You have no memory of your former life]
+        - [51, 57, You rejected a duty or destiny]
+        - [58, 65, You were cast out of your former home]
+        - [66, 72, You were denied a birthright]
+        - [73, 79, You were on your own for as long as you can remember]
+        - [80, 86, You were taken or lured away by someone]
+        - [87, 93, Your ambitions outgrew your humble origins]
+        - [94, 100, Your wanderlust carried you far away]
+   
+    - Name: Starship History
+      Semantics:
+        Part of speech: [fragment]
+      Table:
+        - [1, 8, Acquired in trade for a precious family heirloom]
+        - [9, 17, Built out of re-purposed scrap]
+        - [18, 25, Claimed as spoils of war]
+        - [26, 34, "Discovered as a derelict, and patched back together"]
+        - [35, 42, Earned in exchange for a promise or vow]
+        - [43, 50, Found abandoned in perfect condition]
+        - [51, 58, Granted by an organization or community]
+        - [59, 67, Inherited from a relative or mentor]
+        - [68, 75, Purchased at a suspiciously cheap price]
+        - [76, 84, Stolen from a notorious crime boss or criminal organization]
+        - [85, 92, Taken while fleeing an attack or disaster]
+        - [93, 100, Won in a bet]
+   
+    - Name: Starship Quirks
+      Semantics:
+        Part of speech: [fragment]
+      Max rolls: 2
+      Table:
+        - [1, 5, Engine room is scorched with old burn marks]
+        - [6, 10, Exterior is marred by rust and grime]
+        - [11, 15, "Faint, phantom music sometimes echoes through the corridors"]
+        - [16, 20, Gravity generator is notoriously fickle]
+        - [21, 25, Hull is fused with organic growths]
+        - [26, 30, Hull rattles and groans in atmospheric flight]
+        - [31, 35, Interior spaces are crowded with exposed cables and conduits]
+        - [36, 40, "Looks defenseless, but exterior panels open to reveal weapons"]
+        - [41, 45, Navigation logs contain coordinates to locations that do not—or should not—exist]
+        - [46, 50, Old bloodstain in the airlock reappears even when painted over]
+        - [51, 55, "Once a beautiful ship, now scarred by a devastating battle"]
+        - [56, 60, Patched hull covers a recent catastrophic breach]
+        - [61, 65, Placards and control labels are in an uncommon language]
+        - [66, 70, Removable plate decks provide access to hidden storage]
+        - [71, 75, Segmented landing gear unfold like gangly spider legs]
+        - [76, 80, Ship is powered by an ancient precursor device]
+        - [81, 85, Someone marked the hull with graffiti during a recent layover]
+        - [86, 90, Strange symbols are scrawled on the deck and bulkheads in the main corridor]
+        - [91, 95, Things tend to go missing for no logical reason]
+        - [96, 100, Timers and clocks are always just a bit off]
+   
+    - Name: Sector Trouble
+      Oracle type: peril
+      Semantics:
+        Part of speech: [fragment]
+      Table:
+        - [1, 5, Blockade prevents trade with other sectors]
+        - [6, 10, Bounty hunters search for an infamous fugitive, *suggestNpc]
+        - [11, 15, Chaotic breaches in spacetime spread like wildfire]
+        - [16, 20, Criminal faction corrupts local authorities]
+        - [21, 25, Devastating superweapon has fallen into the wrong hands]
+        - [26, 30, Energy storms are rampant]
+        - [31, 35, Magnetic disturbances disrupt communication]
+        - [36, 40, Newly found resource lures greedy fortune hunters to the sector, *suggestObject]
+        - [41, 45, Notorious pirate clan preys on starships]
+        - [46, 50, Parasitic lifeforms spread like a plague, *suggestCreature]
+        - [51, 55, Precursor sites throughout the sector emit strange signals, *suggestVault]
+        - [56, 60, Prophecies foretell an imminent awakening of a dreadful power]
+        - [61, 65, Raider clan emerges as a dominant threat under a new leader]
+        - [66, 70, Religious zealots overrun the sector]
+        - [71, 75, Rogue AI infiltrates systems throughout the sector]
+        - [76, 80, Settlements or factions are on the brink of war, *suggestSettlement]
+        - [81, 85, Ships regularly go missing]
+        - [86, 90, Sickness spreads among ships and settlements]
+        - [91, 95, Supernova is imminent]
+        - [96, 100, Titanic spaceborne lifeform stalks the spaceways, *suggestCreature]
+   
+    - Name: Inciting Incident
+      Semantics:
+        Part of speech: [fragment]
+      Table:
+        - [1, 5, Aid a starship caught in a spacetime fracture, *suggestShip]
+        - [6, 10, Broker peace between two feuding settlements, *suggestSettlement]
+        - [11, 15, Chart a new passage between isolated settlements, *suggestSettlement]
+        - [16, 20, Defend the people of a beleaguered settlement against raiders, *suggestSettlement]
+        - [21, 25, Discover who sabotaged a settlement's air processors, *suggestSettlement]
+        - [26, 30, Escort a tradeship carrying a prized cargo, *suggestShip]
+        - [31, 35, Ferry a rescue team to a perilous disaster site, *suggestPlace]
+        - [36, 40, Infiltrate a fortified base to steal crucial data]
+        - [41, 45, Investigate terrifying manifestations at a remote settlement, *suggestSettlement]
+        - [46, 50, Liberate prisoners at a cruel labor camp, *suggestPlace]
+        - [51, 55, Locate a downed spacer on an uninhabited planet, *suggestPlanet]
+        - [56, 60, Protect a fugitive from a relentless bounty hunter, *suggestNpc]
+        - [61, 65, Recover a cherished pre-exodus artifact from an enemy, *suggestObject]
+        - [66, 70, Rescue a starship crew held captive by mutineers, *suggestShip]
+        - [71, 75, Retrieve a cache of stolen weapons from a pirate ship, *suggestShip]
+        - [76, 80, Sabotage an enemy installation]
+        - [81, 85, Search for a missing expedition in the depths of a precursor vault, *suggestVault]
+        - [86, 90, Shield a wondrous lifeform from those who seek to destroy it, *suggestCreature]
+        - [91, 95, Track and slay a marauding beast, *suggestCreature]
+        - [96, 100, Transport a displaced people to their new home, *suggestPlace]
+   
+  
+  
+
 Core:
   Name: Core
   Content type: oracles
@@ -2000,33 +2118,22 @@ Move:
   Content type: oracles
   Source:
     Name: Starforged Backer Preview
-    Version: "050821"
+    Version: "081521"
   Oracles:
-    - Name: Ask the Oracle
+    - Name: Begin a Session
       Semantics:
-        Part of speech: [noun]
-      Tables:
-        - Display name: Ask the Oracle - Almost Certain
-          Table:
-            - [1, 10, "No"]
-            - [11, 100, "Yes"]
-        - Display name: Ask the Oracle - Likely
-          Table:
-            - [1, 25, "No"]
-            - [26, 100, "Yes"]
-        - Display name: Ask the Oracle - 50/50
-          Table:
-            - [1, 50, "No"]
-            - [51, 100, "Yes"]
-        - Display name: Ask the Oracle - Unlikely
-          Table:
-            - [1, 75, "No"]
-            - [76, 100, "Yes"]
-        - Display name: Ask the Oracle - Small Chance
-          Table:
-            - [1, 90, "No"]
-            - [91, 100, "Yes"]
-
+        Part of speech: [fragment]
+      Table:
+        - [1, 10, Influential person or faction is introduced or given new detail, *suggestNpc]
+        - [11, 20, "Flashback reveals an aspect of a faction, culture, or place", *suggestEvent]
+        - [21, 30, Flashback reveals an aspect of your background or nature, *suggestEvent]
+        - [31, 40, External factors create new urgency or importance for a quest, *suggestEvent]
+        - [41, 50, Enemy builds power or enacts a plan, *suggestEvent]
+        - [51, 60, Return of an enemy once thought to be defeated]
+        - [61, 70, Someone important is put in danger or suffers a misadventure, *suggestNpc]
+        - [71, 80, Key location is made unsafe or becomes mired in conflict, *suggestPlace]
+        - [81, 90, Unexpected peril lies ahead or lurks just out of view, *suggestEvent]
+        - [91, 100, Unforeseen aid is on the way or within reach] 
     - Name: Make a Discovery
       Semantics:
         Part of speech: [fragment]
@@ -2297,7 +2404,7 @@ Settlement:
     - Name: Projects
       Display name: Settlement Projects
       Semantics:
-        Part of speech: [noun]
+        Part of speech: [common noun]
         Content: abstract noun
       Max rolls: 2
       Table:
@@ -2617,7 +2724,7 @@ Space:
           Name: Sector Name - Suffix
       Initial: true
       Semantics:
-        Part of speech: [adjective]
+        Part of speech: [proper noun]
         Capitalize: true
       Table:
         - [1, 2, Accursed]
@@ -5448,7 +5555,7 @@ Vital World:
       Min rolls: 2
       Max rolls: 5
       Semantics:
-        Part of speech: [noun]
+        Part of speech: [common noun]
       Table:
         - [1, 5, Caves]
         - [6, 10, Cold forest]
@@ -5661,7 +5768,7 @@ Precursor Vault:
     - Name: Form
       Initial: true
       Semantics:
-        Part of speech: [noun]
+        Part of speech: [common noun]
       Table:
         - [1, 35, Structure]
         - [36, 60, Vessel]
@@ -5883,6 +5990,7 @@ Vault Sanctum:
 
 Access:
   Name: Access
+  Display name: Derelict Zone - Access
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -5966,6 +6074,7 @@ Access:
 
 Community:
   Name: Community
+  Display name: Derelict Zone - Community
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -6045,6 +6154,7 @@ Community:
 
 Engineering:
   Name: Engineering
+  Display name: Derelict Zone - Engineering
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -6121,6 +6231,7 @@ Engineering:
    
 Living:
   Name: Living
+  Display name: Derelict Zone - Living
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -6200,6 +6311,7 @@ Living:
 
 Medical:
   Name: Medical
+  Display name: Derelict Zone - Medical
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -6279,6 +6391,7 @@ Medical:
 
 Operations:
   Name: Operations
+  Display name: Derelict Zone - Access
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -6358,6 +6471,7 @@ Operations:
 
 Production:
   Name: Production
+  Display name: Derelict Zone - Production
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
@@ -6437,6 +6551,7 @@ Production:
 
 Research:
   Name: Research
+  Display name: Derelict Zone - Research
   Subcategory of: Derelict
   Category: Derelict Zones
   Requires:
