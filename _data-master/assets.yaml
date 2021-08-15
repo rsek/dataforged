@@ -43,8 +43,14 @@ Assets:
   - Name: Archer
     Category: Path
     Abilities:
-      - Text: |-
+      - Text: &move_archer |-
           Your bow has 6 ammo. When you [Strike](#Strike) or [Clash](#Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take your action die value as +ammo. On a weak hit, as above, but [Sacrifice Resources](#Sacrifice-Resources) (-1). On a miss, [Sacrifice Resources](#Sacrifice-Resources) (-1).
+        Move:
+          Name: Craft Projectiles
+          Category: Asset Moves
+          Asset: Archer
+          Stats: [Wits]
+          Text: *move_archer
         Enabled: true
       - Text: |-
           You may [Enter the Fray](#Enter-the-Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
@@ -239,9 +245,10 @@ Assets:
           When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 if you use that insight while making a move to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](#Pay-the-Price).
         Enabled: true
         Move:
-          Name: Empath
+          Name: Read Heart
           Category: Asset Moves
-          Stat: Heart
+          Asset: Empath
+          Stats: [Heart]
           Text: *move_empath
           # Trigger: When you read the intent, emotions, or memories of a nearby being, roll +heart.
           # Strong hit: On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 if you use that insight while making a move to interact with them in this scene.
@@ -326,9 +333,10 @@ Assets:
           You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](#Endure-Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
         Enabled: true
         Move:
-          Name: Firebrand
+          Name: Gather Energy
           Category: Asset Moves
-          Stat: Spirit
+          Asset: Firebrand
+          Stats: [Spirit]
           Text: *move_firebrand
           # Trigger: When you rest and meditate to gather this energy, roll +spirit.
           # Strong hit: On a strong hit, take up to +3 fire.
@@ -383,8 +391,14 @@ Assets:
   - Name: Grappler
     Category: Module
     Abilities:
-      - Text: |-
+      - Text: &move_grappler |-
           Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+        Move:
+          Name: Ready Grappler
+          Category: Asset Moves
+          Asset: Grappler
+          Stats: [Command Vehicle Integrity, Wits]
+          Text: *move_grappler
       - Text: |-
           If you score a strong hit when readying the grappler, you may [Sacrifice Resources](#Sacrifice-Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
       - Text: |-
@@ -494,8 +508,10 @@ Assets:
       - Text: &move_internal_refit |-
           Your vessel is stocked with reserves. When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
         Move:
-          Name: Internal Refit
-          Stat: Command Vehicle Integrity
+          Name: Draw on Reserves
+          Category: Asset Moves
+          Asset: Internal Refit
+          Stats: [Command Vehicle Integrity]
           Text: *move_internal_refit
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
@@ -620,8 +636,10 @@ Assets:
       - Text: &move_outcast |-
           When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may [Lose Momentum](#Lose-Momentum) (-1) in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](#Lose-Momentum) (-1).
         Move:
-          Name: Outcast
-          Stat: Wits
+          Name: Scrape By
+          Category: Asset Moves
+          Asset: Outcast
+          Stats: [Wits]
           Text: *move_outcast
           # Trigger: When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, roll +wits.
           # Strong hit: On a strong hit, you manage to scrape by and take +1 supply.
@@ -817,9 +835,10 @@ Assets:
       - Text: &move_shade |-
           When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention.
         Move:
-          Name: Shade
+          Name: Shroud in Darkness
           Category: Asset Moves
-          Stat: Asset Track
+          Asset: Shade
+          Stats: [Asset Track]
           Text: *move_shade
         # Trigger: When you expand your veil to immerse your surroundings in darkness, roll +shadow.
         # Strong hit: On a strong hit, the darkness extends to all adjacent spaces.
@@ -834,10 +853,10 @@ Assets:
           When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](#Lose-Momentum) (-1). Then, if you [Withstand Damage](#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
         Enabled: true
         Move:
-          Name: Shields
+          Name: Raise Shields
           Category: Asset Moves
-          Stat:
-          Highest of: [Command Vehicle Integrity, Wits]
+          Asset: Shields
+          Stats: [Highest of: [Command Vehicle Integrity, Wits]]
           Text: *move_shields
           # Trigger: When you raise your shields, roll +your vehicle's integrity or +wits.
           # Strong hit: On a strong hit, set your shields to +4.
@@ -1095,8 +1114,9 @@ Assets:
           When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you find or establish a safe location and may add +2 whenever you make a recovery move there. If you roll a miss when making a recovery move, the place is no longer safe. On a weak hit, as above, but add +1 when you make a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](#Pay-the-Price).
         Enabled: true
         Move:
-          Name: Vanguard
+          Name: Seek Safe Haven
           Category: Asset Moves
+          Asset: Vanguard
           Progress Move: true
           Text: *move_vanguard
           # Trigger: When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track.
