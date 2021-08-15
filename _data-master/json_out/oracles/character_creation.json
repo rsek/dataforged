@@ -1,0 +1,334 @@
+{
+  "Name": "Character Creation",
+  "Aliases": ["Creation"],
+  "Content type": "oracles",
+  "Source": { "Name": "Starforged Backer Preview", "Version": "050821" },
+  "Oracles": [
+    {
+      "Name": "Background Assets",
+      "Semantics": { "Part of speech": ["common noun"] },
+      "Table": [
+        [1, 5, "Adept", { "Assets": ["Kinetic", "Vestige"] }],
+        [6, 10, "Battlefield Medic", { "Assets": ["Healer", "Veteran"] }],
+        [11, 15, "Bodyguard*", { "Assets": ["Brawler", "Loyalist"] }],
+        [16, 20, "Delegate", { "Assets": ["Bannersworn", "Diplomat"] }],
+        [21, 25, "Exobiologist", { "Assets": ["Archivist", "Naturalist"] }],
+        [26, 30, "Far Trader", { "Assets": ["Navigator", "Trader"] }],
+        [31, 35, "Fugitive Hunter", { "Assets": ["Armored", "Bounty hunter"] }],
+        [36, 40, "Hacker", { "Assets": ["Agent", "Tech"] }],
+        [41, 45, "Hotshot Pilot", { "Assets": ["Ace", "Gunslinger"] }],
+        [46, 50, "Monster Hunter", { "Assets": ["Gunner", "Slayer"] }],
+        [51, 55, "Occultist", { "Assets": ["Outcast", "Shade"] }],
+        [56, 60, "Operative", { "Assets": ["Agent", "Blademaster"] }],
+        [61, 65, "Pilgrim", { "Assets": ["Devotant", "Explorer"] }],
+        [66, 70, "Prophet", { "Assets": ["Devotant", "Seer"] }],
+        [71, 75, "Smuggler", { "Assets": ["Courier", "Scoundrel"] }],
+        [76, 80, "Spiritualist", { "Assets": ["Haunted", "Empath"] }],
+        [81, 85, "Starship Captain*", { "Assets": ["Commander", "Explorer"] }],
+        [86, 90, "Starship Mechanic", { "Assets": ["Gearhead", "Voidborn"] }],
+        [91, 95, "Supersoldier", { "Assets": ["Augmented", "Mercenary"] }],
+        [96, 100, "Tomb Raider", { "Assets": ["Scavenger", "Scoundrel"] }]
+      ]
+    },
+    {
+      "Name": "Backstory Prompts",
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Table": [
+        [1, 7, "You abandoned your kin after learning a troubling truth"],
+        [8, 14, "You are guided by a vision or prophesy"],
+        [15, 21, "You are haunted by past actions or failures"],
+        [22, 28, "You are running from a criminal past"],
+        [29, 36, "You are the sole survivor of an attack or calamity"],
+        [37, 43, "You escaped an abusive or unjust situation"],
+        [44, 50, "You have no memory of your former life"],
+        [51, 57, "You rejected a duty or destiny"],
+        [58, 65, "You were cast out of your former home"],
+        [66, 72, "You were denied a birthright"],
+        [73, 79, "You were on your own for as long as you can remember"],
+        [80, 86, "You were taken or lured away by someone"],
+        [87, 93, "Your ambitions outgrew your humble origins"],
+        [94, 100, "Your wanderlust carried you far away"]
+      ]
+    },
+    {
+      "Name": "Starship History",
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Table": [
+        [1, 8, "Acquired in trade for a precious family heirloom"],
+        [9, 17, "Built out of re-purposed scrap"],
+        [18, 25, "Claimed as spoils of war"],
+        [26, 34, "Discovered as a derelict, and patched back together"],
+        [35, 42, "Earned in exchange for a promise or vow"],
+        [43, 50, "Found abandoned in perfect condition"],
+        [51, 58, "Granted by an organization or community"],
+        [59, 67, "Inherited from a relative or mentor"],
+        [68, 75, "Purchased at a suspiciously cheap price"],
+        [76, 84, "Stolen from a notorious crime boss or criminal organization"],
+        [85, 92, "Taken while fleeing an attack or disaster"],
+        [93, 100, "Won in a bet"]
+      ]
+    },
+    {
+      "Name": "Starship Quirks",
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Max rolls": 2,
+      "Table": [
+        [1, 5, "Engine room is scorched with old burn marks"],
+        [6, 10, "Exterior is marred by rust and grime"],
+        [11, 15, "Faint, phantom music sometimes echoes through the corridors"],
+        [16, 20, "Gravity generator is notoriously fickle"],
+        [21, 25, "Hull is fused with organic growths"],
+        [26, 30, "Hull rattles and groans in atmospheric flight"],
+        [
+          31,
+          35,
+          "Interior spaces are crowded with exposed cables and conduits"
+        ],
+        [
+          36,
+          40,
+          "Looks defenseless, but exterior panels open to reveal weapons"
+        ],
+        [
+          41,
+          45,
+          "Navigation logs contain coordinates to locations that do not—or should not—exist"
+        ],
+        [
+          46,
+          50,
+          "Old bloodstain in the airlock reappears even when painted over"
+        ],
+        [51, 55, "Once a beautiful ship, now scarred by a devastating battle"],
+        [56, 60, "Patched hull covers a recent catastrophic breach"],
+        [61, 65, "Placards and control labels are in an uncommon language"],
+        [66, 70, "Removable plate decks provide access to hidden storage"],
+        [71, 75, "Segmented landing gear unfold like gangly spider legs"],
+        [76, 80, "Ship is powered by an ancient precursor device"],
+        [
+          81,
+          85,
+          "Someone marked the hull with graffiti during a recent layover"
+        ],
+        [
+          86,
+          90,
+          "Strange symbols are scrawled on the deck and bulkheads in the main corridor"
+        ],
+        [91, 95, "Things tend to go missing for no logical reason"],
+        [96, 100, "Timers and clocks are always just a bit off"]
+      ]
+    },
+    {
+      "Name": "Sector Trouble",
+      "Oracle type": "peril",
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Table": [
+        [1, 5, "Blockade prevents trade with other sectors"],
+        [
+          6,
+          10,
+          "Bounty hunters search for an infamous fugitive",
+          { "Suggest": [{ "Game object": { "Object type": "Character" } }] }
+        ],
+        [11, 15, "Chaotic breaches in spacetime spread like wildfire"],
+        [16, 20, "Criminal faction corrupts local authorities"],
+        [21, 25, "Devastating superweapon has fallen into the wrong hands"],
+        [26, 30, "Energy storms are rampant"],
+        [31, 35, "Magnetic disturbances disrupt communication"],
+        [
+          36,
+          40,
+          "Newly found resource lures greedy fortune hunters to the sector",
+          {
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Descriptor" },
+                  { "Category": "Core", "Name": "Focus" }
+                ]
+              }
+            ]
+          }
+        ],
+        [41, 45, "Notorious pirate clan preys on starships"],
+        [
+          46,
+          50,
+          "Parasitic lifeforms spread like a plague",
+          { "Suggest": [{ "Game object": { "Object type": "Creature" } }] }
+        ],
+        [
+          51,
+          55,
+          "Precursor sites throughout the sector emit strange signals",
+          {
+            "Suggest": [{ "Game object": { "Object type": "Precursor Vault" } }]
+          }
+        ],
+        [
+          56,
+          60,
+          "Prophecies foretell an imminent awakening of a dreadful power"
+        ],
+        [61, 65, "Raider clan emerges as a dominant threat under a new leader"],
+        [66, 70, "Religious zealots overrun the sector"],
+        [71, 75, "Rogue AI infiltrates systems throughout the sector"],
+        [
+          76,
+          80,
+          "Settlements or factions are on the brink of war",
+          { "Suggest": [{ "Game object": { "Object type": "Settlement" } }] }
+        ],
+        [81, 85, "Ships regularly go missing"],
+        [86, 90, "Sickness spreads among ships and settlements"],
+        [91, 95, "Supernova is imminent"],
+        [
+          96,
+          100,
+          "Titanic spaceborne lifeform stalks the spaceways",
+          { "Suggest": [{ "Game object": { "Object type": "Creature" } }] }
+        ]
+      ]
+    },
+    {
+      "Name": "Inciting Incident",
+      "Semantics": { "Part of speech": ["fragment"] },
+      "Table": [
+        [
+          1,
+          5,
+          "Aid a starship caught in a spacetime fracture",
+          { "Suggest": [{ "Game object": { "Object type": "Starship" } }] }
+        ],
+        [
+          6,
+          10,
+          "Broker peace between two feuding settlements",
+          { "Suggest": [{ "Game object": { "Object type": "Settlement" } }] }
+        ],
+        [
+          11,
+          15,
+          "Chart a new passage between isolated settlements",
+          { "Suggest": [{ "Game object": { "Object type": "Settlement" } }] }
+        ],
+        [
+          16,
+          20,
+          "Defend the people of a beleaguered settlement against raiders",
+          { "Suggest": [{ "Game object": { "Object type": "Settlement" } }] }
+        ],
+        [
+          21,
+          25,
+          "Discover who sabotaged a settlement's air processors",
+          { "Suggest": [{ "Game object": { "Object type": "Settlement" } }] }
+        ],
+        [
+          26,
+          30,
+          "Escort a tradeship carrying a prized cargo",
+          { "Suggest": [{ "Game object": { "Object type": "Starship" } }] }
+        ],
+        [
+          31,
+          35,
+          "Ferry a rescue team to a perilous disaster site",
+          {
+            "Suggest": [
+              { "Oracles": [{ "Category": "Space", "Name": "Space Sighting" }] }
+            ]
+          }
+        ],
+        [36, 40, "Infiltrate a fortified base to steal crucial data"],
+        [
+          41,
+          45,
+          "Investigate terrifying manifestations at a remote settlement",
+          { "Suggest": [{ "Game object": { "Object type": "Settlement" } }] }
+        ],
+        [
+          46,
+          50,
+          "Liberate prisoners at a cruel labor camp",
+          {
+            "Suggest": [
+              { "Oracles": [{ "Category": "Space", "Name": "Space Sighting" }] }
+            ]
+          }
+        ],
+        [
+          51,
+          55,
+          "Locate a downed spacer on an uninhabited planet",
+          { "Suggest": [{ "Game object": { "Object type": "Planet" } }] }
+        ],
+        [
+          56,
+          60,
+          "Protect a fugitive from a relentless bounty hunter",
+          { "Suggest": [{ "Game object": { "Object type": "Character" } }] }
+        ],
+        [
+          61,
+          65,
+          "Recover a cherished pre-exodus artifact from an enemy",
+          {
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Descriptor" },
+                  { "Category": "Core", "Name": "Focus" }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          66,
+          70,
+          "Rescue a starship crew held captive by mutineers",
+          { "Suggest": [{ "Game object": { "Object type": "Starship" } }] }
+        ],
+        [
+          71,
+          75,
+          "Retrieve a cache of stolen weapons from a pirate ship",
+          { "Suggest": [{ "Game object": { "Object type": "Starship" } }] }
+        ],
+        [76, 80, "Sabotage an enemy installation"],
+        [
+          81,
+          85,
+          "Search for a missing expedition in the depths of a precursor vault",
+          {
+            "Suggest": [{ "Game object": { "Object type": "Precursor Vault" } }]
+          }
+        ],
+        [
+          86,
+          90,
+          "Shield a wondrous lifeform from those who seek to destroy it",
+          { "Suggest": [{ "Game object": { "Object type": "Creature" } }] }
+        ],
+        [
+          91,
+          95,
+          "Track and slay a marauding beast",
+          { "Suggest": [{ "Game object": { "Object type": "Creature" } }] }
+        ],
+        [
+          96,
+          100,
+          "Transport a displaced people to their new home",
+          {
+            "Suggest": [
+              { "Oracles": [{ "Category": "Space", "Name": "Space Sighting" }] }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}
