@@ -21,7 +21,7 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
   * **Rulebook Backer Preview - 050821**
     * oracles (except move oracles)
     * encounters/NPCs
-  * **Moves Backer Preview (Discord) - 072021**
+  * **Moves Backer Preview (Discord) - 081521**
     * moves
     * move oracles
   * **Asset Backer Preview - 081621**
