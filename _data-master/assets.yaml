@@ -13,10 +13,12 @@ Assets:
           When you [Gain Ground](#Gain-Ground) by maneuvering your vehicle against a foe, add +1. If you roll a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set side the action die or note its value. If you or an ally [Strike](#Strike) using the vehicle's weapons, use that value for the action die (rolling only the challenge dice). This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle's position.
       - Text: |-
           When you must [Endure Stress](#Endure-Stress) while piloting a vehicle, you may roll +integrity. If you do, take +1 momentum on a strong hit.
-        # Alternate stat:
-        #   Moves: [Endure Stress]
-        #   Stat: Vehicle Integrity
-        #   Trigger: When you must [Endure Stress](#Endure-Stress) while piloting a vehicle
+        Alter Moves:
+          - Name: Endure Stress
+            Triggers:
+              - Text: When you must [Endure Stress](#Endure-Stress) while piloting a vehicle
+                Stat:
+                  Options: [Vehicle Integrity]
   - Name: Agent
     Category: Path
     Abilities:
@@ -25,21 +27,14 @@ Assets:
         Enabled: true
       - Text: |-
           When you [Face Danger](#Face-Danger) or [Secure an Advantage](#Secure-an-Advantage) to establish a false identity, add +1. On a hit, you may add +1 when using that identity to deceive or influence others. If you roll a miss with a match when using that identity, your deception is completely and dramatically undone.
-        # Match rider:
-        #   - On a: Miss
-        #     Trigger: If you roll a miss with a match when using that identity
-        #     Effect: If you roll a miss with a match when using that identity, your deception is completely and dramatically undone.
       - Text: |-
           When you covertly [Gather Information](#Gather-Information), you may roll +shadow. If you do, take +1 momentum on a hit. On a strong hit with a match, you also uncover a surprising aspect of an adversary's plan or a connection to another quest or relationship; mark progress twice on a related quest.
-        # Alternate stat:
-        #   Moves: [Gather Information]
-        #   Stat: Shadow
-        #   Trigger: When you covertly [Gather Information](#Gather-Information)
-        # Match rider:
-        #   - Moves: [Gather Information]
-        #     On a: Strong hit
-        #     Trigger: When you covertly [Gather Information](#Gather-Information)
-        #     Effect: On a strong hit with a match, you uncover a surprising aspect of an adversary's plan or a connection to another quest or relationship; take +2 momentum and [Reach a Milestone](#Reach-a-Milestone).
+        Alter Moves:
+          - Name: Gather Inforation
+            Triggers:
+              - Text: When you covertly [Gather Information](#Gather-Information)
+                Stat:
+                  Options: [Shadow]
   - Name: Archer
     Category: Path
     Abilities:
@@ -48,12 +43,20 @@ Assets:
         Move:
           Name: Craft Projectiles
           Category: Asset Moves
+          Triggers:
+            - Text: When replenish your ammo by crafting projectiles
+              Stat: [Wits]
           Asset: Archer
-          Stats: [Wits]
           Text: *move_archer
         Enabled: true
       - Text: |-
           You may [Enter the Fray](#Enter-the-Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
+        Alter Moves:
+          - Name: Enter the Fray
+            Triggers:
+              - Text: When you [Enter the Fray](#Enter-the-Fray) by unleashing a volley of bow shots
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. When you then take your shot by making a move, you may set the value of your action die to 5. On a hit, envision the effects and take +1 momentum.
   - Name: Armored
@@ -95,16 +98,23 @@ Assets:
     Abilities:
       - Text: |-
           Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course), you may roll +its health.
+        Alter Moves:
+          - Name: Undertake an Expedition
+            Triggers:
+              - Text: When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course)
+                Stat:
+                  Options: [Companion Health]
+          - Name: Set a Course
+            Triggers:
+              - Text: When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course)
+                Stat:
+                  Options: [Companion Health]
         Enabled: true
-        # Alternate stat:
-        #   Moves: [Undertake an Expedition, [Set a Course](#Set-a-Course)]
-        #   Stat: Asset Track
-        #   Trigger: When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course)
       - Text: |-
           When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.
       - Text: |-
           When you make a combat move and roll a 1 on your action die, the banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die, but must first [Lose Momentum](#Lose-Momentum) (-1).
-    Track:
+    Condition Meter:
       Name: Health
       Value: 4
   - Name: Blademaster
@@ -169,17 +179,26 @@ Assets:
         Enabled: true
       - Text: |-
           When you use the threat of violence to [Compel](#Compel) or [Gain Ground](#Gain-Ground) while the bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum.
-        # Alternate stat:
-        #   Moves: [Compel, [Gain Ground](#Gain-Ground)]
-        #   Stat: Asset Track
-        #   Trigger: When you use the threat of violence to [Compel](#Compel) or [Gain Ground](#Gain-Ground) while your bot brings its weapons to bear
+        Alter Moves:
+          - Name: Compel
+            Triggers:
+              - Text: When you use the threat of violence to [Compel](#Compel) or [Gain Ground](#Gain-Ground) while the bot brings its weapons to bear
+                Stat:
+                  Options: [Companion Health]
+          - Name: Gain Ground
+            Triggers:
+              - Text: When you use the threat of violence to [Compel](#Compel) or [Gain Ground](#Gain-Ground) while the bot brings its weapons to bear
+                Stat:
+                  Options: [Companion Health]
       - Text: |-
           Once per fight, when you [React Under Fire](#React-Under-Fire) by using the bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control.
-        # Alternate stat:
-        #   Moves: [React Under Fire]
-        #   Stat: Asset Track
-        #   Trigger: Once per fight, when you [React Under Fire](#React-Under-Fire) by using your bot to draw fire or create a diversion
-    Track:
+        Alter Moves:
+          - Name: React Under Fire
+            Triggers:
+              - Text: Once per fight, when you [React Under Fire](#React-Under-Fire) by using the bot to draw fire or create a diversion
+                Stat:
+                  Options: [Asset Condition Meter]
+    Condition Meter:
       Name: Health
       Value: 5
   - Name: Commander
@@ -200,13 +219,15 @@ Assets:
         Enabled: true
       - Text: |-
           When you [Sojourn](#Sojourn) during a courier mission, you may roll +safety. On a strong hit, take +1 safety or +1 momentum.
-        # Alternate stat:
-        #   Moves: [Sojourn]
-        #   Stat: Asset Track
-        #   Trigger: When you [Sojourn](#Sojourn) during a courier mission
+        Alter Moves:
+          - Name: Sojourn
+            Triggers:
+              - Text: When you [Sojourn](#Sojourn) during a courier mission
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you [Fulfill Your Vow](#Fulfill-Your-Vow) to a connection by finishing a courier mission, you may [Develop Your Relationship](#Develop-Your-Relationship) and mark progress twice.
-    Track:
+    Condition Meter:
       Name: Safety
       Value: 5
   - Name: Devotant
@@ -216,18 +237,33 @@ Assets:
       - Text: |-
           You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by calling on it for guidance or blessings, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
         Enabled: true
+        Alter Moves:
+          - Name: Secure an Advantage
+            Triggers:
+              - Text: When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by calling on it for guidance or blessings
+                Stat:
+                  Options: [Asset Linked Stat]
+          - Name: Gain Ground
+            Triggers:
+              - Text: When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by calling on it for guidance or blessings
+                Stat:
+                  Options: [Asset Linked Stat]
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) in service to your faith, roll +linked stat. On a strong hit, mark progress. When you [Fulfill Your Vow](#Fulfill-Your-Vow) on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
-        # Alternate stat:
-        #   Moves: [Swear an Iron Vow]
-        #   Stat: &any { Any of: [Edge, Heart, Iron, Shadow, Wits] }
-        #   Trigger: When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) in service to your faith
+        Alter Moves:
+          - Name: Swear an Iron Vow
+            Triggers:
+              - Text: When you [Swear an Iron Vow](#Swear-an-Iron-Vow) in service to your faith
+                Stat:
+                  Options: [Asset Linked Stat]
       - Text: |-
           When you [Hearten](#Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
-        # Alternate stat:
-        #   Moves: [Hearten]
-        #   Stat: *any
-        #   Trigger: When you [Hearten](#Hearten) through contemplation or sharing of your faith
+        Alter Moves:
+          - Name: Hearten
+            Triggers:
+              - Text: When you [Hearten](#Hearten) through contemplation or sharing of your faith
+                Stat:
+                  Options: [Asset Linked Stat]
   - Name: Diplomat
     Category: Path
     Abilities:
@@ -248,20 +284,23 @@ Assets:
           Name: Read Heart
           Category: Asset Moves
           Asset: Empath
-          Stats: [Heart]
+          Triggers:
+            - Text: When you read the intent, emotions, or memories of a nearby being
+              Stat:
+                Options: [Heart]
           Text: *move_empath
-          # Trigger: When you read the intent, emotions, or memories of a nearby being, roll +heart.
-          # Strong hit: On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 if you use that insight while making a move to interact with them in this scene.
-          # Weak hit: On a weak hit, the visions are murky; take +1 momentum.
-          # Miss: On a miss, you reveal a troubling motive or secret; [Pay the Price](#Pay-the-Price).
       - Text: |-
           As above, and if you score a hit as you read them, you may subtly influence their attitude or actions, such as making a hostile being hestitate. Take another +1 momentum. If in a fight, mark progress.
+        # Alter Moves:
+        #   - Name: Read Heart
       - Text: |-
           When you [Face Danger](#Face-Danger) to soothe a being's distress by creating an empathic bond, roll +spirit and take +1 momentum on a hit. If they are an ally, also give them +2 spirit on a hit.
-        # Alternate stat:
-        #   Moves: [Face Danger]
-        #   Stat: Spirit
-        #   Trigger: When you [Face Danger](#Face-Danger) to soothe a being's distress by creating an empathic bond
+        Alter Moves:
+          - Name: Face Danger
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) to soothe a being's distress by creating an empathic bond
+                Stat:
+                  Options: [Spirit]
   - Name: Engine Upgrade
     Category: Module
     Abilities:
@@ -286,7 +325,7 @@ Assets:
           Your exosuit is equipped with thrusters. You can maneuver in zero-g, make thrust-assisted leaps, and drop to a surface from altitude. When you burn fuel to overcome a critical obstacle (decide after rolling), you may reroll any dice. If you do, [Sacrifice Resources](#Sacrifice-Resources) (-1).
       - Text: |-
           When you [Withstand Damage](#Withstand-Damage), you may reroll one challenge die.
-    Track:
+    Condition Meter:
       Name: Integrity
       Value: 6
   - Name: Expanded Hold
@@ -299,7 +338,7 @@ Assets:
           When you roll a miss or weak hit as you make a move to barter or negotiate, and you have at least 1 cargo, you may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo.
       - Text: |-
           When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
-    Track:
+    Condition Meter:
       Name: Cargo
       Value: 3
       Starts At: 0
@@ -336,17 +375,16 @@ Assets:
           Name: Gather Energy
           Category: Asset Moves
           Asset: Firebrand
-          Stats: [Spirit]
+          Triggers:
+            - Text: When you rest and meditate to gather fiery energy
+              Stat:
+                Options: [Spirit]
           Text: *move_firebrand
-          # Trigger: When you rest and meditate to gather this energy, roll +spirit.
-          # Strong hit: On a strong hit, take up to +3 fire.
-          # Weak hit: On a weak hit, take +2.
-          # Miss: On a miss, take +2 fire but [Endure Harm](#Endure-Harm) (-2).
       - Text: |-
           When you [Endure Harm](#Endure-Harm) and roll a strong hit with a match, you may instead ignore the harm and take +fire equal to the amount of harm faced (+1, +2, or +3).
       - Text: |-
           When you have at least +3 fire, you may [Gain Ground](#Gain-Ground) or [Strike](#Strike) by unleashing hell. If you do, take an automatic strong hit and mark progress. Then, set your fire to 0.
-    Track:
+    Condition Meter:
       Name: Fire
       Value: 5
       Starts At: 0
@@ -360,7 +398,7 @@ Assets:
           When you make a move by hiding, concealing your identity, or fleeing from a pursuer, add +1 and take +1 momentum on a hit.
       - Text: |-
           When you [Fulfill Your Vow](#Fulfill-Your-Vow) (extreme or greater) by clearing your name or defeating the power or authority who marked you as a fugitive, gain this ability at no cost. You may then exchange this asset for another with the same number of marked abilities.
-    Track:
+    Condition Meter:
       Name: Fugitive
       Value: 3
       Starts At: 0
@@ -385,7 +423,7 @@ Assets:
           When you [Compel](#Compel), the glowcat's reactions will help guide your approach. If the value of your action die is less than the glowcat's health, you may reroll it.
       - Text: |-
           When you [Endure Stress](#Endure-Stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.
-    Track:
+    Condition Meter:
       Name: Health
       Value: 3
   - Name: Grappler
@@ -397,7 +435,11 @@ Assets:
           Name: Ready Grappler
           Category: Asset Moves
           Asset: Grappler
-          Stats: [Command Vehicle Integrity, Wits]
+          Triggers:
+            - Text: When you take a minute or so to ready the grappler
+              Stat:
+                Method: highest
+                Options: [Command Vehicle Integrity, Wits]
           Text: *move_grappler
       - Text: |-
           If you score a strong hit when readying the grappler, you may [Sacrifice Resources](#Sacrifice-Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
@@ -487,16 +529,11 @@ Assets:
       - Text: |-
           Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Underake an Expedition](#Underake-an-Expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
         Enabled: true
-        # Match rider:
       - Text: |-
           When you fire the bike's afterburner and make a move to perform a risky maneuver, you may add +integrity and take +2 momentum on a strong hit. If you do, count a weak hit as a miss.
-        # Alternate stat:
-        #   Moves: [Set a Course]
-        #   Stat: Asset Track
-        #   Trigger: When you [Set a Course](#Set-a-Course) over planetside terrain
       - Text: |-
-          When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.NAME
-    Track:
+          When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.
+    Condition Meter:
       Name: Integrity
       Value: 3
   - Name: Internal Refit
@@ -511,7 +548,10 @@ Assets:
           Name: Draw Reserves
           Category: Asset Moves
           Asset: Internal Refit
-          Stats: [Command Vehicle Integrity]
+          Triggers:
+            - Text: When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0
+              Stat:
+                Options: [Command Vehicle Integrity]
           Text: *move_internal_refit
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
@@ -588,7 +628,7 @@ Assets:
           When you have at least 1 ammo and [Gain Ground](#Gain-Ground) by locking a missile on target, add +1 and take +1 momentum on a hit.
       - Text: |-
           When you have at least 3 ammo and [Take Decisive Action](#Take-Decisive-Action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll each challenge die. Then, set ammo to 0.
-    Track:
+    Condition Meter:
       Name: Ammo
       Value: 5
   - Name: Naturalist
@@ -639,12 +679,10 @@ Assets:
           Name: Scrape By
           Category: Asset Moves
           Asset: Outcast
-          Stats: [Wits]
+          Triggers:
+            - Text: When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0
+              Stat: [Wits]
           Text: *move_outcast
-          # Trigger: When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, roll +wits.
-          # Strong hit: On a strong hit, you manage to scrape by and take +1 supply.
-          # Weak hit: On a weak hit, you may suffer -1 momentum in exchange for +1 supply.
-          # Miss: On a miss, your supply remains at 0 and you [Lose Momentum](#Lose-Momentum) (-1).
       - Text: |-
           When you or an ally [Sojourn](#Sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you Make a Connectionwith them, take an automatic strong hit and mark 1 tick on your bonds legacy track.
   - Name: Overseer
@@ -653,19 +691,28 @@ Assets:
     Abilities:
       - Text: |-
           Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
+        Alter Moves:
+          - Name: Secure an Advantage
+            Triggers:
+              - Text: When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by talking through a situation with the overseer
+                Stat:
+                  Options: [Command Vehicle Integrity]
+          - Name: Gain Ground
+            Triggers:
+              - Text: When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by talking through a situation with the overseer
+                Stat:
+                  Options: [Command Vehicle Integrity]
         Enabled: true
-        # Alternate stat:
-        #   Stat: Command Vehicle Integrity
-        #   Moves: [Secure an Advantage, [Gain Ground](#Gain-Ground)]
-        #   Trigger: When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by talking through a situation with the overseer
       - Text: |-
           When you [Withstand Damage](#Withstand-Damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
       - Text: |-
           The overseer can pilot the vehicle independently. When you [Face Danger](#Face-Danger) by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation, you may roll +integrity. If you do, take +1 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Command Vehicle Integrity]
-        #   Stat: [Face Danger](#Face-Danger)
-        #   Trigger: When you [Face Danger](#Face-Danger) to hand over control to the AI in an emergency, or to summon the vehicle remotely
+        Alter Moves:
+          - Name: Face Danger
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
+                Stat:
+                  Options: [Command Vehicle Integrity]
   - Name: Protocol Bot
     Category: Companion
     Fields: [Name]
@@ -677,7 +724,7 @@ Assets:
           When you first visit or interact with a new community or culture, you may ask for the bot's insight. If you do, envision what you learn and take +1 momentum.
       - Text: |-
           If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.
-    Track:
+    Condition Meter:
       Name: Health
       Value: 3
   - Name: Reinforced Hull
@@ -711,10 +758,12 @@ Assets:
           When you [Take Decisive Action](#Take-Decisive-Action) by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](#Endure-Stress) (-2).
       - Text: |-
           When you [Gather Information](#Gather-Information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.
-        # Alternate stat:
-        #   Moves: [Gather Information]
-        #   Stat: Heart
-        #   Trigger: When you [Gather Information](#Gather-Information) by studying a place where death left its mark
+        Alter Moves:
+          - Name: Gather Information
+            Triggers:
+              - Text: When you [Gather Information](#Gather-Information) by studying a place where death left its mark
+                Stat:
+                  Options: [Heart]
   - Name: Rockhorn
     Category: Companion
     Fields: [Name]
@@ -722,14 +771,11 @@ Assets:
       - Text: |-
           Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
         Enabled: true
-        # Alternate stat:
-        #   Stat: Asset Track
-        #   Trigger: When you make a move by sending your rockhorn to directly attack a foe or smash an obstacle
       - Text: |-
           When you make the [Companion Takes a Hit](#Companion-Takes-a-Hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
       - Text: |-
           The rockhorn will come to your aid in your most vulnerable moments. When you [Endure Harm](#Endure-Harm) or [Endure Stress](#Endure-Stress) and roll a miss, you may reroll your action die if its value is less than the rockhorn's health.
-    Track:
+    Condition Meter:
       Name: Health
       Value: 5
   - Name: Rover
@@ -743,7 +789,18 @@ Assets:
           You may equip your rover with one module asset at no extra cost. When you WithstandDamage, the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.
       - Text: |-
           When you [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) by taking a hit or crashing through an obstacle, you may roll +integrity. If you do, take +1 momentum on a hit.
-    Track:
+        Alter Moves:
+          - Name: Face Danger
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) by taking a hit or crashing through an obstacle
+                Stat:
+                  Options: [Vehicle Integrity]
+          - Name: React Under Fire
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) by taking a hit or crashing through an obstacle
+                Stat:
+                  Options: [Vehicle Integrity]
+    Condition Meter:
       Name: Integrity
       Value: 5
   - Name: Scavenger
@@ -756,10 +813,6 @@ Assets:
           When you [Face Danger](#Face-Danger) to cobble together an ad hoc tool, device, or weapon, envision what you intend to create. On a hit, you may add +1 when making a move aided by the item. If you roll a 1 on your action die while using the item, it is permanently broken, lost, or depleted.
       - Text: |-
           When you [Check Your Gear](#Check-Your-Gear), roll +wits or +supply (whichever is highest) and take +1 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Check Your Gear]
-        #   Stat:
-        #   Highest of: [Wits, Supply]
   - Name: Scoundrel
     Category: Path
     Abilities:
@@ -768,10 +821,12 @@ Assets:
         Enabled: true
       - Text: |-
           When you [Make a Connection](#Make-a-Connection) to search out a new contact, you may roll +shadow. If you do, reroll any dice on a miss and envision how your reputation or underworld contacts lead you to a disreputable connection.
-        # Alternate stat:
-        #   Moves: [Make a Connection]
-        #   Stat: Shadow
-        #   Trigger: When you [Make a Connection](#Make-a-Connection) to search out a new contact
+        Alter Moves:
+          - Name: Make a Connection
+            Triggers:
+              - Text: When you [Make a Connection](#Make-a-Connection) to search out a new contact
+                Stat:
+                  Options: [Shadow]
       - Text: |-
           When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
   - Name: Seer
@@ -780,10 +835,6 @@ Assets:
       - Text: |-
           When you envision experiencing a prophetic dream, you may [Ask the Oracle](#Ask-the-Oracle) for details using an interpretive oracle such as Action/Theme or Descriptor/Focus. If you record the answer, and later face a situation which gives truth to the vision, take an automatic strong hit (one time only) when making a move to act on your foresight. Then, clear the prophecy. Only one prophecy can be active at a time.
         Enabled: true
-        # Alternate stat:
-        #   Moves: [Gather Information]
-        #   Stat: Spirit
-        #   Trigger: When you meditate, you may peer through the veils of reality to [Gather Information](#Gather-Information) about a place, being, or event (in person or remotely).
       - Text: |-
           When you focus or medidate to [Gather Information](#Gather-Information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.
       - Text: |-
@@ -801,10 +852,17 @@ Assets:
             * Automated scan: Instead of rolling the action die, make it the value of your vehicle's integrity
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) against an ambush, or [Face Danger](#Face-Danger) to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Enter the Fray, [Face Danger](#Face-Danger)]
-        #   Stat: Command Vehicle Integrity
-        #   Trigger: When you [Enter the Fray](#Enter-the-Fray) against an ambush, or [Face Danger](#Face-Danger) to detect a hidden threat
+        Alter Moves:
+          - Name: Enter the Fray
+            Triggers:
+              - Text: When you [Enter the Fray](#Enter-the-Fray) against an ambush
+                Stat:
+                  Options: [Command Vehicle Integrity]
+          - Name: Face Danger
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) to detect a hidden threat
+                Stat:
+                  Options: [Command Vehicle Integrity]
   - Name: Service Pod
     Category: Support Vehicle
     Fields: [Name]
@@ -817,13 +875,9 @@ Assets:
 
             * Careful: Add +2 and [Lose Momentum](#Lose-Momentum) (-1)
             * Reckless: Take +1 momentum on a hit
-        # Alternate stat:
-        #   Moves: [Face Danger, [Gain Ground](#Gain-Ground), [React Under Fire](#React-Under-Fire)]
-        #   Stat: Asset Track
-        #   Trigger: When you [Face Danger](#Face-Danger), [Gain Ground](#Gain-Ground), or [React Under Fire](#React-Under-Fire) by maneuvering your pod through a hazardous or obstructed area
       - Text: |-
           When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](#Withstand-Damage) (-2).
-    Track:
+    Condition Meter:
       Name: Integrity
       Value: 4
   - Name: Shade
@@ -838,12 +892,11 @@ Assets:
           Name: Shroud in Darkness
           Category: Asset Moves
           Asset: Shade
-          Stats: [Asset Track]
+          Triggers:
+            - Text: When you expand your veil to immerse your surroundings in darkness
+              Stat:
+                Options: [Asset Condition Meter]
           Text: *move_shade
-        # Trigger: When you expand your veil to immerse your surroundings in darkness, roll +shadow.
-        # Strong hit: On a strong hit, the darkness extends to all adjacent spaces.
-        # Weak hit: On a weak hit, only your immediate surroundings are made dark.
-        # Miss: On a miss, you fail and draw unwanted attention.
       - Text: |-
           When you intentionally drop your veil to reveal yourself for dramatic effect, foregoing its use in this situation, take +2 momentum.
   - Name: Shields
@@ -856,22 +909,16 @@ Assets:
           Name: Raise Shields
           Category: Asset Moves
           Asset: Shields
-          Stats: [Highest of: [Command Vehicle Integrity, Wits]]
+          Triggers:
+            - Text: When you raise your shields
+              Stat:
+                Options: [Command Vehicle Integrity, Wits]
           Text: *move_shields
-          # Trigger: When you raise your shields, roll +your vehicle's integrity or +wits.
-          # Strong hit: On a strong hit, set your shields to +4.
-          # Weak hit: On a weak hit, make them +3.
-          # Miss: On a miss, make them +2 but [Lose Momentum](#Lose-Momentum) (-1).
-          # Then: Then, if you [Withstand Damage](#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
       - Text: |-
           You may [React Under Fire](#React-Under-Fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [React Under Fire]
-        #   Stat: Asset Track
-        #   Trigger: You may [React Under Fire](#React-Under-Fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
-    Track:
+    Condition Meter:
       Name: Shields
       Value: 4
       Starts At: 0
@@ -886,7 +933,7 @@ Assets:
           When you [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) to navigate through hazardous skies or around obstacles, add +1 and take +1 momentum on a hit.
       - Text: |-
           You shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you [Withstand Damage](#Withstand-Damage), add +1.
-    Track:
+    Condition Meter:
       Name: Integrity
       Value: 4
   - Name: Skiff
@@ -900,7 +947,7 @@ Assets:
           Your skiff is armed with a turreted cannon. When you [Strike](#Strike) or [Clash](#Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
       - Text: |-
           Your skiff is fully stocked. When you [Check Your Gear](#Check-Your-Gear), add +1 and take +1 momentum on a hit.
-    Track:
+    Condition Meter:
       Name: Integrity
       Value: 4
   - Name: Sidekick
@@ -914,11 +961,7 @@ Assets:
           When you [Enter the Fray](#Enter-the-Fray) with the support of your sidekick, take +2 momentum on a hit. When you [Clash](#Clash) together, add +1.
       - Text: |-
           When your sidekick acts to get you out of a tough spot, you may [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.
-        # Alternate stat:
-        #   Moves: [Face Danger, [React Under Fire](#React-Under-Fire)]
-        #   Stat: Asset Track
-        #   Trigger: When your sidekick acts to get you out of a tough spot, you may [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) and roll +their health (instead of your own stat)
-    Track:
+    Condition Meter:
       Name: Health
       Value: 4
   - Name: Slayer
@@ -940,10 +983,12 @@ Assets:
         Enabled: true
       - Text: |-
           When you [Strike](#Strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a hit.
-        # Alternate stat:
-        #   Moves: [Strike]
-        #   Stat: Wits
-        #   Trigger: When you [Strike](#Strike) from a distance with time enough to line up your shot
+        Alter Moves:
+          - Name: Strike
+            Triggers:
+              - Text: When you [Strike](#Strike) from a distance with time enough to line up your shot
+                Stat:
+                  Options: [Wits]
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) by studying a distant situation through the scope of your rifle, or [Gain Ground](#Gain-Ground) by readying your shot and taking careful aim, you may sacrifice time in exchange for greater certainty. If you do (decide before rolling), [Lose Momentum](#Lose-Momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.
   - Name: Snub Fighter
@@ -952,16 +997,18 @@ Assets:
     Abilities:
       - Text: |-
           Your snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](#Enter-the-Fray), you may roll +integrity; if you do, take +2 momentum on a hit.
+        Alter Moves:
+          - Name: Enter the Fray
+            Triggers:
+              - Text: When you [Enter the Fray](#Enter-the-Fray) in your snub fighter
+                Stat:
+                  Options: [Vehicle Integrity]
         Enabled: true
-        # Alternate stat:
-        #   Moves: [Enter the Fray]
-        #   Stat: Asset Track
-        #   Trigger: Your snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](#Enter-the-Fray)
       - Text: |-
           When you [Strike](#Strike) or [Clash](#Clash), add +1. On a strong hit with a match, mark progress.
       - Text: |-
-          When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Track your victories in this box. For every five, mark 2 ticks on your quests legacy track.
-    Track:
+          When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Condition Meter your victories in this box. For every five, mark 2 ticks on your quests legacy track.
+    Condition Meter:
       Name: Integrity
       Value: 4
     Counter:
@@ -978,7 +1025,7 @@ Assets:
           You are attuned to the resonance of the sprite's crystalline structure, and can communicate with it at a distance and perceive through its senses. When you [Secure an Advantage](#Secure-an-Advantage) by observing a situation from its perspective, or remotely [Gather Information](#Gather-Information), add +its health.
       - Text: |-
           With a moment's rest, the sprite can mend its form and return automatically to max health.
-    Track:
+    Condition Meter:
       Name: Health
       Value: 2
   - Name: Starship
@@ -992,10 +1039,13 @@ Assets:
           When you [Finish an Expedition](#Finish-an-Expedition) (dangerous or greater) in your starship and score a hit, this journey strengthened your ties to your ship and any fellow travelers. You and your allies may mark 1 tick on your bonds legacy track.
       - Text: |-
           When you [Withstand Damage](#Withstand-Damage), you may roll +heart. If you do, [Endure Stress](#Endure-Stress) (-1) on a weak hit or miss.
-        # Alternate stat:
-        #   Moves: [Withstand Damage]
-        #   Stat: Heart
-    Track:
+        Alter Moves:
+          - Name: Withstand Damage
+            Triggers:
+              - Text: When you [Withstand Damage](#Withstand-Damage) to your starship
+                Stat:
+                  Options: [Heart]
+    Condition Meter:
       Name: Integrity
       Value: 5
   - Name: Stealth Tech
@@ -1013,10 +1063,12 @@ Assets:
             * Strike hard: Mark progress on a hit.
 
           On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](#Strike).
-        # Alternate stat:
-        #   Moves: [Strike]
-        #   Stat: Shadow
-        #   Trigger: When you are poised to [Strike](#Strike) from hiding
+        Alter Moves:
+          - Name: Strike
+            Triggers:
+              - Text: When you are poised to [Strike](#Strike) from hiding
+                Stat:
+                  Options: [Shadow]
   - Name: Survey Bot
     Category: Companion
     Fields: [Name]
@@ -1026,17 +1078,9 @@ Assets:
         Enabled: true
       - Text: |-
           Once per expedition, when you [Secure an Advantage](#Secure-an-Advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark one tick on your discoveries legacy track.
-        # Alternate stat:
-        #   Moves: [Secure an Advantage]
-        #   Stat: Asset Track
-        #   Trigger: Once per expedition, when you [Secure an Advantage](#Secure-an-Advantage) by sending your bot to scout ahead
       - Text: |-
           When you [Explore a Waypoint](#Explore-a-Waypoint) aided by the bot's sensors, or [Face Danger](#Face-Danger) to detect a threat, roll +its health and take +1 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Gather Information, [Face Danger](#Face-Danger)]
-        #   Stat: Asset Track
-        #   Trigger: When you [Gather Information](#Gather-Information) using your bot's sensors to analyze an object or carefully search a location, or [Face Danger](#Face-Danger) to detect a threat
-    Track:
+    Condition Meter:
       Name: Health
       Value: 3
   - Name: Symbiote
@@ -1051,10 +1095,10 @@ Assets:
       - Text: |-
           The symbiote gains power and has +3 health.
         Alter Properties:
-          Track:
-          Name: Health
-          Value: 3
-    Track:
+          Condition Meter:
+            Name: Health
+            Value: 3
+    Condition Meter:
       Name: Health
       Value: 2
   - Name: Tech
@@ -1065,10 +1109,6 @@ Assets:
         Enabled: true
       - Text: |-
           When you [Withstand Damage](#Withstand-Damage) and score a miss, you may attempt to reroute power or reboot critical systems. If you do, first [Lose Momentum](#Lose-Momentum) (-2). Then, reroll all dice, add +wits instead of +integrity, and count a weak hit as a miss.
-        # Alternate stat:
-        #   Stat: Wits
-        #   Moves: [Withstand Damage]
-        #   Trigger: When you [Withstand Damage](#Withstand-Damage) and score a miss, you may attempt to reroute power or reboot critical systems. If you do, first [Lose Momentum](#Lose-Momentum) (-2).
       - Text: |-
           When you [Face Danger](#Face-Danger) or [Secure an Advantage](#Secure-an-Advantage) by creating a computer program to perform a specific, complex function, add +2 and take +1 momentum on a hit. One time only, when you trigger the program to fulfill its purpose, reroll any dice.
   - Name: Trader
@@ -1076,11 +1116,18 @@ Assets:
     Abilities:
       - Text: |-
           When you [Sojourn](#Sojourn) or [Compel](#Compel), you may roll +supply. If you do, [Sacrifice Resources](#Sacrifice-Resources) (-1).
+        Alter Moves:
+          - Name: Sojourn
+            Triggers:
+              - Text: When you [Sojourn](#Sojourn)
+                Stat:
+                  Options: [Supply]
+          - Name: Compel
+            Triggers:
+              - Text: When you [Compel](#Compel)
+                Stat:
+                  Options: [Supply]
         Enabled: true
-        # Alternate stat:
-        #   Moves: [Sojourn, [Compel](#Compel)]
-        #   Stat: Supply
-        #   Trigger: When you [Sojourn](#Sojourn) or [Compel](#Compel), you may roll +supply. If you do, [Sacrifice Resources](#Sacrifice-Resources) (-1).
       - Text: |-
           When you [Make a Connection](#Make-a-Connection) with a merchant or supplier, add +1. When you [Resupply](#Resupply) by bartering with them, reroll your action die if its value is less than your supply. On a strong hit, take +1 momentum or +1 supply.
       - Text: |-
@@ -1092,18 +1139,11 @@ Assets:
       - Text: |-
           Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
         Enabled: true
-        # Alternate stat:
-        #   Stat: Asset Track
-        #   Trigger: Your utility bot has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
       - Text: |-
           When you [Repair](#Repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](#Lose-Momentum) (-2).
       - Text: |-
           When you [Check Your Gear](#Check-Your-Gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Check Your Gear]
-        #   Stat: Asset Track
-        #   Trigger: When you [Check Your Gear](#Check-Your-Gear) to see if the bot has a specific tool or technique available
-    Track:
+    Condition Meter:
       Name: Health
       Value: 4
   - Name: Vanguard
@@ -1117,23 +1157,22 @@ Assets:
           Name: Seek Safe Haven
           Category: Asset Moves
           Asset: Vanguard
+          Triggers:
+            - Text: When you seek safe haven in a remote environment
+              Stat:
+                Options: [Discoveries]
           Progress Move: true
           Text: *move_vanguard
-          # Trigger: When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track.
-          # Strong hit: On a strong hit, you find or establish a safe location and may add +2 whenever you make a recovery move there. If you roll a miss when making a recovery move, the place is no longer safe.
-          # Weak hit: On a weak hit, as above, but add +1 when you make a recovery move.
-          # Miss: On a miss, you are drawn into a bad situation and must [Pay the Price](#Pay-the-Price).
       - Text: |-
           When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.
-        # Match rider:
-        #   - On a: Strong hit
-        #     Trigger: When you make a move +wits
-        #     Effect: your hard-won experience lends insight; take +1 momentum.
       - Text: |-
           When you [Endure Stress](#Endure-Stress), you may roll +wits. If you do, take +1 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Endure Stress]
-        #   Stat: Wits
+        Alter Moves:
+          - Name: Endure Stress
+            Triggers:
+              - Text: When you [Endure Stress](#Endure-Stress)
+                Stat:
+                  Options: [Wits]
   - Name: Vehicle Bay
     Category: Module
     Abilities:
@@ -1151,11 +1190,6 @@ Assets:
       - Text: |-
           You are all that remains of a people, culture, or tradition. When you [Face Death](#Face-Death) or [Face Desolation](#Face-Desolation), memories or visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice. On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
         Enabled: true
-        # Match rider:
-        #   - On a: Strong hit
-        #     Trigger: When you [Face Death](#Face-Death) or [Face Desolation](#Face-Desolation)
-        #     Moves: [Face Death, [Face Desolation](#Face-Desolation)]
-        #     Effect: On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) or [Compel](#Compel) through a tale, performance, or ceremony, envision what you reveal of your legacy. Then, add +1 and take +2 momentum on a hit.
       - Text: |-
@@ -1171,13 +1205,6 @@ Assets:
 
             * On a strong hit with a match, you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and [Develop Your Relationship](#Develop-Your-Relationship) now.
             * On a miss with a match, you once fought against them, and they hold a grudge.
-        # Match rider:
-        #   - On a: Miss
-        #     Moves: [Make a Connection]
-        #     Effect: On a miss with a match, you once fought against them, and they hold a grudge.
-        #   - On a: Strong hit
-        #     Moves: [Make a Connection]
-        #     Effect: On a strong hit with a match, you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and [Develop Your Relationship](#Develop-Your-Relationship) now.
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by recounting or recalling a hard-won lesson from your battlefield experiences, envision the memory and add +1. On a hit, take +1 momentum.
   - Name: Voidborn
@@ -1190,10 +1217,6 @@ Assets:
           When you [Sojourn](#Sojourn) or [Make a Connection](#Make-a-Connection) within a spacebound community, add +1. If you [Hearten](#Hearten) there and score a strong hit, take +1 spirit or +1 momentum.
       - Text: |-
           When you make a move to perform an agile physical maneuver (such as leaping or evading) in a low gravity environment, add +1 and take +1 momentum on a hit. On a strong hit with a match, you build speed or put yourself in perfect position; take another +1 momentum.
-        # Match rider:
-        #   - On a: Strong hit
-        #     Trigger: When you make a move to perform an agile physical maneuver (such as leaping or evading) in a low gravity environment
-        #     Effect: On a strong hit with a match, you build speed or put yourself in perfect position; take another +1 momentum.
   - Name: Voidglider
     Category: Companion
     Fields: [Name]
@@ -1203,15 +1226,9 @@ Assets:
         Enabled: true
       - Text: |-
           The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.
-        # Alternate stat:
-        #   Stat: Asset Track
-        #   Trigger: When you are riding your voidglider and make a move to detect or evade a threat by relying on its instincts
       - Text: |-
           When you make a move by signaling the voidglider to distract or attack a spacebound foe, roll +its health and take +1 momentum on a hit.
-        # Alternate stat:
-        #   Stat: Asset Track
-        #   Trigger: When you make a move by signaling your voidglider to distract or attack a spacebound foe
-    Track:
+    Condition Meter:
       Name: Health
       Value: 4
   - Name: Weapon Master
@@ -1224,10 +1241,12 @@ Assets:
           When you [Strike](#Strike) using a personal weapon which has limited ammo or a single-use mode, add +1 and mark progress on a hit. Then, [Sacrifice Resources](#Sacrifice-Resources) (-1). If you score a strong hit on this attack and immediately [Take Decisive Action](#Take-Decisive-Action), you may retain the value of one challenge die from your [Strike](#Strike) action instead of rolling that die.
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) by suiting up and gathering your gear for a perilous encounter or mission, you may roll +supply. If you do, take +2 momentum on a hit.
-        # Alternate stat:
-        #   Moves: [Secure an Advantage]
-        #   Stat: Supply
-        #   Trigger: When you [Secure an Advantage](#Secure-an-Advantage) by suiting up and gathering your gear for a perilous encounter or mission
+        Alter Moves:
+          - Name: Secure an Advantage
+            Triggers:
+              - Text: When you [Secure an Advantage](#Secure-an-Advantage) by suiting up and gathering your gear for a perilous encounter or mission
+                Stat:
+                  Options: [Supply]
   - Name: Workshop
     Category: Module
     Abilities:
@@ -1238,8 +1257,3 @@ Assets:
           When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle's integrity.
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to undertake a long-term engineering project (extreme or greater), reroll any dice. When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your workshop, [Face Danger](#Face-Danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, mark one extra box on your quests legacy track.
-        # Match rider:
-        #   - On a: Strong hit
-        #     Moves: [Face Danger]
-        #     Trigger: When you have what you need and devote extended time in your workshop to the project
-        #     Effect: On a strong hit with a match, mark progress.
