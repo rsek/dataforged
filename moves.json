@@ -103,7 +103,9 @@
           "Text": "When you fight a battle and it happens in a blur (at range, or using your speed and the environment to your advantage)",
           "Stat": [
             {
-              "Options": ["Edge"]
+              "Options": [
+                "Edge"
+              ]
             }
           ]
         },
@@ -111,7 +113,9 @@
           "Text": "When you fight a battle and it happens in a blur (depending on your courage, leadership, or companions)",
           "Stat": [
             {
-              "Options": ["Heart"]
+              "Options": [
+                "Heart"
+              ]
             }
           ]
         },
@@ -119,7 +123,9 @@
           "Text": "When you fight a battle and it happens in a blur (in close to overpower your foe)",
           "Stat": [
             {
-              "Options": ["Iron"]
+              "Options": [
+                "Iron"
+              ]
             }
           ]
         },
@@ -127,7 +133,9 @@
           "Text": "When you fight a battle and it happens in a blur (using trickery to befuddle your foe)",
           "Stat": [
             {
-              "Options": ["Shadow"]
+              "Options": [
+                "Shadow"
+              ]
             }
           ]
         },
@@ -135,7 +143,9 @@
           "Text": "When you fight a battle and it happens in a blur (using careful tactics to outsmart your foe)",
           "Stat": [
             {
-              "Options": ["Wits"]
+              "Options": [
+                "Wits"
+              ]
             }
           ]
         }
@@ -150,7 +160,9 @@
           "Text": "When you check to see if you have a specific helpful item or resource",
           "Stat": [
             {
-              "Options": ["Supply"]
+              "Options": [
+                "Supply"
+              ]
             }
           ]
         }
@@ -165,7 +177,9 @@
           "Text": "When you are in a bad spot and fight back against a foe at close quarters",
           "Stat": [
             {
-              "Options": ["Iron"]
+              "Options": [
+                "Iron"
+              ]
             }
           ]
         },
@@ -173,7 +187,9 @@
           "Text": "When you are in a bad spot and exchange fire at a distance",
           "Stat": [
             {
-              "Options": ["Edge"]
+              "Options": [
+                "Edge"
+              ]
             }
           ]
         }
@@ -188,7 +204,9 @@
           "Text": "When your companion faces physical hardship, and their health is 0 or you choose to test their resilience",
           "Stat": [
             {
-              "Options": ["Companion Health"]
+              "Options": [
+                "Companion Health"
+              ]
             }
           ]
         }
@@ -203,7 +221,9 @@
           "Text": "When you try to persuade someone or make them an offer, and you charm, pacify, encourage, or barter",
           "Stat": [
             {
-              "Options": ["Heart"]
+              "Options": [
+                "Heart"
+              ]
             }
           ]
         },
@@ -211,7 +231,9 @@
           "Text": "When you try to persuade someone or make them an offer, and you threaten or incite",
           "Stat": [
             {
-              "Options": ["Iron"]
+              "Options": [
+                "Iron"
+              ]
             }
           ]
         },
@@ -219,7 +241,9 @@
           "Text": "When you try to persuade someone or make them an offer, and you lie or swindle",
           "Stat": [
             {
-              "Options": ["Shadow"]
+              "Options": [
+                "Shadow"
+              ]
             }
           ]
         }
@@ -241,7 +265,15 @@
       "Category": "Legacy Moves",
       "Triggers": [
         {
-          "Text": "When you retire from your life as Ironsworn, or succumb to death or desolation"
+          "Text": "When you retire from your life as Ironsworn, or succumb to death or desolation",
+          "Stat": {
+            "Method": "all",
+            "Options": [
+              "Quests",
+              "Bonds",
+              "Discoveries"
+            ]
+          }
         }
       ],
       "Progress Move": true,
@@ -264,8 +296,10 @@
         {
           "Text": "When you face physical injury, fatigue, or illness, and your health is 0 or you choose to resist the harm",
           "Stat": {
-            "Method": "highest",
-            "Options": ["Iron", "Health"]
+            "Options": [
+              "Iron",
+              "Health"
+            ]
           }
         }
       ],
@@ -278,8 +312,10 @@
         {
           "Text": "When you face mental strain, shock, or despair, and your spirit is 0 or you choose to resist the stress",
           "Stat": {
-            "Method": "highest",
-            "Options": ["Heart", "Spirit"]
+            "Options": [
+              "Heart",
+              "Spirit"
+            ]
           }
         }
       ],
@@ -292,31 +328,41 @@
         {
           "Text": "When you initiate combat or are forced into a fight (on the move)",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         },
         {
           "Text": "When you initiate combat or are forced into a fight (facing off against your foe)",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you initiate combat or are forced into a fight (in the thick of it at close quarters)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you initiate combat or are forced into a fight (preparing to act against an unaware foe)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you initiate combat or are forced into a fight (caught in a trap or sizing up the situation)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -329,7 +375,9 @@
         {
           "Text": "When you divert from an expedition to examine a notable location",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -342,31 +390,41 @@
         {
           "Text": "When you attempt something risky or react to an imminent threat (with speed, mobility, or agility)",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         },
         {
           "Text": "When you attempt something risky or react to an imminent threat (with resolve, command, or sociability)",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you attempt something risky or react to an imminent threat (with strength, endurance, or aggression)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you attempt something risky or react to an imminent threat (with deception, stealth, or trickery)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you attempt something risky or react to an imminent threat (with expertise, focus, or observation)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -379,7 +437,9 @@
         {
           "Text": "When you are brought to the brink of death with a chance for recovery or redemption",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         }
       ],
@@ -402,7 +462,9 @@
         {
           "Text": "When you are brought to the brink of desolation",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         }
       ],
@@ -458,31 +520,41 @@
         {
           "Text": "When you are in control and take action in a fight to reinforce your position or move towards an objective (in pursuit, fleeing, or maneuvering)",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         },
         {
           "Text": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by charging boldly into action, coming to the aid of others, negotiating, or commanding)",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by gaining leverage with force, powering through, or making a threat)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by hiding, preparing an ambush, or misdirecting)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by coordinating a plan, studying a situation, or cleverly gaining leverage)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -495,7 +567,9 @@
         {
           "Text": "When you search for clues, ask questions, analyze evidence, or do research",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -508,26 +582,35 @@
         {
           "Text": "When you receive treatment from someone (not an ally)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you mend your own wounds",
           "Stat": {
             "Method": "lowest",
-            "Options": ["Iron", "Wits"]
+            "Options": [
+              "Iron",
+              "Wits"
+            ]
           }
         },
         {
           "Text": "When you obtain treatment for a companion",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you provide treatment",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -540,7 +623,9 @@
         {
           "Text": "When you socialize, share intimacy, or find a moment of peace",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         }
       ],
@@ -562,7 +647,9 @@
       "Triggers": [
         {
           "Text": "When you search out a new relationship or give focus to an existing relationship (not an ally or companion)",
-          "Options": ["Heart"]
+          "Options": [
+            "Heart"
+          ]
         }
       ],
       "Text": "**When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.\n\nOn a **strong hit**, you create a connection. Give them a role and rank. Whenever your connection aids you on a move closely associated with their role, add +1 and take +1 momentum on a hit.\n\nOn a **weak hit**, as above, but this connection comes with a complication or cost. Envision what they reveal or demand.\n\nOn a **miss**, you don't make a connection and the situation worsens. [Pay the Price](#Pay-the-Price)."
@@ -582,7 +669,12 @@
       "Category": "Threshold Moves",
       "Triggers": [
         {
-          "Text": "When your command vehicle is destroyed or irrevocably lost"
+          "Text": "When your command vehicle is destroyed or irrevocably lost",
+          "Stat": {
+            "Options": [
+              "Bonds"
+            ]
+          }
         }
       ],
       "Progress Move": true,
@@ -615,31 +707,41 @@
         {
           "Text": "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (in pursuit, fleeing, dodging, getting back into position, or taking cover)",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         },
         {
           "Text": "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by remaining stalwart against fear or temptation)",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by blocking or diverting with force, or taking the hit)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by moving into hiding or creating a distraction)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by changing the plan, finding a way out, or cleverly bypassing an obstacle)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -652,13 +754,17 @@
         {
           "Text": "Make your own repairs, or direct a companion to make repairs",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         },
         {
           "Text": "Obtain repairs from someone (not an ally)",
           "Stat": {
-            "Options": ["Supply"]
+            "Options": [
+              "Supply"
+            ]
           }
         }
       ],
@@ -671,25 +777,33 @@
         {
           "Text": "When you attempt to bolster your readiness (and you barter or make an appeal)",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you attempt to bolster your readiness (and you threaten or seize)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you attempt to bolster your readiness (and you steal or swindle)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you attempt to bolster your readiness (and you scavenge or craft)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -712,31 +826,41 @@
         {
           "Text": "When you assess a situation, make preparations, or attempt to gain leverage (with speed, mobility, or agility)",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         },
         {
           "Text": "When you assess a situation, make preparations, or attempt to gain leverage (with resolve, command, or sociability)",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         },
         {
           "Text": "When you assess a situation, make preparations, or attempt to gain leverage (with strength, endurance, aggression)",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you assess a situation, make preparations, or attempt to gain leverage (with deception, stealth, or trickery)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you assess a situation, make preparations, or attempt to gain leverage (with expertise, focus, or observation)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -749,7 +873,9 @@
         {
           "Text": "When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site",
           "Stat": {
-            "Options": ["Supply"]
+            "Options": [
+              "Supply"
+            ]
           }
         }
       ],
@@ -762,7 +888,9 @@
         {
           "Text": "When you spend time recovering within a community",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         }
       ],
@@ -775,13 +903,17 @@
         {
           "Text": "When you are in control and assault a foe at close quarters",
           "Stat": {
-            "Options": ["Iron"]
+            "Options": [
+              "Iron"
+            ]
           }
         },
         {
           "Text": "When you are in control and attack at a distance",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         }
       ],
@@ -794,7 +926,9 @@
         {
           "Text": "When you swear upon iron to complete a quest",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         }
       ],
@@ -818,7 +952,9 @@
         {
           "Text": "When your relationship with a connection is tested through conflict, betrayal, or circumstance",
           "Stat": {
-            "Options": ["Heart"]
+            "Options": [
+              "Heart"
+            ]
           }
         }
       ],
@@ -831,19 +967,25 @@
         {
           "Text": "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and move at speed)",
           "Stat": {
-            "Options": ["Edge"]
+            "Options": [
+              "Edge"
+            ]
           }
         },
         {
           "Text": "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and keep under the radar)",
           "Stat": {
-            "Options": ["Shadow"]
+            "Options": [
+              "Shadow"
+            ]
           }
         },
         {
           "Text": "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and stay vigilant)",
           "Stat": {
-            "Options": ["Wits"]
+            "Options": [
+              "Wits"
+            ]
           }
         }
       ],
@@ -856,7 +998,9 @@
         {
           "Text": "When your vehicle faces a damaging situation or environment",
           "Stat": {
-            "Options": ["Integrity"]
+            "Options": [
+              "Integrity"
+            ]
           }
         }
       ],

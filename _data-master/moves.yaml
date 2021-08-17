@@ -255,6 +255,9 @@ Moves:
     Category: Legacy Moves
     Triggers:
       - Text: When you retire from your life as Ironsworn, or succumb to death or desolation
+        Stat:
+          Method: all
+          Options: [Quests, Bonds, Discoveries]
     Progress Move: true
     Text: |-
       **When you retire from your life as Ironsworn, or succumb to death or desolation**, you may create a new character in your established setting. If you do, roll the challenge dice and compare to each of the former character's legacy tracks: Quests, bonds, and discoveries (one roll per track).
@@ -299,7 +302,6 @@ Moves:
     Triggers:
       - Text: When you face physical injury, fatigue, or illness, and your health is 0 or you choose to resist the harm
         Stat:
-          Method: highest
           Options: [Iron, Health]
     Text: |-
       **When you face physical injury, fatigue, or illness**, suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your health is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining harm.
@@ -327,7 +329,6 @@ Moves:
     Triggers:
       - Text: When you face mental strain, shock, or despair, and your spirit is 0 or you choose to resist the stress
         Stat:
-          Method: highest
           Options: [Heart, Spirit]
     Text: |-
       **When you face mental strain, shock, or despair**, suffer -1 spirit for minor stress, -2 for serious stress, or -3 for major stress. If your spirit is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining stress.
@@ -689,6 +690,8 @@ Moves:
     Category: Threshold Moves
     Triggers:
       - Text: When your command vehicle is destroyed or irrevocably lost
+        Stat:
+          Options: [Bonds]
     Progress Move: true
     Text: |-
       **When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
