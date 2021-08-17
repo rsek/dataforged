@@ -101,12 +101,12 @@ Assets:
         Alter Moves:
           - Name: Undertake an Expedition
             Triggers:
-              - Text: When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course)
+              - Text: When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition)
                 Stat:
                   Options: [Asset Condition Meter]
           - Name: Set a Course
             Triggers:
-              - Text: When you ride your banshee as you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course)
+              - Text: When you ride your banshee as you [Set a Course](#Set-a-Course)
                 Stat:
                   Options: [Asset Condition Meter]
         Enabled: true
@@ -122,10 +122,10 @@ Assets:
     Description: If you wield a bladed weapon...
     Abilities:
       - Text: |-
-          When you [Clash](#Clash) or [Strike](#Strike) in close-quarters, add +1. On a strong hit with a match, mark progress. Also, once per fight, you may reroll any dice as you make a move to attack or defend using your blade.
+          When you [Clash](#Clash) or [Strike](#Strike) in close quarters, add +1. On a strong hit with a match, mark progress. Also, once per fight, you may reroll any dice as you make a move to attack or defend using your blade.
         Enabled: true
       - Text: |-
-          If you [Gain Ground](#Gain-Ground) by moving into close- quarters against your foe, choose your approach.
+          If you [Gain Ground](#Gain-Ground) by moving into close quarters against your foe, choose your approach.
 
             * Charge: Roll +heart, and mark progress on a hit.
             * Evade: Roll +edge, and take +1 momentum on a hit.
@@ -158,18 +158,18 @@ Assets:
           When you [Take Decisive Action](#Take-Decisive-Action) in a fight against a bounty target or their agents, you may reroll one challenge die.
   - Name: Brawler
     Category: Path
-    Description: If you fight unarmed or with a close-quarters weapon...
+    Description: If you fight unarmed or with a close quarters weapon...
     Abilities:
       - Text: |-
           When you [Gain Ground](#Gain-Ground) by attempting to disarm, trip, shove, grapple, or stun your foe, add +1 and take +1 momentum on a hit.
         Enabled: true
       - Text: |-
-          When you [Clash](#Clash) in close-quarters, you may draw on your momentum to gain advantage. If you do, [Lose Momentum](#Lose-Momentum) (-2) and choose one (before rolling).
+          When you [Clash](#Clash) in close quarters, you may draw on your momentum to gain advantage. If you do, [Lose Momentum](#Lose-Momentum) (-2) and choose one (before rolling).
 
             * Aggressive: Count a weak hit as a strong hit.
             * Defensive: Count a miss as a weak hit.
       - Text: |-
-          When you [Enter the Fray](#Enter-the-Fray) already positioned in close-quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum.
+          When you [Enter the Fray](#Enter-the-Fray) already positioned in close quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum.
   - Name: Combat Bot
     Category: Companion
     Fields: [Name]
@@ -770,6 +770,11 @@ Assets:
     Abilities:
       - Text: |-
           Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
+        Alter Moves:
+          - Triggers:
+              - Text: When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle
+                Stat:
+                  Options: [Asset Condition Meter]
         Enabled: true
       - Text: |-
           When you make the [Companion Takes a Hit](#Companion-Takes-a-Hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
@@ -813,6 +818,12 @@ Assets:
           When you [Face Danger](#Face-Danger) to cobble together an ad hoc tool, device, or weapon, envision what you intend to create. On a hit, you may add +1 when making a move aided by the item. If you roll a 1 on your action die while using the item, it is permanently broken, lost, or depleted.
       - Text: |-
           When you [Check Your Gear](#Check-Your-Gear), roll +wits or +supply (whichever is highest) and take +1 momentum on a hit.
+        Alter Moves:
+          - Name: Check Your Gear
+            Triggers:
+              - Text: When you [Check Your Gear](#Check-Your-Gear)
+                Stat:
+                  Options: [Wits, Supply]
   - Name: Scoundrel
     Category: Path
     Abilities:
@@ -837,6 +848,12 @@ Assets:
         Enabled: true
       - Text: |-
           When you focus or medidate to [Gather Information](#Gather-Information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.
+        Alter Moves:
+          - Name: Gather Information
+            Triggers:
+              - Text: When you focus or medidate to [Gather Information](#Gather-Information) about a place, being, or situation (in person or remotely)
+                Stat:
+                  Options: [Spirit]
       - Text: |-
           When you or an ally roll a match as you [Sojourn](#Sojourn) in a community or [Undertake an Expedition](#Undertake-an-Expedition) within a site, you may envision gaining sudden and unbidden insight about the location. If you do, take +2 momentum.
   - Name: Sensor Array
@@ -875,6 +892,22 @@ Assets:
 
             * Careful: Add +2 and [Lose Momentum](#Lose-Momentum) (-1)
             * Reckless: Take +1 momentum on a hit
+        Alter Moves:
+          - Name: Face Danger
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) by maneuvering your pod through a hazardous or obstructed area
+                Stat:
+                  Options: [Asset Condition Meter]
+          - Name: Gain Ground
+            Triggers:
+              - Text: When you [Gain Ground](#Gain-Ground) by maneuvering your pod through a hazardous or obstructed area
+                Stat:
+                  Options: [Asset Condition Meter]
+          - Name: React Under Fire
+            Triggers:
+              - Text: When you [React Under Fire](#React-Under-Fire) by maneuvering your pod through a hazardous or obstructed area
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](#Withstand-Damage) (-2).
     Condition Meter:
@@ -895,7 +928,7 @@ Assets:
           Triggers:
             - Text: When you expand your veil to immerse your surroundings in darkness
               Stat:
-                Options: [Asset Condition Meter]
+                Options: [Shadow]
           Text: *move_shade
       - Text: |-
           When you intentionally drop your veil to reveal yourself for dramatic effect, foregoing its use in this situation, take +2 momentum.
@@ -916,6 +949,12 @@ Assets:
           Text: *move_shields
       - Text: |-
           You may [React Under Fire](#React-Under-Fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
+        Alter Moves:
+          - Name: React Under Fire
+            Triggers:
+              - Text: When you [React Under Fire](#React-Under-Fire) by letting your shields take the blow
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
     Condition Meter:
@@ -942,9 +981,31 @@ Assets:
     Abilities:
       - Text: |-
           Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course), you may rely on the skiff's simple reliability and roll +integrity. If you do, take +1 momentum on a hit.
+        Alter Moves:
+          - Name: Undertake an Expedition
+            Triggers:
+              - Text: When you [Undertake an Expedition](#Undertake-an-Expedition) and rely on the skiff's simple reliability
+                Stat:
+                  Options: [Asset Condition Meter]
+          - Name: Set a Course
+            Triggers:
+              - Text: When you [Set a Course](#Set-a-Course) and rely on the skiff's simple reliability
+                Stat:
+                  Options: [Asset Condition Meter]
         Enabled: true
       - Text: |-
           Your skiff is armed with a turreted cannon. When you [Strike](#Strike) or [Clash](#Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
+        Alter Moves:
+          - Name: Strike
+            Triggers:
+              - Text: When you [Strike](#Strike) by firing the skiff's cannon
+                Stat:
+                  Options: [Asset Condition Meter]
+          - Name: Clash
+            Triggers:
+              - Text: When you [Clash](#Clash) by firing the skiff's cannon
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           Your skiff is fully stocked. When you [Check Your Gear](#Check-Your-Gear), add +1 and take +1 momentum on a hit.
     Condition Meter:
@@ -961,6 +1022,17 @@ Assets:
           When you [Enter the Fray](#Enter-the-Fray) with the support of your sidekick, take +2 momentum on a hit. When you [Clash](#Clash) together, add +1.
       - Text: |-
           When your sidekick acts to get you out of a tough spot, you may [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.
+        Alter Moves:
+          - Name: Face Danger
+            Triggers:
+              - Text: When your sidekick acts to get you out of a tough spot
+                Stat:
+                  Options: [Asset Condition Meter]
+          - Name: React Under Fire
+            Triggers:
+              - Text: When your sidekick acts to get you out of a tough spot
+                Stat:
+                  Options: [Asset Condition Meter]
     Condition Meter:
       Name: Health
       Value: 4
@@ -1156,6 +1228,11 @@ Assets:
       - Text: |-
           Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
         Enabled: true
+        Alter Moves:
+          - Triggers:
+              - Text: When you make a move by directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you [Repair](#Repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](#Lose-Momentum) (-2).
       - Text: |-
@@ -1249,8 +1326,18 @@ Assets:
         Enabled: true
       - Text: |-
           The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.
+        Alter Moves:
+          - Triggers:
+              - Text: When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you make a move by signaling the voidglider to distract or attack a spacebound foe, roll +its health and take +1 momentum on a hit.
+        Alter Moves:
+          - Triggers:
+              - Text: When you make a move by signaling the voidglider to distract or attack a spacebound foe
+                Stat:
+                  Options: [Asset Condition Meter]
     Condition Meter:
       Name: Health
       Value: 4
