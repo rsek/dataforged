@@ -182,12 +182,12 @@ Assets:
         Alter Moves:
           - Name: Compel
             Triggers:
-              - Text: When you use the threat of violence to [Compel](#Compel) or [Gain Ground](#Gain-Ground) while the bot brings its weapons to bear
+              - Text: When you use the threat of violence to [Compel](#Compel)
                 Stat:
                   Options: [Asset Condition Meter]
           - Name: Gain Ground
             Triggers:
-              - Text: When you use the threat of violence to [Compel](#Compel) or [Gain Ground](#Gain-Ground) while the bot brings its weapons to bear
+              - Text: When you [Gain Ground](#Gain-Ground) while the bot brings its weapons to bear
                 Stat:
                   Options: [Asset Condition Meter]
       - Text: |-
@@ -1078,8 +1078,25 @@ Assets:
         Enabled: true
       - Text: |-
           Once per expedition, when you [Secure an Advantage](#Secure-an-Advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark one tick on your discoveries legacy track.
+        Alter Moves:
+          - Name: Secure an Advantage
+            Triggers:
+              - Text: Once per expedition, when you [Secure an Advantage](#Secure-an-Advantage) by sending the bot to scout ahead
+                Stat:
+                  Options: [Asset Condition Meter]
       - Text: |-
           When you [Explore a Waypoint](#Explore-a-Waypoint) aided by the bot's sensors, or [Face Danger](#Face-Danger) to detect a threat, roll +its health and take +1 momentum on a hit.
+        Alter Moves:
+          - Name: Explore a Waypoint
+            Triggers:
+              - Text: When you [Explore a Waypoint](#Explore-a-Waypoint) aided by the bot's sensors
+                Stat:
+                  Options: [Asset Condition Meter]
+          - Name: Face Danger
+            Triggers:
+              - Text: When you [Face Danger](#Face-Danger) to detect a threat
+                Stat:
+                  Options: [Asset Condition Meter]
     Condition Meter:
       Name: Health
       Value: 3
@@ -1143,6 +1160,12 @@ Assets:
           When you [Repair](#Repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](#Lose-Momentum) (-2).
       - Text: |-
           When you [Check Your Gear](#Check-Your-Gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.
+        Alter Moves:
+          - Name: Check Your Gear
+            Triggers:
+              - Text: When you [Check Your Gear](#Check-Your-Gear) to see if the bot has a specific tool or technique available
+                Stat:
+                  Options: [Asset Condition Meter]
     Condition Meter:
       Name: Health
       Value: 4
