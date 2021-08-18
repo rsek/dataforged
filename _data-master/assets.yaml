@@ -59,6 +59,9 @@ Assets:
                   Options: [Asset Condition Meter]
       - Text: |-
           When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. When you then take your shot by making a move, you may set the value of your action die to 5. On a hit, envision the effects and take +1 momentum.
+    Condition Meter:
+      Name: Ammo
+      Value: 6
   - Name: Armored
     Category: Path
     Description: If you wear your finely crafted set of personal armor...
@@ -596,6 +599,10 @@ Assets:
         Enabled: true
       - Text: |-
           When you risk your reputation to overcome failure, reroll any dice. If you score a miss, make a mark on this asset. When you have 5 such marks, discard this asset.
+        Counter:
+          Name: Marks
+          Value: 5
+          Starts At: 0
       - Text: |-
           Once per fight, when you [Gain Ground](#Gain-Ground) through threat or leadership, you may reroll any dice and mark progress on a hit.
   - Name: Medbay
