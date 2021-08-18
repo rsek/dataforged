@@ -10,7 +10,7 @@ Starship:
           Name: [Peril, Opportunity]
   Source:
     Name: Starforged Backer Preview
-    Version: "050821"
+    Date: "050821"
   Oracles:
     - Name: Name
       Display name: Starship Name
@@ -120,7 +120,7 @@ Starship:
         - [98, 98, Vigilant]
         - [99, 99, Voidtreader]
         - [100, 100, Vulture]
-   
+
     - Name: Starship Type
       Display name: Type
       Allow duplicate rolls: true
@@ -151,7 +151,7 @@ Starship:
         - [85, 94, *Fleet]
         - [95, 100, Ships in conflict (roll twice), *Starship]
         # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
-   
+
     - Name: Fleet
       Semantics:
         Part of speech: [common noun]
@@ -167,7 +167,7 @@ Starship:
         - [61, 70, Trade caravan]
         - [71, 90, Transport and escorts]
         - [91, 100, *Starship_Mission]
-   
+
     - Name: Initial Contact
       Initial: true
       Semantics:
@@ -185,7 +185,7 @@ Starship:
         - [86, 90, Unresponsive]
         - [91, 95, Destroyed]
         - [96, 100, *tpl_Derelict_starship]
-   
+
     - Name: First Look
       Initial: true
       Semantics:
@@ -214,8 +214,8 @@ Starship:
         - [81, 85, Scarred hull]
         - [86, 90, Built from scrap]
         - [91, 94, Towing or linked]
-        - [95, 100, *Descriptor+Focus] 
-   
+        - [95, 100, *Descriptor+Focus]
+
     - Name: Mission
       Display name: Starship Mission
       Semantics:
@@ -259,9 +259,9 @@ Starship:
             - [78, 79, &sm27 [Test a technology, *suggestObject]]
             - [80, 82, &sm28 [Transport cargo, *suggestObject]]
             - [83, 85, &sm29 Transport passengers]
-            - [86, 90, *Action+Theme] 
+            - [86, 90, *Action+Theme]
             - [91, 100, *Roll_twice]
-  
+
         - Display name: Starship Mission - Outlands
           Requires:
             Region: [Outlands]
@@ -298,7 +298,7 @@ Starship:
             - [84, 85, *sm29]
             - [86, 90, *Action+Theme]
             - [91, 100, *Roll_twice]
-    
+
         - Display name: Starship Mission - Expanse
           Requires:
             Region: [Expanse]

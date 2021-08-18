@@ -3,7 +3,7 @@ Derelict:
   Display name: Derelicts
   Source:
     Name: Starforged Backer Preview
-    Version: "050821"
+    Date: "050821"
   Content type: oracles
   Templates:
     - Name: Derelict
@@ -53,7 +53,7 @@ Derelict:
         - [1, 40, Planetside]
         - [41, 60, Orbital]
         - [61, 100, Deep Space]
-   
+
     - Name: Derelict Type
       Initial: true
       Select table by: Location
@@ -65,7 +65,7 @@ Derelict:
         Table:
           - [1, 25, Starship]
           - [26, 100, Settlement]
-  
+
       - Display name: Type - Orbital
         Requires:
           Location:
@@ -73,7 +73,7 @@ Derelict:
         Table:
           - [1, 40, Starship]
           - [41, 100, Settlement]
-   
+
       - Display name: Type - Deep Space
         Requires:
           Location:
@@ -81,7 +81,7 @@ Derelict:
         Table:
           - [1, 75, Starship]
           - [76, 100, Settlement]
-   
+
     - Name: Condition
       Initial: true
       Semantics:
@@ -93,7 +93,7 @@ Derelict:
         - [61, 90, Damaged or breached]
         - [91, 98, Heavily damaged]
         - [99, 100, Impending destruction]
-   
+
     - Name: Outer First Look
       Oracle type: First Look
       Initial: true
@@ -110,7 +110,7 @@ Derelict:
         - [81, 85, Signs that others are here]
         - [86, 95, Stripped exterior]
         - [96, 100, Time or reality distortions]
-   
+
     - Name: Inner First Look
       Oracle type: First Look
       Semantics:
@@ -148,8 +148,8 @@ Derelict:
         - [85, 87, Thick haze or smoke]
         - [88, 90, Unstable energy surges]
         - [91, 93, Watchful AI]
-        - [94, 100, *Descriptor+Focus] 
-   
+        - [94, 100, *Descriptor+Focus]
+
     - Name: Zone
       Display name: Derelict Zone
       Repeatable: true
@@ -167,7 +167,7 @@ Derelict:
             - [66, 85, ▶️Operations]
             - [86, 90, ▶️Production]
             - [91, 100, ▶️Research]
-    
+
         - Display name: Derelict Zone - Settlement
           Requires:
             Derelict Type:
@@ -180,4 +180,3 @@ Derelict:
             - [61, 70, ▶️Operations]
             - [71, 90, ▶️Production]
             - [91, 100, ▶️Research]
-   
