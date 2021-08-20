@@ -2017,7 +2017,7 @@
         "Name": "Action",
         "Use with": [{ "Category": "Core", "Name": "Theme" }],
         "Semantics": { "Part of speech": ["verb"] },
-        "Description": "Use these oracle tables to reveal details about a goal, situation, or event.\n\nThey provide a word or phrase that can be taken literally or interpreted\nas an abstraction.\n\nAction and Theme can answer questions such as:\n  \n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
+        "Description": "Use these oracle tables to reveal details about a goal, situation, or event.\n\nThey provide a word or phrase that can be taken literally or interpreted\nas an abstraction.\n\nAction and Theme can answer questions such as:\n\n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
         "Table": [
           { "Chance": 1, "Description": "abandon" },
           { "Chance": 2, "Description": "acquire" },
@@ -2128,7 +2128,7 @@
           "Part of speech": ["common noun"],
           "Content": ["abstract noun"]
         },
-        "Description": "Use these oracle tables to reveal details about a goal, situation, or event.\n\nThey provide a word or phrase that can be taken literally or interpreted\nas an abstraction.\n\nAction and Theme can answer questions such as:\n  \n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
+        "Description": "Use these oracle tables to reveal details about a goal, situation, or event.\n\nThey provide a word or phrase that can be taken literally or interpreted\nas an abstraction.\n\nAction and Theme can answer questions such as:\n\n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
         "Table": [
           { "Chance": 1, "Description": "ability" },
           { "Chance": 2, "Description": "advantage" },
@@ -5228,7 +5228,7 @@
   },
   {
     "Name": "Move",
-    "Source": { "Name": "Starforged Backer Preview", "Date": "081521" },
+    "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
     "Oracles": [
       {
         "Name": "Begin a Session",
@@ -5236,23 +5236,6 @@
         "Table": [
           {
             "Chance": 10,
-            "Description": "influential person or faction is introduced or given new detail",
-            "Suggest": [{ "Game object": { "Object type": "Character" } }]
-          },
-          {
-            "Chance": 20,
-            "Description": "flashback reveals an aspect of a faction, culture, or place",
-            "Suggest": [
-              {
-                "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
-                ]
-              }
-            ]
-          },
-          {
-            "Chance": 30,
             "Description": "flashback reveals an aspect of your background or nature",
             "Suggest": [
               {
@@ -5264,8 +5247,25 @@
             ]
           },
           {
+            "Chance": 20,
+            "Description": "flashback reveals an aspect of another character, place, or faction",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              }
+            ]
+          },
+          {
+            "Chance": 30,
+            "Description": "influential character or faction is introduced or given new detail",
+            "Suggest": [{ "Game object": { "Object type": "Character" } }]
+          },
+          {
             "Chance": 40,
-            "Description": "external factors create new urgency or importance for a quest",
+            "Description": "seemingly unrelated situations are shown to be connected",
             "Suggest": [
               {
                 "Oracles": [
@@ -5277,7 +5277,7 @@
           },
           {
             "Chance": 50,
-            "Description": "enemy builds power or enacts a plan",
+            "Description": "external factors create new danger, urgency, or importance for a quest",
             "Suggest": [
               {
                 "Oracles": [
@@ -5289,18 +5289,38 @@
           },
           {
             "Chance": 60,
-            "Description": "return of an enemy once thought to be defeated"
+            "Description": "important character is put in danger or suffers a misadventure",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 70,
-            "Description": "someone important is put in danger or suffers a misadventure",
-            "Suggest": [{ "Game object": { "Object type": "Character" } }]
+            "Description": "key location is made unsafe or becomes mired in conflict",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              }
+            ]
           },
           {
             "Chance": 80,
-            "Description": "key location is made unsafe or becomes mired in conflict",
+            "Description": "defeated enemy or threat makes a surprising return",
             "Suggest": [
-              { "Oracles": [{ "Category": "Space", "Name": "Space Sighting" }] }
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              }
             ]
           },
           {
@@ -5317,7 +5337,15 @@
           },
           {
             "Chance": 100,
-            "Description": "unforeseen aid is on the way or within reach"
+            "Description": "unforeseen aid is on the way or within reach",
+            "Suggest": [
+              {
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -5678,7 +5706,7 @@
         "Table": [
           {
             "Chance": 10,
-            "Description": "Immediate catastrophic destruction. All aboard must __Endure Harm__ or  __Face Death__, as appropriate."
+            "Description": "Immediate catastrophic destruction. All aboard must __Endure Harm__ or __Face Death__, as appropriate."
           },
           {
             "Chance": 25,
