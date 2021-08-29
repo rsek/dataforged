@@ -9,8 +9,8 @@
     "repeat_stat": "?{Stat}"
   },
   "Companion Takes a Hit": {
-    "stat": "@{Companion's Health}",
-    "repeat_stat": "@{Companion's Health}"
+    "repeat_stat": "?{Companion's Health|0}",
+    "stat": "?{Companion's Health}"
   },
   "Compel": {
     "stat": "?{Stat|Charm&#44; pacify&#44; encourage&#44; or barter,@{heart}|Threaten or incite,@{iron}|Lie or swindle,@{shadow}}",
@@ -66,5 +66,8 @@
     "stat": "?{Stat|Move at speed,@{edge}|Keep under the radar,@{shadow}|Stay vigilant,@{wits}}",
     "repeat_stat": "?{Stat}"
   },
-  "Withstand Damage": { "stat": "@{Integrity}", "repeat_stat": "@{Integrity}" }
+  "Withstand Damage": {
+    "repeat_stat": "?{Integrity|0}",
+    "stat": "?{Integrity}"
+  }
 }
