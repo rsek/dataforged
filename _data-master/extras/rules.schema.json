@@ -1,0 +1,271 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Rules",
+  "definitions": {
+    "Asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "AssetCategory": {
+          "$ref": "#/definitions/AssetCategory"
+        },
+        "Abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ability"
+          }
+        },
+        "Condition Meter": {
+          "$ref": "#/definitions/AssetConditionMeter"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Input": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Counter": {
+          "$ref": "#/definitions/Counter"
+        }
+      },
+      "required": ["Abilities", "AssetCategory", "Name"],
+      "title": "Asset"
+    },
+    "Ability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Text": {
+          "type": "string"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "Alter Moves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AlterMove"
+          }
+        },
+        "Move": {
+          "$ref": "#/definitions/AbilityMove"
+        },
+        "Input": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Counter": {
+          "$ref": "#/definitions/Counter"
+        },
+        "Alter Properties": {
+          "$ref": "#/definitions/AlterProperties"
+        }
+      },
+      "required": ["Text"],
+      "title": "Ability"
+    },
+    "AlterMove": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Triggers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Trigger"
+          }
+        }
+      },
+      "required": ["Triggers"],
+      "title": "AlterMove"
+    },
+    "Track": {
+      "type": "string",
+      "enum": [
+        "Discoveries Legacy",
+        "Bonds Legacy",
+        "Quests Legacy",
+        "Progress",
+        "Vow Progress",
+        "Combat Progress",
+        "Connection Progress",
+        "Expedition Progress",
+        "Scene Challenge Progress"
+      ]
+    },
+    "Resource": {
+      "type": "string",
+      "enum": [
+        "Momentum",
+        "Health",
+        "Spirit",
+        "Supply",
+        "Companion Health",
+        "Vehicle Integrity",
+        "Command Vehicle Integrity",
+        "Support Vehicle Integrity",
+        "Asset Condition Meter",
+        "Attached Asset Condition Meter"
+      ]
+    },
+    "Stat": {
+      "type": "string",
+      "enum": ["Edge", "Heart", "Iron", "Shadow", "Wits", "Connection Rank"]
+    },
+    "StatOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Stat": {
+          "allOf": [
+            { "$ref": "#/definitions/Stat" },
+            { "$ref": "#/definitions/Resource" },
+            { "$ref": "#/definitions/Track" }
+          ]
+        },
+        "Method": {
+          "type": "string"
+        }
+      },
+      "required": ["Stat"],
+      "title": "StatOptions"
+    },
+    "AlterProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Condition Meter": {
+          "$ref": "#/definitions/ConditionMeter"
+        }
+      },
+      "required": ["Condition Meter"],
+      "title": "AlterProperties"
+    },
+    "ConditionMeter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "integer"
+        },
+        "Starts At": {
+          "type": "integer"
+        },
+        "Maximum": {
+          "type": "integer"
+        },
+        "Minimum": {
+          "type": "integer"
+        }
+      },
+      "required": ["Name", "Value"],
+      "title": "ConditionMeter"
+    },
+    "Counter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        }
+      },
+      "required": ["Name"],
+      "title": "Counter"
+    },
+    "Move": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "AssetCategory": {
+          "type": "string"
+        },
+        "Triggers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Trigger"
+          }
+        },
+        "Oracle": {
+          "type": "boolean"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "Progress Move": {
+          "type": "boolean"
+        }
+      },
+      "required": ["AssetCategory", "Name", "Text", "Triggers"],
+      "title": "Move"
+    },
+    "Trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Text": {
+          "type": "string"
+        },
+        "Details": {
+          "type": "string"
+        },
+        "StatOptions": {
+          "$ref": "#/definitions/Stat"
+        }
+      },
+      "required": ["Text"],
+      "title": "Trigger"
+    },
+    "AssetCategory": {
+      "type": "string",
+      "enum": [
+        "Path",
+        "Companion",
+        "Deed",
+        "Module",
+        "Support Vehicle",
+        "Command Vehicle"
+      ],
+      "title": "AssetCategory"
+    },
+    "MoveCategory": {
+      "type": "string",
+      "enum": [
+        "Session Moves",
+        "Adventure Moves",
+        "Quest Moves",
+        "Connection Moves",
+        "Exploration Moves",
+        "Combat Moves",
+        "Suffer Moves",
+        "Threshold Moves",
+        "Recover Moves",
+        "Legacy Moves",
+        "Fate Moves",
+        "Asset Moves"
+      ],
+      "title": "MoveCategory"
+    }
+  }
+}
