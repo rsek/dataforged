@@ -194,7 +194,12 @@
       "Name": "Fulfill Your Vow",
       "Category": "Quest Moves",
       "Progress Move": true,
-      "Triggers": [{ "Text": "When you reach the end of your quest" }],
+      "Triggers": [
+        {
+          "Text": "When you reach the end of your quest",
+          "Stat Options": { "Stats": ["Vow Progress"] }
+        }
+      ],
       "Text": "**When you reach the end of your quest**, roll the challenge dice and compare to your progress.\n\nOn a **strong hit**, your vow is fulfilled. Mark a reward on your quests legacy track per the vow's rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes. Any allies who shared this vow also mark the reward.\n\nOn a **weak hit**, as above, but there is more to be done or you realize the truth of your quest. If you [Swear an Iron Vow](#Swear-an-Iron-Vow) to set things right, take your full legacy reward. Otherwise, make the reward one rank lower.\n\nOn a **miss**, your vow is undone through an unexpected complication or realization. Envision what happens and choose one.\n\n  * Give up on the quest: [Forsake Your Vow](#Forsake-Your-Vow).\n  * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow's rank by one (if not already epic)."
     },
     {
@@ -224,7 +229,8 @@
       "Category": "Connection Moves",
       "Triggers": [
         {
-          "Text": "When your relationship with a connection is ready to evolve"
+          "Text": "When your relationship with a connection is ready to evolve",
+          "Stat Options": { "Stats": ["Connection Progress"] }
         }
       ],
       "Progress Move": true,
@@ -277,7 +283,12 @@
     {
       "Name": "Finish an Expedition",
       "Category": "Exploration Moves",
-      "Triggers": [{ "Text": "When your expedition comes to an end" }],
+      "Triggers": [
+        {
+          "Text": "When your expedition comes to an end",
+          "Stat Options": { "Stats": ["Expedition Progress"] }
+        }
+      ],
       "Progress Move": true,
       "Text": "**When your expedition comes to an end**, roll the challenge dice and compare to your progress.\n\nOn a **strong hit**, you reach your destination or complete your survey. Mark a reward on your discoveries legacy track per expedition's rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes. Any allies who shared this expedition also mark the reward.\n\nOn a **weak hit**, as above, but you face an unforeseen complication at the end of your expedition. Make the legacy reward one rank lower, and envision what you encounter.\n\nOn a **miss**, your destination is lost to you, or you come to understand the true nature or cost of the expedition. Envision what happens and choose one.\n\n  * Abandon the expedition: Envision the cost of this setback and [Pay the Price](#Pay-the-Price).\n  * Return to the expedition: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition's rank by one (if not already epic)."
     },
@@ -455,7 +466,12 @@
     {
       "Name": "Take Decisive Action",
       "Category": "Combat Moves",
-      "Triggers": [{ "Text": "When you seize an objective in a fight" }],
+      "Triggers": [
+        {
+          "Text": "When you seize an objective in a fight",
+          "Stat Options": { "Stats": ["Combat Progress"] }
+        }
+      ],
       "Oracle": true,
       "Progress Move": true,
       "Text": "**When you seize an objective in a fight**, envision how you take decisive action. Then, roll the challenge dice and compare to your progress.\n\nIf you are in control, check the result as normal. If you are in a bad spot, count a strong hit as a weak hit, and a weak hit as a miss.\n\nOn a **strong hit**, you prevail. Take +1 momentum. If any objectives remain and the fight continues, you are in control.\n\nOn a **weak hit**, you achieve your objective, but not without cost. Roll on the table below or choose one. If the fight continues, you are in a bad spot.\n\n| Roll   | Result |\n|--------|--------|\n| 1-40   | It's worse than you thought: You or an ally make a suffer move (-2) |\n| 41-52  | The victory is short-lived: A new peril or foe is revealed |\n| 53-64  | You face collateral damage: Something is lost, damaged, or broken |\n| 65-76  | Others pay the price: Someone else suffers the cost |\n| 77-88  | Others won't forget: You are marked for vengeance |\n| 89-100 | It gets complicated: The true nature of a foe or objective is revealed |\n\nOn a **miss**, you are defeated or your objective is lost. [Pay the Price](#Pay-the-Price)."

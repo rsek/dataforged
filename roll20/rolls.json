@@ -1,11 +1,14 @@
 {
   "Battle": {
-    "stat": "?{Stat|At range&amp;#65040; or using your speed and the environment to your advantage&amp;#65043; &amp;#65122;edge,@{edge}|Depending on your courage&amp;#65040; leadership&amp;#65040; or companions&amp;#65043; &amp;#65122;heart,@{heart}|In close to overpower your foe&amp;#65043; &amp;#65122;iron,@{iron}|Using trickery to befuddle your foe&amp;#65043; &amp;#65122;shadow,@{shadow}|Using careful tactics to outsmart your foe&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}}",
     "repeat_stat": "?{Stat}"
   },
-  "Check Your Gear": { "stat": "@{supply}", "repeat_stat": "@{supply}" },
+  "Check Your Gear": {
+    "stat": "?{Stat|&amp;#65122;supply,@{supply}|&amp;#65122;health (UTILITY BOT asset),@{health}}",
+    "repeat_stat": "?{Stat}"
+  },
   "Clash": {
-    "stat": "?{Stat|Fight back against a foe at close quarters&amp;#65043; &amp;#65122;iron,@{iron}|Exchange fire at a distance&amp;#65043; &amp;#65122;edge,@{edge}}",
+    "stat": "?{Stat|&amp;#65122;iron,@{iron}|&amp;#65122;edge,@{edge}|&amp;#65122;integrity (SKIFF asset),@{Integrity}}",
     "repeat_stat": "?{Stat}"
   },
   "Companion Takes a Hit": {
@@ -13,69 +16,123 @@
     "repeat_stat": "?{Companion Health}"
   },
   "Compel": {
-    "stat": "?{Stat|Charm&amp;#65040; pacify&amp;#65040; encourage&amp;#65040; or barter&amp;#65043; &amp;#65122;heart,@{heart}|Threaten or incite&amp;#65043; &amp;#65122;iron,@{iron}|Lie or swindle&amp;#65043; &amp;#65122;shadow,@{shadow}}",
+    "stat": "?{Stat|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;health (COMBAT BOT asset),@{health}|&amp;#65122;supply (TRADER asset),@{supply}}",
     "repeat_stat": "?{Stat}"
   },
+  "Craft Projectiles": { "stat": "@{wits}", "repeat_stat": "@{wits}" },
   "Develop Your Relationship": {
     "stat": "?{Connection Rank|0}",
     "repeat_stat": "?{Connection Rank}"
   },
-  "Enter the Fray": {
-    "stat": "?{Stat|On the move&amp;#65043; &amp;#65122;edge,@{edge}|Facing off against your foe&amp;#65043; &amp;#65122;heart,@{heart}|In the thick of it at close quarters&amp;#65043; &amp;#65122;iron,@{iron}|Preparing to act against an unaware foe&amp;#65043; &amp;#65122;shadow,@{shadow}|Caught in a trap or sizing up the situation&amp;#65043; &amp;#65122;wits,@{wits}}",
+  "Draw Reserves": {
+    "stat": "?{Attached Asset Condition Meter|0}",
+    "repeat_stat": "?{Attached Asset Condition Meter}"
+  },
+  "Endure Stress": {
+    "stat": "?{Stat|&amp;#65122;vehicle integrity (ACE asset),@{Vehicle Integrity}|&amp;#65122;wits (VANGUARD asset),@{wits}}",
     "repeat_stat": "?{Stat}"
   },
-  "Explore a Waypoint": { "stat": "@{wits}", "repeat_stat": "@{wits}" },
+  "Enter the Fray": {
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}|&amp;#65122;ammo (ARCHER asset),@{Ammo}|&amp;#65122;attached asset condition meter (SENSOR ARRAY asset),@{Attached Asset Condition Meter}|&amp;#65122;integrity (SNUB FIGHTER asset),@{Integrity}}",
+    "repeat_stat": "?{Stat}"
+  },
+  "Explore a Waypoint": {
+    "stat": "?{Stat|&amp;#65122;wits,@{wits}|&amp;#65122;health (SURVEY BOT asset),@{health}}",
+    "repeat_stat": "?{Stat}"
+  },
   "Face Danger": {
-    "stat": "?{Stat|With speed&amp;#65040; mobility&amp;#65040; or agility&amp;#65043; &amp;#65122;edge,@{edge}|With resolve&amp;#65040; command&amp;#65040; or sociability&amp;#65043; &amp;#65122;heart,@{heart}|With strength&amp;#65040; endurance&amp;#65040; or aggression&amp;#65043; &amp;#65122;iron,@{iron}|With deception&amp;#65040; stealth&amp;#65040; or trickery&amp;#65043; &amp;#65122;shadow,@{shadow}|With expertise&amp;#65040; focus&amp;#65040; or observation&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}|&amp;#65122;spirit (EMPATH asset),@{spirit}|&amp;#65122;attached asset condition meter (OVERSEER asset),@{Attached Asset Condition Meter}|&amp;#65122;integrity (ROVER asset),@{Integrity}|&amp;#65122;attached asset condition meter (SENSOR ARRAY asset),@{Attached Asset Condition Meter}|&amp;#65122;integrity (SERVICE POD asset),@{Integrity}|&amp;#65122;health (SIDEKICK asset),@{health}|&amp;#65122;health (SURVEY BOT asset),@{health}}",
     "repeat_stat": "?{Stat}"
   },
   "Face Death": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
   "Face Desolation": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
+  "Finish an Expedition": {
+    "stat": "?{Expedition Progress|0}",
+    "repeat_stat": "?{Expedition Progress}"
+  },
+  "Forge a Bond": {
+    "stat": "?{Connection Progress|0}",
+    "repeat_stat": "?{Connection Progress}"
+  },
+  "Fulfill Your Vow": {
+    "stat": "?{Vow Progress|0}",
+    "repeat_stat": "?{Vow Progress}"
+  },
   "Gain Ground": {
-    "stat": "?{Stat|In pursuit&amp;#65040; fleeing&amp;#65040; or maneuvering&amp;#65043; &amp;#65122;edge,@{edge}|By charging boldly into action&amp;#65040; coming to the aid of others&amp;#65040; negotiating&amp;#65040; or commanding&amp;#65043; &amp;#65122;heart,@{heart}|Gaining leverage with force&amp;#65040; powering through&amp;#65040; or making a threat&amp;#65043; &amp;#65122;iron,@{iron}|Hiding&amp;#65040; preparing an ambush&amp;#65040; or misdirecting&amp;#65043; &amp;#65122;shadow,@{shadow}|Coordinating a plan&amp;#65040; studying a situation&amp;#65040; or cleverly gaining leverage&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}|&amp;#65122;health (COMBAT BOT asset),@{health}|&amp;#65122;asset linked stat (DEVOTANT asset),@{Asset Linked Stat}|&amp;#65122;attached asset condition meter (OVERSEER asset),@{Attached Asset Condition Meter}|&amp;#65122;integrity (SERVICE POD asset),@{Integrity}}",
     "repeat_stat": "?{Stat}"
   },
-  "Gather Information": { "stat": "@{wits}", "repeat_stat": "@{wits}" },
+  "Gather Energy": { "stat": "@{spirit}", "repeat_stat": "@{spirit}" },
+  "Gather Information": {
+    "stat": "?{Stat|&amp;#65122;wits,@{wits}|&amp;#65122;shadow (AGENT asset),@{shadow}|&amp;#65122;heart (REVENANT asset),@{heart}|&amp;#65122;spirit (SEER asset),@{spirit}}",
+    "repeat_stat": "?{Stat}"
+  },
   "Heal": {
-    "stat": "?{Stat|Receive treatment from someone (not an ally)&amp;#65043; &amp;#65122;iron,@{iron}|Mend your own wounds&amp;#65043; &amp;#65122;iron,@{iron}|Mend your own wounds&amp;#65043; &amp;#65122;wits,@{wits}|Obtain treatment for a companion&amp;#65043; &amp;#65122;heart,@{heart}|Provide care&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;iron,@{iron}|&amp;#65122;heart,@{heart}|&amp;#65122;wits,@{wits}}",
     "repeat_stat": "?{Stat}"
   },
-  "Hearten": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
-  "Make a Connection": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
+  "Hearten": {
+    "stat": "?{Stat|&amp;#65122;heart,@{heart}|&amp;#65122;asset linked stat (DEVOTANT asset),@{Asset Linked Stat}}",
+    "repeat_stat": "?{Stat}"
+  },
+  "Make a Connection": {
+    "stat": "?{Stat|&amp;#65122;heart,@{heart}|&amp;#65122;shadow (SCOUNDREL asset),@{shadow}}",
+    "repeat_stat": "?{Stat}"
+  },
   "Overcome Destruction": {
     "stat": "?{Bonds Legacy|0}",
     "repeat_stat": "?{Bonds Legacy}"
   },
   "React Under Fire": {
-    "stat": "?{Stat|In pursuit&amp;#65040; fleeing&amp;#65040; dodging&amp;#65040; getting back into position&amp;#65040; or taking cover&amp;#65043; &amp;#65122;edge,@{edge}|Remaining stalwart against fear or temptation&amp;#65043; &amp;#65122;heart,@{heart}|Blocking or diverting with force&amp;#65040; or taking the hit&amp;#65043; &amp;#65122;iron,@{iron}|Moving into hiding or creating a distraction&amp;#65043; &amp;#65122;shadow,@{shadow}|Changing the plan&amp;#65040; finding a way out&amp;#65040; or cleverly bypassing an obstacle&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}|&amp;#65122;health (COMBAT BOT asset),@{health}|&amp;#65122;integrity (ROVER asset),@{Integrity}|&amp;#65122;integrity (SERVICE POD asset),@{Integrity}|&amp;#65122;shields (SHIELDS asset),@{Shields}|&amp;#65122;health (SIDEKICK asset),@{health}}",
     "repeat_stat": "?{Stat}"
   },
+  "Read Heart": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
   "Repair": {
-    "stat": "?{Stat|Make your own repairs&amp;#65040; or direct a companion to make repairs&amp;#65043; &amp;#65122;wits,@{wits}|Obtain repairs from someone (not an ally)&amp;#65043; &amp;#65122;supply,@{supply}}",
+    "stat": "?{Stat|&amp;#65122;wits,@{wits}|&amp;#65122;supply,@{supply}}",
     "repeat_stat": "?{Stat}"
   },
   "Resupply": {
-    "stat": "?{Stat|Barter or make an appeal&amp;#65043; &amp;#65122;heart,@{heart}|Threaten or seize&amp;#65043; &amp;#65122;iron,@{iron}|Steal or swindle&amp;#65043; &amp;#65122;shadow,@{shadow}|Scavenge or craft&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}}",
     "repeat_stat": "?{Stat}"
   },
+  "Scrape By": { "stat": "@{wits}", "repeat_stat": "@{wits}" },
   "Secure an Advantage": {
-    "stat": "?{Stat|With speed&amp;#65040; mobility&amp;#65040; or agility&amp;#65043; &amp;#65122;edge,@{edge}|With resolve&amp;#65040; command&amp;#65040; or sociability&amp;#65043; &amp;#65122;heart,@{heart}|With strength&amp;#65040; endurance&amp;#65040; aggression&amp;#65043; &amp;#65122;iron,@{iron}|With deception&amp;#65040; stealth&amp;#65040; or trickery&amp;#65043; &amp;#65122;shadow,@{shadow}|With expertise&amp;#65040; focus&amp;#65040; or observation&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;heart,@{heart}|&amp;#65122;iron,@{iron}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}|&amp;#65122;asset linked stat (DEVOTANT asset),@{Asset Linked Stat}|&amp;#65122;attached asset condition meter (OVERSEER asset),@{Attached Asset Condition Meter}|&amp;#65122;health (SURVEY BOT asset),@{health}|&amp;#65122;supply (WEAPON MASTER asset),@{supply}}",
     "repeat_stat": "?{Stat}"
   },
-  "Set a Course": { "stat": "@{supply}", "repeat_stat": "@{supply}" },
-  "Sojourn": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
+  "Seek Safe Haven": {
+    "stat": "?{Discoveries Legacy|0}",
+    "repeat_stat": "?{Discoveries Legacy}"
+  },
+  "Set a Course": {
+    "stat": "?{Stat|&amp;#65122;supply,@{supply}|&amp;#65122;health (BANSHEE asset),@{health}|&amp;#65122;integrity (SKIFF asset),@{Integrity}}",
+    "repeat_stat": "?{Stat}"
+  },
+  "Shroud in Darkness": { "stat": "@{shadow}", "repeat_stat": "@{shadow}" },
+  "Sojourn": {
+    "stat": "?{Stat|&amp;#65122;heart,@{heart}|&amp;#65122;safety (COURIER asset),@{Safety}|&amp;#65122;supply (TRADER asset),@{supply}}",
+    "repeat_stat": "?{Stat}"
+  },
   "Strike": {
-    "stat": "?{Stat|Assault a foe at close quarters&amp;#65043; &amp;#65122;iron,@{iron}|Attack at a distance&amp;#65043; &amp;#65122;edge,@{edge}}",
+    "stat": "?{Stat|&amp;#65122;iron,@{iron}|&amp;#65122;edge,@{edge}|&amp;#65122;integrity (SKIFF asset),@{Integrity}|&amp;#65122;wits (SNIPER asset),@{wits}|&amp;#65122;shadow (STEALTH TECH asset),@{shadow}}",
     "repeat_stat": "?{Stat}"
   },
-  "Swear an Iron Vow": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
+  "Swear an Iron Vow": {
+    "stat": "?{Stat|&amp;#65122;heart,@{heart}|&amp;#65122;asset linked stat (DEVOTANT asset),@{Asset Linked Stat}}",
+    "repeat_stat": "?{Stat}"
+  },
+  "Take Decisive Action": {
+    "stat": "?{Combat Progress|0}",
+    "repeat_stat": "?{Combat Progress}"
+  },
   "Test Your Relationship": { "stat": "@{heart}", "repeat_stat": "@{heart}" },
   "Undertake an Expedition": {
-    "stat": "?{Stat|Move at speed&amp;#65043; &amp;#65122;edge,@{edge}|Keep under the radar&amp;#65043; &amp;#65122;shadow,@{shadow}|Stay vigilant&amp;#65043; &amp;#65122;wits,@{wits}}",
+    "stat": "?{Stat|&amp;#65122;edge,@{edge}|&amp;#65122;shadow,@{shadow}|&amp;#65122;wits,@{wits}|&amp;#65122;health (BANSHEE asset),@{health}|&amp;#65122;integrity (SKIFF asset),@{Integrity}}",
     "repeat_stat": "?{Stat}"
   },
   "Withstand Damage": {
-    "stat": "?{Vehicle Integrity|0}",
-    "repeat_stat": "?{Vehicle Integrity}"
+    "stat": "?{Stat|&amp;#65122;vehicle integrity,@{Vehicle Integrity}|&amp;#65122;heart (STARSHIP asset),@{heart}}",
+    "repeat_stat": "?{Stat}"
   }
 }
