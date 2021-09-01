@@ -4,6 +4,57 @@
   "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
   "Oracles": [
     {
+      "Name": "Ask the Oracle",
+      "Aliases": ["Ask"],
+      "Tables": [
+        {
+          "Name": "Almost Certain",
+          "Display name": "Ask the Oracle - Almost Certain",
+          "Aliases": ["90"],
+          "Table": [
+            [1, 10, "No"],
+            [11, 100, "Yes"]
+          ]
+        },
+        {
+          "Name": "Likely",
+          "Display name": "Ask the Oracle - Likely",
+          "Aliases": ["75"],
+          "Table": [
+            [1, 25, "No"],
+            [26, 100, "Yes"]
+          ]
+        },
+        {
+          "Name": "50/50",
+          "Display name": "Ask the Oracle - 50/50",
+          "Aliases": ["50", "5050"],
+          "Table": [
+            [1, 50, "No"],
+            [51, 100, "Yes"]
+          ]
+        },
+        {
+          "Name": "Unlikely",
+          "Display name": "Ask the Oracle - Unlikely",
+          "Aliases": ["25"],
+          "Table": [
+            [1, 75, "No"],
+            [76, 100, "Yes"]
+          ]
+        },
+        {
+          "Name": "Small Chance",
+          "Display name": "Ask the Oracle - Small Chance",
+          "Aliases": ["10"],
+          "Table": [
+            [1, 90, "No"],
+            [91, 100, "Yes"]
+          ]
+        }
+      ]
+    },
+    {
       "Name": "Begin a Session",
       "Semantics": { "Part of speech": ["fragment"] },
       "Table": [
