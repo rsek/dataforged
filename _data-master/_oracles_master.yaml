@@ -1574,6 +1574,7 @@ Creature:
       Select table by: Environment
       Tables:
       - Display name: Basic Creature Form - Space
+        Name: Space
         Requires:
           Environment: [Space]
         Table:
@@ -1597,6 +1598,7 @@ Creature:
           - [91, 100, *Roll_twice]
 
       - Display name: Basic Creature Form - Interior
+        Name: Interior
         Requires:
           Environment: [Interior]
         Table:
@@ -1620,6 +1622,7 @@ Creature:
           - [91, 100, *Roll_twice]
 
       - Display name: Basic Creature Form - Land
+        Name: Land
         Requires:
           Environment: [Land]
         Table:
@@ -1643,6 +1646,7 @@ Creature:
           - [91, 100, *Roll_twice]
 
       - Display name: Basic Creature Form - Liquid
+        Name: Liquid
         Requires:
           Environment: [Liquid]
         Table:
@@ -1666,6 +1670,7 @@ Creature:
           - [91, 100, *Roll_twice]
 
       - Display name: Basic Creature Form - Air
+        Name: Air
         Requires:
           Environment: [Air]
         Table:
@@ -2289,6 +2294,7 @@ Settlement:
       Select table by: Region
       Tables:
         - Display name: Population - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -2299,6 +2305,7 @@ Settlement:
             - [86, 100, *pop04]
 
         - Display name: Population - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -2309,6 +2316,7 @@ Settlement:
             - [91, 100, *pop04]
 
         - Display name: Population - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -2593,6 +2601,7 @@ Space:
       Select table by: Region
       Tables:
       - Display name: Space Sighting - Terminus
+        Name: Terminus
         Requires:
           Region: [Terminus]
         Table:
@@ -2618,6 +2627,7 @@ Space:
           - [94, 98, *Roll_twice_Rep_ok]
           - [99, 100, *Roll_three_times_Rep_ok]
       - Display name: Space Sighting - Outlands
+        Name: Outlands
         Requires:
           Region: [Outlands]
         Table:
@@ -2643,6 +2653,7 @@ Space:
           - [94, 98, *Roll_twice_Rep_ok]
           - [99, 100, *Roll_three_times_Rep_ok]
       - Display name: Space Sighting - Expanse
+        Name: Expanse
         Requires:
           Region: [Expanse]
         Table:
@@ -3123,6 +3134,7 @@ Starship:
       Select table by: Region
       Tables:
         - Display name: Starship Mission - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -3160,6 +3172,7 @@ Starship:
             - [91, 100, *Roll_twice]
 
         - Display name: Starship Mission - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -3197,6 +3210,7 @@ Starship:
             - [91, 100, *Roll_twice]
 
         - Display name: Starship Mission - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -3294,6 +3308,7 @@ Derelict:
       Select table by: Location
       Tables:
       - Display name: Type - Planetside
+        Name: Planetside
         Requires:
           Location:
             - Planetside
@@ -3302,6 +3317,7 @@ Derelict:
           - [26, 100, Settlement]
 
       - Display name: Type - Orbital
+        Name: Orbital
         Requires:
           Location:
             - Orbital
@@ -3310,6 +3326,7 @@ Derelict:
           - [41, 100, Settlement]
 
       - Display name: Type - Deep Space
+        Name: Deep Space
         Requires:
           Location:
             - Deep Space
@@ -3941,6 +3958,7 @@ Desert World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -3951,6 +3969,7 @@ Desert World:
             - [93, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -3961,6 +3980,7 @@ Desert World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4070,6 +4090,7 @@ Furnace World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -4080,6 +4101,7 @@ Furnace World:
             - [97, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -4090,6 +4112,7 @@ Furnace World:
             - [100, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4199,6 +4222,7 @@ Grave World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -4209,6 +4233,7 @@ Grave World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -4217,6 +4242,7 @@ Grave World:
             - [98, 100, *Planetside_settlement]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4324,6 +4350,7 @@ Ice World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -4334,6 +4361,7 @@ Ice World:
             - [93, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -4344,6 +4372,7 @@ Ice World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4452,6 +4481,7 @@ Jovian World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -4462,6 +4492,7 @@ Jovian World:
             - [96, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -4472,6 +4503,7 @@ Jovian World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4581,6 +4613,7 @@ Jungle World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -4591,6 +4624,7 @@ Jungle World:
             - [93, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -4601,6 +4635,7 @@ Jungle World:
             - [98, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4711,6 +4746,7 @@ Ocean World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -4721,6 +4757,7 @@ Ocean World:
             - [93, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -4731,6 +4768,7 @@ Ocean World:
             - [98, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -4836,9 +4874,10 @@ Planet:
         Part of speech: [fragment]
       Description: |-
         Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
-      Select table by: Region
+      Select table by: Life
       Tables:
         - Display name: Planetside Peril - Lifebearing
+          Name: Lifebearing
           Requires:
             Location: [Planetside]
             Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
@@ -4879,6 +4918,7 @@ Planet:
             - [100, 100, *Roll_twice]
 
         - Display name: Planetside Peril - Lifeless
+          Name: Lifeless
           Requires:
             Location: [Planetside]
             Life: [Lifeless, None, Extinct]
@@ -4920,6 +4960,7 @@ Planet:
       Select table by: Region
       Tables:
         - Display name: Planetside Opportunity - Lifebearing
+          Name: Lifebearing
           Requires:
             Location: [Planetside]
             Life: [Lifebearing, Simple, Sparse, Diverse, Bountiful, Overrun]
@@ -4951,6 +4992,7 @@ Planet:
             - [97, 100, &pOpp19 [Vantage point reveals the lay of the land, *suggestObject]]
 
         - Display name: Planetside Opportunity - Lifeless
+          Name: Lifeless
           Requires:
             Location: [Planetside]
             Life: [Lifeless, None, Extinct]
@@ -5030,6 +5072,7 @@ Rocky World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -5040,6 +5083,7 @@ Rocky World:
             - [96, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -5050,6 +5094,7 @@ Rocky World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -5159,6 +5204,7 @@ Shattered World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -5169,6 +5215,7 @@ Shattered World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -5178,6 +5225,7 @@ Shattered World:
             - [100, 100, *Multiple_settlements]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -5284,6 +5332,7 @@ Tainted World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -5294,6 +5343,7 @@ Tainted World:
             - [99, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -5302,6 +5352,7 @@ Tainted World:
             - [98, 100, *Planetside_settlement]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:
@@ -5407,6 +5458,7 @@ Vital World:
       Select table by: Region
       Tables:
         - Display name: Settlements - Terminus
+          Name: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -5417,6 +5469,7 @@ Vital World:
             - [91, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Outlands
+          Name: Outlands
           Requires:
             Region: [Outlands]
           Table:
@@ -5427,6 +5480,7 @@ Vital World:
             - [96, 100, *Settlements_in_conflict]
 
         - Display name: Settlements - Expanse
+          Name: Expanse
           Requires:
             Region: [Expanse]
           Table:

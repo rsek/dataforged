@@ -1885,6 +1885,7 @@
         "Tables": [
           {
             "Display name": "Basic Creature Form - Space",
+            "Name": "Space",
             "Requires": { "Environment": ["Space"] },
             "Table": [
               { "Chance": 5, "Description": "Amoeba / pseudopods" },
@@ -1913,6 +1914,7 @@
           },
           {
             "Display name": "Basic Creature Form - Interior",
+            "Name": "Interior",
             "Requires": { "Environment": ["Interior"] },
             "Table": [
               { "Chance": 3, "Description": "Amoeba / pseudopods" },
@@ -1941,6 +1943,7 @@
           },
           {
             "Display name": "Basic Creature Form - Land",
+            "Name": "Land",
             "Requires": { "Environment": ["Land"] },
             "Table": [
               { "Chance": 2, "Description": "Amoeba / pseudopods" },
@@ -1969,6 +1972,7 @@
           },
           {
             "Display name": "Basic Creature Form - Liquid",
+            "Name": "Liquid",
             "Requires": { "Environment": ["Liquid"] },
             "Table": [
               { "Chance": 5, "Description": "Amoeba / pseudopods" },
@@ -1997,6 +2001,7 @@
           },
           {
             "Display name": "Basic Creature Form - Air",
+            "Name": "Air",
             "Requires": { "Environment": ["Air"] },
             "Table": [
               { "Chance": 2, "Description": "Amoeba / pseudopods" },
@@ -2229,6 +2234,7 @@
         "Tables": [
           {
             "Display name": "Type - Planetside",
+            "Name": "Planetside",
             "Requires": { "Location": ["Planetside"] },
             "Table": [
               { "Chance": 25, "Description": "Starship" },
@@ -2237,6 +2243,7 @@
           },
           {
             "Display name": "Type - Orbital",
+            "Name": "Orbital",
             "Requires": { "Location": ["Orbital"] },
             "Table": [
               { "Chance": 40, "Description": "Starship" },
@@ -2245,6 +2252,7 @@
           },
           {
             "Display name": "Type - Deep Space",
+            "Name": "Deep Space",
             "Requires": { "Location": ["Deep Space"] },
             "Table": [
               { "Chance": 75, "Description": "Starship" },
@@ -5297,10 +5305,11 @@
         "Repeatable": true,
         "Semantics": { "Part of speech": ["fragment"] },
         "Description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
-        "Select table by": "Region",
+        "Select table by": "Life",
         "Tables": [
           {
             "Display name": "Planetside Peril - Lifebearing",
+            "Name": "Lifebearing",
             "Requires": {
               "Location": ["Planetside"],
               "Life": [
@@ -5428,6 +5437,7 @@
           },
           {
             "Display name": "Planetside Peril - Lifeless",
+            "Name": "Lifeless",
             "Requires": {
               "Location": ["Planetside"],
               "Life": ["Lifeless", "None", "Extinct"]
@@ -5519,6 +5529,7 @@
         "Tables": [
           {
             "Display name": "Planetside Opportunity - Lifebearing",
+            "Name": "Lifebearing",
             "Requires": {
               "Location": ["Planetside"],
               "Life": [
@@ -5688,6 +5699,7 @@
           },
           {
             "Display name": "Planetside Opportunity - Lifeless",
+            "Name": "Lifeless",
             "Requires": {
               "Location": ["Planetside"],
               "Life": ["Lifeless", "None", "Extinct"]
@@ -5905,6 +5917,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
@@ -5946,6 +5959,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
@@ -5987,6 +6001,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
@@ -6171,6 +6186,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 60, "Description": "None" },
@@ -6212,6 +6228,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
@@ -6253,6 +6270,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
@@ -6434,6 +6452,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 80, "Description": "None" },
@@ -6475,6 +6494,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
@@ -6498,6 +6518,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
@@ -6719,6 +6740,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
@@ -6760,6 +6782,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
@@ -6801,6 +6824,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
@@ -6971,6 +6995,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
@@ -7012,6 +7037,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
@@ -7053,6 +7079,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
@@ -7228,6 +7255,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 40, "Description": "None" },
@@ -7269,6 +7297,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 65, "Description": "None" },
@@ -7310,6 +7339,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
@@ -7506,6 +7536,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 40, "Description": "None" },
@@ -7547,6 +7578,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 65, "Description": "None" },
@@ -7588,6 +7620,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
@@ -7776,6 +7809,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
@@ -7817,6 +7851,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
@@ -7858,6 +7893,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
@@ -8033,6 +8069,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 70, "Description": "None" },
@@ -8074,6 +8111,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
@@ -8106,6 +8144,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
@@ -8299,6 +8338,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 80, "Description": "None" },
@@ -8340,6 +8380,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
@@ -8363,6 +8404,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
@@ -8529,6 +8571,7 @@
             "Tables": [
               {
                 "Display name": "Settlements - Terminus",
+                "Name": "Terminus",
                 "Requires": { "Region": ["Terminus"] },
                 "Table": [
                   { "Chance": 20, "Description": "None" },
@@ -8570,6 +8613,7 @@
               },
               {
                 "Display name": "Settlements - Outlands",
+                "Name": "Outlands",
                 "Requires": { "Region": ["Outlands"] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
@@ -8611,6 +8655,7 @@
               },
               {
                 "Display name": "Settlements - Expanse",
+                "Name": "Expanse",
                 "Requires": { "Region": ["Expanse"] },
                 "Table": [
                   { "Chance": 80, "Description": "None" },
@@ -9533,6 +9578,7 @@
         "Tables": [
           {
             "Display name": "Population - Terminus",
+            "Name": "Terminus",
             "Requires": { "Region": ["Terminus"] },
             "Table": [
               { "Chance": 10, "Description": "Few" },
@@ -9544,6 +9590,7 @@
           },
           {
             "Display name": "Population - Outlands",
+            "Name": "Outlands",
             "Requires": { "Region": ["Outlands"] },
             "Table": [
               { "Chance": 15, "Description": "Few" },
@@ -9555,6 +9602,7 @@
           },
           {
             "Display name": "Population - Expanse",
+            "Name": "Expanse",
             "Requires": { "Region": ["Expanse"] },
             "Table": [
               { "Chance": 20, "Description": "Few" },
@@ -10055,6 +10103,7 @@
         "Tables": [
           {
             "Display name": "Space Sighting - Terminus",
+            "Name": "Terminus",
             "Requires": { "Region": ["Terminus"] },
             "Table": [
               {
@@ -10143,6 +10192,7 @@
           },
           {
             "Display name": "Space Sighting - Outlands",
+            "Name": "Outlands",
             "Requires": { "Region": ["Outlands"] },
             "Table": [
               {
@@ -10231,6 +10281,7 @@
           },
           {
             "Display name": "Space Sighting - Expanse",
+            "Name": "Expanse",
             "Requires": { "Region": ["Expanse"] },
             "Table": [
               {
@@ -11063,6 +11114,7 @@
         "Tables": [
           {
             "Display name": "Starship Mission - Terminus",
+            "Name": "Terminus",
             "Requires": { "Region": ["Terminus"] },
             "Table": [
               {
@@ -11203,6 +11255,7 @@
           },
           {
             "Display name": "Starship Mission - Outlands",
+            "Name": "Outlands",
             "Requires": { "Region": ["Outlands"] },
             "Table": [
               { "Chance": 2, "Description": "Blockade a location" },
@@ -11333,6 +11386,7 @@
           },
           {
             "Display name": "Starship Mission - Expanse",
+            "Name": "Expanse",
             "Requires": { "Region": ["Expanse"] },
             "Table": [
               { "Chance": 2, "Description": "Blockade a location" },
