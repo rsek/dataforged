@@ -6200,6 +6200,7 @@
         "Name": "Projects",
         "Display name": "Settlement Projects",
         "Max rolls": 2,
+        "Description": "<p>Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.</p>",
         "Table": [
           { "Chance": 5, "Description": "Agriculture" },
           { "Chance": 7, "Description": "Archeology" },
@@ -6248,6 +6249,7 @@
         "Name": "Trouble",
         "Display name": "Settlement Trouble",
         "Oracle type": "peril",
+        "Description": "<p>Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.</p>",
         "Table": [
           { "Chance": 3, "Description": "Betrayal from within" },
           {
@@ -7312,6 +7314,7 @@
         "Name": "Given Name",
         "Subgroup": "Name",
         "Display name": "Character Name - Given Name",
+        "Description": "<p>Given and family names can be used independently as standalone names. In many cases you can reverse the order.</p>",
         "Use with": [
           { "Category": "Character", "Name": "Callsign" },
           { "Category": "Character", "Name": "Family Name" }
@@ -7425,6 +7428,7 @@
         "Name": "Callsign",
         "Subgroup": "Name",
         "Display name": "Character Name - Callsign",
+        "Description": "<p>Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.</p>",
         "Use with": [
           { "Category": "Character", "Name": "Given Name" },
           { "Category": "Character", "Name": "Family Name" }
@@ -7537,6 +7541,7 @@
         "Name": "Family Name",
         "Subgroup": "Name",
         "Display name": "Character Name - Family Name",
+        "Description": "<p>Given and family names can be used independently as standalone names. In many cases you can reverse the order.</p>",
         "Use with": [
           { "Category": "Character", "Name": "Given Name" },
           { "Category": "Character", "Name": "Callsign" }
@@ -8184,6 +8189,7 @@
       {
         "Name": "Environment",
         "Initial": true,
+        "Description": "<p>Choose the closest match for your location. Or roll to identify the primary habitat of a creature.</p>",
         "Table": [
           { "Chance": 5, "Description": "Space" },
           { "Chance": 15, "Description": "Interior" },
@@ -8232,6 +8238,7 @@
         "Name": "Basic Form",
         "Initial": true,
         "Select table by": "Environment",
+        "Description": "<p>Roll for a basic form, and flesh out the creature’s appearance using the First Look table.</p>",
         "Tables": [
           {
             "Display name": "Basic Creature Form - Space",
@@ -8390,6 +8397,7 @@
         "Name": "First Look",
         "Display name": "Creature First Look",
         "Initial": true,
+        "Description": "<p>Roll for a basic form, and flesh out the creature’s appearance using the First Look table.</p>",
         "Min rolls": 2,
         "Max rolls": 2,
         "Table": [
@@ -8448,6 +8456,7 @@
       },
       {
         "Name": "Encountered Behavior",
+        "Description": "<p>Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.</p>",
         "Initial": true,
         "Table": [
           { "Chance": 5, "Description": "Ambusher" },
@@ -8481,6 +8490,7 @@
       {
         "Name": "Revealed Aspect",
         "Display name": "Revealed Creature Aspect",
+        "Description": "<p>Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature which you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or simply envision how this contradiction signals a new understanding or unexpected transformation.</p>",
         "Max rolls": 2,
         "Table": [
           { "Chance": 2, "Description": "Alternative environment" },
@@ -10407,7 +10417,7 @@
     "Oracles": [
       {
         "Name": "Theme Type",
-        "Description": "<p>You will typically choose a theme which supports what you know of that location's nature. If you want a random theme, roll on the table abouve.</p>",
+        "Description": "<p>Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location. You can answer questions about a place using only the tables provided for a theme, such as when delving into an <strong>Infested</strong> cave. Or you can pair a theme with other location oracles for more flavor and variety; for example, you might explore a <strong>Haunted Grave World</strong>, a <strong>Ruined Derelict</strong>, a <strong>Sacred Precusor Vault</strong>, or an <strong>Inhabited Settlement</strong>.</p>",
         "Table": [
           {
             "Chance": 15,
@@ -10459,6 +10469,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               { "Chance": 8, "Description": "Alterations in the flow of time" },
@@ -10507,6 +10518,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -10556,6 +10568,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
@@ -10595,6 +10608,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               { "Chance": 8, "Description": "Captives or prisoners" },
@@ -10640,6 +10654,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -10692,6 +10707,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
@@ -10731,6 +10747,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               { "Chance": 8, "Description": "Disembodied voices" },
@@ -10770,6 +10787,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -10828,6 +10846,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
@@ -10864,6 +10883,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               { "Chance": 8, "Description": "Corpse of an unfortunate victim" },
@@ -10903,6 +10923,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -10961,6 +10982,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
@@ -10994,6 +11016,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               {
@@ -11042,6 +11065,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -11094,6 +11118,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
@@ -11133,6 +11158,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               {
@@ -11181,6 +11207,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -11236,6 +11263,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
@@ -11275,6 +11303,7 @@
         "Oracles": [
           {
             "Name": "Feature",
+            "Description": "<p>Use this table to reveal a new aspect of the location.</p>",
             "Repeatable": true,
             "Table": [
               {
@@ -11320,6 +11349,7 @@
           },
           {
             "Name": "Peril",
+            "Description": "<p>Use this table to help envision a complication or hazard.</p>",
             "Oracle type": "peril",
             "Repeatable": true,
             "Table": [
@@ -11381,6 +11411,7 @@
           },
           {
             "Name": "Opportunity",
+            "Description": "<p>Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.</p>",
             "Oracle type": "opportunity",
             "Repeatable": true,
             "Table": [
