@@ -12,11 +12,8 @@ Core:
           Name: Theme
       Semantics:
         Part of speech: [verb]
-      Description: |-
-        Use these oracle tables to reveal details about a goal, situation, or event.
-
-        They provide a word or phrase that can be taken literally or interpreted
-        as an abstraction.
+      Description: &action_theme_desc |-
+        Use these oracle tables to reveal details about a goal, situation, or event. They provide a word or phrase that can be taken literally or interpreted as an abstraction.
 
         Action and Theme can answer questions such as:
 
@@ -134,18 +131,7 @@ Core:
       Semantics:
         Part of speech: [common noun]
         Content: [abstract noun]
-      Description: |-
-        Use these oracle tables to reveal details about a goal, situation, or event.
-
-        They provide a word or phrase that can be taken literally or interpreted
-        as an abstraction.
-
-        Action and Theme can answer questions such as:
-
-          * “What does this character want?”
-          * “What is this faction’s mission?”
-          * “What caused the downfall of this settlement?”
-          * “What is this device’s purpose?”
+      Description: *action_theme_desc
       Table:
         - [1, 1, Ability]
         - [2, 2, Advantage]
@@ -255,14 +241,15 @@ Core:
           Name: Focus
       Semantics:
         Part of speech: [adjective]
-      Description: |-
+      Description: &descriptor_focus_desc |-
         Use these oracles to generate the details of a location, discovery, or encounter. The Descriptor oracle is particularly handy for quick generation of a location. For example, use it to describe the basic nature of a planet instead of rolling on the detailed planet oracles.
 
         Descriptor and Focus can answer questions such as:
-          * What is this ship’s cargo?
-          * What is the nature of this planet?
-          * What is inside this station?
-          * What hazard do I encounter?
+
+          * “What is this ship’s cargo?”
+          * “What is the nature of this planet?”
+          * “What is inside this station?”
+          * “What hazard do I encounter?”
       Table:
         - [1, 1, Abandoned]
         - [2, 2, Abundant]
@@ -373,14 +360,7 @@ Core:
       Semantics:
         Part of speech: [common noun]
         Content: concrete noun
-      Description: |-
-        Use these oracles to generate the details of a location, discovery, or encounter. The Descriptor oracle is particularly handy for quick generation of a location. For example, use it to describe the basic nature of a planet instead of rolling on the detailed planet oracles.
-
-        Descriptor and Focus can answer questions such as:
-          * What is this ship’s cargo?
-          * What is the nature of this planet?
-          * What is inside this station?
-          * What hazard do I encounter?
+      Description: *descriptor_focus_desc
       Table:
         - [1, 1, AI]
         - [2, 2, Alarm]
