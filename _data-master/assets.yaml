@@ -65,7 +65,7 @@ Assets:
           When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. When you then take your shot by making a move, you may set the value of your action die to 5. On a hit, envision the effects and take +1 momentum.
     Condition Meter:
       Name: Ammo
-      Value: 6
+      Max: 6
   - Name: Armored
     Category: Path
     Description: If you wear your finely crafted set of personal armor...
@@ -125,7 +125,7 @@ Assets:
           When you make a combat move and roll a 1 on your action die, the banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die, but must first [Lose Momentum](#Lose-Momentum) (-1).
     Condition Meter:
       Name: Health
-      Value: 4
+      Max: 4
   - Name: Blademaster
     Category: Path
     Description: If you wield a bladed weapon...
@@ -212,7 +212,7 @@ Assets:
                   Stats: [Asset Condition Meter]
     Condition Meter:
       Name: Health
-      Value: 5
+      Max: 5
   - Name: Commander
     Category: Path
     Abilities:
@@ -242,7 +242,7 @@ Assets:
           When you [Fulfill Your Vow](#Fulfill-Your-Vow) to a connection by finishing a courier mission, you may [Develop Your Relationship](#Develop-Your-Relationship) and mark progress twice.
     Condition Meter:
       Name: Safety
-      Value: 5
+      Max: 5
   - Name: Devotant
     Category: Path
     Input: [Name, Linked Stat]
@@ -345,7 +345,7 @@ Assets:
           When you [Withstand Damage](#Withstand-Damage), you may reroll one challenge die.
     Condition Meter:
       Name: Integrity
-      Value: 6
+      Max: 6
   - Name: Expanded Hold
     Category: Module
     Abilities:
@@ -358,7 +358,7 @@ Assets:
           When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
     Condition Meter:
       Name: Cargo
-      Value: 3
+      Max: 3
       Starts At: 0
   - Name: Explorer
     Category: Path
@@ -404,7 +404,7 @@ Assets:
           When you have at least +3 fire, you may [Gain Ground](#Gain-Ground) or [Strike](#Strike) by unleashing hell. If you do, take an automatic strong hit and mark progress. Then, set your fire to 0.
     Condition Meter:
       Name: Fire
-      Value: 5
+      Max: 5
       Starts At: 0
   - Name: Fugitive
     Category: Path
@@ -418,7 +418,7 @@ Assets:
           When you [Fulfill Your Vow](#Fulfill-Your-Vow) (extreme or greater) by clearing your name or defeating the power or authority who marked you as a fugitive, gain this ability at no cost. You may then exchange this asset for another with the same number of marked abilities.
     Condition Meter:
       Name: Fugitive
-      Value: 3
+      Max: 3
       Starts At: 0
   - Name: Gearhead
     Category: Path
@@ -443,7 +443,7 @@ Assets:
           When you [Endure Stress](#Endure-Stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.
     Condition Meter:
       Name: Health
-      Value: 3
+      Max: 3
   - Name: Grappler
     Category: Module
     Abilities:
@@ -553,7 +553,7 @@ Assets:
           When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.
     Condition Meter:
       Name: Integrity
-      Value: 3
+      Max: 3
   - Name: Internal Refit
     Category: Module
     Abilities:
@@ -616,6 +616,7 @@ Assets:
           When you risk your reputation to overcome failure, reroll any dice. If you score a miss, make a mark on this asset. When you have 5 such marks, discard this asset.
         Counter:
           Name: Marks
+          Max: 5
       - Text: |-
           Once per fight, when you [Gain Ground](#Gain-Ground) through threat or leadership, you may reroll any dice and mark progress on a hit.
   - Name: Medbay
@@ -650,7 +651,7 @@ Assets:
           When you have at least 3 ammo and [Take Decisive Action](#Take-Decisive-Action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll each challenge die. Then, set ammo to 0.
     Condition Meter:
       Name: Ammo
-      Value: 5
+      Max: 5
   - Name: Naturalist
     Category: Path
     Abilities:
@@ -750,7 +751,7 @@ Assets:
           If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.
     Condition Meter:
       Name: Health
-      Value: 3
+      Max: 3
   - Name: Reinforced Hull
     Category: Module
     Abilities:
@@ -809,7 +810,7 @@ Assets:
           The rockhorn will come to your aid in your most vulnerable moments. When you [Endure Harm](#Endure-Harm) or [Endure Stress](#Endure-Stress) and roll a miss, you may reroll your action die if its value is less than the rockhorn's health.
     Condition Meter:
       Name: Health
-      Value: 5
+      Max: 5
   - Name: Rover
     Category: Support Vehicle
     Input: [Name]
@@ -836,7 +837,7 @@ Assets:
                   Stats: [Asset Condition Meter]
     Condition Meter:
       Name: Integrity
-      Value: 5
+      Max: 5
   - Name: Scavenger
     Category: Path
     Abilities:
@@ -948,7 +949,7 @@ Assets:
           When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](#Withstand-Damage) (-2).
     Condition Meter:
       Name: Integrity
-      Value: 4
+      Max: 4
   - Name: Shade
     Category: Path
     Abilities:
@@ -996,7 +997,7 @@ Assets:
           When you [Enter the Fray](#Enter-the-Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
     Condition Meter:
       Name: Shields
-      Value: 4
+      Max: 4
       Starts At: 0
   - Name: Shuttle
     Category: Support Vehicle
@@ -1011,7 +1012,7 @@ Assets:
           You shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you [Withstand Damage](#Withstand-Damage), add +1.
     Condition Meter:
       Name: Integrity
-      Value: 4
+      Max: 4
   - Name: Skiff
     Category: Support Vehicle
     Input: [Name]
@@ -1051,7 +1052,7 @@ Assets:
           Your skiff is fully stocked. When you [Check Your Gear](#Check-Your-Gear), add +1 and take +1 momentum on a hit.
     Condition Meter:
       Name: Integrity
-      Value: 4
+      Max: 4
   - Name: Sidekick
     Category: Companion
     Input: [Name, Expertise]
@@ -1078,7 +1079,7 @@ Assets:
                   Stats: [Asset Condition Meter]
     Condition Meter:
       Name: Health
-      Value: 4
+      Max: 4
   - Name: Slayer
     Category: Path
     Abilities:
@@ -1125,11 +1126,11 @@ Assets:
           When you [Strike](#Strike) or [Clash](#Clash), add +1. On a strong hit with a match, mark progress.
       - Text: |-
           When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.
+        Counter:
+          Name: Victory Marks
     Condition Meter:
       Name: Integrity
-      Value: 4
-    Counter:
-      Name: Victory Marks
+      Max: 4
   - Name: Sprite
     Category: Companion
     Input: [Name]
@@ -1143,7 +1144,7 @@ Assets:
           With a moment's rest, the sprite can mend its form and return automatically to max health.
     Condition Meter:
       Name: Health
-      Value: 2
+      Max: 2
   - Name: Starship
     Category: Command Vehicle
     Input: [Name]
@@ -1164,7 +1165,7 @@ Assets:
                   Stats: [Heart]
     Condition Meter:
       Name: Integrity
-      Value: 5
+      Max: 5
   - Name: Stealth Tech
     Category: Module
     Abilities:
@@ -1220,7 +1221,7 @@ Assets:
                   Stats: [Asset Condition Meter]
     Condition Meter:
       Name: Health
-      Value: 3
+      Max: 3
   - Name: Symbiote
     Category: Companion
     Input: [Name]
@@ -1235,10 +1236,10 @@ Assets:
         Alter Properties:
           Condition Meter:
             Name: Health
-            Value: 3
+            Max: 3
     Condition Meter:
       Name: Health
-      Value: 2
+      Max: 2
   - Name: Tech
     Category: Path
     Abilities:
@@ -1299,7 +1300,7 @@ Assets:
                   Stats: [Asset Condition Meter]
     Condition Meter:
       Name: Health
-      Value: 4
+      Max: 4
   - Name: Vanguard
     Category: Deed
     Description: Once you fill 6 boxes on your discoveries legacy track...
@@ -1399,7 +1400,7 @@ Assets:
                   Stats: [Asset Condition Meter]
     Condition Meter:
       Name: Health
-      Value: 4
+      Max: 4
   - Name: Weapon Master
     Category: Path
     Abilities:
