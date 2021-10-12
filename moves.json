@@ -1,6 +1,6 @@
 {
   "Name": "Moves",
-  "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+  "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
   "Moves": [
     {
       "Name": "Begin a Session",
@@ -181,16 +181,6 @@
       "Text": "**When you make headway in your quest** by doing any of the following...\n\n  * overcoming a critical obstacle\n  * gaining meaningful insight\n  * completing a perilous expedition\n  * acquiring a crucial item or resource\n  * earning vital support\n  * defeating a notable foe\n\n...you may mark progress per the rank of the vow."
     },
     {
-      "Name": "Forsake Your Vow",
-      "Category": "Quest Moves",
-      "Triggers": [
-        {
-          "Text": "When you renounce your quest, betray your promise, or the goal is lost to you"
-        }
-      ],
-      "Text": "**When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.\n\nThen, envision the impact of this failure and choose one or more as appropriate to the nature of the vow. Any allies who shared this vow may also envision a cost.\n\n  * You are demoralized or dispirited: [Endure Stress](#Endure-Stress).\n  * A connection loses faith: [Test Your Relationship](#Test-Your-Relationship) when you next interact.\n  * You must abandon a path or resource: Discard an asset.\n  * Someone else pays a price: Envision how a person, being, or community bears the cost of the failure.\n  * Someone else takes advantage: Envision how an enemy gains power.\n  * Your reputation suffers: Envision how this failure marks you."
-    },
-    {
       "Name": "Fulfill Your Vow",
       "Category": "Quest Moves",
       "Progress Move": true,
@@ -201,6 +191,16 @@
         }
       ],
       "Text": "**When you reach the end of your quest**, roll the challenge dice and compare to your progress.\n\nOn a **strong hit**, your vow is fulfilled. Mark a reward on your quests legacy track per the vow's rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes. Any allies who shared this vow also mark the reward.\n\nOn a **weak hit**, as above, but there is more to be done or you realize the truth of your quest. If you [Swear an Iron Vow](#Swear-an-Iron-Vow) to set things right, take your full legacy reward. Otherwise, make the reward one rank lower.\n\nOn a **miss**, your vow is undone through an unexpected complication or realization. Envision what happens and choose one.\n\n  * Give up on the quest: [Forsake Your Vow](#Forsake-Your-Vow).\n  * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow's rank by one (if not already epic)."
+    },
+    {
+      "Name": "Forsake Your Vow",
+      "Category": "Quest Moves",
+      "Triggers": [
+        {
+          "Text": "When you renounce your quest, betray your promise, or the goal is lost to you"
+        }
+      ],
+      "Text": "**When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.\n\nThen, envision the impact of this failure and choose one or more as appropriate to the nature of the vow. Any allies who shared this vow may also envision a cost.\n\n  * You are demoralized or dispirited: [Endure Stress](#Endure-Stress).\n  * A connection loses faith: [Test Your Relationship](#Test-Your-Relationship) when you next interact.\n  * You must abandon a path or resource: Discard an asset.\n  * Someone else pays a price: Envision how a person, being, or community bears the cost of the failure.\n  * Someone else takes advantage: Envision how an enemy gains power.\n  * Your reputation suffers: Envision how this failure marks you."
     },
     {
       "Name": "Make a Connection",
@@ -225,6 +225,17 @@
       "Text": "**When you reinforce your relationship with a connection** by doing any of the following...\n\n  * swearing a vow to undertake a perilous quest in their service\n  * completing a quest to their benefit\n  * leveraging their help in desperate circumstances\n  * giving them something of worth\n  * sharing a profound moment\n  * standing with them against hardship\n  * overcoming a test of your relationship\n\n...you may mark progress per the rank of the connection.\n\nIf you already share a bond with the connection, do not mark progress. Instead, roll +their rank to learn the impact on your legacy (troublesome=+1; dangerous=+2; formidable=+3; extreme=+4; epic=+5). On a **strong hit**, mark 2 ticks on your bonds legacy track. On a **strong hit with a match**, you may also envision how recent events bolstered your connection's standing and raise their rank by one (if not already epic). On a **weak hit**, take +2 momentum. On a **miss**, take no lasting benefit."
     },
     {
+      "Name": "Test Your Relationship",
+      "Category": "Connection Moves",
+      "Triggers": [
+        {
+          "Text": "When your relationship with a connection is tested through conflict, betrayal, or circumstance",
+          "Stat Options": { "Stats": ["Heart"] }
+        }
+      ],
+      "Text": "**When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.\n\nOn a **strong hit**, [Develop Your Relationship](#Develop-Your-Relationship).\n\nOn a **weak hit**, [Develop Your Relationship](#Develop-Your-Relationship), but also envision a demand or complication as a fallout of this test.\n\nOn a **miss**, or if you have no interest in maintaining this relationship, choose one.\n\n  * Lose the connection: Envision how this impacts you and [Pay the Price](#Pay-the-Price).\n  * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to see it done. Until you complete the quest, take no benefit for the connection. If you refuse or fail the quest, the connection is permanently undone."
+    },
+    {
       "Name": "Forge a Bond",
       "Category": "Connection Moves",
       "Triggers": [
@@ -235,17 +246,6 @@
       ],
       "Progress Move": true,
       "Text": "**When your relationship with a connection is ready to evolve**, roll the challenge dice and compare to your progress.\n\nOn a **strong hit**, you now share a bond. Mark a reward on your bonds legacy track per the connection's rank: troublesome=1 tick; dangerous=2 ticks; formidable=1 box; extreme=2 boxes; epic=3 boxes. Any allies who share this connection also mark the reward. Then, choose one.\n\n  * Bolster their influence: When they aid you on a move closely associated with their role, add +2 instead of +1.\n  * Expand their influence: Give them a second role. When they aid you on a move closely associated with either role, add +1 and take +1 momentum on a hit.\n\nOn a **weak hit**, as above, but they ask something more of you first. To gain the bond and the legacy reward, envision the nature of the request, and do it (or [Swear an Iron Vow](#Swear-an-Iron-Vow) to see it done).\n\nOn a **miss**, they reveal a motivation or background which puts you at odds. If you recommit to this relationship, roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the connection's rank by one (if not already epic)."
-    },
-    {
-      "Name": "Test Your Relationship",
-      "Category": "Connection Moves",
-      "Triggers": [
-        {
-          "Text": "When your relationship with a connection is tested through conflict, betrayal, or circumstance",
-          "Stat Options": { "Stats": ["Heart"] }
-        }
-      ],
-      "Text": "**When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.\n\nOn a **strong hit**, [Develop Your Relationship](#Develop-Your-Relationship).\n\nOn a **weak hit**, [Develop Your Relationship](#Develop-Your-Relationship), but also envision a demand or complication as a fallout of this test.\n\nOn a **miss**, or if you have no interest in maintaining this relationship, choose one.\n\n  * Lose the connection: Envision how this impacts you and [Pay the Price](#Pay-the-Price).\n  * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to see it done. Until you complete the quest, take no benefit for the connection. If you refuse or fail the quest, the connection is permanently undone."
     },
     {
       "Name": "Undertake an Expedition",
@@ -281,6 +281,28 @@
       "Text": "**When you divert from an expedition to examine a notable location**, roll +wits.\n\nOn a **strong hit**, choose one. On a **strong hit with a match**, you may instead [Make a Discovery](#Make-a-Discovery).\n\n  * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.\n  * Gain progress: Mark progress on your expedition, per its rank.\n\nOn a **weak hit**, you uncover something interesting, but it is bound up in a peril or reveals an ominous aspect of this place. Envision what you encounter. Then, take +1 momentum.\n\nOn a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](#Pay-the-Price). On a **miss with a match**, you may instead [Confront Chaos](#Confront-Chaos)."
     },
     {
+      "Name": "Make a Discovery",
+      "Category": "Exploration Moves",
+      "Triggers": [
+        {
+          "Text": "When your exploration of a waypoint uncovers something wondrous"
+        }
+      ],
+      "Oracle": true,
+      "Text": "**When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.\n\n| Roll   | Result |\n|--------|--------|\n| 1-4    | Advanced technology waiting to be harnessed or salvaged |\n| 5-8    | Ancient archive or message |\n| 9-10   | Artificial consciousness evolved to a higher state |\n| 11-12  | Clues to a crucial resource or uncharted domain |\n| 13-14  | Envoy from another time or reality |\n| 15-22  | Extraordinary natural phenomenon |\n| 23-24  | First contact with intelligent life |\n| 25-26  | Gateway to another time or alternate reality |\n| 27-28  | Key to unlocking a language or method of communication |\n| 29-34  | Lost or hidden people |\n| 35-42  | Majestic or unusual lifeforms |\n| 43-46  | Marvel of ancient engineering |\n| 47-50  | Miraculously preserved artifact or specimen |\n| 51-56  | Monumental architecture or artistry of an ancient civilization |\n| 57-62  | Mysterious device or artifact of potential value |\n| 63-66  | New understanding of an enduring mystery |\n| 67-68  | Pathway or means of travel to a distant location |\n| 69-70  | Person or lifeform with phenomenal abilities |\n| 71-78  | Place of awe-inspiring beauty |\n| 79-86  | Rare and valuable resource |\n| 87-88  | Safeguarded or idyllic location |\n| 89-90  | Visions or prophesies of the future |\n| 91-100 | Roll Twice |"
+    },
+    {
+      "Name": "Confront Chaos",
+      "Category": "Exploration Moves",
+      "Triggers": [
+        {
+          "Text": "When your exploration of a waypoint uncovers something dreadful"
+        }
+      ],
+      "Oracle": true,
+      "Text": "**When your exploration of a waypoint uncovers something dreadful**, decide the number of aspects: one, two, or three. Roll that number of times or choose that number of aspects on the table below. Then, envision how the encounter begins.\n\nFor each result, when you first confront that aspect within the scope of the encounter, you and your allies may mark one tick on your discoveries legacy track.\n\n| Roll   | Result |\n|--------|--------|\n| 1-4    | Baneful weapon of mass destruction |\n| 5-9    | Cataclysmic environmental effects |\n| 10-12  | Dead given unnatural life |\n| 13-17  | Destructive lifeform of monstrous proportion |\n| 18-20  | Dread hallucinations or illusions |\n| 21-24  | Harbingers of an imminent invasion |\n| 25-27  | Horde of insatiable hunger or fury |\n| 28-32  | Horrific lifeforms of inscrutable purpose    |\n| 33-36  | Impostors in human form |\n| 37-41  | Machines made enemy |\n| 42-45  | Malignant contagion or parasite |\n| 46-50  | Messenger or signal with a dire warning |\n| 51-53  | Passage to a grim alternate reality |\n| 54-58  | People corrupted by chaos |\n| 59-63  | Powerful distortions of time or space |\n| 64-68  | Signs of an impending catastrophe |\n| 69-72  | Site of a baffling disappearance |\n| 73-77  | Site of a horrible disaster |\n| 78-82  | Site of terrible carnage |\n| 83-87  | Technology nullified or made unstable |\n| 88-92  | Technology warped for dark purpose |\n| 93-96  | Vault of dread technology or power |\n| 97-100 | Worshipers of great and malevolent powers |"
+    },
+    {
       "Name": "Finish an Expedition",
       "Category": "Exploration Moves",
       "Triggers": [
@@ -302,28 +324,6 @@
         }
       ],
       "Text": "**When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.\n\nOn a **strong hit**, you reach your destination and the situation there favors you. Take +1 momentum.\n\nOn a **weak hit**, you arrive, but face a cost or complication. Choose one.\n\n  * Suffer costs en route: Make a suffer move (-2), or two suffer moves (-1).\n  * Face a complication at the destination: Envision what you encounter.\n\nOn a **miss**, you are waylaid by a significant threat, and must [Pay the Price](#Pay-the-Price). If you overcome this obstacle, you may push on safely to your destination."
-    },
-    {
-      "Name": "Make a Discovery",
-      "Category": "Exploration Moves",
-      "Triggers": [
-        {
-          "Text": "When your exploration of a waypoint uncovers something wondrous"
-        }
-      ],
-      "Oracle": true,
-      "Text": "**When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.\n\n| Roll   | Result |\n|--------|--------|\n| 1-4    | Advanced technology waiting to be harnessed or salvaged |\n| 5-8    | Ancient archive or message |\n| 9-10   | Artificial consciousness evolved to a higher state |\n| 11-12  | Clues to a crucial resource or uncharted domain |\n| 13-14  | Envoy from another time or reality |\n| 15-22  | Extraordinary natural phenomenon |\n| 23-24  | First contact with intelligent life |\n| 25-26  | Gateway to another time or alternate reality |\n| 27-28  | Key to unlocking a language or method of communication |\n| 29-34  | Lost or hidden people |\n| 35-42  | Majestic or unusual lifeforms |\n| 43-46  | Marvel of ancient engineering |\n| 47-50  | Miraculously preserved artifact or specimen |\n| 51-56  | Monumental architecture or artistry of an ancient civilization |\n| 57-62  | Mysterious device or artifact of potential value |\n| 63-66  | New understanding of an enduring mystery |\n| 67-68  | Pathway or means of travel to a distant location |\n| 69-70  | Person or lifeform with phenomenal abilities |\n| 71-78  | Place of awe-inspiring beauty |\n| 79-86  | Rare and valuable resource |\n| 87-88  | Safeguarded or idyllic location |\n| 89-90  | Visions or prophesies of the future |\n| 91-100 | Roll Twice |"
-    },
-    {
-      "Name": "Confront Chaos",
-      "Category": "Exploration Moves",
-      "Triggers": [
-        {
-          "Text": "When your exploration of a waypoint uncovers something dreadful"
-        }
-      ],
-      "Oracle": true,
-      "Text": "**When your exploration of a waypoint uncovers something dreadful**, decide the number of aspects: one, two, or three. Roll that number of times or choose that number of aspects on the table below. Then, envision how the encounter begins.\n\nFor each result, when you first confront that aspect within the scope of the encounter, you and your allies may mark one tick on your discoveries legacy track.\n\n| Roll   | Result |\n|--------|--------|\n| 1-4    | Baneful weapon of mass destruction |\n| 5-9    | Cataclysmic environmental effects |\n| 10-12  | Dead given unnatural life |\n| 13-17  | Destructive lifeform of monstrous proportion |\n| 18-20  | Dread hallucinations or illusions |\n| 21-24  | Harbingers of an imminent invasion |\n| 25-27  | Horde of insatiable hunger or fury |\n| 28-32  | Horrific lifeforms of inscrutable purpose    |\n| 33-36  | Impostors in human form |\n| 37-41  | Machines made enemy |\n| 42-45  | Malignant contagion or parasite |\n| 46-50  | Messenger or signal with a dire warning |\n| 51-53  | Passage to a grim alternate reality |\n| 54-58  | People corrupted by chaos |\n| 59-63  | Powerful distortions of time or space |\n| 64-68  | Signs of an impending catastrophe |\n| 69-72  | Site of a baffling disappearance |\n| 73-77  | Site of a horrible disaster |\n| 78-82  | Site of terrible carnage |\n| 83-87  | Technology nullified or made unstable |\n| 88-92  | Technology warped for dark purpose |\n| 93-96  | Vault of dread technology or power |\n| 97-100 | Worshipers of great and malevolent powers |"
     },
     {
       "Name": "Enter the Fray",
@@ -362,32 +362,32 @@
       "Category": "Combat Moves",
       "Triggers": [
         {
-          "Details": "When you are in control and take action in a fight to reinforce your position or move towards an objective (in pursuit, fleeing, or maneuvering)",
+          "Details": "When you are in control and take action in a fight to reinforce your position or move toward an objective (in pursuit, fleeing, or maneuvering)",
           "Text": "In pursuit, fleeing, or maneuvering",
           "Stat Options": { "Stats": ["Edge"] }
         },
         {
-          "Details": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by charging boldly into action, coming to the aid of others, negotiating, or commanding)",
+          "Details": "When you are in control and take action in a fight to reinforce your position or move toward an objective (by charging boldly into action, coming to the aid of others, negotiating, or commanding)",
           "Text": "By charging boldly into action, coming to the aid of others, negotiating, or commanding",
           "Stat Options": { "Stats": ["Heart"] }
         },
         {
-          "Details": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by gaining leverage with force, powering through, or making a threat)",
+          "Details": "When you are in control and take action in a fight to reinforce your position or move toward an objective (by gaining leverage with force, powering through, or making a threat)",
           "Text": "Gaining leverage with force, powering through, or making a threat",
           "Stat Options": { "Stats": ["Iron"] }
         },
         {
-          "Details": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by hiding, preparing an ambush, or misdirecting)",
+          "Details": "When you are in control and take action in a fight to reinforce your position or move toward an objective (by hiding, preparing an ambush, or misdirecting)",
           "Text": "Hiding, preparing an ambush, or misdirecting",
           "Stat Options": { "Stats": ["Shadow"] }
         },
         {
-          "Details": "When you are in control and take action in a fight to reinforce your position or move towards an objective (by coordinating a plan, studying a situation, or cleverly gaining leverage)",
+          "Details": "When you are in control and take action in a fight to reinforce your position or move toward an objective (by coordinating a plan, studying a situation, or cleverly gaining leverage)",
           "Text": "Coordinating a plan, studying a situation, or cleverly gaining leverage",
           "Stat Options": { "Stats": ["Wits"] }
         }
       ],
-      "Text": "**When you are in control and take action in a fight to reinforce your position or move towards an objective**, envision your approach and roll. If you are...\n\n  * In pursuit, fleeing, or maneuvering: Roll +edge\n  * Charging boldly into action, coming to the aid of others, negotiating, or commanding: Roll +heart\n  * Gaining leverage with force, powering through, or making a threat: Roll +iron\n  * Hiding, preparing an ambush, or misdirecting: Roll +shadow\n  * Coordinating a plan, studying a situation, or cleverly gaining leverage: Roll +wits\n\nOn a **hit**, you stay in control. On a **strong hit**, choose two. On a **weak hit**, choose one.\n\n  * Mark progress\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)\n\nOn a **miss**, your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](#Pay-the-Price)."
+      "Text": "**When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...\n\n  * In pursuit, fleeing, or maneuvering: Roll +edge\n  * Charging boldly into action, coming to the aid of others, negotiating, or commanding: Roll +heart\n  * Gaining leverage with force, powering through, or making a threat: Roll +iron\n  * Hiding, preparing an ambush, or misdirecting: Roll +shadow\n  * Coordinating a plan, studying a situation, or cleverly gaining leverage: Roll +wits\n\nOn a **hit**, you stay in control. On a **strong hit**, choose two. On a **weak hit**, choose one.\n\n  * Mark progress\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)\n\nOn a **miss**, your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](#Pay-the-Price)."
     },
     {
       "Name": "React Under Fire",
@@ -576,7 +576,7 @@
           "Stat Options": { "Stats": ["Heart"] }
         }
       ],
-      "Text": "**When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.\n\nOn a **strong hit**, you are cast back into the mortal world.\n\nOn a **weak hit**, choose one.\n\n  * You die, but not before making a noble sacrifice. Envision your final moments.\n  * There is more to be done. Envision what is revealed to you or asked of you at death's door, and [Swear an Iron Vow](#Swear-an-Iron-Vow) to complete an extreme quest. You return to the mortal world and must mark **doomed**. When you complete the deathbound quest, clear the impact.\n\nOn a **miss**, you are dead."
+      "Text": "**When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.\n\nOn a **strong hit**, you are cast back into the mortal world.\n\nOn a **weak hit**, choose one.\n\n  * You die, but not before making a noble sacrifice. Envision your final moments.\n  * There is more to be done. Envision what is revealed or asked of you at death's door, and [Swear an Iron Vow](#Swear-an-Iron-Vow) to complete an extreme quest. You return to the mortal world and must mark **doomed**. When you complete the deathbound quest, clear the impact.\n\nOn a **miss**, you are dead."
     },
     {
       "Name": "Face Desolation",
@@ -710,7 +710,7 @@
           "Text": "When you develop your abilities, improve your resources, gain a reward, or boost your influence"
         }
       ],
-      "Text": "**When you develop your abilities, improve your resources, gain a reward, or boost your influence,** you may may spend 3 experience to add a new asset, or 2 experience to upgrade an asset. Choose from the following categories as appropriate to your focus and opportunities.\n\n  * Module: Upgrade your command vehicle\n  * Support Vehicle: Aquire or improve a secondary vehicle\n  * Path: Bolster your personal capabilities or follow a new calling\n  * Companion: Gain or improve a trusted helper\n  * Deed: Learn from your experiences or build a legacy"
+      "Text": "**When you develop your abilities, improve your resources, gain a reward, or boost your influence,** you may may spend 3 experience to add a new asset, or 2 experience to upgrade an asset. Choose from the following categories as appropriate to your focus and opportunities.\n\n  * Module: Upgrade your command vehicle\n  * Support Vehicle: Acquire or improve a secondary vehicle\n  * Path: Bolster your personal capabilities or follow a new calling\n  * Companion: Gain or improve a trusted helper\n  * Deed: Learn from your experiences or build a legacy"
     },
     {
       "Name": "Continue a Legacy",
@@ -728,13 +728,6 @@
       "Text": "**When you retire from your life as Ironsworn, or succumb to death or desolation**, you may create a new character in your established setting. If you do, roll the challenge dice and compare to each of the former character's legacy tracks: Quests, bonds, and discoveries (one roll per track).\n\nFor each **strong hit**, choose one from below, or one from the weak hit or miss options.\n\n  * Follow their path: Take one path or companion asset from the former character (at no cost), including any marked abilities.\n  * Share a connection: Take one connection from the former character, including any accrued progress or bond benefits.\n  * Accept an inheritance: Take the former character's command vehicle and one module or support vehicle (at no cost), including any marked abilities.\n\nFor each **weak hit**, choose one from below, or one from the miss options.\n\n  * See it through: Choose one of the former character's unfinished quests, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (with an automatic strong hit) to see it done. You may immediately mark up to half their earned progress (round down) on this quest.\n  * Rebuild a connection: Name one of the former character's connections, and envision how time or circumstances have changed them in a dramatic way. When you [Make a Connection](#Make-a-Connection) with them, take an automatic strong hit and mark two ticks on your bonds legacy track.\n  * Explore familiar ground: Name a location which was meaningful to the former character. When you first visit that place, envision how it has changed or is endangered. Then, mark two ticks on your discoveries legacy track.\n\nFor each **miss**, choose one.\n\n  * Deal with the aftermath: Envision how one of your former character's foes has gained power or influence.\n  * Switch loyalties: Envision how you begin in opposition to your former character's beliefs, goals, or allegiances.\n  * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences."
     },
     {
-      "Name": "Pay the Price",
-      "Category": "Fate Moves",
-      "Triggers": [{ "Text": "When you suffer the outcome of an action" }],
-      "Oracle": true,
-      "Text": "**When you suffer the outcome of an action**, choose one.\n\n  * Make the most obvious negative outcome happen.\n  * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the current situation.\n  * Roll on the table below. If you have difficulty interpreting the result to fit the current situation, roll again.\n\n| Roll   | Result |\n|--------|--------|\n| 1-2    | A trusted individual or community acts against you |\n| 3-4    | An individual or community you care about is exposed to danger |\n| 5-7    | You encounter signs of a looming threat |\n| 8-10   | You create an opportunity for an enemy |\n| 11-14  | You face a tough choice |\n| 15-18  | You face the consequences of an earlier choice |\n| 19-22  | A surprising development complicates your quest |\n| 23-26  | You are separated from something or someone |\n| 27-32  | Your action causes collateral damage or has an unintended effect     |\n| 33-38  | Something of value is lost or destroyed |\n| 39-44  | The environment or terrain introduces a new hazard |\n| 45-50  | A new enemy is revealed |\n| 51-56  | A friend, companion, or ally is in harm's way (or you are, if alone) |\n| 57-62  | Your equipment or vehicle malfunctions |\n| 63-68  | Your vehicle suffers damage |\n| 69-74  | You waste resources |\n| 75-81  | You are harmed |\n| 82-88  | You are stressed |\n| 89-95  | You are delayed or put at a disadvantage |\n| 96-100 | Roll twice |"
-    },
-    {
       "Name": "Ask the Oracle",
       "Category": "Fate Moves",
       "Triggers": [
@@ -743,7 +736,14 @@
         }
       ],
       "Oracle": true,
-      "Text": "**When you seek to resolve questions, discover details, reveal locations, determine how other characters respond, or trigger encounters or events**, you may...\n\n  * Draw a conclusion: Decide the answer based on the most interesting and obvious result.\n  * Spark an idea: Use an oracle table or other random prompt.\n  * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.\n  * Pick two: Envision two options. Rate one as 'likely', and roll on the table below to see if it is true. If not, it is the other.\n\n| Odds | The answer is 'yes' if you roll... |\n|------|------------------------------------|\n| Almost Certain | 11 or greater |\n| Likely | 26 or greater |\n| 50/50 | 51 or greater |\n| Unlikely | 76 or greater |\n| Small Chance  | 91 or greater |"
+      "Text": "**When you seek to resolve questions, discover details, reveal locations, determine how other characters respond, or trigger encounters or events**, you may...\n  * Draw a conclusion: Decide the answer based on the most interesting and obvious result.\n  * Spark an idea: Use an oracle table or other random prompt.\n  * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.\n  * Pick two: Envision two options. Rate one as *likely*, and roll on the table below to see if it is true. If not, it is the other.\n\n| Odds | The answer is 'yes' if you roll... |\n|------|------------------------------------|\n| Almost Certain | 11 or greater |\n| Likely | 26 or greater |\n| 50/50 | 51 or greater |\n| Unlikely | 76 or greater |\n| Small Chance  | 91 or greater |\n\nOn a match, an extreme result or twist has occurred."
+    },
+    {
+      "Name": "Pay the Price",
+      "Category": "Fate Moves",
+      "Triggers": [{ "Text": "When you suffer the outcome of an action" }],
+      "Oracle": true,
+      "Text": "**When you suffer the outcome of an action**, choose one.\n\n  * Make the most obvious negative outcome happen.\n  * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the current situation.\n  * Roll on the table below. If you have difficulty interpreting the result to fit the current situation, roll again.\n\n| Roll   | Result |\n|--------|--------|\n| 1-2    | A trusted individual or community acts against you |\n| 3-4    | An individual or community you care about is exposed to danger |\n| 5-7    | You encounter signs of a looming threat |\n| 8-10   | You create an opportunity for an enemy |\n| 11-14  | You face a tough choice |\n| 15-18  | You face the consequences of an earlier choice |\n| 19-22  | A surprising development complicates your quest |\n| 23-26  | You are separated from something or someone |\n| 27-32  | Your action causes collateral damage or has an unintended effect     |\n| 33-38  | Something of value is lost or destroyed |\n| 39-44  | The environment or terrain introduces a new hazard |\n| 45-50  | A new enemy is revealed |\n| 51-56  | A friend, companion, or ally is in harm's way (or you are, if alone) |\n| 57-62  | Your equipment or vehicle malfunctions |\n| 63-68  | Your vehicle suffers damage |\n| 69-74  | You waste resources |\n| 75-81  | You are harmed |\n| 82-88  | You are stressed |\n| 89-95  | You are delayed or put at a disadvantage |\n| 96-100 | Roll twice |"
     }
   ]
 }
