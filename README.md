@@ -20,6 +20,7 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
 
   * **Rulebook Backer Preview - 101221**
     * oracles (except move oracles)
+    * setting truths
     * encounters/NPCs
   * **Moves Backer Preview (Discord) - 092921**
     * moves
