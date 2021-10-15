@@ -2,19 +2,26 @@
   "Name": "Character",
   "Display name": "Characters",
   "Aliases": ["NPC"],
-  "Content type": "oracles",
+  "Content tags": ["oracles"],
   "Source": { "Name": "Starforged Backer Preview", "Date": "101221" },
   "Oracles": [
     {
       "Name": "Given Name",
-      "Subgroup": "Name",
       "Display name": "Character Name - Given Name",
       "Description": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
       "Use with": [
-        { "Category": "Character", "Name": "Callsign" },
-        { "Category": "Character", "Name": "Family Name" }
+        {
+          "Category": "Character",
+          "Name": "Callsign",
+          "Group": "Character Name"
+        },
+        {
+          "Category": "Character",
+          "Name": "Family Name",
+          "Group": "Character Name"
+        }
       ],
-      "Semantics": { "Part of speech": ["proper noun"] },
+      "Part of speech": ["proper noun"],
       "Initial": true,
       "Table": [
         [1, 1, "Akim"],
@@ -121,14 +128,21 @@
     },
     {
       "Name": "Callsign",
-      "Subgroup": "Name",
       "Display name": "Character Name - Callsign",
       "Description": "Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.",
       "Use with": [
-        { "Category": "Character", "Name": "Given Name" },
-        { "Category": "Character", "Name": "Family Name" }
+        {
+          "Category": "Character",
+          "Name": "Given Name",
+          "Group": "Character Name"
+        },
+        {
+          "Category": "Character",
+          "Name": "Family Name",
+          "Group": "Character Name"
+        }
       ],
-      "Semantics": { "Part of speech": ["proper noun"] },
+      "Part of speech": ["proper noun"],
       "Table": [
         [1, 1, "Albatross"],
         [2, 2, "Angler"],
@@ -234,13 +248,20 @@
     },
     {
       "Name": "Family Name",
-      "Subgroup": "Name",
       "Display name": "Character Name - Family Name",
       "Description": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
-      "Semantics": { "Part of speech": ["proper noun"] },
+      "Part of speech": ["proper noun"],
       "Use with": [
-        { "Category": "Character", "Name": "Given Name" },
-        { "Category": "Character", "Name": "Callsign" }
+        {
+          "Category": "Character",
+          "Name": "Given Name",
+          "Group": "Character Name"
+        },
+        {
+          "Category": "Character",
+          "Name": "Callsign",
+          "Group": "Character Name"
+        }
       ],
       "Initial": true,
       "Table": [
@@ -348,7 +369,7 @@
     },
     {
       "Name": "First Look",
-      "Semantics": { "Part of speech": ["adjective"] },
+      "Part of speech": ["adjective"],
       "Initial": true,
       "Min rolls": 2,
       "Max rolls": 2,
@@ -396,7 +417,7 @@
     },
     {
       "Name": "Disposition",
-      "Semantics": { "Part of speech": ["adjective"] },
+      "Part of speech": ["adjective"],
       "Initial": true,
       "Table": [
         [1, 6, "Helpful"],
@@ -416,7 +437,8 @@
     {
       "Name": "Role",
       "Display name": "Character Role",
-      "Semantics": { "Part of speech": ["common noun"], "Content": ["people"] },
+      "Part of speech": ["noun", "common noun"],
+      "Content tags": ["people"],
       "Initial": true,
       "Table": [
         [1, 2, "Agent"],
@@ -491,7 +513,7 @@
     {
       "Name": "Goal",
       "Display name": "Character Goal",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
       "Table": [
         [
           1,
@@ -848,7 +870,7 @@
     {
       "Name": "Revealed Aspect",
       "Display name": "Revealed Character Aspect",
-      "Semantics": { "Part of speech": ["adjective"] },
+      "Part of speech": ["adjective"],
       "Max rolls": 3,
       "Table": [
         [1, 1, "Addicted"],

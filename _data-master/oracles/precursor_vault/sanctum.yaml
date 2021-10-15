@@ -1,7 +1,7 @@
 Vault Sanctum:
   Name: Vault Sanctum
   Display name: Precursor Vault - Sanctum
-  Content type: oracles
+  Content tags: [oracles]
   Subcategory of: Precursor Vault
   Requires:
     Zone: [Vault Sanctum]
@@ -11,8 +11,7 @@ Vault Sanctum:
   Oracles:
     - Name: Purpose
       Display name: Vault Purpose
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 3, Capture or control of other beings]
         - [4, 6, Command or communication relay]
@@ -47,8 +46,7 @@ Vault Sanctum:
     - Name: Feature
       Display name: Sanctum Feature
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 2, Abyssal pit or chasm]
         - [3, 5, Altered gravity]
@@ -87,11 +85,10 @@ Vault Sanctum:
         - [96, 100, *Roll_twice]
 
     - Name: Peril
-      Oracle type: peril
+      Content tags: [peril, event, present]
       Display name: Sanctum Peril
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 5, Camouflaged or transforming foe reveals itself]
         - [6, 10, Confounding distortions of the timestream]
@@ -116,11 +113,10 @@ Vault Sanctum:
         - [100, 100, *Roll_twice]
 
     - Name: Opportunity
-      Oracle type: opportunity
+      Content tags: [opportunity]
       Display name: Sanctum Opportunity
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 10, Access to a secret or protected area]
         - [11, 20, Clue points the way to your destination or target]

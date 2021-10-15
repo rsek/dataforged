@@ -1,7 +1,7 @@
 {
   "Name": "Creature",
   "Display name": "Creatures",
-  "Content type": "oracles",
+  "Content tags": ["oracles"],
   "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
   "Oracles": [
     {
@@ -18,9 +18,9 @@
     },
     {
       "Name": "Scale",
-      "Subgroup": "Scale",
+      "Group": "Scale",
       "Initial": true,
-      "Semantics": { "Part of speech": ["adjective"] },
+      "Part of speech": ["adjective"],
       "Table": [
         [1, 3, "Minuscule", "bug-sized"],
         [4, 10, "Tiny", "rodent-sized"],
@@ -40,9 +40,9 @@
     },
     {
       "Name": "Ultra-scale",
-      "Subgroup": "Scale",
+      "Group": "Scale",
       "Initial": true,
-      "Semantics": { "Part of speech": ["adjective"] },
+      "Part of speech": ["adjective"],
       "Requires": { "Scale": ["Ultra-scale"] },
       "Table": [
         [1, 89, "Titanic", "hill-sized"],
@@ -53,7 +53,7 @@
     {
       "Name": "Basic Form",
       "Initial": true,
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
       "Select table by": "Environment",
       "Description": "Roll for a basic form, and flesh out the creature’s appearance using the First Look table.",
       "Tables": [
@@ -224,10 +224,8 @@
       "Display name": "Creature First Look",
       "Initial": true,
       "Description": "Roll for a basic form, and flesh out the creature’s appearance using the First Look table.",
-      "Semantics": {
-        "Part of speech": ["fragment"],
-        "Content": ["description"]
-      },
+      "Part of speech": ["fragment"],
+      "Content tags": ["description"],
       "Min rolls": 2,
       "Max rolls": 2,
       "Table": [
@@ -286,7 +284,7 @@
     {
       "Name": "Encountered Behavior",
       "Description": "Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.",
-      "Semantics": { "Part of speech": ["common noun"] },
+      "Part of speech": ["noun", "common noun"],
       "Initial": true,
       "Table": [
         [1, 5, "Ambusher"],
@@ -323,7 +321,7 @@
       "Name": "Revealed Aspect",
       "Display name": "Revealed Creature Aspect",
       "Description": "Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature which you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or simply envision how this contradiction signals a new understanding or unexpected transformation.",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
       "Max rolls": 2,
       "Table": [
         [1, 2, "Alternative environment"],

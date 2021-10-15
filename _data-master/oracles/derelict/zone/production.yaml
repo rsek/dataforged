@@ -11,8 +11,7 @@ Production:
   Oracles:
     - Name: Area
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 8, Airlock or staging area]
         - [9, 16, Assembly or processing]
@@ -29,8 +28,7 @@ Production:
 
     - Name: Feature
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 8, Cargo lifts]
         - [9, 16, Control panels]
@@ -46,10 +44,9 @@ Production:
         - [89, 100, *Descriptor+Focus]
 
     - Name: Peril
-      Oracle type: peril
+      Content tags: [peril, event, present]
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 10, Claustrophobic spaces]
         - [11, 20, Dangerous machinery]
@@ -64,10 +61,9 @@ Production:
         - [99, 100, *Roll_twice]
 
     - Name: Opportunity
-      Oracle type: opportunity
+      Content tags: [opportunity]
       Repeatable: true
-      Semantics:
-        Part of speech: [fragment]
+      Part of speech: [fragment]
       Table:
         - [1, 20, Helpful vehicle or transport]
         - [21, 40, Rare or valuable resource]

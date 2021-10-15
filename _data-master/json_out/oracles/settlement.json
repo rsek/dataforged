@@ -1,7 +1,7 @@
 {
   "Name": "Settlement",
   "Display name": "Settlements",
-  "Content type": "oracles",
+  "Content tags": ["oracles"],
   "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
   "Oracles": [
     {
@@ -59,7 +59,8 @@
     {
       "Name": "First Look",
       "Initial": true,
-      "Semantics": { "Part of speech": ["fragment"], "Content": "description" },
+      "Part of speech": ["fragment"],
+      "Content tags": ["description"],
       "Max rolls": 2,
       "Table": [
         [1, 3, "Beautiful architecture"],
@@ -108,7 +109,8 @@
     {
       "Name": "Initial Contact",
       "Initial": true,
-      "Semantics": { "Part of speech": ["fragment"], "Content": "description" },
+      "Part of speech": ["fragment"],
+      "Content tags": ["description"],
       "Table": [
         [1, 20, "Welcoming"],
         [21, 30, "Neutral / automated"],
@@ -138,7 +140,7 @@
     {
       "Name": "Authority",
       "Initial": true,
-      "Semantics": { "Part of speech": ["adjective"] },
+      "Part of speech": ["adjective"],
       "Table": [
         [1, 15, "None / lawless"],
         [16, 30, "Ineffectual"],
@@ -152,10 +154,8 @@
     {
       "Name": "Projects",
       "Display name": "Settlement Projects",
-      "Semantics": {
-        "Part of speech": ["common noun"],
-        "Content": "abstract noun"
-      },
+      "Part of speech": ["noun", "common noun"],
+      "Content tags": ["abstract noun"],
       "Max rolls": 2,
       "Description": "Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.",
       "Table": [
@@ -209,9 +209,9 @@
     {
       "Name": "Trouble",
       "Display name": "Settlement Trouble",
-      "Oracle type": "peril",
+      "Content tags": ["peril", "event", "present"],
       "Description": "Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
       "Table": [
         [1, 3, "Betrayal from within"],
         [
@@ -490,7 +490,8 @@
       "Display name": "Settlement Name",
       "Description": "Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.",
       "Initial": true,
-      "Semantics": { "Part of speech": ["proper noun"] },
+      "Part of speech": ["proper noun"],
+      "Content tags": ["name"],
       "Table": [
         [1, 1, "Aegis"],
         [2, 2, "Altair"],

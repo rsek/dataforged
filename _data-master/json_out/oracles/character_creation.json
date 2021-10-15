@@ -1,13 +1,14 @@
 {
   "Name": "Character Creation",
   "Aliases": ["Creation"],
-  "Content type": "oracles",
+  "Content tags": ["oracles"],
   "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
   "Oracles": [
     {
       "Name": "Background Assets",
       "Description": "If you want some direction for your starting paths, roll or pick from the table below. Roles marked with an asterisk (*) are not intended for solo play.",
-      "Semantics": { "Part of speech": ["common noun"] },
+      "Content tags": ["actor"],
+      "Part of speech": ["noun", "common noun"],
       "Table": [
         [1, 5, "Adept", { "Assets": ["Kinetic", "Vestige"] }],
         [6, 10, "Battlefield Medic", { "Assets": ["Healer", "Veteran"] }],
@@ -34,7 +35,8 @@
     {
       "Name": "Backstory Prompts",
       "Description": "For some backstory inspiration, roll or pick from the table below. Then, take a moment to elaborate on the suggestion. Or just leave it a bit vague and mysterious for now; you can flesh it out in play.",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
+      "Content tags": ["event", "past"],
       "Table": [
         [1, 7, "You abandoned your kin after learning a troubling truth"],
         [8, 14, "You are guided by a vision or prophesy"],
@@ -55,7 +57,8 @@
     {
       "Name": "Starship History",
       "Description": "Envision how you obtained or earned this ship. You can come up with your own origin, or roll or pick from the table below. If you use a result from the table, take a moment to consider and elaborate on the suggestion.",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
+      "Content tags": ["event", "past"],
       "Table": [
         [1, 8, "Acquired in trade for a precious family heirloom"],
         [9, 17, "Built out of re-purposed scrap"],
@@ -74,7 +77,8 @@
     {
       "Name": "Starship Quirks",
       "Description": "Your ship is an important aspect of your character—and a character in its own right. What does it look like? What makes it interesting or uniquely yours? Does it have any particular quirks? If nothing occurs to you now, you can flesh it out in play, or roll once or twice on the table below.",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
+      "Content tags": ["description"],
       "Max rolls": 2,
       "Table": [
         [1, 5, "Engine room is scorched with old burn marks"],
@@ -125,8 +129,8 @@
     },
     {
       "Name": "Sector Trouble",
-      "Oracle type": "peril",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Content tags": ["peril", "event", "present"],
+      "Part of speech": ["fragment"],
       "Table": [
         [1, 5, "Blockade prevents trade with other sectors"],
         [
@@ -197,7 +201,8 @@
     },
     {
       "Name": "Inciting Incident",
-      "Semantics": { "Part of speech": ["fragment"] },
+      "Part of speech": ["fragment"],
+      "Content tags": ["objective"],
       "Table": [
         [
           1,
