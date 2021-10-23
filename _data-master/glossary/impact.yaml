@@ -1,37 +1,121 @@
-Impact glossary:
-  _meta:
-    Name: Impact glossary
-    Category: Glossary
-    Source:
-      Name: Starforged Playtest
-      Date: "022821"
-  Terms:
-    - Name: Wounded
-      Description: |-
-        Wounded may be marked when you are at 0 health and fail to Endure Harm. You are severely injured.
+Name: Impact
+Category: Glossary
+Source:
+  Name: Starforged Playtest
+  Date: "101221"
+Terms:
+  - Name: Wounded
+    Category: Misfortune
+    Applied by:
+      Moves: [Endure Harm]
+    Removed by:
+      Moves: [Heal]
+    Effects:
+      Forbid Increase: [Health]
+    Applies to: [PC]
+    Description: |-
+      Wounded may be marked when you are at 0 health and fail to [Endure Harm](#Endure-Harm). You are severely injured.
 
-        If you are wounded, you cannot increase health.
-    - Name: Shaken
-      Description: |-
-        Shaken may be marked when you are at 0 spirit and fail to Endure Stress.
+      If you are wounded, you cannot increase health.
 
-        You are despairing or distraught.
-    - Name: Unprepared
-      Description: |-
-        Unprepared is marked when you Sacrifice Resources and are reduced to 0 supply. You are not properly equipped for the dangers of the Forge. Because you and your allies share the same supply value, you mark unprepared together.
+  - Name: Shaken
+    Category: Misfortune
+    Applied by:
+      Moves: [Endure Stress]
+    Removed by:
+      Moves: [Hearten]
+    Effects:
+      Forbid Increase: [Spirit]
+    Applies to: [PC]
+    Description: |-
+      Shaken may be marked when you are at 0 spirit and fail to [Endure Stress](#Endure-Stress). You are despairing or distraught.
 
-        If you are unprepared, you cannot increase supply.
-    - Name: Doomed
-      Description: Doomed is marked when you Face Death and return from death's door with a soul-bound quest.
-    - Name: Tormented
-      Description: Tormented is marked when you Face Desolation, gain visions of a distressing future, and undertake a quest to prevent that dire fate.
-    - Name: Indebted
-      Description: Indebted is marked when Overcome Destruction. To replace what ws lost and repay the debt, you will take on a dutybound quest.
-    - Name: Permanently
-      Description: Permanently harmed may be marked when you are at 0 health and fail to Endure Harm. You have suffered a wound which you must reckon with, such as the loss of an eye or hand. Or, you bear physical scars which are a constant reminder of a harrowing incident.
-    - Name: Traumatized
-      Description: Traumatized may be marked when you are at 0 spirit and fail to Endure Stress. Your experiences have left you emotionally or mentally scarred.
-    - Name: Battered
-      Description: Battered may be marked when your vehicle is at 0 integrity, and you fail to Withstand Damage. The vehicle is barely holding together.
-    - Name: Cursed
-      Description: Cursed may be marked when your command vehicle (STARSHIP asset) is at 0 integrity and you fail to Withstand Damage. This is a permanent impact. Your ship will never be quite right again.
+      If you are shaken, you cannot increase spirit.
+  - Name: Unprepared
+    Category: Misfortune
+    Applied by:
+      Moves: [Sacrifice Resources]
+    Removed by:
+      Moves: [Resupply]
+    Effects:
+      Forbid Increase: [Supply]
+    Applies to: [PC]
+    Description: |-
+      Unprepared is marked when you [Sacrifice Resources](#Sacrifice-Resources) and are reduced to 0 supply. You are not properly equipped for the dangers of the Forge. Because you and your allies share the same supply value, you mark unprepared together.
+
+      If you are unprepared, you cannot increase supply.
+  - Name: Doomed
+    Category: Burden
+    Applied by:
+      Moves: [Face Death]
+    Removed by:
+      Quest:
+        Rank: [Extreme]
+    Applies to: [PC]
+    Description: |-
+      Doomed is marked when you [Face Death](#Face-Death) and return from death's door with a soul-bound quest.
+  - Name: Tormented
+    Category: Burden
+    Applied by:
+      Moves: [Face Desolation]
+    Removed by:
+      Quest:
+        Rank: [Extreme]
+    Applies to: [PC]
+    Description: |-
+      Tormented is marked when you [Face Desolation](#Face-Desolation), gain visions of a distressing future, and undertake a quest to prevent that dire fate.
+  - Name: Indebted
+    Category: Burden
+    Applied by:
+      Moves: [Overcome Destruction]
+    Removed by:
+      Quest:
+        Rank: [Extreme]
+    Applies to: [PC]
+    Description: |-
+      Indebted is marked when you [Overcome Destruction](#Overcome-Destruction). To replace what was lost and repay the debt, you will take on a duty-bound quest.
+  - Name: Permanently Harmed
+    Category: Lasting Effect
+    Applied by:
+      Moves: [Endure Harm]
+    Applies to: [PC]
+    Description: |-
+      Permanently harmed may be marked when you are at 0 health and fail to [Endure Harm](#Endure-Harm). You have suffered a wound which you must reckon with, such as the loss of an eye or hand. Or you bear physical scars which are a constant reminder of a harrowing incident.
+
+      Lasting effects are permanent. They forever impact your character through the momentum adjustment and—more importantly—through the narrative impact of being permanently harmed or traumatized. You should factor this impact into how you perform moves and how you interact with the world.
+
+      Envision the nature of the lasting effect. You may have physical, emotional, or mental factors you must take into account. Your outlook may change. Your goals and methods may change. How others behave toward you may change.
+  - Name: Traumatized
+    Category: Lasting Effect
+    Applied by:
+      Moves: [Endure Stress]
+    Applies to: [PC]
+    Description: |-
+      Traumatized may be marked when you are at 0 spirit and fail to [Endure Stress](#Endure-Stress). Your experiences have left you emotionally or mentally scarred.
+
+      Lasting effects are permanent. They forever impact your character through the momentum adjustment and—more importantly—through the narrative impact of being permanently harmed or traumatized. You should factor this impact into how you perform moves and how you interact with the world.
+
+      Envision the nature of the lasting effect. You may have physical, emotional, or mental factors you must take into account. Your outlook may change. Your goals and methods may change. How others behave toward you may change.
+
+  - Name: Battered
+    Category:
+    Applied by:
+      Moves: [Withstand Damage]
+    Removed by:
+      Moves: [Repair]
+    Effect:
+      Forbid Increase: [Integrity]
+    Applies to: [Command Vehicle, Incidental Vehicle, Support Vehicle]
+    Description: |-
+      Battered may be marked when your vehicle is at 0 integrity, and you fail to [Withstand Damage](#Withstand-Damage). The vehicle is barely holding together.
+
+      Battered can be overcome when you successfully Repair that vehicle and clear the trouble. Until you do so, you cannot raise the vehicle's integrity
+  - Name: Cursed
+    Category:
+    Applied by:
+      Moves: [Withstand Damage]
+    Applies to: [Command Vehicle]
+    Description: |-
+      Cursed may be marked when your command vehicle (STARSHIP asset) is at 0 integrity and you fail to [Withstand Damage](#Withstand-Damage). This is a permanent impact. Your ship will never be quite right again.
+
+      Cursed is a permanent impact and will forever plague your STARSHIP.
