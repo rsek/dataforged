@@ -444,7 +444,12 @@
     {
       "Name": "Devotant",
       "Category": "Path",
-      "Input": ["Name", "Linked Stat"],
+      "Input": ["Name"],
+      "Select": {
+        "Name": "Linked Stat",
+        "Type": "Stat",
+        "Options": ["Edge", "Heart", "Iron", "Shadow", "Wits"]
+      },
       "Abilities": [
         {
           "Text": "<p>You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you <u>Secure an Advantage</u> or <u>Gain Ground</u> by calling on it for guidance or blessings, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.</p>",
