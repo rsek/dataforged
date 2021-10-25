@@ -742,6 +742,11 @@
       "Abilities": [
         {
           "Text": "<p>You are hunted by a power or authority. When you make a move, you may rely on your resourcefulness to improve the result to a strong hit. If you do, mark a box above to represent hunters closing in on you. On the third mark, a notable foe or force has tracked you down. If you overcome them or escape, clear the boxes and mark 1 tick on your quests legacy track.</p>",
+          "Counter": {
+            "Name": "Hunted",
+            "Max": 3,
+            "id": "asset-fugitive-counter-hunted"
+          },
           "Enabled": true,
           "id": "asset-fugitive-ability-1"
         },
@@ -754,7 +759,6 @@
           "id": "asset-fugitive-ability-3"
         }
       ],
-      "Counter": { "Name": "Hunted", "Max": 3 },
       "id": "asset-fugitive",
       "asset-type": "asset-type-path"
     },
@@ -1109,7 +1113,11 @@
         },
         {
           "Text": "<p>When you risk your reputation to overcome failure, reroll any dice. If you score a miss, make a mark on this asset. When you have 5 such marks, discard this asset.</p>",
-          "Counter": { "Name": "Marks", "Max": 5 },
+          "Counter": {
+            "Name": "Marks",
+            "Max": 5,
+            "id": "asset-marked-counter-marks"
+          },
           "id": "asset-marked-ability-2"
         },
         {
@@ -2058,7 +2066,10 @@
         },
         {
           "Text": "<p>When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.</p>",
-          "Counter": { "Name": "Victory Marks" },
+          "Counter": {
+            "Name": "Victory Marks",
+            "id": "asset-snub-fighter-counter-victory-marks"
+          },
           "id": "asset-snub-fighter-ability-3"
         }
       ],
