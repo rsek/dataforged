@@ -4,7 +4,7 @@ Source:
   Date: "101221"
 Assets:
   - Name: Ace
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Face Danger](#Face-Danger) or [React Under Fire](#React-Under-Fire) by guiding your vehicle through a hazard or out of harm's way, add +1 and take +1 momentum on a hit.
@@ -21,7 +21,7 @@ Assets:
                 Stat Options:
                   Stats: [Vehicle Integrity]
   - Name: Agent
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you make a move to break into a secure site, infiltrate a protected area, or hack or manipulate a secure system, add +1 and take +1 momentum on a hit.
@@ -38,7 +38,7 @@ Assets:
                 Stat Options:
                   Stats: [Shadow]
   - Name: Archer
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: &move_archer |-
           You carry 6 ammo. When you [Strike](#Strike) or [Clash](#Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](#Sacrifice-Resources) (-1). On a miss, [Sacrifice Resources](#Sacrifice-Resources) (-1).
@@ -67,7 +67,7 @@ Assets:
       Name: Ammo
       Max: 6
   - Name: Armored
-    Category: Path
+    Asset Type: Path
     Description: If you wear your finely crafted set of personal armor...
     Abilities:
       - Text: |-
@@ -78,7 +78,7 @@ Assets:
       - Text: |-
           When you must [Endure Harm](#Endure-Harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must [Repair](#Repair) and spend 5 repair points to bring it back to working condition.
   - Name: Augmented
-    Category: Path
+    Asset Type: Path
     Input: [One, Two]
     Abilities:
       - Text: |-
@@ -89,7 +89,7 @@ Assets:
       - Text: |-
           When you must [Endure Harm](#Endure-Harm) or [Face Death](#Face-Death), you may instead mark an augment as broken. [Repair](#Repair) it as detailed above.
   - Name: Bannersworn
-    Category: Path
+    Asset Type: Path
     Input: [Ideology]
     Abilities:
       - Text: |-
@@ -100,7 +100,7 @@ Assets:
       - Text: |-
           When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
   - Name: Banshee
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -127,7 +127,7 @@ Assets:
       Name: Health
       Max: 4
   - Name: Blademaster
-    Category: Path
+    Asset Type: Path
     Description: If you wield a bladed weapon...
     Abilities:
       - Text: |-
@@ -141,7 +141,7 @@ Assets:
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) and bind the oath to your blade, add +1. On a hit, take +2 momentum or +2 spirit.
   - Name: Bonded
-    Category: Deed
+    Asset Type: Deed
     Input: [Bond-mate]
     Description: One time only, once you [Forge a Bond](#Forge-a-Bond) with a special individual...
     Abilities:
@@ -153,7 +153,7 @@ Assets:
       - Text: |-
           When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](#Face-Desolation).
   - Name: Bounty Hunter
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you take a bounty contract and [Swear an Iron Vow](#Swear-an-Iron-Vow) to see it done, add +1. On a strong hit, you've got a solid lead and may immediately mark progress. When you [Fulfill Your Vow](#Fulfill-Your-Vow), make the legacy reward one rank higher (1 extra box if already epic).
@@ -166,7 +166,7 @@ Assets:
       - Text: |-
           When you [Take Decisive Action](#Take-Decisive-Action) in a fight against a bounty target or their agents, you may reroll one challenge die.
   - Name: Brawler
-    Category: Path
+    Asset Type: Path
     Description: If you fight unarmed or with a close quarters weapon...
     Abilities:
       - Text: |-
@@ -180,7 +180,7 @@ Assets:
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) already positioned in close quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum.
   - Name: Combat Bot
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -214,7 +214,7 @@ Assets:
       Name: Health
       Max: 5
   - Name: Commander
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Aid Your Ally](#Aid-Your-Ally) through leadership, coordination, or planning, add +1. On a strong hit, any allies who are present take +1 momentum.
@@ -224,7 +224,7 @@ Assets:
       - Text: |-
           When you make a move to influence someone (not an ally) through leadership, add +1 and take +1 momentum on a hit. On a strong hit with a match, your command galvanizes them into unexpected action. Take another +1 momentum, and mark 1 tick on your bonds legacy track.
   - Name: Courier
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](#Undertake-an-Expedition) or [Set a Course](#Set-a-Course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
@@ -244,11 +244,10 @@ Assets:
       Name: Safety
       Max: 5
   - Name: Devotant
-    Category: Path
+    Asset Type: Path
     Input: [Name]
     Select:
       Name: Linked Stat
-      Type: Stat
       Options:
         - Edge
         - Heart
@@ -291,7 +290,7 @@ Assets:
                 Stat Options:
                   Stats: [Asset Linked Stat]
   - Name: Diplomat
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to resolve a dispute, negotiate an agreement, or gather allies, add +1. On a strong hit, mark progress. When you [Fulfill Your Vow](#Fulfill-Your-Vow) on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
@@ -301,7 +300,7 @@ Assets:
       - Text: |-
           When you [Make a Connection](#Make-a-Connection) or [Sojourn](#Sojourn), add +1. If you [Sojourn](#Sojourn) and roll a strong hit with a match, you are shown great respect; take +momentum equal to your heart.
   - Name: Empath
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: &move_empath |-
           When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 if you use that insight while making a move to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](#Pay-the-Price).
@@ -329,7 +328,7 @@ Assets:
                 Stat Options:
                   Stats: [Spirit]
   - Name: Engine Upgrade
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           Your vehicle's finely-tuned engines speed your travels. When you [Undertake an Expedition](#Undertake-an-Expedition) (+edge) and roll a strong hit with 6 on your action die, take +2 momentum.
@@ -342,7 +341,7 @@ Assets:
       - Text: |-
           When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](#Withstand-Damage) (-2).
   - Name: Exosuit
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -356,7 +355,7 @@ Assets:
       Name: Integrity
       Max: 6
   - Name: Expanded Hold
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           Your vehicle carries up to 3 cargo. When you gain +supply, you may convert it to +cargo. When you make a move +supply, you may add +cargo. When you [Sacrifice Resources](#Sacrifice-Resources), you may instead suffer -cargo for any portion of the cost.
@@ -370,7 +369,7 @@ Assets:
       Max: 3
       Starts At: 0
   - Name: Explorer
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Explore a Waypoint](#Explore-a-Waypoint), take +1 momentum on a hit. When you [Finish an Expedition](#Finish-an-Expedition) and score a hit, mark 1 extra tick on your discoveries legacy track.
@@ -383,7 +382,7 @@ Assets:
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) by studying a newfound place from a safe position, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum and envision an unusual aspect of the site.
   - Name: Fated
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you fill a box on your background vow progress track, also mark 1 tick on your quests legacy track. When you [Fulfill Your Vow](#Fulfill-Your-Vow) on the background vow, your fate is at hand; take an automatic strong hit and envision the final sacrifice that brings your story to an end.
@@ -393,7 +392,7 @@ Assets:
       - Text: |-
           When you make any progress move directly related to your background vow, and roll a 10 on either challenge die, you may reroll that die. On a strong hit, take +2 momentum.
   - Name: Firebrand
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: &move_firebrand |-
           You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](#Endure-Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
@@ -416,7 +415,7 @@ Assets:
       Max: 5
       Starts At: 0
   - Name: Fugitive
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           You are hunted by a power or authority. When you make a move, you may rely on your resourcefulness to improve the result to a strong hit. If you do, mark a box above to represent hunters closing in on you. On the third mark, a notable foe or force has tracked you down. If you overcome them or escape, clear the boxes and mark 1 tick on your quests legacy track.
@@ -429,7 +428,7 @@ Assets:
       - Text: |-
           When you [Fulfill Your Vow](#Fulfill-Your-Vow) (extreme or greater) by clearing your name or defeating the power or authority who marked you as a fugitive, gain this ability at no cost. You may then exchange this asset for another with the same number of marked abilities.
   - Name: Gearhead
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you make a move to craft, repair, repurpose, or modify equipment or technology, add +1 and take +1 momentum on a hit.
@@ -439,7 +438,7 @@ Assets:
       - Text: |-
           With sufficient time (a couple of hours or more), you may [Face Danger](#Face-Danger) to assemble or enhance a device for a powerful but limited role. On a hit, the device is ready for use. One time only, when you or an ally make a move aided by the device, take an automatic strong hit. If you are in a fight, also mark progress.
   - Name: Glowcat
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -453,7 +452,7 @@ Assets:
       Name: Health
       Max: 3
   - Name: Grappler
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: &move_grappler |-
           Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
@@ -472,7 +471,7 @@ Assets:
       - Text: |-
           When you [Take Decisive Action](#Take-Decisive-Action) by firing the grappler, you may reroll one challenge die.
   - Name: Gunner
-    Category: Path
+    Asset Type: Path
     Description: If you wield a heavy ranged personal weapon...
     Abilities:
       - Text: |-
@@ -487,7 +486,7 @@ Assets:
           Give your favorite gun a name. When you [Clash](#Clash) with it, add +1. When you [Enter the Fray](#Enter-the-Fray) or [Endure Stress](#Endure-Stress) while wielding it, add +1 and take +1 momentum on a hit.
         Input: [Name]
   - Name: Gunslinger
-    Category: Path
+    Asset Type: Path
     Description: If you wield a pistol...
     Abilities:
       - Text: |-
@@ -498,7 +497,7 @@ Assets:
       - Text: |-
           When you [Compel](#Compel) or [Gain Ground](#Gain-Ground) with the threat of violence by holding someone at gunpoint, add +1 and take +1 momentum on a hit.
   - Name: Haunted
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also [Endure Stress](#Endure-Stress) (-1). On a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -511,7 +510,7 @@ Assets:
             * Let them go: Mark 2 ticks on your bonds legacy track for each marked ability, and discard this asset.
             * Bolster your link: When you use a HAUNTED asset ability, take +1 momentum on a hit.
   - Name: Healer
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you give medical care to [Heal](#Heal) yourself or another character, add +1. If you are treating someone other than yourself, take +1 spirit or +1 momentum on a hit.
@@ -521,7 +520,7 @@ Assets:
       - Text: |-
           Once every day or so, when you are in a safe place with plenty of time on your hands, you may [Sacrifice Resources](#Sacrifice-Resources) (-1) and provide basic medical care for yourself, companions, or allies without risk. If you do, automatically give +1 health to everyone whose health is greater than 0.
   - Name: Heavy Cannons
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           When you aim your cannons and use them to [Strike](#Strike), choose one.
@@ -534,7 +533,7 @@ Assets:
       - Text: |-
           When you [Compel](#Compel), [Enter the Fray](#Enter-the-Fray), or [Gain Ground](#Gain-Ground) by bringing your cannons to bear and sending a promise of violence to your foe over communication channels, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
   - Name: Homesteader
-    Category: Deed
+    Asset Type: Deed
     Input: [Name]
     Description: Once you fill 4 boxes on your bonds legacy track...
     Abilities:
@@ -549,7 +548,7 @@ Assets:
       - Text: |-
           When you [Set a Course](#Set-a-Course) for home, you may reroll your action die if its value is less than your spirit.
   - Name: Hoverbike
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -563,7 +562,7 @@ Assets:
       Name: Integrity
       Max: 3
   - Name: Internal Refit
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](#Undertake-an-Expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
@@ -582,7 +581,7 @@ Assets:
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
   - Name: Kinetic
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           You wield kinetic powers. By focusing, you may remotely push, pull, lift, or constrict objects and beings that are about your size or smaller. When you are in a risky situation and draw on your powers to make a move, add +2 and [Lose Momentum](#Lose-Momentum) (-2).
@@ -593,7 +592,7 @@ Assets:
           If you have at least +8 momentum, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, first reset your momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
   - Name: Lore Hunter
     Aliases: [Archivist]
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to recover valuable knowledge or a powerful relic, reroll any dice. When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
@@ -603,7 +602,7 @@ Assets:
       - Text: |-
           When you recall esoteric knowledge to [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground), add +1. On a hit, envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
   - Name: Loyalist
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Aid Your Ally](#Aid-Your-Ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally. On a strong hit with a match, envision how this moment marks a breakthrough or milestone in your relationship; both of you may mark 1 tick on your bonds legacy track.
@@ -613,7 +612,7 @@ Assets:
       - Text: |-
           When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
   - Name: Marked
-    Category: Deed
+    Asset Type: Deed
     Input: [Identifier]
     Description: Once you fill 5 boxes on your quests legacy track...
     Abilities:
@@ -628,7 +627,7 @@ Assets:
       - Text: |-
           Once per fight, when you [Gain Ground](#Gain-Ground) through threat or leadership, you may reroll any dice and mark progress on a hit.
   - Name: Medbay
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           When you use your medbay to [Heal](#Heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.
@@ -638,7 +637,7 @@ Assets:
       - Text: |-
           When you [Face Danger](#Face-Danger) by performing a risky medical procedure, or if you [Gather Information](#Gather-Information) through an autopsy or medical examination, reroll any dice and take +1 momentum on a hit.
   - Name: Mercenary
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you agree to wage war or defend others from war in exchange for payment or promises, you may [Swear an Iron Vow](#Swear-an-Iron-Vow) to see the mission done. If you do, reroll any dice. When you [Fulfill Your Vow](#Fulfill-Your-Vow), make the legacy reward one rank higher (1 extra box if already epic).
@@ -648,7 +647,7 @@ Assets:
       - Text: |-
           When you [Check Your Gear](#Check-Your-Gear) in the midst of a fight, or [Resupply](#Resupply) by looting the field of battle in the aftermath of a fight, add +2.
   - Name: Missile Array
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           Your missile array is armed with 5 ammo. When you [Strike](#Strike) or [Clash](#Clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](#Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
@@ -661,7 +660,7 @@ Assets:
       Name: Ammo
       Max: 5
   - Name: Naturalist
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) or [Gather Information](#Gather-Information) using your knowledge of lifeforms or planetside ecosystems, add +1 and take + 1 momentum on a hit. On a strong hit with a match, you also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.
@@ -671,7 +670,7 @@ Assets:
       - Text: |-
           You are skilled at planetside survival. When you [Resupply](#Resupply) to scavenge resources in a life-bearing natural environment, take +1 supply on a hit. When you [Face Danger](#Face-Danger) against an environmental threat, add +1 and take +1 momentum on a hit.
   - Name: Navigator
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Set a Course](#Set-a-Course), choose one.
@@ -686,7 +685,7 @@ Assets:
       - Text: |-
           Once per expedition, when you or an ally [Undertake an Expedition](#Undertake-an-Expedition) and score a weak hit or miss, you may ignore that result, plot an alternate path, and make it an automatic strong hit.
   - Name: Oathbreaker
-    Category: Deed
+    Asset Type: Deed
     Description: Once you [Forsake Your Vow](#Forsake-Your-Vow)...
     Abilities:
       - Text: |-
@@ -697,7 +696,7 @@ Assets:
       - Text: |-
           When you [Fulfill Your Vow](#Fulfill-Your-Vow) on the marked quest and score a hit, you find redemption and automatically gain this ability at no cost. You may then improve one of your stats by +1 and discard this asset. Once the asset is discarded, you may not take it again.
   - Name: Outcast
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Hearten](#Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
@@ -716,7 +715,7 @@ Assets:
       - Text: |-
           When you or an ally [Sojourn](#Sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you Make a Connectionwith them, take an automatic strong hit and mark 1 tick on your bonds legacy track.
   - Name: Overseer
-    Category: Module
+    Asset Type: Module
     Input: [Name]
     Abilities:
       - Text: |-
@@ -747,7 +746,7 @@ Assets:
                 Stat Options:
                   Stats: [Attached Asset Condition Meter]
   - Name: Protocol Bot
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -761,7 +760,7 @@ Assets:
       Name: Health
       Max: 3
   - Name: Reinforced Hull
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           Your vehicle is clad in iron. When you [Withstand Damage](#Withstand-Damage), add +1. On a strong hit, take +1 momentum.
@@ -771,7 +770,7 @@ Assets:
       - Text: |-
           When you [React Under Fire](#React-Under-Fire) by letting your plated hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, [Pay the Price](#Pay-the-Price) by marking this component as broken.
   - Name: Research Lab
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           When you use your lab to [Secure an Advantage](#Secure-an-Advantage) or [Gather Information](#Gather-Information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.
@@ -781,7 +780,7 @@ Assets:
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) to undertake a long-term research project (extreme or greater), reroll any dice. When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your lab, [Face Danger](#Face-Danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark one box on your discoveries legacy track.
   - Name: Revenant
-    Category: Deed
+    Asset Type: Deed
     Description: Once you [Face Death](#Face-Death)...
     Abilities:
       - Text: |-
@@ -799,7 +798,7 @@ Assets:
                 Stat Options:
                   Stats: [Heart]
   - Name: Rockhorn
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -820,7 +819,7 @@ Assets:
       Name: Health
       Max: 5
   - Name: Rover
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -847,7 +846,7 @@ Assets:
       Name: Integrity
       Max: 5
   - Name: Scavenger
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Gather Information](#Gather-Information) or [Resupply](#Resupply) by scavenging a wreck, ruin, or abandoned site, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also find something of unique value, significance, or function; envision the nature of this discovery, take +2 momentum, and mark 2 ticks on your discoveries legacy track.
@@ -863,7 +862,7 @@ Assets:
                 Stat Options:
                   Stats: [Wits, Supply]
   - Name: Scoundrel
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you make a move by lying, bluffing, stealing, or cheating, add +2. On a strong hit with a match, your deception creates an unexpected opportunity; take the value of your shadow as +momentum.
@@ -880,7 +879,7 @@ Assets:
       - Text: |-
           When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
   - Name: Seer
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you envision experiencing a prophetic dream, you may [Ask the Oracle](#Ask-the-Oracle) for details using an interpretive oracle such as Action/Theme or Descriptor/Focus. If you record the answer, and later face a situation which gives truth to the vision, take an automatic strong hit (one time only) when making a move to act on your foresight. Then, clear the prophecy. Only one prophecy can be active at a time.
@@ -897,7 +896,7 @@ Assets:
       - Text: |-
           When you or an ally roll a match as you [Sojourn](#Sojourn) in a community or [Undertake an Expedition](#Undertake-an-Expedition) within a site, you may envision gaining sudden and unbidden insight about the location. If you do, take +2 momentum.
   - Name: Sensor Array
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](#Undertake-an-Expedition) (+wits), and roll a 10 on only one challenge die, you may reroll that die.
@@ -923,7 +922,7 @@ Assets:
                 Stat Options:
                   Stats: [Attached Asset Condition Meter]
   - Name: Service Pod
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -959,7 +958,7 @@ Assets:
       Name: Integrity
       Max: 4
   - Name: Shade
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, you may preset your action die to 5. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.
@@ -978,7 +977,7 @@ Assets:
       - Text: |-
           When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.
   - Name: Shields
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: &move_shields |-
           When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](#Lose-Momentum) (-1). Then, if you [Withstand Damage](#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
@@ -1008,7 +1007,7 @@ Assets:
       Max: 4
       Starts At: 0
   - Name: Shuttle
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1022,7 +1021,7 @@ Assets:
       Name: Integrity
       Max: 4
   - Name: Skiff
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1062,7 +1061,7 @@ Assets:
       Name: Integrity
       Max: 4
   - Name: Sidekick
-    Category: Companion
+    Asset Type: Companion
     Input: [Name, Expertise]
     Abilities:
       - Text: |-
@@ -1089,7 +1088,7 @@ Assets:
       Name: Health
       Max: 4
   - Name: Slayer
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you make a move to investigate, track, or stalk a hostile creature, add +1 and take +1 momentum on a hit.
@@ -1099,7 +1098,7 @@ Assets:
       - Text: |-
           When you [Enter the Fray](#Enter-the-Fray) against a hostile creature (dangerous or greater), take +2 momentum. If you choose to face the creature on its own terms, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you [Take Decisive Action](#Take-Decisive-Action) after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track.
   - Name: Sniper
-    Category: Path
+    Asset Type: Path
     Description: If you wield a rifle...
     Abilities:
       - Text: |-
@@ -1117,7 +1116,7 @@ Assets:
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) by studying a distant situation through the scope of your rifle, or [Gain Ground](#Gain-Ground) by readying your shot and taking careful aim, you may sacrifice time in exchange for greater certainty. If you do (decide before rolling), [Lose Momentum](#Lose-Momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.
   - Name: Snub Fighter
-    Category: Support Vehicle
+    Asset Type: Support Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1140,7 +1139,7 @@ Assets:
       Name: Integrity
       Max: 4
   - Name: Sprite
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1154,7 +1153,7 @@ Assets:
       Name: Health
       Max: 2
   - Name: Starship
-    Category: Command Vehicle
+    Asset Type: Command Vehicle
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1175,7 +1174,7 @@ Assets:
       Name: Integrity
       Max: 5
   - Name: Stealth Tech
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](#Enter-the-Fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
@@ -1197,7 +1196,7 @@ Assets:
                 Stat Options:
                   Stats: [Shadow]
   - Name: Survey Bot
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1231,7 +1230,7 @@ Assets:
       Name: Health
       Max: 3
   - Name: Symbiote
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1249,7 +1248,7 @@ Assets:
       Name: Health
       Max: 2
   - Name: Tech
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you make a move to configure, optimize, hack, or disrupt an electronic system, add +1. On a weak hit, you can choose to press your luck. If you do, reroll all dice and add +2 (instead of +1).
@@ -1259,7 +1258,7 @@ Assets:
       - Text: |-
           When you [Face Danger](#Face-Danger) or [Secure an Advantage](#Secure-an-Advantage) by creating a computer program to perform a specific, complex function, add +2 and take +1 momentum on a hit. One time only, when you trigger the program to fulfill its purpose, reroll any dice.
   - Name: Trader
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you [Sojourn](#Sojourn) or [Compel](#Compel), you may roll +supply. If you do, [Sacrifice Resources](#Sacrifice-Resources) (-1).
@@ -1282,7 +1281,7 @@ Assets:
       - Text: |-
           When you or an ally [Sojourn](#Sojourn) and roll a strong hit with a match, you have a chance to secure a unique item or valuable payload. Envision the nature of the opportunity and the obstacle you must overcome to aquire it. If you are successful, mark 2 ticks on your quests legacy track. One time only, you may use this acquisition to gain an automatic strong hit on any move where your resources are a factor.
   - Name: Utility Bot
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1310,7 +1309,7 @@ Assets:
       Name: Health
       Max: 4
   - Name: Vanguard
-    Category: Deed
+    Asset Type: Deed
     Description: Once you fill 6 boxes on your discoveries legacy track...
     Abilities:
       - Text: &move_vanguard |-
@@ -1338,7 +1337,7 @@ Assets:
                 Stat Options:
                   Stats: [Wits]
   - Name: Vehicle Bay
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](#Repair) a battered support vehicle, spend 1 repair point (instead of 2).
@@ -1348,7 +1347,7 @@ Assets:
       - Text: |-
           When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit.
   - Name: Vestige
-    Category: Path
+    Asset Type: Path
     Input: [Last of]
     Abilities:
       - Text: |-
@@ -1359,7 +1358,7 @@ Assets:
       - Text: |-
           When you [Hearten](#Hearten) by taking solace in the power of your legacy, add +1 and take +1 momentum on a hit.
   - Name: Veteran
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           When you are in a fight, increase your momentum reset by 1. Then, if you burn momentum to improve your result, add +1 on your next move.
@@ -1372,7 +1371,7 @@ Assets:
       - Text: |-
           When you [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) by recounting or recalling a hard-won lesson from your battlefield experiences, envision the memory and add +1. On a hit, take +1 momentum.
   - Name: Voidborn
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](#Lose-Momentum) (-1).
@@ -1382,7 +1381,7 @@ Assets:
       - Text: |-
           When you make a move to perform an agile physical maneuver (such as leaping or evading) in a low gravity environment, add +1 and take +1 momentum on a hit. On a strong hit with a match, you build speed or put yourself in perfect position; take another +1 momentum.
   - Name: Voidglider
-    Category: Companion
+    Asset Type: Companion
     Input: [Name]
     Abilities:
       - Text: |-
@@ -1410,7 +1409,7 @@ Assets:
       Name: Health
       Max: 4
   - Name: Weapon Master
-    Category: Path
+    Asset Type: Path
     Abilities:
       - Text: |-
           You are a walking armory, with a weapon for every occassion. When you [Enter the Fray](#Enter-the-Fray) in personal combat, add +1 and take +1 momentum on a hit. Once per fight, when you [Gain Ground](#Gain-Ground) by switching weapons or changing tactics, take an automatic strong hit.
@@ -1427,7 +1426,7 @@ Assets:
                 Stat Options:
                   Stats: [Supply]
   - Name: Workshop
-    Category: Module
+    Asset Type: Module
     Abilities:
       - Text: |-
           When you [Repair](#Repair) in the field, add +1.
