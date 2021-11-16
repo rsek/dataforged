@@ -266,11 +266,23 @@ _refs:
         - Game object:
             Object type: Derelict
             Attributes: { Derelict Type: Starship }
+    Faction: &suggestFaction
+      Suggest:
+        - Game object:
+            Object type: Faction
+    Fringe faction: &suggestFringe
+      Suggest:
+        - Game object:
+            Object type: Faction
+            Attributes: { Type: Fringe Group }
     Place: &suggestPlace # space sighting
       Suggest:
         - Oracles:
             - Category: Space
               Name: Space Sighting
+    Theme Fortified: &suggestThemeFortified
+      Suggest:
+        - Location Theme: Fortified
     Object: &suggestObject # descriptor + focus
       Suggest:
         - Oracles:
@@ -723,7 +735,7 @@ Character:
     - Name: Role
       Display name: Character Role
       Part of speech: [noun, common noun]
-      Content tags: [people]
+      Content tags: [people, actor]
       Initial: true
       Table:
         - [1, 2, Agent]
@@ -778,6 +790,7 @@ Character:
     - Name: Goal
       Display name: Character Goal
       Part of speech: [fragment]
+      Content tags: [objective]
       Table:
         - [1, 2, Avenge a wrong, *suggestEvent]
         - [3, 4, Build a home]
@@ -1032,20 +1045,23 @@ Character Creation:
       Table:
         - [1, 5, Blockade prevents trade with other sectors]
         - [6, 10, Bounty hunters search for an infamous fugitive, *suggestNpc]
+        # todo: some kind of faction? hmm
         - [11, 15, Chaotic breaches in spacetime spread like wildfire]
-        - [16, 20, Criminal faction corrupts local authorities]
+        - [16, 20, Criminal faction corrupts local authorities, *suggestFringe]
         - [21, 25, Devastating superweapon has fallen into the wrong hands]
         - [26, 30, Energy storms are rampant]
         - [31, 35, Magnetic disturbances disrupt communication]
         - [36, 40, Newly found resource lures greedy fortune hunters to the sector, *suggestObject]
-        - [41, 45, Notorious pirate clan preys on starships]
+        - [41, 45, Notorious pirate clan preys on starships, *suggestFringe]
         - [46, 50, Parasitic lifeforms spread like a plague, *suggestCreature]
         - [51, 55, Precursor sites throughout the sector emit strange signals, *suggestVault]
         - [56, 60, Prophecies foretell an imminent awakening of a dreadful power]
-        - [61, 65, Raider clan emerges as a dominant threat under a new leader]
-        - [66, 70, Religious zealots overrun the sector]
-        - [71, 75, Rogue AI infiltrates systems throughout the sector]
+        - [61, 65, Raider clan emerges as a dominant threat under a new leader, *suggestFringe]
+        - [66, 70, Religious zealots overrun the sector, *suggestFringe]
+        - [71, 75, Rogue AI infiltrates systems throughout the sector, *suggestFringe]
         - [76, 80, Settlements or factions are on the brink of war, *suggestSettlement]
+        # TODO: this seems like a solid reason to make it easy to do multiple Suggest objects
+        # ideally a faction should be present
         - [81, 85, Ships regularly go missing]
         - [86, 90, Sickness spreads among ships and settlements]
         - [91, 95, Supernova is imminent]
@@ -1069,7 +1085,7 @@ Character Creation:
         - [61, 65, Recover a cherished pre-exodus artifact from an enemy, *suggestObject]
         - [66, 70, Rescue a starship crew held captive by mutineers, *suggestShip]
         - [71, 75, Retrieve a cache of stolen weapons from a pirate ship, *suggestShip]
-        - [76, 80, Sabotage an enemy installation]
+        - [76, 80, Sabotage an enemy installation, *suggestThemeFortified]
         - [81, 85, Search for a missing expedition in the depths of a precursor vault, *suggestVault]
         - [86, 90, Shield a wondrous lifeform from those who seek to destroy it, *suggestCreature]
         - [91, 95, Track and slay a marauding beast, *suggestCreature]
@@ -1549,6 +1565,7 @@ Creature:
   Oracles:
     - Name: Environment
       Initial: true
+      Part of speech: [noun]
       Description: |-
         Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
       Table:
@@ -1559,7 +1576,6 @@ Creature:
         - [81, 100, Air]
 
     - Name: Scale
-      Group: Scale
       Initial: true
       Part of speech: [adjective]
       Table:
@@ -1868,11 +1884,13 @@ Faction:
   Oracles:
     - Name: Type
       Display name: Faction Type
+      Part of speech: [noun]
       Table:
         - [1, 40, Dominion]
         - [41, 70, Guild]
         - [71, 100, Fringe Group]
     - Name: Influence
+      Part of speech: [adjective]
       Table:
         - [1, 10, Forsaken, Banished or forgotten]
         - [11, 30, Isolated, Limited influence in a remote location]
@@ -1884,6 +1902,8 @@ Faction:
     - Name: Dominion
       Requires:
         Type: [Dominion]
+      Part of speech: [noun]
+      Content tags: [abstract noun]
       Max rolls: 3
       Table:
         - [1,5,Agriculture]
@@ -1912,6 +1932,8 @@ Faction:
         - [97,100,Wealth]
     - Name: Leadership
       Display name: Dominion / Leadership
+      Part of speech: [fragment]
+      Content tags: [description]
       Requires:
         Type: [Dominion]
       Table:
@@ -1928,6 +1950,8 @@ Faction:
     - Name: Guild
       Requires:
         Type: [Guild]
+      Part of speech: [noun, plural]
+      Content tags: [actor]
       Table:
         - [1, 5, Assassins]
         - [6, 10, Bounty Hunters]
@@ -1947,6 +1971,8 @@ Faction:
     - Name: Fringe Group
       Requires:
         Type: [Fringe Group]
+      Part of speech: [noun, plural]
+      Content tags: [actor]
       Table:
         - [1, 5, Cultists]
         - [6, 15, Exiles]
@@ -2002,6 +2028,8 @@ Faction:
         - [97, 100, *Action+Theme]
     - Name: Relationships
       Display name: Faction Relationships
+      Part of speech: [fragment]
+      Content tags: []
       Description: Factions can add scale and narrative opportunities to your setting. But keep it manageable. Don’t overload your campaign with factions. Instead, focus on your interactions and entanglements with members of a few interesting factions. Then, when you have a question about the relationship of one faction to another, use this table. The result is the commonly understood connection between those factions. Further investigations or events may reveal a deeper or alternate truth.
       Table:
         - [1, 4, Antagonistic towards]
@@ -2033,7 +2061,8 @@ Faction:
         - [93, 96, Warring with]
         - [97, 100, *Roll_twice]
     - Name: Name Template
-      Content tags: [Template]
+      Part of speech: [name, proper noun]
+      Content tags: [template]
       Display name: Faction Name Template
       Description: |-
         To generate a faction name, first roll or choose the name template. Then, follow the structure of the template to build the name from individual tables. If you’ve already set the faction type, picking from the tables (instead of rolling) will likely provide a more appropriate result. For example, “Silver Jackals” is a fitting name for a criminal organization. The “Empire of the Undying Suns” is a less apt name for that gang—unless their leader is prone to delusions of grandeur. In short, choosing a name will give you more control. Rolling might give you a result that doesn’t square with known aspects, but those contradictions may prove inspiring.
@@ -2099,6 +2128,7 @@ Faction:
         - [99, 100, Wandering]
     - Name: Affiliation
       Part of speech: [noun]
+      Content tags: [organization, actor]
       Table:
         - [1, 4, Accord]
         - [5, 8, Alliance]
@@ -2691,6 +2721,7 @@ Settlement:
   Oracles:
     - Name: Location
       Initial: true
+      Part of speech: [adjective]
       Table:
         - [1, 40, Planetside]
         - [41, 75, Orbital]
@@ -3108,57 +3139,57 @@ Space:
           Name: Sector Name - Suffix
           Group: Sector Name
       Initial: true
-      Part of speech: [adjective, proper noun]
-      Content tags: [name fragment]
+      Part of speech: [adjective]
+      Content tags: [template fragment]
 
       Table:
         - [1, 2, Accursed]
         - [3, 4, Ashen]
-        - [5, 6, Asteria]
+        - [5, 6, Asteria, {Part of speech: [proper noun]}]
         - [7, 8, Bitter]
         - [9, 10, Blighted]
         - [11, 12, Bloodied]
         - [13, 14, Boundless]
         - [15, 16, Burning]
-        - [17, 18, Cortana]
-        - [19, 20, Corvus]
+        - [17, 18, Cortana, {Part of speech: [proper noun]}]
+        - [19, 20, Corvus, {Part of speech: [proper noun]}]
         - [21, 22, Crimson]
-        - [23, 24, Cygnus]
-        - [25, 26, Delphi]
-        - [27, 28, Delphian]
-        - [29, 30, Devil's]
+        - [23, 24, Cygnus, {Part of speech: [proper noun]}]
+        - [25, 26, Delphi, {Part of speech: [proper noun]}]
+        - [27, 28, Delphian, {Part of speech: [proper noun]}]
+        - [29, 30, Devil's, {Part of speech: [proper noun, possessive case]}]
         - [31, 32, Ebon]
-        - [33, 34, Essus]
+        - [33, 34, Essus, {Part of speech: [proper noun]}]
         - [35, 36, Fallen]
         - [37, 38, Ferrous]
-        - [39, 40, Fool's]
+        - [39, 40, Fool's, {Part of speech: [proper noun, possessive case]}]
         - [41, 42, Forgotten]
         - [43, 44, Haunted]
         - [45, 46, Hidden]
         - [47, 48, Hollow]
         - [49, 50, Igneous]
         - [51, 52, Infernal]
-        - [53, 54, Invidia]
+        - [53, 54, Invidia, {Part of speech: [proper noun]}]
         - [55, 56, Iron]
-        - [57, 58, Kalidas]
-        - [59, 60, Kronos]
-        - [61, 62, Lacuna]
-        - [63, 64, Lumen]
-        - [65, 66, Mobius]
-        - [67, 68, Morien]
+        - [57, 58, Kalidas, {Part of speech: [proper noun]}]
+        - [59, 60, Kronos, {Part of speech: [proper noun]}]
+        - [61, 62, Lacuna, {Part of speech: [proper noun]}]
+        - [63, 64, Lumen, {Part of speech: [proper noun]}]
+        - [65, 66, Mobius, {Part of speech: [proper noun]}]
+        - [67, 68, Morien, {Part of speech: [proper noun]}]
         - [69, 70, Onyx]
         - [71, 72, Outer]
-        - [73, 74, Sanguis]
+        - [73, 74, Sanguis, {Part of speech: [proper noun]}]
         - [75, 76, Scarred]
         - [77, 78, Scorched]
         - [79, 80, Shattered]
         - [81, 82, Shrouded]
-        - [83, 84, Sindri]
-        - [85, 86, Solana]
+        - [83, 84, Sindri, {Part of speech: [proper noun]}]
+        - [85, 86, Solana, {Part of speech: [proper noun]}]
         - [87, 88, Stygian]
-        - [89, 90, Sulaco]
+        - [89, 90, Sulaco, {Part of speech: [proper noun]}]
         - [91, 92, Sundered]
-        - [93, 94, Thunor]
+        - [93, 94, Thunor, {Part of speech: [proper noun]}]
         - [95, 96, Vanguard]
         - [97, 98, Veiled]
         - [99, 100, Wasted]
@@ -3170,8 +3201,8 @@ Space:
           Name: Sector Name - Prefix
           Group: Sector Name
       Initial: true
-      Part of speech: [noun, proper noun]
-      Content tags: [name fragment]
+      Part of speech: [noun]
+      Content tags: [template fragment, place]
       Table:
         - [1, 2, Abyss]
         - [3, 4, Anvil]
@@ -3248,7 +3279,7 @@ Space:
         - [37, 39, Isolation or fear presses in]
         - [40, 42, Life support system malfunctions]
         - [43, 45, Meteoroid storm fills the sky]
-        - [46, 48, Mysterious wreckage portends a new threat]
+        - [46, 48, Mysterious wreckage portends a new threat, *suggestDerelictStarship]
         - [49, 51, Nearby settlement calls for help, *suggestSettlement]
         - [52, 54, Old repair or patch fails]
         - [55, 57, Onboard dispute or inner turmoil causes a disruption]
@@ -3261,7 +3292,7 @@ Space:
         - [76, 78, Shockwave or gravity wave approaches]
         - [79, 81, Someone questions your presence here]
         - [82, 84, Stellar anomaly emits hazardous energies]
-        - [85, 87, Threatening lifeform draws near]
+        - [85, 87, Threatening lifeform draws near, *suggestCreature]
         - [88, 90, Troubling visions or apparitions]
         - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
         - [94, 96, Unsettling sounds or disturbances]
@@ -3289,14 +3320,14 @@ Space:
         - [37, 40, Friendly interaction with a benign lifeform, *suggestCreature]
         - [41, 44, Friendly settlement in range, *suggestSettlement]
         - [45, 48, Friendly spacers at work here, *suggestNpc]
-        - [49, 52, Friendly starship crosses your path]
+        - [49, 52, Friendly starship crosses your path, *suggestShip]
         - [53, 56, Helpful or encouraging message from an acquaintance]
         - [57, 60, Impressive vista offers comfort or inspiration]
         - [61, 64, Interesting site offers opportunities for exploration]
         - [65, 68, Mineral or energy resource detected]
         - [69, 72, Navigational or environmental hazard is left behind]
         - [73, 76, Opening to escape or avoid foes]
-        - [77, 80, Plea for help from a potential benefactor]
+        - [77, 80, Plea for help from a potential benefactor, *suggestNpc]
         - [81, 84, Probe or beacon with useful data]
         - [85, 88, "Refuge offers a place to hide, plan, or recover"]
         - [89, 92, Sensors pinpoint a lurking foe]
@@ -3691,6 +3722,7 @@ Derelict:
   Oracles:
     - Name: Location
       Initial: true
+      Part of speech: [adjective]
       Table:
         - [1, 40, Planetside]
         - [41, 60, Orbital]
@@ -3739,7 +3771,6 @@ Derelict:
         - [99, 100, Impending destruction]
 
     - Name: Outer First Look
-      Group: First Look
       Initial: true
       Part of speech: [fragment]
       Table:
@@ -3755,7 +3786,6 @@ Derelict:
         - [96, 100, Time or reality distortions]
 
     - Name: Inner First Look
-      Group: First Look
       Part of speech: [fragment]
       Max rolls: 2
       Table:
@@ -3798,6 +3828,7 @@ Derelict:
       Select table by: Derelict Type
       Tables:
         - Display name: Derelict Zone - Starship
+          Name: Starship
           Requires:
             Derelict Type:
               - Starship
@@ -3811,6 +3842,7 @@ Derelict:
             - [91, 100, ▶️Research]
 
         - Display name: Derelict Zone - Settlement
+          Name: Settlement
           Requires:
             Derelict Type:
               - Settlement
@@ -4154,6 +4186,7 @@ Location Theme:
     - Name: Theme Type
       Description: |-
         Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location. You can answer questions about a place using only the tables provided for a theme, such as when delving into an **Infested** cave. Or you can pair a theme with other location oracles for more flavor and variety; for example, you might explore a **Haunted Grave World**, a **Ruined Derelict**, a **Sacred Precusor Vault**, or an **Inhabited Settlement**.
+      Part of speech: [adjective]
       Table:
         - [1, 15, Chaotic, *Chaotic]
         - [16, 30, Fortified, *Fortified]
@@ -4334,6 +4367,7 @@ Desert World:
     - Vermillion
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 10, *None_thin]
@@ -4413,6 +4447,7 @@ Desert World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 25, None]
         - [26, 45, Extinct]
@@ -4465,6 +4500,7 @@ Furnace World:
     - Vesuvius
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 10, *None_thin]
@@ -4543,6 +4579,7 @@ Furnace World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 30, None]
         - [31, 50, Extinct]
@@ -4595,6 +4632,7 @@ Grave World:
     - Thrace
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 10, *None_thin]
@@ -4671,6 +4709,7 @@ Grave World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 25, None]
         - [26, 85, Extinct]
@@ -4720,6 +4759,7 @@ Ice World:
     - Varnholme
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 15, *None_thin]
@@ -4799,6 +4839,7 @@ Ice World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 25, None]
         - [26, 45, Extinct]
@@ -4851,6 +4892,7 @@ Jovian World:
     - Zephyr
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 50, *Toxic]
@@ -4928,6 +4970,7 @@ Jovian World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 50, None]
         - [51, 55, Extinct]
@@ -4980,6 +5023,7 @@ Jungle World:
     - Viridian
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 25, *Toxic]
@@ -5060,6 +5104,7 @@ Jungle World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 5, Simple]
         - [6, 20, Sparse]
@@ -5110,6 +5155,7 @@ Ocean World:
     - Triton
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 5, *None_thin]
@@ -5191,6 +5237,7 @@ Ocean World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 5, None]
         - [6, 15, Extinct]
@@ -5227,6 +5274,7 @@ Planet:
   Oracles:
     - Name: Planetary Class
       Initial: true
+      Part of speech: [noun]
       # Use with:
       #   - Name: Descriptor
       #     Category: Core
@@ -5437,6 +5485,7 @@ Rocky World:
     - Umbra
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 65, *None_thin]
@@ -5514,6 +5563,7 @@ Rocky World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 55, None]
         - [56, 65, Extinct]
@@ -5566,6 +5616,7 @@ Shattered World:
     - Zix
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 93, *None_thin]
@@ -5643,6 +5694,7 @@ Shattered World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 30, None]
         - [31, 80, Extinct]
@@ -5693,6 +5745,7 @@ Tainted World:
     - Xanthous
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 65, *Toxic]
@@ -5768,6 +5821,7 @@ Tainted World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 5, Simple]
         - [6, 15, Sparse]
@@ -5818,6 +5872,7 @@ Vital World:
     - Valinor
   Oracles:
     - Name: Atmosphere
+      Part of speech: [adjective]
       Initial: true
       Table:
         - [1, 20, *Marginal]
@@ -5896,6 +5951,7 @@ Vital World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Part of speech: [adjective]
       Table:
         - [1, 10, Sparse]
         - [11, 45, Diverse]
@@ -5903,6 +5959,7 @@ Vital World:
         - [86, 100, Overrun]
 
     - Name: Diversity
+      Part of speech: [adjective]
       Table:
         - [1, 20, Simple (two biomes), 2]
         - [21, 70, Diverse (three biomes), 3]
@@ -6100,6 +6157,7 @@ Precursor Vault:
   Oracles:
     - Name: Location
       Initial: true
+      Part of speech: [adjective]
       Table:
         - [1, 50, Planetside]
         - [51, 75, Orbital]

@@ -267,11 +267,23 @@ _refs:
         - Game object:
             Object type: Derelict
             Attributes: { Derelict Type: Starship }
+    Faction: &suggestFaction
+      Suggest:
+        - Game object:
+            Object type: Faction
+    Fringe faction: &suggestFringe
+      Suggest:
+        - Game object:
+            Object type: Faction
+            Attributes: { Type: Fringe Group }
     Place: &suggestPlace # space sighting
       Suggest:
         - Oracles:
             - Category: Space
               Name: Space Sighting
+    Theme Fortified: &suggestThemeFortified
+      Suggest:
+        - Location Theme: Fortified
     Object: &suggestObject # descriptor + focus
       Suggest:
         - Oracles:

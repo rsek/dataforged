@@ -9,11 +9,13 @@ Faction:
   Oracles:
     - Name: Type
       Display name: Faction Type
+      Part of speech: [noun]
       Table:
         - [1, 40, Dominion]
         - [41, 70, Guild]
         - [71, 100, Fringe Group]
     - Name: Influence
+      Part of speech: [adjective]
       Table:
         - [1, 10, Forsaken, Banished or forgotten]
         - [11, 30, Isolated, Limited influence in a remote location]
@@ -25,6 +27,8 @@ Faction:
     - Name: Dominion
       Requires:
         Type: [Dominion]
+      Part of speech: [noun]
+      Content tags: [abstract noun]
       Max rolls: 3
       Table:
         - [1,5,Agriculture]
@@ -53,6 +57,8 @@ Faction:
         - [97,100,Wealth]
     - Name: Leadership
       Display name: Dominion / Leadership
+      Part of speech: [fragment]
+      Content tags: [description]
       Requires:
         Type: [Dominion]
       Table:
@@ -69,6 +75,8 @@ Faction:
     - Name: Guild
       Requires:
         Type: [Guild]
+      Part of speech: [noun, plural]
+      Content tags: [actor]
       Table:
         - [1, 5, Assassins]
         - [6, 10, Bounty Hunters]
@@ -88,6 +96,8 @@ Faction:
     - Name: Fringe Group
       Requires:
         Type: [Fringe Group]
+      Part of speech: [noun, plural]
+      Content tags: [actor]
       Table:
         - [1, 5, Cultists]
         - [6, 15, Exiles]
@@ -143,6 +153,8 @@ Faction:
         - [97, 100, *Action+Theme]
     - Name: Relationships
       Display name: Faction Relationships
+      Part of speech: [fragment]
+      Content tags: []
       Description: Factions can add scale and narrative opportunities to your setting. But keep it manageable. Don’t overload your campaign with factions. Instead, focus on your interactions and entanglements with members of a few interesting factions. Then, when you have a question about the relationship of one faction to another, use this table. The result is the commonly understood connection between those factions. Further investigations or events may reveal a deeper or alternate truth.
       Table:
         - [1, 4, Antagonistic towards]
@@ -174,7 +186,8 @@ Faction:
         - [93, 96, Warring with]
         - [97, 100, *Roll_twice]
     - Name: Name Template
-      Content tags: [Template]
+      Part of speech: [name, proper noun]
+      Content tags: [template]
       Display name: Faction Name Template
       Description: |-
         To generate a faction name, first roll or choose the name template. Then, follow the structure of the template to build the name from individual tables. If you’ve already set the faction type, picking from the tables (instead of rolling) will likely provide a more appropriate result. For example, “Silver Jackals” is a fitting name for a criminal organization. The “Empire of the Undying Suns” is a less apt name for that gang—unless their leader is prone to delusions of grandeur. In short, choosing a name will give you more control. Rolling might give you a result that doesn’t square with known aspects, but those contradictions may prove inspiring.
@@ -240,6 +253,7 @@ Faction:
         - [99, 100, Wandering]
     - Name: Affiliation
       Part of speech: [noun]
+      Content tags: [organization, actor]
       Table:
         - [1, 4, Accord]
         - [5, 8, Alliance]

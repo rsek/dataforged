@@ -1059,7 +1059,15 @@
           },
           {
             "Chance": 20,
-            "Description": "Criminal faction corrupts local authorities"
+            "Description": "Criminal faction corrupts local authorities",
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Faction",
+                  "Attributes": { "Type": "Fringe Group" }
+                }
+              }
+            ]
           },
           {
             "Chance": 25,
@@ -1084,7 +1092,15 @@
           },
           {
             "Chance": 45,
-            "Description": "Notorious pirate clan preys on starships"
+            "Description": "Notorious pirate clan preys on starships",
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Faction",
+                  "Attributes": { "Type": "Fringe Group" }
+                }
+              }
+            ]
           },
           {
             "Chance": 50,
@@ -1102,15 +1118,39 @@
           },
           {
             "Chance": 65,
-            "Description": "Raider clan emerges as a dominant threat under a new leader"
+            "Description": "Raider clan emerges as a dominant threat under a new leader",
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Faction",
+                  "Attributes": { "Type": "Fringe Group" }
+                }
+              }
+            ]
           },
           {
             "Chance": 70,
-            "Description": "Religious zealots overrun the sector"
+            "Description": "Religious zealots overrun the sector",
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Faction",
+                  "Attributes": { "Type": "Fringe Group" }
+                }
+              }
+            ]
           },
           {
             "Chance": 75,
-            "Description": "Rogue AI infiltrates systems throughout the sector"
+            "Description": "Rogue AI infiltrates systems throughout the sector",
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Faction",
+                  "Attributes": { "Type": "Fringe Group" }
+                }
+              }
+            ]
           },
           {
             "Chance": 80,
@@ -1222,7 +1262,11 @@
             "Description": "Retrieve a cache of stolen weapons from a pirate ship",
             "Suggest": [{ "Game object": { "Object type": "Starship" } }]
           },
-          { "Chance": 80, "Description": "Sabotage an enemy installation" },
+          {
+            "Chance": 80,
+            "Description": "Sabotage an enemy installation",
+            "Suggest": [{ "Location Theme": "Fortified" }]
+          },
           {
             "Chance": 85,
             "Description": "Search for a missing expedition in the depths of a precursor vault",
@@ -2084,56 +2128,140 @@
           }
         ],
         "Initial": true,
-        "Part of speech": ["adjective", "proper noun"],
-        "Content tags": ["name fragment"],
+        "Part of speech": ["adjective"],
+        "Content tags": ["template fragment"],
         "Table": [
           { "Chance": 2, "Description": "Accursed" },
           { "Chance": 4, "Description": "Ashen" },
-          { "Chance": 6, "Description": "Asteria" },
+          {
+            "Chance": 6,
+            "Description": "Asteria",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 8, "Description": "Bitter" },
           { "Chance": 10, "Description": "Blighted" },
           { "Chance": 12, "Description": "Bloodied" },
           { "Chance": 14, "Description": "Boundless" },
           { "Chance": 16, "Description": "Burning" },
-          { "Chance": 18, "Description": "Cortana" },
-          { "Chance": 20, "Description": "Corvus" },
+          {
+            "Chance": 18,
+            "Description": "Cortana",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 20,
+            "Description": "Corvus",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 22, "Description": "Crimson" },
-          { "Chance": 24, "Description": "Cygnus" },
-          { "Chance": 26, "Description": "Delphi" },
-          { "Chance": 28, "Description": "Delphian" },
-          { "Chance": 30, "Description": "Devil's" },
+          {
+            "Chance": 24,
+            "Description": "Cygnus",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 26,
+            "Description": "Delphi",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 28,
+            "Description": "Delphian",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 30,
+            "Description": "Devil's",
+            "Part of speech": ["proper noun", "possessive case"]
+          },
           { "Chance": 32, "Description": "Ebon" },
-          { "Chance": 34, "Description": "Essus" },
+          {
+            "Chance": 34,
+            "Description": "Essus",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 36, "Description": "Fallen" },
           { "Chance": 38, "Description": "Ferrous" },
-          { "Chance": 40, "Description": "Fool's" },
+          {
+            "Chance": 40,
+            "Description": "Fool's",
+            "Part of speech": ["proper noun", "possessive case"]
+          },
           { "Chance": 42, "Description": "Forgotten" },
           { "Chance": 44, "Description": "Haunted" },
           { "Chance": 46, "Description": "Hidden" },
           { "Chance": 48, "Description": "Hollow" },
           { "Chance": 50, "Description": "Igneous" },
           { "Chance": 52, "Description": "Infernal" },
-          { "Chance": 54, "Description": "Invidia" },
+          {
+            "Chance": 54,
+            "Description": "Invidia",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 56, "Description": "Iron" },
-          { "Chance": 58, "Description": "Kalidas" },
-          { "Chance": 60, "Description": "Kronos" },
-          { "Chance": 62, "Description": "Lacuna" },
-          { "Chance": 64, "Description": "Lumen" },
-          { "Chance": 66, "Description": "Mobius" },
-          { "Chance": 68, "Description": "Morien" },
+          {
+            "Chance": 58,
+            "Description": "Kalidas",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 60,
+            "Description": "Kronos",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 62,
+            "Description": "Lacuna",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 64,
+            "Description": "Lumen",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 66,
+            "Description": "Mobius",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 68,
+            "Description": "Morien",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 70, "Description": "Onyx" },
           { "Chance": 72, "Description": "Outer" },
-          { "Chance": 74, "Description": "Sanguis" },
+          {
+            "Chance": 74,
+            "Description": "Sanguis",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 76, "Description": "Scarred" },
           { "Chance": 78, "Description": "Scorched" },
           { "Chance": 80, "Description": "Shattered" },
           { "Chance": 82, "Description": "Shrouded" },
-          { "Chance": 84, "Description": "Sindri" },
-          { "Chance": 86, "Description": "Solana" },
+          {
+            "Chance": 84,
+            "Description": "Sindri",
+            "Part of speech": ["proper noun"]
+          },
+          {
+            "Chance": 86,
+            "Description": "Solana",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 88, "Description": "Stygian" },
-          { "Chance": 90, "Description": "Sulaco" },
+          {
+            "Chance": 90,
+            "Description": "Sulaco",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 92, "Description": "Sundered" },
-          { "Chance": 94, "Description": "Thunor" },
+          {
+            "Chance": 94,
+            "Description": "Thunor",
+            "Part of speech": ["proper noun"]
+          },
           { "Chance": 96, "Description": "Vanguard" },
           { "Chance": 98, "Description": "Veiled" },
           { "Chance": 100, "Description": "Wasted" }
@@ -2152,8 +2280,8 @@
           }
         ],
         "Initial": true,
-        "Part of speech": ["noun", "proper noun"],
-        "Content tags": ["name fragment"],
+        "Part of speech": ["noun"],
+        "Content tags": ["template fragment", "place"],
         "Table": [
           { "Chance": 2, "Description": "Abyss" },
           { "Chance": 4, "Description": "Anvil" },
@@ -2267,7 +2395,15 @@
           { "Chance": 45, "Description": "Meteoroid storm fills the sky" },
           {
             "Chance": 48,
-            "Description": "Mysterious wreckage portends a new threat"
+            "Description": "Mysterious wreckage portends a new threat",
+            "Suggest": [
+              {
+                "Game object": {
+                  "Object type": "Derelict",
+                  "Attributes": { "Derelict Type": "Starship" }
+                }
+              }
+            ]
           },
           {
             "Chance": 51,
@@ -2306,7 +2442,11 @@
             "Chance": 84,
             "Description": "Stellar anomaly emits hazardous energies"
           },
-          { "Chance": 87, "Description": "Threatening lifeform draws near" },
+          {
+            "Chance": 87,
+            "Description": "Threatening lifeform draws near",
+            "Suggest": [{ "Game object": { "Object type": "Creature" } }]
+          },
           { "Chance": 90, "Description": "Troubling visions or apparitions" },
           {
             "Chance": 93,
@@ -2401,7 +2541,8 @@
           },
           {
             "Chance": 52,
-            "Description": "Friendly starship crosses your path"
+            "Description": "Friendly starship crosses your path",
+            "Suggest": [{ "Game object": { "Object type": "Starship" } }]
           },
           {
             "Chance": 56,
@@ -2426,7 +2567,8 @@
           { "Chance": 76, "Description": "Opening to escape or avoid foes" },
           {
             "Chance": 80,
-            "Description": "Plea for help from a potential benefactor"
+            "Description": "Plea for help from a potential benefactor",
+            "Suggest": [{ "Game object": { "Object type": "Character" } }]
           },
           { "Chance": 84, "Description": "Probe or beacon with useful data" },
           {
@@ -2458,6 +2600,7 @@
       {
         "Name": "Planetary Class",
         "Initial": true,
+        "Part of speech": ["noun"],
         "Table": [
           {
             "Chance": 15,
@@ -3106,6 +3249,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -3353,6 +3497,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 25, "Description": "None" },
               { "Chance": 45, "Description": "Extinct" },
@@ -3403,6 +3548,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -3642,6 +3788,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 30, "Description": "None" },
               { "Chance": 50, "Description": "Extinct" },
@@ -3692,6 +3839,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -3951,6 +4099,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 25, "Description": "None" },
               { "Chance": 85, "Description": "Extinct" },
@@ -3998,6 +4147,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -4236,6 +4386,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 25, "Description": "None" },
               { "Chance": 45, "Description": "Extinct" },
@@ -4286,6 +4437,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -4514,6 +4666,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 50, "Description": "None" },
               { "Chance": 55, "Description": "Extinct" },
@@ -4564,6 +4717,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -4815,6 +4969,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 5, "Description": "Simple" },
               { "Chance": 20, "Description": "Sparse" },
@@ -4863,6 +5018,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -5119,6 +5275,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 5, "Description": "None" },
               { "Chance": 15, "Description": "Extinct" },
@@ -5169,6 +5326,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -5397,6 +5555,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 55, "Description": "None" },
               { "Chance": 65, "Description": "Extinct" },
@@ -5447,6 +5606,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -5696,6 +5856,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 30, "Description": "None" },
               { "Chance": 80, "Description": "Extinct" },
@@ -5744,6 +5905,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -5957,6 +6119,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 5, "Description": "Simple" },
               { "Chance": 15, "Description": "Sparse" },
@@ -6005,6 +6168,7 @@
         "Oracles": [
           {
             "Name": "Atmosphere",
+            "Part of speech": ["adjective"],
             "Initial": true,
             "Table": [
               {
@@ -6252,6 +6416,7 @@
           },
           {
             "Name": "Life",
+            "Part of speech": ["adjective"],
             "Table": [
               { "Chance": 10, "Description": "Sparse" },
               { "Chance": 45, "Description": "Diverse" },
@@ -6264,6 +6429,7 @@
           },
           {
             "Name": "Diversity",
+            "Part of speech": ["adjective"],
             "Table": [
               {
                 "Chance": 20,
@@ -6336,6 +6502,7 @@
       {
         "Name": "Location",
         "Initial": true,
+        "Part of speech": ["adjective"],
         "Table": [
           { "Chance": 40, "Description": "Planetside" },
           { "Chance": 75, "Description": "Orbital" },
@@ -8065,7 +8232,7 @@
         "Name": "Role",
         "Display name": "Character Role",
         "Part of speech": ["noun", "common noun"],
-        "Content tags": ["people"],
+        "Content tags": ["people", "actor"],
         "Initial": true,
         "Table": [
           { "Chance": 2, "Description": "Agent" },
@@ -8135,6 +8302,7 @@
         "Name": "Goal",
         "Display name": "Character Goal",
         "Part of speech": ["fragment"],
+        "Content tags": ["objective"],
         "Table": [
           {
             "Chance": 2,
@@ -8539,6 +8707,7 @@
       {
         "Name": "Environment",
         "Initial": true,
+        "Part of speech": ["noun"],
         "Description": "<p>Choose the closest match for your location. Or roll to identify the primary habitat of a creature.</p>",
         "Table": [
           { "Chance": 5, "Description": "Space" },
@@ -8552,7 +8721,6 @@
       },
       {
         "Name": "Scale",
-        "Group": "Scale",
         "Initial": true,
         "Part of speech": ["adjective"],
         "Table": [
@@ -8922,6 +9090,7 @@
       {
         "Name": "Type",
         "Display name": "Faction Type",
+        "Part of speech": ["noun"],
         "Table": [
           { "Chance": 40, "Description": "Dominion" },
           { "Chance": 70, "Description": "Guild" },
@@ -8932,6 +9101,7 @@
       },
       {
         "Name": "Influence",
+        "Part of speech": ["adjective"],
         "Table": [
           {
             "Chance": 10,
@@ -8975,6 +9145,8 @@
       {
         "Name": "Dominion",
         "Requires": { "Type": ["Dominion"] },
+        "Part of speech": ["noun"],
+        "Content tags": ["abstract noun"],
         "Max rolls": 3,
         "Table": [
           { "Chance": 5, "Description": "Agriculture" },
@@ -9008,6 +9180,8 @@
       {
         "Name": "Leadership",
         "Display name": "Dominion / Leadership",
+        "Part of speech": ["fragment"],
+        "Content tags": ["description"],
         "Requires": { "Type": ["Dominion"] },
         "Table": [
           { "Chance": 5, "Description": "Anarchist" },
@@ -9027,6 +9201,8 @@
       {
         "Name": "Guild",
         "Requires": { "Type": ["Guild"] },
+        "Part of speech": ["noun", "plural"],
+        "Content tags": ["actor"],
         "Table": [
           { "Chance": 5, "Description": "Assassins" },
           { "Chance": 10, "Description": "Bounty Hunters" },
@@ -9054,6 +9230,8 @@
       {
         "Name": "Fringe Group",
         "Requires": { "Type": ["Fringe Group"] },
+        "Part of speech": ["noun", "plural"],
+        "Content tags": ["actor"],
         "Table": [
           { "Chance": 5, "Description": "Cultists" },
           { "Chance": 15, "Description": "Exiles" },
@@ -9172,6 +9350,8 @@
       {
         "Name": "Relationships",
         "Display name": "Faction Relationships",
+        "Part of speech": ["fragment"],
+        "Content tags": [],
         "Description": "<p>Factions can add scale and narrative opportunities to your setting. But keep it manageable. Don’t overload your campaign with factions. Instead, focus on your interactions and entanglements with members of a few interesting factions. Then, when you have a question about the relationship of one faction to another, use this table. The result is the commonly understood connection between those factions. Further investigations or events may reveal a deeper or alternate truth.</p>",
         "Table": [
           { "Chance": 4, "Description": "Antagonistic towards" },
@@ -9212,7 +9392,8 @@
       },
       {
         "Name": "Name Template",
-        "Content tags": ["Template"],
+        "Part of speech": ["name", "proper noun"],
+        "Content tags": ["template"],
         "Display name": "Faction Name Template",
         "Description": "<p>To generate a faction name, first roll or choose the name template. Then, follow the structure of the template to build the name from individual tables. If you’ve already set the faction type, picking from the tables (instead of rolling) will likely provide a more appropriate result. For example, “Silver Jackals” is a fitting name for a criminal organization. The “Empire of the Undying Suns” is a less apt name for that gang—unless their leader is prone to delusions of grandeur. In short, choosing a name will give you more control. Rolling might give you a result that doesn’t square with known aspects, but those contradictions may prove inspiring.</p><p>An alternative approach to generate a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one which idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or simply pick.</p>",
         "Table": [
@@ -9315,6 +9496,7 @@
       {
         "Name": "Affiliation",
         "Part of speech": ["noun"],
+        "Content tags": ["organization", "actor"],
         "Table": [
           { "Chance": 4, "Description": "Accord" },
           { "Chance": 8, "Description": "Alliance" },
@@ -9654,6 +9836,7 @@
       {
         "Name": "Location",
         "Initial": true,
+        "Part of speech": ["adjective"],
         "Table": [
           { "Chance": 40, "Description": "Planetside" },
           { "Chance": 60, "Description": "Orbital" },
@@ -9718,7 +9901,6 @@
       },
       {
         "Name": "Outer First Look",
-        "Group": "First Look",
         "Initial": true,
         "Part of speech": ["fragment"],
         "Table": [
@@ -9738,7 +9920,6 @@
       },
       {
         "Name": "Inner First Look",
-        "Group": "First Look",
         "Part of speech": ["fragment"],
         "Max rolls": 2,
         "Table": [
@@ -9793,6 +9974,7 @@
         "Tables": [
           {
             "Display name": "Derelict Zone - Starship",
+            "Name": "Starship",
             "Requires": { "Derelict Type": ["Starship"] },
             "Table": [
               { "Chance": 5, "Description": "&blacktriangleright;Community" },
@@ -9810,6 +9992,7 @@
           },
           {
             "Display name": "Derelict Zone - Settlement",
+            "Name": "Settlement",
             "Requires": { "Derelict Type": ["Settlement"] },
             "Table": [
               { "Chance": 20, "Description": "&blacktriangleright;Community" },
@@ -10877,6 +11060,7 @@
       {
         "Name": "Location",
         "Initial": true,
+        "Part of speech": ["adjective"],
         "Table": [
           { "Chance": 50, "Description": "Planetside" },
           { "Chance": 75, "Description": "Orbital" },
@@ -11637,6 +11821,7 @@
       {
         "Name": "Theme Type",
         "Description": "<p>Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location. You can answer questions about a place using only the tables provided for a theme, such as when delving into an <strong>Infested</strong> cave. Or you can pair a theme with other location oracles for more flavor and variety; for example, you might explore a <strong>Haunted Grave World</strong>, a <strong>Ruined Derelict</strong>, a <strong>Sacred Precusor Vault</strong>, or an <strong>Inhabited Settlement</strong>.</p>",
+        "Part of speech": ["adjective"],
         "Table": [
           {
             "Chance": 15,
