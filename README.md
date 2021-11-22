@@ -22,7 +22,7 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
     * oracles (except move oracles)
     * setting truths
     * encounters/NPCs
-  * **Moves Backer Preview (Discord) - 092921**
+  * **Moves Backer Preview - 113021**
     * moves
     * move oracles
   * **Asset Backer Preview - 092921**
