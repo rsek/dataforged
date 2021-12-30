@@ -2370,68 +2370,172 @@
     "Display name": "Derelicts",
     "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
     "Content tags": ["oracles"],
+    "Description": "Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.",
+    "Oracles": [
+      {
+        "Name": "Location",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["adjective"],
+        "Table": [
+          { "Chance": 40, "Description": "Planetside" },
+          { "Chance": 60, "Description": "Orbital" },
+          { "Chance": 100, "Description": "Deep Space" }
+        ]
+      },
+      {
+        "Name": "Derelict Type",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Select table by": "Location",
+        "Tables": [
+          {
+            "Name": "Planetside",
+            "Display name": "Type - Planetside",
+            "Requires": { "Location": ["Planetside"] },
+            "Table": [
+              { "Chance": 25, "Description": "Starship" },
+              { "Chance": 100, "Description": "Settlement" }
+            ]
+          },
+          {
+            "Name": "Orbital",
+            "Display name": "Type - Orbital",
+            "Requires": { "Location": ["Orbital"] },
+            "Table": [
+              { "Chance": 40, "Description": "Starship" },
+              { "Chance": 100, "Description": "Settlement" }
+            ]
+          },
+          {
+            "Name": "Deep Space",
+            "Display name": "Type - Deep Space",
+            "Requires": { "Location": ["Deep Space"] },
+            "Table": [
+              { "Chance": 75, "Description": "Starship" },
+              { "Chance": 100, "Description": "Settlement" }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Condition",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["fragment"],
+        "Table": [
+          { "Chance": 10, "Description": "Functional" },
+          { "Chance": 30, "Description": "Limited power" },
+          { "Chance": 60, "Description": "Cold and dark" },
+          { "Chance": 90, "Description": "Damaged or breached" },
+          { "Chance": 98, "Description": "Heavily damaged" },
+          { "Chance": 100, "Description": "Impending destruction" }
+        ]
+      },
+      {
+        "Name": "Outer First Look",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["fragment"],
+        "Table": [
+          { "Chance": 15, "Description": "Blocked access" },
+          { "Chance": 30, "Description": "Corpses" },
+          { "Chance": 45, "Description": "Hazardous readings" },
+          { "Chance": 50, "Description": "Mutated structure" },
+          { "Chance": 60, "Description": "Odd orientation" },
+          { "Chance": 65, "Description": "Overgrown or entangled" },
+          { "Chance": 80, "Description": "Sending a signal or message" },
+          { "Chance": 85, "Description": "Signs that others are here" },
+          { "Chance": 95, "Description": "Stripped exterior" },
+          { "Chance": 100, "Description": "Time or reality distortions" }
+        ]
+      },
+      {
+        "Name": "Inner First Look",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Part of speech": ["fragment"],
+        "Max rolls": 2,
+        "Table": [
+          { "Chance": 3, "Description": "Abnormal gravity" },
+          { "Chance": 6, "Description": "Active bots" },
+          { "Chance": 9, "Description": "Archaic equipment" },
+          { "Chance": 12, "Description": "Automated announcements" },
+          { "Chance": 15, "Description": "Biological infestation" },
+          { "Chance": 18, "Description": "Charred surfaces" },
+          { "Chance": 21, "Description": "Claw marks" },
+          { "Chance": 24, "Description": "Cluttered with debris" },
+          { "Chance": 27, "Description": "Corroded surfaces" },
+          { "Chance": 30, "Description": "Cramped spaces" },
+          { "Chance": 33, "Description": "Creaking hull" },
+          { "Chance": 36, "Description": "Esoteric writing or symbols" },
+          { "Chance": 39, "Description": "Evidence of new inhabitants" },
+          { "Chance": 42, "Description": "Exposed wiring or conduits" },
+          { "Chance": 45, "Description": "Flashing strobe lights" },
+          { "Chance": 48, "Description": "Fluctuating power" },
+          { "Chance": 51, "Description": "Haunting visions of the dead" },
+          { "Chance": 54, "Description": "Hazardous temperature" },
+          { "Chance": 57, "Description": "Heavy steam or moisture" },
+          { "Chance": 60, "Description": "Littered with corpses" },
+          { "Chance": 63, "Description": "Nesting or feeding creatures" },
+          { "Chance": 66, "Description": "Ornate furnishings" },
+          { "Chance": 69, "Description": "Scarred by gunfire" },
+          { "Chance": 72, "Description": "Sealed against intruders" },
+          { "Chance": 75, "Description": "Signs of looting or scavenging" },
+          { "Chance": 78, "Description": "Smell of decay" },
+          { "Chance": 81, "Description": "Splattered with blood" },
+          { "Chance": 84, "Description": "Temporal distortions" },
+          { "Chance": 87, "Description": "Thick haze or smoke" },
+          { "Chance": 90, "Description": "Unstable energy surges" },
+          { "Chance": 93, "Description": "Watchful AI" },
+          {
+            "Chance": 100,
+            "Description": "▶️Descriptor + Focus",
+            "Oracles": [
+              { "Category": "Core", "Name": "Descriptor" },
+              { "Category": "Core", "Name": "Focus" }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Zone",
+        "Display name": "Derelict Zone",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Repeatable": true,
+        "Select table by": "Derelict Type",
+        "Tables": [
+          {
+            "Name": "Starship",
+            "Display name": "Derelict Zone - Starship",
+            "Requires": { "Derelict Type": ["Starship"] },
+            "Table": [
+              { "Chance": 5, "Description": "▶️Community" },
+              { "Chance": 30, "Description": "▶️Engineering" },
+              { "Chance": 55, "Description": "▶️Living" },
+              { "Chance": 65, "Description": "▶️Medical" },
+              { "Chance": 85, "Description": "▶️Operations" },
+              { "Chance": 90, "Description": "▶️Production" },
+              { "Chance": 100, "Description": "▶️Research" }
+            ]
+          },
+          {
+            "Name": "Settlement",
+            "Display name": "Derelict Zone - Settlement",
+            "Requires": { "Derelict Type": ["Settlement"] },
+            "Table": [
+              { "Chance": 20, "Description": "▶️Community" },
+              { "Chance": 30, "Description": "▶️Engineering" },
+              { "Chance": 50, "Description": "▶️Living" },
+              { "Chance": 60, "Description": "▶️Medical" },
+              { "Chance": 70, "Description": "▶️Operations" },
+              { "Chance": 90, "Description": "▶️Production" },
+              { "Chance": 100, "Description": "▶️Research" }
+            ]
+          }
+        ]
+      }
+    ],
     "Subcategories": [
-      { "0": "A", "1": "c", "2": "c", "3": "e", "4": "s", "5": "s" },
-      {
-        "0": "C",
-        "1": "o",
-        "2": "m",
-        "3": "m",
-        "4": "u",
-        "5": "n",
-        "6": "i",
-        "7": "t",
-        "8": "y"
-      },
-      {
-        "0": "E",
-        "1": "n",
-        "2": "g",
-        "3": "i",
-        "4": "n",
-        "5": "e",
-        "6": "e",
-        "7": "r",
-        "8": "i",
-        "9": "n",
-        "10": "g"
-      },
-      { "0": "L", "1": "i", "2": "v", "3": "i", "4": "n", "5": "g" },
-      { "0": "M", "1": "e", "2": "d", "3": "i", "4": "c", "5": "a", "6": "l" },
-      {
-        "0": "O",
-        "1": "p",
-        "2": "e",
-        "3": "r",
-        "4": "a",
-        "5": "t",
-        "6": "i",
-        "7": "o",
-        "8": "n",
-        "9": "s"
-      },
-      {
-        "0": "P",
-        "1": "r",
-        "2": "o",
-        "3": "d",
-        "4": "u",
-        "5": "c",
-        "6": "t",
-        "7": "i",
-        "8": "o",
-        "9": "n"
-      },
-      {
-        "0": "R",
-        "1": "e",
-        "2": "s",
-        "3": "e",
-        "4": "a",
-        "5": "r",
-        "6": "c",
-        "7": "h"
-      },
       {
         "Name": "Access",
         "Display name": "Derelict Zone - Access",
@@ -3368,171 +3472,6 @@
               { "Chance": 60, "Description": "Specialized research tools" },
               { "Chance": 80, "Description": "Unique prototype" },
               { "Chance": 100, "Description": "Useful navigational data" }
-            ]
-          }
-        ]
-      }
-    ],
-    "Description": "Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.",
-    "Oracles": [
-      {
-        "Name": "Location",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["adjective"],
-        "Table": [
-          { "Chance": 40, "Description": "Planetside" },
-          { "Chance": 60, "Description": "Orbital" },
-          { "Chance": 100, "Description": "Deep Space" }
-        ]
-      },
-      {
-        "Name": "Derelict Type",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Select table by": "Location",
-        "Tables": [
-          {
-            "Name": "Planetside",
-            "Display name": "Type - Planetside",
-            "Requires": { "Location": ["Planetside"] },
-            "Table": [
-              { "Chance": 25, "Description": "Starship" },
-              { "Chance": 100, "Description": "Settlement" }
-            ]
-          },
-          {
-            "Name": "Orbital",
-            "Display name": "Type - Orbital",
-            "Requires": { "Location": ["Orbital"] },
-            "Table": [
-              { "Chance": 40, "Description": "Starship" },
-              { "Chance": 100, "Description": "Settlement" }
-            ]
-          },
-          {
-            "Name": "Deep Space",
-            "Display name": "Type - Deep Space",
-            "Requires": { "Location": ["Deep Space"] },
-            "Table": [
-              { "Chance": 75, "Description": "Starship" },
-              { "Chance": 100, "Description": "Settlement" }
-            ]
-          }
-        ]
-      },
-      {
-        "Name": "Condition",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["fragment"],
-        "Table": [
-          { "Chance": 10, "Description": "Functional" },
-          { "Chance": 30, "Description": "Limited power" },
-          { "Chance": 60, "Description": "Cold and dark" },
-          { "Chance": 90, "Description": "Damaged or breached" },
-          { "Chance": 98, "Description": "Heavily damaged" },
-          { "Chance": 100, "Description": "Impending destruction" }
-        ]
-      },
-      {
-        "Name": "Outer First Look",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["fragment"],
-        "Table": [
-          { "Chance": 15, "Description": "Blocked access" },
-          { "Chance": 30, "Description": "Corpses" },
-          { "Chance": 45, "Description": "Hazardous readings" },
-          { "Chance": 50, "Description": "Mutated structure" },
-          { "Chance": 60, "Description": "Odd orientation" },
-          { "Chance": 65, "Description": "Overgrown or entangled" },
-          { "Chance": 80, "Description": "Sending a signal or message" },
-          { "Chance": 85, "Description": "Signs that others are here" },
-          { "Chance": 95, "Description": "Stripped exterior" },
-          { "Chance": 100, "Description": "Time or reality distortions" }
-        ]
-      },
-      {
-        "Name": "Inner First Look",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Part of speech": ["fragment"],
-        "Max rolls": 2,
-        "Table": [
-          { "Chance": 3, "Description": "Abnormal gravity" },
-          { "Chance": 6, "Description": "Active bots" },
-          { "Chance": 9, "Description": "Archaic equipment" },
-          { "Chance": 12, "Description": "Automated announcements" },
-          { "Chance": 15, "Description": "Biological infestation" },
-          { "Chance": 18, "Description": "Charred surfaces" },
-          { "Chance": 21, "Description": "Claw marks" },
-          { "Chance": 24, "Description": "Cluttered with debris" },
-          { "Chance": 27, "Description": "Corroded surfaces" },
-          { "Chance": 30, "Description": "Cramped spaces" },
-          { "Chance": 33, "Description": "Creaking hull" },
-          { "Chance": 36, "Description": "Esoteric writing or symbols" },
-          { "Chance": 39, "Description": "Evidence of new inhabitants" },
-          { "Chance": 42, "Description": "Exposed wiring or conduits" },
-          { "Chance": 45, "Description": "Flashing strobe lights" },
-          { "Chance": 48, "Description": "Fluctuating power" },
-          { "Chance": 51, "Description": "Haunting visions of the dead" },
-          { "Chance": 54, "Description": "Hazardous temperature" },
-          { "Chance": 57, "Description": "Heavy steam or moisture" },
-          { "Chance": 60, "Description": "Littered with corpses" },
-          { "Chance": 63, "Description": "Nesting or feeding creatures" },
-          { "Chance": 66, "Description": "Ornate furnishings" },
-          { "Chance": 69, "Description": "Scarred by gunfire" },
-          { "Chance": 72, "Description": "Sealed against intruders" },
-          { "Chance": 75, "Description": "Signs of looting or scavenging" },
-          { "Chance": 78, "Description": "Smell of decay" },
-          { "Chance": 81, "Description": "Splattered with blood" },
-          { "Chance": 84, "Description": "Temporal distortions" },
-          { "Chance": 87, "Description": "Thick haze or smoke" },
-          { "Chance": 90, "Description": "Unstable energy surges" },
-          { "Chance": 93, "Description": "Watchful AI" },
-          {
-            "Chance": 100,
-            "Description": "▶️Descriptor + Focus",
-            "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
-            ]
-          }
-        ]
-      },
-      {
-        "Name": "Zone",
-        "Display name": "Derelict Zone",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Repeatable": true,
-        "Select table by": "Derelict Type",
-        "Tables": [
-          {
-            "Name": "Starship",
-            "Display name": "Derelict Zone - Starship",
-            "Requires": { "Derelict Type": ["Starship"] },
-            "Table": [
-              { "Chance": 5, "Description": "▶️Community" },
-              { "Chance": 30, "Description": "▶️Engineering" },
-              { "Chance": 55, "Description": "▶️Living" },
-              { "Chance": 65, "Description": "▶️Medical" },
-              { "Chance": 85, "Description": "▶️Operations" },
-              { "Chance": 90, "Description": "▶️Production" },
-              { "Chance": 100, "Description": "▶️Research" }
-            ]
-          },
-          {
-            "Name": "Settlement",
-            "Display name": "Derelict Zone - Settlement",
-            "Requires": { "Derelict Type": ["Settlement"] },
-            "Table": [
-              { "Chance": 20, "Description": "▶️Community" },
-              { "Chance": 30, "Description": "▶️Engineering" },
-              { "Chance": 50, "Description": "▶️Living" },
-              { "Chance": 60, "Description": "▶️Medical" },
-              { "Chance": 70, "Description": "▶️Operations" },
-              { "Chance": 90, "Description": "▶️Production" },
-              { "Chance": 100, "Description": "▶️Research" }
             ]
           }
         ]
@@ -6221,159 +6160,617 @@
     "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
     "Aliases": ["World"],
     "Content tags": ["oracles"],
+    "Oracles": [
+      {
+        "Name": "Planetary Class",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
+        "Initial": true,
+        "Part of speech": ["noun"],
+        "Table": [
+          {
+            "Chance": 15,
+            "Description": "A pitiless planet of searing heat, blowing sand, and sunbaked rock."
+          },
+          {
+            "Chance": 30,
+            "Description": "A planet with relentless volcanic activity, wreathed in fire and ash."
+          },
+          {
+            "Chance": 35,
+            "Description": "A once-thriving world—now a grim monument to a fallen civilization."
+          },
+          {
+            "Chance": 50,
+            "Description": "A rugged, frozen world—locked in an unending winter."
+          },
+          {
+            "Chance": 65,
+            "Description": "A massive planet with vast layers of dense gases surrounding a small rocky core."
+          },
+          {
+            "Chance": 70,
+            "Description": "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation."
+          },
+          {
+            "Chance": 75,
+            "Description": "A planet completely or mostly covered by a boundless ocean."
+          },
+          {
+            "Chance": 90,
+            "Description": "A rugged planet scarred by eons of destructive asteroid impacts."
+          },
+          {
+            "Chance": 92,
+            "Description": "A planet sundered by cataclysmic destruction."
+          },
+          {
+            "Chance": 98,
+            "Description": "A foul planet wracked by a poisonous climate and virulent growths."
+          },
+          {
+            "Chance": 100,
+            "Description": "This diverse, life-bearing planet might provide some small measure of hope."
+          }
+        ]
+      },
+      {
+        "Name": "Peril",
+        "Display name": "Planetside Peril",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
+        "Content tags": ["peril", "event", "present"],
+        "Repeatable": true,
+        "Part of speech": ["fragment"],
+        "Description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
+        "Select table by": "Life",
+        "Tables": [
+          {
+            "Name": "Lifebearing",
+            "Display name": "Planetside Peril - Lifebearing",
+            "Requires": {
+              "Location": ["Planetside"],
+              "Life": [
+                "Lifebearing",
+                "Simple",
+                "Sparse",
+                "Diverse",
+                "Bountiful",
+                "Overrun"
+              ]
+            },
+            "Table": [
+              {
+                "Chance": 3,
+                "Description": "Corrupted or mutated lifeform",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 6,
+                "Description": "Signs of a lifeform's power or cunning",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 9,
+                "Description": "Hazardous plant life or malignant spores"
+              },
+              {
+                "Chance": 12,
+                "Description": "Lifeform hunts for prey",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 15,
+                "Description": "Lifeform lairs here",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 18,
+                "Description": "Lifeforms guided by a greater threat",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 21,
+                "Description": "Lifeforms spooked or stampeding",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 24,
+                "Description": "Threatening lifeform draws near",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 27,
+                "Description": "Life is revealed or takes an unexpected form",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              { "Chance": 30, "Description": "Blocked or impassible path" },
+              {
+                "Chance": 33,
+                "Description": "Corrosive substance or environment"
+              },
+              {
+                "Chance": 36,
+                "Description": "Disturbing remains or evidence of death"
+              },
+              { "Chance": 39, "Description": "Drastic environmental change" },
+              { "Chance": 42, "Description": "Enemy holds this area" },
+              { "Chance": 45, "Description": "Entangling or engulfing hazard" },
+              {
+                "Chance": 48,
+                "Description": "Equipment fails or malfunctions"
+              },
+              { "Chance": 51, "Description": "Guarded or patrolled path" },
+              { "Chance": 54, "Description": "Led astray" },
+              { "Chance": 57, "Description": "Lost the path" },
+              { "Chance": 60, "Description": "Meteorites fall from the sky" },
+              { "Chance": 63, "Description": "Irradiated area or object" },
+              {
+                "Chance": 66,
+                "Description": "Realization that something was left behind"
+              },
+              { "Chance": 69, "Description": "Seismic or volcanic upheaval" },
+              {
+                "Chance": 72,
+                "Description": "Signs of a lurking or trailing foe"
+              },
+              {
+                "Chance": 75,
+                "Description": "Storm or atmospheric disruption"
+              },
+              { "Chance": 78, "Description": "Toxic or sickening environment" },
+              { "Chance": 81, "Description": "Trap or alarm" },
+              { "Chance": 84, "Description": "Treacherous or arduous path" },
+              {
+                "Chance": 87,
+                "Description": "Troubling visions or apparitions"
+              },
+              {
+                "Chance": 90,
+                "Description": "Visibility hindered by atmospheric effects"
+              },
+              {
+                "Chance": 93,
+                "Description": "Worrying arrival of a ship or vehicle",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Starship" }]
+                }
+              },
+              {
+                "Chance": 96,
+                "Description": "Wreckage or ruins portend a new threat"
+              },
+              {
+                "Chance": 99,
+                "Description": "▶️Action + Theme",
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              },
+              {
+                "Chance": 100,
+                "Description": "Roll twice",
+                "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
+              }
+            ]
+          },
+          {
+            "Name": "Lifeless",
+            "Display name": "Planetside Peril - Lifeless",
+            "Requires": {
+              "Location": ["Planetside"],
+              "Life": ["Lifeless", "None", "Extinct"]
+            },
+            "Table": [
+              {
+                "Chance": 3,
+                "Description": "Life is revealed or takes an unexpected form",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              { "Chance": 7, "Description": "Blocked or impassible path" },
+              {
+                "Chance": 11,
+                "Description": "Corrosive substance or environment"
+              },
+              {
+                "Chance": 15,
+                "Description": "Disturbing remains or evidence of death"
+              },
+              { "Chance": 19, "Description": "Drastic environmental change" },
+              { "Chance": 23, "Description": "Enemy holds this area" },
+              { "Chance": 27, "Description": "Entangling or engulfing hazard" },
+              {
+                "Chance": 31,
+                "Description": "Equipment fails or malfunctions"
+              },
+              { "Chance": 35, "Description": "Guarded or patrolled path" },
+              { "Chance": 39, "Description": "Led astray" },
+              { "Chance": 43, "Description": "Lost the path" },
+              { "Chance": 47, "Description": "Meteorites fall from the sky" },
+              { "Chance": 51, "Description": "Irradiated area or object" },
+              {
+                "Chance": 55,
+                "Description": "Realization that something was left behind"
+              },
+              { "Chance": 59, "Description": "Seismic or volcanic upheaval" },
+              {
+                "Chance": 63,
+                "Description": "Signs of a lurking or trailing foe"
+              },
+              {
+                "Chance": 67,
+                "Description": "Storm or atmospheric disruption"
+              },
+              { "Chance": 71, "Description": "Toxic or sickening environment" },
+              { "Chance": 75, "Description": "Trap or alarm" },
+              { "Chance": 79, "Description": "Treacherous or arduous path" },
+              {
+                "Chance": 83,
+                "Description": "Troubling visions or apparitions"
+              },
+              {
+                "Chance": 87,
+                "Description": "Visibility hindered by atmospheric effects"
+              },
+              {
+                "Chance": 91,
+                "Description": "Worrying arrival of a ship or vehicle",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Starship" }]
+                }
+              },
+              {
+                "Chance": 95,
+                "Description": "Wreckage or ruins portend a new threat"
+              },
+              {
+                "Chance": 99,
+                "Description": "▶️Action + Theme",
+                "Oracles": [
+                  { "Category": "Core", "Name": "Action" },
+                  { "Category": "Core", "Name": "Theme" }
+                ]
+              },
+              {
+                "Chance": 100,
+                "Description": "Roll twice",
+                "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": "Opportunity",
+        "Display name": "Planetside Opportunity",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
+        "Content tags": ["opportunity"],
+        "Repeatable": true,
+        "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.",
+        "Part of speech": ["fragment"],
+        "Select table by": "Life",
+        "Tables": [
+          {
+            "Name": "Lifebearing",
+            "Display name": "Planetside Opportunity - Lifebearing",
+            "Requires": {
+              "Location": ["Planetside"],
+              "Life": [
+                "Lifebearing",
+                "Simple",
+                "Sparse",
+                "Diverse",
+                "Bountiful",
+                "Overrun"
+              ]
+            },
+            "Table": [
+              {
+                "Chance": 4,
+                "Description": "Clue to a lifeform's nature or vulnerabilities",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 8,
+                "Description": "Friendly interaction with a benign lifeform",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 12,
+                "Description": "Hunting or foraging opportunities are plentiful"
+              },
+              {
+                "Chance": 16,
+                "Description": "Interesting or helpful aspect of benign creatures",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 20,
+                "Description": "Interesting or helpful aspect of local plant life"
+              },
+              {
+                "Chance": 24,
+                "Description": "Encounter reveals unexpected benign lifeforms",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 28,
+                "Description": "Abandoned camp or vehicle",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 32,
+                "Description": "Advance warning of an environmental threat"
+              },
+              {
+                "Chance": 36,
+                "Description": "Clear path through otherwise perilous terrain"
+              },
+              {
+                "Chance": 40,
+                "Description": "Clue offers insight into a current quest or mystery"
+              },
+              {
+                "Chance": 44,
+                "Description": "Clue to the history or nature of this place"
+              },
+              {
+                "Chance": 48,
+                "Description": "Evidence that others have passed this way"
+              },
+              {
+                "Chance": 52,
+                "Description": "Foe reveals themselves or tips their hand"
+              },
+              {
+                "Chance": 56,
+                "Description": "Fortuitous change in the weather or atmosphere"
+              },
+              {
+                "Chance": 60,
+                "Description": "Friendly traveler crosses your path"
+              },
+              {
+                "Chance": 64,
+                "Description": "Helpful resource is in ample supply",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 68,
+                "Description": "Impressive vista offers comfort or inspiration"
+              },
+              {
+                "Chance": 72,
+                "Description": "Interesting artifact or device",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 76,
+                "Description": "Interesting site offers opportunities for exploration",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 80,
+                "Description": "Moment of fellowship or inner peace"
+              },
+              {
+                "Chance": 84,
+                "Description": "Opening to distract, escape, or avoid foes"
+              },
+              {
+                "Chance": 88,
+                "Description": "Opening to get the drop on a foe"
+              },
+              {
+                "Chance": 92,
+                "Description": "Plea for help from a potential benefactor",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Character" }]
+                }
+              },
+              {
+                "Chance": 96,
+                "Description": "Refuge offers a place to hide, plan, or recover",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 100,
+                "Description": "Vantage point reveals the lay of the land",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "Name": "Lifeless",
+            "Display name": "Planetside Opportunity - Lifeless",
+            "Requires": {
+              "Location": ["Planetside"],
+              "Life": ["Lifeless", "None", "Extinct"]
+            },
+            "Table": [
+              {
+                "Chance": 5,
+                "Description": "Encounter reveals unexpected benign lifeforms",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Creature" }]
+                }
+              },
+              {
+                "Chance": 10,
+                "Description": "Abandoned camp or vehicle",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 15,
+                "Description": "Advance warning of an environmental threat"
+              },
+              {
+                "Chance": 20,
+                "Description": "Clear path through otherwise perilous terrain"
+              },
+              {
+                "Chance": 25,
+                "Description": "Clue offers insight into a current quest or mystery"
+              },
+              {
+                "Chance": 30,
+                "Description": "Clue to the history or nature of this place"
+              },
+              {
+                "Chance": 35,
+                "Description": "Evidence that others have passed this way"
+              },
+              {
+                "Chance": 40,
+                "Description": "Foe reveals themselves or tips their hand"
+              },
+              {
+                "Chance": 45,
+                "Description": "Fortuitous change in the weather or atmosphere"
+              },
+              {
+                "Chance": 50,
+                "Description": "Friendly traveler crosses your path"
+              },
+              {
+                "Chance": 55,
+                "Description": "Helpful resource is in ample supply",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 60,
+                "Description": "Impressive vista offers comfort or inspiration"
+              },
+              {
+                "Chance": 65,
+                "Description": "Interesting artifact or device",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 70,
+                "Description": "Interesting site offers opportunities for exploration",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 75,
+                "Description": "Moment of fellowship or inner peace"
+              },
+              {
+                "Chance": 80,
+                "Description": "Opening to distract, escape, or avoid foes"
+              },
+              {
+                "Chance": 85,
+                "Description": "Opening to get the drop on a foe"
+              },
+              {
+                "Chance": 90,
+                "Description": "Plea for help from a potential benefactor",
+                "Suggestions": {
+                  "Game objects": [{ "Object type": "Character" }]
+                }
+              },
+              {
+                "Chance": 95,
+                "Description": "Refuge offers a place to hide, plan, or recover",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              },
+              {
+                "Chance": 100,
+                "Description": "Vantage point reveals the lay of the land",
+                "Suggestions": {
+                  "Oracles": [
+                    { "Category": "Core", "Name": "Descriptor" },
+                    { "Category": "Core", "Name": "Focus" }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "Subcategories": [
-      {
-        "0": "D",
-        "1": "e",
-        "2": "s",
-        "3": "e",
-        "4": "r",
-        "5": "t",
-        "6": " ",
-        "7": "W",
-        "8": "o",
-        "9": "r",
-        "10": "l",
-        "11": "d"
-      },
-      {
-        "0": "F",
-        "1": "u",
-        "2": "r",
-        "3": "n",
-        "4": "a",
-        "5": "c",
-        "6": "e",
-        "7": " ",
-        "8": "W",
-        "9": "o",
-        "10": "r",
-        "11": "l",
-        "12": "d"
-      },
-      {
-        "0": "G",
-        "1": "r",
-        "2": "a",
-        "3": "v",
-        "4": "e",
-        "5": " ",
-        "6": "W",
-        "7": "o",
-        "8": "r",
-        "9": "l",
-        "10": "d"
-      },
-      {
-        "0": "I",
-        "1": "c",
-        "2": "e",
-        "3": " ",
-        "4": "W",
-        "5": "o",
-        "6": "r",
-        "7": "l",
-        "8": "d"
-      },
-      {
-        "0": "J",
-        "1": "o",
-        "2": "v",
-        "3": "i",
-        "4": "a",
-        "5": "n",
-        "6": " ",
-        "7": "W",
-        "8": "o",
-        "9": "r",
-        "10": "l",
-        "11": "d"
-      },
-      {
-        "0": "J",
-        "1": "u",
-        "2": "n",
-        "3": "g",
-        "4": "l",
-        "5": "e",
-        "6": " ",
-        "7": "W",
-        "8": "o",
-        "9": "r",
-        "10": "l",
-        "11": "d"
-      },
-      {
-        "0": "O",
-        "1": "c",
-        "2": "e",
-        "3": "a",
-        "4": "n",
-        "5": " ",
-        "6": "W",
-        "7": "o",
-        "8": "r",
-        "9": "l",
-        "10": "d"
-      },
-      {
-        "0": "R",
-        "1": "o",
-        "2": "c",
-        "3": "k",
-        "4": "y",
-        "5": " ",
-        "6": "W",
-        "7": "o",
-        "8": "r",
-        "9": "l",
-        "10": "d"
-      },
-      {
-        "0": "S",
-        "1": "h",
-        "2": "a",
-        "3": "t",
-        "4": "t",
-        "5": "e",
-        "6": "r",
-        "7": "e",
-        "8": "d",
-        "9": " ",
-        "10": "W",
-        "11": "o",
-        "12": "r",
-        "13": "l",
-        "14": "d"
-      },
-      {
-        "0": "T",
-        "1": "a",
-        "2": "i",
-        "3": "n",
-        "4": "t",
-        "5": "e",
-        "6": "d",
-        "7": " ",
-        "8": "W",
-        "9": "o",
-        "10": "r",
-        "11": "l",
-        "12": "d"
-      },
-      {
-        "0": "V",
-        "1": "i",
-        "2": "t",
-        "3": "a",
-        "4": "l",
-        "5": " ",
-        "6": "W",
-        "7": "o",
-        "8": "r",
-        "9": "l",
-        "10": "d"
-      },
       {
         "Name": "Desert World",
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
@@ -9838,616 +10235,6 @@
           }
         ]
       }
-    ],
-    "Oracles": [
-      {
-        "Name": "Planetary Class",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
-        "Initial": true,
-        "Part of speech": ["noun"],
-        "Table": [
-          {
-            "Chance": 15,
-            "Description": "A pitiless planet of searing heat, blowing sand, and sunbaked rock."
-          },
-          {
-            "Chance": 30,
-            "Description": "A planet with relentless volcanic activity, wreathed in fire and ash."
-          },
-          {
-            "Chance": 35,
-            "Description": "A once-thriving world—now a grim monument to a fallen civilization."
-          },
-          {
-            "Chance": 50,
-            "Description": "A rugged, frozen world—locked in an unending winter."
-          },
-          {
-            "Chance": 65,
-            "Description": "A massive planet with vast layers of dense gases surrounding a small rocky core."
-          },
-          {
-            "Chance": 70,
-            "Description": "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation."
-          },
-          {
-            "Chance": 75,
-            "Description": "A planet completely or mostly covered by a boundless ocean."
-          },
-          {
-            "Chance": 90,
-            "Description": "A rugged planet scarred by eons of destructive asteroid impacts."
-          },
-          {
-            "Chance": 92,
-            "Description": "A planet sundered by cataclysmic destruction."
-          },
-          {
-            "Chance": 98,
-            "Description": "A foul planet wracked by a poisonous climate and virulent growths."
-          },
-          {
-            "Chance": 100,
-            "Description": "This diverse, life-bearing planet might provide some small measure of hope."
-          }
-        ]
-      },
-      {
-        "Name": "Peril",
-        "Display name": "Planetside Peril",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
-        "Content tags": ["peril", "event", "present"],
-        "Repeatable": true,
-        "Part of speech": ["fragment"],
-        "Description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
-        "Select table by": "Life",
-        "Tables": [
-          {
-            "Name": "Lifebearing",
-            "Display name": "Planetside Peril - Lifebearing",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": [
-                "Lifebearing",
-                "Simple",
-                "Sparse",
-                "Diverse",
-                "Bountiful",
-                "Overrun"
-              ]
-            },
-            "Table": [
-              {
-                "Chance": 3,
-                "Description": "Corrupted or mutated lifeform",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 6,
-                "Description": "Signs of a lifeform's power or cunning",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 9,
-                "Description": "Hazardous plant life or malignant spores"
-              },
-              {
-                "Chance": 12,
-                "Description": "Lifeform hunts for prey",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 15,
-                "Description": "Lifeform lairs here",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 18,
-                "Description": "Lifeforms guided by a greater threat",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 21,
-                "Description": "Lifeforms spooked or stampeding",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 24,
-                "Description": "Threatening lifeform draws near",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 27,
-                "Description": "Life is revealed or takes an unexpected form",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              { "Chance": 30, "Description": "Blocked or impassible path" },
-              {
-                "Chance": 33,
-                "Description": "Corrosive substance or environment"
-              },
-              {
-                "Chance": 36,
-                "Description": "Disturbing remains or evidence of death"
-              },
-              { "Chance": 39, "Description": "Drastic environmental change" },
-              { "Chance": 42, "Description": "Enemy holds this area" },
-              { "Chance": 45, "Description": "Entangling or engulfing hazard" },
-              {
-                "Chance": 48,
-                "Description": "Equipment fails or malfunctions"
-              },
-              { "Chance": 51, "Description": "Guarded or patrolled path" },
-              { "Chance": 54, "Description": "Led astray" },
-              { "Chance": 57, "Description": "Lost the path" },
-              { "Chance": 60, "Description": "Meteorites fall from the sky" },
-              { "Chance": 63, "Description": "Irradiated area or object" },
-              {
-                "Chance": 66,
-                "Description": "Realization that something was left behind"
-              },
-              { "Chance": 69, "Description": "Seismic or volcanic upheaval" },
-              {
-                "Chance": 72,
-                "Description": "Signs of a lurking or trailing foe"
-              },
-              {
-                "Chance": 75,
-                "Description": "Storm or atmospheric disruption"
-              },
-              { "Chance": 78, "Description": "Toxic or sickening environment" },
-              { "Chance": 81, "Description": "Trap or alarm" },
-              { "Chance": 84, "Description": "Treacherous or arduous path" },
-              {
-                "Chance": 87,
-                "Description": "Troubling visions or apparitions"
-              },
-              {
-                "Chance": 90,
-                "Description": "Visibility hindered by atmospheric effects"
-              },
-              {
-                "Chance": 93,
-                "Description": "Worrying arrival of a ship or vehicle",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Starship" }]
-                }
-              },
-              {
-                "Chance": 96,
-                "Description": "Wreckage or ruins portend a new threat"
-              },
-              {
-                "Chance": 99,
-                "Description": "▶️Action + Theme",
-                "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
-                ]
-              },
-              {
-                "Chance": 100,
-                "Description": "Roll twice",
-                "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
-              }
-            ]
-          },
-          {
-            "Name": "Lifeless",
-            "Display name": "Planetside Peril - Lifeless",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": ["Lifeless", "None", "Extinct"]
-            },
-            "Table": [
-              {
-                "Chance": 3,
-                "Description": "Life is revealed or takes an unexpected form",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              { "Chance": 7, "Description": "Blocked or impassible path" },
-              {
-                "Chance": 11,
-                "Description": "Corrosive substance or environment"
-              },
-              {
-                "Chance": 15,
-                "Description": "Disturbing remains or evidence of death"
-              },
-              { "Chance": 19, "Description": "Drastic environmental change" },
-              { "Chance": 23, "Description": "Enemy holds this area" },
-              { "Chance": 27, "Description": "Entangling or engulfing hazard" },
-              {
-                "Chance": 31,
-                "Description": "Equipment fails or malfunctions"
-              },
-              { "Chance": 35, "Description": "Guarded or patrolled path" },
-              { "Chance": 39, "Description": "Led astray" },
-              { "Chance": 43, "Description": "Lost the path" },
-              { "Chance": 47, "Description": "Meteorites fall from the sky" },
-              { "Chance": 51, "Description": "Irradiated area or object" },
-              {
-                "Chance": 55,
-                "Description": "Realization that something was left behind"
-              },
-              { "Chance": 59, "Description": "Seismic or volcanic upheaval" },
-              {
-                "Chance": 63,
-                "Description": "Signs of a lurking or trailing foe"
-              },
-              {
-                "Chance": 67,
-                "Description": "Storm or atmospheric disruption"
-              },
-              { "Chance": 71, "Description": "Toxic or sickening environment" },
-              { "Chance": 75, "Description": "Trap or alarm" },
-              { "Chance": 79, "Description": "Treacherous or arduous path" },
-              {
-                "Chance": 83,
-                "Description": "Troubling visions or apparitions"
-              },
-              {
-                "Chance": 87,
-                "Description": "Visibility hindered by atmospheric effects"
-              },
-              {
-                "Chance": 91,
-                "Description": "Worrying arrival of a ship or vehicle",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Starship" }]
-                }
-              },
-              {
-                "Chance": 95,
-                "Description": "Wreckage or ruins portend a new threat"
-              },
-              {
-                "Chance": 99,
-                "Description": "▶️Action + Theme",
-                "Oracles": [
-                  { "Category": "Core", "Name": "Action" },
-                  { "Category": "Core", "Name": "Theme" }
-                ]
-              },
-              {
-                "Chance": 100,
-                "Description": "Roll twice",
-                "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "Name": "Opportunity",
-        "Display name": "Planetside Opportunity",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
-        "Content tags": ["opportunity"],
-        "Repeatable": true,
-        "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.",
-        "Part of speech": ["fragment"],
-        "Select table by": "Life",
-        "Tables": [
-          {
-            "Name": "Lifebearing",
-            "Display name": "Planetside Opportunity - Lifebearing",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": [
-                "Lifebearing",
-                "Simple",
-                "Sparse",
-                "Diverse",
-                "Bountiful",
-                "Overrun"
-              ]
-            },
-            "Table": [
-              {
-                "Chance": 4,
-                "Description": "Clue to a lifeform's nature or vulnerabilities",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 8,
-                "Description": "Friendly interaction with a benign lifeform",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 12,
-                "Description": "Hunting or foraging opportunities are plentiful"
-              },
-              {
-                "Chance": 16,
-                "Description": "Interesting or helpful aspect of benign creatures",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 20,
-                "Description": "Interesting or helpful aspect of local plant life"
-              },
-              {
-                "Chance": 24,
-                "Description": "Encounter reveals unexpected benign lifeforms",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 28,
-                "Description": "Abandoned camp or vehicle",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 32,
-                "Description": "Advance warning of an environmental threat"
-              },
-              {
-                "Chance": 36,
-                "Description": "Clear path through otherwise perilous terrain"
-              },
-              {
-                "Chance": 40,
-                "Description": "Clue offers insight into a current quest or mystery"
-              },
-              {
-                "Chance": 44,
-                "Description": "Clue to the history or nature of this place"
-              },
-              {
-                "Chance": 48,
-                "Description": "Evidence that others have passed this way"
-              },
-              {
-                "Chance": 52,
-                "Description": "Foe reveals themselves or tips their hand"
-              },
-              {
-                "Chance": 56,
-                "Description": "Fortuitous change in the weather or atmosphere"
-              },
-              {
-                "Chance": 60,
-                "Description": "Friendly traveler crosses your path"
-              },
-              {
-                "Chance": 64,
-                "Description": "Helpful resource is in ample supply",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 68,
-                "Description": "Impressive vista offers comfort or inspiration"
-              },
-              {
-                "Chance": 72,
-                "Description": "Interesting artifact or device",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 76,
-                "Description": "Interesting site offers opportunities for exploration",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 80,
-                "Description": "Moment of fellowship or inner peace"
-              },
-              {
-                "Chance": 84,
-                "Description": "Opening to distract, escape, or avoid foes"
-              },
-              {
-                "Chance": 88,
-                "Description": "Opening to get the drop on a foe"
-              },
-              {
-                "Chance": 92,
-                "Description": "Plea for help from a potential benefactor",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Character" }]
-                }
-              },
-              {
-                "Chance": 96,
-                "Description": "Refuge offers a place to hide, plan, or recover",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 100,
-                "Description": "Vantage point reveals the lay of the land",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "Name": "Lifeless",
-            "Display name": "Planetside Opportunity - Lifeless",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": ["Lifeless", "None", "Extinct"]
-            },
-            "Table": [
-              {
-                "Chance": 5,
-                "Description": "Encounter reveals unexpected benign lifeforms",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Creature" }]
-                }
-              },
-              {
-                "Chance": 10,
-                "Description": "Abandoned camp or vehicle",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 15,
-                "Description": "Advance warning of an environmental threat"
-              },
-              {
-                "Chance": 20,
-                "Description": "Clear path through otherwise perilous terrain"
-              },
-              {
-                "Chance": 25,
-                "Description": "Clue offers insight into a current quest or mystery"
-              },
-              {
-                "Chance": 30,
-                "Description": "Clue to the history or nature of this place"
-              },
-              {
-                "Chance": 35,
-                "Description": "Evidence that others have passed this way"
-              },
-              {
-                "Chance": 40,
-                "Description": "Foe reveals themselves or tips their hand"
-              },
-              {
-                "Chance": 45,
-                "Description": "Fortuitous change in the weather or atmosphere"
-              },
-              {
-                "Chance": 50,
-                "Description": "Friendly traveler crosses your path"
-              },
-              {
-                "Chance": 55,
-                "Description": "Helpful resource is in ample supply",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 60,
-                "Description": "Impressive vista offers comfort or inspiration"
-              },
-              {
-                "Chance": 65,
-                "Description": "Interesting artifact or device",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 70,
-                "Description": "Interesting site offers opportunities for exploration",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 75,
-                "Description": "Moment of fellowship or inner peace"
-              },
-              {
-                "Chance": 80,
-                "Description": "Opening to distract, escape, or avoid foes"
-              },
-              {
-                "Chance": 85,
-                "Description": "Opening to get the drop on a foe"
-              },
-              {
-                "Chance": 90,
-                "Description": "Plea for help from a potential benefactor",
-                "Suggestions": {
-                  "Game objects": [{ "Object type": "Character" }]
-                }
-              },
-              {
-                "Chance": 95,
-                "Description": "Refuge offers a place to hide, plan, or recover",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              },
-              {
-                "Chance": 100,
-                "Description": "Vantage point reveals the lay of the land",
-                "Suggestions": {
-                  "Oracles": [
-                    { "Category": "Core", "Name": "Descriptor" },
-                    { "Category": "Core", "Name": "Focus" }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      }
     ]
   },
   {
@@ -10456,38 +10243,149 @@
     "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
     "Aliases": ["Vault"],
     "Tags": ["oracles", "location"],
+    "Oracles": [
+      {
+        "Name": "Location",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["adjective"],
+        "Table": [
+          { "Chance": 50, "Description": "Planetside" },
+          { "Chance": 75, "Description": "Orbital" },
+          { "Chance": 100, "Description": "Deep Space" }
+        ]
+      },
+      {
+        "Name": "Scale",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["fragment"],
+        "Table": [
+          { "Chance": 30, "Description": "Minor, confined site" },
+          { "Chance": 65, "Description": "Typical site of limited scope" },
+          { "Chance": 90, "Description": "Large, elaborate site" },
+          {
+            "Chance": 99,
+            "Description": "Vast site of unfathomable complexity"
+          },
+          {
+            "Chance": 100,
+            "Description": "World-spanning site or megastructure"
+          }
+        ]
+      },
+      {
+        "Name": "Form",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["noun", "common noun"],
+        "Table": [
+          { "Chance": 35, "Description": "Structure" },
+          { "Chance": 60, "Description": "Vessel" },
+          { "Chance": 80, "Description": "Monument" },
+          { "Chance": 95, "Description": "Machine" },
+          { "Chance": 100, "Description": "Incomprehensible" }
+        ]
+      },
+      {
+        "Name": "Shape",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["adjective"],
+        "Table": [
+          { "Chance": 15, "Description": "Practical or functional" },
+          { "Chance": 20, "Description": "Geometric (complex shape)" },
+          { "Chance": 25, "Description": "Geometric (cube)" },
+          { "Chance": 30, "Description": "Geometric (obelisk)" },
+          { "Chance": 35, "Description": "Geometric (pyramid)" },
+          { "Chance": 40, "Description": "Geometric (ring or torus)" },
+          { "Chance": 45, "Description": "Geometric (sphere)" },
+          { "Chance": 55, "Description": "Organic or curved" },
+          { "Chance": 60, "Description": "Platform or disc" },
+          { "Chance": 65, "Description": "Spires or towers" },
+          { "Chance": 68, "Description": "Domed" },
+          { "Chance": 73, "Description": "Spiky" },
+          { "Chance": 76, "Description": "Sculptural or effigy" },
+          { "Chance": 79, "Description": "Amorphous" },
+          { "Chance": 85, "Description": "Transforming" },
+          {
+            "Chance": 100,
+            "Description": "Roll twice",
+            "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
+          }
+        ]
+      },
+      {
+        "Name": "Material",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Initial": true,
+        "Part of speech": ["adjective"],
+        "Table": [
+          { "Chance": 30, "Description": "Metallic (industrial)" },
+          { "Chance": 60, "Description": "Metallic (smooth)" },
+          { "Chance": 70, "Description": "Rocky or stone-like" },
+          { "Chance": 74, "Description": "Crystalline or glass-like" },
+          { "Chance": 78, "Description": "Bone-like" },
+          { "Chance": 82, "Description": "Flesh-like" },
+          { "Chance": 86, "Description": "Plant-like" },
+          { "Chance": 88, "Description": "Energy" },
+          { "Chance": 90, "Description": "Liquid" },
+          {
+            "Chance": 100,
+            "Description": "Roll twice",
+            "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
+          }
+        ]
+      },
+      {
+        "Name": "First Look",
+        "Display name": "Outer First Look",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
+        "Part of speech": ["fragment"],
+        "Initial": true,
+        "Max rolls": 2,
+        "Table": [
+          { "Chance": 3, "Description": "Corrupting its environment" },
+          { "Chance": 7, "Description": "Automated defenses" },
+          { "Chance": 10, "Description": "Breached exterior" },
+          { "Chance": 14, "Description": "Broken or fragmented" },
+          { "Chance": 17, "Description": "Camouflaged or hidden" },
+          { "Chance": 20, "Description": "Cavernous opening" },
+          { "Chance": 23, "Description": "Dispersed structures" },
+          { "Chance": 26, "Description": "Dreadful premonitions" },
+          { "Chance": 30, "Description": "Electromagnetic field" },
+          { "Chance": 33, "Description": "Embedded within terrain" },
+          { "Chance": 36, "Description": "Encased in an energy field" },
+          { "Chance": 40, "Description": "Energy core or conduit" },
+          { "Chance": 43, "Description": "Fractal patterns" },
+          { "Chance": 47, "Description": "Glyphs or symbols" },
+          { "Chance": 51, "Description": "Hazardous readings" },
+          { "Chance": 54, "Description": "Levitating or in motion" },
+          { "Chance": 58, "Description": "Lighted or illuminated" },
+          { "Chance": 61, "Description": "No obvious point of entry" },
+          { "Chance": 64, "Description": "Overgrown or entangled" },
+          { "Chance": 67, "Description": "Perfectly preserved" },
+          { "Chance": 70, "Description": "Phasing in and out of reality" },
+          { "Chance": 73, "Description": "Physical barrier" },
+          { "Chance": 76, "Description": "Pitted or scarred" },
+          { "Chance": 79, "Description": "Scaled for outsized beings" },
+          { "Chance": 82, "Description": "Shrouded in mist or haze" },
+          { "Chance": 85, "Description": "Signs of invaders" },
+          { "Chance": 89, "Description": "Sound or signal" },
+          { "Chance": 92, "Description": "Strong gravity well" },
+          { "Chance": 95, "Description": "Surrounded by destruction" },
+          {
+            "Chance": 100,
+            "Description": "▶️Descriptor + Focus",
+            "Oracles": [
+              { "Category": "Core", "Name": "Descriptor" },
+              { "Category": "Core", "Name": "Focus" }
+            ]
+          }
+        ]
+      }
+    ],
     "Subcategories": [
-      {
-        "0": "V",
-        "1": "a",
-        "2": "u",
-        "3": "l",
-        "4": "t",
-        "5": " ",
-        "6": "I",
-        "7": "n",
-        "8": "t",
-        "9": "e",
-        "10": "r",
-        "11": "i",
-        "12": "o",
-        "13": "r"
-      },
-      {
-        "0": "V",
-        "1": "a",
-        "2": "u",
-        "3": "l",
-        "4": "t",
-        "5": " ",
-        "6": "S",
-        "7": "a",
-        "8": "n",
-        "9": "c",
-        "10": "t",
-        "11": "u",
-        "12": "m"
-      },
       {
         "Name": "Vault Interior",
         "Display name": "Precursor Vault - Interior",
@@ -11073,148 +10971,6 @@
                 "Chance": 100,
                 "Description": "Shortcut or less perilous path speeds your way"
               }
-            ]
-          }
-        ]
-      }
-    ],
-    "Oracles": [
-      {
-        "Name": "Location",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["adjective"],
-        "Table": [
-          { "Chance": 50, "Description": "Planetside" },
-          { "Chance": 75, "Description": "Orbital" },
-          { "Chance": 100, "Description": "Deep Space" }
-        ]
-      },
-      {
-        "Name": "Scale",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["fragment"],
-        "Table": [
-          { "Chance": 30, "Description": "Minor, confined site" },
-          { "Chance": 65, "Description": "Typical site of limited scope" },
-          { "Chance": 90, "Description": "Large, elaborate site" },
-          {
-            "Chance": 99,
-            "Description": "Vast site of unfathomable complexity"
-          },
-          {
-            "Chance": 100,
-            "Description": "World-spanning site or megastructure"
-          }
-        ]
-      },
-      {
-        "Name": "Form",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["noun", "common noun"],
-        "Table": [
-          { "Chance": 35, "Description": "Structure" },
-          { "Chance": 60, "Description": "Vessel" },
-          { "Chance": 80, "Description": "Monument" },
-          { "Chance": 95, "Description": "Machine" },
-          { "Chance": 100, "Description": "Incomprehensible" }
-        ]
-      },
-      {
-        "Name": "Shape",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["adjective"],
-        "Table": [
-          { "Chance": 15, "Description": "Practical or functional" },
-          { "Chance": 20, "Description": "Geometric (complex shape)" },
-          { "Chance": 25, "Description": "Geometric (cube)" },
-          { "Chance": 30, "Description": "Geometric (obelisk)" },
-          { "Chance": 35, "Description": "Geometric (pyramid)" },
-          { "Chance": 40, "Description": "Geometric (ring or torus)" },
-          { "Chance": 45, "Description": "Geometric (sphere)" },
-          { "Chance": 55, "Description": "Organic or curved" },
-          { "Chance": 60, "Description": "Platform or disc" },
-          { "Chance": 65, "Description": "Spires or towers" },
-          { "Chance": 68, "Description": "Domed" },
-          { "Chance": 73, "Description": "Spiky" },
-          { "Chance": 76, "Description": "Sculptural or effigy" },
-          { "Chance": 79, "Description": "Amorphous" },
-          { "Chance": 85, "Description": "Transforming" },
-          {
-            "Chance": 100,
-            "Description": "Roll twice",
-            "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
-          }
-        ]
-      },
-      {
-        "Name": "Material",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
-        "Part of speech": ["adjective"],
-        "Table": [
-          { "Chance": 30, "Description": "Metallic (industrial)" },
-          { "Chance": 60, "Description": "Metallic (smooth)" },
-          { "Chance": 70, "Description": "Rocky or stone-like" },
-          { "Chance": 74, "Description": "Crystalline or glass-like" },
-          { "Chance": 78, "Description": "Bone-like" },
-          { "Chance": 82, "Description": "Flesh-like" },
-          { "Chance": 86, "Description": "Plant-like" },
-          { "Chance": 88, "Description": "Energy" },
-          { "Chance": 90, "Description": "Liquid" },
-          {
-            "Chance": 100,
-            "Description": "Roll twice",
-            "Multiple rolls": { "Amount": 2, "Allow duplicates": false }
-          }
-        ]
-      },
-      {
-        "Name": "First Look",
-        "Display name": "Outer First Look",
-        "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Part of speech": ["fragment"],
-        "Initial": true,
-        "Max rolls": 2,
-        "Table": [
-          { "Chance": 3, "Description": "Corrupting its environment" },
-          { "Chance": 7, "Description": "Automated defenses" },
-          { "Chance": 10, "Description": "Breached exterior" },
-          { "Chance": 14, "Description": "Broken or fragmented" },
-          { "Chance": 17, "Description": "Camouflaged or hidden" },
-          { "Chance": 20, "Description": "Cavernous opening" },
-          { "Chance": 23, "Description": "Dispersed structures" },
-          { "Chance": 26, "Description": "Dreadful premonitions" },
-          { "Chance": 30, "Description": "Electromagnetic field" },
-          { "Chance": 33, "Description": "Embedded within terrain" },
-          { "Chance": 36, "Description": "Encased in an energy field" },
-          { "Chance": 40, "Description": "Energy core or conduit" },
-          { "Chance": 43, "Description": "Fractal patterns" },
-          { "Chance": 47, "Description": "Glyphs or symbols" },
-          { "Chance": 51, "Description": "Hazardous readings" },
-          { "Chance": 54, "Description": "Levitating or in motion" },
-          { "Chance": 58, "Description": "Lighted or illuminated" },
-          { "Chance": 61, "Description": "No obvious point of entry" },
-          { "Chance": 64, "Description": "Overgrown or entangled" },
-          { "Chance": 67, "Description": "Perfectly preserved" },
-          { "Chance": 70, "Description": "Phasing in and out of reality" },
-          { "Chance": 73, "Description": "Physical barrier" },
-          { "Chance": 76, "Description": "Pitted or scarred" },
-          { "Chance": 79, "Description": "Scaled for outsized beings" },
-          { "Chance": 82, "Description": "Shrouded in mist or haze" },
-          { "Chance": 85, "Description": "Signs of invaders" },
-          { "Chance": 89, "Description": "Sound or signal" },
-          { "Chance": 92, "Description": "Strong gravity well" },
-          { "Chance": 95, "Description": "Surrounded by destruction" },
-          {
-            "Chance": 100,
-            "Description": "▶️Descriptor + Focus",
-            "Oracles": [
-              { "Category": "Core", "Name": "Descriptor" },
-              { "Category": "Core", "Name": "Focus" }
             ]
           }
         ]
