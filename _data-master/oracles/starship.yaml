@@ -1,18 +1,12 @@
 Starship:
   Name: Starship
   Aliases: [Ship]
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Starship
-  #     Roles: [actor, place]
-  #     Inherits:
-  #       - Category: Space
-  #         Name: [Peril, Opportunity]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
   Oracles:
     - Name: Name
+      _idFragment: Name
       Display name: Starship Name
       Description: |-
         Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
@@ -120,6 +114,7 @@ Starship:
         - [99, 99, Voidtreader]
         - [100, 100, Vulture]
     - Name: Starship Type
+      _idFragment: Type
       Display name: Type
       Allow duplicate rolls: true
       Initial: true
@@ -162,7 +157,7 @@ Starship:
         - [51, 60, Settler caravan]
         - [61, 70, Trade caravan]
         - [71, 90, Transport and escorts]
-        - [91, 100, *Starship_Mission]
+        - [91, 100, ▶️Starship Mission, *Starship_Mission]
 
     - Name: Initial Contact
       Initial: true
@@ -218,9 +213,10 @@ Starship:
       Description: |-
         Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
       Select table by: Region
-      Tables:
-        - Display name: Starship Mission - Terminus
+      Oracles:
+        - Display name: Starship Mission / Terminus
           Name: Terminus
+          _idFragment: Terminus
           Requires:
             Region: [Terminus]
           Table:
@@ -257,11 +253,12 @@ Starship:
             - [86, 90, *Action+Theme]
             - [91, 100, *Roll_twice]
 
-        - Display name: Starship Mission - Outlands
+        - Display name: Starship Mission / Outlands
           Name: Outlands
+          _idFragment: Outlands
           Requires:
             Region: [Outlands]
-          _Template from: Starship Mission - Terminus
+          _template: Starship Mission / Terminus
           Table:
             - [1, 2]
             - [3, 4]
@@ -296,11 +293,12 @@ Starship:
             - [86, 90]
             - [91, 100]
 
-        - Display name: Starship Mission - Expanse
+        - Display name: Starship Mission / Expanse
           Name: Expanse
+          _idFragment: Expanse
           Requires:
             Region: [Expanse]
-          _Template from: Starship Mission - Terminus
+          _template: Starship Mission / Terminus
           Table:
             - [1, 2]
             - [3, 4]

@@ -2,21 +2,13 @@ Furnace World:
   Name: Furnace World
   Aliases: [Furnace]
   Description: *Furnace
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Furnace World
-  #     Roles: [place]
-  Subcategory of: Planet
-  Category: Planetary Class
+  _childOf: Planet
   Requires:
     Planetary Class: [Furnace World]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
   Image: "https://i.imgur.com/YS5rlDR.png"
-  # Inherits:
-  #   - Category: Planet
-  #     Name: [Peril, Opportunity]
   Sample Names:
     - Ash
     - Azula
@@ -51,8 +43,8 @@ Furnace World:
 
     - Name: Settlements
       Select table by: Region
-      Tables:
-        - Display name: Settlements - Terminus
+      Oracles:
+        - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
             Region: [Terminus]
@@ -63,7 +55,7 @@ Furnace World:
             - [88, 96, *Multiple_settlements]
             - [97, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements - Outlands
+        - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
             Region: [Outlands]
@@ -74,7 +66,7 @@ Furnace World:
             - [98, 99, *Multiple_settlements]
             - [100, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements - Expanse
+        - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
             Region: [Expanse]
@@ -98,7 +90,9 @@ Furnace World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Name: Planetside Feature
+    - Display name: Planetside Feature
+      Name: Feature
+      _idFragment: Feature
       Part of speech: [fragment]
       Max rolls: 2
       Table:

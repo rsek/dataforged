@@ -1,10 +1,6 @@
 Creature:
   Name: Creature
   Display name: Creatures
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Creature
-  #     Roles: [actor]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -50,9 +46,8 @@ Creature:
       Select table by: Environment
       Description: |-
         Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
-      Tables:
-        - Display name: Basic Creature Form - Space
-          Name: Space
+      Oracles:
+        - Name: Space
           Requires:
             Environment: [Space]
           Table:
@@ -74,9 +69,8 @@ Creature:
             - [87, 88, Starfish / symmetrical]
             - [89, 90, Worm / slug / larva]
             - [91, 100, *Roll_twice]
-        - Display name: Basic Creature Form - Interior
-          Name: Interior
-          _Template from: Basic Creature Form - Space
+        - Name: Interior
+          _template: Space
           Requires:
             Environment: [Interior]
           Table:
@@ -98,9 +92,8 @@ Creature:
             - [84, 85]
             - [86, 90]
             - [91, 100]
-        - Display name: Basic Creature Form - Land
-          Name: Land
-          _Template from: Basic Creature Form - Space
+        - Name: Land
+          _template: Space
           Requires:
             Environment: [Land]
           Table:
@@ -122,9 +115,8 @@ Creature:
             - [82, 83]
             - [84, 90]
             - [91, 100]
-        - Display name: Basic Creature Form - Liquid
-          Name: Liquid
-          _Template from: Basic Creature Form - Space
+        - Name: Liquid
+          _template: Space
           Requires:
             Environment: [Liquid]
           Table:
@@ -146,9 +138,8 @@ Creature:
             - [83, 87]
             - [88, 90]
             - [91, 100]
-        - Display name: Basic Creature Form - Air
-          Name: Air
-          _Template from: Basic Creature Form - Space
+        - Name: Air
+          _template: Space
           Requires:
             Environment: [Air]
           Table:

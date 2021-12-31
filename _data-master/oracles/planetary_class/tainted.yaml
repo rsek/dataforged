@@ -2,21 +2,13 @@ Tainted World:
   Name: Tainted World
   Aliases: [Tainted]
   Description: *Tainted
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Tainted World
-  #     Roles: [place]
-  Subcategory of: Planet
-  Category: Planetary Class
+  _childOf: Planet
   Requires:
     Planetary Class: [Tainted World]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
   Image: "https://i.imgur.com/TPb8p6L.png"
-  # Inherits:
-  #   - Category: Planet
-  #     Name: [Peril, Opportunity]
   Sample Names:
     - Achlys
     - Animus
@@ -50,8 +42,8 @@ Tainted World:
 
     - Name: Settlements
       Select table by: Region
-      Tables:
-        - Display name: Settlements - Terminus
+      Oracles:
+        - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
             Region: [Terminus]
@@ -62,7 +54,7 @@ Tainted World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements - Outlands
+        - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
             Region: [Outlands]
@@ -71,7 +63,7 @@ Tainted World:
             - [91, 97, *Orbital_settlement]
             - [98, 100, *Planetside_settlement]
 
-        - Display name: Settlements - Expanse
+        - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
             Region: [Expanse]
@@ -95,7 +87,9 @@ Tainted World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Name: Planetside Feature
+    - Display name: Planetside Feature
+      Name: Feature
+      _idFragment: Feature
       Part of speech: [fragment]
       Max rolls: 2
       Table:

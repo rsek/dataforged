@@ -2,21 +2,13 @@ Ice World:
   Name: Ice World
   Aliases: [Ice]
   Description: *Ice
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Ice World
-  #     Roles: [place]
-  Subcategory of: Planet
-  Category: Planetary Class
+  _childOf: Planet
   Requires:
     Planetary Class: [Ice World]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
   Image: "https://i.imgur.com/r6DIkqJ.png"
-  # Inherits:
-  #   - Category: Planet
-  #     Name: [Peril, Opportunity]
   Sample Names:
     - Beira
     - Boreas
@@ -52,8 +44,8 @@ Ice World:
 
     - Name: Settlements
       Select table by: Region
-      Tables:
-        - Display name: Settlements - Terminus
+      Oracles:
+        - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
             Region: [Terminus]
@@ -64,7 +56,7 @@ Ice World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements - Outlands
+        - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
             Region: [Outlands]
@@ -75,7 +67,7 @@ Ice World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements - Expanse
+        - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
             Region: [Expanse]
@@ -99,7 +91,9 @@ Ice World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Name: Planetside Feature
+    - Display name: Planetside Feature
+      Name: Feature
+      _idFragment: Feature
       Part of speech: [fragment]
       Max rolls: 2
       Table:

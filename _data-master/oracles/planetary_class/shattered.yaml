@@ -2,21 +2,13 @@ Shattered World:
   Name: Shattered World
   Aliases: [Shattered]
   Description: *Shattered
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Shattered World
-  #     Roles: [place]
-  Subcategory of: Planet
-  Category: Planetary Class
+  _childOf: Planet
   Requires:
     Planetary Class: [Shattered World]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
   Image: "https://i.imgur.com/HKpmALQ.png"
-  # Inherits:
-  #   - Category: Planet
-  #     Name: [Peril, Opportunity]
   Sample Names:
     - Cavus
     - Chrysalis
@@ -51,8 +43,8 @@ Shattered World:
 
     - Name: Settlements
       Select table by: Region
-      Tables:
-        - Display name: Settlements - Terminus
+      Oracles:
+        - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
             Region: [Terminus]
@@ -63,7 +55,7 @@ Shattered World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements - Outlands
+        - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
             Region: [Outlands]
@@ -73,7 +65,7 @@ Shattered World:
             - [97, 99, *Planetside_settlement]
             - [100, 100, *Multiple_settlements]
 
-        - Display name: Settlements - Expanse
+        - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
             Region: [Expanse]
@@ -97,7 +89,9 @@ Shattered World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Name: Planetside Feature
+    - Display name: Planetside Feature
+      Name: Feature
+      _idFragment: Feature
       Part of speech: [fragment]
       Max rolls: 2
       Table:

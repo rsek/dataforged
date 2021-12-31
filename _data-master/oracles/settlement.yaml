@@ -1,24 +1,6 @@
 Settlement:
   Name: Settlement
   Display name: Settlements
-  Content tags: [oracles]
-  # Templates:
-  #   - Name: Settlement
-  #     Roles: [place]
-  #     Inherits:
-  #     - Category: Space
-  #       Name: [Stellar Object]
-  #       # TODO: an 'as' tag for renaming attributes?
-  #       Requires:
-  #         Location: [Deep Space]
-  #     - Category: Space
-  #       Name: [Peril, Opportunity]
-  #       Requires:
-  #         Location: [Orbital, Deep Space]
-  #     - Category: Planet
-  #       Name: [Peril, Opportunity]
-  #       Requires:
-  #         Location: [Planetside]
   Source:
     Name: Starforged Backer Preview
     Date: "092921"
@@ -34,8 +16,8 @@ Settlement:
     - Name: Population
       Initial: true
       Select table by: Region
-      Tables:
-        - Display name: Population - Terminus
+      Oracles:
+        - Display name: Population / Terminus
           Name: Terminus
           Requires:
             Region: [Terminus]
@@ -46,7 +28,7 @@ Settlement:
             - [56, 85, *pop03]
             - [86, 100, *pop04]
 
-        - Display name: Population - Outlands
+        - Display name: Population / Outlands
           Name: Outlands
           Requires:
             Region: [Outlands]
@@ -57,7 +39,7 @@ Settlement:
             - [66, 90, *pop03]
             - [91, 100, *pop04]
 
-        - Display name: Population - Expanse
+        - Display name: Population / Expanse
           Name: Expanse
           Requires:
             Region: [Expanse]
