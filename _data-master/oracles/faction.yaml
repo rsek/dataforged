@@ -6,6 +6,8 @@ Faction:
     Date: "101221"
   Oracles:
     - Name: Type
+      Usage:
+        Initial: true
       Display name: Faction Type
       Part of speech: [noun]
       Table:
@@ -23,53 +25,55 @@ Faction:
         - [86, 95, Dominant, Far-reaching influence across many sectors]
         - [96, 100, Inescapable, Pervasive influence across inhabited space]
     - Name: Dominion
-      Requires:
-        Type: [Dominion]
+      Usage:
+        Max rolls: 3
+        Requires:
+          Type: [Dominion]
       Part of speech: [noun]
       Content tags: [abstract noun]
-      Max rolls: 3
       Table:
-        - [1,5,Agriculture]
-        - [6,9,Artistry]
-        - [10,14,Commerce]
-        - [15,18,Conquest]
-        - [19,22,Construction]
-        - [23,26,Diplomacy]
-        - [27,30,Education]
-        - [31,34,Environmentalism]
-        - [35,38,Exploration]
-        - [39,42,Faith]
-        - [43,46,History]
-        - [47,50,Honor]
-        - [51,55,Industry]
-        - [56,59,Isolationism]
-        - [60,63,Law]
-        - [64,67,Mysticism]
-        - [68,71,Pacifism]
-        - [72,75,Prophecy]
-        - [76,79,Science]
-        - [80,83,Secrecy]
-        - [84,87,Technology]
-        - [88,91,Treachery]
-        - [92,96,Warfare]
-        - [97,100,Wealth]
+        - [1, 5, Agriculture]
+        - [6, 9, Artistry]
+        - [10, 14, Commerce]
+        - [15, 18, Conquest]
+        - [19, 22, Construction]
+        - [23, 26, Diplomacy]
+        - [27, 30, Education]
+        - [31, 34, Environmentalism]
+        - [35, 38, Exploration]
+        - [39, 42, Faith]
+        - [43, 46, History]
+        - [47, 50, Honor]
+        - [51, 55, Industry]
+        - [56, 59, Isolationism]
+        - [60, 63, Law]
+        - [64, 67, Mysticism]
+        - [68, 71, Pacifism]
+        - [72, 75, Prophecy]
+        - [76, 79, Science]
+        - [80, 83, Secrecy]
+        - [84, 87, Technology]
+        - [88, 91, Treachery]
+        - [92, 96, Warfare]
+        - [97, 100, Wealth]
     - Name: Leadership
       Display name: Dominion / Leadership
+      Usage:
+        Requires:
+          Type: [Dominion]
       Part of speech: [fragment]
       Content tags: [description]
-      Requires:
-        Type: [Dominion]
       Table:
-        - [1,5, Anarchist]
-        - [6,15, Disputed leadership]
-        - [16,30, Authoritarian dictatorship]
-        - [31,45, Oligarchical elite]
-        - [46,60, Dynastic lineage]
-        - [61,70, Fated or prophesied leader]
-        - [71,80, Clan chiefs or elders]
-        - [81,90, Elected representatives]
-        - [91,95, Machine intelligence]
-        - [96,100, Varied / decentralized]
+        - [1, 5, Anarchist]
+        - [6, 15, Disputed leadership]
+        - [16, 30, Authoritarian dictatorship]
+        - [31, 45, Oligarchical elite]
+        - [46, 60, Dynastic lineage]
+        - [61, 70, Fated or prophesied leader]
+        - [71, 80, Clan chiefs or elders]
+        - [81, 90, Elected representatives]
+        - [91, 95, Machine intelligence]
+        - [96, 100, Varied / decentralized]
     - Name: Guild
       Requires:
         Type: [Guild]
@@ -92,8 +96,9 @@ Faction:
         - [86, 90, Spies]
         - [91, 100, *Roll_twice]
     - Name: Fringe Group
-      Requires:
-        Type: [Fringe Group]
+      Usage:
+        Requires:
+          Type: [Fringe Group]
       Part of speech: [noun, plural]
       Content tags: [actor]
       Table:
@@ -113,7 +118,8 @@ Faction:
       Display name: Faction Projects
       Part of speech: [fragment]
       Content tags: [objective]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Description: Pick or roll on this table to reveal the current focus of a faction. Then, use the nature of the organization to help envision the meaning of the project. The result may introduce events which motivate your character to aid or resist the project, or can simply serve as background detail for your setting. If you would like to track the faction’s progress, set a clock for the project using the campaign clock guidelines on page 229.
       Table:
         - [1, 3, Broaden scope of the faction to include a new focus]
@@ -335,7 +341,8 @@ Faction:
       Display name: Faction Quirks
       Content tags: [description]
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Description: |-
         Roll or pick known characteristics of the faction and its members using this table. But keep in mind that even within a small or specialized faction, there are no absolutes. These quirks represent common attitudes, practices, or approaches, but are not universal to every member of that faction. Leave room in your portrayal for diversity and contradictions.
       Table:
@@ -376,7 +383,8 @@ Faction:
       Display name: Faction Rumors
       Part of speech: [fragment]
       Content tags: [event, present]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Description: Use this table when you are in a position to investigate a faction by uncovering secrets or fishing for gossip.
       Table:
         - [1, 3, Caught in the crossfire of feuding factions]
