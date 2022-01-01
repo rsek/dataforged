@@ -2237,7 +2237,11 @@
         "Oracles": [
           {
             "Name": "Space",
-            "Usage": { "Requires": [{ "Environment": ["Space"] }] },
+            "Usage": {
+              "Requires": [
+                { "Paths": ["Creature / Environment"], "Results": ["Space"] }
+              ]
+            },
             "Table": [
               { "Floor": 1, "Ceiling": 5, "Result": "Amoeba / pseudopods" },
               { "Floor": 6, "Ceiling": 20, "Result": "Amorphous / elemental" },
@@ -2275,7 +2279,11 @@
           },
           {
             "Name": "Interior",
-            "Usage": { "Requires": [{ "Environment": ["Interior"] }] },
+            "Usage": {
+              "Requires": [
+                { "Paths": ["Creature / Environment"], "Results": ["Interior"] }
+              ]
+            },
             "Table": [
               { "Floor": 1, "Ceiling": 3, "Result": "Amoeba / pseudopods" },
               { "Floor": 4, "Ceiling": 6, "Result": "Amorphous / elemental" },
@@ -2313,7 +2321,11 @@
           },
           {
             "Name": "Land",
-            "Usage": { "Requires": [{ "Environment": ["Land"] }] },
+            "Usage": {
+              "Requires": [
+                { "Paths": ["Creature / Environment"], "Results": ["Land"] }
+              ]
+            },
             "Table": [
               { "Floor": 1, "Ceiling": 2, "Result": "Amoeba / pseudopods" },
               { "Floor": 3, "Ceiling": 5, "Result": "Amorphous / elemental" },
@@ -2351,7 +2363,11 @@
           },
           {
             "Name": "Liquid",
-            "Usage": { "Requires": [{ "Environment": ["Liquid"] }] },
+            "Usage": {
+              "Requires": [
+                { "Paths": ["Creature / Environment"], "Results": ["Liquid"] }
+              ]
+            },
             "Table": [
               { "Floor": 1, "Ceiling": 5, "Result": "Amoeba / pseudopods" },
               { "Floor": 6, "Ceiling": 8, "Result": "Amorphous / elemental" },
@@ -2389,7 +2405,11 @@
           },
           {
             "Name": "Air",
-            "Usage": { "Requires": [{ "Environment": ["Air"] }] },
+            "Usage": {
+              "Requires": [
+                { "Paths": ["Creature / Environment"], "Results": ["Air"] }
+              ]
+            },
             "Table": [
               { "Floor": 1, "Ceiling": 2, "Result": "Amoeba / pseudopods" },
               { "Floor": 3, "Ceiling": 12, "Result": "Amorphous / elemental" },
