@@ -1,10 +1,12 @@
 Jovian World:
-  Name: Jovian World
+  Name: &class Jovian World
   Aliases: [Jovian]
   Description: *Jovian
   _childOf: Planet
-  Requires:
-    Planetary Class: [Jovian World]
+  Usage:
+    Requires:
+      - Paths: [Planet / Planetary Class]
+        Results: [ &class ]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -33,7 +35,8 @@ Jovian World:
   Oracles:
     - Name: Atmosphere
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 50, *Toxic]
         - [51, 65, *Corrosive]
@@ -41,12 +44,14 @@ Jovian World:
         - [86, 100, *Breathable]
 
     - Name: Settlements
+      Usage:
+        Initial: true
       Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 50, None]
             - [51, 70, *Orbital_settlement]
@@ -57,7 +62,7 @@ Jovian World:
         - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 75, None]
             - [76, 87, *Orbital_settlement]
@@ -68,7 +73,7 @@ Jovian World:
         - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 90, None]
             - [91, 96, *Orbital_settlement]
@@ -76,7 +81,8 @@ Jovian World:
 
     - Name: Observed From Space
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 11, Complex ring system]
         - [12, 22, Intense gravity well]
@@ -93,7 +99,8 @@ Jovian World:
       Name: Feature
       _idFragment: Feature
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 7, Clouds of metal particles]
         - [8, 14, Crystalline rains]

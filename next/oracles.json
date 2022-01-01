@@ -9,6 +9,7 @@
         "Name": "Name",
         "Display name": "Character Name",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
+        "Usage": { "Initial": true },
         "Oracles": [
           {
             "Name": "Given Name",
@@ -20,7 +21,6 @@
               ]
             },
             "Part of speech": ["proper noun"],
-            "Initial": true,
             "Table": [
               { "Floor": 1, "Ceiling": 1, "Result": "Akim" },
               { "Floor": 2, "Ceiling": 2, "Result": "Alex" },
@@ -249,7 +249,6 @@
                 { "Category": "Character", "Name": "Callsign" }
               ]
             },
-            "Initial": true,
             "Table": [
               { "Floor": 1, "Ceiling": 1, "Result": "Kuzmin" },
               { "Floor": 2, "Ceiling": 2, "Result": "Durant" },
@@ -361,9 +360,7 @@
         "Name": "First Look",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "Part of speech": ["adjective"],
-        "Initial": true,
-        "Min rolls": 1,
-        "Max rolls": 2,
+        "Usage": { "Initial": true, "Max rolls": 2 },
         "Table": [
           { "Floor": 1, "Ceiling": 3, "Result": "Accented" },
           { "Floor": 4, "Ceiling": 6, "Result": "Accompanied" },
@@ -412,7 +409,7 @@
         "Display name": "Initial Disposition",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "Part of speech": ["adjective"],
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Table": [
           { "Floor": 1, "Ceiling": 6, "Result": "Helpful" },
           { "Floor": 7, "Ceiling": 14, "Result": "Friendly" },
@@ -436,7 +433,7 @@
         "_idFragment": "Role",
         "Part of speech": ["noun", "common noun"],
         "Content tags": ["people", "actor"],
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Table": [
           { "Floor": 1, "Ceiling": 2, "Result": "Agent" },
           { "Floor": 3, "Ceiling": 4, "Result": "AI" },
@@ -791,7 +788,7 @@
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "_idFragment": "Revealed Aspect",
         "Part of speech": ["adjective"],
-        "Max rolls": 3,
+        "Usage": { "Max rolls": 3 },
         "Table": [
           { "Floor": 1, "Ceiling": 1, "Result": "Addicted" },
           { "Floor": 2, "Ceiling": 2, "Result": "Adventurous" },
@@ -1202,7 +1199,7 @@
         "Description": "Your ship is an important aspect of your character—and a character in its own right. What does it look like? What makes it interesting or uniquely yours? Does it have any particular quirks? If nothing occurs to you now, you can flesh it out in play, or roll once or twice on the table below.",
         "Part of speech": ["fragment"],
         "Content tags": ["description"],
-        "Max rolls": 2,
+        "Usage": { "Max rolls": 2 },
         "Table": [
           {
             "Floor": 1,
@@ -2240,7 +2237,7 @@
         "Oracles": [
           {
             "Name": "Space",
-            "Usage": { "Requires": { "Environment": ["Space"] } },
+            "Usage": { "Requires": [{ "Environment": ["Space"] }] },
             "Table": [
               { "Floor": 1, "Ceiling": 5, "Result": "Amoeba / pseudopods" },
               { "Floor": 6, "Ceiling": 20, "Result": "Amorphous / elemental" },
@@ -2278,7 +2275,7 @@
           },
           {
             "Name": "Interior",
-            "Usage": { "Requires": { "Environment": ["Interior"] } },
+            "Usage": { "Requires": [{ "Environment": ["Interior"] }] },
             "Table": [
               { "Floor": 1, "Ceiling": 3, "Result": "Amoeba / pseudopods" },
               { "Floor": 4, "Ceiling": 6, "Result": "Amorphous / elemental" },
@@ -2316,7 +2313,7 @@
           },
           {
             "Name": "Land",
-            "Usage": { "Requires": { "Environment": ["Land"] } },
+            "Usage": { "Requires": [{ "Environment": ["Land"] }] },
             "Table": [
               { "Floor": 1, "Ceiling": 2, "Result": "Amoeba / pseudopods" },
               { "Floor": 3, "Ceiling": 5, "Result": "Amorphous / elemental" },
@@ -2354,7 +2351,7 @@
           },
           {
             "Name": "Liquid",
-            "Usage": { "Requires": { "Environment": ["Liquid"] } },
+            "Usage": { "Requires": [{ "Environment": ["Liquid"] }] },
             "Table": [
               { "Floor": 1, "Ceiling": 5, "Result": "Amoeba / pseudopods" },
               { "Floor": 6, "Ceiling": 8, "Result": "Amorphous / elemental" },
@@ -2392,7 +2389,7 @@
           },
           {
             "Name": "Air",
-            "Usage": { "Requires": { "Environment": ["Air"] } },
+            "Usage": { "Requires": [{ "Environment": ["Air"] }] },
             "Table": [
               { "Floor": 1, "Ceiling": 2, "Result": "Amoeba / pseudopods" },
               { "Floor": 3, "Ceiling": 12, "Result": "Amorphous / elemental" },
@@ -2834,7 +2831,7 @@
       {
         "Name": "Access",
         "Display name": "Derelict Zone / Access",
-        "Requires": { "Zone": ["Access"] },
+        "Requires": [{ "Zone": ["Access"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -2952,7 +2949,7 @@
       {
         "Name": "Community",
         "Display name": "Derelict Zone / Community",
-        "Requires": { "Zone": ["Community"] },
+        "Requires": [{ "Zone": ["Community"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3079,7 +3076,7 @@
       {
         "Name": "Engineering",
         "Display name": "Derelict Zone / Engineering",
-        "Requires": { "Zone": ["Engineering"] },
+        "Requires": [{ "Zone": ["Engineering"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3206,7 +3203,7 @@
       {
         "Name": "Living",
         "Display name": "Derelict Zone / Living",
-        "Requires": { "Zone": ["Living"] },
+        "Requires": [{ "Zone": ["Living"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3333,7 +3330,7 @@
       {
         "Name": "Medical",
         "Display name": "Derelict Zone / Medical",
-        "Requires": { "Zone": ["Medical"] },
+        "Requires": [{ "Zone": ["Medical"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3460,7 +3457,7 @@
       {
         "Name": "Operations",
         "Display name": "Derelict Zone / Operations",
-        "Requires": { "Zone": ["Operations"] },
+        "Requires": [{ "Zone": ["Operations"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3587,7 +3584,7 @@
       {
         "Name": "Production",
         "Display name": "Derelict Zone / Production",
-        "Requires": { "Zone": ["Production"] },
+        "Requires": [{ "Zone": ["Production"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3714,7 +3711,7 @@
       {
         "Name": "Research",
         "Display name": "Derelict Zone / Research",
-        "Requires": { "Zone": ["Research"] },
+        "Requires": [{ "Zone": ["Research"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -3912,7 +3909,7 @@
       {
         "Name": "Dominion",
         "Source": { "Name": "Starforged Backer Preview", "Date": "101221" },
-        "Usage": { "Max rolls": 3, "Requires": { "Type": ["Dominion"] } },
+        "Usage": { "Max rolls": 3, "Requires": [{ "Type": ["Dominion"] }] },
         "Part of speech": ["noun"],
         "Content tags": ["abstract noun"],
         "Table": [
@@ -3947,7 +3944,7 @@
         "Name": "Leadership",
         "Display name": "Dominion / Leadership",
         "Source": { "Name": "Starforged Backer Preview", "Date": "101221" },
-        "Usage": { "Requires": { "Type": ["Dominion"] } },
+        "Usage": { "Requires": [{ "Type": ["Dominion"] }] },
         "Part of speech": ["fragment"],
         "Content tags": ["description"],
         "Table": [
@@ -3975,7 +3972,7 @@
       {
         "Name": "Guild",
         "Source": { "Name": "Starforged Backer Preview", "Date": "101221" },
-        "Requires": { "Type": ["Guild"] },
+        "Requires": [{ "Type": ["Guild"] }],
         "Part of speech": ["noun", "plural"],
         "Content tags": ["actor"],
         "Table": [
@@ -4005,7 +4002,7 @@
       {
         "Name": "Fringe Group",
         "Source": { "Name": "Starforged Backer Preview", "Date": "101221" },
-        "Usage": { "Requires": { "Type": ["Fringe Group"] } },
+        "Usage": { "Requires": [{ "Type": ["Fringe Group"] }] },
         "Part of speech": ["noun", "plural"],
         "Content tags": ["actor"],
         "Table": [
@@ -4803,7 +4800,7 @@
         "Display name": "Location Theme / Chaotic",
         "Category": "Theme",
         "Description": "Reality is corrupted or warped in this place.",
-        "Requires": { "Theme Type": ["Chaotic"] },
+        "Requires": [{ "Theme Type": ["Chaotic"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -4899,7 +4896,7 @@
         "Name": "Fortified",
         "Display name": "Location Theme / Fortified",
         "Description": "Enemies defend this place against intruders.",
-        "Requires": { "Theme Type": ["Fortified"] },
+        "Requires": [{ "Theme Type": ["Fortified"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -5004,7 +5001,7 @@
         "Display name": "Location Theme / Haunted",
         "Category": "Theme",
         "Description": "Restless spirits are bound to this place.",
-        "Requires": { "Theme Type": ["Haunted"] },
+        "Requires": [{ "Theme Type": ["Haunted"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -5117,7 +5114,7 @@
         "Display name": "Location Theme / Infested",
         "Category": "Theme",
         "Description": "Foul creatures have overrun this place.",
-        "Requires": { "Theme Type": ["Infested"] },
+        "Requires": [{ "Theme Type": ["Infested"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -5218,7 +5215,7 @@
         "Display name": "Location Theme / Inhabited",
         "Category": "Theme",
         "Description": "People have built a community in this place.",
-        "Requires": { "Theme Type": ["Inhabited"] },
+        "Requires": [{ "Theme Type": ["Inhabited"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -5319,7 +5316,7 @@
         "Display name": "Location Theme / Ruined",
         "Category": "Theme",
         "Description": "Time, disaster, or war have ravaged this place.",
-        "Requires": { "Theme Type": ["Ruined"] },
+        "Requires": [{ "Theme Type": ["Ruined"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -5428,7 +5425,7 @@
         "Display name": "Location Theme / Sacred",
         "Category": "Theme",
         "Description": "The faithful worship inscrutable powers in this place.",
-        "Requires": { "Theme Type": ["Sacred"] },
+        "Requires": [{ "Theme Type": ["Sacred"] }],
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Oracles": [
           {
@@ -6720,7 +6717,7 @@
         "Name": "Planetary Class",
         "Source": { "Name": "Starforged Backer Preview", "Date": "060121" },
         "Aliases": ["Class"],
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["noun"],
         "Suggestions": {
           "Oracle rolls": [{ "Name": "Descriptor", "Category": "Core" }]
@@ -6800,17 +6797,19 @@
             "Name": "Lifebearing",
             "Display name": "Planetside Peril / Lifebearing",
             "_idFragment": "Lifebearing",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": [
-                "Lifebearing",
-                "Simple",
-                "Sparse",
-                "Diverse",
-                "Bountiful",
-                "Overrun"
-              ]
-            },
+            "Requires": [
+              { "Location": ["Planetside"] },
+              {
+                "Life": [
+                  "Lifebearing",
+                  "Simple",
+                  "Sparse",
+                  "Diverse",
+                  "Bountiful",
+                  "Overrun"
+                ]
+              }
+            ],
             "Table": [
               {
                 "Floor": 1,
@@ -7005,10 +7004,10 @@
             "Name": "Lifeless",
             "Display name": "Planetside Peril / Lifeless",
             "_idFragment": "Lifeless",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": ["Lifeless", "None", "Extinct"]
-            },
+            "Requires": [
+              { "Location": ["Planetside"] },
+              { "Life": ["Lifeless", "None", "Extinct"] }
+            ],
             "Table": [
               {
                 "Floor": 1,
@@ -7156,17 +7155,19 @@
             "Name": "Lifebearing",
             "Display name": "Planetside Opportunity / Lifebearing",
             "_idFragment": "Lifebearing",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": [
-                "Lifebearing",
-                "Simple",
-                "Sparse",
-                "Diverse",
-                "Bountiful",
-                "Overrun"
-              ]
-            },
+            "Requires": [
+              { "Location": ["Planetside"] },
+              {
+                "Life": [
+                  "Lifebearing",
+                  "Simple",
+                  "Sparse",
+                  "Diverse",
+                  "Bountiful",
+                  "Overrun"
+                ]
+              }
+            ],
             "Table": [
               {
                 "Floor": 1,
@@ -7351,10 +7352,10 @@
             "Name": "Lifeless",
             "Display name": "Planetside Opportunity / Lifeless",
             "_idFragment": "Lifeless",
-            "Requires": {
-              "Location": ["Planetside"],
-              "Life": ["Lifeless", "None", "Extinct"]
-            },
+            "Requires": [
+              { "Location": ["Planetside"] },
+              { "Life": ["Lifeless", "None", "Extinct"] }
+            ],
             "Table": [
               {
                 "Floor": 1,
@@ -7510,7 +7511,11 @@
         "Name": "Desert World",
         "Aliases": ["Desert"],
         "Description": "A pitiless planet of searing heat, blowing sand, and sunbaked rock.",
-        "Requires": { "Planetary Class": ["Desert World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/YLNEHp9.png",
         "Sample Names": [
@@ -7539,7 +7544,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -7594,12 +7599,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 50, "None"],
                   [
@@ -7676,7 +7682,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 75, "None"],
                   [
@@ -7753,7 +7759,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 90, "None"],
                   [
@@ -7791,7 +7797,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Dry seabeds"],
               [12, 22, "Expansive dune seas"],
@@ -7833,7 +7839,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Cavernous sinkholes"],
               [8, 14, "Engulfing sandstorms"],
@@ -7896,7 +7902,11 @@
         "Name": "Furnace World",
         "Aliases": ["Furnace"],
         "Description": "A planet with relentless volcanic activity, wreathed in fire and ash.",
-        "Requires": { "Planetary Class": ["Furnace World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/YS5rlDR.png",
         "Sample Names": [
@@ -7925,7 +7935,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -7972,12 +7982,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 60, "None"],
                   [
@@ -8054,7 +8065,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 85, "None"],
                   [
@@ -8131,7 +8142,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 95, "None"],
                   [
@@ -8169,7 +8180,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Fiery world-spanning chasms"],
               [12, 22, "Glowing rivers of lava"],
@@ -8211,7 +8222,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Blinding ash storms"],
               [8, 14, "Catastrophic earthquakes"],
@@ -8274,7 +8285,11 @@
         "Name": "Grave World",
         "Aliases": ["Grave"],
         "Description": "A once-thriving world—now a grim monument to a fallen civilization.",
-        "Requires": { "Planetary Class": ["Grave World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/88R1WP1.png",
         "Sample Names": [
@@ -8303,7 +8318,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -8350,12 +8365,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 80, "None"],
                   [
@@ -8432,7 +8448,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 90, "None"],
                   [
@@ -8467,7 +8483,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 95, "None"],
                   [
@@ -8505,7 +8521,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Broken moon"],
               [12, 22, "Cratered surface"],
@@ -8575,7 +8591,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Acid pools"],
               [8, 14, "Ash dunes"],
@@ -8663,7 +8679,11 @@
         "Name": "Ice World",
         "Aliases": ["Ice"],
         "Description": "A rugged, frozen world—locked in an unending winter.",
-        "Requires": { "Planetary Class": ["Ice World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/r6DIkqJ.png",
         "Sample Names": [
@@ -8692,7 +8712,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -8747,12 +8767,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 50, "None"],
                   [
@@ -8829,7 +8850,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 75, "None"],
                   [
@@ -8906,7 +8927,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 90, "None"],
                   [
@@ -8944,7 +8965,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Feeble sunlight"],
               [12, 22, "Frozen oceans"],
@@ -8986,7 +9007,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Abyssal ice fissures"],
               [8, 14, "Blinding snow storms"],
@@ -9049,7 +9070,11 @@
         "Name": "Jovian World",
         "Aliases": ["Jovian"],
         "Description": "A massive planet with vast layers of dense gases surrounding a small rocky core.",
-        "Requires": { "Planetary Class": ["Jovian World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/xRT70k8.png",
         "Sample Names": [
@@ -9078,7 +9103,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -9117,12 +9142,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 50, "None"],
                   [
@@ -9199,7 +9225,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 75, "None"],
                   [
@@ -9276,7 +9302,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 90, "None"],
                   [
@@ -9314,7 +9340,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Complex ring system"],
               [12, 22, "Intense gravity well"],
@@ -9356,7 +9382,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Clouds of metal particles"],
               [8, 14, "Crystalline rains"],
@@ -9419,7 +9445,11 @@
         "Name": "Jungle World",
         "Aliases": ["Jungle"],
         "Description": "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation.",
-        "Requires": { "Planetary Class": ["Jungle World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/jr90Bnh.png",
         "Sample Names": [
@@ -9448,7 +9478,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -9495,12 +9525,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 40, "None"],
                   [
@@ -9577,7 +9608,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 65, "None"],
                   [
@@ -9654,7 +9685,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 85, "None"],
                   [
@@ -9734,7 +9765,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Cloud-breaching trees"],
               [12, 22, "Expansive rivers or wetlands"],
@@ -9776,7 +9807,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Bioluminescent flora"],
               [8, 14, "Deep river gorges"],
@@ -9837,7 +9868,11 @@
         "Name": "Ocean World",
         "Aliases": ["Ocean"],
         "Description": "A planet completely or mostly covered by a boundless ocean.",
-        "Requires": { "Planetary Class": ["Ocean World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/BUCW1rB.png",
         "Sample Names": [
@@ -9866,7 +9901,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -9921,12 +9956,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 40, "None"],
                   [
@@ -10003,7 +10039,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 65, "None"],
                   [
@@ -10080,7 +10116,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 85, "None"],
                   [
@@ -10160,7 +10196,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Complex reef systems"],
               [12, 22, "Emerging volcanoes"],
@@ -10202,7 +10238,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Abyssal trenches"],
               [8, 14, "Living islands"],
@@ -10265,7 +10301,11 @@
         "Name": "Rocky World",
         "Aliases": ["Rocky"],
         "Description": "A rugged planet scarred by eons of destructive asteroid impacts.",
-        "Requires": { "Planetary Class": ["Rocky World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/wRpdlc1.png",
         "Sample Names": [
@@ -10294,7 +10334,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -10333,12 +10373,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 50, "None"],
                   [
@@ -10415,7 +10456,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 75, "None"],
                   [
@@ -10492,7 +10533,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 90, "None"],
                   [
@@ -10530,7 +10571,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Barren plains"],
               [12, 22, "Constant asteroid strikes"],
@@ -10572,7 +10613,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Crystalline formations"],
               [8, 14, "Crystalline caves"],
@@ -10635,7 +10676,11 @@
         "Name": "Shattered World",
         "Aliases": ["Shattered"],
         "Description": "A planet sundered by cataclysmic destruction.",
-        "Requires": { "Planetary Class": ["Shattered World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/HKpmALQ.png",
         "Sample Names": [
@@ -10664,7 +10709,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -10711,12 +10756,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 70, "None"],
                   [
@@ -10793,7 +10839,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 85, "None"],
                   [
@@ -10849,7 +10895,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 95, "None"],
                   [
@@ -10887,7 +10933,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [
                 1,
@@ -10943,7 +10989,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Broken cities"],
               [8, 14, "Colliding fragments"],
@@ -11016,7 +11062,11 @@
         "Name": "Tainted World",
         "Aliases": ["Tainted"],
         "Description": "A foul planet wracked by a poisonous climate and virulent growths.",
-        "Requires": { "Planetary Class": ["Tainted World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Image": "https://i.imgur.com/TPb8p6L.png",
         "Sample Names": [
@@ -11045,7 +11095,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -11084,12 +11134,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 80, "None"],
                   [
@@ -11166,7 +11217,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 90, "None"],
                   [
@@ -11201,7 +11252,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 95, "None"],
                   [
@@ -11239,7 +11290,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Expansive fungal plains"],
               [12, 22, "Fungal forests"],
@@ -11281,7 +11332,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Caustic gas storms"],
               [8, 14, "Corrosive, low-lying fog"],
@@ -11342,7 +11393,11 @@
         "Name": "Vital World",
         "Aliases": ["Vital"],
         "Description": "This diverse, life-bearing planet might provide some small measure of hope.",
-        "Requires": { "Planetary Class": ["Vital World"] },
+        "Usage": {
+          "Requires": [
+            { "Paths": ["Planet / Planetary Class"], "Results": [null] }
+          ]
+        },
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "Image": "https://i.imgur.com/Syhr8rp.png",
         "Sample Names": [
@@ -11371,7 +11426,7 @@
           {
             "Name": "Atmosphere",
             "Part of speech": ["adjective"],
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Table": [
               [
                 1,
@@ -11402,12 +11457,13 @@
           },
           {
             "Name": "Settlements",
+            "Usage": { "Initial": true },
             "Select table by": "Region",
             "Oracles": [
               {
                 "Display name": "Settlements / Terminus",
                 "Name": "Terminus",
-                "Requires": { "Region": ["Terminus"] },
+                "Requires": [{ "Region": ["Terminus"] }],
                 "Table": [
                   [1, 20, "None"],
                   [
@@ -11484,7 +11540,7 @@
               {
                 "Display name": "Settlements / Outlands",
                 "Name": "Outlands",
-                "Requires": { "Region": ["Outlands"] },
+                "Requires": [{ "Region": ["Outlands"] }],
                 "Table": [
                   [1, 50, "None"],
                   [
@@ -11561,7 +11617,7 @@
               {
                 "Display name": "Settlements / Expanse",
                 "Name": "Expanse",
-                "Requires": { "Region": ["Expanse"] },
+                "Requires": [{ "Region": ["Expanse"] }],
                 "Table": [
                   [1, 80, "None"],
                   [
@@ -11641,7 +11697,7 @@
           {
             "Name": "Observed From Space",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 11, "Complex ring system"],
               [12, 22, "Dramatic seasonal variation"],
@@ -11683,7 +11739,7 @@
             "Name": "Feature",
             "_idFragment": "Feature",
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
+            "Usage": { "Max rolls": 2 },
             "Table": [
               [1, 7, "Background radiation"],
               [8, 14, "Chaotically juxtaposed biomes"],
@@ -11749,8 +11805,7 @@
           },
           {
             "Name": "Biomes",
-            "Min rolls": 2,
-            "Max rolls": 5,
+            "Usage": { "Min rolls": 2, "Max rolls": 5 },
             "Part of speech": ["noun", "common noun"],
             "Table": [
               [1, 5, "Caves"],
@@ -11793,7 +11848,7 @@
       {
         "Name": "Location",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["adjective"],
         "Table": [
           { "Floor": 1, "Ceiling": 50, "Result": "Planetside" },
@@ -11805,7 +11860,7 @@
       {
         "Name": "Scale",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["fragment"],
         "Table": [
           { "Floor": 1, "Ceiling": 30, "Result": "Minor, confined site" },
@@ -11831,7 +11886,7 @@
       {
         "Name": "Form",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["noun", "common noun"],
         "Table": [
           { "Floor": 1, "Ceiling": 35, "Result": "Structure" },
@@ -11845,7 +11900,7 @@
       {
         "Name": "Shape",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["adjective"],
         "Table": [
           { "Floor": 1, "Ceiling": 15, "Result": "Practical or functional" },
@@ -11875,7 +11930,7 @@
       {
         "Name": "Material",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["adjective"],
         "Table": [
           { "Floor": 1, "Ceiling": 30, "Result": "Metallic (industrial)" },
@@ -11901,8 +11956,7 @@
         "Display name": "Outer First Look",
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "Part of speech": ["fragment"],
-        "Initial": true,
-        "Max rolls": 2,
+        "Usage": { "Initial": true, "Max rolls": 2 },
         "Table": [
           { "Floor": 1, "Ceiling": 3, "Result": "Corrupting its environment" },
           { "Floor": 4, "Ceiling": 7, "Result": "Automated defenses" },
@@ -11961,18 +12015,17 @@
     "Categories": [
       {
         "Name": "Interior",
-        "_idFragment": "Interior",
         "Display name": "Vault / Interior",
+        "_idFragment": "Interior",
         "Description": "If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.",
-        "Requires": { "Zone": ["Interior"] },
+        "Usage": { "Requires": [{ "Zone": ["Interior"] }] },
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "Oracles": [
           {
             "Name": "First Look",
             "Display name": "Inner First Look",
-            "Initial": true,
+            "Usage": { "Initial": true, "Max rolls": 2 },
             "Part of speech": ["fragment"],
-            "Max rolls": 2,
             "Description": "Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.",
             "Table": [
               [1, 3, "Abnormal gravity"],
@@ -12166,7 +12219,7 @@
         "Display name": "Precursor Vault / Sanctum",
         "Content tags": ["oracles"],
         "Description": "As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.",
-        "Requires": { "Zone": ["Sanctum"] },
+        "Usage": { "Requires": [{ "Zone": ["Sanctum"] }] },
         "Source": { "Name": "Starforged Backer Preview", "Date": "122421" },
         "Oracles": [
           {
@@ -12383,7 +12436,7 @@
       {
         "Name": "Location",
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["adjective"],
         "Table": [
           { "Floor": 1, "Ceiling": 40, "Result": "Planetside" },
@@ -12395,13 +12448,12 @@
       {
         "Name": "Population",
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
-        "Initial": true,
-        "Select table by": "Region",
+        "Usage": { "Initial": true, "Select table by": "Region" },
         "Oracles": [
           {
             "Name": "Terminus",
             "Display name": "Population / Terminus",
-            "Requires": { "Region": ["Terminus"] },
+            "Requires": [{ "Region": ["Terminus"] }],
             "Table": [
               { "Floor": 1, "Ceiling": 10, "Result": "Few" },
               { "Floor": 11, "Ceiling": 25, "Result": "Dozens" },
@@ -12414,7 +12466,7 @@
           {
             "Name": "Outlands",
             "Display name": "Population / Outlands",
-            "Requires": { "Region": ["Outlands"] },
+            "Requires": [{ "Region": ["Outlands"] }],
             "Table": [
               { "Floor": 1, "Ceiling": 15, "Result": "Few" },
               { "Floor": 16, "Ceiling": 35, "Result": "Dozens" },
@@ -12427,7 +12479,7 @@
           {
             "Name": "Expanse",
             "Display name": "Population / Expanse",
-            "Requires": { "Region": ["Expanse"] },
+            "Requires": [{ "Region": ["Expanse"] }],
             "Table": [
               { "Floor": 1, "Ceiling": 20, "Result": "Few" },
               { "Floor": 21, "Ceiling": 50, "Result": "Dozens" },
@@ -12443,10 +12495,9 @@
       {
         "Name": "First Look",
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
-        "Initial": true,
+        "Usage": { "Max rolls": 2, "Initial": true },
         "Part of speech": ["fragment"],
         "Content tags": ["description"],
-        "Max rolls": 2,
         "Table": [
           { "Floor": 1, "Ceiling": 3, "Result": "Beautiful architecture" },
           {
@@ -12524,7 +12575,7 @@
       {
         "Name": "Initial Contact",
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["fragment"],
         "Content tags": ["description"],
         "Table": [
@@ -12553,7 +12604,7 @@
       {
         "Name": "Authority",
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["adjective"],
         "Table": [
           { "Floor": 1, "Ceiling": 15, "Result": "None / lawless" },
@@ -12572,7 +12623,7 @@
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
         "Part of speech": ["noun", "common noun"],
         "Content tags": ["abstract noun"],
-        "Max rolls": 2,
+        "Usage": { "Max rolls": 2 },
         "Description": "Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.",
         "Table": [
           { "Floor": 1, "Ceiling": 5, "Result": "Agriculture" },
@@ -12847,7 +12898,7 @@
         "Display name": "Settlement Name",
         "Source": { "Name": "Starforged Backer Preview", "Date": "092921" },
         "Description": "Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.",
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["proper noun"],
         "Content tags": ["name"],
         "Table": [
@@ -12978,7 +13029,7 @@
             "Name": "Terminus",
             "Display name": "Space Sighting / Terminus",
             "_idFragment": "Terminus",
-            "Requires": { "Region": ["Terminus"] },
+            "Requires": [{ "Region": ["Terminus"] }],
             "Table": [
               {
                 "Floor": 1,
@@ -13095,7 +13146,7 @@
             "Name": "Outlands",
             "Display name": "Space Sighting / Outlands",
             "_idFragment": "Outlands",
-            "Requires": { "Region": ["Outlands"] },
+            "Requires": [{ "Region": ["Outlands"] }],
             "Table": [
               {
                 "Floor": 1,
@@ -13212,7 +13263,7 @@
             "Name": "Expanse",
             "Display name": "Space Sighting / Expanse",
             "_idFragment": "Expanse",
-            "Requires": { "Region": ["Expanse"] },
+            "Requires": [{ "Region": ["Expanse"] }],
             "Table": [
               {
                 "Floor": 1,
@@ -13430,7 +13481,7 @@
                 { "Category": "Space", "Name": "Sector Name / Suffix" }
               ]
             },
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Part of speech": ["adjective"],
             "Content tags": ["template fragment"],
             "Table": [
@@ -13603,7 +13654,7 @@
                 { "Category": "Space", "Name": "Sector Name / Prefix" }
               ]
             },
-            "Initial": true,
+            "Usage": { "Initial": true },
             "Part of speech": ["noun"],
             "Content tags": ["template fragment", "place"],
             "Table": [
@@ -13670,7 +13721,7 @@
         "Content tags": ["peril", "event", "present"],
         "Usage": { "Repeatable": true },
         "Part of speech": ["fragment"],
-        "Requires": { "Location": ["Spaceborne", "Orbital", "Deep Space"] },
+        "Requires": [{ "Location": ["Spaceborne", "Orbital", "Deep Space"] }],
         "Description": "Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.",
         "Table": [
           {
@@ -13850,7 +13901,7 @@
         "Content tags": ["opportunity"],
         "Usage": { "Repeatable": true },
         "Part of speech": ["fragment"],
-        "Requires": { "Location": ["Spaceborne", "Orbital", "Deep Space"] },
+        "Requires": [{ "Location": ["Spaceborne", "Orbital", "Deep Space"] }],
         "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](#Undertake-an-Expedition), or if you [Explore a Waypoint](#Explore-a-Waypoint) and find an opportunity.",
         "Table": [
           {
@@ -14119,7 +14170,7 @@
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "_idFragment": "Type",
         "Allow duplicate rolls": true,
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["common noun", "fragment"],
         "Table": [
           {
@@ -14265,8 +14316,8 @@
         "Name": "Fleet",
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
         "Part of speech": ["noun", "common noun"],
-        "Initial": true,
-        "Requires": { "Starship Type": ["Fleet"] },
+        "Usage": { "Initial": true },
+        "Requires": [{ "Starship Type": ["Fleet"] }],
         "Table": [
           { "Floor": 1, "Ceiling": 10, "Result": "Battle fleet" },
           { "Floor": 11, "Ceiling": 25, "Result": "Pirate wing" },
@@ -14287,7 +14338,7 @@
       {
         "Name": "Initial Contact",
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
+        "Usage": { "Initial": true },
         "Part of speech": ["fragment"],
         "Content tags": ["relationship"],
         "Table": [
@@ -14317,10 +14368,9 @@
       {
         "Name": "First Look",
         "Source": { "Name": "Starforged Backer Preview", "Date": "081921" },
-        "Initial": true,
+        "Usage": { "Initial": true, "Max rolls": 2 },
         "Part of speech": ["fragment"],
         "Content tags": ["description"],
-        "Max rolls": 2,
         "Table": [
           { "Floor": 1, "Ceiling": 4, "Result": "Abnormal sensor readings" },
           { "Floor": 5, "Ceiling": 8, "Result": "Brightly painted" },
@@ -14372,7 +14422,7 @@
             "Name": "Terminus",
             "Display name": "Starship Mission / Terminus",
             "_idFragment": "Terminus",
-            "Requires": { "Region": ["Terminus"] },
+            "Requires": [{ "Region": ["Terminus"] }],
             "Table": [
               {
                 "Floor": 1,
@@ -14530,7 +14580,7 @@
             "Name": "Outlands",
             "Display name": "Starship Mission / Outlands",
             "_idFragment": "Outlands",
-            "Requires": { "Region": ["Outlands"] },
+            "Requires": [{ "Region": ["Outlands"] }],
             "Table": [
               {
                 "Floor": 1,
@@ -14688,7 +14738,7 @@
             "Name": "Expanse",
             "Display name": "Starship Mission / Expanse",
             "_idFragment": "Expanse",
-            "Requires": { "Region": ["Expanse"] },
+            "Requires": [{ "Region": ["Expanse"] }],
             "Table": [
               {
                 "Floor": 1,

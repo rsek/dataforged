@@ -1,10 +1,12 @@
 Tainted World:
-  Name: Tainted World
+  Name: &class Tainted World
   Aliases: [Tainted]
   Description: *Tainted
   _childOf: Planet
-  Requires:
-    Planetary Class: [Tainted World]
+  Usage:
+    Requires:
+      - Paths: [Planet / Planetary Class]
+        Results: [ &class ]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -33,7 +35,8 @@ Tainted World:
   Oracles:
     - Name: Atmosphere
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 65, *Toxic]
         - [66, 85, *Corrosive]
@@ -41,12 +44,14 @@ Tainted World:
         - [96, 100, *Breathable]
 
     - Name: Settlements
+      Usage:
+        Initial: true
       Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 80, None]
             - [81, 90, *Orbital_settlement]
@@ -57,7 +62,7 @@ Tainted World:
         - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 90, None]
             - [91, 97, *Orbital_settlement]
@@ -66,7 +71,7 @@ Tainted World:
         - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 95, None]
             - [96, 98, *Orbital_settlement]
@@ -74,7 +79,8 @@ Tainted World:
 
     - Name: Observed From Space
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 11, Expansive fungal plains]
         - [12, 22, Fungal forests]
@@ -91,7 +97,8 @@ Tainted World:
       Name: Feature
       _idFragment: Feature
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 7, Caustic gas storms]
         - [8, 14, "Corrosive, low-lying fog"]

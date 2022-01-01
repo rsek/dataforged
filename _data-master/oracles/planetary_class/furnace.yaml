@@ -1,10 +1,12 @@
 Furnace World:
-  Name: Furnace World
+  Name: &class Furnace World
   Aliases: [Furnace]
   Description: *Furnace
   _childOf: Planet
-  Requires:
-    Planetary Class: [Furnace World]
+  Usage:
+    Requires:
+      - Paths: [Planet / Planetary Class]
+        Results: [ &class ]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -33,7 +35,8 @@ Furnace World:
   Oracles:
     - Name: Atmosphere
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 10, *None_thin]
         - [11, 50, *Toxic]
@@ -42,12 +45,14 @@ Furnace World:
         - [91, 100, *Breathable]
 
     - Name: Settlements
+      Usage:
+        Initial: true
       Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 60, None]
             - [61, 75, *Orbital_settlement]
@@ -58,7 +63,7 @@ Furnace World:
         - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 85, None]
             - [86, 92, *Orbital_settlement]
@@ -69,7 +74,7 @@ Furnace World:
         - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 95, None]
             - [96, 98, *Orbital_settlement]
@@ -77,7 +82,8 @@ Furnace World:
 
     - Name: Observed From Space
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 11, Fiery world-spanning chasms]
         - [12, 22, Glowing rivers of lava]
@@ -94,7 +100,8 @@ Furnace World:
       Name: Feature
       _idFragment: Feature
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 7, Blinding ash storms]
         - [8, 14, Catastrophic earthquakes]

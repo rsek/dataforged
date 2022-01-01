@@ -8,6 +8,8 @@ Character:
   Oracles:
     - Name: Name
       Display name: Character Name
+      Usage:
+        Initial: true
       Oracles:
         - Name: Given Name
           Description: |-
@@ -19,7 +21,6 @@ Character:
               - Category: Character
                 Name: Family Name
           Part of speech: [proper noun]
-          Initial: true
           Table:
             - [1, 1, Akim]
             - [2, 2, Alex]
@@ -244,7 +245,6 @@ Character:
                 Name: Given Name
               - Category: Character
                 Name: Callsign
-          Initial: true
           Table:
             - [1, 1, Kuzmin]
             - [2, 2, Durant]
@@ -348,9 +348,9 @@ Character:
             - [100, 100, Volkov]
     - Name: First Look
       Part of speech: [adjective]
-      Initial: true
-      Min rolls: 1
-      Max rolls: 2
+      Usage:
+        Initial: true
+        Max rolls: 2
       Table:
         - [1, 3, Accented]
         - [4, 6, Accompanied]
@@ -395,7 +395,8 @@ Character:
     - Name: Disposition
       Display name: Initial Disposition
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 6, Helpful]
         - [7, 14, Friendly]
@@ -415,7 +416,8 @@ Character:
       _idFragment: Role
       Part of speech: [noun, common noun]
       Content tags: [people, actor]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 2, Agent]
         - [3, 4, AI]
@@ -516,7 +518,8 @@ Character:
       _idFragment: Revealed Aspect
       Display name: Revealed Character Aspect
       Part of speech: [adjective]
-      Max rolls: 3
+      Usage:
+        Max rolls: 3
       Table:
         - [1, 1, Addicted]
         - [2, 2, Adventurous]

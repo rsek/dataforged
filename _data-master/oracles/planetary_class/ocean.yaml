@@ -1,10 +1,12 @@
 Ocean World:
-  Name: Ocean World
+  Name: &class Ocean World
   Aliases: [Ocean]
   Description: *Ocean
   _childOf: Planet
-  Requires:
-    Planetary Class: [Ocean World]
+  Usage:
+    Requires:
+      - Paths: [Planet / Planetary Class]
+        Results: [ &class ]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -33,7 +35,8 @@ Ocean World:
   Oracles:
     - Name: Atmosphere
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 5, *None_thin]
         - [6, 20, *Toxic]
@@ -43,12 +46,14 @@ Ocean World:
         - [91, 100, *Ideal]
 
     - Name: Settlements
+      Usage:
+        Initial: true
       Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 40, None]
             - [41, 55, *Orbital_settlement]
@@ -59,7 +64,7 @@ Ocean World:
         - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 65, None]
             - [66, 75, *Orbital_settlement]
@@ -70,7 +75,7 @@ Ocean World:
         - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 85, None]
             - [86, 90, *Orbital_settlement]
@@ -80,7 +85,8 @@ Ocean World:
 
     - Name: Observed From Space
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 11, Complex reef systems]
         - [12, 22, Emerging volcanoes]
@@ -97,7 +103,8 @@ Ocean World:
       Name: Feature
       _idFragment: Feature
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 7, Abyssal trenches]
         - [8, 14, Living islands]

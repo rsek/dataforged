@@ -117,7 +117,8 @@ Starship:
       _idFragment: Type
       Display name: Type
       Allow duplicate rolls: true
-      Initial: true
+      Usage:
+        Initial: true
       Part of speech: [common noun, fragment]
       Table:
         - [1, 2, Carrier, Launches fighters]
@@ -146,9 +147,10 @@ Starship:
 
     - Name: Fleet
       Part of speech: [noun, common noun]
-      Initial: true
+      Usage:
+        Initial: true
       Requires:
-        Starship Type: [Fleet]
+        - Starship Type: [Fleet]
       Table:
         - [1, 10, Battle fleet]
         - [11, 25, Pirate wing]
@@ -160,7 +162,8 @@ Starship:
         - [91, 100, ▶️Starship Mission, *Starship_Mission]
 
     - Name: Initial Contact
-      Initial: true
+      Usage:
+        Initial: true
       Part of speech: [fragment]
       Content tags: [relationship]
       Table:
@@ -178,10 +181,11 @@ Starship:
         - [96, 100, *tpl_Derelict_starship]
 
     - Name: First Look
-      Initial: true
+      Usage:
+        Initial: true
+        Max rolls: 2
       Part of speech: [fragment]
       Content tags: [description]
-      Max rolls: 2
       Table:
         - [1, 4, Abnormal sensor readings]
         - [5, 8, Brightly painted]
@@ -218,7 +222,7 @@ Starship:
           Name: Terminus
           _idFragment: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 3, Blockade a location, *suggestPlace]
             - [4, 6, Break a blockade]
@@ -257,7 +261,7 @@ Starship:
           Name: Outlands
           _idFragment: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           _template: Starship Mission / Terminus
           Table:
             - [1, 2]
@@ -297,7 +301,7 @@ Starship:
           Name: Expanse
           _idFragment: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           _template: Starship Mission / Terminus
           Table:
             - [1, 2]

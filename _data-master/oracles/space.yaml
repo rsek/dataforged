@@ -30,7 +30,7 @@ Space:
           Name: Terminus
           _idFragment: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 15, *Stellar_Object]
             - [16, 35, *Planet]
@@ -58,7 +58,7 @@ Space:
           _template: Space Sighting / Terminus
           _idFragment: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 15]
             - [16, 35]
@@ -85,7 +85,7 @@ Space:
           Name: Expanse
           _idFragment: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           _template: Space Sighting / Terminus
           Table:
             - [1, 15]
@@ -137,7 +137,8 @@ Space:
           Oracle rolls:
             - Category: Space
               Name: Sector Name / Suffix
-        Initial: true
+        Usage:
+          Initial: true
         Part of speech: [adjective]
         Content tags: [template fragment]
         Table:
@@ -200,7 +201,8 @@ Space:
           Oracle rolls:
             - Category: Space
               Name: Sector Name / Prefix
-        Initial: true
+        Usage:
+          Initial: true
         Part of speech: [noun]
         Content tags: [template fragment, place]
         Table:
@@ -261,7 +263,7 @@ Space:
         Repeatable: true
       Part of speech: [fragment]
       Requires:
-        Location: [Spaceborne, Orbital, Deep Space]
+        - Location: [Spaceborne, Orbital, Deep Space]
       Description: Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.
       Table:
         - [1, 3, Artificial gravity generator malfunctions]
@@ -305,7 +307,7 @@ Space:
         Repeatable: true
       Part of speech: [fragment]
       Requires:
-        Location: [Spaceborne, Orbital, Deep Space]
+        - Location: [Spaceborne, Orbital, Deep Space]
       Description: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](#Undertake-an-Expedition), or if you [Explore a Waypoint](#Explore-a-Waypoint) and find an opportunity.
       Table:
         - [1, 4, Advance warning of an environmental threat]

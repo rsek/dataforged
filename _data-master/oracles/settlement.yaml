@@ -6,7 +6,8 @@ Settlement:
     Date: "092921"
   Oracles:
     - Name: Location
-      Initial: true
+      Usage:
+        Initial: true
       Part of speech: [adjective]
       Table:
         - [1, 40, Planetside]
@@ -14,13 +15,14 @@ Settlement:
         - [76, 100, Deep Space]
 
     - Name: Population
-      Initial: true
-      Select table by: Region
+      Usage:
+        Initial: true
+        Select table by: Region
       Oracles:
         - Display name: Population / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 10, *pop00]
             - [11, 25, *pop01]
@@ -31,7 +33,7 @@ Settlement:
         - Display name: Population / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 15, *pop00]
             - [16, 35, *pop01]
@@ -42,7 +44,7 @@ Settlement:
         - Display name: Population / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 20, *pop00]
             - [21, 50, *pop01]
@@ -51,10 +53,11 @@ Settlement:
             - [96, 100, *pop04]
 
     - Name: First Look
-      Initial: true
+      Usage:
+        Max rolls: 2
+        Initial: true
       Part of speech: [fragment]
       Content tags: [description]
-      Max rolls: 2
       Table:
         - [1, 3, Beautiful architecture]
         - [4, 9, Built from organic materials]
@@ -79,7 +82,8 @@ Settlement:
         - [91, 100, *Descriptor+Focus]
 
     - Name: Initial Contact
-      Initial: true
+      Usage:
+        Initial: true
       Part of speech: [fragment]
       Content tags: [description]
       Table:
@@ -96,7 +100,8 @@ Settlement:
         - [96, 100, *tpl_Derelict_settlement]
 
     - Name: Authority
-      Initial: true
+      Usage:
+        Initial: true
       Part of speech: [adjective]
       Table:
         - [1, 15, None / lawless]
@@ -111,7 +116,8 @@ Settlement:
       Display name: Settlement Projects
       Part of speech: [noun, common noun]
       Content tags: [abstract noun]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Description: |-
         Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
       Table:
@@ -191,7 +197,8 @@ Settlement:
       Display name: Settlement Name
       Description: |-
         Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
-      Initial: true
+      Usage:
+        Initial: true
       Part of speech: [proper noun]
       Content tags: [name]
       Table:

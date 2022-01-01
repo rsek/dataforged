@@ -1,10 +1,12 @@
 Vital World:
-  Name: Vital World
+  Name: &class Vital World
   Aliases: [Vital]
   Description: *Vital
   _childOf: Planet
-  Requires:
-    Planetary Class: [Vital World]
+  Usage:
+    Requires:
+      - Paths: [Planet / Planetary Class]
+        Results: [ &class ]
   Source:
     Name: Starforged Backer Preview
     Date: "122421"
@@ -33,19 +35,22 @@ Vital World:
   Oracles:
     - Name: Atmosphere
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 20, *Marginal]
         - [21, 50, *Breathable]
         - [51, 100, *Ideal]
 
     - Name: Settlements
+      Usage:
+        Initial: true
       Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 20, None]
             - [21, 30, *Orbital_settlement]
@@ -56,7 +61,7 @@ Vital World:
         - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 50, None]
             - [51, 55, *Orbital_settlement]
@@ -67,7 +72,7 @@ Vital World:
         - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 80, None]
             - [81, 83, *Orbital_settlement]
@@ -77,7 +82,8 @@ Vital World:
 
     - Name: Observed From Space
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 11, Complex ring system]
         - [12, 22, Dramatic seasonal variation]
@@ -94,7 +100,8 @@ Vital World:
       Name: Feature
       _idFragment: Feature
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 7, Background radiation]
         - [8, 14, Chaotically juxtaposed biomes]
@@ -129,8 +136,9 @@ Vital World:
         - [91, 100, Garden world (five or more biomes), 5]
 
     - Name: Biomes
-      Min rolls: 2
-      Max rolls: 5
+      Usage:
+        Min rolls: 2
+        Max rolls: 5
       Part of speech: [noun, common noun]
       Table:
         - [1, 5, Caves]

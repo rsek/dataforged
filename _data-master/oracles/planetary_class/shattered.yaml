@@ -1,10 +1,12 @@
 Shattered World:
-  Name: Shattered World
+  Name: &class Shattered World
   Aliases: [Shattered]
   Description: *Shattered
   _childOf: Planet
-  Requires:
-    Planetary Class: [Shattered World]
+  Usage:
+    Requires:
+      - Paths: [Planet / Planetary Class]
+        Results: [ &class ]
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -33,7 +35,8 @@ Shattered World:
   Oracles:
     - Name: Atmosphere
       Part of speech: [adjective]
-      Initial: true
+      Usage:
+        Initial: true
       Table:
         - [1, 93, *None_thin]
         - [94, 95, *Toxic]
@@ -42,12 +45,14 @@ Shattered World:
         - [100, 100, *Breathable]
 
     - Name: Settlements
+      Usage:
+        Initial: true
       Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
           Requires:
-            Region: [Terminus]
+            - Region: [Terminus]
           Table:
             - [1, 70, None]
             - [71, 90, *Orbital_settlement]
@@ -58,7 +63,7 @@ Shattered World:
         - Display name: Settlements / Outlands
           Name: Outlands
           Requires:
-            Region: [Outlands]
+            - Region: [Outlands]
           Table:
             - [1, 85, None]
             - [86, 96, *Orbital_settlement]
@@ -68,7 +73,7 @@ Shattered World:
         - Display name: Settlements / Expanse
           Name: Expanse
           Requires:
-            Region: [Expanse]
+            - Region: [Expanse]
           Table:
             - [1, 95, None]
             - [96, 99, *Orbital_settlement]
@@ -76,7 +81,8 @@ Shattered World:
 
     - Name: Observed From Space
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 11, Demolished space fleet, *suggestDerelictStarship]
         - [12, 22, Dense ring system]
@@ -93,7 +99,8 @@ Shattered World:
       Name: Feature
       _idFragment: Feature
       Part of speech: [fragment]
-      Max rolls: 2
+      Usage:
+        Max rolls: 2
       Table:
         - [1, 7, Broken cities]
         - [8, 14, Colliding fragments]
