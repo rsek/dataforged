@@ -2,16 +2,50 @@ _refs:
   # provides references common across various oracle categories; all oracle files are concatencated to this before being converted to JSON.
   Planetary Class:
     - &Desert "A pitiless planet of searing heat, blowing sand, and sunbaked rock."
+    - &DesertObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Desert World }],
+      }
     - &Furnace "A planet with relentless volcanic activity, wreathed in fire and ash."
+    - &FurnaceObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Furnace World }],
+      }
     - &Grave "A once-thriving world—now a grim monument to a fallen civilization."
+    - &GraveObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Grave World }],
+      }
     - &Ice "A rugged, frozen world—locked in an unending winter."
+    - &IceObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Ice World }],
+      }
     - &Jovian "A massive planet with vast layers of dense gases surrounding a small rocky core."
+    - &JovianObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Jovian World }],
+      }
     - &Jungle "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation."
+    - &JungleObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Jungle World }],
+      }
     - &Ocean "A planet completely or mostly covered by a boundless ocean."
+    - &OceanObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Ocean World }],
+      }
     - &Rocky "A rugged planet scarred by eons of destructive asteroid impacts."
+    - &RockyObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Rocky World }],
+      }
     - &Shattered "A planet sundered by cataclysmic destruction."
+    - &ShatteredObj {
+        Game Objects:
+          [{ Object type: Planet, Planetary class: Shattered World }],
+      }
     - &Tainted "A foul planet wracked by a poisonous climate and virulent growths."
+    - &TaintedObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Tainted World }],
+      }
     - &Vital "This diverse, life-bearing planet might provide some small measure of hope."
+    - &VitalObj {
+        Game Objects: [{ Object type: Planet, Planetary class: Vital World }],
+      }
   Location Theme:
     - &theme_feature Use this table to reveal a new aspect of the location.
     - &theme_peril Use this table to help envision a complication or hazard.
@@ -212,22 +246,22 @@ _refs:
     Derelict starship: &Derelict_starship
       Game objects:
         - Object type: Derelict
-          Attributes: { Derelict Type: [Starship] }
+          Attributes: { Type: [Starship] }
     Derelict settlement: &Derelict_settlement
       Game objects:
         - Object type: Derelict
-          Attributes: { Derelict Type: [Settlement] }
+          Attributes: { Type: [Settlement] }
     # the below specifically for "initial contact" tables that turn up derelict starships, settlements
     Derelict starship template: &tpl_Derelict_starship
       Result: ▶️Derelict
       Add template:
         Template type: Derelict
-        Attributes: { Derelict Type: [Starship] }
+        Attributes: { Type: [Starship] }
     Derelict settlement template: &tpl_Derelict_settlement
       Result: ▶️Derelict
       Add template:
         Template type: Derelict
-        Attributes: { Derelict Type: [Settlement] }
+        Attributes: { Type: [Settlement] }
 
   Oracle and object suggestions:
     # 'non-canonical' suggestions for game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
@@ -263,12 +297,12 @@ _refs:
       Suggestions:
         Game objects:
           - Object type: Derelict
-            Attributes: { Derelict Type: [Settlement] }
+            Attributes: { Type: [Settlement] }
     Derelict starship: &suggestDerelictStarship
       Suggestions:
         Game objects:
           - Object type: Derelict
-            Attributes: { Derelict Type: [Starship] }
+            Attributes: { Type: [Starship] }
     Faction: &suggestFaction
       Suggestions:
         Game objects:
@@ -283,7 +317,7 @@ _refs:
         Oracle rolls:
           - Category: Space
             Name: Space Sighting
-    Theme Fortified: &suggestThemeFortified
+    Theme Fortified: &suggestFortified
       Suggestions:
         Oracle rolls:
           - Category: Location Theme
@@ -294,6 +328,30 @@ _refs:
             Name: Opportunity
           - Category: Location Theme
             Subcategory: Fortified
+            Name: Feature
+    Theme Haunted: &suggestHaunted
+      Suggestions:
+        Oracle rolls:
+          - Category: Location Theme
+            Subcategory: Haunted
+            Name: Peril
+          - Category: Location Theme
+            Subcategory: Haunted
+            Name: Opportunity
+          - Category: Location Theme
+            Subcategory: Haunted
+            Name: Feature
+    Theme Chaotic: &suggestChaotic
+      Suggestions:
+        Oracle rolls:
+          - Category: Location Theme
+            Subcategory: Chaotic
+            Name: Peril
+          - Category: Location Theme
+            Subcategory: Chaotic
+            Name: Opportunity
+          - Category: Location Theme
+            Subcategory: Chaotic
             Name: Feature
     Object: &suggestObject # descriptor + focus
       Suggestions:
@@ -324,3 +382,137 @@ _refs:
     - &pop02 Hundreds
     - &pop03 Thousands
     - &pop04 Tens of thousands
+  Paths:
+    - &any_location
+      - Derelict / Location
+      - Settlement / Location
+      - Precursor Vault / Location
+      #
+    - &any_life
+      - Planet / Desert World / Life
+      - Planet / Furnace World / Life
+      - Planet / Grave World / Life
+      - Planet / Ice World / Life
+      - Planet / Jovian World / Life
+      - Planet / Jungle World / Life
+      - Planet / Ocean World / Life
+      - Planet / Rocky World / Life
+      - Planet / Shattered World / Life
+      - Planet / Tainted World / Life
+      - Planet / Vital World / Life
+    - &lifeless
+      - None
+      - Extinct
+    - &lifebearing
+      - Sparse
+      - Diverse
+      - Bountiful
+      - Overrun
+  Oracle Templates:
+    Planet:
+      Observed From Space:
+        - [1, 11]
+        - [12, 22]
+        - [23, 33]
+        - [34, 44]
+        - [45, 55]
+        - [56, 66]
+        - [67, 77]
+        - [78, 88]
+        - [89, 98, *Descriptor+Focus]
+        - [99, 100, *Vault_orbital]
+      Planetside Feature:
+        - [1, 7]
+        - [8, 14]
+        - [15, 21]
+        - [22, 28]
+        - [29, 35]
+        - [36, 42]
+        - [43, 49]
+        - [50, 56]
+        - [57, 63]
+        - [64, 70]
+        - [71, 77]
+        - [78, 84]
+        - [85, 91]
+        - [92, 98, *Descriptor+Focus]
+        - [99, 100, *Vault_planetside]
+    Location Theme:
+      Feature:
+        - [1, 8]
+        - [9, 16]
+        - [17, 24]
+        - [25, 32]
+        - [33, 40]
+        - [41, 48]
+        - [49, 56]
+        - [57, 64]
+        - [65, 72]
+        - [73, 80]
+        - [81, 88]
+        - [89, 96]
+        - [97, 100, *Descriptor+Focus]
+      Peril:
+        - [1, 9]
+        - [10, 18]
+        - [19, 27]
+        - [28, 36]
+        - [37, 45]
+        - [46, 54]
+        - [55, 63]
+        - [64, 72]
+        - [73, 81]
+        - [82, 90]
+        - [91, 98, *Action+Theme]
+        - [99, 100, *Roll_twice]
+      Opportunity:
+        - [1, 20]
+        - [21, 40]
+        - [41, 60]
+        - [61, 80]
+        - [81, 100]
+    Zone:
+      Area:
+        - [1, 8]
+        - [9, 16]
+        - [17, 24]
+        - [25, 32]
+        - [33, 40]
+        - [41, 48]
+        - [49, 56]
+        - [57, 64]
+        - [65, 72]
+        - [73, 80]
+        - [81, 85, New zone, *Zone]
+        - [86, 100, New zone via ▶️Access, *Zone_via_Access]
+      Feature:
+        - [1, 8]
+        - [9, 16]
+        - [17, 24]
+        - [25, 32]
+        - [33, 40]
+        - [41, 48]
+        - [49, 56]
+        - [57, 64]
+        - [65, 72]
+        - [73, 80]
+        - [81, 88]
+        - [89, 100, *Descriptor+Focus]
+      Peril:
+        - [1, 10]
+        - [11, 20]
+        - [21, 30]
+        - [31, 40]
+        - [41, 50]
+        - [51, 60]
+        - [61, 70]
+        - [71, 80]
+        - [81, 90]
+        - [91, 98, *Action+Theme]
+        - [99, 100, *Roll_twice]
+      Opportunity:
+        - [1, 20]
+        - [21, 40]
+        - [41, 60]
+        - [61, 80]
+        - [81, 100]

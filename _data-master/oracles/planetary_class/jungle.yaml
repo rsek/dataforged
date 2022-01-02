@@ -47,12 +47,13 @@ Jungle World:
     - Name: Settlements
       Usage:
         Initial: true
-      Select table by: Region
+        Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
-          Requires:
-            - Region: [Terminus]
+          Usage:
+            Requires:
+              - Region: [Terminus]
           Table:
             - [1, 40, None]
             - [41, 55, *Orbital_settlement]
@@ -62,8 +63,9 @@ Jungle World:
 
         - Display name: Settlements / Outlands
           Name: Outlands
-          Requires:
-            - Region: [Outlands]
+          Usage:
+            Requires:
+              - Region: [Outlands]
           Table:
             - [1, 65, None]
             - [66, 75, *Orbital_settlement]
@@ -73,8 +75,9 @@ Jungle World:
 
         - Display name: Settlements / Expanse
           Name: Expanse
-          Requires:
-            - Region: [Expanse]
+          Usage:
+            Requires:
+              - Region: [Expanse]
           Table:
             - [1, 85, None]
             - [86, 90, *Orbital_settlement]

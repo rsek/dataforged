@@ -3,6 +3,7 @@ Tainted World:
   Aliases: [Tainted]
   Description: *Tainted
   _childOf: Planet
+  # suggest: infested, chaotic
   Usage:
     Requires:
       - Paths: [Planet / Planetary Class]
@@ -46,12 +47,13 @@ Tainted World:
     - Name: Settlements
       Usage:
         Initial: true
-      Select table by: Region
+        Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
-          Requires:
-            - Region: [Terminus]
+          Usage:
+            Requires:
+              - Region: [Terminus]
           Table:
             - [1, 80, None]
             - [81, 90, *Orbital_settlement]
@@ -61,8 +63,9 @@ Tainted World:
 
         - Display name: Settlements / Outlands
           Name: Outlands
-          Requires:
-            - Region: [Outlands]
+          Usage:
+            Requires:
+              - Region: [Outlands]
           Table:
             - [1, 90, None]
             - [91, 97, *Orbital_settlement]
@@ -70,8 +73,9 @@ Tainted World:
 
         - Display name: Settlements / Expanse
           Name: Expanse
-          Requires:
-            - Region: [Expanse]
+          Usage:
+            Requires:
+              - Region: [Expanse]
           Table:
             - [1, 95, None]
             - [96, 98, *Orbital_settlement]

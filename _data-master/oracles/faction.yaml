@@ -27,8 +27,10 @@ Faction:
     - Name: Dominion
       Usage:
         Max rolls: 3
+        Initial: true
         Requires:
-          - Type: [Dominion]
+          - Paths: [Faction / Type]
+            Results: [Dominion]
       Part of speech: [noun]
       Content tags: [abstract noun]
       Table:
@@ -59,8 +61,10 @@ Faction:
     - Name: Leadership
       Display name: Dominion / Leadership
       Usage:
+        Initial: true
         Requires:
-          - Type: [Dominion]
+          - Paths: [Faction / Type]
+            Results: [Dominion]
       Part of speech: [fragment]
       Content tags: [description]
       Table:
@@ -75,8 +79,11 @@ Faction:
         - [91, 95, Machine intelligence]
         - [96, 100, Varied / decentralized]
     - Name: Guild
-      Requires:
-        - Type: [Guild]
+      Usage:
+        Initial: true
+        Requires:
+          - Paths: [Faction / Type]
+            Results: [Guild]
       Part of speech: [noun, plural]
       Content tags: [actor]
       Table:
@@ -98,7 +105,8 @@ Faction:
     - Name: Fringe Group
       Usage:
         Requires:
-          - Type: [Fringe Group]
+          - Paths: [Faction / Type]
+            Results: [Fringe Group]
       Part of speech: [noun, plural]
       Content tags: [actor]
       Table:
@@ -158,7 +166,6 @@ Faction:
     - Name: Relationships
       Display name: Faction Relationships
       Part of speech: [fragment]
-      Content tags: []
       Description: Factions can add scale and narrative opportunities to your setting. But keep it manageable. Don’t overload your campaign with factions. Instead, focus on your interactions and entanglements with members of a few interesting factions. Then, when you have a question about the relationship of one faction to another, use this table. The result is the commonly understood connection between those factions. Further investigations or events may reveal a deeper or alternate truth.
       Table:
         - [1, 4, Antagonistic towards]

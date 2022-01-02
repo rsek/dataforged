@@ -25,17 +25,17 @@ Derelict:
         - [41, 60, Orbital]
         - [61, 100, Deep Space]
 
-    - Name: Derelict Type
+    - Name: Type
       Usage:
         Initial: true
-      Select table by: Location
+        Select table by: Location
       Oracles:
         - Display name: Type / Planetside
           Name: Planetside
           Usage:
             Requires:
-              Location:
-                - Planetside
+              - Paths: *any_location
+                Results: [Planetside]
           Table:
             - [1, 25, Starship]
             - [26, 100, Settlement]
@@ -43,8 +43,8 @@ Derelict:
           Name: Orbital
           Usage:
             Requires:
-              Location:
-                - Orbital
+              - Paths: *any_location
+                Results: [Orbital]
           Table:
             - [1, 40, Starship]
             - [41, 100, Settlement]
@@ -52,8 +52,8 @@ Derelict:
           Name: Deep Space
           Usage:
             Requires:
-              Location:
-                - Deep Space
+              - Paths: *any_location
+                Results: [Deep Space]
           Table:
             - [1, 75, Starship]
             - [76, 100, Settlement]
@@ -127,14 +127,14 @@ Derelict:
       Display name: Derelict Zone
       Usage:
         Repeatable: true
-      Select table by: Derelict Type
+        Select table by: Derelict / Type
       Oracles:
         - Display name: Derelict Zone / Starship
           Name: Starship
           Usage:
             Requires:
-              Derelict Type:
-                - Starship
+              - Paths: [Derelict / Type]
+                Results: [Starship]
           Table:
             - [1, 5, ▶️Community]
             - [6, 30, ▶️Engineering]
@@ -148,8 +148,8 @@ Derelict:
           Name: Settlement
           Usage:
             Requires:
-              Derelict Type:
-                - Settlement
+              - Paths: [Derelict / Type]
+                Results: [Settlement]
           Table:
             - [1, 20, ▶️Community]
             - [21, 30, ▶️Engineering]

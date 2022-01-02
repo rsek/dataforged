@@ -113,12 +113,10 @@ Starship:
         - [98, 98, Vigilant]
         - [99, 99, Voidtreader]
         - [100, 100, Vulture]
-    - Name: Starship Type
-      _idFragment: Type
-      Display name: Type
-      Allow duplicate rolls: true
+    - Name: Type
       Usage:
         Initial: true
+        Allow duplicate rolls: true
       Part of speech: [common noun, fragment]
       Table:
         - [1, 2, Carrier, Launches fighters]
@@ -142,15 +140,16 @@ Starship:
         - [68, 82, Multipurpose, ▶️Starship Mission,*Starship_Mission]
         - [83, 84, Unusual or unknown, --]
         - [85, 94, ▶️Fleet, --, *Fleet]
-        - [95, 100, Ships in conflict (roll twice), --, "Oracles": [{ "Category": "Starship", "Name": "Starship Type" }], *Starship]
+        - [95, 100, Ships in conflict (roll twice), --, "Oracles": [{ "Category": "Starship", "Name": "Type" }], *Starship]
         # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
 
     - Name: Fleet
       Part of speech: [noun, common noun]
       Usage:
         Initial: true
-      Requires:
-        - Starship Type: [Fleet]
+        Requires:
+          - Paths: [Starship / Type]
+            Results: [Fleet, ▶️Fleet]
       Table:
         - [1, 10, Battle fleet]
         - [11, 25, Pirate wing]
@@ -216,13 +215,15 @@ Starship:
       Content tags: [objective]
       Description: |-
         Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
-      Select table by: Region
+      Usage:
+        Select table by: Region
       Oracles:
         - Display name: Starship Mission / Terminus
           Name: Terminus
           _idFragment: Terminus
-          Requires:
-            - Region: [Terminus]
+          Usage:
+            Requires:
+              - Region: [Terminus]
           Table:
             - [1, 3, Blockade a location, *suggestPlace]
             - [4, 6, Break a blockade]
@@ -260,8 +261,9 @@ Starship:
         - Display name: Starship Mission / Outlands
           Name: Outlands
           _idFragment: Outlands
-          Requires:
-            - Region: [Outlands]
+          Usage:
+            Requires:
+              - Region: [Outlands]
           _template: Starship Mission / Terminus
           Table:
             - [1, 2]
@@ -300,8 +302,9 @@ Starship:
         - Display name: Starship Mission / Expanse
           Name: Expanse
           _idFragment: Expanse
-          Requires:
-            - Region: [Expanse]
+          Usage:
+            Requires:
+              - Region: [Expanse]
           _template: Starship Mission / Terminus
           Table:
             - [1, 2]

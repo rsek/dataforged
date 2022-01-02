@@ -3,6 +3,7 @@ Grave World:
   Aliases: [Grave]
   Description: *Grave
   _childOf: Planet
+  # suggest: ruined, haunted
   Usage:
     Requires:
       - Paths: [Planet / Planetary Class]
@@ -47,12 +48,13 @@ Grave World:
     - Name: Settlements
       Usage:
         Initial: true
-      Select table by: Region
+        Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
-          Requires:
-            - Region: [Terminus]
+          Usage:
+            Requires:
+              - Region: [Terminus]
           Table:
             - [1, 80, None]
             - [81, 90, *Orbital_settlement]
@@ -62,8 +64,9 @@ Grave World:
 
         - Display name: Settlements / Outlands
           Name: Outlands
-          Requires:
-            - Region: [Outlands]
+          Usage:
+            Requires:
+              - Region: [Outlands]
           Table:
             - [1, 90, None]
             - [91, 97, *Orbital_settlement]
@@ -71,8 +74,9 @@ Grave World:
 
         - Display name: Settlements / Expanse
           Name: Expanse
-          Requires:
-            - Region: [Expanse]
+          Usage:
+            Requires:
+              - Region: [Expanse]
           Table:
             - [1, 95, None]
             - [96, 98, *Orbital_settlement]
@@ -106,14 +110,14 @@ Grave World:
         - [15, 21, Corrosive rains]
         - [22, 28, Dead forests]
         - [29, 35, Fetid mudflats]
-        - [36, 42, Mass graves]
+        - [36, 42, Mass graves, *suggestHaunted]
         - [43, 49, Moldering bones]
         - [50, 56, Noxious fog]
         - [57, 63, Radioactive hotspots]
         - [64, 70, Ravaged cities, *suggestDerelictSettlement]
         - [71, 77, Scarred battlefields]
         - [78, 84, Ship graveyards, *suggestDerelictStarship]
-        - [85, 91, Whispers of the dead]
+        - [85, 91, Whispers of the dead, *suggestHaunted]
         - [92, 98, *Descriptor+Focus]
         - [99, 100, *Vault_planetside]
 

@@ -2,6 +2,7 @@ Shattered World:
   Name: &class Shattered World
   Aliases: [Shattered]
   Description: *Shattered
+  ## suggest: ruined, haunted
   _childOf: Planet
   Usage:
     Requires:
@@ -47,12 +48,13 @@ Shattered World:
     - Name: Settlements
       Usage:
         Initial: true
-      Select table by: Region
+        Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
-          Requires:
-            - Region: [Terminus]
+          Usage:
+            Requires:
+              - Region: [Terminus]
           Table:
             - [1, 70, None]
             - [71, 90, *Orbital_settlement]
@@ -62,8 +64,9 @@ Shattered World:
 
         - Display name: Settlements / Outlands
           Name: Outlands
-          Requires:
-            - Region: [Outlands]
+          Usage:
+            Requires:
+              - Region: [Outlands]
           Table:
             - [1, 85, None]
             - [86, 96, *Orbital_settlement]
@@ -72,8 +75,9 @@ Shattered World:
 
         - Display name: Settlements / Expanse
           Name: Expanse
-          Requires:
-            - Region: [Expanse]
+          Usage:
+            Requires:
+              - Region: [Expanse]
           Table:
             - [1, 95, None]
             - [96, 99, *Orbital_settlement]
@@ -109,7 +113,7 @@ Shattered World:
         - [29, 35, Fluctuating gravity]
         - [36, 42, Magnetic disturbances]
         - [43, 49, Molten fissures]
-        - [50, 56, Phantom visions of the past, *suggestEvent]
+        - [50, 56, Phantom visions of the past, *suggestEvent, *suggestHaunted]
         - [57, 63, Pocket atmosphere]
         - [64, 70, Residual energy storms]
         - [71, 77, Swirling corrosive gases]

@@ -45,12 +45,13 @@ Vital World:
     - Name: Settlements
       Usage:
         Initial: true
-      Select table by: Region
+        Select table by: Region
       Oracles:
         - Display name: Settlements / Terminus
           Name: Terminus
-          Requires:
-            - Region: [Terminus]
+          Usage:
+            Requires:
+              - Region: [Terminus]
           Table:
             - [1, 20, None]
             - [21, 30, *Orbital_settlement]
@@ -60,8 +61,9 @@ Vital World:
 
         - Display name: Settlements / Outlands
           Name: Outlands
-          Requires:
-            - Region: [Outlands]
+          Usage:
+            Requires:
+              - Region: [Outlands]
           Table:
             - [1, 50, None]
             - [51, 55, *Orbital_settlement]
@@ -71,8 +73,9 @@ Vital World:
 
         - Display name: Settlements / Expanse
           Name: Expanse
-          Requires:
-            - Region: [Expanse]
+          Usage:
+            Requires:
+              - Region: [Expanse]
           Table:
             - [1, 80, None]
             - [81, 83, *Orbital_settlement]
@@ -105,7 +108,7 @@ Vital World:
       Table:
         - [1, 7, Background radiation]
         - [8, 14, Chaotically juxtaposed biomes]
-        - [15, 21, Creature boneyards]
+        - [15, 21, Creature boneyards, *suggestHaunted]
         - [22, 28, Creature lairs or watering holes]
         - [29, 35, Crystalline formations]
         - [36, 42, Fierce electrical storms]
