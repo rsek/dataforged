@@ -2,50 +2,82 @@ _refs:
   # provides references common across various oracle categories; all oracle files are concatencated to this before being converted to JSON.
   Planetary Class:
     - &Desert "A pitiless planet of searing heat, blowing sand, and sunbaked rock."
-    - &DesertObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Desert World }],
-      }
+    - &DesertObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Desert World, ▶️Desert World]
     - &Furnace "A planet with relentless volcanic activity, wreathed in fire and ash."
-    - &FurnaceObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Furnace World }],
-      }
+    - &FurnaceObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Furnace World, ▶️Furnace World]
     - &Grave "A once-thriving world—now a grim monument to a fallen civilization."
-    - &GraveObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Grave World }],
-      }
+    - &GraveObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Grave World, ▶️Grave World]
     - &Ice "A rugged, frozen world—locked in an unending winter."
-    - &IceObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Ice World }],
-      }
+    - &IceObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Ice World, ▶️Ice World]
     - &Jovian "A massive planet with vast layers of dense gases surrounding a small rocky core."
-    - &JovianObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Jovian World }],
-      }
+    - &JovianObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Jovian World, ▶️Jovian World]
     - &Jungle "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation."
-    - &JungleObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Jungle World }],
-      }
+    - &JungleObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Jungle World, ▶️Jungle World]
     - &Ocean "A planet completely or mostly covered by a boundless ocean."
-    - &OceanObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Ocean World }],
-      }
+    - &OceanObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Ocean World, ▶️Ocean World]
     - &Rocky "A rugged planet scarred by eons of destructive asteroid impacts."
-    - &RockyObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Rocky World }],
-      }
+    - &RockyObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Rocky World, ▶️Rocky World]
     - &Shattered "A planet sundered by cataclysmic destruction."
-    - &ShatteredObj {
-        Game Objects:
-          [{ Object type: Planet, Planetary class: Shattered World }],
-      }
+    - &ShatteredObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Shattered World, ▶️Shattered World]
     - &Tainted "A foul planet wracked by a poisonous climate and virulent growths."
-    - &TaintedObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Tainted World }],
-      }
+    - &TaintedObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Tainted World, ▶️Tainted World]
     - &Vital "This diverse, life-bearing planet might provide some small measure of hope."
-    - &VitalObj {
-        Game Objects: [{ Object type: Planet, Planetary class: Vital World }],
-      }
+    - &VitalObj
+      Game objects:
+        - Object type: Planet
+          Requires:
+            - Paths: [Planet / Planetary Class]
+              Results: [Vital World, ▶️Vital World]
   Location Theme:
     - &theme_feature Use this table to reveal a new aspect of the location.
     - &theme_peril Use this table to help envision a complication or hazard.
@@ -109,65 +141,47 @@ _refs:
     Starship Mission: &Starship_Mission
       Result: ▶️Starship Mission
       Oracle rolls:
-        - Category: Starship
-          Name: Mission
+        - Starship / Mission
     Fleet: &Fleet
       Result: ▶️Fleet
       Oracle rolls:
-        - Category: Starship
-          Name: Fleet
+        - Starship / Fleet
     Stellar Object: &Stellar_Object
       Result: ▶️Stellar Object
       Oracle rolls:
-        - Category: Space
-          Name: Stellar Object
+        - Space / Stellar Object
     Action + Theme: &Action+Theme
       Result: ▶️Action + Theme
       Oracle rolls:
-        - Category: Core
-          Name: Action
-        - Category: Core
-          Name: Theme
+        - Core / Action
+        - Core / Theme
     Descriptor + Focus: &Descriptor+Focus
       Result: ▶️Descriptor + Focus
       Oracle rolls:
-        - Category: Core
-          Name: Descriptor
-        - Category: Core
-          Name: Focus
+        - Core / Descriptor
+        - Core / Focus
     Ultra-Scale: &Ultra-scale
       Result: ▶️Ultra-scale
       Oracle rolls:
-        - Category: Creature
-          Name: Ultra-scale
+        - Creature / Ultra-scale
     Faction Legacy, Affiliation: &faction_tpl_1
       Oracle rolls:
-        - Category: Faction
-          Name: Legacy
-        - Category: Faction
-          Name: Affiliation
+        - Faction / Legacy
+        - Faction / Affiliation
     Faction Legacy, Identity: &faction_tpl_2
       Oracle rolls:
-        - Category: Faction
-          Name: Legacy
-        - Category: Faction
-          Name: Identity
+        - Faction / Legacy
+        - Faction / Identity
     Faction Identity, Legacy, Affiliation: &faction_tpl_3
       Oracle rolls:
-        - Category: Faction
-          Name: Identity
-        - Category: Faction
-          Name: Legacy
-        - Category: Faction
-          Name: Affiliation
+        - Faction / Identity
+        - Faction / Legacy
+        - Faction / Affiliation
     Faction Affiliation, Legacy, Identity: &faction_tpl_4
       Oracle rolls:
-        - Category: Faction
-          Name: Affiliation
-        - Category: Faction
-          Name: Legacy
-        - Category: Faction
-          Name: Identity
+        - Faction / Affiliation
+        - Faction / Legacy
+        - Faction / Identity
 
   Game objects:
     # consider a way to do precursor vault sanctums?
@@ -179,12 +193,16 @@ _refs:
       Result: ▶️Precursor Vault (orbital)
       Game objects:
         - Object type: Precursor Vault
-          Attributes: { Location: [Orbital] }
+          Requires:
+            - Paths: [Precursor Vault / Location]
+              Results: [Orbital]
     Precursor Vault (planetside): &Vault_planetside
       Result: ▶️Precursor Vault (planetside)
       Game objects:
         - Object type: Precursor Vault
-          Attributes: { Location: [Planetside] }
+          Requires:
+            - Paths: [Precursor Vault / Location]
+              Results: [Planetside]
     Derelict: &Derelict
       Result: ▶️Derelict
       Game objects:
@@ -209,33 +227,47 @@ _refs:
       Result: Orbital settlement
       Game objects:
         - Object type: Settlement
-          Attributes: { Location: [Orbital] }
+          Requires:
+            - Paths: [Settlement / Location]
+              Results: [Orbital]
     Settlement (planetside): &Planetside_settlement
       Result: Planetside settlement
       Game objects:
         - Object type: Settlement
-          Attributes: { Location: [Planetside] }
+          Requires:
+            - Paths: [Settlement / Location]
+              Results: [Planetside]
     Settlements (multiple): &Multiple_settlements
       Result: Multiple settlements
       Game objects:
         - Object type: Settlement
-          Attributes: { Location: [Orbital, Planetside] }
+          Requires:
+            - Paths: [Settlement / Location]
+              Results: [Orbital, Planetside]
         - Object type: Settlement
-          Attributes: { Location: [Orbital, Planetside] }
+          Requires:
+            - Paths: [Settlement / Location]
+              Results: [Orbital, Planetside]
     Settlements (conflict): &Settlements_in_conflict
       Result: Settlements in conflict
       Game objects:
         - Object type: Settlement
-          Attributes: { Location: [Orbital, Planetside] }
+          Requires:
+            - Paths: [Settlement / Location]
+              Results: [Orbital, Planetside]
         - Object type: Settlement
-          Attributes: { Location: [Orbital, Planetside] }
+          Requires:
+            - Paths: [Settlement / Location]
+              Results: [Orbital, Planetside]
     Zone: &Zone
       Game objects:
         - Object type: Derelict zone
     Zone (via Access): &Zone_via_Access
       Game objects:
         - Object type: Derelict zone
-          Attributes: { Zone: [Access] }
+          Requires:
+            - Paths: [Derelict / Zone]
+              Results: [Access, ▶️Access]
     Precursor Vault Sanctum: &Vault_Sanctum
       Game objects:
         - Object type: Precursor Vault Sanctum
@@ -246,25 +278,29 @@ _refs:
     Derelict starship: &Derelict_starship
       Game objects:
         - Object type: Derelict
-          Attributes: { Type: [Starship] }
+          Requires:
+            - Paths: [Derelict / Type]
+              Results: [Starship, ▶️Starship]
     Derelict settlement: &Derelict_settlement
       Game objects:
         - Object type: Derelict
-          Attributes: { Type: [Settlement] }
+          Requires:
+            - Paths: [Derelict / Type]
+              Results: [Settlement, ▶️Settlement]
     # the below specifically for "initial contact" tables that turn up derelict starships, settlements
     Derelict starship template: &tpl_Derelict_starship
       Result: ▶️Derelict
       Add template:
         Template type: Derelict
-        Attributes: { Type: [Starship] }
+        # Attributes: { Type: [Starship] }
     Derelict settlement template: &tpl_Derelict_settlement
       Result: ▶️Derelict
       Add template:
         Template type: Derelict
-        Attributes: { Type: [Settlement] }
+        # Attributes: { Type: [Settlement] }
 
   Oracle and object suggestions:
-    # 'non-canonical' suggestions for game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
+    # 'non-canonical' suggestions for Game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
     Planet: &suggestPlanet
       Suggestions:
         Game objects:
@@ -297,12 +333,19 @@ _refs:
       Suggestions:
         Game objects:
           - Object type: Derelict
-            Attributes: { Type: [Settlement] }
+            Requires:
+              [
+                {
+                  Paths: [Derelict / Type],
+                  Results: [Settlement, ▶️Settlement],
+                },
+              ]
     Derelict starship: &suggestDerelictStarship
       Suggestions:
         Game objects:
           - Object type: Derelict
-            Attributes: { Type: [Starship] }
+            Requires:
+              [{ Paths: [Derelict / Type], Results: [Starship, ▶️Starship] }]
     Faction: &suggestFaction
       Suggestions:
         Game objects:
@@ -311,62 +354,45 @@ _refs:
       Suggestions:
         Game objects:
           - Object type: Faction
-            Attributes: { Type: [Fringe Group] }
+            Requires:
+              [
+                {
+                  Paths: [Faction / Type],
+                  Results: [Fringe Group, ▶️Fringe Group],
+                },
+              ]
     Place: &suggestPlace # space sighting
       Suggestions:
         Oracle rolls:
-          - Category: Space
-            Name: Space Sighting
+          - Space / Space Sighting
     Theme Fortified: &suggestFortified
       Suggestions:
         Oracle rolls:
-          - Category: Location Theme
-            Subcategory: Fortified
-            Name: Peril
-          - Category: Location Theme
-            Subcategory: Fortified
-            Name: Opportunity
-          - Category: Location Theme
-            Subcategory: Fortified
-            Name: Feature
+          - Location Theme / Fortified / Peril
+          - Location Theme / Fortified / Opportunity
+          - Location Theme / Fortified / Feature
     Theme Haunted: &suggestHaunted
       Suggestions:
         Oracle rolls:
-          - Category: Location Theme
-            Subcategory: Haunted
-            Name: Peril
-          - Category: Location Theme
-            Subcategory: Haunted
-            Name: Opportunity
-          - Category: Location Theme
-            Subcategory: Haunted
-            Name: Feature
+          - Location Theme / Haunted / Peril
+          - Location Theme / Haunted / Opportunity
+          - Location Theme / Haunted / Feature
     Theme Chaotic: &suggestChaotic
       Suggestions:
         Oracle rolls:
-          - Category: Location Theme
-            Subcategory: Chaotic
-            Name: Peril
-          - Category: Location Theme
-            Subcategory: Chaotic
-            Name: Opportunity
-          - Category: Location Theme
-            Subcategory: Chaotic
-            Name: Feature
+          - Location Theme / Chaotic / Peril
+          - Location Theme / Chaotic / Opportunity
+          - Location Theme / Chaotic / Feature
     Object: &suggestObject # descriptor + focus
       Suggestions:
         Oracle rolls:
-          - Category: Core
-            Name: Descriptor
-          - Category: Core
-            Name: Focus
+          - Core / Descriptor
+          - Core / Focus
     Event: &suggestEvent # action + theme
       Suggestions:
         Oracle rolls:
-          - Category: Core
-            Name: Action
-          - Category: Core
-            Name: Theme
+          - Core / Action
+          - Core / Theme
   # these are just simple strings at the moment, but if i do want to change them en masse, here they are
   Planet Life:
     - &life_None None

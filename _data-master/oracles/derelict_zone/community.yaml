@@ -13,7 +13,8 @@ Community:
     - Name: Area
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Bar or club]
         - [9, 16, Temple or chapel]
@@ -31,7 +32,8 @@ Community:
     - Name: Feature
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Ad-hoc memorials]
         - [9, 16, Art depicting historic event]
@@ -47,10 +49,11 @@ Community:
         - [89, 100, *Descriptor+Focus]
 
     - Name: Peril
-      Content tags: [peril, event, present]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [peril, event, present]
       Table:
         - [1, 10, Biological infestation]
         - [11, 20, Breached or broken structure]
@@ -65,10 +68,11 @@ Community:
         - [99, 100, *Roll_twice]
 
     - Name: Opportunity
-      Content tags: [opportunity]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [opportunity]
       Table:
         - [1, 20, Culturally significant object or artifact]
         - [21, 40, Salvageable goods or resources]

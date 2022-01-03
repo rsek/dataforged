@@ -17,11 +17,10 @@ Character:
           Usage:
             Suggestions:
               Oracle rolls:
-                - Category: Character
-                  Name: Callsign
-                - Category: Character
-                  Name: Family Name
-          Part of speech: [proper noun]
+                - Character / Callsign
+                - Character / Family Name
+          Content:
+            Part of speech: [proper noun]
           Table:
             - [1, 1, Akim]
             - [2, 2, Alex]
@@ -130,11 +129,10 @@ Character:
           Usage:
             Suggestions:
               Oracle rolls:
-                - Category: Character
-                  Name: Given Name
-                - Category: Character
-                  Name: Family Name
-          Part of speech: [proper noun]
+                - Character / Given Name
+                - Character / Family Name
+          Content:
+            Part of speech: [proper noun]
           Table:
             - [1, 1, Albatross]
             - [2, 2, Angler]
@@ -240,14 +238,13 @@ Character:
         - Name: Family Name
           Description: |-
             Given and family names can be used independently as standalone names. In many cases you can reverse the order.
-          Part of speech: [proper noun]
+          Content:
+            Part of speech: [proper noun]
           Usage:
             Suggestions:
               Oracle rolls:
-                - Category: Character
-                  Name: Given Name
-                - Category: Character
-                  Name: Callsign
+                - Character / Given Name
+                - Character / Callsign
           Table:
             - [1, 1, Kuzmin]
             - [2, 2, Durant]
@@ -350,7 +347,8 @@ Character:
             - [99, 99, Pearson]
             - [100, 100, Volkov]
     - Name: First Look
-      Part of speech: [adjective]
+      Content:
+        Part of speech: [adjective]
       Usage:
         Initial: true
         Max rolls: 2
@@ -397,7 +395,8 @@ Character:
 
     - Name: Disposition
       Display name: Initial Disposition
-      Part of speech: [adjective]
+      Content:
+        Part of speech: [adjective]
       Usage:
         Initial: true
       Table:
@@ -416,9 +415,9 @@ Character:
 
     - Name: Role
       Display name: Character Role
-      _idFragment: Role
-      Part of speech: [noun, common noun]
-      Content tags: [people, actor]
+      Content:
+        Part of speech: [noun, common noun]
+        Tags: [people, actor]
       Usage:
         Initial: true
       Table:
@@ -473,8 +472,9 @@ Character:
 
     - Name: Goal
       Display name: Character Goal
-      Part of speech: [fragment]
-      Content tags: [objective]
+      Content:
+        Part of speech: [fragment]
+        Tags: [objective]
       Table:
         - [1, 2, Avenge a wrong, *suggestEvent]
         - [3, 4, Build a home]
@@ -518,7 +518,8 @@ Character:
         - [91, 100, *Roll_twice]
     - Name: Revealed Aspect
       Display name: Revealed Character Aspect
-      Part of speech: [adjective]
+      Content:
+        Part of speech: [adjective]
       Usage:
         Max rolls: 3
       Table:

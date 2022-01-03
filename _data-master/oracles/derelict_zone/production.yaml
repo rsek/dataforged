@@ -13,7 +13,8 @@ Production:
     - Name: Area
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Airlock or staging area]
         - [9, 16, Assembly or processing]
@@ -31,7 +32,8 @@ Production:
     - Name: Feature
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Cargo lifts]
         - [9, 16, Control panels]
@@ -47,10 +49,11 @@ Production:
         - [89, 100, *Descriptor+Focus]
 
     - Name: Peril
-      Content tags: [peril, event, present]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [peril, event, present]
       Table:
         - [1, 10, Claustrophobic spaces]
         - [11, 20, Dangerous machinery]
@@ -65,10 +68,11 @@ Production:
         - [99, 100, *Roll_twice]
 
     - Name: Opportunity
-      Content tags: [opportunity]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [opportunity]
       Table:
         - [1, 20, Helpful vehicle or transport]
         - [21, 40, Rare or valuable resource]

@@ -13,7 +13,8 @@ Operations:
     - Name: Area
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Admin or command offices]
         - [9, 16, Armory]
@@ -31,7 +32,8 @@ Operations:
     - Name: Feature
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Automated warning]
         - [9, 16, Buckled blast doors]
@@ -47,10 +49,11 @@ Operations:
         - [89, 100, *Descriptor+Focus]
 
     - Name: Peril
-      Content tags: [peril, event, present]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [peril, event, present]
       Table:
         - [1, 10, Automated defenses target you]
         - [11, 20, Broken equipment limits control]
@@ -65,10 +68,11 @@ Operations:
         - [99, 100, *Roll_twice]
 
     - Name: Opportunity
-      Content tags: [opportunity]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [opportunity]
       Table:
         - [1, 20, Cache of weapons or ammo]
         - [21, 40, Helpful AI]

@@ -1,6 +1,5 @@
 Space:
   Name: Space
-  _idFragment: Space
   Display name: Space Encounters
   Aliases: [Spaceborne]
   Source:
@@ -19,9 +18,9 @@ Space:
       * The Spaceborne Peril and Spaceborne Opportunity oracles (pages 300-301) can help identify the nature of a deep space event. To learn more about travel and exploration within the Forge, see page 64.
   Oracles:
     - Name: Space Sighting
-      _idFragment: Sighting
       Allow duplicate rolls: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Description: |-
         Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](#Ask-the-Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](#Undertake-an-Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
       Usage:
@@ -29,7 +28,6 @@ Space:
       Oracles:
         - Display name: Space Sighting / Terminus
           Name: Terminus
-          _idFragment: Terminus
           Usage:
             Requires:
               - Region: [Terminus]
@@ -58,7 +56,6 @@ Space:
         - Display name: Space Sighting / Outlands
           Name: Outlands
           _template: Space Sighting / Terminus
-          _idFragment: Outlands
           Usage:
             Requires:
               - Region: [Outlands]
@@ -86,7 +83,6 @@ Space:
             - [99, 100]
         - Display name: Space Sighting / Expanse
           Name: Expanse
-          _idFragment: Expanse
           Usage:
             Requires:
               - Region: [Expanse]
@@ -114,7 +110,8 @@ Space:
             - [94, 98]
             - [99, 100]
     - Name: Stellar Object
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Description: Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.
       Table:
         - [1, 15, Smoldering red star, "https://i.imgur.com/M3UenpW.jpg"]
@@ -134,17 +131,15 @@ Space:
       Oracles:
       - Display name: Sector Name / Prefix
         Name: Prefix
-        _idFragment: Prefix
-        _branchOf: Sector Name
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-        Suggestions:
-          Oracle rolls:
-            - Category: Space
-              Name: Sector Name / Suffix
         Usage:
           Initial: true
-        Part of speech: [adjective]
-        Content tags: [template fragment]
+          Suggestions:
+            Oracle rolls:
+              - Space / Sector Name / Suffix
+        Content:
+          Part of speech: [adjective]
+          Tags: [template fragment]
         Table:
           - [1, 2, Accursed]
           - [3, 4, Ashen]
@@ -198,17 +193,15 @@ Space:
           - [99, 100, Wasted]
       - Display name: Sector Name / Suffix
         Name: Suffix
-        _idFragment: Suffix
-        _branchOf: Sector Name
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-        Suggestions:
-          Oracle rolls:
-            - Category: Space
-              Name: Sector Name / Prefix
         Usage:
           Initial: true
-        Part of speech: [noun]
-        Content tags: [template fragment, place]
+          Suggestions:
+            Oracle rolls:
+              - Space / Sector Name / Prefix
+        Content:
+          Part of speech: [noun]
+          Tags: [template fragment, place]
         Table:
           - [1, 2, Abyss]
           - [3, 4, Anvil]
@@ -261,14 +254,16 @@ Space:
           - [97, 98, Web]
           - [99, 100, Zenith]
     - Name: Peril
-      Content tags: [peril, event, present]
       Display name: Spaceborne Peril
       Usage:
         Repeatable: true
         Requires:
           - Paths: *any_location
             Results: [Spaceborne, Orbital, Deep Space]
-      Part of speech: [fragment]
+      Content:
+        Tags: [peril, event, present]
+        Content:
+          Part of speech: [fragment]
       Description: Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.
       Table:
         - [1, 3, Artificial gravity generator malfunctions]
@@ -306,14 +301,15 @@ Space:
         - [97, 99, *Action+Theme]
         - [100, 100, *Roll_twice]
     - Name: Opportunity
-      Content tags: [opportunity]
       Display name: Spaceborne Opportunity
       Usage:
         Repeatable: true
         Requires:
           - Paths: *any_location
             Results: [Spaceborne, Orbital, Deep Space]
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [opportunity]
       Description: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](#Undertake-an-Expedition), or if you [Explore a Waypoint](#Explore-a-Waypoint) and find an opportunity.
       Table:
         - [1, 4, Advance warning of an environmental threat]

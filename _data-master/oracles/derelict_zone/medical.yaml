@@ -13,7 +13,8 @@ Medical:
     - Name: Area
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Crematorium]
         - [9, 16, Emergency or triage]
@@ -31,7 +32,8 @@ Medical:
     - Name: Feature
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
       Table:
         - [1, 8, Autopsied corpse]
         - [9, 16, Biological specimens]
@@ -47,10 +49,11 @@ Medical:
         - [89, 100, *Descriptor+Focus]
 
     - Name: Peril
-      Content tags: [peril, event, present]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [peril, event, present]
       Table:
         - [1, 10, Disgusting sight / smell]
         - [11, 20, Disturbing evidence of medical misconduct]
@@ -65,10 +68,11 @@ Medical:
         - [99, 100, *Roll_twice]
 
     - Name: Opportunity
-      Content tags: [opportunity]
       Usage:
         Repeatable: true
-      Part of speech: [fragment]
+      Content:
+        Part of speech: [fragment]
+        Tags: [opportunity]
       Table:
         - [1, 20, Cache of medicine]
         - [21, 40, Clues to a medical mystery]
