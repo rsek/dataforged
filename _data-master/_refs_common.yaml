@@ -334,18 +334,15 @@ _refs:
         Game objects:
           - Object type: Derelict
             Requires:
-              [
-                {
-                  Paths: [Derelict / Type],
-                  Results: [Settlement, ▶️Settlement],
-                },
-              ]
+              - Paths: [Derelict / Type]
+                Results: [Settlement, ▶️Settlement]
     Derelict starship: &suggestDerelictStarship
       Suggestions:
         Game objects:
           - Object type: Derelict
             Requires:
-              [{ Paths: [Derelict / Type], Results: [Starship, ▶️Starship] }]
+              - Paths: [Derelict / Type]
+                Results: [Starship, ▶️Starship]
     Faction: &suggestFaction
       Suggestions:
         Game objects:
@@ -355,12 +352,9 @@ _refs:
         Game objects:
           - Object type: Faction
             Requires:
-              [
-                {
-                  Paths: [Faction / Type],
-                  Results: [Fringe Group, ▶️Fringe Group],
-                },
-              ]
+              - Paths: [Faction / Type]
+                Results: [Fringe Group, ▶️Fringe Group]
+
     Place: &suggestPlace # space sighting
       Suggestions:
         Oracle rolls:
