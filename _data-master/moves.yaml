@@ -212,6 +212,7 @@ Moves:
       On a **miss**, you don't have it and the situation grows more perilous. [Pay the Price](#Pay-the-Price).
   - Name: Swear an Iron Vow
     Category: Quest Moves
+    Trigger text: "When you swear upon iron to complete a quest…"
     Triggers:
       - Text: When you swear upon iron to complete a quest
         Stat Options:
@@ -226,6 +227,7 @@ Moves:
       On a **miss**, you must overcome a significant obstacle before you begin your quest. Envision what stands in your way.
   - Name: Reach a Milestone
     Category: Quest Moves
+    Trigger text: "When you make headway in your quest…"
     Triggers:
       - Text: When you make headway in your quest
     Text: |-
@@ -242,6 +244,7 @@ Moves:
   - Name: Fulfill Your Vow
     Category: Quest Moves
     Progress Move: true
+    Trigger text: "When you reach the end of your quest…"
     Triggers:
       - Text: When you reach the end of your quest
         Stat Options:
@@ -259,6 +262,7 @@ Moves:
         * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow's rank by one (if not already epic).
   - Name: Forsake Your Vow
     Category: Quest Moves
+    Trigger text: "When you renounce your quest, betray your promise, or the goal is lost to you…"
     Triggers:
       - Text: When you renounce your quest, betray your promise, or the goal is lost to you
     Text: |-
@@ -274,6 +278,7 @@ Moves:
         * Your reputation suffers: Envision how this failure marks you.
   - Name: Make a Connection
     Category: Connection Moves
+    Trigger text: "When you search out a new relationship or give focus to an existing relationship (not an ally or companion)…"
     Triggers:
       - Text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)
         Stat Options:
@@ -288,6 +293,7 @@ Moves:
       On a **miss**, you don't make a connection and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Develop Your Relationship
     Category: Connection Moves
+    Trigger text: "When you reinforce your relationship with a connection…"
     Triggers:
       - Text: When you reinforce your relationship with a connection
       - Text: When you reinforce your relationship with a bond
@@ -318,6 +324,7 @@ Moves:
       If you already share a bond with the connection, do not mark progress. Instead, roll +their rank to learn the impact on your legacy: troublesome=+1; dangerous=+2; formidable=+3; extreme=+4; epic=+5. On a **strong hit**, mark 2 ticks on your bonds legacy track. On a **strong hit with a match**, you may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic). On a **weak hit**, take +2 momentum. On a **miss**, take no lasting benefit.
   - Name: Test Your Relationship
     Category: Connection Moves
+    Trigger text: "When your relationship with a connection is tested through conflict, betrayal, or circumstance…"
     Triggers:
       - Text: When your relationship with a connection is tested through conflict, betrayal, or circumstance
         Stat Options:
@@ -335,6 +342,7 @@ Moves:
         * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to see it done. Until you complete the quest, take no benefit for the connection. If you refuse or fail the quest, the connection is permanently undone.
   - Name: Forge a Bond
     Category: Connection Moves
+    Trigger text: "When your relationship with a connection is ready to evolve…"
     Triggers:
       - Text: When your relationship with a connection is ready to evolve
         Stat Options:
@@ -353,6 +361,7 @@ Moves:
       On a **miss**, they reveal a motivation or background which puts you at odds. If you recommit to this relationship, roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the connection's rank by one (if not already epic).
   - Name: Undertake an Expedition
     Category: Exploration Moves
+    Trigger text: "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site…"
     Triggers:
       - Details: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and move at speed)
         Text: Move at speed
@@ -383,6 +392,7 @@ Moves:
       On a **miss**, you are waylaid by a crisis, or arrive at a waypoint to confront an immediate hardship or threat. Do not mark progress, and [Pay the Price](#Pay-the-Price).
   - Name: Explore a Waypoint
     Category: Exploration Moves
+    Trigger text: "When you divert from an expedition to examine a notable location…"
     Triggers:
       - Text: When you divert from an expedition to examine a notable location
         Stat Options:
@@ -399,6 +409,7 @@ Moves:
 
       On a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](#Pay-the-Price). On a **miss with a match**, you may instead [Confront Chaos](#Confront-Chaos).
   - Name: Make a Discovery
+    Trigger text: "When your exploration of a waypoint uncovers something wondrous…"
     Category: Exploration Moves
     Triggers:
       - Text: When your exploration of a waypoint uncovers something wondrous
@@ -433,6 +444,7 @@ Moves:
       | 91-100 | Roll Twice |
   - Name: Confront Chaos
     Category: Exploration Moves
+    Trigger text: "When your exploration of a waypoint uncovers something dreadful…"
     Triggers:
       - Text: When your exploration of a waypoint uncovers something dreadful
     Oracle: true
@@ -468,6 +480,7 @@ Moves:
       | 97-100 | Worshipers of great and malevolent powers |
   - Name: Finish an Expedition
     Category: Exploration Moves
+    Trigger text: "When your expedition comes to an end…"
     Triggers:
       - Text: When your expedition comes to an end
         Stat Options:
@@ -486,6 +499,7 @@ Moves:
         * Return to the expedition: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition's rank by one (if not already epic).
   - Name: Set a Course
     Category: Exploration Moves
+    Trigger text: "When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site…"
     Triggers:
       - Text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site
         Stat Options:
@@ -503,6 +517,7 @@ Moves:
       On a **miss**, you are waylaid by a significant threat, and must [Pay the Price](#Pay-the-Price). If you overcome this obstacle, you may push on safely to your destination.
   - Name: Enter the Fray
     Category: Combat Moves
+    Trigger text: When you initiate combat or are forced into a fight…
     Triggers:
       - Details: When you initiate combat or are forced into a fight (on the move)
         Text: On the move
@@ -542,6 +557,7 @@ Moves:
 
       On a **miss**, the fight begins with you in a bad spot.
   - Name: Gain Ground
+    Trigger text: When you are in control and take action in a fight to reinforce your position or move toward an objective…
     Category: Combat Moves
     Triggers:
       - Details: When you are in control and take action in a fight to reinforce your position or move toward an objective (in pursuit, fleeing, or maneuvering)
@@ -581,6 +597,7 @@ Moves:
 
       On a **miss**, your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: React Under Fire
+    Trigger text: "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle…"
     Category: Combat Moves
     Triggers:
       - Details: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (in pursuit, fleeing, dodging, getting back into position, or taking cover)
@@ -619,6 +636,7 @@ Moves:
       On a **miss**, the situation worsens. You stay in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: Strike
     Category: Combat Moves
+    Trigger text: "When you are in control and assault a foe at close quarters, or when you attack at a distance…"
     Triggers:
       - Details: When you are in control and assault a foe at close quarters
         Text: Assault a foe at close quarters
@@ -637,6 +655,7 @@ Moves:
 
       On a **miss**, the fight turns against you. You are in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: Clash
+    Trigger text: "When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance…"
     Category: Combat Moves
     Triggers:
       - Details: When you are in a bad spot and fight back against a foe at close quarters
@@ -655,15 +674,8 @@ Moves:
       On a **weak hit**, mark progress, but you are dealt a counterblow or setback. You stay in a bad spot and must [Pay the Price](#Pay-the-Price).
 
       On a **miss**, your foe dominates this exchange. You stay in a bad spot and must [Pay the Price](#Pay-the-Price).
-  - Name: Face Defeat
-    Category: Combat Moves
-    Triggers:
-      - Text: When you abandon or are deprived of an objective
-    Text: |-
-      **When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](#Pay-the-Price).
-
-      If the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot.
   - Name: Take Decisive Action
+    Trigger text: "When you seize an objective in a fight…"
     Category: Combat Moves
     Triggers:
       - Text: When you seize an objective in a fight
@@ -690,7 +702,17 @@ Moves:
       | 89-100 | It gets complicated: The true nature of a foe or objective is revealed |
 
       On a **miss**, you are defeated or your objective is lost. [Pay the Price](#Pay-the-Price).
+  - Name: Face Defeat
+    Category: Combat Moves
+    Trigger text: "When you abandon or are deprived of an objective…"
+    Triggers:
+      - Text: When you abandon or are deprived of an objective
+    Text: |-
+      **When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](#Pay-the-Price).
+
+      If the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot.
   - Name: Battle
+    Trigger text: "When you fight a battle and it happens in a blur…"
     Category: Combat Moves
     Triggers:
       - Details: When you fight a battle and it happens in a blur (at range, or using your speed and the environment to your advantage)
