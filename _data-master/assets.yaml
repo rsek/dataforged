@@ -1,7 +1,7 @@
 Name: Assets
 Source:
   Name: Starforged Backer Preview
-  Date: "122421"
+  Date: "020122"
 Assets:
   - Name: Starship
     Asset Type: Command Vehicle
@@ -479,7 +479,8 @@ Assets:
                       Support Vehicle Integrity,
                       Incidental Vehicle Integrity,
                     ]
-  - Name: Agent
+  - Name: Infiltrator
+    Aliases: [Agent]
     Asset Type: Path
     Abilities:
       - Text: |-
@@ -650,7 +651,7 @@ Assets:
       - Text: |-
           When you make a move to craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device, add +1 and take +1 momentum on a hit.
       - Text: |-
-          When your momentum is at its max, you may reset your momentum (before rolling) to trigger an explosive device as you [Take Decisive Action](#Take-Decisive-Action). If you do, reroll any dice.
+          When your momentum is at its max, you may reset momentum (before rolling) to trigger an explosive device as you [Take Decisive Action](#Take-Decisive-Action). If you do, reroll any dice.
   - Name: Devotant
     Asset Type: Path
     Input: [Name]
@@ -804,7 +805,7 @@ Assets:
       - Text: |-
           When you [Gather Information](#Gather-Information) by studying or disassembling a machine or device, reroll any dice. On a match, you reveal an unexpected function, capability, or danger; mark 1 tick on your discoveries legacy track.
       - Text: |-
-          With sufficient time (a couple of hours or more), you may [Face Danger](#Face-Danger) to assemble or enhance a device for a powerful but limited role. On a hit, the device is ready for use. One time only, when you or an ally make a move aided by the device, take an automatic strong hit. If you are in a fight, also mark progress.
+          With sufficient time (a couple of hours or more), you may [Secure an Advantage](#Secure-an-Advantage) to assemble or enhance a device for a powerful but limited role. On a hit, the device is ready for use. One time only, when you or an ally make a move aided by the device, take an automatic strong hit. If you are in a fight, also mark progress.
   - Name: Gunner
     Asset Type: Path
     Requirement: If you wield a heavy ranged personal weapon...
@@ -863,12 +864,12 @@ Assets:
       - Text: |-
           As above, but you may instead draw on your powers in a desperate effort to change the outcome of an action. If you do, add +2 (after you roll) and [Lose Momentum](#Lose-Momentum) (-3).
       - Text: |-
-          When your momentum is at its max, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, reset your momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
+          When your momentum is at its max, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, reset momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
   - Name: Looper
     Asset Type: Path
     Abilities:
       - Text: |-
-          When you score a miss on a suffer move, you may reflexively reverse time by a second or two. If you do, [Lose Momentum](#Lose-Momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
+          When you score a miss on a suffer move (not [Endure Stress](#Endure-Stress)), you may loop back a second or two. If you do, [Lose Momentum](#Lose-Momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
         Enabled: true
       - Text: &move_looper |-
           When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](#Endure-Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](#Pay-the-Price).
@@ -892,7 +893,7 @@ Assets:
           When you make a reroll granted by any asset ability on an action roll, also add +1.
   - Name: Lore Hunter
     Asset Type: Path
-    Aliases: [Archivist]
+    Aliases: [Archivist, Lore-Hunter]
     Abilities:
       - Text: |-
           When you [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to recover valuable knowledge or a powerful relic, reroll any dice. When you [Fulfill Your Vow](#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
@@ -937,7 +938,7 @@ Assets:
       - Text: |-
           When you [Set a Course](#Set-a-Course), choose one.
 
-            * Follow the fastest path: Take +2 momentum on a hit.
+            * Follow the fastest path: Take +2 momentum on a strong hit.
             * Follow the safest path: Add +1
 
           On a strong hit with a match, you charted a new path during the journey; mark 1 tick on your discoveries legacy track.
@@ -972,7 +973,7 @@ Assets:
           When you [Gather Information](#Gather-Information) or [Resupply](#Resupply) by scavenging a wreck, ruin, or abandoned site, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also find something of unique value, significance, or function; envision the nature of this discovery, take +2 momentum, and mark 2 ticks on your discoveries legacy track.
         Enabled: true
       - Text: |-
-          When you [Face Danger](#Face-Danger) to cobble together an ad hoc tool, device, or weapon, envision what you intend to create. On a hit, you may add +1 when making a move aided by the item. If you roll a 1 on your action die while using the item, it is permanently broken, lost, or depleted.
+          When you [Secure an Advantage](#Secure-an-Advantage) to cobble together an ad hoc tool, device, or weapon, envision what you intend to create. On a hit, you may add +1 when making a move aided by the item. If you roll a 1 on your action die while using the item, it is permanently broken, lost, or depleted.
       - Text: |-
           When you [Check Your Gear](#Check-Your-Gear), roll +wits or +supply (whichever is highest) and take +1 momentum on a hit.
         Alter Moves:
@@ -1006,7 +1007,7 @@ Assets:
           When you envision experiencing a prophetic dream, you may [Ask the Oracle](#Ask-the-Oracle) for details using an interpretive oracle such as Action/Theme or Descriptor/Focus. If you record the answer, and later face a situation which gives truth to the vision, take an automatic strong hit (one time only) when making a move to act on your foresight. Then, clear the prophecy. Only one prophecy can be active at a time.
         Enabled: true
       - Text: |-
-          When you focus or medidate to [Gather Information](#Gather-Information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.
+          When you focus or meditate to [Gather Information](#Gather-Information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.
         Alter Moves:
           - Name: Gather Information
             Triggers:
