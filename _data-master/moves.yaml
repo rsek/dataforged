@@ -5,6 +5,7 @@ Source:
 Moves:
   - Name: Begin a Session
     Category: Session Moves
+    Trigger text: When you begin a significant session or chapter of play
     Triggers:
       - Text: When you begin a significant session or chapter of play
     Oracle: true
@@ -31,6 +32,7 @@ Moves:
       | 91-100 | Unforeseen aid is on the way or within reach |
   - Name: Set a Flag
     Category: Session Moves
+    Trigger text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching
     Triggers:
       - Text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching
     Text: |-
@@ -39,6 +41,7 @@ Moves:
       When you encounter content flagged as something to approach mindfully, pause to consider or discuss its role in your story. When you come across flagged content that you would rather adjust or omit, [Change Your Fate](#Change-Your-Fate).
   - Name: Change Your Fate
     Category: Session Moves
+    Trigger text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment
     Triggers:
       - Text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment
     Text: |-
@@ -51,6 +54,7 @@ Moves:
         * **Reshape:** The situation changes completely. Envision what happened instead.
   - Name: Take a Break
     Category: Session Moves
+    Trigger text: When you resolve a progress move or complete an intense scenario
     Triggers:
       - Text: When you resolve a progress move or complete an intense scenario
     Text: |-
@@ -60,6 +64,7 @@ Moves:
         * Stop for now: [End a Session](#End-a-Session).
   - Name: End a Session
     Category: Session Moves
+    Trigger text: When you end a significant session or chapter of play
     Triggers:
       - Text: When you end a significant session or chapter of play
     Text: |-
@@ -71,6 +76,7 @@ Moves:
       If there is a quest, connection, or other situation you would like to give focus in your next session, make note of it and take +1 momentum.
   - Name: Face Danger
     Category: Adventure Moves
+    Trigger text: When you attempt something risky or react to an imminent threat
     Triggers:
       - Details: When you attempt something risky or react to an imminent threat (with speed, mobility, or agility)
         Text: With speed, mobility, or agility
@@ -108,6 +114,7 @@ Moves:
       On a **miss**, you fail, or a momentary success is undermined by a dire turn of events. [Pay the Price](#Pay-the-Price).
   - Name: Secure an Advantage
     Category: Adventure Moves
+    Trigger text: When you assess a situation, make preparations, or attempt to gain leverage
     Triggers:
       - Details: When you assess a situation, make preparations, or attempt to gain leverage (with speed, mobility, or agility)
         Text: With speed, mobility, or agility
@@ -146,6 +153,7 @@ Moves:
       On a **miss**, you fail or your assumptions betray you. [Pay the Price](#Pay-the-Price).
   - Name: Gather Information
     Category: Adventure Moves
+    Trigger text: When you search for clues, conduct an investigation, analyze evidence, or do research
     Triggers:
       - Text: When you search for clues, conduct an investigation, analyze evidence, or do research
         Stat Options:
@@ -160,6 +168,7 @@ Moves:
       On a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](#Pay-the-Price).
   - Name: Compel
     Category: Adventure Moves
+    Trigger text: When you try to persuade someone or make them an offer
     Triggers:
       - Details: When you try to persuade someone or make them an offer, and you charm, pacify, encourage, or barter
         Text: Charm, pacify, encourage, or barter
@@ -187,6 +196,7 @@ Moves:
       On a **miss**, they refuse or make a demand that costs you greatly. [Pay the Price](#Pay-the-Price).
   - Name: Aid Your Ally
     Category: Adventure Moves
+    Trigger text: When you act in direct support of an ally
     Triggers:
       - Text: When you act in direct support of an ally
     Text: |-
@@ -195,6 +205,7 @@ Moves:
       If you [Gain Ground](#Gain-Ground) and score a strong hit, you are both in control. On a **weak hit**, your ally is in control but you are in a bad spot.
   - Name: Check Your Gear
     Category: Adventure Moves
+    Trigger text: When you check to see if you have a specific helpful item or resource
     Triggers:
       - Text: When you check to see if you have a specific helpful item or resource
         Stat Options:
@@ -750,6 +761,7 @@ Moves:
 
       On a **miss**, you are defeated or the objective is lost. [Pay the Price](#Pay-the-Price).
   - Name: Lose Momentum
+    Trigger text: When you are delayed or disadvantaged
     Category: Suffer Moves
     Triggers:
       - Text: When you are delayed or disadvantaged
@@ -761,6 +773,7 @@ Moves:
         * Envision how the price is paid and apply the cost to a different suffer move.
         * Envision how this undermines your progress on a vow, expedition, connection, or combat. Then, clear 1 unit of progress on that track per its rank: troublesome=3 boxes; dangerous=2 boxes; formidable=1 box; extreme=2 ticks; epic=1 tick.
   - Name: Endure Harm
+    Trigger text: When you face physical injury, fatigue, or illness
     Category: Suffer Moves
     Triggers:
       - Text: When you face physical injury, fatigue, or illness, and your health is 0 or you choose to resist the harm
@@ -790,6 +803,7 @@ Moves:
       | 51-100 | You are still standing. |
   - Name: Endure Stress
     Category: Suffer Moves
+    Trigger text: When you face mental strain, shock, or despair
     Triggers:
       - Text: When you face mental strain, shock, or despair, and your spirit is 0 or you choose to resist the stress
         Stat Options:
@@ -817,6 +831,7 @@ Moves:
       | 51-100 | You persevere. |
   - Name: Withstand Damage
     Category: Suffer Moves
+    Trigger text: When your vehicle faces a damaging situation or environment
     Triggers:
       - Text: When your vehicle faces a damaging situation or environment
         Stat Options:
@@ -852,6 +867,7 @@ Moves:
       | 96-100 | Against all odds, the vehicle holds together. |
   - Name: Companion Takes a Hit
     Category: Suffer Moves
+    Trigger text: When your companion faces physical hardship, and their health is 0 or you choose to test their resilience
     Triggers:
       - Text: When your companion faces physical hardship, and their health is 0 or you choose to test their resilience
         Stat Options:
@@ -868,6 +884,7 @@ Moves:
       On a **miss**, it's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](#Lose-Momentum) (-2). If your companion's health is 0, they are out of action until given aid. If their health is 0 and you rolled a miss with a match on this move, they are dead or destroyed; discard the asset.
   - Name: Sacrifice Resources
     Category: Suffer Moves
+    Trigger text: When you lose or consume resources
     Triggers:
       - Text: When you lose or consume resources
     Text: |-
@@ -876,6 +893,7 @@ Moves:
       If your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move.
   - Name: Sojourn
     Category: Recover Moves
+    Trigger text: When you spend time recovering within a community
     Triggers:
       - Text: When you spend time recovering within a community
         Stat Options:
@@ -893,6 +911,7 @@ Moves:
         * You find no relief, and the situation grows worse. [Pay the Price](#Pay-the-Price).
   - Name: Heal
     Category: Recover Moves
+    Trigger text: When you receive medical care or provide treatment
     Triggers:
       - Details: When you receive treatment from someone (not an ally)
         Text: Receive treatment from someone (not an ally)
@@ -926,6 +945,7 @@ Moves:
       On a **miss**, the aid is ineffective and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Hearten
     Category: Recover Moves
+    Trigger text: When you socialize, share intimacy, or find a moment of peace
     Triggers:
       - Text: When you socialize, share intimacy, or find a moment of peace
         Stat Options:
@@ -940,6 +960,7 @@ Moves:
       On a **miss**, you take no comfort and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Repair
     Category: Recover Moves
+    Trigger text: When you make repairs to your vehicles, modules, mechanical companions, or other devices
     Triggers:
       - Details: When you make your own repairs, or direct a companion to make repairs
         Text: Make your own repairs, or direct a companion to make repairs
@@ -975,6 +996,7 @@ Moves:
       On a **miss**, the repairs are not made and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Resupply
     Category: Recover Moves
+    Trigger text: When you attempt to bolster your readiness
     Triggers:
       - Details: When you attempt to bolster your readiness (and you barter or make an appeal)
         Text: Barter or make an appeal
@@ -1010,9 +1032,9 @@ Moves:
       On a **miss**, you encounter an unexpected peril. [Pay the Price](#Pay-the-Price).
   - Name: Face Death
     Category: Threshold Moves
+    Trigger text: When you are brought to the brink of death with a chance for recovery or redemption
     Triggers:
-      - Text: When you are brought to the brink of death with a chance for recovery or redemption
-        Stat Options:
+      - Stat Options:
           Stats: [Heart]
     Text: |-
       **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
@@ -1027,9 +1049,9 @@ Moves:
       On a **miss**, you are dead.
   - Name: Face Desolation
     Category: Threshold Moves
+    Trigger text: When you are brought to the brink of desolation
     Triggers:
-      - Text: When you are brought to the brink of desolation
-        Stat Options:
+      - Stat Options:
           Stats: [Heart]
     Text: |-
       **When you are brought to the brink of desolation**, roll +heart.
@@ -1044,9 +1066,9 @@ Moves:
       On a **miss**, you succumb to despair or horror and are lost.
   - Name: Overcome Destruction
     Category: Threshold Moves
+    Trigger text: When your command vehicle is destroyed or irrevocably lost
     Triggers:
-      - Text: When your command vehicle is destroyed or irrevocably lost
-        Stat Options:
+      - Stat Options:
           Legacies: [Bonds]
     Progress Move: true
     Text: |-
@@ -1063,6 +1085,7 @@ Moves:
       If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
   - Name: Earn Experience
     Category: Legacy Moves
+    Trigger text: When you fill a box (four ticks) on any legacy track
     Triggers:
       - Text: When you fill a box (four ticks) on any legacy track
     Text: |-
@@ -1071,6 +1094,7 @@ Moves:
       Once you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress.
   - Name: Advance
     Category: Legacy Moves
+    Trigger text: When you develop your abilities, improve your resources, gain a reward, or boost your influence
     Triggers:
       - Text: When you develop your abilities, improve your resources, gain a reward, or boost your influence
     Text: |-
@@ -1083,9 +1107,9 @@ Moves:
         * Deed: Learn from your experiences or build a legacy
   - Name: Continue a Legacy
     Category: Legacy Moves
+    Trigger text: When you retire from your life as Ironsworn, or succumb to death or desolation
     Triggers:
-      - Text: When you retire from your life as Ironsworn, or succumb to death or desolation
-        Stat Options:
+      - Stat Options:
           Method: all
           Legacies: [Quests, Bonds, Discoveries]
     Progress Move: true
@@ -1111,6 +1135,7 @@ Moves:
         * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
   - Name: Ask the Oracle
     Category: Fate Moves
+    Trigger text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events
     Triggers:
       - Text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events
     Oracle: true
@@ -1133,6 +1158,7 @@ Moves:
       On a match, envision an extreme result or twist.
   - Name: Pay the Price
     Category: Fate Moves
+    Trigger text: When you suffer the outcome of an action
     Triggers:
       - Text: When you suffer the outcome of an action
     Oracle: true
