@@ -1,6 +1,5 @@
-Planet:
-  Name: Planet
-  Display name: Planets
+Planets:
+  Name: Planets
   Aliases: [World]
   Description: |-
     # Summary: Exploring Planets
@@ -41,8 +40,8 @@ Planet:
     Name: Starforged Backer Preview
     Date: "060121"
   Oracles:
-    - Name: Planetary Class
-      Aliases: [Class]
+    - Name: Class
+      Display name: Planetary Class
       Usage:
         Initial: true
         Suggestions:
@@ -52,17 +51,17 @@ Planet:
         Part of speech: [noun]
       Description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
       Table:
-        - [1, 15, ▶️Desert World, *Desert, *DesertObj]
-        - [16, 30, ▶️Furnace World, *Furnace, *FurnaceObj]
-        - [31, 35, ▶️Grave World, *Grave, *GraveObj]
-        - [36, 50, ▶️Ice World, *Ice, *IceObj]
-        - [51, 65, ▶️Jovian World, *Jovian, *JovianObj]
-        - [66, 70, ▶️Jungle World, *Jungle, *JungleObj]
-        - [71, 75, ▶️Ocean World, *Ocean, *OceanObj]
-        - [76, 90, ▶️Rocky World, *Rocky, *RockyObj]
-        - [91, 92, ▶️Shattered World, *Shattered, *ShatteredObj]
-        - [93, 98, ▶️Tainted World, *Tainted, *TaintedObj]
-        - [99, 100, ▶️Vital World, *Vital, *VitalObj]
+        - [1, 15, ⏵Desert World, *Desert, *DesertObj]
+        - [16, 30, ⏵Furnace World, *Furnace, *FurnaceObj]
+        - [31, 35, ⏵Grave World, *Grave, *GraveObj]
+        - [36, 50, ⏵Ice World, *Ice, *IceObj]
+        - [51, 65, ⏵Jovian World, *Jovian, *JovianObj]
+        - [66, 70, ⏵Jungle World, *Jungle, *JungleObj]
+        - [71, 75, ⏵Ocean World, *Ocean, *OceanObj]
+        - [76, 90, ⏵Rocky World, *Rocky, *RockyObj]
+        - [91, 92, ⏵Shattered World, *Shattered, *ShatteredObj]
+        - [93, 98, ⏵Tainted World, *Tainted, *TaintedObj]
+        - [99, 100, ⏵Vital World, *Vital, *VitalObj]
 
     - Name: Peril
       Display name: Planetside Peril
@@ -166,7 +165,7 @@ Planet:
       Description: |-
         Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
       Oracles:
-        - Display name: Planetside Opportunity / Lifebearing
+        - Display name: Planetside Opportunity - Lifebearing
           Name: Lifebearing
           Usage:
             Requires:
@@ -201,9 +200,9 @@ Planet:
             - [93, 96, "Refuge offers a place to hide, plan, or recover", *suggestObject]
             - [97, 100, Vantage point reveals the lay of the land, *suggestObject]
 
-        - Display name: Planetside Opportunity / Lifeless
+        - Display name: Planetside Opportunity - Lifeless
           Name: Lifeless
-          _template: Planetside Opportunity / Lifebearing
+          _template: Lifebearing
           Usage:
             Requires:
               - Paths: *any_life

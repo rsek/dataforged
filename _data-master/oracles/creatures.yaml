@@ -1,6 +1,5 @@
-Creature:
-  Name: Creature
-  Display name: Creatures
+Creatures:
+  Name: Creatures
   Source:
     Name: Starforged Backer Preview
     Date: "081921"
@@ -30,7 +29,7 @@ Creature:
         - [26, 60, Medium, person-sized]
         - [61, 90, Large, vehicle-sized]
         - [91, 99, Huge, whale-sized]
-        - [100, 100, ▶️Ultra-scale,
+        - [100, 100, ⏵Ultra-scale,
           { Table: [
             [1, 89, Titanic, hill-sized], [90, 99, Colossal, mountain-sized], [100, 100, Vast, planet-sized]]
           } ]
@@ -49,7 +48,7 @@ Creature:
     - Name: Basic Form
       Usage:
         Initial: true
-        Select table by: Creature / Environment
+        Select table by: Creatures / Environment
       Content:
         Part of speech: [fragment]
       Description: |-
@@ -58,7 +57,7 @@ Creature:
         - Name: Space
           Usage:
             Requires:
-              - Paths: [Creature / Environment]
+              - Table IDs: [Creatures / Environment]
                 Results: [Space]
           Table:
             - [1, 5, Amoeba / pseudopods]
@@ -83,7 +82,7 @@ Creature:
           _template: Space
           Usage:
             Requires:
-              - Paths: [Creature / Environment]
+              - Table IDs: [Creatures / Environment]
                 Results: [Interior]
           Table:
             - [1, 3]
@@ -108,7 +107,7 @@ Creature:
           _template: Space
           Usage:
             Requires:
-              - Paths: [Creature / Environment]
+              - Table IDs: [Creatures / Environment]
                 Results: [Land]
           Table:
             - [1, 2]
@@ -133,7 +132,7 @@ Creature:
           _template: Space
           Usage:
             Requires:
-              - Paths: [Creature / Environment]
+              - Table IDs: [Creatures / Environment]
                 Results: [Liquid]
           Table:
             - [1, 5]
@@ -158,7 +157,7 @@ Creature:
           _template: Space
           Usage:
             Requires:
-              - Paths: [Creature / Environment]
+              - Table IDs: [Creatures / Environment]
                 Results: [Air]
           Table:
             - [1, 2]
