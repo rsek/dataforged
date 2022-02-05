@@ -1,13 +1,12 @@
 Name: Moves
 Source:
-  Name: Starforged Backer Preview
+  Title: Starforged Backer Preview
   Date: "020122"
 Moves:
   - Name: Begin a Session
     Category: Session Moves
-    Trigger text: "When you begin a significant session or chapter of play…"
-    Triggers:
-      - Text: When you begin a significant session or chapter of play
+    Trigger:
+      Text: "When you begin a significant session or chapter of play…"
     Oracle: true
     Text: |-
       **When you begin a significant session or chapter of play**, do all of the following.
@@ -18,32 +17,30 @@ Moves:
 
       In addition, you may spotlight a new danger, opportunity, or insight. This can include a scene hidden from your character’s perspective. If you do, envision a brief vignette (you may roll or choose on the table below for inspiration). Then, all players take +1 momentum as you return to play from the viewpoint of your characters.
 
-      | Roll | Result   |
-      |------|----------|
-      | 1-10 | Flashback reveals an aspect of your background or nature |
-      | 11-20 | Flashback reveals an aspect of another character, place, or faction |
-      | 21-30 | Influential character or faction is introduced or given new detail |
-      | 31-40 | Seemingly unrelated situations are shown to be connected |
-      | 41-50 | External factors create new danger, urgency, or importance for a quest |
-      | 51-60 | Important character is put in danger or suffers a misadventure |
-      | 61-70 | Key location is made unsafe or becomes mired in conflict |
-      | 71-80 | Unexpected return of an enemy or threat |
-      | 81-90 | Peril lies ahead or lurks just out of view |
-      | 91-100 | Unforeseen aid is on the way or within reach |
+      | Roll   | Result                                                                 |
+      |--------|------------------------------------------------------------------------|
+      | 1-10   | Flashback reveals an aspect of your background or nature               |
+      | 11-20  | Flashback reveals an aspect of another character, place, or faction    |
+      | 21-30  | Influential character or faction is introduced or given new detail     |
+      | 31-40  | Seemingly unrelated situations are shown to be connected               |
+      | 41-50  | External factors create new danger, urgency, or importance for a quest |
+      | 51-60  | Important character is put in danger or suffers a misadventure         |
+      | 61-70  | Key location is made unsafe or becomes mired in conflict               |
+      | 71-80  | Unexpected return of an enemy or threat                                |
+      | 81-90  | Peril lies ahead or lurks just out of view                             |
+      | 91-100 | Unforeseen aid is on the way or within reach                           |
   - Name: Set a Flag
     Category: Session Moves
-    Trigger text: "When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching…"
-    Triggers:
-      - Text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching
+    Trigger:
+      Text: "When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching…"
     Text: |-
       **When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching**, that content is now flagged.
 
       When you encounter content flagged as something to approach mindfully, pause to consider or discuss its role in your story. When you come across flagged content that you would rather adjust or omit, [Change Your Fate](#Change-Your-Fate).
   - Name: Change Your Fate
     Category: Session Moves
-    Trigger text: "When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment…"
-    Triggers:
-      - Text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment
+    Trigger:
+      Text: "When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment…"
     Text: |-
       **When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment**, pause and identify what needs to be changed. Choose as many options as appropriate.
 
@@ -54,9 +51,8 @@ Moves:
         * **Reshape:** The situation changes completely. Envision what happened instead.
   - Name: Take a Break
     Category: Session Moves
-    Trigger text: "When you resolve a progress move or complete an intense scenario…"
-    Triggers:
-      - Text: When you resolve a progress move or complete an intense scenario
+    Trigger:
+      Text: "When you resolve a progress move or complete an intense scenario…"
     Text: |-
       **When you resolve a progress move or complete an intense scenario,** take a few deep breaths and take some time to attend to the needs of your body. Reflect on what just happened and how it made you feel. Then, choose one.
 
@@ -64,9 +60,8 @@ Moves:
         * Stop for now: [End a Session](#End-a-Session).
   - Name: End a Session
     Category: Session Moves
-    Trigger text: "When you end a significant session or chapter of play…"
-    Triggers:
-      - Text: When you end a significant session or chapter of play
+    Trigger:
+      Text: "When you end a significant session or chapter of play…"
     Text: |-
       **When you end a significant session or chapter of play,** reflect on the events of the game and identify any missed opportunities to mark progress.
 
@@ -76,28 +71,19 @@ Moves:
       If there is a quest, connection, or other situation you would like to give focus in your next session, make note of it and take +1 momentum.
   - Name: Face Danger
     Category: Adventure Moves
-    Trigger text: "When you attempt something risky or react to an imminent threat…"
-    Triggers:
-      - Details: When you attempt something risky or react to an imminent threat (with speed, mobility, or agility)
-        Text: With speed, mobility, or agility
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you attempt something risky or react to an imminent threat (with resolve, command, or sociability)
-        Text: With resolve, command, or sociability
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you attempt something risky or react to an imminent threat (with strength, endurance, or aggression)
-        Text: With strength, endurance, or aggression
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you attempt something risky or react to an imminent threat (with deception, stealth, or trickery)
-        Text: With deception, stealth, or trickery
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you attempt something risky or react to an imminent threat (with expertise, focus, or observation)
-        Text: With expertise, focus, or observation
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you attempt something risky or react to an imminent threat…"
+      Options:
+        - Text: With speed, mobility, or agility
+          Roll: Edge
+        - Text: With resolve, command, or sociability
+          Roll: Heart
+        - Text: With strength, endurance, or aggression
+          Roll: Iron
+        - Text: With deception, stealth, or trickery
+          Roll: Shadow
+        - Text: With expertise, focus, or observation
+          Roll: Wits
     Text: |-
       **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
 
@@ -114,28 +100,19 @@ Moves:
       On a **miss**, you fail, or a momentary success is undermined by a dire turn of events. [Pay the Price](#Pay-the-Price).
   - Name: Secure an Advantage
     Category: Adventure Moves
-    Trigger text: "When you assess a situation, make preparations, or attempt to gain leverage…"
-    Triggers:
-      - Details: When you assess a situation, make preparations, or attempt to gain leverage (with speed, mobility, or agility)
-        Text: With speed, mobility, or agility
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you assess a situation, make preparations, or attempt to gain leverage (with resolve, command, or sociability)
-        Text: With resolve, command, or sociability
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you assess a situation, make preparations, or attempt to gain leverage (with strength, endurance, aggression)
-        Text: With strength, endurance, aggression
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you assess a situation, make preparations, or attempt to gain leverage (with deception, stealth, or trickery)
-        Text: With deception, stealth, or trickery
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you assess a situation, make preparations, or attempt to gain leverage (with expertise, focus, or observation)
-        Text: With expertise, focus, or observation
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you assess a situation, make preparations, or attempt to gain leverage…"
+      Options:
+        - Text: With speed, mobility, or agility
+          Roll: Edge
+        - Text: With resolve, command, or sociability
+          Roll: Heart
+        - Text: With strength, endurance, aggression
+          Roll: Iron
+        - Text: With deception, stealth, or trickery
+          Roll: Shadow
+        - Text: With expertise, focus, or observation
+          Roll: Wits
     Text: |-
       **When you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
 
@@ -153,11 +130,10 @@ Moves:
       On a **miss**, you fail or your assumptions betray you. [Pay the Price](#Pay-the-Price).
   - Name: Gather Information
     Category: Adventure Moves
-    Trigger text: "When you search for clues, conduct an investigation, analyze evidence, or do research…"
-    Triggers:
-      - Text: When you search for clues, conduct an investigation, analyze evidence, or do research
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you search for clues, conduct an investigation, analyze evidence, or do research…"
+      Options:
+        - Roll: Wits
     Text: |-
       **When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.
 
@@ -168,20 +144,15 @@ Moves:
       On a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](#Pay-the-Price).
   - Name: Compel
     Category: Adventure Moves
-    Trigger text: "When you try to persuade someone or make them an offer…"
-    Triggers:
-      - Details: When you try to persuade someone or make them an offer, and you charm, pacify, encourage, or barter
-        Text: Charm, pacify, encourage, or barter
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you try to persuade someone or make them an offer, and you threaten or incite
-        Text: Threaten or incite
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you try to persuade someone or make them an offer, and you lie or swindle
-        Text: Lie or swindle
-        Stat Options:
-          Stats: [Shadow]
+    Trigger:
+      Text: "When you try to persuade someone or make them an offer…"
+      Options:
+        - Text: Charm, pacify, encourage, or barter
+          Roll: Heart
+        - Text: Threaten or incite
+          Roll: Iron
+        - Text: Lie or swindle
+          Roll: Shadow
     Text: |-
       **When you try to persuade someone or make them an offer**, envision your approach. If you...
 
@@ -196,20 +167,18 @@ Moves:
       On a **miss**, they refuse or make a demand that costs you greatly. [Pay the Price](#Pay-the-Price).
   - Name: Aid Your Ally
     Category: Adventure Moves
-    Trigger text: "When you act in direct support of an ally…"
-    Triggers:
-      - Text: When you act in direct support of an ally
+    Trigger:
+      Text: "When you act in direct support of an ally…"
     Text: |-
       **When you act in direct support of an ally**, envision how you aid them. Then, [Secure an Advantage](#Secure-an-Advantage) or [Gain Ground](#Gain-Ground) to take action. If you score a hit, they (instead of you) take the benefits of the move.
 
       If you [Gain Ground](#Gain-Ground) and score a strong hit, you are both in control. On a **weak hit**, your ally is in control but you are in a bad spot.
   - Name: Check Your Gear
     Category: Adventure Moves
-    Trigger text: "When you check to see if you have a specific helpful item or resource…"
-    Triggers:
-      - Text: When you check to see if you have a specific helpful item or resource
-        Stat Options:
-          Stats: [Supply]
+    Trigger:
+      Text: "When you check to see if you have a specific helpful item or resource…"
+      Options:
+        - Roll: Supply
     Text: |-
       **When you check to see if you have a specific helpful item or resource**, roll +supply.
 
@@ -223,11 +192,10 @@ Moves:
       On a **miss**, you don't have it and the situation grows more perilous. [Pay the Price](#Pay-the-Price).
   - Name: Swear an Iron Vow
     Category: Quest Moves
-    Trigger text: "When you swear upon iron to complete a quest…"
-    Triggers:
-      - Text: When you swear upon iron to complete a quest
-        Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When you swear upon iron to complete a quest…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
@@ -238,9 +206,8 @@ Moves:
       On a **miss**, you must overcome a significant obstacle before you begin your quest. Envision what stands in your way.
   - Name: Reach a Milestone
     Category: Quest Moves
-    Trigger text: "When you make headway in your quest…"
-    Triggers:
-      - Text: When you make headway in your quest
+    Trigger:
+      Text: "When you make headway in your quest…"
     Text: |-
       **When you make headway in your quest** by doing any of the following...
 
@@ -255,11 +222,10 @@ Moves:
   - Name: Fulfill Your Vow
     Category: Quest Moves
     Progress Move: true
-    Trigger text: "When you reach the end of your quest…"
-    Triggers:
-      - Text: When you reach the end of your quest
-        Stat Options:
-          Progress: [Vow Progress]
+    Trigger:
+      Text: "When you reach the end of your quest…"
+      Options:
+        - Roll: Vow Progress
     Text: |-
       **When you reach the end of your quest**, roll the challenge dice and compare to your progress.
 
@@ -273,9 +239,8 @@ Moves:
         * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow's rank by one (if not already epic).
   - Name: Forsake Your Vow
     Category: Quest Moves
-    Trigger text: "When you renounce your quest, betray your promise, or the goal is lost to you…"
-    Triggers:
-      - Text: When you renounce your quest, betray your promise, or the goal is lost to you
+    Trigger:
+      Text: "When you renounce your quest, betray your promise, or the goal is lost to you…"
     Text: |-
       **When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.
 
@@ -289,11 +254,10 @@ Moves:
         * Your reputation suffers: Envision how this failure marks you.
   - Name: Make a Connection
     Category: Connection Moves
-    Trigger text: "When you search out a new relationship or give focus to an existing relationship (not an ally or companion)…"
-    Triggers:
-      - Text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)
-        Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When you search out a new relationship or give focus to an existing relationship (not an ally or companion)…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
@@ -304,21 +268,20 @@ Moves:
       On a **miss**, you don't make a connection and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Develop Your Relationship
     Category: Connection Moves
-    Trigger text: "When you reinforce your relationship with a connection…"
-    Triggers:
-      - Text: When you reinforce your relationship with a connection
-      - Text: When you reinforce your relationship with a bond
-        Special:
-          - Name: Troublesome
-            Value: 1
-          - Name: Dangerous
-            Value: 2
-          - Name: Formidable
-            Value: 3
-          - Name: Extreme
-            Value: 4
-          - Name: Epic
-            Value: 5
+    Trigger:
+      Text: "When you reinforce your relationship with a connection…"
+      Options:
+        - Special stat:
+            - Name: Troublesome
+              Value: 1
+            - Name: Dangerous
+              Value: 2
+            - Name: Formidable
+              Value: 3
+            - Name: Extreme
+              Value: 4
+            - Name: Epic
+              Value: 5
     Text: |-
       **When you reinforce your relationship with a connection** by doing any of the following...
 
@@ -335,11 +298,10 @@ Moves:
       If you already share a bond with the connection, do not mark progress. Instead, roll +their rank to learn the impact on your legacy: troublesome=+1; dangerous=+2; formidable=+3; extreme=+4; epic=+5. On a **strong hit**, mark 2 ticks on your bonds legacy track. On a **strong hit with a match**, you may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic). On a **weak hit**, take +2 momentum. On a **miss**, take no lasting benefit.
   - Name: Test Your Relationship
     Category: Connection Moves
-    Trigger text: "When your relationship with a connection is tested through conflict, betrayal, or circumstance…"
-    Triggers:
-      - Text: When your relationship with a connection is tested through conflict, betrayal, or circumstance
-        Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When your relationship with a connection is tested through conflict, betrayal, or circumstance…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.
 
@@ -353,11 +315,10 @@ Moves:
         * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](#Swear-an-Iron-Vow) (formidable or greater) to see it done. Until you complete the quest, take no benefit for the connection. If you refuse or fail the quest, the connection is permanently undone.
   - Name: Forge a Bond
     Category: Connection Moves
-    Trigger text: "When your relationship with a connection is ready to evolve…"
-    Triggers:
-      - Text: When your relationship with a connection is ready to evolve
-        Stat Options:
-          Progress: [Connection Progress]
+    Trigger:
+      Text: "When your relationship with a connection is ready to evolve…"
+      Options:
+        - Roll: Connection Progress
     Progress Move: true
     Text: |-
       **When your relationship with a connection is ready to evolve**, roll the challenge dice and compare to your progress.
@@ -372,20 +333,15 @@ Moves:
       On a **miss**, they reveal a motivation or background that puts you at odds. If you recommit to this relationship, roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the connection's rank by one (if not already epic).
   - Name: Undertake an Expedition
     Category: Exploration Moves
-    Trigger text: "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site…"
-    Triggers:
-      - Details: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and move at speed)
-        Text: Move at speed
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and keep under the radar)
-        Text: Keep under the radar
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site (and stay vigilant)
-        Text: Stay vigilant
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site…"
+      Options:
+        - Text: Move at speed
+          Roll: Edge
+        - Text: Keep under the radar
+          Roll: Shadow
+        - Text: Stay vigilant
+          Roll: Wits
     Text: |-
       **When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank. Then, for each segment of the expedition, envision your approach. If you...
 
@@ -403,11 +359,10 @@ Moves:
       On a **miss**, you are waylaid by a crisis, or arrive at a waypoint to confront an immediate hardship or threat. Do not mark progress, and [Pay the Price](#Pay-the-Price).
   - Name: Explore a Waypoint
     Category: Exploration Moves
-    Trigger text: "When you divert from an expedition to examine a notable location…"
-    Triggers:
-      - Text: When you divert from an expedition to examine a notable location
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you divert from an expedition to examine a notable location…"
+      Options:
+        - Roll: Wits
     Text: |-
       **When you divert from an expedition to examine a notable location**, roll +wits.
 
@@ -420,82 +375,81 @@ Moves:
 
       On a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](#Pay-the-Price). On a **miss with a match**, you may instead [Confront Chaos](#Confront-Chaos).
   - Name: Make a Discovery
-    Trigger text: "When your exploration of a waypoint uncovers something wondrous…"
     Category: Exploration Moves
     Triggers:
-      - Text: When your exploration of a waypoint uncovers something wondrous
+      Text: When your exploration of a waypoint uncovers something wondrous
+      Options:
+        - Roll: Wits
     Oracle: true
     Text: |-
       **When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.
 
-      | Roll   | Result |
-      |--------|--------|
-      | 1-4    | Advanced technology waiting to be harnessed or salvaged |
-      | 5-8    | Ancient archive or message |
-      | 9-10   | Artificial consciousness evolved to a higher state |
-      | 11-12  | Clues to a crucial resource or uncharted domain |
-      | 13-14  | Envoy from another time or reality |
-      | 15-22  | Extraordinary natural phenomenon |
-      | 23-24  | First contact with intelligent life |
-      | 25-26  | Gateway to another time or alternate reality |
-      | 27-28  | Key to unlocking a language or method of communication |
-      | 29-34  | Lost or hidden people |
-      | 35-42  | Majestic or unusual lifeforms |
-      | 43-46  | Marvel of ancient engineering |
-      | 47-50  | Miraculously preserved artifact or specimen |
+      | Roll   | Result                                                         |
+      |--------|----------------------------------------------------------------|
+      | 1-4    | Advanced technology waiting to be harnessed or salvaged        |
+      | 5-8    | Ancient archive or message                                     |
+      | 9-10   | Artificial consciousness evolved to a higher state             |
+      | 11-12  | Clues to a crucial resource or uncharted domain                |
+      | 13-14  | Envoy from another time or reality                             |
+      | 15-22  | Extraordinary natural phenomenon                               |
+      | 23-24  | First contact with intelligent life                            |
+      | 25-26  | Gateway to another time or alternate reality                   |
+      | 27-28  | Key to unlocking a language or method of communication         |
+      | 29-34  | Lost or hidden people                                          |
+      | 35-42  | Majestic or unusual lifeforms                                  |
+      | 43-46  | Marvel of ancient engineering                                  |
+      | 47-50  | Miraculously preserved artifact or specimen                    |
       | 51-56  | Monumental architecture or artistry of an ancient civilization |
-      | 57-62  | Mysterious device or artifact of potential value |
-      | 63-66  | New understanding of an enduring mystery |
-      | 67-68  | Pathway or means of travel to a distant location |
-      | 69-70  | Person or lifeform with phenomenal abilities |
-      | 71-78  | Place of awe-inspiring beauty |
-      | 79-86  | Rare and valuable resource |
-      | 87-88  | Safeguarded or idyllic location |
-      | 89-90  | Visions or prophesies of the future |
-      | 91-100 | Roll Twice |
+      | 57-62  | Mysterious device or artifact of potential value               |
+      | 63-66  | New understanding of an enduring mystery                       |
+      | 67-68  | Pathway or means of travel to a distant location               |
+      | 69-70  | Person or lifeform with phenomenal abilities                   |
+      | 71-78  | Place of awe-inspiring beauty                                  |
+      | 79-86  | Rare and valuable resource                                     |
+      | 87-88  | Safeguarded or idyllic location                                |
+      | 89-90  | Visions or prophesies of the future                            |
+      | 91-100 | Roll Twice                                                     |
   - Name: Confront Chaos
     Category: Exploration Moves
-    Trigger text: "When your exploration of a waypoint uncovers something dreadful…"
-    Triggers:
-      - Text: When your exploration of a waypoint uncovers something dreadful
+    Trigger:
+      Text: "When your exploration of a waypoint uncovers something dreadful…"
     Oracle: true
     Text: |-
       **When your exploration of a waypoint uncovers something dreadful**, decide the number of aspects: one, two, or three. Roll that number of times or choose that number of aspects on the table below. Then, envision how the encounter begins.
 
       For each result, when you first confront that aspect within the scope of the encounter, you and your allies may mark one tick on your discoveries legacy track.
 
-      | Roll   | Result |
-      |--------|--------|
-      | 1-4    | Baneful weapon of mass destruction |
-      | 5-9    | Cataclysmic environmental effects |
-      | 10-12  | Dead given unnatural life |
+      | Roll   | Result                                       |
+      |--------|----------------------------------------------|
+      | 1-4    | Baneful weapon of mass destruction           |
+      | 5-9    | Cataclysmic environmental effects            |
+      | 10-12  | Dead given unnatural life                    |
       | 13-17  | Destructive lifeform of monstrous proportion |
-      | 18-20  | Dread hallucinations or illusions |
-      | 21-24  | Harbingers of an imminent invasion |
-      | 25-27  | Horde of insatiable hunger or fury |
+      | 18-20  | Dread hallucinations or illusions            |
+      | 21-24  | Harbingers of an imminent invasion           |
+      | 25-27  | Horde of insatiable hunger or fury           |
       | 28-32  | Horrific lifeforms of inscrutable purpose    |
-      | 33-36  | Impostors in human form |
-      | 37-41  | Machines made enemy |
-      | 42-45  | Malignant contagion or parasite |
-      | 46-50  | Messenger or signal with a dire warning |
-      | 51-53  | Passage to a grim alternate reality |
-      | 54-58  | People corrupted by chaos |
-      | 59-63  | Powerful distortions of time or space |
-      | 64-68  | Signs of an impending catastrophe |
-      | 69-72  | Site of a baffling disappearance |
-      | 73-77  | Site of a horrible disaster |
-      | 78-82  | Site of terrible carnage |
-      | 83-87  | Technology nullified or made unstable |
-      | 88-92  | Technology warped for dark purpose |
-      | 93-96  | Vault of dread technology or power |
-      | 97-100 | Worshipers of great and malevolent powers |
+      | 33-36  | Impostors in human form                      |
+      | 37-41  | Machines made enemy                          |
+      | 42-45  | Malignant contagion or parasite              |
+      | 46-50  | Messenger or signal with a dire warning      |
+      | 51-53  | Passage to a grim alternate reality          |
+      | 54-58  | People corrupted by chaos                    |
+      | 59-63  | Powerful distortions of time or space        |
+      | 64-68  | Signs of an impending catastrophe            |
+      | 69-72  | Site of a baffling disappearance             |
+      | 73-77  | Site of a horrible disaster                  |
+      | 78-82  | Site of terrible carnage                     |
+      | 83-87  | Technology nullified or made unstable        |
+      | 88-92  | Technology warped for dark purpose           |
+      | 93-96  | Vault of dread technology or power           |
+      | 97-100 | Worshipers of great and malevolent powers    |
   - Name: Finish an Expedition
     Category: Exploration Moves
-    Trigger text: "When your expedition comes to an end…"
-    Triggers:
-      - Text: When your expedition comes to an end
-        Stat Options:
-          Progress: [Expedition Progress]
+    Trigger:
+      Text: "When your expedition comes to an end…"
+      Options:
+        - Roll: Expedition Progress
     Progress Move: true
     Text: |-
       **When your expedition comes to an end**, roll the challenge dice and compare to your progress.
@@ -510,11 +464,10 @@ Moves:
         * Return to the expedition: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition's rank by one (if not already epic).
   - Name: Set a Course
     Category: Exploration Moves
-    Trigger text: "When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site…"
-    Triggers:
-      - Text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site
-        Stat Options:
-          Stats: [Supply]
+    Trigger:
+      Text: "When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site…"
+      Options:
+        - Roll: Supply
     Text: |-
       **When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.
 
@@ -528,28 +481,19 @@ Moves:
       On a **miss**, you are waylaid by a significant threat, and must [Pay the Price](#Pay-the-Price). If you overcome this obstacle, you may push on safely to your destination.
   - Name: Enter the Fray
     Category: Combat Moves
-    Trigger text: "When you initiate combat or are forced into a fight…"
-    Triggers:
-      - Details: When you initiate combat or are forced into a fight (on the move)
-        Text: On the move
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you initiate combat or are forced into a fight (facing off against your foe)
-        Text: Facing off against your foe
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you initiate combat or are forced into a fight (in the thick of it at close quarters)
-        Text: In the thick of it at close quarters
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you initiate combat or are forced into a fight (preparing to act against an unaware foe)
-        Text: Preparing to act against an unaware foe
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you initiate combat or are forced into a fight (caught in a trap or sizing up the situation)
-        Text: Caught in a trap or sizing up the situation
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you initiate combat or are forced into a fight…"
+      Options:
+        - Text: On the move
+          Roll: Edge
+        - Text: Facing off against your foe
+          Roll: Heart
+        - Text: In the thick of it at close quarters
+          Roll: Iron
+        - Text: Preparing to act against an unaware foe
+          Roll: Shadow
+        - Text: Caught in a trap or sizing up the situation
+          Roll: Wits
     Text: |-
       **When you initiate combat or are forced into a fight**, envision your objective and give it a rank. If the combat includes discrete challenges or phases, set an objective with a rank for each.
 
@@ -568,29 +512,20 @@ Moves:
 
       On a **miss**, the fight begins with you in a bad spot.
   - Name: Gain Ground
-    Trigger text: "When you are in control and take action in a fight to reinforce your position or move toward an objective…"
     Category: Combat Moves
     Triggers:
-      - Details: When you are in control and take action in a fight to reinforce your position or move toward an objective (in pursuit, fleeing, or maneuvering)
-        Text: In pursuit, fleeing, or maneuvering
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you are in control and take action in a fight to reinforce your position or move toward an objective (by charging boldly into action, coming to the aid of others, negotiating, or commanding)
-        Text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you are in control and take action in a fight to reinforce your position or move toward an objective (by gaining leverage with force, powering through, or making a threat)
-        Text: Gaining leverage with force, powering through, or making a threat
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you are in control and take action in a fight to reinforce your position or move toward an objective (by hiding, preparing an ambush, or misdirecting)
-        Text: Hiding, preparing an ambush, or misdirecting
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you are in control and take action in a fight to reinforce your position or move toward an objective (by coordinating a plan, studying a situation, or cleverly gaining leverage)
-        Text: Coordinating a plan, studying a situation, or cleverly gaining leverage
-        Stat Options:
-          Stats: [Wits]
+      Text: "When you are in control and take action in a fight to reinforce your position or move toward an objective…"
+      Options:
+        - Text: In pursuit, fleeing, or maneuvering
+          Roll: Edge
+        - Text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
+          Roll: Heart
+        - Text: Gaining leverage with force, powering through, or making a threat
+          Roll: Iron
+        - Text: Hiding, preparing an ambush, or misdirecting
+          Roll: Shadow
+        - Text: Coordinating a plan, studying a situation, or cleverly gaining leverage
+          Roll: Wits
     Text: |-
       **When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...
 
@@ -608,29 +543,20 @@ Moves:
 
       On a **miss**, your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: React Under Fire
-    Trigger text: "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle…"
     Category: Combat Moves
-    Triggers:
-      - Details: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (in pursuit, fleeing, dodging, getting back into position, or taking cover)
-        Text: In pursuit, fleeing, dodging, getting back into position, or taking cover
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by remaining stalwart against fear or temptation)
-        Text: Remaining stalwart against fear or temptation
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by blocking or diverting with force, or taking the hit)
-        Text: Blocking or diverting with force, or taking the hit
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by moving into hiding or creating a distraction)
-        Text: Moving into hiding or creating a distraction
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle (by changing the plan, finding a way out, or cleverly bypassing an obstacle)
-        Text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle…"
+      Options:
+        - Text: In pursuit, fleeing, dodging, getting back into position, or taking cover
+          Roll: Edge
+        - Text: Remaining stalwart against fear or temptation
+          Roll: Heart
+        - Text: Blocking or diverting with force, or taking the hit
+          Roll: Iron
+        - Text: Moving into hiding or creating a distraction
+          Roll: Shadow
+        - Text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
+          Roll: Wits
     Text: |-
       **When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle**, envision your approach and roll. If you are...
 
@@ -647,16 +573,13 @@ Moves:
       On a **miss**, the situation worsens. You stay in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: Strike
     Category: Combat Moves
-    Trigger text: "When you are in control and assault a foe at close quarters, or when you attack at a distance…"
-    Triggers:
-      - Details: When you are in control and assault a foe at close quarters
-        Text: Assault a foe at close quarters
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you are in control and attack at a distance
-        Text: Attack at a distance
-        Stat Options:
-          Stats: [Edge]
+    Trigger:
+      Text: "When you are in control and assault a foe at close quarters, or when you attack at a distance…"
+      Options:
+        - Text: Assault a foe at close quarters
+          Roll: Iron
+        - Text: Attack at a distance
+          Roll: Edge
     Text: |-
       **When you are in control and assault a foe at close quarters**, roll +iron; **when you attack at a distance**, roll +edge.
 
@@ -666,17 +589,14 @@ Moves:
 
       On a **miss**, the fight turns against you. You are in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: Clash
-    Trigger text: "When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance…"
     Category: Combat Moves
-    Triggers:
-      - Details: When you are in a bad spot and fight back against a foe at close quarters
-        Text: Fight back against a foe at close quarters
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you are in a bad spot and exchange fire at a distance
-        Text: Exchange fire at a distance
-        Stat Options:
-          Stats: [Edge]
+    Trigger:
+      Text: "When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance…"
+      Options:
+        - Text: Fight back against a foe at close quarters
+          Roll: Iron
+        - Text: Exchange fire at a distance
+          Roll: Edge
     Text: |-
       **When you are in a bad spot and fight back against a foe at close quarters**, roll +iron; **when you exchange fire at a distance**, roll +edge.
 
@@ -686,12 +606,11 @@ Moves:
 
       On a **miss**, your foe dominates this exchange. You stay in a bad spot and must [Pay the Price](#Pay-the-Price).
   - Name: Take Decisive Action
-    Trigger text: "When you seize an objective in a fight…"
     Category: Combat Moves
-    Triggers:
-      - Text: When you seize an objective in a fight
-        Stat Options:
-          Progress: [Combat Progress]
+    Trigger:
+      Text: "When you seize an objective in a fight…"
+      Options:
+        - Roll: Combat Progress
     Oracle: true
     Progress Move: true
     Text: |-
@@ -715,37 +634,27 @@ Moves:
       On a **miss**, you are defeated or your objective is lost. [Pay the Price](#Pay-the-Price).
   - Name: Face Defeat
     Category: Combat Moves
-    Trigger text: "When you abandon or are deprived of an objective…"
-    Triggers:
-      - Text: When you abandon or are deprived of an objective
+    Trigger:
+      Text: "When you abandon or are deprived of an objective…"
     Text: |-
       **When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](#Pay-the-Price).
 
       If the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot.
   - Name: Battle
-    Trigger text: "When you fight a battle and it happens in a blur…"
     Category: Combat Moves
-    Triggers:
-      - Details: When you fight a battle and it happens in a blur (at range, or using your speed and the environment to your advantage)
-        Text: At range, or using your speed and the environment to your advantage
-        Stat Options:
-          Stats: [Edge]
-      - Details: When you fight a battle and it happens in a blur (depending on your courage, leadership, or companions)
-        Text: Depending on your courage, leadership, or companions
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you fight a battle and it happens in a blur (in close to overpower your foe)
-        Text: In close to overpower your foe
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you fight a battle and it happens in a blur (using trickery to befuddle your foe)
-        Text: Using trickery to befuddle your foe
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you fight a battle and it happens in a blur (using careful tactics to outsmart your foe)
-        Text: Using careful tactics to outsmart your foe
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you fight a battle and it happens in a blur…"
+      Options:
+        - Text: At range, or using your speed and the environment to your advantage
+          Roll: Edge
+        - Text: Depending on your courage, leadership, or companions
+          Roll: Heart
+        - Text: In close to overpower your foe
+          Roll: Iron
+        - Text: Using trickery to befuddle your foe
+          Roll: Shadow
+        - Text: Using careful tactics to outsmart your foe
+          Roll: Wits
     Text: |-
       **When you fight a battle and it happens in a blur**, envision your objective and roll. If you primarily...
 
@@ -761,10 +670,9 @@ Moves:
 
       On a **miss**, you are defeated or the objective is lost. [Pay the Price](#Pay-the-Price).
   - Name: Lose Momentum
-    Trigger text: "When you are delayed or disadvantaged…"
     Category: Suffer Moves
-    Triggers:
-      - Text: When you are delayed or disadvantaged
+    Trigger:
+      Text: When you are delayed or disadvantaged
     Text: |-
       **When you are delayed or disadvantaged**, suffer -1 momentum for a minor setback, -2 for a serious setback, or -3 for a major setback.
 
@@ -773,12 +681,11 @@ Moves:
         * Envision how the price is paid and apply the cost to a different suffer move.
         * Envision how this undermines your progress on a vow, expedition, connection, or combat. Then, clear 1 unit of progress on that track per its rank: troublesome=3 boxes; dangerous=2 boxes; formidable=1 box; extreme=2 ticks; epic=1 tick.
   - Name: Endure Harm
-    Trigger text: "When you face physical injury, fatigue, or illness…"
     Category: Suffer Moves
-    Triggers:
-      - Text: When you face physical injury, fatigue, or illness, and your health is 0 or you choose to resist the harm
-        Stat Options:
-          Stats: [Iron, Health]
+    Trigger:
+      Text: "When you face physical injury, fatigue, or illness…"
+      Options:
+        - Roll best of: [Iron, Health]
     Oracle: true
     Text: |-
       **When you face physical injury, fatigue, or illness**, suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your health is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining harm.
@@ -803,11 +710,10 @@ Moves:
       | 51-100 | You are still standing. |
   - Name: Endure Stress
     Category: Suffer Moves
-    Trigger text: "When you face mental strain, shock, or despair…"
-    Triggers:
-      - Text: When you face mental strain, shock, or despair, and your spirit is 0 or you choose to resist the stress
-        Stat Options:
-          Stats: [Heart, Spirit]
+    Trigger:
+      Text: "When you face mental strain, shock, or despair…"
+      Options:
+        - Roll best of: [Heart, Spirit]
     Oracle: true
     Text: |-
       **When you face mental strain, shock, or despair**, suffer -1 spirit for minor stress, -2 for serious stress, or -3 for major stress. If your spirit is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining stress.
@@ -823,19 +729,18 @@ Moves:
 
       On a **miss**, it's worse than you thought. Suffer an additional -1 spirit or [Lose Momentum](#Lose-Momentum) (-2). If your spirit is 0, you must also mark shaken or traumatized, or roll on the table below.
 
-      | Roll   | Result |
-      |--------|--------|
-      | 1-10   | You are overwhelmed. [Face Desolation](#Face-Desolation). |
-      | 11-25  | You give up. [Forsake Your Vow](#Forsake-Your-Vow). |
+      | Roll   | Result                                                                    |
+      |--------|---------------------------------------------------------------------------|
+      | 1-10   | You are overwhelmed. [Face Desolation](#Face-Desolation).                 |
+      | 11-25  | You give up. [Forsake Your Vow](#Forsake-Your-Vow).                       |
       | 26-50  | You give in to fear or compulsion, and act against your better instincts. |
-      | 51-100 | You persevere. |
+      | 51-100 | You persevere.                                                            |
   - Name: Withstand Damage
     Category: Suffer Moves
-    Trigger text: "When your vehicle faces a damaging situation or environment…"
-    Triggers:
-      - Text: When your vehicle faces a damaging situation or environment
-        Stat Options:
-          Stats: [Vehicle Integrity]
+    Trigger:
+      Text: "When your vehicle faces a damaging situation or environment…"
+      Options:
+        - Roll: Vehicle Integrity
     Oracle: true
     Text: |-
       **When your vehicle faces a damaging situation or environment**, suffer -1 integrity for minor damage, -2 for serious damage, or -3 for major damage. If your integrity is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining damage.
@@ -867,11 +772,10 @@ Moves:
       | 96-100 | Against all odds, the vehicle holds together. |
   - Name: Companion Takes a Hit
     Category: Suffer Moves
-    Trigger text: "When your companion faces physical hardship, and their health is 0 or you choose to test their resilience…"
-    Triggers:
-      - Text: When your companion faces physical hardship, and their health is 0 or you choose to test their resilience
-        Stat Options:
-          Stats: [Companion Health]
+    Trigger:
+      Text: "When your companion faces physical hardship…"
+      Options:
+        - Roll: Companion Health
     Text: |-
       **When your companion faces physical hardship**, they suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your companion's health is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining harm.
 
@@ -884,20 +788,18 @@ Moves:
       On a **miss**, it's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](#Lose-Momentum) (-2). If your companion's health is 0, they are out of action until given aid. If their health is 0 and you rolled a miss with a match on this move, they are dead or destroyed; discard the asset.
   - Name: Sacrifice Resources
     Category: Suffer Moves
-    Trigger text: "When you lose or consume resources…"
-    Triggers:
-      - Text: When you lose or consume resources
+    Trigger:
+      Text: "When you lose or consume resources…"
     Text: |-
       **When you lose or consume resources**, suffer -1 supply for a minor loss, -2 for a serious loss, or -3 for a major loss.
 
       If your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move.
   - Name: Sojourn
     Category: Recover Moves
-    Trigger text: "When you spend time recovering within a community…"
-    Triggers:
-      - Text: When you spend time recovering within a community
-        Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When you spend time recovering within a community…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When you spend time recovering within a community**, roll +heart.
 
@@ -911,25 +813,17 @@ Moves:
         * You find no relief, and the situation grows worse. [Pay the Price](#Pay-the-Price).
   - Name: Heal
     Category: Recover Moves
-    Trigger text: "When you receive medical care or provide treatment…"
-    Triggers:
-      - Details: When you receive treatment from someone (not an ally)
-        Text: Receive treatment from someone (not an ally)
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you mend your own wounds
-        Text: Mend your own wounds
-        Stat Options:
-          Method: lowest
-          Stats: [Iron, Wits]
-      - Details: When you obtain treatment for a companion
-        Text: Obtain treatment for a companion
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you provide treatment
-        Text: Provide care
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you receive medical care or provide treatment…"
+      Options:
+        - Text: Receive treatment from someone (not an ally)
+          Roll: Iron
+        - Text: Mend your own wounds
+          Roll worst of: [Iron, Wits]
+        - Text: Obtain treatment for a companion
+          Roll: Heart
+        - Text: Provide care
+          Roll: Wits
     Text: |-
       **When you receive medical care or provide treatment**, envision the situation and roll. If you...
 
@@ -945,11 +839,10 @@ Moves:
       On a **miss**, the aid is ineffective and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Hearten
     Category: Recover Moves
-    Trigger text: "When you socialize, share intimacy, or find a moment of peace…"
-    Triggers:
-      - Text: When you socialize, share intimacy, or find a moment of peace
-        Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When you socialize, share intimacy, or find a moment of peace…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When you socialize, share intimacy, or find a moment of peace**, roll +heart.
 
@@ -960,16 +853,13 @@ Moves:
       On a **miss**, you take no comfort and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Repair
     Category: Recover Moves
-    Trigger text: "When you make repairs to your vehicles, modules, mechanical companions, or other devices…"
-    Triggers:
-      - Details: When you make your own repairs, or direct a companion to make repairs
-        Text: Make your own repairs, or direct a companion to make repairs
-        Stat Options:
-          Stats: [Wits]
-      - Details: When you obtain repairs from someone (not an ally)
-        Text: Obtain repairs from someone (not an ally)
-        Stat Options:
-          Stats: [Supply]
+    Trigger:
+      Text: "When you make repairs to your vehicles, modules, mechanical companions, or other devices…"
+      Options:
+        - Text: Make your own repairs, or direct a companion to make repairs
+          Roll: Wits
+        - Text: Obtain repairs from someone (not an ally)
+          Roll: Supply
     Text: |-
       **When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...
 
@@ -978,11 +868,11 @@ Moves:
 
       On a **hit**, you gain repair points as appropriate to the situation, per the table below. Additionally, you may [Sacrifice Resources](#Sacrifice-Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).
 
-      | Situation | Strong Hit | Weak Hit |
-      |-----------|------------|----------|
-      | At a facility | 5 points | 3 points |
-      | In the field | 3 points | 1 points |
-      | Under fire | 2 points | 0 points |
+      | Situation     | Strong Hit | Weak Hit |
+      |---------------|------------|----------|
+      | At a facility | 5 points   | 3 points |
+      | In the field  | 3 points   | 1 points |
+      | Under fire    | 2 points   | 0 points |
 
       Spend repair points as follows. Unused points are discarded.
 
@@ -996,24 +886,17 @@ Moves:
       On a **miss**, the repairs are not made and the situation worsens. [Pay the Price](#Pay-the-Price).
   - Name: Resupply
     Category: Recover Moves
-    Trigger text: "When you attempt to bolster your readiness…"
-    Triggers:
-      - Details: When you attempt to bolster your readiness (and you barter or make an appeal)
-        Text: Barter or make an appeal
-        Stat Options:
-          Stats: [Heart]
-      - Details: When you attempt to bolster your readiness (and you threaten or seize)
-        Text: Threaten or seize
-        Stat Options:
-          Stats: [Iron]
-      - Details: When you attempt to bolster your readiness (and you steal or swindle)
-        Text: Steal or swindle
-        Stat Options:
-          Stats: [Shadow]
-      - Details: When you attempt to bolster your readiness (and you scavenge or craft)
-        Text: Scavenge or craft
-        Stat Options:
-          Stats: [Wits]
+    Trigger:
+      Text: "When you attempt to bolster your readiness…"
+      Options:
+        - Text: Barter or make an appeal
+          Roll: Heart
+        - Text: Threaten or seize
+          Roll: Iron
+        - Text: Steal or swindle
+          Roll: Shadow
+        - Text: Scavenge or craft
+          Roll: Wits
     Text: |-
       **When you attempt to bolster your readiness**, envision the opportunity and your approach. If you...
 
@@ -1032,10 +915,10 @@ Moves:
       On a **miss**, you encounter an unexpected peril. [Pay the Price](#Pay-the-Price).
   - Name: Face Death
     Category: Threshold Moves
-    Trigger text: "When you are brought to the brink of death with a chance for recovery or redemption…"
-    Triggers:
-      - Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When you are brought to the brink of death with a chance for recovery or redemption…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
 
@@ -1049,10 +932,10 @@ Moves:
       On a **miss**, you are dead.
   - Name: Face Desolation
     Category: Threshold Moves
-    Trigger text: "When you are brought to the brink of desolation…"
-    Triggers:
-      - Stat Options:
-          Stats: [Heart]
+    Trigger:
+      Text: "When you are brought to the brink of desolation…"
+      Options:
+        - Roll: Heart
     Text: |-
       **When you are brought to the brink of desolation**, roll +heart.
 
@@ -1066,10 +949,10 @@ Moves:
       On a **miss**, you succumb to despair or horror and are lost.
   - Name: Overcome Destruction
     Category: Threshold Moves
-    Trigger text: "When your command vehicle is destroyed or irrevocably lost…"
-    Triggers:
-      - Stat Options:
-          Legacies: [Bonds]
+    Trigger:
+      Text: "When your command vehicle is destroyed or irrevocably lost…"
+      Options:
+        - Roll: Bonds Legacy
     Progress Move: true
     Text: |-
       **When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
@@ -1085,18 +968,16 @@ Moves:
       If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
   - Name: Earn Experience
     Category: Legacy Moves
-    Trigger text: "When you fill a box (four ticks) on any legacy track…"
-    Triggers:
-      - Text: When you fill a box (four ticks) on any legacy track
+    Trigger:
+      Text: "When you fill a box (four ticks) on any legacy track…"
     Text: |-
       **When you fill a box (four ticks) on any legacy track,** take 2 experience. This experience may be spent when you [Advance](#Advance).
 
       Once you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress.
   - Name: Advance
     Category: Legacy Moves
-    Trigger text: "When you develop your abilities, improve your resources, gain a reward, or boost your influence…"
-    Triggers:
-      - Text: When you develop your abilities, improve your resources, gain a reward, or boost your influence
+    Trigger:
+      Text: "When you develop your abilities, improve your resources, gain a reward, or boost your influence…"
     Text: |-
       **When you develop your abilities, improve your resources, gain a reward, or boost your influence,** you may may spend 3 experience to add a new asset, or 2 experience to upgrade an asset. Choose from the following categories as appropriate to your focus and opportunities.
 
@@ -1107,11 +988,10 @@ Moves:
         * Deed: Learn from your experiences or build a legacy
   - Name: Continue a Legacy
     Category: Legacy Moves
-    Trigger text: "When you retire from your life as Ironsworn, or succumb to death or desolation…"
-    Triggers:
-      - Stat Options:
-          Method: all
-          Legacies: [Quests, Bonds, Discoveries]
+    Trigger:
+      Text: "When you retire from your life as Ironsworn, or succumb to death or desolation…"
+      Options:
+        - Roll all of: [Quests Legacy, Bonds Legacy, Discoveries Legacy]
     Progress Move: true
     Text: |-
       **When you retire from your life as Ironsworn, or succumb to death or desolation**, you may create a new character in your established setting. If you do, roll the challenge dice and compare to each of the former character's legacy tracks: Quests, bonds, and discoveries (one roll per track).
@@ -1135,9 +1015,10 @@ Moves:
         * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
   - Name: Ask the Oracle
     Category: Fate Moves
-    Trigger text: "When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events…"
-    Triggers:
-      - Text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events
+    Trigger:
+      Text: "When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events…"
+      Options:
+        - Roll: Wits
     Oracle: true
     Text: |-
       **When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events**, you may...
@@ -1147,20 +1028,19 @@ Moves:
         * Ask a yes/no question: Decide the odds of a yes, and roll on the table below to check the answer.
         * Pick two: Envision two options. Rate one as likely, and roll on the table below to see if it is true. If not, it is the other.
 
-      | Odds | The answer is yes if you roll... |
-      |------|--------------------------------|
-      | Small Chance | 10 or less |
-      | Unlikely | 25 or less |
-      | 50/50 | 50 or less |
-      | Likely | 75 or less |
-      | Almost Certain | 90 or less |
+      | Odds           | The answer is yes if you roll... |
+      |----------------|----------------------------------|
+      | Small Chance   | 10 or less                       |
+      | Unlikely       | 25 or less                       |
+      | 50/50          | 50 or less                       |
+      | Likely         | 75 or less                       |
+      | Almost Certain | 90 or less                       |
 
       On a match, envision an extreme result or twist.
   - Name: Pay the Price
     Category: Fate Moves
-    Trigger text: "When you suffer the outcome of an action…"
-    Triggers:
-      - Text: When you suffer the outcome of an action
+    Trigger:
+      Text: "When you suffer the outcome of an action…"
     Oracle: true
     Text: |-
       **When you suffer the outcome of an action**, choose one.
@@ -1169,25 +1049,55 @@ Moves:
         * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the current situation.
         * Roll on the table below. If you have difficulty interpreting the result to fit the current situation, roll again.
 
-      | Roll   | Result |
-      |--------|--------|
-      | 1-2    | A trusted individual or community acts against you |
-      | 3-4    | An individual or community you care about is exposed to danger |
-      | 5-7    | You encounter signs of a looming threat |
-      | 8-10   | You create an opportunity for an enemy |
-      | 11-14  | You face a tough choice |
-      | 15-18  | You face the consequences of an earlier choice |
-      | 19-22  | A surprising development complicates your quest |
-      | 23-26  | You are separated from something or someone |
+      | Roll   | Result                                                               |
+      |--------|----------------------------------------------------------------------|
+      | 1-2    | A trusted individual or community acts against you                   |
+      | 3-4    | An individual or community you care about is exposed to danger       |
+      | 5-7    | You encounter signs of a looming threat                              |
+      | 8-10   | You create an opportunity for an enemy                               |
+      | 11-14  | You face a tough choice                                              |
+      | 15-18  | You face the consequences of an earlier choice                       |
+      | 19-22  | A surprising development complicates your quest                      |
+      | 23-26  | You are separated from something or someone                          |
       | 27-32  | Your action causes collateral damage or has an unintended effect     |
-      | 33-38  | Something of value is lost or destroyed |
-      | 39-44  | The environment or terrain introduces a new hazard |
-      | 45-50  | A new enemy is revealed |
+      | 33-38  | Something of value is lost or destroyed                              |
+      | 39-44  | The environment or terrain introduces a new hazard                   |
+      | 45-50  | A new enemy is revealed                                              |
       | 51-56  | A friend, companion, or ally is in harm's way (or you are, if alone) |
-      | 57-62  | Your equipment or vehicle malfunctions |
-      | 63-68  | Your vehicle suffers damage |
-      | 69-74  | You waste resources |
-      | 75-81  | You are harmed |
-      | 82-88  | You are stressed |
-      | 89-95  | You are delayed or put at a disadvantage |
-      | 96-100 | Roll twice |
+      | 57-62  | Your equipment or vehicle malfunctions                               |
+      | 63-68  | Your vehicle suffers damage                                          |
+      | 69-74  | You waste resources                                                  |
+      | 75-81  | You are harmed                                                       |
+      | 82-88  | You are stressed                                                     |
+      | 89-95  | You are delayed or put at a disadvantage                             |
+      | 96-100 | Roll twice                                                           |
+  - Name: Face Danger (scene challenge)
+    Variant of: Face Danger
+    Text: |-
+      On a **strong hit**, you are successful. Envision how you gain ground, and mark one box of progress on the formidable challenge. On a strong hit with a match, you may instead mark progress twice (two boxes).
+
+      On a **weak hit**, you are successful and mark progress, but also encounter a minor complication or setback. Envision what happens and fill a clock segment.
+
+      On a **miss**, you fail, or your action is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](#Pay-the-Price). On a miss with a match, fill two clock segments.
+  - Name: Secure an Advantage (scene challenge)
+    Variant of: Secure an Advantage
+    Text: |-
+      On a **strong hit**, take both. On a **weak hit**, choose one.
+
+        * Take +2 momentum
+        * Add +1 on your next move (not a progress move)
+
+      On a strong hit with a match, also mark one box of progress.
+
+      On a **miss**, fill a clock segment and [Pay the Price](#Pay-the-Price). On a miss with a match, fill two clock segments.
+  - Name: Resolve Scene Challenge
+    Text: |-
+      When the tension clock is filled, time is up. You must resolve the encounter by making a progress roll. You can also decide to make the roll whenever you have accumulated enough progress to make success likely, or if you feel that the narrative of the scene is guiding you to a conclusion.
+
+      To resolve the scene challenge, roll the challenge dice and compare to your progress track. As with standard progress moves, you may not burn momentum on this roll, and you are not affected by negative momentum.
+
+      On a **strong hit**, you achieve your objective unconditionally.
+
+      On a **weak hit**, you succeed, but not without cost. You must [Pay the Price](#Pay-the-Price). Make this a minor cost relative to the scope of the scene.
+
+      On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](#Pay-the-Price). Make it hurt.

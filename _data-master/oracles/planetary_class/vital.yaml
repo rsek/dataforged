@@ -5,10 +5,10 @@ Vital World:
   _childOf: Planets
   Usage:
     Requires:
-      - Paths: [Planets / Planetary Class]
+      - Tables: [Planets / Planetary Class]
         Results: [ Vital World ]
   Source:
-    Name: Starforged Backer Preview
+    Title: Starforged Backer Preview
     Date: "020122"
   Image: "https://i.imgur.com/Syhr8rp.png"
   Sample Names:
@@ -137,13 +137,38 @@ Vital World:
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 20, "Simple (two biomes)", 2]
-        - [21, 70, "Diverse (three biomes)", 3]
-        - [71, 90, "Complex (four biomes)", 4]
-        - [91, 100, "Garden world (five or more biomes)", 5]
+        - [1, 20, "Simple (two biomes)",
+            { Tables: [
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes
+            ]}]
+        - [21, 70, "Diverse (three biomes)",
+            { Tables: [
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes
+            ]}]
+        - [71, 90, "Complex (four biomes)",
+            { Tables: [
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes
+            ]}]
+        - [91, 100, "Garden world (five or more biomes)",
+            { Tables: [
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes,
+              Planets / Vital / Biomes
+            ]}]
 
     - Name: Biomes
       Usage:
+        Requires:
+          Tables:
+            - Planets / Vital / Diversity
         Min rolls: 2
         Max rolls: 5
       Content:

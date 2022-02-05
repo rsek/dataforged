@@ -6,77 +6,77 @@ _refs:
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Desert World, ⏵Desert World]
     - &Furnace "A planet with relentless volcanic activity, wreathed in fire and ash."
     - &FurnaceObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Furnace World, ⏵Furnace World]
     - &Grave "A once-thriving world—now a grim monument to a fallen civilization."
     - &GraveObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Grave World, ⏵Grave World]
     - &Ice "A rugged, frozen world—locked in an unending winter."
     - &IceObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Ice World, ⏵Ice World]
     - &Jovian "A massive planet with vast layers of dense gases surrounding a small rocky core."
     - &JovianObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Jovian World, ⏵Jovian World]
     - &Jungle "A humid, rain-soaked planet which keeps its secrets under a thick canopy of vegetation."
     - &JungleObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Jungle World, ⏵Jungle World]
     - &Ocean "A planet completely or mostly covered by a boundless ocean."
     - &OceanObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Ocean World, ⏵Ocean World]
     - &Rocky "A rugged planet scarred by eons of destructive asteroid impacts."
     - &RockyObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Rocky World, ⏵Rocky World]
     - &Shattered "A planet sundered by cataclysmic destruction."
     - &ShatteredObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Shattered World, ⏵Shattered World]
     - &Tainted "A foul planet wracked by a poisonous climate and virulent growths."
     - &TaintedObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Tainted World, ⏵Tainted World]
     - &Vital "This diverse, life-bearing planet might provide some small measure of hope."
     - &VitalObj
       Game objects:
         - Object type: Planet
           Requires:
-            - Oracle rolls: [Planets / Planetary Class]
+            - Tables: [Planets / Planetary Class]
               Results: [Vital World, ⏵Vital World]
   Location Theme:
     - &theme_feature Use this table to reveal a new aspect of the location.
@@ -137,49 +137,54 @@ _refs:
       Multiple rolls:
         Amount: 3
         Allow duplicates: true
+    Roll twice (make it worse): &Roll_twice_worse
+      Multiple rolls:
+        Amount: 2
+        Allow duplicates: true
+        Make it worse: true
 
-  Oracle rolls:
+  Tables:
     Starship Mission: &Starship_Mission
       Result: ⏵Starship Mission
-      Oracle rolls:
+      Tables:
         - Starships / Mission
     Fleet: &Fleet
       Result: ⏵Fleet
-      Oracle rolls:
+      Tables:
         - Starships / Fleet
     Stellar Object: &Stellar_Object
       Result: ⏵Stellar Object
-      Oracle rolls:
+      Tables:
         - Space / Stellar Object
     Action + Theme: &Action+Theme
       Result: ⏵Action + Theme
-      Oracle rolls:
+      Tables:
         - Core / Action
         - Core / Theme
     Descriptor + Focus: &Descriptor+Focus
       Result: ⏵Descriptor + Focus
-      Oracle rolls:
+      Tables:
         - Core / Descriptor
         - Core / Focus
     Ultra-Scale: &Ultra-scale
       Result: ⏵Ultra-scale
-      Oracle rolls:
+      Tables:
         - Creatures / Ultra-scale
     Faction Legacy, Affiliation: &faction_tpl_1
-      Oracle rolls:
+      Tables:
         - Factions / Legacy
         - Factions / Affiliation
     Faction Legacy, Identity: &faction_tpl_2
-      Oracle rolls:
+      Tables:
         - Factions / Legacy
         - Factions / Identity
     Faction Identity, Legacy, Affiliation: &faction_tpl_3
-      Oracle rolls:
+      Tables:
         - Factions / Identity
         - Factions / Legacy
         - Factions / Affiliation
     Faction Affiliation, Legacy, Identity: &faction_tpl_4
-      Oracle rolls:
+      Tables:
         - Factions / Affiliation
         - Factions / Legacy
         - Factions / Identity
@@ -195,14 +200,14 @@ _refs:
       Game objects:
         - Object type: Precursor Vault
           Requires:
-            - Oracle rolls: [Vaults / Location]
+            - Tables: [Vaults / Location]
               Results: [Orbital]
     Precursor Vault (planetside): &Vault_planetside
       Result: ⏵Precursor Vault (planetside)
       Game objects:
         - Object type: Precursor Vault
           Requires:
-            - Oracle rolls: [Vaults / Location]
+            - Tables: [Vaults / Location]
               Results: [Planetside]
     Derelict: &Derelict
       Result: ⏵Derelict
@@ -229,36 +234,36 @@ _refs:
       Game objects:
         - Object type: Settlement
           Requires:
-            - Oracle rolls: [Settlements / Location]
+            - Tables: [Settlements / Location]
               Results: [Orbital]
     Settlement (planetside): &Planetside_settlement
       Result: Planetside settlement
       Game objects:
         - Object type: Settlement
           Requires:
-            - Oracle rolls: [Settlements / Location]
+            - Tables: [Settlements / Location]
               Results: [Planetside]
     Settlements (multiple): &Multiple_settlements
       Result: Multiple settlements
       Game objects:
         - Object type: Settlement
           Requires:
-            - Oracle rolls: [Settlements / Location]
+            - Tables: [Settlements / Location]
               Results: [Orbital, Planetside]
         - Object type: Settlement
           Requires:
-            - Oracle rolls: [Settlements / Location]
+            - Tables: [Settlements / Location]
               Results: [Orbital, Planetside]
     Settlements (conflict): &Settlements_in_conflict
       Result: Settlements in conflict
       Game objects:
         - Object type: Settlement
           Requires:
-            - Oracle rolls: [Settlements / Location]
+            - Tables: [Settlements / Location]
               Results: [Orbital, Planetside]
         - Object type: Settlement
           Requires:
-            - Oracle rolls: [Settlements / Location]
+            - Tables: [Settlements / Location]
               Results: [Orbital, Planetside]
     Zone: &Zone
       Game objects:
@@ -267,7 +272,7 @@ _refs:
       Game objects:
         - Object type: Derelict zone
           Requires:
-            - Oracle rolls: [Derelicts / Zone]
+            - Tables: [Derelicts / Zone]
               Results: [Access, ⏵Access]
     Precursor Vault Sanctum: &Vault_Sanctum
       Game objects:
@@ -280,13 +285,13 @@ _refs:
       Game objects:
         - Object type: Derelict
           Requires:
-            - Oracle rolls: [Derelicts / Type]
+            - Tables: [Derelicts / Type]
               Results: [Starship, ⏵Starship]
     Derelict settlement: &Derelict_settlement
       Game objects:
         - Object type: Derelict
           Requires:
-            - Oracle rolls: [Derelicts / Type]
+            - Tables: [Derelicts / Type]
               Results: [Settlement, ⏵Settlement]
     # the below specifically for "initial contact" tables that turn up derelict starships, settlements
     Derelict starship template: &tpl_Derelict_starship
@@ -335,14 +340,14 @@ _refs:
         Game objects:
           - Object type: Derelict
             Requires:
-              - Oracle rolls: [Derelicts / Type]
+              - Tables: [Derelicts / Type]
                 Results: [Settlement, ⏵Settlement]
     Derelict starship: &suggestDerelictStarship
       Suggestions:
         Game objects:
           - Object type: Derelict
             Requires:
-              - Oracle rolls: [Derelicts / Type]
+              - Tables: [Derelicts / Type]
                 Results: [Starship, ⏵Starship]
     Faction: &suggestFaction
       Suggestions:
@@ -353,41 +358,41 @@ _refs:
         Game objects:
           - Object type: Faction
             Requires:
-              - Oracle rolls: [Factions / Type]
+              - Tables: [Factions / Type]
                 Results: [Fringe Group, ⏵Fringe Group]
 
     Place: &suggestPlace # space sighting
       Suggestions:
-        Oracle rolls:
+        Tables:
           - Space / Sighting / Terminus
           - Space / Sighting / Outlands
           - Space / Sighting / Expanse
     Theme Fortified: &suggestFortified
       Suggestions:
-        Oracle rolls:
+        Tables:
           - Location Themes / Fortified / Peril
           - Location Themes / Fortified / Opportunity
           - Location Themes / Fortified / Feature
     Theme Haunted: &suggestHaunted
       Suggestions:
-        Oracle rolls:
+        Tables:
           - Location Themes / Haunted / Peril
           - Location Themes / Haunted / Opportunity
           - Location Themes / Haunted / Feature
     Theme Chaotic: &suggestChaotic
       Suggestions:
-        Oracle rolls:
+        Tables:
           - Location Themes / Chaotic / Peril
           - Location Themes / Chaotic / Opportunity
           - Location Themes / Chaotic / Feature
     Object: &suggestObject # descriptor + focus
       Suggestions:
-        Oracle rolls:
+        Tables:
           - Core / Descriptor
           - Core / Focus
     Event: &suggestEvent # action + theme
       Suggestions:
-        Oracle rolls:
+        Tables:
           - Core / Action
           - Core / Theme
   # these are just simple strings at the moment, but if i do want to change them en masse, here they are

@@ -1,7 +1,7 @@
 Creatures:
   Name: Creatures
   Source:
-    Name: Starforged Backer Preview
+    Title: Starforged Backer Preview
     Date: "081921"
   Oracles:
     - Name: Environment
@@ -30,7 +30,7 @@ Creatures:
         - [61, 90, Large, vehicle-sized]
         - [91, 99, Huge, whale-sized]
         - [100, 100, ⏵Ultra-scale,
-          { Table: [
+          { Subtable: [
             [1, 89, Titanic, hill-sized], [90, 99, Colossal, mountain-sized], [100, 100, Vast, planet-sized]]
           } ]
         # - [100, 100, *Ultra-scale]
@@ -57,7 +57,7 @@ Creatures:
         - Name: Space
           Usage:
             Requires:
-              - Oracle rolls: [Creatures / Environment]
+              - Tables: [Creatures / Environment]
                 Results: [Space]
           Table:
             - [1, 5, Amoeba / pseudopods]
@@ -82,7 +82,7 @@ Creatures:
           _template: Space
           Usage:
             Requires:
-              - Oracle rolls: [Creatures / Environment]
+              - Tables: [Creatures / Environment]
                 Results: [Interior]
           Table:
             - [1, 3]
@@ -107,7 +107,7 @@ Creatures:
           _template: Space
           Usage:
             Requires:
-              - Oracle rolls: [Creatures / Environment]
+              - Tables: [Creatures / Environment]
                 Results: [Land]
           Table:
             - [1, 2]
@@ -132,7 +132,7 @@ Creatures:
           _template: Space
           Usage:
             Requires:
-              - Oracle rolls: [Creatures / Environment]
+              - Tables: [Creatures / Environment]
                 Results: [Liquid]
           Table:
             - [1, 5]
@@ -157,7 +157,7 @@ Creatures:
           _template: Space
           Usage:
             Requires:
-              - Oracle rolls: [Creatures / Environment]
+              - Tables: [Creatures / Environment]
                 Results: [Air]
           Table:
             - [1, 2]
