@@ -120,6 +120,8 @@ Starships:
         Allow duplicate rolls: true
       Content:
         Part of speech: [common noun, fragment]
+      Display:
+        Result columns labels: [Class, Typical Role]
       Table:
         - [1, 2, Carrier, Launches fighters]
         - [3, 6, Corvette, Light attack ship]
@@ -142,7 +144,7 @@ Starships:
         - [68, 82, Multipurpose, ⏵Starship Mission,*Starship_Mission]
         - [83, 84, Unusual or unknown, --]
         - [85, 94, ⏵Fleet, --, *Fleet]
-        - [95, 100, Ships in conflict (roll twice), --, "Oracle rolls": ["Starship / Type"], *Starship]
+        - [95, 100, Ships in conflict (roll twice), --, "Oracle rolls": ["Starships / Type"], *Starship]
         # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
 
     - Name: Fleet
@@ -217,6 +219,11 @@ Starships:
     - Name: Mission
       Display:
         Title: Starship Mission
+        Result column labels: [Mission]
+        Subtables:
+          - Starships / Mission / Terminus
+          - Starships / Mission / Outlands
+          - Starships / Mission / Expanse
       Content:
         Part of speech: [fragment]
         Tags: [objective]
@@ -226,9 +233,13 @@ Starships:
         Select table by: Region
       Oracles:
         - Display:
-            Title: Starship Mission / Terminus
+            Subtable of: Starships / Mission
           Name: Terminus
           Usage:
+            Equivalent to: &mission_equivalence
+              - Starships / Mission / Terminus
+              - Starships / Mission / Outlands
+              - Starships / Mission / Expanse
             Requires:
               - Region: [Terminus]
           Table:
@@ -261,17 +272,18 @@ Starships:
             - [75, 77, Survey a site, *suggestPlace]
             - [78, 79, Test a technology, *suggestObject]
             - [80, 82, Transport cargo, *suggestObject]
-            - [83, 85, Transport passengers]
+            - [83, 85, Transport passengers, *suggestNpc]
             - [86, 90, *Action+Theme]
             - [91, 100, *Roll_twice]
 
         - Display:
-            Title: Starship Mission / Outlands
+            Subtable of: Starships / Mission
           Name: Outlands
           Usage:
+            Equivalent to: *mission_equivalence
             Requires:
               - Region: [Outlands]
-          _template: Starship Mission / Terminus
+          _template: Terminus
           Table:
             - [1, 2]
             - [3, 4]
@@ -307,12 +319,13 @@ Starships:
             - [91, 100]
 
         - Display:
-            Title: Starship Mission / Expanse
+            Subtable of: Starships / Mission
           Name: Expanse
           Usage:
+            Equivalent to: *mission_equivalence
             Requires:
               - Region: [Expanse]
-          _template: Starship Mission / Terminus
+          _template: Terminus
           Table:
             - [1, 2]
             - [3, 4]

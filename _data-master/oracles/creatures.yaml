@@ -31,8 +31,10 @@ Creatures:
         - [91, 99, Huge, whale-sized]
         - [100, 100, ⏵Ultra-scale,
           { Subtable: [
-            [1, 89, Titanic, hill-sized], [90, 99, Colossal, mountain-sized], [100, 100, Vast, planet-sized]]
-          } ]
+            [1, 89, Titanic, hill-sized],
+            [90, 99, Colossal, mountain-sized],
+            [100, 100, Vast, planet-sized]
+            ]} ]
         # - [100, 100, *Ultra-scale]
     # - Name: Ultra-scale
     #   Part of speech: [adjective]
@@ -56,6 +58,12 @@ Creatures:
       Oracles:
         - Name: Space
           Usage:
+            Equivalent to: &creature_environment_equivalent
+              - Creatures / Basic Form / Space
+              - Creatures / Basic Form / Interior
+              - Creatures / Basic Form / Land
+              - Creatures / Basic Form / Liquid
+              - Creatures / Basic Form / Air
             Requires:
               - Tables: [Creatures / Environment]
                 Results: [Space]
@@ -81,6 +89,7 @@ Creatures:
         - Name: Interior
           _template: Space
           Usage:
+            Equivalent to: *creature_environment_equivalent
             Requires:
               - Tables: [Creatures / Environment]
                 Results: [Interior]
@@ -106,6 +115,7 @@ Creatures:
         - Name: Land
           _template: Space
           Usage:
+            Equivalent to: *creature_environment_equivalent
             Requires:
               - Tables: [Creatures / Environment]
                 Results: [Land]
@@ -131,6 +141,7 @@ Creatures:
         - Name: Liquid
           _template: Space
           Usage:
+            Equivalent to: *creature_environment_equivalent
             Requires:
               - Tables: [Creatures / Environment]
                 Results: [Liquid]
@@ -156,6 +167,7 @@ Creatures:
         - Name: Air
           _template: Space
           Usage:
+            Equivalent to: *creature_environment_equivalent
             Requires:
               - Tables: [Creatures / Environment]
                 Results: [Air]

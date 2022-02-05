@@ -20,7 +20,7 @@ Space:
     - Name: Sighting
       Display:
         Title: Space Sighting
-        Subtables: [Space Sighting / Terminus, Space Sighting / Outlands, Space Sighting / Expanse]
+        Subtables: [Space / Sighting / Terminus, Space / Sighting / Outlands, Space / Sighting / Expanse]
       Allow duplicate rolls: true
       Content:
         Part of speech: [fragment]
@@ -30,9 +30,10 @@ Space:
         Select table by: Region
       Oracles:
         - Display:
-            Subtable of: Space Sighting
+            Subtable of: Space / Sighting
           Name: Terminus
           Usage:
+            Repeatable: true
             Requires:
               - Region: [Terminus]
           Table:
@@ -58,10 +59,11 @@ Space:
             - [94, 98, *Roll_twice_Rep_ok]
             - [99, 100, *Roll_three_times_Rep_ok]
         - Display:
-            Subtable of: Space Sighting
+            Subtable of: Space / Sighting
           Name: Outlands
-          _template: Space Sighting / Terminus
+          _template: Space / Sighting / Terminus
           Usage:
+            Repeatable: true
             Requires:
               - Region: [Outlands]
           Table:
@@ -87,12 +89,13 @@ Space:
             - [94, 98]
             - [99, 100]
         - Display:
-            Subtable of: Space Sighting
+            Subtable of: Space / Sighting
           Name: Expanse
           Usage:
+            Repeatable: true
             Requires:
               - Region: [Expanse]
-          _template: Space Sighting / Terminus
+          _template: Space / Sighting / Terminus
           Table:
             - [1, 15]
             - [16, 35]
@@ -135,15 +138,15 @@ Space:
         - [100, 100, Unstable star showing signs of impending supernova, "https://i.imgur.com/5Ex5sdN.jpg"]
     - Name: Sector Name
       Display:
-        Subtables: [Sector Name / Prefix, Sector Name / Suffix]
+        Subtables: [Space / Sector Name / Prefix, Space / Sector Name / Suffix]
       Usage:
         Result template:
-          - Oracle roll: Sector Name / Prefix
+          - Oracle roll: Space / Sector Name / Prefix
           - String: " "
-          - Oracle roll: Sector Name / Suffix
+          - Oracle roll: Space / Sector Name / Suffix
       Oracles:
       - Display:
-          Subtable of: Sector Name
+          Subtable of: Space / Sector Name
         Name: Prefix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:
@@ -206,7 +209,7 @@ Space:
           - [97, 98, Veiled]
           - [99, 100, Wasted]
       - Display:
-          Subtable of: Sector Name
+          Subtable of: Space / Sector Name
         Name: Suffix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:

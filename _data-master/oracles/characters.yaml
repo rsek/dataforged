@@ -8,6 +8,10 @@ Characters:
     - Name: Name
       Display:
         Title: Character Name
+        Subtables:
+          - Characters / Name / Given Name
+          - Characters / Name / Family Name
+          - Characters / Name / Callsign
       Usage:
         Initial: true
       Oracles:
@@ -17,8 +21,10 @@ Characters:
           Usage:
             Suggestions:
               Tables:
-                - Characters / Callsign
-                - Characters / Family Name
+                - Characters / Name / Callsign
+                - Characters / Name / Family Name
+          Display:
+            Subtable of: Characters / Name
           Content:
             Part of speech: [proper noun]
           Table:
@@ -129,8 +135,10 @@ Characters:
           Usage:
             Suggestions:
               Tables:
-                - Characters / Given Name
-                - Characters / Family Name
+                - Characters / Name / Given Name
+                - Characters / Name / Family Name
+          Display:
+            Subtable of: Characters / Name
           Content:
             Part of speech: [proper noun]
           Table:
@@ -243,8 +251,10 @@ Characters:
           Usage:
             Suggestions:
               Tables:
-                - Characters / Given Name
-                - Characters / Callsign
+                - Characters / Name / Given Name
+                - Characters / Name / Callsign
+          Display:
+            Subtable of: Characters / Name
           Table:
             - [1, 1, Kuzmin]
             - [2, 2, Durant]
@@ -494,7 +504,7 @@ Characters:
         - [28, 29, Escape a captor]
         - [30, 31, Fight injustice]
         - [32, 33, Find a person, *suggestNpc]
-        - [34, 35, Forge an alliance]
+        - [34, 35, Forge an alliance, *suggestFaction]
         - [36, 37, Gain knowledge, *suggestEvent]
         - [38, 39, Gain riches]
         - [40, 41, Maintain order]
