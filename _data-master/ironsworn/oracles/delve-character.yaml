@@ -1,10 +1,15 @@
+Name: Character
+Id: Character
+Description: Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.
 Oracles:
-  # TODO: src
-  # TODO: disposition
-  - Name: Activity
-    Display name: "Character: Activity"
-    Category: Character Oracles
+  - Name: "Character: Activity"
+    Short name: Activity
+    Id: "Character: Activity"
+    Category: Character
     Description: To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the Focus oracle or Theme oracle.
+    Source:
+      Title: "Ironsworn: Delve"
+      Page: 213
     Table:
       - [1, 2, Guarding]
       - [3, 4, Preserving]
@@ -56,3 +61,24 @@ Oracles:
       - [95, 96, Removing]
       - [97, 98, Inspecting]
       - [99, 100, Summoning]
+  - Name: "Character: Disposition"
+    Short name: Disposition
+    Id: "Character: Disposition"
+    Category: Character
+    Description: Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.
+    Source:
+      Title: "Ironsworn: Delve"
+      Page: 213
+    Table:
+      - [1, 6, Helpful]
+      - [7, 13, Friendly]
+      - [14, 20, Cooperative]
+      - [21, 28, Curious]
+      - [29, 36, Indifferent]
+      - [37, 47, Suspicious]
+      - [48, 57, Wanting]
+      - [58, 67, Desperate]
+      - [68, 76, Demanding]
+      - [77, 85, Unfriendly]
+      - [86, 93, Threatening]
+      - [94, 100, Hostile]
