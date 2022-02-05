@@ -1,12 +1,13 @@
 Ice World:
   Name: Ice
-  Display name: Ice World
+  Display:
+    Title: Ice World
   Description: *Ice
   _childOf: Planets
   Usage:
     Requires:
       - Tables: [Planet / Planetary Class]
-        Results: [ Ice World ]
+        Results: [Ice World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -50,9 +51,14 @@ Ice World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Ice / Settlements / Terminus
+          - Planets / Ice / Settlements / Outlands
+          - Planets / Ice / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Ice / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -63,8 +69,8 @@ Ice World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Ice / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -75,8 +81,8 @@ Ice World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Ice / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -102,7 +108,8 @@ Ice World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
@@ -126,15 +133,17 @@ Ice World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 20, None]
-        - [21, 40, Extinct]
-        - [41, 70, Scarce]
-        - [71, 90, Diverse]
-        - [91, 97, Bountiful]
-        - [98, 100, Overrun]
+        - [1, 20, *life_None]
+        - [21, 40, *life_Extinct]
+        - [41, 70, *life_Scarce]
+        - [71, 90, *life_Diverse]
+        - [91, 97, *life_Bountiful]
+        - [98, 100, *life_Overrun]
 
 
 

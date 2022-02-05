@@ -1,6 +1,7 @@
 Interior:
   Name: Interior
-  Display name: Vault / Interior
+  Display:
+    Title: Vault / Interior
   _childOf: Vaults
   Description: If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
   Source:
@@ -8,7 +9,8 @@ Interior:
     Date: "122421"
   Oracles:
     - Name: First Look
-      Display name: Inner First Look
+      Display:
+        Title: Inner First Look
       Usage:
         Initial: true
         Max rolls: 2
@@ -50,7 +52,8 @@ Interior:
         - [94, 100, *Descriptor+Focus]
 
     - Name: Feature
-      Display name: Interior Feature
+      Display:
+        Title: Interior Feature
       Usage:
         Repeatable: true
       Content:
@@ -93,7 +96,8 @@ Interior:
         - [96, 100, *Roll_twice]
 
     - Name: Peril
-      Display name: Interior Peril
+      Display:
+        Title: Interior Peril
       Usage:
         Repeatable: true
       Description: Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](#Explore-a-Waypoint) and are prompted to envision a peril.
@@ -124,7 +128,8 @@ Interior:
         - [100, 100, *Roll_twice]
 
     - Name: Opportunity
-      Display name: Interior Opportunity
+      Display:
+        Title: Interior Opportunity
       Usage:
         Repeatable: true
       Description: Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](#Explore-a-Waypoint) and are prompted to envision an opportunity.

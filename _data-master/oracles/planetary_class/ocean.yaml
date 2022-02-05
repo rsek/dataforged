@@ -1,12 +1,13 @@
 Ocean World:
   Name: Ocean
-  Display name: Ocean World
+  Display:
+    Title: Ocean World
   Description: *Ocean
   _childOf: Planets
   Usage:
     Requires:
       - Tables: [Planet / Planetary Class]
-        Results: [ Ocean World ]
+        Results: [Ocean World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -50,9 +51,14 @@ Ocean World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Ocean / Settlements / Terminus
+          - Planets / Ocean / Settlements / Outlands
+          - Planets / Ocean / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Ocean / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -63,8 +69,8 @@ Ocean World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Ocean / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -75,8 +81,8 @@ Ocean World:
             - [93, 97, *Multiple_settlements]
             - [98, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Ocean / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -104,7 +110,8 @@ Ocean World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
@@ -128,15 +135,17 @@ Ocean World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 5, None]
-        - [6, 15, Extinct]
-        - [16, 30, Scarce]
-        - [31, 60, Diverse]
-        - [61, 90, Bountiful]
-        - [91, 100, Overrun]
+        - [1, 5, *life_None]
+        - [6, 15, *life_Extinct]
+        - [16, 30, *life_Scarce]
+        - [31, 60, *life_Diverse]
+        - [61, 90, *life_Bountiful]
+        - [91, 100, *life_Overrun]
 
 
 

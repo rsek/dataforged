@@ -1,12 +1,13 @@
 Desert World:
   Name: Desert
-  Display name: Desert World
+  Display:
+    Title: Desert World
   Description: *Desert
   _childOf: Planets
   Usage:
     Requires:
       - Tables: [Planet / Planetary Class]
-        Results: [ Desert World ]
+        Results: [Desert World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -50,9 +51,14 @@ Desert World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Desert / Settlements / Terminus
+          - Planets / Desert / Settlements / Outlands
+          - Planets / Desert / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Desert / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -63,8 +69,8 @@ Desert World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Desert / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -75,8 +81,8 @@ Desert World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Desert / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -102,7 +108,8 @@ Desert World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
@@ -126,15 +133,17 @@ Desert World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 20, None]
-        - [21, 40, Extinct]
-        - [41, 70, Scarce]
-        - [71, 90, Diverse]
-        - [91, 97, Bountiful]
-        - [98, 100, Overrun]
+        - [1, 20, *life_None]
+        - [21, 40, *life_Extinct]
+        - [41, 70, *life_Scarce]
+        - [71, 90, *life_Diverse]
+        - [91, 97, *life_Bountiful]
+        - [98, 100, *life_Overrun]
 
 
 

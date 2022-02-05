@@ -1,13 +1,14 @@
 Grave World:
   Name: Grave
-  Display name: Grave World
+  Display:
+    Title: Grave World
   Description: *Grave
   _childOf: Planets
   # suggest: ruined, haunted
   Usage:
     Requires:
       - Tables: [Planet / Planetary Class]
-        Results: [ Grave World ]
+        Results: [Grave World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -29,7 +30,7 @@ Grave World:
     - Necropolis
     - Orcus
     - Osiris
-    - Requim
+    - Requiem
     - Stygia
     - Tartarus
     - Thrace
@@ -50,9 +51,14 @@ Grave World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Grave / Settlements / Terminus
+          - Planets / Grave / Settlements / Outlands
+          - Planets / Grave / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Grave / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -63,8 +69,8 @@ Grave World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Grave / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -73,8 +79,8 @@ Grave World:
             - [91, 97, *Orbital_settlement]
             - [98, 100, *Planetside_settlement]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Grave / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -100,7 +106,8 @@ Grave World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
@@ -124,12 +131,14 @@ Grave World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 25, None]
-        - [26, 75, Extinct]
-        - [76, 95, Scarce]
-        - [96, 100, Diverse]
+        - [1, 25, *life_None]
+        - [26, 75, *life_Extinct]
+        - [76, 95, *life_Scarce]
+        - [96, 100, *life_Diverse]
 
 

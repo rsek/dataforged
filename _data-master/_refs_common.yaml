@@ -294,16 +294,22 @@ _refs:
             - Tables: [Derelicts / Type]
               Results: [Settlement, ⏵Settlement]
     # the below specifically for "initial contact" tables that turn up derelict starships, settlements
-    Derelict starship template: &tpl_Derelict_starship
+    Derelict starship template: &Derelict_starship_inherit
       Result: ⏵Derelict
-      Add template:
-        Template type: Derelict
-        # Attributes: { Type: [Starship] }
-    Derelict settlement template: &tpl_Derelict_settlement
+      Game objects:
+        - Object type: Derelict
+          Inherit results: true
+          Requires:
+            - Tables: [Derelicts / Type]
+              Results: [Starship, ⏵Starship]
+    Derelict settlement template: &Derelict_settlement_inherit
       Result: ⏵Derelict
-      Add template:
-        Template type: Derelict
-        # Attributes: { Type: [Settlement] }
+      Game objects:
+        - Object type: Derelict
+          Inherit results: true
+          Requires:
+            - Tables: [Derelicts / Type]
+              Results: [Settlement, ⏵Settlement]
 
   Oracle and object suggestions:
     # 'non-canonical' suggestions for Game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
@@ -397,12 +403,24 @@ _refs:
           - Core / Theme
   # these are just simple strings at the moment, but if i do want to change them en masse, here they are
   Planet Life:
-    - &life_None None
-    - &life_Extinct Extinct
-    - &life_Sparse Sparse
-    - &life_Diverse Diverse
-    - &life_Bountiful Bountiful
-    - &life_Overrun Overrun
+    - &life_None
+      Result: None
+    - &life_Extinct
+      Result: Extinct
+    - &life_Sparse
+      Result: Sparse
+    - &life_Diverse
+      Result: Diverse
+      Suggestions:
+        - *Creature
+    - &life_Bountiful
+      Result: Bountiful
+      Suggestions:
+        - *Creature
+    - &life_Overrun
+      Result: Overrun
+      Suggestions:
+        - *Creature
   Settlement Population:
     - &pop00 Few
     - &pop01 Dozens

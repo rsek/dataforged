@@ -1,12 +1,13 @@
 Rocky World:
   Name: Rocky
-  Display name: Rocky World
+  Display:
+    Title: Rocky World
   Description: *Rocky
   _childOf: Planets
   Usage:
     Requires:
       - Tables: [Planet / Planetary Class]
-        Results: [ Rocky World ]
+        Results: [Rocky World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -48,9 +49,14 @@ Rocky World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Rocky / Settlements / Terminus
+          - Planets / Rocky / Settlements / Outlands
+          - Planets / Rocky / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Rocky / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -61,8 +67,8 @@ Rocky World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Rocky / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -73,8 +79,8 @@ Rocky World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Rocky / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -100,7 +106,8 @@ Rocky World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
@@ -124,15 +131,17 @@ Rocky World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 65, None]
-        - [66, 80, Extinct]
-        - [81, 90, Scarce]
-        - [91, 95, Diverse]
-        - [96, 98, Bountiful]
-        - [99, 100, Overrun]
+        - [1, 65, *life_None]
+        - [66, 80, *life_Extinct]
+        - [81, 90, *life_Scarce]
+        - [91, 95, *life_Diverse]
+        - [96, 98, *life_Bountiful]
+        - [99, 100, *life_Overrun]
 
 
 

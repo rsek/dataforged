@@ -1,12 +1,13 @@
 Vital World:
   Name: Vital
-  Display name: Vital World
+  Display:
+    Title: Vital World
   Description: *Vital
   _childOf: Planets
   Usage:
     Requires:
       - Tables: [Planets / Planetary Class]
-        Results: [ Vital World ]
+        Results: [Vital World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -47,9 +48,14 @@ Vital World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Vital / Settlements / Terminus
+          - Planets / Vital / Settlements / Outlands
+          - Planets / Vital / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Vital / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -60,8 +66,8 @@ Vital World:
             - [71, 90, *Multiple_settlements]
             - [91, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Vital / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -72,8 +78,8 @@ Vital World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Vital / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -101,7 +107,8 @@ Vital World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
@@ -125,13 +132,15 @@ Vital World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 10, Scarce]
-        - [11, 45, Diverse]
-        - [46, 85, Bountiful]
-        - [86, 100, Overrun]
+        - [1, 10, *life_Scarce]
+        - [11, 45, *life_Diverse]
+        - [46, 85, *life_Bountiful]
+        - [86, 100, *life_Overrun]
 
     - Name: Diversity
       Content:

@@ -1,13 +1,14 @@
 Shattered World:
   Name: Shattered
-  Display name: Shattered World
+  Display:
+    Title: Shattered World
   Description: *Shattered
   ## suggest: ruined, haunted
   _childOf: Planets
   Usage:
     Requires:
       - Tables: [Planet / Planetary Class]
-        Results: [ Shattered World ]
+        Results: [Shattered World]
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -50,9 +51,14 @@ Shattered World:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Subtables:
+          - Planets / Shattered / Settlements / Terminus
+          - Planets / Shattered / Settlements / Outlands
+          - Planets / Shattered / Settlements / Expanse
       Oracles:
-        - Display name: Settlements / Terminus
-          Name: Terminus
+        - Display:
+            Subtable of: Planets / Shattered / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -63,8 +69,8 @@ Shattered World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display name: Settlements / Outlands
-          Name: Outlands
+        - Display:
+            Subtable of: Planets / Shattered / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -74,8 +80,8 @@ Shattered World:
             - [97, 99, *Planetside_settlement]
             - [100, 100, *Multiple_settlements]
 
-        - Display name: Settlements / Expanse
-          Name: Expanse
+        - Display:
+            Subtable of: Planets / Shattered / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
@@ -101,14 +107,15 @@ Shattered World:
         - [89, 98, *Descriptor+Focus]
         - [99, 100, *Vault_orbital]
 
-    - Display name: Planetside Feature
+    - Display:
+        Title: Planetside Feature
       Name: Feature
       Content:
         Part of speech: [fragment]
       Usage:
         Max rolls: 2
       Table:
-        - [1, 7, Broken cities]
+        - [1, 7, Broken cities, *suggestDerelictSettlement]
         - [8, 14, Colliding fragments]
         - [15, 21, Energy storms]
         - [22, 28, Exposed caverns]
@@ -125,13 +132,15 @@ Shattered World:
         - [99, 100, *Vault_planetside]
 
     - Name: Life
+      Usage:
+        Equivalent to: *any_life
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 30, None]
-        - [31, 85, Extinct]
-        - [86, 95, Scarce]
-        - [96, 100, Diverse]
+        - [1, 30, *life_None]
+        - [31, 85, *life_Extinct]
+        - [86, 95, *life_Scarce]
+        - [96, 100, *life_Diverse]
 
 
 
