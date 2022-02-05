@@ -1,6 +1,7 @@
 Space:
   Name: Space
-  Display name: Space Encounters
+  Display:
+    Title: Space Encounters
   Source:
     Title: Starforged Backer Preview
     Date: "122421"
@@ -17,7 +18,9 @@ Space:
       * The Spaceborne Peril and Spaceborne Opportunity oracles (pages 300-301) can help identify the nature of a deep space event. To learn more about travel and exploration within the Forge, see page 64.
   Oracles:
     - Name: Sighting
-      Display name: Space Sighting
+      Display:
+        Title: Space Sighting
+        Subtables: [Space Sighting / Terminus, Space Sighting / Outlands, Space Sighting / Expanse]
       Allow duplicate rolls: true
       Content:
         Part of speech: [fragment]
@@ -26,7 +29,8 @@ Space:
       Usage:
         Select table by: Region
       Oracles:
-        - Display name: Space Sighting / Terminus
+        - Display:
+            Subtable of: Space Sighting
           Name: Terminus
           Usage:
             Requires:
@@ -53,7 +57,8 @@ Space:
             - [86, 93, Dense nebula cloud]
             - [94, 98, *Roll_twice_Rep_ok]
             - [99, 100, *Roll_three_times_Rep_ok]
-        - Display name: Space Sighting / Outlands
+        - Display:
+            Subtable of: Space Sighting
           Name: Outlands
           _template: Space Sighting / Terminus
           Usage:
@@ -81,7 +86,8 @@ Space:
             - [86, 93]
             - [94, 98]
             - [99, 100]
-        - Display name: Space Sighting / Expanse
+        - Display:
+            Subtable of: Space Sighting
           Name: Expanse
           Usage:
             Requires:
@@ -128,8 +134,16 @@ Space:
         - [99, 99, Artificial star constructed by a long-dead civilization, "https://i.imgur.com/9KARj4M.jpg"]
         - [100, 100, Unstable star showing signs of impending supernova, "https://i.imgur.com/5Ex5sdN.jpg"]
     - Name: Sector Name
+      Display:
+        Subtables: [Sector Name / Prefix, Sector Name / Suffix]
+      Usage:
+        Result template:
+          - Oracle roll: Sector Name / Prefix
+          - String: " "
+          - Oracle roll: Sector Name / Suffix
       Oracles:
-      - Display name: Sector Name / Prefix
+      - Display:
+          Subtable of: Sector Name
         Name: Prefix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:
@@ -191,7 +205,8 @@ Space:
           - [95, 96, Vanguard]
           - [97, 98, Veiled]
           - [99, 100, Wasted]
-      - Display name: Sector Name / Suffix
+      - Display:
+          Subtable of: Sector Name
         Name: Suffix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:
@@ -254,7 +269,8 @@ Space:
           - [97, 98, Web]
           - [99, 100, Zenith]
     - Name: Peril
-      Display name: Spaceborne Peril
+      Display:
+        Title: Spaceborne Peril
       Usage:
         Repeatable: true
         Requires:
@@ -301,7 +317,8 @@ Space:
         - [97, 99, *Action+Theme]
         - [100, 100, *Roll_twice]
     - Name: Opportunity
-      Display name: Spaceborne Opportunity
+      Display:
+        Title: Spaceborne Opportunity
       Usage:
         Repeatable: true
         Requires:

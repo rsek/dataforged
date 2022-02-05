@@ -18,6 +18,7 @@ Derelicts:
     - Name: Location
       Usage:
         Initial: true
+        Equivalent to: *any_location
       Content:
         Part of speech: [adjective]
       Table:
@@ -29,8 +30,14 @@ Derelicts:
       Usage:
         Initial: true
         Select table by: Location
+      Display:
+        Subtables:
+          - Derelicts / Type / Planetside
+          - Derelicts / Type / Orbital
+          - Derelicts / Type / Deep Space
       Oracles:
-        - Display name: Type / Planetside
+        - Display:
+            Subtable of: Derelicts / Type
           Name: Planetside
           Usage:
             Requires:
@@ -39,7 +46,8 @@ Derelicts:
           Table:
             - [1, 25, Starship]
             - [26, 100, Settlement]
-        - Display name: Type / Orbital
+        - Display:
+            Subtable of: Derelicts / Type
           Name: Orbital
           Usage:
             Requires:
@@ -48,7 +56,8 @@ Derelicts:
           Table:
             - [1, 40, Starship]
             - [41, 100, Settlement]
-        - Display name: Type / Deep Space
+        - Display:
+            Subtable of: Derelicts / Type
           Name: Deep Space
           Usage:
             Requires:
@@ -129,27 +138,31 @@ Derelicts:
         - [94, 100, *Descriptor+Focus]
 
     - Name: Zone
-      Display name: Derelict Zone
+      Display:
+        Title: Derelict Zone
+        Subtables: [Derelicts / Zone / Starship, Derelicts / Zone / Settlement]
       Usage:
         Repeatable: true
         Select table by: Derelicts / Type
       Oracles:
-        - Display name: Derelicts / Starship
+        - Display:
+            Subtable of: Derelicts / Zone
           Name: Starship
           Usage:
             Requires:
               - Tables: [Derelicts / Type]
                 Results: [Starship]
           Table:
-            - [1, 5, "⏵Community"]
-            - [6, 30, "⏵Engineering"]
-            - [31, 55, "⏵Living"]
-            - [56, 65, "⏵Medical"]
-            - [66, 85, "⏵Operations"]
-            - [86, 90, "⏵Production"]
-            - [91, 100, "⏵Research"]
+            - [1, 5, ⏵Community]
+            - [6, 30, ⏵Engineering]
+            - [31, 55, ⏵Living]
+            - [56, 65, ⏵Medical]
+            - [66, 85, ⏵Operations]
+            - [86, 90, ⏵Production]
+            - [91, 100, ⏵Research]
 
-        - Display name: Derelicts / Settlement
+        - Display:
+            Subtable of: Derelicts / Zone
           Name: Settlement
           Usage:
             Requires:

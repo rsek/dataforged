@@ -6,7 +6,8 @@ Starships:
     Date: "081921"
   Oracles:
     - Name: Name
-      Display name: Starship Name
+      Display:
+        Title: Starship Name
       Description: |-
         Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
       Content:
@@ -180,7 +181,7 @@ Starships:
         - [81, 85, In battle]
         - [86, 90, Unresponsive]
         - [91, 95, Destroyed]
-        - [96, 100, *tpl_Derelict_starship]
+        - [96, 100, *Derelict_starship_inherit]
 
     - Name: First Look
       Usage:
@@ -214,7 +215,8 @@ Starships:
         - [95, 100, *Descriptor+Focus]
 
     - Name: Mission
-      Display name: Starship Mission
+      Display:
+        Title: Starship Mission
       Content:
         Part of speech: [fragment]
         Tags: [objective]
@@ -223,7 +225,8 @@ Starships:
       Usage:
         Select table by: Region
       Oracles:
-        - Display name: Starship Mission / Terminus
+        - Display:
+            Title: Starship Mission / Terminus
           Name: Terminus
           Usage:
             Requires:
@@ -262,7 +265,8 @@ Starships:
             - [86, 90, *Action+Theme]
             - [91, 100, *Roll_twice]
 
-        - Display name: Starship Mission / Outlands
+        - Display:
+            Title: Starship Mission / Outlands
           Name: Outlands
           Usage:
             Requires:
@@ -302,7 +306,8 @@ Starships:
             - [86, 90]
             - [91, 100]
 
-        - Display name: Starship Mission / Expanse
+        - Display:
+            Title: Starship Mission / Expanse
           Name: Expanse
           Usage:
             Requires:

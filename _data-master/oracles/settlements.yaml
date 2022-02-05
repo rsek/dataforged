@@ -7,6 +7,7 @@ Settlements:
     - Name: Location
       Usage:
         Initial: true
+        Equivalent to: *any_location
       Content:
         Part of speech: [adjective]
       Table:
@@ -18,8 +19,16 @@ Settlements:
       Usage:
         Initial: true
         Select table by: Region
+      Display:
+        Result column labels:
+          - Number
+        Subtables:
+          - Settlements / Population / Terminus
+          - Settlements / Population / Outlands
+          - Settlements / Population / Expanse
       Oracles:
-        - Display name: Population / Terminus
+        - Display:
+            Subtable of: Settlements / Population
           Name: Terminus
           Usage:
             Requires:
@@ -31,7 +40,8 @@ Settlements:
             - [56, 85, *pop03]
             - [86, 100, *pop04]
 
-        - Display name: Population / Outlands
+        - Display:
+            Subtable of: Settlements / Population
           Name: Outlands
           Usage:
             Requires:
@@ -43,7 +53,8 @@ Settlements:
             - [66, 90, *pop03]
             - [91, 100, *pop04]
 
-        - Display name: Population / Expanse
+        - Display:
+            Subtable of: Settlements / Population
           Name: Expanse
           Usage:
             Requires:
@@ -102,7 +113,7 @@ Settlements:
         - [87, 89, Captured]
         - [90, 92, Unresponsive]
         - [93, 95, Destroyed]
-        - [96, 100, *tpl_Derelict_settlement]
+        - [96, 100, *Derelict_settlement_inherit]
 
     - Name: Authority
       Usage:
@@ -119,7 +130,8 @@ Settlements:
         - [86, 100, Oppressive]
 
     - Name: Projects
-      Display name: Settlement Projects
+      Display:
+        Title: Settlement Projects
       Content:
         Part of speech: [noun, common noun]
         Tags: [abstract noun]
@@ -163,7 +175,8 @@ Settlements:
         - [96, 100, *Action+Theme]
 
     - Name: Trouble
-      Display name: Settlement Trouble
+      Display:
+        Title: Settlement Trouble
       Usage:
         Max rolls: 2
       Description: |-
@@ -208,7 +221,8 @@ Settlements:
         - [91, 100, *Action+Theme]
 
     - Name: Name
-      Display name: Settlement Name
+      Display:
+        Title: Settlement Name
       Description: |-
         Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
       Usage:

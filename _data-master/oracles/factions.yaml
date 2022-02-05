@@ -7,7 +7,8 @@ Factions:
     - Name: Type
       Usage:
         Initial: true
-      Display name: Faction Type
+      Display:
+        Title: Faction Type
       Content:
         Part of speech: [noun]
       Table:
@@ -30,7 +31,7 @@ Factions:
         Max rolls: 3
         Initial: true
         Requires:
-          - Tables: [Faction / Type]
+          - Tables: [Factions / Type]
             Results: [Dominion]
       Content:
         Part of speech: [noun]
@@ -61,11 +62,12 @@ Factions:
         - [92, 96, Warfare]
         - [97, 100, Wealth]
     - Name: Leadership
-      Display name: Dominion / Leadership
+      Display:
+        Title: Dominion / Leadership
       Usage:
         Initial: true
         Requires:
-          - Tables: [Faction / Type]
+          - Tables: [Factions / Type]
             Results: [Dominion]
       Content:
         Part of speech: [fragment]
@@ -85,7 +87,7 @@ Factions:
       Usage:
         Initial: true
         Requires:
-          - Tables: [Faction / Type]
+          - Tables: [Factions / Type]
             Results: [Guild]
       Content:
         Part of speech: [noun, plural]
@@ -109,7 +111,7 @@ Factions:
     - Name: Fringe Group
       Usage:
         Requires:
-          - Tables: [Faction / Type]
+          - Tables: [Factions / Type]
             Results: [Fringe Group]
       Content:
         Part of speech: [noun, plural]
@@ -128,7 +130,8 @@ Factions:
         - [86, 95, Smugglers]
         - [96, 100, *Roll_twice]
     - Name: Projects
-      Display name: Faction Projects
+      Display:
+        Title: Faction Projects
       Content:
         Part of speech: [fragment]
         Tags: [objective]
@@ -170,7 +173,8 @@ Factions:
         - [94, 96, Usurp leadership within a rival faction]
         - [97, 100, *Action+Theme]
     - Name: Relationships
-      Display name: Faction Relationships
+      Display:
+        Title: Faction Relationships
       Content:
         Part of speech: [fragment]
       Description: Factions can add scale and narrative opportunities to your setting. But keep it manageable. Don’t overload your campaign with factions. Instead, focus on your interactions and entanglements with members of a few interesting factions. Then, when you have a question about the relationship of one faction to another, use this table. The result is the commonly understood connection between those factions. Further investigations or events may reveal a deeper or alternate truth.
@@ -207,16 +211,39 @@ Factions:
       Content:
         Part of speech: [name, proper noun]
         Tags: [template]
-      Display name: Faction Name Template
+      Display:
+        Title: Faction Name Template
       Description: |-
         To generate a faction name, first roll or choose the name template. Then, follow the structure of the template to build the name from individual tables. If you’ve already set the faction type, picking from the tables (instead of rolling) will likely provide a more appropriate result. For example, “Silver Jackals” is a fitting name for a criminal organization. The “Empire of the Undying Suns” is a less apt name for that gang—unless their leader is prone to delusions of grandeur. In short, choosing a name will give you more control. Rolling might give you a result that doesn’t square with known aspects, but those contradictions may prove inspiring.
 
         An alternative approach to generate a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one which idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or simply pick.
       Table:
-        - [1, 40, "[⏵Legacy] [⏵Affiliation]", *faction_tpl_1]
-        - [41, 55, "[⏵Legacy] [⏵Identity]", *faction_tpl_2]
-        - [56, 70, "[⏵Identity] of the [⏵Legacy] [⏵Affiliation]", *faction_tpl_3]
-        - [71, 100, "[⏵Affiliation] of the [⏵Legacy] [⏵Identity]", *faction_tpl_4]
+        - [1, 40, "[⏵Legacy] [⏵Affiliation]",
+          {Result template: [
+            {Oracle roll: "Factions / Legacy"},
+            {String: " "},
+            {Oracle roll: "Factions / Affiliation"}
+          ]}]
+        - [41, 55, "[⏵Legacy] [⏵Identity]",
+          {Result template: [
+            {Oracle roll: "Factions / Legacy"},
+            {String: " "},
+            {Oracle roll: "Factions / Identity"},
+          ]}]
+        - [56, 70, "[⏵Identity] of the [⏵Legacy] [⏵Affiliation]",
+          {Result template: [
+            {Oracle roll: "Factions / Identity"},
+            {String: " of the "},
+            {Oracle roll: "Factions / Legacy"},
+            {Oracle roll: "Factions / Affiliation"},
+          ]}]
+        - [71, 100, "[⏵Affiliation] of the [⏵Legacy] [⏵Identity]",
+          {Result template: [
+            {Oracle roll: "Factions / Affiliation"},
+            {String: " of the "},
+            {Oracle roll: "Factions / Legacy"},
+            {Oracle roll: "Factions / Identity"},
+          ]}]
     - Name: Legacy
       Content:
         Part of speech: [adjective]
@@ -356,7 +383,8 @@ Factions:
         - [97, 98, Wreckers]
         - [99, 100, Wrights]
     - Name: Quirks
-      Display name: Faction Quirks
+      Display:
+        Title: Faction Quirks
       Content:
         Part of speech: [fragment]
         Tags: [description]
@@ -399,7 +427,8 @@ Factions:
         - [94, 96, Work or environment causes mutations]
         - [97, 100, *Action+Theme]
     - Name: Rumors
-      Display name: Faction Rumors
+      Display:
+        Title: Faction Rumors
       Content:
         Part of speech: [fragment]
         Tags: [event, present]
