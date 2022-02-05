@@ -170,24 +170,6 @@ _refs:
       Result: ⏵Ultra-scale
       Tables:
         - Creatures / Ultra-scale
-    Faction Legacy, Affiliation: &faction_tpl_1
-      Tables:
-        - Factions / Legacy
-        - Factions / Affiliation
-    Faction Legacy, Identity: &faction_tpl_2
-      Tables:
-        - Factions / Legacy
-        - Factions / Identity
-    Faction Identity, Legacy, Affiliation: &faction_tpl_3
-      Tables:
-        - Factions / Identity
-        - Factions / Legacy
-        - Factions / Affiliation
-    Faction Affiliation, Legacy, Identity: &faction_tpl_4
-      Tables:
-        - Factions / Affiliation
-        - Factions / Legacy
-        - Factions / Identity
 
   Game objects:
     # consider a way to do precursor vault sanctums?
@@ -285,22 +267,33 @@ _refs:
       Game objects:
         - Object type: Derelict
           Requires:
-            - Tables: [Derelicts / Type]
+            - Tables:
+                - Derelicts / Type / Planetside
+                - Derelicts / Type / Orbital
+                - Derelicts / Type / Deep Space
               Results: [Starship, ⏵Starship]
     Derelict settlement: &Derelict_settlement
       Game objects:
         - Object type: Derelict
           Requires:
-            - Tables: [Derelicts / Type]
+            - Tables:
+                - Derelicts / Type / Planetside
+                - Derelicts / Type / Orbital
+                - Derelicts / Type / Deep Space
               Results: [Settlement, ⏵Settlement]
+
     # the below specifically for "initial contact" tables that turn up derelict starships, settlements
+
     Derelict starship template: &Derelict_starship_inherit
       Result: ⏵Derelict
       Game objects:
         - Object type: Derelict
           Inherit results: true
           Requires:
-            - Tables: [Derelicts / Type]
+            - Tables: &derelict_type_equivalence
+                - Derelicts / Type / Planetside
+                - Derelicts / Type / Orbital
+                - Derelicts / Type / Deep Space
               Results: [Starship, ⏵Starship]
     Derelict settlement template: &Derelict_settlement_inherit
       Result: ⏵Derelict
@@ -308,8 +301,30 @@ _refs:
         - Object type: Derelict
           Inherit results: true
           Requires:
-            - Tables: [Derelicts / Type]
+            - Tables: *derelict_type_equivalence
               Results: [Settlement, ⏵Settlement]
+    # as above but in the opposite direction
+    Settlement template: &Settlement_inherit
+      Game objects:
+        - Object type: Settlement
+          Inherits results: true
+          Requires:
+            - Tables: *derelict_type_equivalence
+              Results: [Settlement]
+            - Tables: [Settlements / Initial Contact]
+              Results: [Derelict, ⏵Derelict]
+              Ignore game object: true
+    Starship template: &Starship_inherit
+      Game objects:
+        - Object type: Starship
+          Inherits results: true
+          Requires:
+            - Tables: *derelict_type_equivalence
+              Results: [Starship]
+              Ignore game object: true
+            - Tables: [Starships / Initial Contact]
+              Results: [Derelict, ⏵Derelict]
+              Ignore game object: true
 
   Oracle and object suggestions:
     # 'non-canonical' suggestions for Game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
@@ -346,14 +361,20 @@ _refs:
         Game objects:
           - Object type: Derelict
             Requires:
-              - Tables: [Derelicts / Type]
+              - Tables:
+                  - Derelicts / Type / Planetside
+                  - Derelicts / Type / Orbital
+                  - Derelicts / Type / Deep Space
                 Results: [Settlement, ⏵Settlement]
     Derelict starship: &suggestDerelictStarship
       Suggestions:
         Game objects:
           - Object type: Derelict
             Requires:
-              - Tables: [Derelicts / Type]
+              - Tables:
+                  - Derelicts / Type / Planetside
+                  - Derelicts / Type / Orbital
+                  - Derelicts / Type / Deep Space
                 Results: [Starship, ⏵Starship]
     Faction: &suggestFaction
       Suggestions:
