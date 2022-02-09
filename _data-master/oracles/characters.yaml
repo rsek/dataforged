@@ -8,10 +8,18 @@ Characters:
     - Name: Name
       Display:
         Title: Character Name
-        Subtables:
-          - Characters / Name / Given Name
-          - Characters / Name / Family Name
-          - Characters / Name / Callsign
+        Table from:
+          Roll columns:
+            - Characters / Name / Given Name
+          Result columns:
+            - Characters / Name / Given Name
+            - Characters / Name / Family Name
+            - Characters / Name / Callsign
+        Column labels:
+          - Roll
+          - Given Name
+          - Family Name
+          - Callsign
       Usage:
         Initial: true
       Oracles:
@@ -24,7 +32,7 @@ Characters:
                 - Characters / Name / Callsign
                 - Characters / Name / Family Name
           Display:
-            Subtable of: Characters / Name
+            Column of: Characters / Name
           Content:
             Part of speech: [proper noun]
           Table:
@@ -138,7 +146,7 @@ Characters:
                 - Characters / Name / Given Name
                 - Characters / Name / Family Name
           Display:
-            Subtable of: Characters / Name
+            Column of: Characters / Name
           Content:
             Part of speech: [proper noun]
           Table:
@@ -254,7 +262,7 @@ Characters:
                 - Characters / Name / Given Name
                 - Characters / Name / Callsign
           Display:
-            Subtable of: Characters / Name
+            Column of: Characters / Name
           Table:
             - [1, 1, Kuzmin]
             - [2, 2, Durant]

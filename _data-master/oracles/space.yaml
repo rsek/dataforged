@@ -20,23 +20,33 @@ Space:
     - Name: Sighting
       Display:
         Title: Space Sighting
-        Subtables: [Space / Sighting / Terminus, Space / Sighting / Outlands, Space / Sighting / Expanse]
-      Allow duplicate rolls: true
+        Table from:
+          Roll columns:
+            - Space / Sighting / Terminus
+            - Space / Sighting / Outlands
+            - Space / Sighting / Expanse
+          Result columns:
+            - Space / Sighting / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
       Content:
         Part of speech: [fragment]
       Description: |-
         Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](#Ask-the-Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](#Undertake-an-Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
       Usage:
         Select table by: Region
+        Repeatable: true
       Oracles:
         - Display:
-            Subtable of: Space / Sighting
+            Column of: Space / Sighting
           Name: Terminus
           Usage:
-            Repeatable: true
             Requires:
               - Region: [Terminus]
-          Table:
+          Table: &template_spacesighting
             - [1, 15, *Stellar_Object]
             - [16, 35, *Planet]
             - [36, 40, *Settlement]
@@ -59,11 +69,10 @@ Space:
             - [94, 98, *Roll_twice_Rep_ok]
             - [99, 100, *Roll_three_times_Rep_ok]
         - Display:
-            Subtable of: Space / Sighting
+            Column of: Space / Sighting
           Name: Outlands
-          _template: Space / Sighting / Terminus
+          _template: *template_spacesighting
           Usage:
-            Repeatable: true
             Requires:
               - Region: [Outlands]
           Table:
@@ -89,13 +98,13 @@ Space:
             - [94, 98]
             - [99, 100]
         - Display:
-            Subtable of: Space / Sighting
+            Column of: Space / Sighting
           Name: Expanse
           Usage:
             Repeatable: true
             Requires:
               - Region: [Expanse]
-          _template: Space / Sighting / Terminus
+          _template: *template_spacesighting
           Table:
             - [1, 15]
             - [16, 35]
@@ -138,7 +147,16 @@ Space:
         - [100, 100, Unstable star showing signs of impending supernova, "https://i.imgur.com/5Ex5sdN.jpg"]
     - Name: Sector Name
       Display:
-        Subtables: [Space / Sector Name / Prefix, Space / Sector Name / Suffix]
+        Table from:
+          Roll columns:
+            - Space / Sector Name / Prefix
+          Result columns:
+            - Space / Sector Name / Prefix
+            - Space / Sector Name / Suffix
+        Column labels:
+          - Roll
+          - Prefix
+          - Suffix
       Usage:
         Result template:
           - Oracle roll: Space / Sector Name / Prefix
@@ -146,7 +164,7 @@ Space:
           - Oracle roll: Space / Sector Name / Suffix
       Oracles:
       - Display:
-          Subtable of: Space / Sector Name
+          Column of: Space / Sector Name
         Name: Prefix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:
@@ -209,7 +227,7 @@ Space:
           - [97, 98, Veiled]
           - [99, 100, Wasted]
       - Display:
-          Subtable of: Space / Sector Name
+          Column of: Space / Sector Name
         Name: Suffix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:

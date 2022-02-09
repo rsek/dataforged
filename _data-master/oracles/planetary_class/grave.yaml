@@ -52,13 +52,23 @@ Grave World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Grave / Settlements / Terminus
-          - Planets / Grave / Settlements / Outlands
-          - Planets / Grave / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Grave / Settlements / Terminus
+            - Planets / Grave / Settlements / Outlands
+            - Planets / Grave / Settlements / Expanse
+          Result columns:
+            - Planets / Grave / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Grave / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Grave / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -69,8 +79,9 @@ Grave World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Grave / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Grave / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -79,8 +90,9 @@ Grave World:
             - [91, 97, *Orbital_settlement]
             - [98, 100, *Planetside_settlement]
 
-        - Display:
-            Subtable of: Planets / Grave / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Grave / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

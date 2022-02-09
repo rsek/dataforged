@@ -49,13 +49,23 @@ Vital World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Vital / Settlements / Terminus
-          - Planets / Vital / Settlements / Outlands
-          - Planets / Vital / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Vital / Settlements / Terminus
+            - Planets / Vital / Settlements / Outlands
+            - Planets / Vital / Settlements / Expanse
+          Result columns:
+            - Planets / Vital / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Vital / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Vital / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -66,8 +76,9 @@ Vital World:
             - [71, 90, *Multiple_settlements]
             - [91, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Vital / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Vital / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -78,8 +89,9 @@ Vital World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Vital / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Vital / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

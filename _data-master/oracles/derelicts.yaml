@@ -3,7 +3,7 @@ Derelicts:
   Source:
     Title: Starforged Backer Preview
     Date: "081921"
-  Categories:
+  _parentOf:
     - Access
     - Community
     - Engineering
@@ -31,13 +31,21 @@ Derelicts:
         Initial: true
         Select table by: Location
       Display:
-        Subtables: &derelict_type_equivalence
-          - Derelicts / Type / Planetside
-          - Derelicts / Type / Orbital
-          - Derelicts / Type / Deep Space
+        Table from:
+          Roll columns: &derelict_type_equivalence
+            - Derelicts / Type / Planetside
+            - Derelicts / Type / Orbital
+            - Derelicts / Type / Deep Space
+          Result columns:
+            - Derelicts / Type / Planetside
+        Column labels:
+          - Planetside
+          - Orbital
+          - Deep Space
+          - Result
       Oracles:
         - Display:
-            Subtable of: Derelicts / Type
+            Column of: Derelicts / Type
           Name: Planetside
           Usage:
             Equivalent to: *derelict_type_equivalence
@@ -48,7 +56,7 @@ Derelicts:
             - [1, 25, Starship]
             - [26, 100, Settlement]
         - Display:
-            Subtable of: Derelicts / Type
+            Column of: Derelicts / Type
           Name: Orbital
           Usage:
             Equivalent to: *derelict_type_equivalence
@@ -59,7 +67,7 @@ Derelicts:
             - [1, 40, Starship]
             - [41, 100, Settlement]
         - Display:
-            Subtable of: Derelicts / Type
+            Column of: Derelicts / Type
           Name: Deep Space
           Usage:
             Equivalent to: *derelict_type_equivalence
@@ -143,13 +151,22 @@ Derelicts:
     - Name: Zone
       Display:
         Title: Derelict Zone
-        Subtables: [Derelicts / Zone / Starship, Derelicts / Zone / Settlement]
+        Table from:
+          Roll columns:
+            - Derelicts / Zone / Starship
+            - Derelicts / Zone / Settlement
+          Result columns:
+            - Derelicts / Zone / Starship
+        Column labels:
+          - Starship
+          - Settlement
+          - Result
       Usage:
         Repeatable: true
         Select table by: Derelicts / Type
       Oracles:
         - Display:
-            Subtable of: Derelicts / Zone
+            Column of: Derelicts / Zone
           Name: Starship
           Usage:
             Equivalent to: [Derelicts / Zone / Settlement]
@@ -166,7 +183,7 @@ Derelicts:
             - [91, 100, ⏵Research]
 
         - Display:
-            Subtable of: Derelicts / Zone
+            Column of: Derelicts / Zone
           Name: Settlement
           Usage:
             Equivalent to: [Derelicts / Zone / Starship]

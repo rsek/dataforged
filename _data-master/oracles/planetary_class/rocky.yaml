@@ -50,13 +50,23 @@ Rocky World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Rocky / Settlements / Terminus
-          - Planets / Rocky / Settlements / Outlands
-          - Planets / Rocky / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Rocky / Settlements / Terminus
+            - Planets / Rocky / Settlements / Outlands
+            - Planets / Rocky / Settlements / Expanse
+          Result columns:
+            - Planets / Rocky / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Rocky / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Rocky / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -67,8 +77,9 @@ Rocky World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Rocky / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Rocky / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -79,8 +90,9 @@ Rocky World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Rocky / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Rocky / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

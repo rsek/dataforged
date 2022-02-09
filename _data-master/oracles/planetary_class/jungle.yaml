@@ -51,13 +51,23 @@ Jungle World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Jungle / Settlements / Terminus
-          - Planets / Jungle / Settlements / Outlands
-          - Planets / Jungle / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Jungle / Settlements / Terminus
+            - Planets / Jungle / Settlements / Outlands
+            - Planets / Jungle / Settlements / Expanse
+          Result columns:
+            - Planets / Jungle / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Jungle / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Jungle / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -68,8 +78,9 @@ Jungle World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Jungle / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Jungle / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -80,8 +91,9 @@ Jungle World:
             - [93, 97, *Multiple_settlements]
             - [98, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Jungle / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Jungle / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

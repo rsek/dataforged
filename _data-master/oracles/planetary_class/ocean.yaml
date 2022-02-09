@@ -52,13 +52,23 @@ Ocean World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Ocean / Settlements / Terminus
-          - Planets / Ocean / Settlements / Outlands
-          - Planets / Ocean / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Ocean / Settlements / Terminus
+            - Planets / Ocean / Settlements / Outlands
+            - Planets / Ocean / Settlements / Expanse
+          Result columns:
+            - Planets / Ocean / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Ocean / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Ocean / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -69,8 +79,9 @@ Ocean World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Ocean / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Ocean / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -81,8 +92,9 @@ Ocean World:
             - [93, 97, *Multiple_settlements]
             - [98, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Ocean / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Ocean / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

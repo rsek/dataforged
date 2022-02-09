@@ -3,14 +3,14 @@ Source:
   Title: "Ironsworn: Delve"
 Oracles:
   - Name: Delve the Depths
-    Id: "Delve the Depths: Table"
+    $id: "Delve the Depths: Table"
     Source:
       Title: "Ironsworn: Delve"
       Page: 21
     Oracles:
       - Name: Delve the Depths +edge
-        Id: "Delve the Depths +edge: Table"
-        Table:
+        $id: "Delve the Depths +edge: Table"
+        Table: &template_delvethedepths
           - [1, 45, "Mark progress and [Reveal a Danger](#Reveal-a-Danger)."]
           - [46, 65, "Mark progress."]
           - [
@@ -29,8 +29,8 @@ Oracles:
               "Mark progress twice and [Reveal a Danger](#Reveal-a-Danger).",
             ]
       - Name: Delve the Depths +shadow
-        Id: "Delve the Depths +shadow: Table"
-        _template: Delve the Depths +edge
+        $id: "Delve the Depths +shadow: Table"
+        _template: *template_delvethedepths
         Table:
           - [1, 30]
           - [31, 65]
@@ -38,8 +38,8 @@ Oracles:
           - [91, 99]
           - [100, 100]
       - Name: Delve the Depths +wits
-        Id: "Delve the Depths +wits: Table"
-        _template: Delve the Depths +edge
+        $id: "Delve the Depths +wits: Table"
+        _template: *template_delvethedepths
         Table:
           - [1, 40]
           - [41, 55]
@@ -47,7 +47,7 @@ Oracles:
           - [81, 99]
           - [100, 100]
   - Name: Find an Opportunity
-    Id: "Find an Opportunity: Table"
+    $id: "Find an Opportunity: Table"
     Source:
       Title: "Ironsworn: Delve"
       Page: 30
@@ -71,7 +71,7 @@ Oracles:
       - [95, 98, "You encounter a denizen who might support you."]
       - [99, 100, "You encounter a denizen in need of help."]
   - Name: Reveal a Danger
-    Id: "Reveal a Danger: Table"
+    $id: "Reveal a Danger: Table"
     Source:
       Title: "Ironsworn: Delve"
       Page: 34
@@ -97,7 +97,7 @@ Oracles:
     Source:
       Title: "Ironsworn: Delve"
       Page: 68
-    Id: "Reveal a Danger (alternate version): Table"
+    $id: "Reveal a Danger (alternate version): Table"
     Table:
       - [1, 22, "You encounter a hostile denizen."]
       - [23, 42, "You face an environmental or architectural hazard."]
@@ -113,7 +113,7 @@ Oracles:
     Source:
       Title: "Ironsworn: Delve"
       Page: 155
-    Id: "Advance a Threat: Table"
+    $id: "Advance a Threat: Table"
     Table:
       - [1, 30, "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, Reach a Milestone. Otherwise, mark menace."]
       - [31, 70, "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."]

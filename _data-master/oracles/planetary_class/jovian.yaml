@@ -50,13 +50,23 @@ Jovian World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Jovian / Settlements / Terminus
-          - Planets / Jovian / Settlements / Outlands
-          - Planets / Jovian / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Jovian / Settlements / Terminus
+            - Planets / Jovian / Settlements / Outlands
+            - Planets / Jovian / Settlements / Expanse
+          Result columns:
+            - Planets / Jovian / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Jovian / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Jovian / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -67,8 +77,9 @@ Jovian World:
             - [86, 95, *Multiple_settlements]
             - [96, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Jovian / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Jovian / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -79,8 +90,9 @@ Jovian World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Jovian / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Jovian / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

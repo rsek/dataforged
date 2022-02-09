@@ -52,13 +52,23 @@ Shattered World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Shattered / Settlements / Terminus
-          - Planets / Shattered / Settlements / Outlands
-          - Planets / Shattered / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Shattered / Settlements / Terminus
+            - Planets / Shattered / Settlements / Outlands
+            - Planets / Shattered / Settlements / Expanse
+          Result columns:
+            - Planets / Shattered / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Shattered / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Shattered / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -69,8 +79,9 @@ Shattered World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Shattered / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Shattered / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -80,8 +91,9 @@ Shattered World:
             - [97, 99, *Planetside_settlement]
             - [100, 100, *Multiple_settlements]
 
-        - Display:
-            Subtable of: Planets / Shattered / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Shattered / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

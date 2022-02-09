@@ -51,13 +51,23 @@ Furnace World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Furnace / Settlements / Terminus
-          - Planets / Furnace / Settlements / Outlands
-          - Planets / Furnace / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Furnace / Settlements / Terminus
+            - Planets / Furnace / Settlements / Outlands
+            - Planets / Furnace / Settlements / Expanse
+          Result columns:
+            - Planets / Furnace / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Furnace / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Furnace / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -68,8 +78,9 @@ Furnace World:
             - [88, 96, *Multiple_settlements]
             - [97, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Furnace / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Furnace / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -80,8 +91,9 @@ Furnace World:
             - [98, 99, *Multiple_settlements]
             - [100, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Furnace / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Furnace / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

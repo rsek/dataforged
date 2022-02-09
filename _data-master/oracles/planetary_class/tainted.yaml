@@ -51,13 +51,23 @@ Tainted World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Tainted / Settlements / Terminus
-          - Planets / Tainted / Settlements / Outlands
-          - Planets / Tainted / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Tainted / Settlements / Terminus
+            - Planets / Tainted / Settlements / Outlands
+            - Planets / Tainted / Settlements / Expanse
+          Result columns:
+            - Planets / Tainted / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Tainted / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Tainted / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -68,8 +78,9 @@ Tainted World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Tainted / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Tainted / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -78,8 +89,9 @@ Tainted World:
             - [91, 97, *Orbital_settlement]
             - [98, 100, *Planetside_settlement]
 
-        - Display:
-            Subtable of: Planets / Tainted / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Tainted / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

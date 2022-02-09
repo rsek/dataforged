@@ -1,6 +1,21 @@
 Planets:
   Name: Planets
   Aliases: [World]
+  _parentOf:
+    - Desert
+    - Furnace
+    - Grave
+    - Ice
+    - Jovian
+    - Jungle
+    - Ocean
+    - Rocky
+    - Shattered
+    - Tainted
+    - Vital
+  Source:
+    Title: Starforged Backer Preview
+    Date: "060121"
   Description: |-
     # Summary: Exploring Planets
     The chart on the previous page provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle (page 294) and envision how that aspect defines the nature of the planet or a specific planetside location.
@@ -24,21 +39,7 @@ Planets:
 
     ## Envisioning Planetside Expeditions
     Planets are big. These oracles help set the stage, but won’t provide the moment-to-moment details of a surface expedition. Instead, use the established nature of a planet as a springboard for envisioning terrain and encounters. Save the Planetside Feature table for key aspects. Roll on the Descriptor and Focus oracles (pages 294-295) for additional variety. Use the Planetside Peril and Planetside Opportunity oracles (pages 316-317) to help envision the nature of an unexpected event.
-  Categories:
-    - Desert World
-    - Furnace World
-    - Grave World
-    - Ice World
-    - Jovian World
-    - Jungle World
-    - Ocean World
-    - Rocky World
-    - Shattered World
-    - Tainted World
-    - Vital World
-  Source:
-    Title: Starforged Backer Preview
-    Date: "060121"
+
   Oracles:
     - Name: Class
       Display:
@@ -67,7 +68,16 @@ Planets:
     - Name: Peril
       Display:
         Title: Planetside Peril
-        Subtables: [Planets / Peril / Lifebearing, Planets / Peril / Lifeless]
+        Table from:
+          Roll columns:
+            - Planets / Peril / Lifebearing
+            - Planets / Peril / Lifeless
+          Result columns:
+            - Planets / Peril / Lifebearing
+        Column labels:
+          - Lifebearing
+          - Lifeless
+          - Result
       Usage:
         Repeatable: true
         Select table by: Life
@@ -78,14 +88,14 @@ Planets:
         Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
       Oracles:
         - Display:
-            Subtable of: Planetside Peril
+            Column of: Planetside Peril
           Name: Lifebearing
           Usage:
             Requires:
               # - Location: [Planetside]
               - Tables: *any_life
                 Results: *lifebearing
-          Table:
+          Table: &template_planetsideperil
             - [1, 3, Corrupted or mutated lifeform, *suggestCreature, *suggestChaotic]
             - [4, 6, Signs of a lifeform's power or cunning, *suggestCreature]
             - [7, 9, Hazardous plant life or malignant spores]
@@ -122,13 +132,13 @@ Planets:
             - [100, 100, *Roll_twice]
 
         - Display:
-            Subtable of: Planetside Peril
+            Column of: Planetside Peril
           Name: Lifeless
           Usage:
             Requires:
               - Tables: *any_life
                 Results: *lifeless
-          _template: Planetside Peril / Lifebearing
+          _template: *template_planetsideperil
           Table:
             - [1, 3]
             - [4, 7]
@@ -160,7 +170,16 @@ Planets:
     - Name: Opportunity
       Display:
         Title: Planetside Opportunity
-        Subtables: [Planets / Opportunity / Lifebearing, Planets / Opportunity / Lifeless]
+        Table from:
+          Roll columns:
+            - Planets / Opportunity / Lifebearing
+            - Planets / Opportunity / Lifeless
+          Result columns:
+            - Planets / Opportunity / Lifebearing
+        Column labels:
+          - Lifebearing
+          - Lifeless
+          - Result
       Content:
         Part of speech: [fragment]
         Tags: [opportunity]
@@ -171,15 +190,13 @@ Planets:
         Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
       Oracles:
         - Display:
-            Subtable of: Planetside Opportunity
+            Column of: Planetside Opportunity
           Name: Lifebearing
           Usage:
             Requires:
               - Tables: *any_life
                 Results: *lifebearing
-              # - Location: [Planetside]
-              # - Life: [Lifebearing, Scarce, Diverse, Bountiful, Overrun]
-          Table:
+          Table: &template_planetsideopportunity
             - [1, 4, Clue to a lifeform's nature or vulnerabilities, *suggestCreature]
             - [5, 8, Friendly interaction with a benign lifeform, *suggestCreature]
             - [9, 12, Hunting or foraging opportunities are plentiful]
@@ -207,9 +224,9 @@ Planets:
             - [97, 100, Vantage point reveals the lay of the land, *suggestObject]
 
         - Display:
-            Subtable of: Planetside Opportunity
+            Column of: Planetside Opportunity
           Name: Lifeless
-          _template: Lifebearing
+          _template: *template_planetsideopportunity
           Usage:
             Requires:
               - Tables: *any_life

@@ -52,13 +52,23 @@ Ice World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Ice / Settlements / Terminus
-          - Planets / Ice / Settlements / Outlands
-          - Planets / Ice / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Ice / Settlements / Terminus
+            - Planets / Ice / Settlements / Outlands
+            - Planets / Ice / Settlements / Expanse
+          Result columns:
+            - Planets / Ice / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Ice / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Ice / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -69,8 +79,9 @@ Ice World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Ice / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Ice / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -81,8 +92,9 @@ Ice World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Ice / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Ice / Settlements
           Usage:
             Requires:
               - Region: [Expanse]

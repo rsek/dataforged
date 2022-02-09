@@ -20,15 +20,21 @@ Settlements:
         Initial: true
         Select table by: Region
       Display:
-        Result column labels:
+        Table from:
+          Roll columns:
+            - Settlements / Population / Terminus
+            - Settlements / Population / Outlands
+            - Settlements / Population / Expanse
+          Result columns:
+            - Settlements / Population / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
           - Number
-        Subtables:
-          - Settlements / Population / Terminus
-          - Settlements / Population / Outlands
-          - Settlements / Population / Expanse
       Oracles:
         - Display:
-            Subtable of: Settlements / Population
+            Column of: Settlements / Population
           Name: Terminus
           Usage:
             Requires:
@@ -41,7 +47,7 @@ Settlements:
             - [86, 100, *pop04]
 
         - Display:
-            Subtable of: Settlements / Population
+            Column of: Settlements / Population
           Name: Outlands
           Usage:
             Requires:
@@ -54,7 +60,7 @@ Settlements:
             - [91, 100, *pop04]
 
         - Display:
-            Subtable of: Settlements / Population
+            Column of: Settlements / Population
           Name: Expanse
           Usage:
             Requires:

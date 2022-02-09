@@ -143,32 +143,32 @@ _refs:
         Allow duplicates: true
         Make it worse: true
 
-  Tables:
+  Oracle rolls:
     Starship Mission: &Starship_Mission
       Result: ⏵Starship Mission
-      Tables:
+      Oracle rolls:
         - Starships / Mission
     Fleet: &Fleet
       Result: ⏵Fleet
-      Tables:
+      Oracle rolls:
         - Starships / Fleet
     Stellar Object: &Stellar_Object
       Result: ⏵Stellar Object
-      Tables:
+      Oracle rolls:
         - Space / Stellar Object
     Action + Theme: &Action+Theme
       Result: ⏵Action + Theme
-      Tables:
+      Oracle rolls:
         - Core / Action
         - Core / Theme
     Descriptor + Focus: &Descriptor+Focus
       Result: ⏵Descriptor + Focus
-      Tables:
+      Oracle rolls:
         - Core / Descriptor
         - Core / Focus
     Ultra-Scale: &Ultra-scale
       Result: ⏵Ultra-scale
-      Tables:
+      Oracle rolls:
         - Creatures / Ultra-scale
 
   Game objects:
@@ -211,6 +211,10 @@ _refs:
       Result: ⏵Starship
       Game objects:
         - Object type: Starship
+    Faction: &Faction
+      Game objects:
+        - Object type: Faction
+
     Settlement (orbital): &Orbital_settlement
       Result: Orbital settlement
       Game objects:
@@ -249,10 +253,10 @@ _refs:
               Results: [Orbital, Planetside]
     Zone: &Zone
       Game objects:
-        - Object type: Derelict zone
+        - Object type: Derelict Zone
     Zone (via Access): &Zone_via_Access
       Game objects:
-        - Object type: Derelict zone
+        - Object type: Derelict Zone
           Requires:
             - Tables: [Derelicts / Zone]
               Results: [Access, ⏵Access]
@@ -303,7 +307,7 @@ _refs:
           Requires:
             - Tables: *derelict_type_equivalence
               Results: [Settlement, ⏵Settlement]
-    # as above but in the opposite direction
+    # as above but in the opposite direction: add settlement/starship template to an existing derelict
     Settlement template: &Settlement_inherit
       Game objects:
         - Object type: Settlement
@@ -329,57 +333,27 @@ _refs:
   Oracle and object suggestions:
     # 'non-canonical' suggestions for Game objects and oracle results - largely a matter of rsek's opinion or best guess, and can be safely ignored. in typical Starforged gameplay, these should not be rolled automatically, but instead offered as an optional convenience.
     Planet: &suggestPlanet
-      Suggestions:
-        Game objects:
-          - Object type: Planet
+      Suggestions: *Planet
     Character: &suggestNpc
-      Suggestions:
-        Game objects:
-          - Object type: Character
+      Suggestions: *Character
     Creature: &suggestCreature
-      Suggestions:
-        Game objects:
-          - Object type: Creature
+      Suggestions: *Creature
     Starship: &suggestShip
-      Suggestions:
-        Game objects:
-          - Object type: Starship
+      Suggestions: *Starship
     Precursor Vault: &suggestVault
-      Suggestions:
-        Game objects:
-          - Object type: Precursor Vault
+      Suggestions: *Vault
     Settlement: &suggestSettlement
-      Suggestions:
-        Game objects:
-          - Object type: Settlement
+      Suggestions: *Settlement
     Derelict: &suggestDerelict
       Suggestions:
         Game objects:
           - Object type: Derelict
     Derelict settlement: &suggestDerelictSettlement
-      Suggestions:
-        Game objects:
-          - Object type: Derelict
-            Requires:
-              - Tables:
-                  - Derelicts / Type / Planetside
-                  - Derelicts / Type / Orbital
-                  - Derelicts / Type / Deep Space
-                Results: [Settlement, ⏵Settlement]
+      Suggestions: *Derelict_settlement
     Derelict starship: &suggestDerelictStarship
-      Suggestions:
-        Game objects:
-          - Object type: Derelict
-            Requires:
-              - Tables:
-                  - Derelicts / Type / Planetside
-                  - Derelicts / Type / Orbital
-                  - Derelicts / Type / Deep Space
-                Results: [Starship, ⏵Starship]
+      Suggestions: *Derelict_starship
     Faction: &suggestFaction
-      Suggestions:
-        Game objects:
-          - Object type: Faction
+      Suggestions: *Faction
     Fringe faction: &suggestFringe
       Suggestions:
         Game objects:
@@ -390,46 +364,45 @@ _refs:
 
     Place: &suggestPlace # space sighting
       Suggestions:
-        Tables:
+        Oracle rolls:
           - Space / Sighting / Terminus
           - Space / Sighting / Outlands
           - Space / Sighting / Expanse
     Theme Fortified: &suggestFortified
       Suggestions:
-        Tables:
+        Oracle rolls:
           - Location Themes / Fortified / Peril
           - Location Themes / Fortified / Opportunity
           - Location Themes / Fortified / Feature
     Theme Haunted: &suggestHaunted
       Suggestions:
-        Tables:
+        Oracle rolls:
           - Location Themes / Haunted / Peril
           - Location Themes / Haunted / Opportunity
           - Location Themes / Haunted / Feature
     Theme Chaotic: &suggestChaotic
       Suggestions:
-        Tables:
+        Oracle rolls:
           - Location Themes / Chaotic / Peril
           - Location Themes / Chaotic / Opportunity
           - Location Themes / Chaotic / Feature
     Object: &suggestObject # descriptor + focus
       Suggestions:
-        Tables:
+        Oracle rolls:
           - Core / Descriptor
           - Core / Focus
     Event: &suggestEvent # action + theme
       Suggestions:
-        Tables:
+        Oracle rolls:
           - Core / Action
           - Core / Theme
-  # these are just simple strings at the moment, but if i do want to change them en masse, here they are
   Planet Life:
     - &life_None
       Result: None
     - &life_Extinct
       Result: Extinct
-    - &life_Sparse
-      Result: Sparse
+    - &life_Scarce
+      Result: Scarce
     - &life_Diverse
       Result: Diverse
       Suggestions:

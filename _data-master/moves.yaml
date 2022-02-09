@@ -7,7 +7,8 @@ Moves:
     Category: Session Moves
     Trigger:
       Text: "When you begin a significant session or chapter of play…"
-    Oracle: true
+    Oracles:
+      - Moves / Endure Harm
     Text: |-
       **When you begin a significant session or chapter of play**, do all of the following.
 
@@ -75,15 +76,20 @@ Moves:
       Text: "When you attempt something risky or react to an imminent threat…"
       Options:
         - Text: With speed, mobility, or agility
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: With resolve, command, or sociability
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: With strength, endurance, or aggression
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: With deception, stealth, or trickery
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: With expertise, focus, or observation
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
 
@@ -104,15 +110,20 @@ Moves:
       Text: "When you assess a situation, make preparations, or attempt to gain leverage…"
       Options:
         - Text: With speed, mobility, or agility
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: With resolve, command, or sociability
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: With strength, endurance, aggression
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: With deception, stealth, or trickery
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: With expertise, focus, or observation
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
 
@@ -133,7 +144,8 @@ Moves:
     Trigger:
       Text: "When you search for clues, conduct an investigation, analyze evidence, or do research…"
       Options:
-        - Roll: Wits
+        - Action roll:
+            Stat: Wits
     Text: |-
       **When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.
 
@@ -148,11 +160,14 @@ Moves:
       Text: "When you try to persuade someone or make them an offer…"
       Options:
         - Text: Charm, pacify, encourage, or barter
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: Threaten or incite
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Lie or swindle
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
     Text: |-
       **When you try to persuade someone or make them an offer**, envision your approach. If you...
 
@@ -178,7 +193,8 @@ Moves:
     Trigger:
       Text: "When you check to see if you have a specific helpful item or resource…"
       Options:
-        - Roll: Supply
+        - Action roll:
+            Stat: Supply
     Text: |-
       **When you check to see if you have a specific helpful item or resource**, roll +supply.
 
@@ -195,7 +211,8 @@ Moves:
     Trigger:
       Text: "When you swear upon iron to complete a quest…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
@@ -225,7 +242,8 @@ Moves:
     Trigger:
       Text: "When you reach the end of your quest…"
       Options:
-        - Roll: Vow Progress
+        - Progress roll:
+            Track: Vow Progress
     Text: |-
       **When you reach the end of your quest**, roll the challenge dice and compare to your progress.
 
@@ -257,7 +275,8 @@ Moves:
     Trigger:
       Text: "When you search out a new relationship or give focus to an existing relationship (not an ally or companion)…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
@@ -271,7 +290,7 @@ Moves:
     Trigger:
       Text: "When you reinforce your relationship with a connection…"
       Options:
-        - Special stat:
+        - Custom stat roll:
             - Name: Troublesome
               Value: 1
             - Name: Dangerous
@@ -301,7 +320,8 @@ Moves:
     Trigger:
       Text: "When your relationship with a connection is tested through conflict, betrayal, or circumstance…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.
 
@@ -318,7 +338,8 @@ Moves:
     Trigger:
       Text: "When your relationship with a connection is ready to evolve…"
       Options:
-        - Roll: Connection Progress
+        - Progress roll:
+            Track: Connection Progress
     Progress Move: true
     Text: |-
       **When your relationship with a connection is ready to evolve**, roll the challenge dice and compare to your progress.
@@ -337,11 +358,14 @@ Moves:
       Text: "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site…"
       Options:
         - Text: Move at speed
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: Keep under the radar
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: Stay vigilant
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank. Then, for each segment of the expedition, envision your approach. If you...
 
@@ -362,7 +386,8 @@ Moves:
     Trigger:
       Text: "When you divert from an expedition to examine a notable location…"
       Options:
-        - Roll: Wits
+        - Action roll:
+            Stat: Wits
     Text: |-
       **When you divert from an expedition to examine a notable location**, roll +wits.
 
@@ -376,11 +401,13 @@ Moves:
       On a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](#Pay-the-Price). On a **miss with a match**, you may instead [Confront Chaos](#Confront-Chaos).
   - Name: Make a Discovery
     Category: Exploration Moves
-    Triggers:
+    Trigger:
       Text: When your exploration of a waypoint uncovers something wondrous
       Options:
-        - Roll: Wits
-    Oracle: true
+        - Action roll:
+            Stat: Wits
+    Oracles:
+      - Moves / Make a Discovery
     Text: |-
       **When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.
 
@@ -413,7 +440,8 @@ Moves:
     Category: Exploration Moves
     Trigger:
       Text: "When your exploration of a waypoint uncovers something dreadful…"
-    Oracle: true
+    Oracles:
+      - Moves / Confront Chaos
     Text: |-
       **When your exploration of a waypoint uncovers something dreadful**, decide the number of aspects: one, two, or three. Roll that number of times or choose that number of aspects on the table below. Then, envision how the encounter begins.
 
@@ -449,7 +477,8 @@ Moves:
     Trigger:
       Text: "When your expedition comes to an end…"
       Options:
-        - Roll: Expedition Progress
+        - Progress roll:
+            Track: Expedition Progress
     Progress Move: true
     Text: |-
       **When your expedition comes to an end**, roll the challenge dice and compare to your progress.
@@ -467,7 +496,8 @@ Moves:
     Trigger:
       Text: "When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site…"
       Options:
-        - Roll: Supply
+        - Action roll:
+            Stat: Supply
     Text: |-
       **When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.
 
@@ -485,15 +515,20 @@ Moves:
       Text: "When you initiate combat or are forced into a fight…"
       Options:
         - Text: On the move
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: Facing off against your foe
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: In the thick of it at close quarters
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Preparing to act against an unaware foe
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: Caught in a trap or sizing up the situation
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you initiate combat or are forced into a fight**, envision your objective and give it a rank. If the combat includes discrete challenges or phases, set an objective with a rank for each.
 
@@ -513,19 +548,24 @@ Moves:
       On a **miss**, the fight begins with you in a bad spot.
   - Name: Gain Ground
     Category: Combat Moves
-    Triggers:
+    Trigger:
       Text: "When you are in control and take action in a fight to reinforce your position or move toward an objective…"
       Options:
         - Text: In pursuit, fleeing, or maneuvering
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: Gaining leverage with force, powering through, or making a threat
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Hiding, preparing an ambush, or misdirecting
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: Coordinating a plan, studying a situation, or cleverly gaining leverage
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...
 
@@ -548,15 +588,20 @@ Moves:
       Text: "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle…"
       Options:
         - Text: In pursuit, fleeing, dodging, getting back into position, or taking cover
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: Remaining stalwart against fear or temptation
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: Blocking or diverting with force, or taking the hit
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Moving into hiding or creating a distraction
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle**, envision your approach and roll. If you are...
 
@@ -577,9 +622,11 @@ Moves:
       Text: "When you are in control and assault a foe at close quarters, or when you attack at a distance…"
       Options:
         - Text: Assault a foe at close quarters
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Attack at a distance
-          Roll: Edge
+          Action roll:
+            Stat: Edge
     Text: |-
       **When you are in control and assault a foe at close quarters**, roll +iron; **when you attack at a distance**, roll +edge.
 
@@ -594,9 +641,11 @@ Moves:
       Text: "When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance…"
       Options:
         - Text: Fight back against a foe at close quarters
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Exchange fire at a distance
-          Roll: Edge
+          Action roll:
+            Stat: Edge
     Text: |-
       **When you are in a bad spot and fight back against a foe at close quarters**, roll +iron; **when you exchange fire at a distance**, roll +edge.
 
@@ -610,8 +659,10 @@ Moves:
     Trigger:
       Text: "When you seize an objective in a fight…"
       Options:
-        - Roll: Combat Progress
-    Oracle: true
+        - Progress roll:
+            Track: Combat Progress
+    Oracles:
+      - Moves / Take Decisive Action
     Progress Move: true
     Text: |-
       **When you seize an objective in a fight**, envision how you take decisive action. Then, roll the challenge dice and compare to your progress.
@@ -646,15 +697,20 @@ Moves:
       Text: "When you fight a battle and it happens in a blur…"
       Options:
         - Text: At range, or using your speed and the environment to your advantage
-          Roll: Edge
+          Action roll:
+            Stat: Edge
         - Text: Depending on your courage, leadership, or companions
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: In close to overpower your foe
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Using trickery to befuddle your foe
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: Using careful tactics to outsmart your foe
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you fight a battle and it happens in a blur**, envision your objective and roll. If you primarily...
 
@@ -685,8 +741,12 @@ Moves:
     Trigger:
       Text: "When you face physical injury, fatigue, or illness…"
       Options:
-        - Roll best of: [Iron, Health]
-    Oracle: true
+        - Action roll:
+            Best of:
+              - Iron
+              - Health
+    Oracles:
+      - Moves / Endure Harm
     Text: |-
       **When you face physical injury, fatigue, or illness**, suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your health is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining harm.
 
@@ -713,8 +773,12 @@ Moves:
     Trigger:
       Text: "When you face mental strain, shock, or despair…"
       Options:
-        - Roll best of: [Heart, Spirit]
-    Oracle: true
+        - Action roll:
+            Best of:
+              - Heart
+              - Spirit
+    Oracles:
+      - Moves / Endure Stress
     Text: |-
       **When you face mental strain, shock, or despair**, suffer -1 spirit for minor stress, -2 for serious stress, or -3 for major stress. If your spirit is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining stress.
 
@@ -740,8 +804,10 @@ Moves:
     Trigger:
       Text: "When your vehicle faces a damaging situation or environment…"
       Options:
-        - Roll: Vehicle Integrity
-    Oracle: true
+        - Action roll:
+            Stat: Vehicle Integrity
+    Oracles:
+      - Moves / Withstand Damage
     Text: |-
       **When your vehicle faces a damaging situation or environment**, suffer -1 integrity for minor damage, -2 for serious damage, or -3 for major damage. If your integrity is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining damage.
 
@@ -775,7 +841,8 @@ Moves:
     Trigger:
       Text: "When your companion faces physical hardship…"
       Options:
-        - Roll: Companion Health
+        - Action roll:
+            Stat: Companion Health
     Text: |-
       **When your companion faces physical hardship**, they suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your companion's health is 0, [Lose Momentum](#Lose-Momentum) equal to any remaining harm.
 
@@ -799,7 +866,8 @@ Moves:
     Trigger:
       Text: "When you spend time recovering within a community…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When you spend time recovering within a community**, roll +heart.
 
@@ -817,13 +885,19 @@ Moves:
       Text: "When you receive medical care or provide treatment…"
       Options:
         - Text: Receive treatment from someone (not an ally)
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Mend your own wounds
-          Roll worst of: [Iron, Wits]
+          Action roll:
+            Worst of:
+              - Iron
+              - Wits
         - Text: Obtain treatment for a companion
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: Provide care
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you receive medical care or provide treatment**, envision the situation and roll. If you...
 
@@ -842,7 +916,8 @@ Moves:
     Trigger:
       Text: "When you socialize, share intimacy, or find a moment of peace…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When you socialize, share intimacy, or find a moment of peace**, roll +heart.
 
@@ -857,9 +932,11 @@ Moves:
       Text: "When you make repairs to your vehicles, modules, mechanical companions, or other devices…"
       Options:
         - Text: Make your own repairs, or direct a companion to make repairs
-          Roll: Wits
+          Action roll:
+            Stat: Wits
         - Text: Obtain repairs from someone (not an ally)
-          Roll: Supply
+          Action roll:
+            Stat: Supply
     Text: |-
       **When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...
 
@@ -890,13 +967,17 @@ Moves:
       Text: "When you attempt to bolster your readiness…"
       Options:
         - Text: Barter or make an appeal
-          Roll: Heart
+          Action roll:
+            Stat: Heart
         - Text: Threaten or seize
-          Roll: Iron
+          Action roll:
+            Stat: Iron
         - Text: Steal or swindle
-          Roll: Shadow
+          Action roll:
+            Stat: Shadow
         - Text: Scavenge or craft
-          Roll: Wits
+          Action roll:
+            Stat: Wits
     Text: |-
       **When you attempt to bolster your readiness**, envision the opportunity and your approach. If you...
 
@@ -918,7 +999,8 @@ Moves:
     Trigger:
       Text: "When you are brought to the brink of death with a chance for recovery or redemption…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
 
@@ -935,7 +1017,8 @@ Moves:
     Trigger:
       Text: "When you are brought to the brink of desolation…"
       Options:
-        - Roll: Heart
+        - Action roll:
+            Stat: Heart
     Text: |-
       **When you are brought to the brink of desolation**, roll +heart.
 
@@ -952,7 +1035,8 @@ Moves:
     Trigger:
       Text: "When your command vehicle is destroyed or irrevocably lost…"
       Options:
-        - Roll: Bonds Legacy
+        - Progress roll:
+            Track: Bonds Legacy
     Progress Move: true
     Text: |-
       **When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
@@ -991,7 +1075,11 @@ Moves:
     Trigger:
       Text: "When you retire from your life as Ironsworn, or succumb to death or desolation…"
       Options:
-        - Roll all of: [Quests Legacy, Bonds Legacy, Discoveries Legacy]
+        - Progress roll:
+            All of:
+              - Quests Legacy
+              - Bonds Legacy
+              - Discoveries Legacy
     Progress Move: true
     Text: |-
       **When you retire from your life as Ironsworn, or succumb to death or desolation**, you may create a new character in your established setting. If you do, roll the challenge dice and compare to each of the former character's legacy tracks: Quests, bonds, and discoveries (one roll per track).
@@ -1017,9 +1105,12 @@ Moves:
     Category: Fate Moves
     Trigger:
       Text: "When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events…"
-      Options:
-        - Roll: Wits
-    Oracle: true
+    Oracles:
+      - Moves / Ask the Oracle / Small Chance
+      - Moves / Ask the Oracle / Unlikely
+      - Moves / Ask the Oracle / 50/50
+      - Moves / Ask the Oracle / Likely
+      - Moves / Ask the Oracle / Almost Certain
     Text: |-
       **When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events**, you may...
 
@@ -1041,7 +1132,8 @@ Moves:
     Category: Fate Moves
     Trigger:
       Text: "When you suffer the outcome of an action…"
-    Oracle: true
+    Oracles:
+      - Moves / Pay the Price
     Text: |-
       **When you suffer the outcome of an action**, choose one.
 

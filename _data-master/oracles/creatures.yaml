@@ -53,21 +53,35 @@ Creatures:
         Select table by: Creatures / Environment
       Content:
         Part of speech: [fragment]
+      Display:
+        Table from:
+          Roll columns: &creature_environment_equivalent
+            - Creatures / Basic Form / Space
+            - Creatures / Basic Form / Interior
+            - Creatures / Basic Form / Land
+            - Creatures / Basic Form / Liquid
+            - Creatures / Basic Form / Air
+          Result columns:
+            - Creatures / Basic Form / Space
+        Column labels:
+          - Space
+          - Interior
+          - Land
+          - Liquid
+          - Air
+          - Result
       Description: |-
         Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
       Oracles:
         - Name: Space
+          Display:
+            Column of: Creatures / Basic Form
           Usage:
-            Equivalent to: &creature_environment_equivalent
-              - Creatures / Basic Form / Space
-              - Creatures / Basic Form / Interior
-              - Creatures / Basic Form / Land
-              - Creatures / Basic Form / Liquid
-              - Creatures / Basic Form / Air
+            Equivalent to: *creature_environment_equivalent
             Requires:
               - Tables: [Creatures / Environment]
                 Results: [Space]
-          Table:
+          Table: &template_basicform
             - [1, 5, Amoeba / pseudopods]
             - [6, 20, Amorphous / elemental]
             - [21, 30, Avian / winged]
@@ -87,7 +101,9 @@ Creatures:
             - [89, 90, Worm / slug / larva]
             - [91, 100, *Roll_twice]
         - Name: Interior
-          _template: Space
+          _template: *template_basicform
+          Display:
+            Column of: Creatures / Basic Form
           Usage:
             Equivalent to: *creature_environment_equivalent
             Requires:
@@ -113,7 +129,9 @@ Creatures:
             - [86, 90]
             - [91, 100]
         - Name: Land
-          _template: Space
+          _template: *template_basicform
+          Display:
+            Column of: Creatures / Basic Form
           Usage:
             Equivalent to: *creature_environment_equivalent
             Requires:
@@ -139,7 +157,9 @@ Creatures:
             - [84, 90]
             - [91, 100]
         - Name: Liquid
-          _template: Space
+          _template: *template_basicform
+          Display:
+            Column of: Creatures / Basic Form
           Usage:
             Equivalent to: *creature_environment_equivalent
             Requires:
@@ -165,7 +185,9 @@ Creatures:
             - [88, 90]
             - [91, 100]
         - Name: Air
-          _template: Space
+          _template: *template_basicform
+          Display:
+            Column of: Creatures / Basic Form
           Usage:
             Equivalent to: *creature_environment_equivalent
             Requires:

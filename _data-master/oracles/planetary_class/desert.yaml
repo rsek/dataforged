@@ -52,13 +52,23 @@ Desert World:
         Initial: true
         Select table by: Region
       Display:
-        Subtables:
-          - Planets / Desert / Settlements / Terminus
-          - Planets / Desert / Settlements / Outlands
-          - Planets / Desert / Settlements / Expanse
+        Table from:
+          Roll columns:
+            - Planets / Desert / Settlements / Terminus
+            - Planets / Desert / Settlements / Outlands
+            - Planets / Desert / Settlements / Expanse
+          Result columns:
+            - Planets / Desert / Settlements / Terminus
+        Column labels:
+          - Terminus
+          - Outlands
+          - Expanse
+          - Result
+
       Oracles:
-        - Display:
-            Subtable of: Planets / Desert / Settlements
+        - Name: Terminus
+          Display:
+            Column of: Planets / Desert / Settlements
           Usage:
             Requires:
               - Region: [Terminus]
@@ -69,8 +79,9 @@ Desert World:
             - [81, 92, *Multiple_settlements]
             - [93, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Desert / Settlements
+        - Name: Outlands
+          Display:
+            Column of: Planets / Desert / Settlements
           Usage:
             Requires:
               - Region: [Outlands]
@@ -81,8 +92,9 @@ Desert World:
             - [96, 98, *Multiple_settlements]
             - [99, 100, *Settlements_in_conflict]
 
-        - Display:
-            Subtable of: Planets / Desert / Settlements
+        - Name: Expanse
+          Display:
+            Column of: Planets / Desert / Settlements
           Usage:
             Requires:
               - Region: [Expanse]
