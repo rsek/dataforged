@@ -1,4 +1,3 @@
-import buildOracleId from "../../../../utilities/buildOracleId";
 import IOracleData, { IOracle } from "./IOracle";
 import { OracleDisplay } from "./OracleDisplay";
 import { OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, OracleSubcategoryName } from "./OracleId";
@@ -6,6 +5,7 @@ import { IOracleInfo, IOracleInfoData, OracleInfo } from "./OracleInfo";
 import { OracleUsage } from "./OracleUsage";
 import { isOracleUsage, isOracles, isOracleCategories } from "../typeguards";
 import { ISource, Source } from "../generic/Source";
+import buildOracleId from "../../utilities/buildOracleId";
 
 export interface IOracleCategory extends IOracleData {
   Source: ISource;

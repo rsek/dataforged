@@ -6,8 +6,9 @@ import { IOracleDisplay, OracleTableDisplay } from "./OracleDisplay";
 import { OracleCategoryId, OracleTableId } from "./OracleId";
 import { IRowData, IRowRollData, OracleTableRow } from "./OracleTableRow";
 import { IOracleUsage, OracleUsage } from "./OracleUsage";
-import buildOracleId from "../../../../utilities/buildOracleId";
 import { isOracles, isOracleTable, isOracleUsage } from "../typeguards";
+import buildOracleId from "../../utilities/buildOracleId";
+
 
 
 export interface IOracleInfo extends IOracleData {
