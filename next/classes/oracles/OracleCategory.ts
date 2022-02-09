@@ -59,5 +59,3 @@ export class OracleCategory implements IOracleCategory, IOracle {
 
   }
 }
-
-// const propagateToChildren = require("../propagateToChildren.js");
