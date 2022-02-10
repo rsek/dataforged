@@ -42,7 +42,7 @@ export class OracleCategory implements IOracleCategory, IOracle {
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Display = new OracleDisplay(json);
-    this.Source = new Source(json.Source);
+    this.Source = new Source(json.Source, ...ancestorsJson);
     this.Category = category ?? undefined;
 
     if (json.Usage) {

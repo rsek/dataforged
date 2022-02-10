@@ -18,7 +18,7 @@ export class Source implements ISource {
       ancestorsJson.map(item => item.Source))
       .reverse();
     const newData = _.merge(json, ...sourceStack) as ISource;
-    this.Title = json?.Title ?? undefined;
+    this.Title = newData.Title ?? json?.Title;
     this.Date = newData.Date;
     this.Page = newData.Page;
   }
