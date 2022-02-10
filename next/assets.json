@@ -36,11 +36,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 5,
       "$id": "Command Vehicle / Starship / Condition Meter",
+      "Name": "Integrity",
       "Max": 5,
-      "Conditions": ["Battered", "Cursed"]
+      "Conditions": ["Battered", "Cursed"],
+      "Aliases": ["Command Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -89,9 +91,10 @@
       }
     ],
     "Condition Meter": {
+      "Min": 0,
       "Starts At": 0,
-      "Name": "Cargo",
       "$id": "Module / Expanded Hold / Condition Meter",
+      "Name": "Cargo",
       "Max": 3
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -105,7 +108,7 @@
         "$id": "Module / Grappler / Abilities / 1",
         "Text": "Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.",
         "Move": {
-          "$id": "Module / Grappler / Abilities / 1/ Move",
+          "$id": "Module / Grappler / Abilities / 1 / Move",
           "Name": "Ready Grappler",
           "Category": "Asset Moves",
           "Trigger": {
@@ -168,7 +171,7 @@
         "$id": "Module / Internal Refit / Abilities / 2",
         "Text": "Your vessel is stocked with reserves. When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.",
         "Move": {
-          "$id": "Module / Internal Refit / Abilities / 2/ Move",
+          "$id": "Module / Internal Refit / Abilities / 2 / Move",
           "Name": "Draw Reserves",
           "Category": "Asset Moves",
           "Trigger": {
@@ -234,9 +237,10 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Ammo",
+      "Min": 0,
+      "Starts At": 5,
       "$id": "Module / Missile Array / Condition Meter",
+      "Name": "Ammo",
       "Max": 5
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -400,7 +404,7 @@
         "$id": "Module / Shields / Abilities / 1",
         "Text": "When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](#Lose-Momentum) (-1). Then, if you [Withstand Damage](#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.",
         "Move": {
-          "$id": "Module / Shields / Abilities / 1/ Move",
+          "$id": "Module / Shields / Abilities / 1 / Move",
           "Name": "Raise Shields",
           "Category": "Asset Moves",
           "Trigger": {
@@ -423,7 +427,9 @@
               "Options": [
                 {
                   "Text": "by letting your shields take the blow",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Module / Shields / Condition Meter"
+                  }
                 }
               ]
             }
@@ -438,9 +444,10 @@
       }
     ],
     "Condition Meter": {
+      "Min": 0,
       "Starts At": 0,
-      "Name": "Shields",
       "$id": "Module / Shields / Condition Meter",
+      "Name": "Shields",
       "Max": 4
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -550,11 +557,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 6,
       "$id": "Support Vehicle / Exosuit / Condition Meter",
+      "Name": "Integrity",
       "Max": 6,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -581,11 +590,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 3,
       "$id": "Support Vehicle / Hoverbike / Condition Meter",
+      "Name": "Integrity",
       "Max": 3,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -616,7 +627,9 @@
               "Options": [
                 {
                   "Text": "by taking a hit or crashing through an obstacle",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Rover / Condition Meter"
+                  }
                 }
               ]
             }
@@ -627,7 +640,9 @@
               "Options": [
                 {
                   "Text": "by taking a hit or crashing through an obstacle",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Rover / Condition Meter"
+                  }
                 }
               ]
             }
@@ -637,11 +652,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 5,
       "$id": "Support Vehicle / Rover / Condition Meter",
+      "Name": "Integrity",
       "Max": 5,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -666,7 +683,9 @@
               "Options": [
                 {
                   "Text": "by maneuvering your pod through a hazardous or obstructed area",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Service Pod / Condition Meter"
+                  }
                 }
               ]
             }
@@ -677,7 +696,9 @@
               "Options": [
                 {
                   "Text": "by maneuvering your pod through a hazardous or obstructed area",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Service Pod / Condition Meter"
+                  }
                 }
               ]
             }
@@ -688,7 +709,9 @@
               "Options": [
                 {
                   "Text": "by maneuvering your pod through a hazardous or obstructed area",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Service Pod / Condition Meter"
+                  }
                 }
               ]
             }
@@ -703,11 +726,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Support Vehicle / Service Pod / Condition Meter",
+      "Name": "Integrity",
       "Max": 4,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -734,11 +759,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Support Vehicle / Shuttle / Condition Meter",
+      "Name": "Integrity",
       "Max": 4,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -758,7 +785,9 @@
               "Options": [
                 {
                   "Text": "rely on the skiff's simple reliability",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Skiff / Condition Meter"
+                  }
                 }
               ]
             }
@@ -769,7 +798,9 @@
               "Options": [
                 {
                   "Text": "rely on the skiff's simple reliability",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Skiff / Condition Meter"
+                  }
                 }
               ]
             }
@@ -787,7 +818,9 @@
               "Options": [
                 {
                   "Text": "by firing the skiff's cannon",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Skiff / Condition Meter"
+                  }
                 }
               ]
             }
@@ -798,7 +831,9 @@
               "Options": [
                 {
                   "Text": "by firing the skiff's cannon",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Skiff / Condition Meter"
+                  }
                 }
               ]
             }
@@ -813,11 +848,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Support Vehicle / Skiff / Condition Meter",
+      "Name": "Integrity",
       "Max": 4,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -837,7 +874,9 @@
               "Options": [
                 {
                   "Text": "in your snub fighter",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Support Vehicle / Snub Fighter / Condition Meter"
+                  }
                 }
               ]
             }
@@ -854,19 +893,22 @@
         "$id": "Support Vehicle / Snub Fighter / Abilities / 3",
         "Text": "When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.",
         "Counter": {
+          "Min": 0,
           "Starts At": 0,
-          "Name": "Victory Marks",
-          "$id": "Support Vehicle / Snub Fighter / Abilities / 3 / Counter"
+          "$id": "Support Vehicle / Snub Fighter / Abilities / 3 / Counter",
+          "Name": "Victory Marks"
         },
         "Enabled": false
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Integrity",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Support Vehicle / Snub Fighter / Condition Meter",
+      "Name": "Integrity",
       "Max": 4,
-      "Conditions": ["Battered"]
+      "Conditions": ["Battered"],
+      "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -939,7 +981,7 @@
         "$id": "Path / Archer / Abilities / 1",
         "Text": "You carry 6 ammo. When you [Strike](#Strike) or [Clash](#Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](#Sacrifice-Resources) (-1). On a miss, [Sacrifice Resources](#Sacrifice-Resources) (-1).",
         "Move": {
-          "$id": "Path / Archer / Abilities / 1/ Move",
+          "$id": "Path / Archer / Abilities / 1 / Move",
           "Name": "Craft Projectiles",
           "Category": "Asset Moves",
           "Trigger": {
@@ -959,7 +1001,7 @@
             "Trigger": {
               "Text": "by unleashing a volley of bow shots",
               "Options": [
-                { "Action roll": { "Stat": "Asset Condition Meter" } }
+                { "Action roll": { "Stat": "Path / Archer / Condition Meter" } }
               ]
             }
           }
@@ -973,9 +1015,10 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Ammo",
+      "Min": 0,
+      "Starts At": 6,
       "$id": "Path / Archer / Condition Meter",
+      "Name": "Ammo",
       "Max": 6
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -1023,7 +1066,7 @@
         "$id": "Path / Artist / Abilities / 3",
         "Text": "When you create or perform a signifigant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of two. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](#Pay-the-Price).",
         "Move": {
-          "$id": "Path / Artist / Abilities / 3/ Move",
+          "$id": "Path / Artist / Abilities / 3 / Move",
           "Name": "Commemorate",
           "Category": "Asset Moves",
           "Trigger": {
@@ -1210,7 +1253,7 @@
               "Options": [
                 {
                   "Text": "during a courier mission",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": { "Stat": "Path / Courier / Condition Meter" }
                 }
               ]
             }
@@ -1220,9 +1263,10 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Safety",
+      "Min": 0,
+      "Starts At": 5,
       "$id": "Path / Courier / Condition Meter",
+      "Name": "Safety",
       "Max": 5
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -1361,7 +1405,7 @@
         "$id": "Path / Empath / Abilities / 1",
         "Text": "When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](#Pay-the-Price).",
         "Move": {
-          "$id": "Path / Empath / Abilities / 1/ Move",
+          "$id": "Path / Empath / Abilities / 1 / Move",
           "Name": "Read Heart",
           "Category": "Asset Moves",
           "Trigger": {
@@ -1453,7 +1497,7 @@
         "$id": "Path / Firebrand / Abilities / 1",
         "Text": "You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](#Endure-Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.",
         "Move": {
-          "$id": "Path / Firebrand / Abilities / 1/ Move",
+          "$id": "Path / Firebrand / Abilities / 1 / Move",
           "Name": "Gather Energy",
           "Category": "Asset Moves",
           "Trigger": {
@@ -1476,9 +1520,10 @@
       }
     ],
     "Condition Meter": {
+      "Min": 0,
       "Starts At": 0,
-      "Name": "Fire",
       "$id": "Path / Firebrand / Condition Meter",
+      "Name": "Fire",
       "Max": 5
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -1492,9 +1537,10 @@
         "$id": "Path / Fugitive / Abilities / 1",
         "Text": "You are hunted by a power or authority. When you make a move, you may rely on your resourcefulness to improve the result to a strong hit. If you do, mark a box above to represent hunters closing in on you. On the third mark, a notable foe or force has tracked you down. If you overcome them or escape, clear the boxes and mark 1 tick on your quests legacy track.",
         "Counter": {
+          "Min": 0,
           "Starts At": 0,
-          "Name": "Hunted",
           "$id": "Path / Fugitive / Abilities / 1 / Counter",
+          "Name": "Hunted",
           "Max": 3
         },
         "Enabled": true
@@ -1667,7 +1713,7 @@
         "$id": "Path / Looper / Abilities / 2",
         "Text": "When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](#Endure-Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](#Pay-the-Price).",
         "Move": {
-          "$id": "Path / Looper / Abilities / 2/ Move",
+          "$id": "Path / Looper / Abilities / 2 / Move",
           "Name": "Loop",
           "Category": "Asset Moves",
           "Trigger": {
@@ -1825,7 +1871,7 @@
         "$id": "Path / Outcast / Abilities / 2",
         "Text": "When you [Sacrifice Resources](#Sacrifice-Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may [Lose Momentum](#Lose-Momentum) (-1) in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](#Lose-Momentum) (-1).",
         "Move": {
-          "$id": "Path / Outcast / Abilities / 2/ Move",
+          "$id": "Path / Outcast / Abilities / 2 / Move",
           "Name": "Scrape By",
           "Category": "Asset Moves",
           "Trigger": {
@@ -1959,7 +2005,7 @@
         "$id": "Path / Shade / Abilities / 2",
         "Text": "When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention.",
         "Move": {
-          "$id": "Path / Shade / Abilities / 2/ Move",
+          "$id": "Path / Shade / Abilities / 2 / Move",
           "Name": "Shroud in Darkness",
           "Category": "Asset Moves",
           "Trigger": {
@@ -2239,7 +2285,9 @@
               "Options": [
                 {
                   "Text": "riding your banshee",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Banshee / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2250,7 +2298,9 @@
               "Options": [
                 {
                   "Text": "riding your banshee",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Banshee / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2270,11 +2320,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Companion / Banshee / Condition Meter",
+      "Name": "Health",
       "Max": 4,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2299,7 +2351,9 @@
               "Options": [
                 {
                   "Text": "using the threat of violence while the bot brings its weapons to bear",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Combat Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2310,7 +2364,9 @@
               "Options": [
                 {
                   "Text": "using the threat of violence while the bot brings its weapons to bear",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Combat Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2328,7 +2384,9 @@
               "Options": [
                 {
                   "Text": "Once per fight, by by using the combat bot to draw fire or create a diversion",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Combat Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2338,11 +2396,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 5,
       "$id": "Companion / Combat Bot / Condition Meter",
+      "Name": "Health",
       "Max": 5,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2369,11 +2429,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 3,
       "$id": "Companion / Glowcat / Condition Meter",
+      "Name": "Health",
       "Max": 3,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2400,11 +2462,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 3,
       "$id": "Companion / Protocol Bot / Condition Meter",
+      "Name": "Health",
       "Max": 3,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2424,7 +2488,9 @@
               "Options": [
                 {
                   "Text": "by sending the rockhorn to directly attack a foe or smash an obstacle",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Rockhorn / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2444,11 +2510,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 5,
       "$id": "Companion / Rockhorn / Condition Meter",
+      "Name": "Health",
       "Max": 5,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2478,7 +2546,9 @@
               "Options": [
                 {
                   "Text": "your sidekick acts to get you out of a tough spot",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Sidekick / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2489,7 +2559,9 @@
               "Options": [
                 {
                   "Text": "your sidekick acts to get you out of a tough spot",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Sidekick / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2499,11 +2571,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Companion / Sidekick / Condition Meter",
+      "Name": "Health",
       "Max": 4,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2530,11 +2604,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 2,
       "$id": "Companion / Sprite / Condition Meter",
+      "Name": "Health",
       "Max": 2,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2559,7 +2635,9 @@
               "Options": [
                 {
                   "Text": "Once per expedition, by sending the survey bot to scout ahead",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Survey Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2577,7 +2655,9 @@
               "Options": [
                 {
                   "Text": "aided by the survey bot's sensors",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Survey Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2588,7 +2668,9 @@
               "Options": [
                 {
                   "Text": "to detect a threat",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Survey Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2598,11 +2680,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 3,
       "$id": "Companion / Survey Bot / Condition Meter",
+      "Name": "Health",
       "Max": 3,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2630,11 +2714,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 2,
       "$id": "Companion / Symbiote / Condition Meter",
+      "Name": "Health",
       "Max": 2,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2654,7 +2740,9 @@
               "Options": [
                 {
                   "Text": "directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Utility Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2677,7 +2765,9 @@
               "Options": [
                 {
                   "Text": "to see if your utility bot has a specific tool or technique available",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Utility Bot / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2687,11 +2777,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Companion / Utility Bot / Condition Meter",
+      "Name": "Health",
       "Max": 4,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2716,7 +2808,9 @@
               "Options": [
                 {
                   "Text": "riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Voidglider / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2734,7 +2828,9 @@
               "Options": [
                 {
                   "Text": "signaling the voidglider to distract or attack a spacebound foe",
-                  "Action roll": { "Stat": "Asset Condition Meter" }
+                  "Action roll": {
+                    "Stat": "Companion / Voidglider / Condition Meter"
+                  }
                 }
               ]
             }
@@ -2744,11 +2840,13 @@
       }
     ],
     "Condition Meter": {
-      "Starts At": 0,
-      "Name": "Health",
+      "Min": 0,
+      "Starts At": 4,
       "$id": "Companion / Voidglider / Condition Meter",
+      "Name": "Health",
       "Max": 4,
-      "Conditions": ["Out of Action"]
+      "Conditions": ["Out of Action"],
+      "Aliases": ["Companion Health"]
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
@@ -2818,9 +2916,10 @@
         "$id": "Deed / Marked / Abilities / 2",
         "Text": "When you risk your reputation to overcome failure, reroll any dice. If you score a miss, make a mark on this asset. When you have 5 such marks, discard this asset.",
         "Counter": {
+          "Min": 0,
           "Starts At": 0,
-          "Name": "Marks",
           "$id": "Deed / Marked / Abilities / 2 / Counter",
+          "Name": "Marks",
           "Max": 5
         },
         "Enabled": false
@@ -2928,7 +3027,7 @@
         "$id": "Deed / Vanguard / Abilities / 1",
         "Text": "When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you find or establish a safe location and may add +2 whenever you make a recovery move there. If you score a miss when making a recovery move, the place is no longer safe. On a weak hit, as above, but add +1 when you make a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](#Pay-the-Price).",
         "Move": {
-          "$id": "Deed / Vanguard / Abilities / 1/ Move",
+          "$id": "Deed / Vanguard / Abilities / 1 / Move",
           "Name": "Seek Safe Haven",
           "Category": "Asset Moves",
           "Progress Move": true,
