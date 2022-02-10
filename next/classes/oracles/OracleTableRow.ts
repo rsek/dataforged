@@ -2,24 +2,26 @@
 import IMultipleRolls, { MultipleRolls } from "./MultipleRolls";
 import { OracleTableId } from "./OracleId";
 import _ from "lodash";
-import { GameObject, IGameObject } from "../generic/GameObject";
-import { ISuggestions, Suggestions } from "../generic/Suggestions";
+import { GameObject, IGameObject } from "../general/GameObject";
+import { ISuggestions, Suggestions } from "../general/Suggestions";
+import { UrlString } from "../general/UrlString";
 
 export type IRowData = [number, number, ...(object | string)[]];
 export type IRowRollData = [number, number];
 export type IRowResultData = (object | string)[];
 
 export interface IOracleTableRow {
+  $id?: string | undefined,
   Floor: number;
   Ceiling: number;
   Result: string;
-  Summary?: string;
-  Image?: string;
-  "Oracle rolls"?: OracleTableId[];
-  Subtable?: IOracleTableRow[];
-  "Game objects"?: IGameObject[];
-  "Multiple rolls"?: IMultipleRolls;
-  Suggestions?: ISuggestions;
+  Summary?: string | undefined;
+  Image?: UrlString | undefined;
+  "Oracle rolls"?: OracleTableId[] | undefined;
+  Subtable?: IOracleTableRow[] | undefined;
+  "Game objects"?: IGameObject[] | undefined;
+  "Multiple rolls"?: IMultipleRolls | undefined;
+  Suggestions?: ISuggestions | undefined;
 }
 
 /**
@@ -40,23 +42,25 @@ export interface IOracleTableRow {
 
 
 export class OracleTableRow implements IOracleTableRow {
+  $id: string;
   Floor: number;
   Ceiling: number;
   Result!: string;
-  Summary?: string;
-  Image?: string;
-  "Oracle rolls"?: OracleTableId[];
-  Subtable?: OracleTableRow[];
-  "Game objects"?: GameObject[];
-  "Multiple rolls"?: MultipleRolls;
-  Suggestions?: Suggestions;
+  Summary?: string | undefined;
+  Image?: UrlString | undefined;
+  "Oracle rolls"?: OracleTableId[] | undefined;
+  Subtable?: OracleTableRow[] | undefined;
+  "Game objects"?: GameObject[] | undefined;
+  "Multiple rolls"?: MultipleRolls | undefined;
+  Suggestions?: Suggestions | undefined;
 
-  constructor(floor: number, ceiling: number, ...rowContents: (string | object)[]) {
-    // console.log("rowContents", rowContents);
-    // this.toLegacyFormat = this.toLegacyFormat.bind(this);
+  constructor(parentId: string, floor: number, ceiling: number, ...rowContents: (string | object)[]) {
     if (rowContents.length == 0) { throw new Error("Row JSON has no contents. Ensure that it isn't missing a template."); }
     this.Floor = floor;
     this.Ceiling = ceiling;
+    const rangeString = this.Floor == this.Ceiling ? this.Ceiling.toString() : `${this.Floor}-${this.Ceiling}`;
+    this.$id = `${parentId} / ${rangeString}`;
+
     this.assignString = this.assignString.bind(this);
 
     const gameObjects: GameObject[] = [];
@@ -71,7 +75,8 @@ export class OracleTableRow implements IOracleTableRow {
           _.forEach(item, (value, key) => {
             switch (key) {
               case "Subtable":
-                this.Subtable = (value as IRowData[]).map(rowData => new OracleTableRow(...rowData));
+
+                this.Subtable = (value as IRowData[]).map(rowData => new OracleTableRow(this.$id+" / Subtable", ...rowData));
                 break;
               case "Oracle rolls":
                 // TODO
@@ -119,7 +124,7 @@ export class OracleTableRow implements IOracleTableRow {
 
   assignString(string: string) {
     if (string.startsWith("http")) {
-      this.Image = string;
+      this.Image = string as UrlString;
     }
     else if (!this.Result || this.Result?.length == 0) {
       this.Result = string;

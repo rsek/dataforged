@@ -1,24 +1,24 @@
 import _ from "lodash";
-import { ISuggestions, Suggestions } from "../generic/Suggestions";
+import { ISuggestions, Suggestions } from "../general/Suggestions";
 import { IOracleRequirement, OracleRequirement } from "./OracleRequirement";
 
 export interface IOracleUsage {
-  Initial?: boolean;
-  Suggestions?: ISuggestions;
-  "Select table by"?: string;
-  Requires?: IOracleRequirement[];
-  "Min rolls"?: number;
-  "Max rolls"?: number;
-  Repeatable?: boolean;
+  Initial?: boolean | undefined;
+  Suggestions?: ISuggestions | undefined;
+  "Select table by"?: string | undefined;
+  Requires?: IOracleRequirement[] | undefined;
+  "Min rolls"?: number | undefined;
+  "Max rolls"?: number | undefined;
+  Repeatable?: boolean | undefined;
 }
 export class OracleUsage implements IOracleUsage {
-  Initial?: boolean;
-  "Select table by"?: string;
-  "Min rolls"?: number;
-  "Max rolls"?: number;
-  Repeatable?: boolean;
-  Suggestions?: Suggestions;
-  Requires?: OracleRequirement[];
+  Initial?: boolean | undefined;
+  "Select table by"?: string | undefined;
+  "Min rolls"?: number | undefined;
+  "Max rolls"?: number | undefined;
+  Repeatable?: boolean | undefined;
+  Suggestions?: Suggestions | undefined;
+  Requires?: OracleRequirement[] | undefined;
   constructor(data: IOracleUsage) {
     if (data) {
       this.Initial = data.Initial;

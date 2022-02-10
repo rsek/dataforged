@@ -1,5 +1,5 @@
-import { MdString } from "../generic/MdString";
-import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../generic/Roll";
+import { MdString } from "../general/MdString";
+import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll";
 
 export interface IMoveTrigger {
   Text: MdString;

@@ -4,34 +4,34 @@ import { OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, OracleSub
 import { IOracleInfo, IOracleInfoData, OracleInfo } from "./OracleInfo";
 import { OracleUsage } from "./OracleUsage";
 import { isOracleUsage, isOracles, isOracleCategories } from "../typeguards";
-import { ISource, Source } from "../generic/Source";
+import { ISource, Source } from "../general/Source";
 import buildOracleId from "../../utilities/buildOracleId";
 
 export interface IOracleCategory extends IOracleData {
   Source: ISource;
-  Oracles?: IOracleInfo[];
-  Categories?: IOracleCategory[];
+  Oracles?: IOracleInfo[] | undefined;
+  Categories?: IOracleCategory[] | undefined;
 }
 export interface IOracleCategoryData extends IOracleCategory {
-  _childOf?: OracleCategoryName;
-  _parentOf?: OracleSubcategoryName[];
-  Oracles?: IOracleInfoData[];
-  Categories?: IOracleCategoryData[];
   $id: OracleCategoryId;
   Name: OracleCategoryName;
-  Category?: OracleCategoryJaggedId;
+  _childOf?: OracleCategoryName | undefined;
+  _parentOf?: OracleSubcategoryName[] | undefined;
+  Oracles?: IOracleInfoData[] | undefined;
+  Categories?: IOracleCategoryData[] | undefined;
+  Category?: OracleCategoryJaggedId | undefined;
 }
 export class OracleCategory implements IOracleCategory, IOracle {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
-  Aliases?: string[];
+  Aliases?: string[] | undefined;
   Source: Source;
-  Category?: OracleCategoryJaggedId;
-  Description?: string;
+  Category?: OracleCategoryJaggedId | undefined;
+  Description?: string | undefined;
   Display: OracleDisplay;
-  Usage?: OracleUsage;
-  Oracles?: OracleInfo[];
-  Categories?: OracleCategory[];
+  Usage?: OracleUsage | undefined;
+  Oracles?: OracleInfo[] | undefined;
+  Categories?: OracleCategory[] | undefined;
   constructor(
     json: IOracleCategoryData,
     category?: OracleCategoryJaggedId,

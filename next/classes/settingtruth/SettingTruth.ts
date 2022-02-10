@@ -1,4 +1,4 @@
-import { ISource } from "../generic/Source";
+import { ISource } from "../general/Source";
 import { IOracleTableRow } from "../oracles/OracleTableRow";
 
 export interface ISettingTruth {

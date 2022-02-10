@@ -1,6 +1,6 @@
 import { IMove, Move } from "../moves/Move";
 import { IAsset } from "./Asset";
-import { Counter, ICounter } from "../generic/Counter";
+import { Counter, ICounter } from "../general/Counter";
 
 export class AssetAbility implements IAssetAbility {
   $id: string;
@@ -15,7 +15,7 @@ export class AssetAbility implements IAssetAbility {
 
     this.$id = id;
     this.Text = json.Text;
-    this.Move = json.Move ? new Move(json.Move, this.$id + "/ Move") : undefined;
+    this.Move = json.Move ? new Move(json.Move, this.$id + " / Move") : undefined;
     this.Counter = json.Counter ? new Counter(json.Counter, this.$id + " / Counter") : undefined;
     this.Input = json.Input;
     this["Alter Moves"] = json["Alter Moves"];

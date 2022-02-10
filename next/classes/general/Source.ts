@@ -6,21 +6,21 @@ import IOracleData from "../oracles/IOracle";
 */
 export interface ISource {
   Title: SourceTitle;
-  Date?: string;
-  Page?: number;
+  Date?: string | undefined;
+  Page?: number | undefined;
 }
 export class Source implements ISource {
   Title: SourceTitle;
-  Date?: string;
-  Page?: number;
-  constructor(data: ISource, ...ancestorsJson: IOracleData[]) {
+  Date?: string | undefined;
+  Page?: number | undefined;
+  constructor(json: ISource, ...ancestorsJson: IOracleData[]) {
     const sourceStack = _.compact(
       ancestorsJson.map(item => item.Source))
       .reverse();
-    const newData = _.merge(data, ...sourceStack) as ISource;
-    this.Title = newData.Title;
+    const newData = _.merge(json, ...sourceStack) as ISource;
+    this.Title = json?.Title ?? undefined;
     this.Date = newData.Date;
-    this.Page = newData.Page ?? undefined;
+    this.Page = newData.Page;
   }
 }
 export enum SourceTitle {

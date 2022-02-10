@@ -8,16 +8,16 @@ import { IGameObject, GameObject } from "./GameObject";
 * @class Suggestions
 */
 export interface ISuggestions {
-  "Game objects"?: IGameObject[];
-  "Oracle rolls"?: OracleTableId[];
-  "Moves"?: MoveId[];
-  "Assets"?: AssetId[];
+  "Game objects"?: IGameObject[] | undefined;
+  "Oracle rolls"?: OracleTableId[] | undefined;
+  "Moves"?: MoveId[] | undefined;
+  "Assets"?: AssetId[] | undefined;
 }
 export class Suggestions implements ISuggestions {
-  "Game objects"?: GameObject[];
-  "Oracle rolls"?: OracleTableId[];
-  "Moves"?: AssetId[];
-  "Assets"?: MoveId[];
+  "Game objects"?: GameObject[] | undefined;
+  "Oracle rolls"?: OracleTableId[] | undefined;
+  "Assets"?: AssetId[] | undefined;
+  "Moves"?: MoveId[] | undefined;
   constructor(data: ISuggestions) {
     if (data["Game objects"]) {
       this["Game objects"] = data["Game objects"].map(gameObjData => new GameObject(gameObjData));

@@ -2,17 +2,17 @@ import { ProgressType } from "./Progress";
 import { ICustomStat, RollableStat } from "./Stat";
 
 export interface IActionRoll {
-  Stat: RollableStat;
-  "All of": RollableStat[];
-  "Best of": RollableStat[];
-  "Worst of": RollableStat[];
+  Stat?: RollableStat | undefined;
+  "All of"?: RollableStat[] | undefined;
+  "Best of"?: RollableStat[] | undefined;
+  "Worst of"?: RollableStat[] | undefined;
 }
 
 export interface IProgressRoll {
-  Track: ProgressType;
-  "All of": ProgressType[]
-  "Best of": ProgressType[];
-  "Worst of": ProgressType[];
+  Track?: ProgressType | undefined;
+  "All of"?: ProgressType[] | undefined;
+  "Best of"?: ProgressType[] | undefined;
+  "Worst of"?: ProgressType[] | undefined;
 }
 
 export interface ICustomStatRoll {

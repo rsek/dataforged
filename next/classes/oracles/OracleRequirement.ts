@@ -7,7 +7,7 @@ export interface IOracleRequirement {
 
 export class OracleRequirement implements IOracleRequirement {
   Tables: OracleTableId[];
-  Results?: string[];
+  Results?: string[] | undefined;
   constructor(json: IOracleRequirement) {
     this.Tables = json.Tables;
     this.Results = json.Results;

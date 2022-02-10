@@ -1,11 +1,11 @@
-import { ConditionMeter, IConditionMeter } from "../generic/ConditionMeter";
-import { MdString } from "../generic/MdString";
-import { ISource, Source } from "../generic/Source";
+import { ConditionMeter, IConditionMeter } from "../general/ConditionMeter";
+import { MdString } from "../general/MdString";
+import { ISource, Source } from "../general/Source";
 import { AssetAbility, IAssetAbility } from "./AssetAbility";
 import { AssetType } from "./AssetType";
 import { AssetSelectInput, IAssetSelectInput } from "./AssetSelectInput";
 
-export type AssetId = string;
+export type AssetId = `${AssetType} / ${string}`;
 
 export class Asset implements IAsset {
   $id: AssetId;
@@ -19,8 +19,8 @@ export class Asset implements IAsset {
   Abilities: AssetAbility[];
   "Condition Meter"?: ConditionMeter | undefined;
   Source: Source;
-  constructor(json: IAsset, id: AssetId, source: ISource) {
-    this.$id = id;
+  constructor(json: IAsset, source: ISource) {
+    this.$id = json["Asset Type"] + " / " + json.Name as AssetId;
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this["Asset Type"] = json["Asset Type"];

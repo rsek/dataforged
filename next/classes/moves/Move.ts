@@ -1,6 +1,6 @@
-import { MdString } from "../generic/MdString";
-import { Source, ISource } from "../generic/Source";
-import { ISuggestions } from "../generic/Suggestions";
+import { MdString } from "../general/MdString";
+import { Source, ISource } from "../general/Source";
+import { ISuggestions } from "../general/Suggestions";
 import { OracleTableId } from "../oracles/OracleId";
 import { IMoveTrigger, MoveTrigger } from "./MoveTrigger";
 

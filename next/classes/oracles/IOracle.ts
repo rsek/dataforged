@@ -1,9 +1,8 @@
-import { ISource, Source } from "../generic/Source";
+import { ISource, Source } from "../general/Source";
 import { IOracleContent } from "./OracleContent";
 import { IOracleDisplay } from "./OracleDisplay";
 import { OracleTableId, OracleCategoryId } from "./OracleId";
 import { IOracleUsage } from "./OracleUsage";
-
 
 export default interface IOracleData {
   $id?: OracleTableId | OracleCategoryId | undefined;

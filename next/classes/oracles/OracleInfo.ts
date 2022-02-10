@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { ISource, Source } from "../generic/Source";
+import { ISource, Source } from "../general/Source";
 import IOracleData, { IOracle } from "./IOracle";
 import { IOracleContent, OracleContent } from "./OracleContent";
 import { IOracleDisplay, OracleTableDisplay } from "./OracleDisplay";
@@ -9,26 +9,24 @@ import { IOracleUsage, OracleUsage } from "./OracleUsage";
 import { isOracles, isOracleTable, isOracleUsage } from "../typeguards";
 import buildOracleId from "../../utilities/buildOracleId";
 
-
-
 export interface IOracleInfo extends IOracleData {
   Category: OracleCategoryId;
-  "Member of"?: OracleTableId;
-  Description?: string;
+  "Member of"?: OracleTableId | undefined;
+  Description?: string | undefined;
   Source: ISource;
-  Usage?: IOracleUsage;
-  Content?: IOracleContent;
-  Display?: IOracleDisplay;
-  Oracles?: IOracleInfo[];
-  Table?: IRowData[] | IRowRollData[] | OracleTableRow[];
+  Usage?: IOracleUsage | undefined;
+  Content?: IOracleContent | undefined;
+  Display?: IOracleDisplay | undefined;
+  Oracles?: IOracleInfo[] | undefined;
+  Table?: IRowData[] | IRowRollData[] | OracleTableRow[] | undefined;
 }
 
 export interface IOracleInfoData extends IOracleInfo {
-  Table?: IRowData[] | IRowRollData[];
-  Oracles?: IOracleInfoData[];
-  _template?: IRowData[];
-  _childOf?: OracleCategoryId;
-  _parentOf?: string[]
+  Table?: IRowData[] | IRowRollData[] | undefined;
+  Oracles?: IOracleInfoData[] | undefined;
+  _template?: IRowData[] | undefined;
+  _childOf?: OracleCategoryId | undefined;
+  _parentOf?: string[] | undefined;
 }
 /**
  * Represents an Oracle, including associated metadata in addition to tables (as opposed to a Table, which contains only the table data).
@@ -39,16 +37,16 @@ export interface IOracleInfoData extends IOracleInfo {
 export class OracleInfo implements IOracleInfo, IOracle {
   $id: OracleTableId;
   "Name": string;
-  Aliases?: string[];
-  "Member of"?: OracleTableId;
+  Aliases?: string[] | undefined;
+  "Member of"?: OracleTableId | undefined;
   Category: OracleCategoryId;
-  Description?: string;
+  Description?: string | undefined;
   Source: Source;
   Display: OracleTableDisplay;
-  Usage?: OracleUsage;
-  Content?: OracleContent;
-  Table?: OracleTableRow[];
-  Oracles?: OracleInfo[];
+  Usage?: OracleUsage | undefined;
+  Content?: OracleContent | undefined;
+  Table?: OracleTableRow[] | undefined;
+  Oracles?: OracleInfo[] | undefined;
   constructor(
     json: IOracleInfoData,
     category: OracleCategoryId,
@@ -66,14 +64,12 @@ export class OracleInfo implements IOracleInfo, IOracle {
     this.Description = json.Description;
     this.Source = new Source(json.Source, ...ancestorsJson);
     this.Display = new OracleTableDisplay(json);
-
     if (json.Usage) {
       this.Usage = isOracleUsage(json.Usage) ? new OracleUsage(json.Usage) : undefined;
     }
     if (json.Content) {
       this.Content = new OracleContent(json.Content);
     }
-
     if (json.Table && isOracleTable(json.Table)) {
       let tableData = json.Table as IRowData[];
       if (json._template) {
@@ -94,7 +90,7 @@ export class OracleInfo implements IOracleInfo, IOracle {
         });
         tableData = templateData.filter(row => row[0] != 0 && row[1] != 0);
       }
-      this.Table = tableData.map(row => new OracleTableRow(...row));
+      this.Table = tableData.map(row => new OracleTableRow(this.$id, ...row));
     }
 
     if (this.Table?.find(row => row.Summary) && this.Display["Column labels"].length < 3) {

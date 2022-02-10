@@ -1,6 +1,3 @@
-
-
-
 export type OracleCategoryId = OracleSubcategoryId | OracleCategoryFlatId | OracleCategoryJaggedId;
 export type OracleTableId = `${OracleCategoryId} / ${string}`;
 
