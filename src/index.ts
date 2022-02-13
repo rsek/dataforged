@@ -1,4 +1,4 @@
 
-import buildDataforged from "./utilities/buildDataforgedNext";
+import buildDataforged from "./utilities/buildDataforged";
 
 buildDataforged("./next/");
