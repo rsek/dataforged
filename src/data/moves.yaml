@@ -387,10 +387,10 @@ Moves:
 
       If you already share a bond with the connection, do not mark progress. Instead, roll +their rank to learn the impact on your legacy: troublesome=+1; dangerous=+2; formidable=+3; extreme=+4; epic=+5. On a **strong hit**, mark 2 ticks on your bonds legacy track. On a **strong hit with a match**, you may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic). On a **weak hit**, take +2 momentum. On a **miss**, take no lasting benefit.
     Outcomes:
-      Strong Hit with a Match:
-        Text: Mark 2 ticks on your bonds legacy track. You may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic).
       Strong Hit:
         Text: Mark 2 ticks on your bonds legacy track.
+        With a Match:
+          Text: Mark 2 ticks on your bonds legacy track. You may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic).
       Weak Hit:
         Text: Take +2 momentum.
       Miss:
@@ -521,25 +521,25 @@ Moves:
 
       On a **miss** you encounter an immediate hardship or threat, and must [Pay the Price](Moves#Pay-the-Price). On a **miss with a match**, you may instead [Confront Chaos](Moves#Confront-Chaos).
     Outcomes:
-      Strong Hit with a Match:
-        Text: |-
-          You encounter something wondrous! Choose one.
-
-            * [Make a Discovery](Moves#Make-a-Discovery).
-            * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.
-            * Gain progress: Mark progress on your expedition, per its rank.
       Strong Hit:
         Text: |-
           Choose one.
 
             * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.
             * Gain progress: Mark progress on your expedition, per its rank.
+        With a Match:
+          Text: |-
+            You encounter something wondrous! Choose one.
+
+              * [Make a Discovery](Moves#Make-a-Discovery).
+              * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.
+              * Gain progress: Mark progress on your expedition, per its rank.
       Weak Hit:
         Text: You uncover something interesting, but it is bound up in a peril or reveals an ominous aspect of this place. Envision what you encounter. Then, take +1 momentum.
       Miss:
         Text: You encounter an immediate hardship or threat, and must [Pay the Price](Moves#Pay-the-Price).
-      Miss with a Match:
-        Text: You encounter something dreadful! [Confront Chaos](Moves#Confront-Chaos) or else [Pay the Price](Moves#Pay-the-Price).
+        With a Match:
+          Text: You encounter something dreadful! [Confront Chaos](Moves#Confront-Chaos) or else [Pay the Price](Moves#Pay-the-Price).
   - Name: Make a Discovery
     Category: Exploration Moves
     Trigger:
@@ -1164,8 +1164,8 @@ Moves:
         Text: If your companion's health is not 0, you may [Lose Momentum](Moves#Lose-Momentum) (-1) and give them +1 health. Otherwise, they press on.
       Miss:
         Text: It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](Moves#Lose-Momentum) (-2). If your companion's health is 0, they are out of action until given aid.
-      Miss with a Match:
-        Text: It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](Moves#Lose-Momentum) (-2). If your companion's health is 0, they are dead or destroyed; discard the asset.
+        With a Match:
+          Text: It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](Moves#Lose-Momentum) (-2). If your companion's health is 0, they are dead or destroyed; discard the asset.
   - Name: Sacrifice Resources
     Category: Suffer Moves
     Trigger:
@@ -1560,16 +1560,16 @@ Moves:
 
       On a **miss**, you fail, or your action is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves#Pay-the-Price). On a miss with a match, fill two clock segments.
     Outcomes:
-      Strong Hit with a Match:
-        Text: You are successful. Envision how you gain ground, and mark two boxes of progress on the formidable challenge.
       Strong Hit:
         Text: You are successful. Envision how you gain ground, and mark one box of progress on the formidable challenge.
+        With a Match:
+          Text: You are successful. Envision how you gain ground, and mark two boxes of progress on the formidable challenge.
       Weak Hit:
         Text: You are successful and mark progress, but also encounter a minor complication or setback. Envision what happens and fill a clock segment.
       Miss:
         Text: You fail, or your action is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves#Pay-the-Price).
-      Miss with a Match:
-        Text: You fail, or your action is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](Moves#Pay-the-Price).
+        With a Match:
+          Text: You fail, or your action is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](Moves#Pay-the-Price).
   - Name: Secure an Advantage (scene challenge)
     Variant of: Moves / Secure an Advantage
     Text: |-
@@ -1582,10 +1582,10 @@ Moves:
 
       On a **miss**, fill a clock segment and [Pay the Price](Moves#Pay-the-Price). On a miss with a match, fill two clock segments.
     Outcomes:
-      Strong Hit with a Match:
-        Text: Mark one box of progress, take +2 momentum, and add +1 on your next move (not a progress move).
       Strong Hit:
         Text: Take +2 momentum and add +1 on your next move (not a progress move).
+        With a Match:
+          Text: Mark one box of progress, take +2 momentum, and add +1 on your next move (not a progress move).
       Weak Hit:
         Text: |-
           Choose one.
@@ -1594,8 +1594,8 @@ Moves:
             * Add +1 on your next move (not a progress move)
       Miss:
         Text: Fill a clock segment and [Pay the Price](Moves#Pay-the-Price).
-      Miss with a Match:
-        Text: Fill two clock segments and [Pay the Price](Moves#Pay-the-Price).
+        With a Match:
+          Text: Fill two clock segments and [Pay the Price](Moves#Pay-the-Price).
   - Name: Resolve Scene Challenge
     Progress move: true
     Trigger:
