@@ -8,6 +8,7 @@ import { OracleUsage } from "./OracleUsage";
 import { isOracleUsage, isOracles, isOracleCategories } from "../typeguards";
 import { ISource, Source } from "../general/Source";
 import buildOracleId from "../../utilities/buildOracleId";
+import _ from "lodash";
 
 export interface IOracleCategory extends IOracleData {
   Source: ISource;
@@ -44,7 +45,7 @@ export class OracleCategory implements IOracleCategory, IOracle {
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Display = new OracleDisplay(json);
-    this.Source = new Source(json.Source, ...ancestorsJson);
+    this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
     this.Category = category ?? undefined;
 
     if (json.Usage) {

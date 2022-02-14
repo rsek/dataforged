@@ -65,7 +65,7 @@ export class OracleInfo implements IOracleInfo, IOracle {
     this.Category = category;
 
     this.Description = json.Description;
-    this.Source = new Source(json.Source, ...ancestorsJson);
+    this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
     this.Display = new OracleTableDisplay(json);
     if (json.Usage) {
       this.Usage = isOracleUsage(json.Usage) ? new OracleUsage(json.Usage) : undefined;

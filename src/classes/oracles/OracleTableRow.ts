@@ -54,7 +54,6 @@ export class OracleTableRow implements IOracleTableRow {
   "Game objects"?: GameObject[] | undefined;
   "Multiple rolls"?: MultipleRolls | undefined;
   Suggestions?: Suggestions | undefined;
-
   constructor(parentId: string, floor: number, ceiling: number, ...rowContents: (string | object)[]) {
     if (rowContents.length == 0) { throw new Error("Row JSON has no contents. Ensure that it isn't missing a template."); }
     this.Floor = floor;
@@ -77,7 +76,12 @@ export class OracleTableRow implements IOracleTableRow {
             switch (key) {
               case "Subtable":
 
-                this.Subtable = (value as IRowData[]).map(rowData => new OracleTableRow(this.$id+" / Subtable", ...rowData));
+                if (Array.isArray(value[0])) {
+                  this.Subtable = (value as IRowData[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", ...rowData));
+                }
+                else {
+                  this.Subtable = (value as IOracleTableRow[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", rowData.Floor, rowData.Ceiling, _.omit(rowData, "Floor", "Ceiling")));
+                }
                 break;
               case "Oracle rolls":
                 // TODO
@@ -119,7 +123,7 @@ export class OracleTableRow implements IOracleTableRow {
       delete this.Suggestions;
     }
     if (!this.Result || this.Result.length == 0) {
-      throw new Error("Row requires a result!");
+      throw new Error(`Row requires a result! data: ${JSON.stringify(arguments)}`);
     }
   }
 
