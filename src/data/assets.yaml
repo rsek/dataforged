@@ -71,6 +71,20 @@ Assets:
             Options:
               - Roll best of: [Wits, Attached Asset Condition Meter]
           Text: *move_grappler
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                The grappler is charged and may be fired.
+
+                If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+            Weak Hit:
+              Text: |-
+                The grappler is charged and may be fired, but charging requires extra time or focus and you [Lose Momentum](Moves#Lose-Momentum) (-1)
+
+                If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+            Miss:
+              Text: |-
+                Charging the grappler fails and you must [Withstand Damage](Moves#Withstand-Damage) (-2).
       - Text: |-
           If you score a strong hit when readying the grappler, you may [Sacrifice Resources](Moves#Sacrifice-Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
       - Text: |-
@@ -106,6 +120,12 @@ Assets:
               - Action roll:
                   Stat: Attached Asset Condition Meter
           Text: *move_internal_refit
+          Outcomes:
+            Strong Hit:
+              Text: You manage to scrape by. You don't need to mark unprepared. Take +1 supply.
+            Weak Hit: &scrape-by-outcome
+              Text: Mark unprepared as normal.
+            Miss: *scrape-by-outcome
       - Text: |-
           When you [Enter the Fray](Moves#Enter-the-Fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
   - Name: Medbay
@@ -223,6 +243,22 @@ Assets:
             Options:
               - Roll best of: [Wits, Attached Asset Condition Meter]
           Text: *move_shields
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                Set your vehicle's shields to 4.
+
+                Then, if you [Withstand Damage](Moves#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
+            Weak Hit:
+              Text: |-
+                Set your vehicle's shields to 3.
+
+                Then, if you [Withstand Damage](Moves#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
+            Miss:
+              Text: |-
+                Set your vehicle's shields to 2, but [Lose Momentum](Moves#Lose-Momentum) (-1).
+
+                Then, if you [Withstand Damage](Moves#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
       - Text: |-
           You may [React Under Fire](Moves#React-Under-Fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
         Alter Moves:
@@ -505,6 +541,17 @@ Assets:
                   Stat: Wits
           Asset: Assets / Archer
           Text: *move_archer
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                Take up to +6 ammo.
+            Weak Hit:
+              Text: |-
+                Take up to +4 ammo and [Sacrifice Resources](Moves#Sacrifice-Resources) (-1).
+            Miss:
+              Text: |-
+                [Sacrifice Resources](Moves#Sacrifice-Resources) (-1).
+
         Enabled: true
       - Text: |-
           You may [Enter the Fray](Moves#Enter-the-Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
@@ -560,6 +607,16 @@ Assets:
               - Action roll:
                   Stat: Wits
           Text: *move_artist
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                The work will stand the test of time; mark 2 ticks on your bonds legacy track.
+            Weak Hit:
+              Text: |-
+                The work's impact is short-lived; mark 1 tick on your bonds legacy track.
+            Miss:
+              Text: |-
+                The work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Moves#Pay-the-Price).
   - Name: Augmented
     Asset Type: Path
     Inputs:
@@ -744,6 +801,16 @@ Assets:
               - Action roll:
                   Stat: Heart
           Text: *move_empath
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                You glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene.
+            Weak Hit:
+              Text: |-
+                The visions are murky; take +1 momentum.
+            Miss:
+              Text: |-
+                You reveal a troubling motive or secret; [Pay the Price](Moves#Pay-the-Price).
       - Text: |-
           As above, and if you score a hit as you read them, you may subtly influence their attitude or actions, such as making a hostile being hestitate. Take another +1 momentum. If in a fight, mark progress.
         # Alter Moves:
@@ -796,6 +863,22 @@ Assets:
               - Action roll:
                   Stat: Spirit
           Text: *move_firebrand
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                Take up to +3 fire.
+
+                When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
+            Weak Hit:
+              Text: |-
+                Take up to +2 fire.
+
+                When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
+            Miss:
+              Text: |-
+                Take up to +2 fire but [Endure Harm](Moves#Endure-Harm) (-2).
+
+                When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
       - Text: |-
           When you [Endure Harm](Moves#Endure-Harm) and score a strong hit with a match, you may instead ignore the harm and take +fire equal to the amount of harm faced (+1, +2, or +3).
       - Text: |-
@@ -915,6 +998,16 @@ Assets:
                   - Name: Days
                     Value: 2
           Text: *move_looper
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
+            Weak Hit:
+              Text: |-
+                You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values...but you [Endure Stress](Moves#Endure-Stress) (-2).
+            Miss:
+              Text: |-
+                You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values...but you find the timeline corrupted! [Pay the Price](Moves#Pay-the-Price).
       - Text: |-
           When you make a reroll granted by any asset ability on an action roll, also add +1.
   - Name: Lore Hunter
@@ -1060,6 +1153,13 @@ Assets:
               - Action roll:
                   Stat: Shadow
           Text: *move_shade
+          Outcomes:
+            Strong Hit:
+              Text: The darkness extends to all adjacent spaces.
+            Weak Hit:
+              Text: Only your immediate surroundings are made dark.
+            Miss:
+              Text: You fail and draw unwanted attention.
       - Text: |-
           When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.
   - Name: Slayer
@@ -1572,6 +1672,16 @@ Assets:
               - Progress roll: Discoveries Legacy
           Progress Move: true
           Text: *move_vanguard
+          Outcomes:
+            Strong Hit:
+              Text: |-
+                You find or establish a safe location and may add +2 whenever you make a recovery move there. If you score a miss when making a recovery move, the place is no longer safe.
+            Weak Hit:
+              Text: |-
+                You find or establish a safe location and may add +1 whenever you make a recovery move there. If you score a miss when making a recovery move, the place is no longer safe.
+            Miss:
+              Text: |-
+                You are drawn into a bad situation and must [Pay the Price](Moves#Pay-the-Price).
       - Text: |-
           When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.
       - Text: |-
