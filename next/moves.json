@@ -1090,39 +1090,6 @@
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
   {
-    "$id": "Moves / Withstand Damage",
-    "Name": "Withstand Damage",
-    "Category": "Suffer Moves",
-    "Trigger": {
-      "$id": "Moves / Withstand Damage / Trigger",
-      "Text": "When your vehicle faces a damaging situation or environment...",
-      "Options": [
-        {
-          "$id": "Moves / Withstand Damage / Trigger / Options / 1",
-          "Action roll": { "Stat": "Vehicle Integrity" }
-        }
-      ]
-    },
-    "Text": "**When your vehicle faces a damaging situation or environment**, suffer -1 integrity for minor damage, -2 for serious damage, or -3 for major damage. If your integrity is 0, [Lose Momentum](Moves#Lose-Momentum) equal to any remaining damage.\n\nThen, if your integrity is 0 or you choose to resist the damage, roll +integrity.\n\nOn a **strong hit**, choose one.\n\n  * Bypass: If your vehicle is not battered, take +1 integrity\n  * Ride it out: Take +1 momentum\n\nOn a **weak hit**, if your vehicle is not battered, you may [Lose Momentum](Moves#Lose-Momentum) (-1) in exchange for +1 integrity. Otherwise, press on.\n\nOn a **miss**, it’s worse than you thought. Suffer an additional -1 integrity or [Lose Momentum](Moves#Lose-Momentum) (-2). If your integrity is 0, also suffer a cost according to the vehicle type.\n\n  * **Command vehicle:** Mark the vehicle as **battered** or **cursed**, mark a module as **broken**, destroy a broken module by discarding it, or roll on the table below. If the command vehicle is destroyed, [Overcome Destruction](Moves#Overcome-Destruction).\n  * **Support vehicle:** Mark the vehicle as **battered** or roll on the table below. If the vehicle is destroyed, discard the asset.\n  * **Incidental vehicle:** Roll on the table below.\n\nRoll   | Result\n-------|-------------------\n1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n26-40  | Destruction is imminent, but can be averted if you [Repair](Moves#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.\n41-55  | You cannot [Repair](Moves#Repair) this vehicle until you [Resupply](Moves#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.\n56-70  | The vehicle is crippled or out of your control. To get it back in action, you must [Repair](Moves#Repair) and raise its integrity above 0.\n71-85  | It’s a rough ride. All aboard must make the [Endure Harm](Moves#Endure-Harm), [Endure Stress](Moves#Endure-Stress), or [Companion Takes a Hit](Moves#Companion-Takes-a-Hit) move, suffering a serious (-2) cost.\n86-95  | You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Moves#Sacrifice-Resources) (-2).\n96-100 | Against all odds, the vehicle holds together.",
-    "Oracles": ["Oracles / Moves / Withstand Damage"],
-    "Outcomes": {
-      "$id": "Moves / Withstand Damage / Outcomes",
-      "Strong Hit": {
-        "$id": "Moves / Withstand Damage / Outcomes / Strong Hit",
-        "Text": "Choose one.\n\n  * Bypass: If your vehicle is not battered, take +1 integrity\n  * Ride it out: Take +1 momentum"
-      },
-      "Weak Hit": {
-        "$id": "Moves / Withstand Damage / Outcomes / Weak Hit",
-        "Text": "If your vehicle is not battered, you may [Lose Momentum](Moves#Lose-Momentum) (-1) in exchange for +1 integrity. Otherwise, press on."
-      },
-      "Miss": {
-        "$id": "Moves / Withstand Damage / Outcomes / Miss",
-        "Text": "It’s worse than you thought. Suffer an additional -1 integrity or [Lose Momentum](Moves#Lose-Momentum) (-2). If your integrity is 0, also suffer a cost according to the vehicle type.\n\n  * **Command vehicle:** Mark the vehicle as **battered** or **cursed**, mark a module as **broken**, destroy a broken module by discarding it, or roll on the table below. If the command vehicle is destroyed, [Overcome Destruction](Moves#Overcome-Destruction).\n  * **Support vehicle:** Mark the vehicle as **battered** or roll on the table below. If the vehicle is destroyed, discard the asset.\n  * **Incidental vehicle:** Roll on the table below.\n\nRoll   | Result\n-------|-------------------\n1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n26-40  | Destruction is imminent, but can be averted if you [Repair](Moves#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.\n41-55  | You cannot [Repair](Moves#Repair) this vehicle until you [Resupply](Moves#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.\n56-70  | The vehicle is crippled or out of your control. To get it back in action, you must [Repair](Moves#Repair) and raise its integrity above 0.\n71-85  | It’s a rough ride. All aboard must make the [Endure Harm](Moves#Endure-Harm), [Endure Stress](Moves#Endure-Stress), or [Companion Takes a Hit](Moves#Companion-Takes-a-Hit) move, suffering a serious (-2) cost.\n86-95  | You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Moves#Sacrifice-Resources) (-2).\n96-100 | Against all odds, the vehicle holds together."
-      }
-    },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
-  },
-  {
     "$id": "Moves / Companion Takes a Hit",
     "Name": "Companion Takes a Hit",
     "Category": "Suffer Moves",
@@ -1167,6 +1134,39 @@
       "Text": "When you lose or consume resources..."
     },
     "Text": "**When you lose or consume resources**, suffer -1 supply for a minor loss, -2 for a serious loss, or -3 for a major loss.\n\nIf your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move.",
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
+  },
+  {
+    "$id": "Moves / Withstand Damage",
+    "Name": "Withstand Damage",
+    "Category": "Suffer Moves",
+    "Trigger": {
+      "$id": "Moves / Withstand Damage / Trigger",
+      "Text": "When your vehicle faces a damaging situation or environment...",
+      "Options": [
+        {
+          "$id": "Moves / Withstand Damage / Trigger / Options / 1",
+          "Action roll": { "Stat": "Vehicle Integrity" }
+        }
+      ]
+    },
+    "Text": "**When your vehicle faces a damaging situation or environment**, suffer -1 integrity for minor damage, -2 for serious damage, or -3 for major damage. If your integrity is 0, [Lose Momentum](Moves#Lose-Momentum) equal to any remaining damage.\n\nThen, if your integrity is 0 or you choose to resist the damage, roll +integrity.\n\nOn a **strong hit**, choose one.\n\n  * Bypass: If your vehicle is not battered, take +1 integrity\n  * Ride it out: Take +1 momentum\n\nOn a **weak hit**, if your vehicle is not battered, you may [Lose Momentum](Moves#Lose-Momentum) (-1) in exchange for +1 integrity. Otherwise, press on.\n\nOn a **miss**, it’s worse than you thought. Suffer an additional -1 integrity or [Lose Momentum](Moves#Lose-Momentum) (-2). If your integrity is 0, also suffer a cost according to the vehicle type.\n\n  * **Command vehicle:** Mark the vehicle as **battered** or **cursed**, mark a module as **broken**, destroy a broken module by discarding it, or roll on the table below. If the command vehicle is destroyed, [Overcome Destruction](Moves#Overcome-Destruction).\n  * **Support vehicle:** Mark the vehicle as **battered** or roll on the table below. If the vehicle is destroyed, discard the asset.\n  * **Incidental vehicle:** Roll on the table below.\n\nRoll   | Result\n-------|-------------------\n1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n26-40  | Destruction is imminent, but can be averted if you [Repair](Moves#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.\n41-55  | You cannot [Repair](Moves#Repair) this vehicle until you [Resupply](Moves#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.\n56-70  | The vehicle is crippled or out of your control. To get it back in action, you must [Repair](Moves#Repair) and raise its integrity above 0.\n71-85  | It’s a rough ride. All aboard must make the [Endure Harm](Moves#Endure-Harm), [Endure Stress](Moves#Endure-Stress), or [Companion Takes a Hit](Moves#Companion-Takes-a-Hit) move, suffering a serious (-2) cost.\n86-95  | You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Moves#Sacrifice-Resources) (-2).\n96-100 | Against all odds, the vehicle holds together.",
+    "Oracles": ["Oracles / Moves / Withstand Damage"],
+    "Outcomes": {
+      "$id": "Moves / Withstand Damage / Outcomes",
+      "Strong Hit": {
+        "$id": "Moves / Withstand Damage / Outcomes / Strong Hit",
+        "Text": "Choose one.\n\n  * Bypass: If your vehicle is not battered, take +1 integrity\n  * Ride it out: Take +1 momentum"
+      },
+      "Weak Hit": {
+        "$id": "Moves / Withstand Damage / Outcomes / Weak Hit",
+        "Text": "If your vehicle is not battered, you may [Lose Momentum](Moves#Lose-Momentum) (-1) in exchange for +1 integrity. Otherwise, press on."
+      },
+      "Miss": {
+        "$id": "Moves / Withstand Damage / Outcomes / Miss",
+        "Text": "It’s worse than you thought. Suffer an additional -1 integrity or [Lose Momentum](Moves#Lose-Momentum) (-2). If your integrity is 0, also suffer a cost according to the vehicle type.\n\n  * **Command vehicle:** Mark the vehicle as **battered** or **cursed**, mark a module as **broken**, destroy a broken module by discarding it, or roll on the table below. If the command vehicle is destroyed, [Overcome Destruction](Moves#Overcome-Destruction).\n  * **Support vehicle:** Mark the vehicle as **battered** or roll on the table below. If the vehicle is destroyed, discard the asset.\n  * **Incidental vehicle:** Roll on the table below.\n\nRoll   | Result\n-------|-------------------\n1-10   | Immediate catastrophic destruction. All aboard must [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n11-25  | Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate.\n26-40  | Destruction is imminent, but can be averted if you [Repair](Moves#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.\n41-55  | You cannot [Repair](Moves#Repair) this vehicle until you [Resupply](Moves#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.\n56-70  | The vehicle is crippled or out of your control. To get it back in action, you must [Repair](Moves#Repair) and raise its integrity above 0.\n71-85  | It’s a rough ride. All aboard must make the [Endure Harm](Moves#Endure-Harm), [Endure Stress](Moves#Endure-Stress), or [Companion Takes a Hit](Moves#Companion-Takes-a-Hit) move, suffering a serious (-2) cost.\n86-95  | You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Moves#Sacrifice-Resources) (-2).\n96-100 | Against all odds, the vehicle holds together."
+      }
+    },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
   {
@@ -1282,44 +1282,6 @@
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
   {
-    "$id": "Moves / Repair",
-    "Name": "Repair",
-    "Category": "Recover Moves",
-    "Trigger": {
-      "$id": "Moves / Repair / Trigger",
-      "Text": "When you make repairs to your vehicles, modules, mechanical companions, or other devices...",
-      "Options": [
-        {
-          "$id": "Moves / Repair / Trigger / Options / 1",
-          "Text": "Make your own repairs, or direct a companion to make repairs",
-          "Action roll": { "Stat": "Wits" }
-        },
-        {
-          "$id": "Moves / Repair / Trigger / Options / 2",
-          "Text": "Obtain repairs from someone (not an ally)",
-          "Action roll": { "Stat": "Supply" }
-        }
-      ]
-    },
-    "Text": "**When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...\n\n  * Make your own repairs, or direct a companion to make repairs: Roll +wits\n  * Obtain repairs from someone (not an ally): Roll +supply\n\nOn a **hit**, you gain repair points as appropriate to the situation, per the table below. Additionally, you may [Sacrifice Resources](Moves#Sacrifice-Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).\n\nSituation     | Strong Hit | Weak Hit\n--------------|------------|---------\nAt a facility | 5 points   | 3 points\nIn the field  | 3 points   | 1 points\nUnder fire    | 2 points   | 0 points\n\nSpend repair points as follows. Unused points are discarded.\n\n  * Clear the battered impact on a vehicle: 2 points\n  * Fix one broken module: 2 points\n  * Take +1 integrity on a vehicle: 1 point\n  * Take +1 health for a mechanical companion: 1 point\n  * Repair any other device: 3 points\n  * Repair any other device, but with a complication or malfunction: 2 points\n\nOn a **miss**, the repairs are not made and the situation worsens. [Pay the Price](Moves#Pay-the-Price).",
-    "Outcomes": {
-      "$id": "Moves / Repair / Outcomes",
-      "Strong Hit": {
-        "$id": "Moves / Repair / Outcomes / Strong Hit",
-        "Text": "You gain repair points as appropriate to the situation, per the table below."
-      },
-      "Weak Hit": {
-        "$id": "Moves / Repair / Outcomes / Weak Hit",
-        "Text": "You gain repair points as appropriate to the situation, per the table below."
-      },
-      "Miss": {
-        "$id": "Moves / Repair / Outcomes / Miss",
-        "Text": "The repairs are not made and the situation worsens. [Pay the Price](Moves#Pay-the-Price)."
-      }
-    },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
-  },
-  {
     "$id": "Moves / Resupply",
     "Name": "Resupply",
     "Category": "Recover Moves",
@@ -1363,6 +1325,44 @@
       "Miss": {
         "$id": "Moves / Resupply / Outcomes / Miss",
         "Text": "You encounter an unexpected peril. [Pay the Price](Moves#Pay-the-Price)."
+      }
+    },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
+  },
+  {
+    "$id": "Moves / Repair",
+    "Name": "Repair",
+    "Category": "Recover Moves",
+    "Trigger": {
+      "$id": "Moves / Repair / Trigger",
+      "Text": "When you make repairs to your vehicles, modules, mechanical companions, or other devices...",
+      "Options": [
+        {
+          "$id": "Moves / Repair / Trigger / Options / 1",
+          "Text": "Make your own repairs, or direct a companion to make repairs",
+          "Action roll": { "Stat": "Wits" }
+        },
+        {
+          "$id": "Moves / Repair / Trigger / Options / 2",
+          "Text": "Obtain repairs from someone (not an ally)",
+          "Action roll": { "Stat": "Supply" }
+        }
+      ]
+    },
+    "Text": "**When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...\n\n  * Make your own repairs, or direct a companion to make repairs: Roll +wits\n  * Obtain repairs from someone (not an ally): Roll +supply\n\nOn a **hit**, you gain repair points as appropriate to the situation, per the table below. Additionally, you may [Sacrifice Resources](Moves#Sacrifice-Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).\n\nSituation     | Strong Hit | Weak Hit\n--------------|------------|---------\nAt a facility | 5 points   | 3 points\nIn the field  | 3 points   | 1 points\nUnder fire    | 2 points   | 0 points\n\nSpend repair points as follows. Unused points are discarded.\n\n  * Clear the battered impact on a vehicle: 2 points\n  * Fix one broken module: 2 points\n  * Take +1 integrity on a vehicle: 1 point\n  * Take +1 health for a mechanical companion: 1 point\n  * Repair any other device: 3 points\n  * Repair any other device, but with a complication or malfunction: 2 points\n\nOn a **miss**, the repairs are not made and the situation worsens. [Pay the Price](Moves#Pay-the-Price).",
+    "Outcomes": {
+      "$id": "Moves / Repair / Outcomes",
+      "Strong Hit": {
+        "$id": "Moves / Repair / Outcomes / Strong Hit",
+        "Text": "You gain repair points as appropriate to the situation, per the table below."
+      },
+      "Weak Hit": {
+        "$id": "Moves / Repair / Outcomes / Weak Hit",
+        "Text": "You gain repair points as appropriate to the situation, per the table below."
+      },
+      "Miss": {
+        "$id": "Moves / Repair / Outcomes / Miss",
+        "Text": "The repairs are not made and the situation worsens. [Pay the Price](Moves#Pay-the-Price)."
       }
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
@@ -1552,150 +1552,168 @@
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
   {
-    "$id": "Moves / Face Danger (scene challenge)",
-    "Name": "Face Danger (scene challenge)",
-    "Category": "Adventure Moves",
+    "$id": "Moves / Begin the Scene",
+    "Name": "Begin the Scene",
+    "Category": "Scene Challenge Moves",
+    "Trigger": {
+      "$id": "Moves / Begin the Scene / Trigger",
+      "Text": "When you face an extended or complex challenge outside of a fight..."
+    },
+    "Text": "**When you face an extended or complex challenge outside of a fight,** name your objective and set its rank as formidable.\n\nThen, envision the situation and choose the number of segments for the scene’s tension clock.\n\n  * You are severely disadvantaged: Four segments\n  * You are on equal footing: Six segments\n  * You have strong advantage: Eight segments\n\nWhen the clock is full, you must [Finish the Scene](Moves#Finish-the-Scene).",
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
+  },
+  {
+    "$id": "Moves / Face Danger (Scene Challenge)",
+    "Name": "Face Danger (Scene Challenge)",
+    "Category": "Scene Challenge Moves",
     "Variant of": "Moves / Face Danger",
     "Trigger": {
-      "$id": "Moves / Face Danger (scene challenge) / Trigger",
-      "Text": "When you attempt something risky or react to an imminent threat...",
+      "$id": "Moves / Face Danger (Scene Challenge) / Trigger",
+      "Text": "When you attempt something risky or react to an imminent threat within a scene challenge...",
       "Options": [
         {
-          "$id": "Moves / Face Danger (scene challenge) / Trigger / Options / 1",
+          "$id": "Moves / Face Danger (Scene Challenge) / Trigger / Options / 1",
           "Text": "With speed, mobility, or agility",
           "Action roll": { "Stat": "Edge" }
         },
         {
-          "$id": "Moves / Face Danger (scene challenge) / Trigger / Options / 2",
+          "$id": "Moves / Face Danger (Scene Challenge) / Trigger / Options / 2",
           "Text": "With resolve, command, or sociability",
           "Action roll": { "Stat": "Heart" }
         },
         {
-          "$id": "Moves / Face Danger (scene challenge) / Trigger / Options / 3",
+          "$id": "Moves / Face Danger (Scene Challenge) / Trigger / Options / 3",
           "Text": "With strength, endurance, or aggression",
           "Action roll": { "Stat": "Iron" }
         },
         {
-          "$id": "Moves / Face Danger (scene challenge) / Trigger / Options / 4",
+          "$id": "Moves / Face Danger (Scene Challenge) / Trigger / Options / 4",
           "Text": "With deception, stealth, or trickery",
           "Action roll": { "Stat": "Shadow" }
         },
         {
-          "$id": "Moves / Face Danger (scene challenge) / Trigger / Options / 5",
+          "$id": "Moves / Face Danger (Scene Challenge) / Trigger / Options / 5",
           "Text": "With expertise, focus, or observation",
           "Action roll": { "Stat": "Wits" }
         }
       ]
     },
-    "Text": "On a **strong hit**, you are successful. Envision how you gain ground, and mark one box of progress on the formidable challenge. On a strong hit with a match, you may instead mark progress twice (two boxes).\n\nOn a **weak hit**, you are successful and mark progress, but also encounter a minor complication or setback. Envision what happens and fill a clock segment.\n\nOn a **miss**, you fail, or your action is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves#Pay-the-Price). On a miss with a match, fill two clock segments.",
+    "Text": "**When you attempt something risky or react to an imminent threat within a scene challenge,** envision your action and roll. If you act...\n\n  * With speed, mobility, or agility: Roll +edge\n  * With resolve, command, or sociability: Roll +heart\n  * With strength, endurance, or aggression: Roll +iron\n  * With deception, stealth, or trickery: Roll +shadow\n  * With expertise, focus, or observation: Roll +wits\n\nOn a **strong hit**, you are successful and mark progress. On a **strong hit with a match**, mark progress twice.\n\nOn a **weak hit**, you are successful and mark progress, but also encounter a complication or setback. Envision what occurs and fill a clock segment.\n\nOn a **miss**, you fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves#Pay-the Price). On a **miss with a match**, fill two segments and [Pay the Price](Moves#Pay-the-Price).",
     "Outcomes": {
-      "$id": "Moves / Face Danger (scene challenge) / Outcomes",
+      "$id": "Moves / Face Danger (Scene Challenge) / Outcomes",
       "Strong Hit": {
-        "$id": "Moves / Face Danger (scene challenge) / Outcomes / Strong Hit",
-        "Text": "You are successful. Envision how you gain ground, and mark one box of progress on the formidable challenge.",
+        "$id": "Moves / Face Danger (Scene Challenge) / Outcomes / Strong Hit",
+        "Text": "You are successful. Mark progress.",
         "With a Match": {
-          "$id": "Moves / Face Danger (scene challenge) / Outcomes / Strong Hit / With a Match",
-          "Text": "You are successful. Envision how you gain ground, and mark two boxes of progress on the formidable challenge."
+          "$id": "Moves / Face Danger (Scene Challenge) / Outcomes / Strong Hit / With a Match",
+          "Text": "You are successful. Mark progress twice."
         }
       },
       "Weak Hit": {
-        "$id": "Moves / Face Danger (scene challenge) / Outcomes / Weak Hit",
-        "Text": "You are successful and mark progress, but also encounter a minor complication or setback. Envision what happens and fill a clock segment."
+        "$id": "Moves / Face Danger (Scene Challenge) / Outcomes / Weak Hit",
+        "Text": "You are successful and mark progress, but also encounter a complication or setback. Envision what occurs and fill a clock segment."
       },
       "Miss": {
-        "$id": "Moves / Face Danger (scene challenge) / Outcomes / Miss",
-        "Text": "You fail, or your action is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves#Pay-the-Price).",
+        "$id": "Moves / Face Danger (Scene Challenge) / Outcomes / Miss",
+        "Text": "You fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves#Pay-the Price).",
         "With a Match": {
-          "$id": "Moves / Face Danger (scene challenge) / Outcomes / Miss / With a Match",
-          "Text": "You fail, or your action is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](Moves#Pay-the-Price)."
+          "$id": "Moves / Face Danger (Scene Challenge) / Outcomes / Miss / With a Match",
+          "Text": "You fail, or a momentary success is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](Moves#Pay-the Price)."
         }
       }
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
   {
-    "$id": "Moves / Secure an Advantage (scene challenge)",
-    "Name": "Secure an Advantage (scene challenge)",
-    "Category": "Adventure Moves",
+    "$id": "Moves / Secure an Advantage (Scene Challenge)",
+    "Name": "Secure an Advantage (Scene Challenge)",
+    "Category": "Scene Challenge Moves",
     "Variant of": "Moves / Secure an Advantage",
     "Trigger": {
-      "$id": "Moves / Secure an Advantage (scene challenge) / Trigger",
-      "Text": "When you assess a situation, make preparations, or attempt to gain leverage...",
+      "$id": "Moves / Secure an Advantage (Scene Challenge) / Trigger",
+      "Text": "When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...",
       "Options": [
         {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Trigger / Options / 1",
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Trigger / Options / 1",
           "Text": "With speed, mobility, or agility",
           "Action roll": { "Stat": "Edge" }
         },
         {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Trigger / Options / 2",
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Trigger / Options / 2",
           "Text": "With resolve, command, or sociability",
           "Action roll": { "Stat": "Heart" }
         },
         {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Trigger / Options / 3",
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Trigger / Options / 3",
           "Text": "With strength, endurance, aggression",
           "Action roll": { "Stat": "Iron" }
         },
         {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Trigger / Options / 4",
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Trigger / Options / 4",
           "Text": "With deception, stealth, or trickery",
           "Action roll": { "Stat": "Shadow" }
         },
         {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Trigger / Options / 5",
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Trigger / Options / 5",
           "Text": "With expertise, focus, or observation",
           "Action roll": { "Stat": "Wits" }
         }
       ]
     },
-    "Text": "On a **strong hit**, take both. On a **weak hit**, choose one.\n\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)\n\nOn a strong hit with a match, also mark one box of progress.\n\nOn a **miss**, fill a clock segment and [Pay the Price](Moves#Pay-the-Price). On a miss with a match, fill two clock segments.",
+    "Text": "**When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge,** envision your action and roll. If you act...\n\n  * With speed, mobility, or agility: Roll +edge\n  * With resolve, command, or sociability: Roll +heart\n  * With strength, endurance, aggression: Roll +iron\n  * With deception, stealth, or trickery: Roll +shadow\n  * With expertise, focus, or observation: Roll +wits\n\nOn a **strong hit**, take both. On a **strong hit with a match**, take both and mark mark progress. On a **weak hit**, choose one.\n\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)\n\nOn a **miss**, you fail or your assumptions betray you. Fill a clock segment and [Pay the Price](#Pay-the-Price). On a **miss with a match**, fill two segments and [Pay the Price](#Pay-the-Price).",
     "Outcomes": {
-      "$id": "Moves / Secure an Advantage (scene challenge) / Outcomes",
+      "$id": "Moves / Secure an Advantage (Scene Challenge) / Outcomes",
       "Strong Hit": {
-        "$id": "Moves / Secure an Advantage (scene challenge) / Outcomes / Strong Hit",
+        "$id": "Moves / Secure an Advantage (Scene Challenge) / Outcomes / Strong Hit",
         "Text": "Take +2 momentum and add +1 on your next move (not a progress move).",
         "With a Match": {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Outcomes / Strong Hit / With a Match",
-          "Text": "Mark one box of progress, take +2 momentum, and add +1 on your next move (not a progress move)."
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Outcomes / Strong Hit / With a Match",
+          "Text": "Mark progress, take +2 momentum, and add +1 on your next move (not a progress move)."
         }
       },
       "Weak Hit": {
-        "$id": "Moves / Secure an Advantage (scene challenge) / Outcomes / Weak Hit",
+        "$id": "Moves / Secure an Advantage (Scene Challenge) / Outcomes / Weak Hit",
         "Text": "Choose one.\n\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)"
       },
       "Miss": {
-        "$id": "Moves / Secure an Advantage (scene challenge) / Outcomes / Miss",
-        "Text": "Fill a clock segment and [Pay the Price](Moves#Pay-the-Price).",
+        "$id": "Moves / Secure an Advantage (Scene Challenge) / Outcomes / Miss",
+        "Text": "You fail or your assumptions betray you. Fill a clock segment and [Pay the Price](Moves#Pay-the-Price).",
         "With a Match": {
-          "$id": "Moves / Secure an Advantage (scene challenge) / Outcomes / Miss / With a Match",
-          "Text": "Fill two clock segments and [Pay the Price](Moves#Pay-the-Price)."
+          "$id": "Moves / Secure an Advantage (Scene Challenge) / Outcomes / Miss / With a Match",
+          "Text": "You fail or your assumptions betray you. Fill two clock segments and [Pay the Price](Moves#Pay-the-Price)."
         }
       }
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
   },
   {
-    "$id": "Moves / Resolve Scene Challenge",
-    "Name": "Resolve Scene Challenge",
+    "$id": "Moves / Finish the Scene",
+    "Name": "Finish the Scene",
+    "Category": "Scene Challenge Moves",
     "Trigger": {
-      "$id": "Moves / Resolve Scene Challenge / Trigger",
-      "Text": "When the tension clock is filled"
+      "$id": "Moves / Finish the Scene / Trigger",
+      "Text": "When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion...",
+      "Options": [
+        {
+          "$id": "Moves / Finish the Scene / Trigger / Options / 1",
+          "Progress roll": { "Track": "Scene Challenge Progress" }
+        }
+      ]
     },
-    "Text": "When the tension clock is filled, time is up. You must resolve the encounter by making a progress roll. You can also decide to make the roll whenever you have accumulated enough progress to make success likely, or if you feel that the narrative of the scene is guiding you to a conclusion.\n\nTo resolve the scene challenge, roll the challenge dice and compare to your progress track. As with standard progress moves, you may not burn momentum on this roll, and you are not affected by negative momentum.\n\nOn a **strong hit**, you achieve your objective unconditionally.\n\nOn a **weak hit**, you succeed, but not without cost. You must [Pay the Price](Moves#Pay-the-Price). Make this a minor cost relative to the scope of the scene.\n\nOn a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Moves#Pay-the-Price). Make it hurt.",
+    "Text": "**When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion,** roll the challenge dice and compare to your progress.\n\nOn a **strong hit**, you achieve your objective unconditionally.\n\nOn a **weak hit**, you succeed, but not without cost. You must [Pay the Price](Moves#Pay-the-Price). Make this a minor cost relative to the scope of the scene.\n\nOn a **miss**, you fail or are undermined by a dire and costly turn of events. [Pay the Price](Moves#Pay-the-Price).",
     "Outcomes": {
-      "$id": "Moves / Resolve Scene Challenge / Outcomes",
+      "$id": "Moves / Finish the Scene / Outcomes",
       "Strong Hit": {
-        "$id": "Moves / Resolve Scene Challenge / Outcomes / Strong Hit",
+        "$id": "Moves / Finish the Scene / Outcomes / Strong Hit",
         "Text": "You achieve your objective unconditionally."
       },
       "Weak Hit": {
-        "$id": "Moves / Resolve Scene Challenge / Outcomes / Weak Hit",
+        "$id": "Moves / Finish the Scene / Outcomes / Weak Hit",
         "Text": "You succeed, but not without cost. You must [Pay the Price](Moves#Pay-the-Price). Make this a minor cost relative to the scope of the scene."
       },
       "Miss": {
-        "$id": "Moves / Resolve Scene Challenge / Outcomes / Miss",
-        "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Moves#Pay-the-Price). Make it hurt."
+        "$id": "Moves / Finish the Scene / Outcomes / Miss",
+        "Text": "You fail, or are undermined by a dramatic and costly turn of events. [Pay the Price](Moves#Pay-the-Price). Make it hurt."
       }
     },
     "Source": { "Title": "Starforged Backer Preview", "Date": "020122" }
