@@ -2084,7 +2084,35 @@
           { "Chance": 60, "Description": "Medium", "Details": "person-sized" },
           { "Chance": 90, "Description": "Large", "Details": "vehicle-sized" },
           { "Chance": 99, "Description": "Huge", "Details": "whale-sized" },
-          { "Chance": 100, "Description": "⏵Ultra-scale" }
+          {
+            "Chance": 100,
+            "Description": "⏵Ultra-scale",
+            "Oracle rolls": ["Oracles / Creatures / Ultra-scale"]
+          }
+        ]
+      },
+      {
+        "Id": "Oracles / Creatures / Ultra-scale",
+        "Name": "Ultra-scale",
+        "Category": "Oracles / Creatures",
+        "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
+        "Usage": {
+          "Initial": true,
+          "Requires": [
+            {
+              "Oracle rolls": ["Oracles / Creatures / Scale"],
+              "Results": ["Ultra-scale", "⏵Ultra-scale"]
+            }
+          ]
+        },
+        "Table": [
+          { "Chance": 89, "Description": "Titanic", "Details": "hill-sized" },
+          {
+            "Chance": 99,
+            "Description": "Colossal",
+            "Details": "mountain-sized"
+          },
+          { "Chance": 100, "Description": "Vast", "Details": "planet-sized" }
         ]
       },
       {
@@ -2107,7 +2135,7 @@
             "Usage": {
               "Requires": [
                 {
-                  "Oracle rolls": ["Creatures / Environment"],
+                  "Oracle rolls": ["Oracles / Creatures / Environment"],
                   "Results": ["Space"]
                 }
               ]
@@ -2146,7 +2174,7 @@
             "Usage": {
               "Requires": [
                 {
-                  "Oracle rolls": ["Creatures / Environment"],
+                  "Oracle rolls": ["Oracles / Creatures / Environment"],
                   "Results": ["Interior"]
                 }
               ]
@@ -2185,7 +2213,7 @@
             "Usage": {
               "Requires": [
                 {
-                  "Oracle rolls": ["Creatures / Environment"],
+                  "Oracle rolls": ["Oracles / Creatures / Environment"],
                   "Results": ["Land"]
                 }
               ]
@@ -2224,7 +2252,7 @@
             "Usage": {
               "Requires": [
                 {
-                  "Oracle rolls": ["Creatures / Environment"],
+                  "Oracle rolls": ["Oracles / Creatures / Environment"],
                   "Results": ["Liquid"]
                 }
               ]
@@ -2263,7 +2291,7 @@
             "Usage": {
               "Requires": [
                 {
-                  "Oracle rolls": ["Creatures / Environment"],
+                  "Oracle rolls": ["Oracles / Creatures / Environment"],
                   "Results": ["Air"]
                 }
               ]
@@ -2655,9 +2683,9 @@
               "Requires": [
                 {
                   "Oracle rolls": [
-                    "Derelicts / Type / Planetside",
-                    "Derelicts / Type / Orbital",
-                    "Derelicts / Type / Deep Space"
+                    "Oracles / Derelicts / Type / Planetside",
+                    "Oracles / Derelicts / Type / Orbital",
+                    "Oracles / Derelicts / Type / Deep Space"
                   ],
                   "Results": ["Starship"]
                 }
@@ -2682,9 +2710,9 @@
               "Requires": [
                 {
                   "Oracle rolls": [
-                    "Derelicts / Type / Planetside",
-                    "Derelicts / Type / Orbital",
-                    "Derelicts / Type / Deep Space"
+                    "Oracles / Derelicts / Type / Planetside",
+                    "Oracles / Derelicts / Type / Orbital",
+                    "Oracles / Derelicts / Type / Deep Space"
                   ],
                   "Results": ["Settlement"]
                 }
@@ -2712,7 +2740,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Access", "⏵Access"]
             }
           ]
@@ -2851,7 +2879,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Community", "⏵Community"]
             }
           ]
@@ -2989,7 +3017,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Engineering", "⏵Engineering"]
             }
           ]
@@ -3121,7 +3149,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Living", "⏵Living"]
             }
           ]
@@ -3262,7 +3290,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Medical", "⏵Medical"]
             }
           ]
@@ -3391,7 +3419,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Operations", "⏵Operations"]
             }
           ]
@@ -3535,7 +3563,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Production", "⏵Production"]
             }
           ]
@@ -3664,7 +3692,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Derelicts / Zone"],
+              "Oracle rolls": ["Oracles / Derelicts / Zone"],
               "Results": ["Research", "⏵Research"]
             }
           ]
@@ -3862,7 +3890,10 @@
           "Initial": true,
           "Max rolls": 3,
           "Requires": [
-            { "Oracle rolls": ["Factions / Type"], "Results": ["Dominion"] }
+            {
+              "Oracle rolls": ["Oracles / Factions / Type"],
+              "Results": ["Dominion"]
+            }
           ]
         },
         "Content": { "Part of speech": ["noun"], "Tags": ["abstract noun"] },
@@ -3902,7 +3933,10 @@
         "Usage": {
           "Initial": true,
           "Requires": [
-            { "Oracle rolls": ["Factions / Type"], "Results": ["Dominion"] }
+            {
+              "Oracle rolls": ["Oracles / Factions / Type"],
+              "Results": ["Dominion"]
+            }
           ]
         },
         "Content": { "Part of speech": ["fragment"], "Tags": ["description"] },
@@ -3927,7 +3961,10 @@
         "Usage": {
           "Initial": true,
           "Requires": [
-            { "Oracle rolls": ["Factions / Type"], "Results": ["Guild"] }
+            {
+              "Oracle rolls": ["Oracles / Factions / Type"],
+              "Results": ["Guild"]
+            }
           ]
         },
         "Content": { "Part of speech": ["noun", "plural"], "Tags": ["actor"] },
@@ -3960,7 +3997,10 @@
         "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
         "Usage": {
           "Requires": [
-            { "Oracle rolls": ["Factions / Type"], "Results": ["Fringe Group"] }
+            {
+              "Oracle rolls": ["Oracles / Factions / Type"],
+              "Results": ["Fringe Group"]
+            }
           ]
         },
         "Content": { "Part of speech": ["noun", "plural"], "Tags": ["actor"] },
@@ -4612,7 +4652,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Chaotic", "⏵Chaotic"]
             }
           ]
@@ -4769,7 +4809,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Fortified", "⏵Fortified"]
             }
           ]
@@ -4926,7 +4966,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Haunted", "⏵Haunted"]
             }
           ]
@@ -5080,7 +5120,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Infested", "⏵Infested"]
             }
           ]
@@ -5231,7 +5271,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Inhabited", "⏵Inhabited"]
             }
           ]
@@ -5391,7 +5431,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Mechanical", "⏵Mechanical"]
             }
           ]
@@ -5542,7 +5582,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Ruined", "⏵Ruined"]
             }
           ]
@@ -5705,7 +5745,7 @@
         "Usage": {
           "Requires": [
             {
-              "Oracle rolls": ["Location Theme / Type"],
+              "Oracle rolls": ["Oracles / Location Theme / Type"],
               "Results": ["Sacred", "⏵Sacred"]
             }
           ]
@@ -7698,7 +7738,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
                   { "Chance": 60, "Description": "Orbital settlement" },
@@ -7715,7 +7755,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
                   { "Chance": 83, "Description": "Orbital settlement" },
@@ -7732,7 +7772,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
                   { "Chance": 96, "Description": "Orbital settlement" },
@@ -7892,7 +7932,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 60, "Description": "None" },
                   { "Chance": 75, "Description": "Orbital settlement" },
@@ -7909,7 +7949,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
                   { "Chance": 92, "Description": "Orbital settlement" },
@@ -7926,7 +7966,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
                   { "Chance": 98, "Description": "Orbital settlement" },
@@ -8083,7 +8123,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 80, "Description": "None" },
                   { "Chance": 90, "Description": "Orbital settlement" },
@@ -8100,7 +8140,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
                   { "Chance": 97, "Description": "Orbital settlement" },
@@ -8115,7 +8155,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
                   { "Chance": 98, "Description": "Orbital settlement" },
@@ -8369,7 +8409,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
                   { "Chance": 60, "Description": "Orbital settlement" },
@@ -8386,7 +8426,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
                   { "Chance": 83, "Description": "Orbital settlement" },
@@ -8403,7 +8443,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
                   { "Chance": 96, "Description": "Orbital settlement" },
@@ -8549,7 +8589,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
                   { "Chance": 70, "Description": "Orbital settlement" },
@@ -8566,7 +8606,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
                   { "Chance": 87, "Description": "Orbital settlement" },
@@ -8583,7 +8623,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
                   { "Chance": 96, "Description": "Orbital settlement" },
@@ -8734,7 +8774,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 40, "Description": "None" },
                   { "Chance": 55, "Description": "Orbital settlement" },
@@ -8751,7 +8791,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 65, "Description": "None" },
                   { "Chance": 75, "Description": "Orbital settlement" },
@@ -8768,7 +8808,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
                   { "Chance": 90, "Description": "Orbital settlement" },
@@ -8924,7 +8964,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 40, "Description": "None" },
                   { "Chance": 55, "Description": "Orbital settlement" },
@@ -8941,7 +8981,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 65, "Description": "None" },
                   { "Chance": 75, "Description": "Orbital settlement" },
@@ -8958,7 +8998,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
                   { "Chance": 90, "Description": "Orbital settlement" },
@@ -9106,7 +9146,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
                   { "Chance": 70, "Description": "Orbital settlement" },
@@ -9123,7 +9163,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 75, "Description": "None" },
                   { "Chance": 87, "Description": "Orbital settlement" },
@@ -9140,7 +9180,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
                   { "Chance": 96, "Description": "Orbital settlement" },
@@ -9291,7 +9331,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 70, "Description": "None" },
                   { "Chance": 90, "Description": "Orbital settlement" },
@@ -9308,7 +9348,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 85, "Description": "None" },
                   { "Chance": 96, "Description": "Orbital settlement" },
@@ -9324,7 +9364,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
                   { "Chance": 99, "Description": "Orbital settlement" },
@@ -9521,7 +9561,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 80, "Description": "None" },
                   { "Chance": 90, "Description": "Orbital settlement" },
@@ -9538,7 +9578,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 90, "Description": "None" },
                   { "Chance": 97, "Description": "Orbital settlement" },
@@ -9553,7 +9593,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 95, "Description": "None" },
                   { "Chance": 98, "Description": "Orbital settlement" },
@@ -9695,7 +9735,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
                 "Table": [
                   { "Chance": 20, "Description": "None" },
                   { "Chance": 30, "Description": "Orbital settlement" },
@@ -9712,7 +9752,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
                 "Table": [
                   { "Chance": 50, "Description": "None" },
                   { "Chance": 55, "Description": "Orbital settlement" },
@@ -9729,7 +9769,7 @@
                   "Name": "Starforged Backer Preview",
                   "Date": "020122"
                 },
-                "Usage": { "Requires": [{}] },
+                "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
                 "Table": [
                   { "Chance": 80, "Description": "None" },
                   { "Chance": 83, "Description": "Orbital settlement" },
@@ -9947,7 +9987,7 @@
             "Name": "Terminus",
             "Category": "Oracles / Settlements",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
             "Table": [
               { "Chance": 10, "Description": "Few" },
               { "Chance": 25, "Description": "Dozens" },
@@ -9961,7 +10001,7 @@
             "Name": "Outlands",
             "Category": "Oracles / Settlements",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
             "Table": [
               { "Chance": 15, "Description": "Few" },
               { "Chance": 35, "Description": "Dozens" },
@@ -9975,7 +10015,7 @@
             "Name": "Expanse",
             "Category": "Oracles / Settlements",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
             "Table": [
               { "Chance": 20, "Description": "Few" },
               { "Chance": 50, "Description": "Dozens" },
@@ -10452,7 +10492,7 @@
             "Name": "Terminus",
             "Category": "Oracles / Space",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
             "Content": { "Part of speech": ["fragment"] },
             "Table": [
               {
@@ -10517,7 +10557,7 @@
             "Name": "Outlands",
             "Category": "Oracles / Space",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
             "Content": { "Part of speech": ["fragment"] },
             "Table": [
               {
@@ -10582,7 +10622,10 @@
             "Name": "Expanse",
             "Category": "Oracles / Space",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Repeatable": true, "Requires": [{}] },
+            "Usage": {
+              "Repeatable": true,
+              "Requires": [{ "Region": ["Expanse"] }]
+            },
             "Content": { "Part of speech": ["fragment"] },
             "Table": [
               {
@@ -11367,7 +11410,7 @@
           "Initial": true,
           "Requires": [
             {
-              "Oracle rolls": ["Starship / Type"],
+              "Oracle rolls": ["Oracles / Starship / Type"],
               "Results": ["Fleet", "⏵Fleet"]
             }
           ]
@@ -11464,7 +11507,7 @@
             "Name": "Terminus",
             "Category": "Oracles / Starships",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Terminus"] }] },
             "Content": {
               "Part of speech": ["fragment"],
               "Tags": ["objective"]
@@ -11615,7 +11658,7 @@
             "Name": "Outlands",
             "Category": "Oracles / Starships",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Outlands"] }] },
             "Content": {
               "Part of speech": ["fragment"],
               "Tags": ["objective"]
@@ -11766,7 +11809,7 @@
             "Name": "Expanse",
             "Category": "Oracles / Starships",
             "Source": { "Name": "Starforged Backer Preview", "Date": "020122" },
-            "Usage": { "Requires": [{}] },
+            "Usage": { "Requires": [{ "Region": ["Expanse"] }] },
             "Content": {
               "Part of speech": ["fragment"],
               "Tags": ["objective"]
