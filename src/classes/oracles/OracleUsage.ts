@@ -19,16 +19,16 @@ export class OracleUsage implements IOracleUsage {
   Repeatable?: boolean | undefined;
   Suggestions?: Suggestions | undefined;
   Requires?: OracleRequirement[] | undefined;
-  constructor(data: IOracleUsage) {
-    if (data) {
-      this.Initial = data.Initial;
-      this["Select table by"] = data["Select table by"];
-      this["Select table by"] = data["Select table by"];
-      this["Max rolls"] = data["Max rolls"];
-      this["Min rolls"] = data["Min rolls"];
-      this.Repeatable = data.Repeatable;
-      if (data.Suggestions) { this.Suggestions = new Suggestions(data.Suggestions); }
-      if (data.Requires && data.Requires.length) { this.Requires = data.Requires.map(reqData => new OracleRequirement(reqData)); }
+  constructor(json: IOracleUsage) {
+    if (json) {
+      this.Initial = json.Initial;
+      this["Select table by"] = json["Select table by"];
+      this["Select table by"] = json["Select table by"];
+      this["Max rolls"] = json["Max rolls"];
+      this["Min rolls"] = json["Min rolls"];
+      this.Repeatable = json.Repeatable;
+      this.Suggestions = json.Suggestions ? new Suggestions(json.Suggestions) : undefined;
+      this.Requires = json.Requires ? json.Requires.map(item => new OracleRequirement(item)) : undefined;
     }
   }
 }

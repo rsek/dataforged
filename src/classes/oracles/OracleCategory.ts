@@ -1,29 +1,44 @@
 
 
 import IOracleData, { IOracle } from "./IOracle";
-import { OracleDisplay } from "./OracleDisplay";
+import { IOracleDisplay, OracleDisplay } from "./OracleDisplay";
 import { OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, OracleSubcategoryName } from "./OracleId";
 import { IOracleInfo, IOracleInfoData, OracleInfo } from "./OracleInfo";
-import { OracleUsage } from "./OracleUsage";
+import { IOracleUsage, OracleUsage } from "./OracleUsage";
 import { isOracleUsage, isOracles, isOracleCategories } from "../typeguards";
 import { ISource, Source } from "../general/Source";
 import buildOracleId from "../../utilities/buildOracleId";
 import _ from "lodash";
+import { IHasId } from "../general/Id";
 
-export interface IOracleCategory extends IOracleData {
+
+export interface IOracleCategoryData {
+  $id: OracleCategoryId;
+  Name: OracleCategoryName;
+  Aliases?: string[] | undefined;
   Source: ISource;
+  Category?: OracleCategoryJaggedId | undefined;
+  Description?: string | undefined;
+  Display?: IOracleDisplay | undefined;
+  Usage?: IOracleUsage | undefined;
+  Oracles?: IOracleInfoData[] | undefined;
+  Categories?: IOracleCategoryData[] | undefined;
+  _childOf?: OracleCategoryName | undefined;
+  _parentOf?: OracleSubcategoryName[] | undefined;
+}
+export interface IOracleCategory extends IOracleCategoryData {
+  $id: OracleCategoryId;
+  Name: OracleCategoryName;
+  Aliases?: string[] | undefined;
+  Source: Source;
+  Category?: OracleCategoryJaggedId | undefined;
+  Description?: string | undefined;
+  Display?: IOracleDisplay;
+  Usage?: IOracleUsage | undefined;
   Oracles?: IOracleInfo[] | undefined;
   Categories?: IOracleCategory[] | undefined;
 }
-export interface IOracleCategoryData extends IOracleCategory {
-  $id: OracleCategoryId;
-  Name: OracleCategoryName;
-  _childOf?: OracleCategoryName | undefined;
-  _parentOf?: OracleSubcategoryName[] | undefined;
-  Oracles?: IOracleInfoData[] | undefined;
-  Categories?: IOracleCategoryData[] | undefined;
-  Category?: OracleCategoryJaggedId | undefined;
-}
+
 export class OracleCategory implements IOracleCategory, IOracle {
   $id: OracleCategoryId;
   Name: OracleCategoryName;

@@ -4,14 +4,17 @@ import _ from "lodash";
 import { ISource, Source } from "../general/Source";
 import IOracleData, { IOracle } from "./IOracle";
 import { IOracleContent, OracleContent } from "./OracleContent";
-import { IOracleDisplay, OracleTableDisplay } from "./OracleDisplay";
+import { IOracleDisplay, OracleDisplay, OracleTableDisplay } from "./OracleDisplay";
 import { OracleCategoryId, OracleTableId } from "./OracleId";
-import { IRowData, IRowRollData, OracleTableRow } from "./OracleTableRow";
+import { IOracleTableRow, IRowData, IRowRollData, OracleTableRow } from "./OracleTableRow";
 import { IOracleUsage, OracleUsage } from "./OracleUsage";
 import { isOracles, isOracleTable, isOracleUsage } from "../typeguards";
 import buildOracleId from "../../utilities/buildOracleId";
 
-export interface IOracleInfo extends IOracleData {
+
+export interface IOracleInfoData extends IOracleData {
+
+  $id?: OracleTableId;
   Category: OracleCategoryId;
   "Member of"?: OracleTableId | undefined;
   Description?: string | undefined;
@@ -19,17 +22,23 @@ export interface IOracleInfo extends IOracleData {
   Usage?: IOracleUsage | undefined;
   Content?: IOracleContent | undefined;
   Display?: IOracleDisplay | undefined;
-  Oracles?: IOracleInfo[] | undefined;
-  Table?: IRowData[] | IRowRollData[] | OracleTableRow[] | undefined;
-}
-
-export interface IOracleInfoData extends IOracleInfo {
-  Table?: IRowData[] | IRowRollData[] | undefined;
   Oracles?: IOracleInfoData[] | undefined;
+  Table?: IRowData[] | IRowRollData[] | IOracleTableRow[] | undefined;
   _template?: IRowData[] | undefined;
   _childOf?: OracleCategoryId | undefined;
   _parentOf?: string[] | undefined;
 }
+
+export interface IOracleInfo extends IOracleInfoData {
+  $id: OracleTableId;
+  Source: Source;
+  Usage?: IOracleUsage | undefined;
+  Content?: IOracleContent | undefined;
+  Display?: IOracleDisplay | undefined;
+  Oracles?: IOracleInfo[] | undefined;
+  Table?: IOracleTableRow[] | undefined;
+}
+
 /**
  * Represents an Oracle, including associated metadata in addition to tables (as opposed to a Table, which contains only the table data).
  *
@@ -66,14 +75,14 @@ export class OracleInfo implements IOracleInfo, IOracle {
 
     this.Description = json.Description;
     this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
-    this.Display = new OracleTableDisplay(json);
+    this.Display = new OracleTableDisplay(json as IOracleInfo);
     if (json.Usage) {
       this.Usage = isOracleUsage(json.Usage) ? new OracleUsage(json.Usage) : undefined;
     }
     if (json.Content) {
       this.Content = new OracleContent(json.Content);
     }
-    if (json.Table && isOracleTable(json.Table)) {
+    if (json.Table && isOracleTable(json.Table as IRowData[])) {
       let tableData = json.Table as IRowData[];
       if (json._template) {
         const newRanges = tableData.reverse() as IRowRollData[];

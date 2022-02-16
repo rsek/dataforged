@@ -84,7 +84,7 @@ export class OracleTableRow implements IOracleTableRow {
                 }
                 break;
               case "Oracle rolls":
-                // TODO
+                this["Oracle rolls"] = value as OracleTableId[];
                 break;
               case "Multiple rolls":
                 this["Multiple rolls"] = new MultipleRolls(value as IMultipleRolls);

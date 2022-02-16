@@ -1,4 +1,6 @@
 
 import buildDataforged from "./utilities/buildDataforged";
+import buildDataforgedLegacy from "./utilities/buildDataforgedLegacy";
 
-buildDataforged("./next/");
+let data = buildDataforged("./next/");
+buildDataforgedLegacy("./legacy/", data);

@@ -2,12 +2,12 @@
 
 import { MdString } from "../general/MdString";
 import { Source, ISource } from "../general/Source";
-import { ISuggestions,Suggestions } from "../general/Suggestions";
+import { ISuggestions, Suggestions } from "../general/Suggestions";
 import { OracleTableId } from "../oracles/OracleId";
 import MoveOutcomes, { IMoveOutcomes } from "./MoveOutcome";
-import { IMoveTrigger, MoveTrigger } from "./MoveTrigger";
+import { IMoveTriggerData, MoveTrigger } from "./MoveTrigger";
 
-export type MoveId =`Moves / ${string}`;
+export type MoveId = `Moves / ${string}`;
 
 export type MoveCategory = `${"Session" | "Adventure" | "Quest" | "Connection" | "Exploration" | "Combat" | "Suffer" | "Recover" | "Threshold" | "Legacy" | "Fate" | "Asset"} Moves`;
 
@@ -45,7 +45,7 @@ export interface IMove {
   Category: MoveCategory;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: MoveId | undefined;
-  Trigger: IMoveTrigger;
+  Trigger: IMoveTriggerData;
   Text: MdString;
   Oracles?: OracleTableId[] | undefined;
   Source?: ISource | undefined;

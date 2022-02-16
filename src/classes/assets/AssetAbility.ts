@@ -1,38 +1,44 @@
 
 
-import { IMove, Move, MoveId } from "../moves/Move";
-import { IAsset } from "./Asset";
+import { IMove, Move } from "../moves/Move";
+import { IAsset, IAssetData } from "./Asset";
 import { IInput, Input, isNumberInput, isSelectInput, isTextInput, NumberInput, SelectInput, TextInput } from "../general/Input";
 import { IHasId } from "../general/Id";
-import { IMoveTrigger, MoveTrigger } from "../moves/MoveTrigger";
+import { AlterMove, IAlterMoveData } from "./AlterMove";
 
-interface IAlterMove extends Omit<Partial<IMove>, "$id"> {
-  Move: MoveId;
-  Trigger: IMoveTrigger;
-}
-
-export class AlterMove implements IAlterMove, Omit<IHasId, "Name"> {
-  $id: string;
-  Move: MoveId;
-  Trigger: MoveTrigger;
-  constructor(json: IAlterMove, id: string) {
-    this.$id = id;
-    this.Move = json.Move;
-    this.Trigger = new MoveTrigger(json.Trigger, `${this.$id} / Trigger`);
-    // asset trigger ID
-    // Moves / Strike / Trigger / Assets / Gunner / Abilities / 1 /
-  }
-}
-
-export class AssetAbility implements IAssetAbility, Omit<IHasId, "Name"> {
+// interface for outgoing JSON + deserialization
+export interface IAssetAbility extends IAssetAbilityData, Omit<IHasId, "Name"> {
   $id: string;
   Text: string;
   Move?: Move | undefined;
   Inputs?: Input[] | undefined;
-  "Alter Moves"?: IAlterMove[] | undefined;
-  "Alter Properties"?: Partial<IAsset> | undefined;
+  "Alter Moves"?: AlterMove[] | undefined;
+  "Alter Properties"?: Partial<IAssetData> | undefined;
   Enabled: boolean;
-  constructor(json: IAssetAbility, id: string) {
+}
+
+// interface for incoming data
+export interface IAssetAbilityData {
+  $id?: string | undefined;
+  Text: string;
+  Enabled?: boolean | undefined;
+  Move?: IMove | undefined;
+  Inputs?: IInput[] | Input[] | undefined;
+  "Alter Moves"?: IAlterMoveData[] | undefined;
+  "Alter Properties"?: Partial<IAssetData> | undefined;
+}
+
+
+
+export class AssetAbility implements IAssetAbility {
+  $id: string;
+  Text: string;
+  Move?: Move | undefined;
+  Inputs?: Input[] | undefined;
+  "Alter Moves"?: AlterMove[] | undefined;
+  "Alter Properties"?: Partial<IAssetData> | undefined;
+  Enabled: boolean;
+  constructor(json: IAssetAbilityData, id: string) {
     this.$id = id;
     this.Text = json.Text;
     this.Move = json.Move ? new Move(json.Move, `Moves / ${this.$id}`) : undefined;
@@ -59,14 +65,4 @@ export class AssetAbility implements IAssetAbility, Omit<IHasId, "Name"> {
     this["Alter Properties"] = json["Alter Properties"];
     this.Enabled = json.Enabled ?? false;
   }
-}
-
-export interface IAssetAbility {
-  $id?: string | undefined;
-  Text: string;
-  Enabled?: boolean | undefined;
-  Move?: IMove | undefined;
-  Inputs?: IInput[] | Input[] | undefined;
-  "Alter Moves"?: IAlterMove[] | undefined;
-  "Alter Properties"?: Partial<IAsset> | undefined;
 }
