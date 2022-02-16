@@ -957,22 +957,22 @@
     "Name": "Characters",
     "Aliases": ["NPC"],
     "Display": { "Title": "Characters" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Characters / Name",
         "Name": "Name",
         "Category": "Oracles / Characters",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Character Name",
           "Column labels": ["Roll", "Given Name", "Family Name", "Callsign"],
           "Table from": {
-            "Roll columns": ["Characters / Name / Given Name"],
+            "Roll columns": ["Oracles / Characters / Name / Given Name"],
             "Result columns": [
-              "Characters / Name / Given Name",
-              "Characters / Name / Family Name",
-              "Characters / Name / Callsign"
+              "Oracles / Characters / Name / Given Name",
+              "Oracles / Characters / Name / Family Name",
+              "Oracles / Characters / Name / Callsign"
             ]
           }
         },
@@ -986,14 +986,21 @@
             "Description": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Given Name",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Characters / Name"
+              "Column of": "Oracles / Characters / Name"
             },
-            "Usage": { "Suggestions": {} },
+            "Usage": {
+              "Suggestions": {
+                "Oracle rolls": [
+                  "Oracles / Characters / Name / Callsign",
+                  "Oracles / Characters / Name / Family Name"
+                ]
+              }
+            },
             "Content": { "Part of speech": ["proper noun"] },
             "Table": [
               {
@@ -1606,14 +1613,21 @@
             "Description": "Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Callsign",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Characters / Name"
+              "Column of": "Oracles / Characters / Name"
             },
-            "Usage": { "Suggestions": {} },
+            "Usage": {
+              "Suggestions": {
+                "Oracle rolls": [
+                  "Oracles / Characters / Name / Given Name",
+                  "Oracles / Characters / Name / Family Name"
+                ]
+              }
+            },
             "Content": { "Part of speech": ["proper noun"] },
             "Table": [
               {
@@ -2226,14 +2240,21 @@
             "Description": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Family Name",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Characters / Name"
+              "Column of": "Oracles / Characters / Name"
             },
-            "Usage": { "Suggestions": {} },
+            "Usage": {
+              "Suggestions": {
+                "Oracle rolls": [
+                  "Oracles / Characters / Name / Given Name",
+                  "Oracles / Characters / Name / Callsign"
+                ]
+              }
+            },
             "Content": { "Part of speech": ["proper noun"] },
             "Table": [
               {
@@ -2844,7 +2865,7 @@
         "$id": "Oracles / Characters / First Look",
         "Name": "First Look",
         "Category": "Oracles / Characters",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "First Look",
           "Column labels": ["Roll", "Result"]
@@ -3092,7 +3113,7 @@
         "$id": "Oracles / Characters / Disposition",
         "Name": "Disposition",
         "Category": "Oracles / Characters",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Initial Disposition",
           "Column labels": ["Roll", "Result"]
@@ -3178,7 +3199,7 @@
         "$id": "Oracles / Characters / Role",
         "Name": "Role",
         "Category": "Oracles / Characters",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Character Role",
           "Column labels": ["Roll", "Result"]
@@ -3488,7 +3509,7 @@
         "$id": "Oracles / Characters / Goal",
         "Name": "Goal",
         "Category": "Oracles / Characters",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Character Goal",
           "Column labels": ["Roll", "Result"]
@@ -3870,7 +3891,7 @@
         "$id": "Oracles / Characters / Revealed Aspect",
         "Name": "Revealed Aspect",
         "Category": "Oracles / Characters",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Revealed Character Aspect",
           "Column labels": ["Roll", "Result"]
@@ -4486,16 +4507,18 @@
     "$id": "Oracles / Core",
     "Name": "Core",
     "Display": { "Title": "Core Oracles" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Core / Action",
         "Name": "Action",
         "Category": "Oracles / Core",
         "Description": "Use these oracle tables to reveal details about a goal, situation, or event. They provide a word or phrase that can be taken literally or interpreted as an abstraction.\n\nAction and Theme can answer questions such as:\n\n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Action", "Column labels": ["Roll", "Result"] },
-        "Usage": { "Suggestions": {} },
+        "Usage": {
+          "Suggestions": { "Oracle rolls": ["Oracles / Core / Theme"] }
+        },
         "Content": { "Part of speech": ["verb"] },
         "Table": [
           {
@@ -5105,9 +5128,11 @@
         "Name": "Theme",
         "Category": "Oracles / Core",
         "Description": "Use these oracle tables to reveal details about a goal, situation, or event. They provide a word or phrase that can be taken literally or interpreted as an abstraction.\n\nAction and Theme can answer questions such as:\n\n  * “What does this character want?”\n  * “What is this faction’s mission?”\n  * “What caused the downfall of this settlement?”\n  * “What is this device’s purpose?”",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Theme", "Column labels": ["Roll", "Result"] },
-        "Usage": { "Suggestions": {} },
+        "Usage": {
+          "Suggestions": { "Oracle rolls": ["Oracles / Core / Action"] }
+        },
         "Content": {
           "Part of speech": ["noun", "common noun"],
           "Tags": ["abstract noun"]
@@ -5720,12 +5745,14 @@
         "Name": "Descriptor",
         "Category": "Oracles / Core",
         "Description": "Use these oracles to generate the details of a location, discovery, or encounter. The Descriptor oracle is particularly handy for quick generation of a location. For example, use it to describe the basic nature of a planet instead of rolling on the detailed planet oracles.\n\nDescriptor and Focus can answer questions such as:\n\n  * “What is this ship’s cargo?”\n  * “What is the nature of this planet?”\n  * “What is inside this station?”\n  * “What hazard do I encounter?”",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Descriptor",
           "Column labels": ["Roll", "Result"]
         },
-        "Usage": { "Suggestions": {} },
+        "Usage": {
+          "Suggestions": { "Oracle rolls": ["Oracles / Core / Focus"] }
+        },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [
           {
@@ -6335,9 +6362,11 @@
         "Name": "Focus",
         "Category": "Oracles / Core",
         "Description": "Use these oracles to generate the details of a location, discovery, or encounter. The Descriptor oracle is particularly handy for quick generation of a location. For example, use it to describe the basic nature of a planet instead of rolling on the detailed planet oracles.\n\nDescriptor and Focus can answer questions such as:\n\n  * “What is this ship’s cargo?”\n  * “What is the nature of this planet?”\n  * “What is inside this station?”\n  * “What hazard do I encounter?”",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Focus", "Column labels": ["Roll", "Result"] },
-        "Usage": { "Suggestions": {} },
+        "Usage": {
+          "Suggestions": { "Oracle rolls": ["Oracles / Core / Descriptor"] }
+        },
         "Content": {
           "Part of speech": ["noun", "common noun"],
           "Tags": ["concrete noun"]
@@ -6951,14 +6980,14 @@
     "$id": "Oracles / Creatures",
     "Name": "Creatures",
     "Display": { "Title": "Creatures" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Creatures / Environment",
         "Name": "Environment",
         "Category": "Oracles / Creatures",
         "Description": "Choose the closest match for your location. Or roll to identify the primary habitat of a creature.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Environment",
           "Column labels": ["Roll", "Result"]
@@ -7002,7 +7031,7 @@
         "$id": "Oracles / Creatures / Scale",
         "Name": "Scale",
         "Category": "Oracles / Creatures",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Scale",
           "Column labels": ["Roll", "Result", "Summary"]
@@ -7088,7 +7117,7 @@
         "Name": "Basic Form",
         "Category": "Oracles / Creatures",
         "Description": "Roll for a basic form, and flesh out the creature’s appearance using the First Look table.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Basic Form",
           "Column labels": [
@@ -7123,12 +7152,12 @@
             "Category": "Oracles / Creatures",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Space",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Creatures / Basic Form"
+              "Column of": "Oracles / Creatures / Basic Form"
             },
             "Usage": {
               "Requires": [
@@ -7255,12 +7284,12 @@
             "Category": "Oracles / Creatures",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Interior",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Creatures / Basic Form"
+              "Column of": "Oracles / Creatures / Basic Form"
             },
             "Usage": {
               "Requires": [
@@ -7390,12 +7419,12 @@
             "Category": "Oracles / Creatures",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Land",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Creatures / Basic Form"
+              "Column of": "Oracles / Creatures / Basic Form"
             },
             "Usage": {
               "Requires": [
@@ -7522,12 +7551,12 @@
             "Category": "Oracles / Creatures",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Liquid",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Creatures / Basic Form"
+              "Column of": "Oracles / Creatures / Basic Form"
             },
             "Usage": {
               "Requires": [
@@ -7654,12 +7683,12 @@
             "Category": "Oracles / Creatures",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Air",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Creatures / Basic Form"
+              "Column of": "Oracles / Creatures / Basic Form"
             },
             "Usage": {
               "Requires": [
@@ -7786,7 +7815,7 @@
         "Name": "First Look",
         "Category": "Oracles / Creatures",
         "Description": "Roll for a basic form, and flesh out the creature’s appearance using the First Look table.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Creature First Look",
           "Column labels": ["Roll", "Result"]
@@ -8101,7 +8130,7 @@
         "Name": "Encountered Behavior",
         "Category": "Oracles / Creatures",
         "Description": "Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Encountered Behavior",
           "Column labels": ["Roll", "Result"]
@@ -8243,7 +8272,7 @@
         "Name": "Revealed Aspect",
         "Category": "Oracles / Creatures",
         "Description": "Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature which you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or simply envision how this contradiction signals a new understanding or unexpected transformation.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Revealed Creature Aspect",
           "Column labels": ["Roll", "Result"]
@@ -8559,13 +8588,13 @@
     "$id": "Oracles / Derelicts",
     "Name": "Derelicts",
     "Display": { "Title": "Derelicts" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Derelicts / Location",
         "Name": "Location",
         "Category": "Oracles / Derelicts",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Location", "Column labels": ["Roll", "Result"] },
         "Usage": { "Initial": true },
         "Content": { "Part of speech": ["adjective"] },
@@ -8594,7 +8623,7 @@
         "$id": "Oracles / Derelicts / Type",
         "Name": "Type",
         "Category": "Oracles / Derelicts",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Type",
           "Column labels": ["Planetside", "Orbital", "Deep Space", "Result"],
@@ -8616,12 +8645,12 @@
             "Category": "Oracles / Derelicts",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Derelicts / Type"
+              "Column of": "Oracles / Derelicts / Type"
             },
             "Usage": {
               "Requires": [
@@ -8657,12 +8686,12 @@
             "Category": "Oracles / Derelicts",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Orbital",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Derelicts / Type"
+              "Column of": "Oracles / Derelicts / Type"
             },
             "Usage": {
               "Requires": [
@@ -8698,12 +8727,12 @@
             "Category": "Oracles / Derelicts",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Deep Space",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Derelicts / Type"
+              "Column of": "Oracles / Derelicts / Type"
             },
             "Usage": {
               "Requires": [
@@ -8738,7 +8767,7 @@
         "$id": "Oracles / Derelicts / Condition",
         "Name": "Condition",
         "Category": "Oracles / Derelicts",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Condition",
           "Column labels": ["Roll", "Result"]
@@ -8789,7 +8818,7 @@
         "Name": "Outer First Look",
         "Aliases": ["First Look"],
         "Category": "Oracles / Derelicts",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Outer First Look",
           "Column labels": ["Roll", "Result"]
@@ -8864,7 +8893,7 @@
         "Name": "Inner First Look",
         "Aliases": ["First Look"],
         "Category": "Oracles / Derelicts",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Inner First Look",
           "Column labels": ["Roll", "Result"]
@@ -9074,7 +9103,7 @@
         "$id": "Oracles / Derelicts / Zone",
         "Name": "Zone",
         "Category": "Oracles / Derelicts",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Derelict Zone",
           "Column labels": ["Starship", "Settlement", "Result"],
@@ -9095,12 +9124,12 @@
             "Category": "Oracles / Derelicts",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Starship",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Derelicts / Zone"
+              "Column of": "Oracles / Derelicts / Zone"
             },
             "Usage": {
               "Requires": [
@@ -9166,12 +9195,12 @@
             "Category": "Oracles / Derelicts",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlement",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Derelicts / Zone"
+              "Column of": "Oracles / Derelicts / Zone"
             },
             "Usage": {
               "Requires": [
@@ -9238,7 +9267,7 @@
         "$id": "Oracles / Derelicts / Access",
         "Name": "Access",
         "Display": { "Title": "Derelict / Access" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -9252,7 +9281,7 @@
             "Category": "Oracles / Derelicts / Access",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -9314,7 +9343,7 @@
             "Category": "Oracles / Derelicts / Access",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -9455,7 +9484,7 @@
             "Category": "Oracles / Derelicts / Access",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -9546,7 +9575,7 @@
             "Category": "Oracles / Derelicts / Access",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -9596,7 +9625,7 @@
         "$id": "Oracles / Derelicts / Community",
         "Name": "Community",
         "Display": { "Title": "Derelict / Community" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -9613,7 +9642,7 @@
             "Category": "Oracles / Derelicts / Community",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -9699,7 +9728,7 @@
             "Category": "Oracles / Derelicts / Community",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -9792,7 +9821,7 @@
             "Category": "Oracles / Derelicts / Community",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -9883,7 +9912,7 @@
             "Category": "Oracles / Derelicts / Community",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -9933,7 +9962,7 @@
         "$id": "Oracles / Derelicts / Engineering",
         "Name": "Engineering",
         "Display": { "Title": "Derelict / Engineering" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -9950,7 +9979,7 @@
             "Category": "Oracles / Derelicts / Engineering",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -10036,7 +10065,7 @@
             "Category": "Oracles / Derelicts / Engineering",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -10129,7 +10158,7 @@
             "Category": "Oracles / Derelicts / Engineering",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -10220,7 +10249,7 @@
             "Category": "Oracles / Derelicts / Engineering",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -10270,7 +10299,7 @@
         "$id": "Oracles / Derelicts / Living",
         "Name": "Living",
         "Display": { "Title": "Derelict / Living" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -10284,7 +10313,7 @@
             "Category": "Oracles / Derelicts / Living",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -10370,7 +10399,7 @@
             "Category": "Oracles / Derelicts / Living",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -10463,7 +10492,7 @@
             "Category": "Oracles / Derelicts / Living",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -10554,7 +10583,7 @@
             "Category": "Oracles / Derelicts / Living",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -10604,7 +10633,7 @@
         "$id": "Oracles / Derelicts / Medical",
         "Name": "Medical",
         "Display": { "Title": "Derelict / Medical" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -10621,7 +10650,7 @@
             "Category": "Oracles / Derelicts / Medical",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -10707,7 +10736,7 @@
             "Category": "Oracles / Derelicts / Medical",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -10800,7 +10829,7 @@
             "Category": "Oracles / Derelicts / Medical",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -10891,7 +10920,7 @@
             "Category": "Oracles / Derelicts / Medical",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -10941,7 +10970,7 @@
         "$id": "Oracles / Derelicts / Operations",
         "Name": "Operations",
         "Display": { "Title": "Derelict / Operations" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -10958,7 +10987,7 @@
             "Category": "Oracles / Derelicts / Operations",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -11044,7 +11073,7 @@
             "Category": "Oracles / Derelicts / Operations",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -11137,7 +11166,7 @@
             "Category": "Oracles / Derelicts / Operations",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -11228,7 +11257,7 @@
             "Category": "Oracles / Derelicts / Operations",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -11278,7 +11307,7 @@
         "$id": "Oracles / Derelicts / Production",
         "Name": "Production",
         "Display": { "Title": "Derelict / Production" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -11295,7 +11324,7 @@
             "Category": "Oracles / Derelicts / Production",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -11381,7 +11410,7 @@
             "Category": "Oracles / Derelicts / Production",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -11474,7 +11503,7 @@
             "Category": "Oracles / Derelicts / Production",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -11565,7 +11594,7 @@
             "Category": "Oracles / Derelicts / Production",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -11615,7 +11644,7 @@
         "$id": "Oracles / Derelicts / Research",
         "Name": "Research",
         "Display": { "Title": "Derelict / Research" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Derelicts",
         "Usage": {
           "Requires": [
@@ -11632,7 +11661,7 @@
             "Category": "Oracles / Derelicts / Research",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": { "Title": "Area", "Column labels": ["Roll", "Result"] },
             "Usage": { "Repeatable": true },
@@ -11718,7 +11747,7 @@
             "Category": "Oracles / Derelicts / Research",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Feature",
@@ -11811,7 +11840,7 @@
             "Category": "Oracles / Derelicts / Research",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Peril",
@@ -11902,7 +11931,7 @@
             "Category": "Oracles / Derelicts / Research",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Opportunity",
@@ -17259,14 +17288,14 @@
     "$id": "Oracles / Moves",
     "Name": "Moves",
     "Display": { "Title": "Moves" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Moves / Ask the Oracle",
         "Name": "Ask the Oracle",
         "Aliases": ["Ask"],
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Ask the Oracle",
           "Column labels": ["Roll", "Result"]
@@ -17280,7 +17309,7 @@
             "Category": "Oracles / Moves",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Ask the Oracle / Almost Certain",
@@ -17309,7 +17338,7 @@
             "Category": "Oracles / Moves",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Ask the Oracle / Likely",
@@ -17338,7 +17367,7 @@
             "Category": "Oracles / Moves",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Ask the Oracle / 50/50",
@@ -17367,7 +17396,7 @@
             "Category": "Oracles / Moves",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Ask the Oracle / Unlikely",
@@ -17396,7 +17425,7 @@
             "Category": "Oracles / Moves",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Ask the Oracle / Small Chance",
@@ -17423,7 +17452,7 @@
         "$id": "Oracles / Moves / Begin a Session",
         "Name": "Begin a Session",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Begin a Session",
           "Column labels": ["Roll", "Result"]
@@ -17510,7 +17539,7 @@
         "$id": "Oracles / Moves / Make a Discovery",
         "Name": "Make a Discovery",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Make a Discovery",
           "Column labels": ["Roll", "Result"]
@@ -17738,7 +17767,7 @@
         "$id": "Oracles / Moves / Confront Chaos",
         "Name": "Confront Chaos",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Confront Chaos",
           "Column labels": ["Roll", "Result"]
@@ -17924,7 +17953,7 @@
         "$id": "Oracles / Moves / Take Decisive Action",
         "Name": "Take Decisive Action",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Take Decisive Action",
           "Column labels": ["Roll", "Result"]
@@ -17973,7 +18002,7 @@
         "$id": "Oracles / Moves / Endure Harm",
         "Name": "Endure Harm",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Endure Harm",
           "Column labels": ["Roll", "Result"]
@@ -18016,7 +18045,7 @@
         "$id": "Oracles / Moves / Endure Stress",
         "Name": "Endure Stress",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Endure Stress",
           "Column labels": ["Roll", "Result"]
@@ -18053,7 +18082,7 @@
         "$id": "Oracles / Moves / Withstand Damage",
         "Name": "Withstand Damage",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Withstand Damage",
           "Column labels": ["Roll", "Result"]
@@ -18114,7 +18143,7 @@
         "$id": "Oracles / Moves / Pay the Price",
         "Name": "Pay the Price",
         "Category": "Oracles / Moves",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Pay the Price",
           "Column labels": ["Roll", "Result"]
@@ -18251,19 +18280,22 @@
     "Name": "Planets",
     "Aliases": ["World"],
     "Display": { "Title": "Planets" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Planets / Class",
         "Name": "Class",
         "Category": "Oracles / Planets",
         "Description": "This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Planetary Class",
           "Column labels": ["Roll", "Result"]
         },
-        "Usage": { "Initial": true, "Suggestions": {} },
+        "Usage": {
+          "Initial": true,
+          "Suggestions": { "Oracle rolls": ["Oracles / Core / Descriptor"] }
+        },
         "Content": { "Part of speech": ["noun"] },
         "Table": [
           {
@@ -18339,16 +18371,16 @@
         "Name": "Peril",
         "Category": "Oracles / Planets",
         "Description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Planetside Peril",
           "Column labels": ["Lifebearing", "Lifeless", "Result"],
           "Table from": {
             "Roll columns": [
-              "Planets / Peril / Lifebearing",
-              "Planets / Peril / Lifeless"
+              "Oracles / Planets / Peril / Lifebearing",
+              "Oracles / Planets / Peril / Lifeless"
             ],
-            "Result columns": ["Planets / Peril / Lifebearing"]
+            "Result columns": ["Oracles / Planets / Peril / Lifebearing"]
           }
         },
         "Usage": { "Select table by": "Life", "Repeatable": true },
@@ -18364,12 +18396,12 @@
             "Category": "Oracles / Planets",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Lifebearing",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Planetside Peril"
+              "Column of": "Oracles / Planetside Peril"
             },
             "Usage": {
               "Requires": [
@@ -18666,12 +18698,12 @@
             "Category": "Oracles / Planets",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Lifeless",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Planetside Peril"
+              "Column of": "Oracles / Planetside Peril"
             },
             "Usage": {
               "Requires": [
@@ -18895,16 +18927,16 @@
         "Name": "Opportunity",
         "Category": "Oracles / Planets",
         "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Planetside Opportunity",
           "Column labels": ["Lifebearing", "Lifeless", "Result"],
           "Table from": {
             "Roll columns": [
-              "Planets / Opportunity / Lifebearing",
-              "Planets / Opportunity / Lifeless"
+              "Oracles / Planets / Opportunity / Lifebearing",
+              "Oracles / Planets / Opportunity / Lifeless"
             ],
-            "Result columns": ["Planets / Opportunity / Lifebearing"]
+            "Result columns": ["Oracles / Planets / Opportunity / Lifebearing"]
           }
         },
         "Usage": { "Select table by": "Life", "Repeatable": true },
@@ -18917,12 +18949,12 @@
             "Category": "Oracles / Planets",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Lifebearing",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Planetside Opportunity"
+              "Column of": "Oracles / Planetside Opportunity"
             },
             "Usage": {
               "Requires": [
@@ -19159,12 +19191,12 @@
             "Category": "Oracles / Planets",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Lifeless",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Planetside Opportunity"
+              "Column of": "Oracles / Planetside Opportunity"
             },
             "Usage": {
               "Requires": [
@@ -19363,12 +19395,12 @@
         "$id": "Oracles / Planets / Desert",
         "Name": "Desert",
         "Display": { "Title": "Desert World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Desert World"]
             }
           ]
@@ -19380,7 +19412,7 @@
             "Category": "Oracles / Planets / Desert",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -19439,18 +19471,20 @@
             "Category": "Oracles / Planets / Desert",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Desert / Settlements / Terminus",
-                  "Planets / Desert / Settlements / Outlands",
-                  "Planets / Desert / Settlements / Expanse"
+                  "Oracles / Planets / Desert / Settlements / Terminus",
+                  "Oracles / Planets / Desert / Settlements / Outlands",
+                  "Oracles / Planets / Desert / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Desert / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Desert / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -19462,12 +19496,12 @@
                 "Category": "Oracles / Planets / Desert",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Desert / Settlements"
+                  "Column of": "Oracles / Planets / Desert / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -19510,12 +19544,12 @@
                 "Category": "Oracles / Planets / Desert",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Desert / Settlements"
+                  "Column of": "Oracles / Planets / Desert / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -19558,12 +19592,12 @@
                 "Category": "Oracles / Planets / Desert",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Desert / Settlements"
+                  "Column of": "Oracles / Planets / Desert / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -19595,7 +19629,7 @@
             "Category": "Oracles / Planets / Desert",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -19676,7 +19710,7 @@
             "Category": "Oracles / Planets / Desert",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -19787,7 +19821,7 @@
             "Category": "Oracles / Planets / Desert",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -19837,12 +19871,12 @@
         "$id": "Oracles / Planets / Furnace",
         "Name": "Furnace",
         "Display": { "Title": "Furnace World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Furnace World"]
             }
           ]
@@ -19854,7 +19888,7 @@
             "Category": "Oracles / Planets / Furnace",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -19906,18 +19940,20 @@
             "Category": "Oracles / Planets / Furnace",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Furnace / Settlements / Terminus",
-                  "Planets / Furnace / Settlements / Outlands",
-                  "Planets / Furnace / Settlements / Expanse"
+                  "Oracles / Planets / Furnace / Settlements / Terminus",
+                  "Oracles / Planets / Furnace / Settlements / Outlands",
+                  "Oracles / Planets / Furnace / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Furnace / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Furnace / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -19929,12 +19965,12 @@
                 "Category": "Oracles / Planets / Furnace",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Furnace / Settlements"
+                  "Column of": "Oracles / Planets / Furnace / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -19977,12 +20013,12 @@
                 "Category": "Oracles / Planets / Furnace",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Furnace / Settlements"
+                  "Column of": "Oracles / Planets / Furnace / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -20025,12 +20061,12 @@
                 "Category": "Oracles / Planets / Furnace",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Furnace / Settlements"
+                  "Column of": "Oracles / Planets / Furnace / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -20062,7 +20098,7 @@
             "Category": "Oracles / Planets / Furnace",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -20143,7 +20179,7 @@
             "Category": "Oracles / Planets / Furnace",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -20254,7 +20290,7 @@
             "Category": "Oracles / Planets / Furnace",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -20304,12 +20340,12 @@
         "$id": "Oracles / Planets / Grave",
         "Name": "Grave",
         "Display": { "Title": "Grave World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Grave World"]
             }
           ]
@@ -20321,7 +20357,7 @@
             "Category": "Oracles / Planets / Grave",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -20373,18 +20409,20 @@
             "Category": "Oracles / Planets / Grave",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Grave / Settlements / Terminus",
-                  "Planets / Grave / Settlements / Outlands",
-                  "Planets / Grave / Settlements / Expanse"
+                  "Oracles / Planets / Grave / Settlements / Terminus",
+                  "Oracles / Planets / Grave / Settlements / Outlands",
+                  "Oracles / Planets / Grave / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Grave / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Grave / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -20396,12 +20434,12 @@
                 "Category": "Oracles / Planets / Grave",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Grave / Settlements"
+                  "Column of": "Oracles / Planets / Grave / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -20444,12 +20482,12 @@
                 "Category": "Oracles / Planets / Grave",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Grave / Settlements"
+                  "Column of": "Oracles / Planets / Grave / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -20480,12 +20518,12 @@
                 "Category": "Oracles / Planets / Grave",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Grave / Settlements"
+                  "Column of": "Oracles / Planets / Grave / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -20517,7 +20555,7 @@
             "Category": "Oracles / Planets / Grave",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -20632,7 +20670,7 @@
             "Category": "Oracles / Planets / Grave",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -20791,7 +20829,7 @@
             "Category": "Oracles / Planets / Grave",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -20829,11 +20867,14 @@
         "$id": "Oracles / Planets / Ice",
         "Name": "Ice",
         "Display": { "Title": "Ice World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
-            { "Tables": ["Planet / Planetary Class"], "Results": ["Ice World"] }
+            {
+              "Tables": ["Oracles / Planets / Planetary Class"],
+              "Results": ["Ice World"]
+            }
           ]
         },
         "Oracles": [
@@ -20843,7 +20884,7 @@
             "Category": "Oracles / Planets / Ice",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -20902,18 +20943,20 @@
             "Category": "Oracles / Planets / Ice",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Ice / Settlements / Terminus",
-                  "Planets / Ice / Settlements / Outlands",
-                  "Planets / Ice / Settlements / Expanse"
+                  "Oracles / Planets / Ice / Settlements / Terminus",
+                  "Oracles / Planets / Ice / Settlements / Outlands",
+                  "Oracles / Planets / Ice / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Ice / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Ice / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -20925,12 +20968,12 @@
                 "Category": "Oracles / Planets / Ice",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Ice / Settlements"
+                  "Column of": "Oracles / Planets / Ice / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -20973,12 +21016,12 @@
                 "Category": "Oracles / Planets / Ice",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Ice / Settlements"
+                  "Column of": "Oracles / Planets / Ice / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21021,12 +21064,12 @@
                 "Category": "Oracles / Planets / Ice",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Ice / Settlements"
+                  "Column of": "Oracles / Planets / Ice / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21058,7 +21101,7 @@
             "Category": "Oracles / Planets / Ice",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -21139,7 +21182,7 @@
             "Category": "Oracles / Planets / Ice",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -21250,7 +21293,7 @@
             "Category": "Oracles / Planets / Ice",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -21300,12 +21343,12 @@
         "$id": "Oracles / Planets / Jovian",
         "Name": "Jovian",
         "Display": { "Title": "Jovian World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Jovian World"]
             }
           ]
@@ -21317,7 +21360,7 @@
             "Category": "Oracles / Planets / Jovian",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -21362,18 +21405,20 @@
             "Category": "Oracles / Planets / Jovian",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Jovian / Settlements / Terminus",
-                  "Planets / Jovian / Settlements / Outlands",
-                  "Planets / Jovian / Settlements / Expanse"
+                  "Oracles / Planets / Jovian / Settlements / Terminus",
+                  "Oracles / Planets / Jovian / Settlements / Outlands",
+                  "Oracles / Planets / Jovian / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Jovian / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Jovian / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -21385,12 +21430,12 @@
                 "Category": "Oracles / Planets / Jovian",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Jovian / Settlements"
+                  "Column of": "Oracles / Planets / Jovian / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21433,12 +21478,12 @@
                 "Category": "Oracles / Planets / Jovian",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Jovian / Settlements"
+                  "Column of": "Oracles / Planets / Jovian / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21481,12 +21526,12 @@
                 "Category": "Oracles / Planets / Jovian",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Jovian / Settlements"
+                  "Column of": "Oracles / Planets / Jovian / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21518,7 +21563,7 @@
             "Category": "Oracles / Planets / Jovian",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -21599,7 +21644,7 @@
             "Category": "Oracles / Planets / Jovian",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -21710,7 +21755,7 @@
             "Category": "Oracles / Planets / Jovian",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -21760,12 +21805,12 @@
         "$id": "Oracles / Planets / Jungle",
         "Name": "Jungle",
         "Display": { "Title": "Jungle World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Jungle World"]
             }
           ]
@@ -21777,7 +21822,7 @@
             "Category": "Oracles / Planets / Jungle",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -21829,18 +21874,20 @@
             "Category": "Oracles / Planets / Jungle",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Jungle / Settlements / Terminus",
-                  "Planets / Jungle / Settlements / Outlands",
-                  "Planets / Jungle / Settlements / Expanse"
+                  "Oracles / Planets / Jungle / Settlements / Terminus",
+                  "Oracles / Planets / Jungle / Settlements / Outlands",
+                  "Oracles / Planets / Jungle / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Jungle / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Jungle / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -21852,12 +21899,12 @@
                 "Category": "Oracles / Planets / Jungle",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Jungle / Settlements"
+                  "Column of": "Oracles / Planets / Jungle / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21900,12 +21947,12 @@
                 "Category": "Oracles / Planets / Jungle",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Jungle / Settlements"
+                  "Column of": "Oracles / Planets / Jungle / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21948,12 +21995,12 @@
                 "Category": "Oracles / Planets / Jungle",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Jungle / Settlements"
+                  "Column of": "Oracles / Planets / Jungle / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -21997,7 +22044,7 @@
             "Category": "Oracles / Planets / Jungle",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -22078,7 +22125,7 @@
             "Category": "Oracles / Planets / Jungle",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -22189,7 +22236,7 @@
             "Category": "Oracles / Planets / Jungle",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -22227,12 +22274,12 @@
         "$id": "Oracles / Planets / Ocean",
         "Name": "Ocean",
         "Display": { "Title": "Ocean World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Ocean World"]
             }
           ]
@@ -22244,7 +22291,7 @@
             "Category": "Oracles / Planets / Ocean",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -22303,18 +22350,20 @@
             "Category": "Oracles / Planets / Ocean",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Ocean / Settlements / Terminus",
-                  "Planets / Ocean / Settlements / Outlands",
-                  "Planets / Ocean / Settlements / Expanse"
+                  "Oracles / Planets / Ocean / Settlements / Terminus",
+                  "Oracles / Planets / Ocean / Settlements / Outlands",
+                  "Oracles / Planets / Ocean / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Ocean / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Ocean / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -22326,12 +22375,12 @@
                 "Category": "Oracles / Planets / Ocean",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Ocean / Settlements"
+                  "Column of": "Oracles / Planets / Ocean / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -22374,12 +22423,12 @@
                 "Category": "Oracles / Planets / Ocean",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Ocean / Settlements"
+                  "Column of": "Oracles / Planets / Ocean / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -22422,12 +22471,12 @@
                 "Category": "Oracles / Planets / Ocean",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Ocean / Settlements"
+                  "Column of": "Oracles / Planets / Ocean / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -22471,7 +22520,7 @@
             "Category": "Oracles / Planets / Ocean",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -22552,7 +22601,7 @@
             "Category": "Oracles / Planets / Ocean",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -22663,7 +22712,7 @@
             "Category": "Oracles / Planets / Ocean",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -22713,12 +22762,12 @@
         "$id": "Oracles / Planets / Rocky",
         "Name": "Rocky",
         "Display": { "Title": "Rocky World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Rocky World"]
             }
           ]
@@ -22730,7 +22779,7 @@
             "Category": "Oracles / Planets / Rocky",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -22775,18 +22824,20 @@
             "Category": "Oracles / Planets / Rocky",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Rocky / Settlements / Terminus",
-                  "Planets / Rocky / Settlements / Outlands",
-                  "Planets / Rocky / Settlements / Expanse"
+                  "Oracles / Planets / Rocky / Settlements / Terminus",
+                  "Oracles / Planets / Rocky / Settlements / Outlands",
+                  "Oracles / Planets / Rocky / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Rocky / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Rocky / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -22798,12 +22849,12 @@
                 "Category": "Oracles / Planets / Rocky",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Rocky / Settlements"
+                  "Column of": "Oracles / Planets / Rocky / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -22846,12 +22897,12 @@
                 "Category": "Oracles / Planets / Rocky",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Rocky / Settlements"
+                  "Column of": "Oracles / Planets / Rocky / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -22894,12 +22945,12 @@
                 "Category": "Oracles / Planets / Rocky",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Rocky / Settlements"
+                  "Column of": "Oracles / Planets / Rocky / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -22931,7 +22982,7 @@
             "Category": "Oracles / Planets / Rocky",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -23012,7 +23063,7 @@
             "Category": "Oracles / Planets / Rocky",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -23123,7 +23174,7 @@
             "Category": "Oracles / Planets / Rocky",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -23173,12 +23224,12 @@
         "$id": "Oracles / Planets / Shattered",
         "Name": "Shattered",
         "Display": { "Title": "Shattered World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Shattered World"]
             }
           ]
@@ -23190,7 +23241,7 @@
             "Category": "Oracles / Planets / Shattered",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -23242,19 +23293,19 @@
             "Category": "Oracles / Planets / Shattered",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Shattered / Settlements / Terminus",
-                  "Planets / Shattered / Settlements / Outlands",
-                  "Planets / Shattered / Settlements / Expanse"
+                  "Oracles / Planets / Shattered / Settlements / Terminus",
+                  "Oracles / Planets / Shattered / Settlements / Outlands",
+                  "Oracles / Planets / Shattered / Settlements / Expanse"
                 ],
                 "Result columns": [
-                  "Planets / Shattered / Settlements / Terminus"
+                  "Oracles / Planets / Shattered / Settlements / Terminus"
                 ]
               }
             },
@@ -23267,12 +23318,12 @@
                 "Category": "Oracles / Planets / Shattered",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Shattered / Settlements"
+                  "Column of": "Oracles / Planets / Shattered / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -23315,12 +23366,12 @@
                 "Category": "Oracles / Planets / Shattered",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Shattered / Settlements"
+                  "Column of": "Oracles / Planets / Shattered / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -23357,12 +23408,12 @@
                 "Category": "Oracles / Planets / Shattered",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Shattered / Settlements"
+                  "Column of": "Oracles / Planets / Shattered / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -23394,7 +23445,7 @@
             "Category": "Oracles / Planets / Shattered",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -23492,7 +23543,7 @@
             "Category": "Oracles / Planets / Shattered",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -23627,7 +23678,7 @@
             "Category": "Oracles / Planets / Shattered",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -23665,12 +23716,12 @@
         "$id": "Oracles / Planets / Tainted",
         "Name": "Tainted",
         "Display": { "Title": "Tainted World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planet / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Tainted World"]
             }
           ]
@@ -23682,7 +23733,7 @@
             "Category": "Oracles / Planets / Tainted",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -23727,18 +23778,20 @@
             "Category": "Oracles / Planets / Tainted",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Tainted / Settlements / Terminus",
-                  "Planets / Tainted / Settlements / Outlands",
-                  "Planets / Tainted / Settlements / Expanse"
+                  "Oracles / Planets / Tainted / Settlements / Terminus",
+                  "Oracles / Planets / Tainted / Settlements / Outlands",
+                  "Oracles / Planets / Tainted / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Tainted / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Tainted / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -23750,12 +23803,12 @@
                 "Category": "Oracles / Planets / Tainted",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Tainted / Settlements"
+                  "Column of": "Oracles / Planets / Tainted / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -23798,12 +23851,12 @@
                 "Category": "Oracles / Planets / Tainted",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Tainted / Settlements"
+                  "Column of": "Oracles / Planets / Tainted / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -23834,12 +23887,12 @@
                 "Category": "Oracles / Planets / Tainted",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Tainted / Settlements"
+                  "Column of": "Oracles / Planets / Tainted / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -23871,7 +23924,7 @@
             "Category": "Oracles / Planets / Tainted",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -23952,7 +24005,7 @@
             "Category": "Oracles / Planets / Tainted",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -24063,7 +24116,7 @@
             "Category": "Oracles / Planets / Tainted",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -24101,12 +24154,12 @@
         "$id": "Oracles / Planets / Vital",
         "Name": "Vital",
         "Display": { "Title": "Vital World" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "060121" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Planets",
         "Usage": {
           "Requires": [
             {
-              "Tables": ["Planets / Planetary Class"],
+              "Tables": ["Oracles / Planets / Planetary Class"],
               "Results": ["Vital World"]
             }
           ]
@@ -24118,7 +24171,7 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Atmosphere",
@@ -24156,18 +24209,20 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Settlements",
               "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
               "Table from": {
                 "Roll columns": [
-                  "Planets / Vital / Settlements / Terminus",
-                  "Planets / Vital / Settlements / Outlands",
-                  "Planets / Vital / Settlements / Expanse"
+                  "Oracles / Planets / Vital / Settlements / Terminus",
+                  "Oracles / Planets / Vital / Settlements / Outlands",
+                  "Oracles / Planets / Vital / Settlements / Expanse"
                 ],
-                "Result columns": ["Planets / Vital / Settlements / Terminus"]
+                "Result columns": [
+                  "Oracles / Planets / Vital / Settlements / Terminus"
+                ]
               }
             },
             "Usage": { "Initial": true, "Select table by": "Region" },
@@ -24179,12 +24234,12 @@
                 "Category": "Oracles / Planets / Vital",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Terminus",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Vital / Settlements"
+                  "Column of": "Oracles / Planets / Vital / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -24227,12 +24282,12 @@
                 "Category": "Oracles / Planets / Vital",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Outlands",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Vital / Settlements"
+                  "Column of": "Oracles / Planets / Vital / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -24275,12 +24330,12 @@
                 "Category": "Oracles / Planets / Vital",
                 "Source": {
                   "Title": "Starforged Backer Preview",
-                  "Date": "060121"
+                  "Date": "020122"
                 },
                 "Display": {
                   "Title": "Expanse",
                   "Column labels": ["Roll", "Result"],
-                  "Column of": "Planets / Vital / Settlements"
+                  "Column of": "Oracles / Planets / Vital / Settlements"
                 },
                 "Usage": { "Requires": [{}] },
                 "Table": [
@@ -24324,7 +24379,7 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Observed From Space",
@@ -24405,7 +24460,7 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Planetside Feature",
@@ -24523,7 +24578,7 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": { "Title": "Life", "Column labels": ["Roll", "Result"] },
             "Usage": {},
@@ -24561,7 +24616,7 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Diversity",
@@ -24573,25 +24628,47 @@
                 "Floor": 1,
                 "Ceiling": 20,
                 "$id": "Oracles / Planets / Vital / Diversity / 1-20",
-                "Result": "Simple (two biomes)"
+                "Result": "Simple (two biomes)",
+                "Oracle rolls": [
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes"
+                ]
               },
               {
                 "Floor": 21,
                 "Ceiling": 70,
                 "$id": "Oracles / Planets / Vital / Diversity / 21-70",
-                "Result": "Diverse (three biomes)"
+                "Result": "Diverse (three biomes)",
+                "Oracle rolls": [
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes"
+                ]
               },
               {
                 "Floor": 71,
                 "Ceiling": 90,
                 "$id": "Oracles / Planets / Vital / Diversity / 71-90",
-                "Result": "Complex (four biomes)"
+                "Result": "Complex (four biomes)",
+                "Oracle rolls": [
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes"
+                ]
               },
               {
                 "Floor": 91,
                 "Ceiling": 100,
                 "$id": "Oracles / Planets / Vital / Diversity / 91-100",
-                "Result": "Garden world (five or more biomes)"
+                "Result": "Garden world (five or more biomes)",
+                "Oracle rolls": [
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes",
+                  "Oracles / Planets / Vital / Biomes"
+                ]
               }
             ]
           },
@@ -24601,13 +24678,19 @@
             "Category": "Oracles / Planets / Vital",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "060121"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Biomes",
               "Column labels": ["Roll", "Result"]
             },
-            "Usage": { "Max rolls": 5, "Min rolls": 2 },
+            "Usage": {
+              "Max rolls": 5,
+              "Min rolls": 2,
+              "Requires": [
+                { "Tables": ["Oracles / Planets / Vital / Diversity"] }
+              ]
+            },
             "Content": { "Part of speech": ["noun", "common noun"] },
             "Table": [
               {
@@ -24802,7 +24885,7 @@
             "Display": {
               "Title": "Terminus",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Settlements / Population"
+              "Column of": "Oracles / Settlements / Population"
             },
             "Usage": { "Requires": [{}] },
             "Table": [
@@ -24850,7 +24933,7 @@
             "Display": {
               "Title": "Outlands",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Settlements / Population"
+              "Column of": "Oracles / Settlements / Population"
             },
             "Usage": { "Requires": [{}] },
             "Table": [
@@ -24898,7 +24981,7 @@
             "Display": {
               "Title": "Expanse",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Settlements / Population"
+              "Column of": "Oracles / Settlements / Population"
             },
             "Usage": { "Requires": [{}] },
             "Table": [
@@ -26367,24 +26450,24 @@
     "$id": "Oracles / Space",
     "Name": "Space",
     "Display": { "Title": "Space Encounters" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Space / Sighting",
         "Name": "Sighting",
         "Category": "Oracles / Space",
         "Description": "Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](Moves#Ask-the-Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](Moves#Undertake-an-Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Space Sighting",
           "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
           "Table from": {
             "Roll columns": [
-              "Space / Sighting / Terminus",
-              "Space / Sighting / Outlands",
-              "Space / Sighting / Expanse"
+              "Oracles / Space / Sighting / Terminus",
+              "Oracles / Space / Sighting / Outlands",
+              "Oracles / Space / Sighting / Expanse"
             ],
-            "Result columns": ["Space / Sighting / Terminus"]
+            "Result columns": ["Oracles / Space / Sighting / Terminus"]
           }
         },
         "Usage": { "Select table by": "Region", "Repeatable": true },
@@ -26397,12 +26480,12 @@
             "Category": "Oracles / Space",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Terminus",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Space / Sighting"
+              "Column of": "Oracles / Space / Sighting"
             },
             "Usage": { "Requires": [{}] },
             "Content": { "Part of speech": ["fragment"] },
@@ -26549,12 +26632,12 @@
             "Category": "Oracles / Space",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Outlands",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Space / Sighting"
+              "Column of": "Oracles / Space / Sighting"
             },
             "Usage": { "Requires": [{}] },
             "Content": { "Part of speech": ["fragment"] },
@@ -26701,12 +26784,12 @@
             "Category": "Oracles / Space",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Expanse",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Space / Sighting"
+              "Column of": "Oracles / Space / Sighting"
             },
             "Usage": { "Repeatable": true, "Requires": [{}] },
             "Content": { "Part of speech": ["fragment"] },
@@ -26853,7 +26936,7 @@
         "Name": "Stellar Object",
         "Category": "Oracles / Space",
         "Description": "Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Stellar Object",
           "Column labels": ["Roll", "Result"]
@@ -26957,15 +27040,15 @@
         "$id": "Oracles / Space / Sector Name",
         "Name": "Sector Name",
         "Category": "Oracles / Space",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Sector Name",
           "Column labels": ["Roll", "Prefix", "Suffix"],
           "Table from": {
-            "Roll columns": ["Space / Sector Name / Prefix"],
+            "Roll columns": ["Oracles / Space / Sector Name / Prefix"],
             "Result columns": [
-              "Space / Sector Name / Prefix",
-              "Space / Sector Name / Suffix"
+              "Oracles / Space / Sector Name / Prefix",
+              "Oracles / Space / Sector Name / Suffix"
             ]
           }
         },
@@ -26979,14 +27062,19 @@
             "Description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Prefix",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Space / Sector Name"
+              "Column of": "Oracles / Space / Sector Name"
             },
-            "Usage": { "Initial": true, "Suggestions": {} },
+            "Usage": {
+              "Initial": true,
+              "Suggestions": {
+                "Oracle rolls": ["Oracles / Space / Sector Name / Suffix"]
+              }
+            },
             "Content": {
               "Part of speech": ["adjective"],
               "Tags": ["template fragment"]
@@ -27302,14 +27390,19 @@
             "Description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Suffix",
               "Column labels": ["Roll", "Result"],
-              "Column of": "Space / Sector Name"
+              "Column of": "Oracles / Space / Sector Name"
             },
-            "Usage": { "Initial": true, "Suggestions": {} },
+            "Usage": {
+              "Initial": true,
+              "Suggestions": {
+                "Oracle rolls": ["Oracles / Space / Sector Name / Prefix"]
+              }
+            },
             "Content": {
               "Part of speech": ["noun"],
               "Tags": ["template fragment", "place"]
@@ -27624,7 +27717,7 @@
         "Name": "Peril",
         "Category": "Oracles / Space",
         "Description": "Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Spaceborne Peril",
           "Column labels": ["Roll", "Result"]
@@ -27881,7 +27974,7 @@
         "Name": "Opportunity",
         "Category": "Oracles / Space",
         "Description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](Moves#Undertake-an-Expedition), or if you [Explore a Waypoint](Moves#Explore-a-Waypoint) and find an opportunity.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Spaceborne Opportunity",
           "Column labels": ["Roll", "Result"]
@@ -28072,14 +28165,14 @@
     "Name": "Starships",
     "Aliases": ["Ship"],
     "Display": { "Title": "Starships" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Starships / Name",
         "Name": "Name",
         "Category": "Oracles / Starships",
         "Description": "Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Starship Name",
           "Column labels": ["Roll", "Result"]
@@ -28695,7 +28788,7 @@
         "$id": "Oracles / Starships / Type",
         "Name": "Type",
         "Category": "Oracles / Starships",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Type",
           "Column labels": ["Roll", "Class", "Typical Role"]
@@ -28866,7 +28959,7 @@
         "$id": "Oracles / Starships / Fleet",
         "Name": "Fleet",
         "Category": "Oracles / Starships",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Fleet", "Column labels": ["Roll", "Result"] },
         "Usage": {
           "Initial": true,
@@ -28931,7 +29024,7 @@
         "$id": "Oracles / Starships / Initial Contact",
         "Name": "Initial Contact",
         "Category": "Oracles / Starships",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Initial Contact",
           "Column labels": ["Roll", "Result"]
@@ -29017,7 +29110,7 @@
         "$id": "Oracles / Starships / First Look",
         "Name": "First Look",
         "Category": "Oracles / Starships",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "First Look",
           "Column labels": ["Roll", "Result"]
@@ -29168,7 +29261,7 @@
         "Name": "Mission",
         "Category": "Oracles / Starships",
         "Description": "Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "081921" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Starship Mission",
           "Column labels": ["Terminus", "Outlands", "Expanse", "Result"],
@@ -29191,12 +29284,12 @@
             "Category": "Oracles / Starships",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Terminus",
               "Column labels": ["Roll", "Mission"],
-              "Column of": "Starships / Mission"
+              "Column of": "Oracles / Starships / Mission"
             },
             "Usage": { "Requires": [{}] },
             "Content": {
@@ -29469,12 +29562,12 @@
             "Category": "Oracles / Starships",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Outlands",
               "Column labels": ["Roll", "Mission"],
-              "Column of": "Starships / Mission"
+              "Column of": "Oracles / Starships / Mission"
             },
             "Usage": { "Requires": [{}] },
             "Content": {
@@ -29747,12 +29840,12 @@
             "Category": "Oracles / Starships",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "081921"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Expanse",
               "Column labels": ["Roll", "Mission"],
-              "Column of": "Starships / Mission"
+              "Column of": "Oracles / Starships / Mission"
             },
             "Usage": { "Requires": [{}] },
             "Content": {
@@ -30026,13 +30119,13 @@
     "$id": "Oracles / Vaults",
     "Name": "Vaults",
     "Display": { "Title": "Precursor Vaults" },
-    "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+    "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
     "Oracles": [
       {
         "$id": "Oracles / Vaults / Location",
         "Name": "Location",
         "Category": "Oracles / Vaults",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Location", "Column labels": ["Roll", "Result"] },
         "Usage": { "Initial": true },
         "Content": { "Part of speech": ["adjective"] },
@@ -30061,7 +30154,7 @@
         "$id": "Oracles / Vaults / Scale",
         "Name": "Scale",
         "Category": "Oracles / Vaults",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Scale", "Column labels": ["Roll", "Result"] },
         "Usage": { "Initial": true },
         "Content": { "Part of speech": ["fragment"] },
@@ -30102,7 +30195,7 @@
         "$id": "Oracles / Vaults / Form",
         "Name": "Form",
         "Category": "Oracles / Vaults",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Form", "Column labels": ["Roll", "Result"] },
         "Usage": { "Initial": true },
         "Content": { "Part of speech": ["noun", "common noun"] },
@@ -30143,7 +30236,7 @@
         "$id": "Oracles / Vaults / Shape",
         "Name": "Shape",
         "Category": "Oracles / Vaults",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Shape", "Column labels": ["Roll", "Result"] },
         "Usage": { "Initial": true },
         "Content": { "Part of speech": ["adjective"] },
@@ -30251,7 +30344,7 @@
         "$id": "Oracles / Vaults / Material",
         "Name": "Material",
         "Category": "Oracles / Vaults",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": { "Title": "Material", "Column labels": ["Roll", "Result"] },
         "Usage": { "Initial": true },
         "Content": { "Part of speech": ["adjective"] },
@@ -30324,7 +30417,7 @@
         "Name": "Outer First Look",
         "Aliases": ["First Look"],
         "Category": "Oracles / Vaults",
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Display": {
           "Title": "Outer First Look",
           "Column labels": ["Roll", "Result"]
@@ -30524,7 +30617,7 @@
         "$id": "Oracles / Vaults / Interior",
         "Name": "Interior",
         "Display": { "Title": "Interior" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Vaults",
         "Oracles": [
           {
@@ -30534,7 +30627,7 @@
             "Description": "Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Inner First Look",
@@ -30747,7 +30840,7 @@
             "Category": "Oracles / Vaults / Interior",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Interior Feature",
@@ -30980,7 +31073,7 @@
             "Description": "Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](Moves#Explore-a-Waypoint) and are prompted to envision a peril.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Interior Peril",
@@ -31132,7 +31225,7 @@
             "Description": "Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](Moves#Explore-a-Waypoint) and are prompted to envision an opportunity.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Interior Opportunity",
@@ -31212,7 +31305,7 @@
         "$id": "Oracles / Vaults / Sanctum",
         "Name": "Sanctum",
         "Display": { "Title": "Sanctum" },
-        "Source": { "Title": "Starforged Backer Preview", "Date": "122421" },
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
         "Category": "Oracles / Vaults",
         "Oracles": [
           {
@@ -31222,7 +31315,7 @@
             "Description": "Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Vault Purpose",
@@ -31417,7 +31510,7 @@
             "Category": "Oracles / Vaults / Sanctum",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Sanctum Feature",
@@ -31649,7 +31742,7 @@
             "Category": "Oracles / Vaults / Sanctum",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Sanctum Peril",
@@ -31800,7 +31893,7 @@
             "Category": "Oracles / Vaults / Sanctum",
             "Source": {
               "Title": "Starforged Backer Preview",
-              "Date": "122421"
+              "Date": "020122"
             },
             "Display": {
               "Title": "Sanctum Opportunity",
