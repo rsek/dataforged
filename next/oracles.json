@@ -7086,29 +7086,49 @@
             "Ceiling": 100,
             "$id": "Oracles / Creatures / Scale / 100",
             "Result": "⏵Ultra-scale",
-            "Subtable": [
-              {
-                "Floor": 1,
-                "Ceiling": 89,
-                "$id": "Oracles / Creatures / Scale / 100 / Subtable / 1-89",
-                "Result": "Titanic",
-                "Summary": "hill-sized"
-              },
-              {
-                "Floor": 90,
-                "Ceiling": 99,
-                "$id": "Oracles / Creatures / Scale / 100 / Subtable / 90-99",
-                "Result": "Colossal",
-                "Summary": "mountain-sized"
-              },
-              {
-                "Floor": 100,
-                "Ceiling": 100,
-                "$id": "Oracles / Creatures / Scale / 100 / Subtable / 100",
-                "Result": "Vast",
-                "Summary": "planet-sized"
-              }
-            ]
+            "Oracle rolls": ["Oracles / Creatures / Ultra-scale"]
+          }
+        ]
+      },
+      {
+        "$id": "Oracles / Creatures / Ultra-scale",
+        "Name": "Ultra-scale",
+        "Category": "Oracles / Creatures",
+        "Source": { "Title": "Starforged Backer Preview", "Date": "020122" },
+        "Display": {
+          "Title": "Ultra-scale",
+          "Column labels": ["Roll", "Result", "Summary"]
+        },
+        "Usage": {
+          "Initial": true,
+          "Requires": [
+            {
+              "Tables": ["Oracles / Creatures / Scale"],
+              "Results": ["Ultra-scale", "⏵Ultra-scale"]
+            }
+          ]
+        },
+        "Table": [
+          {
+            "Floor": 1,
+            "Ceiling": 89,
+            "$id": "Oracles / Creatures / Ultra-scale / 1-89",
+            "Result": "Titanic",
+            "Summary": "hill-sized"
+          },
+          {
+            "Floor": 90,
+            "Ceiling": 99,
+            "$id": "Oracles / Creatures / Ultra-scale / 90-99",
+            "Result": "Colossal",
+            "Summary": "mountain-sized"
+          },
+          {
+            "Floor": 100,
+            "Ceiling": 100,
+            "$id": "Oracles / Creatures / Ultra-scale / 100",
+            "Result": "Vast",
+            "Summary": "planet-sized"
           }
         ]
       },

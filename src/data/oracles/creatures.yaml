@@ -29,23 +29,18 @@ Creatures:
         - [26, 60, Medium, person-sized]
         - [61, 90, Large, vehicle-sized]
         - [91, 99, Huge, whale-sized]
-        - [100, 100, ⏵Ultra-scale,
-          { Subtable: [
-            [1, 89, Titanic, hill-sized],
-            [90, 99, Colossal, mountain-sized],
-            [100, 100, Vast, planet-sized]
-            ]} ]
-        # - [100, 100, *Ultra-scale]
-    # - Name: Ultra-scale
-    #   Part of speech: [adjective]
-    #   Usage:
-    #     Initial: true
-    #     Requires:
-    #       Scale: [Ultra-scale]
-    #   Table:
-    #     - [1, 89, Titanic, hill-sized]
-    #     - [90, 99, Colossal, mountain-sized]
-    #     - [100, 100, Vast, planet-sized]
+        - [100, 100, ⏵Ultra-scale, {Oracle rolls: [Oracles / Creatures / Ultra-scale]}]
+    - Name: Ultra-scale
+      Part of speech: [adjective]
+      Usage:
+        Initial: true
+        Requires:
+          - Tables: [Oracles / Creatures / Scale]
+            Results: [Ultra-scale, ⏵Ultra-scale]
+      Table:
+        - [1, 89, Titanic, hill-sized]
+        - [90, 99, Colossal, mountain-sized]
+        - [100, 100, Vast, planet-sized]
 
     - Name: Basic Form
       Usage:
