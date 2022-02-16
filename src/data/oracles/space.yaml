@@ -22,11 +22,11 @@ Space:
         Title: Space Sighting
         Table from:
           Roll columns:
-            - Space / Sighting / Terminus
-            - Space / Sighting / Outlands
-            - Space / Sighting / Expanse
+            - Oracles / Space / Sighting / Terminus
+            - Oracles / Space / Sighting / Outlands
+            - Oracles / Space / Sighting / Expanse
           Result columns:
-            - Space / Sighting / Terminus
+            - Oracles / Space / Sighting / Terminus
         Column labels:
           - Terminus
           - Outlands
@@ -41,7 +41,7 @@ Space:
         Repeatable: true
       Oracles:
         - Display:
-            Column of: Space / Sighting
+            Column of: Oracles / Space / Sighting
           Name: Terminus
           Usage:
             Requires:
@@ -69,7 +69,7 @@ Space:
             - [94, 98, *Roll_twice_Rep_ok]
             - [99, 100, *Roll_three_times_Rep_ok]
         - Display:
-            Column of: Space / Sighting
+            Column of: Oracles / Space / Sighting
           Name: Outlands
           _template: *template_spacesighting
           Usage:
@@ -98,7 +98,7 @@ Space:
             - [94, 98]
             - [99, 100]
         - Display:
-            Column of: Space / Sighting
+            Column of: Oracles / Space / Sighting
           Name: Expanse
           Usage:
             Repeatable: true
@@ -149,10 +149,10 @@ Space:
       Display:
         Table from:
           Roll columns:
-            - Space / Sector Name / Prefix
+            - Oracles / Space / Sector Name / Prefix
           Result columns:
-            - Space / Sector Name / Prefix
-            - Space / Sector Name / Suffix
+            - Oracles / Space / Sector Name / Prefix
+            - Oracles / Space / Sector Name / Suffix
         Column labels:
           - Roll
           - Prefix
@@ -164,14 +164,14 @@ Space:
           - Oracle roll: Space / Sector Name / Suffix
       Oracles:
       - Display:
-          Column of: Space / Sector Name
+          Column of: Oracles / Space / Sector Name
         Name: Prefix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:
           Initial: true
           Suggestions:
-            Tables:
-              - Space / Sector Name / Suffix
+            Oracle rolls:
+              - Oracles / Space / Sector Name / Suffix
         Content:
           Part of speech: [adjective]
           Tags: [template fragment]
@@ -227,14 +227,14 @@ Space:
           - [97, 98, Veiled]
           - [99, 100, Wasted]
       - Display:
-          Column of: Space / Sector Name
+          Column of: Oracles / Space / Sector Name
         Name: Suffix
         Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         Usage:
           Initial: true
           Suggestions:
-            Tables:
-              - Space / Sector Name / Prefix
+            Oracle rolls:
+              - Oracles / Space / Sector Name / Prefix
         Content:
           Part of speech: [noun]
           Tags: [template fragment, place]
