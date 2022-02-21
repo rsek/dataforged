@@ -1,8 +1,8 @@
-_templatePlanet: &template:Planet
-  isTemplate: true
-  templateVars:
+Planet: &template:Planet
+  _isTemplate: true
+  _templateVars:
     - Planetary Class
-  _templateInfo: &template.info:Planet
+  _templateCategory: &template.category:Planet
     _childOf: Planets
     Name: ${{Planetary Class}}
     Display:
@@ -22,12 +22,12 @@ _templatePlanet: &template:Planet
           Initial: true
       _templateTable:
         results: &template.results:Planet.Atmosphere
-          - [*attr:Atmosphere.NoneThin]
-          - [*attr:Atmosphere.Toxic]
-          - [*attr:Atmosphere.Corrosive]
-          - [*attr:Atmosphere.Marginal]
-          - [*attr:Atmosphere.Breathable]
-          - [*attr:Atmosphere.Ideal]
+          - [None/thin, *attr:Atmosphere.NoneThin]
+          - [Toxic, *attr:Atmosphere.Toxic]
+          - [Corrosive, *attr:Atmosphere.Corrosive]
+          - [Marginal, *attr:Atmosphere.Marginal]
+          - [Breathable, *attr:Atmosphere.Breathable]
+          - [Ideal, *attr:Atmosphere.Ideal]
     - _templateInfo: &template.info:Planet.Settlements
         Name: Settlements
         Usage:
@@ -51,10 +51,13 @@ _templatePlanet: &template:Planet
           _templateTable:
             results: &template.results:Planet.Settlements
               - [None]
-              - [*Orbital_settlement]
-              - [*Planetside_settlement]
-              - [*Multiple_settlements]
-              - [*Settlements_in_conflict]
+              - [Orbital settlement, *obj:Settlement.Orbital]
+              - [Planetside settlement, *obj:Settlement.Planetside]
+              - [Multiple settlements, &Multiple_settlements
+                  {Game objects: [
+                    *obj:Settlement.PlanetAny,
+                    *obj:Settlement.PlanetAny]}]
+              - [Settlements in conflict, *Multiple_settlements]
         - _templateInfo: &template.info:Planet.Settlements.Outlands
             Name: Outlands
             Display: *template.display:Planet.Settlements
@@ -121,9 +124,9 @@ _templatePlanet: &template:Planet
           Part of speech: [adjective]
       _templateTable:
         rolls:
-          - [*attr:Life.None]
-          - [*attr:Life.Extinct]
-          - [*attr:Life.Scarce]
-          - [*attr:Life.Diverse]
-          - [*attr:Life.Bountiful]
-          - [*attr:Life.Overrun]
+          - [None, *attr:Life.None]
+          - [Extinct, *attr:Life.Extinct]
+          - [Scarce, *attr:Life.Scarce]
+          - [Diverse, *attr:Life.Diverse, {Suggestions: *obj:Creature}]
+          - [Bountiful, *attr:Life.Bountiful, {Suggestions: *obj:Creature}]
+          - [Overrun, *attr:Life.Overrun, {Suggestions: *obj:Creature}]

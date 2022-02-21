@@ -17,8 +17,8 @@ Misc:
       Description: |-
         This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the Pay the Price table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.
       Table:
-        - [1, 4, Crucial equipment or device fails, *suggestObject]
-        - [5, 7, Crucial equipment or device is sabotaged, *suggestObject]
+        - [1, 4, Crucial equipment or device fails, Suggestions: [*roll:Object]]
+        - [5, 7, Crucial equipment or device is sabotaged, Suggestions: [*roll:Object]]
         - [8, 10, Debt or promise comes due]
         - [11, 14, "Enemy reveals unexpected powers, abilities, or influence"]
         - [15, 17, Enemy reveals their true agenda or nature]
@@ -38,15 +38,16 @@ Misc:
         - [58, 61, Time pressure suddenly increases]
         - [62, 65, Trap is sprung]
         - [66, 68, True agenda of a connection or patron is revealed]
-        - [69, 72, Trusted information is shown to be false, *suggestEvent]
-        - [73, 76, Two seemingly unrelated problems are shown to be connected, *suggestEvent]
+        - [69, 72, Trusted information is shown to be false, Suggestions: [*roll:Event]]
+        - [73, 76, Two seemingly unrelated problems are shown to be connected, Suggestions: [*roll:Event]]
         - [77, 80, Undermined by self-doubt or vulnerabilities]
         - [81, 84, Unexpected enemies appear]
-        - [85, 88, Urgent message distracts you from your quest, *suggestEvent]
+        - [85, 88, Urgent message distracts you from your quest, Suggestions: [*roll:Event]]
         - [89, 92, You are tracked or followed]
-        - [93, 95, You were diverted from the true crisis, *suggestEvent]
-        - [96, 100, *Roll_twice]
+        - [93, 95, You were diverted from the true crisis, Suggestions: [*roll:Event]]
+        - [96, 100, *result:RollTwice]
     - Name: Story Clue
+      Aliases: [Clue]
       Source:
         Page: 377
       Usage:
@@ -127,7 +128,7 @@ Misc:
         - [88, 90, Summons or manifests creatures]
         - [91, 93, Transports to another location]
         - [94, 96, Triggers an impending catastrophic explosion]
-        - [97, 100, *Roll_twice]
+        - [97, 100, *result:RollTwice]
     - Name: Combat Action
       Source:
         Page: 379
@@ -169,6 +170,6 @@ Misc:
         - [88, 90, Take cover or bolster defenses]
         - [91, 93, Use an unexpected weapon or ability]
         - [94, 96, Weaken defenses]
-        - [97, 100, *Roll_twice]
+        - [97, 100, *result:RollTwice]
 
 

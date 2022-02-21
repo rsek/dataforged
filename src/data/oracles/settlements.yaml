@@ -12,16 +12,15 @@ Settlements:
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 40, Planetside, {Attributes: {Location: Planetside}}]
-        - [41, 75, Orbital, {Attributes: {Location: Orbital}}]
-        - [76, 100, Deep Space, {Attributes: {Location: Deep Space}}]
-
+        - [1, 40, Planetside, Attributes: {Location: Planetside}]
+        - [41, 75, Orbital, Attributes: {Location: Orbital}]
+        - [76, 100, Deep Space, Attributes: {Location: Deep Space}]
     - Name: Population
       Usage:
         Initial: true
         Requires:
           Attributes:
-              - Key: Region
+             Region: []
       Display:
         Table:
           Roll columns:
@@ -32,53 +31,56 @@ Settlements:
             - Content: Oracles / Settlements / Population / Terminus
               Label: Number
       Oracles:
-        - Display:
+        - Name: Terminus
+          Display:
             Column of: Oracles / Settlements / Population
-          Name: Terminus
           Usage:
+            Sets attributes:
+              - Population
             Requires:
               Attributes:
-                - Key: Region
-                  Values:
-                    - Terminus
-          Table:
-            - [1, 10, *pop00]
-            - [11, 25, *pop01]
-            - [26, 55, *pop02]
-            - [56, 85, *pop03]
-            - [86, 100, *pop04]
+                Region: Terminus
+          Table: &table:Population
+            - [1, 10, Few, Attributes: {Population: Few}]
+            - [11, 25, Dozens, Attributes: {Population: Dozens}]
+            - [26, 55, Hundreds, Attributes: {Population: Hundreds}]
+            - [56, 85, Thousands, Attributes: {Population: Thousands}]
+            - [86, 100, Tens of thousands, Attributes: {Population: Tens of thousands}]
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Settlements / Population
+          Usage:
+            Sets attributes:
+              - Population
+            Requires:
+              Attributes:
+                Region: Outlands
+          _templateTable:
+            results: *table:Population
+            rolls:
+              - [1, 15]
+              - [16, 35]
+              - [36, 65]
+              - [66, 90]
+              - [91, 100]
 
-        - Display:
+        - Name: Expanse
+          Display:
             Column of: Oracles / Settlements / Population
-          Name: Outlands
           Usage:
+            Sets attributes:
+              - Population
             Requires:
               Attributes:
-                - Key: Region
-                  Values:
-                    - Outlands
-          Table:
-            - [1, 15, *pop00]
-            - [16, 35, *pop01]
-            - [36, 65, *pop02]
-            - [66, 90, *pop03]
-            - [91, 100, *pop04]
-
-        - Display:
-            Column of: Oracles / Settlements / Population
-          Name: Expanse
-          Usage:
-            Requires:
-              Attributes:
-                - Key: Region
-                  Values:
-                    - Expanse
-          Table:
-            - [1, 20, *pop00]
-            - [21, 50, *pop01]
-            - [51, 80, *pop02]
-            - [81, 95, *pop03]
-            - [96, 100, *pop04]
+                Region: Expanse
+          _templateTable:
+            results: *table:Population
+            rolls:
+              - [1, 20]
+              - [21, 50]
+              - [51, 80]
+              - [81, 95]
+              - [96, 100]
 
     - Name: First Look
       Usage:
@@ -107,41 +109,45 @@ Settlements:
         - [77, 80, Sprawling or dispersed structures]
         - [81, 83, Temporary or seasonal location]
         - [84, 87, Toxic or polluted habitat]
-        - [88, 90, Within or near ⏵Precursor Vault, *Vault]
+        - [88, 90, Within or near ⏵Precursor Vault, *obj:Vault]
         - [91, 100, *result:Descriptor+Focus]
 
     - Name: Initial Contact
       Usage:
         Initial: true
+        Sets attributes:
+          - Initial Contact
       Content:
         Part of speech: [fragment]
         Tags: [description]
       Table:
-        - [1, 20, Welcoming]
-        - [21, 30, Neutral / automated]
-        - [31, 50, Wary]
-        - [51, 60, Uncooperative]
-        - [61, 70, Hostile]
-        - [71, 83, Asking for help]
-        - [84, 86, In battle]
-        - [87, 89, Captured]
-        - [90, 92, Unresponsive]
-        - [93, 95, Destroyed]
-        - [96, 100, ⏵Derelict, *Derelict_settlement_inherit]
+        - [1, 20, Welcoming, Attributes: {Initial Contact: Welcoming}]
+        - [21, 30, Neutral / automated, Attributes: {Initial Contact: Neutral / automated}]
+        - [31, 50, Wary, Attributes: {Initial Contact: Wary}]
+        - [51, 60, Uncooperative, Attributes: {Initial Contact: Uncooperative}]
+        - [61, 70, Hostile, Attributes: {Initial Contact: Hostile}]
+        - [71, 83, Asking for help, Attributes: {Initial Contact: Asking for help}]
+        - [84, 86, In battle, Attributes: {Initial Contact: In battle}]
+        - [87, 89, Captured, Attributes: {Initial Contact: Captured}]
+        - [90, 92, Unresponsive, Attributes: {Initial Contact: Unresponsive}]
+        - [93, 95, Destroyed, Attributes: {Initial Contact: Destroyed}]
+        - [96, 100, ⏵Derelict, *inherit:Derelict.Settlement]
 
     - Name: Authority
       Usage:
         Initial: true
+        Sets attributes:
+          - Authority
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 15, None / lawless]
-        - [16, 30, Ineffectual]
-        - [31, 45, Tolerant]
-        - [46, 55, Fair]
-        - [56, 70, Unyielding]
-        - [71, 85, Corrupt]
-        - [86, 100, Oppressive]
+        - [1, 15, None / lawless, Attributes: {Authority: None / lawless}]
+        - [16, 30, Ineffectual, Attributes: {Authority: Ineffectual}]
+        - [31, 45, Tolerant, Attributes: {Authority: Tolerant}]
+        - [46, 55, Fair, Attributes: {Authority: Fair}]
+        - [56, 70, Unyielding, Attributes: {Authority: Unyielding}]
+        - [71, 85, Corrupt, Attributes: {Authority: Corrupt}]
+        - [86, 100, Oppressive, Attributes: {Authority: Oppressive}]
 
     - Name: Projects
       Display:
@@ -186,7 +192,7 @@ Settlements:
         - [87, 88, Terraforming]
         - [89, 92, Trade]
         - [93, 95, Warfare]
-        - [96, 100, *Action+Theme]
+        - [96, 100, *result:Action+Theme]
 
     - Name: Trouble
       Display:
@@ -199,40 +205,40 @@ Settlements:
         Part of speech: [fragment]
         Tags: [peril, event, present]
       Table:
-        - [1, 3, Battle for leadership, *suggestFaction]
+        - [1, 3, Battle for leadership, Suggestions: [*obj:Faction]]
         - [4, 6, Betrayal from within]
         - [7, 8, Caught in the crossfire]
         - [9, 11, Changing environment]
-        - [12, 13, Clash of cultures, *suggestEvent]
-        - [14, 17, Dangerous discovery, *suggestEvent]
-        - [18, 21, Depleted supplies, *suggestObject]
-        - [22, 24, Deprived of a resource, *suggestObject]
-        - [25, 28, Failing technology, *suggestObject]
+        - [12, 13, Clash of cultures, Suggestions: [*roll:Event]]
+        - [14, 17, Dangerous discovery, Suggestions: [*roll:Event]]
+        - [18, 21, Depleted supplies, Suggestions: [*roll:Object]]
+        - [22, 24, Deprived of a resource, Suggestions: [*roll:Object]]
+        - [25, 28, Failing technology, Suggestions: [*roll:Object]]
         - [29, 32, Feuding factions]
         - [33, 34, Ghostly visitations]
-        - [35, 38, Hazardous environment, *suggestObject]
-        - [39, 42, Hostile lifeforms, *suggestCreature]
+        - [35, 38, Hazardous environment, Suggestions: [*roll:Object]]
+        - [39, 42, Hostile lifeforms, Suggestions: [*obj:Creature]]
         - [43, 45, Impassable route]
         - [46, 48, Impending attack]
-        - [49, 51, Impending natural disaster, *suggestEvent]
+        - [49, 51, Impending natural disaster, Suggestions: [*roll:Event]]
         - [52, 53, Invasive organisms]
         - [54, 55, Mounting debt]
         - [56, 57, Mysterious deaths]
         - [58, 60, Overdue delivery]
         - [61, 62, Plagued by sickness]
         - [63, 65, Preyed upon by raiders]
-        - [66, 67, Revolt against leadership, *suggestNpc]
-        - [68, 69, Sabotaged technology, *suggestObject]
+        - [66, 67, Revolt against leadership, Suggestions: [*obj:Npc]]
+        - [68, 69, Sabotaged technology, Suggestions: [*roll:Object]]
         - [70, 71, Shunned by others]
-        - [72, 74, Social strife, *suggestEvent]
-        - [75, 76, Someone is ill or injured, *suggestNpc]
-        - [77, 78, Someone is missing, *suggestNpc]
-        - [79, 80, Stolen technology or object, *suggestObject]
-        - [81, 83, Strange phenomenon, *suggestEvent]
-        - [84, 86, Toxic waste or pollution, *suggestObject]
-        - [87, 88, Volatile energy source, *suggestObject]
-        - [89, 90, Vulnerable lifeforms, *suggestCreature]
-        - [91, 100, *Action+Theme]
+        - [72, 74, Social strife, Suggestions: [*roll:Event]]
+        - [75, 76, Someone is ill or injured, Suggestions: [*obj:Npc]]
+        - [77, 78, Someone is missing, Suggestions: [*obj:Npc]]
+        - [79, 80, Stolen technology or object, Suggestions: [*roll:Object]]
+        - [81, 83, Strange phenomenon, Suggestions: [*roll:Event]]
+        - [84, 86, Toxic waste or pollution, Suggestions: [*roll:Object]]
+        - [87, 88, Volatile energy source, Suggestions: [*roll:Object]]
+        - [89, 90, Vulnerable lifeforms, Suggestions: [*obj:Creature]]
+        - [91, 100, *result:Action+Theme]
 
     - Name: Name
       Display:

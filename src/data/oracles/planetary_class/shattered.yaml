@@ -1,8 +1,10 @@
 Shattered World:
   _templateInfo: *template.info:Planet
-  _vars:
+  _templateVars:
     Planetary Class: Shattered
   Image: "https://i.imgur.com/HKpmALQ.png"
+  Source:
+    Page: 316
   Description: A planet sundered by cataclysmic destruction.
   Sample Names:
     - Cavus
@@ -69,35 +71,35 @@ Shattered World:
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
         results:
-          - [Demolished space fleet]
-          - [Preserved planetary fragment]
-          - [Dense ring system]
-          - [Swirling debris field]
-          - [Fiery planetary core]
-          - [Unbroken moon]
-          - [Geomagnetic storms]
-          - [Intense solar radiation]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Orbital]
+          - Demolished space fleet
+          - Preserved planetary fragment
+          - Dense ring system
+          - Swirling debris field
+          - Fiery planetary core
+          - Unbroken moon
+          - Geomagnetic storms
+          - Intense solar radiation
+          - *result:Descriptor+Focus
+          - *result:Vault.Orbital
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
         results:
-          - [Broken cities]
-          - [Colliding fragments]
-          - [Energy storms]
-          - [Exposed caverns]
-          - [Fluctuating gravity]
-          - [Magnetic disturbances]
-          - [Molten fissures]
-          - [Phantom visions of the past]
-          - [Pocket atmosphere]
-          - [Residual energy storms]
-          - [Swirling corrosive gases]
-          - [Unstable and fracturing terrain]
-          - [Venting magma]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Planetside]
+          - Broken cities
+          - Colliding fragments
+          - Energy storms
+          - Exposed caverns
+          - Fluctuating gravity
+          - Magnetic disturbances
+          - Molten fissures
+          - Phantom visions of the past
+          - Pocket atmosphere
+          - Residual energy storms
+          - Swirling corrosive gases
+          - Unstable and fracturing terrain
+          - Venting magma
+          - *result:Descriptor+Focus
+          - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
         results: *template.results:Planet.Life

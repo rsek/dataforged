@@ -1,8 +1,10 @@
 Vital World:
   _templateInfo: *template.info:Planet
-  _vars:
+  _templateVars:
     Planetary Class: Vital
   Image: "https://i.imgur.com/Syhr8rp.png"
+  Source:
+    Page: 318
   Description: This diverse, life-bearing planet might provide some small measure of hope.
   Sample Names:
     - Chiron
@@ -69,42 +71,42 @@ Vital World:
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
         results:
-          - [Complex ring system]
-          - [Numerous small moons]
-          - [Dramatic seasonal variation]
-          - [Unusual day or night cycle]
-          - [High gravity]
-          - [Vibrantly colored landscapes]
-          - [Large moon]
-          - [Narrow livable band]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Orbital]
+          - Complex ring system
+          - Numerous small moons
+          - Dramatic seasonal variation
+          - Unusual day or night cycle
+          - High gravity
+          - Vibrantly colored landscapes
+          - Large moon
+          - Narrow livable band
+          - *result:Descriptor+Focus
+          - *result:Vault.Orbital
     - Name: Diversity
       Content:
         Part of speech: [adjective]
       Table:
         - [1, 20, "Simple (two biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               &biome Oracles / Planets / Vital / Biomes,
-              *biome ]}]
+              *biome ]]
         - [21, 70, "Diverse (three biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               *biome,
               *biome,
-              *biome ]}]
+              *biome ]]
         - [71, 90, "Complex (four biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               *biome,
               *biome,
               *biome,
-              *biome ]}]
+              *biome ]]
         - [91, 100, "Garden world (five or more biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               *biome,
               *biome,
               *biome,
               *biome,
-              *biome ]}]
+              *biome ]]
     - Name: Biomes
       Usage:
         Min rolls: 2
@@ -136,21 +138,21 @@ Vital World:
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
         results:
-          - [Background radiation]
-          - [Chaotically juxtaposed biomes]
-          - [Creature boneyards]
-          - [Creature lairs or watering holes]
-          - [Crystalline formations]
-          - [Fierce electrical storms]
-          - [Floating terrain]
-          - [Frequent seismic activity]
-          - [Magnetic disturbances]
-          - [Scarred or excavated terrain]
-          - [Signs of an engineered biosphere]
-          - [Sudden weather fluctuations]
-          - [Towering geological formations]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Planetside]
+          - Background radiation
+          - Chaotically juxtaposed biomes
+          - Creature boneyards
+          - Creature lairs or watering holes
+          - Crystalline formations
+          - Fierce electrical storms
+          - Floating terrain
+          - Frequent seismic activity
+          - Magnetic disturbances
+          - Scarred or excavated terrain
+          - Signs of an engineered biosphere
+          - Sudden weather fluctuations
+          - Towering geological formations
+          - *result:Descriptor+Focus
+          - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
         results: *template.results:Planet.Life

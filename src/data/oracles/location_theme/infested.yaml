@@ -1,74 +1,50 @@
 Infested:
-  Name: Infested
-  Display:
-    Title: Location Theme / Infested
-  _childOf: Location Themes
-  Description: *Infested
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Location Theme
-          Values:
-            - Infested
+  _templateInfo: *template.info:LocationTheme
+  _templateVars:
+    Location Theme: Infested
+  Description: Foul creatures have overrun this place.
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 375
   Oracles:
-    - Name: Feature
-      Description: *theme_feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Corpse of an unfortunate victim]
-        - [9, 16, "Eggs, cocoons, or nest"]
-        - [17, 24, Environment corrupted by the infestation]
-        - [25, 32, Evidence of a lurking creature]
-        - [33, 40, Evidence of an ill-fated victim]
-        - [41, 48, Hoarded food]
-        - [49, 56, Indistinct movement or sounds]
-        - [57, 64, Lair of lesser creatures]
-        - [65, 72, Ravaged supplies or equipment]
-        - [73, 80, Remains of a creature or remnants of a previous form]
-        - [81, 88, Territorial markings]
-        - [89, 96, Trail or evidence of a creature's passage]
-        - [97, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Description: *theme_peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 9, Creatures attack without warning]
-        - [10, 18, Creatures guided or controlled by a greater threat]
-        - [19, 27, Creatures reveal new aspects or abilities]
-        - [28, 36, Creatures reveal surprising cleverness]
-        - [37, 45, Creatures take or destroy something important]
-        - [46, 54, Discovery of a live but threatened victim]
-        - [55, 63, Hazardous architecture or terrain]
-        - [64, 72, Lured or driven into a trap or dead-end]
-        - [73, 81, Powerful or dominant creature reveals itself]
-        - [82, 90, Toxic or sickening environment]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Description: *theme_opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Clue to the nature or vulnerabilities of these creatures]
-        - [21, 40, Creatures turn on each other]
-        - [41, 60, Early warning of an attack or ambush]
-        - [61, 80, External event provides a helpful distraction]
-        - [81, 100, Helpful resource or equipment]
-
-
-
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Feature
+        results:
+          - Corpse of an unfortunate victim
+          - "Eggs, cocoons, or nest"
+          - Environment corrupted by the infestation
+          - Evidence of a lurking creature
+          - Evidence of an ill-fated victim
+          - Hoarded food
+          - Indistinct movement or sounds
+          - Lair of lesser creatures
+          - Ravaged supplies or equipment
+          - Remains of a creature or remnants of a previous form
+          - Territorial markings
+          - Trail or evidence of a creature's passage
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:LocationTheme.Peril
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Peril
+        results:
+          - Creatures attack without warning
+          - Creatures guided or controlled by a greater threat
+          - Creatures reveal new aspects or abilities
+          - Creatures reveal surprising cleverness
+          - Creatures take or destroy something important
+          - Discovery of a live but threatened victim
+          - Hazardous architecture or terrain
+          - Lured or driven into a trap or dead-end
+          - Powerful or dominant creature reveals itself
+          - Toxic or sickening environment
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Opportunity
+        results:
+          - Clue to the nature or vulnerabilities of these creatures
+          - Creatures turn on each other
+          - Early warning of an attack or ambush
+          - External event provides a helpful distraction
+          - Helpful resource or equipment

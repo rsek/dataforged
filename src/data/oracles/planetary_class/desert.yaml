@@ -1,8 +1,10 @@
 Desert World:
   _templateInfo: *template.info:Planet
-  _vars:
+  _templateVars:
     Planetary Class: Desert
   Image: "https://i.imgur.com/YLNEHp9.png"
+  Source:
+    Page: 308
   Description: A pitiless planet of searing heat, blowing sand, and sunbaked rock.
   Sample Names:
     - Abalos
@@ -69,35 +71,35 @@ Desert World:
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
         results:
-          - [Dry seabeds]
-          - [Expansive dune seas]
-          - [Massive canyons]
-          - [Perpetual daylight]
-          - [Rugged mountains]
-          - [Sprawling salt flats]
-          - [Vast plateaus]
-          - [Vibrant terrain colors]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Orbital]
+          - Dry seabeds
+          - Expansive dune seas
+          - Massive canyons
+          - Perpetual daylight
+          - Rugged mountains
+          - Sprawling salt flats
+          - Vast plateaus
+          - Vibrant terrain colors
+          - *result:Descriptor+Focus
+          - *result:Vault.Orbital
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
         results:
-          - [Cavernous sinkholes]
-          - [Engulfing sandstorms]
-          - [Fleeting rainstorms and flash floods]
-          - [Flooded grottos]
-          - [Petrified forest]
-          - [Rampaging whirlwinds]
-          - [Scorched glass plains]
-          - [Severe temperature fluctuations]
-          - [Sunbaked bones of titanic creatures]
-          - [Timeworn cliffside caves]
-          - [Towering rock formations]
-          - [Violent electrical storms]
-          - [Windborne metallic sand]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Planetside]
+          - Cavernous sinkholes
+          - Engulfing sandstorms
+          - Fleeting rainstorms and flash floods
+          - Flooded grottos
+          - Petrified forest
+          - Rampaging whirlwinds
+          - Scorched glass plains
+          - Severe temperature fluctuations
+          - Sunbaked bones of titanic creatures
+          - Timeworn cliffside caves
+          - Towering rock formations
+          - Violent electrical storms
+          - Windborne metallic sand
+          - *result:Descriptor+Focus
+          - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
         results: *template.results:Planet.Life

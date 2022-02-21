@@ -1,87 +1,63 @@
 Community:
-  Name: Community
-  Display:
-    Title: Derelict / Community
-  _childOf: Derelicts
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Zone
-          Values:
-            - Community
+  _templateInfo: *template.info:Zone
+  _templateVars:
+    Zone: Community
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 353
   Oracles:
-    - Name: Area
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Bar or club]
-        - [9, 16, Temple or chapel]
-        - [17, 24, Classroom or education]
-        - [25, 32, Concourse or hub]
-        - [33, 40, Entertainment]
-        - [41, 48, Park or garden]
-        - [49, 56, Gym or fitness]
-        - [57, 64, Market or trade]
-        - [65, 72, Promenade or overlook]
-        - [73, 80, Restaurant or dining]
-        - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *zoneAccess]
-
-    - Name: Feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Ad-hoc memorials]
-        - [9, 16, Art depicting historic event]
-        - [17, 24, Artificial environment]
-        - [25, 32, Automated announcements]
-        - [33, 40, Barricaded area]
-        - [41, 48, Gaming devices or interfaces]
-        - [49, 56, Graffiti or vandalization]
-        - [57, 64, Guard post or surveillance]
-        - [65, 72, Mass grave or corpses]
-        - [73, 80, Panoramic viewport]
-        - [81, 88, Rubble or debris]
-        - [89, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 10, Biological infestation]
-        - [11, 20, Breached or broken structure]
-        - [21, 30, Distressing signs of mass violence or death]
-        - [31, 40, Flooded environment]
-        - [41, 50, Foe lurks within concealment]
-        - [51, 60, Fragile structural integrity]
-        - [61, 70, Haunting vision of life here before the fall]
-        - [71, 80, Hazardous environmental change]
-        - [81, 90, Heartbreaking memento of lost lives]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Culturally significant object or artifact]
-        - [21, 40, Salvageable goods or resources]
-        - [41, 60, Secure area offers a moment of peace]
-        - [61, 80, Terminal with access to site details]
-        - [81, 100, Valuable item]
-
-
-
+    - _templateInfo: *template.info:Zone.Area
+      _templateTable:
+        rolls: *template.rolls:Zone.Area
+        results:
+          - Bar or club
+          - Classroom or education
+          - Concourse or hub
+          - Entertainment
+          - Gym or fitness
+          - Market or trade
+          - Park or garden
+          - Promenade or overlook
+          - Restaurant or dining
+          - Temple or chapel
+          - *result:NewZone
+          - *result:NewZoneViaAccess
+    - _templateInfo: *template.info:Zone.Feature
+      _templateTable:
+        rolls: *template.rolls:Zone.Feature
+        results:
+          - Ad-hoc memorials
+          - Art depicting historic event
+          - Artificial environment
+          - Automated announcements
+          - Barricaded area
+          - Gaming devices or interfaces
+          - Graffiti or vandalization
+          - Guard post or surveillance
+          - Mass grave or corpses
+          - Panoramic viewport
+          - Rubble or debris
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        results:
+          - Biological infestation
+          - Breached or broken structure
+          - Distressing signs of mass violence or death
+          - Flooded environment
+          - Foe lurks within concealment
+          - Fragile structural integrity
+          - Haunting vision of life here before the fall
+          - Hazardous environmental change
+          - Heartbreaking memento of lost lives
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        results:
+          - Culturally significant object or artifact
+          - Salvageable goods or resources
+          - Secure area offers a moment of peace
+          - Terminal with access to site details
+          - Valuable item

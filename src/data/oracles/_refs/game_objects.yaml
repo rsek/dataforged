@@ -1,0 +1,156 @@
+Game objects:
+  Character: &obj:Npc
+    Object type: Character
+  Creature: &obj:Creature
+    Object type: Creature
+  Location theme:
+    Fortified: &obj:LocationTheme.Fortified
+      Oracle rolls:
+        - Oracles / Location Themes / Fortified / Peril
+        - Oracles / Location Themes / Fortified / Opportunity
+        - Oracles / Location Themes / Fortified / Feature
+    Haunted: &obj:LocationTheme.Haunted
+      Oracle rolls:
+        - Oracles / Location Themes / Haunted / Peril
+        - Oracles / Location Themes / Haunted / Opportunity
+        - Oracles / Location Themes / Haunted / Feature
+    Chaotic: &obj:LocationTheme.Chaotic
+      Oracle rolls:
+        - Oracles / Location Themes / Chaotic / Peril
+        - Oracles / Location Themes / Chaotic / Opportunity
+        - Oracles / Location Themes / Chaotic / Feature
+  Planet:
+    Any: &obj:Planet
+      Object type: Planet
+    # region-sensitive
+    Any, Terminus: &obj:Planet.Terminus
+      Object type: Planet
+      Region: Terminus
+    Any, Outlands: &obj:Planet.Outlands
+      Object type: Planet
+      Region: Outlands
+    Any, Expanse: &obj:Planet.Expanse
+      Object type: Planet
+      Region: Expanse
+    # by planetary class
+    Desert: &obj:Planet.Desert
+      Object type: Planet
+      Planetary Class: Desert
+    Furnace: &obj:Planet.Furnace
+      Object type: Planet
+      Planetary Class: Furnace
+    Grave: &obj:Planet.Grave
+      Object type: Planet
+      Planetary Class: Grave
+    Ice: &obj:Planet.Ice
+      Object type: Planet
+      Planetary Class: Ice
+    Jovian: &obj:Planet.Jovian
+      Object type: Planet
+      Planetary Class: Jovian
+    Jungle: &obj:Planet.Jungle
+      Object type: Planet
+      Planetary Class: Jungle
+    Ocean: &obj:Planet.Ocean
+      Object type: Planet
+      Planetary Class: Ocean
+    Rocky: &obj:Planet.Rocky
+      Object type: Planet
+      Planetary Class: Rocky
+    Shattered: &obj:Planet.Shattered
+      Object type: Planet
+      Planetary Class: Shattered
+    Tainted: &obj:Planet.Tainted
+      Object type: Planet
+      Planetary Class: Tainted
+    Vital: &obj:Planet.Vital
+      Object type: Planet
+      Planetary Class: Vital
+  Vault:
+    Any: &obj:Vault
+      Object type: Precursor Vault
+    # Location-sensitive
+    Planetside: &obj:Vault.Planetside
+      Object type: Precursor Vault
+      Location: Planetside
+    Orbital: &obj:Vault.Orbital
+      Object type: Precursor Vault
+      Location: Orbital
+    Deep Space: &obj:Vault.DeepSpace
+      Object type: Precursor Vault
+      Location: Deep Space
+  Derelict:
+    Any: &obj:Derelict
+      Object type: Derelict
+      Initial Contact: Derelict
+    Starship: &obj:Derelict.Starship
+      Object type: Derelict
+      Derelict Type: Starship
+      Initial Contact: Derelict
+    Starship (inherit rolls): &inherit:Derelict.Starship
+      Object type: Derelict
+      Derelict Type: Starship
+      Initial Contact: Derelict
+      Inherit rolls: true
+    Settlement: &obj:Derelict.Settlement
+      Object type: Derelict
+      Derelict Type: Settlement
+      Initial Contact: Derelict
+    Settlement (inherit rolls): &inherit:Derelict.Settlement
+      Object type: Derelict
+      Derelict Type: Settlement
+      Initial Contact: Derelict
+      Inherit rolls: true
+
+  Settlement:
+    Any: &obj:Settlement
+      Object type: Settlement
+    Any planet location: &obj:Settlement.PlanetAny
+      Object type: Settlement
+      Location: [Planetside, Orbital]
+    Planetside: &obj:Settlement.Planetside
+      Object type: Settlement
+      Location: Planetside
+    Orbital: &obj:Settlement.Orbital
+      Object type: Settlement
+      Location: Orbital
+  Zone:
+    Zone (any): &obj:DerelictZone
+      Object type: Derelict Zone
+    Zone (Access): &obj:DerelictZone.Access
+      Object type: Derelict Zone
+      Zone: Access
+    Zone (Community): &obj:DerelictZone.Community
+      Object type: Derelict Zone
+      Zone: Community
+    Zone (Engineering): &obj:DerelictZone.Engineering
+      Object type: Derelict Zone
+      Zone: Engineering
+    Zone (Living): &obj:DerelictZone.Living
+      Object type: Derelict Zone
+      Zone: Living
+    Zone (Medical): &obj:DerelictZone.Medical
+      Object type: Derelict Zone
+      Zone: Medical
+    Zone (Operations): &obj:DerelictZone.Operations
+      Object type: Derelict Zone
+      Zone: Operations
+    Zone (Production): &obj:DerelictZone.Production
+      Object type: Derelict Zone
+      Zone: Production
+    Zone (Research): &obj:DerelictZone.Research
+      Object type: Derelict Zone
+      Zone: Research
+  Faction:
+    Any: &obj:Faction
+      Object type: Faction
+    Dominion: &obj:Faction.Dominion
+      Object type: Faction
+      Faction type: Dominion
+    Guild: &obj:Faction.Guild
+      Object type: Faction
+      Faction type: Guild
+    Fringe Group: &obj:Faction.FringeGroup
+      Object type: Faction
+      Faction type: Fringe Group
+  Generic: # broad prompts that might be handy to offer to the user as suggestions

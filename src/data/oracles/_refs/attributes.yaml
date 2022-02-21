@@ -1,0 +1,113 @@
+Attributes:
+  Region:
+    Any: &attr:Region.Any
+      Attributes:
+        Region: []
+    Terminus: &attr:Region.Terminus
+      Attributes:
+        Region: Terminus
+    Outlands: &attr:Region.Outlands
+      Attributes:
+        Region: Outlands
+    Expanse: &attr:Region.Expanse
+      Attributes:
+        Region: Expanse
+  Life:
+    Lifeless: &attr:Life.Lifeless
+      Attributes:
+        Life: [None, Extinct]
+    Lifebearing: &attr:Life.Lifebearing
+      Attributes:
+        Life: [Scarce, Diverse, Bountiful, Overrun]
+    None: &attr:Life.None
+      Attributes:
+        Life: None
+    Extinct: &attr:Life.Extinct
+      Attributes:
+        Life: Extinct
+    Scarce: &attr:Life.Scarce
+      Attributes:
+        Life: Scarce
+    Diverse: &attr:Life.Diverse
+      Attributes:
+        Life: Diverse
+    Bountiful: &attr:Life.Bountiful
+      Attributes:
+        Life: Bountiful
+    Overrun: &attr:Life.Overrun
+      Attributes:
+        Life: Overrun
+  Location:
+    Any: &attr:Location.Any
+      Attributes:
+        Location: []
+    Planetside: &attr:Location.Planetside
+      Attributes:
+        Location: Planetside
+    Orbital: &attr:Location.Orbital
+      Attributes:
+        Location: Orbital
+    Deep Space: &attr:Location.DeepSpace
+      Attributes:
+        Location: Deep Space
+    Any Planet: &attr:Location.AnyPlanet
+      Attributes:
+        Location: [Planetside, Orbital]
+  # derelict type
+  Derelict Type:
+    Starship: &attr:DerelictType.Starship
+      Attributes:
+        Derelict Type: Starship
+    Settlement: &attr:DerelictType.Settlement
+      Attributes:
+        Derelict Type: Settlement
+  Atmosphere:
+    # this and many of the keys that follow contain arrays, because YAML has certain restrictions on what anchors can be used where. the end result is that the 2d rows must be flattened before conversion into row objects, which is less than ideal... but the real point of those 2d arrays is maintenance and readability, anyways, so it'd NBD.
+    None / thin: &attr:Atmosphere.NoneThin
+      Result: None / thin
+      # Suggestions:
+      #   Glossary:
+      #     - Glossary / None/thin
+      Attributes:
+        Atmosphere: None / thin
+      # Summary: "This planet is airless, or it's atmosphere is so thin as to be useless for humans."
+    Toxic: &attr:Atmosphere.Toxic
+      Result: Toxic
+      # Suggestions:
+      #   Glossary:
+      #     - Glossary / Toxic
+      Attributes:
+        Atmosphere: Toxic
+      # Summary: "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes."
+    Corrosive: &attr:Atmosphere.Corrosive
+      Result: Corrosive
+      # Suggestions:
+      #   Glossary:
+      #     - Glossary / Corrosive
+      Attributes:
+        Atmosphere: Corrosive
+      # Summary: "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time."
+    Marginal: &attr:Atmosphere.Marginal
+      Result: Marginal
+      # Suggestions:
+      #   Glossary:
+      #     - Glossary / Marginal
+      Attributes:
+        Atmosphere: Marginal
+      # Summary: "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."
+    Breathable: &attr:Atmosphere.Breathable
+      Result: Breathable
+      # Suggestions:
+      #   Glossary:
+      #     - Glossary / Breathable
+      Attributes:
+        Atmosphere: Breathable
+      # Summary: "This atmosphere is not perfect, but it's good enough to sustain human life."
+    Ideal: &attr:Atmosphere.Ideal
+      Result: Ideal
+      # Suggestions:
+      #   Glossary:
+      #     - Glossary / Ideal
+      Attributes:
+        Atmosphere: Ideal
+      # Summary: "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air."

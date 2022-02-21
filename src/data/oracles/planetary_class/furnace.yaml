@@ -1,8 +1,10 @@
 Furnace World:
   _templateInfo: *template.info:Planet
-  _vars:
+  _templateVars:
     Planetary Class: Furnace
   Image: "https://i.imgur.com/YS5rlDR.png"
+  Source:
+    Page: 309
   Description: A planet with relentless volcanic activity, wreathed in fire and ash.
   Sample Names:
     - Ash
@@ -69,35 +71,35 @@ Furnace World:
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
         results:
-          - [Fiery world-spanning chasms]
-          - [Glowing rivers of lava]
-          - [Lightning-wracked ash clouds]
-          - [Magma seas]
-          - [Massive supervolcano]
-          - [Once verdant terrain]
-          - [Towering mountain ranges]
-          - [World-spanning fissures]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Orbital]
+          - Fiery world-spanning chasms
+          - Glowing rivers of lava
+          - Lightning-wracked ash clouds
+          - Magma seas
+          - Massive supervolcano
+          - Once verdant terrain
+          - Towering mountain ranges
+          - World-spanning fissures
+          - *result:Descriptor+Focus
+          - *result:Vault.Orbital
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
         results:
-          - [Blinding ash storms]
-          - [Catastrophic earthquakes]
-          - [Colorful geothermal springs]
-          - [Intricate volcanic rock formations]
-          - [Lava tube tunnel networks]
-          - [Masses of scorched bones]
-          - [Plains of volcanic glass]
-          - [Pools of liquid metal]
-          - [Rocky islands adrift on magma]
-          - [Roiling clouds of superheated gas]
-          - [Scalding geysers]
-          - [Silica or metal storms]
-          - [Steaming mudflats]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Planetside]
+          - Blinding ash storms
+          - Catastrophic earthquakes
+          - Colorful geothermal springs
+          - Intricate volcanic rock formations
+          - Lava tube tunnel networks
+          - Masses of scorched bones
+          - Plains of volcanic glass
+          - Pools of liquid metal
+          - Rocky islands adrift on magma
+          - Roiling clouds of superheated gas
+          - Scalding geysers
+          - Silica or metal storms
+          - Steaming mudflats
+          - *result:Descriptor+Focus
+          - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
         results: *template.results:Planet.Life

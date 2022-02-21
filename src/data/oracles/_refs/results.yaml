@@ -1,0 +1,46 @@
+Results:
+  # composed results that are commonly used in rows
+  Descriptor + Focus: &result:Descriptor+Focus
+    Result: ⏵Descriptor + Focus
+    Oracle rolls:
+      - Oracles / Core / Descriptor
+      - Oracles / Core / Focus
+  Action + Theme: &result:Action+Theme
+    Result: ⏵Action + Theme
+    Oracle rolls:
+      - Oracles / Core / Action
+      - Oracles / Core / Theme
+  Roll twice: &result:RollTwice
+    Result: Roll twice
+    Multiple rolls:
+      Amount: 2
+      Allow duplicates: false
+  Roll three times: &result:RollThreeTimes
+    Result: Roll three times
+    Multiple rolls:
+      Amount: 3
+      Allow duplicates: false
+  Roll twice (rep ok): &result:RollTwice.RepeatsOk
+    Result: Roll twice
+    Multiple rolls:
+      Amount: 2
+      Allow duplicates: true
+  Roll three times (rep ok): &result:RollThreeTimes.RepeatsOk
+    Result: Roll three times
+    Multiple rolls:
+      Amount: 3
+      Allow duplicates: true
+  Roll twice (make it worse): &result:RollTwice.MakeItWorse
+    Multiple rolls:
+      Amount: 2
+      Allow duplicates: true
+      Make it worse: true
+  New zone: &result:NewZone
+    Result: New zone
+    Game objects:
+      - Object type: Zone
+  New zone (via Access): &result:NewZoneViaAccess
+    Result: New zone via ⏵Access
+    Game objects:
+      - Object type: Zone
+        Zone: Access
