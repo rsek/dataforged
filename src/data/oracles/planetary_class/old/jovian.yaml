@@ -1,0 +1,167 @@
+Jovian World:
+  Name: Jovian
+  Display:
+    Title: Jovian World
+  Description: *Jovian
+  _childOf: Planets
+  Usage:
+      Attributes:
+        - Key: Planetary Class
+          Values:
+            - Jovian
+  Source:
+    Title: Starforged Backer Preview
+    Date: "020122"
+  Image: "https://i.imgur.com/xRT70k8.png"
+  Sample Names:
+    - Aether
+    - Arrokoth
+    - Esen
+    - Hanish
+    - Magnus
+    - Magonia
+    - Mistral
+    - Nephele
+    - Nimbus
+    - Nuada
+    - Nubium
+    - Serein
+    - Stratus
+    - Taranis
+    - Tempest
+    - Tenzin
+    - Tyr
+    - Veil
+    - Velum
+    - Zephyr
+  Oracles:
+    - Name: Atmosphere
+      Content:
+        Part of speech: [adjective]
+      Usage:
+        Initial: true
+      Table:
+        - [1, 50, *attr:Atmosphere.Toxic]
+        - [51, 65, *attr:Atmosphere.Corrosive]
+        - [66, 85, *attr:Atmosphere.Marginal]
+        - [86, 100, *attr:Atmosphere.Breathable]
+
+    - Name: Settlements
+      Usage:
+        Initial: true
+        Requires:
+          Attributes:
+            - Key: Region
+      Display:
+        Table:
+          Roll columns:
+            - Content: Oracles / Planets / Jovian / Settlements / Terminus
+            - Content: Oracles / Planets / Jovian / Settlements / Outlands
+            - Content: Oracles / Planets / Jovian / Settlements / Expanse
+          Result columns:
+            - Content: Oracles / Planets / Jovian / Settlements / Terminus
+
+      Oracles:
+        - Name: Terminus
+          Display:
+            Column of: Oracles / Planets / Jovian / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
+          Table:
+            - [1, 50, None]
+            - [51, 70, *Orbital_settlement]
+            - [71, 85, *Planetside_settlement]
+            - [86, 95, *Multiple_settlements]
+            - [96, 100, *Settlements_in_conflict]
+
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Planets / Jovian / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          Table:
+            - [1, 75, None]
+            - [76, 87, *Orbital_settlement]
+            - [88, 95, *Planetside_settlement]
+            - [96, 98, *Multiple_settlements]
+            - [99, 100, *Settlements_in_conflict]
+
+        - Name: Expanse
+          Display:
+            Column of: Oracles / Planets / Jovian / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          Table:
+            - [1, 90, None]
+            - [91, 96, *Orbital_settlement]
+            - [97, 100, *Planetside_settlement]
+
+    - Name: Observed From Space
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 11, Complex ring system]
+        - [12, 22, Intense gravity well]
+        - [23, 33, Numerous moons]
+        - [34, 44, Perpetual superstorm]
+        - [45, 55, Powerful magnetic field]
+        - [56, 66, Severe electrical storms]
+        - [67, 77, Superheated atmosphere]
+        - [78, 88, Unusual atmospheric colors]
+        - [89, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Orbital]
+
+    - Display:
+        Title: Planetside Feature
+      Name: Feature
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 7, Clouds of metal particles]
+        - [8, 14, Crystalline rains]
+        - [15, 21, Floating glaciers]
+        - [22, 28, Floating islands]
+        - [29, 35, Layer of suspended liquid]
+        - [36, 42, Pockets of explosive gases]
+        - [43, 49, Powerful vortexes]
+        - [50, 56, Radiation fields]
+        - [57, 63, Storm-swept rocky debris]
+        - [64, 70, Torrential rain]
+        - [71, 77, Towering thunderheads]
+        - [78, 84, Violent turbulence]
+        - [85, 91, Zones of localized atmosphere]
+        - [92, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Planetside]
+
+    - Name: Life
+      Usage:
+        Sets attributes:
+          - Life
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 50, *attr:Life.None]
+        - [51, 55, *attr:Life.Extinct]
+        - [56, 75, *attr:Life.Scarce]
+        - [76, 90, *attr:Life.Diverse]
+        - [91, 97, *attr:Life.Bountiful]
+        - [98, 100, *attr:Life.Overrun]
+
+
+

@@ -14,12 +14,7 @@ Oracles:
           25,
           "[Description] [Place]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Description" },
-                { String: " " },
-                { Oracle roll: "Site Name: Place" },
-              ],
+            Template: "{{Oracles / Site Name: Description}} {{Oracles / Site Name: Place}}",
           },
         ]
       - [
@@ -27,12 +22,7 @@ Oracles:
           50,
           "[Place] of [Detail]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Place" },
-                { String: " of " },
-                { Oracle roll: "Site Name: Detail" },
-              ],
+            Template: "{{Oracles / Site Name: Place}} of {{Oracles / Site Name: Detail}}",
           },
         ]
       - [
@@ -40,14 +30,7 @@ Oracles:
           70,
           "[Place] of [Description] [Detail]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Place" },
-                { String: " of " },
-                { Oracle roll: "Site Name: Description" },
-                { String: " " },
-                { Oracle roll: "Site Name: Detail" },
-              ],
+            Template: "{{Oracles / Site Name: Place}} of {{Oracles / Site Name: Description}} {{Oracles / Site Name: Detail}}",
           },
         ]
       - [
@@ -55,14 +38,7 @@ Oracles:
           80,
           "[Place] of [Namesake's] [Detail]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Place" },
-                { String: " of " },
-                { Oracle roll: "Site Name: Namesake" },
-                { String: "'s " },
-                { Oracle roll: "Site Name: Detail" },
-              ],
+            Template: "{{Oracles / Site Name: Place}} of {{Oracles / Site Name: Namesake}}'s {{Oracles / Site Name: Detail}}",
           },
         ]
       - [
@@ -70,12 +46,7 @@ Oracles:
           85,
           "[Namesake's] [Place]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Namesake" },
-                { String: "'s " },
-                { Oracle roll: "Site Name: Place" },
-              ],
+            Template: "{{Oracles / Site Name: Namesake}}'s {{Oracles / Site Name: Place}}",
           },
         ]
       - [
@@ -83,14 +54,7 @@ Oracles:
           95,
           "[Description] [Place] of [Namesake]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Description" },
-                { String: " " },
-                { Oracle roll: "Site Name: Place" },
-                { String: " of " },
-                { Oracle roll: "Site Name: Namesake" },
-              ],
+            Template: "{{Oracles / Site Name: Description}} {{Oracles / Site Name: Place}} of {{Oracles / Site Name: Namesake}}",
           },
         ]
       - [
@@ -98,12 +62,7 @@ Oracles:
           100,
           "[Place] of [Namesake]",
           {
-            Result template:
-              [
-                { Oracle roll: "Site Name: Place" },
-                { String: " of " },
-                { Oracle roll: "Site Name: Namesake" },
-              ],
+            Template: "{{Oracles / Site Name: Place}} of {{Oracles / Site Name: Namesake}}",
           },
         ]
   - Short name: Description
@@ -280,18 +239,43 @@ Oracles:
   - Short name: Place
     Name: "Site Name: Place"
     Table:
-      - [1, 6, Barrow, { Tables: ["Site Name: Barrow"] }]
-      - [7, 18, Cavern, { Tables: ["Site Name: Cavern"] }]
-      - [19, 28, Frozen Cavern, { Tables: ["Site Name: Frozen Cavern"] }]
-      - [29, 32, Icereach, { Tables: ["Site Name: Icereach"] }]
-      - [33, 38, Mine, { Tables: ["Site Name: Mine"] }]
-      - [39, 48, Pass, { Tables: ["Site Name: Pass"] }]
-      - [49, 58, Ruin, { Tables: ["Site Name: Ruin"] }]
-      - [59, 68, Sea Cave, { Tables: ["Site Name: Sea Cave"] }]
-      - [69, 78, Shadowfen, { Tables: ["Site Name: Shadowfen"] }]
-      - [79, 83, Stronghold, { Tables: ["Site Name: Stronghold"] }]
-      - [84, 95, Tanglewood, { Tables: ["Site Name: Tanglewood"] }]
-      - [96, 100, Underkeep, { Tables: ["Site Name: Underkeep"] }]
+      - [1, 6, Barrow, { Oracle rolls: ["Oracles / Site Name: Barrow"] }]
+      - [7, 18, Cavern, { Oracle rolls: ["Oracles / Site Name: Cavern"] }]
+      - [
+          19,
+          28,
+          Frozen Cavern,
+          { Oracle rolls: ["Oracles / Site Name: Frozen Cavern"] },
+        ]
+      - [29, 32, Icereach, { Oracle rolls: ["Oracles / Site Name: Icereach"] }]
+      - [33, 38, Mine, { Oracle rolls: ["Oracles / Site Name: Mine"] }]
+      - [39, 48, Pass, { Oracle rolls: ["Oracles / Site Name: Pass"] }]
+      - [49, 58, Ruin, { Oracle rolls: ["Oracles / Site Name: Ruin"] }]
+      - [59, 68, Sea Cave, { Oracle rolls: ["Oracles / Site Name: Sea Cave"] }]
+      - [
+          69,
+          78,
+          Shadowfen,
+          { Oracle rolls: ["Oracles / Site Name: Shadowfen"] },
+        ]
+      - [
+          79,
+          83,
+          Stronghold,
+          { Oracle rolls: ["Oracles / Site Name: Stronghold"] },
+        ]
+      - [
+          84,
+          95,
+          Tanglewood,
+          { Oracle rolls: ["Oracles / Site Name: Tanglewood"] },
+        ]
+      - [
+          96,
+          100,
+          Underkeep,
+          { Oracle rolls: ["Oracles / Site Name: Underkeep"] },
+        ]
   - Short name: Barrow
     Name: "Site Name: Barrow"
     Column of: "Site Name: Place"

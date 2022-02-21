@@ -31,11 +31,11 @@ Planets:
     The atmosphere tables include the following possible results.
 
       * **None / thin:** This planet is airless, or its atmosphere is so thin as to be useless for humans.
-      * **Toxic:** This planet’s atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
-      * **Corrosive:** This planet’s atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
-      * **Marginal:** It’s unhealthy to breathe this planet’s atmosphere for more than a few hours at a time.
-      * **Breathable:** This atmosphere is not perfect, but it’s good enough to sustain human life.
-      * **Ideal:** This planet’s atmosphere is ideally suited to human life.
+      * **attr:Atmosphere.Toxic:** This planet’s atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
+      * **attr:Atmosphere.Corrosive:** This planet’s atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
+      * **attr:Atmosphere.Marginal:** It’s unhealthy to breathe this planet’s atmosphere for more than a few hours at a time.
+      * **attr:Atmosphere.Breathable:** This atmosphere is not perfect, but it’s good enough to sustain human life.
+      * **attr:Atmosphere.Ideal:** This planet’s atmosphere is ideally suited to human life.
 
     ## Envisioning Planetside Expeditions
     Planets are big. These oracles help set the stage, but won’t provide the moment-to-moment details of a surface expedition. Instead, use the established nature of a planet as a springboard for envisioning terrain and encounters. Save the Planetside Feature table for key aspects. Roll on the Descriptor and Focus oracles (pages 294-295) for additional variety. Use the Planetside Peril and Planetside Opportunity oracles (pages 316-317) to help envision the nature of an unexpected event.
@@ -53,34 +53,32 @@ Planets:
         Part of speech: [noun]
       Description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
       Table:
-        - [1, 15, ⏵Desert World, *DesertObj]
-        - [16, 30, ⏵Furnace World, *FurnaceObj]
-        - [31, 35, ⏵Grave World, *GraveObj]
-        - [36, 50, ⏵Ice World, *IceObj]
-        - [51, 65, ⏵Jovian World, *JovianObj]
-        - [66, 70, ⏵Jungle World, *JungleObj]
-        - [71, 75, ⏵Ocean World, *OceanObj]
-        - [76, 90, ⏵Rocky World, *RockyObj]
-        - [91, 92, ⏵Shattered World, *ShatteredObj]
-        - [93, 98, ⏵Tainted World, *TaintedObj]
-        - [99, 100, ⏵Vital World, *VitalObj]
+        - [1, 15, ⏵Desert World, *DesertWorld]
+        - [16, 30, ⏵Furnace World, *FurnaceWorld]
+        - [31, 35, ⏵Grave World, *GraveWorld]
+        - [36, 50, ⏵Ice World, *IceWorld]
+        - [51, 65, ⏵Jovian World, *JovianWorld]
+        - [66, 70, ⏵Jungle World, *JungleWorld]
+        - [71, 75, ⏵Ocean World, *OceanWorld]
+        - [76, 90, ⏵Rocky World, *RockyWorld]
+        - [91, 92, ⏵Shattered World, *ShatteredWorld]
+        - [93, 98, ⏵Tainted World, *TaintedWorld]
+        - [99, 100, ⏵Vital World, *VitalWorld]
 
     - Name: Peril
       Display:
         Title: Planetside Peril
-        Table from:
+        Table:
           Roll columns:
-            - Oracles / Planets / Peril / Lifebearing
-            - Oracles / Planets / Peril / Lifeless
+            - Content: Oracles / Planets / Peril / Lifebearing
+            - Content: Oracles / Planets / Peril / Lifeless
           Result columns:
-            - Oracles / Planets / Peril / Lifebearing
-        Column labels:
-          - Lifebearing
-          - Lifeless
-          - Result
+            - Content: Oracles / Planets / Peril / Lifebearing
       Usage:
         Repeatable: true
-        Select table by: Life
+        Requires:
+          Attributes:
+            - Key: Life
       Content:
         Part of speech: [fragment]
         Tags: [peril, event, present]
@@ -88,14 +86,13 @@ Planets:
         Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
       Oracles:
         - Display:
-            Column of: Oracles / Planetside Peril
+            Column of: Oracles / Planets / Peril
           Name: Lifebearing
           Usage:
             Requires:
-              # - Location: [Planetside]
-              - Tables: *any_life
-                Results: *lifebearing
-          Table: &template_planetsideperil
+              Attributes:
+                Life: *lifebearing
+          Table: &Planets_peril_table
             - [1, 3, Corrupted or mutated lifeform, *suggestCreature, *suggestChaotic]
             - [4, 6, Signs of a lifeform's power or cunning, *suggestCreature]
             - [7, 9, Hazardous plant life or malignant spores]
@@ -130,73 +127,73 @@ Planets:
             - [94, 96, Wreckage or ruins portend a new threat]
             - [97, 99, *Action+Theme]
             - [100, 100, *Roll_twice]
-
         - Display:
-            Column of: Oracles / Planetside Peril
+            Column of: Oracles / Planets / Peril
           Name: Lifeless
           Usage:
             Requires:
-              - Tables: *any_life
-                Results: *lifeless
-          _template: *template_planetsideperil
-          Table:
-            - [1, 3]
-            - [4, 7]
-            - [8, 11]
-            - [12, 15]
-            - [16, 19]
-            - [20, 23]
-            - [24, 27]
-            - [28, 31]
-            - [32, 35]
-            - [36, 39]
-            - [40, 43]
-            - [44, 47]
-            - [48, 51]
-            - [52, 55]
-            - [56, 59]
-            - [60, 63]
-            - [64, 67]
-            - [68, 71]
-            - [72, 75]
-            - [76, 79]
-            - [80, 83]
-            - [84, 87]
-            - [88, 91]
-            - [92, 95]
-            - [96, 99]
-            - [100, 100]
+              Attributes:
+                - Key: Life
+                  Values: *lifeless
+          _templateTable:
+            alignBottomRow: true
+            results: *Planets_peril_table
+            rolls:
+              - [1, 3]
+              - [4, 7]
+              - [8, 11]
+              - [12, 15]
+              - [16, 19]
+              - [20, 23]
+              - [24, 27]
+              - [28, 31]
+              - [32, 35]
+              - [36, 39]
+              - [40, 43]
+              - [44, 47]
+              - [48, 51]
+              - [52, 55]
+              - [56, 59]
+              - [60, 63]
+              - [64, 67]
+              - [68, 71]
+              - [72, 75]
+              - [76, 79]
+              - [80, 83]
+              - [84, 87]
+              - [88, 91]
+              - [92, 95]
+              - [96, 99]
+              - [100, 100]
 
     - Name: Opportunity
       Display:
         Title: Planetside Opportunity
-        Table from:
+        Table:
           Roll columns:
-            - Oracles / Planets / Opportunity / Lifebearing
-            - Oracles / Planets / Opportunity / Lifeless
+            - Content: Oracles / Planets / Opportunity / Lifebearing
+            - Content: Oracles / Planets / Opportunity / Lifeless
           Result columns:
-            - Oracles / Planets / Opportunity / Lifebearing
-        Column labels:
-          - Lifebearing
-          - Lifeless
-          - Result
+            - Content: Oracles / Planets / Opportunity / Lifebearing
       Content:
         Part of speech: [fragment]
         Tags: [opportunity]
       Usage:
         Repeatable: true
-        Select table by: Life
+        Requires:
+          Attributes:
+            - Key: Life
       Description: |-
         Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
       Oracles:
         - Display:
-            Column of: Oracles / Planetside Opportunity
+            Column of: Oracles / Planets / Opportunity
           Name: Lifebearing
           Usage:
             Requires:
-              - Tables: *any_life
-                Results: *lifebearing
-          Table: &template_planetsideopportunity
+              Attributes:
+                Life: *lifebearing
+          Table: &Planet_Opportunity_table
             - [1, 4, Clue to a lifeform's nature or vulnerabilities, *suggestCreature]
             - [5, 8, Friendly interaction with a benign lifeform, *suggestCreature]
             - [9, 12, Hunting or foraging opportunities are plentiful]
@@ -222,36 +219,37 @@ Planets:
             - [89, 92, Plea for help from a potential benefactor, *suggestNpc]
             - [93, 96, "Refuge offers a place to hide, plan, or recover", *suggestObject]
             - [97, 100, Vantage point reveals the lay of the land, *suggestObject]
-
         - Display:
-            Column of: Oracles / Planetside Opportunity
+            Column of: Oracles / Planets / Opportunity
           Name: Lifeless
-          _template: *template_planetsideopportunity
           Usage:
             Requires:
-              - Tables: *any_life
-                Results: *lifeless
-          Table:
-            - [1, 5]
-            - [6, 10]
-            - [11, 15]
-            - [16, 20]
-            - [21, 25]
-            - [26, 30]
-            - [31, 35]
-            - [36, 40]
-            - [41, 45]
-            - [46, 50]
-            - [51, 55]
-            - [56, 60]
-            - [61, 65]
-            - [66, 70]
-            - [71, 75]
-            - [76, 80]
-            - [81, 85]
-            - [86, 90]
-            - [91, 95]
-            - [96, 100]
+              Attributes:
+                Life: *lifeless
+          _templateTable:
+            alignBottomRow: true
+            results: *Planet_Opportunity_table
+            rolls:
+              - [1, 5]
+              - [6, 10]
+              - [11, 15]
+              - [16, 20]
+              - [21, 25]
+              - [26, 30]
+              - [31, 35]
+              - [36, 40]
+              - [41, 45]
+              - [46, 50]
+              - [51, 55]
+              - [56, 60]
+              - [61, 65]
+              - [66, 70]
+              - [71, 75]
+              - [76, 80]
+              - [81, 85]
+              - [86, 90]
+              - [91, 95]
+              - [96, 100]
 
 
 

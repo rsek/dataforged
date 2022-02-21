@@ -7,127 +7,144 @@ Factions:
     - Name: Type
       Usage:
         Initial: true
+        Sets attributes:
+          - Faction Type
       Display:
         Title: Faction Type
       Content:
         Part of speech: [noun]
       Table:
-        - [1, 40, Dominion]
-        - [41, 70, Guild]
-        - [71, 100, Fringe Group]
+        - [1, 40, Dominion, {Attributes: {Faction Type: Dominion}}]
+        - [41, 70, Guild, {Attributes: {Faction Type: Guild}}]
+        - [71, 100, Fringe Group, {Attributes: {Faction Type: Fringe Group}}]
     - Name: Influence
+      Usage:
+        Sets attributes:
+          - Influence
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 10, Forsaken, Banished or forgotten]
-        - [11, 30, Isolated, Limited influence in a remote location]
-        - [31, 50, Localized, Marginal influence in a single sector]
-        - [51, 70, Established, Strong influence in a single sector]
-        - [71, 85, Notable, Dispersed influence across a few sectors]
-        - [86, 95, Dominant, Far-reaching influence across many sectors]
-        - [96, 100, Inescapable, Pervasive influence across inhabited space]
+        - [1, 10, Forsaken, Banished or forgotten, {Attributes: {Influence: Forsaken}}]
+        - [11, 30, Isolated, Limited influence in a remote location, {Attributes: {Influence: Isolated}}]
+        - [31, 50, Localized, Marginal influence in a single sector, {Attributes: {Influence: Localized}}]
+        - [51, 70, Established, Strong influence in a single sector, {Attributes: {Influence: Established}}]
+        - [71, 85, Notable, Dispersed influence across a few sectors, {Attributes: {Influence: Notable}}]
+        - [86, 95, Dominant, Far-reaching influence across many sectors, {Attributes: {Influence: Dominant}}]
+        - [96, 100, Inescapable, Pervasive influence across inhabited space, {Attributes: {Influence: Inescapable}}]
     - Name: Dominion
       Usage:
         Max rolls: 3
         Initial: true
+        Sets attributes:
+          - Dominion
         Requires:
-          - Tables: [Factions / Type]
-            Results: [Dominion]
+          Attributes:
+            - Key: Faction Type
+              Values: [Dominion]
       Content:
         Part of speech: [noun]
         Tags: [abstract noun]
       Table:
-        - [1, 5, Agriculture]
-        - [6, 9, Artistry]
-        - [10, 14, Commerce]
-        - [15, 18, Conquest]
-        - [19, 22, Construction]
-        - [23, 26, Diplomacy]
-        - [27, 30, Education]
-        - [31, 34, Environmentalism]
-        - [35, 38, Exploration]
-        - [39, 42, Faith]
-        - [43, 46, History]
-        - [47, 50, Honor]
-        - [51, 55, Industry]
-        - [56, 59, Isolationism]
-        - [60, 63, Law]
-        - [64, 67, Mysticism]
-        - [68, 71, Pacifism]
-        - [72, 75, Prophecy]
-        - [76, 79, Science]
-        - [80, 83, Secrecy]
-        - [84, 87, Technology]
-        - [88, 91, Treachery]
-        - [92, 96, Warfare]
-        - [97, 100, Wealth]
+        - [1, 5, Agriculture, {Attributes: {Dominion: Agriculture}}]
+        - [6, 9, Artistry, {Attributes: {Dominion: Artistry}}]
+        - [10, 14, Commerce, {Attributes: {Dominion: Commerce}}]
+        - [15, 18, Conquest, {Attributes: {Dominion: Conquest}}]
+        - [19, 22, Construction, {Attributes: {Dominion: Construction}}]
+        - [23, 26, Diplomacy, {Attributes: {Dominion: Diplomacy}}]
+        - [27, 30, Education, {Attributes: {Dominion: Education}}]
+        - [31, 34, Environmentalism, {Attributes: {Dominion: Environmentalism}}]
+        - [35, 38, Exploration, {Attributes: {Dominion: Exploration}}]
+        - [39, 42, Faith, {Attributes: {Dominion: Faith}}]
+        - [43, 46, History, {Attributes: {Dominion: History}}]
+        - [47, 50, Honor, {Attributes: {Dominion: Honor}}]
+        - [51, 55, Industry, {Attributes: {Dominion: Industry}}]
+        - [56, 59, Isolationism, {Attributes: {Dominion: Isolationism}}]
+        - [60, 63, Law, {Attributes: {Dominion: Law}}]
+        - [64, 67, Mysticism, {Attributes: {Dominion: Mysticism}}]
+        - [68, 71, Pacifism, {Attributes: {Dominion: Pacifism}}]
+        - [72, 75, Prophecy, {Attributes: {Dominion: Prophecy}}]
+        - [76, 79, Science, {Attributes: {Dominion: Science}}]
+        - [80, 83, Secrecy, {Attributes: {Dominion: Secrecy}}]
+        - [84, 87, Technology, {Attributes: {Dominion: Technology}}]
+        - [88, 91, Treachery, {Attributes: {Dominion: Treachery}}]
+        - [92, 96, Warfare, {Attributes: {Dominion: Warfare}}]
+        - [97, 100, Wealth, {Attributes: {Dominion: Wealth}}]
     - Name: Leadership
       Display:
         Title: Dominion / Leadership
       Usage:
         Initial: true
+        Sets attributes:
+          - Leadership
         Requires:
-          - Tables: [Factions / Type]
-            Results: [Dominion]
+          Attributes:
+            - Key: Faction Type
+              Values: [Dominion]
       Content:
         Part of speech: [fragment]
         Tags: [description]
       Table:
-        - [1, 5, Anarchist]
-        - [6, 15, Disputed leadership]
-        - [16, 30, Authoritarian dictatorship]
-        - [31, 45, Oligarchical elite]
-        - [46, 60, Dynastic lineage]
-        - [61, 70, Fated or prophesied leader]
-        - [71, 80, Clan chiefs or elders]
-        - [81, 90, Elected representatives]
-        - [91, 95, Machine intelligence]
-        - [96, 100, Varied / decentralized]
+        - [1, 5, Anarchist, {Attributes: {Leadership: Anarchist}}]
+        - [6, 15, Disputed leadership, {Attributes: {Leadership: Disputed leadership}}]
+        - [16, 30, Authoritarian dictatorship, {Attributes: {Leadership: Authoritarian dictatorship}}]
+        - [31, 45, Oligarchical elite, {Attributes: {Leadership: Oligarchical elite}}]
+        - [46, 60, Dynastic lineage, {Attributes: {Leadership: Dynastic lineage}}]
+        - [61, 70, Fated or prophesied leader, {Attributes: {Leadership: Fated or prophesied leader}}]
+        - [71, 80, Clan chiefs or elders, {Attributes: {Leadership: Clan chiefs or elders}}]
+        - [81, 90, Elected representatives, {Attributes: {Leadership: Elected representatives}}]
+        - [91, 95, Machine intelligence, {Attributes: {Leadership: Machine intelligence}}]
+        - [96, 100, Varied / decentralized, {Attributes: {Leadership: Varied / decentralized}}]
     - Name: Guild
       Usage:
         Initial: true
+        Sets attributes:
+          - Guild
         Requires:
-          - Tables: [Factions / Type]
-            Results: [Guild]
+          Attributes:
+            - Key: Faction Type
+              Values: [Guild]
       Content:
         Part of speech: [noun, plural]
         Tags: [actor]
       Table:
-        - [1, 5, Assassins]
-        - [6, 10, Bounty Hunters]
-        - [11, 15, Couriers]
-        - [16, 20, Courtesans]
-        - [21, 25, Engineers]
-        - [26, 30, Healers]
-        - [31, 40, Industrialists]
-        - [41, 50, Mercenaries]
-        - [51, 60, Merchants]
-        - [61, 65, Mystics]
-        - [66, 75, Navigators]
-        - [76, 80, Peacekeepers]
-        - [81, 85, Researchers]
-        - [86, 90, Spies]
+        - [1, 5, Assassins, {Attributes: {Guild: Assassins}}]
+        - [6, 10, Bounty Hunters, {Attributes: {Guild: Bounty Hunters}}]
+        - [11, 15, Couriers, {Attributes: {Guild: Couriers}}]
+        - [16, 20, Courtesans, {Attributes: {Guild: Courtesans}}]
+        - [21, 25, Engineers, {Attributes: {Guild: Engineers}}]
+        - [26, 30, Healers, {Attributes: {Guild: Healers}}]
+        - [31, 40, Industrialists, {Attributes: {Guild: Industrialists}}]
+        - [41, 50, Mercenaries, {Attributes: {Guild: Mercenaries}}]
+        - [51, 60, Merchants, {Attributes: {Guild: Merchants}}]
+        - [61, 65, Mystics, {Attributes: {Guild: Mystics}}]
+        - [66, 75, Navigators, {Attributes: {Guild: Navigators}}]
+        - [76, 80, Peacekeepers, {Attributes: {Guild: Peacekeepers}}]
+        - [81, 85, Researchers, {Attributes: {Guild: Researchers}}]
+        - [86, 90, Spies, {Attributes: {Guild: Spies}}]
         - [91, 100, *Roll_twice]
     - Name: Fringe Group
       Usage:
+        Sets attributes:
+          - Fringe Group
         Requires:
-          - Tables: [Factions / Type]
-            Results: [Fringe Group]
+          Attributes:
+            - Key: Faction Type
+              Values: [Fringe Group]
       Content:
         Part of speech: [noun, plural]
         Tags: [actor]
       Table:
-        - [1, 5, Cultists]
-        - [6, 15, Exiles]
-        - [16, 25, Gangsters]
-        - [26, 35, Hackers]
-        - [36, 40, Monster hunters]
-        - [41, 50, Pirates]
-        - [51, 60, Raiders]
-        - [61, 70, Rebels]
-        - [71, 75, Rogue AI]
-        - [76, 85, Scavengers]
-        - [86, 95, Smugglers]
+        - [1, 5, Cultists, {Attributes: {Fringe Group: Cultists}}]
+        - [6, 15, Exiles, {Attributes: {Fringe Group: Exiles}}]
+        - [16, 25, Gangsters, {Attributes: {Fringe Group: Gangsters}}]
+        - [26, 35, Hackers, {Attributes: {Fringe Group: Hackers}}]
+        - [36, 40, Monster hunters, {Attributes: {Fringe Group: Monster hunters}}]
+        - [41, 50, Pirates, {Attributes: {Fringe Group: Pirates}}]
+        - [51, 60, Raiders, {Attributes: {Fringe Group: Raiders}}]
+        - [61, 70, Rebels, {Attributes: {Fringe Group: Rebels}}]
+        - [71, 75, Rogue AI, {Attributes: {Fringe Group: Rogue AI}}]
+        - [76, 85, Scavengers, {Attributes: {Fringe Group: Scavengers}}]
+        - [86, 95, Smugglers, {Attributes: {Fringe Group: Smugglers}}]
         - [96, 100, *Roll_twice]
     - Name: Projects
       Display:
@@ -219,31 +236,13 @@ Factions:
         An alternative approach to generate a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one which idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or simply pick.
       Table:
         - [1, 40, "[⏵Legacy] [⏵Affiliation]",
-          {Result template: [
-            {Oracle roll: "Factions / Legacy"},
-            {String: " "},
-            {Oracle roll: "Factions / Affiliation"}
-          ]}]
+          {Template: "{{Oracles / Factions / Legacy}} {{Oracles / Factions / Affiliation}}" }]
         - [41, 55, "[⏵Legacy] [⏵Identity]",
-          {Result template: [
-            {Oracle roll: "Factions / Legacy"},
-            {String: " "},
-            {Oracle roll: "Factions / Identity"},
-          ]}]
+          {Template: "{{Oracles / Factions / Legacy}} {{Oracles / Factions / Identity}}"}]
         - [56, 70, "[⏵Identity] of the [⏵Legacy] [⏵Affiliation]",
-          {Result template: [
-            {Oracle roll: "Factions / Identity"},
-            {String: " of the "},
-            {Oracle roll: "Factions / Legacy"},
-            {Oracle roll: "Factions / Affiliation"},
-          ]}]
+          {Template: "{{Oracles / Factions / Identity}} of the {{Oracles / Factions / Legacy}} {{Oracles / Factions / Affiliation}}"}]
         - [71, 100, "[⏵Affiliation] of the [⏵Legacy] [⏵Identity]",
-          {Result template: [
-            {Oracle roll: "Factions / Affiliation"},
-            {String: " of the "},
-            {Oracle roll: "Factions / Legacy"},
-            {Oracle roll: "Factions / Identity"},
-          ]}]
+          {Template: "{{Oracles / Factions / Affiliation}} of the {{Oracles / Factions / Legacy}} {{Oracles / Factions / Identity}}"}]
     - Name: Legacy
       Content:
         Part of speech: [adjective]

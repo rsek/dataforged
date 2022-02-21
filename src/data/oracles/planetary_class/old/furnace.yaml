@@ -1,0 +1,166 @@
+Furnace World:
+  Name: Furnace
+  Display:
+    Title: Furnace World
+  Description: *Furnace
+  _childOf: Planets
+  Usage:
+      Attributes:
+        - Key: Planetary Class
+          Values:
+            - Furnace
+  Source:
+    Title: Starforged Backer Preview
+    Date: "020122"
+  Image: "https://i.imgur.com/YS5rlDR.png"
+  Sample Names:
+    - Ash
+    - Azula
+    - Cinder
+    - Cyrus
+    - Draconus
+    - Effigy
+    - Ember
+    - Flint
+    - Hades
+    - Hera
+    - Ignis
+    - Inferno
+    - Ishum
+    - Kresnik
+    - Nemesis
+    - Obsidian
+    - Scorch
+    - Tana
+    - Vesta
+    - Vesuvius
+  Oracles:
+    - Name: Atmosphere
+      Content:
+        Part of speech: [adjective]
+      Usage:
+        Initial: true
+      Table:
+        - [1, 10, *attr:Atmosphere.NoneThin]
+        - [11, 50, *attr:Atmosphere.Toxic]
+        - [51, 65, *attr:Atmosphere.Corrosive]
+        - [66, 90, *attr:Atmosphere.Marginal]
+        - [91, 100, *attr:Atmosphere.Breathable]
+
+    - Name: Settlements
+      Usage:
+        Initial: true
+        Requires:
+          Attributes:
+              - Key: Region
+      Display:
+        Table:
+          Roll columns:
+            - Content: Oracles / Planets / Furnace / Settlements / Terminus
+            - Content: Oracles / Planets / Furnace / Settlements / Outlands
+            - Content: Oracles / Planets / Furnace / Settlements / Expanse
+          Result columns:
+            - Content: Oracles / Planets / Furnace / Settlements / Terminus
+      Oracles:
+        - Name: Terminus
+          Display:
+            Column of: Oracles / Planets / Furnace / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
+          Table:
+            - [1, 60, None]
+            - [61, 75, *Orbital_settlement]
+            - [76, 87, *Planetside_settlement]
+            - [88, 96, *Multiple_settlements]
+            - [97, 100, *Settlements_in_conflict]
+
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Planets / Furnace / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          Table:
+            - [1, 85, None]
+            - [86, 92, *Orbital_settlement]
+            - [93, 97, *Planetside_settlement]
+            - [98, 99, *Multiple_settlements]
+            - [100, 100, *Settlements_in_conflict]
+
+        - Name: Expanse
+          Display:
+            Column of: Oracles / Planets / Furnace / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          Table:
+            - [1, 95, None]
+            - [96, 98, *Orbital_settlement]
+            - [99, 100, *Planetside_settlement]
+
+    - Name: Observed From Space
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 11, Fiery world-spanning chasms]
+        - [12, 22, Glowing rivers of lava]
+        - [23, 33, Lightning-wracked ash clouds]
+        - [34, 44, Magma seas]
+        - [45, 55, Massive supervolcano]
+        - [56, 66, Once verdant terrain]
+        - [67, 77, Towering mountain ranges]
+        - [78, 88, World-spanning fissures]
+        - [89, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Orbital]
+
+    - Display:
+        Title: Planetside Feature
+      Name: Feature
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 7, Blinding ash storms]
+        - [8, 14, Catastrophic earthquakes]
+        - [15, 21, Colorful geothermal springs]
+        - [22, 28, Intricate volcanic rock formations]
+        - [29, 35, Lava tube tunnel networks]
+        - [36, 42, Masses of scorched bones]
+        - [43, 49, Plains of volcanic glass]
+        - [50, 56, Pools of liquid metal]
+        - [57, 63, Rocky islands adrift on magma]
+        - [64, 70, Roiling clouds of superheated gas]
+        - [71, 77, Scalding geysers]
+        - [78, 84, Silica or metal storms]
+        - [85, 91, Steaming mudflats]
+        - [92, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Planetside]
+
+    - Name: Life
+      Usage:
+        Sets attributes:
+          - Life
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 35, *attr:Life.None]
+        - [36, 60, *attr:Life.Extinct]
+        - [61, 85, *attr:Life.Scarce]
+        - [86, 95, *attr:Life.Diverse]
+        - [96, 98, *attr:Life.Bountiful]
+        - [99, 100, *attr:Life.Overrun]
+
+

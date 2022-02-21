@@ -6,8 +6,10 @@ Inhabited:
   Description: *Inhabited
   Usage:
     Requires:
-      - Tables: [Location Theme / Type]
-        Results: [Inhabited, ⏵Inhabited]
+      Attributes:
+        - Key: Location Theme
+          Values:
+            - Inhabited
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -31,7 +33,7 @@ Inhabited:
         - [73, 80, Unrepaired damage]
         - [81, 88, Unusually empty or quiet area]
         - [89, 96, Vendor or merchant hawking their wares]
-        - [97, 100, *Descriptor+Focus]
+        - [97, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Description: *theme_peril

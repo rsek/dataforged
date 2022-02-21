@@ -1,0 +1,168 @@
+Jungle World:
+  Name: Jungle
+  Display:
+    Title: Jungle World
+  Description: *Jungle
+  _childOf: Planets
+  Usage:
+      Attributes:
+        - Key: Planetary Class
+          Values:
+            - Jungle
+  Source:
+    Title: Starforged Backer Preview
+    Date: "020122"
+  Image: "https://i.imgur.com/jr90Bnh.png"
+  Sample Names:
+    - Acacia
+    - Aster
+    - Beryl
+    - Celadon
+    - Ceres
+    - Damu
+    - Dryad
+    - Flora
+    - Iridum
+    - Iris
+    - Kishar
+    - Penumbra
+    - Roris
+    - Sylva
+    - Tangle
+    - Thorn
+    - Venom
+    - Verdure
+    - Veris
+    - Viridian
+  Oracles:
+    - Name: Atmosphere
+      Content:
+        Part of speech: [adjective]
+      Usage:
+        Initial: true
+      Table:
+        - [1, 25, *attr:Atmosphere.Toxic]
+        - [26, 30, *attr:Atmosphere.Corrosive]
+        - [31, 60, *attr:Atmosphere.Marginal]
+        - [61, 90, *attr:Atmosphere.Breathable]
+        - [91, 100, *attr:Atmosphere.Ideal]
+
+    - Name: Settlements
+      Usage:
+        Initial: true
+        Requires:
+          Attributes:
+            - Key: Region
+      Display:
+        Table:
+          Roll columns:
+            - Content: Oracles / Planets / Jungle / Settlements / Terminus
+            - Content: Oracles / Planets / Jungle / Settlements / Outlands
+            - Content: Oracles / Planets / Jungle / Settlements / Expanse
+          Result columns:
+            - Content: Oracles / Planets / Jungle / Settlements / Terminus
+
+      Oracles:
+        - Name: Terminus
+          Display:
+            Column of: Oracles / Planets / Jungle / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
+          Table:
+            - [1, 40, None]
+            - [41, 55, *Orbital_settlement]
+            - [56, 80, *Planetside_settlement]
+            - [81, 92, *Multiple_settlements]
+            - [93, 100, *Settlements_in_conflict]
+
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Planets / Jungle / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          Table:
+            - [1, 65, None]
+            - [66, 75, *Orbital_settlement]
+            - [76, 92, *Planetside_settlement]
+            - [93, 97, *Multiple_settlements]
+            - [98, 100, *Settlements_in_conflict]
+
+        - Name: Expanse
+          Display:
+            Column of: Oracles / Planets / Jungle / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          Table:
+            - [1, 85, None]
+            - [86, 90, *Orbital_settlement]
+            - [91, 97, *Planetside_settlement]
+            - [98, 99, *Multiple_settlements]
+            - [100, 100, *Settlements_in_conflict]
+
+    - Name: Observed From Space
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 11, Cloud-breaching trees]
+        - [12, 22, Expansive rivers or wetlands]
+        - [23, 33, Inland seas]
+        - [34, 44, Massive canyons]
+        - [45, 55, Persistent cloud cover]
+        - [56, 66, Towering mountains]
+        - [67, 77, Unbroken canopy]
+        - [78, 88, Unusual vegetation color]
+        - [89, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Orbital]
+
+    - Display:
+        Title: Planetside Feature
+      Name: Feature
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 7, Bioluminescent flora]
+        - [8, 14, Deep river gorges]
+        - [15, 21, Extensive exposed root systems]
+        - [22, 28, Immense tiered waterfalls]
+        - [29, 35, Languid rivers]
+        - [36, 42, Low-lying fog]
+        - [43, 49, Plunging sinkholes]
+        - [50, 56, Scarred clearings]
+        - [57, 63, Sinking quagmires]
+        - [64, 70, Surging rivers]
+        - [71, 77, Torrential rainstorms]
+        - [78, 84, Violent electrical storms]
+        - [85, 91, Waterlogged caves]
+        - [92, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Planetside]
+
+    - Name: Life
+      Usage:
+        Sets attributes:
+          - Life
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 5, *attr:Life.Scarce]
+        - [6, 35, *attr:Life.Diverse]
+        - [36, 75, *attr:Life.Bountiful]
+        - [76, 100, *attr:Life.Overrun]
+
+
+

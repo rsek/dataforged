@@ -5,8 +5,10 @@ Community:
   _childOf: Derelicts
   Usage:
     Requires:
-      - Tables: [Derelicts / Zone]
-        Results: [Community, ⏵Community]
+      Attributes:
+        - Key: Zone
+          Values:
+            - Community
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -28,7 +30,7 @@ Community:
         - [65, 72, Promenade or overlook]
         - [73, 80, Restaurant or dining]
         - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *Zone_via_Access]
+        - [86, 100, New zone via ⏵Access, *zoneAccess]
 
     - Name: Feature
       Usage:
@@ -47,7 +49,7 @@ Community:
         - [65, 72, Mass grave or corpses]
         - [73, 80, Panoramic viewport]
         - [81, 88, Rubble or debris]
-        - [89, 100, *Descriptor+Focus]
+        - [89, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Usage:

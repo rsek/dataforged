@@ -1,0 +1,167 @@
+Rocky World:
+  Name: Rocky
+  Display:
+    Title: Rocky World
+  Description: *Rocky
+  _childOf: Planets
+  Usage:
+      Attributes:
+        - Key: Planetary Class
+          Values:
+            - Rocky
+  Source:
+    Title: Starforged Backer Preview
+    Date: "020122"
+  Image: "https://i.imgur.com/wRpdlc1.png"
+  Sample Names:
+    - Aphelion
+    - Artemis
+    - Capella
+    - Cobalt
+    - Crag
+    - Dusk
+    - Eos
+    - Hecate
+    - Imbrium
+    - Latona
+    - Losna
+    - Orpheus
+    - Ory
+    - Quietus
+    - Selene
+    - Silas
+    - Silex
+    - Slate
+    - Themis
+    - Umbra
+  Oracles:
+    - Name: Atmosphere
+      Content:
+        Part of speech: [adjective]
+      Usage:
+        Initial: true
+      Table:
+        - [1, 65, *attr:Atmosphere.NoneThin]
+        - [66, 85, *attr:Atmosphere.Toxic]
+        - [86, 90, *attr:Atmosphere.Corrosive]
+        - [91, 100, *attr:Atmosphere.Marginal]
+
+    - Name: Settlements
+      Usage:
+        Initial: true
+        Requires:
+          Attributes:
+              - Key: Region
+      Display:
+        Table:
+          Roll columns:
+            - Content: Oracles / Planets / Rocky / Settlements / Terminus
+            - Content: Oracles / Planets / Rocky / Settlements / Outlands
+            - Content: Oracles / Planets / Rocky / Settlements / Expanse
+          Result columns:
+            - Content: Oracles / Planets / Rocky / Settlements / Terminus
+
+      Oracles:
+        - Name: Terminus
+          Display:
+            Column of: Oracles / Planets / Rocky / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
+          Table:
+            - [1, 50, None]
+            - [51, 70, *Orbital_settlement]
+            - [71, 85, *Planetside_settlement]
+            - [86, 95, *Multiple_settlements]
+            - [96, 100, *Settlements_in_conflict]
+
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Planets / Rocky / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          Table:
+            - [1, 75, None]
+            - [76, 87, *Orbital_settlement]
+            - [88, 95, *Planetside_settlement]
+            - [96, 98, *Multiple_settlements]
+            - [99, 100, *Settlements_in_conflict]
+
+        - Name: Expanse
+          Display:
+            Column of: Oracles / Planets / Rocky / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          Table:
+            - [1, 90, None]
+            - [91, 96, *Orbital_settlement]
+            - [97, 100, *Planetside_settlement]
+
+    - Name: Observed From Space
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 11, Barren plains]
+        - [12, 22, Constant asteroid strikes]
+        - [23, 33, Dense ring system]
+        - [34, 44, Jagged mountains]
+        - [45, 55, Massive impact crater]
+        - [56, 66, Misshapen form (low gravity)]
+        - [67, 77, Perpetual night]
+        - [78, 88, Towering plateaus]
+        - [89, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Orbital]
+
+    - Display:
+        Title: Planetside Feature
+      Name: Feature
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 7, Crystalline formations]
+        - [8, 14, Crystalline caves]
+        - [15, 21, Exposed mineral deposits]
+        - [22, 28, Geometric terrain features]
+        - [29, 35, Geothermal vents]
+        - [36, 42, Glassy impact craters]
+        - [43, 49, Massive dust dunes]
+        - [50, 56, Powerful magnetic fields]
+        - [57, 63, Rubble-strewn lava fields]
+        - [64, 70, Steam-heated caves]
+        - [71, 77, Subsurface magma flows]
+        - [78, 84, Swirling low-lying gases]
+        - [85, 91, Towering rocky spires]
+        - [92, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Planetside]
+
+    - Name: Life
+      Usage:
+        Sets attributes:
+          - Life
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 65, *attr:Life.None]
+        - [66, 80, *attr:Life.Extinct]
+        - [81, 90, *attr:Life.Scarce]
+        - [91, 95, *attr:Life.Diverse]
+        - [96, 98, *attr:Life.Bountiful]
+        - [99, 100, *attr:Life.Overrun]
+
+
+

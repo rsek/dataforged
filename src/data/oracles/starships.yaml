@@ -117,11 +117,17 @@ Starships:
     - Name: Type
       Usage:
         Initial: true
-        Allow duplicate rolls: true
+        Sets attributes:
+          - Starship Type
       Content:
         Part of speech: [common noun, fragment]
       Display:
-        Column labels: [Roll, Class, Typical Role]
+        Table:
+          Result columns:
+            - Label: Class
+              Key: Result
+            - Label: Typical Role
+              Key: Summary
       Table:
         - [1, 2, Carrier, Launches fighters]
         - [3, 6, Corvette, Light attack ship]
@@ -152,9 +158,8 @@ Starships:
         Part of speech: [noun, common noun]
       Usage:
         Initial: true
-        Requires:
-          - Tables: [Starship / Type]
-            Results: [Fleet, ⏵Fleet]
+        Sets attributes:
+          - Starship Type
       Table:
         - [1, 10, Battle fleet]
         - [11, 25, Pirate wing]
@@ -183,7 +188,7 @@ Starships:
         - [81, 85, In battle]
         - [86, 90, Unresponsive]
         - [91, 95, Destroyed]
-        - [96, 100, *Derelict_starship_inherit]
+        - [96, 100, ⏵Derelict,*Derelict_starship_inherit]
 
     - Name: First Look
       Usage:
@@ -214,42 +219,41 @@ Starships:
         - [81, 85, Scarred hull]
         - [86, 90, Built from scrap]
         - [91, 94, Towing or linked]
-        - [95, 100, *Descriptor+Focus]
+        - [95, 100, *result:Descriptor+Focus]
 
     - Name: Mission
       Display:
         Title: Starship Mission
-        Table from:
+        Table:
           Roll columns:
-            - Starships / Mission / Terminus
-            - Starships / Mission / Outlands
-            - Starships / Mission / Expanse
+            - Content: Oracles / Starships / Mission / Terminus
+            - Content: Oracles / Starships / Mission / Outlands
+            - Content: Oracles / Starships / Mission / Expanse
           Result columns:
-            - Starships / Mission / Terminus
-        Column labels:
-          - Terminus
-          - Outlands
-          - Expanse
-          - Result
+            - Content: Oracles / Starships / Mission / Terminus
       Content:
         Part of speech: [fragment]
         Tags: [objective]
       Description: |-
         Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
       Usage:
-        Select table by: Region
+        Requires:
+          Attributes:
+            - Key: Region
       Oracles:
         - Display: &mission_display
             Column of: Oracles / Starships / Mission
-            Column labels: [Roll, Mission]
+            Tables:
+              Result columns:
+                - Label: Mission
+                  Key: Result
           Name: Terminus
           Usage:
-            Equivalent to: &mission_equivalence
-              - Starships / Mission / Terminus
-              - Starships / Mission / Outlands
-              - Starships / Mission / Expanse
             Requires:
-              - Region: [Terminus]
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
           Table: &template_starshipmission
             - [1, 3, Blockade a location, *suggestPlace]
             - [4, 6, Break a blockade]
@@ -287,51 +291,56 @@ Starships:
         - Display: *mission_display
           Name: Outlands
           Usage:
-            Equivalent to: *mission_equivalence
             Requires:
-              - Region: [Outlands]
-          _template: *template_starshipmission
-          Table:
-            - [1, 2]
-            - [3, 4]
-            - [5, 7]
-            - [8, 9]
-            - [10, 11]
-            - [12, 13]
-            - [14, 16]
-            - [17, 20]
-            - [21, 24]
-            - [25, 28]
-            - [29, 32]
-            - [33, 36]
-            - [37, 40]
-            - [41, 42]
-            - [43, 45]
-            - [46, 48]
-            - [49, 50]
-            - [51, 53]
-            - [54, 56]
-            - [57, 59]
-            - [60, 61]
-            - [62, 64]
-            - [65, 68]
-            - [69, 71]
-            - [72, 73]
-            - [74, 75]
-            - [76, 78]
-            - [79, 80]
-            - [81, 83]
-            - [84, 85]
-            - [86, 90]
-            - [91, 100]
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          _templateTable:
+            results: *template_starshipmission
+            rolls:
+              - [1, 2]
+              - [3, 4]
+              - [5, 7]
+              - [8, 9]
+              - [10, 11]
+              - [12, 13]
+              - [14, 16]
+              - [17, 20]
+              - [21, 24]
+              - [25, 28]
+              - [29, 32]
+              - [33, 36]
+              - [37, 40]
+              - [41, 42]
+              - [43, 45]
+              - [46, 48]
+              - [49, 50]
+              - [51, 53]
+              - [54, 56]
+              - [57, 59]
+              - [60, 61]
+              - [62, 64]
+              - [65, 68]
+              - [69, 71]
+              - [72, 73]
+              - [74, 75]
+              - [76, 78]
+              - [79, 80]
+              - [81, 83]
+              - [84, 85]
+              - [86, 90]
+              - [91, 100]
 
         - Display: *mission_display
           Name: Expanse
           Usage:
-            Equivalent to: *mission_equivalence
             Requires:
-              - Region: [Expanse]
-          _template: *template_starshipmission
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          _templateTable: *template_starshipmission
           Table:
             - [1, 2]
             - [3, 4]

@@ -20,24 +20,21 @@ Space:
     - Name: Sighting
       Display:
         Title: Space Sighting
-        Table from:
+        Table:
           Roll columns:
-            - Oracles / Space / Sighting / Terminus
-            - Oracles / Space / Sighting / Outlands
-            - Oracles / Space / Sighting / Expanse
+            - Content: Oracles / Space / Sighting / Terminus
+            - Content: Oracles / Space / Sighting / Outlands
+            - Content: Oracles / Space / Sighting / Expanse
           Result columns:
-            - Oracles / Space / Sighting / Terminus
-        Column labels:
-          - Terminus
-          - Outlands
-          - Expanse
-          - Result
+            - Content: Oracles / Space / Sighting / Terminus
       Content:
         Part of speech: [fragment]
       Description: |-
         Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](Moves#Ask-the-Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](Moves#Undertake-an-Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
       Usage:
-        Select table by: Region
+        Requires:
+          Attributes:
+            - Key: Region
         Repeatable: true
       Oracles:
         - Display:
@@ -45,16 +42,19 @@ Space:
           Name: Terminus
           Usage:
             Requires:
-              - Region: [Terminus]
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
           Table: &template_spacesighting
-            - [1, 15, *Stellar_Object]
-            - [16, 35, *Planet]
-            - [36, 40, *Settlement]
-            - [41, 47, *Starship]
-            - [48, 51, *Derelict]
-            - [52, 53, *Vault]
-            - [54, 55, *Creature]
-            - [56, 60, *Descriptor+Focus]
+            - [1, 15, ⏵Stellar Object, *Stellar_Object]
+            - [16, 35, ⏵Planet, *Planet]
+            - [36, 40, ⏵Settlement, *Settlement]
+            - [41, 47, ⏵Starship, *Starship]
+            - [48, 51, ⏵Derelict, *Derelict]
+            - [52, 53, ⏵Precursor Vault, *Vault]
+            - [54, 55, ⏵Creature, *Creature]
+            - [56, 60, *result:Descriptor+Focus]
             - [61, 65, "Debris field: Mineral asteroids"]
             - [66, 68, "Debris field: Frozen asteroids"]
             - [69, 70, "Debris field: Crystalline asteroids"]
@@ -71,10 +71,13 @@ Space:
         - Display:
             Column of: Oracles / Space / Sighting
           Name: Outlands
-          _template: *template_spacesighting
+          _templateTable: *template_spacesighting
           Usage:
             Requires:
-              - Region: [Outlands]
+              Attributes:
+                  - Key: Region
+                    Values:
+                      - Outlands
           Table:
             - [1, 15]
             - [16, 35]
@@ -103,8 +106,11 @@ Space:
           Usage:
             Repeatable: true
             Requires:
-              - Region: [Expanse]
-          _template: *template_spacesighting
+              Attributes:
+                  - Key: Region
+                    Values:
+                      - Expanse
+          _templateTable: *template_spacesighting
           Table:
             - [1, 15]
             - [16, 35]
@@ -147,21 +153,14 @@ Space:
         - [100, 100, Unstable star showing signs of impending supernova, "https://i.imgur.com/5Ex5sdN.jpg"]
     - Name: Sector Name
       Display:
-        Table from:
+        Table:
           Roll columns:
-            - Oracles / Space / Sector Name / Prefix
+            - Content: Oracles / Space / Sector Name / Prefix
           Result columns:
-            - Oracles / Space / Sector Name / Prefix
-            - Oracles / Space / Sector Name / Suffix
-        Column labels:
-          - Roll
-          - Prefix
-          - Suffix
+            - Content: Oracles / Space / Sector Name / Prefix
+            - Content: Oracles / Space / Sector Name / Suffix
       Usage:
-        Result template:
-          - Oracle roll: Space / Sector Name / Prefix
-          - String: " "
-          - Oracle roll: Space / Sector Name / Suffix
+        Template: "{{Oracles / Space / Sector Name / Prefix}} {{Oracles / Space / Sector Name / Suffix}}"
       Oracles:
       - Display:
           Column of: Oracles / Space / Sector Name
@@ -295,8 +294,11 @@ Space:
       Usage:
         Repeatable: true
         Requires:
-          - Tables: *any_location
-            Results: [Spaceborne, Orbital, Deep Space]
+          Attributes:
+            - Key: Location
+              Values:
+                - Orbital
+                - Deep Space
       Content:
         Tags: [peril, event, present]
         Content:
@@ -343,8 +345,11 @@ Space:
       Usage:
         Repeatable: true
         Requires:
-          - Tables: *any_location
-            Results: [Spaceborne, Orbital, Deep Space]
+          Attributes:
+            - Key: Location
+              Values:
+                - Orbital
+                - Deep Space
       Content:
         Part of speech: [fragment]
         Tags: [opportunity]

@@ -5,8 +5,10 @@ Research:
   _childOf: Derelicts
   Usage:
     Requires:
-      - Tables: [Derelicts / Zone]
-        Results: [Research, ⏵Research]
+      Attributes:
+        - Key: Zone
+          Values:
+            - Research
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -28,7 +30,7 @@ Research:
         - [65, 72, Library or records]
         - [73, 80, Secure vault]
         - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *Zone_via_Access]
+        - [86, 100, New zone via ⏵Access, *zoneAccess]
 
     - Name: Feature
       Usage:
@@ -47,7 +49,7 @@ Research:
         - [65, 72, Invasive plant growth]
         - [73, 80, Recorded research log]
         - [81, 88, Spilled chemicals]
-        - [89, 100, *Descriptor+Focus]
+        - [89, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Usage:

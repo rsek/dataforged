@@ -7,38 +7,40 @@ Settlements:
     - Name: Location
       Usage:
         Initial: true
-        Equivalent to: *any_location
+        Sets attributes:
+          - Location
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 40, Planetside]
-        - [41, 75, Orbital]
-        - [76, 100, Deep Space]
+        - [1, 40, Planetside, {Attributes: {Location: Planetside}}]
+        - [41, 75, Orbital, {Attributes: {Location: Orbital}}]
+        - [76, 100, Deep Space, {Attributes: {Location: Deep Space}}]
 
     - Name: Population
       Usage:
         Initial: true
-        Select table by: Region
+        Requires:
+          Attributes:
+              - Key: Region
       Display:
-        Table from:
+        Table:
           Roll columns:
-            - Settlements / Population / Terminus
-            - Settlements / Population / Outlands
-            - Settlements / Population / Expanse
+            - Content: Oracles / Settlements / Population / Terminus
+            - Content: Oracles / Settlements / Population / Outlands
+            - Content: Oracles / Settlements / Population / Expanse
           Result columns:
-            - Settlements / Population / Terminus
-        Column labels:
-          - Terminus
-          - Outlands
-          - Expanse
-          - Number
+            - Content: Oracles / Settlements / Population / Terminus
+              Label: Number
       Oracles:
         - Display:
             Column of: Oracles / Settlements / Population
           Name: Terminus
           Usage:
             Requires:
-              - Region: [Terminus]
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
           Table:
             - [1, 10, *pop00]
             - [11, 25, *pop01]
@@ -51,7 +53,10 @@ Settlements:
           Name: Outlands
           Usage:
             Requires:
-              - Region: [Outlands]
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
           Table:
             - [1, 15, *pop00]
             - [16, 35, *pop01]
@@ -64,7 +69,10 @@ Settlements:
           Name: Expanse
           Usage:
             Requires:
-              - Region: [Expanse]
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
           Table:
             - [1, 20, *pop00]
             - [21, 50, *pop01]
@@ -100,7 +108,7 @@ Settlements:
         - [81, 83, Temporary or seasonal location]
         - [84, 87, Toxic or polluted habitat]
         - [88, 90, Within or near ⏵Precursor Vault, *Vault]
-        - [91, 100, *Descriptor+Focus]
+        - [91, 100, *result:Descriptor+Focus]
 
     - Name: Initial Contact
       Usage:
@@ -119,7 +127,7 @@ Settlements:
         - [87, 89, Captured]
         - [90, 92, Unresponsive]
         - [93, 95, Destroyed]
-        - [96, 100, *Derelict_settlement_inherit]
+        - [96, 100, ⏵Derelict, *Derelict_settlement_inherit]
 
     - Name: Authority
       Usage:

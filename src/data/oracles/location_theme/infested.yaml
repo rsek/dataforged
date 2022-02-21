@@ -6,8 +6,10 @@ Infested:
   Description: *Infested
   Usage:
     Requires:
-      - Tables: [Location Theme / Type]
-        Results: [Infested, ⏵Infested]
+      Attributes:
+        - Key: Location Theme
+          Values:
+            - Infested
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -31,7 +33,7 @@ Infested:
         - [73, 80, Remains of a creature or remnants of a previous form]
         - [81, 88, Territorial markings]
         - [89, 96, Trail or evidence of a creature's passage]
-        - [97, 100, *Descriptor+Focus]
+        - [97, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Description: *theme_peril

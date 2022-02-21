@@ -5,8 +5,10 @@ Operations:
   _childOf: Derelicts
   Usage:
     Requires:
-      - Tables: [Derelicts / Zone]
-        Results: [Operations, ⏵Operations]
+      Attributes:
+        - Key: Zone
+          Values:
+            - Operations
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -28,7 +30,7 @@ Operations:
         - [65, 72, Lounge]
         - [73, 80, Security]
         - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *Zone_via_Access]
+        - [86, 100, New zone via ⏵Access, *zoneAccess]
 
     - Name: Feature
       Usage:
@@ -47,7 +49,7 @@ Operations:
         - [65, 72, Recorded message]
         - [73, 80, Video surveillance monitors]
         - [81, 88, Written logs]
-        - [89, 100, *Descriptor+Focus]
+        - [89, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Usage:

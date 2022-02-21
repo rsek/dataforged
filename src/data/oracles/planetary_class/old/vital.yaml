@@ -1,0 +1,222 @@
+Vital World:
+  Name: Vital
+  Display:
+    Title: Vital World
+  Description: *Vital
+  _childOf: Planets
+  Usage:
+      Attributes:
+        - Key: Planetary Class
+          Values:
+            - Vital
+  Source:
+    Title: Starforged Backer Preview
+    Date: "020122"
+  Image: "https://i.imgur.com/Syhr8rp.png"
+  Sample Names:
+    - Chiron
+    - Demeter
+    - Erebos
+    - Erembour
+    - Feronia
+    - Fortuna
+    - Gaia
+    - Harbinger
+    - Haven
+    - Hope
+    - Morpheus
+    - Nemus
+    - Sapphire
+    - Serenity
+    - Sif
+    - Silva
+    - Sirona
+    - Solstice
+    - Vale
+    - Valinor
+  Oracles:
+    - Name: Atmosphere
+      Content:
+        Part of speech: [adjective]
+      Usage:
+        Initial: true
+      Table:
+        - [1, 20, *attr:Atmosphere.Marginal]
+        - [21, 50, *attr:Atmosphere.Breathable]
+        - [51, 100, *attr:Atmosphere.Ideal]
+
+    - Name: Settlements
+      Usage:
+        Initial: true
+        Requires:
+          Attributes:
+              - Key: Region
+      Display:
+        Table:
+          Roll columns:
+            - Content: Oracles / Planets / Vital / Settlements / Terminus
+            - Content: Oracles / Planets / Vital / Settlements / Outlands
+            - Content: Oracles / Planets / Vital / Settlements / Expanse
+          Result columns:
+            - Content: Oracles / Planets / Vital / Settlements / Terminus
+
+      Oracles:
+        - Name: Terminus
+          Display:
+            Column of: Oracles / Planets / Vital / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
+          Table:
+            - [1, 20, None]
+            - [21, 30, *Orbital_settlement]
+            - [31, 70, *Planetside_settlement]
+            - [71, 90, *Multiple_settlements]
+            - [91, 100, *Settlements_in_conflict]
+
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Planets / Vital / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          Table:
+            - [1, 50, None]
+            - [51, 55, *Orbital_settlement]
+            - [56, 85, *Planetside_settlement]
+            - [86, 95, *Multiple_settlements]
+            - [96, 100, *Settlements_in_conflict]
+
+        - Name: Expanse
+          Display:
+            Column of: Oracles / Planets / Vital / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          Table:
+            - [1, 80, None]
+            - [81, 83, *Orbital_settlement]
+            - [84, 93, *Planetside_settlement]
+            - [94, 98, *Multiple_settlements]
+            - [99, 100, *Settlements_in_conflict]
+
+    - Name: Observed From Space
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 11, Complex ring system]
+        - [12, 22, Dramatic seasonal variation]
+        - [23, 33, High gravity]
+        - [34, 44, Large moon]
+        - [45, 55, Narrow livable band]
+        - [56, 66, Numerous small moons]
+        - [67, 77, Unusual day or night cycle]
+        - [78, 88, Vibrantly colored landscapes]
+        - [89, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Orbital]
+
+    - Display:
+        Title: Planetside Feature
+      Name: Feature
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 7, Background radiation]
+        - [8, 14, Chaotically juxtaposed biomes]
+        - [15, 21, Creature boneyards, *suggestHaunted]
+        - [22, 28, Creature lairs or watering holes]
+        - [29, 35, Crystalline formations]
+        - [36, 42, Fierce electrical storms]
+        - [43, 49, Floating terrain]
+        - [50, 56, Frequent seismic activity]
+        - [57, 63, Magnetic disturbances]
+        - [64, 70, Scarred or excavated terrain]
+        - [71, 77, Signs of an engineered biosphere]
+        - [78, 84, Sudden weather fluctuations]
+        - [85, 91, Towering geological formations]
+        - [92, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Planetside]
+
+    - Name: Life
+      Usage:
+        Sets attributes:
+          - Life
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 10, *life_Scarce]
+        - [11, 45, *life_Diverse]
+        - [46, 85, *life_Bountiful]
+        - [86, 100, *life_Overrun]
+
+    - Name: Diversity
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 20, "Simple (two biomes)",
+            { Oracle rolls: [
+              &biome Oracles / Planets / Vital / Biomes,
+              *biome
+            ]}]
+        - [21, 70, "Diverse (three biomes)",
+            { Oracle rolls: [
+              *biome,
+              *biome,
+              *biome
+            ]}]
+        - [71, 90, "Complex (four biomes)",
+            { Oracle rolls: [
+              *biome,
+              *biome,
+              *biome,
+              *biome
+            ]}]
+        - [91, 100, "Garden world (five or more biomes)",
+            { Oracle rolls: [
+              *biome,
+              *biome,
+              *biome,
+              *biome,
+              *biome
+            ]}]
+
+    - Name: Biomes
+      Usage:
+        Min rolls: 2
+        Max rolls: 5
+      Content:
+        Part of speech: [noun, common noun]
+      Table:
+        - [1, 5, Caves]
+        - [6, 10, Cold forest]
+        - [11, 15, Fungal]
+        - [16, 20, Glacial or snow]
+        - [21, 25, Grassland]
+        - [26, 30, Islands]
+        - [31, 35, Jungle]
+        - [36, 40, Mountainous]
+        - [41, 45, Ocean]
+        - [46, 50, Rocky desert]
+        - [51, 55, Sandy desert]
+        - [56, 60, Savanna]
+        - [61, 65, Shallow seas]
+        - [66, 70, Shrubland]
+        - [71, 75, Temperate rainforest]
+        - [76, 80, Temperate forest]
+        - [81, 85, Tundra]
+        - [86, 90, Volcanic]
+        - [91, 95, Waterways]
+        - [96, 100, Wetland]

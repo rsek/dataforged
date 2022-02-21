@@ -7,206 +7,199 @@ Creatures:
     - Name: Environment
       Usage:
         Initial: true
+        Sets attributes:
+          - Environment
       Content:
         Part of speech: [noun]
       Description: |-
         Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
       Table:
-        - [1, 5, Space]
-        - [6, 15, Interior]
-        - [16, 55, Land]
-        - [56, 80, Liquid]
-        - [81, 100, Air]
+        - [1, 5, Space, {Attributes: {Environment: Space}}]
+        - [6, 15, Interior, {Attributes: {Environment: Interior}}]
+        - [16, 55, Land, {Attributes: {Environment: Land}}]
+        - [56, 80, Liquid, {Attributes: {Environment: Liquid}}]
+        - [81, 100, Air, {Attributes: {Environment: Air}}]
     - Name: Scale
       Usage:
+        Sets attributes:
+          - Scale
         Initial: true
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 3, Minuscule, bug-sized]
-        - [4, 10, Tiny, rodent-sized]
-        - [11, 25, Small, dog-sized]
-        - [26, 60, Medium, person-sized]
-        - [61, 90, Large, vehicle-sized]
-        - [91, 99, Huge, whale-sized]
+        - [1, 3, Minuscule (bug-sized), {Attributes: {Scale: Minuscule}}]
+        - [4, 10, Tiny (rodent-sized), {Attributes: {Scale: Tiny}}]
+        - [11, 25, Small (dog-sized), {Attributes: {Scale: Small}}]
+        - [26, 60, Medium (person-sized), {Attributes: {Scale: Medium}}]
+        - [61, 90, Large (vehicle-sized), {Attributes: {Scale: Large}}]
+        - [91, 99, Huge (whale-sized), {Attributes: {Scale: Huge}}]
         - [100, 100, ⏵Ultra-scale, {Oracle rolls: [Oracles / Creatures / Ultra-scale]}]
     - Name: Ultra-scale
       Part of speech: [adjective]
       Usage:
+        Sets attributes:
+          - Scale
         Initial: true
-        Requires:
-          - Tables: [Oracles / Creatures / Scale]
-            Results: [Ultra-scale, ⏵Ultra-scale]
       Table:
-        - [1, 89, Titanic, hill-sized]
-        - [90, 99, Colossal, mountain-sized]
-        - [100, 100, Vast, planet-sized]
+        - [1, 89, Titanic (hill-sized), {Attributes: {Scale: Titanic}}]
+        - [90, 99, Colossal (mountain-sized), {Attributes: {Scale: Colossal}}]
+        - [100, 100, Vast (planet-sized), {Attributes: {Scale: Vast}}]
 
     - Name: Basic Form
       Usage:
         Initial: true
-        Select table by: Creatures / Environment
+        Requires:
+          Attributes:
+            - Key: Environment
       Content:
         Part of speech: [fragment]
       Display:
-        Table from:
-          Roll columns: &creature_environment_equivalent
-            - Creatures / Basic Form / Space
-            - Creatures / Basic Form / Interior
-            - Creatures / Basic Form / Land
-            - Creatures / Basic Form / Liquid
-            - Creatures / Basic Form / Air
+        Table:
+          Roll columns:
+            - Content: Oracles / Creatures / Basic Form / Space
+            - Content: Oracles / Creatures / Basic Form / Interior
+            - Content: Oracles / Creatures / Basic Form / Land
+            - Content: Oracles / Creatures / Basic Form / Liquid
+            - Content: Oracles / Creatures / Basic Form / Air
           Result columns:
-            - Creatures / Basic Form / Space
-        Column labels:
-          - Space
-          - Interior
-          - Land
-          - Liquid
-          - Air
-          - Result
+            - Content: Oracles / Creatures / Basic Form / Space
       Description: |-
         Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
       Oracles:
         - Name: Space
-          Display:
+          Display: &basicform_display
             Column of: Oracles / Creatures / Basic Form
           Usage:
-            Equivalent to: *creature_environment_equivalent
             Requires:
-              - Tables: [Creatures / Environment]
-                Results: [Space]
-          Table: &template_basicform
-            - [1, 5, Amoeba / pseudopods]
-            - [6, 20, Amorphous / elemental]
-            - [21, 30, Avian / winged]
-            - [31, 32, Beast / mammal]
-            - [33, 34, Crustacean / shelled]
-            - [35, 37, Fish / torpedo-shaped]
-            - [38, 39, Humanoid / bipedal]
-            - [40, 41, Insectoid / exoskeletal]
-            - [42, 60, Jellyfish / gasbag]
-            - [61, 62, Lizard / reptilian]
-            - [63, 67, Octopoid / tentacled]
-            - [68, 72, Plant / fungus]
-            - [73, 82, Ray / flat-bodied]
-            - [83, 84, Snake / eel]
-            - [85, 86, Spider / web-weaver]
-            - [87, 88, Starfish / symmetrical]
-            - [89, 90, Worm / slug / larva]
-            - [91, 100, *Roll_twice]
+              Attributes:
+                Environment: Space
+          Table: &basicform_table
+              - [1, 5, Amoeba / pseudopods]
+              - [6, 20, Amorphous / elemental]
+              - [21, 30, Avian / winged]
+              - [31, 32, Beast / mammal]
+              - [33, 34, Crustacean / shelled]
+              - [35, 37, Fish / torpedo-shaped]
+              - [38, 39, Humanoid / bipedal]
+              - [40, 41, Insectoid / exoskeletal]
+              - [42, 60, Jellyfish / gasbag]
+              - [61, 62, Lizard / reptilian]
+              - [63, 67, Octopoid / tentacled]
+              - [68, 72, Plant / fungus]
+              - [73, 82, Ray / flat-bodied]
+              - [83, 84, Snake / eel]
+              - [85, 86, Spider / web-weaver]
+              - [87, 88, Starfish / symmetrical]
+              - [89, 90, Worm / slug / larva]
+              - [91, 100, *Roll_twice]
         - Name: Interior
-          _template: *template_basicform
-          Display:
-            Column of: Oracles / Creatures / Basic Form
+          Display: *basicform_display
           Usage:
-            Equivalent to: *creature_environment_equivalent
             Requires:
-              - Tables: [Creatures / Environment]
-                Results: [Interior]
-          Table:
-            - [1, 3]
-            - [4, 6]
-            - [7, 12]
-            - [13, 19]
-            - [20, 22]
-            - [23, 24]
-            - [25, 37]
-            - [38, 49]
-            - [50, 51]
-            - [52, 56]
-            - [57, 58]
-            - [59, 63]
-            - [64, 65]
-            - [66, 68]
-            - [69, 83]
-            - [84, 85]
-            - [86, 90]
-            - [91, 100]
+              Attributes:
+                Environment: Interior
+          _templateTable:
+            results: *basicform_table
+            rolls:
+              - [1, 3]
+              - [4, 6]
+              - [7, 12]
+              - [13, 19]
+              - [20, 22]
+              - [23, 24]
+              - [25, 37]
+              - [38, 49]
+              - [50, 51]
+              - [52, 56]
+              - [57, 58]
+              - [59, 63]
+              - [64, 65]
+              - [66, 68]
+              - [69, 83]
+              - [84, 85]
+              - [86, 90]
+              - [91, 100]
         - Name: Land
-          _template: *template_basicform
-          Display:
-            Column of: Oracles / Creatures / Basic Form
+          Display: *basicform_display
           Usage:
-            Equivalent to: *creature_environment_equivalent
             Requires:
-              - Tables: [Creatures / Environment]
-                Results: [Land]
-          Table:
-            - [1, 2]
-            - [3, 5]
-            - [6, 10]
-            - [11, 25]
-            - [26, 32]
-            - [33, 34]
-            - [35, 39]
-            - [40, 49]
-            - [50, 51]
-            - [52, 58]
-            - [59, 60]
-            - [61, 65]
-            - [66, 67]
-            - [68, 74]
-            - [75, 81]
-            - [82, 83]
-            - [84, 90]
-            - [91, 100]
+              Attributes:
+                Environment: Land
+          _templateTable:
+            results: *basicform_table
+            rolls:
+              - [1, 2]
+              - [3, 5]
+              - [6, 10]
+              - [11, 25]
+              - [26, 32]
+              - [33, 34]
+              - [35, 39]
+              - [40, 49]
+              - [50, 51]
+              - [52, 58]
+              - [59, 60]
+              - [61, 65]
+              - [66, 67]
+              - [68, 74]
+              - [75, 81]
+              - [82, 83]
+              - [84, 90]
+              - [91, 100]
         - Name: Liquid
-          _template: *template_basicform
-          Display:
-            Column of: Oracles / Creatures / Basic Form
+          Display: *basicform_display
           Usage:
-            Equivalent to: *creature_environment_equivalent
             Requires:
-              - Tables: [Creatures / Environment]
-                Results: [Liquid]
-          Table:
-            - [1, 5]
-            - [6, 8]
-            - [9, 11]
-            - [12, 17]
-            - [18, 24]
-            - [25, 39]
-            - [40, 42]
-            - [43, 45]
-            - [46, 53]
-            - [54, 56]
-            - [57, 63]
-            - [64, 68]
-            - [69, 75]
-            - [76, 80]
-            - [81, 82]
-            - [83, 87]
-            - [88, 90]
-            - [91, 100]
+              Attributes:
+                Environment: Liquid
+          _templateTable:
+            results: *basicform_table
+            rolls:
+              - [1, 5]
+              - [6, 8]
+              - [9, 11]
+              - [12, 17]
+              - [18, 24]
+              - [25, 39]
+              - [40, 42]
+              - [43, 45]
+              - [46, 53]
+              - [54, 56]
+              - [57, 63]
+              - [64, 68]
+              - [69, 75]
+              - [76, 80]
+              - [81, 82]
+              - [83, 87]
+              - [88, 90]
+              - [91, 100]
         - Name: Air
-          _template: *template_basicform
-          Display:
-            Column of: Oracles / Creatures / Basic Form
+          Display: *basicform_display
           Usage:
-            Equivalent to: *creature_environment_equivalent
             Requires:
-              - Tables: [Creatures / Environment]
-                Results: [Air]
-          Table:
-            - [1, 2]
-            - [3, 12]
-            - [13, 37]
-            - [38, 40]
-            - [41, 42]
-            - [43, 47]
-            - [48, 49]
-            - [50, 51]
-            - [52, 66]
-            - [67, 68]
-            - [69, 70]
-            - [71, 72]
-            - [73, 82]
-            - [83, 84]
-            - [85, 86]
-            - [87, 88]
-            - [89, 90]
-            - [91, 100]
+              Attributes:
+                Environment: Air
+          _templateTable:
+            results: *basicform_table
+            rolls:
+              - [1, 2]
+              - [3, 12]
+              - [13, 37]
+              - [38, 40]
+              - [41, 42]
+              - [43, 47]
+              - [48, 49]
+              - [50, 51]
+              - [52, 66]
+              - [67, 68]
+              - [69, 70]
+              - [71, 72]
+              - [73, 82]
+              - [83, 84]
+              - [85, 86]
+              - [87, 88]
+              - [89, 90]
+              - [91, 100]
     - Name: First Look
       Display:
         Title: Creature First Look
@@ -277,27 +270,29 @@ Creatures:
         Part of speech: [noun, common noun]
       Usage:
         Initial: true
+        Sets attributes:
+          - Encountered Behavior
       Table:
-        - [1, 5, Ambusher]
-        - [6, 10, Apex predator]
-        - [11, 14, Builder]
-        - [15, 19, Camouflager]
-        - [20, 24, Forager]
-        - [25, 29, Grazer]
-        - [30, 33, Herder]
-        - [34, 37, Hibernator]
-        - [38, 41, Hoarder]
-        - [42, 46, Hunter]
-        - [47, 51, Lurer]
-        - [52, 55, Migratory]
-        - [56, 60, Mimic]
-        - [61, 65, Nester]
-        - [66, 70, Pack hunter]
-        - [71, 75, Prey]
-        - [76, 80, Protector]
-        - [81, 85, Scavenger]
-        - [86, 90, Tracker]
-        - [91, 95, Trapper]
+        - [1, 5, Ambusher, {Attributes: {Encountered Behavior: Ambusher}}]
+        - [6, 10, Apex predator, {Attributes: {Encountered Behavior: Apex predator}}]
+        - [11, 14, Builder, {Attributes: {Encountered Behavior: Builder}}]
+        - [15, 19, Camouflager, {Attributes: {Encountered Behavior: Camouflager}}]
+        - [20, 24, Forager, {Attributes: {Encountered Behavior: Forager}}]
+        - [25, 29, Grazer, {Attributes: {Encountered Behavior: Grazer}}]
+        - [30, 33, Herder, {Attributes: {Encountered Behavior: Herder}}]
+        - [34, 37, Hibernator, {Attributes: {Encountered Behavior: Hibernator}}]
+        - [38, 41, Hoarder, {Attributes: {Encountered Behavior: Hoarder}}]
+        - [42, 46, Hunter, {Attributes: {Encountered Behavior: Hunter}}]
+        - [47, 51, Lurer, {Attributes: {Encountered Behavior: Lurer}}]
+        - [52, 55, Migratory, {Attributes: {Encountered Behavior: Migratory}}]
+        - [56, 60, Mimic, {Attributes: {Encountered Behavior: Mimic}}]
+        - [61, 65, Nester, {Attributes: {Encountered Behavior: Nester}}]
+        - [66, 70, Pack hunter, {Attributes: {Encountered Behavior: Pack hunter}}]
+        - [71, 75, Prey, {Attributes: {Encountered Behavior: Prey}}]
+        - [76, 80, Protector, {Attributes: {Encountered Behavior: Protector}}]
+        - [81, 85, Scavenger, {Attributes: {Encountered Behavior: Scavenger}}]
+        - [86, 90, Tracker, {Attributes: {Encountered Behavior: Tracker}}]
+        - [91, 95, Trapper, {Attributes: {Encountered Behavior: Trapper}}]
         - [96, 100, *Roll_twice]
     - Name: Revealed Aspect
       Display:

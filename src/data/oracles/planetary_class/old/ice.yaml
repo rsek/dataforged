@@ -1,0 +1,169 @@
+Ice World:
+  Name: Ice
+  Display:
+    Title: Ice World
+  Description: *Ice
+  _childOf: Planets
+  Usage:
+      Attributes:
+        - Key: Planetary Class
+          Values:
+            - Ice
+  Source:
+    Title: Starforged Backer Preview
+    Date: "020122"
+  Image: "https://i.imgur.com/r6DIkqJ.png"
+  Sample Names:
+    - Beira
+    - Boreas
+    - Caradhras
+    - Cicero
+    - Demetria
+    - Enten
+    - Fissure
+    - Frost
+    - Gelida
+    - Jotunn
+    - Kanna
+    - Karn
+    - Kheimon
+    - Moroz
+    - Nix
+    - Olwen
+    - Osolok
+    - Taiga
+    - Thule
+    - Varnholme
+  Oracles:
+    - Name: Atmosphere
+      Content:
+        Part of speech: [adjective]
+      Usage:
+        Initial: true
+      Table:
+        - [1, 15, *attr:Atmosphere.NoneThin]
+        - [16, 35, *attr:Atmosphere.Toxic]
+        - [36, 40, *attr:Atmosphere.Corrosive]
+        - [41, 70, *attr:Atmosphere.Marginal]
+        - [71, 95, *attr:Atmosphere.Breathable]
+        - [96, 100, *attr:Atmosphere.Ideal]
+
+    - Name: Settlements
+      Usage:
+        Initial: true
+        Requires:
+          Attributes:
+            - Key: Region
+      Display:
+        Table:
+          Roll columns:
+            - Content: Oracles / Planets / Ice / Settlements / Terminus
+            - Content: Oracles / Planets / Ice / Settlements / Outlands
+            - Content: Oracles / Planets / Ice / Settlements / Expanse
+          Result columns:
+            - Content: Oracles / Planets / Ice / Settlements / Terminus
+
+      Oracles:
+        - Name: Terminus
+          Display:
+            Column of: Oracles / Planets / Ice / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Terminus
+          Table:
+            - [1, 50, None]
+            - [51, 60, *Orbital_settlement]
+            - [61, 80, *Planetside_settlement]
+            - [81, 92, *Multiple_settlements]
+            - [93, 100, *Settlements_in_conflict]
+
+        - Name: Outlands
+          Display:
+            Column of: Oracles / Planets / Ice / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Outlands
+          Table:
+            - [1, 75, None]
+            - [76, 83, *Orbital_settlement]
+            - [84, 95, *Planetside_settlement]
+            - [96, 98, *Multiple_settlements]
+            - [99, 100, *Settlements_in_conflict]
+
+        - Name: Expanse
+          Display:
+            Column of: Oracles / Planets / Ice / Settlements
+          Usage:
+            Requires:
+              Attributes:
+                - Key: Region
+                  Values:
+                    - Expanse
+          Table:
+            - [1, 90, None]
+            - [91, 96, *Orbital_settlement]
+            - [97, 100, *Planetside_settlement]
+
+    - Name: Observed From Space
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 11, Feeble sunlight]
+        - [12, 22, Frozen oceans]
+        - [23, 33, Rocky glacial islands]
+        - [34, 44, Snowbound mountains]
+        - [45, 55, Sky-breaching geysers]
+        - [56, 66, Supersized ice volcano]
+        - [67, 77, Vibrantly colored ice]
+        - [78, 88, World-spanning ice canyon]
+        - [89, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Orbital]
+
+    - Display:
+        Title: Planetside Feature
+      Name: Feature
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 7, Abyssal ice fissures]
+        - [8, 14, Blinding snow storms]
+        - [15, 21, Clusters of ice spikes]
+        - [22, 28, Colossal ice caves]
+        - [29, 35, Glistening ice spires]
+        - [36, 42, Massive snow drifts]
+        - [43, 49, Preserved carcasses]
+        - [50, 56, Rocky islands amid icy wastes]
+        - [57, 63, Shattered plains of pack ice]
+        - [64, 70, Steaming hot springs]
+        - [71, 77, Subsurface liquid oceans]
+        - [78, 84, Vibrant auroras]
+        - [85, 91, Wind-carved ice formations]
+        - [92, 98, *result:Descriptor+Focus]
+        - [99, 100, *obj:Vault.Planetside]
+
+    - Name: Life
+      Usage:
+        Sets attributes:
+          - Life
+      Content:
+        Part of speech: [adjective]
+      Table:
+        - [1, 20, *attr:Life.None]
+        - [21, 40, *attr:Life.Extinct]
+        - [41, 70, *attr:Life.Scarce]
+        - [71, 90, *attr:Life.Diverse]
+        - [91, 97, *attr:Life.Bountiful]
+        - [98, 100, *attr:Life.Overrun]
+
+
+

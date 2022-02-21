@@ -17,66 +17,60 @@ Derelicts:
   Oracles:
     - Name: Location
       Usage:
+        Sets attributes:
+          - Location
         Initial: true
-        Equivalent to: *any_location
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 40, Planetside]
-        - [41, 60, Orbital]
-        - [61, 100, Deep Space]
+        - [1, 40, Planetside, *attr_Planetside]
+        - [41, 60, Orbital, *attr_Orbital]
+        - [61, 100, Deep Space, *attr_DeepSpace]
 
     - Name: Type
       Usage:
         Initial: true
-        Select table by: Location
+        Requires: *attr:Location.Any
       Display:
-        Table from:
-          Roll columns: &derelict_type_equivalence
-            - Derelicts / Type / Planetside
-            - Derelicts / Type / Orbital
-            - Derelicts / Type / Deep Space
+        Table:
+          Roll columns:
+            - Content: Oracles / Derelicts / Type / Planetside
+            - Content: Oracles / Derelicts / Type / Orbital
+            - Content: Oracles / Derelicts / Type / Deep Space
           Result columns:
-            - Derelicts / Type / Planetside
-        Column labels:
-          - Planetside
-          - Orbital
-          - Deep Space
-          - Result
+            - Content: Oracles / Derelicts / Type / Planetside
       Oracles:
-        - Display:
+        - Display: &derelictTypeDisplay
             Column of: Oracles / Derelicts / Type
           Name: Planetside
           Usage:
-            Equivalent to: *derelict_type_equivalence
-            Requires:
-              - Tables: *any_location
-                Results: [Planetside]
-          Table:
-            - [1, 25, Starship]
-            - [26, 100, Settlement]
-        - Display:
-            Column of: Oracles / Derelicts / Type
+            Sets attributes: &derelictSetsAttributes
+              - Derelict Type
+            Requires: *attr:Location.Planetside
+          Table: &derelictTypeTable
+            - [1, 25, Starship, *attr:Derelict.Starship]
+            - [26, 100, Settlement, *attr:Derelict.Settlement]
+        - Display: *derelictTypeDisplay
           Name: Orbital
           Usage:
-            Equivalent to: *derelict_type_equivalence
-            Requires:
-              - Tables: *any_location
-                Results: [Orbital]
-          Table:
-            - [1, 40, Starship]
-            - [41, 100, Settlement]
+            Sets attributes: *derelictSetsAttributes
+            Requires: *attr:Location.Orbital
+          _templateTable:
+            results: *derelictTypeTable
+            rolls:
+              - [1, 40]
+              - [41, 100]
         - Display:
             Column of: Oracles / Derelicts / Type
           Name: Deep Space
           Usage:
-            Equivalent to: *derelict_type_equivalence
-            Requires:
-              - Tables: *any_location
-                Results: [Deep Space]
-          Table:
-            - [1, 75, Starship]
-            - [76, 100, Settlement]
+            Sets attributes: *derelictSetsAttributes
+            Requires: *attr:Location.DeepSpace
+          _templateTable:
+            results: *derelictTypeTable
+            rolls:
+              - [1, 75]
+              - [76, 100]
     - Name: Condition
       Usage:
         Initial: true
@@ -146,55 +140,53 @@ Derelicts:
         - [85, 87, Thick haze or smoke]
         - [88, 90, Unstable energy surges]
         - [91, 93, Watchful AI]
-        - [94, 100, *Descriptor+Focus]
+        - [94, 100, *result:Descriptor+Focus]
 
     - Name: Zone
       Display:
         Title: Derelict Zone
-        Table from:
+        Table:
           Roll columns:
-            - Derelicts / Zone / Starship
-            - Derelicts / Zone / Settlement
+            - Content: Oracles / Derelicts / Zone / Starship
+            - Content: Oracles / Derelicts / Zone / Settlement
           Result columns:
-            - Derelicts / Zone / Starship
-        Column labels:
-          - Starship
-          - Settlement
-          - Result
+            - Content: Oracles / Derelicts / Zone / Starship
       Usage:
         Repeatable: true
-        Select table by: Derelicts / Type
+        Requires:
+          Attributes:
+            Derelict Type: []
       Oracles:
-        - Display:
+        - Name: Starship
+          Display:
             Column of: Oracles / Derelicts / Zone
-          Name: Starship
           Usage:
-            Equivalent to: [Derelicts / Zone / Settlement]
             Requires:
-              - Tables: *derelict_type_equivalence
-                Results: [Starship]
-          Table:
-            - [1, 5, ⏵Community]
-            - [6, 30, ⏵Engineering]
-            - [31, 55, ⏵Living]
-            - [56, 65, ⏵Medical]
-            - [66, 85, ⏵Operations]
-            - [86, 90, ⏵Production]
-            - [91, 100, ⏵Research]
+              Attributes:
+                Derelict Type: Starship
+          Table: &derelictZoneTable
+            - [1, 5, ⏵Community, *zoneCommunity]
+            - [6, 30, ⏵Engineering, *zoneEngineering]
+            - [31, 55, ⏵Living, *zoneLiving]
+            - [56, 65, ⏵Medical, *zoneMedical]
+            - [66, 85, ⏵Operations, *zoneOperations]
+            - [86, 90, ⏵Production, *zoneProduction]
+            - [91, 100, ⏵Research, *zoneResearch]
 
-        - Display:
+        - Name: Settlement
+          Display:
             Column of: Oracles / Derelicts / Zone
-          Name: Settlement
           Usage:
-            Equivalent to: [Derelicts / Zone / Starship]
             Requires:
-              - Tables: *derelict_type_equivalence
-                Results: [Settlement]
-          Table:
-            - [1, 20, ⏵Community]
-            - [21, 30, ⏵Engineering]
-            - [31, 50, ⏵Living]
-            - [51, 60, ⏵Medical]
-            - [61, 70, ⏵Operations]
-            - [71, 90, ⏵Production]
-            - [91, 100, ⏵Research]
+              Attributes:
+                Derelict Type: Settlement
+          _templateTable:
+            results: *derelictZoneTable
+            rolls:
+              - [1, 20]
+              - [21, 30]
+              - [31, 50]
+              - [51, 60]
+              - [61, 70]
+              - [71, 90]
+              - [91, 100]

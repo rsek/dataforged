@@ -6,8 +6,10 @@ Ruined:
   Description: *Ruined
   Usage:
     Requires:
-      - Tables: [Location Theme / Type]
-        Results: [Ruined, ⏵Ruined]
+      Attributes:
+        - Key: Location Theme
+          Values:
+            - Ruined
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -31,7 +33,7 @@ Ruined:
         - [73, 80, Sights or sounds of structural instability]
         - [81, 88, Signs of looting or scavenging]
         - [89, 96, Survivors or guardians dwell among the ruins]
-        - [97, 100, *Descriptor+Focus]
+        - [97, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Description: *theme_peril

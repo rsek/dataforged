@@ -35,13 +35,14 @@ Vaults:
     - Name: Location
       Usage:
         Initial: true
-        Equivalent to: *any_location
+        Sets attributes:
+          - Location
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 50, Planetside]
-        - [51, 75, Orbital]
-        - [76, 100, Deep Space]
+        - [1, 50, Planetside, {Attributes: {Location: Planetside }} ]
+        - [51, 75, Orbital, {Attributes: {Location: Orbital }}]
+        - [76, 100, Deep Space, {Attributes: {Location: Deep Space }}]
 
     - Name: Scale
       Usage:
@@ -144,6 +145,6 @@ Vaults:
         - [86, 89, Sound or signal]
         - [90, 92, Strong gravity well]
         - [93, 95, Surrounded by destruction]
-        - [96, 100, *Descriptor+Focus]
+        - [96, 100, *result:Descriptor+Focus]
 
 

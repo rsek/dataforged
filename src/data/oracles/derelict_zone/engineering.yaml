@@ -5,8 +5,10 @@ Engineering:
   _childOf: Derelicts
   Usage:
     Requires:
-      - Tables: [Derelicts / Zone]
-        Results: [Engineering, ⏵Engineering]
+      Attributes:
+        - Key: Zone
+          Values:
+            - Engineering
   Source:
     Title: Starforged Backer Preview
     Date: "020122"
@@ -28,7 +30,7 @@ Engineering:
         - [65, 72, Water processing]
         - [73, 80, Workshop]
         - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *Zone_via_Access]
+        - [86, 100, New zone via ⏵Access, *zoneAccess]
 
     - Name: Feature
       Usage:
@@ -47,7 +49,7 @@ Engineering:
         - [65, 72, Sharp ozone smell]
         - [73, 80, Unfinished project]
         - [81, 88, Utility bots]
-        - [89, 100, *Descriptor+Focus]
+        - [89, 100, *result:Descriptor+Focus]
 
     - Name: Peril
       Usage:
