@@ -30,7 +30,7 @@ Jungle World:
   Oracles:
     - _templateInfo: *template.info:Planet.Atmosphere
       _templateTable:
-        results: *template.results:Planet.Atmosphere
+        content: *template.content:Planet.Atmosphere
         rolls:
           - [0, 0] # None / thin
           - [1, 25] # Toxic
@@ -43,7 +43,7 @@ Jungle World:
       Oracles:
         - _templateInfo: *template.info:Planet.Settlements.Terminus
           _templateTable:
-            results: *template.results:Planet.Settlements.Terminus
+            content: *template.content:Planet.Settlements.Terminus
             rolls:
               - [1, 40] # None
               - [41, 55] # Orbital settlement
@@ -52,7 +52,7 @@ Jungle World:
               - [93, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Outlands
           _templateTable:
-            results: *template.results:Planet.Settlements.Outlands
+            content: *template.content:Planet.Settlements.Outlands
             rolls:
               - [1, 65] # None
               - [66, 75] # Orbital settlement
@@ -61,7 +61,7 @@ Jungle World:
               - [98, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Expanse
           _templateTable:
-            results: *template.results:Planet.Settlements.Expanse
+            content: *template.content:Planet.Settlements.Expanse
             rolls:
               - [1, 85] # None
               - [86, 90] # Orbital settlement
@@ -71,7 +71,7 @@ Jungle World:
     - _templateInfo: *template.info:Planet.ObservedFromSpace
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
-        results:
+        content:
           - Cloud-breaching trees
           - Towering mountains
           - Expansive rivers or wetlands
@@ -85,7 +85,7 @@ Jungle World:
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
-        results:
+        content:
           - Bioluminescent flora
           - Deep river gorges
           - Extensive exposed root systems
@@ -103,7 +103,7 @@ Jungle World:
           - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
-        results: *template.results:Planet.Life
+        content: *template.content:Planet.Life
         rolls:
           - [0, 0] # None
           - [0, 0] # Extinct

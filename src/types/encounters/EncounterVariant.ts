@@ -1,10 +1,11 @@
-import { ChallengeRank } from "../general/ChallengeRank";
+import ChallengeRank from "../general/ChallengeRank";
 import { IEncounterData } from "./Encounter";
 import EncounterId from "./EncounterId";
 import EncounterTags from "./EncounterTags";
 import EncounterNature from "./EncounterNature";
-import { ISource, Source } from "../general/Source";
-import IOracleInfoDisplay from "../oracles/interfaces/IOracleInfoDisplay";
+import Source from "../general/Source";
+import ISource from "../general/interfaces/ISource";
+import ITableDisplay from "../oracles/interfaces/IOracleDisplay";
 
 
 export interface IEncounterVariantData extends Partial<IEncounterData> {
@@ -32,7 +33,7 @@ export class EncounterVariant implements IEncounterVariant {
   Source: Source;
   Name!: string;
   Rank!: ChallengeRank;
-  Display?: IOracleInfoDisplay | undefined;
+  Display?: ITableDisplay | undefined;
   Description!: string;
   Nature?: EncounterNature | undefined;
   Tags?: EncounterTags[] | undefined;

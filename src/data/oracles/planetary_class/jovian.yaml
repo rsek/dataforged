@@ -30,7 +30,7 @@ Jovian World:
   Oracles:
     - _templateInfo: *template.info:Planet.Atmosphere
       _templateTable:
-        results: *template.results:Planet.Atmosphere
+        content: *template.content:Planet.Atmosphere
         rolls:
           - [0, 0] # None / thin
           - [1, 50] # Toxic
@@ -42,7 +42,7 @@ Jovian World:
       Oracles:
         - _templateInfo: *template.info:Planet.Settlements.Terminus
           _templateTable:
-            results: *template.results:Planet.Settlements.Terminus
+            content: *template.content:Planet.Settlements.Terminus
             rolls:
               - [1,50] # None
               - [51,70] # Orbital settlement
@@ -51,7 +51,7 @@ Jovian World:
               - [96,100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Outlands
           _templateTable:
-            results: *template.results:Planet.Settlements.Outlands
+            content: *template.content:Planet.Settlements.Outlands
             rolls:
               - [1,75] # None
               - [76,87] # Orbital settlement
@@ -60,7 +60,7 @@ Jovian World:
               - [99,100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Expanse
           _templateTable:
-            results: *template.results:Planet.Settlements.Expanse
+            content: *template.content:Planet.Settlements.Expanse
             rolls:
               - [1,90] # None
               - [91,96] # Orbital settlement
@@ -70,7 +70,7 @@ Jovian World:
     - _templateInfo: *template.info:Planet.ObservedFromSpace
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
-        results:
+        content:
           - Complex ring system
           - Intense gravity well
           - Numerous moons
@@ -84,7 +84,7 @@ Jovian World:
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
-        results:
+        content:
           - Clouds of metal particles
           - Crystalline rains
           - Floating glaciers
@@ -102,7 +102,7 @@ Jovian World:
           - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
-        results: *template.results:Planet.Life
+        content: *template.content:Planet.Life
         rolls:
           - [1, 35] # None
           - [36, 60] # Extinct

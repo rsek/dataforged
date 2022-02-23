@@ -1,7 +1,7 @@
 import t from 'ts-runtime/lib';
 
 import _ from "lodash";
-import { Source } from "../../general/Source";
+import Source from "../../general/Source";
 import IOracleData from "../interfaces/IOracleData";
 import IOracle from "../interfaces/IOracle";
 import OracleContent from "./OracleContent";
@@ -12,10 +12,13 @@ import OracleUsage from "./OracleUsage";
 import { isOracles, isOracleTable, isOracleUsage } from "../../typeguards";
 import buildOracleId from "../../../utilities/buildOracleId";
 import OracleInfoDisplay from "./OracleInfoDisplay";
-import IOracleInfoDisplay from "../interfaces/IOracleInfoDisplay";
+import ITableDisplay from "../interfaces/IOracleDisplay";
 import IOracleInfo from '../interfaces/IOracleInfo';
 import IOracleInfoData from '../interfaces/IOracleInfoData';
 import IRowData, { IRowRollData } from '../interfaces/IRowData';
+import propagateObject from '../../utils/propagateObject';
+import IAttributeOptions from '../../gameobjects/IAttributeOptions';
+import Requirements from '../../general/Requirements';
 
 
 /**
@@ -54,7 +57,7 @@ export default class OracleInfo implements IOracleInfo, IOracle {
 
     this.Description = json.Description;
     this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
-    this.Display = new OracleInfoDisplay((json.Display ?? {}) as Partial<IOracleInfoDisplay>, this.Name, this.$id);
+    this.Display = new OracleInfoDisplay((json.Display ?? {}) as Partial<ITableDisplay>, this.Name, this.$id);
     if (json.Usage) {
       this.Usage = isOracleUsage(json.Usage) ? new OracleUsage(json.Usage) : undefined;
     }
@@ -79,24 +82,33 @@ export default class OracleInfo implements IOracleInfo, IOracle {
           templateRow[0] = newRow[0];
           templateRow[1] = newRow[1];
         });
-        tableData = templateData.filter(row => row[0] != 0 && row[1] != 0).reverse();
+        // tableData = templateData.filter(row => row[0] != 0 && row[1] != 0).reverse();
+        tableData = templateData.reverse();
       }
-      this.Table = tableData.map(row => new OracleTableRow(this.$id, ...row));
+      this.Table = tableData.map(row => {
+        let newRow = new OracleTableRow(this.$id, ...row);
+        if (this.Usage?.Requires?.Attributes && newRow["Game objects"]) {
+          newRow["Game objects"].forEach(gameObject => {
+            let attrToMerge = { Attributes: this.Usage?.Requires?.Attributes as IAttributeOptions[] };
+            if (!gameObject.Requires) {
+              gameObject.Requires = {} as Requirements;
+            }
+            propagateObject(attrToMerge, "Attributes", gameObject.Requires);
+          });
+        }
+        return newRow;
+      });
     }
-
     if (json.Oracles) {
-      // cascades Content data to subtables
-      if (json.Content) {
-        json.Oracles = json.Oracles.map(oracleInfo => {
-          const override = oracleInfo.Content ?? {};
-          const newContent = _.merge(json.Content, override)
-          oracleInfo.Content = newContent;
-          return oracleInfo;
-        });
-        delete json.Content;
-      }
-
-      this.Oracles = isOracles(json.Oracles) ? json.Oracles.map(info => new OracleInfo(info, this.Category, this.$id, json, ...ancestorsJson)) : undefined;
+      this.Oracles = isOracles(json.Oracles) ? json.Oracles.map(oracleInfo => {
+        if (this.Usage) {
+          propagateObject(this.Usage, "Usage", oracleInfo);
+        }
+        if (this.Content) {
+          propagateObject(this.Content, "Content", oracleInfo);
+        }
+        return new OracleInfo(oracleInfo, this.Category, this.$id, json, ...ancestorsJson)
+      }) : undefined;
     }
   }
 }

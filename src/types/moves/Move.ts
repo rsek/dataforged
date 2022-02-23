@@ -1,17 +1,16 @@
 
 import t from 'ts-runtime/lib';
-import { MdString } from "../general/MdString";
-import { Source, ISource } from "../general/Source";
-import { ISuggestions, Suggestions } from "../general/Suggestions";
+import MdString from "../general/MdString";
+import Source from "../general/Source";
+import Suggestions from "../general/Suggestions";
 import OracleTableId from "../oracles/OracleTableId";
-import MoveOutcomes, { IMoveOutcomes } from "./MoveOutcome";
-import { IMoveTriggerData, MoveTrigger } from "./MoveTrigger";
+import MoveOutcomes from "./MoveOutcomes";
+import MoveTrigger from "./MoveTrigger";
+import MoveId from './MoveId';
+import IMove from './interfaces/IMove';
+import MoveCategory from './MoveCategory';
 
-export type MoveId = `Moves / ${string}`;
-
-export type MoveCategory = `${"Session" | "Adventure" | "Quest" | "Connection" | "Exploration" | "Combat" | "Suffer" | "Recover" | "Threshold" | "Legacy" | "Fate" | "Asset"} Moves`;
-
-export class Move implements IMove {
+export default class Move implements IMove {
   $id: MoveId;
   Name: string;
   Category: MoveCategory;
@@ -38,20 +37,5 @@ export class Move implements IMove {
 
   }
 }
-
-export interface IMove {
-  $id?: MoveId | undefined;
-  Name: string;
-  Category: MoveCategory;
-  "Progress Move"?: boolean | undefined;
-  "Variant of"?: MoveId | undefined;
-  Trigger: IMoveTriggerData;
-  Text: MdString;
-  Oracles?: OracleTableId[] | undefined;
-  Source?: ISource | undefined;
-  Suggestions?: ISuggestions | undefined;
-  Outcomes?: IMoveOutcomes | undefined;
-}
-
 
 

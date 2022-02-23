@@ -1,16 +1,10 @@
 
 import t from 'ts-runtime/lib';
 import _ from "lodash";
+import ISource from './interfaces/ISource';
+import SourceTitle from './SourceTitle';
 
-/**
-* @class Source
-*/
-export interface ISource {
-  Title: SourceTitle;
-  Date?: string | undefined;
-  Page?: number | undefined;
-}
-export class Source implements ISource {
+export default class Source implements ISource {
   Title: SourceTitle;
   Date?: string | undefined;
   Page?: number | undefined;
@@ -24,9 +18,4 @@ export class Source implements ISource {
     this.Page = newData.Page;
   }
 }
-export enum SourceTitle {
-  StarforgedBackerPreview = "Starforged Backer Preview",
-  Starforged = "Starforged",
-  Ironsworn = "Ironsworn rulebook",
-  IronswornDelve = "Ironsworn: Delve"
-}
+

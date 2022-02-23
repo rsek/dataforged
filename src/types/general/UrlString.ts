@@ -1,5 +1,6 @@
 
 
 import t from 'ts-runtime/lib';
-export type UrlString = `${Protocol}://${string}`;
+type UrlString = `${Protocol}://${string}`;
+export default UrlString;
 type Protocol = "http" | "https";

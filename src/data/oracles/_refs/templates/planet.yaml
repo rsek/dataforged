@@ -21,7 +21,7 @@ Planet: &template:Planet
         Usage:
           Initial: true
       _templateTable:
-        results: &template.results:Planet.Atmosphere
+        content: &template.content:Planet.Atmosphere
           - [None/thin, *attr:Atmosphere.NoneThin]
           - [Toxic, *attr:Atmosphere.Toxic]
           - [Corrosive, *attr:Atmosphere.Corrosive]
@@ -49,14 +49,14 @@ Planet: &template:Planet
             Usage:
               Requires: *attr:Region.Terminus
           _templateTable:
-            results: &template.results:Planet.Settlements
+            content: &template.content:Planet.Settlements
               - [None]
               - [Orbital settlement, *obj:Settlement.Orbital]
               - [Planetside settlement, *obj:Settlement.Planetside]
               - [Multiple settlements, &Multiple_settlements
-                  {Game objects: [
+                  Game objects: [
                     *obj:Settlement.PlanetAny,
-                    *obj:Settlement.PlanetAny]}]
+                    *obj:Settlement.PlanetAny]]
               - [Settlements in conflict, *Multiple_settlements]
         - _templateInfo: &template.info:Planet.Settlements.Outlands
             Name: Outlands
@@ -64,14 +64,14 @@ Planet: &template:Planet
             Usage:
               Requires: *attr:Region.Outlands
           _templateTable:
-            results: *template.results:Planet.Settlements
+            content: *template.content:Planet.Settlements
         - _templateInfo: &template.info:Planet.Settlements.Expanse
             Name: Expanse
             Display: *template.display:Planet.Settlements
             Usage:
               Requires: *attr:Region.Expanse
           _templateTable:
-            results: *template.results:Planet.Settlements
+            content: *template.content:Planet.Settlements
     - _templateInfo: &template.info:Planet.ObservedFromSpace
         Name: Observed From Space
         Content:
@@ -127,6 +127,6 @@ Planet: &template:Planet
           - [None, *attr:Life.None]
           - [Extinct, *attr:Life.Extinct]
           - [Scarce, *attr:Life.Scarce]
-          - [Diverse, *attr:Life.Diverse, {Suggestions: *obj:Creature}]
-          - [Bountiful, *attr:Life.Bountiful, {Suggestions: *obj:Creature}]
-          - [Overrun, *attr:Life.Overrun, {Suggestions: *obj:Creature}]
+          - [Diverse, *attr:Life.Diverse, Suggestions: *obj:Creature]
+          - [Bountiful, *attr:Life.Bountiful, Suggestions: *obj:Creature]
+          - [Overrun, *attr:Life.Overrun, Suggestions: *obj:Creature]

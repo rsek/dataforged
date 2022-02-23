@@ -1,8 +1,10 @@
 
 import t from 'ts-runtime/lib';
 import { IHasId } from "../general/Id";
-import { ISource, Source } from "../general/Source";
-import { ISuggestions, Suggestions } from "../general/Suggestions";
+import Source from "../general/Source";
+import ISource from "../general/interfaces/ISource";
+import Suggestions from "../general/Suggestions";
+import { ISuggestions } from "../general/ISuggestions";
 import { ITruthTableRow, TruthTableRow } from "./TruthTableRow";
 
 export interface ITruth {

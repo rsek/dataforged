@@ -1,43 +1,17 @@
 import t from 'ts-runtime/lib';
-import { ConditionMeter, IConditionMeter } from "../general/ConditionMeter";
-import { MdString } from "../general/MdString";
-import { ISource, Source } from "../general/Source";
-import { AssetAbility, IAssetAbilityData } from "./AssetAbility";
-import { AssetType } from "./AssetType";
+import { ConditionMeter } from "../general/ConditionMeter";
+import Source from "../general/Source";
+import ISource from "../general/interfaces/ISource";
+import AssetAbility from "./AssetAbility";
+import AssetType from "./AssetType";
 import { IInput, Input, isNumberInput, isSelectInput, isTextInput, NumberInput, SelectInput, TextInput } from "../general/Input";
-import { IAssetAttachment } from "./AssetAttachment";
+import IAssetAttachment from "./AssetAttachment";
 
-export type AssetId = `Assets / ${string}`;
+import AssetId from './AssetId';
+import IAsset from './interfaces/IAsset';
+import IAssetData from './interfaces/IAssetData';
 
-// interface for outgoing json + dezerialization
-export interface IAsset {
-  $id: AssetId;
-  Name: string;
-  Aliases?: string[] | undefined;
-  "Asset Type": AssetType;
-  Attachments?: IAssetAttachment | undefined;
-  Inputs?: Input[] | undefined;
-  Requirement?: string | undefined;
-  Abilities: AssetAbility[];
-  "Condition Meter"?: ConditionMeter | undefined;
-  Source: Source;
-}
-
-// interface for incoming json
-export interface IAssetData {
-  $id?: AssetId | undefined;
-  Name: string;
-  Source?: ISource;
-  Aliases?: string[] | undefined;
-  "Asset Type": AssetType;
-  Attachments?: IAssetAttachment | undefined;
-  Inputs?: IInput[] | Input[] | undefined;
-  Requirement?: MdString | undefined;
-  Abilities: IAssetAbilityData[];
-  "Condition Meter"?: IConditionMeter | undefined;
-}
-
-export class Asset implements IAsset {
+export default class Asset implements IAsset {
   $id: AssetId;
   Name: string;
   Aliases?: string[] | undefined;

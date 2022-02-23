@@ -5,14 +5,18 @@ import IMultipleRolls from "../interfaces/IMultipleRolls";
 import OracleTableId from "../OracleTableId";
 import OracleTableRowId from "../OracleTableRowId";
 import _ from "lodash";
-import { GameObjectAny } from "../../gameobjects/GameObjectAny";
-import IGameObjectData from "../../gameobjects/IGameObjectData";
-import { ISuggestions, Suggestions } from "../../general/Suggestions";
-import { UrlString } from "../../general/UrlString";
-import { Attribute, isAttribute } from "../../gameobjects/GameObjectAttribute";
+import IGameObjectData from "../../gameobjects/IGameObjectBase";
+import Suggestions from "../../general/Suggestions";
+import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
 import IOracleTableRow from '../interfaces/IOracleTableRow';
 import IRowData from '../interfaces/IRowData';
+import GameObject from '../../gameobjects/GameObject';
+import IAttribute from '../../gameobjects/IAttribute';
+import GameObjectData from '../../gameobjects/GameObjectData';
+import Attributes from '../../general/Attributes';
+import ISuggestions from '../../general/interfaces/ISuggestions';
+import ISuggestionsData from '../../general/interfaces/ISuggestionsData';
 
 /**
  *
@@ -40,10 +44,10 @@ export default class OracleTableRow implements IOracleTableRow {
   Image?: UrlString | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   Subtable?: OracleTableRow[] | undefined;
-  "Game objects"?: GameObjectAny[] | undefined;
+  "Game objects"?: GameObject[] | undefined;
   "Multiple rolls"?: MultipleRolls | undefined;
   Suggestions?: Suggestions | undefined;
-  Attributes?: Attribute[] | undefined;
+  Attributes?: Attributes | undefined;
   Template?: TemplateString | undefined;
   constructor(parentId: string, floor: number, ceiling: number, ...rowContents: (string | object)[]) {
     if (rowContents.length == 0) { throw new Error("Row JSON has no contents. Ensure that it isn't missing a template."); }
@@ -54,7 +58,7 @@ export default class OracleTableRow implements IOracleTableRow {
 
     this.assignString = this.assignString.bind(this);
 
-    const gameObjects: GameObjectAny[] = [];
+    const gameObjects: GameObject[] = [];
     rowContents = new Array(...rowContents);
 
     rowContents.forEach(item => {
@@ -91,12 +95,12 @@ export default class OracleTableRow implements IOracleTableRow {
                 if (!Array.isArray(value)) {
                   throw new Error(`Game objects key is not an array ${JSON.stringify(value)}`);
                 }
-                const gameObjData = value as IGameObjectData[];
+                const gameObjData = value as GameObjectData[];
                 gameObjData.forEach(item => this['Game objects']?.push(new GameObject(item)));
                 break;
               }
               case "Suggestions": {
-                this.Suggestions = new Suggestions(value as ISuggestions);
+                this.Suggestions = new Suggestions(value as ISuggestionsData);
                 break;
               }
               case "Result": {
@@ -108,11 +112,11 @@ export default class OracleTableRow implements IOracleTableRow {
                 break;
               }
               case "Attributes": {
-                // console.info("Attributes key:", JSON.stringify(value));
-                if ((value as Attribute[]).some(item => !isAttribute(item))) {
-                  throw new Error(`Attributes array is invalid: ${JSON.stringify(value)}`);
-                }
-                this.Attributes = value as Attribute[];
+
+                // if ((value as Attribute[]).some(item => !isAttribute(item))) {
+                //   throw new Error(`Attributes array is invalid: ${JSON.stringify(value)}`);
+                // }
+                // this.Attributes = value as Attribute[];
                 break;
               }
               case "Template": {

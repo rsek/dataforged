@@ -30,7 +30,7 @@ Desert World:
   Oracles:
     - _templateInfo: *template.info:Planet.Atmosphere
       _templateTable:
-        results: *template.results:Planet.Atmosphere
+        content: *template.content:Planet.Atmosphere
         rolls:
           - [1, 10] # None / thin
           - [11, 25] # Toxic
@@ -42,7 +42,7 @@ Desert World:
       Oracles:
         - _templateInfo: *template.info:Planet.Settlements.Terminus
           _templateTable:
-            results: *template.results:Planet.Settlements.Terminus
+            content: *template.content:Planet.Settlements.Terminus
             rolls:
               - [1, 50] # None
               - [51, 60] # Orbital settlement
@@ -51,7 +51,7 @@ Desert World:
               - [93, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Outlands
           _templateTable:
-            results: *template.results:Planet.Settlements.Outlands
+            content: *template.content:Planet.Settlements.Outlands
             rolls:
               - [1, 75] # None
               - [76, 83] # Orbital settlement
@@ -60,7 +60,7 @@ Desert World:
               - [99, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Expanse
           _templateTable:
-            results: *template.results:Planet.Settlements.Expanse
+            content: *template.content:Planet.Settlements.Expanse
             rolls:
               - [1, 90] # None
               - [91, 96] # Orbital settlement
@@ -70,7 +70,7 @@ Desert World:
     - _templateInfo: *template.info:Planet.ObservedFromSpace
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
-        results:
+        content:
           - Dry seabeds
           - Expansive dune seas
           - Massive canyons
@@ -84,7 +84,7 @@ Desert World:
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
-        results:
+        content:
           - Cavernous sinkholes
           - Engulfing sandstorms
           - Fleeting rainstorms and flash floods
@@ -102,7 +102,7 @@ Desert World:
           - *result:Vault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
-        results: *template.results:Planet.Life
+        content: *template.content:Planet.Life
         rolls:
           - [1, 20] # None
           - [21, 40] # Extinct

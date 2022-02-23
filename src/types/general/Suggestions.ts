@@ -1,29 +1,25 @@
 import t from 'ts-runtime/lib';
 
-import { AssetId } from "../assets/Asset";
-import { MoveId } from "../moves/Move";
+import AssetId from "../assets/AssetId";
+import GameObject from '../gameobjects/GameObject';
+import MoveId from "../moves/MoveId";
 import OracleTableId from "../oracles/OracleTableId";
-import { GameObjectAny } from "../gameobjects/GameObjectAny";
-import IGameObjectData from "../gameobjects/IGameObjectData";
+import ISuggestions from './interfaces/ISuggestions';
+import ISuggestionsData from './interfaces/ISuggestionsData';
+
 /**
 * Object representing "non-canon" suggestions of additional oracle tables to roll or game objects to generate. These are intended be offered as convenient shortcuts for the user; having them roll automatically is not recommended. They can be safely ignored if this functionality is not desired.
 *
 * @class Suggestions
 */
-export interface ISuggestions {
-  "Game objects"?: IGameObjectData[] | undefined;
-  "Oracle rolls"?: OracleTableId[] | undefined;
-  "Moves"?: MoveId[] | undefined;
-  "Assets"?: AssetId[] | undefined;
-  "Encounters"?: string[] | undefined;
-}
-export class Suggestions implements ISuggestions {
-  "Game objects"?: GameObjectAny[] | undefined;
+
+export default class Suggestions implements ISuggestions {
+  "Game objects"?: GameObject[] | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   "Assets"?: AssetId[] | undefined;
   "Moves"?: MoveId[] | undefined;
   "Encounters"?: string[] | undefined;
-  constructor(data: ISuggestions) {
+  constructor(data: ISuggestionsData) {
     if (data["Game objects"]) {
       console.info("[Suggestions.constructor] Game objects", JSON.stringify(data["Game objects"]));
       this["Game objects"] = data["Game objects"].map(gameObjData => new GameObject(gameObjData));

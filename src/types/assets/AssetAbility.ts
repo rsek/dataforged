@@ -1,35 +1,12 @@
 import t from 'ts-runtime/lib';
-import { IMove, Move } from "../moves/Move";
-import { IAsset, IAssetData } from "./Asset";
-import { IInput, Input, isNumberInput, isSelectInput, isTextInput, NumberInput, SelectInput, TextInput } from "../general/Input";
-import { IHasId } from "../general/Id";
-import { AlterMove, IAlterMoveData } from "./AlterMove";
+import { Input, IInput, isNumberInput, NumberInput, isSelectInput, SelectInput, isTextInput, TextInput } from '../general/Input';
+import Move from '../moves/Move';
+import AlterMove from './AlterMove';
+import IAssetAbility from './interfaces/IAssetAbility';
+import IAssetAbilityData from './interfaces/IAssetAbilityData';
+import IAssetData from './interfaces/IAssetData';
 
-// interface for outgoing JSON + deserialization
-export interface IAssetAbility extends IAssetAbilityData, Omit<IHasId, "Name"> {
-  $id: string;
-  Text: string;
-  Move?: Move | undefined;
-  Inputs?: Input[] | undefined;
-  "Alter Moves"?: AlterMove[] | undefined;
-  "Alter Properties"?: Partial<IAssetData> | undefined;
-  Enabled: boolean;
-}
-
-// interface for incoming data
-export interface IAssetAbilityData {
-  $id?: string | undefined;
-  Text: string;
-  Enabled?: boolean | undefined;
-  Move?: IMove | undefined;
-  Inputs?: IInput[] | Input[] | undefined;
-  "Alter Moves"?: IAlterMoveData[] | undefined;
-  "Alter Properties"?: Partial<IAssetData> | undefined;
-}
-
-
-
-export class AssetAbility implements IAssetAbility {
+export default class AssetAbility implements IAssetAbility {
   $id: string;
   Text: string;
   Move?: Move | undefined;

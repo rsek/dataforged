@@ -1,6 +1,7 @@
-import { ISuggestions } from "../../general/Suggestions";
-import IRequirements from "../../general/IRequirements";
-import { AttributeKey } from "../../gameobjects/GameObjectAttribute";
+
+import { AttributeKey } from "../../gameobjects/IAttribute";
+import IRequirements from "../../general/interfaces/IRequirements";
+import ISuggestions from "../../general/interfaces/ISuggestions";
 
 
 export default interface IOracleUsage {

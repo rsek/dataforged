@@ -1,6 +1,6 @@
 
 
-export enum AssetType {
+enum AssetType {
   CommandVehicle = "Command Vehicle",
   Companion = "Companion",
   Deed = "Deed",
@@ -8,3 +8,5 @@ export enum AssetType {
   Path = "Path",
   SupportVehicle = "Support Vehicle"
 }
+
+export default AssetType;

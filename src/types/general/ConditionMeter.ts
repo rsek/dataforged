@@ -1,7 +1,7 @@
 import t from 'ts-runtime/lib';
 
-import { AssetId } from "../assets/Asset";
-import { AssetType } from "../assets/AssetType";
+import AssetId from "../assets/AssetId";
+import AssetType from "../assets/AssetType";
 import { Counter, ICounter } from "./Counter";
 
 export type MeterType = "Momentum" | PcConditionMeter;

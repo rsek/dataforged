@@ -1,8 +1,8 @@
 import t from 'ts-runtime/lib';
-import { Suggestions } from "../../general/Suggestions";
-import { Requirements } from "../../general/Requirements";
-import { AttributeKey } from "../../gameobjects/GameObjectAttribute";
+import Suggestions from "../../general/Suggestions";
+import Requirements from "../../general/Requirements";
 import IOracleUsage from '../interfaces/IOracleUsage';
+import { AttributeKey } from '../../gameobjects/IAttribute';
 
 export default class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;

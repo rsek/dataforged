@@ -1,4 +1,4 @@
-import { Source } from "../../general/Source";
+import Source from "../../general/Source";
 import OracleCategoryId from "../OracleCategoryId";
 import OracleTableId from "../OracleTableId";
 import IOracleData from './IOracleData';
