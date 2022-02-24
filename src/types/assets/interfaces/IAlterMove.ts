@@ -1,5 +1,5 @@
+import IMoveTriggerData from "../../moves/interfaces/IMoveTriggerData";
 import MoveId from "../../moves/MoveId";
-import IMoveTriggerData from "../../moves/IMoveTriggerData";
 import IAlterMoveData from "./IAlterMoveData";
 
 // interface for outgoing JSON + deserialization

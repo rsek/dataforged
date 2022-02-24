@@ -3,6 +3,8 @@ import Suggestions from "../../general/Suggestions";
 import Requirements from "../../general/Requirements";
 import IOracleUsage from '../interfaces/IOracleUsage';
 import { AttributeKey } from '../../gameobjects/IAttribute';
+import IOracleUsageData from '../interfaces/IOracleUsageData';
+import { is } from 'typescript-is';
 
 export default class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;
@@ -13,7 +15,10 @@ export default class OracleUsage implements IOracleUsage {
   Suggestions?: Suggestions | undefined;
   Requires?: Requirements | undefined;
   "Sets attributes"?: AttributeKey[] | undefined;
-  constructor(json: IOracleUsage) {
+  constructor(json: IOracleUsageData) {
+    // if (!is<IOracleUsageData>(json)) {
+    //   throw new Error();
+    // }
     this.Initial = json.Initial;
     // this["Select table by"] = json["Select table by"];
     this["Max rolls"] = json["Max rolls"];

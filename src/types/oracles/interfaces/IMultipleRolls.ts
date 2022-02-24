@@ -1,6 +1,6 @@
 
 export default interface IMultipleRolls {
   Amount: number;
-  "Allow duplicates": boolean;
-  "Make it worse": boolean;
+  "Allow duplicates"?: boolean | undefined;
+  "Make it worse"?: boolean | undefined;
 }

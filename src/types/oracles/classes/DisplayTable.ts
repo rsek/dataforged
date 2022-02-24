@@ -1,6 +1,7 @@
 
 import t from 'ts-runtime/lib';
-import { getNameFromId } from '../../utils/getNameFromId';
+import { is } from 'typescript-is';
+import { getNameFromId } from '../../../utilities/getNameFromId';
 import IDisplayTable from '../interfaces/IDisplayTable';
 import OracleTableId from "../OracleTableId";
 import { ResultColumn, RollColumn } from "./TableColumn";

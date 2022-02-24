@@ -6,7 +6,7 @@ import Source from "../../general/Source";
 import IOracleCategoryDisplay from "./IOracleCategoryDisplay";
 import IOracleCategoryInfoData from "./IOracleCategoryData";
 
-export default interface IOracleCategoryInfo extends Omit<IOracleCategoryInfoData, "Requires" | "Categories"> {
+export default interface IOracleCategoryInfo extends Omit<IOracleCategoryInfoData, "Requires" | "Categories" | "Usage" | "Oracles"> {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;

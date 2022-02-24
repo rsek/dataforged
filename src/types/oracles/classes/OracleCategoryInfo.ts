@@ -1,24 +1,21 @@
-import t from 'ts-runtime/lib';
 
-import IOracleData from "../interfaces/IOracleData";
-import IOracle from "../interfaces/IOracle";
 
 import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId";
 
 import OracleInfo from "./OracleInfo";
 import OracleUsage from "./OracleUsage";
-import { isOracleUsage, isOracles, isOracleCategories } from "../../typeguards";
 import Source from "../../general/Source";
 import buildOracleId from "../../../utilities/buildOracleId";
 import _ from "lodash";
-import { IHasId } from "../../general/Id";
 import OracleCategoryDisplay from "./OracleCategoryDisplay";
 import IOracleCategoryInfo from "../interfaces/IOracleCategoryInfo";
 import IOracleCategoryData from '../interfaces/IOracleCategoryData';
-import propagateObject from '../../utils/propagateObject';
+import propagateObject from '../../../utilities/propagateObject';
+import IOracleInfoData from '../interfaces/IOracleInfoData';
+import buildLog from '../../../utilities/buildLog';
 
 
-export default class OracleCategoryInfo implements IOracleCategoryInfo, IOracle {
+export default class OracleCategoryInfo implements IOracleCategoryInfo {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;
@@ -33,35 +30,41 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo, IOracle 
   constructor(
     json: IOracleCategoryData,
     category?: OracleCategoryJaggedId | undefined,
-    ...ancestorsJson: IOracleData[]
+    ...ancestorsJson: (IOracleInfoData | IOracleCategoryData)[]
   ) {
+    // if (!is<IOracleCategoryData>(json)) {
+    //   buildLog(this.constructor, "Json does not conform to type!");
+    //   throw new Error();
+    // }
+
+
     this.$id = buildOracleId(json, ...ancestorsJson) as OracleCategoryId;
-    console.info(`[OracleCategory.constructor] Building ${this.$id}...`);
+    buildLog(this.constructor, `Building ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);
     this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
     this.Category = category ?? undefined;
     if (json.Usage) {
-      this.Usage = isOracleUsage(json.Usage) ? new OracleUsage(json.Usage) : undefined;
+      this.Usage = new OracleUsage(json.Usage);
     }
     if (json.Oracles) {
-      this.Oracles = isOracles(json.Oracles) ? json.Oracles.map(oracleInfo => {
+      this.Oracles = json.Oracles.map(oracleInfo => {
         if (this.Usage) {
           propagateObject(this.Usage, "Usage", oracleInfo);
         }
         return new OracleInfo(oracleInfo, this.$id, undefined, json, ...ancestorsJson)
-      }) : undefined;
+      });
     }
     if (json.Categories) {
-      this.Categories = isOracleCategories(json.Categories) ? json.Categories.map(
+      this.Categories = json.Categories.map(
         oracleCat => {
           if (this.Usage) {
             propagateObject(this.Usage, "Usage", oracleCat);
           }
           return new OracleCategoryInfo(oracleCat, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson)
         }
-      ) : undefined;
+      );
     }
   }
 }

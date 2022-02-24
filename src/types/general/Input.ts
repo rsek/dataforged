@@ -1,4 +1,5 @@
 import t from 'ts-runtime/lib';
+import { is } from 'typescript-is';
 
 import { ConditionMeterType } from "./ConditionMeter";
 import { IHasId, IWillHaveId } from "./Id";
@@ -44,33 +45,6 @@ export class NumberInput implements INumberInput, IHasId {
   }
 }
 
-export function isTextInput(json: IInput | undefined): json is ITextInput {
-  return json?.["Input Type"] == "Text";
-};
-
-export function isNumberInput(json: IInput | undefined): json is INumberInput {
-  return json?.["Input Type"] == "Number";
-};
-
-export function isSelectInput(json: IInput | undefined): json is ISelectInput {
-  return json?.["Input Type"] == "Select";
-};
-
-export function isStatOption(json: ISelectInputOption | undefined): json is ISelectInputStatOption {
-  if (json && Object.keys(json).includes("Stat")) { return true; }
-  return false;
-};
-
-export function isMeterOption(json: ISelectInputOption | undefined): json is ISelectInputMeterOption {
-  if (json && Object.keys(json).includes("Condition Meter")) { return true; }
-  return false;
-};
-
-export function isCustomOption(json: ISelectInputOption | undefined): json is ISelectInputCustomOption {
-  if (json && Object.keys(json).includes("Custom value")) { return true; }
-  return false;
-};
-
 export interface ITextInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Text;
@@ -107,14 +81,14 @@ export class SelectInput implements ISelectInput, IHasId {
     this["Input Type"] = json["Input Type"];
     this.Options = json.Options.map(optionJson => {
       let option: AnyInputOption;
-      if (isStatOption(optionJson)) {
+      if (is<ISelectInputStatOption>(optionJson)) {
         option = new AssetSelectInputStatOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
       }
-      else if (isMeterOption(optionJson)) {
+      else if (is<ISelectInputMeterOption>(optionJson)) {
         option = new SelectInputMeterOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
 
       }
-      else if (isCustomOption(optionJson)) {
+      else if (is<ISelectInputCustomOption>(optionJson)) {
         option = new SelectInputCustomOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
       }
       else { throw new Error("Unable to construct select input options - check the data!"); }

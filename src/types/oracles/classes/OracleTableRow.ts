@@ -5,18 +5,17 @@ import IMultipleRolls from "../interfaces/IMultipleRolls";
 import OracleTableId from "../OracleTableId";
 import OracleTableRowId from "../OracleTableRowId";
 import _ from "lodash";
-import IGameObjectData from "../../gameobjects/IGameObjectBase";
 import Suggestions from "../../general/Suggestions";
 import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
 import IOracleTableRow from '../interfaces/IOracleTableRow';
 import IRowData from '../interfaces/IRowData';
 import GameObject from '../../gameobjects/GameObject';
-import IAttribute from '../../gameobjects/IAttribute';
 import GameObjectData from '../../gameobjects/GameObjectData';
 import Attributes from '../../general/Attributes';
-import ISuggestions from '../../general/interfaces/ISuggestions';
 import ISuggestionsData from '../../general/interfaces/ISuggestionsData';
+import { is } from 'typescript-is';
+import badJsonError from '../../../utilities/buildError';
 
 /**
  *
@@ -49,37 +48,50 @@ export default class OracleTableRow implements IOracleTableRow {
   Suggestions?: Suggestions | undefined;
   Attributes?: Attributes | undefined;
   Template?: TemplateString | undefined;
-  constructor(parentId: string, floor: number, ceiling: number, ...rowContents: (string | object)[]) {
-    if (rowContents.length == 0) { throw new Error("Row JSON has no contents. Ensure that it isn't missing a template."); }
-    this.Floor = floor;
-    this.Ceiling = ceiling;
+  constructor(parentId: string, rowData: IRowData | IOracleTableRow) {
+    // if (!is<IRowData | IOracleTableRow>(rowData)) {
+    //   badJsonError(this.constructor, rowData);
+    // }
+    this.Floor = Array.isArray(rowData) ? rowData[0] : rowData.Floor;
+    this.Ceiling = Array.isArray(rowData) ? rowData[1] : rowData.Ceiling;
     const rangeString = this.Floor == this.Ceiling ? this.Ceiling.toString() : `${this.Floor}-${this.Ceiling}`;
     this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
 
-    this.assignString = this.assignString.bind(this);
-
-    const gameObjects: GameObject[] = [];
-    rowContents = new Array(...rowContents);
+    let rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
 
     rowContents.forEach(item => {
       switch (typeof item) {
         case "string":
-          this.assignString(item);
+          let string = item as string;
+          if (is<UrlString>(string)) {
+            this.Image = string as UrlString;
+          }
+          else if (!this.Result || this.Result?.length == 0) {
+            this.Result = string;
+          }
+          else if (!this.Summary || this.Summary?.length == 0) {
+            this.Summary = string;
+          }
+          else { throw new Error(`Unassignable string: ${string}`); }
           break;
         case "object":
           _.forEach(item, (value, key) => {
             switch (key as keyof OracleTableRow) {
               case "Subtable": {
-
-                if (Array.isArray(value[0])) {
-                  this.Subtable = (value as IRowData[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", ...rowData));
+                if (is<IRowData[]>(value)) {
+                  this.Subtable = (value as IRowData[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", rowData));
                 }
-                else {
-                  this.Subtable = (value as IOracleTableRow[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", rowData.Floor, rowData.Ceiling, _.omit(rowData, "Floor", "Ceiling")));
+                else if (is<IOracleTableRow[]>(value)) {
+                  this.Subtable = (value as IOracleTableRow[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", rowData));
+                } else {
+                  badJsonError(this, value);
                 }
                 break;
               }
               case "Oracle rolls": {
+                if (!is<OracleTableId[]>(value)) {
+                  badJsonError(this, value);
+                }
                 this["Oracle rolls"] = value as OracleTableId[];
                 break;
               }
@@ -90,10 +102,6 @@ export default class OracleTableRow implements IOracleTableRow {
               case "Game objects": {
                 if (!this['Game objects']) {
                   this['Game objects'] = [];
-                  // why isn't the stuff below popuating???
-                }
-                if (!Array.isArray(value)) {
-                  throw new Error(`Game objects key is not an array ${JSON.stringify(value)}`);
                 }
                 const gameObjData = value as GameObjectData[];
                 gameObjData.forEach(item => this['Game objects']?.push(new GameObject(item)));
@@ -104,22 +112,28 @@ export default class OracleTableRow implements IOracleTableRow {
                 break;
               }
               case "Result": {
+                if (typeof value != "string") {
+                  badJsonError(this, value)
+                }
                 if (!this.Result || this.Result.length == 0) { this.Result = value as string; }
                 break;
               }
               case "Summary": {
+                if (typeof value != "string") {
+                  badJsonError(this, value)
+                }
                 if (!this.Summary || this.Summary.length == 0) { this.Summary = value as string; }
                 break;
               }
               case "Attributes": {
-
-                // if ((value as Attribute[]).some(item => !isAttribute(item))) {
-                //   throw new Error(`Attributes array is invalid: ${JSON.stringify(value)}`);
-                // }
-                // this.Attributes = value as Attribute[];
+                // TODO: implement attributes
+                console.info(`[${OracleTableRow.constructor.name}] Attributes key NYI`)
                 break;
               }
               case "Template": {
+                if (!is<TemplateString>(value)) {
+                  badJsonError(this, value);
+                }
                 this.Template = value as TemplateString;
                 break;
               }
@@ -127,14 +141,12 @@ export default class OracleTableRow implements IOracleTableRow {
                 break;
             }
           });
-
           break;
         default:
           throw new Error(`Row ${typeof item} not recognized: ${JSON.stringify(item)}`);
       }
     });
     if (this.Suggestions && Object.keys(this.Suggestions).length == 0) {
-      // console.log("Suggestions:", this.Suggestions);
       delete this.Suggestions;
     }
     if (!this.Result || this.Result.length == 0) {
@@ -142,16 +154,4 @@ export default class OracleTableRow implements IOracleTableRow {
     }
   }
 
-  assignString(string: string) {
-    if (string.startsWith("http")) {
-      this.Image = string as UrlString;
-    }
-    else if (!this.Result || this.Result?.length == 0) {
-      this.Result = string;
-    }
-    else if (!this.Summary || this.Summary?.length == 0) {
-      this.Summary = string;
-    }
-    else { throw new Error(`Unassignable string: ${string}`); }
-  }
 }

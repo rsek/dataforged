@@ -1,6 +1,6 @@
 import t from 'ts-runtime/lib';
 
-import OracleCategoryInfo from "./OracleCategory";
+import OracleCategoryInfo from "./OracleCategoryInfo";
 import OracleCategoryId from "../OracleCategoryId";
 import OracleInfo from "./OracleInfo";
 

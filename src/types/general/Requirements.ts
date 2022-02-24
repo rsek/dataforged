@@ -9,7 +9,7 @@ export default class Requirements implements IRequirements {
   Attributes: IAttributeOptions[];
   constructor(json: IRequirementsData) {
     if (!json.Attributes) {
-      throw new Error(`[Requirements.constructor] Missing attribute data! ${JSON.stringify(json)}`);
+      throw new Error(`[Requirements] Missing attribute data! ${JSON.stringify(json)}`);
     }
     // TODO: typecheck
     this.Attributes = _.map(json.Attributes, (value, key) => {

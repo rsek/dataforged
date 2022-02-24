@@ -1,4 +1,4 @@
-import Display from "../../general/Display";
+import IDisplay from "../../general/Display";
 
 
-export default interface IOracleCategoryDisplay extends Display { }
+export default interface IOracleCategoryDisplay extends IDisplay { }

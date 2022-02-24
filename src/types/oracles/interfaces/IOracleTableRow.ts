@@ -3,12 +3,12 @@ import OracleTableId from "../OracleTableId";
 import OracleTableRowId from "../OracleTableRowId";
 import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
-import GameObject from "../../gameobjects/GameObject";
 import IAttribute from "../../gameobjects/IAttribute";
 import ISuggestions from "../../general/interfaces/ISuggestions";
+import IGameObject from "../../gameobjects/IGameObject";
 
 export default interface IOracleTableRow {
-  $id: OracleTableRowId;
+  $id?: OracleTableRowId | undefined;
   Floor: number;
   Ceiling: number;
   Result: string;
@@ -16,7 +16,7 @@ export default interface IOracleTableRow {
   Image?: UrlString | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   Subtable?: IOracleTableRow[] | undefined;
-  "Game objects"?: GameObject[] | undefined;
+  "Game objects"?: IGameObject[] | undefined;
   "Multiple rolls"?: IMultipleRolls | undefined;
   Suggestions?: ISuggestions | undefined;
   Attributes?: IAttribute[] | undefined;

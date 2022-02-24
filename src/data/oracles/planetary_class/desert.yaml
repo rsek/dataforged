@@ -1,5 +1,5 @@
 Desert World:
-  _templateInfo: *template.info:Planet
+  _templateCategory: *template.category:Planet
   _templateVars:
     Planetary Class: Desert
   Image: "https://i.imgur.com/YLNEHp9.png"
@@ -42,7 +42,7 @@ Desert World:
       Oracles:
         - _templateInfo: *template.info:Planet.Settlements.Terminus
           _templateTable:
-            content: *template.content:Planet.Settlements.Terminus
+            content: *template.content:Planet.Settlements
             rolls:
               - [1, 50] # None
               - [51, 60] # Orbital settlement
@@ -51,7 +51,7 @@ Desert World:
               - [93, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Outlands
           _templateTable:
-            content: *template.content:Planet.Settlements.Outlands
+            content: *template.content:Planet.Settlements
             rolls:
               - [1, 75] # None
               - [76, 83] # Orbital settlement
@@ -60,7 +60,7 @@ Desert World:
               - [99, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Expanse
           _templateTable:
-            content: *template.content:Planet.Settlements.Expanse
+            content: *template.content:Planet.Settlements
             rolls:
               - [1, 90] # None
               - [91, 96] # Orbital settlement
@@ -80,7 +80,7 @@ Desert World:
           - Vast plateaus
           - Vibrant terrain colors
           - *result:Descriptor+Focus
-          - *result:Vault.Orbital
+          - *result:PrecursorVault.Orbital
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
@@ -99,7 +99,7 @@ Desert World:
           - Violent electrical storms
           - Windborne metallic sand
           - *result:Descriptor+Focus
-          - *result:Vault.Planetside
+          - *result:PrecursorVault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
         content: *template.content:Planet.Life

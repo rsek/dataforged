@@ -8,9 +8,10 @@ import IOracleTableRow from "./IOracleTableRow";
 import IRowData, { IRowRollData } from "./IRowData";
 import IOracleUsageData from "./IOracleUsageData";
 import ITemplateTable from "./ITemplateTable";
+import ITemplateInfoBase from "./ITemplateInfoBase";
+import ITemplateInfo from "./ITemplateInfo";
 
-
-export default interface IOracleInfoData extends IOracleData {
+export default interface IOracleInfoData extends IOracleData, ITemplateInfoBase {
 
   $id?: OracleTableId;
   Category: OracleCategoryId;
@@ -22,7 +23,8 @@ export default interface IOracleInfoData extends IOracleData {
   Display?: ITableDisplay | undefined;
   Oracles?: IOracleInfoData[] | undefined;
   Table?: IRowData[] | IRowRollData[] | IOracleTableRow[] | undefined;
-  _templateTable?: ITemplateTable[] | undefined;
+  _templateInfo?: ITemplateInfo | undefined;
+  _templateTable?: ITemplateTable | undefined;
   _childOf?: OracleCategoryId | undefined;
   _parentOf?: string[] | undefined;
 }

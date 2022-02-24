@@ -1,8 +1,8 @@
 Planet: &template:Planet
   _isTemplate: true
-  _templateVars:
-    - Planetary Class
   _templateCategory: &template.category:Planet
+    _templateVars:
+      Planetary Class: ${{Planetary Class}}
     _childOf: Planets
     Name: ${{Planetary Class}}
     Display:
@@ -54,9 +54,9 @@ Planet: &template:Planet
               - [Orbital settlement, *obj:Settlement.Orbital]
               - [Planetside settlement, *obj:Settlement.Planetside]
               - [Multiple settlements, &Multiple_settlements
-                  Game objects: [
+                 { Game objects: [
                     *obj:Settlement.PlanetAny,
-                    *obj:Settlement.PlanetAny]]
+                    *obj:Settlement.PlanetAny]}]
               - [Settlements in conflict, *Multiple_settlements]
         - _templateInfo: &template.info:Planet.Settlements.Outlands
             Name: Outlands
@@ -79,7 +79,7 @@ Planet: &template:Planet
         Usage:
           Max rolls: 2
       _templateTable:
-        rolls:
+        rolls: &template.rolls:Planet.ObservedFromSpace
           - [1, 11]
           - [12, 22]
           - [23, 33]
@@ -99,7 +99,7 @@ Planet: &template:Planet
         Usage:
           Max rolls: 2
       _templateTable:
-        rolls:
+        rolls: &template.rolls:Planet.PlanetsideFeature
           - [1, 7]
           - [8, 14]
           - [15, 21]
@@ -123,7 +123,7 @@ Planet: &template:Planet
         Content:
           Part of speech: [adjective]
       _templateTable:
-        rolls:
+        content: &template.content:Planet.Life
           - [None, *attr:Life.None]
           - [Extinct, *attr:Life.Extinct]
           - [Scarce, *attr:Life.Scarce]

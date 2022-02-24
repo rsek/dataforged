@@ -1,5 +1,6 @@
 import t from 'ts-runtime/lib';
-import { Input, IInput, isNumberInput, NumberInput, isSelectInput, SelectInput, isTextInput, TextInput } from '../general/Input';
+import { is } from 'typescript-is';
+import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
 import Move from '../moves/Move';
 import AlterMove from './AlterMove';
 import IAssetAbility from './interfaces/IAssetAbility';
@@ -10,7 +11,7 @@ export default class AssetAbility implements IAssetAbility {
   $id: string;
   Text: string;
   Move?: Move | undefined;
-  Inputs?: Input[] | undefined;
+  Inputs?: IInput[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: Partial<IAssetData> | undefined;
   Enabled: boolean;
@@ -21,17 +22,17 @@ export default class AssetAbility implements IAssetAbility {
     if (json.Inputs) {
       this.Inputs = (json.Inputs as IInput[]).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
-        if (isNumberInput(inputJson)) {
+        if (is<INumberInput>(inputJson)) {
           return new NumberInput(inputJson, idString);
         }
-        else if (isSelectInput(inputJson)) {
+        else if (is<ISelectInput>(inputJson)) {
           return new SelectInput(inputJson, idString);
         }
-        else if (isTextInput(inputJson)) {
+        else if (is<ITextInput>(inputJson)) {
           return new TextInput(inputJson, idString);
         }
         else { new Error("Unable to assign input data to a type - make sure it's correct."); }
-      }) as Input[];
+      }) as IInput[];
     }
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
       const moveId = alterMove.Move ?? "Moves / *";

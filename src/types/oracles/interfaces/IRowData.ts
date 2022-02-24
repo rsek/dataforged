@@ -1,46 +1,25 @@
+import AttributeHash from "../../gameobjects/AttributeHash";
+import GameObjectData from "../../gameobjects/GameObjectData";
+import ISuggestionsData from "../../general/interfaces/ISuggestionsData";
+import UrlString from "../../general/UrlString";
+import TemplateString from "../TemplateString";
+import IMultipleRolls from "./IMultipleRolls";
+import IOracleTableRow from "./IOracleTableRow";
 
-type IRowData = [number, number, ...(object | string)[]];
-export default IRowData;
+
 export type IRowRollData = [number, number];
-export type IRowContentData = (object | string)[];
+export type IRowContentItem = object | string;
+export type IRowContentData = IRowContentItem[];
+export type IRowData = [...IRowRollData, ...IRowContentData];
+export default IRowData;
 
-export function isRowRollData(row: any | undefined): row is IRowData | IRowRollData {
-  if (Array.isArray(row) && row.length >= 2) {
-    if (typeof row[0] == "number" && typeof row[1] == "number") {
-      return true;
-    }
-  }
-  return false;
-}
-
-export function isRowContentData(row: any | undefined): row is IRowData | IRowContentData {
-  if (Array.isArray(row)) {
-    if (row.some(item => typeof item == "object" || typeof item == "string")) {
-      return true;
-    }
-  }
-  return false;
-}
-
-export function isRowData(row: any | undefined): row is IRowData | IRowContentData | IRowRollData {
-  if (isRowContentData(row) || isRowRollData(row)) {
-    return true;
-  }
-  return false;
-}
-
-export function extractRowRolls(row: IRowData | IRowRollData): IRowRollData {
-  if (!isRowRollData(row)) {
-    throw new Error(`Received an invalid row array ${JSON.stringify(row)}`);
-  }
-  let output = row.filter(item => typeof item == "number").slice(0, 1);
-  return output as IRowRollData;
-}
-
-export function extractRowContent(row: IRowData | IRowContentData): IRowContentData {
-  if (!isRowContentData(row)) {
-    throw new Error(`Received an invalid row array ${JSON.stringify(row)}`);
-  }
-  let output = row.filter(item => typeof item != "number");
-  return output as IRowContentData;
-}
+// interface IRowDataObject {
+//   Result?: IOracleTableRow["Result"] | undefined;
+//   Summary?: IOracleTableRow["Summary"] | undefined;
+//   Subtable?: IRowData[] | undefined;
+//   // "Game objects"?: GameObjectData[] | undefined;
+//   "Multiple rolls"?: IMultipleRolls | undefined;
+//   "Suggestions"?: ISuggestionsData | undefined;
+//   // Attributes?: AttributeHash | undefined;
+//   // Template?: TemplateString | undefined;
+// }

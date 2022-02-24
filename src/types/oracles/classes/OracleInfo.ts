@@ -1,6 +1,7 @@
 import t from 'ts-runtime/lib';
 
-import _ from "lodash";
+import { is } from "typescript-is";
+import _, { template } from "lodash";
 import Source from "../../general/Source";
 import IOracleData from "../interfaces/IOracleData";
 import IOracle from "../interfaces/IOracle";
@@ -9,16 +10,18 @@ import OracleCategoryId from "../OracleCategoryId";
 import OracleTableId from "../OracleTableId";
 import OracleTableRow from "./OracleTableRow";
 import OracleUsage from "./OracleUsage";
-import { isOracles, isOracleTable, isOracleUsage } from "../../typeguards";
 import buildOracleId from "../../../utilities/buildOracleId";
 import OracleInfoDisplay from "./OracleInfoDisplay";
 import ITableDisplay from "../interfaces/IOracleDisplay";
 import IOracleInfo from '../interfaces/IOracleInfo';
 import IOracleInfoData from '../interfaces/IOracleInfoData';
 import IRowData, { IRowRollData } from '../interfaces/IRowData';
-import propagateObject from '../../utils/propagateObject';
 import IAttributeOptions from '../../gameobjects/IAttributeOptions';
 import Requirements from '../../general/Requirements';
+import IOracleUsageData from '../interfaces/IOracleUsageData';
+import buildTemplateTable from '../../../utilities/buildTemplateTable';
+import propagateObject from '../../../utilities/propagateObject';
+import IOracleCategoryData from '../interfaces/IOracleCategoryData';
 
 
 /**
@@ -27,7 +30,7 @@ import Requirements from '../../general/Requirements';
  * @class
 
  */
-export default class OracleInfo implements IOracleInfo, IOracle {
+export default class OracleInfo implements IOracleInfo {
   $id: OracleTableId;
   "Name": string;
   Aliases?: string[] | undefined;
@@ -44,12 +47,15 @@ export default class OracleInfo implements IOracleInfo, IOracle {
     json: IOracleInfoData,
     category: OracleCategoryId,
     memberOf?: OracleTableId,
-    ...ancestorsJson: IOracleData[]
+    ...ancestorsJson: (IOracleInfoData | IOracleCategoryData)[]
     // ancestors should be in ascending order
   ) {
+    // if (!is<IOracleInfoData>(json)) {
+    //   throw new Error("json does not conform to IOracleInfoData!");
+    // }
     this.$id = buildOracleId(json, ...ancestorsJson) as OracleTableId;
     console.info(
-      `[OracleInfo.constructor] Building ${json.Oracles ? "group " : json._template ? "from template " : ""}${this.$id}...`);
+      `[OracleInfo] Building ${json.Oracles ? "group " : json._templateTable ? "from template " : ""}${this.$id}...`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this["Member of"] = memberOf ?? undefined;
@@ -59,34 +65,20 @@ export default class OracleInfo implements IOracleInfo, IOracle {
     this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
     this.Display = new OracleInfoDisplay((json.Display ?? {}) as Partial<ITableDisplay>, this.Name, this.$id);
     if (json.Usage) {
-      this.Usage = isOracleUsage(json.Usage) ? new OracleUsage(json.Usage) : undefined;
+      this.Usage = new OracleUsage(json.Usage);
     }
     if (json.Content) {
       this.Content = new OracleContent(json.Content);
     }
-    if (json.Table && isOracleTable(json.Table as IRowData[])) {
-      let tableData = json.Table as IRowData[];
-      if (json._template) {
-        const newRanges = tableData.reverse() as IRowRollData[];
-        // reverses both arrays because SF's convention is for the bottom of tables to match (see planetside peril/opportunity for an example)
-        const templateData = json._template.map(row => {
-          row[0] = 0;
-          row[1] = 0;
-          return row;
-        }).reverse();
-        newRanges.forEach((newRow, index) => {
-          const templateRow = templateData[index];
-          if (!templateRow) {
-            throw new Error("Ran out of rows when templating table.");
-          }
-          templateRow[0] = newRow[0];
-          templateRow[1] = newRow[1];
-        });
-        // tableData = templateData.filter(row => row[0] != 0 && row[1] != 0).reverse();
-        tableData = templateData.reverse();
-      }
+    let tableData
+    if (json._templateTable) {
+      tableData = buildTemplateTable(json._templateTable);
+    } else {
+      tableData = json.Table as IRowData[];
+    }
+    if (tableData) {
       this.Table = tableData.map(row => {
-        let newRow = new OracleTableRow(this.$id, ...row);
+        let newRow = new OracleTableRow(this.$id, row);
         if (this.Usage?.Requires?.Attributes && newRow["Game objects"]) {
           newRow["Game objects"].forEach(gameObject => {
             let attrToMerge = { Attributes: this.Usage?.Requires?.Attributes as IAttributeOptions[] };
@@ -100,7 +92,7 @@ export default class OracleInfo implements IOracleInfo, IOracle {
       });
     }
     if (json.Oracles) {
-      this.Oracles = isOracles(json.Oracles) ? json.Oracles.map(oracleInfo => {
+      this.Oracles = json.Oracles.map(oracleInfo => {
         if (this.Usage) {
           propagateObject(this.Usage, "Usage", oracleInfo);
         }
@@ -108,7 +100,7 @@ export default class OracleInfo implements IOracleInfo, IOracle {
           propagateObject(this.Content, "Content", oracleInfo);
         }
         return new OracleInfo(oracleInfo, this.Category, this.$id, json, ...ancestorsJson)
-      }) : undefined;
+      });
     }
   }
 }

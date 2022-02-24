@@ -1,11 +1,11 @@
 import AssetId from "../../assets/AssetId";
-import GameObject from "../../gameobjects/GameObject";
+import IGameObject from "../../gameobjects/IGameObject";
 import MoveId from "../../moves/MoveId";
 import OracleTableId from "../../oracles/OracleTableId";
 import ISuggestionsData from "./ISuggestionsData";
 
 export default interface ISuggestions extends Omit<ISuggestionsData, "Game objects"> {
-  "Game objects"?: GameObject[] | undefined;
+  "Game objects"?: IGameObject[] | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   "Moves"?: MoveId[] | undefined;
   "Assets"?: AssetId[] | undefined;
