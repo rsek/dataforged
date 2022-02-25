@@ -1,4 +1,4 @@
-import badJsonError from "../../utilities/buildError";
+import badJsonError from "../../utilities/badJsonError";
 import GameObjectData from "./GameObjectData";
 
 export type AttributeKey = keyof Omit<GameObjectData, "Object type">;

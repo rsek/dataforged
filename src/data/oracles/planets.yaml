@@ -91,7 +91,8 @@ Planets:
           Usage:
             Requires: *attr:Life.Lifebearing
           Table: &table:Planets.Peril
-            - [1, 3, Corrupted or mutated lifeform, Suggestions: [*obj:Creature, *obj:LocationTheme.Chaotic]]
+            - [1, 3, Corrupted or mutated lifeform, Suggestions: [*obj:Creature]]
+            # TODO: suggest chaotic theme?
             - [4, 6, Signs of a lifeform's power or cunning, Suggestions: [*obj:Creature]]
             - [7, 9, Hazardous plant life or malignant spores]
             - [10, 12, Lifeform hunts for prey, Suggestions: [*obj:Creature]]
@@ -133,14 +134,14 @@ Planets:
           _templateTable:
             content: *table:Planets.Peril
             rolls:
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
               - [1, 3]
               - [4, 7]
               - [8, 11]
@@ -227,11 +228,11 @@ Planets:
           _templateTable:
             content: *table:Planets.Opportunity
             rolls:
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
-              - [0, 0]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
               - [1, 5]
               - [6, 10]
               - [11, 15]

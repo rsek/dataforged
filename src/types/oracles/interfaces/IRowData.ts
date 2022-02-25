@@ -7,7 +7,7 @@ import IMultipleRolls from "./IMultipleRolls";
 import IOracleTableRow from "./IOracleTableRow";
 
 
-export type IRowRollData = [number, number];
+export type IRowRollData = [number | null, number | null];
 export type IRowContentItem = object | string;
 export type IRowContentData = IRowContentItem[];
 export type IRowData = [...IRowRollData, ...IRowContentData];

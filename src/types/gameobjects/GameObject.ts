@@ -2,7 +2,7 @@ import _ from "lodash";
 import Requirements from "../general/Requirements";
 import { GameObjectType } from "./IGameObjectBase";
 import GameObjectData from "./GameObjectData";
-import badJsonError from "../../utilities/buildError";
+import badJsonError from "../../utilities/badJsonError";
 import { is } from "typescript-is";
 import IGameObject from "./IGameObject";
 import IRequirementsData from "../general/interfaces/IRequirementsData";
@@ -14,7 +14,7 @@ export default class GameObject implements IGameObject {
   "Inherit rolls"?: boolean | undefined;
   constructor(json: GameObjectData) {
     if (!is<GameObjectType>(json["Object type"])) {
-      badJsonError(this, json, "Invalid object type");
+      throw badJsonError(this.constructor, json, "Invalid object type");
     }
     this["Object type"] = json["Object type"];
     // this["Inherit rolls"] = json["Inherit rolls"] ?? false;

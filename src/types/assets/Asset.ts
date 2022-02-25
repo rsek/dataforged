@@ -12,6 +12,7 @@ import IAssetData from './interfaces/IAssetData';
 import { is } from 'typescript-is';
 import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
 import buildLog from '../../utilities/buildLog';
+import badJsonError from '../../utilities/badJsonError';
 
 export default class Asset implements IAsset {
   $id: AssetId;
@@ -34,7 +35,7 @@ export default class Asset implements IAsset {
 
     if (json.Inputs) {
       if (!is<IInput[]>(json.Inputs)) {
-        throw new Error("[Asset] json.Inputs does not conform to IInput[]")
+        throw badJsonError(this.constructor, json.Inputs, "excpected IInput[]")
       }
       this.Inputs = (json.Inputs as IInput[]).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
@@ -47,7 +48,7 @@ export default class Asset implements IAsset {
         else if (is<ITextInput>(inputJson)) {
           return new TextInput(inputJson, idString);
         }
-        else { new Error("Unable to assign input data to a type - make sure it's correct."); }
+        else { badJsonError(this.constructor, inputJson, "Unrecognized input"); }
       }) as IInput[];
     }
     this.Requirement = json.Requirement;

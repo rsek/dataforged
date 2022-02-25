@@ -6,11 +6,12 @@ import TemplateString from "../TemplateString";
 import IAttributeChoices from "../../gameobjects/IAttributeChoices";
 import ISuggestions from "../../general/interfaces/ISuggestions";
 import IGameObject from "../../gameobjects/IGameObject";
+import { IRowRollData } from "./IRowData";
 
 export default interface IOracleTableRow {
   $id?: OracleTableRowId | undefined;
-  Floor: number;
-  Ceiling: number;
+  Floor: IRowRollData[0];
+  Ceiling: IRowRollData[1];
   Result: string;
   Summary?: string | undefined;
   Image?: UrlString | undefined;

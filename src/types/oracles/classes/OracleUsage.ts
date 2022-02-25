@@ -9,7 +9,6 @@ import IAttributeChoices from '../../gameobjects/IAttributeChoices';
 
 export default class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;
-  // "Select table by"?: string | undefined;
   "Min rolls"?: number | undefined;
   "Max rolls"?: number | undefined;
   Repeatable?: boolean | undefined;
@@ -24,10 +23,10 @@ export default class OracleUsage implements IOracleUsage {
     this["Max rolls"] = json["Max rolls"];
     this["Min rolls"] = json["Min rolls"];
     this.Repeatable = json.Repeatable;
-
-    // if (json.Suggestions) { console.log("Suggestions:", json.Suggestions); }
+    if (json.Suggestions) {
+      this.Suggestions = new Suggestions(json.Suggestions);
+    }
     if (json.Requires) {
-      console.log("[OracleUsage] Has requirements", json.Requires);
       this.Requires = new Requirements(json.Requires);
     }
     // this["Sets attributes"] = json["Sets attributes"];

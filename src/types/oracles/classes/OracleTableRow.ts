@@ -9,13 +9,12 @@ import Suggestions from "../../general/Suggestions";
 import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
 import IOracleTableRow from '../interfaces/IOracleTableRow';
-import IRowData from '../interfaces/IRowData';
+import IRowData, { IRowRollData } from '../interfaces/IRowData';
 import GameObject from '../../gameobjects/GameObject';
 import GameObjectData from '../../gameobjects/GameObjectData';
-import AttributeRequirements from '../../general/Attributes';
 import ISuggestionsData from '../../general/interfaces/ISuggestionsData';
 import { is } from 'typescript-is';
-import badJsonError from '../../../utilities/buildError';
+import badJsonError from '../../../utilities/badJsonError';
 import AttributeHash from '../../gameobjects/AttributeHash';
 import AttributeSetter from '../../gameobjects/AttributeSetter';
 
@@ -38,8 +37,8 @@ import AttributeSetter from '../../gameobjects/AttributeSetter';
 
 export default class OracleTableRow implements IOracleTableRow {
   $id: OracleTableRowId;
-  Floor: number;
-  Ceiling: number;
+  Floor: IRowRollData[0];
+  Ceiling: IRowRollData[1];
   Result!: string;
   Summary?: string | undefined;
   Image?: UrlString | undefined;
@@ -51,12 +50,19 @@ export default class OracleTableRow implements IOracleTableRow {
   Attributes?: AttributeSetter | undefined;
   Template?: TemplateString | undefined;
   constructor(parentId: string, rowData: IRowData | IOracleTableRow) {
-    // if (!is<IRowData | IOracleTableRow>(rowData)) {
-    //   badJsonError(this.constructor, rowData);
-    // }
+
     this.Floor = Array.isArray(rowData) ? rowData[0] : rowData.Floor;
     this.Ceiling = Array.isArray(rowData) ? rowData[1] : rowData.Ceiling;
-    const rangeString = this.Floor == this.Ceiling ? this.Ceiling.toString() : `${this.Floor}-${this.Ceiling}`;
+    if ((typeof this.Floor) != (typeof this.Ceiling)) {
+      throw badJsonError(this.constructor, rowData, "Floor and Ceiling must have the same type (either number or null)");
+    }
+    let rangeString: string;
+
+    if (this.Floor == null && this.Ceiling == null) {
+      rangeString = "--"
+    } else {
+      rangeString = this.Floor == this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
+    }
     this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
 
     let rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
@@ -74,7 +80,9 @@ export default class OracleTableRow implements IOracleTableRow {
           else if (!this.Summary || this.Summary?.length == 0) {
             this.Summary = string;
           }
-          else { throw new Error(`Unassignable string: ${string}`); }
+          else {
+            throw badJsonError(this.constructor, string, "Unable to infer string assignment");
+          }
           break;
         case "object":
           _.forEach(item, (value, key) => {
@@ -86,13 +94,13 @@ export default class OracleTableRow implements IOracleTableRow {
                 else if (is<IOracleTableRow[]>(value)) {
                   this.Subtable = (value as IOracleTableRow[]).map(rowData => new OracleTableRow(this.$id + " / Subtable", rowData));
                 } else {
-                  badJsonError(this, value);
+                  throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
                 }
                 break;
               }
               case "Oracle rolls": {
                 if (!is<OracleTableId[]>(value)) {
-                  badJsonError(this, value);
+                  throw badJsonError(this.constructor, value, "expected OracleTableId[]");
                 }
                 this["Oracle rolls"] = value as OracleTableId[];
                 break;
@@ -113,12 +121,12 @@ export default class OracleTableRow implements IOracleTableRow {
                 console.log("row has suggestions:", JSON.stringify(rowContents));
                 let newSuggestions;
                 if (Array.isArray(value)) {
+                  console.log("Received a suggestion array, merging...", value);
                   let suggestData = _.cloneDeep(value) as ISuggestionsData[];
                   let suggestItems = suggestData.map(item => new Suggestions(item));
                   newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
                   console.log("merged multiple suggestions", newSuggestions);
                 } else {
-
                   newSuggestions = new Suggestions(value);
                   console.log("single suggestion", newSuggestions);
                 }
@@ -128,19 +136,19 @@ export default class OracleTableRow implements IOracleTableRow {
                 else {
                   this.Suggestions = _.merge({ ...this.Suggestions }, { ...newSuggestions });
                 }
-                console.log("final suggestions object", this.Suggestions);
+                // console.log("final suggestions object", this.Suggestions);
                 break;
               }
               case "Result": {
                 if (typeof value != "string") {
-                  badJsonError(this, value)
+                  throw badJsonError(this.constructor, value, "expected result string")
                 }
                 if (!this.Result || this.Result.length == 0) { this.Result = value as string; }
                 break;
               }
               case "Summary": {
                 if (typeof value != "string") {
-                  badJsonError(this, value)
+                  throw badJsonError(this.constructor, value, "expected summary string")
                 }
                 if (!this.Summary || this.Summary.length == 0) { this.Summary = value as string; }
                 break;
@@ -151,7 +159,7 @@ export default class OracleTableRow implements IOracleTableRow {
               }
               case "Template": {
                 if (!is<TemplateString>(value)) {
-                  badJsonError(this, value);
+                  throw badJsonError(this.constructor, value, "expected TemplateString");
                 }
                 this.Template = value as TemplateString;
                 break;
@@ -162,15 +170,12 @@ export default class OracleTableRow implements IOracleTableRow {
           });
           break;
         default:
-          throw new Error(`Row ${typeof item} not recognized: ${JSON.stringify(item)}`);
+          throw badJsonError(this.constructor, item, "Unable to infer key for object");
           break;
       }
     });
-    if (this.Suggestions && Object.keys(this.Suggestions).length == 0) {
-      delete this.Suggestions;
-    }
     if (!this.Result || this.Result.length == 0) {
-      throw new Error(`Row requires a result! data: ${JSON.stringify(arguments)}`);
+      throw badJsonError(this.constructor, this, "Row doesn't have a result string");
     }
   }
 }

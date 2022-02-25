@@ -1,7 +1,7 @@
 
 import t from 'ts-runtime/lib';
 import { is } from 'typescript-is';
-import badJsonError from '../../../utilities/buildError';
+import badJsonError from '../../../utilities/badJsonError';
 import IMultipleRolls from '../interfaces/IMultipleRolls';
 
 /**
@@ -17,7 +17,7 @@ export default class MultipleRolls implements IMultipleRolls {
   "Make it worse": boolean = false;
   constructor(json: IMultipleRolls) {
     if (!is<IMultipleRolls>(json)) {
-      badJsonError(this, json);
+      throw badJsonError(this.constructor, json);
     }
     this.Amount = json.Amount;
     this["Allow duplicates"] = json["Allow duplicates"] ?? this["Allow duplicates"];
