@@ -23,6 +23,7 @@ import propagateObject from '../../../utilities/propagateObject';
 import IOracleCategoryData from '../interfaces/IOracleCategoryData';
 import buildLog from '../../../utilities/buildLog';
 import buildFromTemplate from '../../../utilities/buildFromTemplate';
+import inferSetsAttributes from '../../../utilities/inferSetsAttributes';
 
 
 /**
@@ -75,7 +76,7 @@ export default class OracleInfo implements IOracleInfo {
     if (jsonClone.Content) {
       this.Content = new OracleContent(jsonClone.Content);
     }
-    let tableData
+    let tableData;
     if (jsonClone._templateTable) {
       tableData = buildTemplateTable(jsonClone._templateTable);
     } else {
@@ -98,6 +99,19 @@ export default class OracleInfo implements IOracleInfo {
         // }
         return new OracleInfo(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson)
       });
+    }
+    if (this.Table) {
+      let attrs = inferSetsAttributes(this.Table);
+      if (attrs.length > 0) {
+        if (!this.Usage) {
+          this.Usage = {};
+        }
+        if (typeof this.Usage['Sets attributes'] == "undefined") {
+          this.Usage['Sets attributes'] = [];
+        }
+        console.log("attrs", attrs);
+        this.Usage['Sets attributes'] = this.Usage['Sets attributes'].concat(...attrs);
+      }
     }
   }
 }
