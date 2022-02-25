@@ -1,6 +1,6 @@
-import IAttributeOptions from "../../gameobjects/IAttributeOptions";
+import IAttributeChoices from "../../gameobjects/IAttributeChoices";
 
 export default interface IRequirements {
-  Attributes: IAttributeOptions[];
+  Attributes: IAttributeChoices[];
 }
 

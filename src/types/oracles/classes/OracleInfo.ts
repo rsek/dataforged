@@ -16,12 +16,13 @@ import ITableDisplay from "../interfaces/IOracleDisplay";
 import IOracleInfo from '../interfaces/IOracleInfo';
 import IOracleInfoData from '../interfaces/IOracleInfoData';
 import IRowData, { IRowRollData } from '../interfaces/IRowData';
-import IAttributeOptions from '../../gameobjects/IAttributeOptions';
 import Requirements from '../../general/Requirements';
 import IOracleUsageData from '../interfaces/IOracleUsageData';
 import buildTemplateTable from '../../../utilities/buildTemplateTable';
 import propagateObject from '../../../utilities/propagateObject';
 import IOracleCategoryData from '../interfaces/IOracleCategoryData';
+import buildLog from '../../../utilities/buildLog';
+import buildFromTemplate from '../../../utilities/buildFromTemplate';
 
 
 /**
@@ -50,56 +51,52 @@ export default class OracleInfo implements IOracleInfo {
     ...ancestorsJson: (IOracleInfoData | IOracleCategoryData)[]
     // ancestors should be in ascending order
   ) {
+    let jsonClone = _.cloneDeep(json);
+    if (jsonClone._templateInfo) {
+      jsonClone = buildFromTemplate<IOracleInfoData>(jsonClone, jsonClone._templateInfo);
+    }
     // if (!is<IOracleInfoData>(json)) {
     //   throw new Error("json does not conform to IOracleInfoData!");
     // }
-    this.$id = buildOracleId(json, ...ancestorsJson) as OracleTableId;
+    this.$id = buildOracleId(jsonClone, ...ancestorsJson) as OracleTableId;
     console.info(
-      `[OracleInfo] Building ${json.Oracles ? "group " : json._templateTable ? "from template " : ""}${this.$id}...`);
-    this.Name = json.Name;
-    this.Aliases = json.Aliases;
+      `[OracleInfo] Building ${this.$id}...`);
+    this.Name = jsonClone.Name;
+    this.Aliases = jsonClone.Aliases;
     this["Member of"] = memberOf ?? undefined;
     this.Category = category;
 
-    this.Description = json.Description;
-    this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
-    this.Display = new OracleInfoDisplay((json.Display ?? {}) as Partial<ITableDisplay>, this.Name, this.$id);
-    if (json.Usage) {
-      this.Usage = new OracleUsage(json.Usage);
+    this.Description = jsonClone.Description;
+    this.Source = new Source(jsonClone.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
+    this.Display = new OracleInfoDisplay((jsonClone.Display ?? {}) as Partial<ITableDisplay>, this.Name, this.$id);
+    if (jsonClone.Usage) {
+      this.Usage = new OracleUsage(jsonClone.Usage);
     }
-    if (json.Content) {
-      this.Content = new OracleContent(json.Content);
+    if (jsonClone.Content) {
+      this.Content = new OracleContent(jsonClone.Content);
     }
     let tableData
-    if (json._templateTable) {
-      tableData = buildTemplateTable(json._templateTable);
+    if (jsonClone._templateTable) {
+      tableData = buildTemplateTable(jsonClone._templateTable);
     } else {
-      tableData = json.Table as IRowData[];
+      tableData = jsonClone.Table as IRowData[];
     }
     if (tableData) {
       this.Table = tableData.map(row => {
         let newRow = new OracleTableRow(this.$id, row);
-        if (this.Usage?.Requires?.Attributes && newRow["Game objects"]) {
-          newRow["Game objects"].forEach(gameObject => {
-            let attrToMerge = { Attributes: this.Usage?.Requires?.Attributes as IAttributeOptions[] };
-            if (!gameObject.Requires) {
-              gameObject.Requires = {} as Requirements;
-            }
-            propagateObject(attrToMerge, "Attributes", gameObject.Requires);
-          });
-        }
+        // TODO: propagate requirements to child objects
         return newRow;
       });
     }
-    if (json.Oracles) {
-      this.Oracles = json.Oracles.map(oracleInfo => {
-        if (this.Usage) {
-          propagateObject(this.Usage, "Usage", oracleInfo);
-        }
-        if (this.Content) {
-          propagateObject(this.Content, "Content", oracleInfo);
-        }
-        return new OracleInfo(oracleInfo, this.Category, this.$id, json, ...ancestorsJson)
+    if (jsonClone.Oracles) {
+      this.Oracles = jsonClone.Oracles.map(oracleInfo => {
+        // if (this.Usage) {
+        //   propagateObject(this.Usage, "Usage", oracleInfo);
+        // }
+        // if (this.Content) {
+        //   propagateObject(this.Content, "Content", oracleInfo);
+        // }
+        return new OracleInfo(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson)
       });
     }
   }

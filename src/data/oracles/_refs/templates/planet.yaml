@@ -53,11 +53,14 @@ Planet: &template:Planet
               - [None]
               - [Orbital settlement, *obj:Settlement.Orbital]
               - [Planetside settlement, *obj:Settlement.Planetside]
-              - [Multiple settlements, &Multiple_settlements
-                 { Game objects: [
-                    *obj:Settlement.PlanetAny,
-                    *obj:Settlement.PlanetAny]}]
-              - [Settlements in conflict, *Multiple_settlements]
+              - [Multiple settlements,
+                *obj:Settlement.PlanetAny,
+                *obj:Settlement.PlanetAny
+                ]
+              - [Settlements in conflict,
+                *obj:Settlement.PlanetAny,
+                *obj:Settlement.PlanetAny
+                ]
         - _templateInfo: &template.info:Planet.Settlements.Outlands
             Name: Outlands
             Display: *template.display:Planet.Settlements
@@ -118,8 +121,6 @@ Planet: &template:Planet
     - _templateInfo: &template.info:Planet.Life
         Name: Life
         Usage:
-          Sets attributes:
-            - Life
         Content:
           Part of speech: [adjective]
       _templateTable:

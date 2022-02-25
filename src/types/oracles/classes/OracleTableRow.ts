@@ -12,10 +12,12 @@ import IOracleTableRow from '../interfaces/IOracleTableRow';
 import IRowData from '../interfaces/IRowData';
 import GameObject from '../../gameobjects/GameObject';
 import GameObjectData from '../../gameobjects/GameObjectData';
-import Attributes from '../../general/Attributes';
+import AttributeRequirements from '../../general/Attributes';
 import ISuggestionsData from '../../general/interfaces/ISuggestionsData';
 import { is } from 'typescript-is';
 import badJsonError from '../../../utilities/buildError';
+import AttributeHash from '../../gameobjects/AttributeHash';
+import AttributeSetter from '../../gameobjects/AttributeSetter';
 
 /**
  *
@@ -46,7 +48,7 @@ export default class OracleTableRow implements IOracleTableRow {
   "Game objects"?: GameObject[] | undefined;
   "Multiple rolls"?: MultipleRolls | undefined;
   Suggestions?: Suggestions | undefined;
-  Attributes?: Attributes | undefined;
+  Attributes?: AttributeSetter | undefined;
   Template?: TemplateString | undefined;
   constructor(parentId: string, rowData: IRowData | IOracleTableRow) {
     // if (!is<IRowData | IOracleTableRow>(rowData)) {
@@ -108,7 +110,25 @@ export default class OracleTableRow implements IOracleTableRow {
                 break;
               }
               case "Suggestions": {
-                this.Suggestions = new Suggestions(value as ISuggestionsData);
+                console.log("row has suggestions:", JSON.stringify(rowContents));
+                let newSuggestions;
+                if (Array.isArray(value)) {
+                  let suggestData = _.cloneDeep(value) as ISuggestionsData[];
+                  let suggestItems = suggestData.map(item => new Suggestions(item));
+                  newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
+                  console.log("merged multiple suggestions", newSuggestions);
+                } else {
+
+                  newSuggestions = new Suggestions(value);
+                  console.log("single suggestion", newSuggestions);
+                }
+                if (!this.Suggestions) {
+                  this.Suggestions = newSuggestions;
+                }
+                else {
+                  this.Suggestions = _.merge({ ...this.Suggestions }, { ...newSuggestions });
+                }
+                console.log("final suggestions object", this.Suggestions);
                 break;
               }
               case "Result": {
@@ -126,8 +146,7 @@ export default class OracleTableRow implements IOracleTableRow {
                 break;
               }
               case "Attributes": {
-                // TODO: implement attributes
-                console.info(`[${OracleTableRow.constructor.name}] Attributes key NYI`)
+                this.Attributes = new AttributeSetter(value as AttributeHash);
                 break;
               }
               case "Template": {
@@ -144,6 +163,7 @@ export default class OracleTableRow implements IOracleTableRow {
           break;
         default:
           throw new Error(`Row ${typeof item} not recognized: ${JSON.stringify(item)}`);
+          break;
       }
     });
     if (this.Suggestions && Object.keys(this.Suggestions).length == 0) {
@@ -153,5 +173,4 @@ export default class OracleTableRow implements IOracleTableRow {
       throw new Error(`Row requires a result! data: ${JSON.stringify(arguments)}`);
     }
   }
-
 }

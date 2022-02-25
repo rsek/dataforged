@@ -17,8 +17,6 @@ Derelicts:
   Oracles:
     - Name: Location
       Usage:
-        Sets attributes:
-          - Location
         Initial: true
       Content:
         Part of speech: [adjective]
@@ -44,8 +42,6 @@ Derelicts:
             Column of: Oracles / Derelicts / Type
           Name: Planetside
           Usage:
-            Sets attributes: &derelictSetsAttributes
-              - Derelict Type
             Requires: *attr:Location.Planetside
           Table: &derelictTypeTable
             - [1, 25, Starship, *attr:DerelictType.Starship]
@@ -53,7 +49,6 @@ Derelicts:
         - Display: *derelictTypeDisplay
           Name: Orbital
           Usage:
-            Sets attributes: *derelictSetsAttributes
             Requires: *attr:Location.Orbital
           _templateTable:
             content: *derelictTypeTable
@@ -64,7 +59,6 @@ Derelicts:
             Column of: Oracles / Derelicts / Type
           Name: Deep Space
           Usage:
-            Sets attributes: *derelictSetsAttributes
             Requires: *attr:Location.DeepSpace
           _templateTable:
             content: *derelictTypeTable
@@ -155,7 +149,7 @@ Derelicts:
         Repeatable: true
         Requires:
           Attributes:
-            Derelict Type: []
+            Derelict Type: null
       Oracles:
         - Name: Starship
           Display:

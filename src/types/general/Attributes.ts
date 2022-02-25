@@ -1,15 +1,18 @@
 import _ from "lodash";
 import AttributeHash from "../gameobjects/AttributeHash";
-import IAttribute from "../gameobjects/IAttribute";
+import IAttributeChoices from "../gameobjects/IAttributeChoices";
 
-export default class Attributes extends Array<IAttribute> {
+export default class AttributeRequirements extends Array<IAttributeChoices> {
   constructor(json: AttributeHash) {
-    let attrObj = _.omitBy(json, (value, key) => typeof value == "undefined" || key == "Object type");
-    let attributes = _.map(attrObj, (Value, Key) => {
-      if (!Array.isArray(Value)) {
-        Value = [Value];
+    let attributes = _.map(json, (value, Key) => {
+      let Values;
+      if (Array.isArray(value)) {
+        Values = value;
       }
-      return { Key, Value } as IAttribute;
+      else if (value != null) {
+        Values = [value];
+      }
+      return { Key, Values };
     });
     super(...attributes);
   }

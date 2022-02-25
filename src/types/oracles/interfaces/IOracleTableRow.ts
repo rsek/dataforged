@@ -3,7 +3,7 @@ import OracleTableId from "../OracleTableId";
 import OracleTableRowId from "../OracleTableRowId";
 import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
-import IAttribute from "../../gameobjects/IAttribute";
+import IAttributeChoices from "../../gameobjects/IAttributeChoices";
 import ISuggestions from "../../general/interfaces/ISuggestions";
 import IGameObject from "../../gameobjects/IGameObject";
 
@@ -19,6 +19,6 @@ export default interface IOracleTableRow {
   "Game objects"?: IGameObject[] | undefined;
   "Multiple rolls"?: IMultipleRolls | undefined;
   Suggestions?: ISuggestions | undefined;
-  Attributes?: IAttribute[] | undefined;
+  Attributes?: IAttributeChoices[] | undefined;
   Template?: TemplateString | undefined;
 }

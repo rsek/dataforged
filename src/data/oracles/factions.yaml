@@ -7,8 +7,6 @@ Factions:
     - Name: Type
       Usage:
         Initial: true
-        Sets attributes:
-          - Faction Type
       Display:
         Title: Faction Type
       Content:
@@ -19,8 +17,6 @@ Factions:
         - [71, 100, Fringe Group, Attributes: {Faction Type: Fringe Group}]
     - Name: Influence
       Usage:
-        Sets attributes:
-          - Influence
       Content:
         Part of speech: [adjective]
       Table:
@@ -35,12 +31,9 @@ Factions:
       Usage:
         Max rolls: 3
         Initial: true
-        Sets attributes:
-          - Dominion
         Requires:
           Attributes:
-            - Key: Faction Type
-              Values: [Dominion]
+            Faction Type: [Dominion]
       Content:
         Part of speech: [noun]
         Tags: [abstract noun]
@@ -74,12 +67,9 @@ Factions:
         Title: Dominion / Leadership
       Usage:
         Initial: true
-        Sets attributes:
-          - Leadership
         Requires:
           Attributes:
-            - Key: Faction Type
-              Values: [Dominion]
+            Faction Type: [Dominion]
       Content:
         Part of speech: [fragment]
         Tags: [description]
@@ -97,12 +87,9 @@ Factions:
     - Name: Guild
       Usage:
         Initial: true
-        Sets attributes:
-          - Guild
         Requires:
           Attributes:
-            - Key: Faction Type
-              Values: [Guild]
+            Faction Type: [Guild]
       Content:
         Part of speech: [noun, plural]
         Tags: [actor]
@@ -124,12 +111,9 @@ Factions:
         - [91, 100, *result:RollTwice]
     - Name: Fringe Group
       Usage:
-        Sets attributes:
-          - Fringe Group
         Requires:
           Attributes:
-            - Key: Faction Type
-              Values: [Fringe Group]
+            Faction type: [Fringe Group]
       Content:
         Part of speech: [noun, plural]
         Tags: [actor]

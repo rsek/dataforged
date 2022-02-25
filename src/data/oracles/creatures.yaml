@@ -7,8 +7,6 @@ Creatures:
     - Name: Environment
       Usage:
         Initial: true
-        Sets attributes:
-          - Environment
       Content:
         Part of speech: [noun]
       Description: |-
@@ -21,8 +19,6 @@ Creatures:
         - [81, 100, Air, Attributes: {Environment: Air}]
     - Name: Scale
       Usage:
-        Sets attributes:
-          - Scale
         Initial: true
       Content:
         Part of speech: [adjective]
@@ -37,8 +33,6 @@ Creatures:
     - Name: Ultra-scale
       Part of speech: [adjective]
       Usage:
-        Sets attributes:
-          - Scale
         Initial: true
       Table:
         - [1, 89, Titanic (hill-sized), Attributes: {Scale: Titanic}]
@@ -50,7 +44,7 @@ Creatures:
         Initial: true
         Requires:
           Attributes:
-            - Key: Environment
+            Environment: null
       Content:
         Part of speech: [fragment]
       Display:
@@ -270,8 +264,6 @@ Creatures:
         Part of speech: [noun, common noun]
       Usage:
         Initial: true
-        Sets attributes:
-          - Encountered Behavior
       Table:
         - [1, 5, Ambusher, Attributes: {Encountered Behavior: Ambusher}]
         - [6, 10, Apex predator, Attributes: {Encountered Behavior: Apex predator}]

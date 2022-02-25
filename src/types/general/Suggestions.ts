@@ -25,15 +25,15 @@ export default class Suggestions implements ISuggestions {
       this["Game objects"] = data["Game objects"].map(gameObjData => new GameObject(gameObjData));
     }
     if (data["Oracle rolls"]) {
-      if (data["Oracle rolls"].some(item => !item.startsWith("Oracles /"))) {
-        throw new Error(`Oracle roll references an invalid ID: ${JSON.stringify(data["Oracle rolls"])}`);
-      }
+      // TODO typecheck against string
       this["Oracle rolls"] = data["Oracle rolls"];
     }
     if (data.Moves) {
+      // TODO typecheck against string
       this.Moves = data.Moves;
     }
     if (data.Assets) {
+      // TODO typecheck against string
       this.Assets = data.Assets;
     }
   }

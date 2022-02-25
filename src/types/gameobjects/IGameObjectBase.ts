@@ -6,5 +6,6 @@ export type GameObjectType = (ActorType | PlaceType);
 
 export default interface IGameObjectBase {
   "Object type": GameObjectType;
-  [key: string]: string | string[] | undefined;
+  "Inherit rolls"?: boolean | undefined;
+  [key: string]: string | string[] | undefined | boolean;
 }

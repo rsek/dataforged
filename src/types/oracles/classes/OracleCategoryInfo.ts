@@ -50,18 +50,18 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo {
     }
     if (json.Oracles) {
       this.Oracles = json.Oracles.map(oracleInfo => {
-        if (this.Usage) {
-          propagateObject(this.Usage, "Usage", oracleInfo);
-        }
+        // if (this.Usage) {
+        //   propagateObject(this.Usage, "Usage", oracleInfo);
+        // }
         return new OracleInfo(oracleInfo, this.$id, undefined, json, ...ancestorsJson)
       });
     }
     if (json.Categories) {
       this.Categories = json.Categories.map(
         oracleCat => {
-          if (this.Usage) {
-            propagateObject(this.Usage, "Usage", oracleCat);
-          }
+          // if (this.Usage) {
+          //   propagateObject(this.Usage, "Usage", oracleCat);
+          // }
           return new OracleCategoryInfo(oracleCat, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson)
         }
       );
