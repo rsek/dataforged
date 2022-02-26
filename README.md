@@ -16,28 +16,35 @@ In other words: for the moment, treat it like you would excerpts from a copyrigh
 
 Due to this being preview content, this repo is fairly unstable! As the game grows and evolves, I will almost certainly make changes in how it's organized. I recommend forking or otherwise copying this repo's contents rather than pulling from it directly.
 
+### Legacy Format
+Dataforged is migrating to a new format that is incompatible with the original format; the format had accumulated an awful lot of cruft, as it was carried over from Datasworn and wasn't designed with Starforged in mind. Features of the new format:
+
+  * pregenerated `$id` keys for most important objects
+  * wherever practical, it uses the game's terminology to name keys. For instance, the old table row key `Description` is now `Result`, while `Details` has been renamed `Summary`.
+  * explicitly defines many values that were previously left to be inferred (for instance, the bottom end of a roll's range is now included)
+  * detailed information on how to render tables (for instance, whether it should be displayed as a column of another table)
+  * the typescript interfaces I use for internal typechecking can be found in the `src` directory; they aren't quite 'drop-in' at the moment, but might save you some time if you're writing in typescript (and can be converted to C# with little difficulty)
+
+The migration will also make it much easier for me to add some future features:
+  * 'drop-in' interfaces for Typescript and C# (and possibly other languages)
+  * making Dataforged available as a cross-referenced SQlite DB
+  * making all of Dataforged available in markdown files
+  * Dataforged-compatible Ironsworn data
+  * eventually, a `dataforged-community-content` repo, to make it easy for developers to include such content in their projects
+
+I **strongly** recommend migrating existing projects to the new format, especially if you want prompt content updates.
+
+If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on the new format is appreciated.
+
 ## Current Version/Sources
 
-  * **Rulebook Backer Preview - 101221**
+  * **Starforged Rulebook Backer Preview - 021922**
     * setting truths
-    * glossary
-  * **Rulebook Backer Preview - 122421**
+  * **Starforged Rulebook Backer Preview - 021922**
     * assets
     * moves
     * encounters
     * oracles
-
-## TODO
-  * [x] ~~implement standardized keys for references to other game objects, oracle tables, and multiple rolls~~
-  * [x] ~~normalize case of table strings (leaving only initialisms, proper nouns, and full sentences capitalized)~~
-  * [x] ~~all-in-one oracle file~~
-  * [x] ~~NPC entries from backer preview~~
-  * [ ] make moves more programmatically accessible
-  * [ ] make assets more programmatically accessible
-  * [ ] data for move glossary entries from backer preview
-  * [ ] do proper schemas for everything
-  * [ ] documentation of json keys and oracle meta-information
-
 
 ## Credits
 
