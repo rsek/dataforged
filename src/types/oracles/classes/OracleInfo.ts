@@ -24,6 +24,7 @@ import IOracleCategoryData from '../interfaces/IOracleCategoryData';
 import buildLog from '../../../utilities/buildLog';
 import buildFromTemplate from '../../../utilities/buildFromTemplate';
 import inferSetsAttributes from '../../../utilities/inferSetsAttributes';
+import IAttribute, { AttributeKey } from '../../gameobjects/IAttribute';
 
 
 /**
@@ -111,6 +112,23 @@ export default class OracleInfo implements IOracleInfo {
         }
         console.log("attrs", attrs);
         this.Usage['Sets attributes'] = this.Usage['Sets attributes'].concat(...attrs);
+      }
+    }
+    if (this.Oracles) {
+      let keys = new Set<AttributeKey>();
+      if (!this.Usage) {
+        this.Usage = {};
+      }
+      if (this.Usage?.['Sets attributes']) {
+        this.Usage['Sets attributes'].map(item => item.Key).forEach(key => keys.add(key));
+      }
+      this.Oracles.forEach(oracle => {
+        if (oracle.Usage?.['Sets attributes']) {
+          oracle.Usage['Sets attributes'].map(item => item.Key).forEach(key => keys.add(key));
+        }
+      });
+      if (keys.size > 0) {
+        this.Usage['Sets attributes'] = Array.from(keys).map(Key => { return { Key } as IAttribute; });
       }
     }
   }
