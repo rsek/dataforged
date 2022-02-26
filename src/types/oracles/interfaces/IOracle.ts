@@ -1,9 +1,18 @@
 import Source from "../../general/Source";
-import OracleCategoryId from "../OracleCategoryId";
+import IOracleContent from "./IOracleContent";
 import OracleTableId from "../OracleTableId";
-import IOracleData from './IOracleData';
+import IRow from "./IRow";
+import IOracleUsage from "./IOracleUsage";
+import ITableDisplay from "./IOracleDisplay";
+import IOracleYaml from './yaml/IOracleYaml';
+import IRequirements from "../../general/interfaces/IRequirements";
 
-export default interface IOracle extends IOracleData {
-  $id: OracleTableId | OracleCategoryId;
+export default interface IOracle extends Omit<IOracleYaml, "Usage" | "Oracles" | "Requires" | "_templateInfo" | "_templateTable" | "_childOf" | "_parentOf"> {
+  $id: OracleTableId;
   Source: Source;
+  Usage?: IOracleUsage | undefined;
+  Content?: IOracleContent | undefined;
+  Display?: ITableDisplay | undefined;
+  Oracles?: IOracle[] | undefined;
 }
+

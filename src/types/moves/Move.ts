@@ -9,7 +9,7 @@ import MoveTrigger from "./MoveTrigger";
 import MoveId from './MoveId';
 import IMove from './interfaces/IMove';
 import MoveCategory from './MoveCategory';
-import buildLog from '../../functions/buildLog';
+import buildLog from '../../functions/logging/buildLog';
 
 export default class Move implements IMove {
   $id: MoveId;
@@ -25,7 +25,7 @@ export default class Move implements IMove {
   Outcomes?: MoveOutcomes | undefined;
   constructor(json: IMove, id?: MoveId) {
     this.$id = id ?? `Moves / ${json.Name}`;
-    buildLog(this.constructor, `Building ${this.$id}`);
+    buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Category = json.Category;
     this["Progress Move"] = json["Progress Move"];

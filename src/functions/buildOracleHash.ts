@@ -1,5 +1,5 @@
 import _ from "lodash";
-import OracleCategoryInfo from "../types/oracles/classes/OracleCategoryInfo";
+import OracleCategoryInfo from "../types/oracles/classes/OracleCategory";
 import buildOracles from './buildOracles';
 
 

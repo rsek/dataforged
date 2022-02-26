@@ -1,7 +1,7 @@
 import t from 'ts-runtime/lib';
 
 import OracleTableId from "../OracleTableId";
-import OracleInfo from "./OracleInfo";
+import Oracle from "./Oracle";
 
 export default class OracleTableRef {
   constructor(tableId: OracleTableId) {
@@ -9,7 +9,7 @@ export default class OracleTableRef {
     this.getTable = this.getTable.bind(this);
   }
   private $id: OracleTableId;
-  getTable(keyedTables: Record<OracleTableId, OracleInfo>) {
+  getTable(keyedTables: Record<OracleTableId, Oracle>) {
     return keyedTables[this.$id];
   }
   toString() { return this.$id; }

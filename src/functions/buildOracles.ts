@@ -1,21 +1,22 @@
 import t from 'ts-runtime/lib';
 
-import OracleCategoryInfo from "../types/oracles/classes/OracleCategoryInfo";
-import getSubdirs from "./getSubdirs";
-import getYamlFiles from "./getYamlFiles";
+import OracleCategoryInfo from "../types/oracles/classes/OracleCategory";
+import getSubdirs from "./io/getSubdirs";
+import getYamlFiles from "./io/getYamlFiles";
 import fs, { writeFileSync } from "fs";
-import { refsPath } from "./buildWithRefs";
-import buildOraclesWithRefs, { IOracleCatRoot } from "./buildOraclesWithRefs";
+import { refsPath } from "./process-yaml/concatWithYamlRefs";
+import loadOracleData, { IOracleCatRoot } from "./process-yaml/loadOracleData";
 import jsonpath from "jsonpath";
 import { is } from 'typescript-is';
-import IOracleCategoryData from '../types/oracles/interfaces/IOracleCategoryData';
+import IOracleCategoryData from '../types/oracles/interfaces/IOracleCategoryYaml';
 import { OracleCategoryName } from '../types/oracles/OracleCategoryId';
 import { OracleSubcategoryName } from '../types/oracles/OracleSubcategoryId';
-import buildLog from './buildLog';
-import buildFromTemplate from './buildFromTemplate';
-import replaceInAllStrings from "./replaceInAllStrings"
-import writeJson from './writeJSON';
+import buildLog from './logging/buildLog';
+import templateOracle from './object-transform/templateOracle';
+import replaceInAllStrings from "./object-transform/replaceInAllStrings"
+import writeJson from './io/writeJSON';
 import _ from 'lodash';
+import badJsonError from './logging/badJsonError';
 
 interface IOracleSubcategoryData extends IOracleCategoryData {
   Name: OracleSubcategoryName;
@@ -40,18 +41,18 @@ export default function buildOracles(): OracleCategoryInfo[] {
   // console.info(filesOracleCategories);
 
   const dirsOracleSubcategories: fs.PathLike[] = getSubdirs("oracles");
-  const categoryRoot: IOracleParentCatRoot = buildOraclesWithRefs(refsPath, ...filesOracleCategories) as IOracleParentCatRoot;
+  const categoryRoot: IOracleParentCatRoot = loadOracleData(refsPath, ...filesOracleCategories) as IOracleParentCatRoot;
 
   const categories = categoryRoot.Categories;
 
   const filesOracleSubcategories: fs.PathLike[] = dirsOracleSubcategories.map(dir => getYamlFiles("", dir)).flat(1);
 
-  const subcatRoot: IOracleSubcatRoot = buildOraclesWithRefs(refsPath, ...filesOracleSubcategories) as IOracleSubcatRoot;
+  const subcatRoot: IOracleSubcatRoot = loadOracleData(refsPath, ...filesOracleSubcategories) as IOracleSubcatRoot;
 
   let subcategories = subcatRoot.Categories.map((subcatData) => {
     if (subcatData._templateCategory) {
       // console.log("Building with template vars", subcatData);
-      subcatData = buildFromTemplate<IOracleSubcategoryData>(subcatData, subcatData._templateCategory);
+      subcatData = templateOracle<IOracleSubcategoryData>(subcatData, subcatData._templateCategory);
       delete subcatData._templateVars;
       delete subcatData._templateCategory;
       // console.log("resulting object:", subcatData);
@@ -62,18 +63,18 @@ export default function buildOracles(): OracleCategoryInfo[] {
   subcategories.forEach(subcat => {
     const parentName = subcat._childOf;
     if (!parentName) {
-      throw new Error(`[buildOracles] "${subcat.Name}" is not assigned to a subcategory.`);
+      throw badJsonError(buildOracles, undefined, `"${subcat.Name}" is not assigned to a subcategory.`);
     }
     const parentCat = categories.find(cat => cat.Name == parentName) as IOracleCategoryData;
 
     if (parentCat._parentOf) {
       if (!parentCat._parentOf.includes(subcat.Name)) {
-        throw new Error(`[buildOracles] "${subcat.Name}" assigns itself to this category, but the category doesn't list this subcategory by name.`);
+        throw badJsonError(buildOracles, undefined, `"${subcat.Name}" assigns itself to this category, but the category doesn't list this subcategory by name.`);
       }
       if (!parentCat.Categories) {
         parentCat.Categories = [];
       }
-      console.info(`[buildOracles] Assigning "${subcat.Name}" as subcategory of ${parentCat.Name}`);
+      buildLog(buildOracles, `Assigning "${subcat.Name}" as subcategory of ${parentCat.Name}`);
       parentCat.Categories.push(subcat);
     }
   });
@@ -81,9 +82,8 @@ export default function buildOracles(): OracleCategoryInfo[] {
 
   const catCount = categories.length;
   const subcatCount = subcategories.length;
-  const tables = jsonpath.query(json, "$..[?(@.Table||@.Subtable)]");
-  const tableCount = tables.length;
-  console.info(`[buildOracles] Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
+
+  // buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
   return json;
 }
 

@@ -1,7 +1,6 @@
 
 import t from 'ts-runtime/lib';
 
-import getYamlFiles from "./getYamlFiles";
 import yaml from "js-yaml";
 import fs from "fs";
 import Asset from "../types/assets/Asset";
@@ -9,7 +8,9 @@ import ISource from "../types/general/interfaces/ISource";
 import jsonpath from "jsonpath";
 import { AssetConditionMeterType } from "../types/general/ConditionMeter";
 import IAssetData from '../types/assets/interfaces/IAssetData';
-import badJsonError from './badJsonError';
+import badJsonError from './logging/badJsonError';
+import getYamlFiles from './io/getYamlFiles';
+import buildLog from './logging/buildLog';
 
 const assetPath = getYamlFiles().find(item => item.toString().match(/assets\.yaml$/)) as fs.PathLike;
 
@@ -31,7 +32,7 @@ export default function buildAssets() {
         if (!asset["Condition Meter"]) {
           throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.")
         }
-        console.info(`[buildAssets] Adding reference for ${asset["Condition Meter"]?.$id}`);
+        buildLog(buildAssets, `Adding reference for ${asset["Condition Meter"]?.$id}`);
         stat = asset["Condition Meter"]?.$id;
       }
       return stat as AssetConditionMeterType;

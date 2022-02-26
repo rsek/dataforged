@@ -1,7 +1,7 @@
 
 import t from 'ts-runtime/lib';
 import { is } from 'typescript-is';
-import badJsonError from '../../../functions/badJsonError';
+import badJsonError from '../../../functions/logging/badJsonError';
 import IMultipleRolls from '../interfaces/IMultipleRolls';
 
 /**

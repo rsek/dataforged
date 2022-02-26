@@ -11,8 +11,8 @@ import IAsset from './interfaces/IAsset';
 import IAssetData from './interfaces/IAssetData';
 import { is } from 'typescript-is';
 import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
-import buildLog from '../../functions/buildLog';
-import badJsonError from '../../functions/badJsonError';
+import buildLog from '../../functions/logging/buildLog';
+import badJsonError from '../../functions/logging/badJsonError';
 
 export default class Asset implements IAsset {
   $id: AssetId;
@@ -27,7 +27,7 @@ export default class Asset implements IAsset {
   Source: Source;
   constructor(json: IAssetData, source: ISource) {
     this.$id = `Assets / ${json.Name}`;
-    buildLog(this.constructor, `Building ${this.$id}`);
+    buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this["Asset Type"] = json["Asset Type"];

@@ -2,7 +2,7 @@ import { PathLike } from 'fs';
 import _ from 'lodash';
 import t from 'ts-runtime/lib';
 import buildDataforged from "./functions/buildDataforged";
-import writeJson from './functions/writeJSON';
+import writeJson from './functions/io/writeJSON';
 
 const pathOut: PathLike = "./";
 // const legacyPathOut: PathLike = "./legacy/"

@@ -3,7 +3,7 @@ import t from 'ts-runtime/lib';
 import _ from "lodash";
 import Move from "../types/moves/Move";
 import buildMoves from "./buildMoves";
-import writeJson from "./writeJSON";
+import writeJson from "./io/writeJSON";
 
 
 const hitPattern = new RegExp(/On a \*\*hit\*\*, (?<content>(.|\n)*?)\./, "m");

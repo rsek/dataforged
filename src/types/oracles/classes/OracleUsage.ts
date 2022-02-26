@@ -2,7 +2,7 @@ import t from 'ts-runtime/lib';
 import Suggestions from "../../general/Suggestions";
 import Requirements from "../../general/Requirements";
 import IOracleUsage from '../interfaces/IOracleUsage';
-import IOracleUsageData from '../interfaces/IOracleUsageData';
+import IOracleUsageYaml from '../interfaces/yaml/IOracleUsageYaml';
 import { is } from 'typescript-is';
 import { AttributeKey } from '../../gameobjects/IAttribute';
 import IAttributeChoices from '../../gameobjects/IAttributeChoices';
@@ -15,7 +15,7 @@ export default class OracleUsage implements IOracleUsage {
   Suggestions?: Suggestions | undefined;
   Requires?: Requirements | undefined;
   "Sets attributes"?: IAttributeChoices[] | undefined;
-  constructor(json: IOracleUsageData) {
+  constructor(json: IOracleUsageYaml) {
     // if (!is<IOracleUsageData>(json)) {
     //   throw new Error();
     // }
