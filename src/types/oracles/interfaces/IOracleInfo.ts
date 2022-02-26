@@ -14,5 +14,4 @@ export default interface IOracleInfo extends Omit<IOracleInfoData, "Usage" | "Or
   Content?: IOracleContent | undefined;
   Display?: ITableDisplay | undefined;
   Oracles?: IOracleInfo[] | undefined;
-  Requires?: IRequirements | undefined;
 }

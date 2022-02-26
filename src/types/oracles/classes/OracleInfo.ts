@@ -44,7 +44,6 @@ export default class OracleInfo implements IOracleInfo {
   Display: OracleInfoDisplay;
   Usage?: OracleUsage | undefined;
   Content?: OracleContent | undefined;
-  // Requires?: Requirements | undefined;
   Table?: OracleTableRow[] | undefined;
   Oracles?: OracleInfo[] | undefined;
   constructor(
@@ -98,9 +97,6 @@ export default class OracleInfo implements IOracleInfo {
         }
         if (jsonClone.Content) {
           propagateObject(jsonClone.Content, "Content", oracleInfo);
-        }
-        if (json.Requires) {
-          propagateObject(json.Requires, "Requires", oracleInfo);
         }
         return new OracleInfo(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson)
       });
