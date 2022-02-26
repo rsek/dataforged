@@ -92,9 +92,9 @@ export default class OracleInfo implements IOracleInfo {
     }
     if (jsonClone.Oracles) {
       this.Oracles = jsonClone.Oracles.map(oracleInfo => {
-        // if (this.Usage) {
-        //   propagateObject(this.Usage, "Usage", oracleInfo);
-        // }
+        if (jsonClone.Usage) {
+          propagateObject(jsonClone.Usage, "Usage", oracleInfo);
+        }
         // if (this.Content) {
         //   propagateObject(this.Content, "Content", oracleInfo);
         // }
