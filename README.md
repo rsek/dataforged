@@ -26,6 +26,7 @@ Dataforged is migrating to a new format that is incompatible with the original f
   * the typescript interfaces I use for internal typechecking can be found in the `src` directory; they aren't quite 'drop-in' at the moment, but might save you some time if you're writing in typescript (and can be converted to C# with little difficulty)
 
 The migration will also make it much easier for me to add some future features:
+  * every CC-licensable icon in the game
   * 'drop-in' interfaces for Typescript and C# (and possibly other languages)
   * making Dataforged available as a cross-referenced SQlite DB
   * making all of Dataforged available in markdown files
