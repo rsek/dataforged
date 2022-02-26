@@ -118,17 +118,17 @@ export default class OracleTableRow implements IOracleTableRow {
                 break;
               }
               case "Suggestions": {
-                console.log("row has suggestions:", JSON.stringify(rowContents));
+                // console.log("row has suggestions:", JSON.stringify(rowContents));
                 let newSuggestions;
                 if (Array.isArray(value)) {
-                  console.log("Received a suggestion array, merging...", value);
+                  // console.log("Received a suggestion array, merging...", value);
                   let suggestData = _.cloneDeep(value) as ISuggestionsData[];
                   let suggestItems = suggestData.map(item => new Suggestions(item));
                   newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
-                  console.log("merged multiple suggestions", newSuggestions);
+                  // console.log("merged multiple suggestions", newSuggestions);
                 } else {
                   newSuggestions = new Suggestions(value);
-                  console.log("single suggestion", newSuggestions);
+                  // console.log("single suggestion", newSuggestions);
                 }
                 if (!this.Suggestions) {
                   this.Suggestions = newSuggestions;

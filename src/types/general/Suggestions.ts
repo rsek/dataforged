@@ -21,7 +21,7 @@ export default class Suggestions implements ISuggestions {
   "Encounters"?: string[] | undefined;
   constructor(data: ISuggestionsData) {
     if (data["Game objects"]) {
-      console.info("[Suggestions] Game objects", JSON.stringify(data["Game objects"]));
+      // console.info("[Suggestions] Game objects", JSON.stringify(data["Game objects"]));
       this["Game objects"] = data["Game objects"].map(gameObjData => new GameObject(gameObjData));
     }
     if (data["Oracle rolls"]) {

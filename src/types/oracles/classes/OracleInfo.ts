@@ -25,6 +25,9 @@ import buildLog from '../../../utilities/buildLog';
 import buildFromTemplate from '../../../utilities/buildFromTemplate';
 import inferSetsAttributes from '../../../utilities/inferSetsAttributes';
 import IAttribute, { AttributeKey } from '../../gameobjects/IAttribute';
+import jsonpath from 'jsonpath';
+import badJsonError from '../../../utilities/badJsonError';
+import GameObject from '../../gameobjects/GameObject';
 
 
 /**
@@ -61,8 +64,7 @@ export default class OracleInfo implements IOracleInfo {
     //   throw new Error("json does not conform to IOracleInfoData!");
     // }
     this.$id = buildOracleId(jsonClone, ...ancestorsJson) as OracleTableId;
-    console.info(
-      `[OracleInfo] Building ${this.$id}...`);
+    buildLog(this.constructor, `Building ${this.$id}...`);
     this.Name = jsonClone.Name;
     this.Aliases = jsonClone.Aliases;
     this["Member of"] = memberOf ?? undefined;
@@ -110,7 +112,7 @@ export default class OracleInfo implements IOracleInfo {
         if (typeof this.Usage['Sets attributes'] == "undefined") {
           this.Usage['Sets attributes'] = [];
         }
-        console.log("attrs", attrs);
+        // console.log("attrs", attrs);
         this.Usage['Sets attributes'] = this.Usage['Sets attributes'].concat(...attrs);
       }
     }
