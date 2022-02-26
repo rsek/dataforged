@@ -11,8 +11,8 @@ import IAsset from './interfaces/IAsset';
 import IAssetData from './interfaces/IAssetData';
 import { is } from 'typescript-is';
 import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
-import buildLog from '../../utilities/buildLog';
-import badJsonError from '../../utilities/badJsonError';
+import buildLog from '../../functions/buildLog';
+import badJsonError from '../../functions/badJsonError';
 
 export default class Asset implements IAsset {
   $id: AssetId;

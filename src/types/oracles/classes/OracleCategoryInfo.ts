@@ -5,14 +5,14 @@ import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "..
 import OracleInfo from "./OracleInfo";
 import OracleUsage from "./OracleUsage";
 import Source from "../../general/Source";
-import buildOracleId from "../../../utilities/buildOracleId";
+import buildOracleId from "../../../functions/buildOracleId";
 import _ from "lodash";
 import OracleCategoryDisplay from "./OracleCategoryDisplay";
 import IOracleCategoryInfo from "../interfaces/IOracleCategoryInfo";
 import IOracleCategoryData from '../interfaces/IOracleCategoryData';
-import propagateObject from '../../../utilities/propagateObject';
+import propagateObject from '../../../functions/propagateObject';
 import IOracleInfoData from '../interfaces/IOracleInfoData';
-import buildLog from '../../../utilities/buildLog';
+import buildLog from '../../../functions/buildLog';
 
 
 export default class OracleCategoryInfo implements IOracleCategoryInfo {

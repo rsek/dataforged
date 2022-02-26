@@ -9,7 +9,7 @@ import MoveTrigger from "./MoveTrigger";
 import MoveId from './MoveId';
 import IMove from './interfaces/IMove';
 import MoveCategory from './MoveCategory';
-import buildLog from '../../utilities/buildLog';
+import buildLog from '../../functions/buildLog';
 
 export default class Move implements IMove {
   $id: MoveId;

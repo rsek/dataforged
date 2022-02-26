@@ -7,7 +7,7 @@ import Suggestions from "../general/Suggestions";
 import TruthTableRow from "./TruthTableRow";
 import ITruthTableRow from "./ITruthTableRow";
 import ITruth from './ITruth';
-import buildLog from '../../utilities/buildLog';
+import buildLog from '../../functions/buildLog';
 
 export class Truth implements Omit<ITruth, "Suggestions">, IHasId {
   $id: string;

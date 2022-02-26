@@ -1,7 +1,7 @@
 
 import t from 'ts-runtime/lib';
 import { is } from 'typescript-is';
-import badJsonError from '../../../utilities/badJsonError';
+import badJsonError from '../../../functions/badJsonError';
 import IOracleContent from '../interfaces/IOracleContent';
 
 export default class OracleContent implements IOracleContent {

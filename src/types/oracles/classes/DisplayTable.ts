@@ -1,8 +1,8 @@
 
 import t from 'ts-runtime/lib';
 import { is } from 'typescript-is';
-import badJsonError from '../../../utilities/badJsonError';
-import { getNameFromId } from '../../../utilities/getNameFromId';
+import badJsonError from '../../../functions/badJsonError';
+import { getNameFromId } from '../../../functions/getNameFromId';
 import IDisplayTable from '../interfaces/IDisplayTable';
 import OracleTableId from "../OracleTableId";
 import { ResultColumn, RollColumn } from "./TableColumn";

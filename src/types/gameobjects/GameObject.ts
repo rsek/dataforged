@@ -2,7 +2,7 @@ import _ from "lodash";
 import Requirements from "../general/Requirements";
 import { GameObjectType } from "./IGameObjectBase";
 import GameObjectData from "./GameObjectData";
-import badJsonError from "../../utilities/badJsonError";
+import badJsonError from "../../functions/badJsonError";
 import { is } from "typescript-is";
 import IGameObject from "./IGameObject";
 import IRequirementsData from "../general/interfaces/IRequirementsData";
