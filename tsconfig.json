@@ -1,0 +1,34 @@
+{
+  "exclude": [
+    "src/functions/*.js",
+    "node_modules",
+    "roll20",
+    "**/.vscode/**/*",
+    "**/.old/**/*",
+    "**/.github/**/*",
+    "**/build",
+  ],
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "es6",
+      "es2021",
+      "esnext"
+    ],
+    "plugins": [
+      {
+        "transform": "typescript-is/lib/transform-inline/transformer"
+      }
+    ],
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "outDir": "./build",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "allowUnreachableCode": true,
+    "skipLibCheck": true,
+  }
+}
