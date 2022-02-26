@@ -46,6 +46,7 @@ export default class OracleInfo implements IOracleInfo {
   Content?: OracleContent | undefined;
   Table?: OracleTableRow[] | undefined;
   Oracles?: OracleInfo[] | undefined;
+  Requires?: Requirements | undefined;
   constructor(
     json: IOracleInfoData,
     category: OracleCategoryId,
@@ -77,6 +78,9 @@ export default class OracleInfo implements IOracleInfo {
     if (jsonClone.Content) {
       this.Content = new OracleContent(jsonClone.Content);
     }
+    if (jsonClone.Requires) {
+      this.Requires = new Requirements(jsonClone.Requires);
+    }
     let tableData;
     if (jsonClone._templateTable) {
       tableData = buildTemplateTable(jsonClone._templateTable);
@@ -95,9 +99,12 @@ export default class OracleInfo implements IOracleInfo {
         if (jsonClone.Usage) {
           propagateObject(jsonClone.Usage, "Usage", oracleInfo);
         }
-        // if (this.Content) {
-        //   propagateObject(this.Content, "Content", oracleInfo);
-        // }
+        if (jsonClone.Content) {
+          propagateObject(jsonClone.Content, "Content", oracleInfo);
+        }
+        if (json.Requires) {
+          propagateObject(json.Requires, "Requires", oracleInfo);
+        }
         return new OracleInfo(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson)
       });
     }

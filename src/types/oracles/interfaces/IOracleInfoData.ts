@@ -10,6 +10,7 @@ import IOracleUsageData from "./IOracleUsageData";
 import ITemplateTable from "./ITemplateTable";
 import ITemplateInfoBase from "./ITemplateInfoBase";
 import ITemplateInfo from "./ITemplateInfo";
+import IRequirementsData from "../../general/interfaces/IRequirementsData";
 
 export default interface IOracleInfoData extends IOracleData, ITemplateInfoBase {
 
@@ -23,6 +24,7 @@ export default interface IOracleInfoData extends IOracleData, ITemplateInfoBase 
   Display?: ITableDisplay | undefined;
   Oracles?: IOracleInfoData[] | undefined;
   Table?: IRowData[] | IRowRollData[] | IOracleTableRow[] | undefined;
+  Requires?: IRequirementsData | undefined;
   _templateInfo?: ITemplateInfo | undefined;
   _templateTable?: ITemplateTable | undefined;
   _childOf?: OracleCategoryId | undefined;

@@ -53,6 +53,9 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo {
         if (json.Usage) {
           propagateObject(json.Usage, "Usage", oracleInfo);
         }
+        if (json.Requires) {
+          propagateObject(json.Requires, "Requires", oracleInfo);
+        }
         return new OracleInfo(oracleInfo, this.$id, undefined, json, ...ancestorsJson)
       });
     }
@@ -61,6 +64,9 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo {
         oracleCat => {
           if (json.Usage) {
             propagateObject(json.Usage, "Usage", oracleCat);
+          }
+          if (json.Requires) {
+            propagateObject(json.Requires, "Requires", oracleCat);
           }
           return new OracleCategoryInfo(oracleCat, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson);
         }
