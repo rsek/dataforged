@@ -1,0 +1,66 @@
+root: true
+ignorePatterns:
+  - web-oracle
+  - raw
+  - node_modules
+  - images
+  - analysis
+  - .vscode
+  - .testing
+  - .old
+  - .github
+  - data
+  - "*.json"
+  - "*.js"
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: latest
+  project:
+    - ./tsconfig.json
+plugins:
+  - "@typescript-eslint"
+  - "lodash"
+  - "import"
+env:
+  es6: true
+extends:
+  - eslint:recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
+  # - plugin:node/recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:@typescript-eslint/recommended-requiring-type-checking
+  - plugin:lodash/recommended
+  - prettier
+rules:
+  import/no-unresolved: error
+  "@typescript-eslint/no-inferrable-types":
+    - 0
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - double
+  import/extensions:
+    - 1
+    - js: never
+      ts: never
+      json: always
+  lodash/prefer-lodash-method:
+    - 0
+  lodash/import-scope:
+    - 0
+  lodash/prop-shorthand:
+    - 0
+  lodash/prefer-constant:
+    - 0
+  settings:
+    import/parsers:
+      "@typescript-eslint/parser":
+        - .ts
+        - .tsx

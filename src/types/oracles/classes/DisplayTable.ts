@@ -1,6 +1,8 @@
 
 import t from 'ts-runtime/lib';
-import { getNameFromId } from '../../utils/getNameFromId';
+import { is } from 'typescript-is';
+import badJsonError from '../../../functions/logging/badJsonError';
+import { getNameFromId } from '../../../functions/getNameFromId';
 import IDisplayTable from '../interfaces/IDisplayTable';
 import OracleTableId from "../OracleTableId";
 import { ResultColumn, RollColumn } from "./TableColumn";
@@ -15,7 +17,7 @@ export default class DisplayTable implements IDisplayTable {
         resultColData.forEach(col => {
           if (!col.Label) {
             if (!col.Content) {
-              throw new Error("There are multiple result columns, but one is missing both Label and Content - Label could not be inferred.");
+              throw badJsonError(this.constructor, json["Result columns"], "There are multiple result columns, but one is missing both Label and Content - Label could not be inferred.");
             }
             col.Label = getNameFromId(col.Content);
           }
@@ -31,7 +33,7 @@ export default class DisplayTable implements IDisplayTable {
         rollColData.forEach(col => {
           if (!col.Label) {
             if (!col.Content) {
-              throw new Error("There are multiple result columns, but one is missing both Label and Content - Label could not be inferred.");
+              throw badJsonError(this.constructor, json["Roll columns"], "There are multiple result columns, but one is missing both Label and Content - Label could not be inferred.");
             }
             col.Label = getNameFromId(col.Content);
           }

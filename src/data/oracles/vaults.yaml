@@ -35,14 +35,12 @@ Vaults:
     - Name: Location
       Usage:
         Initial: true
-        Sets attributes:
-          - Location
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 50, Planetside, {Attributes: {Location: Planetside }} ]
-        - [51, 75, Orbital, {Attributes: {Location: Orbital }}]
-        - [76, 100, Deep Space, {Attributes: {Location: Deep Space }}]
+        - [1, 50, Planetside, Attributes: {Location: Planetside } ]
+        - [51, 75, Orbital, Attributes: {Location: Orbital }]
+        - [76, 100, Deep Space, Attributes: {Location: Deep Space }]
 
     - Name: Scale
       Usage:
@@ -89,7 +87,7 @@ Vaults:
         - [74, 76, Sculptural or effigy]
         - [77, 79, Amorphous]
         - [80, 85, Transforming]
-        - [86, 100, *Roll_twice]
+        - [86, 100, *result:RollTwice]
 
     - Name: Material
       Usage:
@@ -106,7 +104,7 @@ Vaults:
         - [83, 86, Plant-like]
         - [87, 88, Energy]
         - [89, 90, Liquid]
-        - [91, 100, *Roll_twice]
+        - [91, 100, *result:RollTwice]
 
     - Name: Outer First Look
       Aliases: [First Look]

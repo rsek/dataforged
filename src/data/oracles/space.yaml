@@ -34,7 +34,7 @@ Space:
       Usage:
         Requires:
           Attributes:
-            - Key: Region
+            Region: null
         Repeatable: true
       Oracles:
         - Display:
@@ -43,17 +43,15 @@ Space:
           Usage:
             Requires:
               Attributes:
-                - Key: Region
-                  Values:
-                    - Terminus
-          Table: &template_spacesighting
-            - [1, 15, ⏵Stellar Object, *Stellar_Object]
-            - [16, 35, ⏵Planet, *Planet]
-            - [36, 40, ⏵Settlement, *Settlement]
-            - [41, 47, ⏵Starship, *Starship]
-            - [48, 51, ⏵Derelict, *Derelict]
-            - [52, 53, ⏵Precursor Vault, *Vault]
-            - [54, 55, ⏵Creature, *Creature]
+                Region: Terminus
+          Table: &table:SpaceSighting
+            - [1, 15, ⏵Stellar Object, *roll:StellarObject]
+            - [16, 35, ⏵Planet, *obj:Planet]
+            - [36, 40, ⏵Settlement, *obj:Settlement]
+            - [41, 47, ⏵Starship, *obj:Starship]
+            - [48, 51, ⏵Derelict, *obj:Derelict]
+            - [52, 53, ⏵Precursor Vault, *obj:Vault]
+            - [54, 55, ⏵Creature, *obj:Creature]
             - [56, 60, *result:Descriptor+Focus]
             - [61, 65, "Debris field: Mineral asteroids"]
             - [66, 68, "Debris field: Frozen asteroids"]
@@ -66,73 +64,70 @@ Space:
             - [82, 83, Chaotic meteoroid storm]
             - [84, 85, Turbulent gravitational wave]
             - [86, 93, Dense nebula cloud]
-            - [94, 98, *Roll_twice_Rep_ok]
-            - [99, 100, *Roll_three_times_Rep_ok]
+            - [94, 98, *result:RollTwice.RepeatsOk]
+            - [99, 100, *result:RollThreeTimes.RepeatsOk]
         - Display:
             Column of: Oracles / Space / Sighting
           Name: Outlands
-          _templateTable: *template_spacesighting
           Usage:
             Requires:
               Attributes:
-                  - Key: Region
-                    Values:
-                      - Outlands
-          Table:
-            - [1, 15]
-            - [16, 35]
-            - [36, 38]
-            - [39, 43]
-            - [44, 46]
-            - [47, 49]
-            - [50, 52]
-            - [53, 58]
-            - [59, 63]
-            - [64, 66]
-            - [67, 68]
-            - [69, 70]
-            - [71, 72]
-            - [73, 74]
-            - [75, 76]
-            - [77, 80]
-            - [81, 82]
-            - [83, 85]
-            - [86, 93]
-            - [94, 98]
-            - [99, 100]
+                Region: Outlands
+          _templateTable:
+            content: *table:SpaceSighting
+            rolls:
+              - [1, 15]
+              - [16, 35]
+              - [36, 38]
+              - [39, 43]
+              - [44, 46]
+              - [47, 49]
+              - [50, 52]
+              - [53, 58]
+              - [59, 63]
+              - [64, 66]
+              - [67, 68]
+              - [69, 70]
+              - [71, 72]
+              - [73, 74]
+              - [75, 76]
+              - [77, 80]
+              - [81, 82]
+              - [83, 85]
+              - [86, 93]
+              - [94, 98]
+              - [99, 100]
         - Display:
             Column of: Oracles / Space / Sighting
           Name: Expanse
           Usage:
-            Repeatable: true
             Requires:
               Attributes:
-                  - Key: Region
-                    Values:
-                      - Expanse
-          _templateTable: *template_spacesighting
-          Table:
-            - [1, 15]
-            - [16, 35]
-            - [36, 37]
-            - [38, 39]
-            - [40, 41]
-            - [42, 45]
-            - [46, 49]
-            - [50, 56]
-            - [57, 61]
-            - [62, 64]
-            - [65, 66]
-            - [67, 68]
-            - [69, 70]
-            - [71, 72]
-            - [73, 74]
-            - [75, 79]
-            - [80, 81]
-            - [82, 85]
-            - [86, 93]
-            - [94, 98]
-            - [99, 100]
+                Region: Expanse
+          _templateTable:
+            content: *table:SpaceSighting
+            rolls:
+              - [1, 15]
+              - [16, 35]
+              - [36, 37]
+              - [38, 39]
+              - [40, 41]
+              - [42, 45]
+              - [46, 49]
+              - [50, 56]
+              - [57, 61]
+              - [62, 64]
+              - [65, 66]
+              - [67, 68]
+              - [69, 70]
+              - [71, 72]
+              - [73, 74]
+              - [75, 79]
+              - [80, 81]
+              - [82, 85]
+              - [86, 93]
+              - [94, 98]
+              - [99, 100]
     - Name: Stellar Object
       Content:
         Part of speech: [fragment]
@@ -162,132 +157,132 @@ Space:
       Usage:
         Template: "{{Oracles / Space / Sector Name / Prefix}} {{Oracles / Space / Sector Name / Suffix}}"
       Oracles:
-      - Display:
-          Column of: Oracles / Space / Sector Name
-        Name: Prefix
-        Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-        Usage:
-          Initial: true
-          Suggestions:
-            Oracle rolls:
-              - Oracles / Space / Sector Name / Suffix
-        Content:
-          Part of speech: [adjective]
-          Tags: [template fragment]
-        Table:
-          - [1, 2, Accursed]
-          - [3, 4, Ashen]
-          - [5, 6, Asteria, {Part of speech: [proper noun]}]
-          - [7, 8, Bitter]
-          - [9, 10, Blighted]
-          - [11, 12, Bloodied]
-          - [13, 14, Boundless]
-          - [15, 16, Burning]
-          - [17, 18, Cortana, {Part of speech: [proper noun]}]
-          - [19, 20, Corvus, {Part of speech: [proper noun]}]
-          - [21, 22, Crimson]
-          - [23, 24, Cygnus, {Part of speech: [proper noun]}]
-          - [25, 26, Delphi, {Part of speech: [proper noun]}]
-          - [27, 28, Delphian, {Part of speech: [proper noun]}]
-          - [29, 30, Devil's, {Part of speech: [proper noun, possessive case]}]
-          - [31, 32, Ebon]
-          - [33, 34, Essus, {Part of speech: [proper noun]}]
-          - [35, 36, Fallen]
-          - [37, 38, Ferrous]
-          - [39, 40, Fool's, {Part of speech: [proper noun, possessive case]}]
-          - [41, 42, Forgotten]
-          - [43, 44, Haunted]
-          - [45, 46, Hidden]
-          - [47, 48, Hollow]
-          - [49, 50, Igneous]
-          - [51, 52, Infernal]
-          - [53, 54, Invidia, {Part of speech: [proper noun]}]
-          - [55, 56, Iron]
-          - [57, 58, Kalidas, {Part of speech: [proper noun]}]
-          - [59, 60, Kronos, {Part of speech: [proper noun]}]
-          - [61, 62, Lacuna, {Part of speech: [proper noun]}]
-          - [63, 64, Lumen, {Part of speech: [proper noun]}]
-          - [65, 66, Mobius, {Part of speech: [proper noun]}]
-          - [67, 68, Morien, {Part of speech: [proper noun]}]
-          - [69, 70, Onyx]
-          - [71, 72, Outer]
-          - [73, 74, Sanguis, {Part of speech: [proper noun]}]
-          - [75, 76, Scarred]
-          - [77, 78, Scorched]
-          - [79, 80, Shattered]
-          - [81, 82, Shrouded]
-          - [83, 84, Sindri, {Part of speech: [proper noun]}]
-          - [85, 86, Solana, {Part of speech: [proper noun]}]
-          - [87, 88, Stygian]
-          - [89, 90, Sulaco, {Part of speech: [proper noun]}]
-          - [91, 92, Sundered]
-          - [93, 94, Thunor, {Part of speech: [proper noun]}]
-          - [95, 96, Vanguard]
-          - [97, 98, Veiled]
-          - [99, 100, Wasted]
-      - Display:
-          Column of: Oracles / Space / Sector Name
-        Name: Suffix
-        Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-        Usage:
-          Initial: true
-          Suggestions:
-            Oracle rolls:
-              - Oracles / Space / Sector Name / Prefix
-        Content:
-          Part of speech: [noun]
-          Tags: [template fragment, place]
-        Table:
-          - [1, 2, Abyss]
-          - [3, 4, Anvil]
-          - [5, 6, Arch]
-          - [7, 8, Breach]
-          - [9, 10, Chain]
-          - [11, 12, Channel]
-          - [13, 14, Chasm]
-          - [15, 16, Circlet]
-          - [17, 18, Cluster]
-          - [19, 20, Crossing]
-          - [21, 22, Crown]
-          - [23, 24, Currents]
-          - [25, 26, Deep]
-          - [27, 28, Desolation]
-          - [29, 30, Drift]
-          - [31, 32, Flow]
-          - [33, 34, Flux]
-          - [35, 36, Gap]
-          - [37, 38, Gate]
-          - [39, 40, Gyre]
-          - [41, 42, Heart]
-          - [43, 44, Helix]
-          - [45, 46, Juncture]
-          - [47, 48, Limits]
-          - [49, 50, Locus]
-          - [51, 52, Maelstrom]
-          - [53, 54, Margin]
-          - [55, 56, Maw]
-          - [57, 58, Maze]
-          - [59, 60, Nexus]
-          - [61, 62, Oasis]
-          - [63, 64, Pass]
-          - [65, 66, Pit]
-          - [67, 68, Pyre]
-          - [69, 70, Reach]
-          - [71, 72, Rest]
-          - [73, 74, Rift]
-          - [75, 76, Sanctum]
-          - [77, 78, Shallows]
-          - [79, 80, Shoal]
-          - [81, 82, Spine]
-          - [83, 84, Straits]
-          - [85, 86, Threshold]
-          - [87, 88, Tide]
-          - [89, 90, Verge]
-          - [91, 92, Vertex]
-          - [93, 94, Vigil]
-          - [95, 96, Void]
-          - [97, 98, Web]
-          - [99, 100, Zenith]
+        - Display:
+            Column of: Oracles / Space / Sector Name
+          Name: Prefix
+          Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
+          Usage:
+            Initial: true
+            Suggestions:
+              Oracle rolls:
+                - Oracles / Space / Sector Name / Suffix
+          Content:
+            Part of speech: [adjective]
+            Tags: [template fragment]
+          Table:
+            - [1, 2, Accursed]
+            - [3, 4, Ashen]
+            - [5, 6, Asteria, Part of speech: [proper noun]]
+            - [7, 8, Bitter]
+            - [9, 10, Blighted]
+            - [11, 12, Bloodied]
+            - [13, 14, Boundless]
+            - [15, 16, Burning]
+            - [17, 18, Cortana, Part of speech: [proper noun]]
+            - [19, 20, Corvus, Part of speech: [proper noun]]
+            - [21, 22, Crimson]
+            - [23, 24, Cygnus, Part of speech: [proper noun]]
+            - [25, 26, Delphi, Part of speech: [proper noun]]
+            - [27, 28, Delphian, Part of speech: [proper noun]]
+            - [29, 30, Devil's, Part of speech: [proper noun, possessive case]]
+            - [31, 32, Ebon]
+            - [33, 34, Essus, Part of speech: [proper noun]]
+            - [35, 36, Fallen]
+            - [37, 38, Ferrous]
+            - [39, 40, Fool's, Part of speech: [proper noun, possessive case]]
+            - [41, 42, Forgotten]
+            - [43, 44, Haunted]
+            - [45, 46, Hidden]
+            - [47, 48, Hollow]
+            - [49, 50, Igneous]
+            - [51, 52, Infernal]
+            - [53, 54, Invidia, Part of speech: [proper noun]]
+            - [55, 56, Iron]
+            - [57, 58, Kalidas, Part of speech: [proper noun]]
+            - [59, 60, Kronos, Part of speech: [proper noun]]
+            - [61, 62, Lacuna, Part of speech: [proper noun]]
+            - [63, 64, Lumen, Part of speech: [proper noun]]
+            - [65, 66, Mobius, Part of speech: [proper noun]]
+            - [67, 68, Morien, Part of speech: [proper noun]]
+            - [69, 70, Onyx]
+            - [71, 72, Outer]
+            - [73, 74, Sanguis, Part of speech: [proper noun]]
+            - [75, 76, Scarred]
+            - [77, 78, Scorched]
+            - [79, 80, Shattered]
+            - [81, 82, Shrouded]
+            - [83, 84, Sindri, Part of speech: [proper noun]]
+            - [85, 86, Solana, Part of speech: [proper noun]]
+            - [87, 88, Stygian]
+            - [89, 90, Sulaco, Part of speech: [proper noun]]
+            - [91, 92, Sundered]
+            - [93, 94, Thunor, Part of speech: [proper noun]]
+            - [95, 96, Vanguard]
+            - [97, 98, Veiled]
+            - [99, 100, Wasted]
+        - Display:
+            Column of: Oracles / Space / Sector Name
+          Name: Suffix
+          Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
+          Usage:
+            Initial: true
+            Suggestions:
+              Oracle rolls:
+                - Oracles / Space / Sector Name / Prefix
+          Content:
+            Part of speech: [noun]
+            Tags: [template fragment, place]
+          Table:
+            - [1, 2, Abyss]
+            - [3, 4, Anvil]
+            - [5, 6, Arch]
+            - [7, 8, Breach]
+            - [9, 10, Chain]
+            - [11, 12, Channel]
+            - [13, 14, Chasm]
+            - [15, 16, Circlet]
+            - [17, 18, Cluster]
+            - [19, 20, Crossing]
+            - [21, 22, Crown]
+            - [23, 24, Currents]
+            - [25, 26, Deep]
+            - [27, 28, Desolation]
+            - [29, 30, Drift]
+            - [31, 32, Flow]
+            - [33, 34, Flux]
+            - [35, 36, Gap]
+            - [37, 38, Gate]
+            - [39, 40, Gyre]
+            - [41, 42, Heart]
+            - [43, 44, Helix]
+            - [45, 46, Juncture]
+            - [47, 48, Limits]
+            - [49, 50, Locus]
+            - [51, 52, Maelstrom]
+            - [53, 54, Margin]
+            - [55, 56, Maw]
+            - [57, 58, Maze]
+            - [59, 60, Nexus]
+            - [61, 62, Oasis]
+            - [63, 64, Pass]
+            - [65, 66, Pit]
+            - [67, 68, Pyre]
+            - [69, 70, Reach]
+            - [71, 72, Rest]
+            - [73, 74, Rift]
+            - [75, 76, Sanctum]
+            - [77, 78, Shallows]
+            - [79, 80, Shoal]
+            - [81, 82, Spine]
+            - [83, 84, Straits]
+            - [85, 86, Threshold]
+            - [87, 88, Tide]
+            - [89, 90, Verge]
+            - [91, 92, Vertex]
+            - [93, 94, Vigil]
+            - [95, 96, Void]
+            - [97, 98, Web]
+            - [99, 100, Zenith]
     - Name: Peril
       Display:
         Title: Spaceborne Peril
@@ -295,10 +290,7 @@ Space:
         Repeatable: true
         Requires:
           Attributes:
-            - Key: Location
-              Values:
-                - Orbital
-                - Deep Space
+            Location: [Orbital, Deep Space]
       Content:
         Tags: [peril, event, present]
         Content:
@@ -313,15 +305,15 @@ Space:
         - [16, 18, Energy storm looms]
         - [19, 21, Familiar foe appears or sends an ominous message]
         - [22, 24, Gravity well or vortex takes hold]
-        - [25, 27, Imperiled ship calls for help, *suggestShip]
+        - [25, 27, Imperiled ship calls for help, Suggestions: [*obj:Starship]]
         - [28, 30, Important device fails or malfunctions]
-        - [31, 33, Infestation is revealed, *suggestCreature]
+        - [31, 33, Infestation is revealed, Suggestions: [*obj:Creature]]
         - [34, 36, Intruder or stowaway creates trouble]
         - [37, 39, Isolation or fear presses in]
         - [40, 42, Life support system malfunctions]
         - [43, 45, Meteoroid storm fills the sky]
-        - [46, 48, Mysterious wreckage portends a new threat, *suggestDerelictStarship]
-        - [49, 51, Nearby settlement calls for help, *suggestSettlement]
+        - [46, 48, Mysterious wreckage portends a new threat, Suggestions: [*obj:Derelict.Starship]]
+        - [49, 51, Nearby settlement calls for help, Suggestions: [*obj:Settlement]]
         - [52, 54, Old repair or patch fails]
         - [55, 57, Onboard dispute or inner turmoil causes a disruption]
         - [58, 60, Others obstruct your path or form a blockade]
@@ -333,12 +325,12 @@ Space:
         - [76, 78, Shockwave or gravity wave approaches]
         - [79, 81, Someone questions your presence here]
         - [82, 84, Stellar anomaly emits hazardous energies]
-        - [85, 87, Threatening lifeform draws near, *suggestCreature]
+        - [85, 87, Threatening lifeform draws near, Suggestions: [*obj:Creature]]
         - [88, 90, Troubling visions or apparitions]
         - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
         - [94, 96, Unsettling sounds or disturbances]
-        - [97, 99, *Action+Theme]
-        - [100, 100, *Roll_twice]
+        - [97, 99, *result:Action+Theme]
+        - [100, 100, *result:RollTwice]
     - Name: Opportunity
       Display:
         Title: Spaceborne Opportunity
@@ -346,10 +338,7 @@ Space:
         Repeatable: true
         Requires:
           Attributes:
-            - Key: Location
-              Values:
-                - Orbital
-                - Deep Space
+            Location: [Orbital, Deep Space]
       Content:
         Part of speech: [fragment]
         Tags: [opportunity]
@@ -357,24 +346,24 @@ Space:
       Table:
         - [1, 4, Advance warning of an environmental threat]
         - [5, 8, Automated signal offers a helpful message or warning]
-        - [9, 12, Cache of cargo or supplies, *suggestObject]
+        - [9, 12, Cache of cargo or supplies, Suggestions: [*roll:Object]]
         - [13, 16, Chance for fellowship or a moment of inner peace]
         - [17, 20, Clear path through otherwise perilous space]
         - [21, 24, Clue offers insight into a current quest or mystery]
         - [25, 28, Clue to a lifeform's nature or vulnerabilities]
-        - [29, 32, Derelict ripe for the picking, *suggestDerelict]
+        - [29, 32, Derelict ripe for the picking, Suggestions: [*obj:Derelict]]
         - [33, 36, Foe inadvertently reveals themselves or tips their hand]
-        - [37, 40, Friendly interaction with a benign lifeform, *suggestCreature]
-        - [41, 44, Friendly settlement in range, *suggestSettlement]
-        - [45, 48, Friendly spacers at work here, *suggestNpc]
-        - [49, 52, Friendly starship crosses your path, *suggestShip]
+        - [37, 40, Friendly interaction with a benign lifeform, Suggestions: [*obj:Creature]]
+        - [41, 44, Friendly settlement in range, Suggestions: [*obj:Settlement]]
+        - [45, 48, Friendly spacers at work here, Suggestions: [*obj:Npc]]
+        - [49, 52, Friendly starship crosses your path, Suggestions: [*obj:Starship]]
         - [53, 56, Helpful or encouraging message from an acquaintance]
         - [57, 60, Impressive vista offers comfort or inspiration]
         - [61, 64, Interesting site offers opportunities for exploration]
         - [65, 68, Mineral or energy resource detected]
         - [69, 72, Navigational or environmental hazard is left behind]
         - [73, 76, Opening to escape or avoid foes]
-        - [77, 80, Plea for help from a potential benefactor, *suggestNpc]
+        - [77, 80, Plea for help from a potential benefactor, Suggestions: [*obj:Npc]]
         - [81, 84, Probe or beacon with useful data]
         - [85, 88, "Refuge offers a place to hide, plan, or recover"]
         - [89, 92, Sensors pinpoint a lurking foe]

@@ -1,75 +1,50 @@
 Mechanical:
-  Name: Mechanical
-  Display:
-    Title: Location Theme / Mechanical
-  _childOf: Location Themes
-  Description: *Mechanical
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Location Theme
-          Values:
-            - Mechanical
+  _templateCategory: *template.category:LocationTheme
+  _templateVars:
+    Location Theme: Mechanical
+  Description: *description:Mechanical
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 377
   Oracles:
-    - Name: Feature
-      Description: *theme_feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Control station or terminal]
-        - [9, 16, Device or technology with a mysterious function]
-        - [17, 24, Disassembled machinery or parts]
-        - [25, 32, Heavy machinery at work]
-        - [33, 40, Machine fabrication or repair]
-        - [41, 48, Machines emulating or fusing with biological life]
-        - [49, 56, Machines in stasis or powered down]
-        - [57, 64, Machines single-mindedly executing a function or program]
-        - [65, 72, Major project under construction]
-        - [73, 80, Mechanical environment in motion or transforming]
-        - [81, 88, Mechanical wreckage or destruction]
-        - [89, 96, Power source for the machines]
-        - [97, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Description: *theme_peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 9, Alarm or warning is triggered]
-        - [10, 18, Automated weapon or trap is activated]
-        - [19, 27, Environment made unsuitable for life]
-        - [28, 36, Hostile machines on patrol]
-        - [37, 45, Machines transform to reveal new capabilities]
-        - [46, 54, Machines with corrupted or hacked programming]
-        - [55, 63, Malfunctioning machines or technology]
-        - [64, 72, Moving machinery creates a danger or obstacle]
-        - [73, 81, Under surveillance by a central machine intelligence]
-        - [82, 90, Volatile technology]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Description: *theme_opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Helpful device]
-        - [21, 40, Insight into the workings or purpose of the machines]
-        - [41, 60, Intelligent machine offers aid]
-        - [61, 80, Salvageable resource]
-        - [81, 100, Wonderous technology]
-
-
-
-
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Feature
+        content:
+          - Control station or terminal
+          - Device or technology with a mysterious function
+          - Disassembled machinery or parts
+          - Heavy machinery at work
+          - Machine fabrication or repair
+          - Machines emulating or fusing with biological life
+          - Machines in stasis or powered down
+          - Machines single-mindedly executing a function or program
+          - Major project under construction
+          - Mechanical environment in motion or transforming
+          - Mechanical wreckage or destruction
+          - Power source for the machines
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:LocationTheme.Peril
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Peril
+        content:
+          - Alarm or warning is triggered
+          - Automated weapon or trap is activated
+          - Environment made unsuitable for life
+          - Hostile machines on patrol
+          - Machines transform to reveal new capabilities
+          - Machines with corrupted or hacked programming
+          - Malfunctioning machines or technology
+          - Moving machinery creates a danger or obstacle
+          - Under surveillance by a central machine intelligence
+          - Volatile technology
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Opportunity
+        content:
+          - Helpful device
+          - Insight into the workings or purpose of the machines
+          - Intelligent machine offers aid
+          - Salvageable resource
+          - Wonderous technology

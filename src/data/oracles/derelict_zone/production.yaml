@@ -1,87 +1,63 @@
 Production:
-  Name: Production
-  Display:
-    Title: Derelict / Production
-  _childOf: Derelicts
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Zone
-          Values:
-            - Production
+  _templateCategory: *template.category:Zone
+  _templateVars:
+    Zone: Production
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 358
   Oracles:
-    - Name: Area
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Airlock or staging area]
-        - [9, 16, Assembly or processing]
-        - [17, 24, Cargo bay]
-        - [25, 32, Equipment storage]
-        - [33, 40, Exosuit bay]
-        - [41, 48, Harvesting or mining platform]
-        - [49, 56, Monitoring or control room]
-        - [57, 64, Processed goods storage]
-        - [65, 72, Raw materials storage]
-        - [73, 80, Scrapyard]
-        - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *zoneAccess]
-
-    - Name: Feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Cargo lifts]
-        - [9, 16, Control panels]
-        - [17, 24, Disassembled machinery]
-        - [25, 32, Elevated walkways]
-        - [33, 40, Environment suits]
-        - [41, 48, Ill-fated workers]
-        - [49, 56, Immense machinery]
-        - [57, 64, Sealed or locked containers]
-        - [65, 72, Tools]
-        - [73, 80, Vats of chemicals or gas]
-        - [81, 88, Written manifest]
-        - [89, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 10, Claustrophobic spaces]
-        - [11, 20, Dangerous machinery]
-        - [21, 30, Disturbing evidence of exploited labor]
-        - [31, 40, Extreme temperatures]
-        - [41, 50, Hazardous materials]
-        - [51, 60, Impending industrial disaster]
-        - [61, 70, Malfunctioning automation]
-        - [71, 80, Rivals seek to secure these resources]
-        - [81, 90, Signs of an unearthed or manufactured threat]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Helpful vehicle or transport]
-        - [21, 40, Rare or valuable resource]
-        - [41, 60, Salvageable materials]
-        - [61, 80, Useful equipment]
-        - [81, 100, Valuable cargo]
-
-
-
+    - _templateInfo: *template.info:Zone.Area
+      _templateTable:
+        rolls: *template.rolls:Zone.Area
+        content:
+          - Airlock or staging area
+          - Assembly or processing
+          - Cargo bay
+          - Equipment storage
+          - Exosuit bay
+          - Harvesting or mining platform
+          - Monitoring or control room
+          - Processed goods storage
+          - Raw materials storage
+          - Scrapyard
+          - *result:NewZone
+          - *result:NewZoneViaAccess
+    - _templateInfo: *template.info:Zone.Feature
+      _templateTable:
+        rolls: *template.rolls:Zone.Feature
+        content:
+          - Cargo lifts
+          - Control panels
+          - Disassembled machinery
+          - Elevated walkways
+          - Environment suits
+          - Ill-fated workers
+          - Immense machinery
+          - Sealed or locked containers
+          - Tools
+          - Vats of chemicals or gas
+          - Written manifest
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        content:
+          - Claustrophobic spaces
+          - Dangerous machinery
+          - Disturbing evidence of exploited labor
+          - Extreme temperatures
+          - Hazardous materials
+          - Impending industrial disaster
+          - Malfunctioning automation
+          - Rivals seek to secure these resources
+          - Signs of an unearthed or manufactured threat
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        content:
+          - Helpful vehicle or transport
+          - Rare or valuable resource
+          - Salvageable materials
+          - Useful equipment
+          - Valuable cargo

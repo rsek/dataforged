@@ -1,12 +1,12 @@
 import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId";
 
-import IOracleInfo from "./IOracleInfo";
+import IOracle from "./IOracle";
 import IOracleUsage from "./IOracleUsage";
-import { Source } from "../../general/Source";
+import Source from "../../general/Source";
 import IOracleCategoryDisplay from "./IOracleCategoryDisplay";
-import IOracleCategoryData from "./IOracleCategoryData";
+import IOracleCategoryYaml from "./yaml/IOracleCategoryYaml";
 
-export default interface IOracleCategory extends IOracleCategoryData {
+export default interface IOracleCategoryInfo extends Omit<IOracleCategoryYaml, "Requires" | "Categories" | "Usage" | "Oracles" | "_templateCategory" | "_childOf" | "_parentOf"> {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;
@@ -15,6 +15,6 @@ export default interface IOracleCategory extends IOracleCategoryData {
   Description?: string | undefined;
   Display?: IOracleCategoryDisplay;
   Usage?: IOracleUsage | undefined;
-  Oracles?: IOracleInfo[] | undefined;
-  Categories?: IOracleCategory[] | undefined;
+  Oracles?: IOracle[] | undefined;
+  Categories?: IOracleCategoryInfo[] | undefined;
 }

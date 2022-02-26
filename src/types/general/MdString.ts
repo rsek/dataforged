@@ -1,4 +1,5 @@
 
 import t from 'ts-runtime/lib';
 
-export type MdString = string;
+type MdString = string; export default MdString;
+

@@ -17,15 +17,13 @@ Derelicts:
   Oracles:
     - Name: Location
       Usage:
-        Sets attributes:
-          - Location
         Initial: true
       Content:
         Part of speech: [adjective]
       Table:
-        - [1, 40, Planetside, *attr_Planetside]
-        - [41, 60, Orbital, *attr_Orbital]
-        - [61, 100, Deep Space, *attr_DeepSpace]
+        - [1, 40, Planetside, *attr:Location.Planetside]
+        - [41, 60, Orbital, *attr:Location.Orbital]
+        - [61, 100, Deep Space, *attr:Location.DeepSpace]
 
     - Name: Type
       Usage:
@@ -44,19 +42,16 @@ Derelicts:
             Column of: Oracles / Derelicts / Type
           Name: Planetside
           Usage:
-            Sets attributes: &derelictSetsAttributes
-              - Derelict Type
             Requires: *attr:Location.Planetside
           Table: &derelictTypeTable
-            - [1, 25, Starship, *attr:Derelict.Starship]
-            - [26, 100, Settlement, *attr:Derelict.Settlement]
+            - [1, 25, Starship, *attr:DerelictType.Starship]
+            - [26, 100, Settlement, *attr:DerelictType.Settlement]
         - Display: *derelictTypeDisplay
           Name: Orbital
           Usage:
-            Sets attributes: *derelictSetsAttributes
             Requires: *attr:Location.Orbital
           _templateTable:
-            results: *derelictTypeTable
+            content: *derelictTypeTable
             rolls:
               - [1, 40]
               - [41, 100]
@@ -64,10 +59,9 @@ Derelicts:
             Column of: Oracles / Derelicts / Type
           Name: Deep Space
           Usage:
-            Sets attributes: *derelictSetsAttributes
             Requires: *attr:Location.DeepSpace
           _templateTable:
-            results: *derelictTypeTable
+            content: *derelictTypeTable
             rolls:
               - [1, 75]
               - [76, 100]
@@ -155,7 +149,7 @@ Derelicts:
         Repeatable: true
         Requires:
           Attributes:
-            Derelict Type: []
+            Derelict Type: null
       Oracles:
         - Name: Starship
           Display:
@@ -165,13 +159,13 @@ Derelicts:
               Attributes:
                 Derelict Type: Starship
           Table: &derelictZoneTable
-            - [1, 5, ⏵Community, *zoneCommunity]
-            - [6, 30, ⏵Engineering, *zoneEngineering]
-            - [31, 55, ⏵Living, *zoneLiving]
-            - [56, 65, ⏵Medical, *zoneMedical]
-            - [66, 85, ⏵Operations, *zoneOperations]
-            - [86, 90, ⏵Production, *zoneProduction]
-            - [91, 100, ⏵Research, *zoneResearch]
+            - [1, 5, ⏵Community, *obj:DerelictZone.Community]
+            - [6, 30, ⏵Engineering, *obj:DerelictZone.Engineering]
+            - [31, 55, ⏵Living, *obj:DerelictZone.Living]
+            - [56, 65, ⏵Medical, *obj:DerelictZone.Medical]
+            - [66, 85, ⏵Operations, *obj:DerelictZone.Operations]
+            - [86, 90, ⏵Production, *obj:DerelictZone.Production]
+            - [91, 100, ⏵Research, *obj:DerelictZone.Research]
 
         - Name: Settlement
           Display:
@@ -181,7 +175,7 @@ Derelicts:
               Attributes:
                 Derelict Type: Settlement
           _templateTable:
-            results: *derelictZoneTable
+            content: *derelictZoneTable
             rolls:
               - [1, 20]
               - [21, 30]

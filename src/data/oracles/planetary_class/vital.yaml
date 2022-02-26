@@ -1,8 +1,10 @@
 Vital World:
-  _templateInfo: *template.info:Planet
-  _vars:
+  _templateCategory: *template.category:Planet
+  _templateVars:
     Planetary Class: Vital
   Image: "https://i.imgur.com/Syhr8rp.png"
+  Source:
+    Page: 318
   Description: This diverse, life-bearing planet might provide some small measure of hope.
   Sample Names:
     - Chiron
@@ -28,11 +30,11 @@ Vital World:
   Oracles: #TODO: standardize templateInfo in, like, everything
     - _templateInfo: *template.info:Planet.Atmosphere
       _templateTable:
-        results: *template.results:Planet.Atmosphere
+        content: *template.content:Planet.Atmosphere
         rolls:
-          - [0, 0] # None / thin
-          - [0, 0] # Toxic
-          - [0, 0] # Corrosive
+          - [null, null] # None / thin
+          - [null, null] # Toxic
+          - [null, null] # Corrosive
           - [1, 20] # Marginal
           - [21, 50] # Breathable
           - [51, 100] # Ideal
@@ -40,7 +42,7 @@ Vital World:
       Oracles:
         - _templateInfo: *template.info:Planet.Settlements.Terminus
           _templateTable:
-            results: *template.results:Planet.Settlements.Terminus
+            content: *template.content:Planet.Settlements
             rolls:
               - [1, 20] # None
               - [21, 30] # Orbital settlement
@@ -49,7 +51,7 @@ Vital World:
               - [91, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Outlands
           _templateTable:
-            results: *template.results:Planet.Settlements.Outlands
+            content: *template.content:Planet.Settlements
             rolls:
               - [1, 50] # None
               - [51, 55] # Orbital settlement
@@ -58,7 +60,7 @@ Vital World:
               - [96, 100] # Settlements in conflict
         - _templateInfo: *template.info:Planet.Settlements.Expanse
           _templateTable:
-            results: *template.results:Planet.Settlements.Expanse
+            content: *template.content:Planet.Settlements
             rolls:
               - [1, 80] # None
               - [81, 83] # Orbital settlement
@@ -68,43 +70,43 @@ Vital World:
     - _templateInfo: *template.info:Planet.ObservedFromSpace
       _templateTable:
         rolls: *template.rolls:Planet.ObservedFromSpace
-        results:
-          - [Complex ring system]
-          - [Numerous small moons]
-          - [Dramatic seasonal variation]
-          - [Unusual day or night cycle]
-          - [High gravity]
-          - [Vibrantly colored landscapes]
-          - [Large moon]
-          - [Narrow livable band]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Orbital]
+        content:
+          - Complex ring system
+          - Numerous small moons
+          - Dramatic seasonal variation
+          - Unusual day or night cycle
+          - High gravity
+          - Vibrantly colored landscapes
+          - Large moon
+          - Narrow livable band
+          - *result:Descriptor+Focus
+          - *result:PrecursorVault.Orbital
     - Name: Diversity
       Content:
         Part of speech: [adjective]
       Table:
         - [1, 20, "Simple (two biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               &biome Oracles / Planets / Vital / Biomes,
-              *biome ]}]
+              *biome ]]
         - [21, 70, "Diverse (three biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               *biome,
               *biome,
-              *biome ]}]
+              *biome ]]
         - [71, 90, "Complex (four biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               *biome,
               *biome,
               *biome,
-              *biome ]}]
+              *biome ]]
         - [91, 100, "Garden world (five or more biomes)",
-            { Oracle rolls: [
+            Oracle rolls: [
               *biome,
               *biome,
               *biome,
               *biome,
-              *biome ]}]
+              *biome ]]
     - Name: Biomes
       Usage:
         Min rolls: 2
@@ -135,28 +137,28 @@ Vital World:
     - _templateInfo: *template.info:Planet.PlanetsideFeature
       _templateTable:
         rolls: *template.rolls:Planet.PlanetsideFeature
-        results:
-          - [Background radiation]
-          - [Chaotically juxtaposed biomes]
-          - [Creature boneyards]
-          - [Creature lairs or watering holes]
-          - [Crystalline formations]
-          - [Fierce electrical storms]
-          - [Floating terrain]
-          - [Frequent seismic activity]
-          - [Magnetic disturbances]
-          - [Scarred or excavated terrain]
-          - [Signs of an engineered biosphere]
-          - [Sudden weather fluctuations]
-          - [Towering geological formations]
-          - [*result:Descriptor+Focus]
-          - [*result:Vault.Planetside]
+        content:
+          - Background radiation
+          - Chaotically juxtaposed biomes
+          - Creature boneyards
+          - Creature lairs or watering holes
+          - Crystalline formations
+          - Fierce electrical storms
+          - Floating terrain
+          - Frequent seismic activity
+          - Magnetic disturbances
+          - Scarred or excavated terrain
+          - Signs of an engineered biosphere
+          - Sudden weather fluctuations
+          - Towering geological formations
+          - *result:Descriptor+Focus
+          - *result:PrecursorVault.Planetside
     - _templateInfo: *template.info:Planet.Life
       _templateTable:
-        results: *template.results:Planet.Life
+        content: *template.content:Planet.Life
         rolls:
-          - [0, 0] # None
-          - [0, 0] # Extinct
+          - [null, null] # None
+          - [null, null] # Extinct
           - [1, 10] # Scarce
           - [11, 45] # Diverse
           - [46, 85] # Bountiful

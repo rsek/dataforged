@@ -1,9 +1,10 @@
 import t from 'ts-runtime/lib';
 
-import { ChallengeRank } from "../general/ChallengeRank";
+import ChallengeRank from "../general/ChallengeRank";
 import IDisplay from "../general/Display";
-import { MdString } from "../general/MdString";
-import { ISource, Source } from "../general/Source";
+import MdString from "../general/MdString";
+import Source from "../general/Source";
+import ISource from "../general/interfaces/ISource";
 import EncounterDisplay from "./EncounterDisplay";
 import EncounterId from "./EncounterId";
 import EncounterNature from "./EncounterNature";

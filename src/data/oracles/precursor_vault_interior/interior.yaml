@@ -89,9 +89,10 @@ Interior:
         - [77, 79, Unintelligible whispers]
         - [80, 82, Vaulted chamber]
         - [83, 85, Vertical shaft]
-        - [86, 90, Transition into the Sanctum, *Vault_Sanctum]
+        # TODO: work out a way to represent interior and sanctum as game objects
+        - [86, 90, Transition into the Sanctum]
         - [91, 95, *result:Descriptor+Focus]
-        - [96, 100, *Roll_twice]
+        - [96, 100, *result:RollTwice]
 
     - Name: Peril
       Display:
@@ -122,8 +123,8 @@ Interior:
         - [81, 85, Tempting location or object holds hidden dangers]
         - [86, 90, Toxic atmosphere]
         - [91, 95, Unnerving sound or sensation]
-        - [96, 99, *Action+Theme]
-        - [100, 100, *Roll_twice]
+        - [96, 99, *result:Action+Theme]
+        - [100, 100, *result:RollTwice]
 
     - Name: Opportunity
       Display:

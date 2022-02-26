@@ -1,87 +1,63 @@
 Operations:
-  Name: Operations
-  Display:
-    Title: Derelict / Operations
-  _childOf: Derelicts
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Zone
-          Values:
-            - Operations
+  _templateCategory: *template.category:Zone
+  _templateVars:
+    Zone: Operations
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 357
   Oracles:
-    - Name: Area
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Admin or command offices]
-        - [9, 16, Armory]
-        - [17, 24, Bridge or command center]
-        - [25, 32, Brig or cells]
-        - [33, 40, Comms center]
-        - [41, 48, Computer core]
-        - [49, 56, Conference or briefing room]
-        - [57, 64, Landing bay or hangar]
-        - [65, 72, Lounge]
-        - [73, 80, Security]
-        - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *zoneAccess]
-
-    - Name: Feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Automated warning]
-        - [9, 16, Buckled blast doors]
-        - [17, 24, Control terminal]
-        - [25, 32, Emergency lighting]
-        - [33, 40, EV suit storage]
-        - [41, 48, Hissing comms channel]
-        - [49, 56, Intricate control panels]
-        - [57, 64, Map of the site]
-        - [65, 72, Recorded message]
-        - [73, 80, Video surveillance monitors]
-        - [81, 88, Written logs]
-        - [89, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 10, Automated defenses target you]
-        - [11, 20, Broken equipment limits control]
-        - [21, 30, Coded message or puzzling security device]
-        - [31, 40, Discouraging evidence of failed plans or defenses]
-        - [41, 50, Displays reveal a new threat elsewhere in this site]
-        - [51, 60, Failing power]
-        - [61, 70, Hostile AI]
-        - [71, 80, Sealed blast doors block access]
-        - [81, 90, Sensors indicate the arrival of an external threat]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Cache of weapons or ammo]
-        - [21, 40, Helpful AI]
-        - [41, 60, Keycard or access code]
-        - [61, 80, Log offers insight into this site's downfall]
-        - [81, 100, Secure area offers a moment of peace]
-
-
-
+    - _templateInfo: *template.info:Zone.Area
+      _templateTable:
+        rolls: *template.rolls:Zone.Area
+        content:
+          - Admin or command offices
+          - Armory
+          - Bridge or command center
+          - Brig or cells
+          - Comms center
+          - Computer core
+          - Conference or briefing room
+          - Landing bay or hangar
+          - Lounge
+          - Security
+          - *result:NewZone
+          - *result:NewZoneViaAccess
+    - _templateInfo: *template.info:Zone.Feature
+      _templateTable:
+        rolls: *template.rolls:Zone.Feature
+        content:
+          - Automated warning
+          - Buckled blast doors
+          - Control terminal
+          - Emergency lighting
+          - EV suit storage
+          - Hissing comms channel
+          - Intricate control panels
+          - Map of the site
+          - Recorded message
+          - Video surveillance monitors
+          - Written logs
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        content:
+          - Automated defenses target you
+          - Broken equipment limits control
+          - Coded message or puzzling security device
+          - Discouraging evidence of failed plans or defenses
+          - Displays reveal a new threat elsewhere in this site
+          - Failing power
+          - Hostile AI
+          - Sealed blast doors block access
+          - Sensors indicate the arrival of an external threat
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        content:
+          - Cache of weapons or ammo
+          - Helpful AI
+          - Keycard or access code
+          - Log offers insight into this site's downfall
+          - Secure area offers a moment of peace

@@ -1,23 +1,27 @@
 import _ from "lodash";
-import { Requirements } from "../general/Requirements";
-import IGameObjectData, { GameObjectType, isGameObjectData } from "./IGameObjectData";
-import IAttributeOptions from "./IAttributeOptions";
+import Requirements from "../general/Requirements";
+import { GameObjectType } from "./IGameObjectBase";
+import GameObjectData from "./GameObjectData";
+import badJsonError from "../../functions/logging/badJsonError";
+import { is } from "typescript-is";
+import IGameObject from "./IGameObject";
+import IRequirementsData from "../general/interfaces/IRequirementsData";
+import AttributeHash from "./AttributeHash";
 
-export default class GameObject {
+export default class GameObject implements IGameObject {
   "Object type": GameObjectType;
   Requires?: Requirements | undefined;
-  constructor(json: IGameObjectData) {
-    if (!isGameObjectData(json)) {
-      throw new Error(`[GameObject.constructor] json isn't IGameObjectData ${JSON.stringify(json)}`);
+  "Inherit rolls"?: boolean | undefined;
+  constructor(json: GameObjectData) {
+    if (!is<GameObjectType>(json["Object type"])) {
+      throw badJsonError(this.constructor, json, "Invalid object type");
     }
     this["Object type"] = json["Object type"];
-    let attributeObj = _.omitBy(json, (value, key) => typeof value == "undefined" || key == "Object type");
-    if (Object.keys(attributeObj)?.length > 0) {
-      let Attributes = _.map(attributeObj, (Value, Key) => {
-        let Values: IAttributeOptions["Values"] = Array.isArray(Value) ? Value : typeof Value == "string" ? [Value] : [];
-        return { Key, Values };
-      });
-      this.Requires = new Requirements({ Attributes });
+    // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
+    let requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]) as AttributeHash;
+    if (Object.keys(requiredAttributes).length) {
+      let requirements = { Attributes: requiredAttributes } as IRequirementsData;
+      this.Requires = new Requirements(requirements);
     }
   }
 }

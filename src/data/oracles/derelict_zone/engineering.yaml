@@ -1,84 +1,63 @@
 Engineering:
-  Name: Engineering
-  Display:
-    Title: Derelict / Engineering
-  _childOf: Derelicts
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Zone
-          Values:
-            - Engineering
+  _templateCategory: *template.category:Zone
+  _templateVars:
+    Zone: Engineering
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 354
   Oracles:
-    - Name: Area
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Control room]
-        - [9, 16, Engine room or power core]
-        - [17, 24, Engineering offices]
-        - [25, 32, Equipment storage]
-        - [33, 40, Fuel or coolant tanks]
-        - [41, 48, Life support]
-        - [49, 56, Maintenance tube]
-        - [57, 64, Vehicle bay or garage]
-        - [65, 72, Water processing]
-        - [73, 80, Workshop]
-        - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *zoneAccess]
-
-    - Name: Feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Cluttered workbench]
-        - [9, 16, Control terminal]
-        - [17, 24, Crane or lift]
-        - [25, 32, Disassembled equipment]
-        - [33, 40, Flickering status monitors]
-        - [41, 48, Jury-rigged equipment]
-        - [49, 56, Multilevel layout]
-        - [57, 64, Pipes and valves]
-        - [65, 72, Sharp ozone smell]
-        - [73, 80, Unfinished project]
-        - [81, 88, Utility bots]
-        - [89, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 10, Corrosive leak]
-        - [11, 20, Erratic utility bots]
-        - [21, 30, Failing equipment requires a specific part or skill]
-        - [31, 40, Fire or energy surge]
-        - [41, 50, Precarious or broken path]
-        - [51, 60, Radioactive hotspot]
-        - [61, 70, Sabotaged equipment]
-        - [71, 80, Shrouded atmosphere conceals a lurking foe]
-        - [81, 90, Unstable or failing power core]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Advanced or experimental equipment]
-        - [21, 40, Chance to restore power or function]
-        - [41, 60, Helpful plans or schematics]
-        - [61, 80, Helpful utility bot]
-        - [81, 100, Useful tool or device]
+    - _templateInfo: *template.info:Zone.Area
+      _templateTable:
+        rolls: *template.rolls:Zone.Area
+        content:
+          - Control room
+          - Engine room or power core
+          - Engineering offices
+          - Equipment storage
+          - Fuel or coolant tanks
+          - Life support
+          - Maintenance tube
+          - Vehicle bay or garage
+          - Water processing
+          - Workshop
+          - *result:NewZone
+          - *result:NewZoneViaAccess
+    - _templateInfo: *template.info:Zone.Feature
+      _templateTable:
+        rolls: *template.rolls:Zone.Feature
+        content:
+          - Cluttered workbench
+          - Control terminal
+          - Crane or lift
+          - Disassembled equipment
+          - Flickering status monitors
+          - Jury-rigged equipment
+          - Multilevel layout
+          - Pipes and valves
+          - Sharp ozone smell
+          - Unfinished project
+          - Utility bots
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        content:
+          - Corrosive leak
+          - Erratic utility bots
+          - Failing equipment requires a specific part or skill
+          - Fire or energy surge
+          - Precarious or broken path
+          - Radioactive hotspot
+          - Sabotaged equipment
+          - Shrouded atmosphere conceals a lurking foe
+          - Unstable or failing power core
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        content:
+          - Advanced or experimental equipment
+          - Chance to restore power or function
+          - Helpful plans or schematics
+          - Helpful utility bot
+          - Useful tool or device

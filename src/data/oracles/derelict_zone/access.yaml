@@ -1,23 +1,11 @@
 Access:
-  Name: Access
-  Display:
-    Title: Derelict / Access
-  _childOf: Derelicts
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Zone
-          Values:
-            - Access
+  _templateCategory: *template.category:Zone
+  _templateVars:
+    Zone: Access
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 352
   Oracles:
-    - Name: Area
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
+    - _templateInfo: *template.info:Zone.Area
       Table:
         - [1, 50, Corridor]
         - [51, 60, Stairs]
@@ -27,12 +15,7 @@ Access:
         - [86, 90, Hub or intersection]
         - [91, 95, Crawl space or duct]
         - [96, 100, Airlock or external]
-
-    - Name: Feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
+    - _templateInfo: *template.info:Zone.Feature
       Table:
         - [1, 5, Abandoned gear]
         - [6, 10, Blood trail]
@@ -54,38 +37,27 @@ Access:
         - [86, 90, Windows or viewports]
         - [91, 95, Wrecked passage or debris]
         - [96, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 10, Alarm or failsafe is triggered]
-        - [11, 20, Automated defenses]
-        - [21, 30, Blocked or sealed path]
-        - [31, 40, Dreadful scene of death or violence]
-        - [41, 50, Foe closes in]
-        - [51, 60, Gear is failing or broken]
-        - [61, 70, Hazardous environmental change]
-        - [71, 80, Path is trapped]
-        - [81, 90, Unsettling sound or disturbance]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, "Directions, shortcut, or alternate path"]
-        - [21, 40, "Encounter with a friendly survivor, explorer, or denizen"]
-        - [41, 60, Hopeful signs of life]
-        - [61, 80, Opening to outmaneuver or escape a threat or foe]
-        - [81, 100, Useful equipment]
-
-
-
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        content:
+          - Alarm or failsafe is triggered
+          - Automated defenses
+          - Blocked or sealed path
+          - Dreadful scene of death or violence
+          - Foe closes in
+          - Gear is failing or broken
+          - Hazardous environmental change
+          - Path is trapped
+          - Unsettling sound or disturbance
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        content:
+          - Directions, shortcut, or alternate path
+          - Encounter with a friendly survivor, explorer, or denizen
+          - Hopeful signs of life
+          - Opening to outmaneuver or escape a threat or foe
+          - Useful equipment

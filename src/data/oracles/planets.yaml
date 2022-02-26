@@ -31,11 +31,11 @@ Planets:
     The atmosphere tables include the following possible results.
 
       * **None / thin:** This planet is airless, or its atmosphere is so thin as to be useless for humans.
-      * **attr:Atmosphere.Toxic:** This planet’s atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
-      * **attr:Atmosphere.Corrosive:** This planet’s atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
-      * **attr:Atmosphere.Marginal:** It’s unhealthy to breathe this planet’s atmosphere for more than a few hours at a time.
-      * **attr:Atmosphere.Breathable:** This atmosphere is not perfect, but it’s good enough to sustain human life.
-      * **attr:Atmosphere.Ideal:** This planet’s atmosphere is ideally suited to human life.
+      * **Toxic:** This planet’s atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes.
+      * **Corrosive:** This planet’s atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time.
+      * **Marginal:** It’s unhealthy to breathe this planet’s atmosphere for more than a few hours at a time.
+      * **Breathable:** This atmosphere is not perfect, but it’s good enough to sustain human life.
+      * **Ideal:** This planet’s atmosphere is ideally suited to human life.
 
     ## Envisioning Planetside Expeditions
     Planets are big. These oracles help set the stage, but won’t provide the moment-to-moment details of a surface expedition. Instead, use the established nature of a planet as a springboard for envisioning terrain and encounters. Save the Planetside Feature table for key aspects. Roll on the Descriptor and Focus oracles (pages 294-295) for additional variety. Use the Planetside Peril and Planetside Opportunity oracles (pages 316-317) to help envision the nature of an unexpected event.
@@ -53,17 +53,17 @@ Planets:
         Part of speech: [noun]
       Description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
       Table:
-        - [1, 15, ⏵Desert World, *DesertWorld]
-        - [16, 30, ⏵Furnace World, *FurnaceWorld]
-        - [31, 35, ⏵Grave World, *GraveWorld]
-        - [36, 50, ⏵Ice World, *IceWorld]
-        - [51, 65, ⏵Jovian World, *JovianWorld]
-        - [66, 70, ⏵Jungle World, *JungleWorld]
-        - [71, 75, ⏵Ocean World, *OceanWorld]
-        - [76, 90, ⏵Rocky World, *RockyWorld]
-        - [91, 92, ⏵Shattered World, *ShatteredWorld]
-        - [93, 98, ⏵Tainted World, *TaintedWorld]
-        - [99, 100, ⏵Vital World, *VitalWorld]
+        - [1, 15, ⏵Desert World, *obj:Planet.Desert]
+        - [16, 30, ⏵Furnace World, *obj:Planet.Furnace]
+        - [31, 35, ⏵Grave World, *obj:Planet.Grave]
+        - [36, 50, ⏵Ice World, *obj:Planet.Ice]
+        - [51, 65, ⏵Jovian World, *obj:Planet.Jovian]
+        - [66, 70, ⏵Jungle World, *obj:Planet.Jungle]
+        - [71, 75, ⏵Ocean World, *obj:Planet.Ocean]
+        - [76, 90, ⏵Rocky World, *obj:Planet.Rocky]
+        - [91, 92, ⏵Shattered World, *obj:Planet.Shattered]
+        - [93, 98, ⏵Tainted World, *obj:Planet.Tainted]
+        - [99, 100, ⏵Vital World, *obj:Planet.Vital]
 
     - Name: Peril
       Display:
@@ -78,7 +78,7 @@ Planets:
         Repeatable: true
         Requires:
           Attributes:
-            - Key: Life
+            Life: null
       Content:
         Part of speech: [fragment]
         Tags: [peril, event, present]
@@ -89,27 +89,26 @@ Planets:
             Column of: Oracles / Planets / Peril
           Name: Lifebearing
           Usage:
-            Requires:
-              Attributes:
-                Life: *lifebearing
-          Table: &Planets_peril_table
-            - [1, 3, Corrupted or mutated lifeform, *suggestCreature, *suggestChaotic]
-            - [4, 6, Signs of a lifeform's power or cunning, *suggestCreature]
+            Requires: *attr:Life.Lifebearing
+          Table: &table:Planets.Peril
+            - [1, 3, Corrupted or mutated lifeform, Suggestions: [*obj:Creature]]
+            # TODO: suggest chaotic theme?
+            - [4, 6, Signs of a lifeform's power or cunning, Suggestions: [*obj:Creature]]
             - [7, 9, Hazardous plant life or malignant spores]
-            - [10, 12, Lifeform hunts for prey, *suggestCreature]
-            - [13, 15, Lifeform lairs here, *suggestCreature]
-            - [16, 18, Lifeforms guided by a greater threat, *suggestCreature]
-            - [19, 21, Lifeforms spooked or stampeding, *suggestCreature]
-            - [22, 24, Threatening lifeform draws near, *suggestCreature]
-            - [25, 27, Life is revealed or takes an unexpected form, *suggestCreature]
+            - [10, 12, Lifeform hunts for prey, Suggestions: [*obj:Creature]]
+            - [13, 15, Lifeform lairs here, Suggestions: [*obj:Creature]]
+            - [16, 18, Lifeforms guided by a greater threat, Suggestions: [*obj:Creature]]
+            - [19, 21, Lifeforms spooked or stampeding, Suggestions: [*obj:Creature]]
+            - [22, 24, Threatening lifeform draws near, Suggestions: [*obj:Creature]]
+            - [25, 27, Life is revealed or takes an unexpected form, Suggestions: [*obj:Creature]]
             - [28, 30, Blocked or impassible path]
             - [31, 33, Corrosive substance or environment]
             - [34, 36, Disturbing remains or evidence of death]
             - [37, 39, Drastic environmental change]
-            - [40, 42, Enemy holds this area, *suggestFortified]
+            - [40, 42, Enemy holds this area, Suggestions: [*obj:LocationTheme.Fortified]]
             - [43, 45, Entangling or engulfing hazard]
             - [46, 48, Equipment fails or malfunctions]
-            - [49, 51, Guarded or patrolled path, *suggestFortified]
+            - [49, 51, Guarded or patrolled path, Suggestions: [*obj:LocationTheme.Fortified]]
             - [52, 54, Led astray]
             - [55, 57, Lost the path]
             - [58, 60, Meteorites fall from the sky]
@@ -121,24 +120,28 @@ Planets:
             - [76, 78, Toxic or sickening environment]
             - [79, 81, Trap or alarm]
             - [82, 84, Treacherous or arduous path]
-            - [85, 87, Troubling visions or apparitions, *suggestHaunted]
+            - [85, 87, Troubling visions or apparitions, Suggestions: [*obj:LocationTheme.Haunted]]
             - [88, 90, Visibility hindered by atmospheric effects]
-            - [91, 93, Worrying arrival of a ship or vehicle, *suggestShip]
+            - [91, 93, Worrying arrival of a ship or vehicle, Suggestions: [*obj:Starship]]
             - [94, 96, Wreckage or ruins portend a new threat]
-            - [97, 99, *Action+Theme]
-            - [100, 100, *Roll_twice]
+            - [97, 99, *result:Action+Theme]
+            - [100, 100, *result:RollTwice]
         - Display:
             Column of: Oracles / Planets / Peril
           Name: Lifeless
           Usage:
-            Requires:
-              Attributes:
-                - Key: Life
-                  Values: *lifeless
+            Requires: *attr:Life.Lifeless
           _templateTable:
-            alignBottomRow: true
-            results: *Planets_peril_table
+            content: *table:Planets.Peril
             rolls:
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
               - [1, 3]
               - [4, 7]
               - [8, 11]
@@ -182,7 +185,7 @@ Planets:
         Repeatable: true
         Requires:
           Attributes:
-            - Key: Life
+            Life: null
       Description: |-
         Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
       Oracles:
@@ -190,17 +193,15 @@ Planets:
             Column of: Oracles / Planets / Opportunity
           Name: Lifebearing
           Usage:
-            Requires:
-              Attributes:
-                Life: *lifebearing
-          Table: &Planet_Opportunity_table
-            - [1, 4, Clue to a lifeform's nature or vulnerabilities, *suggestCreature]
-            - [5, 8, Friendly interaction with a benign lifeform, *suggestCreature]
+            Requires: *attr:Life.Lifebearing
+          Table: &table:Planets.Opportunity
+            - [1, 4, Clue to a lifeform's nature or vulnerabilities, Suggestions: [*obj:Creature]]
+            - [5, 8, Friendly interaction with a benign lifeform, Suggestions: [*obj:Creature]]
             - [9, 12, Hunting or foraging opportunities are plentiful]
-            - [13, 16, Interesting or helpful aspect of benign creatures, *suggestCreature]
+            - [13, 16, Interesting or helpful aspect of benign creatures, Suggestions: [*obj:Creature]]
             - [17, 20, Interesting or helpful aspect of local plant life]
-            - [21, 24, Encounter reveals unexpected benign lifeforms, *suggestCreature]
-            - [25, 28, Abandoned camp or vehicle, *suggestObject]
+            - [21, 24, Encounter reveals unexpected benign lifeforms, Suggestions: [*obj:Creature]]
+            - [25, 28, Abandoned camp or vehicle, Suggestions: [*roll:Object]]
             - [29, 32, Advance warning of an environmental threat]
             - [33, 36, Clear path through otherwise perilous terrain]
             - [37, 40, Clue offers insight into a current quest or mystery]
@@ -209,27 +210,29 @@ Planets:
             - [49, 52, Foe reveals themselves or tips their hand]
             - [53, 56, Fortuitous change in the weather or atmosphere]
             - [57, 60, Friendly traveler crosses your path]
-            - [61, 64, Helpful resource is in ample supply, *suggestObject]
+            - [61, 64, Helpful resource is in ample supply, Suggestions: [*roll:Object]]
             - [65, 68, Impressive vista offers comfort or inspiration]
-            - [69, 72, Interesting artifact or device, *suggestObject]
-            - [73, 76, Interesting site offers opportunities for exploration, *suggestObject]
+            - [69, 72, Interesting artifact or device, Suggestions: [*roll:Object]]
+            - [73, 76, Interesting site offers opportunities for exploration, Suggestions: [*roll:Object]]
             - [77, 80, Moment of fellowship or inner peace]
             - [81, 84, "Opening to distract, escape, or avoid foes"]
             - [85, 88, Opening to get the drop on a foe]
-            - [89, 92, Plea for help from a potential benefactor, *suggestNpc]
-            - [93, 96, "Refuge offers a place to hide, plan, or recover", *suggestObject]
-            - [97, 100, Vantage point reveals the lay of the land, *suggestObject]
+            - [89, 92, Plea for help from a potential benefactor, Suggestions: [*obj:Npc]]
+            - [93, 96, "Refuge offers a place to hide, plan, or recover", Suggestions: [*roll:Object]]
+            - [97, 100, Vantage point reveals the lay of the land, Suggestions: [*roll:Object]]
         - Display:
             Column of: Oracles / Planets / Opportunity
           Name: Lifeless
           Usage:
-            Requires:
-              Attributes:
-                Life: *lifeless
+            Requires: *attr:Life.Lifeless
           _templateTable:
-            alignBottomRow: true
-            results: *Planet_Opportunity_table
+            content: *table:Planets.Opportunity
             rolls:
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
+              - [null, null]
               - [1, 5]
               - [6, 10]
               - [11, 15]

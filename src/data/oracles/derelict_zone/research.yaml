@@ -1,87 +1,63 @@
 Research:
-  Name: Research
-  Display:
-    Title: Derelict / Research
-  _childOf: Derelicts
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Zone
-          Values:
-            - Research
+  _templateCategory: *template.category:Zone
+  _templateVars:
+    Zone: Research
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 359
   Oracles:
-    - Name: Area
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Clean room]
-        - [9, 16, Cold storage]
-        - [17, 24, Creature or animal pens]
-        - [25, 32, Decontamination Room]
-        - [33, 40, Hazardous material storage]
-        - [41, 48, Hydroponics or agriculture]
-        - [49, 56, Isolation or containment]
-        - [57, 64, Lab]
-        - [65, 72, Library or records]
-        - [73, 80, Secure vault]
-        - [81, 85, New zone, *Zone]
-        - [86, 100, New zone via ⏵Access, *zoneAccess]
-
-    - Name: Feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Aquarium or tank]
-        - [9, 16, Biological specimens]
-        - [17, 24, Bones or fossils]
-        - [25, 32, Broken equipment]
-        - [33, 40, Cryptic research notes]
-        - [41, 48, Hastily destroyed data]
-        - [49, 56, Hazmat suits]
-        - [57, 64, Inscrutable artifact]
-        - [65, 72, Invasive plant growth]
-        - [73, 80, Recorded research log]
-        - [81, 88, Spilled chemicals]
-        - [89, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 10, Automated containment protocols are activated]
-        - [11, 20, Biological infestation]
-        - [21, 30, Dangerous specimen]
-        - [31, 40, Disturbing outcome of a failed experiment]
-        - [41, 50, Evidence of sinister experiments]
-        - [51, 60, Fragile vault holds a dire threat]
-        - [61, 70, Signs of broken containment]
-        - [71, 80, Toxic environment]
-        - [81, 90, Unstable technology]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Helpful research data]
-        - [21, 40, Records of a notable discovery]
-        - [41, 60, Specialized research tools]
-        - [61, 80, Unique prototype]
-        - [81, 100, Useful navigational data]
-
-
-
+    - _templateInfo: *template.info:Zone.Area
+      _templateTable:
+        rolls: *template.rolls:Zone.Area
+        content:
+          - Clean room
+          - Cold storage
+          - Creature or animal pens
+          - Decontamination room
+          - Hazardous material storage
+          - Hydroponics or agriculture
+          - Isolation or containment
+          - Lab
+          - Library or records
+          - Secure vault
+          - *result:NewZone
+          - *result:NewZoneViaAccess
+    - _templateInfo: *template.info:Zone.Feature
+      _templateTable:
+        rolls: *template.rolls:Zone.Feature
+        content:
+          - Aquarium or tank
+          - Biological specimens
+          - Bones or fossils
+          - Broken equipment
+          - Cryptic research notes
+          - Hastily destroyed data
+          - Hazmat suits
+          - Inscrutable artifact
+          - Invasive plant growth
+          - Recorded research log
+          - Spilled chemicals
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        content:
+          - Automated containment protocols are activated
+          - Biological infestation
+          - Dangerous specimen
+          - Disturbing outcome of a failed experiment
+          - Evidence of sinister experiments
+          - Fragile vault holds a dire threat
+          - Signs of broken containment
+          - Toxic environment
+          - Unstable technology
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        content:
+          - Helpful research data
+          - Records of a notable discovery
+          - Specialized research tools
+          - Unique prototype
+          - Useful navigational data

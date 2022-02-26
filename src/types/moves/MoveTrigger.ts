@@ -1,21 +1,11 @@
 import t from 'ts-runtime/lib';
 
-import { MdString } from "../general/MdString";
 import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll";
-import { IMoveTriggerOption, IMoveTriggerOptionData, MoveTriggerOption } from "./MoveTriggerOption";
+import IMoveTrigger from './interfaces/IMoveTrigger';
+import IMoveTriggerData from './interfaces/IMoveTriggerData';
+import MoveTriggerOption from "./MoveTriggerOption";
 
-export interface IMoveTriggerData {
-  Text: MdString;
-  Options?: IMoveTriggerOptionData[] | undefined;
-}
-
-export interface IMoveTrigger {
-  $id: string;
-  Text: string;
-  Options?: IMoveTriggerOption[] | undefined;
-}
-
-export class MoveTrigger implements IMoveTrigger {
+export default class MoveTrigger implements IMoveTrigger {
   $id: string;
   Text: string;
   Options?: MoveTriggerOption[] | undefined;

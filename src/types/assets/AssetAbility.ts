@@ -1,39 +1,17 @@
 import t from 'ts-runtime/lib';
-import { IMove, Move } from "../moves/Move";
-import { IAsset, IAssetData } from "./Asset";
-import { IInput, Input, isNumberInput, isSelectInput, isTextInput, NumberInput, SelectInput, TextInput } from "../general/Input";
-import { IHasId } from "../general/Id";
-import { AlterMove, IAlterMoveData } from "./AlterMove";
+import { is } from 'typescript-is';
+import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
+import Move from '../moves/Move';
+import AlterMove from './AlterMove';
+import IAssetAbility from './interfaces/IAssetAbility';
+import IAssetAbilityData from './interfaces/IAssetAbilityData';
+import IAssetData from './interfaces/IAssetData';
 
-// interface for outgoing JSON + deserialization
-export interface IAssetAbility extends IAssetAbilityData, Omit<IHasId, "Name"> {
+export default class AssetAbility implements IAssetAbility {
   $id: string;
   Text: string;
   Move?: Move | undefined;
-  Inputs?: Input[] | undefined;
-  "Alter Moves"?: AlterMove[] | undefined;
-  "Alter Properties"?: Partial<IAssetData> | undefined;
-  Enabled: boolean;
-}
-
-// interface for incoming data
-export interface IAssetAbilityData {
-  $id?: string | undefined;
-  Text: string;
-  Enabled?: boolean | undefined;
-  Move?: IMove | undefined;
-  Inputs?: IInput[] | Input[] | undefined;
-  "Alter Moves"?: IAlterMoveData[] | undefined;
-  "Alter Properties"?: Partial<IAssetData> | undefined;
-}
-
-
-
-export class AssetAbility implements IAssetAbility {
-  $id: string;
-  Text: string;
-  Move?: Move | undefined;
-  Inputs?: Input[] | undefined;
+  Inputs?: IInput[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: Partial<IAssetData> | undefined;
   Enabled: boolean;
@@ -44,17 +22,17 @@ export class AssetAbility implements IAssetAbility {
     if (json.Inputs) {
       this.Inputs = (json.Inputs as IInput[]).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
-        if (isNumberInput(inputJson)) {
+        if (is<INumberInput>(inputJson)) {
           return new NumberInput(inputJson, idString);
         }
-        else if (isSelectInput(inputJson)) {
+        else if (is<ISelectInput>(inputJson)) {
           return new SelectInput(inputJson, idString);
         }
-        else if (isTextInput(inputJson)) {
+        else if (is<ITextInput>(inputJson)) {
           return new TextInput(inputJson, idString);
         }
         else { new Error("Unable to assign input data to a type - make sure it's correct."); }
-      }) as Input[];
+      }) as IInput[];
     }
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
       const moveId = alterMove.Move ?? "Moves / *";

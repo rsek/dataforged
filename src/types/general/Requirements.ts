@@ -1,16 +1,12 @@
 import t from 'ts-runtime/lib';
-import IAttributeOptions from '../gameobjects/IAttributeOptions';
+import _ from 'lodash';
+import IRequirements from './interfaces/IRequirements';
+import IRequirementsData from "./interfaces/IRequirementsData";
+import AttributeRequirements from './Attributes';
 
-import IRequirements from './IRequirements';
-
-
-export class Requirements implements IRequirements {
-  Attributes: IAttributeOptions[];
-  constructor(json: IRequirements) {
-    if (!json.Attributes) {
-      throw new Error(`[Requirements.constructor] Missing attribute data! ${JSON.stringify(json)}`);
-    }
-    // TODO: typecheck
-    this.Attributes = json.Attributes;
+export default class Requirements implements IRequirements {
+  Attributes: AttributeRequirements;
+  constructor(json: IRequirementsData) {
+    this.Attributes = new AttributeRequirements(json.Attributes);
   }
 }

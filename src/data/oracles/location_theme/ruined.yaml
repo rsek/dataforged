@@ -1,74 +1,50 @@
 Ruined:
-  Name: Ruined
-  Display:
-    Title: Location Theme / Ruined
-  _childOf: Location Themes
-  Description: *Ruined
-  Usage:
-    Requires:
-      Attributes:
-        - Key: Location Theme
-          Values:
-            - Ruined
+  _templateCategory: *template.category:LocationTheme
+  _templateVars:
+    Location Theme: Ruined
+  Description: *description:Ruined
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Page: 378
   Oracles:
-    - Name: Feature
-      Description: *theme_feature
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-      Table:
-        - [1, 8, Collapsed or broken structures or terrain]
-        - [9, 16, Device or artifact with residual power or function]
-        - [17, 24, Focal point or nexus of the destruction]
-        - [25, 32, Graves or corpses]
-        - [33, 40, Innermost or hidden spaces laid bare by the destruction]
-        - [41, 48, Message or recording from before the fall]
-        - [49, 56, Overgrown or entombed spaces]
-        - [57, 64, Rubble-strewn paths]
-        - [65, 72, Sad memento of a lost life]
-        - [73, 80, Sights or sounds of structural instability]
-        - [81, 88, Signs of looting or scavenging]
-        - [89, 96, Survivors or guardians dwell among the ruins]
-        - [97, 100, *result:Descriptor+Focus]
-
-    - Name: Peril
-      Description: *theme_peril
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [peril, event, present]
-      Table:
-        - [1, 9, Dreadful atmosphere of loss and destruction weighs upon you]
-        - [10, 18, Evidence of a horrible fate for others who passed this way]
-        - [19, 27, Hazardous atmosphere or environment]
-        - [28, 36, Hostile creature has staked out their territory]
-        - [37, 45, Imminent collapse or destruction]
-        - [46, 54, Lured into a trap or targeted by automated defenses]
-        - [55, 63, Source of the destruction persists or returns anew]
-        - [64, 72, Unearthed secrets best left buried]
-        - [73, 81, Unstable or broken path]
-        - [82, 90, Volatile device or artifact]
-        - [91, 98, *Action+Theme]
-        - [99, 100, *Roll_twice]
-
-    - Name: Opportunity
-      Description: *theme_opportunity
-      Usage:
-        Repeatable: true
-      Content:
-        Part of speech: [fragment]
-        Tags: [opportunity]
-      Table:
-        - [1, 20, Access to an untouched or preserved area]
-        - [21, 40, Insight into what brought this place to ruin]
-        - [41, 60, Interesting or useful device or artifact]
-        - [61, 80, Salvageable equipment or resources]
-        - [81, 100, Shortcut or passage through the destruction]
-
-
-
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Feature
+        content:
+          - Collapsed or broken structures or terrain
+          - Device or artifact with residual power or function
+          - Focal point or nexus of the destruction
+          - Graves or corpses
+          - Innermost or hidden spaces laid bare by the destruction
+          - Message or recording from before the fall
+          - Overgrown or entombed spaces
+          - Rubble-strewn paths
+          - Sad memento of a lost life
+          - Sights or sounds of structural instability
+          - Signs of looting or scavenging
+          - Survivors or guardians dwell among the ruins
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:LocationTheme.Peril
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Peril
+        content:
+          - Dreadful atmosphere of loss and destruction weighs upon you
+          - Evidence of a horrible fate for others who passed this way
+          - Hazardous atmosphere or environment
+          - Hostile creature has staked out their territory
+          - Imminent collapse or destruction
+          - Lured into a trap or targeted by automated defenses
+          - Source of the destruction persists or returns anew
+          - Unearthed secrets best left buried
+          - Unstable or broken path
+          - Volatile device or artifact
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Opportunity
+        content:
+          - Access to an untouched or preserved area
+          - Insight into what brought this place to ruin
+          - Interesting or useful device or artifact
+          - Salvageable equipment or resources
+          - Shortcut or passage through the destruction

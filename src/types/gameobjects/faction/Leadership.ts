@@ -1,6 +1,5 @@
 
 import t from 'ts-runtime/lib';
-import { IAttributeBase, AttributeKey, IRequireBase } from "../GameObjectAttribute";
 
 enum Leadership {
   Anarchist = "Anarchist",
@@ -15,9 +14,3 @@ enum Leadership {
   VariedDecentralized = "Varied / decentralized",
 }
 export default Leadership;
-
-export interface IAttributeLeadership extends IAttributeBase<Leadership> {
-  Key: AttributeKey.Leadership;
-}
-
-export interface IRequireLeadership extends IRequireBase<IAttributeLeadership> { }

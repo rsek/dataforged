@@ -1,25 +1,12 @@
 
 import t from 'ts-runtime/lib';
-import { MdString } from "../general/MdString";
-import { CustomStatRoll, IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll";
+import MdString from "../general/MdString";
+import { CustomStatRoll, IActionRoll, IProgressRoll } from "../general/Roll";
+import IMoveTriggerOption from './interfaces/IMoveTriggerOption';
+import IMoveTriggerOptionData from './interfaces/IMoveTriggerOptionData';
 
 
-export interface IMoveTriggerOptionData {
-  Text?: MdString | undefined;
-  "Action roll"?: IActionRoll | undefined;
-  "Progress roll"?: IProgressRoll | undefined;
-  "Custom stat roll"?: ICustomStatRoll | undefined;
-}
-
-export interface IMoveTriggerOption {
-  $id: string;
-  Text?: MdString | undefined;
-  "Action roll"?: IActionRoll | undefined;
-  "Progress roll"?: IProgressRoll | undefined;
-  "Custom stat roll"?: ICustomStatRoll | undefined;
-}
-
-export class MoveTriggerOption implements IMoveTriggerOption {
+export default class MoveTriggerOption implements IMoveTriggerOption {
   $id: string;
   Text?: MdString | undefined;
   "Action roll"?: IActionRoll | undefined;
