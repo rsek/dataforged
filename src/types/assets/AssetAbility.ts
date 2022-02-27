@@ -1,4 +1,4 @@
-import t from 'ts-runtime/lib';
+
 import { is } from 'typescript-is';
 import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
 import Move from '../moves/Move';

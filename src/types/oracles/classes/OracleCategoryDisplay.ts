@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import IOracleCategoryDisplay from '../interfaces/IOracleCategoryDisplay';
 
 export default class OracleCategoryDisplay implements IOracleCategoryDisplay {

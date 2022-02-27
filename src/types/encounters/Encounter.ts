@@ -1,4 +1,4 @@
-import t from 'ts-runtime/lib';
+
 import ChallengeRank from '../general/ChallengeRank';
 
 import IDisplay from "../general/Display";

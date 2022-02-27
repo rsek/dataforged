@@ -1,4 +1,4 @@
-import t from 'ts-runtime/lib';
+
 
 import { ProgressType } from "./Progress";
 import { CustomStat, ICustomStat, RollableStat } from "./Stat";

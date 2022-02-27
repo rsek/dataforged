@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import { IHasId } from '../general/Id';
 import IMoveOutcome from './interfaces/IMoveOutcome';
 import IMoveOutcomes from './interfaces/IMoveOutcomes';

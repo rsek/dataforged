@@ -1,6 +1,6 @@
 import { PathLike } from 'fs';
 import _ from 'lodash';
-import t from 'ts-runtime/lib';
+
 import buildDataforged from "./functions/buildDataforged";
 import writeJson from './functions/io/writeJSON';
 

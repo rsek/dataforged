@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
 import getYamlFiles from "./io/getYamlFiles";
 import ISource from "../types/general/interfaces/ISource";

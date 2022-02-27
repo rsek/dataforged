@@ -1,6 +1,6 @@
 
 
-import t from 'ts-runtime/lib';
+
 export interface ICounter {
   $id?: string | undefined;
   Name: string;

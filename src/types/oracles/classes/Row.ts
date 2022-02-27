@@ -1,4 +1,4 @@
-import t from 'ts-runtime/lib';
+
 
 import MultipleRolls from "./MultipleRolls";
 import IMultipleRolls from "../interfaces/IMultipleRolls";

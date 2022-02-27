@@ -1,4 +1,4 @@
-import t from 'ts-runtime/lib';
+
 import { is } from 'typescript-is';
 
 import { ConditionMeterType } from "./ConditionMeter";

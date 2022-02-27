@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import ITableColumn from '../interfaces/ITableColumn';
 import IResultColumn from "../interfaces/IResultColumn";
 import OracleTableId from "../OracleTableId";

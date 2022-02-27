@@ -1,5 +1,5 @@
 // currently unused since nothing depends on atmosphere
-import t from 'ts-runtime/lib';
+
 
 enum Atmosphere {
   NoneThin = "None / Thin",

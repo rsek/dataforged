@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import fs from "fs";
 const basePath: fs.PathLike = "./src/data";
 

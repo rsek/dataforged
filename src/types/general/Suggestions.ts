@@ -1,4 +1,4 @@
-import t from 'ts-runtime/lib';
+
 
 import AssetId from "../assets/AssetId";
 import GameObject from '../gameobjects/GameObject';

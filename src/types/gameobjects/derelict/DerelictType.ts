@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import Location from '../place/Location';
 import LocationTheme from '../place/LocationTheme';
 import Region from '../place/Region';

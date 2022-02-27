@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import IOracle from '../types/oracles/interfaces/IOracle';
 import IOracleCategoryInfo from '../types/oracles/interfaces/IOracleCategory';
 import IOracleCategoryYaml from '../types/oracles/interfaces/yaml/IOracleCategoryYaml';

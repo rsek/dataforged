@@ -1,5 +1,5 @@
 
-import t from 'ts-runtime/lib';
+
 import MdString from "../general/MdString";
 import { CustomStatRoll, IActionRoll, IProgressRoll } from "../general/Roll";
 import IMoveTriggerOption from './interfaces/IMoveTriggerOption';
