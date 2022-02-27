@@ -60,7 +60,7 @@ Assets:
   - Name: Grappler
     Asset Type: Module
     Abilities:
-      - Text: &move_grappler |-
+      - Text: &move:Asset.Grappler |-
           Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](Moves#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Moves#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
         Move:
           Name: Ready Grappler
@@ -70,7 +70,7 @@ Assets:
             Text: When you take a minute or so to ready the grappler
             Options:
               - Roll best of: [Wits, Attached Asset Condition Meter]
-          Text: *move_grappler
+          Text: *move:Asset.Grappler
           Outcomes:
             Strong Hit:
               Text: |-
@@ -108,7 +108,7 @@ Assets:
       - Text: |-
           You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
         Enabled: true
-      - Text: &move_internal_refit |-
+      - Text: &move:Asset.Internal_refit |-
           Your vessel is stocked with reserves. When you [Sacrifice Resources](Moves#Sacrifice-Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
         Move:
           Name: Draw Reserves
@@ -119,7 +119,7 @@ Assets:
             Options:
               - Action roll:
                   Stat: Attached Asset Condition Meter
-          Text: *move_internal_refit
+          Text: *move:Asset.Internal_refit
           Outcomes:
             Strong Hit:
               Text: You manage to scrape by. You don't need to mark unprepared. Take +1 supply.
@@ -147,7 +147,7 @@ Assets:
       - Text: |-
           When you have at least 1 ammo and [Gain Ground](Moves#Gain-Ground) by locking a missile on target, add +1 and take +1 momentum on a hit.
       - Text: |-
-          When you have at least 3 ammo and [Take Decisive Action](Moves#Take-Decisive-Action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll each challenge die. Then, set ammo to 0.
+          When you have at least 3 ammo and [Take Decisive Action](Moves#Take-Decisive-Action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
     Condition Meter:
       Name: Ammo
       Max: 5
@@ -231,7 +231,7 @@ Assets:
   - Name: Shields
     Asset Type: Module
     Abilities:
-      - Text: &move_shields |-
+      - Text: &move:Asset.Shields |-
           When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](Moves#Lose-Momentum) (-1). Then, if you [Withstand Damage](Moves#Withstand-Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
         Enabled: true
         Move:
@@ -242,7 +242,7 @@ Assets:
             Text: When you raise your shields
             Options:
               - Roll best of: [Wits, Attached Asset Condition Meter]
-          Text: *move_shields
+          Text: *move:Asset.Shields
           Outcomes:
             Strong Hit:
               Text: |-
@@ -440,12 +440,12 @@ Assets:
         Input Type: Text
     Abilities:
       - Text: |-
-          Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) or [Set a Course](Moves#Set-a-Course), you may rely on the skiff's simple reliability and roll +integrity. If you do, take +1 momentum on a hit.
+          Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) or [Set a Course](Moves#Set-a-Course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
         Alter Moves:
           - Move: Moves / Undertake an Expedition
             Trigger: &skiff_alter
               Options:
-                - Text: rely on the skiff's simple reliability
+                - Text: rely on the skiff's simple durability
                   Action roll:
                     Stat: Asset Condition Meter
           - Move: Moves / Set a Course
@@ -525,11 +525,11 @@ Assets:
       - Text: |-
           When you [Face Danger](Moves#Face-Danger) or [Secure an Advantage](Moves#Secure-an-Advantage) to establish a false identity, add +1. On a hit, you may add +1 when using that identity to deceive or influence others. If you score a miss with a match when using that identity, your deception is completely and dramatically undone.
       - Text: |-
-          When you [Check Your Gear](Moves#Check-Your-Gear) for a device with a specific function to aid in infiltration, espionage, or sabotage, add +1. On a hit, you may reroll any dice the first time you make a move aided by the device.
+          When you [Check Your Gear](Moves#Check-Your-Gear) for a device with a specific function to aid in infiltration, espionage, or sabotage, add +1. On a hit, reroll any dice the first time you make a move aided by the device.
   - Name: Archer
     Asset Type: Path
     Abilities:
-      - Text: &move_archer |-
+      - Text: &move:Asset.Archer |-
           You carry 6 ammo. When you [Strike](Moves#Strike) or [Clash](Moves#Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](Moves#Sacrifice-Resources) (-1). On a miss, [Sacrifice Resources](Moves#Sacrifice-Resources) (-1).
         Move:
           Name: Craft Projectiles
@@ -540,7 +540,7 @@ Assets:
               - Action roll:
                   Stat: Wits
           Asset: Assets / Archer
-          Text: *move_archer
+          Text: *move:Asset.Archer
           Outcomes:
             Strong Hit:
               Text: |-
@@ -586,7 +586,7 @@ Assets:
         Enabled: true
       - Text: |-
           When you [Gather Information](Moves#Gather-Information) or [Secure an Advantage](Moves#Secure-an-Advantage) by studying the aesthetics of a being or culture, add +2.
-      - Text: &move_artist |-
+      - Text: &move:Asset.Artist |-
           When you create or perform a signifigant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of two. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Moves#Pay-the-Price).
         Move:
           Name: Commemorate
@@ -606,7 +606,7 @@ Assets:
                   Stat: Shadow
               - Action roll:
                   Stat: Wits
-          Text: *move_artist
+          Text: *move:Asset.Artist
           Outcomes:
             Strong Hit:
               Text: |-
@@ -644,13 +644,13 @@ Assets:
       - Text: |-
           When you or an ally [Sojourn](Moves#Sojourn) and score a strong hit with a match, you may envision meeting someone of the same ideology. If you [Make a Connection](Moves#Make-a-Connection) with them and score a hit, mark 1 tick on your bonds legacy track. When you [Forge a Bond](Moves#Forge-a-Bond) with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic).
       - Text: |-
-          When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
+          When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you score a strong hit with a match, your reputation grows among those who share your ideology; mark 1 tick on your bonds legacy track.
   - Name: Blademaster
     Asset Type: Path
     Requirement: If you wield a bladed weapon...
     Abilities:
       - Text: |-
-          When you [Clash](Moves#Clash) or [Strike](Moves#Strike) in close quarters, add +1. On a strong hit with a match, mark progress. Also, once per fight, you may reroll any dice as you make a move to attack or defend using your blade.
+          When you [Clash](#Clash) or [Strike](#Strike) in close-quarters, add +1. On a strong hit with a match, you are unstoppable; mark progress.
         Enabled: true
       - Text: |-
           If you [Gain Ground](Moves#Gain-Ground) by moving into close quarters against your foe, choose your approach.
@@ -658,7 +658,10 @@ Assets:
             * Charge: Roll +heart, and mark progress on a hit.
             * Evade: Roll +edge, and take +1 momentum on a hit.
       - Text: |-
-          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) and bind the oath to your blade, add +1. On a hit, take +2 momentum or +2 spirit.
+          You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
+        Inputs:
+          - Name: Name
+            Input Type: Text
   - Name: Bounty Hunter
     Asset Type: Path
     Abilities:
@@ -725,7 +728,7 @@ Assets:
       - Text: |-
           When you make a move to craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device, add +1 and take +1 momentum on a hit.
       - Text: |-
-          When your momentum is at its max, you may reset momentum (before rolling) to trigger an explosive device as you [Take Decisive Action](Moves#Take-Decisive-Action). If you do, reroll any dice.
+          When your momentum is at its max, you may reset momentum (before rolling) to trigger an explosive device as you [Take Decisive Action](Moves#Take-Decisive-Action). If you do, reroll any challenge dice.
   - Name: Devotant
     Asset Type: Path
     Inputs:
@@ -788,7 +791,7 @@ Assets:
   - Name: Empath
     Asset Type: Path
     Abilities:
-      - Text: &move_empath |-
+      - Text: &move:Asset.Empath |-
           When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](Moves#Pay-the-Price).
         Enabled: true
         Move:
@@ -800,7 +803,7 @@ Assets:
             Options:
               - Action roll:
                   Stat: Heart
-          Text: *move_empath
+          Text: *move:Asset.Empath
           Outcomes:
             Strong Hit:
               Text: |-
@@ -850,7 +853,7 @@ Assets:
   - Name: Firebrand
     Asset Type: Path
     Abilities:
-      - Text: &move_firebrand |-
+      - Text: &move:Asset.Firebrand |-
           You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](Moves#Endure-Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
         Enabled: true
         Move:
@@ -862,7 +865,7 @@ Assets:
             Options:
               - Action roll:
                   Stat: Spirit
-          Text: *move_firebrand
+          Text: *move:Asset.Firebrand
           Outcomes:
             Strong Hit:
               Text: |-
@@ -980,7 +983,7 @@ Assets:
       - Text: |-
           When you score a miss on a suffer move (not [Endure Stress](Moves#Endure-Stress)), you may loop back a second or two. If you do, [Lose Momentum](Moves#Lose-Momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
         Enabled: true
-      - Text: &move_looper |-
+      - Text: &move:Asset.Looper |-
           When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](Moves#Endure-Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](Moves#Pay-the-Price).
         Move:
           Name: Loop
@@ -997,7 +1000,7 @@ Assets:
                     Value: 3
                   - Name: Days
                     Value: 2
-          Text: *move_looper
+          Text: *move:Asset.Looper
           Outcomes:
             Strong Hit:
               Text: |-
@@ -1015,10 +1018,10 @@ Assets:
     Aliases: [Archivist, Lore-Hunter]
     Abilities:
       - Text: |-
-          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) (formidable or greater) to recover valuable knowledge or a powerful relic, reroll any dice. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
+          When you Swear an Iron Vow (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you Reach a Milestone in the pursuit of that quest, take +2 momentum. When you Fulfill Your Vow and score a hit, also mark 2 ticks on your discoveries legacy track.
         Enabled: true
       - Text: |-
-          When you make a move to conduct extended research or study, you may reroll your action die if its value is less than your wits. On a hit, take +1 momentum. On a match, you piece together a surprising or harrowing new theory; also mark 1 tick on your discoveries legacy track.
+          When you make a move to conduct extended research or study, reroll any challenge dice. On a match, you piece together an extraordinary or harrowing new theory; envision the nature of this revelation and mark 1 tick on your discoveries legacy track.
       - Text: |-
           When you recall esoteric knowledge to [Secure an Advantage](Moves#Secure-an-Advantage) or [Gain Ground](Moves#Gain-Ground), add +1. On a hit, envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
   - Name: Loyalist
@@ -1072,7 +1075,7 @@ Assets:
       - Text: |-
           When you [Hearten](Moves#Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
         Enabled: true
-      - Text: &move_outcast |-
+      - Text: &move:Asset.Outcast |-
           When you [Sacrifice Resources](Moves#Sacrifice-Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may [Lose Momentum](Moves#Lose-Momentum) (-1) in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](Moves#Lose-Momentum) (-1).
         Move:
           Name: Scrape By
@@ -1083,7 +1086,7 @@ Assets:
             Options:
               - Action roll:
                   Stat: Wits
-          Text: *move_outcast
+          Text: *move:Asset.Outcast
       - Text: |-
           When you or an ally [Sojourn](Moves#Sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you [Make a Connection](Moves#Make-a-Connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
   - Name: Scavenger
@@ -1141,7 +1144,7 @@ Assets:
       - Text: |-
           Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, you may preset your action die to 5. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.
         Enabled: true
-      - Text: &move_shade |-
+      - Text: &move:Asset.Shade |-
           When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention.
         Move:
           Name: Shroud in Darkness
@@ -1152,7 +1155,7 @@ Assets:
             Options:
               - Action roll:
                   Stat: Shadow
-          Text: *move_shade
+          Text: *move:Asset.Shade
           Outcomes:
             Strong Hit:
               Text: The darkness extends to all adjacent spaces.
@@ -1166,12 +1169,12 @@ Assets:
     Asset Type: Path
     Abilities:
       - Text: |-
-          When you make a move to investigate, track, or stalk a hostile creature, add +1 and take +1 momentum on a hit.
+          When you make a move to investigate, track, or stalk an inhuman foe, add +1 and take +1 momentum on a hit.
         Enabled: true
       - Text: |-
-          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) (formidable or greater) to slay a hostile creature in service to a community, reroll any dice. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your bonds legacy track.
+          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) (formidable or greater) to slay an inhuman foe in service to a community, reroll any dice. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) and score a hit, also mark 2 ticks on your bonds legacy track.
       - Text: |-
-          When you [Enter the Fray](Moves#Enter-the-Fray) with an objective to slay a hostile creature, take +2 momentum. If you choose to face the creature on its own terms as you begin the fight, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you [Take Decisive Action](Moves#Take-Decisive-Action) after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track.
+          When you [Enter the Fray](Moves#Enter-the-Fray) with an objective to slay an inhuman foe, take +2 momentum. If you choose to face the creature on its own terms as you begin the fight, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you [Take Decisive Action](Moves#Take-Decisive-Action) after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track.
   - Name: Sleuth
     Asset Type: Path
     Abilities:
@@ -1187,8 +1190,9 @@ Assets:
     Requirement: If you wield a rifle...
     Abilities:
       - Text: |-
-          When you [Face Danger](Moves#Face-Danger) outside of a fight to preemptively take out a single minor foe from a distance, add +1. On a hit, they are out of action and no longer a threat. If other foes remain and you [Enter the Fray](Moves#Enter-the-Fray) against them, mark progress.
+          When you target a minor foe from a distance (outside of a fight), roll +wits. On a strong hit, you take them out. Take +1 momentum. If other foes remain and you [Enter the Fray](Moves#Enter-the-Fray) against them, mark progress. On a weak hit, as above, but you sacrifice time or position; [Lose Momentum](Moves#Lose-Momentum) (-1). On a miss, you draw attention or face a reprisal; [Pay the Price](Moves#Pay-the-Price).
         Enabled: true
+        # TODO: move
       - Text: |-
           When you [Strike](Moves#Strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a hit.
         Alter Moves:
@@ -1199,7 +1203,7 @@ Assets:
                   Action roll:
                     Stat: Wits
       - Text: |-
-          When you [Secure an Advantage](Moves#Secure-an-Advantage) by studying a distant situation through the scope of your rifle, or [Gain Ground](Moves#Gain-Ground) by readying your shot and taking careful aim, you may sacrifice time in exchange for greater certainty. If you do (decide before rolling), [Lose Momentum](Moves#Lose-Momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.
+          When you [Secure an Advantage](Moves#Secure-an-Advantage) by studying a distant situation through your rifle scope, or [Gain Ground](Moves#Gain-Ground) by taking careful aim, you may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](Moves#Lose-Momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.
   - Name: Tech
     Asset Type: Path
     Abilities:
@@ -1348,12 +1352,12 @@ Assets:
         Input Type: Text
     Abilities:
       - Text: |-
-          Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](Moves#Secure-an-Advantage) by studying the glowcat's reactions in a charged interaction, you may add +your companion's health.
+          Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](Moves#Secure-an-Advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.
         Enabled: true
       - Text: |-
-          When you [Compel](Moves#Compel), the glowcat's reactions will help guide your approach. If the value of your action die is less than the glowcat's health, you may reroll it.
+          When you [Compel](#Compel), the glowcat’s reactions will help guide your approach; you may reroll your action die if its value is less than the glowcat’s health.
       - Text: |-
-          When you [Endure Stress](Moves#Endure-Stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.
+          When you [Endure Stress](#Endure-Stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.
     Condition Meter:
       Name: Health
       Max: 3
@@ -1614,7 +1618,7 @@ Assets:
             Starting Value: 0
             Max: 5
       - Text: |-
-          Once per fight, when you [Gain Ground](Moves#Gain-Ground) through threat or leadership, you may reroll any dice and mark progress on a hit.
+          Once per fight, when you [Gain Ground](Moves#Gain-Ground) through threat or leadership, reroll any dice and mark progress on a hit.
   - Name: Oathbreaker
     Asset Type: Deed
     Requirement: Once you [Forsake Your Vow](Moves#Forsake-Your-Vow)...
@@ -1659,29 +1663,33 @@ Assets:
     Asset Type: Deed
     Requirement: Once you fill 6 boxes on your discoveries legacy track...
     Abilities:
-      - Text: &move_vanguard |-
-          When you seek safe haven in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you find or establish a safe location and may add +2 whenever you make a recovery move there. If you score a miss when making a recovery move, the place is no longer safe. On a weak hit, as above, but add +1 when you make a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](Moves#Pay-the-Price).
+      - Text: &move:Asset.Vanguard |-
+          When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](Moves#Pay-the-Price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.
         Enabled: true
         Move:
           Name: Seek Safe Haven
           Category: Asset Moves
           Asset: Assets / Vanguard
           Trigger:
-            Text: When you seek safe haven in a remote environment
+            Text: When you seek a safe location in a remote environment
             Options:
               - Progress roll: Discoveries Legacy
           Progress Move: true
-          Text: *move_vanguard
+          Text: *move:Asset.Vanguard
           Outcomes:
             Strong Hit:
               Text: |-
-                You find or establish a safe location and may add +2 whenever you make a recovery move there. If you score a miss when making a recovery move, the place is no longer safe.
+                You establish a haven; add +2 whenever you make a recovery move at that location.
+
+                If you establish a haven but score a miss on a recovery move, that location is no longer safe.
             Weak Hit:
               Text: |-
-                You find or establish a safe location and may add +1 whenever you make a recovery move there. If you score a miss when making a recovery move, the place is no longer safe.
+                You establish a haven; add +1 whenever you make a recovery move at that location.
+
+                If you establish a haven but score a miss on a recovery move, that location is no longer safe.
             Miss:
               Text: |-
-                You are drawn into a bad situation and must [Pay the Price](Moves#Pay-the-Price).
+                On a miss, you are drawn into a bad situation and must [Pay the Price](Moves#Pay-the-Price).
       - Text: |-
           When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.
       - Text: |-
