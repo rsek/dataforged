@@ -5,7 +5,7 @@ import IMoveOutcomes from "./IMoveOutcomes";
 import MoveId from '../MoveId';
 import MoveCategory from "../MoveCategory";
 import ISuggestions from "../../general/interfaces/ISuggestions";
-import IMoveTriggerData from "./IMoveTriggerData";
+import IMoveTriggerYaml from "./IMoveTriggerYaml";
 
 
 export default interface IMove {
@@ -14,7 +14,7 @@ export default interface IMove {
   Category: MoveCategory;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: MoveId | undefined;
-  Trigger: IMoveTriggerData;
+  Trigger: IMoveTriggerYaml;
   Text: MdString;
   Oracles?: OracleTableId[] | undefined;
   Source?: ISource | undefined;

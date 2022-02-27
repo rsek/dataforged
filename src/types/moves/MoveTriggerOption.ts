@@ -3,7 +3,7 @@
 import MdString from "../general/MdString";
 import { CustomStatRoll, IActionRoll, IProgressRoll } from "../general/Roll";
 import IMoveTriggerOption from './interfaces/IMoveTriggerOption';
-import IMoveTriggerOptionData from './interfaces/IMoveTriggerOptionData';
+import IMoveTriggerOptionYaml from './interfaces/IMoveTriggerOptionYaml';
 
 
 export default class MoveTriggerOption implements IMoveTriggerOption {
@@ -12,7 +12,7 @@ export default class MoveTriggerOption implements IMoveTriggerOption {
   "Action roll"?: IActionRoll | undefined;
   "Progress roll"?: IProgressRoll | undefined;
   "Custom stat roll"?: CustomStatRoll | undefined;
-  constructor(json: IMoveTriggerOptionData, id: string) {
+  constructor(json: IMoveTriggerOptionYaml, id: string) {
     this.$id = id;
     this.Text = json.Text;
     this["Action roll"] = json["Action roll"];

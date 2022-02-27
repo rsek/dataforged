@@ -4,7 +4,7 @@ import MoveId from "../../moves/MoveId";
 import OracleTableId from "../../oracles/OracleTableId";
 
 
-export default interface ISuggestionsData {
+export default interface ISuggestionsYaml {
   "Game objects"?: GameObjectData[] | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   "Moves"?: MoveId[] | undefined;

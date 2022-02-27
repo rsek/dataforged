@@ -10,7 +10,7 @@ import IOracleUsageYaml from "./IOracleUsageYaml";
 import ITemplateTable from "./ITemplateTableYaml";
 import ITemplateYamlBase from "./ITemplateYamlBase";
 import ITemplateOracleYaml from "./ITemplateOracleYaml";
-import IRequirementsData from "../../../general/interfaces/IRequirementsData";
+import IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml";
 
 export default interface IOracleYaml extends IOracleYamlBase, ITemplateYamlBase {
 
@@ -24,7 +24,7 @@ export default interface IOracleYaml extends IOracleYamlBase, ITemplateYamlBase 
   Display?: ITableDisplay | undefined;
   Oracles?: IOracleYaml[] | undefined;
   Table?: IRowYaml[] | IRowRollYaml[] | IRow[] | undefined;
-  Requires?: IRequirementsData | undefined;
+  Requires?: IRequirementsYaml | undefined;
   _templateInfo?: ITemplateOracleYaml | undefined;
   _templateTable?: ITemplateTable | undefined;
   _childOf?: OracleCategoryId | undefined;

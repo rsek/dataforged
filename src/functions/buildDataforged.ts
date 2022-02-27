@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import Asset from "../types/assets/Asset";
-import { Encounter } from "../types/encounters/Encounter";
+import Encounter from "../types/encounters/Encounter";
 import Move from '../types/moves/Move';
 import OracleCategoryInfo from "../types/oracles/classes/OracleCategory";
 import { SettingTruth } from "../types/truths/SettingTruth";

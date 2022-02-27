@@ -1,4 +1,4 @@
-import IRequirementsData from "../../../general/interfaces/IRequirementsData";
+import IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml";
 import ISource from "../../../general/interfaces/ISource";
 import OracleCategoryId, { OracleCategoryName, OracleCategoryJaggedId } from "../../OracleCategoryId";
 import { OracleSubcategoryName } from "../../OracleSubcategoryId";
@@ -20,7 +20,7 @@ export default interface IOracleCategoryYaml extends ITemplateYamlBase {
   Usage?: IOracleUsageYaml | undefined;
   Oracles?: IOracleYaml[] | undefined;
   Categories?: IOracleCategoryYaml[] | undefined;
-  Requires?: IRequirementsData;
+  Requires?: IRequirementsYaml;
   _templateCategory?: ITemplateOracleCategoryYaml | undefined;
   _childOf?: OracleCategoryName | undefined;
   _parentOf?: OracleSubcategoryName[] | undefined;

@@ -5,7 +5,7 @@ import GameObjectData from "./GameObjectYaml";
 import badJsonError from "../../functions/logging/badJsonError";
 import { is } from "typescript-is";
 import IGameObject from "./IGameObject";
-import IRequirementsData from "../general/interfaces/IRequirementsData";
+import IRequirementsYaml from "../general/interfaces/IRequirementsYaml";
 import AttributeHash from "./AttributeHash";
 
 export default class GameObject implements IGameObject {
@@ -20,7 +20,7 @@ export default class GameObject implements IGameObject {
     // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
     let requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]) as AttributeHash;
     if (Object.keys(requiredAttributes).length) {
-      let requirements = { Attributes: requiredAttributes } as IRequirementsData;
+      let requirements = { Attributes: requiredAttributes } as IRequirementsYaml;
       this.Requires = new Requirements(requirements);
     }
   }

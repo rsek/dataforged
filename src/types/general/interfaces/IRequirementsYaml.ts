@@ -1,5 +1,5 @@
 import AttributeHash from "../../gameobjects/AttributeHash";
 
-export default interface IRequirementsData {
+export default interface IRequirementsYaml {
   Attributes: AttributeHash;
 }

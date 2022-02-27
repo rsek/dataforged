@@ -1,6 +1,6 @@
 import AttributeHash from "../../../gameobjects/AttributeHash";
 import GameObjectData from "../../../gameobjects/GameObjectYaml";
-import ISuggestionsData from "../../../general/interfaces/ISuggestionsData";
+import ISuggestionsYaml from "../../../general/interfaces/ISuggestionsYaml";
 import UrlString from "../../../general/UrlString";
 import TemplateString from "../../TemplateString";
 import IMultipleRolls from "../IMultipleRolls";

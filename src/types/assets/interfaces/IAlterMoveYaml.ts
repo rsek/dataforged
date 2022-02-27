@@ -1,8 +1,8 @@
 import IMove from "../../moves/interfaces/IMove";
-import IMoveTriggerData from "../../moves/interfaces/IMoveTriggerData";
+import IMoveTriggerYaml from "../../moves/interfaces/IMoveTriggerYaml";
 import MoveId from "../../moves/MoveId";
 
 export default interface IAlterMoveYaml extends Omit<Partial<IMove>, "$id"> {
   Move: MoveId;
-  Trigger: IMoveTriggerData;
+  Trigger: IMoveTriggerYaml;
 }

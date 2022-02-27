@@ -1,7 +1,7 @@
 import ISource from "../general/interfaces/ISource";
 import ISettingTruthTableRow from "./ISettingTruthTableRow";
 import ISuggestions from '../general/interfaces/ISuggestions';
-import ISuggestionsData from "../general/interfaces/ISuggestionsData";
+import ISuggestionsYaml from "../general/interfaces/ISuggestionsYaml";
 
 
 export default interface ISettingTruth {
@@ -9,6 +9,6 @@ export default interface ISettingTruth {
   Name: string;
   Table: ISettingTruthTableRow[];
   Character: string;
-  Suggestions?: ISuggestionsData | undefined;
+  Suggestions?: ISuggestionsYaml | undefined;
   Source: ISource;
 }

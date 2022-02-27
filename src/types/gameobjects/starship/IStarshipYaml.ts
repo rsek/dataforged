@@ -4,7 +4,7 @@ import IPlaceData, { PlaceType } from "../IPlaceYaml";
 import Region from "../place/Region";
 import StarshipInitialContact from "./StarshipInitialContact";
 
-export default interface Starship<R extends Region | undefined, L extends Location | undefined, LT extends LocationTheme | undefined> extends IPlaceData<R, L, LT> {
+export default interface IStarshipYaml<R extends Region | undefined, L extends Location | undefined, LT extends LocationTheme | undefined> extends IPlaceData<R, L, LT> {
   "Object type": PlaceType.Starship;
   "Initial Contact"?: StarshipInitialContact | undefined;
 }

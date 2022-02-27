@@ -1,7 +1,8 @@
 
 
 import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
-import { Encounter, IEncounterYaml } from "../types/encounters/Encounter";
+import Encounter from "../types/encounters/Encounter";
+import IEncounterYaml from "../types/encounters/IEncounterYaml";
 import ISource from "../types/general/interfaces/ISource";
 import getYamlFiles from "./io/getYamlFiles";
 import _ from "lodash";

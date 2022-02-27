@@ -16,7 +16,7 @@ import badJsonError from '../../../functions/logging/badJsonError';
 import AttributeHash from '../../gameobjects/AttributeHash';
 import AttributeSetter from '../../gameobjects/AttributeSetter';
 import GameObjectData from '../../gameobjects/GameObjectYaml';
-import ISuggestionsData from '../../general/interfaces/ISuggestionsData';
+import ISuggestionsYaml from '../../general/interfaces/ISuggestionsYaml';
 
 /**
  *
@@ -122,7 +122,7 @@ export default class Row implements IRow {
                 let newSuggestions;
                 if (Array.isArray(value)) {
                   // console.log("Received a suggestion array, merging...", value);
-                  let suggestData = _.cloneDeep(value) as ISuggestionsData[];
+                  let suggestData = _.cloneDeep(value) as ISuggestionsYaml[];
                   let suggestItems = suggestData.map(item => new Suggestions(item));
                   newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
                   // console.log("merged multiple suggestions", newSuggestions);

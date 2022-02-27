@@ -1,4 +1,4 @@
-import IMoveTriggerData from "../../moves/interfaces/IMoveTriggerData";
+import IMoveTriggerYaml from "../../moves/interfaces/IMoveTriggerYaml";
 import MoveId from "../../moves/MoveId";
 import IAlterMoveYaml from "./IAlterMoveYaml";
 
@@ -7,5 +7,5 @@ import IAlterMoveYaml from "./IAlterMoveYaml";
 export default interface IAlterMove extends IAlterMoveYaml {
   $id: string;
   Move: MoveId;
-  Trigger: IMoveTriggerData;
+  Trigger: IMoveTriggerYaml;
 }
