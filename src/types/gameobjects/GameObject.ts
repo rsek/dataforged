@@ -1,7 +1,7 @@
 import _ from "lodash";
 import Requirements from "../general/Requirements";
 import { GameObjectType } from "./IGameObjectBase";
-import GameObjectData from "./GameObjectData";
+import GameObjectData from "./GameObjectYaml";
 import badJsonError from "../../functions/logging/badJsonError";
 import { is } from "typescript-is";
 import IGameObject from "./IGameObject";

@@ -1,9 +1,9 @@
 import fs from "fs";
-import IOracleCategoryYaml from '../../types/oracles/interfaces/IOracleCategoryYaml';
 import concatWithYamlRefs, { refsPath } from './concatWithYamlRefs';
 import deepFreezeStrict from "deep-freeze-strict";
 import IYamlWithRef from "../IYamlWithRef";
 import _ from "lodash";
+import IOracleCategoryYaml from "../../types/oracles/interfaces/yaml/IOracleCategoryYaml";
 
 export interface IOracleCatRoot extends IYamlWithRef {
   Categories: IOracleCategoryYaml[]

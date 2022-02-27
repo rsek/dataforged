@@ -1,6 +1,6 @@
-import { ActorType } from "./IActorData";
+import { ActorType } from "./IActorYaml";
 import AttributeHash from "./AttributeHash";
-import { PlaceType } from "./IPlaceData";
+import { PlaceType } from "./IPlaceYaml";
 
 export type GameObjectType = (ActorType | PlaceType);
 

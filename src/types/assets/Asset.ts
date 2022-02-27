@@ -8,7 +8,7 @@ import IAssetAttachment from "./AssetAttachment";
 
 import AssetId from './AssetId';
 import IAsset from './interfaces/IAsset';
-import IAssetData from './interfaces/IAssetData';
+import IAssetYaml from './interfaces/IAssetYaml';
 import { is } from 'typescript-is';
 import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
 import buildLog from '../../functions/logging/buildLog';
@@ -25,7 +25,7 @@ export default class Asset implements IAsset {
   Abilities: AssetAbility[];
   "Condition Meter"?: ConditionMeter | undefined;
   Source: Source;
-  constructor(json: IAssetData, source: ISource) {
+  constructor(json: IAssetYaml, source: ISource) {
     this.$id = `Assets / ${json.Name}`;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;

@@ -2,7 +2,7 @@
 // import { IOracleCategory } from "../classes/oracles/OracleCategory";
 // import writeJson from "./writeJSON";
 // import { PathLike } from "fs";
-// import { IronswornData } from "./buildDataforged";
+// import { IronswornYaml } from "./buildDataforged";
 
 
 // export default function buildDataforgedLegacy(pathOut: PathLike = "./", ironswornData: IronswornData): LegacyOracleCategory[] {

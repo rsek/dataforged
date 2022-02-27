@@ -7,7 +7,7 @@ import IMove from "../types/moves/interfaces/IMove";
 import IYamlWithRef from './IYamlWithRef';
 import badJsonError from './logging/badJsonError';
 import buildLog from './logging/buildLog';
-import { Move } from '../types/moves/Move';
+import Move from '../types/moves/Move';
 const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));
 
 interface IMovesRoot extends IYamlWithRef {

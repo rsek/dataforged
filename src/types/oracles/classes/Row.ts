@@ -15,7 +15,7 @@ import { is } from 'typescript-is';
 import badJsonError from '../../../functions/logging/badJsonError';
 import AttributeHash from '../../gameobjects/AttributeHash';
 import AttributeSetter from '../../gameobjects/AttributeSetter';
-import GameObjectData from '../../gameobjects/GameObjectData';
+import GameObjectData from '../../gameobjects/GameObjectYaml';
 import ISuggestionsData from '../../general/interfaces/ISuggestionsData';
 
 /**

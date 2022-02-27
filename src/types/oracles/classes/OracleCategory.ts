@@ -4,15 +4,15 @@ import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "..
 
 import Oracle from "./Oracle";
 import OracleUsage from "./OracleUsage";
-import Source from "../../general/Source";
 import buildOracleId from "../../../functions/buildOracleId";
 import _ from "lodash";
 import OracleCategoryDisplay from "./OracleCategoryDisplay";
 import IOracleCategoryInfo from "../interfaces/IOracleCategory";
-import IOracleCategoryData from '../interfaces/IOracleCategoryYaml';
 import propagateToChildren from '../../../functions/object-transform/propagateToChildren';
 import IOracleYaml from '../interfaces/yaml/IOracleYaml';
 import buildLog from '../../../functions/logging/buildLog';
+import IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml";
+import Source from "../../general/Source";
 
 
 export default class OracleCategoryInfo implements IOracleCategoryInfo {
@@ -28,9 +28,9 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo {
   Categories?: OracleCategoryInfo[] | undefined;
   // Requires?: Requirements | undefined;
   constructor(
-    json: IOracleCategoryData,
+    json: IOracleCategoryYaml,
     category?: OracleCategoryJaggedId | undefined,
-    ...ancestorsJson: (IOracleYaml | IOracleCategoryData)[]
+    ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
   ) {
     // if (!is<IOracleCategoryData>(json)) {
     //   buildLog(this.constructor, "Json does not conform to type!");

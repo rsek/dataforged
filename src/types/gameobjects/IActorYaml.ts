@@ -6,6 +6,6 @@ export enum ActorType {
   Faction = "Faction",
 }
 
-export default interface IActorData extends IGameObjectBase {
+export default interface IActorYaml extends IGameObjectBase {
   "Object type": ActorType;
 }

@@ -9,6 +9,7 @@ import IRequirements from "../../general/interfaces/IRequirements";
 
 export default interface IOracle extends Omit<IOracleYaml, "Usage" | "Oracles" | "Requires" | "_templateInfo" | "_templateTable" | "_childOf" | "_parentOf"> {
   $id: OracleTableId;
+  Name: string;
   Source: Source;
   Usage?: IOracleUsage | undefined;
   Content?: IOracleContent | undefined;

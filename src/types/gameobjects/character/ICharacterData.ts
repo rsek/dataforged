@@ -1,8 +1,8 @@
 import Role from "./Role";
-import IActorData, { ActorType } from "../IActorData";
+import IActorYaml, { ActorType } from "../IActorYaml";
 import Disposition from "./Disposition";
 
-export default interface ICharacterData<R extends Role | undefined, D extends Disposition | undefined> extends IActorData {
+export default interface ICharacterData<R extends Role | undefined, D extends Disposition | undefined> extends IActorYaml {
   "Object type": ActorType.Character;
   Role?: R;
   "Initial Disposition"?: D;

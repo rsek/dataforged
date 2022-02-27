@@ -7,17 +7,17 @@ import Asset from "../types/assets/Asset";
 import ISource from "../types/general/interfaces/ISource";
 import jsonpath from "jsonpath";
 import { AssetConditionMeterType } from "../types/general/ConditionMeter";
-import IAssetData from '../types/assets/interfaces/IAssetData';
 import badJsonError from './logging/badJsonError';
 import getYamlFiles from './io/getYamlFiles';
 import buildLog from './logging/buildLog';
+import IAssetYaml from '../types/assets/interfaces/IAssetYaml';
 
 const assetPath = getYamlFiles().find(item => item.toString().match(/assets\.yaml$/)) as fs.PathLike;
 
 interface assetDataRoot {
   Name: string;
   Source: ISource;
-  Assets: IAssetData[];
+  Assets: IAssetYaml[];
 }
 
 export default function buildAssets() {

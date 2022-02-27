@@ -1,17 +1,17 @@
 import t from 'ts-runtime/lib';
+import ChallengeRank from '../general/ChallengeRank';
 
-import ChallengeRank from "../general/ChallengeRank";
 import IDisplay from "../general/Display";
-import MdString from "../general/MdString";
-import Source from "../general/Source";
 import ISource from "../general/interfaces/ISource";
+import MdString from '../general/MdString';
+import Source from '../general/Source';
 import EncounterDisplay from "./EncounterDisplay";
 import EncounterId from "./EncounterId";
 import EncounterNature from "./EncounterNature";
 import EncounterTags from "./EncounterTags";
 import { IEncounterVariantData, EncounterVariant, IEncounterVariant } from "./EncounterVariant";
 
-export interface IEncounterData {
+export interface IEncounterYaml {
   $id?: EncounterId | undefined;
   Name: string;
   Nature: EncounterNature;
@@ -28,7 +28,7 @@ export interface IEncounterData {
   "Quest Starter": MdString;
 }
 // interface for outgoing JSON + deserialization
-export interface IEncounter extends IEncounterData {
+export interface IEncounter extends IEncounterYaml {
   $id: EncounterId
   Name: string;
   Nature: EncounterNature;
@@ -60,7 +60,7 @@ export class Encounter implements IEncounter {
   Description: MdString;
   "Quest Starter": MdString;
   Source: Source;
-  constructor(json: IEncounterData, ...ancestorSourceJson: ISource[]) {
+  constructor(json: IEncounterYaml, ...ancestorSourceJson: ISource[]) {
     this.$id = `Encounters / ${json.Name}`;
     this.Name = json.Name
     this.Nature = json.Nature

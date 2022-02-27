@@ -1,6 +1,6 @@
 import Location from "../place/Location";
 import LocationTheme from "../place/LocationTheme";
-import IPlaceData, { PlaceType } from "../IPlaceData";
+import IPlaceData, { PlaceType } from "../IPlaceYaml";
 import Region from "../place/Region";
 import SettlementInitialContact from "../settlement/SettlementInitialContact";
 import StarshipInitialContact from "../starship/StarshipInitialContact";

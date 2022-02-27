@@ -1,7 +1,7 @@
 import t from 'ts-runtime/lib';
 
 import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
-import { Encounter, IEncounterData } from "../types/encounters/Encounter";
+import { Encounter, IEncounterYaml } from "../types/encounters/Encounter";
 import ISource from "../types/general/interfaces/ISource";
 import getYamlFiles from "./io/getYamlFiles";
 import _ from "lodash";
@@ -13,7 +13,7 @@ const filesEncounters = getYamlFiles().filter(file => file.toString().match("enc
 interface IEncounterRoot extends IYamlWithRef {
   Name: string;
   Source: ISource;
-  Encounters: IEncounterData[];
+  Encounters: IEncounterYaml[];
 }
 
 export default function buildEncounters(): Encounter[] {

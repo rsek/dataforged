@@ -4,8 +4,8 @@ import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, IT
 import Move from '../moves/Move';
 import AlterMove from './AlterMove';
 import IAssetAbility from './interfaces/IAssetAbility';
-import IAssetAbilityData from './interfaces/IAssetAbilityData';
-import IAssetData from './interfaces/IAssetData';
+import IAssetAbilityYaml from './interfaces/IAssetAbilityYaml';
+import IAssetYaml from './interfaces/IAssetYaml';
 
 export default class AssetAbility implements IAssetAbility {
   $id: string;
@@ -13,9 +13,9 @@ export default class AssetAbility implements IAssetAbility {
   Move?: Move | undefined;
   Inputs?: IInput[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
-  "Alter Properties"?: Partial<IAssetData> | undefined;
+  "Alter Properties"?: Partial<IAssetYaml> | undefined;
   Enabled: boolean;
-  constructor(json: IAssetAbilityData, id: string) {
+  constructor(json: IAssetAbilityYaml, id: string) {
     this.$id = id;
     this.Text = json.Text;
     this.Move = json.Move ? new Move(json.Move, `Moves / ${this.$id}`) : undefined;

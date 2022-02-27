@@ -1,6 +1,6 @@
 // import { title } from "process";
-// import { MdString } from "../general/MdString";
-// import { Source } from "../general/Source";
+// import MdString from "../general/MdString";
+// import Source from "../general/Source";
 // import { ISuggestions, Suggestions } from "../general/Suggestions";
 // import { IOracleContent, OracleContent } from "../oracles/OracleContent";
 // import { OracleCategoryId } from "../oracles/OracleId";

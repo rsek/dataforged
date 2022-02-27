@@ -1,5 +1,5 @@
 import ChallengeRank from "../general/ChallengeRank";
-import { IEncounterData } from "./Encounter";
+import { IEncounterYaml } from "./Encounter";
 import EncounterId from "./EncounterId";
 import EncounterTags from "./EncounterTags";
 import EncounterNature from "./EncounterNature";
@@ -8,7 +8,7 @@ import ISource from "../general/interfaces/ISource";
 import ITableDisplay from "../oracles/interfaces/IOracleDisplay";
 
 
-export interface IEncounterVariantData extends Partial<IEncounterData> {
+export interface IEncounterVariantData extends Partial<IEncounterYaml> {
   $id?: EncounterId;
   Name: string;
   Rank: ChallengeRank;

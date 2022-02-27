@@ -1,13 +1,13 @@
 import { IConditionMeter } from "../../general/ConditionMeter";
 import { IInput, Input } from "../../general/Input";
-import MdString from "../../general/MdString";
 import ISource from "../../general/interfaces/ISource";
+import MdString from "../../general/MdString";
 import IAssetAttachment from "../AssetAttachment";
 import AssetId from "../AssetId";
 import AssetType from "../AssetType";
-import IAssetAbilityData from "./IAssetAbilityData";
+import IAssetAbilityYaml from "./IAssetAbilityYaml";
 
-export default interface IAssetData {
+export default interface IAssetYaml {
   $id?: AssetId | undefined;
   Name: string;
   Source?: ISource;
@@ -16,6 +16,6 @@ export default interface IAssetData {
   Attachments?: IAssetAttachment | undefined;
   Inputs?: IInput[] | Input[] | undefined;
   Requirement?: MdString | undefined;
-  Abilities: IAssetAbilityData[];
+  Abilities: IAssetAbilityYaml[];
   "Condition Meter"?: IConditionMeter | undefined;
 }

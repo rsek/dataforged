@@ -1,9 +1,9 @@
-import IActorData, { ActorType } from "../IActorData";
+import IActorYaml, { ActorType } from "../IActorYaml";
 import Behavior from "./Behavior";
 import Environment from "./Environment";
 import Scale from "./Scale";
 
-export default interface ICreatureData<E extends Environment | undefined, B extends Behavior | undefined, S extends Scale | undefined> extends IActorData {
+export default interface ICreatureData<E extends Environment | undefined, B extends Behavior | undefined, S extends Scale | undefined> extends IActorYaml {
   "Object type": ActorType.Creature;
   Environment?: E;
   Scale?: S;

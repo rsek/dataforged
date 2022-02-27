@@ -10,5 +10,5 @@ const pathOut: PathLike = "./";
 let data = buildDataforged();
 
 _.forEach(data, (value, key) => {
-  writeJson(pathOut.toString() + `${key}.json` as PathLike, value)
+  writeJson(pathOut.toString() + `starforged-${key}.json` as PathLike, value)
 });

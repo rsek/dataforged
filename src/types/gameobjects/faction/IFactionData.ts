@@ -1,4 +1,4 @@
-import IActorData, { ActorType } from "../IActorData";
+import IActorYaml, { ActorType } from "../IActorYaml";
 import Dominion from "./Dominion";
 import FactionType from "./FactionType";
 import FringeGroup from "./FringeGroup";
@@ -8,7 +8,7 @@ import Leadership from "./Leadership";
 
 export type FactionOption = Dominion | FringeGroup | Guild;
 
-export default interface IFactionData<T extends FactionOption | undefined> extends IActorData {
+export default interface IFactionData<T extends FactionOption | undefined> extends IActorYaml {
   "Object type": ActorType.Faction;
   "Faction Type"?: T extends Dominion ? FactionType.Dominion : T extends FringeGroup ? FactionType.FringeGroup : T extends Guild ? FactionType.Guild : undefined;
   Influence?: Influence;
