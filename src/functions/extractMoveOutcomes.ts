@@ -1,7 +1,7 @@
 import t from 'ts-runtime/lib';
 
 import _ from "lodash";
-import Move from "../types/moves/Move";
+import { Move } from '../types/moves/Move';
 import buildMoves from "./buildMoves";
 import writeJson from "./io/writeJSON";
 

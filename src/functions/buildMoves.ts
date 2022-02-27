@@ -3,11 +3,11 @@ import t from 'ts-runtime/lib';
 import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
 import getYamlFiles from "./io/getYamlFiles";
 import ISource from "../types/general/interfaces/ISource";
-import Move from "../types/moves/Move";
 import IMove from "../types/moves/interfaces/IMove";
 import IYamlWithRef from './IYamlWithRef';
 import badJsonError from './logging/badJsonError';
 import buildLog from './logging/buildLog';
+import { Move } from '../types/moves/Move';
 const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));
 
 interface IMovesRoot extends IYamlWithRef {

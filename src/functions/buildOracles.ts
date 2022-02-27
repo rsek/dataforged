@@ -8,7 +8,6 @@ import { refsPath } from "./process-yaml/concatWithYamlRefs";
 import loadOracleData, { IOracleCatRoot } from "./process-yaml/loadOracleData";
 import jsonpath from "jsonpath";
 import { is } from 'typescript-is';
-import IOracleCategoryData from '../types/oracles/interfaces/IOracleCategoryYaml';
 import { OracleCategoryName } from '../types/oracles/OracleCategoryId';
 import { OracleSubcategoryName } from '../types/oracles/OracleSubcategoryId';
 import buildLog from './logging/buildLog';
@@ -17,12 +16,13 @@ import replaceInAllStrings from "./object-transform/replaceInAllStrings"
 import writeJson from './io/writeJSON';
 import _ from 'lodash';
 import badJsonError from './logging/badJsonError';
+import IOracleCategoryYaml from '../types/oracles/interfaces/yaml/IOracleCategoryYaml';
 
-interface IOracleSubcategoryData extends IOracleCategoryData {
+interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
   _childOf: OracleCategoryName;
 }
-interface IOracleParentCategoryData extends IOracleCategoryData {
+interface IOracleParentCategoryData extends IOracleCategoryYaml {
   Name: OracleCategoryName;
   _parentOf: OracleSubcategoryName[];
 }
@@ -65,7 +65,7 @@ export default function buildOracles(): OracleCategoryInfo[] {
     if (!parentName) {
       throw badJsonError(buildOracles, undefined, `"${subcat.Name}" is not assigned to a subcategory.`);
     }
-    const parentCat = categories.find(cat => cat.Name == parentName) as IOracleCategoryData;
+    const parentCat = categories.find(cat => cat.Name == parentName) as IOracleCategoryYaml;
 
     if (parentCat._parentOf) {
       if (!parentCat._parentOf.includes(subcat.Name)) {
