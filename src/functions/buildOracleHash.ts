@@ -1,9 +1,9 @@
 import _ from "lodash";
-import OracleCategoryInfo from "../types/oracles/classes/OracleCategory";
+import OracleCategory from "../types/oracles/classes/OracleCategory";
 import buildOracles from './buildOracles';
 
 
-export function buildOracleHash(): _.Dictionary<OracleCategoryInfo> {
+export function buildOracleHash(): _.Dictionary<OracleCategory> {
   const oracleTree = buildOracles();
   let idHash = _.keyBy(oracleTree, (oracleCat) => oracleCat.$id);
 

@@ -4,7 +4,7 @@ import fs from "fs";
 import Asset from "../types/assets/Asset";
 import Encounter from "../types/encounters/Encounter";
 import Move from '../types/moves/Move';
-import OracleCategoryInfo from "../types/oracles/classes/OracleCategory";
+import OracleCategory from "../types/oracles/classes/OracleCategory";
 import SettingTruth from "../types/truths/SettingTruth";
 import buildAssets from "./buildAssets";
 import buildEncounters from "./buildEncounters";
@@ -18,7 +18,7 @@ export interface IronswornData {
   assets: Asset[];
   encounters: Encounter[];
   moves: Move[];
-  oracles: OracleCategoryInfo[];
+  oracles: OracleCategory[];
   setting_truths: SettingTruth[];
 }
 

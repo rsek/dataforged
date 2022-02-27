@@ -1,6 +1,6 @@
 
 
-import OracleCategoryInfo from "../types/oracles/classes/OracleCategory";
+import OracleCategory from "../types/oracles/classes/OracleCategory";
 import getSubdirs from "./io/getSubdirs";
 import getYamlFiles from "./io/getYamlFiles";
 import fs, { writeFileSync } from "fs";
@@ -35,7 +35,7 @@ interface IOracleSubcatRoot extends IOracleCatRoot {
   Categories: IOracleSubcategoryData[];
 }
 
-export default function buildOracles(): OracleCategoryInfo[] {
+export default function buildOracles(): OracleCategory[] {
   buildLog(buildOracles, "Building oracles...");
   const filesOracleCategories: fs.PathLike[] = getYamlFiles("oracles");
   // console.info(filesOracleCategories);
@@ -78,7 +78,7 @@ export default function buildOracles(): OracleCategoryInfo[] {
       parentCat.Categories.push(subcat);
     }
   });
-  const json: OracleCategoryInfo[] = categories.map(categoryData => new OracleCategoryInfo(categoryData));
+  const json: OracleCategory[] = categories.map(categoryData => new OracleCategory(categoryData));
 
   const catCount = categories.length;
   const subcatCount = subcategories.length;

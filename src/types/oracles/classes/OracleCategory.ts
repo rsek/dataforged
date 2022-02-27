@@ -7,7 +7,7 @@ import OracleUsage from "./OracleUsage";
 import buildOracleId from "../../../functions/buildOracleId";
 import _ from "lodash";
 import OracleCategoryDisplay from "./OracleCategoryDisplay";
-import IOracleCategoryInfo from "../interfaces/IOracleCategory";
+import IOracleCategory from "../interfaces/IOracleCategory";
 import propagateToChildren from '../../../functions/object-transform/propagateToChildren';
 import IOracleYaml from '../interfaces/yaml/IOracleYaml';
 import buildLog from '../../../functions/logging/buildLog';
@@ -15,7 +15,7 @@ import IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml";
 import Source from "../../general/Source";
 
 
-export default class OracleCategoryInfo implements IOracleCategoryInfo {
+export default class OracleCategory implements IOracleCategory {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;
@@ -25,7 +25,7 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo {
   Display: OracleCategoryDisplay;
   Usage?: OracleUsage | undefined;
   Oracles?: Oracle[] | undefined;
-  Categories?: OracleCategoryInfo[] | undefined;
+  Categories?: OracleCategory[] | undefined;
   // Requires?: Requirements | undefined;
   constructor(
     json: IOracleCategoryYaml,
@@ -68,7 +68,7 @@ export default class OracleCategoryInfo implements IOracleCategoryInfo {
           if (json.Requires) {
             propagateToChildren(json.Requires, "Requires", oracleCat);
           }
-          return new OracleCategoryInfo(oracleCat, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson);
+          return new OracleCategory(oracleCat, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson);
         }
       );
     }
