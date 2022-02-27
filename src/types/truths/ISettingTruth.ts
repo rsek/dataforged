@@ -1,6 +1,5 @@
 import ISource from "../general/interfaces/ISource";
 import ISettingTruthTableRow from "./ISettingTruthTableRow";
-import ISuggestions from '../general/interfaces/ISuggestions';
 import ISuggestionsYaml from "../general/interfaces/ISuggestionsYaml";
 
 

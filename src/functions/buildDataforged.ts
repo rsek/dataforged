@@ -1,6 +1,5 @@
 
 
-import fs from "fs";
 import Asset from "../types/assets/Asset";
 import Encounter from "../types/encounters/Encounter";
 import Move from '../types/moves/Move';
@@ -11,7 +10,6 @@ import buildEncounters from "./buildEncounters";
 import buildMoves from "./buildMoves";
 import buildOracles from "./buildOracles";
 import buildTruths from "./buildTruths";
-import writeJson from "./io/writeJSON";
 import buildLog from './logging/buildLog';
 
 export interface IronswornData {
