@@ -9,7 +9,7 @@ import ISettingTruthTableRow from "./ISettingTruthTableRow";
 import ISettingTruth from './ISettingTruth';
 import buildLog from '../../functions/logging/buildLog';
 
-export class SettingTruth implements Omit<ISettingTruth, "Suggestions">, IHasId {
+export default class SettingTruth implements Omit<ISettingTruth, "Suggestions">, IHasId {
   $id: string;
   Name: string;
   Table: ISettingTruthTableRow[];

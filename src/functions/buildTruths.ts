@@ -2,7 +2,7 @@
 
 import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
 import ISource from "../types/general/interfaces/ISource";
-import { SettingTruth } from "../types/truths/SettingTruth";
+import SettingTruth from "../types/truths/SettingTruth";
 import ISettingTruth from "../types/truths/ISettingTruth";
 import getYamlFiles from "./io/getYamlFiles";
 import IYamlWithRef from './IYamlWithRef';
