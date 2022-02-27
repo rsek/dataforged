@@ -35,15 +35,16 @@ The migration will also make it much easier for me to add some future features:
 
 I **strongly** recommend migrating existing projects to the new format, especially if you want prompt content updates.
 
-If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on the new format is appreciated.
+If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on that front is appreciated.
 
 ## Current Version/Sources
 
+  * **Starforged Rulebook - 022322**
+    * assets
+    * moves
   * **Starforged Rulebook Backer Preview - 021922**
     * setting truths
   * **Starforged Rulebook Backer Preview - 021922**
-    * assets
-    * moves
     * encounters
     * oracles
 
