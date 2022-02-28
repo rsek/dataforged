@@ -12,10 +12,10 @@ export default function renderOracleCategory(oracleCat: OracleCategory, headerLe
     items.push(oracleCat.Description);
   }
   if (oracleCat.Oracles) {
-    items.push(...oracleCat.Oracles.map(oracle => renderOracle(oracle, headerLevel + 1)));
+    items.push(...oracleCat.Oracles.map(oracle => renderOracle(oracle, headerLevel + 1)).flat(1));
   }
   if (oracleCat.Categories) {
-    items.push(...oracleCat.Categories.map(oracleSubCat => renderOracleCategory(oracleSubCat, headerLevel + 1)));
+    items.push(...oracleCat.Categories.map(oracleSubCat => renderOracleCategory(oracleSubCat, headerLevel + 1)).flat(1));
   }
-  return items.join("\n\n");
+  return items.flat(1).join("\n\n");
 }

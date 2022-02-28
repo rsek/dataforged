@@ -145,7 +145,9 @@ Roll   | Result
 81–85  | Search for a missing expedition in the depths of a precursor vault
 86–90  | Shield a wondrous lifeform from those who seek to destroy it
 91–95  | Track and slay a marauding beast
-96–100 | Transport a displaced people to their new home,## Characters
+96–100 | Transport a displaced people to their new home
+
+## Characters
 
 ### First Look
 
@@ -514,7 +516,9 @@ Roll | Given Name | Family Name | Callsign
 97   | Zakia      | Nazari      | Whisper
 98   | Zari       | Darwin      | Wraith
 99   | Zephyr     | Pearson     | Wrongway
-100  | Zoya       | Volkov      | Zephyr,## Core Oracles
+100  | Zoya       | Volkov      | Zephyr
+
+## Core Oracles
 
 ### Action
 
@@ -970,7 +974,9 @@ Roll | Result
 97   | Void
 98   | Weapon
 99   | World
-100  | Wreckage,## Creatures
+100  | Wreckage
+
+## Creatures
 
 ### Environment
 
@@ -1169,7 +1175,9 @@ Roll   | Result
 93–94  | Telekinetic
 95–96  | Teleportation
 97–98  | Territorial
-99–100 | Toxic spew,## Derelicts
+99–100 | Toxic spew
+
+## Derelicts
 
 ### Location
 
@@ -1824,7 +1832,9 @@ Roll   | Result
 21–40  | Records of a notable discovery
 41–60  | Specialized research tools
 61–80  | Unique prototype
-81–100 | Useful navigational data,## Factions
+81–100 | Useful navigational data
+
+## Factions
 
 ### Faction Type
 
@@ -2233,7 +2243,9 @@ Roll   | Result
 88–90  | Suffering a shortage of key workers or personnel
 91–93  | Uprising or revolt is brewing from within
 94–96  | Vulnerable to attack or aggression
-97–100 | ⏵Action + Theme,## Location Themes
+97–100 | ⏵Action + Theme
+
+## Location Themes
 
 ### Theme Type
 
@@ -2672,7 +2684,9 @@ Roll   | Result
 21–40  | Encounter with a helpful adherent or heretic
 41–60  | Insight into the nature or history of the faith
 61–80  | Insight into the schemes or methods of religious zealots
-81–100 | Interesting or valuable artifact or device,## Miscellaneous
+81–100 | Interesting or valuable artifact or device
+
+## Miscellaneous
 
 ### Story Complication
 
@@ -2826,7 +2840,9 @@ Roll   | Result
 88–90  | Take cover or bolster defenses
 91–93  | Use an unexpected weapon or ability
 94–96  | Weaken defenses
-97–100 | Roll twice,## Planets
+97–100 | Roll twice
+
+## Planets
 
 ### Planetary Class
 
@@ -3700,7 +3716,9 @@ Roll   | Result
 1–10   | Scarce
 11–45  | Diverse
 46–85  | Bountiful
-86–100 | Overrun,## Settlements
+86–100 | Overrun
+
+## Settlements
 
 ### Location
 
@@ -3960,7 +3978,9 @@ Roll | Result
 97   | Welkin
 98   | Wellspring
 99   | Weyland
-100  | Wreck,## Space Encounters
+100  | Wreck
+
+## Space Encounters
 
 ### Space Sighting
 
@@ -4136,7 +4156,9 @@ Roll   | Result
 85–88  | Refuge offers a place to hide, plan, or recover
 89–92  | Sensors pinpoint a lurking foe
 93–96  | Sensors reveal helpful or interesting environmental data
-97–100 | Vehicle or equipment performs beyond expectations,## Starships
+97–100 | Vehicle or equipment performs beyond expectations
+
+## Starships
 
 ### Type
 
@@ -4366,7 +4388,9 @@ Roll | Result
 97   | Venture
 98   | Vigilant
 99   | Voidtreader
-100  | Vulture,## Precursor Vaults
+100  | Vulture
+
+## Precursor Vaults
 
 ### Location
 
