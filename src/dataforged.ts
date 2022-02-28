@@ -25,4 +25,10 @@ data.oracles.filter(oracle => oracle.$id != "Oracles / Moves").forEach((oracleCa
   writeFileSync(filePath, text, { encoding: 'utf-8' });
 });
 
+let allOracleText = [
+  "# Starforged Oracles",
+  data.oracles.filter(oracle => oracle.$id != "Oracles / Moves").map((oracleCat) => renderOracleCategory(oracleCat, 2))].join("\n\n").replace(/\(Moves#/g, "(Moves.md#");
+
+writeFileSync(mdPath + "Oracles.md", allOracleText + "\n", { encoding: 'utf-8' });
+
 writeFileSync(mdPath + "Moves.md", renderMoves(data.moves) + "\n", { encoding: 'utf-8' });
