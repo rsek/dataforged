@@ -1,19 +1,21 @@
 Settlements:
   Name: Settlements
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Title: "Ironsworn: Starforged Rulebook"
+    Date: "022322"
   Oracles:
-    - Name: Location
-      Usage:
-        Initial: true
-      Content:
-        Part of speech: [adjective]
-      Table:
-        - [1, 40, Planetside, Attributes: {Location: Planetside}]
-        - [41, 75, Orbital, Attributes: {Location: Orbital}]
-        - [76, 100, Deep Space, Attributes: {Location: Deep Space}]
+    - _templateInfo: *template.info:Generic.Location
+      Source:
+        Page: 322
+      _templateTable:
+        content: *template.content:Generic.Location
+        rolls:
+          - [1, 40]
+          - [41, 75]
+          - [76, 100]
     - Name: Population
+      Source:
+        Page: 322
       Usage:
         Initial: true
         Requires:
@@ -75,6 +77,8 @@ Settlements:
               - [96, 100]
 
     - Name: First Look
+      Source:
+        Page: 323
       Usage:
         Max rolls: 2
         Initial: true
@@ -105,6 +109,8 @@ Settlements:
         - [91, 100, *result:Descriptor+Focus]
 
     - Name: Initial Contact
+      Source:
+        Page: 323
       Usage:
         Initial: tract
       Content:
@@ -124,6 +130,8 @@ Settlements:
         - [96, 100, ⏵Derelict, *inherit:Derelict.Settlement]
 
     - Name: Authority
+      Source:
+        Page: 323
       Usage:
         Initial: true
       Content:
@@ -138,6 +146,8 @@ Settlements:
         - [86, 100, Oppressive, Attributes: {Authority: Oppressive}]
 
     - Name: Projects
+      Source:
+        Page: 324
       Display:
         Title: Settlement Projects
       Content:
@@ -183,6 +193,8 @@ Settlements:
         - [96, 100, *result:Action+Theme]
 
     - Name: Trouble
+      Source:
+        Page: 324
       Display:
         Title: Settlement Trouble
       Usage:
@@ -229,6 +241,8 @@ Settlements:
         - [91, 100, *result:Action+Theme]
 
     - Name: Name
+      Source:
+        Page: 325
       Display:
         Title: Settlement Name
       Description: |-

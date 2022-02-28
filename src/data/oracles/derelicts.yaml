@@ -1,8 +1,8 @@
 Derelicts:
   Name: Derelicts
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Title: "Ironsworn: Starforged Rulebook"
+    Date: "022322"
   _parentOf:
     - Access
     - Community
@@ -15,21 +15,23 @@ Derelicts:
   Description: |-
     Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
   Oracles:
-    - Name: Location
-      Usage:
-        Initial: true
-      Content:
-        Part of speech: [adjective]
-      Table:
-        - [1, 40, Planetside, *attr:Location.Planetside]
-        - [41, 60, Orbital, *attr:Location.Orbital]
-        - [61, 100, Deep Space, *attr:Location.DeepSpace]
-
+    - _templateInfo: *template.info:Generic.Location
+      Source:
+        Page: 348
+      _templateTable:
+        content: *template.content:Generic.Location
+        rolls:
+          - [1, 40]
+          - [41, 60]
+          - [61, 100]
     - Name: Type
+      Source:
+        Page: 348
       Usage:
         Initial: true
         Requires: *attr:Location.Any
       Display:
+        Title: Type (by Location)
         Table:
           Roll columns:
             - Content: Oracles / Derelicts / Type / Planetside
@@ -66,6 +68,8 @@ Derelicts:
               - [1, 75]
               - [76, 100]
     - Name: Condition
+      Source:
+        Page: 348
       Usage:
         Initial: true
       Content:
@@ -77,8 +81,9 @@ Derelicts:
         - [61, 90, Damaged or breached]
         - [91, 98, Heavily damaged]
         - [99, 100, Impending destruction]
-
     - Name: Outer First Look
+      Source:
+        Page: 349
       Aliases: [First Look]
       Usage:
         Initial: true
@@ -95,8 +100,9 @@ Derelicts:
         - [81, 85, Signs that others are here]
         - [86, 95, Stripped exterior]
         - [96, 100, Time or reality distortions]
-
     - Name: Inner First Look
+      Source:
+        Page: 349
       Aliases: [First Look]
       Content:
         Part of speech: [fragment]
@@ -135,16 +141,17 @@ Derelicts:
         - [88, 90, Unstable energy surges]
         - [91, 93, Watchful AI]
         - [94, 100, *result:Descriptor+Focus]
-
-    - Name: Zone
+    - Name: Zones
+      Source:
+        Page: 351
       Display:
-        Title: Derelict Zone
+        Title: Derelict Zones
         Table:
           Roll columns:
-            - Content: Oracles / Derelicts / Zone / Starship
-            - Content: Oracles / Derelicts / Zone / Settlement
+            - Content: Oracles / Derelicts / Zones / Starship
+            - Content: Oracles / Derelicts / Zones / Settlement
           Result columns:
-            - Content: Oracles / Derelicts / Zone / Starship
+            - Content: Oracles / Derelicts / Zones / Starship
       Usage:
         Repeatable: true
         Requires:
@@ -159,6 +166,7 @@ Derelicts:
               Attributes:
                 Derelict Type: Starship
           Table: &derelictZoneTable
+            - [null, null, ⏵Access, *obj:DerelictZone.Community]
             - [1, 5, ⏵Community, *obj:DerelictZone.Community]
             - [6, 30, ⏵Engineering, *obj:DerelictZone.Engineering]
             - [31, 55, ⏵Living, *obj:DerelictZone.Living]
@@ -177,6 +185,7 @@ Derelicts:
           _templateTable:
             content: *derelictZoneTable
             rolls:
+              - [null, null]
               - [1, 20]
               - [21, 30]
               - [31, 50]

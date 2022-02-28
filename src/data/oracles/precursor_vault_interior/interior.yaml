@@ -3,10 +3,12 @@ Interior:
   _childOf: Vaults
   Description: If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
   Source:
-    Title: Starforged Backer Preview
-    Date: "020122"
+    Title: "Ironsworn: Starforged Rulebook"
+    Date: "022322"
   Oracles:
     - Name: First Look
+      Source:
+        Page: 364
       Display:
         Title: Inner First Look
       Usage:
@@ -48,10 +50,11 @@ Interior:
         - [88, 90, Well-preserved]
         - [91, 93, Wet or humid]
         - [94, 100, *result:Descriptor+Focus]
-
     - Name: Feature
       Display:
         Title: Interior Feature
+      Source:
+        Page: 366
       Usage:
         Repeatable: true
       Content:
@@ -90,13 +93,15 @@ Interior:
         - [80, 82, Vaulted chamber]
         - [83, 85, Vertical shaft]
         # TODO: work out a way to represent interior and sanctum as game objects
-        - [86, 90, Transition into the Sanctum]
+        - [86, 90, Transition into the ⏵Sanctum]
         - [91, 95, *result:Descriptor+Focus]
         - [96, 100, *result:RollTwice]
 
     - Name: Peril
       Display:
         Title: Interior Peril
+      Source:
+        Page: 367
       Usage:
         Repeatable: true
       Description: Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](Moves#Explore-a-Waypoint) and are prompted to envision a peril.
@@ -129,6 +134,8 @@ Interior:
     - Name: Opportunity
       Display:
         Title: Interior Opportunity
+      Source:
+        Page: 367
       Usage:
         Repeatable: true
       Description: Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](Moves#Explore-a-Waypoint) and are prompted to envision an opportunity.

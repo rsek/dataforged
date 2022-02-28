@@ -1,0 +1,12 @@
+Common tables:
+  - _templateInfo: &template.info:Generic.Location
+      Name: Location
+      Usage:
+        Initial: true
+      Content:
+        Part of speech: [adjective]
+    _templateTable:
+      content: &template.content:Generic.Location
+        - [Planetside, *attr:Location.Planetside]
+        - [Orbital, *attr:Location.Orbital]
+        - [Deep Space, *attr:Location.DeepSpace]
