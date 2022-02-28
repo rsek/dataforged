@@ -6,7 +6,7 @@
 
 **When you begin a significant session or chapter of play**, do all of the following.
 
-  * Identify or adjust flagged content and [Set a Flag](Set-a-Flag).
+  * Identify or adjust flagged content and [Set a Flag](#Set-a-Flag).
   * Review or recap what happened last session.
   * Set the scene by envisioning your character’s current situation and intent.
 
