@@ -23,7 +23,7 @@ export default class DisplayTable implements IDisplayTable {
           }
         });
       }
-      this["Result columns"] = resultColData.map(col => new ResultColumn(col.Content ?? parentId, col.Label ?? undefined));
+      this["Result columns"] = resultColData.map(col => new ResultColumn(col.Content ?? parentId, col.Label ?? undefined, col.Key ?? "Result"));
     } else {
       this["Result columns"] = [new ResultColumn(parentId)];
     }
