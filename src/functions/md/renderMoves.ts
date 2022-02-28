@@ -17,5 +17,5 @@ export default function renderMoves(moves: Move[], headerLevel: number = 1, stri
 
   items.push(...moveCategoryText);
 
-  return items.join("\n\n").replace(/\(Moves#/, "(#");
+  return items.join("\n\n").replace(/\(Moves#/g, "(#");
 }
