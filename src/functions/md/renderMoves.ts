@@ -3,7 +3,7 @@ import Move from "../../types/moves/Move";
 import renderMove from "./renderMove";
 
 
-export default function renderMoves(moves: Move[], headerLevel: number = 1): string {
+export default function renderMoves(moves: Move[], headerLevel: number = 1, stripExternalLinks = true): string {
   const header = _.repeat("#", headerLevel) + " Moves";
   const items = [header];
 
@@ -17,5 +17,5 @@ export default function renderMoves(moves: Move[], headerLevel: number = 1): str
 
   items.push(...moveCategoryText);
 
-  return items.join("\n\n");
+  return items.join("\n\n").replace(/\(Moves#/, "(");
 }
