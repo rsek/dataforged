@@ -42,11 +42,11 @@ If you need JSON in the old format, it can be found in the `legacy` directory. T
   * **Starforged - 022322**
     * assets
     * moves
+    * oracles
   * **Starforged Backer Preview - 021922**
     * setting truths
   * **Starforged Backer Preview - 021922**
     * encounters
-    * oracles
 
 ## Credits
 
