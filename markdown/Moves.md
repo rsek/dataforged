@@ -85,7 +85,7 @@ On a **miss**, you fail, or a momentary success is undermined by a dire turn of 
   * With deception, stealth, or trickery: Roll +shadow
   * With expertise, focus, or observation: Roll +wits
 
-On a **strong hit**, take both. On a **weak hit**, choose one.
+On a **hit**, you succeed. On a **strong hit**, take both. On a **weak hit**, choose one.
 
   * Take +2 momentum
   * Add +1 on your next move (not a progress move)
