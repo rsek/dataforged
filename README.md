@@ -4,7 +4,7 @@ Official *Ironsworn: Starforged* rules data in JSON, for use in community tools.
 
 ## Intent
 
-This repository is intended to give [*Starforged*'s kickstarter](https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged) backers access to game data to incorporate into their own *Starforged* tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).
+This repository is intended to give [*Starforged*'s Kickstarter](https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged) backers access to game data to incorporate into their own *Starforged* tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).
 
 ## Licensing
 
@@ -19,7 +19,7 @@ Due to this being preview content, this repo is fairly unstable! As the game gro
 ### Legacy Format
 Dataforged is migrating to a new format that is incompatible with the original format; the format had accumulated an awful lot of cruft, as it was carried over from Datasworn and wasn't designed with Starforged in mind. Features of the new format:
 
-  * pregenerated `$id` keys for most important objects
+  * pre-generated `$id` keys for most important objects
   * wherever practical, it uses the game's terminology to name keys. For instance, the old table row key `Description` is now `Result`, while `Details` has been renamed `Summary`.
   * explicitly defines many values that were previously left to be inferred (for instance, the bottom end of a roll's range is now included)
   * detailed information on how to render tables (for instance, whether it should be displayed as a column of another table)
@@ -43,10 +43,9 @@ If you need JSON in the old format, it can be found in the `legacy` directory. T
     * moves
     * oracles
     * setting truths
+    * encounters
   * ***Ironsworn: Starforged* Assets - 030422**
     * assets
-  * **Starforged Backer Preview - 021922**
-    * encounters
 
 ## Credits
 
