@@ -5,7 +5,8 @@
   "main": "./build/dataforged.js",
   "type": "commonjs",
   "scripts": {
-    "build": "ttsc",
+    "flush": "rm -R ./build",
+    "build": "yarn flush && ttsc",
     "build-json": "node .",
     "start": "yarn build && yarn build-json",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +18,7 @@
   "keywords": [
     "ironsworn",
     "starforged",
-    "ttrpg"
+    "TTRPG"
   ],
   "author": "rsek",
   "license": "SEE LICENSE IN LICENSE.md",
