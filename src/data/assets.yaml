@@ -1,7 +1,7 @@
 Name: Assets
 Source:
   Title: "Ironsworn: Starforged Assets"
-  Date: "022322"
+  Date: "030422"
 Assets:
   - Name: Starship
     Asset Type: Command Vehicle
@@ -61,7 +61,7 @@ Assets:
     Asset Type: Module
     Abilities:
       - Text: &move:Asset.Grappler |-
-          Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus and you [Lose Momentum](Moves#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Moves#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+          Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](Moves#Lose-Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Moves#Withstand-Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
         Move:
           Name: Ready Grappler
           Category: Asset Moves
@@ -79,12 +79,12 @@ Assets:
                 If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
             Weak Hit:
               Text: |-
-                The grappler is charged and may be fired, but charging requires extra time or focus and you [Lose Momentum](Moves#Lose-Momentum) (-1)
+                The grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](Moves#Lose-Momentum) (-1)
 
                 If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
             Miss:
               Text: |-
-                Charging the grappler fails and you must [Withstand Damage](Moves#Withstand-Damage) (-2).
+                Charging fails and you must [Withstand Damage](Moves#Withstand-Damage) (-2).
       - Text: |-
           If you score a strong hit when readying the grappler, you may [Sacrifice Resources](Moves#Sacrifice-Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
       - Text: |-
@@ -191,7 +191,7 @@ Assets:
           Your vehicle is clad in iron. When you [Withstand Damage](Moves#Withstand-Damage), add +1. On a strong hit, take +1 momentum.
         Enabled: true
       - Text: |-
-          Your plated hull is given a fierce and distinctive color or design. When you arrive at a place where your reputation is a factor, take +1 momentum. When you [Enter the Fray](Moves#Enter-the-Fray) against a foe who would know your reputation, take +momentum equal to your vehicle's integrity on a strong hit.
+          Your plated hull is given a fierce and distinctive color or design. When you arrive at a place where your reputation is a factor, take +1 momentum. When you [Enter the Fray](Moves#Enter-the-Fray) against a foe who knows your reputation, take +momentum equal to your vehicle’s integrity on a strong hit.
       - Text: |-
           When you [React Under Fire](Moves#React-Under-Fire) by letting your plated hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, [Pay the Price](Moves#Pay-the-Price) by marking this component as broken.
   - Name: Research Lab
@@ -587,13 +587,13 @@ Assets:
       - Text: |-
           When you [Gather Information](Moves#Gather-Information) or [Secure an Advantage](Moves#Secure-an-Advantage) by studying the aesthetics of a being or culture, add +2.
       - Text: &move:Asset.Artist |-
-          When you create or perform a signifigant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of two. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Moves#Pay-the-Price).
+          When you create or perform a significant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of 2. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Moves#Pay-the-Price).
         Move:
           Name: Commemorate
           Category: Asset Moves
           Asset: Assets / Artist
           Trigger:
-            Text: When you create or perform a signifigant artistic work as a public memorial or tribute
+            Text: When you create or perform a significant artistic work as a public memorial or tribute
             Options:
               # TODO: some trigger text? how should it be formulated
               - Action roll:
@@ -666,12 +666,12 @@ Assets:
     Asset Type: Path
     Abilities:
       - Text: |-
-          When you take a bounty contract and [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) to see it done, add +1. On a strong hit, you've got a solid lead and may immediately mark progress. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow), make the legacy reward one rank higher (1 extra box if already epic).
+          When you take a bounty contract and [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) to see it done, add +1. On a strong hit, you’ve got a solid lead and may mark progress on the quest. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) on a hunt, make the legacy reward one rank higher (1 extra box if already epic).
         Enabled: true
       - Text: |-
-          When you [Gather Information](Moves#Gather-Information) related to a bounty, add +2. On a strong hit with a match, you reveal a surprising aspect of the contract; envision what you discover, and choose one.
+          When you [Gather Information](Moves#Gather-Information) related to a bounty, add +1. On a match, you reveal a surprising or sinister aspect of the contract; envision what you discover, and choose one.
 
-            * Forge ahead: Mark progress twice.
+            * Forge ahead: Mark progress on the quest. If you scored a strong hit with a match, also take +2 momentum.
             * Change loyalties: [Forsake Your Vow](Moves#Forsake-Your-Vow) and mark 2 ticks on your bonds legacy track.
       - Text: |-
           When you [Take Decisive Action](Moves#Take-Decisive-Action) in a fight against a bounty target or their agents, you may reroll one challenge die.
@@ -749,19 +749,19 @@ Assets:
             Stat: Wits
     Abilities:
       - Text: |-
-          You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Gain Ground](Moves#Gain-Ground) by calling on it for guidance or blessings, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
+          You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Gain Ground](Moves#Gain-Ground) by calling on it for guidance or aid, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
         Enabled: true
         Alter Moves:
           - Move: Moves / Secure an Advantage
             Trigger: &devotant_alter
               Options:
-                - Text: by calling on your god, power, or entity for guidance or blessings
+                - Text: by calling on your god, power, or entity for guidance or aid
                   Action roll:
                     Stat: Assets / Devotant / Inputs / Linked Stat
           - Move: Moves / Gain Ground
             Trigger: *devotant_alter
       - Text: |-
-          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) in service to your faith, roll +linked stat. On a strong hit, mark progress. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
+          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) in service to your faith, roll +linked stat and take +2 momentum or +2 spirit on a hit. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
         Alter Moves:
           - Move: Moves / Swear an Iron Vow
             Trigger:
@@ -782,12 +782,12 @@ Assets:
     Asset Type: Path
     Abilities:
       - Text: |-
-          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) to resolve a dispute, negotiate an agreement, or gather allies, add +1. On a strong hit, mark progress. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
+          When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) to resolve a dispute, negotiate an agreement, or gather support, add +1. On a strong hit, mark progress on the quest. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
         Enabled: true
       - Text: |-
           When you make a move to defuse, reason, or negotiate, add +1. On a miss, you may take a different tack. Envision this new approach, reroll all dice, and add +2. If you score a miss yet again, face a dire complication or blow to your reputation as you [Pay the Price](Moves#Pay-the-Price).
       - Text: |-
-          When you [Make a Connection](Moves#Make-a-Connection) or [Sojourn](Moves#Sojourn), add +1. If you [Sojourn](Moves#Sojourn) and score a strong hit with a match, you are shown great respect; take +momentum equal to your heart.
+          When you [Make a Connection](Moves#Make-a-Connection) or [Sojourn](Moves#Sojourn), add +1. If you [Sojourn](Moves#Sojourn) and score a strong hit with a match, you are shown great kindness or respect; take +2 momentum or make an extra recover move with an automatic strong hit.
   - Name: Empath
     Asset Type: Path
     Abilities:
@@ -1133,7 +1133,7 @@ Assets:
           - Move: Moves / Gather Information
             Trigger:
               Options:
-                - Text: focus or medidate to Gather Information about a place, being, or situation (in person or remotely)
+                - Text: focus or meditate to Gather Information about a place, being, or situation (in person or remotely)
                   Action roll:
                     Stat: Spirit
       - Text: |-
@@ -1239,12 +1239,15 @@ Assets:
         Input Type: Text
     Abilities:
       - Text: |-
-          You are all that remains of a people, culture, or tradition. When you [Face Death](Moves#Face-Death) or [Face Desolation](Moves#Face-Desolation), memories or visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice. On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
+          You are all that remains of a people, culture, or tradition. When you [Face Death](Moves#Face-Death) or [Face Desolation](Moves#Face-Desolation), visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice. On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
         Enabled: true
       - Text: |-
-          When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Compel](Moves#Compel) through a tale, performance, or ceremony, envision what you reveal of your legacy. Then, add +1 and take +2 momentum on a hit.
+          When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Compel](Moves#Compel) through a tale, performance, or ceremony, envision what you reveal of your heritage. Then, add +1 and take +1 momentum on a hit.
       - Text: |-
-          When you [Hearten](Moves#Hearten) by taking solace in the power of your legacy, add +1 and take +1 momentum on a hit.
+          You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.
+        Inputs:
+          - Name: Relic
+            Input Type: Text
   - Name: Veteran
     Asset Type: Path
     Abilities:
@@ -1458,7 +1461,7 @@ Assets:
           Your survey bot companion scans the path ahead. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) (+wits) overland or within a site, add +1.
         Enabled: true
       - Text: |-
-          Once per expedition, when you [Secure an Advantage](Moves#Secure-an-Advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark one tick on your discoveries legacy track.
+          Once per expedition, when you [Secure an Advantage](Moves#Secure-an-Advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.
         Alter Moves:
           - Move: Moves / Secure an Advantage
             Trigger:
