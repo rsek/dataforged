@@ -39,7 +39,7 @@ If you need JSON in the old format, it can be found in the `legacy` directory. T
 
 ## Current Version/Sources
 
-  * ***Ironsworn: Starforged Rulebook***
+  * ***Ironsworn: Starforged Rulebook* - 030522**
     * moves
     * oracles
     * setting truths
