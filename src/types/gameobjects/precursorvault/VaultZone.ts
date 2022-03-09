@@ -2,7 +2,7 @@
 
 
 enum VaultZone {
-  Interior = 'Interior',
-  Sanctum = 'Sanctum'
+  Interior = "Interior",
+  Sanctum = "Sanctum"
 } export default VaultZone;
 

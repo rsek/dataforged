@@ -1,8 +1,8 @@
 
 
-import { is } from 'typescript-is';
-import badJsonError from '../../../functions/logging/badJsonError';
-import IOracleContent from '../interfaces/IOracleContent';
+import { is } from "typescript-is";
+import badJsonError from "../../../functions/logging/badJsonError";
+import IOracleContent from "../interfaces/IOracleContent";
 
 export default class OracleContent implements IOracleContent {
   "Part of speech"?: string[] | undefined;

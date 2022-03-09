@@ -1,18 +1,18 @@
 import jsonpath from "jsonpath";
 import _ from "lodash";
 import buildOracleId from "../../../functions/buildOracleId";
-import buildLog from '../../../functions/logging/buildLog';
-import inferSetsAttributes from '../../../functions/object-transform/inferSetsAttributes';
-import propagateToChildren from '../../../functions/object-transform/propagateToChildren';
-import templateOracle from '../../../functions/object-transform/templateOracle';
-import templateOracleTable from '../../../functions/object-transform/templateOracleTable';
-import IAttribute, { AttributeKey } from '../../gameobjects/IAttribute';
+import buildLog from "../../../functions/logging/buildLog";
+import inferSetsAttributes from "../../../functions/object-transform/inferSetsAttributes";
+import propagateToChildren from "../../../functions/object-transform/propagateToChildren";
+import templateOracle from "../../../functions/object-transform/templateOracle";
+import templateOracleTable from "../../../functions/object-transform/templateOracleTable";
+import IAttribute, { AttributeKey } from "../../gameobjects/IAttribute";
 import Source from "../../general/Source";
 import IOracleBase from "../interfaces/IOracleBase";
 import ITableDisplay from "../interfaces/IOracleDisplay";
-import IOracleCategoryYaml from '../interfaces/yaml/IOracleCategoryYaml';
-import IOracleYaml from '../interfaces/yaml/IOracleYaml';
-import IRowYaml from '../interfaces/yaml/IRowYaml';
+import IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml";
+import IOracleYaml from "../interfaces/yaml/IOracleYaml";
+import IRowYaml from "../interfaces/yaml/IRowYaml";
 import OracleCategoryId from "../OracleCategoryId";
 import OracleTableId from "../OracleTableId";
 import OracleContent from "./OracleContent";
@@ -88,33 +88,33 @@ export default class Oracle implements IOracleBase {
       });
     }
     if (this.Table) {
-      let attrs = inferSetsAttributes(this.Table);
+      const attrs = inferSetsAttributes(this.Table);
       if (attrs.length > 0) {
         if (!this.Usage) {
           this.Usage = {};
         }
-        if (typeof this.Usage['Sets attributes'] == "undefined") {
-          this.Usage['Sets attributes'] = [];
+        if (typeof this.Usage["Sets attributes"] == "undefined") {
+          this.Usage["Sets attributes"] = [];
         }
         // console.log("attrs", attrs);
-        this.Usage['Sets attributes'] = this.Usage['Sets attributes'].concat(...attrs);
+        this.Usage["Sets attributes"] = this.Usage["Sets attributes"].concat(...attrs);
       }
     }
     if (this.Oracles) {
-      let keys = new Set<AttributeKey>();
+      const keys = new Set<AttributeKey>();
       if (!this.Usage) {
         this.Usage = {};
       }
-      if (this.Usage?.['Sets attributes']) {
-        this.Usage['Sets attributes'].map(item => item.Key).forEach(key => keys.add(key));
+      if (this.Usage?.["Sets attributes"]) {
+        this.Usage["Sets attributes"].map(item => item.Key).forEach(key => keys.add(key));
       }
       this.Oracles.forEach(oracle => {
-        if (oracle.Usage?.['Sets attributes']) {
-          oracle.Usage['Sets attributes'].map(item => item.Key).forEach(key => keys.add(key));
+        if (oracle.Usage?.["Sets attributes"]) {
+          oracle.Usage["Sets attributes"].map(item => item.Key).forEach(key => keys.add(key));
         }
       });
       if (keys.size > 0) {
-        this.Usage['Sets attributes'] = Array.from(keys).map(Key => { return { Key } as IAttribute; });
+        this.Usage["Sets attributes"] = Array.from(keys).map(Key => { return { Key } as IAttribute; });
       }
     }
   }

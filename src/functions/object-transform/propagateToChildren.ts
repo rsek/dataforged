@@ -1,10 +1,9 @@
 import _ from "lodash";
-import badJsonError from "../logging/badJsonError";
 
-export default function propagateToChildren(objToPropagate: object, key: string, ...children: Record<string, any>[]): void {
+export default function propagateToChildren<C, T extends C[keyof C] & object>(objToPropagate: T, key: keyof C, ...children: C[]): void {
   children.forEach(child => {
     if (!child[key]) {
-      child[key] = {};
+      child[key] = {} as T;
     }
     child[key] = _.merge(objToPropagate, child[key]);
   });

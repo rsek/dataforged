@@ -1,6 +1,6 @@
 import _ from "lodash";
 import OracleCategory from "../types/oracles/classes/OracleCategory";
-import buildOracles from './buildOracles';
+import buildOracles from "./buildOracles";
 
 
 export function buildOracleHash(): _.Dictionary<OracleCategory> {

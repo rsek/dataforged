@@ -14,8 +14,8 @@ export default function renderOracle(oracle: Oracle, headerLevel = 3) {
   if (oracle.Description) {
     items.push(oracle.Description);
   }
-  let tableData = extractColumnData(oracle);
-  let table = renderTable(tableData);
+  const tableData = extractColumnData(oracle);
+  const table = renderTable(tableData);
   items.push(table);
   return items.join("\n\n");
 }

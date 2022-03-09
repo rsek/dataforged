@@ -1,5 +1,5 @@
 import _ from "lodash";
-import longestLength from "./longestLength";
+import lengthOfLongest from "./longestLength";
 import transpose2dArray from "./transpose2dArray";
 
 /**
@@ -8,13 +8,13 @@ import transpose2dArray from "./transpose2dArray";
 export default function renderTable(rowDataArray: Record<string, string>[]) {
   // currently can't handle stuff without a detailed Display key.
   // TODO: typecheck that all have same propertyies
-  let tableBody = rowDataArray.map(row => Object.values(row));
-  let tableHeaderText = Object.keys(rowDataArray[0]);
+  const tableBody = rowDataArray.map(row => Object.values(row));
+  const tableHeaderText = Object.keys(rowDataArray[0]);
   let table = [tableHeaderText, ...tableBody];
 
-  let columnWidths: number[] = transpose2dArray(table).map(col => longestLength(col));
+  const columnWidths: number[] = transpose2dArray(table).map(col => lengthOfLongest(col));
 
-  let colIsCentered = (transpose2dArray(tableBody) as string[][]).map(col => col.every(cell => cell.match(/^[^A-z]+$/) != null));
+  const colIsCentered = (transpose2dArray(tableBody) ).map(col => col.every(cell => cell.match(/^[^A-z]+$/) != null));
 
   table = table.map((row) => row.map((cell, colIndex) => cell.padEnd(columnWidths[colIndex], " ")));
 
@@ -22,7 +22,7 @@ export default function renderTable(rowDataArray: Record<string, string>[]) {
 
   // console.log("before headerbottomborder", rowStrings);
 
-  let headBorder = rowStrings[0].split("|").map((colContent, colIndex) => {
+  const headBorder = rowStrings[0].split("|").map((colContent, colIndex) => {
     let border = _.repeat("-", colContent.length);
     if (colIsCentered[colIndex]) {
       border = border.replace(/^-(-+)-$/, ":$1:");

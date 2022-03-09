@@ -1,6 +1,6 @@
 
 
-import ITableColumn from '../interfaces/ITableColumn';
+import ITableColumn from "../interfaces/ITableColumn";
 import IResultColumn from "../interfaces/IResultColumn";
 import OracleTableId from "../OracleTableId";
 import Row from "./Row";

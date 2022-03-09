@@ -3,20 +3,16 @@
 import OracleCategory from "../types/oracles/classes/OracleCategory";
 import getSubdirs from "./io/getSubdirs";
 import getYamlFiles from "./io/getYamlFiles";
-import fs, { writeFileSync } from "fs";
+import fs from "fs";
 import { refsPath } from "./process-yaml/concatWithYamlRefs";
 import loadOracleData, { IOracleCatRoot } from "./process-yaml/loadOracleData";
-import jsonpath from "jsonpath";
-import { is } from 'typescript-is';
-import { OracleCategoryName } from '../types/oracles/OracleCategoryId';
-import { OracleSubcategoryName } from '../types/oracles/OracleSubcategoryId';
-import buildLog from './logging/buildLog';
-import templateOracle from './object-transform/templateOracle';
-import replaceInAllStrings from "./object-transform/replaceInAllStrings"
-import writeJson from './io/writeJSON';
-import _ from 'lodash';
-import badJsonError from './logging/badJsonError';
-import IOracleCategoryYaml from '../types/oracles/interfaces/yaml/IOracleCategoryYaml';
+import { OracleCategoryName } from "../types/oracles/OracleCategoryId";
+import { OracleSubcategoryName } from "../types/oracles/OracleSubcategoryId";
+import buildLog from "./logging/buildLog";
+import templateOracle from "./object-transform/templateOracle";
+import _ from "lodash";
+import badJsonError from "./logging/badJsonError";
+import IOracleCategoryYaml from "../types/oracles/interfaces/yaml/IOracleCategoryYaml";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
@@ -49,7 +45,7 @@ export default function buildOracles(): OracleCategory[] {
 
   const subcatRoot: IOracleSubcatRoot = loadOracleData(refsPath, ...filesOracleSubcategories) as IOracleSubcatRoot;
 
-  let subcategories = subcatRoot.Categories.map((subcatData) => {
+  const subcategories = subcatRoot.Categories.map((subcatData) => {
     if (subcatData._templateCategory) {
       // console.log("Building with template vars", subcatData);
       subcatData = templateOracle<IOracleSubcategoryData>(subcatData, subcatData._templateCategory);

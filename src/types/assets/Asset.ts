@@ -6,13 +6,13 @@ import AssetAbility from "./AssetAbility";
 import AssetType from "./AssetType";
 import IAssetAttachment from "./AssetAttachment";
 
-import AssetId from './AssetId';
-import IAsset from './interfaces/IAsset';
-import IAssetYaml from './interfaces/IAssetYaml';
-import { is } from 'typescript-is';
-import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
-import buildLog from '../../functions/logging/buildLog';
-import badJsonError from '../../functions/logging/badJsonError';
+import AssetId from "./AssetId";
+import IAsset from "./interfaces/IAsset";
+import IAssetYaml from "./interfaces/IAssetYaml";
+import { is } from "typescript-is";
+import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from "../general/Input";
+import buildLog from "../../functions/logging/buildLog";
+import badJsonError from "../../functions/logging/badJsonError";
 
 export default class Asset implements IAsset {
   $id: AssetId;
@@ -37,7 +37,7 @@ export default class Asset implements IAsset {
       if (!is<IInput[]>(json.Inputs)) {
         throw badJsonError(this.constructor, json.Inputs, "excpected IInput[]")
       }
-      this.Inputs = (json.Inputs as IInput[]).map(inputJson => {
+      this.Inputs = (json.Inputs ).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
         if (is<INumberInput>(inputJson)) {
           return new NumberInput(inputJson, idString);

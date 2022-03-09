@@ -1,7 +1,7 @@
 
-import { is } from 'typescript-is';
+import { is } from "typescript-is";
 import IRow from "../../types/oracles/interfaces/IRow";
-import badJsonError from '../logging/badJsonError';
+import badJsonError from "../logging/badJsonError";
 
 function validateTable(table: IRow[], requireUniqueResults = true, requireAlld100 = true,): boolean {
   if (!is<IRow[]>(table)) {

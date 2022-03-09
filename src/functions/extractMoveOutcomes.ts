@@ -3,7 +3,7 @@
 import _ from "lodash";
 import buildMoves from "./buildMoves";
 import writeJson from "./io/writeJSON";
-import Move from '../types/moves/Move';
+import Move from "../types/moves/Move";
 
 
 const hitPattern = new RegExp(/On a \*\*hit\*\*, (?<content>(.|\n)*?)\./, "m");
@@ -45,7 +45,7 @@ export function extractMoveOutcome(move: Move) {
   }
   if (newObj["Weak Hit"]) {
     if (newObj["Weak Hit"].startsWith("as above")) {
-      let weakHitEffect = newObj["Weak Hit"].replace("as above, but", "");
+      const weakHitEffect = newObj["Weak Hit"].replace("as above, but", "");
 
     }
   }

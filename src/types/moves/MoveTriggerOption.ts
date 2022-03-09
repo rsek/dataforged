@@ -2,8 +2,8 @@
 
 import MdString from "../general/MdString";
 import { CustomStatRoll, IActionRoll, IProgressRoll } from "../general/Roll";
-import IMoveTriggerOption from './interfaces/IMoveTriggerOption';
-import IMoveTriggerOptionYaml from './interfaces/IMoveTriggerOptionYaml';
+import IMoveTriggerOption from "./interfaces/IMoveTriggerOption";
+import IMoveTriggerOptionYaml from "./interfaces/IMoveTriggerOptionYaml";
 
 
 export default class MoveTriggerOption implements IMoveTriggerOption {

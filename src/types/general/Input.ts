@@ -1,5 +1,5 @@
 
-import { is } from 'typescript-is';
+import { is } from "typescript-is";
 
 import { ConditionMeterType } from "./ConditionMeter";
 import { IHasId, IWillHaveId } from "./Id";

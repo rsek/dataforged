@@ -8,15 +8,15 @@ import _ from "lodash";
 import Suggestions from "../../general/Suggestions";
 import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
-import IRow from '../interfaces/IRow';
-import IRowYaml, { IRowRollYaml } from '../interfaces/yaml/IRowYaml';
-import GameObject from '../../gameobjects/GameObject';
-import { is } from 'typescript-is';
-import badJsonError from '../../../functions/logging/badJsonError';
-import AttributeHash from '../../gameobjects/AttributeHash';
-import AttributeSetter from '../../gameobjects/AttributeSetter';
-import GameObjectData from '../../gameobjects/GameObjectYaml';
-import ISuggestionsYaml from '../../general/interfaces/ISuggestionsYaml';
+import IRow from "../interfaces/IRow";
+import IRowYaml, { IRowRollYaml } from "../interfaces/yaml/IRowYaml";
+import GameObject from "../../gameobjects/GameObject";
+import { is } from "typescript-is";
+import badJsonError from "../../../functions/logging/badJsonError";
+import AttributeHash from "../../gameobjects/AttributeHash";
+import AttributeSetter from "../../gameobjects/AttributeSetter";
+import GameObjectData from "../../gameobjects/GameObjectYaml";
+import ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml";
 
 /**
  *
@@ -61,18 +61,21 @@ export default class Row implements IRow {
     if (this.Floor == null && this.Ceiling == null) {
       rangeString = "--"
     } else {
+      if (this.Floor == null || this.Ceiling == null) {
+        throw new Error();
+      }
       rangeString = this.Floor == this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
     }
     this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
 
-    let rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
+    const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
 
     rowContents.forEach(item => {
       switch (typeof item) {
-        case "string":
-          let string = item as string;
+        case "string": {
+          const string = item ;
           if (is<UrlString>(string)) {
-            this.Image = string as UrlString;
+            this.Image = string ;
           }
           else if (!this.Result || this.Result?.length == 0) {
             this.Result = string;
@@ -84,6 +87,7 @@ export default class Row implements IRow {
             throw badJsonError(this.constructor, string, "Unable to infer string assignment");
           }
           break;
+        }
         case "object":
           _.forEach(item, (value, key) => {
             switch (key as keyof Row) {
@@ -110,11 +114,11 @@ export default class Row implements IRow {
                 break;
               }
               case "Game objects": {
-                if (!this['Game objects']) {
-                  this['Game objects'] = [];
+                if (!this["Game objects"]) {
+                  this["Game objects"] = [];
                 }
                 const gameObjData = value as GameObjectData[];
-                gameObjData.forEach(item => this['Game objects']?.push(new GameObject(item)));
+                gameObjData.forEach(item => this["Game objects"]?.push(new GameObject(item)));
                 break;
               }
               case "Suggestions": {
@@ -122,8 +126,8 @@ export default class Row implements IRow {
                 let newSuggestions;
                 if (Array.isArray(value)) {
                   // console.log("Received a suggestion array, merging...", value);
-                  let suggestData = _.cloneDeep(value) as ISuggestionsYaml[];
-                  let suggestItems = suggestData.map(item => new Suggestions(item));
+                  const suggestData = _.cloneDeep(value) as ISuggestionsYaml[];
+                  const suggestItems = suggestData.map(item => new Suggestions(item));
                   newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
                   // console.log("merged multiple suggestions", newSuggestions);
                 } else {

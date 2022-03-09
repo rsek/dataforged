@@ -3,11 +3,11 @@ import { stringify } from "querystring";
 const stats = ["Edge", "Iron", "Heart", "Shadow", "Wits"]
 
 export function uniquePairs<T>(...items: Array<T>) {
-  let allPairs: Array<[T, T]> = [];
+  const allPairs: Array<[T, T]> = [];
   items.forEach(item1 => items.forEach(item2 => {
     if (item1 != item2) {
-      let newPair = new Array(item1, item2).sort() as [T, T];
-      let matchingPairs = allPairs.some((oldPair) =>
+      const newPair = [item1, item2].sort() as [T, T];
+      const matchingPairs = allPairs.some((oldPair) =>
         oldPair.every((item, index) => item == newPair[index])
       );
       if (matchingPairs === false) {
@@ -32,7 +32,7 @@ export function uniqueStatArrays() {
 
   });
   return statTriads.sort().map(triad => {
-    let statRecord: Record<string, number> = {};
+    const statRecord: Record<string, number> = {};
     statRecord[triad[0]] = 3;
     statRecord[triad[1][0]] = 2;
     statRecord[triad[1][1]] = 2;

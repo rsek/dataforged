@@ -6,8 +6,8 @@ import ISource from "../general/interfaces/ISource";
 import Suggestions from "../general/Suggestions";
 import SettingTruthTableRow from "./SettingTruthTableRow";
 import ISettingTruthTableRow from "./ISettingTruthTableRow";
-import ISettingTruth from './ISettingTruth';
-import buildLog from '../../functions/logging/buildLog';
+import ISettingTruth from "./ISettingTruth";
+import buildLog from "../../functions/logging/buildLog";
 
 export default class SettingTruth implements Omit<ISettingTruth, "Suggestions">, IHasId {
   $id: string;

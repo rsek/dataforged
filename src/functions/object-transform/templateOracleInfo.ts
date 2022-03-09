@@ -8,9 +8,9 @@ export default function templateOracleInfo(json: IOracleYaml): IOracleYaml {
   if (jsonClone._templateInfo) {
     jsonClone = _.merge(jsonClone._templateInfo, jsonClone);
     if (jsonClone._templateVars) {
-      let templateVars = _.cloneDeep(jsonClone._templateVars);
+      const templateVars = _.cloneDeep(jsonClone._templateVars);
       _.forEach(templateVars, (replaceValue, key) => {
-        let searchValue = "${{" + key + "}}";
+        const searchValue = "${{" + key + "}}";
         jsonClone = replaceInAllStrings(jsonClone, searchValue, replaceValue);
       });
       delete jsonClone._templateInfo;

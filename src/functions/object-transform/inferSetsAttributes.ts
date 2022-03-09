@@ -5,7 +5,7 @@ import IAttributeChoices from "../../types/gameobjects/IAttributeChoices";
 import IRow from "../../types/oracles/interfaces/IRow";
 
 export default function inferSetsAttributes(table: IRow[]): IAttribute[] {
-  let uniqueAttributes = new Set<IAttributeChoices["Key"]>();
+  const uniqueAttributes = new Set<IAttributeChoices["Key"]>();
   table.forEach(row => {
     if (row.Attributes) {
       row.Attributes.forEach(item => {
@@ -13,6 +13,6 @@ export default function inferSetsAttributes(table: IRow[]): IAttribute[] {
       });
     }
   });
-  let result = Array.from(uniqueAttributes).map(attr => { return { Key: attr } });
+  const result = Array.from(uniqueAttributes).map(attr => { return { Key: attr } });
   return result;
 }

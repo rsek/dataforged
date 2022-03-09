@@ -4,10 +4,10 @@ import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
 import getYamlFiles from "./io/getYamlFiles";
 import ISource from "../types/general/interfaces/ISource";
 import IMove from "../types/moves/interfaces/IMove";
-import IYamlWithRef from './IYamlWithRef';
-import badJsonError from './logging/badJsonError';
-import buildLog from './logging/buildLog';
-import Move from '../types/moves/Move';
+import IYamlWithRef from "./IYamlWithRef";
+import badJsonError from "./logging/badJsonError";
+import buildLog from "./logging/buildLog";
+import Move from "../types/moves/Move";
 const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));
 
 interface IMovesRoot extends IYamlWithRef {
@@ -17,7 +17,7 @@ interface IMovesRoot extends IYamlWithRef {
 }
 
 export default function buildMoves() {
-  buildLog(buildMoves, `Building moves...`);
+  buildLog(buildMoves, "Building moves...");
   const movesRoot = concatWithYamlRefs(undefined, ...filesMoves) as IMovesRoot;
   const json = movesRoot.Moves.map((moveData, index, moveDataArray) => {
     moveData.Source = movesRoot.Source;

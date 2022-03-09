@@ -1,11 +1,11 @@
 
 
 import AssetId from "../assets/AssetId";
-import GameObject from '../gameobjects/GameObject';
+import GameObject from "../gameobjects/GameObject";
 import MoveId from "../moves/MoveId";
 import OracleTableId from "../oracles/OracleTableId";
-import ISuggestions from './interfaces/ISuggestions';
-import ISuggestionsYaml from './interfaces/ISuggestionsYaml';
+import ISuggestions from "./interfaces/ISuggestions";
+import ISuggestionsYaml from "./interfaces/ISuggestionsYaml";
 
 /**
 * Object representing "non-canon" suggestions of additional oracle tables to roll or game objects to generate. These are intended be offered as convenient shortcuts for the user; having them roll automatically is not recommended. They can be safely ignored if this functionality is not desired.

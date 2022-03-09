@@ -1,5 +1,3 @@
-
-
 import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId";
 
 import Oracle from "./Oracle";
@@ -8,9 +6,9 @@ import buildOracleId from "../../../functions/buildOracleId";
 import _ from "lodash";
 import OracleCategoryDisplay from "./OracleCategoryDisplay";
 import IOracleCategory from "../interfaces/IOracleCategory";
-import propagateToChildren from '../../../functions/object-transform/propagateToChildren';
-import IOracleYaml from '../interfaces/yaml/IOracleYaml';
-import buildLog from '../../../functions/logging/buildLog';
+import propagateToChildren from "../../../functions/object-transform/propagateToChildren";
+import IOracleYaml from "../interfaces/yaml/IOracleYaml";
+import buildLog from "../../../functions/logging/buildLog";
 import IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml";
 import Source from "../../general/Source";
 

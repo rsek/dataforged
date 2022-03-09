@@ -6,8 +6,8 @@ import IEncounterYaml from "../types/encounters/IEncounterYaml";
 import ISource from "../types/general/interfaces/ISource";
 import getYamlFiles from "./io/getYamlFiles";
 import _ from "lodash";
-import IYamlWithRef from './IYamlWithRef';
-import buildLog from './logging/buildLog';
+import IYamlWithRef from "./IYamlWithRef";
+import buildLog from "./logging/buildLog";
 
 const filesEncounters = getYamlFiles().filter(file => file.toString().match("encounter"));
 

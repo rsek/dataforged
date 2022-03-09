@@ -5,6 +5,6 @@ export default function extractRowRolls(row: IRowYaml | IRowRollYaml): IRowRollY
   if (!Array.isArray(row)) {
     throw new Error(`Received an invalid row array ${JSON.stringify(row)}`);
   }
-  let output = row.filter((item: any) => is<IRowYaml[0]>(item)).slice(0, 2);
+  const output = row.filter((item) => is<IRowYaml[0]>(item)).slice(0, 2);
   return output as IRowRollYaml;
 }

@@ -9,12 +9,12 @@ import IOracle from "../../types/oracles/interfaces/IOracle";
 
 export default function getTableByOracleId(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
   if (!Array.isArray(oracleData) && oracleData.$id == id) {
-    let data = oracleData as IOracle;
+    const data = oracleData as IOracle;
     if (data.Table) {
       return data.Table as IRow[];
     }
   };
 
-  let table = jsonpath.value(oracleData, `$..[?(@.$id=='${id}')].Table`) as IRow[];
+  const table = jsonpath.value(oracleData, `$..[?(@.$id=='${id}')].Table`) as IRow[];
   return table;
 }

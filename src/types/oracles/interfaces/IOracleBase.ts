@@ -1,4 +1,4 @@
-import Display from "../../general/Display";
+import Display from "../../general/IDisplay";
 import Source from "../../general/Source";
 import OracleContent from "../classes/OracleContent";
 import OracleUsage from "../classes/OracleUsage";

@@ -1,4 +1,4 @@
-import IDisplay from "../general/Display";
+import IDisplay from "../general/IDisplay";
 
 export default class EncounterDisplay implements IDisplay {
   Title: string;

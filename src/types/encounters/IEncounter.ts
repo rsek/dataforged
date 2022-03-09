@@ -1,12 +1,12 @@
-import ChallengeRank from '../general/ChallengeRank';
-import IDisplay from "../general/Display";
+import ChallengeRank from "../general/ChallengeRank";
+import IDisplay from "../general/IDisplay";
 import ISource from "../general/interfaces/ISource";
-import MdString from '../general/MdString';
+import MdString from "../general/MdString";
 import EncounterId from "./EncounterId";
 import EncounterNature from "./EncounterNature";
 import EncounterTags from "./EncounterTags";
 import IEncounterVariant from "./IEncounterVariant";
-import IEncounterYaml from './IEncounterYaml';
+import IEncounterYaml from "./IEncounterYaml";
 
 // interface for outgoing JSON + deserialization
 

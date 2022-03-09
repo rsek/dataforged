@@ -1,8 +1,8 @@
 import _ from "lodash";
 import { is } from "typescript-is";
 import badJsonError from "../../functions/logging/badJsonError";
-import ISource from './interfaces/ISource';
-import SourceTitle from './SourceTitle';
+import ISource from "./interfaces/ISource";
+import SourceTitle from "./SourceTitle";
 
 export default class Source implements ISource {
   Title: SourceTitle;

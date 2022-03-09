@@ -1,11 +1,11 @@
 
-import { is } from 'typescript-is';
-import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from '../general/Input';
-import Move from '../moves/Move';
-import AlterMove from './AlterMove';
-import IAssetAbility from './interfaces/IAssetAbility';
-import IAssetAbilityYaml from './interfaces/IAssetAbilityYaml';
-import IAssetYaml from './interfaces/IAssetYaml';
+import { is } from "typescript-is";
+import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from "../general/Input";
+import Move from "../moves/Move";
+import AlterMove from "./AlterMove";
+import IAssetAbility from "./interfaces/IAssetAbility";
+import IAssetAbilityYaml from "./interfaces/IAssetAbilityYaml";
+import IAssetYaml from "./interfaces/IAssetYaml";
 
 export default class AssetAbility implements IAssetAbility {
   $id: string;

@@ -18,9 +18,9 @@ export default class GameObject implements IGameObject {
     }
     this["Object type"] = json["Object type"];
     // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
-    let requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]) as AttributeHash;
+    const requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]) as AttributeHash;
     if (Object.keys(requiredAttributes).length) {
-      let requirements = { Attributes: requiredAttributes } as IRequirementsYaml;
+      const requirements = { Attributes: requiredAttributes } as IRequirementsYaml;
       this.Requires = new Requirements(requirements);
     }
   }

@@ -1,16 +1,16 @@
 
-import ChallengeRank from '../general/ChallengeRank';
+import ChallengeRank from "../general/ChallengeRank";
 
 import ISource from "../general/interfaces/ISource";
-import MdString from '../general/MdString';
-import Source from '../general/Source';
+import MdString from "../general/MdString";
+import Source from "../general/Source";
 import EncounterDisplay from "./EncounterDisplay";
 import EncounterId from "./EncounterId";
 import EncounterNature from "./EncounterNature";
 import EncounterTags from "./EncounterTags";
 import EncounterVariant from "./EncounterVariant";
-import IEncounter from './IEncounter';
-import IEncounterYaml from './IEncounterYaml';
+import IEncounter from "./IEncounter";
+import IEncounterYaml from "./IEncounterYaml";
 
 export default class Encounter implements IEncounter {
   $id: EncounterId
@@ -38,7 +38,7 @@ export default class Encounter implements IEncounter {
     this.Features = json.Features
     this.Drives = json.Drives
     this.Tactics = json.Tactics
-    let newSource = new Source(json.Source, ...ancestorSourceJson);
+    const newSource = new Source(json.Source, ...ancestorSourceJson);
     this.Variants = json.Variants?.map(variant => new EncounterVariant(variant, newSource));
     this.Description = json.Description;
     this["Quest Starter"] = json["Quest Starter"];

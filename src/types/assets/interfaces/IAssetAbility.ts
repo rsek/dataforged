@@ -1,7 +1,7 @@
 import IAssetYaml from "./IAssetYaml";
 import { IInput, Input } from "../../general/Input";
 import { IHasId } from "../../general/Id";
-import IAssetAbilityYaml from './IAssetAbilityYaml';
+import IAssetAbilityYaml from "./IAssetAbilityYaml";
 import IMove from "../../moves/interfaces/IMove";
 import IAlterMove from "./IAlterMove";
 

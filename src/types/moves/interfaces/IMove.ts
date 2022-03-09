@@ -2,7 +2,7 @@ import MdString from "../../general/MdString";
 import ISource from "../../general/interfaces/ISource";
 import OracleTableId from "../../oracles/OracleTableId";
 import IMoveOutcomes from "./IMoveOutcomes";
-import MoveId from '../MoveId';
+import MoveId from "../MoveId";
 import MoveCategory from "../MoveCategory";
 import ISuggestions from "../../general/interfaces/ISuggestions";
 import IMoveTriggerYaml from "./IMoveTriggerYaml";

@@ -1,4 +1,4 @@
-export default function transpose2dArray(array: any[][]) {
-  let output = array[0].map((_, colIndex) => array.map(row => row[colIndex]));
+export default function transpose2dArray<T>(array: T[][]) {
+  const output = array[0].map((_, colIndex) => array.map(row => row[colIndex]));
   return output;
 }

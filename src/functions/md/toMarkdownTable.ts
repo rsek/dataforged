@@ -4,6 +4,7 @@ import fs from "fs";
 import _ from "lodash";
 import OracleCategory from "../../types/oracles/classes/OracleCategory";
 import Row from "../../types/oracles/classes/Row";
+import badJsonError from "../logging/badJsonError";
 import renderOracleCategory from "./renderOracleCategory";
 
 
@@ -32,8 +33,18 @@ export function toResultColumnArray(label: string, rows: Row[], minimumRows: num
 }
 export function toRollColumnArray(label: string, rows: Row[], minimumRows: number) {
   const rowContent = rows.map(row => {
-    const rollString = row.Ceiling == row.Floor ? row.Ceiling?.toString() ?? "--" : `${row.Floor}-${row.Ceiling}`;
-    return rollString;
+    if (row.Ceiling == row.Floor) {
+      if (row.Ceiling == null) {
+        return "--";
+      } else {
+        return row.Ceiling.toString();
+      }
+    } else {
+      if (row.Ceiling == null || row.Floor == null) {
+        throw new Error();
+      }
+      return `${row.Floor}-${row.Ceiling}`
+    }
   });
   return toColumnArray(label, rowContent, minimumRows);
 }

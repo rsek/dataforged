@@ -4,7 +4,7 @@ import IAttributeChoices from "../gameobjects/IAttributeChoices";
 
 export default class AttributeRequirements extends Array<IAttributeChoices> {
   constructor(json: AttributeHash) {
-    let attributes = _.map(json, (value, Key) => {
+    const attributes = _.map(json, (value, Key) => {
       let Values;
       if (Array.isArray(value)) {
         Values = value;

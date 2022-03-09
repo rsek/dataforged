@@ -5,7 +5,7 @@ import renderOracle from "./renderOracle";
 
 export default function renderOracleCategory(oracleCat: OracleCategory, headerLevel = 2) {
   buildLog(renderOracleCategory, `Generating markdown for ${oracleCat.Display.Title
-    }...`);
+  }...`);
   const header = _.repeat("#", headerLevel) + " " + oracleCat.Display.Title;
   const items = [header];
   if (oracleCat.Description) {

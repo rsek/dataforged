@@ -5,6 +5,6 @@ import Oracle from "../../types/oracles/classes/Oracle";
 
 
 export default function getOracleById(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
-  let table = jsonpath.value(oracleData, `$..[?(@.$id=='${id}')]`) as Oracle;
+  const table = jsonpath.value(oracleData, `$..[?(@.$id=='${id}')]`) as Oracle;
   return table;
 }

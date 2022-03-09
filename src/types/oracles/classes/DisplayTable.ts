@@ -1,9 +1,9 @@
 
 
-import { is } from 'typescript-is';
-import badJsonError from '../../../functions/logging/badJsonError';
-import { getNameFromId } from '../../../functions/getNameFromId';
-import IDisplayTable from '../interfaces/IDisplayTable';
+import { is } from "typescript-is";
+import badJsonError from "../../../functions/logging/badJsonError";
+import { getNameFromId } from "../../../functions/getNameFromId";
+import IDisplayTable from "../interfaces/IDisplayTable";
 import OracleTableId from "../OracleTableId";
 import { ResultColumn, RollColumn } from "./TableColumn";
 
@@ -12,7 +12,7 @@ export default class DisplayTable implements IDisplayTable {
   "Roll columns": RollColumn[];
   constructor(json: Partial<IDisplayTable>, parentId: OracleTableId) {
     if (json["Result columns"]) {
-      let resultColData = json["Result columns"];
+      const resultColData = json["Result columns"];
       if (resultColData.length > 1) {
         resultColData.forEach(col => {
           if (!col.Label) {
@@ -28,7 +28,7 @@ export default class DisplayTable implements IDisplayTable {
       this["Result columns"] = [new ResultColumn(parentId)];
     }
     if (json["Roll columns"]) {
-      let rollColData = json["Roll columns"];
+      const rollColData = json["Roll columns"];
       if (rollColData.length > 1) {
         rollColData.forEach(col => {
           if (!col.Label) {

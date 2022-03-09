@@ -2,7 +2,7 @@
 
 import Asset from "../types/assets/Asset";
 import Encounter from "../types/encounters/Encounter";
-import Move from '../types/moves/Move';
+import Move from "../types/moves/Move";
 import OracleCategory from "../types/oracles/classes/OracleCategory";
 import SettingTruth from "../types/truths/SettingTruth";
 import buildAssets from "./buildAssets";
@@ -10,7 +10,7 @@ import buildEncounters from "./buildEncounters";
 import buildMoves from "./buildMoves";
 import buildOracles from "./buildOracles";
 import buildTruths from "./buildTruths";
-import buildLog from './logging/buildLog';
+import buildLog from "./logging/buildLog";
 
 export interface IronswornData {
   assets: Asset[];
@@ -29,7 +29,7 @@ export default function buildDataforged(): IronswornData {
   const setting_truths = buildTruths();
 
   buildLog(buildDataforged, `Finished building ${assets.length} assets, ${encounters.length} encounters, ${moves.length} moves, ${oracles.length} oracle categories, and ${setting_truths.length} setting truth categories.`);
-  let data = {
+  const data = {
     assets,
     encounters,
     moves,

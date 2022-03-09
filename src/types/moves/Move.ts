@@ -6,10 +6,10 @@ import Suggestions from "../general/Suggestions";
 import OracleTableId from "../oracles/OracleTableId";
 import MoveOutcomes from "./MoveOutcomes";
 import MoveTrigger from "./MoveTrigger";
-import MoveId from './MoveId';
-import IMove from './interfaces/IMove';
-import MoveCategory from './MoveCategory';
-import buildLog from '../../functions/logging/buildLog';
+import MoveId from "./MoveId";
+import IMove from "./interfaces/IMove";
+import MoveCategory from "./MoveCategory";
+import buildLog from "../../functions/logging/buildLog";
 
 export default class Move implements IMove {
   $id: MoveId;

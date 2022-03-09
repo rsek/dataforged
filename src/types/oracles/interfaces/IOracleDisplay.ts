@@ -1,4 +1,4 @@
-import IDisplay from "../../general/Display";
+import IDisplay from "../../general/IDisplay";
 import OracleTableId from "../OracleTableId";
 import IDisplayTable from "./IDisplayTable";
 

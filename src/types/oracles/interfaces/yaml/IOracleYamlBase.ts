@@ -1,11 +1,11 @@
 
-import IDisplay from '../../../general/Display';
-import ISource from '../../../general/interfaces/ISource';
-import MdString from '../../../general/MdString';
-import OracleCategoryId from '../../OracleCategoryId';
-import OracleTableId from '../../OracleTableId';
-import IOracleContent from '../IOracleContent';
-import IOracleUsageYaml from './IOracleUsageYaml';
+import IDisplay from "../../../general/IDisplay";
+import ISource from "../../../general/interfaces/ISource";
+import MdString from "../../../general/MdString";
+import OracleCategoryId from "../../OracleCategoryId";
+import OracleTableId from "../../OracleTableId";
+import IOracleContent from "../IOracleContent";
+import IOracleUsageYaml from "./IOracleUsageYaml";
 
 export default interface IOracleYamlBase {
   $id?: OracleTableId | OracleCategoryId | undefined;

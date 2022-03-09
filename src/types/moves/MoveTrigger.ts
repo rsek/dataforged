@@ -1,8 +1,8 @@
 
 
 import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll";
-import IMoveTrigger from './interfaces/IMoveTrigger';
-import IMoveTriggerYaml from './interfaces/IMoveTriggerYaml';
+import IMoveTrigger from "./interfaces/IMoveTrigger";
+import IMoveTriggerYaml from "./interfaces/IMoveTriggerYaml";
 import MoveTriggerOption from "./MoveTriggerOption";
 
 export default class MoveTrigger implements IMoveTrigger {
