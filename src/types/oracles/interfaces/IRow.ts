@@ -9,7 +9,7 @@ import IGameObject from "../../gameObjects/IGameObject";
 import { IRowRollYaml } from "./yaml/IRowYaml";
 
 export default interface IRow {
-  $id?: OracleTableRowId | undefined;
+  $id?: OracleTableRowId | undefined | null;
   Floor: IRowRollYaml[0];
   Ceiling: IRowRollYaml[1];
   Result: string;

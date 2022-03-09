@@ -36,7 +36,7 @@ import ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml";
 
 
 export default class Row implements IRow {
-  $id: OracleTableRowId;
+  $id!: OracleTableRowId | null;
   Floor: IRowRollYaml[0];
   Ceiling: IRowRollYaml[1];
   Result!: string;
@@ -68,8 +68,10 @@ export default class Row implements IRow {
         throw new Error();
       }
       rangeString = this.Floor == this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
     }
-    this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
 
     const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
 
@@ -95,6 +97,10 @@ export default class Row implements IRow {
           break;
         }
         case "object": {
+          if (this.Floor == null && this.Ceiling == null) {
+            // null rows only exist to provide display text, so they only get strings assigned to them;
+            break;
+          }
           _.forEach(item, (value, key) => {
             switch (key as keyof Row) {
               case "Subtable": {

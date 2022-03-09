@@ -12,12 +12,12 @@ import ISettingTruthTableRow from "./ISettingTruthTableRow";
  * @implements {ISettingTruthTableRow}
  * @implements {Omit<IHasId, "Name">}
  */
-export default class SettingTruthTableRow extends Row implements ISettingTruthTableRow, Omit<IHasId, "Name"> {
+export default class SettingTruthTableRow extends Row implements ISettingTruthTableRow {
   "Quest Starter": string;
   constructor(parentId: string, json: ISettingTruthTableRow) {
     super(parentId, json);
     if (json.Subtable) {
-      json.Subtable = json.Subtable.map(row => new Row(`${this.$id} / Subtable`, row));
+      json.Subtable = json.Subtable.map(row => new Row(`${this.$id ?? "--"} / Subtable`, row));
     }
     this["Quest Starter"] = json["Quest Starter"];
   }
