@@ -6,7 +6,7 @@ import inferSetsAttributes from "../../../functions/object-transform/inferSetsAt
 import propagateToChildren from "../../../functions/object-transform/propagateToChildren";
 import templateOracle from "../../../functions/object-transform/templateOracle";
 import templateOracleTable from "../../../functions/object-transform/templateOracleTable";
-import IAttribute, { AttributeKey } from "../../gameobjects/IAttribute";
+import IAttribute, { AttributeKey } from "../../gameObjects/IAttribute";
 import Source from "../../general/Source";
 import IOracleBase from "../interfaces/IOracleBase";
 import ITableDisplay from "../interfaces/IOracleDisplay";

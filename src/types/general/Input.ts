@@ -19,7 +19,7 @@ interface IInputBase extends IWillHaveId {
 
 export type IInput = INumberInput | ISelectInput | ITextInput;
 
-export type Input = NumberInput | SelectInput | Text;
+export type Input = NumberInput | SelectInput | TextInput;
 
 export interface INumberInput extends IInputBase {
   Name: string;

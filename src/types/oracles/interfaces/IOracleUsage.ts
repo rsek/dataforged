@@ -1,5 +1,5 @@
 
-import IAttributeChoices from "../../gameobjects/IAttributeChoices";
+import IAttributeChoices from "../../gameObjects/IAttributeChoices";
 import IRequirements from "../../general/interfaces/IRequirements";
 import ISuggestions from "../../general/interfaces/ISuggestions";
 

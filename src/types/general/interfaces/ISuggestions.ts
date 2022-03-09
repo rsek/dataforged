@@ -1,5 +1,5 @@
 import AssetId from "../../assets/AssetId";
-import IGameObject from "../../gameobjects/IGameObject";
+import IGameObject from "../../gameObjects/IGameObject";
 import MoveId from "../../moves/MoveId";
 import OracleTableId from "../../oracles/OracleTableId";
 import ISuggestionsYaml from "./ISuggestionsYaml";

@@ -1,5 +1,5 @@
-import AttributeHash from "../../../gameobjects/AttributeHash";
-import GameObjectData from "../../../gameobjects/GameObjectYaml";
+import AttributeHash from "../../../gameObjects/AttributeHash";
+import GameObjectData from "../../../gameObjects/GameObjectYaml";
 import ISuggestionsYaml from "../../../general/interfaces/ISuggestionsYaml";
 import UrlString from "../../../general/UrlString";
 import TemplateString from "../../TemplateString";

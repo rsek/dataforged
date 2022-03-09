@@ -1,10 +1,11 @@
+import "source-map-support/register";
 import { PathLike, writeFileSync } from "fs";
 import _ from "lodash";
-
 import buildDataforged from "./functions/buildDataforged";
 import writeJson from "./functions/io/writeJSON";
 import renderMoves from "./functions/md/renderMoves";
 import renderOracleCategory from "./functions/md/renderOracleCategory";
+import buildImages from "./functions/buildImages";
 
 const pathOut: PathLike = "./";
 const mdPath: PathLike = pathOut + "markdown/";
@@ -32,3 +33,10 @@ const allOracleText = [
 writeFileSync(mdPath + "Oracles.md", allOracleText + "\n", { encoding: "utf-8" });
 
 writeFileSync(mdPath + "Moves.md", renderMoves(data.moves) + "\n", { encoding: "utf-8" });
+
+const srcRoot = "src/data/img";
+const outRoot = "img";
+const srcPng = "src/data/img/raster/png";
+const outWebP = "img/raster/webp"
+
+buildImages(srcRoot, outRoot, srcPng, outWebP);

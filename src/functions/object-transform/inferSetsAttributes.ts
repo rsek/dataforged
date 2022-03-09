@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { arrayBuffer } from "stream/consumers";
-import IAttribute from "../../types/gameobjects/IAttribute";
-import IAttributeChoices from "../../types/gameobjects/IAttributeChoices";
+import IAttribute from "../../types/gameObjects/IAttribute";
+import IAttributeChoices from "../../types/gameObjects/IAttributeChoices";
 import IRow from "../../types/oracles/interfaces/IRow";
 
 export default function inferSetsAttributes(table: IRow[]): IAttribute[] {

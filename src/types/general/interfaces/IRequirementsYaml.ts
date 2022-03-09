@@ -1,4 +1,4 @@
-import AttributeHash from "../../gameobjects/AttributeHash";
+import AttributeHash from "../../gameObjects/AttributeHash";
 
 export default interface IRequirementsYaml {
   Attributes: AttributeHash;

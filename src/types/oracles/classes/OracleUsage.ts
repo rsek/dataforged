@@ -4,8 +4,8 @@ import Requirements from "../../general/Requirements";
 import IOracleUsage from "../interfaces/IOracleUsage";
 import IOracleUsageYaml from "../interfaces/yaml/IOracleUsageYaml";
 import { is } from "typescript-is";
-import { AttributeKey } from "../../gameobjects/IAttribute";
-import IAttributeChoices from "../../gameobjects/IAttributeChoices";
+import { AttributeKey } from "../../gameObjects/IAttribute";
+import IAttributeChoices from "../../gameObjects/IAttributeChoices";
 
 export default class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;

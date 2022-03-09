@@ -1,10 +1,10 @@
 import { OracleRoot } from "./OracleCategoryId";
 
 
-import Zone from "../gameobjects/derelictzone/Zone";
-import LocationTheme from "../gameobjects/place/LocationTheme";
-import PlanetaryClass from "../gameobjects/planet/PlanetaryClass";
-import VaultZone from "../gameobjects/precursorvault/VaultZone";
+import Zone from "../gameObjects/derelictzone/Zone";
+import LocationTheme from "../gameObjects/place/LocationTheme";
+import PlanetaryClass from "../gameObjects/planet/PlanetaryClass";
+import VaultZone from "../gameObjects/precursorvault/VaultZone";
 
 type OracleSubcategoryPath = `Derelicts / ${Zone}` | `Location Themes / ${LocationTheme}` | `Planets / ${PlanetaryClass}` | `Vaults / ${VaultZone}`;
 

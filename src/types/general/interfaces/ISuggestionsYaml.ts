@@ -1,5 +1,5 @@
 import AssetId from "../../assets/AssetId";
-import GameObjectData from "../../gameobjects/GameObjectYaml";
+import GameObjectData from "../../gameObjects/GameObjectYaml";
 import MoveId from "../../moves/MoveId";
 import OracleTableId from "../../oracles/OracleTableId";
 

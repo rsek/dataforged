@@ -1,7 +1,7 @@
 
 
 import AssetId from "../assets/AssetId";
-import GameObject from "../gameobjects/GameObject";
+import GameObject from "../gameObjects/GameObject";
 import MoveId from "../moves/MoveId";
 import OracleTableId from "../oracles/OracleTableId";
 import ISuggestions from "./interfaces/ISuggestions";

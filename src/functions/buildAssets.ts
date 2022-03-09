@@ -1,6 +1,3 @@
-
-
-
 import yaml from "js-yaml";
 import fs from "fs";
 import Asset from "../types/assets/Asset";

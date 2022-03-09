@@ -10,12 +10,12 @@ import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";
 import IRow from "../interfaces/IRow";
 import IRowYaml, { IRowRollYaml } from "../interfaces/yaml/IRowYaml";
-import GameObject from "../../gameobjects/GameObject";
+import GameObject from "../../gameObjects/GameObject";
 import { is } from "typescript-is";
 import badJsonError from "../../../functions/logging/badJsonError";
-import AttributeHash from "../../gameobjects/AttributeHash";
-import AttributeSetter from "../../gameobjects/AttributeSetter";
-import GameObjectData from "../../gameobjects/GameObjectYaml";
+import AttributeHash from "../../gameObjects/AttributeHash";
+import AttributeSetter from "../../gameObjects/AttributeSetter";
+import GameObjectData from "../../gameObjects/GameObjectYaml";
 import ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml";
 
 /**
@@ -41,7 +41,7 @@ export default class Row implements IRow {
   Ceiling: IRowRollYaml[1];
   Result!: string;
   Summary?: string | undefined;
-  Image?: UrlString | undefined;
+  Images?: UrlString[] | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   Subtable?: Row[] | undefined;
   "Game objects"?: GameObject[] | undefined;
@@ -49,8 +49,11 @@ export default class Row implements IRow {
   Suggestions?: Suggestions | undefined;
   Attributes?: AttributeSetter | undefined;
   Template?: TemplateString | undefined;
-  constructor(parentId: string, rowData: IRowYaml | IRow) {
-
+  constructor(parentId: string, json: IRowYaml | IRow) {
+    let rowData = _.clone(json);
+    if (Array.isArray(rowData) &&(rowData as Array<unknown>).some(item => Array.isArray(item))) {
+      rowData = (rowData as Array<unknown|Array<unknown>>).flat(2) as IRowYaml;
+    }
     this.Floor = Array.isArray(rowData) ? rowData[0] : rowData.Floor;
     this.Ceiling = Array.isArray(rowData) ? rowData[1] : rowData.Ceiling;
     if ((typeof this.Floor) != (typeof this.Ceiling)) {
@@ -75,7 +78,10 @@ export default class Row implements IRow {
         case "string": {
           const string = item ;
           if (is<UrlString>(string)) {
-            this.Image = string ;
+            if (!this.Images) {
+              this.Images = [];
+            }
+            this.Images.push(string);
           }
           else if (!this.Result || this.Result?.length == 0) {
             this.Result = string;
@@ -88,7 +94,7 @@ export default class Row implements IRow {
           }
           break;
         }
-        case "object":
+        case "object": {
           _.forEach(item, (value, key) => {
             switch (key as keyof Row) {
               case "Subtable": {
@@ -173,6 +179,7 @@ export default class Row implements IRow {
             }
           });
           break;
+        }
         default:
           throw badJsonError(this.constructor, item, "Unable to infer key for object");
           break;
