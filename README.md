@@ -39,7 +39,7 @@ If you need JSON in the old format, it can be found in the `legacy` directory. T
 
 ## Current Version/Sources
 
-  * **Starforged - 022322**
+  * **Starforged - 030522**
     * assets
     * moves
     * oracles
