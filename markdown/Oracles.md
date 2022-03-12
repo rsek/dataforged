@@ -3569,6 +3569,16 @@ Roll   | Result
 96–100 | Breathable
 --     | Ideal
 
+#### Settlements
+
+Terminus | Outlands | Expanse | Result
+:-------:|:--------:|:-------:|------------------------
+1–80     | 1–90     | 1–95    | None
+81–90    | 91–97    | 96–98   | Orbital settlement
+91–95    | 98–100   | 99–100  | Planetside settlement
+96–98    | --       | --      | Multiple settlements
+99–100   | --       | --      | Settlements in conflict
+
 #### Observed From Space
 
 Roll   | Result
