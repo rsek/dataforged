@@ -56,9 +56,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|-----------------------------------------------------
@@ -109,9 +109,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|-------------------------------------------------------
@@ -162,9 +162,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|----------------------------------------------------------------
@@ -215,9 +215,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|---------------------------------------------------------
@@ -268,9 +268,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|------------------------------------------------------------------
@@ -321,9 +321,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|-----------------------------------------------------
@@ -374,9 +374,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|---------------------------------------------
@@ -427,9 +427,9 @@ Roll   | Result
 91–98  | ⏵Action + Theme
 99–100 | Roll twice
 
-### Feature
+### Opportunity
 
-Use this table to reveal a new aspect of the location.
+Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
 
 Roll   | Result
 :-----:|---------------------------------------------------------
