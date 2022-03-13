@@ -24,7 +24,7 @@ export default class OracleCategory implements IOracleCategory {
   Usage?: OracleUsage | undefined;
   Oracles?: Oracle[] | undefined;
   Categories?: OracleCategory[] | undefined;
-  // Requires?: Requirements | undefined;
+  "Sample Names"?: string[];
   constructor(
     json: IOracleCategoryYaml,
     category?: OracleCategoryJaggedId | undefined,
@@ -43,6 +43,7 @@ export default class OracleCategory implements IOracleCategory {
     this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);
     this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
     this.Category = category ?? undefined;
+    this["Sample Names"] = json["Sample Names"];
     if (json.Usage) {
       this.Usage = new OracleUsage(json.Usage);
     }

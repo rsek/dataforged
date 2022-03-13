@@ -7,6 +7,7 @@ import IAttributeChoices from "../../gameObjects/IAttributeChoices";
 import ISuggestions from "../../general/interfaces/ISuggestions";
 import IGameObject from "../../gameObjects/IGameObject";
 import { IRowRollYaml } from "./yaml/IRowYaml";
+import { PartOfSpeechTag } from "./PartOfSpeechTag";
 
 export default interface IRow {
   $id?: OracleTableRowId | undefined | null;
@@ -22,4 +23,5 @@ export default interface IRow {
   Suggestions?: ISuggestions | undefined;
   Attributes?: IAttributeChoices[] | undefined;
   Template?: TemplateString | undefined;
+  "Part of speech"?: PartOfSpeechTag[] | undefined;
 }

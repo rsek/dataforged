@@ -17,6 +17,7 @@ import AttributeHash from "../../gameObjects/AttributeHash";
 import AttributeSetter from "../../gameObjects/AttributeSetter";
 import GameObjectData from "../../gameObjects/GameObjectYaml";
 import ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml";
+import { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag";
 
 /**
  *
@@ -49,6 +50,7 @@ export default class Row implements IRow {
   Suggestions?: Suggestions | undefined;
   Attributes?: AttributeSetter | undefined;
   Template?: TemplateString | undefined;
+  "Part of speech"?: PartOfSpeechTag[] | undefined;
   constructor(parentId: string, json: IRowYaml | IRow) {
     let rowData = _.clone(json);
     if (Array.isArray(rowData) &&(rowData as Array<unknown>).some(item => Array.isArray(item))) {
@@ -103,6 +105,10 @@ export default class Row implements IRow {
           }
           _.forEach(item, (value, key) => {
             switch (key as keyof Row) {
+              case "Part of speech": {
+                this["Part of speech"] = value as typeof this["Part of speech"];
+                break;
+              }
               case "Subtable": {
                 if (is<IRowYaml[]>(value)) {
                   this.Subtable = (value as IRowYaml[]).map(rowData => new Row(this.$id + " / Subtable", rowData));

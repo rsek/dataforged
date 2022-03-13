@@ -4305,15 +4305,15 @@ Roll | Result
 4    | Astral Explorer
 5    | Atlas
 6    | Aurora
-7    | Avari's Wake
-8    | Banshee's Cry
+7    | Avari’s Wake
+8    | Banshee’s Cry
 9    | Beowulf
 10   | Bloody Jaw
 11   | Broken Sword
 12   | Buccaneer
 13   | Cerelis Nine
 14   | Clarion Call
-15   | Dawn's Herald
+15   | Dawn’s Herald
 16   | Dead Reckoning
 17   | Drift Runner
 18   | Eclipse
@@ -4328,7 +4328,7 @@ Roll | Result
 27   | Firebreak
 28   | First Light
 29   | Forge Flier
-30   | Fortune's Favor
+30   | Fortune’s Favor
 31   | Freya’s Wrath
 32   | Ghost
 33   | Guiding Star
@@ -4339,9 +4339,9 @@ Roll | Result
 38   | Inferno
 39   | Invictus
 40   | Iron Cairn
-41   | Karena's Reverie
+41   | Karena’s Reverie
 42   | Kraken
-43   | Kuno's Hammer
+43   | Kuno’s Hammer
 44   | Lightline
 45   | Lodestar
 46   | Long Haul
@@ -4351,7 +4351,7 @@ Roll | Result
 50   | Mercy
 51   | Mutara
 52   | Nebula Prowler
-53   | Newton's Folly
+53   | Newton’s Folly
 54   | Nightfall
 55   | Nomad
 56   | Obsidian Trident
@@ -4362,14 +4362,14 @@ Roll | Result
 61   | Photon
 62   | Poltergeist
 63   | Profit Margin
-64   | Raven's Call
-65   | Raya's Promise
+64   | Raven’s Call
+65   | Raya’s Promise
 66   | Reaper
 67   | Reforged Hope
 68   | Relentless
 69   | Royal Signet
 70   | Rubicon
-71   | Sareea's Tribute
+71   | Sareea’s Tribute
 72   | Second Chance
 73   | Shard of the Sun
 74   | Shattered Siege
@@ -4393,7 +4393,7 @@ Roll | Result
 92   | Tormentor
 93   | Trithia Six
 94   | Ultraviolet
-95   | Valora's Comet
+95   | Valora’s Comet
 96   | Vengeance
 97   | Venture
 98   | Vigilant

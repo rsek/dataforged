@@ -17,4 +17,5 @@ export default interface IOracleCategoryInfo extends Omit<IOracleCategoryYaml, "
   Usage?: IOracleUsage | undefined;
   Oracles?: IOracle[] | undefined;
   Categories?: IOracleCategoryInfo[] | undefined;
+  "Sample Names"?: string[];
 }

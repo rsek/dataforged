@@ -21,6 +21,7 @@ export default interface IOracleCategoryYaml extends ITemplateYamlBase {
   Oracles?: IOracleYaml[] | undefined;
   Categories?: IOracleCategoryYaml[] | undefined;
   Requires?: IRequirementsYaml;
+  "Sample Names"?: string[];
   _templateCategory?: ITemplateOracleCategoryYaml | undefined;
   _childOf?: OracleCategoryName | undefined;
   _parentOf?: OracleSubcategoryName[] | undefined;
