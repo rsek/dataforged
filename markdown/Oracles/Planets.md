@@ -93,6 +93,8 @@ Lifebearing | Lifeless | Result
 
 ## Desert World
 
+A pitiless planet of searing heat, blowing sand, and sunbaked rock.
+
 ### Atmosphere
 
 Roll   | Result
@@ -161,6 +163,8 @@ Roll   | Result
 98–100 | Overrun
 
 ## Furnace World
+
+A planet with relentless volcanic activity, wreathed in fire and ash.
 
 ### Atmosphere
 
@@ -231,6 +235,8 @@ Roll   | Result
 
 ## Grave World
 
+A once-thriving world—now a grim monument to a fallen civilization.
+
 ### Atmosphere
 
 Roll   | Result
@@ -299,6 +305,8 @@ Roll   | Result
 --     | Overrun
 
 ## Ice World
+
+A rugged, frozen world—locked in an unending winter.
 
 ### Atmosphere
 
@@ -369,6 +377,8 @@ Roll   | Result
 
 ## Jovian World
 
+A massive planet with vast layers of dense gases surrounding a rocky core.
+
 ### Atmosphere
 
 Roll   | Result
@@ -437,6 +447,8 @@ Roll   | Result
 99–100 | Overrun
 
 ## Jungle World
+
+A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.
 
 ### Atmosphere
 
@@ -507,6 +519,8 @@ Roll   | Result
 
 ## Ocean World
 
+A planet completely or almost entirely covered by a boundless ocean.
+
 ### Atmosphere
 
 Roll   | Result
@@ -575,6 +589,8 @@ Roll   | Result
 91–100 | Overrun
 
 ## Rocky World
+
+A rugged planet scarred by eons of destructive asteroid impacts.
 
 ### Atmosphere
 
@@ -645,6 +661,8 @@ Roll   | Result
 
 ## Shattered World
 
+A planet sundered by cataclysmic destruction.
+
 ### Atmosphere
 
 Roll  | Result
@@ -714,6 +732,8 @@ Roll   | Result
 
 ## Tainted World
 
+A foul planet wracked by a poisonous climate and virulent growths.
+
 ### Atmosphere
 
 Roll   | Result
@@ -782,6 +802,8 @@ Roll   | Result
 66–100 | Overrun
 
 ## Vital World
+
+This diverse, life-bearing planet might provide some small measure of hope.
 
 ### Atmosphere
 

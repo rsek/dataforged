@@ -1,5 +1,17 @@
 # Precursor Vaults
 
+# Summary: Exploring Precursor Vaults
+
+When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle (page 298). In either case—if that’s enough detail for the role of the vault in your story—stop there.
+
+## Detailed Precursor Vault Generation
+
+If the survey of a vault is a focus for your current quest, use the oracle tables in this section to generate a more complete picture of the site. See the next page for a diagram of the three main phases of exploration.
+
+  * Exterior: Start by generating the basic form and characteristics of the vault using the tables on the previous two pages. These features represent what you observe from a safe distance.
+  * Interior: If you enter the site, check the Inner First Look table (page 1)   for initial impressions of what lies within. If you explore further, use the Interior Feature table (page 366) to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
+  * Sanctum: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table (page 368) to represent the aberrant nature of a vault’s depths.
+
 ## Location
 
 Roll   | Result
@@ -100,6 +112,8 @@ Roll   | Result
 96–100 | ⏵Descriptor + Focus
 
 ## Interior
+
+If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
 
 ### Inner First Look
 
@@ -226,6 +240,8 @@ Roll   | Result
 91–100 | Shortcut or less perilous path speeds your way
 
 ## Sanctum
+
+As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
 
 ### Vault Purpose
 

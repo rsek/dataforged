@@ -1179,6 +1179,8 @@ Roll   | Result
 
 ## Derelicts
 
+Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
+
 ### Location
 
 Roll   | Result
@@ -2247,6 +2249,16 @@ Roll   | Result
 
 ## Location Themes
 
+Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location. You can answer questions about a place using only the tables provided for a theme, such as when delving into an **Infested** cave. Or you can pair a theme with other location oracles for more flavor and variety; for example, you might explore a **Haunted Grave World**, a **Ruined Derelict**, a **Sacred Precusor Vault**, or an **Inhabited Settlement**.
+
+Each theme on the following pages includes a set of oracles.
+
+  * **Feature:** Use this table to reveal a new aspect of the location.
+  * **Peril:** Use this table to help envision a complication or hazard.
+  * **Opportunity:** Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
+
+When mixing-and-matching a theme with another set of tables, use the techniques described for an **oracle array** (page 378) to determine which oracle you will reference for that question or phase of your exploration.
+
 ### Theme Type
 
 You will typically choose a theme which supports what you know of that location’s nature. If you want a random theme, roll on the table above.
@@ -2263,6 +2275,8 @@ Roll   | Result
 91–100 | ⏵Sacred
 
 ### Chaotic
+
+Reality is corrupted or warped in this place.
 
 #### Feature
 
@@ -2317,6 +2331,8 @@ Roll   | Result
 
 ### Fortified
 
+Enemies defend this place against intruders.
+
 #### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -2369,6 +2385,8 @@ Roll   | Result
 81–100 | Access to useful equipment or weapons
 
 ### Haunted
+
+Restless spirits are bound to this place.
 
 #### Feature
 
@@ -2423,6 +2441,8 @@ Roll   | Result
 
 ### Infested
 
+Foul creatures have overrun this place.
+
 #### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -2475,6 +2495,8 @@ Roll   | Result
 81–100 | Helpful resource or equipment
 
 ### Inhabited
+
+People have built a community in this place.
 
 #### Feature
 
@@ -2529,6 +2551,8 @@ Roll   | Result
 
 ### Mechanical
 
+Machines and technology hold sway in this place.
+
 #### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -2582,6 +2606,8 @@ Roll   | Result
 
 ### Ruined
 
+Time, disaster, or war have ravaged this place.
+
 #### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -2634,6 +2660,8 @@ Roll   | Result
 81–100 | Shortcut or passage through the destruction
 
 ### Sacred
+
+Worshipers glorify strange powers in this place.
 
 #### Feature
 
@@ -2937,6 +2965,8 @@ Lifebearing | Lifeless | Result
 
 ### Desert World
 
+A pitiless planet of searing heat, blowing sand, and sunbaked rock.
+
 #### Atmosphere
 
 Roll   | Result
@@ -3005,6 +3035,8 @@ Roll   | Result
 98–100 | Overrun
 
 ### Furnace World
+
+A planet with relentless volcanic activity, wreathed in fire and ash.
 
 #### Atmosphere
 
@@ -3075,6 +3107,8 @@ Roll   | Result
 
 ### Grave World
 
+A once-thriving world—now a grim monument to a fallen civilization.
+
 #### Atmosphere
 
 Roll   | Result
@@ -3143,6 +3177,8 @@ Roll   | Result
 --     | Overrun
 
 ### Ice World
+
+A rugged, frozen world—locked in an unending winter.
 
 #### Atmosphere
 
@@ -3213,6 +3249,8 @@ Roll   | Result
 
 ### Jovian World
 
+A massive planet with vast layers of dense gases surrounding a rocky core.
+
 #### Atmosphere
 
 Roll   | Result
@@ -3281,6 +3319,8 @@ Roll   | Result
 99–100 | Overrun
 
 ### Jungle World
+
+A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.
 
 #### Atmosphere
 
@@ -3351,6 +3391,8 @@ Roll   | Result
 
 ### Ocean World
 
+A planet completely or almost entirely covered by a boundless ocean.
+
 #### Atmosphere
 
 Roll   | Result
@@ -3419,6 +3461,8 @@ Roll   | Result
 91–100 | Overrun
 
 ### Rocky World
+
+A rugged planet scarred by eons of destructive asteroid impacts.
 
 #### Atmosphere
 
@@ -3489,6 +3533,8 @@ Roll   | Result
 
 ### Shattered World
 
+A planet sundered by cataclysmic destruction.
+
 #### Atmosphere
 
 Roll  | Result
@@ -3558,6 +3604,8 @@ Roll   | Result
 
 ### Tainted World
 
+A foul planet wracked by a poisonous climate and virulent growths.
+
 #### Atmosphere
 
 Roll   | Result
@@ -3626,6 +3674,8 @@ Roll   | Result
 66–100 | Overrun
 
 ### Vital World
+
+This diverse, life-bearing planet might provide some small measure of hope.
 
 #### Atmosphere
 
@@ -4402,6 +4452,18 @@ Roll | Result
 
 ## Precursor Vaults
 
+# Summary: Exploring Precursor Vaults
+
+When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle (page 298). In either case—if that’s enough detail for the role of the vault in your story—stop there.
+
+## Detailed Precursor Vault Generation
+
+If the survey of a vault is a focus for your current quest, use the oracle tables in this section to generate a more complete picture of the site. See the next page for a diagram of the three main phases of exploration.
+
+  * Exterior: Start by generating the basic form and characteristics of the vault using the tables on the previous two pages. These features represent what you observe from a safe distance.
+  * Interior: If you enter the site, check the Inner First Look table (page 1)   for initial impressions of what lies within. If you explore further, use the Interior Feature table (page 366) to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
+  * Sanctum: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table (page 368) to represent the aberrant nature of a vault’s depths.
+
 ### Location
 
 Roll   | Result
@@ -4502,6 +4564,8 @@ Roll   | Result
 96–100 | ⏵Descriptor + Focus
 
 ### Interior
+
+If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
 
 #### Inner First Look
 
@@ -4628,6 +4692,8 @@ Roll   | Result
 91–100 | Shortcut or less perilous path speeds your way
 
 ### Sanctum
+
+As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
 
 #### Vault Purpose
 

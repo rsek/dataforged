@@ -40,6 +40,7 @@ export default class OracleCategory implements IOracleCategory {
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
+    this.Description = json.Description;
     this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);
     this.Source = new Source(json.Source, ..._.compact(ancestorsJson.map(item => item.Source)));
     this.Category = category ?? undefined;

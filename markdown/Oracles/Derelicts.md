@@ -1,5 +1,7 @@
 # Derelicts
 
+Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
+
 ## Location
 
 Roll   | Result

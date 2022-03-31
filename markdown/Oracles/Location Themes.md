@@ -1,5 +1,15 @@
 # Location Themes
 
+Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location. You can answer questions about a place using only the tables provided for a theme, such as when delving into an **Infested** cave. Or you can pair a theme with other location oracles for more flavor and variety; for example, you might explore a **Haunted Grave World**, a **Ruined Derelict**, a **Sacred Precusor Vault**, or an **Inhabited Settlement**.
+
+Each theme on the following pages includes a set of oracles.
+
+  * **Feature:** Use this table to reveal a new aspect of the location.
+  * **Peril:** Use this table to help envision a complication or hazard.
+  * **Opportunity:** Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
+
+When mixing-and-matching a theme with another set of tables, use the techniques described for an **oracle array** (page 378) to determine which oracle you will reference for that question or phase of your exploration.
+
 ## Theme Type
 
 You will typically choose a theme which supports what you know of that location’s nature. If you want a random theme, roll on the table above.
@@ -16,6 +26,8 @@ Roll   | Result
 91–100 | ⏵Sacred
 
 ## Chaotic
+
+Reality is corrupted or warped in this place.
 
 ### Feature
 
@@ -70,6 +82,8 @@ Roll   | Result
 
 ## Fortified
 
+Enemies defend this place against intruders.
+
 ### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -122,6 +136,8 @@ Roll   | Result
 81–100 | Access to useful equipment or weapons
 
 ## Haunted
+
+Restless spirits are bound to this place.
 
 ### Feature
 
@@ -176,6 +192,8 @@ Roll   | Result
 
 ## Infested
 
+Foul creatures have overrun this place.
+
 ### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -228,6 +246,8 @@ Roll   | Result
 81–100 | Helpful resource or equipment
 
 ## Inhabited
+
+People have built a community in this place.
 
 ### Feature
 
@@ -282,6 +302,8 @@ Roll   | Result
 
 ## Mechanical
 
+Machines and technology hold sway in this place.
+
 ### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -335,6 +357,8 @@ Roll   | Result
 
 ## Ruined
 
+Time, disaster, or war have ravaged this place.
+
 ### Feature
 
 Use this table to reveal a new aspect of the location.
@@ -387,6 +411,8 @@ Roll   | Result
 81–100 | Shortcut or passage through the destruction
 
 ## Sacred
+
+Worshipers glorify strange powers in this place.
 
 ### Feature
 
