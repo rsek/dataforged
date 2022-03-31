@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import ITemplateYamlBase from "../../types/oracles/interfaces/yaml/ITemplateYamlBase";
 import buildLog from "../logging/buildLog";
 import replaceInAllStrings from "./replaceInAllStrings";

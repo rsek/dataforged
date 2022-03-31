@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import Move from "../../types/moves/Move";
 import renderMove from "./renderMove";
 

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 
 export default function propagateToChildren<C, T extends C[keyof C] & object>(objToPropagate: T, key: keyof C, ...children: C[]): void {
   children.forEach(child => {

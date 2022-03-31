@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import { stringify } from "querystring";
 const stats = ["Edge", "Iron", "Heart", "Shadow", "Wits"]
 

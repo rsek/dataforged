@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import Requirements from "../general/Requirements";
 import { GameObjectType } from "./IGameObjectBase";
 import GameObjectData from "./GameObjectYaml";

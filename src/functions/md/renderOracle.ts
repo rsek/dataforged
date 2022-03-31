@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import Oracle from "../../types/oracles/classes/Oracle";
 import buildLog from "../logging/buildLog";
 import extractColumnData from "./extractColumnData";

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import AttributeHash from "../gameObjects/AttributeHash";
 import IAttributeChoices from "../gameObjects/IAttributeChoices";
 

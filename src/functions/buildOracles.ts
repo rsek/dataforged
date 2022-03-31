@@ -10,7 +10,6 @@ import { OracleCategoryName } from "../types/oracles/OracleCategoryId";
 import { OracleSubcategoryName } from "../types/oracles/OracleSubcategoryId";
 import buildLog from "./logging/buildLog";
 import templateOracle from "./object-transform/templateOracle";
-import _ from "lodash";
 import badJsonError from "./logging/badJsonError";
 import IOracleCategoryYaml from "../types/oracles/interfaces/yaml/IOracleCategoryYaml";
 

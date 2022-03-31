@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import { is } from "typescript-is";
 import badJsonError from "../../functions/logging/badJsonError";
 import ISource from "./interfaces/ISource";

@@ -1,7 +1,7 @@
 
 
 import fs from "fs";
-import _ from "lodash";
+import _ from "lodash-es";
 import OracleCategory from "../../types/oracles/classes/OracleCategory";
 import Row from "../../types/oracles/classes/Row";
 import badJsonError from "../logging/badJsonError";

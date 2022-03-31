@@ -3,7 +3,7 @@ import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "..
 import Oracle from "./Oracle";
 import OracleUsage from "./OracleUsage";
 import buildOracleId from "../../../functions/buildOracleId";
-import _ from "lodash";
+import _ from "lodash-es";
 import OracleCategoryDisplay from "./OracleCategoryDisplay";
 import IOracleCategory from "../interfaces/IOracleCategory";
 import propagateToChildren from "../../../functions/object-transform/propagateToChildren";

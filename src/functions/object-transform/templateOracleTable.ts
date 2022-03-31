@@ -1,7 +1,7 @@
 import extractRowContent from "./extractRowContent";
 import { is } from "typescript-is";
 import ITemplateTable from "../../types/oracles/interfaces/yaml/ITemplateTableYaml";
-import _ from "lodash";
+import _ from "lodash-es";
 import extractRowRolls from "./extractRowRolls";
 import IRowYaml from "../../types/oracles/interfaces/yaml/IRowYaml";
 

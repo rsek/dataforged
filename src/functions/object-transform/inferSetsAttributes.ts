@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import { arrayBuffer } from "stream/consumers";
 import IAttribute from "../../types/gameObjects/IAttribute";
 import IAttributeChoices from "../../types/gameObjects/IAttributeChoices";

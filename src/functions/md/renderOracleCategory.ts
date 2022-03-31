@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import OracleCategory from "../../types/oracles/classes/OracleCategory";
 import buildLog from "../logging/buildLog";
 import renderOracle from "./renderOracle";

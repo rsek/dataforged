@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import lengthOfLongest from "./longestLength";
 import transpose2dArray from "./transpose2dArray";
 

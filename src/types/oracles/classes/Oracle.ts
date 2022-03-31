@@ -1,5 +1,5 @@
 import jsonpath from "jsonpath";
-import _ from "lodash";
+import _ from "lodash-es";
 import buildOracleId from "../../../functions/buildOracleId";
 import buildLog from "../../../functions/logging/buildLog";
 import inferSetsAttributes from "../../../functions/object-transform/inferSetsAttributes";

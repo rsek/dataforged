@@ -1,5 +1,5 @@
 import jsonpath from "jsonpath";
-import _ from "lodash";
+import _ from "lodash-es";
 
 export default function replaceInAllStrings<T>(json: T, searchValue: string, replaceValue: string): T {
   const jsonClone = _.cloneDeep(json);

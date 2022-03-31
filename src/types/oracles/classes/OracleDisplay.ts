@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import OracleTableId from "../OracleTableId";
 import DisplayTable from "./DisplayTable";
 import IDisplayTable from "../interfaces/IDisplayTable";

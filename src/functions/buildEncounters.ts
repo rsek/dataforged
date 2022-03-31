@@ -5,7 +5,7 @@ import Encounter from "../types/encounters/Encounter";
 import IEncounterYaml from "../types/encounters/IEncounterYaml";
 import ISource from "../types/general/interfaces/ISource";
 import getYamlFiles from "./io/getYamlFiles";
-import _ from "lodash";
+import _ from "lodash-es";
 import IYamlWithRef from "./IYamlWithRef";
 import buildLog from "./logging/buildLog";
 

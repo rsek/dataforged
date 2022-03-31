@@ -1,5 +1,5 @@
 
-import _ from "lodash";
+import _ from "lodash-es";
 import IRequirements from "./interfaces/IRequirements";
 import IRequirementsYaml from "./interfaces/IRequirementsYaml";
 import AttributeRequirements from "./Attributes";

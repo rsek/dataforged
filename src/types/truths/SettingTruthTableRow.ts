@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import Row from "../oracles/classes/Row";
 import ISettingTruthTableRow from "./ISettingTruthTableRow";
 

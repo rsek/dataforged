@@ -1,16 +1,16 @@
 import "source-map-support/register";
 import { PathLike, writeFileSync } from "fs";
-import _ from "lodash";
+import _ from "lodash-es";
 import buildDataforged from "./functions/buildDataforged";
 import writeJson from "./functions/io/writeJSON";
 import renderMoves from "./functions/md/renderMoves";
 import renderOracleCategory from "./functions/md/renderOracleCategory";
 import buildImages from "./functions/buildImages";
-import writeYaml from "./functions/io/writeYaml";
-import countDupes from "./functions/analysis/countDupes";
-import extractProperNouns from "./functions/analysis/extractProperNouns";
-import countDupesByLemma from "./functions/analysis/countDupesByStem";
-import extractPos from "./functions/analysis/extractPos";
+// import writeYaml from "./functions/io/writeYaml";
+// import countDupes from "./functions/analysis/countDupes";
+// import extractProperNouns from "./functions/analysis/extractProperNouns";
+// import countDupesByLemma from "./functions/analysis/countDupesByStem";
+// import extractPos from "./functions/analysis/extractPos";
 
 const pathOut: PathLike = "./";
 const mdPath: PathLike = pathOut + "markdown/";
@@ -53,6 +53,6 @@ const outWebP = "img/raster/webp";
 
 buildImages(srcRoot, outRoot, srcPng, outWebP);
 
-writeYaml("pos_verbs.yaml" as PathLike, extractPos.verbs);
-writeYaml("pos_nouns.yaml" as PathLike, extractPos.nouns);
-writeYaml("pos_adj.yaml" as PathLike, extractPos.adj);
+// writeYaml("analysis/pos_verbs.yaml" as PathLike, extractPos.verbs);
+// writeYaml("analysis/pos_nouns.yaml" as PathLike, extractPos.nouns);
+// writeYaml("analysis/pos_adj.yaml" as PathLike, extractPos.adj);

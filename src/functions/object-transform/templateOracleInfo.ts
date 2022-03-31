@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import IOracleYaml from "../../types/oracles/interfaces/yaml/IOracleYaml";
 import replaceInAllStrings from "./replaceInAllStrings";
 

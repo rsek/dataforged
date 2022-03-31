@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash-es";
 import Move from "../../types/moves/Move";
 
 export default function renderMove(move: Move, headerLevel: number = 3): string {

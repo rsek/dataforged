@@ -4,7 +4,7 @@ import MultipleRolls from "./MultipleRolls";
 import IMultipleRolls from "../interfaces/IMultipleRolls";
 import OracleTableId from "../OracleTableId";
 import OracleTableRowId from "../OracleTableRowId";
-import _ from "lodash";
+import _ from "lodash-es";
 import Suggestions from "../../general/Suggestions";
 import UrlString from "../../general/UrlString";
 import TemplateString from "../TemplateString";

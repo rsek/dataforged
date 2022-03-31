@@ -1,6 +1,6 @@
 
 
-import _ from "lodash";
+import _ from "lodash-es";
 import buildMoves from "./buildMoves";
 import writeJson from "./io/writeJSON";
 import Move from "../types/moves/Move";
