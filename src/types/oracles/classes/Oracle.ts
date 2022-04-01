@@ -1,4 +1,3 @@
-import jsonpath from "jsonpath";
 import _ from "lodash-es";
 import buildOracleId from "../../../functions/buildOracleId";
 import buildLog from "../../../functions/logging/buildLog";
