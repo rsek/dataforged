@@ -1,5 +1,5 @@
 import { getOptions } from "showdown";
-import { AttributeKey, AttributeValue } from "./IAttribute";
+import type { AttributeKey, AttributeValue } from "./IAttribute.js";
 
 type AttributeHash = Record<AttributeKey, AttributeValue[] | AttributeValue | null>;
 

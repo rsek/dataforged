@@ -1,17 +1,17 @@
-import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId";
 
-import Oracle from "./Oracle";
-import OracleUsage from "./OracleUsage";
-import buildOracleId from "../../../functions/buildOracleId";
 import _ from "lodash-es";
-import OracleCategoryDisplay from "./OracleCategoryDisplay";
-import IOracleCategory from "../interfaces/IOracleCategory";
-import propagateToChildren from "../../../functions/object-transform/propagateToChildren";
-import IOracleYaml from "../interfaces/yaml/IOracleYaml";
-import buildLog from "../../../functions/logging/buildLog";
-import IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml";
-import Source from "../../general/Source";
-
+import Oracle from "./Oracle.js";
+import OracleCategoryDisplay from "./OracleCategoryDisplay.js";
+import OracleUsage from "./OracleUsage.js";
+import buildOracleId from "../../../functions/buildOracleId.js";
+import buildLog from "../../../functions/logging/buildLog.js";
+import propagateToChildren from "../../../functions/object-transform/propagateToChildren.js";
+import Source from "../../general/Source.js";
+import type IOracleCategory from "../interfaces/IOracleCategory.js";
+import type IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml.js";
+import type IOracleYaml from "../interfaces/yaml/IOracleYaml.js";
+import type OracleCategoryId from "../OracleCategoryId.js";
+import type { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId.js";
 
 export default class OracleCategory implements IOracleCategory {
   $id: OracleCategoryId;
@@ -35,7 +35,6 @@ export default class OracleCategory implements IOracleCategory {
     //   throw new Error();
     // }
 
-
     this.$id = buildOracleId(json, ...ancestorsJson) as OracleCategoryId;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
@@ -56,7 +55,7 @@ export default class OracleCategory implements IOracleCategory {
         if (json.Requires) {
           propagateToChildren(json.Requires, "Requires", oracleInfo);
         }
-        return new Oracle(oracleInfo, this.$id, undefined, json, ...ancestorsJson)
+        return new Oracle(oracleInfo, this.$id, undefined, json, ...ancestorsJson);
       });
     }
     if (json.Categories) {
@@ -72,6 +71,5 @@ export default class OracleCategory implements IOracleCategory {
         }
       );
     }
-
   }
 }

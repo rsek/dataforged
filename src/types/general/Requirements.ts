@@ -1,8 +1,8 @@
 
 import _ from "lodash-es";
-import IRequirements from "./interfaces/IRequirements";
-import IRequirementsYaml from "./interfaces/IRequirementsYaml";
-import AttributeRequirements from "./Attributes";
+import AttributeRequirements from "./Attributes.js";
+import type IRequirements from "./interfaces/IRequirements.js";
+import type IRequirementsYaml from "./interfaces/IRequirementsYaml.js";
 
 export default class Requirements implements IRequirements {
   Attributes: AttributeRequirements;

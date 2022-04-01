@@ -1,4 +1,4 @@
-import SourceTitle from "../SourceTitle";
+import type SourceTitle from "../SourceTitle.js";
 
 export default interface ISource {
   Title: SourceTitle;

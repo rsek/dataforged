@@ -1,7 +1,7 @@
 import { is } from "typescript-is";
-import IRowYaml, { IRowContentYaml } from "../../types/oracles/interfaces/yaml/IRowYaml";
-import badJsonError from "../logging/badJsonError";
-
+import type { IRowContentYaml } from "../../types/oracles/interfaces/yaml/IRowYaml.js";
+import type IRowYaml from "../../types/oracles/interfaces/yaml/IRowYaml.js";
+import badJsonError from "../logging/badJsonError.js";
 
 export default function extractRowContent(row: IRowYaml | IRowContentYaml): IRowContentYaml {
   // if (!is<IRowYaml | IRowContentYaml>(row)) {

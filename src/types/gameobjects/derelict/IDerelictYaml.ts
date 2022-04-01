@@ -1,10 +1,11 @@
-import Location from "../place/Location";
-import LocationTheme from "../place/LocationTheme";
-import IPlaceData, { PlaceType } from "../IPlaceYaml";
-import Region from "../place/Region";
-import SettlementInitialContact from "../settlement/SettlementInitialContact";
-import StarshipInitialContact from "../starship/StarshipInitialContact";
-import DerelictType from "./DerelictType";
+import type DerelictType from "./DerelictType.js";
+import type { PlaceType } from "../IPlaceYaml.js";
+import type IPlaceData from "../IPlaceYaml.js";
+import type Location from "../place/Location.js";
+import type LocationTheme from "../place/LocationTheme.js";
+import type Region from "../place/Region.js";
+import type SettlementInitialContact from "../settlement/SettlementInitialContact.js";
+import type StarshipInitialContact from "../starship/StarshipInitialContact.js";
 
 export default interface IDerelictYaml<DT extends DerelictType | undefined, R extends Region | undefined, L extends Location | undefined, LT extends LocationTheme | undefined> extends IPlaceData<R, L, LT> {
   "Object type": PlaceType.Derelict;

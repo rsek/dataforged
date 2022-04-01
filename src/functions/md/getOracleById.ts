@@ -1,8 +1,7 @@
-import OracleTableId from "../../types/oracles/OracleTableId";
 import jsonpath from "jsonpath";
-import IOracleBase from "../../types/oracles/interfaces/IOracleBase";
-import Oracle from "../../types/oracles/classes/Oracle";
-
+import type Oracle from "../../types/oracles/classes/Oracle.js";
+import type IOracleBase from "../../types/oracles/interfaces/IOracleBase.js";
+import type OracleTableId from "../../types/oracles/OracleTableId.js";
 
 export default function getOracleById(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
   const table = jsonpath.value(oracleData, `$..[?(@.$id=='${id}')]`) as Oracle;

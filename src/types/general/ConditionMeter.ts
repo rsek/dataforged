@@ -1,8 +1,9 @@
 
 
-import AssetId from "../assets/AssetId";
-import AssetType from "../assets/AssetType";
-import { Counter, ICounter } from "./Counter";
+import type { ICounter } from "./Counter.js";
+import { Counter } from "./Counter.js";
+import type AssetId from "../assets/AssetId.js";
+import type AssetType from "../assets/AssetType.js";
 
 export type MeterType = "Momentum" | PcConditionMeter;
 export type PcConditionMeter = "Health" | "Spirit" | "Supply";
@@ -38,13 +39,13 @@ export class ConditionMeter extends Counter implements IConditionMeter {
     if (json.Conditions) {
       this.Conditions = json.Conditions;
     }
-    if (assetType == "Companion") {
+    if (assetType === "Companion") {
       this.Aliases = [MeterAlias.CompanionHealth];
     }
-    if (assetType == "Command Vehicle") {
-      this.Aliases = [MeterAlias.CommandVehicleIntegrity, MeterAlias.VehicleIntegrity];
+    if (assetType === "Command Vehicle") {
+      this.Aliases = [ MeterAlias.CommandVehicleIntegrity, MeterAlias.VehicleIntegrity ];
     }
-    if (assetType == "Support Vehicle") {
+    if (assetType === "Support Vehicle") {
       this.Aliases = [
         MeterAlias.SupportVehicleIntegrity, MeterAlias.VehicleIntegrity
       ];

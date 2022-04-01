@@ -1,25 +1,23 @@
 
 
-import fs from "fs";
 import _ from "lodash-es";
-import OracleCategory from "../../types/oracles/classes/OracleCategory";
-import Row from "../../types/oracles/classes/Row";
-import badJsonError from "../logging/badJsonError";
-import renderOracleCategory from "./renderOracleCategory";
-
-
+import fs from "fs";
+import renderOracleCategory from "./renderOracleCategory.js";
+import type OracleCategory from "../../types/oracles/classes/OracleCategory.js";
+import type Row from "../../types/oracles/classes/Row.js";
+import badJsonError from "../logging/badJsonError.js";
 
 function toMdMultiTableData(rollColumnData: Row[][], rollColumnLabels: string[], resultColumnData: Row[][], resultColumnLabels: string[]) {
-  if (rollColumnLabels.length != rollColumnData.length) {
-    throw new Error("rollColumnLabels.length != rollColumns.length");
-  } if (resultColumnLabels.length != resultColumnData.length) {
-    throw new Error("resultColumnLabels.length != resultColumns.length");
+  if (rollColumnLabels.length !== rollColumnData.length) {
+    throw new Error("rollColumnLabels.length !== rollColumns.length");
+  } if (resultColumnLabels.length !== resultColumnData.length) {
+    throw new Error("resultColumnLabels.length !== resultColumns.length");
   }
-  const minimumRows = [...rollColumnData, ...resultColumnData].map(col => col.length).reduce((colA, colB) => colA > colB ? colA : colB);
+  const minimumRows = [ ...rollColumnData, ...resultColumnData ].map(col => col.length).reduce((colA, colB) => colA > colB ? colA : colB);
 
   const rollColumns = rollColumnData.map((col, index) => toRollColumnArray(rollColumnLabels[index], col, minimumRows));
   const resultColumns = resultColumnData.map((col, index) => toResultColumnArray(resultColumnLabels[index], col, minimumRows));
-  return [...rollColumns, ...resultColumns];
+  return [ ...rollColumns, ...resultColumns ];
 }
 
 export function toSummaryColumnArray(label: string, rows: Row[], minimumRows: number) {
@@ -33,17 +31,17 @@ export function toResultColumnArray(label: string, rows: Row[], minimumRows: num
 }
 export function toRollColumnArray(label: string, rows: Row[], minimumRows: number) {
   const rowContent = rows.map(row => {
-    if (row.Ceiling == row.Floor) {
-      if (row.Ceiling == null) {
+    if (row.Ceiling === row.Floor) {
+      if (row.Ceiling === null) {
         return "--";
       } else {
         return row.Ceiling.toString();
       }
     } else {
-      if (row.Ceiling == null || row.Floor == null) {
+      if (row.Ceiling === null || row.Floor === null) {
         throw new Error();
       }
-      return `${row.Floor}-${row.Ceiling}`
+      return `${row.Floor}-${row.Ceiling}`;
     }
   });
   return toColumnArray(label, rowContent, minimumRows);
@@ -64,7 +62,7 @@ export function toMdTable(...columnArrays: string[][]) {
 function mdTableFrom2dArray(array2d: string[][]) {
   const columnMax = array2d.map(column => column.map(row => row.length).reduce((rowA, rowB) => rowA > rowB ? rowA : rowB));
   const md2dArray = array2d.map(row => {
-    row = row.map((column, index) => column.padEnd(columnMax[index]))
+    row = row.map((column, index) => column.padEnd(columnMax[index]));
     return row;
   });
 
@@ -84,13 +82,13 @@ function transpose2dArray(array2d: string[][]) {
 }
 
 function buildMdOracles(headerText = "Ironsworn Oracles", ...oracleData: OracleCategory[]) {
-
   const header = "# " + headerText;
   const oracleMarkdown = oracleData.map(oracleCat => renderOracleCategory(oracleCat), 2);
 
   return header + "\n\n" + oracleMarkdown.join("\n\n") + "\n";
 }
 
-const files = fs.readdirSync("./").filter(dir => dir.match(/^ironsworn_oracles/)).map(file => "./" + file);
+const files = fs.readdirSync("./").filter(dir => dir.match(/^ironsworn_oracles/))
+  .map(file => "./" + file);
 const text = buildMdOracles(...files);
 fs.writeFileSync("./oracles.md", text);

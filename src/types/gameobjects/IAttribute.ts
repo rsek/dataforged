@@ -1,5 +1,5 @@
-import badJsonError from "../../functions/logging/badJsonError";
-import GameObjectData from "./GameObjectYaml";
+import type GameObjectData from "./GameObjectYaml.js";
+import badJsonError from "../../functions/logging/badJsonError.js";
 
 export type AttributeKey = keyof Omit<GameObjectData, "Object type">;
 

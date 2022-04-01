@@ -1,7 +1,6 @@
-import ISource from "../general/interfaces/ISource";
-import ISettingTruthTableRow from "./ISettingTruthTableRow";
-import ISuggestionsYaml from "../general/interfaces/ISuggestionsYaml";
-
+import type ISettingTruthTableRow from "./ISettingTruthTableRow.js";
+import type ISource from "../general/interfaces/ISource.js";
+import type ISuggestionsYaml from "../general/interfaces/ISuggestionsYaml.js";
 
 export default interface ISettingTruth {
   $id: string;

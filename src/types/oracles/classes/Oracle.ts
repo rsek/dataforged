@@ -1,24 +1,24 @@
 import _ from "lodash-es";
-import buildOracleId from "../../../functions/buildOracleId";
-import buildLog from "../../../functions/logging/buildLog";
-import inferSetsAttributes from "../../../functions/object-transform/inferSetsAttributes";
-import propagateToChildren from "../../../functions/object-transform/propagateToChildren";
-import templateOracle from "../../../functions/object-transform/templateOracle";
-import templateOracleTable from "../../../functions/object-transform/templateOracleTable";
-import IAttribute, { AttributeKey } from "../../gameObjects/IAttribute";
-import Source from "../../general/Source";
-import IOracleBase from "../interfaces/IOracleBase";
-import ITableDisplay from "../interfaces/IOracleDisplay";
-import IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml";
-import IOracleYaml from "../interfaces/yaml/IOracleYaml";
-import IRowYaml from "../interfaces/yaml/IRowYaml";
-import OracleCategoryId from "../OracleCategoryId";
-import OracleTableId from "../OracleTableId";
-import OracleContent from "./OracleContent";
-import OracleDisplay from "./OracleDisplay";
-import OracleUsage from "./OracleUsage";
-import Row from "./Row";
-
+import OracleContent from "./OracleContent.js";
+import OracleDisplay from "./OracleDisplay.js";
+import OracleUsage from "./OracleUsage.js";
+import Row from "./Row.js";
+import buildOracleId from "../../../functions/buildOracleId.js";
+import buildLog from "../../../functions/logging/buildLog.js";
+import inferSetsAttributes from "../../../functions/object-transform/inferSetsAttributes.js";
+import propagateToChildren from "../../../functions/object-transform/propagateToChildren.js";
+import templateOracle from "../../../functions/object-transform/templateOracle.js";
+import templateOracleTable from "../../../functions/object-transform/templateOracleTable.js";
+import type { AttributeKey } from "../../gameObjects/IAttribute.js";
+import type IAttribute from "../../gameObjects/IAttribute.js";
+import Source from "../../general/Source.js";
+import type IOracleBase from "../interfaces/IOracleBase.js";
+import type ITableDisplay from "../interfaces/IOracleDisplay.js";
+import type IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml.js";
+import type IOracleYaml from "../interfaces/yaml/IOracleYaml.js";
+import type IRowYaml from "../interfaces/yaml/IRowYaml.js";
+import type OracleCategoryId from "../OracleCategoryId.js";
+import type OracleTableId from "../OracleTableId.js";
 
 export default class Oracle implements IOracleBase {
   $id: OracleTableId;
@@ -83,7 +83,7 @@ export default class Oracle implements IOracleBase {
         if (jsonClone.Content) {
           propagateToChildren(jsonClone.Content, "Content", oracleInfo);
         }
-        return new Oracle(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson)
+        return new Oracle(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson);
       });
     }
     if (this.Table) {
@@ -92,7 +92,7 @@ export default class Oracle implements IOracleBase {
         if (!this.Usage) {
           this.Usage = {};
         }
-        if (typeof this.Usage["Sets attributes"] == "undefined") {
+        if (typeof this.Usage["Sets attributes"] === "undefined") {
           this.Usage["Sets attributes"] = [];
         }
         // console.log("attrs", attrs);

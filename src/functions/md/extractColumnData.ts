@@ -1,9 +1,8 @@
-import badJsonError from "../logging/badJsonError";
-import Oracle from "../../types/oracles/classes/Oracle";
-import getTableByOracleId from "./getTableByOracleId";
+import getTableByOracleId from "./getTableByOracleId.js";
+import type Oracle from "../../types/oracles/classes/Oracle.js";
+import badJsonError from "../logging/badJsonError.js";
 
 export default function extractColumnData(oracle: Oracle) {
-
   const newTableRows: Record<string, string>[] = [];
 
   const rollCols = oracle.Display.Table["Roll columns"];
@@ -17,11 +16,10 @@ export default function extractColumnData(oracle: Oracle) {
         newTableRows.push({} as Record<string, string>);
       }
       const currentTableRow: Record<string, string> = newTableRows[rowIndex];
-      const newRowText = (rowData.Floor == null || rowData.Ceiling == null) ? "--" : rowData.Floor == rowData.Ceiling ? `${rowData.Ceiling}` : `${rowData.Floor}–${rowData.Ceiling}`;
+      const newRowText = (rowData.Floor === null || rowData.Ceiling === null) ? "--" : rowData.Floor === rowData.Ceiling ? `${rowData.Ceiling}` : `${rowData.Floor}–${rowData.Ceiling}`;
       currentTableRow[col.Label] = newRowText;
     });
   });
-
 
   const resultCols = oracle.Display.Table["Result columns"];
   resultCols.forEach((col, colIndex) => {
@@ -33,7 +31,7 @@ export default function extractColumnData(oracle: Oracle) {
     table.forEach((rowData, rowIndex) => {
       const currentTableRow: Record<string, string> = newTableRows[rowIndex];
       const newRowText = rowData[col.Key] as string;
-      if (typeof rowData[col.Key] != "string") {
+      if (typeof rowData[col.Key] !== "string") {
         throw badJsonError(extractColumnData, newRowText);
       }
       currentTableRow[col.Label] = newRowText;

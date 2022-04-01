@@ -1,10 +1,10 @@
 
 
-import MdString from "../general/MdString";
-import { CustomStatRoll, IActionRoll, IProgressRoll } from "../general/Roll";
-import IMoveTriggerOption from "./interfaces/IMoveTriggerOption";
-import IMoveTriggerOptionYaml from "./interfaces/IMoveTriggerOptionYaml";
-
+import type IMoveTriggerOption from "./interfaces/IMoveTriggerOption.js";
+import type IMoveTriggerOptionYaml from "./interfaces/IMoveTriggerOptionYaml.js";
+import type MdString from "../general/MdString.js";
+import type { IActionRoll, IProgressRoll } from "../general/Roll.js";
+import { CustomStatRoll } from "../general/Roll.js";
 
 export default class MoveTriggerOption implements IMoveTriggerOption {
   $id: string;

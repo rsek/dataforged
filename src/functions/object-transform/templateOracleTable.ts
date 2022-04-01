@@ -1,14 +1,12 @@
-import extractRowContent from "./extractRowContent";
-import { is } from "typescript-is";
-import ITemplateTable from "../../types/oracles/interfaces/yaml/ITemplateTableYaml";
 import _ from "lodash-es";
-import extractRowRolls from "./extractRowRolls";
-import IRowYaml from "../../types/oracles/interfaces/yaml/IRowYaml";
-
-
+import { is } from "typescript-is";
+import extractRowContent from "./extractRowContent.js";
+import extractRowRolls from "./extractRowRolls.js";
+import type IRowYaml from "../../types/oracles/interfaces/yaml/IRowYaml.js";
+import type ITemplateTable from "../../types/oracles/interfaces/yaml/ITemplateTableYaml.js";
 
 export default function templateOracleTable(template: ITemplateTable): IRowYaml[] {
-  if (template.rolls.length != template.content.length) {
+  if (template.rolls.length !== template.content.length) {
     throw new Error("[buildTemplateTable] Arrays for template content and rolls have different lengths. Use [null, null] to represent a null roll range.");
   }
   const templateClone = _.cloneDeep(template);
@@ -20,8 +18,8 @@ export default function templateOracleTable(template: ITemplateTable): IRowYaml[
     return [row];
   });
   const newTable = rolls.map((currentRoll, index) => {
-    const newRow: IRowYaml = [...currentRoll, ...content[index]] as IRowYaml;
+    const newRow: IRowYaml = [ ...currentRoll, ...content[index] ] as IRowYaml;
     return newRow;
   });
-  return newTable ;
+  return newTable;
 }

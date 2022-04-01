@@ -1,6 +1,5 @@
 
 
-
 enum Life {
   None = "None",
   Extinct = "Extinct",

@@ -1,6 +1,6 @@
 
 
-import OracleTableId from "./OracleTableId";
+import type OracleTableId from "./OracleTableId.js";
 
 type TemplateString = `${string | ""}{{${OracleTableId}}}${string | ""}`;
 

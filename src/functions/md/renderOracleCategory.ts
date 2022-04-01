@@ -1,7 +1,7 @@
 import _ from "lodash-es";
-import OracleCategory from "../../types/oracles/classes/OracleCategory";
-import buildLog from "../logging/buildLog";
-import renderOracle from "./renderOracle";
+import renderOracle from "./renderOracle.js";
+import type OracleCategory from "../../types/oracles/classes/OracleCategory.js";
+import buildLog from "../logging/buildLog.js";
 
 export default function renderOracleCategory(oracleCat: OracleCategory, headerLevel = 2) {
   buildLog(renderOracleCategory, `Generating markdown for ${oracleCat.Display.Title

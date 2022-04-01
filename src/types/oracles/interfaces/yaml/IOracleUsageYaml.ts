@@ -1,6 +1,6 @@
 
-import IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml";
-import ISuggestionsYaml from "../../../general/interfaces/ISuggestionsYaml";
+import type IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml.js";
+import type ISuggestionsYaml from "../../../general/interfaces/ISuggestionsYaml.js";
 
 export default interface IOracleUsageYaml {
   Initial?: boolean | undefined;

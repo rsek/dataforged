@@ -1,12 +1,12 @@
 import _ from "lodash-es";
-import Requirements from "../general/Requirements";
-import { GameObjectType } from "./IGameObjectBase";
-import GameObjectData from "./GameObjectYaml";
-import badJsonError from "../../functions/logging/badJsonError";
 import { is } from "typescript-is";
-import IGameObject from "./IGameObject";
-import IRequirementsYaml from "../general/interfaces/IRequirementsYaml";
-import AttributeHash from "./AttributeHash";
+import type AttributeHash from "./AttributeHash.js";
+import type GameObjectData from "./GameObjectYaml.js";
+import type IGameObject from "./IGameObject.js";
+import type { GameObjectType } from "./IGameObjectBase.js";
+import badJsonError from "../../functions/logging/badJsonError.js";
+import type IRequirementsYaml from "../general/interfaces/IRequirementsYaml.js";
+import Requirements from "../general/Requirements.js";
 
 export default class GameObject implements IGameObject {
   "Object type": GameObjectType;
@@ -18,7 +18,7 @@ export default class GameObject implements IGameObject {
     }
     this["Object type"] = json["Object type"];
     // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
-    const requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]) as AttributeHash;
+    const requiredAttributes = _.omit(json, [ "Object type", "Inherit rolls" ]) as AttributeHash;
     if (Object.keys(requiredAttributes).length) {
       const requirements = { Attributes: requiredAttributes } as IRequirementsYaml;
       this.Requires = new Requirements(requirements);

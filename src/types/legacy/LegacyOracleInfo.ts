@@ -1,16 +1,15 @@
 // import { title } from "process";
 // import MdString from "../general/MdString";
 // import Source from "../general/Source";
-// import { ISuggestions, Suggestions } from "../general/Suggestions";
+// import { ISuggestions, Suggestions } from "../general/Suggestions.js";
 // import { IOracleContent, OracleContent } from "../oracles/OracleContent";
 // import { OracleCategoryId } from "../oracles/OracleId";
 // import { IOracleInfo, OracleInfo } from "../oracles/OracleInfo";
 // import { IOracleTableRow } from "../oracles/OracleTableRow";
 // import { IOracleUsage, OracleUsage } from "../oracles/OracleUsage";
-// import LegacyOracleTableRow, { ILegacyOracleTableRow } from "./LegacyOracleTableRow";
-// import LegacyOracleUsage, { ILegacyOracleUsage } from "./LegacyOracleUsage";
-// import LegacySource, { ILegacySource } from "./LegacySource";
-
+// import LegacyOracleTableRow, { ILegacyOracleTableRow } from "./LegacyOracleTableRow.js";
+// import LegacyOracleUsage, { ILegacyOracleUsage } from "./LegacyOracleUsage.js";
+// import LegacySource, { ILegacySource } from "./LegacySource.js";
 
 // export interface ILegacyOracleInfo extends Omit<IOracleInfo, "Table" | "Oracles" | "$id" | "Source" | "Usage"> {
 //   Id: IOracleInfo["$id"];
@@ -49,7 +48,7 @@
 //     }
 //     this.Id = json.$id;
 //     this.Name = json.Name;
-//     this["Display name"] = json.Display?.Title != this.Name ? json.Display?.Title : undefined;
+//     this["Display name"] = json.Display?.Title !== this.Name ? json.Display?.Title : undefined;
 //     this.Aliases = json.Aliases;
 //     this.Category = json.Category;
 //     this.Description = json.Description;

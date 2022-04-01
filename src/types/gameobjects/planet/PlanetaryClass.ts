@@ -1,6 +1,5 @@
 
 
-
 enum PlanetaryClass {
   Desert = "Desert",
   Furnace = "Furnace",

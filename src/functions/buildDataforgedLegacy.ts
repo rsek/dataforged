@@ -1,9 +1,8 @@
 // import LegacyOracleCategory from "../classes/legacy/LegacyOracleCategory";
 // import { IOracleCategory } from "../classes/oracles/OracleCategory";
-// import writeJson from "./writeJSON";
+// import writeJson from "./writeJSON.js";
 // import { PathLike } from "fs";
-// import { IronswornYaml } from "./buildDataforged";
-
+// import { IronswornYaml } from "./buildDataforged.js";
 
 // export default function buildDataforgedLegacy(pathOut: PathLike = "./", ironswornData: IronswornData): LegacyOracleCategory[] {
 //   let legacyData = ironswornData.oracles.map(oracleCat => new LegacyOracleCategory(oracleCat));

@@ -1,12 +1,12 @@
 
 
-import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
-import ISource from "../types/general/interfaces/ISource";
-import SettingTruth from "../types/truths/SettingTruth";
-import ISettingTruth from "../types/truths/ISettingTruth";
-import getYamlFiles from "./io/getYamlFiles";
-import IYamlWithRef from "./IYamlWithRef";
-import buildLog from "./logging/buildLog";
+import getYamlFiles from "./io/getYamlFiles.js";
+import type IYamlWithRef from "./IYamlWithRef.js";
+import buildLog from "./logging/buildLog.js";
+import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs.js";
+import type ISource from "../types/general/interfaces/ISource.js";
+import type ISettingTruth from "../types/truths/ISettingTruth.js";
+import SettingTruth from "../types/truths/SettingTruth.js";
 const filesTruths = getYamlFiles().filter(file => file.toString().match("setting_truths.yaml$"));
 
 interface ISettingTruthsRoot extends IYamlWithRef {

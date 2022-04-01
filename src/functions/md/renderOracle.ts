@@ -1,8 +1,8 @@
 import _ from "lodash-es";
-import Oracle from "../../types/oracles/classes/Oracle";
-import buildLog from "../logging/buildLog";
-import extractColumnData from "./extractColumnData";
-import renderTable from "./renderTable";
+import extractColumnData from "./extractColumnData.js";
+import renderTable from "./renderTable.js";
+import type Oracle from "../../types/oracles/classes/Oracle.js";
+import buildLog from "../logging/buildLog.js";
 
 export default function renderOracle(oracle: Oracle, headerLevel = 3) {
   if (oracle.Display["Column of"]) {

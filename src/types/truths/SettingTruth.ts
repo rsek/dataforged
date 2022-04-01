@@ -1,13 +1,13 @@
 
 
-import { IHasId } from "../general/Id";
-import Source from "../general/Source";
-import ISource from "../general/interfaces/ISource";
-import Suggestions from "../general/Suggestions";
-import SettingTruthTableRow from "./SettingTruthTableRow";
-import ISettingTruthTableRow from "./ISettingTruthTableRow";
-import ISettingTruth from "./ISettingTruth";
-import buildLog from "../../functions/logging/buildLog";
+import type ISettingTruth from "./ISettingTruth.js";
+import type ISettingTruthTableRow from "./ISettingTruthTableRow.js";
+import SettingTruthTableRow from "./SettingTruthTableRow.js";
+import buildLog from "../../functions/logging/buildLog.js";
+import type { IHasId } from "../general/Id.js";
+import type ISource from "../general/interfaces/ISource.js";
+import Source from "../general/Source.js";
+import Suggestions from "../general/Suggestions.js";
 
 export default class SettingTruth implements Omit<ISettingTruth, "Suggestions">, IHasId {
   $id: string;

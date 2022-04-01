@@ -1,8 +1,8 @@
 
 
 import { is } from "typescript-is";
-import badJsonError from "../../../functions/logging/badJsonError";
-import IMultipleRolls from "../interfaces/IMultipleRolls";
+import badJsonError from "../../../functions/logging/badJsonError.js";
+import type IMultipleRolls from "../interfaces/IMultipleRolls.js";
 
 /**
  * Represents "Roll twice" and "Roll three times" oracle results.

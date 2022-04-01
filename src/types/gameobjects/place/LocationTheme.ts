@@ -1,6 +1,5 @@
 
 
-
 enum LocationTheme {
   Chaotic = "Chaotic",
   Fortified = "Fortified",

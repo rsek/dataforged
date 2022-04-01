@@ -1,11 +1,11 @@
 
-import Suggestions from "../../general/Suggestions";
-import Requirements from "../../general/Requirements";
-import IOracleUsage from "../interfaces/IOracleUsage";
-import IOracleUsageYaml from "../interfaces/yaml/IOracleUsageYaml";
 import { is } from "typescript-is";
-import { AttributeKey } from "../../gameObjects/IAttribute";
-import IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import { AttributeKey } from "../../gameObjects/IAttribute.js";
+import type IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import Requirements from "../../general/Requirements.js";
+import Suggestions from "../../general/Suggestions.js";
+import type IOracleUsage from "../interfaces/IOracleUsage.js";
+import type IOracleUsageYaml from "../interfaces/yaml/IOracleUsageYaml.js";
 
 export default class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;

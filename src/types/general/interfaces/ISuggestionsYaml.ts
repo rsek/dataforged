@@ -1,8 +1,7 @@
-import AssetId from "../../assets/AssetId";
-import GameObjectData from "../../gameObjects/GameObjectYaml";
-import MoveId from "../../moves/MoveId";
-import OracleTableId from "../../oracles/OracleTableId";
-
+import type AssetId from "../../assets/AssetId.js";
+import type GameObjectData from "../../gameObjects/GameObjectYaml.js";
+import type MoveId from "../../moves/MoveId.js";
+import type OracleTableId from "../../oracles/OracleTableId.js";
 
 export default interface ISuggestionsYaml {
   "Game objects"?: GameObjectData[] | undefined;

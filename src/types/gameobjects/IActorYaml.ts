@@ -1,4 +1,4 @@
-import IGameObjectBase from "./IGameObjectBase";
+import type IGameObjectBase from "./IGameObjectBase.js";
 
 export enum ActorType {
   Character = "Character",

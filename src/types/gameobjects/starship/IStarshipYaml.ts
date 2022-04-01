@@ -1,8 +1,9 @@
-import Location from "../place/Location";
-import LocationTheme from "../place/LocationTheme";
-import IPlaceData, { PlaceType } from "../IPlaceYaml";
-import Region from "../place/Region";
-import StarshipInitialContact from "./StarshipInitialContact";
+import type StarshipInitialContact from "./StarshipInitialContact.js";
+import type { PlaceType } from "../IPlaceYaml.js";
+import type IPlaceData from "../IPlaceYaml.js";
+import type Location from "../place/Location.js";
+import type LocationTheme from "../place/LocationTheme.js";
+import type Region from "../place/Region.js";
 
 export default interface IStarshipYaml<R extends Region | undefined, L extends Location | undefined, LT extends LocationTheme | undefined> extends IPlaceData<R, L, LT> {
   "Object type": PlaceType.Starship;

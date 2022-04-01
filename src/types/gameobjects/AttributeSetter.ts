@@ -1,6 +1,6 @@
 import _ from "lodash-es";
-import AttributeHash from "./AttributeHash";
-import IAttribute from "./IAttribute";
+import type AttributeHash from "./AttributeHash.js";
+import type IAttribute from "./IAttribute.js";
 
 export default class AttributeSetter extends Array<IAttribute> {
   constructor(json: AttributeHash) {

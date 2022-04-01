@@ -1,7 +1,6 @@
-import IDisplay from "../../general/IDisplay";
-import OracleTableId from "../OracleTableId";
-import IDisplayTable from "./IDisplayTable";
-
+import type IDisplayTable from "./IDisplayTable.js";
+import type IDisplay from "../../general/IDisplay.js";
+import type OracleTableId from "../OracleTableId.js";
 
 export default interface ITableDisplay extends IDisplay {
   Title: string;

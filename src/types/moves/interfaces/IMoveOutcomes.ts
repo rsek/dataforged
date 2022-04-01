@@ -1,6 +1,5 @@
-import { IWillHaveId } from "../../general/Id";
-import IMoveOutcome from "./IMoveOutcome";
-
+import type IMoveOutcome from "./IMoveOutcome.js";
+import type { IWillHaveId } from "../../general/Id.js";
 
 export default interface IMoveOutcomes extends IWillHaveId {
   $id?: string;

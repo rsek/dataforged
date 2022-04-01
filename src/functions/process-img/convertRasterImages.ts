@@ -1,7 +1,8 @@
-import getAllFiles from "../io/getAllFiles";
-import { TypedRegEx } from "typed-regex";
-import { ensureDirSync, readFileSync } from "fs-extra";
+import pkg from "fs-extra";
+const { ensureDirSync, readFileSync } = pkg;
 import sharp from "sharp";
+import { TypedRegEx } from "typed-regex";
+import getAllFiles from "../io/getAllFiles.js";
 
 // eslint-disable-next-line no-useless-escape
 const filePattern = TypedRegEx("^(?<path>.+)/(?<name>[A-z\-0-9]+)\.(?<extension>.+?)$");
@@ -22,7 +23,8 @@ export default function convertRasterImages(srcRoot: string, outRootWebP: string
     const filePathOut = `${newPath}/${oldFileName}.webp`;
     // console.log("out:", filePathOut);
     ensureDirSync(newPath);
-    void sharp(input).webp().toFile(filePathOut);
+    void sharp(input).webp()
+      .toFile(filePathOut);
     // console.log("finished:", filePathOut);
   });
   // console.log("finished converting raster images");

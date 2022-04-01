@@ -1,13 +1,13 @@
 
 
-import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs";
-import Encounter from "../types/encounters/Encounter";
-import IEncounterYaml from "../types/encounters/IEncounterYaml";
-import ISource from "../types/general/interfaces/ISource";
-import getYamlFiles from "./io/getYamlFiles";
 import _ from "lodash-es";
-import IYamlWithRef from "./IYamlWithRef";
-import buildLog from "./logging/buildLog";
+import getYamlFiles from "./io/getYamlFiles.js";
+import type IYamlWithRef from "./IYamlWithRef.js";
+import buildLog from "./logging/buildLog.js";
+import concatWithYamlRefs from "./process-yaml/concatWithYamlRefs.js";
+import Encounter from "../types/encounters/Encounter.js";
+import type IEncounterYaml from "../types/encounters/IEncounterYaml.js";
+import type ISource from "../types/general/interfaces/ISource.js";
 
 const filesEncounters = getYamlFiles().filter(file => file.toString().match("encounter"));
 

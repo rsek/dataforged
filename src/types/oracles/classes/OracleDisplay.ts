@@ -1,9 +1,9 @@
 import _ from "lodash-es";
-import OracleTableId from "../OracleTableId";
-import DisplayTable from "./DisplayTable";
-import IDisplayTable from "../interfaces/IDisplayTable";
-import ITableDisplay from "../interfaces/IOracleDisplay";
-import UrlString from "../../general/UrlString";
+import DisplayTable from "./DisplayTable.js";
+import type UrlString from "../../general/UrlString.js";
+import type IDisplayTable from "../interfaces/IDisplayTable.js";
+import type ITableDisplay from "../interfaces/IOracleDisplay.js";
+import type OracleTableId from "../OracleTableId.js";
 
 export default class OracleDisplay implements ITableDisplay {
   Title: string;

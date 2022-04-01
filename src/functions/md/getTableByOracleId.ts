@@ -1,14 +1,13 @@
-import { is } from "typescript-is";
-import badJsonError from "../logging/badJsonError";
-import OracleTableId from "../../types/oracles/OracleTableId";
 import jsonpath from "jsonpath";
-import IRow from "../../types/oracles/interfaces/IRow";
-import IOracleBase from "../../types/oracles/interfaces/IOracleBase";
-import IOracle from "../../types/oracles/interfaces/IOracle";
-
+import { is } from "typescript-is";
+import type IOracle from "../../types/oracles/interfaces/IOracle.js";
+import type IOracleBase from "../../types/oracles/interfaces/IOracleBase.js";
+import type IRow from "../../types/oracles/interfaces/IRow.js";
+import type OracleTableId from "../../types/oracles/OracleTableId.js";
+import badJsonError from "../logging/badJsonError.js";
 
 export default function getTableByOracleId(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
-  if (!Array.isArray(oracleData) && oracleData.$id == id) {
+  if (!Array.isArray(oracleData) && oracleData.$id === id) {
     const data = oracleData as IOracle;
     if (data.Table) {
       return data.Table as IRow[];

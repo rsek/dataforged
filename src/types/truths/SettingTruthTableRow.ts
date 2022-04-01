@@ -1,6 +1,6 @@
 import _ from "lodash-es";
-import Row from "../oracles/classes/Row";
-import ISettingTruthTableRow from "./ISettingTruthTableRow";
+import type ISettingTruthTableRow from "./ISettingTruthTableRow.js";
+import Row from "../oracles/classes/Row.js";
 
 /**
  *
@@ -21,5 +21,4 @@ export default class SettingTruthTableRow extends Row implements ISettingTruthTa
     this["Quest Starter"] = json["Quest Starter"];
   }
 }
-
 

@@ -1,13 +1,13 @@
-import IMultipleRolls from "./IMultipleRolls";
-import OracleTableId from "../OracleTableId";
-import OracleTableRowId from "../OracleTableRowId";
-import UrlString from "../../general/UrlString";
-import TemplateString from "../TemplateString";
-import IAttributeChoices from "../../gameObjects/IAttributeChoices";
-import ISuggestions from "../../general/interfaces/ISuggestions";
-import IGameObject from "../../gameObjects/IGameObject";
-import { IRowRollYaml } from "./yaml/IRowYaml";
-import { PartOfSpeechTag } from "./PartOfSpeechTag";
+import type IMultipleRolls from "./IMultipleRolls.js";
+import type { PartOfSpeechTag } from "./PartOfSpeechTag.js";
+import type { IRowRollYaml } from "./yaml/IRowYaml.js";
+import type IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import type IGameObject from "../../gameObjects/IGameObject.js";
+import type ISuggestions from "../../general/interfaces/ISuggestions.js";
+import type UrlString from "../../general/UrlString.js";
+import type OracleTableId from "../OracleTableId.js";
+import type OracleTableRowId from "../OracleTableRowId.js";
+import type TemplateString from "../TemplateString.js";
 
 export default interface IRow {
   $id?: OracleTableRowId | undefined | null;

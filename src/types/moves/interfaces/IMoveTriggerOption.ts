@@ -1,6 +1,5 @@
-import MdString from "../../general/MdString";
-import { IActionRoll, IProgressRoll, ICustomStatRoll } from "../../general/Roll";
-
+import type MdString from "../../general/MdString.js";
+import type { IActionRoll, ICustomStatRoll, IProgressRoll } from "../../general/Roll.js";
 
 export default interface IMoveTriggerOption {
   $id: string;

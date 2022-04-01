@@ -1,9 +1,10 @@
-import IAssetYaml from "./IAssetYaml";
-import { IInput, Input } from "../../general/Input";
-import { IHasId } from "../../general/Id";
-import IAssetAbilityYaml from "./IAssetAbilityYaml";
-import IMove from "../../moves/interfaces/IMove";
-import IAlterMove from "./IAlterMove";
+import type IAlterMove from "./IAlterMove.js";
+import type IAssetAbilityYaml from "./IAssetAbilityYaml.js";
+import type IAssetYaml from "./IAssetYaml.js";
+import type { IHasId } from "../../general/Id.js";
+import type { IInput } from "../../general/Input.js";
+import { Input } from "../../general/Input.js";
+import type IMove from "../../moves/interfaces/IMove.js";
 
 // interface for outgoing JSON + deserialization
 

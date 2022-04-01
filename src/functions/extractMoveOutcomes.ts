@@ -2,9 +2,8 @@
 
 import _ from "lodash-es";
 import buildMoves from "./buildMoves";
-import writeJson from "./io/writeJSON";
-import Move from "../types/moves/Move";
-
+import writeJson from "./io/writeJSON.js";
+import type Move from "../types/moves/Move.js";
 
 const hitPattern = new RegExp(/On a \*\*hit\*\*, (?<content>(.|\n)*?)\./, "m");
 const strongHitPattern = new RegExp(/On a \*\*strong hit\*\*, (?<content>(.|\n)*?)On a \*\*weak hit\*\*, /, "m");
@@ -13,19 +12,17 @@ const missPattern = new RegExp(/On a \*\*miss\*\*, (?<content>(.|\n)*)/, "m");
 
 const chooseOptionsPattern = new RegExp(/ {2}\* (.*)/, "gmi");
 
+const sortOrder = [ "You are", "Take", "Add" ];
 
-const sortOrder = ["You are", "Take", "Add"];
+type outcomeMatch = { content: string; };
 
-
-type outcomeMatch = { content: string; }
-
-export function extractMoveOutcome(move: Move) {
+export default function extractMoveOutcome(move: Move) {
   const newObj = {
     $id: move.$id,
-    "Hit": move.Text.match(hitPattern) ? (move.Text.match(hitPattern)?.groups as outcomeMatch).content.trim() : undefined,
+    Hit: move.Text.match(hitPattern) ? (move.Text.match(hitPattern)?.groups as outcomeMatch).content.trim() : undefined,
     "Strong Hit": move.Text.match(strongHitPattern) ? (move.Text.match(strongHitPattern)?.groups as outcomeMatch).content.trim() : undefined,
     "Weak Hit": move.Text.match(weakHitPattern) ? (move.Text.match(weakHitPattern)?.groups as outcomeMatch).content.trim() : undefined,
-    "Miss": move.Text.match(missPattern) ? (move.Text.match(missPattern)?.groups as outcomeMatch).content.trim() : undefined,
+    Miss: move.Text.match(missPattern) ? (move.Text.match(missPattern)?.groups as outcomeMatch).content.trim() : undefined,
   };
 
   if (newObj["Weak Hit"]?.startsWith("choose")) {
@@ -37,8 +34,7 @@ export function extractMoveOutcome(move: Move) {
       if (newObj["Strong Hit"].includes("take both")) {
         const sorted = match.sort((a, b) => sortOrder.findIndex(item => item.startsWith(a)) - sortOrder.findIndex(item => item.startsWith(b)));
         newObj["Strong Hit"] = sorted.join(". ");
-      }
-      else if (newObj["Strong Hit"].includes("choose two")) {
+      } else if (newObj["Strong Hit"].includes("choose two")) {
         newObj["Strong Hit"] += "\n\n" + unorderedList;
       }
     }
@@ -46,16 +42,12 @@ export function extractMoveOutcome(move: Move) {
   if (newObj["Weak Hit"]) {
     if (newObj["Weak Hit"].startsWith("as above")) {
       const weakHitEffect = newObj["Weak Hit"].replace("as above, but", "");
-
     }
   }
-
-
 
   // alternatively: split at strong hit markers?
   // since we also have the trigger, we can probably remove all lines that include the trigger info.
   // we can also ignore things that don't have a progress roll or an action roll
-
 
   // "On a **weak hit**, as above, but" pattern is pretty consistent.
   // "On a **hit**"
@@ -67,8 +59,5 @@ export function extractMoveOutcome(move: Move) {
 const moves = buildMoves();
 
 const newObj = _.keyBy(moves.map(move => extractMoveOutcome(move)), "$id");
-
-
-
 
 writeJson("./moveOutcomes.json", newObj);

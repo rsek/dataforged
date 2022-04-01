@@ -1,10 +1,8 @@
-import ChallengeRank from "../general/ChallengeRank";
-import IEncounterYaml from "./IEncounterYaml";
-import EncounterId from "./EncounterId";
-import EncounterTags from "./EncounterTags";
-import EncounterNature from "./EncounterNature";
-
-
+import type EncounterId from "./EncounterId.js";
+import type EncounterNature from "./EncounterNature.js";
+import type EncounterTags from "./EncounterTags";
+import type IEncounterYaml from "./IEncounterYaml.js";
+import type ChallengeRank from "../general/ChallengeRank.js";
 
 export default interface IEncounterVariantYaml extends Partial<IEncounterYaml> {
   $id?: EncounterId;

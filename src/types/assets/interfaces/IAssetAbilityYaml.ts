@@ -1,10 +1,10 @@
 
 // interface for incoming data
 
-import { IInput, Input } from "../../general/Input";
-import IMove from "../../moves/interfaces/IMove";
-import IAlterMoveYaml from "./IAlterMoveYaml";
-import IAssetYaml from "./IAssetYaml";
+import type IAlterMoveYaml from "./IAlterMoveYaml.js";
+import type IAssetYaml from "./IAssetYaml.js";
+import type { IInput, Input } from "../../general/Input.js";
+import type IMove from "../../moves/interfaces/IMove.js";
 
 export default interface IAssetAbilityYaml {
   $id?: string | undefined;

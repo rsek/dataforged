@@ -1,5 +1,5 @@
-import { GameObjectType } from "./IGameObjectBase";
-import IRequirements from "../general/interfaces/IRequirements";
+import type { GameObjectType } from "./IGameObjectBase.js";
+import type IRequirements from "../general/interfaces/IRequirements.js";
 
 export default interface IGameObject {
   "Object type": GameObjectType;

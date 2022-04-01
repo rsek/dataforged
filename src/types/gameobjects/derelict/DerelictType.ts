@@ -1,10 +1,10 @@
 
 
-import Location from "../place/Location";
-import LocationTheme from "../place/LocationTheme";
-import Region from "../place/Region";
-import ISettlementYaml from "../settlement/ISettlementYaml";
-import IStarshipYaml from "../starship/IStarshipYaml";
+import Location from "../place/Location.js";
+import LocationTheme from "../place/LocationTheme.js";
+import Region from "../place/Region.js";
+import ISettlementYaml from "../settlement/ISettlementYaml.js";
+import IStarshipYaml from "../starship/IStarshipYaml.js";
 
 enum DerelictType {
   Starship = "Starship",

@@ -1,25 +1,27 @@
-import "source-map-support/register";
-import { PathLike, writeFileSync } from "fs";
+import "source-map-support/register.js";
 import _ from "lodash-es";
-import buildDataforged from "./functions/buildDataforged";
-import writeJson from "./functions/io/writeJSON";
-import renderMoves from "./functions/md/renderMoves";
-import renderOracleCategory from "./functions/md/renderOracleCategory";
-import buildImages from "./functions/buildImages";
-// import writeYaml from "./functions/io/writeYaml";
+import type { PathLike } from "fs";
+import { writeFileSync } from "fs";
+import buildDataforged from "./functions/buildDataforged.js";
+import buildImages from "./functions/buildImages.js";
+import writeJson from "./functions/io/writeJSON.js";
+import renderMoves from "./functions/md/renderMoves.js";
+import renderOracleCategory from "./functions/md/renderOracleCategory.js";
+// import writeYaml from "./functions/io/writeYaml.js";
 // import countDupes from "./functions/analysis/countDupes";
 // import extractProperNouns from "./functions/analysis/extractProperNouns";
-// import countDupesByLemma from "./functions/analysis/countDupesByStem";
+// import countDupesByLemma from "./functions/analysis/countDupesByStem.js";
 // import extractPos from "./functions/analysis/extractPos";
 
 const pathOut: PathLike = "./";
 const mdPath: PathLike = pathOut + "markdown/";
 // const legacyPathOut: PathLike = "./legacy/"
 
-export const data = buildDataforged();
+const data = buildDataforged();
+export default data;
 
 _.forEach(data, (value, key) => {
-  writeJson(pathOut.toString() + `starforged-${key}.json` as PathLike, value)
+  writeJson(pathOut.toString() + `starforged-${key}.json` as PathLike, value);
 });
 
 // const nameData = extractProperNouns(data.oracles);
@@ -29,10 +31,9 @@ _.forEach(data, (value, key) => {
 
 // writeYaml("stem_duplicates.yaml" as PathLike, dupeData);
 
-
 const mdOraclePath: PathLike = mdPath + "Oracles/";
 
-data.oracles.filter(oracle => oracle.$id != "Oracles / Moves").forEach((oracleCat) => {
+data.oracles.filter(oracle => oracle.$id !== "Oracles / Moves").forEach((oracleCat) => {
   const text = renderOracleCategory(oracleCat, 1) + "\n";
   const filePath: PathLike = mdOraclePath + oracleCat.Name + ".md";
   writeFileSync(filePath, text, { encoding: "utf-8" });
@@ -40,7 +41,8 @@ data.oracles.filter(oracle => oracle.$id != "Oracles / Moves").forEach((oracleCa
 
 const allOracleText = [
   "# Starforged Oracles",
-  data.oracles.filter(oracle => oracle.$id != "Oracles / Moves").map((oracleCat) => renderOracleCategory(oracleCat, 2))].flat(2).join("\n\n").replace(/\(Moves#/g, "(Moves.md#");
+  data.oracles.filter(oracle => oracle.$id !== "Oracles / Moves").map((oracleCat) => renderOracleCategory(oracleCat, 2)) ].flat(2).join("\n\n")
+  .replace(/\(Moves#/g, "(Moves.md#");
 
 writeFileSync(mdPath + "Oracles.md", allOracleText + "\n", { encoding: "utf-8" });
 

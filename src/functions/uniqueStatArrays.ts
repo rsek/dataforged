@@ -1,17 +1,17 @@
 import _ from "lodash-es";
 import { stringify } from "querystring";
-const stats = ["Edge", "Iron", "Heart", "Shadow", "Wits"]
+const stats = [ "Edge", "Iron", "Heart", "Shadow", "Wits" ];
 
 export function uniquePairs<T>(...items: Array<T>) {
   const allPairs: Array<[T, T]> = [];
   items.forEach(item1 => items.forEach(item2 => {
-    if (item1 != item2) {
-      const newPair = [item1, item2].sort() as [T, T];
+    if (item1 !== item2) {
+      const newPair = [ item1, item2 ].sort() as [T, T];
       const matchingPairs = allPairs.some((oldPair) =>
-        oldPair.every((item, index) => item == newPair[index])
+        oldPair.every((item, index) => item === newPair[index])
       );
       if (matchingPairs === false) {
-        // if (matchingPairs.length == 0) {
+        // if (matchingPairs.length === 0) {
         allPairs.push(newPair);
       }
     }
@@ -25,11 +25,9 @@ export function uniqueStatArrays() {
   statPairs.forEach(pair => {
     stats.forEach(stat => {
       if (!pair.includes(stat)) {
-        statTriads.push([stat, pair]);
+        statTriads.push([ stat, pair ]);
       }
-
-    })
-
+    });
   });
   return statTriads.sort().map(triad => {
     const statRecord: Record<string, number> = {};
@@ -38,6 +36,5 @@ export function uniqueStatArrays() {
     statRecord[triad[1][1]] = 2;
   });
 }
-
 
 console.log(uniqueStatArrays());

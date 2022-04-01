@@ -1,16 +1,17 @@
-import ISource from "../../../general/interfaces/ISource";
-import OracleCategoryId from "../../OracleCategoryId";
-import OracleTableId from "../../OracleTableId";
-import IOracleYamlBase from "./IOracleYamlBase";
-import IOracleContent from "../IOracleContent";
-import ITableDisplay from "../IOracleDisplay";
-import IRow from "../IRow";
-import IRowYaml, { IRowRollYaml } from "./IRowYaml";
-import IOracleUsageYaml from "./IOracleUsageYaml";
-import ITemplateTable from "./ITemplateTableYaml";
-import ITemplateYamlBase from "./ITemplateYamlBase";
-import ITemplateOracleYaml from "./ITemplateOracleYaml";
-import IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml";
+import type IOracleUsageYaml from "./IOracleUsageYaml.js";
+import type IOracleYamlBase from "./IOracleYamlBase.js";
+import type { IRowRollYaml } from "./IRowYaml.js";
+import type IRowYaml from "./IRowYaml.js";
+import type ITemplateOracleYaml from "./ITemplateOracleYaml.js";
+import type ITemplateTable from "./ITemplateTableYaml.js";
+import type ITemplateYamlBase from "./ITemplateYamlBase.js";
+import type IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml.js";
+import type ISource from "../../../general/interfaces/ISource.js";
+import type OracleCategoryId from "../../OracleCategoryId.js";
+import type OracleTableId from "../../OracleTableId.js";
+import type IOracleContent from "../IOracleContent.js";
+import type ITableDisplay from "../IOracleDisplay.js";
+import type IRow from "../IRow.js";
 
 export default interface IOracleYaml extends IOracleYamlBase, ITemplateYamlBase {
 

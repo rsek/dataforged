@@ -1,6 +1,5 @@
 
 
-
 enum Leadership {
   Anarchist = "Anarchist",
   DisputedLeadership = "Disputed leadership",

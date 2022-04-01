@@ -1,11 +1,12 @@
 
 import { is } from "typescript-is";
-import { Input, IInput, INumberInput, NumberInput, ISelectInput, SelectInput, ITextInput, TextInput } from "../general/Input";
-import Move from "../moves/Move";
-import AlterMove from "./AlterMove";
-import IAssetAbility from "./interfaces/IAssetAbility";
-import IAssetAbilityYaml from "./interfaces/IAssetAbilityYaml";
-import IAssetYaml from "./interfaces/IAssetYaml";
+import AlterMove from "./AlterMove.js";
+import type IAssetAbility from "./interfaces/IAssetAbility.js";
+import type IAssetAbilityYaml from "./interfaces/IAssetAbilityYaml.js";
+import type IAssetYaml from "./interfaces/IAssetYaml.js";
+import { Input, NumberInput, SelectInput, TextInput } from "../general/Input.js";
+import type { IInput, INumberInput, ISelectInput, ITextInput } from "../general/Input.js";
+import Move from "../moves/Move.js";
 
 export default class AssetAbility implements IAssetAbility {
   $id: string;
@@ -24,14 +25,11 @@ export default class AssetAbility implements IAssetAbility {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
         if (is<INumberInput>(inputJson)) {
           return new NumberInput(inputJson, idString);
-        }
-        else if (is<ISelectInput>(inputJson)) {
+        } else if (is<ISelectInput>(inputJson)) {
           return new SelectInput(inputJson, idString);
-        }
-        else if (is<ITextInput>(inputJson)) {
+        } else if (is<ITextInput>(inputJson)) {
           return new TextInput(inputJson, idString);
-        }
-        else { new Error("Unable to assign input data to a type - make sure it's correct."); }
+        } else { new Error("Unable to assign input data to a type - make sure it's correct."); }
       }) as IInput[];
     }
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {

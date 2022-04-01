@@ -1,11 +1,11 @@
 
 
 import { is } from "typescript-is";
-import badJsonError from "../../../functions/logging/badJsonError";
-import { getNameFromId } from "../../../functions/getNameFromId";
-import IDisplayTable from "../interfaces/IDisplayTable";
-import OracleTableId from "../OracleTableId";
-import { ResultColumn, RollColumn } from "./TableColumn";
+import { ResultColumn, RollColumn } from "./TableColumn.js";
+import { getNameFromId } from "../../../functions/getNameFromId.js";
+import badJsonError from "../../../functions/logging/badJsonError.js";
+import type IDisplayTable from "../interfaces/IDisplayTable.js";
+import type OracleTableId from "../OracleTableId.js";
 
 export default class DisplayTable implements IDisplayTable {
   "Result columns": ResultColumn[];
@@ -43,6 +43,5 @@ export default class DisplayTable implements IDisplayTable {
     } else {
       this["Roll columns"] = [new RollColumn(parentId)];
     }
-
   }
 }

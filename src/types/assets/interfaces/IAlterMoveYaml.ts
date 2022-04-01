@@ -1,6 +1,6 @@
-import IMove from "../../moves/interfaces/IMove";
-import IMoveTriggerYaml from "../../moves/interfaces/IMoveTriggerYaml";
-import MoveId from "../../moves/MoveId";
+import type IMove from "../../moves/interfaces/IMove.js";
+import type IMoveTriggerYaml from "../../moves/interfaces/IMoveTriggerYaml.js";
+import type MoveId from "../../moves/MoveId.js";
 
 export default interface IAlterMoveYaml extends Omit<Partial<IMove>, "$id"> {
   Move: MoveId;

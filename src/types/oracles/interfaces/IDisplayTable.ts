@@ -1,6 +1,5 @@
-import ITableColumn from "./ITableColumn";
-import IResultColumn from "./IResultColumn";
-
+import type IResultColumn from "./IResultColumn.js";
+import type ITableColumn from "./ITableColumn.js";
 
 export default interface IDisplayTable {
   "Result columns": IResultColumn[];

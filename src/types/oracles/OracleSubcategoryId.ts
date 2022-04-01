@@ -1,10 +1,9 @@
-import { OracleRoot } from "./OracleCategoryId";
+import type { OracleRoot } from "./OracleCategoryId.js";
 
-
-import Zone from "../gameObjects/derelictzone/Zone";
-import LocationTheme from "../gameObjects/place/LocationTheme";
-import PlanetaryClass from "../gameObjects/planet/PlanetaryClass";
-import VaultZone from "../gameObjects/precursorvault/VaultZone";
+import type Zone from "../gameObjects/derelictzone/Zone.js";
+import type LocationTheme from "../gameObjects/place/LocationTheme.js";
+import type PlanetaryClass from "../gameObjects/planet/PlanetaryClass";
+import type VaultZone from "../gameObjects/precursorvault/VaultZone.js";
 
 type OracleSubcategoryPath = `Derelicts / ${Zone}` | `Location Themes / ${LocationTheme}` | `Planets / ${PlanetaryClass}` | `Vaults / ${VaultZone}`;
 

@@ -1,12 +1,14 @@
-import { ConditionMeter, IConditionMeter } from "../../general/ConditionMeter";
-import { IInput, Input } from "../../general/Input";
-import ISource from "../../general/interfaces/ISource";
-import Source from "../../general/Source";
-import AssetAbility from "../AssetAbility";
-import IAssetAttachment from "../AssetAttachment";
-import AssetId from "../AssetId";
-import AssetType from "../AssetType";
-import IAssetAbility from "./IAssetAbility";
+import type IAssetAbility from "./IAssetAbility.js";
+import type { IConditionMeter } from "../../general/ConditionMeter.js";
+import { ConditionMeter } from "../../general/ConditionMeter.js";
+import type { IInput } from "../../general/Input.js";
+import { Input } from "../../general/Input.js";
+import type ISource from "../../general/interfaces/ISource.js";
+import Source from "../../general/Source.js";
+import AssetAbility from "../AssetAbility.js";
+import type IAssetAttachment from "../AssetAttachment.js";
+import type AssetId from "../AssetId.js";
+import type AssetType from "../AssetType.js";
 
 // interface for outgoing json + dezerialization
 

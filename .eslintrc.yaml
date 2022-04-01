@@ -8,6 +8,7 @@ ignorePatterns:
   - build
   - "*.json"
   - "*.js"
+  - analysis
 parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaVersion: latest
@@ -15,23 +16,57 @@ parserOptions:
     - ./tsconfig.json
 plugins:
   - "@typescript-eslint"
-  - "lodash"
-  - "import"
+  - lodash
+  - import
+  - sort-class-members
+
 env:
   es6: true
+
 extends:
   - eslint:recommended
-  - plugin:import/recommended
-  - plugin:import/typescript
-  # - plugin:node/recommended
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
-  - plugin:lodash/recommended
   - prettier
 rules:
-  import/no-unresolved: error
+  # import/no-unresolved: error
   "@typescript-eslint/no-inferrable-types":
     - 0
+  import/extensions:
+    - 1
+    - js: ignorePackages
+      ts: ignorePackages
+      json: always
+
+  import/prefer-default-export:
+    - 1
+  prefer-const: 1
+  object-curly-newline:
+    - 1
+    - ImportDeclaration: never
+      ObjectExpression:
+        multiline: true
+        minProperties: 3
+        consistent: true
+      ObjectPattern:
+        consistent: true
+      ExportDeclaration:
+        multiline: true
+        minProperties: 3
+        consistent: true
+  prefer-rest-params:
+    - 0
+  sort-class-members/sort-class-members:
+    - 1
+    - order:
+        - "[static-properties]"
+        - "[static-methods]"
+        - "[properties]"
+        - "[conventional-private-properties]"
+        - "constructor"
+        - "[methods]"
+        - "[conventional-private-methods]"
+      accessorPairPositioning: "getThenSet"
   indent:
     - error
     - 2
@@ -42,11 +77,6 @@ rules:
   quotes:
     - error
     - double
-  import/extensions:
-    - 1
-    - js: never
-      ts: never
-      json: always
   lodash/prefer-lodash-method:
     - 0
   lodash/import-scope:
@@ -55,8 +85,126 @@ rules:
     - 0
   lodash/prefer-constant:
     - 0
-  # settings:
-  #   import/parsers:
-  #     "@typescript-eslint/parser":
-  #       - .ts
-  #       - .tsx
+  "@typescript-eslint/consistent-type-imports":
+    - 1
+    - prefer: type-imports
+  block-scoped-var: warn
+  curly:
+    - warn
+    - multi-line
+  eqeqeq:
+    - error
+    - always
+  # max-classes-per-file:
+  #   - warn
+  #   - 1
+  no-eval:
+    - error
+  no-extra-bind: warn
+  no-fallthrough:
+    - warn
+    - commentPattern: ""
+  no-implied-eval: warn
+  no-invalid-this: warn
+  # no-magic-numbers:
+  # - warn
+  # - detectObjects: false
+  #   enforceConst: true
+  #   ignoreArrayIndexes: true
+  no-new: warn
+  no-new-func: warn
+  no-new-wrappers: warn
+  no-redeclare:
+    - warn
+    - builtinGlobals: false
+  no-return-await: warn
+  no-self-compare: warn
+  prefer-promise-reject-errors:
+    - warn
+    - allowEmptyReject: false
+  array-bracket-spacing:
+    - warn
+    - always
+    - singleValue: false
+      objectsInArrays: false
+      arraysInArrays: false
+  brace-style:
+    - warn
+    - 1tbs
+    - allowSingleLine: true
+  # new-cap:
+  # - warn
+  # - newIsCap: true
+  #   capIsNew: true
+  #   newIsCapExceptionPattern: '@'
+  #   capIsNewExceptionPattern: '@'
+  #   properties: true
+  new-parens: warn
+  newline-per-chained-call:
+    - warn
+    - ignoreChainWithDepth: 2
+  no-array-constructor: warn
+  object-curly-spacing:
+    - warn
+    - always
+  object-property-newline:
+    - warn
+    - allowAllPropertiesOnSameLine: true
+  padded-blocks:
+    - warn
+    - never
+  prefer-object-spread: warn
+  quote-props:
+    - warn
+    - as-needed
+  require-jsdoc: warn
+  semi: off
+  "@typescript-eslint/semi":
+    - error
+  semi-spacing:
+    - warn
+    - before: false
+      after: true
+  sort-imports:
+    - warn
+    - ignoreCase: true
+      ignoreDeclarationSort: true
+  import/order:
+    - warn
+    - groups:
+        - external
+        - builtin
+        - internal
+        - sibling
+        - parent
+        - index
+      # pathGroups:
+      # - pattern: components
+      #   group: internal
+      # - pattern: common
+      #   group: internal
+      # - pattern: routes/ **
+      #   group: internal
+      # - pattern: assets/**
+      #   group: internal
+      #   position: after
+      pathGroupsExcludedImportTypes:
+        - internal
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+  no-restricted-imports:
+    - error
+    - paths:
+        - name: lodash
+          message: Use 'lodash-es' instead.
+  no-console:
+    - warn
+  prefer-destructuring:
+    - warn
+    - VariableDeclarator:
+        array: false
+        object: true
+      AssignmentExpression:
+        array: false
+        object: true

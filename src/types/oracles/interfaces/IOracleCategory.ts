@@ -1,10 +1,11 @@
-import OracleCategoryId, { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId";
 
-import IOracle from "./IOracle";
-import IOracleUsage from "./IOracleUsage";
-import Source from "../../general/Source";
-import IOracleCategoryDisplay from "./IOracleCategoryDisplay";
-import IOracleCategoryYaml from "./yaml/IOracleCategoryYaml";
+import type IOracle from "./IOracle.js";
+import type IOracleCategoryDisplay from "./IOracleCategoryDisplay.js";
+import type IOracleUsage from "./IOracleUsage.js";
+import type IOracleCategoryYaml from "./yaml/IOracleCategoryYaml.js";
+import type Source from "../../general/Source.js";
+import type OracleCategoryId from "../OracleCategoryId.js";
+import type { OracleCategoryJaggedId, OracleCategoryName } from "../OracleCategoryId.js";
 
 export default interface IOracleCategoryInfo extends Omit<IOracleCategoryYaml, "Requires" | "Categories" | "Usage" | "Oracles" | "_templateCategory" | "_childOf" | "_parentOf"> {
   $id: OracleCategoryId;

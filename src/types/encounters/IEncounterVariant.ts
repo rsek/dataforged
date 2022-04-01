@@ -1,11 +1,9 @@
-import ChallengeRank from "../general/ChallengeRank";
-import EncounterId from "./EncounterId";
-import EncounterTags from "./EncounterTags";
-import EncounterNature from "./EncounterNature";
-import ISource from "../general/interfaces/ISource";
-import IEncounterVariantYaml from "./IEncounterVariantYaml";
-
-
+import type EncounterId from "./EncounterId.js";
+import type EncounterNature from "./EncounterNature.js";
+import type EncounterTags from "./EncounterTags";
+import type IEncounterVariantYaml from "./IEncounterVariantYaml.js";
+import type ChallengeRank from "../general/ChallengeRank.js";
+import type ISource from "../general/interfaces/ISource.js";
 
 export default interface IEncounterVariant extends IEncounterVariantYaml {
   $id: EncounterId;

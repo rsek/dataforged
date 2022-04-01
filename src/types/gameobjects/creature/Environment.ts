@@ -1,6 +1,5 @@
 
 
-
 enum Environment {
   Space = "Space",
   Interior = "Interior",

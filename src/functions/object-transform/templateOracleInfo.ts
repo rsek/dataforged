@@ -1,6 +1,6 @@
 import _ from "lodash-es";
-import IOracleYaml from "../../types/oracles/interfaces/yaml/IOracleYaml";
 import replaceInAllStrings from "./replaceInAllStrings";
+import type IOracleYaml from "../../types/oracles/interfaces/yaml/IOracleYaml.js";
 
 export default function templateOracleInfo(json: IOracleYaml): IOracleYaml {
   // cloning so that the original object isn't mutated

@@ -1,10 +1,9 @@
 // import { IGameObject } from "../gameobjects/GameObject";
-// import { ISuggestions } from "../general/Suggestions";
-// import IMultipleRolls, { MultipleRolls } from "../oracles/MultipleRolls";
+// import { ISuggestions } from "../general/Suggestions.js";
+// import IMultipleRolls, { MultipleRolls } from "../oracles/MultipleRolls.js";
 // import { OracleTableId } from "../oracles/OracleId";
 // import { IOracleTableRow } from "../oracles/OracleTableRow";
-// import LegacyGameObject, { ILegacyGameObject } from "./LegacyGameObject";
-
+// import LegacyGameObject, { ILegacyGameObject } from "./LegacyGameObject.js";
 
 // export interface ILegacyOracleTableRow {
 //   Chance: number;

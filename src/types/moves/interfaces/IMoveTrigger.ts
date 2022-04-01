@@ -1,5 +1,4 @@
-import IMoveTriggerOption from "./IMoveTriggerOption";
-
+import type IMoveTriggerOption from "./IMoveTriggerOption.js";
 
 export default interface IMoveTrigger {
   $id: string;

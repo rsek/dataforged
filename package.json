@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "Official Ironsworn: Starforged rules data in JSON, for use in community tools.",
   "main": "./build/dataforged.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "flush-build": "rm -R build && mkdir build",
     "flush-image": "rm -R img && mkdir img",
-    "build": "yarn flush-build && yarn flush-image && ttsc",
-    "build-json": "node .",
+    "build": "yarn flush-build && ttsc",
+    "build-json": "node . --enable-source-maps",
     "start": "yarn build && yarn build-json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -53,6 +53,7 @@
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-lodash": "^7.3.0",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-sort-class-members": "^1.14.1",
     "fs-extra": "^10.0.1",
     "lodash-es": "^4.17.21",
     "prettier": "^2.3.0",
@@ -64,7 +65,7 @@
     "ts-node": "^10.5.0",
     "ttypescript": "^1.5.13",
     "typed-regex": "^0.0.8",
-    "typescript": "^4.5.5",
+    "typescript": "^4.7.0-dev.20220331",
     "typescript-is": "^0.19.0"
   },
   "dependencies": {}

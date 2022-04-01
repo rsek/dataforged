@@ -1,9 +1,8 @@
-import { IHasId } from "../general/Id";
-import MoveId from "../moves/MoveId";
-import MoveTrigger from "../moves/MoveTrigger";
-import IAlterMove from "./interfaces/IAlterMove";
-import IAlterMoveYaml from "./interfaces/IAlterMoveYaml";
-
+import type IAlterMove from "./interfaces/IAlterMove.js";
+import type IAlterMoveYaml from "./interfaces/IAlterMoveYaml.js";
+import type { IHasId } from "../general/Id.js";
+import type MoveId from "../moves/MoveId.js";
+import MoveTrigger from "../moves/MoveTrigger.js";
 
 export default class AlterMove implements IAlterMove, Omit<IHasId, "Name"> {
   $id: string;

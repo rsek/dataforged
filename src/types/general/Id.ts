@@ -1,6 +1,5 @@
 
 
-
 export interface IWillHaveId {
   $id?: string;
   Name?: string;

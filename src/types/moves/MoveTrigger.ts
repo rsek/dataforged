@@ -1,9 +1,9 @@
 
 
-import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll";
-import IMoveTrigger from "./interfaces/IMoveTrigger";
-import IMoveTriggerYaml from "./interfaces/IMoveTriggerYaml";
-import MoveTriggerOption from "./MoveTriggerOption";
+import type IMoveTrigger from "./interfaces/IMoveTrigger.js";
+import type IMoveTriggerYaml from "./interfaces/IMoveTriggerYaml.js";
+import MoveTriggerOption from "./MoveTriggerOption.js";
+import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll.js";
 
 export default class MoveTrigger implements IMoveTrigger {
   $id: string;
@@ -15,5 +15,4 @@ export default class MoveTrigger implements IMoveTrigger {
     this.Options = json.Options?.map((option, index) => new MoveTriggerOption(option, `${this.$id} / Options / ${index + 1}`));
   }
 }
-
 

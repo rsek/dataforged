@@ -1,6 +1,5 @@
 
 
-
 enum Dominion {
   Agriculture = "Agriculture",
   Artistry = "Artistry",

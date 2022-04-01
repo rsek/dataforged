@@ -1,5 +1,5 @@
 import _ from "lodash-es";
-import Move from "../../types/moves/Move";
+import type Move from "../../types/moves/Move.js";
 
 export default function renderMove(move: Move, headerLevel: number = 3): string {
   const header = _.repeat("#", headerLevel) + " " + move.Name;
@@ -8,6 +8,6 @@ export default function renderMove(move: Move, headerLevel: number = 3): string 
     items.push("*Progress Move*");
   }
   items.push(move.Text);
-  return items.join("\n\n")
+  return items.join("\n\n");
 }
 

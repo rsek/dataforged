@@ -1,6 +1,5 @@
 
 
-
 enum ChallengeRank {
   Troublesome = 1,
   Dangerous = 2,

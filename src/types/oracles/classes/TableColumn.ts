@@ -1,10 +1,9 @@
 
 
-import ITableColumn from "../interfaces/ITableColumn";
-import IResultColumn from "../interfaces/IResultColumn";
-import OracleTableId from "../OracleTableId";
-import Row from "./Row";
-
+import type Row from "./Row.js";
+import type IResultColumn from "../interfaces/IResultColumn.js";
+import type ITableColumn from "../interfaces/ITableColumn.js";
+import type OracleTableId from "../OracleTableId.js";
 
 export class ResultColumn implements IResultColumn {
   Label: IResultColumn["Label"];

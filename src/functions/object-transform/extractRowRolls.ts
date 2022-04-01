@@ -1,5 +1,6 @@
 import { is } from "typescript-is";
-import IRowYaml, { IRowRollYaml } from "../../types/oracles/interfaces/yaml/IRowYaml";
+import type { IRowRollYaml } from "../../types/oracles/interfaces/yaml/IRowYaml.js";
+import type IRowYaml from "../../types/oracles/interfaces/yaml/IRowYaml.js";
 
 export default function extractRowRolls(row: IRowYaml | IRowRollYaml): IRowRollYaml {
   if (!Array.isArray(row)) {

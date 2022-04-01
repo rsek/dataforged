@@ -1,7 +1,7 @@
 
 
-import UrlString from "../../general/UrlString";
-import IOracleCategoryDisplay from "../interfaces/IOracleCategoryDisplay";
+import type UrlString from "../../general/UrlString.js";
+import type IOracleCategoryDisplay from "../interfaces/IOracleCategoryDisplay.js";
 
 export default class OracleCategoryDisplay implements IOracleCategoryDisplay {
   Title: string;

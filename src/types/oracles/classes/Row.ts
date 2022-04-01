@@ -1,23 +1,24 @@
 
 
-import MultipleRolls from "./MultipleRolls";
-import IMultipleRolls from "../interfaces/IMultipleRolls";
-import OracleTableId from "../OracleTableId";
-import OracleTableRowId from "../OracleTableRowId";
 import _ from "lodash-es";
-import Suggestions from "../../general/Suggestions";
-import UrlString from "../../general/UrlString";
-import TemplateString from "../TemplateString";
-import IRow from "../interfaces/IRow";
-import IRowYaml, { IRowRollYaml } from "../interfaces/yaml/IRowYaml";
-import GameObject from "../../gameObjects/GameObject";
 import { is } from "typescript-is";
-import badJsonError from "../../../functions/logging/badJsonError";
-import AttributeHash from "../../gameObjects/AttributeHash";
-import AttributeSetter from "../../gameObjects/AttributeSetter";
-import GameObjectData from "../../gameObjects/GameObjectYaml";
-import ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml";
-import { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag";
+import MultipleRolls from "./MultipleRolls.js";
+import badJsonError from "../../../functions/logging/badJsonError.js";
+import type AttributeHash from "../../gameObjects/AttributeHash.js";
+import AttributeSetter from "../../gameObjects/AttributeSetter.js";
+import GameObject from "../../gameObjects/GameObject.js";
+import type GameObjectData from "../../gameObjects/GameObjectYaml.js";
+import type ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml.js";
+import Suggestions from "../../general/Suggestions.js";
+import type UrlString from "../../general/UrlString.js";
+import type IMultipleRolls from "../interfaces/IMultipleRolls.js";
+import type IRow from "../interfaces/IRow.js";
+import type { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag.js";
+import type IRowYaml from "../interfaces/yaml/IRowYaml.js";
+import type { IRowRollYaml } from "../interfaces/yaml/IRowYaml.js";
+import type OracleTableId from "../OracleTableId.js";
+import type OracleTableRowId from "../OracleTableRowId.js";
+import type TemplateString from "../TemplateString.js";
 
 /**
  *
@@ -34,7 +35,6 @@ import { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag";
  * @property {?Suggestions} Suggestions Recommendations for oracles and game objects that are relevant to this oracle result; non-"canon" and may be safely ignored. The intent is that these may be presented to the user as optional shortcuts. For the best gameplay experience, it is *not* recommended to roll them automatically (see "Peeling the Onion", p. XX), or even to put them 'front and centre' in the UX (a collapsible element should be preferred).
  * @property {?string} Image The URL of an image for this row.
  */
-
 
 export default class Row implements IRow {
   $id!: OracleTableRowId | null;
@@ -58,48 +58,45 @@ export default class Row implements IRow {
     }
     this.Floor = Array.isArray(rowData) ? rowData[0] : rowData.Floor;
     this.Ceiling = Array.isArray(rowData) ? rowData[1] : rowData.Ceiling;
-    if ((typeof this.Floor) != (typeof this.Ceiling)) {
+    if ((typeof this.Floor) !== (typeof this.Ceiling)) {
       throw badJsonError(this.constructor, rowData, "Floor and Ceiling must have the same type (either number or null)");
     }
     let rangeString: string;
 
-    if (this.Floor == null && this.Ceiling == null) {
-      rangeString = "--"
+    if (this.Floor === null && this.Ceiling === null) {
+      rangeString = "--";
     } else {
-      if (this.Floor == null || this.Ceiling == null) {
+      if (this.Floor === null || this.Ceiling === null) {
         throw new Error();
       }
-      rangeString = this.Floor == this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
+      rangeString = this.Floor === this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
     }
 
-    const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
+    const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, [ "Floor", "Ceiling" ])];
 
     rowContents.forEach(item => {
       switch (typeof item) {
         case "string": {
-          const string = item ;
+          const string = item;
           if (is<UrlString>(string)) {
             if (!this.Images) {
               this.Images = [];
             }
             this.Images.push(string);
-          }
-          else if (!this.Result || this.Result?.length == 0) {
+          } else if (!this.Result || this.Result?.length === 0) {
             this.Result = string;
-          }
-          else if (!this.Summary || this.Summary?.length == 0) {
+          } else if (!this.Summary || this.Summary?.length === 0) {
             this.Summary = string;
-          }
-          else {
+          } else {
             throw badJsonError(this.constructor, string, "Unable to infer string assignment");
           }
           break;
         }
         case "object": {
-          if (this.Floor == null && this.Ceiling == null) {
+          if (this.Floor === null && this.Ceiling === null) {
             // null rows only exist to provide display text, so they only get strings assigned to them;
             break;
           }
@@ -112,8 +109,7 @@ export default class Row implements IRow {
               case "Subtable": {
                 if (is<IRowYaml[]>(value)) {
                   this.Subtable = (value as IRowYaml[]).map(rowData => new Row(this.$id + " / Subtable", rowData));
-                }
-                else if (is<IRow[]>(value)) {
+                } else if (is<IRow[]>(value)) {
                   this.Subtable = (value as IRow[]).map(rowData => new Row(this.$id + " / Subtable", rowData));
                 } else {
                   throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
@@ -154,25 +150,24 @@ export default class Row implements IRow {
                 }
                 if (!this.Suggestions) {
                   this.Suggestions = newSuggestions;
-                }
-                else {
+                } else {
                   this.Suggestions = _.merge({ ...this.Suggestions }, { ...newSuggestions });
                 }
                 // console.log("final suggestions object", this.Suggestions);
                 break;
               }
               case "Result": {
-                if (typeof value != "string") {
-                  throw badJsonError(this.constructor, value, "expected result string")
+                if (typeof value !== "string") {
+                  throw badJsonError(this.constructor, value, "expected result string");
                 }
-                if (!this.Result || this.Result.length == 0) { this.Result = value as string; }
+                if (!this.Result || this.Result.length === 0) { this.Result = value as string; }
                 break;
               }
               case "Summary": {
-                if (typeof value != "string") {
-                  throw badJsonError(this.constructor, value, "expected summary string")
+                if (typeof value !== "string") {
+                  throw badJsonError(this.constructor, value, "expected summary string");
                 }
-                if (!this.Summary || this.Summary.length == 0) { this.Summary = value as string; }
+                if (!this.Summary || this.Summary.length === 0) { this.Summary = value as string; }
                 break;
               }
               case "Attributes": {
@@ -197,7 +192,7 @@ export default class Row implements IRow {
           break;
       }
     });
-    if (!this.Result || this.Result.length == 0) {
+    if (!this.Result || this.Result.length === 0) {
       throw badJsonError(this.constructor, this, "Row doesn't have a result string");
     }
   }

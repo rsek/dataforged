@@ -1,6 +1,6 @@
-import OracleTableId from "../OracleTableId";
-import Row from "../classes/Row";
-import ITableColumn from "./ITableColumn";
+import type ITableColumn from "./ITableColumn.js";
+import type Row from "../classes/Row.js";
+import type OracleTableId from "../OracleTableId.js";
 
 // type KeysWithValueOfType<T, VT> = {
 //   [P in keyof T as Exclude<>]: T[P] extends VT ? T[P] : never;

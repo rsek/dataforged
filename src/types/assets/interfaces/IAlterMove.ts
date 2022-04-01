@@ -1,6 +1,6 @@
-import IMoveTriggerYaml from "../../moves/interfaces/IMoveTriggerYaml";
-import MoveId from "../../moves/MoveId";
-import IAlterMoveYaml from "./IAlterMoveYaml";
+import type IAlterMoveYaml from "./IAlterMoveYaml.js";
+import type IMoveTriggerYaml from "../../moves/interfaces/IMoveTriggerYaml.js";
+import type MoveId from "../../moves/MoveId.js";
 
 // interface for outgoing JSON + deserialization
 

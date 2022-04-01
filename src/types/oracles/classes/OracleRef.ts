@@ -1,14 +1,15 @@
 
 
-import OracleTableId from "../OracleTableId";
-import Oracle from "./Oracle";
+import type Oracle from "./Oracle.js";
+import type OracleTableId from "../OracleTableId.js";
 
 export default class OracleTableRef {
+  private $id: OracleTableId;
   constructor(tableId: OracleTableId) {
     this.$id = tableId;
     this.getTable = this.getTable.bind(this);
   }
-  private $id: OracleTableId;
+
   getTable(keyedTables: Record<OracleTableId, Oracle>) {
     return keyedTables[this.$id];
   }

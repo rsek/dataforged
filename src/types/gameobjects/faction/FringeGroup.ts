@@ -1,6 +1,5 @@
 
 
-
 enum FringeGroup {
   Cultists = "Cultists",
   Exiles = "Exiles",

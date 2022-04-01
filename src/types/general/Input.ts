@@ -1,9 +1,9 @@
 
 import { is } from "typescript-is";
 
-import { ConditionMeterType } from "./ConditionMeter";
-import { IHasId, IWillHaveId } from "./Id";
-import { StatType } from "./Stat";
+import type { ConditionMeterType } from "./ConditionMeter.js";
+import type { IHasId, IWillHaveId } from "./Id.js";
+import type { StatType } from "./Stat.js";
 
 enum InputType {
   Text = "Text",
@@ -83,21 +83,16 @@ export class SelectInput implements ISelectInput, IHasId {
       let option: AnyInputOption;
       if (is<ISelectInputStatOption>(optionJson)) {
         option = new AssetSelectInputStatOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
-      }
-      else if (is<ISelectInputMeterOption>(optionJson)) {
+      } else if (is<ISelectInputMeterOption>(optionJson)) {
         option = new SelectInputMeterOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
-
-      }
-      else if (is<ISelectInputCustomOption>(optionJson)) {
+      } else if (is<ISelectInputCustomOption>(optionJson)) {
         option = new SelectInputCustomOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
-      }
-      else { throw new Error("Unable to construct select input options - check the data!"); }
+      } else { throw new Error("Unable to construct select input options - check the data!"); }
       return option;
     });
     this.Adjustable = json.Adjustable ?? false;
   }
 }
-
 
 export class AssetSelectInputStatOption implements ISelectInputStatOption, IHasId {
   $id: string;

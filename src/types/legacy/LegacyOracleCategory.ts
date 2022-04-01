@@ -1,9 +1,9 @@
 // import { ISource, Source } from "../general/Source";
 // import { IOracleCategory } from "../oracles/OracleCategory";
 // import { OracleCategoryName } from "../oracles/OracleId";
-// import LegacyOracleInfo, { ILegacyOracleInfo } from "./LegacyOracleInfo";
-// import LegacyOracleUsage, { ILegacyOracleUsage } from "./LegacyOracleUsage";
-// import LegacySource, { ILegacySource } from "./LegacySource";
+// import LegacyOracleInfo, { ILegacyOracleInfo } from "./LegacyOracleInfo.js";
+// import LegacyOracleUsage, { ILegacyOracleUsage } from "./LegacyOracleUsage.js";
+// import LegacySource, { ILegacySource } from "./LegacySource.js";
 
 // export interface ILegacyOracleCategory extends Omit<IOracleCategory, "$id" | "Oracles" | "Categories" | "Display" | "Source" | "Usage"> {
 //   Id: IOracleCategory["$id"];
@@ -32,7 +32,7 @@
 //     this.Source = new LegacySource(json.Source);
 //     this.Description = json.Description;
 //     this.Aliases = json.Aliases;
-//     this["Display name"] = json.Display?.Title != this.Name ? json.Display?.Title : undefined;
+//     this["Display name"] = json.Display?.Title !== this.Name ? json.Display?.Title : undefined;
 //     this.Usage = json.Usage ? new LegacyOracleUsage(json.Usage) : undefined;
 //     if (json.Oracles) {
 //       this.Oracles = json.Oracles.map(oracleJson => new LegacyOracleInfo(oracleJson));

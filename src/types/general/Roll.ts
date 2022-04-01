@@ -1,7 +1,8 @@
 
 
-import { ProgressType } from "./Progress";
-import { CustomStat, ICustomStat, RollableStat } from "./Stat";
+import type { ProgressType } from "./Progress";
+import type { ICustomStat, RollableStat } from "./Stat.js";
+import { CustomStat } from "./Stat.js";
 
 export interface IActionRoll {
   Stat?: RollableStat | undefined;
@@ -32,5 +33,4 @@ export class CustomStatRoll implements ICustomStatRoll {
     this.Name = json.Name;
     this.Options = json.Options?.map(option => new CustomStat(option, `${id} / ${option.Name}`));
   }
-
 }

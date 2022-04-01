@@ -1,6 +1,6 @@
 import _ from "lodash-es";
-import AttributeHash from "../gameObjects/AttributeHash";
-import IAttributeChoices from "../gameObjects/IAttributeChoices";
+import type AttributeHash from "../gameObjects/AttributeHash.js";
+import type IAttributeChoices from "../gameObjects/IAttributeChoices";
 
 export default class AttributeRequirements extends Array<IAttributeChoices> {
   constructor(json: AttributeHash) {
@@ -8,8 +8,7 @@ export default class AttributeRequirements extends Array<IAttributeChoices> {
       let Values;
       if (Array.isArray(value)) {
         Values = value;
-      }
-      else if (value != null) {
+      } else if (value !== null) {
         Values = [value];
       }
       return { Key, Values };

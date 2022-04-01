@@ -1,12 +1,12 @@
-import ChallengeRank from "../general/ChallengeRank";
-import IDisplay from "../general/IDisplay";
-import ISource from "../general/interfaces/ISource";
-import MdString from "../general/MdString";
-import EncounterId from "./EncounterId";
-import EncounterNature from "./EncounterNature";
-import EncounterTags from "./EncounterTags";
-import IEncounterVariant from "./IEncounterVariant";
-import IEncounterYaml from "./IEncounterYaml";
+import type EncounterId from "./EncounterId.js";
+import type EncounterNature from "./EncounterNature.js";
+import type EncounterTags from "./EncounterTags";
+import type IEncounterVariant from "./IEncounterVariant.js";
+import type IEncounterYaml from "./IEncounterYaml.js";
+import type ChallengeRank from "../general/ChallengeRank.js";
+import type IDisplay from "../general/IDisplay.js";
+import type ISource from "../general/interfaces/ISource.js";
+import type MdString from "../general/MdString.js";
 
 // interface for outgoing JSON + deserialization
 

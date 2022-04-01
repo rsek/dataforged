@@ -1,13 +1,13 @@
 import yaml from "js-yaml";
-import fs from "fs";
-import Asset from "../types/assets/Asset";
-import ISource from "../types/general/interfaces/ISource";
 import jsonpath from "jsonpath";
-import { AssetConditionMeterType } from "../types/general/ConditionMeter";
-import badJsonError from "./logging/badJsonError";
-import getYamlFiles from "./io/getYamlFiles";
-import buildLog from "./logging/buildLog";
-import IAssetYaml from "../types/assets/interfaces/IAssetYaml";
+import fs from "fs";
+import getYamlFiles from "./io/getYamlFiles.js";
+import badJsonError from "./logging/badJsonError.js";
+import buildLog from "./logging/buildLog.js";
+import Asset from "../types/assets/Asset.js";
+import type IAssetYaml from "../types/assets/interfaces/IAssetYaml.js";
+import type { AssetConditionMeterType } from "../types/general/ConditionMeter.js";
+import type ISource from "../types/general/interfaces/ISource.js";
 
 const assetPath = getYamlFiles().find(item => item.toString().match(/assets\.yaml$/)) as fs.PathLike;
 
@@ -25,9 +25,9 @@ export default function buildAssets() {
   });
   result.forEach(asset => {
     jsonpath.apply(asset, "$..Stat", stat => {
-      if (stat == "Asset Condition Meter") {
+      if (stat === "Asset Condition Meter") {
         if (!asset["Condition Meter"]) {
-          throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.")
+          throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.");
         }
         buildLog(buildAssets, `Adding reference for ${asset["Condition Meter"]?.$id}`);
         stat = asset["Condition Meter"]?.$id;

@@ -1,17 +1,18 @@
 
 
-import OracleCategory from "../types/oracles/classes/OracleCategory";
-import getSubdirs from "./io/getSubdirs";
-import getYamlFiles from "./io/getYamlFiles";
-import fs from "fs";
-import { refsPath } from "./process-yaml/concatWithYamlRefs";
-import loadOracleData, { IOracleCatRoot } from "./process-yaml/loadOracleData";
-import { OracleCategoryName } from "../types/oracles/OracleCategoryId";
-import { OracleSubcategoryName } from "../types/oracles/OracleSubcategoryId";
-import buildLog from "./logging/buildLog";
-import templateOracle from "./object-transform/templateOracle";
-import badJsonError from "./logging/badJsonError";
-import IOracleCategoryYaml from "../types/oracles/interfaces/yaml/IOracleCategoryYaml";
+import type fs from "fs";
+import getSubdirs from "./io/getSubdirs.js";
+import getYamlFiles from "./io/getYamlFiles.js";
+import badJsonError from "./logging/badJsonError.js";
+import buildLog from "./logging/buildLog.js";
+import templateOracle from "./object-transform/templateOracle.js";
+import { refsPath } from "./process-yaml/concatWithYamlRefs.js";
+import type { IOracleCatRoot } from "./process-yaml/loadOracleData.js";
+import loadOracleData from "./process-yaml/loadOracleData.js";
+import OracleCategory from "../types/oracles/classes/OracleCategory.js";
+import type IOracleCategoryYaml from "../types/oracles/interfaces/yaml/IOracleCategoryYaml.js";
+import type { OracleCategoryName } from "../types/oracles/OracleCategoryId.js";
+import type { OracleSubcategoryName } from "../types/oracles/OracleSubcategoryId.js";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
@@ -60,7 +61,7 @@ export default function buildOracles(): OracleCategory[] {
     if (!parentName) {
       throw badJsonError(buildOracles, undefined, `"${subcat.Name}" is not assigned to a subcategory.`);
     }
-    const parentCat = categories.find(cat => cat.Name == parentName) as IOracleCategoryYaml;
+    const parentCat = categories.find(cat => cat.Name === parentName) as IOracleCategoryYaml;
 
     if (parentCat._parentOf) {
       if (!parentCat._parentOf.includes(subcat.Name)) {
@@ -81,5 +82,4 @@ export default function buildOracles(): OracleCategory[] {
   // buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
   return json;
 }
-
 

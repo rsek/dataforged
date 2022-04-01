@@ -1,7 +1,7 @@
-import LocationTheme from "./place/LocationTheme";
-import Location from "./place/Location";
-import Region from "./place/Region";
-import IGameObjectBase from "./IGameObjectBase";
+import type IGameObjectBase from "./IGameObjectBase.js";
+import type Location from "./place/Location.js";
+import type LocationTheme from "./place/LocationTheme.js";
+import type Region from "./place/Region.js";
 
 export enum PlaceType {
   Derelict = "Derelict",

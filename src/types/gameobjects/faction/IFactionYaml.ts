@@ -1,10 +1,11 @@
-import IActorYaml, { ActorType } from "../IActorYaml";
-import Dominion from "./Dominion";
-import FactionType from "./FactionType";
-import FringeGroup from "./FringeGroup";
-import Guild from "./Guild";
-import Influence from "./Influence";
-import Leadership from "./Leadership";
+import type Dominion from "./Dominion.js";
+import type FactionType from "./FactionType.js";
+import type FringeGroup from "./FringeGroup.js";
+import type Guild from "./Guild.js";
+import type Influence from "./Influence.js";
+import type Leadership from "./Leadership.js";
+import type IActorYaml from "../IActorYaml.js";
+import type { ActorType } from "../IActorYaml.js";
 
 export type FactionOption = Dominion | FringeGroup | Guild;
 

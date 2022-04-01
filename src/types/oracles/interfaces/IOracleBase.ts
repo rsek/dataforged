@@ -1,10 +1,10 @@
-import Display from "../../general/IDisplay";
-import Source from "../../general/Source";
-import OracleContent from "../classes/OracleContent";
-import OracleUsage from "../classes/OracleUsage";
-import OracleCategoryId from "../OracleCategoryId";
-import OracleTableId from "../OracleTableId";
-import IOracleYamlBase from "./yaml/IOracleYamlBase";
+import type IOracleYamlBase from "./yaml/IOracleYamlBase.js";
+import type Display from "../../general/IDisplay.js";
+import type Source from "../../general/Source.js";
+import type OracleContent from "../classes/OracleContent.js";
+import type OracleUsage from "../classes/OracleUsage.js";
+import type OracleCategoryId from "../OracleCategoryId.js";
+import type OracleTableId from "../OracleTableId.js";
 
 // interface for properties shared by IOracle and IOracleCategory
 

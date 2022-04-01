@@ -1,7 +1,5 @@
-import MdString from "../../general/MdString";
-import IMoveTriggerOptionYaml from "./IMoveTriggerOptionYaml";
-
-
+import type IMoveTriggerOptionYaml from "./IMoveTriggerOptionYaml.js";
+import type MdString from "../../general/MdString.js";
 
 export default interface IMoveTriggerYaml {
   Text: MdString;

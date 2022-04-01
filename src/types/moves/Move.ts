@@ -1,15 +1,15 @@
 
 
-import MdString from "../general/MdString";
-import Source from "../general/Source";
-import Suggestions from "../general/Suggestions";
-import OracleTableId from "../oracles/OracleTableId";
-import MoveOutcomes from "./MoveOutcomes";
-import MoveTrigger from "./MoveTrigger";
-import MoveId from "./MoveId";
-import IMove from "./interfaces/IMove";
-import MoveCategory from "./MoveCategory";
-import buildLog from "../../functions/logging/buildLog";
+import type IMove from "./interfaces/IMove.js";
+import type MoveCategory from "./MoveCategory.js";
+import type MoveId from "./MoveId.js";
+import MoveOutcomes from "./MoveOutcomes.js";
+import MoveTrigger from "./MoveTrigger.js";
+import buildLog from "../../functions/logging/buildLog.js";
+import type MdString from "../general/MdString.js";
+import type Source from "../general/Source.js";
+import type Suggestions from "../general/Suggestions.js";
+import type OracleTableId from "../oracles/OracleTableId.js";
 
 export default class Move implements IMove {
   $id: MoveId;
@@ -35,8 +35,6 @@ export default class Move implements IMove {
     this.Oracles = json.Oracles;
     this.Outcomes = json.Outcomes ? new MoveOutcomes(json.Outcomes, `${this.$id} / Outcomes`) : undefined;
     // this.Source = json.Source ? new Source(json.Source);
-
   }
 }
-
 

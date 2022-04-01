@@ -1,7 +1,7 @@
 import _ from "lodash-es";
-import ITemplateYamlBase from "../../types/oracles/interfaces/yaml/ITemplateYamlBase";
-import buildLog from "../logging/buildLog";
-import replaceInAllStrings from "./replaceInAllStrings";
+import replaceInAllStrings from "./replaceInAllStrings.js";
+import type ITemplateYamlBase from "../../types/oracles/interfaces/yaml/ITemplateYamlBase.js";
+import buildLog from "../logging/buildLog.js";
 
 export default function templateOracle<T extends ITemplateYamlBase>(json: T, template: ITemplateYamlBase): T {
   buildLog(templateOracle, "Building oracle from template...");

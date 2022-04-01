@@ -1,4 +1,4 @@
-// import { ISuggestions, Suggestions } from "../general/Suggestions";
+// import { ISuggestions, Suggestions } from "../general/Suggestions.js";
 // import { IOracleUsage, OracleUsage } from "../oracles/OracleUsage";
 // import LegacyRequires, { ILegacyRequires } from "./LegacyRequires";
 

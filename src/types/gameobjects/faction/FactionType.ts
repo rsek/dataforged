@@ -1,6 +1,5 @@
 
 
-
 enum FactionType {
   FringeGroup = "Fringe Group",
   Dominion = "Dominion",

@@ -1,5 +1,4 @@
-import UrlString from "./UrlString";
-
+import type UrlString from "./UrlString.js";
 
 export default interface IDisplay {
   Title: string;

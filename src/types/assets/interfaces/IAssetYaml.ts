@@ -1,11 +1,11 @@
-import { IConditionMeter } from "../../general/ConditionMeter";
-import { IInput, Input } from "../../general/Input";
-import ISource from "../../general/interfaces/ISource";
-import MdString from "../../general/MdString";
-import IAssetAttachment from "../AssetAttachment";
-import AssetId from "../AssetId";
-import AssetType from "../AssetType";
-import IAssetAbilityYaml from "./IAssetAbilityYaml";
+import type IAssetAbilityYaml from "./IAssetAbilityYaml.js";
+import type { IConditionMeter } from "../../general/ConditionMeter.js";
+import type { IInput, Input } from "../../general/Input.js";
+import type ISource from "../../general/interfaces/ISource.js";
+import type MdString from "../../general/MdString.js";
+import type IAssetAttachment from "../AssetAttachment.js";
+import type AssetId from "../AssetId.js";
+import type AssetType from "../AssetType.js";
 
 export default interface IAssetYaml {
   $id?: AssetId | undefined;

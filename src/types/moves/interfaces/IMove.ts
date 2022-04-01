@@ -1,12 +1,11 @@
-import MdString from "../../general/MdString";
-import ISource from "../../general/interfaces/ISource";
-import OracleTableId from "../../oracles/OracleTableId";
-import IMoveOutcomes from "./IMoveOutcomes";
-import MoveId from "../MoveId";
-import MoveCategory from "../MoveCategory";
-import ISuggestions from "../../general/interfaces/ISuggestions";
-import IMoveTriggerYaml from "./IMoveTriggerYaml";
-
+import type IMoveOutcomes from "./IMoveOutcomes.js";
+import type IMoveTriggerYaml from "./IMoveTriggerYaml.js";
+import type ISource from "../../general/interfaces/ISource.js";
+import type ISuggestions from "../../general/interfaces/ISuggestions.js";
+import type MdString from "../../general/MdString.js";
+import type OracleTableId from "../../oracles/OracleTableId.js";
+import type MoveCategory from "../MoveCategory.js";
+import type MoveId from "../MoveId.js";
 
 export default interface IMove {
   $id?: MoveId | undefined;

@@ -1,6 +1,5 @@
 
 
-
 enum Influence {
   Forsaken = "Forsaken",
   Isolated = "Isolated",

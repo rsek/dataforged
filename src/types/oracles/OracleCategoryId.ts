@@ -1,4 +1,5 @@
-import OracleSubcategoryId, { OracleSubcategoryName } from "./OracleSubcategoryId";
+import type { OracleSubcategoryName } from "./OracleSubcategoryId.js";
+import type OracleSubcategoryId from "./OracleSubcategoryId.js";
 
 export type OracleRoot = "Oracles";
 export type OracleCategoryFlatPath = `${OracleRoot} / ${"Character Creation" | "Characters" | "Core" | "Creatures" | "Factions" | "Misc" | "Moves" | "Space" | "Starships"}`;

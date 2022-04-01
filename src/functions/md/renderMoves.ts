@@ -1,7 +1,6 @@
 import _ from "lodash-es";
-import Move from "../../types/moves/Move";
-import renderMove from "./renderMove";
-
+import renderMove from "./renderMove.js";
+import type Move from "../../types/moves/Move.js";
 
 export default function renderMoves(moves: Move[], headerLevel: number = 1, localLinksOnly = true): string {
   const header = _.repeat("#", headerLevel) + " Moves";
@@ -11,8 +10,8 @@ export default function renderMoves(moves: Move[], headerLevel: number = 1, loca
 
   const moveCategoryText = categories.map(category => {
     const categoryHeader = _.repeat("#", headerLevel + 1) + " " + category;
-    const moveText = moves.filter(move => move.Category == category).map(move => renderMove(move, headerLevel + 2));
-    return [categoryHeader, ...moveText];
+    const moveText = moves.filter(move => move.Category === category).map(move => renderMove(move, headerLevel + 2));
+    return [ categoryHeader, ...moveText ];
   }).flat(2);
 
   items.push(...moveCategoryText);

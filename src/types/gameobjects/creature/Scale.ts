@@ -1,6 +1,5 @@
 
 
-
 enum Scale {
   Minuscule = "Minuscule",
   Tiny = "Tiny",

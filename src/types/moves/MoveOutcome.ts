@@ -1,7 +1,6 @@
-import { IHasId } from "../general/Id";
-import MdString from "../general/MdString";
-import IMoveOutcome from "./interfaces/IMoveOutcome";
-
+import type IMoveOutcome from "./interfaces/IMoveOutcome.js";
+import type { IHasId } from "../general/Id.js";
+import type MdString from "../general/MdString.js";
 
 export default class MoveOutcome implements IMoveOutcome, Omit<IHasId, "Name"> {
   $id: string;

@@ -1,6 +1,5 @@
 
 
-
 enum Guild {
   Assassins = "Assassins",
   BountyHunters = "Bounty Hunters",
