@@ -4,8 +4,8 @@ import AlterMove from "./AlterMove.js";
 import type IAssetAbility from "./interfaces/IAssetAbility.js";
 import type IAssetAbilityYaml from "./interfaces/IAssetAbilityYaml.js";
 import type IAssetYaml from "./interfaces/IAssetYaml.js";
-import { Input, NumberInput, SelectInput, TextInput } from "../general/Input.js";
-import type { IInput, INumberInput, ISelectInput, ITextInput } from "../general/Input.js";
+import { ClockInput, Input, NumberInput, SelectInput, TextInput } from "../general/Input.js";
+import type { IClockInput, IInput, INumberInput, ISelectInput , ITextInput } from "../general/Input.js";
 import Move from "../moves/Move.js";
 
 export default class AssetAbility implements IAssetAbility {
@@ -29,6 +29,8 @@ export default class AssetAbility implements IAssetAbility {
           return new SelectInput(inputJson, idString);
         } else if (is<ITextInput>(inputJson)) {
           return new TextInput(inputJson, idString);
+        } else if (is<IClockInput>(inputJson)) {
+          return new ClockInput(inputJson, idString);
         } else { new Error("Unable to assign input data to a type - make sure it's correct."); }
       }) as IInput[];
     }

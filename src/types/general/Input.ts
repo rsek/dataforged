@@ -8,7 +8,8 @@ import type { StatType } from "./Stat.js";
 enum InputType {
   Text = "Text",
   Select = "Select",
-  Number = "Number"
+  Number = "Number",
+  Clock = "Clock"
 }
 
 interface IInputBase extends IWillHaveId {
@@ -17,7 +18,7 @@ interface IInputBase extends IWillHaveId {
   Adjustable?: boolean;
 }
 
-export type IInput = INumberInput | ISelectInput | ITextInput;
+export type IInput = INumberInput | ISelectInput | ITextInput | IClockInput;
 
 export type Input = NumberInput | SelectInput | TextInput;
 
@@ -40,6 +41,42 @@ export class NumberInput implements INumberInput, IHasId {
   "Starting Value" = 0;
   Adjustable = true;
   constructor(json: INumberInput, id: string) {
+    this.$id = id;
+    Object.assign(this, json);
+  }
+}
+
+export enum ClockType {
+  Tension = "Tension",
+  Campaign = "Campaign"
+}
+
+export enum ClockSegments {
+  Four = 4,
+  Six = 6,
+  Eight = 8,
+  Ten = 10
+}
+
+
+export interface IClockInput extends IInputBase {
+  Name: string;
+  "Input Type": InputType.Clock;
+  "Clock Type": ClockType;
+  Segments: ClockSegments
+  Filled: number;
+}
+
+
+export class ClockInput implements IClockInput, IHasId {
+  Name!: string;
+  readonly "Input Type" = InputType.Clock;
+  "Clock Type": ClockType = ClockType.Tension;
+  Segments!: ClockSegments;
+  Filled: number = 0;
+  readonly Adjustable = true;
+  $id: string;
+  constructor(json: IClockInput, id: string) {
     this.$id = id;
     Object.assign(this, json);
   }

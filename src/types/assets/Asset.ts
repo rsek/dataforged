@@ -10,8 +10,8 @@ import type IAssetYaml from "./interfaces/IAssetYaml.js";
 import badJsonError from "../../functions/logging/badJsonError.js";
 import buildLog from "../../functions/logging/buildLog.js";
 import { ConditionMeter } from "../general/ConditionMeter.js";
-import { Input, NumberInput, SelectInput, TextInput } from "../general/Input.js";
-import type { IInput, INumberInput, ISelectInput, ITextInput } from "../general/Input.js";
+import { ClockInput, NumberInput, SelectInput, TextInput } from "../general/Input.js";
+import type { IClockInput, IInput, INumberInput, ISelectInput , ITextInput } from "../general/Input.js";
 import type ISource from "../general/interfaces/ISource.js";
 import Source from "../general/Source.js";
 
@@ -36,7 +36,7 @@ export default class Asset implements IAsset {
 
     if (json.Inputs) {
       if (!is<IInput[]>(json.Inputs)) {
-        throw badJsonError(this.constructor, json.Inputs, "excpected IInput[]");
+        throw badJsonError(this.constructor, json.Inputs, "expected IInput[]");
       }
       this.Inputs = (json.Inputs ).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
@@ -46,6 +46,8 @@ export default class Asset implements IAsset {
           return new SelectInput(inputJson, idString);
         } else if (is<ITextInput>(inputJson)) {
           return new TextInput(inputJson, idString);
+        } else if (is<IClockInput>(inputJson)) {
+          return new ClockInput(inputJson, idString);
         } else { badJsonError(this.constructor, inputJson, "Unrecognized input"); }
       }) as IInput[];
     }
