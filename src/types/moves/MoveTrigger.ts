@@ -3,7 +3,6 @@
 import type IMoveTrigger from "./interfaces/IMoveTrigger.js";
 import type IMoveTriggerYaml from "./interfaces/IMoveTriggerYaml.js";
 import MoveTriggerOption from "./MoveTriggerOption.js";
-import { IActionRoll, ICustomStatRoll, IProgressRoll } from "../general/Roll.js";
 
 export default class MoveTrigger implements IMoveTrigger {
   $id: string;

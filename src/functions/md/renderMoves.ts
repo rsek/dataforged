@@ -1,8 +1,10 @@
 import _ from "lodash-es";
 import renderMove from "./renderMove.js";
 import type Move from "../../types/moves/Move.js";
+import type MoveCategory from "../../types/moves/MoveCategory";
 
-export default function renderMoves(moves: Move[], headerLevel: number = 1, localLinksOnly = true): string {
+export default function renderMoves(moveCat: MoveCategory, headerLevel: number = 1, localLinksOnly = true): string {
+  const moves = moveCat.Moves;
   const header = _.repeat("#", headerLevel) + " Moves";
   const items = [header];
 

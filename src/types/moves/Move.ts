@@ -1,7 +1,7 @@
 
 
 import type IMove from "./interfaces/IMove.js";
-import type MoveCategory from "./MoveCategory.js";
+import type MoveCategoryName from "./MoveCategoryName.js";
 import type MoveId from "./MoveId.js";
 import MoveOutcomes from "./MoveOutcomes.js";
 import MoveTrigger from "./MoveTrigger.js";
@@ -14,7 +14,7 @@ import type OracleTableId from "../oracles/OracleTableId.js";
 export default class Move implements IMove {
   $id: MoveId;
   Name: string;
-  Category: MoveCategory;
+  Category: MoveCategoryName;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: MoveId | undefined;
   Trigger: MoveTrigger;

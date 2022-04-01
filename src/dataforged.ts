@@ -5,7 +5,7 @@ import { writeFileSync } from "fs";
 import buildDataforged from "./functions/buildDataforged.js";
 import buildImages from "./functions/buildImages.js";
 import writeJson from "./functions/io/writeJSON.js";
-import renderMoves from "./functions/md/renderMoves.js";
+// import renderMoves from "./functions/md/renderMoves.js";
 import renderOracleCategory from "./functions/md/renderOracleCategory.js";
 // import writeYaml from "./functions/io/writeYaml.js";
 // import countDupes from "./functions/analysis/countDupes";
@@ -46,7 +46,7 @@ const allOracleText = [
 
 writeFileSync(mdPath + "Oracles.md", allOracleText + "\n", { encoding: "utf-8" });
 
-writeFileSync(mdPath + "Moves.md", renderMoves(data.moves) + "\n", { encoding: "utf-8" });
+// writeFileSync(mdPath + "Moves.md", renderMoves(data.moves) + "\n", { encoding: "utf-8" });
 
 const srcRoot = "src/data/img";
 const outRoot = "img";

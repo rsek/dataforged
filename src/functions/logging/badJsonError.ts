@@ -12,7 +12,7 @@ export default function badJsonError(source: any, obj?: unknown, message: string
   }
   let msg = `[${srcId}] ${message}`;
   if (obj) {
-    msg += `: ${JSON.stringify(obj)}`;
+    msg += `:\n${JSON.stringify(obj, null, 2)}`;
   }
   return new Error(msg);
 }

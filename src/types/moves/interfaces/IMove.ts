@@ -4,13 +4,13 @@ import type ISource from "../../general/interfaces/ISource.js";
 import type ISuggestions from "../../general/interfaces/ISuggestions.js";
 import type MdString from "../../general/MdString.js";
 import type OracleTableId from "../../oracles/OracleTableId.js";
-import type MoveCategory from "../MoveCategory.js";
+import type MoveCategoryName from "../MoveCategoryName.js";
 import type MoveId from "../MoveId.js";
 
 export default interface IMove {
   $id?: MoveId | undefined;
   Name: string;
-  Category: MoveCategory;
+  Category: MoveCategoryName;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: MoveId | undefined;
   Trigger: IMoveTriggerYaml;
