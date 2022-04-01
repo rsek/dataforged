@@ -786,8 +786,8 @@ On a match, envision an extreme result or twist.
 **When you suffer the outcome of an action**, choose one.
 
   * Make the most obvious negative outcome happen.
-  * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the current situation.
-  * Roll on the table below. If you have difficulty interpreting the result to fit the current situation, roll again.
+  * [Ask the Oracle](#Ask-the-Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the situation.
+  * Roll on the table below. If the result doesn’t fit the situation, roll again.
 
 Roll   | Result
 -------|---------------------------------------------------------------------
