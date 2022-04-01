@@ -1,7 +1,7 @@
 Name: Assets
 Source:
   Title: "Ironsworn: Starforged Assets"
-  Date: "030422"
+  Date: "033122"
 Assets:
   - Name: Starship
     Asset Type: Command Vehicle
@@ -208,7 +208,7 @@ Assets:
     Asset Type: Module
     Abilities:
       - Text: |-
-          Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) (+wits), and roll a 10 on only one challenge die, you may reroll that die.
+          Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) (+wits), you may reroll one challenge die.
         Enabled: true
       - Text: |-
           When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Gather Information](Moves#Gather-Information) by scanning your vehicle's surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.
@@ -278,10 +278,10 @@ Assets:
     Asset Type: Module
     Abilities:
       - Text: |-
-          When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](Moves#Enter-the-Fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
+          Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](Moves#Enter-the-Fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
         Enabled: true
       - Text: |-
-          When you [Undertake an Expedition](Moves#Undertake-an-Expedition) (+shadow), and roll a 1 on your action die, you may reroll it.
+          When you travel stealthily as you [Undertake an Expedition](Moves#Undertake-an-Expedition) (+shadow), you may reroll your action die.
       - Text: |-
           When you are poised to [Strike](Moves#Strike) from hiding, you may roll +shadow. If you do, choose one (before rolling).
 
@@ -303,7 +303,7 @@ Assets:
           You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](Moves#Repair) a battered support vehicle, spend 1 repair point (instead of 2).
         Enabled: true
       - Text: |-
-          When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](Moves#Ask-the-Oracle) using the yes/no table if something can be salvaged from the mess. Make it '50/50'. On a yes, spend 2 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](Moves#Repair) and bring it back to full working order, the vehicle is battered with 0 integrity.
+          When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](Moves#Ask-the-Oracle) using the yes/no table if something can be salvaged from the mess. Make it 50/50. On a yes, spend 1 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](Moves#Repair) and bring it back to full working order, the vehicle is battered with 0 integrity.
       - Text: |-
           When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit.
   - Name: Workshop
@@ -426,7 +426,7 @@ Assets:
           Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
         Enabled: true
       - Text: |-
-          When you [Face Danger](Moves#Face-Danger) or [React Under Fire](Moves#React-Under-Fire) to navigate through hazardous skies or around obstacles, add +1 and take +1 momentum on a hit.
+          When you [Face Danger](Moves#Face-Danger) or [React Under Fire](Moves#React-Under-Fire) to navigate through hazardous skies, avoid obstacles, or evade an attack, add +1 and take +1 momentum on a hit.
       - Text: |-
           Your shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you [Withstand Damage](Moves#Withstand-Damage), add +1.
     Condition Meter:
@@ -650,7 +650,7 @@ Assets:
     Requirement: If you wield a bladed weapon...
     Abilities:
       - Text: |-
-          When you [Clash](#Clash) or [Strike](#Strike) in close-quarters, add +1. On a strong hit with a match, you are unstoppable; mark progress.
+          When you [Clash](Moves#Clash) or [Strike](Moves#Strike) in close-quarters, add +1. On a strong hit with a match, you are unstoppable; mark progress.
         Enabled: true
       - Text: |-
           If you [Gain Ground](Moves#Gain-Ground) by moving into close quarters against your foe, choose your approach.
@@ -689,16 +689,6 @@ Assets:
             * Defensive: Count a miss as a weak hit.
       - Text: |-
           When you [Enter the Fray](Moves#Enter-the-Fray) already positioned in close quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum.
-  - Name: Commander
-    Asset Type: Path
-    Abilities:
-      - Text: |-
-          When you [Aid Your Ally](Moves#Aid-Your-Ally) through leadership, coordination, or planning, add +1. On a strong hit, any allies who are present take +1 momentum.
-        Enabled: true
-      - Text: |-
-          When you [Enter the Fray](Moves#Enter-the-Fray) (+heart) by coordinating with your team as they wade into the fight, make your move before your allies act. On a strong hit, all allies may take an automatic strong hit. On a strong hit with a match, also mark progress on any objectives in this fight.
-      - Text: |-
-          When you make a move to influence someone (not an ally) through leadership, add +1 and take +1 momentum on a hit. On a strong hit with a match, your command galvanizes them into unexpected action. Take another +1 momentum, and mark 1 tick on your bonds legacy track.
   - Name: Courier
     Asset Type: Path
     Abilities:
@@ -894,13 +884,13 @@ Assets:
     Asset Type: Path
     Abilities:
       - Text: |-
-          You are hunted by a power or authority. When you make a move, you may rely on your resourcefulness to improve the result to a strong hit. If you do, mark a box above to represent hunters closing in on you. On the third mark, a notable foe or force has tracked you down. If you overcome them or escape, clear the boxes and mark 1 tick on your quests legacy track.
+          You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.
         Inputs:
           - Name: Hunted
-            Input Type: Number
-            Min: 0
-            Max: 3
-            Starting Value: 0
+            Input Type: Clock
+            Clock Type: Tension
+            Segments: 4
+            Filled: 0
         Enabled: true
       - Text: |-
           When you make a move by hiding, concealing your identity, or fleeing from a pursuer, add +1 and take +1 momentum on a hit.
@@ -977,6 +967,17 @@ Assets:
           As above, but you may instead draw on your powers in a desperate effort to change the outcome of an action. If you do, add +2 (after you roll) and [Lose Momentum](Moves#Lose-Momentum) (-3).
       - Text: |-
           When your momentum is at its max, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, reset momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
+  - Name: Leader
+    Asset Type: Path
+    Abilities:
+      - Text: |-
+          When you [Aid Your Ally](Moves#Aid-Your-Ally) through leadership, coordination, or planning, add +1. On a strong hit, any allies who are present take +1 momentum.
+        Enabled: true
+      - Text: |-
+          When you [Enter the Fray](Moves#Enter-the-Fray) (+heart) by coordinating with your team as they wade into the fight, make your move before your allies act. On a strong hit, all allies may take an automatic strong hit. On a strong hit with a match, also mark progress on any objectives in this fight.
+      - Text: |-
+          When you make a move to influence someone (not an ally) through leadership, add +1 and take +1 momentum on a hit. On a strong hit with a match, your command galvanizes them into unexpected action. Take another +1 momentum, and mark 1 tick on your bonds legacy track.
+
   - Name: Looper
     Asset Type: Path
     Abilities:
@@ -1358,9 +1359,9 @@ Assets:
           Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](Moves#Secure-an-Advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.
         Enabled: true
       - Text: |-
-          When you [Compel](#Compel), the glowcat’s reactions will help guide your approach; you may reroll your action die if its value is less than the glowcat’s health.
+          When you [Compel](Moves#Compel), the glowcat’s reactions will help guide your approach; you may reroll your action die if its value is less than the glowcat’s health.
       - Text: |-
-          When you [Endure Stress](#Endure-Stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.
+          When you [Endure Stress](Moves#Endure-Stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.
     Condition Meter:
       Name: Health
       Max: 3
@@ -1546,7 +1547,7 @@ Assets:
         Input Type: Text
     Abilities:
       - Text: |-
-          Your voidglider companion cruises in your starship’s energy wake and helps guide the way on spacebound expeditions. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) and score a strong hit, take +1 momentum.
+          Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](Moves#Undertake-an-Expedition), add +1.
         Enabled: true
       - Text: |-
           The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.
@@ -1554,16 +1555,16 @@ Assets:
           - Any Move: true
             Trigger:
               Options:
-                - Text: riding the voidglider and make a move to detect or evade a threat by relying on its instincts
+                - Text: When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
                   Action roll:
                     Stat: Asset Condition Meter
       - Text: |-
-          When you make a move by signaling the voidglider to distract or attack a spacebound foe, roll +its health and take +1 momentum on a hit.
+          When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
         Alter Moves:
           - Any Move: true
             Trigger:
               Options:
-                - Text: signaling the voidglider to distract or attack a spacebound foe
+                - Text: When you make a move by signaling the voidglider to distract or attack a spaceborne foe
                   Action roll:
                     Stat: Asset Condition Meter
     Condition Meter:
@@ -1610,18 +1611,18 @@ Assets:
     Requirement: Once you fill 5 boxes on your quests legacy track...
     Abilities:
       - Text: |-
-          Envision the title, sigil, uniform, or tattoo you bear in recognition of your achievements. When you [Compel](Moves#Compel) or [Make a Connection](Moves#Make-a-Connection) among those who would know or recognize your reputation, add +1 and take +1 momentum on a hit. On a strong hit with a match, your notoriety grows; mark 2 ticks on your bonds legacy track.
+          Envision the title, sigil, uniform, or tattoo you bear in recognition of your achievements. When you [Compel](Moves#Compel) or [Make a Connection](Moves#Make-a-Connection) among those who would know your reputation, add +1. On a strong hit with a match, your notoriety grows; mark 2 ticks on your bonds legacy track.
         Enabled: true
       - Text: |-
-          When you risk your reputation to overcome failure, reroll any dice. If you score a miss, make a mark on this asset. When you have 5 such marks, discard this asset.
+          When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.
         Inputs:
           - Name: Marks
-            Input Type: Number
-            Min: 0
-            Starting Value: 0
-            Max: 5
+            Input Type: Clock
+            Clock Type: Tension
+            Segments: 6
+            Filled: 0
       - Text: |-
-          Once per fight, when you [Gain Ground](Moves#Gain-Ground) through threat or leadership, reroll any dice and mark progress on a hit.
+          Once per fight, when you [Gain Ground](Moves#Gain-Ground) through intimidation or command, reroll any dice and mark progress on a hit.
   - Name: Oathbreaker
     Asset Type: Deed
     Requirement: Once you [Forsake Your Vow](Moves#Forsake-Your-Vow)...
