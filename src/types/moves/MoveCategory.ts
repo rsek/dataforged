@@ -1,4 +1,4 @@
-import type IMoveCategoryYaml from "./IMoveCategoryYaml.js";
+import type IMoveCategoryYaml from "./interfaces/IMoveCategoryYaml.js";
 import Move from "./Move.js";
 import type MoveCategoryName from "./MoveCategoryName.js";
 import type ISource from "../general/interfaces/ISource.js";
