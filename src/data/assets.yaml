@@ -19,7 +19,7 @@ Assets:
       - Text: |-
           When you [Withstand Damage](Moves#Withstand-Damage), you may roll +heart. If you do, [Endure Stress](Moves#Endure-Stress) (-1) on a weak hit or miss.
         Alter Moves:
-          - Move: Moves / Withstand Damage
+          - Move: Moves / Suffer / Withstand Damage
             Trigger:
               Options:
                 - Text: to your starship
@@ -160,13 +160,13 @@ Assets:
       - Text: |-
           Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Gain Ground](Moves#Gain-Ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Secure an Advantage
+          - Move: Moves / Adventure / Secure an Advantage
             Trigger:
               Options:
                 - Text: by talking through a situation with the overseer AI
                   Action roll:
                     Stat: Attached Asset Condition Meter
-          - Move: Moves / Gain Ground
+          - Move: Moves / Combat / Gain Ground
             Trigger:
               Options:
                 - Text: by talking through a situation with the overseer AI
@@ -178,7 +178,7 @@ Assets:
       - Text: |-
           The overseer can pilot the vehicle independently. When you [Face Danger](Moves#Face-Danger) by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation, you may roll +integrity. If you do, take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger:
               Options:
                 - Text: by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
@@ -218,12 +218,12 @@ Assets:
       - Text: |-
           When you [Enter the Fray](Moves#Enter-the-Fray) against an ambush, or [Face Danger](Moves#Face-Danger) to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Enter the Fray
+          - Move: Moves / Combat / Enter the Fray
             Trigger:
               - Text: against an ambush
                 Action roll:
                   Stat: Attached Asset Condition Meter
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger:
               - Text: to detect a hidden threat
                 Action roll:
@@ -262,7 +262,7 @@ Assets:
       - Text: |-
           You may [React Under Fire](Moves#React-Under-Fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
         Alter Moves:
-          - Move: Moves / React Under Fire
+          - Move: Moves / Combat / React Under Fire
             Trigger:
               Options:
                 - Text: by letting your shields take the blow
@@ -290,7 +290,7 @@ Assets:
 
           On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](Moves#Strike).
         Alter Moves:
-          - Move: Moves / Strike
+          - Move: Moves / Combat / Strike
             Trigger:
               Options:
                 - Text: poised to Strike from hiding
@@ -369,13 +369,13 @@ Assets:
       - Text: |-
           When you [Face Danger](Moves#Face-Danger) or [React Under Fire](Moves#React-Under-Fire) by taking a hit or crashing through an obstacle, you may roll +integrity. If you do, take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger:
               Options:
                 - Text: by taking a hit or crashing through an obstacle
                   Action roll:
                     Stat: Asset Condition Meter
-          - Move: Moves / React Under Fire
+          - Move: Moves / Combat / React Under Fire
             Trigger:
               Options:
                 - Text: by taking a hit or crashing through an obstacle
@@ -400,15 +400,15 @@ Assets:
             * Careful: Add +2 and [Lose Momentum](Moves#Lose-Momentum) (-1)
             * Reckless: Take +1 momentum on a hit
         Alter Moves:
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger: &service_pod_alter
               Options:
                 - Text: by maneuvering your pod through a hazardous or obstructed area
                   Action roll:
                     Stat: Asset Condition Meter
-          - Move: Moves / Gain Ground
+          - Move: Moves / Combat / Gain Ground
             Trigger: *service_pod_alter
-          - Move: Moves / React Under Fire
+          - Move: Moves / Combat / React Under Fire
             Trigger: *service_pod_alter
       - Text: |-
           When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](Moves#Withstand-Damage) (-2).
@@ -442,19 +442,19 @@ Assets:
       - Text: |-
           Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Moves#Undertake-an-Expedition) or [Set a Course](Moves#Set-a-Course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Undertake an Expedition
+          - Move: Moves / Exploration / Undertake an Expedition
             Trigger: &skiff_alter
               Options:
                 - Text: rely on the skiff's simple durability
                   Action roll:
                     Stat: Asset Condition Meter
-          - Move: Moves / Set a Course
+          - Move: Moves / Exploration / Set a Course
             Trigger: *skiff_alter
         Enabled: true
       - Text: |-
           Your skiff is armed with a turreted cannon. When you [Strike](Moves#Strike) or [Clash](Moves#Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
         Alter Moves:
-          - Move: Moves / Strike
+          - Move: Moves / Combat / Strike
             Trigger: &skiff_alter_2
               Options:
                 - Text: by firing the skiff's cannon
@@ -477,7 +477,7 @@ Assets:
       - Text: |-
           Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](Moves#Enter-the-Fray), you may roll +integrity; if you do, take +2 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Enter the Fray
+          - Move: Moves / Combat / Enter the Fray
             Trigger:
               Options:
                 - Text: in your snub fighter
@@ -509,7 +509,7 @@ Assets:
       - Text: |-
           When you must [Endure Stress](Moves#Endure-Stress) while piloting a vehicle, you may roll +integrity. If you do, take +1 momentum on a strong hit.
         Alter Moves:
-          - Move: Moves / Endure Stress
+          - Move: Moves / Suffer / Endure Stress
             Trigger:
               Options:
                 - Text: while piloting a vehicle
@@ -556,7 +556,7 @@ Assets:
       - Text: |-
           You may [Enter the Fray](Moves#Enter-the-Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
         Alter Moves:
-          - Move: Moves / Enter the Fray
+          - Move: Moves / Combat / Enter the Fray
             Trigger:
               Text: by unleashing a volley of bow shots
               Options:
@@ -700,7 +700,7 @@ Assets:
       - Text: |-
           When you [Sojourn](Moves#Sojourn) during a courier mission, you may roll +safety. On a strong hit, take +1 safety or +1 momentum.
         Alter Moves:
-          - Move: Moves / Sojourn
+          - Move: Moves / Recovery / Sojourn
             Trigger:
               Options:
                 - Text: during a courier mission
@@ -742,18 +742,18 @@ Assets:
           You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](Moves#Secure-an-Advantage) or [Gain Ground](Moves#Gain-Ground) by calling on it for guidance or aid, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
         Enabled: true
         Alter Moves:
-          - Move: Moves / Secure an Advantage
+          - Move: Moves / Adventure / Secure an Advantage
             Trigger: &devotant_alter
               Options:
                 - Text: by calling on your god, power, or entity for guidance or aid
                   Action roll:
                     Stat: Assets / Devotant / Inputs / Linked Stat
-          - Move: Moves / Gain Ground
+          - Move: Moves / Combat / Gain Ground
             Trigger: *devotant_alter
       - Text: |-
           When you [Swear an Iron Vow](Moves#Swear-an-Iron-Vow) in service to your faith, roll +linked stat and take +2 momentum or +2 spirit on a hit. When you [Fulfill Your Vow](Moves#Fulfill-Your-Vow) on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
         Alter Moves:
-          - Move: Moves / Swear an Iron Vow
+          - Move: Moves / Quest / Swear an Iron Vow
             Trigger:
               Options:
                 - Text: in service to your faith
@@ -762,7 +762,7 @@ Assets:
       - Text: |-
           When you [Hearten](Moves#Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
         Alter Moves:
-          - Move: Moves / Hearten
+          - Move: Moves / Recovery / Hearten
             Trigger:
               Options:
                 - Text: through contemplation or sharing of your faith
@@ -811,7 +811,7 @@ Assets:
       - Text: |-
           When you [Face Danger](Moves#Face-Danger) to soothe a being’s distress by creating an empathic bond, roll +spirit and take +1 momentum on a hit. If they are an ally, also give them +2 spirit on a hit.
         Alter Moves:
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger:
               Options:
                 - Text: to soothe a being's distress by creating an empathic bond
@@ -1103,7 +1103,7 @@ Assets:
       - Text: |-
           When you [Check Your Gear](Moves#Check-Your-Gear), roll +wits or +supply (whichever is highest) and take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Check Your Gear
+          - Move: Moves / Adventure / Check Your Gear
             Trigger:
               Options:
                 - Roll best of: [Wits, Supply]
@@ -1116,7 +1116,7 @@ Assets:
       - Text: |-
           When you [Make a Connection](Moves#Make-a-Connection) to search out a new contact, you may roll +shadow. If you do, reroll any dice on a miss and envision how your reputation or underworld contacts lead you to a disreputable connection.
         Alter Moves:
-          - Move: Moves / Make a Connection
+          - Move: Moves / Connection / Make a Connection
             Trigger:
               Options:
                 - Text: to search out a new contact
@@ -1133,7 +1133,7 @@ Assets:
       - Text: |-
           When you focus or meditate to [Gather Information](Moves#Gather-Information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Gather Information
+          - Move: Moves / Adventure / Gather Information
             Trigger:
               Options:
                 - Text: focus or meditate to Gather Information about a place, being, or situation (in person or remotely)
@@ -1199,7 +1199,7 @@ Assets:
       - Text: |-
           When you [Strike](Moves#Strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a hit.
         Alter Moves:
-          - Move: Moves / Strike
+          - Move: Moves / Combat / Strike
             Trigger:
               Options:
                 - Text: from a distance with time enough to line up your shot
@@ -1223,12 +1223,12 @@ Assets:
       - Text: |-
           When you [Sojourn](Moves#Sojourn) or [Compel](Moves#Compel), you may roll +supply. If you do, [Sacrifice Resources](Moves#Sacrifice-Resources) (-1).
         Alter Moves:
-          - Move: Moves / Sojourn
+          - Move: Moves / Recovery / Sojourn
             Trigger: &trader_alter
               Options:
                 - Action roll:
                     Stat: Supply
-          - Move: Moves / Compel
+          - Move: Moves / Adventure / Compel
             Trigger: *trader_alter
         Enabled: true
       - Text: |-
@@ -1285,7 +1285,7 @@ Assets:
       - Text: |-
           When you [Secure an Advantage](Moves#Secure-an-Advantage) by suiting up and gathering your gear for a perilous encounter or mission, you may roll +supply. If you do, take +2 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Secure an Advantage
+          - Move: Moves / Adventure / Secure an Advantage
             Trigger:
               Options:
                 - Text: suiting up and gathering your gear for a perilous encounter or mission
@@ -1301,13 +1301,13 @@ Assets:
       - Text: |-
           Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](Moves#Undertake-an-Expedition) or [Set a Course](Moves#Set-a-Course), you may roll +its health.
         Alter Moves:
-          - Move: Moves / Undertake an Expedition
+          - Move: Moves / Exploration / Undertake an Expedition
             Trigger: &banshee_alter
               Options:
                 - Text: riding your banshee
                   Action roll:
                     Stat: Asset Condition Meter
-          - Move: Moves / Set a Course
+          - Move: Moves / Exploration / Set a Course
             Trigger: *banshee_alter
         Enabled: true
       - Text: |-
@@ -1330,18 +1330,18 @@ Assets:
       - Text: |-
           When you use the threat of violence to [Compel](Moves#Compel) or [Gain Ground](Moves#Gain-Ground) while the bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum.
         Alter Moves:
-          - Move: Moves / Compel
+          - Move: Moves / Adventure / Compel
             Trigger: &combat_bot_alter
               Options:
                 - Text: using the threat of violence while the bot brings its weapons to bear
                   Action roll:
                     Stat: Asset Condition Meter
-          - Move: Moves / Gain Ground
+          - Move: Moves / Combat / Gain Ground
             Trigger: *combat_bot_alter
       - Text: |-
           Once per fight, when you [React Under Fire](Moves#React-Under-Fire) by using the bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control.
         Alter Moves:
-          - Move: Moves / React Under Fire
+          - Move: Moves / Combat / React Under Fire
             Trigger:
               Options:
                 - Text: Once per fight, by by using the combat bot to draw fire or create a diversion
@@ -1425,7 +1425,7 @@ Assets:
       - Text: |-
           When your sidekick acts to get you out of a tough spot, you may [Face Danger](Moves#Face-Danger) or [React Under Fire](Moves#React-Under-Fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.
         Alter Moves:
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger: &sidekick_alter
               Options:
                 - Text: your sidekick acts to get you out of a tough spot
@@ -1466,7 +1466,7 @@ Assets:
       - Text: |-
           Once per expedition, when you [Secure an Advantage](Moves#Secure-an-Advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.
         Alter Moves:
-          - Move: Moves / Secure an Advantage
+          - Move: Moves / Adventure / Secure an Advantage
             Trigger:
               Options:
                 - Text: Once per expedition, by sending the survey bot to scout ahead
@@ -1475,13 +1475,13 @@ Assets:
       - Text: |-
           When you [Explore a Waypoint](Moves#Explore-a-Waypoint) aided by the bot's sensors, or [Face Danger](Moves#Face-Danger) to detect a threat, roll +its health and take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Explore a Waypoint
+          - Move: Moves / Exploration / Explore a Waypoint
             Trigger:
               Options:
                 - Text: aided by the survey bot's sensors
                   Action roll:
                     Stat: Asset Condition Meter
-          - Move: Moves / Face Danger
+          - Move: Moves / Adventure / Face Danger
             Trigger:
               Options:
                 - Text: to detect a threat
@@ -1532,7 +1532,7 @@ Assets:
       - Text: |-
           When you [Check Your Gear](Moves#Check-Your-Gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Check Your Gear
+          - Move: Moves / Adventure / Check Your Gear
             Trigger:
               Options:
                 - Text: to see if your utility bot has a specific tool or technique available
@@ -1648,7 +1648,7 @@ Assets:
       - Text: |-
           When you [Gather Information](Moves#Gather-Information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.
         Alter Moves:
-          - Move: Moves / Gather Information
+          - Move: Moves / Adventure / Gather Information
             Trigger:
               Options:
                 - Text: by studying a place where death left its mark
@@ -1701,7 +1701,7 @@ Assets:
       - Text: |-
           When you [Endure Stress](Moves#Endure-Stress), you may roll +wits. If you do, take +1 momentum on a hit.
         Alter Moves:
-          - Move: Moves / Endure Stress
+          - Move: Moves / Suffer / Endure Stress
             Trigger:
               Options:
                 - Action roll:
