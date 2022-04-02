@@ -34,6 +34,9 @@ export default class MoveCategory implements IMoveCategoryYaml {
     this.Description = json.Description;
     this.Source = new Source(json.Source, ...ancestorSourceJson);
     this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, json.Display.Color);
-    this.Moves = json.Moves.map(move => new Move(move));
+    this.Moves = json.Moves.map(move => {
+      move.Category = this.$id;
+      return new Move(move);
+    });
   }
 }

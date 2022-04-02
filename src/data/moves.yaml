@@ -14,7 +14,6 @@ Categories:
       Unlike most other moves, these session moves function primarily from the perspective of the players instead of your characters. They are a tool to moderate and facilitate safe and enjoyable play.
     Moves:
       - Name: Begin a Session
-        Category: Moves / Session
         Trigger:
           Text: When you begin a significant session or chapter of play...
         Oracles:
@@ -43,7 +42,6 @@ Categories:
         Source:
           Page: 141
       - Name: Set a Flag
-        Category: Moves / Session
         Trigger:
           Text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching...
         Text: |-
@@ -53,7 +51,6 @@ Categories:
         Source:
           Page: 142
       - Name: Change Your Fate
-        Category: Moves / Session
         Trigger:
           Text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment...
         Text: |-
@@ -67,7 +64,6 @@ Categories:
         Source:
           Page: 143
       - Name: Take a Break
-        Category: Moves / Session
         Trigger:
           Text: When you resolve a progress move or complete an intense scenario...
         Text: |-
@@ -78,7 +74,6 @@ Categories:
         Source:
           Page: 144
       - Name: End a Session
-        Category: Moves / Session
         Trigger:
           Text: When you end a significant session or chapter of play...
         Text: |-
@@ -99,7 +94,6 @@ Categories:
       The **adventure moves** encompass broadly useful actions to overcome obstacles, reinforce your position, conduct investigations, influence others, and support your fellow protagonists. When you face a peril or try to gain leverage, and another move does not apply, you'll likely find your answer among these moves.
     Moves:
       - Name: Face Danger
-        Category: Moves / Adventure
         Trigger:
           Text: When you attempt something risky or react to an imminent threat...
           Options:
@@ -142,7 +136,6 @@ Categories:
         Source:
           Page: 147
       - Name: Secure an Advantage
-        Category: Moves / Adventure
         Trigger:
           Text: When you assess a situation, make preparations, or attempt to gain leverage...
           Options:
@@ -190,7 +183,6 @@ Categories:
         Source:
           Page: 148
       - Name: Gather Information
-        Category: Moves / Adventure
         Trigger:
           Text: When you search for clues, conduct an investigation, analyze evidence, or do research...
           Options:
@@ -217,7 +209,6 @@ Categories:
         Source:
           Page: 149
       - Name: Compel
-        Category: Moves / Adventure
         Trigger:
           Text: When you try to persuade someone or make them an offer...
           Options:
@@ -252,7 +243,6 @@ Categories:
         Source:
           Page: 150
       - Name: Aid Your Ally
-        Category: Moves / Adventure
         Trigger:
           Text: When you act in direct support of an ally...
         Text: |-
@@ -262,7 +252,6 @@ Categories:
         Source:
           Page: 152
       - Name: Check Your Gear
-        Category: Moves / Adventure
         Trigger:
           Text: When you check to see if you have a specific helpful item or resource...
           Options:
@@ -303,7 +292,6 @@ Categories:
       Page: 154
     Moves:
       - Name: Swear an Iron Vow
-        Category: Moves / Quest
         Trigger:
           Text: When you swear upon iron to complete a quest...
           Options:
@@ -327,7 +315,6 @@ Categories:
         Source:
           Page: 156
       - Name: Reach a Milestone
-        Category: Moves / Quest
         Trigger:
           Text: When you make headway in your quest...
         Text: |-
@@ -344,7 +331,6 @@ Categories:
         Source:
           Page: 157
       - Name: Fulfill Your Vow
-        Category: Moves / Quest
         Progress Move: true
         Trigger:
           Text: When you reach the end of your quest...
@@ -376,7 +362,6 @@ Categories:
         Source:
           Page: 158
       - Name: Forsake Your Vow
-        Category: Moves / Quest
         Trigger:
           Text: When you renounce your quest, betray your promise, or the goal is lost to you...
         Text: |-
@@ -403,7 +388,6 @@ Categories:
       Make these **connection moves** when you introduce connections and as you build influence or understanding with them.
     Moves:
       - Name: Make a Connection
-        Category: Moves / Connection
         Trigger:
           Text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)...
           Options:
@@ -430,21 +414,23 @@ Categories:
         Source:
           Page: 163
       - Name: Develop Your Relationship
-        Category: Moves / Connection
         Trigger:
           Text: When you reinforce your relationship with a connection...
           Options:
-            - Custom stat roll:
-                - Name: Troublesome
-                  Value: 1
-                - Name: Dangerous
-                  Value: 2
-                - Name: Formidable
-                  Value: 3
-                - Name: Extreme
-                  Value: 4
-                - Name: Epic
-                  Value: 5
+            - Action roll:
+                Custom stat:
+                  Name: Challenge Rank
+                  Options:
+                    - Name: Troublesome
+                      Value: 1
+                    - Name: Dangerous
+                      Value: 2
+                    - Name: Formidable
+                      Value: 3
+                    - Name: Extreme
+                      Value: 4
+                    - Name: Epic
+                      Value: 5
         Text: |-
           **When you reinforce your relationship with a connection** by doing any of the following...
 
@@ -471,7 +457,6 @@ Categories:
         Source:
           Page: 164
       - Name: Test Your Relationship
-        Category: Moves / Connection
         Trigger:
           Text: When your relationship with a connection is tested through conflict, betrayal, or circumstance...
           Options:
@@ -504,7 +489,6 @@ Categories:
         Source:
           Page: 165
       - Name: Forge a Bond
-        Category: Moves / Connection
         Trigger:
           Text: When your relationship with a connection is ready to evolve...
           Options:
@@ -552,7 +536,6 @@ Categories:
       Page: 168
     Moves:
       - Name: Undertake an Expedition
-        Category: Moves / Exploration
         Trigger:
           Text: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site...
           Options:
@@ -594,7 +577,6 @@ Categories:
         Source:
           Page: 169
       - Name: Explore a Waypoint
-        Category: Moves / Exploration
         Trigger:
           Text: When you divert from an expedition to examine a notable location...
           Options:
@@ -634,7 +616,6 @@ Categories:
         Source:
           Page: 174
       - Name: Make a Discovery
-        Category: Moves / Exploration
         Trigger:
           Text: When your exploration of a waypoint uncovers something wondrous
           Options:
@@ -673,7 +654,6 @@ Categories:
         Source:
           Page: 176
       - Name: Confront Chaos
-        Category: Moves / Exploration
         Trigger:
           Text: When your exploration of a waypoint uncovers something dreadful...
         Oracles:
@@ -711,7 +691,6 @@ Categories:
         Source:
           Page: 177
       - Name: Finish an Expedition
-        Category: Moves / Exploration
         Trigger:
           Text: When your expedition comes to an end...
           Options:
@@ -743,7 +722,6 @@ Categories:
         Source:
           Page: 178
       - Name: Set a Course
-        Category: Moves / Exploration
         Trigger:
           Text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site...
           Options:
@@ -786,7 +764,6 @@ Categories:
       When you face one or more foes in high-stakes, action-oriented conflict, use the combat moves. These moves encompass on-foot action and vehicle sorties—or both as part of the same challenge.
     Moves:
       - Name: Enter the Fray
-        Category: Moves / Combat
         Trigger:
           Text: When you initiate combat or are forced into a fight...
           Options:
@@ -836,7 +813,6 @@ Categories:
         Source:
           Page: 188
       - Name: Gain Ground
-        Category: Moves / Combat
         Trigger:
           Text: When you are in control and take action in a fight to reinforce your position or move toward an objective...
           Options:
@@ -891,7 +867,6 @@ Categories:
         Source:
           Page: 190
       - Name: React Under Fire
-        Category: Moves / Combat
         Trigger:
           Text: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle...
           Options:
@@ -934,7 +909,6 @@ Categories:
         Source:
           Page: 191
       - Name: Strike
-        Category: Moves / Combat
         Trigger:
           Text: When you are in control and assault a foe at close quarters, or when you attack at a distance...
           Options:
@@ -962,7 +936,6 @@ Categories:
         Source:
           Page: 192
       - Name: Clash
-        Category: Moves / Combat
         Trigger:
           Text: When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance...
           Options:
@@ -990,7 +963,6 @@ Categories:
         Source:
           Page: 193
       - Name: Take Decisive Action
-        Category: Moves / Combat
         Trigger:
           Text: When you seize an objective in a fight...
           Options:
@@ -1038,7 +1010,6 @@ Categories:
         Source:
           Page: 194
       - Name: Face Defeat
-        Category: Moves / Combat
         Trigger:
           Text: When you abandon or are deprived of an objective...
         Text: |-
@@ -1048,7 +1019,6 @@ Categories:
         Source:
           Page: 196
       - Name: Battle
-        Category: Moves / Combat
         Trigger:
           Text: When you fight a battle and it happens in a blur...
           Options:
@@ -1099,7 +1069,6 @@ Categories:
       Page: 198
     Moves:
       - Name: Lose Momentum
-        Category: Moves / Suffer
         Trigger:
           Text: When you are delayed or disadvantaged
         Text: |-
@@ -1112,7 +1081,6 @@ Categories:
         Source:
           Page: 199
       - Name: Endure Harm
-        Category: Moves / Suffer
         Trigger:
           Text: When you face physical injury, fatigue, or illness...
           Options:
@@ -1166,7 +1134,6 @@ Categories:
         Source:
           Page: 200
       - Name: Endure Stress
-        Category: Moves / Suffer
         Trigger:
           Text: When you face mental strain, shock, or despair...
           Options:
@@ -1218,7 +1185,6 @@ Categories:
         Source:
           Page: 202
       - Name: Companion Takes a Hit
-        Category: Moves / Suffer
         Trigger:
           Text: When your companion faces physical hardship...
           Options:
@@ -1246,7 +1212,6 @@ Categories:
         Source:
           Page: 204
       - Name: Sacrifice Resources
-        Category: Moves / Suffer
         Trigger:
           Text: When you lose or consume resources...
         Text: |-
@@ -1256,7 +1221,6 @@ Categories:
         Source:
           Page: 205
       - Name: Withstand Damage
-        Category: Moves / Suffer
         Trigger:
           Text: When your vehicle faces a damaging situation or environment...
           Options:
@@ -1332,7 +1296,6 @@ Categories:
       Page: 208
     Moves:
       - Name: Sojourn
-        Category: Moves / Recover
         Trigger:
           Text: When you spend time recovering within a community...
           Options:
@@ -1363,7 +1326,6 @@ Categories:
         Source:
           Page: 209
       - Name: Heal
-        Category: Moves / Recover
         Trigger:
           Text: When you receive medical care or provide treatment...
           Options:
@@ -1404,7 +1366,6 @@ Categories:
         Source:
           Page: 210
       - Name: Hearten
-        Category: Moves / Recover
         Trigger:
           Text: When you socialize, share intimacy, or find a moment of peace...
           Options:
@@ -1428,7 +1389,6 @@ Categories:
         Source:
           Page: 211
       - Name: Resupply
-        Category: Moves / Recover
         Trigger:
           Text: When you attempt to bolster your readiness...
           Options:
@@ -1474,7 +1434,6 @@ Categories:
         Source:
           Page: 212
       - Name: Repair
-        Category: Moves / Recover
         Trigger:
           Text: When you make repairs to your vehicles, modules, mechanical companions, or other devices...
           Options:
@@ -1528,7 +1487,6 @@ Categories:
       Page: 216
     Moves:
       - Name: Face Death
-        Category: Moves / Threshold
         Trigger:
           Text: When you are brought to the brink of death with a chance for recovery or redemption...
           Options:
@@ -1559,7 +1517,6 @@ Categories:
         Source:
           Page: 217
       - Name: Face Desolation
-        Category: Moves / Threshold
         Trigger:
           Text: When you are brought to the brink of desolation...
           Options:
@@ -1590,7 +1547,6 @@ Categories:
         Source:
           Page: 218
       - Name: Overcome Destruction
-        Category: Moves / Threshold
         Trigger:
           Text: When your command vehicle is destroyed or irrevocably lost...
           Options:
@@ -1632,7 +1588,6 @@ Categories:
       Make these **legacy moves** to gain and spend experience, and when you face a final test to learn how your accomplishments and failures will echo through time.
     Moves:
       - Name: Earn Experience
-        Category: Moves / Legacy
         Trigger:
           Text: When you fill a box (four ticks) on any legacy track...
         Text: |-
@@ -1642,7 +1597,6 @@ Categories:
         Source:
           Page: 224
       - Name: Advance
-        Category: Moves / Legacy
         Trigger:
           Text: When you develop your abilities, improve your resources, gain a reward, or boost your influence...
         Text: |-
@@ -1656,7 +1610,6 @@ Categories:
         Source:
           Page: 225
       - Name: Continue a Legacy
-        Category: Moves / Legacy
         Trigger:
           Text: When you retire from your life as Ironsworn, or succumb to death or desolation...
           Options:
@@ -1737,7 +1690,6 @@ Categories:
       Page: 228
     Moves:
       - Name: Ask the Oracle
-        Category: Moves / Fate
         Trigger:
           Text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events...
         Oracles:
@@ -1766,7 +1718,6 @@ Categories:
         Source:
           Page: 229
       - Name: Pay the Price
-        Category: Moves / Fate
         Trigger:
           Text: When you suffer the outcome of an action...
         Oracles:
@@ -1814,7 +1765,6 @@ Categories:
       Page: 239
     Moves:
       - Name: Begin the Scene
-        Category: Moves / Scene Challenge
         Trigger:
           Text: When you face an extended or complex challenge outside of a fight...
         Text: |-
@@ -1830,7 +1780,6 @@ Categories:
         Source:
           Page: 239
       - Name: Face Danger
-        Category: Moves / Scene Challenge
         Display:
           Title: Face Danger (Scene Challenge)
         Variant of: Moves / Adventure / Face Danger
@@ -1880,7 +1829,6 @@ Categories:
         Source:
           Page: 240
       - Name: Secure an Advantage
-        Category: Moves / Scene Challenge
         Display:
           Title: Secure an Advantage (Scene Challenge)
         Variant of: Moves / Adventure / Secure an Advantage
@@ -1935,7 +1883,6 @@ Categories:
         Source:
           Page: 240
       - Name: Finish the Scene
-        Category: Moves / Scene Challenge
         Progress move: true
         Trigger:
           Text: When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion...

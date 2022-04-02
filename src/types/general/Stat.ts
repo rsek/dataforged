@@ -7,18 +7,18 @@ export type StatType = "Edge" | "Heart" | "Iron" | "Shadow" | "Wits";
 
 export type RollableStat = StatType | ConditionMeterType | ProgressType;
 
-export interface ICustomStat {
+export interface ICustomStatOption {
   $id?: string;
   Name: string;
   Value: number;
   // reference to item?
 }
 
-export class CustomStat implements ICustomStat {
+export class CustomStatOption implements ICustomStatOption {
   $id: string;
   Name: string;
   Value: number;
-  constructor(json: ICustomStat, id: string) {
+  constructor(json: ICustomStatOption, id: string) {
     this.$id = id;
     this.Name = json.Name;
     this.Value = json.Value;
