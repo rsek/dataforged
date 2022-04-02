@@ -34,9 +34,12 @@ rules:
     - 0
   import/extensions:
     - 1
-    - js: ignorePackages
-      ts: ignorePackages
-      json: always
+    - ignorePackages
+    - js: always
+      mjs: always
+      jsx: always
+      ts: always
+      tsx: always
 
   import/prefer-default-export:
     - 1
