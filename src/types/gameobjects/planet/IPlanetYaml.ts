@@ -1,6 +1,6 @@
 import type Atmosphere from "./Atmosphere.js";
 import type Life from "./Life.js";
-import type PlanetaryClass from "./PlanetaryClass";
+import type PlanetaryClass from "./PlanetaryClass.js";
 import type IPlaceData from "../IPlaceYaml.js";
 import type LocationTheme from "../place/LocationTheme.js";
 import type Region from "../place/Region.js";

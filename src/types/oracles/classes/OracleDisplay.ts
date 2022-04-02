@@ -1,4 +1,3 @@
-import _ from "lodash-es";
 import DisplayTable from "./DisplayTable.js";
 import type UrlString from "../../general/UrlString.js";
 import type IDisplayTable from "../interfaces/IDisplayTable.js";

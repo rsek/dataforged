@@ -1,7 +1,7 @@
 
 
 import type { ConditionMeterType } from "./ConditionMeter.js";
-import type { ProgressType } from "./Progress";
+import type { ProgressType } from "./Progress.js";
 
 export type StatType = "Edge" | "Heart" | "Iron" | "Shadow" | "Wits";
 

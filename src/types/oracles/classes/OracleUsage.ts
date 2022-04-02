@@ -1,7 +1,5 @@
 
-import { is } from "typescript-is";
-import { AttributeKey } from "../../gameObjects/IAttribute.js";
-import type IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import type IAttributeChoices from "../../gameObjects/IAttributeChoices.js";
 import Requirements from "../../general/Requirements.js";
 import Suggestions from "../../general/Suggestions.js";
 import type IOracleUsage from "../interfaces/IOracleUsage.js";
@@ -14,6 +12,7 @@ export default class OracleUsage implements IOracleUsage {
   Repeatable?: boolean | undefined;
   Suggestions?: Suggestions | undefined;
   Requires?: Requirements | undefined;
+  "Allow duplicates": boolean;
   "Sets attributes"?: IAttributeChoices[] | undefined;
   constructor(json: IOracleUsageYaml) {
     // if (!is<IOracleUsageData>(json)) {
@@ -23,6 +22,7 @@ export default class OracleUsage implements IOracleUsage {
     this["Max rolls"] = json["Max rolls"];
     this["Min rolls"] = json["Min rolls"];
     this.Repeatable = json.Repeatable;
+    this["Allow duplicates"] = json["Allow duplicates"] ?? false;
     if (json.Suggestions) {
       this.Suggestions = new Suggestions(json.Suggestions);
     }

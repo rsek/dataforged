@@ -15,7 +15,7 @@ import type Location from "./place/Location.js";
 import type LocationTheme from "./place/LocationTheme.js";
 import type Region from "./place/Region.js";
 import type IPlanetData from "./planet/IPlanetYaml.js";
-import type PlanetaryClass from "./planet/PlanetaryClass";
+import type PlanetaryClass from "./planet/PlanetaryClass.js";
 import type IPrecursorVaultYaml from "./precursorvault/IPrecursorVaultYaml.js";
 import type ISettlementData from "./settlement/ISettlementYaml.js";
 import type IStarshipData from "./starship/IStarshipYaml.js";

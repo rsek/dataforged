@@ -1,6 +1,6 @@
 import type EncounterId from "./EncounterId.js";
 import type EncounterNature from "./EncounterNature.js";
-import type EncounterTags from "./EncounterTags";
+import type EncounterTags from "./EncounterTags.js";
 import type IEncounterVariantYaml from "./IEncounterVariantYaml.js";
 import type ChallengeRank from "../general/ChallengeRank.js";
 import type IDisplay from "../general/IDisplay.js";

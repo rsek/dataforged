@@ -8,5 +8,6 @@ export default interface IOracleUsageYaml {
   Requires?: IRequirementsYaml | undefined;
   "Min rolls"?: number | undefined;
   "Max rolls"?: number | undefined;
+  "Allow duplicates"?: boolean | undefined;
   Repeatable?: boolean | undefined;
 }

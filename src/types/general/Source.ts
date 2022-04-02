@@ -1,8 +1,8 @@
 import _ from "lodash-es";
-import { is } from "typescript-is";
+import enumHas from "./enumHas.js";
 import type ISource from "./interfaces/ISource.js";
-import type SourceTitle from "./SourceTitle.js";
-import badJsonError from "../../functions/logging/badJsonError.js";
+import SourceTitle from "./SourceTitle.js";
+import badEnumError from "../../functions/logging/badEnumError.js";
 
 export default class Source implements ISource {
   Title: SourceTitle;
@@ -14,8 +14,8 @@ export default class Source implements ISource {
       .reverse();
     const newData = _.merge(json, ...sourceStack) as ISource;
     this.Title = newData.Title ?? json?.Title;
-    if (!is<SourceTitle>(this.Title)) {
-      throw badJsonError(this.constructor);
+    if (!enumHas(SourceTitle, this.Title)) {
+      throw badEnumError(this.constructor as () => unknown, this.Title, SourceTitle);
     }
     this.Date = newData.Date;
     this.Page = newData.Page;

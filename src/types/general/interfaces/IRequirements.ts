@@ -1,4 +1,4 @@
-import type IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import type IAttributeChoices from "../../gameObjects/IAttributeChoices.js";
 
 export default interface IRequirements {
   Attributes: IAttributeChoices[];

@@ -1,4 +1,3 @@
-import AttributeHash from "./AttributeHash.js";
 import type { ActorType } from "./IActorYaml.js";
 import type { PlaceType } from "./IPlaceYaml.js";
 

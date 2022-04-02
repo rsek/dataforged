@@ -1,6 +1,6 @@
 
 
-import type { ProgressType } from "./Progress";
+import type { ProgressType } from "./Progress.js";
 import type { ICustomStat, RollableStat } from "./Stat.js";
 import { CustomStat } from "./Stat.js";
 

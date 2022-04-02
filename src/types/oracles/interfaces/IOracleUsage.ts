@@ -1,5 +1,5 @@
 
-import type IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import type IAttributeChoices from "../../gameObjects/IAttributeChoices.js";
 import type IRequirements from "../../general/interfaces/IRequirements.js";
 import type ISuggestions from "../../general/interfaces/ISuggestions.js";
 

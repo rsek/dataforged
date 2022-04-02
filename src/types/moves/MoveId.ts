@@ -1,3 +1,4 @@
+import type MoveCategoryName from "./MoveCategoryName.js";
 
-type MoveId = `Moves / ${string}`; export default MoveId;
+type MoveId = `Moves / ${MoveCategoryName} / ${string}`; export default MoveId;
 

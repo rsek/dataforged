@@ -1,7 +1,7 @@
 import type IMultipleRolls from "./IMultipleRolls.js";
 import type { PartOfSpeechTag } from "./PartOfSpeechTag.js";
 import type { IRowRollYaml } from "./yaml/IRowYaml.js";
-import type IAttributeChoices from "../../gameObjects/IAttributeChoices";
+import type IAttributeChoices from "../../gameObjects/IAttributeChoices.js";
 import type IGameObject from "../../gameObjects/IGameObject.js";
 import type ISuggestions from "../../general/interfaces/ISuggestions.js";
 import type UrlString from "../../general/UrlString.js";
