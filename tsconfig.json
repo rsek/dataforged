@@ -25,18 +25,20 @@
     "allowJs": true,
     "rootDir": "./src",
     "outDir": "./build",
-    "moduleResolution": "node12",
+    "moduleResolution": "node",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
     "allowUnreachableCode": true,
     "skipLibCheck": true,
     "typeRoots": [
+      "./types",
       "./node_modules/@types"
-    ]
+    ],
+    // "types": [
+    //   "node"
+    // ],
   },
-  "files": [
-    "./node_modules/@types/jsonpath/index.d.ts"
-  ]
 }
