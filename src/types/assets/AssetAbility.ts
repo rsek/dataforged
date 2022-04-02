@@ -1,25 +1,45 @@
 
+import _ from "lodash-es";
 import { is } from "typescript-is";
 import AlterMove from "./AlterMove.js";
+import type AssetId from "./AssetId.js";
+import type IAsset from "./interfaces/IAsset.js";
 import type IAssetAbility from "./interfaces/IAssetAbility.js";
 import type IAssetAbilityYaml from "./interfaces/IAssetAbilityYaml.js";
 import type IAssetYaml from "./interfaces/IAssetYaml.js";
-import { ClockInput, Input, NumberInput, SelectInput, TextInput } from "../general/Input.js";
+import badJsonError from "../../functions/logging/badJsonError.js";
+import { ClockInput, NumberInput, SelectInput, TextInput } from "../general/Input.js";
 import type { IClockInput, IInput, INumberInput, ISelectInput , ITextInput } from "../general/Input.js";
+import type MdString from "../general/MdString.js";
 import Move from "../moves/Move.js";
+import type MoveId from "../moves/MoveId.js";
+import type { MoveIdGeneric } from "../moves/MoveId.js";
+
+export type AssetAbilityId = `${AssetId} / Abilities / ${1|2|3}`;
 
 export default class AssetAbility implements IAssetAbility {
-  $id: string;
-  Text: string;
-  Move?: Move | undefined;
+  $id: AssetAbilityId;
+  Text: MdString;
+  Moves?: Move[] | undefined;
   Inputs?: IInput[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: Partial<IAssetYaml> | undefined;
   Enabled: boolean;
-  constructor(json: IAssetAbilityYaml, id: string) {
+  constructor(json: IAssetAbilityYaml, id: AssetAbilityId, parent: IAsset) {
     this.$id = id;
     this.Text = json.Text;
-    this.Move = json.Move ? new Move(json.Move) : undefined;
+    if (json.Moves) {
+      if (!Array.isArray(json.Moves)) {
+        throw badJsonError(this.constructor, json, "Moves is not an array.");
+      }
+      this.Moves = json.Moves.map(mv => {
+        const moveData = _.cloneDeep(mv);
+        moveData.$id = `Moves / ${this.$id} / ${mv.Name}` as MoveId;
+        moveData.Asset = parent.$id;
+        moveData.Category = "Moves / Assets";
+        return new Move(moveData);
+      });
+    }
     if (json.Inputs) {
       this.Inputs = (json.Inputs as IInput[]).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
@@ -31,11 +51,11 @@ export default class AssetAbility implements IAssetAbility {
           return new TextInput(inputJson, idString);
         } else if (is<IClockInput>(inputJson)) {
           return new ClockInput(inputJson, idString);
-        } else { new Error("Unable to assign input data to a type - make sure it's correct."); }
+        } else { throw new Error("Unable to assign input data to a type - make sure it's correct."); }
       }) as IInput[];
     }
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
-      const moveId = alterMove.Move ?? "Moves / *";
+      const moveId: MoveId | MoveIdGeneric = alterMove.Move ?? "Moves / *";
       const newData = new AlterMove(alterMove, `${this.$id} / Alter ${moveId}`);
       return newData;
     }) : json["Alter Moves"];

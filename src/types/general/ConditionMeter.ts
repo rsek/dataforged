@@ -3,7 +3,7 @@
 import type { ICounter } from "./Counter.js";
 import { Counter } from "./Counter.js";
 import type AssetId from "../assets/AssetId.js";
-import type AssetType from "../assets/AssetType.js";
+import type AssetTypeId from "../assets/AssetTypeId.js";
 
 export type MeterType = "Momentum" | PcConditionMeter;
 export type PcConditionMeter = "Health" | "Spirit" | "Supply";
@@ -33,19 +33,19 @@ export class ConditionMeter extends Counter implements IConditionMeter {
   "Starting Value": number;
   Conditions?: MeterCondition[] | undefined;
   Aliases?: MeterAlias[] | undefined;
-  constructor(json: IConditionMeter, id: string, assetType: AssetType) {
+  constructor(json: IConditionMeter, id: string, assetType: AssetTypeId) {
     super(json, id);
     this["Starting Value"] = json["Starting Value"] ?? json.Max;
     if (json.Conditions) {
       this.Conditions = json.Conditions;
     }
-    if (assetType === "Companion") {
+    if (assetType === "Assets / Companion") {
       this.Aliases = [MeterAlias.CompanionHealth];
     }
-    if (assetType === "Command Vehicle") {
+    if (assetType === "Assets / Command Vehicle") {
       this.Aliases = [ MeterAlias.CommandVehicleIntegrity, MeterAlias.VehicleIntegrity ];
     }
-    if (assetType === "Support Vehicle") {
+    if (assetType === "Assets / Support Vehicle") {
       this.Aliases = [
         MeterAlias.SupportVehicleIntegrity, MeterAlias.VehicleIntegrity
       ];

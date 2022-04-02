@@ -5,6 +5,7 @@ import type MoveId from "./MoveId.js";
 import MoveOutcomes from "./MoveOutcomes.js";
 import MoveTrigger from "./MoveTrigger.js";
 import buildLog from "../../functions/logging/buildLog.js";
+import type AssetId from "../assets/AssetId.js";
 import type IDisplay from "../general/IDisplay.js";
 import type MdString from "../general/MdString.js";
 import type Source from "../general/Source.js";
@@ -15,6 +16,7 @@ export default class Move implements IMove {
   $id: MoveId;
   Name: string;
   Category: MoveCategoryId;
+  Asset?: this["Category"] extends "Moves / Assets" ? AssetId : undefined;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: MoveId | undefined;
   Display: IDisplay;
@@ -25,10 +27,16 @@ export default class Move implements IMove {
   Suggestions?: Suggestions | undefined;
   Outcomes?: MoveOutcomes | undefined;
   constructor(json: IMove) {
-    this.$id = `${json.Category} / ${json.Name}`;
+    this.$id = json.$id ?? `${json.Category} / ${json.Name}`;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Category = json.Category;
+    if (this.Category === "Moves / Assets") {
+      if (!json.Asset) {
+        throw new Error();
+      }
+      this.Asset = json.Asset as typeof this.Asset;
+    }
     this["Progress Move"] = json["Progress Move"];
     this["Variant of"] = json["Variant of"];
     const displayStub: IDisplay = { Title: this.Name };

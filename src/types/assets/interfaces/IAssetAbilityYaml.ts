@@ -10,7 +10,7 @@ export default interface IAssetAbilityYaml {
   $id?: string | undefined;
   Text: string;
   Enabled?: boolean | undefined;
-  Move?: IMove | undefined;
+  Moves?: IMove[] | undefined;
   Inputs?: IInput[] | Input[] | undefined;
   "Alter Moves"?: IAlterMoveYaml[] | undefined;
   "Alter Properties"?: Partial<IAssetYaml> | undefined;

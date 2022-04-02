@@ -1,3 +1,4 @@
+import type AssetTypeId from "./AssetTypeId.js";
 
-type AssetId = `Assets / ${string}`; export default AssetId;
+type AssetId = `${AssetTypeId} / ${string}`; export default AssetId;
 

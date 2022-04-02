@@ -6,14 +6,14 @@ import buildMoves from "./buildMoves.js";
 import buildOracles from "./buildOracles.js";
 import buildTruths from "./buildTruths.js";
 import buildLog from "./logging/buildLog.js";
-import type Asset from "../types/assets/Asset.js";
+import type AssetType from "../types/assets/AssetType.js";
 import type Encounter from "../types/encounters/Encounter.js";
 import type MoveCategory from "../types/moves/MoveCategory";
 import type OracleCategory from "../types/oracles/classes/OracleCategory.js";
 import type SettingTruth from "../types/truths/SettingTruth.js";
 
 export interface IronswornData {
-  assets: Asset[];
+  assets: AssetType[];
   encounters: Encounter[];
   moves: MoveCategory[];
   oracles: OracleCategory[];

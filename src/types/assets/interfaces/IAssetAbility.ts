@@ -11,7 +11,7 @@ import type IMove from "../../moves/interfaces/IMove.js";
 export default interface IAssetAbility extends IAssetAbilityYaml, Omit<IHasId, "Name"> {
   $id: string;
   Text: string;
-  Move?: IMove | undefined;
+  Moves?: IMove[] | undefined;
   Inputs?: IInput[] | undefined;
   "Alter Moves"?: IAlterMove[] | undefined;
   "Alter Properties"?: Partial<IAssetYaml> | undefined;

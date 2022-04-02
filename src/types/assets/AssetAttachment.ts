@@ -1,7 +1,7 @@
 
-import type AssetType from "./AssetType.js";
+import type AssetTypeId from "./AssetTypeId.js";
 
 export default interface IAssetAttachment {
-  "Asset Type": AssetType;
+  "Asset Type": AssetTypeId;
   "Max": number | undefined;
 }

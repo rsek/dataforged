@@ -7,6 +7,11 @@ import getAllFiles from "../io/getAllFiles.js";
 // eslint-disable-next-line no-useless-escape
 const filePattern = TypedRegEx("^(?<path>.+)/(?<name>[A-z\-0-9]+)\.(?<extension>.+?)$");
 
+/**
+ * For each file in the srcRoot directory, convert it to a webp file in the outRootWebP directory
+ * @param {string} srcRoot - The root directory of the source images.
+ * @param {string} outRootWebP - The output directory for the webp images.
+ */
 export default function convertRasterImages(srcRoot: string, outRootWebP: string) {
   const srcFiles = getAllFiles(srcRoot);
   srcFiles.forEach(file => {

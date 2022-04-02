@@ -3,14 +3,21 @@ import Move from "./Move.js";
 import type { MoveCategoryDisplayName } from "./MoveCategoryDisplayName.js";
 import type MoveCategoryId from "./MoveCategoryId.js";
 import type MoveCategoryName from "./MoveCategoryName.js";
+import badJsonError from "../../functions/logging/badJsonError.js";
 import type IDisplay from "../../types/general/IDisplay.js";
+import validateColor from "../assets/validateColor.js";
 import type ISource from "../general/interfaces/ISource.js";
 import Source from "../general/Source.js";
 
 export class MoveCategoryDisplay implements IDisplay {
   Title: MoveCategoryDisplayName;
-  constructor(title: MoveCategoryDisplayName) {
+  Color: string;
+  constructor(title: MoveCategoryDisplayName, color: string) {
     this.Title = title;
+    if (!validateColor(color)) {
+      throw badJsonError(this.constructor,color, "Not a valid color.");
+    }
+    this.Color = color;
   }
 }
 
@@ -26,7 +33,7 @@ export default class MoveCategory implements IMoveCategoryYaml {
     this.Name = json.Name;
     this.Description = json.Description;
     this.Source = new Source(json.Source, ...ancestorSourceJson);
-    this.Display = new MoveCategoryDisplay(`${json.Name} Moves`);
+    this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, json.Display.Color);
     this.Moves = json.Moves.map(move => new Move(move));
   }
 }

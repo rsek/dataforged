@@ -8,7 +8,7 @@ export default class Source implements ISource {
   Title: SourceTitle;
   Date?: string | undefined;
   Page?: number | undefined;
-  constructor(json: ISource, ...ancestorSourceJson: ISource[]) {
+  constructor(json: Partial<ISource>, ...ancestorSourceJson: ISource[]) {
     const sourceStack = _.compact(
       ancestorSourceJson)
       .reverse();

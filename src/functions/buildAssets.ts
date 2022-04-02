@@ -5,6 +5,8 @@ import getYamlFiles from "./io/getYamlFiles.js";
 import badJsonError from "./logging/badJsonError.js";
 import buildLog from "./logging/buildLog.js";
 import Asset from "../types/assets/Asset.js";
+import AssetType from "../types/assets/AssetType.js";
+import type { IAssetType } from "../types/assets/interfaces/IAssetType.js";
 import type IAssetYaml from "../types/assets/interfaces/IAssetYaml.js";
 import type { AssetConditionMeterType } from "../types/general/ConditionMeter.js";
 import type ISource from "../types/general/interfaces/ISource.js";
@@ -15,7 +17,8 @@ const assetPath = getYamlFiles().find(item => item.toString().match(/assets\.yam
 interface assetDataRoot {
   Name: string;
   Source: ISource;
-  Assets: IAssetYaml[];
+  "Asset Types": IAssetType[];
+  // Assets: IAssetYaml[];
 }
 /**
  * Build and validate all asset objects from YAML.
@@ -24,11 +27,8 @@ interface assetDataRoot {
 export default function buildAssets() {
   const data = fs.readFileSync(assetPath, { encoding: "utf-8" });
   const json = yaml.load(data) as assetDataRoot;
-  const result = json.Assets.map((assetData) => {
-    return new Asset(assetData, json.Source);
-  });
-  result.forEach(asset => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  const result = json["Asset Types"].map((assetType) =>  new AssetType(assetType, json.Source));
+  result.forEach(assetType => assetType.Assets.forEach(asset => {
     jp.apply(asset, "$..Stat", (stat: RollableStat) => {
       if (stat === "Asset Condition Meter") {
         if (!asset["Condition Meter"]) {
@@ -40,6 +40,6 @@ export default function buildAssets() {
       return stat as AssetConditionMeterType;
     });
     return asset;
-  });
+  }));
   return result;
 }
