@@ -1,3 +1,6 @@
+import type HasName from "./HasName.js";
+import type HasString from "./HasString.js";
+
 /**
  * "Create an Error object with a message that includes the source and the object that failed to
  * conform to the interface."
@@ -8,10 +11,14 @@
  * @param {string} [message=JSON does not conform to interface] - The message to display.
  * @returns An Error object.
  */
-export default function badJsonError(source: (...params: unknown[]) => unknown | unknown, obj?: unknown, message: string = "JSON does not conform to interface"): Error {
+export default function badJsonError(source: (HasName | HasString), obj?: unknown, message: string = "JSON does not conform to interface"): Error {
   let srcId: string;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   if (source.name) {
-    srcId = source.name;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+    srcId = source.name as string;
   } else {
     srcId = source.toString();
   }

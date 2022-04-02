@@ -1,5 +1,5 @@
 import yaml from "js-yaml";
-import { apply } from "jsonpath";
+import jp from "jsonpath";
 import fs from "fs";
 import getYamlFiles from "./io/getYamlFiles.js";
 import badJsonError from "./logging/badJsonError.js";
@@ -29,7 +29,7 @@ export default function buildAssets() {
   });
   result.forEach(asset => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    apply(asset, "$..Stat", (stat: RollableStat) => {
+    jp.apply(asset, "$..Stat", (stat: RollableStat) => {
       if (stat === "Asset Condition Meter") {
         if (!asset["Condition Meter"]) {
           throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.");

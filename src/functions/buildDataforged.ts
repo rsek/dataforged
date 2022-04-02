@@ -20,6 +20,10 @@ export interface IronswornData {
   setting_truths: SettingTruth[];
 }
 
+/**
+ * Builds all data for Dataforged.
+ * @returns An object keyed with the game data.
+*/
 export default function buildDataforged(): IronswornData {
   buildLog(buildDataforged, "Building Dataforged...");
   const assets = buildAssets();

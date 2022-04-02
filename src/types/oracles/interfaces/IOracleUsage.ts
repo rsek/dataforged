@@ -10,5 +10,6 @@ export default interface IOracleUsage {
   "Min rolls"?: number | undefined;
   "Max rolls"?: number | undefined;
   Repeatable?: boolean | undefined;
+  "Allow duplicates"?: boolean | undefined;
   "Sets attributes"?: IAttributeChoices[] | undefined;
 }

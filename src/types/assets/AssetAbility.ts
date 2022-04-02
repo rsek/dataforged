@@ -19,7 +19,7 @@ export default class AssetAbility implements IAssetAbility {
   constructor(json: IAssetAbilityYaml, id: string) {
     this.$id = id;
     this.Text = json.Text;
-    this.Move = json.Move ? new Move(json.Move, `Moves / ${this.$id}`) : undefined;
+    this.Move = json.Move ? new Move(json.Move) : undefined;
     if (json.Inputs) {
       this.Inputs = (json.Inputs as IInput[]).map(inputJson => {
         const idString = `${this.$id} / Inputs / ${inputJson.Name}`;

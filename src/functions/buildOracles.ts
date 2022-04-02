@@ -31,6 +31,10 @@ interface IOracleSubcatRoot extends IOracleCatRoot {
   Categories: IOracleSubcategoryData[];
 }
 
+/**
+ * It takes the data from the oracles directory and builds a list of OracleCategory objects.
+ * @returns An array of OracleCategory objects.
+ */
 export default function buildOracles(): OracleCategory[] {
   buildLog(buildOracles, "Building oracles...");
   const filesOracleCategories: fs.PathLike[] = getYamlFiles("oracles");

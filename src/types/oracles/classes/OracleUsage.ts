@@ -12,7 +12,7 @@ export default class OracleUsage implements IOracleUsage {
   Repeatable?: boolean | undefined;
   Suggestions?: Suggestions | undefined;
   Requires?: Requirements | undefined;
-  "Allow duplicates": boolean;
+  "Allow duplicates"?: boolean | undefined;
   "Sets attributes"?: IAttributeChoices[] | undefined;
   constructor(json: IOracleUsageYaml) {
     // if (!is<IOracleUsageData>(json)) {

@@ -1,6 +1,3 @@
-/* eslint-disable require-jsdoc */
-
-
 import _ from "lodash-es";
 import getYamlFiles from "./io/getYamlFiles.js";
 import type IYamlWithRef from "./IYamlWithRef.js";
@@ -17,7 +14,12 @@ interface IMovesRoot extends IYamlWithRef {
   Categories: IMoveCategoryYaml[]
   // Moves: IMove[];
 }
-
+/**
+ * It takes the data from the YAML files, and then it iterates over the categories, and then it
+ * iterates over the moves in each category, and then it creates a MoveCategory object for each
+ * category, and then it returns an array of all of those MoveCategory objects
+ * @returns An array of MoveCategory objects.
+ */
 export default function buildMoves() {
   buildLog(buildMoves, "Building moves...");
   const movesRoot = concatWithYamlRefs(undefined, ...filesMoves) as IMovesRoot;
@@ -41,5 +43,3 @@ export default function buildMoves() {
   buildLog(buildMoves, `Finished building ${json.length} move categories containing ${_.sum(json.map(moveCat => moveCat.Moves.length))} moves.`);
   return json;
 }
-
-console.log(buildMoves());

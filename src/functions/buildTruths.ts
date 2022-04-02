@@ -14,7 +14,10 @@ interface ISettingTruthsRoot extends IYamlWithRef {
   Source: ISource;
   Truths: ISettingTruth[];
 }
-
+/**
+ * It takes the YAML files that contain the setting truths, and builds a list of SettingTruth objects
+ * @returns An array of SettingTruth objects.
+ */
 export default function buildTruths() {
   buildLog(buildTruths, "Building setting truths...");
   const truthsRoot = concatWithYamlRefs(undefined, ...filesTruths) as ISettingTruthsRoot;

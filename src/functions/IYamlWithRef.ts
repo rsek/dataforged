@@ -1,5 +1,5 @@
 
 export default interface IYamlWithRef {
-  _refs: object;
-  _templates: object;
+  _refs: Record<string, unknown>;
+  _templates: Record<string, unknown>;
 }
