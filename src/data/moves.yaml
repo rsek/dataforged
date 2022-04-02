@@ -4,6 +4,8 @@ Source:
   Date: "033122"
 Categories:
   - Name: Session
+    Display:
+      Color: "#00B3C8"
     Source:
       Page: 140
     Description: |-
@@ -89,6 +91,8 @@ Categories:
         Source:
         Page: 145
   - Name: Adventure
+    Display:
+      Color: &color:Adventure_Moves "#3C70A4"
     Source:
       Page: 146
     Description: |-
@@ -289,6 +293,8 @@ Categories:
         Source:
           Page: 153
   - Name: Quest
+    Display:
+      Color: "#2F9236"
     Description: |-
       In the fiction of the *Starforged* setting, those who swear vows are the Ironsworn, and their promises are binding. Vows can be made to yourself, as a solemn representation of your personal commitment, or as a promise to someone else. Some vows might be made grudgingly—out of duty, necessity, or tradition. Others will be made with your whole heart.
 
@@ -387,6 +393,8 @@ Categories:
         Source:
           Page: 160
   - Name: Connection
+    Display:
+      Color: "#4053C9"
     Source:
       Page: 162
     Description: |-
@@ -534,6 +542,8 @@ Categories:
         Source:
           Page: 166
   - Name: Exploration
+    Display:
+      Color: "#7438B8"
     Description: |-
       The Forge is a vast, chaotic, and largely unexplored galaxy. Your sworn vows will take you through uncharted space, across the surface of inhospitable planets, and into the depths of foreboding derelicts, enigmatic alien vaults, and other perilous sites.
 
@@ -766,6 +776,8 @@ Categories:
         Source:
           Page: 180
   - Name: Combat
+    Display:
+      Color: "#D68F00"
     Source:
       Page: 182
     Description: |-
@@ -1079,6 +1091,8 @@ Categories:
         Source:
           Page: 197
   - Name: Suffer
+    Display:
+      Color: "#C50000"
     Description: |-
       When you bear the brunt of a failed action or make a concession, the suffer moves help resolve the cost. These moves are typically made when you must [Pay the Price](Moves#Pay-the-Price) and face a hardship that directly impacts your well-being and readiness, or as prompted by a move or asset.
     Source:
@@ -1307,7 +1321,9 @@ Categories:
               96-100 | Against all odds, the vehicle holds together.
         Source:
           Page: 206
-  - Name: Recovery
+  - Name: Recover
+    Display:
+      Color: "#179F0E"
     Description: |-
       Life as an Ironsworn is not easy or comfortable. When your resources are strained, your health and spirit ebbing, your equipment and vehicles in disrepair, you'll need to find relief from the perils of the Forge and the burdens of your sworn oaths.
 
@@ -1502,6 +1518,8 @@ Categories:
         Source:
           Page: 214
   - Name: Threshold
+    Display:
+      Color: "#676767"
     Description: |-
       Despite your best efforts to overcome the perils of the Forge, calamitous events may bring you to the precipice of life and death, redemption and desolation, perseverance and destruction.
 
@@ -1604,6 +1622,8 @@ Categories:
         Source:
           Page: 220
   - Name: Legacy
+    Display:
+      Color: "#4D5769"
     Source:
       Page: 222
     Description:
@@ -1709,6 +1729,8 @@ Categories:
         Source:
           Page: 226
   - Name: Fate
+    Display:
+      Color: "#6B52EC"
     Description: |-
       In solo and co-op play, the **fate moves** mediate the result of other moves or serve as inspirational prompts for your story. When you face the uncertain outcome of a move, want to know what happens next, or have a question about people, places, and events, these moves help reveal the answer.
     Source:
@@ -1781,6 +1803,9 @@ Categories:
         Source:
           Page: 232
   - Name: Scene Challenge
+    # NB: strictly speaking, these aren't a formal category of moves, but given their status as optional rules, grouping them together is practical
+    Display:
+      Color: *color:Adventure_Moves # these don't have an accent color in the rules guide, but since they overlap with the Adventure category this is a reasonable stopgap.
     Description: |-
       A **scene challenge** is an optional structured approach for resolving an extended non-combat scene against a threat or other characters, particularly when a time limit or looming danger adds extra urgency.
 
