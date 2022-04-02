@@ -843,6 +843,8 @@ Roll   | Result
 
 ### Diversity
 
+To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
+
 Roll   | Result
 :-----:|-----------------------------------
 1–20   | Simple (two biomes)
@@ -851,6 +853,8 @@ Roll   | Result
 91–100 | Garden world (five or more biomes)
 
 ### Biomes
+
+To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
 
 Roll   | Result
 :-----:|---------------------
