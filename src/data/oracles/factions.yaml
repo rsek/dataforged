@@ -2,9 +2,11 @@ Factions:
   Name: Factions
   Source:
     Title: "Ironsworn: Starforged Rulebook"
-    Date: "030522"
+    Date: "040122"
   Oracles:
     - Name: Type
+      Source:
+        Page: 340
       Usage:
         Initial: true
       Display:
@@ -12,10 +14,12 @@ Factions:
       Content:
         Part of speech: [noun]
       Table:
-        - [1, 40, ⏵Dominion, "Governing power", Attributes: {Faction Type: Dominion}]
-        - [41, 70, ⏵Guild, "Organization of specialists", Attributes: {Faction Type: Guild}]
-        - [71, 100, ⏵Fringe Group, "Band of outlaws, outcasts, or rogues", Attributes: {Faction Type: Fringe Group}]
+        - [1, 40, ⏵Dominion, "Governing power", Attributes: {Faction Type: Dominion},Oracle rolls: [Oracles / Factions / Dominion, Oracles / Factions / Leadership]]
+        - [41, 70, ⏵Guild, "Organization of specialists", Attributes: {Faction Type: Guild}, Oracle rolls: [Oracles / Factions / Guild]]
+        - [71, 100, ⏵Fringe Group, "Band of outlaws, outcasts, or rogues", Attributes: {Faction Type: Fringe Group}, Oracle rolls: [Oracles / Factions / Fringe Group]]
     - Name: Influence
+      Source:
+        Page: 340
       Usage:
       Content:
         Part of speech: [adjective]
@@ -28,6 +32,8 @@ Factions:
         - [86, 95, Dominant, Far-reaching influence across many sectors, Attributes: {Influence: Dominant}]
         - [96, 100, Inescapable, Pervasive influence across inhabited space, Attributes: {Influence: Inescapable}]
     - Name: Dominion
+      Source:
+        Page: 341
       Usage:
         Max rolls: 3
         Initial: true
@@ -63,8 +69,10 @@ Factions:
         - [92, 96, Warfare, Attributes: {Dominion: Warfare}]
         - [97, 100, Wealth, Attributes: {Dominion: Wealth}]
     - Name: Leadership
+      Source:
+        Page: 341
       Display:
-        Title: Dominion / Leadership
+        Title: "Dominion: Leadership"
       Usage:
         Initial: true
         Requires:
@@ -85,6 +93,8 @@ Factions:
         - [91, 95, Machine intelligence, Attributes: {Leadership: Machine intelligence}]
         - [96, 100, Varied / decentralized, Attributes: {Leadership: Varied / decentralized}]
     - Name: Guild
+      Source:
+        Page: 341
       Usage:
         Initial: true
         Requires:
@@ -110,6 +120,8 @@ Factions:
         - [86, 90, Spies, Attributes: {Guild: Spies}]
         - [91, 100, *result:RollTwice]
     - Name: Fringe Group
+      Source:
+        Page: 341
       Usage:
         Requires:
           Attributes:
@@ -131,6 +143,8 @@ Factions:
         - [86, 95, Smugglers, Attributes: {Fringe Group: Smugglers}]
         - [96, 100, *result:RollTwice]
     - Name: Projects
+      Source:
+        Page: 342
       Display:
         Title: Faction Projects
       Content:
@@ -175,6 +189,8 @@ Factions:
         - [94, 96, Usurp leadership within a rival faction]
         - [97, 100, *result:Action+Theme]
     - Name: Relationships
+      Source:
+        Page: 343
       Display:
         Title: Faction Relationships
       Content:
@@ -211,6 +227,8 @@ Factions:
         - [93, 96, Warring with]
         - [97, 100, *result:RollTwice]
     - Name: Name Template
+      Source:
+        Page: 344
       Content:
         Part of speech: [name, proper noun]
         Tags: [template]
@@ -284,6 +302,8 @@ Factions:
         - [97, 98, Veiled]
         - [99, 100, Wandering]
     - Name: Affiliation
+      Source:
+        Page: 345
       Content:
         Part of speech: [noun, proper noun fragment]
         Tags: [organization, actor]
@@ -314,6 +334,8 @@ Factions:
         - [93, 96, Syndicate]
         - [97, 100, Union]
     - Name: Identity
+      Source:
+        Page: 345
       Content:
         Part of speech: [common noun, plural, proper noun fragment]
       Table:
@@ -368,6 +390,8 @@ Factions:
         - [97, 98, Wreckers]
         - [99, 100, Wrights]
     - Name: Quirks
+      Source:
+        Page: 346
       Display:
         Title: Faction Quirks
       Content:
@@ -412,6 +436,8 @@ Factions:
         - [94, 96, Work or environment causes mutations]
         - [97, 100, *result:Action+Theme]
     - Name: Rumors
+      Source:
+        Page: 347
       Display:
         Title: Faction Rumors
       Content:
