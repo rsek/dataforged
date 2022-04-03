@@ -78,7 +78,7 @@ Asset Types:
             Moves:
               - Name: Ready Grappler
                 Trigger:
-                  Text: When you take a minute or so to ready the grappler
+                  Text: When you take a minute or so to ready the grappler...
                   Options:
                     - Roll best of: [Wits, Attached Asset Condition Meter]
                 Text: *move:Asset.Grappler
@@ -122,7 +122,7 @@ Asset Types:
             Moves:
               - Name: Draw Reserves
                 Trigger:
-                  Text: When you [Sacrifice Resources](Moves#Sacrifice-Resources) and your supply is reduced to 0
+                  Text: When you [Sacrifice Resources](Moves#Sacrifice-Resources) and your supply is reduced to 0...
                   Options:
                     - Action roll:
                         Stat: Attached Asset Condition Meter
@@ -237,7 +237,7 @@ Asset Types:
             Moves:
               - Name: Raise Shields
                 Trigger:
-                  Text: When you raise your shields
+                  Text: When you raise your shields...
                   Options:
                     - Roll best of: [Wits, Attached Asset Condition Meter]
                 Text: *move:Asset.Shields
@@ -523,7 +523,7 @@ Asset Types:
             Moves:
               - Name: Craft Projectiles
                 Trigger:
-                  Text: When you replenish your ammo by crafting projectiles
+                  Text: When you replenish your ammo by crafting projectiles...
                   Options:
                     - Action roll:
                         Stat: Wits
@@ -576,19 +576,24 @@ Asset Types:
             Moves:
               - Name: Commemorate
                 Trigger:
-                  Text: When you create or perform a significant artistic work as a public memorial or tribute
+                  Text: When you create or perform a significant artistic work as a public memorial or tribute...
                   Options:
-                    # TODO: some trigger text? how should it be formulated
+                    # TODO: some trigger text? how should it be formulated?
                     - Action roll:
                         Stat: Edge
+                      Text: Edge best represents the work's nature
                     - Action roll:
                         Stat: Heart
+                      Text: Heart best represents the work's nature
                     - Action roll:
                         Stat: Iron
+                      Text: Iron best represents the work's nature
                     - Action roll:
                         Stat: Shadow
+                      Text: Shadow best represents the work's nature
                     - Action roll:
                         Stat: Wits
+                      Text: Wits best represents the work's nature
                 Text: *move:Asset.Artist
                 Outcomes:
                   Strong Hit:
@@ -760,7 +765,7 @@ Asset Types:
             Moves:
               - Name: Read Heart
                 Trigger:
-                  Text: When you read the intent, emotions, or memories of a nearby being
+                  Text: When you read the intent, emotions, or memories of a nearby being...
                   Options:
                     - Action roll:
                         Stat: Heart
@@ -817,7 +822,7 @@ Asset Types:
             Moves:
               - Name: Gather Energy
                 Trigger:
-                  Text: When you rest and meditate to gather fiery energy
+                  Text: When you rest and meditate to gather fiery energy...
                   Options:
                     - Action roll:
                         Stat: Spirit
@@ -958,8 +963,8 @@ Asset Types:
               - Name: Loop
                 Trigger:
                   Options:
-                    - Text: When you create a link to the current point in time
-                    - Text: If you later loop back to this moment
+                    - Text: When you create a link to the current point in time...
+                    - Text: If you later loop back to this moment...
                       Action roll:
                         Custom stat:
                           Name: Gap in time
@@ -1044,11 +1049,12 @@ Asset Types:
             Moves:
               - Name: Scrape By
                 Trigger:
-                  Text: When you [Sacrifice Resources](Moves#Sacrifice-Resources) and your supply is reduced to 0
+                  Text: When you [Sacrifice Resources](Moves#Sacrifice-Resources) and your supply is reduced to 0...
                   Options:
                     - Action roll:
                         Stat: Wits
                 Text: *move:Asset.Outcast
+              # FIXME: separate outcome text
           - Text: |-
               When you or an ally [Sojourn](Moves#Sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you [Make a Connection](Moves#Make-a-Connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
       - Name: Scavenger
@@ -1107,7 +1113,7 @@ Asset Types:
             Moves:
               - Name: Shroud in Darkness
                 Trigger:
-                  Text: When you expand your veil to immerse your surroundings in darkness
+                  Text: When you expand your veil to immerse your surroundings in darkness...
                   Options:
                     - Action roll:
                         Stat: Shadow
@@ -1142,10 +1148,18 @@ Asset Types:
       - Name: Sniper
         Requirement: If you wield a rifle...
         Abilities:
-          - Text: |-
+          - Text: &move:Asset.Sniper |-
               When you target a minor foe from a distance (outside of a fight), roll +wits. On a strong hit, you take them out. Take +1 momentum. If other foes remain and you [Enter the Fray](Moves#Enter-the-Fray) against them, mark progress. On a weak hit, as above, but you sacrifice time or position; [Lose Momentum](Moves#Lose-Momentum) (-1). On a miss, you draw attention or face a reprisal; [Pay the Price](Moves#Pay-the-Price).
             Enabled: true
-            # TODO: move
+            Moves:
+              - Name: Snipe Minor Foe
+                Trigger:
+                  Test: When you target a minor foe from a distance (outside of a fight)...
+                  Options:
+                    - Action roll:
+                        Stat: Wits
+                Text: *move:Asset.Sniper
+              # FIXME: separate outcome text
           - Text: |-
               When you [Strike](Moves#Strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a hit.
             Alter Moves:
@@ -1615,7 +1629,7 @@ Asset Types:
             Moves:
               - Name: Seek Safe Haven
                 Trigger:
-                  Text: When you seek a safe location in a remote environment
+                  Text: When you seek a safe location in a remote environment...
                   Options:
                     - Progress roll: Discoveries Legacy
                 Progress Move: true
