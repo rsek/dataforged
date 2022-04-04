@@ -96,9 +96,9 @@ Moves:
       Content:
         Part of speech: [sentences]
       Table:
-        - [1, 10, "You suffer mortal harm. [Face Death](Moves#Face-Death)."]
-        - [11, 20, "You are dying. Within an hour or two, you must [Heal](Moves#Heal) and raise your health above 0, or [Face Death](Moves#Face-Death)."]
-        - [21, 35, "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](Moves#Face-Death)."]
+        - [1, 10, "You suffer mortal harm. [Face Death](Moves/Threshold/Face_Death)."]
+        - [11, 20, "You are dying. Within an hour or two, you must [Heal](Moves/Recover/Heal) and raise your health above 0, or [Face Death](Moves/Threshold/Face_Death)."]
+        - [21, 35, "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](Moves/Threshold/Face_Death)."]
         - [36, 50, "You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move)."]
         - [51, 100, You are still standing.]
     - Name: Endure Stress
@@ -107,8 +107,8 @@ Moves:
       Content:
         Part of speech: [sentences]
       Table:
-        - [1, 10, "You are overwhelmed. [Face Desolation](Moves#Face-Desolation)."]
-        - [11, 25, "You give up. [Forsake Your Vow](Moves#Forsake-Your-Vow)."]
+        - [1, 10, "You are overwhelmed. [Face Desolation](Moves/Threshold/Face_Desolation)."]
+        - [11, 25, "You give up. [Forsake Your Vow](Moves/Quest/Forsake_Your_Vow)."]
         - [26, 50, "You give in to fear or compulsion, and act against your better instincts."]
         - [51, 100, You persevere.]
     - Name: Withstand Damage
@@ -117,13 +117,13 @@ Moves:
       Content:
         Part of speech: [sentences]
       Table:
-        - [1, 10, "Immediate catastrophic destruction. All aboard must [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death), as appropriate."]
-        - [11, 25, "Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](Moves#Endure-Harm) or [Face Death](Moves#Face-Death) as appropriate."]
-        - [26, 40, "Destruction is imminent, but can be averted if you [Repair](Moves#Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25."]
-        - [41, 55, "You cannot [Repair](Moves#Repair) this vehicle until you [Resupply](Moves#Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25."]
-        - [56, 70, "The vehicle is crippled or out of your control. To get it back in action, you must [Repair](Moves#Repair) and raise its integrity above 0."]
-        - [71, 85, "It's a rough ride. All aboard must make the [Endure Harm](Moves#Endure-Harm), [Endure Stress](Moves#Endure-Stress), or [Companion Takes a Hit](Moves#Companion-Takes-a-Hit) move, suffering a serious (-2) cost."]
-        - [86, 95, "You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Moves#Sacrifice-Resources) (-2)."]
+        - [1, 10, "Immediate catastrophic destruction. All aboard must [Endure Harm](Moves/Suffer/Endure_Harm) or [Face Death](Moves/Threshold/Face_Death), as appropriate."]
+        - [11, 25, "Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](Moves/Suffer/Endure_Harm) or [Face Death](Moves/Threshold/Face_Death) as appropriate."]
+        - [26, 40, "Destruction is imminent, but can be averted if you [Repair](Moves/Recover/Repair) your vehicle and raise its integrity above 0. If you fail, see 11-25."]
+        - [41, 55, "You cannot [Repair](Moves/Recover/Repair) this vehicle until you [Resupply](Moves/Recover/Resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25."]
+        - [56, 70, "The vehicle is crippled or out of your control. To get it back in action, you must [Repair](Moves/Recover/Repair) and raise its integrity above 0."]
+        - [71, 85, "It's a rough ride. All aboard must make the [Endure Harm](Moves/Suffer/Endure_Harm), [Endure Stress](Moves/Suffer/Endure_Stress), or [Companion Takes a Hit](Moves/Suffer/Companion_Takes_a_Hit) move, suffering a serious (-2) cost."]
+        - [86, 95, "You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Moves/Suffer/Sacrifice_Resources) (-2)."]
         - [96, 100, "Against all odds, the vehicle holds together."]
     - Name: Ask the Oracle
       Source:

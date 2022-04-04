@@ -2,7 +2,12 @@ import _ from "lodash-es";
 import renderOracle from "./renderOracle.js";
 import type OracleCategory from "../../types/oracles/classes/OracleCategory.js";
 import buildLog from "../logging/buildLog.js";
-
+/**
+ * It takes an OracleCategory and returns a markdown string
+ * @param {OracleCategory} oracleCat - OracleCategory
+ * @param [headerLevel=2] - The header level to use for the category title.
+ * @returns A string of markdown.
+ */
 export default function renderOracleCategory(oracleCat: OracleCategory, headerLevel = 2) {
   buildLog(renderOracleCategory, `Generating markdown for ${oracleCat.Display.Title
   }...`);

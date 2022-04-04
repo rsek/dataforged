@@ -22,7 +22,7 @@ Derelict Zone: &template:Zone
         Usage:
           Repeatable: true
         Description: |-
-          Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Moves#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+          Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
       _templateTable:
         rolls: &template.rolls:Zone.Area
           - [1, 8]
@@ -36,7 +36,7 @@ Derelict Zone: &template:Zone
           - [65, 72]
           - [73, 80]
           - [81, 85, New zone, *obj:DerelictZone]
-          - [86, 100, New zone via ⏵Access, *obj:DerelictZone.Access]
+          - [86, 100, "New zone via [⏵Access](Oracles/Derelicts/Access)", *obj:DerelictZone.Access]
     - _templateInfo: &template.info:Zone.Feature
         Name: Feature
         Content:
@@ -87,7 +87,7 @@ Derelict Zone: &template:Zone
         Usage:
           Repeatable: true
         Description: |-
-          Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Moves#Undertake-an-Expedition), or if you [Explore a Waypoint](Moves#Explore-a-Waypoint) and find an opportunity.
+          Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
         rolls: &template.rolls:Zone.Opportunity
           - [1, 20]
           - [21, 40]

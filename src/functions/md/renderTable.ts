@@ -6,8 +6,6 @@ import transpose2dArray from "./transpose2dArray.js";
  * Renders an object array as a markdown table.
  */
 export default function renderTable(rowDataArray: Record<string, string>[]) {
-  // currently can't handle stuff without a detailed Display key.
-  // TODO: typecheck that all have same propertyies
   const tableBody = rowDataArray.map(row => Object.values(row));
   const tableHeaderText = Object.keys(rowDataArray[0]);
   let table = [ tableHeaderText, ...tableBody ];
@@ -19,8 +17,6 @@ export default function renderTable(rowDataArray: Record<string, string>[]) {
   table = table.map((row) => row.map((cell, colIndex) => cell.padEnd(columnWidths[colIndex], " ")));
 
   let rowStrings = table.map(row => row.join(" | "));
-
-  // console.log("before headerbottomborder", rowStrings);
 
   const headBorder = rowStrings[0].split("|").map((colContent, colIndex) => {
     let border = _.repeat("-", colContent.length);

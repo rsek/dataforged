@@ -1,12 +1,11 @@
 import "source-map-support/register.js";
 import _ from "lodash-es";
 import type { PathLike } from "fs";
-import { writeFileSync } from "fs";
 import buildDataforged from "./functions/buildDataforged.js";
 import buildImages from "./functions/buildImages.js";
+import buildMoveMarkdown from "./functions/buildMoveMarkdown.js";
+import buildOracleMarkdown from "./functions/buildOracleMarkdown.js";
 import writeJson from "./functions/io/writeJSON.js";
-// import renderMoves from "./functions/md/renderMoves.js";
-import renderOracleCategory from "./functions/md/renderOracleCategory.js";
 // import writeYaml from "./functions/io/writeYaml.js";
 // import countDupes from "./functions/analysis/countDupes";
 // import extractProperNouns from "./functions/analysis/extractProperNouns";
@@ -31,22 +30,9 @@ _.forEach(data, (value, key) => {
 
 // writeYaml("stem_duplicates.yaml" as PathLike, dupeData);
 
-const mdOraclePath: PathLike = mdPath + "Oracles/";
+buildOracleMarkdown(data.oracles, mdPath);
 
-data.oracles.filter(oracle => oracle.$id !== "Oracles / Moves").forEach((oracleCat) => {
-  const text = renderOracleCategory(oracleCat, 1) + "\n";
-  const filePath: PathLike = mdOraclePath + oracleCat.Name + ".md";
-  writeFileSync(filePath, text, { encoding: "utf-8" });
-});
-
-const allOracleText = [
-  "# Starforged Oracles",
-  data.oracles.filter(oracle => oracle.$id !== "Oracles / Moves").map((oracleCat) => renderOracleCategory(oracleCat, 2)) ].flat(2).join("\n\n")
-  .replace(/\(Moves#/g, "(Moves.md#");
-
-writeFileSync(mdPath + "Oracles.md", allOracleText + "\n", { encoding: "utf-8" });
-
-// writeFileSync(mdPath + "Moves.md", renderMoves(data.moves) + "\n", { encoding: "utf-8" });
+buildMoveMarkdown(data.moves, mdPath);
 
 const srcRoot = "src/data/img";
 const outRoot = "img";
