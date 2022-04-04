@@ -6,14 +6,18 @@ import SettingTruthTableRow from "./SettingTruthTableRow.js";
 import buildLog from "../../functions/logging/buildLog.js";
 import type { IHasId } from "../general/Id.js";
 import type ISource from "../general/interfaces/ISource.js";
+import type MdString from "../general/MdString.js";
 import Source from "../general/Source.js";
 import Suggestions from "../general/Suggestions.js";
 
+export type SettingTruthName = string;
+export type SettingTruthId = `Setting Truths / ${SettingTruthName}`;
+
 export default class SettingTruth implements Omit<ISettingTruth, "Suggestions">, IHasId {
-  $id: string;
-  Name: string;
+  $id: SettingTruthId;
+  Name: SettingTruthName;
   Table: ISettingTruthTableRow[];
-  Character: string;
+  Character: MdString;
   Suggestions?: Suggestions | undefined;
   Source: Source;
   constructor(json: ISettingTruth, sourceJson: ISource) {
