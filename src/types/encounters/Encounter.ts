@@ -16,7 +16,7 @@ export default class Encounter implements IEncounter {
   $id: EncounterId;
   Name: string;
   Nature: EncounterNature;
-  Summary: string;
+  Summary: MdString;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
   Display?: EncounterDisplay | undefined;

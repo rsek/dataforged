@@ -9,16 +9,18 @@ import AttributeSetter from "../../gameObjects/AttributeSetter.js";
 import GameObject from "../../gameObjects/GameObject.js";
 import type GameObjectData from "../../gameObjects/GameObjectYaml.js";
 import type ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml.js";
+import type MdString from "../../general/MdString.js";
 import Suggestions from "../../general/Suggestions.js";
 import type UrlString from "../../general/UrlString.js";
+import type { SettingTruthTableRowId } from "../../truths/ISettingTruthTableRow.js";
 import type IMultipleRolls from "../interfaces/IMultipleRolls.js";
+import type IRollTemplate from "../interfaces/IOracleTemplateStrings.js";
 import type IRow from "../interfaces/IRow.js";
 import type { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag.js";
 import type IRowYaml from "../interfaces/yaml/IRowYaml.js";
 import type { IRowRollYaml } from "../interfaces/yaml/IRowYaml.js";
 import type OracleTableId from "../OracleTableId.js";
 import type OracleTableRowId from "../OracleTableRowId.js";
-import type TemplateString from "../TemplateString.js";
 
 /**
  *
@@ -37,11 +39,11 @@ import type TemplateString from "../TemplateString.js";
  */
 
 export default class Row implements IRow {
-  $id!: OracleTableRowId | null;
+  $id!: OracleTableRowId | SettingTruthTableRowId | null;
   Floor: IRowRollYaml[0];
   Ceiling: IRowRollYaml[1];
-  Result!: string;
-  Summary?: string | undefined;
+  Result!: MdString;
+  Summary?: MdString | undefined;
   Images?: UrlString[] | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   Subtable?: Row[] | undefined;
@@ -49,7 +51,7 @@ export default class Row implements IRow {
   "Multiple rolls"?: MultipleRolls | undefined;
   Suggestions?: Suggestions | undefined;
   Attributes?: AttributeSetter | undefined;
-  Template?: TemplateString | undefined;
+  "Roll template"?: IRollTemplate | undefined;
   "Part of speech"?: PartOfSpeechTag[] | undefined;
   constructor(parentId: string, json: IRowYaml | IRow) {
     let rowData = _.clone(json);
@@ -174,11 +176,11 @@ export default class Row implements IRow {
                 this.Attributes = new AttributeSetter(value as AttributeHash);
                 break;
               }
-              case "Template": {
-                if (!is<TemplateString>(value)) {
-                  throw badJsonError(this.constructor, value, "expected TemplateString");
+              case "Roll template": {
+                if (!is<IRollTemplate>(value)) {
+                  throw badJsonError(this.constructor, value, "expected IOracleTemplateStrings");
                 }
-                this.Template = value as TemplateString;
+                this["Roll template"] = value as IRollTemplate;
                 break;
               }
               default:

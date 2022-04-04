@@ -183,11 +183,11 @@ To generate a faction name, first roll or choose the name template. Then, follow
 An alternative approach to generating a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one that idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or pick.
 
 Roll   | Result
-:-----:|--------------------------------------------------------------------------------------------------------------------------------------
-1–40   | [[⏵Legacy](#Legacy)] [[⏵Affiliation](#Affiliation)]
-41–55  | [[⏵Legacy](#Legacy)] [[⏵Identity](#Identity)]
-56–70  | [[⏵Identity](#Identity)] *of the* [[⏵Legacy](#Legacy)] [[⏵Affiliation](#Affiliation)]
-71–100 | [[⏵Affiliation](#Affiliation)] *of the* [[⏵Legacy](#Legacy)] [[⏵Identity](#Identity)]
+:-----:|--------------------------------------------------------------------------------------------------------------------------------------------
+1–40   | \[[⏵Legacy](#Legacy)\] \[[⏵Affiliation](#Affiliation)\]
+41–55  | \[[⏵Legacy](#Legacy)\] \[[⏵Identity](#Identity)\]
+56–70  | \[[⏵Identity](#Identity)\] *of the* \[[⏵Legacy](#Legacy)\] \[[⏵Affiliation](#Affiliation)\]
+71–100 | \[[⏵Affiliation](#Affiliation)\] *of the* \[[⏵Legacy](#Legacy)\] \[[⏵Identity](#Identity)\]
 
 ## Legacy
 

@@ -11,6 +11,7 @@ import templateOracle from "../../../functions/object-transform/templateOracle.j
 import templateOracleTable from "../../../functions/object-transform/templateOracleTable.js";
 import type { AttributeKey } from "../../gameObjects/IAttribute.js";
 import type IAttribute from "../../gameObjects/IAttribute.js";
+import type MdString from "../../general/MdString.js";
 import Source from "../../general/Source.js";
 import type IOracleBase from "../interfaces/IOracleBase.js";
 import type ITableDisplay from "../interfaces/IOracleDisplay.js";
@@ -26,7 +27,7 @@ export default class Oracle implements IOracleBase {
   Aliases?: string[] | undefined;
   "Member of"?: OracleTableId | undefined;
   Category: OracleCategoryId;
-  Description?: string | undefined;
+  Description?: MdString | undefined;
   Source: Source;
   Display: OracleDisplay;
   Usage?: OracleUsage | undefined;

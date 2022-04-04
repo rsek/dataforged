@@ -1,12 +1,12 @@
 # TODO
-  - [ ] put moves back in categories? there's a fair amount of extra category text now, so it's probably the most logical way to structure it
+  - [x] put moves back in categories? there's a fair amount of extra category text now, so it's probably the most logical way to structure it
   - [ ] automate the versioning from the readme
   - [ ] oracle markdown adjustments:
     - [ ] more reliable links with at-the-bottom-style links?
       - hm, tricky to generate after. might have to build a hash or something to handle it, idk
     - [ ] category descriptions
     - [ ] fix missing Summary columns
-    - [ ] "⏵" should link to stuff where appropriate - programmatically
+    - [x] "⏵" should link to stuff where appropriate - programmatically
     - [ ] split table rendering for tall skinny tables
     - [ ] omit some descriptions if they're repetitive/redundant
     - [ ] integrate summaries from markdown files

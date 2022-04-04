@@ -3,6 +3,7 @@
 import type ISuggestions from "./interfaces/ISuggestions.js";
 import type ISuggestionsYaml from "./interfaces/ISuggestionsYaml.js";
 import type AssetId from "../assets/AssetId.js";
+import type EncounterId from "../encounters/EncounterId.js";
 import GameObject from "../gameObjects/GameObject.js";
 import type MoveId from "../moves/MoveId.js";
 import type OracleTableId from "../oracles/OracleTableId.js";
@@ -18,7 +19,7 @@ export default class Suggestions implements ISuggestions {
   "Oracle rolls"?: OracleTableId[] | undefined;
   "Assets"?: AssetId[] | undefined;
   "Moves"?: MoveId[] | undefined;
-  "Encounters"?: string[] | undefined;
+  "Encounters"?: EncounterId[] | undefined;
   constructor(data: ISuggestionsYaml) {
     if (data["Game objects"]) {
       // console.info("[Suggestions] Game objects", JSON.stringify(data["Game objects"]));

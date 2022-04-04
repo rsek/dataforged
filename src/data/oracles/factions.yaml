@@ -239,14 +239,14 @@ Factions:
 
         An alternative approach to generating a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one that idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or pick.
       Table:
-        - [1, 40, "[[⏵Legacy](Oracles/Factions/Legacy)] [[⏵Affiliation](Oracles/Factions/Affiliation)]",
-          {Template: "{{Oracles / Factions / Legacy}} {{Oracles / Factions / Affiliation}}" }]
-        - [41, 55, "[[⏵Legacy](Oracles/Factions/Legacy)] [[⏵Identity](Oracles/Factions/Identity)]",
-          {Template: "{{Oracles / Factions / Legacy}} {{Oracles / Factions / Identity}}"}]
-        - [56, 70, "[[⏵Identity](Oracles/Factions/Identity)] *of the* [[⏵Legacy](Oracles/Factions/Legacy)] [[⏵Affiliation](Oracles/Factions/Affiliation)]",
-          {Template: "{{Oracles / Factions / Identity}} of the {{Oracles / Factions / Legacy}} {{Oracles / Factions / Affiliation}}"}]
-        - [71, 100, "[[⏵Affiliation](Oracles/Factions/Affiliation)] *of the* [[⏵Legacy](Oracles/Factions/Legacy)] [[⏵Identity](Oracles/Factions/Identity)]",
-          {Template: "{{Oracles / Factions / Affiliation}} of the {{Oracles / Factions / Legacy}} {{Oracles / Factions / Identity}}"}]
+        - [1, 40, "\\[[⏵Legacy](Oracles/Factions/Legacy)\\] \\[[⏵Affiliation](Oracles/Factions/Affiliation)\\]",
+          {Roll template: {Result: "${{Oracles / Factions / Legacy}} ${{Oracles / Factions / Affiliation}}" }}]
+        - [41, 55, "\\[[⏵Legacy](Oracles/Factions/Legacy)\\] \\[[⏵Identity](Oracles/Factions/Identity)\\]",
+          {Roll template: {Result: "${{Oracles / Factions / Legacy}} ${{Oracles / Factions / Identity}}"}}]
+        - [56, 70, "\\[[⏵Identity](Oracles/Factions/Identity)\\] *of the* \\[[⏵Legacy](Oracles/Factions/Legacy)\\] \\[[⏵Affiliation](Oracles/Factions/Affiliation)\\]",
+          {Roll template: {Result: "${{Oracles / Factions / Identity}} of the ${{Oracles / Factions / Legacy}} ${{Oracles / Factions / Affiliation}}"}}]
+        - [71, 100, "\\[[⏵Affiliation](Oracles/Factions/Affiliation)\\] *of the* \\[[⏵Legacy](Oracles/Factions/Legacy)\\] \\[[⏵Identity](Oracles/Factions/Identity)\\]",
+          {Roll template: {Result: "${{Oracles / Factions / Affiliation}} of the ${{Oracles / Factions / Legacy}} ${{Oracles / Factions / Identity}}"}}]
     - Name: Legacy
       Content:
         Part of speech: [adjective, proper noun fragment]

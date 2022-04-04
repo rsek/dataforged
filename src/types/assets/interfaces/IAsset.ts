@@ -3,6 +3,7 @@ import type { IConditionMeter } from "../../general/ConditionMeter.js";
 import type IDisplay from "../../general/IDisplay.js";
 import type { IInput } from "../../general/Input.js";
 import type ISource from "../../general/interfaces/ISource.js";
+import type MdString from "../../general/MdString.js";
 import type Tuple from "../../general/Tuple.js";
 import type IAssetAttachment from "../AssetAttachment.js";
 import type AssetId from "../AssetId.js";
@@ -17,7 +18,7 @@ export default interface IAsset {
   "Asset Type": AssetTypeId;
   Attachments?: IAssetAttachment | undefined;
   Inputs?: IInput[] | undefined;
-  Requirement?: string | undefined;
+  Requirement?: MdString | undefined;
   Abilities: Tuple<IAssetAbility, 3>;
   "Condition Meter"?: IConditionMeter | undefined;
   Source: ISource;

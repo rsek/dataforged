@@ -129,7 +129,7 @@ Roll   | Result
 67–77  | Vast plateaus
 78–88  | Vibrant terrain colors
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -149,7 +149,7 @@ Roll   | Result
 78–84  | Violent electrical storms
 85–91  | Windborne metallic sand
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -200,7 +200,7 @@ Roll   | Result
 67–77  | Towering mountain ranges
 78–88  | World-spanning fissures
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -220,7 +220,7 @@ Roll   | Result
 78–84  | Silica or metal storms
 85–91  | Steaming mudflats
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -271,7 +271,7 @@ Roll   | Result
 67–77  | Irradiated atmosphere
 78–88  | Orbiting ship graveyard
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -291,7 +291,7 @@ Roll   | Result
 78–84  | Ship graveyards
 85–91  | Whispers of the dead
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -342,7 +342,7 @@ Roll   | Result
 67–77  | Snowbound mountains
 78–88  | Sky-breaching geysers
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -362,7 +362,7 @@ Roll   | Result
 78–84  | Vibrant auroras
 85–91  | Wind-carved ice formations
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -413,7 +413,7 @@ Roll   | Result
 67–77  | Superheated atmosphere
 78–88  | Unusual atmospheric colors
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -433,7 +433,7 @@ Roll   | Result
 78–84  | Violent turbulence
 85–91  | Zones of localized atmosphere
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -484,7 +484,7 @@ Roll   | Result
 67–77  | Massive canyons
 78–88  | Persistent cloud cover
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -504,7 +504,7 @@ Roll   | Result
 78–84  | Violent electrical storms
 85–91  | Waterlogged caves
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -555,7 +555,7 @@ Roll   | Result
 67–77  | Semi-frozen oceans
 78–88  | Unusual water color
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -575,7 +575,7 @@ Roll   | Result
 78–84  | Violent currents
 85–91  | Windborne waterspouts
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -626,7 +626,7 @@ Roll   | Result
 67–77  | Perpetual night
 78–88  | Towering plateaus
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -646,7 +646,7 @@ Roll   | Result
 78–84  | Swirling low-lying gases
 85–91  | Towering rocky spires
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -697,7 +697,7 @@ Roll   | Result
 67–77  | Geomagnetic storms
 78–88  | Intense solar radiation
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -717,7 +717,7 @@ Roll   | Result
 78–84  | Unstable and fracturing terrain
 85–91  | Venting magma
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -768,7 +768,7 @@ Roll   | Result
 67–77  | Sky-breaching fungus
 78–88  | Sludge-filled river networks
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Planetside Feature
 
@@ -788,7 +788,7 @@ Roll   | Result
 78–84  | Toxic rain
 85–91  | Virulent fungal infestations
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 
@@ -839,7 +839,7 @@ Roll   | Result
 67–77  | Large moon
 78–88  | Narrow livable band
 89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (orbital)
+99–100 | [⏵Precursor Vault (orbital)](vaults.md)
 
 ### Diversity
 
@@ -897,7 +897,7 @@ Roll   | Result
 78–84  | Sudden weather fluctuations
 85–91  | Towering geological formations
 92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault](vaults.md) (planetside)
+99–100 | [⏵Precursor Vault (planetside)](vaults.md)
 
 ### Life
 

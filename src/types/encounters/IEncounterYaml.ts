@@ -11,7 +11,7 @@ export default interface IEncounterYaml {
   $id?: EncounterId | undefined;
   Name: string;
   Nature: EncounterNature;
-  Summary: string;
+  Summary: MdString;
   Tags?: EncounterTags[] | undefined;
   Source: ISource;
   Rank: ChallengeRank;
