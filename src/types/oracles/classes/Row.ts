@@ -11,10 +11,10 @@ import type GameObjectData from "../../gameObjects/GameObjectYaml.js";
 import type ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml.js";
 import type MdString from "../../general/MdString.js";
 import Suggestions from "../../general/Suggestions.js";
-import type UrlString from "../../general/UrlString.js";
+import type { ImageUrl, Raster, Vector } from "../../general/Url.js";
 import type { SettingTruthTableRowId } from "../../truths/ISettingTruthTableRow.js";
 import type IMultipleRolls from "../interfaces/IMultipleRolls.js";
-import type IRollTemplate from "../interfaces/IOracleTemplateStrings.js";
+import type IRollTemplate from "../interfaces/IRollTemplate.js";
 import type IRow from "../interfaces/IRow.js";
 import type { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag.js";
 import type IRowYaml from "../interfaces/yaml/IRowYaml.js";
@@ -44,7 +44,8 @@ export default class Row implements IRow {
   Ceiling: IRowRollYaml[1];
   Result!: MdString;
   Summary?: MdString | undefined;
-  Images?: UrlString[] | undefined;
+  Images?: ImageUrl<Raster>[] | undefined; // NYI - needs switch case
+  Icon?: ImageUrl<Vector> | undefined;
   "Oracle rolls"?: OracleTableId[] | undefined;
   Subtable?: Row[] | undefined;
   "Game objects"?: GameObject[] | undefined;
@@ -83,7 +84,7 @@ export default class Row implements IRow {
       switch (typeof item) {
         case "string": {
           const string = item;
-          if (is<UrlString>(string)) {
+          if (is<ImageUrl<Raster>>(string)) {
             if (!this.Images) {
               this.Images = [];
             }

@@ -1,7 +1,8 @@
-import type UrlString from "./UrlString.js";
+import type { ImageUrl, Raster, Vector } from "./Url.js";
 
 export default interface IDisplay {
   Title: string;
-  Images?: UrlString[] | undefined;
+  Icon?: ImageUrl<Vector> | undefined;
+  Images?: ImageUrl<Raster>[] | undefined;
   Color?: string;
 }

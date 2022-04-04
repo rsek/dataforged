@@ -1,5 +1,5 @@
 import DisplayTable from "./DisplayTable.js";
-import type UrlString from "../../general/UrlString.js";
+import type { ImageUrl, Raster } from "../../general/Url.js";
 import type IDisplayTable from "../interfaces/IDisplayTable.js";
 import type ITableDisplay from "../interfaces/IOracleDisplay.js";
 import type OracleTableId from "../OracleTableId.js";
@@ -8,7 +8,7 @@ export default class OracleDisplay implements ITableDisplay {
   Title: string;
   "Column of"?: OracleTableId | undefined;
   Table: DisplayTable;
-  Images?: UrlString[] | undefined;
+  Images?: ImageUrl<Raster>[] | undefined;
   constructor(json: Partial<ITableDisplay>, parentName: string, parentId: OracleTableId) {
     this.Title = json.Title ?? parentName;
     this.Images = json.Images;
