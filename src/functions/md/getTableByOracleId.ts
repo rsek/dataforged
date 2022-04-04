@@ -1,10 +1,8 @@
 import jsonpath from "jsonpath";
-import { is } from "typescript-is";
 import type IOracle from "../../types/oracles/interfaces/IOracle.js";
 import type IOracleBase from "../../types/oracles/interfaces/IOracleBase.js";
 import type IRow from "../../types/oracles/interfaces/IRow.js";
 import type OracleTableId from "../../types/oracles/OracleTableId.js";
-import badJsonError from "../logging/badJsonError.js";
 
 export default function getTableByOracleId(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
   if (!Array.isArray(oracleData) && oracleData.$id === id) {
