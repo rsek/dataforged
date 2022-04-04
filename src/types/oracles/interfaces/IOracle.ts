@@ -1,9 +1,7 @@
 import type IOracleContent from "./IOracleContent.js";
 import type ITableDisplay from "./IOracleDisplay.js";
 import type IOracleUsage from "./IOracleUsage.js";
-import IRow from "./IRow.js";
 import type IOracleYaml from "./yaml/IOracleYaml.js";
-import IRequirements from "../../general/interfaces/IRequirements.js";
 import type Source from "../../general/Source.js";
 import type OracleTableId from "../OracleTableId.js";
 
