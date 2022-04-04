@@ -1,16 +1,14 @@
 # TODO
   - [x] put moves back in categories? there's a fair amount of extra category text now, so it's probably the most logical way to structure it
   - [ ] automate the versioning from the readme
-  - [ ] oracle markdown adjustments:
-    - [ ] more reliable links with at-the-bottom-style links?
-      - hm, tricky to generate after. might have to build a hash or something to handle it, idk
-    - [ ] category descriptions
-    - [ ] fix missing Summary columns
-    - [x] "⏵" should link to stuff where appropriate - programmatically
+  - [x ] oracle markdown adjustments:
+    - [x] category descriptions
+    - [x] fix missing Summary columns
+    - [x] "⏵" should link to stuff where appropriate
     - [ ] split table rendering for tall skinny tables
     - [ ] omit some descriptions if they're repetitive/redundant
     - [ ] integrate summaries from markdown files
-  - [ ] template string for setting truths
+  - [x] template string for setting truths
   - [ ] gh-pages branch with simple rendering of table tree so ppl can browse it
   - [ ] propagate OracleInfo.Usage.Requires to objects in child rows
 
@@ -20,5 +18,5 @@
     - [x] assets
     - [x] moves
     - [x] oracles
-  - [X] propagate OracleCategory.Usage.Requires to child OracleInfo, OracleCategory
+  - [x] propagate OracleCategory.Usage.Requires to child OracleInfo, OracleCategory
   - [x] have OracleInfo check rows for attribute setters, and generate a Usage.SetsAttributes from it (just the key part)
