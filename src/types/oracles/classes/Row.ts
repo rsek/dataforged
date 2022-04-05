@@ -277,7 +277,7 @@ export default class Row implements IRow {
                 break;
               }
               case "Roll template": {
-                this["Roll template"] = item as NonNullable<typeof this["Roll template"]>;
+                this["Roll template"] = (item as {["Roll template"]: RollTemplate<"Result"|"Summary"|"Description">})["Roll template"] as NonNullable<typeof this["Roll template"]>;
                 break;
               }
               default:
