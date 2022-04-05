@@ -9,15 +9,24 @@
     "analysis"
   ],
   "compilerOptions": {
-    "target": "es6",
+    "useDefineForClassFields": false,
+    "target": "esnext",
     "lib": [
       "es6",
+      "es2020",
       "es2021",
       "esnext"
     ],
     "plugins": [
       {
-        "transform": "typescript-is/lib/transform-inline/transformer"
+        "transform": "typescript-is/lib/transform-inline/transformer",
+        // "shortCircuit": true,
+        "ignoreClasses": true,
+        "ignoreMethods": true,
+        "functionBehavior": "ignore",
+        "disallowSuperfluousObjectProperties": true,
+        "transformNonNullExpressions": true,
+        "emitDetailedErrors": true
       }
     ],
     "sourceMap": true,
