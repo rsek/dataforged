@@ -1,7 +1,11 @@
 import _ from "lodash-es";
-import { stringify } from "querystring";
 const stats = [ "Edge", "Iron", "Heart", "Shadow", "Wits" ];
 
+/**
+ * Given an array of items, return an array of all unique pairs of items
+ * @param items - An array of items to pair.
+ * @returns An array of arrays.
+ */
 export function uniquePairs<T>(...items: Array<T>) {
   const allPairs: Array<[T, T]> = [];
   items.forEach(item1 => items.forEach(item2 => {
@@ -18,6 +22,10 @@ export function uniquePairs<T>(...items: Array<T>) {
   }));
   return allPairs;
 }
+/**
+ * Given a list of stats, return a list of unique pairs of stats, and a list of unique triads of stats
+ * @returns An array of objects, each of which has a statRecord property.
+ */
 
 export function uniqueStatArrays() {
   const statPairs = uniquePairs(...stats);

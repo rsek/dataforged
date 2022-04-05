@@ -3,14 +3,13 @@
 import { parent } from "jsonpath";
 import type IMoveTriggerOption from "./interfaces/IMoveTriggerOption.js";
 import type IMoveTriggerOptionYaml from "./interfaces/IMoveTriggerOptionYaml.js";
-import type MdString from "../general/MdString.js";
 import type { IActionRoll, IProgressRoll } from "../general/Roll.js";
 import { ActionRoll } from "../general/Roll.js";
-import { CustomStat } from "../general/Roll.js";
+import type { ParagraphsString } from "../general/StringTypes.js";
 
 export default class MoveTriggerOption implements IMoveTriggerOption {
   $id: string;
-  Text?: MdString | undefined;
+  Text?: ParagraphsString | undefined;
   "Action roll"?: IActionRoll | undefined;
   "Progress roll"?: IProgressRoll | undefined;
   constructor(json: IMoveTriggerOptionYaml, id: string) {

@@ -1,6 +1,6 @@
 import _ from "lodash-es";
 import findById from "./findById.js";
-import type MdString from "../../types/general/MdString.js";
+import type MdString from "../../types/general/StringTypes.js";
 import type Oracle from "../../types/oracles/classes/Oracle.js";
 import type OracleCategory from "../../types/oracles/classes/OracleCategory.js";
 
@@ -47,7 +47,7 @@ export function transformOracleLinks(data: OracleCategory[], md: MdString, curre
     return result.replaceAll("_", "-");
   });
   md = md.replaceAll(/\(Oracles\/([^ ]+?)\)/g, (match:string, p1:string) => {
-    console.log("matched:", match);
+    // console.log("matched:", match);
     const oracleId = match.replaceAll("/", " / ").replaceAll("(", "")
       .replaceAll(")", "")
       .replaceAll("_", " ");

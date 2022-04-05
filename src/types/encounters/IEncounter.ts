@@ -6,7 +6,7 @@ import type IEncounterYaml from "./IEncounterYaml.js";
 import type ChallengeRank from "../general/ChallengeRank.js";
 import type IDisplay from "../general/IDisplay.js";
 import type ISource from "../general/interfaces/ISource.js";
-import type MdString from "../general/MdString.js";
+import type { FragmentString, ParagraphsString } from "../general/StringTypes.js";
 
 // interface for outgoing JSON + deserialization
 
@@ -14,7 +14,7 @@ export default interface IEncounter extends IEncounterYaml {
   $id: EncounterId;
   Name: string;
   Nature: EncounterNature;
-  Summary: MdString;
+  Summary: FragmentString;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
   Display?: IDisplay | undefined;
@@ -22,7 +22,7 @@ export default interface IEncounter extends IEncounterYaml {
   Drives: string[];
   Tactics: string[];
   Variants?: IEncounterVariant[] | undefined;
-  Description: MdString;
-  "Quest Starter": MdString;
+  Description: ParagraphsString;
+  "Quest Starter": ParagraphsString;
   Source: ISource;
 }

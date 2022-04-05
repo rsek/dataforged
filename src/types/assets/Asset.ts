@@ -17,8 +17,8 @@ import type IDisplay from "../general/IDisplay.js";
 import { ClockInput, NumberInput, SelectInput, TextInput } from "../general/Input.js";
 import type { IClockInput, IInput, INumberInput, ISelectInput , ITextInput } from "../general/Input.js";
 import type ISource from "../general/interfaces/ISource.js";
-import type MdString from "../general/MdString.js";
 import Source from "../general/Source.js";
+import type { FragmentString } from "../general/StringTypes.js";
 import type Tuple from "../general/Tuple.js";
 
 export default class Asset implements IAsset {
@@ -28,7 +28,7 @@ export default class Asset implements IAsset {
   "Asset Type": AssetTypeId;
   Display: WithRequired<IDisplay, "Color">;  Attachments?: IAssetAttachment | undefined;
   Inputs?: IInput[] | undefined;
-  Requirement?: MdString | undefined;
+  Requirement?: FragmentString | undefined;
   Abilities: Tuple<AssetAbility, 3>;
   "Condition Meter"?: ConditionMeter | undefined;
   Source: Source;

@@ -3,9 +3,16 @@ import { is } from "typescript-is";
 import type IRow from "../../types/oracles/interfaces/IRow.js";
 import badJsonError from "../logging/badJsonError.js";
 
-function validateTable(table: IRow[], requireUniqueResults = true, requireAlld100 = true,): boolean {
-  if (!is<IRow[]>(table)) {
-    throw badJsonError(validateTable, table, "Table is not an array of table rows.");
+/**
+ * It validates a table of dice rolls.
+ * @param {IRow[]} table - IRow[], requireUniqueResults = true, requireAlld100 = true,
+ * @param [requireUniqueResults=true] - If true, the table must have unique results.
+ * @param [requireAlld100=true] - If true, the sum of all the dice ranges must be 100.
+ * @returns A boolean indicating whether the table is valid.
+ */
+export default function validateTable(table: IRow[], requireUniqueResults = true, requireAlld100 = true,): boolean {
+  if (!Array.isArray(table)) {
+    throw badJsonError(validateTable, table, "Table is not an array.");
   }
   if (table.length < 2) {
     throw badJsonError(validateTable, table, "Table should have at least two rows.");
@@ -55,5 +62,3 @@ function validateTable(table: IRow[], requireUniqueResults = true, requireAlld10
   }
   return true;
 }
-
-module.exports = validateTable;

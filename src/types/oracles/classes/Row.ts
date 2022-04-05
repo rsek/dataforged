@@ -1,59 +1,144 @@
-
-
 import _ from "lodash-es";
 import { is } from "typescript-is";
 import MultipleRolls from "./MultipleRolls.js";
+import OracleContent from "./OracleContent.js";
 import badJsonError from "../../../functions/logging/badJsonError.js";
+import type { WithRequired } from "../../assets/WithRequired.js";
 import type AttributeHash from "../../gameObjects/AttributeHash.js";
 import AttributeSetter from "../../gameObjects/AttributeSetter.js";
 import GameObject from "../../gameObjects/GameObject.js";
 import type GameObjectData from "../../gameObjects/GameObjectYaml.js";
 import type ISuggestionsYaml from "../../general/interfaces/ISuggestionsYaml.js";
-import type MdString from "../../general/MdString.js";
+import type { FragmentString, SentenceString, TermString } from "../../general/StringTypes.js";
 import Suggestions from "../../general/Suggestions.js";
 import type { ImageUrl, Raster, Vector } from "../../general/Url.js";
-import type { SettingTruthTableRowId } from "../../truths/ISettingTruthTableRow.js";
+import type { SettingTruthOptionId } from "../../truths/ISettingTruthOption.js";
+import validateRollTemplate from "../../truths/validateRollTemplate.js";
 import type IMultipleRolls from "../interfaces/IMultipleRolls.js";
-import type IRollTemplate from "../interfaces/IRollTemplate.js";
+import type RollTemplate from "../interfaces/IRollTemplate.js";
 import type IRow from "../interfaces/IRow.js";
-import type { PartOfSpeechTag } from "../interfaces/PartOfSpeechTag.js";
+import type { IRowDisplay } from "../interfaces/IRow.js";
 import type IRowYaml from "../interfaces/yaml/IRowYaml.js";
 import type { IRowRollYaml } from "../interfaces/yaml/IRowYaml.js";
 import type OracleTableId from "../OracleTableId.js";
 import type OracleTableRowId from "../OracleTableRowId.js";
 
 /**
+ * Class representing a single row of an oracle table.
+ * @date 4/5/2022 - 1:01:40 AM
  *
- * Represents a single row of an oracle table.
- *
+ * @export
  * @class Row
- * @property {number} Floor The low end of the dice range for this row.
- * @property {number} Ceiling The height end of the dice range for this row.
- * @property {string} Result The primary result text for the row.
- * @property {?string} Summary Secondary information that should be presented to the user, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc)
- * @property {?Table} Subtable A table to be rolled when this row is selected. If this row references an external oracle, use the `Oracles` property instead.
- * @property {?OracleRef[]} Oracles Any additional oracle tables that should be rolled when this row is selected.
- * @property {?GameObject[]} [Game Objects] Any game objects that are explicitly pointed to by the original text. It is *not* recommended to generate them automatically - see "Peeling the Onion", p. XX.
- * @property {?Suggestions} Suggestions Recommendations for oracles and game objects that are relevant to this oracle result; non-"canon" and may be safely ignored. The intent is that these may be presented to the user as optional shortcuts. For the best gameplay experience, it is *not* recommended to roll them automatically (see "Peeling the Onion", p. XX), or even to put them 'front and centre' in the UX (a collapsible element should be preferred).
- * @property {?string} Image The URL of an image for this row.
+ * @typedef {Row}
+ * @implements {IRow}
  */
-
 export default class Row implements IRow {
-  $id!: OracleTableRowId | SettingTruthTableRowId | null;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {!(OracleTableRowId | SettingTruthOptionId | null)}
+   */
+  $id!: OracleTableRowId | SettingTruthOptionId | null;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {IRowRollYaml[0]}
+   */
   Floor: IRowRollYaml[0];
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {IRowRollYaml[1]}
+   */
   Ceiling: IRowRollYaml[1];
-  Result!: MdString;
-  Summary?: MdString | undefined;
-  Images?: ImageUrl<Raster>[] | undefined; // NYI - needs switch case
-  Icon?: ImageUrl<Vector> | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {!(TermString | FragmentString | SentenceString)}
+   */
+  Result!: TermString | FragmentString | SentenceString;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(SentenceString | FragmentString | undefined)}
+   */
+  Summary?: SentenceString | FragmentString | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(OracleTableId[] | undefined)}
+   */
   "Oracle rolls"?: OracleTableId[] | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(Row[] | undefined)}
+   */
   Subtable?: Row[] | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(GameObject[] | undefined)}
+   */
   "Game objects"?: GameObject[] | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(MultipleRolls | undefined)}
+   */
   "Multiple rolls"?: MultipleRolls | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(Suggestions | undefined)}
+   */
   Suggestions?: Suggestions | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(AttributeSetter | undefined)}
+   */
   Attributes?: AttributeSetter | undefined;
-  "Roll template"?: IRollTemplate | undefined;
-  "Part of speech"?: PartOfSpeechTag[] | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?(RollTemplate<"Result"|"Summary"|"Description"|never> | undefined)}
+   */
+  "Roll template"?: RollTemplate<"Result"|"Summary"|"Description"|never> | undefined;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?IRowDisplay}
+   */
+  Display?: IRowDisplay;
+  /**
+   *
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @type {?OracleContent}
+   */
+  Content?: OracleContent;
+  /**
+   * Creates an instance of Row.
+   * @date 4/5/2022 - 1:01:40 AM
+   *
+   * @constructor
+   * @param {string} parentId
+   * @param {(IRowYaml | IRow)} json
+   */
   constructor(parentId: string, json: IRowYaml | IRow) {
     let rowData = _.clone(json);
     if (Array.isArray(rowData) &&(rowData as Array<unknown>).some(item => Array.isArray(item))) {
@@ -83,18 +168,29 @@ export default class Row implements IRow {
     rowContents.forEach(item => {
       switch (typeof item) {
         case "string": {
-          const string = item;
-          if (is<ImageUrl<Raster>>(string)) {
-            if (!this.Images) {
-              this.Images = [];
+          const str = item;
+          if (is<ImageUrl<Raster>>(str)) {
+            if (!this.Display) {
+              this.Display = { };
             }
-            this.Images.push(string);
+            if (!this.Display.Images) {
+              this.Display.Images = [];
+            }
+            this.Display.Images.push(str);
+          } else if (is<ImageUrl<Vector>>(str)) {
+            if (!this.Display) {
+              this.Display = { };
+            }
+            if (this.Display.Icon) {
+              throw badJsonError(this.constructor, str, "Row already has an icon!");
+            }
+            this.Display.Icon = str;
           } else if (!this.Result || this.Result?.length === 0) {
-            this.Result = string;
+            this.Result = str;
           } else if (!this.Summary || this.Summary?.length === 0) {
-            this.Summary = string;
+            this.Summary = str;
           } else {
-            throw badJsonError(this.constructor, string, "Unable to infer string assignment");
+            throw badJsonError(this.constructor, str, "Unable to infer string assignment");
           }
           break;
         }
@@ -103,16 +199,19 @@ export default class Row implements IRow {
             // null rows only exist to provide display text, so they only get strings assigned to them;
             break;
           }
-          _.forEach(item, (value, key) => {
-            switch (key as keyof Row) {
+          _.forEach((item as Record<string,unknown>), (value, key) => {
+            switch (key as (keyof Row|"Part of speech")) {
               case "Part of speech": {
-                this["Part of speech"] = value as typeof this["Part of speech"];
+                if (!this.Content) {
+                  this.Content = new OracleContent({});
+                }
+                this.Content["Part of speech"] = value as typeof this.Content["Part of speech"];
                 break;
               }
               case "Subtable": {
-                if (is<IRowYaml[]>(value)) {
+                if (Array.isArray(value) && Array.isArray(value[0])) {
                   this.Subtable = (value as IRowYaml[]).map(rowData => new Row(this.$id + " / Subtable", rowData));
-                } else if (is<IRow[]>(value)) {
+                } else if (Array.isArray(value) && typeof value[0] === "object") {
                   this.Subtable = (value as IRow[]).map(rowData => new Row(this.$id + " / Subtable", rowData));
                 } else {
                   throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
@@ -123,7 +222,7 @@ export default class Row implements IRow {
                 if (!is<OracleTableId[]>(value)) {
                   throw badJsonError(this.constructor, value, "expected OracleTableId[]");
                 }
-                this["Oracle rolls"] = value as OracleTableId[];
+                this["Oracle rolls"] = value;
                 break;
               }
               case "Multiple rolls": {
@@ -148,7 +247,7 @@ export default class Row implements IRow {
                   newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
                   // console.log("merged multiple suggestions", newSuggestions);
                 } else {
-                  newSuggestions = new Suggestions(value);
+                  newSuggestions = new Suggestions(value as ISuggestionsYaml);
                   // console.log("single suggestion", newSuggestions);
                 }
                 if (!this.Suggestions) {
@@ -163,14 +262,14 @@ export default class Row implements IRow {
                 if (typeof value !== "string") {
                   throw badJsonError(this.constructor, value, "expected result string");
                 }
-                if (!this.Result || this.Result.length === 0) { this.Result = value as string; }
+                if (!this.Result || this.Result.length === 0) { this.Result = value; }
                 break;
               }
               case "Summary": {
                 if (typeof value !== "string") {
                   throw badJsonError(this.constructor, value, "expected summary string");
                 }
-                if (!this.Summary || this.Summary.length === 0) { this.Summary = value as string; }
+                if (!this.Summary || this.Summary.length === 0) { this.Summary = value; }
                 break;
               }
               case "Attributes": {
@@ -178,10 +277,7 @@ export default class Row implements IRow {
                 break;
               }
               case "Roll template": {
-                if (!is<IRollTemplate>(value)) {
-                  throw badJsonError(this.constructor, value, "expected IOracleTemplateStrings");
-                }
-                this["Roll template"] = value as IRollTemplate;
+                this["Roll template"] = item as NonNullable<typeof this["Roll template"]>;
                 break;
               }
               default:
@@ -198,5 +294,14 @@ export default class Row implements IRow {
     if (!this.Result || this.Result.length === 0) {
       throw badJsonError(this.constructor, this, "Row doesn't have a result string");
     }
+  }
+  // this has to happen after derived class inheritance, rather than during the class constructor, so that class inheritance works properly. it gets done when the Oracle class builds the rows.
+  // FIXME: alternately, i could write an abstract class or something, oof.
+  validateRollTemplate() {
+    if (this["Roll template"]){
+      return validateRollTemplate(this as WithRequired<typeof this, "Roll template">,this["Roll template"]);
+    } else {
+      return true;
+    };
   }
 }

@@ -10,7 +10,7 @@ import type IAssetYaml from "./interfaces/IAssetYaml.js";
 import badJsonError from "../../functions/logging/badJsonError.js";
 import { ClockInput, NumberInput, SelectInput, TextInput } from "../general/Input.js";
 import type { IClockInput, IInput, INumberInput, ISelectInput , ITextInput } from "../general/Input.js";
-import type MdString from "../general/MdString.js";
+import type { ParagraphsString } from "../general/StringTypes.js";
 import Move from "../moves/Move.js";
 import type MoveId from "../moves/MoveId.js";
 import type { MoveIdGeneric } from "../moves/MoveId.js";
@@ -19,7 +19,7 @@ export type AssetAbilityId = `${AssetId} / Abilities / ${1|2|3}`;
 
 export default class AssetAbility implements IAssetAbility {
   $id: AssetAbilityId;
-  Text: MdString;
+  Text: ParagraphsString;
   Moves?: Move[] | undefined;
   Inputs?: IInput[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;

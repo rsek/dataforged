@@ -1,5 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/unbound-method */
+
+/**
+ * Given an array of objects, return the length of the longest object.
+ * @param array - Array<T>
+ * @returns The length of the longest string in the array.
+ */
 export default function lengthOfLongest<T extends {length: number}>(array: Array<T>): number {
   return array.map(item =>  item.length).reduce((a, b) => a > b ? a : b);
 }

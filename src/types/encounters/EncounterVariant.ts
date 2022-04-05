@@ -6,6 +6,7 @@ import type IEncounterVariantYaml from "./IEncounterVariantYaml.js";
 import type ChallengeRank from "../general/ChallengeRank.js";
 import type ISource from "../general/interfaces/ISource.js";
 import Source from "../general/Source.js";
+import type { ParagraphsString } from "../general/StringTypes.js";
 import type ITableDisplay from "../oracles/interfaces/IOracleDisplay.js";
 
 export default class EncounterVariant implements IEncounterVariant {
@@ -14,7 +15,7 @@ export default class EncounterVariant implements IEncounterVariant {
   Name!: string;
   Rank!: ChallengeRank;
   Display?: ITableDisplay | undefined;
-  Description!: string;
+  Description!: ParagraphsString;
   Nature?: EncounterNature | undefined;
   Tags?: EncounterTags[] | undefined;
   constructor(json: IEncounterVariantYaml, ancestorSourceJson: ISource) {

@@ -1,8 +1,9 @@
 import type IMoveTriggerOption from "./IMoveTriggerOption.js";
-import type MdString from "../../general/MdString.js";
+import type { FragmentString } from "../../general/StringTypes.js";
 
 export default interface IMoveTrigger {
+  // TODO: type MoveTriggerId
   $id: string;
-  Text: MdString;
+  Text: FragmentString;
   Options?: IMoveTriggerOption[] | undefined;
 }

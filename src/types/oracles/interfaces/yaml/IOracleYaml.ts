@@ -7,7 +7,7 @@ import type ITemplateTable from "./ITemplateTableYaml.js";
 import type ITemplateYamlBase from "./ITemplateYamlBase.js";
 import type IRequirementsYaml from "../../../general/interfaces/IRequirementsYaml.js";
 import type ISource from "../../../general/interfaces/ISource.js";
-import type MdString from "../../../general/MdString.js";
+import type { ParagraphsString } from "../../../general/StringTypes.js";
 import type OracleCategoryId from "../../OracleCategoryId.js";
 import type OracleTableId from "../../OracleTableId.js";
 import type IOracleContent from "../IOracleContent.js";
@@ -19,7 +19,7 @@ export default interface IOracleYaml extends IOracleYamlBase, ITemplateYamlBase 
   $id?: OracleTableId;
   Category: OracleCategoryId;
   "Member of"?: OracleTableId | undefined;
-  Description?: MdString | undefined;
+  Description?: ParagraphsString | undefined;
   Source: ISource;
   Usage?: IOracleUsageYaml | undefined;
   Content?: IOracleContent | undefined;

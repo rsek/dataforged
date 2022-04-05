@@ -5,13 +5,13 @@ import type IEncounterVariantYaml from "./IEncounterVariantYaml.js";
 import type ChallengeRank from "../general/ChallengeRank.js";
 import type IDisplay from "../general/IDisplay.js";
 import type ISource from "../general/interfaces/ISource.js";
-import type MdString from "../general/MdString.js";
+import type { FragmentString, ParagraphsString } from "../general/StringTypes.js";
 
 export default interface IEncounterYaml {
   $id?: EncounterId | undefined;
   Name: string;
   Nature: EncounterNature;
-  Summary: MdString;
+  Summary: FragmentString;
   Tags?: EncounterTags[] | undefined;
   Source: ISource;
   Rank: ChallengeRank;
@@ -20,6 +20,6 @@ export default interface IEncounterYaml {
   Drives: string[];
   Tactics: string[];
   Variants?: IEncounterVariantYaml[] | undefined;
-  Description: MdString;
-  "Quest Starter": MdString;
+  Description: ParagraphsString;
+  "Quest Starter": ParagraphsString;
 }

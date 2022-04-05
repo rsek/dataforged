@@ -17,6 +17,13 @@ interface IEncounterRoot extends IYamlWithRef {
   Encounters: IEncounterYaml[];
 }
 
+/**
+ * Assembles encounter data from YAML shorthand into JSON.
+ * @date 4/5/2022 - 1:48:10 AM
+ *
+ * @export
+ * @returns {Encounter[]}
+ */
 export default function buildEncounters(): Encounter[] {
   buildLog(buildEncounters, "Building encounters...");
   const encounterRoot = concatWithYamlRefs(undefined, ...filesEncounters) as IEncounterRoot;

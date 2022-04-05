@@ -1,8 +1,8 @@
-import type MdString from "../../general/MdString.js";
 import type { IActionRoll, IProgressRoll } from "../../general/Roll.js";
+import type { ParagraphsString } from "../../general/StringTypes.js";
 
 export default interface IMoveTriggerOptionYaml {
-  Text?: MdString | undefined;
+  Text?: ParagraphsString | undefined;
   "Action roll"?: IActionRoll | undefined;
   "Progress roll"?: IProgressRoll | undefined;
 }

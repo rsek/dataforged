@@ -7,8 +7,8 @@ import badJsonError from "../../functions/logging/badJsonError.js";
 import type IDisplay from "../../types/general/IDisplay.js";
 import validateColor from "../assets/validateColor.js";
 import type ISource from "../general/interfaces/ISource.js";
-import type MdString from "../general/MdString.js";
 import Source from "../general/Source.js";
+import type { ParagraphsString } from "../general/StringTypes.js";
 
 export class MoveCategoryDisplay implements IDisplay {
   Title: MoveCategoryDisplayName;
@@ -26,7 +26,7 @@ export default class MoveCategory implements IMoveCategoryYaml {
   $id: MoveCategoryId;
   Name: MoveCategoryName;
   Source: Source;
-  Description: MdString;
+  Description: ParagraphsString;
   Moves: Move[];
   Display: MoveCategoryDisplay;
   constructor(json: IMoveCategoryYaml, ...ancestorSourceJson: ISource[]) {

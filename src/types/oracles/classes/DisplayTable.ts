@@ -1,8 +1,5 @@
-
-
-import { is } from "typescript-is";
 import { ResultColumn, RollColumn } from "./TableColumn.js";
-import { getNameFromId } from "../../../functions/getNameFromId.js";
+import getNameFromId from "../../../functions/getNameFromId.js";
 import badJsonError from "../../../functions/logging/badJsonError.js";
 import type IDisplayTable from "../interfaces/IDisplayTable.js";
 import type OracleTableId from "../OracleTableId.js";

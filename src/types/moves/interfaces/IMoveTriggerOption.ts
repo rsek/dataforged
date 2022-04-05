@@ -1,9 +1,10 @@
-import type MdString from "../../general/MdString.js";
-import type { IActionRoll, ICustomStat, IProgressRoll } from "../../general/Roll.js";
+import type { IActionRoll, IProgressRoll } from "../../general/Roll.js";
+import type { FragmentString } from "../../general/StringTypes.js";
 
 export default interface IMoveTriggerOption {
+  // TODO: MoveTriggerOptionId
   $id: string;
-  Text?: MdString | undefined;
+  Text?: FragmentString | undefined;
   "Action roll"?: IActionRoll | undefined;
   "Progress roll"?: IProgressRoll | undefined;
 }

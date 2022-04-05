@@ -3,6 +3,12 @@ import replaceInAllStrings from "./replaceInAllStrings.js";
 import type ITemplateYamlBase from "../../types/oracles/interfaces/yaml/ITemplateYamlBase.js";
 import buildLog from "../logging/buildLog.js";
 
+/**
+ * It takes an oracle metadata template and builds it out with variables from a json object.
+ * @param {T} json - The JSON object that you want to replace the template variables in.
+ * @param {ITemplateYamlBase} template - The template to use.
+ * @returns The template oracle.
+ */
 export default function templateOracle<T extends ITemplateYamlBase>(json: T, template: ITemplateYamlBase): T {
   buildLog(templateOracle, "Building oracle from template...");
   let jsonClone = _.cloneDeep(json);

@@ -9,14 +9,14 @@ import type IEncounter from "./IEncounter.js";
 import type IEncounterYaml from "./IEncounterYaml.js";
 import type ChallengeRank from "../general/ChallengeRank.js";
 import type ISource from "../general/interfaces/ISource.js";
-import type MdString from "../general/MdString.js";
 import Source from "../general/Source.js";
+import type { FragmentString, ParagraphsString, SentenceString } from "../general/StringTypes.js";
 
 export default class Encounter implements IEncounter {
   $id: EncounterId;
   Name: string;
   Nature: EncounterNature;
-  Summary: MdString;
+  Summary: SentenceString | FragmentString;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
   Display?: EncounterDisplay | undefined;
@@ -24,8 +24,8 @@ export default class Encounter implements IEncounter {
   Drives: string[];
   Tactics: string[];
   Variants?: EncounterVariant[] | undefined;
-  Description: MdString;
-  "Quest Starter": MdString;
+  Description: ParagraphsString;
+  "Quest Starter": ParagraphsString;
   Source: Source;
   constructor(json: IEncounterYaml, ...ancestorSourceJson: ISource[]) {
     this.$id = `Encounters / ${json.Name}`;

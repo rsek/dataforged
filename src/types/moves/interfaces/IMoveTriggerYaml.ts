@@ -1,7 +1,7 @@
 import type IMoveTriggerOptionYaml from "./IMoveTriggerOptionYaml.js";
-import type MdString from "../../general/MdString.js";
+import type { FragmentString } from "../../general/StringTypes.js";
 
 export default interface IMoveTriggerYaml {
-  Text: MdString;
+  Text: FragmentString;
   Options?: IMoveTriggerOptionYaml[] | undefined;
 }

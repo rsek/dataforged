@@ -1,13 +1,11 @@
-
-
 import type IMoveTrigger from "./interfaces/IMoveTrigger.js";
 import type IMoveTriggerYaml from "./interfaces/IMoveTriggerYaml.js";
 import MoveTriggerOption from "./MoveTriggerOption.js";
-import type MdString from "../general/MdString.js";
+import type { FragmentString } from "../general/StringTypes.js";
 
 export default class MoveTrigger implements IMoveTrigger {
   $id: string;
-  Text: MdString;
+  Text: FragmentString;
   Options?: MoveTriggerOption[] | undefined;
   constructor(json: IMoveTriggerYaml, id: string) {
     this.$id = id;

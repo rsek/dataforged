@@ -1,4 +1,3 @@
-
 import _ from "lodash-es";
 import Oracle from "./Oracle.js";
 import OracleCategoryDisplay from "./OracleCategoryDisplay.js";
@@ -6,8 +5,8 @@ import OracleUsage from "./OracleUsage.js";
 import buildOracleId from "../../../functions/buildOracleId.js";
 import buildLog from "../../../functions/logging/buildLog.js";
 import propagateToChildren from "../../../functions/object-transform/propagateToChildren.js";
-import type MdString from "../../general/MdString.js";
 import Source from "../../general/Source.js";
+import type { ParagraphsString } from "../../general/StringTypes.js";
 import type IOracleCategory from "../interfaces/IOracleCategory.js";
 import type IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml.js";
 import type IOracleYaml from "../interfaces/yaml/IOracleYaml.js";
@@ -20,7 +19,7 @@ export default class OracleCategory implements IOracleCategory {
   Aliases?: string[] | undefined;
   Source: Source;
   Category?: OracleCategoryJaggedId | undefined;
-  Description?: MdString | undefined;
+  Description?: ParagraphsString | undefined;
   Display: OracleCategoryDisplay;
   Usage?: OracleUsage | undefined;
   Oracles?: Oracle[] | undefined;

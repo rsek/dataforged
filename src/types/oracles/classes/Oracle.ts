@@ -11,8 +11,8 @@ import templateOracle from "../../../functions/object-transform/templateOracle.j
 import templateOracleTable from "../../../functions/object-transform/templateOracleTable.js";
 import type { AttributeKey } from "../../gameObjects/IAttribute.js";
 import type IAttribute from "../../gameObjects/IAttribute.js";
-import type MdString from "../../general/MdString.js";
 import Source from "../../general/Source.js";
+import type { ParagraphsString } from "../../general/StringTypes.js";
 import type IOracleBase from "../interfaces/IOracleBase.js";
 import type ITableDisplay from "../interfaces/IOracleDisplay.js";
 import type IOracleCategoryYaml from "../interfaces/yaml/IOracleCategoryYaml.js";
@@ -27,7 +27,7 @@ export default class Oracle implements IOracleBase {
   Aliases?: string[] | undefined;
   "Member of"?: OracleTableId | undefined;
   Category: OracleCategoryId;
-  Description?: MdString | undefined;
+  Description?: ParagraphsString | undefined;
   Source: Source;
   Display: OracleDisplay;
   Usage?: OracleUsage | undefined;
@@ -73,7 +73,9 @@ export default class Oracle implements IOracleBase {
     if (tableData) {
       this.Table = tableData.map(row => {
         // TODO: propagate attributes to row objects
-        return new Row(this.$id, row);
+        const newRow =  new Row(this.$id, row);
+        newRow.validateRollTemplate();
+        return newRow;
       });
     }
     if (jsonClone.Oracles) {

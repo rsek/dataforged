@@ -17,7 +17,7 @@
 //   Usage?: ILegacyOracleUsage | undefined;
 //   Table?: ILegacyOracleTableRow[] | undefined;
 //   Tables?: ILegacyOracleInfo[] | undefined;
-//   Description?: MdString | undefined;
+//   Description?: ParagraphsString | undefined;
 //   Content?: IOracleContent | undefined;
 //   Source: ILegacySource;
 //   Aliases?: string[] | undefined;
@@ -33,7 +33,7 @@
 //   Table?: LegacyOracleTableRow[] | undefined;
 //   Tables?: LegacyOracleInfo[] | undefined;
 //   Usage?: LegacyOracleUsage | undefined;
-//   Description?: MdString | undefined;
+//   Description?: ParagraphsString | undefined;
 //   Content?: OracleContent | undefined;
 //   Initial?: boolean;
 //   Suggestions?: Suggestions;
