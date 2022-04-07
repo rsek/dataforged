@@ -1,5 +1,5 @@
 import AssetType from "@dataforged/classes/assets/AssetType.js";
-import type { RollableStat } from "@dataforged/classes/common/RollableStat.js";
+import type { RollableStat } from "@dataforged/constants/RollableStat.js";
 import type IAssetType from "@dataforged/interfaces/json_out/assets/IAssetType.js";
 import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
 import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
@@ -16,7 +16,6 @@ interface AssetDataRoot {
   Name: string;
   Source: ISource;
   "Asset Types": IAssetType[];
-  // Assets: IAssetYaml[];
 }
 /**
  * Build and validate all asset objects from YAML.

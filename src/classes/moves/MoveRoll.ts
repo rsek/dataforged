@@ -1,7 +1,7 @@
 import CustomStatOption from "@dataforged/classes/common/CustomStatOption.js";
-import type { RollableStat } from "@dataforged/classes/common/RollableStat.js";
 import type MoveTriggerOption from "@dataforged/classes/moves/MoveTriggerOption.js";
 import type { ProgressType } from "@dataforged/constants/Progress.js";
+import type { RollableStat } from "@dataforged/constants/RollableStat.js";
 import type ICustomStatOption from "@dataforged/interfaces/json_out/assets/ICustomStatOption.js";
 
 export class ActionRoll implements IActionRoll {

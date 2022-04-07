@@ -1,12 +1,12 @@
 
 import AlterMove from "@dataforged/classes/assets/AlterMove.js";
-import type { IAssetInput, IClockInputYaml, INumberInputYaml, ISelectInputYaml, ITextInputYaml } from "@dataforged/classes/common/IInput.js";
 
 import { ClockInput, NumberInput, SelectInput, TextInput } from "@dataforged/classes/common/Input.js";
-import InputType from "@dataforged/classes/common/InputType.js";
 import Move from "@dataforged/classes/moves/Move.js";
+import InputType from "@dataforged/constants/InputType.js";
 import type IAsset from "@dataforged/interfaces/json_out/assets/IAsset.js";
 import type IAssetAbility from "@dataforged/interfaces/json_out/assets/IAssetAbility.js";
+import type { IAssetInput, IClockInputYaml, INumberInputYaml, ISelectInputYaml, ITextInputYaml } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
 import type IAssetAbilityYaml from "@dataforged/interfaces/yaml_in/assets/IAssetAbilityYaml.js";
 import type { AssetAbilityId } from "@dataforged/strings/id/AssetAbilityId.js";
 import type { MoveIdGeneric } from "@dataforged/strings/id/MoveId.js";

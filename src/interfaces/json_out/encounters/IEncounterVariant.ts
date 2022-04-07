@@ -1,12 +1,12 @@
-import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
-import type IEncounterVariantYaml from "@dataforged/interfaces/yaml_in/encounters/IEncounterVariantYaml.js";
-import type EncounterId from "@dataforged/strings/id/EncounterId.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 import type ChallengeRank from "@dataforged/constants/ChallengeRank.js";
 import type EncounterNature from "@dataforged/constants/EncounterNature.js";
 import type EncounterTags from "@dataforged/constants/EncounterTags.js";
+import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
+import type IEncounterYaml from "@dataforged/interfaces/yaml_in/encounters/IEncounterYaml.js";
+import type EncounterId from "@dataforged/strings/id/EncounterId.js";
+import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 
-export default interface IEncounterVariant extends IEncounterVariantYaml {
+export default interface IEncounterVariant extends Partial<IEncounterYaml> {
   $id: EncounterId;
   Source: ISource;
   Name: string;

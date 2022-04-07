@@ -1,6 +1,6 @@
 import type { ClockSegments, ClockType } from "@dataforged/classes/common/Input.js";
-import type InputType from "@dataforged/classes/common/InputType.js";
 import type ConditionMeterName from "@dataforged/constants/ConditionMeterName.js";
+import type InputType from "@dataforged/constants/InputType.js";
 import type Stat from "@dataforged/constants/Stat.js";
 import type { IHasId, IHasName } from "@dataforged/interfaces/json_out/common/IHas.js";
 import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";

@@ -1,11 +1,11 @@
 import AssetAbility from "@dataforged/classes/assets/AssetAbility.js";
 import ConditionMeter from "@dataforged/classes/common/ConditionMeter.js";
-import type { IAssetInput, IAssetInputYaml, IClockInputYaml, INumberInputYaml, ISelectInputYaml, ITextInputYaml } from "@dataforged/classes/common/IInput.js";
 import { ClockInput, NumberInput, SelectInput, TextInput } from "@dataforged/classes/common/Input.js";
-import InputType from "@dataforged/classes/common/InputType.js";
 import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
+import InputType from "@dataforged/constants/InputType.js";
 import type IAsset from "@dataforged/interfaces/json_out/assets/IAsset.js";
 import type IAssetAttachment from "@dataforged/interfaces/json_out/assets/IAssetAttachment.js";
+import type { IAssetInput, IAssetInputYaml, IClockInputYaml, INumberInputYaml, ISelectInputYaml, ITextInputYaml } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
 import type IAssetType from "@dataforged/interfaces/json_out/assets/IAssetType.js";
 import type IDisplay from "@dataforged/interfaces/json_out/common/IDisplay.js";
 import type IAssetYaml from "@dataforged/interfaces/yaml_in/assets/IAssetYaml.js";

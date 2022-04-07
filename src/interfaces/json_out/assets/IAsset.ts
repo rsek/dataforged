@@ -1,6 +1,6 @@
-import type { IAssetInput } from "@dataforged/classes/common/IInput.js";
 import type IAssetAbility from "@dataforged/interfaces/json_out/assets/IAssetAbility.js";
 import type IAssetAttachment from "@dataforged/interfaces/json_out/assets/IAssetAttachment.js";
+import type { IAssetInput } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
 import type IConditionMeter from "@dataforged/interfaces/json_out/common/IConditionMeter.js";
 import type { IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "@dataforged/interfaces/json_out/common/IHas.js";
 import type AssetId from "@dataforged/strings/id/AssetId.js";

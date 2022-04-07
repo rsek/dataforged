@@ -46,8 +46,6 @@ export interface IHasAliases<T extends string = string> {
 
 /**
  * Interface for items with sourcing information.
-
- *
  */
 export interface IHasSource<T extends ISource = ISource> {
 
@@ -59,7 +57,6 @@ export interface IHasSource<T extends ISource = ISource> {
 
 /**
  * For elements with unique string IDs.
- *
  */
 export interface IHasId<T extends string = string> {
 
@@ -71,7 +68,6 @@ export interface IHasId<T extends string = string> {
 
 /**
  * Interface for items with a Name key.
- *
  */
 export interface IHasName<T extends string = string> {
   /**
@@ -83,7 +79,6 @@ export interface IHasName<T extends string = string> {
 
 /**
  * Interface for items with rendering information.
- *
  */
 export interface IHasDisplay<T extends Partial<IDisplay> = Partial<IDisplay>> {
   /**
@@ -94,7 +89,6 @@ export interface IHasDisplay<T extends Partial<IDisplay> = Partial<IDisplay>> {
 
 /**
  * Interface for items that reproduce Starforged rules text in markdown.
- *
  */
 export interface IHasText<T extends ParagraphsString|SentenceString|FragmentString = ParagraphsString> {
   /**
@@ -105,7 +99,6 @@ export interface IHasText<T extends ParagraphsString|SentenceString|FragmentStri
 
 /**
  * Interface for items that include "non-canonical" suggestions of related items.
- *
  */
 export interface IHasSuggestions<T extends ISuggestions | Suggestions = ISuggestions> {
   /**
@@ -116,7 +109,6 @@ export interface IHasSuggestions<T extends ISuggestions | Suggestions = ISuggest
 
 /**
  * Interface for items that include roll string templates.
- *
  */
 export interface IHasRollTemplate<T extends string> {
 
@@ -138,7 +130,6 @@ export interface IHasOracleUsage<T extends Partial<IOracleUsage> = IOracleUsage>
 
 /**
  * Interface for items with metadata that describes an oracle's semantic or lexical content.
- *
  */
 export interface IHasOracleContent<T extends Partial<IOracleContent> = IOracleContent> {
   /**
@@ -149,7 +140,6 @@ export interface IHasOracleContent<T extends Partial<IOracleContent> = IOracleCo
 
 /**
  * Interface for items that have prerequisites.
- *
  */
 export interface IHasRequirements<T extends Partial<IRequirements> = IRequirements> {
   /**
@@ -160,7 +150,6 @@ export interface IHasRequirements<T extends Partial<IRequirements> = IRequiremen
 
 /**
  * Interface for items that have a table-like object.
- *
  */
 export interface IHasTable<T extends IRow = IRow> {
   Table : T[]
@@ -168,7 +157,6 @@ export interface IHasTable<T extends IRow = IRow> {
 
 /**
  * Interface for items that have a subtable-like object.
- *
  */
 export interface IHasSubtable<T extends IRow = IRow> {
   Subtable : T[]
@@ -176,7 +164,6 @@ export interface IHasSubtable<T extends IRow = IRow> {
 
 /**
  * Interface for items that have associated game objects.
- *
  */
 export interface IHasGameObjects<T extends IGameObject = IGameObject> {
   /**
