@@ -18,11 +18,11 @@ plugins:
   - "@typescript-eslint"
   - lodash
   - import
-  - sort-class-members
+  - eslint-plugin-tsdoc
+  # - sort-class-members
 
 env:
   es6: true
-
 extends:
   - eslint:recommended
   - plugin:@typescript-eslint/recommended
@@ -30,6 +30,7 @@ extends:
   - prettier
 rules:
   # import/no-unresolved: error
+  tsdoc/syntax: warn
   "@typescript-eslint/no-inferrable-types":
     - 0
   import/extensions:
@@ -59,17 +60,17 @@ rules:
         consistent: true
   prefer-rest-params:
     - 0
-  sort-class-members/sort-class-members:
-    - 1
-    - order:
-        - "[static-properties]"
-        - "[static-methods]"
-        - "[properties]"
-        - "[conventional-private-properties]"
-        - "constructor"
-        - "[methods]"
-        - "[conventional-private-methods]"
-      accessorPairPositioning: "getThenSet"
+  # sort-class-members/sort-class-members:
+  #   - 1
+  #   - order:
+  #       - "[static-properties]"
+  #       - "[static-methods]"
+  #       - "[properties]"
+  #       - "[conventional-private-properties]"
+  #       - "constructor"
+  #       - "[methods]"
+  #       - "[conventional-private-methods]"
+  #     accessorPairPositioning: "getThenSet"
   indent:
     - error
     - 2
@@ -88,9 +89,34 @@ rules:
     - 0
   lodash/prefer-constant:
     - 0
+  "@typescript-eslint/no-empty-interface":
+    - 0
+  "@typescript-eslint/consistent-type-definitions":
+    - warn
+    - interface
+  "@typescript-eslint/consistent-indexed-object-style":
+    - warn
+    - record
   "@typescript-eslint/consistent-type-imports":
     - 1
     - prefer: type-imports
+  camelcase: off
+  "@typescript-eslint/naming-convention":
+    - "warn"
+    - selector: function
+      format:
+        - camelCase
+    - selector: variable
+      format:
+        - UPPER_CASE
+        - camelCase
+    - selector: parameter
+      format:
+        - camelCase
+      leadingUnderscore: allow
+    - selector: typeLike
+      format:
+        - PascalCase
   block-scoped-var: warn
   curly:
     - warn
@@ -161,6 +187,7 @@ rules:
     - warn
     - as-needed
   require-jsdoc: warn
+
   semi: off
   "@typescript-eslint/semi":
     - error
@@ -198,7 +225,9 @@ rules:
         caseInsensitive: true
   no-restricted-imports:
     - error
-    - paths:
+    - patterns:
+        - ".*"
+      paths:
         - name: lodash
           message: Use 'lodash-es' instead.
   no-console:

@@ -1,6 +1,6 @@
 {
   "exclude": [
-    "src/functions/*.js",
+    "src/utils/*.js",
     "node_modules",
     "roll20",
     "**/.vscode/**/*",
@@ -9,7 +9,6 @@
     "analysis"
   ],
   "compilerOptions": {
-    "useDefineForClassFields": false,
     "target": "esnext",
     "lib": [
       "es6",
@@ -19,35 +18,40 @@
     ],
     "plugins": [
       {
-        "transform": "typescript-is/lib/transform-inline/transformer",
-        // "shortCircuit": true,
-        "ignoreClasses": true,
-        "ignoreMethods": true,
-        "functionBehavior": "ignore",
-        "disallowSuperfluousObjectProperties": true,
-        "transformNonNullExpressions": true,
-        "emitDetailedErrors": true
-      }
+        "transform": "@zerollup/ts-transform-paths",
+      },
+      {
+        "transform": "typescript-is/lib/transform-inline/transformer"
+      },
     ],
-    "sourceMap": true,
-    "module": "ESNext",
+    "paths": {
+      "@dataforged/*": [
+        "./src/*",
+        "./build/*"
+      ],
+    },
+    "baseUrl": ".",
+    "outDir": "build",
+    "rootDir": "src",
     "allowJs": true,
-    "rootDir": "./src",
-    "outDir": "./build",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    "removeComments": true,
     "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "allowUnreachableCode": true,
     "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "useDefineForClassFields": false,
     "typeRoots": [
-      "./types",
-      "./node_modules/@types"
+      "types",
+      "node_modules/@types"
     ],
-    // "types": [
-    //   "node"
-    // ],
   },
 }
