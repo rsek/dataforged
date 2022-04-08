@@ -1,3 +1,3 @@
 
-type EncounterId = `Encounters / ${string}`; export default EncounterId;
+type EncounterId = `Encounters / ${string}`; export { EncounterId };
 

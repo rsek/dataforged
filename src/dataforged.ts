@@ -28,3 +28,4 @@ const srcPng = "src/data/img/raster/png";
 const outWebP = "img/raster/webp";
 
 buildImages(srcRoot, outRoot, srcPng, outWebP);
+

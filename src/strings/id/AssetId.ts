@@ -1,4 +1,6 @@
-import type AssetTypeId from "@dataforged/strings/id/AssetTypeId.js";
+import type { AssetTypeId } from "@dataforged/strings/id/AssetTypeId.js";
 
-type AssetId = `${AssetTypeId} / ${string}`; export default AssetId;
+type AssetId = `${AssetTypeId} / ${string}`;
+
+export { AssetId };
 

@@ -5,5 +5,5 @@ enum MeterAlias {
   CommandVehicleIntegrity = "Command Vehicle Integrity",
   SupportVehicleIntegrity = "Support Vehicle Integrity",
   IncidentalVehicleIntegrity = "Incidental Vehicle Integrity"
-}export default MeterAlias;
+}export { MeterAlias };
 

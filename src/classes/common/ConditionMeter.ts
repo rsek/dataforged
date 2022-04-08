@@ -1,9 +1,9 @@
 import Counter from "@dataforged/classes/common/Counter.js";
-import MeterAlias from "@dataforged/constants/MeterAlias.js";
-import type MeterCondition from "@dataforged/constants/MeterCondition.js";
-import type IConditionMeter from "@dataforged/interfaces/json_out/common/IConditionMeter.js";
+import { MeterAlias } from "@dataforged/constants/MeterAlias.js";
+import type { MeterCondition } from "@dataforged/constants/MeterCondition.js";
+import type { IConditionMeter } from "@dataforged/interfaces/json_out/common/IConditionMeter.js";
 import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
-import type AssetTypeId from "@dataforged/strings/id/AssetTypeId.js";
+import type { AssetTypeId } from "@dataforged/strings/id/AssetTypeId.js";
 
 export default class ConditionMeter extends Counter implements IConditionMeter {
   // set by parent constructor

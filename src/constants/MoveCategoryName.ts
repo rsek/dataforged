@@ -14,5 +14,5 @@ enum MoveCategoryName {
     Assets = "Assets"
 }
 
-export default MoveCategoryName;
+export { MoveCategoryName };
 

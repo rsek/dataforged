@@ -1,4 +1,4 @@
-export default interface ICustomStatOption {
+export interface ICustomStatOption {
   $id: string;
   Name: string;
   Value: number;

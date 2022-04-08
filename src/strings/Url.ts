@@ -1,7 +1,7 @@
 
 
 type Url = `${Protocol}://${string}`;
-export default Url;
+export { Url };
 type Protocol = "http" | "https";
 
 export type Raster = "webp";

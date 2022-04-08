@@ -1,5 +1,5 @@
 import MoveCategory from "@dataforged/classes/moves/MoveCategory.js";
-import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
 import type IYamlWithRef from "@dataforged/interfaces/yaml_in/common/IYamlWithRef.js";
 import type IMoveCategoryYaml from "@dataforged/interfaces/yaml_in/moves/IMoveCategoryYaml.js";
 import _ from "lodash-es";

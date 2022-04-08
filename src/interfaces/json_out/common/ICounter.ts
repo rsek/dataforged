@@ -3,7 +3,7 @@ import type { IHasId, IHasName } from "@dataforged/interfaces/json_out/common/IH
 /**
  * Interface for a counter embedded in a Starforged Asset.
  */
-export default interface ICounter extends IHasId, IHasName {
+export interface ICounter extends IHasId, IHasName {
   /**
    * The minimum value of the counter.
    */

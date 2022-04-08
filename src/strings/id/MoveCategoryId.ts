@@ -1,4 +1,4 @@
-import type MoveCategoryName from "@dataforged/constants/MoveCategoryName.js";
+import type { MoveCategoryName } from "@dataforged/constants/MoveCategoryName.js";
 
-type MoveCategoryId = `Moves / ${MoveCategoryName}`;export default MoveCategoryId;
+type MoveCategoryId = `Moves / ${MoveCategoryName}`;export { MoveCategoryId };
 

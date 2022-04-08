@@ -9,4 +9,4 @@ enum AssetTypeName {
   SupportVehicle = "Support Vehicle"
 }
 
-export default AssetTypeName;
+export { AssetTypeName };

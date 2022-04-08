@@ -1,12 +1,14 @@
-import type { ClockSegments, ClockType } from "@dataforged/classes/common/Input.js";
-import type ConditionMeterName from "@dataforged/constants/ConditionMeterName.js";
+import type { ClockSegments } from "@dataforged/constants/ClockSegments.js";
+import type { ClockType } from "@dataforged/constants/ClockType.js";
+import type { ConditionMeterName } from "@dataforged/constants/ConditionMeterName.js";
 import type InputType from "@dataforged/constants/InputType.js";
-import type Stat from "@dataforged/constants/Stat.js";
+import type { Stat } from "@dataforged/constants/Stat.js";
 import type { IHasId, IHasName } from "@dataforged/interfaces/json_out/common/IHas.js";
 import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
-import type PartialBy from "@dataforged/utils/types/PartialBy.js";
-import type { StubBy } from "@dataforged/utils/types/Stub.js";
 
+/**
+ * @internal
+ */
 export interface IInputBase extends IHasId, IHasName {
   "Input Type": InputType;
   Adjustable?: boolean;
@@ -14,7 +16,7 @@ export interface IInputBase extends IHasId, IHasName {
 
 export type IAssetInput = INumberInput | ISelectInput | ITextInput | IClockInput;
 
-export type IAssetInputYaml = StubBy<IAssetInput, "$id">;
+
 
 export interface INumberInput extends IInputBase {
   Name: string;
@@ -25,8 +27,6 @@ export interface INumberInput extends IInputBase {
   "Starting Value": number;
 }
 
-export interface INumberInputYaml extends PartialBy<INumberInput, "$id"> {}
-
 export interface IClockInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Clock;
@@ -36,15 +36,11 @@ export interface IClockInput extends IInputBase {
 }
 
 
-export interface IClockInputYaml extends PartialBy<IClockInput, "$id"> {}
 
 export interface ITextInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Text;
 }
-
-
-export interface ITextInputYaml extends PartialBy<ITextInput, "$id"> {}
 
 
 
@@ -55,10 +51,11 @@ export interface ISelectInput extends IInputBase {
 }
 
 
-export interface ISelectInputYaml extends PartialBy<ISelectInput, "$id"> {}
 
 export type ISelectInputOption = ISelectInputStatOption | ISelectInputMeterOption | ISelectInputCustomOption;
-
+/**
+ * @internal
+ */
 export interface ISelectInputOptionBase extends IHasId, IHasName { }
 
 export interface ISelectInputStatOption extends ISelectInputOptionBase {

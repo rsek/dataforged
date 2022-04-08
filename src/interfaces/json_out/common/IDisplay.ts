@@ -4,7 +4,7 @@ import type { ImageUrl, Raster, Vector } from "@dataforged/strings/Url.js";
  * Interface for data relevant to an item's display/rendering.
  *
  */
-export default interface IDisplay {
+export interface IDisplay {
   /**
    * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
    */

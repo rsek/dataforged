@@ -1,4 +1,4 @@
-import type IRow from "@dataforged/interfaces/json_out/oracles/IRow.js";
+import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 
 /**

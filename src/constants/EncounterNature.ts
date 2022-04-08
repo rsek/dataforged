@@ -5,5 +5,5 @@ enum EncounterNature {
   Human = "Human",
   Machine = "Machine",
   Monster = "Monster"
-} export default EncounterNature;
+} export { EncounterNature };
 

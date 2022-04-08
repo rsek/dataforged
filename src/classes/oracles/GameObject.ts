@@ -1,12 +1,12 @@
 import Requirements from "@dataforged/classes/common/Requirements.js";
-import type IGameObject from "@dataforged/interfaces/json_out/common/IGameObject.js";
+import type { IGameObject } from "@dataforged/interfaces/json_out/common/IGameObject.js";
 import type { GameObjectType } from "@dataforged/interfaces/json_out/common/IGameObjectBase.js";
 import type IRequirementsYaml from "@dataforged/interfaces/yaml_in/common/IRequirementsYaml.js";
 import type GameObjectYaml from "@dataforged/interfaces/yaml_in/game_objects/GameObjectYaml.js";
-import _ from "lodash-es";
-import { is } from "typescript-is";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import _ from "lodash-es";
+import { is } from "typescript-is";
 
 export default class GameObject implements IGameObject {
   "Object type": GameObjectType;

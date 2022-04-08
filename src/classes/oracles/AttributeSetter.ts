@@ -1,6 +1,6 @@
-import type IAttribute from "@dataforged/interfaces/json_out/common/IAttribute.js";
-import _ from "lodash-es";
+import type { IAttribute } from "@dataforged/interfaces/json_out/common/IAttribute.js";
 import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import _ from "lodash-es";
 
 export default class AttributeSetter extends Array<IAttribute> {
   constructor(json: AttributeHash) {

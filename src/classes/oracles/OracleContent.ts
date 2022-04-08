@@ -1,6 +1,6 @@
-import type IOracleContent from "@dataforged/interfaces/json_out/oracles/IOracleContent.js";
-import { is } from "typescript-is";
+import type { IOracleContent } from "@dataforged/interfaces/json_out/oracles/IOracleContent.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import { is } from "typescript-is";
 
 /**
  * Metadata that describes an oracle's semantic or lexical content.

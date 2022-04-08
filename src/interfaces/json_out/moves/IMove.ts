@@ -1,16 +1,16 @@
 import type { IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type IMoveOutcomes from "@dataforged/interfaces/json_out/moves/IMoveOutcomes.js";
+import type { IMoveOutcomes } from "@dataforged/interfaces/json_out/moves/IMoveOutcomes.js";
 import type IMoveTriggerYaml from "@dataforged/interfaces/yaml_in/moves/IMoveTriggerYaml.js";
-import type AssetId from "@dataforged/strings/id/AssetId.js";
-import type MoveCategoryId from "@dataforged/strings/id/MoveCategoryId.js";
-import type MoveId from "@dataforged/strings/id/MoveId.js";
-import type OracleTableId from "@dataforged/strings/id/OracleTableId.js";
+import type { AssetId } from "@dataforged/strings/id/AssetId.js";
+import type { MoveCategoryId } from "@dataforged/strings/id/MoveCategoryId.js";
+import type { MoveId } from "@dataforged/strings/id/MoveId.js";
+import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 
 /**
  * Interface representing a Starforged move.
  *
  */
-export default interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
+export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
   /**
    * The ID of the parent Asset of the move, if any.
    */

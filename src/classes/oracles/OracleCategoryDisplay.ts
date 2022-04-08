@@ -1,4 +1,4 @@
-import type IOracleCategoryDisplay from "@dataforged/interfaces/json_out/oracles/IOracleCategoryDisplay.js";
+import type { IOracleCategoryDisplay } from "@dataforged/interfaces/json_out/oracles/IOracleCategoryDisplay.js";
 import type { ImageUrl, Raster, Vector } from "@dataforged/strings/Url.js";
 
 export default class OracleCategoryDisplay implements IOracleCategoryDisplay {

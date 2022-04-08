@@ -4,24 +4,24 @@ import GameObject from "@dataforged/classes/oracles/GameObject.js";
 import MultipleRolls from "@dataforged/classes/oracles/MultipleRolls.js";
 import OracleContent from "@dataforged/classes/oracles/OracleContent.js";
 import type { IHasSubtable } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type IMultipleRolls from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
-import type RollTemplate from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
+import type { IMultipleRolls } from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
+import type { RollTemplate } from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
 import type { IRowDisplay } from "@dataforged/interfaces/json_out/oracles/IRow.js";
-import type IRow from "@dataforged/interfaces/json_out/oracles/IRow.js";
+import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
 import type { SettingTruthOptionId } from "@dataforged/interfaces/json_out/setting_truths/ISettingTruthOption.js";
 import type ISuggestionsYaml from "@dataforged/interfaces/yaml_in/common/ISuggestionsYaml.js";
 import type GameObjectYaml from "@dataforged/interfaces/yaml_in/game_objects/GameObjectYaml.js";
 import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import _ from "lodash-es";
-import type OracleTableId from "@dataforged/strings/id/OracleTableId.js";
-import type OracleTableRowId from "@dataforged/strings/id/OracleTableRowId.js";
+import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
+import type { OracleTableRowId } from "@dataforged/strings/id/OracleTableRowId.js";
 import type { FragmentString, SentenceString, TermString } from "@dataforged/strings/MdString.js";
 import type { ImageUrl, Raster, Vector } from "@dataforged/strings/Url.js";
-import { is } from "typescript-is";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
 import type { RequireKey } from "@dataforged/utils/types/RequireKey.js";
 import validateRollTemplate from "@dataforged/utils/validation/validateRollTemplate.js";
+import _ from "lodash-es";
+import { is } from "typescript-is";
 
 /**
  * Class representing a single row of an oracle table.

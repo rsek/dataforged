@@ -1,10 +1,10 @@
-import type SourceTitle from "@dataforged/constants/SourceTitle.js";
+import type { SourceTitle } from "@dataforged/constants/SourceTitle.js";
 
 /**
  * Interface representing data on the game's source.
  *
  */
-export default interface ISource {
+export interface ISource {
   /**
    * The title of the source.
    */

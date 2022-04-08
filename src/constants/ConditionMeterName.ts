@@ -3,5 +3,5 @@ enum ConditionMeterName {
     Spirit = "Spirit",
     Supply = "Supply"
 }
-export default ConditionMeterName;
+export { ConditionMeterName };
 

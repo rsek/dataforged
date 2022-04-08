@@ -6,4 +6,4 @@ enum Stat {
     Wits = "Wits"
 }
 
-export default Stat;
+export { Stat };

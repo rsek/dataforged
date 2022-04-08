@@ -1,7 +1,7 @@
 
 
 import Encounter from "@dataforged/classes/encounters/Encounter.js";
-import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
 import type IYamlWithRef from "@dataforged/interfaces/yaml_in/common/IYamlWithRef.js";
 import type IEncounterYaml from "@dataforged/interfaces/yaml_in/encounters/IEncounterYaml.js";
 import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";

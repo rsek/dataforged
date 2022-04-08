@@ -1,6 +1,6 @@
-import type IAttributeChoices from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
-import _ from "lodash-es";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
 import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import _ from "lodash-es";
 
 export default class AttributeRequirements extends Array<IAttributeChoices> {
   constructor(json: AttributeHash) {

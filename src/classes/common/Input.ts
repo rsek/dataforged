@@ -1,11 +1,14 @@
-import type ConditionMeterName from "@dataforged/constants/ConditionMeterName.js";
+import type { ClockSegments } from "@dataforged/constants/ClockSegments.js";
+import { ClockType } from "@dataforged/constants/ClockType.js";
+import type { ConditionMeterName } from "@dataforged/constants/ConditionMeterName.js";
 import InputType from "@dataforged/constants/InputType.js";
-import type Stat from "@dataforged/constants/Stat.js";
+import type { Stat } from "@dataforged/constants/Stat.js";
 import type { IClockInput, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
 import type { IHasId } from "@dataforged/interfaces/json_out/common/IHas.js";
 import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
 import type { StubBy } from "@dataforged/utils/types/Stub.js";
 import { is } from "typescript-is";
+
 
 export type Input = NumberInput | SelectInput | TextInput;
 
@@ -23,19 +26,6 @@ export class NumberInput implements INumberInput, IHasId {
     Object.assign(this, json);
   }
 }
-
-export enum ClockType {
-  Tension = "Tension",
-  Campaign = "Campaign"
-}
-
-export enum ClockSegments {
-  Four = 4,
-  Six = 6,
-  Eight = 8,
-  Ten = 10
-}
-
 
 export class ClockInput implements IClockInput, IHasId {
   Name!: string;

@@ -1,10 +1,10 @@
-import type IAttributeChoices from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
-import type IDisplay from "@dataforged/interfaces/json_out/common/IDisplay.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
+import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
 import type { IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type IMultipleRolls from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
+import type { IMultipleRolls } from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
 import type { SettingTruthOptionId } from "@dataforged/interfaces/json_out/setting_truths/ISettingTruthOption.js";
-import type OracleTableId from "@dataforged/strings/id/OracleTableId.js";
-import type OracleTableRowId from "@dataforged/strings/id/OracleTableRowId.js";
+import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
+import type { OracleTableRowId } from "@dataforged/strings/id/OracleTableRowId.js";
 import type { FragmentString, SentenceString, TermString } from "@dataforged/strings/MdString.js";
 
 /**
@@ -15,7 +15,7 @@ export type IRowDisplay = Omit<IDisplay, "Title">;
 /**
  * Interface representing a single row in an oracle table.
  */
-export default interface IRow extends Partial<
+export interface IRow extends Partial<
   IHasSummary &
   IHasRollTemplate<"Result" | "Summary" |"Description"> &
   IHasSuggestions &

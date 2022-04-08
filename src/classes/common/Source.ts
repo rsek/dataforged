@@ -1,8 +1,8 @@
-import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
-import _ from "lodash-es";
+import { SourceTitle } from "@dataforged/constants/SourceTitle.js";
+import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
 import badEnumError from "@dataforged/utils/logging/badEnumError.js";
 import enumHas from "@dataforged/utils/validation/enumHas.js";
-import SourceTitle from "@dataforged/constants/SourceTitle.js";
+import _ from "lodash-es";
 
 export default class Source implements ISource {
   Title: SourceTitle;

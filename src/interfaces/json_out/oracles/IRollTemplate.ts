@@ -1,7 +1,7 @@
 import type { SettingTruthId } from "@dataforged/classes/setting_truths/SettingTruth.js";
-import type OracleTableId from "@dataforged/strings/id/OracleTableId.js";
+import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 import type { FragmentString, ParagraphsString, SentenceString } from "@dataforged/strings/MdString.js";
-import type MdString from "@dataforged/strings/MdString.js";
+import type { MdString } from "@dataforged/strings/MdString.js";
 
 /**
  * Represents a template string to be filled with results from specific oracle tables.
@@ -21,4 +21,4 @@ export type OracleSubtableId = `${SettingTruthId|OracleTableId} / ${number}-${nu
  */
 type RollTemplate<T extends string> = { [P in T|never]?: RollTemplateString | undefined; };
 
-export default RollTemplate;
+export { RollTemplate };

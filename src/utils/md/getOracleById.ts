@@ -1,7 +1,7 @@
 import type Oracle from "@dataforged/classes/oracles/Oracle.js";
-import type IOracleBase from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
+import type { IOracleBase } from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
+import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 import jsonpath from "jsonpath";
-import type OracleTableId from "@dataforged/strings/id/OracleTableId.js";
 
 /**
  * Given an array of oracle data and an id, return the oracle data that matches the id. Slow!

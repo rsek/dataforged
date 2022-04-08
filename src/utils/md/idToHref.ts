@@ -1,4 +1,4 @@
-import type IDisplay from "@dataforged/interfaces/json_out/common/IDisplay.js";
+import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
 import findById from "@dataforged/utils/md/findById.js";
 
 /**

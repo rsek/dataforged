@@ -1,5 +1,5 @@
 import MoveTriggerOption from "@dataforged/classes/moves/MoveTriggerOption.js";
-import type IMoveTrigger from "@dataforged/interfaces/json_out/moves/IMoveTrigger.js";
+import type { IMoveTrigger } from "@dataforged/interfaces/json_out/moves/IMoveTrigger.js";
 import type IMoveTriggerYaml from "@dataforged/interfaces/yaml_in/moves/IMoveTriggerYaml.js";
 import type { FragmentString } from "@dataforged/strings/MdString.js";
 

@@ -1,8 +1,8 @@
 
 
-import type IMultipleRolls from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
-import { is } from "typescript-is";
+import type { IMultipleRolls } from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import { is } from "typescript-is";
 
 /**
  * Represents "Roll twice" and "Roll three times" oracle results.

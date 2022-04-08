@@ -1,4 +1,4 @@
-import type IDisplay from "@dataforged/interfaces/json_out/common/IDisplay.js";
+import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
 
 export default class EncounterDisplay implements IDisplay {
   Title: string;

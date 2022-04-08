@@ -1,5 +1,5 @@
 import SettingTruth from "@dataforged/classes/setting_truths/SettingTruth.js";
-import type ISource from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
 import type IYamlWithRef from "@dataforged/interfaces/yaml_in/common/IYamlWithRef.js";
 import type ISettingTruthYaml from "@dataforged/interfaces/yaml_in/setting_truths/ISettingTruthYaml.js";
 import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";

@@ -1,10 +1,10 @@
 import type { SettingTruthId, SettingTruthName } from "@dataforged/classes/setting_truths/SettingTruth.js";
 import type { IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type ISuggestions from "@dataforged/interfaces/json_out/common/ISuggestions.js";
-import type ISettingTruthOption from "@dataforged/interfaces/json_out/setting_truths/ISettingTruthOption.js";
+import type { ISuggestions } from "@dataforged/interfaces/json_out/common/ISuggestions.js";
+import type { ISettingTruthOption } from "@dataforged/interfaces/json_out/setting_truths/ISettingTruthOption.js";
 import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 
-export default interface ISettingTruth extends IHasId<SettingTruthId>, IHasName<SettingTruthName>, IHasSource, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
+export interface ISettingTruth extends IHasId<SettingTruthId>, IHasName<SettingTruthName>, IHasSource, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
   /**
    * The 'canonical' options for this setting truth category.
    */

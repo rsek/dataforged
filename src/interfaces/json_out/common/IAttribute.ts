@@ -4,7 +4,7 @@ export type AttributeKey = keyof Omit<GameObjectYaml, "Object type">;
 
 export type AttributeValue = GameObjectYaml[keyof Omit<GameObjectYaml, "Object type">];
 
-export default interface IAttribute {
+export interface IAttribute {
   Key: AttributeKey;
   Value?: AttributeValue;
 }

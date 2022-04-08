@@ -1,6 +1,6 @@
 import type { IActionRoll, IProgressRoll } from "@dataforged/classes/moves/MoveRoll.js";
 import { ActionRoll } from "@dataforged/classes/moves/MoveRoll.js";
-import type IMoveTriggerOption from "@dataforged/interfaces/json_out/moves/IMoveTriggerOption.js";
+import type { IMoveTriggerOption } from "@dataforged/interfaces/json_out/index.js";
 import type IMoveTriggerOptionYaml from "@dataforged/interfaces/yaml_in/moves/IMoveTriggerOptionYaml.js";
 import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 

@@ -11,4 +11,4 @@ enum ChallengeRank {
   Extreme = 4,
   Epic = 5
 }
-export default ChallengeRank;
+export { ChallengeRank };

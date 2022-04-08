@@ -1,6 +1,5 @@
 /**
  * Enumerates valid sourcebook titles.
- *
  */
 enum SourceTitle {
   Starforged = "Ironsworn: Starforged Rulebook",
@@ -11,7 +10,7 @@ enum SourceTitle {
   IronswornAssets = "Ironsworn Assets",
   IronswornBonusAssets = "Ironsworn Bonus Assets (July 2020)"
 }
-export default SourceTitle;
+export { SourceTitle };
 
 /**
  * Enumerates valid source URLs.

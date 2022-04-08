@@ -1,6 +1,6 @@
 import MoveOutcome from "@dataforged/classes/moves/MoveOutcome.js";
-import type IMoveOutcome from "@dataforged/interfaces/json_out/moves/IMoveOutcome.js";
-import type IMoveOutcomes from "@dataforged/interfaces/json_out/moves/IMoveOutcomes.js";
+import type { IMoveOutcome } from "@dataforged/interfaces/json_out/moves/IMoveOutcome.js";
+import type { IMoveOutcomes } from "@dataforged/interfaces/json_out/moves/IMoveOutcomes.js";
 
 export default class MoveOutcomes implements IMoveOutcomes {
   $id: string; // FIXME: outcome ID

@@ -1,11 +1,11 @@
-import type IActorYaml from "@dataforged/interfaces/yaml_in/game_objects/IActorYaml.js";
-import type ActorType from "@dataforged/constants/ActorType.js";
+import type { ActorType } from "@dataforged/constants/ActorType.js";
 import type Dominion from "@dataforged/constants/attributes/Dominion.js";
 import type FactionType from "@dataforged/constants/attributes/FactionType.js";
 import type FringeGroup from "@dataforged/constants/attributes/FringeGroup.js";
 import type Guild from "@dataforged/constants/attributes/Guild.js";
 import type Influence from "@dataforged/constants/attributes/Influence.js";
 import type Leadership from "@dataforged/constants/attributes/Leadership.js";
+import type IActorYaml from "@dataforged/interfaces/yaml_in/game_objects/IActorYaml.js";
 
 export type FactionOption = Dominion | FringeGroup | Guild;
 

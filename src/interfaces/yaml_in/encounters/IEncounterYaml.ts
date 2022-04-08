@@ -1,4 +1,4 @@
-import type IEncounter from "@dataforged/interfaces/json_out/encounters/IEncounter.js";
+import type { IEncounter } from "@dataforged/interfaces/json_out/encounters/IEncounter.js";
 import type IEncounterVariantYaml from "@dataforged/interfaces/yaml_in/encounters/IEncounterVariantYaml.js";
 import type { StubBy } from "@dataforged/utils/types/Stub.js";
 

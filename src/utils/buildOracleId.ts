@@ -1,5 +1,5 @@
-import type IOracle from "@dataforged/interfaces/json_out/oracles/IOracle.js";
-import type IOracleCategory from "@dataforged/interfaces/json_out/oracles/IOracleCategory.js";
+import type { IOracle } from "@dataforged/interfaces/json_out/oracles/IOracle.js";
+import type { IOracleCategory } from "@dataforged/interfaces/json_out/oracles/IOracleCategory.js";
 import type IOracleCategoryYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleCategoryYaml.js";
 import type IOracleYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleYaml.js";
 

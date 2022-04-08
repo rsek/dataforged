@@ -2,7 +2,7 @@
  * A generic string that should be parsed as Markdown.
  *
  */
-type MdString = string; export default MdString;
+type MdString = string; export { MdString };
 /**
  * A Markdown string for a single term - most often a single word, but a handful might be multiple words, e.g. noun phrases.
  *
