@@ -1,4 +1,4 @@
-import type { ImageUrl, Raster, Vector } from "@dataforged/strings/Url.js";
+import type { ImageUrl, Raster, Vector } from "@dataforged/interfaces/json_out/index.js";
 
 /**
  * Interface for data relevant to an item's display/rendering.

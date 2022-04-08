@@ -1,16 +1,15 @@
 import type { IAssetAbility } from "@dataforged/interfaces/json_out/assets/IAssetAbility.js";
 import type { IAssetAttachment } from "@dataforged/interfaces/json_out/assets/IAssetAttachment.js";
 import type { IAssetInput } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
-import type { IConditionMeter } from "@dataforged/interfaces/json_out/common/IConditionMeter.js";
+import type { IConditionMeter } from "@dataforged/interfaces/json_out/assets/IConditionMeter.js";
 import type { IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type { AssetId } from "@dataforged/strings/id/AssetId.js";
-import type { AssetTypeId } from "@dataforged/strings/id/AssetTypeId.js";
-import type { FragmentString } from "@dataforged/strings/MdString.js";
+import type { FragmentString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
+import type { AssetId, AssetTypeId } from "@dataforged/interfaces/json_out/index.js";
+
 import type Tuple from "@dataforged/utils/types/Tuple.js";
 
 /**
- * An interface representing a Starforged assets.
- *
+ * An interface representing a Starforged asset.
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
   /**

@@ -4,12 +4,12 @@ import MoveOutcomes from "@dataforged/classes/moves/MoveOutcomes.js";
 import MoveTrigger from "@dataforged/classes/moves/MoveTrigger.js";
 import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
 import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
+import type { AssetId, OracleTableId } from "@dataforged/interfaces/json_out/index.js";
+
 import type { IMove } from "@dataforged/interfaces/json_out/moves/IMove.js";
-import type { AssetId } from "@dataforged/strings/id/AssetId.js";
-import type { MoveCategoryId } from "@dataforged/strings/id/MoveCategoryId.js";
-import type { MoveId } from "@dataforged/strings/id/MoveId.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
+import type { MoveCategoryId } from "@dataforged/interfaces/json_out/moves/strings/MoveCategoryId.js";
+import type { MoveId } from "@dataforged/interfaces/json_out/moves/strings/MoveId.js";
 import buildLog from "@dataforged/utils/logging/buildLog.js";
 import _ from "lodash-es";
 

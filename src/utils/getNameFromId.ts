@@ -1,7 +1,8 @@
 
 // TODO: generate fallback names for when it's unspecified
 
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
+
 
 /**
  * Gets the last item of a path-like oracle ID.

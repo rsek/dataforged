@@ -1,17 +1,14 @@
 import type { IHasName } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type { IOracle } from "@dataforged/interfaces/json_out/oracles/IOracle.js";
 import type { IOracleBase } from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
-import type { IOracleCategoryDisplay } from "@dataforged/interfaces/json_out/oracles/IOracleCategoryDisplay.js";
-import type { OracleCategoryJaggedId, OracleCategoryName } from "@dataforged/strings/id/OracleCategoryId.js";
-import type { OracleCategoryId } from "@dataforged/strings/id/OracleCategoryId.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
+import type { OracleCategoryJaggedId, OracleCategoryName } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
+import type { OracleCategoryId } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
 
 export interface IOracleCategory extends IOracleBase, IHasName<OracleCategoryName> {
   $id: OracleCategoryId;
   Category?: OracleCategoryJaggedId | undefined;
-  Description?: ParagraphsString | undefined;
-  Display: IOracleCategoryDisplay;
-  Oracles?: IOracle[] | undefined;
   Categories?: IOracleCategory[] | undefined;
+  /**
+   * A list of sample names for this category (only used by Planetary Class subcategories).
+   */
   "Sample Names"?: string[] | undefined;
 }

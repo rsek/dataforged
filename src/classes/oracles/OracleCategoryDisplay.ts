@@ -1,11 +1,10 @@
-import type { IOracleCategoryDisplay } from "@dataforged/interfaces/json_out/oracles/IOracleCategoryDisplay.js";
-import type { ImageUrl, Raster, Vector } from "@dataforged/strings/Url.js";
+import type { IDisplay, ImageUrl, Raster, Vector } from "@dataforged/interfaces/json_out/index.js";
 
-export default class OracleCategoryDisplay implements IOracleCategoryDisplay {
+export default class OracleCategoryDisplay implements IDisplay {
   Title: string;
   Icon?: ImageUrl<Vector> | undefined;
   Images?: ImageUrl<Raster>[] | undefined;
-  constructor(json: Partial<IOracleCategoryDisplay>, parentName: string) {
+  constructor(json: Partial<IDisplay>, parentName: string) {
     this.Title = json.Title ?? parentName;
     this.Images = json.Images;
   }

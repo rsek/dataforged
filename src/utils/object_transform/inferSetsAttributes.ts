@@ -1,5 +1,5 @@
-import type { IAttribute } from "@dataforged/interfaces/json_out/common/IAttribute.js";
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
+import type { IAttribute } from "@dataforged/interfaces/json_out/oracles/IAttribute.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
 import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
 
 /**

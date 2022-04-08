@@ -1,6 +1,6 @@
 import Requirements from "@dataforged/classes/common/Requirements.js";
 import Suggestions from "@dataforged/classes/common/Suggestions.js";
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
 import type { IOracleUsage } from "@dataforged/interfaces/json_out/oracles/IOracleUsage.js";
 import type IOracleUsageYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleUsageYaml.js";
 

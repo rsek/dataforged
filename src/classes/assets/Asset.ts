@@ -3,16 +3,9 @@ import ConditionMeter from "@dataforged/classes/common/ConditionMeter.js";
 import { ClockInput, NumberInput, SelectInput, TextInput } from "@dataforged/classes/common/Input.js";
 import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
 import InputType from "@dataforged/constants/InputType.js";
-import type { IAsset } from "@dataforged/interfaces/json_out/assets/IAsset.js";
-import type { IAssetAttachment } from "@dataforged/interfaces/json_out/assets/IAssetAttachment.js";
-import type { IAssetInput } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
-import type { IAssetType } from "@dataforged/interfaces/json_out/assets/IAssetType.js";
-import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
+import type { AssetAbilityId, AssetId, AssetTypeId, FragmentString, IAsset, IAssetAttachment, IAssetInput, IAssetType, IDisplay } from "@dataforged/interfaces/json_out/index.js";
+
 import type IAssetYaml from "@dataforged/interfaces/yaml_in/assets/IAssetYaml.js";
-import type { AssetAbilityId } from "@dataforged/strings/id/AssetAbilityId.js";
-import type { AssetId } from "@dataforged/strings/id/AssetId.js";
-import type { AssetTypeId } from "@dataforged/strings/id/AssetTypeId.js";
-import type { FragmentString } from "@dataforged/strings/MdString.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 import buildLog from "@dataforged/utils/logging/buildLog.js";
 import type { RequireKey } from "@dataforged/utils/types/RequireKey.js";

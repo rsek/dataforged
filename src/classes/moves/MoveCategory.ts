@@ -3,10 +3,10 @@ import Move from "@dataforged/classes/moves/Move.js";
 import type { MoveCategoryName } from "@dataforged/constants/MoveCategoryName.js";
 import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
 import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
+import type { MoveCategoryId } from "@dataforged/interfaces/json_out/moves/strings/MoveCategoryId.js";
+import type { MoveCategoryTitle } from "@dataforged/interfaces/json_out/moves/strings/MoveCategoryTitle.js";
 import type IMoveCategoryYaml from "@dataforged/interfaces/yaml_in/moves/IMoveCategoryYaml.js";
-import type { MoveCategoryId } from "@dataforged/strings/id/MoveCategoryId.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
-import type { MoveCategoryTitle } from "@dataforged/strings/MoveCategoryTitle.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 import validateColor from "@dataforged/utils/validateColor.js";
 

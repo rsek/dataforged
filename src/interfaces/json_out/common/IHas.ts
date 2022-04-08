@@ -1,14 +1,14 @@
 import type Suggestions from "@dataforged/classes/common/Suggestions.js";
 import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
-import type { IGameObject } from "@dataforged/interfaces/json_out/common/IGameObject.js";
 import type { IRequirements } from "@dataforged/interfaces/json_out/common/IRequirements.js";
 import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
 import type { ISuggestions } from "@dataforged/interfaces/json_out/common/ISuggestions.js";
+import type { FragmentString, ParagraphsString, SentenceString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
+import type { IGameObject } from "@dataforged/interfaces/json_out/oracles/IGameObject.js";
 import type { IOracleContent } from "@dataforged/interfaces/json_out/oracles/IOracleContent.js";
 import type { IOracleUsage } from "@dataforged/interfaces/json_out/oracles/IOracleUsage.js";
 import type { RollTemplate } from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
 import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
-import type { FragmentString, ParagraphsString, SentenceString } from "@dataforged/strings/MdString.js";
 
 /**
  * Interface for items with a user-facing markdown summary.
@@ -183,4 +183,8 @@ export interface IHasGameObjects<T extends IGameObject = IGameObject> {
    * Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see "Peeling the Onion", p. 293.
    */
   "Game objects": T[]
+}
+
+export interface IHasQuestStarter {
+  "Quest Starter": ParagraphsString;
 }

@@ -1,6 +1,6 @@
 import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 import type { IDisplayTable } from "@dataforged/interfaces/json_out/oracles/IDisplayTable.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 
 export interface ITableDisplay extends IDisplay {
   Title: string;

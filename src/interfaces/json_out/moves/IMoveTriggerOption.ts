@@ -1,5 +1,6 @@
-import type { IActionRoll, IProgressRoll } from "@dataforged/classes/moves/MoveRoll.js";
-import type { FragmentString } from "@dataforged/strings/MdString.js";
+import type { IProgressRoll } from "@dataforged/interfaces/json_out/moves/IProgressRoll";
+import type { FragmentString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
+import type { IActionRoll } from "@dataforged/interfaces/json_out/moves/IActionRoll";
 
 export interface IMoveTriggerOption {
   // TODO: MoveTriggerOptionId

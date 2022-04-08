@@ -1,6 +1,6 @@
 import type Oracle from "@dataforged/classes/oracles/Oracle.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 import type { IOracleBase } from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 import jsonpath from "jsonpath";
 
 /**

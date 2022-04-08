@@ -1,8 +1,8 @@
 import OracleCategory from "@dataforged/classes/oracles/OracleCategory.js";
 import REFS_PATH from "@dataforged/constants/refsPath.js";
+import type { OracleSubcategoryName } from "@dataforged/interfaces/json_out/index.js";
+import type { OracleCategoryName } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
 import type IOracleCategoryYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleCategoryYaml.js";
-import type { OracleCategoryName } from "@dataforged/strings/id/OracleCategoryId.js";
-import type { OracleSubcategoryName } from "@dataforged/strings/id/OracleSubcategoryId.js";
 import getSubdirs from "@dataforged/utils/io/getSubdirs.js";
 import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";

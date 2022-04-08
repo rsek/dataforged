@@ -1,5 +1,5 @@
 import type { MeterCondition } from "@dataforged/constants/MeterCondition.js";
-import type { ICounter } from "@dataforged/interfaces/json_out/common/ICounter.js";
+import type { ICounter } from "@dataforged/interfaces/json_out/assets/ICounter.js";
 
 /**
  * Interface representing a condition meter.

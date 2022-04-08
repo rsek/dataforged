@@ -1,8 +1,6 @@
-import type { IGameObject } from "@dataforged/interfaces/json_out/common/IGameObject.js";
-import type { AssetId } from "@dataforged/strings/id/AssetId.js";
-import type { EncounterId } from "@dataforged/strings/id/EncounterId.js";
-import type { MoveId } from "@dataforged/strings/id/MoveId.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
+import type { EncounterId } from "@dataforged/interfaces/json_out/encounters/strings/EncounterId.js";
+import type { AssetId, IGameObject, OracleTableId } from "@dataforged/interfaces/json_out/index.js";
+import type { MoveId } from "@dataforged/interfaces/json_out/moves/strings/MoveId.js";
 
 /**
  * Interface representing "non-canon" suggestions for related game content.

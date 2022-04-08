@@ -1,6 +1,5 @@
 import type { OracleCategoryFlatName, OracleCategoryJaggedName } from "@dataforged/constants/OracleCategoryName.js";
-import type { OracleSubcategoryName } from "@dataforged/strings/id/OracleSubcategoryId.js";
-import type { OracleSubcategoryId } from "@dataforged/strings/id/OracleSubcategoryId.js";
+import type { OracleSubcategoryId, OracleSubcategoryName } from "@dataforged/interfaces/json_out/index.js";
 
 export type OracleRoot = "Oracles";
 export type OracleCategoryFlatPath = `${OracleRoot} / ${OracleCategoryFlatName}`;

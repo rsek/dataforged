@@ -1,4 +1,4 @@
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
 
 /**
  * Data describing an item's requirements.

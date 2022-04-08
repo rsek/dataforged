@@ -3,11 +3,11 @@ import type { ChallengeRank } from "@dataforged/constants/ChallengeRank.js";
 import type { EncounterNature } from "@dataforged/constants/EncounterNature.js";
 import type { EncounterTags } from "@dataforged/constants/EncounterTags.js";
 import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
 import type { IEncounterVariant } from "@dataforged/interfaces/json_out/encounters/IEncounterVariant.js";
+import type { EncounterId } from "@dataforged/interfaces/json_out/encounters/strings/EncounterId.js";
 import type { ITableDisplay } from "@dataforged/interfaces/json_out/oracles/IOracleDisplay.js";
 import type IEncounterVariantYaml from "@dataforged/interfaces/yaml_in/encounters/IEncounterVariantYaml.js";
-import type { EncounterId } from "@dataforged/strings/id/EncounterId.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 
 export default class EncounterVariant implements IEncounterVariant {
   $id: EncounterId;

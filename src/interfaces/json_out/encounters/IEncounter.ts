@@ -4,9 +4,9 @@ import type { EncounterTags } from "@dataforged/constants/EncounterTags.js";
 import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
 import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasSource, IHasSummary } from "@dataforged/interfaces/json_out/common/IHas.js";
 import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
+import type { FragmentString, ParagraphsString, SentenceString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
 import type { IEncounterVariant } from "@dataforged/interfaces/json_out/encounters/IEncounterVariant.js";
-import type { EncounterId } from "@dataforged/strings/id/EncounterId.js";
-import type { FragmentString, ParagraphsString, SentenceString } from "@dataforged/strings/MdString.js";
+import type { EncounterId } from "@dataforged/interfaces/json_out/encounters/strings/EncounterId.js";
 
 /**
  * Interface representing an Encounter/Foe entry.

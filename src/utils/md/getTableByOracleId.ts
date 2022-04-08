@@ -1,8 +1,8 @@
 import type Row from "@dataforged/classes/oracles/Row.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 import type { IOracle } from "@dataforged/interfaces/json_out/oracles/IOracle.js";
 import type { IOracleBase } from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
 import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 import jsonpath from "jsonpath";
 
 /**

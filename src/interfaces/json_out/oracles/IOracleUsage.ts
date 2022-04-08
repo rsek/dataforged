@@ -1,7 +1,7 @@
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
 import type { IHasRequirements, IHasSuggestions } from "@dataforged/interfaces/json_out/common/IHas.js";
 import type { IRequirements } from "@dataforged/interfaces/json_out/common/IRequirements.js";
 import type { ISuggestions } from "@dataforged/interfaces/json_out/common/ISuggestions.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
 
 export interface IOracleUsage extends Partial<IHasRequirements & IHasSuggestions> {
   Initial?: boolean | undefined;

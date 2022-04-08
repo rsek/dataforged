@@ -4,7 +4,7 @@ import type { ConditionMeterName } from "@dataforged/constants/ConditionMeterNam
 import type InputType from "@dataforged/constants/InputType.js";
 import type { Stat } from "@dataforged/constants/Stat.js";
 import type { IHasId, IHasName } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
+import type { AssetConditionMeterId } from "@dataforged/interfaces/json_out/index.js";
 
 /**
  * @internal

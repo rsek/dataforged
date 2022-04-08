@@ -2,7 +2,7 @@ import AssetType from "@dataforged/classes/assets/AssetType.js";
 import type { RollableStat } from "@dataforged/constants/RollableStat.js";
 import type { IAssetType } from "@dataforged/interfaces/json_out/assets/IAssetType.js";
 import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
-import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
+import type { AssetConditionMeterId } from "@dataforged/interfaces/json_out/index.js";
 import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 import buildLog from "@dataforged/utils/logging/buildLog.js";

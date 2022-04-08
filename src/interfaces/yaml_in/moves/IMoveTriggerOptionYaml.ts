@@ -1,5 +1,6 @@
-import type { IActionRoll, IProgressRoll } from "@dataforged/classes/moves/MoveRoll.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
+import type { IActionRoll, ParagraphsString } from "@dataforged/interfaces/json_out/index.js";
+import type { IProgressRoll } from "@dataforged/interfaces/json_out/moves/IProgressRoll.js";
+
 
 export default interface IMoveTriggerOptionYaml {
   Text?: ParagraphsString | undefined;

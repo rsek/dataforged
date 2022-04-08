@@ -1,8 +1,8 @@
 import type { IHasRollTemplate } from "@dataforged/interfaces/json_out/common/IHas.js";
+import type { MdString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 import type { RollTemplate } from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
 import type { RollTemplateString } from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
-import type { MdString } from "@dataforged/strings/MdString.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 import _ from "lodash-es";
 import { TypedRegEx } from "typed-regex";

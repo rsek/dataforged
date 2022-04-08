@@ -1,18 +1,14 @@
+
 import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
 import OracleContent from "@dataforged/classes/oracles/OracleContent.js";
 import OracleDisplay from "@dataforged/classes/oracles/OracleDisplay.js";
 import OracleUsage from "@dataforged/classes/oracles/OracleUsage.js";
 import Row from "@dataforged/classes/oracles/Row.js";
-import type { AttributeKey } from "@dataforged/interfaces/json_out/common/IAttribute.js";
-import type { IAttribute } from "@dataforged/interfaces/json_out/common/IAttribute.js";
-import type { IOracle } from "@dataforged/interfaces/json_out/oracles/IOracle.js";
-import type { ITableDisplay } from "@dataforged/interfaces/json_out/oracles/IOracleDisplay.js";
+import type { AttributeKey, IAttribute, IOracle, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@dataforged/interfaces/json_out/index.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
 import type IOracleCategoryYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleCategoryYaml.js";
 import type IOracleYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleYaml.js";
 import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import type { OracleCategoryId } from "@dataforged/strings/id/OracleCategoryId.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 import buildOracleId from "@dataforged/utils/buildOracleId.js";
 import buildLog from "@dataforged/utils/logging/buildLog.js";
 import inferSetsAttributes from "@dataforged/utils/object_transform/inferSetsAttributes.js";
@@ -109,11 +105,11 @@ export default class Oracle extends SourceInheritor implements IOracle  {
         this.Usage = {};
       }
       if (this.Usage?.["Sets attributes"]) {
-        this.Usage["Sets attributes"].map(item => item.Key).forEach(key => keys.add(key));
+        this.Usage["Sets attributes"].map((item: IAttributeChoices) => item.Key).forEach(key => keys.add(key));
       }
       this.Oracles.forEach(oracle => {
         if (oracle.Usage?.["Sets attributes"]) {
-          oracle.Usage["Sets attributes"].map(item => item.Key).forEach(key => keys.add(key));
+          oracle.Usage["Sets attributes"].map((item: IAttributeChoices) => item.Key).forEach(key => keys.add(key));
         }
       });
       if (keys.size > 0) {

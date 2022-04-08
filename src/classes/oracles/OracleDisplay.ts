@@ -1,8 +1,6 @@
 import DisplayTable from "@dataforged/classes/oracles/DisplayTable.js";
-import type { IDisplayTable } from "@dataforged/interfaces/json_out/oracles/IDisplayTable.js";
-import type { ITableDisplay } from "@dataforged/interfaces/json_out/oracles/IOracleDisplay.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
-import type { ImageUrl, Raster, Vector } from "@dataforged/strings/Url.js";
+import type { IDisplayTable, ImageUrl, ITableDisplay, OracleTableId, Raster, Vector } from "@dataforged/interfaces/json_out/index.js";
+
 
 export default class OracleDisplay implements ITableDisplay {
   Title: string;

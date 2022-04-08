@@ -1,5 +1,5 @@
+import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
 import type { IMoveOutcome } from "@dataforged/interfaces/json_out/moves/IMoveOutcome.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 
 export default class MoveOutcome implements IMoveOutcome {
   $id: string;

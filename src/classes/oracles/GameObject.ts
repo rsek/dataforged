@@ -1,6 +1,6 @@
 import Requirements from "@dataforged/classes/common/Requirements.js";
-import type { IGameObject } from "@dataforged/interfaces/json_out/common/IGameObject.js";
-import type { GameObjectType } from "@dataforged/interfaces/json_out/common/IGameObjectBase.js";
+import type { IGameObject } from "@dataforged/interfaces/json_out/oracles/IGameObject.js";
+import type { GameObjectType } from "@dataforged/interfaces/json_out/oracles/IGameObjectBase.js";
 import type IRequirementsYaml from "@dataforged/interfaces/yaml_in/common/IRequirementsYaml.js";
 import type GameObjectYaml from "@dataforged/interfaces/yaml_in/game_objects/GameObjectYaml.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";

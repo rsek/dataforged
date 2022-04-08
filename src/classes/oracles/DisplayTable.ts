@@ -1,6 +1,5 @@
 import { ResultColumn, RollColumn } from "@dataforged/classes/oracles/TableColumn.js";
-import type { IDisplayTable } from "@dataforged/interfaces/json_out/oracles/IDisplayTable.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
+import type { IDisplayTable, OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 import getNameFromId from "@dataforged/utils/getNameFromId.js";
 import badJsonError from "@dataforged/utils/logging/badJsonError.js";
 

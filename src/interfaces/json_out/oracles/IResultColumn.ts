@@ -9,8 +9,8 @@
 // }
 
 import type Row from "@dataforged/classes/oracles/Row.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 import type { ITableColumnBase } from "@dataforged/interfaces/json_out/oracles/ITableColumnBase.js";
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
 
 // type RowKeysWithValueOfType = {
 //   [Key in keyof Omit<Row, `$${string}`> as Row[Key] extends string ? Omit<Row,Key> : Key]: Key;

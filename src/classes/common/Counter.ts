@@ -1,4 +1,4 @@
-import type { ICounter } from "@dataforged/interfaces/json_out/common/ICounter.js";
+import type { ICounter } from "@dataforged/interfaces/json_out/assets/ICounter.js";
 import type { StubExcept } from "@dataforged/utils/types/Stub.js";
 
 /**

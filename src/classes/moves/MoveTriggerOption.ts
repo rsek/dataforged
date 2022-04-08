@@ -1,8 +1,9 @@
-import type { IActionRoll, IProgressRoll } from "@dataforged/classes/moves/MoveRoll.js";
+import type { IProgressRoll } from "@dataforged/interfaces/json_out/moves/IProgressRoll";
 import { ActionRoll } from "@dataforged/classes/moves/MoveRoll.js";
+import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
 import type { IMoveTriggerOption } from "@dataforged/interfaces/json_out/index.js";
+import type { IActionRoll } from "@dataforged/interfaces/json_out/moves/IActionRoll";
 import type IMoveTriggerOptionYaml from "@dataforged/interfaces/yaml_in/moves/IMoveTriggerOptionYaml.js";
-import type { ParagraphsString } from "@dataforged/strings/MdString.js";
 
 export default class MoveTriggerOption implements IMoveTriggerOption {
   $id: string;

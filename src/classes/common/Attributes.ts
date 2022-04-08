@@ -1,4 +1,4 @@
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/common/IAttributeChoices.js";
+import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
 import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
 import _ from "lodash-es";
 

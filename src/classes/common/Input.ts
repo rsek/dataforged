@@ -5,7 +5,7 @@ import InputType from "@dataforged/constants/InputType.js";
 import type { Stat } from "@dataforged/constants/Stat.js";
 import type { IClockInput, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
 import type { IHasId } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type { AssetConditionMeterId } from "@dataforged/strings/id/AssetConditionMeterId.js";
+import type { AssetConditionMeterId } from "@dataforged/interfaces/json_out/index.js";
 import type { StubBy } from "@dataforged/utils/types/Stub.js";
 import { is } from "typescript-is";
 

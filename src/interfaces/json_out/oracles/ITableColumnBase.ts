@@ -1,4 +1,4 @@
-import type { OracleTableId } from "@dataforged/strings/id/OracleTableId.js";
+import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
 
 /**
  * @internal

@@ -2,7 +2,7 @@ import type LocationTheme from "@dataforged/constants/attributes/LocationTheme.j
 import type PlanetaryClass from "@dataforged/constants/attributes/PlanetaryClass.js";
 import type VaultZone from "@dataforged/constants/attributes/VaultZone.js";
 import type Zone from "@dataforged/constants/attributes/Zone.js";
-import type { OracleRoot } from "@dataforged/strings/id/OracleCategoryId.js";
+import type { OracleRoot } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
 
 type OracleSubcategoryPath = `Derelicts / ${Zone}` | `Location Themes / ${LocationTheme}` | `Planets / ${PlanetaryClass}` | `Vaults / ${VaultZone}`;
 
