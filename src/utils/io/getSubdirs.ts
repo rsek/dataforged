@@ -8,7 +8,7 @@ const basePath = "./src/data";
  * @param root - The root directory of the project.
  * @returns An array of paths.
  */
-export default function getSubdirs(dir = "", root = basePath): fs.PathLike[] {
+export function getSubdirs(dir = "", root = basePath): fs.PathLike[] {
   const path = dir.length ? root + "/" + dir : root;
   const result = fs
     .readdirSync(path)

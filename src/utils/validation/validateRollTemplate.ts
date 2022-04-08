@@ -1,9 +1,5 @@
-import type { IHasRollTemplate } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type { MdString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
-import type { RollTemplate } from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
-import type { RollTemplateString } from "@dataforged/interfaces/json_out/oracles/IRollTemplate.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import type { IHasRollTemplate, MdString, OracleTableId, RollTemplate, RollTemplateString } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 import _ from "lodash-es";
 import { TypedRegEx } from "typed-regex";
 import { is } from "typescript-is";
@@ -17,7 +13,7 @@ const rollTplPattern = TypedRegEx("\$\{\{(?<id>.*?)\}\}", "g");
  * @param templateObj - RollTemplate<T>
  * @returns The original object as the validated type.
  */
-export default function validateRollTemplate<T extends IHasRollTemplate<string>>(parent: T, templateObj: RollTemplate<string & keyof T>) {
+export function validateRollTemplate<T extends IHasRollTemplate<string>>(parent: T, templateObj: RollTemplate<string & keyof T>) {
   // FIXME: smarted subtable template handling.
   _.forEach(templateObj, (rollTplData, key) => {
     if (!parent[key as keyof T]) {

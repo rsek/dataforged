@@ -1,6 +1,6 @@
-import type ITemplateYamlBase from "@dataforged/interfaces/yaml_in/templates/ITemplateYamlBase.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
-import replaceInAllStrings from "@dataforged/utils/object_transform/replaceInAllStrings.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { replaceInAllStrings } from "@dataforged/utils/object_transform/replaceInAllStrings.js";
+import type { ITemplateYamlBase } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 
 /**
@@ -9,7 +9,7 @@ import _ from "lodash-es";
  * @param template - The template to use.
  * @returns The template oracle.
  */
-export default function templateOracle<T extends ITemplateYamlBase>(json: T, template: ITemplateYamlBase): T {
+export function templateOracle<T extends ITemplateYamlBase>(json: T, template: ITemplateYamlBase): T {
   buildLog(templateOracle, "Building oracle from template...");
   let jsonClone = _.cloneDeep(json);
   const templateClone = _.cloneDeep(template);

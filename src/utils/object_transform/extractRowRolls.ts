@@ -1,5 +1,4 @@
-import type { IRowRollYaml } from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
+import type { IRowRollYaml, IRowYaml } from "@dataforged/yaml_in/index.js";
 import { is } from "typescript-is";
 
 /**
@@ -7,7 +6,7 @@ import { is } from "typescript-is";
  * @param row - IRowYaml | IRowRollYaml
  * @returns The first two elements of the array.
  */
-export default function extractRowRolls(row: IRowYaml | IRowRollYaml): IRowRollYaml {
+export function extractRowRolls(row: IRowYaml | IRowRollYaml): IRowRollYaml {
   if (!Array.isArray(row)) {
     throw new Error(`Received an invalid row array ${JSON.stringify(row)}`);
   }

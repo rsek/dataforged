@@ -1,12 +1,11 @@
-import type { IOracleContent } from "@dataforged/interfaces/json_out/oracles/IOracleContent.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import type { IOracleContent } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 import { is } from "typescript-is";
 
 /**
  * Metadata that describes an oracle's semantic or lexical content.
- *
  */
-export default class OracleContent implements IOracleContent {
+export class OracleContent implements IOracleContent {
   "Part of speech"?: string[] | undefined;
   "Tags"?: string[] | undefined;
   constructor(json: IOracleContent) {

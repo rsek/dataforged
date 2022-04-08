@@ -1,7 +1,7 @@
-import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import type ITemplateTable from "@dataforged/interfaces/yaml_in/templates/ITemplateTableYaml.js";
-import extractRowContent from "@dataforged/utils/object_transform/extractRowContent.js";
-import extractRowRolls from "@dataforged/utils/object_transform/extractRowRolls.js";
+
+import { extractRowContent } from "@dataforged/utils/object_transform/extractRowContent.js";
+import { extractRowRolls } from "@dataforged/utils/object_transform/extractRowRolls.js";
+import type { IRowYaml, ITemplateTable } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 
 /**
@@ -9,7 +9,7 @@ import _ from "lodash-es";
  * @param template - The template object.
  * @returns A table of rows, where each row is a list of rolls and content.
  */
-export default function templateOracleTable(template: ITemplateTable): IRowYaml[] {
+export function templateOracleTable(template: ITemplateTable): IRowYaml[] {
   if (template.rolls.length !== template.content.length) {
     throw new Error("[buildTemplateTable] Arrays for template content and rolls have different lengths. Use [null, null] to represent a null roll range.");
   }

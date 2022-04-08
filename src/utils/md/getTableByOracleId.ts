@@ -1,8 +1,5 @@
-import type Row from "@dataforged/classes/oracles/Row.js";
-import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
-import type { IOracle } from "@dataforged/interfaces/json_out/oracles/IOracle.js";
-import type { IOracleBase } from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
-import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
+import type { Row } from "@dataforged/classes/oracles/Row.js";
+import type { IOracle, IOracleBase, IRow, OracleTableId } from "@dataforged/json_out/index.js";
 import jsonpath from "jsonpath";
 
 /**
@@ -11,7 +8,7 @@ import jsonpath from "jsonpath";
  * @param id - The id of the table you want to get.
  * @returns An array of rows.
  */
-export default function getTableByOracleId<T extends IRow[] = Row[]>(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
+export function getTableByOracleId<T extends IRow[] = Row[]>(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
   if (!Array.isArray(oracleData) && oracleData.$id === id) {
     const data = oracleData as IOracle;
     if (data.Table) {

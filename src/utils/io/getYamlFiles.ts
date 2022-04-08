@@ -9,7 +9,7 @@ const basePath: fs.PathLike = "./src/data";
  * @param root - The root directory of the project.
  * @returns An array of file paths.
  */
-export default function getYamlFiles(dir = "", root = basePath): fs.PathLike[] {
+export function getYamlFiles(dir = "", root = basePath): fs.PathLike[] {
   const path = dir.length ? `${root.toString()}/${dir}` as fs.PathLike : root;
   return fs
     .readdirSync(path)

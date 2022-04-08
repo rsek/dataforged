@@ -1,9 +1,9 @@
-import MoveTriggerOption from "@dataforged/classes/moves/MoveTriggerOption.js";
-import type { FragmentString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { IMoveTrigger } from "@dataforged/interfaces/json_out/moves/IMoveTrigger.js";
-import type IMoveTriggerYaml from "@dataforged/interfaces/yaml_in/moves/IMoveTriggerYaml.js";
+import { MoveTriggerOption } from "@dataforged/classes/moves/MoveTriggerOption.js";
+import type { FragmentString, IMoveTrigger } from "@dataforged/json_out/index.js";
+import type { IMoveTriggerYaml } from "@dataforged/yaml_in/moves/IMoveTriggerYaml.js";
 
-export default class MoveTrigger implements IMoveTrigger {
+
+export class MoveTrigger implements IMoveTrigger {
   $id: string;
   Text: FragmentString;
   Options?: MoveTriggerOption[] | undefined;

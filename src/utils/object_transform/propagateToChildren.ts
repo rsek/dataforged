@@ -6,7 +6,7 @@ import _ from "lodash-es";
  * @param key - The key of the object to propagate.
  * @param children - The array of children to propagate the object to.
  */
-export default function propagateToChildren<C, T extends C[keyof C] & object>(objToPropagate: T, key: keyof C, ...children: C[]): void {
+export function propagateToChildren<C, T extends C[keyof C] & object>(objToPropagate: T, key: keyof C, ...children: C[]): void {
   children.forEach(child => {
     if (!child[key]) {
       child[key] = {} as T;

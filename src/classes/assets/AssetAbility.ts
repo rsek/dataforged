@@ -1,14 +1,14 @@
 
-import AlterMove from "@dataforged/classes/assets/AlterMove.js";
+import { AlterMove } from "@dataforged/classes/assets/AlterMove.js";
 import { ClockInput, NumberInput, SelectInput, TextInput } from "@dataforged/classes/common/Input.js";
-import Move from "@dataforged/classes/moves/Move.js";
-import InputType from "@dataforged/constants/InputType.js";
-import type { AssetAbilityId, IAsset, IAssetAbility, IAssetInput, MoveId, MoveIdGeneric, ParagraphsString } from "@dataforged/interfaces/json_out/index.js";
-import type IAssetAbilityYaml from "@dataforged/interfaces/yaml_in/assets/IAssetAbilityYaml.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import { Move } from "@dataforged/classes/moves/Move.js";
+import type { AssetAbilityId, IAsset, IAssetAbility, IAssetInput, MoveId, MoveIdGeneric, ParagraphsString } from "@dataforged/json_out/index.js";
+import { InputType } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { IAssetAbilityYaml } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 
-export default class AssetAbility implements IAssetAbility {
+export class AssetAbility implements IAssetAbility {
   $id: AssetAbilityId;
   Text: ParagraphsString;
   Moves?: Move[] | undefined;

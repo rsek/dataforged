@@ -1,11 +1,8 @@
-import AssetType from "@dataforged/classes/assets/AssetType.js";
-import type { RollableStat } from "@dataforged/constants/RollableStat.js";
-import type { IAssetType } from "@dataforged/interfaces/json_out/assets/IAssetType.js";
-import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
-import type { AssetConditionMeterId } from "@dataforged/interfaces/json_out/index.js";
-import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
+import { AssetType } from "@dataforged/classes/assets/AssetType.js";
+import type { AssetConditionMeterId , IAssetType , ISource, RollableStat } from "@dataforged/json_out/index.js";
+import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
 import yaml from "js-yaml";
 import jp from "jsonpath";
 import fs from "fs";
@@ -21,7 +18,7 @@ interface AssetDataRoot {
  * Build and validate all asset objects from YAML.
  * @returns An array of Asset objects.
  */
-export default function buildAssets() {
+export function buildAssets() {
   const data = fs.readFileSync(assetPath, { encoding: "utf-8" });
   const json = yaml.load(data) as AssetDataRoot;
   const result = json["Asset Types"].map((assetType) =>  new AssetType(assetType, json.Source));

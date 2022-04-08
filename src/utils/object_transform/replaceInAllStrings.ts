@@ -8,7 +8,7 @@ import _ from "lodash-es";
  * @param replaceValue - The value to replace.
  * @returns The original JSON object with all strings replaced.
  */
-export default function replaceInAllStrings<T>(json: T, searchValue: string, replaceValue: string): T {
+export function replaceInAllStrings<T>(json: T, searchValue: string, replaceValue: string): T {
   const jsonClone = _.cloneDeep(json);
   jsonpath.apply(jsonClone, "$..*", (result) => {
     if (typeof result === "string" && result.includes(searchValue)) {

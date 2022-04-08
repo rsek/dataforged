@@ -6,6 +6,6 @@ import jsonpath from "jsonpath";
  * @param id - The id of the object to find.
  * @returns The object that matches the id.
  */
-export default function findById<T>(data: unknown, id: string): T {
+export function findById<T>(data: unknown, id: string): T {
   return jsonpath.value(data, `$..[?(@.$id=="${id}")]`) as T;
 }

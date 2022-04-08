@@ -1,7 +1,6 @@
-import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { IMoveOutcome } from "@dataforged/interfaces/json_out/moves/IMoveOutcome.js";
+import type { IMoveOutcome, ParagraphsString } from "@dataforged/json_out/index.js";
 
-export default class MoveOutcome implements IMoveOutcome {
+export class MoveOutcome implements IMoveOutcome {
   $id: string;
   Text: ParagraphsString;
   "With a Match"?: MoveOutcome | undefined;

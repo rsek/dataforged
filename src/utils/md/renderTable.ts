@@ -1,11 +1,11 @@
+import { lengthOfLongest } from "@dataforged/utils/md/longestLength.js";
+import { transpose2dArray } from "@dataforged/utils/md/transpose2dArray.js";
 import _ from "lodash-es";
-import lengthOfLongest from "@dataforged/utils/md/longestLength.js";
-import transpose2dArray from "@dataforged/utils/md/transpose2dArray.js";
 
 /**
  * Renders an object array as a markdown table.
  */
-export default function renderTable(rowDataArray: Record<string, string>[]) {
+export function renderTable(rowDataArray: Record<string, string>[]) {
   const tableBody = rowDataArray.map(row => Object.values(row));
   const tableHeaderText = Object.keys(rowDataArray[0]);
   let table = [ tableHeaderText, ...tableBody ];

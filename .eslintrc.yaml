@@ -42,10 +42,9 @@ rules:
       tsx: always
   import/no-default-export:
     - 1
-  # # import/prefer-default-export:
-  # #   - 1
-  # import/prefer-named-export:
-  #   - 1
+  import/no-duplicates:
+    - error
+    - considerQueryString: true
   prefer-const: 1
   object-curly-newline:
     - 1

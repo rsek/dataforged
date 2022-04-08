@@ -1,10 +1,10 @@
-import type { ICounter } from "@dataforged/interfaces/json_out/assets/ICounter.js";
+import type { ICounter } from "@dataforged/json_out/index.js";
 import type { StubExcept } from "@dataforged/utils/types/Stub.js";
 
 /**
  * Class representing a counter embedded in a Starforged Asset.
  */
-export default class Counter implements ICounter {
+export class Counter implements ICounter {
   $id: string;
   Name: string;
   Min: number = 0;

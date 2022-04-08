@@ -1,9 +1,9 @@
 
 
-import type OracleCategory from "@dataforged/classes/oracles/OracleCategory.js";
-import type Row from "@dataforged/classes/oracles/Row.js";
+import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
+import type { Row } from "@dataforged/classes/oracles/Row.js";
+import { renderOracleCategory } from "@dataforged/utils/md/renderOracleCategory.js";
 import _ from "lodash-es";
-import renderOracleCategory from "@dataforged/utils/md/renderOracleCategory.js";
 import fs from "fs";
 
 function toMdMultiTableData(rollColumnData: Row[][], rollColumnLabels: string[], resultColumnData: Row[][], resultColumnLabels: string[]) {

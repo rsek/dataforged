@@ -1,5 +1,5 @@
-import type OracleCategory from "@dataforged/classes/oracles/OracleCategory.js";
-import renderOracleCategory from "@dataforged/utils/md/renderOracleCategory.js";
+import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
+import { renderOracleCategory } from "@dataforged/utils/md/renderOracleCategory.js";
 import { transformMoveLinks, transformOracleLinks } from "@dataforged/utils/md/transformHyperlink.js";
 import _ from "lodash-es";
 import type { PathLike } from "fs";
@@ -10,7 +10,7 @@ import { writeFileSync } from "fs";
  * @param oracles - The list of oracle categories.
  * @param mdPath - The path to the directory where the markdown files will be written.
  */
-export default function buildOracleMarkdown(oracles: OracleCategory[], mdPath: string) {
+export function buildOracleMarkdown(oracles: OracleCategory[], mdPath: string) {
   const mdOraclePath: PathLike = mdPath + "oracles/";
 
   oracles.filter(oracle => oracle.$id !== "Oracles / Moves").forEach((oracleCat) => {

@@ -1,5 +1,5 @@
-import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import type { IRowContentYaml } from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
+
+import type { IRowContentYaml, IRowYaml } from "@dataforged/yaml_in/index.js";
 import { is } from "typescript-is";
 
 /**
@@ -7,7 +7,7 @@ import { is } from "typescript-is";
  * @param row - IRowYaml | IRowContentYaml
  * @returns A list of IRowContentYaml
  */
-export default function extractRowContent(row: IRowYaml | IRowContentYaml): IRowContentYaml {
+export function extractRowContent(row: IRowYaml | IRowContentYaml): IRowContentYaml {
   // if (!is<IRowYaml | IRowContentYaml>(row)) {
   //   throw badJsonError(extractRowContent, row, "Expected IRowYaml or IRowContentYaml");
   // }

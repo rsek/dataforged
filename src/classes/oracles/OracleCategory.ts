@@ -1,19 +1,16 @@
-import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
-import Oracle from "@dataforged/classes/oracles/Oracle.js";
-import OracleCategoryDisplay from "@dataforged/classes/oracles/OracleCategoryDisplay.js";
-import OracleUsage from "@dataforged/classes/oracles/OracleUsage.js";
-import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { IOracleCategory } from "@dataforged/interfaces/json_out/oracles/IOracleCategory.js";
-import type { OracleCategoryJaggedId, OracleCategoryName } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
-import type { OracleCategoryId } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
-import type IOracleCategoryYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleCategoryYaml.js";
-import type IOracleYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleYaml.js";
-import buildOracleId from "@dataforged/utils/buildOracleId.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
-import propagateToChildren from "@dataforged/utils/object_transform/propagateToChildren.js";
+
+import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
+import { Oracle } from "@dataforged/classes/oracles/Oracle.js";
+import { OracleCategoryDisplay } from "@dataforged/classes/oracles/OracleCategoryDisplay.js";
+import { OracleUsage } from "@dataforged/classes/oracles/OracleUsage.js";
+import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, ParagraphsString } from "@dataforged/json_out/index.js";
+import { buildOracleId } from "@dataforged/utils/buildOracleId.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { propagateToChildren } from "@dataforged/utils/object_transform/propagateToChildren.js";
+import type { IOracleCategoryYaml, IOracleYaml } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 
-export default class OracleCategory extends SourceInheritor implements IOracleCategory {
+export class OracleCategory extends SourceInheritor implements IOracleCategory {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;

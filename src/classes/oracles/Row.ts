@@ -1,25 +1,23 @@
-
-import Suggestions from "@dataforged/classes/common/Suggestions.js";
-import AttributeSetter from "@dataforged/classes/oracles/AttributeSetter.js";
-import GameObject from "@dataforged/classes/oracles/GameObject.js";
-import MultipleRolls from "@dataforged/classes/oracles/MultipleRolls.js";
-import OracleContent from "@dataforged/classes/oracles/OracleContent.js";
-import type { FragmentString, IHasSubtable, ImageUrl, IMultipleRolls, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, SentenceString,SettingTruthOptionId, TermString, Vector } from "@dataforged/interfaces/json_out/index.js";
-import type ISuggestionsYaml from "@dataforged/interfaces/yaml_in/common/ISuggestionsYaml.js";
-import type GameObjectYaml from "@dataforged/interfaces/yaml_in/game_objects/GameObjectYaml.js";
-import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
-import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
+import { AttributeSetter } from "@dataforged/classes/oracles/AttributeSetter.js";
+import { GameObject } from "@dataforged/classes/oracles/GameObject.js";
+import { MultipleRolls } from "@dataforged/classes/oracles/MultipleRolls.js";
+import { OracleContent } from "@dataforged/classes/oracles/OracleContent.js";
+import type { FragmentString, IHasSubtable, ImageUrl, IMultipleRolls, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, SentenceString,SettingTruthOptionId, TermString, Vector } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { AttributeHash } from "@dataforged/utils/types/AttributeHash.js";
 import type { RequireKey } from "@dataforged/utils/types/RequireKey.js";
-import validateRollTemplate from "@dataforged/utils/validation/validateRollTemplate.js";
+import { validateRollTemplate } from "@dataforged/utils/validation/validateRollTemplate.js";
+import type { ISuggestionsYaml } from "@dataforged/yaml_in/common/ISuggestionsYaml.js";
+import type { GameObjectYaml } from "@dataforged/yaml_in/game_objects/GameObjectYaml.js";
+import type { IRowYaml } from "@dataforged/yaml_in/oracles/IRowYaml.js";
 import _ from "lodash-es";
 import { is } from "typescript-is";
 
 /**
  * Class representing a single row of an oracle table.
- *
  */
-export default class Row implements IRow, Partial<IHasSubtable<Row>> {
+export class Row implements IRow, Partial<IHasSubtable<Row>> {
   /**
    */
   $id!: OracleTableRowId | SettingTruthOptionId | null;

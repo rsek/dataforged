@@ -1,5 +1,5 @@
-import type { IRow } from "@dataforged/interfaces/json_out/oracles/IRow.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import type { IRow } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 
 /**
  * It validates a table of dice rolls.
@@ -7,7 +7,7 @@ import badJsonError from "@dataforged/utils/logging/badJsonError.js";
  * @param requireAllD100 - If true, the sum of all the dice ranges must be 100.
  * @returns A boolean indicating whether the table is valid.
  */
-export default function validateTable(table: IRow[], requireUniqueResults = true, requireAllD100 = true,): boolean {
+export function validateTable(table: IRow[], requireUniqueResults = true, requireAllD100 = true,): boolean {
   if (!Array.isArray(table)) {
     throw badJsonError(validateTable, table, "Table is not an array.");
   }

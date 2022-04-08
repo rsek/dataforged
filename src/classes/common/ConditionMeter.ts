@@ -1,10 +1,8 @@
-import Counter from "@dataforged/classes/common/Counter.js";
-import { MeterAlias } from "@dataforged/constants/MeterAlias.js";
-import type { MeterCondition } from "@dataforged/constants/MeterCondition.js";
-import type { IConditionMeter } from "@dataforged/interfaces/json_out/assets/IConditionMeter.js";
-import type { AssetConditionMeterId, AssetTypeId } from "@dataforged/interfaces/json_out/index.js";
+import { Counter } from "@dataforged/classes/common/Counter.js";
+import type { AssetConditionMeterId, AssetTypeId, IConditionMeter, MeterCondition } from "@dataforged/json_out/index.js";
+import { MeterAlias } from "@dataforged/json_out/index.js";
 
-export default class ConditionMeter extends Counter implements IConditionMeter {
+export class ConditionMeter extends Counter implements IConditionMeter {
   // set by parent constructor
   $id!: AssetConditionMeterId;
   Name!: string;

@@ -1,7 +1,5 @@
-import type Row from "@dataforged/classes/oracles/Row.js";
-import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
-import type { IResultColumn } from "@dataforged/interfaces/json_out/oracles/IResultColumn.js";
-import type { ITableColumnBase } from "@dataforged/interfaces/json_out/oracles/ITableColumnBase.js";
+import type { Row } from "@dataforged/classes/oracles/Row.js";
+import type { IResultColumn, ITableColumnBase, OracleTableId } from "@dataforged/json_out/index.js";
 
 export class ResultColumn implements IResultColumn {
   Label: IResultColumn["Label"];

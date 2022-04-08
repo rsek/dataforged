@@ -1,6 +1,6 @@
-import type { ICustomStatOption } from "@dataforged/interfaces/json_out/assets/ICustomStatOption.js";
+import type { ICustomStatOption } from "@dataforged/json_out/index.js";
 
-export default class CustomStatOption implements ICustomStatOption {
+export class CustomStatOption implements ICustomStatOption {
   $id: string;
   Name: string;
   Value: number;

@@ -1,11 +1,10 @@
-import MoveCategory from "@dataforged/classes/moves/MoveCategory.js";
-import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
-import type IYamlWithRef from "@dataforged/interfaces/yaml_in/common/IYamlWithRef.js";
-import type IMoveCategoryYaml from "@dataforged/interfaces/yaml_in/moves/IMoveCategoryYaml.js";
+import { MoveCategory } from "@dataforged/classes/moves/MoveCategory.js";
+import type { ISource } from "@dataforged/json_out/index.js";
+import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { concatWithYamlRefs } from "@dataforged/utils/process_yaml/concatWithYamlRefs.js";
+import type { IMoveCategoryYaml ,IYamlWithRef } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
-import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
-import concatWithYamlRefs from "@dataforged/utils/process_yaml/concatWithYamlRefs.js";
 
 const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));
 
@@ -21,7 +20,7 @@ interface IMovesRoot extends IYamlWithRef {
  * category, and then it returns an array of all of those MoveCategory objects
  * @returns An array of MoveCategory objects.
  */
-export default function buildMoves() {
+export function buildMoves() {
   buildLog(buildMoves, "Building moves...");
   const movesRoot = concatWithYamlRefs(undefined, ...filesMoves) as IMovesRoot;
 

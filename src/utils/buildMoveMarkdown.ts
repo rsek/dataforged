@@ -1,5 +1,5 @@
-import type MoveCategory from "@dataforged/classes/moves/MoveCategory.js";
-import renderMoveCategory from "@dataforged/utils/md/renderMoveCategory.js";
+import type { MoveCategory } from "@dataforged/classes/moves/MoveCategory.js";
+import { renderMoveCategory } from "@dataforged/utils/md/renderMoveCategory.js";
 import { transformMoveLinks } from "@dataforged/utils/md/transformHyperlink.js";
 import { writeFileSync } from "fs";
 
@@ -8,7 +8,7 @@ import { writeFileSync } from "fs";
  * @param data - MoveCategory[]
  * @param mdPath - The path to the directory where the markdown files are stored.
  */
-export default function buildMoveMarkdown(data: MoveCategory[], mdPath: string) {
+export function buildMoveMarkdown(data: MoveCategory[], mdPath: string) {
   const allMoveText = [
     "# Starforged Moves",
     data.map(moveCat => renderMoveCategory(moveCat, 2))

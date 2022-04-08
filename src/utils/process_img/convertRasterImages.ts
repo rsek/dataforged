@@ -1,4 +1,4 @@
-import getAllFiles from "@dataforged/utils/io/getAllFiles.js";
+import { getAllFiles } from "@dataforged/utils/io/getAllFiles.js";
 import pkg from "fs-extra";
 const { ensureDirSync, readFileSync } = pkg;
 import sharp from "sharp";
@@ -12,7 +12,7 @@ const filePattern = TypedRegEx("^(?<path>.+)/(?<name>[A-z\-0-9]+)\.(?<extension>
  * @param srcRoot - The root directory of the source images.
  * @param outRootWebP - The output directory for the webp images.
  */
-export default function convertRasterImages(srcRoot: string, outRootWebP: string) {
+export function convertRasterImages(srcRoot: string, outRootWebP: string) {
   const srcFiles = getAllFiles(srcRoot);
   srcFiles.forEach(file => {
     // console.log("in:", file);

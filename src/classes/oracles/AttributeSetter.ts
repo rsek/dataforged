@@ -1,8 +1,8 @@
-import type { IAttribute } from "@dataforged/interfaces/json_out/oracles/IAttribute.js";
-import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import type { IAttribute } from "@dataforged/json_out/index.js";
+import type { AttributeHash } from "@dataforged/utils/types/AttributeHash.js";
 import _ from "lodash-es";
 
-export default class AttributeSetter extends Array<IAttribute> {
+export class AttributeSetter extends Array<IAttribute> {
   constructor(json: AttributeHash) {
     if (Object.values(json).some(item => Array.isArray(item) && item.length > 1)) {
       throw new Error("[AttributeSetter] attribute hash can't be converted to attribute setter if it contains arrays longer than 1");

@@ -1,14 +1,12 @@
-import Requirements from "@dataforged/classes/common/Requirements.js";
-import type { IGameObject } from "@dataforged/interfaces/json_out/oracles/IGameObject.js";
-import type { GameObjectType } from "@dataforged/interfaces/json_out/oracles/IGameObjectBase.js";
-import type IRequirementsYaml from "@dataforged/interfaces/yaml_in/common/IRequirementsYaml.js";
-import type GameObjectYaml from "@dataforged/interfaces/yaml_in/game_objects/GameObjectYaml.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
-import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import { Requirements } from "@dataforged/classes/common/Requirements.js";
+import type { GameObjectType , IGameObject } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { AttributeHash } from "@dataforged/utils/types/AttributeHash.js";
+import type { GameObjectYaml, IRequirementsYaml } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 import { is } from "typescript-is";
 
-export default class GameObject implements IGameObject {
+export class GameObject implements IGameObject {
   "Object type": GameObjectType;
   Requires?: Requirements | undefined;
   "Inherit rolls"?: boolean | undefined;

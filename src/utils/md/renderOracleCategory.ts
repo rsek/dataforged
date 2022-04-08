@@ -1,7 +1,7 @@
-import type OracleCategory from "@dataforged/classes/oracles/OracleCategory.js";
+import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { renderOracle } from "@dataforged/utils/md/renderOracle.js";
 import _ from "lodash-es";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
-import renderOracle from "@dataforged/utils/md/renderOracle.js";
 
 /**
  * It takes an OracleCategory and returns a markdown string
@@ -9,7 +9,7 @@ import renderOracle from "@dataforged/utils/md/renderOracle.js";
  * @param headerLevel - The header level to use for the category title.
  * @returns A string of markdown.
  */
-export default function renderOracleCategory(oracleCat: OracleCategory, headerLevel = 2) {
+export function renderOracleCategory(oracleCat: OracleCategory, headerLevel = 2) {
   buildLog(renderOracleCategory, `Generating markdown for ${oracleCat.Display.Title
   }...`);
   const header = _.repeat("#", headerLevel) + " " + oracleCat.Display.Title;

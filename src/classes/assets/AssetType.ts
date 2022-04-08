@@ -1,13 +1,13 @@
-import Asset from "@dataforged/classes/assets/Asset.js";
-import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
-import type { AssetTypeName } from "@dataforged/constants/AssetTypeName.js";
-import type { AssetTypeId, IAssetType, IDisplay, ISource, ParagraphsString } from "@dataforged/interfaces/json_out/index.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import { Asset } from "@dataforged/classes/assets/Asset.js";
+import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
+import type { AssetTypeName } from "@dataforged/json_out/assets/AssetTypeName.js";
+import type { AssetTypeId, IAssetType, IDisplay, ISource, ParagraphsString } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 import type { RequireKey } from "@dataforged/utils/types/RequireKey.js";
-import validateColor from "@dataforged/utils/validateColor.js";
+import { validateColor } from "@dataforged/utils/validateColor.js";
 
 
-export default class AssetType extends SourceInheritor implements IAssetType {
+export class AssetType extends SourceInheritor implements IAssetType {
   $id: AssetTypeId;
   Name: AssetTypeName;
   Aliases?: string[] | undefined;

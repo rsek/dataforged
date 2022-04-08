@@ -1,16 +1,11 @@
-import Source from "@dataforged/classes/common/Source.js";
-import Suggestions from "@dataforged/classes/common/Suggestions.js";
-import SettingTruthOption from "@dataforged/classes/setting_truths/SettingTruthOption.js";
-import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
-import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { ISettingTruth } from "@dataforged/interfaces/json_out/setting_truths/ISettingTruth.js";
-import type ISettingTruthYaml from "@dataforged/interfaces/yaml_in/setting_truths/ISettingTruthYaml.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
+import { Source } from "@dataforged/classes/common/Source.js";
+import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
+import { SettingTruthOption } from "@dataforged/classes/setting_truths/SettingTruthOption.js";
+import type { ISettingTruth, ISource, ParagraphsString, SettingTruthId, SettingTruthName } from "@dataforged/json_out/index.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import type { ISettingTruthYaml } from "@dataforged/yaml_in/setting_truths/ISettingTruthYaml.js";
 
-export type SettingTruthName = string;
-export type SettingTruthId = `Setting Truths / ${SettingTruthName}`;
-
-export default class SettingTruth implements ISettingTruth {
+export class SettingTruth implements ISettingTruth {
   $id: SettingTruthId;
   Name: SettingTruthName;
   Table: SettingTruthOption[];

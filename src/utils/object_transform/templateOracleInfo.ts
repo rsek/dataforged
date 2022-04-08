@@ -1,5 +1,5 @@
-import type IOracleYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleYaml.js";
-import replaceInAllStrings from "@dataforged/utils/object_transform/replaceInAllStrings.js";
+import { replaceInAllStrings } from "@dataforged/utils/object_transform/replaceInAllStrings.js";
+import type { IOracleYaml } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 
 /**
@@ -7,7 +7,7 @@ import _ from "lodash-es";
  * @param json - The object to be mutated.
  * @returns The original object with the template info removed.
  */
-export default function templateOracleInfo(json: IOracleYaml): IOracleYaml {
+export function templateOracleInfo(json: IOracleYaml): IOracleYaml {
   // cloning so that the original object isn't mutated
   let jsonClone = _.cloneDeep(json);
   if (jsonClone._templateInfo) {

@@ -1,4 +1,4 @@
-import REFS_PATH from "@dataforged/constants/refsPath.js";
+import { REFS_PATH } from "@dataforged/constants/refsPath.js";
 import fs from "fs";
 
 /**
@@ -7,7 +7,7 @@ import fs from "fs";
  * @returns A string of YAML that is the concatenation of the contents of the files in the `refsPath`
  * directory.
  */
-export default function loadYamlRefs(path: fs.PathLike = REFS_PATH) {
+export function loadYamlRefs(path: fs.PathLike = REFS_PATH) {
   const files: fs.PathLike[] = fs.readdirSync(path).filter(item => item.match(".yaml"))
     .map(item => path.toString() + item);
   // console.log(refFiles);

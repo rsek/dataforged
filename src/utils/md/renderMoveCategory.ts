@@ -1,6 +1,6 @@
-import type MoveCategory from "@dataforged/classes/moves/MoveCategory.js";
+import type { MoveCategory } from "@dataforged/classes/moves/MoveCategory.js";
+import { renderMove } from "@dataforged/utils/md/renderMove.js";
 import _ from "lodash-es";
-import renderMove from "@dataforged/utils/md/renderMove.js";
 
 /**
  * It takes a MoveCategory and returns a string that is a markdown list of all the moves in that
@@ -10,7 +10,7 @@ import renderMove from "@dataforged/utils/md/renderMove.js";
  * @param localLinksOnly - FIXME: NYI. If true, only links to moves in the same category will be generated.
  * @returns A string.
  */
-export default function renderMoveCategory(moveCat: MoveCategory, headerLevel: number = 2, localLinksOnly = true): string {
+export function renderMoveCategory(moveCat: MoveCategory, headerLevel: number = 2, localLinksOnly = true): string {
   const header = `${_.repeat("#", headerLevel)} ${moveCat.Display.Title}`;
   const items = [ header, moveCat.Description ];
 

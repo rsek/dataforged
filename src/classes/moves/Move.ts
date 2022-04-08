@@ -1,22 +1,16 @@
-import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
-import type Suggestions from "@dataforged/classes/common/Suggestions.js";
-import MoveOutcomes from "@dataforged/classes/moves/MoveOutcomes.js";
-import MoveTrigger from "@dataforged/classes/moves/MoveTrigger.js";
-import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
-import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
-import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { AssetId, OracleTableId } from "@dataforged/interfaces/json_out/index.js";
+import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
+import type { Suggestions } from "@dataforged/classes/common/Suggestions.js";
+import { MoveOutcomes } from "@dataforged/classes/moves/MoveOutcomes.js";
+import { MoveTrigger } from "@dataforged/classes/moves/MoveTrigger.js";
+import type { AssetId , IDisplay , IMove , ISource, MoveCategoryId , MoveId , OracleTableId , ParagraphsString } from "@dataforged/json_out/index.js";
 
-import type { IMove } from "@dataforged/interfaces/json_out/moves/IMove.js";
-import type { MoveCategoryId } from "@dataforged/interfaces/json_out/moves/strings/MoveCategoryId.js";
-import type { MoveId } from "@dataforged/interfaces/json_out/moves/strings/MoveId.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
 import _ from "lodash-es";
 
 /**
  * Object representing a Starforged move.
  */
-export default class Move extends SourceInheritor implements IMove {
+export class Move extends SourceInheritor implements IMove {
   $id: MoveId;
   Name: string;
   Category: MoveCategoryId;

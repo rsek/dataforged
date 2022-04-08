@@ -1,28 +1,24 @@
-import OracleCategory from "@dataforged/classes/oracles/OracleCategory.js";
-import REFS_PATH from "@dataforged/constants/refsPath.js";
-import type { OracleSubcategoryName } from "@dataforged/interfaces/json_out/index.js";
-import type { OracleCategoryName } from "@dataforged/interfaces/json_out/oracles/strings/OracleCategoryId.js";
-import type IOracleCategoryYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleCategoryYaml.js";
-import getSubdirs from "@dataforged/utils/io/getSubdirs.js";
-import getYamlFiles from "@dataforged/utils/io/getYamlFiles.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
-import templateOracle from "@dataforged/utils/object_transform/templateOracle.js";
+import { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
+import { REFS_PATH } from "@dataforged/constants/refsPath.js";
+import type { OracleCategoryName , OracleSubcategoryName } from "@dataforged/json_out/index.js";
+import { getSubdirs } from "@dataforged/utils/io/getSubdirs.js";
+import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
+import type { IOracleParentCatRoot } from "@dataforged/utils/IOracleParentCatRoot.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { templateOracle } from "@dataforged/utils/object_transform/templateOracle.js";
 import type { IOracleCatRoot } from "@dataforged/utils/process_yaml/loadOracleData.js";
-import loadOracleData from "@dataforged/utils/process_yaml/loadOracleData.js";
+import { loadOracleData } from "@dataforged/utils/process_yaml/loadOracleData.js";
+import type { IOracleCategoryYaml } from "@dataforged/yaml_in/index.js";
 import type fs from "fs";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
   _childOf: OracleCategoryName;
 }
-interface IOracleParentCategoryData extends IOracleCategoryYaml {
+export interface IOracleParentCategoryData extends IOracleCategoryYaml {
   Name: OracleCategoryName;
   _parentOf: OracleSubcategoryName[];
-}
-
-interface IOracleParentCatRoot extends IOracleCatRoot {
-  Categories: IOracleParentCategoryData[];
 }
 
 interface IOracleSubcatRoot extends IOracleCatRoot {
@@ -33,7 +29,7 @@ interface IOracleSubcatRoot extends IOracleCatRoot {
  * It takes the data from the oracles directory and builds a list of OracleCategory objects.
  * @returns An array of OracleCategory objects.
  */
-export default function buildOracles(): OracleCategory[] {
+export function buildOracles(): OracleCategory[] {
   buildLog(buildOracles, "Building oracles...");
   const filesOracleCategories: fs.PathLike[] = getYamlFiles("oracles");
   // console.info(filesOracleCategories);

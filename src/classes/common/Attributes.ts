@@ -1,8 +1,8 @@
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
-import type AttributeHash from "@dataforged/utils/types/AttributeHash.js";
+import type { IAttributeChoices } from "@dataforged/json_out/index.js";
+import type { AttributeHash } from "@dataforged/utils/types/AttributeHash.js";
 import _ from "lodash-es";
 
-export default class AttributeRequirements extends Array<IAttributeChoices> {
+export class AttributeRequirements extends Array<IAttributeChoices> {
   constructor(json: AttributeHash) {
     const attributes = _.map(json, (value, key) => {
       let values;

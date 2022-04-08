@@ -1,5 +1,5 @@
-import cloneImages from "@dataforged/utils/process_img/cloneImages.js";
-import convertRasterImages from "@dataforged/utils/process_img/convertRasterImages.js";
+import { cloneImages } from "@dataforged/utils/process_img/cloneImages.js";
+import { convertRasterImages } from "@dataforged/utils/process_img/convertRasterImages.js";
 
 /**
  * Clones raster images and converts them to webp.
@@ -9,7 +9,7 @@ import convertRasterImages from "@dataforged/utils/process_img/convertRasterImag
  * @param srcPng - the directory of png files
  * @param outWebP - The destination filepath for webp images.
  */
-export default function buildImages(srcRoot: string, outPng: string, srcPng: string, outWebP: string) {
+export function buildImages(srcRoot: string, outPng: string, srcPng: string, outWebP: string) {
   cloneImages(srcRoot, outPng);
   convertRasterImages(srcPng, outWebP);
 }

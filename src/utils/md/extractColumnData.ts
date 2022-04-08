@@ -1,8 +1,8 @@
-import type Oracle from "@dataforged/classes/oracles/Oracle.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
-import getTableByOracleId from "@dataforged/utils/md/getTableByOracleId.js";
+import type { Oracle } from "@dataforged/classes/oracles/Oracle.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import { getTableByOracleId } from "@dataforged/utils/md/getTableByOracleId.js";
 
-export default function extractColumnData(oracle: Oracle) {
+export function extractColumnData(oracle: Oracle) {
   const newTableRows: Record<string, string>[] = [];
 
   const rollCols = oracle.Display.Table["Roll columns"];

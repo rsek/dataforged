@@ -1,6 +1,6 @@
-import type { IDisplay } from "@dataforged/interfaces/json_out/common/IDisplay.js";
+import type { IDisplay } from "@dataforged/json_out/index.js";
 
-export default class EncounterDisplay implements IDisplay {
+export class EncounterDisplay implements IDisplay {
   Title: string;
   constructor(json: Partial<IDisplay>, parentName: string) {
     this.Title = json.Title ?? parentName;

@@ -7,7 +7,7 @@ import fs from "fs";
  * Writes a JSON object to a nicely formatted file.
  *
  */
-export default function writeJson(filePathOut: fs.PathLike, jsonObj: object, minified = false): void {
+export function writeJson(filePathOut: fs.PathLike, jsonObj: object, minified = false): void {
   let parser = "json";
   let jsonData = JSON.stringify(jsonObj);
   if (minified === true) {

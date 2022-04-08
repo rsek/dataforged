@@ -1,14 +1,8 @@
-import type { ClockSegments } from "@dataforged/constants/ClockSegments.js";
-import { ClockType } from "@dataforged/constants/ClockType.js";
-import type { ConditionMeterName } from "@dataforged/constants/ConditionMeterName.js";
-import InputType from "@dataforged/constants/InputType.js";
-import type { Stat } from "@dataforged/constants/Stat.js";
-import type { IClockInput, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput } from "@dataforged/interfaces/json_out/assets/IAssetInput.js";
-import type { IHasId } from "@dataforged/interfaces/json_out/common/IHas.js";
-import type { AssetConditionMeterId } from "@dataforged/interfaces/json_out/index.js";
+import { InputType } from "@dataforged/json_out/common/InputType.js";
+import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "@dataforged/json_out/index.js";
+import { ClockType } from "@dataforged/json_out/index.js";
 import type { StubBy } from "@dataforged/utils/types/Stub.js";
 import { is } from "typescript-is";
-
 
 export type Input = NumberInput | SelectInput | TextInput;
 
@@ -51,7 +45,6 @@ export class TextInput implements ITextInput, IHasId {
     Object.assign(this, json);
   }
 }
-
 
 type AnyInputOption = AssetSelectInputStatOption | SelectInputMeterOption | SelectInputCustomOption;
 

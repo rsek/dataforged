@@ -8,4 +8,4 @@ type PartialExcept<T, K extends keyof T> = RequireKey<{
   [P in keyof T]?: T[P];
 }, K>;
 
-export default PartialExcept;
+export { PartialExcept };

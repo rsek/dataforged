@@ -1,16 +1,10 @@
-import Source from "@dataforged/classes/common/Source.js";
-import EncounterDisplay from "@dataforged/classes/encounters/EncounterDisplay.js";
-import EncounterVariant from "@dataforged/classes/encounters/EncounterVariant.js";
-import type { ChallengeRank } from "@dataforged/constants/ChallengeRank.js";
-import type { EncounterNature } from "@dataforged/constants/EncounterNature.js";
-import type { EncounterTags } from "@dataforged/constants/EncounterTags.js";
-import type { ISource } from "@dataforged/interfaces/json_out/common/ISource.js";
-import type { FragmentString, ParagraphsString, SentenceString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { IEncounter } from "@dataforged/interfaces/json_out/encounters/IEncounter.js";
-import type { EncounterId } from "@dataforged/interfaces/json_out/encounters/strings/EncounterId.js";
-import type IEncounterYaml from "@dataforged/interfaces/yaml_in/encounters/IEncounterYaml.js";
+import { Source } from "@dataforged/classes/common/Source.js";
+import { EncounterDisplay } from "@dataforged/classes/encounters/EncounterDisplay.js";
+import { EncounterVariant } from "@dataforged/classes/encounters/EncounterVariant.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "@dataforged/json_out/index.js";
+import type { IEncounterYaml } from "@dataforged/yaml_in/index.js";
 
-export default class Encounter implements IEncounter {
+export class Encounter implements IEncounter {
   $id: EncounterId;
   Name: string;
   Nature: EncounterNature;

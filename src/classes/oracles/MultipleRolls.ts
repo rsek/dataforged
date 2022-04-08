@@ -1,13 +1,13 @@
 
 
-import type { IMultipleRolls } from "@dataforged/interfaces/json_out/oracles/IMultipleRolls.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import type { IMultipleRolls } from "@dataforged/json_out/index.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 import { is } from "typescript-is";
 
 /**
  * Represents "Roll twice" and "Roll three times" oracle results.
  */
-export default class MultipleRolls implements IMultipleRolls {
+export class MultipleRolls implements IMultipleRolls {
   /**
    * In tabletop play, duplicate results are typically rerolled (p. XX). However, a handful of tables (such as Space Sighting) use multiple rolls to represent discrete objects (rather than features of a single game object), so duplicate results should be allowed.
    */

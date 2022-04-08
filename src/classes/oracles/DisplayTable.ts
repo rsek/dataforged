@@ -1,9 +1,10 @@
 import { ResultColumn, RollColumn } from "@dataforged/classes/oracles/TableColumn.js";
-import type { IDisplayTable, OracleTableId } from "@dataforged/interfaces/json_out/index.js";
-import getNameFromId from "@dataforged/utils/getNameFromId.js";
-import badJsonError from "@dataforged/utils/logging/badJsonError.js";
+import type { IDisplayTable, OracleTableId } from "@dataforged/json_out/index.js";
+import { getNameFromId } from "@dataforged/utils/getNameFromId.js";
+import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 
-export default class DisplayTable implements IDisplayTable {
+
+export class DisplayTable implements IDisplayTable {
   "Result columns": ResultColumn[];
   "Roll columns": RollColumn[];
   constructor(json: Partial<IDisplayTable>, parentId: OracleTableId) {

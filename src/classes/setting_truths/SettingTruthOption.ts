@@ -1,9 +1,7 @@
-import Row from "@dataforged/classes/oracles/Row.js";
-import type { ParagraphsString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import type { SettingTruthOptionId } from "@dataforged/interfaces/json_out/setting_truths/ISettingTruthOption.js";
-import type { ISettingTruthOption } from "@dataforged/interfaces/json_out/setting_truths/ISettingTruthOption.js";
+import { Row } from "@dataforged/classes/oracles/Row.js";
+import type { ISettingTruthOption, ParagraphsString, SettingTruthOptionId } from "@dataforged/json_out/index.js";
 
-export default class SettingTruthOption extends Row implements ISettingTruthOption {
+export class SettingTruthOption extends Row implements ISettingTruthOption {
   $id!: SettingTruthOptionId;
   "Quest Starter": ParagraphsString;
   Description: ParagraphsString;

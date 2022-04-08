@@ -1,7 +1,7 @@
-import REFS_PATH from "@dataforged/constants/refsPath.js";
-import type IYamlWithRef from "@dataforged/interfaces/yaml_in/common/IYamlWithRef.js";
-import loadYamlRefs from "@dataforged/utils/process_yaml/loadYamlRefs.js";
-import loadYamlTemplates from "@dataforged/utils/process_yaml/loadYamlTemplates.js";
+import { REFS_PATH } from "@dataforged/constants/refsPath.js";
+import { loadYamlRefs } from "@dataforged/utils/process_yaml/loadYamlRefs.js";
+import { loadYamlTemplates } from "@dataforged/utils/process_yaml/loadYamlTemplates.js";
+import type { IYamlWithRef } from "@dataforged/yaml_in/index.js";
 import yaml from "js-yaml";
 import fs from "fs";
 
@@ -11,7 +11,7 @@ import fs from "fs";
  * @param filePaths - The files to load.
  * @returns A JavaScript object with the following properties:
  */
-export default function concatWithYamlRefs<T>(referencePath: fs.PathLike = REFS_PATH, ...filePaths: fs.PathLike[]) {
+export function concatWithYamlRefs<T>(referencePath: fs.PathLike = REFS_PATH, ...filePaths: fs.PathLike[]) {
   const refFiles: fs.PathLike[] = fs.readdirSync(REFS_PATH);
   const refString = loadYamlRefs(referencePath);
   const templateString = loadYamlTemplates(referencePath.toString() + "/templates/");

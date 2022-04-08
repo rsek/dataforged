@@ -1,6 +1,5 @@
-import type Oracle from "@dataforged/classes/oracles/Oracle.js";
-import type { OracleTableId } from "@dataforged/interfaces/json_out/index.js";
-import type { IOracleBase } from "@dataforged/interfaces/json_out/oracles/IOracleBase.js";
+import type { Oracle } from "@dataforged/classes/oracles/Oracle.js";
+import type { IOracleBase, OracleTableId } from "@dataforged/json_out/index.js";
 import jsonpath from "jsonpath";
 
 /**
@@ -9,7 +8,7 @@ import jsonpath from "jsonpath";
  * @param id - The id of the oracle you want to get.
  * @returns An Oracle object.
  */
-export default function getOracleById(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
+export function getOracleById(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
   const table = jsonpath.value(oracleData, `$..[?(@.$id=='${id}')]`) as Oracle;
   return table;
 }

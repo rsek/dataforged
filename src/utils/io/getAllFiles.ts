@@ -8,7 +8,7 @@ import path from "path";
  * @param arrayOfFiles - an array of file paths for the function to add paths too (used mainly for recursing)
  * @returns An array of file paths.
  */
-export default function getAllFiles(dirPath: string, arrayOfFiles: Array<string> = []) {
+export function getAllFiles(dirPath: string, arrayOfFiles: Array<string> = []) {
   const files = fs.readdirSync(dirPath);
   files.forEach(function (file) {
     if (fs.statSync(dirPath.toString() + "/" + file).isDirectory()) {

@@ -1,23 +1,22 @@
 
-import SourceInheritor from "@dataforged/classes/common/SourceInheritor.js";
-import OracleContent from "@dataforged/classes/oracles/OracleContent.js";
-import OracleDisplay from "@dataforged/classes/oracles/OracleDisplay.js";
-import OracleUsage from "@dataforged/classes/oracles/OracleUsage.js";
-import Row from "@dataforged/classes/oracles/Row.js";
-import type { AttributeKey, IAttribute, IOracle, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@dataforged/interfaces/json_out/index.js";
-import type { IAttributeChoices } from "@dataforged/interfaces/json_out/oracles/IAttributeChoices.js";
-import type IOracleCategoryYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleCategoryYaml.js";
-import type IOracleYaml from "@dataforged/interfaces/yaml_in/oracles/IOracleYaml.js";
-import type IRowYaml from "@dataforged/interfaces/yaml_in/oracles/IRowYaml.js";
-import buildOracleId from "@dataforged/utils/buildOracleId.js";
-import buildLog from "@dataforged/utils/logging/buildLog.js";
-import inferSetsAttributes from "@dataforged/utils/object_transform/inferSetsAttributes.js";
-import propagateToChildren from "@dataforged/utils/object_transform/propagateToChildren.js";
-import templateOracle from "@dataforged/utils/object_transform/templateOracle.js";
-import templateOracleTable from "@dataforged/utils/object_transform/templateOracleTable.js";
+import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
+import { OracleContent } from "@dataforged/classes/oracles/OracleContent.js";
+import { OracleDisplay } from "@dataforged/classes/oracles/OracleDisplay.js";
+import { OracleUsage } from "@dataforged/classes/oracles/OracleUsage.js";
+import { Row } from "@dataforged/classes/oracles/Row.js";
+
+import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@dataforged/json_out/index.js";
+import { buildOracleId } from "@dataforged/utils/buildOracleId.js";
+import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { inferSetsAttributes } from "@dataforged/utils/object_transform/inferSetsAttributes.js";
+import { propagateToChildren } from "@dataforged/utils/object_transform/propagateToChildren.js";
+import { templateOracle } from "@dataforged/utils/object_transform/templateOracle.js";
+import { templateOracleTable } from "@dataforged/utils/object_transform/templateOracleTable.js";
+import type { IOracleYaml, IRowYaml } from "@dataforged/yaml_in/index.js";
+import type { IOracleCategoryYaml } from "@dataforged/yaml_in/oracles/IOracleCategoryYaml.js";
 import _ from "lodash-es";
 
-export default class Oracle extends SourceInheritor implements IOracle  {
+export class Oracle extends SourceInheritor implements IOracle  {
   $id: OracleTableId;
   "Name": string;
   Aliases?: string[] | undefined;

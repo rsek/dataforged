@@ -1,7 +1,7 @@
-import type Oracle from "@dataforged/classes/oracles/Oracle.js";
-import type OracleCategory from "@dataforged/classes/oracles/OracleCategory.js";
-import type { MdString } from "@dataforged/interfaces/json_out/common/strings/MdString.js";
-import findById from "@dataforged/utils/md/findById.js";
+import type { Oracle } from "@dataforged/classes/oracles/Oracle.js";
+import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
+import type { MdString } from "@dataforged/json_out/index.js";
+import { findById } from "@dataforged/utils/md/findById.js";
 import _ from "lodash-es";
 
 /**
