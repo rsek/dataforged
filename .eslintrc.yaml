@@ -29,7 +29,6 @@ extends:
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - prettier
 rules:
-  # import/no-unresolved: error
   tsdoc/syntax: warn
   "@typescript-eslint/no-inferrable-types":
     - 0
@@ -41,9 +40,12 @@ rules:
       jsx: always
       ts: always
       tsx: always
-
-  import/prefer-default-export:
+  import/no-default-export:
     - 1
+  # # import/prefer-default-export:
+  # #   - 1
+  # import/prefer-named-export:
+  #   - 1
   prefer-const: 1
   object-curly-newline:
     - 1

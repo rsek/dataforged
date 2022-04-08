@@ -9,7 +9,8 @@
     "flush-image": "rm -R img && mkdir img",
     "build": "yarn flush-build && ttsc",
     "build-json": "node . --enable-source-maps",
-    "start": "yarn build && yarn build-json"
+    "start": "yarn build && yarn build-json",
+    "docs": "rm -R docs && mkdir docs && npx typedoc"
   },
   "repository": {
     "type": "git",
