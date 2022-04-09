@@ -2,15 +2,20 @@
   "name": "dataforged",
   "version": "0.2.0",
   "description": "Official Ironsworn: Starforged rules data in JSON, for use in community tools.",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
   "type": "module",
   "scripts": {
     "flush-dist": "rm -R ./dist && mkdir ./dist",
     "flush-image": "rm -R ./img && mkdir ./img",
     "build": "yarn flush-dist && ttsc",
-    "build-json": "node ./dist/dataforged.js --enable-source-maps",
-    "start": "yarn build && yarn build-json",
+    "start": "node ./dist/dataforged.js --enable-source-maps",
     "docs": "rm -R ./docs && mkdir ./docs && npx typedoc"
+  },
+  "directories": {
+    "doc": "./docs"
   },
   "repository": {
     "type": "git",
