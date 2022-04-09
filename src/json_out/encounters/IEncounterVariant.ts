@@ -1,8 +1,8 @@
 
+import type { IEncounter } from "@dataforged/json_out/encounters/IEncounter.js";
 import type { ChallengeRank, EncounterId , EncounterNature, EncounterTags, ISource , ParagraphsString } from "@dataforged/json_out/index.js";
-import type { IEncounterYaml } from "@dataforged/yaml_in/index.js";
 
-export interface IEncounterVariant extends Partial<IEncounterYaml> {
+export interface IEncounterVariant extends Partial<IEncounter> {
   $id: EncounterId;
   Source: ISource;
   Name: string;

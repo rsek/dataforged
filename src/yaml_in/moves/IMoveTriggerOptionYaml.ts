@@ -1,7 +1,3 @@
-import type { IActionRoll, IProgressRoll, ParagraphsString } from "@dataforged/json_out/index.js";
+import type { IMoveTriggerOption } from "@dataforged/json_out/index.js";
 
-export interface IMoveTriggerOptionYaml {
-  Text?: ParagraphsString | undefined;
-  "Action roll"?: IActionRoll | undefined;
-  "Progress roll"?: IProgressRoll | undefined;
-}
+export interface IMoveTriggerOptionYaml extends Omit<IMoveTriggerOption, "$id"> {}

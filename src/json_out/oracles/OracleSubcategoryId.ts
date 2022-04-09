@@ -1,5 +1,6 @@
+import type { LocationTheme, PlanetaryClass, VaultZone, Zone } from "@dataforged/game_objects/index.js";
+import type { OracleRoot } from "@dataforged/json_out/oracles/OracleCategoryId.js";
 
-import type { LocationTheme, OracleRoot, PlanetaryClass, VaultZone, Zone } from "@dataforged/json_out/index.js";
 
 export type OracleSubcategoryPath = `Derelicts / ${Zone}` | `Location Themes / ${LocationTheme}` | `Planets / ${PlanetaryClass}` | `Vaults / ${VaultZone}`;
 

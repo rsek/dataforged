@@ -1,5 +1,5 @@
 import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveOutcomes , MoveCategoryId , MoveId , OracleTableId } from "@dataforged/json_out/index.js";
-import type { IMoveTriggerYaml } from "@dataforged/yaml_in/index.js";
+import type { IMoveTrigger } from "@dataforged/json_out/moves/IMoveTrigger.js";
 
 
 /**
@@ -26,7 +26,7 @@ export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, 
   /**
    * The move's trigger data.
    */
-  Trigger: IMoveTriggerYaml;
+  Trigger: IMoveTrigger;
   /**
    * The IDs of any oracles *directly* referenced by the move.
    */

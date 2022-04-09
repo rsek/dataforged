@@ -1,8 +1,10 @@
 import { Requirements } from "@dataforged/classes/common/Requirements.js";
-import type { GameObjectType , IGameObject } from "@dataforged/json_out/index.js";
+import type { GameObjectType } from "@dataforged/game_objects/enum/GameObjectType.js";
+import type { GameObjectRecord } from "@dataforged/game_objects/index.js";
+import type { IGameObject } from "@dataforged/json_out/index.js";
 import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 import type { AttributeHash } from "@dataforged/utils/types/AttributeHash.js";
-import type { GameObjectYaml, IRequirementsYaml } from "@dataforged/yaml_in/index.js";
+import type { IRequirementsYaml } from "@dataforged/yaml_in/index.js";
 import _ from "lodash-es";
 import { is } from "typescript-is";
 
@@ -10,7 +12,7 @@ export class GameObject implements IGameObject {
   "Object type": GameObjectType;
   Requires?: Requirements | undefined;
   "Inherit rolls"?: boolean | undefined;
-  constructor(json: GameObjectYaml) {
+  constructor(json: GameObjectRecord) {
     if (!is<GameObjectType>(json["Object type"])) {
       throw badJsonError(this.constructor, json, "Invalid object type");
     }

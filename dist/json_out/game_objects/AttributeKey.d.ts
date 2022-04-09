@@ -1,0 +1,25 @@
+export declare enum AttributeKey {
+    Atmosphere = "Atmosphere",
+    Authority = "Authority",
+    Behavior = "Encountered Behavior",
+    DerelictType = "Derelict Type",
+    Disposition = "Disposition",
+    Dominion = "Dominion",
+    Environment = "Environment",
+    FactionType = "Faction Type",
+    FringeGroup = "Fringe Group",
+    Guild = "Guild",
+    Influence = "Influence",
+    InitialContact = "Initial Contact",
+    Leadership = "Leadership",
+    Life = "Life",
+    Location = "Location",
+    LocationTheme = "Location Theme",
+    PlanetaryClass = "Planetary Class",
+    Population = "Population",
+    Region = "Region",
+    Role = "Role",
+    CreatureScale = "Creature Scale",
+    Zone = "Zone"
+}
+//# sourceMappingURL=AttributeKey.d.ts.map

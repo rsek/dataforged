@@ -3,13 +3,13 @@ import { REFS_PATH } from "@dataforged/constants/refsPath.js";
 import type { OracleCategoryName , OracleSubcategoryName } from "@dataforged/json_out/index.js";
 import { getSubdirs } from "@dataforged/utils/io/getSubdirs.js";
 import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
-import type { IOracleParentCatRoot } from "@dataforged/utils/IOracleParentCatRoot.js";
 import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
 import { buildLog } from "@dataforged/utils/logging/buildLog.js";
 import { templateOracle } from "@dataforged/utils/object_transform/templateOracle.js";
 import type { IOracleCatRoot } from "@dataforged/utils/process_yaml/loadOracleData.js";
 import { loadOracleData } from "@dataforged/utils/process_yaml/loadOracleData.js";
 import type { IOracleCategoryYaml } from "@dataforged/yaml_in/index.js";
+import type { IOracleParentCatRoot } from "@dataforged/yaml_in/oracles/IOracleParentCatRootYaml.js";
 import type fs from "fs";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {

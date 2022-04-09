@@ -3,10 +3,11 @@
     "src/utils/*.js",
     "node_modules",
     "roll20",
-    "**/.vscode/**/*",
-    "**/.github/**/*",
-    "**/build",
+    ".vscode",
+    ".github",
+    "dist",
     "analysis",
+    "*.d.ts",
     "docs"
   ],
   "typedocOptions": {
@@ -43,11 +44,11 @@
     "paths": {
       "@dataforged/*": [
         "./src/*",
-        "./build/*"
+        "dist/*"
       ],
     },
     "baseUrl": ".",
-    "outDir": "build",
+    "outDir": "dist",
     "rootDir": "src",
     "allowJs": true,
     "removeComments": true,

@@ -1,3 +1,4 @@
+import type { AttributeKey } from "@dataforged/json_out/game_objects/AttributeKey.js";
 import type { FragmentString, IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, OracleTableId, OracleTableRowId, SentenceString, SettingTruthOptionId, TermString } from "@dataforged/json_out/index.js";
 
 /**
@@ -55,5 +56,5 @@ export interface IRow extends Partial<
   /**
   * The attributes set by this row.
    */
-  Attributes?: IAttributeChoices[] | undefined;
+  Attributes?: IAttributeChoices<AttributeKey>[] | undefined;
 }
