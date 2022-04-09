@@ -1,11 +1,17 @@
 {
   "name": "dataforged",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Official Ironsworn: Starforged rules data in JSON, for use in community tools.",
   "exports": {
     ".": "./dist/index.js"
   },
   "main": "./dist/index.js",
+  "files": [
+    "./dist/*",
+    "./docs/*",
+    "./img/*",
+    "./markdown/*"
+  ],
   "type": "module",
   "scripts": {
     "flush-dist": "rm -R ./dist && mkdir ./dist",
