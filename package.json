@@ -16,7 +16,7 @@
   "scripts": {
     "flush-dist": "rm -R ./dist && mkdir ./dist",
     "flush-image": "rm -R ./img && mkdir ./img",
-    "build": "yarn flush-dist && ttsc",
+    "build": "yarn flush-dist && npx ttsc",
     "start": "node ./dist/dataforged.js --enable-source-maps",
     "docs": "rm -R ./docs && mkdir ./docs && npx typedoc"
   },
