@@ -1,14 +1,14 @@
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import { OracleContent } from "../../../dist/classes/oracles/OracleContent.js";
-import { OracleDisplay } from "../../../dist/classes/oracles/OracleDisplay.js";
-import { OracleUsage } from "../../../dist/classes/oracles/OracleUsage.js";
-import { Row } from "../../../dist/classes/oracles/Row.js";
-import { buildOracleId } from "../../../dist/utils/buildOracleId.js";
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
-import { inferSetsAttributes } from "../../../dist/utils/object_transform/inferSetsAttributes.js";
-import { propagateToChildren } from "../../../dist/utils/object_transform/propagateToChildren.js";
-import { templateOracle } from "../../../dist/utils/object_transform/templateOracle.js";
-import { templateOracleTable } from "../../../dist/utils/object_transform/templateOracleTable.js";
+import { SourceInheritor } from "../index.js";
+import { OracleContent } from "../index.js";
+import { OracleDisplay } from "../index.js";
+import { OracleUsage } from "../index.js";
+import { Row } from "../index.js";
+import { buildOracleId } from "../../utils/buildOracleId.js";
+import { buildLog } from "../../utils/logging/buildLog.js";
+import { inferSetsAttributes } from "../../utils/object_transform/inferSetsAttributes.js";
+import { propagateToChildren } from "../../utils/object_transform/propagateToChildren.js";
+import { templateOracle } from "../../utils/object_transform/templateOracle.js";
+import { templateOracleTable } from "../../utils/object_transform/templateOracleTable.js";
 import _ from "lodash-es";
 export class Oracle extends SourceInheritor {
     constructor(json, category, memberOf, ...ancestorsJson) {

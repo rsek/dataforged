@@ -1,8 +1,8 @@
 
 
-import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
-import type { Row } from "@dataforged/classes/oracles/Row.js";
-import { renderOracleCategory } from "@dataforged/utils/md/renderOracleCategory.js";
+import type { OracleCategory } from "@classes/index.js";
+import type { Row } from "@classes/index.js";
+import { renderOracleCategory } from "@utils/md/renderOracleCategory.js";
 import _ from "lodash-es";
 import fs from "fs";
 

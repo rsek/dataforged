@@ -1,10 +1,10 @@
-import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
-import { AttributeSetter } from "../../../dist/classes/oracles/AttributeSetter.js";
-import { GameObject } from "@dataforged/classes/oracles/GameObject.js";
-import { MultipleRolls } from "../../../dist/classes/oracles/MultipleRolls.js";
-import { OracleContent } from "../../../dist/classes/oracles/OracleContent.js";
-import type { FragmentString, IHasSubtable, IRow, IRowDisplay, OracleTableId, OracleTableRowId, RollTemplate, SentenceString, SettingTruthOptionId, TermString } from "@dataforged/json_out/index.js";
-import type { IRowYaml } from "../../../dist/yaml_in/oracles/IRowYaml.js";
+import { Suggestions } from "../index.js";
+import { AttributeSetter } from "../index.js";
+import { GameObject } from "../index.js";
+import { MultipleRolls } from "../index.js";
+import { OracleContent } from "../index.js";
+import type { FragmentString, IHasSubtable, IRow, IRowDisplay, OracleTableId, OracleTableRowId, RollTemplate, SentenceString, SettingTruthOptionId, TermString } from "../../json_out/index.js";
+import type { IRowYaml } from "../../yaml_in/oracles/IRowYaml.js";
 export declare class Row implements IRow, Partial<IHasSubtable<Row>> {
     $id: OracleTableRowId | SettingTruthOptionId | null;
     Floor: number | null;

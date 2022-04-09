@@ -1,6 +1,6 @@
 
-import type { ClockSegments } from "@dataforged/json_out/common/ClockSegments.js";
-import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId , IHasName, InputType, Stat } from "@dataforged/json_out/index.js";
+import type { ClockSegments } from "@json_out/common/ClockSegments.js";
+import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId , IHasName, InputType, Stat } from "@json_out/index.js";
 
 /**
  * @internal

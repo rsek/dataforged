@@ -1,9 +1,9 @@
-import { SettingTruth } from "@dataforged/classes/setting_truths/SettingTruth.js";
-import type { ISource } from "@dataforged/json_out/index.js";
-import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { concatWithYamlRefs } from "@dataforged/utils/process_yaml/concatWithYamlRefs.js";
-import type { ISettingTruthYaml, IYamlWithRef } from "@dataforged/yaml_in/index.js";
+import { SettingTruth } from "@classes/index.js";
+import type { ISource } from "@json_out/index.js";
+import { getYamlFiles } from "@utils/io/getYamlFiles.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
+import type { ISettingTruthYaml, IYamlWithRef } from "@yaml_in/index.js";
 
 const filesTruths = getYamlFiles().filter(file => file.toString().match("setting_truths.yaml$"));
 

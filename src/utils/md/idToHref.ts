@@ -1,5 +1,5 @@
-import type { IDisplay } from "@dataforged/json_out/index.js";
-import { findById } from "@dataforged/utils/md/findById.js";
+import type { IDisplay } from "@json_out/index.js";
+import { findById } from "@utils/md/findById.js";
 
 /**
  * Converts an game item's ID string into a hyperlink-friendly relative URL.

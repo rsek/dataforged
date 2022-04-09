@@ -1,7 +1,7 @@
-import { SettingTruth } from "../../dist/classes/setting_truths/SettingTruth.js";
-import { getYamlFiles } from "../../dist/utils/io/getYamlFiles.js";
-import { buildLog } from "../../dist/utils/logging/buildLog.js";
-import { concatWithYamlRefs } from "../../dist/utils/process_yaml/concatWithYamlRefs.js";
+import { SettingTruth } from "../classes/index.js";
+import { getYamlFiles } from "./io/getYamlFiles.js";
+import { buildLog } from "./logging/buildLog.js";
+import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
 const filesTruths = getYamlFiles().filter(file => file.toString().match("setting_truths.yaml$"));
 export function buildTruths() {
     buildLog(buildTruths, "Building setting truths...");

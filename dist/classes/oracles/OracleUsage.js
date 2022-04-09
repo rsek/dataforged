@@ -1,5 +1,4 @@
-import { Requirements } from "@dataforged/classes/common/Requirements.js";
-import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
+import { Requirements, Suggestions } from "../index.js";
 export class OracleUsage {
     constructor(json) {
         this.Initial = json.Initial;

@@ -1,15 +1,12 @@
-import { AssetAbility } from "@dataforged/classes/assets/AssetAbility.js";
-import { ConditionMeter } from "@dataforged/classes/common/ConditionMeter.js";
-import { ClockInput, NumberInput, SelectInput, TextInput } from "@dataforged/classes/common/Input.js";
-import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
-import type { AssetAbilityId, AssetId, AssetTypeId, FragmentString, IAsset, IAssetAttachment, IAssetInput, IAssetType, IDisplay } from "@dataforged/json_out/index.js";
-import { InputType } from "@dataforged/json_out/index.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import type { RequireKey } from "@dataforged/utils/types/RequireKey.js";
-import type { Tuple } from "@dataforged/utils/types/Tuple.js";
-import type { IAssetYaml } from "@dataforged/yaml_in/index.js";
-
+import { AssetAbility } from "@classes/assets/AssetAbility.js";
+import { ClockInput, ConditionMeter, NumberInput, SelectInput, SourceInheritor, TextInput } from "@classes/common/index.js";
+import type { AssetAbilityId, AssetId, AssetTypeId, IAsset, IAssetAttachment, IAssetInput, IAssetType, RequireKey, Tuple } from "@json_out/assets/index.js";
+import { InputType } from "@json_out/common/index.js";
+import type { FragmentString } from "@json_out/common/index.js";
+import type { IDisplay } from "@json_out/meta/index.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import type { IAssetYaml } from "@yaml_in/assets/index.js";
 
 export class Asset extends SourceInheritor implements IAsset {
   $id: AssetId;

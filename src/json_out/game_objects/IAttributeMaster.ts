@@ -1,6 +1,6 @@
-import type { Authority } from "@dataforged/game_objects/enum/Authority.js";
-import type { Atmosphere, Behavior, CreatureScale, DerelictType, Disposition, Dominion, Environment, FactionType, FringeGroup, Guild, Influence, Leadership, Life, Location, LocationTheme, PlanetaryClass, Population, Region, Role, SettlementInitialContact, StarshipInitialContact, Zone } from "@dataforged/game_objects/index.js";
-import type { AttributeKey } from "@dataforged/json_out/game_objects/AttributeKey.js";
+import type { Authority } from "@game_objects/enum/Authority.js";
+import type { Atmosphere, Behavior, CreatureScale, DerelictType, Disposition, Dominion, Environment, FactionType, FringeGroup, Guild, Influence, Leadership, Life, Location, LocationTheme, PlanetaryClass, Population, Region, Role, SettlementInitialContact, StarshipInitialContact, Zone } from "@game_objects/index.js";
+import type { AttributeKey } from "@json_out/game_objects/AttributeKey.js";
 
 export interface IAttributeMaster {
   [AttributeKey.Atmosphere]: Atmosphere;

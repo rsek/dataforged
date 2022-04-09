@@ -1,4 +1,4 @@
-import type { IAttributeChoices } from "@dataforged/json_out/index.js";
+import type { IAttributeChoices } from "../index.js";
 export interface IRequirements {
     Attributes: IAttributeChoices[];
 }

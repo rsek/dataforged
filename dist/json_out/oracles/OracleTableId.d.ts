@@ -1,4 +1,4 @@
-import type { OracleCategoryId } from "@dataforged/json_out/index.js";
+import type { OracleCategoryId } from "../index.js";
 declare type OracleTableId = `${OracleCategoryId} / ${string}`;
 export { OracleTableId };
 //# sourceMappingURL=OracleTableId.d.ts.map

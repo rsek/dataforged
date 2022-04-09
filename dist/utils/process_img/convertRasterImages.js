@@ -1,4 +1,4 @@
-import { getAllFiles } from "../../../dist/utils/io/getAllFiles.js";
+import { getAllFiles } from "../io/getAllFiles.js";
 import pkg from "fs-extra";
 const { ensureDirSync, readFileSync } = pkg;
 import sharp from "sharp";

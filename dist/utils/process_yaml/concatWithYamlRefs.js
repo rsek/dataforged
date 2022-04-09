@@ -1,6 +1,6 @@
-import { REFS_PATH } from "../../../dist/constants/refsPath.js";
-import { loadYamlRefs } from "../../../dist/utils/process_yaml/loadYamlRefs.js";
-import { loadYamlTemplates } from "../../../dist/utils/process_yaml/loadYamlTemplates.js";
+import { REFS_PATH } from "../../constants/index.js";
+import { loadYamlRefs } from "./loadYamlRefs.js";
+import { loadYamlTemplates } from "./loadYamlTemplates.js";
 import yaml from "js-yaml";
 import fs from "fs";
 export function concatWithYamlRefs(referencePath = REFS_PATH, ...filePaths) {

@@ -1,5 +1,5 @@
-import { Source } from "@dataforged/classes/common/Source.js";
-import type { IHasSource, ISource } from "@dataforged/json_out/index.js";
+import { Source } from "@classes/common/index.js";
+import type { IHasSource, ISource } from "@json_out/meta/index.js";
 
 export abstract class SourceInheritor implements IHasSource {
   Source: Source;

@@ -1,1 +1,1 @@
-export * from "@dataforged/yaml_in/setting_truths/ISettingTruthYaml.js";
+export * from "@yaml_in/setting_truths/ISettingTruthYaml.js";

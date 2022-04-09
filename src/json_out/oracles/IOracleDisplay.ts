@@ -1,4 +1,4 @@
-import type { IDisplay , IDisplayTable , OracleTableId } from "@dataforged/json_out/index.js";
+import type { IDisplay , IDisplayTable , OracleTableId } from "@json_out/index.js";
 
 export interface ITableDisplay extends IDisplay {
   Title: string;

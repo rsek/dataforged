@@ -1,4 +1,4 @@
-import { MoveTriggerOption } from "../../../dist/classes/moves/MoveTriggerOption.js";
+import { MoveTriggerOption } from "../index.js";
 export class MoveTrigger {
     constructor(json, id) {
         this.$id = id;

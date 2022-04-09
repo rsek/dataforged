@@ -1,7 +1,7 @@
 
-import { extractRowContent } from "@dataforged/utils/object_transform/extractRowContent.js";
-import { extractRowRolls } from "@dataforged/utils/object_transform/extractRowRolls.js";
-import type { IRowYaml, ITemplateTable } from "@dataforged/yaml_in/index.js";
+import { extractRowContent } from "@utils/object_transform/extractRowContent.js";
+import { extractRowRolls } from "@utils/object_transform/extractRowRolls.js";
+import type { IRowYaml, ITemplateTable } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 /**

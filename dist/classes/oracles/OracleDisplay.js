@@ -1,4 +1,4 @@
-import { DisplayTable } from "../../../dist/classes/oracles/DisplayTable.js";
+import { DisplayTable } from "../index.js";
 export class OracleDisplay {
     constructor(json, parentName, parentId) {
         this.Title = json.Title ?? parentName;

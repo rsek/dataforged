@@ -1,6 +1,6 @@
-import { InputType } from "../../../dist/json_out/common/InputType.js";
-import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "../../../dist/json_out/index.js";
-import { ClockType } from "../../../dist/json_out/index.js";
+import { InputType } from "../../json_out/common/InputType.js";
+import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "../../json_out/index.js";
+import { ClockType } from "../../json_out/index.js";
 export declare type Input = NumberInput | SelectInput | TextInput;
 export declare class NumberInput implements INumberInput, IHasId {
     $id: string;

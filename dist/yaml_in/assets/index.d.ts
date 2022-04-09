@@ -1,5 +1,5 @@
-export * from "../../../dist/yaml_in/assets/IAlterMoveYaml.js";
-export * from "../../../dist/yaml_in/assets/IAssetAbilityYaml.js";
-export * from "../../../dist/yaml_in/assets/IAssetInputYaml.js";
-export * from "../../../dist/yaml_in/assets/IAssetYaml.js";
+export * from "./IAlterMoveYaml.js";
+export * from "./IAssetAbilityYaml.js";
+export * from "./IAssetInputYaml.js";
+export * from "./IAssetYaml.js";
 //# sourceMappingURL=index.d.ts.map

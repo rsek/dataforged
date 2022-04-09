@@ -1,9 +1,8 @@
-export * from "../../../dist/json_out/meta/IDisplay.js";
-export * from "../../../dist/json_out/meta/IHas.js";
-export * from "../../../dist/json_out/meta/IRequirements.js";
-export * from "../../../dist/json_out/meta/ISource.js";
-export * from "../../../dist/json_out/meta/ISuggestions.js";
-export * from "../../../dist/json_out/meta/PartOfSpeechTag.js";
-export * from "../../../dist/json_out/meta/SourceTitle.js";
-export * from "../../../dist/json_out/meta/Url.js";
+export * from "./IDisplay.js";
+export * from "./IHas.js";
+export * from "./IRequirements.js";
+export * from "./ISource.js";
+export * from "./ISuggestions.js";
+export * from "./PartOfSpeechTag.js";
+export * from "./Url.js";
 //# sourceMappingURL=index.d.ts.map

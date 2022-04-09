@@ -1,5 +1,5 @@
-import type { ISource } from "@dataforged/json_out/index.js";
-import { SourceTitle } from "@dataforged/json_out/index.js";
+import { SourceTitle } from "../../json_out/index.js";
+import type { ISource } from "../../json_out/index.js";
 export declare class Source implements ISource {
     Title: SourceTitle;
     Date?: string | undefined;

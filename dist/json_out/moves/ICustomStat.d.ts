@@ -1,4 +1,4 @@
-import type { ICustomStatOption } from "@dataforged/json_out/index.js";
+import type { ICustomStatOption } from "../index.js";
 export interface ICustomStat {
     Name: string;
     Options: ICustomStatOption[];

@@ -1,4 +1,4 @@
-import { findById } from "../../../dist/utils/md/findById.js";
+import { findById } from "./findById.js";
 export function idToHref(id, data) {
     const item = findById(data, id);
     if (!item) {

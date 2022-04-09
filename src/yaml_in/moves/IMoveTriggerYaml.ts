@@ -1,5 +1,5 @@
-import type { FragmentString } from "@dataforged/json_out/index.js";
-import type { IMoveTriggerOptionYaml } from "@dataforged/yaml_in/index.js";
+import type { FragmentString } from "@json_out/index.js";
+import type { IMoveTriggerOptionYaml } from "@yaml_in/index.js";
 
 export interface IMoveTriggerYaml {
   Text: FragmentString;

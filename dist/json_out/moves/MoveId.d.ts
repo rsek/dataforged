@@ -1,4 +1,4 @@
-import type { MoveCategoryName } from "@dataforged/json_out/index.js";
+import type { MoveCategoryName } from "../index.js";
 declare type MoveId = `Moves / ${MoveCategoryName} / ${string}`;
 export { MoveId };
 export declare type MoveIdGeneric = "Moves / *";

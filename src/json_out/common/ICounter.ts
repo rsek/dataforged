@@ -1,4 +1,4 @@
-import type { IHasId, IHasName } from "@dataforged/json_out/index.js";
+import type { IHasId, IHasName } from "@json_out/index.js";
 
 /**
  * Interface for a counter embedded in a Starforged Asset.

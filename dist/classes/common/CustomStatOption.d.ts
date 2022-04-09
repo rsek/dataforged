@@ -1,4 +1,4 @@
-import type { ICustomStatOption } from "../../../dist/json_out/index.js";
+import type { ICustomStatOption } from "../../json_out/index.js";
 export declare class CustomStatOption implements ICustomStatOption {
     $id: string;
     Name: string;

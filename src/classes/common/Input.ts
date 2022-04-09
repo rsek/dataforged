@@ -1,7 +1,7 @@
-import { InputType } from "@dataforged/json_out/common/InputType.js";
-import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "@dataforged/json_out/index.js";
-import { ClockType } from "@dataforged/json_out/index.js";
-import type { StubBy } from "@dataforged/utils/types/Stub.js";
+import { InputType } from "@json_out/common/InputType.js";
+import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "@json_out/index.js";
+import { ClockType } from "@json_out/index.js";
+import type { StubBy } from "@utils/types/Stub.js";
 import { is } from "typescript-is";
 
 export type Input = NumberInput | SelectInput | TextInput;

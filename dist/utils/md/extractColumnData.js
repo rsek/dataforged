@@ -1,5 +1,5 @@
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
-import { getTableByOracleId } from "../../../dist/utils/md/getTableByOracleId.js";
+import { badJsonError } from "../logging/badJsonError.js";
+import { getTableByOracleId } from "./getTableByOracleId.js";
 export function extractColumnData(oracle) {
     const newTableRows = [];
     const rollCols = oracle.Display.Table["Roll columns"];

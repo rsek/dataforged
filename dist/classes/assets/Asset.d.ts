@@ -1,10 +1,9 @@
-import { AssetAbility } from "../../../dist/classes/assets/AssetAbility.js";
-import { ConditionMeter } from "../../../dist/classes/common/ConditionMeter.js";
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import type { AssetId, AssetTypeId, FragmentString, IAsset, IAssetAttachment, IAssetInput, IAssetType, IDisplay } from "../../../dist/json_out/index.js";
-import type { RequireKey } from "../../../dist/utils/types/RequireKey.js";
-import type { Tuple } from "../../../dist/utils/types/Tuple.js";
-import type { IAssetYaml } from "../../../dist/yaml_in/index.js";
+import { AssetAbility } from "./AssetAbility.js";
+import { ConditionMeter, SourceInheritor } from "../common/index.js";
+import type { AssetId, AssetTypeId, IAsset, IAssetAttachment, IAssetInput, IAssetType, RequireKey, Tuple } from "../../json_out/assets/index.js";
+import type { FragmentString } from "../../json_out/common/index.js";
+import type { IDisplay } from "../../json_out/meta/index.js";
+import type { IAssetYaml } from "../../yaml_in/assets/index.js";
 export declare class Asset extends SourceInheritor implements IAsset {
     $id: AssetId;
     Name: string;

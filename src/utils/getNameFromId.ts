@@ -1,7 +1,7 @@
 
 // TODO: generate fallback names for when it's unspecified
 
-import type { OracleTableId } from "@dataforged/json_out/index.js";
+import type { OracleTableId } from "@json_out/index.js";
 
 
 /**

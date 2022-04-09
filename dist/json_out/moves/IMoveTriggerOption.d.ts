@@ -1,4 +1,4 @@
-import type { FragmentString, IActionRoll, IProgressRoll } from "@dataforged/json_out/index.js";
+import type { FragmentString, IActionRoll, IProgressRoll } from "../index.js";
 export interface IMoveTriggerOption {
     $id: string;
     Text?: FragmentString | undefined;

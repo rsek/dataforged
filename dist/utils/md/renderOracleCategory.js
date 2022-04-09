@@ -1,5 +1,5 @@
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
-import { renderOracle } from "../../../dist/utils/md/renderOracle.js";
+import { buildLog } from "../logging/buildLog.js";
+import { renderOracle } from "./renderOracle.js";
 import _ from "lodash-es";
 export function renderOracleCategory(oracleCat, headerLevel = 2) {
     buildLog(renderOracleCategory, `Generating markdown for ${oracleCat.Display.Title}...`);

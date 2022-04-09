@@ -1,4 +1,4 @@
-import type { IMoveOutcome, ParagraphsString } from "@dataforged/json_out/index.js";
+import type { IMoveOutcome, ParagraphsString } from "@json_out/index.js";
 
 export class MoveOutcome implements IMoveOutcome {
   $id: string;

@@ -1,5 +1,5 @@
-import type { Oracle } from "../../../dist/classes/oracles/Oracle.js";
-import type { OracleTableId } from "../../../dist/json_out/index.js";
+import type { Oracle } from "../index.js";
+import type { OracleTableId } from "../../json_out/index.js";
 export declare class OracleTableRef {
     private $id;
     constructor(tableId: OracleTableId);

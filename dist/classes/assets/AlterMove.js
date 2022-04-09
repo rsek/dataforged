@@ -1,4 +1,4 @@
-import { MoveTrigger } from "../../../dist/classes/moves/MoveTrigger.js";
+import { MoveTrigger } from "../index.js";
 export class AlterMove {
     constructor(json, id) {
         this.$id = id;

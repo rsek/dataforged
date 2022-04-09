@@ -1,9 +1,9 @@
-import { Source } from "@dataforged/classes/common/Source.js";
-import { Move } from "@dataforged/classes/moves/Move.js";
-import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle, ParagraphsString } from "@dataforged/json_out/index.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
-import { validateColor } from "@dataforged/utils/validateColor.js";
-import type { IMoveCategoryYaml } from "@dataforged/yaml_in/moves/IMoveCategoryYaml.js";
+import { Move , Source } from "@classes/index.js";
+import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle, ParagraphsString } from "@json_out/index.js";
+import type { IMoveCategory } from "@json_out/moves/IMoveCategory.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
+import { validateColor } from "@utils/validateColor.js";
+import type { IMoveCategoryYaml } from "@yaml_in/moves/IMoveCategoryYaml.js";
 
 export class MoveCategoryDisplay implements IDisplay {
   Title: MoveCategoryTitle;
@@ -16,7 +16,7 @@ export class MoveCategoryDisplay implements IDisplay {
     this.Color = color;
   }
 }
-export class MoveCategory implements IMoveCategoryYaml {
+export class MoveCategory implements IMoveCategory {
   $id: MoveCategoryId;
   Name: MoveCategoryName;
   Source: Source;

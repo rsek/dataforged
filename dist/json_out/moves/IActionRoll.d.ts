@@ -1,4 +1,4 @@
-import type { ICustomStat, RollableStat } from "@dataforged/json_out/index.js";
+import type { ICustomStat, RollableStat } from "../index.js";
 export interface IActionRoll {
     Stat?: RollableStat | undefined;
     "Custom stat"?: ICustomStat | undefined;

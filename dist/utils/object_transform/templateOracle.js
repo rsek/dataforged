@@ -1,5 +1,5 @@
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
-import { replaceInAllStrings } from "../../../dist/utils/object_transform/replaceInAllStrings.js";
+import { buildLog } from "../logging/buildLog.js";
+import { replaceInAllStrings } from "./replaceInAllStrings.js";
 import _ from "lodash-es";
 export function templateOracle(json, template) {
     buildLog(templateOracle, "Building oracle from template...");

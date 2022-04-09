@@ -1,4 +1,4 @@
-import type { ProgressRollType } from "../../../dist/json_out/common/index.js";
+import type { ProgressRollType } from "../common/index.js";
 export interface IProgressRoll {
     Track?: ProgressRollType | undefined;
     "All of"?: ProgressRollType[] | undefined;

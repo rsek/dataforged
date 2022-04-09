@@ -1,5 +1,5 @@
-import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText, IMoveOutcomes, MoveCategoryId, MoveId, OracleTableId } from "@dataforged/json_out/index.js";
-import type { IMoveTrigger } from "../../../dist/json_out/moves/IMoveTrigger.js";
+import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText, IMoveOutcomes, MoveCategoryId, MoveId, OracleTableId } from "../index.js";
+import type { IMoveTrigger } from "./IMoveTrigger.js";
 export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
     Asset?: AssetId | undefined;
     Category: MoveCategoryId;

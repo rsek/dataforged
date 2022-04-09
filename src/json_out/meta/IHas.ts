@@ -1,5 +1,5 @@
-import type { Suggestions } from "@dataforged/classes/common/Suggestions.js";
-import type { FragmentString , IDisplay , IGameObject , IOracleContent , IOracleUsage, IRequirements, IRow , ISource , ISuggestions , ParagraphsString , RollTemplate , SentenceString } from "@dataforged/json_out/index.js";
+import type { Suggestions } from "@classes/index.js";
+import type { FragmentString , IDisplay , IGameObject , IOracleContent , IOracleUsage, IRequirements, IRow , ISource , ISuggestions , ParagraphsString , RollTemplate , SentenceString } from "@json_out/index.js";
 
 /**
  * Interface for items with a user-facing markdown summary.

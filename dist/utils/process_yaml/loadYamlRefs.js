@@ -1,4 +1,4 @@
-import { REFS_PATH } from "../../../dist/constants/refsPath.js";
+import { REFS_PATH } from "../../constants/index.js";
 import fs from "fs";
 export function loadYamlRefs(path = REFS_PATH) {
     const files = fs.readdirSync(path).filter(item => item.match(".yaml"))

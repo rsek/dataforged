@@ -1,9 +1,9 @@
-import { MoveCategory } from "@dataforged/classes/moves/MoveCategory.js";
-import type { ISource } from "@dataforged/json_out/index.js";
-import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { concatWithYamlRefs } from "@dataforged/utils/process_yaml/concatWithYamlRefs.js";
-import type { IMoveCategoryYaml ,IYamlWithRef } from "@dataforged/yaml_in/index.js";
+import { MoveCategory } from "@classes/index.js";
+import type { ISource } from "@json_out/index.js";
+import { getYamlFiles } from "@utils/io/getYamlFiles.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
+import type { IMoveCategoryYaml ,IYamlWithRef } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));

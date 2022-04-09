@@ -1,4 +1,4 @@
-import type { OracleTableId } from "@dataforged/json_out/index.js";
+import type { OracleTableId } from "@json_out/index.js";
 
 type OracleTableRowId = `${OracleTableId} / ${RollRange}`;
 export { OracleTableRowId };

@@ -1,4 +1,4 @@
-import type { AssetAbilityId , IAlterMove , IAsset , IAssetInput , IHasId, IHasText , IMove } from "@dataforged/json_out/index.js";
+import type { AssetAbilityId , IAlterMove , IAsset , IAssetInput , IHasId, IHasText , IMove } from "@json_out/index.js";
 
 export interface IAssetAbility extends IHasId<AssetAbilityId>, IHasText {
   Moves?: IMove[] | undefined;

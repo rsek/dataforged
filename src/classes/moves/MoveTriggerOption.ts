@@ -1,6 +1,6 @@
-import { ActionRoll } from "@dataforged/classes/moves/MoveRoll.js";
-import type { FragmentString, IActionRoll, IMoveTriggerOption, IProgressRoll } from "@dataforged/json_out/index.js";
-import type { IMoveTriggerOptionYaml } from "@dataforged/yaml_in/moves/IMoveTriggerOptionYaml.js";
+import { ActionRoll } from "@classes/index.js";
+import type { FragmentString, IActionRoll, IMoveTriggerOption, IProgressRoll } from "@json_out/index.js";
+import type { IMoveTriggerOptionYaml } from "@yaml_in/moves/IMoveTriggerOptionYaml.js";
 
 export class MoveTriggerOption implements IMoveTriggerOption {
   $id: string;

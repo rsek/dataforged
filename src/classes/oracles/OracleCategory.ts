@@ -1,13 +1,13 @@
 
-import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
-import { Oracle } from "@dataforged/classes/oracles/Oracle.js";
-import { OracleCategoryDisplay } from "@dataforged/classes/oracles/OracleCategoryDisplay.js";
-import { OracleUsage } from "@dataforged/classes/oracles/OracleUsage.js";
-import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, ParagraphsString } from "@dataforged/json_out/index.js";
-import { buildOracleId } from "@dataforged/utils/buildOracleId.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { propagateToChildren } from "@dataforged/utils/object_transform/propagateToChildren.js";
-import type { IOracleCategoryYaml, IOracleYaml } from "@dataforged/yaml_in/index.js";
+import { SourceInheritor } from "@classes/index.js";
+import { Oracle } from "@classes/index.js";
+import { OracleCategoryDisplay } from "@classes/index.js";
+import { OracleUsage } from "@classes/index.js";
+import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, ParagraphsString } from "@json_out/index.js";
+import { buildOracleId } from "@utils/buildOracleId.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
+import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 export class OracleCategory extends SourceInheritor implements IOracleCategory {

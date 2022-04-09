@@ -1,7 +1,8 @@
-import type { ISource } from "@dataforged/json_out/index.js";
-import { SourceTitle } from "@dataforged/json_out/index.js";
-import { badEnumError } from "@dataforged/utils/logging/badEnumError.js";
-import { enumHas } from "@dataforged/utils/validation/enumHas.js";
+
+import { SourceTitle } from "@json_out/index.js";
+import type { ISource } from "@json_out/index.js";
+import { badEnumError } from "@utils/logging/badEnumError.js";
+import { enumHas } from "@utils/validation/enumHas.js";
 import _ from "lodash-es";
 
 export class Source implements ISource {
@@ -13,7 +14,7 @@ export class Source implements ISource {
       ancestorSourceJson)
       .reverse();
     const newData = _.merge(json, ...sourceStack) as ISource;
-    this.Title =  json.Title ?? newData.Title;
+    this.Title = newData.Title;
     if (!enumHas(SourceTitle, this.Title)) {
       throw badEnumError(this.constructor as () => unknown, this.Title, SourceTitle);
     }

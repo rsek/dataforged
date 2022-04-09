@@ -1,4 +1,4 @@
-import { getAllFiles } from "@dataforged/utils/io/getAllFiles.js";
+import { getAllFiles } from "@utils/io/getAllFiles.js";
 import pkg from "fs-extra";
 const { ensureDirSync, readFileSync } = pkg;
 import sharp from "sharp";

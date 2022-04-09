@@ -1,7 +1,7 @@
-import { ResultColumn, RollColumn } from "@dataforged/classes/oracles/TableColumn.js";
-import type { IDisplayTable, OracleTableId } from "@dataforged/json_out/index.js";
-import { getNameFromId } from "@dataforged/utils/getNameFromId.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import { ResultColumn, RollColumn } from "@classes/index.js";
+import type { IDisplayTable, OracleTableId } from "@json_out/index.js";
+import { getNameFromId } from "@utils/getNameFromId.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 
 
 export class DisplayTable implements IDisplayTable {

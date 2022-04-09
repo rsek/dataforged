@@ -1,5 +1,5 @@
-import type { AttributeKey } from "../../../dist/json_out/game_objects/AttributeKey.js";
-import type { FragmentString, IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, OracleTableId, OracleTableRowId, SentenceString, SettingTruthOptionId, TermString } from "@dataforged/json_out/index.js";
+import type { AttributeKey } from "../game_objects/AttributeKey.js";
+import type { FragmentString, IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, OracleTableId, OracleTableRowId, SentenceString, SettingTruthOptionId, TermString } from "../index.js";
 export declare type IRowDisplay = Omit<IDisplay, "Title">;
 export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | "Summary" | "Description"> & IHasSuggestions & IHasDisplay<IRowDisplay> & IHasOracleContent & IHasSubtable & IHasGameObjects> {
     $id?: SettingTruthOptionId | OracleTableRowId | null;

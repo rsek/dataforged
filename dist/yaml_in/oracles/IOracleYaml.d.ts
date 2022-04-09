@@ -1,10 +1,10 @@
-import type { IOracle, IOracleContent, IRow, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@dataforged/json_out/index.js";
-import type { IRequirementsYaml } from "../../../dist/yaml_in/common/IRequirementsYaml.js";
-import type { IOracleUsageYaml } from "../../../dist/yaml_in/oracles/IOracleUsageYaml.js";
-import type { IRowRollYaml, IRowYaml } from "../../../dist/yaml_in/oracles/IRowYaml.js";
-import type { ITemplateOracleYaml } from "../../../dist/yaml_in/templates/ITemplateOracleYaml.js";
-import type { ITemplateTable } from "../../../dist/yaml_in/templates/ITemplateTableYaml.js";
-import type { ITemplateYamlBase } from "../../../dist/yaml_in/templates/ITemplateYamlBase.js";
+import type { IOracle, IOracleContent, IRow, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "../../json_out/index.js";
+import type { IRequirementsYaml } from "../common/IRequirementsYaml.js";
+import type { IOracleUsageYaml } from "./IOracleUsageYaml.js";
+import type { IRowRollYaml, IRowYaml } from "./IRowYaml.js";
+import type { ITemplateOracleYaml } from "../templates/ITemplateOracleYaml.js";
+import type { ITemplateTable } from "../templates/ITemplateTableYaml.js";
+import type { ITemplateYamlBase } from "../templates/ITemplateYamlBase.js";
 export interface IOracleYaml extends ITemplateYamlBase, Omit<Partial<IOracle>, "Oracles" | "Table" | "Usage"> {
     Name: string;
     Usage?: IOracleUsageYaml | undefined;

@@ -1,10 +1,10 @@
-import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
-import { AttributeSetter } from "../../../dist/classes/oracles/AttributeSetter.js";
-import { GameObject } from "@dataforged/classes/oracles/GameObject.js";
-import { MultipleRolls } from "../../../dist/classes/oracles/MultipleRolls.js";
-import { OracleContent } from "../../../dist/classes/oracles/OracleContent.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
-import { validateRollTemplate } from "../../../dist/utils/validation/validateRollTemplate.js";
+import { Suggestions } from "../index.js";
+import { AttributeSetter } from "../index.js";
+import { GameObject } from "../index.js";
+import { MultipleRolls } from "../index.js";
+import { OracleContent } from "../index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
+import { validateRollTemplate } from "../../utils/validation/validateRollTemplate.js";
 import _ from "lodash-es";
 import { is } from "typescript-is";
 export class Row {

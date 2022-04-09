@@ -1,4 +1,4 @@
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
+import { badJsonError } from "../logging/badJsonError.js";
 import _ from "lodash-es";
 import { TypedRegEx } from "typed-regex";
 import { is } from "typescript-is";

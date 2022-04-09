@@ -1,4 +1,4 @@
-import { findById } from "../../../dist/utils/md/findById.js";
+import { findById } from "./findById.js";
 import _ from "lodash-es";
 export function transformMoveLinks(md, localLinks = false, pathPrefix = "") {
     md = md.replaceAll(/\(Moves\/([^ ]+?)\/([^ ]+?)\)/g, (match, p1, p2) => {

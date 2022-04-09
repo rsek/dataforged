@@ -1,11 +1,11 @@
-import { OracleCategory } from "../../dist/classes/oracles/OracleCategory.js";
-import { REFS_PATH } from "../../dist/constants/refsPath.js";
-import { getSubdirs } from "../../dist/utils/io/getSubdirs.js";
-import { getYamlFiles } from "../../dist/utils/io/getYamlFiles.js";
-import { badJsonError } from "../../dist/utils/logging/badJsonError.js";
-import { buildLog } from "../../dist/utils/logging/buildLog.js";
-import { templateOracle } from "../../dist/utils/object_transform/templateOracle.js";
-import { loadOracleData } from "../../dist/utils/process_yaml/loadOracleData.js";
+import { OracleCategory } from "../classes/index.js";
+import { REFS_PATH } from "../constants/index.js";
+import { getSubdirs } from "./io/getSubdirs.js";
+import { getYamlFiles } from "./io/getYamlFiles.js";
+import { badJsonError } from "./logging/badJsonError.js";
+import { buildLog } from "./logging/buildLog.js";
+import { templateOracle } from "./object_transform/templateOracle.js";
+import { loadOracleData } from "./process_yaml/loadOracleData.js";
 export function buildOracles() {
     buildLog(buildOracles, "Building oracles...");
     const filesOracleCategories = getYamlFiles("oracles");

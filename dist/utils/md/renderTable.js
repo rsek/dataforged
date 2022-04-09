@@ -1,5 +1,5 @@
-import { lengthOfLongest } from "../../../dist/utils/md/longestLength.js";
-import { transpose2dArray } from "../../../dist/utils/md/transpose2dArray.js";
+import { lengthOfLongest } from "./longestLength.js";
+import { transpose2dArray } from "./transpose2dArray.js";
 import _ from "lodash-es";
 export function renderTable(rowDataArray) {
     const tableBody = rowDataArray.map(row => Object.values(row));

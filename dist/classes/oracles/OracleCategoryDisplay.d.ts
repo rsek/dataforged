@@ -1,4 +1,4 @@
-import type { IDisplay, ImageUrl, Raster, Vector } from "@dataforged/json_out/index.js";
+import type { IDisplay, ImageUrl, Raster, Vector } from "../../json_out/index.js";
 export declare class OracleCategoryDisplay implements IDisplay {
     Title: string;
     Icon?: ImageUrl<Vector> | undefined;

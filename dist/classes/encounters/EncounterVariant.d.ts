@@ -1,6 +1,6 @@
-import { Source } from "../../../dist/classes/common/Source.js";
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, IEncounterVariant, ISource, ITableDisplay, ParagraphsString } from "../../../dist/json_out/index.js";
-import type { IEncounterVariantYaml } from "../../../dist/yaml_in/index.js";
+import { Source } from "../index.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, IEncounterVariant, ISource, ITableDisplay, ParagraphsString } from "../../json_out/index.js";
+import type { IEncounterVariantYaml } from "../../yaml_in/index.js";
 export declare class EncounterVariant implements IEncounterVariant {
     $id: EncounterId;
     Source: Source;

@@ -1,4 +1,4 @@
-import type { ICounter, MeterCondition } from "@dataforged/json_out/index.js";
+import type { ICounter, MeterCondition } from "../index.js";
 export interface IConditionMeter extends ICounter {
     "Starting Value": number;
     Max: number;

@@ -1,5 +1,5 @@
-import type { ICounter } from "@dataforged/json_out/index.js";
-import type { StubExcept } from "@dataforged/utils/types/Stub.js";
+import type { ICounter } from "@json_out/index.js";
+import type { StubExcept } from "@utils/types/Stub.js";
 
 /**
  * Class representing a counter embedded in a Starforged Asset.

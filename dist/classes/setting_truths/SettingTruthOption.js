@@ -1,4 +1,4 @@
-import { Row } from "../../../dist/classes/oracles/Row.js";
+import { Row } from "../index.js";
 export class SettingTruthOption extends Row {
     constructor(parentId, json) {
         super(parentId, json);

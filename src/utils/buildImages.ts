@@ -1,5 +1,5 @@
-import { cloneImages } from "@dataforged/utils/process_img/cloneImages.js";
-import { convertRasterImages } from "@dataforged/utils/process_img/convertRasterImages.js";
+import { cloneImages } from "@utils/process_img/cloneImages.js";
+import { convertRasterImages } from "@utils/process_img/convertRasterImages.js";
 
 /**
  * Clones raster images and converts them to webp.

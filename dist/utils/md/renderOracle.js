@@ -1,6 +1,6 @@
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
-import { extractColumnData } from "../../../dist/utils/md/extractColumnData.js";
-import { renderTable } from "../../../dist/utils/md/renderTable.js";
+import { buildLog } from "../logging/buildLog.js";
+import { extractColumnData } from "./extractColumnData.js";
+import { renderTable } from "./renderTable.js";
 import _ from "lodash-es";
 export function renderOracle(oracle, headerLevel = 3) {
     if (oracle.Display["Column of"]) {

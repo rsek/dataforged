@@ -1,7 +1,7 @@
 
-import { REFS_PATH } from "@dataforged/constants/refsPath.js";
-import { concatWithYamlRefs } from "@dataforged/utils/process_yaml/concatWithYamlRefs.js";
-import type { IOracleCategoryYaml, IYamlWithRef } from "@dataforged/yaml_in/index.js";
+import { REFS_PATH } from "@constants/index.js";
+import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
+import type { IOracleCategoryYaml, IYamlWithRef } from "@yaml_in/index.js";
 import deepFreezeStrict from "deep-freeze-strict";
 import _ from "lodash-es";
 import type fs from "fs";

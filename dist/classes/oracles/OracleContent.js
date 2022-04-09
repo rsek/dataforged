@@ -1,4 +1,4 @@
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { is } from "typescript-is";
 export class OracleContent {
     constructor(json) {

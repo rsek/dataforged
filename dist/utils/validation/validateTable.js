@@ -1,4 +1,4 @@
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
+import { badJsonError } from "../logging/badJsonError.js";
 export function validateTable(table, requireUniqueResults = true, requireAllD100 = true) {
     if (!Array.isArray(table)) {
         throw badJsonError(validateTable, table, "Table is not an array.");

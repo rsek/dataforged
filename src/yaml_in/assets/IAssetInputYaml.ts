@@ -1,6 +1,6 @@
-import type { IAssetInput, IClockInput, INumberInput, ISelectInput, ITextInput } from "@dataforged/json_out/index.js";
-import type { PartialBy } from "@dataforged/utils/types/PartialBy.js";
-import type { StubBy } from "@dataforged/utils/types/Stub.js";
+import type { IAssetInput, IClockInput, INumberInput, ISelectInput, ITextInput } from "@json_out/index.js";
+import type { PartialBy } from "@utils/types/PartialBy.js";
+import type { StubBy } from "@utils/types/Stub.js";
 
 export interface IClockInputYaml extends PartialBy<IClockInput, "$id"> {}
 

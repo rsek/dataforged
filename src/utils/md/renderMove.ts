@@ -1,4 +1,4 @@
-import type { Move } from "@dataforged/classes/moves/Move.js";
+import type { Move } from "@classes/index.js";
 import _ from "lodash-es";
 
 /**

@@ -1,4 +1,4 @@
-import { Source } from "../../../dist/classes/common/Source.js";
+import { Source } from "../index.js";
 export class EncounterVariant {
     constructor(json, ancestorSourceJson) {
         this.$id = (`Encounters / ${json.Name}`);

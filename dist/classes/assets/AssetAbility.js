@@ -1,8 +1,8 @@
-import { AlterMove } from "../../../dist/classes/assets/AlterMove.js";
-import { ClockInput, NumberInput, SelectInput, TextInput } from "../../../dist/classes/common/Input.js";
-import { Move } from "../../../dist/classes/moves/Move.js";
-import { InputType } from "../../../dist/json_out/index.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
+import { AlterMove } from "../index.js";
+import { ClockInput, NumberInput, SelectInput, TextInput } from "../index.js";
+import { Move } from "../index.js";
+import { InputType } from "../../json_out/index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
 export class AssetAbility {
     constructor(json, id, parent) {

@@ -1,7 +1,7 @@
-import { Source } from "../../../dist/classes/common/Source.js";
-import { Suggestions } from "../../../dist/classes/common/Suggestions.js";
-import { SettingTruthOption } from "../../../dist/classes/setting_truths/SettingTruthOption.js";
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
+import { Source } from "../index.js";
+import { Suggestions } from "../index.js";
+import { SettingTruthOption } from "../index.js";
+import { buildLog } from "../../utils/logging/buildLog.js";
 export class SettingTruth {
     constructor(json, sourceJson) {
         this.$id = `Setting Truths / ${json.Name}`;

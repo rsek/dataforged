@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { AttributeKey, AttributeValue, IAttributeChoices } from "@dataforged/json_out/index.js";
-import type { AttributeHash } from "@dataforged/utils/types/AttributeHash.js";
+import type { AttributeKey, AttributeValue, IAttributeChoices } from "@json_out/index.js";
+import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 
 export class AttributeRequirements extends Array<IAttributeChoices> {

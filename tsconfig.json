@@ -34,23 +34,51 @@
     ],
     "plugins": [
       {
-        "transform": "@zerollup/ts-transform-paths",
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
       },
       {
         "transform": "typescript-is/lib/transform-inline/transformer"
       },
     ],
     "paths": {
-      "@dataforged/*": [
-        "./src/*",
-        "./dist/*"
+      "@constants/*": [
+        "src/constants/*",
+        "dist/constants/*"
       ],
+      "@json_out/*": [
+        "src/json_out/*",
+        "dist/json_out/*"
+      ],
+      "@utils/*": [
+        "src/utils/*",
+        "dist/utils/*"
+      ],
+      "@yaml_in/*": [
+        "src/yaml_in/*",
+        "dist/yaml_in/*"
+      ],
+      "@classes/*": [
+        "src/classes/*",
+        "dist/classes/*"
+      ],
+      "@game_objects/*": [
+        "src/game_objects/*",
+        "dist/game_objects/*"
+      ],
+      "@json/*": [
+        "dist/*"
+      ]
     },
     "baseUrl": ".",
     "outDir": "dist",
     "rootDir": "src",
     "allowJs": true,
     "removeComments": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "declaration": true,

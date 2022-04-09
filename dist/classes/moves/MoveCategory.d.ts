@@ -1,7 +1,7 @@
-import { Source } from "../../../dist/classes/common/Source.js";
-import { Move } from "../../../dist/classes/moves/Move.js";
-import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle, ParagraphsString } from "../../../dist/json_out/index.js";
-import type { IMoveCategoryYaml } from "../../../dist/yaml_in/moves/IMoveCategoryYaml.js";
+import { Source } from "../index.js";
+import { Move } from "../index.js";
+import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle, ParagraphsString } from "../../json_out/index.js";
+import type { IMoveCategoryYaml } from "../../yaml_in/moves/IMoveCategoryYaml.js";
 export declare class MoveCategoryDisplay implements IDisplay {
     Title: MoveCategoryTitle;
     Color: string;

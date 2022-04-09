@@ -1,9 +1,9 @@
-import { buildAssets } from "../../dist/utils/buildAssets.js";
-import { buildEncounters } from "../../dist/utils/buildEncounters.js";
-import { buildMoves } from "../../dist/utils/buildMoves.js";
-import { buildOracles } from "../../dist/utils/buildOracles.js";
-import { buildTruths } from "../../dist/utils/buildTruths.js";
-import { buildLog } from "../../dist/utils/logging/buildLog.js";
+import { buildAssets } from "./buildAssets.js";
+import { buildEncounters } from "./buildEncounters.js";
+import { buildMoves } from "./buildMoves.js";
+import { buildOracles } from "./buildOracles.js";
+import { buildTruths } from "./buildTruths.js";
+import { buildLog } from "./logging/buildLog.js";
 export function buildDataforged() {
     buildLog(buildDataforged, "Building Dataforged...");
     const assets = buildAssets();

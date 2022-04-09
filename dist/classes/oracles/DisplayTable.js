@@ -1,6 +1,6 @@
-import { ResultColumn, RollColumn } from "../../../dist/classes/oracles/TableColumn.js";
-import { getNameFromId } from "../../../dist/utils/getNameFromId.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
+import { ResultColumn, RollColumn } from "../index.js";
+import { getNameFromId } from "../../utils/getNameFromId.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
 export class DisplayTable {
     constructor(json, parentId) {
         if (json["Result columns"]) {

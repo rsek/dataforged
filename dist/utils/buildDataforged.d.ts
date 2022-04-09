@@ -1,8 +1,8 @@
-import type { AssetType } from "../../dist/classes/assets/AssetType.js";
-import type { Encounter } from "../../dist/classes/encounters/Encounter.js";
-import type { MoveCategory } from "../../dist/classes/moves/MoveCategory.js";
-import type { OracleCategory } from "../../dist/classes/oracles/OracleCategory.js";
-import type { SettingTruth } from "../../dist/classes/setting_truths/SettingTruth.js";
+import type { AssetType } from "../classes/index.js";
+import type { Encounter } from "../classes/index.js";
+import type { MoveCategory } from "../classes/index.js";
+import type { OracleCategory } from "../classes/index.js";
+import type { SettingTruth } from "../classes/index.js";
 export interface IronswornData {
     assets: AssetType[];
     encounters: Encounter[];

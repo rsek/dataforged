@@ -1,6 +1,6 @@
-import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { renderOracle } from "@dataforged/utils/md/renderOracle.js";
+import type { OracleCategory } from "@classes/index.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { renderOracle } from "@utils/md/renderOracle.js";
 import _ from "lodash-es";
 
 /**

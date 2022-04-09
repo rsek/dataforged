@@ -1,3 +1,3 @@
-import { AssetType } from "../../dist/classes/assets/AssetType.js";
+import { AssetType } from "../classes/index.js";
 export declare function buildAssets(): AssetType[];
 //# sourceMappingURL=buildAssets.d.ts.map

@@ -1,4 +1,4 @@
-import type { IDisplay , IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasOracleUsage, IHasSource , IOracle , IOracleContent , IOracleUsage , OracleCategoryId , OracleTableId } from "@dataforged/json_out/index.js";
+import type { IDisplay , IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasOracleUsage, IHasSource , IOracle , IOracleContent , IOracleUsage , OracleCategoryId , OracleTableId } from "@json_out/index.js";
 /**
  * @internal
  */

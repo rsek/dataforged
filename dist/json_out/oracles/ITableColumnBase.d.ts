@@ -1,4 +1,4 @@
-import type { OracleTableId } from "@dataforged/json_out/index.js";
+import type { OracleTableId } from "../index.js";
 export interface ITableColumnBase {
     Label: string;
     "Use content from": OracleTableId;

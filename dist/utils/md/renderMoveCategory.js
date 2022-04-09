@@ -1,4 +1,4 @@
-import { renderMove } from "../../../dist/utils/md/renderMove.js";
+import { renderMove } from "./renderMove.js";
 import _ from "lodash-es";
 export function renderMoveCategory(moveCat, headerLevel = 2, localLinksOnly = true) {
     const header = `${_.repeat("#", headerLevel)} ${moveCat.Display.Title}`;

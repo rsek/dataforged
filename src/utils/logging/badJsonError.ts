@@ -1,5 +1,5 @@
-import type { HasName } from "@dataforged/utils/logging/HasName.js";
-import type { HasString } from "@dataforged/utils/logging/HasString.js";
+import type { HasName } from "@utils/logging/HasName.js";
+import type { HasString } from "@utils/logging/HasString.js";
 
 /**
  * "Create an Error object with a message that includes the source and the object that failed to

@@ -1,5 +1,5 @@
-import { extractRowContent } from "../../../dist/utils/object_transform/extractRowContent.js";
-import { extractRowRolls } from "../../../dist/utils/object_transform/extractRowRolls.js";
+import { extractRowContent } from "./extractRowContent.js";
+import { extractRowRolls } from "./extractRowRolls.js";
 import _ from "lodash-es";
 export function templateOracleTable(template) {
     if (template.rolls.length !== template.content.length) {

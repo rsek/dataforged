@@ -1,6 +1,6 @@
-import type { AssetId, AssetTypeId, FragmentString, IAssetAbility, IAssetAttachment, IAssetInput, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "@dataforged/json_out/index.js";
-import type { Tuple } from "../../../dist/utils/types/Tuple.js";
-export * from "../../../dist/utils/types/Tuple.js";
+import type { Tuple } from "../../utils/types/Tuple.js";
+import type { AssetId, AssetTypeId, FragmentString, IAssetAbility, IAssetAttachment, IAssetInput, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
+export * from "../../utils/types/Tuple.js";
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
     $id: AssetId;
     Name: string;

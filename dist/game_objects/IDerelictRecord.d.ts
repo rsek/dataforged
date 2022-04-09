@@ -1,6 +1,6 @@
-import type { IPlaceRecord, ISettlementRecord, SettlementInitialContact, StarshipInitialContact } from "@dataforged/game_objects/index.js";
-import type { IStarshipRecord } from "../../dist/game_objects/IStarshipRecord.js";
-import type { AttributeKey, DerelictType, PlaceType } from "@dataforged/json_out/index.js";
+import type { IPlaceRecord, ISettlementRecord, SettlementInitialContact, StarshipInitialContact } from "./index.js";
+import type { IStarshipRecord } from "./IStarshipRecord.js";
+import type { AttributeKey, DerelictType, PlaceType } from "../json_out/index.js";
 export declare type IDerelictRecord = IPlaceRecord<PlaceType.Derelict, AttributeKey.DerelictType | AttributeKey.InitialContact> & {
     [AttributeKey.InitialContact]: StarshipInitialContact.Derelict | SettlementInitialContact.Derelict;
 };

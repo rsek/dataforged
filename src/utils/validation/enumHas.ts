@@ -1,4 +1,4 @@
-import type { EnumLike } from "@dataforged/utils/types/EnumLike.js";
+import type { EnumLike } from "@utils/types/EnumLike.js";
 
 /**
  * Check if an enum has a specific value. Useful mainly in situations where typescript-is shouldn't be invoked, for example while debugging via ts-node or ttypescript.

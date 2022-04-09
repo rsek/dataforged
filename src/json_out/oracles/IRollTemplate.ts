@@ -1,5 +1,5 @@
-import type { FragmentString, MdString, OracleTableId , ParagraphsString , SentenceString } from "@dataforged/json_out/index.js";
-import type { SettingTruthId } from "@dataforged/json_out/setting_truths/SettingTruthName";
+import type { FragmentString, MdString, OracleTableId , ParagraphsString , SentenceString } from "@json_out/index.js";
+import type { SettingTruthId } from "@json_out/setting_truths/SettingTruthName";
 
 /**
  * Represents a template string to be filled with results from specific oracle tables.

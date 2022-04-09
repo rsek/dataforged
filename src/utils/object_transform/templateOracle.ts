@@ -1,6 +1,6 @@
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { replaceInAllStrings } from "@dataforged/utils/object_transform/replaceInAllStrings.js";
-import type { ITemplateYamlBase } from "@dataforged/yaml_in/index.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
+import type { ITemplateYamlBase } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 /**

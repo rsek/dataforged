@@ -1,19 +1,19 @@
 
-import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
-import { OracleContent } from "@dataforged/classes/oracles/OracleContent.js";
-import { OracleDisplay } from "@dataforged/classes/oracles/OracleDisplay.js";
-import { OracleUsage } from "@dataforged/classes/oracles/OracleUsage.js";
-import { Row } from "@dataforged/classes/oracles/Row.js";
+import { SourceInheritor } from "@classes/index.js";
+import { OracleContent } from "@classes/index.js";
+import { OracleDisplay } from "@classes/index.js";
+import { OracleUsage } from "@classes/index.js";
+import { Row } from "@classes/index.js";
 
-import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@dataforged/json_out/index.js";
-import { buildOracleId } from "@dataforged/utils/buildOracleId.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { inferSetsAttributes } from "@dataforged/utils/object_transform/inferSetsAttributes.js";
-import { propagateToChildren } from "@dataforged/utils/object_transform/propagateToChildren.js";
-import { templateOracle } from "@dataforged/utils/object_transform/templateOracle.js";
-import { templateOracleTable } from "@dataforged/utils/object_transform/templateOracleTable.js";
-import type { IOracleYaml, IRowYaml } from "@dataforged/yaml_in/index.js";
-import type { IOracleCategoryYaml } from "@dataforged/yaml_in/oracles/IOracleCategoryYaml.js";
+import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@json_out/index.js";
+import { buildOracleId } from "@utils/buildOracleId.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
+import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
+import { templateOracle } from "@utils/object_transform/templateOracle.js";
+import { templateOracleTable } from "@utils/object_transform/templateOracleTable.js";
+import type { IOracleYaml, IRowYaml } from "@yaml_in/index.js";
+import type { IOracleCategoryYaml } from "@yaml_in/oracles/IOracleCategoryYaml.js";
 import _ from "lodash-es";
 
 export class Oracle extends SourceInheritor implements IOracle  {

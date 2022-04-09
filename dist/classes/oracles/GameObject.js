@@ -1,5 +1,5 @@
-import { Requirements } from "../../../dist/classes/common/Requirements.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
+import { Requirements } from "../index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
 import { is } from "typescript-is";
 export class GameObject {

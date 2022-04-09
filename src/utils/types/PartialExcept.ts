@@ -1,4 +1,4 @@
-import type { RequireKey } from "@dataforged/utils/types/RequireKey.js";
+import type { RequireKey } from "@utils/types/RequireKey.js";
 
 /**
  * Make all properties of T nullable except for K, which is required.

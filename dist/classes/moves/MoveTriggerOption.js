@@ -1,4 +1,4 @@
-import { ActionRoll } from "../../../dist/classes/moves/MoveRoll.js";
+import { ActionRoll } from "../index.js";
 export class MoveTriggerOption {
     constructor(json, id) {
         this.$id = id;

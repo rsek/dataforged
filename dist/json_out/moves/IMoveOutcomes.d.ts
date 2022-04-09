@@ -1,4 +1,4 @@
-import type { IHasId, IMoveOutcome } from "@dataforged/json_out/index.js";
+import type { IHasId, IMoveOutcome } from "../index.js";
 export interface IMoveOutcomes extends IHasId {
     $id: string;
     "Strong Hit": IMoveOutcome;

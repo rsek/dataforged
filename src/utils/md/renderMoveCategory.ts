@@ -1,5 +1,5 @@
-import type { MoveCategory } from "@dataforged/classes/moves/MoveCategory.js";
-import { renderMove } from "@dataforged/utils/md/renderMove.js";
+import type { MoveCategory } from "@classes/index.js";
+import { renderMove } from "@utils/md/renderMove.js";
 import _ from "lodash-es";
 
 /**

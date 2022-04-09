@@ -1,5 +1,5 @@
-import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveOutcomes , MoveCategoryId , MoveId , OracleTableId } from "@dataforged/json_out/index.js";
-import type { IMoveTrigger } from "@dataforged/json_out/moves/IMoveTrigger.js";
+import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveOutcomes , MoveCategoryId , MoveId , OracleTableId } from "@json_out/index.js";
+import type { IMoveTrigger } from "@json_out/moves/IMoveTrigger.js";
 
 
 /**

@@ -1,15 +1,15 @@
-import { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
-import { REFS_PATH } from "@dataforged/constants/refsPath.js";
-import type { OracleCategoryName , OracleSubcategoryName } from "@dataforged/json_out/index.js";
-import { getSubdirs } from "@dataforged/utils/io/getSubdirs.js";
-import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { templateOracle } from "@dataforged/utils/object_transform/templateOracle.js";
-import type { IOracleCatRoot } from "@dataforged/utils/process_yaml/loadOracleData.js";
-import { loadOracleData } from "@dataforged/utils/process_yaml/loadOracleData.js";
-import type { IOracleCategoryYaml } from "@dataforged/yaml_in/index.js";
-import type { IOracleParentCatRoot } from "@dataforged/yaml_in/oracles/IOracleParentCatRootYaml.js";
+import { OracleCategory } from "@classes/index.js";
+import { REFS_PATH } from "@constants/index.js";
+import type { OracleCategoryName , OracleSubcategoryName } from "@json_out/index.js";
+import { getSubdirs } from "@utils/io/getSubdirs.js";
+import { getYamlFiles } from "@utils/io/getYamlFiles.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { templateOracle } from "@utils/object_transform/templateOracle.js";
+import type { IOracleCatRoot } from "@utils/process_yaml/loadOracleData.js";
+import { loadOracleData } from "@utils/process_yaml/loadOracleData.js";
+import type { IOracleCategoryYaml } from "@yaml_in/index.js";
+import type { IOracleParentCatRoot } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
 import type fs from "fs";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {

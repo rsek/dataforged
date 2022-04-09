@@ -1,4 +1,4 @@
-import type { FragmentString , IMoveTriggerOption } from "@dataforged/json_out/index.js";
+import type { FragmentString , IMoveTriggerOption } from "@json_out/index.js";
 
 export interface IMoveTrigger {
   // TODO: type MoveTriggerId

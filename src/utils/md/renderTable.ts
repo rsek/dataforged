@@ -1,5 +1,5 @@
-import { lengthOfLongest } from "@dataforged/utils/md/longestLength.js";
-import { transpose2dArray } from "@dataforged/utils/md/transpose2dArray.js";
+import { lengthOfLongest } from "@utils/md/longestLength.js";
+import { transpose2dArray } from "@utils/md/transpose2dArray.js";
 import _ from "lodash-es";
 
 /**

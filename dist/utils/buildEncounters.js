@@ -1,7 +1,7 @@
-import { Encounter } from "../../dist/classes/encounters/Encounter.js";
-import { getYamlFiles } from "../../dist/utils/io/getYamlFiles.js";
-import { buildLog } from "../../dist/utils/logging/buildLog.js";
-import { concatWithYamlRefs } from "../../dist/utils/process_yaml/concatWithYamlRefs.js";
+import { Encounter } from "../classes/index.js";
+import { getYamlFiles } from "./io/getYamlFiles.js";
+import { buildLog } from "./logging/buildLog.js";
+import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
 import _ from "lodash-es";
 const filesEncounters = getYamlFiles().filter(file => file.toString().match("encounter"));
 export function buildEncounters() {

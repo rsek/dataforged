@@ -1,5 +1,5 @@
-import type { Row } from "@dataforged/classes/oracles/Row.js";
-import type { IOracle, IOracleBase, IRow, OracleTableId } from "@dataforged/json_out/index.js";
+import type { Row } from "@classes/index.js";
+import type { IOracle, IOracleBase, IRow, OracleTableId } from "@json_out/index.js";
 import jsonpath from "jsonpath";
 
 /**

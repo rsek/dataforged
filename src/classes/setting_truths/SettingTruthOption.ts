@@ -1,5 +1,5 @@
-import { Row } from "@dataforged/classes/oracles/Row.js";
-import type { ISettingTruthOption, ParagraphsString, SettingTruthOptionId } from "@dataforged/json_out/index.js";
+import { Row } from "@classes/index.js";
+import type { ISettingTruthOption, ParagraphsString, SettingTruthOptionId } from "@json_out/index.js";
 
 export class SettingTruthOption extends Row implements ISettingTruthOption {
   $id!: SettingTruthOptionId;

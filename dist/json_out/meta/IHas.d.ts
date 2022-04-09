@@ -1,5 +1,5 @@
-import type { Suggestions } from "../../../dist/classes/common/Suggestions.js";
-import type { FragmentString, IDisplay, IGameObject, IOracleContent, IOracleUsage, IRequirements, IRow, ISource, ISuggestions, ParagraphsString, RollTemplate, SentenceString } from "@dataforged/json_out/index.js";
+import type { Suggestions } from "../../classes/index.js";
+import type { FragmentString, IDisplay, IGameObject, IOracleContent, IOracleUsage, IRequirements, IRow, ISource, ISuggestions, ParagraphsString, RollTemplate, SentenceString } from "../index.js";
 export interface IHasSummary {
     Summary: SentenceString | FragmentString;
 }

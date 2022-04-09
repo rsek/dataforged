@@ -1,4 +1,4 @@
-import type { IMultipleRolls } from "@dataforged/json_out/index.js";
+import type { IMultipleRolls } from "../../json_out/index.js";
 export declare class MultipleRolls implements IMultipleRolls {
     Amount: number;
     "Allow duplicates": boolean;

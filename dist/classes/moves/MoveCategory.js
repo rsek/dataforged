@@ -1,7 +1,7 @@
-import { Source } from "../../../dist/classes/common/Source.js";
-import { Move } from "../../../dist/classes/moves/Move.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
-import { validateColor } from "../../../dist/utils/validateColor.js";
+import { Source } from "../index.js";
+import { Move } from "../index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
+import { validateColor } from "../../utils/validateColor.js";
 export class MoveCategoryDisplay {
     constructor(title, color) {
         this.Title = title;

@@ -1,4 +1,4 @@
-import type { AttributeKey, IAttribute, IRow } from "@dataforged/json_out/index.js";
+import type { AttributeKey, IAttribute, IRow } from "@json_out/index.js";
 
 /**
  * Infers a SetsAttributes object for an Oracle from its table rows.

@@ -1,6 +1,6 @@
-import { OracleCategory } from "../../dist/classes/oracles/OracleCategory.js";
-import type { OracleCategoryName, OracleSubcategoryName } from "@dataforged/json_out/index.js";
-import type { IOracleCategoryYaml } from "@dataforged/yaml_in/index.js";
+import { OracleCategory } from "../classes/index.js";
+import type { OracleCategoryName, OracleSubcategoryName } from "../json_out/index.js";
+import type { IOracleCategoryYaml } from "../yaml_in/index.js";
 export interface IOracleParentCategoryData extends IOracleCategoryYaml {
     Name: OracleCategoryName;
     _parentOf: OracleSubcategoryName[];

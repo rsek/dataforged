@@ -1,4 +1,4 @@
-import type { IMoveOutcome, ParagraphsString } from "../../../dist/json_out/index.js";
+import type { IMoveOutcome, ParagraphsString } from "../../json_out/index.js";
 export declare class MoveOutcome implements IMoveOutcome {
     $id: string;
     Text: ParagraphsString;

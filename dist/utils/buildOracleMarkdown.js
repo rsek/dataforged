@@ -1,5 +1,5 @@
-import { renderOracleCategory } from "../../dist/utils/md/renderOracleCategory.js";
-import { transformMoveLinks, transformOracleLinks } from "../../dist/utils/md/transformHyperlink.js";
+import { renderOracleCategory } from "./md/renderOracleCategory.js";
+import { transformMoveLinks, transformOracleLinks } from "./md/transformHyperlink.js";
 import _ from "lodash-es";
 import { writeFileSync } from "fs";
 export function buildOracleMarkdown(oracles, mdPath) {

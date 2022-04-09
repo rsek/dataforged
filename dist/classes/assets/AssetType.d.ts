@@ -1,8 +1,7 @@
-import { Asset } from "../../../dist/classes/assets/Asset.js";
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import type { AssetTypeName } from "../../../dist/json_out/assets/AssetTypeName.js";
-import type { AssetTypeId, IAssetType, IDisplay, ISource, ParagraphsString } from "../../../dist/json_out/index.js";
-import type { RequireKey } from "../../../dist/utils/types/RequireKey.js";
+import { Asset, SourceInheritor } from "../index.js";
+import type { AssetTypeName } from "../../json_out/assets/AssetTypeName.js";
+import type { AssetTypeId, IAssetType, IDisplay, ISource, ParagraphsString } from "../../json_out/index.js";
+import type { RequireKey } from "../../utils/types/RequireKey.js";
 export declare class AssetType extends SourceInheritor implements IAssetType {
     $id: AssetTypeId;
     Name: AssetTypeName;

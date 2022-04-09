@@ -1,5 +1,5 @@
-import type { ICounter } from "../../../dist/json_out/index.js";
-import type { StubExcept } from "../../../dist/utils/types/Stub.js";
+import type { ICounter } from "../../json_out/index.js";
+import type { StubExcept } from "../../utils/types/Stub.js";
 export declare class Counter implements ICounter {
     $id: string;
     Name: string;

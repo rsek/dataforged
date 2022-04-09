@@ -1,26 +1,22 @@
 import "source-map-support/register.js";
-import { buildDataforged } from "@dataforged/utils/buildDataforged.js";
-import { buildImages } from "@dataforged/utils/buildImages.js";
-import { buildMoveMarkdown } from "@dataforged/utils/buildMoveMarkdown.js";
-import { buildOracleMarkdown } from "@dataforged/utils/buildOracleMarkdown.js";
-import { writeJson } from "@dataforged/utils/io/writeJSON.js";
+import { JSON_PATH, MD_PATH } from "@constants/index.js";
+import { buildDataforged } from "@utils/buildDataforged.js";
+import { buildImages } from "@utils/buildImages.js";
+import { buildMoveMarkdown } from "@utils/buildMoveMarkdown.js";
+import { buildOracleMarkdown } from "@utils/buildOracleMarkdown.js";
+import { writeJson } from "@utils/io/writeJSON.js";
 import _ from "lodash-es";
-import type { PathLike } from "fs";
-
-const pathOut: PathLike = "./";
-const mdPath: PathLike = pathOut + "markdown/";
-// const legacyPathOut: PathLike = "./legacy/"
 
 const data = buildDataforged();
 export { data };
 
 _.forEach(data, (value, key) => {
-  writeJson(pathOut.toString() + `starforged-${key}.json`, value);
+  writeJson(JSON_PATH.toString() + `starforged-${key}.json`, value);
 });
 
-buildOracleMarkdown(data.oracles, mdPath);
+buildOracleMarkdown(data.oracles, MD_PATH as string);
 
-buildMoveMarkdown(data.moves, mdPath);
+buildMoveMarkdown(data.moves, MD_PATH as string);
 
 const srcRoot = "src/data/img";
 const outRoot = "img";

@@ -1,7 +1,7 @@
-import type { Oracle } from "@dataforged/classes/oracles/Oracle.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import { extractColumnData } from "@dataforged/utils/md/extractColumnData.js";
-import { renderTable } from "@dataforged/utils/md/renderTable.js";
+import type { Oracle } from "@classes/index.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import { extractColumnData } from "@utils/md/extractColumnData.js";
+import { renderTable } from "@utils/md/renderTable.js";
 import _ from "lodash-es";
 
 /**

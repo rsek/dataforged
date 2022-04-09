@@ -1,4 +1,4 @@
-import { replaceInAllStrings } from "../../../dist/utils/object_transform/replaceInAllStrings.js";
+import { replaceInAllStrings } from "./replaceInAllStrings.js";
 import _ from "lodash-es";
 export function templateOracleInfo(json) {
     let jsonClone = _.cloneDeep(json);

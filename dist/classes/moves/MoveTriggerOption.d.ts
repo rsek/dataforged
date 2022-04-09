@@ -1,5 +1,5 @@
-import type { FragmentString, IActionRoll, IMoveTriggerOption, IProgressRoll } from "../../../dist/json_out/index.js";
-import type { IMoveTriggerOptionYaml } from "../../../dist/yaml_in/moves/IMoveTriggerOptionYaml.js";
+import type { FragmentString, IActionRoll, IMoveTriggerOption, IProgressRoll } from "../../json_out/index.js";
+import type { IMoveTriggerOptionYaml } from "../../yaml_in/moves/IMoveTriggerOptionYaml.js";
 export declare class MoveTriggerOption implements IMoveTriggerOption {
     $id: string;
     Text?: FragmentString | undefined;

@@ -1,6 +1,6 @@
-import type { OracleCategory } from "@dataforged/classes/oracles/OracleCategory.js";
-import { renderOracleCategory } from "@dataforged/utils/md/renderOracleCategory.js";
-import { transformMoveLinks, transformOracleLinks } from "@dataforged/utils/md/transformHyperlink.js";
+import type { OracleCategory } from "@classes/index.js";
+import { renderOracleCategory } from "@utils/md/renderOracleCategory.js";
+import { transformMoveLinks, transformOracleLinks } from "@utils/md/transformHyperlink.js";
 import _ from "lodash-es";
 import type { PathLike } from "fs";
 import { writeFileSync } from "fs";

@@ -1,5 +1,5 @@
-import type { ClockSegments } from "../../../dist/json_out/common/ClockSegments.js";
-import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId, IHasName, InputType, Stat } from "@dataforged/json_out/index.js";
+import type { ClockSegments } from "../common/ClockSegments.js";
+import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId, IHasName, InputType, Stat } from "../index.js";
 export interface IInputBase extends IHasId, IHasName {
     "Input Type": InputType;
     Adjustable?: boolean;

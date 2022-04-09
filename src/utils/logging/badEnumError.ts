@@ -1,6 +1,6 @@
-import type { HasName } from "@dataforged/utils/logging/HasName.js";
-import type { HasString } from "@dataforged/utils/logging/HasString.js";
-import type { EnumLike } from "@dataforged/utils/types/EnumLike.js";
+import type { HasName } from "@utils/logging/HasName.js";
+import type { HasString } from "@utils/logging/HasString.js";
+import type { EnumLike } from "@utils/types/EnumLike.js";
 
 /**
  * It creates an error message for when a value is not present in an enum.

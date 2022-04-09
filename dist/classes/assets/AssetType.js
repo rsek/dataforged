@@ -1,7 +1,6 @@
-import { Asset } from "../../../dist/classes/assets/Asset.js";
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
-import { validateColor } from "../../../dist/utils/validateColor.js";
+import { Asset, SourceInheritor } from "../index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
+import { validateColor } from "../../utils/validateColor.js";
 export class AssetType extends SourceInheritor {
     constructor(json, rootSource) {
         super(json.Source, rootSource);

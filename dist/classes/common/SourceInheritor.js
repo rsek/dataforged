@@ -1,4 +1,4 @@
-import { Source } from "../../../dist/classes/common/Source.js";
+import { Source } from "./index.js";
 export class SourceInheritor {
     constructor(json, ...sourceAncestors) {
         this.Source = new Source(json, ...sourceAncestors);

@@ -1,4 +1,4 @@
-import type { RequireKey } from "../../../dist/utils/types/RequireKey.js";
+import type { RequireKey } from "./RequireKey.js";
 declare type PartialExcept<T, K extends keyof T> = RequireKey<{
     [P in keyof T]?: T[P];
 }, K>;

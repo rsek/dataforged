@@ -1,5 +1,5 @@
-import type { AttributeKey } from "@dataforged/json_out/game_objects/AttributeKey.js";
-import type { FragmentString, IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, OracleTableId, OracleTableRowId, SentenceString, SettingTruthOptionId, TermString } from "@dataforged/json_out/index.js";
+import type { AttributeKey } from "@json_out/game_objects/AttributeKey.js";
+import type { FragmentString, IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, OracleTableId, OracleTableRowId, SentenceString, SettingTruthOptionId, TermString } from "@json_out/index.js";
 
 /**
  * Display properties for a single row in an oracle table.

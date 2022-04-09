@@ -1,4 +1,4 @@
-import type { AssetTypeId } from "@dataforged/json_out/index.js";
+import type { AssetTypeId } from "@json_out/index.js";
 
 export interface IAssetAttachment {
   "Asset Type": AssetTypeId;

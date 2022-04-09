@@ -1,4 +1,4 @@
-import type { ImageUrl, Raster, Vector } from "@dataforged/json_out/index.js";
+import type { ImageUrl, Raster, Vector } from "../index.js";
 export interface IDisplay {
     Title: string;
     Icon?: ImageUrl<Vector> | undefined;

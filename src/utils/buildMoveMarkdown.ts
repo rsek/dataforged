@@ -1,6 +1,6 @@
-import type { MoveCategory } from "@dataforged/classes/moves/MoveCategory.js";
-import { renderMoveCategory } from "@dataforged/utils/md/renderMoveCategory.js";
-import { transformMoveLinks } from "@dataforged/utils/md/transformHyperlink.js";
+import type { MoveCategory } from "@classes/index.js";
+import { renderMoveCategory } from "@utils/md/renderMoveCategory.js";
+import { transformMoveLinks } from "@utils/md/transformHyperlink.js";
 import { writeFileSync } from "fs";
 
 /**

@@ -1,4 +1,4 @@
-import type { AssetId, EncounterId, IGameObject, MoveId, OracleTableId } from "@dataforged/json_out/index.js";
+import type { AssetId, EncounterId, IGameObject, MoveId, OracleTableId } from "../index.js";
 export interface ISuggestions {
     "Game objects"?: IGameObject[] | undefined;
     "Oracle rolls"?: OracleTableId[] | undefined;

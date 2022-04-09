@@ -1,6 +1,6 @@
-export * from "../../../dist/json_out/encounters/EncounterId.js";
-export * from "../../../dist/json_out/encounters/EncounterNature.js";
-export * from "../../../dist/json_out/encounters/EncounterTags.js";
-export * from "../../../dist/json_out/encounters/IEncounter.js";
-export * from "../../../dist/json_out/encounters/IEncounterVariant.js";
+export * from "./EncounterId.js";
+export * from "./EncounterNature.js";
+export * from "./EncounterTags.js";
+export * from "./IEncounter.js";
+export * from "./IEncounterVariant.js";
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,5 @@
-import type { IPlaceRecord, PlaceType } from "@dataforged/game_objects/index.js";
-import type { AttributeKey, SettlementInitialContact } from "@dataforged/json_out/index.js";
+import type { IPlaceRecord, PlaceType } from "@game_objects/index.js";
+import type { AttributeKey, SettlementInitialContact } from "@json_out/index.js";
 
 export type ISettlementRecord<K extends AttributeKey|never = never> = IPlaceRecord<
   PlaceType.Settlement,

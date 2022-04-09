@@ -1,7 +1,7 @@
-import { REFS_PATH } from "@dataforged/constants/refsPath.js";
-import { loadYamlRefs } from "@dataforged/utils/process_yaml/loadYamlRefs.js";
-import { loadYamlTemplates } from "@dataforged/utils/process_yaml/loadYamlTemplates.js";
-import type { IYamlWithRef } from "@dataforged/yaml_in/index.js";
+import { REFS_PATH } from "@constants/index.js";
+import { loadYamlRefs } from "@utils/process_yaml/loadYamlRefs.js";
+import { loadYamlTemplates } from "@utils/process_yaml/loadYamlTemplates.js";
+import type { IYamlWithRef } from "@yaml_in/index.js";
 import yaml from "js-yaml";
 import fs from "fs";
 

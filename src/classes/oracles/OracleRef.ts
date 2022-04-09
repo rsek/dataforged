@@ -1,5 +1,5 @@
-import type { Oracle } from "@dataforged/classes/oracles/Oracle.js";
-import type { OracleTableId } from "@dataforged/json_out/index.js";
+import type { Oracle } from "@classes/index.js";
+import type { OracleTableId } from "@json_out/index.js";
 
 export class OracleTableRef {
   private $id: OracleTableId;

@@ -1,4 +1,4 @@
-import type { IRowRollYaml, IRowYaml } from "@dataforged/yaml_in/index.js";
+import type { IRowRollYaml, IRowYaml } from "@yaml_in/index.js";
 import { is } from "typescript-is";
 
 /**

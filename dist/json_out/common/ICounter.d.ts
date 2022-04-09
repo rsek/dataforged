@@ -1,4 +1,4 @@
-import type { IHasId, IHasName } from "@dataforged/json_out/index.js";
+import type { IHasId, IHasName } from "../index.js";
 export interface ICounter extends IHasId, IHasName {
     Min: number;
     Max: number | null;

@@ -1,5 +1,5 @@
-import type { GameObjectType } from "../../../dist/game_objects/index.js";
-import type { IRequirements } from "@dataforged/json_out/index.js";
+import type { GameObjectType } from "../../game_objects/index.js";
+import type { IRequirements } from "../index.js";
 export interface IGameObject {
     "Object type": GameObjectType;
     Requires?: IRequirements | undefined;

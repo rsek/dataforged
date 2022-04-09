@@ -1,4 +1,4 @@
-import type { IMoveOutcome, IMoveOutcomes } from "../../../dist/json_out/index.js";
+import type { IMoveOutcome, IMoveOutcomes } from "../../json_out/index.js";
 export declare class MoveOutcomes implements IMoveOutcomes {
     $id: string;
     "Strong Hit": IMoveOutcome;

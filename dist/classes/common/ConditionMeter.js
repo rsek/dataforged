@@ -1,5 +1,5 @@
-import { Counter } from "../../../dist/classes/common/Counter.js";
-import { MeterAlias } from "../../../dist/json_out/index.js";
+import { Counter } from "./Counter.js";
+import { MeterAlias } from "../../json_out/common/index.js";
 export class ConditionMeter extends Counter {
     constructor(json, id, assetType) {
         super(json, id);

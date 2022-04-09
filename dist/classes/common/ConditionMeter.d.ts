@@ -1,6 +1,7 @@
-import { Counter } from "../../../dist/classes/common/Counter.js";
-import type { AssetConditionMeterId, AssetTypeId, IConditionMeter, MeterCondition } from "../../../dist/json_out/index.js";
-import { MeterAlias } from "../../../dist/json_out/index.js";
+import { Counter } from "./Counter.js";
+import type { AssetConditionMeterId, AssetTypeId } from "../../json_out/assets/index.js";
+import { MeterAlias } from "../../json_out/common/index.js";
+import type { IConditionMeter, MeterCondition } from "../../json_out/common/index.js";
 export declare class ConditionMeter extends Counter implements IConditionMeter {
     $id: AssetConditionMeterId;
     Name: string;

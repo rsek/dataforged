@@ -2,11 +2,11 @@
  * @module Json
  */
 
-export * from "@dataforged/json_out/assets";
-export * from "@dataforged/json_out/common";
-export * from "@dataforged/json_out/encounters";
-export * from "@dataforged/json_out/game_objects";
-export * from "@dataforged/json_out/meta";
-export * from "@dataforged/json_out/moves";
-export * from "@dataforged/json_out/oracles";
-export * from "@dataforged/json_out/setting_truths";
+export * from "@json_out/assets/index.js";
+export * from "@json_out/common/index.js";
+export * from "@json_out/encounters/index.js";
+export * from "@json_out/game_objects/index.js";
+export * from "@json_out/meta/index.js";
+export * from "@json_out/moves/index.js";
+export * from "@json_out/oracles/index.js";
+export * from "@json_out/setting_truths/index.js";

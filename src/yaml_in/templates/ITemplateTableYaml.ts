@@ -1,5 +1,5 @@
-import type { IRowContentYaml, IRowRollYaml } from "@dataforged/yaml_in/index.js";
-import type { IRowYaml } from "@dataforged/yaml_in/oracles/IRowYaml.js";
+import type { IRowContentYaml, IRowRollYaml } from "@yaml_in/index.js";
+import type { IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 
 
 export interface ITemplateTable {

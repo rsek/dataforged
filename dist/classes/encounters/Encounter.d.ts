@@ -1,8 +1,8 @@
-import { Source } from "../../../dist/classes/common/Source.js";
-import { EncounterDisplay } from "../../../dist/classes/encounters/EncounterDisplay.js";
-import { EncounterVariant } from "../../../dist/classes/encounters/EncounterVariant.js";
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "../../../dist/json_out/index.js";
-import type { IEncounterYaml } from "../../../dist/yaml_in/index.js";
+import { Source } from "../index.js";
+import { EncounterDisplay } from "../index.js";
+import { EncounterVariant } from "../index.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "../../json_out/index.js";
+import type { IEncounterYaml } from "../../yaml_in/index.js";
 export declare class Encounter implements IEncounter {
     $id: EncounterId;
     Name: string;

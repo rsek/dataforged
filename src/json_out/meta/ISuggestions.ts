@@ -1,4 +1,4 @@
-import type { AssetId , EncounterId, IGameObject, MoveId , OracleTableId } from "@dataforged/json_out/index.js";
+import type { AssetId , EncounterId, IGameObject, MoveId , OracleTableId } from "@json_out/index.js";
 
 /**
  * Interface representing "non-canon" suggestions for related game content.

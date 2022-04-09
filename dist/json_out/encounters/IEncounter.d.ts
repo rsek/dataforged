@@ -1,4 +1,4 @@
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IDisplay, IEncounterVariant, IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary, ISource, ParagraphsString, SentenceString } from "@dataforged/json_out/index.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IDisplay, IEncounterVariant, IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary, ISource, ParagraphsString, SentenceString } from "../index.js";
 export interface IEncounter extends IHasQuestStarter, IHasDisplay<IDisplay>, IHasDescription, IHasSource, IHasName, IHasId<EncounterId>, IHasSummary {
     $id: EncounterId;
     Name: string;

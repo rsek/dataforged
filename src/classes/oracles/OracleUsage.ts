@@ -1,7 +1,6 @@
-import { Requirements } from "@dataforged/classes/common/Requirements.js";
-import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
-import type { IAttributeChoices, IOracleUsage } from "@dataforged/json_out/index.js";
-import type { IOracleUsageYaml } from "@dataforged/yaml_in/oracles/IOracleUsageYaml.js";
+import { Requirements , Suggestions } from "@classes/index.js";
+import type { IAttributeChoices, IOracleUsage } from "@json_out/index.js";
+import type { IOracleUsageYaml } from "@yaml_in/oracles/IOracleUsageYaml.js";
 
 export class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;

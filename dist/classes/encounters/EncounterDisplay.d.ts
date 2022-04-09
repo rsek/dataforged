@@ -1,4 +1,4 @@
-import type { IDisplay } from "../../../dist/json_out/index.js";
+import type { IDisplay } from "../../json_out/index.js";
 export declare class EncounterDisplay implements IDisplay {
     Title: string;
     constructor(json: Partial<IDisplay>, parentName: string);

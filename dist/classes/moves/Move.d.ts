@@ -1,8 +1,8 @@
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import type { Suggestions } from "../../../dist/classes/common/Suggestions.js";
-import { MoveOutcomes } from "../../../dist/classes/moves/MoveOutcomes.js";
-import { MoveTrigger } from "../../../dist/classes/moves/MoveTrigger.js";
-import type { AssetId, IDisplay, IMove, ISource, MoveCategoryId, MoveId, OracleTableId, ParagraphsString } from "../../../dist/json_out/index.js";
+import { SourceInheritor } from "../index.js";
+import type { Suggestions } from "../index.js";
+import { MoveOutcomes } from "../index.js";
+import { MoveTrigger } from "../index.js";
+import type { AssetId, IDisplay, IMove, ISource, MoveCategoryId, MoveId, OracleTableId, ParagraphsString } from "../../json_out/index.js";
 export declare class Move extends SourceInheritor implements IMove {
     $id: MoveId;
     Name: string;

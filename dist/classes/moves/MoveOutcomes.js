@@ -1,4 +1,4 @@
-import { MoveOutcome } from "../../../dist/classes/moves/MoveOutcome.js";
+import { MoveOutcome } from "../index.js";
 export class MoveOutcomes {
     constructor(json, id) {
         this.$id = id;

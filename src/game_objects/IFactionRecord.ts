@@ -1,6 +1,6 @@
-import type { IActorRecord } from "@dataforged/game_objects/IActorRecord.js";
-import type { ActorType, FactionType } from "@dataforged/game_objects/index.js";
-import type { AttributeKey } from "@dataforged/json_out/index.js";
+import type { IActorRecord } from "@game_objects/IActorRecord.js";
+import type { ActorType, FactionType } from "@game_objects/index.js";
+import type { AttributeKey } from "@json_out/index.js";
 
 export type IFactionRecord = IActorRecord<ActorType.Faction,
   AttributeKey.FactionType|

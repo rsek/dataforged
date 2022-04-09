@@ -1,10 +1,10 @@
-import { SourceInheritor } from "@dataforged/classes/common/SourceInheritor.js";
-import type { Suggestions } from "@dataforged/classes/common/Suggestions.js";
-import { MoveOutcomes } from "@dataforged/classes/moves/MoveOutcomes.js";
-import { MoveTrigger } from "@dataforged/classes/moves/MoveTrigger.js";
-import type { AssetId , IDisplay , IMove , ISource, MoveCategoryId , MoveId , OracleTableId , ParagraphsString } from "@dataforged/json_out/index.js";
+import { SourceInheritor } from "@classes/index.js";
+import type { Suggestions } from "@classes/index.js";
+import { MoveOutcomes } from "@classes/index.js";
+import { MoveTrigger } from "@classes/index.js";
+import type { AssetId , IDisplay , IMove , ISource, MoveCategoryId , MoveId , OracleTableId , ParagraphsString } from "@json_out/index.js";
 
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { buildLog } from "@utils/logging/buildLog.js";
 import _ from "lodash-es";
 
 /**

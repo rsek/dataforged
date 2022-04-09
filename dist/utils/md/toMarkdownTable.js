@@ -1,4 +1,4 @@
-import { renderOracleCategory } from "../../../dist/utils/md/renderOracleCategory.js";
+import { renderOracleCategory } from "./renderOracleCategory.js";
 import _ from "lodash-es";
 import fs from "fs";
 function toMdMultiTableData(rollColumnData, rollColumnLabels, resultColumnData, resultColumnLabels) {

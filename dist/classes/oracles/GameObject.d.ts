@@ -1,7 +1,7 @@
-import { Requirements } from "../../../dist/classes/common/Requirements.js";
-import type { GameObjectType } from "../../../dist/game_objects/enum/GameObjectType.js";
-import type { GameObjectRecord } from "../../../dist/game_objects/index.js";
-import type { IGameObject } from "@dataforged/json_out/index.js";
+import { Requirements } from "../index.js";
+import type { GameObjectType } from "../../game_objects/enum/GameObjectType.js";
+import type { GameObjectRecord } from "../../game_objects/index.js";
+import type { IGameObject } from "../../json_out/index.js";
 export declare class GameObject implements IGameObject {
     "Object type": GameObjectType;
     Requires?: Requirements | undefined;

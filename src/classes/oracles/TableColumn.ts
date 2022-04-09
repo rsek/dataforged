@@ -1,4 +1,4 @@
-import type { IResultColumn, IRow, ITableColumnBase, OracleTableId } from "@dataforged/json_out/index.js";
+import type { IResultColumn, IRow, ITableColumnBase, OracleTableId } from "@json_out/index.js";
 
 export class ResultColumn implements IResultColumn {
   Label: IResultColumn["Label"];

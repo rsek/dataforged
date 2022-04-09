@@ -1,7 +1,7 @@
 
 
-import type { IMultipleRolls } from "@dataforged/json_out/index.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { IMultipleRolls } from "@json_out/index.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 import { is } from "typescript-is";
 
 /**

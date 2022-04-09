@@ -1,7 +1,7 @@
-import { AssetType } from "../../dist/classes/assets/AssetType.js";
-import { getYamlFiles } from "../../dist/utils/io/getYamlFiles.js";
-import { badJsonError } from "../../dist/utils/logging/badJsonError.js";
-import { buildLog } from "../../dist/utils/logging/buildLog.js";
+import { AssetType } from "../classes/index.js";
+import { getYamlFiles } from "./io/getYamlFiles.js";
+import { badJsonError } from "./logging/badJsonError.js";
+import { buildLog } from "./logging/buildLog.js";
 import yaml from "js-yaml";
 import jp from "jsonpath";
 import fs from "fs";

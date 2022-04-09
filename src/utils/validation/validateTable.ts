@@ -1,5 +1,5 @@
-import type { IRow } from "@dataforged/json_out/index.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { IRow } from "@json_out/index.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 
 /**
  * It validates a table of dice rolls.

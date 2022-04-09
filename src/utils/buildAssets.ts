@@ -1,8 +1,8 @@
-import { AssetType } from "@dataforged/classes/assets/AssetType.js";
-import type { AssetConditionMeterId , IAssetType , ISource, RollableStat } from "@dataforged/json_out/index.js";
-import { getYamlFiles } from "@dataforged/utils/io/getYamlFiles.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
+import { AssetType } from "@classes/index.js";
+import type { AssetConditionMeterId , IAssetType , ISource, RollableStat } from "@json_out/index.js";
+import { getYamlFiles } from "@utils/io/getYamlFiles.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
+import { buildLog } from "@utils/logging/buildLog.js";
 import yaml from "js-yaml";
 import jp from "jsonpath";
 import fs from "fs";

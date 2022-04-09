@@ -1,7 +1,7 @@
-import type { AssetId, AssetTypeId, FragmentString,IAssetAbility, IAssetAttachment, IAssetInput, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "@dataforged/json_out/index.js";
-import type { Tuple } from "@dataforged/utils/types/Tuple.js";
+import type { Tuple } from "@utils/types/Tuple.js";
+import type { AssetId, AssetTypeId, FragmentString,IAssetAbility, IAssetAttachment, IAssetInput, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "@json_out/index.js";
 
-export * from "@dataforged/utils/types/Tuple.js";
+export * from "@utils/types/Tuple.js";
 
 /**
  * An interface representing a Starforged asset.

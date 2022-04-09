@@ -1,3 +1,3 @@
-export * from "../../../dist/yaml_in/encounters/IEncounterVariantYaml.js";
-export * from "../../../dist/yaml_in/encounters/IEncounterYaml.js";
+export * from "./IEncounterVariantYaml.js";
+export * from "./IEncounterYaml.js";
 //# sourceMappingURL=index.d.ts.map

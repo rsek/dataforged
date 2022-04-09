@@ -1,4 +1,4 @@
-import type { ProgressRollType } from "@dataforged/json_out/common/index.js";
+import type { ProgressRollType } from "@json_out/common/index.js";
 
 
 export interface IProgressRoll {

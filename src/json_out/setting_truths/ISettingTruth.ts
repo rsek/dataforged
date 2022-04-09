@@ -1,5 +1,5 @@
-import type { IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable , ISettingTruthOption , ISuggestions , ParagraphsString } from "@dataforged/json_out/index.js";
-import type { SettingTruthId, SettingTruthName } from "@dataforged/json_out/setting_truths/SettingTruthName";
+import type { IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable , ISettingTruthOption , ISuggestions , ParagraphsString } from "@json_out/index.js";
+import type { SettingTruthId, SettingTruthName } from "@json_out/setting_truths/SettingTruthName";
 /**
  * Interface for Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
  * @see ISettingTruthOption

@@ -1,8 +1,8 @@
-import { Source } from "@dataforged/classes/common/Source.js";
-import { EncounterDisplay } from "@dataforged/classes/encounters/EncounterDisplay.js";
-import { EncounterVariant } from "@dataforged/classes/encounters/EncounterVariant.js";
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "@dataforged/json_out/index.js";
-import type { IEncounterYaml } from "@dataforged/yaml_in/index.js";
+import { Source } from "@classes/index.js";
+import { EncounterDisplay } from "@classes/index.js";
+import { EncounterVariant } from "@classes/index.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "@json_out/index.js";
+import type { IEncounterYaml } from "@yaml_in/index.js";
 
 export class Encounter implements IEncounter {
   $id: EncounterId;

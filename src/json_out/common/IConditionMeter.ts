@@ -1,4 +1,4 @@
-import type { ICounter, MeterCondition } from "@dataforged/json_out/index.js";
+import type { ICounter, MeterCondition } from "@json_out/index.js";
 
 /**
  * Interface representing a condition meter.

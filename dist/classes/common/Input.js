@@ -1,5 +1,5 @@
-import { InputType } from "../../../dist/json_out/common/InputType.js";
-import { ClockType } from "../../../dist/json_out/index.js";
+import { InputType } from "../../json_out/common/InputType.js";
+import { ClockType } from "../../json_out/index.js";
 import { is } from "typescript-is";
 export class NumberInput {
     constructor(json, id) {

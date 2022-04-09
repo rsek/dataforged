@@ -1,4 +1,4 @@
-import { REFS_PATH } from "@dataforged/constants/refsPath.js";
+import { REFS_PATH } from "@constants/index.js";
 import fs from "fs";
 
 /**

@@ -1,10 +1,8 @@
-import { AssetAbility } from "../../../dist/classes/assets/AssetAbility.js";
-import { ConditionMeter } from "../../../dist/classes/common/ConditionMeter.js";
-import { ClockInput, NumberInput, SelectInput, TextInput } from "../../../dist/classes/common/Input.js";
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import { InputType } from "../../../dist/json_out/index.js";
-import { badJsonError } from "../../../dist/utils/logging/badJsonError.js";
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
+import { AssetAbility } from "./AssetAbility.js";
+import { ClockInput, ConditionMeter, NumberInput, SelectInput, SourceInheritor, TextInput } from "../common/index.js";
+import { InputType } from "../../json_out/common/index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
+import { buildLog } from "../../utils/logging/buildLog.js";
 export class Asset extends SourceInheritor {
     constructor(json, parent) {
         super(json.Source ?? {}, parent.Source);

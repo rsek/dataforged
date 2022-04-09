@@ -1,7 +1,7 @@
-import { SourceInheritor } from "../../../dist/classes/common/SourceInheritor.js";
-import { MoveOutcomes } from "../../../dist/classes/moves/MoveOutcomes.js";
-import { MoveTrigger } from "../../../dist/classes/moves/MoveTrigger.js";
-import { buildLog } from "../../../dist/utils/logging/buildLog.js";
+import { SourceInheritor } from "../index.js";
+import { MoveOutcomes } from "../index.js";
+import { MoveTrigger } from "../index.js";
+import { buildLog } from "../../utils/logging/buildLog.js";
 import _ from "lodash-es";
 export class Move extends SourceInheritor {
     constructor(json, ...sourceAncestors) {

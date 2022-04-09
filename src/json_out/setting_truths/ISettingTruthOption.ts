@@ -1,5 +1,5 @@
-import type { IHasDescription, IHasQuestStarter , IRow , RollTemplate } from "@dataforged/json_out/index.js";
-import type { SettingTruthId } from "@dataforged/json_out/setting_truths/SettingTruthName";
+import type { IHasDescription, IHasQuestStarter , IRow , RollTemplate } from "@json_out/index.js";
+import type { SettingTruthId } from "@json_out/setting_truths/SettingTruthName";
 
 /**
  * A valid setting truth option ID.

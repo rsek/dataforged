@@ -1,7 +1,7 @@
-import { MoveCategory } from "../../dist/classes/moves/MoveCategory.js";
-import { getYamlFiles } from "../../dist/utils/io/getYamlFiles.js";
-import { buildLog } from "../../dist/utils/logging/buildLog.js";
-import { concatWithYamlRefs } from "../../dist/utils/process_yaml/concatWithYamlRefs.js";
+import { MoveCategory } from "../classes/index.js";
+import { getYamlFiles } from "./io/getYamlFiles.js";
+import { buildLog } from "./logging/buildLog.js";
+import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
 import _ from "lodash-es";
 const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));
 export function buildMoves() {

@@ -1,3 +1,3 @@
-import type { MoveCategory } from "../../../dist/classes/moves/MoveCategory.js";
+import type { MoveCategory } from "../../classes/index.js";
 export declare function renderMoveCategory(moveCat: MoveCategory, headerLevel?: number, localLinksOnly?: boolean): string;
 //# sourceMappingURL=renderMoveCategory.d.ts.map

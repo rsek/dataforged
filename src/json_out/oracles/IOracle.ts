@@ -1,4 +1,4 @@
-import type { IHasName , IOracleBase, IRow , ITableDisplay , OracleCategoryId , OracleSubcategoryId , OracleTableId } from "@dataforged/json_out/index.js";
+import type { IHasName , IOracleBase, IRow , ITableDisplay , OracleCategoryId , OracleSubcategoryId , OracleTableId } from "@json_out/index.js";
 
 export interface IOracle extends IOracleBase, IHasName {
   $id: OracleTableId;

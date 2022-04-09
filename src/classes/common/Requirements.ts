@@ -1,6 +1,6 @@
-import { AttributeRequirements } from "@dataforged/classes/common/AttributeRequirements.js";
-import type { IRequirements } from "@dataforged/json_out/index.js";
-import type { IRequirementsYaml } from "@dataforged/yaml_in/index.js";
+import { AttributeRequirements } from "@classes/index.js";
+import type { IRequirements } from "@json_out/index.js";
+import type { IRequirementsYaml } from "@yaml_in/index.js";
 
 export class Requirements implements IRequirements {
   Attributes: AttributeRequirements;

@@ -1,4 +1,4 @@
-import { CustomStatOption } from "../../../dist/classes/common/CustomStatOption.js";
+import { CustomStatOption } from "../index.js";
 export class ActionRoll {
     constructor(json, parent) {
         this.Stat = json.Stat;

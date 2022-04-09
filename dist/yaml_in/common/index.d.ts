@@ -1,4 +1,4 @@
-export * from "../../../dist/yaml_in/common/IRequirementsYaml.js";
-export * from "../../../dist/yaml_in/common/ISuggestionsYaml.js";
-export * from "../../../dist/yaml_in/common/IYamlWithRef.js";
+export * from "./IRequirementsYaml.js";
+export * from "./ISuggestionsYaml.js";
+export * from "./IYamlWithRef.js";
 //# sourceMappingURL=index.d.ts.map

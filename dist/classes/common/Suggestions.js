@@ -1,4 +1,4 @@
-import { GameObject } from "../../../dist/classes/oracles/GameObject.js";
+import { GameObject } from "../index.js";
 export class Suggestions {
     constructor(data) {
         if (data["Game objects"]) {

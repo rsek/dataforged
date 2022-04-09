@@ -1,5 +1,5 @@
-import type { IOracleContent } from "@dataforged/json_out/index.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { IOracleContent } from "@json_out/index.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 import { is } from "typescript-is";
 
 /**

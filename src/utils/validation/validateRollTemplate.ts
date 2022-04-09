@@ -1,5 +1,5 @@
-import type { IHasRollTemplate, MdString, OracleTableId, RollTemplate, RollTemplateString } from "@dataforged/json_out/index.js";
-import { badJsonError } from "@dataforged/utils/logging/badJsonError.js";
+import type { IHasRollTemplate, MdString, OracleTableId, RollTemplate, RollTemplateString } from "@json_out/index.js";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 import _ from "lodash-es";
 import { TypedRegEx } from "typed-regex";
 import { is } from "typescript-is";

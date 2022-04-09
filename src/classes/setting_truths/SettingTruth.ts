@@ -1,9 +1,9 @@
-import { Source } from "@dataforged/classes/common/Source.js";
-import { Suggestions } from "@dataforged/classes/common/Suggestions.js";
-import { SettingTruthOption } from "@dataforged/classes/setting_truths/SettingTruthOption.js";
-import type { ISettingTruth, ISource, ParagraphsString, SettingTruthId, SettingTruthName } from "@dataforged/json_out/index.js";
-import { buildLog } from "@dataforged/utils/logging/buildLog.js";
-import type { ISettingTruthYaml } from "@dataforged/yaml_in/setting_truths/ISettingTruthYaml.js";
+import { Source } from "@classes/index.js";
+import { Suggestions } from "@classes/index.js";
+import { SettingTruthOption } from "@classes/index.js";
+import type { ISettingTruth, ISource, ParagraphsString, SettingTruthId, SettingTruthName } from "@json_out/index.js";
+import { buildLog } from "@utils/logging/buildLog.js";
+import type { ISettingTruthYaml } from "@yaml_in/setting_truths/ISettingTruthYaml.js";
 
 export class SettingTruth implements ISettingTruth {
   $id: SettingTruthId;

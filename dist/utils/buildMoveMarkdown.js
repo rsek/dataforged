@@ -1,5 +1,5 @@
-import { renderMoveCategory } from "../../dist/utils/md/renderMoveCategory.js";
-import { transformMoveLinks } from "../../dist/utils/md/transformHyperlink.js";
+import { renderMoveCategory } from "./md/renderMoveCategory.js";
+import { transformMoveLinks } from "./md/transformHyperlink.js";
 import { writeFileSync } from "fs";
 export function buildMoveMarkdown(data, mdPath) {
     const allMoveText = [

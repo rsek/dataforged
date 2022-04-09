@@ -1,5 +1,5 @@
-import { REFS_PATH } from "../../../dist/constants/refsPath.js";
-import { concatWithYamlRefs } from "../../../dist/utils/process_yaml/concatWithYamlRefs.js";
+import { REFS_PATH } from "../../constants/index.js";
+import { concatWithYamlRefs } from "./concatWithYamlRefs.js";
 import deepFreezeStrict from "deep-freeze-strict";
 import _ from "lodash-es";
 export function loadOracleData(referencePath = REFS_PATH, ...filePaths) {

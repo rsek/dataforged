@@ -1,4 +1,4 @@
-import type { IHasId , IMoveOutcome } from "@dataforged/json_out/index.js";
+import type { IHasId , IMoveOutcome } from "@json_out/index.js";
 
 // FIXME: key with enum for move outcomes
 
