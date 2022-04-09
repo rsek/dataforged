@@ -1,5 +1,4 @@
-import { Source } from "../index.js";
-import { Move } from "../index.js";
+import { Move, Source } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { validateColor } from "../../utils/validateColor.js";
 export class MoveCategoryDisplay {

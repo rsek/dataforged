@@ -10,4 +10,5 @@ export * from "./MoveCategoryId.js";
 export * from "./MoveCategoryName.js";
 export * from "./MoveCategoryTitle.js";
 export * from "./MoveId.js";
+export * from "./IMoveCategory.js";
 //# sourceMappingURL=index.js.map
