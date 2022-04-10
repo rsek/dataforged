@@ -5,6 +5,7 @@ import { is } from "typescript-is";
  */
 export class MultipleRolls {
     constructor(json) {
+        var _a, _b;
         /**
          * In tabletop play, duplicate results are typically rerolled (p. XX). However, a handful of tables (such as Space Sighting) use multiple rolls to represent discrete objects (rather than features of a single game object), so duplicate results should be allowed.
          */
@@ -53,8 +54,8 @@ export class MultipleRolls {
             throw badJsonError(this.constructor, json);
         }
         this.Amount = json.Amount;
-        this["Allow duplicates"] = json["Allow duplicates"] ?? this["Allow duplicates"];
-        this["Make it worse"] = json["Make it worse"] ?? this["Make it worse"];
+        this["Allow duplicates"] = (_a = json["Allow duplicates"]) !== null && _a !== void 0 ? _a : this["Allow duplicates"];
+        this["Make it worse"] = (_b = json["Make it worse"]) !== null && _b !== void 0 ? _b : this["Make it worse"];
     }
 }
 //# sourceMappingURL=MultipleRolls.js.map

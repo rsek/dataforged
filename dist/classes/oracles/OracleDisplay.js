@@ -1,10 +1,11 @@
 import { DisplayTable } from "../index.js";
 export class OracleDisplay {
     constructor(json, parentName, parentId) {
-        this.Title = json.Title ?? parentName;
+        var _a, _b;
+        this.Title = (_a = json.Title) !== null && _a !== void 0 ? _a : parentName;
         this.Images = json.Images;
         this.Icon = json.Icon;
-        this["Column of"] = json["Column of"] ?? undefined;
+        this["Column of"] = (_b = json["Column of"]) !== null && _b !== void 0 ? _b : undefined;
         const tableData = json.Table;
         if (tableData) {
             this.Table = new DisplayTable(tableData, parentId);

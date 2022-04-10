@@ -4,6 +4,7 @@ import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
 export class AssetAbility {
     constructor(json, id, parent) {
+        var _a;
         this.$id = id;
         this.Text = json.Text;
         if (json.Moves) {
@@ -41,12 +42,13 @@ export class AssetAbility {
             });
         }
         this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
-            const moveId = alterMove.Move ?? "Moves/*";
+            var _a;
+            const moveId = (_a = alterMove.Move) !== null && _a !== void 0 ? _a : "Moves/*";
             const newData = new AlterMove(alterMove, `${this.$id}/Alter_${moveId}`.replaceAll(" ", "_"));
             return newData;
         }) : json["Alter Moves"];
         this["Alter Properties"] = json["Alter Properties"];
-        this.Enabled = json.Enabled ?? false;
+        this.Enabled = (_a = json.Enabled) !== null && _a !== void 0 ? _a : false;
     }
 }
 //# sourceMappingURL=AssetAbility.js.map

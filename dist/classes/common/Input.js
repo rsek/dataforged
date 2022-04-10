@@ -30,6 +30,7 @@ export class TextInput {
 }
 export class SelectInput {
     constructor(json, id) {
+        var _a;
         this.Adjustable = false;
         console.log(json);
         this.$id = id;
@@ -48,7 +49,7 @@ export class SelectInput {
                     throw new Error("Unable to construct select input options - check the data!");
             }
         });
-        this.Adjustable = json.Adjustable ?? false;
+        this.Adjustable = (_a = json.Adjustable) !== null && _a !== void 0 ? _a : false;
     }
 }
 export class AssetSelectInputStatOption {

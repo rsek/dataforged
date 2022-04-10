@@ -5,15 +5,16 @@ import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 export class Asset extends SourceInheritor {
     constructor(json, parent) {
-        super(json.Source ?? {}, parent.Source);
+        var _a, _b, _c, _d, _e;
+        super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, parent.Source);
         this["Asset Type"] = parent.$id;
         this.$id = `${this["Asset Type"]}/${json.Name}`.replaceAll(" ", "_");
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Display = {
-            Title: json.Display?.Title ?? this.Name,
-            Color: json.Display?.Color ?? parent.Display.Color
+            Title: (_c = (_b = json.Display) === null || _b === void 0 ? void 0 : _b.Title) !== null && _c !== void 0 ? _c : this.Name,
+            Color: (_e = (_d = json.Display) === null || _d === void 0 ? void 0 : _d.Color) !== null && _e !== void 0 ? _e : parent.Display.Color
         };
         this.Attachments = json.Attachments;
         if (json.Inputs) {

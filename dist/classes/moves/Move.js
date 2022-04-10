@@ -8,8 +8,9 @@ import _ from "lodash-es";
  */
 export class Move extends SourceInheritor {
     constructor(json, ...sourceAncestors) {
-        super(json.Source ?? {}, ...sourceAncestors);
-        this.$id = (json.$id ?? `${json.Category}/${json.Name}`).replaceAll(" ", "_");
+        var _a, _b;
+        super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, ...sourceAncestors);
+        this.$id = ((_b = json.$id) !== null && _b !== void 0 ? _b : `${json.Category}/${json.Name}`).replaceAll(" ", "_");
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Category = json.Category;

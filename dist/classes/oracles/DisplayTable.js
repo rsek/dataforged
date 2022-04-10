@@ -15,7 +15,7 @@ export class DisplayTable {
                     }
                 });
             }
-            this["Result columns"] = resultColData.map(col => new ResultColumn(col["Use content from"] ?? parentId, col.Label ?? undefined, col.Key ?? "Result"));
+            this["Result columns"] = resultColData.map(col => { var _a, _b, _c; return new ResultColumn((_a = col["Use content from"]) !== null && _a !== void 0 ? _a : parentId, (_b = col.Label) !== null && _b !== void 0 ? _b : undefined, (_c = col.Key) !== null && _c !== void 0 ? _c : "Result"); });
         }
         else {
             this["Result columns"] = [new ResultColumn(parentId)];
@@ -32,7 +32,7 @@ export class DisplayTable {
                     }
                 });
             }
-            this["Roll columns"] = rollColData.map(col => new RollColumn(col["Use content from"] ?? parentId, col.Label ?? undefined));
+            this["Roll columns"] = rollColData.map(col => { var _a, _b; return new RollColumn((_a = col["Use content from"]) !== null && _a !== void 0 ? _a : parentId, (_b = col.Label) !== null && _b !== void 0 ? _b : undefined); });
         }
         else {
             this["Roll columns"] = [new RollColumn(parentId)];

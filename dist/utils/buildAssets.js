@@ -16,12 +16,13 @@ export function buildAssets() {
     const result = json["Asset Types"].map((assetType) => new AssetType(assetType, json.Source));
     result.forEach(assetType => assetType.Assets.forEach(asset => {
         jp.apply(asset, "$..Stat", (stat) => {
+            var _a, _b;
             if (stat === "Asset Condition Meter") {
                 if (!asset["Condition Meter"]) {
                     throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.");
                 }
-                buildLog(buildAssets, `Adding reference for ${asset["Condition Meter"]?.$id}`);
-                stat = asset["Condition Meter"]?.$id;
+                buildLog(buildAssets, `Adding reference for ${(_a = asset["Condition Meter"]) === null || _a === void 0 ? void 0 : _a.$id}`);
+                stat = (_b = asset["Condition Meter"]) === null || _b === void 0 ? void 0 : _b.$id;
             }
             return stat;
         });

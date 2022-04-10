@@ -12,7 +12,7 @@ export function buildEncounters() {
     buildLog(buildEncounters, "Building encounters...");
     const encounterRoot = concatWithYamlRefs(undefined, ...filesEncounters);
     const json = encounterRoot.Encounters.map(enc => new Encounter(enc, encounterRoot.Source));
-    const variantCount = _.sum(json.map(enc => enc.Variants?.length));
+    const variantCount = _.sum(json.map(enc => { var _a; return (_a = enc.Variants) === null || _a === void 0 ? void 0 : _a.length; }));
     buildLog(buildEncounters, `Finished building ${json.length} encounters (plus ${variantCount} encounter variants).`);
     return json;
 }

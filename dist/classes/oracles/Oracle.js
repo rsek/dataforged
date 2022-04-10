@@ -14,8 +14,9 @@ export class Oracle extends SourceInheritor {
     constructor(json, category, memberOf, ...ancestorsJson
     // ancestors should be in ascending order
     ) {
+        var _a, _b, _c;
         let jsonClone = _.cloneDeep(json);
-        super(jsonClone.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
+        super((_a = jsonClone.Source) !== null && _a !== void 0 ? _a : {}, ..._.compact(ancestorsJson.map(item => item.Source)));
         if (jsonClone._templateInfo) {
             jsonClone = templateOracle(jsonClone, jsonClone._templateInfo);
         }
@@ -26,10 +27,10 @@ export class Oracle extends SourceInheritor {
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = jsonClone.Name;
         this.Aliases = jsonClone.Aliases;
-        this["Member of"] = memberOf ?? undefined;
+        this["Member of"] = memberOf !== null && memberOf !== void 0 ? memberOf : undefined;
         this.Category = category;
         this.Description = jsonClone.Description;
-        this.Display = new OracleDisplay((jsonClone.Display ?? {}), this.Name, this.$id);
+        this.Display = new OracleDisplay(((_b = jsonClone.Display) !== null && _b !== void 0 ? _b : {}), this.Name, this.$id);
         if (jsonClone.Usage) {
             this.Usage = new OracleUsage(jsonClone.Usage);
         }
@@ -80,11 +81,12 @@ export class Oracle extends SourceInheritor {
             if (!this.Usage) {
                 this.Usage = {};
             }
-            if (this.Usage?.["Sets attributes"]) {
+            if ((_c = this.Usage) === null || _c === void 0 ? void 0 : _c["Sets attributes"]) {
                 this.Usage["Sets attributes"].map((item) => item.Key).forEach(key => keys.add(key));
             }
             this.Oracles.forEach(oracle => {
-                if (oracle.Usage?.["Sets attributes"]) {
+                var _a;
+                if ((_a = oracle.Usage) === null || _a === void 0 ? void 0 : _a["Sets attributes"]) {
                     oracle.Usage["Sets attributes"].map((item) => item.Key).forEach(key => keys.add(key));
                 }
             });
