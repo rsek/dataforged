@@ -10,7 +10,13 @@ import type { RequireKey } from "@utils/types/RequireKey.js";
  * Represents a category of moves such as "Session Moves" or "Combat Moves", and serves as a container for moves within that category.
  */
 export interface IMoveCategory {
+  /**
+   * @example `"Moves/Adventure"`
+   */
   $id: MoveCategoryId;
+  /**
+   * @example `"Adventure"`
+   */
   Name: MoveCategoryName;
   Source: ISource;
   Description: ParagraphsString;

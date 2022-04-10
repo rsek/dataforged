@@ -4,11 +4,11 @@ import type { Tuple } from "@utils/types/Tuple.js";
 export * from "@utils/types/Tuple.js";
 
 /**
- * An interface representing an *Ironsworn: Starforged* asset.
+ * An interface representing an *Ironsworn: Starforged* asset card.
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
   /**
-   * @example "Assets/Path/Bounty_Hunter"
+   * @example `"Assets/Path/Bounty_Hunter"`
    */
   $id: AssetId;
   /**
@@ -18,7 +18,7 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
   Name: string;
   /**
    * The ID of the asset's parent AssetType
-   * @example "Assets/Path"
+   * @example `"Assets/Path"`
    */
   "Asset Type": AssetTypeId;
   /**

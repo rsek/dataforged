@@ -1,4 +1,5 @@
 /**
+ * Types describing elements common to many *Ironsworn: Starforged* game objects in Dataforged.
  * @module Json.Common
  */
 export * from "./ChallengeRank.js";

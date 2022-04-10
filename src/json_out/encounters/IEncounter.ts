@@ -5,10 +5,22 @@ import type { ChallengeRank, EncounterId , EncounterNature, EncounterTags, Fragm
  * Interface representing an Encounter/Foe entry.
  */
 export interface IEncounter extends IHasQuestStarter, IHasDisplay<IDisplay>, IHasDescription, IHasSource, IHasName, IHasId<EncounterId>, IHasSummary {
+  /**
+   * @example `"Encounters/Chiton"`
+   */
   $id: EncounterId;
+  /**
+   * @example `"Chiton"`
+   */
   Name: string;
+  /**
+   * @example `"Monster"`
+   */
   Nature: EncounterNature;
-  Summary: SentenceString | FragmentString;
+  /**
+   * @example `"Insectoid horde"`
+   */
+  Summary: FragmentString;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
   Display: IDisplay;

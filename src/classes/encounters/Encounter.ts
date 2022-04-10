@@ -1,6 +1,4 @@
-import { Source } from "@classes/index.js";
-import { EncounterDisplay } from "@classes/index.js";
-import { EncounterVariant } from "@classes/index.js";
+import { EncounterDisplay , EncounterVariant , Source } from "@classes/index.js";
 import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "@json_out/index.js";
 import type { IEncounterYaml } from "@yaml_in/index.js";
 
@@ -31,10 +29,10 @@ export class Encounter implements IEncounter {
     this.Drives = json.Drives;
     this.Tactics = json.Tactics;
     const newSource = new Source(json.Source, ...ancestorSourceJson);
-    this.Variants = json.Variants?.map(variant => new EncounterVariant(variant, newSource));
     this.Description = json.Description;
     this["Quest Starter"] = json["Quest Starter"];
     this.Source = newSource;
+    this.Variants = json.Variants?.map(variant => new EncounterVariant(variant, this));
   }
 }
 

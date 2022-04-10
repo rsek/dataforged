@@ -1,5 +1,6 @@
 /**
  * Enumerates challenge ranks.
+ * @seePage 39
  */
 var ChallengeRank;
 (function (ChallengeRank) {

@@ -216,7 +216,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _9(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Chaotic/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -238,7 +238,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _10(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Fortified/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -260,7 +260,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _11(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Haunted/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -282,7 +282,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _12(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Infested/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -304,7 +304,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _13(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Inhabited/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -326,7 +326,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _14(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Mechanical/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -348,7 +348,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _15(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Ruined/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -370,7 +370,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _16(object) {
             var _a;
-            const typePairs = [["Oracles/Location Themes/Sacred/", "string"], ["", undefined]];
+            const typePairs = [["Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;

@@ -1,6 +1,4 @@
-import { Source } from "../index.js";
-import { EncounterDisplay } from "../index.js";
-import { EncounterVariant } from "../index.js";
+import { EncounterDisplay, EncounterVariant, Source } from "../index.js";
 export class Encounter {
     constructor(json, ...ancestorSourceJson) {
         var _a, _b;
@@ -15,10 +13,10 @@ export class Encounter {
         this.Drives = json.Drives;
         this.Tactics = json.Tactics;
         const newSource = new Source(json.Source, ...ancestorSourceJson);
-        this.Variants = (_b = json.Variants) === null || _b === void 0 ? void 0 : _b.map(variant => new EncounterVariant(variant, newSource));
         this.Description = json.Description;
         this["Quest Starter"] = json["Quest Starter"];
         this.Source = newSource;
+        this.Variants = (_b = json.Variants) === null || _b === void 0 ? void 0 : _b.map(variant => new EncounterVariant(variant, this));
     }
 }
 //# sourceMappingURL=Encounter.js.map

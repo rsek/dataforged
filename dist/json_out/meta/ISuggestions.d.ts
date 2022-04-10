@@ -1,7 +1,6 @@
 import type { AssetId, EncounterId, IGameObject, MoveId, OracleTableId } from "../index.js";
 /**
  * Interface representing "non-canon" suggestions for related game content.
- *
  */
 export interface ISuggestions {
     /**

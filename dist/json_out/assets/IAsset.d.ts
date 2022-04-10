@@ -1,25 +1,26 @@
-import type { Tuple } from "../../utils/types/Tuple.js";
 import type { AssetId, AssetTypeId, FragmentString, IAssetAbility, IAssetAttachment, IAssetInput, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
+import type { Tuple } from "../../utils/types/Tuple.js";
 export * from "../../utils/types/Tuple.js";
 /**
- * An interface representing a Starforged asset.
+ * An interface representing an *Ironsworn: Starforged* asset card.
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
     /**
-     * @example "Assets/Path/Armored"
+     * @example `"Assets/Path/Bounty_Hunter"`
      */
     $id: AssetId;
     /**
-     * The asset's name (generally the title printed on the card).
-     * @example "Armored"
+     * The asset's name - the title printed on the card.
+     * @example "Bounty Hunter"
      */
     Name: string;
     /**
      * The ID of the asset's parent AssetType
+     * @example `"Assets/Path"`
      */
     "Asset Type": AssetTypeId;
     /**
-     * Information on which assets can be attached to this asset.
+     * Details on what attachments (other assets) are accepted by this asset.
      */
     Attachments?: IAssetAttachment | undefined;
     /**

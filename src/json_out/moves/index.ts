@@ -1,4 +1,5 @@
 /**
+ * Types describing moves in *Ironsworn: Starforged*.
  * @module Json.Moves
  */
 

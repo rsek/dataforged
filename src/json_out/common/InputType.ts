@@ -1,22 +1,18 @@
 enum InputType {
   /**
-   * A text input.
-   * Suggested rendering: a single-line text input.
+   * @see {@link ITextInput}
    */
   Text = "Text",
   /**
-   * An input where the user selects from a list of pre-set options.
-   * Suggested rendering: a drop-down selection menu.
+   * @see {@link ISelectInput}
    */
   Select = "Select",
   /**
-   * An input where the user sets an integer.
-   * Suggested rendering: a number input spinner.
+   * @see {@link INumberInput}
    */
   Number = "Number",
   /**
-   * An input representing an *Ironsworn: Starforged* clock.
-   * @seePage 239
+   * @see {@link IClockInput}
    */
   Clock = "Clock"
 }

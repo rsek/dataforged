@@ -1,3 +1,6 @@
+/**
+ * Standard player character condition meters.
+ */
 var ConditionMeterName;
 (function (ConditionMeterName) {
     ConditionMeterName["Health"] = "Health";

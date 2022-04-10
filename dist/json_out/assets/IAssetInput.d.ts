@@ -8,6 +8,11 @@ export interface IInputBase extends IHasId, IHasName {
     Adjustable?: boolean;
 }
 export declare type IAssetInput = INumberInput | ISelectInput | ITextInput | IClockInput;
+/**
+ * An input where the user sets an integer.
+ * Suggested rendering: a number input spinner.
+ * @see {@link InputType.Number}
+ */
 export interface INumberInput extends IInputBase {
     Name: string;
     "Input Type": InputType.Number;
@@ -16,6 +21,11 @@ export interface INumberInput extends IInputBase {
     Step?: number | undefined;
     "Starting Value": number;
 }
+/**
+ * An input representing an *Ironsworn: Starforged* clock.
+ * @seePage 239
+ * @see {@link InputType.Clock}
+ */
 export interface IClockInput extends IInputBase {
     Name: string;
     "Input Type": InputType.Clock;
@@ -23,10 +33,20 @@ export interface IClockInput extends IInputBase {
     Segments: ClockSegments;
     Filled: number;
 }
+/**
+ * A text input.
+ * Suggested rendering: a single-line text input.
+ * @see {@link InputType.Text}
+ */
 export interface ITextInput extends IInputBase {
     Name: string;
     "Input Type": InputType.Text;
 }
+/**
+ * An input where the user selects from a list of pre-set options.
+ * Suggested rendering: a drop-down selection menu.
+ * @see {@link InputType.Select}
+ */
 export interface ISelectInput extends IInputBase {
     Name: string;
     "Input Type": InputType.Select;

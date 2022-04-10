@@ -2,15 +2,23 @@ import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestion
 import type { IMoveTrigger } from "./IMoveTrigger.js";
 /**
  * Interface representing a Starforged move.
- *
  */
 export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
+    /**
+     * @example `"Moves/Adventure/Face_Danger"`
+     */
+    $id: MoveId;
+    /**
+     * @example `"Face Danger"`
+     */
+    Name: string;
     /**
      * The ID of the parent Asset of the move, if any.
      */
     Asset?: AssetId | undefined;
     /**
      * The ID of the move's category.
+     * @example `"Moves/Adventure"`
      */
     Category: MoveCategoryId;
     /**

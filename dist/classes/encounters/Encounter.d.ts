@@ -1,6 +1,4 @@
-import { Source } from "../index.js";
-import { EncounterDisplay } from "../index.js";
-import { EncounterVariant } from "../index.js";
+import { EncounterDisplay, EncounterVariant, Source } from "../index.js";
 import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "../../json_out/index.js";
 import type { IEncounterYaml } from "../../yaml_in/index.js";
 export declare class Encounter implements IEncounter {

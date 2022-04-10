@@ -13,7 +13,9 @@ export interface IInputBase extends IHasId, IHasName {
 export type IAssetInput = INumberInput | ISelectInput | ITextInput | IClockInput;
 
 /**
- * {@inheritDoc InputType.Number}
+ * An input where the user sets an integer.
+ * Suggested rendering: a number input spinner.
+ * @see {@link InputType.Number}
  */
 export interface INumberInput extends IInputBase {
   Name: string;
@@ -25,7 +27,9 @@ export interface INumberInput extends IInputBase {
 }
 
 /**
- * {@inheritDoc InputType.Clock}
+ * An input representing an *Ironsworn: Starforged* clock.
+ * @seePage 239
+ * @see {@link InputType.Clock}
  */
 export interface IClockInput extends IInputBase {
   Name: string;
@@ -35,7 +39,9 @@ export interface IClockInput extends IInputBase {
   Filled: number;
 }
 /**
- * {@inheritDoc InputType.Text}
+ * A text input.
+ * Suggested rendering: a single-line text input.
+ * @see {@link InputType.Text}
  */
 export interface ITextInput extends IInputBase {
   Name: string;
@@ -43,7 +49,9 @@ export interface ITextInput extends IInputBase {
 }
 
 /**
- * {@inheritDoc InputType.Select}
+ * An input where the user selects from a list of pre-set options.
+ * Suggested rendering: a drop-down selection menu.
+ * @see {@link InputType.Select}
  */
 export interface ISelectInput extends IInputBase {
   Name: string;

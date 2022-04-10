@@ -1,4 +1,5 @@
 /**
+ * Types describing encounters in *Ironsworn: Starforged*.
  * @module Json.Encounters
  */
 export * from "./EncounterId.js";

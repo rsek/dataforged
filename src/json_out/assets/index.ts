@@ -1,4 +1,5 @@
 /**
+ * Types describing asset cards in *Ironsworn: Starforged*.
  * @module Json.Assets
  */
 

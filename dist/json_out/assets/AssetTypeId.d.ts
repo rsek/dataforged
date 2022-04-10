@@ -1,4 +1,4 @@
-import type { AssetTypeName } from "./AssetTypeName.js";
-declare type AssetTypeId = `Assets/${AssetTypeName}`;
+declare type AssetTypeIdFragment = "Command_Vehicle" | "Companion" | "Deed" | "Module" | "Path" | "Support_Vehicle";
+declare type AssetTypeId = `Assets/${AssetTypeIdFragment}`;
 export { AssetTypeId };
 //# sourceMappingURL=AssetTypeId.d.ts.map
