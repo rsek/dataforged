@@ -9,13 +9,13 @@ export class ConditionMeter extends Counter {
         if (json.Conditions) {
             this.Conditions = json.Conditions;
         }
-        if (assetType === "Assets / Companion") {
+        if (assetType === "Assets/Companion") {
             this.Aliases = [MeterAlias.CompanionHealth];
         }
-        if (assetType === "Assets / Command Vehicle") {
+        if (assetType === "Assets/Command_Vehicle") {
             this.Aliases = [MeterAlias.CommandVehicleIntegrity, MeterAlias.VehicleIntegrity];
         }
-        if (assetType === "Assets / Support Vehicle") {
+        if (assetType === "Assets/Support_Vehicle") {
             this.Aliases = [
                 MeterAlias.SupportVehicleIntegrity, MeterAlias.VehicleIntegrity
             ];

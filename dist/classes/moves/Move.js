@@ -6,11 +6,11 @@ import _ from "lodash-es";
 export class Move extends SourceInheritor {
     constructor(json, ...sourceAncestors) {
         super(json.Source ?? {}, ...sourceAncestors);
-        this.$id = json.$id ?? `${json.Category} / ${json.Name}`;
+        this.$id = (json.$id ?? `${json.Category}/${json.Name}`).replaceAll(" ", "_");
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Category = json.Category;
-        if (this.Category === "Moves / Assets") {
+        if (this.Category === "Moves/Assets") {
             if (!json.Asset) {
                 throw new Error("Expected an asset ID");
             }
@@ -25,10 +25,10 @@ export class Move extends SourceInheritor {
         else {
             this.Display = displayStub;
         }
-        this.Trigger = new MoveTrigger(json.Trigger, `${this.$id} / Trigger`);
+        this.Trigger = new MoveTrigger(json.Trigger, `${this.$id}/Trigger`);
         this.Text = json.Text;
         this.Oracles = json.Oracles;
-        this.Outcomes = json.Outcomes ? new MoveOutcomes(json.Outcomes, `${this.$id} / Outcomes`) : undefined;
+        this.Outcomes = json.Outcomes ? new MoveOutcomes(json.Outcomes, `${this.$id}/Outcomes`) : undefined;
     }
 }
 //# sourceMappingURL=Move.js.map

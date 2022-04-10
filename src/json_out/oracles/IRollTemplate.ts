@@ -11,7 +11,7 @@ export type RollTemplateString = MdString & (FragmentString|SentenceString|Parag
  * An ID valid for a subtable embedded in a table Row.
  *
  */
-export type OracleSubtableId = `${SettingTruthId|OracleTableId} / ${number}-${number} / Subtable` | `${SettingTruthId|OracleTableId} / ${number} / Subtable`;
+export type OracleSubtableId = `${SettingTruthId|OracleTableId}/${number}-${number}/Subtable` | `${SettingTruthId|OracleTableId}/${number}/Subtable`;
 
 /**
  * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.

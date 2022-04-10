@@ -12,7 +12,7 @@ export function renderTable(rowDataArray) {
     const headBorder = rowStrings[0].split("|").map((colContent, colIndex) => {
         let border = _.repeat("-", colContent.length);
         if (colIsCentered[colIndex]) {
-            border = border.replace(/^-(-+)-$/, ":$1:");
+            border = border.replaceAll(/^-(-+)-$/g, ":$1:");
         }
         return border;
     })

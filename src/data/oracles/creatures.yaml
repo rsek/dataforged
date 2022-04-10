@@ -16,11 +16,11 @@ Creatures:
       Description: |-
         Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
       Table:
-        - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [Oracles / Creatures / Basic Form / Space]]
-        - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [Oracles / Creatures / Basic Form / Interior]]
-        - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [Oracles / Creatures / Basic Form / Land]]
-        - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [Oracles / Creatures / Basic Form / Liquid]]
-        - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [Oracles / Creatures / Basic Form / Air]]
+        - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [Oracles/Creatures/Basic_Form/Space]]
+        - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [Oracles/Creatures/Basic_Form/Interior]]
+        - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [Oracles/Creatures/Basic_Form/Land]]
+        - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [Oracles/Creatures/Basic_Form/Liquid]]
+        - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [Oracles/Creatures/Basic_Form/Air]]
     - Name: Scale
       Source:
         Page: 336
@@ -35,7 +35,7 @@ Creatures:
         - [26, 60, Medium (person-sized), Attributes: {Creature Scale: Medium}]
         - [61, 90, Large (vehicle-sized), Attributes: {Creature Scale: Large}]
         - [91, 99, Huge (whale-sized), Attributes: {Creature Scale: Huge}]
-        - [100, 100, "[⏵Ultra-scale](Oracles/Creatures/Ultra-scale)", Oracle rolls: [Oracles / Creatures / Ultra-scale]]
+        - [100, 100, "[⏵Ultra-scale](Oracles/Creatures/Ultra-scale)", Oracle rolls: [Oracles/Creatures/Ultra-scale]]
     - Name: Ultra-scale
       Source:
         Page: 336
@@ -59,19 +59,19 @@ Creatures:
       Display:
         Table:
           Roll columns:
-            - Use content from: Oracles / Creatures / Basic Form / Space
-            - Use content from: Oracles / Creatures / Basic Form / Interior
-            - Use content from: Oracles / Creatures / Basic Form / Land
-            - Use content from: Oracles / Creatures / Basic Form / Liquid
-            - Use content from: Oracles / Creatures / Basic Form / Air
+            - Use content from: Oracles/Creatures/Basic_Form/Space
+            - Use content from: Oracles/Creatures/Basic_Form/Interior
+            - Use content from: Oracles/Creatures/Basic_Form/Land
+            - Use content from: Oracles/Creatures/Basic_Form/Liquid
+            - Use content from: Oracles/Creatures/Basic_Form/Air
           Result columns:
-            - Use content from: Oracles / Creatures / Basic Form / Space
+            - Use content from: Oracles/Creatures/Basic_Form/Space
       Description: |-
         Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
       Oracles:
         - Name: Space
           Display: &display:Creatures.BasicForm
-            Column of: Oracles / Creatures / Basic Form
+            Column of: Oracles/Creatures/Basic_Form
           Usage:
             Requires:
               Attributes:

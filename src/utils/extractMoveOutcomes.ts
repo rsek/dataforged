@@ -41,7 +41,7 @@
 //   }
 //   if (newObj["Weak Hit"]) {
 //     if (newObj["Weak Hit"].startsWith("as above")) {
-//       const weakHitEffect = newObj["Weak Hit"].replace("as above, but", "");
+//       const weakHitEffect = newObj["Weak Hit"].replaceAll("as above, but", "");
 //     }
 //   }
 

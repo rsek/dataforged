@@ -3,7 +3,7 @@ export class MoveOutcome {
         this.$id = id;
         this.Text = json.Text;
         if (json["With a Match"]) {
-            this["With a Match"] = new MoveOutcome(json["With a Match"], `${this.$id} / With a Match`);
+            this["With a Match"] = new MoveOutcome(json["With a Match"], `${this.$id}/With a Match`);
         }
     }
 }

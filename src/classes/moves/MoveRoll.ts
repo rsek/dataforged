@@ -14,7 +14,7 @@ export class ActionRoll implements IActionRoll {
     this["Best of"] = json["Best of"];
     this["Worst of"] = json["Worst of"];
     if (json["Custom stat"]) {
-      this["Custom stat"] = json["Custom stat"] ? new CustomStat(json["Custom stat"], parent.$id + " / Custom stat") : undefined;
+      this["Custom stat"] = json["Custom stat"] ? new CustomStat(json["Custom stat"], parent.$id + "/Custom_stat") : undefined;
     }
   }
 }
@@ -26,6 +26,6 @@ export class CustomStat implements ICustomStat {
   constructor(json: ICustomStat, id: string) {
     this.$id = id;
     this.Name = json.Name;
-    this.Options = json.Options?.map(option => new CustomStatOption(option, `${id} / ${option.Name}`));
+    this.Options = json.Options?.map(option => new CustomStatOption(option, `${id}/${option.Name.replaceAll(" ", "_")}`));
   }
 }

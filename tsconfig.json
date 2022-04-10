@@ -34,14 +34,15 @@
     ],
     "plugins": [
       {
+        "transform": "typescript-is/lib/transform-inline/transformer",
+        "verbose": true,
+      },
+      {
         "transform": "typescript-transform-paths"
       },
       {
         "transform": "typescript-transform-paths",
         "afterDeclarations": true
-      },
-      {
-        "transform": "typescript-is/lib/transform-inline/transformer"
       },
     ],
     "paths": {
@@ -68,12 +69,10 @@
       "@game_objects/*": [
         "src/game_objects/*",
         "dist/game_objects/*"
-      ],
-      "@json/*": [
-        "dist/*"
       ]
     },
     "baseUrl": ".",
+    "preserveConstEnums": true,
     "outDir": "dist",
     "rootDir": "src",
     "allowJs": true,
@@ -85,6 +84,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "preserveSymlinks": true,
     "module": "ESNext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

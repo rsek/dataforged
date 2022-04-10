@@ -24,7 +24,7 @@ export class MoveCategory implements IMoveCategory {
   Moves: Move[];
   Display: MoveCategoryDisplay;
   constructor(json: IMoveCategoryYaml, ...ancestorSourceJson: ISource[]) {
-    this.$id = `Moves / ${json.Name}`;
+    this.$id = `Moves/${json.Name.replaceAll(" ", "_")}` as MoveCategoryId;
     this.Name = json.Name;
     this.Description = json.Description;
     this.Source = new Source(json.Source, ...ancestorSourceJson);

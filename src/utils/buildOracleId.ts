@@ -8,6 +8,6 @@ import type { IHasName } from "@json_out/index.js";
  */
 export function buildOracleId(...lineage: IHasName[]): string {
   const idParts: string[] = lineage.reverse().map((item) => item.Name);
-  const id = [ "Oracles", ...idParts ].join(" / ");
-  return id;
+  const id = [ "Oracles", ...idParts ].join("/");
+  return id.replaceAll(" ", "_");
 }

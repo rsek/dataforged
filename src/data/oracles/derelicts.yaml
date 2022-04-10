@@ -34,14 +34,14 @@ Derelicts:
         Title: Type (by Location)
         Table:
           Roll columns:
-            - Use content from: Oracles / Derelicts / Type / Planetside
-            - Use content from: Oracles / Derelicts / Type / Orbital
-            - Use content from: Oracles / Derelicts / Type / Deep Space
+            - Use content from: Oracles/Derelicts/Type/Planetside
+            - Use content from: Oracles/Derelicts/Type/Orbital
+            - Use content from: Oracles/Derelicts/Type/Deep_Space
           Result columns:
-            - Use content from: Oracles / Derelicts / Type / Planetside
+            - Use content from: Oracles/Derelicts/Type/Planetside
       Oracles:
         - Display: &derelictTypeDisplay
-            Column of: Oracles / Derelicts / Type
+            Column of: Oracles/Derelicts/Type
           Name: Planetside
           Usage:
             Requires: *attr:Location.Planetside
@@ -58,7 +58,7 @@ Derelicts:
               - [1, 40]
               - [41, 100]
         - Display:
-            Column of: Oracles / Derelicts / Type
+            Column of: Oracles/Derelicts/Type
           Name: Deep Space
           Usage:
             Requires: *attr:Location.DeepSpace
@@ -148,10 +148,10 @@ Derelicts:
         Title: Derelict Zones
         Table:
           Roll columns:
-            - Use content from: Oracles / Derelicts / Zones / Starship
-            - Use content from: Oracles / Derelicts / Zones / Settlement
+            - Use content from: Oracles/Derelicts/Zones/Starship
+            - Use content from: Oracles/Derelicts/Zones/Settlement
           Result columns:
-            - Use content from: Oracles / Derelicts / Zones / Starship
+            - Use content from: Oracles/Derelicts/Zones/Starship
       Usage:
         Repeatable: true
         Requires:
@@ -160,7 +160,7 @@ Derelicts:
       Oracles:
         - Name: Starship
           Display:
-            Column of: Oracles / Derelicts / Zone
+            Column of: Oracles/Derelicts/Zone
           Usage:
             Requires:
               Attributes:
@@ -177,7 +177,7 @@ Derelicts:
 
         - Name: Settlement
           Display:
-            Column of: Oracles / Derelicts / Zone
+            Column of: Oracles/Derelicts/Zone
           Usage:
             Requires:
               Attributes:

@@ -24,7 +24,7 @@ export function convertRasterImages(srcRoot: string, outRootWebP: string) {
     const oldFileName = pattern.name;
     const oldPath = pattern.path;
     // console.log(`[convertRasterImages] Converting ${oldFileName }`);
-    const newPath = oldPath.replace(srcRoot, outRootWebP);
+    const newPath = oldPath.replaceAll(srcRoot, outRootWebP);
     const filePathOut = `${newPath}/${oldFileName}.webp`;
     // console.log("out:", filePathOut);
     ensureDirSync(newPath);

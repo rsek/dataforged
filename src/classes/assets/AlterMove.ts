@@ -10,6 +10,6 @@ export class AlterMove implements IAlterMove, IHasId {
   constructor(json: IAlterMoveYaml, id: AlterMoveId) {
     this.$id = id;
     this.Move = json.Move;
-    this.Trigger = new MoveTrigger(json.Trigger, `${this.$id} / Trigger`);
+    this.Trigger = new MoveTrigger(json.Trigger, `${this.$id}/Trigger`.replaceAll(" ", "_"));
   }
 }

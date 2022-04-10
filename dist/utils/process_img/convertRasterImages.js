@@ -14,7 +14,7 @@ export function convertRasterImages(srcRoot, outRootWebP) {
         const input = readFileSync(file);
         const oldFileName = pattern.name;
         const oldPath = pattern.path;
-        const newPath = oldPath.replace(srcRoot, outRootWebP);
+        const newPath = oldPath.replaceAll(srcRoot, outRootWebP);
         const filePathOut = `${newPath}/${oldFileName}.webp`;
         ensureDirSync(newPath);
         void sharp(input).webp()

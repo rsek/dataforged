@@ -20,7 +20,7 @@ export class Encounter implements IEncounter {
   "Quest Starter": ParagraphsString;
   Source: Source;
   constructor(json: IEncounterYaml, ...ancestorSourceJson: ISource[]) {
-    this.$id = `Encounters / ${json.Name}`;
+    this.$id = `Encounters/${json.Name.replaceAll(" ", "_")}`;
     this.Name = json.Name;
     this.Nature = json.Nature;
     this.Summary = json.Summary;

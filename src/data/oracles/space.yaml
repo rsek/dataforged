@@ -13,11 +13,11 @@ Space:
         Title: Space Sighting
         Table:
           Roll columns:
-            - Use content from: Oracles / Space / Sighting / Terminus
-            - Use content from: Oracles / Space / Sighting / Outlands
-            - Use content from: Oracles / Space / Sighting / Expanse
+            - Use content from: Oracles/Space/Sighting/Terminus
+            - Use content from: Oracles/Space/Sighting/Outlands
+            - Use content from: Oracles/Space/Sighting/Expanse
           Result columns:
-            - Use content from: Oracles / Space / Sighting / Terminus
+            - Use content from: Oracles/Space/Sighting/Terminus
       Content:
         Part of speech: [fragment]
       Description: |-
@@ -30,7 +30,7 @@ Space:
         Repeatable: true
       Oracles:
         - Display:
-            Column of: Oracles / Space / Sighting
+            Column of: Oracles/Space/Sighting
           Name: Terminus
           Usage:
             Requires:
@@ -59,7 +59,7 @@ Space:
             - [94, 98, *result:RollTwice.RepeatsOk]
             - [99, 100, *result:RollThreeTimes.RepeatsOk]
         - Display:
-            Column of: Oracles / Space / Sighting
+            Column of: Oracles/Space/Sighting
           Name: Outlands
           Usage:
             Requires:
@@ -90,7 +90,7 @@ Space:
               - [94, 98]
               - [99, 100]
         - Display:
-            Column of: Oracles / Space / Sighting
+            Column of: Oracles/Space/Sighting
           Name: Expanse
           Usage:
             Requires:
@@ -126,23 +126,23 @@ Space:
       Display:
         Table:
           Roll columns:
-            - Use content from: Oracles / Space / Sector Name / Prefix
+            - Use content from: Oracles/Space/Sector_Name/Prefix
           Result columns:
-            - Use content from: Oracles / Space / Sector Name / Prefix
-            - Use content from: Oracles / Space / Sector Name / Suffix
+            - Use content from: Oracles/Space/Sector_Name/Prefix
+            - Use content from: Oracles/Space/Sector_Name/Suffix
       Usage:
         Roll template:
-          Result: "${{Oracles / Space / Sector Name / Prefix}} ${{Oracles / Space / Sector Name / Suffix}}"
+          Result: "${{Oracles/Space/Sector_Name/Prefix}} ${{Oracles/Space/Sector_Name/Suffix}}"
       Oracles:
         - Display:
-            Column of: Oracles / Space / Sector Name
+            Column of: Oracles/Space/Sector_Name
           Name: Prefix
           Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           Usage:
             Initial: true
             Suggestions:
               Oracle rolls:
-                - Oracles / Space / Sector Name / Suffix
+                - Oracles/Space/Sector_Name/Suffix
           Content:
             Part of speech: [adjective, proper noun fragment]
             Tags: [template fragment]
@@ -198,14 +198,14 @@ Space:
             - [97, 98, Veiled]
             - [99, 100, Wasted]
         - Display:
-            Column of: Oracles / Space / Sector Name
+            Column of: Oracles/Space/Sector_Name
           Name: Suffix
           Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           Usage:
             Initial: true
             Suggestions:
               Oracle rolls:
-                - Oracles / Space / Sector Name / Prefix
+                - Oracles/Space/Sector_Name/Prefix
           Content:
             Part of speech: [noun, proper noun fragment]
             Tags: [template fragment, place]

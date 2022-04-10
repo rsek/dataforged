@@ -1,8 +1,4 @@
-import { Suggestions } from "../index.js";
-import { AttributeSetter } from "../index.js";
-import { GameObject } from "../index.js";
-import { MultipleRolls } from "../index.js";
-import { OracleContent } from "../index.js";
+import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
 import type { FragmentString, IHasSubtable, IRow, IRowDisplay, OracleTableId, OracleTableRowId, RollTemplate, SentenceString, SettingTruthOptionId, TermString } from "../../json_out/index.js";
 import type { IRowYaml } from "../../yaml_in/oracles/IRowYaml.js";
 export declare class Row implements IRow, Partial<IHasSubtable<Row>> {

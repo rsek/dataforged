@@ -39,16 +39,16 @@ Planet: &template:Planet
         Display:
           Table:
             Roll columns:
-              - Use content from: Oracles / Planets / ${{Planetary Class}} / Settlements / Terminus
-              - Use content from: Oracles / Planets / ${{Planetary Class}} / Settlements / Outlands
-              - Use content from: Oracles / Planets / ${{Planetary Class}} / Settlements / Expanse
+              - Use content from: Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+              - Use content from: Oracles/Planets/${{Planetary Class}}/Settlements/Outlands
+              - Use content from: Oracles/Planets/${{Planetary Class}}/Settlements/Expanse
             Result columns:
-              - Use content from: Oracles / Planets / ${{Planetary Class}} / Settlements / Terminus
+              - Use content from: Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
       Oracles:
         - _templateInfo: &template.info:Planet.Settlements.Terminus
             Name: Terminus
             Display: &template.display:Planet.Settlements
-              Column of: Oracles / Planets / ${{Planetary Class}} / Settlements
+              Column of: Oracles/Planets/${{Planetary Class}}/Settlements
             Usage:
               Requires: *attr:Region.Terminus
           _templateTable:

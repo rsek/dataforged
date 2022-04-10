@@ -13,7 +13,7 @@ export class SettingTruth implements ISettingTruth {
   Suggestions?: Suggestions | undefined;
   Source: Source;
   constructor(json: ISettingTruthYaml, sourceJson: ISource) {
-    this.$id = `Setting Truths / ${json.Name}`;
+    this.$id = `Setting_Truths/${json.Name.replaceAll(" ", "_")}` as SettingTruthId;
     buildLog(this.constructor,`Building: ${this.$id}`);
     this.Name = json.Name;
     this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));

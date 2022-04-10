@@ -4,7 +4,7 @@ import { validateColor } from "../../utils/validateColor.js";
 export class AssetType extends SourceInheritor {
     constructor(json, rootSource) {
         super(json.Source, rootSource);
-        this.$id = `Assets / ${json.Name}`;
+        this.$id = `Assets/${json.Name}`.replaceAll(" ", "_");
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Description = json.Description;

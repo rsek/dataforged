@@ -1,5 +1,4 @@
-import { AlterMove } from "../index.js";
-import { Move } from "../index.js";
+import { AlterMove, Move } from "../index.js";
 import type { AssetAbilityId, IAsset, IAssetAbility, IAssetInput, ParagraphsString } from "../../json_out/index.js";
 import type { IAssetAbilityYaml } from "../../yaml_in/index.js";
 export declare class AssetAbility implements IAssetAbility {

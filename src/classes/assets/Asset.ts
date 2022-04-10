@@ -21,7 +21,7 @@ export class Asset extends SourceInheritor implements IAsset {
   constructor(json: IAssetYaml, parent: IAssetType) {
     super(json.Source ?? {}, parent.Source);
     this["Asset Type"] = parent.$id;
-    this.$id = `${this["Asset Type"]} / ${json.Name}`;
+    this.$id = `${this["Asset Type"]}/${json.Name}`.replaceAll(" ", "_") as AssetId;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
@@ -33,7 +33,7 @@ export class Asset extends SourceInheritor implements IAsset {
 
     if (json.Inputs) {
       this.Inputs = json.Inputs.map(inputJson => {
-        const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
+        const idString = `${this.$id}/Inputs/${inputJson.Name}`.replaceAll(" ", "_");
         switch (inputJson["Input Type"]) {
           case InputType.Clock: {
             return new ClockInput(inputJson, idString);
@@ -57,7 +57,7 @@ export class Asset extends SourceInheritor implements IAsset {
     if (json.Abilities.length !== 3) {
       throw badJsonError(this.constructor, json.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
     }
-    this.Abilities = json.Abilities.map((ability, index) => new AssetAbility(ability, this.$id + ` / Abilities / ${index + 1}` as AssetAbilityId, this)) as Tuple<AssetAbility, 3>;
-    this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + " / Condition Meter", this["Asset Type"]) : undefined;
+    this.Abilities = json.Abilities.map((ability, index) => new AssetAbility(ability, this.$id + `/Abilities/${index + 1}` as AssetAbilityId, this)) as Tuple<AssetAbility, 3>;
+    this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
   }
 }

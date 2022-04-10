@@ -31,9 +31,9 @@ export function transformMoveLinks(md: MdString, localLinks: boolean = false, pa
 export function transformOracleLinks(data: OracleCategory[], md: MdString, currentFile: `${string}.md`) {
   md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match:string, p1:string, p2: string) => {
     // console.log("matched:", match);
-    const oracleId = match.replaceAll("/", " / ").replaceAll("(", "")
-      .replaceAll(")", "")
-      .replaceAll("_", " ");
+    const oracleId = match
+      .replaceAll("(", "")
+      .replaceAll(")", "");
     const linkedOracle = findById<OracleCategory | Oracle>(data, oracleId);
     if (!linkedOracle) {
       throw new Error(`Unable to find linked oracle: ${oracleId}`);
@@ -48,7 +48,7 @@ export function transformOracleLinks(data: OracleCategory[], md: MdString, curre
   });
   md = md.replaceAll(/\(Oracles\/([^ ]+?)\)/g, (match:string, p1:string) => {
     // console.log("matched:", match);
-    const oracleId = match.replaceAll("/", " / ").replaceAll("(", "")
+    const oracleId = match.replaceAll("/", "/").replaceAll("(", "")
       .replaceAll(")", "")
       .replaceAll("_", " ");
     const linkedOracle = findById<OracleCategory | Oracle>(data, oracleId);
@@ -57,7 +57,7 @@ export function transformOracleLinks(data: OracleCategory[], md: MdString, curre
     }
     let targetFile: string = "";
     if (currentFile === "oracles.md") {
-      targetFile = `#${linkedOracle.Display.Title}`.replace(" ", "-");
+      targetFile = `#${linkedOracle.Display.Title}`.replaceAll(" ", "-");
     } else {
       targetFile = `${_.kebabCase(p1)}.md`;
     }

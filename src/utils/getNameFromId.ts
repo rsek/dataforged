@@ -8,6 +8,6 @@ import type { OracleTableId } from "@json_out/index.js";
  * Gets the last item of a path-like oracle ID.
  */
 export function getNameFromId(oracleId: OracleTableId): string {
-  const fragments = oracleId.split(" / ");
+  const fragments = oracleId.split("/");
   return fragments[fragments.length - 1];
 }

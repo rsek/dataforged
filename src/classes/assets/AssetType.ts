@@ -15,7 +15,7 @@ export class AssetType extends SourceInheritor implements IAssetType {
   Display: RequireKey<IDisplay, "Color">;
   constructor(json: IAssetType, rootSource: ISource) {
     super(json.Source, rootSource);
-    this.$id = `Assets / ${json.Name}`;
+    this.$id = `Assets/${json.Name}`.replaceAll(" ", "_") as AssetTypeId;
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Description = json.Description;

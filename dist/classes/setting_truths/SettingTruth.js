@@ -4,7 +4,7 @@ import { SettingTruthOption } from "../index.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 export class SettingTruth {
     constructor(json, sourceJson) {
-        this.$id = `Setting Truths / ${json.Name}`;
+        this.$id = `Setting_Truths/${json.Name.replaceAll(" ", "_")}`;
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));

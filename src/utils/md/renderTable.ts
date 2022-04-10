@@ -21,7 +21,7 @@ export function renderTable(rowDataArray: Record<string, string>[]) {
   const headBorder = rowStrings[0].split("|").map((colContent, colIndex) => {
     let border = _.repeat("-", colContent.length);
     if (colIsCentered[colIndex]) {
-      border = border.replace(/^-(-+)-$/, ":$1:");
+      border = border.replaceAll(/^-(-+)-$/g, ":$1:");
     }
     return border;
   })
@@ -32,7 +32,7 @@ export function renderTable(rowDataArray: Record<string, string>[]) {
 }
 
 // let oracleData = buildOracles();
-// let testOracle = getOracleById(oracleData, "Oracles / Creatures / Basic Form");
+// let testOracle = getOracleById(oracleData, "Oracles/Creatures/Basic Form");
 // // console.log("found oracle:", testOracle);
 // let extract = extractColumnData(testOracle);
 // console.log(renderTable(extract));

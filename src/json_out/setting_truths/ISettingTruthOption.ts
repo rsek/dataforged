@@ -4,7 +4,7 @@ import type { SettingTruthId } from "@json_out/setting_truths/SettingTruthName";
 /**
  * A valid setting truth option ID.
  */
-export type SettingTruthOptionId = `${SettingTruthId} / ${number}` | `${SettingTruthId} / ${number}-${number}`;
+export type SettingTruthOptionId = `${SettingTruthId}/${number}` | `${SettingTruthId}/${number}-${number}`;
 
 /**
  * Interface for 'canonical' options within a SettingTruth category.

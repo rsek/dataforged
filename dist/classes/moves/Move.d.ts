@@ -7,7 +7,7 @@ export declare class Move extends SourceInheritor implements IMove {
     $id: MoveId;
     Name: string;
     Category: MoveCategoryId;
-    Asset?: this["Category"] extends "Moves / Assets" ? AssetId : undefined;
+    Asset?: this["Category"] extends "Moves/Assets" ? AssetId : undefined;
     "Progress Move"?: boolean | undefined;
     "Variant of"?: MoveId | undefined;
     Display: IDisplay;

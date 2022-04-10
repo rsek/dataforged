@@ -12,7 +12,7 @@ export class MoveCategoryDisplay {
 }
 export class MoveCategory {
     constructor(json, ...ancestorSourceJson) {
-        this.$id = `Moves / ${json.Name}`;
+        this.$id = `Moves/${json.Name.replaceAll(" ", "_")}`;
         this.Name = json.Name;
         this.Description = json.Description;
         this.Source = new Source(json.Source, ...ancestorSourceJson);

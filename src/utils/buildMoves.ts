@@ -28,7 +28,7 @@ export function buildMoves() {
     moveCatData.Moves.map((moveData, index, movesInCat) => {
       moveData.Source = movesRoot.Source;
       // if (moveData["Variant of"]) {
-      //   const templateMove = movesInCat.flatMap().find(move => move.$id === moveData["Variant of"] || move.Name === moveData["Variant of"]?.replace("Moves / ", ""));
+      //   const templateMove = movesInCat.flatMap().find(move => move.$id === moveData["Variant of"] || move.Name === moveData["Variant of"]?.replaceAll("Moves/", ""));
       //   if (!templateMove) {
       //     throw badJsonError(buildMoves, moveData, "Unable to find move referenced by template");
       //   }

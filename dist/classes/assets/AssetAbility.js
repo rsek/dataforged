@@ -1,6 +1,4 @@
-import { AlterMove } from "../index.js";
-import { ClockInput, NumberInput, SelectInput, TextInput } from "../index.js";
-import { Move } from "../index.js";
+import { AlterMove, ClockInput, Move, NumberInput, SelectInput, TextInput } from "../index.js";
 import { InputType } from "../../json_out/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
@@ -14,15 +12,15 @@ export class AssetAbility {
             }
             this.Moves = json.Moves.map(mv => {
                 const moveData = _.cloneDeep(mv);
-                moveData.$id = `Moves / ${this.$id} / ${mv.Name}`;
+                moveData.$id = `Moves/${this.$id}/${mv.Name}`.replaceAll(" ", "_");
                 moveData.Asset = parent.$id;
-                moveData.Category = "Moves / Assets";
+                moveData.Category = "Moves/Assets";
                 return new Move(moveData, parent.Source);
             });
         }
         if (json.Inputs) {
             this.Inputs = json.Inputs.map(inputJson => {
-                const idString = `${this.$id} / Inputs / ${inputJson.Name}`;
+                const idString = `${this.$id}/Inputs/${inputJson.Name}`.replaceAll(" ", "_");
                 switch (inputJson["Input Type"]) {
                     case InputType.Clock: {
                         return new ClockInput(inputJson, idString);
@@ -43,8 +41,8 @@ export class AssetAbility {
             });
         }
         this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
-            const moveId = alterMove.Move ?? "Moves / *";
-            const newData = new AlterMove(alterMove, `${this.$id} / Alter ${moveId}`);
+            const moveId = alterMove.Move ?? "Moves/*";
+            const newData = new AlterMove(alterMove, `${this.$id}/Alter_${moveId}`.replaceAll(" ", "_"));
             return newData;
         }) : json["Alter Moves"];
         this["Alter Properties"] = json["Alter Properties"];

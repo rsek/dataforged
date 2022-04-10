@@ -1,8 +1,6 @@
 import { InputType } from "@json_out/common/InputType.js";
-import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "@json_out/index.js";
+import { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, SelectInputOptionType, Stat } from "@json_out/index.js";
 import { ClockType } from "@json_out/index.js";
-import type { StubBy } from "@utils/types/Stub.js";
-import { is } from "typescript-is";
 
 export type Input = NumberInput | SelectInput | TextInput;
 
@@ -48,26 +46,30 @@ export class TextInput implements ITextInput, IHasId {
 
 type AnyInputOption = AssetSelectInputStatOption | SelectInputMeterOption | SelectInputCustomOption;
 
-export class SelectInput implements ISelectInput, IHasId {
+export class SelectInput implements ISelectInput {
   $id: string;
   Name: string;
   "Input Type": InputType.Select;
+  "Option Type": SelectInputOptionType;
   Options: AnyInputOption[];
   Adjustable = false;
   constructor(json: Omit<ISelectInput, "$id">, id: string) {
+    console.log(json);
     this.$id = id;
     this.Name = json.Name;
     this["Input Type"] = json["Input Type"];
+    this["Option Type"] = json["Option Type"];
     this.Options = json.Options.map(optionJson => {
-      let option: AnyInputOption;
-      if (is<StubBy<ISelectInputStatOption, "$id">>(optionJson)) {
-        option = new AssetSelectInputStatOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
-      } else if (is<StubBy<ISelectInputMeterOption, "$id">>(optionJson)) {
-        option = new SelectInputMeterOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
-      } else if (is<StubBy<ISelectInputCustomOption, "$id">>(optionJson)) {
-        option = new SelectInputCustomOption(optionJson, `${this.$id} / Options / ${optionJson.Name}`);
-      } else { throw new Error("Unable to construct select input options - check the data!"); }
-      return option;
+      switch (json["Option Type"]) {
+        case SelectInputOptionType.ConditionMeter:
+          return new SelectInputMeterOption(optionJson as ISelectInputMeterOption, `${this.$id}/Options/${optionJson.Name}`);
+        case SelectInputOptionType.Stat:
+          return new AssetSelectInputStatOption(optionJson as ISelectInputStatOption, `${this.$id}/Options/${optionJson.Name}`);
+        case SelectInputOptionType.Custom:
+          return new SelectInputCustomOption(optionJson as ISelectInputCustomOption, `${this.$id}/Options/${optionJson.Name}`);
+        default:
+          throw new Error("Unable to construct select input options - check the data!");
+      }
     });
     this.Adjustable = json.Adjustable ?? false;
   }
@@ -77,6 +79,7 @@ export class AssetSelectInputStatOption implements ISelectInputStatOption, IHasI
   $id: string;
   Name!: string;
   Stat!: Stat;
+  "Option Type": SelectInputOptionType.Stat;
   constructor(json: Omit<ISelectInputStatOption, "$id">, id: string) {
     this.$id = id;
     Object.assign(this, json);
@@ -87,6 +90,7 @@ export class AssetSelectInputStatOption implements ISelectInputStatOption, IHasI
 export class SelectInputMeterOption implements ISelectInputMeterOption, IHasId {
   $id: string;
   Name!: string;
+  "Option Type": SelectInputOptionType.ConditionMeter;
   "Condition Meter"!: ConditionMeterName | AssetConditionMeterId;
   constructor(json: Omit<ISelectInputMeterOption, "$id">, id: string) {
     this.$id = id;
@@ -99,6 +103,7 @@ class SelectInputCustomOption implements ISelectInputCustomOption, IHasId {
   $id: string;
   Name!: string;
   Value!: string;
+  "Option Type": SelectInputOptionType.Custom;
   constructor(json: Omit<ISelectInputCustomOption, "$id">, id: string) {
     this.$id = id;
     Object.assign(this, json);

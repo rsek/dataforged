@@ -1,8 +1,4 @@
-import { Suggestions } from "@classes/index.js";
-import { AttributeSetter } from "@classes/index.js";
-import { GameObject } from "@classes/index.js";
-import { MultipleRolls } from "@classes/index.js";
-import { OracleContent } from "@classes/index.js";
+import { AttributeSetter , GameObject , MultipleRolls , OracleContent , Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
 import type { FragmentString, IHasSubtable, ImageUrl, IMultipleRolls, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, SentenceString,SettingTruthOptionId, TermString, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
@@ -77,7 +73,7 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
       rangeString = this.Floor === this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      this.$id = `${parentId} / ${rangeString}` as OracleTableRowId;
+      this.$id = `${parentId}/${rangeString}` as OracleTableRowId;
     }
 
     const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, [ "Floor", "Ceiling" ])];
@@ -86,22 +82,22 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
       switch (typeof item) {
         case "string": {
           const str = item;
-          if (is<ImageUrl<Raster>>(str)) {
+          if (str.match(/http.*\.webp/)) {
             if (!this.Display) {
               this.Display = { };
             }
             if (!this.Display.Images) {
               this.Display.Images = [];
             }
-            this.Display.Images.push(str);
-          } else if (is<ImageUrl<Vector>>(str)) {
+            this.Display.Images.push(str as ImageUrl<Raster>);
+          } else if (str.match(/http.*\.png/)) {
             if (!this.Display) {
               this.Display = { };
             }
             if (this.Display.Icon) {
               throw badJsonError(this.constructor, str, "Row already has an icon!");
             }
-            this.Display.Icon = str;
+            this.Display.Icon = str as ImageUrl<Vector>;
           } else if (!this.Result || this.Result?.length === 0) {
             this.Result = str;
           } else if (!this.Summary || this.Summary?.length === 0) {
@@ -127,9 +123,9 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
               }
               case "Subtable": {
                 if (Array.isArray(value) && Array.isArray(value[0])) {
-                  this.Subtable = (value as IRowYaml[]).map(rowData => new Row(this.$id + " / Subtable", rowData));
+                  this.Subtable = (value as IRowYaml[]).map(rowData => new Row(this.$id + "/Subtable", rowData));
                 } else if (Array.isArray(value) && typeof value[0] === "object") {
-                  this.Subtable = (value as IRow[]).map(rowData => new Row(this.$id + " / Subtable", rowData));
+                  this.Subtable = (value as IRow[]).map(rowData => new Row(this.$id + "/Subtable", rowData));
                 } else {
                   throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
                 }

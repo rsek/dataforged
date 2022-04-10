@@ -3,7 +3,7 @@ import { EncounterDisplay } from "../index.js";
 import { EncounterVariant } from "../index.js";
 export class Encounter {
     constructor(json, ...ancestorSourceJson) {
-        this.$id = `Encounters / ${json.Name}`;
+        this.$id = `Encounters/${json.Name.replaceAll(" ", "_")}`;
         this.Name = json.Name;
         this.Nature = json.Nature;
         this.Summary = json.Summary;

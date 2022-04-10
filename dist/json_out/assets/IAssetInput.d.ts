@@ -27,18 +27,24 @@ export interface ITextInput extends IInputBase {
 export interface ISelectInput extends IInputBase {
     Name: string;
     "Input Type": InputType.Select;
-    Options: ISelectInputOption[];
+    "Option Type": SelectInputOptionType;
+    Options: ISelectInputOption<this["Option Type"]>[];
 }
-export declare type ISelectInputOption = ISelectInputStatOption | ISelectInputMeterOption | ISelectInputCustomOption;
-export interface ISelectInputOptionBase extends IHasId, IHasName {
+export interface ISelectInputOption<T extends SelectInputOptionType> extends IHasId, IHasName {
+    "Option Type": T;
 }
-export interface ISelectInputStatOption extends ISelectInputOptionBase {
+export declare enum SelectInputOptionType {
+    Stat = "Stat",
+    ConditionMeter = "Condition Meter",
+    Custom = "Custom"
+}
+export interface ISelectInputStatOption extends ISelectInputOption<SelectInputOptionType.Stat> {
     Stat: Stat;
 }
-export interface ISelectInputMeterOption extends ISelectInputOptionBase {
+export interface ISelectInputMeterOption extends ISelectInputOption<SelectInputOptionType.ConditionMeter> {
     "Condition Meter": ConditionMeterName | AssetConditionMeterId;
 }
-export interface ISelectInputCustomOption extends ISelectInputOptionBase {
+export interface ISelectInputCustomOption extends ISelectInputOption<SelectInputOptionType.Custom> {
     Value: string;
 }
 //# sourceMappingURL=IAssetInput.d.ts.map

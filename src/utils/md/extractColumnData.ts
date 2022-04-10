@@ -7,6 +7,7 @@ export function extractColumnData(oracle: Oracle) {
 
   const rollCols = oracle.Display.Table["Roll columns"];
   rollCols.forEach((col, colIndex) => {
+    // console.log("[extractColumnData] id:",col);
     const table = getTableByOracleId(oracle, col["Use content from"]);
     table.forEach((rowData, rowIndex) => {
       if (!table) {

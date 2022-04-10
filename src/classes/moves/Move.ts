@@ -14,7 +14,7 @@ export class Move extends SourceInheritor implements IMove {
   $id: MoveId;
   Name: string;
   Category: MoveCategoryId;
-  Asset?: this["Category"] extends "Moves / Assets" ? AssetId : undefined;
+  Asset?: this["Category"] extends "Moves/Assets" ? AssetId : undefined;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: MoveId | undefined;
   Display: IDisplay;
@@ -25,11 +25,11 @@ export class Move extends SourceInheritor implements IMove {
   Outcomes?: MoveOutcomes | undefined;
   constructor(json: IMove, ...sourceAncestors: ISource[]) {
     super(json.Source ?? {}, ...sourceAncestors);
-    this.$id = json.$id ?? `${json.Category} / ${json.Name}`;
+    this.$id = (json.$id ?? `${json.Category}/${json.Name}`).replaceAll(" ", "_") as MoveId;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Category = json.Category;
-    if (this.Category === "Moves / Assets") {
+    if (this.Category === "Moves/Assets") {
       if (!json.Asset) {
         throw new Error("Expected an asset ID");
       }
@@ -43,10 +43,10 @@ export class Move extends SourceInheritor implements IMove {
     } else {
       this.Display = displayStub;
     }
-    this.Trigger = new MoveTrigger(json.Trigger, `${this.$id} / Trigger`);
+    this.Trigger = new MoveTrigger(json.Trigger, `${this.$id}/Trigger`);
     this.Text = json.Text;
     this.Oracles = json.Oracles;
-    this.Outcomes = json.Outcomes ? new MoveOutcomes(json.Outcomes, `${this.$id} / Outcomes`) : undefined;
+    this.Outcomes = json.Outcomes ? new MoveOutcomes(json.Outcomes, `${this.$id}/Outcomes`) : undefined;
   }
 }
 

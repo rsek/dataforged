@@ -15,9 +15,9 @@ export function transformMoveLinks(md, localLinks = false, pathPrefix = "") {
 }
 export function transformOracleLinks(data, md, currentFile) {
     md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match, p1, p2) => {
-        const oracleId = match.replaceAll("/", " / ").replaceAll("(", "")
-            .replaceAll(")", "")
-            .replaceAll("_", " ");
+        const oracleId = match
+            .replaceAll("(", "")
+            .replaceAll(")", "");
         const linkedOracle = findById(data, oracleId);
         if (!linkedOracle) {
             throw new Error(`Unable to find linked oracle: ${oracleId}`);
@@ -30,7 +30,7 @@ export function transformOracleLinks(data, md, currentFile) {
         return result.replaceAll("_", "-");
     });
     md = md.replaceAll(/\(Oracles\/([^ ]+?)\)/g, (match, p1) => {
-        const oracleId = match.replaceAll("/", " / ").replaceAll("(", "")
+        const oracleId = match.replaceAll("/", "/").replaceAll("(", "")
             .replaceAll(")", "")
             .replaceAll("_", " ");
         const linkedOracle = findById(data, oracleId);
@@ -39,7 +39,7 @@ export function transformOracleLinks(data, md, currentFile) {
         }
         let targetFile = "";
         if (currentFile === "oracles.md") {
-            targetFile = `#${linkedOracle.Display.Title}`.replace(" ", "-");
+            targetFile = `#${linkedOracle.Display.Title}`.replaceAll(" ", "-");
         }
         else {
             targetFile = `${_.kebabCase(p1)}.md`;

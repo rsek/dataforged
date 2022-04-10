@@ -1,5 +1,5 @@
 import { InputType } from "../../json_out/common/InputType.js";
-import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "../../json_out/index.js";
+import { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, SelectInputOptionType, Stat } from "../../json_out/index.js";
 import { ClockType } from "../../json_out/index.js";
 export declare type Input = NumberInput | SelectInput | TextInput;
 export declare class NumberInput implements INumberInput, IHasId {
@@ -31,10 +31,11 @@ export declare class TextInput implements ITextInput, IHasId {
     constructor(json: Omit<ITextInput, "$id">, id: string);
 }
 declare type AnyInputOption = AssetSelectInputStatOption | SelectInputMeterOption | SelectInputCustomOption;
-export declare class SelectInput implements ISelectInput, IHasId {
+export declare class SelectInput implements ISelectInput {
     $id: string;
     Name: string;
     "Input Type": InputType.Select;
+    "Option Type": SelectInputOptionType;
     Options: AnyInputOption[];
     Adjustable: boolean;
     constructor(json: Omit<ISelectInput, "$id">, id: string);
@@ -43,11 +44,13 @@ export declare class AssetSelectInputStatOption implements ISelectInputStatOptio
     $id: string;
     Name: string;
     Stat: Stat;
+    "Option Type": SelectInputOptionType.Stat;
     constructor(json: Omit<ISelectInputStatOption, "$id">, id: string);
 }
 export declare class SelectInputMeterOption implements ISelectInputMeterOption, IHasId {
     $id: string;
     Name: string;
+    "Option Type": SelectInputOptionType.ConditionMeter;
     "Condition Meter": ConditionMeterName | AssetConditionMeterId;
     constructor(json: Omit<ISelectInputMeterOption, "$id">, id: string);
 }
@@ -55,6 +58,7 @@ declare class SelectInputCustomOption implements ISelectInputCustomOption, IHasI
     $id: string;
     Name: string;
     Value: string;
+    "Option Type": SelectInputOptionType.Custom;
     constructor(json: Omit<ISelectInputCustomOption, "$id">, id: string);
 }
 export {};

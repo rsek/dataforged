@@ -8,7 +8,7 @@ export * from "@utils/types/Tuple.js";
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
   /**
-   * @example "Assets / Path / Armored"
+   * @example "Assets/Path/Armored"
    */
   $id: AssetId;
   /**

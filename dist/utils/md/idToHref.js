@@ -6,7 +6,7 @@ export function idToHref(id, data) {
     }
     let newId = id;
     if (item.Display) {
-        const splitId = newId.split(" / ");
+        const splitId = newId.split("/");
         newId = splitId.slice(0, -1).join("/") + "/" + item.Display.Title;
     }
     return newId

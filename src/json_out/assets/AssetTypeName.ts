@@ -1,12 +1,12 @@
 
 
 enum AssetTypeName {
-  CommandVehicle = "Command Vehicle",
+  CommandVehicle = "Command_Vehicle",
   Companion = "Companion",
   Deed = "Deed",
   Module = "Module",
   Path = "Path",
-  SupportVehicle = "Support Vehicle"
+  SupportVehicle = "Support_Vehicle"
 }
 
 export { AssetTypeName };
