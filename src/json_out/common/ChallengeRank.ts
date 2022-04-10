@@ -1,5 +1,6 @@
 /**
  * Enumerates challenge ranks.
+ * @seePage 39
  */
 enum ChallengeRank {
   Troublesome = 1,

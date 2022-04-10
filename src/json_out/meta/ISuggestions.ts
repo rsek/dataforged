@@ -2,7 +2,6 @@ import type { AssetId , EncounterId, IGameObject, MoveId , OracleTableId } from 
 
 /**
  * Interface representing "non-canon" suggestions for related game content.
- *
  */
 export interface ISuggestions  {
   /**

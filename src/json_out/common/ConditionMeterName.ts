@@ -1,3 +1,6 @@
+/**
+ * Standard player character condition meters.
+ */
 enum ConditionMeterName {
     Health = "Health",
     Spirit = "Spirit",

@@ -4,7 +4,6 @@ import type { IMoveTrigger } from "@json_out/moves/IMoveTrigger.js";
 
 /**
  * Interface representing a Starforged move.
- *
  */
 export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
   /**

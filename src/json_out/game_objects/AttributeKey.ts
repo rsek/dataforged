@@ -1,90 +1,90 @@
 export enum AttributeKey {
   /**
-   * @see Json.GameObjects.Atmosphere
+   * {@link Json.GameObjects#Atmosphere}
    */
   Atmosphere="Atmosphere",
   /**
-   * @see Json.GameObjects.Authority
+   * {@link Json.GameObjects#Authority}
    */
   Authority="Authority",
   /**
-   * @see Json.GameObjects.Behavior
+   * {@link Json.GameObjects#Behavior}
    */
   Behavior="Encountered Behavior",
   /**
-   * @see Json.GameObjects.DerelictType
+   * {@link Json.GameObjects#DerelictType}
    */
   DerelictType="Derelict Type",
   /**
-   * @see Json.GameObjects.Disposition
+   * {@link Json.GameObjects#Disposition}
    */
   Disposition="Disposition",
   /**
-   * @see Json.GameObjects.Dominion
+   * {@link Json.GameObjects#Dominion}
    */
   Dominion="Dominion",
   /**
-   * @see Json.GameObjects.Environment
+   * {@link Json.GameObjects#Environment}
    */
   Environment="Environment",
   /**
-   * @see Json.GameObjects.FactionType
+   * {@link Json.GameObjects#FactionType}
    */
   FactionType="Faction Type",
   /**
-   * @see Json.GameObjects.FringeGroup
+   * {@link Json.GameObjects#FringeGroup}
    */
   FringeGroup="Fringe Group",
   /**
-   * @see Json.GameObjects.Guild
+   * {@link Json.GameObjects#Guild}
    */
   Guild="Guild",
   /**
-   * @see Json.GameObjects.Influence
+   * {@link Json.GameObjects#Influence}
    */
   Influence="Influence",
   /**
-   * @see Json.GameObjects.InitialContact
+   * {@link Json.GameObjects#InitialContact}
    */
   InitialContact="Initial Contact",
   /**
-   * @see Json.GameObjects.Leadership
+   * {@link Json.GameObjects#Leadership}
    */
   Leadership="Leadership",
   /**
-   * @see Json.GameObjects.Life
+   * {@link Json.GameObjects#Life}
    */
   Life="Life",
   /**
-   * @see Json.GameObjects.Location
+   * {@link Json.GameObjects#Location}
    */
   Location="Location",
   /**
-   * @see Json.GameObjects.LocationTheme
+   * {@link Json.GameObjects#LocationTheme}
    */
   LocationTheme="Location Theme",
   /**
-   * @see Json.GameObjects.PlanetaryClass
+   * {@link Json.GameObjects#PlanetaryClass}
    */
   PlanetaryClass="Planetary Class",
   /**
-   * @see Json.GameObjects.Population
+   * {@link Json.GameObjects#Population}
    */
   Population="Population",
   /**
-   * @see Json.GameObjects.Region
+   * {@link Json.GameObjects#Region}
    */
   Region="Region",
   /**
-   * @see Json.GameObjects.Role
+   * {@link Json.GameObjects#Role}
    */
   Role="Role",
   /**
-   * @see Json.GameObjects.CreatureScale
+   * {@link Json.GameObjects#CreatureScale}
    */
   CreatureScale="Creature Scale",
   /**
-   * @see Json.GameObjects.Zone
+   * {@link Json.GameObjects#Zone}
    */
   Zone="Zone",
 }

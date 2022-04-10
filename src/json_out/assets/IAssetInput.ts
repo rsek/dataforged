@@ -12,8 +12,9 @@ export interface IInputBase extends IHasId, IHasName {
 
 export type IAssetInput = INumberInput | ISelectInput | ITextInput | IClockInput;
 
-
-
+/**
+ * {@inheritDoc InputType.Number}
+ */
 export interface INumberInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Number;
@@ -23,6 +24,9 @@ export interface INumberInput extends IInputBase {
   "Starting Value": number;
 }
 
+/**
+ * {@inheritDoc InputType.Clock}
+ */
 export interface IClockInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Clock;
@@ -30,16 +34,17 @@ export interface IClockInput extends IInputBase {
   Segments: ClockSegments
   Filled: number;
 }
-
-
-
+/**
+ * {@inheritDoc InputType.Text}
+ */
 export interface ITextInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Text;
 }
 
-
-
+/**
+ * {@inheritDoc InputType.Select}
+ */
 export interface ISelectInput extends IInputBase {
   Name: string;
   "Input Type": InputType.Select;
