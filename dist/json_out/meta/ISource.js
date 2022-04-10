@@ -1,3 +1,6 @@
+/**
+ * Enumerates valid sourcebook titles.
+ */
 export var SourceTitle;
 (function (SourceTitle) {
     SourceTitle["Starforged"] = "Ironsworn: Starforged Rulebook";
@@ -8,6 +11,9 @@ export var SourceTitle;
     SourceTitle["IronswornAssets"] = "Ironsworn Assets";
     SourceTitle["IronswornBonusAssets"] = "Ironsworn Bonus Assets (July 2020)";
 })(SourceTitle || (SourceTitle = {}));
+/**
+ * Enumerates valid source URLs.
+ */
 export var SourceUrl;
 (function (SourceUrl) {
     SourceUrl["IronswornBonusAssets"] = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view";

@@ -4,6 +4,10 @@ import { buildLog } from "./logging/buildLog.js";
 import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
 import _ from "lodash-es";
 const filesEncounters = getYamlFiles().filter(file => file.toString().match("encounter"));
+/**
+ * Assembles encounter data from YAML shorthand into JSON.
+ * @returns
+ */
 export function buildEncounters() {
     buildLog(buildEncounters, "Building encounters...");
     const encounterRoot = concatWithYamlRefs(undefined, ...filesEncounters);

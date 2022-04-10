@@ -1,6 +1,12 @@
 import { buildLog } from "../logging/buildLog.js";
 import { replaceInAllStrings } from "./replaceInAllStrings.js";
 import _ from "lodash-es";
+/**
+ * It takes an oracle metadata template and builds it out with variables from a json object.
+ * @param json - The JSON object that you want to replace the template variables in.
+ * @param template - The template to use.
+ * @returns The template oracle.
+ */
 export function templateOracle(json, template) {
     buildLog(templateOracle, "Building oracle from template...");
     let jsonClone = _.cloneDeep(json);

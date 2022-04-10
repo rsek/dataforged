@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Planets / * / Life
+ */
 var Life;
 (function (Life) {
     Life["None"] = "None";

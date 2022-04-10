@@ -6,6 +6,10 @@ import yaml from "js-yaml";
 import jp from "jsonpath";
 import fs from "fs";
 const assetPath = getYamlFiles().find(item => item.toString().match(/assets\.yaml$/));
+/**
+ * Build and validate all asset objects from YAML.
+ * @returns An array of Asset objects.
+ */
 export function buildAssets() {
     const data = fs.readFileSync(assetPath, { encoding: "utf-8" });
     const json = yaml.load(data);

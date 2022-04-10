@@ -1,3 +1,6 @@
+/**
+ * @module Json.Assets
+ */
 export * from "./AlterMoveId.js";
 export * from "./AssetAbilityId.js";
 export * from "./AssetConditionMeterId.js";

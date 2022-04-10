@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Planets / * / Atmosphere
+ */
 var Atmosphere;
 (function (Atmosphere) {
     Atmosphere["NoneThin"] = "None / Thin";

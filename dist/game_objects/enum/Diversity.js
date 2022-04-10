@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Planets / Vital / Diversity
+ */
 var Diversity;
 (function (Diversity) {
     Diversity[Diversity["Simple"] = 2] = "Simple";

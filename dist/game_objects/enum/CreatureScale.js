@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Creatures / Scale
+ */
 export var CreatureScale;
 (function (CreatureScale) {
     CreatureScale["Minuscule"] = "Minuscule";

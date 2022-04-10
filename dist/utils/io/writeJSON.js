@@ -1,5 +1,9 @@
 import prettier from "prettier";
 import fs from "fs";
+/**
+ * Writes a JSON object to a nicely formatted file.
+ *
+ */
 export function writeJson(filePathOut, jsonObj, minified = false) {
     let parser = "json";
     let jsonData = JSON.stringify(jsonObj);

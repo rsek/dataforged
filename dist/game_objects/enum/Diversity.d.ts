@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Planets / Vital / Diversity
+ */
 declare enum Diversity {
     Simple = 2,
     Diverse = 3,

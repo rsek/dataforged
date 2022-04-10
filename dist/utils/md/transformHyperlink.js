@@ -1,5 +1,11 @@
 import { findById } from "./findById.js";
 import _ from "lodash-es";
+/**
+ * It replaces all the links to the moves.md file with the correct link.
+ * @param md - The markdown string to be transformed.
+ * @param localLinks - If true, the links will be relative to the current file.
+ * @returns The original string with the links replaced.
+ */
 export function transformMoveLinks(md, localLinks = false, pathPrefix = "") {
     md = md.replaceAll(/\(Moves\/([^ ]+?)\/([^ ]+?)\)/g, (match, p1, p2) => {
         let result = match;
@@ -13,8 +19,14 @@ export function transformMoveLinks(md, localLinks = false, pathPrefix = "") {
     });
     return md;
 }
+/**
+ * It replaces all the links in the markdown with the replacement string.
+ * @param md - The markdown string to be transformed.
+ * @returns The original string with the links transformed.
+ */
 export function transformOracleLinks(data, md, currentFile) {
     md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match, p1, p2) => {
+        // console.log("matched:", match);
         const oracleId = match
             .replaceAll("(", "")
             .replaceAll(")", "");
@@ -30,6 +42,7 @@ export function transformOracleLinks(data, md, currentFile) {
         return result.replaceAll("_", "-");
     });
     md = md.replaceAll(/\(Oracles\/([^ ]+?)\)/g, (match, p1) => {
+        // console.log("matched:", match);
         const oracleId = match.replaceAll("/", "/").replaceAll("(", "")
             .replaceAll(")", "")
             .replaceAll("_", " ");

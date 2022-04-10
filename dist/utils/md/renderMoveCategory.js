@@ -1,5 +1,13 @@
 import { renderMove } from "./renderMove.js";
 import _ from "lodash-es";
+/**
+ * It takes a MoveCategory and returns a string that is a markdown list of all the moves in that
+ * category
+ * @param moveCat - The MoveCategory to render.
+ * @param headerLevel - The level of the top-level header.
+ * @param localLinksOnly - FIXME: NYI. If true, only links to moves in the same category will be generated.
+ * @returns A string.
+ */
 export function renderMoveCategory(moveCat, headerLevel = 2, localLinksOnly = true) {
     const header = `${_.repeat("#", headerLevel)} ${moveCat.Display.Title}`;
     const items = [header, moveCat.Description];

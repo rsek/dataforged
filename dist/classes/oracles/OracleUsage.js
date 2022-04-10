@@ -1,6 +1,9 @@
 import { Requirements, Suggestions } from "../index.js";
 export class OracleUsage {
     constructor(json) {
+        // if (!is<IOracleUsageData>(json)) {
+        //   throw new Error();
+        // }
         this.Initial = json.Initial;
         this["Max rolls"] = json["Max rolls"];
         this["Min rolls"] = json["Min rolls"];
@@ -12,6 +15,7 @@ export class OracleUsage {
         if (json.Requires) {
             this.Requires = new Requirements(json.Requires);
         }
+        // this["Sets attributes"] = json["Sets attributes"];
     }
 }
 //# sourceMappingURL=OracleUsage.js.map

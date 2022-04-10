@@ -1,3 +1,6 @@
+/**
+ * Enumerates challenge ranks.
+ */
 declare enum ChallengeRank {
     Troublesome = 1,
     Dangerous = 2,

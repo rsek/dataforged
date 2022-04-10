@@ -3,6 +3,9 @@ export interface IOracleCategory extends IOracleBase, IHasName<OracleCategoryNam
     $id: OracleCategoryId;
     Category?: OracleCategoryJaggedId | undefined;
     Categories?: IOracleCategory[] | undefined;
+    /**
+     * A list of sample names for this category (only used by Planetary Class subcategories).
+     */
     "Sample Names"?: string[] | undefined;
 }
 //# sourceMappingURL=IOracleCategory.d.ts.map

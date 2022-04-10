@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Guild
+ */
 declare enum Guild {
     Assassins = "Assassins",
     BountyHunters = "Bounty Hunters",

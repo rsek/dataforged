@@ -1,3 +1,6 @@
+/**
+ * @module Json.Moves
+ */
 export * from "./IActionRoll.js";
 export * from "./ICustomStat.js";
 export * from "./IMove.js";

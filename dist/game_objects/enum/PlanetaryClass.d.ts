@@ -1,3 +1,6 @@
+/**
+ * Set by "Oracles / Planets / Class"
+ */
 declare enum PlanetaryClass {
     Desert = "Desert",
     Furnace = "Furnace",

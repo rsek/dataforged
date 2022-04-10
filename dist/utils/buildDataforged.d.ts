@@ -10,5 +10,9 @@ export interface IronswornData {
     oracles: OracleCategory[];
     setting_truths: SettingTruth[];
 }
+/**
+ * Builds all data for Dataforged.
+ * @returns An object keyed with the game data.
+*/
 export declare function buildDataforged(): IronswornData;
 //# sourceMappingURL=buildDataforged.d.ts.map

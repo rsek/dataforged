@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Characters / Disposition
+ */
 declare enum Disposition {
     Cooperative = "Cooperative",
     Curious = "Curious",

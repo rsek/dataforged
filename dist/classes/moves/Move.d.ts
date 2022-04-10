@@ -3,6 +3,9 @@ import type { Suggestions } from "../index.js";
 import { MoveOutcomes } from "../index.js";
 import { MoveTrigger } from "../index.js";
 import type { AssetId, IDisplay, IMove, ISource, MoveCategoryId, MoveId, OracleTableId, ParagraphsString } from "../../json_out/index.js";
+/**
+ * Object representing a Starforged move.
+ */
 export declare class Move extends SourceInheritor implements IMove {
     $id: MoveId;
     Name: string;

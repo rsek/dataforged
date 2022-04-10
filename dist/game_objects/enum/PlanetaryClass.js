@@ -1,3 +1,6 @@
+/**
+ * Set by "Oracles / Planets / Class"
+ */
 var PlanetaryClass;
 (function (PlanetaryClass) {
     PlanetaryClass["Desert"] = "Desert";

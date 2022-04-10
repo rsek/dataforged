@@ -272,7 +272,7 @@ Roll | Result
 
 Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
 
-Roll | Given Name | Family Name | Callsign
+Roll | Given_Name | Family_Name | Callsign
 :---:|------------|-------------|------------
 1    | Akim       | Kuzmin      | Albatross
 2    | Alex       | Durant      | Angler

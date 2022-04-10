@@ -1,4 +1,10 @@
 import { badJsonError } from "../logging/badJsonError.js";
+/**
+ * It validates a table of dice rolls.
+ * @param requireUniqueResults - If true, the table must have unique results.
+ * @param requireAllD100 - If true, the sum of all the dice ranges must be 100.
+ * @returns A boolean indicating whether the table is valid.
+ */
 export function validateTable(table, requireUniqueResults = true, requireAllD100 = true) {
     if (!Array.isArray(table)) {
         throw badJsonError(validateTable, table, "Table is not an array.");
@@ -14,6 +20,7 @@ export function validateTable(table, requireUniqueResults = true, requireAllD100
         if (typeof floor === "number" && typeof ceiling === "number") {
             const lastCeiling = i > 0 ? table[i - 1].Ceiling : 1;
             const errPrefix = `[validateTable] Invalid row at index ${i}:`;
+            // if (requireUniqueResults) { resultStrings.add(currentRow.Result); }
             if (i === 0 && floor !== 1) {
                 throw new Error(`${errPrefix} first row must have a floor of 1\n${JSON.stringify(table, undefined, 2)}`);
             }

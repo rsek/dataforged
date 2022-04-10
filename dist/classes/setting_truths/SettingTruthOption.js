@@ -3,6 +3,7 @@ export class SettingTruthOption extends Row {
     constructor(parentId, json) {
         super(parentId, json);
         if (this.Subtable) {
+            // what is happening here?
             this.Subtable = this.Subtable.map(row => new Row(`${this.$id ?? "--"}/Subtable`.replaceAll(" ", "_"), row));
             this.Subtable.forEach(row => row.validateRollTemplate());
         }

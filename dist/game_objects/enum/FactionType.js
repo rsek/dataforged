@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Type
+ */
 var FactionType;
 (function (FactionType) {
     FactionType["FringeGroup"] = "Fringe Group";

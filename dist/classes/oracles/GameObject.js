@@ -9,6 +9,7 @@ export class GameObject {
             throw badJsonError(this.constructor, json, "Invalid object type");
         }
         this["Object type"] = json["Object type"];
+        // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
         const requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]);
         if (Object.keys(requiredAttributes).length) {
             const requirements = { Attributes: requiredAttributes };

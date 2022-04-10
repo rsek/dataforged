@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Character / Role
+ */
 var Role;
 (function (Role) {
     Role["Agent"] = "Agent";

@@ -3,7 +3,13 @@ import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { validateRollTemplate } from "../../utils/validation/validateRollTemplate.js";
 import _ from "lodash-es";
 import { is } from "typescript-is";
+/**
+ * Class representing a single row of an oracle table.
+ */
 export class Row {
+    /**
+     * Creates an instance of Row.
+     */
     constructor(parentId, json) {
         let rowData = _.clone(json);
         if (Array.isArray(rowData) && rowData.some(item => Array.isArray(item))) {
@@ -23,6 +29,8 @@ export class Row {
                 throw new Error();
             }
             rangeString = this.Floor === this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             this.$id = `${parentId}/${rangeString}`;
         }
         const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
@@ -61,6 +69,7 @@ export class Row {
                 }
                 case "object": {
                     if (this.Floor === null && this.Ceiling === null) {
+                        // null rows only exist to provide display text, so they only get strings assigned to them;
                         break;
                     }
                     _.forEach(item, (value, key) => {
@@ -995,14 +1004,18 @@ export class Row {
                                 break;
                             }
                             case "Suggestions": {
+                                // console.log("row has suggestions:", JSON.stringify(rowContents));
                                 let newSuggestions;
                                 if (Array.isArray(value)) {
+                                    // console.log("Received a suggestion array, merging...", value);
                                     const suggestData = _.cloneDeep(value);
                                     const suggestItems = suggestData.map(item => new Suggestions(item));
                                     newSuggestions = suggestItems.reduce((a, b) => _.merge(a, b));
+                                    // console.log("merged multiple suggestions", newSuggestions);
                                 }
                                 else {
                                     newSuggestions = new Suggestions(value);
+                                    // console.log("single suggestion", newSuggestions);
                                 }
                                 if (!this.Suggestions) {
                                     this.Suggestions = newSuggestions;
@@ -1010,6 +1023,7 @@ export class Row {
                                 else {
                                     this.Suggestions = _.merge({ ...this.Suggestions }, { ...newSuggestions });
                                 }
+                                // console.log("final suggestions object", this.Suggestions);
                                 break;
                             }
                             case "Result": {
@@ -1052,6 +1066,8 @@ export class Row {
             throw badJsonError(this.constructor, this, "Row doesn't have a result string");
         }
     }
+    // this has to happen after derived class inheritance, rather than during the class constructor, so that class inheritance works properly. it gets done when the Oracle class builds the rows.
+    // FIXME: alternately, i could write an abstract class or something, oof.
     validateRollTemplate() {
         if (this["Roll template"]) {
             return validateRollTemplate(this, this["Roll template"]);

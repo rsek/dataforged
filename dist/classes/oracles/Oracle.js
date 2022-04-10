@@ -11,12 +11,17 @@ import { templateOracle } from "../../utils/object_transform/templateOracle.js";
 import { templateOracleTable } from "../../utils/object_transform/templateOracleTable.js";
 import _ from "lodash-es";
 export class Oracle extends SourceInheritor {
-    constructor(json, category, memberOf, ...ancestorsJson) {
+    constructor(json, category, memberOf, ...ancestorsJson
+    // ancestors should be in ascending order
+    ) {
         let jsonClone = _.cloneDeep(json);
         super(jsonClone.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
         if (jsonClone._templateInfo) {
             jsonClone = templateOracle(jsonClone, jsonClone._templateInfo);
         }
+        // if (!is<IOracleInfoData>(json)) {
+        //   throw new Error("json does not conform to IOracleInfoData!");
+        // }
         this.$id = buildOracleId(jsonClone, ...ancestorsJson);
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = jsonClone.Name;
@@ -40,6 +45,7 @@ export class Oracle extends SourceInheritor {
         }
         if (tableData) {
             this.Table = tableData.map(row => {
+                // TODO: propagate attributes to row objects
                 const newRow = new Row(this.$id, row);
                 newRow.validateRollTemplate();
                 return newRow;
@@ -65,6 +71,7 @@ export class Oracle extends SourceInheritor {
                 if (typeof this.Usage["Sets attributes"] === "undefined") {
                     this.Usage["Sets attributes"] = [];
                 }
+                // console.log("attrs", attrs);
                 this.Usage["Sets attributes"] = this.Usage["Sets attributes"].concat(...attrs);
             }
         }

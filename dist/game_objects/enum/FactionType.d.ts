@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Type
+ */
 declare enum FactionType {
     FringeGroup = "Fringe Group",
     Dominion = "Dominion",

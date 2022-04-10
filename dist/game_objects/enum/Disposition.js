@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Characters / Disposition
+ */
 var Disposition;
 (function (Disposition) {
     Disposition["Cooperative"] = "Cooperative";

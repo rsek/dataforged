@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Leadership
+ */
 var Leadership;
 (function (Leadership) {
     Leadership["Anarchist"] = "Anarchist";

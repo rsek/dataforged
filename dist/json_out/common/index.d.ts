@@ -1,3 +1,6 @@
+/**
+ * @module Json.Common
+ */
 export * from "./ChallengeRank.js";
 export * from "./ClockSegments.js";
 export * from "./ClockType.js";

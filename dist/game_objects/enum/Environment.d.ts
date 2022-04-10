@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Creatures / Environment
+ */
 declare enum Environment {
     Space = "Space",
     Interior = "Interior",

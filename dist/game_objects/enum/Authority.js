@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Settlements / Authority
+ */
 export var Authority;
 (function (Authority) {
     Authority["NoneLawless"] = "None / lawless";

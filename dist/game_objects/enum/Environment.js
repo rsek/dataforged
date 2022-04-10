@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Creatures / Environment
+ */
 var Environment;
 (function (Environment) {
     Environment["Space"] = "Space";

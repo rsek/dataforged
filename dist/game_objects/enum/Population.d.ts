@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Settlements / Population
+ */
 export declare enum Population {
     Few = "Few",
     Dozens = "Dozens",

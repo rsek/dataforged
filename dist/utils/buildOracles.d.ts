@@ -5,5 +5,9 @@ export interface IOracleParentCategoryData extends IOracleCategoryYaml {
     Name: OracleCategoryName;
     _parentOf: OracleSubcategoryName[];
 }
+/**
+ * It takes the data from the oracles directory and builds a list of OracleCategory objects.
+ * @returns An array of OracleCategory objects.
+ */
 export declare function buildOracles(): OracleCategory[];
 //# sourceMappingURL=buildOracles.d.ts.map

@@ -4,6 +4,7 @@ export function extractColumnData(oracle) {
     const newTableRows = [];
     const rollCols = oracle.Display.Table["Roll columns"];
     rollCols.forEach((col, colIndex) => {
+        // console.log("[extractColumnData] id:",col);
         const table = getTableByOracleId(oracle, col["Use content from"]);
         table.forEach((rowData, rowIndex) => {
             if (!table) {
@@ -23,6 +24,7 @@ export function extractColumnData(oracle) {
         if (!table) {
             throw badJsonError(extractColumnData);
         }
+        // console.log("found table:", table);
         table.forEach((rowData, rowIndex) => {
             const currentTableRow = newTableRows[rowIndex];
             const newRowText = rowData[col.Key];

@@ -3,6 +3,9 @@ import { MoveOutcomes } from "../index.js";
 import { MoveTrigger } from "../index.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import _ from "lodash-es";
+/**
+ * Object representing a Starforged move.
+ */
 export class Move extends SourceInheritor {
     constructor(json, ...sourceAncestors) {
         super(json.Source ?? {}, ...sourceAncestors);

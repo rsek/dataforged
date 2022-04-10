@@ -1,4 +1,11 @@
+/**
+ * Class representing a counter embedded in a Starforged Asset.
+ */
 export class Counter {
+    /**
+     * @param json - the json object to build the counter from
+     * @param id - the id of the Counter
+     */
     constructor(json, id) {
         this.Min = 0;
         this["Starting Value"] = 0;

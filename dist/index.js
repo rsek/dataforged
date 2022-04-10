@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-imports */
 export * from "./json_out/index.js";
 import assets_json from "./starforged-assets.json" assert { type: "json" };
 import encounters_json from "./starforged-encounters.json" assert { type: "json" };

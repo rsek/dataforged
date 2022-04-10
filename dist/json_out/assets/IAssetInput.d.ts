@@ -1,5 +1,8 @@
 import type { ClockSegments } from "../common/ClockSegments.js";
 import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId, IHasName, InputType, Stat } from "../index.js";
+/**
+ * @internal
+ */
 export interface IInputBase extends IHasId, IHasName {
     "Input Type": InputType;
     Adjustable?: boolean;
@@ -30,6 +33,9 @@ export interface ISelectInput extends IInputBase {
     "Option Type": SelectInputOptionType;
     Options: ISelectInputOption<this["Option Type"]>[];
 }
+/**
+ * @internal
+ */
 export interface ISelectInputOption<T extends SelectInputOptionType> extends IHasId, IHasName {
     "Option Type": T;
 }

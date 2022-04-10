@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Creatures / Encountered Behavior
+ */
 var Behavior;
 (function (Behavior) {
     Behavior["Ambusher"] = "Ambusher";

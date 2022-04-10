@@ -1,6 +1,9 @@
 import { lengthOfLongest } from "./longestLength.js";
 import { transpose2dArray } from "./transpose2dArray.js";
 import _ from "lodash-es";
+/**
+ * Renders an object array as a markdown table.
+ */
 export function renderTable(rowDataArray) {
     const tableBody = rowDataArray.map(row => Object.values(row));
     const tableHeaderText = Object.keys(rowDataArray[0]);
@@ -21,4 +24,9 @@ export function renderTable(rowDataArray) {
     rowStrings = rowStrings.map(row => row.trimEnd());
     return rowStrings.join("\n");
 }
+// let oracleData = buildOracles();
+// let testOracle = getOracleById(oracleData, "Oracles/Creatures/Basic Form");
+// // console.log("found oracle:", testOracle);
+// let extract = extractColumnData(testOracle);
+// console.log(renderTable(extract));
 //# sourceMappingURL=renderTable.js.map

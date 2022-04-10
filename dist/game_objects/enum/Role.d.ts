@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Character / Role
+ */
 declare enum Role {
     Agent = "Agent",
     AI = "AI",

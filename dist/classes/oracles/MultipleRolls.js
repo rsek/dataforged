@@ -1,8 +1,15 @@
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { is } from "typescript-is";
+/**
+ * Represents "Roll twice" and "Roll three times" oracle results.
+ */
 export class MultipleRolls {
     constructor(json) {
+        /**
+         * In tabletop play, duplicate results are typically rerolled (p. XX). However, a handful of tables (such as Space Sighting) use multiple rolls to represent discrete objects (rather than features of a single game object), so duplicate results should be allowed.
+         */
         this.Amount = 2;
+        /** The number of results to be generated from the oracle table. */
         this["Allow duplicates"] = false;
         this["Make it worse"] = false;
         if (!is(json, object => { function _number(object) { ; if (typeof object !== "number")

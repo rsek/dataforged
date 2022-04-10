@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / ** / Location
+ */
 var Location;
 (function (Location) {
     Location["Planetside"] = "Planetside";

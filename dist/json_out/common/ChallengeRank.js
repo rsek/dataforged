@@ -1,3 +1,6 @@
+/**
+ * Enumerates challenge ranks.
+ */
 var ChallengeRank;
 (function (ChallengeRank) {
     ChallengeRank[ChallengeRank["Troublesome"] = 1] = "Troublesome";

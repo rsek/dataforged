@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Creatures / Encountered Behavior
+ */
 declare enum Behavior {
     Ambusher = "Ambusher",
     Hibernator = "Hibernator",

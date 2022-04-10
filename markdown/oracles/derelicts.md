@@ -12,7 +12,7 @@ Roll   | Result
 
 ## Type (by Location)
 
-Planetside | Orbital | Deep Space | Result
+Planetside | Orbital | Deep_Space | Result
 :---------:|:-------:|:----------:|-----------
 1–25       | 1–40    | 1–75       | Starship
 26–100     | 41–100  | 76–100     | Settlement

@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Influence
+ */
 var Influence;
 (function (Influence) {
     Influence["Forsaken"] = "Forsaken";

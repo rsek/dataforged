@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Leadership
+ */
 declare enum Leadership {
     Anarchist = "Anarchist",
     DisputedLeadership = "Disputed leadership",

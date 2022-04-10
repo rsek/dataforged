@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Location Themes / Theme Type
+ */
 var LocationTheme;
 (function (LocationTheme) {
     LocationTheme["Chaotic"] = "Chaotic";

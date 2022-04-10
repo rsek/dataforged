@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Guild
+ */
 var Guild;
 (function (Guild) {
     Guild["Assassins"] = "Assassins";

@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Settlements / Population
+ */
 export var Population;
 (function (Population) {
     Population["Few"] = "Few";

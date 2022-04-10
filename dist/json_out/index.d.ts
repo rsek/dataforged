@@ -1,3 +1,6 @@
+/**
+ * @module Json
+ */
 export * from "./assets/index.js";
 export * from "./common/index.js";
 export * from "./encounters/index.js";

@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Dominion
+ */
 var Dominion;
 (function (Dominion) {
     Dominion["Agriculture"] = "Agriculture";

@@ -57,9 +57,11 @@ function mdTableFrom2dArray(array2d) {
         row = row.map((column, index) => column.padEnd(columnMax[index]));
         return row;
     });
+    // inner borders
     const headerBorder = columnMax.map(columnWidth => _.repeat("-", columnWidth));
     md2dArray.splice(1, 0, headerBorder);
     let mdRowStrings = md2dArray.map((row) => row.map((col, i) => col.padEnd(columnMax[i])).join(" | "));
+    // trim trailing whitepace
     mdRowStrings = mdRowStrings.map(row => row.trim());
     const tableString = mdRowStrings.join("\n");
     return tableString;

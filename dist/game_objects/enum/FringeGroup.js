@@ -1,3 +1,6 @@
+/**
+ * Set by Oracles / Factions / Fringe Group
+ */
 var FringeGroup;
 (function (FringeGroup) {
     FringeGroup["Cultists"] = "Cultists";

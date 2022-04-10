@@ -8,6 +8,10 @@ import { propagateToChildren } from "../../utils/object_transform/propagateToChi
 import _ from "lodash-es";
 export class OracleCategory extends SourceInheritor {
     constructor(json, category, ...ancestorsJson) {
+        // if (!is<IOracleCategoryData>(json)) {
+        //   buildLog(this.constructor, "Json does not conform to type!");
+        //   throw new Error();
+        // }
         super(json.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
         this.$id = buildOracleId(json, ...ancestorsJson);
         buildLog(this.constructor, `Building: ${this.$id}`);

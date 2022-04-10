@@ -1,3 +1,6 @@
+/**
+ * Set by oracle: Oracles / Derelicts / Type
+ */
 var DerelictType;
 (function (DerelictType) {
     DerelictType["Starship"] = "Starship";
