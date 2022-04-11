@@ -13,7 +13,8 @@ Asset Types:
     Assets:
       - Name: Starship
         Attachments:
-          Asset Type: Assets/Module
+          Asset Types: [Assets/Module]
+          Max: null
         Inputs:
           - Name: Name
             Input Type: Text
@@ -29,9 +30,9 @@ Asset Types:
               - Move: Moves/Suffer/Withstand_Damage
                 Trigger:
                   Options:
-                    - Text: to your starship
-                      Action roll:
-                        Stat: Heart
+                    - Text: you [Withstand Damage](Moves/Suffer/Withstand_Damage) to your starship
+                      Roll type: Action roll
+                      Using: [Heart]
         Condition Meter:
           Name: Integrity
           Max: 5
@@ -80,7 +81,9 @@ Asset Types:
                 Trigger:
                   Text: When you take a minute or so to ready the grappler...
                   Options:
-                    - Roll best of: [Wits, Attached Asset Condition Meter]
+                    - Method: Highest
+                      Roll type: Action roll
+                      Using: [Wits, Attached_Asset_Condition_Meter]
                 Text: *move:Asset.Grappler
                 Outcomes:
                   Strong Hit:
@@ -124,8 +127,8 @@ Asset Types:
                 Trigger:
                   Text: When you [Sacrifice Resources](Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...
                   Options:
-                    - Action roll:
-                        Stat: Attached Asset Condition Meter
+                    - Roll type: Action roll
+                      Using: [Attached_Asset_Condition_Meter]
                 Text: *move:Asset.Internal_refit
                 Outcomes:
                   Strong Hit:
@@ -147,7 +150,7 @@ Asset Types:
       - Name: Missile Array
         Abilities:
           - Text: |-
-              Your missile array is armed with 5 ammo. When you [Strike](Moves/Combat/Strike) or [Clash](Moves/Combat/Clash) with a missile attack, suffer _1 ammo and mark progress on a hit. If you [Resupply](Moves/Recover/Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
+              Your missile array is armed with 5 ammo. When you [Strike](Moves/Combat/Strike) or [Clash](Moves/Combat/Clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](Moves/Recover/Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
             Enabled: true
           - Text: |-
               When you have at least 1 ammo and [Gain Ground](Moves/Combat/Gain_Ground) by locking a missile on target, add +1 and take +1 momentum on a hit.
@@ -168,14 +171,14 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: by talking through a situation with the overseer AI
-                      Action roll:
-                        Stat: Attached Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Attached_Asset_Condition_Meter]
               - Move: Moves/Combat/Gain_Ground
                 Trigger:
                   Options:
                     - Text: by talking through a situation with the overseer AI
-                      Action roll:
-                        Stat: Attached Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Attached_Asset_Condition_Meter]
             Enabled: true
           - Text: |-
               When you [Withstand Damage](Moves/Suffer/Withstand_Damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
@@ -186,8 +189,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
-                      Action roll:
-                        Stat: Attached Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Attached_Asset_Condition_Meter]
       - Name: Reinforced Hull
         Abilities:
           - Text: |-
@@ -222,13 +225,13 @@ Asset Types:
               - Move: Moves/Combat/Enter_the_Fray
                 Trigger:
                   - Text: against an ambush
-                    Action roll:
-                      Stat: Attached Asset Condition Meter
+                    Roll type: Action roll
+                    Using: [Attached_Asset_Condition_Meter]
               - Move: Moves/Adventure/Face_Danger
                 Trigger:
                   - Text: to detect a hidden threat
-                    Action roll:
-                      Stat: Attached Asset Condition Meter
+                    Roll type: Action roll
+                    Using: [Attached_Asset_Condition_Meter]
       - Name: Shields
         Abilities:
           - Text: &move:Asset.Shields |-
@@ -239,7 +242,9 @@ Asset Types:
                 Trigger:
                   Text: When you raise your shields...
                   Options:
-                    - Roll best of: [Wits, Attached Asset Condition Meter]
+                    - Method: Highest
+                      Roll type: Action roll
+                      Using: [Wits, Attached_Asset_Condition_Meter]
                 Text: *move:Asset.Shields
                 Outcomes:
                   Strong Hit:
@@ -264,8 +269,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: by letting your shields take the blow
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
           - Text: |-
               When you [Enter the Fray](Moves/Combat/Enter_the_Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
         Condition Meter:
@@ -290,9 +295,9 @@ Asset Types:
               - Move: Moves/Combat/Strike
                 Trigger:
                   Options:
-                    - Text: poised to Strike from hiding
-                      Action roll:
-                        Stat: Shadow
+                    - Text: you are poised to [Strike](Moves/Combat/Strike) from hiding
+                      Roll type: Action roll
+                      Using: [Shadow]
       - Name: Vehicle Bay
         Abilities:
           - Text: |-
@@ -363,23 +368,19 @@ Asset Types:
               You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](Moves/Suffer/Withstand_Damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.
             Alter Properties:
               Attachments:
-                Asset Type: Assets/Module
+                Asset Types: [Assets/Module]
                 Max: 1
           - Text: |-
               When you [Face Danger](Moves/Adventure/Face_Danger) or [React Under Fire](Moves/Combat/React_Under_Fire) by taking a hit or crashing through an obstacle, you may roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
               - Move: Moves/Adventure/Face_Danger
-                Trigger:
+                Trigger: &rover_trigger
                   Options:
                     - Text: by taking a hit or crashing through an obstacle
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: Moves/Combat/React_Under_Fire
-                Trigger:
-                  Options:
-                    - Text: by taking a hit or crashing through an obstacle
-                      Action roll:
-                        Stat: Asset Condition Meter
+                Trigger: *rover_trigger
         Condition Meter:
           Name: Integrity
           Max: 5
@@ -402,8 +403,8 @@ Asset Types:
                 Trigger: &service_pod_alter
                   Options:
                     - Text: by maneuvering your pod through a hazardous or obstructed area
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: Moves/Combat/Gain_Ground
                 Trigger: *service_pod_alter
               - Move: Moves/Combat/React_Under_Fire
@@ -442,8 +443,8 @@ Asset Types:
                 Trigger: &skiff_alter
                   Options:
                     - Text: rely on the skiff's simple durability
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: Moves/Exploration/Set_a_Course
                 Trigger: *skiff_alter
             Enabled: true
@@ -454,9 +455,9 @@ Asset Types:
                 Trigger: &skiff_alter_2
                   Options:
                     - Text: by firing the skiff's cannon
-                      Action roll:
-                        Stat: Asset Condition Meter
-              - Move: Moves/Clash
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
+              - Move: Moves/Combat/Clash
                 Trigger: *skiff_alter_2
           - Text: |-
               Your skiff is fully stocked. When you [Check Your Gear](Moves/Adventure/Check_Your_Gear), add +1 and take +1 momentum on a hit.
@@ -476,8 +477,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: in your snub fighter
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
             Enabled: true
           - Text: |-
               When you [Strike](Moves/Combat/Strike) or [Clash](Moves/Combat/Clash), add +1. On a strong hit with a match, mark progress.
@@ -514,8 +515,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: while piloting a vehicle
-                      Action roll:
-                        Stat: Vehicle Integrity
+                      Roll type: Action roll
+                      Using: [Vehicle Integrity]
       - Name: Archer
         Requirement: If you wield a power bow...
         Abilities:
@@ -526,8 +527,8 @@ Asset Types:
                 Trigger:
                   Text: When you replenish your ammo by crafting projectiles...
                   Options:
-                    - Action roll:
-                        Stat: Wits
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Archer
                 Outcomes:
                   Strong Hit:
@@ -546,10 +547,11 @@ Asset Types:
             Alter Moves:
               - Move: Moves/Combat/Enter_the_Fray
                 Trigger:
-                  Text: by unleashing a volley of bow shots
                   Options:
-                    - Action roll:
-                        Stat: Asset Condition Meter
+                    - Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
+                      Text: by unleashing a volley of bow shots
+
           - Text: |-
               When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. If you then take your shot by making a move, you may preset your action die to 5. On a hit, envision the effects and take +1 momentum.
         Condition Meter:
@@ -564,7 +566,7 @@ Asset Types:
           - Text: |-
               You add an important new piece to your set of armor, or upgrade its materials. As above, but preset your action die to 5 instead of 4.
           - Text: |-
-              When you must [Endure Harm](Moves/Suffer/Endure_Harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1_3, ignore the harm but your armor is now broken; you must [Repair](Moves/Recover/Repair) and spend 5 repair points to bring it back to working condition.
+              When you must [Endure Harm](Moves/Suffer/Endure_Harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must [Repair](Moves/Recover/Repair) and spend 5 repair points to bring it back to working condition.
       - Name: Artist
         Abilities:
           - Text: |-
@@ -579,22 +581,10 @@ Asset Types:
                 Trigger:
                   Text: When you create or perform a significant artistic work as a public memorial or tribute...
                   Options:
-                    # TODO: some trigger text? how should it be formulated?
-                    - Action roll:
-                        Stat: Edge
-                      Text: Edge best represents the work's nature
-                    - Action roll:
-                        Stat: Heart
-                      Text: Heart best represents the work's nature
-                    - Action roll:
-                        Stat: Iron
-                      Text: Iron best represents the work's nature
-                    - Action roll:
-                        Stat: Shadow
-                      Text: Shadow best represents the work's nature
-                    - Action roll:
-                        Stat: Wits
-                      Text: Wits best represents the work's nature
+                    - Roll type: Action roll
+                      Method: Any
+                      Text: Roll +the stat which best represents the work’s nature
+                      Using: [Edge, Iron, Heart, Shadow, Wits]
                 Text: *move:Asset.Artist
                 Outcomes:
                   Strong Hit:
@@ -687,8 +677,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: during a courier mission
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
         Condition Meter:
           Name: Safety
           Max: 5
@@ -733,8 +723,8 @@ Asset Types:
                 Trigger: &devotant_alter
                   Options:
                     - Text: by calling on your god, power, or entity for guidance or aid
-                      Action roll:
-                        Stat: Assets/Devotant/Inputs/Linked_Stat
+                      Roll type: Action roll
+                      Using: [Assets/Path/Devotant/Inputs/Linked_Stat]
               - Move: Moves/Combat/Gain_Ground
                 Trigger: *devotant_alter
           - Text: |-
@@ -744,8 +734,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: in service to your faith
-                      Action roll:
-                        Stat: Assets/Devotant/Inputs/Linked_Stat
+                      Roll type: Action roll
+                      Using: [Assets/Path/Devotant/Inputs/Linked_Stat]
           - Text: |-
               When you [Hearten](Moves/Recover/Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
             Alter Moves:
@@ -753,8 +743,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: through contemplation or sharing of your faith
-                      Action roll:
-                        Stat: Assets/Devotant/Inputs/Linked_Stat
+                      Roll type: Action roll
+                      Using: [Assets/Path/Devotant/Inputs/Linked_Stat]
       - Name: Diplomat
         Abilities:
           - Text: |-
@@ -774,8 +764,8 @@ Asset Types:
                 Trigger:
                   Text: When you read the intent, emotions, or memories of a nearby being...
                   Options:
-                    - Action roll:
-                        Stat: Heart
+                    - Roll type: Action roll
+                      Using: [Heart]
                 Text: *move:Asset.Empath
                 Outcomes:
                   Strong Hit:
@@ -798,8 +788,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: to soothe a being's distress by creating an empathic bond
-                      Action roll:
-                        Stat: Spirit
+                      Roll type: Action roll
+                      Using: [Spirit]
       - Name: Explorer
         Abilities:
           - Text: |-
@@ -831,8 +821,8 @@ Asset Types:
                 Trigger:
                   Text: When you rest and meditate to gather fiery energy...
                   Options:
-                    - Action roll:
-                        Stat: Spirit
+                    - Roll type: Action roll
+                      Using: [Spirit]
                 Text: *move:Asset.Firebrand
                 Outcomes:
                   Strong Hit:
@@ -972,16 +962,17 @@ Asset Types:
                   Options:
                     - Text: When you create a link to the current point in time...
                     - Text: If you later loop back to this moment...
-                      Action roll:
-                        Custom stat:
-                          Name: Gap in time
-                          Options:
-                            - Name: Minutes
-                              Value: 4
-                            - Name: Hours
-                              Value: 3
-                            - Name: Days
-                              Value: 2
+                      Roll type: Action roll
+                      Using: ["${{Custom stat}}"]
+                      Custom stat:
+                        Name: Gap in time
+                        Options:
+                          - Name: Minutes
+                            Value: 4
+                          - Name: Hours
+                            Value: 3
+                          - Name: Days
+                            Value: 2
                 Text: *move:Asset.Looper
                 Outcomes:
                   Strong Hit:
@@ -999,7 +990,7 @@ Asset Types:
         Aliases: [Archivist, Lore-Hunter]
         Abilities:
           - Text: |-
-              When you Swear an Iron Vow (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you Reach a Milestone in the pursuit of that quest, take +2 momentum. When you Fulfill Your Vow and score a hit, also mark 2 ticks on your discoveries legacy track.
+              When you [Swear an Iron Vow](Moves/Quest/Swear_an_Iron_Vow) (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you Reach a Milestone in the pursuit of that quest, take +2 momentum. When you Fulfill Your Vow and score a hit, also mark 2 ticks on your discoveries legacy track.
             Enabled: true
           - Text: |-
               When you make a move to conduct extended research or study, reroll any challenge dice. On a match, you piece together an extraordinary or harrowing new theory; envision the nature of this revelation and mark 1 tick on your discoveries legacy track.
@@ -1058,8 +1049,8 @@ Asset Types:
                 Trigger:
                   Text: When you [Sacrifice Resources](Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...
                   Options:
-                    - Action roll:
-                        Stat: Wits
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Outcast
               # FIXME: separate outcome text
           - Text: |-
@@ -1077,7 +1068,8 @@ Asset Types:
               - Move: Moves/Adventure/Check_Your_Gear
                 Trigger:
                   Options:
-                    - Roll best of: [Wits, Supply]
+                    - Method: Highest
+                      Using: [Wits, Supply]
       - Name: Scoundrel
         Abilities:
           - Text: |-
@@ -1090,8 +1082,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: to search out a new contact
-                      Action roll:
-                        Stat: Shadow
+                      Roll type: Action roll
+                      Using: [Shadow]
           - Text: |-
               When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
       - Name: Seer
@@ -1105,9 +1097,9 @@ Asset Types:
               - Move: Moves/Adventure/Gather_Information
                 Trigger:
                   Options:
-                    - Text: focus or meditate to Gather Information about a place, being, or situation (in person or remotely)
-                      Action roll:
-                        Stat: Spirit
+                    - Text: focus or meditate to [Gather Information](Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely)
+                      Roll type: Action roll
+                      Using: [Spirit]
           - Text: |-
               When you or an ally roll a match as you [Sojourn](Moves/Recover/Sojourn) in a community or [Undertake an Expedition](Moves/Exploration/Undertake_an_Expedition) within a site, you may envision gaining sudden and unbidden insight about the location. If you do, take +2 momentum.
       - Name: Shade
@@ -1122,8 +1114,8 @@ Asset Types:
                 Trigger:
                   Text: When you expand your veil to immerse your surroundings in darkness...
                   Options:
-                    - Action roll:
-                        Stat: Shadow
+                    - Roll type: Action roll
+                      Using: [Shadow]
                 Text: *move:Asset.Shade
                 Outcomes:
                   Strong Hit:
@@ -1163,8 +1155,8 @@ Asset Types:
                 Trigger:
                   Test: When you target a minor foe from a distance (outside of a fight)...
                   Options:
-                    - Action roll:
-                        Stat: Wits
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Sniper
               # FIXME: separate outcome text
           - Text: |-
@@ -1174,10 +1166,10 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: from a distance with time enough to line up your shot
-                      Action roll:
-                        Stat: Wits
+                      Roll type: Action roll
+                      Using: [Wits]
           - Text: |-
-              When you [Secure an Advantage](Moves/Adventure/Secure_an_Advantage) by studying a distant situation through your rifle scope, or [Gain Ground](Moves/Combat/Gain_Ground) by taking careful aim, you may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](Moves/Suffer/Lose_Momentum) (-1, _2, or _3) and add that amount. Then, take +1 momentum on a strong hit.
+              When you [Secure an Advantage](Moves/Adventure/Secure_an_Advantage) by studying a distant situation through your rifle scope, or [Gain Ground](Moves/Combat/Gain_Ground) by taking careful aim, you may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](Moves/Suffer/Lose_Momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.
       - Name: Tech
         Abilities:
           - Text: |-
@@ -1195,8 +1187,8 @@ Asset Types:
               - Move: Moves/Recover/Sojourn
                 Trigger: &trader_alter
                   Options:
-                    - Action roll:
-                        Stat: Supply
+                    - Roll type: Action roll
+                      Using: [Supply]
               - Move: Moves/Adventure/Compel
                 Trigger: *trader_alter
             Enabled: true
@@ -1254,8 +1246,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: suiting up and gathering your gear for a perilous encounter or mission
-                      Action roll:
-                        Stat: Supply
+                      Roll type: Action roll
+                      Using: [Supply]
   - Name: Companion
     Display:
       Color: "#3d8b8a"
@@ -1276,8 +1268,8 @@ Asset Types:
                 Trigger: &banshee_alter
                   Options:
                     - Text: riding your banshee
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: Moves/Exploration/Set_a_Course
                 Trigger: *banshee_alter
             Enabled: true
@@ -1304,8 +1296,8 @@ Asset Types:
                 Trigger: &combat_bot_alter
                   Options:
                     - Text: using the threat of violence while the bot brings its weapons to bear
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: Moves/Combat/Gain_Ground
                 Trigger: *combat_bot_alter
           - Text: |-
@@ -1314,9 +1306,9 @@ Asset Types:
               - Move: Moves/Combat/React_Under_Fire
                 Trigger:
                   Options:
-                    - Text: Once per fight, by by using the combat bot to draw fire or create a diversion
-                      Action roll:
-                        Stat: Asset Condition Meter
+                    - Text: Once per fight, by using the combat bot to draw fire or create a diversion
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
         Condition Meter:
           Name: Health
           Max: 5
@@ -1365,8 +1357,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: by sending the rockhorn to directly attack a foe or smash an obstacle
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
             Enabled: true
           - Text: |-
               When you make the [Companion Takes a Hit](Moves/Suffer/Companion_Takes_a_Hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
@@ -1395,8 +1387,8 @@ Asset Types:
                 Trigger: &sidekick_alter
                   Options:
                     - Text: your sidekick acts to get you out of a tough spot
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: React Under Fire
                 Trigger: *sidekick_alter
         Condition Meter:
@@ -1434,8 +1426,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: Once per expedition, by sending the survey bot to scout ahead
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
           - Text: |-
               When you [Explore a Waypoint](Moves/Exploration/Explore_a_Waypoint) aided by the bot's sensors, or [Face Danger](Moves/Adventure/Face_Danger) to detect a threat, roll +its health and take +1 momentum on a hit.
             Alter Moves:
@@ -1443,14 +1435,14 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: aided by the survey bot's sensors
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
               - Move: Moves/Adventure/Face_Danger
                 Trigger:
                   Options:
                     - Text: to detect a threat
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
         Condition Meter:
           Name: Health
           Max: 3
@@ -1487,8 +1479,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
           - Text: |-
               When you [Repair](Moves/Recover/Repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](Moves/Suffer/Lose_Momentum) (-2).
           - Text: |-
@@ -1498,8 +1490,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: to see if your utility bot has a specific tool or technique available
-                      Action roll:
-                        Stat: Asset Condition Meter
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
         Condition Meter:
           Name: Health
           Max: 4
@@ -1518,18 +1510,18 @@ Asset Types:
               - Any Move: true
                 Trigger:
                   Options:
-                    - Text: When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
-                      Action roll:
-                        Stat: Asset Condition Meter
+                    - Text: you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
           - Text: |-
               When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
             Alter Moves:
               - Any Move: true
                 Trigger:
                   Options:
-                    - Text: When you make a move by signaling the voidglider to distract or attack a spaceborne foe
-                      Action roll:
-                        Stat: Asset Condition Meter
+                    - Text: you make a move by signaling the voidglider to distract or attack a spaceborne foe
+                      Roll type: Action roll
+                      Using: [Asset_Condition_Meter]
         Condition Meter:
           Name: Health
           Max: 4
@@ -1615,8 +1607,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: by studying a place where death left its mark
-                      Action roll:
-                        Stat: Heart
+                      Roll type: Action roll
+                      Using: [Heart]
       - Name: Survivor
         Requirement: Once you mark traumatized or permanently harmed...
         Abilities:
@@ -1638,7 +1630,8 @@ Asset Types:
                 Trigger:
                   Text: When you seek a safe location in a remote environment...
                   Options:
-                    - Progress roll: Discoveries Legacy
+                    - Roll type: Progress roll
+                      Using: [Discoveries Legacy]
                 Progress Move: true
                 Text: *move:Asset.Vanguard
                 Outcomes:
@@ -1663,5 +1656,5 @@ Asset Types:
               - Move: Moves/Suffer/Endure_Stress
                 Trigger:
                   Options:
-                    - Action roll:
-                        Stat: Wits
+                    - Roll type: Action roll
+                      Using: [Wits]

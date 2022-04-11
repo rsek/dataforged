@@ -1,6 +1,8 @@
 import { InputType } from "../../json_out/common/InputType.js";
-import { SelectInputOptionType } from "../../json_out/index.js";
-import { ClockType } from "../../json_out/index.js";
+import { ClockType, SelectInputOptionType } from "../../json_out/index.js";
+/**
+ * @internal
+ */
 export class NumberInput {
     constructor(json, id) {
         this.Min = 0;
@@ -11,6 +13,9 @@ export class NumberInput {
         Object.assign(this, json);
     }
 }
+/**
+ * @internal
+ */
 export class ClockInput {
     constructor(json, id) {
         this["Input Type"] = InputType.Clock;
@@ -21,6 +26,9 @@ export class ClockInput {
         Object.assign(this, json);
     }
 }
+/**
+ * @internal
+ */
 export class TextInput {
     constructor(json, id) {
         this.Adjustable = false;
@@ -28,6 +36,9 @@ export class TextInput {
         Object.assign(this, json);
     }
 }
+/**
+ * @internal
+ */
 export class SelectInput {
     constructor(json, id) {
         var _a;
@@ -52,19 +63,28 @@ export class SelectInput {
         this.Adjustable = (_a = json.Adjustable) !== null && _a !== void 0 ? _a : false;
     }
 }
+/**
+ * @internal
+ */
 export class AssetSelectInputStatOption {
     constructor(json, id) {
         this.$id = id;
         Object.assign(this, json);
     }
 }
+/**
+ * @internal
+ */
 export class SelectInputMeterOption {
     constructor(json, id) {
         this.$id = id;
         Object.assign(this, json);
     }
 }
-class SelectInputCustomOption {
+/**
+ * @internal
+ */
+export class SelectInputCustomOption {
     constructor(json, id) {
         this.$id = id;
         Object.assign(this, json);

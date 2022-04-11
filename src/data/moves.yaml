@@ -98,20 +98,20 @@ Categories:
           Text: When you attempt something risky or react to an imminent threat...
           Options:
             - Text: With speed, mobility, or agility
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: With resolve, command, or sociability
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: With strength, endurance, or aggression
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: With deception, stealth, or trickery
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: With expertise, focus, or observation
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
 
@@ -140,20 +140,20 @@ Categories:
           Text: When you assess a situation, make preparations, or attempt to gain leverage...
           Options:
             - Text: With speed, mobility, or agility
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: With resolve, command, or sociability
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: With strength, endurance, aggression
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: With deception, stealth, or trickery
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: With expertise, focus, or observation
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
 
@@ -186,8 +186,8 @@ Categories:
         Trigger:
           Text: When you search for clues, conduct an investigation, analyze evidence, or do research...
           Options:
-            - Action roll:
-                Stat: Wits
+            - Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.
 
@@ -213,14 +213,14 @@ Categories:
           Text: When you try to persuade someone or make them an offer...
           Options:
             - Text: Charm, pacify, encourage, or barter
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: Threaten or incite
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Lie or swindle
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
         Text: |-
           **When you try to persuade someone or make them an offer**, envision your approach. If you...
 
@@ -255,8 +255,8 @@ Categories:
         Trigger:
           Text: When you check to see if you have a specific helpful item or resource...
           Options:
-            - Action roll:
-                Stat: Supply
+            - Roll type: Action roll
+              Using: [Supply]
         Text: |-
           **When you check to see if you have a specific helpful item or resource**, roll +supply.
 
@@ -295,8 +295,8 @@ Categories:
         Trigger:
           Text: When you swear upon iron to complete a quest...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
@@ -335,8 +335,8 @@ Categories:
         Trigger:
           Text: When you reach the end of your quest...
           Options:
-            - Progress roll:
-                Track: Vow Progress
+            - Roll type: Progress roll
+              Using: [Vow Progress]
         Text: |-
           **When you reach the end of your quest**, roll the challenge dice and compare to your progress.
 
@@ -391,8 +391,8 @@ Categories:
         Trigger:
           Text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
@@ -417,20 +417,21 @@ Categories:
         Trigger:
           Text: When you reinforce your relationship with a connection...
           Options:
-            - Action roll:
-                Custom stat:
-                  Name: Challenge Rank
-                  Options:
-                    - Name: Troublesome
-                      Value: 1
-                    - Name: Dangerous
-                      Value: 2
-                    - Name: Formidable
-                      Value: 3
-                    - Name: Extreme
-                      Value: 4
-                    - Name: Epic
-                      Value: 5
+            - Roll type: Action roll
+              Using: ["${{Custom stat}}"]
+              Custom stat:
+                Name: Challenge Rank
+                Options:
+                  - Name: Troublesome
+                    Value: 1
+                  - Name: Dangerous
+                    Value: 2
+                  - Name: Formidable
+                    Value: 3
+                  - Name: Extreme
+                    Value: 4
+                  - Name: Epic
+                    Value: 5
         Text: |-
           **When you reinforce your relationship with a connection** by doing any of the following...
 
@@ -460,8 +461,8 @@ Categories:
         Trigger:
           Text: When your relationship with a connection is tested through conflict, betrayal, or circumstance...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.
 
@@ -492,8 +493,8 @@ Categories:
         Trigger:
           Text: When your relationship with a connection is ready to evolve...
           Options:
-            - Progress roll:
-                Track: Connection Progress
+            - Roll type: Progress roll
+              Using: [Connection Progress]
         Progress Move: true
         Text: |-
           **When your relationship with a connection is ready to evolve**, roll the challenge dice and compare to your progress.
@@ -540,14 +541,14 @@ Categories:
           Text: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site...
           Options:
             - Text: Move at speed
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: Keep under the radar
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: Stay vigilant
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank. Then, for each segment of the expedition, envision your approach. If you...
 
@@ -580,8 +581,8 @@ Categories:
         Trigger:
           Text: When you divert from an expedition to examine a notable location...
           Options:
-            - Action roll:
-                Stat: Wits
+            - Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you divert from an expedition to examine a notable location**, roll +wits.
 
@@ -619,8 +620,8 @@ Categories:
         Trigger:
           Text: When your exploration of a waypoint uncovers something wondrous
           Options:
-            - Action roll:
-                Stat: Wits
+            - Roll type: Action roll
+              Using: [Wits]
         Oracles:
           - Oracles/Moves/Make_a_Discovery
         Text: |-
@@ -694,8 +695,8 @@ Categories:
         Trigger:
           Text: When your expedition comes to an end...
           Options:
-            - Progress roll:
-                Track: Expedition Progress
+            - Roll type: Progress roll
+              Using: [Expedition Progress]
         Progress Move: true
         Text: |-
           **When your expedition comes to an end**, roll the challenge dice and compare to your progress.
@@ -725,8 +726,8 @@ Categories:
         Trigger:
           Text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site...
           Options:
-            - Action roll:
-                Stat: Supply
+            - Roll type: Action roll
+              Using: [Supply]
         Text: |-
           **When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.
 
@@ -767,20 +768,20 @@ Categories:
           Text: When you initiate combat or are forced into a fight...
           Options:
             - Text: On the move
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: Facing off against your foe
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: In the thick of it at close quarters
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Preparing to act against an unaware foe
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: Caught in a trap or sizing up the situation
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you initiate combat or are forced into a fight**, envision your objective and give it a rank. If the combat includes discrete challenges or phases, set an objective with a rank for each.
 
@@ -816,20 +817,20 @@ Categories:
           Text: When you are in control and take action in a fight to reinforce your position or move toward an objective...
           Options:
             - Text: In pursuit, fleeing, or maneuvering
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: Gaining leverage with force, powering through, or making a threat
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Hiding, preparing an ambush, or misdirecting
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: Coordinating a plan, studying a situation, or cleverly gaining leverage
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...
 
@@ -870,20 +871,20 @@ Categories:
           Text: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle...
           Options:
             - Text: In pursuit, fleeing, dodging, getting back into position, or taking cover
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: Remaining stalwart against fear or temptation
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: Blocking or diverting with force, or taking the hit
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Moving into hiding or creating a distraction
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle**, envision your approach and roll. If you are...
 
@@ -912,11 +913,11 @@ Categories:
           Text: When you are in control and assault a foe at close quarters, or when you attack at a distance...
           Options:
             - Text: Assault a foe at close quarters
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Attack at a distance
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
         Text: |-
           **When you are in control and assault a foe at close quarters**, roll +iron; **when you attack at a distance**, roll +edge.
 
@@ -939,11 +940,11 @@ Categories:
           Text: When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance...
           Options:
             - Text: Fight back against a foe at close quarters
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Exchange fire at a distance
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
         Text: |-
           **When you are in a bad spot and fight back against a foe at close quarters**, roll +iron; **when you exchange fire at a distance**, roll +edge.
 
@@ -965,8 +966,8 @@ Categories:
         Trigger:
           Text: When you seize an objective in a fight...
           Options:
-            - Progress roll:
-                Track: Combat Progress
+            - Roll type: Progress roll
+              Using: [Combat Progress]
         Oracles:
           - Oracles/Moves/Take_Decisive_Action
         Progress Move: true
@@ -1022,20 +1023,20 @@ Categories:
           Text: When you fight a battle and it happens in a blur...
           Options:
             - Text: At range, or using your speed and the environment to your advantage
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: Depending on your courage, leadership, or companions
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: In close to overpower your foe
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Using trickery to befuddle your foe
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: Using careful tactics to outsmart your foe
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you fight a battle and it happens in a blur**, envision your objective and roll. If you primarily...
 
@@ -1083,10 +1084,11 @@ Categories:
         Trigger:
           Text: When you face physical injury, fatigue, or illness...
           Options:
-            - Action roll:
-                Best of:
-                  - Iron
-                  - Health
+            - Roll type: Action roll
+              Method: Highest
+              Using:
+                - Iron
+                - Health
         Oracles:
           - Oracles/Moves/Endure_Harm
         Text: |-
@@ -1136,10 +1138,11 @@ Categories:
         Trigger:
           Text: When you face mental strain, shock, or despair...
           Options:
-            - Action roll:
-                Best of:
-                  - Heart
-                  - Spirit
+            - Roll type: Action roll
+              Method: Highest
+              Using:
+                - Heart
+                - Spirit
         Oracles:
           - Oracles/Moves/Endure_Stress
         Text: |-
@@ -1187,8 +1190,8 @@ Categories:
         Trigger:
           Text: When your companion faces physical hardship...
           Options:
-            - Action roll:
-                Stat: Companion Health
+            - Roll type: Action roll
+              Using: [Companion Health]
         Text: |-
           **When your companion faces physical hardship**, they suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your companion's health is 0, [Lose Momentum](Moves/Suffer/Lose_Momentum) equal to any remaining harm.
 
@@ -1223,8 +1226,8 @@ Categories:
         Trigger:
           Text: When your vehicle faces a damaging situation or environment...
           Options:
-            - Action roll:
-                Stat: Vehicle Integrity
+            - Roll type: Action roll
+              Using: [[Vehicle Integrity]]
         Oracles:
           - Oracles/Moves/Withstand_Damage
         Text: |-
@@ -1298,8 +1301,8 @@ Categories:
         Trigger:
           Text: When you spend time recovering within a community...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When you spend time recovering within a community**, roll +heart.
 
@@ -1329,19 +1332,20 @@ Categories:
           Text: When you receive medical care or provide treatment...
           Options:
             - Text: Receive treatment from someone (not an ally)
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Mend your own wounds
-              Action roll:
-                Worst of:
-                  - Iron
-                  - Wits
+              Roll type: Action roll
+              Method: Lowest
+              Using:
+                - Iron
+                - Wits
             - Text: Obtain treatment for a companion
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: Provide care
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you receive medical care or provide treatment**, envision the situation and roll. If you...
 
@@ -1368,8 +1372,8 @@ Categories:
         Trigger:
           Text: When you socialize, share intimacy, or find a moment of peace...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When you socialize, share intimacy, or find a moment of peace**, roll +heart.
 
@@ -1392,17 +1396,17 @@ Categories:
           Text: When you attempt to bolster your readiness...
           Options:
             - Text: Barter or make an appeal
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: Threaten or seize
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: Steal or swindle
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: Scavenge or craft
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you attempt to bolster your readiness**, envision the opportunity and your approach. If you...
 
@@ -1437,11 +1441,11 @@ Categories:
           Text: When you make repairs to your vehicles, modules, mechanical companions, or other devices...
           Options:
             - Text: Make your own repairs, or direct a companion to make repairs
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
             - Text: Obtain repairs from someone (not an ally)
-              Action roll:
-                Stat: Supply
+              Roll type: Action roll
+              Using: [Supply]
         Text: |-
           **When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...
 
@@ -1489,8 +1493,8 @@ Categories:
         Trigger:
           Text: When you are brought to the brink of death with a chance for recovery or redemption...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
 
@@ -1519,8 +1523,8 @@ Categories:
         Trigger:
           Text: When you are brought to the brink of desolation...
           Options:
-            - Action roll:
-                Stat: Heart
+            - Roll type: Action roll
+              Using: [Heart]
         Text: |-
           **When you are brought to the brink of desolation**, roll +heart.
 
@@ -1549,8 +1553,8 @@ Categories:
         Trigger:
           Text: When your command vehicle is destroyed or irrevocably lost...
           Options:
-            - Progress roll:
-                Track: Bonds Legacy
+            - Roll type: Progress roll
+              Using: [Bonds Legacy]
         Progress Move: true
         Text: |-
           **When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
@@ -1612,11 +1616,12 @@ Categories:
         Trigger:
           Text: When you retire from your life as Ironsworn, or succumb to death or desolation...
           Options:
-            - Progress roll:
-                All of:
-                  - Quests Legacy
-                  - Bonds Legacy
-                  - Discoveries Legacy
+            - Roll type: Progress roll
+              Method: All
+              Using:
+                - Quests Legacy
+                - Bonds Legacy
+                - Discoveries Legacy
         Progress Move: true
         Text: |-
           **When you retire from your life as Ironsworn, or succumb to death or desolation**, you may create a new character in your established setting. If you do, roll the challenge dice and compare to each of the former character's legacy tracks: quests, bonds, and discoveries (one roll per track).
@@ -1786,20 +1791,20 @@ Categories:
           Text: When you attempt something risky or react to an imminent threat within a scene challenge...
           Options:
             - Text: With speed, mobility, or agility
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: With resolve, command, or sociability
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: With strength, endurance, or aggression
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: With deception, stealth, or trickery
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: With expertise, focus, or observation
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you attempt something risky or react to an imminent threat within a scene challenge**, envision your action and roll. If you act...
 
@@ -1835,20 +1840,20 @@ Categories:
           Text: When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...
           Options:
             - Text: With speed, mobility, or agility
-              Action roll:
-                Stat: Edge
+              Roll type: Action roll
+              Using: [Edge]
             - Text: With resolve, command, or sociability
-              Action roll:
-                Stat: Heart
+              Roll type: Action roll
+              Using: [Heart]
             - Text: With strength, endurance, aggression
-              Action roll:
-                Stat: Iron
+              Roll type: Action roll
+              Using: [Iron]
             - Text: With deception, stealth, or trickery
-              Action roll:
-                Stat: Shadow
+              Roll type: Action roll
+              Using: [Shadow]
             - Text: With expertise, focus, or observation
-              Action roll:
-                Stat: Wits
+              Roll type: Action roll
+              Using: [Wits]
         Text: |-
           **When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge**, envision your action and roll. If you act...
 
@@ -1886,8 +1891,8 @@ Categories:
         Trigger:
           Text: When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion...
           Options:
-            - Progress roll:
-                Track: Scene Challenge Progress
+            - Roll type: Progress roll
+              Using: [Scene Challenge Progress]
         Text: |-
           **When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion**, roll the challenge dice and compare to your progress.
 

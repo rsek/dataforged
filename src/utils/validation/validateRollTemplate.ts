@@ -1,4 +1,4 @@
-import type { IHasRollTemplate, MdString, OracleTableId, RollTemplate, RollTemplateString } from "@json_out/index.js";
+import type { IHasRollTemplate, OracleTableId, RollTemplate, RollTemplateString } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import _ from "lodash-es";
 import { TypedRegEx } from "typed-regex";
@@ -36,7 +36,7 @@ export function validateRollTemplate<T extends IHasRollTemplate<string>>(parent:
  * @param str - The string to validate.
  * @returns A boolean indicating whether the string is valid.
  */
-export function validateRollTemplateString(str: MdString) {
+export function validateRollTemplateString(str: string) {
   if (typeof str !== "string") {
     throw badJsonError(validateRollTemplateString, str, "Expected a string");
   }

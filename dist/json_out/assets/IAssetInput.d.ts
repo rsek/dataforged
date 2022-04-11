@@ -1,9 +1,8 @@
 import type { ClockSegments } from "../common/ClockSegments.js";
 import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId, IHasName, InputType, Stat } from "../index.js";
 /**
- * @internal
  */
-export interface IInputBase extends IHasId, IHasName {
+export interface IInputBase extends IHasId<string>, IHasName {
     "Input Type": InputType;
     Adjustable?: boolean;
 }
@@ -54,9 +53,8 @@ export interface ISelectInput extends IInputBase {
     Options: ISelectInputOption<this["Option Type"]>[];
 }
 /**
- * @internal
  */
-export interface ISelectInputOption<T extends SelectInputOptionType> extends IHasId, IHasName {
+export interface ISelectInputOption<T extends SelectInputOptionType> extends IHasId<string>, IHasName {
     "Option Type": T;
 }
 export declare enum SelectInputOptionType {

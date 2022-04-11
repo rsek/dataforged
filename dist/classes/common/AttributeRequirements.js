@@ -1,4 +1,7 @@
 import _ from "lodash-es";
+/**
+ * @internal
+ */
 export class AttributeRequirements extends Array {
     constructor(json) {
         super();

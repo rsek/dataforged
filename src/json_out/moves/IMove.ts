@@ -1,5 +1,7 @@
-import type { AssetId, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveOutcomes , MoveCategoryId , MoveId , OracleTableId } from "@json_out/index.js";
+import type { IAsset } from "@json_out/assets/IAsset.js";
+import type { IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes , MoveId } from "@json_out/index.js";
 import type { IMoveTrigger } from "@json_out/moves/IMoveTrigger.js";
+import type { IOracle } from "@json_out/oracles/IOracle.js";
 
 
 /**
@@ -7,22 +9,22 @@ import type { IMoveTrigger } from "@json_out/moves/IMoveTrigger.js";
  */
 export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
   /**
-   * @example `"Moves/Adventure/Face_Danger"`
+   * @example "Moves/Adventure/Face_Danger"
    */
   $id: MoveId;
   /**
-   * @example `"Face Danger"`
+   * @example "Face Danger"
    */
   Name: string;
   /**
    * The ID of the parent Asset of the move, if any.
    */
-  Asset?:  AssetId | undefined;
+  Asset?: IAsset["$id"] | undefined;
   /**
    * The ID of the move's category.
-   * @example `"Moves/Adventure"`
+   * @example "Moves/Adventure"
    */
-  Category: MoveCategoryId;
+  Category: IMoveCategory["$id"];
   /**
    * Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.
    */
@@ -30,7 +32,7 @@ export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, 
   /**
    * The ID of the move that this move is a variant of, if any.
    */
-  "Variant of"?: MoveId | undefined;
+  "Variant of"?: IMove["$id"] | undefined;
   /**
    * The move's trigger data.
    */
@@ -38,7 +40,7 @@ export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, 
   /**
    * The IDs of any oracles *directly* referenced by the move.
    */
-  Oracles?: OracleTableId[] | undefined;
+  Oracles?: IOracle["$id"][] | undefined;
   /**
    * Outcome information for the move.
    */

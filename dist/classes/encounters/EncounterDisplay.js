@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export class EncounterDisplay {
     constructor(json, parentName) {
         var _a;

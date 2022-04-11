@@ -4,7 +4,7 @@ import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
 import type { IOracleCategoryYaml, IYamlWithRef } from "@yaml_in/index.js";
 import deepFreezeStrict from "deep-freeze-strict";
 import _ from "lodash-es";
-import type fs from "fs";
+import type { PathLike } from "node:fs";
 
 export interface IOracleCatRoot extends IYamlWithRef {
   Categories: IOracleCategoryYaml[];
@@ -16,7 +16,7 @@ export interface IOracleCatRoot extends IYamlWithRef {
  * @param filePaths - The files to load.
  * @returns A JSON object with the following structure:
  */
-export function loadOracleData(referencePath: fs.PathLike = REFS_PATH, ...filePaths: fs.PathLike[]) {
+export function loadOracleData(referencePath: PathLike = REFS_PATH, ...filePaths: PathLike[]) {
   const builtData = concatWithYamlRefs<Record<string, IOracleCategoryYaml>>(referencePath, ...filePaths);
   const result: IOracleCatRoot = {
     _refs: deepFreezeStrict(builtData._refs),

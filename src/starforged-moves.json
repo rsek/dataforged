@@ -121,27 +121,37 @@
             {
               "$id": "Moves/Adventure/Face_Danger/Trigger/Options/1",
               "Text": "With speed, mobility, or agility",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Adventure/Face_Danger/Trigger/Options/2",
               "Text": "With resolve, command, or sociability",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Adventure/Face_Danger/Trigger/Options/3",
               "Text": "With strength, endurance, or aggression",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Adventure/Face_Danger/Trigger/Options/4",
               "Text": "With deception, stealth, or trickery",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Adventure/Face_Danger/Trigger/Options/5",
               "Text": "With expertise, focus, or observation",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -179,27 +189,37 @@
             {
               "$id": "Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
               "Text": "With speed, mobility, or agility",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Adventure/Secure_an_Advantage/Trigger/Options/2",
               "Text": "With resolve, command, or sociability",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Adventure/Secure_an_Advantage/Trigger/Options/3",
               "Text": "With strength, endurance, aggression",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Adventure/Secure_an_Advantage/Trigger/Options/4",
               "Text": "With deception, stealth, or trickery",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Adventure/Secure_an_Advantage/Trigger/Options/5",
               "Text": "With expertise, focus, or observation",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -236,7 +256,9 @@
           "Options": [
             {
               "$id": "Moves/Adventure/Gather_Information/Trigger/Options/1",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -274,17 +296,23 @@
             {
               "$id": "Moves/Adventure/Compel/Trigger/Options/1",
               "Text": "Charm, pacify, encourage, or barter",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Adventure/Compel/Trigger/Options/2",
               "Text": "Threaten or incite",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Adventure/Compel/Trigger/Options/3",
               "Text": "Lie or swindle",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             }
           ]
         },
@@ -337,7 +365,9 @@
           "Options": [
             {
               "$id": "Moves/Adventure/Check_Your_Gear/Trigger/Options/1",
-              "Action roll": { "Stat": "Supply" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Supply"]
             }
           ]
         },
@@ -387,7 +417,9 @@
           "Options": [
             {
               "$id": "Moves/Quest/Swear_an_Iron_Vow/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -441,7 +473,9 @@
           "Options": [
             {
               "$id": "Moves/Quest/Fulfill_Your_Vow/Trigger/Options/1",
-              "Progress roll": { "Track": "Vow Progress" }
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Vow Progress"]
             }
           ]
         },
@@ -507,7 +541,9 @@
           "Options": [
             {
               "$id": "Moves/Connection/Make_a_Connection/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -544,38 +580,39 @@
           "Options": [
             {
               "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1",
-              "Action roll": {
-                "Custom stat": {
-                  "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat",
-                  "Name": "Challenge Rank",
-                  "Options": [
-                    {
-                      "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Troublesome",
-                      "Name": "Troublesome",
-                      "Value": 1
-                    },
-                    {
-                      "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Dangerous",
-                      "Name": "Dangerous",
-                      "Value": 2
-                    },
-                    {
-                      "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Formidable",
-                      "Name": "Formidable",
-                      "Value": 3
-                    },
-                    {
-                      "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Extreme",
-                      "Name": "Extreme",
-                      "Value": 4
-                    },
-                    {
-                      "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Epic",
-                      "Name": "Epic",
-                      "Value": 5
-                    }
-                  ]
-                }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["${{Custom stat}}"],
+              "Custom stat": {
+                "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat",
+                "Name": "Challenge Rank",
+                "Options": [
+                  {
+                    "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Troublesome",
+                    "Name": "Troublesome",
+                    "Value": 1
+                  },
+                  {
+                    "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Dangerous",
+                    "Name": "Dangerous",
+                    "Value": 2
+                  },
+                  {
+                    "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Formidable",
+                    "Name": "Formidable",
+                    "Value": 3
+                  },
+                  {
+                    "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Extreme",
+                    "Name": "Extreme",
+                    "Value": 4
+                  },
+                  {
+                    "$id": "Moves/Connection/Develop_Your_Relationship/Trigger/Options/1/Custom_stat/Epic",
+                    "Name": "Epic",
+                    "Value": 5
+                  }
+                ]
               }
             }
           ]
@@ -587,7 +624,7 @@
             "$id": "Moves/Connection/Develop_Your_Relationship/Outcomes/Strong_Hit",
             "Text": "Mark 2 ticks on your bonds legacy track.",
             "With a Match": {
-              "$id": "Moves/Connection/Develop_Your_Relationship/Outcomes/Strong_Hit/With a Match",
+              "$id": "Moves/Connection/Develop_Your_Relationship/Outcomes/Strong_Hit/With_a_Match",
               "Text": "Mark 2 ticks on your bonds legacy track. You may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic)."
             }
           },
@@ -617,7 +654,9 @@
           "Options": [
             {
               "$id": "Moves/Connection/Test_Your_Relationship/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -655,7 +694,9 @@
           "Options": [
             {
               "$id": "Moves/Connection/Forge_a_Bond/Trigger/Options/1",
-              "Progress roll": { "Track": "Connection Progress" }
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Connection Progress"]
             }
           ]
         },
@@ -706,17 +747,23 @@
             {
               "$id": "Moves/Exploration/Undertake_an_Expedition/Trigger/Options/1",
               "Text": "Move at speed",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Exploration/Undertake_an_Expedition/Trigger/Options/2",
               "Text": "Keep under the radar",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Exploration/Undertake_an_Expedition/Trigger/Options/3",
               "Text": "Stay vigilant",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -753,7 +800,9 @@
           "Options": [
             {
               "$id": "Moves/Exploration/Explore_a_Waypoint/Trigger/Options/1",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -764,7 +813,7 @@
             "$id": "Moves/Exploration/Explore_a_Waypoint/Outcomes/Strong_Hit",
             "Text": "Choose one.\n\n  * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.\n  * Gain progress: Mark progress on your expedition, per its rank.",
             "With a Match": {
-              "$id": "Moves/Exploration/Explore_a_Waypoint/Outcomes/Strong_Hit/With a Match",
+              "$id": "Moves/Exploration/Explore_a_Waypoint/Outcomes/Strong_Hit/With_a_Match",
               "Text": "You encounter something wondrous! Choose one.\n\n  * [Make a Discovery](Moves/Exploration/Make_a_Discovery).\n  * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.\n  * Gain progress: Mark progress on your expedition, per its rank."
             }
           },
@@ -776,7 +825,7 @@
             "$id": "Moves/Exploration/Explore_a_Waypoint/Outcomes/Miss",
             "Text": "You encounter an immediate hardship or threat, and must [Pay the Price](Moves/Fate/Pay_the_Price).",
             "With a Match": {
-              "$id": "Moves/Exploration/Explore_a_Waypoint/Outcomes/Miss/With a Match",
+              "$id": "Moves/Exploration/Explore_a_Waypoint/Outcomes/Miss/With_a_Match",
               "Text": "You encounter something dreadful! [Confront Chaos](Moves/Exploration/Confront_Chaos) or else [Pay the Price](Moves/Fate/Pay_the_Price)."
             }
           }
@@ -798,7 +847,9 @@
           "Options": [
             {
               "$id": "Moves/Exploration/Make_a_Discovery/Trigger/Options/1",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -839,7 +890,9 @@
           "Options": [
             {
               "$id": "Moves/Exploration/Finish_an_Expedition/Trigger/Options/1",
-              "Progress roll": { "Track": "Expedition Progress" }
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Expedition Progress"]
             }
           ]
         },
@@ -876,7 +929,9 @@
           "Options": [
             {
               "$id": "Moves/Exploration/Set_a_Course/Trigger/Options/1",
-              "Action roll": { "Stat": "Supply" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Supply"]
             }
           ]
         },
@@ -927,27 +982,37 @@
             {
               "$id": "Moves/Combat/Enter_the_Fray/Trigger/Options/1",
               "Text": "On the move",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Combat/Enter_the_Fray/Trigger/Options/2",
               "Text": "Facing off against your foe",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Combat/Enter_the_Fray/Trigger/Options/3",
               "Text": "In the thick of it at close quarters",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Combat/Enter_the_Fray/Trigger/Options/4",
               "Text": "Preparing to act against an unaware foe",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Combat/Enter_the_Fray/Trigger/Options/5",
               "Text": "Caught in a trap or sizing up the situation",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -985,27 +1050,37 @@
             {
               "$id": "Moves/Combat/Gain_Ground/Trigger/Options/1",
               "Text": "In pursuit, fleeing, or maneuvering",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Combat/Gain_Ground/Trigger/Options/2",
               "Text": "By charging boldly into action, coming to the aid of others, negotiating, or commanding",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Combat/Gain_Ground/Trigger/Options/3",
               "Text": "Gaining leverage with force, powering through, or making a threat",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Combat/Gain_Ground/Trigger/Options/4",
               "Text": "Hiding, preparing an ambush, or misdirecting",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Combat/Gain_Ground/Trigger/Options/5",
               "Text": "Coordinating a plan, studying a situation, or cleverly gaining leverage",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -1043,27 +1118,37 @@
             {
               "$id": "Moves/Combat/React_Under_Fire/Trigger/Options/1",
               "Text": "In pursuit, fleeing, dodging, getting back into position, or taking cover",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Combat/React_Under_Fire/Trigger/Options/2",
               "Text": "Remaining stalwart against fear or temptation",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Combat/React_Under_Fire/Trigger/Options/3",
               "Text": "Blocking or diverting with force, or taking the hit",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Combat/React_Under_Fire/Trigger/Options/4",
               "Text": "Moving into hiding or creating a distraction",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Combat/React_Under_Fire/Trigger/Options/5",
               "Text": "Changing the plan, finding a way out, or cleverly bypassing an obstacle",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -1101,12 +1186,16 @@
             {
               "$id": "Moves/Combat/Strike/Trigger/Options/1",
               "Text": "Assault a foe at close quarters",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Combat/Strike/Trigger/Options/2",
               "Text": "Attack at a distance",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             }
           ]
         },
@@ -1144,12 +1233,16 @@
             {
               "$id": "Moves/Combat/Clash/Trigger/Options/1",
               "Text": "Fight back against a foe at close quarters",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Combat/Clash/Trigger/Options/2",
               "Text": "Exchange fire at a distance",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             }
           ]
         },
@@ -1187,7 +1280,9 @@
           "Options": [
             {
               "$id": "Moves/Combat/Take_Decisive_Action/Trigger/Options/1",
-              "Progress roll": { "Track": "Combat Progress" }
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Combat Progress"]
             }
           ]
         },
@@ -1242,27 +1337,37 @@
             {
               "$id": "Moves/Combat/Battle/Trigger/Options/1",
               "Text": "At range, or using your speed and the environment to your advantage",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Combat/Battle/Trigger/Options/2",
               "Text": "Depending on your courage, leadership, or companions",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Combat/Battle/Trigger/Options/3",
               "Text": "In close to overpower your foe",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Combat/Battle/Trigger/Options/4",
               "Text": "Using trickery to befuddle your foe",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Combat/Battle/Trigger/Options/5",
               "Text": "Using careful tactics to outsmart your foe",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -1328,7 +1433,9 @@
           "Options": [
             {
               "$id": "Moves/Suffer/Endure_Harm/Trigger/Options/1",
-              "Action roll": { "Best of": ["Iron", "Health"] }
+              "Roll type": "Action roll",
+              "Method": "Highest",
+              "Using": ["Iron", "Health"]
             }
           ]
         },
@@ -1366,7 +1473,9 @@
           "Options": [
             {
               "$id": "Moves/Suffer/Endure_Stress/Trigger/Options/1",
-              "Action roll": { "Best of": ["Heart", "Spirit"] }
+              "Roll type": "Action roll",
+              "Method": "Highest",
+              "Using": ["Heart", "Spirit"]
             }
           ]
         },
@@ -1404,7 +1513,9 @@
           "Options": [
             {
               "$id": "Moves/Suffer/Companion_Takes_a_Hit/Trigger/Options/1",
-              "Action roll": { "Stat": "Companion Health" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Companion Health"]
             }
           ]
         },
@@ -1423,7 +1534,7 @@
             "$id": "Moves/Suffer/Companion_Takes_a_Hit/Outcomes/Miss",
             "Text": "It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](Moves/Suffer/Lose_Momentum) (-2). If your companion's health is 0, they are out of action until given aid.",
             "With a Match": {
-              "$id": "Moves/Suffer/Companion_Takes_a_Hit/Outcomes/Miss/With a Match",
+              "$id": "Moves/Suffer/Companion_Takes_a_Hit/Outcomes/Miss/With_a_Match",
               "Text": "It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](Moves/Suffer/Lose_Momentum) (-2). If your companion's health is 0, they are dead or destroyed; discard the asset."
             }
           }
@@ -1461,7 +1572,9 @@
           "Options": [
             {
               "$id": "Moves/Suffer/Withstand_Damage/Trigger/Options/1",
-              "Action roll": { "Stat": "Vehicle Integrity" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": [["Vehicle Integrity"]]
             }
           ]
         },
@@ -1512,7 +1625,9 @@
           "Options": [
             {
               "$id": "Moves/Recover/Sojourn/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -1550,22 +1665,30 @@
             {
               "$id": "Moves/Recover/Heal/Trigger/Options/1",
               "Text": "Receive treatment from someone (not an ally)",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Recover/Heal/Trigger/Options/2",
               "Text": "Mend your own wounds",
-              "Action roll": { "Worst of": ["Iron", "Wits"] }
+              "Roll type": "Action roll",
+              "Method": "Lowest",
+              "Using": ["Iron", "Wits"]
             },
             {
               "$id": "Moves/Recover/Heal/Trigger/Options/3",
               "Text": "Obtain treatment for a companion",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Recover/Heal/Trigger/Options/4",
               "Text": "Provide care",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -1602,7 +1725,9 @@
           "Options": [
             {
               "$id": "Moves/Recover/Hearten/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -1640,22 +1765,30 @@
             {
               "$id": "Moves/Recover/Resupply/Trigger/Options/1",
               "Text": "Barter or make an appeal",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Recover/Resupply/Trigger/Options/2",
               "Text": "Threaten or seize",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Recover/Resupply/Trigger/Options/3",
               "Text": "Steal or swindle",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Recover/Resupply/Trigger/Options/4",
               "Text": "Scavenge or craft",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -1693,12 +1826,16 @@
             {
               "$id": "Moves/Recover/Repair/Trigger/Options/1",
               "Text": "Make your own repairs, or direct a companion to make repairs",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             },
             {
               "$id": "Moves/Recover/Repair/Trigger/Options/2",
               "Text": "Obtain repairs from someone (not an ally)",
-              "Action roll": { "Stat": "Supply" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Supply"]
             }
           ]
         },
@@ -1748,7 +1885,9 @@
           "Options": [
             {
               "$id": "Moves/Threshold/Face_Death/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -1785,7 +1924,9 @@
           "Options": [
             {
               "$id": "Moves/Threshold/Face_Desolation/Trigger/Options/1",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             }
           ]
         },
@@ -1823,7 +1964,9 @@
           "Options": [
             {
               "$id": "Moves/Threshold/Overcome_Destruction/Trigger/Options/1",
-              "Progress roll": { "Track": "Bonds Legacy" }
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Bonds Legacy"]
             }
           ]
         },
@@ -1906,13 +2049,9 @@
           "Options": [
             {
               "$id": "Moves/Legacy/Continue_a_Legacy/Trigger/Options/1",
-              "Progress roll": {
-                "All of": [
-                  "Quests Legacy",
-                  "Bonds Legacy",
-                  "Discoveries Legacy"
-                ]
-              }
+              "Roll type": "Progress roll",
+              "Method": "All",
+              "Using": ["Quests Legacy", "Bonds Legacy", "Discoveries Legacy"]
             }
           ]
         },
@@ -2033,27 +2172,37 @@
             {
               "$id": "Moves/Scene_Challenge/Face_Danger/Trigger/Options/1",
               "Text": "With speed, mobility, or agility",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Scene_Challenge/Face_Danger/Trigger/Options/2",
               "Text": "With resolve, command, or sociability",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Scene_Challenge/Face_Danger/Trigger/Options/3",
               "Text": "With strength, endurance, or aggression",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Scene_Challenge/Face_Danger/Trigger/Options/4",
               "Text": "With deception, stealth, or trickery",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Scene_Challenge/Face_Danger/Trigger/Options/5",
               "Text": "With expertise, focus, or observation",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -2064,7 +2213,7 @@
             "$id": "Moves/Scene_Challenge/Face_Danger/Outcomes/Strong_Hit",
             "Text": "You are successful. Mark progress.",
             "With a Match": {
-              "$id": "Moves/Scene_Challenge/Face_Danger/Outcomes/Strong_Hit/With a Match",
+              "$id": "Moves/Scene_Challenge/Face_Danger/Outcomes/Strong_Hit/With_a_Match",
               "Text": "You are successful. Mark progress twice."
             }
           },
@@ -2076,7 +2225,7 @@
             "$id": "Moves/Scene_Challenge/Face_Danger/Outcomes/Miss",
             "Text": "You fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Moves/Fate/Pay_the_Price).",
             "With a Match": {
-              "$id": "Moves/Scene_Challenge/Face_Danger/Outcomes/Miss/With a Match",
+              "$id": "Moves/Scene_Challenge/Face_Danger/Outcomes/Miss/With_a_Match",
               "Text": "You fail, or a momentary success is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](Moves/Fate/Pay_the_Price)."
             }
           }
@@ -2100,27 +2249,37 @@
             {
               "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/1",
               "Text": "With speed, mobility, or agility",
-              "Action roll": { "Stat": "Edge" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
               "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/2",
               "Text": "With resolve, command, or sociability",
-              "Action roll": { "Stat": "Heart" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
               "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/3",
               "Text": "With strength, endurance, aggression",
-              "Action roll": { "Stat": "Iron" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
               "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/4",
               "Text": "With deception, stealth, or trickery",
-              "Action roll": { "Stat": "Shadow" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
               "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/5",
               "Text": "With expertise, focus, or observation",
-              "Action roll": { "Stat": "Wits" }
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
           ]
         },
@@ -2131,7 +2290,7 @@
             "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Strong_Hit",
             "Text": "Take +2 momentum and add +1 on your next move (not a progress move).",
             "With a Match": {
-              "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Strong_Hit/With a Match",
+              "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Strong_Hit/With_a_Match",
               "Text": "Mark progress, take +2 momentum, and add +1 on your next move (not a progress move)."
             }
           },
@@ -2143,7 +2302,7 @@
             "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Miss",
             "Text": "You fail or your assumptions betray you. Fill a clock segment and [Pay the Price](Moves/Fate/Pay_the_Price).",
             "With a Match": {
-              "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Miss/With a Match",
+              "$id": "Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Miss/With_a_Match",
               "Text": "You fail or your assumptions betray you. Fill two clock segments and [Pay the Price](Moves/Fate/Pay_the_Price)."
             }
           }
@@ -2165,7 +2324,9 @@
           "Options": [
             {
               "$id": "Moves/Scene_Challenge/Finish_the_Scene/Trigger/Options/1",
-              "Progress roll": { "Track": "Scene Challenge Progress" }
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Scene Challenge Progress"]
             }
           ]
         },

@@ -1,4 +1,4 @@
-export declare enum LegacyTrackType {
+export declare enum LegacyType {
     Quests = "Quests",
     Bonds = "Bonds",
     Discoveries = "Discoveries"
@@ -10,5 +10,5 @@ export declare enum ProgressTrackType {
     Connection = "Connection",
     SceneChallenge = "Scene Challenge"
 }
-export declare type ProgressRollType = LegacyTrackType | ProgressTrackType;
+export declare type ProgressType = LegacyType | ProgressTrackType;
 //# sourceMappingURL=ProgressType.d.ts.map

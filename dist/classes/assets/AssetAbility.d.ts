@@ -1,9 +1,12 @@
 import { AlterMove, Move } from "../index.js";
-import type { AssetAbilityId, IAsset, IAssetAbility, IAssetInput, ParagraphsString } from "../../json_out/index.js";
+import type { AssetAbilityId, IAsset, IAssetAbility, IAssetInput } from "../../json_out/index.js";
 import type { IAssetAbilityYaml } from "../../yaml_in/index.js";
+/**
+ * @internal
+ */
 export declare class AssetAbility implements IAssetAbility {
     $id: AssetAbilityId;
-    Text: ParagraphsString;
+    Text: string;
     Moves?: Move[] | undefined;
     Inputs?: IAssetInput[] | undefined;
     "Alter Moves"?: AlterMove[] | undefined;

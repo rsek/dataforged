@@ -1,4 +1,4 @@
-import type { IOracle , IOracleContent , IRow , ITableDisplay , OracleCategoryId , OracleTableId , ParagraphsString } from "@json_out/index.js";
+import type { IOracle , IOracleContent , IRow , ITableDisplay , OracleCategoryId , OracleTableId } from "@json_out/index.js";
 import type { IRequirementsYaml } from "@yaml_in/common/IRequirementsYaml.js";
 import type { IOracleUsageYaml } from "@yaml_in/oracles/IOracleUsageYaml.js";
 import type { IRowRollYaml, IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
@@ -14,8 +14,8 @@ export interface IOracleYaml extends  ITemplateYamlBase, Omit<Partial<IOracle>, 
   Requires?: IRequirementsYaml | undefined;
   $id?: OracleTableId;
   Category: OracleCategoryId;
-  "Member of"?: OracleTableId | undefined;
-  Description?: ParagraphsString | undefined;
+  "Member of"?: IOracle["$id"] | undefined;
+  Description?: string | undefined;
   Content?: IOracleContent | undefined;
   Display?: ITableDisplay | undefined;
   Table?: IRowYaml[] | IRowRollYaml[] | IRow[] | undefined;

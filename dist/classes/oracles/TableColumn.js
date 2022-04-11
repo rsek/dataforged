@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export class ResultColumn {
     constructor(content, label = "Result", key = "Result") {
         this.Label = label;
@@ -5,6 +8,9 @@ export class ResultColumn {
         this.Key = key;
     }
 }
+/**
+ * @internal
+ */
 export class RollColumn {
     constructor(content, label = "Roll") {
         this.Label = "Roll";

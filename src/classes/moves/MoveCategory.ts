@@ -1,10 +1,13 @@
 import { Move , Source } from "@classes/index.js";
-import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle, ParagraphsString } from "@json_out/index.js";
+import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle } from "@json_out/index.js";
 import type { IMoveCategory } from "@json_out/moves/IMoveCategory.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { validateColor } from "@utils/validateColor.js";
 import type { IMoveCategoryYaml } from "@yaml_in/moves/IMoveCategoryYaml.js";
 
+/**
+ * @internal
+ */
 export class MoveCategoryDisplay implements IDisplay {
   Title: MoveCategoryTitle;
   Color: string;
@@ -20,7 +23,7 @@ export class MoveCategory implements IMoveCategory {
   $id: MoveCategoryId;
   Name: MoveCategoryName;
   Source: Source;
-  Description: ParagraphsString;
+  Description: string;
   Moves: Move[];
   Display: MoveCategoryDisplay;
   constructor(json: IMoveCategoryYaml, ...ancestorSourceJson: ISource[]) {

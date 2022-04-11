@@ -6,6 +6,7 @@ import { is } from "typescript-is";
 
 /**
  * Represents "Roll twice" and "Roll three times" oracle results.
+ * @internal
  */
 export class MultipleRolls implements IMultipleRolls {
   /**

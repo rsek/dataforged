@@ -1,10 +1,13 @@
 import { InputType } from "@json_out/common/InputType.js";
-import { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, SelectInputOptionType, Stat } from "@json_out/index.js";
-import { ClockType } from "@json_out/index.js";
+import type { AssetConditionMeterId, ClockSegments, ConditionMeterName, IClockInput, IHasId, INumberInput, ISelectInput, ISelectInputCustomOption, ISelectInputMeterOption, ISelectInputStatOption, ITextInput, Stat } from "@json_out/index.js";
+import { ClockType , SelectInputOptionType } from "@json_out/index.js";
 
 export type Input = NumberInput | SelectInput | TextInput;
 
-export class NumberInput implements INumberInput, IHasId {
+/**
+ * @internal
+ */
+export class NumberInput implements INumberInput, IHasId<string> {
   $id: string;
   Name!: string;
   "Input Type": InputType.Number;
@@ -19,7 +22,10 @@ export class NumberInput implements INumberInput, IHasId {
   }
 }
 
-export class ClockInput implements IClockInput, IHasId {
+/**
+ * @internal
+ */
+export class ClockInput implements IClockInput, IHasId<string> {
   Name!: string;
   readonly "Input Type" = InputType.Clock;
   "Clock Type": ClockType = ClockType.Tension;
@@ -33,7 +39,10 @@ export class ClockInput implements IClockInput, IHasId {
   }
 }
 
-export class TextInput implements ITextInput, IHasId {
+/**
+ * @internal
+ */
+export class TextInput implements ITextInput, IHasId<string> {
   $id: string;
   "Input Type": InputType.Text;
   Name!: string;
@@ -44,8 +53,15 @@ export class TextInput implements ITextInput, IHasId {
   }
 }
 
+
+/**
+ * @internal
+ */
 type AnyInputOption = AssetSelectInputStatOption | SelectInputMeterOption | SelectInputCustomOption;
 
+/**
+ * @internal
+ */
 export class SelectInput implements ISelectInput {
   $id: string;
   Name: string;
@@ -75,7 +91,10 @@ export class SelectInput implements ISelectInput {
   }
 }
 
-export class AssetSelectInputStatOption implements ISelectInputStatOption, IHasId {
+/**
+ * @internal
+ */
+export class AssetSelectInputStatOption implements ISelectInputStatOption, IHasId<string> {
   $id: string;
   Name!: string;
   Stat!: Stat;
@@ -87,7 +106,10 @@ export class AssetSelectInputStatOption implements ISelectInputStatOption, IHasI
 }
 
 
-export class SelectInputMeterOption implements ISelectInputMeterOption, IHasId {
+/**
+ * @internal
+ */
+export class SelectInputMeterOption implements ISelectInputMeterOption, IHasId<string> {
   $id: string;
   Name!: string;
   "Option Type": SelectInputOptionType.ConditionMeter;
@@ -99,7 +121,10 @@ export class SelectInputMeterOption implements ISelectInputMeterOption, IHasId {
 }
 
 
-class SelectInputCustomOption implements ISelectInputCustomOption, IHasId {
+/**
+ * @internal
+ */
+export class SelectInputCustomOption implements ISelectInputCustomOption, IHasId<string> {
   $id: string;
   Name!: string;
   Value!: string;

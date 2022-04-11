@@ -3,6 +3,10 @@ import type { AttributeKey, AttributeValue, IAttributeChoices } from "@json_out/
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 
+
+/**
+ * @internal
+ */
 export class AttributeRequirements extends Array<IAttributeChoices> {
   constructor(json: AttributeHash) {
     super();

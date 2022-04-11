@@ -1,14 +1,15 @@
-import type { IHasName } from "@json_out/index.js";
+import type { CustomStatId, IHasName } from "@json_out/index.js";
 import type { IHasId } from "@json_out/meta/IHas.js";
 
-export interface ICustomStatOption extends IHasId, IHasName {
-  $id: string;
+export type CustomStatOptionId = `${CustomStatId}/${string}`;
+
+export interface ICustomStatOption extends IHasId<CustomStatOptionId>, IHasName {
   /**
-   * The name/label for this option.
+   * The name/label for this specific value of the custom stat.
    */
   Name: string;
   /**
-   * The numeric value to be added as a stat when making an Action Roll.
+   * The numeric value to be used as +stat when making an Action Roll.
    */
   Value: number;
 }

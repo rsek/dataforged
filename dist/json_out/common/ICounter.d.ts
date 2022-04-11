@@ -1,18 +1,18 @@
 import type { IHasId, IHasName } from "../index.js";
 /**
- * Interface for a counter embedded in a Starforged Asset.
+ * Interface representing a Meter.
  */
-export interface ICounter extends IHasId, IHasName {
+export interface IMeterBase extends IHasId<string>, IHasName {
     /**
-     * The minimum value of the counter.
+     * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
      */
     Min: number;
     /**
-     * The maximum value of the counter. If `null`, the counter has no maximum value.
+     * The maximum value of the meter.
      */
-    Max: number | null;
+    Max: number;
     /**
-     * The initial value of the counter.
+     * The initial value of the meter.
      */
     "Starting Value": number;
 }

@@ -1,9 +1,10 @@
-import type { IHasName, IOracleBase, IRow, ITableDisplay, OracleCategoryId, OracleSubcategoryId, OracleTableId } from "../index.js";
+import type { IHasName, IOracleBase, IRow, ITableDisplay, OracleTableId } from "../index.js";
+import type { IOracleCategory } from "./IOracleCategory.js";
 export interface IOracle extends IOracleBase, IHasName {
     $id: OracleTableId;
     Display: ITableDisplay;
-    Category: OracleCategoryId | OracleSubcategoryId;
-    "Member of"?: OracleTableId | undefined;
+    Category: IOracleCategory["$id"];
+    "Member of"?: IOracle["$id"] | undefined;
     "Table"?: IRow[] | undefined;
 }
 //# sourceMappingURL=IOracle.d.ts.map

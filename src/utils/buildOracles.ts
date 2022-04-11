@@ -10,7 +10,7 @@ import type { IOracleCatRoot } from "@utils/process_yaml/loadOracleData.js";
 import { loadOracleData } from "@utils/process_yaml/loadOracleData.js";
 import type { IOracleCategoryYaml } from "@yaml_in/index.js";
 import type { IOracleParentCatRoot } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
-import type fs from "fs";
+import type { PathLike } from "node:fs";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
@@ -31,15 +31,15 @@ interface IOracleSubcatRoot extends IOracleCatRoot {
  */
 export function buildOracles(): OracleCategory[] {
   buildLog(buildOracles, "Building oracles...");
-  const filesOracleCategories: fs.PathLike[] = getYamlFiles("oracles");
+  const filesOracleCategories: PathLike[] = getYamlFiles("oracles");
   // console.info(filesOracleCategories);
 
-  const dirsOracleSubcategories: fs.PathLike[] = getSubdirs("oracles");
+  const dirsOracleSubcategories: PathLike[] = getSubdirs("oracles");
   const categoryRoot: IOracleParentCatRoot = loadOracleData(REFS_PATH, ...filesOracleCategories) as IOracleParentCatRoot;
 
   const categories = categoryRoot.Categories;
 
-  const filesOracleSubcategories: fs.PathLike[] = dirsOracleSubcategories.map(dir => getYamlFiles("", dir)).flat(1);
+  const filesOracleSubcategories: PathLike[] = dirsOracleSubcategories.map(dir => getYamlFiles("", dir)).flat(1);
 
   const subcatRoot: IOracleSubcatRoot = loadOracleData(REFS_PATH, ...filesOracleSubcategories) as IOracleSubcatRoot;
 

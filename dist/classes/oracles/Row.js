@@ -5,6 +5,7 @@ import _ from "lodash-es";
 import { is } from "typescript-is";
 /**
  * Class representing a single row of an oracle table.
+ * @internal
  */
 export class Row {
     /**
@@ -97,7 +98,7 @@ export class Row {
                             case "Oracle rolls": {
                                 if (!is(value, object => { function _3(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Access/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Character Creation/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -119,7 +120,7 @@ export class Row {
                                     return null;
                                 } function _4(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Community/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Characters/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -141,7 +142,7 @@ export class Row {
                                     return null;
                                 } function _5(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Engineering/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Core/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -163,7 +164,7 @@ export class Row {
                                     return null;
                                 } function _6(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Living/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Creatures/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -185,7 +186,7 @@ export class Row {
                                     return null;
                                 } function _7(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Medical/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Factions/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -207,7 +208,7 @@ export class Row {
                                     return null;
                                 } function _8(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Operations/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Misc/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -229,7 +230,7 @@ export class Row {
                                     return null;
                                 } function _9(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Production/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Moves/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -251,7 +252,7 @@ export class Row {
                                     return null;
                                 } function _10(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/Research/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Space/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -273,7 +274,7 @@ export class Row {
                                     return null;
                                 } function _11(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Starships/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -295,7 +296,7 @@ export class Row {
                                     return null;
                                 } function _12(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -317,7 +318,7 @@ export class Row {
                                     return null;
                                 } function _13(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location Themes/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -339,7 +340,7 @@ export class Row {
                                     return null;
                                 } function _14(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -361,7 +362,7 @@ export class Row {
                                     return null;
                                 } function _15(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Vaults/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -383,7 +384,7 @@ export class Row {
                                     return null;
                                 } function _16(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Access/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -405,7 +406,7 @@ export class Row {
                                     return null;
                                 } function _17(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Community/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -427,7 +428,7 @@ export class Row {
                                     return null;
                                 } function _18(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Engineering/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -449,7 +450,7 @@ export class Row {
                                     return null;
                                 } function _19(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Desert/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Living/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -471,7 +472,7 @@ export class Row {
                                     return null;
                                 } function _20(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Furnace/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Medical/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -493,7 +494,7 @@ export class Row {
                                     return null;
                                 } function _21(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Grave/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Operations/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -515,7 +516,7 @@ export class Row {
                                     return null;
                                 } function _22(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Ice/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Production/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -537,7 +538,7 @@ export class Row {
                                     return null;
                                 } function _23(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Jovian/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Derelicts/Research/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -559,7 +560,7 @@ export class Row {
                                     return null;
                                 } function _24(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Jungle/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -581,7 +582,7 @@ export class Row {
                                     return null;
                                 } function _25(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Ocean/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -603,7 +604,7 @@ export class Row {
                                     return null;
                                 } function _26(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Rocky/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -625,7 +626,7 @@ export class Row {
                                     return null;
                                 } function _27(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Shattered/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -647,7 +648,7 @@ export class Row {
                                     return null;
                                 } function _28(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Tainted/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -669,7 +670,7 @@ export class Row {
                                     return null;
                                 } function _29(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/Vital/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -691,7 +692,7 @@ export class Row {
                                     return null;
                                 } function _30(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Vaults/Interior/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -713,7 +714,7 @@ export class Row {
                                     return null;
                                 } function _31(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Vaults/Sanctum/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -735,7 +736,7 @@ export class Row {
                                     return null;
                                 } function _32(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Character Creation/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Desert/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -757,7 +758,7 @@ export class Row {
                                     return null;
                                 } function _33(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Characters/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Furnace/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -779,7 +780,7 @@ export class Row {
                                     return null;
                                 } function _34(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Core/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Grave/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -801,7 +802,7 @@ export class Row {
                                     return null;
                                 } function _35(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Creatures/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Ice/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -823,7 +824,7 @@ export class Row {
                                     return null;
                                 } function _36(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Factions/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Jovian/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -845,7 +846,7 @@ export class Row {
                                     return null;
                                 } function _37(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Misc/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Jungle/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -867,7 +868,7 @@ export class Row {
                                     return null;
                                 } function _38(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Moves/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Ocean/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -889,7 +890,7 @@ export class Row {
                                     return null;
                                 } function _39(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Space/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Rocky/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -911,7 +912,7 @@ export class Row {
                                     return null;
                                 } function _40(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Starships/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Shattered/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -933,7 +934,7 @@ export class Row {
                                     return null;
                                 } function _41(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Derelicts/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Tainted/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -955,7 +956,7 @@ export class Row {
                                     return null;
                                 } function _42(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Location Themes/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Planets/Vital/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -977,7 +978,7 @@ export class Row {
                                     return null;
                                 } function _43(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Planets/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Vaults/Interior/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;
@@ -999,7 +1000,7 @@ export class Row {
                                     return null;
                                 } function _44(object) {
                                     var _a;
-                                    const typePairs = [["Oracles/Vaults/", "string"], ["", undefined]];
+                                    const typePairs = [["Oracles/Vaults/Sanctum/", "string"], ["", undefined]];
                                     let position = 0;
                                     for (const [index, typePair] of typePairs.entries()) {
                                         const [currentText, currentType] = typePair;

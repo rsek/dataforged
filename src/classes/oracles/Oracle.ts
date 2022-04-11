@@ -1,11 +1,7 @@
 
-import { SourceInheritor } from "@classes/index.js";
-import { OracleContent } from "@classes/index.js";
-import { OracleDisplay } from "@classes/index.js";
-import { OracleUsage } from "@classes/index.js";
-import { Row } from "@classes/index.js";
+import { OracleContent , OracleDisplay , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
 
-import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId, ParagraphsString } from "@json_out/index.js";
+import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
@@ -16,13 +12,16 @@ import type { IOracleYaml, IRowYaml } from "@yaml_in/index.js";
 import type { IOracleCategoryYaml } from "@yaml_in/oracles/IOracleCategoryYaml.js";
 import _ from "lodash-es";
 
+/**
+ * @internal
+ */
 export class Oracle extends SourceInheritor implements IOracle  {
   $id: OracleTableId;
   "Name": string;
   Aliases?: string[] | undefined;
-  "Member of"?: OracleTableId | undefined;
+  "Member of"?: IOracle["$id"] | undefined;
   Category: OracleCategoryId;
-  Description?: ParagraphsString | undefined;
+  Description?: string | undefined;
   Display: OracleDisplay;
   Usage?: OracleUsage | undefined;
   Content?: OracleContent | undefined;
@@ -31,7 +30,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   constructor(
     json: IOracleYaml,
     category: OracleCategoryId,
-    memberOf?: OracleTableId,
+    memberOf?: IOracle["$id"],
     ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
     // ancestors should be in ascending order
   ) {

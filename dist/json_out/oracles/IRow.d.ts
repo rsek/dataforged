@@ -1,5 +1,5 @@
 import type { AttributeKey } from "../game_objects/AttributeKey.js";
-import type { FragmentString, IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, OracleTableId, OracleTableRowId, SentenceString, SettingTruthOptionId, TermString } from "../index.js";
+import type { IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle } from "../index.js";
 /**
  * Display properties for a single row in an oracle table.
  */
@@ -8,7 +8,7 @@ export declare type IRowDisplay = Omit<IDisplay, "Title">;
  * Interface representing a single row in an oracle table.
  */
 export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | "Summary" | "Description"> & IHasSuggestions & IHasDisplay<IRowDisplay> & IHasOracleContent & IHasSubtable & IHasGameObjects> {
-    $id?: SettingTruthOptionId | OracleTableRowId | null;
+    $id?: string | null;
     /**
      * The low end of the dice range for this row.
      */
@@ -22,16 +22,16 @@ export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | 
      * In the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.
      * Some tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.
      */
-    Result: TermString | FragmentString | SentenceString;
+    Result: string;
     /**
      * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
      * Some tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.
      */
-    Summary?: SentenceString | FragmentString | undefined;
+    Summary?: string | undefined;
     /**
      * Additional oracle tables that should be rolled when this row is selected.
      */
-    "Oracle rolls"?: OracleTableId[] | undefined;
+    "Oracle rolls"?: IOracle["$id"][] | undefined;
     /**
      * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
      */

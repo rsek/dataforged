@@ -3,6 +3,9 @@ import { ClockInput, ConditionMeter, NumberInput, SelectInput, SourceInheritor, 
 import { InputType } from "../../json_out/common/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
+/**
+ * @internal
+ */
 export class Asset extends SourceInheritor {
     constructor(json, parent) {
         var _a, _b, _c, _d, _e;

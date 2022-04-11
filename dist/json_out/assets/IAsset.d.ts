@@ -1,4 +1,4 @@
-import type { AssetId, AssetTypeId, FragmentString, IAssetAbility, IAssetAttachment, IAssetInput, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
+import type { AssetId, IAssetAbility, IAssetAttachment, IAssetInput, IAssetType, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
 import type { Tuple } from "../../utils/types/Tuple.js";
 export * from "../../utils/types/Tuple.js";
 /**
@@ -6,7 +6,7 @@ export * from "../../utils/types/Tuple.js";
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
     /**
-     * @example `"Assets/Path/Bounty_Hunter"`
+     * @example "Assets/Path/Bounty_Hunter"
      */
     $id: AssetId;
     /**
@@ -16,9 +16,9 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
     Name: string;
     /**
      * The ID of the asset's parent AssetType
-     * @example `"Assets/Path"`
+     * @example "Assets/Path"
      */
-    "Asset Type": AssetTypeId;
+    "Asset Type": IAssetType["$id"];
     /**
      * Details on what attachments (other assets) are accepted by this asset.
      */
@@ -29,9 +29,10 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
     Inputs?: IAssetInput[] | undefined;
     /**
      * An optional markdown string representing the requirement text that appears at the top of some asset cards.
+     * @markdown
      * @example "If you wear your finely crafted set of personal armor..."
      */
-    Requirement?: FragmentString | undefined;
+    Requirement?: string | undefined;
     /**
      * The asset's abilities.
      */

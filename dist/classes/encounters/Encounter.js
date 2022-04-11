@@ -1,7 +1,10 @@
 import { EncounterDisplay, EncounterVariant, Source } from "../index.js";
+/**
+ * @internal
+ */
 export class Encounter {
     constructor(json, ...ancestorSourceJson) {
-        var _a, _b;
+        var _a;
         this.$id = `Encounters/${json.Name.replaceAll(" ", "_")}`;
         this.Name = json.Name;
         this.Nature = json.Nature;
@@ -16,7 +19,7 @@ export class Encounter {
         this.Description = json.Description;
         this["Quest Starter"] = json["Quest Starter"];
         this.Source = newSource;
-        this.Variants = (_b = json.Variants) === null || _b === void 0 ? void 0 : _b.map(variant => new EncounterVariant(variant, this));
+        this.Variants = json.Variants.map(variant => new EncounterVariant(variant, this));
     }
 }
 //# sourceMappingURL=Encounter.js.map

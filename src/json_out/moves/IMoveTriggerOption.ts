@@ -1,18 +1,43 @@
+import type { ICustomStat } from "@json_out/common/ICustomStat.js";
+import type { ProgressType } from "@json_out/common/index.js";
+import type { RollableStat } from "@json_out/common/RollableStat.js";
+import type { IHasId, IHasText } from "@json_out/meta/IHas.js";
+import type { RollMethod, RollType } from "@json_out/moves/RollMethod.js";
 
-import type { FragmentString, IActionRoll, IProgressRoll } from "@json_out/index.js";
+type MoveRollId = `${string}/Options/${number}`;
 
-/**
- * Describes a specific trigger condition of a move, and what rolls are made when it is triggered (if any).
- * @see {@link IMoveTrigger}
- */
-export interface IMoveTriggerOption {
-  // TODO: MoveTriggerOptionId
-  $id: string;
+// constructor should set "Method" to default to "Any" if it's omitted
+// constructor should check "Using" for things that need string replacement
+
+export interface IMoveTriggerOption<T extends RollType> extends IHasId<MoveRollId>, Partial<IHasText> {
   /**
-   * Additional trigger text for this specific use of the move, if any. This is in addition to the primary trigger text of the move.
-   * @example `Moves/Adventure/Face_Danger/Trigger/Options/1.Text`: "With speed, mobility, or agility"
+   * Whether this option is an action roll or progress roll.
    */
-  Text?: FragmentString | undefined;
-  "Action roll"?: IActionRoll | undefined;
-  "Progress roll"?: IProgressRoll | undefined;
+  "Roll type": T;
+  /**
+   * The method used to choose the stat or track in the `Using` array.
+   *
+   * Any = the user can choose any of the options; if there's only one option, use this method.
+   *
+   * Highest = roll with the highest value in the array.
+   *
+   * Lowest = roll with the lowest value in the array.
+   *
+   * All = make one roll with *every* value in the array.
+   */
+  Method: RollMethod;
+  /**
+   * The stat(s) or progress track(s) that may be rolled with this move trigger option.
+   */
+  Using: T extends RollType.Action ? RollableStat[] : T extends RollType.Progress ? ProgressType[] : (RollableStat[] | ProgressType[]);
+/**
+ * Defines a custom stat, if one is included in this object's `With` array.
+ */
+  "Custom stat"?: ICustomStat | undefined;
 }
+
+export interface IMoveActionRoll extends IMoveTriggerOption<RollType.Action> { }
+
+export interface IMoveProgressRoll extends Omit<IMoveTriggerOption<RollType.Progress>, "Custom stat"> {
+}
+

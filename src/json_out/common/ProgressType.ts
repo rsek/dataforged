@@ -1,4 +1,4 @@
-export enum LegacyTrackType {
+export enum LegacyType {
     Quests = "Quests",
     Bonds = "Bonds",
     Discoveries = "Discoveries"
@@ -10,4 +10,4 @@ export enum ProgressTrackType {
     Connection = "Connection",
     SceneChallenge = "Scene Challenge"
 }
-export type ProgressRollType = LegacyTrackType | ProgressTrackType;
+export type ProgressType = LegacyType | ProgressTrackType;

@@ -2,6 +2,9 @@ import { AlterMove, ClockInput, Move, NumberInput, SelectInput, TextInput } from
 import { InputType } from "../../json_out/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
+/**
+ * @internal
+ */
 export class AssetAbility {
     constructor(json, id, parent) {
         var _a;

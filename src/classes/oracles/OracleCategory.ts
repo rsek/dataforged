@@ -1,21 +1,21 @@
 
-import { SourceInheritor } from "@classes/index.js";
-import { Oracle } from "@classes/index.js";
-import { OracleCategoryDisplay } from "@classes/index.js";
-import { OracleUsage } from "@classes/index.js";
-import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName, ParagraphsString } from "@json_out/index.js";
+import { Oracle , OracleCategoryDisplay , OracleUsage , SourceInheritor } from "@classes/index.js";
+import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
 import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
+/**
+ * @internal
+ */
 export class OracleCategory extends SourceInheritor implements IOracleCategory {
   $id: OracleCategoryId;
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;
   Category?: OracleCategoryJaggedId | undefined;
-  Description?: ParagraphsString | undefined;
+  Description?: string | undefined;
   Display: OracleCategoryDisplay;
   Usage?: OracleUsage | undefined;
   Oracles?: Oracle[] | undefined;

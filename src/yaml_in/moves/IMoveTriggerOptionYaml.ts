@@ -1,3 +1,4 @@
-import type { IMoveTriggerOption } from "@json_out/index.js";
+import type { IMoveTriggerOption, RollType } from "@json_out/index.js";
+import type { PartialBy } from "@utils/types/PartialBy.js";
 
-export interface IMoveTriggerOptionYaml extends Omit<IMoveTriggerOption, "$id"> {}
+export interface IMoveTriggerOptionYaml<T extends RollType> extends PartialBy<IMoveTriggerOption<T>, "Method"|"$id"|"Custom stat"> {}

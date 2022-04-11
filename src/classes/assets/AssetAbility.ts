@@ -1,14 +1,18 @@
 
 import { AlterMove , ClockInput, Move, NumberInput, SelectInput , TextInput } from "@classes/index.js";
-import type { AlterMoveId, AssetAbilityId, IAsset, IAssetAbility, IAssetInput, MoveId, MoveIdGeneric, ParagraphsString } from "@json_out/index.js";
+import type { AlterMoveId, AssetAbilityId, IAsset, IAssetAbility, IAssetInput, MoveId, MoveIdGeneric } from "@json_out/index.js";
 import { InputType } from "@json_out/index.js";
+import type { IMove } from "@json_out/moves/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { IAssetAbilityYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
+/**
+ * @internal
+ */
 export class AssetAbility implements IAssetAbility {
   $id: AssetAbilityId;
-  Text: ParagraphsString;
+  Text: string;
   Moves?: Move[] | undefined;
   Inputs?: IAssetInput[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
@@ -52,7 +56,7 @@ export class AssetAbility implements IAssetAbility {
       }) as IAssetInput[];
     }
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
-      const moveId: MoveId | MoveIdGeneric = alterMove.Move ?? "Moves/*";
+      const moveId: IMove["$id"] | MoveIdGeneric = alterMove.Move ?? "Moves/*";
       const newData = new AlterMove(alterMove, `${this.$id}/Alter_${moveId}`.replaceAll(" ", "_") as AlterMoveId);
       return newData;
     }) : json["Alter Moves"];

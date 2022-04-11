@@ -1,6 +1,9 @@
 import { Move, Source } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { validateColor } from "../../utils/validateColor.js";
+/**
+ * @internal
+ */
 export class MoveCategoryDisplay {
     constructor(title, color) {
         this.Title = title;

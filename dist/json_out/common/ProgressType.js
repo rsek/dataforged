@@ -1,9 +1,9 @@
-export var LegacyTrackType;
-(function (LegacyTrackType) {
-    LegacyTrackType["Quests"] = "Quests";
-    LegacyTrackType["Bonds"] = "Bonds";
-    LegacyTrackType["Discoveries"] = "Discoveries";
-})(LegacyTrackType || (LegacyTrackType = {}));
+export var LegacyType;
+(function (LegacyType) {
+    LegacyType["Quests"] = "Quests";
+    LegacyType["Bonds"] = "Bonds";
+    LegacyType["Discoveries"] = "Discoveries";
+})(LegacyType || (LegacyType = {}));
 export var ProgressTrackType;
 (function (ProgressTrackType) {
     ProgressTrackType["Combat"] = "Combat";

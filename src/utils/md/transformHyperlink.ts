@@ -1,6 +1,4 @@
-import type { Oracle } from "@classes/index.js";
-import type { OracleCategory } from "@classes/index.js";
-import type { MdString } from "@json_out/index.js";
+import type { Oracle , OracleCategory } from "@classes/index.js";
 import { findById } from "@utils/md/findById.js";
 import _ from "lodash-es";
 
@@ -10,7 +8,7 @@ import _ from "lodash-es";
  * @param localLinks - If true, the links will be relative to the current file.
  * @returns The original string with the links replaced.
  */
-export function transformMoveLinks(md: MdString, localLinks: boolean = false, pathPrefix: string = "") {
+export function transformMoveLinks(md: string, localLinks: boolean = false, pathPrefix: string = "") {
   md = md.replaceAll(/\(Moves\/([^ ]+?)\/([^ ]+?)\)/g, (match: string, p1: string, p2: string) => {
     let result = match;
     if (localLinks) {
@@ -28,7 +26,7 @@ export function transformMoveLinks(md: MdString, localLinks: boolean = false, pa
  * @param md - The markdown string to be transformed.
  * @returns The original string with the links transformed.
  */
-export function transformOracleLinks(data: OracleCategory[], md: MdString, currentFile: `${string}.md`) {
+export function transformOracleLinks(data: OracleCategory[], md: string, currentFile: `${string}.md`) {
   md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match:string, p1:string, p2: string) => {
     // console.log("matched:", match);
     const oracleId = match

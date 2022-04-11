@@ -1,11 +1,11 @@
-import { SourceInheritor } from "../index.js";
-import { Oracle } from "../index.js";
-import { OracleCategoryDisplay } from "../index.js";
-import { OracleUsage } from "../index.js";
+import { Oracle, OracleCategoryDisplay, OracleUsage, SourceInheritor } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { propagateToChildren } from "../../utils/object_transform/propagateToChildren.js";
 import _ from "lodash-es";
+/**
+ * @internal
+ */
 export class OracleCategory extends SourceInheritor {
     constructor(json, category, ...ancestorsJson) {
         var _a, _b;

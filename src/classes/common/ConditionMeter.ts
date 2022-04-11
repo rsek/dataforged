@@ -1,18 +1,26 @@
-import { Counter } from "@classes/common/Counter.js";
-import type { AssetConditionMeterId, AssetTypeId } from "@json_out/assets/index.js";
+import type { AssetType } from "@classes/assets/AssetType.js";
+import { MeterBase } from "@classes/common/MeterBase.js";
+import type { AssetConditionMeterId } from "@json_out/assets/index.js";
 import { MeterAlias } from "@json_out/common/index.js";
 import type { IConditionMeter, MeterCondition } from "@json_out/common/index.js";
 
-export class ConditionMeter extends Counter implements IConditionMeter {
+
+/**
+ * @internal
+ */
+export class ConditionMeter extends MeterBase implements IConditionMeter {
   // set by parent constructor
   $id!: AssetConditionMeterId;
+  // set by parent constructor
   Name!: string;
+  // set by parent constructor
   Max!: number;
-  Min = 0;
+
+  Min!: 0;
   "Starting Value": number;
   Conditions: MeterCondition[] = [];
   Aliases?: MeterAlias[] | undefined;
-  constructor(json: IConditionMeter, id: string, assetType: AssetTypeId) {
+  constructor(json: IConditionMeter, id: string, assetType: AssetType["$id"]) {
     super(json, id);
     this["Starting Value"] = json["Starting Value"] ?? json.Max;
     if (json.Conditions) {

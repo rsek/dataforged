@@ -1,21 +1,24 @@
 import { EncounterDisplay , EncounterVariant , Source } from "@classes/index.js";
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, FragmentString, IEncounter, ISource, ParagraphsString, SentenceString } from "@json_out/index.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, IEncounter, ISource, } from "@json_out/index.js";
 import type { IEncounterYaml } from "@yaml_in/index.js";
 
+/**
+ * @internal
+ */
 export class Encounter implements IEncounter {
-  $id: EncounterId;
+  $id: IEncounter["$id"];
   Name: string;
   Nature: EncounterNature;
-  Summary: SentenceString | FragmentString;
+  Summary: string;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
   Display: EncounterDisplay;
   Features: string[];
   Drives: string[];
   Tactics: string[];
-  Variants?: EncounterVariant[] | undefined;
-  Description: ParagraphsString;
-  "Quest Starter": ParagraphsString;
+  Variants: EncounterVariant[];
+  Description: string;
+  "Quest Starter": string;
   Source: Source;
   constructor(json: IEncounterYaml, ...ancestorSourceJson: ISource[]) {
     this.$id = `Encounters/${json.Name.replaceAll(" ", "_")}`;
@@ -32,7 +35,7 @@ export class Encounter implements IEncounter {
     this.Description = json.Description;
     this["Quest Starter"] = json["Quest Starter"];
     this.Source = newSource;
-    this.Variants = json.Variants?.map(variant => new EncounterVariant(variant, this));
+    this.Variants = json.Variants.map(variant => new EncounterVariant(variant, this));
   }
 }
 

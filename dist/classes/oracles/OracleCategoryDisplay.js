@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export class OracleCategoryDisplay {
     constructor(json, parentName) {
         var _a;

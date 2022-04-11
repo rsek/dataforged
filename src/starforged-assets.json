@@ -12,7 +12,7 @@
         "$id": "Assets/Command_Vehicle/Starship",
         "Name": "Starship",
         "Display": { "Title": "Starship", "Color": "#9aa3ad" },
-        "Attachments": { "Asset Type": "Assets/Module" },
+        "Attachments": { "Asset Types": ["Assets/Module"], "Max": null },
         "Inputs": [
           {
             "Adjustable": false,
@@ -44,8 +44,10 @@
                   "Options": [
                     {
                       "$id": "Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/Suffer/Withstand_Damage/Trigger/Options/1",
-                      "Text": "to your starship",
-                      "Action roll": { "Stat": "Heart" }
+                      "Text": "you [Withstand Damage](Moves/Suffer/Withstand_Damage) to your starship",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Heart"]
                     }
                   ]
                 }
@@ -155,7 +157,10 @@
                   "Text": "When you take a minute or so to ready the grappler...",
                   "Options": [
                     {
-                      "$id": "Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger/Options/1"
+                      "$id": "Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger/Options/1",
+                      "Roll type": "Action roll",
+                      "Method": "Highest",
+                      "Using": ["Wits", "Attached_Asset_Condition_Meter"]
                     }
                   ]
                 },
@@ -247,9 +252,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger/Options/1",
-                      "Action roll": {
-                        "Stat": "Attached Asset Condition Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Attached_Asset_Condition_Meter"]
                     }
                   ]
                 },
@@ -313,7 +318,7 @@
         "Abilities": [
           {
             "$id": "Assets/Module/Missile_Array/Abilities/1",
-            "Text": "Your missile array is armed with 5 ammo. When you [Strike](Moves/Combat/Strike) or [Clash](Moves/Combat/Clash) with a missile attack, suffer _1 ammo and mark progress on a hit. If you [Resupply](Moves/Recover/Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.",
+            "Text": "Your missile array is armed with 5 ammo. When you [Strike](Moves/Combat/Strike) or [Clash](Moves/Combat/Clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](Moves/Recover/Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.",
             "Enabled": true
           },
           {
@@ -364,9 +369,9 @@
                     {
                       "$id": "Assets/Module/Overseer/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
                       "Text": "by talking through a situation with the overseer AI",
-                      "Action roll": {
-                        "Stat": "Attached Asset Condition Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Attached_Asset_Condition_Meter"]
                     }
                   ]
                 }
@@ -380,9 +385,9 @@
                     {
                       "$id": "Assets/Module/Overseer/Abilities/1/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
                       "Text": "by talking through a situation with the overseer AI",
-                      "Action roll": {
-                        "Stat": "Attached Asset Condition Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Attached_Asset_Condition_Meter"]
                     }
                   ]
                 }
@@ -408,9 +413,9 @@
                     {
                       "$id": "Assets/Module/Overseer/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
                       "Text": "by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation",
-                      "Action roll": {
-                        "Stat": "Attached Asset Condition Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Attached_Asset_Condition_Meter"]
                     }
                   ]
                 }
@@ -534,7 +539,10 @@
                   "Text": "When you raise your shields...",
                   "Options": [
                     {
-                      "$id": "Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger/Options/1"
+                      "$id": "Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger/Options/1",
+                      "Roll type": "Action roll",
+                      "Method": "Highest",
+                      "Using": ["Wits", "Attached_Asset_Condition_Meter"]
                     }
                   ]
                 },
@@ -571,9 +579,9 @@
                     {
                       "$id": "Assets/Module/Shields/Abilities/2/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
                       "Text": "by letting your shields take the blow",
-                      "Action roll": {
-                        "Stat": "Assets/Module/Shields/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Module/Shields/Condition_Meter"]
                     }
                   ]
                 }
@@ -625,8 +633,10 @@
                   "Options": [
                     {
                       "$id": "Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/Combat/Strike/Trigger/Options/1",
-                      "Text": "poised to Strike from hiding",
-                      "Action roll": { "Stat": "Shadow" }
+                      "Text": "you are poised to [Strike](Moves/Combat/Strike) from hiding",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Shadow"]
                     }
                   ]
                 }
@@ -799,7 +809,7 @@
             "$id": "Assets/Support_Vehicle/Rover/Abilities/2",
             "Text": "You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](Moves/Suffer/Withstand_Damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.",
             "Alter Properties": {
-              "Attachments": { "Asset Type": "Assets/Module", "Max": 1 }
+              "Attachments": { "Asset Types": ["Assets/Module"], "Max": 1 }
             },
             "Enabled": false
           },
@@ -816,9 +826,9 @@
                     {
                       "$id": "Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
                       "Text": "by taking a hit or crashing through an obstacle",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Rover/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Support_Vehicle/Rover/Condition_Meter"]
                     }
                   ]
                 }
@@ -832,9 +842,9 @@
                     {
                       "$id": "Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
                       "Text": "by taking a hit or crashing through an obstacle",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Rover/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Support_Vehicle/Rover/Condition_Meter"]
                     }
                   ]
                 }
@@ -886,9 +896,11 @@
                     {
                       "$id": "Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
                       "Text": "by maneuvering your pod through a hazardous or obstructed area",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Service_Pod/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": [
+                        "Assets/Support_Vehicle/Service_Pod/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -902,9 +914,11 @@
                     {
                       "$id": "Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
                       "Text": "by maneuvering your pod through a hazardous or obstructed area",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Service_Pod/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": [
+                        "Assets/Support_Vehicle/Service_Pod/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -918,9 +932,11 @@
                     {
                       "$id": "Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
                       "Text": "by maneuvering your pod through a hazardous or obstructed area",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Service_Pod/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": [
+                        "Assets/Support_Vehicle/Service_Pod/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -1013,9 +1029,9 @@
                     {
                       "$id": "Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition/Trigger/Options/1",
                       "Text": "rely on the skiff's simple durability",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Skiff/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Support_Vehicle/Skiff/Condition_Meter"]
                     }
                   ]
                 }
@@ -1029,9 +1045,9 @@
                     {
                       "$id": "Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Set_a_Course/Trigger/Options/1",
                       "Text": "rely on the skiff's simple durability",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Skiff/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Support_Vehicle/Skiff/Condition_Meter"]
                     }
                   ]
                 }
@@ -1052,25 +1068,25 @@
                     {
                       "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Strike/Trigger/Options/1",
                       "Text": "by firing the skiff's cannon",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Skiff/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Support_Vehicle/Skiff/Condition_Meter"]
                     }
                   ]
                 }
               },
               {
-                "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Clash",
-                "Move": "Moves/Clash",
+                "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Clash",
+                "Move": "Moves/Combat/Clash",
                 "Trigger": {
-                  "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Clash/Trigger",
+                  "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Clash/Trigger",
                   "Options": [
                     {
-                      "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Clash/Trigger/Options/1",
+                      "$id": "Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Clash/Trigger/Options/1",
                       "Text": "by firing the skiff's cannon",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Skiff/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Support_Vehicle/Skiff/Condition_Meter"]
                     }
                   ]
                 }
@@ -1122,9 +1138,11 @@
                     {
                       "$id": "Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/Combat/Enter_the_Fray/Trigger/Options/1",
                       "Text": "in your snub fighter",
-                      "Action roll": {
-                        "Stat": "Assets/Support_Vehicle/Snub_Fighter/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": [
+                        "Assets/Support_Vehicle/Snub_Fighter/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -1203,7 +1221,9 @@
                     {
                       "$id": "Assets/Path/Ace/Abilities/3/Alter_Moves/Suffer/Endure_Stress/Trigger/Options/1",
                       "Text": "while piloting a vehicle",
-                      "Action roll": { "Stat": "Vehicle Integrity" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Vehicle Integrity"]
                     }
                   ]
                 }
@@ -1241,7 +1261,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger/Options/1",
-                      "Action roll": { "Stat": "Wits" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Wits"]
                     }
                   ]
                 },
@@ -1274,13 +1296,13 @@
                 "Move": "Moves/Combat/Enter_the_Fray",
                 "Trigger": {
                   "$id": "Assets/Path/Archer/Abilities/2/Alter_Moves/Combat/Enter_the_Fray/Trigger",
-                  "Text": "by unleashing a volley of bow shots",
                   "Options": [
                     {
                       "$id": "Assets/Path/Archer/Abilities/2/Alter_Moves/Combat/Enter_the_Fray/Trigger/Options/1",
-                      "Action roll": {
-                        "Stat": "Assets/Path/Archer/Condition_Meter"
-                      }
+                      "Text": "by unleashing a volley of bow shots",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Path/Archer/Condition_Meter"]
                     }
                   ]
                 }
@@ -1323,7 +1345,7 @@
           },
           {
             "$id": "Assets/Path/Armored/Abilities/3",
-            "Text": "When you must [Endure Harm](Moves/Suffer/Endure_Harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1_3, ignore the harm but your armor is now broken; you must [Repair](Moves/Recover/Repair) and spend 5 repair points to bring it back to working condition.",
+            "Text": "When you must [Endure Harm](Moves/Suffer/Endure_Harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must [Repair](Moves/Recover/Repair) and spend 5 repair points to bring it back to working condition.",
             "Enabled": false
           }
         ]
@@ -1365,28 +1387,10 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/1",
-                      "Text": "Edge best represents the work's nature",
-                      "Action roll": { "Stat": "Edge" }
-                    },
-                    {
-                      "$id": "Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/2",
-                      "Text": "Heart best represents the work's nature",
-                      "Action roll": { "Stat": "Heart" }
-                    },
-                    {
-                      "$id": "Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/3",
-                      "Text": "Iron best represents the work's nature",
-                      "Action roll": { "Stat": "Iron" }
-                    },
-                    {
-                      "$id": "Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/4",
-                      "Text": "Shadow best represents the work's nature",
-                      "Action roll": { "Stat": "Shadow" }
-                    },
-                    {
-                      "$id": "Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/5",
-                      "Text": "Wits best represents the work's nature",
-                      "Action roll": { "Stat": "Wits" }
+                      "Text": "Roll +the stat which best represents the work’s nature",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Edge", "Iron", "Heart", "Shadow", "Wits"]
                     }
                   ]
                 },
@@ -1594,9 +1598,9 @@
                     {
                       "$id": "Assets/Path/Courier/Abilities/3/Alter_Moves/Recover/Sojourn/Trigger/Options/1",
                       "Text": "during a courier mission",
-                      "Action roll": {
-                        "Stat": "Assets/Path/Courier/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Path/Courier/Condition_Meter"]
                     }
                   ]
                 }
@@ -1705,9 +1709,9 @@
                     {
                       "$id": "Assets/Path/Devotant/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
                       "Text": "by calling on your god, power, or entity for guidance or aid",
-                      "Action roll": {
-                        "Stat": "Assets/Devotant/Inputs/Linked_Stat"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Path/Devotant/Inputs/Linked_Stat"]
                     }
                   ]
                 }
@@ -1721,9 +1725,9 @@
                     {
                       "$id": "Assets/Path/Devotant/Abilities/1/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
                       "Text": "by calling on your god, power, or entity for guidance or aid",
-                      "Action roll": {
-                        "Stat": "Assets/Devotant/Inputs/Linked_Stat"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Path/Devotant/Inputs/Linked_Stat"]
                     }
                   ]
                 }
@@ -1744,9 +1748,9 @@
                     {
                       "$id": "Assets/Path/Devotant/Abilities/2/Alter_Moves/Quest/Swear_an_Iron_Vow/Trigger/Options/1",
                       "Text": "in service to your faith",
-                      "Action roll": {
-                        "Stat": "Assets/Devotant/Inputs/Linked_Stat"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Path/Devotant/Inputs/Linked_Stat"]
                     }
                   ]
                 }
@@ -1767,9 +1771,9 @@
                     {
                       "$id": "Assets/Path/Devotant/Abilities/3/Alter_Moves/Recover/Hearten/Trigger/Options/1",
                       "Text": "through contemplation or sharing of your faith",
-                      "Action roll": {
-                        "Stat": "Assets/Devotant/Inputs/Linked_Stat"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Path/Devotant/Inputs/Linked_Stat"]
                     }
                   ]
                 }
@@ -1830,7 +1834,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger/Options/1",
-                      "Action roll": { "Stat": "Heart" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Heart"]
                     }
                   ]
                 },
@@ -1872,7 +1878,9 @@
                     {
                       "$id": "Assets/Path/Empath/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
                       "Text": "to soothe a being's distress by creating an empathic bond",
-                      "Action roll": { "Stat": "Spirit" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Spirit"]
                     }
                   ]
                 }
@@ -1957,7 +1965,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger/Options/1",
-                      "Action roll": { "Stat": "Spirit" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Spirit"]
                     }
                   ]
                 },
@@ -2271,33 +2281,36 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/1",
-                      "Text": "When you create a link to the current point in time..."
+                      "Text": "When you create a link to the current point in time...",
+                      "Method": "Any",
+                      "Using": []
                     },
                     {
                       "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2",
                       "Text": "If you later loop back to this moment...",
-                      "Action roll": {
-                        "Custom stat": {
-                          "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat",
-                          "Name": "Gap in time",
-                          "Options": [
-                            {
-                              "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Minutes",
-                              "Name": "Minutes",
-                              "Value": 4
-                            },
-                            {
-                              "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Hours",
-                              "Name": "Hours",
-                              "Value": 3
-                            },
-                            {
-                              "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Days",
-                              "Name": "Days",
-                              "Value": 2
-                            }
-                          ]
-                        }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["${{Custom stat}}"],
+                      "Custom stat": {
+                        "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat",
+                        "Name": "Gap in time",
+                        "Options": [
+                          {
+                            "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Minutes",
+                            "Name": "Minutes",
+                            "Value": 4
+                          },
+                          {
+                            "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Hours",
+                            "Name": "Hours",
+                            "Value": 3
+                          },
+                          {
+                            "$id": "Moves/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Days",
+                            "Name": "Days",
+                            "Value": 2
+                          }
+                        ]
                       }
                     }
                   ]
@@ -2339,7 +2352,7 @@
         "Abilities": [
           {
             "$id": "Assets/Path/Lore_Hunter/Abilities/1",
-            "Text": "When you Swear an Iron Vow (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you Reach a Milestone in the pursuit of that quest, take +2 momentum. When you Fulfill Your Vow and score a hit, also mark 2 ticks on your discoveries legacy track.",
+            "Text": "When you [Swear an Iron Vow](Moves/Quest/Swear_an_Iron_Vow) (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you Reach a Milestone in the pursuit of that quest, take +2 momentum. When you Fulfill Your Vow and score a hit, also mark 2 ticks on your discoveries legacy track.",
             "Enabled": true
           },
           {
@@ -2482,7 +2495,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger/Options/1",
-                      "Action roll": { "Stat": "Wits" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Wits"]
                     }
                   ]
                 },
@@ -2526,7 +2541,9 @@
                   "$id": "Assets/Path/Scavenger/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger",
                   "Options": [
                     {
-                      "$id": "Assets/Path/Scavenger/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger/Options/1"
+                      "$id": "Assets/Path/Scavenger/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger/Options/1",
+                      "Method": "Highest",
+                      "Using": ["Wits", "Supply"]
                     }
                   ]
                 }
@@ -2561,7 +2578,9 @@
                     {
                       "$id": "Assets/Path/Scoundrel/Abilities/2/Alter_Moves/Connection/Make_a_Connection/Trigger/Options/1",
                       "Text": "to search out a new contact",
-                      "Action roll": { "Stat": "Shadow" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Shadow"]
                     }
                   ]
                 }
@@ -2600,8 +2619,10 @@
                   "Options": [
                     {
                       "$id": "Assets/Path/Seer/Abilities/2/Alter_Moves/Adventure/Gather_Information/Trigger/Options/1",
-                      "Text": "focus or meditate to Gather Information about a place, being, or situation (in person or remotely)",
-                      "Action roll": { "Stat": "Spirit" }
+                      "Text": "focus or meditate to [Gather Information](Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely)",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Spirit"]
                     }
                   ]
                 }
@@ -2648,7 +2669,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger/Options/1",
-                      "Action roll": { "Stat": "Shadow" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Shadow"]
                     }
                   ]
                 },
@@ -2754,7 +2777,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger/Options/1",
-                      "Action roll": { "Stat": "Wits" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Wits"]
                     }
                   ]
                 },
@@ -2776,7 +2801,9 @@
                     {
                       "$id": "Assets/Path/Sniper/Abilities/2/Alter_Moves/Combat/Strike/Trigger/Options/1",
                       "Text": "from a distance with time enough to line up your shot",
-                      "Action roll": { "Stat": "Wits" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Wits"]
                     }
                   ]
                 }
@@ -2786,7 +2813,7 @@
           },
           {
             "$id": "Assets/Path/Sniper/Abilities/3",
-            "Text": "When you [Secure an Advantage](Moves/Adventure/Secure_an_Advantage) by studying a distant situation through your rifle scope, or [Gain Ground](Moves/Combat/Gain_Ground) by taking careful aim, you may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](Moves/Suffer/Lose_Momentum) (-1, _2, or _3) and add that amount. Then, take +1 momentum on a strong hit.",
+            "Text": "When you [Secure an Advantage](Moves/Adventure/Secure_an_Advantage) by studying a distant situation through your rifle scope, or [Gain Ground](Moves/Combat/Gain_Ground) by taking careful aim, you may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](Moves/Suffer/Lose_Momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.",
             "Enabled": false
           }
         ]
@@ -2834,7 +2861,9 @@
                   "Options": [
                     {
                       "$id": "Assets/Path/Trader/Abilities/1/Alter_Moves/Recover/Sojourn/Trigger/Options/1",
-                      "Action roll": { "Stat": "Supply" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Supply"]
                     }
                   ]
                 }
@@ -2847,7 +2876,9 @@
                   "Options": [
                     {
                       "$id": "Assets/Path/Trader/Abilities/1/Alter_Moves/Adventure/Compel/Trigger/Options/1",
-                      "Action roll": { "Stat": "Supply" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Supply"]
                     }
                   ]
                 }
@@ -2985,7 +3016,9 @@
                     {
                       "$id": "Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
                       "Text": "suiting up and gathering your gear for a perilous encounter or mission",
-                      "Action roll": { "Stat": "Supply" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Supply"]
                     }
                   ]
                 }
@@ -3032,9 +3065,9 @@
                     {
                       "$id": "Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition/Trigger/Options/1",
                       "Text": "riding your banshee",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Banshee/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Banshee/Condition_Meter"]
                     }
                   ]
                 }
@@ -3048,9 +3081,9 @@
                     {
                       "$id": "Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Set_a_Course/Trigger/Options/1",
                       "Text": "riding your banshee",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Banshee/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Banshee/Condition_Meter"]
                     }
                   ]
                 }
@@ -3112,9 +3145,9 @@
                     {
                       "$id": "Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Adventure/Compel/Trigger/Options/1",
                       "Text": "using the threat of violence while the bot brings its weapons to bear",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Combat_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Combat_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3128,9 +3161,9 @@
                     {
                       "$id": "Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
                       "Text": "using the threat of violence while the bot brings its weapons to bear",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Combat_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Combat_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3150,10 +3183,10 @@
                   "Options": [
                     {
                       "$id": "Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
-                      "Text": "Once per fight, by by using the combat bot to draw fire or create a diversion",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Combat_Bot/Condition_Meter"
-                      }
+                      "Text": "Once per fight, by using the combat bot to draw fire or create a diversion",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Combat_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3281,9 +3314,9 @@
                     {
                       "$id": "Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/*/Trigger/Options/1",
                       "Text": "by sending the rockhorn to directly attack a foe or smash an obstacle",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Rockhorn/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Rockhorn/Condition_Meter"]
                     }
                   ]
                 }
@@ -3356,9 +3389,9 @@
                     {
                       "$id": "Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
                       "Text": "your sidekick acts to get you out of a tough spot",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Sidekick/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Sidekick/Condition_Meter"]
                     }
                   ]
                 }
@@ -3372,9 +3405,9 @@
                     {
                       "$id": "Assets/Companion/Sidekick/Abilities/3/Alter_React_Under_Fire/Trigger/Options/1",
                       "Text": "your sidekick acts to get you out of a tough spot",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Sidekick/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Sidekick/Condition_Meter"]
                     }
                   ]
                 }
@@ -3467,9 +3500,9 @@
                     {
                       "$id": "Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
                       "Text": "Once per expedition, by sending the survey bot to scout ahead",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Survey_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Survey_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3490,9 +3523,9 @@
                     {
                       "$id": "Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Exploration/Explore_a_Waypoint/Trigger/Options/1",
                       "Text": "aided by the survey bot's sensors",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Survey_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Survey_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3506,9 +3539,9 @@
                     {
                       "$id": "Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
                       "Text": "to detect a threat",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Survey_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Survey_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3596,9 +3629,9 @@
                     {
                       "$id": "Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/*/Trigger/Options/1",
                       "Text": "directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Utility_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Utility_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3624,9 +3657,9 @@
                     {
                       "$id": "Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger/Options/1",
                       "Text": "to see if your utility bot has a specific tool or technique available",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Utility_Bot/Condition_Meter"
-                      }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Utility_Bot/Condition_Meter"]
                     }
                   ]
                 }
@@ -3676,10 +3709,10 @@
                   "Options": [
                     {
                       "$id": "Assets/Companion/Voidglider/Abilities/2/Alter_Moves/*/Trigger/Options/1",
-                      "Text": "When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Voidglider/Condition_Meter"
-                      }
+                      "Text": "you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Voidglider/Condition_Meter"]
                     }
                   ]
                 }
@@ -3698,10 +3731,10 @@
                   "Options": [
                     {
                       "$id": "Assets/Companion/Voidglider/Abilities/3/Alter_Moves/*/Trigger/Options/1",
-                      "Text": "When you make a move by signaling the voidglider to distract or attack a spaceborne foe",
-                      "Action roll": {
-                        "Stat": "Assets/Companion/Voidglider/Condition_Meter"
-                      }
+                      "Text": "you make a move by signaling the voidglider to distract or attack a spaceborne foe",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Assets/Companion/Voidglider/Condition_Meter"]
                     }
                   ]
                 }
@@ -3895,7 +3928,9 @@
                     {
                       "$id": "Assets/Deed/Revenant/Abilities/3/Alter_Moves/Adventure/Gather_Information/Trigger/Options/1",
                       "Text": "by studying a place where death left its mark",
-                      "Action roll": { "Stat": "Heart" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Heart"]
                     }
                   ]
                 }
@@ -3959,7 +3994,9 @@
                   "Options": [
                     {
                       "$id": "Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger/Options/1",
-                      "Progress roll": "Discoveries Legacy"
+                      "Roll type": "Progress roll",
+                      "Method": "Any",
+                      "Using": ["Discoveries Legacy"]
                     }
                   ]
                 },
@@ -4000,7 +4037,9 @@
                   "Options": [
                     {
                       "$id": "Assets/Deed/Vanguard/Abilities/3/Alter_Moves/Suffer/Endure_Stress/Trigger/Options/1",
-                      "Action roll": { "Stat": "Wits" }
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Wits"]
                     }
                   ]
                 }

@@ -1,5 +1,5 @@
 /**
- * Types describing metadata common to many items in Datafoged.
+ * Types describing metadata common to many items in Dataforged.
  * @module Json.Meta
  */
 

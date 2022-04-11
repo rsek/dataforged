@@ -1,6 +1,7 @@
 // import { badJsonError } from "@utils/logging/badJsonError.js";
 /**
  * Metadata that describes an oracle's semantic or lexical content.
+ * @internal
  */
 export class OracleContent {
     constructor(json) {

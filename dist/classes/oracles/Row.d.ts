@@ -1,8 +1,10 @@
 import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
-import type { FragmentString, IHasSubtable, IRow, IRowDisplay, OracleTableId, OracleTableRowId, RollTemplate, SentenceString, SettingTruthOptionId, TermString } from "../../json_out/index.js";
+import type { IHasSubtable, IOracle, IRow, IRowDisplay, OracleTableRowId, RollTemplate } from "../../json_out/index.js";
+import type { SettingTruthOptionId } from "../../json_out/setting_truths/SettingTruthOptionId.js";
 import type { IRowYaml } from "../../yaml_in/oracles/IRowYaml.js";
 /**
  * Class representing a single row of an oracle table.
+ * @internal
  */
 export declare class Row implements IRow, Partial<IHasSubtable<Row>> {
     /**
@@ -12,13 +14,13 @@ export declare class Row implements IRow, Partial<IHasSubtable<Row>> {
     Ceiling: number | null;
     /**
      */
-    Result: TermString | FragmentString | SentenceString;
+    Result: string;
     /**
      */
-    Summary?: SentenceString | FragmentString | undefined;
+    Summary?: string;
     /**
      */
-    "Oracle rolls"?: OracleTableId[] | undefined;
+    "Oracle rolls"?: IOracle["$id"][] | undefined;
     /**
      */
     "Game objects"?: GameObject[] | undefined;

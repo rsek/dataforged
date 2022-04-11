@@ -3,9 +3,8 @@ import type { ClockSegments } from "@json_out/common/ClockSegments.js";
 import type { AssetConditionMeterId, ClockType, ConditionMeterName, IHasId , IHasName, InputType, Stat } from "@json_out/index.js";
 
 /**
- * @internal
  */
-export interface IInputBase extends IHasId, IHasName {
+export interface IInputBase extends IHasId<string>, IHasName {
   "Input Type": InputType;
   Adjustable?: boolean;
 }
@@ -61,9 +60,8 @@ export interface ISelectInput extends IInputBase {
 }
 
 /**
- * @internal
  */
-export interface ISelectInputOption<T extends SelectInputOptionType> extends IHasId, IHasName {
+export interface ISelectInputOption<T extends SelectInputOptionType> extends IHasId<string>, IHasName {
   "Option Type": T;
 }
 

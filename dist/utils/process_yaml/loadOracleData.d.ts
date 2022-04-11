@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import type { IOracleCategoryYaml, IYamlWithRef } from "../../yaml_in/index.js";
-import type fs from "fs";
+import type { PathLike } from "node:fs";
 export interface IOracleCatRoot extends IYamlWithRef {
     Categories: IOracleCategoryYaml[];
 }
@@ -10,5 +10,5 @@ export interface IOracleCatRoot extends IYamlWithRef {
  * @param filePaths - The files to load.
  * @returns A JSON object with the following structure:
  */
-export declare function loadOracleData(referencePath?: fs.PathLike, ...filePaths: fs.PathLike[]): IOracleCatRoot;
+export declare function loadOracleData(referencePath?: PathLike, ...filePaths: PathLike[]): IOracleCatRoot;
 //# sourceMappingURL=loadOracleData.d.ts.map

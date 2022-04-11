@@ -1,14 +1,17 @@
 import { Source } from "../index.js";
 import type { Encounter } from "../index.js";
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, IDisplay, IEncounterVariant, ParagraphsString } from "../../json_out/index.js";
+import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, IDisplay, IEncounterVariant } from "../../json_out/index.js";
 import type { IEncounterVariantYaml } from "../../yaml_in/index.js";
+/**
+ * @internal
+ */
 export declare class EncounterVariant implements IEncounterVariant {
-    $id: EncounterId;
+    $id: IEncounterVariant["$id"];
     Source: Source;
     Name: string;
     Rank: ChallengeRank;
     Display: IDisplay;
-    Description: ParagraphsString;
+    Description: string;
     Nature: EncounterNature;
     "Variant of": EncounterId;
     Tags?: EncounterTags[] | undefined;

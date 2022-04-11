@@ -1,4 +1,7 @@
 import { MoveOutcome } from "../index.js";
+/**
+ * @internal
+ */
 export class MoveOutcomes {
     constructor(json, id) {
         this.$id = id;

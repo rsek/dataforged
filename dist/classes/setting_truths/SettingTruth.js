@@ -1,7 +1,8 @@
-import { Source } from "../index.js";
-import { Suggestions } from "../index.js";
-import { SettingTruthOption } from "../index.js";
+import { SettingTruthOption, Source, Suggestions } from "../index.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
+/**
+ * @internal
+ */
 export class SettingTruth {
     constructor(json, sourceJson) {
         var _a;

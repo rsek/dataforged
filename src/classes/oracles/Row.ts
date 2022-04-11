@@ -1,6 +1,7 @@
 import { AttributeSetter , GameObject , MultipleRolls , OracleContent , Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { FragmentString, IHasSubtable, ImageUrl, IMultipleRolls, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, SentenceString,SettingTruthOptionId, TermString, Vector } from "@json_out/index.js";
+import type { IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, Vector } from "@json_out/index.js";
+import type { SettingTruthOptionId } from "@json_out/setting_truths/SettingTruthOptionId.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { RequireKey } from "@utils/types/RequireKey.js";
@@ -12,6 +13,7 @@ import { is } from "typescript-is";
 
 /**
  * Class representing a single row of an oracle table.
+ * @internal
  */
 export class Row implements IRow, Partial<IHasSubtable<Row>> {
   /**
@@ -21,13 +23,13 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
   Ceiling: number|null;
   /**
    */
-  Result!: TermString | FragmentString | SentenceString;
+  Result!: string;
   /**
    */
-  Summary?: SentenceString | FragmentString | undefined;
+  Summary?: string;
   /**
    */
-  "Oracle rolls"?: OracleTableId[] | undefined;
+  "Oracle rolls"?: IOracle["$id"][] | undefined;
   /**
    */
   "Game objects"?: GameObject[] | undefined;

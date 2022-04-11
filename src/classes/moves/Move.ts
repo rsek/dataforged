@@ -1,14 +1,13 @@
-import { SourceInheritor } from "@classes/index.js";
 import type { Suggestions } from "@classes/index.js";
-import { MoveOutcomes } from "@classes/index.js";
-import { MoveTrigger } from "@classes/index.js";
-import type { AssetId , IDisplay , IMove , ISource, MoveCategoryId , MoveId , OracleTableId , ParagraphsString } from "@json_out/index.js";
+import { MoveOutcomes , MoveTrigger , SourceInheritor } from "@classes/index.js";
+import type { AssetId , IDisplay , IMove , IOracle, ISource, MoveCategoryId , MoveId  } from "@json_out/index.js";
 
 import { buildLog } from "@utils/logging/buildLog.js";
 import _ from "lodash-es";
 
 /**
  * Object representing a Starforged move.
+ * @internal
  */
 export class Move extends SourceInheritor implements IMove {
   $id: MoveId;
@@ -16,11 +15,11 @@ export class Move extends SourceInheritor implements IMove {
   Category: MoveCategoryId;
   Asset?: this["Category"] extends "Moves/Assets" ? AssetId : undefined;
   "Progress Move"?: boolean | undefined;
-  "Variant of"?: MoveId | undefined;
+  "Variant of"?: IMove["$id"] | undefined;
   Display: IDisplay;
   Trigger: MoveTrigger;
-  Text: ParagraphsString;
-  Oracles?: OracleTableId[] | undefined;
+  Text: string;
+  Oracles?: IOracle["$id"][] | undefined;
   Suggestions?: Suggestions | undefined;
   Outcomes?: MoveOutcomes | undefined;
   constructor(json: IMove, ...sourceAncestors: ISource[]) {

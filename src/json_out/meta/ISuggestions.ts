@@ -1,7 +1,11 @@
-import type { AssetId , EncounterId, IGameObject, MoveId , OracleTableId } from "@json_out/index.js";
+import type { IAsset, IEncounter , IGameObject, IMove , IOracle } from "@json_out/index.js";
 
 /**
- * Interface representing "non-canon" suggestions for related game content.
+ * Describes "non-canonical" suggestions for game content related to the parent item.
+ *
+ * These are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.
+ *
+ * These can be safely ignored if that functionality is not desired.
  */
 export interface ISuggestions  {
   /**
@@ -11,17 +15,17 @@ export interface ISuggestions  {
   /**
    * Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.
    */
-  "Oracle rolls"?: OracleTableId[] | undefined;
+  "Oracle rolls"?: IOracle["$id"][] | undefined;
   /**
    * Suggested move IDs.
    */
-  "Moves"?: MoveId[] | undefined;
+  "Moves"?: IMove["$id"][] | undefined;
   /**
    * Suggested asset IDs.
    */
-  "Assets"?: AssetId[] | undefined;
+  "Assets"?: IAsset["$id"][] | undefined;
   /**
    * Suggested encounter IDs.
    */
-  "Encounters"?: EncounterId[] | undefined;
+  "Encounters"?: IEncounter["$id"][] | undefined;
 }

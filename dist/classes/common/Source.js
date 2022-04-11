@@ -2,6 +2,9 @@ import { SourceTitle } from "../../json_out/index.js";
 import { badEnumError } from "../../utils/logging/badEnumError.js";
 import { enumHas } from "../../utils/validation/enumHas.js";
 import _ from "lodash-es";
+/**
+ * @internal
+ */
 export class Source {
     constructor(json, ...ancestorSourceJson) {
         const sourceStack = _.compact(ancestorSourceJson)

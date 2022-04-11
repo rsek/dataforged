@@ -1,4 +1,7 @@
 import { Source } from "../index.js";
+/**
+ * @internal
+ */
 export class EncounterVariant {
     constructor(json, parent) {
         var _a, _b;

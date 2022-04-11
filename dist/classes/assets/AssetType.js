@@ -1,6 +1,9 @@
 import { Asset, SourceInheritor } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { validateColor } from "../../utils/validateColor.js";
+/**
+ * @internal
+ */
 export class AssetType extends SourceInheritor {
     constructor(json, rootSource) {
         super(json.Source, rootSource);

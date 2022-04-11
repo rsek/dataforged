@@ -1,19 +1,21 @@
-import { Source } from "@classes/index.js";
-import { Suggestions } from "@classes/index.js";
-import { SettingTruthOption } from "@classes/index.js";
-import type { ISettingTruth, ISource, ParagraphsString, SettingTruthId, SettingTruthName } from "@json_out/index.js";
+import { SettingTruthOption , Source , Suggestions } from "@classes/index.js";
+import type { ISettingTruth, ISource, SettingTruthId } from "@json_out/index.js";
+import type { SettingTruthIdFragment, SettingTruthName } from "@json_out/setting_truths/SettingTruthName.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import type { ISettingTruthYaml } from "@yaml_in/setting_truths/ISettingTruthYaml.js";
 
+/**
+ * @internal
+ */
 export class SettingTruth implements ISettingTruth {
   $id: SettingTruthId;
   Name: SettingTruthName;
   Table: SettingTruthOption[];
-  Character: ParagraphsString;
+  Character: string;
   Suggestions?: Suggestions | undefined;
   Source: Source;
   constructor(json: ISettingTruthYaml, sourceJson: ISource) {
-    this.$id = `Setting_Truths/${json.Name.replaceAll(" ", "_")}` as SettingTruthId;
+    this.$id = `Setting_Truths/${json.Name.replaceAll(" ", "_") as SettingTruthIdFragment}`;
     buildLog(this.constructor,`Building: ${this.$id}`);
     this.Name = json.Name;
     this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));

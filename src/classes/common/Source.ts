@@ -5,6 +5,9 @@ import { badEnumError } from "@utils/logging/badEnumError.js";
 import { enumHas } from "@utils/validation/enumHas.js";
 import _ from "lodash-es";
 
+/**
+ * @internal
+ */
 export class Source implements ISource {
   Title: SourceTitle;
   Date?: string | undefined;

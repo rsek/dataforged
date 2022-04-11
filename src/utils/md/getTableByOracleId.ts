@@ -8,7 +8,7 @@ import jsonpath from "jsonpath";
  * @param id - The id of the table you want to get.
  * @returns An array of rows.
  */
-export function getTableByOracleId<T extends IRow[] = Row[]>(oracleData: IOracleBase | IOracleBase[], id: OracleTableId) {
+export function getTableByOracleId<T extends IRow[] = Row[]>(oracleData: IOracleBase | IOracleBase[], id: IOracle["$id"]) {
   if (!Array.isArray(oracleData) && oracleData.$id === id) {
     const data = oracleData as IOracle;
     if (data.Table) {

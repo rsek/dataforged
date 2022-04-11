@@ -1,16 +1,19 @@
 import { Asset, SourceInheritor } from "@classes/index.js";
 import type { AssetTypeName } from "@json_out/assets/AssetTypeName.js";
-import type { AssetTypeId, IAssetType, IDisplay, ISource, ParagraphsString } from "@json_out/index.js";
+import type { AssetTypeId, IAssetType, IDisplay, ISource } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { RequireKey } from "@utils/types/RequireKey.js";
 import { validateColor } from "@utils/validateColor.js";
 
 
+/**
+ * @internal
+ */
 export class AssetType extends SourceInheritor implements IAssetType {
   $id: AssetTypeId;
   Name: AssetTypeName;
   Aliases?: string[] | undefined;
-  Description: ParagraphsString;
+  Description: string;
   Assets: Asset[];
   Display: RequireKey<IDisplay, "Color">;
   constructor(json: IAssetType, rootSource: ISource) {

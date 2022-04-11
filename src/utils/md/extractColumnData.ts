@@ -1,4 +1,5 @@
 import type { Oracle } from "@classes/index.js";
+import type { OracleTableId } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { getTableByOracleId } from "@utils/md/getTableByOracleId.js";
 
@@ -24,7 +25,7 @@ export function extractColumnData(oracle: Oracle) {
 
   const resultCols = oracle.Display.Table["Result columns"];
   resultCols.forEach((col, colIndex) => {
-    const table = getTableByOracleId(oracle, col["Use content from"]);
+    const table = getTableByOracleId(oracle, col["Use content from"] as OracleTableId);
     if (!table) {
       throw badJsonError(extractColumnData);
     }

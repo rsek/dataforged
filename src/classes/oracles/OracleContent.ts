@@ -1,11 +1,12 @@
-import type { IOracleContent } from "@json_out/index.js";
+import type { IOracleContent, PartOfSpeechTag } from "@json_out/index.js";
 // import { badJsonError } from "@utils/logging/badJsonError.js";
 
 /**
  * Metadata that describes an oracle's semantic or lexical content.
+ * @internal
  */
 export class OracleContent implements IOracleContent {
-  "Part of speech"?: string[] | undefined;
+  "Part of speech"?: PartOfSpeechTag[] | undefined;
   "Tags"?: string[] | undefined;
   constructor(json: IOracleContent) {
     // if (!(json["Part of speech"]||json["Tags"])) {

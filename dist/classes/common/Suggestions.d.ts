@@ -1,15 +1,17 @@
 import { GameObject } from "../index.js";
-import type { AssetId, EncounterId, ISuggestions, MoveId, OracleTableId } from "../../json_out/index.js";
+import type { IAsset } from "../../json_out/assets/IAsset.js";
+import type { IEncounter } from "../../json_out/encounters/IEncounter.js";
+import type { IMove, IOracle, ISuggestions } from "../../json_out/index.js";
 import type { ISuggestionsYaml } from "../../yaml_in/common/ISuggestionsYaml.js";
 /**
- * Object representing "non-canon" suggestions for related Starforged game content. These are intended be offered as convenient shortcuts for the user; having them roll automatically is not recommended. They can be safely ignored if this functionality is not desired.
+ * @internal
  */
 export declare class Suggestions implements ISuggestions {
     "Game objects"?: GameObject[] | undefined;
-    "Oracle rolls"?: OracleTableId[] | undefined;
-    "Assets"?: AssetId[] | undefined;
-    "Moves"?: MoveId[] | undefined;
-    "Encounters"?: EncounterId[] | undefined;
+    "Oracle rolls"?: IOracle["$id"][] | undefined;
+    "Assets"?: IAsset["$id"][] | undefined;
+    "Moves"?: IMove["$id"][] | undefined;
+    "Encounters"?: IEncounter["$id"][] | undefined;
     constructor(data: ISuggestionsYaml);
 }
 //# sourceMappingURL=Suggestions.d.ts.map

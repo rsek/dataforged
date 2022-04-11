@@ -1,3 +1,3 @@
-export declare type SettingTruthName = string;
-export declare type SettingTruthId = `Setting Truths/${SettingTruthName}`;
+export declare type SettingTruthIdFragment = "Cataclysm" | "Exodus" | "Communities" | "Iron" | "Laws" | "Religion" | "Magic" | "Communication_and_Data" | "Medicine" | "Artificial_Intelligence" | "War" | "Lifeforms" | "Precursors" | "Horrors";
+export declare type SettingTruthName = "Cataclysm" | "Exodus" | "Communities" | "Iron" | "Laws" | "Religion" | "Magic" | "Communication and Data" | "Medicine" | "Artificial Intelligence" | "War" | "Lifeforms" | "Precursors" | "Horrors";
 //# sourceMappingURL=SettingTruthName.d.ts.map

@@ -1,4 +1,7 @@
 import { Requirements, Suggestions } from "../index.js";
+/**
+ * @internal
+ */
 export class OracleUsage {
     constructor(json) {
         var _a;

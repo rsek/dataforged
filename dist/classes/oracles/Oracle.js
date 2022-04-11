@@ -1,8 +1,4 @@
-import { SourceInheritor } from "../index.js";
-import { OracleContent } from "../index.js";
-import { OracleDisplay } from "../index.js";
-import { OracleUsage } from "../index.js";
-import { Row } from "../index.js";
+import { OracleContent, OracleDisplay, OracleUsage, Row, SourceInheritor } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { inferSetsAttributes } from "../../utils/object_transform/inferSetsAttributes.js";
@@ -10,6 +6,9 @@ import { propagateToChildren } from "../../utils/object_transform/propagateToChi
 import { templateOracle } from "../../utils/object_transform/templateOracle.js";
 import { templateOracleTable } from "../../utils/object_transform/templateOracleTable.js";
 import _ from "lodash-es";
+/**
+ * @internal
+ */
 export class Oracle extends SourceInheritor {
     constructor(json, category, memberOf, ...ancestorsJson
     // ancestors should be in ascending order

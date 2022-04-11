@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export class CustomStatOption {
     constructor(json, id) {
         this.$id = id;

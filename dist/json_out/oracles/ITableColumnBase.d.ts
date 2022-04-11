@@ -1,6 +1,9 @@
-import type { OracleTableId } from "../index.js";
+import type { IOracle } from "../index.js";
 export interface ITableColumnBase {
     Label: string;
-    "Use content from": OracleTableId;
+    /**
+     * The ID of the oracle table to use.
+     */
+    "Use content from": IOracle["$id"];
 }
 //# sourceMappingURL=ITableColumnBase.d.ts.map

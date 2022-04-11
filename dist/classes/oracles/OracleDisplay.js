@@ -1,4 +1,7 @@
 import { DisplayTable } from "../index.js";
+/**
+ * @internal
+ */
 export class OracleDisplay {
     constructor(json, parentName, parentId) {
         var _a, _b;

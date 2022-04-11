@@ -1,6 +1,6 @@
 import { GameObject } from "../index.js";
 /**
- * Object representing "non-canon" suggestions for related Starforged game content. These are intended be offered as convenient shortcuts for the user; having them roll automatically is not recommended. They can be safely ignored if this functionality is not desired.
+ * @internal
  */
 export class Suggestions {
     constructor(data) {

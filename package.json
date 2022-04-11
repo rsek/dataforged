@@ -13,12 +13,12 @@
     "markdown"
   ],
   "type": "module",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/dataforged.d.ts",
   "scripts": {
     "flush-dist": "rm -R ./dist && mkdir ./dist",
     "flush-image": "rm -R ./img && mkdir ./img",
-    "build": "yarn flush-dist && npx ttsc",
-    "start": "node ./dist/dataforged.js --enable-source-maps && find ./dist -name \\*.json -exec cp {} . \\; && find ./dist -name \\*.json -exec cp {} ./src \\;",
+    "build": "yarn flush-dist && npx ttsc && api-extractor run",
+    "start": "node ./dist/start.js --enable-source-maps && find ./dist -name \\*.json -exec cp {} . \\; && find ./dist -name \\*.json -exec cp {} ./src \\;",
     "docs": "rm -R ./docs && mkdir ./docs && npx typedoc"
   },
   "directories": {
@@ -56,6 +56,8 @@
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "deep-freeze-strict": "^1.1.1",
+    "dts-bundle": "^0.7.3",
+    "dts-generator": "^3.0.0",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
@@ -75,7 +77,6 @@
     "showdown": "^2.0.0-alpha",
     "source-map-support": "^0.5.21",
     "svgo": "^2.5.0",
-    "ts-json-schema-generator": "^1.0.0",
     "ts-node": "^10.5.0",
     "ts-transform-import-path-rewrite": "^0.3.0",
     "tslog": "^3.3.3",

@@ -1,6 +1,9 @@
 import { Requirements, Suggestions } from "../index.js";
 import type { IAttributeChoices, IOracleUsage } from "../../json_out/index.js";
 import type { IOracleUsageYaml } from "../../yaml_in/oracles/IOracleUsageYaml.js";
+/**
+ * @internal
+ */
 export declare class OracleUsage implements IOracleUsage {
     Initial?: boolean | undefined;
     "Min rolls"?: number | undefined;

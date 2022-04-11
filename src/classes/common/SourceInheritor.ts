@@ -1,6 +1,9 @@
 import { Source } from "@classes/common/index.js";
 import type { IHasSource, ISource } from "@json_out/meta/index.js";
 
+/**
+ * @internal
+ */
 export abstract class SourceInheritor implements IHasSource {
   Source: Source;
   constructor(json: Partial<ISource>, ...sourceAncestors: ISource[]) {

@@ -1,15 +1,8 @@
-import type { IEncounter } from "./IEncounter.js";
-import type { ChallengeRank, EncounterId, EncounterNature, EncounterTags, ISource, ParagraphsString } from "../index.js";
-import type { IDisplay } from "../meta/IDisplay.js";
-export interface IEncounterVariant extends Partial<IEncounter> {
-    $id: EncounterId;
+import type { IEncounterBase } from "./IEncounterBase.js";
+import type { EncounterId } from "../index.js";
+export declare type EncounterVariantId = `${EncounterId}/${string}`;
+export interface IEncounterVariant extends IEncounterBase {
+    $id: EncounterVariantId;
     "Variant of": EncounterId;
-    Source: ISource;
-    Name: string;
-    Rank: ChallengeRank;
-    Description: ParagraphsString;
-    Nature: EncounterNature;
-    Display: IDisplay;
-    Tags?: EncounterTags[] | undefined;
 }
 //# sourceMappingURL=IEncounterVariant.d.ts.map

@@ -1,6 +1,8 @@
 {
+  "$schema": "http://json.schemastore.org/tsconfig",
   "exclude": [
     "src/utils/*.js",
+    "./**/*.md",
     "node_modules",
     "roll20",
     ".vscode",
@@ -10,6 +12,7 @@
     "docs"
   ],
   "typedocOptions": {
+    "name": "Dataforged",
     "entryPoints": [
       "./src/json_out/assets/index.ts",
       "./src/json_out/common/index.ts",
@@ -28,7 +31,6 @@
     "module": "ESNext",
     "target": "es6",
     "lib": [
-      "es6",
       "es2020",
       "es2021",
       "esnext"

@@ -1,10 +1,11 @@
-import type { IHasName , IOracleBase, IRow , ITableDisplay , OracleCategoryId , OracleSubcategoryId , OracleTableId } from "@json_out/index.js";
+import type { IHasName , IOracleBase, IRow, ITableDisplay , OracleTableId } from "@json_out/index.js";
+import type { IOracleCategory } from "@json_out/oracles/IOracleCategory.js";
 
 export interface IOracle extends IOracleBase, IHasName {
   $id: OracleTableId;
   Display: ITableDisplay;
-  Category: OracleCategoryId | OracleSubcategoryId;
-  "Member of"?: OracleTableId | undefined;
+  Category: IOracleCategory["$id"];
+  "Member of"?: IOracle["$id"] | undefined;
   "Table"?: IRow[] | undefined;
 }
 

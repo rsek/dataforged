@@ -1,6 +1,9 @@
 import type { Oracle } from "@classes/index.js";
 import type { OracleTableId } from "@json_out/index.js";
 
+/**
+ * @internal
+ */
 export class OracleTableRef {
   private $id: OracleTableId;
   constructor(tableId: OracleTableId) {

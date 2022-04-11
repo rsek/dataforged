@@ -1,6 +1,7 @@
 import type { IMultipleRolls } from "../../json_out/index.js";
 /**
  * Represents "Roll twice" and "Roll three times" oracle results.
+ * @internal
  */
 export declare class MultipleRolls implements IMultipleRolls {
     /**

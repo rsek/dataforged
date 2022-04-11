@@ -2,6 +2,9 @@ import type { IAttribute } from "@json_out/index.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 
+/**
+ * @internal
+ */
 export class AttributeSetter extends Array<IAttribute> {
   constructor(json: AttributeHash) {
     if (Object.values(json).some(item => Array.isArray(item) && item.length > 1)) {

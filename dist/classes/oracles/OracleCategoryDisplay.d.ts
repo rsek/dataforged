@@ -1,4 +1,7 @@
 import type { IDisplay, ImageUrl, Raster, Vector } from "../../json_out/index.js";
+/**
+ * @internal
+ */
 export declare class OracleCategoryDisplay implements IDisplay {
     Title: string;
     Icon?: ImageUrl<Vector> | undefined;

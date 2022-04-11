@@ -23,15 +23,17 @@ export function buildAssets() {
   const json = yaml.load(data) as AssetDataRoot;
   const result = json["Asset Types"].map((assetType) =>  new AssetType(assetType, json.Source));
   result.forEach(assetType => assetType.Assets.forEach(asset => {
-    jp.apply(asset, "$..Stat", (stat: RollableStat) => {
-      if (stat === "Asset Condition Meter") {
-        if (!asset["Condition Meter"]) {
-          throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.");
+    jp.apply(asset, "$..Using", (stats: RollableStat[]) => {
+      return stats.map(stat => {
+        if (stat === "Asset_Condition_Meter") {
+          if (!asset["Condition Meter"]) {
+            throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.");
+          }
+          buildLog(buildAssets, `Adding reference for ${asset["Condition Meter"]?.$id}`);
+          stat = asset["Condition Meter"]?.$id;
         }
-        buildLog(buildAssets, `Adding reference for ${asset["Condition Meter"]?.$id}`);
-        stat = asset["Condition Meter"]?.$id;
-      }
-      return stat as AssetConditionMeterId;
+        return stat as AssetConditionMeterId;
+      });
     });
     return asset;
   }));

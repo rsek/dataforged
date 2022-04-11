@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export class OracleTableRef {
     constructor(tableId) {
         this.$id = tableId;
