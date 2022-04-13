@@ -215,7 +215,7 @@ Roll   | Result
 ### Character Role
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–2    | Agent
 3–4    | AI
 5–6    | Artisan
@@ -262,13 +262,13 @@ Roll   | Result
 87–88  | Spacer
 89–90  | Technician
 91–92  | Thief
-93–95  | [⏵Action + Theme](#Action)
+93–95  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 96–100 | Roll twice
 
 ### Character Goal
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–2    | Avenge a wrong
 3–4    | Build a home
 5–7    | Build a relationship
@@ -307,7 +307,7 @@ Roll   | Result
 75–76  | Spread faith
 77–78  | Travel to a place
 79–80  | Undermine a relationship
-81–90  | [⏵Action + Theme](#Action)
+81–90  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 91–100 | Roll twice
 
 ### Revealed Character Aspect
@@ -528,7 +528,7 @@ Roll | Given_Name | Family_Name | Callsign
 
 ### Action
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
 
 Roll | Result
 :---:|------------
@@ -635,7 +635,7 @@ Roll | Result
 
 ### Theme
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
 
 Roll | Result
 :---:|-------------
@@ -742,7 +742,7 @@ Roll | Result
 
 ### Descriptor
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
 
 Roll | Result
 :---:|-------------
@@ -849,7 +849,7 @@ Roll | Result
 
 ### Focus
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
 
 Roll | Result
 :---:|--------------
@@ -973,14 +973,14 @@ Roll   | Result
 ### Scale
 
 Roll  | Result
-:----:|----------------------------------------------
+:----:|---------------------------------------------------------
 1–3   | Minuscule (bug-sized)
 4–10  | Tiny (rodent-sized)
 11–25 | Small (dog-sized)
 26–60 | Medium (person-sized)
 61–90 | Large (vehicle-sized)
 91–99 | Huge (whale-sized)
-100   | [⏵Ultra-scale](#Ultra-scale)
+100   | [⏵Ultra-scale](Starforged/Oracles/Creatures/Ultra-scale)
 
 ### Ultra-scale
 
@@ -1205,7 +1205,7 @@ Roll   | Result
 ### Inner First Look
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Abnormal gravity
 4–6    | Active bots
 7–9    | Archaic equipment
@@ -1237,26 +1237,26 @@ Roll   | Result
 85–87  | Thick haze or smoke
 88–90  | Unstable energy surges
 91–93  | Watchful AI
-94–100 | [⏵Descriptor + Focus](#Descriptor)
+94–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Derelict Zones
 
 Starship | Settlement | Result
-:-------:|:----------:|----------------------------------------------
---       | --         | [⏵Access](#Access)
-1–5      | 1–20       | [⏵Community](#Community)
-6–30     | 21–30      | [⏵Engineering](#Engineering)
-31–55    | 31–50      | [⏵Living](#Living)
-56–65    | 51–60      | [⏵Medical](#Medical)
-66–85    | 61–70      | [⏵Operations](#Operations)
-86–90    | 71–90      | [⏵Production](#Production)
-91–100   | 91–100     | [⏵Research](#Research)
+:-------:|:----------:|---------------------------------------------------------
+--       | --         | [⏵Access](Starforged/Oracles/Derelicts/Access)
+1–5      | 1–20       | [⏵Community](Starforged/Oracles/Derelicts/Community)
+6–30     | 21–30      | [⏵Engineering](Starforged/Oracles/Derelicts/Engineering)
+31–55    | 31–50      | [⏵Living](Starforged/Oracles/Derelicts/Living)
+56–65    | 51–60      | [⏵Medical](Starforged/Oracles/Derelicts/Medical)
+66–85    | 61–70      | [⏵Operations](Starforged/Oracles/Derelicts/Operations)
+86–90    | 71–90      | [⏵Production](Starforged/Oracles/Derelicts/Production)
+91–100   | 91–100     | [⏵Research](Starforged/Oracles/Derelicts/Research)
 
 ### Access
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
 :-----:|-------------------------
@@ -1274,7 +1274,7 @@ Roll   | Result
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–5    | Abandoned gear
 6–10   | Blood trail
 11–15  | Breached door or hatch
@@ -1294,14 +1294,14 @@ Roll   | Result
 81–85  | Wandering bot
 86–90  | Windows or viewports
 91–95  | Wrecked passage or debris
-96–100 | [⏵Descriptor + Focus](#Descriptor)
+96–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Alarm or failsafe is triggered
 11–20  | Automated defenses
 21–30  | Blocked or sealed path
@@ -1311,12 +1311,12 @@ Roll   | Result
 61–70  | Hazardous environmental change
 71–80  | Path is trapped
 81–90  | Unsettling sound or disturbance
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------------------------------------
@@ -1330,10 +1330,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Bar or club
 9–16   | Classroom or education
 17–24  | Concourse or hub
@@ -1345,14 +1345,14 @@ Roll   | Result
 65–72  | Restaurant or dining
 73–80  | Temple or chapel
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Ad-hoc memorials
 9–16   | Art depicting historic event
 17–24  | Artificial environment
@@ -1364,14 +1364,14 @@ Roll   | Result
 65–72  | Mass grave or corpses
 73–80  | Panoramic viewport
 81–88  | Rubble or debris
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|---------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Biological infestation
 11–20  | Breached or broken structure
 21–30  | Distressing signs of mass violence or death
@@ -1381,12 +1381,12 @@ Roll   | Result
 61–70  | Haunting vision of life here before the fall
 71–80  | Hazardous environmental change
 81–90  | Heartbreaking memento of lost lives
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|------------------------------------------
@@ -1400,10 +1400,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Control room
 9–16   | Engine room or power core
 17–24  | Engineering offices
@@ -1415,14 +1415,14 @@ Roll   | Result
 65–72  | Water processing
 73–80  | Workshop
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Cluttered workbench
 9–16   | Control terminal
 17–24  | Crane or lift
@@ -1434,7 +1434,7 @@ Roll   | Result
 65–72  | Sharp ozone smell
 73–80  | Unfinished project
 81–88  | Utility bots
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -1451,12 +1451,12 @@ Roll   | Result
 61–70  | Sabotaged equipment
 71–80  | Shrouded atmosphere conceals a lurking foe
 81–90  | Unstable or failing power core
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|------------------------------------
@@ -1470,10 +1470,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Food storage
 9–16   | Galley or kitchen
 17–24  | Laundry
@@ -1485,14 +1485,14 @@ Roll   | Result
 65–72  | Restroom or showers
 73–80  | Sleeping pods
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Abandoned pet
 9–16   | Audible music
 17–24  | Cherished personal item
@@ -1504,7 +1504,7 @@ Roll   | Result
 65–72  | Scuttling vermin
 73–80  | Shrine or altar
 81–88  | Unusual art
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -1521,12 +1521,12 @@ Roll   | Result
 61–70  | Sealed door or hatch blocks access
 71–80  | Signs of unwelcome invaders
 81–90  | Unsettling sound or disturbance
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|------------------------------------------------------
@@ -1540,10 +1540,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Crematorium
 9–16   | Emergency or triage
 17–24  | Isolation or containment
@@ -1555,14 +1555,14 @@ Roll   | Result
 65–72  | Prosthetics workshop
 73–80  | Ward or clinic
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Autopsied corpse
 9–16   | Biological specimens
 17–24  | Blood spatter or pools
@@ -1574,14 +1574,14 @@ Roll   | Result
 65–72  | Medical monitors
 73–80  | Medical records or scans
 81–88  | Stacks of body bags
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Disgusting sight / smell
 11–20  | Disturbing evidence of medical misconduct
 21–30  | Erratic medical bots
@@ -1591,12 +1591,12 @@ Roll   | Result
 61–70  | Restless dead
 71–80  | Signs of a horrific death
 81–90  | Signs of broken quarantine
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------
@@ -1610,10 +1610,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Admin or command offices
 9–16   | Armory
 17–24  | Bridge or command center
@@ -1625,14 +1625,14 @@ Roll   | Result
 65–72  | Lounge
 73–80  | Security
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Automated warning
 9–16   | Buckled blast doors
 17–24  | Control terminal
@@ -1644,7 +1644,7 @@ Roll   | Result
 65–72  | Recorded message
 73–80  | Video surveillance monitors
 81–88  | Written logs
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -1661,12 +1661,12 @@ Roll   | Result
 61–70  | Hostile AI
 71–80  | Sealed blast doors block access
 81–90  | Sensors indicate the arrival of an external threat
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------------------------
@@ -1680,10 +1680,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Airlock or staging area
 9–16   | Assembly or processing
 17–24  | Cargo bay
@@ -1695,14 +1695,14 @@ Roll   | Result
 65–72  | Raw materials storage
 73–80  | Scrapyard
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Cargo lifts
 9–16   | Control panels
 17–24  | Disassembled machinery
@@ -1714,14 +1714,14 @@ Roll   | Result
 65–72  | Tools
 73–80  | Vats of chemicals or gas
 81–88  | Written manifest
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|---------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Claustrophobic spaces
 11–20  | Dangerous machinery
 21–30  | Disturbing evidence of exploited labor
@@ -1731,12 +1731,12 @@ Roll   | Result
 61–70  | Malfunctioning automation
 71–80  | Rivals seek to secure these resources
 81–90  | Signs of an unearthed or manufactured threat
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|-----------------------------
@@ -1750,10 +1750,10 @@ Roll   | Result
 
 #### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Clean room
 9–16   | Cold storage
 17–24  | Creature or animal pens
@@ -1765,14 +1765,14 @@ Roll   | Result
 65–72  | Library or records
 73–80  | Secure vault
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 #### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Aquarium or tank
 9–16   | Biological specimens
 17–24  | Bones or fossils
@@ -1784,14 +1784,14 @@ Roll   | Result
 65–72  | Invasive plant growth
 73–80  | Recorded research log
 81–88  | Spilled chemicals
-89–100 | [⏵Descriptor + Focus](#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|----------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Automated containment protocols are activated
 11–20  | Biological infestation
 21–30  | Dangerous specimen
@@ -1801,12 +1801,12 @@ Roll   | Result
 61–70  | Signs of broken containment
 71–80  | Toxic environment
 81–90  | Unstable technology
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|-------------------------------
@@ -1821,10 +1821,10 @@ Roll   | Result
 ### Faction Type
 
 Roll   | Result
-:-----:|-----------------------------------------------
-1–40   | [⏵Dominion](#Dominion)
-41–70  | [⏵Guild](#Guild)
-71–100 | [⏵Fringe Group](#Fringe-Group)
+:-----:|----------------------------------------------------------
+1–40   | [⏵Dominion](Starforged/Oracles/Factions/Dominion)
+41–70  | [⏵Guild](Starforged/Oracles/Factions/Guild)
+71–100 | [⏵Fringe Group](Starforged/Oracles/Factions/Fringe_Group)
 
 ### Influence
 
@@ -1957,7 +1957,7 @@ Roll   | Result
 88–90  | Subsume another faction
 91–93  | Transport a valued asset
 94–96  | Usurp leadership within a rival faction
-97–100 | [⏵Action + Theme](#Action)
+97–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ### Faction Relationships
 
@@ -2001,11 +2001,11 @@ To generate a faction name, first roll or choose the name template. Then, follow
 An alternative approach to generating a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one that idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or pick.
 
 Roll   | Result
-:-----:|--------------------------------------------------------------------------------------------------------------------------------------------
-1–40   | \[[⏵Legacy](#Legacy)\] \[[⏵Affiliation](#Affiliation)\]
-41–55  | \[[⏵Legacy](#Legacy)\] \[[⏵Identity](#Identity)\]
-56–70  | \[[⏵Identity](#Identity)\] *of the* \[[⏵Legacy](#Legacy)\] \[[⏵Affiliation](#Affiliation)\]
-71–100 | \[[⏵Affiliation](#Affiliation)\] *of the* \[[⏵Legacy](#Legacy)\] \[[⏵Identity](#Identity)\]
+:-----:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1–40   | \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)\]
+41–55  | \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Identity](Starforged/Oracles/Factions/Identity)\]
+56–70  | \[[⏵Identity](Starforged/Oracles/Factions/Identity)\] *of the* \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)\]
+71–100 | \[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)\] *of the* \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Identity](Starforged/Oracles/Factions/Identity)\]
 
 ### Legacy
 
@@ -2185,7 +2185,7 @@ Roll   | Result
 88–90  | Trains in a demanding physical discipline or martial art
 91–93  | Wields unnatural abilities or strange technologies
 94–96  | Work or environment causes mutations
-97–100 | [⏵Action + Theme](#Action)
+97–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ### Faction Rumors
 
@@ -2225,7 +2225,7 @@ Roll   | Result
 88–90  | Suffering a shortage of key workers or personnel
 91–93  | Uprising or revolt is brewing from within
 94–96  | Vulnerable to attack or aggression
-97–100 | [⏵Action + Theme](#Action)
+97–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ## Location Themes
 
@@ -2246,15 +2246,15 @@ When mixing-and-matching a theme with another set of tables, use the techniques 
 Choose a theme that supports what you know of that location’s nature. For a random theme, roll on the table above.
 
 Roll   | Result
-:-----:|--------------------------------------------------
-1–15   | [⏵Chaotic](#Chaotic)
-16–25  | [⏵Fortified](#Fortified)
-26–35  | [⏵Haunted](#Haunted)
-36–50  | [⏵Infested](#Infested)
-51–60  | [⏵Inhabited](#Inhabited)
-61–75  | [⏵Mechanical](#Mechanical)
-76–90  | [⏵Ruined](#Ruined)
-91–100 | [⏵Sacred](#Sacred)
+:-----:|-------------------------------------------------------------
+1–15   | [⏵Chaotic](Starforged/Oracles/Location_Themes/Chaotic)
+16–25  | [⏵Fortified](Starforged/Oracles/Location_Themes/Fortified)
+26–35  | [⏵Haunted](Starforged/Oracles/Location_Themes/Haunted)
+36–50  | [⏵Infested](Starforged/Oracles/Location_Themes/Infested)
+51–60  | [⏵Inhabited](Starforged/Oracles/Location_Themes/Inhabited)
+61–75  | [⏵Mechanical](Starforged/Oracles/Location_Themes/Mechanical)
+76–90  | [⏵Ruined](Starforged/Oracles/Location_Themes/Ruined)
+91–100 | [⏵Sacred](Starforged/Oracles/Location_Themes/Sacred)
 
 ### Chaotic
 
@@ -2265,7 +2265,7 @@ Reality is corrupted or warped in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Alterations in the flow of time
 9–16   | Chaotic portal, focus, or conduit
 17–24  | Corrupted or warped architecture or terrain
@@ -2278,14 +2278,14 @@ Roll   | Result
 73–80  | Lifeforms mutated or altered by chaos
 81–88  | Lifeforms spawned from chaos
 89–96  | Visions of your past or future
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
 Use this table to help envision a complication or hazard.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|--------------------------------------------------
 1–9    | Chaos makes its mark upon you
 10–18  | Chaos spreads or intensifies
 19–27  | Chaos tempts or lures you
@@ -2296,7 +2296,7 @@ Roll   | Result
 64–72  | Foes harness or wield chaos
 73–81  | Hazardous environmental changes
 82–90  | Lifeforms made hostile by chaos
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2320,7 +2320,7 @@ Enemies defend this place against intruders.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Captives or prisoners
 9–16   | Control area or terminal
 17–24  | Empty or inactive area
@@ -2333,7 +2333,7 @@ Roll   | Result
 73–80  | Prototype technology or equipment
 81–88  | Robotic assistant or watchful AI
 89–96  | Support personnel at work
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2351,7 +2351,7 @@ Roll   | Result
 64–72  | Problematic alliance or affiliation is revealed
 73–81  | Revealed schemes of an enemy leader create new urgency
 82–90  | Your plan is undone by an unexpected complication
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2375,7 +2375,7 @@ Restless spirits are bound to this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Disembodied voices
 9–16   | Eerie cold
 17–24  | Foreboding omen or message
@@ -2388,7 +2388,7 @@ Roll   | Result
 73–80  | Twisted or altered architecture or terrain
 81–88  | Unnatural blight, decay, or ruin
 89–96  | Unnatural mists or darkness
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2406,7 +2406,7 @@ Roll   | Result
 64–72  | Sudden, shocking reveal of a ghostly manifestation or undead form
 73–81  | Trickery leads you into danger
 82–90  | Visions reveal a horrifying aspect of this place
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2430,7 +2430,7 @@ Foul creatures have overrun this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|-----------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Corpse of an unfortunate victim
 9–16   | Eggs, cocoons, or nest
 17–24  | Environment corrupted by the infestation
@@ -2443,7 +2443,7 @@ Roll   | Result
 73–80  | Remains of a creature or remnants of a previous form
 81–88  | Territorial markings
 89–96  | Trail or evidence of a creature's passage
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2461,7 +2461,7 @@ Roll   | Result
 64–72  | Lured or driven into a trap or dead-end
 73–81  | Powerful or dominant creature reveals itself
 82–90  | Toxic or sickening environment
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2485,7 +2485,7 @@ People have built a community in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|----------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Conspicuous patrols or surveillance
 9–16   | Crews at work
 17–24  | Display or monument honors a notable cultural event
@@ -2498,7 +2498,7 @@ Roll   | Result
 73–80  | Unrepaired damage
 81–88  | Unusually empty or quiet area
 89–96  | Vendor or merchant hawking their wares
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2516,7 +2516,7 @@ Roll   | Result
 64–72  | Signs of unrest or rebellion
 73–81  | Signs that you are being watched or followed
 82–90  | Unwanted attention from authority or enemies
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2540,7 +2540,7 @@ Machines and technology hold sway in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|---------------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Control station or terminal
 9–16   | Device or technology with a mysterious function
 17–24  | Disassembled machinery or parts
@@ -2553,7 +2553,7 @@ Roll   | Result
 73–80  | Mechanical environment in motion or transforming
 81–88  | Mechanical wreckage or destruction
 89–96  | Power source for the machines
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2571,7 +2571,7 @@ Roll   | Result
 64–72  | Moving machinery creates a danger or obstacle
 73–81  | Under surveillance by a central machine intelligence
 82–90  | Volatile technology
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2595,7 +2595,7 @@ Time, disaster, or war have ravaged this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|--------------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Collapsed or broken structures or terrain
 9–16   | Device or artifact with residual power or function
 17–24  | Focal point or nexus of the destruction
@@ -2608,7 +2608,7 @@ Roll   | Result
 73–80  | Sights or sounds of structural instability
 81–88  | Signs of looting or scavenging
 89–96  | Survivors or guardians dwell among the ruins
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2626,7 +2626,7 @@ Roll   | Result
 64–72  | Unearthed secrets best left buried
 73–81  | Unstable or broken path
 82–90  | Volatile device or artifact
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2650,7 +2650,7 @@ Worshipers glorify strange powers in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|---------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Adherents performing worship or enacting rituals
 9–16   | Altar or temple
 17–24  | Dwellings for the faithful
@@ -2663,7 +2663,7 @@ Roll   | Result
 73–80  | Religious art or idols
 81–88  | Subtle manifestations of mystical power or visions
 89–96  | Tokens or motifs representing the faith's domain
-97–100 | [⏵Descriptor + Focus](#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Peril
 
@@ -2681,7 +2681,7 @@ Roll   | Result
 64–72  | Religious artifact evokes unnerving power
 73–81  | Unnatural corruption or decay fouls the environment
 82–90  | Zealots enact a ceremony to unlock forbidden powers
-91–98  | [⏵Action + Theme](#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 #### Opportunity
@@ -2736,10 +2736,10 @@ Roll   | Result
 
 ### Story Clue
 
-When you [Gather Information](moves.md#Gather-Information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](moves.md#Gather-Information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.
+When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](Starforged/Moves/Adventure/Gather_Information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.
 
 Roll   | Result
-:-----:|----------------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Affirms a previously understood fact or clue
 4–6    | Connects to a known rumor or scandal
 7–9    | Connects to a previously unrelated mystery or quest
@@ -2770,7 +2770,7 @@ Roll   | Result
 82–84  | Suggests a history of similar incidents
 85–87  | Suggests a looming event or deadline
 88–90  | Suggests an imposter or forgery
-91–100 | [⏵Descriptor + Focus](#Descriptor)
+91–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Anomaly Effect
 
@@ -2859,25 +2859,25 @@ Roll   | Result
 This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
 
 Roll   | Result
-:-----:|----------------------------------------------
-1–15   | [⏵Desert World](#Desert-World)
-16–30  | [⏵Furnace World](#Furnace-World)
-31–35  | [⏵Grave World](#Grave-World)
-36–50  | [⏵Ice World](#Ice-World)
-51–65  | [⏵Jovian World](#Jovian-World)
-66–70  | [⏵Jungle World](#Jungle-World)
-71–75  | [⏵Ocean World](#Ocean-World)
-76–90  | [⏵Rocky World](#Rocky-World)
-91–92  | [⏵Shattered World](#Shattered-World)
-93–98  | [⏵Tainted World](#Tainted-World)
-99–100 | [⏵Vital World](#Vital-World)
+:-----:|---------------------------------------------------------
+1–15   | [⏵Desert World](Starforged/Oracles/Planets/Desert)
+16–30  | [⏵Furnace World](Starforged/Oracles/Planets/Furnace)
+31–35  | [⏵Grave World](Starforged/Oracles/Planets/Grave)
+36–50  | [⏵Ice World](Starforged/Oracles/Planets/Ice)
+51–65  | [⏵Jovian World](Starforged/Oracles/Planets/Jovian)
+66–70  | [⏵Jungle World](Starforged/Oracles/Planets/Jungle)
+71–75  | [⏵Ocean World](Starforged/Oracles/Planets/Ocean)
+76–90  | [⏵Rocky World](Starforged/Oracles/Planets/Rocky)
+91–92  | [⏵Shattered World](Starforged/Oracles/Planets/Shattered)
+93–98  | [⏵Tainted World](Starforged/Oracles/Planets/Tainted)
+99–100 | [⏵Vital World](Starforged/Oracles/Planets/Vital)
 
 ### Planetside Peril
 
 Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
 
 Lifebearing | Lifeless | Result
-:----------:|:--------:|---------------------------------------------
+:----------:|:--------:|--------------------------------------------------
 1–3         | --       | Corrupted or mutated lifeform
 4–6         | --       | Signs of a lifeform's power or cunning
 7–9         | --       | Hazardous plant life or malignant spores
@@ -2910,7 +2910,7 @@ Lifebearing | Lifeless | Result
 88–90       | 84–87    | Visibility hindered by atmospheric effects
 91–93       | 88–91    | Worrying arrival of a ship or vehicle
 94–96       | 92–95    | Wreckage or ruins portend a new threat
-97–99       | 96–99    | [⏵Action + Theme](#Action)
+97–99       | 96–99    | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100         | 100      | Roll twice
 
 ### Planetside Opportunity
@@ -2973,7 +2973,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Dry seabeds
 12–22  | Expansive dune seas
 23–33  | Massive canyons
@@ -2982,13 +2982,13 @@ Roll   | Result
 56–66  | Sprawling salt flats
 67–77  | Vast plateaus
 78–88  | Vibrant terrain colors
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Cavernous sinkholes
 8–14   | Engulfing sandstorms
 15–21  | Fleeting rainstorms and flash floods
@@ -3002,8 +3002,8 @@ Roll   | Result
 71–77  | Towering rock formations
 78–84  | Violent electrical storms
 85–91  | Windborne metallic sand
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3044,7 +3044,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Fiery world-spanning chasms
 12–22  | Glowing rivers of lava
 23–33  | Lightning-wracked ash clouds
@@ -3053,13 +3053,13 @@ Roll   | Result
 56–66  | Once verdant terrain
 67–77  | Towering mountain ranges
 78–88  | World-spanning fissures
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Blinding ash storms
 8–14   | Catastrophic earthquakes
 15–21  | Colorful geothermal springs
@@ -3073,8 +3073,8 @@ Roll   | Result
 71–77  | Scalding geysers
 78–84  | Silica or metal storms
 85–91  | Steaming mudflats
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3115,7 +3115,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Broken moon
 12–22  | Perpetual overcast
 23–33  | Cratered surface
@@ -3124,13 +3124,13 @@ Roll   | Result
 56–66  | Vast wastelands
 67–77  | Irradiated atmosphere
 78–88  | Orbiting ship graveyard
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Acid pools
 8–14   | Ash dunes
 15–21  | Corrosive rains
@@ -3144,8 +3144,8 @@ Roll   | Result
 71–77  | Scarred battlefields
 78–84  | Ship graveyards
 85–91  | Whispers of the dead
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3186,7 +3186,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Feeble sunlight
 12–22  | Supersized ice volcano
 23–33  | Frozen oceans
@@ -3195,13 +3195,13 @@ Roll   | Result
 56–66  | World-spanning ice canyon
 67–77  | Snowbound mountains
 78–88  | Sky-breaching geysers
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Abyssal ice fissures
 8–14   | Blinding snow storms
 15–21  | Clusters of ice spikes
@@ -3215,8 +3215,8 @@ Roll   | Result
 71–77  | Subsurface liquid oceans
 78–84  | Vibrant auroras
 85–91  | Wind-carved ice formations
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3257,7 +3257,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Complex ring system
 12–22  | Intense gravity well
 23–33  | Numerous moons
@@ -3266,13 +3266,13 @@ Roll   | Result
 56–66  | Severe electrical storms
 67–77  | Superheated atmosphere
 78–88  | Unusual atmospheric colors
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Clouds of metal particles
 8–14   | Crystalline rains
 15–21  | Floating glaciers
@@ -3286,8 +3286,8 @@ Roll   | Result
 71–77  | Towering thunderheads
 78–84  | Violent turbulence
 85–91  | Zones of localized atmosphere
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3328,7 +3328,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Cloud-breaching trees
 12–22  | Towering mountains
 23–33  | Expansive rivers or wetlands
@@ -3337,13 +3337,13 @@ Roll   | Result
 56–66  | Unusual vegetation color
 67–77  | Massive canyons
 78–88  | Persistent cloud cover
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Bioluminescent flora
 8–14   | Deep river gorges
 15–21  | Extensive exposed root systems
@@ -3357,8 +3357,8 @@ Roll   | Result
 71–77  | Torrential rainstorms
 78–84  | Violent electrical storms
 85–91  | Waterlogged caves
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3399,7 +3399,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Complex reef systems
 12–22  | Emerging volcanoes
 23–33  | Floating forests
@@ -3408,13 +3408,13 @@ Roll   | Result
 56–66  | Scattered islands
 67–77  | Semi-frozen oceans
 78–88  | Unusual water color
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Abyssal trenches
 8–14   | Living islands
 15–21  | Luminescent seas
@@ -3428,8 +3428,8 @@ Roll   | Result
 71–77  | Unrelenting rainfall
 78–84  | Violent currents
 85–91  | Windborne waterspouts
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3470,7 +3470,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Barren plains
 12–22  | Constant asteroid strikes
 23–33  | Dense ring system
@@ -3479,13 +3479,13 @@ Roll   | Result
 56–66  | Misshapen form (low gravity)
 67–77  | Perpetual night
 78–88  | Towering plateaus
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Crystalline formations
 8–14   | Crystalline caves
 15–21  | Exposed mineral deposits
@@ -3499,8 +3499,8 @@ Roll   | Result
 71–77  | Subsurface magma flows
 78–84  | Swirling low-lying gases
 85–91  | Towering rocky spires
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3541,7 +3541,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Demolished space fleet
 12–22  | Preserved planetary fragment
 23–33  | Dense ring system
@@ -3550,13 +3550,13 @@ Roll   | Result
 56–66  | Unbroken moon
 67–77  | Geomagnetic storms
 78–88  | Intense solar radiation
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Broken cities
 8–14   | Colliding fragments
 15–21  | Energy storms
@@ -3570,8 +3570,8 @@ Roll   | Result
 71–77  | Swirling corrosive gases
 78–84  | Unstable and fracturing terrain
 85–91  | Venting magma
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3612,7 +3612,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Expansive fungal plains
 12–22  | Stagnant cloud cover
 23–33  | Fungal forests
@@ -3621,13 +3621,13 @@ Roll   | Result
 56–66  | Toxic seas
 67–77  | Sky-breaching fungus
 78–88  | Sludge-filled river networks
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Caustic gas storms
 8–14   | Corrosive, low-lying fog
 15–21  | Fungus-encrusted caves
@@ -3641,8 +3641,8 @@ Roll   | Result
 71–77  | Terrain marred by fleshy pustules
 78–84  | Toxic rain
 85–91  | Virulent fungal infestations
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3683,7 +3683,7 @@ Terminus | Outlands | Expanse | Result
 #### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Complex ring system
 12–22  | Numerous small moons
 23–33  | Dramatic seasonal variation
@@ -3692,8 +3692,8 @@ Roll   | Result
 56–66  | Vibrantly colored landscapes
 67–77  | Large moon
 78–88  | Narrow livable band
-89–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](#Precursor-Vaults)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 #### Diversity
 
@@ -3736,7 +3736,7 @@ Roll   | Result
 #### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Background radiation
 8–14   | Chaotically juxtaposed biomes
 15–21  | Creature boneyards
@@ -3750,8 +3750,8 @@ Roll   | Result
 71–77  | Signs of an engineered biosphere
 78–84  | Sudden weather fluctuations
 85–91  | Towering geological formations
-92–98  | [⏵Descriptor + Focus](#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](#Precursor-Vaults)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 #### Life
 
@@ -3787,7 +3787,7 @@ Terminus | Outlands | Expanse | Number
 ### First Look
 
 Roll   | Result
-:-----:|--------------------------------------------------
+:-----:|-------------------------------------------------------------
 1–3    | Beautiful architecture
 4–9    | Built from organic materials
 10–15  | Built from random scrap
@@ -3807,13 +3807,13 @@ Roll   | Result
 77–80  | Sprawling or dispersed structures
 81–83  | Temporary or seasonal location
 84–87  | Toxic or polluted habitat
-88–90  | Within or near [⏵Precursor Vault](#Precursor-Vaults)
-91–100 | [⏵Descriptor + Focus](#Descriptor)
+88–90  | Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)
+91–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Initial Contact
 
 Roll   | Result
-:-----:|-------------------------------
+:-----:|------------------------------------------
 1–20   | Welcoming
 21–30  | Neutral / automated
 31–50  | Wary
@@ -3824,7 +3824,7 @@ Roll   | Result
 87–89  | Captured
 90–92  | Unresponsive
 93–95  | Destroyed
-96–100 | [⏵Derelict](#Derelicts)
+96–100 | [⏵Derelict](Starforged/Oracles/Derelicts)
 
 ### Authority
 
@@ -3843,7 +3843,7 @@ Roll   | Result
 Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–5    | Agriculture
 6–7    | Archeology
 8–9    | Automation
@@ -3876,14 +3876,14 @@ Roll   | Result
 87–88  | Terraforming
 89–92  | Trade
 93–95  | Warfare
-96–100 | [⏵Action + Theme](#Action)
+96–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ### Settlement Trouble
 
 Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–3    | Battle for leadership
 4–6    | Betrayal from within
 7–8    | Caught in the crossfire
@@ -3917,7 +3917,7 @@ Roll   | Result
 84–86  | Toxic waste or pollution
 87–88  | Volatile energy source
 89–90  | Vulnerable lifeforms
-91–100 | [⏵Action + Theme](#Action)
+91–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ### Settlement Name
 
@@ -4030,18 +4030,18 @@ Roll | Result
 
 ### Space Sighting
 
-Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](moves.md#Ask-the-Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](moves.md#Undertake-an-Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
+Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
 
 Terminus | Outlands | Expanse | Result
-:-------:|:--------:|:-------:|------------------------------------------------
-1–15     | 1–15     | 1–15    | [⏵Stellar Object](#Stellar-Object)
-16–35    | 16–35    | 16–35   | [⏵Planet](#Planets)
-36–40    | 36–38    | 36–37   | [⏵Settlement](#Settlements)
-41–47    | 39–43    | 38–39   | [⏵Starship](#Starships)
-48–51    | 44–46    | 40–41   | [⏵Derelict](#Derelicts)
-52–53    | 47–49    | 42–45   | [⏵Precursor Vault](#Precursor-Vaults)
-54–55    | 50–52    | 46–49   | [⏵Creature](#Creatures)
-56–60    | 53–58    | 50–56   | [⏵Descriptor + Focus](#Descriptor)
+:-------:|:--------:|:-------:|-----------------------------------------------------------
+1–15     | 1–15     | 1–15    | [⏵Stellar Object](Starforged/Oracles/Space/Stellar_Object)
+16–35    | 16–35    | 16–35   | [⏵Planet](Starforged/Oracles/Planets)
+36–40    | 36–38    | 36–37   | [⏵Settlement](Starforged/Oracles/Settlements)
+41–47    | 39–43    | 38–39   | [⏵Starship](Starforged/Oracles/Starships)
+48–51    | 44–46    | 40–41   | [⏵Derelict](Starforged/Oracles/Derelicts)
+52–53    | 47–49    | 42–45   | [⏵Precursor Vault](Starforged/Oracles/Vaults)
+54–55    | 50–52    | 46–49   | [⏵Creature](Starforged/Oracles/Creatures)
+56–60    | 53–58    | 50–56   | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 61–65    | 59–63    | 57–61   | Debris field: Mineral asteroids
 66–68    | 64–66    | 62–64   | Debris field: Frozen asteroids
 69–70    | 67–68    | 65–66   | Debris field: Crystalline asteroids
@@ -4169,12 +4169,12 @@ Roll  | Result
 88–90 | Troubling visions or apparitions
 91–93 | True nature of a cargo, occupant, or passenger is revealed
 94–96 | Unsettling sounds or disturbances
-97–99 | [⏵Action + Theme](#Action)
+97–99 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100   | Roll twice
 
 ### Spaceborne Opportunity
 
-Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------------------------------------
@@ -4208,35 +4208,35 @@ Roll   | Result
 
 ### Type
 
-Roll   | Class                             | Typical Role
-:-----:|-----------------------------------|-----------------------------------------------
-1–2    | Carrier                           | Launches fighters
-3–6    | Corvette                          | Light attack ship
-7–11   | Courier                           | Fast transport
-12–14  | Cruiser                           | Medium attack ship
-15–16  | Dreadnought                       | Heavy attack ship
-17–19  | Escape pod                        | Survival craft
-20–22  | Foundry                           | Mobile construction platform
-23–27  | Harvester                         | Fuel or energy excavator
-28–33  | Hauler                            | Heavy transport
-34–36  | Hunter                            | Stealthy attack ship
-37–38  | Ironhome                          | Habitat
-39–42  | Mender                            | Utility or repair
-43–47  | Outbounder                        | Remote survey or research
-48–50  | Pennant                           | Command ship
-51–56  | Prospector                        | Mineral excavator
-57–61  | Reclaimer                         | Salvage or rescue
-62–64  | Shuttle                           | Short-range transport
-65–67  | Snub fighter                      | Small attack craft
-68–82  | Multipurpose                      | [⏵Starship Mission](#Starship-Mission)
-83–84  | Unusual or unknown                | --
-85–94  | [⏵Fleet](#Fleet) | --
-95–100 | Ships in conflict (roll twice)    | --
+Roll   | Class                                        | Typical Role
+:-----:|----------------------------------------------|----------------------------------------------------------
+1–2    | Carrier                                      | Launches fighters
+3–6    | Corvette                                     | Light attack ship
+7–11   | Courier                                      | Fast transport
+12–14  | Cruiser                                      | Medium attack ship
+15–16  | Dreadnought                                  | Heavy attack ship
+17–19  | Escape pod                                   | Survival craft
+20–22  | Foundry                                      | Mobile construction platform
+23–27  | Harvester                                    | Fuel or energy excavator
+28–33  | Hauler                                       | Heavy transport
+34–36  | Hunter                                       | Stealthy attack ship
+37–38  | Ironhome                                     | Habitat
+39–42  | Mender                                       | Utility or repair
+43–47  | Outbounder                                   | Remote survey or research
+48–50  | Pennant                                      | Command ship
+51–56  | Prospector                                   | Mineral excavator
+57–61  | Reclaimer                                    | Salvage or rescue
+62–64  | Shuttle                                      | Short-range transport
+65–67  | Snub fighter                                 | Small attack craft
+68–82  | Multipurpose                                 | [⏵Starship Mission](Starforged/Oracles/Starships/Mission)
+83–84  | Unusual or unknown                           | --
+85–94  | [⏵Fleet](Starforged/Oracles/Starships/Fleet) | --
+95–100 | Ships in conflict (roll twice)               | --
 
 ### Fleet
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–10   | Battle fleet
 11–25  | Pirate wing
 26–35  | Raider horde
@@ -4244,12 +4244,12 @@ Roll   | Result
 51–60  | Settler caravan
 61–70  | Trade caravan
 71–90  | Transport and escorts
-91–100 | [⏵Starship Mission](#Starship-Mission)
+91–100 | [⏵Starship Mission](Starforged/Oracles/Starships/Mission)
 
 ### Initial Contact
 
 Roll   | Result
-:-----:|-------------------------------
+:-----:|------------------------------------------
 1–3    | Familiar
 4–15   | Friendly
 16–25  | Neutral / automated
@@ -4261,12 +4261,12 @@ Roll   | Result
 81–85  | In battle
 86–90  | Unresponsive
 91–95  | Destroyed
-96–100 | [⏵Derelict](#Derelicts)
+96–100 | [⏵Derelict](Starforged/Oracles/Derelicts)
 
 ### First Look
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–4    | Abnormal sensor readings
 5–8    | Brightly painted
 9–13   | Bristling with weapons
@@ -4288,14 +4288,14 @@ Roll   | Result
 81–85  | Scarred hull
 86–90  | Built from scrap
 91–94  | Towing or linked
-95–100 | [⏵Descriptor + Focus](#Descriptor)
+95–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Starship Mission
 
 Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
 
 Terminus | Outlands | Expanse | Result
-:-------:|:--------:|:-------:|---------------------------------------
+:-------:|:--------:|:-------:|--------------------------------------------------
 1–3      | 1–2      | 1–2     | Blockade a location
 4–6      | 3–4      | 3–4     | Break a blockade
 7–9      | 5–7      | 5–8     | Collect a resource
@@ -4326,7 +4326,7 @@ Terminus | Outlands | Expanse | Result
 78–79    | 79–80    | 78–79   | Test a technology
 80–82    | 81–83    | 80–83   | Transport cargo
 83–85    | 84–85    | 84–85   | Transport passengers
-86–90    | 86–90    | 86–90   | [⏵Action + Theme](#Action)
+86–90    | 86–90    | 86–90   | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 91–100   | 91–100   | 91–100  | Roll twice
 
 ### Starship Name
@@ -4507,7 +4507,7 @@ Roll   | Result
 ### Outer First Look
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Corrupting its environment
 4–7    | Automated defenses
 8–10   | Breached exterior
@@ -4537,7 +4537,7 @@ Roll   | Result
 86–89  | Sound or signal
 90–92  | Strong gravity well
 93–95  | Surrounded by destruction
-96–100 | [⏵Descriptor + Focus](#Descriptor)
+96–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Interior
 
@@ -4548,7 +4548,7 @@ If you enter the site, check the Inner First Look table for initial impressions 
 Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Abnormal gravity
 4–6    | Automated defenses
 7–9    | Biological infestation
@@ -4580,12 +4580,12 @@ Roll   | Result
 85–87  | Toxic residue
 88–90  | Well-preserved
 91–93  | Wet or humid
-94–100 | [⏵Descriptor + Focus](#Descriptor)
+94–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 #### Interior Feature
 
 Roll   | Result
-:-----:|-------------------------------------------------------
+:-----:|------------------------------------------------------------------
 1–3    | Ascending or descending path
 4–6    | Biological growths
 7–8    | Blood trail
@@ -4618,13 +4618,13 @@ Roll   | Result
 77–79  | Unintelligible whispers
 80–82  | Vaulted chamber
 83–85  | Vertical shaft
-86–90  | Transition into the [⏵Sanctum](#Sanctum)
-91–95  | [⏵Descriptor + Focus](#Descriptor)
+86–90  | Transition into the [⏵Sanctum](Starforged/Oracles/Vaults/Sanctum)
+91–95  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 96–100 | Roll twice
 
 #### Interior Peril
 
-Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and are prompted to envision a peril.
+Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and are prompted to envision a peril.
 
 Roll  | Result
 :----:|------------------------------------------------------
@@ -4647,12 +4647,12 @@ Roll  | Result
 81–85 | Tempting location or object holds hidden dangers
 86–90 | Toxic atmosphere
 91–95 | Unnerving sound or sensation
-96–99 | [⏵Action + Theme](#Action)
+96–99 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100   | Roll twice
 
 #### Interior Opportunity
 
-Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and are prompted to envision an opportunity.
+Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and are prompted to envision an opportunity.
 
 Roll   | Result
 :-----:|--------------------------------------------------
@@ -4676,7 +4676,7 @@ As you delve deeper into a vault, the corruption and strangeness of the place ta
 Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.
 
 Roll   | Result
-:-----:|--------------------------------------------
+:-----:|--------------------------------------------------
 1–3    | Capture or control of other beings
 4–6    | Command or communication relay
 7–9    | Commemoration of an event
@@ -4704,13 +4704,13 @@ Roll   | Result
 81–83  | Surveying or monitoring of a location
 84–87  | Transformation of terrain or environments
 88–90  | Worship of a god or being
-91–95  | [⏵Action + Theme](#Action)
+91–95  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 96–100 | Roll twice
 
 #### Sanctum Feature
 
 Roll   | Result
-:-----:|------------------------------------------------------
+:-----:|----------------------------------------------------------
 1–2    | Abyssal pit or chasm
 3–5    | Altered gravity
 6–7    | Area filled with strange liquid
@@ -4744,7 +4744,7 @@ Roll   | Result
 83–85  | Visions or reflections of another reality
 86–88  | Warped or misshapen spaces
 89–90  | Whispering voices speak to you
-91–95  | [⏵Descriptor + Focus](#Descriptor)
+91–95  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 96–100 | Roll twice
 
 #### Sanctum Peril
@@ -4770,7 +4770,7 @@ Roll  | Result
 81–85 | Sudden structural collapse or failure
 86–90 | Temptations to linger or remain in this site
 91–95 | You are marked by physical corruption or mutation
-96–99 | [⏵Action + Theme](#Action)
+96–99 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100   | Roll twice
 
 #### Sanctum Opportunity

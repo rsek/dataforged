@@ -69,7 +69,7 @@ Roll   | Result
 ## Outer First Look
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Corrupting its environment
 4–7    | Automated defenses
 8–10   | Breached exterior
@@ -99,7 +99,7 @@ Roll   | Result
 86–89  | Sound or signal
 90–92  | Strong gravity well
 93–95  | Surrounded by destruction
-96–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+96–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ## Interior
 
@@ -110,7 +110,7 @@ If you enter the site, check the Inner First Look table for initial impressions 
 Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Abnormal gravity
 4–6    | Automated defenses
 7–9    | Biological infestation
@@ -142,12 +142,12 @@ Roll   | Result
 85–87  | Toxic residue
 88–90  | Well-preserved
 91–93  | Wet or humid
-94–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+94–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Interior Feature
 
 Roll   | Result
-:-----:|-------------------------------------------------------
+:-----:|------------------------------------------------------------------
 1–3    | Ascending or descending path
 4–6    | Biological growths
 7–8    | Blood trail
@@ -180,13 +180,13 @@ Roll   | Result
 77–79  | Unintelligible whispers
 80–82  | Vaulted chamber
 83–85  | Vertical shaft
-86–90  | Transition into the [⏵Sanctum](#Sanctum)
-91–95  | [⏵Descriptor + Focus](core.md#Descriptor)
+86–90  | Transition into the [⏵Sanctum](Starforged/Oracles/Vaults/Sanctum)
+91–95  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 96–100 | Roll twice
 
 ### Interior Peril
 
-Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and are prompted to envision a peril.
+Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and are prompted to envision a peril.
 
 Roll  | Result
 :----:|------------------------------------------------------
@@ -209,12 +209,12 @@ Roll  | Result
 81–85 | Tempting location or object holds hidden dangers
 86–90 | Toxic atmosphere
 91–95 | Unnerving sound or sensation
-96–99 | [⏵Action + Theme](core.md#Action)
+96–99 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100   | Roll twice
 
 ### Interior Opportunity
 
-Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and are prompted to envision an opportunity.
+Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and are prompted to envision an opportunity.
 
 Roll   | Result
 :-----:|--------------------------------------------------
@@ -238,7 +238,7 @@ As you delve deeper into a vault, the corruption and strangeness of the place ta
 Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.
 
 Roll   | Result
-:-----:|--------------------------------------------
+:-----:|--------------------------------------------------
 1–3    | Capture or control of other beings
 4–6    | Command or communication relay
 7–9    | Commemoration of an event
@@ -266,13 +266,13 @@ Roll   | Result
 81–83  | Surveying or monitoring of a location
 84–87  | Transformation of terrain or environments
 88–90  | Worship of a god or being
-91–95  | [⏵Action + Theme](core.md#Action)
+91–95  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 96–100 | Roll twice
 
 ### Sanctum Feature
 
 Roll   | Result
-:-----:|------------------------------------------------------
+:-----:|----------------------------------------------------------
 1–2    | Abyssal pit or chasm
 3–5    | Altered gravity
 6–7    | Area filled with strange liquid
@@ -306,7 +306,7 @@ Roll   | Result
 83–85  | Visions or reflections of another reality
 86–88  | Warped or misshapen spaces
 89–90  | Whispering voices speak to you
-91–95  | [⏵Descriptor + Focus](core.md#Descriptor)
+91–95  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 96–100 | Roll twice
 
 ### Sanctum Peril
@@ -332,7 +332,7 @@ Roll  | Result
 81–85 | Sudden structural collapse or failure
 86–90 | Temptations to linger or remain in this site
 91–95 | You are marked by physical corruption or mutation
-96–99 | [⏵Action + Theme](core.md#Action)
+96–99 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100   | Roll twice
 
 ### Sanctum Opportunity

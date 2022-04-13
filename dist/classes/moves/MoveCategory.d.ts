@@ -1,15 +1,9 @@
 import { Move, Source } from "../index.js";
-import type { IDisplay, ISource, MoveCategoryId, MoveCategoryName, MoveCategoryTitle } from "../../json_out/index.js";
+import { MoveCategoryDisplay } from "./MoveCategoryDisplay.js";
+import type { Gamespace } from "../../json_out/common/Gamespace.js";
+import type { ISource, MoveCategoryId, MoveCategoryName } from "../../json_out/index.js";
 import type { IMoveCategory } from "../../json_out/moves/IMoveCategory.js";
 import type { IMoveCategoryYaml } from "../../yaml_in/moves/IMoveCategoryYaml.js";
-/**
- * @internal
- */
-export declare class MoveCategoryDisplay implements IDisplay {
-    Title: MoveCategoryTitle;
-    Color: string;
-    constructor(title: MoveCategoryTitle, color: string);
-}
 export declare class MoveCategory implements IMoveCategory {
     $id: MoveCategoryId;
     Name: MoveCategoryName;
@@ -17,6 +11,6 @@ export declare class MoveCategory implements IMoveCategory {
     Description: string;
     Moves: Move[];
     Display: MoveCategoryDisplay;
-    constructor(json: IMoveCategoryYaml, ...ancestorSourceJson: ISource[]);
+    constructor(json: IMoveCategoryYaml, gamespace: Gamespace, ...ancestorSourceJson: ISource[]);
 }
 //# sourceMappingURL=MoveCategory.d.ts.map

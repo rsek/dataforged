@@ -1,5 +1,6 @@
 
 import { OracleContent , OracleDisplay , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 
 import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
@@ -29,6 +30,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   Oracles?: Oracle[] | undefined;
   constructor(
     json: IOracleYaml,
+    gamespace: Gamespace,
     category: OracleCategoryId,
     memberOf?: IOracle["$id"],
     ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
@@ -44,7 +46,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     // if (!is<IOracleInfoData>(json)) {
     //   throw new Error("json does not conform to IOracleInfoData!");
     // }
-    this.$id = buildOracleId(jsonClone, ...ancestorsJson) as OracleTableId;
+    this.$id = buildOracleId<OracleTableId>(gamespace, jsonClone, ...ancestorsJson);
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = jsonClone.Name;
     this.Aliases = jsonClone.Aliases;
@@ -81,7 +83,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
         if (jsonClone.Content) {
           propagateToChildren(jsonClone.Content, "Content", oracleInfo);
         }
-        return new Oracle(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson);
+        return new Oracle(oracleInfo, gamespace, this.Category, this.$id, jsonClone, ...ancestorsJson);
       });
     }
     if (this.Table) {

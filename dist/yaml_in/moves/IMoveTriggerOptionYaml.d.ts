@@ -1,5 +1,6 @@
-import type { IMoveTriggerOption, RollType } from "../../json_out/index.js";
-import type { PartialBy } from "../../utils/types/PartialBy.js";
-export interface IMoveTriggerOptionYaml<T extends RollType> extends PartialBy<IMoveTriggerOption<T>, "Method" | "$id" | "Custom stat"> {
+import type { IMoveTriggerOption, ProgressType, RollableStat, RollType } from "../../json_out/index.js";
+import type { StubBy } from "../../utils/types/Stub.js";
+export interface IMoveTriggerOptionYaml<T extends RollType = RollType> extends StubBy<IMoveTriggerOption<T>, "Method" | "Custom stat", "$id" | "Using"> {
+    Using?: (RollableStat | ProgressType | "${{Asset_Condition_Meter}}")[] | undefined;
 }
 //# sourceMappingURL=IMoveTriggerOptionYaml.d.ts.map

@@ -1,5 +1,5 @@
 /**
- * Types describing asset cards in *Ironsworn: Starforged*.
+ * Types describing asset cards in *Ironsworn* and *Ironsworn: Starforged*.
  * @module Json.Assets
  */
 
@@ -15,3 +15,4 @@ export * from "@json_out/assets/IAssetAbility.js";
 export * from "@json_out/assets/IAssetAttachment.js";
 export * from "@json_out/assets/IAssetInput.js";
 export * from "@json_out/assets/IAssetType.js";
+export * from "@json_out/assets/ISelectInput.js";

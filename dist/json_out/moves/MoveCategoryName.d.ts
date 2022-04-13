@@ -1,3 +1,6 @@
+/**
+ * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.
+ */
 declare enum MoveCategoryName {
     Session = "Session",
     Adventure = "Adventure",
@@ -9,8 +12,7 @@ declare enum MoveCategoryName {
     Recover = "Recover",
     Threshold = "Threshold",
     Legacy = "Legacy",
-    Fate = "Fate",
-    Assets = "Assets"
+    Fate = "Fate"
 }
 export { MoveCategoryName };
 //# sourceMappingURL=MoveCategoryName.d.ts.map

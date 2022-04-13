@@ -9,9 +9,14 @@ import _ from "lodash-es";
  * @returns The original JSON object with all strings replaced.
  */
 export function replaceInAllStrings<T>(json: T, searchValue: string, replaceValue: string): T {
+  // console.log("args", arguments);
   const jsonClone = _.cloneDeep(json);
   jsonpath.apply(jsonClone, "$..*", (result) => {
+    // console.log(`replacing string '${searchValue}' with '${replaceValue}' in`, json);
     if (typeof result === "string" && result.includes(searchValue)) {
+      if (typeof replaceValue !== "string") {
+        throw new RangeError(`Expected a string to replace with, but received ${typeof replaceValue}`);
+      };
       const text = result;
       return text.replaceAll(searchValue, replaceValue);
     }

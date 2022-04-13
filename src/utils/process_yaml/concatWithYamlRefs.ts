@@ -11,10 +11,9 @@ import fs from "fs";
  * @param filePaths - The files to load.
  * @returns A JavaScript object with the following properties:
  */
-export function concatWithYamlRefs<T>(referencePath: fs.PathLike = REFS_PATH, ...filePaths: fs.PathLike[]) {
-  const refFiles: fs.PathLike[] = fs.readdirSync(REFS_PATH);
+export function concatWithYamlRefs<T>(referencePath: string = REFS_PATH, ...filePaths: string[]) {
   const refString = loadYamlRefs(referencePath);
-  const templateString = loadYamlTemplates(referencePath.toString() + "/templates/");
+  const templateString = loadYamlTemplates(referencePath + "/templates/");
   const fileStrings: string[] = filePaths.map(path => fs.readFileSync(path, { encoding: "utf-8" }));
   const dataStrings: string[] = [ refString, templateString, ...fileStrings ];
   const dataObject = yaml.load(dataStrings.join("\n\n")) as T & IYamlWithRef;

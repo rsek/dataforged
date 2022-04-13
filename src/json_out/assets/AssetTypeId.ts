@@ -1,6 +1,7 @@
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 
-type AssetTypeIdFragment = "Command_Vehicle" | "Companion" | "Deed" | "Module" | "Path" | "Support_Vehicle";
+export type AssetTypeIdFragment = "Command_Vehicle" | "Companion" | "Deed" | "Module" | "Path" | "Support_Vehicle";
 
-type AssetTypeId = `Assets/${AssetTypeIdFragment}`;
-export { AssetTypeId };
+export type AssetTypeId = `${Gamespace}/${AssetTypeIdBase}`;
 
+export type AssetTypeIdBase = `Assets/${AssetTypeIdFragment}`;

@@ -1,5 +1,6 @@
 import { CustomStat } from "./CustomStat.js";
 import { RollMethod } from "../../json_out/index.js";
+import { badJsonError } from "../../utils/logging/badJsonError.js";
 /**
  * @internal
  */
@@ -10,14 +11,17 @@ export class MoveTriggerOption {
         this.Text = json.Text;
         this["Roll type"] = json["Roll type"];
         this.Method = (_a = json.Method) !== null && _a !== void 0 ? _a : RollMethod.Any;
-        this.Using = (_b = json.Using) !== null && _b !== void 0 ? _b : [];
+        if (json.Using && json.Using.includes("${{Asset_Condition_Meter}}")) {
+            throw badJsonError(this.constructor, json, "`Using` includes an unexpected template string. It should be replaced before being sent to this constructor.");
+        }
+        else {
+            this.Using = (_b = json.Using) !== null && _b !== void 0 ? _b : [];
+        }
         if (json["Custom stat"]) {
             this["Custom stat"] = new CustomStat(json["Custom stat"], `${this.$id}/Custom_stat`);
-            this.Using.forEach(item => {
-                if (item === "${{Custom stat}}" && this["Custom stat"]) {
-                    item = this["Custom stat"].$id;
-                }
-            });
+            if (this.Using && this["Custom stat"]) {
+                this.Using = this.Using.map(item => { var _a; return item === "${{Custom_stat}}" ? (_a = this["Custom stat"]) === null || _a === void 0 ? void 0 : _a.$id : item; });
+            }
         }
     }
 }

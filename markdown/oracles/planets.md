@@ -5,25 +5,25 @@
 This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
 
 Roll   | Result
-:-----:|----------------------------------------------
-1–15   | [⏵Desert World](#Desert-World)
-16–30  | [⏵Furnace World](#Furnace-World)
-31–35  | [⏵Grave World](#Grave-World)
-36–50  | [⏵Ice World](#Ice-World)
-51–65  | [⏵Jovian World](#Jovian-World)
-66–70  | [⏵Jungle World](#Jungle-World)
-71–75  | [⏵Ocean World](#Ocean-World)
-76–90  | [⏵Rocky World](#Rocky-World)
-91–92  | [⏵Shattered World](#Shattered-World)
-93–98  | [⏵Tainted World](#Tainted-World)
-99–100 | [⏵Vital World](#Vital-World)
+:-----:|---------------------------------------------------------
+1–15   | [⏵Desert World](Starforged/Oracles/Planets/Desert)
+16–30  | [⏵Furnace World](Starforged/Oracles/Planets/Furnace)
+31–35  | [⏵Grave World](Starforged/Oracles/Planets/Grave)
+36–50  | [⏵Ice World](Starforged/Oracles/Planets/Ice)
+51–65  | [⏵Jovian World](Starforged/Oracles/Planets/Jovian)
+66–70  | [⏵Jungle World](Starforged/Oracles/Planets/Jungle)
+71–75  | [⏵Ocean World](Starforged/Oracles/Planets/Ocean)
+76–90  | [⏵Rocky World](Starforged/Oracles/Planets/Rocky)
+91–92  | [⏵Shattered World](Starforged/Oracles/Planets/Shattered)
+93–98  | [⏵Tainted World](Starforged/Oracles/Planets/Tainted)
+99–100 | [⏵Vital World](Starforged/Oracles/Planets/Vital)
 
 ## Planetside Peril
 
 Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
 
 Lifebearing | Lifeless | Result
-:----------:|:--------:|---------------------------------------------
+:----------:|:--------:|--------------------------------------------------
 1–3         | --       | Corrupted or mutated lifeform
 4–6         | --       | Signs of a lifeform's power or cunning
 7–9         | --       | Hazardous plant life or malignant spores
@@ -56,7 +56,7 @@ Lifebearing | Lifeless | Result
 88–90       | 84–87    | Visibility hindered by atmospheric effects
 91–93       | 88–91    | Worrying arrival of a ship or vehicle
 94–96       | 92–95    | Wreckage or ruins portend a new threat
-97–99       | 96–99    | [⏵Action + Theme](core.md#Action)
+97–99       | 96–99    | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100         | 100      | Roll twice
 
 ## Planetside Opportunity
@@ -119,7 +119,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Dry seabeds
 12–22  | Expansive dune seas
 23–33  | Massive canyons
@@ -128,13 +128,13 @@ Roll   | Result
 56–66  | Sprawling salt flats
 67–77  | Vast plateaus
 78–88  | Vibrant terrain colors
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Cavernous sinkholes
 8–14   | Engulfing sandstorms
 15–21  | Fleeting rainstorms and flash floods
@@ -148,8 +148,8 @@ Roll   | Result
 71–77  | Towering rock formations
 78–84  | Violent electrical storms
 85–91  | Windborne metallic sand
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -190,7 +190,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Fiery world-spanning chasms
 12–22  | Glowing rivers of lava
 23–33  | Lightning-wracked ash clouds
@@ -199,13 +199,13 @@ Roll   | Result
 56–66  | Once verdant terrain
 67–77  | Towering mountain ranges
 78–88  | World-spanning fissures
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Blinding ash storms
 8–14   | Catastrophic earthquakes
 15–21  | Colorful geothermal springs
@@ -219,8 +219,8 @@ Roll   | Result
 71–77  | Scalding geysers
 78–84  | Silica or metal storms
 85–91  | Steaming mudflats
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -261,7 +261,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Broken moon
 12–22  | Perpetual overcast
 23–33  | Cratered surface
@@ -270,13 +270,13 @@ Roll   | Result
 56–66  | Vast wastelands
 67–77  | Irradiated atmosphere
 78–88  | Orbiting ship graveyard
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Acid pools
 8–14   | Ash dunes
 15–21  | Corrosive rains
@@ -290,8 +290,8 @@ Roll   | Result
 71–77  | Scarred battlefields
 78–84  | Ship graveyards
 85–91  | Whispers of the dead
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -332,7 +332,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Feeble sunlight
 12–22  | Supersized ice volcano
 23–33  | Frozen oceans
@@ -341,13 +341,13 @@ Roll   | Result
 56–66  | World-spanning ice canyon
 67–77  | Snowbound mountains
 78–88  | Sky-breaching geysers
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Abyssal ice fissures
 8–14   | Blinding snow storms
 15–21  | Clusters of ice spikes
@@ -361,8 +361,8 @@ Roll   | Result
 71–77  | Subsurface liquid oceans
 78–84  | Vibrant auroras
 85–91  | Wind-carved ice formations
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -403,7 +403,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Complex ring system
 12–22  | Intense gravity well
 23–33  | Numerous moons
@@ -412,13 +412,13 @@ Roll   | Result
 56–66  | Severe electrical storms
 67–77  | Superheated atmosphere
 78–88  | Unusual atmospheric colors
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Clouds of metal particles
 8–14   | Crystalline rains
 15–21  | Floating glaciers
@@ -432,8 +432,8 @@ Roll   | Result
 71–77  | Towering thunderheads
 78–84  | Violent turbulence
 85–91  | Zones of localized atmosphere
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -474,7 +474,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Cloud-breaching trees
 12–22  | Towering mountains
 23–33  | Expansive rivers or wetlands
@@ -483,13 +483,13 @@ Roll   | Result
 56–66  | Unusual vegetation color
 67–77  | Massive canyons
 78–88  | Persistent cloud cover
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Bioluminescent flora
 8–14   | Deep river gorges
 15–21  | Extensive exposed root systems
@@ -503,8 +503,8 @@ Roll   | Result
 71–77  | Torrential rainstorms
 78–84  | Violent electrical storms
 85–91  | Waterlogged caves
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -545,7 +545,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Complex reef systems
 12–22  | Emerging volcanoes
 23–33  | Floating forests
@@ -554,13 +554,13 @@ Roll   | Result
 56–66  | Scattered islands
 67–77  | Semi-frozen oceans
 78–88  | Unusual water color
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Abyssal trenches
 8–14   | Living islands
 15–21  | Luminescent seas
@@ -574,8 +574,8 @@ Roll   | Result
 71–77  | Unrelenting rainfall
 78–84  | Violent currents
 85–91  | Windborne waterspouts
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -616,7 +616,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Barren plains
 12–22  | Constant asteroid strikes
 23–33  | Dense ring system
@@ -625,13 +625,13 @@ Roll   | Result
 56–66  | Misshapen form (low gravity)
 67–77  | Perpetual night
 78–88  | Towering plateaus
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Crystalline formations
 8–14   | Crystalline caves
 15–21  | Exposed mineral deposits
@@ -645,8 +645,8 @@ Roll   | Result
 71–77  | Subsurface magma flows
 78–84  | Swirling low-lying gases
 85–91  | Towering rocky spires
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -687,7 +687,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Demolished space fleet
 12–22  | Preserved planetary fragment
 23–33  | Dense ring system
@@ -696,13 +696,13 @@ Roll   | Result
 56–66  | Unbroken moon
 67–77  | Geomagnetic storms
 78–88  | Intense solar radiation
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Broken cities
 8–14   | Colliding fragments
 15–21  | Energy storms
@@ -716,8 +716,8 @@ Roll   | Result
 71–77  | Swirling corrosive gases
 78–84  | Unstable and fracturing terrain
 85–91  | Venting magma
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -758,7 +758,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Expansive fungal plains
 12–22  | Stagnant cloud cover
 23–33  | Fungal forests
@@ -767,13 +767,13 @@ Roll   | Result
 56–66  | Toxic seas
 67–77  | Sky-breaching fungus
 78–88  | Sludge-filled river networks
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Caustic gas storms
 8–14   | Corrosive, low-lying fog
 15–21  | Fungus-encrusted caves
@@ -787,8 +787,8 @@ Roll   | Result
 71–77  | Terrain marred by fleshy pustules
 78–84  | Toxic rain
 85–91  | Virulent fungal infestations
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 
@@ -829,7 +829,7 @@ Terminus | Outlands | Expanse | Result
 ### Observed From Space
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–11   | Complex ring system
 12–22  | Numerous small moons
 23–33  | Dramatic seasonal variation
@@ -838,8 +838,8 @@ Roll   | Result
 56–66  | Vibrantly colored landscapes
 67–77  | Large moon
 78–88  | Narrow livable band
-89–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (orbital)](vaults.md)
+89–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)
 
 ### Diversity
 
@@ -882,7 +882,7 @@ Roll   | Result
 ### Planetside Feature
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|-----------------------------------------------------------
 1–7    | Background radiation
 8–14   | Chaotically juxtaposed biomes
 15–21  | Creature boneyards
@@ -896,8 +896,8 @@ Roll   | Result
 71–77  | Signs of an engineered biosphere
 78–84  | Sudden weather fluctuations
 85–91  | Towering geological formations
-92–98  | [⏵Descriptor + Focus](core.md#Descriptor)
-99–100 | [⏵Precursor Vault (planetside)](vaults.md)
+92–98  | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
+99–100 | [⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)
 
 ### Life
 

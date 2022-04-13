@@ -21,7 +21,7 @@ Terminus | Outlands | Expanse | Number
 ## First Look
 
 Roll   | Result
-:-----:|--------------------------------------------------
+:-----:|-------------------------------------------------------------
 1–3    | Beautiful architecture
 4–9    | Built from organic materials
 10–15  | Built from random scrap
@@ -41,13 +41,13 @@ Roll   | Result
 77–80  | Sprawling or dispersed structures
 81–83  | Temporary or seasonal location
 84–87  | Toxic or polluted habitat
-88–90  | Within or near [⏵Precursor Vault](vaults.md)
-91–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+88–90  | Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)
+91–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ## Initial Contact
 
 Roll   | Result
-:-----:|-------------------------------
+:-----:|------------------------------------------
 1–20   | Welcoming
 21–30  | Neutral / automated
 31–50  | Wary
@@ -58,7 +58,7 @@ Roll   | Result
 87–89  | Captured
 90–92  | Unresponsive
 93–95  | Destroyed
-96–100 | [⏵Derelict](derelicts.md)
+96–100 | [⏵Derelict](Starforged/Oracles/Derelicts)
 
 ## Authority
 
@@ -77,7 +77,7 @@ Roll   | Result
 Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–5    | Agriculture
 6–7    | Archeology
 8–9    | Automation
@@ -110,14 +110,14 @@ Roll   | Result
 87–88  | Terraforming
 89–92  | Trade
 93–95  | Warfare
-96–100 | [⏵Action + Theme](core.md#Action)
+96–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ## Settlement Trouble
 
 Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–3    | Battle for leadership
 4–6    | Betrayal from within
 7–8    | Caught in the crossfire
@@ -151,7 +151,7 @@ Roll   | Result
 84–86  | Toxic waste or pollution
 87–88  | Volatile energy source
 89–90  | Vulnerable lifeforms
-91–100 | [⏵Action + Theme](core.md#Action)
+91–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ## Settlement Name
 

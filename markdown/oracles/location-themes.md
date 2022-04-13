@@ -17,15 +17,15 @@ When mixing-and-matching a theme with another set of tables, use the techniques 
 Choose a theme that supports what you know of that location’s nature. For a random theme, roll on the table above.
 
 Roll   | Result
-:-----:|--------------------------------------------------
-1–15   | [⏵Chaotic](#Chaotic)
-16–25  | [⏵Fortified](#Fortified)
-26–35  | [⏵Haunted](#Haunted)
-36–50  | [⏵Infested](#Infested)
-51–60  | [⏵Inhabited](#Inhabited)
-61–75  | [⏵Mechanical](#Mechanical)
-76–90  | [⏵Ruined](#Ruined)
-91–100 | [⏵Sacred](#Sacred)
+:-----:|-------------------------------------------------------------
+1–15   | [⏵Chaotic](Starforged/Oracles/Location_Themes/Chaotic)
+16–25  | [⏵Fortified](Starforged/Oracles/Location_Themes/Fortified)
+26–35  | [⏵Haunted](Starforged/Oracles/Location_Themes/Haunted)
+36–50  | [⏵Infested](Starforged/Oracles/Location_Themes/Infested)
+51–60  | [⏵Inhabited](Starforged/Oracles/Location_Themes/Inhabited)
+61–75  | [⏵Mechanical](Starforged/Oracles/Location_Themes/Mechanical)
+76–90  | [⏵Ruined](Starforged/Oracles/Location_Themes/Ruined)
+91–100 | [⏵Sacred](Starforged/Oracles/Location_Themes/Sacred)
 
 ## Chaotic
 
@@ -36,7 +36,7 @@ Reality is corrupted or warped in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Alterations in the flow of time
 9–16   | Chaotic portal, focus, or conduit
 17–24  | Corrupted or warped architecture or terrain
@@ -49,14 +49,14 @@ Roll   | Result
 73–80  | Lifeforms mutated or altered by chaos
 81–88  | Lifeforms spawned from chaos
 89–96  | Visions of your past or future
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
 Use this table to help envision a complication or hazard.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|--------------------------------------------------
 1–9    | Chaos makes its mark upon you
 10–18  | Chaos spreads or intensifies
 19–27  | Chaos tempts or lures you
@@ -67,7 +67,7 @@ Roll   | Result
 64–72  | Foes harness or wield chaos
 73–81  | Hazardous environmental changes
 82–90  | Lifeforms made hostile by chaos
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -91,7 +91,7 @@ Enemies defend this place against intruders.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Captives or prisoners
 9–16   | Control area or terminal
 17–24  | Empty or inactive area
@@ -104,7 +104,7 @@ Roll   | Result
 73–80  | Prototype technology or equipment
 81–88  | Robotic assistant or watchful AI
 89–96  | Support personnel at work
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -122,7 +122,7 @@ Roll   | Result
 64–72  | Problematic alliance or affiliation is revealed
 73–81  | Revealed schemes of an enemy leader create new urgency
 82–90  | Your plan is undone by an unexpected complication
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -146,7 +146,7 @@ Restless spirits are bound to this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Disembodied voices
 9–16   | Eerie cold
 17–24  | Foreboding omen or message
@@ -159,7 +159,7 @@ Roll   | Result
 73–80  | Twisted or altered architecture or terrain
 81–88  | Unnatural blight, decay, or ruin
 89–96  | Unnatural mists or darkness
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -177,7 +177,7 @@ Roll   | Result
 64–72  | Sudden, shocking reveal of a ghostly manifestation or undead form
 73–81  | Trickery leads you into danger
 82–90  | Visions reveal a horrifying aspect of this place
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -201,7 +201,7 @@ Foul creatures have overrun this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|-----------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Corpse of an unfortunate victim
 9–16   | Eggs, cocoons, or nest
 17–24  | Environment corrupted by the infestation
@@ -214,7 +214,7 @@ Roll   | Result
 73–80  | Remains of a creature or remnants of a previous form
 81–88  | Territorial markings
 89–96  | Trail or evidence of a creature's passage
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -232,7 +232,7 @@ Roll   | Result
 64–72  | Lured or driven into a trap or dead-end
 73–81  | Powerful or dominant creature reveals itself
 82–90  | Toxic or sickening environment
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -256,7 +256,7 @@ People have built a community in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|----------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Conspicuous patrols or surveillance
 9–16   | Crews at work
 17–24  | Display or monument honors a notable cultural event
@@ -269,7 +269,7 @@ Roll   | Result
 73–80  | Unrepaired damage
 81–88  | Unusually empty or quiet area
 89–96  | Vendor or merchant hawking their wares
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -287,7 +287,7 @@ Roll   | Result
 64–72  | Signs of unrest or rebellion
 73–81  | Signs that you are being watched or followed
 82–90  | Unwanted attention from authority or enemies
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -311,7 +311,7 @@ Machines and technology hold sway in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|---------------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Control station or terminal
 9–16   | Device or technology with a mysterious function
 17–24  | Disassembled machinery or parts
@@ -324,7 +324,7 @@ Roll   | Result
 73–80  | Mechanical environment in motion or transforming
 81–88  | Mechanical wreckage or destruction
 89–96  | Power source for the machines
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -342,7 +342,7 @@ Roll   | Result
 64–72  | Moving machinery creates a danger or obstacle
 73–81  | Under surveillance by a central machine intelligence
 82–90  | Volatile technology
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -366,7 +366,7 @@ Time, disaster, or war have ravaged this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|--------------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Collapsed or broken structures or terrain
 9–16   | Device or artifact with residual power or function
 17–24  | Focal point or nexus of the destruction
@@ -379,7 +379,7 @@ Roll   | Result
 73–80  | Sights or sounds of structural instability
 81–88  | Signs of looting or scavenging
 89–96  | Survivors or guardians dwell among the ruins
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -397,7 +397,7 @@ Roll   | Result
 64–72  | Unearthed secrets best left buried
 73–81  | Unstable or broken path
 82–90  | Volatile device or artifact
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
@@ -421,7 +421,7 @@ Worshipers glorify strange powers in this place.
 Use this table to reveal a new aspect of the location.
 
 Roll   | Result
-:-----:|---------------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Adherents performing worship or enacting rituals
 9–16   | Altar or temple
 17–24  | Dwellings for the faithful
@@ -434,7 +434,7 @@ Roll   | Result
 73–80  | Religious art or idols
 81–88  | Subtle manifestations of mystical power or visions
 89–96  | Tokens or motifs representing the faith's domain
-97–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+97–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -452,7 +452,7 @@ Roll   | Result
 64–72  | Religious artifact evokes unnerving power
 73–81  | Unnatural corruption or decay fouls the environment
 82–90  | Zealots enact a ceremony to unlock forbidden powers
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity

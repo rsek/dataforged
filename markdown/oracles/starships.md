@@ -2,35 +2,35 @@
 
 ## Type
 
-Roll   | Class                             | Typical Role
-:-----:|-----------------------------------|-----------------------------------------------
-1–2    | Carrier                           | Launches fighters
-3–6    | Corvette                          | Light attack ship
-7–11   | Courier                           | Fast transport
-12–14  | Cruiser                           | Medium attack ship
-15–16  | Dreadnought                       | Heavy attack ship
-17–19  | Escape pod                        | Survival craft
-20–22  | Foundry                           | Mobile construction platform
-23–27  | Harvester                         | Fuel or energy excavator
-28–33  | Hauler                            | Heavy transport
-34–36  | Hunter                            | Stealthy attack ship
-37–38  | Ironhome                          | Habitat
-39–42  | Mender                            | Utility or repair
-43–47  | Outbounder                        | Remote survey or research
-48–50  | Pennant                           | Command ship
-51–56  | Prospector                        | Mineral excavator
-57–61  | Reclaimer                         | Salvage or rescue
-62–64  | Shuttle                           | Short-range transport
-65–67  | Snub fighter                      | Small attack craft
-68–82  | Multipurpose                      | [⏵Starship Mission](#Starship-Mission)
-83–84  | Unusual or unknown                | --
-85–94  | [⏵Fleet](#Fleet) | --
-95–100 | Ships in conflict (roll twice)    | --
+Roll   | Class                                        | Typical Role
+:-----:|----------------------------------------------|----------------------------------------------------------
+1–2    | Carrier                                      | Launches fighters
+3–6    | Corvette                                     | Light attack ship
+7–11   | Courier                                      | Fast transport
+12–14  | Cruiser                                      | Medium attack ship
+15–16  | Dreadnought                                  | Heavy attack ship
+17–19  | Escape pod                                   | Survival craft
+20–22  | Foundry                                      | Mobile construction platform
+23–27  | Harvester                                    | Fuel or energy excavator
+28–33  | Hauler                                       | Heavy transport
+34–36  | Hunter                                       | Stealthy attack ship
+37–38  | Ironhome                                     | Habitat
+39–42  | Mender                                       | Utility or repair
+43–47  | Outbounder                                   | Remote survey or research
+48–50  | Pennant                                      | Command ship
+51–56  | Prospector                                   | Mineral excavator
+57–61  | Reclaimer                                    | Salvage or rescue
+62–64  | Shuttle                                      | Short-range transport
+65–67  | Snub fighter                                 | Small attack craft
+68–82  | Multipurpose                                 | [⏵Starship Mission](Starforged/Oracles/Starships/Mission)
+83–84  | Unusual or unknown                           | --
+85–94  | [⏵Fleet](Starforged/Oracles/Starships/Fleet) | --
+95–100 | Ships in conflict (roll twice)               | --
 
 ## Fleet
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–10   | Battle fleet
 11–25  | Pirate wing
 26–35  | Raider horde
@@ -38,12 +38,12 @@ Roll   | Result
 51–60  | Settler caravan
 61–70  | Trade caravan
 71–90  | Transport and escorts
-91–100 | [⏵Starship Mission](#Starship-Mission)
+91–100 | [⏵Starship Mission](Starforged/Oracles/Starships/Mission)
 
 ## Initial Contact
 
 Roll   | Result
-:-----:|-------------------------------
+:-----:|------------------------------------------
 1–3    | Familiar
 4–15   | Friendly
 16–25  | Neutral / automated
@@ -55,12 +55,12 @@ Roll   | Result
 81–85  | In battle
 86–90  | Unresponsive
 91–95  | Destroyed
-96–100 | [⏵Derelict](derelicts.md)
+96–100 | [⏵Derelict](Starforged/Oracles/Derelicts)
 
 ## First Look
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–4    | Abnormal sensor readings
 5–8    | Brightly painted
 9–13   | Bristling with weapons
@@ -82,14 +82,14 @@ Roll   | Result
 81–85  | Scarred hull
 86–90  | Built from scrap
 91–94  | Towing or linked
-95–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+95–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ## Starship Mission
 
 Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
 
 Terminus | Outlands | Expanse | Result
-:-------:|:--------:|:-------:|---------------------------------------
+:-------:|:--------:|:-------:|--------------------------------------------------
 1–3      | 1–2      | 1–2     | Blockade a location
 4–6      | 3–4      | 3–4     | Break a blockade
 7–9      | 5–7      | 5–8     | Collect a resource
@@ -120,7 +120,7 @@ Terminus | Outlands | Expanse | Result
 78–79    | 79–80    | 78–79   | Test a technology
 80–82    | 81–83    | 80–83   | Transport cargo
 83–85    | 84–85    | 84–85   | Transport passengers
-86–90    | 86–90    | 86–90   | [⏵Action + Theme](core.md#Action)
+86–90    | 86–90    | 86–90   | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 91–100   | 91–100   | 91–100  | Roll twice
 
 ## Starship Name

@@ -2,7 +2,7 @@
 
 ## Action
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
 
 Roll | Result
 :---:|------------
@@ -109,7 +109,7 @@ Roll | Result
 
 ## Theme
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) about a goal, situation, or event, roll for an Action and Theme. Together, these provide an interpretative verb/noun prompt.
 
 Roll | Result
 :---:|-------------
@@ -216,7 +216,7 @@ Roll | Result
 
 ## Descriptor
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
 
 Roll | Result
 :---:|-------------
@@ -323,7 +323,7 @@ Roll | Result
 
 ## Focus
 
-When you [Ask the Oracle](moves.md#Ask-the-Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
+When you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) to help define the nature of a location, discovery, or encounter, roll for a Descriptor and a Focus for an adjective/noun prompt.
 
 Roll | Result
 :---:|--------------

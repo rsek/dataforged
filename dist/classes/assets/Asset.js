@@ -7,7 +7,7 @@ import { buildLog } from "../../utils/logging/buildLog.js";
  * @internal
  */
 export class Asset extends SourceInheritor {
-    constructor(json, parent) {
+    constructor(json, gamespace, parent) {
         var _a, _b, _c, _d, _e;
         super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, parent.Source);
         this["Asset Type"] = parent.$id;
@@ -46,8 +46,8 @@ export class Asset extends SourceInheritor {
         if (json.Abilities.length !== 3) {
             throw badJsonError(this.constructor, json.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
         }
-        this.Abilities = json.Abilities.map((ability, index) => new AssetAbility(ability, this.$id + `/Abilities/${index + 1}`, this));
         this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
+        this.Abilities = json.Abilities.map((abilityJson, index) => new AssetAbility(abilityJson, `${this.$id}/Abilities/${index + 1}`, gamespace, this));
     }
 }
 //# sourceMappingURL=Asset.js.map

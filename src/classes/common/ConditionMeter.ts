@@ -26,13 +26,13 @@ export class ConditionMeter extends MeterBase implements IConditionMeter {
     if (json.Conditions) {
       this.Conditions = json.Conditions;
     }
-    if (assetType === "Assets/Companion") {
+    if (assetType === "Starforged/Assets/Companion" || assetType === "Ironsworn/Assets/Companion") {
       this.Aliases = [MeterAlias.CompanionHealth];
     }
-    if (assetType === "Assets/Command_Vehicle") {
+    if (assetType === "Starforged/Assets/Command_Vehicle") {
       this.Aliases = [ MeterAlias.CommandVehicleIntegrity, MeterAlias.VehicleIntegrity ];
     }
-    if (assetType === "Assets/Support_Vehicle") {
+    if (assetType === "Starforged/Assets/Support_Vehicle") {
       this.Aliases = [
         MeterAlias.SupportVehicleIntegrity, MeterAlias.VehicleIntegrity
       ];

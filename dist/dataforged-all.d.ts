@@ -4,17 +4,35 @@ export declare enum ActorType {
     Faction = "Faction"
 }
 
-export declare type AlterMoveId = `${AssetAbilityId}/Alter_${MoveId | MoveIdGeneric}`;
+export declare type AlterMoveId = `${Gamespace}/${AlterMoveIdBase}`;
 
-export declare type AssetAbilityId = `${AssetId}/Abilities/${1 | 2 | 3}`;
+export declare type AlterMoveIdBase = `${AssetAbilityIdBase}/Alter_${MoveIdBase | MoveIdGenericBase}`;
 
-export declare type AssetConditionMeterId = "Attached_Asset_Condition_Meter" | "Asset_Condition_Meter" | `${AssetId}/Condition_Meter`;
+export declare type AssetAbilityId = `${Gamespace}/${AssetAbilityIdBase}`;
 
-export declare type AssetId = `${AssetTypeId}/${string}`;
+export declare type AssetAbilityIdBase = `${AssetIdBase}/Abilities/${number}`;
 
-export declare type AssetTypeId = `Assets/${AssetTypeIdFragment}`;
+export declare type AssetConditionMeterId = `${AssetId}/Condition_Meter`;
 
-declare type AssetTypeIdFragment = "Command_Vehicle" | "Companion" | "Deed" | "Module" | "Path" | "Support_Vehicle";
+export declare type AssetConditionMeterIdBase = `${AssetId}/Condition_Meter`;
+
+export declare type AssetConditionMeterIdYaml = AssetConditionMeterId | "${{Asset_Condition_Meter}}";
+
+/**
+ * An ID that references an asset condition meter.
+ * **Attached_Asset_Condition_Meter:** In *Ironsworn: Starforged* is is used by Module assets, which can attach to certain other assets (e.g. Starship, Rover); it indicates that the condition meter of the "parent" asset should be rolled. For example, a Module attached to a Starship would roll the Starship's condition meter.
+ */
+export declare type AssetConditionMeterRef = "Attached_Asset_Condition_Meter" | AssetConditionMeterId;
+
+export declare type AssetId = `${Gamespace}/${AssetIdBase}`;
+
+export declare type AssetIdBase = `${AssetTypeIdBase}/${string}`;
+
+export declare type AssetTypeId = `${Gamespace}/${AssetTypeIdBase}`;
+
+export declare type AssetTypeIdBase = `Assets/${AssetTypeIdFragment}`;
+
+export declare type AssetTypeIdFragment = "Command_Vehicle" | "Companion" | "Deed" | "Module" | "Path" | "Support_Vehicle";
 
 export declare type AssetTypeName = "Command Vehicle" | "Companion" | "Deed" | "Module" | "Path" | "Support Vehicle";
 
@@ -197,6 +215,8 @@ export declare enum ClockType {
     Campaign = "Campaign"
 }
 
+declare type ConditionMeterId = AssetConditionMeterId;
+
 /**
  * Standard player character condition meters.
  */
@@ -223,7 +243,7 @@ export declare enum CreatureScale {
     Vast = "Vast"
 }
 
-export declare type CustomStatId = `${string}/Custom_stat` | "${{Custom stat}}";
+export declare type CustomStatId = `${string}/Custom_stat` | "${{Custom_stat}}";
 
 export declare type CustomStatOptionId = `${CustomStatId}/${string}`;
 
@@ -301,7 +321,7 @@ export declare enum Dominion {
     Wealth = "Wealth"
 }
 
-export declare type EncounterId = `Encounters/${string}`;
+export declare type EncounterId = `${Gamespace}/Encounters/${string}`;
 
 export declare enum EncounterNature {
     Creature = "Creature",
@@ -357,6 +377,11 @@ export declare enum FringeGroup {
 export declare type GameObjectType = (ActorType | PlaceType);
 
 /**
+ * Some might say that "Gamespace" is a terrible pun. To them, I reply: you'll never take me alive.
+ */
+declare type Gamespace = "Starforged" | "Ironsworn";
+
+/**
  * Set by Oracles / Factions / Guild
  */
 export declare enum Guild {
@@ -405,13 +430,13 @@ export declare interface IActionRoll {
 
 export declare interface IAlterMove extends Omit<Partial<IMove>, "$id">, IHasId<AlterMoveId> {
     /**
-     * The `$id` of the move to be altered.
+     * The `$id` of the move to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply
      */
-    Move: IMove["$id"];
+    Move?: IMove["$id"] | null;
     /**
      * The trigger information to be added to the altered move.
      */
-    Trigger: IMoveTrigger;
+    Trigger?: IMoveTrigger | undefined;
 }
 
 /**
@@ -561,6 +586,7 @@ export declare interface IClockInput extends IInputBase {
  * Interface representing a condition meter.
  */
 export declare interface IConditionMeter extends IMeterBase {
+    $id: ConditionMeterId;
     Min: 0;
     /**
      * The conditions that can apply to this meter.
@@ -1385,8 +1411,13 @@ export declare enum MeterCondition {
 
 export declare type MeterType = "Momentum" | ConditionMeterName;
 
-export declare type MoveCategoryId = `Moves/${MoveCategoryName}`;
+export declare type MoveCategoryId = `${Gamespace}/${MoveCategoryIdBase}`;
 
+export declare type MoveCategoryIdBase = `Moves/${MoveCategoryName | "Assets"}`;
+
+/**
+ * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.
+ */
 export declare enum MoveCategoryName {
     Session = "Session",
     Adventure = "Adventure",
@@ -1398,15 +1429,21 @@ export declare enum MoveCategoryName {
     Recover = "Recover",
     Threshold = "Threshold",
     Legacy = "Legacy",
-    Fate = "Fate",
-    Assets = "Assets"
+    Fate = "Fate"
 }
 
 export declare type MoveCategoryTitle = `${MoveCategoryName} Moves`;
 
-export declare type MoveId = `Moves/${MoveCategoryName}/${string}`;
+export declare type MoveId = `${Gamespace}/${MoveIdBase}`;
 
-export declare type MoveIdGeneric = "Moves/*";
+export declare type MoveIdBase = `Moves/${MoveCategoryName | "Assets"}/${string}` | `Moves/${AssetAbilityIdBase}/${string}`;
+
+/**
+ * Placeholder Move ID indicating that *any* move is valid. For example, an {@link IAlterMove} with this as a `Move` key can be applied to any move that meets its other requirements.
+ */
+export declare type MoveIdGeneric = `${Gamespace}/${MoveIdGenericBase}`;
+
+export declare type MoveIdGenericBase = "Moves/*";
 
 export declare type MoveOutcomeId = `${MoveOutcomesId}/${RollOutcomeTypeIdFragment}${"" | `/${MatchIdFragment}`}`;
 
@@ -1415,6 +1452,18 @@ export declare type MoveOutcomesId = `${MoveId}/Outcomes`;
 declare type MoveRollId = `${string}/Options/${number}`;
 
 export declare type MoveTriggerId = `${MoveId}/Trigger`;
+
+export declare enum OracleCategoryFlatFragment {
+    CharacterCreation = "Character_Creation",
+    Characters = "Characters",
+    Core = "Core",
+    Creatures = "Creatures",
+    Factions = "Factions",
+    Misc = "Misc",
+    Moves = "Moves",
+    Space = "Space",
+    Starships = "Starships"
+}
 
 export declare enum OracleCategoryFlatName {
     CharacterCreation = "Character Creation",
@@ -1428,11 +1477,18 @@ export declare enum OracleCategoryFlatName {
     Starships = "Starships"
 }
 
-export declare type OracleCategoryFlatPath = `${OracleRoot}/${OracleCategoryFlatName}`;
+export declare type OracleCategoryFlatPath = `${OracleRoot}/${OracleCategoryFlatFragment}`;
 
 export declare type OracleCategoryId = OracleSubcategoryId | OracleCategoryFlatPath | OracleCategoryJaggedId;
 
-export declare type OracleCategoryJaggedId = `${OracleRoot}/${OracleCategoryJaggedName}`;
+export declare enum OracleCategoryJaggedFragment {
+    Derelicts = "Derelicts",
+    LocationThemes = "Location_Themes",
+    Planets = "Planets",
+    Vaults = "Vaults"
+}
+
+export declare type OracleCategoryJaggedId = `${OracleRoot}/${OracleCategoryJaggedFragment}`;
 
 export declare enum OracleCategoryJaggedName {
     Derelicts = "Derelicts",
@@ -1443,7 +1499,7 @@ export declare enum OracleCategoryJaggedName {
 
 export declare type OracleCategoryName = OracleCategoryFlatPath | OracleCategoryJaggedId | OracleSubcategoryName;
 
-export declare type OracleRoot = "Oracles";
+export declare type OracleRoot = `${Gamespace}/Oracles`;
 
 export declare type OracleSubcategoryId = `${OracleRoot}/${OracleSubcategoryPath}`;
 
@@ -1623,7 +1679,7 @@ export declare enum SelectInputOptionType {
  * A valid ID for a SettingTruth object.
  * @see {@link ISettingTruth}
  */
-export declare type SettingTruthId = `Setting_Truths/${SettingTruthIdFragment}`;
+export declare type SettingTruthId = `${Gamespace}/Setting_Truths/${SettingTruthIdFragment}`;
 
 export declare type SettingTruthIdFragment = "Cataclysm" | "Exodus" | "Communities" | "Iron" | "Laws" | "Religion" | "Magic" | "Communication_and_Data" | "Medicine" | "Artificial_Intelligence" | "War" | "Lifeforms" | "Precursors" | "Horrors";
 

@@ -1,6 +1,6 @@
-import type { AssetTypeId } from "@json_out/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
+import type { AssetTypeIdBase } from "@json_out/index.js";
 
-type AssetId = `${AssetTypeId}/${string}`;
+export type AssetId = `${Gamespace}/${AssetIdBase}`;
 
-export { AssetId };
-
+export type AssetIdBase = `${AssetTypeIdBase}/${string}`;

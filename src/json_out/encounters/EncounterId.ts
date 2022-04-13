@@ -1,3 +1,3 @@
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 
-type EncounterId = `Encounters/${string}`; export { EncounterId };
-
+export type EncounterId = `${Gamespace}/Encounters/${string}`;

@@ -1,5 +1,6 @@
 import { OracleCategory } from "@classes/index.js";
-import { REFS_PATH } from "@constants/index.js";
+import { MASTER_DATA_PATH, REFS_PATH } from "@constants/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { OracleCategoryName , OracleSubcategoryName } from "@json_out/index.js";
 import { getSubdirs } from "@utils/io/getSubdirs.js";
 import { getYamlFiles } from "@utils/io/getYamlFiles.js";
@@ -10,7 +11,7 @@ import type { IOracleCatRoot } from "@utils/process_yaml/loadOracleData.js";
 import { loadOracleData } from "@utils/process_yaml/loadOracleData.js";
 import type { IOracleCategoryYaml } from "@yaml_in/index.js";
 import type { IOracleParentCatRoot } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
-import type { PathLike } from "node:fs";
+import FastGlob from "fast-glob";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
@@ -29,19 +30,18 @@ interface IOracleSubcatRoot extends IOracleCatRoot {
  * It takes the data from the oracles directory and builds a list of OracleCategory objects.
  * @returns An array of OracleCategory objects.
  */
-export function buildOracles(): OracleCategory[] {
+export function buildOracles(gamespace: Gamespace = "Starforged"): OracleCategory[] {
   buildLog(buildOracles, "Building oracles...");
-  const filesOracleCategories: PathLike[] = getYamlFiles("oracles");
-  // console.info(filesOracleCategories);
+  // const oracleCatFiles: PathLike[] = getYamlFiles("Oracles");
+  const oracleCatFiles = FastGlob.sync(`${MASTER_DATA_PATH as string}/${gamespace}/Oracles/*.(yml|yaml)`, { onlyFiles: true });
 
-  const dirsOracleSubcategories: PathLike[] = getSubdirs("oracles");
-  const categoryRoot: IOracleParentCatRoot = loadOracleData(REFS_PATH, ...filesOracleCategories) as IOracleParentCatRoot;
+  const oracleSubcatFiles = FastGlob.sync(`${MASTER_DATA_PATH as string}/${gamespace}/Oracles/*/*.(yml|yaml)`, { onlyFiles: true });
+
+  const categoryRoot: IOracleParentCatRoot = loadOracleData(REFS_PATH, ...oracleCatFiles) as IOracleParentCatRoot;
 
   const categories = categoryRoot.Categories;
 
-  const filesOracleSubcategories: PathLike[] = dirsOracleSubcategories.map(dir => getYamlFiles("", dir)).flat(1);
-
-  const subcatRoot: IOracleSubcatRoot = loadOracleData(REFS_PATH, ...filesOracleSubcategories) as IOracleSubcatRoot;
+  const subcatRoot: IOracleSubcatRoot = loadOracleData(REFS_PATH, ...oracleSubcatFiles) as IOracleSubcatRoot;
 
   const subcategories = subcatRoot.Categories.map((subcatData) => {
     if (subcatData._templateCategory) {
@@ -72,7 +72,7 @@ export function buildOracles(): OracleCategory[] {
       parentCat.Categories.push(subcat);
     }
   });
-  const json: OracleCategory[] = categories.map(categoryData => new OracleCategory(categoryData));
+  const json: OracleCategory[] = categories.map(categoryData => new OracleCategory(categoryData, gamespace));
 
   const catCount = categories.length;
   const subcatCount = subcategories.length;

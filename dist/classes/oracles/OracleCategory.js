@@ -7,14 +7,14 @@ import _ from "lodash-es";
  * @internal
  */
 export class OracleCategory extends SourceInheritor {
-    constructor(json, category, ...ancestorsJson) {
+    constructor(json, gamespace, category, ...ancestorsJson) {
         var _a, _b;
         // if (!is<IOracleCategoryData>(json)) {
         //   buildLog(this.constructor, "Json does not conform to type!");
         //   throw new Error();
         // }
         super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, ..._.compact(ancestorsJson.map(item => item.Source)));
-        this.$id = buildOracleId(json, ...ancestorsJson);
+        this.$id = buildOracleId(gamespace, json, ...ancestorsJson);
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Aliases = json.Aliases;
@@ -33,7 +33,7 @@ export class OracleCategory extends SourceInheritor {
                 if (json.Requires) {
                     propagateToChildren(json.Requires, "Requires", oracleInfo);
                 }
-                return new Oracle(oracleInfo, this.$id, undefined, json, ...ancestorsJson);
+                return new Oracle(oracleInfo, gamespace, this.$id, undefined, json, ...ancestorsJson);
             });
         }
         if (json.Categories) {
@@ -44,7 +44,7 @@ export class OracleCategory extends SourceInheritor {
                 if (json.Requires) {
                     propagateToChildren(json.Requires, "Requires", oracleCat);
                 }
-                return new OracleCategory(oracleCat, this.$id, json, ...ancestorsJson);
+                return new OracleCategory(oracleCat, gamespace, this.$id, json, ...ancestorsJson);
             });
         }
     }

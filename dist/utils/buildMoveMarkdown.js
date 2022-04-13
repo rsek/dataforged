@@ -11,6 +11,6 @@ export function buildMoveMarkdown(data, mdPath) {
         "# Starforged Moves",
         data.map(moveCat => renderMoveCategory(moveCat, 2))
     ].flat(2).join("\n\n");
-    writeFileSync(mdPath + "moves.md", transformMoveLinks(allMoveText, true) + "\n", { encoding: "utf-8" });
+    writeFileSync(`${mdPath}/moves.md`, transformMoveLinks(allMoveText, true) + "\n", { encoding: "utf-8" });
 }
 //# sourceMappingURL=buildMoveMarkdown.js.map

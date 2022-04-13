@@ -1,35 +1,16 @@
 import { AssetType } from "../classes/index.js";
-import { getYamlFiles } from "./io/getYamlFiles.js";
-import { badJsonError } from "./logging/badJsonError.js";
-import { buildLog } from "./logging/buildLog.js";
+import { MASTER_DATA_PATH } from "../constants/index.js";
 import yaml from "js-yaml";
-import jp from "jsonpath";
 import fs from "fs";
-const assetPath = getYamlFiles().find(item => item.toString().match(/assets\.yaml$/));
 /**
  * Build and validate all asset objects from YAML.
  * @returns An array of Asset objects.
  */
-export function buildAssets() {
+export function buildAssets(gamespace = "Starforged") {
+    const assetPath = `${MASTER_DATA_PATH}/${gamespace}/Assets.yaml`;
     const data = fs.readFileSync(assetPath, { encoding: "utf-8" });
     const json = yaml.load(data);
-    const result = json["Asset Types"].map((assetType) => new AssetType(assetType, json.Source));
-    result.forEach(assetType => assetType.Assets.forEach(asset => {
-        jp.apply(asset, "$..Using", (stats) => {
-            return stats.map(stat => {
-                var _a, _b;
-                if (stat === "Asset_Condition_Meter") {
-                    if (!asset["Condition Meter"]) {
-                        throw badJsonError(buildAssets, stat, "Asset references asset condition meter, but it doesn't have one.");
-                    }
-                    buildLog(buildAssets, `Adding reference for ${(_a = asset["Condition Meter"]) === null || _a === void 0 ? void 0 : _a.$id}`);
-                    stat = (_b = asset["Condition Meter"]) === null || _b === void 0 ? void 0 : _b.$id;
-                }
-                return stat;
-            });
-        });
-        return asset;
-    }));
+    const result = json["Asset Types"].map(assetTypeYaml => new AssetType(assetTypeYaml, gamespace, json.Source));
     return result;
 }
 //# sourceMappingURL=buildAssets.js.map

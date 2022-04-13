@@ -3,10 +3,10 @@
 ## Faction Type
 
 Roll   | Result
-:-----:|-----------------------------------------------
-1–40   | [⏵Dominion](#Dominion)
-41–70  | [⏵Guild](#Guild)
-71–100 | [⏵Fringe Group](#Fringe-Group)
+:-----:|----------------------------------------------------------
+1–40   | [⏵Dominion](Starforged/Oracles/Factions/Dominion)
+41–70  | [⏵Guild](Starforged/Oracles/Factions/Guild)
+71–100 | [⏵Fringe Group](Starforged/Oracles/Factions/Fringe_Group)
 
 ## Influence
 
@@ -139,7 +139,7 @@ Roll   | Result
 88–90  | Subsume another faction
 91–93  | Transport a valued asset
 94–96  | Usurp leadership within a rival faction
-97–100 | [⏵Action + Theme](core.md#Action)
+97–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ## Faction Relationships
 
@@ -183,11 +183,11 @@ To generate a faction name, first roll or choose the name template. Then, follow
 An alternative approach to generating a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one that idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or pick.
 
 Roll   | Result
-:-----:|--------------------------------------------------------------------------------------------------------------------------------------------
-1–40   | \[[⏵Legacy](#Legacy)\] \[[⏵Affiliation](#Affiliation)\]
-41–55  | \[[⏵Legacy](#Legacy)\] \[[⏵Identity](#Identity)\]
-56–70  | \[[⏵Identity](#Identity)\] *of the* \[[⏵Legacy](#Legacy)\] \[[⏵Affiliation](#Affiliation)\]
-71–100 | \[[⏵Affiliation](#Affiliation)\] *of the* \[[⏵Legacy](#Legacy)\] \[[⏵Identity](#Identity)\]
+:-----:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1–40   | \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)\]
+41–55  | \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Identity](Starforged/Oracles/Factions/Identity)\]
+56–70  | \[[⏵Identity](Starforged/Oracles/Factions/Identity)\] *of the* \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)\]
+71–100 | \[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)\] *of the* \[[⏵Legacy](Starforged/Oracles/Factions/Legacy)\] \[[⏵Identity](Starforged/Oracles/Factions/Identity)\]
 
 ## Legacy
 
@@ -367,7 +367,7 @@ Roll   | Result
 88–90  | Trains in a demanding physical discipline or martial art
 91–93  | Wields unnatural abilities or strange technologies
 94–96  | Work or environment causes mutations
-97–100 | [⏵Action + Theme](core.md#Action)
+97–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 
 ## Faction Rumors
 
@@ -407,4 +407,4 @@ Roll   | Result
 88–90  | Suffering a shortage of key workers or personnel
 91–93  | Uprising or revolt is brewing from within
 94–96  | Vulnerable to attack or aggression
-97–100 | [⏵Action + Theme](core.md#Action)
+97–100 | [⏵Action + Theme](Starforged/Oracles/Core/Action)

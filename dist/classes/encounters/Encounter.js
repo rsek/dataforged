@@ -3,9 +3,9 @@ import { EncounterDisplay, EncounterVariant, Source } from "../index.js";
  * @internal
  */
 export class Encounter {
-    constructor(json, ...ancestorSourceJson) {
+    constructor(json, gamespace, ...ancestorSourceJson) {
         var _a;
-        this.$id = `Encounters/${json.Name.replaceAll(" ", "_")}`;
+        this.$id = `${gamespace}/Encounters/${json.Name.replaceAll(" ", "_")}`;
         this.Name = json.Name;
         this.Nature = json.Nature;
         this.Summary = json.Summary;

@@ -10,6 +10,18 @@ export var OracleCategoryFlatName;
     OracleCategoryFlatName["Space"] = "Space";
     OracleCategoryFlatName["Starships"] = "Starships";
 })(OracleCategoryFlatName || (OracleCategoryFlatName = {}));
+export var OracleCategoryFlatFragment;
+(function (OracleCategoryFlatFragment) {
+    OracleCategoryFlatFragment["CharacterCreation"] = "Character_Creation";
+    OracleCategoryFlatFragment["Characters"] = "Characters";
+    OracleCategoryFlatFragment["Core"] = "Core";
+    OracleCategoryFlatFragment["Creatures"] = "Creatures";
+    OracleCategoryFlatFragment["Factions"] = "Factions";
+    OracleCategoryFlatFragment["Misc"] = "Misc";
+    OracleCategoryFlatFragment["Moves"] = "Moves";
+    OracleCategoryFlatFragment["Space"] = "Space";
+    OracleCategoryFlatFragment["Starships"] = "Starships";
+})(OracleCategoryFlatFragment || (OracleCategoryFlatFragment = {}));
 export var OracleCategoryJaggedName;
 (function (OracleCategoryJaggedName) {
     OracleCategoryJaggedName["Derelicts"] = "Derelicts";
@@ -17,4 +29,11 @@ export var OracleCategoryJaggedName;
     OracleCategoryJaggedName["Planets"] = "Planets";
     OracleCategoryJaggedName["Vaults"] = "Vaults";
 })(OracleCategoryJaggedName || (OracleCategoryJaggedName = {}));
+export var OracleCategoryJaggedFragment;
+(function (OracleCategoryJaggedFragment) {
+    OracleCategoryJaggedFragment["Derelicts"] = "Derelicts";
+    OracleCategoryJaggedFragment["LocationThemes"] = "Location_Themes";
+    OracleCategoryJaggedFragment["Planets"] = "Planets";
+    OracleCategoryJaggedFragment["Vaults"] = "Vaults";
+})(OracleCategoryJaggedFragment || (OracleCategoryJaggedFragment = {}));
 //# sourceMappingURL=OracleCategoryName.js.map

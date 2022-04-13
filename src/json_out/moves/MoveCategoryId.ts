@@ -1,4 +1,6 @@
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { MoveCategoryName } from "@json_out/index.js";
 
-type MoveCategoryId = `Moves/${MoveCategoryName}`;export { MoveCategoryId };
+export type MoveCategoryId = `${Gamespace}/${MoveCategoryIdBase}`;
 
+export type MoveCategoryIdBase = `Moves/${MoveCategoryName|"Assets"}`;

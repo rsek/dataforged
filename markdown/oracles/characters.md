@@ -66,7 +66,7 @@ Roll   | Result
 ## Character Role
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–2    | Agent
 3–4    | AI
 5–6    | Artisan
@@ -113,13 +113,13 @@ Roll   | Result
 87–88  | Spacer
 89–90  | Technician
 91–92  | Thief
-93–95  | [⏵Action + Theme](core.md#Action)
+93–95  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 96–100 | Roll twice
 
 ## Character Goal
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–2    | Avenge a wrong
 3–4    | Build a home
 5–7    | Build a relationship
@@ -158,7 +158,7 @@ Roll   | Result
 75–76  | Spread faith
 77–78  | Travel to a place
 79–80  | Undermine a relationship
-81–90  | [⏵Action + Theme](core.md#Action)
+81–90  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 91–100 | Roll twice
 
 ## Revealed Character Aspect

@@ -2,18 +2,18 @@
 
 ## Space Sighting
 
-Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](moves.md#Ask-the-Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](moves.md#Undertake-an-Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
+Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
 
 Terminus | Outlands | Expanse | Result
-:-------:|:--------:|:-------:|------------------------------------------------
-1–15     | 1–15     | 1–15    | [⏵Stellar Object](#Stellar-Object)
-16–35    | 16–35    | 16–35   | [⏵Planet](planets.md)
-36–40    | 36–38    | 36–37   | [⏵Settlement](settlements.md)
-41–47    | 39–43    | 38–39   | [⏵Starship](starships.md)
-48–51    | 44–46    | 40–41   | [⏵Derelict](derelicts.md)
-52–53    | 47–49    | 42–45   | [⏵Precursor Vault](vaults.md)
-54–55    | 50–52    | 46–49   | [⏵Creature](creatures.md)
-56–60    | 53–58    | 50–56   | [⏵Descriptor + Focus](core.md#Descriptor)
+:-------:|:--------:|:-------:|-----------------------------------------------------------
+1–15     | 1–15     | 1–15    | [⏵Stellar Object](Starforged/Oracles/Space/Stellar_Object)
+16–35    | 16–35    | 16–35   | [⏵Planet](Starforged/Oracles/Planets)
+36–40    | 36–38    | 36–37   | [⏵Settlement](Starforged/Oracles/Settlements)
+41–47    | 39–43    | 38–39   | [⏵Starship](Starforged/Oracles/Starships)
+48–51    | 44–46    | 40–41   | [⏵Derelict](Starforged/Oracles/Derelicts)
+52–53    | 47–49    | 42–45   | [⏵Precursor Vault](Starforged/Oracles/Vaults)
+54–55    | 50–52    | 46–49   | [⏵Creature](Starforged/Oracles/Creatures)
+56–60    | 53–58    | 50–56   | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 61–65    | 59–63    | 57–61   | Debris field: Mineral asteroids
 66–68    | 64–66    | 62–64   | Debris field: Frozen asteroids
 69–70    | 67–68    | 65–66   | Debris field: Crystalline asteroids
@@ -141,12 +141,12 @@ Roll  | Result
 88–90 | Troubling visions or apparitions
 91–93 | True nature of a cargo, occupant, or passenger is revealed
 94–96 | Unsettling sounds or disturbances
-97–99 | [⏵Action + Theme](core.md#Action)
+97–99 | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 100   | Roll twice
 
 ## Spaceborne Opportunity
 
-Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------------------------------------

@@ -14,3 +14,4 @@ export interface IAssetType extends IHasName, IHasId<AssetTypeId>, IHasDescripti
   Assets: IAsset[];
   Name: AssetTypeName;
 }
+

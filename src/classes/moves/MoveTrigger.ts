@@ -1,5 +1,5 @@
 import { MoveTriggerOption } from "@classes/index.js";
-import type { IMoveTrigger, IMoveTriggerOption } from "@json_out/index.js";
+import type { IMoveTrigger } from "@json_out/index.js";
 import type { RollType } from "@json_out/moves/RollMethod.js";
 import type { IMoveTriggerYaml } from "@yaml_in/moves/IMoveTriggerYaml.js";
 

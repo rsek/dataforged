@@ -46,7 +46,7 @@ Roll   | Result
 ## Inner First Look
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Abnormal gravity
 4–6    | Active bots
 7–9    | Archaic equipment
@@ -78,26 +78,26 @@ Roll   | Result
 85–87  | Thick haze or smoke
 88–90  | Unstable energy surges
 91–93  | Watchful AI
-94–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+94–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ## Derelict Zones
 
 Starship | Settlement | Result
-:-------:|:----------:|----------------------------------------------
---       | --         | [⏵Access](#Access)
-1–5      | 1–20       | [⏵Community](#Community)
-6–30     | 21–30      | [⏵Engineering](#Engineering)
-31–55    | 31–50      | [⏵Living](#Living)
-56–65    | 51–60      | [⏵Medical](#Medical)
-66–85    | 61–70      | [⏵Operations](#Operations)
-86–90    | 71–90      | [⏵Production](#Production)
-91–100   | 91–100     | [⏵Research](#Research)
+:-------:|:----------:|---------------------------------------------------------
+--       | --         | [⏵Access](Starforged/Oracles/Derelicts/Access)
+1–5      | 1–20       | [⏵Community](Starforged/Oracles/Derelicts/Community)
+6–30     | 21–30      | [⏵Engineering](Starforged/Oracles/Derelicts/Engineering)
+31–55    | 31–50      | [⏵Living](Starforged/Oracles/Derelicts/Living)
+56–65    | 51–60      | [⏵Medical](Starforged/Oracles/Derelicts/Medical)
+66–85    | 61–70      | [⏵Operations](Starforged/Oracles/Derelicts/Operations)
+86–90    | 71–90      | [⏵Production](Starforged/Oracles/Derelicts/Production)
+91–100   | 91–100     | [⏵Research](Starforged/Oracles/Derelicts/Research)
 
 ## Access
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
 :-----:|-------------------------
@@ -115,7 +115,7 @@ Roll   | Result
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–5    | Abandoned gear
 6–10   | Blood trail
 11–15  | Breached door or hatch
@@ -135,14 +135,14 @@ Roll   | Result
 81–85  | Wandering bot
 86–90  | Windows or viewports
 91–95  | Wrecked passage or debris
-96–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+96–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|---------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Alarm or failsafe is triggered
 11–20  | Automated defenses
 21–30  | Blocked or sealed path
@@ -152,12 +152,12 @@ Roll   | Result
 61–70  | Hazardous environmental change
 71–80  | Path is trapped
 81–90  | Unsettling sound or disturbance
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------------------------------------
@@ -171,10 +171,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Bar or club
 9–16   | Classroom or education
 17–24  | Concourse or hub
@@ -186,14 +186,14 @@ Roll   | Result
 65–72  | Restaurant or dining
 73–80  | Temple or chapel
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Ad-hoc memorials
 9–16   | Art depicting historic event
 17–24  | Artificial environment
@@ -205,14 +205,14 @@ Roll   | Result
 65–72  | Mass grave or corpses
 73–80  | Panoramic viewport
 81–88  | Rubble or debris
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|---------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Biological infestation
 11–20  | Breached or broken structure
 21–30  | Distressing signs of mass violence or death
@@ -222,12 +222,12 @@ Roll   | Result
 61–70  | Haunting vision of life here before the fall
 71–80  | Hazardous environmental change
 81–90  | Heartbreaking memento of lost lives
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|------------------------------------------
@@ -241,10 +241,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Control room
 9–16   | Engine room or power core
 17–24  | Engineering offices
@@ -256,14 +256,14 @@ Roll   | Result
 65–72  | Water processing
 73–80  | Workshop
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Cluttered workbench
 9–16   | Control terminal
 17–24  | Crane or lift
@@ -275,7 +275,7 @@ Roll   | Result
 65–72  | Sharp ozone smell
 73–80  | Unfinished project
 81–88  | Utility bots
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -292,12 +292,12 @@ Roll   | Result
 61–70  | Sabotaged equipment
 71–80  | Shrouded atmosphere conceals a lurking foe
 81–90  | Unstable or failing power core
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|------------------------------------
@@ -311,10 +311,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Food storage
 9–16   | Galley or kitchen
 17–24  | Laundry
@@ -326,14 +326,14 @@ Roll   | Result
 65–72  | Restroom or showers
 73–80  | Sleeping pods
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Abandoned pet
 9–16   | Audible music
 17–24  | Cherished personal item
@@ -345,7 +345,7 @@ Roll   | Result
 65–72  | Scuttling vermin
 73–80  | Shrine or altar
 81–88  | Unusual art
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -362,12 +362,12 @@ Roll   | Result
 61–70  | Sealed door or hatch blocks access
 71–80  | Signs of unwelcome invaders
 81–90  | Unsettling sound or disturbance
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|------------------------------------------------------
@@ -381,10 +381,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Crematorium
 9–16   | Emergency or triage
 17–24  | Isolation or containment
@@ -396,14 +396,14 @@ Roll   | Result
 65–72  | Prosthetics workshop
 73–80  | Ward or clinic
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Autopsied corpse
 9–16   | Biological specimens
 17–24  | Blood spatter or pools
@@ -415,14 +415,14 @@ Roll   | Result
 65–72  | Medical monitors
 73–80  | Medical records or scans
 81–88  | Stacks of body bags
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Disgusting sight / smell
 11–20  | Disturbing evidence of medical misconduct
 21–30  | Erratic medical bots
@@ -432,12 +432,12 @@ Roll   | Result
 61–70  | Restless dead
 71–80  | Signs of a horrific death
 81–90  | Signs of broken quarantine
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------
@@ -451,10 +451,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Admin or command offices
 9–16   | Armory
 17–24  | Bridge or command center
@@ -466,14 +466,14 @@ Roll   | Result
 65–72  | Lounge
 73–80  | Security
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Automated warning
 9–16   | Buckled blast doors
 17–24  | Control terminal
@@ -485,7 +485,7 @@ Roll   | Result
 65–72  | Recorded message
 73–80  | Video surveillance monitors
 81–88  | Written logs
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
@@ -502,12 +502,12 @@ Roll   | Result
 61–70  | Hostile AI
 71–80  | Sealed blast doors block access
 81–90  | Sensors indicate the arrival of an external threat
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|---------------------------------------------
@@ -521,10 +521,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Airlock or staging area
 9–16   | Assembly or processing
 17–24  | Cargo bay
@@ -536,14 +536,14 @@ Roll   | Result
 65–72  | Raw materials storage
 73–80  | Scrapyard
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Cargo lifts
 9–16   | Control panels
 17–24  | Disassembled machinery
@@ -555,14 +555,14 @@ Roll   | Result
 65–72  | Tools
 73–80  | Vats of chemicals or gas
 81–88  | Written manifest
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|---------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Claustrophobic spaces
 11–20  | Dangerous machinery
 21–30  | Disturbing evidence of exploited labor
@@ -572,12 +572,12 @@ Roll   | Result
 61–70  | Malfunctioning automation
 71–80  | Rivals seek to secure these resources
 81–90  | Signs of an unearthed or manufactured threat
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|-----------------------------
@@ -591,10 +591,10 @@ Roll   | Result
 
 ### Area
 
-Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](moves.md#Undertake-an-Expedition), an area can serve as a waypoint in your survey of the derelict.
+Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
 
 Roll   | Result
-:-----:|-------------------------------------------------
+:-----:|------------------------------------------------------------
 1–8    | Clean room
 9–16   | Cold storage
 17–24  | Creature or animal pens
@@ -606,14 +606,14 @@ Roll   | Result
 65–72  | Library or records
 73–80  | Secure vault
 81–85  | New zone
-86–100 | New zone via [⏵Access](#Access)
+86–100 | New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
 
 ### Feature
 
 Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
 
 Roll   | Result
-:-----:|-----------------------------------------------
+:-----:|----------------------------------------------------------
 1–8    | Aquarium or tank
 9–16   | Biological specimens
 17–24  | Bones or fossils
@@ -625,14 +625,14 @@ Roll   | Result
 65–72  | Invasive plant growth
 73–80  | Recorded research log
 81–88  | Spilled chemicals
-89–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+89–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ### Peril
 
 Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
 
 Roll   | Result
-:-----:|----------------------------------------------
+:-----:|--------------------------------------------------
 1–10   | Automated containment protocols are activated
 11–20  | Biological infestation
 21–30  | Dangerous specimen
@@ -642,12 +642,12 @@ Roll   | Result
 61–70  | Signs of broken containment
 71–80  | Toxic environment
 81–90  | Unstable technology
-91–98  | [⏵Action + Theme](core.md#Action)
+91–98  | [⏵Action + Theme](Starforged/Oracles/Core/Action)
 99–100 | Roll twice
 
 ### Opportunity
 
-Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](moves.md#Undertake-an-Expedition), or if you [Explore a Waypoint](moves.md#Explore-a-Waypoint) and find an opportunity.
+Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), or if you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) and find an opportunity.
 
 Roll   | Result
 :-----:|-------------------------------

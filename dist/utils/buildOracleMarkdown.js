@@ -8,22 +8,22 @@ import { writeFileSync } from "fs";
  * @param mdPath - The path to the directory where the markdown files will be written.
  */
 export function buildOracleMarkdown(oracles, mdPath) {
-    const mdOraclePath = mdPath + "oracles/";
-    oracles.filter(oracle => oracle.$id !== "Oracles/Moves").forEach((oracleCat) => {
+    const mdOraclePath = mdPath + "/oracles";
+    oracles.filter(oracle => oracle.$id !== "Starforged/Oracles/Moves").forEach((oracleCat) => {
         let text = renderOracleCategory(oracleCat, 1) + "\n";
         const currentFile = _.kebabCase(oracleCat.Name) + ".md";
-        const filePath = mdOraclePath + currentFile;
+        const filePath = `${mdOraclePath}/${currentFile}`;
         text = transformMoveLinks(text);
         text = transformOracleLinks(oracles, text, currentFile);
         writeFileSync(filePath, text, { encoding: "utf-8" });
     });
     let allOracleText = [
         "# Starforged Oracles",
-        oracles.filter(oracleCat => oracleCat.$id !== "Oracles/Moves").map((oracleCat) => renderOracleCategory(oracleCat, 2))
+        oracles.filter(oracleCat => oracleCat.$id !== "Starforged/Oracles/Moves").map((oracleCat) => renderOracleCategory(oracleCat, 2))
     ].flat(2).join("\n\n");
     const currentFile = "oracles.md";
     allOracleText = transformMoveLinks(allOracleText, false);
     allOracleText = transformOracleLinks(oracles, allOracleText, currentFile);
-    writeFileSync(mdPath + currentFile, allOracleText + "\n", { encoding: "utf-8" });
+    writeFileSync(`${mdPath}/${currentFile}`, allOracleText + "\n", { encoding: "utf-8" });
 }
 //# sourceMappingURL=buildOracleMarkdown.js.map

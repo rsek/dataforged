@@ -4,9 +4,9 @@ import { buildLog } from "../../utils/logging/buildLog.js";
  * @internal
  */
 export class SettingTruth {
-    constructor(json, sourceJson) {
+    constructor(json, sourceJson, gamespace) {
         var _a;
-        this.$id = `Setting_Truths/${json.Name.replaceAll(" ", "_")}`;
+        this.$id = `${gamespace}/Setting_Truths/${json.Name.replaceAll(" ", "_")}`;
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));

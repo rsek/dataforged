@@ -1,3 +1,6 @@
+/**
+ * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.
+ */
 var MoveCategoryName;
 (function (MoveCategoryName) {
     MoveCategoryName["Session"] = "Session";
@@ -11,7 +14,6 @@ var MoveCategoryName;
     MoveCategoryName["Threshold"] = "Threshold";
     MoveCategoryName["Legacy"] = "Legacy";
     MoveCategoryName["Fate"] = "Fate";
-    MoveCategoryName["Assets"] = "Assets";
 })(MoveCategoryName || (MoveCategoryName = {}));
 export { MoveCategoryName };
 //# sourceMappingURL=MoveCategoryName.js.map

@@ -5,20 +5,21 @@ import { validateColor } from "../../utils/validateColor.js";
  * @internal
  */
 export class AssetType extends SourceInheritor {
-    constructor(json, rootSource) {
-        super(json.Source, rootSource);
-        this.$id = `Assets/${json.Name}`.replaceAll(" ", "_");
+    constructor(json, gamespace, rootSource) {
+        var _a, _b;
+        super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, rootSource);
+        this.$id = `${gamespace}/Assets/${json.Name.replaceAll(" ", "_")}`;
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Description = json.Description;
-        if (!validateColor(json.Display.Color)) {
-            throw badJsonError(this.constructor, json.Display, "Not a valid color!");
+        this.Display = (_b = json.Display) !== null && _b !== void 0 ? _b : {};
+        if (this.Display.Color && !validateColor(this.Display.Color)) {
+            throw badJsonError(this.constructor, this.Display, "Not a valid color!");
         }
-        this.Display = json.Display;
         if (!this.Display.Title) {
             this.Display.Title = this.Name + "s";
         }
-        this.Assets = json.Assets.map(asset => new Asset(asset, this));
+        this.Assets = json.Assets.map(asset => new Asset(asset, gamespace, this));
     }
 }
 //# sourceMappingURL=AssetType.js.map

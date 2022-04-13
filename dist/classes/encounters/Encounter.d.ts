@@ -1,4 +1,5 @@
 import { EncounterDisplay, EncounterVariant, Source } from "../index.js";
+import type { Gamespace } from "../../json_out/common/Gamespace.js";
 import type { ChallengeRank, EncounterNature, EncounterTags, IEncounter, ISource } from "../../json_out/index.js";
 import type { IEncounterYaml } from "../../yaml_in/index.js";
 /**
@@ -19,6 +20,6 @@ export declare class Encounter implements IEncounter {
     Description: string;
     "Quest Starter": string;
     Source: Source;
-    constructor(json: IEncounterYaml, ...ancestorSourceJson: ISource[]);
+    constructor(json: IEncounterYaml, gamespace: Gamespace, ...ancestorSourceJson: ISource[]);
 }
 //# sourceMappingURL=Encounter.d.ts.map

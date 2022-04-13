@@ -1,9 +1,9 @@
 
 import { AlterMove , ClockInput, Move, NumberInput, SelectInput , TextInput } from "@classes/index.js";
-import type { AlterMoveId, AssetAbilityId, IAsset, IAssetAbility, IAssetInput, MoveId, MoveIdGeneric } from "@json_out/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
+import type { AssetAbilityId, IAsset, IAssetAbility, IAssetInput, MoveId } from "@json_out/index.js";
 import { InputType } from "@json_out/index.js";
-import type { IMove } from "@json_out/moves/index.js";
-import { badJsonError } from "@utils/logging/badJsonError.js";
+import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import type { IAssetAbilityYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
@@ -18,21 +18,9 @@ export class AssetAbility implements IAssetAbility {
   "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: Partial<IAsset> | undefined;
   Enabled: boolean;
-  constructor(json: IAssetAbilityYaml, id: AssetAbilityId, parent: IAsset) {
+  constructor(json: IAssetAbilityYaml, id: AssetAbilityId, gamespace: Gamespace, parent: IAsset) {
     this.$id = id;
     this.Text = json.Text;
-    if (json.Moves) {
-      if (!Array.isArray(json.Moves)) {
-        throw badJsonError(this.constructor, json, "Moves is not an array.");
-      }
-      this.Moves = json.Moves.map(mv => {
-        const moveData = _.cloneDeep(mv);
-        moveData.$id = `Moves/${this.$id}/${mv.Name}`.replaceAll(" ", "_") as MoveId;
-        moveData.Asset = parent.$id;
-        moveData.Category = "Moves/Assets";
-        return new Move(moveData, parent.Source);
-      });
-    }
     if (json.Inputs) {
       this.Inputs = json.Inputs.map(inputJson => {
         const idString = `${this.$id}/Inputs/${inputJson.Name}`.replaceAll(" ", "_");
@@ -55,12 +43,26 @@ export class AssetAbility implements IAssetAbility {
         }
       }) as IAssetInput[];
     }
+
+    this.Enabled = json.Enabled ?? false;
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove) => {
-      const moveId: IMove["$id"] | MoveIdGeneric = alterMove.Move ?? "Moves/*";
-      const newData = new AlterMove(alterMove, `${this.$id}/Alter_${moveId}`.replaceAll(" ", "_") as AlterMoveId);
+      const newData = new AlterMove(alterMove, this, parent, gamespace);
       return newData;
     }) : json["Alter Moves"];
     this["Alter Properties"] = json["Alter Properties"];
-    this.Enabled = json.Enabled ?? false;
+    if (json.Moves) {
+      this.Moves = json.Moves.map(moveJson => {
+        const moveDataClone = _.cloneDeep(moveJson);
+        moveDataClone.Asset = parent.$id;
+        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${moveDataClone.Name.replaceAll(" ", "_")}` as MoveId;
+        moveDataClone.Category = `${gamespace}/Moves/Assets`;
+        if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
+          moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, "${{Asset_Condition_Meter}}", parent["Condition Meter"].$id);
+          // console.log("asset ability move data", moveDataClone);
+        }
+        return new Move(moveDataClone, gamespace, parent.Source);
+      });
+    }
   }
+  // TODO: validate Ids
 }

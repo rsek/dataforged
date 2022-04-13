@@ -10,7 +10,7 @@ import _ from "lodash-es";
  * @internal
  */
 export class Oracle extends SourceInheritor {
-    constructor(json, category, memberOf, ...ancestorsJson
+    constructor(json, gamespace, category, memberOf, ...ancestorsJson
     // ancestors should be in ascending order
     ) {
         var _a, _b, _c;
@@ -22,7 +22,7 @@ export class Oracle extends SourceInheritor {
         // if (!is<IOracleInfoData>(json)) {
         //   throw new Error("json does not conform to IOracleInfoData!");
         // }
-        this.$id = buildOracleId(jsonClone, ...ancestorsJson);
+        this.$id = buildOracleId(gamespace, jsonClone, ...ancestorsJson);
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = jsonClone.Name;
         this.Aliases = jsonClone.Aliases;
@@ -59,7 +59,7 @@ export class Oracle extends SourceInheritor {
                 if (jsonClone.Content) {
                     propagateToChildren(jsonClone.Content, "Content", oracleInfo);
                 }
-                return new Oracle(oracleInfo, this.Category, this.$id, jsonClone, ...ancestorsJson);
+                return new Oracle(oracleInfo, gamespace, this.Category, this.$id, jsonClone, ...ancestorsJson);
             });
         }
         if (this.Table) {

@@ -1,0 +1,195 @@
+Derelicts:
+  Name: Derelicts
+  Source:
+    Title: "Ironsworn: Starforged Rulebook"
+    Date: "040122"
+  _parentOf:
+    - Access
+    - Community
+    - Engineering
+    - Living
+    - Medical
+    - Operations
+    - Production
+    - Research
+  Description: |-
+    Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
+  Oracles:
+    - _templateInfo: *template.info:Generic.Location
+      Source:
+        Page: 348
+      _templateTable:
+        content: *template.content:Generic.Location
+        rolls:
+          - [1, 40]
+          - [41, 60]
+          - [61, 100]
+    - Name: Type
+      Source:
+        Page: 348
+      Usage:
+        Initial: true
+        Requires: *attr:Location.Any
+      Display:
+        Title: Type (by Location)
+        Table:
+          Roll columns:
+            - Use content from: Starforged/Oracles/Derelicts/Type/Planetside
+            - Use content from: Starforged/Oracles/Derelicts/Type/Orbital
+            - Use content from: Starforged/Oracles/Derelicts/Type/Deep_Space
+          Result columns:
+            - Use content from: Starforged/Oracles/Derelicts/Type/Planetside
+      Oracles:
+        - Display: &derelictTypeDisplay
+            Column of: Starforged/Oracles/Derelicts/Type
+          Name: Planetside
+          Usage:
+            Requires: *attr:Location.Planetside
+          Table: &derelictTypeTable
+            - [1, 25, Starship, *attr:DerelictType.Starship]
+            - [26, 100, Settlement, *attr:DerelictType.Settlement]
+        - Display: *derelictTypeDisplay
+          Name: Orbital
+          Usage:
+            Requires: *attr:Location.Orbital
+          _templateTable:
+            content: *derelictTypeTable
+            rolls:
+              - [1, 40]
+              - [41, 100]
+        - Display:
+            Column of: Starforged/Oracles/Derelicts/Type
+          Name: Deep Space
+          Usage:
+            Requires: *attr:Location.DeepSpace
+          _templateTable:
+            content: *derelictTypeTable
+            rolls:
+              - [1, 75]
+              - [76, 100]
+    - Name: Condition
+      Source:
+        Page: 348
+      Usage:
+        Initial: true
+      Content:
+        Part of speech: [fragment]
+      Table:
+        - [1, 10, Functional]
+        - [11, 30, Limited power]
+        - [31, 60, Cold and dark]
+        - [61, 90, Damaged or breached]
+        - [91, 98, Heavily damaged]
+        - [99, 100, Impending destruction]
+    - Name: Outer First Look
+      Source:
+        Page: 349
+      Aliases: [First Look]
+      Usage:
+        Initial: true
+      Content:
+        Part of speech: [fragment]
+      Table:
+        - [1, 15, Blocked access]
+        - [16, 30, Corpses]
+        - [31, 45, Hazardous readings]
+        - [46, 50, Mutated structure]
+        - [51, 60, Odd orientation]
+        - [61, 65, Overgrown or entangled]
+        - [66, 80, Sending a signal or message]
+        - [81, 85, Signs that others are here]
+        - [86, 95, Stripped exterior]
+        - [96, 100, Time or reality distortions]
+    - Name: Inner First Look
+      Source:
+        Page: 349
+      Aliases: [First Look]
+      Content:
+        Part of speech: [fragment]
+      Usage:
+        Max rolls: 2
+      Table:
+        - [1, 3, Abnormal gravity]
+        - [4, 6, Active bots]
+        - [7, 9, Archaic equipment]
+        - [10, 12, Automated announcements]
+        - [13, 15, Biological infestation]
+        - [16, 18, Charred surfaces]
+        - [19, 21, Claw marks]
+        - [22, 24, Cluttered with debris]
+        - [25, 27, Corroded surfaces]
+        - [28, 30, Cramped spaces]
+        - [31, 33, Creaking hull]
+        - [34, 36, Esoteric writing or symbols]
+        - [37, 39, Evidence of new inhabitants]
+        - [40, 42, Exposed wiring or conduits]
+        - [43, 45, Flashing strobe lights]
+        - [46, 48, Fluctuating power]
+        - [49, 51, Haunting visions of the dead]
+        - [52, 54, Hazardous temperature]
+        - [55, 57, Heavy steam or moisture]
+        - [58, 60, Littered with corpses]
+        - [61, 63, Nesting or feeding creatures]
+        - [64, 66, Ornate furnishings]
+        - [67, 69, Scarred by gunfire]
+        - [70, 72, Sealed against intruders]
+        - [73, 75, Signs of looting or scavenging]
+        - [76, 78, Smell of decay]
+        - [79, 81, Splattered with blood]
+        - [82, 84, Temporal distortions]
+        - [85, 87, Thick haze or smoke]
+        - [88, 90, Unstable energy surges]
+        - [91, 93, Watchful AI]
+        - [94, 100, *result:Descriptor+Focus]
+    - Name: Zones
+      Source:
+        Page: 351
+      Display:
+        Title: Derelict Zones
+        Table:
+          Roll columns:
+            - Use content from: Starforged/Oracles/Derelicts/Zones/Starship
+            - Use content from: Starforged/Oracles/Derelicts/Zones/Settlement
+          Result columns:
+            - Use content from: Starforged/Oracles/Derelicts/Zones/Starship
+      Usage:
+        Repeatable: true
+        Requires:
+          Attributes:
+            Derelict Type: null
+      Oracles:
+        - Name: Starship
+          Display:
+            Column of: Starforged/Oracles/Derelicts/Zone
+          Usage:
+            Requires:
+              Attributes:
+                Derelict Type: Starship
+          Table: &derelictZoneTable
+            - [null, null, "[⏵Access](Starforged/Oracles/Derelicts/Access)", *obj:DerelictZone.Community]
+            - [1, 5, "[⏵Community](Starforged/Oracles/Derelicts/Community)", *obj:DerelictZone.Community]
+            - [6, 30, "[⏵Engineering](Starforged/Oracles/Derelicts/Engineering)", *obj:DerelictZone.Engineering]
+            - [31, 55, "[⏵Living](Starforged/Oracles/Derelicts/Living)", *obj:DerelictZone.Living]
+            - [56, 65, "[⏵Medical](Starforged/Oracles/Derelicts/Medical)", *obj:DerelictZone.Medical]
+            - [66, 85, "[⏵Operations](Starforged/Oracles/Derelicts/Operations)", *obj:DerelictZone.Operations]
+            - [86, 90, "[⏵Production](Starforged/Oracles/Derelicts/Production)", *obj:DerelictZone.Production]
+            - [91, 100, "[⏵Research](Starforged/Oracles/Derelicts/Research)", *obj:DerelictZone.Research]
+
+        - Name: Settlement
+          Display:
+            Column of: Starforged/Oracles/Derelicts/Zone
+          Usage:
+            Requires:
+              Attributes:
+                Derelict Type: Settlement
+          _templateTable:
+            content: *derelictZoneTable
+            rolls:
+              - [null, null]
+              - [1, 20]
+              - [21, 30]
+              - [31, 50]
+              - [51, 60]
+              - [61, 70]
+              - [71, 90]
+              - [91, 100]

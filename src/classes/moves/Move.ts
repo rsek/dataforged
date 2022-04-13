@@ -1,8 +1,10 @@
 import type { Suggestions } from "@classes/index.js";
 import { MoveOutcomes , MoveTrigger , SourceInheritor } from "@classes/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { AssetId , IDisplay , IMove , IOracle, ISource, MoveCategoryId , MoveId  } from "@json_out/index.js";
 
 import { buildLog } from "@utils/logging/buildLog.js";
+import type { IMoveYaml } from "@yaml_in/moves/IMoveYaml";
 import _ from "lodash-es";
 
 /**
@@ -13,7 +15,7 @@ export class Move extends SourceInheritor implements IMove {
   $id: MoveId;
   Name: string;
   Category: MoveCategoryId;
-  Asset?: this["Category"] extends "Moves/Assets" ? AssetId : undefined;
+  Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? AssetId : undefined;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: IMove["$id"] | undefined;
   Display: IDisplay;
@@ -22,13 +24,13 @@ export class Move extends SourceInheritor implements IMove {
   Oracles?: IOracle["$id"][] | undefined;
   Suggestions?: Suggestions | undefined;
   Outcomes?: MoveOutcomes | undefined;
-  constructor(json: IMove, ...sourceAncestors: ISource[]) {
+  constructor(json: IMoveYaml, gamespace: Gamespace,...sourceAncestors: ISource[]) {
     super(json.Source ?? {}, ...sourceAncestors);
-    this.$id = (json.$id ?? `${json.Category}/${json.Name}`).replaceAll(" ", "_") as MoveId;
+    this.$id = json.$id ?? `${json.Category}/${json.Name.replaceAll(" ", "_")}`;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Category = json.Category;
-    if (this.Category === "Moves/Assets") {
+    if (this.Category === ("Starforged/Moves/Assets"||"Ironsworn/Moves/Assets")) {
       if (!json.Asset) {
         throw new Error("Expected an asset ID");
       }

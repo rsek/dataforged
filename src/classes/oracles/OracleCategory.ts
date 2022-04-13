@@ -1,5 +1,6 @@
 
 import { Oracle , OracleCategoryDisplay , OracleUsage , SourceInheritor } from "@classes/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -23,6 +24,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
   "Sample Names"?: string[];
   constructor(
     json: IOracleCategoryYaml,
+    gamespace: Gamespace,
     category?: OracleCategoryJaggedId | undefined,
     ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
   ) {
@@ -32,7 +34,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
     // }
     super(json.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
 
-    this.$id = buildOracleId(json, ...ancestorsJson) as OracleCategoryId;
+    this.$id = buildOracleId<OracleCategoryId>(gamespace, json, ...ancestorsJson);
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
@@ -51,7 +53,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
         if (json.Requires) {
           propagateToChildren(json.Requires, "Requires", oracleInfo);
         }
-        return new Oracle(oracleInfo, this.$id, undefined, json, ...ancestorsJson);
+        return new Oracle(oracleInfo, gamespace,this.$id, undefined, json, ...ancestorsJson);
       });
     }
     if (json.Categories) {
@@ -63,7 +65,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
           if (json.Requires) {
             propagateToChildren(json.Requires, "Requires", oracleCat);
           }
-          return new OracleCategory(oracleCat, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson);
+          return new OracleCategory(oracleCat, gamespace, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson);
         }
       );
     }

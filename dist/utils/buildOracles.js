@@ -1,24 +1,22 @@
 import { OracleCategory } from "../classes/index.js";
-import { REFS_PATH } from "../constants/index.js";
-import { getSubdirs } from "./io/getSubdirs.js";
-import { getYamlFiles } from "./io/getYamlFiles.js";
+import { MASTER_DATA_PATH, REFS_PATH } from "../constants/index.js";
 import { badJsonError } from "./logging/badJsonError.js";
 import { buildLog } from "./logging/buildLog.js";
 import { templateOracle } from "./object_transform/templateOracle.js";
 import { loadOracleData } from "./process_yaml/loadOracleData.js";
+import FastGlob from "fast-glob";
 /**
  * It takes the data from the oracles directory and builds a list of OracleCategory objects.
  * @returns An array of OracleCategory objects.
  */
-export function buildOracles() {
+export function buildOracles(gamespace = "Starforged") {
     buildLog(buildOracles, "Building oracles...");
-    const filesOracleCategories = getYamlFiles("oracles");
-    // console.info(filesOracleCategories);
-    const dirsOracleSubcategories = getSubdirs("oracles");
-    const categoryRoot = loadOracleData(REFS_PATH, ...filesOracleCategories);
+    // const oracleCatFiles: PathLike[] = getYamlFiles("Oracles");
+    const oracleCatFiles = FastGlob.sync(`${MASTER_DATA_PATH}/${gamespace}/Oracles/*.(yml|yaml)`, { onlyFiles: true });
+    const oracleSubcatFiles = FastGlob.sync(`${MASTER_DATA_PATH}/${gamespace}/Oracles/*/*.(yml|yaml)`, { onlyFiles: true });
+    const categoryRoot = loadOracleData(REFS_PATH, ...oracleCatFiles);
     const categories = categoryRoot.Categories;
-    const filesOracleSubcategories = dirsOracleSubcategories.map(dir => getYamlFiles("", dir)).flat(1);
-    const subcatRoot = loadOracleData(REFS_PATH, ...filesOracleSubcategories);
+    const subcatRoot = loadOracleData(REFS_PATH, ...oracleSubcatFiles);
     const subcategories = subcatRoot.Categories.map((subcatData) => {
         if (subcatData._templateCategory) {
             // console.log("Building with template vars", subcatData);
@@ -46,7 +44,7 @@ export function buildOracles() {
             parentCat.Categories.push(subcat);
         }
     });
-    const json = categories.map(categoryData => new OracleCategory(categoryData));
+    const json = categories.map(categoryData => new OracleCategory(categoryData, gamespace));
     const catCount = categories.length;
     const subcatCount = subcategories.length;
     // buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);

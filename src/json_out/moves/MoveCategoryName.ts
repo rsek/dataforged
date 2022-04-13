@@ -1,4 +1,7 @@
 
+/**
+ * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.
+ */
 enum MoveCategoryName {
     Session = "Session",
     Adventure = "Adventure",
@@ -11,7 +14,6 @@ enum MoveCategoryName {
     Threshold = "Threshold",
     Legacy = "Legacy",
     Fate = "Fate",
-    Assets = "Assets"
 }
 
 export { MoveCategoryName };

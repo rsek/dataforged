@@ -1,18 +1,20 @@
 import { MoveCategory } from "../classes/index.js";
-import { getYamlFiles } from "./io/getYamlFiles.js";
+import { MASTER_DATA_PATH } from "../constants/index.js";
 import { buildLog } from "./logging/buildLog.js";
 import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
+import fg from "fast-glob";
 import _ from "lodash-es";
-const filesMoves = getYamlFiles().filter(file => file.toString().match("moves.yaml$"));
 /**
  * It takes the data from the YAML files, and then it iterates over the categories, and then it
  * iterates over the moves in each category, and then it creates a MoveCategory object for each
  * category, and then it returns an array of all of those MoveCategory objects
  * @returns An array of MoveCategory objects.
  */
-export function buildMoves() {
+export function buildMoves(gamespace = "Starforged") {
     buildLog(buildMoves, "Building moves...");
-    const movesRoot = concatWithYamlRefs(undefined, ...filesMoves);
+    // const moveFiles = getYamlFiles(`${MASTER_YAML_PATH as string}/${gamespace}`).filter(file => file.toString().match(/^Moves.*\.ya?ml$/));
+    const moveFiles = fg.sync(`${MASTER_DATA_PATH}/${gamespace}/Moves*.(yml|yaml)`, { onlyFiles: true });
+    const movesRoot = concatWithYamlRefs(undefined, ...moveFiles);
     const json = movesRoot.Categories.map((moveCatData, index, moveCatDataArray) => {
         moveCatData.Moves.map((moveData, index, movesInCat) => {
             moveData.Source = movesRoot.Source;
@@ -25,7 +27,7 @@ export function buildMoves() {
             // }
             return moveData;
         });
-        return new MoveCategory(moveCatData, movesRoot.Source);
+        return new MoveCategory(moveCatData, gamespace, movesRoot.Source);
     });
     buildLog(buildMoves, `Finished building ${json.length} move categories containing ${_.sum(json.map(moveCat => moveCat.Moves.length))} moves.`);
     return json;

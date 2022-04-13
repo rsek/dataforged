@@ -6,14 +6,14 @@ import _ from "lodash-es";
  * @internal
  */
 export class Move extends SourceInheritor {
-    constructor(json, ...sourceAncestors) {
+    constructor(json, gamespace, ...sourceAncestors) {
         var _a, _b;
         super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, ...sourceAncestors);
-        this.$id = ((_b = json.$id) !== null && _b !== void 0 ? _b : `${json.Category}/${json.Name}`).replaceAll(" ", "_");
+        this.$id = (_b = json.$id) !== null && _b !== void 0 ? _b : `${json.Category}/${json.Name.replaceAll(" ", "_")}`;
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Category = json.Category;
-        if (this.Category === "Moves/Assets") {
+        if (this.Category === ("Starforged/Moves/Assets" || "Ironsworn/Moves/Assets")) {
             if (!json.Asset) {
                 throw new Error("Expected an asset ID");
             }

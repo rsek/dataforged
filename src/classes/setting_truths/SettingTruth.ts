@@ -1,4 +1,5 @@
 import { SettingTruthOption , Source , Suggestions } from "@classes/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { ISettingTruth, ISource, SettingTruthId } from "@json_out/index.js";
 import type { SettingTruthIdFragment, SettingTruthName } from "@json_out/setting_truths/SettingTruthName.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -14,8 +15,8 @@ export class SettingTruth implements ISettingTruth {
   Character: string;
   Suggestions?: Suggestions | undefined;
   Source: Source;
-  constructor(json: ISettingTruthYaml, sourceJson: ISource) {
-    this.$id = `Setting_Truths/${json.Name.replaceAll(" ", "_") as SettingTruthIdFragment}`;
+  constructor(json: ISettingTruthYaml, sourceJson: ISource, gamespace: Gamespace) {
+    this.$id = `${gamespace}/Setting_Truths/${json.Name.replaceAll(" ", "_") as SettingTruthIdFragment}`;
     buildLog(this.constructor,`Building: ${this.$id}`);
     this.Name = json.Name;
     this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));

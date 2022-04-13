@@ -1,3 +1,5 @@
-import type { AssetId } from "../index.js";
-export declare type AssetAbilityId = `${AssetId}/Abilities/${1 | 2 | 3}`;
+import type { AssetIdBase } from "./AssetId.js";
+import type { Gamespace } from "../common/Gamespace.js";
+export declare type AssetAbilityId = `${Gamespace}/${AssetAbilityIdBase}`;
+export declare type AssetAbilityIdBase = `${AssetIdBase}/Abilities/${number}`;
 //# sourceMappingURL=AssetAbilityId.d.ts.map

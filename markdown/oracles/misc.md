@@ -38,10 +38,10 @@ Roll   | Result
 
 ## Story Clue
 
-When you [Gather Information](moves.md#Gather-Information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](moves.md#Gather-Information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.
+When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](Starforged/Moves/Adventure/Gather_Information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.
 
 Roll   | Result
-:-----:|----------------------------------------------------
+:-----:|----------------------------------------------------------
 1–3    | Affirms a previously understood fact or clue
 4–6    | Connects to a known rumor or scandal
 7–9    | Connects to a previously unrelated mystery or quest
@@ -72,7 +72,7 @@ Roll   | Result
 82–84  | Suggests a history of similar incidents
 85–87  | Suggests a looming event or deadline
 88–90  | Suggests an imposter or forgery
-91–100 | [⏵Descriptor + Focus](core.md#Descriptor)
+91–100 | [⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)
 
 ## Anomaly Effect
 

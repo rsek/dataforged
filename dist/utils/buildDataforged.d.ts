@@ -1,8 +1,5 @@
-import type { AssetType } from "../classes/index.js";
-import type { Encounter } from "../classes/index.js";
-import type { MoveCategory } from "../classes/index.js";
-import type { OracleCategory } from "../classes/index.js";
-import type { SettingTruth } from "../classes/index.js";
+import type { AssetType, Encounter, MoveCategory, OracleCategory, SettingTruth } from "../classes/index.js";
+import type { Gamespace } from "../json_out/common/Gamespace.js";
 export interface IronswornData {
     assets: AssetType[];
     encounters: Encounter[];
@@ -14,5 +11,5 @@ export interface IronswornData {
  * Builds all data for Dataforged.
  * @returns An object keyed with the game data.
 */
-export declare function buildDataforged(): IronswornData;
+export declare function buildDataforged(gamespace?: Gamespace): IronswornData;
 //# sourceMappingURL=buildDataforged.d.ts.map
