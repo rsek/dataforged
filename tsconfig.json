@@ -27,6 +27,12 @@
     "excludeExternals": true,
     "excludeInternal": true
   },
+  "ts-node": {
+    "transpileOnly": true,
+    "require": [
+      "typescript-transform-paths/register"
+    ]
+  },
   "compilerOptions": {
     "module": "ESNext",
     "target": "es6",
@@ -38,7 +44,7 @@
     "plugins": [
       {
         "transform": "typescript-is/lib/transform-inline/transformer",
-        "verbose": true,
+        "verbose": true
       },
       {
         "transform": "typescript-transform-paths"
