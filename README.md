@@ -2,6 +2,10 @@
 
 Official *Ironsworn: Starforged* rules data in JSON, for use in community tools.
 
+## Intent
+
+This repository is intended to give [*Starforged*'s Kickstarter](https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged) backers access to game data to incorporate into their own *Starforged* tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).
+
 ## Usage
 
 Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included.
@@ -23,9 +27,6 @@ const { data } = require('dataforged')
 ```
 
 
-## Intent
-
-This repository is intended to give [*Starforged*'s Kickstarter](https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged) backers access to game data to incorporate into their own *Starforged* tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).
 
 ## Licensing
 
