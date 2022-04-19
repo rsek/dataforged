@@ -6,7 +6,7 @@ Official *Ironsworn: Starforged* rules data in JSON, for use in community tools.
 
 Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included.
 
-If you just want the data as-is, import `data` object to use the pre-loaded json.
+If you just want the data as-is, import its `data` object to use the pre-loaded, typed JSON.
 
 ### ESM
 
@@ -33,6 +33,7 @@ This repository is intended to give [*Starforged*'s Kickstarter](https://www.kic
 
 In other words: for the moment, treat it like you would excerpts from a copyrighted work; please include attribution (e.g. "Copyright ©2021 Shawn Tomkin and Absolute Tabletop, LLC") and a link back to the repository in your project... and drop a link in the [Ironsworn discord](https://discordapp.com/invite/6QMvmJb), because we're excited to see what you make with it!
 
+<!--
 ### Legacy Format
 Dataforged is migrating to a new format that is incompatible with the original format; the format had accumulated an awful lot of cruft, as it was carried over from Datasworn and wasn't designed with Starforged in mind. Features of the new format:
 
@@ -52,7 +53,7 @@ The migration will also make it much easier for me to add some future features:
 
 I **strongly** recommend migrating existing projects to the new format, especially if you want prompt content updates.
 
-If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on that front is appreciated.
+If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on that front is appreciated. -->
 
 ## Current Version/Sources
 
