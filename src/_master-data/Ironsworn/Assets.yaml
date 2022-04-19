@@ -4,6 +4,7 @@ Source:
 Asset Types:
   - Name: Companion
     Source:
+      Title: Ironsworn Rulebook
       Page: 39
     Description: |-
       Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.
@@ -139,6 +140,7 @@ Asset Types:
           - Name: Beast of burden
             Text: |-
               When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.
+            # TODO: alter move prop to target anything with a +supply trigger programmatically?
           - Name: Overpowering
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.
@@ -199,7 +201,7 @@ Asset Types:
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Combat/Strike
+              - Moves: [Ironsworn/Moves/Combat/Strike]
                 Trigger:
                   Options:
                     - Text: By commanding your wyvern to attack
@@ -209,6 +211,9 @@ Asset Types:
           Name: Health
           Max: 5
   - Name: Path
+    Source:
+      Page: 40
+      Title: Ironsworn Rulebook
     Description: |-
       Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.
     Assets:
@@ -291,7 +296,7 @@ Asset Types:
           - Text: |-
               You have stared down death before: When you are at 0 health and [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Suffer/Endure_Harm
+              - Moves: [Ironsworn/Moves/Suffer/Endure_Harm]
                 Trigger:
                   Options:
                     - Text: When you are at 0 health
@@ -350,28 +355,28 @@ Asset Types:
             Input Type: Text
           - Name: Linked Stat
             Input Type: Select
-            Attributes:
+            Sets:
               - Key: Stat
                 Type: Stat
             Options:
               - Name: Edge
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Edge
               - Name: Heart
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Heart
               - Name: Iron
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Iron
               - Name: Shadow
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Shadow
               - Name: Wits
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Wits
         Abilities:
@@ -381,7 +386,7 @@ Asset Types:
           - Text: |-
               When you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.
             Alter Moves:
-              - Move: Ironsworn/Moves/Quest/Swear_an_Iron_Vow
+              - Moves: [Ironsworn/Moves/Quest/Swear_an_Iron_Vow]
                 Trigger:
                   Options:
                     - Text: To serve your god on a divine quest
@@ -390,7 +395,7 @@ Asset Types:
           - Text: |-
               When you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Relationship/Sojourn
+              - Moves: [Ironsworn/Moves/Relationship/Sojourn]
                 Trigger:
                   Options:
                     - Text: By sharing the word of your god
@@ -420,7 +425,7 @@ Asset Types:
         Condition Meter:
           Name: Wealth
           Max: 5
-          Starting Value: 0
+          Value: 0
       - Name: Herbalist
         Abilities:
           - Text: |-
@@ -447,7 +452,7 @@ Asset Types:
           - Text: |-
               When you [Check Your Gear](Ironsworn/Moves/Delve/Check_Your_Gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Delve/Check_Your_Gear
+              - Moves: [Ironsworn/Moves/Delve/Check_Your_Gear]
                 Trigger:
                   Options:
                     - Using: [Wits]
@@ -464,13 +469,13 @@ Asset Types:
           - Text: |-
               When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Adventure/Gather_Information
+              - Moves: [Ironsworn/Moves/Adventure/Gather_Information]
                 Trigger:
                   Options:
                     - Roll type: Action roll
                       Using: [Shadow]
                       Text: Within an enemy area to discover their positions, plans, or methods
-              - Move: Ironsworn/Moves/Adventure/Secure_an_Advantage
+              - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
                 Trigger:
                   - Roll type: Action roll
                     Using: [Shadow]
@@ -478,7 +483,7 @@ Asset Types:
           - Text: |-
               When you [Resupply](Ironsworn/Moves/Adventure/Resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Adventure/Resupply
+              - Moves: [Ironsworn/Moves/Adventure/Resupply]
                 Trigger:
                   Options:
                     - Roll type: Action roll
@@ -498,32 +503,32 @@ Asset Types:
         Inputs:
           - Name: Material
             Input Type: Select
-            Attributes:
+            Sets:
               - Key: Stat
                 Type: Stat
               - Key: Condition Meter
                 Type: Condition Meter
             Options:
               - Name: Thunderwood
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Edge
                   - Key: Condition Meter
                     Value: Health
               - Name: Bloodwood
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Iron
                   - Key: Condition Meter
                     Value: Health
               - Name: Ghostwood
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Shadow
                   - Key: Condition Meter
                     Value: Spirit
               - Name: Whisperwood
-                Sets:
+                Set:
                   - Key: Stat
                     Value: Wits
                   - Key: Condition Meter
@@ -543,17 +548,13 @@ Asset Types:
           - Text: |-
               When you [Face Death](Ironsworn/Moves/Suffer/Face_Death) or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) while wearing the mask, you may roll +its stat (instead of +heart).
             Alter Moves:
-              - Move: Ironsworn/Moves/Suffer/Face_Death
+              - Moves: [Ironsworn/Moves/Suffer/Face_Death]
                 Trigger: &alter:Masked
                   Options:
                     - Roll type: Action roll
-                      Using: [Ironsworn/Assets/Path/Masked/Inputs/Material]
                       Text: While wearing the mask
-                      # FIXME: revise this so that the dropdown can set both a stat *and* condition meter at the same time
-                      # and could then be accessed with
-                      # Ironsworn/Assets/Path/Masked/Inputs/Material/Stat
-                      # Ironsworn/Assets/Path/Masked/Inputs/Material/Condition
-              - Move: Ironsworn/Moves/Suffer/Face_Desolation
+                      Using: ["${{@ASSET}}/Inputs/Material/Stat"]
+              - Moves: [Ironsworn/Moves/Suffer/Face_Desolation]
                 Trigger: *alter:Masked
       - Name: Oathbreaker
         Deed: true
@@ -568,19 +569,19 @@ Asset Types:
               When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) on your marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset.
       - Name: Outcast
         Abilities:
-          - Text: &move_outcast |-
+          - Text: &move:Asset.Outcast |-
               When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](Ironsworn/Moves/Suffer/Out_of_Supply).
             Enabled: true
             Moves:
               - Name: Scrape By
                 Category: Ironsworn/Moves/Assets
-                Asset: Ironsworn/Assets/Path/Outcast
+                Asset: ${{@ASSET}}
                 Trigger:
-                  Text: When your supply is reduced to 0
+                  Text: When your supply is reduced to 0...
                   Options:
                     - Roll type: Action roll
                       Using: [Wits]
-                Text: *move_outcast
+                Text: *move:Asset.Outcast
                 Outcomes:
                   Strong Hit:
                     Text: You manage to scrape by and take +1 supply.
@@ -594,19 +595,19 @@ Asset Types:
               When you [Reach Your Destination](Ironsworn/Moves/Adventure/Reach_Your_Destination) and score a strong hit, you recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.
       - Name: Pretender
         Abilities:
-          - Text: &move_pretender |-
+          - Text: &move:Asset.Pretender |-
               When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).
             Enabled: true
             Moves:
               - Name: Establish False Identity
                 Category: Ironsworn/Moves/Assets
-                Asset: Ironsworn/Assets/Path/Pretender
+                Asset: ${{@ASSET}}
                 Trigger:
                   Text: When you establish a false identity...
                   Options:
                     - Roll type: Action roll
                       Using: [Shadow]
-                Text: *move_pretender
+                Text: *move:Asset.Pretender
                 Outcomes:
                   Strong Hit:
                     Text: |-
@@ -618,7 +619,7 @@ Asset Types:
           - Text: |-
               As above, and you may roll +shadow (instead of +heart) when you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) under your false identity. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Relationship/Sojourn
+              - Moves: [Ironsworn/Moves/Relationship/Sojourn]
                 Trigger:
                   Options:
                     - Roll type: Action roll
@@ -671,7 +672,7 @@ Asset Types:
           - Text: |-
               You know the sly ways of death: When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow). When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) on that quest and and mark experience, take +2 experience.
             Alter Moves:
-              - Move: Ironsworn/Moves/Suffer/Face_Death
+              - Moves: [Ironsworn/Moves/Suffer/Face_Death]
                 Trigger:
                   Options:
                     - Roll type: Action roll
@@ -726,7 +727,7 @@ Asset Types:
           - Text: |-
               When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Adventure/Gather_Information
+              - Moves: [Ironsworn/Moves/Adventure/Gather_Information]
                 Trigger:
                   Options:
                     - Text: By investigating a devious scheme
@@ -737,7 +738,7 @@ Asset Types:
                 * Keep your secret: Roll +shadow (instead of +heart).
                 * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.
             Alter Moves:
-              - Move: Ironsworn/Moves/Relationship/Forge_a_Bond
+              - Moves: [Ironsworn/Moves/Relationship/Forge_a_Bond]
                 Trigger:
                   Options:
                     - Text: Keep your secret
@@ -796,7 +797,7 @@ Asset Types:
           - Text: |-
               When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.
             Alter Moves:
-              - Move: Ironsworn/Moves/Adventure/Make_Camp
+              - Moves: [Ironsworn/Moves/Adventure/Make_Camp]
                 Trigger:
                   Options:
                     - Text: In the woodlands
@@ -815,36 +816,36 @@ Asset Types:
               When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you [Compel](Ironsworn/Moves/Relationship/Compel), [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), or [Test Your Bond](Ironsworn/Moves/Relationship/Test_Your_Bond).
       - Name: Commander
         Source: &src:IronswornBonusAssets
-          Title: Ironsworn Bonus Assets - July 2020
+          Title: Ironsworn Bonus Assets (July 2020)
           Url: "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view"
         Abilities:
           - Text: |-
               You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](Ironsworn/Moves/Adventure/Face_Danger), [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Compel](Ironsworn/Moves/Relationship/Compel), or [Battle](Ironsworn/Moves/Combat/Battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) or [Sojourn](Ironsworn/Moves/Relationship/Sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.
             Enabled: true
             Alter Moves:
-              - Move: Ironsworn/Moves/Adventure/Face_Danger
-                Trigger: &alter:Commander
+              - Moves: [Ironsworn/Moves/Adventure/Face_Danger]
+                Trigger: &alter:Asset.Commander
                   Options:
                     - Text: By commanding your warband
                       Roll type: Action roll
-                      Using: ${{Asset_Condition_Meter}}
-              - Move: Ironsworn/Moves/Adventure/Secure_an_Advantage
-                Trigger: *alter:Commander
-              - Move: Ironsworn/Moves/Relationship/Compel
-                Trigger: *alter:Commander
-              - Move: Ironsworn/Moves/Combat/Battle
-                Trigger: *alter:Commander
+                      Using: ${{@ASSET_METER}}
+              - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
+                Trigger: *alter:Asset.Commander
+              - Moves: [Ironsworn/Moves/Relationship/Compel]
+                Trigger: *alter:Asset.Commander
+              - Moves: [Ironsworn/Moves/Combat/Battle]
+                Trigger: *alter:Asset.Commander
           - Text: |-
               You may dispatch scouts from your warband to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) or [Resupply](Ironsworn/Moves/Adventure/Resupply); if you do, roll +strength.
             Alter Moves:
-              - Move: Ironsworn/Moves/Adventure/Gather_Information
-                Trigger: &alter:Commander_2
+              - Moves: [Ironsworn/Moves/Adventure/Gather_Information]
+                Trigger: &alter:Asset.Commander_2
                   Options:
                     - Text: By dispatching scouts from your warband
                       Roll type: Action roll
-                      Using: ${{Asset_Condition_Meter}}
-              - Move: Ironsworn/Moves/Adventure/Resupply
-                Trigger: *alter:Commander_2
+                      Using: ${{@ASSET_METER}}
+              - Moves: [Ironsworn/Moves/Adventure/Resupply]
+                Trigger: *alter:Asset.Commander_2
           - Text: |-
               Once you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
         Condition Meter:
@@ -871,6 +872,9 @@ Asset Types:
           - Text: |-
               One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) (ignoring momentum).
   - Name: Combat Talent
+    Source:
+      Page: 40
+      Title: Ironsworn Rulebook
     Description: |-
       *Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform combat moves (page 78). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.
 
@@ -979,16 +983,16 @@ Asset Types:
           - Name: Equipped
             Input Type: Select
             Adjustable: true
-            Attributes:
+            Sets:
               - Key: Armor
                 Type: Custom
             Options:
               - Name: Lightly armored
-                Sets:
+                Set:
                   - Key: Armor
                     Value: Lightly armored
               - Name: Geared for war
-                Sets:
+                Set:
                   - Key: Armor
                     Value: Geared for war
         Abilities:
@@ -1096,6 +1100,9 @@ Asset Types:
           - Text: |-
               When you [Turn the Tide](Ironsworn/Moves/Combat/Turn_the_Tide), you may [Strike](Ironsworn/Moves/Combat/Strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.
   - Name: Ritual
+    Source:
+      Page: 41
+      Title: Ironsworn Rulebook
     Description: |-
       Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.
 
@@ -1152,13 +1159,13 @@ Asset Types:
             Alter Properties:
               Condition Meter:
                 Max: 6
-                Starting Value: 6
+                Value: 6
             # FIXME: alter move to include new text
           - *asset:Ritual.Ability.3
         Condition Meter:
           Name: Health
           Max: 3
-          Starting Value: 3
+          Value: 3
       - Name: Bind
         Abilities:
           - Text: &move:Asset.Bind |-
@@ -1273,7 +1280,7 @@ Asset Types:
         Condition Meter:
           Name: Essence
           Max: 6
-          Starting Value: 0
+          Value: 0
       - Name: Keen
         Abilities:
           - Text: &move:Asset.Keen |-
@@ -1359,7 +1366,7 @@ Asset Types:
         Condition Meter:
           Name: Light
           Max: 6
-          Starting Value: 0
+          Value: 0
       - Name: Scry
         Abilities:
           - Text: &move:Asset.Scry |-

@@ -2,10 +2,13 @@
   "name": "dataforged",
   "version": "0.4.0",
   "description": "Official Ironsworn: Starforged rules data in JSON, for use in community tools.",
+  "main": "./dist/esm/index.js",
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
   },
-  "main": "./dist/index.js",
   "files": [
     "dist",
     "docs",
@@ -15,13 +18,16 @@
   "type": "module",
   "types": "./dist/dataforged.d.ts",
   "scripts": {
-    "flush-dist": "rm -R ./dist && mkdir ./dist",
+    "flush-dist-esm": "rm -R ./dist/esm && mkdir ./dist/esm",
+    "flush-dist-cjs": "rm -R ./dist/cjs && mkdir ./dist/cjs",
     "flush-image": "rm -R ./img && mkdir ./img",
-    "build": "yarn flush-dist && npx ttsc && api-extractor run",
-    "build-json": "node ./dist/start.js --enable-source-maps",
-    "build-json-ironsworn": "node ./dist/start-ironsworn.js --enable-source-maps",
-    "copy-json": "find ./dist -name \\*.json -exec cp {} . \\; && find ./dist -name \\*.json -exec cp {} ./src \\;",
-    "start": "yarn json && yarn copy-json",
+    "build-esm": "yarn flush-dist-esm && npx ttsc --project ./tsconfig.json && api-extractor run  -c ./api-extractor.json",
+    "build-cjs": "yarn flush-dist-cjs && npx ttsc --project ./tsconfig-cjs.json && api-extractor run -c ./api-extractor-cjs.json",
+    "render-json-sf": "node ./dist/esm/start.js --enable-source-maps",
+    "render-json-is": "node ./dist/esm/start-ironsworn.js --enable-source-maps",
+    "render-md-sf": "node ./dist/esm/start-md.js",
+    "copy-json": "find ./dist/esm -name \\*.json -exec cp {} . \\; && find ./dist/esm -name \\*.json -exec cp {} ./src \\;",
+    "start": "yarn render-json-sf && yarn render-json-is && yarn copy-json",
     "docs": "rm -R ./docs && mkdir ./docs && npx typedoc"
   },
   "directories": {
@@ -69,6 +75,7 @@
     "eslint-plugin-tsdoc": "^0.2.14",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.0.1",
+    "jsonpath-plus": "^6.0.1",
     "lodash-es": "^4.17.21",
     "prettier": "^2.3.0",
     "reflect-metadata": "^0.1.13",
@@ -82,7 +89,8 @@
     "typedoc": "^0.22.13",
     "typescript": "^4.7.0-dev.20220331",
     "typescript-is": "^0.19.0",
-    "typescript-transform-paths": "^3.3.1"
+    "typescript-transform-paths": "^3.3.1",
+    "yaml": "^2.0.1"
   },
   "dependencies": {}
 }

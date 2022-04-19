@@ -1,5 +1,7 @@
 /**
  * Set by Oracles / Settlements / Authority
+ *
+ * @public
  */
 export enum Authority {
   NoneLawless = "None / lawless",

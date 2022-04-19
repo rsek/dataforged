@@ -1,5 +1,6 @@
 /**
  * Set by Oracles / Factions / Leadership
+ * @public
  */
 enum Leadership {
   Anarchist = "Anarchist",

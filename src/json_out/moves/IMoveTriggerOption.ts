@@ -4,11 +4,16 @@ import type { RollableStat } from "@json_out/common/RollableStat.js";
 import type { IHasId, IHasText } from "@json_out/meta/IHas.js";
 import type { RollMethod, RollType } from "@json_out/moves/RollMethod.js";
 
-type MoveRollId = `${string}/Options/${number}`;
+/**
+ * @public
+ */
+export type MoveRollId = `${string}/Options/${number}`;
 
 // constructor should set "Method" to default to "Any" if it's omitted
 // constructor should check "Using" for things that need string replacement
-
+/**
+ * @public
+ */
 export interface IMoveTriggerOption<T extends RollType> extends IHasId<MoveRollId>, Partial<IHasText> {
   /**
    * Whether this option is an action roll or progress roll.
@@ -35,9 +40,13 @@ export interface IMoveTriggerOption<T extends RollType> extends IHasId<MoveRollI
  */
   "Custom stat"?: ICustomStat | undefined;
 }
-
+/**
+ * @public
+ */
 export interface IMoveActionRoll extends IMoveTriggerOption<RollType.Action> { }
-
+/**
+ * @public
+ */
 export interface IMoveProgressRoll extends Omit<IMoveTriggerOption<RollType.Progress>, "Custom stat"> {
 }
 

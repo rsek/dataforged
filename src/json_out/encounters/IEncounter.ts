@@ -1,15 +1,20 @@
 
 import type { IEncounterBase } from "@json_out/encounters/IEncounterBase.js";
-import type { IEncounterVariant } from "@json_out/index.js";
+
 
 /**
- * Interface representing an *Ironsworn: Starforged* Encounter entry.
+ * Represents a full (i.e. not a stub/variant) encounter entry in *Ironsworn* or *Ironsworn: Starforged*.
+ * @public
  */
 export interface IEncounter extends IEncounterBase {
-  "Quest Starter": string;
-  Summary: string;
   Features: string[];
   Drives: string[];
   Tactics: string[];
-  Variants: IEncounterVariant[];
+  "Quest Starter": string;
+  /**
+   * A markdown string representing the text of the "Your Truth" callout box included with some *Ironsworn* encounters.
+   */
+  "Your Truth"?: string | undefined;
 }
+
+

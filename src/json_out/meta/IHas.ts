@@ -1,8 +1,8 @@
-import type { Suggestions } from "@classes/index.js";
 import type { IDisplay , IGameObject , IOracleContent , IOracleUsage, IRequirements, IRow , ISource , ISuggestions , RollTemplate  } from "@json_out/index.js";
 
 /**
  * Interface for items with a user-facing markdown summary.
+ * @public
  */
 export interface IHasSummary {
   /**
@@ -14,6 +14,7 @@ export interface IHasSummary {
 
 /**
  * Interface for items with a user-facing markdown description, consisting of one or more paragraphs.
+ * @public
  */
 export interface IHasDescription {
   /**
@@ -25,6 +26,7 @@ export interface IHasDescription {
 
 /**
  * Interface for items with aliases.
+ * @public
  */
 export interface IHasAliases {
   /**
@@ -35,6 +37,7 @@ export interface IHasAliases {
 
 /**
  * Interface for items with sourcing information.
+ * @public
  */
 export interface IHasSource<T extends ISource = ISource> {
 
@@ -46,6 +49,7 @@ export interface IHasSource<T extends ISource = ISource> {
 
 /**
  * For elements with unique string IDs.
+ * @public
  */
 export interface IHasId<T extends string> {
 
@@ -57,6 +61,7 @@ export interface IHasId<T extends string> {
 
 /**
  * Interface for items with a Name key.
+ * @public
  */
 export interface IHasName {
   /**
@@ -68,6 +73,7 @@ export interface IHasName {
 
 /**
  * Interface for items with rendering information.
+ * @public
  */
 export interface IHasDisplay<T extends Partial<IDisplay> = IDisplay> {
   /**
@@ -78,6 +84,7 @@ export interface IHasDisplay<T extends Partial<IDisplay> = IDisplay> {
 
 /**
  * Interface for items that reproduce Starforged rules text in markdown.
+ * @public
  */
 export interface IHasText {
   /**
@@ -89,6 +96,7 @@ export interface IHasText {
 
 /**
  * Interface for items that include "non-canonical" suggestions of related items.
+ * @public
  */
 export interface IHasSuggestions<T extends ISuggestions = ISuggestions> {
   /**
@@ -99,9 +107,9 @@ export interface IHasSuggestions<T extends ISuggestions = ISuggestions> {
 
 /**
  * Interface for items that include roll string templates.
+ * @public
  */
 export interface IHasRollTemplate<T extends string> {
-
   /**
    * Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.
    */
@@ -109,8 +117,7 @@ export interface IHasRollTemplate<T extends string> {
 }
 
 /**
- *
- *
+ * @public
  */
 export interface IHasOracleUsage<T extends Partial<IOracleUsage> = IOracleUsage> {
   /**
@@ -120,6 +127,7 @@ export interface IHasOracleUsage<T extends Partial<IOracleUsage> = IOracleUsage>
 
 /**
  * Interface for items with metadata that describes an oracle's semantic or lexical content.
+ * @public
  */
 export interface IHasOracleContent<T extends Partial<IOracleContent> = IOracleContent> {
   /**
@@ -130,6 +138,7 @@ export interface IHasOracleContent<T extends Partial<IOracleContent> = IOracleCo
 
 /**
  * Interface for items that have prerequisites.
+ * @public
  */
 export interface IHasRequirements<T extends Partial<IRequirements> = IRequirements> {
   /**
@@ -140,6 +149,7 @@ export interface IHasRequirements<T extends Partial<IRequirements> = IRequiremen
 
 /**
  * Interface for items that have a table-like object.
+ * @public
  */
 export interface IHasTable<T extends IRow = IRow> {
   Table : T[]
@@ -147,6 +157,7 @@ export interface IHasTable<T extends IRow = IRow> {
 
 /**
  * Interface for items that have a subtable-like object.
+ * @public
  */
 export interface IHasSubtable<T extends IRow = IRow> {
   Subtable : T[]
@@ -154,6 +165,7 @@ export interface IHasSubtable<T extends IRow = IRow> {
 
 /**
  * Interface for items that have associated game objects.
+ * @public
  */
 export interface IHasGameObjects<T extends IGameObject = IGameObject> {
   /**
@@ -161,7 +173,9 @@ export interface IHasGameObjects<T extends IGameObject = IGameObject> {
    */
   "Game objects": T[]
 }
-
+/**
+ * @public
+ */
 export interface IHasQuestStarter {
   /**
    * A markdown string describing the quest starter associated with this item.

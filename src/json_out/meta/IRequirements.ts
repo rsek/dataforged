@@ -2,7 +2,7 @@ import type { IAttributeChoices } from "@json_out/index.js";
 
 /**
  * Data describing an item's requirements.
- *
+ * @public
  */
 export interface IRequirements {
   /**

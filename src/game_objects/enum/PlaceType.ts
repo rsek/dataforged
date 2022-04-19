@@ -1,4 +1,6 @@
-
+/**
+ * @public
+ */
 export enum PlaceType {
   Derelict = "Derelict",
   DerelictZone = "Derelict Zone",

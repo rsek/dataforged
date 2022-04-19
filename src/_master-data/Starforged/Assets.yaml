@@ -27,7 +27,7 @@ Asset Types:
           - Text: |-
               When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), you may roll +heart. If you do, [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1) on a weak hit or miss.
             Alter Moves:
-              - Move: Starforged/Moves/Suffer/Withstand_Damage
+              - Moves: [Starforged/Moves/Suffer/Withstand_Damage]
                 Trigger:
                   Options:
                     - Text: You [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) to your Starship
@@ -71,7 +71,7 @@ Asset Types:
         Condition Meter:
           Name: Cargo
           Max: 3
-          Starting Value: 0
+          Value: 0
       - Name: Grappler
         Abilities:
           - Text: &move:Asset.Grappler |-
@@ -167,13 +167,13 @@ Asset Types:
           - Text: |-
               Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Secure_an_Advantage
+              - Moves: [Starforged/Moves/Adventure/Secure_an_Advantage]
                 Trigger: &asset:Overseer.Alter
                   Options:
                     - Text: By talking through a situation with the overseer AI
                       Roll type: Action roll
                       Using: [Attached_Asset_Condition_Meter]
-              - Move: Starforged/Moves/Combat/Gain_Ground
+              - Moves: [Starforged/Moves/Combat/Gain_Ground]
                 Trigger: *asset:Overseer.Alter
             Enabled: true
           - Text: |-
@@ -181,7 +181,7 @@ Asset Types:
           - Text: |-
               The overseer can pilot the vehicle independently. When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation, you may roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Face_Danger
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
                 Trigger:
                   Options:
                     - Text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
@@ -218,12 +218,12 @@ Asset Types:
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against an ambush, or [Face Danger](Starforged/Moves/Adventure/Face_Danger) to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/Enter_the_Fray
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
                 Trigger:
                   - Text: Against an ambush
                     Roll type: Action roll
                     Using: [Attached_Asset_Condition_Meter]
-              - Move: Starforged/Moves/Adventure/Face_Danger
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
                 Trigger:
                   - Text: To detect a hidden threat
                     Roll type: Action roll
@@ -261,18 +261,19 @@ Asset Types:
           - Text: |-
               You may [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/React_Under_Fire
+              - Moves: [Starforged/Moves/Combat/React_Under_Fire]
                 Trigger:
                   Options:
                     - Text: By letting your shields take the blow
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
         Condition Meter:
           Name: Shields
           Max: 4
-          Starting Value: 0
+          Value: 0
       - Name: Stealth Tech
         Abilities:
           - Text: |-
@@ -288,7 +289,7 @@ Asset Types:
 
               On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](Starforged/Moves/Combat/Strike).
             Alter Moves:
-              - Move: Starforged/Moves/Combat/Strike
+              - Moves: [Starforged/Moves/Combat/Strike]
                 Trigger:
                   Options:
                     - Text: You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding
@@ -369,14 +370,15 @@ Asset Types:
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by taking a hit or crashing through an obstacle, you may roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Face_Danger
-                Trigger: &rover_trigger
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                  - Starforged/Moves/Combat/React_Under_Fire
+                Trigger:
                   Options:
                     - Text: By taking a hit or crashing through an obstacle
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Combat/React_Under_Fire
-                Trigger: *rover_trigger
+                      Using:
+                        - ${{@ASSET_METER}}
         Condition Meter:
           Name: Integrity
           Max: 5
@@ -395,16 +397,16 @@ Asset Types:
                 * Careful: Add +2 and [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)
                 * Reckless: Take +1 momentum on a hit
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Face_Danger
-                Trigger: &service_pod_alter
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                  - Starforged/Moves/Combat/Gain_Ground
+                  - Starforged/Moves/Combat/React_Under_Fire
+                Trigger:
                   Options:
                     - Text: By maneuvering your pod through a hazardous or obstructed area
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Combat/Gain_Ground
-                Trigger: *service_pod_alter
-              - Move: Starforged/Moves/Combat/React_Under_Fire
-                Trigger: *service_pod_alter
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
         Condition Meter:
@@ -435,26 +437,28 @@ Asset Types:
           - Text: |-
               Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Set_a_Course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Exploration/Undertake_an_Expedition
-                Trigger: &skiff_alter
+              - Moves:
+                  - Starforged/Moves/Exploration/Undertake_an_Expedition
+                  - Starforged/Moves/Exploration/Set_a_Course
+                Trigger:
                   Options:
                     - Text: Rely on the skiff's simple durability
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Exploration/Set_a_Course
-                Trigger: *skiff_alter
+                      Using:
+                        - ${{@ASSET_METER}}
             Enabled: true
           - Text: |-
               Your skiff is armed with a turreted cannon. When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/Strike
-                Trigger: &skiff_alter_2
+              - Moves:
+                  - Starforged/Moves/Combat/Strike
+                  - Starforged/Moves/Combat/Clash
+                Trigger:
                   Options:
                     - Text: By firing the skiff's cannon
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Combat/Clash
-                Trigger: *skiff_alter_2
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               Your skiff is fully stocked. When you [Check Your Gear](Starforged/Moves/Adventure/Check_Your_Gear), add +1 and take +1 momentum on a hit.
         Condition Meter:
@@ -469,12 +473,14 @@ Asset Types:
           - Text: |-
               Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray), you may roll +integrity; if you do, take +2 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/Enter_the_Fray
+              - Moves:
+                  - Starforged/Moves/Combat/Enter_the_Fray
                 Trigger:
                   Options:
                     - Text: In your snub fighter
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
             Enabled: true
           - Text: |-
               When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash), add +1. On a strong hit with a match, mark progress.
@@ -484,7 +490,7 @@ Asset Types:
               - Name: Victory Marks
                 Input Type: Number
                 Min: 0
-                Starting Value: 0
+                Value: 0
         Condition Meter:
           Name: Integrity
           Max: 4
@@ -507,7 +513,7 @@ Asset Types:
           - Text: |-
               When you must [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while piloting a vehicle, you may roll +integrity. If you do, take +1 momentum on a strong hit.
             Alter Moves:
-              - Move: Starforged/Moves/Suffer/Endure_Stress
+              - Moves: [Starforged/Moves/Suffer/Endure_Stress]
                 Trigger:
                   Options:
                     - Text: While piloting a vehicle
@@ -541,11 +547,13 @@ Asset Types:
           - Text: |-
               You may [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/Enter_the_Fray
+              - Moves:
+                  - Starforged/Moves/Combat/Enter_the_Fray
                 Trigger:
                   Options:
                     - Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
                       Text: By unleashing a volley of bow shots
 
           - Text: |-
@@ -669,12 +677,14 @@ Asset Types:
           - Text: |-
               When you [Sojourn](Starforged/Moves/Recover/Sojourn) during a courier mission, you may roll +safety. On a strong hit, take +1 safety or +1 momentum.
             Alter Moves:
-              - Move: Starforged/Moves/Recover/Sojourn
+              - Moves:
+                  - Starforged/Moves/Recover/Sojourn
                 Trigger:
                   Options:
                     - Text: During a courier mission
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
         Condition Meter:
           Name: Safety
           Max: 5
@@ -693,60 +703,64 @@ Asset Types:
             Input Type: Text
           - Name: Linked Stat
             Input Type: Select
-            Option Type: Stat
+            Sets:
+              - Key: Stat
+                Type: Stat
             Options:
               - Name: Edge
-                Stat: Edge
-                Option Type: Stat
+                Set:
+                  - Key: Stat
+                    Value: Edge
               - Name: Heart
-                Stat: Heart
-                Option Type: Stat
+                Set:
+                  - Key: Stat
+                    Value: Heart
               - Name: Iron
-                Stat: Iron
-                Option Type: Stat
+                Set:
+                  - Key: Stat
+                    Value: Iron
               - Name: Shadow
-                Stat: Shadow
-                Option Type: Stat
+                Set:
+                  - Key: Stat
+                    Value: Shadow
               - Name: Wits
-                Stat: Wits
-                Option Type: Stat
+                Set:
+                  - Key: Stat
+                    Value: Wits
         Abilities:
           - Text: |-
               You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by calling on it for guidance or aid, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
             Enabled: true
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Secure_an_Advantage
-                Trigger: &devotant_alter
+              - Moves:
+                  - Starforged/Moves/Adventure/Secure_an_Advantage
+                  - Starforged/Moves/Combat/Gain_Ground
+                Trigger:
                   Options:
                     - Text: By calling on your god, power, or entity for guidance or aid
                       Roll type: Action roll
                       Using:
-                        [Starforged/Assets/Path/Devotant/Inputs/Linked_Stat]
-                      # FIXME: revise this so that the dropdown can set both a stat *and* condition meter at the same time
-                      # and could then be accessed with
-                      # Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Stat
-              - Move: Starforged/Moves/Combat/Gain_Ground
-                Trigger: *devotant_alter
+                        - ${{@ASSET_SELECT_STAT}}
           - Text: |-
               When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) in service to your faith, roll +linked stat and take +2 momentum or +2 spirit on a hit. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
             Alter Moves:
-              - Move: Starforged/Moves/Quest/Swear_an_Iron_Vow
+              - Moves: [Starforged/Moves/Quest/Swear_an_Iron_Vow]
                 Trigger:
                   Options:
                     - Text: In service to your faith
                       Roll type: Action roll
                       Using:
-                        [Starforged/Assets/Path/Devotant/Inputs/Linked_Stat]
+                        - ${{@ASSET_SELECT_STAT}}
           - Text: |-
               When you [Hearten](Starforged/Moves/Recover/Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
             Alter Moves:
-              - Move: Starforged/Moves/Recover/Hearten
+              - Moves: [Starforged/Moves/Recover/Hearten]
                 Trigger:
                   Options:
                     - Text: Through contemplation or sharing of your faith
                       Roll type: Action roll
                       Using:
-                        [Starforged/Assets/Path/Devotant/Inputs/Linked_Stat]
+                        - ${{@ASSET_SELECT_STAT}}
       - Name: Diplomat
         Abilities:
           - Text: |-
@@ -786,7 +800,7 @@ Asset Types:
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) to soothe a being’s distress by creating an empathic bond, roll +spirit and take +1 momentum on a hit. If they are an ally, also give them +2 spirit on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Face_Danger
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
                 Trigger:
                   Options:
                     - Text: To soothe a being's distress by creating an empathic bond
@@ -849,7 +863,7 @@ Asset Types:
         Condition Meter:
           Name: Fire
           Max: 5
-          Starting Value: 0
+          Value: 0
       - Name: Fugitive
         Abilities:
           - Text: |-
@@ -959,13 +973,12 @@ Asset Types:
           - Text: &move:Asset.Looper |-
               When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Moves:
-              - Name: Loop
+              - Name: Loop Back
                 Trigger:
                   Options:
-                    - Text: When you create a link to the current point in time...
-                    - Text: If you later loop back to this moment...
+                    - Text: When you loop back to a linked moment in time...
                       Roll type: Action roll
-                      Using: ["${{Custom_stat}}"]
+                      Using: ["${{@CUSTOM_STAT}}"]
                       Custom stat:
                         Name: Time gap
                         Options:
@@ -982,10 +995,14 @@ Asset Types:
                       You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
                   Weak Hit:
                     Text: |-
-                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values...but you [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2).
+                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values
+
+                      However, you [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2).
                   Miss:
                     Text: |-
-                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values...but you find the timeline corrupted! [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
+                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
+
+                      However, you find the timeline corrupted! [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
           - Text: |-
               When you make a reroll granted by any asset ability on an action roll, also add +1.
       - Name: Lore Hunter
@@ -1054,7 +1071,13 @@ Asset Types:
                     - Roll type: Action roll
                       Using: [Wits]
                 Text: *move:Asset.Outcast
-              # FIXME: separate outcome text
+                Outcomes:
+                  Strong Hit:
+                    Text: You manage to scrape by and take +1 supply.
+                  Weak Hit:
+                    Text: You may [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1) in exchange for +1 supply.
+                  Miss:
+                    Text: Your supply remains at 0 and you [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
           - Text: |-
               When you or an ally [Sojourn](Starforged/Moves/Recover/Sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
       - Name: Scavenger
@@ -1067,7 +1090,7 @@ Asset Types:
           - Text: |-
               When you [Check Your Gear](Starforged/Moves/Adventure/Check_Your_Gear), roll +wits or +supply (whichever is highest) and take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Check_Your_Gear
+              - Moves: [Starforged/Moves/Adventure/Check_Your_Gear]
                 Trigger:
                   Options:
                     - Method: Highest
@@ -1080,7 +1103,7 @@ Asset Types:
           - Text: |-
               When you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) to search out a new contact, you may roll +shadow. If you do, reroll any dice on a miss and envision how your reputation or underworld contacts lead you to a disreputable connection.
             Alter Moves:
-              - Move: Starforged/Moves/Connection/Make_a_Connection
+              - Moves: [Starforged/Moves/Connection/Make_a_Connection]
                 Trigger:
                   Options:
                     - Text: To search out a new contact
@@ -1096,10 +1119,10 @@ Asset Types:
           - Text: |-
               When you focus or meditate to [Gather Information](Starforged/Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Gather_Information
+              - Moves: [Starforged/Moves/Adventure/Gather_Information]
                 Trigger:
                   Options:
-                    - Text: Focus or meditate to [Gather Information](Starforged/Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely)
+                    - Text: When you focus or meditate to [Gather Information](Starforged/Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely)
                       Roll type: Action roll
                       Using: [Spirit]
           - Text: |-
@@ -1160,11 +1183,20 @@ Asset Types:
                     - Roll type: Action roll
                       Using: [Wits]
                 Text: *move:Asset.Sniper
-              # FIXME: separate outcome text
+                Outcomes:
+                  Strong Hit:
+                    Text: You take them out. Take +1 momentum. If other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress.
+                  Weak Hit:
+                    Text: |-
+                      You take them out. However, you sacrifice time or position; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
+
+                      If other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress.
+                  Miss:
+                    Text: You draw attention or face a reprisal; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
           - Text: |-
               When you [Strike](Starforged/Moves/Combat/Strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/Strike
+              - Moves: [Starforged/Moves/Combat/Strike]
                 Trigger:
                   Options:
                     - Text: From a distance with time enough to line up your shot
@@ -1186,13 +1218,13 @@ Asset Types:
           - Text: |-
               When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Compel](Starforged/Moves/Adventure/Compel), you may roll +supply. If you do, [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1).
             Alter Moves:
-              - Move: Starforged/Moves/Recover/Sojourn
-                Trigger: &trader_alter
+              - Moves:
+                  - Starforged/Moves/Recover/Sojourn
+                  - Starforged/Moves/Adventure/Compel
+                Trigger:
                   Options:
                     - Roll type: Action roll
                       Using: [Supply]
-              - Move: Starforged/Moves/Adventure/Compel
-                Trigger: *trader_alter
             Enabled: true
           - Text: |-
               When you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with a merchant or supplier, add +1. When you [Resupply](Starforged/Moves/Recover/Resupply) by bartering with them, reroll your action die if its value is less than your supply. On a strong hit, take +1 momentum or +1 supply.
@@ -1244,10 +1276,10 @@ Asset Types:
           - Text: |-
               When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by suiting up and gathering your gear for a perilous encounter or mission, you may roll +supply. If you do, take +2 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Secure_an_Advantage
+              - Moves: [Starforged/Moves/Adventure/Secure_an_Advantage]
                 Trigger:
                   Options:
-                    - Text: Suiting up and gathering your gear for a perilous encounter or mission
+                    - Text: By suiting up and gathering your gear for a perilous encounter or mission
                       Roll type: Action roll
                       Using: [Supply]
   - Name: Companion
@@ -1267,14 +1299,15 @@ Asset Types:
           - Text: |-
               Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Set_a_Course), you may roll +its health.
             Alter Moves:
-              - Move: Starforged/Moves/Exploration/Undertake_an_Expedition
-                Trigger: &banshee_alter
+              - Moves:
+                  - Starforged/Moves/Exploration/Undertake_an_Expedition
+                  - Starforged/Moves/Exploration/Set_a_Course
+                Trigger:
                   Options:
                     - Text: Riding your banshee
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Exploration/Set_a_Course
-                Trigger: *banshee_alter
+                      Using:
+                        - ${{@ASSET_METER}}
             Enabled: true
           - Text: |-
               When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.
@@ -1296,23 +1329,25 @@ Asset Types:
           - Text: |-
               When you use the threat of violence to [Compel](Starforged/Moves/Adventure/Compel) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) while the bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Compel
-                Trigger: &combat_bot_alter
+              - Moves:
+                  - Starforged/Moves/Adventure/Compel
+                  - Starforged/Moves/Combat/Gain_Ground
+                Trigger:
                   Options:
                     - Text: Using the threat of violence while the bot brings its weapons to bear
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Combat/Gain_Ground
-                Trigger: *combat_bot_alter
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               Once per fight, when you [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by using the bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control.
             Alter Moves:
-              - Move: Starforged/Moves/Combat/React_Under_Fire
+              - Moves: [Starforged/Moves/Combat/React_Under_Fire]
                 Trigger:
                   Options:
                     - Text: Once per fight, by using the combat bot to draw fire or create a diversion
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
         Condition Meter:
           Name: Health
           Max: 5
@@ -1360,12 +1395,13 @@ Asset Types:
           - Text: |-
               Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
             Alter Moves:
-              - Move: null
+              - Moves: null
                 Trigger:
                   Options:
                     - Text: By sending the rockhorn to directly attack a foe or smash an obstacle
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
             Enabled: true
           - Text: |-
               When you make the [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
@@ -1391,13 +1427,14 @@ Asset Types:
           - Text: |-
               When your sidekick acts to get you out of a tough spot, you may [Face Danger](Starforged/Moves/Adventure/Face_Danger) or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Face_Danger
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
                 Trigger: &asset:Sidekick.Alter
                   Options:
                     - Text: Your sidekick acts to get you out of a tough spot
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Combat/React_Under_Fire
+                      Using:
+                        - ${{@ASSET_METER}}
+              - Moves: [Starforged/Moves/Combat/React_Under_Fire]
                 Trigger: *asset:Sidekick.Alter
         Condition Meter:
           Name: Health
@@ -1432,27 +1469,30 @@ Asset Types:
           - Text: |-
               Once per expedition, when you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Secure_an_Advantage
+              - Moves: [Starforged/Moves/Adventure/Secure_an_Advantage]
                 Trigger:
                   Options:
                     - Text: Once per expedition, by sending the survey bot to scout ahead
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               When you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint) aided by the bot's sensors, or [Face Danger](Starforged/Moves/Adventure/Face_Danger) to detect a threat, roll +its health and take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Exploration/Explore_a_Waypoint
+              - Moves: [Starforged/Moves/Exploration/Explore_a_Waypoint]
                 Trigger:
                   Options:
                     - Text: Aided by the survey bot's sensors
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
-              - Move: Starforged/Moves/Adventure/Face_Danger
+                      Using:
+                        - ${{@ASSET_METER}}
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
                 Trigger:
                   Options:
                     - Text: To detect a threat
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
         Condition Meter:
           Name: Health
           Max: 3
@@ -1487,23 +1527,26 @@ Asset Types:
               Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
             Enabled: true
             Alter Moves:
-              - Move: null
+              - Moves: null
                 Trigger:
                   Options:
                     - Text: Directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               When you [Repair](Starforged/Moves/Recover/Repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2).
           - Text: |-
               When you [Check Your Gear](Starforged/Moves/Adventure/Check_Your_Gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Check_Your_Gear
+              - Moves:
+                  - Starforged/Moves/Adventure/Check_Your_Gear
                 Trigger:
                   Options:
                     - Text: To see if your utility bot has a specific tool or technique available
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
         Condition Meter:
           Name: Health
           Max: 4
@@ -1520,21 +1563,23 @@ Asset Types:
           - Text: |-
               The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.
             Alter Moves:
-              - Move: null
+              - Moves: null
                 Trigger:
                   Options:
                     - Text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
           - Text: |-
               When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
             Alter Moves:
-              - Move: null
+              - Moves: null
                 Trigger:
                   Options:
                     - Text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
                       Roll type: Action roll
-                      Using: ["${{Asset_Condition_Meter}}"]
+                      Using:
+                        - ${{@ASSET_METER}}
         Condition Meter:
           Name: Health
           Max: 4
@@ -1616,7 +1661,8 @@ Asset Types:
           - Text: |-
               When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.
             Alter Moves:
-              - Move: Starforged/Moves/Adventure/Gather_Information
+              - Moves:
+                  - Starforged/Moves/Adventure/Gather_Information
                 Trigger:
                   Options:
                     - Text: By studying a place where death left its mark
@@ -1666,8 +1712,10 @@ Asset Types:
           - Text: |-
               When you [Endure Stress](Starforged/Moves/Suffer/Endure_Stress), you may roll +wits. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Move: Starforged/Moves/Suffer/Endure_Stress
+              - Moves:
+                  - Starforged/Moves/Suffer/Endure_Stress
                 Trigger:
                   Options:
                     - Roll type: Action roll
-                      Using: [Wits]
+                      Using:
+                        - Wits

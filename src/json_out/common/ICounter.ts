@@ -2,6 +2,7 @@ import type { IHasId, IHasName } from "@json_out/index.js";
 
 /**
  * Interface representing a Meter.
+ * @public
  */
 export interface IMeterBase extends IHasId<string>, IHasName {
   /**
@@ -15,5 +16,5 @@ export interface IMeterBase extends IHasId<string>, IHasName {
   /**
    * The initial value of the meter.
    */
-  "Starting Value": number;
+  "Value": number;
 }

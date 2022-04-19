@@ -1,26 +1,30 @@
 /**
  * Enumerates valid sourcebook titles.
+ * @public
  */
 export enum SourceTitle {
   Starforged = "Ironsworn: Starforged Rulebook",
-  StarforgedBackerPreview = "Starforged Backer Preview",
   StarforgedAssets = "Ironsworn: Starforged Assets",
   Ironsworn = "Ironsworn Rulebook",
-  IronswornDelve = "Ironsworn: Delve",
   IronswornAssets = "Ironsworn Assets",
+  IronswornDelve = "Ironsworn: Delve",
   IronswornBonusAssets = "Ironsworn Bonus Assets (July 2020)"
 }
 
 /**
  * Enumerates valid source URLs.
+ * @public
  */
 export enum SourceUrl {
+  IronswornRulebook = "https://shawn-tomkin.itch.io/ironsworn",
+  IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
+  IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
   IronswornBonusAssets = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view",
-  IronswornRulebook = "https://www.ironswornrpg.com/downloads"
 }
 
 /**
  * Interface representing data on the game's source.
+ * @public
  */
 export interface ISource {
   /**

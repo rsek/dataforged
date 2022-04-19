@@ -1,13 +1,25 @@
 import type { AttributeKey } from "@json_out/game_objects/AttributeKey.js";
-import type { IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle } from "@json_out/index.js";
+import type { IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle , OracleTableId } from "@json_out/index.js";
+
+/**
+ * @public
+ */
+export type OracleTableRowId = `${OracleTableId}/${RollRange}`;
+
+/**
+ * @public
+ */
+export type RollRange = number | `${number}-${number}`;
 
 /**
  * Display properties for a single row in an oracle table.
+ * @public
  */
 export type IRowDisplay = Omit<IDisplay, "Title">;
 
 /**
  * Interface representing a single row in an oracle table.
+ * @public
  */
 export interface IRow extends Partial<
   IHasSummary &

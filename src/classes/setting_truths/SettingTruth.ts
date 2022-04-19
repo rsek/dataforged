@@ -1,7 +1,6 @@
 import { SettingTruthOption , Source , Suggestions } from "@classes/index.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { ISettingTruth, ISource, SettingTruthId } from "@json_out/index.js";
-import type { SettingTruthIdFragment, SettingTruthName } from "@json_out/setting_truths/SettingTruthName.js";
+import type { ISettingTruth, ISource, SettingTruthId, SettingTruthIdFragment, SettingTruthName } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import type { ISettingTruthYaml } from "@yaml_in/setting_truths/ISettingTruthYaml.js";
 

@@ -1,17 +1,19 @@
 import { OracleCategory } from "@classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "@constants/index.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { OracleCategoryName , OracleSubcategoryName } from "@json_out/index.js";
-import { getSubdirs } from "@utils/io/getSubdirs.js";
-import { getYamlFiles } from "@utils/io/getYamlFiles.js";
+import { Gamespace } from "@json_out/common/Gamespace.js";
+import type { IOracle, ISource, OracleCategoryName , OracleSubcategoryName } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
+import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
 import type { IOracleCatRoot } from "@utils/process_yaml/loadOracleData.js";
 import { loadOracleData } from "@utils/process_yaml/loadOracleData.js";
-import type { IOracleCategoryYaml } from "@yaml_in/index.js";
+import { sortIronsworn } from "@utils/sortIronsworn.js";
+import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
 import type { IOracleParentCatRoot } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
 import FastGlob from "fast-glob";
+import jsonpath from "jsonpath";
+import _ from "lodash-es";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: OracleSubcategoryName;
@@ -30,12 +32,19 @@ interface IOracleSubcatRoot extends IOracleCatRoot {
  * It takes the data from the oracles directory and builds a list of OracleCategory objects.
  * @returns An array of OracleCategory objects.
  */
-export function buildOracles(gamespace: Gamespace = "Starforged"): OracleCategory[] {
+export function buildOracles(gamespace: Gamespace = Gamespace.Starforged): OracleCategory[] {
   buildLog(buildOracles, "Building oracles...");
-  // const oracleCatFiles: PathLike[] = getYamlFiles("Oracles");
+
+  if (gamespace === "Ironsworn") {
+    return buildIronswornOracles();
+  }
+
+
   const oracleCatFiles = FastGlob.sync(`${MASTER_DATA_PATH as string}/${gamespace}/Oracles/*.(yml|yaml)`, { onlyFiles: true });
+  // console.log("category files", oracleCatFiles);
 
   const oracleSubcatFiles = FastGlob.sync(`${MASTER_DATA_PATH as string}/${gamespace}/Oracles/*/*.(yml|yaml)`, { onlyFiles: true });
+  // console.log("subcat files", oracleSubcatFiles);
 
   const categoryRoot: IOracleParentCatRoot = loadOracleData(REFS_PATH, ...oracleCatFiles) as IOracleParentCatRoot;
 
@@ -47,8 +56,8 @@ export function buildOracles(gamespace: Gamespace = "Starforged"): OracleCategor
     if (subcatData._templateCategory) {
       // console.log("Building with template vars", subcatData);
       subcatData = templateOracle<IOracleSubcategoryData>(subcatData, subcatData._templateCategory);
-      delete subcatData._templateVars;
-      delete subcatData._templateCategory;
+      // delete subcatData._templateVars;
+      // delete subcatData._templateCategory;
       // console.log("resulting object:", subcatData);
     }
     return subcatData;
@@ -63,7 +72,7 @@ export function buildOracles(gamespace: Gamespace = "Starforged"): OracleCategor
 
     if (parentCat._parentOf) {
       if (!parentCat._parentOf.includes(subcat.Name)) {
-        throw badJsonError(buildOracles, undefined, `"${subcat.Name}" assigns itself to this category, but the category doesn't list this subcategory by name.`);
+        throw badJsonError(buildOracles, subcat, `"${subcat.Name}" assigns itself to "${parentCat.Name}", but the category doesn't list this subcategory by name.`);
       }
       if (!parentCat.Categories) {
         parentCat.Categories = [];
@@ -76,8 +85,43 @@ export function buildOracles(gamespace: Gamespace = "Starforged"): OracleCategor
 
   const catCount = categories.length;
   const subcatCount = subcategories.length;
+  const tableCount = jsonpath.query(json, "$..[?(@.Table||@.Subtable)]").length;
 
-  // buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
+  buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
   return json;
 }
+/**
+ * Builds Ironsworn oracles from YAML (structurally much simpler)
+ */
+function buildIronswornOracles(): OracleCategory[] {
+  const catFiles = FastGlob.sync(`${MASTER_DATA_PATH as string}/Ironsworn/Oracles/*.(yml|yaml)`, { onlyFiles: true });
+  // console.log("catFiles", catFiles);
+  const categories: (OracleCategory & {Oracles: IOracle[]})[] = [];
+  const catYaml = catFiles
+    .map(moveFile => new OracleCategory(
+      concatWithYamlRefs(
+        REFS_PATH,
+        moveFile) as IOracleCategoryYaml & {Source: ISource, Oracles: IOracleYaml[]},Gamespace.Ironsworn ) as OracleCategory & {Oracles: IOracle[]}
+    ).sort((a,b) => sortIronsworn(a.Source,b.Source))
+    ;
+  // merges categories that are spread across multiple files
+  // e.g. Characters + Characters-Delve
+  catYaml.forEach(oracleCat => {
+    const targetIndex = categories.findIndex(item => item.Name === oracleCat.Name);
+    if (targetIndex === -1) {
+      categories.push(oracleCat);
+    } else {
+      buildLog(buildOracles,`A category named "${oracleCat.Name}" exists, merging...`);
+      categories[targetIndex].Oracles = categories[targetIndex].Oracles.concat(...oracleCat.Oracles).sort((a,b)=> sortIronsworn(a.Source, b.Source));
+    }
+  });
 
+  // console.log(categories);
+
+
+  // const catCount = json.length;
+  // const tableCount = jsonpath.query(json, "$..Table").length;
+
+  // buildLog(buildOracles, `Finished building ${catCount} oracle categories`);
+  return categories;
+}

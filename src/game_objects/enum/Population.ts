@@ -1,5 +1,6 @@
 /**
  * Set by Oracles / Settlements / Population
+ * @public
  */
 export enum Population {
   Few="Few",

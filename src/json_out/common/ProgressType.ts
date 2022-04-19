@@ -1,8 +1,14 @@
+/**
+ * @public
+ */
 export enum LegacyType {
     Quests = "Quests",
     Bonds = "Bonds",
     Discoveries = "Discoveries"
 }
+/**
+ * @public
+ */
 export enum ProgressTrackType {
     Combat = "Combat",
     Vow = "Vow",
@@ -10,4 +16,7 @@ export enum ProgressTrackType {
     Connection = "Connection",
     SceneChallenge = "Scene Challenge"
 }
+/**
+ * @public
+ */
 export type ProgressType = LegacyType | ProgressTrackType;

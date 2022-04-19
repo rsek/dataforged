@@ -1,5 +1,7 @@
 /**
  * Set by Oracles / Creatures / Encountered Behavior
+ *
+ * @public
  */
 enum Behavior {
   Ambusher = "Ambusher",

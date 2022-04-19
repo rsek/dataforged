@@ -1,6 +1,7 @@
 
 /**
  * Set by "Oracles / Planets / Class"
+ * @public
  */
 enum PlanetaryClass {
   Desert = "Desert",

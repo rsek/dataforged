@@ -1,4 +1,7 @@
-enum StarshipInitialContact {
+/**
+ * @public
+ */
+export enum StarshipInitialContact {
   AskingForHelp = "Asking for help",
   Derelict = "Derelict",
   Destroyed = "Destroyed",
@@ -12,6 +15,3 @@ enum StarshipInitialContact {
   Unresponsive = "Unresponsive",
   Wary = "Wary",
 }
-
-export { StarshipInitialContact };
-

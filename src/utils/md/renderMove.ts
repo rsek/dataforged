@@ -1,4 +1,4 @@
-import type { Move } from "@classes/index.js";
+import type { IMove } from "@json_out/index.js";
 import _ from "lodash-es";
 
 /**
@@ -7,7 +7,7 @@ import _ from "lodash-es";
  * @param headerLevel - The header level to use for the move.
  * @returns A string.
  */
-export function renderMove(move: Move, headerLevel: number = 3): string {
+export function renderMove(move: IMove, headerLevel: number = 3): string {
   const header = _.repeat("#", headerLevel) + " " + move.Display.Title;
   const items = [header];
   if (move["Progress Move"]) {

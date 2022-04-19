@@ -8,7 +8,6 @@ export * from "@game_objects/IDerelictRecord.js";
 export * from "@game_objects/IDerelictZoneRecord.js";
 export * from "@game_objects/IFactionRecord.js";
 export * from "@game_objects/IGameObjectRecordBase.js";
-export * from "@game_objects/index.js";
 export * from "@game_objects/IPlaceRecord.js";
 export * from "@game_objects/IPlanetRecord.js";
 export * from "@game_objects/IPrecursorVaultRecord.js";

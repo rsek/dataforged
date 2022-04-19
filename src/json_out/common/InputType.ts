@@ -1,21 +1,22 @@
-enum InputType {
+/**
+ * @public
+ */
+export enum InputType {
   /**
-   * @see {@link ITextInput}
+   * @see {@link IInputText}
    */
   Text = "Text",
   /**
-   * @see {@link ISelectInput}
+   * @see {@link IInputSelect}
    */
   Select = "Select",
   /**
-   * @see {@link INumberInput}
+   * @see {@link IInputNumber}
    */
   Number = "Number",
   /**
-   * @see {@link IClockInput}
+   * @see {@link IInputClock}
    */
   Clock = "Clock"
 }
-
-export { InputType };
 

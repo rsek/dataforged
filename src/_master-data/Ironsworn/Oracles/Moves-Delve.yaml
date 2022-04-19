@@ -3,12 +3,12 @@ Source:
   Title: "Ironsworn: Delve"
 Oracles:
   - Name: Delve the Depths
+    Move: Ironsworn/Moves/Delve/Delve_the_Depths
     Source:
-      Title: "Ironsworn: Delve"
       Page: 21
     Oracles:
       - Name: Delve the Depths +edge
-        Table: &template_delvethedepths
+        Table: &table:Delve_the_Depths
           - [1, 45, "Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger)."]
           - [46, 65, "Mark progress."]
           - [
@@ -27,24 +27,26 @@ Oracles:
               "Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
             ]
       - Name: Delve the Depths +shadow
-        _templateTable: *template_delvethedepths
-        Table:
-          - [1, 30]
-          - [31, 65]
-          - [66, 90]
-          - [91, 99]
-          - [100, 100]
+        _templateTable:
+          content: *table:Delve_the_Depths
+          rolls:
+            - [1, 30]
+            - [31, 65]
+            - [66, 90]
+            - [91, 99]
+            - [100, 100]
       - Name: Delve the Depths +wits
-        _templateTable: *template_delvethedepths
-        Table:
-          - [1, 40]
-          - [41, 55]
-          - [56, 80]
-          - [81, 99]
-          - [100, 100]
+        _templateTable:
+          content: *table:Delve_the_Depths
+          rolls:
+            - [1, 40]
+            - [41, 55]
+            - [56, 80]
+            - [81, 99]
+            - [100, 100]
   - Name: Find an Opportunity
+    Move: Ironsworn/Moves/Delve/Find_an_Opportunity
     Source:
-      Title: "Ironsworn: Delve"
       Page: 30
     Table:
       - [1, 25, "The terrain favors you, or you find a hidden path."]
@@ -68,7 +70,6 @@ Oracles:
   - Name: Reveal a Danger
     Move: Ironsworn/Moves/Delve/Reveal_a_Danger
     Source:
-      Title: "Ironsworn: Delve"
       Page: 34
     Table:
       - [1, 30, "Check the theme card."]
@@ -94,7 +95,6 @@ Oracles:
     Display:
       Title: Reveal a Danger (alternate version)
     Source:
-      Title: "Ironsworn: Delve"
       Page: 68
     Table:
       - [1, 22, "You encounter a hostile denizen."]
@@ -108,8 +108,8 @@ Oracles:
       - [89, 94, "You lose your way or are delayed."]
       - [95, 100, "Roll twice more on this table. Both results occur. If they are the same result, make it worse.", *result:RollTwice.MakeItWorse]
   - Name: Advance a Threat
+    Move: Ironsworn/Moves/Threat/Advance_a_Threat
     Source:
-      Title: "Ironsworn: Delve"
       Page: 155
     Table:
       - [1, 30, "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone). Otherwise, mark menace."]

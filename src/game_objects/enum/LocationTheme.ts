@@ -1,5 +1,6 @@
 /**
  * Set by Oracles / Location Themes / Theme Type
+ * @public
  */
 enum LocationTheme {
   Chaotic = "Chaotic",

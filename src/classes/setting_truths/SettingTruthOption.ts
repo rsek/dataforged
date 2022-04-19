@@ -1,6 +1,5 @@
 import { Row } from "@classes/index.js";
-import type { ISettingTruthOption } from "@json_out/index.js";
-import type { SettingTruthOptionId } from "@json_out/setting_truths/SettingTruthOptionId.js";
+import type { ISettingTruthOption, SettingTruthOptionId } from "@json_out/index.js";
 
 /**
  * @internal

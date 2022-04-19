@@ -11,20 +11,13 @@ import _ from "lodash-es";
  */
 export class AlterMove implements IAlterMove {
   $id: AlterMoveId;
-  Move?: IMove["$id"] | null;
+  Moves: IMove["$id"][] | null;
   Trigger?: MoveTrigger | undefined;
-  constructor(json: IAlterMoveYaml, parent: IAssetAbility, grandparent: IAsset, gamespace: Gamespace) {
-    let moveIdFragment = "Moves/*" as MoveIdBase;
-    if (json.Move) {
-      moveIdFragment = json.Move.replace(gamespace+"/", "") as MoveIdBase;
-    }
-    this.$id = `${parent.$id}/Alter_${moveIdFragment}`;
-    this.Move = json.Move ?? null;
+  constructor(json: IAlterMoveYaml, parent: IAssetAbility, index: number) {
+    this.$id = `${parent.$id}/Alter_Moves/${index+1}`;
+    this.Moves = json.Moves ?? null;
     if (json.Trigger) {
       const triggerClone = _.cloneDeep(json.Trigger);
-      if (grandparent["Condition Meter"]?.$id) {
-        triggerClone.Options = replaceInAllStrings(triggerClone.Options, "${{Asset_Condition_Meter}}", grandparent["Condition Meter"].$id as string);
-      }
       this.Trigger = new MoveTrigger(triggerClone, (`${this.$id}/Trigger` as IMoveTrigger["$id"]));
     }
   }

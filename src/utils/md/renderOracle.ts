@@ -1,4 +1,5 @@
 import type { Oracle } from "@classes/index.js";
+import type { IOracle } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { extractColumnData } from "@utils/md/extractColumnData.js";
 import { renderTable } from "@utils/md/renderTable.js";
@@ -10,7 +11,7 @@ import _ from "lodash-es";
  * @param headerLevel - The header level to use for the title.
  * @returns A string containing the markdown for the oracle.
  */
-export function renderOracle(oracle: Oracle, headerLevel = 3) {
+export function renderOracle(oracle: IOracle, headerLevel = 3) {
   if (oracle.Display["Column of"]) {
     return "";
   }

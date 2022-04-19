@@ -1,17 +1,20 @@
 import type { ChallengeRank } from "@json_out/common/index.js";
-import type { EncounterId , EncounterNature , EncounterTags } from "@json_out/encounters/index.js";
+import type { EncounterIdStarforged } from "@json_out/encounters/IEncounterStarforged.js";
+
+import type { EncounterIdIronsworn, EncounterNatureIronsworn , EncounterNatureStarforged , EncounterTags } from "@json_out/encounters/index.js";
 import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary } from "@json_out/meta/IHas.js";
 import type { IDisplay } from "@json_out/meta/index.js";
 
 /**
- * Interface common to Encounter and Foe entries in *Ironsworn* and *Ironsworn: Starforged*.
+ * Interface common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*, plus 'stubs' like IEncounterVariant.
  * @see {@link IEncounter}, {@link IEncounterVariant}
+ * @public
  */
-export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, IHasSource, IHasName, IHasId<EncounterId>,Partial<IHasQuestStarter & IHasSummary> {
+export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, IHasSource, IHasName, IHasId<EncounterIdStarforged | EncounterIdIronsworn>,Partial<IHasQuestStarter & IHasSummary> {
   /**
-   * @example "Encounters/Chiton"
+   * @example "Starforged/Encounters/Chiton"
    */
-  $id: EncounterId;
+  $id: EncounterIdStarforged | EncounterIdIronsworn;
   /**
    * @example "Chiton"
    */
@@ -19,7 +22,7 @@ export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, 
   /**
    * @example "Monster"
    */
-  Nature: EncounterNature;
+  Nature: EncounterNatureStarforged | EncounterNatureIronsworn;
   /**
    * @example "Insectoid horde"
    * @markdown
@@ -30,4 +33,11 @@ export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, 
   Features?: string[] | undefined;
   Drives?: string[] | undefined;
   Tactics?: string[] | undefined;
+  /**
+   * Ironsworn, p. 135: "Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe."
+   *
+   * Only present in Ironsworn encounters.
+   * @markdown
+   */
+  "Your Truth"?: string | undefined;
 }

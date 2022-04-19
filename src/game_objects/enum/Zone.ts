@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export enum Zone {
   Access = "Access",
   Community = "Community",

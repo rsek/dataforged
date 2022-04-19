@@ -57,32 +57,39 @@
     "paths": {
       "@constants/*": [
         "src/constants/*",
-        "dist/constants/*"
+        "dist/esm/constants/*",
+        "dist/cjs/constants/*"
       ],
       "@json_out/*": [
         "src/json_out/*",
-        "dist/json_out/*"
+        "dist/esm/json_out/*",
+        "dist/cjs/json_out/*"
       ],
       "@utils/*": [
         "src/utils/*",
-        "dist/utils/*"
+        "dist/esm/utils/*",
+        "dist/cjs/utils/*"
       ],
       "@yaml_in/*": [
         "src/yaml_in/*",
-        "dist/yaml_in/*"
+        "dist/esm/yaml_in/*",
+        "dist/cjs/yaml_in/*",
       ],
       "@classes/*": [
         "src/classes/*",
-        "dist/classes/*"
+        "dist/esm/classes/*",
+        "dist/cjs/classes/*"
       ],
       "@game_objects/*": [
         "src/game_objects/*",
-        "dist/game_objects/*"
+        "dist/esm/game_objects/*",
+        "dist/cjs/game_objects/*"
       ]
     },
+    "strictNullChecks": true,
     "baseUrl": ".",
     "preserveConstEnums": true,
-    "outDir": "dist",
+    "outDir": "dist/esm",
     "rootDir": "src",
     "allowJs": true,
     "removeComments": false,

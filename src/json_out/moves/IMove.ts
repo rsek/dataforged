@@ -1,11 +1,31 @@
 import type { IAsset } from "@json_out/assets/IAsset.js";
-import type { IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes , MoveId } from "@json_out/index.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
+import type { AssetAbilityIdBase, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes , MoveCategoryName } from "@json_out/index.js";
 import type { IMoveTrigger } from "@json_out/moves/IMoveTrigger.js";
 import type { IOracle } from "@json_out/oracles/IOracle.js";
+/**
+ * @public
+ */
+export type MoveId = `${Gamespace}/${MoveIdBase}`;
+/**
+ * @public
+ */
+export type MoveIdBase = `Moves/${MoveCategoryName|"Assets"}/${string}` | `Moves/${AssetAbilityIdBase}/${string}`;
 
+/**
+ * Placeholder Move ID indicating that *any* move is valid. For example, an {@link IAlterMove} with this as a `Move` key can be applied to any move that meets its other requirements.
+ * @public
+ */
+export type MoveIdGeneric = `${Gamespace}/${MoveIdGenericBase}`;
+
+/**
+ * @public
+ */
+export type MoveIdGenericBase = "Moves/*";
 
 /**
  * Interface representing a Starforged move.
+ * @public
  */
 export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
   /**

@@ -1,42 +1,30 @@
-import { EncounterDisplay , EncounterVariant , Source } from "@classes/index.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { ChallengeRank, EncounterNature, EncounterTags, IEncounter, ISource, } from "@json_out/index.js";
-import type { IEncounterYaml } from "@yaml_in/index.js";
+import type { ChallengeRank, EncounterIdIronsworn, EncounterIdStarforged, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplay, IEncounter, ISource } from "@json_out/index.js";
+import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export class Encounter implements IEncounter {
-  $id: IEncounter["$id"];
+export abstract class Encounter implements IEncounter {
+  abstract $id: EncounterIdStarforged | EncounterIdIronsworn;
   Name: string;
-  Nature: EncounterNature;
-  Summary: string;
-  Tags?: EncounterTags[] | undefined;
-  Rank: ChallengeRank;
-  Display: EncounterDisplay;
   Features: string[];
   Drives: string[];
   Tactics: string[];
-  Variants: EncounterVariant[];
+  abstract Nature: EncounterNatureIronsworn | EncounterNatureStarforged;
+  Summary?: string | undefined;
+  Tags?: EncounterTags[] | undefined;
+  Rank: ChallengeRank;
+  abstract Display: IDisplay;
   Description: string;
+  abstract Source: ISource;
   "Quest Starter": string;
-  Source: Source;
-  constructor(json: IEncounterYaml, gamespace: Gamespace, ...ancestorSourceJson: ISource[]) {
-    this.$id = `${gamespace}/Encounters/${json.Name.replaceAll(" ", "_")}`;
+  constructor(json: IEncounterIronswornYaml|IEncounterStarforgedYaml) {
     this.Name = json.Name;
-    this.Nature = json.Nature;
-    this.Summary = json.Summary;
-    this.Tags = json.Tags;
-    this.Rank = json.Rank;
-    this.Display = new EncounterDisplay(json.Display ?? {}, this.Name);
     this.Features = json.Features;
     this.Drives = json.Drives;
     this.Tactics = json.Tactics;
-    const newSource = new Source(json.Source, ...ancestorSourceJson);
+    this.Rank = json.Rank;
     this.Description = json.Description;
     this["Quest Starter"] = json["Quest Starter"];
-    this.Source = newSource;
-    this.Variants = json.Variants.map(variant => new EncounterVariant(variant, this));
   }
 }
-

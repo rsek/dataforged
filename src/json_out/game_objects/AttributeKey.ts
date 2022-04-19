@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export enum AttributeKey {
   /**
    * {@link Json.GameObjects#Atmosphere}

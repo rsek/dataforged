@@ -5,15 +5,14 @@ import { validateColor } from "@utils/validateColor.js";
 /**
  * @internal
  */
-
 export class MoveCategoryDisplay implements IDisplay {
   Title: MoveCategoryTitle;
-  Color: string;
+  Color?: string | undefined;
   constructor(title: MoveCategoryTitle, color: string) {
     this.Title = title;
-    if (!validateColor(color)) {
+    if (color && !validateColor(color)) {
       throw badJsonError(this.constructor, color, "Not a valid color.");
     }
-    this.Color = color;
+    this.Color = color ?? undefined;
   }
 }

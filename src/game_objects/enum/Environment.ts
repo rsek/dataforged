@@ -1,5 +1,6 @@
 /**
  * Set by Oracles / Creatures / Environment
+ * @public
  */
 enum Environment {
   Space = "Space",

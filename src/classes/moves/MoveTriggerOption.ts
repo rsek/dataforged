@@ -1,4 +1,5 @@
 import { CustomStat } from "@classes/moves/CustomStat.js";
+import { Replacement } from "@json_out/common/Replacement.js";
 import type { ICustomStat, IMoveTrigger, IMoveTriggerOption, ProgressType, RollableStat, RollType } from "@json_out/index.js";
 import { RollMethod } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
@@ -19,15 +20,15 @@ export class MoveTriggerOption<T extends RollType> implements IMoveTriggerOption
     this.Text = json.Text;
     this["Roll type"] = json["Roll type"];
     this.Method = json.Method ?? RollMethod.Any;
-    if (json.Using && json.Using.includes("${{Asset_Condition_Meter}}")) {
-      throw badJsonError(this.constructor, json, "`Using` includes an unexpected template string. It should be replaced before being sent to this constructor.");
-    } else {
-      this.Using = (json.Using as typeof this["Using"]) ?? [];
-    }
-    if (json["Custom stat"]){
+    // if (json.Using && json.Using.includes(Replacement.AssetMeter)) {
+    //   throw badJsonError(this.constructor, json, "`Using` includes an unexpected template string. It should be replaced before being sent to this constructor.");
+    // } else {
+    this.Using = (json.Using as typeof this["Using"]) ?? [];
+    // }
+    if (json["Custom stat"]) {
       this["Custom stat"] = new CustomStat(json["Custom stat"], `${this.$id}/Custom_stat`);
       if (this.Using && this["Custom stat"]) {
-        this.Using = this.Using.map(item => item === "${{Custom_stat}}" ? this["Custom stat"]?.$id : item) as typeof this["Using"];
+        this.Using = this.Using.map(item => item === Replacement.CustomStat ? this["Custom stat"]?.$id : item) as typeof this["Using"];
       }
     }
   }

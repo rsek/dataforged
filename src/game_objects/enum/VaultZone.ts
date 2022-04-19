@@ -1,5 +1,8 @@
-enum VaultZone {
+/**
+ * @public
+ */
+export enum VaultZone {
   Interior = "Interior",
   Sanctum = "Sanctum"
-} export { VaultZone };
+}
 

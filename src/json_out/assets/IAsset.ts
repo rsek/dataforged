@@ -1,10 +1,24 @@
-import type { AssetId,IAssetAbility, IAssetAttachment, IAssetInput, IAssetType, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "@json_out/index.js";
+import type { IInput } from "@json_out/assets/IInput.js";
+import type { Gamespace } from "@json_out/common/Gamespace.js";
+import type { InputType } from "@json_out/common/InputType.js";
+import type { AssetTypeIdBase, IAssetAbility, IAssetAttachment, IAssetType, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName , IHasSource } from "@json_out/index.js";
 import type { Tuple } from "@utils/types/Tuple.js";
 
 export * from "@utils/types/Tuple.js";
 
 /**
+ * @public
+ */
+export type AssetId = `${Gamespace}/${AssetIdBase}`;
+/**
+ * @public
+ */
+export type AssetIdBase = `${AssetTypeIdBase}/${string}`;
+
+
+/**
  * An interface representing an *Ironsworn: Starforged* asset card.
+ * @public
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
   /**
@@ -28,7 +42,7 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
   /**
    * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
    */
-  Inputs?: IAssetInput[] | undefined;
+  Inputs?: IInput<InputType>[] | undefined;
   /**
    * An optional markdown string representing the requirement text that appears at the top of some asset cards.
    * @markdown

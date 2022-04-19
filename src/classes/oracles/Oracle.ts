@@ -2,9 +2,8 @@
 import { OracleContent , OracleDisplay , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 
-import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ITableDisplay, OracleCategoryId, OracleTableId } from "@json_out/index.js";
+import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ISource, ITableDisplay, OracleCategoryId, OracleTableId } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
-import { buildLog } from "@utils/logging/buildLog.js";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
@@ -38,7 +37,9 @@ export class Oracle extends SourceInheritor implements IOracle  {
   ) {
     let jsonClone = _.cloneDeep(json);
 
-    super(jsonClone.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
+    super(
+      json.Source ?? {},
+      ..._.compact(ancestorsJson.map(item => item.Source)));
 
     if (jsonClone._templateInfo) {
       jsonClone = templateOracle<IOracleYaml>(jsonClone, jsonClone._templateInfo);
@@ -47,7 +48,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     //   throw new Error("json does not conform to IOracleInfoData!");
     // }
     this.$id = buildOracleId<OracleTableId>(gamespace, jsonClone, ...ancestorsJson);
-    buildLog(this.constructor, `Building: ${this.$id}`);
+    // buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = jsonClone.Name;
     this.Aliases = jsonClone.Aliases;
     this["Member of"] = memberOf ?? undefined;
@@ -95,7 +96,6 @@ export class Oracle extends SourceInheritor implements IOracle  {
         if (typeof this.Usage["Sets attributes"] === "undefined") {
           this.Usage["Sets attributes"] = [];
         }
-        // console.log("attrs", attrs);
         this.Usage["Sets attributes"] = this.Usage["Sets attributes"].concat(...attrs);
       }
     }

@@ -1,6 +1,4 @@
-
 import type { IRowContentYaml, IRowYaml } from "@yaml_in/index.js";
-import { is } from "typescript-is";
 
 /**
  * Extracts the content of a Row array. In other words, it excludes the Floor and Ceiling numbers.
@@ -12,7 +10,7 @@ export function extractRowContent(row: IRowYaml | IRowContentYaml): IRowContentY
   //   throw badJsonError(extractRowContent, row, "Expected IRowYaml or IRowContentYaml");
   // }
   let output;
-  if (is<IRowYaml[0]>(row[0]) && is<IRowYaml[1]>(row[1])) {
+  if (typeof row[0] === "number" && typeof row[1] === "number") {
     output = row.slice(2);
   } else {
     output = row;

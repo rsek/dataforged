@@ -2,6 +2,7 @@ import type { PartOfSpeechTag } from "@json_out/meta/PartOfSpeechTag.js";
 
 /**
  * Interface for metadata that describes an oracle's semantic or lexical content.
+ * @public
  */
 export interface IOracleContent {
   /**

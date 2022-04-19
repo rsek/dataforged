@@ -30,7 +30,7 @@ export class AssetType extends SourceInheritor implements IAssetType {
     if (!this.Display.Title) {
       this.Display.Title = this.Name + "s";
     }
-    this.Assets = json.Assets.map(asset => new Asset(asset, gamespace, this));
+    this.Assets = json.Assets.map(asset => new Asset(asset, gamespace, this, rootSource));
   }
 }
 

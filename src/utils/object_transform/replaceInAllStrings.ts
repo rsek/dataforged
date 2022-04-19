@@ -2,25 +2,20 @@ import jsonpath from "jsonpath";
 import _ from "lodash-es";
 
 /**
- * Replace all instances of `searchValue` in all strings in the given JSON object with `replaceValue`
- * @param json - The JSON object to be searched and replaced.
+ * Recurses over an object and replaces a substring with another string.
+ * @param object - The object to be searched and replaced. This function creates a copy and so does **not** mutate `obj`;
  * @param searchValue - The string to search for.
  * @param replaceValue - The value to replace.
- * @returns The original JSON object with all strings replaced.
+ * @returns A copy of the original JSON object with all strings replaced.
  */
-export function replaceInAllStrings<T>(json: T, searchValue: string, replaceValue: string): T {
+export function replaceInAllStrings<T>(object: T, searchValue: string, replaceValue: string): T {
   // console.log("args", arguments);
-  const jsonClone = _.cloneDeep(json);
-  jsonpath.apply(jsonClone, "$..*", (result) => {
-    // console.log(`replacing string '${searchValue}' with '${replaceValue}' in`, json);
-    if (typeof result === "string" && result.includes(searchValue)) {
-      if (typeof replaceValue !== "string") {
-        throw new RangeError(`Expected a string to replace with, but received ${typeof replaceValue}`);
-      };
-      const text = result;
-      return text.replaceAll(searchValue, replaceValue);
+  const jsonClone = _.cloneDeep(object);
+  jsonpath.apply(jsonClone, "$..*", (match: string) => {
+    if (typeof match === "string") {
+      return match.replaceAll(searchValue, replaceValue);
     }
-    return result as T;
+    return match;
   });
   return jsonClone;
 }

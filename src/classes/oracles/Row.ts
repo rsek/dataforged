@@ -1,7 +1,6 @@
 import { AttributeSetter , GameObject , MultipleRolls , OracleContent , Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, Vector } from "@json_out/index.js";
-import type { SettingTruthOptionId } from "@json_out/setting_truths/SettingTruthOptionId.js";
+import type { IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, SettingTruthOptionId, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { RequireKey } from "@utils/types/RequireKey.js";
@@ -9,7 +8,6 @@ import { validateRollTemplate } from "@utils/validation/validateRollTemplate.js"
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";
 import type { IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 import _ from "lodash-es";
-import { is } from "typescript-is";
 
 /**
  * Class representing a single row of an oracle table.
@@ -134,10 +132,13 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
                 break;
               }
               case "Oracle rolls": {
-                if (!is<OracleTableId[]>(value)) {
+                // if (!is<OracleTableId[]>(value)) {
+                //   throw badJsonError(this.constructor, value, "expected OracleTableId[]");
+                // }
+                if (!Array.isArray(value)) {
                   throw badJsonError(this.constructor, value, "expected OracleTableId[]");
                 }
-                this["Oracle rolls"] = value;
+                this["Oracle rolls"] = value as OracleTableId[];
                 break;
               }
               case "Multiple rolls": {

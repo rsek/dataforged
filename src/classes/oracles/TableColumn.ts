@@ -1,13 +1,14 @@
-import type { IOracle, IResultColumn, IRow, ITableColumnBase } from "@json_out/index.js";
+import type { IOracle, ITextColumn } from "@json_out/index.js";
+import type { IRollColumn } from "@json_out/oracles/IRollColumn.js";
 
 /**
  * @internal
  */
-export class ResultColumn implements IResultColumn {
-  Label: IResultColumn["Label"];
-  ["Use content from"]: IResultColumn["Use content from"];
-  Key: IResultColumn["Key"];
-  constructor(content: IOracle["$id"], label: string = "Result", key: keyof IRow = "Result") {
+export class TextColumn implements ITextColumn {
+  Label: ITextColumn["Label"];
+  ["Use content from"]: ITextColumn["Use content from"];
+  Key: ITextColumn["Key"];
+  constructor(content: IOracle["$id"], label: string = "Result", key: ITextColumn["Key"] = "Result") {
     this.Label = label;
     this["Use content from"] = content;
     this.Key = key;
@@ -17,7 +18,7 @@ export class ResultColumn implements IResultColumn {
 /**
  * @internal
  */
-export class RollColumn implements ITableColumnBase {
+export class RollColumn implements IRollColumn {
   Label: string = "Roll";
   ["Use content from"]: IOracle["$id"];
   constructor(content: IOracle["$id"], label: string = "Roll") {

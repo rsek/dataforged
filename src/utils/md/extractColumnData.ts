@@ -1,9 +1,9 @@
 import type { Oracle } from "@classes/index.js";
-import type { OracleTableId } from "@json_out/index.js";
+import type { IOracle, OracleTableId } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { getTableByOracleId } from "@utils/md/getTableByOracleId.js";
 
-export function extractColumnData(oracle: Oracle) {
+export function extractColumnData(oracle: IOracle) {
   const newTableRows: Record<string, string>[] = [];
 
   const rollCols = oracle.Display.Table["Roll columns"];
@@ -25,7 +25,7 @@ export function extractColumnData(oracle: Oracle) {
 
   const resultCols = oracle.Display.Table["Result columns"];
   resultCols.forEach((col, colIndex) => {
-    const table = getTableByOracleId(oracle, col["Use content from"] as OracleTableId);
+    const table = getTableByOracleId(oracle, col["Use content from"] );
     if (!table) {
       throw badJsonError(extractColumnData);
     }

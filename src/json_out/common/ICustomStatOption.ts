@@ -1,8 +1,12 @@
 import type { CustomStatId, IHasName } from "@json_out/index.js";
 import type { IHasId } from "@json_out/meta/IHas.js";
-
+/**
+ * @public
+ */
 export type CustomStatOptionId = `${CustomStatId}/${string}`;
-
+/**
+ * @public
+ */
 export interface ICustomStatOption extends IHasId<CustomStatOptionId>, IHasName {
   /**
    * The name/label for this specific value of the custom stat.

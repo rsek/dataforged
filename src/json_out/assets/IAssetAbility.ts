@@ -1,7 +1,20 @@
-import type { AssetAbilityId , IAlterMove , IAsset , IAssetInput , IHasId, IHasText , IMove } from "@json_out/index.js";
+
+import type { Gamespace } from "@json_out/common/Gamespace.js";
+import type { AssetIdBase, IAlterMove, IAsset, IHasId, IHasText, IInput, IMove, InputType } from "@json_out/index.js";
+
+/**
+ * @public
+ */
+export type AssetAbilityId = `${Gamespace}/${AssetAbilityIdBase}`;
+
+/**
+ * @public
+ */
+export type AssetAbilityIdBase = `${AssetIdBase}/Abilities/${number}`;
 
 /**
  * Represents one of an asset's three abilities.
+ * @public
  */
 export interface IAssetAbility extends IHasId<AssetAbilityId>, IHasText {
   /**
@@ -11,7 +24,7 @@ export interface IAssetAbility extends IHasId<AssetAbilityId>, IHasText {
   /**
    * User inputs (text, clocks, etc) associated with this asset ability.
    */
-  Inputs?: IAssetInput[] | undefined;
+  Inputs?: IInput<InputType>[] | undefined;
   /**
    * Information on how this ability alters moves when enabled. Currently, it only details additional stat triggers added by the asset ability, but it may expand in the future.
    */

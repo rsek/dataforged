@@ -1,7 +1,6 @@
 /**
- * Set by Oracles / Creatures / Encountered Behavior
- * @ignore
- * @todo implement
+ * NYI.
+ * @beta
  */
 enum Biome {
 }

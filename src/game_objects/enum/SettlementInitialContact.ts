@@ -1,4 +1,7 @@
-enum SettlementInitialContact {
+/**
+ * @public
+ */
+export enum SettlementInitialContact {
   AskingForHelp = "Asking for help",
   Captured = "Captured",
   Derelict = "Derelict",
@@ -11,6 +14,3 @@ enum SettlementInitialContact {
   Wary = "Wary",
   Welcoming = "Welcoming",
 }
-
-export { SettlementInitialContact };
-

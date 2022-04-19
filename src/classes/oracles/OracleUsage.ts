@@ -7,7 +7,6 @@ import type { IOracleUsageYaml } from "@yaml_in/oracles/IOracleUsageYaml.js";
  */
 export class OracleUsage implements IOracleUsage {
   Initial?: boolean | undefined;
-  "Min rolls"?: number | undefined;
   "Max rolls"?: number | undefined;
   Repeatable?: boolean | undefined;
   Suggestions?: Suggestions | undefined;
@@ -20,7 +19,6 @@ export class OracleUsage implements IOracleUsage {
     // }
     this.Initial = json.Initial;
     this["Max rolls"] = json["Max rolls"];
-    this["Min rolls"] = json["Min rolls"];
     this.Repeatable = json.Repeatable;
     this["Allow duplicates"] = json["Allow duplicates"] ?? false;
     if (json.Suggestions) {

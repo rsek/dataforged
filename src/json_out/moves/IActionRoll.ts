@@ -3,6 +3,7 @@ import type { ICustomStat, RollableStat } from "@json_out/index.js";
 /**
  * Describes an Action Roll made as part of a {@link IMove | move}.
  * @see {@link IMoveTrigger} {@link IMoveTriggerOption}
+ * @public
  */
 export interface IActionRoll {
   /**

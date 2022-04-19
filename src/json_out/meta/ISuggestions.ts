@@ -1,4 +1,4 @@
-import type { IAsset, IEncounter , IGameObject, IMove , IOracle } from "@json_out/index.js";
+import type { IAsset, IEncounterStarforged , IGameObject, IMove , IOracle } from "@json_out/index.js";
 
 /**
  * Describes "non-canonical" suggestions for game content related to the parent item.
@@ -6,6 +6,7 @@ import type { IAsset, IEncounter , IGameObject, IMove , IOracle } from "@json_ou
  * These are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.
  *
  * These can be safely ignored if that functionality is not desired.
+ * @public
  */
 export interface ISuggestions  {
   /**
@@ -27,5 +28,5 @@ export interface ISuggestions  {
   /**
    * Suggested encounter IDs.
    */
-  "Encounters"?: IEncounter["$id"][] | undefined;
+  "Encounters"?: IEncounterStarforged["$id"][] | undefined;
 }

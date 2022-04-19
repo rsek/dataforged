@@ -1,6 +1,8 @@
 /**
  * Set by Oracles / Characters / Disposition
+ * @public
  */
+
 enum Disposition {
   Cooperative = "Cooperative",
   Curious = "Curious",

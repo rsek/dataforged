@@ -13,16 +13,20 @@ export class Source implements ISource {
   Date?: string | undefined;
   Page?: number | undefined;
   constructor(json: Partial<ISource>, ...ancestorSourceJson: ISource[]) {
-    const sourceStack = _.compact(
+    // console.log(arguments);
+    const sourceStack = _.cloneDeep([ ..._.compact(
       ancestorSourceJson)
-      .reverse();
-    const newData = _.merge(json, ...sourceStack) as ISource;
-    this.Title = newData.Title;
+      .reverse()
+    ,
+      json as ISource ]);
+    const merged = sourceStack.reduce((a,b) => _.merge(a,b));
+    // console.log("newData", newData);
+    this.Title = merged.Title;
+    this.Date = merged.Date;
+    this.Page = merged.Page;
     if (!enumHas(SourceTitle, this.Title)) {
-      throw badEnumError(this.constructor as () => unknown, this.Title, SourceTitle);
+      throw badEnumError(this.constructor as () => unknown, merged.Title, SourceTitle);
     }
-    this.Date = newData.Date;
-    this.Page = newData.Page;
   }
 }
 

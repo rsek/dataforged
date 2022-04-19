@@ -1,6 +1,6 @@
 import { GameObject } from "@classes/index.js";
 import type { IAsset } from "@json_out/assets/IAsset.js";
-import type { IEncounter } from "@json_out/encounters/IEncounter.js";
+import type { IEncounterStarforged } from "@json_out/encounters/IEncounterStarforged";
 import type { IMove, IOracle, ISuggestions } from "@json_out/index.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";
 
@@ -12,7 +12,7 @@ export class Suggestions implements ISuggestions {
   "Oracle rolls"?: IOracle["$id"][] | undefined;
   "Assets"?: IAsset["$id"][] | undefined;
   "Moves"?: IMove["$id"][] | undefined;
-  "Encounters"?: IEncounter["$id"][] | undefined;
+  "Encounters"?: IEncounterStarforged["$id"][] | undefined;
   constructor(data: ISuggestionsYaml) {
     if (data["Game objects"]) {
       // console.info("[Suggestions] Game objects", JSON.stringify(data["Game objects"]));

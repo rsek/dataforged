@@ -1,6 +1,9 @@
 import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasOracleUsage, IHasSource, IOracle, IOracleContent, IOracleUsage } from "@json_out/index.js";
 import type { IOracleCategory } from "@json_out/oracles/IOracleCategory.js";
+
 /**
+ * Interface with elements common to various Oracle-related interfaces and classes.
+ * @public
  */
 export interface IOracleBase extends Partial<
     IHasAliases &

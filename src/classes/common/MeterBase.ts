@@ -10,7 +10,7 @@ export abstract class MeterBase implements IMeterBase {
   Name: string;
   Min: number = 0;
   Max: number;
-  "Starting Value": number = 0;
+  "Value": number = 0;
   /**
    * @param json - the json object to build the counter from
    * @param id - the id of the Counter
@@ -20,6 +20,6 @@ export abstract class MeterBase implements IMeterBase {
     this.Name = json.Name;
     this.Max = json.Max;
     this.Min = json.Min ?? 0;
-    this["Starting Value"] = json["Starting Value"] ?? 0;
+    this["Value"] = json["Value"] ?? 0;
   }
 }

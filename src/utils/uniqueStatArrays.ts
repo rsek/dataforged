@@ -1,4 +1,3 @@
-import _ from "lodash-es";
 const stats = [ "Edge", "Iron", "Heart", "Shadow", "Wits" ];
 
 /**
@@ -22,11 +21,11 @@ export function uniquePairs<T>(...items: Array<T>) {
   }));
   return allPairs;
 }
+
 /**
  * Given a list of stats, return a list of unique pairs of stats, and a list of unique triads of stats
  * @returns An array of objects, each of which has a statRecord property.
  */
-
 export function uniqueStatArrays() {
   const statPairs = uniquePairs(...stats);
   const statTriads: Array<[string, [string, string]]> = [];

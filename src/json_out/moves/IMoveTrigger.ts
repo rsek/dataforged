@@ -2,11 +2,14 @@ import type { MoveId } from "@json_out/index.js";
 import type { IHasId, IHasText } from "@json_out/meta/IHas.js";
 import type { IMoveTriggerOption } from "@json_out/moves/IMoveTriggerOption.js";
 import type { RollType } from "@json_out/moves/RollMethod.js";
-
+/**
+ * @public
+ */
 export type MoveTriggerId = `${MoveId}/Trigger`;
 
 /**
  * Describes the trigger conditions of the move.
+ * @public
  */
 export interface IMoveTrigger extends IHasId<MoveTriggerId>, IHasText {
   /**

@@ -1,5 +1,6 @@
 /**
  * Set by Oracles / Factions / Dominion
+ * @public
  */
 enum Dominion {
   Agriculture = "Agriculture",

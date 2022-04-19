@@ -15,14 +15,13 @@ export class ConditionMeter extends MeterBase implements IConditionMeter {
   Name!: string;
   // set by parent constructor
   Max!: number;
-
   Min!: 0;
-  "Starting Value": number;
+  "Value": number;
   Conditions: MeterCondition[] = [];
   Aliases?: MeterAlias[] | undefined;
   constructor(json: IConditionMeter, id: string, assetType: AssetType["$id"]) {
     super(json, id);
-    this["Starting Value"] = json["Starting Value"] ?? json.Max;
+    this["Value"] = json["Value"] ?? json.Max;
     if (json.Conditions) {
       this.Conditions = json.Conditions;
     }

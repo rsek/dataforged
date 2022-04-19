@@ -1,6 +1,10 @@
-import type { IResultColumn, ITableColumnBase } from "@json_out/index.js";
+import type { ITableColumnBase, ITextColumn } from "@json_out/index.js";
 
+/**
+ * Provides information on how a specific oracle table is rendered in the source text.
+ * @public
+ */
 export interface IDisplayTable {
-  "Result columns": IResultColumn[];
+  "Result columns": ITextColumn[];
   "Roll columns": ITableColumnBase[];
 }

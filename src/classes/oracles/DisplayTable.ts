@@ -1,4 +1,4 @@
-import { ResultColumn, RollColumn } from "@classes/index.js";
+import { RollColumn, TextColumn } from "@classes/index.js";
 import type { IDisplayTable, IOracle } from "@json_out/index.js";
 import { getNameFromId } from "@utils/getNameFromId.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
@@ -7,7 +7,7 @@ import { badJsonError } from "@utils/logging/badJsonError.js";
  * @internal
  */
 export class DisplayTable implements IDisplayTable {
-  "Result columns": ResultColumn[];
+  "Result columns": TextColumn[];
   "Roll columns": RollColumn[];
   constructor(json: Partial<IDisplayTable>, parentId: IOracle["$id"]) {
     if (json["Result columns"]) {
@@ -22,9 +22,9 @@ export class DisplayTable implements IDisplayTable {
           }
         });
       }
-      this["Result columns"] = resultColData.map(col => new ResultColumn((col["Use content from"] ?? parentId), col.Label ?? undefined, col.Key ?? "Result"));
+      this["Result columns"] = resultColData.map(col => new TextColumn((col["Use content from"] ?? parentId), col.Label ?? undefined, col.Key ?? "Result"));
     } else {
-      this["Result columns"] = [new ResultColumn(parentId)];
+      this["Result columns"] = [new TextColumn(parentId)];
     }
     if (json["Roll columns"]) {
       const rollColData = json["Roll columns"];

@@ -1,5 +1,6 @@
-
-enum EncounterTags {
+/**
+ * @public
+ */
+export enum EncounterTags {
   Vehicle = "vehicle"
-} export { EncounterTags };
-
+}

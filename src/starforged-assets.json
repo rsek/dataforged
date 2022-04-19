@@ -18,15 +18,15 @@
         },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Command_Vehicle/Starship/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 5,
+          "Value": 5,
           "$id": "Starforged/Assets/Command_Vehicle/Starship/Condition_Meter",
           "Name": "Integrity",
           "Max": 5,
@@ -50,13 +50,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/Suffer/Withstand_Damage",
-                "Move": "Starforged/Moves/Suffer/Withstand_Damage",
+                "$id": "Starforged/Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Suffer/Withstand_Damage"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/Suffer/Withstand_Damage/Trigger",
+                  "$id": "Starforged/Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/Suffer/Withstand_Damage/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Command_Vehicle/Starship/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "You [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) to your Starship",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -110,7 +110,7 @@
         "Display": { "Title": "Expanded Hold", "Color": "#7f5a90" },
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 0,
+          "Value": 0,
           "$id": "Starforged/Assets/Module/Expanded_Hold/Condition_Meter",
           "Name": "Cargo",
           "Max": 3,
@@ -151,17 +151,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler",
+                "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler",
                 "Name": "Ready Grappler",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Module/Grappler",
                 "Display": { "Title": "Ready Grappler" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger",
+                  "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger",
                   "Text": "When you take a minute or so to ready the grappler...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Highest",
                       "Using": ["Wits", "Attached_Asset_Condition_Meter"]
@@ -170,17 +170,17 @@
                 },
                 "Text": "Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes/Strong_Hit",
                     "Text": "The grappler is charged and may be fired.\n\nIf you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes/Weak_Hit",
                     "Text": "The grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)\n\nIf you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Outcomes/Miss",
                     "Text": "Charging fails and you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2)."
                   }
                 }
@@ -245,17 +245,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves",
+                "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves",
                 "Name": "Draw Reserves",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Module/Internal_Refit",
                 "Display": { "Title": "Draw Reserves" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger",
+                  "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger",
                   "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Attached_Asset_Condition_Meter"]
@@ -264,17 +264,17 @@
                 },
                 "Text": "Your vessel is stocked with reserves. When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes/Strong_Hit",
                     "Text": "You manage to scrape by. You don't need to mark unprepared. Take +1 supply."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes/Weak_Hit",
                     "Text": "Mark unprepared as normal."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Outcomes/Miss",
                     "Text": "Mark unprepared as normal."
                   }
                 }
@@ -320,7 +320,7 @@
         "Display": { "Title": "Missile Array", "Color": "#7f5a90" },
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 5,
+          "Value": 5,
           "$id": "Starforged/Assets/Module/Missile_Array/Condition_Meter",
           "Name": "Ammo",
           "Max": 5,
@@ -352,10 +352,10 @@
         "Display": { "Title": "Overseer", "Color": "#7f5a90" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Module/Overseer/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Abilities": [
@@ -365,13 +365,13 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage",
-                "Move": "Starforged/Moves/Adventure/Secure_an_Advantage",
+                "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage/Trigger",
+                  "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By talking through a situation with the overseer AI",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -381,13 +381,13 @@
                 }
               },
               {
-                "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/Combat/Gain_Ground",
-                "Move": "Starforged/Moves/Combat/Gain_Ground",
+                "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/2",
+                "Moves": ["Starforged/Moves/Combat/Gain_Ground"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/Combat/Gain_Ground/Trigger",
+                  "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/2/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Module/Overseer/Abilities/1/Alter_Moves/2/Trigger/Options/1",
                       "Text": "By talking through a situation with the overseer AI",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -409,13 +409,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Module/Overseer/Abilities/3/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Module/Overseer/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Face_Danger"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Overseer/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger",
+                  "$id": "Starforged/Assets/Module/Overseer/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Overseer/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Module/Overseer/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -499,17 +499,17 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/Combat/Enter_the_Fray",
-                "Move": "Starforged/Moves/Combat/Enter_the_Fray",
+                "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/Enter_the_Fray"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/Combat/Enter_the_Fray/Trigger"
+                  "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/1/Trigger"
                 }
               },
               {
-                "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/2",
+                "Moves": ["Starforged/Moves/Adventure/Face_Danger"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger"
+                  "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/3/Alter_Moves/2/Trigger"
                 }
               }
             ]
@@ -524,7 +524,7 @@
         "Display": { "Title": "Shields", "Color": "#7f5a90" },
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 0,
+          "Value": 0,
           "$id": "Starforged/Assets/Module/Shields/Condition_Meter",
           "Name": "Shields",
           "Max": 4,
@@ -541,17 +541,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields",
+                "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields",
                 "Name": "Raise Shields",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Module/Shields",
                 "Display": { "Title": "Raise Shields" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger",
+                  "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger",
                   "Text": "When you raise your shields...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Highest",
                       "Using": ["Wits", "Attached_Asset_Condition_Meter"]
@@ -560,17 +560,17 @@
                 },
                 "Text": "When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). Then, if you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes/Strong_Hit",
                     "Text": "Set your vehicle's shields to 4.\n\nThen, if you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes/Weak_Hit",
                     "Text": "Set your vehicle's shields to 3.\n\nThen, if you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Outcomes/Miss",
                     "Text": "Set your vehicle's shields to 2, but [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).\n\nThen, if you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so."
                   }
                 }
@@ -583,13 +583,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Module/Shields/Abilities/2/Alter_Moves/Combat/React_Under_Fire",
-                "Move": "Starforged/Moves/Combat/React_Under_Fire",
+                "$id": "Starforged/Assets/Module/Shields/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/React_Under_Fire"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Shields/Abilities/2/Alter_Moves/Combat/React_Under_Fire/Trigger",
+                  "$id": "Starforged/Assets/Module/Shields/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Shields/Abilities/2/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Module/Shields/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By letting your shields take the blow",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -632,13 +632,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/Combat/Strike",
-                "Move": "Starforged/Moves/Combat/Strike",
+                "$id": "Starforged/Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/Strike"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/Combat/Strike/Trigger",
+                  "$id": "Starforged/Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/Combat/Strike/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Module/Stealth_Tech/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -716,15 +716,15 @@
         "Display": { "Title": "Exosuit", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 6,
+          "Value": 6,
           "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Condition_Meter",
           "Name": "Integrity",
           "Max": 6,
@@ -757,15 +757,15 @@
         "Display": { "Title": "Hoverbike", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 3,
+          "Value": 3,
           "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Condition_Meter",
           "Name": "Integrity",
           "Max": 3,
@@ -798,15 +798,15 @@
         "Display": { "Title": "Rover", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Rover/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 5,
+          "Value": 5,
           "$id": "Starforged/Assets/Support_Vehicle/Rover/Condition_Meter",
           "Name": "Integrity",
           "Max": 5,
@@ -836,31 +836,16 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Adventure/Face_Danger",
+                  "Starforged/Moves/Combat/React_Under_Fire"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger",
+                  "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
-                      "Text": "By taking a hit or crashing through an obstacle",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Support_Vehicle/Rover/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Combat/React_Under_Fire",
-                "Move": "Starforged/Moves/Combat/React_Under_Fire",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By taking a hit or crashing through an obstacle",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -883,15 +868,15 @@
         "Display": { "Title": "Service Pod", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Condition_Meter",
           "Name": "Integrity",
           "Max": 4,
@@ -910,49 +895,17 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Adventure/Face_Danger",
+                  "Starforged/Moves/Combat/Gain_Ground",
+                  "Starforged/Moves/Combat/React_Under_Fire"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Adventure/Face_Danger/Trigger",
+                  "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
-                      "Text": "By maneuvering your pod through a hazardous or obstructed area",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Support_Vehicle/Service_Pod/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/Gain_Ground",
-                "Move": "Starforged/Moves/Combat/Gain_Ground",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/Gain_Ground/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
-                      "Text": "By maneuvering your pod through a hazardous or obstructed area",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Support_Vehicle/Service_Pod/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/React_Under_Fire",
-                "Move": "Starforged/Moves/Combat/React_Under_Fire",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/React_Under_Fire/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By maneuvering your pod through a hazardous or obstructed area",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -980,15 +933,15 @@
         "Display": { "Title": "Shuttle", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Condition_Meter",
           "Name": "Integrity",
           "Max": 4,
@@ -1021,15 +974,15 @@
         "Display": { "Title": "Skiff", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Skiff/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Skiff/Condition_Meter",
           "Name": "Integrity",
           "Max": 4,
@@ -1043,31 +996,16 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition",
-                "Move": "Starforged/Moves/Exploration/Undertake_an_Expedition",
+                "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Exploration/Undertake_an_Expedition",
+                  "Starforged/Moves/Exploration/Set_a_Course"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition/Trigger",
+                  "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition/Trigger/Options/1",
-                      "Text": "Rely on the skiff's simple durability",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Support_Vehicle/Skiff/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Set_a_Course",
-                "Move": "Starforged/Moves/Exploration/Set_a_Course",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Set_a_Course/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/Exploration/Set_a_Course/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Rely on the skiff's simple durability",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1086,31 +1024,16 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Strike",
-                "Move": "Starforged/Moves/Combat/Strike",
+                "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Combat/Strike",
+                  "Starforged/Moves/Combat/Clash"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Strike/Trigger",
+                  "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Strike/Trigger/Options/1",
-                      "Text": "By firing the skiff's cannon",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Support_Vehicle/Skiff/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Clash",
-                "Move": "Starforged/Moves/Combat/Clash",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Clash/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/Combat/Clash/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Support_Vehicle/Skiff/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By firing the skiff's cannon",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1138,15 +1061,15 @@
         "Display": { "Title": "Snub Fighter", "Color": "#495790" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Condition_Meter",
           "Name": "Integrity",
           "Max": 4,
@@ -1160,13 +1083,13 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/Combat/Enter_the_Fray",
-                "Move": "Starforged/Moves/Combat/Enter_the_Fray",
+                "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/Enter_the_Fray"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/Combat/Enter_the_Fray/Trigger",
+                  "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/Combat/Enter_the_Fray/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "In your snub fighter",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1189,13 +1112,13 @@
             "Text": "When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.",
             "Inputs": [
               {
-                "Min": 0,
-                "Step": 1,
-                "Starting Value": 0,
-                "Adjustable": true,
-                "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/3/Inputs/Victory_Marks",
+                "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/3/Inputs/Victory Marks",
                 "Name": "Victory Marks",
-                "Input Type": "Number"
+                "Input Type": "Number",
+                "Step": 1,
+                "Min": 0,
+                "Value": 0,
+                "Adjustable": true
               }
             ],
             "Enabled": false
@@ -1234,13 +1157,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Ace/Abilities/3/Alter_Moves/Suffer/Endure_Stress",
-                "Move": "Starforged/Moves/Suffer/Endure_Stress",
+                "$id": "Starforged/Assets/Path/Ace/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Suffer/Endure_Stress"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Ace/Abilities/3/Alter_Moves/Suffer/Endure_Stress/Trigger",
+                  "$id": "Starforged/Assets/Path/Ace/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Ace/Abilities/3/Alter_Moves/Suffer/Endure_Stress/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Ace/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "While piloting a vehicle",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1262,7 +1185,7 @@
         "Requirement": "If you wield a power bow...",
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 6,
+          "Value": 6,
           "$id": "Starforged/Assets/Path/Archer/Condition_Meter",
           "Name": "Ammo",
           "Max": 6,
@@ -1279,17 +1202,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles",
+                "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles",
                 "Name": "Craft Projectiles",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Archer",
                 "Display": { "Title": "Craft Projectiles" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger",
                   "Text": "When you replenish your ammo by crafting projectiles...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
@@ -1298,17 +1221,17 @@
                 },
                 "Text": "You carry 6 ammo. When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1). On a miss, [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1).",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes/Strong_Hit",
                     "Text": "Take up to +6 ammo."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes/Weak_Hit",
                     "Text": "Take up to +4 ammo and [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1)."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Outcomes/Miss",
                     "Text": "[Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1)."
                   }
                 }
@@ -1321,13 +1244,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Archer/Abilities/2/Alter_Moves/Combat/Enter_the_Fray",
-                "Move": "Starforged/Moves/Combat/Enter_the_Fray",
+                "$id": "Starforged/Assets/Path/Archer/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/Enter_the_Fray"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Archer/Abilities/2/Alter_Moves/Combat/Enter_the_Fray/Trigger",
+                  "$id": "Starforged/Assets/Path/Archer/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Archer/Abilities/2/Alter_Moves/Combat/Enter_the_Fray/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Archer/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By unleashing a volley of bow shots",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1397,17 +1320,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate",
+                "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate",
                 "Name": "Commemorate",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Artist",
                 "Display": { "Title": "Commemorate" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger",
                   "Text": "When you create or perform a significant artistic work as a public memorial or tribute...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger/Options/1",
                       "Text": "Roll +the stat which best represents the work’s nature",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1417,17 +1340,17 @@
                 },
                 "Text": "When you create or perform a significant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of 2. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes/Strong_Hit",
                     "Text": "The work will stand the test of time; mark 2 ticks on your bonds legacy track."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes/Weak_Hit",
                     "Text": "The work's impact is short-lived; mark 1 tick on your bonds legacy track."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Outcomes/Miss",
                     "Text": "The work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -1444,16 +1367,16 @@
         "Display": { "Title": "Augmented", "Color": "#3f7faa" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Path/Augmented/Inputs/One",
             "Name": "One",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           },
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Path/Augmented/Inputs/Two",
             "Name": "Two",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Abilities": [
@@ -1482,10 +1405,10 @@
         "Display": { "Title": "Bannersworn", "Color": "#3f7faa" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Path/Bannersworn/Inputs/Ideology",
             "Name": "Ideology",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Abilities": [
@@ -1529,10 +1452,10 @@
             "Text": "You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.",
             "Inputs": [
               {
-                "Adjustable": false,
                 "$id": "Starforged/Assets/Path/Blademaster/Abilities/3/Inputs/Name",
                 "Name": "Name",
-                "Input Type": "Text"
+                "Input Type": "Text",
+                "Adjustable": false
               }
             ],
             "Enabled": false
@@ -1596,7 +1519,7 @@
         "Display": { "Title": "Courier", "Color": "#3f7faa" },
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 5,
+          "Value": 5,
           "$id": "Starforged/Assets/Path/Courier/Condition_Meter",
           "Name": "Safety",
           "Max": 5,
@@ -1619,13 +1542,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Courier/Abilities/3/Alter_Moves/Recover/Sojourn",
-                "Move": "Starforged/Moves/Recover/Sojourn",
+                "$id": "Starforged/Assets/Path/Courier/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Recover/Sojourn"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Courier/Abilities/3/Alter_Moves/Recover/Sojourn/Trigger",
+                  "$id": "Starforged/Assets/Path/Courier/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Courier/Abilities/3/Alter_Moves/Recover/Sojourn/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Courier/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "During a courier mission",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1672,47 +1595,72 @@
         "Display": { "Title": "Devotant", "Color": "#3f7faa" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Path/Devotant/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           },
           {
-            "Adjustable": false,
-            "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat",
+            "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat",
             "Name": "Linked Stat",
             "Input Type": "Select",
-            "Option Type": "Stat",
+            "Adjustable": false,
+            "Sets": [{ "Key": "Stat", "Type": "Stat" }],
             "Options": [
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Edge",
                 "Name": "Edge",
-                "Stat": "Edge",
-                "Option Type": "Stat"
+                "Set": [
+                  {
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Edge/Stat",
+                    "Key": "Stat",
+                    "Value": "Edge"
+                  }
+                ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Heart",
                 "Name": "Heart",
-                "Stat": "Heart",
-                "Option Type": "Stat"
+                "Set": [
+                  {
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Heart/Stat",
+                    "Key": "Stat",
+                    "Value": "Heart"
+                  }
+                ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Iron",
                 "Name": "Iron",
-                "Stat": "Iron",
-                "Option Type": "Stat"
+                "Set": [
+                  {
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Iron/Stat",
+                    "Key": "Stat",
+                    "Value": "Iron"
+                  }
+                ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Shadow",
                 "Name": "Shadow",
-                "Stat": "Shadow",
-                "Option Type": "Stat"
+                "Set": [
+                  {
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Shadow/Stat",
+                    "Key": "Stat",
+                    "Value": "Shadow"
+                  }
+                ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Wits",
                 "Name": "Wits",
-                "Stat": "Wits",
-                "Option Type": "Stat"
+                "Set": [
+                  {
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Wits/Stat",
+                    "Key": "Stat",
+                    "Value": "Wits"
+                  }
+                ]
               }
             ]
           }
@@ -1724,37 +1672,20 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage",
-                "Move": "Starforged/Moves/Adventure/Secure_an_Advantage",
+                "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Adventure/Secure_an_Advantage",
+                  "Starforged/Moves/Combat/Gain_Ground"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage/Trigger",
+                  "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By calling on your god, power, or entity for guidance or aid",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/Combat/Gain_Ground",
-                "Move": "Starforged/Moves/Combat/Gain_Ground",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/Combat/Gain_Ground/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Path/Devotant/Abilities/1/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
-                      "Text": "By calling on your god, power, or entity for guidance or aid",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat"
-                      ]
+                      "Using": ["undefined"]
                     }
                   ]
                 }
@@ -1767,19 +1698,17 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/Quest/Swear_an_Iron_Vow",
-                "Move": "Starforged/Moves/Quest/Swear_an_Iron_Vow",
+                "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Quest/Swear_an_Iron_Vow"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/Quest/Swear_an_Iron_Vow/Trigger",
+                  "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/Quest/Swear_an_Iron_Vow/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "In service to your faith",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat"
-                      ]
+                      "Using": ["undefined"]
                     }
                   ]
                 }
@@ -1792,19 +1721,17 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Devotant/Abilities/3/Alter_Moves/Recover/Hearten",
-                "Move": "Starforged/Moves/Recover/Hearten",
+                "$id": "Starforged/Assets/Path/Devotant/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Recover/Hearten"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Devotant/Abilities/3/Alter_Moves/Recover/Hearten/Trigger",
+                  "$id": "Starforged/Assets/Path/Devotant/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Abilities/3/Alter_Moves/Recover/Hearten/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Devotant/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Through contemplation or sharing of your faith",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat"
-                      ]
+                      "Using": ["undefined"]
                     }
                   ]
                 }
@@ -1854,17 +1781,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart",
+                "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart",
                 "Name": "Read Heart",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Empath",
                 "Display": { "Title": "Read Heart" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger",
                   "Text": "When you read the intent, emotions, or memories of a nearby being...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Heart"]
@@ -1873,17 +1800,17 @@
                 },
                 "Text": "When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes/Strong_Hit",
                     "Text": "You glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes/Weak_Hit",
                     "Text": "The visions are murky; take +1 momentum."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Outcomes/Miss",
                     "Text": "You reveal a troubling motive or secret; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -1901,13 +1828,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Empath/Abilities/3/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Path/Empath/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Face_Danger"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Empath/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger",
+                  "$id": "Starforged/Assets/Path/Empath/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Empath/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Empath/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "To soothe a being's distress by creating an empathic bond",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -1976,7 +1903,7 @@
         "Display": { "Title": "Firebrand", "Color": "#3f7faa" },
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 0,
+          "Value": 0,
           "$id": "Starforged/Assets/Path/Firebrand/Condition_Meter",
           "Name": "Fire",
           "Max": 5,
@@ -1993,17 +1920,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy",
+                "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy",
                 "Name": "Gather Energy",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Firebrand",
                 "Display": { "Title": "Gather Energy" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger",
                   "Text": "When you rest and meditate to gather fiery energy...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Spirit"]
@@ -2012,17 +1939,17 @@
                 },
                 "Text": "You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](Starforged/Moves/Suffer/Endure_Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes/Strong_Hit",
                     "Text": "Take up to +3 fire.\n\nWhen you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes/Weak_Hit",
                     "Text": "Take up to +2 fire.\n\nWhen you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Outcomes/Miss",
                     "Text": "Take up to +2 fire but [Endure Harm](Starforged/Moves/Suffer/Endure_Harm) (-2).\n\nWhen you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire."
                   }
                 }
@@ -2053,13 +1980,13 @@
             "Text": "You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.",
             "Inputs": [
               {
+                "$id": "Starforged/Assets/Path/Fugitive/Abilities/1/Inputs/Notable foe or force tracks you down",
+                "Name": "Notable foe or force tracks you down",
                 "Input Type": "Clock",
                 "Clock Type": "Tension",
+                "Segments": 4,
                 "Filled": 0,
-                "Adjustable": true,
-                "$id": "Starforged/Assets/Path/Fugitive/Abilities/1/Inputs/Notable_foe_or_force_tracks_you_down",
-                "Name": "Notable foe or force tracks you down",
-                "Segments": 4
+                "Adjustable": true
               }
             ],
             "Enabled": true
@@ -2123,10 +2050,10 @@
             "Text": "Give your favorite gun a name. When you [Clash](Starforged/Moves/Combat/Clash) with it, add +1. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) or [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while wielding it, add +1 and take +1 momentum on a hit.",
             "Inputs": [
               {
-                "Adjustable": false,
                 "$id": "Starforged/Assets/Path/Gunner/Abilities/3/Inputs/Name",
                 "Name": "Name",
-                "Input Type": "Text"
+                "Input Type": "Text",
+                "Adjustable": false
               }
             ],
             "Enabled": false
@@ -2302,44 +2229,38 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop",
-                "Name": "Loop",
+                "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back",
+                "Name": "Loop Back",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Looper",
-                "Display": { "Title": "Loop" },
+                "Display": { "Title": "Loop Back" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/1",
-                      "Text": "When you create a link to the current point in time...",
-                      "Method": "Any",
-                      "Using": []
-                    },
-                    {
-                      "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2",
-                      "Text": "If you later loop back to this moment...",
+                      "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1",
+                      "Text": "When you loop back to a linked moment in time...",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": [
-                        "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat"
+                        "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat"
                       ],
                       "Custom stat": {
-                        "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat",
+                        "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat",
                         "Name": "Time gap",
                         "Options": [
                           {
-                            "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Minutes",
+                            "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat/Minutes",
                             "Name": "Minutes",
                             "Value": 4
                           },
                           {
-                            "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Hours",
+                            "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat/Hours",
                             "Name": "Hours",
                             "Value": 3
                           },
                           {
-                            "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Trigger/Options/2/Custom_stat/Days",
+                            "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat/Days",
                             "Name": "Days",
                             "Value": 2
                           }
@@ -2350,18 +2271,18 @@
                 },
                 "Text": "When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Outcomes/Strong_Hit",
                     "Text": "You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Outcomes/Weak_Hit",
-                    "Text": "You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values...but you [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2)."
+                    "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Outcomes/Weak_Hit",
+                    "Text": "You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values\n\nHowever, you [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2)."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Path/Looper/Abilities/2/Loop/Outcomes/Miss",
-                    "Text": "You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values...but you find the timeline corrupted! [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
+                    "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Outcomes/Miss",
+                    "Text": "You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.\n\nHowever, you find the timeline corrupted! [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
                   }
                 }
               }
@@ -2517,24 +2438,39 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Outcast/Abilities/2/Scrape_By",
+                "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By",
                 "Name": "Scrape By",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Outcast",
                 "Display": { "Title": "Scrape By" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger",
                   "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
                   ]
                 },
-                "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1) in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)."
+                "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1) in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).",
+                "Outcomes": {
+                  "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Outcomes",
+                  "Strong Hit": {
+                    "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Outcomes/Strong_Hit",
+                    "Text": "You manage to scrape by and take +1 supply."
+                  },
+                  "Weak Hit": {
+                    "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Outcomes/Weak_Hit",
+                    "Text": "You may [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1) in exchange for +1 supply."
+                  },
+                  "Miss": {
+                    "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Outcomes/Miss",
+                    "Text": "Your supply remains at 0 and you [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)."
+                  }
+                }
               }
             ]
           },
@@ -2568,13 +2504,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear",
-                "Move": "Starforged/Moves/Adventure/Check_Your_Gear",
+                "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Check_Your_Gear"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger",
+                  "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Method": "Highest",
                       "Using": ["Wits", "Supply"]
                     }
@@ -2603,13 +2539,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Scoundrel/Abilities/2/Alter_Moves/Connection/Make_a_Connection",
-                "Move": "Starforged/Moves/Connection/Make_a_Connection",
+                "$id": "Starforged/Assets/Path/Scoundrel/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Connection/Make_a_Connection"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Scoundrel/Abilities/2/Alter_Moves/Connection/Make_a_Connection/Trigger",
+                  "$id": "Starforged/Assets/Path/Scoundrel/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Scoundrel/Abilities/2/Alter_Moves/Connection/Make_a_Connection/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Scoundrel/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "To search out a new contact",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -2645,14 +2581,14 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Seer/Abilities/2/Alter_Moves/Adventure/Gather_Information",
-                "Move": "Starforged/Moves/Adventure/Gather_Information",
+                "$id": "Starforged/Assets/Path/Seer/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Gather_Information"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Seer/Abilities/2/Alter_Moves/Adventure/Gather_Information/Trigger",
+                  "$id": "Starforged/Assets/Path/Seer/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Seer/Abilities/2/Alter_Moves/Adventure/Gather_Information/Trigger/Options/1",
-                      "Text": "Focus or meditate to [Gather Information](Starforged/Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely)",
+                      "$id": "Starforged/Assets/Path/Seer/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "When you focus or meditate to [Gather Information](Starforged/Moves/Adventure/Gather_Information) about a place, being, or situation (in person or remotely)",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Spirit"]
@@ -2691,17 +2627,17 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness",
+                "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness",
                 "Name": "Shroud in Darkness",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Shade",
                 "Display": { "Title": "Shroud in Darkness" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger",
                   "Text": "When you expand your veil to immerse your surroundings in darkness...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Shadow"]
@@ -2710,17 +2646,17 @@
                 },
                 "Text": "When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention.",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes/Strong_Hit",
                     "Text": "The darkness extends to all adjacent spaces."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes/Weak_Hit",
                     "Text": "Only your immediate surroundings are made dark."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Outcomes/Miss",
                     "Text": "You fail and draw unwanted attention."
                   }
                 }
@@ -2800,23 +2736,38 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe",
+                "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe",
                 "Name": "Snipe Minor Foe",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Path/Sniper",
                 "Display": { "Title": "Snipe Minor Foe" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger",
+                  "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
                   ]
                 },
-                "Text": "When you target a minor foe from a distance (outside of a fight), roll +wits. On a strong hit, you take them out. Take +1 momentum. If other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress. On a weak hit, as above, but you sacrifice time or position; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, you draw attention or face a reprisal; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
+                "Text": "When you target a minor foe from a distance (outside of a fight), roll +wits. On a strong hit, you take them out. Take +1 momentum. If other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress. On a weak hit, as above, but you sacrifice time or position; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, you draw attention or face a reprisal; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
+                "Outcomes": {
+                  "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Outcomes",
+                  "Strong Hit": {
+                    "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Outcomes/Strong_Hit",
+                    "Text": "You take them out. Take +1 momentum. If other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress."
+                  },
+                  "Weak Hit": {
+                    "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Outcomes/Weak_Hit",
+                    "Text": "You take them out. However, you sacrifice time or position; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).\n\nIf other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress."
+                  },
+                  "Miss": {
+                    "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Outcomes/Miss",
+                    "Text": "You draw attention or face a reprisal; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
+                  }
+                }
               }
             ]
           },
@@ -2826,13 +2777,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Sniper/Abilities/2/Alter_Moves/Combat/Strike",
-                "Move": "Starforged/Moves/Combat/Strike",
+                "$id": "Starforged/Assets/Path/Sniper/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/Strike"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Sniper/Abilities/2/Alter_Moves/Combat/Strike/Trigger",
+                  "$id": "Starforged/Assets/Path/Sniper/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Sniper/Abilities/2/Alter_Moves/Combat/Strike/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Sniper/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "From a distance with time enough to line up your shot",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -2887,28 +2838,16 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/Recover/Sojourn",
-                "Move": "Starforged/Moves/Recover/Sojourn",
+                "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Recover/Sojourn",
+                  "Starforged/Moves/Adventure/Compel"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/Recover/Sojourn/Trigger",
+                  "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/Recover/Sojourn/Trigger/Options/1",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": ["Supply"]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/Adventure/Compel",
-                "Move": "Starforged/Moves/Adventure/Compel",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/Adventure/Compel/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/Adventure/Compel/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Path/Trader/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Supply"]
@@ -2938,10 +2877,10 @@
         "Display": { "Title": "Vestige", "Color": "#3f7faa" },
         "Inputs": [
           {
-            "Adjustable": false,
-            "$id": "Starforged/Assets/Path/Vestige/Inputs/Last_of",
+            "$id": "Starforged/Assets/Path/Vestige/Inputs/Last of",
             "Name": "Last of",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Abilities": [
@@ -2960,10 +2899,10 @@
             "Text": "You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.",
             "Inputs": [
               {
-                "Adjustable": false,
                 "$id": "Starforged/Assets/Path/Vestige/Abilities/3/Inputs/Relic",
                 "Name": "Relic",
-                "Input Type": "Text"
+                "Input Type": "Text",
+                "Adjustable": false
               }
             ],
             "Enabled": false
@@ -3041,14 +2980,14 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/Adventure/Secure_an_Advantage",
-                "Move": "Starforged/Moves/Adventure/Secure_an_Advantage",
+                "$id": "Starforged/Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/Adventure/Secure_an_Advantage/Trigger",
+                  "$id": "Starforged/Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
-                      "Text": "Suiting up and gathering your gear for a perilous encounter or mission",
+                      "$id": "Starforged/Assets/Path/Weapon_Master/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "By suiting up and gathering your gear for a perilous encounter or mission",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Supply"]
@@ -3077,15 +3016,15 @@
         "Display": { "Title": "Banshee", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Banshee/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Companion/Banshee/Condition_Meter",
           "Name": "Health",
           "Max": 4,
@@ -3099,31 +3038,16 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition",
-                "Move": "Starforged/Moves/Exploration/Undertake_an_Expedition",
+                "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Exploration/Undertake_an_Expedition",
+                  "Starforged/Moves/Exploration/Set_a_Course"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition/Trigger",
+                  "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Undertake_an_Expedition/Trigger/Options/1",
-                      "Text": "Riding your banshee",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Companion/Banshee/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Set_a_Course",
-                "Move": "Starforged/Moves/Exploration/Set_a_Course",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Set_a_Course/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/Exploration/Set_a_Course/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Banshee/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Riding your banshee",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3156,15 +3080,15 @@
         "Display": { "Title": "Combat Bot", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Combat_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 5,
+          "Value": 5,
           "$id": "Starforged/Assets/Companion/Combat_Bot/Condition_Meter",
           "Name": "Health",
           "Max": 5,
@@ -3183,31 +3107,16 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Adventure/Compel",
-                "Move": "Starforged/Moves/Adventure/Compel",
+                "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Starforged/Moves/Adventure/Compel",
+                  "Starforged/Moves/Combat/Gain_Ground"
+                ],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Adventure/Compel/Trigger",
+                  "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Adventure/Compel/Trigger/Options/1",
-                      "Text": "Using the threat of violence while the bot brings its weapons to bear",
-                      "Roll type": "Action roll",
-                      "Method": "Any",
-                      "Using": [
-                        "Starforged/Assets/Companion/Combat_Bot/Condition_Meter"
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Combat/Gain_Ground",
-                "Move": "Starforged/Moves/Combat/Gain_Ground",
-                "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Combat/Gain_Ground/Trigger",
-                  "Options": [
-                    {
-                      "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/Combat/Gain_Ground/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Using the threat of violence while the bot brings its weapons to bear",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3226,13 +3135,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/Combat/React_Under_Fire",
-                "Move": "Starforged/Moves/Combat/React_Under_Fire",
+                "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/React_Under_Fire"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger",
+                  "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Combat_Bot/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Once per fight, by using the combat bot to draw fire or create a diversion",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3255,15 +3164,15 @@
         "Display": { "Title": "Glowcat", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Glowcat/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 3,
+          "Value": 3,
           "$id": "Starforged/Assets/Companion/Glowcat/Condition_Meter",
           "Name": "Health",
           "Max": 3,
@@ -3296,15 +3205,15 @@
         "Display": { "Title": "Protocol Bot", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Protocol_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 3,
+          "Value": 3,
           "$id": "Starforged/Assets/Companion/Protocol_Bot/Condition_Meter",
           "Name": "Health",
           "Max": 3,
@@ -3337,15 +3246,15 @@
         "Display": { "Title": "Rockhorn", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Rockhorn/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 5,
+          "Value": 5,
           "$id": "Starforged/Assets/Companion/Rockhorn/Condition_Meter",
           "Name": "Health",
           "Max": 5,
@@ -3359,13 +3268,13 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/*",
-                "Move": null,
+                "$id": "Starforged/Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/1",
+                "Moves": null,
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/*/Trigger",
+                  "$id": "Starforged/Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/*/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Rockhorn/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By sending the rockhorn to directly attack a foe or smash an obstacle",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3398,21 +3307,21 @@
         "Display": { "Title": "Sidekick", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           },
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Expertise",
             "Name": "Expertise",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Companion/Sidekick/Condition_Meter",
           "Name": "Health",
           "Max": 4,
@@ -3436,13 +3345,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Face_Danger"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger",
+                  "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Your sidekick acts to get you out of a tough spot",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3454,13 +3363,13 @@
                 }
               },
               {
-                "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Combat/React_Under_Fire",
-                "Move": "Starforged/Moves/Combat/React_Under_Fire",
+                "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/2",
+                "Moves": ["Starforged/Moves/Combat/React_Under_Fire"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger",
+                  "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/2/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/Combat/React_Under_Fire/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Sidekick/Abilities/3/Alter_Moves/2/Trigger/Options/1",
                       "Text": "Your sidekick acts to get you out of a tough spot",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3483,15 +3392,15 @@
         "Display": { "Title": "Sprite", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Sprite/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 2,
+          "Value": 2,
           "$id": "Starforged/Assets/Companion/Sprite/Condition_Meter",
           "Name": "Health",
           "Max": 2,
@@ -3524,15 +3433,15 @@
         "Display": { "Title": "Survey Bot", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Survey_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 3,
+          "Value": 3,
           "$id": "Starforged/Assets/Companion/Survey_Bot/Condition_Meter",
           "Name": "Health",
           "Max": 3,
@@ -3551,13 +3460,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/Adventure/Secure_an_Advantage",
-                "Move": "Starforged/Moves/Adventure/Secure_an_Advantage",
+                "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/Adventure/Secure_an_Advantage/Trigger",
+                  "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Once per expedition, by sending the survey bot to scout ahead",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3576,13 +3485,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Exploration/Explore_a_Waypoint",
-                "Move": "Starforged/Moves/Exploration/Explore_a_Waypoint",
+                "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Exploration/Explore_a_Waypoint"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Exploration/Explore_a_Waypoint/Trigger",
+                  "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Exploration/Explore_a_Waypoint/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Aided by the survey bot's sensors",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3594,13 +3503,13 @@
                 }
               },
               {
-                "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Adventure/Face_Danger",
-                "Move": "Starforged/Moves/Adventure/Face_Danger",
+                "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/2",
+                "Moves": ["Starforged/Moves/Adventure/Face_Danger"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger",
+                  "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/2/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/Adventure/Face_Danger/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Survey_Bot/Abilities/3/Alter_Moves/2/Trigger/Options/1",
                       "Text": "To detect a threat",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3623,15 +3532,15 @@
         "Display": { "Title": "Symbiote", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Symbiote/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 2,
+          "Value": 2,
           "$id": "Starforged/Assets/Companion/Symbiote/Condition_Meter",
           "Name": "Health",
           "Max": 2,
@@ -3665,15 +3574,15 @@
         "Display": { "Title": "Utility Bot", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Utility_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Companion/Utility_Bot/Condition_Meter",
           "Name": "Health",
           "Max": 4,
@@ -3687,13 +3596,13 @@
             "Enabled": true,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/*",
-                "Move": null,
+                "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/1",
+                "Moves": null,
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/*/Trigger",
+                  "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/*/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3717,13 +3626,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear",
-                "Move": "Starforged/Moves/Adventure/Check_Your_Gear",
+                "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Check_Your_Gear"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger",
+                  "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/Adventure/Check_Your_Gear/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Utility_Bot/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "To see if your utility bot has a specific tool or technique available",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3746,15 +3655,15 @@
         "Display": { "Title": "Voidglider", "Color": "#3d8b8a" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Companion/Voidglider/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Condition Meter": {
           "Min": 0,
-          "Starting Value": 4,
+          "Value": 4,
           "$id": "Starforged/Assets/Companion/Voidglider/Condition_Meter",
           "Name": "Health",
           "Max": 4,
@@ -3773,13 +3682,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Voidglider/Abilities/2/Alter_Moves/*",
-                "Move": null,
+                "$id": "Starforged/Assets/Companion/Voidglider/Abilities/2/Alter_Moves/1",
+                "Moves": null,
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Voidglider/Abilities/2/Alter_Moves/*/Trigger",
+                  "$id": "Starforged/Assets/Companion/Voidglider/Abilities/2/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Voidglider/Abilities/2/Alter_Moves/*/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Voidglider/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3798,13 +3707,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Companion/Voidglider/Abilities/3/Alter_Moves/*",
-                "Move": null,
+                "$id": "Starforged/Assets/Companion/Voidglider/Abilities/3/Alter_Moves/1",
+                "Moves": null,
                 "Trigger": {
-                  "$id": "Starforged/Assets/Companion/Voidglider/Abilities/3/Alter_Moves/*/Trigger",
+                  "$id": "Starforged/Assets/Companion/Voidglider/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Companion/Voidglider/Abilities/3/Alter_Moves/*/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Companion/Voidglider/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "You make a move by signaling the voidglider to distract or attack a spaceborne foe",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -3836,10 +3745,10 @@
         "Display": { "Title": "Bonded", "Color": "#40834f" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Deed/Bonded/Inputs/Bond-mate",
             "Name": "Bond-mate",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Requirement": "One time only, once you [Forge a Bond](Starforged/Moves/Forge_a_Bond) with a special individual...",
@@ -3869,10 +3778,10 @@
         "Display": { "Title": "Homesteader", "Color": "#40834f" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Deed/Homesteader/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Requirement": "Once you fill 4 boxes on your bonds legacy track...",
@@ -3902,10 +3811,10 @@
         "Display": { "Title": "Marked", "Color": "#40834f" },
         "Inputs": [
           {
-            "Adjustable": false,
             "$id": "Starforged/Assets/Deed/Marked/Inputs/Identifier",
             "Name": "Identifier",
-            "Input Type": "Text"
+            "Input Type": "Text",
+            "Adjustable": false
           }
         ],
         "Requirement": "Once you fill 5 boxes on your quests legacy track...",
@@ -3920,13 +3829,13 @@
             "Text": "When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.",
             "Inputs": [
               {
+                "$id": "Starforged/Assets/Deed/Marked/Abilities/2/Inputs/Stained reputation",
+                "Name": "Stained reputation",
                 "Input Type": "Clock",
                 "Clock Type": "Tension",
+                "Segments": 6,
                 "Filled": 0,
-                "Adjustable": true,
-                "$id": "Starforged/Assets/Deed/Marked/Abilities/2/Inputs/Stained_reputation",
-                "Name": "Stained reputation",
-                "Segments": 6
+                "Adjustable": true
               }
             ],
             "Enabled": false
@@ -3987,13 +3896,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Deed/Revenant/Abilities/3/Alter_Moves/Adventure/Gather_Information",
-                "Move": "Starforged/Moves/Adventure/Gather_Information",
+                "$id": "Starforged/Assets/Deed/Revenant/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Adventure/Gather_Information"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Deed/Revenant/Abilities/3/Alter_Moves/Adventure/Gather_Information/Trigger",
+                  "$id": "Starforged/Assets/Deed/Revenant/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Deed/Revenant/Abilities/3/Alter_Moves/Adventure/Gather_Information/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Deed/Revenant/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By studying a place where death left its mark",
                       "Roll type": "Action roll",
                       "Method": "Any",
@@ -4049,18 +3958,18 @@
                   "Title": "Ironsworn: Starforged Assets",
                   "Date": "033122"
                 },
-                "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven",
+                "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven",
                 "Name": "Seek Safe Haven",
                 "Category": "Starforged/Moves/Assets",
                 "Asset": "Starforged/Assets/Deed/Vanguard",
                 "Progress Move": true,
                 "Display": { "Title": "Seek Safe Haven" },
                 "Trigger": {
-                  "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger",
+                  "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger",
                   "Text": "When you seek a safe location in a remote environment...",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger/Options/1",
+                      "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger/Options/1",
                       "Roll type": "Progress roll",
                       "Method": "Any",
                       "Using": ["Discoveries Legacy"]
@@ -4069,17 +3978,17 @@
                 },
                 "Text": "When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.",
                 "Outcomes": {
-                  "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes",
+                  "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes",
                   "Strong Hit": {
-                    "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes/Strong_Hit",
+                    "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes/Strong_Hit",
                     "Text": "You establish a haven; add +2 whenever you make a recovery move at that location.\n\nIf you establish a haven but score a miss on a recovery move, that location is no longer safe."
                   },
                   "Weak Hit": {
-                    "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes/Weak_Hit",
+                    "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes/Weak_Hit",
                     "Text": "You establish a haven; add +1 whenever you make a recovery move at that location.\n\nIf you establish a haven but score a miss on a recovery move, that location is no longer safe."
                   },
                   "Miss": {
-                    "$id": "Starforged/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes/Miss",
+                    "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Outcomes/Miss",
                     "Text": "On a miss, you are drawn into a bad situation and must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4097,13 +4006,13 @@
             "Enabled": false,
             "Alter Moves": [
               {
-                "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/Suffer/Endure_Stress",
-                "Move": "Starforged/Moves/Suffer/Endure_Stress",
+                "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Suffer/Endure_Stress"],
                 "Trigger": {
-                  "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/Suffer/Endure_Stress/Trigger",
+                  "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/1/Trigger",
                   "Options": [
                     {
-                      "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/Suffer/Endure_Stress/Trigger/Options/1",
+                      "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
