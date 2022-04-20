@@ -1,33 +1,20 @@
-/* eslint-disable no-restricted-imports */
-export * from "@json_out/index.js";
+import type { IAssetType, IEncounterStarforged, IMoveCategory, IOracleCategory, ISettingTruth, IEncounterNatureInfo } from "dataforged";
 
-import type { IAssetType, IEncounterStarforged, IMoveCategory, IOracleCategory, ISettingTruth } from "@json_out/index.js";
-import assets_json from "./starforged-assets.json" assert { type: "json" };
-import encounters_json from "./starforged-encounters.json" assert { type: "json" };
-import moves_json from "./starforged-moves.json" assert { type: "json" };
-import oracles_json from "./starforged-oracles.json" assert { type: "json" };
-import setting_truths_json from "./starforged-setting_truths.json" assert { type: "json" };
 
-/**
- * @public
- */
-export interface DataforgedJsonRoot {
-  assets: IAssetType[],
-  encounters: IEncounterStarforged[],
-  moves: IMoveCategory[],
-  oracles: IOracleCategory[],
-  truths: ISettingTruth[],
-};
+const starforged = {
+  assets: require("./ironsworn/assets.json") as IAssetType[],
+  encounters: require("./ironsworn/encounters.json") as IEncounterStarforged[],
+  moves: require("./ironsworn/moves.json") as IMoveCategory[],
+  oracles: require("./ironsworn/oracles.json") as IOracleCategory[],
+  truths: require("./ironsworn/setting_truths.json") as ISettingTruth[],
+}
 
-/**
- * @public
- */
-const data: DataforgedJsonRoot = {
-  assets: assets_json as IAssetType[],
-  encounters: encounters_json as IEncounterStarforged[],
-  moves: moves_json as IMoveCategory[],
-  oracles: oracles_json as IOracleCategory[],
-  truths: setting_truths_json as ISettingTruth[],
-};
+const ironsworn = {
+  assets: require("./starforged/assets.json") as IAssetType[],
+  encounters: require("./starforged/encounters.json") as IEncounterNatureInfo[],
+  moves: require("./starforged/moves.json") as IMoveCategory[],
+  oracles: require("./starforged/oracles.json") as IOracleCategory[],
+  // truths: require("./starforged/setting_truths.json")
+}
 
-export { data };
+module.exports = {starforged, ironsworn};

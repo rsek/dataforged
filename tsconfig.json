@@ -1,113 +1,27 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "exclude": [
-    "src/utils/*.js",
-    "./**/*.md",
-    "node_modules",
-    "roll20",
-    ".vscode",
-    ".github",
-    "dist",
-    "analysis",
-    "docs"
+  "include": [
+    "./src/**/*"
   ],
-  "typedocOptions": {
-    "name": "Dataforged",
-    "entryPoints": [
-      "./src/json_out/assets/index.ts",
-      "./src/json_out/common/index.ts",
-      "./src/json_out/encounters/index.ts",
-      "./src/json_out/game_objects/index.ts",
-      "./src/json_out/meta/index.ts",
-      "./src/json_out/moves/index.ts",
-      "./src/json_out/oracles/index.ts",
-      "./src/json_out/setting_truths/index.ts"
-    ],
-    "out": "docs",
-    "excludeExternals": true,
-    "excludeInternal": true
-  },
-  "ts-node": {
-    "transpileOnly": true,
-    "require": [
-      "typescript-transform-paths/register"
-    ]
-  },
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "es6",
     "lib": [
       "es2020",
       "es2021",
       "esnext"
     ],
-    "plugins": [
-      {
-        "transform": "typescript-is/lib/transform-inline/transformer",
-        "verbose": true
-      },
-      {
-        "transform": "typescript-transform-paths"
-      },
-      {
-        "transform": "typescript-transform-paths",
-        "afterDeclarations": true
-      },
-    ],
-    "paths": {
-      "@constants/*": [
-        "src/constants/*",
-        "dist/esm/constants/*",
-        "dist/cjs/constants/*"
-      ],
-      "@json_out/*": [
-        "src/json_out/*",
-        "dist/esm/json_out/*",
-        "dist/cjs/json_out/*"
-      ],
-      "@utils/*": [
-        "src/utils/*",
-        "dist/esm/utils/*",
-        "dist/cjs/utils/*"
-      ],
-      "@yaml_in/*": [
-        "src/yaml_in/*",
-        "dist/esm/yaml_in/*",
-        "dist/cjs/yaml_in/*",
-      ],
-      "@classes/*": [
-        "src/classes/*",
-        "dist/esm/classes/*",
-        "dist/cjs/classes/*"
-      ],
-      "@game_objects/*": [
-        "src/game_objects/*",
-        "dist/esm/game_objects/*",
-        "dist/cjs/game_objects/*"
-      ]
-    },
     "strictNullChecks": true,
     "baseUrl": ".",
     "preserveConstEnums": true,
-    "outDir": "dist/esm",
-    "rootDir": "src",
-    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "removeComments": false,
     "resolveJsonModule": true,
     "allowUnreachableCode": false,
-    "declaration": true,
-    "declarationMap": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "declaration": false,
     "forceConsistentCasingInFileNames": true,
-    "preserveSymlinks": true,
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "strict": true,
-    "useDefineForClassFields": false,
     "typeRoots": [
       "types",
       "node_modules/@types"

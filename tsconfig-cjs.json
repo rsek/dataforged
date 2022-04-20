@@ -1,11 +1,23 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.json",
+  "exclude": [
+    "./src/index-esm.ts"
+  ],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "ES6",
-    "outDir": "dist/cjs",
-    "declarationMap": false,
-    "declaration": false
+    "target": "es2015",
+    "declaration": false,
+    "lib": [
+      "es2020",
+      "es2021",
+      "esnext"
+    ],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "esModuleInterop": false
   }
 }

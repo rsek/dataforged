@@ -2,12 +2,16 @@
   "name": "dataforged",
   "version": "0.5.2",
   "description": "Official Ironsworn: Starforged rules data in JSON, for use in community tools.",
-  "main": "./dist/esm/index.js",
+  "type": "commonjs",
   "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    }
+    "import": "./dist/index-esm.mjs",
+    "require": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-cjs": "tsc --project tsconfig-cjs.json",
+    "build-esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
+    "build": "yarn build-cjs && yarn build-esm"
   },
   "files": [
     "dist",
@@ -15,21 +19,6 @@
     "img",
     "markdown"
   ],
-  "type": "module",
-  "types": "./dist/dataforged.d.ts",
-  "scripts": {
-    "flush-dist-esm": "rm -R ./dist/esm && mkdir ./dist/esm",
-    "flush-dist-cjs": "rm -R ./dist/cjs && mkdir ./dist/cjs",
-    "flush-image": "rm -R ./img && mkdir ./img",
-    "build-esm": "yarn flush-dist-esm && npx ttsc --project ./tsconfig.json && api-extractor run  -c ./api-extractor.json",
-    "build-cjs": "yarn flush-dist-cjs && npx ttsc --project ./tsconfig-cjs.json && api-extractor run -c ./api-extractor-cjs.json",
-    "render-json-sf": "node ./dist/esm/start.js --enable-source-maps",
-    "render-json-is": "node ./dist/esm/start-ironsworn.js --enable-source-maps",
-    "render-md-sf": "node ./dist/esm/start-md.js",
-    "copy-json": "find ./dist/esm -name \\*.json -exec cp {} . \\; && find ./dist/esm -name \\*.json -exec cp {} ./src \\;",
-    "start": "yarn render-json-sf && yarn render-json-is && yarn copy-json",
-    "docs": "rm -R ./docs && mkdir ./docs && npx typedoc"
-  },
   "directories": {
     "doc": "./docs"
   },
@@ -48,49 +37,9 @@
     "url": "https://github.com/rsek/dataforged/issues"
   },
   "homepage": "https://github.com/rsek/dataforged#readme",
+  "dependencies": {},
   "devDependencies": {
-    "@types/deep-freeze-strict": "^1.1.0",
-    "@types/fs-extra": "^9.0.13",
-    "@types/js-yaml": "^4.0.5",
-    "@types/jsonpath": "^0.2.0",
-    "@types/lodash-es": "^4.17.6",
-    "@types/node": "^17.0.23",
-    "@types/prettier": "^2.4.3",
-    "@types/sharp": "^0.29.5",
-    "@types/source-map-support": "^0.5.4",
-    "@types/svgo": "^2.6.1",
-    "@types/yaml": "^1.9.7",
-    "@typescript-eslint/eslint-plugin": "^5.11.0",
-    "@typescript-eslint/parser": "^5.11.0",
-    "deep-freeze-strict": "^1.1.1",
-    "eslint": "^8.8.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsdoc": "^37.8.0",
-    "eslint-plugin-json": "^3.1.0",
-    "eslint-plugin-lodash": "^7.3.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-sort-class-members": "^1.14.1",
-    "eslint-plugin-tsdoc": "^0.2.14",
-    "fast-glob": "^3.2.11",
-    "fs-extra": "^10.0.1",
-    "jsonpath-plus": "^6.0.1",
-    "lodash-es": "^4.17.21",
-    "prettier": "^2.3.0",
-    "reflect-metadata": "^0.1.13",
-    "sharp": "^0.30.2",
-    "source-map-support": "^0.5.21",
-    "svgo": "^2.5.0",
-    "ts-node": "^10.5.0",
-    "tslog": "^3.3.3",
-    "ttypescript": "^1.5.13",
-    "typed-regex": "^0.0.8",
-    "typedoc": "^0.22.13",
-    "typescript": "^4.7.0-dev.20220331",
-    "typescript-is": "^0.19.0",
-    "typescript-transform-paths": "^3.3.1",
-    "yaml": "^2.0.1"
-  },
-  "dependencies": {}
+    "@types/node": "^17.0.25",
+    "typescript": "^4.7.0-dev.20220420"
+  }
 }
