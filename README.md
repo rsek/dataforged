@@ -15,7 +15,7 @@ If you just want the data as-is, import its `data` object to use the pre-loaded,
 ### ESM
 
 ```javascript
-import { data } from 'dataforged'
+import { starforged } from 'dataforged'
 ```
 
 ### CommonJS
@@ -23,7 +23,7 @@ import { data } from 'dataforged'
 CommonJS support is still experimental.
 
 ```javascript
-const { data } = require('dataforged')
+const { starforged } = require('dataforged')
 ```
 
 
