@@ -8,9 +8,9 @@ This repository is intended to give [*Starforged*'s Kickstarter](https://www.kic
 
 ## Usage
 
-Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included.
+Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the [documentation site](https://rsek.github.io/dataforged/).
 
-If you just want the data as-is, import its `data` object to use the pre-loaded, typed JSON.
+If you just want the data as-is, import its `starforged` object to use the pre-loaded, typed JSON.
 
 ### ESM
 
@@ -25,8 +25,6 @@ CommonJS support is still experimental.
 ```javascript
 const { starforged } = require('dataforged')
 ```
-
-
 
 ## Licensing
 
