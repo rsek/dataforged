@@ -2,8 +2,6 @@ import type { IInput } from "./IInput.js";
 import type { Gamespace } from "../common/Gamespace.js";
 import type { InputType } from "../common/InputType.js";
 import type { AssetTypeIdBase, IAssetAbility, IAssetAttachment, IAssetType, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
-import type { Tuple } from "../../utils/types/Tuple.js";
-export * from "../../utils/types/Tuple.js";
 /**
  * @public
  */
@@ -48,7 +46,7 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
     /**
      * The asset's abilities.
      */
-    Abilities: Tuple<IAssetAbility, 3>;
+    Abilities: [IAssetAbility, IAssetAbility, IAssetAbility];
     /**
      * Information on this asset's condition meter, if any.
      */

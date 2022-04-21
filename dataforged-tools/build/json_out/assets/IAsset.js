@@ -1,2 +1,2 @@
-export * from "../../utils/types/Tuple.js";
+export {};
 //# sourceMappingURL=IAsset.js.map

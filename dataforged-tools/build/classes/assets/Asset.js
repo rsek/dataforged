@@ -1,4 +1,3 @@
-import _ from "lodash-es";
 import { AssetAbility } from "./AssetAbility.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
@@ -9,6 +8,7 @@ import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "../../utils/object_transform/replaceInAllStrings.js";
+import _ from "lodash-es";
 /**
  * @internal
  */
@@ -53,11 +53,13 @@ export class Asset extends SourceInheritor {
             });
         }
         this.Requirement = json.Requirement;
+        this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
         if (json.Abilities.length !== 3) {
             throw badJsonError(this.constructor, json.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
         }
-        this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
-        this.Abilities = json.Abilities.map((abilityJson, index) => new AssetAbility(abilityJson, `${this.$id}/Abilities/${index + 1}`, gamespace, this));
+        else {
+            this.Abilities = json.Abilities.map((abilityJson, index) => new AssetAbility(abilityJson, `${this.$id}/Abilities/${index + 1}`, gamespace, this));
+        }
         _.merge(this, replaceInAllStrings(this, Replacement.Asset, this.$id));
         if (this["Condition Meter"]) {
             _.merge(this, replaceInAllStrings(this, Replacement.AssetMeter, this["Condition Meter"].$id));
