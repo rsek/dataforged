@@ -340,7 +340,7 @@ export declare interface DataforgedJsonRoot {
 /**
  * @public
  */
-export declare const dataIronsworn: {
+export declare const ironsworn: {
     assets: IAssetType[];
     encounters: IEncounterNatureInfo[];
     moves: IMoveCategory[];
@@ -350,7 +350,7 @@ export declare const dataIronsworn: {
 /**
  * @public
  */
-export declare const dataStarforged: {
+export declare const starforged: {
     assets: IAssetType[];
     encounters: IEncounterStarforged[];
     moves: IMoveCategory[];
