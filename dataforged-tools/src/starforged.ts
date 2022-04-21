@@ -10,7 +10,7 @@ import truthsJson from "./json/starforged/setting_truths.json" assert { type: "j
 /**
  * @public
  */
-const dataStarforged = {
+const starforged = {
   assets: assetsJson as IAssetType[],
   encounters: encountersJson as IEncounterStarforged[],
   moves: movesJson as IMoveCategory[],
@@ -18,4 +18,4 @@ const dataStarforged = {
   truths: truthsJson as ISettingTruth[],
 };
 
-export { dataStarforged };
+export { starforged };

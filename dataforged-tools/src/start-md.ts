@@ -1,5 +1,5 @@
 import { MD_PATH } from "@constants/index.js";
 import { buildMarkdown } from "@utils/buildMarkdown.js";
-import { dataStarforged } from "src/dataStarforged.js";
+import { starforged } from "src/starforged.js";
 
-buildMarkdown(dataStarforged, MD_PATH);
+buildMarkdown(starforged, MD_PATH);

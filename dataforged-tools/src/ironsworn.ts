@@ -9,11 +9,11 @@ import oracles_is from "./json/ironsworn/oracles.json" assert { type: "json" };
 /**
  * @public
  */
-const dataIronsworn = {
+const ironsworn = {
   assets: assets_is as IAssetType[],
   encounters: encounters_is as IEncounterNatureInfo[],
   moves: moves_is as IMoveCategory[],
   oracles: oracles_is as IOracleCategory[],
 };
 
-export { dataIronsworn };
+export { ironsworn };
