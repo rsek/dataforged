@@ -1360,7 +1360,10 @@ Categories:
           Strong Hit:
             Text: The care is helpful. If you (or the ally under your care) are wounded, clear the impact and take or give +2 health. Otherwise, take or give +3 health.
           Weak Hit:
-            Text: "As above, but the recovery costs extra time or resources. Choose one: [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) or [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-2)."
+            Text: |-
+              The care is helpful. If you (or the ally under your care) are wounded, clear the impact and take or give +2 health. Otherwise, take or give +3 health.
+
+              However, the recovery costs extra time or resources. Choose one: [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) or [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-2).
           Miss:
             Text: The aid is ineffective and the situation worsens. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
         Source:
@@ -1383,7 +1386,10 @@ Categories:
           Strong Hit:
             Text: You find companionship or comfort and your spirit is strengthened. If you are shaken, clear the impact and take +1 spirit. Otherwise, take +2 spirit. If you make this move as you [Sojourn](Starforged/Moves/Recover/Sojourn), take +1 more.
           Weak Hit:
-            Text: As above, but this indulgence is fleeting. Envision an interruption, complication, or inner conflict. Then, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
+            Text: |-
+              You find companionship or comfort and your spirit is strengthened. If you are shaken, clear the impact and take +1 spirit. Otherwise, take +2 spirit. If you make this move as you [Sojourn](Starforged/Moves/Recover/Sojourn), take +1 more.
+
+              However, this indulgence is fleeting. Envision an interruption, complication, or inner conflict. Then, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
           Miss:
             Text: You take no comfort and the situation worsens. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
         Source:
@@ -1428,7 +1434,13 @@ Categories:
                 * If you are unprepared, clear the impact and take +1 supply. Otherwise, take +2 supply.
                 * If you are in need of a specific item or resource that can reasonably be obtained, you acquire it. Take +1 momentum.
           Weak Hit:
-            Text: As above, but you must first deal with a cost, complication, or demand. Envision the nature of this obstacle.
+            Text: |-
+              You must first deal with a cost, complication, or demand. Envision the nature of this obstacle.
+
+              Then choose one.
+
+                * If you are unprepared, clear the impact and take +1 supply. Otherwise, take +2 supply.
+                * If you are in need of a specific item or resource that can reasonably be obtained, you acquire it. Take +1 momentum.
           Miss:
             Text: You encounter an unexpected peril. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
         Source:
@@ -1603,12 +1615,20 @@ Categories:
           If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
         Outcomes:
           Strong Hit:
-            Text: You may call in a favor. This comes without conditions.
+            Text: |-
+              You may call in a favor. This comes without conditions.
+
+              If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
           Weak Hit:
-            Text: You owe someone. You must mark **indebted** and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to complete an extreme quest in their service. When you complete the duty-bound quest, clear the impact.
+            Text: |-
+              You owe someone. You must mark **indebted** and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to complete an extreme quest in their service. When you complete the duty-bound quest, clear the impact.
+
+              If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
           Miss:
             Text: |-
-              As with the weak hit result, but this quest is against your nature, forces you to [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) on another quest, or is in the service of an enemy.
+              You owe someone. You must mark **indebted** and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to complete an extreme quest in their service. This quest is against your nature, forces you to [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) on another quest, or is in the service of an enemy.
+
+              When you complete the duty-bound quest, clear the impact.
 
               If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
         Source:
