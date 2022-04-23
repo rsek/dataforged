@@ -1,1110 +1,1110 @@
 [
-    {
-        "$id": "Ironsworn/Moves/Adventure",
-        "Name": "Adventure",
-        "Description": "Adventure moves are used as you travel the Ironlands, investigate situations, and deal with threats.",
+  {
+    "$id": "Ironsworn/Moves/Adventure",
+    "Name": "Adventure",
+    "Description": "Adventure moves are used as you travel the Ironlands, investigate situations, and deal with threats.",
+    "Source": { "Title": "Ironsworn Rulebook", "Page": 60 },
+    "Display": { "Title": "Adventure Moves" },
+    "Moves": [
+      {
         "Source": { "Title": "Ironsworn Rulebook", "Page": 60 },
-        "Display": { "Title": "Adventure Moves" },
-        "Moves": [
+        "$id": "Ironsworn/Moves/Adventure/Face_Danger",
+        "Name": "Face Danger",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Face Danger" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger",
+          "Text": "When you attempt something risky or react to an imminent threat...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 60 },
-                "$id": "Ironsworn/Moves/Adventure/Face_Danger",
-                "Name": "Face Danger",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Face Danger" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger",
-                    "Text": "When you attempt something risky or react to an imminent threat...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/1",
-                            "Text": "With speed, agility, or precision",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/2",
-                            "Text": "With charm, loyalty, or courage",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/3",
-                            "Text": "With aggressive action, forceful defense, strength, or endurance",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/4",
-                            "Text": "With deception, stealth, or trickery",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/5",
-                            "Text": "With expertise, insight, or observation",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...\n\n  * With speed, agility, or precision: Roll +edge.\n  * With charm, loyalty, or courage: Roll +heart.\n  * With aggressive action, forceful defense, strength, or endurance: Roll +iron.\n  * With deception, stealth, or trickery: Roll +shadow.\n  * With expertise, insight, or observation: Roll +wits.\n\nOn a **strong hit**, you are successful. Take +1 momentum.\n\nOn a **weak hit**, you succeed, but face a troublesome cost. Choose one.\n\n  * You are delayed, lose advantage, or face a new danger: Suffer -1 momentum.\n  * You are tired or hurt: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).\n  * You are dispirited or afraid: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).\n  * You sacrifice resources: Suffer -1 supply.\n\nOn a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+              "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/1",
+              "Text": "With speed, agility, or precision",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 61 },
-                "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage",
-                "Name": "Secure an Advantage",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Secure an Advantage" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger",
-                    "Text": "When you assess a situation, make preparations, or attempt to gain leverage...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
-                            "Text": "With speed, agility, or precision",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/2",
-                            "Text": "With charm, loyalty, or courage",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/3",
-                            "Text": "With aggressive action, forceful defense, strength, or endurance",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/4",
-                            "Text": "With deception, stealth, or trickery",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/5",
-                            "Text": "With expertise, insight, or observation",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...\n\n  * With speed, agility, or precision: Roll +edge.\n  * With charm, loyalty, or courage: Roll +heart.\n  * With aggressive action, forceful defense, strength, or endurance: Roll +iron.\n  * With deception, stealth, or trickery: Roll +shadow.\n  * With expertise, insight, or observation: Roll +wits.\n\nOn a **strong hit**, you gain advantage. Choose one.\n\n  * Take control: Make another move now (not a progress move), and add +1.\n  * Prepare to act: Take +2 momentum.\n\nOn a **weak hit**, your advantage is short-lived. Take +1 momentum.\n\nOn a **miss**, you fail or your assumptions betray you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+              "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/2",
+              "Text": "With charm, loyalty, or courage",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 62 },
-                "$id": "Ironsworn/Moves/Adventure/Gather_Information",
-                "Name": "Gather Information",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Gather Information" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Gather_Information/Trigger",
-                    "Text": "When you search an area, ask questions, conduct an investigation, or follow a track...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Gather_Information/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you search an area, ask questions, conduct an investigation, or follow a track**, roll +wits. If you act within a community or ask questions of a person with whom you share a bond, add +1.\n\nOn a **strong hit**, you discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +2 momentum.\n\nOn a **weak hit**, the information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.\n\nOn a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+              "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/3",
+              "Text": "With aggressive action, forceful defense, strength, or endurance",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 63 },
-                "$id": "Ironsworn/Moves/Adventure/Heal",
-                "Name": "Heal",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Heal" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Heal/Trigger",
-                    "Text": "When you treat an injury or ailment...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Heal/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Heal/Trigger/Options/2",
-                            "Text": "Mend your own wounds",
-                            "Roll type": "Action roll",
-                            "Method": "Worst of",
-                            "Using": ["Iron", "Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you treat an injury or ailment**, roll +wits. If you are mending your own wounds, roll +wits or +iron, whichever is lower.\n\nOn a **strong hit**, your care is helpful. If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health.\n\nOn a **weak hit**, as above, but you must suffer -1 supply or -1 momentum (your choice).\n\nOn a **miss**, your aid is ineffective. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+              "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/4",
+              "Text": "With deception, stealth, or trickery",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 63 },
-                "$id": "Ironsworn/Moves/Adventure/Resupply",
-                "Name": "Resupply",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Resupply" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Resupply/Trigger",
-                    "Text": "When you hunt, forage, or scavenge...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Resupply/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you hunt, forage, or scavenge**, roll +wits.\n\nOn a **strong hit**, you bolster your resources. Take +2 supply.\n\nOn a **weak hit**, take up to +2 supply, but suffer -1 momentum for each.\n\nOn a **miss**, you find nothing helpful. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 64 },
-                "$id": "Ironsworn/Moves/Adventure/Make_Camp",
-                "Name": "Make Camp",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Make Camp" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Make_Camp/Trigger",
-                    "Text": "When you rest and recover for several hours in the wild...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Make_Camp/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Supply"]
-                        }
-                    ]
-                },
-                "Text": "When **you rest and recover for several hours in the wild**, roll +supply.\n\nOn a **strong hit**, you and your allies may each choose two. On a **weak hit**, choose one.\n\n  * Recuperate: Take +1 health for you and any companions.\n  * Partake: Suffer -1 supply and take +1 health for you and any companions.\n  * Relax: Take +1 spirit.\n  * Focus: Take +1 momentum.\n  * Prepare: When you break camp, add +1 if you Undertake a Journey.\n\nOn a **miss**, you take no comfort. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 65 },
-                "$id": "Ironsworn/Moves/Adventure/Undertake_a_Journey",
-                "Name": "Undertake a Journey",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Display": { "Title": "Undertake a Journey" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Undertake_a_Journey/Trigger",
-                    "Text": "When you travel across hazardous or unfamiliar lands...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Undertake_a_Journey/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you travel across hazardous or unfamiliar lands**, set the rank of your journey.\n\n  * Troublesome journey: 3 progress per waypoint.\n  * Dangerous journey: 2 progress per waypoint.\n  * Formidable journey: 1 progress per waypoint.\n  * Extreme journey: 2 ticks per waypoint.\n  * Epic journey: 1 tick per waypoint.\n\nThen, for each segment of your journey, roll +wits. If you are setting off from a community with which you share a bond, add +1 to your initial roll.\n\nOn a **strong hit**, you reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, choose one.\n\n  * You make good use of your resources: Mark progress.\n  * You move at speed: Mark progress and take +1 momentum, but suffer -1 supply.\n\nOn a **weak hit**, you reach a waypoint and mark progress, but suffer -1 supply.\n\nOn a **miss**, you are waylaid by a perilous event. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 68 },
-                "$id": "Ironsworn/Moves/Adventure/Reach_Your_Destination",
-                "Name": "Reach Your Destination",
-                "Category": "Ironsworn/Moves/Adventure",
-                "Progress Move": true,
-                "Display": { "Title": "Reach Your Destination" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Adventure/Reach_Your_Destination/Trigger",
-                    "Text": "When your journey comes to an end...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Adventure/Reach_Your_Destination/Trigger/Options/1",
-                            "Roll type": "Progress roll",
-                            "Method": "Any",
-                            "Using": ["Journey Progress"]
-                        }
-                    ]
-                },
-                "Text": "When **your journey comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, the situation at your destination favors you. Choose one.\n\n  * Make another move now (not a progress move), and add +1.\n  * Take +1 momentum.\n\nOn a **weak hit**, you arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, you have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic)."
+              "$id": "Ironsworn/Moves/Adventure/Face_Danger/Trigger/Options/5",
+              "Text": "With expertise, insight, or observation",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Suffer",
-        "Name": "Suffer",
-        "Description": "These moves are made as a result of a perilous event or bad outcome on other moves. They represent what happens to you, and how you hold up against the trauma.",
-        "Source": { "Title": "Ironsworn Rulebook", "Page": 90 },
-        "Display": { "Title": "Suffer Moves" },
-        "Moves": [
+          ]
+        },
+        "Text": "When **you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...\n\n  * With speed, agility, or precision: Roll +edge.\n  * With charm, loyalty, or courage: Roll +heart.\n  * With aggressive action, forceful defense, strength, or endurance: Roll +iron.\n  * With deception, stealth, or trickery: Roll +shadow.\n  * With expertise, insight, or observation: Roll +wits.\n\nOn a **strong hit**, you are successful. Take +1 momentum.\n\nOn a **weak hit**, you succeed, but face a troublesome cost. Choose one.\n\n  * You are delayed, lose advantage, or face a new danger: Suffer -1 momentum.\n  * You are tired or hurt: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).\n  * You are dispirited or afraid: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).\n  * You sacrifice resources: Suffer -1 supply.\n\nOn a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 61 },
+        "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage",
+        "Name": "Secure an Advantage",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Secure an Advantage" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger",
+          "Text": "When you assess a situation, make preparations, or attempt to gain leverage...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 91 },
-                "$id": "Ironsworn/Moves/Suffer/Endure_Harm",
-                "Name": "Endure Harm",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Endure Harm" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Endure_Harm/Trigger",
-                    "Text": "When you face physical damage...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Suffer/Endure_Harm/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Highest",
-                            "Using": ["Iron", "Health"]
-                        }
-                    ]
-                },
-                "Text": "When **you face physical damage**, suffer -health equal to your foe’s rank or as appropriate to the situation. If your health is 0, suffer -momentum equal to any remaining -health. Then, roll +health or +iron, whichever is higher.\n\nOn a **strong hit**, choose one.\n\n  * Shake it off: If your health is greater than 0, suffer -1 momentum in exchange for +1 health.\n  * Embrace the pain: Take +1 momentum.\n\nOn a **weak hit**, you press on.\n\nOn a **miss**, also suffer -1 momentum. If you are at 0 health, you must mark wounded or maimed (if currently unmarked) or roll on the following table.\n\nRoll  | Result\n------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1-10  | The harm is mortal. [Face Death](Ironsworn/Moves/Suffer/Face_Death).\n11-20 | You are dying. You need to Heal within an hour or two, or [Face Death](Ironsworn/Moves/Suffer/Face_Death).\n21-35 | You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to a foe not inclined to show mercy, [Face Death](Ironsworn/Moves/Suffer/Face_Death).\n36-50 | You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).\n51-00 | You are battered but still standing.",
-                "Oracles": ["Ironsworn/Oracles/Moves/Endure_Harm"]
+              "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/1",
+              "Text": "With speed, agility, or precision",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 93 },
-                "$id": "Ironsworn/Moves/Suffer/Face_Death",
-                "Name": "Face Death",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Face Death" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Face_Death/Trigger",
-                    "Text": "When you are brought to the brink of death, and glimpse the world beyond...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Suffer/Face_Death/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **you are brought to the brink of death**, and glimpse the world beyond, roll +heart.\n\nOn a **strong hit**, death rejects you. You are cast back into the mortal world.\n\nOn a **weak hit**, choose one.\n\n  * You die, but not before making a noble sacrifice. Envision your final moments.\n  * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.\n\nOn a **miss**, you are dead."
+              "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/2",
+              "Text": "With charm, loyalty, or courage",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 94 },
-                "$id": "Ironsworn/Moves/Suffer/Companion_Endure_Harm",
-                "Name": "Companion Endure Harm",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Companion Endure Harm" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Companion_Endure_Harm/Trigger",
-                    "Text": "When your companion faces physical damage",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Suffer/Companion_Endure_Harm/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Highest",
-                            "Using": ["Heart", "Companion Health"]
-                        }
-                    ]
-                },
-                "Text": "When **your companion faces physical damage**, they suffer -health equal to the amount of harm inflicted. If your companion’s health is 0, exchange any leftover -health for -momentum. Then, roll +heart or +your companion’s health, whichever is higher.\n\nOn a **strong hit**, your companion rallies. Give them +1 health.\n\nOn a **weak hit**, your companion is battered. If their health is 0, they cannot assist you until they gain at least +1 health.\n\nOn a **miss**, also suffer -1 momentum. If your companion’s health is 0, they are gravely wounded and out of action. Without aid, they die in an hour or two. If you roll a miss with a 1 on your action die, and your companion’s health is 0, they are now dead. Take 1 experience for each marked ability on your companion asset, and remove it."
+              "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/3",
+              "Text": "With aggressive action, forceful defense, strength, or endurance",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 95 },
-                "$id": "Ironsworn/Moves/Suffer/Endure_Stress",
-                "Name": "Endure Stress",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Endure Stress" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Endure_Stress/Trigger",
-                    "Text": "When you face mental shock or despair...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Suffer/Endure_Stress/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Highest",
-                            "Using": ["Heart", "Spirit"]
-                        }
-                    ]
-                },
-                "Text": "When **you face mental shock or despair**, suffer -spirit equal to your foe’s rank or as appropriate to the situation. If your spirit is 0, suffer -momentum equal to any remaining -spirit. Then, roll +spirit or +heart, whichever is higher.\n\nOn a **strong hit**, choose one.\n\n  * Shake it off: If your spirit is greater than 0, suffer -1 momentum in exchange for +1 spirit\n  * Embrace the darkness: Take +1 momentum\n\nOn a **weak hit**, you press on.\n\nOn a **miss**, also suffer -1 momentum. If you are at 0 spirit, you must mark shaken or corrupted (if currently unmarked) or roll on the following table.\n\nRoll  | Result\n------|------------------------------------------------------------------------------------\n1-10  | You are overwhelmed.  [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).\n11-25 | You give up. [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow) (if possible, one relevant to your current crisis).\n26-50 | You give in to a fear or compulsion, and act against your better instincts.\n51-00 | You persevere.",
-                "Oracles": ["Ironsworn/Oracles/Moves/Endure_Stress"]
+              "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/4",
+              "Text": "With deception, stealth, or trickery",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 96 },
-                "$id": "Ironsworn/Moves/Suffer/Face_Desolation",
-                "Name": "Face Desolation",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Face Desolation" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Face_Desolation/Trigger",
-                    "Text": "When you are brought to the brink of desolation...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Suffer/Face_Desolation/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **you are brought to the brink of desolation**, roll +heart.\n\nOn a **strong hit**, you resist and press on.\n\nOn a **weak hit**, choose one.\n\n  * Your spirit or sanity breaks, but not before you make a noble sacrifice. Envision your final moments.\n  * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.\n\nOn a **miss**, you succumb to despair or horror and are lost."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 97 },
-                "$id": "Ironsworn/Moves/Suffer/Out_of_Supply",
-                "Name": "Out of Supply",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Out of Supply" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Out_of_Supply/Trigger",
-                    "Text": "When your supply is exhausted (reduced to 0)..."
-                },
-                "Text": "When **your supply is exhausted** (reduced to 0), mark unprepared. If you suffer additional -supply while unprepared, you must exchange each additional -supply for any combination of -health, -spirit or -momentum as appropriate to the circumstances."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 97 },
-                "$id": "Ironsworn/Moves/Suffer/Face_a_Setback",
-                "Name": "Face a Setback",
-                "Category": "Ironsworn/Moves/Suffer",
-                "Display": { "Title": "Face a Setback" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Suffer/Face_a_Setback/Trigger",
-                    "Text": "When your momentum is at its minimum (-6), and you suffer additional -momentum..."
-                },
-                "Text": "When **your momentum is at its minimum** (-6), and you suffer additional -momentum, choose one.\n\n  * Exchange each additional -momentum for any combination of -health, -spirit, or -supply as appropriate to the circumstances.\n  * Envision an event or discovery ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick)."
+              "$id": "Ironsworn/Moves/Adventure/Secure_an_Advantage/Trigger/Options/5",
+              "Text": "With expertise, insight, or observation",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Relationship",
-        "Name": "Relationship",
-        "Description": "Relationship moves are made as you interact with others in the world, fight duels, form bonds, support your allies, and determine the ultimate fate of your character.",
-        "Source": { "Title": "Ironsworn Rulebook" },
-        "Display": { "Title": "Relationship Moves" },
-        "Moves": [
+          ]
+        },
+        "Text": "When **you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...\n\n  * With speed, agility, or precision: Roll +edge.\n  * With charm, loyalty, or courage: Roll +heart.\n  * With aggressive action, forceful defense, strength, or endurance: Roll +iron.\n  * With deception, stealth, or trickery: Roll +shadow.\n  * With expertise, insight, or observation: Roll +wits.\n\nOn a **strong hit**, you gain advantage. Choose one.\n\n  * Take control: Make another move now (not a progress move), and add +1.\n  * Prepare to act: Take +2 momentum.\n\nOn a **weak hit**, your advantage is short-lived. Take +1 momentum.\n\nOn a **miss**, you fail or your assumptions betray you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 62 },
+        "$id": "Ironsworn/Moves/Adventure/Gather_Information",
+        "Name": "Gather Information",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Gather Information" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Gather_Information/Trigger",
+          "Text": "When you search an area, ask questions, conduct an investigation, or follow a track...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 69 },
-                "$id": "Ironsworn/Moves/Relationship/Compel",
-                "Name": "Compel",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Display": { "Title": "Compel" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Compel/Trigger",
-                    "Text": "When you attempt to persuade someone to do something...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Compel/Trigger/Options/1",
-                            "Text": "Charm, pacify, barter, or convince",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Compel/Trigger/Options/2",
-                            "Text": "Threaten or incite",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Compel/Trigger/Options/3",
-                            "Text": "Lie or swindle",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        }
-                    ]
-                },
-                "Text": "When **you attempt to persuade someone to do something**, envision your approach and roll. If you...\n\n  * Charm, pacify, barter, or convince: Roll +heart (add +1 if you share a bond).\n  * Threaten or incite: Roll +iron.\n  * Lie or swindle: Roll +shadow.\n\nOn a **strong hit**, they’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), make that move now and add +1.\n\nOn a **weak hit**, as above, but they ask something of you in return. Envision what they want ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, they refuse or make a demand which costs you greatly. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 71 },
-                "$id": "Ironsworn/Moves/Relationship/Sojourn",
-                "Name": "Sojourn",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Display": { "Title": "Sojourn" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Sojourn/Trigger",
-                    "Text": "When you spend time in a community seeking assistance...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Sojourn/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **you spend time in a community seeking assistance**, roll +heart. If you share a bond, add +1. On **strong hit**, you and your allies may each choose two from within the categories below. On a **weak hit**, choose one. If you share a bond, choose one more.\n\nOn a hit, you and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.\n\n**Clear a Condition**\n\n  * Mend: Clear a wounded debility and take +1 health.\n  * Hearten: Clear a shaken debility and take +1 spirit.\n  * Equip: Clear an unprepared debility and take +1 supply.\n\n**Recover**\n\n  * Recuperate: Take +2 health for yourself and any companions.\n  * Consort: Take +2 spirit.\n  * Provision: Take +2 supply.\n  * Plan: Take +2 momentum.\n\n**Provide Aid**\n\n  * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you chose to help, [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) and add +1.\n\nOn a **miss**, you find no help here. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 73 },
-                "$id": "Ironsworn/Moves/Relationship/Draw_the_Circle",
-                "Name": "Draw the Circle",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Display": { "Title": "Draw the Circle" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Draw_the_Circle/Trigger",
-                    "Text": "When you challenge someone to a formal duel, or accept a challenge...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Draw_the_Circle/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **you challenge someone to a formal duel, or accept a challenge**, roll +heart. If you share a bond with this community, add +1.\n\nOn a **strong hit**, take +1 momentum. You may also choose up to two boasts and take +1 momentum for each.\n\nOn a **weak hit**, you may choose one boast in exchange for +1 momentum.\n\n  * Grant first strike: Your foe has initiative.\n  * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.\n  * Hold no iron: Take no benefit of weapons; your harm is 1.\n  * Bloody yourself: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).\n  * To the death: One way or another, this fight must end with death.\n\nOn a **miss**, you begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 74 },
-                "$id": "Ironsworn/Moves/Relationship/Forge_a_Bond",
-                "Name": "Forge a Bond",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Display": { "Title": "Forge a Bond" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Forge_a_Bond/Trigger",
-                    "Text": "When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Forge_a_Bond/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause**, you can attempt to create a bond. When you do, roll +heart. If you make this move after you successfully [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) to their benefit, you may reroll any dice.\n\nOn a **strong hit**, make note of the bond, mark a tick on your bond progress track, and choose one.\n\n  * Take +1 spirit.\n  * Take +2 momentum.\n\nOn a **weak hit**, they ask something more of you first. Envision what it is ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)), and mark the bond. If you refuse or fail, [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).\n\nOn a **miss**, they reject you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 75 },
-                "$id": "Ironsworn/Moves/Relationship/Test_Your_Bond",
-                "Name": "Test Your Bond",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Display": { "Title": "Test Your Bond" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Test_Your_Bond/Trigger",
-                    "Text": "When your bond is tested through conflict, betrayal, or circumstance...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Test_Your_Bond/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **your bond is tested through conflict, betrayal, or circumstance**, roll +heart.\n\nOn a **strong hit**, this test has strengthened your bond. Choose one.\n\n  * Take +1 spirit.\n  * Take +2 momentum.\n\nOn a **weak hit**, your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)). If you refuse or fail, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).\n\nOn a **miss**, or if you have no interest in maintaining this relationship, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 76 },
-                "$id": "Ironsworn/Moves/Relationship/Aid_Your_Ally",
-                "Name": "Aid Your Ally",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Display": { "Title": "Aid Your Ally" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Aid_Your_Ally/Trigger",
-                    "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally..."
-                },
-                "Text": "When **you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 77 },
-                "$id": "Ironsworn/Moves/Relationship/Write_Your_Epilogue",
-                "Name": "Write Your Epilogue",
-                "Category": "Ironsworn/Moves/Relationship",
-                "Progress Move": true,
-                "Display": { "Title": "Write Your Epilogue" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Relationship/Write_Your_Epilogue/Trigger",
-                    "Text": "When you retire from your life as Ironsworn...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Relationship/Write_Your_Epilogue/Trigger/Options/1",
-                            "Roll type": "Progress roll",
-                            "Method": "All of",
-                            "Using": ["Bonds Track", "Bonds Track", "Bonds Track"]
-                        }
-                    ]
-                },
-                "Text": "When **you retire from your life as Ironsworn**, envision two things: What you hope for, and what you fear. Then, roll the challenge dice and compare to your bonds. Momentum is ignored on this roll.\n\nOn a **strong hit**, things come to pass as you hoped.\n\nOn a **weak hit**, your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, your fears are realized."
+              "$id": "Ironsworn/Moves/Adventure/Gather_Information/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Combat",
-        "Name": "Combat",
-        "Description": "When there are no other options, when the sword slips free of its sheath, when the arrow is nocked, when the shield is brought to bear, make these moves.",
-        "Source": { "Title": "Ironsworn Rulebook" },
-        "Display": { "Title": "Combat Moves" },
-        "Moves": [
+          ]
+        },
+        "Text": "When **you search an area, ask questions, conduct an investigation, or follow a track**, roll +wits. If you act within a community or ask questions of a person with whom you share a bond, add +1.\n\nOn a **strong hit**, you discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +2 momentum.\n\nOn a **weak hit**, the information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.\n\nOn a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 63 },
+        "$id": "Ironsworn/Moves/Adventure/Heal",
+        "Name": "Heal",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Heal" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Heal/Trigger",
+          "Text": "When you treat an injury or ailment...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 78 },
-                "$id": "Ironsworn/Moves/Combat/Enter_the_Fray",
-                "Name": "Enter the Fray",
-                "Category": "Ironsworn/Moves/Combat",
-                "Display": { "Title": "Enter the Fray" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger",
-                    "Text": "When you enter into combat...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger/Options/1",
-                            "Text": "Facing off against your foe",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger/Options/2",
-                            "Text": "Moving into position against an unaware foe, or striking without warning",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger/Options/3",
-                            "Text": "Ambushed",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you enter into combat**, set the rank of each of your foes.\n\n  * Troublesome foe: 3 progress per harm; inflicts 1 harm.\n  * Dangerous foe: 2 progress per harm; inflicts 2 harm.\n  * Formidable foe: 1 progress per harm; inflicts 3 harm.\n  * Extreme foe: 2 ticks per harm; inflicts 4 harm.\n  * Epic foe: 1 tick per harm; inflicts 5 harm.\n\nThen, roll to determine who is in control. If you are...\n\n  * Facing off against your foe: Roll +heart.\n  * Moving into position against an unaware foe, or striking without warning: Roll +shadow.\n  * Ambushed: Roll +wits.\n\nOn a **strong hit**, take +2 momentum. You have initiative.\n\nOn a **weak hit**, choose one.\n\n  * Bolster your position: Take +2 momentum.\n  * Prepare to act: Take initiative.\n\nOn a **miss**, combat begins with you at a disadvantage. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative."
+              "$id": "Ironsworn/Moves/Adventure/Heal/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 78 },
-                "$id": "Ironsworn/Moves/Combat/Strike",
-                "Name": "Strike",
-                "Category": "Ironsworn/Moves/Combat",
-                "Display": { "Title": "Strike" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Combat/Strike/Trigger",
-                    "Text": "When you are in control and attack in close quarters, or when you attack at range...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Strike/Trigger/Options/1",
-                            "Text": "Attack in close quarters",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Strike/Trigger/Options/2",
-                            "Text": "Attack at range",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        }
-                    ]
-                },
-                "Text": "When **you have initiative and attack in close quarters**, roll +iron. When you have initiative and attack at range, roll +edge.\n\nOn a **strong hit**, inflict +1 harm. You retain initiative.\n\nOn a **weak hit**, inflict your harm and lose initiative.\n\nOn a **miss**, your attack fails and you must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 80 },
-                "$id": "Ironsworn/Moves/Combat/Clash",
-                "Name": "Clash",
-                "Category": "Ironsworn/Moves/Combat",
-                "Display": { "Title": "Clash" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Combat/Clash/Trigger",
-                    "Text": "When your foe has initiative and you fight with them in close quarters, or when you exchange a volley at range, or shoot at an advancing foe...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Clash/Trigger/Options/1",
-                            "Text": "When your foe has initiative and you fight with them in close quarters",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Clash/Trigger/Options/2",
-                            "Text": "When you exchange a volley at range, or shoot at an advancing foe",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        }
-                    ]
-                },
-                "Text": "When **your foe has initiative and you fight with them in close quarters**, roll +iron. When you exchange a volley at range, or shoot at an advancing foe, roll +edge.\n\nOn a **strong hit**, inflict your harm and choose one. You have the initiative.\n\n  * You bolster your position: Take +1 momentum.\n  * You find an opening: Inflict +1 harm.\n\nOn a **weak hit**, inflict your harm, but then [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.\n\nOn a **miss**, you are outmatched and must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 81 },
-                "$id": "Ironsworn/Moves/Combat/Turn_the_Tide",
-                "Name": "Turn the Tide",
-                "Category": "Ironsworn/Moves/Combat",
-                "Display": { "Title": "Turn the Tide" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Combat/Turn_the_Tide/Trigger",
-                    "Text": "Once per fight, when you risk it all..."
-                },
-                "Text": "Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 82 },
-                "$id": "Ironsworn/Moves/Combat/End_the_Fight",
-                "Name": "End the Fight",
-                "Category": "Ironsworn/Moves/Combat",
-                "Progress Move": true,
-                "Display": { "Title": "End the Fight" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Combat/End_the_Fight/Trigger",
-                    "Text": "When you make a move to take decisive action, and score a strong hit...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Combat/End_the_Fight/Trigger/Options/1",
-                            "Roll type": "Progress roll",
-                            "Method": "Any",
-                            "Using": ["Combat Progress"]
-                        }
-                    ]
-                },
-                "Text": "When **you make a move to take decisive action**, and score a strong hit, you may resolve the outcome of this fight. If you do, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, this foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **weak hit**, as above, but you must also choose one.\n\n  * It’s worse than you thought: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm).\n  * You are overcome: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress).\n  * Your victory is short-lived: A new danger or foe appears, or an existing danger worsens.\n  * You suffer collateral damage: Something of value is lost or broken, or someone important must pay the cost.\n  * You’ll pay for it: An objective falls out of reach.\n  * Others won’t forget: You are marked for vengeance.\n\nOn a **miss**, you have lost this fight. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 84 },
-                "$id": "Ironsworn/Moves/Combat/Battle",
-                "Name": "Battle",
-                "Category": "Ironsworn/Moves/Combat",
-                "Display": { "Title": "Battle" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Combat/Battle/Trigger",
-                    "Text": "When you fight a battle, and it happens in a blur...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/1",
-                            "Text": "Fight at range, or using your speed and the terrain to your advantage",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/2",
-                            "Text": "Fight depending on your courage, allies, or companions",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/3",
-                            "Text": "Fight in close to overpower your opponents",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/4",
-                            "Text": "Fight using trickery to befuddle your opponents",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/5",
-                            "Text": "Fight using careful tactics to outsmart your opponents",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you fight a battle, and it happens in a blur**, envision your objective and roll. If you primarily...\n\n  * Fight at range, or using your speed and the terrain to your advantage: Roll +edge.\n  * Fight depending on your courage, allies, or companions: Roll +heart.\n  * Fight in close to overpower your opponents: Roll +iron.\n  * Fight using trickery to befuddle your opponents: Roll +shadow.\n  * Fight using careful tactics to outsmart your opponents: Roll +wits.\n\nOn a **strong hit**, you achieve your objective unconditionally. Take +2 momentum.\n\nOn a **weak hit**, you achieve your objective, but not without cost. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).\n\nOn a **miss**, you are defeated and the objective is lost to you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+              "$id": "Ironsworn/Moves/Adventure/Heal/Trigger/Options/2",
+              "Text": "Mend your own wounds",
+              "Roll type": "Action roll",
+              "Method": "Worst of",
+              "Using": ["Iron", "Wits"]
             }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Quest",
-        "Name": "Quest",
-        "Description": "Making and fulfilling vows is central to your character’s motivations. These oaths drive your story and give you the means to gain experience and acquire new abilities. When you embark upon a quest, manage your progress on a quest, seek to complete a quest, or gain the rewards of a quest, make these moves.",
-        "Source": { "Title": "Ironsworn Rulebook" },
-        "Display": { "Title": "Quest Moves" },
-        "Moves": [
+          ]
+        },
+        "Text": "When **you treat an injury or ailment**, roll +wits. If you are mending your own wounds, roll +wits or +iron, whichever is lower.\n\nOn a **strong hit**, your care is helpful. If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health.\n\nOn a **weak hit**, as above, but you must suffer -1 supply or -1 momentum (your choice).\n\nOn a **miss**, your aid is ineffective. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 63 },
+        "$id": "Ironsworn/Moves/Adventure/Resupply",
+        "Name": "Resupply",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Resupply" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Resupply/Trigger",
+          "Text": "When you hunt, forage, or scavenge...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 98 },
-                "$id": "Ironsworn/Moves/Quest/Swear_an_Iron_Vow",
-                "Name": "Swear an Iron Vow",
-                "Category": "Ironsworn/Moves/Quest",
-                "Display": { "Title": "Swear an Iron Vow" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Quest/Swear_an_Iron_Vow/Trigger",
-                    "Text": "When you swear upon iron to complete a quest...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Quest/Swear_an_Iron_Vow/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        }
-                    ]
-                },
-                "Text": "When **you swear upon iron to complete a quest**, write your vow and give the quest a rank. Then, roll +heart. If you make this vow to a person or community with whom you share a bond, add +1.\n\nOn a **strong hit**, you are emboldened and it is clear what you must do next ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Take +2 momentum.\n\nOn a **weak hit**, you are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.\n\nOn a **miss**, you face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and choose one.\n\n  * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.\n  * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 100 },
-                "$id": "Ironsworn/Moves/Quest/Reach_a_Milestone",
-                "Name": "Reach a Milestone",
-                "Category": "Ironsworn/Moves/Quest",
-                "Display": { "Title": "Reach a Milestone" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Quest/Reach_a_Milestone/Trigger",
-                    "Text": "When you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item..."
-                },
-                "Text": "When **you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item**, you may mark progress.\n\n  * Troublesome quest: Mark 3 progress.\n  * Dangerous quest: Mark 2 progress.\n  * Formidable quest: Mark 1 progress.\n  * Extreme quest: Mark 2 ticks.\n  * Epic quest: Mark 1 tick."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 101 },
-                "$id": "Ironsworn/Moves/Quest/Fulfill_Your_Vow",
-                "Name": "Fulfill Your Vow",
-                "Category": "Ironsworn/Moves/Quest",
-                "Progress Move": true,
-                "Display": { "Title": "Fulfill Your Vow" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Quest/Fulfill_Your_Vow/Trigger",
-                    "Text": "When you achieve what you believe to be the fulfillment of your vow...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Quest/Fulfill_Your_Vow/Trigger/Options/1",
-                            "Roll type": "Progress roll",
-                            "Method": "Any",
-                            "Using": ["Vow Progress"]
-                        }
-                    ]
-                },
-                "Text": "When **you achieve what you believe to be the fulfillment of your vow**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, your quest is complete. Mark experience (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5).\n\nOn a **weak hit**, there is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to set things right. If you do, add +1.\n\nOn a **miss**, your quest is undone. Envision what happens ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and choose one.\n\n  * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).\n  * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 102 },
-                "$id": "Ironsworn/Moves/Quest/Forsake_Your_Vow",
-                "Name": "Forsake Your Vow",
-                "Category": "Ironsworn/Moves/Quest",
-                "Display": { "Title": "Forsake Your Vow" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Quest/Forsake_Your_Vow/Trigger",
-                    "Text": "When you renounce your quest, betray your promise, or the goal is lost to you..."
-                },
-                "Text": "When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet."
-            },
-            {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 103 },
-                "$id": "Ironsworn/Moves/Quest/Advance",
-                "Name": "Advance",
-                "Category": "Ironsworn/Moves/Quest",
-                "Display": { "Title": "Advance" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Quest/Advance/Trigger",
-                    "Text": "When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion..."
-                },
-                "Text": "When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset."
+              "$id": "Ironsworn/Moves/Adventure/Resupply/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Fate",
-        "Name": "Fate",
-        "Description": "In solo and co-op play, the fate moves mediate the result of other moves or serve as inspirational prompts for your story. When you face the outcome of a move, want to know what happens next, or have a question about people, places and events external to your character, the fate moves help you discover an answer.\n\nIn guided mode, your GM represents the whims of fate. They can reference these moves as they like, but they can also decide the outcome or direct the question back to you.\n\nThere are three key aspects of using the fate moves:\n  * **Instinct:** If an answer to a question or the result of a situation is obvious, interesting and dramatic, make it happen.\n  * **Randomness:** You can roll on random tables to generate a result or answer a question.\n  * **Inspiration:** You can use creative prompts, such as those included in the oracles chapter (page 165) to guide your story.",
-        "Source": { "Title": "Ironsworn Rulebook" },
-        "Display": { "Title": "Fate Moves" },
-        "Moves": [
+          ]
+        },
+        "Text": "When **you hunt, forage, or scavenge**, roll +wits.\n\nOn a **strong hit**, you bolster your resources. Take +2 supply.\n\nOn a **weak hit**, take up to +2 supply, but suffer -1 momentum for each.\n\nOn a **miss**, you find nothing helpful. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 64 },
+        "$id": "Ironsworn/Moves/Adventure/Make_Camp",
+        "Name": "Make Camp",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Make Camp" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Make_Camp/Trigger",
+          "Text": "When you rest and recover for several hours in the wild...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 105 },
-                "$id": "Ironsworn/Moves/Fate/Pay_the_Price",
-                "Name": "Pay the Price",
-                "Category": "Ironsworn/Moves/Fate",
-                "Display": { "Title": "Pay the Price" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Fate/Pay_the_Price/Trigger",
-                    "Text": "When you suffer the outcome of a move..."
-                },
-                "Text": "When **you suffer the outcome of a move**, choose one.\n\n  * Make the most obvious negative outcome happen.\n  * Envision two negative outcomes. Rate one as ‘likely’, and [Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) using the yes/no table. On a ‘yes’, make that outcome happen. Otherwise, make it the other.\n  * Roll on the following table. If you have difficulty interpreting the result to fit the current situation, roll again.\n\nRoll  | Result\n------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1-2   | Roll again and apply that result but make it worse. If you roll this result yet again, think of something dreadful that changes the course of your quest ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and make it happen.\n3-5   | A person or community you trusted loses faith in you, or acts against you.\n6-9   | A person or community you care about is exposed to danger.\n10-16 | You are separated from something or someone.\n17-23 | Your action has an unintended effect.\n24-32 | Something of value is lost or destroyed.\n33-41 | The current situation worsens.\n42-50 | A new danger or foe is revealed.\n51-59 | It causes a delay or puts you at a disadvantage.\n60-68 | It is harmful.\n69-76 | It is stressful.\n77-85 | A surprising development complicates your quest.\n86-90 | It wastes resources.\n91-94 | It forces you to act against your best intentions.\n95-98 | A friend, companion, or ally is put in harm’s way (or you are, if alone).\n99-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-                "Oracles": ["Ironsworn/Oracles/Moves/Pay_the_Price"]
+              "$id": "Ironsworn/Moves/Adventure/Make_Camp/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Supply"]
+            }
+          ]
+        },
+        "Text": "When **you rest and recover for several hours in the wild**, roll +supply.\n\nOn a **strong hit**, you and your allies may each choose two. On a **weak hit**, choose one.\n\n  * Recuperate: Take +1 health for you and any companions.\n  * Partake: Suffer -1 supply and take +1 health for you and any companions.\n  * Relax: Take +1 spirit.\n  * Focus: Take +1 momentum.\n  * Prepare: When you break camp, add +1 if you Undertake a Journey.\n\nOn a **miss**, you take no comfort. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 65 },
+        "$id": "Ironsworn/Moves/Adventure/Undertake_a_Journey",
+        "Name": "Undertake a Journey",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Display": { "Title": "Undertake a Journey" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Undertake_a_Journey/Trigger",
+          "Text": "When you travel across hazardous or unfamiliar lands...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Adventure/Undertake_a_Journey/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
+            }
+          ]
+        },
+        "Text": "When **you travel across hazardous or unfamiliar lands**, set the rank of your journey.\n\n  * Troublesome journey: 3 progress per waypoint.\n  * Dangerous journey: 2 progress per waypoint.\n  * Formidable journey: 1 progress per waypoint.\n  * Extreme journey: 2 ticks per waypoint.\n  * Epic journey: 1 tick per waypoint.\n\nThen, for each segment of your journey, roll +wits. If you are setting off from a community with which you share a bond, add +1 to your initial roll.\n\nOn a **strong hit**, you reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, choose one.\n\n  * You make good use of your resources: Mark progress.\n  * You move at speed: Mark progress and take +1 momentum, but suffer -1 supply.\n\nOn a **weak hit**, you reach a waypoint and mark progress, but suffer -1 supply.\n\nOn a **miss**, you are waylaid by a perilous event. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 68 },
+        "$id": "Ironsworn/Moves/Adventure/Reach_Your_Destination",
+        "Name": "Reach Your Destination",
+        "Category": "Ironsworn/Moves/Adventure",
+        "Progress Move": true,
+        "Display": { "Title": "Reach Your Destination" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Adventure/Reach_Your_Destination/Trigger",
+          "Text": "When your journey comes to an end...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Adventure/Reach_Your_Destination/Trigger/Options/1",
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Journey Progress"]
+            }
+          ]
+        },
+        "Text": "When **your journey comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, the situation at your destination favors you. Choose one.\n\n  * Make another move now (not a progress move), and add +1.\n  * Take +1 momentum.\n\nOn a **weak hit**, you arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, you have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic)."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Suffer",
+    "Name": "Suffer",
+    "Description": "These moves are made as a result of a perilous event or bad outcome on other moves. They represent what happens to you, and how you hold up against the trauma.",
+    "Source": { "Title": "Ironsworn Rulebook", "Page": 90 },
+    "Display": { "Title": "Suffer Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 91 },
+        "$id": "Ironsworn/Moves/Suffer/Endure_Harm",
+        "Name": "Endure Harm",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Endure Harm" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Endure_Harm/Trigger",
+          "Text": "When you face physical damage...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Suffer/Endure_Harm/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Highest",
+              "Using": ["Iron", "Health"]
+            }
+          ]
+        },
+        "Text": "When **you face physical damage**, suffer -health equal to your foe’s rank or as appropriate to the situation. If your health is 0, suffer -momentum equal to any remaining -health. Then, roll +health or +iron, whichever is higher.\n\nOn a **strong hit**, choose one.\n\n  * Shake it off: If your health is greater than 0, suffer -1 momentum in exchange for +1 health.\n  * Embrace the pain: Take +1 momentum.\n\nOn a **weak hit**, you press on.\n\nOn a **miss**, also suffer -1 momentum. If you are at 0 health, you must mark wounded or maimed (if currently unmarked) or roll on the following table.\n\nRoll  | Result\n------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1-10  | The harm is mortal. [Face Death](Ironsworn/Moves/Suffer/Face_Death).\n11-20 | You are dying. You need to Heal within an hour or two, or [Face Death](Ironsworn/Moves/Suffer/Face_Death).\n21-35 | You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to a foe not inclined to show mercy, [Face Death](Ironsworn/Moves/Suffer/Face_Death).\n36-50 | You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).\n51-00 | You are battered but still standing.",
+        "Oracles": ["Ironsworn/Oracles/Moves/Endure_Harm"]
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 93 },
+        "$id": "Ironsworn/Moves/Suffer/Face_Death",
+        "Name": "Face Death",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Face Death" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Face_Death/Trigger",
+          "Text": "When you are brought to the brink of death, and glimpse the world beyond...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Suffer/Face_Death/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **you are brought to the brink of death**, and glimpse the world beyond, roll +heart.\n\nOn a **strong hit**, death rejects you. You are cast back into the mortal world.\n\nOn a **weak hit**, choose one.\n\n  * You die, but not before making a noble sacrifice. Envision your final moments.\n  * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.\n\nOn a **miss**, you are dead."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 94 },
+        "$id": "Ironsworn/Moves/Suffer/Companion_Endure_Harm",
+        "Name": "Companion Endure Harm",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Companion Endure Harm" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Companion_Endure_Harm/Trigger",
+          "Text": "When your companion faces physical damage",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Suffer/Companion_Endure_Harm/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Highest",
+              "Using": ["Heart", "Companion Health"]
+            }
+          ]
+        },
+        "Text": "When **your companion faces physical damage**, they suffer -health equal to the amount of harm inflicted. If your companion’s health is 0, exchange any leftover -health for -momentum. Then, roll +heart or +your companion’s health, whichever is higher.\n\nOn a **strong hit**, your companion rallies. Give them +1 health.\n\nOn a **weak hit**, your companion is battered. If their health is 0, they cannot assist you until they gain at least +1 health.\n\nOn a **miss**, also suffer -1 momentum. If your companion’s health is 0, they are gravely wounded and out of action. Without aid, they die in an hour or two. If you roll a miss with a 1 on your action die, and your companion’s health is 0, they are now dead. Take 1 experience for each marked ability on your companion asset, and remove it."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 95 },
+        "$id": "Ironsworn/Moves/Suffer/Endure_Stress",
+        "Name": "Endure Stress",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Endure Stress" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Endure_Stress/Trigger",
+          "Text": "When you face mental shock or despair...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Suffer/Endure_Stress/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Highest",
+              "Using": ["Heart", "Spirit"]
+            }
+          ]
+        },
+        "Text": "When **you face mental shock or despair**, suffer -spirit equal to your foe’s rank or as appropriate to the situation. If your spirit is 0, suffer -momentum equal to any remaining -spirit. Then, roll +spirit or +heart, whichever is higher.\n\nOn a **strong hit**, choose one.\n\n  * Shake it off: If your spirit is greater than 0, suffer -1 momentum in exchange for +1 spirit\n  * Embrace the darkness: Take +1 momentum\n\nOn a **weak hit**, you press on.\n\nOn a **miss**, also suffer -1 momentum. If you are at 0 spirit, you must mark shaken or corrupted (if currently unmarked) or roll on the following table.\n\nRoll  | Result\n------|------------------------------------------------------------------------------------\n1-10  | You are overwhelmed.  [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).\n11-25 | You give up. [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow) (if possible, one relevant to your current crisis).\n26-50 | You give in to a fear or compulsion, and act against your better instincts.\n51-00 | You persevere.",
+        "Oracles": ["Ironsworn/Oracles/Moves/Endure_Stress"]
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 96 },
+        "$id": "Ironsworn/Moves/Suffer/Face_Desolation",
+        "Name": "Face Desolation",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Face Desolation" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Face_Desolation/Trigger",
+          "Text": "When you are brought to the brink of desolation...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Suffer/Face_Desolation/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **you are brought to the brink of desolation**, roll +heart.\n\nOn a **strong hit**, you resist and press on.\n\nOn a **weak hit**, choose one.\n\n  * Your spirit or sanity breaks, but not before you make a noble sacrifice. Envision your final moments.\n  * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.\n\nOn a **miss**, you succumb to despair or horror and are lost."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 97 },
+        "$id": "Ironsworn/Moves/Suffer/Out_of_Supply",
+        "Name": "Out of Supply",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Out of Supply" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Out_of_Supply/Trigger",
+          "Text": "When your supply is exhausted (reduced to 0)..."
+        },
+        "Text": "When **your supply is exhausted** (reduced to 0), mark unprepared. If you suffer additional -supply while unprepared, you must exchange each additional -supply for any combination of -health, -spirit or -momentum as appropriate to the circumstances."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 97 },
+        "$id": "Ironsworn/Moves/Suffer/Face_a_Setback",
+        "Name": "Face a Setback",
+        "Category": "Ironsworn/Moves/Suffer",
+        "Display": { "Title": "Face a Setback" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Suffer/Face_a_Setback/Trigger",
+          "Text": "When your momentum is at its minimum (-6), and you suffer additional -momentum..."
+        },
+        "Text": "When **your momentum is at its minimum** (-6), and you suffer additional -momentum, choose one.\n\n  * Exchange each additional -momentum for any combination of -health, -spirit, or -supply as appropriate to the circumstances.\n  * Envision an event or discovery ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick)."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Relationship",
+    "Name": "Relationship",
+    "Description": "Relationship moves are made as you interact with others in the world, fight duels, form bonds, support your allies, and determine the ultimate fate of your character.",
+    "Source": { "Title": "Ironsworn Rulebook" },
+    "Display": { "Title": "Relationship Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 69 },
+        "$id": "Ironsworn/Moves/Relationship/Compel",
+        "Name": "Compel",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Display": { "Title": "Compel" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Compel/Trigger",
+          "Text": "When you attempt to persuade someone to do something...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Relationship/Compel/Trigger/Options/1",
+              "Text": "Charm, pacify, barter, or convince",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
-                "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
-                "$id": "Ironsworn/Moves/Fate/Ask_the_Oracle",
-                "Name": "Ask the Oracle",
-                "Category": "Ironsworn/Moves/Fate",
-                "Display": { "Title": "Ask the Oracle" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Fate/Ask_the_Oracle/Trigger",
-                    "Text": "When you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events..."
-                },
-                "Text": "When **you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events**, you may...\n\n  * Draw a conclusion: Decide the answer based on the most interesting and obvious result.\n  * Ask a yes/no question: Decide the odds of a ‘yes’, and roll on the table below to check the answer.\n  * Pick two: Envision two options. Rate one as ‘likely’, and roll on the table below to see if it is true. If not, it is the other.\n  * Spark an idea: Brainstorm or use a random prompt.\n\nOdds           | The answer is ‘yes’ if you roll...\n---------------|-----------------------------------\nAlmost Certain | 11 or greater\nLikely         | 26 or greater\n50/50          | 51 or greater\nUnlikely       | 76 or greater\nSmall Chance   | 91 or greater",
-                "Oracles": [
-                    "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance",
-                    "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely",
-                    "Ironsworn/Oracles/Moves/Ask_the_Oracle/50-50",
-                    "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely",
-                    "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain"
-                ]
+              "$id": "Ironsworn/Moves/Relationship/Compel/Trigger/Options/2",
+              "Text": "Threaten or incite",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Relationship/Compel/Trigger/Options/3",
+              "Text": "Lie or swindle",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             }
+          ]
+        },
+        "Text": "When **you attempt to persuade someone to do something**, envision your approach and roll. If you...\n\n  * Charm, pacify, barter, or convince: Roll +heart (add +1 if you share a bond).\n  * Threaten or incite: Roll +iron.\n  * Lie or swindle: Roll +shadow.\n\nOn a **strong hit**, they’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), make that move now and add +1.\n\nOn a **weak hit**, as above, but they ask something of you in return. Envision what they want ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, they refuse or make a demand which costs you greatly. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 71 },
+        "$id": "Ironsworn/Moves/Relationship/Sojourn",
+        "Name": "Sojourn",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Display": { "Title": "Sojourn" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Sojourn/Trigger",
+          "Text": "When you spend time in a community seeking assistance...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Relationship/Sojourn/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **you spend time in a community seeking assistance**, roll +heart. If you share a bond, add +1. On **strong hit**, you and your allies may each choose two from within the categories below. On a **weak hit**, choose one. If you share a bond, choose one more.\n\nOn a hit, you and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.\n\n**Clear a Condition**\n\n  * Mend: Clear a wounded debility and take +1 health.\n  * Hearten: Clear a shaken debility and take +1 spirit.\n  * Equip: Clear an unprepared debility and take +1 supply.\n\n**Recover**\n\n  * Recuperate: Take +2 health for yourself and any companions.\n  * Consort: Take +2 spirit.\n  * Provision: Take +2 supply.\n  * Plan: Take +2 momentum.\n\n**Provide Aid**\n\n  * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you chose to help, [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) and add +1.\n\nOn a **miss**, you find no help here. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 73 },
+        "$id": "Ironsworn/Moves/Relationship/Draw_the_Circle",
+        "Name": "Draw the Circle",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Display": { "Title": "Draw the Circle" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Draw_the_Circle/Trigger",
+          "Text": "When you challenge someone to a formal duel, or accept a challenge...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Relationship/Draw_the_Circle/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **you challenge someone to a formal duel, or accept a challenge**, roll +heart. If you share a bond with this community, add +1.\n\nOn a **strong hit**, take +1 momentum. You may also choose up to two boasts and take +1 momentum for each.\n\nOn a **weak hit**, you may choose one boast in exchange for +1 momentum.\n\n  * Grant first strike: Your foe has initiative.\n  * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.\n  * Hold no iron: Take no benefit of weapons; your harm is 1.\n  * Bloody yourself: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).\n  * To the death: One way or another, this fight must end with death.\n\nOn a **miss**, you begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 74 },
+        "$id": "Ironsworn/Moves/Relationship/Forge_a_Bond",
+        "Name": "Forge a Bond",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Display": { "Title": "Forge a Bond" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Forge_a_Bond/Trigger",
+          "Text": "When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Relationship/Forge_a_Bond/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause**, you can attempt to create a bond. When you do, roll +heart. If you make this move after you successfully [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) to their benefit, you may reroll any dice.\n\nOn a **strong hit**, make note of the bond, mark a tick on your bond progress track, and choose one.\n\n  * Take +1 spirit.\n  * Take +2 momentum.\n\nOn a **weak hit**, they ask something more of you first. Envision what it is ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)), and mark the bond. If you refuse or fail, [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).\n\nOn a **miss**, they reject you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 75 },
+        "$id": "Ironsworn/Moves/Relationship/Test_Your_Bond",
+        "Name": "Test Your Bond",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Display": { "Title": "Test Your Bond" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Test_Your_Bond/Trigger",
+          "Text": "When your bond is tested through conflict, betrayal, or circumstance...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Relationship/Test_Your_Bond/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **your bond is tested through conflict, betrayal, or circumstance**, roll +heart.\n\nOn a **strong hit**, this test has strengthened your bond. Choose one.\n\n  * Take +1 spirit.\n  * Take +2 momentum.\n\nOn a **weak hit**, your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)). If you refuse or fail, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).\n\nOn a **miss**, or if you have no interest in maintaining this relationship, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 76 },
+        "$id": "Ironsworn/Moves/Relationship/Aid_Your_Ally",
+        "Name": "Aid Your Ally",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Display": { "Title": "Aid Your Ally" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Aid_Your_Ally/Trigger",
+          "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally..."
+        },
+        "Text": "When **you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 77 },
+        "$id": "Ironsworn/Moves/Relationship/Write_Your_Epilogue",
+        "Name": "Write Your Epilogue",
+        "Category": "Ironsworn/Moves/Relationship",
+        "Progress Move": true,
+        "Display": { "Title": "Write Your Epilogue" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Relationship/Write_Your_Epilogue/Trigger",
+          "Text": "When you retire from your life as Ironsworn...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Relationship/Write_Your_Epilogue/Trigger/Options/1",
+              "Roll type": "Progress roll",
+              "Method": "All of",
+              "Using": ["Bonds Track", "Bonds Track", "Bonds Track"]
+            }
+          ]
+        },
+        "Text": "When **you retire from your life as Ironsworn**, envision two things: What you hope for, and what you fear. Then, roll the challenge dice and compare to your bonds. Momentum is ignored on this roll.\n\nOn a **strong hit**, things come to pass as you hoped.\n\nOn a **weak hit**, your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, your fears are realized."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Combat",
+    "Name": "Combat",
+    "Description": "When there are no other options, when the sword slips free of its sheath, when the arrow is nocked, when the shield is brought to bear, make these moves.",
+    "Source": { "Title": "Ironsworn Rulebook" },
+    "Display": { "Title": "Combat Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 78 },
+        "$id": "Ironsworn/Moves/Combat/Enter_the_Fray",
+        "Name": "Enter the Fray",
+        "Category": "Ironsworn/Moves/Combat",
+        "Display": { "Title": "Enter the Fray" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger",
+          "Text": "When you enter into combat...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger/Options/1",
+              "Text": "Facing off against your foe",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger/Options/2",
+              "Text": "Moving into position against an unaware foe, or striking without warning",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Enter_the_Fray/Trigger/Options/3",
+              "Text": "Ambushed",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
+            }
+          ]
+        },
+        "Text": "When **you enter into combat**, set the rank of each of your foes.\n\n  * Troublesome foe: 3 progress per harm; inflicts 1 harm.\n  * Dangerous foe: 2 progress per harm; inflicts 2 harm.\n  * Formidable foe: 1 progress per harm; inflicts 3 harm.\n  * Extreme foe: 2 ticks per harm; inflicts 4 harm.\n  * Epic foe: 1 tick per harm; inflicts 5 harm.\n\nThen, roll to determine who is in control. If you are...\n\n  * Facing off against your foe: Roll +heart.\n  * Moving into position against an unaware foe, or striking without warning: Roll +shadow.\n  * Ambushed: Roll +wits.\n\nOn a **strong hit**, take +2 momentum. You have initiative.\n\nOn a **weak hit**, choose one.\n\n  * Bolster your position: Take +2 momentum.\n  * Prepare to act: Take initiative.\n\nOn a **miss**, combat begins with you at a disadvantage. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 78 },
+        "$id": "Ironsworn/Moves/Combat/Strike",
+        "Name": "Strike",
+        "Category": "Ironsworn/Moves/Combat",
+        "Display": { "Title": "Strike" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Combat/Strike/Trigger",
+          "Text": "When you are in control and attack in close quarters, or when you attack at range...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Combat/Strike/Trigger/Options/1",
+              "Text": "Attack in close quarters",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Strike/Trigger/Options/2",
+              "Text": "Attack at range",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
+            }
+          ]
+        },
+        "Text": "When **you have initiative and attack in close quarters**, roll +iron. When you have initiative and attack at range, roll +edge.\n\nOn a **strong hit**, inflict +1 harm. You retain initiative.\n\nOn a **weak hit**, inflict your harm and lose initiative.\n\nOn a **miss**, your attack fails and you must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 80 },
+        "$id": "Ironsworn/Moves/Combat/Clash",
+        "Name": "Clash",
+        "Category": "Ironsworn/Moves/Combat",
+        "Display": { "Title": "Clash" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Combat/Clash/Trigger",
+          "Text": "When your foe has initiative and you fight with them in close quarters, or when you exchange a volley at range, or shoot at an advancing foe...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Combat/Clash/Trigger/Options/1",
+              "Text": "When your foe has initiative and you fight with them in close quarters",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Clash/Trigger/Options/2",
+              "Text": "When you exchange a volley at range, or shoot at an advancing foe",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
+            }
+          ]
+        },
+        "Text": "When **your foe has initiative and you fight with them in close quarters**, roll +iron. When you exchange a volley at range, or shoot at an advancing foe, roll +edge.\n\nOn a **strong hit**, inflict your harm and choose one. You have the initiative.\n\n  * You bolster your position: Take +1 momentum.\n  * You find an opening: Inflict +1 harm.\n\nOn a **weak hit**, inflict your harm, but then [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.\n\nOn a **miss**, you are outmatched and must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 81 },
+        "$id": "Ironsworn/Moves/Combat/Turn_the_Tide",
+        "Name": "Turn the Tide",
+        "Category": "Ironsworn/Moves/Combat",
+        "Display": { "Title": "Turn the Tide" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Combat/Turn_the_Tide/Trigger",
+          "Text": "Once per fight, when you risk it all..."
+        },
+        "Text": "Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 82 },
+        "$id": "Ironsworn/Moves/Combat/End_the_Fight",
+        "Name": "End the Fight",
+        "Category": "Ironsworn/Moves/Combat",
+        "Progress Move": true,
+        "Display": { "Title": "End the Fight" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Combat/End_the_Fight/Trigger",
+          "Text": "When you make a move to take decisive action, and score a strong hit...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Combat/End_the_Fight/Trigger/Options/1",
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Combat Progress"]
+            }
+          ]
+        },
+        "Text": "When **you make a move to take decisive action**, and score a strong hit, you may resolve the outcome of this fight. If you do, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, this foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **weak hit**, as above, but you must also choose one.\n\n  * It’s worse than you thought: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm).\n  * You are overcome: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress).\n  * Your victory is short-lived: A new danger or foe appears, or an existing danger worsens.\n  * You suffer collateral damage: Something of value is lost or broken, or someone important must pay the cost.\n  * You’ll pay for it: An objective falls out of reach.\n  * Others won’t forget: You are marked for vengeance.\n\nOn a **miss**, you have lost this fight. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 84 },
+        "$id": "Ironsworn/Moves/Combat/Battle",
+        "Name": "Battle",
+        "Category": "Ironsworn/Moves/Combat",
+        "Display": { "Title": "Battle" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Combat/Battle/Trigger",
+          "Text": "When you fight a battle, and it happens in a blur...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/1",
+              "Text": "Fight at range, or using your speed and the terrain to your advantage",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/2",
+              "Text": "Fight depending on your courage, allies, or companions",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/3",
+              "Text": "Fight in close to overpower your opponents",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/4",
+              "Text": "Fight using trickery to befuddle your opponents",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Combat/Battle/Trigger/Options/5",
+              "Text": "Fight using careful tactics to outsmart your opponents",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
+            }
+          ]
+        },
+        "Text": "When **you fight a battle, and it happens in a blur**, envision your objective and roll. If you primarily...\n\n  * Fight at range, or using your speed and the terrain to your advantage: Roll +edge.\n  * Fight depending on your courage, allies, or companions: Roll +heart.\n  * Fight in close to overpower your opponents: Roll +iron.\n  * Fight using trickery to befuddle your opponents: Roll +shadow.\n  * Fight using careful tactics to outsmart your opponents: Roll +wits.\n\nOn a **strong hit**, you achieve your objective unconditionally. Take +2 momentum.\n\nOn a **weak hit**, you achieve your objective, but not without cost. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).\n\nOn a **miss**, you are defeated and the objective is lost to you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Quest",
+    "Name": "Quest",
+    "Description": "Making and fulfilling vows is central to your character’s motivations. These oaths drive your story and give you the means to gain experience and acquire new abilities. When you embark upon a quest, manage your progress on a quest, seek to complete a quest, or gain the rewards of a quest, make these moves.",
+    "Source": { "Title": "Ironsworn Rulebook" },
+    "Display": { "Title": "Quest Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 98 },
+        "$id": "Ironsworn/Moves/Quest/Swear_an_Iron_Vow",
+        "Name": "Swear an Iron Vow",
+        "Category": "Ironsworn/Moves/Quest",
+        "Display": { "Title": "Swear an Iron Vow" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Quest/Swear_an_Iron_Vow/Trigger",
+          "Text": "When you swear upon iron to complete a quest...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Quest/Swear_an_Iron_Vow/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
+            }
+          ]
+        },
+        "Text": "When **you swear upon iron to complete a quest**, write your vow and give the quest a rank. Then, roll +heart. If you make this vow to a person or community with whom you share a bond, add +1.\n\nOn a **strong hit**, you are emboldened and it is clear what you must do next ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Take +2 momentum.\n\nOn a **weak hit**, you are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.\n\nOn a **miss**, you face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and choose one.\n\n  * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.\n  * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 100 },
+        "$id": "Ironsworn/Moves/Quest/Reach_a_Milestone",
+        "Name": "Reach a Milestone",
+        "Category": "Ironsworn/Moves/Quest",
+        "Display": { "Title": "Reach a Milestone" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Quest/Reach_a_Milestone/Trigger",
+          "Text": "When you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item..."
+        },
+        "Text": "When **you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item**, you may mark progress.\n\n  * Troublesome quest: Mark 3 progress.\n  * Dangerous quest: Mark 2 progress.\n  * Formidable quest: Mark 1 progress.\n  * Extreme quest: Mark 2 ticks.\n  * Epic quest: Mark 1 tick."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 101 },
+        "$id": "Ironsworn/Moves/Quest/Fulfill_Your_Vow",
+        "Name": "Fulfill Your Vow",
+        "Category": "Ironsworn/Moves/Quest",
+        "Progress Move": true,
+        "Display": { "Title": "Fulfill Your Vow" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Quest/Fulfill_Your_Vow/Trigger",
+          "Text": "When you achieve what you believe to be the fulfillment of your vow...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Quest/Fulfill_Your_Vow/Trigger/Options/1",
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Vow Progress"]
+            }
+          ]
+        },
+        "Text": "When **you achieve what you believe to be the fulfillment of your vow**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, your quest is complete. Mark experience (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5).\n\nOn a **weak hit**, there is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to set things right. If you do, add +1.\n\nOn a **miss**, your quest is undone. Envision what happens ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and choose one.\n\n  * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).\n  * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 102 },
+        "$id": "Ironsworn/Moves/Quest/Forsake_Your_Vow",
+        "Name": "Forsake Your Vow",
+        "Category": "Ironsworn/Moves/Quest",
+        "Display": { "Title": "Forsake Your Vow" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Quest/Forsake_Your_Vow/Trigger",
+          "Text": "When you renounce your quest, betray your promise, or the goal is lost to you..."
+        },
+        "Text": "When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet."
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 103 },
+        "$id": "Ironsworn/Moves/Quest/Advance",
+        "Name": "Advance",
+        "Category": "Ironsworn/Moves/Quest",
+        "Display": { "Title": "Advance" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Quest/Advance/Trigger",
+          "Text": "When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion..."
+        },
+        "Text": "When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Fate",
+    "Name": "Fate",
+    "Description": "In solo and co-op play, the fate moves mediate the result of other moves or serve as inspirational prompts for your story. When you face the outcome of a move, want to know what happens next, or have a question about people, places and events external to your character, the fate moves help you discover an answer.\n\nIn guided mode, your GM represents the whims of fate. They can reference these moves as they like, but they can also decide the outcome or direct the question back to you.\n\nThere are three key aspects of using the fate moves:\n  * **Instinct:** If an answer to a question or the result of a situation is obvious, interesting and dramatic, make it happen.\n  * **Randomness:** You can roll on random tables to generate a result or answer a question.\n  * **Inspiration:** You can use creative prompts, such as those included in the oracles chapter (page 165) to guide your story.",
+    "Source": { "Title": "Ironsworn Rulebook" },
+    "Display": { "Title": "Fate Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 105 },
+        "$id": "Ironsworn/Moves/Fate/Pay_the_Price",
+        "Name": "Pay the Price",
+        "Category": "Ironsworn/Moves/Fate",
+        "Display": { "Title": "Pay the Price" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Fate/Pay_the_Price/Trigger",
+          "Text": "When you suffer the outcome of a move..."
+        },
+        "Text": "When **you suffer the outcome of a move**, choose one.\n\n  * Make the most obvious negative outcome happen.\n  * Envision two negative outcomes. Rate one as ‘likely’, and [Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) using the yes/no table. On a ‘yes’, make that outcome happen. Otherwise, make it the other.\n  * Roll on the following table. If you have difficulty interpreting the result to fit the current situation, roll again.\n\nRoll  | Result\n------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1-2   | Roll again and apply that result but make it worse. If you roll this result yet again, think of something dreadful that changes the course of your quest ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and make it happen.\n3-5   | A person or community you trusted loses faith in you, or acts against you.\n6-9   | A person or community you care about is exposed to danger.\n10-16 | You are separated from something or someone.\n17-23 | Your action has an unintended effect.\n24-32 | Something of value is lost or destroyed.\n33-41 | The current situation worsens.\n42-50 | A new danger or foe is revealed.\n51-59 | It causes a delay or puts you at a disadvantage.\n60-68 | It is harmful.\n69-76 | It is stressful.\n77-85 | A surprising development complicates your quest.\n86-90 | It wastes resources.\n91-94 | It forces you to act against your best intentions.\n95-98 | A friend, companion, or ally is put in harm’s way (or you are, if alone).\n99-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+        "Oracles": ["Ironsworn/Oracles/Moves/Pay_the_Price"]
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+        "$id": "Ironsworn/Moves/Fate/Ask_the_Oracle",
+        "Name": "Ask the Oracle",
+        "Category": "Ironsworn/Moves/Fate",
+        "Display": { "Title": "Ask the Oracle" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Fate/Ask_the_Oracle/Trigger",
+          "Text": "When you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events..."
+        },
+        "Text": "When **you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events**, you may...\n\n  * Draw a conclusion: Decide the answer based on the most interesting and obvious result.\n  * Ask a yes/no question: Decide the odds of a ‘yes’, and roll on the table below to check the answer.\n  * Pick two: Envision two options. Rate one as ‘likely’, and roll on the table below to see if it is true. If not, it is the other.\n  * Spark an idea: Brainstorm or use a random prompt.\n\nOdds           | The answer is ‘yes’ if you roll...\n---------------|-----------------------------------\nAlmost Certain | 11 or greater\nLikely         | 26 or greater\n50/50          | 51 or greater\nUnlikely       | 76 or greater\nSmall Chance   | 91 or greater",
+        "Oracles": [
+          "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance",
+          "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely",
+          "Ironsworn/Oracles/Moves/Ask_the_Oracle/50-50",
+          "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely",
+          "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain"
         ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Delve",
-        "Name": "Delve",
-        "Description": "As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.",
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Delve",
+    "Name": "Delve",
+    "Description": "As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.",
+    "Source": { "Title": "Ironsworn: Delve", "Page": 19 },
+    "Display": { "Title": "Delve Moves" },
+    "Moves": [
+      {
         "Source": { "Title": "Ironsworn: Delve", "Page": 19 },
-        "Display": { "Title": "Delve Moves" },
-        "Moves": [
+        "$id": "Ironsworn/Moves/Delve/Discover_a_Site",
+        "Name": "Discover a Site",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Discover a Site" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Discover_a_Site/Trigger",
+          "Text": "When you resolve to enter a perilous site in pursuit of an objective..."
+        },
+        "Text": "When **you resolve to enter a perilous site in pursuit of an objective**, choose the theme and domain which best represent its nature ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and give it a rank.\n\n  * Troublesome site: 3 progress per area.\n  * Dangerous site: 2 progress per area.\n  * Formidable site: 1 progress per area.\n  * Extreme site: 2 ticks per area.\n  * Epic site: 1 tick per area.\n\nIf you are returning to a previously explored site, roll both challenge dice, take the lowest value, and clear that number of progress boxes.\n\nThen, [Delve the Depths](Ironsworn/Moves/Delve/Delve_the_Depths) to explore this place."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 21 },
+        "$id": "Ironsworn/Moves/Delve/Delve_the_Depths",
+        "Name": "Delve the Depths",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Delve the Depths" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger",
+          "Text": "When you traverse an area within a perilous site...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 19 },
-                "$id": "Ironsworn/Moves/Delve/Discover_a_Site",
-                "Name": "Discover a Site",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Discover a Site" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Discover_a_Site/Trigger",
-                    "Text": "When you resolve to enter a perilous site in pursuit of an objective..."
-                },
-                "Text": "When **you resolve to enter a perilous site in pursuit of an objective**, choose the theme and domain which best represent its nature ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and give it a rank.\n\n  * Troublesome site: 3 progress per area.\n  * Dangerous site: 2 progress per area.\n  * Formidable site: 1 progress per area.\n  * Extreme site: 2 ticks per area.\n  * Epic site: 1 tick per area.\n\nIf you are returning to a previously explored site, roll both challenge dice, take the lowest value, and clear that number of progress boxes.\n\nThen, [Delve the Depths](Ironsworn/Moves/Delve/Delve_the_Depths) to explore this place."
+              "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger/Options/1",
+              "Text": "With haste",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 21 },
-                "$id": "Ironsworn/Moves/Delve/Delve_the_Depths",
-                "Name": "Delve the Depths",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Delve the Depths" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger",
-                    "Text": "When you traverse an area within a perilous site...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger/Options/1",
-                            "Text": "With haste",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger/Options/2",
-                            "Text": "With stealth or trickery",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger/Options/3",
-                            "Text": "With observation, intuition, or expertise",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When you **traverse an area within a perilous site**, envision your surroundings ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, consider your approach. If you navigate this area...\n\n  * With haste: Roll +edge.\n  * With stealth or trickery: Roll +shadow.\n  * With observation, intuition, or expertise: Roll +wits.\n\nOn a **strong hit**, you delve deeper. Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity). On a **weak hit**, roll on the following table according to your stat.\n\nOn a **miss**, [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).\n\nEdge  | Shadow | Wits  | Weak Hit Result\n------|--------|-------|--------------------------------------------------\n1-45  | 1-30   | 1-40  | Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).\n46-65 | 31-65  | 41-55 | Mark progress.\n66-75 | 66-90  | 56-80 | Choose one: Mark progress or [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).\n76-80 | 91-99  | 81-99 | Take both: Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).\n81-00 | 00     | 00    | Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
-                "Oracles": [
-                    "Ironsworn/Oracles/Moves/Delve/Delve_the_Depths_+edge",
-                    "Ironsworn/Oracles/Moves/Delve/Delve_the_Depths_+shadow",
-                    "Ironsworn/Oracles/Moves/Delve/Delve_the_Depths_+wits"
-                ]
+              "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger/Options/2",
+              "Text": "With stealth or trickery",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
             },
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 30 },
-                "$id": "Ironsworn/Moves/Delve/Find_an_Opportunity",
-                "Name": "Find an Opportunity",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Find an Opportunity" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Find_an_Opportunity/Trigger",
-                    "Text": "When you encounter a helpful situation or feature within a site..."
-                },
-                "Text": "When **you encounter a helpful situation or feature within a site**, roll on the following table. If you are making this move as a result of a strong hit on [Delve the Depths](Ironsworn/Moves/Delve/Delve_the_Depths), you may pick or envision an opportunity instead of rolling.\n\nThen, choose one.\n\n  * Gain insight or prepare: Take +1 momentum.\n  * Take action now: You and any allies may make a move (not a progress move) which directly leverages the opportunity. When you do, add +1 and take +1 momentum on a hit.\n\nRoll  | Result\n------|----------------------------------------------------------------\n1-25  | The terrain favors you, or you find a hidden path.\n26-45 | An aspect of the history or nature of this place is revealed.\n46-57 | You locate a secure area.\n58-68 | A clue offers insight or direction.\n69-78 | You get the drop on a denizen.\n79-86 | This area provides an opportunity to scavenge, forage, or hunt.\n87-90 | You locate an interesting or helpful object.\n91-94 | You are alerted to a potential threat.\n95-98 | You encounter a denizen who might support you.\n99-00 | You encounter a denizen in need of help."
-            },
-            {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 34 },
-                "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger",
-                "Name": "Reveal a Danger",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Reveal a Danger" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger/Trigger",
-                    "Text": "When you encounter a risky situation within a site..."
-                },
-                "Text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\nRoll  | Result\n------|-----------------------------------------------------------------------------------------------\n1-30  | Check the theme card.\n31-45 | Check the domain card.\n46-57 | You encounter a hostile denizen.\n58-68 | You face an environmental or architectural hazard.\n69-76 | A discovery undermines or complicates your quest.\n77-79 | You confront a harrowing situation or sensation.\n80-82 | You face the consequences of an earlier choice or approach.\n83-85 | Your way is blocked or trapped.\n86-88 | A resource is diminished, broken, or lost.\n89-91 | You face a perplexing mystery or tough choice.\n92-94 | You lose your way or are delayed.\n95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse."
-            },
-            {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 38 },
-                "$id": "Ironsworn/Moves/Delve/Check_Your_Gear",
-                "Name": "Check Your Gear",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Check Your Gear" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Check_Your_Gear/Trigger",
-                    "Text": "When you check to see if you have a specific helpful item, and you have at least +1 supply...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Check_Your_Gear/Trigger/Options/1",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Supply"]
-                        }
-                    ]
-                },
-                "Text": "When **you check to see if you have a specific helpful item**, and you have at least +1 supply, roll +supply.\n\nOn a **strong hit**, you have it. Take +1 momentum.\n\nOn a **weak hit**, you have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.\n\nOn a **miss**, you don’t have it and the situation grows more perilous. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-            },
-            {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 40 },
-                "$id": "Ironsworn/Moves/Delve/Locate_Your_Objective",
-                "Name": "Locate Your Objective",
-                "Category": "Ironsworn/Moves/Delve",
-                "Progress Move": true,
-                "Display": { "Title": "Locate Your Objective" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Locate_Your_Objective/Trigger",
-                    "Text": "When your exploration of a site comes to an end...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Locate_Your_Objective/Trigger/Options/1",
-                            "Roll type": "Progress roll",
-                            "Method": "Any",
-                            "Using": ["Delve Track"]
-                        }
-                    ]
-                },
-                "Text": "When **your exploration of a site comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, you locate your objective and the situation favors you. Choose one.\n\n  * Make another move now (not a progress move), and add +1.\n  * Take +1 momentum.\n\nOn a **weak hit**, you locate your objective but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic)."
-            },
-            {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 42 },
-                "$id": "Ironsworn/Moves/Delve/Escape_the_Depths",
-                "Name": "Escape the Depths",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Escape the Depths" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger",
-                    "Text": "When you flee or withdraw from a site...",
-                    "Options": [
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/1",
-                            "Text": "Find the fastest way out",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Edge"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/2",
-                            "Text": "Steel yourself against the horrors of this place",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Heart"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/3",
-                            "Text": "Fight your way out",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Iron"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/4",
-                            "Text": "Keep out of sight",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Shadow"]
-                        },
-                        {
-                            "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/5",
-                            "Text": "Retrace your steps or locate an alternate path",
-                            "Roll type": "Action roll",
-                            "Method": "Any",
-                            "Using": ["Wits"]
-                        }
-                    ]
-                },
-                "Text": "When **you flee or withdraw from a site**, consider the situation and your approach. If you...\n\n  * Find the fastest way out: Roll +edge.\n  * Steel yourself against the horrors of this place: Roll +heart.\n  * Fight your way out: Roll +iron.\n  * Retrace your steps or locate an alternate path: Roll +wits.\n  * Keep out of sight: Roll +shadow.\n\nOn a **strong hit**, you make your way safely out of the site. Take +1 momentum.\n\nOn a **weak hit**, you find your way out, but this place exacts its price. Choose one.\n\n  * You are weary or wounded: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm).\n  * The experience leaves you shaken: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress).\n  * You are delayed, and it costs you.\n  * You leave behind something important.\n  * You face a new complication as you emerge from the depths.\n  * A denizen plots their revenge.\n\nOn a **miss**, a dire threat or imposing obstacle stands in your way. [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger). If you survive, you may make your escape."
-            },
-            {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 68 },
-                "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger_alt",
-                "Name": "Reveal a Danger",
-                "Category": "Ironsworn/Moves/Delve",
-                "Display": { "Title": "Reveal a Danger (alternate version)" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger_alt/Trigger",
-                    "Text": "When you encounter a risky situation within a site..."
-                },
-                "Text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\nRoll  | Result\n------|-----------------------------------------------------------------------------------------------\n1-22  | You encounter a hostile denizen.\n23-42 | You face an environmental or architectural hazard.\n43-58 | A discovery undermines or complicates your quest.\n59-64 | You confront a harrowing situation or sensation.\n65-70 | You face the consequences of an earlier choice or approach.\n71-76 | The path is blocked or trapped.\n77-82 | A resource is diminished, broken, or lost.\n83-88 | You face a perplexing mystery or tough choice.\n89-94 | You lose your way or are delayed.\n95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse."
+              "$id": "Ironsworn/Moves/Delve/Delve_the_Depths/Trigger/Options/3",
+              "Text": "With observation, intuition, or expertise",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
+          ]
+        },
+        "Text": "When you **traverse an area within a perilous site**, envision your surroundings ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, consider your approach. If you navigate this area...\n\n  * With haste: Roll +edge.\n  * With stealth or trickery: Roll +shadow.\n  * With observation, intuition, or expertise: Roll +wits.\n\nOn a **strong hit**, you delve deeper. Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity). On a **weak hit**, roll on the following table according to your stat.\n\nOn a **miss**, [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).\n\nEdge  | Shadow | Wits  | Weak Hit Result\n------|--------|-------|--------------------------------------------------\n1-45  | 1-30   | 1-40  | Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).\n46-65 | 31-65  | 41-55 | Mark progress.\n66-75 | 66-90  | 56-80 | Choose one: Mark progress or [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).\n76-80 | 91-99  | 81-99 | Take both: Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).\n81-00 | 00     | 00    | Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
+        "Oracles": [
+          "Ironsworn/Oracles/Moves/Delve/Delve_the_Depths_+edge",
+          "Ironsworn/Oracles/Moves/Delve/Delve_the_Depths_+shadow",
+          "Ironsworn/Oracles/Moves/Delve/Delve_the_Depths_+wits"
         ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Failure",
-        "Name": "Failure",
-        "Source": { "Title": "Ironsworn: Delve" },
-        "Display": { "Title": "Failure Moves" },
-        "Moves": [
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 30 },
+        "$id": "Ironsworn/Moves/Delve/Find_an_Opportunity",
+        "Name": "Find an Opportunity",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Find an Opportunity" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Find_an_Opportunity/Trigger",
+          "Text": "When you encounter a helpful situation or feature within a site..."
+        },
+        "Text": "When **you encounter a helpful situation or feature within a site**, roll on the following table. If you are making this move as a result of a strong hit on [Delve the Depths](Ironsworn/Moves/Delve/Delve_the_Depths), you may pick or envision an opportunity instead of rolling.\n\nThen, choose one.\n\n  * Gain insight or prepare: Take +1 momentum.\n  * Take action now: You and any allies may make a move (not a progress move) which directly leverages the opportunity. When you do, add +1 and take +1 momentum on a hit.\n\nRoll  | Result\n------|----------------------------------------------------------------\n1-25  | The terrain favors you, or you find a hidden path.\n26-45 | An aspect of the history or nature of this place is revealed.\n46-57 | You locate a secure area.\n58-68 | A clue offers insight or direction.\n69-78 | You get the drop on a denizen.\n79-86 | This area provides an opportunity to scavenge, forage, or hunt.\n87-90 | You locate an interesting or helpful object.\n91-94 | You are alerted to a potential threat.\n95-98 | You encounter a denizen who might support you.\n99-00 | You encounter a denizen in need of help."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 34 },
+        "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger",
+        "Name": "Reveal a Danger",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Reveal a Danger" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger/Trigger",
+          "Text": "When you encounter a risky situation within a site..."
+        },
+        "Text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\nRoll  | Result\n------|-----------------------------------------------------------------------------------------------\n1-30  | Check the theme card.\n31-45 | Check the domain card.\n46-57 | You encounter a hostile denizen.\n58-68 | You face an environmental or architectural hazard.\n69-76 | A discovery undermines or complicates your quest.\n77-79 | You confront a harrowing situation or sensation.\n80-82 | You face the consequences of an earlier choice or approach.\n83-85 | Your way is blocked or trapped.\n86-88 | A resource is diminished, broken, or lost.\n89-91 | You face a perplexing mystery or tough choice.\n92-94 | You lose your way or are delayed.\n95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 38 },
+        "$id": "Ironsworn/Moves/Delve/Check_Your_Gear",
+        "Name": "Check Your Gear",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Check Your Gear" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Check_Your_Gear/Trigger",
+          "Text": "When you check to see if you have a specific helpful item, and you have at least +1 supply...",
+          "Options": [
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 58 },
-                "$id": "Ironsworn/Moves/Failure/Mark_Your_Failure",
-                "Name": "Mark Your Failure",
-                "Category": "Ironsworn/Moves/Failure",
-                "Display": { "Title": "Mark Your Failure" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Failure/Mark_Your_Failure/Trigger",
-                    "Text": "When you make a move and score a miss..."
-                },
-                "Text": "When **you make a move and score a miss**, mark a tick on your failure track. If **you score a miss when making a progress move**, mark two ticks."
+              "$id": "Ironsworn/Moves/Delve/Check_Your_Gear/Trigger/Options/1",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Supply"]
+            }
+          ]
+        },
+        "Text": "When **you check to see if you have a specific helpful item**, and you have at least +1 supply, roll +supply.\n\nOn a **strong hit**, you have it. Take +1 momentum.\n\nOn a **weak hit**, you have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.\n\nOn a **miss**, you don’t have it and the situation grows more perilous. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 40 },
+        "$id": "Ironsworn/Moves/Delve/Locate_Your_Objective",
+        "Name": "Locate Your Objective",
+        "Category": "Ironsworn/Moves/Delve",
+        "Progress Move": true,
+        "Display": { "Title": "Locate Your Objective" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Locate_Your_Objective/Trigger",
+          "Text": "When your exploration of a site comes to an end...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Delve/Locate_Your_Objective/Trigger/Options/1",
+              "Roll type": "Progress roll",
+              "Method": "Any",
+              "Using": ["Delve Track"]
+            }
+          ]
+        },
+        "Text": "When **your exploration of a site comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, you locate your objective and the situation favors you. Choose one.\n\n  * Make another move now (not a progress move), and add +1.\n  * Take +1 momentum.\n\nOn a **weak hit**, you locate your objective but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nOn a **miss**, your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic)."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 42 },
+        "$id": "Ironsworn/Moves/Delve/Escape_the_Depths",
+        "Name": "Escape the Depths",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Escape the Depths" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger",
+          "Text": "When you flee or withdraw from a site...",
+          "Options": [
+            {
+              "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/1",
+              "Text": "Find the fastest way out",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Edge"]
             },
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 59 },
-                "$id": "Ironsworn/Moves/Failure/Learn_From_Your_Failures",
-                "Name": "Learn From Your Failures",
-                "Category": "Ironsworn/Moves/Failure",
-                "Progress Move": true,
-                "Display": { "Title": "Learn From Your Failures" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Failure/Learn_From_Your_Failures/Trigger",
-                    "Text": "When you spend time reflecting on your hardships and missteps..."
-                },
-                "Text": "When **you spend time reflecting on your hardships and missteps**, and your failure track is +6 or greater, roll your challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, you commit to making a dramatic change. Take 3 experience and clear all progress. Then, choose one.\n\n  * Adjust your approach: Discard a single asset, and take 2 experience for each marked ability.\n  * Make an oath: [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), and reroll any dice.\n  * Ready your next steps: Take +3 momentum.\n\nOn a **weak hit**, you learn from your mistakes. Take 2 experience and clear all progress.\n\nOn a **miss**, you’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path."
-            }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Threat",
-        "Name": "Threat",
-        "Source": { "Title": "Ironsworn: Delve" },
-        "Display": { "Title": "Threat Moves" },
-        "Moves": [
-            {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 154 },
-                "$id": "Ironsworn/Moves/Threat/Advance_a_Threat",
-                "Name": "Advance a Threat",
-                "Category": "Ironsworn/Moves/Threat",
-                "Display": { "Title": "Advance a Threat" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Threat/Advance_a_Threat/Trigger",
-                    "Text": "When you give ground to a threat through inaction, failure, or delay..."
-                },
-                "Text": "When **you give ground to a threat through inaction, failure, or delay**, roll on the table below and envision how the change manifests in your world ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nRoll  | Result\n------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1-30  | The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone). Otherwise, mark menace.\n31-70 | The threat works subtly to advance toward its goal, or the danger escalates. Mark menace.\n71-00 | The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice.\n\nOn a match, this development also exposes a surprising aspect of the threat’s plan or nature.\n\nIf **you mark the last box on the threat’s menace track**, the threat achieves its goal, or the final dire outcome occurs. You must [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)."
+              "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/2",
+              "Text": "Steel yourself against the horrors of this place",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Heart"]
             },
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 158 },
-                "$id": "Ironsworn/Moves/Threat/Take_a_Hiatus",
-                "Name": "Take a Hiatus",
-                "Category": "Ironsworn/Moves/Threat",
-                "Display": { "Title": "Take a Hiatus" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Threat/Take_a_Hiatus/Trigger",
-                    "Text": "When you spend an extended time recovering in a safe place while a threat is active..."
-                },
-                "Text": "When **you spend an extended time recovering in a safe place while a threat is active**, do any of the following.\n\n  * Clear any marked conditions.\n  * Set your health, spirit, supply, and companion health to their maximum values.\n  * Set your momentum to its reset value.\n\nThen, for each active threat, [Advance a Threat](Ironsworn/Moves/Legacy/Advance_a_Threat)."
-            }
-        ]
-    },
-    {
-        "$id": "Ironsworn/Moves/Rarity",
-        "Name": "Rarity",
-        "Source": { "Title": "Ironsworn: Delve" },
-        "Display": { "Title": "Rarity Moves" },
-        "Moves": [
+              "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/3",
+              "Text": "Fight your way out",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Iron"]
+            },
             {
-                "Source": { "Title": "Ironsworn: Delve", "Page": 176 },
-                "$id": "Ironsworn/Moves/Rarity/Wield_a_Rarity",
-                "Name": "Wield a Rarity",
-                "Category": "Ironsworn/Moves/Rarity",
-                "Display": { "Title": "Wield a Rarity" },
-                "Trigger": {
-                    "$id": "Ironsworn/Moves/Rarity/Wield_a_Rarity/Trigger",
-                    "Text": "When you make a move aided by an augmented asset..."
-                },
-                "Text": "When **you make a move aided by an augmented asset**, roll your rarity die in place of your action die.\n\nOn **any result** with 6 showing on the rarity die, the power of the rarity manifests in a dramatic and obvious way. You score an automatic **strong hit** and take +1 momentum.\n\nOn a **hit** with 5 showing on the rarity die, the power of the rarity manifests in a subtle way. Take +1 momentum.\n\nOn a **miss** with 1 showing on the rarity die, the rarity’s power fails or works against you."
+              "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/4",
+              "Text": "Keep out of sight",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Shadow"]
+            },
+            {
+              "$id": "Ironsworn/Moves/Delve/Escape_the_Depths/Trigger/Options/5",
+              "Text": "Retrace your steps or locate an alternate path",
+              "Roll type": "Action roll",
+              "Method": "Any",
+              "Using": ["Wits"]
             }
-        ]
-    }
+          ]
+        },
+        "Text": "When **you flee or withdraw from a site**, consider the situation and your approach. If you...\n\n  * Find the fastest way out: Roll +edge.\n  * Steel yourself against the horrors of this place: Roll +heart.\n  * Fight your way out: Roll +iron.\n  * Retrace your steps or locate an alternate path: Roll +wits.\n  * Keep out of sight: Roll +shadow.\n\nOn a **strong hit**, you make your way safely out of the site. Take +1 momentum.\n\nOn a **weak hit**, you find your way out, but this place exacts its price. Choose one.\n\n  * You are weary or wounded: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm).\n  * The experience leaves you shaken: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress).\n  * You are delayed, and it costs you.\n  * You leave behind something important.\n  * You face a new complication as you emerge from the depths.\n  * A denizen plots their revenge.\n\nOn a **miss**, a dire threat or imposing obstacle stands in your way. [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger). If you survive, you may make your escape."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 68 },
+        "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger_alt",
+        "Name": "Reveal a Danger",
+        "Category": "Ironsworn/Moves/Delve",
+        "Display": { "Title": "Reveal a Danger (alternate version)" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Delve/Reveal_a_Danger_alt/Trigger",
+          "Text": "When you encounter a risky situation within a site..."
+        },
+        "Text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\nRoll  | Result\n------|-----------------------------------------------------------------------------------------------\n1-22  | You encounter a hostile denizen.\n23-42 | You face an environmental or architectural hazard.\n43-58 | A discovery undermines or complicates your quest.\n59-64 | You confront a harrowing situation or sensation.\n65-70 | You face the consequences of an earlier choice or approach.\n71-76 | The path is blocked or trapped.\n77-82 | A resource is diminished, broken, or lost.\n83-88 | You face a perplexing mystery or tough choice.\n89-94 | You lose your way or are delayed.\n95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Failure",
+    "Name": "Failure",
+    "Source": { "Title": "Ironsworn: Delve" },
+    "Display": { "Title": "Failure Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 58 },
+        "$id": "Ironsworn/Moves/Failure/Mark_Your_Failure",
+        "Name": "Mark Your Failure",
+        "Category": "Ironsworn/Moves/Failure",
+        "Display": { "Title": "Mark Your Failure" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Failure/Mark_Your_Failure/Trigger",
+          "Text": "When you make a move and score a miss..."
+        },
+        "Text": "When **you make a move and score a miss**, mark a tick on your failure track. If **you score a miss when making a progress move**, mark two ticks."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 59 },
+        "$id": "Ironsworn/Moves/Failure/Learn_From_Your_Failures",
+        "Name": "Learn From Your Failures",
+        "Category": "Ironsworn/Moves/Failure",
+        "Progress Move": true,
+        "Display": { "Title": "Learn From Your Failures" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Failure/Learn_From_Your_Failures/Trigger",
+          "Text": "When you spend time reflecting on your hardships and missteps..."
+        },
+        "Text": "When **you spend time reflecting on your hardships and missteps**, and your failure track is +6 or greater, roll your challenge dice and compare to your progress. Momentum is ignored on this roll.\n\nOn a **strong hit**, you commit to making a dramatic change. Take 3 experience and clear all progress. Then, choose one.\n\n  * Adjust your approach: Discard a single asset, and take 2 experience for each marked ability.\n  * Make an oath: [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), and reroll any dice.\n  * Ready your next steps: Take +3 momentum.\n\nOn a **weak hit**, you learn from your mistakes. Take 2 experience and clear all progress.\n\nOn a **miss**, you’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Threat",
+    "Name": "Threat",
+    "Source": { "Title": "Ironsworn: Delve" },
+    "Display": { "Title": "Threat Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 154 },
+        "$id": "Ironsworn/Moves/Threat/Advance_a_Threat",
+        "Name": "Advance a Threat",
+        "Category": "Ironsworn/Moves/Threat",
+        "Display": { "Title": "Advance a Threat" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Threat/Advance_a_Threat/Trigger",
+          "Text": "When you give ground to a threat through inaction, failure, or delay..."
+        },
+        "Text": "When **you give ground to a threat through inaction, failure, or delay**, roll on the table below and envision how the change manifests in your world ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).\n\nRoll  | Result\n------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1-30  | The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone). Otherwise, mark menace.\n31-70 | The threat works subtly to advance toward its goal, or the danger escalates. Mark menace.\n71-00 | The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice.\n\nOn a match, this development also exposes a surprising aspect of the threat’s plan or nature.\n\nIf **you mark the last box on the threat’s menace track**, the threat achieves its goal, or the final dire outcome occurs. You must [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)."
+      },
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 158 },
+        "$id": "Ironsworn/Moves/Threat/Take_a_Hiatus",
+        "Name": "Take a Hiatus",
+        "Category": "Ironsworn/Moves/Threat",
+        "Display": { "Title": "Take a Hiatus" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Threat/Take_a_Hiatus/Trigger",
+          "Text": "When you spend an extended time recovering in a safe place while a threat is active..."
+        },
+        "Text": "When **you spend an extended time recovering in a safe place while a threat is active**, do any of the following.\n\n  * Clear any marked conditions.\n  * Set your health, spirit, supply, and companion health to their maximum values.\n  * Set your momentum to its reset value.\n\nThen, for each active threat, [Advance a Threat](Ironsworn/Moves/Legacy/Advance_a_Threat)."
+      }
+    ]
+  },
+  {
+    "$id": "Ironsworn/Moves/Rarity",
+    "Name": "Rarity",
+    "Source": { "Title": "Ironsworn: Delve" },
+    "Display": { "Title": "Rarity Moves" },
+    "Moves": [
+      {
+        "Source": { "Title": "Ironsworn: Delve", "Page": 176 },
+        "$id": "Ironsworn/Moves/Rarity/Wield_a_Rarity",
+        "Name": "Wield a Rarity",
+        "Category": "Ironsworn/Moves/Rarity",
+        "Display": { "Title": "Wield a Rarity" },
+        "Trigger": {
+          "$id": "Ironsworn/Moves/Rarity/Wield_a_Rarity/Trigger",
+          "Text": "When you make a move aided by an augmented asset..."
+        },
+        "Text": "When **you make a move aided by an augmented asset**, roll your rarity die in place of your action die.\n\nOn **any result** with 6 showing on the rarity die, the power of the rarity manifests in a dramatic and obvious way. You score an automatic **strong hit** and take +1 momentum.\n\nOn a **hit** with 5 showing on the rarity die, the power of the rarity manifests in a subtle way. Take +1 momentum.\n\nOn a **miss** with 1 showing on the rarity die, the rarity’s power fails or works against you."
+      }
+    ]
+  }
 ]

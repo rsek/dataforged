@@ -263,6 +263,7 @@
           ]
         },
         "Text": "**When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.\n\nOn a **strong hit**, you discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn. Then, take +2 momentum.\n\nOn a **weak hit**, the information provides new insight, but also complicates your quest. Envision what you discover. Then, take +1 momentum.\n\nOn a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
+        "Oracles": ["Starforged/Oracles/Misc/Story_Clue"],
         "Outcomes": {
           "$id": "Starforged/Moves/Adventure/Gather_Information/Outcomes",
           "Strong Hit": {
@@ -843,15 +844,7 @@
         "Display": { "Title": "Make a Discovery" },
         "Trigger": {
           "$id": "Starforged/Moves/Exploration/Make_a_Discovery/Trigger",
-          "Text": "When your exploration of a waypoint uncovers something wondrous",
-          "Options": [
-            {
-              "$id": "Starforged/Moves/Exploration/Make_a_Discovery/Trigger/Options/1",
-              "Roll type": "Action roll",
-              "Method": "Any",
-              "Using": ["Wits"]
-            }
-          ]
+          "Text": "When your exploration of a waypoint uncovers something wondrous"
         },
         "Text": "**When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.\n\nRoll   | Result\n-------|---------------------------------------------------------------\n1-4    | Advanced technology waiting to be harnessed or salvaged\n5-8    | Ancient archive or message\n9-10   | Artificial consciousness evolved to a higher state\n11-12  | Clues to a crucial resource or uncharted domain\n13-14  | Envoy from another time or reality\n15-22  | Extraordinary natural phenomenon\n23-24  | First contact with intelligent life\n25-26  | Gateway to another time or alternate reality\n27-28  | Key to unlocking a language or method of communication\n29-34  | Lost or hidden people\n35-42  | Majestic or unusual lifeforms\n43-46  | Marvel of ancient engineering\n47-50  | Miraculously preserved artifact or specimen\n51-56  | Monumental architecture or artistry of an ancient civilization\n57-62  | Mysterious device or artifact of potential value\n63-66  | New understanding of an enduring mystery\n67-68  | Pathway or means of travel to a distant location\n69-70  | Person or lifeform with phenomenal abilities\n71-78  | Place of awe-inspiring beauty\n79-86  | Rare and valuable resource\n87-88  | Safeguarded or idyllic location\n89-90  | Visions or prophesies of the future\n91-100 | Roll twice",
         "Oracles": ["Starforged/Oracles/Moves/Make_a_Discovery"]
@@ -1701,7 +1694,7 @@
           },
           "Weak Hit": {
             "$id": "Starforged/Moves/Recover/Heal/Outcomes/Weak_Hit",
-            "Text": "As above, but the recovery costs extra time or resources. Choose one: [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) or [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-2)."
+            "Text": "The care is helpful. If you (or the ally under your care) are wounded, clear the impact and take or give +2 health. Otherwise, take or give +3 health.\n\nHowever, the recovery costs extra time or resources. Choose one: [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) or [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-2)."
           },
           "Miss": {
             "$id": "Starforged/Moves/Recover/Heal/Outcomes/Miss",
@@ -1740,7 +1733,7 @@
           },
           "Weak Hit": {
             "$id": "Starforged/Moves/Recover/Hearten/Outcomes/Weak_Hit",
-            "Text": "As above, but this indulgence is fleeting. Envision an interruption, complication, or inner conflict. Then, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)."
+            "Text": "You find companionship or comfort and your spirit is strengthened. If you are shaken, clear the impact and take +1 spirit. Otherwise, take +2 spirit. If you make this move as you [Sojourn](Starforged/Moves/Recover/Sojourn), take +1 more.\n\nHowever, this indulgence is fleeting. Envision an interruption, complication, or inner conflict. Then, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)."
           },
           "Miss": {
             "$id": "Starforged/Moves/Recover/Hearten/Outcomes/Miss",
@@ -1801,7 +1794,7 @@
           },
           "Weak Hit": {
             "$id": "Starforged/Moves/Recover/Resupply/Outcomes/Weak_Hit",
-            "Text": "As above, but you must first deal with a cost, complication, or demand. Envision the nature of this obstacle."
+            "Text": "You must first deal with a cost, complication, or demand. Envision the nature of this obstacle.\n\nThen choose one.\n\n  * If you are unprepared, clear the impact and take +1 supply. Otherwise, take +2 supply.\n  * If you are in need of a specific item or resource that can reasonably be obtained, you acquire it. Take +1 momentum."
           },
           "Miss": {
             "$id": "Starforged/Moves/Recover/Resupply/Outcomes/Miss",
@@ -1839,16 +1832,16 @@
             }
           ]
         },
-        "Text": "**When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...\n\n  * Make your own repairs, or direct a companion to make repairs: Roll +wits\n  * Obtain repairs from someone (not an ally): Roll +supply\n\nOn a **hit**, you gain repair points as appropriate to the situation, per the table below. Additionally, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and exchange each _1 of supply for 1 extra repair point (up to 3 points).\n\nSituation     | Strong Hit | Weak Hit\n--------------|------------|---------\nAt a facility | 5 points   | 3 points\nIn the field  | 3 points   | 1 points\nUnder fire    | 2 points   | 0 points\n\nSpend repair points as follows. Unused points are discarded.\n\n  * Clear the battered impact on a vehicle: 2 points\n  * Fix one broken module: 2 points\n  * Take +1 integrity on a vehicle: 1 point\n  * Take +1 health for a mechanical companion: 1 point\n  * Repair any other device: 3 points\n  * Repair any other device, but with a complication or malfunction: 2 points\n\nOn a **miss**, the repairs are not made and the situation worsens. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
+        "Text": "**When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...\n\n  * Make your own repairs, or direct a companion to make repairs: Roll +wits\n  * Obtain repairs from someone (not an ally): Roll +supply\n\nOn a **hit**, you gain repair points as appropriate to the situation, per the table below. Additionally, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).\n\nSituation     | Strong Hit | Weak Hit\n--------------|------------|---------\nAt a facility | 5 points   | 3 points\nIn the field  | 3 points   | 1 points\nUnder fire    | 2 points   | 0 points\n\nSpend repair points as follows. Unused points are discarded.\n\n  * Clear the battered impact on a vehicle: 2 points\n  * Fix one broken module: 2 points\n  * Take +1 integrity on a vehicle: 1 point\n  * Take +1 health for a mechanical companion: 1 point\n  * Repair any other device: 3 points\n  * Repair any other device, but with a complication or malfunction: 2 points\n\nOn a **miss**, the repairs are not made and the situation worsens. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
         "Outcomes": {
           "$id": "Starforged/Moves/Recover/Repair/Outcomes",
           "Strong Hit": {
             "$id": "Starforged/Moves/Recover/Repair/Outcomes/Strong_Hit",
-            "Text": "You gain repair points as appropriate to the situation, per the table below."
+            "Text": "You gain repair points as appropriate to the situation, per the table below.\n\nSituation     | Strong Hit\n--------------|-----------\nAt a facility | 5 points\nIn the field  | 3 points\nUnder fire    | 2 points\n\nAdditionally, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).\n\nSpend repair points as follows. Unused points are discarded.\n\n  * Clear the battered impact on a vehicle: 2 points\n  * Fix one broken module: 2 points\n  * Take +1 integrity on a vehicle: 1 point\n  * Take +1 health for a mechanical companion: 1 point\n  * Repair any other device: 3 points\n  * Repair any other device, but with a complication or malfunction: 2 points"
           },
           "Weak Hit": {
             "$id": "Starforged/Moves/Recover/Repair/Outcomes/Weak_Hit",
-            "Text": "You gain repair points as appropriate to the situation, per the table below."
+            "Text": "You gain repair points as appropriate to the situation, per the table below.\n\nSituation     | Weak Hit\n--------------|---------\nAt a facility | 3 points\nIn the field  | 1 points\nUnder fire    | 0 points\n\nAdditionally, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and exchange each -1 of supply for 1 extra repair point (up to 3 points).\n\nSpend repair points as follows. Unused points are discarded.\n\n  * Clear the battered impact on a vehicle: 2 points\n  * Fix one broken module: 2 points\n  * Take +1 integrity on a vehicle: 1 point\n  * Take +1 health for a mechanical companion: 1 point\n  * Repair any other device: 3 points\n  * Repair any other device, but with a complication or malfunction: 2 points"
           },
           "Miss": {
             "$id": "Starforged/Moves/Recover/Repair/Outcomes/Miss",
@@ -1975,15 +1968,15 @@
           "$id": "Starforged/Moves/Threshold/Overcome_Destruction/Outcomes",
           "Strong Hit": {
             "$id": "Starforged/Moves/Threshold/Overcome_Destruction/Outcomes/Strong_Hit",
-            "Text": "You may call in a favor. This comes without conditions."
+            "Text": "You may call in a favor. This comes without conditions.\n\nIf you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles."
           },
           "Weak Hit": {
             "$id": "Starforged/Moves/Threshold/Overcome_Destruction/Outcomes/Weak_Hit",
-            "Text": "You owe someone. You must mark **indebted** and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to complete an extreme quest in their service. When you complete the duty-bound quest, clear the impact."
+            "Text": "You owe someone. You must mark **indebted** and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to complete an extreme quest in their service. When you complete the duty-bound quest, clear the impact.\n\nIf you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles."
           },
           "Miss": {
             "$id": "Starforged/Moves/Threshold/Overcome_Destruction/Outcomes/Miss",
-            "Text": "As with the weak hit result, but this quest is against your nature, forces you to [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) on another quest, or is in the service of an enemy.\n\nIf you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles."
+            "Text": "You owe someone. You must mark **indebted** and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to complete an extreme quest in their service. This quest is against your nature, forces you to [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) on another quest, or is in the service of an enemy.\n\nWhen you complete the duty-bound quest, clear the impact.\n\nIf you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles."
           }
         }
       }
