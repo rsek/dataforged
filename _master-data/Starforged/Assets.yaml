@@ -24,6 +24,9 @@ Asset Types:
             Enabled: true
           - Text: |-
               When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) (dangerous or greater) in your starship and score a hit, this journey strengthened your ties to your ship and any fellow travelers. You and your allies may mark 1 tick on your bonds legacy track.
+            # Alter Moves:
+            #   - Moves: [Starforged/Moves/Exploration/Finish_an_Expedition]
+            # TODO: how should this be structured? it doesn't actually alter the moves trigger per se, though it does have a unique trigger condition. hmm.
           - Text: |-
               When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), you may roll +heart. If you do, [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1) on a weak hit or miss.
             Alter Moves:
@@ -52,6 +55,9 @@ Asset Types:
           - Text: |-
               Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
             Enabled: true
+            # TODO: similar problem to Starship ability above - it just adds a rider rather than its own trigger
+            # Alter Moves:
+            #   -
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray), choose one (before rolling).
 
@@ -359,7 +365,7 @@ Asset Types:
             Input Type: Text
         Abilities:
           - Text: |-
-              Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Set_a_Course), add +1. When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) in your rover, you may reroll one challenge die.
+              Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), add +1. When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) in your rover, you may reroll one challenge die.
             Enabled: true
           - Text: |-
               You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.
@@ -435,7 +441,7 @@ Asset Types:
             Input Type: Text
         Abilities:
           - Text: |-
-              Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Set_a_Course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
+              Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
               - Moves:
                   - Starforged/Moves/Exploration/Undertake_an_Expedition
@@ -623,7 +629,7 @@ Asset Types:
               You are bound to a clan, faction, or creed. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) in service to this ideology, reroll any dice. On a hit, mark 1 tick on your bonds legacy track.
             Enabled: true
           - Text: |-
-              When you or an ally [Sojourn](Starforged/Moves/Recover/Sojourn) and score a strong hit with a match, you may envision meeting someone of the same ideology. If you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with them and score a hit, mark 1 tick on your bonds legacy track. When you [Forge a Bond](Starforged/Moves/Forge_a_Bond) with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic).
+              When you or an ally [Sojourn](Starforged/Moves/Recover/Sojourn) and score a strong hit with a match, you may envision meeting someone of the same ideology. If you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with them and score a hit, mark 1 tick on your bonds legacy track. When you [Forge a Bond](Starforged/Moves/Connection/Forge_a_Bond) with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic).
           - Text: |-
               When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you score a strong hit with a match, your reputation grows among those who share your ideology; mark 1 tick on your bonds legacy track.
       - Name: Blademaster
@@ -670,7 +676,7 @@ Asset Types:
       - Name: Courier
         Abilities:
           - Text: |-
-              When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Set_a_Course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
+              When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
             Enabled: true
           - Text: |-
               When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) to an unbonded connection by completing a courier mission, mark progress twice on the relationship.
@@ -1009,7 +1015,7 @@ Asset Types:
         Aliases: [Archivist, Lore-Hunter]
         Abilities:
           - Text: |-
-              When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you Reach a Milestone in the pursuit of that quest, take +2 momentum. When you Fulfill Your Vow and score a hit, also mark 2 ticks on your discoveries legacy track.
+              When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you [Reach a Milestone](Starforged/Moves/Quest/Reach_a_Milestone) in the pursuit of that quest, take +2 momentum. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
             Enabled: true
           - Text: |-
               When you make a move to conduct extended research or study, reroll any challenge dice. On a match, you piece together an extraordinary or harrowing new theory; envision the nature of this revelation and mark 1 tick on your discoveries legacy track.
@@ -1045,7 +1051,7 @@ Asset Types:
       - Name: Navigator
         Abilities:
           - Text: |-
-              When you [Set a Course](Starforged/Moves/Set_a_Course), choose one.
+              When you [Set a Course](Starforged/Moves/Exploration/Set_a_Course), choose one.
 
                 * Follow the fastest path: Take +2 momentum on a strong hit.
                 * Follow the safest path: Add +1
@@ -1297,7 +1303,7 @@ Asset Types:
             Input Type: Text
         Abilities:
           - Text: |-
-              Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Set_a_Course), you may roll +its health.
+              Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), you may roll +its health.
             Alter Moves:
               - Moves:
                   - Starforged/Moves/Exploration/Undertake_an_Expedition
@@ -1596,13 +1602,13 @@ Asset Types:
         Inputs:
           - Name: Bond-mate
             Input Type: Text
-        Requirement: One time only, once you [Forge a Bond](Starforged/Moves/Forge_a_Bond) with a special individual...
+        Requirement: One time only, once you [Forge a Bond](Starforged/Moves/Connection/Forge_a_Bond) with a special individual...
         Abilities:
           - Text: |-
               This person is your bond-mate. When you [Sojourn](Starforged/Moves/Recover/Sojourn) at their home, [Hearten](Starforged/Moves/Recover/Hearten) in their presence, or [Test Your Relationship](Starforged/Moves/Connection/Test_Your_Relationship) or [Develop Your Relationship](Starforged/Moves/Connection/Develop_Your_Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
             Enabled: true
           - Text: |-
-              When you [Set a Course](Starforged/Moves/Set_a_Course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.
+              When you [Set a Course](Starforged/Moves/Exploration/Set_a_Course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.
           - Text: |-
               When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](Starforged/Moves/Threshold/Face_Desolation).
       - Name: Homesteader
@@ -1620,7 +1626,7 @@ Asset Types:
                 * Don't linger: Take an automatic weak hit
                 * Stay a bit: Add +1 and take +1 momentum on a hit
           - Text: |-
-              When you [Set a Course](Starforged/Moves/Set_a_Course) for home, you may reroll your action die if its value is less than your spirit.
+              When you [Set a Course](Starforged/Moves/Exploration/Set_a_Course) for home, you may reroll your action die if its value is less than your spirit.
       - Name: Marked
         Inputs:
           - Name: Identifier
