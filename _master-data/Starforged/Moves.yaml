@@ -183,6 +183,8 @@ Categories:
         Source:
           Page: 148
       - Name: Gather Information
+        Oracles: # TODO: figure out whether this is best left as an Oracle or a Suggestions item. it's called out in the text of the table, but not the move. still, it seems sensible.
+          - Starforged/Oracles/Misc/Story_Clue
         Trigger:
           Text: When you search for clues, conduct an investigation, analyze evidence, or do research...
           Options:
@@ -203,9 +205,6 @@ Categories:
             Text: The information provides new insight, but also complicates your quest. Envision what you discover. Then, take +1 momentum.
           Miss:
             Text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
-        Suggestions:
-          Oracle rolls:
-            - Starforged/Oracles/Misc/Story_Clue
         Source:
           Page: 149
       - Name: Compel
@@ -1779,6 +1778,9 @@ Categories:
           Text: When you suffer the outcome of an action...
         Oracles:
           - Starforged/Oracles/Moves/Pay_the_Price
+        Suggestions:
+          Oracle rolls:
+            - Starforged/Oracles/Misc/Story_Complication
         Text: |-
           **When you suffer the outcome of an action**, choose one.
 
