@@ -62,6 +62,11 @@ Asset Types:
       When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](Starforged/Moves/Recover/Repair) it.
     Assets:
       - Name: Engine Upgrade
+        States: # TODO: implement `States` key in interfaces
+          - &Module.Broken
+            Name: Broken
+            Enabled: false
+            Disable asset: true
         Abilities:
           - Text: |-
               Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
@@ -109,6 +114,8 @@ Asset Types:
                     Weak Hit: *Engine_Upgrade.2
                     Miss: *Engine_Upgrade.2
       - Name: Expanded Hold
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               Your vehicle carries up to 3 cargo. When you gain +supply, you may convert it to +cargo. When you make a move +supply, you may add +cargo. When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources), you may instead suffer -cargo for any portion of the cost.
@@ -149,6 +156,8 @@ Asset Types:
           Value: 0
           # TODO: key for being interchangeable with cargo?
       - Name: Grappler
+        States:
+          - *Module.Broken
         Abilities:
           - Text: &move:Asset.Grappler |-
               Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
@@ -197,6 +206,8 @@ Asset Types:
                   Weak Hit: *Grappler.3
                   Miss: *Grappler.3
       - Name: Heavy Cannons
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               When you aim your cannons and use them to [Strike](Starforged/Moves/Combat/Strike), choose one.
@@ -249,6 +260,8 @@ Asset Types:
                     With a Match:
                       Text: Take +2 momentum.
       - Name: Internal Refit
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
@@ -299,6 +312,8 @@ Asset Types:
                     Reroll: Any
                   Miss: *Internal_Refit.3
       - Name: Medbay
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               When you use your medbay to [Heal](Starforged/Moves/Recover/Heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.
@@ -345,6 +360,8 @@ Asset Types:
                     - Text: Through an autopsy or medical examination
                 Outcomes: *Medbay.3
       - Name: Missile Array
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               Your missile array is armed with 5 ammo. When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](Starforged/Moves/Recover/Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
@@ -401,6 +418,8 @@ Asset Types:
           Name: Ammo
           Max: 5
       - Name: Overseer
+        States:
+          - *Module.Broken
         Inputs:
           - Name: Name
             Input Type: Text
@@ -440,6 +459,8 @@ Asset Types:
                       Using: [Attached_Asset_Condition_Meter]
                 Outcomes: *+1_momentum_on_a_hit
       - Name: Reinforced Hull
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               Your vehicle is clad in iron. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), add +1. On a strong hit, take +1 momentum.
@@ -485,6 +506,8 @@ Asset Types:
                   Miss:
                     Text: "[Pay the Price](Starforged/Moves/Fate/Pay_the_Price) by marking this component as broken."
       - Name: Research Lab
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               When you use your lab to [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Starforged/Moves/Adventure/Gather_Information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.
@@ -551,6 +574,8 @@ Asset Types:
                     Text: Mark one extra box on your discoveries legacy track.
                   Weak Hit: *mark_discoveries_box
       - Name: Sensor Array
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+wits), you may reroll one challenge die.
@@ -610,6 +635,8 @@ Asset Types:
                     Using: [Attached_Asset_Condition_Meter]
                 Outcomes: *Sensor_Array.3
       - Name: Shields
+        States:
+          - *Module.Broken
         Abilities:
           - Text: &move:Asset.Shields |-
               When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). Then, if you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
@@ -670,6 +697,8 @@ Asset Types:
           Max: 4
           Value: 0
       - Name: Stealth Tech
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
@@ -731,6 +760,8 @@ Asset Types:
                   Strong Hit:
                     With a Match: You also remain totally undetected; take +2 momentum and add +1 on your next [Strike](Starforged/Moves/Combat/Strike).
       - Name: Vehicle Bay
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](Starforged/Moves/Recover/Repair) a battered support vehicle, spend 1 repair point (instead of 2).
@@ -767,6 +798,8 @@ Asset Types:
                     Text: Reroll any dice.
                     Reroll: Any
       - Name: Workshop
+        States:
+          - *Module.Broken
         Abilities:
           - Text: |-
               When you [Repair](Starforged/Moves/Recover/Repair) in the field, add +1.
@@ -1168,8 +1201,28 @@ Asset Types:
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by guiding your vehicle through a hazard or out of harm’s way, add +1 and take +1 momentum on a hit.
             Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                  - Starforged/Moves/Combat/React_Under_Fire
+                Trigger:
+                  Options:
+                    - Text: By guiding your vehicle through a hazard or out of harm’s way
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: *add_+1
+                Outcomes: *+1_momentum_on_a_hit
           - Text: |-
               When you [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by maneuvering your vehicle against a foe, add +1. If you score a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set aside the action die or note its value. If you or an ally [Strike](Starforged/Moves/Combat/Strike) using the vehicle’s weapons, preset your action die with that value. This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle’s position.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Gain_Ground]
+                Trigger:
+                  Options:
+                    - Text: By maneuvering your vehicle against a foe
+                Text: *add_+1
+                Outcomes:
+                  Strong Hit:
+                    Text: If you score a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set aside the action die or note its value. If you or an ally [Strike](Starforged/Moves/Combat/Strike) using the vehicle’s weapons, preset your action die with that value. This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle’s position.
           - Text: |-
               When you must [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while piloting a vehicle, you may roll +integrity. If you do, take +1 momentum on a strong hit.
             Alter Moves:
@@ -1179,6 +1232,9 @@ Asset Types:
                     - Text: While piloting a vehicle
                       Roll type: Action roll
                       Using: [Vehicle Integrity]
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 momentum.
       - Name: Archer
         Requirement: If you wield a power bow...
         Abilities:
@@ -1215,9 +1271,28 @@ Asset Types:
                       Using:
                         - ${{@ASSET_METER}}
                       Text: By unleashing a volley of bow shots
-
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark progress, and suffer -1 ammo.
+                  Weak Hit:
+                    Text: Mark progress, and suffer -1 ammo.
+                  Miss:
+                    Text: Suffer -1 ammo.
           - Text: |-
               When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. If you then take your shot by making a move, you may preset your action die to 5. On a hit, envision the effects and take +1 momentum.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: When you load a specialized projectile such as a zip line, explosive, or electromagnetic disrupter, suffer -1 ammo. If you then take your shot by making a move, you may preset your action die to 5.
+                Outcomes:
+                  Strong Hit:
+                    Text: Envision the effects of the projectile and take +1 momentum.
+                  Weak Hit:
+                    Text: Envision the effects of the projectile and take +1 momentum.
         Condition Meter:
           Name: Ammo
           Max: 6
@@ -1227,17 +1302,69 @@ Asset Types:
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger), [React Under Fire](Starforged/Moves/Combat/React_Under_Fire), or [Clash](Starforged/Moves/Combat/Clash) against physical attacks or impact, you may put trust in your armor’s strength. If you do, preset your action die to 4. On a strong hit with a match, take +2 momentum as you build confidence, make an impression on your foes, or improve your position.
             Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                  - Starforged/Moves/Combat/React_Under_Fire
+                  - Starforged/Moves/Combat/Clash
+                Trigger:
+                  Options:
+                    - Text: Against physical attacks or impact (while wearing your personal armor)
+                Text: You may put trust in your armor’s strength. If you do, preset your action die to 4.
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: Take +2 momentum as you build confidence, make an impression on your foes, or improve your position.
           - Text: |-
               You add an important new piece to your set of armor, or upgrade its materials. As above, but preset your action die to 5 instead of 4.
+            # TODO: alter trigger above, by ID?
+            Alter Moves:
+              - Extends: # AlterMove ID
+                # TODO: implement Extends key
+                Text: You may put trust in your armor’s strength. If you do, preset your action die to 5.
           - Text: |-
               When you must [Endure Harm](Starforged/Moves/Suffer/Endure_Harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must [Repair](Starforged/Moves/Recover/Repair) and spend 5 repair points to bring it back to working condition.
+            Alter Properties:
+              States:
+                - *Module.Broken
+            Alter Moves:
+              - Moves: [Starforged/Moves/Suffer/Endure_Harm]
+                Trigger:
+                  Options:
+                    - Text: By letting your armor take the hit
+                      Method: Inherit
+              # TODO: something to handle arbitrary rolls like this
       - Name: Artist
         Abilities:
           - Text: |-
               When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location, you may reroll your action die if its value is less than your spirit. On a strong hit, take +1 momentum or +1 spirit.
             Enabled: true
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit:
+                    Text: You may reroll your action die if its value is less than your spirit. Take +1 momentum or +1 spirit.
+                  Weak Hit:
+                    Text: You may reroll your action die if its value is less than your spirit.
+                  Miss:
+                    Text: You may reroll your action die if its value is less than your spirit.
           - Text: |-
               When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) or [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by studying the aesthetics of a being or culture, add +2.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Gather_Information
+                  - Starforged/Moves/Adventure/Secure_an_Advantage
+                Trigger:
+                  Options:
+                    - Text: By studying the aesthetics of a being or culture
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +2.
           - Text: &move:Asset.Artist |-
               When you create or perform a significant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of 2. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Moves:
@@ -1266,14 +1393,42 @@ Asset Types:
             Input Type: Text
           - Name: Two
             Input Type: Text
+        States: # TODO: attach to specific abilities? hmm.
+          - Name: Broken (Augment 1)
+            Enabled: false
         Abilities:
           - Text: |-
               You are equipped with an advanced prosthetic, implant, or mechanical enhancement. When you make a move directly aided by the augment, envision how it gives you exceptional capabilities and add +1. On a strong hit with a match, your augment exceeds expectations; take +2 momentum. On a miss with a match, the augment is broken; you must [Repair](Starforged/Moves/Recover/Repair) and spend 3 repair points to bring it back to working condition.
             Enabled: true
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move directly aided by your augment
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Envision how your augment gives you exceptional capabilities and add +1.
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: Your augment exceeds expectations; take +2 momentum.
+                  Miss:
+                    With a Match:
+                      Text: Your augment is broken; you must [Repair](Starforged/Moves/Recover/Repair) and spend 3 repair points to bring it back to working condition.
           - Text: |-
               You are equipped with a second augment. It functions as above, but the benefits of the two augments do not stack.
+            Alter Properties:
+              States:
+                # TODO: adjust/annotate AlterProperties interface to clarify that array items should be concatenated
+                - Name: Broken (Augment 2)
+                  Enabled: false
           - Text: |-
               When you must [Endure Harm](Starforged/Moves/Suffer/Endure_Harm) or [Face Death](Starforged/Moves/Threshold/Face_Death), you may instead mark an augment as broken. [Repair](Starforged/Moves/Recover/Repair) it as detailed above.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Suffer/Endure_Harm
+                  - Starforged/Moves/Threshold/Face_Death
+                Text: You may instead mark an augment as broken. [Repair](Starforged/Moves/Recover/Repair) it as detailed in the AUGMENTED asset.
       - Name: Bannersworn
         Inputs:
           - Name: Ideology
@@ -1282,51 +1437,248 @@ Asset Types:
           - Text: |-
               You are bound to a clan, faction, or creed. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) in service to this ideology, reroll any dice. On a hit, mark 1 tick on your bonds legacy track.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Quest/Swear_an_Iron_Vow]
+                Trigger:
+                  Options:
+                    - Text: In service to your bound clan, faction, or creed
+                      Method: Inherit
+                    # TODO: some kind of string templating, like "In service to ${{ideology}}"
+                Reroll: # TODO: revise reroll key on alter moves
+                  Dice: Any
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark 1 tick on your bonds legacy track.
+                  Weak Hit:
+                    Text: Mark 1 tick on your bonds legacy track.
           - Text: |-
               When you or an ally [Sojourn](Starforged/Moves/Recover/Sojourn) and score a strong hit with a match, you may envision meeting someone of the same ideology. If you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with them and score a hit, mark 1 tick on your bonds legacy track. When you [Forge a Bond](Starforged/Moves/Connection/Forge_a_Bond) with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic).
+            Alter Moves:
+              - Moves: [Starforged/Moves/Recover/Sojourn]
+                # TODO: flag for things that apply to Ally moves
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: You may envision meeting someone of the same ideology. If you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with them and score a hit, mark 1 tick on your bonds legacy track.
+                # TODO: consider including the make a connection bit? or is that too conditional to bother with?
+              - Moves: [Starforged/Moves/Connection/Forge_a_Bond]
+                Trigger:
+                  Options:
+                    - Text: With anyone of your ideology
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit:
+                    Text: Make the legacy reward one rank higher (1 extra box if already epic).
+                  Weak Hit:
+                    Text: Make the legacy reward one rank higher (1 extra box if already epic).
           - Text: |-
               When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you score a strong hit with a match, your reputation grows among those who share your ideology; mark 1 tick on your bonds legacy track.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a progress move in direct service to your ideology
+                      Roll type: Progress roll
+                      Method: Inherit
+                Reroll:
+                  Dice: Challenge die
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: Your reputation grows among those who share your ideology; mark 1 tick on your bonds legacy track.
       - Name: Blademaster
         Requirement: If you wield a bladed weapon...
         Abilities:
           - Text: |-
               When you [Clash](Starforged/Moves/Combat/Clash) or [Strike](Starforged/Moves/Combat/Strike) in close-quarters, add +1. On a strong hit with a match, you are unstoppable; mark progress.
             Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Combat/Clash
+                  - Starforged/Moves/Combat/Strike
+                Trigger:
+                  Options:
+                    - Text: When you wield a bladed weapon in close-quarters
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: You are unstoppable; mark progress.
           - Text: |-
               If you [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by moving into close quarters against your foe, choose your approach.
 
                 * Charge: Roll +heart, and mark progress on a hit.
                 * Evade: Roll +edge, and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Gain_Ground]
+                Trigger:
+                  Options:
+                    - Text: Charging into close quarters against your foe (while wielding a bladed weapon)
+                      Method: Inherit
+                      Roll type: Action roll
+                      Using: [Heart]
+                Outcomes: &mark_progress_on_hit
+                  Strong Hit: &mark_progress
+                    Text: Mark progress.
+                  Weak Hit: *mark_progress
+              - Moves: [Starforged/Moves/Combat/Gain_Ground]
+                Trigger:
+                  Options:
+                    - Text: Moving into close quarters against your foe by evading (while wielding a bladed weapon)
+                      Method: Inherit
+                      Roll type: Action roll
+                      Using: [Edge]
+                Outcomes: &+1_momentum_on_a_hit
           - Text: |-
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
             Inputs:
               - Name: Name
                 Input Type: Text
+            # TODO: box input???
+            Alter Moves:
+              - Moves: [Starforged/Moves/Quest/Swear_an_Iron_Vow]
+                Trigger:
+                  Options:
+                    - Text: By binding your promise to your iconic blade
+                Text: Add +1.
+                Outcomes:
+                  Strong Hit: &Blademaster.3
+                    Text: fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
+                  Weak Hit: *Blademaster.3
       - Name: Bounty Hunter
         Abilities:
           - Text: |-
               When you take a bounty contract and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to see it done, add +1. On a strong hit, you’ve got a solid lead and may mark progress on the quest. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) on a hunt, make the legacy reward one rank higher (1 extra box if already epic).
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Quest/Swear_an_Iron_Vow]
+                Trigger:
+                  Options:
+                    - Text: When you take a bounty contract and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to see it done
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +1.
+                Outcomes:
+                  Strong Hit:
+                    Text: You’ve got a solid lead and may mark progress on the quest.
+              - Moves: [Starforged/Moves/Quest/Fulfill_Your_Vow]
+                Trigger:
+                  Options:
+                    - Text: On a hunt
+                      Method: Inherit
+                      Roll type: Progress roll
+                Outcomes:
+                  Strong Hit:
+                    Text: Make the legacy reward one rank higher (1 extra box if already epic)
+                  Weak Hit:
+                    Text: Make the legacy reward one rank higher (1 extra box if already epic)
           - Text: |-
               When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) related to a bounty, add +1. On a match, you reveal a surprising or sinister aspect of the contract; envision what you discover, and choose one.
 
                 * Forge ahead: Mark progress on the quest. If you scored a strong hit with a match, also take +2 momentum.
                 * Change loyalties: [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) and mark 2 ticks on your bonds legacy track.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Adventure/Gather_Information]
+                Trigger:
+                  Options:
+                    - Text: Related to a bounty
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +1.
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: |-
+                        You reveal a surprising or sinister aspect of the contract; envision what you discover, and choose one.
+
+                          * Forge ahead: Mark progress on the quest, and take +2 momentum.
+                          * Change loyalties: [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) and mark 2 ticks on your bonds legacy track.
+                  Miss:
+                    With a Match:
+                      Text: |-
+                        You reveal a surprising or sinister aspect of the contract; envision what you discover, and choose one.
+
+                          * Forge ahead: Mark progress on the quest.
+                          * Change loyalties: [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow) and mark 2 ticks on your bonds legacy track.
           - Text: |-
               When you [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) in a fight against a bounty target or their agents, you may reroll one challenge die.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Take_Decisive_Action]
+                Trigger:
+                  Options:
+                    - Text: In a fight against a bounty target or their agents
+                      Roll type: Progress roll
+                      Method: Inherit
+                Reroll:
+                  Dice: Challenge die
       - Name: Brawler
         Requirement: If you fight unarmed or with a close quarters weapon...
         Abilities:
           - Text: |-
               When you [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by attempting to disarm, trip, shove, grapple, or stun your foe, add +1 and take +1 momentum on a hit.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Gain_Ground]
+                Trigger:
+                  Options:
+                    - Text: By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +1.
+                Outcomes: *+1_momentum_on_a_hit
           - Text: |-
               When you [Clash](Starforged/Moves/Combat/Clash) in close quarters, you may draw on your momentum to gain advantage. If you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) and choose one (before rolling).
 
                 * Aggressive: Count a weak hit as a strong hit.
                 * Defensive: Count a miss as a weak hit.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Clash]
+                Trigger:
+                  - Text: Aggressively (while fighting unarmed or with a close quarters weapon)
+                    Method: Inherit
+                    Roll type: Action roll
+                Text: |-
+                  You may draw on your momentum to gain advantage. If you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) and choose one (before rolling).
+
+                    * Aggressive: Count a weak hit as a strong hit.
+                    * Defensive: Count a miss as a weak hit.
+                Outcomes:
+                  Weak Hit:
+                    Text: Count a weak hit as a strong hit.
+                    Count as: Strong Hit
+              - Moves: [Starforged/Moves/Combat/Clash]
+                Trigger:
+                  - Text: Defensively (while fighting unarmed or with a close quarters weapon)
+                    Method: Inherit
+                    Roll type: Action roll
+                Text: |-
+                  You may draw on your momentum to gain advantage. If you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2) and choose one (before rolling).
+
+                    * Aggressive: Count a weak hit as a strong hit.
+                    * Defensive: Count a miss as a weak hit.
+                Outcomes:
+                  Miss:
+                    Text: Count a miss as a weak hit.
+                    Count as: Weak Hit
+                # TODO: split this into separate triggers for aggressive and defensive?
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) already positioned in close quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Text: Already positioned in close quarters against your foe
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark progress.
+                    With a Match:
+                      Text: Your initial assault leaves them stunned; mark progress and take +2 momentum.
+                  Weak Hit:
+                    Text: Mark progress.
       - Name: Courier
         Abilities:
           - Text: |-
