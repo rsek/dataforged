@@ -75,7 +75,7 @@ Asset Types:
                       Using: [Edge]
                 Outcomes:
                   Strong Hit:
-                    Text: Take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
+                    Text: Take +1 momentum; if you get a 6 on your action die, take +2 momentum instead of +1.
                     # TODO: add action die value flag?
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray), choose one (before rolling).
@@ -179,9 +179,7 @@ Asset Types:
               If you score a strong hit when readying the grappler, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
             Alter Moves:
               - Moves:
-                  [
-                    Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler,
-                  ]
+                  - Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler
                 Outcomes:
                   Strong Hit:
                     Text: |-
@@ -263,6 +261,10 @@ Asset Types:
                       Text: On the first leg of your journey (dangerous or greater)
                       Roll type: Progress roll
                       Min rank: 2
+                Outcomes:
+                  Strong Hit: &Internal_Refit.1
+                    Text: You and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
+                  Weak Hit: *Internal_Refit.1
           - Text: &move:Asset.Internal_refit |-
               Your vessel is stocked with reserves. When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
             Moves:
@@ -394,7 +396,7 @@ Asset Types:
                   Options:
                     - Text: When you have at least 3 ammo and [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) by unleashing all of your missiles
                 Text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
-                # FIXME
+                # FIXME weird shit going on here: is there a better way to annotate this
         Condition Meter:
           Name: Ammo
           Max: 5
@@ -406,17 +408,27 @@ Asset Types:
           - Text: |-
               Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
-              - Moves: [Starforged/Moves/Adventure/Secure_an_Advantage]
-                Trigger: &asset:Overseer.Alter
+              - Moves:
+                  - Starforged/Moves/Adventure/Secure_an_Advantage
+                  - Starforged/Moves/Combat/Gain_Ground
+                Trigger:
                   Options:
                     - Text: By talking through a situation with the overseer AI
                       Roll type: Action roll
                       Using: [Attached_Asset_Condition_Meter]
-              - Moves: [Starforged/Moves/Combat/Gain_Ground]
-                Trigger: *asset:Overseer.Alter
+                Outcomes: &+1_momentum_on_a_hit
+                  Strong Hit: &Overseer.1
+                    Text: Take +1 momentum.
+                  Weak Hit: *Overseer.1
             Enabled: true
           - Text: |-
               When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Suffer/Withstand_Damage
+                Outcomes:
+                  Miss: # only relevant for a Miss, since that's the only place a table comes up
+                    Text: If you roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
           - Text: |-
               The overseer can pilot the vehicle independently. When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation, you may roll +integrity. If you do, take +1 momentum on a hit.
             Alter Moves:
@@ -426,47 +438,177 @@ Asset Types:
                     - Text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
                       Roll type: Action roll
                       Using: [Attached_Asset_Condition_Meter]
+                Outcomes: *+1_momentum_on_a_hit
       - Name: Reinforced Hull
         Abilities:
           - Text: |-
               Your vehicle is clad in iron. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), add +1. On a strong hit, take +1 momentum.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Suffer/Withstand_Damage]
+                Trigger:
+                  Options:
+                    - Text: To your vehicle with a Reinforced Hull
+                      Roll type: Action roll
+                      Method: Inherit
+                Text: Add +1.
+                Outcomes:
+                  Strong Hit: Take +1 momentum.
           - Text: |-
               Your plated hull is given a fierce and distinctive color or design. When you arrive at a place where your reputation is a factor, take +1 momentum. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against a foe who knows your reputation, take +momentum equal to your vehicle’s integrity on a strong hit.
+            Alter Moves:
+              # this is a floating trigger that's difficult to ascribe to any particular move. TODO: as its own move, perhaps?
+              # When you arrive at a place where your reputation is a factor, take +1 momentum.
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Text: Against a foe who knows your reputation
+                      Roll type: Action roll
+                      Method: Inherit
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +momentum equal to your vehicle’s integrity.
           - Text: |-
               When you [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by letting your plated hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, [Pay the Price](Starforged/Moves/Fate/Pay_the_Price) by marking this component as broken.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/React_Under_Fire]
+                Trigger:
+                  Options:
+                    - Text: By letting your vehicle's plated hull take the hit
+                Text: &add_+1 Add +1.
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 momentum.
+                    With a Match: Take +2 momentum as you surge through the chaos and put yourself in perfect position.
+                  Weak Hit:
+                    Text: Take +1 momentum.
+                  Miss:
+                    Text: "[Pay the Price](Starforged/Moves/Fate/Pay_the_Price) by marking this component as broken."
       - Name: Research Lab
         Abilities:
           - Text: |-
               When you use your lab to [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Starforged/Moves/Adventure/Gather_Information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.
             Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Secure_an_Advantage
+                  - Starforged/Moves/Adventure/Gather_Information
+                Trigger:
+                  Options:
+                    - Text: When you use your lab to [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Starforged/Moves/Adventure/Gather_Information) through careful analysis or experimentation
+                      Roll type: Action roll
+                      Method: Inherit
+                Text: *add_+1
+                Outcomes: *+1_momentum_on_a_hit
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) to isolate or secure a hazardous specimen, reroll any dice.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: To isolate or secure a hazardous specimen
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes: &reroll_any_dice_all
+                  Strong Hit: &reroll_any_dice_outcome
+                    Text: Reroll any dice.
+                    Reroll: Any
+                  Weak Hit: *reroll_any_dice_outcome
+                  Miss: *reroll_any_dice_outcome
           - Text: |-
               When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to undertake a long-term research project (extreme or greater), reroll any dice. When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your lab, [Face Danger](Starforged/Moves/Adventure/Face_Danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) and score a hit, also mark one box on your discoveries legacy track.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Quest/Swear_an_Iron_Vow]
+                Trigger:
+                  Options:
+                    - Text: When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to undertake a long-term research project (extreme or greater)
+                      Method: Inherit
+                      Roll type: Action roll
+                      # Minimum rank: 4
+                      # TODO: can't actually annotate this effectively on non-progress roll triggers. worth revising?
+                Text: When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum.
+                Outcomes: *reroll_any_dice_all
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: When you devote extended time to the long-term research project in your lab
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: *add_+1
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark progress.
+                    With a Match:
+                      Text: Mark progress twice.
+                  Weak Hit:
+                    Text: Mark progress.
+              - Moves: [Starforged/Moves/Quest/Fulfill_Your_Vow]
+                Trigger:
+                  Options:
+                    - Text: When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) to undertake a long-term research project (extreme or greater)
+                Outcomes:
+                  Strong Hit: &mark_discoveries_box
+                    Text: Mark one extra box on your discoveries legacy track.
+                  Weak Hit: *mark_discoveries_box
       - Name: Sensor Array
         Abilities:
           - Text: |-
               Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+wits), you may reroll one challenge die.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Exploration/Undertake_an_Expedition]
+                Trigger:
+                  Options:
+                    - Text: In your vehicle, as your advanced sensors scan the paths ahead to help spot dangers
+                      Method: Inherit
+
+                      Using: [Wits]
+                Outcomes: &reroll_one_challenge_die_all
+                  Strong Hit: &reroll_one_challenge_die
+                    Text: You may reroll one challenge die.
+                    Reroll: Challenge die
+                  Weak Hit: *reroll_one_challenge_die
+                  Miss: *reroll_one_challenge_die
           - Text: |-
               When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Starforged/Moves/Adventure/Gather_Information) by scanning your vehicle's surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.
 
                 * Manual scan: Add +1
                 * Automated scan: Instead of rolling the action die, make it the value of your vehicle's integrity
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Secure_an_Advantage
+                  - Starforged/Moves/Adventure/Gather_Information
+                Trigger:
+                  Options:
+                    - Text: By scanning your vehicle's surroundings or analyzing a nearby object
+                Text: |-
+                  Choose one.
+
+                    * Manual scan: Add +1
+                    * Automated scan: Instead of rolling the action die, make it the value of your vehicle's integrity
+                Outcomes: *+1_momentum_on_a_hit
+
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against an ambush, or [Face Danger](Starforged/Moves/Adventure/Face_Danger) to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit.
             Alter Moves:
               - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
                 Trigger:
-                  - Text: Against an ambush
+                  - Text: Against an ambush in your vehicle
                     Roll type: Action roll
                     Using: [Attached_Asset_Condition_Meter]
+                Outcomes: &Sensor_Array.3
+                  Strong Hit: &Sensor_Array.3.Hit
+                    Text: Reroll any dice. Take +1 momentum.
+                    Reroll: Any
+                  Weak Hit: *Sensor_Array.3.Hit
+                  Miss:
+                    Text: Take +1 momentum.
               - Moves: [Starforged/Moves/Adventure/Face_Danger]
                 Trigger:
-                  - Text: To detect a hidden threat
+                  - Text: To detect a hidden threat with your vehicle's sensors
                     Roll type: Action roll
                     Using: [Attached_Asset_Condition_Meter]
+                Outcomes: *Sensor_Array.3
       - Name: Shields
         Abilities:
           - Text: &move:Asset.Shields |-
@@ -507,8 +649,22 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
+                Outcomes:
+                  Strong Hit: &take_+2_momentum
+                    Text: Take +2 momentum.
+                  Weak Hit: *take_+2_momentum
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Text: In your vehicle
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit:
+                    Text: You may raise your shields to 3 without rolling. If you do, take +1 momentum.
         Condition Meter:
           Name: Shields
           Max: 4
@@ -518,8 +674,40 @@ Asset Types:
           - Text: |-
               Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
             Enabled: true
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move against a specific foe or threat to avoid detection (in your vehicle)
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: *add_+1
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Text: By ambushing an unaware foe (in your vehicle)
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: *add_+1
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark progress.
           - Text: |-
               When you travel stealthily as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+shadow), you may reroll your action die.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Exploration/Undertake_an_Expedition]
+                Trigger:
+                  Options:
+                    - Text: When you travel stealthily (in your vehicle)
+                      Method: Inherit
+                      Roll type: Action roll
+                      Using: [Shadow]
+                Outcomes: &reroll_action_die_all
+                  Strong Hit: &reroll_action_die_outcome
+                    Text: You may reroll your action die.
+                    Reroll: Action die
+                  Weak Hit: *reroll_action_die_outcome
+                  Miss: *reroll_action_die_outcome
           - Text: |-
               When you are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding, you may roll +shadow. If you do, choose one (before rolling).
 
@@ -534,24 +722,118 @@ Asset Types:
                     - Text: You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding
                       Roll type: Action roll
                       Using: [Shadow]
+                Text: |-
+                  Choose one (before rolling).
+
+                    * Strike true: Reroll any dice.
+                    * Strike hard: Mark progress on a hit.
+                Outcomes:
+                  Strong Hit:
+                    With a Match: You also remain totally undetected; take +2 momentum and add +1 on your next [Strike](Starforged/Moves/Combat/Strike).
       - Name: Vehicle Bay
         Abilities:
           - Text: |-
               You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](Starforged/Moves/Recover/Repair) a battered support vehicle, spend 1 repair point (instead of 2).
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Recover/Repair]
+                Trigger:
+                  Options:
+                    - Text: When you [Repair](Starforged/Moves/Recover/Repair) a battered support vehicle
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit: &discount_repair
+                    Text: Spend 1 repair point (instead of 2) to remove the support vehicle's battered impact.
+                  Weak Hit: *discount_repair
           - Text: |-
               When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) using the yes/no table if something can be salvaged from the mess. Make it 50/50. On a yes, spend 1 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](Starforged/Moves/Recover/Repair) and bring it back to full working order, the vehicle is battered with 0 integrity.
+            # FIXME: another non-move trigger - should it be its own move? some other key?
           - Text: |-
               When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move to launch from or land on your command vehicle in a perilous situation or environment
+                      Roll type: Action die
+                      Method: Inherit
+                Outcomes:
+                  Strong Hit: &Vehicle_Bay.3.Hit
+                    Text: Reroll any dice. Take +1 momentum.
+                    Reroll: Any
+                  Weak Hit: *Vehicle_Bay.3.Hit
+                  Miss:
+                    Text: Reroll any dice.
+                    Reroll: Any
       - Name: Workshop
         Abilities:
           - Text: |-
               When you [Repair](Starforged/Moves/Recover/Repair) in the field, add +1.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Recover/Repair]
+                Trigger:
+                  Options:
+                    - Text: In the field (with your workshop)
+                      Roll type: Action roll
+                      Method: Inherit
+                Text: *add_+1
           - Text: |-
               When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle's integrity.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine
+                      Roll type: Action roll
+                      Method: Inherit
+                Outcomes:
+                  Strong Hit: &reroll_action_die_if_less
+                    Text: You may reroll your action die if its value is less than your vehicle's integrity.
+                    Reroll: Action die
+                  Weak Hit: *reroll_action_die_if_less
+                  Miss: *reroll_action_die_if_less
+
           - Text: |-
               When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to undertake a long-term engineering project (extreme or greater), reroll any dice. When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your workshop, [Face Danger](Starforged/Moves/Adventure/Face_Danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) and score a hit, mark one extra box on your quests legacy track.
+            # TODO: consider a way to explicitly structure marked quests?
+            Alter Moves:
+              - Moves: [Starforged/Moves/Quest/Swear_an_Iron_Vow]
+                Trigger:
+                  Options:
+                    - Text: To undertake a long-term engineering project (extreme or greater)
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit: &Workshop.3
+                    Text: |-
+                      Reroll any dice.
+
+                      When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum.
+                    Reroll: any
+                  Weak Hit: *Workshop.3
+                  Miss: *Workshop.3
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: When you devote extended time to your long-term engineering project (extreme or greater) in your workshop
+                Text: Add +1.
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark progress.
+                    With a Match:
+                      Text: Mark progress twice.
+                  Weak Hit:
+                    Text: Mark progress.
+              - Moves: [Starforged/Moves/Quest/Fulfill_Your_Vow]
+                Trigger:
+                  Options:
+                    - Text: To undertake a long-term engineering project (extreme or greater)
+                Outcomes:
+                  Strong Hit: &Workshop.3.FYV
+                    Text: Mark one extra box on your quests legacy track.
+                  Weak Hit: *Workshop.3.FYV
   - Name: Support Vehicle
     Display:
       Color: "#495790"
@@ -612,10 +894,38 @@ Asset Types:
           - Text: |-
               Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Exploration/Undertake_an_Expedition]
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Text: On your hoverbike
+                      Using: [Edge]
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 momentum.
+                    With a Match:
+                      Text: You surge ahead or find a new path. Take +1 momentum and mark progress.
+                  Weak Hit:
+                    Text: Take +1 momentum.
           - Text: |-
               When you fire the bike's afterburner and make a move to perform a risky maneuver, you may add +integrity and take +2 momentum on a strong hit. If you do, count a weak hit as a miss.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Text: When you fire your hoverbike's afterburner and make a move to perform a risky maneuver
+                Text: You may add +integrity.
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +2 momentum on a strong hit.
+                  Weak Hit:
+                    Text: Count a weak hit as a miss.
+                    Count as: Miss
           - Text: |-
               When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.
+            # FIXME: this is a difficult trigger to describe in relation to moves. it might make more sense to develop a momentum burn trigger instead.
         Condition Meter:
           Name: Integrity
           Max: 3
@@ -628,6 +938,23 @@ Asset Types:
           - Text: |-
               Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), add +1. When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) in your rover, you may reroll one challenge die.
             Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Exploration/Undertake_an_Expedition
+                  - Starforged/Moves/Exploration/Set_a_Course
+                Trigger:
+                  Options:
+                    - Text: In your rover
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: *add_+1
+              - Moves: [Starforged/Moves/Exploration/Finish_an_Expedition]
+                Trigger:
+                  Options:
+                    - Text: In your rover
+                      Method: Inherit
+                      Roll type: Action roll
+                Outcomes: *reroll_one_challenge_die_all
           - Text: |-
               You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.
             Alter Properties:
@@ -646,6 +973,7 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
+                Outcomes: *+1_momentum_on_a_hit
         Condition Meter:
           Name: Integrity
           Max: 5
@@ -658,6 +986,15 @@ Asset Types:
           - Text: |-
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
             Enabled: true
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move using the pod’s manipulator arms to perform a delicate or forceful task
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +1.
+                Outcomes: *+1_momentum_on_a_hit
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger), [Gain Ground](Starforged/Moves/Combat/Gain_Ground), or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by maneuvering your pod through a hazardous or obstructed area, choose an approach and roll +integrity.
 
@@ -674,8 +1011,21 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
+                Text: |-
+                  Choose an approach and roll +integrity.
+
+                    * Careful: Add +2 and [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)
+                    * Reckless: Take +1 momentum on a hit
           - Text: |-
               When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move while controlling the pod and push its capabilities to the limit
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: You may take an automatic strong hit. If you do, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
         Condition Meter:
           Name: Integrity
           Max: 4
@@ -688,10 +1038,26 @@ Asset Types:
           - Text: |-
               Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
             Enabled: true
+            # FIXME: non-move trigger
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) to navigate through hazardous skies, avoid obstacles, or evade an attack, add +1 and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                  - Starforged/Moves/Combat/React_Under_Fire
+                Trigger:
+                  - Text: To navigate through hazardous skies, avoid obstacles, or evade an attack
+                    Method: Inherit
+                    Roll type: Action roll
+                Text: *add_+1
+                Outcomes: *+1_momentum_on_a_hit
           - Text: |-
               Your shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), add +1.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Suffer/Withstand_Damage]
+                Trigger:
+                  - Text: To your shuttle
+                Text: *add_+1
         Condition Meter:
           Name: Integrity
           Max: 4
@@ -713,6 +1079,7 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
+                Outcomes: *+1_momentum_on_a_hit
             Enabled: true
           - Text: |-
               Your skiff is armed with a turreted cannon. When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash) by firing the cannon, roll +integrity and take +1 momentum on a hit. On a strong hit with a match, your shots cause extra destruction or create havoc; mark progress.
@@ -726,6 +1093,13 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 momentum.
+                    With a Match:
+                      Text: Your shots cause extra destruction or create havoc; mark progress, and take +1 momentum.
+                  Weak Hit:
+                    Text: Take +1 momentum.
           - Text: |-
               Your skiff is fully stocked. When you [Check Your Gear](Starforged/Moves/Adventure/Check_Your_Gear), add +1 and take +1 momentum on a hit.
         Condition Meter:
@@ -748,11 +1122,30 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
+                Outcomes:
+                  Strong Hit: &take_+2_momentum
+                    Text: Take +2 momentum.
+                  Weak Hit: *take_+2_momentum
             Enabled: true
           - Text: |-
               When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash), add +1. On a strong hit with a match, mark progress.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Combat/Strike
+                  - Starforged/Moves/Combat/Clash
+                Trigger:
+                  Options:
+                    - Text: In your snub fighter
+                      Roll type: Action roll
+                      Method: Inherit
+                Text: *add_+1
+                Outcomes:
+                  Strong Hit:
+                    With a Match:
+                      Text: Mark progress.
           - Text: |-
               When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.
+            # FIXME: describe this as an object?
             Inputs:
               - Name: Victory Marks
                 Input Type: Number
