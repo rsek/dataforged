@@ -9,7 +9,7 @@ export interface IHasSummary {
    * A user-facing markdown summary of the item.
    * @markdown
    */
-    Summary: string;
+    Summary: string | null;
 }
 
 /**

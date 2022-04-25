@@ -20,5 +20,12 @@ export type MatchIdFragment = "With_a_Match";
  * @public
  */
 export interface IMoveOutcome extends IHasId<MoveOutcomeId>, IHasText {
+  /**
+   * Defines a different outcome for this result with a match. This *replaces* the parent outcome's effect.
+   */
   "With a Match"?: IMoveOutcome | undefined;
+  /**
+   * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
+   */
+  "Count as"?: RollOutcomeType | undefined;
 }

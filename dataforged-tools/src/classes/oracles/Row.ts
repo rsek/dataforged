@@ -24,7 +24,7 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
   Result!: string;
   /**
    */
-  Summary?: string;
+  Summary?: string | null | undefined;
   /**
    */
   "Oracle rolls"?: IOracle["$id"][] | undefined;
@@ -182,10 +182,13 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
                 break;
               }
               case "Summary": {
-                if (typeof value !== "string") {
+                if (typeof value !== "string" || value !== null) {
                   throw badJsonError(this.constructor, value, "expected summary string");
                 }
-                if (!this.Summary || this.Summary.length === 0) { this.Summary = value; }
+                if (this.Summary) {
+                  throw badJsonError(this.constructor, value, "A summary string was provided, but one has already been assigned.");
+                }
+                this.Summary = value as string | null;
                 break;
               }
               case "Attributes": {

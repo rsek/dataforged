@@ -24,9 +24,16 @@ Asset Types:
             Enabled: true
           - Text: |-
               When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) (dangerous or greater) in your starship and score a hit, this journey strengthened your ties to your ship and any fellow travelers. You and your allies may mark 1 tick on your bonds legacy track.
-            # Alter Moves:
-            #   - Moves: [Starforged/Moves/Exploration/Finish_an_Expedition]
-            # TODO: how should this be structured? it doesn't actually alter the moves trigger per se, though it does have a unique trigger condition. hmm.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Exploration/Finish_an_Expedition]
+                Trigger:
+                  Options:
+                    - Text: When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) (dangerous or greater) in your starship
+                      Min rank: 2
+                Outcomes:
+                  Strong Hit: &Starship.2
+                    Text: This journey strengthened your ties to your ship and any fellow travelers. You and your allies may mark 1 tick on your bonds legacy track.
+                  Weak Hit: *Starship.2
           - Text: |-
               When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), you may roll +heart. If you do, [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1) on a weak hit or miss.
             Alter Moves:
@@ -36,6 +43,10 @@ Asset Types:
                     - Text: You [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) to your Starship
                       Roll type: Action roll
                       Using: [Heart]
+                Outcomes:
+                  Weak Hit: &Starship.3
+                    Text: "[Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1)."
+                  Miss: *Starship.3
         Condition Meter:
           Name: Integrity
           Max: 5
@@ -55,29 +66,88 @@ Asset Types:
           - Text: |-
               Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
             Enabled: true
-            # TODO: similar problem to Starship ability above - it just adds a rider rather than its own trigger
-            # Alter Moves:
-            #   -
+            Alter Moves:
+              - Moves: [Starforged/Moves/Exploration/Undertake_an_Expedition]
+                Trigger:
+                  Options:
+                    - Text: In your vehicle
+                      Method: Inherit
+                      Using: [Edge]
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
+                    # TODO: add action die value flag?
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray), choose one (before rolling).
 
                 * Maneuver: Add +1 and take +1 momentum on a strong hit.
                 * Boost: Take +2 momentum on a hit.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Roll type: Action roll
+                      Text: In your vehicle
+                Text: |-
+                  Choose one (before rolling).
+
+                    * Maneuver: Add +1 and take +1 momentum on a strong hit.
+                    * Boost: Take +2 momentum on a hit.
           - Text: |-
               When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Roll type: Action roll
+                      Text: When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)
+                  Outcomes:
+                    Strong Hit: &Engine_Upgrade.2
+                      Text: You may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
+                    Weak Hit: *Engine_Upgrade.2
+                    Miss: *Engine_Upgrade.2
       - Name: Expanded Hold
         Abilities:
           - Text: |-
               Your vehicle carries up to 3 cargo. When you gain +supply, you may convert it to +cargo. When you make a move +supply, you may add +cargo. When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources), you may instead suffer -cargo for any portion of the cost.
             Enabled: true
+            # TODO: when you gain [condition meter] trigger?
+            # alternately: could happen with some kind of tag system?
+            # the suffer trigger is fairly easy to hit, i guess
           - Text: |-
               When you score a miss or weak hit as you make a move to barter or negotiate, and you have at least 1 cargo, you may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Roll type: Action roll
+                      Text: You make a move to barter or negotiate, and you have at least 1 cargo
+                Outcomes:
+                  Weak Hit: &Expanded_Hold.2
+                    Text: You may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo.
+                  Miss: *Expanded_Hold.2
           - Text: |-
               When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move to outrun a threat and have at least 1 cargo
+                      Method: Inherit
+                Text: |-
+                  You may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
+                Outcomes:
+                  Strong Hit: &Expanded_Hold.3
+                    Text: Take +2 momentum on a hit.
+                  Weak Hit: *Expanded_Hold.3
         Condition Meter:
           Name: Cargo
           Max: 3
           Value: 0
+          # TODO: key for being interchangeable with cargo?
       - Name: Grappler
         Abilities:
           - Text: &move:Asset.Grappler |-
@@ -99,7 +169,7 @@ Asset Types:
                       If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
                   Weak Hit:
                     Text: |-
-                      The grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)
+                      The grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
 
                       If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
                   Miss:
@@ -107,8 +177,27 @@ Asset Types:
                       Charging fails and you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
           - Text: |-
               If you score a strong hit when readying the grappler, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
+            Alter Moves:
+              - Moves:
+                  [
+                    Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler,
+                  ]
+                Outcomes:
+                  Strong Hit:
+                    Text: |-
+                      You may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
           - Text: |-
               When you [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) by firing the grappler, you may reroll one challenge die.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Take_Decisive_Action]
+                Trigger:
+                  Options:
+                    - Text: By firing the grappler
+                Outcomes:
+                  Strong Hit: &Grappler.3
+                    Text: You may reroll one challenge die.
+                  Weak Hit: *Grappler.3
+                  Miss: *Grappler.3
       - Name: Heavy Cannons
         Abilities:
           - Text: |-
@@ -117,15 +206,63 @@ Asset Types:
                 * Strafing run: Add +1 and take +1 momentum on a hit.
                 * Focus fire: Mark progress on a hit, but [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Strike]
+                Trigger:
+                  Options:
+                    - Text: When you aim your cannons and use them to [Strike](Starforged/Moves/Combat/Strike)
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: |-
+                  Choose one.
+
+                    * Strafing run: Add +1 and take +1 momentum on a hit.
+                    * Focus fire: Mark progress on a hit, but [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
           - Text: |-
               Once per fight, when you [Clash](Starforged/Moves/Combat/Clash) by committing to an all-or-nothing exchange of fire, add +1, count a weak hit as a strong hit, and mark progress on a hit. On a miss, you must suffer a dire outcome.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Clash]
+                Trigger:
+                  Options:
+                    - Text: Once per fight, when you [Clash](Starforged/Moves/Combat/Clash) by committing to an all-or-nothing exchange of fire
+                Text: Add +1, count a weak hit as a strong hit, and mark progress on a hit. On a miss, you must suffer a dire outcome.
+                Outcomes:
+                  Strong Hit:
+                    Text: Mark progress.
+                  Weak Hit:
+                    Text: Count a weak hit as a strong hit.
+                    Count as: Strong Hit
+                  Miss:
+                    Text: You must suffer a dire outcome.
           - Text: |-
               When you [Compel](Starforged/Moves/Adventure/Compel), [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray), or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by bringing your cannons to bear and sending a promise of violence to your foe over communication channels, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Compel
+                  - Starforged/Moves/Combat/Enter_the_Fray
+                  - Starforged/Moves/Combat/Gain_Ground
+                Trigger:
+                  Options:
+                    - Text: By bringing your cannons to bear and sending a promise of violence to your foe over communication channels
+                Text: Add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 momentum.
+                    With a Match:
+                      Text: Take +2 momentum.
       - Name: Internal Refit
         Abilities:
           - Text: |-
               You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Exploration/Undertake_an_Expedition]
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Text: On the first leg of your journey (dangerous or greater)
+                      Roll type: Progress roll
+                      Min rank: 2
           - Text: &move:Asset.Internal_refit |-
               Your vessel is stocked with reserves. When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
             Moves:
@@ -144,24 +281,120 @@ Asset Types:
                   Miss: *scrape-by-outcome
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Text: To oppose an invader within your vessel
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +momentum equal to your vessel's integrity.
+                    Reroll: Any
+                    With a Match:
+                      Text: Mark progress, and take +momentum equal to your vessel's integrity.
+                  Weak Hit: &Internal_Refit.3
+                    Text: Reroll any dice.
+                    Reroll: Any
+                  Miss: *Internal_Refit.3
       - Name: Medbay
         Abilities:
           - Text: |-
               When you use your medbay to [Heal](Starforged/Moves/Recover/Heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.
             Enabled: true
+            Alter Moves:
+              - Moves: [Starforged/Moves/Recover/Heal]
+                Trigger:
+                  Options:
+                    - Text: When you use your medbay to [Heal](Starforged/Moves/Recover/Heal) yourself or another patient
+                Outcomes:
+                  Strong Hit: &Medbay.1
+                    Text: You may reroll your action die if its value is less than your vehicle's integrity.
+                    Reroll: Action die
+                  Weak Hit: *Medbay.1
+                  Miss: *Medbay.1
           - Text: |-
               When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so), you have a shot at making things right. If you [Heal](Starforged/Moves/Recover/Heal) and score a strong hit, clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Recover/Heal]
+                Trigger:
+                  Options:
+                    - Text: When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so)
+                Outcomes:
+                  Strong Hit:
+                    Text: Clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident.
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) by performing a risky medical procedure, or if you [Gather Information](Starforged/Moves/Adventure/Gather_Information) through an autopsy or medical examination, reroll any dice and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: By performing a risky medical procedure
+                Outcomes: &Medbay.3
+                  Strong Hit: &Medbay.3.Hit
+                    Text: Reroll any dice and take +1 momentum.
+                    Reroll: Any
+                  Weak Hit: *Medbay.3.Hit
+                  Miss:
+                    Text: Reroll any dice.
+                    Reroll: Any
+              - Moves: [Starforged/Moves/Adventure/Gather_Information]
+                Trigger:
+                  Options:
+                    - Text: Through an autopsy or medical examination
+                Outcomes: *Medbay.3
       - Name: Missile Array
         Abilities:
           - Text: |-
               Your missile array is armed with 5 ammo. When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](Starforged/Moves/Recover/Resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
             Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Combat/Strike
+                  - Starforged/Moves/Combat/Clash
+                Trigger:
+                  Options:
+                    - Text: With a missile attack
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Suffer -1 ammo.
+                Outcomes:
+                  Strong Hit: &Missile_Array.1
+                    Text: Mark progress.
+                  Weak Hit: *Missile_Array.1
+              - Moves:
+                  - Starforged/Moves/Recover/Resupply
+                Trigger:
+                  Options:
+                    - Text: In a place where your missiles can be replenished
+                      Method: Inherit
+                      Roll type: Action roll
+                  Outcomes:
+                    Strong Hit: &Missile_Array.1.1
+                      Text: You may exchange any earned +supply for +ammo.
+                    Weak Hit: *Missile_Array.1.1
           - Text: |-
               When you have at least 1 ammo and [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by locking a missile on target, add +1 and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Gain_Ground]
+                Trigger:
+                  Options:
+                    - Text: By locking a missile on target
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +1.
+                Outcomes:
+                  Strong Hit: &Missile_Array.2
+                    Text: Take +1 momentum.
+                  Weak Hit: *Missile_Array.2
           - Text: |-
               When you have at least 3 ammo and [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Combat/Take_Decisive_Action]
+                Trigger:
+                  Options:
+                    - Text: When you have at least 3 ammo and [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) by unleashing all of your missiles
+                Text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
+                # FIXME
         Condition Meter:
           Name: Ammo
           Max: 5
@@ -335,10 +568,38 @@ Asset Types:
           - Text: |-
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
             Enabled: true
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Roll type: Action roll
+                      Text: When you make a forceful, damaging, or resistant move in your Exosuit
+                Outcomes:
+                  Strong Hit: &Exosuit.1
+                    Text: You may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
+                  Weak Hit: *Exosuit.1
+                  Miss: *Exosuit.1
           - Text: |-
               Your exosuit is equipped with thrusters. You can maneuver in zero-g, make thrust-assisted leaps, and drop to a surface from altitude. When you burn fuel to overcome a critical obstacle (decide after rolling), you may reroll any dice. If you do, [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1).
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Roll type: Action roll
+                      Text: You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude
+                Text: When you burn fuel to overcome a critical obstacle (decide after rolling), you may reroll any dice. If you do, [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1).
           - Text: |-
               When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), you may reroll one challenge die.
+            Alter Moves:
+              - Moves: [Starforged/Moves/Suffer/Withstand_Damage]
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Roll type: Action roll
+                      Text: To your Exosuit
+                Text: You may reroll one challenge die.
         Condition Meter:
           Name: Integrity
           Max: 6
@@ -1433,15 +1694,15 @@ Asset Types:
           - Text: |-
               When your sidekick acts to get you out of a tough spot, you may [Face Danger](Starforged/Moves/Adventure/Face_Danger) or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.
             Alter Moves:
-              - Moves: [Starforged/Moves/Adventure/Face_Danger]
-                Trigger: &asset:Sidekick.Alter
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                  - Starforged/Moves/Combat/React_Under_Fire
+                Trigger:
                   Options:
                     - Text: Your sidekick acts to get you out of a tough spot
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
-              - Moves: [Starforged/Moves/Combat/React_Under_Fire]
-                Trigger: *asset:Sidekick.Alter
         Condition Meter:
           Name: Health
           Max: 4
