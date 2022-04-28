@@ -18,4 +18,5 @@ export type EncounterNatureId = `${Gamespace.Ironsworn}/${EncounterNatureIdBase}
 export interface IEncounterNatureInfo extends IHasDescription, IHasSource, IHasName, IHasId<EncounterNatureId>, IHasDisplay, IHasSummary {
   Name: EncounterNatureIronsworn;
   Encounters: IEncounterIronsworn[];
+  Summary: string;
 }

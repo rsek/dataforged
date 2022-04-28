@@ -88,8 +88,8 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: In your vehicle
-                    # TODO: object to describe string template?
-                    # e.g. "${{ATTACHED_ASSET_NAME}}"
+                      # TODO: object to describe string template?
+                      # e.g. "${{ATTACHED_ASSET_NAME}}"
                       Method: Inherit
                       Using: [Edge]
                 Outcomes:
@@ -112,7 +112,8 @@ Asset Types:
                       Text: In your vehicle (and you choose to maneuver)
                 Text: Add +1.
                 Outcomes:
-                  Strong Hit: *outcome:+1_momentum
+                  Strong Hit: &outcome:+1_momentum
+                    Text: Take +1 momentum.
               - Moves:
                   - Starforged/Moves/Combat/Enter_the_Fray
                 Trigger:
@@ -120,7 +121,10 @@ Asset Types:
                     - Method: Inherit
                       Roll type: Action roll
                       Text: In your vehicle (and you choose to boost)
-                Outcomes: *outcomes:+2_momentum.HIT
+                Outcomes: &outcomes:+2_momentum.HIT
+                  Strong Hit: &outcome:+2_momentum
+                    Text: Take +2 momentum.
+                  Weak Hit: *outcome:+2_momentum
           - Text: |-
               When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
             Alter Moves:
@@ -282,8 +286,7 @@ Asset Types:
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
-                    With a Match: &outcome:+2_momentum
-                      Text: Take +2 momentum.
+                    With a Match: *outcome:+2_momentum
       - Name: Internal Refit
         States:
           - *Broken
@@ -331,10 +334,13 @@ Asset Types:
                 Outcomes:
                   Strong Hit:
                     Text: Take +momentum equal to your vessel's integrity.
-                    Reroll: *reroll:any
+                    Reroll: &reroll:any
+                      Dice: Any
+                      Text: Reroll any dice.
                     With a Match:
                       Text: Mark progress, and take +momentum equal to your vessel's integrity.
-                  Weak Hit: *outcome:reroll_any
+                  Weak Hit: &outcome:reroll_any
+                    Reroll: *reroll:any
                   Miss: *outcome:reroll_any
       - Name: Medbay
         States:
@@ -431,7 +437,9 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
                 Text: Add +1.
-                Outcomes: *outcomes:+1_momentum.HIT
+                Outcomes: &outcomes:+1_momentum.HIT
+                  Strong Hit: *outcome:+1_momentum
+                  Weak Hit: *outcome:+1_momentum
           - Text: |-
               When you have at least 3 ammo and [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
             Alter Moves:
@@ -463,10 +471,7 @@ Asset Types:
                     - Text: By talking through a situation with the overseer AI
                       Roll type: Action roll
                       Using: [Attached_Asset_Condition_Meter]
-                Outcomes: &outcomes:+1_momentum.HIT
-                  Strong Hit: &outcome:+1_momentum
-                    Text: Take +1 momentum.
-                  Weak Hit: *outcome:+1_momentum
+                Outcomes: *outcomes:+1_momentum.HIT
             Enabled: true
           - Text: |-
               When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
@@ -573,10 +578,7 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
                 Outcomes: &outcomes:reroll_any.ALL
-                  Strong Hit: &outcome:reroll_any
-                    Reroll: &reroll:any
-                      Dice: Any
-                      Text: Reroll any dice.
+                  Strong Hit: *outcome:reroll_any
                   Weak Hit: *outcome:reroll_any
                   Miss: *outcome:reroll_any
           - Text: |-
@@ -606,7 +608,8 @@ Asset Types:
                     Text: Mark progress.
                     With a Match:
                       Text: Mark progress twice.
-                  Weak Hit: *outcome:mark_progress
+                  Weak Hit: &outcome:mark_progress
+                    Text: Mark progress.
               - Moves:
                   - Starforged/Moves/Quest/Fulfill_Your_Vow
                 Trigger:
@@ -733,9 +736,7 @@ Asset Types:
                       Roll type: Action roll
                       Using:
                         - ${{@ASSET_METER}}
-                Outcomes: &outcomes:+2_momentum.HIT
-                  Strong Hit: *outcome:+2_momentum
-                  Weak Hit: *outcome:+2_momentum
+                Outcomes: *outcomes:+2_momentum.HIT
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
             Alter Moves:
@@ -1038,10 +1039,10 @@ Asset Types:
               When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.
             Alter Momentum:
               Burn:
-                Trigger:
-                  Text: When you make a move while maneuvering your bike # implicit: 'and burn momentum to improve your result'
-                Effect:
-                  Text: Roll your action die. On a 5 or 6, do not reset momentum.
+                - Trigger:
+                    Text: When you make a move while maneuvering your bike # implicit: 'and burn momentum to improve your result'
+                  Effect:
+                    Text: Roll your action die. On a 5 or 6, do not reset momentum.
             # FIXME: this is a difficult trigger to describe in relation to moves. it might make more sense to develop a momentum burn trigger instead.
         Condition Meter:
           Name: Integrity
@@ -1417,10 +1418,8 @@ Asset Types:
               You add an important new piece to your set of armor, or upgrade its materials. As above, but preset your action die to 5 instead of 4.
             # TODO: alter trigger above, by ID?
             Alter Moves:
-              - Extends:
+              - Alters:
                   - ${{@ASSET}}/Abilities/1/Alter_Moves/1
-                # AlterMove ID
-                # TODO: implement Extends key
                 Preset:
                   - Die: Action die
                     Value: 5
@@ -1637,8 +1636,7 @@ Asset Types:
                       Roll type: Action roll
                       Using: [Heart]
                 Outcomes: &outcomes:mark_progress.HIT
-                  Strong Hit: &outcome:mark_progress
-                    Text: Mark progress.
+                  Strong Hit: *outcome:mark_progress
                   Weak Hit: *outcome:mark_progress
               - Moves:
                   - Starforged/Moves/Combat/Gain_Ground
@@ -2479,7 +2477,7 @@ Asset Types:
                 * Bolster your link: When you use a HAUNTED asset ability, take +1 momentum on a hit.
             # if this asset ability is enabled, it's probably safe to assume they've kept the asset (and, thus, taken the second choice)
             Alter Moves:
-              - Extends:
+              - Alters:
                   - ${{@ASSET}}/Abilities/2/Alter_Moves/1
                   - ${{@ASSET}}/Abilities/3/Alter_Moves/1
                 Outcomes:
@@ -2721,7 +2719,7 @@ Asset Types:
           - Text: |-
               When you make a reroll granted by any asset ability on an action roll, also add +1.
             # TODO: this is a weird one! is there a non-silly way to apply this to every action die reroll from an asset ability?
-            # what about "Extends: null"? is there a way to make it explicit that it's only supposed to be added to those?
+            # what about "Alters: null"? is there a way to make it explicit that it's only supposed to be added to those?
       - Name: Lore Hunter
         Aliases: [Archivist, Lore-Hunter]
         Abilities:
@@ -2812,10 +2810,10 @@ Asset Types:
               You may burn momentum on behalf of an ally to improve their result on a move. If you do, your ally takes +1 momentum.
             Alter Momentum:
               Burn:
-                Trigger:
-                  Text: On behalf of an ally to improve their result on a move
-                Effect:
-                  Text: Your ally takes +1 momentum.
+                - Trigger:
+                    Text: On behalf of an ally to improve their result on a move
+                  Effect:
+                    Text: Your ally takes +1 momentum.
           - Text: |-
               When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
             # TODO: implement "by ally" flag interface
@@ -3155,11 +3153,11 @@ Asset Types:
               When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
             Alter Momentum:
               Burn:
-                Trigger:
-                  Text: When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit
+                - Trigger:
+                    Text: When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit
                   Outcome: Strong Hit
-                Effect:
-                  Text: Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
+                  Effect:
+                    Text: Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
 
             # TODO: momentum burn trigger
       - Name: Seer
@@ -3558,14 +3556,14 @@ Asset Types:
             Enabled: true
             Alter Momentum:
               Reset:
-                Trigger:
-                  Text: When you are in a fight
-                Value: 1
+                - Trigger:
+                    Text: When you are in a fight
+                  Value: 1
               Burn:
-                Trigger:
-                  Text: When you are in a fight
-                Effect:
-                  Text: Add +1 on your next move
+                - Trigger:
+                    Text: When you are in a fight
+                  Effect:
+                    Text: Add +1 on your next move
           - Text: |-
               When you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection), add +1. If you roll a match, you have a history.
 
@@ -3602,12 +3600,17 @@ Asset Types:
           - Text: |-
               You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
             Enabled: true
+            # TODO: revisit this for expansion
+            Triggers: # this is for triggers that aren't really moves, but that still might benefit from enumeration
+              - Trigger:
+                  Text: When you enter a planetside or high gravity environment
+                Effect:
+                  Text: "[Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1)."
             Alter Momentum:
               Reset:
-                Trigger:
-                  Text: When you are in space (or a spacebound vehicle or station)
-                Value: 1
-            # TODO: lose momentum event??
+                - Trigger:
+                    Text: When you are in space (or a spacebound vehicle or station)
+                  Value: 1
           - Text: |-
               When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) within a spacebound community, add +1. If you [Hearten](Starforged/Moves/Recover/Hearten) there and score a strong hit, take +1 spirit or +1 momentum.
             Alter Moves:
@@ -4598,10 +4601,10 @@ Asset Types:
             # TODO: implement interface for alter momentum burn
             Alter Momentum:
               Burn:
-                Trigger:
-                  Text: To improve the result of a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach
-                Effect:
-                  Text: You may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.
+                - Trigger:
+                    Text: To improve the result of a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach
+                  Effect:
+                    Text: You may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.
           - Text: |-
               You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset.
             # TODO: modify impacts interface?

@@ -17,14 +17,6 @@ export interface IMoveTriggerOption<T extends RollType> extends IHasId<MoveRollI
     "Roll type": T;
     /**
      * The method used to choose the stat or track in the `Using` array.
-     *
-     * Any = the user can choose any of the options; if there's only one option, use this method.
-     *
-     * Highest = roll with the highest value in the array.
-     *
-     * Lowest = roll with the lowest value in the array.
-     *
-     * All = make one roll with *every* value in the array.
      */
     Method: RollMethod;
     /**

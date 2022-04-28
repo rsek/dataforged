@@ -12,6 +12,7 @@
         "$id": "Ironsworn/Assets/Companion/Cave_Lion",
         "Name": "Cave Lion",
         "Display": { "Title": "Cave Lion" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Inputs/Name",
@@ -33,17 +34,64 @@
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1",
             "Text": "When your cat chases down big game, you may [Resupply](Ironsworn/Moves/Adventure/Resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "When your cat chases down big game",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Edge"]
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2",
             "Text": "When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Strike](Ironsworn/Moves/Combat/Strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Ironsworn/Moves/Combat/Enter_the_Fray",
+                  "Ironsworn/Moves/Combat/Strike"
+                ],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "By sending your cat to attack",
+                      "Roll type": "Action roll",
+                      "Method": "Any",
+                      "Using": ["Edge"]
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3",
             "Text": "When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Make_Camp"]
+              }
+            ]
           }
         ]
       },
@@ -53,6 +101,7 @@
         "$id": "Ironsworn/Assets/Companion/Giant_Spider",
         "Name": "Giant Spider",
         "Display": { "Title": "Giant Spider" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Inputs/Name",
@@ -74,17 +123,72 @@
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "By sending your spider to scout a place",
+                      "Roll type": "Action roll",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2",
             "Text": "You may [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "By sending your spider to secretly study someone",
+                      "Method": "Inherit",
+                      "Using": ["Shadow"]
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3",
             "Text": "When your spider sets a trap, add +1 as you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +shadow. On a strong hit, also inflict 2 harm.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Combat/Enter_the_Fray"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "When your spider sets a trap",
+                      "Method": "Inherit",
+                      "Using": ["Shadow"]
+                    }
+                  ]
+                }
+              }
+            ]
           }
         ]
       },
@@ -94,6 +198,7 @@
         "$id": "Ironsworn/Assets/Companion/Hawk",
         "Name": "Hawk",
         "Display": { "Title": "Hawk" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Inputs/Name",
@@ -115,17 +220,90 @@
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1",
             "Text": "When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), or when you [Resupply](Ironsworn/Moves/Adventure/Resupply) by hunting for small game, add +1.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Undertake_a_Journey"]
+              },
+              {
+                "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/2",
+                "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/2/Trigger/Options/1",
+                      "Text": "By hunting for small game",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "Using your hawk to harass and distract your foes",
+                      "Method": "Inherit",
+                      "Using": ["Edge"]
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3",
             "Text": "When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +wits to detect an approaching threat, or when you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush, add +2.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "To detect an approaching threat",
+                      "Method": "Any",
+                      "Using": []
+                    }
+                  ]
+                }
+              },
+              {
+                "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/2",
+                "Moves": ["Ironsworn/Moves/Combat/Enter_the_Fray"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/2/Trigger/Options/1",
+                      "Method": "Inherit",
+                      "Using": ["Wits"]
+                    }
+                  ]
+                }
+              }
+            ]
           }
         ]
       },
@@ -135,6 +313,7 @@
         "$id": "Ironsworn/Assets/Companion/Horse",
         "Name": "Horse",
         "Display": { "Title": "Horse" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Inputs/Name",
@@ -156,17 +335,81 @@
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1",
             "Text": "When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), add +1.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Undertake_a_Journey"]
+              },
+              {
+                "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/2",
+                "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/2/Trigger/Options/1",
+                      "Text": "Using your horse’s speed and grace",
+                      "Method": "Inherit",
+                      "Using": ["Edge"]
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2",
             "Text": "When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Ironsworn/Moves/Combat/Enter_the_Fray",
+                  "Ironsworn/Moves/Adventure/Secure_an_Advantage"
+                ],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "By charging into combat",
+                      "Method": "Inherit",
+                      "Using": ["Heart"]
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) at close range while mounted, add +1 and inflict +1 harm on a hit.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1",
+                "Moves": [
+                  "Ironsworn/Moves/Combat/Strike",
+                  "Ironsworn/Moves/Combat/Clash"
+                ],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "At close range while mounted",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           }
         ]
       },
@@ -176,6 +419,7 @@
         "$id": "Ironsworn/Assets/Companion/Hound",
         "Name": "Hound",
         "Display": { "Title": "Hound" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Inputs/Name",
@@ -197,17 +441,74 @@
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1",
             "Text": "When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "Using your hound’s keen senses to track your quarry or investigate a scene",
+                      "Method": "Any",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Ironsworn/Moves/Combat/Strike",
+                  "Ironsworn/Moves/Combat/Clash"
+                ],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "Alongside your hound",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3",
             "Text": "When you [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) in the company of your hound, add +1.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Suffer/Endure_Stress"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "In the company of your hound",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           }
         ]
       },
@@ -217,6 +518,7 @@
         "$id": "Ironsworn/Assets/Companion/Kindred",
         "Name": "Kindred",
         "Display": { "Title": "Kindred" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Inputs/Name",
@@ -246,17 +548,78 @@
                 "Adjustable": false
               }
             ],
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Alter_Moves/1",
+                "Moves": null,
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "When you make a move outside of combat aided by your companion’s expertise",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2",
             "Text": "When you [Clash](Ironsworn/Moves/Combat/Clash) or [Battle](Ironsworn/Moves/Combat/Battle) alongside your companion, or when you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) against an attack by standing together, add +1.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/1",
+                "Moves": [
+                  "Ironsworn/Moves/Combat/Clash",
+                  "Ironsworn/Moves/Combat/Battle"
+                ],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "Alongside your companion",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              },
+              {
+                "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/2",
+                "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
+                "Trigger": {
+                  "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/2/Trigger/Options/1",
+                      "Text": "Against an attack by standing together",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/3",
             "Text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.",
-            "Enabled": false
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/3/Alter_Moves/1",
+                "Moves": ["Ironsworn/Moves/Suffer/Face_Desolation"]
+              }
+            ]
           }
         ]
       },
@@ -266,6 +629,7 @@
         "$id": "Ironsworn/Assets/Companion/Mammoth",
         "Name": "Mammoth",
         "Display": { "Title": "Mammoth" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Mammoth/Inputs/Name",
@@ -307,6 +671,7 @@
         "$id": "Ironsworn/Assets/Companion/Owl",
         "Name": "Owl",
         "Display": { "Title": "Owl" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Owl/Inputs/Name",
@@ -348,6 +713,7 @@
         "$id": "Ironsworn/Assets/Companion/Raven",
         "Name": "Raven",
         "Display": { "Title": "Raven" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Raven/Inputs/Name",
@@ -389,6 +755,7 @@
         "$id": "Ironsworn/Assets/Companion/Young_Wyvern",
         "Name": "Young Wyvern",
         "Display": { "Title": "Young Wyvern" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Inputs/Name",
@@ -427,6 +794,7 @@
                 "Moves": ["Ironsworn/Moves/Combat/Strike"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -457,6 +825,7 @@
         "$id": "Ironsworn/Assets/Path/Alchemist",
         "Name": "Alchemist",
         "Display": { "Title": "Alchemist" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Alchemist/Abilities/1",
@@ -547,6 +916,7 @@
         "$id": "Ironsworn/Assets/Path/Animal_Kin",
         "Name": "Animal Kin",
         "Display": { "Title": "Animal Kin" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Animal_Kin/Abilities/1",
@@ -571,6 +941,7 @@
         "$id": "Ironsworn/Assets/Path/Banner-Sworn",
         "Name": "Banner-Sworn",
         "Display": { "Title": "Banner-Sworn" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Path/Banner-Sworn/Inputs/Name",
@@ -604,6 +975,7 @@
         "$id": "Ironsworn/Assets/Path/Battle-Scarred",
         "Name": "Battle-Scarred",
         "Display": { "Title": "Battle-Scarred" },
+        "Usage": { "Shared": false },
         "Requirement": "Once you become maimed...",
         "Abilities": [
           {
@@ -626,6 +998,7 @@
                 "Moves": ["Ironsworn/Moves/Suffer/Endure_Harm"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -647,6 +1020,7 @@
         "$id": "Ironsworn/Assets/Path/Blade-Bound",
         "Name": "Blade-Bound",
         "Display": { "Title": "Blade-Bound" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Path/Blade-Bound/Inputs/Name",
@@ -679,6 +1053,7 @@
         "$id": "Ironsworn/Assets/Path/Bonded",
         "Name": "Bonded",
         "Display": { "Title": "Bonded" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Bonded/Abilities/1",
@@ -703,6 +1078,7 @@
         "$id": "Ironsworn/Assets/Path/Dancer",
         "Name": "Dancer",
         "Display": { "Title": "Dancer" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Dancer/Abilities/1",
@@ -764,6 +1140,7 @@
         "$id": "Ironsworn/Assets/Path/Devotant",
         "Name": "Devotant",
         "Display": { "Title": "Devotant" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Path/Devotant/Inputs/God's Name",
@@ -852,6 +1229,7 @@
                 "Moves": ["Ironsworn/Moves/Quest/Swear_an_Iron_Vow"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Devotant/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Devotant/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -877,6 +1255,7 @@
                 "Moves": ["Ironsworn/Moves/Relationship/Sojourn"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Devotant/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Devotant/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -900,6 +1279,7 @@
         "$id": "Ironsworn/Assets/Path/Empowered",
         "Name": "Empowered",
         "Display": { "Title": "Empowered" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Path/Empowered/Inputs/Title/Lineage",
@@ -932,6 +1312,7 @@
         "$id": "Ironsworn/Assets/Path/Fortune_Hunter",
         "Name": "Fortune Hunter",
         "Display": { "Title": "Fortune Hunter" },
+        "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
@@ -964,6 +1345,7 @@
         "$id": "Ironsworn/Assets/Path/Herbalist",
         "Name": "Herbalist",
         "Display": { "Title": "Herbalist" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Herbalist/Abilities/1",
@@ -988,6 +1370,7 @@
         "$id": "Ironsworn/Assets/Path/Honorbound",
         "Name": "Honorbound",
         "Display": { "Title": "Honorbound" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Honorbound/Abilities/1",
@@ -1012,6 +1395,7 @@
         "$id": "Ironsworn/Assets/Path/Improviser",
         "Name": "Improviser",
         "Display": { "Title": "Improviser" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1",
@@ -1023,6 +1407,7 @@
                 "Moves": ["Ironsworn/Moves/Delve/Check_Your_Gear"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -1052,6 +1437,7 @@
         "$id": "Ironsworn/Assets/Path/Infiltrator",
         "Name": "Infiltrator",
         "Display": { "Title": "Infiltrator" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/1",
@@ -1068,6 +1454,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1083,7 +1470,8 @@
                 "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/2",
                 "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
-                  "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/2/Trigger"
+                  "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false }
                 }
               }
             ]
@@ -1098,6 +1486,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1119,6 +1508,7 @@
         "$id": "Ironsworn/Assets/Path/Loyalist",
         "Name": "Loyalist",
         "Display": { "Title": "Loyalist" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Loyalist/Abilities/1",
@@ -1143,6 +1533,7 @@
         "$id": "Ironsworn/Assets/Path/Masked",
         "Name": "Masked",
         "Display": { "Title": "Masked" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material",
@@ -1243,6 +1634,7 @@
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Death"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1261,6 +1653,7 @@
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Desolation"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/2/Trigger/Options/1",
@@ -1284,6 +1677,7 @@
         "$id": "Ironsworn/Assets/Path/Oathbreaker",
         "Name": "Oathbreaker",
         "Display": { "Title": "Oathbreaker" },
+        "Usage": { "Shared": false },
         "Requirement": "Once you [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)...",
         "Abilities": [
           {
@@ -1309,6 +1703,7 @@
         "$id": "Ironsworn/Assets/Path/Outcast",
         "Name": "Outcast",
         "Display": { "Title": "Outcast" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Outcast/Abilities/1",
@@ -1370,6 +1765,7 @@
         "$id": "Ironsworn/Assets/Path/Pretender",
         "Name": "Pretender",
         "Display": { "Title": "Pretender" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Pretender/Abilities/1",
@@ -1423,6 +1819,7 @@
                 "Moves": ["Ironsworn/Moves/Relationship/Sojourn"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Pretender/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Pretender/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1449,6 +1846,7 @@
         "$id": "Ironsworn/Assets/Path/Revenant",
         "Name": "Revenant",
         "Display": { "Title": "Revenant" },
+        "Usage": { "Shared": false },
         "Requirement": "Once you [Face Death](Ironsworn/Moves/Suffer/Face_Death) and return to the world of the living...",
         "Abilities": [
           {
@@ -1474,6 +1872,7 @@
         "$id": "Ironsworn/Assets/Path/Rider",
         "Name": "Rider",
         "Display": { "Title": "Rider" },
+        "Usage": { "Shared": false },
         "Requirement": "If you are with your horse companion...",
         "Abilities": [
           {
@@ -1499,6 +1898,7 @@
         "$id": "Ironsworn/Assets/Path/Ritualist",
         "Name": "Ritualist",
         "Display": { "Title": "Ritualist" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Ritualist/Abilities/1",
@@ -1523,6 +1923,7 @@
         "$id": "Ironsworn/Assets/Path/Shadow-Kin",
         "Name": "Shadow-Kin",
         "Display": { "Title": "Shadow-Kin" },
+        "Usage": { "Shared": false },
         "Requirement": "Once you become corrupted...",
         "Abilities": [
           {
@@ -1545,6 +1946,7 @@
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Death"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Shadow-Kin/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Shadow-Kin/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1565,6 +1967,7 @@
         "$id": "Ironsworn/Assets/Path/Sighted",
         "Name": "Sighted",
         "Display": { "Title": "Sighted" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Sighted/Abilities/1",
@@ -1589,6 +1992,7 @@
         "$id": "Ironsworn/Assets/Path/Slayer",
         "Name": "Slayer",
         "Display": { "Title": "Slayer" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Slayer/Abilities/1",
@@ -1613,6 +2017,7 @@
         "$id": "Ironsworn/Assets/Path/Spirit-Bound",
         "Name": "Spirit-Bound",
         "Display": { "Title": "Spirit-Bound" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Spirit-Bound/Abilities/1",
@@ -1637,6 +2042,7 @@
         "$id": "Ironsworn/Assets/Path/Storyweaver",
         "Name": "Storyweaver",
         "Display": { "Title": "Storyweaver" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Storyweaver/Abilities/1",
@@ -1661,6 +2067,7 @@
         "$id": "Ironsworn/Assets/Path/Trickster",
         "Name": "Trickster",
         "Display": { "Title": "Trickster" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Trickster/Abilities/1",
@@ -1677,6 +2084,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Trickster/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Trickster/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1699,6 +2107,7 @@
                 "Moves": ["Ironsworn/Moves/Relationship/Forge_a_Bond"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Trickster/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Trickster/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1725,6 +2134,7 @@
         "$id": "Ironsworn/Assets/Path/Veteran",
         "Name": "Veteran",
         "Display": { "Title": "Veteran" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Veteran/Abilities/1",
@@ -1749,6 +2159,7 @@
         "$id": "Ironsworn/Assets/Path/Waterborn",
         "Name": "Waterborn",
         "Display": { "Title": "Waterborn" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Waterborn/Abilities/1",
@@ -1773,6 +2184,7 @@
         "$id": "Ironsworn/Assets/Path/Wayfinder",
         "Name": "Wayfinder",
         "Display": { "Title": "Wayfinder" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Wayfinder/Abilities/1",
@@ -1797,6 +2209,7 @@
         "$id": "Ironsworn/Assets/Path/Weaponmaster",
         "Name": "Weaponmaster",
         "Display": { "Title": "Weaponmaster" },
+        "Usage": { "Shared": false },
         "Requirement": "Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to a seasoned warrior, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...",
         "Abilities": [
           {
@@ -1822,6 +2235,7 @@
         "$id": "Ironsworn/Assets/Path/Wildblood",
         "Name": "Wildblood",
         "Display": { "Title": "Wildblood" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/1",
@@ -1843,6 +2257,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Make_Camp"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1863,6 +2278,7 @@
         "$id": "Ironsworn/Assets/Path/Wright",
         "Name": "Wright",
         "Display": { "Title": "Wright" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Wright/Abilities/1",
@@ -1887,6 +2303,7 @@
         "$id": "Ironsworn/Assets/Path/Commander",
         "Name": "Commander",
         "Display": { "Title": "Commander" },
+        "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 4,
@@ -1906,6 +2323,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -1922,6 +2340,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/2/Trigger/Options/1",
@@ -1938,6 +2357,7 @@
                 "Moves": ["Ironsworn/Moves/Relationship/Compel"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/3/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/3/Trigger/Options/1",
@@ -1954,6 +2374,7 @@
                 "Moves": ["Ironsworn/Moves/Combat/Battle"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/4/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/4/Trigger/Options/1",
@@ -1977,6 +2398,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1993,6 +2415,7 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/2/Trigger",
+                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/2/Trigger/Options/1",
@@ -2019,6 +2442,7 @@
         "$id": "Ironsworn/Assets/Path/Fated",
         "Name": "Fated",
         "Display": { "Title": "Fated" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Fated/Abilities/1",
@@ -2043,6 +2467,7 @@
         "$id": "Ironsworn/Assets/Path/Lorekeeper",
         "Name": "Lorekeeper",
         "Display": { "Title": "Lorekeeper" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Lorekeeper/Abilities/1",
@@ -2076,6 +2501,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Archer",
         "Name": "Archer",
         "Display": { "Title": "Archer" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a bow...",
         "Abilities": [
           {
@@ -2101,6 +2527,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Berserker",
         "Name": "Berserker",
         "Display": { "Title": "Berserker" },
+        "Usage": { "Shared": false },
         "Requirement": "If you are clad only in animal pelts...",
         "Abilities": [
           {
@@ -2126,6 +2553,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Brawler",
         "Name": "Brawler",
         "Display": { "Title": "Brawler" },
+        "Usage": { "Shared": false },
         "Requirement": "If you are unarmed or fighting with a non-deadly weapon...",
         "Abilities": [
           {
@@ -2151,6 +2579,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Cutthroat",
         "Name": "Cutthroat",
         "Display": { "Title": "Cutthroat" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a dagger or knife...",
         "Abilities": [
           {
@@ -2176,6 +2605,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Duelist",
         "Name": "Duelist",
         "Display": { "Title": "Duelist" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a bladed weapon in each hand...",
         "Abilities": [
           {
@@ -2201,6 +2631,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Fletcher",
         "Name": "Fletcher",
         "Display": { "Title": "Fletcher" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Combat_Talent/Fletcher/Abilities/1",
@@ -2264,6 +2695,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Ironclad",
         "Name": "Ironclad",
         "Display": { "Title": "Ironclad" },
+        "Usage": { "Shared": false },
         "Inputs": [
           {
             "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped",
@@ -2322,6 +2754,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Long-Arm",
         "Name": "Long-Arm",
         "Display": { "Title": "Long-Arm" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a staff...",
         "Abilities": [
           {
@@ -2347,6 +2780,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Shield-Bearer",
         "Name": "Shield-Bearer",
         "Display": { "Title": "Shield-Bearer" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a shield...",
         "Abilities": [
           {
@@ -2372,6 +2806,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Skirmisher",
         "Name": "Skirmisher",
         "Display": { "Title": "Skirmisher" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a spear...",
         "Abilities": [
           {
@@ -2397,6 +2832,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Slinger",
         "Name": "Slinger",
         "Display": { "Title": "Slinger" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a sling...",
         "Abilities": [
           {
@@ -2422,6 +2858,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Sunderer",
         "Name": "Sunderer",
         "Display": { "Title": "Sunderer" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield an axe...",
         "Abilities": [
           {
@@ -2482,6 +2919,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Swordmaster",
         "Name": "Swordmaster",
         "Display": { "Title": "Swordmaster" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a sword...",
         "Abilities": [
           {
@@ -2507,6 +2945,7 @@
         "$id": "Ironsworn/Assets/Combat_Talent/Thunder-Bringer",
         "Name": "Thunder-Bringer",
         "Display": { "Title": "Thunder-Bringer" },
+        "Usage": { "Shared": false },
         "Requirement": "If you wield a mighty hammer...",
         "Abilities": [
           {
@@ -2541,6 +2980,7 @@
         "$id": "Ironsworn/Assets/Ritual/Augur",
         "Name": "Augur",
         "Display": { "Title": "Augur" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Augur/Abilities/1",
@@ -2602,6 +3042,7 @@
         "$id": "Ironsworn/Assets/Ritual/Awakening",
         "Name": "Awakening",
         "Display": { "Title": "Awakening" },
+        "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 3,
@@ -2672,6 +3113,7 @@
         "$id": "Ironsworn/Assets/Ritual/Bind",
         "Name": "Bind",
         "Display": { "Title": "Bind" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Bind/Abilities/1",
@@ -2725,6 +3167,7 @@
         "$id": "Ironsworn/Assets/Ritual/Communion",
         "Name": "Communion",
         "Display": { "Title": "Communion" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Communion/Abilities/1",
@@ -2778,6 +3221,7 @@
         "$id": "Ironsworn/Assets/Ritual/Divination",
         "Name": "Divination",
         "Display": { "Title": "Divination" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Divination/Abilities/1",
@@ -2831,6 +3275,7 @@
         "$id": "Ironsworn/Assets/Ritual/Invoke",
         "Name": "Invoke",
         "Display": { "Title": "Invoke" },
+        "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
@@ -2892,6 +3337,7 @@
         "$id": "Ironsworn/Assets/Ritual/Keen",
         "Name": "Keen",
         "Display": { "Title": "Keen" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Keen/Abilities/1",
@@ -2945,6 +3391,7 @@
         "$id": "Ironsworn/Assets/Ritual/Leech",
         "Name": "Leech",
         "Display": { "Title": "Leech" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Leech/Abilities/1",
@@ -2998,6 +3445,7 @@
         "$id": "Ironsworn/Assets/Ritual/Lightbearer",
         "Name": "Lightbearer",
         "Display": { "Title": "Lightbearer" },
+        "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
@@ -3059,6 +3507,7 @@
         "$id": "Ironsworn/Assets/Ritual/Scry",
         "Name": "Scry",
         "Display": { "Title": "Scry" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Scry/Abilities/1",
@@ -3112,6 +3561,7 @@
         "$id": "Ironsworn/Assets/Ritual/Shadow-Walk",
         "Name": "Shadow-Walk",
         "Display": { "Title": "Shadow-Walk" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Shadow-Walk/Abilities/1",
@@ -3165,6 +3615,7 @@
         "$id": "Ironsworn/Assets/Ritual/Sway",
         "Name": "Sway",
         "Display": { "Title": "Sway" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Sway/Abilities/1",
@@ -3218,6 +3669,7 @@
         "$id": "Ironsworn/Assets/Ritual/Talisman",
         "Name": "Talisman",
         "Display": { "Title": "Talisman" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Talisman/Abilities/1",
@@ -3271,6 +3723,7 @@
         "$id": "Ironsworn/Assets/Ritual/Tether",
         "Name": "Tether",
         "Display": { "Title": "Tether" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Tether/Abilities/1",
@@ -3324,6 +3777,7 @@
         "$id": "Ironsworn/Assets/Ritual/Totem",
         "Name": "Totem",
         "Display": { "Title": "Totem" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Totem/Abilities/1",
@@ -3377,6 +3831,7 @@
         "$id": "Ironsworn/Assets/Ritual/Visage",
         "Name": "Visage",
         "Display": { "Title": "Visage" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Visage/Abilities/1",
@@ -3430,6 +3885,7 @@
         "$id": "Ironsworn/Assets/Ritual/Ward",
         "Name": "Ward",
         "Display": { "Title": "Ward" },
+        "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Ward/Abilities/1",

@@ -8,7 +8,7 @@ export interface IHasSummary {
      * A user-facing markdown summary of the item.
      * @markdown
      */
-    Summary: string;
+    Summary: string | null;
 }
 /**
  * Interface for items with a user-facing markdown description, consisting of one or more paragraphs.

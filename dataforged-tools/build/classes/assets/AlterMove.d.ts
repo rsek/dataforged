@@ -7,7 +7,8 @@ import type { IAlterMoveYaml } from "../../yaml_in/assets/IAlterMoveYaml.js";
  */
 export declare class AlterMove implements IAlterMove {
     $id: AlterMoveId;
-    Moves: IMove["$id"][] | null;
+    Moves?: IMove["$id"][] | null | undefined;
+    Alters?: IAlterMove["$id"][] | undefined;
     Trigger?: MoveTrigger | undefined;
     constructor(json: IAlterMoveYaml, parent: IAssetAbility, index: number);
 }

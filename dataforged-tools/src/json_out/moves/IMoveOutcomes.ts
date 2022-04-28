@@ -1,6 +1,6 @@
-import type { IHasId , IMoveOutcome, MoveId } from "@json_out/index.js";
+import type { IHasId, MoveId } from "@json_out/index.js";
+import type { IOutcomeInfo, MoveOutcome } from "@json_out/moves/IMoveOutcomeInfo.js";
 
-// FIXME: key with enum for move outcomes
 /**
  * @public
  */
@@ -9,7 +9,7 @@ export type MoveOutcomesId = `${MoveId}/Outcomes`;
  * @public
  */
 export interface IMoveOutcomes extends IHasId<MoveOutcomesId> {
-  "Strong Hit": IMoveOutcome;
-  "Weak Hit": IMoveOutcome;
-  "Miss": IMoveOutcome;
+  [MoveOutcome.Strong_Hit]: IOutcomeInfo;
+  [MoveOutcome.Weak_Hit]: IOutcomeInfo;
+  [MoveOutcome.Miss]: IOutcomeInfo;
 }

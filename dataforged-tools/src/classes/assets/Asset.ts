@@ -2,6 +2,8 @@ import { AssetAbility } from "@classes/assets/AssetAbility.js";
 import { ConditionMeter } from "@classes/common/ConditionMeter.js";
 import type { Input } from "@classes/common/Input.js";
 import { SourceInheritor } from "@classes/common/SourceInheritor.js";
+import type { IAssetState } from "@json_out/assets/IAssetState.js";
+import type { IAssetUsage } from "@json_out/assets/IAssetUsage.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 import { InputType } from "@json_out/common/index.js";
 import { Replacement } from "@json_out/common/Replacement.js";
@@ -21,9 +23,11 @@ import _ from "lodash-es";
 export class Asset extends SourceInheritor implements IAsset {
   $id: AssetId;
   Name: string;
+  States?: IAssetState[]|undefined;
   Aliases?: string[] | undefined;
   "Asset Type": IAssetType["$id"];
   Display: RequireKey<IDisplay, "Color">;
+  Usage: IAssetUsage;
   Attachments?: IAssetAttachment | undefined;
   Requirement?: string | undefined;
   Inputs?: Input<InputType>[] | undefined;
@@ -41,6 +45,9 @@ export class Asset extends SourceInheritor implements IAsset {
     this.Display = {
       Title: json.Display?.Title ?? this.Name,
       Color: json.Display?.Color ?? parent.Display.Color
+    };
+    this.Usage = {
+      Shared: [ "Command Vehicle", "Support Vehicle", "Module" ].includes(parent.Name) ? true : false
     };
     this.Attachments = json.Attachments;
     if (json.Inputs) {
@@ -67,6 +74,7 @@ export class Asset extends SourceInheritor implements IAsset {
         return result;
       });
     }
+    this.States = json.States;
     this.Requirement = json.Requirement;
     this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
     if (json.Abilities.length !== 3) {

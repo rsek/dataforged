@@ -21,12 +21,44 @@ Asset Types:
           - Name: Eager
             Text: |-
               When your cat chases down big game, you may [Resupply](Ironsworn/Moves/Adventure/Resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Adventure/Resupply
+                Trigger:
+                  Options:
+                    - Text: When your cat chases down big game
+                      Roll type: Action roll
+                      Using: [Edge]
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +1 supply or +1 momentum.
           - Name: Inescapable
             Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Strike](Ironsworn/Moves/Combat/Strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Combat/Enter_the_Fray
+                  - Ironsworn/Moves/Combat/Strike
+                Trigger:
+                  Options:
+                    - Text: By sending your cat to attack
+                      Roll type: Action roll
+                      Using: [Edge]
+                Outcomes: &outcomes:+2_momentum.HIT
+                  Strong Hit: &outcome:+2_momentum
+                    Text: Take +2 momentum.
+                  Weak Hit: *outcome:+2_momentum
+
           - Name: Protective
             Text: |-
               When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Make_Camp]
+                Text: Your cat is alert to trouble.
+                Outcomes:
+                  Strong Hit: &Cave_Lion.3
+                    Text: If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
+                  Weak Hit: *Cave_Lion.3
         Condition Meter:
           Name: Health
           Max: 4
@@ -40,12 +72,48 @@ Asset Types:
           - Name: Discreet
             Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Adventure/Secure_an_Advantage
+                Trigger:
+                  Options:
+                    - Text: By sending your spider to scout a place
+                      Method: Inherit
+                      Roll type: Action roll
+                Text: Add +1.
+                Outcomes: &outcomes:+1_momentum.HIT
+                  Strong Hit: &outcome:+1_momentum
+                    Text: Take +1 momentum.
+                  Weak Hit: *outcome:+1_momentum
           - Name: Soul-Piercing
             Text: |-
               You may [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: By sending your spider to secretly study someone
+                      Method: Inherit
+                      Using: [Shadow]
+                Outcomes:
+                  Strong Hit: &Giant_Spider.2
+                    Text: The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.
+                  Weak Hit: *Giant_Spider.2
+                  # TODO: gather info for reroll?
+                  # Or: add move key to outcomes?
           - Name: Ensnaring
             Text: |-
               When your spider sets a trap, add +1 as you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +shadow. On a strong hit, also inflict 2 harm.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Text: When your spider sets a trap
+                      Method: Inherit
+                      Using: [Shadow]
+                Outcomes:
+                  Strong Hit:
+                    Text: Also inflict 2 harm.
         Condition Meter:
           Name: Health
           Max: 4
@@ -59,12 +127,42 @@ Asset Types:
           - Name: Far-seeing
             Text: |-
               When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), or when you [Resupply](Ironsworn/Moves/Adventure/Resupply) by hunting for small game, add +1.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Undertake_a_Journey]
+                Text: Add +1.
+              - Moves: [Ironsworn/Moves/Adventure/Resupply]
+                Trigger:
+                  Options:
+                    - Text: By hunting for small game
+                      Method: Inherit
+                Text: Add +1.
           - Name: Fierce
             Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
+                Trigger:
+                  Options:
+                    - Text: Using your hawk to harass and distract your foes
+                      Using: [Edge]
+                      Method: Inherit
+                Text: Add +1.
+                Outcomes: *outcomes:+1_momentum.HIT
           - Name: Vigilant
             Text: |-
               When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +wits to detect an approaching threat, or when you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush, add +2.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: To detect an approaching threat
+                Text: Add +2.
+              - Moves: [Ironsworn/Moves/Combat/Enter_the_Fray]
+                Trigger:
+                  Options:
+                    - Method: Inherit
+                      Using: [Wits] # no need for text, as 'ambushed' is already how +wits is described
+                Text: Add +2.
         Condition Meter:
           Name: Health
           Max: 3
@@ -78,12 +176,46 @@ Asset Types:
           - Name: Swift
             Text: |-
               When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), add +1.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Undertake_a_Journey]
+                Text: Add +1.
+              - Moves: [Ironsworn/Moves/Adventure/Face_Danger]
+                Trigger:
+                  Options:
+                    - Text: Using your horse’s speed and grace
+                      Using: [Edge]
+                      Method: Inherit
+                Text: Add +1.
           - Name: Fearless
             Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Combat/Enter_the_Fray
+                  - Ironsworn/Moves/Adventure/Secure_an_Advantage
+                Trigger:
+                  Options:
+                    - Text: By charging into combat
+                      Using: [Heart]
+                      Method: Inherit
+                Text: Add +1.
+                Outcomes: *outcomes:+1_momentum.HIT
           - Name: Mighty
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) at close range while mounted, add +1 and inflict +1 harm on a hit.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Combat/Strike
+                  - Ironsworn/Moves/Combat/Clash
+                Trigger:
+                  Options:
+                    - Text: At close range while mounted
+                      Method: Inherit
+                Text: Add +1.
+                Outcomes: &outcomes:+1_harm.HIT
+                  Strong Hit: &outcome:+1_harm
+                    Text: Inflict +1 harm.
+                  Weak Hit: *outcome:+1_harm
         Condition Meter:
           Name: Health
           Max: 5
@@ -97,11 +229,38 @@ Asset Types:
           - Name: Sharp
             Text: |-
               When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Adventure/Gather_Information
+                Trigger:
+                  Options:
+                    - Text: Using your hound’s keen senses to track your quarry or investigate a scene
+                Text: Add +1.
+                Outcomes: *outcomes:+1_momentum.HIT
           - Name: Ferocious
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Combat/Strike
+                  - Ironsworn/Moves/Combat/Clash
+                Trigger:
+                  Options:
+                    - Text: Alongside your hound
+                      Method: Inherit
+                Outcomes:
+                  Strong Hit: &Hound.3
+                    Text: Inflict +1 harm or take +1 momentum.
+                  Weak Hit: *Hound.3
           - Name: Loyal
             Text: When you [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) in the company of your hound, add +1.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Suffer/Endure_Stress]
+                Trigger:
+                  Options:
+                    - Text: In the company of your hound
+                      Method: Inherit
+                Text: Add +1.
         Condition Meter:
           Name: Health
           Max: 4
@@ -118,12 +277,39 @@ Asset Types:
             Inputs:
               - Name: Expertise
                 Input Type: Text
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: When you make a move outside of combat aided by your companion’s expertise
+                      Method: Inherit
+                Text: Add +1.
           - Name: Shield-Kin
             Text: |-
               When you [Clash](Ironsworn/Moves/Combat/Clash) or [Battle](Ironsworn/Moves/Combat/Battle) alongside your companion, or when you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) against an attack by standing together, add +1.
+            Alter Moves:
+              - Moves:
+                  - Ironsworn/Moves/Combat/Clash
+                  - Ironsworn/Moves/Combat/Battle
+                Trigger:
+                  Options:
+                    - Text: Alongside your companion
+                      Method: Inherit
+                Text: Add +1.
+              - Moves:
+                  - Ironsworn/Moves/Adventure/Face_Danger
+                Trigger:
+                  Options:
+                    - Text: Against an attack by standing together
+                      Method: Inherit
+                Text: Add +1.
           - Name: Bonded
             Text: |-
               Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.
+            Alter Moves:
+              # TODO revisit later, consider removing or adding trigger info?
+              - Moves: [Ironsworn/Moves/Suffer/Face_Desolation]
+                Text: Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.
         Condition Meter:
           Name: Health
           Max: 4
@@ -137,6 +323,7 @@ Asset Types:
           - Name: Lumbering
             Text: |-
               When your mammoth travels with you as you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), you may add +2 but suffer -1 momentum (decide before rolling).
+            # TODO: left off here. enh.
           - Name: Beast of burden
             Text: |-
               When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.

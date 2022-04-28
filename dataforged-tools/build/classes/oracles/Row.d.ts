@@ -16,7 +16,7 @@ export declare class Row implements IRow, Partial<IHasSubtable<Row>> {
     Result: string;
     /**
      */
-    Summary?: string;
+    Summary?: string | null | undefined;
     /**
      */
     "Oracle rolls"?: IOracle["$id"][] | undefined;

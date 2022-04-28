@@ -182,13 +182,13 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
                 break;
               }
               case "Summary": {
-                if (typeof value !== "string" || value !== null) {
-                  throw badJsonError(this.constructor, value, "expected summary string");
+                if (typeof value !== "string" && value !== null) {
+                  throw badJsonError(this.constructor, value, "expected summary string or null");
                 }
                 if (this.Summary) {
                   throw badJsonError(this.constructor, value, "A summary string was provided, but one has already been assigned.");
                 }
-                this.Summary = value as string | null;
+                this.Summary = value;
                 break;
               }
               case "Attributes": {

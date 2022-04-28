@@ -338,27 +338,6 @@ export declare interface DataforgedJsonRoot {
 }
 
 /**
- * @public
- */
-export declare const ironsworn: {
-    assets: IAssetType[];
-    encounters: IEncounterNatureInfo[];
-    moves: IMoveCategory[];
-    oracles: IOracleCategory[];
-};
-
-/**
- * @public
- */
-export declare const starforged: {
-    assets: IAssetType[];
-    encounters: IEncounterStarforged[];
-    moves: IMoveCategory[];
-    oracles: IOracleCategory[];
-    truths: ISettingTruth[];
-};
-
-/**
  * Set by oracle: Oracles / Derelicts / Type
  * @public
  */
@@ -604,15 +583,69 @@ export declare interface IActionRoll {
 /**
  * @public
  */
-export declare interface IAlterMove extends Omit<Partial<IMove>, "$id">, IHasId<AlterMoveId> {
+export declare interface IAlterMomentum {
     /**
-     * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply.
+     * Information on how the player's momentum burn is altered.
      */
-    Moves: IMove["$id"][] | null;
+    Burn?: IAlterMomentumBurn[] | undefined;
     /**
-     * The trigger information to be added to the altered move.
+     * Information on how the player's momentum reset is altered.
+     */
+    Reset?: IAlterMomentumReset[] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IAlterMomentumBurn {
+    /**
+     * The trigger condition for altering the PC's momentum burn.
+     */
+    Trigger: IHasText;
+    /**
+     * The effect altering the PC's momentum burn.
+     */
+    Effect: IHasText;
+}
+
+/**
+ * @public
+ */
+export declare interface IAlterMomentumReset {
+    /**
+     * The trigger condition for altering the PC's momentum reset.
+     */
+    Trigger: IHasText;
+    /**
+     * The amount by which the PC's momentum reset is change.
+     */
+    Value: number;
+}
+
+/**
+ * @public
+ */
+export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "$id" | "Category" | "Display" | "Source" | "Outcomes">, IHasId<AlterMoveId> {
+    /**
+     * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply. If it's `undefined`, see `Extends` instead.
+     */
+    Moves?: IMove["$id"][] | null | undefined;
+    /**
+     * Some asset abilities alter/extend other asset abilities, specified as an array of IDs. Only changed properties are specified; other properties are the same.
+     */
+    Alters?: IAlterMove["$id"][] | undefined;
+    /**
+     * The trigger required by the asset ability. If `undefined`, the move alteration applies to all uses of the specified moves, so long as they also meet any implicit asset requirements (fictional framing, `IAsset.Requirement`, not being Broken or Out of Action, etc).
      */
     Trigger?: IMoveTrigger | undefined;
+    /**
+     * Markdown rules text describing added effects which apply *before* the move is rolled, such as adds.
+     */
+    Text?: string | undefined;
+    /**
+     * Added rules text that applies on move outcomes.
+     */
+    Outcomes?: Partial<IMoveOutcomes> | undefined;
 }
 
 /**
@@ -621,7 +654,7 @@ export declare interface IAlterMove extends Omit<Partial<IMove>, "$id">, IHasId<
  */
 export declare interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
     /**
-     * @example "Assets/Path/Bounty_Hunter"
+     * @example "Starforged/Assets/Path/Bounty_Hunter"
      */
     $id: AssetId;
     /**
@@ -630,10 +663,18 @@ export declare interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, 
      */
     Name: string;
     /**
+     * Describes any states that the asset might have, such as "Broken". Some states may disable the asset entirely.
+     */
+    States?: IAssetState[];
+    /**
      * The ID of the asset's parent AssetType
-     * @example "Assets/Path"
+     * @example "Starforged/Assets/Path"
      */
     "Asset Type": IAssetType["$id"];
+    /**
+     * Information on the asset's usage, such as whether its abilities are shared amongst the player characters.
+     */
+    Usage: IAssetUsage;
     /**
      * Details on what attachments (other assets) are accepted by this asset.
      */
@@ -672,21 +713,37 @@ export declare interface IAssetAbility extends IHasId<AssetAbilityId>, IHasText 
      */
     Inputs?: IInput<InputType>[] | undefined;
     /**
-     * Information on how this ability alters moves when enabled. Currently, it only details additional stat triggers added by the asset ability, but it may expand in the future.
+     * Information on how this ability alters moves when enabled.
      */
     "Alter Moves"?: IAlterMove[] | undefined;
     /**
      * Information on how this ability alters its parent asset when enabled.
      */
-    "Alter Properties"?: Partial<IAsset> | undefined;
+    "Alter Properties"?: IAssetAlterProperties | undefined;
+    /**
+     * Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)
+     */
+    "Alter Momentum"?: IAlterMomentum | undefined;
     /**
      * Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.
      */
-    Enabled?: boolean | undefined;
+    Enabled: boolean;
 }
 
 /**
- * Details which assets are valid attachments. The most prominent example in *Ironsworn: Starforged* is the STARSHIP asset (`Assets/Command_Vehicle/Starship`); Rover (`Assets/Support_Vehicle/Rover`) also has an elective ability that adds this property.
+ * Describes changes that an asset ability makes to its parent asset when active. Any properties with object values should be merged recursively.
+ *
+ * @example An `IAssetAlterProperties` that would set `IAsset["Condition Meter"].Max` to 3, and leave its other properties unchanged:
+ * ```javascript
+ * { "Condition Meter": { Max: 3 } }
+ * ```
+ * @public
+ */
+export declare interface IAssetAlterProperties extends Partial<IAsset> {
+}
+
+/**
+ * Details which assets are valid attachments. The most prominent example in *Ironsworn: Starforged* is the STARSHIP asset (`Starship/Assets/Command_Vehicle/Starship`); Rover (`Starship/Assets/Support_Vehicle/Rover`) also has an elective ability that adds this property.
  * @public
  */
 export declare interface IAssetAttachment {
@@ -701,6 +758,38 @@ export declare interface IAssetAttachment {
 }
 
 /**
+ * Describes a possible state for an asset, like the "Broken" status for certain assets (mainly Modules in *Starforged*).
+ *
+ * States are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.
+ * @public
+ */
+export declare interface IAssetState extends IHasName {
+    /**
+     * A string label name or label for the state.
+     * @example "Broken"
+     */
+    Name: string;
+    /**
+     * Whether this state is currently enabled.
+     */
+    Enabled: boolean;
+    /**
+     * Whether this state should disable the entire asset when `IAssetState.Enabled === true`
+     */
+    "Disables asset": boolean;
+    /**
+     * Whether this state counts as an Impact for the asset's owner.
+     *
+     * Note that for vehicles, this shouldn't be applied automatically unless your implementation has some way of telling which vehicle the PC is currently using.
+     */
+    "Impact"?: boolean | undefined;
+    /**
+     * Whether or not this state is permanent.
+     */
+    Permanent: boolean;
+}
+
+/**
  * Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.
  * @public
  */
@@ -710,6 +799,20 @@ export declare interface IAssetType extends IHasName, IHasId<AssetTypeId>, IHasD
      */
     Assets: IAsset[];
     Name: AssetTypeName;
+}
+
+/**
+ * @public
+ */
+export declare interface IAssetUsage {
+    /**
+     * Whether the asset's abilities are shared with Allies.
+     *
+     * If set to `true`, the asset's abilities can be invoked by **any** player character; if your app facilitates co-op or guided play, consider how you might expose these abilities to players other than the asset's owner.
+     *
+     * Defaults to `true` for Command Vehicle, Support Vehicle, and Module assets.
+     */
+    Shared: boolean;
 }
 
 /**
@@ -897,6 +1000,7 @@ export declare interface IEncounterIronsworn extends IEncounter {
 export declare interface IEncounterNatureInfo extends IHasDescription, IHasSource, IHasName, IHasId<EncounterNatureId>, IHasDisplay, IHasSummary {
     Name: EncounterNatureIronsworn;
     Encounters: IEncounterIronsworn[];
+    Summary: string;
 }
 
 /**
@@ -1087,7 +1191,7 @@ export declare interface IHasSummary {
      * A user-facing markdown summary of the item.
      * @markdown
      */
-    Summary: string;
+    Summary: string | null;
 }
 
 /**
@@ -1270,7 +1374,7 @@ export declare interface IMeterBase extends IHasId<string>, IHasName {
  */
 export declare interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
     /**
-     * @example "Moves/Adventure/Face_Danger"
+     * @example "Starforged/Moves/Adventure/Face_Danger"
      */
     $id: MoveId;
     /**
@@ -1299,7 +1403,7 @@ export declare interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasD
      */
     Trigger: IMoveTrigger;
     /**
-     * The IDs of any oracles *directly* referenced by the move.
+     * The IDs of any oracles *directly* referenced by the move, or vice versa.
      */
     Oracles?: IOracle["$id"][] | undefined;
     /**
@@ -1333,17 +1437,10 @@ export declare interface IMoveCategory extends IHasId<MoveCategoryId>, IHasName,
 /**
  * @public
  */
-export declare interface IMoveOutcome extends IHasId<MoveOutcomeId>, IHasText {
-    "With a Match"?: IMoveOutcome | undefined;
-}
-
-/**
- * @public
- */
 export declare interface IMoveOutcomes extends IHasId<MoveOutcomesId> {
-    "Strong Hit": IMoveOutcome;
-    "Weak Hit": IMoveOutcome;
-    "Miss": IMoveOutcome;
+    [MoveOutcome.Strong_Hit]: IOutcomeInfo;
+    [MoveOutcome.Weak_Hit]: IOutcomeInfo;
+    [MoveOutcome.Miss]: IOutcomeInfo;
 }
 
 /**
@@ -1353,25 +1450,62 @@ export declare interface IMoveProgressRoll extends Omit<IMoveTriggerOption<RollT
 }
 
 /**
+ * Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.
+ * @public
+ */
+export declare interface IMoveReroll extends Partial<IHasText> {
+    /**
+     * The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.
+     * @markdown
+     */
+    Text: string;
+    /**
+     * The dice to be rerolled.
+     */
+    Dice: RerollType;
+}
+
+/**
  * Describes the trigger conditions of the move.
  * @public
  */
-export declare interface IMoveTrigger extends IHasId<MoveTriggerId>, IHasText {
+export declare interface IMoveTrigger extends IHasId<MoveTriggerId>, Partial<IHasText> {
     /**
-     * @example `Moves/Adventure/Face_Danger/Trigger`
+     * @example `Starforged/Moves/Adventure/Face_Danger/Trigger`
      */
     $id: MoveTriggerId;
     /**
      * A markdown string containing the primary trigger text for this move.
-     * @example `Moves/Adventure/Face_Danger/Trigger.Text`: "When you attempt something risky or react to an imminent threat..."
+     * @example `Starforged/Moves/Adventure/Face_Danger/Trigger.Text`: "When you attempt something risky or react to an imminent threat..."
      */
-    Text: string;
+    Text?: string | undefined;
+    /**
+     * Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.
+     *
+     * If unspecified, assume `Ally` is `false` and `Player` is `true`.
+     */
+    By?: IMoveTriggerBy | undefined;
     /**
      * Information on any action rolls or progress rolls that are made when this move is triggered (which may describe a specific subset of the primary trigger in their own `Text` property).
      *
      * If there's no action rolls or progress rolls attached to this move, this is `undefined`.
      */
     "Options"?: IMoveTriggerOption<RollType>[] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IMoveTriggerBy {
+    /**
+     * Whether the player character who owns this item can trigger it. Unsurprisingly, this is usually true, but there's a few exceptions: see *Starforged's* LOYALIST asset for an example.
+     * @public
+     */
+    Player: boolean;
+    /**
+     * Whether an Ally (a player character other than the owner) can trigger this item. This is usually false, but there's several exceptions among asset abilities.
+     */
+    Ally: boolean;
 }
 
 /**
@@ -1384,14 +1518,6 @@ export declare interface IMoveTriggerOption<T extends RollType> extends IHasId<M
     "Roll type": T;
     /**
      * The method used to choose the stat or track in the `Using` array.
-     *
-     * Any = the user can choose any of the options; if there's only one option, use this method.
-     *
-     * Highest = roll with the highest value in the array.
-     *
-     * Lowest = roll with the lowest value in the array.
-     *
-     * All = make one roll with *every* value in the array.
      */
     Method: RollMethod;
     /**
@@ -1624,6 +1750,24 @@ export declare interface IOracleUsage extends Partial<IHasRequirements & IHasSug
 /**
  * @public
  */
+export declare interface IOutcomeInfo extends IHasId<MoveOutcomeId>, IHasText {
+    /**
+     * Defines a different outcome for this result with a match. Its text should replace the text of this object.
+     */
+    "With a Match"?: IOutcomeInfo | undefined;
+    /**
+     * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
+     */
+    "Count as"?: MoveOutcome | undefined;
+    /**
+     * Information on rerolls offered by this move.
+     */
+    Reroll?: IMoveReroll | undefined;
+}
+
+/**
+ * @public
+ */
 export declare interface IProgressRoll {
     Track?: ProgressType | undefined;
     "All of"?: ProgressType[] | undefined;
@@ -1649,6 +1793,16 @@ export declare interface IRollColumn extends ITableColumnBase {
 }
 
 /**
+ * @public
+ */
+export declare const ironsworn: {
+    assets: IAssetType[];
+    encounters: IEncounterNatureInfo[];
+    moves: IMoveCategory[];
+    oracles: IOracleCategory[];
+};
+
+/**
  * Interface representing a single row in an oracle table.
  * @public
  */
@@ -1670,9 +1824,12 @@ export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Re
     Result: string;
     /**
      * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
-     * Some tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.
+     *
+     * Some tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.
+     *
+     * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
      */
-    Summary?: string | undefined;
+    Summary?: string | null | undefined;
     /**
      * Additional oracle tables that should be rolled when this row is selected.
      */
@@ -2008,7 +2165,21 @@ export declare type MoveIdGenericBase = "Moves/*";
 /**
  * @public
  */
-export declare type MoveOutcomeId = `${MoveOutcomesId}/${RollOutcomeTypeIdFragment}${"" | `/${MatchIdFragment}`}`;
+export declare enum MoveOutcome {
+    Miss = "Miss",
+    Weak_Hit = "Weak Hit",
+    Strong_Hit = "Strong Hit"
+}
+
+/**
+ * @public
+ */
+export declare type MoveOutcomeId = `${MoveOutcomesId}/${MoveOutcomeIdFragment}${"" | `/${MatchIdFragment}`}`;
+
+/**
+ * @public
+ */
+export declare type MoveOutcomeIdFragment = "Miss" | "Weak_Hit" | "Strong_Hit";
 
 /**
  * @public
@@ -2284,6 +2455,33 @@ export declare type RequireKey<T, K extends keyof T> = T & {
 };
 
 /**
+ * Enumerates which dice are to be rerolled.
+ * @public
+ */
+export declare enum RerollType {
+    /**
+     * The player can pick and choose which dice to reroll.
+     */
+    Any = "Any",
+    /**
+     * The player can pick and choose which challenge dice to reroll.
+     */
+    ChallengeDice = "Challenge dice",
+    /**
+     * The action die is rerolled.
+     */
+    ActionDie = "Action die",
+    /**
+     * The player can choose one challenge die to reroll.
+     */
+    ChallengeDie = "Challenge die",
+    /**
+     * Reroll *all* dice
+     */
+    All = "All"
+}
+
+/**
  * Set by Oracles / Character / Role
  * @public
  */
@@ -2343,24 +2541,45 @@ export declare enum Role {
 export declare type RollableStat = Stat | ConditionMeterType | CustomStatId;
 
 /**
+ * The stat(s) or progress track(s) that may be rolled with the parent move trigger option.
  * @public
  */
 export declare enum RollMethod {
+    /**
+     * When rolling with this move trigger option, *every* stat or progress track of the `Using` key is rolled.
+     */
     All = "All",
+    /**
+     * When rolling with this move trigger option, use the highest/best option from the `Using` key.
+     */
     Highest = "Highest",
+    /**
+     * When rolling with this move trigger option, use the lowest/worst option from the `Using` key.
+     */
     Lowest = "Lowest",
-    Any = "Any"
+    /**
+     * When rolling with this move trigger option, the user picks which stat to use.
+     *
+     * This is the default option for triggers that offer a single stat.
+     */
+    Any = "Any",
+    /**
+     * This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option.
+     *
+     * If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks.
+     *
+     * Typically appears on children of `IAlterMove`.
+     */
+    Inherit = "Inherit",
+    /**
+     * The move trigger option results in an automatic strong hit - no roll required.
+     */
+    StrongHit = "Strong Hit",
+    /**
+     * The move trigger option results in an automatic weak hit - no roll required.
+     */
+    WeakHit = "Weak Hit"
 }
-
-/**
- * @public
- */
-export declare type RollOutcomeType = "Miss" | "Weak Hit" | "Strong Hit";
-
-/**
- * @public
- */
-export declare type RollOutcomeTypeIdFragment = "Miss" | "Weak_Hit" | "Strong_Hit";
 
 /**
  * @public
@@ -2482,6 +2701,17 @@ export declare enum SourceUrl {
     IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
     IronswornBonusAssets = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view"
 }
+
+/**
+ * @public
+ */
+export declare const starforged: {
+    assets: IAssetType[];
+    encounters: IEncounterStarforged[];
+    moves: IMoveCategory[];
+    oracles: IOracleCategory[];
+    truths: ISettingTruth[];
+};
 
 /**
  * @public

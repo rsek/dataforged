@@ -14,13 +14,17 @@ export type AlterMoveIdBase = `${AssetAbilityIdBase}/Alter_Moves/${number}`;
 /**
  * @public
  */
-export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "$id"|"Outcomes">, IHasId<AlterMoveId> {
+export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "Name"|"$id"|"Category"|"Display"|"Source"|"Outcomes">, IHasId<AlterMoveId> {
   /**
-   * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply.
+   * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply. If it's `undefined`, see `Extends` instead.
    */
-  Moves: IMove["$id"][] | null;
+  Moves?: IMove["$id"][] | null | undefined;
   /**
-   * The trigger required by the asset ability. If `undefined`, the move alteration always applies to the specified moves.
+   * Some asset abilities alter/extend other asset abilities, specified as an array of IDs. Only changed properties are specified; other properties are the same.
+   */
+  Alters?: IAlterMove["$id"][] | undefined;
+  /**
+   * The trigger required by the asset ability. If `undefined`, the move alteration applies to all uses of the specified moves, so long as they also meet any implicit asset requirements (fictional framing, `IAsset.Requirement`, not being Broken or Out of Action, etc).
    */
   Trigger?: IMoveTrigger | undefined;
   /**
@@ -32,3 +36,4 @@ export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "$id"|"Outco
    */
   Outcomes?: Partial<IMoveOutcomes> | undefined;
 }
+

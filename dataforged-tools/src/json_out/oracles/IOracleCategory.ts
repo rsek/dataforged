@@ -1,5 +1,6 @@
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { IHasName, IOracleBase, LocationTheme, PlanetaryClass, VaultZone, Zone } from "@json_out/index.js";
+import type { IOracle } from "@json_out/oracles/IOracle.js";
 
 /**
  * @public

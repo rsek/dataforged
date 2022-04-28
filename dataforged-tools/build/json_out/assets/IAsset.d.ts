@@ -1,3 +1,5 @@
+import type { IAssetState } from "./IAssetState.js";
+import type { IAssetUsage } from "./IAssetUsage.js";
 import type { IInput } from "./IInput.js";
 import type { Gamespace } from "../common/Gamespace.js";
 import type { InputType } from "../common/InputType.js";
@@ -16,7 +18,7 @@ export declare type AssetIdBase = `${AssetTypeIdBase}/${string}`;
  */
 export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
     /**
-     * @example "Assets/Path/Bounty_Hunter"
+     * @example "Starforged/Assets/Path/Bounty_Hunter"
      */
     $id: AssetId;
     /**
@@ -25,10 +27,18 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
      */
     Name: string;
     /**
+     * Describes any states that the asset might have, such as "Broken". Some states may disable the asset entirely.
+     */
+    States?: IAssetState[];
+    /**
      * The ID of the asset's parent AssetType
-     * @example "Assets/Path"
+     * @example "Starforged/Assets/Path"
      */
     "Asset Type": IAssetType["$id"];
+    /**
+     * Information on the asset's usage, such as whether its abilities are shared amongst the player characters.
+     */
+    Usage: IAssetUsage;
     /**
      * Details on what attachments (other assets) are accepted by this asset.
      */

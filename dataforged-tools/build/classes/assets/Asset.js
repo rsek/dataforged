@@ -27,6 +27,9 @@ export class Asset extends SourceInheritor {
             Title: (_c = (_b = json.Display) === null || _b === void 0 ? void 0 : _b.Title) !== null && _c !== void 0 ? _c : this.Name,
             Color: (_e = (_d = json.Display) === null || _d === void 0 ? void 0 : _d.Color) !== null && _e !== void 0 ? _e : parent.Display.Color
         };
+        this.Usage = {
+            Shared: ["Command Vehicle", "Support Vehicle", "Module"].includes(parent.Name) ? true : false
+        };
         this.Attachments = json.Attachments;
         if (json.Inputs) {
             this.Inputs = json.Inputs.map(inputJson => {
@@ -52,6 +55,7 @@ export class Asset extends SourceInheritor {
                 return result;
             });
         }
+        this.States = json.States;
         this.Requirement = json.Requirement;
         this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
         if (json.Abilities.length !== 3) {

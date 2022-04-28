@@ -1,12 +1,12 @@
-import _ from "lodash-es";
 import type { Input } from "@classes/common/Input.js";
 import { AlterMove , Move } from "@classes/index.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 import { Replacement } from "@json_out/common/Replacement.js";
-import type { AssetAbilityId, IAsset, IAssetAbility,  InputType , MoveId } from "@json_out/index.js";
+import type { AssetAbilityId, IAlterMomentum, IAsset, IAssetAbility,  InputType , MoveId } from "@json_out/index.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import type { IAssetAbilityYaml } from "@yaml_in/index.js";
+import _ from "lodash-es";
 
 /**
  * @internal
@@ -18,6 +18,7 @@ export class AssetAbility implements IAssetAbility {
   Inputs?: Input<InputType>[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: Partial<IAsset> | undefined;
+  "Alter Momentum"?: IAlterMomentum | undefined;
   Enabled: boolean;
   constructor(json: IAssetAbilityYaml, id: AssetAbilityId, gamespace: Gamespace, parent: IAsset) {
     /* Setting the id of the asset ability. */
@@ -28,7 +29,14 @@ export class AssetAbility implements IAssetAbility {
     }
 
     this.Enabled = json.Enabled ?? false;
+    this["Alter Momentum"] = json["Alter Momentum"];
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove, index) => {
+      if (parent.Usage.Shared && !alterMove.Trigger?.By) {
+        if (!alterMove.Trigger) {
+          alterMove.Trigger = {};
+        }
+        alterMove.Trigger.By = { Player: true, Ally: true };
+      }
       const newData = new AlterMove(alterMove, this, index);
       return newData;
     }) : json["Alter Moves"];

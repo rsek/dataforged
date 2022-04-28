@@ -1,8 +1,8 @@
-import _ from "lodash-es";
 import { AlterMove, Move } from "../index.js";
 import { Replacement } from "../../json_out/common/Replacement.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "../../utils/object_transform/replaceInAllStrings.js";
+import _ from "lodash-es";
 /**
  * @internal
  */
@@ -16,7 +16,15 @@ export class AssetAbility {
             this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this));
         }
         this.Enabled = (_a = json.Enabled) !== null && _a !== void 0 ? _a : false;
+        this["Alter Momentum"] = json["Alter Momentum"];
         this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove, index) => {
+            var _a;
+            if (parent.Usage.Shared && !((_a = alterMove.Trigger) === null || _a === void 0 ? void 0 : _a.By)) {
+                if (!alterMove.Trigger) {
+                    alterMove.Trigger = {};
+                }
+                alterMove.Trigger.By = { Player: true, Ally: true };
+            }
             const newData = new AlterMove(alterMove, this, index);
             return newData;
         }) : json["Alter Moves"];

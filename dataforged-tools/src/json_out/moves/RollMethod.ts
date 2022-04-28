@@ -28,7 +28,15 @@ export enum RollMethod {
    *
    * Typically appears on children of `IAlterMove`.
    */
-  Inherit = "Inherit"
+  Inherit = "Inherit",
+  /**
+   * The move trigger option results in an automatic strong hit - no roll required.
+   */
+  StrongHit = "Strong Hit",
+  /**
+   * The move trigger option results in an automatic weak hit - no roll required.
+   */
+  WeakHit = "Weak Hit"
 }
 /**
  * @public

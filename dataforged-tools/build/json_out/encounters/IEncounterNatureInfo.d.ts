@@ -16,5 +16,6 @@ export declare type EncounterNatureId = `${Gamespace.Ironsworn}/${EncounterNatur
 export interface IEncounterNatureInfo extends IHasDescription, IHasSource, IHasName, IHasId<EncounterNatureId>, IHasDisplay, IHasSummary {
     Name: EncounterNatureIronsworn;
     Encounters: IEncounterIronsworn[];
+    Summary: string;
 }
 //# sourceMappingURL=IEncounterNatureInfo.d.ts.map

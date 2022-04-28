@@ -29,7 +29,7 @@ export type MoveIdGenericBase = "Moves/*";
  */
 export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
   /**
-   * @example "Moves/Adventure/Face_Danger"
+   * @example "Starforged/Moves/Adventure/Face_Danger"
    */
   $id: MoveId;
   /**
@@ -58,7 +58,7 @@ export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, 
    */
   Trigger: IMoveTrigger;
   /**
-   * The IDs of any oracles *directly* referenced by the move.
+   * The IDs of any oracles *directly* referenced by the move, or vice versa.
    */
   Oracles?: IOracle["$id"][] | undefined;
   /**
