@@ -83,11 +83,14 @@ export class Row {
                                 break;
                             }
                             case "Subtable": {
+                                if (this.$id === null) {
+                                    throw new Error("Row ID is null, but it has a Subtable.");
+                                }
                                 if (Array.isArray(value) && Array.isArray(value[0])) {
-                                    this.Subtable = value.map(rowData => new Row(this.$id + "/Subtable", rowData));
+                                    this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else if (Array.isArray(value) && typeof value[0] === "object") {
-                                    this.Subtable = value.map(rowData => new Row(this.$id + "/Subtable", rowData));
+                                    this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else {
                                     throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");

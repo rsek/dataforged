@@ -1,25 +1,31 @@
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type Url = `${Protocol}://${string}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type Protocol = "http" | "https";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type Raster = "webp";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type Vector = "svg";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type ImageType = Vector | Raster;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type ImageUrl<T extends ImageType> = `${Url}.${T}`;

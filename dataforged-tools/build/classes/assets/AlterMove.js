@@ -10,7 +10,7 @@ export class AlterMove {
         this.Moves = json.Moves;
         if (json.Trigger) {
             const triggerClone = _.cloneDeep(json.Trigger);
-            this.Trigger = new MoveTrigger(triggerClone, `${this.$id}/Trigger`);
+            this.Trigger = new MoveTrigger(triggerClone, (`${this.$id}/Trigger`));
         }
     }
 }

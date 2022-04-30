@@ -1,4 +1,5 @@
-import type { IDisplay , IGameObject , IOracleContent , IOracleUsage, IRequirements, IRow , ISource , ISuggestions , RollTemplate  } from "@json_out/index.js";
+import type { IDisplayWithTitle , IGameObject , IOracleContent , IOracleUsage, IRequirements, IRow , ISource , ISuggestions , RollTemplate  } from "@json_out/index.js";
+import type { IDisplay } from "@json_out/meta/IDisplay.js";
 
 /**
  * Interface for items with a user-facing markdown summary.
@@ -8,6 +9,7 @@ export interface IHasSummary {
   /**
    * A user-facing markdown summary of the item.
    * @markdown
+   * @nullable
    */
     Summary: string | null;
 }
@@ -51,12 +53,11 @@ export interface IHasSource<T extends ISource = ISource> {
  * For elements with unique string IDs.
  * @public
  */
-export interface IHasId<T extends string> {
-
+export interface IHasId {
   /**
    * The item's unique string ID.
    */
-  $id: T;
+  $id: string;
 }
 
 /**
@@ -75,11 +76,11 @@ export interface IHasName {
  * Interface for items with rendering information.
  * @public
  */
-export interface IHasDisplay<T extends Partial<IDisplay> = IDisplay> {
+export interface IHasDisplay {
   /**
    * Data relevant to this item's display/rendering.
    */
-  Display: T;
+  Display: IDisplay;
 }
 
 /**

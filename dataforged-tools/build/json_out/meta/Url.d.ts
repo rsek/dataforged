@@ -1,25 +1,31 @@
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type Url = `${Protocol}://${string}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type Protocol = "http" | "https";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type Raster = "webp";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type Vector = "svg";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type ImageType = Vector | Raster;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type ImageUrl<T extends ImageType> = `${Url}.${T}`;
 //# sourceMappingURL=Url.d.ts.map

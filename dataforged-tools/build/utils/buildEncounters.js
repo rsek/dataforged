@@ -30,6 +30,13 @@ export function buildEncounters(gamespace) {
             throw badJsonError(buildEncounters);
     }
     buildLog(buildEncounters, `Finished building ${encounterStats(gamespace, json)}`);
-    return json;
+    switch (gamespace) {
+        case Gamespace.Starforged:
+            return json;
+        case Gamespace.Ironsworn:
+            return json;
+        default:
+            throw badJsonError(buildEncounters);
+    }
 }
 //# sourceMappingURL=buildEncounters.js.map

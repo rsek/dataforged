@@ -40,7 +40,7 @@ export function validateRollTemplateString(str) {
     captures.forEach(capture => {
         if (!is(capture, object => { function _1(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Access/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Character_Creation/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -62,7 +62,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _2(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Community/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Characters/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -84,7 +84,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _3(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Engineering/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Core/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -106,7 +106,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _4(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Living/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Creatures/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -128,7 +128,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _5(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Medical/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Factions/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -150,7 +150,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _6(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Operations/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Misc/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -172,7 +172,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _7(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Production/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Moves/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -194,7 +194,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _8(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/Research/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Space/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -216,7 +216,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _9(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Starships/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -238,7 +238,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _10(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Character_Creation/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -260,7 +260,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _11(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Characters/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -282,7 +282,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _12(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Core/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -304,7 +304,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _13(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Creatures/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -326,7 +326,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _14(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Factions/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -348,7 +348,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _15(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Misc/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -370,7 +370,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _16(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Moves/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -392,7 +392,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _17(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Desert/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Space/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -414,7 +414,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _18(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Furnace/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Starships/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -436,7 +436,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _19(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Grave/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -458,7 +458,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _20(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Ice/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -480,7 +480,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _21(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Jovian/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -502,7 +502,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _22(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Jungle/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Vaults/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -524,7 +524,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _23(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Ocean/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -546,7 +546,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _24(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Rocky/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -568,7 +568,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _25(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Shattered/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -590,7 +590,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _26(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Tainted/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Vaults/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -612,7 +612,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _27(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/Vital/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Access/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -634,7 +634,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _28(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Vaults/Interior/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Community/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -656,7 +656,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _29(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Vaults/Sanctum/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Engineering/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -678,7 +678,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _30(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Access/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Living/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -700,7 +700,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _31(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Community/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Medical/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -722,7 +722,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _32(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Engineering/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Operations/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -744,7 +744,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _33(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Living/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Production/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -766,7 +766,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _34(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Medical/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Derelicts/Research/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -788,7 +788,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _35(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Operations/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -810,7 +810,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _36(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Production/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -832,7 +832,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _37(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/Research/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -854,7 +854,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _38(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -876,7 +876,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _39(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -898,7 +898,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _40(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -920,7 +920,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _41(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -942,7 +942,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _42(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -964,7 +964,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _43(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Desert/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -986,7 +986,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _44(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Furnace/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1008,7 +1008,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _45(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Grave/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1030,7 +1030,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _46(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Desert/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Ice/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1052,7 +1052,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _47(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Furnace/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Jovian/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1074,7 +1074,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _48(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Grave/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Jungle/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1096,7 +1096,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _49(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Ice/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Ocean/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1118,7 +1118,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _50(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Jovian/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Rocky/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1140,7 +1140,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _51(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Jungle/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Shattered/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1162,7 +1162,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _52(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Ocean/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Tainted/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1184,7 +1184,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _53(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Rocky/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Planets/Vital/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1206,7 +1206,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _54(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Shattered/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Vaults/Interior/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1228,7 +1228,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _55(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Tainted/", "string"], ["", undefined]];
+            const typePairs = [["Starforged/Oracles/Vaults/Sanctum/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1250,7 +1250,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _56(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/Vital/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Access/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1272,7 +1272,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _57(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Vaults/Interior/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Community/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1294,7 +1294,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _58(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Vaults/Sanctum/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Engineering/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1316,7 +1316,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _59(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Character_Creation/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Living/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1338,7 +1338,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _60(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Characters/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Medical/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1360,7 +1360,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _61(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Core/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Operations/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1382,7 +1382,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _62(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Creatures/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Production/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1404,7 +1404,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _63(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Factions/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Derelicts/Research/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1426,7 +1426,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _64(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Misc/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Chaotic/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1448,7 +1448,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _65(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Moves/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Fortified/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1470,7 +1470,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _66(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Space/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Haunted/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1492,7 +1492,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _67(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Starships/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Infested/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1514,7 +1514,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _68(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Character_Creation/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Inhabited/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1536,7 +1536,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _69(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Characters/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Mechanical/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1558,7 +1558,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _70(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Core/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Ruined/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1580,7 +1580,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _71(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Creatures/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Location_Themes/Sacred/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1602,7 +1602,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _72(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Factions/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Desert/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1624,7 +1624,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _73(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Misc/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Furnace/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1646,7 +1646,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _74(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Moves/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Grave/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1668,7 +1668,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _75(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Space/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Ice/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1690,7 +1690,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _76(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Starships/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Jovian/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1712,7 +1712,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _77(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Derelicts/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Jungle/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1734,7 +1734,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _78(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Location_Themes/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Ocean/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1756,7 +1756,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _79(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Planets/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Rocky/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1778,7 +1778,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _80(object) {
             var _a;
-            const typePairs = [["Starforged/Oracles/Vaults/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Shattered/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1800,7 +1800,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _81(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Derelicts/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Tainted/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1822,7 +1822,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _82(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Location_Themes/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Planets/Vital/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1844,7 +1844,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _83(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Planets/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Vaults/Interior/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;
@@ -1866,7 +1866,7 @@ export function validateRollTemplateString(str) {
             return null;
         } function _84(object) {
             var _a;
-            const typePairs = [["Ironsworn/Oracles/Vaults/", "string"], ["", undefined]];
+            const typePairs = [["Ironsworn/Oracles/Vaults/Sanctum/", "string"], ["", undefined]];
             let position = 0;
             for (const [index, typePair] of typePairs.entries()) {
                 const [currentText, currentType] = typePair;

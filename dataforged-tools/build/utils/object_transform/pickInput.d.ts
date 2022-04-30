@@ -7,5 +7,7 @@ import type { IInputYaml } from "../../yaml_in/index.js";
  * Infers the correct class for an IInputYaml object and constructs it.
  * @param inputJson - The data to pick a class for.
  */
-export declare function pickInput<T extends InputType>(inputJson: IInputYaml<T>, parent: IAsset | IAssetAbility): InputNumber | InputClock | InputText | InputSelect<string, InputSelectOptionType>;
+export declare function pickInput<T extends InputType>(inputJson: IInputYaml & {
+    "Input Type": T;
+}, parent: IAsset | IAssetAbility): InputNumber | InputClock | InputText | InputSelect<InputSelectOptionType>;
 //# sourceMappingURL=pickInput.d.ts.map

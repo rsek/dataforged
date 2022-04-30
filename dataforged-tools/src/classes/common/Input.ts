@@ -9,13 +9,14 @@ import type { IInputClockYaml, IInputNumberYaml, IInputTextYaml, IInputYaml } fr
 /**
  * @internal
  */
-export abstract class Input<T extends InputType> implements IInput<T> {
-  $id: InputId;
+export abstract class Input implements IInput {
+  $id: string;
   Name: string;
   abstract Adjustable: boolean;
-  "Input Type": T;
-  constructor(json: IInputYaml<T>, parent: IAssetAbility|IAsset) {
-    this.$id = `${parent.$id}/Inputs/${json.Name}`;
+  "Input Type": InputType;
+  constructor(json: IInputYaml, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
+    this["Input Type"] = json["Input Type"];
+    this.$id = `${parent.$id}/Inputs/${json.Name.replaceAll(" ", "_")}`;
     this.Name = json.Name;
     this["Input Type"] = json["Input Type"];
   }
@@ -24,16 +25,17 @@ export abstract class Input<T extends InputType> implements IInput<T> {
 /**
  * @internal
  */
-export class InputNumber extends Input<InputType.Number> implements IInputNumber {
+export class InputNumber extends Input implements IInputNumber {
+  "Input Type": InputType.Number;
   Min: number;
   Max: number | null;
   readonly Step = 1;
   Value: number;
   Adjustable: boolean;
-  constructor(json: IInputNumberYaml, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
+  constructor(json: IInputNumberYaml & {"Input Type": InputType.Number}, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
     super(json, parent);
     this.Min = json.Min ?? 0;
-    this.Max = json.Max;
+    this.Max = json.Max ?? null;
     this.Value = json.Value ?? 0;
     this.Adjustable = json.Adjustable ?? true;
   }
@@ -42,8 +44,9 @@ export class InputNumber extends Input<InputType.Number> implements IInputNumber
 /**
  * @internal
  */
-export class InputClock extends Input<InputType.Clock> implements IInputClock {
+export class InputClock extends Input implements IInputClock {
   "Clock Type": ClockType = ClockType.Tension;
+  "Input Type": InputType.Clock;
   Segments: ClockSegments;
   Filled: number;
   Adjustable: boolean;
@@ -59,7 +62,8 @@ export class InputClock extends Input<InputType.Clock> implements IInputClock {
 /**
  * @internal
  */
-export class InputText extends Input<InputType.Text> implements IInputText {
+export class InputText extends Input implements IInputText {
+  "Input Type": InputType.Text;
   Adjustable: boolean;
   constructor(json: IInputTextYaml, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
     super(json, parent);

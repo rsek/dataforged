@@ -1,4 +1,5 @@
 import "source-map-support/register.js";
-declare const data: import("./utils/buildDataforged.js").IronswornData;
+import type { Ironsworn } from "./json_out/Ironsworn.js";
+declare const data: Ironsworn;
 export { data };
 //# sourceMappingURL=start-ironsworn.d.ts.map

@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Fringe Group
- * @public
+ * @alpha
  */
 var FringeGroup;
 (function (FringeGroup) {

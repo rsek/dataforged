@@ -10,7 +10,7 @@ import _ from "lodash-es";
  * @internal
  */
 export class AlterMove implements IAlterMove {
-  $id: AlterMoveId;
+  $id: IAlterMove["$id"];
   Moves?: IMove["$id"][] | null | undefined;
   Alters?: IAlterMove["$id"][] | undefined;
   Trigger?: MoveTrigger | undefined;
@@ -20,7 +20,7 @@ export class AlterMove implements IAlterMove {
     this.Moves = json.Moves;
     if (json.Trigger) {
       const triggerClone = _.cloneDeep(json.Trigger);
-      this.Trigger = new MoveTrigger(triggerClone, (`${this.$id}/Trigger` as IMoveTrigger["$id"]));
+      this.Trigger = new MoveTrigger(triggerClone, (`${this.$id}/Trigger` ));
     }
   }
 }

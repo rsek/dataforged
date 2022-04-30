@@ -1,6 +1,6 @@
-import type { ActorType, IGameObjectRecordBase } from "@game_objects/index.js";
-import type { AttributeKey } from "@json_out/index.js";
+import type { IGameObjectRecordBase } from "@game_objects/index.js";
+import type { AttributeKey, GameObjectType } from "@json_out/index.js";
 /**
  * @public
  */
-export type IActorRecord<T extends ActorType, K extends AttributeKey> = IGameObjectRecordBase<T,K>;
+export type IActorRecord<T extends GameObjectType.Character|GameObjectType.Creature|GameObjectType.Faction, K extends AttributeKey> = IGameObjectRecordBase<T,K>;

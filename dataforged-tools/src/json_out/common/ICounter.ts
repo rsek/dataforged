@@ -4,7 +4,7 @@ import type { IHasId, IHasName } from "@json_out/index.js";
  * Interface representing a Meter.
  * @public
  */
-export interface IMeterBase extends IHasId<string>, IHasName {
+export interface IMeterBase extends IHasId, IHasName {
   /**
    * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
    */

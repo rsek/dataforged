@@ -1,4 +1,17 @@
 /**
  * @public
  */
-export type PartOfSpeechTag = "noun"|"common noun"|"fragment"|"adjective"|"proper noun"|"verb"|"plural"|"name"|"proper noun fragment"|"sentences"|"compound noun"|"possessive case";
+export enum PartOfSpeechTag {
+    Noun = "noun",
+    CommonNoun = "common noun",
+    Fragment = "fragment",
+    Adjective = "adjective",
+    ProperNoun = "proper noun",
+    Verb = "verb",
+    Plural = "plural",
+    Name = "name",
+    ProperNounFragment = "proper noun fragment",
+    Sentences = "sentences",
+    CompoundNoun = "compound noun",
+    PossessiveCase = "possessive case"
+}

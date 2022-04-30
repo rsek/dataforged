@@ -2,10 +2,10 @@
  * Standard player character condition meters.
  * @public
  */
-export var ConditionMeterName;
-(function (ConditionMeterName) {
-    ConditionMeterName["Health"] = "Health";
-    ConditionMeterName["Spirit"] = "Spirit";
-    ConditionMeterName["Supply"] = "Supply";
-})(ConditionMeterName || (ConditionMeterName = {}));
+export var PlayerConditionMeter;
+(function (PlayerConditionMeter) {
+    PlayerConditionMeter["Health"] = "Health";
+    PlayerConditionMeter["Spirit"] = "Spirit";
+    PlayerConditionMeter["Supply"] = "Supply";
+})(PlayerConditionMeter || (PlayerConditionMeter = {}));
 //# sourceMappingURL=IConditionMeter.js.map

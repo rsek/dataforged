@@ -1,4 +1,3 @@
-export * from "@game_objects/enum/ActorType.js";
 export * from "@game_objects/enum/Atmosphere.js";
 export * from "@game_objects/enum/Authority.js";
 export * from "@game_objects/enum/Behavior.js";
@@ -17,7 +16,6 @@ export * from "@game_objects/enum/Leadership.js";
 export * from "@game_objects/enum/Life.js";
 export * from "@game_objects/enum/Location.js";
 export * from "@game_objects/enum/LocationTheme.js";
-export * from "@game_objects/enum/PlaceType.js";
 export * from "@game_objects/enum/PlanetaryClass.js";
 export * from "@game_objects/enum/Population.js";
 export * from "@game_objects/enum/Region.js";

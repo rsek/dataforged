@@ -1,4 +1,5 @@
 import type { IHasText } from "@json_out/meta/IHas.js";
+import type { MoveOutcome } from "@json_out/moves/IMoveOutcomeInfo.js";
 
 /**
  * @public
@@ -25,6 +26,7 @@ export interface IAlterMomentumBurn {
    * The effect altering the PC's momentum burn.
    */
   Effect: IHasText;
+  Outcomes?: (MoveOutcome.Strong_Hit|MoveOutcome.Weak_Hit)[] | undefined;
 }
 /**
  * @public

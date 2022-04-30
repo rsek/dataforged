@@ -1,13 +1,12 @@
 import type { AssetType } from "../assets/AssetType.js";
 import { MeterBase } from "./MeterBase.js";
-import type { AssetConditionMeterId } from "../../json_out/assets/index.js";
 import { MeterAlias } from "../../json_out/common/index.js";
 import type { IConditionMeter, MeterCondition } from "../../json_out/common/index.js";
 /**
  * @internal
  */
 export declare class ConditionMeter extends MeterBase implements IConditionMeter {
-    $id: AssetConditionMeterId;
+    $id: IConditionMeter["$id"];
     Name: string;
     Max: number;
     Min: 0;

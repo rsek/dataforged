@@ -1,6 +1,6 @@
 /**
  * Set by oracle: Oracles / Derelicts / Type
- * @public
+ * @alpha
  */
 enum DerelictType {
   Starship = "Starship",

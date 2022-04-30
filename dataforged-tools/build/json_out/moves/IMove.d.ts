@@ -1,34 +1,28 @@
 import type { IAsset } from "../assets/IAsset.js";
 import type { Gamespace } from "../common/Gamespace.js";
-import type { AssetAbilityIdBase, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText, IMoveCategory, IMoveOutcomes, MoveCategoryName } from "../index.js";
+import type { AssetAbilityIdBase, IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText, IMoveCategory, IMoveOutcomes, MoveCategoryName } from "../index.js";
 import type { IMoveTrigger } from "./IMoveTrigger.js";
 import type { IOracle } from "../oracles/IOracle.js";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type MoveId = `${Gamespace}/${MoveIdBase}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type MoveIdBase = `Moves/${MoveCategoryName | "Assets"}/${string}` | `Moves/${AssetAbilityIdBase}/${string}`;
-/**
- * Placeholder Move ID indicating that *any* move is valid. For example, an {@link IAlterMove} with this as a `Move` key can be applied to any move that meets its other requirements.
- * @public
- */
-export declare type MoveIdGeneric = `${Gamespace}/${MoveIdGenericBase}`;
-/**
- * @public
- */
-export declare type MoveIdGenericBase = "Moves/*";
 /**
  * Interface representing a Starforged move.
  * @public
  */
-export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
+export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
     /**
      * @example "Starforged/Moves/Adventure/Face_Danger"
+     * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$
      */
-    $id: MoveId;
+    $id: string;
     /**
      * @example "Face Danger"
      */
@@ -39,7 +33,7 @@ export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, 
     Asset?: IAsset["$id"] | undefined;
     /**
      * The ID of the move's category.
-     * @example "Moves/Adventure"
+     * @example "Starforged/Moves/Adventure"
      */
     Category: IMoveCategory["$id"];
     /**
@@ -62,5 +56,6 @@ export interface IMove extends IHasId<MoveId>, IHasName, IHasText, IHasDisplay, 
      * Outcome information for the move.
      */
     Outcomes?: IMoveOutcomes | undefined;
+    Display: IDisplayWithTitle;
 }
 //# sourceMappingURL=IMove.d.ts.map

@@ -2,7 +2,7 @@ import type { IHasName , IOracleBase, IRow, ITableDisplay } from "@json_out/inde
 import type { IOracleCategory, OracleCategoryId } from "@json_out/oracles/IOracleCategory.js";
 
 /**
- * @public
+ * @internal
  */
 type OracleTableId = `${OracleCategoryId}/${string}`; export { OracleTableId };
 
@@ -13,7 +13,10 @@ type OracleTableId = `${OracleCategoryId}/${string}`; export { OracleTableId };
  * @public
  */
 export interface IOracle extends IOracleBase, IHasName {
-  $id: OracleTableId;
+  /**
+   * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
+   */
+  $id: string;
   Display: ITableDisplay;
   Category: IOracleCategory["$id"];
   "Member of"?: IOracle["$id"] | undefined;

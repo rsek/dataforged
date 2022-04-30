@@ -1,7 +1,9 @@
-import type { ConditionMeterType, CustomStatId, Stat } from "../index.js";
+import type { IConditionMeter } from "./IConditionMeter.js";
+import type { ICustomStat } from "./ICustomStat.js";
+import type { PlayerConditionMeter, Stat } from "../index.js";
 /**
  * Standard player character stats or condition meters that can be used as +stat in an action roll.
  * @public
  */
-export declare type RollableStat = Stat | ConditionMeterType | CustomStatId;
+export declare type RollableStat = Stat | ICustomStat["$id"] | PlayerConditionMeter | IConditionMeter["$id"];
 //# sourceMappingURL=RollableStat.d.ts.map

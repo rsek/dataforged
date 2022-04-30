@@ -2,7 +2,7 @@
  * Set by Oracles / Location Themes / Theme Type
  * @public
  */
-declare enum LocationTheme {
+export declare enum LocationTheme {
     Chaotic = "Chaotic",
     Fortified = "Fortified",
     Haunted = "Haunted",
@@ -12,5 +12,4 @@ declare enum LocationTheme {
     Ruined = "Ruined",
     Sacred = "Sacred"
 }
-export { LocationTheme };
 //# sourceMappingURL=LocationTheme.d.ts.map

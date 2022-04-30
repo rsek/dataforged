@@ -18,7 +18,7 @@ interface ISettingTruthOptionIronsworn extends IHasDescription, IHasQuestStarter
 
 type SettingTruthIdIronsworn = `${Gamespace.Ironsworn}/${string}`;
 
-interface ISettingTruthIronsworn extends IHasName, IHasSource, IHasId<SettingTruthIdIronsworn> {
+interface ISettingTruthIronsworn extends IHasName, IHasSource, IHasId {
   Options: ISettingTruthOptionIronsworn[];
 }
 

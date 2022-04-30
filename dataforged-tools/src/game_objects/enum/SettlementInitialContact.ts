@@ -1,5 +1,5 @@
 /**
- * @public
+ * @alpha
  */
 export enum SettlementInitialContact {
   AskingForHelp = "Asking for help",

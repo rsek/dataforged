@@ -1,7 +1,7 @@
-import type { Suggestions } from "@classes/index.js";
+import type { MoveCategory, Suggestions } from "@classes/index.js";
 import { MoveOutcomes , MoveTrigger , SourceInheritor } from "@classes/index.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { AssetId , IDisplay , IMove , IOracle, ISource, MoveCategoryId , MoveId  } from "@json_out/index.js";
+import type { AssetId , IDisplayWithTitle , IMove , IOracle, ISource, } from "@json_out/index.js";
 
 import { buildLog } from "@utils/logging/buildLog.js";
 import type { IMoveYaml } from "@yaml_in/moves/IMoveYaml";
@@ -12,13 +12,13 @@ import _ from "lodash-es";
  * @internal
  */
 export class Move extends SourceInheritor implements IMove {
-  $id: MoveId;
+  $id: IMove["$id"];
   Name: string;
-  Category: MoveCategoryId;
+  Category: MoveCategory["$id"];
   Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? AssetId : undefined;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: IMove["$id"] | undefined;
-  Display: IDisplay;
+  Display: IDisplayWithTitle;
   Trigger: MoveTrigger;
   Text: string;
   Oracles?: IOracle["$id"][] | undefined;
@@ -38,7 +38,7 @@ export class Move extends SourceInheritor implements IMove {
     }
     this["Progress Move"] = json["Progress Move"];
     this["Variant of"] = json["Variant of"];
-    const displayStub: IDisplay = { Title: this.Name };
+    const displayStub: IDisplayWithTitle = { Title: this.Name };
     if (json.Display) {
       this.Display = _.merge(displayStub, json.Display);
     } else {

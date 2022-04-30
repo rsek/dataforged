@@ -1,11 +1,12 @@
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { IHasDescription , IHasDisplay , IHasSource } from "@json_out/index.js";
-import type { IDisplay } from "@json_out/meta/IDisplay.js";
+import type { IDisplayWithTitle } from "@json_out/meta/IDisplay.js";
 import type { IHasId, IHasName } from "@json_out/meta/IHas.js";
 import type { IMove } from "@json_out/moves/IMove.js";
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type MoveCategoryTitle = `${MoveCategoryName} Moves`;
 
@@ -29,11 +30,13 @@ export enum MoveCategoryName {
 
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type MoveCategoryId = `${Gamespace}/${MoveCategoryIdBase}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type MoveCategoryIdBase = `Moves/${MoveCategoryName|"Assets"}`;
 
@@ -41,14 +44,16 @@ export type MoveCategoryIdBase = `Moves/${MoveCategoryName|"Assets"}`;
  * Represents a category of moves such as "Session Moves" or "Combat Moves", and serves as a container for moves within that category.
  * @public
  */
-export interface IMoveCategory extends IHasId<MoveCategoryId>, IHasName, IHasSource, IHasDescription, IHasDisplay<IDisplay> {
+export interface IMoveCategory extends IHasId, IHasName, IHasSource, IHasDescription, IHasDisplay {
   /**
-   * @example "Moves/Adventure"
+   * @example "Starforged/Moves/Adventure"
+   * @pattern ^(Starforged|Ironsworn)/Moves/[A-z_-]+$
    */
-  $id: MoveCategoryId;
+  $id: string;
   /**
    * @example "Adventure"
    */
-  Name: MoveCategoryName;
+  Name: string;
   Moves: IMove[];
+  Display: IDisplayWithTitle;
 }

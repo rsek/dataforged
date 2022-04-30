@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Creatures / Scale/**
- * @public
+ * @alpha
  */
 export declare enum CreatureScale {
     Minuscule = "Minuscule",

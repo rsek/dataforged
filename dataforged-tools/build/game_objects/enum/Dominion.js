@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Dominion
- * @public
+ * @alpha
  */
 var Dominion;
 (function (Dominion) {

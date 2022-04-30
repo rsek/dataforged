@@ -1,6 +1,6 @@
 import { Source } from "../index.js";
 import type { EncounterStarforged } from "../index.js";
-import type { ChallengeRank, EncounterIdStarforged, EncounterNatureStarforged, EncounterTags, IDisplay, IEncounterVariant } from "../../json_out/index.js";
+import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounterStarforged, IEncounterVariant } from "../../json_out/index.js";
 import type { IEncounterVariantYaml } from "../../yaml_in/index.js";
 /**
  * @internal
@@ -10,10 +10,10 @@ export declare class EncounterVariant implements IEncounterVariant {
     Source: Source;
     Name: string;
     Rank: ChallengeRank;
-    Display: IDisplay;
+    Display: IDisplayWithTitle;
     Description: string;
     Nature: EncounterNatureStarforged;
-    "Variant of": EncounterIdStarforged;
+    "Variant of": IEncounterStarforged["$id"];
     Tags?: EncounterTags[] | undefined;
     constructor(json: IEncounterVariantYaml, parent: EncounterStarforged);
 }

@@ -1,8 +1,8 @@
 /**
  * Set by Oracles / Creatures / Environment
- * @public
+ * @alpha
  */
-var Environment;
+export var Environment;
 (function (Environment) {
     Environment["Space"] = "Space";
     Environment["Interior"] = "Interior";
@@ -10,5 +10,4 @@ var Environment;
     Environment["Liquid"] = "Liquid";
     Environment["Air"] = "Air";
 })(Environment || (Environment = {}));
-export { Environment };
 //# sourceMappingURL=Environment.js.map

@@ -2,7 +2,7 @@ import { EncounterNatureInfo } from "@classes/encounters/EncounterNatureInfo.js"
 import { EncounterStarforged } from "@classes/index.js";
 import { MASTER_DATA_PATH } from "@constants/index.js";
 import { Gamespace } from "@json_out/common/Gamespace.js";
-import type { ISource } from "@json_out/index.js";
+import type { Ironsworn, ISource, Starforged } from "@json_out/index.js";
 import { encounterStats } from "@utils/encounterStats.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -44,5 +44,12 @@ export function buildEncounters<G extends Gamespace>(gamespace: G) {
       throw badJsonError(buildEncounters);
   }
   buildLog(buildEncounters, `Finished building ${encounterStats(gamespace, json)}`);
-  return json;
+  switch (gamespace) {
+    case Gamespace.Starforged:
+      return json as EncounterStarforged[];
+    case Gamespace.Ironsworn:
+      return json as EncounterNatureInfo[];
+    default:
+      throw badJsonError(buildEncounters);
+  }
 }

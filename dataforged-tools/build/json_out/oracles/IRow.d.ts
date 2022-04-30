@@ -1,30 +1,38 @@
-import type { AttributeKey } from "../game_objects/AttributeKey.js";
-import type { IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle, OracleTableId } from "../index.js";
+import type { IAttribute } from "../game_objects/IAttribute.js";
+import type { IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle, OracleTableId } from "../index.js";
+import type { IDisplay } from "../meta/IDisplay.js";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type OracleTableRowId = `${OracleTableId}/${RollRange}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
-export declare type RollRange = number | `${number}-${number}`;
-/**
- * Display properties for a single row in an oracle table.
- * @public
- */
-export declare type IRowDisplay = Omit<IDisplay, "Title">;
+export declare type RollRange = `${number}` | `${number}-${number}`;
 /**
  * Interface representing a single row in an oracle table.
  * @public
  */
-export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | "Summary" | "Description"> & IHasSuggestions & IHasDisplay<IRowDisplay> & IHasOracleContent & IHasSubtable & IHasGameObjects> {
+export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | "Summary" | "Description"> & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects> {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?$
+     * @nullable
+     */
     $id?: string | null;
     /**
      * The low end of the dice range for this row.
+     * @minimum 1
+     * @maximum 100
+     * @nullable
      */
     Floor: number | null;
     /**
      * The high end of the dice range for this row.
+     * @minimum 1
+     * @maximum 100
+     * @nullable
      */
     Ceiling: number | null;
     /**
@@ -39,6 +47,7 @@ export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | 
      * Some tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.
      *
      * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
+     * @nullable
      */
     Summary?: string | null | undefined;
     /**
@@ -56,6 +65,7 @@ export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | 
     /**
     * The attributes set by this row.
      */
-    Attributes?: IAttributeChoices<AttributeKey>[] | undefined;
+    Attributes?: IAttribute[] | undefined;
+    Display?: IDisplay | undefined;
 }
 //# sourceMappingURL=IRow.d.ts.map

@@ -4,19 +4,25 @@ import type { IMoveOutcomes } from "../moves/IMoveOutcomes.js";
 import type { IMoveTrigger } from "../moves/IMoveTrigger.js";
 import type { StubBy } from "../../utils/index.js";
 /**
- * @public
+ * @internal
  */
 export declare type AlterMoveId = `${Gamespace}/${AlterMoveIdBase}`;
 /**
- * @public
+ * @internal
  */
 export declare type AlterMoveIdBase = `${AssetAbilityIdBase}/Alter_Moves/${number}`;
 /**
+ * Describes alterations applied to moves by asset abilities.
  * @public
  */
-export interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "$id" | "Category" | "Display" | "Source" | "Outcomes">, IHasId<AlterMoveId> {
+export interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "$id" | "Category" | "Display" | "Source" | "Outcomes">, IHasId {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
+     */
+    $id: string;
     /**
      * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply. If it's `undefined`, see `Extends` instead.
+     * @nullable
      */
     Moves?: IMove["$id"][] | null | undefined;
     /**

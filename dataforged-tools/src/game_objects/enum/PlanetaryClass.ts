@@ -3,7 +3,7 @@
  * Set by "Oracles / Planets / Class"
  * @public
  */
-enum PlanetaryClass {
+export enum PlanetaryClass {
   Desert = "Desert",
   Furnace = "Furnace",
   Grave = "Grave",
@@ -16,4 +16,3 @@ enum PlanetaryClass {
   Tainted = "Tainted",
   Vital = "Vital",
 }
-export { PlanetaryClass };

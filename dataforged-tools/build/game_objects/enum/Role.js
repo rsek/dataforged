@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Character / Role
- * @public
+ * @alpha
  */
 var Role;
 (function (Role) {

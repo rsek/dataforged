@@ -5,11 +5,13 @@ import type { IEncounter } from "@json_out/encounters/index.js";
 import type { IEncounterVariant } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type EncounterIdStarforgedBase = `Encounters/${string}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type EncounterIdStarforged = `${Gamespace.Starforged}/${EncounterIdStarforgedBase}`;
 
@@ -19,7 +21,11 @@ export type EncounterIdStarforged = `${Gamespace.Starforged}/${EncounterIdStarfo
  * @public
  */
 export interface IEncounterStarforged extends IEncounter {
-  $id: EncounterIdStarforged;
+  /**
+   * @pattern ^Starforged/Encounters/[A-z_-]+$
+   */
+  $id: string;
+  // $id: EncounterIdStarforged;
   Nature: EncounterNatureStarforged;
   Summary: string;
   Variants: IEncounterVariant[];

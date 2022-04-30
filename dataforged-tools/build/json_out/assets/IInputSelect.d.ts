@@ -1,5 +1,5 @@
 import type { IInputSelectOption } from "./IInputSelectOption.js";
-import type { IHasId, IInput, InputType } from "../index.js";
+import type { IInput, InputType } from "../index.js";
 /**
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.
@@ -27,12 +27,13 @@ import type { IHasId, IInput, InputType } from "../index.js";
  * ```
  * @public
  */
-export interface IInputSelect<K extends string, V extends InputSelectOptionType> extends IInput<InputType.Select> {
+export interface IInputSelect<V extends InputSelectOptionType> extends IInput {
+    "Input Type": InputType.Select;
     /**
      * Hints which attribute(s) set by this dropdown's options.
      */
-    Sets: IInputSelectAttributeDefinition<K, V>[];
-    Options: IInputSelectOption<K, V>[];
+    Sets: IInputSelectAttributeDefinition<V>[];
+    Options: IInputSelectOption<V>[];
 }
 /**
  * Provides hints for the keys and typing of an {@link IInputSelect}'s child {@link IInputSelectOption}s.
@@ -40,8 +41,8 @@ export interface IInputSelect<K extends string, V extends InputSelectOptionType>
  * @typeParam V - The type(s) of the value(s) set by this item's options.
  * @public
  */
-export interface IInputSelectAttributeDefinition<K extends string, V extends InputSelectOptionType> extends IHasId<string> {
-    Key: K;
+export interface IInputSelectAttributeDefinition<V extends InputSelectOptionType> {
+    Key: string;
     Type: V;
 }
 /**
@@ -56,7 +57,7 @@ export declare enum InputSelectOptionType {
     Stat = "Stat",
     /**
      * A reference to one of the player character's condition meters: Health, Spirit, or Supply.
-     * @see {@link ConditionMeterName}
+     * @see {@link PlayerConditionMeter}
      */
     ConditionMeter = "Condition Meter",
     /**

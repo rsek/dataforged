@@ -3,5 +3,5 @@ export * from "./common/index.js";
 export * from "./encounters/index.js";
 export * from "./moves/index.js";
 export * from "./oracles/index.js";
-export * from "./setting_truths/index.js";
+export * from "./truths/index.js";
 //# sourceMappingURL=index.d.ts.map

@@ -22,7 +22,12 @@
     "render-json": "yarn render-json-sf && yarn render-json-is",
     "render-md-sf": "node ./build/start-md.js",
     "docs": "rm -R ../docs && mkdir ../docs && npx typedoc",
-    "pkg": "api-extractor run -c ./api-extractor.json && yarn render-json"
+    "dts": "api-extractor run -c ./api-extractor.json && cp ../src/index.d.ts ../dist/index.d.ts",
+    "schema-sf": "npx typescript-json-schema ../dist/index.d.ts 'Starforged' -o ../dist/starforged/schema.json --noExtraProps --defaultNumberType integer --required --defaultProps --titles --refs --aliasRefs",
+    "schema-is": "npx typescript-json-schema ../dist/index.d.ts 'Ironsworn' -o ../dist/ironsworn/schema.json --noExtraProps --defaultNumberType integer --required --defaultProps --titles --refs --aliasRefs",
+    "schema": "yarn schema-is && yarn schema-sf",
+    "rebuild": "yarn build && yarn dts && yarn schema",
+    "pkg": "yarn dts && yarn render-json && yarn schema && yarn docs"
   },
   "directories": {
     "doc": "./docs"

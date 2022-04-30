@@ -1,21 +1,18 @@
-import type { AttributeKey } from "@json_out/game_objects/AttributeKey.js";
-import type { IAttributeChoices, IDisplay, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle , OracleTableId } from "@json_out/index.js";
+import type { IAttribute } from "@json_out/game_objects/IAttribute.js";
+import type { IAttributeChoices, IDisplayWithTitle, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle , OracleTableId } from "@json_out/index.js";
+import type { IDisplay } from "@json_out/meta/IDisplay.js";
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleTableRowId = `${OracleTableId}/${RollRange}`;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
-export type RollRange = number | `${number}-${number}`;
-
-/**
- * Display properties for a single row in an oracle table.
- * @public
- */
-export type IRowDisplay = Omit<IDisplay, "Title">;
+export type RollRange = `${number}` | `${number}-${number}`;
 
 /**
  * Interface representing a single row in an oracle table.
@@ -25,23 +22,29 @@ export interface IRow extends Partial<
   IHasSummary &
   IHasRollTemplate<"Result" | "Summary" |"Description"> &
   IHasSuggestions &
-  IHasDisplay<IRowDisplay> &
   IHasOracleContent &
   IHasSubtable &
   IHasGameObjects
 >  {
-  // FIXME: refactor for external use
-
-  // $id?: SettingTruthOptionId | OracleTableRowId | null;
+  /**
+   * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?$
+   * @nullable
+   */
   $id?: string | null;
   /**
    * The low end of the dice range for this row.
+   * @minimum 1
+   * @maximum 100
+   * @nullable
    */
-  Floor: number|null;
+  Floor: number | null;
   /**
    * The high end of the dice range for this row.
+   * @minimum 1
+   * @maximum 100
+   * @nullable
    */
-  Ceiling: number|null;
+  Ceiling: number | null;
   /**
    * The primary result text for the row, annotated in Markdown.
    * In the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.
@@ -54,6 +57,7 @@ export interface IRow extends Partial<
    * Some tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.
    *
    * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
+   * @nullable
    */
   Summary?: string | null | undefined;
   /**
@@ -71,5 +75,6 @@ export interface IRow extends Partial<
   /**
   * The attributes set by this row.
    */
-  Attributes?: IAttributeChoices<AttributeKey>[] | undefined;
+  Attributes?: IAttribute[] | undefined;
+  Display?: IDisplay | undefined;
 }

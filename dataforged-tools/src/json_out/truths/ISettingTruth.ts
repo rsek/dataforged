@@ -1,5 +1,5 @@
 import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, ISettingTruthOption, ISuggestions  } from "@json_out/index.js";
+import type { IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, ISettingTruthOption, ISuggestions  } from "@json_out/index.js";
 
 /**
  * @public
@@ -44,7 +44,7 @@ export enum SettingTruthName {
 /**
  * A valid ID for a SettingTruth object.
  * @see {@link ISettingTruth}
- * @public
+ * @internal
  */
 export type SettingTruthId = `${Gamespace}/Setting_Truths/${SettingTruthIdFragment}`;
 
@@ -54,8 +54,12 @@ export type SettingTruthId = `${Gamespace}/Setting_Truths/${SettingTruthIdFragme
  * @see ISettingTruthOption
  * @public
  */
-export interface ISettingTruth extends IHasId<string>, IHasName, IHasSource, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
-  Name: SettingTruthName;
+export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
+  /**
+   * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$
+   */
+  $id: string;
+  Name: string;
   /**
    * The 'canonical' options for this setting truth category.
    */
@@ -65,4 +69,5 @@ export interface ISettingTruth extends IHasId<string>, IHasName, IHasSource, Par
    * @markdown
    */
   Character: string;
+  Display: IDisplayWithTitle;
 }

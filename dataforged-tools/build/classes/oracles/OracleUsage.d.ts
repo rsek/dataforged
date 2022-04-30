@@ -11,7 +11,7 @@ export declare class OracleUsage implements IOracleUsage {
     Suggestions?: Suggestions | undefined;
     Requires?: Requirements | undefined;
     "Allow duplicates"?: boolean | undefined;
-    "Sets attributes"?: IAttributeChoices[] | undefined;
+    "Sets"?: IAttributeChoices[] | undefined;
     constructor(json: IOracleUsageYaml);
 }
 //# sourceMappingURL=OracleUsage.d.ts.map

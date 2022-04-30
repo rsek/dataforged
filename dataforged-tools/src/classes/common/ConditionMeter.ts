@@ -1,16 +1,14 @@
 import type { AssetType } from "@classes/assets/AssetType.js";
 import { MeterBase } from "@classes/common/MeterBase.js";
-import type { AssetConditionMeterId } from "@json_out/assets/index.js";
 import { MeterAlias } from "@json_out/common/index.js";
 import type { IConditionMeter, MeterCondition } from "@json_out/common/index.js";
-
 
 /**
  * @internal
  */
 export class ConditionMeter extends MeterBase implements IConditionMeter {
   // set by parent constructor
-  $id!: AssetConditionMeterId;
+  $id!: IConditionMeter["$id"];
   // set by parent constructor
   Name!: string;
   // set by parent constructor

@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Settlements / Population
- * @public
+ * @alpha
  */
 export declare enum Population {
     Few = "Few",

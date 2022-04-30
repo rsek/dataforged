@@ -1,4 +1,5 @@
 import { AssetAbility } from "./AssetAbility.js";
+import { AssetState } from "./AssetState.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
 import { InputType } from "../../json_out/common/index.js";
@@ -14,7 +15,7 @@ import _ from "lodash-es";
  */
 export class Asset extends SourceInheritor {
     constructor(json, gamespace, parent, rootSource) {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f, _g;
         // uses RootSource as a starting point because category info has page numbers in the rulebook, rather than the asset pdf
         super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, rootSource);
         // console.log(this.Source);
@@ -37,25 +38,28 @@ export class Asset extends SourceInheritor {
                 if (result["Input Type"] === InputType.Select) {
                     result.Sets.forEach(hint => {
                         let searchValue = undefined;
+                        let replaceValue = this.$id;
                         switch (hint.Type) {
                             case InputSelectOptionType.ConditionMeter:
                                 searchValue = Replacement.AssetSelectMeter;
+                                replaceValue = this.$id;
                                 break;
                             case InputSelectOptionType.Stat:
                                 searchValue = Replacement.AssetSelectStat;
+                                replaceValue = this.$id;
                                 break;
                             default:
                                 break;
                         }
                         if (searchValue) {
-                            json.Abilities = replaceInAllStrings(json.Abilities, searchValue, hint.$id);
+                            json.Abilities = replaceInAllStrings(json.Abilities, searchValue, replaceValue);
                         }
                     });
                 }
                 return result;
             });
         }
-        this.States = json.States;
+        this.States = (_g = (_f = json.States) === null || _f === void 0 ? void 0 : _f.map(state => new AssetState(state))) !== null && _g !== void 0 ? _g : undefined;
         this.Requirement = json.Requirement;
         this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
         if (json.Abilities.length !== 3) {

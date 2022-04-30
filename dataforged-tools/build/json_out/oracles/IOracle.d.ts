@@ -1,7 +1,7 @@
 import type { IHasName, IOracleBase, IRow, ITableDisplay } from "../index.js";
 import type { IOracleCategory, OracleCategoryId } from "./IOracleCategory.js";
 /**
- * @public
+ * @internal
  */
 declare type OracleTableId = `${OracleCategoryId}/${string}`;
 export { OracleTableId };
@@ -12,7 +12,10 @@ export { OracleTableId };
  * @public
  */
 export interface IOracle extends IOracleBase, IHasName {
-    $id: OracleTableId;
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
+     */
+    $id: string;
     Display: ITableDisplay;
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;

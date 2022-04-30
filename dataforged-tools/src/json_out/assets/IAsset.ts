@@ -1,16 +1,19 @@
 import type { IAssetState } from "@json_out/assets/IAssetState.js";
 import type { IAssetUsage } from "@json_out/assets/IAssetUsage.js";
-import type { IInput } from "@json_out/assets/IInput.js";
+import type { IInput, IInputClock, IInputNumber, IInputText } from "@json_out/assets/IInput.js";
+import type { IInputSelect, InputSelectOptionType } from "@json_out/assets/IInputSelect.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { InputType } from "@json_out/common/InputType.js";
 import type { AssetTypeIdBase, IAssetAbility, IAssetAttachment, IAssetType, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName , IHasSource } from "@json_out/index.js";
+import type { IDisplayWithTitle } from "@json_out/meta/IDisplay.js";
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type AssetId = `${Gamespace}/${AssetIdBase}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type AssetIdBase = `${AssetTypeIdBase}/${string}`;
 
@@ -19,20 +22,22 @@ export type AssetIdBase = `${AssetTypeIdBase}/${string}`;
  * An interface representing an *Ironsworn: Starforged* asset card.
  * @public
  */
-export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
+export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
   /**
    * @example "Starforged/Assets/Path/Bounty_Hunter"
+   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$
    */
-  $id: AssetId;
+  $id: string;
   /**
    * The asset's name - the title printed on the card.
    * @example "Bounty Hunter"
    */
   Name: string;
+  Display: IDisplayWithTitle;
   /**
    * Describes any states that the asset might have, such as "Broken". Some states may disable the asset entirely.
    */
-  States?: IAssetState[];
+  States?: IAssetState[] | undefined;
   /**
    * The ID of the asset's parent AssetType
    * @example "Starforged/Assets/Path"
@@ -49,7 +54,7 @@ export interface IAsset extends IHasId<AssetId>, IHasName, IHasDisplay, IHasSour
   /**
    * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
    */
-  Inputs?: IInput<InputType>[] | undefined;
+  Inputs?: (IInputText|IInputSelect<InputSelectOptionType>)[] | undefined;
   /**
    * An optional markdown string representing the requirement text that appears at the top of some asset cards.
    * @markdown

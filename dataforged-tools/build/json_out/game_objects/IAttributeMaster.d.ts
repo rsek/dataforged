@@ -2,7 +2,7 @@ import type { Authority } from "../../game_objects/enum/Authority.js";
 import type { Atmosphere, Behavior, CreatureScale, DerelictType, Disposition, Dominion, Environment, FactionType, FringeGroup, Guild, Influence, Leadership, Life, Location, LocationTheme, PlanetaryClass, Population, Region, Role, SettlementInitialContact, StarshipInitialContact, Zone } from "../../game_objects/index.js";
 import type { AttributeKey } from "./AttributeKey.js";
 /**
- * @public
+ * @alpha
  */
 export interface IAttributeMaster {
     [AttributeKey.Atmosphere]: Atmosphere;

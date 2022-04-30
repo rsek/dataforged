@@ -1,5 +1,5 @@
 import type { Gamespace } from "../common/Gamespace.js";
-import type { IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, ISettingTruthOption, ISuggestions } from "../index.js";
+import type { IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, ISettingTruthOption, ISuggestions } from "../index.js";
 /**
  * @public
  */
@@ -41,7 +41,7 @@ export declare enum SettingTruthName {
 /**
  * A valid ID for a SettingTruth object.
  * @see {@link ISettingTruth}
- * @public
+ * @internal
  */
 export declare type SettingTruthId = `${Gamespace}/Setting_Truths/${SettingTruthIdFragment}`;
 /**
@@ -49,8 +49,12 @@ export declare type SettingTruthId = `${Gamespace}/Setting_Truths/${SettingTruth
  * @see ISettingTruthOption
  * @public
  */
-export interface ISettingTruth extends IHasId<string>, IHasName, IHasSource, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
-    Name: SettingTruthName;
+export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$
+     */
+    $id: string;
+    Name: string;
     /**
      * The 'canonical' options for this setting truth category.
      */
@@ -60,5 +64,6 @@ export interface ISettingTruth extends IHasId<string>, IHasName, IHasSource, Par
      * @markdown
      */
     Character: string;
+    Display: IDisplayWithTitle;
 }
 //# sourceMappingURL=ISettingTruth.d.ts.map

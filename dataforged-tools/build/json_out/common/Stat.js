@@ -1,4 +1,5 @@
 /**
+ * Enumerates player character stats.
  * @public
  */
 export var Stat;

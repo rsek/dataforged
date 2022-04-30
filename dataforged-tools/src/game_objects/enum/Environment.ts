@@ -1,12 +1,11 @@
 /**
  * Set by Oracles / Creatures / Environment
- * @public
+ * @alpha
  */
-enum Environment {
+export enum Environment {
   Space = "Space",
   Interior = "Interior",
   Land = "Land",
   Liquid = "Liquid",
   Air = "Air",
 }
-export { Environment };

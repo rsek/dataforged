@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Characters / Disposition
- * @public
+ * @alpha
  */
 var Disposition;
 (function (Disposition) {

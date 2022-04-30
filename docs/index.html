@@ -4,58 +4,57 @@
 </a>
 <p>Official <em>Ironsworn: Starforged</em> rules data in JSON, for use in community tools.</p>
 
+<a href="#intent" id="intent" style="color: inherit; text-decoration: none;">
+  <h2>Intent</h2>
+</a>
+<p>This repository is intended to give <a href="https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged"><em>Starforged</em>&#39;s Kickstarter</a> backers access to game data to incorporate into their own <em>Starforged</em> tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).</p>
+
 <a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
   <h2>Usage</h2>
 </a>
-<p>Best consumed as a Node package: <code>npm i dataforged</code> or <code>yarn add dataforged</code>. Typescript typings are included.</p>
-<p>If you just want the data as-is, import <code>data</code> object to use the pre-loaded json.</p>
+<p>Best consumed as a Node package: <code>npm i dataforged</code> or <code>yarn add dataforged</code>. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the <a href="https://rsek.github.io/dataforged/">documentation site</a>.</p>
+<p>If you just want the data as-is, import its <code>starforged</code> object to use the pre-loaded, typed JSON.</p>
 
 <a href="#esm" id="esm" style="color: inherit; text-decoration: none;">
   <h3>ESM</h3>
 </a>
-<pre><code class="language-javascript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">data</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;dataforged&#39;</span>
+<pre><code class="language-javascript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">starforged</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;dataforged&#39;</span>
 </code></pre>
 
 <a href="#commonjs" id="commonjs" style="color: inherit; text-decoration: none;">
   <h3>CommonJS</h3>
 </a>
 <p>CommonJS support is still experimental.</p>
-<pre><code class="language-javascript"><span class="hl-4">const</span><span class="hl-1"> { </span><span class="hl-5">data</span><span class="hl-1"> } = </span><span class="hl-6">require</span><span class="hl-1">(</span><span class="hl-3">&#39;dataforged&#39;</span><span class="hl-1">)</span>
+<pre><code class="language-javascript"><span class="hl-4">const</span><span class="hl-1"> { </span><span class="hl-5">starforged</span><span class="hl-1"> } = </span><span class="hl-6">require</span><span class="hl-1">(</span><span class="hl-3">&#39;dataforged&#39;</span><span class="hl-1">)</span>
 </code></pre>
-
-<a href="#intent" id="intent" style="color: inherit; text-decoration: none;">
-  <h2>Intent</h2>
-</a>
-<p>This repository is intended to give <a href="https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged"><em>Starforged</em>&#39;s Kickstarter</a> backers access to game data to incorporate into their own <em>Starforged</em> tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).</p>
 
 <a href="#licensing" id="licensing" style="color: inherit; text-decoration: none;">
   <h2>Licensing</h2>
 </a>
 <p><em>Starforged</em> is currently under development, and this content is not yet licensed for non-personal use without explicit permission of <a href="https://www.ironswornrpg.com/">Shawn Tomkin</a>. Once <em>Starforged</em>&#39;s development is complete and it is released, a permissive Creative Commons license for non-commercial and commercial projects will be attached to this content.</p>
 <p>In other words: for the moment, treat it like you would excerpts from a copyrighted work; please include attribution (e.g. &quot;Copyright ©2021 Shawn Tomkin and Absolute Tabletop, LLC&quot;) and a link back to the repository in your project... and drop a link in the <a href="https://discordapp.com/invite/6QMvmJb">Ironsworn discord</a>, because we&#39;re excited to see what you make with it!</p>
+<!--
+### Legacy Format
+Dataforged is migrating to a new format that is incompatible with the original format; the format had accumulated an awful lot of cruft, as it was carried over from Datasworn and wasn't designed with Starforged in mind. Features of the new format:
 
-<a href="#legacy-format" id="legacy-format" style="color: inherit; text-decoration: none;">
-  <h3>Legacy Format</h3>
-</a>
-<p>Dataforged is migrating to a new format that is incompatible with the original format; the format had accumulated an awful lot of cruft, as it was carried over from Datasworn and wasn&#39;t designed with Starforged in mind. Features of the new format:</p>
-<ul>
-<li>pre-generated <code>$id</code> keys for most important objects</li>
-<li>wherever practical, it uses the game&#39;s terminology to name keys. For instance, the old table row key <code>Description</code> is now <code>Result</code>, while <code>Details</code> has been renamed <code>Summary</code>.</li>
-<li>explicitly defines many values that were previously left to be inferred (for instance, the bottom end of a roll&#39;s range is now included)</li>
-<li>detailed information on how to render tables (for instance, whether it should be displayed as a column of another table)</li>
-<li>the typescript interfaces I use for internal typechecking can be found in the <code>src</code> directory; they aren&#39;t quite &#39;drop-in&#39; at the moment, but might save you some time if you&#39;re writing in typescript (and can be converted to C# with little difficulty)</li>
-</ul>
-<p>The migration will also make it much easier for me to add some future features:</p>
-<ul>
-<li>every CC-licensable icon in the game</li>
-<li>&#39;drop-in&#39; interfaces for Typescript and C# (and possibly other languages)</li>
-<li>making Dataforged available as a cross-referenced SQlite DB</li>
-<li>making all of Dataforged available in markdown files</li>
-<li>Dataforged-compatible Ironsworn data</li>
-<li>eventually, a <code>dataforged-community-content</code> repo, to make it easy for developers to include such content in their projects</li>
-</ul>
-<p>I <strong>strongly</strong> recommend migrating existing projects to the new format, especially if you want prompt content updates.</p>
-<p>If you need JSON in the old format, it can be found in the <code>legacy</code> directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on that front is appreciated.</p>
+  * pre-generated `$id` keys for most important objects
+  * wherever practical, it uses the game's terminology to name keys. For instance, the old table row key `Description` is now `Result`, while `Details` has been renamed `Summary`.
+  * explicitly defines many values that were previously left to be inferred (for instance, the bottom end of a roll's range is now included)
+  * detailed information on how to render tables (for instance, whether it should be displayed as a column of another table)
+  * the typescript interfaces I use for internal typechecking can be found in the `src` directory; they aren't quite 'drop-in' at the moment, but might save you some time if you're writing in typescript (and can be converted to C# with little difficulty)
+
+The migration will also make it much easier for me to add some future features:
+  * every CC-licensable icon in the game
+  * 'drop-in' interfaces for Typescript and C# (and possibly other languages)
+  * making Dataforged available as a cross-referenced SQlite DB
+  * making all of Dataforged available in markdown files
+  * Dataforged-compatible Ironsworn data
+  * eventually, a `dataforged-community-content` repo, to make it easy for developers to include such content in their projects
+
+I **strongly** recommend migrating existing projects to the new format, especially if you want prompt content updates.
+
+If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on that front is appreciated. -->
+
 
 <a href="#current-versionsources" id="current-versionsources" style="color: inherit; text-decoration: none;">
   <h2>Current Version/Sources</h2>

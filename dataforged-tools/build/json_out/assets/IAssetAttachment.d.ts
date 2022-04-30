@@ -10,6 +10,7 @@ export interface IAssetAttachment {
     "Asset Types": IAssetType["$id"][];
     /**
      * The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.
+     * @nullable
      */
     "Max": number | null;
 }

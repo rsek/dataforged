@@ -1,7 +1,7 @@
-import type { ActorType, IActorRecord } from "@game_objects/index.js";
-import type { AttributeKey } from "@json_out/index.js";
+import type { IActorRecord } from "@game_objects/index.js";
+import type { AttributeKey, GameObjectType } from "@json_out/index.js";
 
 /**
  * @public
  */
-export type ICharacterRecord = IActorRecord<ActorType.Character, AttributeKey.Disposition|AttributeKey.Role>;
+export type ICharacterRecord = IActorRecord<GameObjectType.Character, AttributeKey.Disposition|AttributeKey.Role>;

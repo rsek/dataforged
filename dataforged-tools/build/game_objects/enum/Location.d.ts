@@ -1,11 +1,10 @@
 /**
  * Set by Oracles / ** / Location
- * @public
+ * @alpha
  */
-declare enum Location {
+export declare enum Location {
     Planetside = "Planetside",
     Orbital = "Orbital",
     DeepSpace = "Deep Space"
 }
-export { Location };
 //# sourceMappingURL=Location.d.ts.map

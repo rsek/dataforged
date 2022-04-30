@@ -1,14 +1,12 @@
 import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
-import type { IHasSubtable, IOracle, IRow, IRowDisplay, OracleTableRowId, RollTemplate, SettingTruthOptionId } from "../../json_out/index.js";
+import type { IDisplay, IHasSubtable, IOracle, IRow, RollTemplate } from "../../json_out/index.js";
 import type { IRowYaml } from "../../yaml_in/oracles/IRowYaml.js";
 /**
  * Class representing a single row of an oracle table.
  * @internal
  */
-export declare class Row implements IRow, Partial<IHasSubtable<Row>> {
-    /**
-     */
-    $id: OracleTableRowId | SettingTruthOptionId | null;
+export declare class Row implements IRow, Partial<IHasSubtable<IRow>> {
+    $id: string | null;
     Floor: number | null;
     Ceiling: number | null;
     /**
@@ -37,7 +35,7 @@ export declare class Row implements IRow, Partial<IHasSubtable<Row>> {
     "Roll template"?: RollTemplate<"Result" | "Summary" | "Description" | never> | undefined;
     /**
      */
-    Display?: IRowDisplay;
+    Display?: IDisplay | undefined;
     /**
      */
     Content?: OracleContent;

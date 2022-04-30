@@ -8,8 +8,8 @@ export class OracleDisplay implements ITableDisplay {
   Title: string;
   "Column of"?: IOracle["$id"] | undefined;
   Table: DisplayTable;
-  Images?: ImageUrl<Raster>[] | undefined;
-  Icon?: ImageUrl<Vector> | undefined;
+  Images?: ITableDisplay["Images"];
+  Icon?: ITableDisplay["Icon"];
   constructor(json: Partial<ITableDisplay>, parentName: string, parentId: IOracle["$id"]) {
     this.Title = json.Title ?? parentName;
     this.Images = json.Images;

@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Creatures / Scale/**
- * @public
+ * @alpha
  */
 export var CreatureScale;
 (function (CreatureScale) {

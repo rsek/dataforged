@@ -1,16 +1,14 @@
 import { Requirements } from "../index.js";
-import { ActorType, PlaceType } from "../../game_objects/index.js";
-import { badJsonError } from "../../utils/logging/badJsonError.js";
-import { enumHas } from "../../utils/validation/enumHas.js";
 import _ from "lodash-es";
 /**
  * @internal
  */
 export class GameObject {
     constructor(json) {
-        if (!(enumHas(ActorType, json["Object type"]) || enumHas(PlaceType, json["Object type"]))) {
-            throw badJsonError(this.constructor, json, "Invalid object type");
-        }
+        // TODO: typechecking without recourse to making more goddamn enums
+        // if (!(enumHas(ActorType, json["Object type"]) || enumHas(PlaceType, json["Object type"]))) {
+        //   throw badJsonError(this.constructor, json, "Invalid object type");
+        // }
         this["Object type"] = json["Object type"];
         // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
         const requiredAttributes = _.omit(json, ["Object type", "Inherit rolls"]);

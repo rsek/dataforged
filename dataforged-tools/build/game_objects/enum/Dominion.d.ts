@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Dominion
- * @public
+ * @alpha
  */
 declare enum Dominion {
     Agriculture = "Agriculture",

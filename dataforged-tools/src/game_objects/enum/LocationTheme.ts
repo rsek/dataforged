@@ -2,7 +2,7 @@
  * Set by Oracles / Location Themes / Theme Type
  * @public
  */
-enum LocationTheme {
+export enum LocationTheme {
   Chaotic = "Chaotic",
   Fortified = "Fortified",
   Haunted = "Haunted",
@@ -12,4 +12,3 @@ enum LocationTheme {
   Ruined = "Ruined",
   Sacred = "Sacred"
 }
-export { LocationTheme };

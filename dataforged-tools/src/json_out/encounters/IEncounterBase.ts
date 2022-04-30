@@ -2,19 +2,21 @@ import type { ChallengeRank } from "@json_out/common/index.js";
 import type { EncounterIdStarforged } from "@json_out/encounters/IEncounterStarforged.js";
 
 import type { EncounterIdIronsworn, EncounterNatureIronsworn , EncounterNatureStarforged , EncounterTags } from "@json_out/encounters/index.js";
+import type { IDisplayWithTitle } from "@json_out/meta/IDisplay.js";
 import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary } from "@json_out/meta/IHas.js";
-import type { IDisplay } from "@json_out/meta/index.js";
 
 /**
  * Interface common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*, plus 'stubs' like IEncounterVariant.
  * @see {@link IEncounter}, {@link IEncounterVariant}
  * @public
  */
-export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, IHasSource, IHasName, IHasId<EncounterIdStarforged | EncounterIdIronsworn>,Partial<IHasQuestStarter & IHasSummary> {
+export interface IEncounterBase extends IHasDisplay, IHasDescription, IHasSource, IHasName, IHasId,Partial<IHasQuestStarter & IHasSummary> {
   /**
    * @example "Starforged/Encounters/Chiton"
+   * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-/]+$
    */
-  $id: EncounterIdStarforged | EncounterIdIronsworn;
+  $id: string;
+  // $id: EncounterIdStarforged | EncounterIdIronsworn;
   /**
    * @example "Chiton"
    */
@@ -23,6 +25,7 @@ export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, 
    * @example "Monster"
    */
   Nature: EncounterNatureStarforged | EncounterNatureIronsworn;
+  Display: IDisplayWithTitle;
   /**
    * @example "Insectoid horde"
    * @markdown
@@ -30,8 +33,17 @@ export interface IEncounterBase extends IHasDisplay<IDisplay>, IHasDescription, 
   Summary?: string | undefined;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
+  /**
+   * @markdown
+   */
   Features?: string[] | undefined;
+  /**
+   * @markdown
+   */
   Drives?: string[] | undefined;
+  /**
+   * @markdown
+   */
   Tactics?: string[] | undefined;
   /**
    * Ironsworn, p. 135: "Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe."

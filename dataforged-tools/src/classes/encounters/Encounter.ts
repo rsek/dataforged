@@ -1,11 +1,11 @@
-import type { ChallengeRank, EncounterIdIronsworn, EncounterIdStarforged, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplay, IEncounter, ISource } from "@json_out/index.js";
+import type { ChallengeRank, EncounterIdIronsworn, EncounterIdStarforged, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter, ISource } from "@json_out/index.js";
 import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
 export abstract class Encounter implements IEncounter {
-  abstract $id: EncounterIdStarforged | EncounterIdIronsworn;
+  abstract $id: string;
   Name: string;
   Features: string[];
   Drives: string[];
@@ -14,7 +14,7 @@ export abstract class Encounter implements IEncounter {
   Summary?: string | undefined;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
-  abstract Display: IDisplay;
+  abstract Display: IDisplayWithTitle;
   Description: string;
   abstract Source: ISource;
   "Quest Starter": string;

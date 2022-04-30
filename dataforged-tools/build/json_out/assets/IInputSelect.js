@@ -11,7 +11,7 @@ export var InputSelectOptionType;
     InputSelectOptionType["Stat"] = "Stat";
     /**
      * A reference to one of the player character's condition meters: Health, Spirit, or Supply.
-     * @see {@link ConditionMeterName}
+     * @see {@link PlayerConditionMeter}
      */
     InputSelectOptionType["ConditionMeter"] = "Condition Meter";
     /**

@@ -3,11 +3,11 @@ import type { EncounterNatureIdBase } from "@json_out/encounters/IEncounterNatur
 import type { EncounterNatureIronsworn , IEncounter } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
  */
 export type EncounterIdIronswornBase = `${EncounterNatureIdBase}/${string}`;
 /**
- * @public
+ * @internal
  */
 export type EncounterIdIronsworn = `${Gamespace.Ironsworn}/${EncounterIdIronswornBase}`;
 
@@ -16,7 +16,10 @@ export type EncounterIdIronsworn = `${Gamespace.Ironsworn}/${EncounterIdIronswor
  * @public
  */
 export interface IEncounterIronsworn extends IEncounter {
-  $id: EncounterIdIronsworn;
+  /**
+   * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-/]+/[A-z_-/]+$
+   */
+  $id: string;
   Nature: EncounterNatureIronsworn;
   "Your Truth"?: string | undefined;
 }

@@ -1,3 +1,4 @@
+import { AssetState } from "./AssetState.js";
 import { AlterMove, Move } from "../index.js";
 import { Replacement } from "../../json_out/common/Replacement.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
@@ -8,7 +9,7 @@ import _ from "lodash-es";
  */
 export class AssetAbility {
     constructor(json, id, gamespace, parent) {
-        var _a;
+        var _a, _b;
         /* Setting the id of the asset ability. */
         this.$id = id;
         this.Text = json.Text;
@@ -29,6 +30,9 @@ export class AssetAbility {
             return newData;
         }) : json["Alter Moves"];
         this["Alter Properties"] = json["Alter Properties"];
+        if ((_b = this["Alter Properties"]) === null || _b === void 0 ? void 0 : _b.States) {
+            this["Alter Properties"].States = this["Alter Properties"].States.map(state => new AssetState(state));
+        }
         if (json.Moves) {
             this.Moves = json.Moves.map(moveJson => {
                 var _a;

@@ -1,7 +1,7 @@
 import { Source } from "@classes/common/Source.js";
 import { Encounter } from "@classes/encounters/Encounter.js";
 import type { EncounterNatureInfo } from "@classes/encounters/EncounterNatureInfo.js";
-import type { EncounterIdIronsworn, EncounterNatureIronsworn, IDisplay, IEncounterIronsworn } from "@json_out/index.js";
+import type { EncounterIdIronsworn, EncounterNatureIronsworn, IDisplayWithTitle, IEncounterIronsworn } from "@json_out/index.js";
 import type { IEncounterIronswornYaml } from "@yaml_in/index.js";
 
 
@@ -9,9 +9,9 @@ import type { IEncounterIronswornYaml } from "@yaml_in/index.js";
  * @internal
  */
 export class EncounterIronsworn extends Encounter implements IEncounterIronsworn {
-  $id: EncounterIdIronsworn;
+  $id: IEncounterIronsworn["$id"];
   Nature: EncounterNatureIronsworn;
-  Display: IDisplay;
+  Display: IDisplayWithTitle;
   Source: Source;
   "Your Truth"?: string | undefined;
   constructor(json: IEncounterIronswornYaml, parent: EncounterNatureInfo) {

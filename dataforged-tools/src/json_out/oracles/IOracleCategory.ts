@@ -54,43 +54,51 @@ export enum OracleCategoryJaggedFragment {
 
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleRoot = `${Gamespace}/Oracles`;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleCategoryFlatPath = `${OracleRoot}/${OracleCategoryFlatFragment}`;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleCategoryJaggedId = `${OracleRoot}/${OracleCategoryJaggedFragment}`;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleCategoryName = OracleCategoryFlatPath | OracleCategoryJaggedId | OracleSubcategoryName;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleSubcategoryPath = `Derelicts/${Zone}` | `Location_Themes/${LocationTheme}` | `Planets/${PlanetaryClass}` | `Vaults/${VaultZone}`;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleSubcategoryName = PlanetaryClass | Zone | LocationTheme | VaultZone;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type OracleSubcategoryId = `${OracleRoot}/${OracleSubcategoryPath}`;
 
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 type OracleCategoryId = OracleSubcategoryId | OracleCategoryFlatPath | OracleCategoryJaggedId;
 export { OracleCategoryId };
@@ -102,9 +110,18 @@ export { OracleCategoryId };
  * @public
  */
 export interface IOracleCategory extends IOracleBase, IHasName {
-  $id: OracleCategoryId;
-  Name: OracleCategoryName;
+  /**
+   * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
+   */
+  $id: string,
+  // Name: OracleCategoryName;
+  Name: string;
+  /**
+   */
   Category?: IOracleCategory["$id"] | undefined;
+  /**
+   * Subcategories contained by this oracle category.
+   */
   Categories?: IOracleCategory[] | undefined;
   /**
    * A list of sample names for this category (only used by Planetary Class subcategories).

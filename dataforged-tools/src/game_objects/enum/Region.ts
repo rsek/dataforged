@@ -1,5 +1,5 @@
 /**
- * @public
+ * @alpha
  */
 export enum Region {
   Terminus = "Terminus",

@@ -1,4 +1,3 @@
-export * from "./ActorType.js";
 export * from "./Atmosphere.js";
 export * from "./Authority.js";
 export * from "./Behavior.js";
@@ -17,7 +16,6 @@ export * from "./Leadership.js";
 export * from "./Life.js";
 export * from "./Location.js";
 export * from "./LocationTheme.js";
-export * from "./PlaceType.js";
 export * from "./PlanetaryClass.js";
 export * from "./Population.js";
 export * from "./Region.js";

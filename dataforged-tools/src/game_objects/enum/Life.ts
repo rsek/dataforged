@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / * / Life
- * @public
+ * @alpha
  */
 enum Life {
   None = "None",

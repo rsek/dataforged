@@ -7466,7 +7466,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Environment" }]
+          "Sets": [{ "Key": "Environment" }]
         },
         "Content": { "Part of speech": ["noun"] },
         "Table": [
@@ -7542,7 +7542,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Creature Scale" }]
+          "Sets": [{ "Key": "Creature Scale" }]
         },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [
@@ -7627,7 +7627,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Creature Scale" }]
+          "Sets": [{ "Key": "Creature Scale" }]
         },
         "Table": [
           {
@@ -8835,7 +8835,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Encountered Behavior" }]
+          "Sets": [{ "Key": "Encountered Behavior" }]
         },
         "Content": { "Part of speech": ["noun", "common noun"] },
         "Table": [
@@ -9390,7 +9390,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Location" }]
+          "Sets": [{ "Key": "Location" }]
         },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [
@@ -9456,7 +9456,7 @@
           "Initial": true,
           "Allow duplicates": false,
           "Requires": { "Attributes": [{ "Key": "Location" }] },
-          "Sets attributes": [{ "Key": "Derelict Type" }]
+          "Sets": [{ "Key": "Derelict Type" }]
         },
         "Oracles": [
           {
@@ -9494,7 +9494,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Location", "Values": ["Planetside"] }]
               },
-              "Sets attributes": [{ "Key": "Derelict Type" }]
+              "Sets": [{ "Key": "Derelict Type" }]
             },
             "Table": [
               {
@@ -9550,7 +9550,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Location", "Values": ["Orbital"] }]
               },
-              "Sets attributes": [{ "Key": "Derelict Type" }]
+              "Sets": [{ "Key": "Derelict Type" }]
             },
             "Table": [
               {
@@ -9606,7 +9606,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Location", "Values": ["Deep Space"] }]
               },
-              "Sets attributes": [{ "Key": "Derelict Type" }]
+              "Sets": [{ "Key": "Derelict Type" }]
             },
             "Table": [
               {
@@ -13909,7 +13909,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Faction Type" }]
+          "Sets": [{ "Key": "Faction Type" }]
         },
         "Content": { "Part of speech": ["noun"] },
         "Table": [
@@ -14031,7 +14031,7 @@
             "Attributes": [{ "Key": "Influence", "Value": "Inescapable" }]
           }
         ],
-        "Usage": { "Sets attributes": [{ "Key": "Influence" }] }
+        "Usage": { "Sets": [{ "Key": "Influence" }] }
       },
       {
         "Source": {
@@ -14044,6 +14044,7 @@
         "Category": "Starforged/Oracles/Factions",
         "Display": {
           "Title": "Dominion",
+          "Icon": "../../img/vector/Oracles/Factions/Dominion.svg",
           "Table": {
             "Result columns": [
               {
@@ -14067,7 +14068,7 @@
           "Requires": {
             "Attributes": [{ "Key": "Faction Type", "Values": ["Dominion"] }]
           },
-          "Sets attributes": [{ "Key": "Dominion" }]
+          "Sets": [{ "Key": "Dominion" }]
         },
         "Content": { "Part of speech": ["noun"], "Tags": ["abstract noun"] },
         "Table": [
@@ -14274,7 +14275,7 @@
           "Requires": {
             "Attributes": [{ "Key": "Faction Type", "Values": ["Dominion"] }]
           },
-          "Sets attributes": [{ "Key": "Leadership" }]
+          "Sets": [{ "Key": "Leadership" }]
         },
         "Content": { "Part of speech": ["fragment"], "Tags": ["description"] },
         "Table": [
@@ -14377,6 +14378,7 @@
         "Category": "Starforged/Oracles/Factions",
         "Display": {
           "Title": "Guild",
+          "Icon": "../../img/vector/Oracles/Factions/Guild.svg",
           "Table": {
             "Result columns": [
               {
@@ -14399,7 +14401,7 @@
           "Requires": {
             "Attributes": [{ "Key": "Faction Type", "Values": ["Guild"] }]
           },
-          "Sets attributes": [{ "Key": "Guild" }]
+          "Sets": [{ "Key": "Guild" }]
         },
         "Content": { "Part of speech": ["noun", "plural"], "Tags": ["actor"] },
         "Table": [
@@ -14525,6 +14527,7 @@
         "Category": "Starforged/Oracles/Factions",
         "Display": {
           "Title": "Fringe Group",
+          "Icon": "../../img/vector/Oracles/Factions/Fringe_Group.svg",
           "Table": {
             "Result columns": [
               {
@@ -14548,7 +14551,7 @@
               { "Key": "Faction Type", "Values": ["Fringe Group"] }
             ]
           },
-          "Sets attributes": [{ "Key": "Fringe Group" }]
+          "Sets": [{ "Key": "Fringe Group" }]
         },
         "Content": { "Part of speech": ["noun", "plural"], "Tags": ["actor"] },
         "Table": [
@@ -16519,7 +16522,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Location Theme" }]
+          "Sets": [{ "Key": "Location Theme" }]
         },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [
@@ -16600,7 +16603,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Chaotic",
         "Name": "Chaotic",
         "Description": "Reality is corrupted or warped in this place.",
-        "Display": { "Title": "Chaotic" },
+        "Display": {
+          "Title": "Chaotic",
+          "Icon": "../../img/vector/Location_Theme/Chaotic.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -16936,7 +16942,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Fortified",
         "Name": "Fortified",
         "Description": "Enemies defend this place against intruders.",
-        "Display": { "Title": "Fortified" },
+        "Display": {
+          "Title": "Fortified",
+          "Icon": "../../img/vector/Location_Theme/Fortified.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -17272,7 +17281,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Haunted",
         "Name": "Haunted",
         "Description": "Restless spirits are bound to this place.",
-        "Display": { "Title": "Haunted" },
+        "Display": {
+          "Title": "Haunted",
+          "Icon": "../../img/vector/Location_Theme/Haunted.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -17611,7 +17623,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Infested",
         "Name": "Infested",
         "Description": "Foul creatures have overrun this place.",
-        "Display": { "Title": "Infested" },
+        "Display": {
+          "Title": "Infested",
+          "Icon": "../../img/vector/Location_Theme/Infested.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -17947,7 +17962,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Inhabited",
         "Name": "Inhabited",
         "Description": "People have built a community in this place.",
-        "Display": { "Title": "Inhabited" },
+        "Display": {
+          "Title": "Inhabited",
+          "Icon": "../../img/vector/Location_Theme/Inhabited.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -18283,7 +18301,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Mechanical",
         "Name": "Mechanical",
         "Description": "Machines and technology hold sway in this place.",
-        "Display": { "Title": "Mechanical" },
+        "Display": {
+          "Title": "Mechanical",
+          "Icon": "../../img/vector/Location_Theme/Mechanical.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -18621,7 +18642,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Ruined",
         "Name": "Ruined",
         "Description": "Time, disaster, or war have ravaged this place.",
-        "Display": { "Title": "Ruined" },
+        "Display": {
+          "Title": "Ruined",
+          "Icon": "../../img/vector/Location_Theme/Ruined.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -18957,7 +18981,10 @@
         "$id": "Starforged/Oracles/Location_Themes/Sacred",
         "Name": "Sacred",
         "Description": "Worshipers glorify strange powers in this place.",
-        "Display": { "Title": "Sacred" },
+        "Display": {
+          "Title": "Sacred",
+          "Icon": "../../img/vector/Location_Theme/Sacred.svg"
+        },
         "Category": "Starforged/Oracles/Location_Themes",
         "Usage": {
           "Allow duplicates": false,
@@ -21205,9 +21232,9 @@
               "Date": "040122",
               "Page": 229
             },
-            "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/50-50",
-            "Name": "50-50",
-            "Aliases": ["50", "5050", "Fifty-fifty"],
+            "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/Fifty-fifty",
+            "Name": "Fifty-fifty",
+            "Aliases": ["50", "5050", "Fifty-fifty", "50/50", "50-50"],
             "Member of": "Starforged/Oracles/Moves/Ask_the_Oracle",
             "Category": "Starforged/Oracles/Moves",
             "Display": {
@@ -21216,14 +21243,14 @@
                 "Result columns": [
                   {
                     "Label": "Result",
-                    "Use content from": "Starforged/Oracles/Moves/Ask_the_Oracle/50-50",
+                    "Use content from": "Starforged/Oracles/Moves/Ask_the_Oracle/Fifty-fifty",
                     "Key": "Result"
                   }
                 ],
                 "Roll columns": [
                   {
                     "Label": "Roll",
-                    "Use content from": "Starforged/Oracles/Moves/Ask_the_Oracle/50-50"
+                    "Use content from": "Starforged/Oracles/Moves/Ask_the_Oracle/Fifty-fifty"
                   }
                 ]
               }
@@ -21232,13 +21259,13 @@
               {
                 "Floor": 1,
                 "Ceiling": 50,
-                "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/50-50/1-50",
+                "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/Fifty-fifty/1-50",
                 "Result": "Yes"
               },
               {
                 "Floor": 51,
                 "Ceiling": 100,
-                "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/50-50/51-100",
+                "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/Fifty-fifty/51-100",
                 "Result": "No"
               }
             ]
@@ -23022,7 +23049,7 @@
                   { "Key": "Planetary Class", "Values": ["Desert"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -23780,7 +23807,7 @@
                   { "Key": "Planetary Class", "Values": ["Desert"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -23921,7 +23948,7 @@
                   { "Key": "Planetary Class", "Values": ["Furnace"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -24673,7 +24700,7 @@
                   { "Key": "Planetary Class", "Values": ["Furnace"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -24814,7 +24841,7 @@
                   { "Key": "Planetary Class", "Values": ["Grave"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -25516,7 +25543,7 @@
                   { "Key": "Planetary Class", "Values": ["Grave"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -25637,7 +25664,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Planetary Class", "Values": ["Ice"] }]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -26389,7 +26416,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Planetary Class", "Values": ["Ice"] }]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -26530,7 +26557,7 @@
                   { "Key": "Planetary Class", "Values": ["Jovian"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -27276,7 +27303,7 @@
                   { "Key": "Planetary Class", "Values": ["Jovian"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -27417,7 +27444,7 @@
                   { "Key": "Planetary Class", "Values": ["Jungle"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -28219,7 +28246,7 @@
                   { "Key": "Planetary Class", "Values": ["Jungle"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -28348,7 +28375,7 @@
                   { "Key": "Planetary Class", "Values": ["Ocean"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -29156,7 +29183,7 @@
                   { "Key": "Planetary Class", "Values": ["Ocean"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -29297,7 +29324,7 @@
                   { "Key": "Planetary Class", "Values": ["Rocky"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -30043,7 +30070,7 @@
                   { "Key": "Planetary Class", "Values": ["Rocky"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -30186,7 +30213,7 @@
                   { "Key": "Planetary Class", "Values": ["Shattered"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -30913,7 +30940,7 @@
                   { "Key": "Planetary Class", "Values": ["Shattered"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -31036,7 +31063,7 @@
                   { "Key": "Planetary Class", "Values": ["Tainted"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -31732,7 +31759,7 @@
                   { "Key": "Planetary Class", "Values": ["Tainted"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -31861,7 +31888,7 @@
                   { "Key": "Planetary Class", "Values": ["Vital"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Atmosphere" }]
+              "Sets": [{ "Key": "Atmosphere" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -32897,7 +32924,7 @@
                   { "Key": "Planetary Class", "Values": ["Vital"] }
                 ]
               },
-              "Sets attributes": [{ "Key": "Life" }]
+              "Sets": [{ "Key": "Life" }]
             },
             "Content": { "Part of speech": ["adjective"] },
             "Table": [
@@ -32982,7 +33009,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Location" }]
+          "Sets": [{ "Key": "Location" }]
         },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [
@@ -33048,7 +33075,7 @@
           "Initial": true,
           "Allow duplicates": false,
           "Requires": { "Attributes": [{ "Key": "Region" }] },
-          "Sets attributes": [{ "Key": "Population" }]
+          "Sets": [{ "Key": "Population" }]
         },
         "Oracles": [
           {
@@ -33086,7 +33113,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Region", "Values": ["Terminus"] }]
               },
-              "Sets attributes": [{ "Key": "Population" }]
+              "Sets": [{ "Key": "Population" }]
             },
             "Table": [
               {
@@ -33163,7 +33190,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Region", "Values": ["Outlands"] }]
               },
-              "Sets attributes": [{ "Key": "Population" }]
+              "Sets": [{ "Key": "Population" }]
             },
             "Table": [
               {
@@ -33240,7 +33267,7 @@
               "Requires": {
                 "Attributes": [{ "Key": "Region", "Values": ["Expanse"] }]
               },
-              "Sets attributes": [{ "Key": "Population" }]
+              "Sets": [{ "Key": "Population" }]
             },
             "Table": [
               {
@@ -33477,7 +33504,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Initial Contact" }]
+          "Sets": [{ "Key": "Initial Contact" }]
         },
         "Content": { "Part of speech": ["fragment"], "Tags": ["description"] },
         "Table": [
@@ -33608,7 +33635,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Authority" }]
+          "Sets": [{ "Key": "Authority" }]
         },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [
@@ -39098,7 +39125,7 @@
         "Usage": {
           "Initial": true,
           "Allow duplicates": false,
-          "Sets attributes": [{ "Key": "Location" }]
+          "Sets": [{ "Key": "Location" }]
         },
         "Content": { "Part of speech": ["adjective"] },
         "Table": [

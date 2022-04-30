@@ -3,7 +3,8 @@ import type { IHasId, IHasText } from "@json_out/meta/IHas.js";
 import type { IMoveTriggerOption } from "@json_out/moves/IMoveTriggerOption.js";
 import type { RollType } from "@json_out/moves/RollMethod.js";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type MoveTriggerId = `${MoveId}/Trigger`;
 
@@ -11,14 +12,15 @@ export type MoveTriggerId = `${MoveId}/Trigger`;
  * Describes the trigger conditions of the move.
  * @public
  */
-export interface IMoveTrigger extends IHasId<MoveTriggerId>, Partial<IHasText> {
+export interface IMoveTrigger extends IHasId, Partial<IHasText> {
   /**
-   * @example `Starforged/Moves/Adventure/Face_Danger/Trigger`
+   * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger$
    */
-  $id: MoveTriggerId;
+  $id: string;
   /**
    * A markdown string containing the primary trigger text for this move.
-   * @example `Starforged/Moves/Adventure/Face_Danger/Trigger.Text`: "When you attempt something risky or react to an imminent threat..."
+   * @markdown
+   * @example "When you attempt something risky or react to an imminent threat..."
    */
   Text?: string | undefined;
   /**

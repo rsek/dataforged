@@ -1,4 +1,5 @@
-import type { IDisplay, IGameObject, IOracleContent, IOracleUsage, IRequirements, IRow, ISource, ISuggestions, RollTemplate } from "../index.js";
+import type { IGameObject, IOracleContent, IOracleUsage, IRequirements, IRow, ISource, ISuggestions, RollTemplate } from "../index.js";
+import type { IDisplay } from "./IDisplay.js";
 /**
  * Interface for items with a user-facing markdown summary.
  * @public
@@ -7,6 +8,7 @@ export interface IHasSummary {
     /**
      * A user-facing markdown summary of the item.
      * @markdown
+     * @nullable
      */
     Summary: string | null;
 }
@@ -45,11 +47,11 @@ export interface IHasSource<T extends ISource = ISource> {
  * For elements with unique string IDs.
  * @public
  */
-export interface IHasId<T extends string> {
+export interface IHasId {
     /**
      * The item's unique string ID.
      */
-    $id: T;
+    $id: string;
 }
 /**
  * Interface for items with a Name key.
@@ -66,11 +68,11 @@ export interface IHasName {
  * Interface for items with rendering information.
  * @public
  */
-export interface IHasDisplay<T extends Partial<IDisplay> = IDisplay> {
+export interface IHasDisplay {
     /**
      * Data relevant to this item's display/rendering.
      */
-    Display: T;
+    Display: IDisplay;
 }
 /**
  * Interface for items that reproduce Starforged rules text in markdown.

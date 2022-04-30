@@ -12,7 +12,7 @@ import _ from "lodash-es";
  * @internal
  */
 export class OracleCategory extends SourceInheritor implements IOracleCategory {
-  $id: OracleCategoryId;
+  $id: IOracleCategory["$id"];
   Name: OracleCategoryName;
   Aliases?: string[] | undefined;
   Category?: OracleCategoryJaggedId | undefined;

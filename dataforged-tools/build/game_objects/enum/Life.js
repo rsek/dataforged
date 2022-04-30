@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / * / Life
- * @public
+ * @alpha
  */
 var Life;
 (function (Life) {

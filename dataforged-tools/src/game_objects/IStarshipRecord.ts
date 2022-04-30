@@ -1,10 +1,10 @@
-import type { IPlaceRecord, PlaceType, StarshipInitialContact } from "@game_objects/index.js";
+import type { GameObjectType, IPlaceRecord, StarshipInitialContact } from "@game_objects/index.js";
 import type { AttributeKey } from "@json_out/index.js";
 /**
  * @public
  */
 export type IStarshipRecord<K extends AttributeKey|never = never> = IPlaceRecord<
-PlaceType.Starship,
+GameObjectType.Starship,
 K | AttributeKey.InitialContact
 > & {
     [AttributeKey.InitialContact]?: StarshipInitialContact | undefined

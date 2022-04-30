@@ -1,8 +1,9 @@
-import type { Input } from "@classes/common/Input.js";
+import { AssetState } from "@classes/assets/AssetState.js";
+import type { Input, InputClock, InputNumber, InputText } from "@classes/common/Input.js";
 import { AlterMove , Move } from "@classes/index.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 import { Replacement } from "@json_out/common/Replacement.js";
-import type { AssetAbilityId, IAlterMomentum, IAsset, IAssetAbility,  InputType , MoveId } from "@json_out/index.js";
+import type { AssetAbilityId, IAlterMomentum, IAsset, IAssetAbility,  IAssetState,  InputType , MoveId } from "@json_out/index.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import type { IAssetAbilityYaml } from "@yaml_in/index.js";
@@ -12,20 +13,20 @@ import _ from "lodash-es";
  * @internal
  */
 export class AssetAbility implements IAssetAbility {
-  $id: AssetAbilityId;
+  $id: IAssetAbility["$id"];
   Text: string;
   Moves?: Move[] | undefined;
-  Inputs?: Input<InputType>[] | undefined;
+  Inputs?: (InputNumber|InputClock|InputText)[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
-  "Alter Properties"?: Partial<IAsset> | undefined;
+  "Alter Properties"?: IAssetAbility["Alter Properties"] | undefined;
   "Alter Momentum"?: IAlterMomentum | undefined;
   Enabled: boolean;
-  constructor(json: IAssetAbilityYaml, id: AssetAbilityId, gamespace: Gamespace, parent: IAsset) {
+  constructor(json: IAssetAbilityYaml, id: IAssetAbility["$id"], gamespace: Gamespace, parent: IAsset) {
     /* Setting the id of the asset ability. */
     this.$id = id;
     this.Text = json.Text;
     if (json.Inputs) {
-      this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this));
+      this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this)) as (InputNumber|InputClock|InputText)[];
     }
 
     this.Enabled = json.Enabled ?? false;
@@ -41,6 +42,9 @@ export class AssetAbility implements IAssetAbility {
       return newData;
     }) : json["Alter Moves"];
     this["Alter Properties"] = json["Alter Properties"];
+    if (this["Alter Properties"]?.States) {
+      this["Alter Properties"].States = this["Alter Properties"].States.map(state => new AssetState(state as IAssetState));
+    }
     if (json.Moves) {
       this.Moves = json.Moves.map(moveJson => {
         const moveDataClone = _.cloneDeep(moveJson);

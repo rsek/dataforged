@@ -1,16 +1,21 @@
 import "source-map-support/register.js";
 import { JSON_PATHS } from "@constants/index.js";
 import { Gamespace } from "@json_out/common/Gamespace.js";
+import type { Ironsworn } from "@json_out/Ironsworn.js";
 import { buildDataforged } from "@utils/buildDataforged.js";
 import { writeJson } from "@utils/io/writeJSON.js";
 import _ from "lodash-es";
 
-const data = buildDataforged(Gamespace.Ironsworn);
+const data = buildDataforged(Gamespace.Ironsworn)  as Ironsworn;
 export { data };
 
 _.forEach(data, (value, key) => {
-  JSON_PATHS.forEach(path => writeJson(path + `/ironsworn/${key}.json`, value));
+  if (typeof value !== "string" && typeof value !== "undefined") {
+    JSON_PATHS.forEach(path => writeJson(path + `/ironsworn/${key}.json`, value));
+  }
 });
+
+JSON_PATHS.forEach(path => writeJson( path+ "/ironsworn/datasworn.json", data));
 
 // buildOracleMarkdown(data.oracles, MD_PATH);
 

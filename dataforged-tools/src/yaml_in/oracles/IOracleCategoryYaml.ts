@@ -3,7 +3,7 @@ import type { IOracleUsageYaml, IOracleYaml, IRequirementsYaml, ITemplateOracleC
 
 
 export interface IOracleCategoryYaml extends ITemplateYamlBase, Omit<Partial<IOracleCategory>, "Oracles"|"Categories"|"Usage"> {
-  $id: OracleCategoryId;
+  $id: IOracleCategory["$id"];
   Name: OracleCategoryName;
   Requires?: IRequirementsYaml | undefined;
   Usage?: IOracleUsageYaml | undefined;

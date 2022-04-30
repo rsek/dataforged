@@ -9,11 +9,12 @@ import type { IInputSelectOptionYaml, IInputSelectYaml } from "@yaml_in/index.js
 /**
  * @internal
  */
-export class InputSelect<K extends string, V extends InputSelectOptionType> extends Input<InputType.Select> implements IInputSelect<K, V> {
-  Sets: IInputSelectAttributeDefinition<K, V>[];
-  Options: IInputSelectOption<K, V>[];
+export class InputSelect<V extends InputSelectOptionType> extends Input implements IInputSelect<V> {
+  "Input Type": InputType.Select;
+  Sets: IInputSelectAttributeDefinition<V>[];
+  Options: IInputSelectOption<V>[];
   Adjustable: boolean;
-  constructor(json: IInputSelectYaml<K, V>, parent: IAssetAbility|IAsset) {
+  constructor(json: IInputSelectYaml<V>, parent: IAssetAbility|IAsset) {
     super(json, parent);
     if (json["Input Type"] !== InputType.Select) {
       throw badJsonError(this.constructor, json["Input Type"], "Expected InputType.Select!");
@@ -21,7 +22,7 @@ export class InputSelect<K extends string, V extends InputSelectOptionType> exte
     this.Adjustable = json.Adjustable ?? false;
     this.Sets = json.Sets;
 
-    this.Options = json.Options.map(optionJson => new InputSelectOption<K, V>(optionJson, this));
+    this.Options = json.Options.map(optionJson => new InputSelectOption<V>(optionJson, this));
 
     // TODO: typecheck "Sets" vs the options - via a method that can be invoked?
   }
@@ -30,11 +31,11 @@ export class InputSelect<K extends string, V extends InputSelectOptionType> exte
 /**
  * @internal
  */
-export class InputSelectOption<K extends string, V extends InputSelectOptionType> implements IInputSelectOption<K, V> {
-  $id: IInputSelectOption<K, V>["$id"];
+export class InputSelectOption<V extends InputSelectOptionType> implements IInputSelectOption<V> {
+  $id: IInputSelectOption<V>["$id"];
   Name: string;
-  Set: InputSelectOptionSetter<K, V>[];
-  constructor(json: IInputSelectOptionYaml<K, V>, parent: IInputSelect<K, V>) {
+  Set: InputSelectOptionSetter<V>[];
+  constructor(json: IInputSelectOptionYaml<V>, parent: IInputSelect<V>) {
     this.$id = `${parent.$id}/Options/${json.Name.replace(" ", "_")}`;
     this.Name = json.Name;
     this.Set = json.Set.map(attr => new InputSelectOptionSetter(attr, this));
@@ -44,11 +45,11 @@ export class InputSelectOption<K extends string, V extends InputSelectOptionType
 /**
  * @internal
  */
-export class InputSelectOptionSetter<K extends string, V extends InputSelectOptionType> implements IInputSelectOptionSetter<K, V> {
-  $id: InputSelectOptionSetterId;
-  Key: K;
-  Value: IInputSelectOptionSetter<K, V>["Value"];
-  constructor(json: IInputSelectOptionSetter<K, V>, parent: InputSelectOption<K, V>) {
+export class InputSelectOptionSetter<V extends InputSelectOptionType> implements IInputSelectOptionSetter<V> {
+  $id: string;
+  Key: string;
+  Value: IInputSelectOptionSetter<V>["Value"];
+  constructor(json: IInputSelectOptionSetter<V>, parent: InputSelectOption<V>) {
     this.$id = `${parent.$id}/${json.Key.replace(" ", "_")}`;
     this.Key = json.Key;
     this.Value = json.Value;

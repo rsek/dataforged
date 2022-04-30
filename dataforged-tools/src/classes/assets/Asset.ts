@@ -1,15 +1,16 @@
 import { AssetAbility } from "@classes/assets/AssetAbility.js";
+import { AssetState } from "@classes/assets/AssetState.js";
 import { ConditionMeter } from "@classes/common/ConditionMeter.js";
-import type { Input } from "@classes/common/Input.js";
+import type { InputText } from "@classes/common/Input.js";
+import type { InputSelect } from "@classes/common/InputSelect.js";
 import { SourceInheritor } from "@classes/common/SourceInheritor.js";
-import type { IAssetState } from "@json_out/assets/IAssetState.js";
 import type { IAssetUsage } from "@json_out/assets/IAssetUsage.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 import { InputType } from "@json_out/common/index.js";
 import { Replacement } from "@json_out/common/Replacement.js";
-import type { AssetId, IAsset, IAssetAttachment, IAssetType, RequireKey } from "@json_out/index.js";
+import type { AssetId, IAsset, IAssetAttachment, IAssetType } from "@json_out/index.js";
 import { InputSelectOptionType } from "@json_out/index.js";
-import type { IDisplay, ISource } from "@json_out/meta/index.js";
+import type { IDisplayWithTitle, ISource } from "@json_out/meta/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
@@ -21,16 +22,16 @@ import _ from "lodash-es";
  * @internal
  */
 export class Asset extends SourceInheritor implements IAsset {
-  $id: AssetId;
+  $id: IAsset["$id"];
   Name: string;
-  States?: IAssetState[]|undefined;
+  States?: AssetState[]|undefined;
   Aliases?: string[] | undefined;
   "Asset Type": IAssetType["$id"];
-  Display: RequireKey<IDisplay, "Color">;
+  Display: IDisplayWithTitle;
   Usage: IAssetUsage;
   Attachments?: IAssetAttachment | undefined;
   Requirement?: string | undefined;
-  Inputs?: Input<InputType>[] | undefined;
+  Inputs?: (InputText|InputSelect<InputSelectOptionType>)[] |undefined;
   Abilities: [AssetAbility, AssetAbility, AssetAbility];
   "Condition Meter"?: ConditionMeter | undefined;
   constructor(json: IAssetYaml, gamespace: Gamespace, parent: IAssetType, rootSource: ISource) {
@@ -52,29 +53,32 @@ export class Asset extends SourceInheritor implements IAsset {
     this.Attachments = json.Attachments;
     if (json.Inputs) {
       this.Inputs = json.Inputs.map(inputJson => {
-        const result = pickInput(inputJson, this);
+        const result = pickInput<InputType.Select|InputType.Text>(inputJson, this);
         if (result["Input Type"] === InputType.Select) {
           result.Sets.forEach(hint => {
             let searchValue: Replacement|undefined = undefined;
+            let replaceValue: string = this.$id;
             switch (hint.Type) {
               case InputSelectOptionType.ConditionMeter:
                 searchValue = Replacement.AssetSelectMeter;
+                replaceValue = this.$id;
                 break;
               case InputSelectOptionType.Stat:
                 searchValue = Replacement.AssetSelectStat;
+                replaceValue = this.$id;
                 break;
               default:
                 break;
             }
             if (searchValue) {
-              json.Abilities = replaceInAllStrings(json.Abilities, searchValue, hint.$id);
+              json.Abilities = replaceInAllStrings(json.Abilities, searchValue, replaceValue);
             }
           });
         }
-        return result;
+        return result as InputSelect<InputSelectOptionType>|InputText;
       });
     }
-    this.States = json.States;
+    this.States = json.States?.map(state => new AssetState(state)) ?? undefined;
     this.Requirement = json.Requirement;
     this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
     if (json.Abilities.length !== 3) {
@@ -90,3 +94,4 @@ export class Asset extends SourceInheritor implements IAsset {
     }
   }
 }
+

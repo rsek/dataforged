@@ -19,9 +19,9 @@
         },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Command_Vehicle/Starship/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -117,7 +117,13 @@
         "Display": { "Title": "Engine Upgrade", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -137,6 +143,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Engine_Upgrade/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "In your vehicle",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": ["Edge"]
                     }
@@ -220,7 +227,13 @@
         "Display": { "Title": "Expanded Hold", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Condition Meter": {
           "Min": 0,
@@ -275,6 +288,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Expanded_Hold/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you make a move to outrun a threat and have at least 1 cargo",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": []
                     }
@@ -293,7 +307,13 @@
         "Display": { "Title": "Grappler", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -374,6 +394,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Grappler/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By firing the grappler",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -392,7 +413,13 @@
         "Display": { "Title": "Heavy Cannons", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -434,6 +461,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Heavy_Cannons/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "Once per fight, when you [Clash](Starforged/Moves/Combat/Clash) by committing to an all-or-nothing exchange of fire",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -461,6 +489,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Heavy_Cannons/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By bringing your cannons to bear and sending a promise of violence to your foe over communication channels",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -479,7 +508,13 @@
         "Display": { "Title": "Internal Refit", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -569,6 +604,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Internal_Refit/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "To oppose an invader within your vessel",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -587,7 +623,13 @@
         "Display": { "Title": "Medbay", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -605,6 +647,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Medbay/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you use your medbay to [Heal](Starforged/Moves/Recover/Heal) yourself or another patient",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -628,6 +671,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Medbay/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so)",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -654,6 +698,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Medbay/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By performing a risky medical procedure",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -670,6 +715,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Medbay/Abilities/3/Alter_Moves/2/Trigger/Options/1",
                       "Text": "Through an autopsy or medical examination",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -688,7 +734,13 @@
         "Display": { "Title": "Missile Array", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Condition Meter": {
           "Min": 0,
@@ -782,6 +834,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Missile_Array/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you have at least 3 ammo and [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) by unleashing all of your missiles",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -801,14 +854,20 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Module/Overseer/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -891,7 +950,13 @@
         "Display": { "Title": "Reinforced Hull", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -976,7 +1041,13 @@
         "Display": { "Title": "Research Lab", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -1086,7 +1157,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Research_Lab/Abilities/3/Alter_Moves/3/Trigger/Options/1",
                       "Text": "To undertake a long-term research project (extreme or greater)",
-                      "Roll type": "Progress",
+                      "Roll type": "Progress roll",
                       "Method": "Inherit",
                       "Using": []
                     }
@@ -1105,7 +1176,13 @@
         "Display": { "Title": "Sensor Array", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -1125,6 +1202,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "In your vehicle",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": ["Wits"]
                     }
@@ -1151,6 +1229,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -1167,6 +1246,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Sensor_Array/Abilities/2/Alter_Moves/2/Trigger/Options/1",
                       "Text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -1211,7 +1291,13 @@
         "Display": { "Title": "Shields", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Condition Meter": {
           "Min": 0,
@@ -1328,7 +1414,13 @@
         "Display": { "Title": "Stealth Tech", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -1449,7 +1541,13 @@
         "Display": { "Title": "Vehicle Bay", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -1506,7 +1604,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Vehicle_Bay/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment",
-                      "Roll type": "Action die",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": []
                     }
@@ -1525,7 +1623,13 @@
         "Display": { "Title": "Workshop", "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
-          { "Name": "Broken", "Enabled": false, "Disables asset": true }
+          {
+            "Name": "Broken",
+            "Enabled": false,
+            "Disables asset": true,
+            "Impact": false,
+            "Permanent": false
+          }
         ],
         "Abilities": [
           {
@@ -1611,6 +1715,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Workshop/Abilities/3/Alter_Moves/2/Trigger/Options/1",
                       "Text": "When you devote extended time to your long-term engineering project (extreme or greater) in your workshop",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -1627,6 +1732,7 @@
                     {
                       "$id": "Starforged/Assets/Module/Workshop/Abilities/3/Alter_Moves/3/Trigger/Options/1",
                       "Text": "To undertake a long-term engineering project (extreme or greater)",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -1655,9 +1761,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -1754,9 +1860,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -1787,6 +1893,7 @@
                     {
                       "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "On your hoverbike",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": ["Edge"]
                     }
@@ -1810,6 +1917,7 @@
                     {
                       "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you fire your hoverbike's afterburner and make a move to perform a risky maneuver",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": []
                     }
@@ -1846,9 +1954,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Rover/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -1958,9 +2066,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -2064,9 +2172,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -2130,9 +2238,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Skiff/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -2220,9 +2328,9 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -2294,11 +2402,12 @@
             "Text": "When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.",
             "Inputs": [
               {
-                "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/3/Inputs/Victory Marks",
-                "Name": "Victory Marks",
                 "Input Type": "Number",
+                "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/3/Inputs/Victory_Marks",
+                "Name": "Victory Marks",
                 "Step": 1,
                 "Min": 0,
+                "Max": null,
                 "Value": 0,
                 "Adjustable": true
               }
@@ -2367,6 +2476,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Ace/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By maneuvering your vehicle against a foe",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -2580,6 +2690,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Armored/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By letting your armor take the hit",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": []
                     }
@@ -2589,7 +2700,13 @@
             ],
             "Alter Properties": {
               "States": [
-                { "Name": "Broken", "Enabled": false, "Disables asset": true }
+                {
+                  "Name": "Broken",
+                  "Enabled": false,
+                  "Disables asset": true,
+                  "Impact": false,
+                  "Permanent": false
+                }
               ]
             }
           }
@@ -2713,19 +2830,27 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Augmented/Inputs/One",
             "Name": "One",
-            "Input Type": "Text",
             "Adjustable": false
           },
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Augmented/Inputs/Two",
             "Name": "Two",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "States": [{ "Name": "Broken (Augment 1)", "Enabled": false }],
+        "States": [
+          {
+            "Name": "Broken (Augment 1)",
+            "Enabled": false,
+            "Disables asset": false,
+            "Impact": false,
+            "Permanent": false
+          }
+        ],
         "Abilities": [
           {
             "$id": "Starforged/Assets/Path/Augmented/Abilities/1",
@@ -2756,7 +2881,15 @@
             "Text": "You are equipped with a second augment. It functions as above, but the benefits of the two augments do not stack.",
             "Enabled": false,
             "Alter Properties": {
-              "States": [{ "Name": "Broken (Augment 2)", "Enabled": false }]
+              "States": [
+                {
+                  "Name": "Broken (Augment 2)",
+                  "Enabled": false,
+                  "Disables asset": false,
+                  "Impact": false,
+                  "Permanent": false
+                }
+              ]
             }
           },
           {
@@ -2784,9 +2917,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Bannersworn/Inputs/Ideology",
             "Name": "Ideology",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -2806,6 +2939,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Bannersworn/Abilities/1/Alter_Moves/1/Trigger/Options/1",
                       "Text": "In service to your bound clan, faction, or creed",
+                      "Roll type": "Action roll",
                       "Method": "Inherit",
                       "Using": []
                     }
@@ -2950,9 +3084,9 @@
             "Text": "You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.",
             "Inputs": [
               {
+                "Input Type": "Text",
                 "$id": "Starforged/Assets/Path/Blademaster/Abilities/3/Inputs/Name",
                 "Name": "Name",
-                "Input Type": "Text",
                 "Adjustable": false
               }
             ],
@@ -2968,6 +3102,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Blademaster/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "By binding your promise to your iconic blade",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -3239,6 +3374,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Courier/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "To an unbonded connection by completing a courier mission",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -3322,6 +3458,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Demolitionist/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                       "Text": "To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -3365,68 +3502,68 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Devotant/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           },
           {
-            "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat",
-            "Name": "Linked Stat",
             "Input Type": "Select",
+            "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat",
+            "Name": "Linked Stat",
             "Adjustable": false,
             "Sets": [{ "Key": "Stat", "Type": "Stat" }],
             "Options": [
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Edge",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge",
                 "Name": "Edge",
                 "Set": [
                   {
-                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Edge/Stat",
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge/Stat",
                     "Key": "Stat",
                     "Value": "Edge"
                   }
                 ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Heart",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart",
                 "Name": "Heart",
                 "Set": [
                   {
-                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Heart/Stat",
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart/Stat",
                     "Key": "Stat",
                     "Value": "Heart"
                   }
                 ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Iron",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron",
                 "Name": "Iron",
                 "Set": [
                   {
-                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Iron/Stat",
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron/Stat",
                     "Key": "Stat",
                     "Value": "Iron"
                   }
                 ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Shadow",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow",
                 "Name": "Shadow",
                 "Set": [
                   {
-                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Shadow/Stat",
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow/Stat",
                     "Key": "Stat",
                     "Value": "Shadow"
                   }
                 ]
               },
               {
-                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Wits",
+                "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits",
                 "Name": "Wits",
                 "Set": [
                   {
-                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked Stat/Options/Wits/Stat",
+                    "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits/Stat",
                     "Key": "Stat",
                     "Value": "Wits"
                   }
@@ -3457,7 +3594,7 @@
                       "Text": "By calling on your god, power, or entity for guidance or aid",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": ["undefined"]
+                      "Using": ["Starforged/Assets/Path/Devotant"]
                     }
                   ]
                 }
@@ -3481,7 +3618,7 @@
                       "Text": "In service to your faith",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": ["undefined"]
+                      "Using": ["Starforged/Assets/Path/Devotant"]
                     }
                   ]
                 }
@@ -3496,6 +3633,7 @@
                     {
                       "$id": "Starforged/Assets/Path/Devotant/Abilities/2/Alter_Moves/2/Trigger/Options/1",
                       "Text": "On a divine quest (formidable or greater)",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -3521,7 +3659,7 @@
                       "Text": "Through contemplation or sharing of your faith",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": ["undefined"]
+                      "Using": ["Starforged/Assets/Path/Devotant"]
                     }
                   ]
                 }
@@ -3976,9 +4114,9 @@
             "Text": "You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.",
             "Inputs": [
               {
-                "$id": "Starforged/Assets/Path/Fugitive/Abilities/1/Inputs/Notable foe or force tracks you down",
-                "Name": "Notable foe or force tracks you down",
                 "Input Type": "Clock",
+                "$id": "Starforged/Assets/Path/Fugitive/Abilities/1/Inputs/Notable_foe_or_force_tracks_you_down",
+                "Name": "Notable foe or force tracks you down",
                 "Clock Type": "Tension",
                 "Segments": 4,
                 "Filled": 0,
@@ -4182,9 +4320,9 @@
             "Text": "Give your favorite gun a name. When you [Clash](Starforged/Moves/Combat/Clash) with it, add +1. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) or [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while wielding it, add +1 and take +1 momentum on a hit.",
             "Inputs": [
               {
+                "Input Type": "Text",
                 "$id": "Starforged/Assets/Path/Gunner/Abilities/3/Inputs/Name",
                 "Name": "Name",
-                "Input Type": "Text",
                 "Adjustable": false
               }
             ],
@@ -5491,6 +5629,7 @@
                   "Options": [
                     {
                       "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Roll type": "Action roll",
                       "Method": "Highest",
                       "Using": ["Wits", "Supply"]
                     }
@@ -5567,7 +5706,7 @@
                   "Trigger": {
                     "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit"
                   },
-                  "Outcome": "Strong Hit",
+                  "Outcomes": ["Strong Hit"],
                   "Effect": {
                     "Text": "Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track."
                   }
@@ -6230,9 +6369,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "$id": "Starforged/Assets/Path/Vestige/Inputs/Last of",
-            "Name": "Last of",
             "Input Type": "Text",
+            "$id": "Starforged/Assets/Path/Vestige/Inputs/Last_of",
+            "Name": "Last of",
             "Adjustable": false
           }
         ],
@@ -6284,9 +6423,9 @@
             "Text": "You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.",
             "Inputs": [
               {
+                "Input Type": "Text",
                 "$id": "Starforged/Assets/Path/Vestige/Abilities/3/Inputs/Relic",
                 "Name": "Relic",
-                "Input Type": "Text",
                 "Adjustable": false
               }
             ],
@@ -6591,9 +6730,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Banshee/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -6702,9 +6841,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Combat_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -6825,9 +6964,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Glowcat/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -6927,9 +7066,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Protocol_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7007,9 +7146,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Rockhorn/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7098,15 +7237,15 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           },
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Expertise",
             "Name": "Expertise",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7176,6 +7315,7 @@
                     {
                       "$id": "Starforged/Assets/Companion/Sidekick/Abilities/2/Alter_Moves/2/Trigger/Options/1",
                       "Text": "Together with your sidekick",
+                      "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": []
                     }
@@ -7225,9 +7365,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Sprite/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7309,9 +7449,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Survey_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7439,9 +7579,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Symbiote/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7507,9 +7647,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Utility_Bot/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7610,9 +7750,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Voidglider/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7724,9 +7864,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Deed/Bonded/Inputs/Bond-mate",
             "Name": "Bond-mate",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7839,9 +7979,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Deed/Homesteader/Inputs/Name",
             "Name": "Name",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -7964,9 +8104,9 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
+            "Input Type": "Text",
             "$id": "Starforged/Assets/Deed/Marked/Inputs/Identifier",
             "Name": "Identifier",
-            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -8004,9 +8144,9 @@
             "Text": "When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.",
             "Inputs": [
               {
-                "$id": "Starforged/Assets/Deed/Marked/Abilities/2/Inputs/Stained reputation",
-                "Name": "Stained reputation",
                 "Input Type": "Clock",
+                "$id": "Starforged/Assets/Deed/Marked/Abilities/2/Inputs/Stained_reputation",
+                "Name": "Stained reputation",
                 "Clock Type": "Tension",
                 "Segments": 6,
                 "Filled": 0,

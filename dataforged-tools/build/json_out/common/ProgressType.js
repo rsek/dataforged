@@ -1,21 +1,15 @@
 /**
  * @public
  */
-export var LegacyType;
-(function (LegacyType) {
-    LegacyType["Quests"] = "Quests";
-    LegacyType["Bonds"] = "Bonds";
-    LegacyType["Discoveries"] = "Discoveries";
-})(LegacyType || (LegacyType = {}));
-/**
- * @public
- */
-export var ProgressTrackType;
-(function (ProgressTrackType) {
-    ProgressTrackType["Combat"] = "Combat";
-    ProgressTrackType["Vow"] = "Vow";
-    ProgressTrackType["Expedition"] = "Expedition";
-    ProgressTrackType["Connection"] = "Connection";
-    ProgressTrackType["SceneChallenge"] = "Scene Challenge";
-})(ProgressTrackType || (ProgressTrackType = {}));
+export var ProgressType;
+(function (ProgressType) {
+    ProgressType["Combat"] = "Combat";
+    ProgressType["Vow"] = "Vow";
+    ProgressType["Expedition"] = "Expedition";
+    ProgressType["Connection"] = "Connection";
+    ProgressType["SceneChallenge"] = "Scene Challenge";
+    ProgressType["Quests"] = "Quests";
+    ProgressType["Bonds"] = "Bonds";
+    ProgressType["Discoveries"] = "Discoveries";
+})(ProgressType || (ProgressType = {}));
 //# sourceMappingURL=ProgressType.js.map

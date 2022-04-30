@@ -1,13 +1,13 @@
-import type { CustomStatId, IHasName } from "../index.js";
+import type { IHasName } from "../index.js";
 import type { IHasId } from "../meta/IHas.js";
 /**
  * @public
  */
-export declare type CustomStatOptionId = `${CustomStatId}/${string}`;
-/**
- * @public
- */
-export interface ICustomStatOption extends IHasId<CustomStatOptionId>, IHasName {
+export interface ICustomStatOption extends IHasId, IHasName {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$
+     */
+    $id: string;
     /**
      * The name/label for this specific value of the custom stat.
      */

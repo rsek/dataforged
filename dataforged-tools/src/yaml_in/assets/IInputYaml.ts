@@ -1,7 +1,7 @@
-import type { IInput, IInputClock, IInputNumber, IInputText, InputType } from "@json_out/index.js";
+import type { IInput, IInputClock, IInputNumber, IInputText } from "@json_out/index.js";
 import type { StubBy } from "@utils/types/Stub.js";
 
-export type IInputYaml<T extends InputType> = StubBy<IInput<T>, never, "$id">;
+export type IInputYaml= StubBy<IInput, never, "$id">;
 
 export interface IInputClockYaml extends StubBy<IInputClock, never, "$id"> {}
 

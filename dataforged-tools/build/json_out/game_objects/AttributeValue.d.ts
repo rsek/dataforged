@@ -1,7 +1,7 @@
 import type { AttributeKey } from "./AttributeKey.js";
 import type { IAttributeMaster } from "./IAttributeMaster.js";
 /**
- * @public
+ * @alpha
  */
-export declare type AttributeValue<K extends AttributeKey = AttributeKey> = IAttributeMaster[K];
+export declare type AttributeValue<K extends AttributeKey> = IAttributeMaster[K];
 //# sourceMappingURL=AttributeValue.d.ts.map

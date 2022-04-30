@@ -4,7 +4,8 @@ import { ClockType } from "../../json_out/common/index.js";
  */
 export class Input {
     constructor(json, parent) {
-        this.$id = `${parent.$id}/Inputs/${json.Name}`;
+        this["Input Type"] = json["Input Type"];
+        this.$id = `${parent.$id}/Inputs/${json.Name.replaceAll(" ", "_")}`;
         this.Name = json.Name;
         this["Input Type"] = json["Input Type"];
     }
@@ -14,13 +15,13 @@ export class Input {
  */
 export class InputNumber extends Input {
     constructor(json, parent) {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         super(json, parent);
         this.Step = 1;
         this.Min = (_a = json.Min) !== null && _a !== void 0 ? _a : 0;
-        this.Max = json.Max;
-        this.Value = (_b = json.Value) !== null && _b !== void 0 ? _b : 0;
-        this.Adjustable = (_c = json.Adjustable) !== null && _c !== void 0 ? _c : true;
+        this.Max = (_b = json.Max) !== null && _b !== void 0 ? _b : null;
+        this.Value = (_c = json.Value) !== null && _c !== void 0 ? _c : 0;
+        this.Adjustable = (_d = json.Adjustable) !== null && _d !== void 0 ? _d : true;
     }
 }
 /**

@@ -8,8 +8,11 @@ import _ from "lodash-es";
 const data = buildDataforged(Gamespace.Starforged);
 export { data };
 _.forEach(data, (value, key) => {
-    JSON_PATHS.forEach(path => writeJson(path + `/starforged/${key}.json`, value));
+    if (typeof value !== "string" && typeof value !== "undefined") {
+        JSON_PATHS.forEach(path => writeJson(path + `/starforged/${key}.json`, value));
+    }
 });
+JSON_PATHS.forEach(path => writeJson(path + "/starforged/dataforged.json", data));
 const outRoot = "../img";
 const outWebP = "../img/raster/webp";
 buildImages(IMG_PATH, outRoot, MASTER_PNG_PATH, outWebP);

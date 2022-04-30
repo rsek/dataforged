@@ -1,7 +1,7 @@
 import { Asset, SourceInheritor } from "@classes/index.js";
 import type { AssetTypeName } from "@json_out/assets/AssetTypeName.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { AssetTypeId, AssetTypeIdFragment, IAssetType, IDisplay, ISource } from "@json_out/index.js";
+import type { AssetTypeId, AssetTypeIdFragment, IAssetType, IDisplayWithTitle, ISource } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { RequireKey } from "@utils/types/RequireKey.js";
 import { validateColor } from "@utils/validateColor.js";
@@ -11,12 +11,12 @@ import type { IAssetTypeYaml } from "@yaml_in/assets/IAssetTypeYaml.js";
  * @internal
  */
 export class AssetType extends SourceInheritor implements IAssetType {
-  $id: AssetTypeId;
+  $id: IAssetType["$id"];
   Name: AssetTypeName;
   Aliases?: string[] | undefined;
   Description: string;
   Assets: Asset[];
-  Display: RequireKey<IDisplay, "Color">;
+  Display: IDisplayWithTitle;
   constructor(json: IAssetTypeYaml, gamespace: Gamespace, rootSource: ISource) {
     super(json.Source ?? {}, rootSource);
     this.$id = `${gamespace}/Assets/${json.Name.replaceAll(" ", "_") as AssetTypeIdFragment}`;

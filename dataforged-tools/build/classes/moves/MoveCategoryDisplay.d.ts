@@ -1,10 +1,10 @@
-import type { IDisplay, MoveCategoryTitle } from "../../json_out/index.js";
+import type { IDisplayWithTitle, MoveCategoryTitle } from "../../json_out/index.js";
 /**
  * @internal
  */
-export declare class MoveCategoryDisplay implements IDisplay {
+export declare class MoveCategoryDisplay implements IDisplayWithTitle {
     Title: MoveCategoryTitle;
     Color?: string | undefined;
-    constructor(title: MoveCategoryTitle, color: string);
+    constructor(title: MoveCategoryTitle, color?: string | undefined);
 }
 //# sourceMappingURL=MoveCategoryDisplay.d.ts.map

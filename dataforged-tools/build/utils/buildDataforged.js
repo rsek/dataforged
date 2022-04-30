@@ -17,14 +17,34 @@ export function buildDataforged(gamespace = Gamespace.Starforged) {
     const moves = buildMoves(gamespace);
     const oracles = buildOracles(gamespace);
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const setting_truths = buildTruths(gamespace);
-    const data = {
-        assets,
-        encounters,
-        moves,
-        oracles,
-        setting_truths
-    };
+    const truths = buildTruths(gamespace);
+    let data;
+    switch (gamespace) {
+        case Gamespace.Starforged: {
+            data = {
+                $schema: "./schema.json",
+                assets,
+                encounters: encounters,
+                moves,
+                oracles,
+                truths
+            };
+            break;
+        }
+        case Gamespace.Ironsworn: {
+            data = {
+                $schema: "./schema.json",
+                assets,
+                encounters: encounters,
+                moves,
+                oracles,
+                truths
+            };
+            break;
+        }
+        default:
+            throw new Error();
+    }
     buildLog(buildDataforged, `Finished building JSON for ${gamespace}:
     ${dataforgedStats(gamespace, data)}`);
     return data;

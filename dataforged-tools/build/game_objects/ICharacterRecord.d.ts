@@ -1,7 +1,7 @@
-import type { ActorType, IActorRecord } from "./index.js";
-import type { AttributeKey } from "../json_out/index.js";
+import type { IActorRecord } from "./index.js";
+import type { AttributeKey, GameObjectType } from "../json_out/index.js";
 /**
  * @public
  */
-export declare type ICharacterRecord = IActorRecord<ActorType.Character, AttributeKey.Disposition | AttributeKey.Role>;
+export declare type ICharacterRecord = IActorRecord<GameObjectType.Character, AttributeKey.Disposition | AttributeKey.Role>;
 //# sourceMappingURL=ICharacterRecord.d.ts.map

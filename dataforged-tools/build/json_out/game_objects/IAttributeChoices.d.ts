@@ -1,9 +1,9 @@
-import type { AttributeKey, IAttribute } from "../index.js";
+import type { AttributeKey } from "../index.js";
 /**
  * @public
  */
-export interface IAttributeChoices<T extends AttributeKey = AttributeKey> {
-    Key: T;
-    Values?: NonNullable<IAttribute<T>["Value"]>[] | undefined;
+export interface IAttributeChoices {
+    Key: AttributeKey;
+    Values?: string[] | undefined;
 }
 //# sourceMappingURL=IAttributeChoices.d.ts.map

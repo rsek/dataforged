@@ -2,7 +2,7 @@
 import { OracleContent , OracleDisplay , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
 import type { Gamespace } from "@json_out/common/Gamespace.js";
 
-import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, ISource, ITableDisplay, OracleCategoryId, OracleTableId } from "@json_out/index.js";
+import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, IOracleCategory, ISource, ITableDisplay, OracleTableId } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
@@ -16,11 +16,11 @@ import _ from "lodash-es";
  * @internal
  */
 export class Oracle extends SourceInheritor implements IOracle  {
-  $id: OracleTableId;
+  $id: IOracle["$id"];
   "Name": string;
   Aliases?: string[] | undefined;
   "Member of"?: IOracle["$id"] | undefined;
-  Category: OracleCategoryId;
+  Category: IOracleCategory["$id"];
   Description?: string | undefined;
   Display: OracleDisplay;
   Usage?: OracleUsage | undefined;
@@ -30,7 +30,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   constructor(
     json: IOracleYaml,
     gamespace: Gamespace,
-    category: OracleCategoryId,
+    category: IOracleCategory["$id"],
     memberOf?: IOracle["$id"],
     ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
     // ancestors should be in ascending order
@@ -93,10 +93,10 @@ export class Oracle extends SourceInheritor implements IOracle  {
         if (!this.Usage) {
           this.Usage = {};
         }
-        if (typeof this.Usage["Sets attributes"] === "undefined") {
-          this.Usage["Sets attributes"] = [];
+        if (typeof this.Usage["Sets"] === "undefined") {
+          this.Usage["Sets"] = [];
         }
-        this.Usage["Sets attributes"] = this.Usage["Sets attributes"].concat(...attrs);
+        this.Usage["Sets"] = this.Usage["Sets"].concat(...attrs);
       }
     }
     if (this.Oracles) {
@@ -104,16 +104,16 @@ export class Oracle extends SourceInheritor implements IOracle  {
       if (!this.Usage) {
         this.Usage = {};
       }
-      if (this.Usage?.["Sets attributes"]) {
-        this.Usage["Sets attributes"].map((item: IAttributeChoices) => item.Key).forEach(key => keys.add(key));
+      if (this.Usage?.["Sets"]) {
+        this.Usage["Sets"].map((item: IAttributeChoices) => item.Key).forEach(key => keys.add(key));
       }
       this.Oracles.forEach(oracle => {
-        if (oracle.Usage?.["Sets attributes"]) {
-          oracle.Usage["Sets attributes"].map((item: IAttributeChoices) => item.Key).forEach(key => keys.add(key));
+        if (oracle.Usage?.["Sets"]) {
+          oracle.Usage["Sets"].map((item: IAttributeChoices) => item.Key).forEach(key => keys.add(key));
         }
       });
       if (keys.size > 0) {
-        this.Usage["Sets attributes"] = Array.from(keys).map(key => { return { Key: key } as IAttribute; });
+        this.Usage["Sets"] = Array.from(keys).map(key => { return { Key: key } as IAttribute; });
       }
     }
   }

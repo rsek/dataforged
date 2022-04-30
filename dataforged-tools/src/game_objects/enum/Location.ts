@@ -1,11 +1,9 @@
 /**
  * Set by Oracles / ** / Location
- * @public
+ * @alpha
  */
-enum Location {
+export enum Location {
   Planetside = "Planetside",
   Orbital = "Orbital",
   DeepSpace = "Deep Space"
 }
-
-export { Location };

@@ -1,5 +1,14 @@
-import type { ActorType, PlaceType } from "@game_objects/index.js";
 /**
  * @public
  */
-export type GameObjectType = (ActorType | PlaceType);
+export enum GameObjectType {
+  Derelict = "Derelict",
+  DerelictZone = "Derelict Zone",
+  Starship = "Starship",
+  Settlement = "Settlement",
+  Planet = "Planet",
+  PrecursorVault = "Precursor Vault",
+  Character = "Character",
+  Creature = "Creature",
+  Faction = "Faction"
+}

@@ -3,11 +3,13 @@ import type { EncounterNatureStarforged } from "./EncounterNature.js";
 import type { IEncounter } from "./index.js";
 import type { IEncounterVariant } from "../index.js";
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type EncounterIdStarforgedBase = `Encounters/${string}`;
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export declare type EncounterIdStarforged = `${Gamespace.Starforged}/${EncounterIdStarforgedBase}`;
 /**
@@ -15,7 +17,10 @@ export declare type EncounterIdStarforged = `${Gamespace.Starforged}/${Encounter
  * @public
  */
 export interface IEncounterStarforged extends IEncounter {
-    $id: EncounterIdStarforged;
+    /**
+     * @pattern ^Starforged/Encounters/[A-z_-]+$
+     */
+    $id: string;
     Nature: EncounterNatureStarforged;
     Summary: string;
     Variants: IEncounterVariant[];

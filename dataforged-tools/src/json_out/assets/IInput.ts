@@ -4,12 +4,14 @@ import type { Gamespace } from "@json_out/common/Gamespace.js";
 import type { AssetAbilityIdBase, AssetIdBase, ClockType, IHasId , IHasName, InputType } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type InputId = `${Gamespace}/${IdBase}`;
 
 /**
- * @public
+ * @internal
+ * @asType string
  */
 export type IdBase = `${AssetAbilityIdBase|AssetIdBase}/Inputs/${string}`;
 
@@ -18,8 +20,12 @@ export type IdBase = `${AssetAbilityIdBase|AssetIdBase}/Inputs/${string}`;
  * @see {@link IInputNumber}, {@link IInputClock}, {@link IInputText}, {@link IInputSelect}
  * @public
  */
-export interface IInput<T extends InputType> extends IHasId<InputId>, IHasName {
-  "Input Type": T;
+export interface IInput extends IHasId, IHasName {
+  /**
+   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$
+   */
+  $id: string;
+  "Input Type": InputType;
   /**
    * Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.
    *
@@ -35,8 +41,12 @@ export interface IInput<T extends InputType> extends IHasId<InputId>, IHasName {
  * @see {@link InputType.Number}
  * @public
  */
-export interface IInputNumber extends IInput<InputType.Number> {
+export interface IInputNumber extends IInput {
+  "Input Type": InputType.Number;
   Min: number;
+  /**
+   * @nullable
+   */
   Max: number | null;
   Step: 1;
   "Value": number;
@@ -44,11 +54,12 @@ export interface IInputNumber extends IInput<InputType.Number> {
 
 /**
  * An input representing an *Ironsworn: Starforged* clock.
- * @seePage 239
+ * @page 239
  * @see {@link InputType.Clock}
  * @public
  */
-export interface IInputClock extends IInput<InputType.Clock> {
+export interface IInputClock extends IInput {
+  "Input Type": InputType.Clock;
   /**
    * Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.
    */
@@ -70,6 +81,8 @@ export interface IInputClock extends IInput<InputType.Clock> {
  * @see {@link InputType.Text}
  * @public
  */
-export interface IInputText extends IInput<InputType.Text> { }
+export interface IInputText extends IInput {
+  "Input Type": InputType.Text
+ }
 
 

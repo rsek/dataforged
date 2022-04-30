@@ -8,7 +8,7 @@ import type { IInputClockYaml, IInputNumberYaml, IInputSelectYaml, IInputTextYam
  * Infers the correct class for an IInputYaml object and constructs it.
  * @param inputJson - The data to pick a class for.
  */
-export function pickInput<T extends InputType>(inputJson: IInputYaml<T>, parent: IAsset|IAssetAbility) {
+export function pickInput<T extends InputType>(inputJson: IInputYaml & {"Input Type": T}, parent: IAsset|IAssetAbility) {
   switch (inputJson["Input Type"]) {
     case InputType.Clock: {
       return new InputClock(inputJson as unknown as IInputClockYaml, parent);
@@ -17,7 +17,7 @@ export function pickInput<T extends InputType>(inputJson: IInputYaml<T>, parent:
       return new InputNumber(inputJson as unknown as IInputNumberYaml, parent);
     }
     case InputType.Select: {
-      return new InputSelect(inputJson as unknown as IInputSelectYaml<string, InputSelectOptionType>, parent);
+      return new InputSelect(inputJson as unknown as IInputSelectYaml<InputSelectOptionType>, parent);
     }
     case InputType.Text: {
       return new InputText(inputJson as IInputTextYaml, parent);

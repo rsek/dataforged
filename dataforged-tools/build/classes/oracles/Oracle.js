@@ -67,10 +67,10 @@ export class Oracle extends SourceInheritor {
                 if (!this.Usage) {
                     this.Usage = {};
                 }
-                if (typeof this.Usage["Sets attributes"] === "undefined") {
-                    this.Usage["Sets attributes"] = [];
+                if (typeof this.Usage["Sets"] === "undefined") {
+                    this.Usage["Sets"] = [];
                 }
-                this.Usage["Sets attributes"] = this.Usage["Sets attributes"].concat(...attrs);
+                this.Usage["Sets"] = this.Usage["Sets"].concat(...attrs);
             }
         }
         if (this.Oracles) {
@@ -78,17 +78,17 @@ export class Oracle extends SourceInheritor {
             if (!this.Usage) {
                 this.Usage = {};
             }
-            if ((_c = this.Usage) === null || _c === void 0 ? void 0 : _c["Sets attributes"]) {
-                this.Usage["Sets attributes"].map((item) => item.Key).forEach(key => keys.add(key));
+            if ((_c = this.Usage) === null || _c === void 0 ? void 0 : _c["Sets"]) {
+                this.Usage["Sets"].map((item) => item.Key).forEach(key => keys.add(key));
             }
             this.Oracles.forEach(oracle => {
                 var _a;
-                if ((_a = oracle.Usage) === null || _a === void 0 ? void 0 : _a["Sets attributes"]) {
-                    oracle.Usage["Sets attributes"].map((item) => item.Key).forEach(key => keys.add(key));
+                if ((_a = oracle.Usage) === null || _a === void 0 ? void 0 : _a["Sets"]) {
+                    oracle.Usage["Sets"].map((item) => item.Key).forEach(key => keys.add(key));
                 }
             });
             if (keys.size > 0) {
-                this.Usage["Sets attributes"] = Array.from(keys).map(key => { return { Key: key }; });
+                this.Usage["Sets"] = Array.from(keys).map(key => { return { Key: key }; });
             }
         }
     }

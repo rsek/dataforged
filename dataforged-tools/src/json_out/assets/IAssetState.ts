@@ -25,7 +25,7 @@ export interface IAssetState extends IHasName {
    *
    * Note that for vehicles, this shouldn't be applied automatically unless your implementation has some way of telling which vehicle the PC is currently using.
    */
-  "Impact"?: boolean | undefined;
+  "Impact": boolean;
   /**
    * Whether or not this state is permanent.
    */

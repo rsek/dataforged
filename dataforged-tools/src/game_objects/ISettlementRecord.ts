@@ -1,11 +1,11 @@
-import type { IPlaceRecord, PlaceType } from "@game_objects/index.js";
+import type { GameObjectType, IPlaceRecord } from "@game_objects/index.js";
 import type { AttributeKey, SettlementInitialContact } from "@json_out/index.js";
 
 /**
  * @public
  */
 export type ISettlementRecord<K extends AttributeKey|never = never> = IPlaceRecord<
-  PlaceType.Settlement,
+  GameObjectType.Settlement,
   AttributeKey.Authority|
   AttributeKey.Population|
   AttributeKey.InitialContact | K

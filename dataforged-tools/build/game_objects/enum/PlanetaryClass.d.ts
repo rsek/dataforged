@@ -2,7 +2,7 @@
  * Set by "Oracles / Planets / Class"
  * @public
  */
-declare enum PlanetaryClass {
+export declare enum PlanetaryClass {
     Desert = "Desert",
     Furnace = "Furnace",
     Grave = "Grave",
@@ -15,5 +15,4 @@ declare enum PlanetaryClass {
     Tainted = "Tainted",
     Vital = "Vital"
 }
-export { PlanetaryClass };
 //# sourceMappingURL=PlanetaryClass.d.ts.map

@@ -1,6 +1,6 @@
 import { AttributeSetter , GameObject , MultipleRolls , OracleContent , Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRow, IRowDisplay, OracleTableId, OracleTableRowId, Raster, RollTemplate, SettingTruthOptionId, Vector } from "@json_out/index.js";
+import type { IDisplay, IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRow, OracleTableId, OracleTableRowId, Raster, RollTemplate, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { RequireKey } from "@utils/types/RequireKey.js";
@@ -13,10 +13,8 @@ import _ from "lodash-es";
  * Class representing a single row of an oracle table.
  * @internal
  */
-export class Row implements IRow, Partial<IHasSubtable<Row>> {
-  /**
-   */
-  $id!: OracleTableRowId | SettingTruthOptionId | null;
+export class Row implements IRow, Partial<IHasSubtable<IRow>> {
+  $id!: string | null;
   Floor: number|null;
   Ceiling: number|null;
   /**
@@ -45,7 +43,7 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
   "Roll template"?: RollTemplate<"Result"|"Summary"|"Description"|never> | undefined;
   /**
    */
-  Display?: IRowDisplay;
+  Display?: IDisplay | undefined;
   /**
    */
   Content?: OracleContent;
@@ -122,10 +120,13 @@ export class Row implements IRow, Partial<IHasSubtable<Row>> {
                 break;
               }
               case "Subtable": {
+                if (this.$id === null) {
+                  throw new Error("Row ID is null, but it has a Subtable.");
+                }
                 if (Array.isArray(value) && Array.isArray(value[0])) {
-                  this.Subtable = (value as IRowYaml[]).map(rowData => new Row(this.$id + "/Subtable", rowData));
+                  this.Subtable = (value as IRowYaml[]).map(rowData => new Row(`${this.$id as string}/Subtable`, rowData));
                 } else if (Array.isArray(value) && typeof value[0] === "object") {
-                  this.Subtable = (value as IRow[]).map(rowData => new Row(this.$id + "/Subtable", rowData));
+                  this.Subtable = (value as IRow[]).map(rowData => new Row(`${this.$id as string}/Subtable`, rowData));
                 } else {
                   throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
                 }

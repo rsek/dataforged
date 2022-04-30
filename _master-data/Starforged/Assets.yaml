@@ -616,7 +616,7 @@ Asset Types:
                   Options:
                     - Text: To undertake a long-term research project (extreme or greater)
                       Method: Inherit
-                      Roll type: Progress
+                      Roll type: Progress roll
                 Outcomes:
                   Strong Hit: &outcome:mark_discoveries_box
                     Text: Mark one extra box on your discoveries legacy track.
@@ -735,7 +735,7 @@ Asset Types:
                     - Text: By letting your shields take the blow
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+2_momentum.HIT
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
@@ -865,7 +865,7 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: When you make a move to launch from or land on your command vehicle in a perilous situation or environment
-                      Roll type: Action die
+                      Roll type: Action roll
                       Method: Inherit
                 Outcomes:
                   Strong Hit: &Vehicle_Bay.3.Hit
@@ -1092,7 +1092,7 @@ Asset Types:
                     - Text: By taking a hit or crashing through an obstacle
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
           Name: Integrity
@@ -1131,7 +1131,7 @@ Asset Types:
                     - Text: By maneuvering your pod through a hazardous or obstructed area
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Text: |-
                   Choose an approach and roll +integrity.
 
@@ -1201,7 +1201,7 @@ Asset Types:
                     - Text: Rely on the skiff's simple durability
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
             Enabled: true
           - Text: |-
@@ -1215,7 +1215,7 @@ Asset Types:
                     - Text: By firing the skiff's cannon
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -1243,7 +1243,7 @@ Asset Types:
                     - Text: In your snub fighter
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+2_momentum.HIT
             Enabled: true
           - Text: |-
@@ -1356,7 +1356,7 @@ Asset Types:
                   Options:
                     - Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                       Text: By unleashing a volley of bow shots
                 Outcomes:
                   Strong Hit: &Archer.2
@@ -1369,7 +1369,7 @@ Asset Types:
             Alter Moves:
               - Moves: null
                 Cost:
-                  - Resource: ${{@ASSET_METER}}
+                  - Resource: ${{@ASSET}}/Condition_Meter
                     Value: 1 # TODO: value should probably be an array of valid values
                 Trigger:
                   Options:
@@ -1852,7 +1852,7 @@ Asset Types:
                     - Text: During a courier mission
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 safety or +1 momentum.
@@ -3155,7 +3155,7 @@ Asset Types:
               Burn:
                 - Trigger:
                     Text: When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit
-                  Outcome: Strong Hit
+                  Outcomes: [Strong Hit]
                   Effect:
                     Text: Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
 
@@ -3726,7 +3726,7 @@ Asset Types:
                     - Text: While riding your banshee
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
             Enabled: true
           - Text: |-
               When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.
@@ -3803,7 +3803,7 @@ Asset Types:
                     - Text: Using the threat of violence while the bot brings its weapons to bear
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -3820,7 +3820,7 @@ Asset Types:
                     - Text: Once per fight, by using the combat bot to draw fire or create a diversion
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes:
                   Strong Hit: *outcome:mark_progress
                   Weak Hit:
@@ -3942,7 +3942,7 @@ Asset Types:
                     - Text: By sending the rockhorn to directly attack a foe or smash an obstacle
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
             Enabled: true
           - Text: |-
               When you make the [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
@@ -4035,7 +4035,7 @@ Asset Types:
                     - Text: Your sidekick acts to get you out of a tough spot
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
           Name: Health
@@ -4108,7 +4108,7 @@ Asset Types:
                     - Text: Once per expedition, by sending the survey bot to scout ahead
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes:
                   Strong Hit:
                     Text: Mark progress on the expedition.
@@ -4126,7 +4126,7 @@ Asset Types:
                     - Text: Aided by the survey bot's sensors
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
               - Moves:
                   - Starforged/Moves/Adventure/Face_Danger
@@ -4136,7 +4136,7 @@ Asset Types:
                     - Text: To detect a threat
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
           Name: Health
@@ -4192,7 +4192,7 @@ Asset Types:
                     - Text: By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -4226,7 +4226,7 @@ Asset Types:
                     - Text: To see if your utility bot has a specific tool or technique available
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
           Name: Health
@@ -4259,7 +4259,7 @@ Asset Types:
                     - Text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
           - Text: |-
               When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
             Alter Moves:
@@ -4269,7 +4269,7 @@ Asset Types:
                     - Text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET_METER}}
+                        - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
           Name: Health

@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / * / Atmosphere
- * @public
+ * @alpha
  */
 enum Atmosphere {
   NoneThin = "None / Thin",

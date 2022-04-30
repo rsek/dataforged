@@ -1,6 +1,6 @@
 /**
  * Enumerates challenge ranks.
- * @seePage 39
+ * @page 39
  * @public
  */
 var ChallengeRank;

@@ -9,7 +9,7 @@ import type { IMoveCategoryYaml } from "@yaml_in/moves/IMoveCategoryYaml.js";
  * @internal
  */
 export class MoveCategory implements IMoveCategory {
-  $id: MoveCategoryId;
+  $id: IMoveCategory["$id"];
   Name: MoveCategoryName;
   Source: Source;
   Description: string;
@@ -20,7 +20,7 @@ export class MoveCategory implements IMoveCategory {
     this.Name = json.Name;
     this.Description = json.Description;
     this.Source = new Source(json.Source, ...ancestorSourceJson);
-    this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, json.Display?.Color ?? null);
+    this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, json.Display?.Color ?? undefined);
     this.Moves = json.Moves.map(move => {
       move.Category = this.$id;
       return new Move(move, gamespace,this.Source, ...ancestorSourceJson);

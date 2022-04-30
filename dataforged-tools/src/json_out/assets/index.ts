@@ -3,7 +3,6 @@
  * @module Json.Assets
  */
 
-export * from "@json_out/assets/AssetConditionMeterId.js";
 export * from "@json_out/assets/AssetTypeName.js";
 export * from "@json_out/assets/IAlterMove.js";
 export * from "@json_out/assets/IAsset.js";

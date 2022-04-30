@@ -1,7 +1,7 @@
 /**
  * Set by Oracles / Creatures / Encountered Behavior
  *
- * @public
+ * @alpha
  */
 var Behavior;
 (function (Behavior) {

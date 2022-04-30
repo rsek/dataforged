@@ -1,10 +1,4 @@
-import type { IHasDescription, IHasQuestStarter , IRow , RollTemplate, SettingTruthId } from "@json_out/index.js";
-
-/**
- * A valid setting truth option ID.
- * @public
- */
-export type SettingTruthOptionId = `${SettingTruthId}/${number}-${number}`;
+import type { IHasDescription, IHasQuestStarter , IRow , RollTemplate } from "@json_out/index.js";
 
 /**
  * Interface for 'canonical' options within a SettingTruth category.
@@ -12,6 +6,21 @@ export type SettingTruthOptionId = `${SettingTruthId}/${number}-${number}`;
  * @public
  */
 export interface ISettingTruthOption extends Omit<IRow, "$id"|"Summary">, IHasQuestStarter, IHasDescription {
-  $id: SettingTruthOptionId;
+  /**
+   * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$
+   */
+  $id: string;
+  // $id: SettingTruthOptionId;
   "Roll template"?: RollTemplate<"Summary"|"Description"> | undefined;
+  Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
+}
+
+/**
+ * @public
+ */
+export interface ISettingTruthOptionSubtableRow extends IRow {
+  /**
+   * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
+   */
+  $id: string;
 }

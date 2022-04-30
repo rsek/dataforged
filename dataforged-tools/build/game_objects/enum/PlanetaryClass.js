@@ -2,7 +2,7 @@
  * Set by "Oracles / Planets / Class"
  * @public
  */
-var PlanetaryClass;
+export var PlanetaryClass;
 (function (PlanetaryClass) {
     PlanetaryClass["Desert"] = "Desert";
     PlanetaryClass["Furnace"] = "Furnace";
@@ -16,5 +16,4 @@ var PlanetaryClass;
     PlanetaryClass["Tainted"] = "Tainted";
     PlanetaryClass["Vital"] = "Vital";
 })(PlanetaryClass || (PlanetaryClass = {}));
-export { PlanetaryClass };
 //# sourceMappingURL=PlanetaryClass.js.map

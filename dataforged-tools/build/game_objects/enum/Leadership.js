@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Leadership
- * @public
+ * @alpha
  */
 var Leadership;
 (function (Leadership) {

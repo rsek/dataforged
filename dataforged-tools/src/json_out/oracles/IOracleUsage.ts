@@ -36,7 +36,6 @@ export interface IOracleUsage extends Partial<IHasRequirements & IHasSuggestions
   "Allow duplicates"?: boolean | undefined;
   /**
    * Hints which attributes are set by this table.
-   * @beta
    */
-  "Sets attributes"?: IAttributeChoices[] | undefined;
+  "Sets"?: IAttributeChoices[] | undefined;
 }

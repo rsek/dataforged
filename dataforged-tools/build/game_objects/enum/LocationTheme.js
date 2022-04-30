@@ -2,7 +2,7 @@
  * Set by Oracles / Location Themes / Theme Type
  * @public
  */
-var LocationTheme;
+export var LocationTheme;
 (function (LocationTheme) {
     LocationTheme["Chaotic"] = "Chaotic";
     LocationTheme["Fortified"] = "Fortified";
@@ -13,5 +13,4 @@ var LocationTheme;
     LocationTheme["Ruined"] = "Ruined";
     LocationTheme["Sacred"] = "Sacred";
 })(LocationTheme || (LocationTheme = {}));
-export { LocationTheme };
 //# sourceMappingURL=LocationTheme.js.map
