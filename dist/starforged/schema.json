@@ -1,0 +1,3149 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "defaultProperties": [],
+    "definitions": {
+        "AssetTypeName": {
+            "enum": [
+                "Command Vehicle",
+                "Companion",
+                "Deed",
+                "Module",
+                "Path",
+                "Support Vehicle"
+            ],
+            "title": "AssetTypeName",
+            "type": "string"
+        },
+        "AttributeKey": {
+            "enum": [
+                "Atmosphere",
+                "Authority",
+                "Creature Scale",
+                "Derelict Type",
+                "Disposition",
+                "Dominion",
+                "Encountered Behavior",
+                "Environment",
+                "Faction Type",
+                "Fringe Group",
+                "Guild",
+                "Influence",
+                "Initial Contact",
+                "Leadership",
+                "Life",
+                "Location",
+                "Location Theme",
+                "Planetary Class",
+                "Population",
+                "Region",
+                "Role",
+                "Zone"
+            ],
+            "title": "AttributeKey",
+            "type": "string"
+        },
+        "ChallengeRank": {
+            "description": "Enumerates challenge ranks.",
+            "enum": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "title": "ChallengeRank",
+            "type": "number"
+        },
+        "ClockSegments": {
+            "enum": [
+                10,
+                4,
+                6,
+                8
+            ],
+            "title": "ClockSegments",
+            "type": "number"
+        },
+        "ClockType": {
+            "description": "See clocks (p. 234) for more information.",
+            "enum": [
+                "Campaign",
+                "Tension"
+            ],
+            "title": "ClockType",
+            "type": "string"
+        },
+        "EncounterNatureStarforged": {
+            "enum": [
+                "Creature",
+                "Horror",
+                "Human",
+                "Machine",
+                "Monster"
+            ],
+            "title": "EncounterNatureStarforged",
+            "type": "string"
+        },
+        "GameObjectType": {
+            "enum": [
+                "Character",
+                "Creature",
+                "Derelict",
+                "Derelict Zone",
+                "Faction",
+                "Planet",
+                "Precursor Vault",
+                "Settlement",
+                "Starship"
+            ],
+            "title": "GameObjectType",
+            "type": "string"
+        },
+        "IAlterMomentum": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Burn": {
+                    "description": "Information on how the player's momentum burn is altered.",
+                    "items": {
+                        "$ref": "#/definitions/IAlterMomentumBurn"
+                    },
+                    "title": "Burn",
+                    "type": "array"
+                },
+                "Reset": {
+                    "description": "Information on how the player's momentum reset is altered.",
+                    "items": {
+                        "$ref": "#/definitions/IAlterMomentumReset"
+                    },
+                    "title": "Reset",
+                    "type": "array"
+                }
+            },
+            "title": "IAlterMomentum",
+            "type": "object"
+        },
+        "IAlterMomentumBurn": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Effect": {
+                    "$ref": "#/definitions/IHasText",
+                    "description": "The effect altering the PC's momentum burn.",
+                    "title": "Effect"
+                },
+                "Outcomes": {
+                    "items": {
+                        "enum": [
+                            "Strong Hit",
+                            "Weak Hit"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Outcomes",
+                    "type": "array"
+                },
+                "Trigger": {
+                    "$ref": "#/definitions/IHasText",
+                    "description": "The trigger condition for altering the PC's momentum burn.",
+                    "title": "Trigger"
+                }
+            },
+            "required": [
+                "Effect",
+                "Trigger"
+            ],
+            "title": "IAlterMomentumBurn",
+            "type": "object"
+        },
+        "IAlterMomentumReset": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Trigger": {
+                    "$ref": "#/definitions/IHasText",
+                    "description": "The trigger condition for altering the PC's momentum reset.",
+                    "title": "Trigger"
+                },
+                "Value": {
+                    "description": "The amount by which the PC's momentum reset is change.",
+                    "title": "Value",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Trigger",
+                "Value"
+            ],
+            "title": "IAlterMomentumReset",
+            "type": "object"
+        },
+        "IAlterMove": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes alterations applied to moves by asset abilities.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Alters": {
+                    "description": "Some asset abilities alter/extend other asset abilities, specified as an array of IDs. Only changed properties are specified; other properties are the same.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Alters",
+                    "type": "array"
+                },
+                "Asset": {
+                    "description": "The ID of the parent Asset of the move, if any.",
+                    "title": "Asset",
+                    "type": "string"
+                },
+                "Moves": {
+                    "anyOf": [
+                        {
+                            "description": "The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply. If it's `undefined`, see `Extends` instead.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Moves"
+                },
+                "Oracles": {
+                    "description": "The IDs of any oracles *directly* referenced by the move, or vice versa.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Oracles",
+                    "type": "array"
+                },
+                "Outcomes": {
+                    "$ref": "#/definitions/Partial<IMoveOutcomes>",
+                    "description": "Added rules text that applies on move outcomes.",
+                    "title": "Outcomes"
+                },
+                "Progress Move": {
+                    "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
+                    "title": "Progress Move",
+                    "type": "boolean"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                },
+                "Text": {
+                    "description": "Markdown rules text describing added effects which apply *before* the move is rolled, such as adds.",
+                    "title": "Text",
+                    "type": "string"
+                },
+                "Trigger": {
+                    "$ref": "#/definitions/IMoveTrigger",
+                    "description": "The trigger required by the asset ability. If `undefined`, the move alteration applies to all uses of the specified moves, so long as they also meet any implicit asset requirements (fictional framing, `IAsset.Requirement`, not being Broken or Out of Action, etc).",
+                    "title": "Trigger"
+                },
+                "Variant of": {
+                    "description": "The ID of the move that this move is a variant of, if any.",
+                    "title": "Variant of",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id"
+            ],
+            "title": "IAlterMove",
+            "type": "object"
+        },
+        "IAsset": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "An interface representing an *Ironsworn: Starforged* asset card.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Abilities": {
+                    "description": "The asset's abilities.",
+                    "items": [
+                        {
+                            "$ref": "#/definitions/IAssetAbility"
+                        },
+                        {
+                            "$ref": "#/definitions/IAssetAbility"
+                        },
+                        {
+                            "$ref": "#/definitions/IAssetAbility"
+                        }
+                    ],
+                    "maxItems": 3,
+                    "minItems": 3,
+                    "title": "Abilities",
+                    "type": "array"
+                },
+                "Aliases": {
+                    "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Asset Type": {
+                    "description": "The ID of the asset's parent AssetType",
+                    "title": "Asset Type",
+                    "type": "string"
+                },
+                "Attachments": {
+                    "$ref": "#/definitions/IAssetAttachment",
+                    "description": "Details on what attachments (other assets) are accepted by this asset.",
+                    "title": "Attachments"
+                },
+                "Condition Meter": {
+                    "$ref": "#/definitions/IConditionMeter",
+                    "description": "Information on this asset's condition meter, if any.",
+                    "title": "Condition Meter"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Inputs": {
+                    "description": "Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/IInputText"
+                            },
+                            {
+                                "$ref": "#/definitions/IInputSelect<InputSelectOptionType>"
+                            }
+                        ]
+                    },
+                    "title": "Inputs",
+                    "type": "array"
+                },
+                "Name": {
+                    "description": "The asset's name - the title printed on the card.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Requirement": {
+                    "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
+                    "title": "Requirement",
+                    "type": "string"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "States": {
+                    "description": "Describes any states that the asset might have, such as \"Broken\". Some states may disable the asset entirely.",
+                    "items": {
+                        "$ref": "#/definitions/IAssetState"
+                    },
+                    "title": "States",
+                    "type": "array"
+                },
+                "Usage": {
+                    "$ref": "#/definitions/IAssetUsage",
+                    "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
+                    "title": "Usage"
+                }
+            },
+            "required": [
+                "$id",
+                "Abilities",
+                "Asset Type",
+                "Display",
+                "Name",
+                "Source",
+                "Usage"
+            ],
+            "title": "IAsset",
+            "type": "object"
+        },
+        "IAssetAbility": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents one of an asset's three abilities.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Alter Momentum": {
+                    "$ref": "#/definitions/IAlterMomentum",
+                    "description": "Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)",
+                    "title": "Alter Momentum"
+                },
+                "Alter Moves": {
+                    "description": "Information on how this ability alters moves when enabled.",
+                    "items": {
+                        "$ref": "#/definitions/IAlterMove"
+                    },
+                    "title": "Alter Moves",
+                    "type": "array"
+                },
+                "Alter Properties": {
+                    "$ref": "#/definitions/IAssetAlterProperties",
+                    "description": "Information on how this ability alters its parent asset when enabled.",
+                    "title": "Alter Properties"
+                },
+                "Enabled": {
+                    "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
+                    "title": "Enabled",
+                    "type": "boolean"
+                },
+                "Inputs": {
+                    "description": "User inputs (text, clocks, etc) associated with this asset ability.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/IInputClock"
+                            },
+                            {
+                                "$ref": "#/definitions/IInputNumber"
+                            },
+                            {
+                                "$ref": "#/definitions/IInputText"
+                            }
+                        ]
+                    },
+                    "title": "Inputs",
+                    "type": "array"
+                },
+                "Moves": {
+                    "description": "New moves added by this asset ability.",
+                    "items": {
+                        "$ref": "#/definitions/IMove"
+                    },
+                    "title": "Moves",
+                    "type": "array"
+                },
+                "Text": {
+                    "description": "The item's rules text as a markdown string.",
+                    "title": "Text",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id",
+                "Enabled",
+                "Text"
+            ],
+            "title": "IAssetAbility",
+            "type": "object"
+        },
+        "IAssetAlterProperties": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes changes that an asset ability makes to its parent asset when active. Any properties with object values should be merged recursively.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Abilities": {
+                    "description": "The asset's abilities.",
+                    "items": [
+                        {
+                            "$ref": "#/definitions/IAssetAbility"
+                        },
+                        {
+                            "$ref": "#/definitions/IAssetAbility"
+                        },
+                        {
+                            "$ref": "#/definitions/IAssetAbility"
+                        }
+                    ],
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "title": "Abilities",
+                    "type": "array"
+                },
+                "Aliases": {
+                    "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Asset Type": {
+                    "description": "The ID of the asset's parent AssetType",
+                    "title": "Asset Type",
+                    "type": "string"
+                },
+                "Attachments": {
+                    "$ref": "#/definitions/Partial<IAssetAttachment>",
+                    "description": "Details on what attachments (other assets) are accepted by this asset.",
+                    "title": "Attachments"
+                },
+                "Condition Meter": {
+                    "$ref": "#/definitions/Partial<IConditionMeter>",
+                    "description": "Information on this asset's condition meter, if any.",
+                    "title": "Condition Meter"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle_1",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Inputs": {
+                    "description": "Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/IInputText"
+                            },
+                            {
+                                "$ref": "#/definitions/IInputSelect<InputSelectOptionType>"
+                            }
+                        ]
+                    },
+                    "title": "Inputs",
+                    "type": "array"
+                },
+                "Name": {
+                    "description": "The asset's name - the title printed on the card.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Requirement": {
+                    "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
+                    "title": "Requirement",
+                    "type": "string"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T_1",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "States": {
+                    "description": "Describes any states that the asset might have, such as \"Broken\". Some states may disable the asset entirely.",
+                    "items": {
+                        "$ref": "#/definitions/IAssetState"
+                    },
+                    "title": "States",
+                    "type": "array"
+                },
+                "Usage": {
+                    "$ref": "#/definitions/IAssetUsage_1",
+                    "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
+                    "title": "Usage"
+                }
+            },
+            "title": "IAssetAlterProperties",
+            "type": "object"
+        },
+        "IAssetAttachment": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Details which assets are valid attachments. The most prominent example in *Ironsworn: Starforged* is the STARSHIP asset (`Starship/Assets/Command_Vehicle/Starship`); Rover (`Starship/Assets/Support_Vehicle/Rover`) also has an elective ability that adds this property.",
+            "properties": {
+                "Asset Types": {
+                    "description": "The type of asset that this asset accepts as attachments.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Asset Types",
+                    "type": "array"
+                },
+                "Max": {
+                    "description": "The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.",
+                    "title": "Max",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "Asset Types",
+                "Max"
+            ],
+            "title": "IAssetAttachment",
+            "type": "object"
+        },
+        "IAssetState": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes a possible state for an asset, like the \"Broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
+            "properties": {
+                "Disables asset": {
+                    "description": "Whether this state should disable the entire asset when `IAssetState.Enabled === true`",
+                    "title": "Disables asset",
+                    "type": "boolean"
+                },
+                "Enabled": {
+                    "description": "Whether this state is currently enabled.",
+                    "title": "Enabled",
+                    "type": "boolean"
+                },
+                "Impact": {
+                    "description": "Whether this state counts as an Impact for the asset's owner.\n\nNote that for vehicles, this shouldn't be applied automatically unless your implementation has some way of telling which vehicle the PC is currently using.",
+                    "title": "Impact",
+                    "type": "boolean"
+                },
+                "Name": {
+                    "description": "A string label name or label for the state.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Permanent": {
+                    "description": "Whether or not this state is permanent.",
+                    "title": "Permanent",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Disables asset",
+                "Enabled",
+                "Impact",
+                "Name",
+                "Permanent"
+            ],
+            "title": "IAssetState",
+            "type": "object"
+        },
+        "IAssetType": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Aliases": {
+                    "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Assets": {
+                    "description": "The assets that belong to this asset type.",
+                    "items": {
+                        "$ref": "#/definitions/IAsset"
+                    },
+                    "title": "Assets",
+                    "type": "array"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Name": {
+                    "$ref": "#/definitions/AssetTypeName",
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                }
+            },
+            "required": [
+                "$id",
+                "Assets",
+                "Description",
+                "Display",
+                "Name",
+                "Source"
+            ],
+            "title": "IAssetType",
+            "type": "object"
+        },
+        "IAssetUsage": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Shared": {
+                    "description": "Whether the asset's abilities are shared with Allies.\n\nIf set to `true`, the asset's abilities can be invoked by **any** player character; if your app facilitates co-op or guided play, consider how you might expose these abilities to players other than the asset's owner.\n\nDefaults to `true` for Command Vehicle, Support Vehicle, and Module assets.",
+                    "title": "Shared",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Shared"
+            ],
+            "title": "IAssetUsage",
+            "type": "object"
+        },
+        "IAssetUsage_1": {
+            "$ref": "#/definitions/__type_1"
+        },
+        "IAttribute": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes an attribute key/value pair, set by an oracle row. The key-value pair should be set on any game object for which that row is generated.\n\nAttributes exist to describe prerequisites that might be fulfilled by more than one table, that don't exist on tables at all, or that a generated game object might want to 'force' as one of it's roll results.\n\nSee documentation for a list of available values.",
+            "properties": {
+                "Key": {
+                    "$ref": "#/definitions/AttributeKey",
+                    "title": "Key"
+                },
+                "Value": {
+                    "title": "Value",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Key"
+            ],
+            "title": "IAttribute",
+            "type": "object"
+        },
+        "IAttributeChoices": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Key": {
+                    "$ref": "#/definitions/AttributeKey",
+                    "title": "Key"
+                },
+                "Values": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Values",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Key"
+            ],
+            "title": "IAttributeChoices",
+            "type": "object"
+        },
+        "IConditionMeter": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface representing a condition meter such as Health, Spirit, Supply, or Integrity.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Aliases": {
+                    "items": {
+                        "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
+                        "enum": [
+                            "Command Vehicle Integrity",
+                            "Companion Health",
+                            "Incidental Vehicle Integrity",
+                            "Support Vehicle Integrity",
+                            "Vehicle Integrity"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Conditions": {
+                    "description": "The conditions that can apply to this meter.",
+                    "items": {
+                        "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
+                        "enum": [
+                            "Battered",
+                            "Cursed",
+                            "Out of Action"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Conditions",
+                    "type": "array"
+                },
+                "Max": {
+                    "description": "The maximum value of the meter.",
+                    "title": "Max",
+                    "type": "integer"
+                },
+                "Min": {
+                    "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
+                    "enum": [
+                        0
+                    ],
+                    "title": "Min",
+                    "type": "number"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Value": {
+                    "description": "The initial value of the meter.",
+                    "title": "Value",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "$id",
+                "Conditions",
+                "Max",
+                "Min",
+                "Name",
+                "Value"
+            ],
+            "title": "IConditionMeter",
+            "type": "object"
+        },
+        "ICustomStat": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Options": {
+                    "items": {
+                        "$ref": "#/definitions/ICustomStatOption"
+                    },
+                    "title": "Options",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "$id",
+                "Name",
+                "Options"
+            ],
+            "title": "ICustomStat",
+            "type": "object"
+        },
+        "ICustomStatOption": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The name/label for this specific value of the custom stat.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Value": {
+                    "description": "The numeric value to be used as +stat when making an Action Roll.",
+                    "title": "Value",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "$id",
+                "Name",
+                "Value"
+            ],
+            "title": "ICustomStatOption",
+            "type": "object"
+        },
+        "IDisplay": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface for data relevant to an item's display/rendering.",
+            "properties": {
+                "Color": {
+                    "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+                    "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+                    "title": "Color",
+                    "type": "string"
+                },
+                "Icon": {
+                    "description": "A URL pointing to a single SVG icon.",
+                    "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+                    "title": "Icon",
+                    "type": "string"
+                },
+                "Images": {
+                    "description": "An array of URLs pointing to one or more WEBP images.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+                    "title": "Images",
+                    "type": "array"
+                }
+            },
+            "title": "IDisplay",
+            "type": "object"
+        },
+        "IDisplayTable": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Provides information on how a specific oracle table is rendered in the source text.",
+            "properties": {
+                "Result columns": {
+                    "items": {
+                        "$ref": "#/definitions/ITextColumn"
+                    },
+                    "title": "Result columns",
+                    "type": "array"
+                },
+                "Roll columns": {
+                    "items": {
+                        "$ref": "#/definitions/ITableColumnBase"
+                    },
+                    "title": "Roll columns",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Result columns",
+                "Roll columns"
+            ],
+            "title": "IDisplayTable",
+            "type": "object"
+        },
+        "IDisplayWithTitle": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Color": {
+                    "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+                    "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+                    "title": "Color",
+                    "type": "string"
+                },
+                "Icon": {
+                    "description": "A URL pointing to a single SVG icon.",
+                    "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+                    "title": "Icon",
+                    "type": "string"
+                },
+                "Images": {
+                    "description": "An array of URLs pointing to one or more WEBP images.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+                    "title": "Images",
+                    "type": "array"
+                },
+                "Title": {
+                    "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+                    "title": "Title",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Title"
+            ],
+            "title": "IDisplayWithTitle",
+            "type": "object"
+        },
+        "IDisplayWithTitle_1": {
+            "$ref": "#/definitions/__type"
+        },
+        "IEncounterStarforged": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents an *Ironsworn: Starforged* Encounter entry.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^Starforged/Encounters/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Drives": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Drives",
+                    "type": "array"
+                },
+                "Features": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Features",
+                    "type": "array"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Nature": {
+                    "$ref": "#/definitions/EncounterNatureStarforged",
+                    "title": "Nature"
+                },
+                "Quest Starter": {
+                    "description": "A markdown string describing the quest starter associated with this item.",
+                    "title": "Quest Starter",
+                    "type": "string"
+                },
+                "Rank": {
+                    "$ref": "#/definitions/ChallengeRank",
+                    "title": "Rank"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "Summary": {
+                    "description": "A user-facing markdown summary of the item.",
+                    "title": "Summary",
+                    "type": "string"
+                },
+                "Tactics": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Tactics",
+                    "type": "array"
+                },
+                "Tags": {
+                    "items": {
+                        "enum": [
+                            "vehicle"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Tags",
+                    "type": "array"
+                },
+                "Variants": {
+                    "items": {
+                        "$ref": "#/definitions/IEncounterVariant"
+                    },
+                    "title": "Variants",
+                    "type": "array"
+                },
+                "Your Truth": {
+                    "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
+                    "title": "Your Truth",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id",
+                "Description",
+                "Display",
+                "Drives",
+                "Features",
+                "Name",
+                "Nature",
+                "Quest Starter",
+                "Rank",
+                "Source",
+                "Summary",
+                "Tactics",
+                "Variants"
+            ],
+            "title": "IEncounterStarforged",
+            "type": "object"
+        },
+        "IEncounterVariant": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents a variant encounter 'stubs' included with a parent encounter in *Ironsworn: Starforged*.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^Starforged/Encounters/[A-z_-]+/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Nature": {
+                    "$ref": "#/definitions/EncounterNatureStarforged",
+                    "title": "Nature"
+                },
+                "Rank": {
+                    "$ref": "#/definitions/ChallengeRank",
+                    "title": "Rank"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "Tags": {
+                    "items": {
+                        "enum": [
+                            "vehicle"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Tags",
+                    "type": "array"
+                },
+                "Variant of": {
+                    "title": "Variant of",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id",
+                "Description",
+                "Display",
+                "Name",
+                "Nature",
+                "Rank",
+                "Source",
+                "Variant of"
+            ],
+            "title": "IEncounterVariant",
+            "type": "object"
+        },
+        "IGameObject": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
+            "properties": {
+                "Object type": {
+                    "$ref": "#/definitions/GameObjectType",
+                    "title": "Object type"
+                },
+                "Requires": {
+                    "$ref": "#/definitions/IRequirements",
+                    "title": "Requires"
+                }
+            },
+            "required": [
+                "Object type"
+            ],
+            "title": "IGameObject",
+            "type": "object"
+        },
+        "IHasOracleContent.T": {
+            "$ref": "#/definitions/IOracleContent",
+            "description": "Interface for metadata that describes an oracle's semantic or lexical content."
+        },
+        "IHasOracleUsage.T": {
+            "$ref": "#/definitions/IOracleUsage",
+            "description": "Describes the recommended usage of this item."
+        },
+        "IHasSource.T": {
+            "$ref": "#/definitions/ISource",
+            "description": "Interface representing data on the game's source."
+        },
+        "IHasSource.T_1": {
+            "$ref": "#/definitions/__type_2"
+        },
+        "IHasSuggestions.T": {
+            "$ref": "#/definitions/ISuggestions",
+            "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired."
+        },
+        "IHasText": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface for items that reproduce Starforged rules text in markdown.",
+            "properties": {
+                "Text": {
+                    "description": "The item's rules text as a markdown string.",
+                    "title": "Text",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Text"
+            ],
+            "title": "IHasText",
+            "type": "object"
+        },
+        "IInputClock": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "An input representing an *Ironsworn: Starforged* clock.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Adjustable": {
+                    "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
+                    "title": "Adjustable",
+                    "type": "boolean"
+                },
+                "Clock Type": {
+                    "$ref": "#/definitions/ClockType",
+                    "description": "Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.",
+                    "title": "Clock Type"
+                },
+                "Filled": {
+                    "description": "An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.",
+                    "title": "Filled",
+                    "type": "integer"
+                },
+                "Input Type": {
+                    "$ref": "#/definitions/InputType.Clock",
+                    "title": "Input Type"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Segments": {
+                    "$ref": "#/definitions/ClockSegments",
+                    "description": "An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.\n\n`Filled` should not exceed this number.",
+                    "title": "Segments"
+                }
+            },
+            "required": [
+                "$id",
+                "Adjustable",
+                "Clock Type",
+                "Filled",
+                "Input Type",
+                "Name",
+                "Segments"
+            ],
+            "title": "IInputClock",
+            "type": "object"
+        },
+        "IInputNumber": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "An input where the user sets an integer.\nSuggested rendering: a number input spinner, similar to `<input type='number'>` in HTML.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Adjustable": {
+                    "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
+                    "title": "Adjustable",
+                    "type": "boolean"
+                },
+                "Input Type": {
+                    "$ref": "#/definitions/InputType.Number",
+                    "title": "Input Type"
+                },
+                "Max": {
+                    "title": "Max",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Min": {
+                    "title": "Min",
+                    "type": "integer"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Step": {
+                    "enum": [
+                        1
+                    ],
+                    "title": "Step",
+                    "type": "number"
+                },
+                "Value": {
+                    "title": "Value",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "$id",
+                "Adjustable",
+                "Input Type",
+                "Max",
+                "Min",
+                "Name",
+                "Step",
+                "Value"
+            ],
+            "title": "IInputNumber",
+            "type": "object"
+        },
+        "IInputSelect<InputSelectOptionType>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "An input where the user selects a single option from a list of pre-set options.\nSuggested rendering: a drop-down selection menu.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Adjustable": {
+                    "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
+                    "title": "Adjustable",
+                    "type": "boolean"
+                },
+                "Input Type": {
+                    "$ref": "#/definitions/InputType.Select",
+                    "title": "Input Type"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Options": {
+                    "items": {
+                        "$ref": "#/definitions/IInputSelectOption<InputSelectOptionType>"
+                    },
+                    "title": "Options",
+                    "type": "array"
+                },
+                "Sets": {
+                    "description": "Hints which attribute(s) set by this dropdown's options.",
+                    "items": {
+                        "$ref": "#/definitions/IInputSelectAttributeDefinition<InputSelectOptionType>"
+                    },
+                    "title": "Sets",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "$id",
+                "Adjustable",
+                "Input Type",
+                "Name",
+                "Options",
+                "Sets"
+            ],
+            "title": "IInputSelect<InputSelectOptionType>",
+            "type": "object"
+        },
+        "IInputSelectAttributeDefinition.V": {
+            "$ref": "#/definitions/InputSelectOptionType",
+            "description": "The type of an attribute set by a Select Input."
+        },
+        "IInputSelectAttributeDefinition<InputSelectOptionType>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Provides hints for the keys and typing of an{@linkIInputSelect}'s child{@linkIInputSelectOption}s.",
+            "properties": {
+                "Key": {
+                    "title": "Key",
+                    "type": "string"
+                },
+                "Type": {
+                    "$ref": "#/definitions/IInputSelectAttributeDefinition.V",
+                    "title": "Type"
+                }
+            },
+            "required": [
+                "Key",
+                "Type"
+            ],
+            "title": "IInputSelectAttributeDefinition<InputSelectOptionType>",
+            "type": "object"
+        },
+        "IInputSelectOption<InputSelectOptionType>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents an option in an{@linkIInputSelect}.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Set": {
+                    "description": "A array describing what attribute keys should be set to when this option is active. *All* items in the array should be set in this manner.",
+                    "items": {
+                        "$ref": "#/definitions/IInputSelectOptionSetter<InputSelectOptionType>"
+                    },
+                    "title": "Set",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "$id",
+                "Name",
+                "Set"
+            ],
+            "title": "IInputSelectOption<InputSelectOptionType>",
+            "type": "object"
+        },
+        "IInputSelectOptionSetter<InputSelectOptionType>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Key": {
+                    "title": "Key",
+                    "type": "string"
+                },
+                "Value": {
+                    "title": "Value",
+                    "type": [
+                        "string",
+                        "integer"
+                    ]
+                }
+            },
+            "required": [
+                "$id",
+                "Key",
+                "Value"
+            ],
+            "title": "IInputSelectOptionSetter<InputSelectOptionType>",
+            "type": "object"
+        },
+        "IInputText": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "A text input.\nSuggested rendering: a single-line text input, similar to `<input type='text'>` in HTML.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Adjustable": {
+                    "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
+                    "title": "Adjustable",
+                    "type": "boolean"
+                },
+                "Input Type": {
+                    "$ref": "#/definitions/InputType.Text",
+                    "title": "Input Type"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id",
+                "Adjustable",
+                "Input Type",
+                "Name"
+            ],
+            "title": "IInputText",
+            "type": "object"
+        },
+        "IMove": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface representing a Starforged move.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Asset": {
+                    "description": "The ID of the parent Asset of the move, if any.",
+                    "title": "Asset",
+                    "type": "string"
+                },
+                "Category": {
+                    "description": "The ID of the move's category.",
+                    "title": "Category",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Oracles": {
+                    "description": "The IDs of any oracles *directly* referenced by the move, or vice versa.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Oracles",
+                    "type": "array"
+                },
+                "Outcomes": {
+                    "$ref": "#/definitions/IMoveOutcomes",
+                    "description": "Outcome information for the move.",
+                    "title": "Outcomes"
+                },
+                "Progress Move": {
+                    "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
+                    "title": "Progress Move",
+                    "type": "boolean"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                },
+                "Text": {
+                    "description": "The item's rules text as a markdown string.",
+                    "title": "Text",
+                    "type": "string"
+                },
+                "Trigger": {
+                    "$ref": "#/definitions/IMoveTrigger",
+                    "description": "The move's trigger data.",
+                    "title": "Trigger"
+                },
+                "Variant of": {
+                    "description": "The ID of the move that this move is a variant of, if any.",
+                    "title": "Variant of",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id",
+                "Category",
+                "Display",
+                "Name",
+                "Source",
+                "Text",
+                "Trigger"
+            ],
+            "title": "IMove",
+            "type": "object"
+        },
+        "IMoveCategory": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents a category of moves such as \"Session Moves\" or \"Combat Moves\", and serves as a container for moves within that category.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Moves": {
+                    "items": {
+                        "$ref": "#/definitions/IMove"
+                    },
+                    "title": "Moves",
+                    "type": "array"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                }
+            },
+            "required": [
+                "$id",
+                "Description",
+                "Display",
+                "Moves",
+                "Name",
+                "Source"
+            ],
+            "title": "IMoveCategory",
+            "type": "object"
+        },
+        "IMoveOutcomes": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Miss": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "title": "Miss"
+                },
+                "Strong Hit": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "title": "Strong Hit"
+                },
+                "Weak Hit": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "title": "Weak Hit"
+                }
+            },
+            "required": [
+                "$id",
+                "Miss",
+                "Strong Hit",
+                "Weak Hit"
+            ],
+            "title": "IMoveOutcomes",
+            "type": "object"
+        },
+        "IMoveReroll": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.",
+            "properties": {
+                "Dice": {
+                    "$ref": "#/definitions/RerollType",
+                    "description": "The dice to be rerolled.",
+                    "title": "Dice"
+                },
+                "Text": {
+                    "description": "The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.",
+                    "title": "Text",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Dice",
+                "Text"
+            ],
+            "title": "IMoveReroll",
+            "type": "object"
+        },
+        "IMoveTrigger": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes the trigger conditions of the move.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "By": {
+                    "$ref": "#/definitions/IMoveTriggerBy",
+                    "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
+                    "title": "By"
+                },
+                "Options": {
+                    "description": "Information on any action rolls or progress rolls that are made when this move is triggered (which may describe a specific subset of the primary trigger in their own `Text` property).\n\nIf there's no action rolls or progress rolls attached to this move, this is `undefined`.",
+                    "items": {
+                        "$ref": "#/definitions/IMoveTriggerOption<RollType>"
+                    },
+                    "title": "Options",
+                    "type": "array"
+                },
+                "Text": {
+                    "description": "A markdown string containing the primary trigger text for this move.",
+                    "title": "Text",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$id"
+            ],
+            "title": "IMoveTrigger",
+            "type": "object"
+        },
+        "IMoveTriggerBy": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Ally": {
+                    "description": "Whether an Ally (a player character other than the owner) can trigger this item. This is usually false, but there's several exceptions among asset abilities.",
+                    "title": "Ally",
+                    "type": "boolean"
+                },
+                "Player": {
+                    "description": "Whether the player character who owns this item can trigger it. Unsurprisingly, this is usually true, but there's a few exceptions: see *Starforged's* LOYALIST asset for an example.",
+                    "title": "Player",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Ally",
+                "Player"
+            ],
+            "title": "IMoveTriggerBy",
+            "type": "object"
+        },
+        "IMoveTriggerOption.T": {
+            "$ref": "#/definitions/RollType"
+        },
+        "IMoveTriggerOption<RollType>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Custom stat": {
+                    "$ref": "#/definitions/ICustomStat",
+                    "description": "Defines a custom stat, if one is included in this object's `With` array.",
+                    "title": "Custom stat"
+                },
+                "Method": {
+                    "$ref": "#/definitions/RollMethod",
+                    "description": "The method used to choose the stat or track in the `Using` array.",
+                    "title": "Method"
+                },
+                "Roll type": {
+                    "$ref": "#/definitions/IMoveTriggerOption.T",
+                    "description": "Whether this option is an action roll or progress roll.",
+                    "title": "Roll type"
+                },
+                "Text": {
+                    "description": "The item's rules text as a markdown string.",
+                    "title": "Text",
+                    "type": "string"
+                },
+                "Using": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "items": {
+                                "enum": [
+                                    "Bonds",
+                                    "Combat",
+                                    "Connection",
+                                    "Discoveries",
+                                    "Expedition",
+                                    "Quests",
+                                    "Scene Challenge",
+                                    "Vow"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    ],
+                    "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
+                    "title": "Using"
+                }
+            },
+            "required": [
+                "$id",
+                "Method",
+                "Roll type",
+                "Using"
+            ],
+            "title": "IMoveTriggerOption<RollType>",
+            "type": "object"
+        },
+        "IMultipleRolls": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes{@linkIRow}results that call for multiple rolls, most commonly \"Roll twice\" results.",
+            "properties": {
+                "Allow duplicates": {
+                    "description": "Whether to allow duplicate results when generating multiple rolls.\n\nImplicitly required by `Make it worse`.",
+                    "title": "Allow duplicates",
+                    "type": "boolean"
+                },
+                "Amount": {
+                    "description": "The number of rolls to make on the parent oracle table.",
+                    "title": "Amount",
+                    "type": "integer"
+                },
+                "Make it worse": {
+                    "description": "Whether duplicate rolls should be compounded in an Ironsworn-style \"Make it worse\" results.\n\nTypically this is accompanied by `IRow.Result` text like \"Roll twice more on this table. Both results occur. If they are the same result, make it worse.\"\n\nCan safely be ignored in Starforged-only implementations. Implicitly requires `Allow duplicates`.",
+                    "title": "Make it worse",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Allow duplicates",
+                "Amount",
+                "Make it worse"
+            ],
+            "title": "IMultipleRolls",
+            "type": "object"
+        },
+        "IOracle": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents an oracle, which may have a Table or multiple child Oracles.\n\nThe distinction between{@linkIOracleCategory}and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Aliases": {
+                    "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Category": {
+                    "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
+                    "title": "Category",
+                    "type": "string"
+                },
+                "Content": {
+                    "$ref": "#/definitions/IHasOracleContent.T",
+                    "description": "Metadata that describes an oracle's semantic or lexical content.",
+                    "title": "Content"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/ITableDisplay",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Member of": {
+                    "description": "The ID of the most recent Oracle ancestor of this item, if any.",
+                    "title": "Member of",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Oracles": {
+                    "description": "Oracle objects contained by this object.",
+                    "items": {
+                        "$ref": "#/definitions/IOracle"
+                    },
+                    "title": "Oracles",
+                    "type": "array"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "Table": {
+                    "items": {
+                        "$ref": "#/definitions/IRow"
+                    },
+                    "title": "Table",
+                    "type": "array"
+                },
+                "Usage": {
+                    "$ref": "#/definitions/IHasOracleUsage.T",
+                    "title": "Usage"
+                }
+            },
+            "required": [
+                "$id",
+                "Category",
+                "Display",
+                "Name",
+                "Source"
+            ],
+            "title": "IOracle",
+            "type": "object"
+        },
+        "IOracleCategory": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Represents an oracle category: a grouping that can contain both Oracles and other Oracle categories, but doesn't have its own `Table` key.\n\nThe distinction between this and{@linkIOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Aliases": {
+                    "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Categories": {
+                    "description": "Subcategories contained by this oracle category.",
+                    "items": {
+                        "$ref": "#/definitions/IOracleCategory"
+                    },
+                    "title": "Categories",
+                    "type": "array"
+                },
+                "Category": {
+                    "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
+                    "title": "Category",
+                    "type": "string"
+                },
+                "Content": {
+                    "$ref": "#/definitions/IHasOracleContent.T",
+                    "description": "Metadata that describes an oracle's semantic or lexical content.",
+                    "title": "Content"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Member of": {
+                    "description": "The ID of the most recent Oracle ancestor of this item, if any.",
+                    "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-/]+$",
+                    "title": "Member of",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Oracles": {
+                    "description": "Oracle objects contained by this object.",
+                    "items": {
+                        "$ref": "#/definitions/IOracle"
+                    },
+                    "title": "Oracles",
+                    "type": "array"
+                },
+                "Sample Names": {
+                    "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Sample Names",
+                    "type": "array"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "Usage": {
+                    "$ref": "#/definitions/IHasOracleUsage.T",
+                    "title": "Usage"
+                }
+            },
+            "required": [
+                "$id",
+                "Display",
+                "Name",
+                "Source"
+            ],
+            "title": "IOracleCategory",
+            "type": "object"
+        },
+        "IOracleContent": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface for metadata that describes an oracle's semantic or lexical content.",
+            "properties": {
+                "Part of speech": {
+                    "description": "The part of speech of this oracle.",
+                    "items": {
+                        "enum": [
+                            "adjective",
+                            "common noun",
+                            "compound noun",
+                            "fragment",
+                            "name",
+                            "noun",
+                            "plural",
+                            "possessive case",
+                            "proper noun",
+                            "proper noun fragment",
+                            "sentences",
+                            "verb"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Part of speech",
+                    "type": "array"
+                },
+                "Tags": {
+                    "description": "Any arbitrary string tags associated with this oracle.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Tags",
+                    "type": "array"
+                }
+            },
+            "title": "IOracleContent",
+            "type": "object"
+        },
+        "IOracleUsage": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes the recommended usage of this item.",
+            "properties": {
+                "Allow duplicates": {
+                    "description": "Whether multiple rolls (as in object generation, or with{@linkIMultipleRolls}) .",
+                    "title": "Allow duplicates",
+                    "type": "boolean"
+                },
+                "Initial": {
+                    "description": "Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.\n\nThat said, the game itself recommends **against** rolling all possible results at once (see \"Peeling the Onion\", p. 293, *Starforged*). If your goal is to implement the game 'as-written', consider how you might include some means of \"progressive disclosure\" of oracle results.\n\nMay be deprecated in the future in favour of dedicated object template information.",
+                    "title": "Initial",
+                    "type": "boolean"
+                },
+                "Max rolls": {
+                    "description": "The maximum number of rolls when using this oracle to create a game object. Assume it's 1 if not specified.",
+                    "title": "Max rolls",
+                    "type": "integer"
+                },
+                "Min rolls": {
+                    "description": "The minimum number of rolls when using this oracle to create a game object, *if* this oracle is rolled. Assume it's 1 if not specified.",
+                    "title": "Min rolls",
+                    "type": "integer"
+                },
+                "Repeatable": {
+                    "description": "Whether the table's standard use is iterative.  Common examples are Feature, Opportunity, and Peril tables, which are most often used repeatedly to describe different areas of/events in a place, rather than being assigned as a description of the place as a whole.\n\nMutually exclusive with `Max rolls`. If undefined, assume `false`.",
+                    "title": "Repeatable",
+                    "type": "boolean"
+                },
+                "Requires": {
+                    "$ref": "#/definitions/IRequirements",
+                    "description": "Prerequisites for this item.",
+                    "title": "Requires"
+                },
+                "Sets": {
+                    "description": "Hints which attributes are set by this table.",
+                    "items": {
+                        "$ref": "#/definitions/IAttributeChoices"
+                    },
+                    "title": "Sets",
+                    "type": "array"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                }
+            },
+            "title": "IOracleUsage",
+            "type": "object"
+        },
+        "IOutcomeInfo": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Count as": {
+                    "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+                    "enum": [
+                        "Miss",
+                        "Strong Hit",
+                        "Weak Hit"
+                    ],
+                    "title": "Count as",
+                    "type": "string"
+                },
+                "Reroll": {
+                    "$ref": "#/definitions/IMoveReroll",
+                    "description": "Information on rerolls offered by this move.",
+                    "title": "Reroll"
+                },
+                "Text": {
+                    "description": "The item's rules text as a markdown string.",
+                    "title": "Text",
+                    "type": "string"
+                },
+                "With a Match": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+                    "title": "With a Match"
+                }
+            },
+            "required": [
+                "$id",
+                "Text"
+            ],
+            "title": "IOutcomeInfo",
+            "type": "object"
+        },
+        "IRequirements": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Data describing an item's requirements.",
+            "properties": {
+                "Attributes": {
+                    "description": "A list of attribute keys, and values of those keys that satisfy the requirements.",
+                    "items": {
+                        "$ref": "#/definitions/IAttributeChoices"
+                    },
+                    "title": "Attributes",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Attributes"
+            ],
+            "title": "IRequirements",
+            "type": "object"
+        },
+        "IRow": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface representing a single row in an oracle table.",
+            "properties": {
+                "$id": {
+                    "anyOf": [
+                        {
+                            "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "$id"
+                },
+                "Attributes": {
+                    "description": "The attributes set by this row.",
+                    "items": {
+                        "$ref": "#/definitions/IAttribute"
+                    },
+                    "title": "Attributes",
+                    "type": "array"
+                },
+                "Ceiling": {
+                    "anyOf": [
+                        {
+                            "description": "The high end of the dice range for this row.",
+                            "maximum": 100,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Ceiling"
+                },
+                "Content": {
+                    "$ref": "#/definitions/IHasOracleContent.T",
+                    "description": "Metadata that describes an oracle's semantic or lexical content.",
+                    "title": "Content"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplay",
+                    "title": "Display"
+                },
+                "Floor": {
+                    "anyOf": [
+                        {
+                            "description": "The low end of the dice range for this row.",
+                            "maximum": 100,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Floor"
+                },
+                "Game objects": {
+                    "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+                    "items": {
+                        "$ref": "#/definitions/IGameObject"
+                    },
+                    "title": "Game objects",
+                    "type": "array"
+                },
+                "Multiple rolls": {
+                    "$ref": "#/definitions/IMultipleRolls",
+                    "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+                    "title": "Multiple rolls"
+                },
+                "Oracle rolls": {
+                    "description": "Additional oracle tables that should be rolled when this row is selected.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Oracle rolls",
+                    "type": "array"
+                },
+                "Result": {
+                    "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+                    "title": "Result",
+                    "type": "string"
+                },
+                "Roll template": {
+                    "$ref": "#/definitions/RollTemplate",
+                    "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+                    "title": "Roll template"
+                },
+                "Subtable": {
+                    "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+                    "items": {
+                        "$ref": "#/definitions/IRow"
+                    },
+                    "title": "Subtable",
+                    "type": "array"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                },
+                "Summary": {
+                    "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+                    "title": "Summary",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "Ceiling",
+                "Floor",
+                "Result"
+            ],
+            "title": "IRow",
+            "type": "object"
+        },
+        "ISettingTruth": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface for Setting Truth categories such as \"Exodus\" and \"Cataclysm\". See page XX of Starforged for further information.",
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Character": {
+                    "description": "A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.",
+                    "title": "Character",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplayWithTitle",
+                    "description": "Data relevant to this item's display/rendering.",
+                    "title": "Display"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Source": {
+                    "$ref": "#/definitions/IHasSource.T",
+                    "description": "Information on this item's source.",
+                    "title": "Source"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                },
+                "Table": {
+                    "description": "The 'canonical' options for this setting truth category.",
+                    "items": {
+                        "$ref": "#/definitions/ISettingTruthOption"
+                    },
+                    "title": "Table",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "$id",
+                "Character",
+                "Display",
+                "Name",
+                "Source",
+                "Table"
+            ],
+            "title": "ISettingTruth",
+            "type": "object"
+        },
+        "ISettingTruthOption": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface for 'canonical' options within a SettingTruth category.",
+            "properties": {
+                "$id": {
+                    "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Attributes": {
+                    "description": "The attributes set by this row.",
+                    "items": {
+                        "$ref": "#/definitions/IAttribute"
+                    },
+                    "title": "Attributes",
+                    "type": "array"
+                },
+                "Ceiling": {
+                    "anyOf": [
+                        {
+                            "description": "The high end of the dice range for this row.",
+                            "maximum": 100,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Ceiling"
+                },
+                "Content": {
+                    "$ref": "#/definitions/IHasOracleContent.T",
+                    "description": "Metadata that describes an oracle's semantic or lexical content.",
+                    "title": "Content"
+                },
+                "Description": {
+                    "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplay",
+                    "title": "Display"
+                },
+                "Floor": {
+                    "anyOf": [
+                        {
+                            "description": "The low end of the dice range for this row.",
+                            "maximum": 100,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Floor"
+                },
+                "Game objects": {
+                    "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+                    "items": {
+                        "$ref": "#/definitions/IGameObject"
+                    },
+                    "title": "Game objects",
+                    "type": "array"
+                },
+                "Multiple rolls": {
+                    "$ref": "#/definitions/IMultipleRolls",
+                    "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+                    "title": "Multiple rolls"
+                },
+                "Oracle rolls": {
+                    "description": "Additional oracle tables that should be rolled when this row is selected.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Oracle rolls",
+                    "type": "array"
+                },
+                "Quest Starter": {
+                    "description": "A markdown string describing the quest starter associated with this item.",
+                    "title": "Quest Starter",
+                    "type": "string"
+                },
+                "Result": {
+                    "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+                    "title": "Result",
+                    "type": "string"
+                },
+                "Roll template": {
+                    "$ref": "#/definitions/RollTemplate<\"Summary\"|\"Description\">",
+                    "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+                    "title": "Roll template"
+                },
+                "Subtable": {
+                    "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+                    "items": {
+                        "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+                    },
+                    "title": "Subtable",
+                    "type": "array"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                }
+            },
+            "required": [
+                "$id",
+                "Ceiling",
+                "Description",
+                "Floor",
+                "Quest Starter",
+                "Result"
+            ],
+            "title": "ISettingTruthOption",
+            "type": "object"
+        },
+        "ISettingTruthOptionSubtableRow": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Attributes": {
+                    "description": "The attributes set by this row.",
+                    "items": {
+                        "$ref": "#/definitions/IAttribute"
+                    },
+                    "title": "Attributes",
+                    "type": "array"
+                },
+                "Ceiling": {
+                    "anyOf": [
+                        {
+                            "description": "The high end of the dice range for this row.",
+                            "maximum": 100,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Ceiling"
+                },
+                "Content": {
+                    "$ref": "#/definitions/IHasOracleContent.T",
+                    "description": "Metadata that describes an oracle's semantic or lexical content.",
+                    "title": "Content"
+                },
+                "Display": {
+                    "$ref": "#/definitions/IDisplay",
+                    "title": "Display"
+                },
+                "Floor": {
+                    "anyOf": [
+                        {
+                            "description": "The low end of the dice range for this row.",
+                            "maximum": 100,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "Floor"
+                },
+                "Game objects": {
+                    "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+                    "items": {
+                        "$ref": "#/definitions/IGameObject"
+                    },
+                    "title": "Game objects",
+                    "type": "array"
+                },
+                "Multiple rolls": {
+                    "$ref": "#/definitions/IMultipleRolls",
+                    "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+                    "title": "Multiple rolls"
+                },
+                "Oracle rolls": {
+                    "description": "Additional oracle tables that should be rolled when this row is selected.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Oracle rolls",
+                    "type": "array"
+                },
+                "Result": {
+                    "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+                    "title": "Result",
+                    "type": "string"
+                },
+                "Roll template": {
+                    "$ref": "#/definitions/RollTemplate",
+                    "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+                    "title": "Roll template"
+                },
+                "Subtable": {
+                    "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+                    "items": {
+                        "$ref": "#/definitions/IRow"
+                    },
+                    "title": "Subtable",
+                    "type": "array"
+                },
+                "Suggestions": {
+                    "$ref": "#/definitions/IHasSuggestions.T",
+                    "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+                    "title": "Suggestions"
+                },
+                "Summary": {
+                    "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+                    "title": "Summary",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "$id",
+                "Ceiling",
+                "Floor",
+                "Result"
+            ],
+            "title": "ISettingTruthOptionSubtableRow",
+            "type": "object"
+        },
+        "ISource": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface representing data on the game's source.",
+            "properties": {
+                "Date": {
+                    "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+                    "title": "Date",
+                    "type": "string"
+                },
+                "Page": {
+                    "description": "The page on which the item appears most prominently.",
+                    "title": "Page",
+                    "type": "integer"
+                },
+                "Title": {
+                    "$ref": "#/definitions/SourceTitle",
+                    "description": "The title of the source.",
+                    "title": "Title"
+                }
+            },
+            "required": [
+                "Title"
+            ],
+            "title": "ISource",
+            "type": "object"
+        },
+        "ISuggestions": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
+            "properties": {
+                "Assets": {
+                    "description": "Suggested asset IDs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Assets",
+                    "type": "array"
+                },
+                "Encounters": {
+                    "description": "Suggested encounter IDs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Encounters",
+                    "type": "array"
+                },
+                "Game objects": {
+                    "description": "Suggested game objects and their parameters.",
+                    "items": {
+                        "$ref": "#/definitions/IGameObject"
+                    },
+                    "title": "Game objects",
+                    "type": "array"
+                },
+                "Moves": {
+                    "description": "Suggested move IDs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Moves",
+                    "type": "array"
+                },
+                "Oracle rolls": {
+                    "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Oracle rolls",
+                    "type": "array"
+                }
+            },
+            "title": "ISuggestions",
+            "type": "object"
+        },
+        "ITableColumnBase": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Interface with elements common to{@linkIRollColumn}and{@linkITextColumn}.",
+            "properties": {
+                "Label": {
+                    "title": "Label",
+                    "type": "string"
+                },
+                "Use content from": {
+                    "description": "The ID of the oracle table to use.",
+                    "title": "Use content from",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Label",
+                "Use content from"
+            ],
+            "title": "ITableColumnBase",
+            "type": "object"
+        },
+        "ITableDisplay": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
+            "properties": {
+                "Color": {
+                    "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+                    "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+                    "title": "Color",
+                    "type": "string"
+                },
+                "Column of": {
+                    "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
+                    "title": "Column of",
+                    "type": "string"
+                },
+                "Icon": {
+                    "description": "A URL pointing to a single SVG icon.",
+                    "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+                    "title": "Icon",
+                    "type": "string"
+                },
+                "Images": {
+                    "description": "An array of URLs pointing to one or more WEBP images.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+                    "title": "Images",
+                    "type": "array"
+                },
+                "Table": {
+                    "$ref": "#/definitions/IDisplayTable",
+                    "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
+                    "title": "Table"
+                },
+                "Title": {
+                    "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+                    "title": "Title",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Table",
+                "Title"
+            ],
+            "title": "ITableDisplay",
+            "type": "object"
+        },
+        "ITextColumn": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes the rendering of a table column that displays textual content (as opposed to{@linkIRollColumn}, which displays numerical ranges).",
+            "properties": {
+                "Key": {
+                    "$ref": "#/definitions/KeysWithValuesOfType",
+                    "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
+                    "title": "Key"
+                },
+                "Label": {
+                    "description": "The label or header text to use for this column.",
+                    "title": "Label",
+                    "type": "string"
+                },
+                "Use content from": {
+                    "description": "The ID of the oracle with a `Table` key.",
+                    "title": "Use content from",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Key",
+                "Label",
+                "Use content from"
+            ],
+            "title": "ITextColumn",
+            "type": "object"
+        },
+        "InputSelectOptionType": {
+            "description": "The type of an attribute set by a Select Input.",
+            "enum": [
+                "Condition Meter",
+                "Number",
+                "Stat",
+                "String"
+            ],
+            "title": "InputSelectOptionType",
+            "type": "string"
+        },
+        "InputType.Clock": {
+            "enum": [
+                "Clock"
+            ],
+            "title": "InputType.Clock",
+            "type": "string"
+        },
+        "InputType.Number": {
+            "enum": [
+                "Number"
+            ],
+            "title": "InputType.Number",
+            "type": "string"
+        },
+        "InputType.Select": {
+            "enum": [
+                "Select"
+            ],
+            "title": "InputType.Select",
+            "type": "string"
+        },
+        "InputType.Text": {
+            "enum": [
+                "Text"
+            ],
+            "title": "InputType.Text",
+            "type": "string"
+        },
+        "KeysWithValuesOfType": {
+            "enum": [
+                "$id",
+                "Result",
+                "Summary"
+            ],
+            "title": "KeysWithValuesOfType",
+            "type": "string"
+        },
+        "Partial<IAssetAttachment>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Asset Types": {
+                    "description": "The type of asset that this asset accepts as attachments.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Asset Types",
+                    "type": "array"
+                },
+                "Max": {
+                    "description": "The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.",
+                    "title": "Max",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Partial<IAssetAttachment>",
+            "type": "object"
+        },
+        "Partial<IConditionMeter>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Aliases": {
+                    "items": {
+                        "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
+                        "enum": [
+                            "Command Vehicle Integrity",
+                            "Companion Health",
+                            "Incidental Vehicle Integrity",
+                            "Support Vehicle Integrity",
+                            "Vehicle Integrity"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Aliases",
+                    "type": "array"
+                },
+                "Conditions": {
+                    "description": "The conditions that can apply to this meter.",
+                    "items": {
+                        "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
+                        "enum": [
+                            "Battered",
+                            "Cursed",
+                            "Out of Action"
+                        ],
+                        "type": "string"
+                    },
+                    "title": "Conditions",
+                    "type": "array"
+                },
+                "Max": {
+                    "description": "The maximum value of the meter.",
+                    "title": "Max",
+                    "type": "integer"
+                },
+                "Min": {
+                    "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
+                    "enum": [
+                        0
+                    ],
+                    "title": "Min",
+                    "type": "number"
+                },
+                "Name": {
+                    "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "Value": {
+                    "description": "The initial value of the meter.",
+                    "title": "Value",
+                    "type": "integer"
+                }
+            },
+            "title": "Partial<IConditionMeter>",
+            "type": "object"
+        },
+        "Partial<IMoveOutcomes>": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "$id": {
+                    "description": "The item's unique string ID.",
+                    "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
+                    "title": "$id",
+                    "type": "string"
+                },
+                "Miss": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "title": "Miss"
+                },
+                "Strong Hit": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "title": "Strong Hit"
+                },
+                "Weak Hit": {
+                    "$ref": "#/definitions/IOutcomeInfo",
+                    "title": "Weak Hit"
+                }
+            },
+            "title": "Partial<IMoveOutcomes>",
+            "type": "object"
+        },
+        "RerollType": {
+            "description": "Enumerates which dice are to be rerolled.",
+            "enum": [
+                "Action die",
+                "All",
+                "Any",
+                "Challenge dice",
+                "Challenge die"
+            ],
+            "title": "RerollType",
+            "type": "string"
+        },
+        "RollMethod": {
+            "description": "The stat(s) or progress track(s) that may be rolled with the parent move trigger option.",
+            "enum": [
+                "All",
+                "Any",
+                "Highest",
+                "Inherit",
+                "Lowest",
+                "Strong Hit",
+                "Weak Hit"
+            ],
+            "title": "RollMethod",
+            "type": "string"
+        },
+        "RollTemplate": {
+            "$ref": "#/definitions/__type_3"
+        },
+        "RollTemplate<\"Summary\"|\"Description\">": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+            "properties": {
+                "Description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Summary": {
+                    "title": "Summary",
+                    "type": "string"
+                }
+            },
+            "title": "RollTemplate<\"Summary\"|\"Description\">",
+            "type": "object"
+        },
+        "RollType": {
+            "enum": [
+                "Action roll",
+                "Progress roll"
+            ],
+            "title": "RollType",
+            "type": "string"
+        },
+        "SourceTitle": {
+            "description": "Enumerates valid sourcebook titles.",
+            "enum": [
+                "Ironsworn Assets",
+                "Ironsworn Bonus Assets (July 2020)",
+                "Ironsworn Rulebook",
+                "Ironsworn: Delve",
+                "Ironsworn: Starforged Assets",
+                "Ironsworn: Starforged Rulebook"
+            ],
+            "title": "SourceTitle",
+            "type": "string"
+        },
+        "__type": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Color": {
+                    "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+                    "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+                    "title": "Color",
+                    "type": "string"
+                },
+                "Icon": {
+                    "description": "A URL pointing to a single SVG icon.",
+                    "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+                    "title": "Icon",
+                    "type": "string"
+                },
+                "Images": {
+                    "description": "An array of URLs pointing to one or more WEBP images.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+                    "title": "Images",
+                    "type": "array"
+                },
+                "Title": {
+                    "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+                    "title": "Title",
+                    "type": "string"
+                }
+            },
+            "title": "__type",
+            "type": "object"
+        },
+        "__type_1": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Shared": {
+                    "description": "Whether the asset's abilities are shared with Allies.\n\nIf set to `true`, the asset's abilities can be invoked by **any** player character; if your app facilitates co-op or guided play, consider how you might expose these abilities to players other than the asset's owner.\n\nDefaults to `true` for Command Vehicle, Support Vehicle, and Module assets.",
+                    "title": "Shared",
+                    "type": "boolean"
+                }
+            },
+            "title": "__type_1",
+            "type": "object"
+        },
+        "__type_2": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "properties": {
+                "Date": {
+                    "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+                    "title": "Date",
+                    "type": "string"
+                },
+                "Page": {
+                    "description": "The page on which the item appears most prominently.",
+                    "title": "Page",
+                    "type": "integer"
+                },
+                "Title": {
+                    "$ref": "#/definitions/SourceTitle",
+                    "description": "The title of the source.",
+                    "title": "Title"
+                }
+            },
+            "title": "__type_2",
+            "type": "object"
+        },
+        "__type_3": {
+            "additionalProperties": false,
+            "defaultProperties": [],
+            "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+            "properties": {
+                "Description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "Result": {
+                    "title": "Result",
+                    "type": "string"
+                },
+                "Summary": {
+                    "title": "Summary",
+                    "type": "string"
+                }
+            },
+            "title": "__type_3",
+            "type": "object"
+        }
+    },
+    "description": "Root object for *Ironsworn: Starforged* data.",
+    "properties": {
+        "$schema": {
+            "title": "$schema",
+            "type": "string"
+        },
+        "assets": {
+            "items": {
+                "$ref": "#/definitions/IAssetType"
+            },
+            "title": "assets",
+            "type": "array"
+        },
+        "encounters": {
+            "items": {
+                "$ref": "#/definitions/IEncounterStarforged"
+            },
+            "title": "encounters",
+            "type": "array"
+        },
+        "moves": {
+            "items": {
+                "$ref": "#/definitions/IMoveCategory"
+            },
+            "title": "moves",
+            "type": "array"
+        },
+        "oracles": {
+            "items": {
+                "$ref": "#/definitions/IOracleCategory"
+            },
+            "title": "oracles",
+            "type": "array"
+        },
+        "truths": {
+            "items": {
+                "$ref": "#/definitions/ISettingTruth"
+            },
+            "title": "truths",
+            "type": "array"
+        }
+    },
+    "required": [
+        "assets",
+        "encounters",
+        "moves",
+        "oracles",
+        "truths"
+    ],
+    "type": "object"
+}
+
