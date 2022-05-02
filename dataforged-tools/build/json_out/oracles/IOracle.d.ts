@@ -1,10 +1,5 @@
 import type { IHasName, IOracleBase, IRow, ITableDisplay } from "../index.js";
-import type { IOracleCategory, OracleCategoryId } from "./IOracleCategory.js";
-/**
- * @internal
- */
-declare type OracleTableId = `${OracleCategoryId}/${string}`;
-export { OracleTableId };
+import type { IOracleCategory } from "../index.js";
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
  *

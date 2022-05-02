@@ -1,5 +1,5 @@
-import type { AttributeKey } from "@json_out/game_objects/AttributeKey.js";
-import type { IAttributeMaster } from "@json_out/game_objects/IAttributeMaster.js";
+import type { AttributeKey } from "@json_out/index.js";
+import type { IAttributeMaster } from "@json_out/index.js";
 /**
  * @alpha
  */

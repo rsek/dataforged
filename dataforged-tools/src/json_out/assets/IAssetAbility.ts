@@ -1,20 +1,6 @@
-
-import type { IAlterMomentum } from "@json_out/assets/IAlterMomentum";
-import type { IAssetAlterProperties } from "@json_out/assets/IAssetAlterProperties.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { AssetIdBase, IAlterMove, IHasId, IHasText, IInput, IInputClock, IInputNumber, IInputSelect, IInputText, IMove, InputSelectOptionType, InputType } from "@json_out/index.js";
-
-/**
- * @internal
- * @asType string
- */
-export type AssetAbilityId = `${Gamespace}/${AssetAbilityIdBase}`;
-
-/**
- * @internal
- * @asType string
- */
-export type AssetAbilityIdBase = `${AssetIdBase}/Abilities/${number}`;
+import type { IAlterMomentum } from "@json_out/index.js";
+import type { IAssetAlterProperties } from "@json_out/index.js";
+import type { IAlterMove, IHasId, IHasText, IInputClock, IInputNumber, IInputText, IMove } from "@json_out/index.js";
 
 /**
  * Represents one of an asset's three abilities.
@@ -24,7 +10,6 @@ export interface IAssetAbility extends IHasId, IHasText {
   /**
    * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$
    */
-  // $id: AssetAbilityId;
   $id: string;
   /**
    * New moves added by this asset ability.

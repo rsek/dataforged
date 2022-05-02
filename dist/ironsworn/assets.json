@@ -5,6 +5,7 @@
     "Name": "Companion",
     "Description": "Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.\n\nCompanions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move (page 94) to determine the outcome. See page 43 to learn more.",
     "Display": { "Title": "Companions" },
+    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": { "Title": "Ironsworn Assets" },
@@ -52,6 +53,13 @@
                       "Using": ["Edge"]
                     }
                   ]
+                },
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Take +1 supply or +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Outcomes/Strong_Hit"
+                  }
                 }
               }
             ]
@@ -79,6 +87,17 @@
                       "Using": ["Edge"]
                     }
                   ]
+                },
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Take +2 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Take +2 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -90,7 +109,19 @@
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1",
-                "Moves": ["Ironsworn/Moves/Adventure/Make_Camp"]
+                "Moves": ["Ironsworn/Moves/Adventure/Make_Camp"],
+                "Text": "Your cat is alert to trouble.",
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
+                }
               }
             ]
           }
@@ -142,6 +173,18 @@
                       "Using": []
                     }
                   ]
+                },
+                "Text": "Add +1.",
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -166,6 +209,17 @@
                       "Using": ["Shadow"]
                     }
                   ]
+                },
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -190,6 +244,13 @@
                       "Using": ["Shadow"]
                     }
                   ]
+                },
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Also inflict 2 harm.",
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Outcomes/Strong_Hit"
+                  }
                 }
               }
             ]
@@ -229,7 +290,8 @@
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/1",
-                "Moves": ["Ironsworn/Moves/Adventure/Undertake_a_Journey"]
+                "Moves": ["Ironsworn/Moves/Adventure/Undertake_a_Journey"],
+                "Text": "Add +1."
               },
               {
                 "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/2",
@@ -246,7 +308,8 @@
                       "Using": []
                     }
                   ]
-                }
+                },
+                "Text": "Add +1."
               }
             ]
           },
@@ -270,6 +333,18 @@
                       "Using": ["Edge"]
                     }
                   ]
+                },
+                "Text": "Add +1.",
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -294,7 +369,8 @@
                       "Using": []
                     }
                   ]
-                }
+                },
+                "Text": "Add +2."
               },
               {
                 "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/2",
@@ -310,7 +386,8 @@
                       "Using": ["Wits"]
                     }
                   ]
-                }
+                },
+                "Text": "Add +2."
               }
             ]
           }
@@ -349,7 +426,8 @@
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/1",
-                "Moves": ["Ironsworn/Moves/Adventure/Undertake_a_Journey"]
+                "Moves": ["Ironsworn/Moves/Adventure/Undertake_a_Journey"],
+                "Text": "Add +1."
               },
               {
                 "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/2",
@@ -366,7 +444,8 @@
                       "Using": ["Edge"]
                     }
                   ]
-                }
+                },
+                "Text": "Add +1."
               }
             ]
           },
@@ -393,6 +472,18 @@
                       "Using": ["Heart"]
                     }
                   ]
+                },
+                "Text": "Add +1.",
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -420,6 +511,18 @@
                       "Using": []
                     }
                   ]
+                },
+                "Text": "Add +1.",
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Inflict +1 harm.",
+                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Inflict +1 harm.",
+                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -472,6 +575,18 @@
                       "Using": []
                     }
                   ]
+                },
+                "Text": "Add +1.",
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -499,6 +614,17 @@
                       "Using": []
                     }
                   ]
+                },
+                "Outcomes": {
+                  "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Inflict +1 harm or take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Inflict +1 harm or take +1 momentum.",
+                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
                 }
               }
             ]
@@ -523,7 +649,8 @@
                       "Using": []
                     }
                   ]
-                }
+                },
+                "Text": "Add +1."
               }
             ]
           }
@@ -583,7 +710,8 @@
                       "Using": []
                     }
                   ]
-                }
+                },
+                "Text": "Add +1."
               }
             ]
           },
@@ -610,7 +738,8 @@
                       "Using": []
                     }
                   ]
-                }
+                },
+                "Text": "Add +1."
               },
               {
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/2",
@@ -627,7 +756,8 @@
                       "Using": []
                     }
                   ]
-                }
+                },
+                "Text": "Add +1."
               }
             ]
           },
@@ -638,7 +768,8 @@
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/3/Alter_Moves/1",
-                "Moves": ["Ironsworn/Moves/Suffer/Face_Desolation"]
+                "Moves": ["Ironsworn/Moves/Suffer/Face_Desolation"],
+                "Text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence."
               }
             ]
           }
@@ -843,6 +974,7 @@
     "Name": "Path",
     "Description": "Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.",
     "Display": { "Title": "Paths" },
+    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": { "Title": "Ironsworn Assets" },
@@ -859,9 +991,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir",
                 "Name": "Create Elixir",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Create Elixir" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir/Trigger",
@@ -1028,7 +1160,7 @@
                     {
                       "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                       "Text": "When you are at 0 health",
-                      "Roll type": "Any",
+                      "Roll type": "Progress roll",
                       "Method": "Any",
                       "Using": ["Wits", "Heart"]
                     }
@@ -1123,9 +1255,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate",
                 "Name": "Commemorate",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Commemorate" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate/Trigger",
@@ -1170,7 +1302,7 @@
         "Inputs": [
           {
             "Input Type": "Text",
-            "$id": "Ironsworn/Assets/Path/Devotant/Inputs/God's_Name",
+            "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Gods_Name",
             "Name": "God's Name",
             "Adjustable": false
           },
@@ -1187,6 +1319,7 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Edge"
                   }
@@ -1198,6 +1331,7 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Heart"
                   }
@@ -1209,6 +1343,7 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Iron"
                   }
@@ -1220,6 +1355,7 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Shadow"
                   }
@@ -1231,6 +1367,7 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Wits"
                   }
@@ -1309,7 +1446,7 @@
         "Inputs": [
           {
             "Input Type": "Text",
-            "$id": "Ironsworn/Assets/Path/Empowered/Inputs/Title/Lineage",
+            "$id": "Ironsworn/Assets/Path/Empowered/Inputs/Title_Lineage",
             "Name": "Title/Lineage",
             "Adjustable": false
           }
@@ -1578,11 +1715,13 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Thunderwood/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Edge"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Thunderwood/Condition_Meter",
+                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
                     "Value": "Health"
                   }
@@ -1594,11 +1733,13 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Bloodwood/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Iron"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Bloodwood/Condition_Meter",
+                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
                     "Value": "Health"
                   }
@@ -1610,11 +1751,13 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Ghostwood/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Shadow"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Ghostwood/Condition_Meter",
+                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
                     "Value": "Spirit"
                   }
@@ -1626,11 +1769,13 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Whisperwood/Stat",
+                    "Type": "Stat",
                     "Key": "Stat",
                     "Value": "Wits"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Whisperwood/Condition_Meter",
+                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
                     "Value": "Spirit"
                   }
@@ -1739,9 +1884,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By",
                 "Name": "Scrape By",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Scrape By" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By/Trigger",
@@ -1801,9 +1946,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity",
                 "Name": "Establish False Identity",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Establish False Identity" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity/Trigger",
@@ -2362,7 +2507,9 @@
                       "Text": "By commanding your warband",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      "Using": [
+                        "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -2379,7 +2526,9 @@
                       "Text": "By commanding your warband",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      "Using": [
+                        "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -2396,7 +2545,9 @@
                       "Text": "By commanding your warband",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      "Using": [
+                        "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -2413,7 +2564,9 @@
                       "Text": "By commanding your warband",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      "Using": [
+                        "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -2437,7 +2590,9 @@
                       "Text": "By dispatching scouts from your warband",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      "Using": [
+                        "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -2454,7 +2609,9 @@
                       "Text": "By dispatching scouts from your warband",
                       "Roll type": "Action roll",
                       "Method": "Any",
-                      "Using": "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      "Using": [
+                        "Ironsworn/Assets/Path/Commander/Condition_Meter"
+                      ]
                     }
                   ]
                 }
@@ -2526,6 +2683,7 @@
     "Name": "Combat Talent",
     "Description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform combat moves (page 78). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
     "Display": { "Title": "Combat Talents" },
+    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": { "Title": "Ironsworn Assets" },
@@ -2682,9 +2840,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow",
                 "Name": "Craft Arrow",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Craft Arrow" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow/Trigger",
@@ -2711,9 +2869,7 @@
                   },
                   "Miss": {
                     "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow/Outcomes/Miss",
-                    "Text": {
-                      "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
-                    }
+                    "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
               }
@@ -2734,7 +2890,7 @@
             "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped",
             "Name": "Equipped",
             "Adjustable": true,
-            "Sets": [{ "Key": "Armor", "Type": "Custom" }],
+            "Sets": [{ "Key": "Armor", "Type": "String" }],
             "Options": [
               {
                 "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Lightly_armored",
@@ -2742,17 +2898,19 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Lightly_armored/Armor",
+                    "Type": "String",
                     "Key": "Armor",
                     "Value": "Lightly armored"
                   }
                 ]
               },
               {
-                "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for war",
+                "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for_war",
                 "Name": "Geared for war",
                 "Set": [
                   {
-                    "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for war/Armor",
+                    "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for_war/Armor",
+                    "Type": "String",
                     "Key": "Armor",
                     "Value": "Geared for war"
                   }
@@ -2910,9 +3068,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune",
                 "Name": "Carve Rune",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Carve Rune" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Trigger",
@@ -2930,10 +3088,12 @@
                 "Outcomes": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Outcomes/Strong_Hit"
+                    "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Outcomes/Strong_Hit",
+                    "Text": "Inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash)."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Outcomes/Weak_Hit",
+                    "Text": "You succeed, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).\n\nInflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash)."
                   },
                   "Miss": {
                     "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Outcomes/Miss",
@@ -3005,6 +3165,7 @@
     "Name": "Ritual",
     "Description": "Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.\n\nAll rituals utilize a move as their default marked ability. You must make this move and the associated action roll to trigger the effect. Any secondary abilities you gain by upgrading the asset are dependent on performing the ritual described as the default ability.",
     "Display": { "Title": "Rituals" },
+    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": { "Title": "Ironsworn Assets" },
@@ -3021,9 +3182,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur",
                 "Name": "Augur",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Augur" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur/Trigger",
@@ -3091,9 +3252,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening",
                 "Name": "Awakening",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Awakening" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Trigger",
@@ -3154,9 +3315,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind",
                 "Name": "Bind",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Bind" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind/Trigger",
@@ -3208,9 +3369,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion",
                 "Name": "Communion",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Communion" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Trigger",
@@ -3262,9 +3423,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination",
                 "Name": "Divination",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Divination" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Trigger",
@@ -3324,9 +3485,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke",
                 "Name": "Invoke",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Invoke" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke/Trigger",
@@ -3378,9 +3539,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen",
                 "Name": "Keen",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Keen" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen/Trigger",
@@ -3432,9 +3593,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech",
                 "Name": "Leech",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Leech" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Trigger",
@@ -3494,9 +3655,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer",
                 "Name": "Lightbearer",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Lightbearer" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Trigger",
@@ -3548,9 +3709,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry",
                 "Name": "Scry",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Scry" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry/Trigger",
@@ -3602,9 +3763,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk",
                 "Name": "Shadow-Walk",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Shadow-Walk" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Trigger",
@@ -3656,9 +3817,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway",
                 "Name": "Sway",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Sway" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway/Trigger",
@@ -3710,9 +3871,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman",
                 "Name": "Talisman",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Talisman" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Trigger",
@@ -3764,9 +3925,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether",
                 "Name": "Tether",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Tether" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether/Trigger",
@@ -3818,9 +3979,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem",
                 "Name": "Totem",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Totem" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Trigger",
@@ -3872,9 +4033,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage",
                 "Name": "Visage",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Visage" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Trigger",
@@ -3926,9 +4087,9 @@
             "Moves": [
               {
                 "Source": { "Title": "Ironsworn Assets" },
+                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward",
                 "Name": "Ward",
-                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Ward" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward/Trigger",

@@ -1,5 +1,10 @@
 import { badJsonError } from "../logging/badJsonError.js";
 import { getTableByOracleId } from "./getTableByOracleId.js";
+/**
+ * Extracts table contents from an oracle and returns it as a 2D array.
+ * @param oracle - The oracle to extract data from.
+ * @internal
+ */
 export function extractColumnData(oracle) {
     const newTableRows = [];
     const rollCols = oracle.Display.Table["Roll columns"];

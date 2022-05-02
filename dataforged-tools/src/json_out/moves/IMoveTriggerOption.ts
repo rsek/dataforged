@@ -1,22 +1,9 @@
-import type { ICustomStat } from "@json_out/common/ICustomStat.js";
-import type { ProgressType } from "@json_out/common/index.js";
-import type { RollableStat } from "@json_out/common/RollableStat.js";
-import type { IHasId, IHasText } from "@json_out/meta/IHas.js";
-import type { MoveTriggerId } from "@json_out/moves/IMoveTrigger.js";
-import type { RollMethod, RollType } from "@json_out/moves/RollMethod.js";
+import type { ICustomStat , IHasId , IHasText , ProgressType, RollableStat , RollMethod, RollType } from "@json_out/index.js";
 
-/**
- * @internal
- * @asType string
- */
-export type MoveTriggerOptionId = `${MoveTriggerId}/Options/${number}`;
-
-// constructor should set "Method" to default to "Any" if it's omitted
-// constructor should check "Using" for things that need string replacement
 /**
  * @public
  */
-export interface IMoveTriggerOption<T extends RollType> extends IHasId, Partial<IHasText> {
+export interface IMoveTriggerOptionBase extends IHasId, Partial<IHasText> {
   /**
    * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$
    */
@@ -24,7 +11,7 @@ export interface IMoveTriggerOption<T extends RollType> extends IHasId, Partial<
   /**
    * Whether this option is an action roll or progress roll.
    */
-  "Roll type": T;
+  "Roll type": RollType;
   /**
    * The method used to choose the stat or track in the `Using` array.
    */
@@ -32,19 +19,25 @@ export interface IMoveTriggerOption<T extends RollType> extends IHasId, Partial<
   /**
    * The stat(s) or progress track(s) that may be rolled with this move trigger option.
    */
-  Using: T extends RollType.Action ? RollableStat[] : T extends RollType.Progress ? ProgressType[] : (RollableStat[] | ProgressType[]);
+  Using: (RollableStat | ProgressType)[];
   /**
    * Defines a custom stat, if one is included in this object's `With` array.
    */
   "Custom stat"?: ICustomStat | undefined;
 }
+
 /**
  * @public
  */
-export interface IMoveActionRoll extends IMoveTriggerOption<RollType.Action> { }
-/**
- * @public
- */
-export interface IMoveProgressRoll extends Omit<IMoveTriggerOption<RollType.Progress>, "Custom stat"> {
+export interface IMoveTriggerOptionAction extends IMoveTriggerOptionBase {
+  "Roll type": RollType.Action;
+  Using: RollableStat[];
 }
 
+/**
+ * @public
+ */
+export interface IMoveTriggerOptionProgress extends IMoveTriggerOptionBase {
+  "Roll type": RollType.Progress;
+  Using: ProgressType[];
+}

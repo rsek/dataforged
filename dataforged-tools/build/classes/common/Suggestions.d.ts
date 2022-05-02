@@ -1,6 +1,6 @@
 import { GameObject } from "../index.js";
-import type { IAsset } from "../../json_out/assets/IAsset.js";
-import type { IEncounterStarforged } from "../../json_out/encounters/IEncounterStarforged";
+import type { IAsset } from "../../json_out/index.js";
+import type { IEncounterStarforged } from "../../json_out/index.js";
 import type { IMove, IOracle, ISuggestions } from "../../json_out/index.js";
 import type { ISuggestionsYaml } from "../../yaml_in/common/ISuggestionsYaml.js";
 /**

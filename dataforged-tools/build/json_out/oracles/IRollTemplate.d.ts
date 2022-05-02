@@ -1,22 +1,19 @@
-import type { OracleTableId } from "../index.js";
-import type { SettingTruthId } from "../truths/index.js";
-/**
- * Represents a template string to be filled with results from specific oracle tables.
- * @internal
- * @asType string
- */
-export declare type RollTemplateString = `${string | ""}\${{${SettingTruthId | OracleTableId | OracleSubtableId}}}${string | ""}`;
-/**
- * An ID valid for a subtable embedded in a table Row.
- * @internal
- * @asType string
- */
-export declare type OracleSubtableId = `${SettingTruthId | OracleTableId}/${number}-${number}/Subtable` | `${SettingTruthId | OracleTableId}/${number}/Subtable`;
 /**
  * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.
  * @public
  */
-export declare type RollTemplate<T extends string> = {
-    [P in T | never]?: string | undefined;
-};
+export interface IRollTemplate {
+    /**
+     * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.
+     */
+    Result?: string | undefined;
+    /**
+     * A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.
+     */
+    Summary?: string | undefined;
+    /**
+     * A template string for the parent's `Description` property, to be filled with an oracle table roll Result.
+     */
+    Description?: string | undefined;
+}
 //# sourceMappingURL=IRollTemplate.d.ts.map

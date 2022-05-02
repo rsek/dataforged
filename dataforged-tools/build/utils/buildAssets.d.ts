@@ -1,5 +1,5 @@
 import { AssetType } from "../classes/index.js";
-import { Gamespace } from "../json_out/common/Gamespace.js";
+import { Gamespace } from "../json_out/index.js";
 /**
  * Build and validate all asset objects from YAML.
  * @returns An array of Asset objects.

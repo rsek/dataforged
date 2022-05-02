@@ -1,18 +1,6 @@
 /**
  * @public
  */
-export declare enum AssetTypeIdFragment {
-    Command_Vehicle = "Command_Vehicle",
-    Companion = "Companion",
-    Deed = "Deed",
-    Module = "Module",
-    Path = "Path",
-    Support_Vehicle = "Support_Vehicle"
-}
-
-/**
- * @public
- */
 export declare enum AssetTypeName {
     CommandVehicle = "Command Vehicle",
     Companion = "Companion",
@@ -27,91 +15,91 @@ export declare enum AssetTypeName {
  */
 export declare enum AttributeKey {
     /**
-     * {@link Json.GameObjects#Atmosphere}
+     * {@link Atmosphere}
      */
     Atmosphere = "Atmosphere",
     /**
-     * {@link Json.GameObjects#Authority}
+     * {@link Authority}
      */
     Authority = "Authority",
     /**
-     * {@link Json.GameObjects#Behavior}
+     * {@link Behavior}
      */
     Behavior = "Encountered Behavior",
     /**
-     * {@link Json.GameObjects#DerelictType}
+     * {@link DerelictType}
      */
     DerelictType = "Derelict Type",
     /**
-     * {@link Json.GameObjects#Disposition}
+     * {@link Disposition}
      */
     Disposition = "Disposition",
     /**
-     * {@link Json.GameObjects#Dominion}
+     * {@link Dominion}
      */
     Dominion = "Dominion",
     /**
-     * {@link Json.GameObjects#Environment}
+     * {@link Environment}
      */
     Environment = "Environment",
     /**
-     * {@link Json.GameObjects#FactionType}
+     * {@link FactionType}
      */
     FactionType = "Faction Type",
     /**
-     * {@link Json.GameObjects#FringeGroup}
+     * {@link FringeGroup}
      */
     FringeGroup = "Fringe Group",
     /**
-     * {@link Json.GameObjects#Guild}
+     * {@link Guild}
      */
     Guild = "Guild",
     /**
-     * {@link Json.GameObjects#Influence}
+     * {@link Influence}
      */
     Influence = "Influence",
     /**
-     * {@link Json.GameObjects#InitialContact}
+     * {@link StarshipInitialContact} {@link SettlementInitialContact}
      */
     InitialContact = "Initial Contact",
     /**
-     * {@link Json.GameObjects#Leadership}
+     * {@link Leadership}
      */
     Leadership = "Leadership",
     /**
-     * {@link Json.GameObjects#Life}
+     * {@link Life}
      */
     Life = "Life",
     /**
-     * {@link Json.GameObjects#Location}
+     * {@link Location}
      */
     Location = "Location",
     /**
-     * {@link Json.GameObjects#LocationTheme}
+     * {@link LocationTheme}
      */
     LocationTheme = "Location Theme",
     /**
-     * {@link Json.GameObjects#PlanetaryClass}
+     * {@link PlanetaryClass}
      */
     PlanetaryClass = "Planetary Class",
     /**
-     * {@link Json.GameObjects#Population}
+     * {@link Population}
      */
     Population = "Population",
     /**
-     * {@link Json.GameObjects#Region}
+     * {@link Region}
      */
     Region = "Region",
     /**
-     * {@link Json.GameObjects#Role}
+     * {@link Role}
      */
     Role = "Role",
     /**
-     * {@link Json.GameObjects#CreatureScale}
+     * {@link CreatureScale}
      */
     CreatureScale = "Creature Scale",
     /**
-     * {@link Json.GameObjects#Zone}
+     * {@link Zone}
      */
     Zone = "Zone"
 }
@@ -147,14 +135,6 @@ export declare enum ClockType {
     Tension = "Tension",
     Campaign = "Campaign"
 }
-
-/**
- * Only recurses a couple times so it doesn't cause an infinite loop during schema generation.
- * @public
- */
-export declare type DeepPartial<T> = Partial<{
-    [P in keyof T]: Partial<T[P]>;
-}>;
 
 /**
  * @public
@@ -257,7 +237,7 @@ export declare interface IAlterMomentumReset {
  * Describes alterations applied to moves by asset abilities.
  * @public
  */
-export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "$id" | "Category" | "Display" | "Source" | "Outcomes">, IHasId {
+export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "Category" | "Display" | "Source" | "Outcomes">, IHasId {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
      */
@@ -282,7 +262,23 @@ export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "N
     /**
      * Added rules text that applies on move outcomes.
      */
-    Outcomes?: Partial<IMoveOutcomes> | undefined;
+    Outcomes?: IAlterMoveOutcomes | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, MoveOutcome.Strong_Hit | MoveOutcome.Weak_Hit | MoveOutcome.Miss> {
+    [MoveOutcome.Strong_Hit]?: IAlterOutcomeInfo | undefined;
+    [MoveOutcome.Weak_Hit]?: IAlterOutcomeInfo | undefined;
+    [MoveOutcome.Miss]?: IAlterOutcomeInfo | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IAlterOutcomeInfo extends Omit<PartialDeep<IOutcomeInfo>, "With a Match"> {
+    "With a Match"?: Omit<IAlterOutcomeInfo, "With a Match"> | undefined;
 }
 
 /**
@@ -321,7 +317,7 @@ export declare interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSourc
     /**
      * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
      */
-    Inputs?: (IInputText | IInputSelect<InputSelectOptionType>)[] | undefined;
+    Inputs?: (IInputText | IInputSelect)[] | undefined;
     /**
      * An optional markdown string representing the requirement text that appears at the top of some asset cards.
      * @markdown
@@ -336,6 +332,7 @@ export declare interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSourc
      * Information on this asset's condition meter, if any.
      */
     "Condition Meter"?: IConditionMeter | undefined;
+    Tags?: string[] | undefined;
 }
 
 /**
@@ -382,7 +379,7 @@ export declare interface IAssetAbility extends IHasId, IHasText {
  * ```
  * @public
  */
-export declare interface IAssetAlterProperties extends DeepPartial<IAsset> {
+export declare interface IAssetAlterProperties extends PartialDeep<IAsset> {
 }
 
 /**
@@ -439,6 +436,8 @@ export declare interface IAssetState extends IHasName {
  */
 export declare interface IAssetType extends IHasName, IHasId, IHasDescription, IHasDisplay, IHasSource, Partial<IHasAliases> {
     /**
+     * @example "Ironsworn/Assets/Ritual"
+     * @example "Starforged/Assets/Command_Vehicle"
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+$
      */
     $id: string;
@@ -446,8 +445,13 @@ export declare interface IAssetType extends IHasName, IHasId, IHasDescription, I
      * The assets that belong to this asset type.
      */
     Assets: IAsset[];
-    Name: AssetTypeName;
+    /**
+     * @example "Ritual"
+     * @example "Command Vehicle"
+     */
+    Name: string;
     Display: IDisplayWithTitle;
+    Usage: IAssetUsage;
 }
 
 /**
@@ -535,7 +539,6 @@ export declare interface ICustomStatOption extends IHasId, IHasName {
 
 /**
  * Interface for data relevant to an item's display/rendering.
- *
  * @public
  */
 export declare interface IDisplay {
@@ -554,6 +557,10 @@ export declare interface IDisplay {
      * @pattern ^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$
      */
     Color?: string | undefined;
+    /**
+     * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
+     */
+    Title?: string | undefined;
 }
 
 /**
@@ -569,9 +576,6 @@ export declare interface IDisplayTable {
  * @public
  */
 export declare interface IDisplayWithTitle extends IDisplay {
-    /**
-     * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
-     */
     Title: string;
 }
 
@@ -598,7 +602,7 @@ export declare interface IEncounter extends IEncounterBase {
 export declare interface IEncounterBase extends IHasDisplay, IHasDescription, IHasSource, IHasName, IHasId, Partial<IHasQuestStarter & IHasSummary> {
     /**
      * @example "Starforged/Encounters/Chiton"
-     * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-/]+$
+     * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-]+$
      */
     $id: string;
     /**
@@ -644,11 +648,12 @@ export declare interface IEncounterBase extends IHasDisplay, IHasDescription, IH
  */
 export declare interface IEncounterIronsworn extends IEncounter {
     /**
-     * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-/]+/[A-z_-/]+$
+     * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
     Nature: EncounterNatureIronsworn;
     "Your Truth"?: string | undefined;
+    Summary?: string | undefined;
 }
 
 /**
@@ -739,11 +744,11 @@ export declare interface IHasDisplay {
  * Interface for items that have associated game objects.
  * @public
  */
-export declare interface IHasGameObjects<T extends IGameObject = IGameObject> {
+export declare interface IHasGameObjects {
     /**
      * Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see "Peeling the Onion", p. 293.
      */
-    "Game objects": T[];
+    "Game objects": IGameObject[];
 }
 
 /**
@@ -753,6 +758,7 @@ export declare interface IHasGameObjects<T extends IGameObject = IGameObject> {
 export declare interface IHasId {
     /**
      * The item's unique string ID.
+     * @pattern ^(Starforged|Ironsworn)/[A-z_/-]+$
      */
     $id: string;
 }
@@ -764,6 +770,7 @@ export declare interface IHasId {
 export declare interface IHasName {
     /**
      * The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.
+     *
      * If the item has Display.Title, that should be preferred for most user-facing labels.
      */
     Name: string;
@@ -773,20 +780,11 @@ export declare interface IHasName {
  * Interface for items with metadata that describes an oracle's semantic or lexical content.
  * @public
  */
-export declare interface IHasOracleContent<T extends Partial<IOracleContent> = IOracleContent> {
+export declare interface IHasOracleContent {
     /**
      * Metadata that describes an oracle's semantic or lexical content.
      */
-    Content: T;
-}
-
-/**
- * @public
- */
-export declare interface IHasOracleUsage<T extends Partial<IOracleUsage> = IOracleUsage> {
-    /**
-     */
-    Usage: T;
+    Content: IOracleContent;
 }
 
 /**
@@ -804,52 +802,52 @@ export declare interface IHasQuestStarter {
  * Interface for items that have prerequisites.
  * @public
  */
-export declare interface IHasRequirements<T extends Partial<IRequirements> = IRequirements> {
+export declare interface IHasRequirements {
     /**
      * Prerequisites for this item.
      */
-    Requires: T;
+    Requires: IRequirements;
 }
 
 /**
  * Interface for items that include roll string templates.
  * @public
  */
-export declare interface IHasRollTemplate<T extends string> {
+export declare interface IHasRollTemplate {
     /**
      * Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.
      */
-    "Roll template": RollTemplate<T>;
+    "Roll template": IRollTemplate;
 }
 
 /**
  * Interface for items with sourcing information.
  * @public
  */
-export declare interface IHasSource<T extends ISource = ISource> {
+export declare interface IHasSource {
     /**
      * Information on this item's source.
      */
-    Source: T;
+    Source: ISource;
 }
 
 /**
  * Interface for items that have a subtable-like object.
  * @public
  */
-export declare interface IHasSubtable<T extends IRow = IRow> {
-    Subtable: T[];
+export declare interface IHasSubtable {
+    Subtable: IRow[];
 }
 
 /**
  * Interface for items that include "non-canonical" suggestions of related items.
  * @public
  */
-export declare interface IHasSuggestions<T extends ISuggestions = ISuggestions> {
+export declare interface IHasSuggestions {
     /**
      * "Non-canonical" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.
      */
-    Suggestions: T;
+    Suggestions: ISuggestions;
 }
 
 /**
@@ -869,8 +867,8 @@ export declare interface IHasSummary {
  * Interface for items that have a table-like object.
  * @public
  */
-export declare interface IHasTable<T extends IRow = IRow> {
-    Table: T[];
+export declare interface IHasTable {
+    Table: IRow[];
 }
 
 /**
@@ -948,55 +946,52 @@ export declare interface IInputNumber extends IInput {
 /**
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.
- * @typeParam K - The name(s) of the key(s) set by this item's options.
- * @typeParam V - The type(s) of the value(s) set by this item's options.
  * @example
  * ```
  * {
- "Name": "Material",
- "Input Type": "Select",
- "Attributes": [
- { "Key": "Stat", "Type": "Stat" },
- { "Key": "Condition Meter", "Type": "Condition Meter" }
- ],
- "Options": [
- {
- "Name": "Thunderwood",
- "Sets": [
- { "Key": "Stat", "Value": "Edge" },
- { "Key": "Condition Meter", "Value": "Health" }
- ]
- }
- ]
- }
+ *   "Name": "Material",
+ *   "Input Type": "Select",
+ *   "Attributes": [
+ *     { "Key": "Stat", "Type": "Stat" },
+ *     { "Key": "Condition Meter", "Type": "Condition Meter" }
+ *    ],
+ *    "Options": [
+ *      {
+ *       "Name": "Thunderwood",
+ *       "Sets": [
+ *         { "Key": "Stat", "Value": "Edge" },
+ *         { "Key": "Condition Meter", "Value": "Health" }
+ *       ]
+ *     }
+ *   ]
+ * }
  * ```
  * @public
  */
-export declare interface IInputSelect<V extends InputSelectOptionType> extends IInput {
+export declare interface IInputSelect extends IInput {
     "Input Type": InputType.Select;
     /**
      * Hints which attribute(s) set by this dropdown's options.
      */
-    Sets: IInputSelectAttributeDefinition<V>[];
-    Options: IInputSelectOption<V>[];
+    Sets: IInputSelectAttributeDefinition[];
+    Options: IInputSelectOption[];
 }
 
 /**
  * Provides hints for the keys and typing of an {@link IInputSelect}'s child {@link IInputSelectOption}s.
- * @typeParam K - The name(s) of the key(s) set by this item's options.
  * @typeParam V - The type(s) of the value(s) set by this item's options.
  * @public
  */
-export declare interface IInputSelectAttributeDefinition<V extends InputSelectOptionType> {
+export declare interface IInputSelectAttributeDefinition {
     Key: string;
-    Type: V;
+    Type: InputSelectOptionType;
 }
 
 /**
  * Represents an option in an {@link IInputSelect}.
  * @public
  */
-export declare interface IInputSelectOption<V extends InputSelectOptionType> extends IHasId, IHasName {
+export declare interface IInputSelectOption extends IHasId, IHasName {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$
      */
@@ -1004,19 +999,56 @@ export declare interface IInputSelectOption<V extends InputSelectOptionType> ext
     /**
      * A array describing what attribute keys should be set to when this option is active. *All* items in the array should be set in this manner.
      */
-    Set: IInputSelectOptionSetter<V>[];
+    Set: (IInputSelectOptionSetterStat | IInputSelectOptionSetterMeter | IInputSelectOptionSetterNumber | IInputSelectOptionSetterString)[];
 }
 
 /**
  * @public
  */
-export declare interface IInputSelectOptionSetter<V extends InputSelectOptionType> extends IHasId {
+export declare interface IInputSelectOptionSetter extends IHasId {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
     Key: string;
-    Value: V extends InputSelectOptionType.Stat ? Stat : V extends InputSelectOptionType.ConditionMeter ? PlayerConditionMeter : V extends InputSelectOptionType.Number ? number : string;
+    Type: InputSelectOptionType;
+    Value: Stat | PlayerConditionMeter | number | string;
+}
+
+/**
+ * A condition meter set by an {@link IInputSelectOption}.
+ * @public
+ */
+export declare interface IInputSelectOptionSetterMeter extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.ConditionMeter;
+    Value: PlayerConditionMeter;
+}
+
+/**
+ * An integer value set by an {@link IInputSelectOption}.
+ * @public
+ */
+export declare interface IInputSelectOptionSetterNumber extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.Number;
+    Value: number;
+}
+
+/**
+ * A stat set by an {@link IInputSelectOption}.
+ * @public
+ */
+export declare interface IInputSelectOptionSetterStat extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.Stat;
+    Value: Stat;
+}
+
+/**
+ * An arbitrary string value set by an {@link IInputSelectOption}.
+ * @public
+ */
+export declare interface IInputSelectOptionSetterString extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.String;
+    Value: string;
 }
 
 /**
@@ -1084,7 +1116,7 @@ export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, 
      */
     Trigger: IMoveTrigger;
     /**
-     * The IDs of any oracles *directly* referenced by the move, or vice versa.
+     * The IDs of any oracles directly referenced by the move, or vice versa.
      */
     Oracles?: IOracle["$id"][] | undefined;
     /**
@@ -1092,12 +1124,7 @@ export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, 
      */
     Outcomes?: IMoveOutcomes | undefined;
     Display: IDisplayWithTitle;
-}
-
-/**
- * @public
- */
-export declare interface IMoveActionRoll extends IMoveTriggerOption<RollType.Action> {
+    Tags?: string[] | undefined;
 }
 
 /**
@@ -1132,12 +1159,6 @@ export declare interface IMoveOutcomes extends IHasId {
 }
 
 /**
- * @public
- */
-export declare interface IMoveProgressRoll extends Omit<IMoveTriggerOption<RollType.Progress>, "Custom stat"> {
-}
-
-/**
  * Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.
  * @public
  */
@@ -1164,6 +1185,9 @@ export declare interface IMoveTrigger extends IHasId, Partial<IHasText> {
     $id: string;
     /**
      * A markdown string containing the primary trigger text for this move.
+     *
+     * Secondary triggers (for specific stats or uses of an asset ability) are described in `Options`.
+     *
      * @markdown
      * @example "When you attempt something risky or react to an imminent threat..."
      */
@@ -1179,7 +1203,7 @@ export declare interface IMoveTrigger extends IHasId, Partial<IHasText> {
      *
      * If there's no action rolls or progress rolls attached to this move, this is `undefined`.
      */
-    "Options"?: IMoveTriggerOption<RollType>[] | undefined;
+    "Options"?: (IMoveTriggerOptionAction | IMoveTriggerOptionProgress)[] | undefined;
 }
 
 /**
@@ -1200,7 +1224,15 @@ export declare interface IMoveTriggerBy {
 /**
  * @public
  */
-export declare interface IMoveTriggerOption<T extends RollType> extends IHasId, Partial<IHasText> {
+export declare interface IMoveTriggerOptionAction extends IMoveTriggerOptionBase {
+    "Roll type": RollType.Action;
+    Using: RollableStat[];
+}
+
+/**
+ * @public
+ */
+export declare interface IMoveTriggerOptionBase extends IHasId, Partial<IHasText> {
     /**
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$
      */
@@ -1208,7 +1240,7 @@ export declare interface IMoveTriggerOption<T extends RollType> extends IHasId, 
     /**
      * Whether this option is an action roll or progress roll.
      */
-    "Roll type": T;
+    "Roll type": RollType;
     /**
      * The method used to choose the stat or track in the `Using` array.
      */
@@ -1216,11 +1248,19 @@ export declare interface IMoveTriggerOption<T extends RollType> extends IHasId, 
     /**
      * The stat(s) or progress track(s) that may be rolled with this move trigger option.
      */
-    Using: T extends RollType.Action ? RollableStat[] : T extends RollType.Progress ? ProgressType[] : (RollableStat[] | ProgressType[]);
+    Using: (RollableStat | ProgressType)[];
     /**
      * Defines a custom stat, if one is included in this object's `With` array.
      */
     "Custom stat"?: ICustomStat | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IMoveTriggerOptionProgress extends IMoveTriggerOptionBase {
+    "Roll type": RollType.Progress;
+    Using: ProgressType[];
 }
 
 /**
@@ -1316,7 +1356,7 @@ export declare interface IOracle extends IOracleBase, IHasName {
  * Interface with elements common to various Oracle-related interfaces and classes.
  * @public
  */
-export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent<IOracleContent> & IHasOracleUsage<IOracleUsage>>, IHasId, IHasDisplay, IHasSource {
+export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource {
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
@@ -1328,10 +1368,14 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
     Oracles?: IOracle[] | undefined;
     /**
      * The ID of the most recent Oracle ancestor of this item, if any.
-     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-/]+$
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
      */
     "Member of"?: IOracle["$id"] | undefined;
     Display: IDisplayWithTitle;
+    /**
+     * Information on the usage of this oracle: recommended number of rolls, etc.
+     */
+    Usage?: IOracleUsage | undefined;
 }
 
 /**
@@ -1434,6 +1478,10 @@ export declare interface IOutcomeInfo extends IHasId, IHasText {
      * Information on rerolls offered by this move.
      */
     Reroll?: IMoveReroll | undefined;
+    /**
+     * Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.
+     */
+    "In Control"?: boolean | undefined;
 }
 
 /**
@@ -1451,6 +1499,25 @@ export declare interface IRequirements {
  * @public
  */
 export declare interface IRollColumn extends ITableColumnBase {
+}
+
+/**
+ * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.
+ * @public
+ */
+export declare interface IRollTemplate {
+    /**
+     * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.
+     */
+    Result?: string | undefined;
+    /**
+     * A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.
+     */
+    Summary?: string | undefined;
+    /**
+     * A template string for the parent's `Description` property, to be filled with an oracle table roll Result.
+     */
+    Description?: string | undefined;
 }
 
 /**
@@ -1475,9 +1542,9 @@ export declare const ironsworn: Ironsworn;
  * Interface representing a single row in an oracle table.
  * @public
  */
-export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | "Summary" | "Description"> & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects> {
+export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects> {
     /**
-     * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?$
+     * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
      * @nullable
      */
     $id?: string | null;
@@ -1534,7 +1601,7 @@ export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Re
  * @see ISettingTruthOption
  * @public
  */
-export declare interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions<ISuggestions>>, IHasTable<ISettingTruthOption> {
+export declare interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable {
     /**
      * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$
      */
@@ -1557,12 +1624,12 @@ export declare interface ISettingTruth extends IHasId, IHasName, IHasSource, IHa
  * @see {@link ISettingTruth}
  * @public
  */
-export declare interface ISettingTruthOption extends Omit<IRow, "$id" | "Summary">, IHasQuestStarter, IHasDescription {
+export declare interface ISettingTruthOption extends IRow, IHasQuestStarter, IHasDescription {
     /**
      * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$
      */
     $id: string;
-    "Roll template"?: RollTemplate<"Summary" | "Description"> | undefined;
+    "Roll template"?: IRollTemplate | undefined;
     Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
 }
 
@@ -1784,15 +1851,6 @@ export declare enum MoveOutcome {
 /**
  * @public
  */
-export declare enum MoveOutcomeIdFragment {
-    Miss = "Miss",
-    Weak_Hit = "Weak_Hit",
-    Strong_Hit = "Strong_Hit"
-}
-
-/**
- * @public
- */
 export declare type OmitNever<T> = {
     [K in keyof T as T[K] extends never ? never : K]: T[K];
 };
@@ -1805,66 +1863,24 @@ export declare type OptionalKeys<T> = {
 }[keyof T];
 
 /**
- * @public
- */
-export declare enum OracleCategoryFlatFragment {
-    CharacterCreation = "Character_Creation",
-    Characters = "Characters",
-    Core = "Core",
-    Creatures = "Creatures",
-    Factions = "Factions",
-    Misc = "Misc",
-    Moves = "Moves",
-    Space = "Space",
-    Starships = "Starships"
-}
-
-/**
- * @public
- */
-export declare enum OracleCategoryFlatName {
-    CharacterCreation = "Character Creation",
-    Characters = "Characters",
-    Core = "Core",
-    Creatures = "Creatures",
-    Factions = "Factions",
-    Misc = "Misc",
-    Moves = "Moves",
-    Space = "Space",
-    Starships = "Starships"
-}
-
-/**
- * @public
- */
-export declare enum OracleCategoryJaggedFragment {
-    Derelicts = "Derelicts",
-    LocationThemes = "Location_Themes",
-    Planets = "Planets",
-    Vaults = "Vaults"
-}
-
-/**
- * @public
- */
-export declare enum OracleCategoryJaggedName {
-    Derelicts = "Derelicts",
-    LocationThemes = "Location Themes",
-    Planets = "Planets",
-    Vaults = "Vaults"
-}
-
-/**
  * Makes a type where K is nullable.
  * @public
  */
-export declare type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+export declare type PartialBy<T, K extends keyof any = ""> = Omit<T, K> & Partial<Pick<T, K extends keyof T ? K : never>>;
+
+/**
+ * Only recurses a couple times so it doesn't cause an infinite loop during schema generation.
+ * @public
+ */
+export declare type PartialDeep<T> = Partial<{
+    [P in keyof T]: Partial<T[P]>;
+}>;
 
 /**
  * Make all properties of T nullable except for K, which is required.
  * @public
  */
-export declare type PartialExcept<T, K extends keyof T> = RequireKey<{
+export declare type PartialExcept<T, K extends keyof any = ""> = RequireKey<{
     [P in keyof T]?: T[P];
 }, K>;
 
@@ -1966,8 +1982,8 @@ export declare type RequiredKeys<T> = {
  * Generic type: require specific keys to be NonNullable.
  * @public
  */
-export declare type RequireKey<T, K extends keyof T> = T & {
-    [P in K]-?: NonNullable<T[P]>;
+export declare type RequireKey<T, K extends keyof any = ""> = T & {
+    [P in K]-?: NonNullable<T[P extends keyof T ? P : never]>;
 };
 
 /**
@@ -2045,39 +2061,11 @@ export declare enum RollMethod {
 }
 
 /**
- * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.
- * @public
- */
-export declare type RollTemplate<T extends string> = {
-    [P in T | never]?: string | undefined;
-};
-
-/**
  * @public
  */
 export declare enum RollType {
     Action = "Action roll",
     Progress = "Progress roll"
-}
-
-/**
- * @public
- */
-export declare enum SettingTruthIdFragment {
-    Cataclysm = "Cataclysm",
-    Exodus = "Exodus",
-    Communities = "Communities",
-    Iron = "Iron",
-    Laws = "Laws",
-    Religion = "Religion",
-    Magic = "Magic",
-    CommunicationAndData = "Communication_and_Data",
-    Medicine = "Medicine",
-    ArtificialIntelligence = "Artificial_Intelligence",
-    War = "War",
-    Lifeforms = "Lifeforms",
-    Precursors = "Precursors",
-    Horrors = "Horrors"
 }
 
 /**
@@ -2165,13 +2153,13 @@ export declare enum Stat {
  *
  * @public
  */
-export declare type StubBy<T, PartialKey extends keyof T, OmitKey extends keyof any = ""> = Omit<PartialBy<T, PartialKey>, OmitKey>;
+export declare type StubBy<T, PartialKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialBy<T, PartialKey>, OmitKey>;
 
 /**
  * Make a stub of T where ReqK is required, OmitK is omitted, and all other keys are optional.
  * @public
  */
-export declare type StubExcept<T, ReqKey extends keyof T, OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
+export declare type StubExcept<T, ReqKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
 
 /**
  * Represents a tuple: a typed array with a fixed length.

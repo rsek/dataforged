@@ -1,13 +1,10 @@
 
 import { REFS_PATH } from "@constants/index.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
-import type { IOracleCategoryYaml, IYamlWithRef } from "@yaml_in/index.js";
+import type { IOracleCategoryYaml } from "@yaml_in/index.js";
+import type { IOracleCatRoot } from "@yaml_in/oracles/IOracleCatRoot.js";
 import deepFreezeStrict from "deep-freeze-strict";
 import _ from "lodash-es";
-
-export interface IOracleCatRoot extends IYamlWithRef {
-  Categories: IOracleCategoryYaml[];
-}
 
 /**
  * Loads the oracle YAML data from the files and merges them into a single object.

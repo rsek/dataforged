@@ -1,6 +1,7 @@
 import { Input } from "./Input.js";
-import { InputType } from "../../json_out/common/InputType.js";
+import { InputType } from "../../json_out/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
+import { toIdFragment } from "../../utils/toIdFragment.js";
 /**
  * @internal
  */
@@ -22,7 +23,7 @@ export class InputSelect extends Input {
  */
 export class InputSelectOption {
     constructor(json, parent) {
-        this.$id = `${parent.$id}/Options/${json.Name.replace(" ", "_")}`;
+        this.$id = `${parent.$id}/Options/${toIdFragment(json.Name)}`;
         this.Name = json.Name;
         this.Set = json.Set.map(attr => new InputSelectOptionSetter(attr, this));
     }
@@ -32,7 +33,8 @@ export class InputSelectOption {
  */
 export class InputSelectOptionSetter {
     constructor(json, parent) {
-        this.$id = `${parent.$id}/${json.Key.replace(" ", "_")}`;
+        this.$id = `${parent.$id}/${toIdFragment(json.Key)}`;
+        this.Type = json.Type;
         this.Key = json.Key;
         this.Value = json.Value;
     }

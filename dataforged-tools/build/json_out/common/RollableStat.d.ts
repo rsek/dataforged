@@ -1,5 +1,5 @@
-import type { IConditionMeter } from "./IConditionMeter.js";
-import type { ICustomStat } from "./ICustomStat.js";
+import type { IConditionMeter } from "../index.js";
+import type { ICustomStat } from "../index.js";
 import type { PlayerConditionMeter, Stat } from "../index.js";
 /**
  * Standard player character stats or condition meters that can be used as +stat in an action roll.

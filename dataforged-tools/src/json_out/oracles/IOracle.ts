@@ -1,10 +1,5 @@
 import type { IHasName , IOracleBase, IRow, ITableDisplay } from "@json_out/index.js";
-import type { IOracleCategory, OracleCategoryId } from "@json_out/oracles/IOracleCategory.js";
-
-/**
- * @internal
- */
-type OracleTableId = `${OracleCategoryId}/${string}`; export { OracleTableId };
+import type { IOracleCategory } from "@json_out/index.js";
 
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.

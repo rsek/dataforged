@@ -1,12 +1,11 @@
 import type { Oracle } from "@classes/index.js";
-import type { OracleTableId } from "@json_out/index.js";
 
 /**
  * @internal
  */
 export class OracleTableRef {
   private $id: Oracle["$id"];
-  constructor(tableId: OracleTableId) {
+  constructor(tableId: Oracle["$id"]) {
     this.$id = tableId;
     this.getTable = this.getTable.bind(this);
   }

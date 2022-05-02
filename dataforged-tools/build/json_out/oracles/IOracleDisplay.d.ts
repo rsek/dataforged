@@ -1,5 +1,4 @@
-import type { IDisplayTable, IDisplayWithTitle } from "../index.js";
-import type { IOracle } from "./IOracle.js";
+import type { IDisplayTable, IDisplayWithTitle, IOracle } from "../index.js";
 /**
  * Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
  * @public

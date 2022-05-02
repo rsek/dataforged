@@ -1,6 +1,6 @@
 import "source-map-support/register.js";
 import { JSON_PATHS } from "./constants/index.js";
-import { Gamespace } from "./json_out/common/Gamespace.js";
+import { Gamespace } from "./json_out/index.js";
 import { buildDataforged } from "./utils/buildDataforged.js";
 import { writeJson } from "./utils/io/writeJSON.js";
 import _ from "lodash-es";

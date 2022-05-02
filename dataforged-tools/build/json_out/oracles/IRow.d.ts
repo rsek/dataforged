@@ -1,23 +1,11 @@
-import type { IAttribute } from "../game_objects/IAttribute.js";
-import type { IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle, OracleTableId } from "../index.js";
-import type { IDisplay } from "../meta/IDisplay.js";
-/**
- * @internal
- * @asType string
- */
-export declare type OracleTableRowId = `${OracleTableId}/${RollRange}`;
-/**
- * @internal
- * @asType string
- */
-export declare type RollRange = `${number}` | `${number}-${number}`;
+import type { IAttribute, IDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle } from "../index.js";
 /**
  * Interface representing a single row in an oracle table.
  * @public
  */
-export interface IRow extends Partial<IHasSummary & IHasRollTemplate<"Result" | "Summary" | "Description"> & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects> {
+export interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects> {
     /**
-     * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?$
+     * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
      * @nullable
      */
     $id?: string | null;

@@ -1,5 +1,6 @@
 import { CustomStatOption } from "@classes/index.js";
 import type { ICustomStat } from "@json_out/index.js";
+import { toIdFragment } from "@utils/toIdFragment.js";
 
 
 /**
@@ -12,6 +13,6 @@ export class CustomStat implements ICustomStat {
   constructor(json: ICustomStat, id: ICustomStat["$id"]) {
     this.$id = id;
     this.Name = json.Name;
-    this.Options = json.Options?.map(option => new CustomStatOption(option, `${id}/${option.Name.replaceAll(" ", "_")}`));
+    this.Options = json.Options?.map(option => new CustomStatOption(option, `${id}/${toIdFragment(option.Name)}`));
   }
 }

@@ -1,51 +1,48 @@
 
-import type { IInputSelectOption } from "@json_out/assets/IInputSelectOption.js";
-import type { IHasId, IInput, InputType } from "@json_out/index.js";
+import type { IInputSelectOption } from "@json_out/index.js";
+import type { IInput, InputType } from "@json_out/index.js";
 /**
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.
- * @typeParam K - The name(s) of the key(s) set by this item's options.
- * @typeParam V - The type(s) of the value(s) set by this item's options.
  * @example
  * ```
  * {
-    "Name": "Material",
-    "Input Type": "Select",
-    "Attributes": [
-      { "Key": "Stat", "Type": "Stat" },
-      { "Key": "Condition Meter", "Type": "Condition Meter" }
-    ],
-    "Options": [
-      {
-        "Name": "Thunderwood",
-        "Sets": [
-          { "Key": "Stat", "Value": "Edge" },
-          { "Key": "Condition Meter", "Value": "Health" }
-        ]
-      }
-    ]
-  }
+ *   "Name": "Material",
+ *   "Input Type": "Select",
+ *   "Attributes": [
+ *     { "Key": "Stat", "Type": "Stat" },
+ *     { "Key": "Condition Meter", "Type": "Condition Meter" }
+ *    ],
+ *    "Options": [
+ *      {
+ *       "Name": "Thunderwood",
+ *       "Sets": [
+ *         { "Key": "Stat", "Value": "Edge" },
+ *         { "Key": "Condition Meter", "Value": "Health" }
+ *       ]
+ *     }
+ *   ]
+ * }
  * ```
  * @public
  */
-export interface IInputSelect<V extends InputSelectOptionType> extends IInput {
+export interface IInputSelect extends IInput {
   "Input Type": InputType.Select;
   /**
    * Hints which attribute(s) set by this dropdown's options.
    */
-  Sets: IInputSelectAttributeDefinition<V>[];
-  Options: IInputSelectOption<V>[];
+  Sets: IInputSelectAttributeDefinition[];
+  Options: IInputSelectOption[];
 }
 
 /**
  * Provides hints for the keys and typing of an {@link IInputSelect}'s child {@link IInputSelectOption}s.
- * @typeParam K - The name(s) of the key(s) set by this item's options.
  * @typeParam V - The type(s) of the value(s) set by this item's options.
  * @public
  */
-export interface IInputSelectAttributeDefinition<V extends InputSelectOptionType> {
+export interface IInputSelectAttributeDefinition {
   Key: string;
-  Type: V;
+  Type: InputSelectOptionType;
 }
 
 /**

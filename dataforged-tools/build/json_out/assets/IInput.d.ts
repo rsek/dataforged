@@ -1,16 +1,5 @@
-import type { ClockSegments } from "../common/ClockSegments.js";
-import type { Gamespace } from "../common/Gamespace.js";
-import type { AssetAbilityIdBase, AssetIdBase, ClockType, IHasId, IHasName, InputType } from "../index.js";
-/**
- * @internal
- * @asType string
- */
-export declare type InputId = `${Gamespace}/${IdBase}`;
-/**
- * @internal
- * @asType string
- */
-export declare type IdBase = `${AssetAbilityIdBase | AssetIdBase}/Inputs/${string}`;
+import type { ClockSegments } from "../index.js";
+import type { ClockType, IHasId, IHasName, InputType } from "../index.js";
 /**
  * A stub interface representing an input widget of any type.
  * @see {@link IInputNumber}, {@link IInputClock}, {@link IInputText}, {@link IInputSelect}

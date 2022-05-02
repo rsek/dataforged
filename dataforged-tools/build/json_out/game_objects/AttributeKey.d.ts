@@ -3,91 +3,91 @@
  */
 export declare enum AttributeKey {
     /**
-     * {@link Json.GameObjects#Atmosphere}
+     * {@link Atmosphere}
      */
     Atmosphere = "Atmosphere",
     /**
-     * {@link Json.GameObjects#Authority}
+     * {@link Authority}
      */
     Authority = "Authority",
     /**
-     * {@link Json.GameObjects#Behavior}
+     * {@link Behavior}
      */
     Behavior = "Encountered Behavior",
     /**
-     * {@link Json.GameObjects#DerelictType}
+     * {@link DerelictType}
      */
     DerelictType = "Derelict Type",
     /**
-     * {@link Json.GameObjects#Disposition}
+     * {@link Disposition}
      */
     Disposition = "Disposition",
     /**
-     * {@link Json.GameObjects#Dominion}
+     * {@link Dominion}
      */
     Dominion = "Dominion",
     /**
-     * {@link Json.GameObjects#Environment}
+     * {@link Environment}
      */
     Environment = "Environment",
     /**
-     * {@link Json.GameObjects#FactionType}
+     * {@link FactionType}
      */
     FactionType = "Faction Type",
     /**
-     * {@link Json.GameObjects#FringeGroup}
+     * {@link FringeGroup}
      */
     FringeGroup = "Fringe Group",
     /**
-     * {@link Json.GameObjects#Guild}
+     * {@link Guild}
      */
     Guild = "Guild",
     /**
-     * {@link Json.GameObjects#Influence}
+     * {@link Influence}
      */
     Influence = "Influence",
     /**
-     * {@link Json.GameObjects#InitialContact}
+     * {@link StarshipInitialContact} {@link SettlementInitialContact}
      */
     InitialContact = "Initial Contact",
     /**
-     * {@link Json.GameObjects#Leadership}
+     * {@link Leadership}
      */
     Leadership = "Leadership",
     /**
-     * {@link Json.GameObjects#Life}
+     * {@link Life}
      */
     Life = "Life",
     /**
-     * {@link Json.GameObjects#Location}
+     * {@link Location}
      */
     Location = "Location",
     /**
-     * {@link Json.GameObjects#LocationTheme}
+     * {@link LocationTheme}
      */
     LocationTheme = "Location Theme",
     /**
-     * {@link Json.GameObjects#PlanetaryClass}
+     * {@link PlanetaryClass}
      */
     PlanetaryClass = "Planetary Class",
     /**
-     * {@link Json.GameObjects#Population}
+     * {@link Population}
      */
     Population = "Population",
     /**
-     * {@link Json.GameObjects#Region}
+     * {@link Region}
      */
     Region = "Region",
     /**
-     * {@link Json.GameObjects#Role}
+     * {@link Role}
      */
     Role = "Role",
     /**
-     * {@link Json.GameObjects#CreatureScale}
+     * {@link CreatureScale}
      */
     CreatureScale = "Creature Scale",
     /**
-     * {@link Json.GameObjects#Zone}
+     * {@link Zone}
      */
     Zone = "Zone"
 }

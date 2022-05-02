@@ -1,5 +1,5 @@
 
-import type { IEncounterBase } from "@json_out/encounters/IEncounterBase.js";
+import type { IEncounterBase } from "@json_out/index.js";
 
 
 /**

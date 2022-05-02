@@ -1,6 +1,6 @@
 import { MoveCategory } from "../classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "../constants/index.js";
-import { Gamespace } from "../json_out/common/Gamespace.js";
+import { Gamespace } from "../json_out/index.js";
 import { buildLog } from "./logging/buildLog.js";
 import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
 import { sortIronsworn } from "./sortIronsworn.js";

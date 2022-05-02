@@ -4,18 +4,13 @@ import { ConditionMeter } from "@classes/common/ConditionMeter.js";
 import type { InputText } from "@classes/common/Input.js";
 import type { InputSelect } from "@classes/common/InputSelect.js";
 import { SourceInheritor } from "@classes/common/SourceInheritor.js";
-import type { IAssetUsage } from "@json_out/assets/IAssetUsage.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import { InputType } from "@json_out/common/index.js";
-import { Replacement } from "@json_out/common/Replacement.js";
-import type { AssetId, IAsset, IAssetAttachment, IAssetType } from "@json_out/index.js";
-import { InputSelectOptionType } from "@json_out/index.js";
-import type { IDisplayWithTitle, ISource } from "@json_out/meta/index.js";
+import type { Gamespace , IAsset , IAssetAttachment, IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "@json_out/index.js";
+import { InputSelectOptionType , InputType , Replacement } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import type { IAssetYaml } from "@yaml_in/assets/index.js";
+import type { IAssetYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 /**
@@ -31,7 +26,7 @@ export class Asset extends SourceInheritor implements IAsset {
   Usage: IAssetUsage;
   Attachments?: IAssetAttachment | undefined;
   Requirement?: string | undefined;
-  Inputs?: (InputText|InputSelect<InputSelectOptionType>)[] |undefined;
+  Inputs?: (InputText|InputSelect)[] |undefined;
   Abilities: [AssetAbility, AssetAbility, AssetAbility];
   "Condition Meter"?: ConditionMeter | undefined;
   constructor(json: IAssetYaml, gamespace: Gamespace, parent: IAssetType, rootSource: ISource) {
@@ -39,7 +34,7 @@ export class Asset extends SourceInheritor implements IAsset {
     super(json.Source ?? {}, rootSource);
     // console.log(this.Source);
     this["Asset Type"] = parent.$id;
-    this.$id = `${this["Asset Type"]}/${json.Name}`.replaceAll(" ", "_") as AssetId;
+    this.$id = `${this["Asset Type"]}/${json.Name}`.replaceAll(" ", "_");
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
@@ -75,10 +70,12 @@ export class Asset extends SourceInheritor implements IAsset {
             }
           });
         }
-        return result as InputSelect<InputSelectOptionType>|InputText;
+        return result as InputSelect|InputText;
       });
     }
-    this.States = json.States?.map(state => new AssetState(state)) ?? undefined;
+    if (json.States) {
+      this.States = json.States.map(state => new AssetState(state)) ?? undefined;
+    }
     this.Requirement = json.Requirement;
     this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
     if (json.Abilities.length !== 3) {

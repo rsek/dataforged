@@ -1,29 +1,24 @@
 import { OracleCategory } from "@classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "@constants/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
-import type { IOracle, ISource, OracleCategoryName , OracleSubcategoryName } from "@json_out/index.js";
+import { Gamespace } from "@json_out/index.js";
+import type { IOracle, IOracleCategory, ISource } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
-import type { IOracleCatRoot } from "@utils/process_yaml/loadOracleData.js";
 import { loadOracleData } from "@utils/process_yaml/loadOracleData.js";
 import { sortIronsworn } from "@utils/sortIronsworn.js";
 import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
-import type { IOracleParentCatRoot } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
+import type { IOracleCatRoot } from "@yaml_in/oracles/IOracleCatRoot";
+import type { IOracleParentCatRootYaml } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
 import FastGlob from "fast-glob";
 import jsonpath from "jsonpath";
 import _ from "lodash-es";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
-  Name: OracleSubcategoryName;
-  _childOf: OracleCategoryName;
+  Name: string;
+  _childOf: IOracleCategory["Name"];
 }
-export interface IOracleParentCategoryData extends IOracleCategoryYaml {
-  Name: OracleCategoryName;
-  _parentOf: OracleSubcategoryName[];
-}
-
 interface IOracleSubcatRoot extends IOracleCatRoot {
   Categories: IOracleSubcategoryData[];
 }
@@ -46,7 +41,7 @@ export function buildOracles(gamespace: Gamespace = Gamespace.Starforged): Oracl
   const oracleSubcatFiles = FastGlob.sync(`${MASTER_DATA_PATH as string}/${gamespace}/Oracles/*/*.(yml|yaml)`, { onlyFiles: true });
   // console.log("subcat files", oracleSubcatFiles);
 
-  const categoryRoot: IOracleParentCatRoot = loadOracleData(REFS_PATH, ...oracleCatFiles) as IOracleParentCatRoot;
+  const categoryRoot: IOracleParentCatRootYaml = loadOracleData(REFS_PATH, ...oracleCatFiles) as IOracleParentCatRootYaml;
 
   const categories = categoryRoot.Categories;
 

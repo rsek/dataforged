@@ -3,6 +3,10 @@
   "include": [
     "./src/**/*"
   ],
+  "exclude": [
+    "./src/**/*.d.ts",
+    "./src/index-esm.ts"
+  ],
   "compilerOptions": {
     "lib": [
       "es2020",
@@ -25,6 +29,6 @@
     "typeRoots": [
       "types",
       "node_modules/@types"
-    ],
-  },
+    ]
+  }
 }

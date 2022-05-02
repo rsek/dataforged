@@ -1,4 +1,4 @@
-import { Gamespace } from "../json_out/common/Gamespace.js";
+import { Gamespace } from "../json_out/index.js";
 import _ from "lodash-es";
 /**
  * Creates a string of encounter stats for use in build messages.

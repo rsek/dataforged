@@ -1,17 +1,6 @@
-import type { IAlterMomentum } from "./IAlterMomentum";
-import type { IAssetAlterProperties } from "./IAssetAlterProperties.js";
-import type { Gamespace } from "../common/Gamespace.js";
-import type { AssetIdBase, IAlterMove, IHasId, IHasText, IInputClock, IInputNumber, IInputText, IMove } from "../index.js";
-/**
- * @internal
- * @asType string
- */
-export declare type AssetAbilityId = `${Gamespace}/${AssetAbilityIdBase}`;
-/**
- * @internal
- * @asType string
- */
-export declare type AssetAbilityIdBase = `${AssetIdBase}/Abilities/${number}`;
+import type { IAlterMomentum } from "../index.js";
+import type { IAssetAlterProperties } from "../index.js";
+import type { IAlterMove, IHasId, IHasText, IInputClock, IInputNumber, IInputText, IMove } from "../index.js";
 /**
  * Represents one of an asset's three abilities.
  * @public

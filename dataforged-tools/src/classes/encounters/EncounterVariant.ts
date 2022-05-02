@@ -1,6 +1,7 @@
 import { Source } from "@classes/index.js";
 import type { EncounterStarforged  } from "@classes/index.js";
-import type { ChallengeRank, EncounterIdStarforged, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounterStarforged, IEncounterVariant } from "@json_out/index.js";
+import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounterStarforged, IEncounterVariant } from "@json_out/index.js";
+import { toIdFragment } from "@utils/toIdFragment.js";
 import type { IEncounterVariantYaml } from "@yaml_in/index.js";
 
 
@@ -18,7 +19,7 @@ export class EncounterVariant implements IEncounterVariant {
   "Variant of": IEncounterStarforged["$id"];
   Tags?: EncounterTags[] | undefined;
   constructor(json: IEncounterVariantYaml, parent: EncounterStarforged) {
-    this.$id = (`${parent.$id}/${json.Name.replaceAll(" ", "_")}`);
+    this.$id = (`${parent.$id}/${toIdFragment(json.Name)}`);
     this.Source = new Source(parent.Source);
     this.Name = json.Name;
     this.Rank = json.Rank;

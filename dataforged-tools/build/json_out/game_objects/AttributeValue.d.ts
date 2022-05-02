@@ -1,5 +1,5 @@
-import type { AttributeKey } from "./AttributeKey.js";
-import type { IAttributeMaster } from "./IAttributeMaster.js";
+import type { AttributeKey } from "../index.js";
+import type { IAttributeMaster } from "../index.js";
 /**
  * @alpha
  */

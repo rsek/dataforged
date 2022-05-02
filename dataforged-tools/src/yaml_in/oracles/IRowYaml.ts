@@ -1,5 +1,16 @@
+/**
+ * @internal
+ */
 export type IRowRollYaml = [number | null, number | null];
+/**
+ * @internal
+ */
 export type IRowContentItemYaml = object | string;
+/**
+ * @internal
+ */
 export type IRowContentYaml = IRowContentItemYaml[];
-type IRowYaml = [...IRowRollYaml, ...IRowContentYaml];
-export { IRowYaml };
+/**
+ * @internal
+ */
+export type IRowYaml = [...IRowRollYaml, ...IRowContentYaml];

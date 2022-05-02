@@ -1,8 +1,13 @@
-import type { IEncounterIronsworn } from "../../json_out/encounters/IEncounterIronsworn.js";
-import type { IEncounterNatureInfo } from "../../json_out/encounters/IEncounterNatureInfo";
+import type { IEncounterIronsworn, IEncounterNatureInfo } from "../../json_out/index.js";
 import type { StubBy } from "../../utils/types/Stub.js";
-export interface IEncounterIronswornYaml extends StubBy<IEncounterIronsworn, "Display", "$id" | "Nature"> {
+/**
+ * @internal
+ */
+export interface IEncounterIronswornYaml extends StubBy<IEncounterIronsworn, "Display" | "Summary", "$id" | "Nature"> {
 }
+/**
+ * @internal
+ */
 export interface IEncounterNatureInfoYaml extends StubBy<IEncounterNatureInfo, "Display", "$id" | "Encounters"> {
     Encounters: IEncounterIronswornYaml[];
 }

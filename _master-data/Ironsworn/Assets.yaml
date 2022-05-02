@@ -489,7 +489,7 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: When you are at 0 health
-                      Roll type: Any
+                      Roll type: Progress roll
                       Using: [Wits, Heart]
       - Name: Blade-Bound
         # https://game-icons.net/1x1/lorc/rune-sword.html
@@ -553,22 +553,27 @@ Asset Types:
               - Name: Edge
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Edge
               - Name: Heart
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Heart
               - Name: Iron
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Iron
               - Name: Shadow
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Shadow
               - Name: Wits
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Wits
         Abilities:
           - Text: |-
@@ -708,26 +713,34 @@ Asset Types:
               - Name: Thunderwood
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Edge
                   - Key: Condition Meter
+                    Type: Condition Meter
                     Value: Health
               - Name: Bloodwood
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Iron
                   - Key: Condition Meter
+                    Type: Condition Meter
                     Value: Health
               - Name: Ghostwood
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Shadow
                   - Key: Condition Meter
+                    Type: Condition Meter
                     Value: Spirit
               - Name: Whisperwood
                 Set:
                   - Key: Stat
+                    Type: Stat
                     Value: Wits
                   - Key: Condition Meter
+                    Type: Condition Meter
                     Value: Spirit
         Abilities:
           - Text: |-
@@ -1035,7 +1048,8 @@ Asset Types:
                   Options:
                     - Text: By commanding your warband
                       Roll type: Action roll
-                      Using: ${{@ASSET_METER}}
+                      Using:
+                        - ${{@ASSET_METER}}
               - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
                 Trigger: *alter:Asset.Commander
               - Moves: [Ironsworn/Moves/Relationship/Compel]
@@ -1050,7 +1064,8 @@ Asset Types:
                   Options:
                     - Text: By dispatching scouts from your warband
                       Roll type: Action roll
-                      Using: ${{@ASSET_METER}}
+                      Using:
+                        - ${{@ASSET_METER}}
               - Moves: [Ironsworn/Moves/Adventure/Resupply]
                 Trigger: *alter:Asset.Commander_2
           - Text: |-
@@ -1188,8 +1203,7 @@ Asset Types:
 
                         * Seeker: When a shooter uses the arrow to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against this foe, reroll any dice (one time only).
                         * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
-                  Miss:
-                    Text: *move:Generic.Miss
+                  Miss: *move:Generic.Miss
       - Name: Ironclad
         Requirement: If you wear armor...
         Inputs:
@@ -1198,15 +1212,17 @@ Asset Types:
             Adjustable: true
             Sets:
               - Key: Armor
-                Type: Custom
+                Type: String
             Options:
               - Name: Lightly armored
                 Set:
                   - Key: Armor
+                    Type: String
                     Value: Lightly armored
               - Name: Geared for war
                 Set:
                   - Key: Armor
+                    Type: String
                     Value: Geared for war
         Abilities:
           - Text: |-
@@ -1287,11 +1303,13 @@ Asset Types:
                       Using: [Heart]
                 Text: *move:Asset.Sunderer
                 Outcomes:
-                  Strong Hit: Inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash).
+                  Strong Hit:
+                    Text: Inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash).
                   Weak Hit:
-                    You succeed, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
+                    Text: |-
+                      You succeed, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
 
-                    Inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash).
+                      Inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash).
                   Miss: *move:Generic.Miss
       - Name: Swordmaster
         Requirement: If you wield a sword...

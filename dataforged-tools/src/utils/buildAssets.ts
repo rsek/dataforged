@@ -1,9 +1,9 @@
 import { AssetType } from "@classes/index.js";
 import { MASTER_DATA_PATH } from "@constants/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
+import { Gamespace } from "@json_out/index.js";
 import type { ISource } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
-import type { IAssetTypeYaml } from "@yaml_in/assets/IAssetTypeYaml.js";
+import type { IAssetTypeYaml } from "@yaml_in/index.js";
 import yaml from "js-yaml";
 import _ from "lodash-es";
 import fs from "fs";

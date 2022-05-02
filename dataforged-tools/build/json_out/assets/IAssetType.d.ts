@@ -1,34 +1,14 @@
-import type { AssetTypeName } from "./AssetTypeName.js";
-import type { Gamespace } from "../common/Gamespace.js";
+import type { IAssetUsage } from "./IAssetUsage.js";
 import type { IAsset, IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
 export * from "../../utils/types/RequireKey.js";
-/**
- * @public
- */
-export declare enum AssetTypeIdFragment {
-    Command_Vehicle = "Command_Vehicle",
-    Companion = "Companion",
-    Deed = "Deed",
-    Module = "Module",
-    Path = "Path",
-    Support_Vehicle = "Support_Vehicle"
-}
-/**
- * @internal
- * @asType string
- */
-export declare type AssetTypeId = `${Gamespace}/${AssetTypeIdBase}`;
-/**
- * @internal
- * @asType string
- */
-export declare type AssetTypeIdBase = `Assets/${AssetTypeIdFragment}`;
 /**
  * Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.
  * @public
  */
 export interface IAssetType extends IHasName, IHasId, IHasDescription, IHasDisplay, IHasSource, Partial<IHasAliases> {
     /**
+     * @example "Ironsworn/Assets/Ritual"
+     * @example "Starforged/Assets/Command_Vehicle"
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+$
      */
     $id: string;
@@ -36,7 +16,12 @@ export interface IAssetType extends IHasName, IHasId, IHasDescription, IHasDispl
      * The assets that belong to this asset type.
      */
     Assets: IAsset[];
-    Name: AssetTypeName;
+    /**
+     * @example "Ritual"
+     * @example "Command Vehicle"
+     */
+    Name: string;
     Display: IDisplayWithTitle;
+    Usage: IAssetUsage;
 }
 //# sourceMappingURL=IAssetType.d.ts.map

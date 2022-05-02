@@ -1,6 +1,6 @@
 import { OracleCategory } from "../classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "../constants/index.js";
-import { Gamespace } from "../json_out/common/Gamespace.js";
+import { Gamespace } from "../json_out/index.js";
 import { badJsonError } from "./logging/badJsonError.js";
 import { buildLog } from "./logging/buildLog.js";
 import { templateOracle } from "./object_transform/templateOracle.js";

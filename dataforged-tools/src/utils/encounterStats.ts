@@ -1,7 +1,7 @@
 import type { EncounterNatureInfo } from "@classes/encounters/EncounterNatureInfo.js";
 import type { EncounterStarforged } from "@classes/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
-import type { IEncounterNatureInfo } from "@json_out/encounters/IEncounterNatureInfo";
+import { Gamespace } from "@json_out/index.js";
+import type { IEncounterNatureInfo } from "@json_out/index.js";
 import type { IEncounterStarforged } from "@json_out/index.js";
 import _ from "lodash-es";
 

@@ -1,7 +1,7 @@
 import { EncounterNatureInfo } from "@classes/encounters/EncounterNatureInfo.js";
 import { EncounterStarforged } from "@classes/index.js";
 import { MASTER_DATA_PATH } from "@constants/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
+import { Gamespace } from "@json_out/index.js";
 import type { Ironsworn, ISource, Starforged } from "@json_out/index.js";
 import { encounterStats } from "@utils/encounterStats.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";

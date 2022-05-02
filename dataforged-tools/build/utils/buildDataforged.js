@@ -1,4 +1,4 @@
-import { Gamespace } from "../json_out/common/Gamespace.js";
+import { Gamespace } from "../json_out/index.js";
 import { buildAssets } from "./buildAssets.js";
 import { buildEncounters } from "./buildEncounters.js";
 import { buildMoves } from "./buildMoves.js";

@@ -1,6 +1,6 @@
-import type { Replacement } from "@json_out/common/Replacement.js";
+import type { Replacement } from "@json_out/index.js";
 import type { ICustomStatOption, IHasName } from "@json_out/index.js";
-import type { IHasId } from "@json_out/meta/index.js";
+import type { IHasId } from "@json_out/index.js";
 
 /**
  * @public

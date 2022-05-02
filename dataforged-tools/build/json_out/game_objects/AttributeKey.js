@@ -4,91 +4,91 @@
 export var AttributeKey;
 (function (AttributeKey) {
     /**
-     * {@link Json.GameObjects#Atmosphere}
+     * {@link Atmosphere}
      */
     AttributeKey["Atmosphere"] = "Atmosphere";
     /**
-     * {@link Json.GameObjects#Authority}
+     * {@link Authority}
      */
     AttributeKey["Authority"] = "Authority";
     /**
-     * {@link Json.GameObjects#Behavior}
+     * {@link Behavior}
      */
     AttributeKey["Behavior"] = "Encountered Behavior";
     /**
-     * {@link Json.GameObjects#DerelictType}
+     * {@link DerelictType}
      */
     AttributeKey["DerelictType"] = "Derelict Type";
     /**
-     * {@link Json.GameObjects#Disposition}
+     * {@link Disposition}
      */
     AttributeKey["Disposition"] = "Disposition";
     /**
-     * {@link Json.GameObjects#Dominion}
+     * {@link Dominion}
      */
     AttributeKey["Dominion"] = "Dominion";
     /**
-     * {@link Json.GameObjects#Environment}
+     * {@link Environment}
      */
     AttributeKey["Environment"] = "Environment";
     /**
-     * {@link Json.GameObjects#FactionType}
+     * {@link FactionType}
      */
     AttributeKey["FactionType"] = "Faction Type";
     /**
-     * {@link Json.GameObjects#FringeGroup}
+     * {@link FringeGroup}
      */
     AttributeKey["FringeGroup"] = "Fringe Group";
     /**
-     * {@link Json.GameObjects#Guild}
+     * {@link Guild}
      */
     AttributeKey["Guild"] = "Guild";
     /**
-     * {@link Json.GameObjects#Influence}
+     * {@link Influence}
      */
     AttributeKey["Influence"] = "Influence";
     /**
-     * {@link Json.GameObjects#InitialContact}
+     * {@link StarshipInitialContact} {@link SettlementInitialContact}
      */
     AttributeKey["InitialContact"] = "Initial Contact";
     /**
-     * {@link Json.GameObjects#Leadership}
+     * {@link Leadership}
      */
     AttributeKey["Leadership"] = "Leadership";
     /**
-     * {@link Json.GameObjects#Life}
+     * {@link Life}
      */
     AttributeKey["Life"] = "Life";
     /**
-     * {@link Json.GameObjects#Location}
+     * {@link Location}
      */
     AttributeKey["Location"] = "Location";
     /**
-     * {@link Json.GameObjects#LocationTheme}
+     * {@link LocationTheme}
      */
     AttributeKey["LocationTheme"] = "Location Theme";
     /**
-     * {@link Json.GameObjects#PlanetaryClass}
+     * {@link PlanetaryClass}
      */
     AttributeKey["PlanetaryClass"] = "Planetary Class";
     /**
-     * {@link Json.GameObjects#Population}
+     * {@link Population}
      */
     AttributeKey["Population"] = "Population";
     /**
-     * {@link Json.GameObjects#Region}
+     * {@link Region}
      */
     AttributeKey["Region"] = "Region";
     /**
-     * {@link Json.GameObjects#Role}
+     * {@link Role}
      */
     AttributeKey["Role"] = "Role";
     /**
-     * {@link Json.GameObjects#CreatureScale}
+     * {@link CreatureScale}
      */
     AttributeKey["CreatureScale"] = "Creature Scale";
     /**
-     * {@link Json.GameObjects#Zone}
+     * {@link Zone}
      */
     AttributeKey["Zone"] = "Zone";
 })(AttributeKey || (AttributeKey = {}));

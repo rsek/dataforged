@@ -2,7 +2,7 @@ import type { GameObjectType, IGameObjectRecordBase } from "@game_objects/index.
 import type { AttributeKey } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
  */
 export type IPlaceRecord<T extends GameObjectType.Derelict|
 GameObjectType.DerelictZone|

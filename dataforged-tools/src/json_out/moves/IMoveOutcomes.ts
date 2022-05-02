@@ -1,11 +1,6 @@
-import type { IHasId, MoveId } from "@json_out/index.js";
-import type { IOutcomeInfo, MoveOutcome } from "@json_out/moves/IMoveOutcomeInfo.js";
+import type { IHasId } from "@json_out/index.js";
+import type { IOutcomeInfo, MoveOutcome } from "@json_out/index.js";
 
-/**
- * @internal
- * @asType string
- */
-export type MoveOutcomesId = `${MoveId}/Outcomes`;
 /**
  * @public
  */

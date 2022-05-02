@@ -1,5 +1,6 @@
 import { EncounterDisplay, EncounterVariant, Source } from "../index.js";
-import { Gamespace } from "../../json_out/common/Gamespace.js";
+import { Gamespace } from "../../json_out/index.js";
+import { toIdFragment } from "../../utils/toIdFragment.js";
 /**
  * Represents an *Ironsworn: Starforged* Encounter entry.
  * @internal
@@ -8,7 +9,7 @@ export class EncounterStarforged {
     constructor(json, ...ancestorSourceJson) {
         var _a;
         const gamespace = Gamespace.Starforged;
-        this.$id = `${gamespace}/Encounters/${json.Name.replaceAll(" ", "_")}`;
+        this.$id = `${gamespace}/Encounters/${toIdFragment(json.Name)}`;
         this.Name = json.Name;
         this.Nature = json.Nature;
         this.Summary = json.Summary;

@@ -1,4 +1,4 @@
-import type { ITableColumnBase } from "@json_out/oracles/ITableColumnBase.js";
+import type { ITableColumnBase } from "@json_out/index.js";
 
 /**
  * @public

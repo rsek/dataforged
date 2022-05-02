@@ -2,9 +2,7 @@ import { AssetAbility } from "./AssetAbility.js";
 import { AssetState } from "./AssetState.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
-import { InputType } from "../../json_out/common/index.js";
-import { Replacement } from "../../json_out/common/Replacement.js";
-import { InputSelectOptionType } from "../../json_out/index.js";
+import { InputSelectOptionType, InputType, Replacement } from "../../json_out/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
@@ -15,7 +13,7 @@ import _ from "lodash-es";
  */
 export class Asset extends SourceInheritor {
     constructor(json, gamespace, parent, rootSource) {
-        var _a, _b, _c, _d, _e, _f, _g;
+        var _a, _b, _c, _d, _e, _f;
         // uses RootSource as a starting point because category info has page numbers in the rulebook, rather than the asset pdf
         super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, rootSource);
         // console.log(this.Source);
@@ -59,7 +57,9 @@ export class Asset extends SourceInheritor {
                 return result;
             });
         }
-        this.States = (_g = (_f = json.States) === null || _f === void 0 ? void 0 : _f.map(state => new AssetState(state))) !== null && _g !== void 0 ? _g : undefined;
+        if (json.States) {
+            this.States = (_f = json.States.map(state => new AssetState(state))) !== null && _f !== void 0 ? _f : undefined;
+        }
         this.Requirement = json.Requirement;
         this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
         if (json.Abilities.length !== 3) {

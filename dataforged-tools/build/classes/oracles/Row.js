@@ -1,6 +1,5 @@
 import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
-import { validateRollTemplate } from "../../utils/validation/validateRollTemplate.js";
 import _ from "lodash-es";
 /**
  * Class representing a single row of an oracle table.
@@ -182,17 +181,6 @@ export class Row {
         if (!this.Result || this.Result.length === 0) {
             throw badJsonError(this.constructor, this, "Row doesn't have a result string");
         }
-    }
-    // this has to happen after derived class inheritance, rather than during the class constructor, so that class inheritance works properly. it gets done when the Oracle class builds the rows.
-    // FIXME: alternately, i could write an abstract class or something, oof.
-    validateRollTemplate() {
-        if (this["Roll template"]) {
-            return validateRollTemplate(this, this["Roll template"]);
-        }
-        else {
-            return true;
-        }
-        ;
     }
 }
 //# sourceMappingURL=Row.js.map

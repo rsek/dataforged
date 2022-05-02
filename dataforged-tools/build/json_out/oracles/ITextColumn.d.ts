@@ -1,5 +1,4 @@
-import type { IRow, ITableColumnBase } from "../index.js";
-import type { IOracle } from "./IOracle.js";
+import type { IOracle, IRow, ITableColumnBase } from "../index.js";
 import type { KeysWithValuesOfType } from "../../utils/types/KeysWithValuesOfType.js";
 /**
  * Describes the rendering of a table column that displays textual content (as opposed to {@link IRollColumn}, which displays numerical ranges).

@@ -1,8 +1,12 @@
-import type { Oracle } from "@classes/index.js";
-import type { IOracle, OracleTableId } from "@json_out/index.js";
+import type { IOracle } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { getTableByOracleId } from "@utils/md/getTableByOracleId.js";
 
+/**
+ * Extracts table contents from an oracle and returns it as a 2D array.
+ * @param oracle - The oracle to extract data from.
+ * @internal
+ */
 export function extractColumnData(oracle: IOracle) {
   const newTableRows: Record<string, string>[] = [];
 
@@ -32,7 +36,7 @@ export function extractColumnData(oracle: IOracle) {
     // console.log("found table:", table);
     table.forEach((rowData, rowIndex) => {
       const currentTableRow: Record<string, string> = newTableRows[rowIndex];
-      const newRowText = rowData[col.Key] as string;
+      const newRowText = rowData[col.Key];
       if (typeof rowData[col.Key] !== "string") {
         throw badJsonError(extractColumnData, newRowText);
       }

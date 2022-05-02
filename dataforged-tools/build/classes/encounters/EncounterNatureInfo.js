@@ -1,5 +1,5 @@
 import { EncounterIronsworn } from "./EncounterIronsworn.js";
-import { Gamespace } from "../../json_out/common/Gamespace.js";
+import { Gamespace } from "../../json_out/index.js";
 /**
  * Represents the metadata describing an *Ironsworn* encounter's nature; used as a category to contain all Encounters of that type.
  * @internal

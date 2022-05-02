@@ -3,7 +3,7 @@ import type { IOracle, ITableDisplay } from "../../json_out/index.js";
 /**
  * @internal
  */
-export declare class OracleDisplay implements ITableDisplay {
+export declare class TableDisplay implements ITableDisplay {
     Title: string;
     "Column of"?: IOracle["$id"] | undefined;
     Table: DisplayTable;

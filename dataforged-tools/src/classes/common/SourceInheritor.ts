@@ -1,5 +1,5 @@
 import { Source } from "@classes/common/index.js";
-import type { IHasSource, ISource } from "@json_out/meta/index.js";
+import type { IHasSource, ISource } from "@json_out/index.js";
 
 /**
  * @internal

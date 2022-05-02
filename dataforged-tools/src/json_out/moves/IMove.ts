@@ -1,19 +1,4 @@
-import type { IAsset } from "@json_out/assets/IAsset.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { AssetAbilityIdBase, IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes , MoveCategoryName } from "@json_out/index.js";
-import type { IMoveTrigger } from "@json_out/moves/IMoveTrigger.js";
-import type { IOracle } from "@json_out/oracles/IOracle.js";
-/**
- * @internal
- * @asType string
- */
-export type MoveId = `${Gamespace}/${MoveIdBase}`;
-/**
- * @internal
- * @asType string
- */
-export type MoveIdBase = `Moves/${MoveCategoryName|"Assets"}/${string}` | `Moves/${AssetAbilityIdBase}/${string}`;
-
+import type { IAsset , IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes  , IMoveTrigger , IOracle } from "@json_out/index.js";
 
 /**
  * Interface representing a Starforged move.
@@ -25,7 +10,6 @@ export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSour
    * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$
    */
   $id: string;
-  // $id: MoveId;
   /**
    * @example "Face Danger"
    */
@@ -52,7 +36,7 @@ export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSour
    */
   Trigger: IMoveTrigger;
   /**
-   * The IDs of any oracles *directly* referenced by the move, or vice versa.
+   * The IDs of any oracles directly referenced by the move, or vice versa.
    */
   Oracles?: IOracle["$id"][] | undefined;
   /**
@@ -60,4 +44,5 @@ export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSour
    */
   Outcomes?: IMoveOutcomes | undefined;
   Display: IDisplayWithTitle;
+  Tags?: string[] | undefined;
 }

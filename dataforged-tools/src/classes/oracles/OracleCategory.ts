@@ -1,7 +1,7 @@
 
 import { Oracle , OracleCategoryDisplay , OracleUsage , SourceInheritor } from "@classes/index.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { IOracleCategory, OracleCategoryId, OracleCategoryJaggedId, OracleCategoryName } from "@json_out/index.js";
+import type { Gamespace } from "@json_out/index.js";
+import type { IOracleCategory } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
@@ -13,9 +13,9 @@ import _ from "lodash-es";
  */
 export class OracleCategory extends SourceInheritor implements IOracleCategory {
   $id: IOracleCategory["$id"];
-  Name: OracleCategoryName;
+  Name: string;
   Aliases?: string[] | undefined;
-  Category?: OracleCategoryJaggedId | undefined;
+  Category?: IOracleCategory["$id"] | undefined;
   Description?: string | undefined;
   Display: OracleCategoryDisplay;
   Usage?: OracleUsage | undefined;
@@ -25,7 +25,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
   constructor(
     json: IOracleCategoryYaml,
     gamespace: Gamespace,
-    category?: OracleCategoryJaggedId | undefined,
+    category?: IOracleCategory["$id"] | undefined,
     ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
   ) {
     // if (!is<IOracleCategoryData>(json)) {
@@ -34,7 +34,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
     // }
     super(json.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
 
-    this.$id = buildOracleId<OracleCategoryId>(gamespace, json, ...ancestorsJson);
+    this.$id = buildOracleId<IOracleCategory["$id"]>(gamespace, json, ...ancestorsJson);
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
@@ -65,7 +65,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
           if (json.Requires) {
             propagateToChildren(json.Requires, "Requires", oracleCat);
           }
-          return new OracleCategory(oracleCat, gamespace, this.$id as OracleCategoryJaggedId, json, ...ancestorsJson);
+          return new OracleCategory(oracleCat, gamespace, this.$id, json, ...ancestorsJson);
         }
       );
     }

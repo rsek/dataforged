@@ -1,5 +1,5 @@
 import { MoveCategory } from "../classes/index.js";
-import { Gamespace } from "../json_out/common/Gamespace.js";
+import { Gamespace } from "../json_out/index.js";
 /**
  * It takes the data from the YAML files, and then it iterates over the categories, and then it
  * iterates over the moves in each category, and then it creates a MoveCategory object for each

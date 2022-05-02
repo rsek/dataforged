@@ -2,6 +2,9 @@ import type { ISettingTruth } from "@json_out/index.js";
 import type { StubExcept } from "@utils/types/Stub.js";
 import type { ISuggestionsYaml } from "@yaml_in/index.js";
 
+/**
+ * @internal
+ */
 export interface ISettingTruthYaml extends StubExcept<ISettingTruth, "Name" | "Table" | "Character" | "Display", "Suggestions"> {
   Suggestions?: ISuggestionsYaml | undefined;
 }

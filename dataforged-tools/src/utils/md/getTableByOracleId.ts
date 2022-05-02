@@ -1,5 +1,5 @@
 import type { Row } from "@classes/index.js";
-import type { IOracle, IOracleBase, IRow, OracleTableId } from "@json_out/index.js";
+import type { IOracle, IOracleBase, IRow } from "@json_out/index.js";
 import jsonpath from "jsonpath";
 
 /**

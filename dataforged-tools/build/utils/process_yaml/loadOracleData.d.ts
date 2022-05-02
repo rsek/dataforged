@@ -1,7 +1,4 @@
-import type { IOracleCategoryYaml, IYamlWithRef } from "../../yaml_in/index.js";
-export interface IOracleCatRoot extends IYamlWithRef {
-    Categories: IOracleCategoryYaml[];
-}
+import type { IOracleCatRoot } from "../../yaml_in/oracles/IOracleCatRoot.js";
 /**
  * Loads the oracle YAML data from the files and merges them into a single object.
  * @param referencePath - The path to the YAML file containing the references..

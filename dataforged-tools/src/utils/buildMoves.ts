@@ -1,6 +1,6 @@
 import { MoveCategory } from "@classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "@constants/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
+import { Gamespace } from "@json_out/index.js";
 import type { ISource } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";

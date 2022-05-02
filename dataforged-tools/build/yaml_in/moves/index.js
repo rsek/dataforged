@@ -1,4 +1,2 @@
-export * from "./IMoveCategoryYaml.js";
-export * from "./IMoveTriggerOptionYaml.js";
-export * from "./IMoveTriggerYaml.js";
+export * from "./IMoveYaml.js";
 //# sourceMappingURL=index.js.map

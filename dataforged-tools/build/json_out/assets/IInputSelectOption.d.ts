@@ -1,36 +1,9 @@
-import type { IdBase } from "./IInput.js";
-import type { InputSelectOptionType } from "./IInputSelect.js";
-import type { Gamespace } from "../common/Gamespace.js";
-import type { IHasId, IHasName, PlayerConditionMeter, Stat } from "../index.js";
-/**
- * @see {@link IInputSelectOption}
- * @internal
- * @asType string
- */
-export declare type InputSelectOptionIdBase = `${IdBase}/Options/${string}`;
-/**
- * @see {@link IInputSelectOption}
- * @internal
- * @asType string
- */
-export declare type InputSelectOptionId = `${Gamespace}/${InputSelectOptionIdBase}`;
-/**
- * @see {@link IInputSelectOptionSetter}
- * @internal
- * @asType string
- */
-export declare type InputSelectOptionSetterIdBase = `${InputSelectOptionIdBase}/${string}`;
-/**
- * @see {@link IInputSelectOptionSetter}
- * @internal
- * @asType string
- */
-export declare type InputSelectOptionSetterId = `${Gamespace}/${InputSelectOptionSetterIdBase}`;
+import type { IHasId, IHasName, InputSelectOptionType, PlayerConditionMeter, Stat } from "../index.js";
 /**
  * Represents an option in an {@link IInputSelect}.
  * @public
  */
-export interface IInputSelectOption<V extends InputSelectOptionType> extends IHasId, IHasName {
+export interface IInputSelectOption extends IHasId, IHasName {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$
      */
@@ -38,17 +11,50 @@ export interface IInputSelectOption<V extends InputSelectOptionType> extends IHa
     /**
      * A array describing what attribute keys should be set to when this option is active. *All* items in the array should be set in this manner.
      */
-    Set: IInputSelectOptionSetter<V>[];
+    Set: (IInputSelectOptionSetterStat | IInputSelectOptionSetterMeter | IInputSelectOptionSetterNumber | IInputSelectOptionSetterString)[];
 }
 /**
  * @public
  */
-export interface IInputSelectOptionSetter<V extends InputSelectOptionType> extends IHasId {
+export interface IInputSelectOptionSetter extends IHasId {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
     Key: string;
-    Value: V extends InputSelectOptionType.Stat ? Stat : V extends InputSelectOptionType.ConditionMeter ? PlayerConditionMeter : V extends InputSelectOptionType.Number ? number : string;
+    Type: InputSelectOptionType;
+    Value: Stat | PlayerConditionMeter | number | string;
+}
+/**
+ * A stat set by an {@link IInputSelectOption}.
+ * @public
+ */
+export interface IInputSelectOptionSetterStat extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.Stat;
+    Value: Stat;
+}
+/**
+ * A condition meter set by an {@link IInputSelectOption}.
+ * @public
+ */
+export interface IInputSelectOptionSetterMeter extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.ConditionMeter;
+    Value: PlayerConditionMeter;
+}
+/**
+ * An integer value set by an {@link IInputSelectOption}.
+ * @public
+ */
+export interface IInputSelectOptionSetterNumber extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.Number;
+    Value: number;
+}
+/**
+ * An arbitrary string value set by an {@link IInputSelectOption}.
+ * @public
+ */
+export interface IInputSelectOptionSetterString extends IInputSelectOptionSetter {
+    Type: InputSelectOptionType.String;
+    Value: string;
 }
 //# sourceMappingURL=IInputSelectOption.d.ts.map

@@ -1,34 +1,51 @@
 import { CustomStat } from "@classes/moves/CustomStat.js";
-import { Replacement } from "@json_out/common/Replacement.js";
-import type { ICustomStat, IMoveTrigger, IMoveTriggerOption, ProgressType, RollableStat, RollType } from "@json_out/index.js";
-import { RollMethod } from "@json_out/index.js";
-import type { IMoveTriggerOptionYaml } from "@yaml_in/moves/IMoveTriggerOptionYaml.js";
+import type { ICustomStat, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionBase, IMoveTriggerOptionProgress, ProgressType, RollableStat } from "@json_out/index.js";
+import { Replacement , RollMethod , RollType } from "@json_out/index.js";
+import type { IMoveTriggerOptionActionYaml, IMoveTriggerOptionProgressYaml, YamlStub } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export class MoveTriggerOption<T extends RollType> implements IMoveTriggerOption<T> {
-  $id: IMoveTriggerOption<T>["$id"];
+export abstract class MoveTriggerOption implements IMoveTriggerOptionBase {
+  $id: IMoveTriggerOptionBase["$id"];
   Text?: string | undefined;
-  "Roll type": T;
+  "Roll type": RollType;
   Method: RollMethod;
-  Using: T extends RollType.Action ? RollableStat[] : T extends RollType.Progress ? ProgressType[] : (RollableStat[] | ProgressType[]);
+  Using: (RollableStat | ProgressType)[];
   "Custom stat"?: ICustomStat | undefined;
-  constructor(json: IMoveTriggerOptionYaml<T>, parent: IMoveTrigger, index: number) {
+  constructor(json: YamlStub<IMoveTriggerOptionBase, "Using"|"Method"|"Roll type">, parent: IMoveTrigger, index: number) {
     this.$id = `${parent.$id}/Options/${index+1}`;
     this.Text = json.Text;
-    this["Roll type"] = json["Roll type"] ?? "Action roll";
+    this["Roll type"] = json["Roll type"] ?? RollType.Action;
     this.Method = json.Method ?? RollMethod.Any;
-    // if (json.Using && json.Using.includes(Replacement.AssetMeter)) {
-    //   throw badJsonError(this.constructor, json, "`Using` includes an unexpected template string. It should be replaced before being sent to this constructor.");
-    // } else {
     this.Using = (json.Using as typeof this["Using"]) ?? [];
-    // }
     if (json["Custom stat"]) {
       this["Custom stat"] = new CustomStat(json["Custom stat"], `${this.$id}/Custom_stat`);
       if (this.Using && this["Custom stat"]) {
         this.Using = this.Using.map(item => (item ) === Replacement.CustomStat ? this["Custom stat"]?.$id : item) as typeof this["Using"];
       }
     }
+  }
+}
+
+/**
+ * @internal
+ */
+export class MoveTriggerOptionAction extends MoveTriggerOption implements IMoveTriggerOptionAction {
+  "Roll type": RollType.Action;
+  Using!: RollableStat[];
+  constructor(json: IMoveTriggerOptionActionYaml, parent: IMoveTrigger, index: number) {
+    super(json, parent, index);
+  }
+}
+
+/**
+ * @internal
+ */
+export class MoveTriggerOptionProgress extends MoveTriggerOption implements IMoveTriggerOptionProgress {
+  "Roll type": RollType.Progress;
+  Using!: ProgressType[];
+  constructor(json: IMoveTriggerOptionProgressYaml, parent: IMoveTrigger, index: number) {
+    super(json, parent, index);
   }
 }

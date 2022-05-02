@@ -1,18 +1,4 @@
-import type { IAsset } from "../assets/IAsset.js";
-import type { Gamespace } from "../common/Gamespace.js";
-import type { AssetAbilityIdBase, IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText, IMoveCategory, IMoveOutcomes, MoveCategoryName } from "../index.js";
-import type { IMoveTrigger } from "./IMoveTrigger.js";
-import type { IOracle } from "../oracles/IOracle.js";
-/**
- * @internal
- * @asType string
- */
-export declare type MoveId = `${Gamespace}/${MoveIdBase}`;
-/**
- * @internal
- * @asType string
- */
-export declare type MoveIdBase = `Moves/${MoveCategoryName | "Assets"}/${string}` | `Moves/${AssetAbilityIdBase}/${string}`;
+import type { IAsset, IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasText, IMoveCategory, IMoveOutcomes, IMoveTrigger, IOracle } from "../index.js";
 /**
  * Interface representing a Starforged move.
  * @public
@@ -49,7 +35,7 @@ export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSour
      */
     Trigger: IMoveTrigger;
     /**
-     * The IDs of any oracles *directly* referenced by the move, or vice versa.
+     * The IDs of any oracles directly referenced by the move, or vice versa.
      */
     Oracles?: IOracle["$id"][] | undefined;
     /**
@@ -57,5 +43,6 @@ export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSour
      */
     Outcomes?: IMoveOutcomes | undefined;
     Display: IDisplayWithTitle;
+    Tags?: string[] | undefined;
 }
 //# sourceMappingURL=IMove.d.ts.map

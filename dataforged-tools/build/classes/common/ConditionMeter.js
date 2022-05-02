@@ -1,5 +1,5 @@
 import { MeterBase } from "./MeterBase.js";
-import { MeterAlias } from "../../json_out/common/index.js";
+import { MeterAlias } from "../../json_out/index.js";
 /**
  * @internal
  */

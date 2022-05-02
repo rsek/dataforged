@@ -1,11 +1,12 @@
 import { Source } from "../index.js";
+import { toIdFragment } from "../../utils/toIdFragment.js";
 /**
  * @internal
  */
 export class EncounterVariant {
     constructor(json, parent) {
         var _a, _b;
-        this.$id = (`${parent.$id}/${json.Name.replaceAll(" ", "_")}`);
+        this.$id = (`${parent.$id}/${toIdFragment(json.Name)}`);
         this.Source = new Source(parent.Source);
         this.Name = json.Name;
         this.Rank = json.Rank;

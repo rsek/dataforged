@@ -1,15 +1,15 @@
-import type { IHasDescription, IHasQuestStarter, IRow, RollTemplate } from "../index.js";
+import type { IHasDescription, IHasQuestStarter, IRollTemplate, IRow } from "../index.js";
 /**
  * Interface for 'canonical' options within a SettingTruth category.
  * @see {@link ISettingTruth}
  * @public
  */
-export interface ISettingTruthOption extends Omit<IRow, "$id" | "Summary">, IHasQuestStarter, IHasDescription {
+export interface ISettingTruthOption extends IRow, IHasQuestStarter, IHasDescription {
     /**
      * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$
      */
     $id: string;
-    "Roll template"?: RollTemplate<"Summary" | "Description"> | undefined;
+    "Roll template"?: IRollTemplate | undefined;
     Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
 }
 /**

@@ -1,4 +1,4 @@
-import type { ITableColumnBase } from "./ITableColumnBase.js";
+import type { ITableColumnBase } from "../index.js";
 /**
  * @public
  */

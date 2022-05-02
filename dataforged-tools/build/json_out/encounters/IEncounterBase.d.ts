@@ -1,7 +1,4 @@
-import type { ChallengeRank } from "../common/index.js";
-import type { EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags } from "./index.js";
-import type { IDisplayWithTitle } from "../meta/IDisplay.js";
-import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary } from "../meta/IHas.js";
+import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary } from "../index.js";
 /**
  * Interface common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*, plus 'stubs' like IEncounterVariant.
  * @see {@link IEncounter}, {@link IEncounterVariant}
@@ -10,7 +7,7 @@ import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, 
 export interface IEncounterBase extends IHasDisplay, IHasDescription, IHasSource, IHasName, IHasId, Partial<IHasQuestStarter & IHasSummary> {
     /**
      * @example "Starforged/Encounters/Chiton"
-     * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-/]+$
+     * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-]+$
      */
     $id: string;
     /**

@@ -1,5 +1,5 @@
 import type { IAsset } from "@json_out/index.js";
-import type { DeepPartial } from "@utils/index.js";
+import type { PartialDeep } from "@utils/index.js";
 
 
 /**
@@ -11,4 +11,4 @@ import type { DeepPartial } from "@utils/index.js";
  * ```
  * @public
  */
-export interface IAssetAlterProperties extends DeepPartial<IAsset> { }
+export interface IAssetAlterProperties extends PartialDeep<IAsset> { }

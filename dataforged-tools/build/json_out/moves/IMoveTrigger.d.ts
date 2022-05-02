@@ -1,12 +1,4 @@
-import type { MoveId } from "../index.js";
-import type { IHasId, IHasText } from "../meta/IHas.js";
-import type { IMoveTriggerOption } from "./IMoveTriggerOption.js";
-import type { RollType } from "./RollMethod.js";
-/**
- * @internal
- * @asType string
- */
-export declare type MoveTriggerId = `${MoveId}/Trigger`;
+import type { IHasId, IHasText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "../index.js";
 /**
  * Describes the trigger conditions of the move.
  * @public
@@ -18,6 +10,9 @@ export interface IMoveTrigger extends IHasId, Partial<IHasText> {
     $id: string;
     /**
      * A markdown string containing the primary trigger text for this move.
+     *
+     * Secondary triggers (for specific stats or uses of an asset ability) are described in `Options`.
+     *
      * @markdown
      * @example "When you attempt something risky or react to an imminent threat..."
      */
@@ -33,7 +28,7 @@ export interface IMoveTrigger extends IHasId, Partial<IHasText> {
      *
      * If there's no action rolls or progress rolls attached to this move, this is `undefined`.
      */
-    "Options"?: IMoveTriggerOption<RollType>[] | undefined;
+    "Options"?: (IMoveTriggerOptionAction | IMoveTriggerOptionProgress)[] | undefined;
 }
 /**
  * @public

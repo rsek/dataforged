@@ -1,34 +1,34 @@
 import { Input } from "./Input.js";
-import type { IInputSelectOption, IInputSelectOptionSetter } from "../../json_out/assets/IInputSelectOption.js";
-import { InputType } from "../../json_out/common/InputType.js";
-import type { IAsset, IAssetAbility, IInputSelect, IInputSelectAttributeDefinition, InputSelectOptionType } from "../../json_out/index.js";
+import { InputType } from "../../json_out/index.js";
+import type { IAsset, IAssetAbility, IInputSelect, IInputSelectAttributeDefinition, IInputSelectOption, IInputSelectOptionSetter, IInputSelectOptionSetterMeter, IInputSelectOptionSetterNumber, IInputSelectOptionSetterStat, IInputSelectOptionSetterString, InputSelectOptionType } from "../../json_out/index.js";
 import type { IInputSelectOptionYaml, IInputSelectYaml } from "../../yaml_in/index.js";
 /**
  * @internal
  */
-export declare class InputSelect<V extends InputSelectOptionType> extends Input implements IInputSelect<V> {
+export declare class InputSelect extends Input implements IInputSelect {
     "Input Type": InputType.Select;
-    Sets: IInputSelectAttributeDefinition<V>[];
-    Options: IInputSelectOption<V>[];
+    Sets: IInputSelectAttributeDefinition[];
+    Options: IInputSelectOption[];
     Adjustable: boolean;
-    constructor(json: IInputSelectYaml<V>, parent: IAssetAbility | IAsset);
+    constructor(json: IInputSelectYaml, parent: IAssetAbility | IAsset);
 }
 /**
  * @internal
  */
-export declare class InputSelectOption<V extends InputSelectOptionType> implements IInputSelectOption<V> {
-    $id: IInputSelectOption<V>["$id"];
+export declare class InputSelectOption implements IInputSelectOption {
+    $id: IInputSelectOption["$id"];
     Name: string;
-    Set: InputSelectOptionSetter<V>[];
-    constructor(json: IInputSelectOptionYaml<V>, parent: IInputSelect<V>);
+    Set: (IInputSelectOptionSetterStat | IInputSelectOptionSetterMeter | IInputSelectOptionSetterNumber | IInputSelectOptionSetterString)[];
+    constructor(json: IInputSelectOptionYaml, parent: IInputSelect);
 }
 /**
  * @internal
  */
-export declare class InputSelectOptionSetter<V extends InputSelectOptionType> implements IInputSelectOptionSetter<V> {
+export declare class InputSelectOptionSetter implements IInputSelectOptionSetter {
     $id: string;
     Key: string;
-    Value: IInputSelectOptionSetter<V>["Value"];
-    constructor(json: IInputSelectOptionSetter<V>, parent: InputSelectOption<V>);
+    Type: InputSelectOptionType;
+    Value: IInputSelectOptionSetter["Value"];
+    constructor(json: IInputSelectOptionSetter, parent: InputSelectOption);
 }
 //# sourceMappingURL=InputSelect.d.ts.map

@@ -1,8 +1,7 @@
 
-import { OracleContent , OracleDisplay , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
+import { OracleContent , OracleUsage , Row , SourceInheritor , TableDisplay } from "@classes/index.js";
+import type { AttributeKey , Gamespace, IAttribute, IAttributeChoices, IOracle, IOracleCategory, ITableDisplay } from "@json_out/index.js";
 
-import type { AttributeKey, IAttribute, IAttributeChoices, IOracle, IOracleCategory, ISource, ITableDisplay, OracleTableId } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
@@ -22,7 +21,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   "Member of"?: IOracle["$id"] | undefined;
   Category: IOracleCategory["$id"];
   Description?: string | undefined;
-  Display: OracleDisplay;
+  Display: TableDisplay;
   Usage?: OracleUsage | undefined;
   Content?: OracleContent | undefined;
   Table?: Row[] | undefined;
@@ -47,7 +46,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     // if (!is<IOracleInfoData>(json)) {
     //   throw new Error("json does not conform to IOracleInfoData!");
     // }
-    this.$id = buildOracleId<OracleTableId>(gamespace, jsonClone, ...ancestorsJson);
+    this.$id = buildOracleId<IOracle["$id"]>(gamespace, jsonClone, ...ancestorsJson);
     // buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = jsonClone.Name;
     this.Aliases = jsonClone.Aliases;
@@ -55,7 +54,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     this.Category = category;
 
     this.Description = jsonClone.Description;
-    this.Display = new OracleDisplay((jsonClone.Display ?? {}) as Partial<ITableDisplay>, this.Name, this.$id);
+    this.Display = new TableDisplay((jsonClone.Display ?? {}) as Partial<ITableDisplay>, this.Name, this.$id);
     if (jsonClone.Usage) {
       this.Usage = new OracleUsage(jsonClone.Usage);
     }
@@ -72,7 +71,6 @@ export class Oracle extends SourceInheritor implements IOracle  {
       this.Table = tableData.map(row => {
         // TODO: propagate attributes to row objects
         const newRow =  new Row(this.$id, row);
-        newRow.validateRollTemplate();
         return newRow;
       });
     }

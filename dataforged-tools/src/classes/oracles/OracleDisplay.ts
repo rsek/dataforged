@@ -1,10 +1,10 @@
 import { DisplayTable } from "@classes/index.js";
-import type { IDisplayTable, ImageUrl, IOracle, ITableDisplay, OracleTableId, Raster, Vector } from "@json_out/index.js";
+import type { IDisplayTable, IOracle, ITableDisplay } from "@json_out/index.js";
 
 /**
  * @internal
  */
-export class OracleDisplay implements ITableDisplay {
+export class TableDisplay implements ITableDisplay {
   Title: string;
   "Column of"?: IOracle["$id"] | undefined;
   Table: DisplayTable;
@@ -14,7 +14,7 @@ export class OracleDisplay implements ITableDisplay {
     this.Title = json.Title ?? parentName;
     this.Images = json.Images;
     this.Icon = json.Icon;
-    this["Column of"] = (json["Column of"] as OracleTableId) ?? undefined;
+    this["Column of"] = (json["Column of"]) ?? undefined;
     const tableData = json.Table as Partial<IDisplayTable>;
     if (tableData) {
       this.Table = new DisplayTable(tableData, parentId);

@@ -16,18 +16,15 @@
   "scripts": {
     "flush": "rm -R ./build && mkdir ./build",
     "flush-image": "rm -R ./img && mkdir ./img",
-    "build": "yarn flush && npx ttsc --project ./tsconfig.json",
+    "build": "yarn flush && npx ttsc --project ./tsconfig.json && yarn dts && yarn schema",
+    "dts": "api-extractor run -c ./api-extractor.json && cp ../src/index.d.ts ../dist/index.d.ts",
     "render-json-sf": "node ./build/start.js --enable-source-maps",
     "render-json-is": "node ./build/start-ironsworn.js --enable-source-maps",
     "render-json": "yarn render-json-sf && yarn render-json-is",
     "render-md-sf": "node ./build/start-md.js",
     "docs": "rm -R ../docs && mkdir ../docs && npx typedoc",
-    "dts": "api-extractor run -c ./api-extractor.json && cp ../src/index.d.ts ../dist/index.d.ts",
-    "schema-sf": "npx typescript-json-schema ../dist/index.d.ts 'Starforged' -o ../dist/starforged/schema.json --noExtraProps --defaultNumberType integer --required --defaultProps --titles --refs --aliasRefs",
-    "schema-is": "npx typescript-json-schema ../dist/index.d.ts 'Ironsworn' -o ../dist/ironsworn/schema.json --noExtraProps --defaultNumberType integer --required --defaultProps --titles --refs --aliasRefs",
-    "schema": "yarn schema-is && yarn schema-sf",
-    "rebuild": "yarn build && yarn dts && yarn schema",
-    "pkg": "yarn dts && yarn render-json && yarn schema && yarn docs"
+    "schema": "node ./build/utils/writeSchema.js",
+    "pkg": "yarn render-json && yarn docs"
   },
   "directories": {
     "doc": "./docs"
@@ -91,6 +88,7 @@
     "typedoc": "^0.22.13",
     "typescript": "^4.7.0-dev.20220331",
     "typescript-is": "^0.19.0",
+    "typescript-json-schema": "^0.53.0",
     "typescript-transform-paths": "^3.3.1",
     "yaml": "^2.0.1"
   }

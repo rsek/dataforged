@@ -1,7 +1,6 @@
 import type { InputClock, InputNumber, InputText } from "../common/Input.js";
 import { AlterMove, Move } from "../index.js";
-import type { Gamespace } from "../../json_out/common/Gamespace.js";
-import type { IAlterMomentum, IAsset, IAssetAbility } from "../../json_out/index.js";
+import type { Gamespace, IAlterMomentum, IAsset, IAssetAbility } from "../../json_out/index.js";
 import type { IAssetAbilityYaml } from "../../yaml_in/index.js";
 /**
  * @internal

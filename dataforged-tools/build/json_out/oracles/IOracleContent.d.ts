@@ -1,4 +1,4 @@
-import type { PartOfSpeechTag } from "../meta/PartOfSpeechTag.js";
+import type { PartOfSpeechTag } from "../index.js";
 /**
  * Interface for metadata that describes an oracle's semantic or lexical content.
  * @public

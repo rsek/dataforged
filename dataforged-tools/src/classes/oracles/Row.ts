@@ -1,10 +1,8 @@
 import { AttributeSetter , GameObject , MultipleRolls , OracleContent , Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IDisplay, IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRow, OracleTableId, OracleTableRowId, Raster, RollTemplate, Vector } from "@json_out/index.js";
+import type { IDisplay, IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, Raster, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
-import type { RequireKey } from "@utils/types/RequireKey.js";
-import { validateRollTemplate } from "@utils/validation/validateRollTemplate.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";
 import type { IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 import _ from "lodash-es";
@@ -13,7 +11,7 @@ import _ from "lodash-es";
  * Class representing a single row of an oracle table.
  * @internal
  */
-export class Row implements IRow, Partial<IHasSubtable<IRow>> {
+export class Row implements IRow {
   $id!: string | null;
   Floor: number|null;
   Ceiling: number|null;
@@ -40,7 +38,7 @@ export class Row implements IRow, Partial<IHasSubtable<IRow>> {
   Attributes?: AttributeSetter | undefined;
   /**
    */
-  "Roll template"?: RollTemplate<"Result"|"Summary"|"Description"|never> | undefined;
+  "Roll template"?: IRollTemplate | undefined;
   /**
    */
   Display?: IDisplay | undefined;
@@ -71,7 +69,7 @@ export class Row implements IRow, Partial<IHasSubtable<IRow>> {
       rangeString = this.Floor === this.Ceiling ? `${this.Ceiling}` : `${this.Floor}-${this.Ceiling}`;
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      this.$id = `${parentId}/${rangeString}` as OracleTableRowId;
+      this.$id = `${parentId}/${rangeString}`;
     }
 
     const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, [ "Floor", "Ceiling" ])];
@@ -139,7 +137,7 @@ export class Row implements IRow, Partial<IHasSubtable<IRow>> {
                 if (!Array.isArray(value)) {
                   throw badJsonError(this.constructor, value, "expected OracleTableId[]");
                 }
-                this["Oracle rolls"] = value as OracleTableId[];
+                this["Oracle rolls"] = value;
                 break;
               }
               case "Multiple rolls": {
@@ -197,7 +195,7 @@ export class Row implements IRow, Partial<IHasSubtable<IRow>> {
                 break;
               }
               case "Roll template": {
-                this["Roll template"] = (item as {["Roll template"]: RollTemplate<"Result"|"Summary"|"Description">})["Roll template"] as NonNullable<typeof this["Roll template"]>;
+                this["Roll template"] = (item as {["Roll template"]: IRollTemplate})["Roll template"] as NonNullable<typeof this["Roll template"]>;
                 break;
               }
               default:
@@ -219,11 +217,4 @@ export class Row implements IRow, Partial<IHasSubtable<IRow>> {
   length?: number | undefined;
   // this has to happen after derived class inheritance, rather than during the class constructor, so that class inheritance works properly. it gets done when the Oracle class builds the rows.
   // FIXME: alternately, i could write an abstract class or something, oof.
-  validateRollTemplate() {
-    if (this["Roll template"]){
-      return validateRollTemplate(this as RequireKey<typeof this, "Roll template">,this["Roll template"]);
-    } else {
-      return true;
-    };
-  }
 }

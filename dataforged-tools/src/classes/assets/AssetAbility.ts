@@ -1,11 +1,11 @@
 import { AssetState } from "@classes/assets/AssetState.js";
-import type { Input, InputClock, InputNumber, InputText } from "@classes/common/Input.js";
+import type { InputClock, InputNumber, InputText } from "@classes/common/Input.js";
 import { AlterMove , Move } from "@classes/index.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import { Replacement } from "@json_out/common/Replacement.js";
-import type { AssetAbilityId, IAlterMomentum, IAsset, IAssetAbility,  IAssetState,  InputType , MoveId } from "@json_out/index.js";
+import type { Gamespace , IAlterMomentum, IAsset, IAssetAbility,  IAssetState } from "@json_out/index.js";
+import { Replacement } from "@json_out/index.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
+import { toIdFragment } from "@utils/toIdFragment.js";
 import type { IAssetAbilityYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
@@ -49,13 +49,13 @@ export class AssetAbility implements IAssetAbility {
       this.Moves = json.Moves.map(moveJson => {
         const moveDataClone = _.cloneDeep(moveJson);
         moveDataClone.Asset = parent.$id;
-        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${moveDataClone.Name.replaceAll(" ", "_")}` as MoveId;
+        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${toIdFragment(moveDataClone.Name)}`;
         moveDataClone.Category = `${gamespace}/Moves/Assets`;
         if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
           moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);
           // console.log("asset ability move data", moveDataClone);
         }
-        return new Move(moveDataClone, gamespace, parent.Source);
+        return new Move(moveDataClone, this, gamespace, parent.Source);
       });
     }
   }

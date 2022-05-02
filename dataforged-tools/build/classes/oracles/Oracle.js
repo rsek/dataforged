@@ -1,4 +1,4 @@
-import { OracleContent, OracleDisplay, OracleUsage, Row, SourceInheritor } from "../index.js";
+import { OracleContent, OracleUsage, Row, SourceInheritor, TableDisplay } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { inferSetsAttributes } from "../../utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "../../utils/object_transform/propagateToChildren.js";
@@ -28,7 +28,7 @@ export class Oracle extends SourceInheritor {
         this["Member of"] = memberOf !== null && memberOf !== void 0 ? memberOf : undefined;
         this.Category = category;
         this.Description = jsonClone.Description;
-        this.Display = new OracleDisplay(((_b = jsonClone.Display) !== null && _b !== void 0 ? _b : {}), this.Name, this.$id);
+        this.Display = new TableDisplay(((_b = jsonClone.Display) !== null && _b !== void 0 ? _b : {}), this.Name, this.$id);
         if (jsonClone.Usage) {
             this.Usage = new OracleUsage(jsonClone.Usage);
         }
@@ -46,7 +46,6 @@ export class Oracle extends SourceInheritor {
             this.Table = tableData.map(row => {
                 // TODO: propagate attributes to row objects
                 const newRow = new Row(this.$id, row);
-                newRow.validateRollTemplate();
                 return newRow;
             });
         }

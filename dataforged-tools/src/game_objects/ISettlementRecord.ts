@@ -2,7 +2,7 @@ import type { GameObjectType, IPlaceRecord } from "@game_objects/index.js";
 import type { AttributeKey, SettlementInitialContact } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
  */
 export type ISettlementRecord<K extends AttributeKey|never = never> = IPlaceRecord<
   GameObjectType.Settlement,

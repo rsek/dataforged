@@ -1,8 +1,5 @@
-import type { ImageUrl, Raster, Vector } from "@json_out/index.js";
-
 /**
  * Interface for data relevant to an item's display/rendering.
- *
  * @public
  */
 export interface IDisplay {
@@ -21,14 +18,15 @@ export interface IDisplay {
    * @pattern ^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$
    */
   Color?: string | undefined;
+  /**
+   * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
+   */
+  Title?: string | undefined;
 }
 
 /**
  * @public
  */
 export interface IDisplayWithTitle extends IDisplay {
-  /**
-   * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
-   */
   Title: string;
 }

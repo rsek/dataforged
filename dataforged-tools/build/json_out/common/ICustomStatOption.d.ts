@@ -1,5 +1,4 @@
-import type { IHasName } from "../index.js";
-import type { IHasId } from "../meta/IHas.js";
+import type { IHasId, IHasName } from "../index.js";
 /**
  * @public
  */

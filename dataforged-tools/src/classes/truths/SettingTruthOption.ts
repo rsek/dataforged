@@ -33,7 +33,6 @@ export class SettingTruthOption implements ISettingTruthOption {
     if (this.Subtable) {
       // what is happening here?
       this.Subtable = this.Subtable.map(row => new Row((`${this.$id ?? "--"}/Subtable`.replaceAll(" ", "_")), row) as ISettingTruthOptionSubtableRow);
-      this.Subtable.forEach(row => (row as Row).validateRollTemplate());
     }
   }
 }

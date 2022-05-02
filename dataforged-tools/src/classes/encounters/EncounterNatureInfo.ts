@@ -1,9 +1,9 @@
 import { EncounterIronsworn } from "@classes/encounters/EncounterIronsworn.js";
 import type { Source } from "@classes/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
-import type { EncounterNatureId, IEncounterNatureInfo } from "@json_out/encounters/IEncounterNatureInfo.js";
+import { Gamespace } from "@json_out/index.js";
+import type { IEncounterNatureInfo } from "@json_out/index.js";
 import type { EncounterNatureIronsworn  } from "@json_out/index.js";
-import type { IDisplayWithTitle } from "@json_out/meta/index.js";
+import type { IDisplayWithTitle } from "@json_out/index.js";
 import type { IEncounterNatureInfoYaml } from "@yaml_in/encounters/IEncounterIronswornYaml.js";
 
 /**

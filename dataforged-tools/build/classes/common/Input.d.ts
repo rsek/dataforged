@@ -1,9 +1,7 @@
 import type { Asset } from "../assets/Asset.js";
 import type { AssetAbility } from "../assets/AssetAbility.js";
-import type { IAsset, IAssetAbility, IInput, IInputClock, IInputNumber, IInputText } from "../../json_out/assets/index.js";
-import type { ClockSegments } from "../../json_out/common/index.js";
-import { ClockType } from "../../json_out/common/index.js";
-import type { InputType } from "../../json_out/common/InputType.js";
+import { ClockType } from "../../json_out/index.js";
+import type { ClockSegments, IAsset, IAssetAbility, IInput, IInputClock, IInputNumber, IInputText, InputType } from "../../json_out/index.js";
 import type { IInputClockYaml, IInputNumberYaml, IInputTextYaml, IInputYaml } from "../../yaml_in/index.js";
 /**
  * @internal

@@ -1,21 +1,11 @@
-import type { Gamespace } from "../common/Gamespace.js";
-import type { AssetAbilityIdBase, IHasId, IMove } from "../index.js";
-import type { IMoveOutcomes } from "../moves/IMoveOutcomes.js";
-import type { IMoveTrigger } from "../moves/IMoveTrigger.js";
-import type { StubBy } from "../../utils/index.js";
-/**
- * @internal
- */
-export declare type AlterMoveId = `${Gamespace}/${AlterMoveIdBase}`;
-/**
- * @internal
- */
-export declare type AlterMoveIdBase = `${AssetAbilityIdBase}/Alter_Moves/${number}`;
+import type { IHasId, IMove, IMoveOutcomes, IMoveTrigger } from "../index.js";
+import type { IOutcomeInfo, MoveOutcome } from "../moves/IMoveOutcomeInfo.js";
+import type { PartialDeep, StubBy } from "../../utils/index.js";
 /**
  * Describes alterations applied to moves by asset abilities.
  * @public
  */
-export interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "$id" | "Category" | "Display" | "Source" | "Outcomes">, IHasId {
+export interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "Category" | "Display" | "Source" | "Outcomes">, IHasId {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
      */
@@ -40,6 +30,20 @@ export interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "
     /**
      * Added rules text that applies on move outcomes.
      */
-    Outcomes?: Partial<IMoveOutcomes> | undefined;
+    Outcomes?: IAlterMoveOutcomes | undefined;
+}
+/**
+ * @public
+ */
+export interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, MoveOutcome.Strong_Hit | MoveOutcome.Weak_Hit | MoveOutcome.Miss> {
+    [MoveOutcome.Strong_Hit]?: IAlterOutcomeInfo | undefined;
+    [MoveOutcome.Weak_Hit]?: IAlterOutcomeInfo | undefined;
+    [MoveOutcome.Miss]?: IAlterOutcomeInfo | undefined;
+}
+/**
+ * @public
+ */
+export interface IAlterOutcomeInfo extends Omit<PartialDeep<IOutcomeInfo>, "With a Match"> {
+    "With a Match"?: Omit<IAlterOutcomeInfo, "With a Match"> | undefined;
 }
 //# sourceMappingURL=IAlterMove.d.ts.map

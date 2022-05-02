@@ -1,5 +1,5 @@
-import type { IConditionMeter } from "@json_out/common/IConditionMeter.js";
-import type { ICustomStat } from "@json_out/common/ICustomStat.js";
+import type { IConditionMeter } from "@json_out/index.js";
+import type { ICustomStat } from "@json_out/index.js";
 import type { PlayerConditionMeter, Stat } from "@json_out/index.js";
 
 /**

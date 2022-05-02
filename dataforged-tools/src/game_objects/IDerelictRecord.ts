@@ -3,14 +3,14 @@ import type { IStarshipRecord } from "@game_objects/IStarshipRecord.js";
 import type { AttributeKey, DerelictType, GameObjectType } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
  */
 export type IDerelictRecord = IPlaceRecord<GameObjectType.Derelict, AttributeKey.DerelictType|AttributeKey.InitialContact> & {
   [AttributeKey.InitialContact]: StarshipInitialContact.Derelict|SettlementInitialContact.Derelict;
 };
 
 /**
- * @public
+ * @internal
  */
 export type IDerelictStarshipRecord = Omit<IStarshipRecord<AttributeKey.DerelictType>, "Object type"> & {
   "Object type": GameObjectType.Derelict;
@@ -18,7 +18,7 @@ export type IDerelictStarshipRecord = Omit<IStarshipRecord<AttributeKey.Derelict
   [AttributeKey.InitialContact]: StarshipInitialContact.Derelict;
 };
 /**
- * @public
+ * @internal
  */
 export type IDerelictSettlementRecord = Omit<ISettlementRecord<AttributeKey.DerelictType>, "Object type"> & {
   "Object type": GameObjectType.Derelict;

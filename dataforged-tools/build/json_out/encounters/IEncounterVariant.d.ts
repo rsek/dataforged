@@ -1,10 +1,5 @@
-import type { EncounterIdStarforged, IEncounterStarforged } from "./IEncounterStarforged.js";
+import type { IEncounterStarforged } from "../index.js";
 import type { StubBy } from "../../utils/types/Stub.js";
-/**
- * @internal
- * @asType string
- */
-export declare type EncounterVariantId = `${EncounterIdStarforged}/${string}`;
 /**
  * Represents a variant encounter 'stubs' included with a parent encounter in *Ironsworn: Starforged*.
  * @public

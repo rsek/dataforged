@@ -1,35 +1,41 @@
 import { Asset, SourceInheritor } from "@classes/index.js";
-import type { AssetTypeName } from "@json_out/assets/AssetTypeName.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { AssetTypeId, AssetTypeIdFragment, IAssetType, IDisplayWithTitle, ISource } from "@json_out/index.js";
+import type { Gamespace , IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
-import type { RequireKey } from "@utils/types/RequireKey.js";
+import { toIdFragment } from "@utils/toIdFragment.js";
 import { validateColor } from "@utils/validateColor.js";
-import type { IAssetTypeYaml } from "@yaml_in/assets/IAssetTypeYaml.js";
+import type { IAssetTypeYaml } from "@yaml_in/index.js";
+import _ from "lodash-es";
 
 /**
  * @internal
  */
 export class AssetType extends SourceInheritor implements IAssetType {
   $id: IAssetType["$id"];
-  Name: AssetTypeName;
+  Name: string;
   Aliases?: string[] | undefined;
   Description: string;
   Assets: Asset[];
   Display: IDisplayWithTitle;
+  Usage: IAssetUsage;
   constructor(json: IAssetTypeYaml, gamespace: Gamespace, rootSource: ISource) {
     super(json.Source ?? {}, rootSource);
-    this.$id = `${gamespace}/Assets/${json.Name.replaceAll(" ", "_") as AssetTypeIdFragment}`;
+    this.$id = `${gamespace}/Assets/${toIdFragment(json.Name)}`;
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Description = json.Description;
-    this.Display = json.Display ?? {};
+    const display = _.clone(json.Display ?? {}) as IDisplayWithTitle;
+    if (!display.Title) {
+      display.Title = json.Name + "s";
+    }
+    this.Display = display;
     if (this.Display.Color && !validateColor(this.Display.Color)) {
       throw badJsonError(this.constructor, this.Display, "Not a valid color!");
     }
-    if (!this.Display.Title) {
-      this.Display.Title = this.Name + "s";
+    const usage = _.clone(json.Usage ?? {}) as IAssetUsage;
+    if (!usage.Shared) {
+      usage.Shared = false;
     }
+    this.Usage = usage;
     this.Assets = json.Assets.map(asset => new Asset(asset, gamespace, this, rootSource));
   }
 }

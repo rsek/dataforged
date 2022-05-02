@@ -1,14 +1,17 @@
-import type { IOracleCategory, OracleCategoryName, OracleSubcategoryName } from "../../json_out/index.js";
+import type { IOracleCategory } from "../../json_out/index.js";
 import type { IOracleUsageYaml, IOracleYaml, IRequirementsYaml, ITemplateOracleCategoryYaml, ITemplateYamlBase } from "../index.js";
+/**
+ * @internal
+ */
 export interface IOracleCategoryYaml extends ITemplateYamlBase, Omit<Partial<IOracleCategory>, "Oracles" | "Categories" | "Usage"> {
     $id: IOracleCategory["$id"];
-    Name: OracleCategoryName;
+    Name: string;
     Requires?: IRequirementsYaml | undefined;
     Usage?: IOracleUsageYaml | undefined;
     Oracles?: IOracleYaml[] | undefined;
     Categories?: IOracleCategoryYaml[] | undefined;
     _templateCategory?: ITemplateOracleCategoryYaml | undefined;
-    _childOf?: OracleCategoryName | undefined;
-    _parentOf?: OracleSubcategoryName[] | undefined;
+    _childOf?: IOracleCategory["$id"] | undefined;
+    _parentOf?: IOracleCategory["$id"][] | undefined;
 }
 //# sourceMappingURL=IOracleCategoryYaml.d.ts.map

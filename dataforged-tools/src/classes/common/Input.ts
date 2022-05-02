@@ -1,9 +1,8 @@
 import type { Asset } from "@classes/assets/Asset.js";
 import type { AssetAbility } from "@classes/assets/AssetAbility.js";
-import type { IAsset, IAssetAbility, IInput, IInputClock, IInputNumber, IInputText, InputId } from "@json_out/assets/index.js";
-import type { ClockSegments } from "@json_out/common/index.js";
-import { ClockType } from "@json_out/common/index.js";
-import type { InputType } from "@json_out/common/InputType.js";
+import { ClockType } from "@json_out/index.js";
+import type { ClockSegments, IAsset, IAssetAbility, IInput, IInputClock, IInputNumber , IInputText , InputType } from "@json_out/index.js";
+import { toIdFragment } from "@utils/toIdFragment.js";
 import type { IInputClockYaml, IInputNumberYaml, IInputTextYaml, IInputYaml } from "@yaml_in/index.js";
 
 /**
@@ -16,7 +15,7 @@ export abstract class Input implements IInput {
   "Input Type": InputType;
   constructor(json: IInputYaml, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
     this["Input Type"] = json["Input Type"];
-    this.$id = `${parent.$id}/Inputs/${json.Name.replaceAll(" ", "_")}`;
+    this.$id = `${parent.$id}/Inputs/${toIdFragment(json.Name)}`;
     this.Name = json.Name;
     this["Input Type"] = json["Input Type"];
   }

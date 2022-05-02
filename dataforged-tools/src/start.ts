@@ -1,7 +1,7 @@
 import "source-map-support/register.js";
 import { IMG_PATH, JSON_PATHS, MASTER_PNG_PATH } from "@constants/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
-import type { Starforged } from "@json_out/Starforged.js";
+import { Gamespace } from "@json_out/index.js";
+import type { Starforged } from "@json_out/index.js";
 import { buildDataforged } from "@utils/buildDataforged.js";
 import { buildImages } from "@utils/buildImages.js";
 import { writeJson } from "@utils/io/writeJSON.js";

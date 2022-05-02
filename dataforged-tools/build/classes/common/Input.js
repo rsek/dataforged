@@ -1,11 +1,12 @@
-import { ClockType } from "../../json_out/common/index.js";
+import { ClockType } from "../../json_out/index.js";
+import { toIdFragment } from "../../utils/toIdFragment.js";
 /**
  * @internal
  */
 export class Input {
     constructor(json, parent) {
         this["Input Type"] = json["Input Type"];
-        this.$id = `${parent.$id}/Inputs/${json.Name.replaceAll(" ", "_")}`;
+        this.$id = `${parent.$id}/Inputs/${toIdFragment(json.Name)}`;
         this.Name = json.Name;
         this["Input Type"] = json["Input Type"];
     }

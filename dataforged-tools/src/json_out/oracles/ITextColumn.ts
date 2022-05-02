@@ -1,5 +1,4 @@
-import type { IRow, ITableColumnBase } from "@json_out/index.js";
-import type { IOracle } from "@json_out/oracles/IOracle.js";
+import type { IOracle, IRow , ITableColumnBase } from "@json_out/index.js";
 import type { KeysWithValuesOfType } from "@utils/types/KeysWithValuesOfType.js";
 
 /**

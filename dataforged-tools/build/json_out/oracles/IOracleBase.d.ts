@@ -1,10 +1,9 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasOracleUsage, IHasSource, IOracle, IOracleContent, IOracleUsage } from "../index.js";
-import type { IOracleCategory } from "./IOracleCategory.js";
+import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IOracle, IOracleCategory, IOracleUsage } from "../index.js";
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
  * @public
  */
-export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent<IOracleContent> & IHasOracleUsage<IOracleUsage>>, IHasId, IHasDisplay, IHasSource {
+export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource {
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
@@ -16,9 +15,13 @@ export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHa
     Oracles?: IOracle[] | undefined;
     /**
      * The ID of the most recent Oracle ancestor of this item, if any.
-     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-/]+$
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
      */
     "Member of"?: IOracle["$id"] | undefined;
     Display: IDisplayWithTitle;
+    /**
+     * Information on the usage of this oracle: recommended number of rolls, etc.
+     */
+    Usage?: IOracleUsage | undefined;
 }
 //# sourceMappingURL=IOracleBase.d.ts.map

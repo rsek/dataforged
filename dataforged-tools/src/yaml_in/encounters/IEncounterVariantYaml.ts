@@ -1,8 +1,11 @@
-import type { ChallengeRank, EncounterIdStarforged, EncounterNatureStarforged, EncounterTags } from "@json_out/index.js";
+import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterVariant } from "@json_out/index.js";
 import type { IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
+/**
+ * @internal
+ */
 export interface IEncounterVariantYaml extends Partial<IEncounterStarforgedYaml> {
-  $id?: EncounterIdStarforged;
+  $id?: IEncounterVariant["$id"];
   Name: string;
   Rank: ChallengeRank;
   Description: string;

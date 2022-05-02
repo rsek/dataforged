@@ -1,5 +1,4 @@
-import type { IOutcomeInfo } from "../../json_out/index.js";
-import type { IMoveReroll } from "../../json_out/moves/IMoveReroll.js";
+import type { IMoveReroll, IOutcomeInfo } from "../../json_out/index.js";
 /**
  * @internal
  */
@@ -8,6 +7,7 @@ export declare class OutcomeInfo implements IOutcomeInfo {
     Text: string;
     Reroll?: IMoveReroll | undefined;
     "With a Match"?: OutcomeInfo | undefined;
+    "In Control"?: boolean | undefined;
     constructor(json: Omit<IOutcomeInfo, "$id">, id: IOutcomeInfo["$id"]);
 }
 //# sourceMappingURL=MoveOutcome.d.ts.map

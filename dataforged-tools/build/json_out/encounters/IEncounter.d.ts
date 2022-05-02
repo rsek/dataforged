@@ -1,4 +1,4 @@
-import type { IEncounterBase } from "./IEncounterBase.js";
+import type { IEncounterBase } from "../index.js";
 /**
  * Represents a full (i.e. not a stub/variant) encounter entry in *Ironsworn* or *Ironsworn: Starforged*.
  * @public

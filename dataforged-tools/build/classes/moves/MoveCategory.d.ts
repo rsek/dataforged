@@ -1,15 +1,13 @@
 import { Move, Source } from "../index.js";
 import { MoveCategoryDisplay } from "./MoveCategoryDisplay.js";
-import type { Gamespace } from "../../json_out/common/Gamespace.js";
-import type { ISource, MoveCategoryName } from "../../json_out/index.js";
-import type { IMoveCategory } from "../../json_out/moves/IMoveCategory.js";
-import type { IMoveCategoryYaml } from "../../yaml_in/moves/IMoveCategoryYaml.js";
+import type { Gamespace, IMoveCategory, ISource } from "../../json_out/index.js";
+import type { IMoveCategoryYaml } from "../../yaml_in/index.js";
 /**
  * @internal
  */
 export declare class MoveCategory implements IMoveCategory {
     $id: IMoveCategory["$id"];
-    Name: MoveCategoryName;
+    Name: string;
     Source: Source;
     Description: string;
     Moves: Move[];

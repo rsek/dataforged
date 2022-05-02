@@ -1,6 +1,4 @@
-import type { Gamespace } from "../json_out/common/Gamespace.js";
-import type { Ironsworn } from "../json_out/Ironsworn.js";
-import type { Starforged } from "../json_out/Starforged.js";
+import type { Gamespace, Ironsworn, Starforged } from "../json_out/index.js";
 /**
  * Extracts statistics on Ironsworn game data.
  * @param param0

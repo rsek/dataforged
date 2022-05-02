@@ -1,7 +1,5 @@
 import type { Oracle, Row } from "@classes/index.js";
-import type { Gamespace } from "@json_out/common/Gamespace.js";
-import type { Ironsworn } from "@json_out/Ironsworn.js";
-import type { Starforged } from "@json_out/Starforged.js";
+import type { Gamespace , Ironsworn , Starforged } from "@json_out/index.js";
 import { encounterStats } from "@utils/encounterStats.js";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";

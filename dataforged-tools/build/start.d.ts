@@ -1,5 +1,5 @@
 import "source-map-support/register.js";
-import type { Starforged } from "./json_out/Starforged.js";
+import type { Starforged } from "./json_out/index.js";
 declare const data: Starforged;
 export { data };
 //# sourceMappingURL=start.d.ts.map

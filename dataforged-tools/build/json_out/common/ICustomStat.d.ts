@@ -1,5 +1,5 @@
 import type { ICustomStatOption, IHasName } from "../index.js";
-import type { IHasId } from "../meta/index.js";
+import type { IHasId } from "../index.js";
 /**
  * @public
  */

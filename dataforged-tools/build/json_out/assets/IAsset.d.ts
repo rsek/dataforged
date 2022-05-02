@@ -1,20 +1,4 @@
-import type { IAssetState } from "./IAssetState.js";
-import type { IAssetUsage } from "./IAssetUsage.js";
-import type { IInputText } from "./IInput.js";
-import type { IInputSelect, InputSelectOptionType } from "./IInputSelect.js";
-import type { Gamespace } from "../common/Gamespace.js";
-import type { AssetTypeIdBase, IAssetAbility, IAssetAttachment, IAssetType, IConditionMeter, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource } from "../index.js";
-import type { IDisplayWithTitle } from "../meta/IDisplay.js";
-/**
- * @internal
- * @asType string
- */
-export declare type AssetId = `${Gamespace}/${AssetIdBase}`;
-/**
- * @internal
- * @asType string
- */
-export declare type AssetIdBase = `${AssetTypeIdBase}/${string}`;
+import type { IAssetAbility, IAssetAttachment, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplayWithTitle, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource, IInputSelect, IInputText } from "../index.js";
 /**
  * An interface representing an *Ironsworn: Starforged* asset card.
  * @public
@@ -51,7 +35,7 @@ export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Parti
     /**
      * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
      */
-    Inputs?: (IInputText | IInputSelect<InputSelectOptionType>)[] | undefined;
+    Inputs?: (IInputText | IInputSelect)[] | undefined;
     /**
      * An optional markdown string representing the requirement text that appears at the top of some asset cards.
      * @markdown
@@ -66,5 +50,6 @@ export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Parti
      * Information on this asset's condition meter, if any.
      */
     "Condition Meter"?: IConditionMeter | undefined;
+    Tags?: string[] | undefined;
 }
 //# sourceMappingURL=IAsset.d.ts.map

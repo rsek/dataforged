@@ -1,6 +1,6 @@
 import { MD_PATH } from "@constants/index.js";
-import type { Ironsworn } from "@json_out/Ironsworn.js";
-import type { Starforged } from "@json_out/Starforged";
+import type { Ironsworn } from "@json_out/index.js";
+import type { Starforged } from "@json_out/index.js";
 import { buildMoveMarkdown } from "@utils/buildMoveMarkdown.js";
 import { buildOracleMarkdown } from "@utils/buildOracleMarkdown.js";
 /**

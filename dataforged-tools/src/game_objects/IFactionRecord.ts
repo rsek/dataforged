@@ -2,14 +2,14 @@ import type { IActorRecord } from "@game_objects/IActorRecord.js";
 import type { FactionType, GameObjectType } from "@game_objects/index.js";
 import type { AttributeKey } from "@json_out/index.js";
 /**
- * @public
+ * @internal
  */
 export type IFactionRecord = IActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|
   AttributeKey.Influence
 >;
 /**
- * @public
+ * @internal
  */
 export type IFactionGuildRecord = IActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|
@@ -19,7 +19,7 @@ export type IFactionGuildRecord = IActorRecord<GameObjectType.Faction,
   [AttributeKey.FactionType]: FactionType.Guild
 };
 /**
- * @public
+ * @internal
  */
 export type IFactionFringeGroupRecord = IActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|
@@ -29,7 +29,7 @@ export type IFactionFringeGroupRecord = IActorRecord<GameObjectType.Faction,
   [AttributeKey.FactionType]: FactionType.FringeGroup
 };
 /**
- * @public
+ * @internal
  */
 export type IFactionDominionRecord = IActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|

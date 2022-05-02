@@ -1,8 +1,8 @@
 import type { EncounterNatureInfo } from "@classes/encounters/EncounterNatureInfo.js";
 import type { AssetType , EncounterStarforged , MoveCategory , OracleCategory , SettingTruth } from "@classes/index.js";
-import { Gamespace } from "@json_out/common/Gamespace.js";
-import type { Ironsworn } from "@json_out/Ironsworn.js";
-import type { Starforged } from "@json_out/Starforged.js";
+import { Gamespace } from "@json_out/index.js";
+import type { Ironsworn } from "@json_out/index.js";
+import type { Starforged } from "@json_out/index.js";
 import { buildAssets } from "@utils/buildAssets.js";
 import { buildEncounters } from "@utils/buildEncounters.js";
 import { buildMoves } from "@utils/buildMoves.js";

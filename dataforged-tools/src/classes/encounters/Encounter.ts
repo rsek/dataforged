@@ -1,4 +1,4 @@
-import type { ChallengeRank, EncounterIdIronsworn, EncounterIdStarforged, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter, ISource } from "@json_out/index.js";
+import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter, ISource } from "@json_out/index.js";
 import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
 /**

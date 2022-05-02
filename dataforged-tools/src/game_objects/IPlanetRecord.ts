@@ -2,7 +2,7 @@ import type { IPlaceRecord } from "@game_objects/IPlaceRecord.js";
 import type { AttributeKey, GameObjectType } from "@json_out/index.js";
 
 /**
- * @public
+ * @internal
  */
 export type IPlanetRecord = IPlaceRecord<
   GameObjectType.Planet,

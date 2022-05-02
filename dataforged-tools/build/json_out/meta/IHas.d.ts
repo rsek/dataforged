@@ -1,5 +1,4 @@
-import type { IGameObject, IOracleContent, IOracleUsage, IRequirements, IRow, ISource, ISuggestions, RollTemplate } from "../index.js";
-import type { IDisplay } from "./IDisplay.js";
+import type { IDisplay, IGameObject, IOracleContent, IRequirements, IRollTemplate, IRow, ISource, ISuggestions } from "../index.js";
 /**
  * Interface for items with a user-facing markdown summary.
  * @public
@@ -37,11 +36,11 @@ export interface IHasAliases {
  * Interface for items with sourcing information.
  * @public
  */
-export interface IHasSource<T extends ISource = ISource> {
+export interface IHasSource {
     /**
      * Information on this item's source.
      */
-    Source: T;
+    Source: ISource;
 }
 /**
  * For elements with unique string IDs.
@@ -50,6 +49,7 @@ export interface IHasSource<T extends ISource = ISource> {
 export interface IHasId {
     /**
      * The item's unique string ID.
+     * @pattern ^(Starforged|Ironsworn)/[A-z_/-]+$
      */
     $id: string;
 }
@@ -60,6 +60,7 @@ export interface IHasId {
 export interface IHasName {
     /**
      * The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.
+     *
      * If the item has Display.Title, that should be preferred for most user-facing labels.
      */
     Name: string;
@@ -89,73 +90,65 @@ export interface IHasText {
  * Interface for items that include "non-canonical" suggestions of related items.
  * @public
  */
-export interface IHasSuggestions<T extends ISuggestions = ISuggestions> {
+export interface IHasSuggestions {
     /**
      * "Non-canonical" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.
      */
-    Suggestions: T;
+    Suggestions: ISuggestions;
 }
 /**
  * Interface for items that include roll string templates.
  * @public
  */
-export interface IHasRollTemplate<T extends string> {
+export interface IHasRollTemplate {
     /**
      * Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.
      */
-    "Roll template": RollTemplate<T>;
-}
-/**
- * @public
- */
-export interface IHasOracleUsage<T extends Partial<IOracleUsage> = IOracleUsage> {
-    /**
-     */
-    Usage: T;
+    "Roll template": IRollTemplate;
 }
 /**
  * Interface for items with metadata that describes an oracle's semantic or lexical content.
  * @public
  */
-export interface IHasOracleContent<T extends Partial<IOracleContent> = IOracleContent> {
+export interface IHasOracleContent {
     /**
      * Metadata that describes an oracle's semantic or lexical content.
      */
-    Content: T;
+    Content: IOracleContent;
 }
 /**
  * Interface for items that have prerequisites.
  * @public
  */
-export interface IHasRequirements<T extends Partial<IRequirements> = IRequirements> {
+export interface IHasRequirements {
     /**
      * Prerequisites for this item.
      */
-    Requires: T;
+    Requires: IRequirements;
 }
 /**
  * Interface for items that have a table-like object.
  * @public
  */
-export interface IHasTable<T extends IRow = IRow> {
-    Table: T[];
+export interface IHasTable {
+    Table: IRow[];
 }
 /**
  * Interface for items that have a subtable-like object.
  * @public
  */
-export interface IHasSubtable<T extends IRow = IRow> {
-    Subtable: T[];
+export interface IHasSubtable {
+    Subtable: IRow[];
 }
 /**
  * Interface for items that have associated game objects.
  * @public
  */
-export interface IHasGameObjects<T extends IGameObject = IGameObject> {
+export interface IHasGameObjects {
     /**
      * Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see "Peeling the Onion", p. 293.
      */
-    "Game objects": T[];
+    "Game objects": IGameObject[];
 }
 /**
  * @public
