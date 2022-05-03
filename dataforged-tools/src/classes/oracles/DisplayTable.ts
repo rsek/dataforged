@@ -1,15 +1,16 @@
 import { RollColumn, TextColumn } from "@classes/index.js";
-import type { IDisplayTable, IOracle } from "@json_out/index.js";
+import type { IOracle, ITableDisplayInfo as ITableDisplayInfo } from "@json_out/index.js";
 import { getNameFromId } from "@utils/getNameFromId.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
+import type { ITableDisplayInfoYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export class DisplayTable implements IDisplayTable {
+export class TableDisplayInfo implements ITableDisplayInfo {
   "Result columns": TextColumn[];
   "Roll columns": RollColumn[];
-  constructor(json: Partial<IDisplayTable>, parentId: IOracle["$id"]) {
+  constructor(json: ITableDisplayInfoYaml, parentId: IOracle["$id"]) {
     if (json["Result columns"]) {
       const resultColData = json["Result columns"];
       if (resultColData.length > 1) {

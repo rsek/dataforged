@@ -1,6 +1,7 @@
 export * from "./AttributeRequirements.js";
 export * from "./ConditionMeter.js";
 export * from "./CustomStatOption.js";
+export * from "./Display.js";
 export * from "./Input.js";
 export * from "./InputSelect.js";
 export * from "./MeterBase.js";

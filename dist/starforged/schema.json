@@ -571,6 +571,11 @@
           "type": "string",
           "title": "$id"
         },
+        "Name": {
+          "description": "Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.",
+          "type": "string",
+          "title": "Name"
+        },
         "Moves": {
           "description": "New moves added by this asset ability.",
           "type": "array",
@@ -891,11 +896,14 @@
           "items": {
             "enum": [
               "Bonds",
+              "Bonds Legacy",
               "Combat",
               "Connection",
-              "Discoveries",
+              "Delve",
+              "Discoveries Legacy",
               "Expedition",
-              "Quests",
+              "Journey",
+              "Quests Legacy",
               "Scene Challenge",
               "Vow"
             ],
@@ -1037,6 +1045,7 @@
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
           "type": "string",
           "title": "Date"
         },
@@ -1044,6 +1053,12 @@
           "description": "The page on which the item appears most prominently.",
           "type": "integer",
           "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
         }
       },
       "defaultProperties": [],
@@ -1581,7 +1596,7 @@
             { "$ref": "#/definitions/IAssetAbility" },
             { "$ref": "#/definitions/IAssetAbility" }
           ],
-          "minItems": 0,
+          "minItems": 3,
           "maxItems": 3,
           "title": "Abilities"
         },
@@ -1758,6 +1773,7 @@
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
           "type": "string",
           "title": "Date"
         },
@@ -1765,6 +1781,12 @@
           "description": "The page on which the item appears most prominently.",
           "type": "integer",
           "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
         }
       },
       "defaultProperties": [],
@@ -2219,7 +2241,7 @@
           "title": "$id"
         },
         "Display": {
-          "$ref": "#/definitions/ITableDisplay",
+          "$ref": "#/definitions/IDisplayOracle",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -2280,9 +2302,9 @@
       "additionalProperties": false,
       "required": ["$id", "Category", "Display", "Name", "Source"]
     },
-    "ITableDisplay": {
+    "IDisplayOracle": {
       "description": "Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
-      "title": "ITableDisplay",
+      "title": "IDisplayOracle",
       "type": "object",
       "properties": {
         "Title": {
@@ -2296,9 +2318,14 @@
           "title": "Column of"
         },
         "Table": {
-          "$ref": "#/definitions/IDisplayTable",
+          "$ref": "#/definitions/ITableDisplayInfo",
           "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
           "title": "Table"
+        },
+        "Embed in": {
+          "description": "This table is displayed as embedded in a row of another table.",
+          "type": "string",
+          "title": "Embed in"
         },
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
@@ -2324,9 +2351,9 @@
       "additionalProperties": false,
       "required": ["Table", "Title"]
     },
-    "IDisplayTable": {
+    "ITableDisplayInfo": {
       "description": "Provides information on how a specific oracle table is rendered in the source text.",
-      "title": "IDisplayTable",
+      "title": "ITableDisplayInfo",
       "type": "object",
       "properties": {
         "Result columns": {
@@ -2360,19 +2387,15 @@
           "title": "Use content from"
         },
         "Key": {
-          "$ref": "#/definitions/KeysWithValuesOfType",
           "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
+          "enum": ["Result", "Summary"],
+          "type": "string",
           "title": "Key"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Key", "Label", "Use content from"]
-    },
-    "KeysWithValuesOfType": {
-      "title": "KeysWithValuesOfType",
-      "type": "string",
-      "enum": ["Result"]
     },
     "ITableColumnBase": {
       "description": "Interface with elements common to{@linkIRollColumn}and{@linkITextColumn}.",
@@ -2398,6 +2421,7 @@
         "$id": {
           "anyOf": [
             {
+              "description": "The ID of this row.",
               "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
               "type": ["null", "string"]
             },
@@ -2462,7 +2486,6 @@
           "items": { "$ref": "#/definitions/IAttribute" },
           "title": "Attributes"
         },
-        "Display": { "$ref": "#/definitions/IDisplay", "title": "Display" },
         "Roll template": {
           "$ref": "#/definitions/IRollTemplate",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
@@ -2483,6 +2506,11 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IGameObject" },
           "title": "Game objects"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         }
       },
       "defaultProperties": [],
@@ -2525,39 +2553,6 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Key"]
-    },
-    "IDisplay": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "type": "object",
-      "properties": {
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
     },
     "IRollTemplate": {
       "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
@@ -2630,6 +2625,44 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
+    "IDisplay": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay",
+      "$ref": "#/definitions/IDisplay_1"
+    },
+    "IDisplay_1": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay_1",
+      "type": "object",
+      "properties": {
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        },
+        "Title": {
+          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+          "type": "string",
+          "title": "Title"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
     "IOracleUsage": {
       "description": "Describes the recommended usage of this item.",
       "title": "IOracleUsage",
@@ -2675,6 +2708,11 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IAttributeChoices" },
           "title": "Sets"
+        },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
         }
       },
       "defaultProperties": [],
@@ -2733,6 +2771,7 @@
       "type": "object",
       "properties": {
         "$id": {
+          "description": "The ID of this row.",
           "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$",
           "type": "string",
           "title": "$id"
@@ -2799,7 +2838,6 @@
           "items": { "$ref": "#/definitions/IAttribute" },
           "title": "Attributes"
         },
-        "Display": { "$ref": "#/definitions/IDisplay", "title": "Display" },
         "Suggestions": {
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
@@ -2815,6 +2853,11 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IGameObject" },
           "title": "Game objects"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
         "Quest Starter": {
           "description": "A markdown string describing the quest starter associated with this item.",
@@ -2843,6 +2886,7 @@
       "type": "object",
       "properties": {
         "$id": {
+          "description": "The ID of this row.",
           "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
           "type": "string",
           "title": "$id"
@@ -2904,7 +2948,6 @@
           "items": { "$ref": "#/definitions/IAttribute" },
           "title": "Attributes"
         },
-        "Display": { "$ref": "#/definitions/IDisplay", "title": "Display" },
         "Roll template": {
           "$ref": "#/definitions/IRollTemplate",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
@@ -2925,6 +2968,11 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IGameObject" },
           "title": "Game objects"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         }
       },
       "defaultProperties": [],

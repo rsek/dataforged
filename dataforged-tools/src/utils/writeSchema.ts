@@ -4,42 +4,58 @@ import * as TJS from "typescript-json-schema";
 import { resolve } from "path";
 
 const yamlDeclarations = "./build/dataforged-tools.d.ts";
-const jsonDeclarations = "../dist/index.d.ts";
+const jsonDeclarations = "../dist/types/index.d.ts";
 
-const schemasToWrite: {typeName: string, outFile: string, declarations: string}[] = [
+const schemasToWrite: {typeName: string, outFiles: string[], declarations: string}[] = [
   {
     typeName: "IAssetRootYaml",
-    outFile: "../_master-data/Starforged/schema/assets.json",
+    outFiles: ["../_master-data/schema/assets.json"],
     declarations: yamlDeclarations
   },
   {
     typeName: "IMoveRootYaml",
-    outFile: "../_master-data/Starforged/schema/moves.json",
+    outFiles: ["../_master-data/schema/moves.json"],
     declarations: yamlDeclarations
   },
   {
     typeName: "IEncounterRootYaml",
-    outFile: "../_master-data/Starforged/schema/encounters.json",
+    outFiles: ["../_master-data/schema/encounters.json"],
     declarations: yamlDeclarations
   },
   {
     typeName: "ITruthRootYaml",
-    outFile: "../_master-data/Starforged/schema/setting_truths.json",
+    outFiles: ["../_master-data/schema/setting_truths.json"],
     declarations: yamlDeclarations
   },
   {
     typeName: "IOracleCatRootYaml",
-    outFile: "../_master-data/Starforged/schema/oracles.json",
+    outFiles: ["../_master-data/schema/oracles.json"],
     declarations: yamlDeclarations
   },
   {
+    typeName: "IOracleCategoryYaml",
+    outFiles: ["../_master-data/schema/oracles-ironsworn.json"],
+    declarations: yamlDeclarations
+  },
+  {
+    typeName: "ICyclopediaRootYaml",
+    outFiles: ["../_master-data/schema/cyclopedia.json"],
+    declarations: yamlDeclarations
+  },
+  {
+    typeName: "IDelveSiteRootYaml",
+    outFiles: ["../_master-data/schema/delve_site.json"],
+    declarations: yamlDeclarations
+  },
+
+  {
     typeName: "Starforged",
-    outFile: "../dist/starforged/schema.json",
+    outFiles: ["../dist/starforged/schema.json"],
     declarations: jsonDeclarations
   },
   {
     typeName: "Ironsworn",
-    outFile: "../dist/ironsworn/schema.json",
+    outFiles: ["../dist/ironsworn/schema.json"],
     declarations: jsonDeclarations
   }
 ];
@@ -48,10 +64,10 @@ const schemasToWrite: {typeName: string, outFile: string, declarations: string}[
  * Builds a Dataforged JSON schema for use in YAML data entry.
  * @param declarations - The declarations to build from.
  * @param typeName - the root type to extract.
- * @param outFile - where to write the resulting schema.
+ * @param outFiles - where to write the resulting schema.
  * @internal
  */
-export function writeSchema(declarations: string, typeName: string, outFile: string) {
+export function writeSchema(declarations: string, typeName: string, outFiles: string[]) {
 // optionally pass argument to schema generator
   const settings: TJS.PartialArgs = {
     noExtraProps: true,
@@ -73,15 +89,18 @@ export function writeSchema(declarations: string, typeName: string, outFile: str
     compilerOptions,
   );
 
+  console.log(`[${writeSchema.name}] Generating schema for ${typeName}...`);
   const schema = TJS.generateSchema(program, typeName, settings);
   if (schema) {
-    writeJson(outFile, schema, false);
+    outFiles.forEach(outFile => {
+      console.log(`[${writeSchema.name}] Writing schema for ${typeName} to: ${outFile}`);
+      writeJson(outFile, schema, false);
+    });
   } else {
-    throw Error("Unable to write schema.");
+    throw Error(`[${writeSchema.name}] Unable to write schema for ${typeName}!`);
   }
 }
 
-schemasToWrite.forEach(({ declarations, typeName, outFile }) => {
-  console.log(`Writing schema for ${typeName} to ${outFile}...`);
-  writeSchema(declarations, typeName, outFile);
+schemasToWrite.forEach(({ declarations, typeName, outFiles }) => {
+  writeSchema(declarations, typeName, outFiles);
 });

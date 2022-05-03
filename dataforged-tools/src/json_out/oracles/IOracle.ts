@@ -1,5 +1,4 @@
-import type { IHasName , IOracleBase, IRow, ITableDisplay } from "@json_out/index.js";
-import type { IOracleCategory } from "@json_out/index.js";
+import type { IDisplayOracle , IHasName, IOracleBase, IOracleCategory , IRow } from "@json_out/index.js";
 
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
@@ -12,7 +11,7 @@ export interface IOracle extends IOracleBase, IHasName {
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
    */
   $id: string;
-  Display: ITableDisplay;
+  Display: IDisplayOracle;
   Category: IOracleCategory["$id"];
   "Member of"?: IOracle["$id"] | undefined;
   "Table"?: IRow[] | undefined;

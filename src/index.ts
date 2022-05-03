@@ -1,5 +1,4 @@
-import type { IAssetType, IEncounterStarforged, IMoveCategory, IOracleCategory, ISettingTruth, IEncounterNatureInfo, Starforged, Ironsworn } from "dataforged";
-
+import type { IAssetType, IEncounterStarforged, IMoveCategory, IOracleCategory, ISettingTruth, IEncounterNatureInfo, Starforged, Ironsworn } from "./types";
 
 const starforged: Starforged = {
   assets: require("./starforged/assets.json") as IAssetType[],

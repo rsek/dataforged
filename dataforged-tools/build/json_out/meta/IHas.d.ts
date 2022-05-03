@@ -160,4 +160,10 @@ export interface IHasQuestStarter {
      */
     "Quest Starter": string;
 }
+/**
+ * @public
+ */
+export interface IHasTags {
+    Tags: string[];
+}
 //# sourceMappingURL=IHas.d.ts.map

@@ -4,7 +4,7 @@ import { InputType } from "@json_out/index.js";
 import type { IAsset, IAssetAbility, IInputSelect, IInputSelectAttributeDefinition, IInputSelectOption, IInputSelectOptionSetter , IInputSelectOptionSetterMeter, IInputSelectOptionSetterNumber, IInputSelectOptionSetterStat, IInputSelectOptionSetterString, InputSelectOptionType } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { toIdFragment } from "@utils/toIdFragment.js";
-import type { IInputSelectOptionYaml, IInputSelectYaml } from "@yaml_in/index.js";
+import type { IInputSelectOptionSetterYaml, IInputSelectOptionYaml, IInputSelectYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
@@ -50,7 +50,7 @@ export class InputSelectOptionSetter implements IInputSelectOptionSetter {
   Key: string;
   Type: InputSelectOptionType;
   Value: IInputSelectOptionSetter["Value"];
-  constructor(json: IInputSelectOptionSetter, parent: InputSelectOption) {
+  constructor(json: IInputSelectOptionSetterYaml, parent: InputSelectOption) {
     this.$id = `${parent.$id}/${toIdFragment(json.Key)}`;
     this.Type = json.Type;
     this.Key = json.Key;

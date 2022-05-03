@@ -1,9 +1,9 @@
-import type { IAttributeChoices, IHasRequirements, IHasSuggestions, IRequirements, ISuggestions } from "../index.js";
+import type { IAttributeChoices, IHasRequirements, IHasRollTemplate, IHasSuggestions, IRequirements, ISuggestions } from "../index.js";
 /**
  * Describes the recommended usage of this item.
  * @public
  */
-export interface IOracleUsage extends Partial<IHasRequirements & IHasSuggestions> {
+export interface IOracleUsage extends Partial<IHasRequirements & IHasSuggestions & IHasRollTemplate> {
     /**
      * Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.
      *

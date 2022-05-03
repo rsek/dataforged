@@ -11,8 +11,8 @@ import _ from "lodash-es";
 export class AssetAbility {
     constructor(json, id, gamespace, parent) {
         var _a, _b;
-        /* Setting the id of the asset ability. */
         this.$id = id;
+        this.Name = json.Name;
         this.Text = json.Text;
         if (json.Inputs) {
             this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this));

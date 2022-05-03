@@ -1,4 +1,4 @@
-import { OracleContent, OracleUsage, Row, SourceInheritor, TableDisplay } from "../index.js";
+import { DisplayOracle, OracleContent, OracleUsage, Row, SourceInheritor } from "../index.js";
 import type { Gamespace, IOracle, IOracleCategory } from "../../json_out/index.js";
 import type { IOracleYaml } from "../../yaml_in/index.js";
 import type { IOracleCategoryYaml } from "../../yaml_in/oracles/IOracleCategoryYaml.js";
@@ -12,7 +12,7 @@ export declare class Oracle extends SourceInheritor implements IOracle {
     "Member of"?: IOracle["$id"] | undefined;
     Category: IOracleCategory["$id"];
     Description?: string | undefined;
-    Display: TableDisplay;
+    Display: DisplayOracle;
     Usage?: OracleUsage | undefined;
     Content?: OracleContent | undefined;
     Table?: Row[] | undefined;

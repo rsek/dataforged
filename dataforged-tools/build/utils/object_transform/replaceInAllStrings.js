@@ -1,4 +1,4 @@
-import jsonpath from "jsonpath";
+import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 /**
  * Recurses over an object and replaces a substring with another string.
@@ -10,11 +10,17 @@ import _ from "lodash-es";
 export function replaceInAllStrings(object, searchValue, replaceValue) {
     // console.log("args", arguments);
     const jsonClone = _.cloneDeep(object);
-    jsonpath.apply(jsonClone, "$..*", (match) => {
-        if (typeof match === "string") {
-            return match.replaceAll(searchValue, replaceValue);
+    JSONPath({
+        path: `$..*@string().[?(@.match("${(searchValue)}"))]`,
+        json: jsonClone,
+        resultType: "all",
+        callback: ({ value, parent, parentProperty, path, pointer }) => {
+            // console.log("found string:",value);
+            // if (value.includes(searchValue)) {
+            parent[parentProperty] = value.replaceAll(searchValue, replaceValue);
+            // console.log("new string:", parent[parentProperty]);
+            // }
         }
-        return match;
     });
     return jsonClone;
 }

@@ -1,7 +1,8 @@
 import { OracleCategory } from "@classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "@constants/index.js";
 import { Gamespace } from "@json_out/index.js";
-import type { IOracle, IOracleCategory, ISource } from "@json_out/index.js";
+import type { IOracle, IOracleCategory, IRow , ISource } from "@json_out/index.js";
+import { oracleStats } from "@utils/dataforgedStats.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
@@ -12,8 +13,7 @@ import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
 import type { IOracleCatRoot } from "@yaml_in/oracles/IOracleCatRoot";
 import type { IOracleParentCatRootYaml } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
 import FastGlob from "fast-glob";
-import jsonpath from "jsonpath";
-import _ from "lodash-es";
+import { JSONPath } from "jsonpath-plus";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
   Name: string;
@@ -77,12 +77,7 @@ export function buildOracles(gamespace: Gamespace = Gamespace.Starforged): Oracl
     }
   });
   const json: OracleCategory[] = categories.map(categoryData => new OracleCategory(categoryData, gamespace));
-
-  const catCount = categories.length;
-  const subcatCount = subcategories.length;
-  const tableCount = jsonpath.query(json, "$..[?(@.Table||@.Subtable)]").length;
-
-  buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
+  buildLog(buildOracles, `Finished building ${oracleStats(json)}`);
   return json;
 }
 /**

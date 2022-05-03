@@ -1,25 +1,25 @@
-import { DisplayTable } from "@classes/index.js";
-import type { IDisplayTable, IOracle, ITableDisplay } from "@json_out/index.js";
+import { TableDisplayInfo } from "@classes/index.js";
+import type { IDisplayOracle as IDisplayOracle, IOracle, ITableDisplayInfo } from "@json_out/index.js";
 
 /**
  * @internal
  */
-export class TableDisplay implements ITableDisplay {
+export class DisplayOracle implements IDisplayOracle {
   Title: string;
   "Column of"?: IOracle["$id"] | undefined;
-  Table: DisplayTable;
-  Images?: ITableDisplay["Images"];
-  Icon?: ITableDisplay["Icon"];
-  constructor(json: Partial<ITableDisplay>, parentName: string, parentId: IOracle["$id"]) {
+  Table: TableDisplayInfo;
+  Images?: IDisplayOracle["Images"];
+  Icon?: IDisplayOracle["Icon"];
+  constructor(json: Partial<IDisplayOracle>, parentName: string, parentId: IOracle["$id"]) {
     this.Title = json.Title ?? parentName;
     this.Images = json.Images;
     this.Icon = json.Icon;
     this["Column of"] = (json["Column of"]) ?? undefined;
-    const tableData = json.Table as Partial<IDisplayTable>;
+    const tableData = json.Table as Partial<ITableDisplayInfo>;
     if (tableData) {
-      this.Table = new DisplayTable(tableData, parentId);
+      this.Table = new TableDisplayInfo(tableData, parentId);
     } else {
-      this.Table = new DisplayTable({}, parentId);
+      this.Table = new TableDisplayInfo({}, parentId);
     }
   }
 }

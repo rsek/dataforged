@@ -1,5 +1,13 @@
-import jsonpath from "jsonpath";
+import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
+
+interface JpResult<T> {
+  "value": T,
+  "parent": Record<number|string, T>,
+  "parentProperty": keyof this["parent"],
+  "path": string,
+  "pointer": string,
+}
 
 /**
  * Recurses over an object and replaces a substring with another string.
@@ -8,14 +16,20 @@ import _ from "lodash-es";
  * @param replaceValue - The value to replace.
  * @returns A copy of the original JSON object with all strings replaced.
  */
-export function replaceInAllStrings<T>(object: T, searchValue: string, replaceValue: string): T {
+export function replaceInAllStrings<T extends object>(object: T, searchValue: string, replaceValue: string): T {
   // console.log("args", arguments);
   const jsonClone = _.cloneDeep(object);
-  jsonpath.apply(jsonClone, "$..*", (match: string) => {
-    if (typeof match === "string") {
-      return match.replaceAll(searchValue, replaceValue);
+  JSONPath({
+    path:`$..*@string().[?(@.match("${(searchValue)}"))]`,
+    json: jsonClone,
+    resultType: "all",
+    callback: ({ value, parent, parentProperty, path, pointer }: JpResult<string>) => {
+      // console.log("found string:",value);
+      // if (value.includes(searchValue)) {
+      parent[parentProperty] = value.replaceAll(searchValue, replaceValue);
+      // console.log("new string:", parent[parentProperty]);
+      // }
     }
-    return match;
   });
   return jsonClone;
 }

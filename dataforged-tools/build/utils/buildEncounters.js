@@ -1,8 +1,8 @@
-import { EncounterNatureInfo } from "../classes/encounters/EncounterNatureInfo.js";
+import { EncounterNatureInfo } from "../classes/cyclopedia/EncounterNatureInfo.js";
 import { EncounterStarforged } from "../classes/index.js";
 import { MASTER_DATA_PATH } from "../constants/index.js";
 import { Gamespace } from "../json_out/index.js";
-import { encounterStats } from "./encounterStats.js";
+import { encounterStats } from "./dataforgedStats.js";
 import { badJsonError } from "./logging/badJsonError.js";
 import { buildLog } from "./logging/buildLog.js";
 import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
@@ -23,7 +23,7 @@ export function buildEncounters(gamespace) {
             break;
         }
         case Gamespace.Ironsworn: {
-            json = encounterRoot.Encounters.map(enc => new EncounterNatureInfo(enc));
+            json = encounterRoot.Encounters.map(enc => new EncounterNatureInfo(enc, encounterRoot.Source));
             break;
         }
         default:

@@ -1,4 +1,4 @@
-import type { IAttribute , IDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
+import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
 
 /**
  * Interface representing a single row in an oracle table.
@@ -10,9 +10,11 @@ export interface IRow extends Partial<
   IHasSuggestions &
   IHasOracleContent &
   IHasSubtable &
-  IHasGameObjects
+  IHasGameObjects &
+  IHasDisplay
 >  {
   /**
+   * The ID of this row.
    * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
    * @nullable
    */
@@ -62,5 +64,4 @@ export interface IRow extends Partial<
   * The attributes set by this row.
    */
   Attributes?: IAttribute[] | undefined;
-  Display?: IDisplay | undefined;
 }

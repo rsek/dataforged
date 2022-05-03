@@ -4,7 +4,7 @@ import { badJsonError } from "../../utils/logging/badJsonError.js";
 /**
  * @internal
  */
-export class DisplayTable {
+export class TableDisplayInfo {
     constructor(json, parentId) {
         if (json["Result columns"]) {
             const resultColData = json["Result columns"];

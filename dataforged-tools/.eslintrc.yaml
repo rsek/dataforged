@@ -6,6 +6,7 @@ ignorePatterns:
   - .github
   - data
   - dist
+  - build
   - "*.json"
   - "*.js"
   - "*.d.ts"
@@ -96,9 +97,9 @@ rules:
   "@typescript-eslint/consistent-type-definitions":
     - warn
     - interface
-  "@typescript-eslint/consistent-indexed-object-style":
-    - warn
-    - record
+  # "@typescript-eslint/consistent-indexed-object-style":
+  #   - warn
+  #   - record
   "@typescript-eslint/consistent-type-imports":
     - 1
     - prefer: type-imports
@@ -111,9 +112,6 @@ rules:
     - selector: variable
       format:
         - UPPER_CASE
-        - camelCase
-    - selector: parameter
-      format:
         - camelCase
       leadingUnderscore: allow
     - selector: typeLike
@@ -231,6 +229,8 @@ rules:
         - ".*"
         - "./dist/*"
         - "dist/*"
+        - "./build/*"
+        - "build/*"
       paths:
         - name: lodash
           message: Use 'lodash-es' instead.

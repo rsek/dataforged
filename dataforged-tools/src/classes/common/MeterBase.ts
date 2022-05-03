@@ -1,5 +1,5 @@
 import type { IMeterBase } from "@json_out/index.js";
-import type { StubExcept } from "@utils/types/Stub.js";
+import type { YamlStub } from "@yaml_in/index.js";
 
 /**
  * Class representing a counter embedded in a Starforged Asset.
@@ -15,7 +15,7 @@ export abstract class MeterBase implements IMeterBase {
    * @param json - the json object to build the counter from
    * @param id - the id of the Counter
    */
-  constructor(json: StubExcept<IMeterBase, "Name"|"Max", "$id">, id: string) {
+  constructor(json: YamlStub<IMeterBase, "Min"|"Value">, id: string) {
     this.$id = id;
     this.Name = json.Name;
     this.Max = json.Max;

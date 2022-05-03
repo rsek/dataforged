@@ -1307,6 +1307,8 @@ Asset Types:
                 Input Type: Number
                 Min: 0
                 Value: 0
+                Adjustable: true
+                Max: null
         Condition Meter:
           Name: Integrity
           Max: 4
@@ -2749,7 +2751,7 @@ Asset Types:
               When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Moves:
               - Name: Loop Back
-                # Burn momentum: false #TODO: add to IMove?
+                # Burn momentum: false #TODO: add to IMove? Move usage?
                 Trigger:
                   Options:
                     - Text: When you loop back to a linked moment in time...
@@ -3278,9 +3280,9 @@ Asset Types:
                     - Text: When you are veiled and make a move to ambush, hide, or sneak (not in darkness)
                       Roll type: Action roll
                       Method: Inherit
-                Preset:
-                  - Die: Action die
-                    Value: 5
+                # Preset:
+                #   - Die: Action die
+                #     Value: 5
                 Text: You may preset your action die to 5.
                 Outcomes: &Shade.1
                   Miss:
@@ -3291,9 +3293,9 @@ Asset Types:
                     - Text: When you are veiled and make a move to ambush, hide, or sneak (in darkness)
                       Roll type: Action roll
                       Method: Inherit
-                Preset:
-                  - Die: Action die
-                    Value: 6
+                # Preset:
+                #   - Die: Action die
+                #     Value: 6
                 Text: You may preset your action die to 6.
                 Outcomes: *Shade.1
           - Text: &move:Asset.Shade |-
@@ -4702,7 +4704,7 @@ Asset Types:
                   Text: When you seek a safe location in a remote environment...
                   Options:
                     - Roll type: Progress roll
-                      Using: [Discoveries]
+                      Using: [Discoveries Legacy]
                 Progress Move: true
                 Text: *move:Asset.Vanguard
                 Outcomes:

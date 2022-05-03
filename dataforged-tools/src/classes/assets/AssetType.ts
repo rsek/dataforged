@@ -1,8 +1,7 @@
+import { DisplayWithTitle } from "@classes/common/Display.js";
 import { Asset, SourceInheritor } from "@classes/index.js";
 import type { Gamespace , IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "@json_out/index.js";
-import { badJsonError } from "@utils/logging/badJsonError.js";
 import { toIdFragment } from "@utils/toIdFragment.js";
-import { validateColor } from "@utils/validateColor.js";
 import type { IAssetTypeYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
@@ -23,14 +22,12 @@ export class AssetType extends SourceInheritor implements IAssetType {
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Description = json.Description;
-    const display = _.clone(json.Display ?? {}) as IDisplayWithTitle;
-    if (!display.Title) {
-      display.Title = json.Name + "s";
-    }
-    this.Display = display;
-    if (this.Display.Color && !validateColor(this.Display.Color)) {
-      throw badJsonError(this.constructor, this.Display, "Not a valid color!");
-    }
+
+    this.Display = new DisplayWithTitle({
+      Title: json.Display?.Title ?? json.Name + "s",
+      Color: json.Display?.Color
+    });
+
     const usage = _.clone(json.Usage ?? {}) as IAssetUsage;
     if (!usage.Shared) {
       usage.Shared = false;

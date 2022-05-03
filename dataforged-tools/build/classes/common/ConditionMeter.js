@@ -7,6 +7,7 @@ export class ConditionMeter extends MeterBase {
     constructor(json, id, assetType) {
         var _a;
         super(json, id);
+        this.Min = 0;
         this.Conditions = [];
         this["Value"] = (_a = json["Value"]) !== null && _a !== void 0 ? _a : json.Max;
         if (json.Conditions) {

@@ -48,6 +48,19 @@ Categories:
             * You sacrifice resources: Suffer -1 supply.
 
           On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: You are successful. Take +1 momentum.
+          Weak Hit:
+            Text: |-
+              You succeed, but face a troublesome cost. Choose one.
+
+                * You are delayed, lose advantage, or face a new danger: Suffer -1 momentum.
+                * You are tired or hurt: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).
+                * You are dispirited or afraid: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
+                * You sacrifice resources: Suffer -1 supply.
+          Miss:
+            Text: You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Secure an Advantage
         Trigger:
           Text: When you assess a situation, make preparations, or attempt to gain leverage...
@@ -86,6 +99,17 @@ Categories:
           On a **weak hit**, your advantage is short-lived. Take +1 momentum.
 
           On a **miss**, you fail or your assumptions betray you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You gain advantage. Choose one.
+
+                * Take control: Make another move now (not a progress move), and add +1.
+                * Prepare to act: Take +2 momentum.
+          Weak Hit:
+            Text: Your advantage is short-lived. Take +1 momentum.
+          Miss:
+            Text: You fail or your assumptions betray you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Gather Information
         Trigger:
           Text: When you search an area, ask questions, conduct an investigation, or follow a track...
@@ -102,6 +126,13 @@ Categories:
           On a **weak hit**, the information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.
 
           On a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: You discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +2 momentum.
+          Weak Hit:
+            Text: The information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.
+          Miss:
+            Text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Heal
         Trigger:
           Text: When you treat an injury or ailment...
@@ -124,6 +155,13 @@ Categories:
           On a **weak hit**, as above, but you must suffer -1 supply or -1 momentum (your choice).
 
           On a **miss**, your aid is ineffective. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: Your care is helpful. If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health.
+          Weak Hit:
+            Text: Your care is helpful, but you must suffer -1 supply or -1 momentum (your choice). If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health. However
+          Miss:
+            Text: Your aid is ineffective. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Resupply
         Trigger:
           Text: When you hunt, forage, or scavenge...
@@ -140,6 +178,13 @@ Categories:
           On a **weak hit**, take up to +2 supply, but suffer -1 momentum for each.
 
           On a **miss**, you find nothing helpful. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: You bolster your resources. Take +2 supply.
+          Weak Hit:
+            Text: Take up to +2 supply, but suffer -1 momentum for each.
+          Miss:
+            Text: You find nothing helpful. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Make Camp
         Trigger:
           Text: When you rest and recover for several hours in the wild...
@@ -160,12 +205,37 @@ Categories:
             * Prepare: When you break camp, add +1 if you Undertake a Journey.
 
           On a **miss**, you take no comfort. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You and your allies may each choose two.
+
+                * Recuperate: Take +1 health for you and any companions.
+                * Partake: Suffer -1 supply and take +1 health for you and any companions.
+                * Relax: Take +1 spirit.
+                * Focus: Take +1 momentum.
+                * Prepare: When you break camp, add +1 if you Undertake a Journey.
+          Weak Hit:
+            Text: |-
+              You and your allies may each choose one.
+
+                * Recuperate: Take +1 health for you and any companions.
+                * Partake: Suffer -1 supply and take +1 health for you and any companions.
+                * Relax: Take +1 spirit.
+                * Focus: Take +1 momentum.
+                * Prepare: When you break camp, add +1 if you Undertake a Journey.
+          Miss:
+            Text: You take no comfort. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Undertake a Journey
         Trigger:
           Text: When you travel across hazardous or unfamiliar lands...
           Options:
             - Roll type: Action roll
               Using: [Wits]
+            # - Roll type: Action roll
+            #   Method: Inherit
+            #   Text: If you are setting off from a community with which you share a bond
+            #   Add: 1
         Source:
           Page: 65
         Text: |-
@@ -187,13 +257,24 @@ Categories:
           On a **weak hit**, you reach a waypoint and mark progress, but suffer -1 supply.
 
           On a **miss**, you are waylaid by a perilous event. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, choose one.
+
+                * You make good use of your resources: Mark progress.
+                * You move at speed: Mark progress and take +1 momentum, but suffer -1 supply.
+          Weak Hit:
+            Text: You reach a waypoint and mark progress, but suffer -1 supply.
+          Miss:
+            Text: You are waylaid by a perilous event. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Reach Your Destination
         Trigger:
           Text: When your journey comes to an end...
           Options:
             - Roll type: Progress roll
               Using:
-                - Journey Progress
+                - Journey
         Source:
           Page: 68
         Progress Move: true
@@ -209,6 +290,8 @@ Categories:
 
           On a **miss**, you have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic).
   - Name: Relationship
+    Source:
+      Page: 69
     Description: |-
       Relationship moves are made as you interact with others in the world, fight duels, form bonds, support your allies, and determine the ultimate fate of your character.
     Moves:
@@ -345,9 +428,9 @@ Categories:
             - Roll type: Progress roll
               Method: All
               Using:
-                - Bonds Track
-                - Bonds Track
-                - Bonds Track
+                - Bonds
+                - Bonds
+                - Bonds
         Progress Move: true
         Text: |-
           When **you retire from your life as Ironsworn**, envision two things: What you hope for, and what you fear. Then, roll the challenge dice and compare to your bonds. Momentum is ignored on this roll.
@@ -358,6 +441,8 @@ Categories:
 
           On a **miss**, your fears are realized.
   - Name: Combat
+    Source:
+      Page: 78
     Description: |-
       When there are no other options, when the sword slips free of its sheath, when the arrow is nocked, when the shield is brought to bear, make these moves.
     Moves:
@@ -454,7 +539,7 @@ Categories:
           Options:
             - Roll type: Progress roll
               Using:
-                - Combat Progress
+                - Combat
         Source:
           Page: 82
         Progress Move: true
@@ -651,6 +736,8 @@ Categories:
             * Exchange each additional -momentum for any combination of -health, -spirit, or -supply as appropriate to the circumstances.
             * Envision an event or discovery ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick).
   - Name: Quest
+    Source:
+      Page: 98
     Description: |-
       Making and fulfilling vows is central to your character’s motivations. These oaths drive your story and give you the means to gain experience and acquire new abilities. When you embark upon a quest, manage your progress on a quest, seek to complete a quest, or gain the rewards of a quest, make these moves.
     Moves:
@@ -694,7 +781,7 @@ Categories:
           Options:
             - Roll type: Progress roll
               Using:
-                - Vow Progress
+                - Vow
         Progress Move: true
         Text: |-
           When **you achieve what you believe to be the fulfillment of your vow**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
@@ -720,6 +807,8 @@ Categories:
           Text: When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion...
         Text: When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset.
   - Name: Fate
+    Source:
+      Page: 98
     Description: |-
       In solo and co-op play, the fate moves mediate the result of other moves or serve as inspirational prompts for your story. When you face the outcome of a move, want to know what happens next, or have a question about people, places and events external to your character, the fate moves help you discover an answer.
 

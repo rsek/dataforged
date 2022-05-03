@@ -1,4 +1,5 @@
-import type { ICustomStat, IHasId, IHasText, ProgressType, RollableStat, RollMethod, RollType } from "../index.js";
+import type { ProgressTypeIronsworn } from "../common/ProgressType.js";
+import type { ICustomStat, IHasId, IHasText, ProgressTypeStarforged, RollableStat, RollMethod, RollType } from "../index.js";
 /**
  * @public
  */
@@ -18,7 +19,7 @@ export interface IMoveTriggerOptionBase extends IHasId, Partial<IHasText> {
     /**
      * The stat(s) or progress track(s) that may be rolled with this move trigger option.
      */
-    Using: (RollableStat | ProgressType)[];
+    Using: (RollableStat | ProgressTypeStarforged | ProgressTypeIronsworn)[];
     /**
      * Defines a custom stat, if one is included in this object's `With` array.
      */
@@ -36,6 +37,6 @@ export interface IMoveTriggerOptionAction extends IMoveTriggerOptionBase {
  */
 export interface IMoveTriggerOptionProgress extends IMoveTriggerOptionBase {
     "Roll type": RollType.Progress;
-    Using: ProgressType[];
+    Using: (ProgressTypeStarforged | ProgressTypeIronsworn)[];
 }
 //# sourceMappingURL=IMoveTriggerOption.d.ts.map

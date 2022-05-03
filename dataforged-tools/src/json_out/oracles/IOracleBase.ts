@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IOracle, IOracleCategory , IOracleUsage } from "@json_out/index.js";
+import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasRollTemplate, IHasSource, IOracle, IOracleCategory , IOracleUsage } from "@json_out/index.js";
 
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.

@@ -1,6 +1,7 @@
 import { AssetAbility } from "@classes/assets/AssetAbility.js";
 import { AssetState } from "@classes/assets/AssetState.js";
 import { ConditionMeter } from "@classes/common/ConditionMeter.js";
+import { DisplayWithTitle } from "@classes/common/Display.js";
 import type { InputText } from "@classes/common/Input.js";
 import type { InputSelect } from "@classes/common/InputSelect.js";
 import { SourceInheritor } from "@classes/common/SourceInheritor.js";
@@ -38,10 +39,11 @@ export class Asset extends SourceInheritor implements IAsset {
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Aliases = json.Aliases;
-    this.Display = {
+    this.Display = new DisplayWithTitle({
       Title: json.Display?.Title ?? this.Name,
+      Icon: json.Display?.Icon,
       Color: json.Display?.Color ?? parent.Display.Color
-    };
+    });
     this.Usage = {
       Shared: [ "Command Vehicle", "Support Vehicle", "Module" ].includes(parent.Name) ? true : false
     };

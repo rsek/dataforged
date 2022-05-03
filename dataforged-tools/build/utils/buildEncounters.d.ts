@@ -1,4 +1,4 @@
-import { EncounterNatureInfo } from "../classes/encounters/EncounterNatureInfo.js";
+import { EncounterNatureInfo } from "../classes/cyclopedia/EncounterNatureInfo.js";
 import { EncounterStarforged } from "../classes/index.js";
 import { Gamespace } from "../json_out/index.js";
 /**

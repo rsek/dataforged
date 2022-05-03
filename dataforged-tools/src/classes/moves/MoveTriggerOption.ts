@@ -1,7 +1,7 @@
 import { CustomStat } from "@classes/moves/CustomStat.js";
-import type { ICustomStat, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionBase, IMoveTriggerOptionProgress, ProgressType, RollableStat } from "@json_out/index.js";
+import type { ICustomStat, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionBase, IMoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat } from "@json_out/index.js";
 import { Replacement , RollMethod , RollType } from "@json_out/index.js";
-import type { IMoveTriggerOptionActionYaml, IMoveTriggerOptionProgressYaml, YamlStub } from "@yaml_in/index.js";
+import type { IMoveTriggerOptionActionYaml, IMoveTriggerOptionProgressYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
@@ -11,9 +11,9 @@ export abstract class MoveTriggerOption implements IMoveTriggerOptionBase {
   Text?: string | undefined;
   "Roll type": RollType;
   Method: RollMethod;
-  Using: (RollableStat | ProgressType)[];
+  Using: (RollableStat | ProgressTypeStarforged|ProgressTypeIronsworn)[];
   "Custom stat"?: ICustomStat | undefined;
-  constructor(json: YamlStub<IMoveTriggerOptionBase, "Using"|"Method"|"Roll type">, parent: IMoveTrigger, index: number) {
+  constructor(json: IMoveTriggerOptionActionYaml|IMoveTriggerOptionProgressYaml, parent: IMoveTrigger, index: number) {
     this.$id = `${parent.$id}/Options/${index+1}`;
     this.Text = json.Text;
     this["Roll type"] = json["Roll type"] ?? RollType.Action;
@@ -44,7 +44,7 @@ export class MoveTriggerOptionAction extends MoveTriggerOption implements IMoveT
  */
 export class MoveTriggerOptionProgress extends MoveTriggerOption implements IMoveTriggerOptionProgress {
   "Roll type": RollType.Progress;
-  Using!: ProgressType[];
+  Using!: (ProgressTypeStarforged|ProgressTypeIronsworn)[];
   constructor(json: IMoveTriggerOptionProgressYaml, parent: IMoveTrigger, index: number) {
     super(json, parent, index);
   }

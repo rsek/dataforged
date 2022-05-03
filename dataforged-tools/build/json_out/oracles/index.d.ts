@@ -1,13 +1,13 @@
 /**
  * @module Json.Oracles
  */
-export * from "./IDisplayTable.js";
+export * from "./ITableDisplayInfo.js";
 export * from "./IMultipleRolls.js";
 export * from "./IOracle.js";
 export * from "./IOracleBase.js";
 export * from "./IOracleCategory.js";
 export * from "./IOracleContent.js";
-export * from "./IOracleDisplay.js";
+export * from "./IDisplayOracle.js";
 export * from "./IOracleUsage.js";
 export * from "./IRollColumn.js";
 export * from "./IRollTemplate.js";

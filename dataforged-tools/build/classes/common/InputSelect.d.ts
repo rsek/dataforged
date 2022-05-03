@@ -1,7 +1,7 @@
 import { Input } from "./Input.js";
 import { InputType } from "../../json_out/index.js";
 import type { IAsset, IAssetAbility, IInputSelect, IInputSelectAttributeDefinition, IInputSelectOption, IInputSelectOptionSetter, IInputSelectOptionSetterMeter, IInputSelectOptionSetterNumber, IInputSelectOptionSetterStat, IInputSelectOptionSetterString, InputSelectOptionType } from "../../json_out/index.js";
-import type { IInputSelectOptionYaml, IInputSelectYaml } from "../../yaml_in/index.js";
+import type { IInputSelectOptionSetterYaml, IInputSelectOptionYaml, IInputSelectYaml } from "../../yaml_in/index.js";
 /**
  * @internal
  */
@@ -29,6 +29,6 @@ export declare class InputSelectOptionSetter implements IInputSelectOptionSetter
     Key: string;
     Type: InputSelectOptionType;
     Value: IInputSelectOptionSetter["Value"];
-    constructor(json: IInputSelectOptionSetter, parent: InputSelectOption);
+    constructor(json: IInputSelectOptionSetterYaml, parent: InputSelectOption);
 }
 //# sourceMappingURL=InputSelect.d.ts.map

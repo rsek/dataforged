@@ -14,6 +14,7 @@ import _ from "lodash-es";
  */
 export class AssetAbility implements IAssetAbility {
   $id: IAssetAbility["$id"];
+  Name?: string | undefined;
   Text: string;
   Moves?: Move[] | undefined;
   Inputs?: (InputNumber|InputClock|InputText)[] | undefined;
@@ -22,8 +23,8 @@ export class AssetAbility implements IAssetAbility {
   "Alter Momentum"?: IAlterMomentum | undefined;
   Enabled: boolean;
   constructor(json: IAssetAbilityYaml, id: IAssetAbility["$id"], gamespace: Gamespace, parent: IAsset) {
-    /* Setting the id of the asset ability. */
     this.$id = id;
+    this.Name = json.Name;
     this.Text = json.Text;
     if (json.Inputs) {
       this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this)) as (InputNumber|InputClock|InputText)[];

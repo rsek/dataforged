@@ -345,6 +345,10 @@ export declare interface IAssetAbility extends IHasId, IHasText {
      */
     $id: string;
     /**
+     * Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.
+     */
+    Name?: string | undefined;
+    /**
      * New moves added by this asset ability.
      */
     Moves?: IMove[] | undefined;
@@ -538,6 +542,20 @@ export declare interface ICustomStatOption extends IHasId, IHasName {
 }
 
 /**
+ * Basic interface for elements common to "cyclopedia" style pages, such as Regions (*Ironsworn*) and Encounters *(Ironsworn* and *Starforged*)
+ * @public
+ */
+export declare interface ICyclopediaEntry extends IHasName, IHasId, IHasDisplay, IHasDescription, IHasSource, Partial<IHasSummary & IHasQuestStarter & IHasTags> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/([A-z_-]+/)+$
+     */
+    $id: string;
+    Name: string;
+    Tags?: string[] | undefined;
+    Features?: string[] | undefined;
+}
+
+/**
  * Interface for data relevant to an item's display/rendering.
  * @public
  */
@@ -599,7 +617,7 @@ export declare interface IEncounter extends IEncounterBase {
  * @see {@link IEncounter}, {@link IEncounterVariant}
  * @public
  */
-export declare interface IEncounterBase extends IHasDisplay, IHasDescription, IHasSource, IHasName, IHasId, Partial<IHasQuestStarter & IHasSummary> {
+export declare interface IEncounterBase extends ICyclopediaEntry {
     /**
      * @example "Starforged/Encounters/Chiton"
      * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-]+$
@@ -872,6 +890,13 @@ export declare interface IHasTable {
 }
 
 /**
+ * @public
+ */
+export declare interface IHasTags {
+    Tags: string[];
+}
+
+/**
  * Interface for items that reproduce Starforged rules text in markdown.
  * @public
  */
@@ -1062,6 +1087,20 @@ export declare interface IInputText extends IInput {
 }
 
 /**
+ * @public
+ */
+export declare interface IIronswornRegion extends ICyclopediaEntry {
+    /**
+     * @pattern ^Ironsworn/Regions/[A-z_-]$
+     */
+    $id: string;
+    Summary: string;
+    Features: string[];
+    "Quest Starter": string;
+    Source: ISource;
+}
+
+/**
  * Interface representing a Meter.
  * @public
  */
@@ -1248,7 +1287,7 @@ export declare interface IMoveTriggerOptionBase extends IHasId, Partial<IHasText
     /**
      * The stat(s) or progress track(s) that may be rolled with this move trigger option.
      */
-    Using: (RollableStat | ProgressType)[];
+    Using: (RollableStat | ProgressTypeStarforged | ProgressTypeIronsworn)[];
     /**
      * Defines a custom stat, if one is included in this object's `With` array.
      */
@@ -1260,7 +1299,7 @@ export declare interface IMoveTriggerOptionBase extends IHasId, Partial<IHasText
  */
 export declare interface IMoveTriggerOptionProgress extends IMoveTriggerOptionBase {
     "Roll type": RollType.Progress;
-    Using: ProgressType[];
+    Using: (ProgressTypeStarforged | ProgressTypeIronsworn)[];
 }
 
 /**
@@ -1542,8 +1581,9 @@ export declare const ironsworn: Ironsworn;
  * Interface representing a single row in an oracle table.
  * @public
  */
-export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects> {
+export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects & IHasDisplay> {
     /**
+     * The ID of this row.
      * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
      * @nullable
      */
@@ -1593,7 +1633,6 @@ export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & I
      * The attributes set by this row.
      */
     Attributes?: IAttribute[] | undefined;
-    Display?: IDisplay | undefined;
 }
 
 /**
@@ -1654,12 +1693,18 @@ export declare interface ISource {
     Title: SourceTitle;
     /**
      * The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.
+     * @pattern ^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$
      */
     Date?: string | undefined;
     /**
      * The page on which the item appears most prominently.
      */
     Page?: number | undefined;
+    /**
+     * The URL where the source is available.
+     * @pattern ^https?://.*$
+     */
+    Url?: string | undefined;
 }
 
 /**
@@ -1873,8 +1918,14 @@ export declare type PartialBy<T, K extends keyof any = ""> = Omit<T, K> & Partia
  * @public
  */
 export declare type PartialDeep<T> = Partial<{
-    [P in keyof T]: Partial<T[P]>;
+    [P in keyof T]: T[P] extends Array<unknown> ? (T[P] | undefined) : Partial<T[P]>;
 }>;
+
+/**
+ * Makes a type where K and its properties are nullable.
+ * @public
+ */
+export declare type PartialDeepBy<T, K extends keyof any = ""> = Omit<T, K> & PartialDeep<Pick<T, K extends keyof T ? K : never>>;
 
 /**
  * Make all properties of T nullable except for K, which is required.
@@ -1933,15 +1984,27 @@ export declare enum PlayerConditionMeter {
 /**
  * @public
  */
-export declare enum ProgressType {
+export declare enum ProgressTypeIronsworn {
+    Combat = "Combat",
+    Vow = "Vow",
+    Journey = "Journey",
+    Delve = "Delve",
+    SceneChallenge = "Scene Challenge",
+    Bonds = "Bonds"
+}
+
+/**
+ * @public
+ */
+export declare enum ProgressTypeStarforged {
     Combat = "Combat",
     Vow = "Vow",
     Expedition = "Expedition",
     Connection = "Connection",
     SceneChallenge = "Scene Challenge",
-    Quests = "Quests",
-    Bonds = "Bonds",
-    Discoveries = "Discoveries"
+    Quests = "Quests Legacy",
+    Bonds = "Bonds Legacy",
+    Discoveries = "Discoveries Legacy"
 }
 
 /**

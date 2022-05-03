@@ -17,7 +17,7 @@ export interface ITextColumn extends ITableColumnBase {
   /**
    * The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.
    */
-  Key: KeysWithValuesOfType<IRow, string>;
+  Key: "Result" | "Summary";
 }
 
 export { KeysWithValuesOfType };

@@ -13,15 +13,6 @@ interface ISettingTruthsRoot extends IYamlWithRef {
   Truths: ISettingTruthYaml[];
 }
 
-interface ISettingTruthOptionIronsworn extends IHasDescription, IHasQuestStarter {
-}
-
-type SettingTruthIdIronsworn = `${Gamespace.Ironsworn}/${string}`;
-
-interface ISettingTruthIronsworn extends IHasName, IHasSource, IHasId {
-  Options: ISettingTruthOptionIronsworn[];
-}
-
 /**
  * It takes the YAML files that contain the setting truths, and builds a list of SettingTruth objects
  * @returns An array of SettingTruth objects.

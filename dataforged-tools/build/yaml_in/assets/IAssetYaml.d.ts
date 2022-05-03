@@ -1,13 +1,13 @@
-import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplay, IInput, IInputClock, IInputNumber, IInputSelect, IInputSelectOption, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "../../json_out/index.js";
+import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplay, IInput, IInputClock, IInputNumber, IInputSelect, IInputSelectOption, IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "../../json_out/index.js";
 import type { PartialDeep } from "../../utils/index.js";
-import type { StubBy, StubExcept } from "../../utils/types/Stub.js";
+import type { StubExcept } from "../../utils/types/Stub.js";
 import type { IMoveTriggerYaml, IMoveYaml, YamlStub } from "../index.js";
 /**
  * @internal
  */
 export interface IAssetTypeYaml extends YamlStub<IAssetType, "Source", "Assets" | "Display" | "Usage"> {
     Assets: IAssetYaml[];
-    Display: Partial<IDisplay>;
+    Display?: Partial<IDisplay> | undefined;
     Usage?: Partial<IAssetUsage> | undefined;
 }
 /**
@@ -22,9 +22,10 @@ export interface IAssetYaml extends StubExcept<IAsset, "Name", "Abilities" | "In
 /**
  * @internal
  */
-export interface IAssetAbilityYaml extends StubBy<IAssetAbility, "$id" | "Enabled", "Alter Moves" | "Moves"> {
+export interface IAssetAbilityYaml extends YamlStub<IAssetAbility, "Enabled", "Alter Moves" | "Moves" | "Inputs"> {
     "Alter Moves"?: IAlterMoveYaml[] | undefined;
     Moves?: IMoveYaml[] | undefined;
+    Inputs?: (IInputTextYaml | IInputClockYaml | IInputNumberYaml)[] | undefined;
 }
 /**
  * @internal
@@ -41,8 +42,8 @@ export interface IAlterMoveOutcomesYaml extends PartialDeep<IAlterMoveOutcomes> 
 /**
  * @internal
  */
-export interface IAlterMoveTriggerYaml extends YamlStub<IMoveTriggerYaml, "Options"> {
-    Options?: (IAlterMoveTriggerOptionActionYaml | IAlterMoveTriggerOptionProgressYaml)[];
+export interface IAlterMoveTriggerYaml extends YamlStub<IMoveTriggerYaml, "", "Options"> {
+    Options?: (IAlterMoveTriggerOptionActionYaml | IAlterMoveTriggerOptionProgressYaml)[] | undefined;
 }
 /**
  * @internal
@@ -70,31 +71,38 @@ export interface IAssetStateYaml extends YamlStub<IAssetState> {
 /**
  * @internal
  */
-export interface IInputSelectYaml extends StubBy<IInputSelect, never, "$id" | "Options"> {
+export interface IInputSelectYaml extends YamlStub<IInputSelect, "", "Options"> {
     Options: IInputSelectOptionYaml[];
 }
 /**
  * @internal
  */
-export interface IInputSelectOptionYaml extends StubBy<IInputSelectOption, never, "$id"> {
+export interface IInputSelectOptionYaml extends YamlStub<IInputSelectOption, "", "Set"> {
+    Set: IInputSelectOptionSetterYaml[];
 }
 /**
  * @internal
  */
-export declare type IInputYaml = StubBy<IInput, "Adjustable", "$id">;
-/**
- * @internal
- */
-export interface IInputClockYaml extends StubBy<IInputClock, "Adjustable", "$id"> {
+export interface IInputSelectOptionSetterYaml extends YamlStub<IInputSelectOptionSetter> {
 }
 /**
  * @internal
  */
-export interface IInputTextYaml extends StubBy<IInputText, "Adjustable", "$id"> {
+export interface IInputYaml extends YamlStub<IInput, "Adjustable"> {
 }
 /**
  * @internal
  */
-export interface IInputNumberYaml extends StubBy<IInputNumber, "Adjustable", "$id"> {
+export interface IInputClockYaml extends YamlStub<IInputClock, "Adjustable"> {
+}
+/**
+ * @internal
+ */
+export interface IInputTextYaml extends YamlStub<IInputText, "Adjustable"> {
+}
+/**
+ * @internal
+ */
+export interface IInputNumberYaml extends YamlStub<IInputNumber, "Adjustable" | "Step"> {
 }
 //# sourceMappingURL=IAssetYaml.d.ts.map

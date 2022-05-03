@@ -1,5 +1,4 @@
-import type { IOracle, ITextColumn } from "@json_out/index.js";
-import type { IRollColumn } from "@json_out/index.js";
+import type { IOracle, IRollColumn , ITextColumn } from "@json_out/index.js";
 
 /**
  * @internal

@@ -141,10 +141,12 @@ Oracles:
       Title: "Oracle 19: Challenge Rank"
       Table:
         Roll columns:
-          - Label: Rank
-            Key: Result
+          - Label: Roll
             Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
         Result columns:
+          - Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
+            Label: Rank
+            Key: Result
           - Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
             Label: Quest
             Key: Summary
@@ -163,11 +165,11 @@ Oracles:
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
         Table: &challenge_rank_table
-            - [1, 20, Troublesome, A challenging quest with a small number of obstacles]
-            - [21, 55, Dangerous, An involved quest with several tough obstacles]
-            - [56, 80, Formidable, A complex quest with many intimidating obstacles]
-            - [81, 93, Extreme, An overwhelming quest of staggering proportions]
-            - [94, 100, Epic, A life-defining quest of unknowable scope]
+            - [1, 20, Troublesome, "A challenging quest with a small number of obstacles"]
+            - [21, 55, Dangerous, "An involved quest with several tough obstacles"]
+            - [56, 80, Formidable, "A complex quest with many intimidating obstacles"]
+            - [81, 93, Extreme, "An overwhelming quest of staggering proportions"]
+            - [94, 100, Epic, "A life-defining quest of unknowable scope"]
       - Name: Journey
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
@@ -185,8 +187,8 @@ Oracles:
         _templateTable:
           rolls: *challenge_rank_table
           content:
-            - [Troublesome, Common enemies]
-            - [Dangerous, Capable fighters and deadly creatures]
-            - [Formidable, Exceptional fighters and mighty creatures]
-            - [Extreme, Foes of overwhelming skill or power]
-            - [Epic, Legendary foes of mythic power]
+            - [Troublesome, "Common enemies"]
+            - [Dangerous, "Capable fighters and deadly creatures"]
+            - [Formidable, "Exceptional fighters and mighty creatures"]
+            - [Extreme, "Foes of overwhelming skill or power"]
+            - [Epic, "Legendary foes of mythic power"]

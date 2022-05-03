@@ -5,5 +5,5 @@
  * @param replaceValue - The value to replace.
  * @returns A copy of the original JSON object with all strings replaced.
  */
-export declare function replaceInAllStrings<T>(object: T, searchValue: string, replaceValue: string): T;
+export declare function replaceInAllStrings<T extends object>(object: T, searchValue: string, replaceValue: string): T;
 //# sourceMappingURL=replaceInAllStrings.d.ts.map

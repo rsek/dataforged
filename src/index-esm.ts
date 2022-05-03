@@ -1,4 +1,4 @@
-import type { Starforged, Ironsworn, IAssetType, IEncounterNatureInfo, IEncounterStarforged, IMoveCategory, IOracleCategory, ISettingTruth } from "dataforged";
+import type { Starforged, Ironsworn, IAssetType, IEncounterNatureInfo, IEncounterStarforged, IMoveCategory, IOracleCategory, ISettingTruth } from "./types";
 import assetsSF from "./starforged/assets.json" assert {type: "json"};
 import encountersSF from "./starforged/encounters.json" assert {type: "json"};
 import movesSF from "./starforged/moves.json" assert {type: "json"};

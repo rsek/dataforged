@@ -14,17 +14,18 @@
   ],
   "type": "module",
   "scripts": {
+    "pkg": "yarn render-json && yarn docs",
+    "build": "yarn compile && yarn schema",
+    "compile": "yarn flush && npx ttsc --project ./tsconfig.json",
+    "schema": "yarn dts && node ./build/utils/writeSchema.js",
     "flush": "rm -R ./build && mkdir ./build",
     "flush-image": "rm -R ./img && mkdir ./img",
-    "build": "yarn flush && npx ttsc --project ./tsconfig.json && yarn dts && yarn schema",
-    "dts": "api-extractor run -c ./api-extractor.json && cp ../src/index.d.ts ../dist/index.d.ts",
+    "dts": "api-extractor run -c ./api-extractor.json && cp ../src/types/index.d.ts ../dist/types/index.d.ts",
     "render-json-sf": "node ./build/start.js --enable-source-maps",
     "render-json-is": "node ./build/start-ironsworn.js --enable-source-maps",
     "render-json": "yarn render-json-sf && yarn render-json-is",
     "render-md-sf": "node ./build/start-md.js",
-    "docs": "rm -R ../docs && mkdir ../docs && npx typedoc",
-    "schema": "node ./build/utils/writeSchema.js",
-    "pkg": "yarn render-json && yarn docs"
+    "docs": "rm -R ../docs && mkdir ../docs && npx typedoc"
   },
   "directories": {
     "doc": "./docs"
@@ -49,7 +50,6 @@
     "@types/deep-freeze-strict": "^1.1.0",
     "@types/fs-extra": "^9.0.13",
     "@types/js-yaml": "^4.0.5",
-    "@types/jsonpath": "^0.2.0",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^17.0.23",
     "@types/prettier": "^2.4.3",
@@ -87,7 +87,6 @@
     "typed-regex": "^0.0.8",
     "typedoc": "^0.22.13",
     "typescript": "^4.7.0-dev.20220331",
-    "typescript-is": "^0.19.0",
     "typescript-json-schema": "^0.53.0",
     "typescript-transform-paths": "^3.3.1",
     "yaml": "^2.0.1"

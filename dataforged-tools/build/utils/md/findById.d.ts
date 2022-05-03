@@ -4,5 +4,5 @@
  * @param id - The id of the object to find.
  * @returns The object that matches the id.
  */
-export declare function findById<T>(data: unknown, id: string): T;
+export declare function findById<T>(data: object, id: string): T;
 //# sourceMappingURL=findById.d.ts.map

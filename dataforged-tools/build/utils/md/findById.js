@@ -1,4 +1,4 @@
-import jsonpath from "jsonpath";
+import { JSONPath } from "jsonpath-plus";
 /**
  * Crawls a JSON tree for an object with a specific ID. Slow!
  * @param data - The data to search.
@@ -6,6 +6,7 @@ import jsonpath from "jsonpath";
  * @returns The object that matches the id.
  */
 export function findById(data, id) {
-    return jsonpath.value(data, `$..[?(@.$id=="${id}")]`);
+    return JSONPath({ path: `$..[?(@.$id=="${id}")]`, json: data });
 }
+///
 //# sourceMappingURL=findById.js.map

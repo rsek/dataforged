@@ -1,5 +1,6 @@
 import { Row } from "@classes/index.js";
 import type { ISettingTruthOption, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
+import type { ISettingTruthOptionYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
@@ -12,7 +13,7 @@ export class SettingTruthOption implements ISettingTruthOption {
   Description: string;
   "Quest Starter": string;
   Subtable?: ISettingTruthOptionSubtableRow[]  | undefined;
-  constructor(parentId: string, json: ISettingTruthOption) {
+  constructor(parentId: string, json: ISettingTruthOptionYaml) {
     this.Floor = json.Floor;
     this.Ceiling = json.Ceiling;
     let rangeString: string;

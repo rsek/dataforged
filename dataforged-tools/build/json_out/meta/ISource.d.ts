@@ -31,11 +31,17 @@ export interface ISource {
     Title: SourceTitle;
     /**
      * The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.
+     * @pattern ^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$
      */
     Date?: string | undefined;
     /**
      * The page on which the item appears most prominently.
      */
     Page?: number | undefined;
+    /**
+     * The URL where the source is available.
+     * @pattern ^https?://.*$
+     */
+    Url?: string | undefined;
 }
 //# sourceMappingURL=ISource.d.ts.map

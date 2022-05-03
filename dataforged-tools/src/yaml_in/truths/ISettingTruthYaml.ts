@@ -1,10 +1,22 @@
-import type { ISettingTruth } from "@json_out/index.js";
-import type { StubExcept } from "@utils/types/Stub.js";
-import type { ISuggestionsYaml } from "@yaml_in/index.js";
+import type { ISettingTruth, ISettingTruthOption, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
+import type { ISuggestionsYaml, YamlStub } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export interface ISettingTruthYaml extends StubExcept<ISettingTruth, "Name" | "Table" | "Character" | "Display", "Suggestions"> {
+export interface ISettingTruthYaml extends YamlStub<ISettingTruth, "Display"|"Source", "Table"> {
   Suggestions?: ISuggestionsYaml | undefined;
+  Table: ISettingTruthOptionYaml[];
 }
+
+/**
+ * @internal
+ */
+export interface ISettingTruthOptionYaml extends YamlStub<ISettingTruthOption, "", "Subtable"> {
+  Subtable?: ISettingTruthOptionSubtableRowYaml[] | undefined;
+}
+
+/**
+ * @internal
+ */
+export interface ISettingTruthOptionSubtableRowYaml extends YamlStub<ISettingTruthOptionSubtableRow> {}

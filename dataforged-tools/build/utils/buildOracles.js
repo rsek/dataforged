@@ -1,6 +1,7 @@
 import { OracleCategory } from "../classes/index.js";
 import { MASTER_DATA_PATH, REFS_PATH } from "../constants/index.js";
 import { Gamespace } from "../json_out/index.js";
+import { oracleStats } from "./dataforgedStats.js";
 import { badJsonError } from "./logging/badJsonError.js";
 import { buildLog } from "./logging/buildLog.js";
 import { templateOracle } from "./object_transform/templateOracle.js";
@@ -8,7 +9,6 @@ import { concatWithYamlRefs } from "./process_yaml/concatWithYamlRefs.js";
 import { loadOracleData } from "./process_yaml/loadOracleData.js";
 import { sortIronsworn } from "./sortIronsworn.js";
 import FastGlob from "fast-glob";
-import jsonpath from "jsonpath";
 /**
  * It takes the data from the oracles directory and builds a list of OracleCategory objects.
  * @returns An array of OracleCategory objects.
@@ -53,10 +53,7 @@ export function buildOracles(gamespace = Gamespace.Starforged) {
         }
     });
     const json = categories.map(categoryData => new OracleCategory(categoryData, gamespace));
-    const catCount = categories.length;
-    const subcatCount = subcategories.length;
-    const tableCount = jsonpath.query(json, "$..[?(@.Table||@.Subtable)]").length;
-    buildLog(buildOracles, `Finished building ${catCount} oracle categories (plus ${subcatCount} subcategories) containing ${tableCount} tables.`);
+    buildLog(buildOracles, `Finished building ${oracleStats(json)}`);
     return json;
 }
 /**

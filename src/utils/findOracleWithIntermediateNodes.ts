@@ -1,4 +1,4 @@
-import {IOracle, IOracleCategory} from "dataforged";
+import {IOracle, IOracleCategory} from "../types";
 
 /**
  * Walks the oracle data tree to find a specific ID, then returns that item and its ancestors.
@@ -7,7 +7,7 @@ import {IOracle, IOracleCategory} from "dataforged";
  * @returns An array of IOracleCategory and IOracle objects.
  */
 
-// TODO: refactor for
+
 export function findOracleWithIntermediateNodes(id: string, oracleDataRoot: IOracleCategory[]): (IOracle | IOracleCategory)[] {
   const result: (IOracle | IOracleCategory)[] = []
 

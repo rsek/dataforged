@@ -1,6 +1,6 @@
-import type { ICustomStat, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionBase, IMoveTriggerOptionProgress, ProgressType, RollableStat } from "../../json_out/index.js";
+import type { ICustomStat, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionBase, IMoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat } from "../../json_out/index.js";
 import { RollMethod, RollType } from "../../json_out/index.js";
-import type { IMoveTriggerOptionActionYaml, IMoveTriggerOptionProgressYaml, YamlStub } from "../../yaml_in/index.js";
+import type { IMoveTriggerOptionActionYaml, IMoveTriggerOptionProgressYaml } from "../../yaml_in/index.js";
 /**
  * @internal
  */
@@ -9,9 +9,9 @@ export declare abstract class MoveTriggerOption implements IMoveTriggerOptionBas
     Text?: string | undefined;
     "Roll type": RollType;
     Method: RollMethod;
-    Using: (RollableStat | ProgressType)[];
+    Using: (RollableStat | ProgressTypeStarforged | ProgressTypeIronsworn)[];
     "Custom stat"?: ICustomStat | undefined;
-    constructor(json: YamlStub<IMoveTriggerOptionBase, "Using" | "Method" | "Roll type">, parent: IMoveTrigger, index: number);
+    constructor(json: IMoveTriggerOptionActionYaml | IMoveTriggerOptionProgressYaml, parent: IMoveTrigger, index: number);
 }
 /**
  * @internal
@@ -26,7 +26,7 @@ export declare class MoveTriggerOptionAction extends MoveTriggerOption implement
  */
 export declare class MoveTriggerOptionProgress extends MoveTriggerOption implements IMoveTriggerOptionProgress {
     "Roll type": RollType.Progress;
-    Using: ProgressType[];
+    Using: (ProgressTypeStarforged | ProgressTypeIronsworn)[];
     constructor(json: IMoveTriggerOptionProgressYaml, parent: IMoveTrigger, index: number);
 }
 //# sourceMappingURL=MoveTriggerOption.d.ts.map

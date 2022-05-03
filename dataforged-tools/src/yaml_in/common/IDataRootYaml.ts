@@ -1,5 +1,5 @@
-import type { ISource } from "@json_out/index.js";
-import type { IAssetTypeYaml , IEncounterStarforgedYaml , IMoveCategoryYaml , IOracleCategoryYaml , ISettingTruthYaml } from "@yaml_in/index.js";
+import type { IDelveDomain, IDelveTheme , ISource } from "@json_out/index.js";
+import type { IAssetTypeYaml , IEncounterStarforgedYaml , IIronswornRegionYaml , IMoveCategoryYaml , IOracleCategoryYaml, ISettingTruthYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
@@ -40,4 +40,21 @@ export interface ITruthRootYaml extends IDataRootYaml {
 /**
  * @internal
  */
-export interface IOracleCatRootYaml extends Record<string, IOracleCategoryYaml> {}
+export interface IOracleCatRootYaml {
+  [key: string]: IOracleCategoryYaml
+};
+
+/**
+ * @internal
+ */
+export interface ICyclopediaRootYaml {
+  Regions?: IIronswornRegionYaml[] | undefined;
+}
+
+/**
+ * @internal
+*/
+export interface IDelveSiteRootYaml {
+  Themes?: IDelveTheme[] | undefined;
+  Domains?: IDelveDomain[] | undefined;
+}

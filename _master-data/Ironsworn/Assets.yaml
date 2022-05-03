@@ -95,6 +95,7 @@ Asset Types:
                     - Text: By sending your spider to secretly study someone
                       Method: Inherit
                       Using: [Shadow]
+                      Roll type: Action roll
                 Outcomes:
                   Strong Hit: &Giant_Spider.2
                     Text: The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.
@@ -111,6 +112,7 @@ Asset Types:
                     - Text: When your spider sets a trap
                       Method: Inherit
                       Using: [Shadow]
+                      Roll type: Action roll
                 Outcomes:
                   Strong Hit:
                     Text: Also inflict 2 harm.
@@ -135,6 +137,7 @@ Asset Types:
                   Options:
                     - Text: By hunting for small game
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
           - Name: Fierce
             Text: |-
@@ -146,6 +149,7 @@ Asset Types:
                     - Text: Using your hawk to harass and distract your foes
                       Using: [Edge]
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
           - Name: Vigilant
@@ -156,12 +160,16 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: To detect an approaching threat
+                      Roll type: Action roll
+                      Method: Inherit
+                      Using: [Wits]
                 Text: Add +2.
               - Moves: [Ironsworn/Moves/Combat/Enter_the_Fray]
                 Trigger:
                   Options:
                     - Method: Inherit
                       Using: [Wits] # no need for text, as 'ambushed' is already how +wits is described
+                      Roll type: Action roll
                 Text: Add +2.
         Condition Meter:
           Name: Health
@@ -185,6 +193,7 @@ Asset Types:
                     - Text: Using your horse’s speed and grace
                       Using: [Edge]
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
           - Name: Fearless
             Text: |-
@@ -198,6 +207,7 @@ Asset Types:
                     - Text: By charging into combat
                       Using: [Heart]
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
           - Name: Mighty
@@ -211,6 +221,7 @@ Asset Types:
                   Options:
                     - Text: At close range while mounted
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
                 Outcomes: &outcomes:+1_harm.HIT
                   Strong Hit: &outcome:+1_harm
@@ -235,6 +246,7 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: Using your hound’s keen senses to track your quarry or investigate a scene
+                      Roll type: Action roll
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
           - Name: Ferocious
@@ -248,6 +260,7 @@ Asset Types:
                   Options:
                     - Text: Alongside your hound
                       Method: Inherit
+                      Roll type: Action roll
                 Outcomes:
                   Strong Hit: &Hound.3
                     Text: Inflict +1 harm or take +1 momentum.
@@ -260,6 +273,7 @@ Asset Types:
                   Options:
                     - Text: In the company of your hound
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
         Condition Meter:
           Name: Health
@@ -277,12 +291,14 @@ Asset Types:
             Inputs:
               - Name: Expertise
                 Input Type: Text
+                Adjustable: false
             Alter Moves:
               - Moves: null
                 Trigger:
                   Options:
                     - Text: When you make a move outside of combat aided by your companion’s expertise
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
           - Name: Shield-Kin
             Text: |-
@@ -295,6 +311,7 @@ Asset Types:
                   Options:
                     - Text: Alongside your companion
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
               - Moves:
                   - Ironsworn/Moves/Adventure/Face_Danger
@@ -302,6 +319,7 @@ Asset Types:
                   Options:
                     - Text: Against an attack by standing together
                       Method: Inherit
+                      Roll type: Action roll
                 Text: Add +1.
           - Name: Bonded
             Text: |-
@@ -474,7 +492,7 @@ Asset Types:
           - Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset.
       - Name: Battle-Scarred
-        Deed: true
+        Tags: [deed]
         Requirement: Once you become maimed...
         Abilities:
           - Text: |-
@@ -489,7 +507,7 @@ Asset Types:
                 Trigger:
                   Options:
                     - Text: When you are at 0 health
-                      Roll type: Progress roll
+                      Roll type: Action roll
                       Using: [Wits, Heart]
       - Name: Blade-Bound
         # https://game-icons.net/1x1/lorc/rune-sword.html
@@ -546,6 +564,7 @@ Asset Types:
             Input Type: Text
           - Name: Linked Stat
             Input Type: Select
+            Adjustable: false
             Sets:
               - Key: Stat
                 Type: Stat
@@ -655,6 +674,7 @@ Asset Types:
                 Trigger:
                   Options:
                     - Using: [Wits]
+                      Roll type: Action roll
             Enabled: true
           - Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) by cobbling together an ad hoc tool or apparatus, add +1 and take +1 momentum on a hit. After rolling, you may also suffer -1 supply and add +1 more.
@@ -677,9 +697,10 @@ Asset Types:
                       Text: Within an enemy area to discover their positions, plans, or methods
               - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
                 Trigger:
-                  - Roll type: Action roll
-                    Using: [Shadow]
-                    Text: Within an enemy area area through observation
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Shadow]
+                      Text: Within an enemy area area through observation
           - Text: |-
               When you [Resupply](Ironsworn/Moves/Adventure/Resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.
             Alter Moves:
@@ -704,6 +725,7 @@ Asset Types:
         Inputs:
           - Name: Material
             Input Type: Select
+            Adjustable: false
             Sets:
               - Key: Stat
                 Type: Stat
@@ -767,7 +789,7 @@ Asset Types:
                 Trigger: *alter:Masked
       - Name: Oathbreaker
         # https://game-icons.net/1x1/lorc/shattered-sword.html
-        Deed: true
+        Tags: [deed]
         Requirement: Once you [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)...
         Abilities:
           - Text: |-
@@ -841,7 +863,7 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by revealing your true identity in a dramatic moment, reroll any dice.
       - Name: Revenant
         # https://game-icons.net/1x1/lorc/heartburn.html
-        Deed: true
+        Tags: [deed]
         Requirement: Once you [Face Death](Ironsworn/Moves/Suffer/Face_Death) and return to the world of the living...
         Abilities:
           - Text: |-
@@ -863,7 +885,7 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +wits by sizing up a perilous situation from the saddle, you are one with your horse’s instincts. Add +1 and take +1 momentum on a hit.
       - Name: Ritualist
         # https://game-icons.net/1x1/lorc/divided-spiral.html
-        Deed: true
+        Tags: [deed]
         Requirement: |-
           Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to an elder
           mystic, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...
@@ -947,6 +969,7 @@ Asset Types:
                   Options:
                     - Text: By investigating a devious scheme
                       Using: [Shadow]
+                      Roll type: Action roll
           - Text: |-
               When you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) for a relationship founded on a lie, choose one.
 
@@ -958,8 +981,10 @@ Asset Types:
                   Options:
                     - Text: Keep your secret
                       Using: [Shadow]
+                      Roll type: Action roll
                     - Text: Reveal the truth
                       Using: [Heart]
+                      Roll type: Action roll
       - Name: Veteran
         # https://game-icons.net/1x1/lorc/mailed-fist.html
         Abilities:
@@ -995,7 +1020,7 @@ Asset Types:
               When you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to safely guide someone on a perilous journey, you may reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.
       - Name: Weaponmaster
         # https://game-icons.net/1x1/lorc/all-for-one.html
-        Deed: true
+        Tags: [deed]
         Requirement: Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to a seasoned warrior, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...
         Abilities:
           - Text: |-
@@ -1020,9 +1045,10 @@ Asset Types:
                   Options:
                     - Text: In the woodlands
                       Using: [Wits]
+                      Roll type: Action roll
       - Name: Wright
         # https://game-icons.net/1x1/delapouite/3d-hammer.html
-        Input:
+        Inputs:
           - Name: Specialty
             Input Type: Text
         Abilities:
@@ -1408,9 +1434,9 @@ Asset Types:
               - Name: Bind
                 Trigger:
                   Text: When you wear an animal pelt and dance in moonlight...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Bind
                 Outcomes:
                   Strong Hit:
@@ -1433,10 +1459,10 @@ Asset Types:
             Moves:
               - Name: Communion
                 Trigger:
-                  Text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit
-                Options:
-                  - Roll type: Action roll
-                    Using: [Heart]
+                  Text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Heart]
                 Text: *move:Asset.Communion
                 Outcomes:
                   Strong Hit:
@@ -1461,9 +1487,9 @@ Asset Types:
               - Name: Divination
                 Trigger:
                   Text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Heart]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Heart]
                 Text: *move:Asset.Divination
                 Outcomes:
                   Strong Hit:
@@ -1492,9 +1518,9 @@ Asset Types:
               - Name: Invoke
                 Trigger:
                   Text: When you consume the mystical essence of your surroundings...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Invoke
                 Outcomes:
                   Strong Hit:
@@ -1525,9 +1551,9 @@ Asset Types:
               - Name: Keen
                 Trigger:
                   Text: When you hold a weapon and sing a keen for those it has killed...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Heart]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Heart]
                 Text: *move:Asset.Keen
                 Outcomes:
                   Strong Hit:
@@ -1551,9 +1577,9 @@ Asset Types:
               - Name: Leech
                 Trigger:
                   Text: When you mark your hands or weapon with an intricate blood rune...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Iron]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Iron]
                 Text: *move:Asset.Leech
                 Outcomes:
                   Strong Hit:
@@ -1580,9 +1606,9 @@ Asset Types:
               - Name: Lightbearer
                 Trigger:
                   Text: When you focus on a source of light and capture its essence...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Lightbearer
                 Outcomes:
                   Strong Hit:
@@ -1616,9 +1642,9 @@ Asset Types:
               - Name: Scry
                 Trigger:
                   Text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Shadow]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Shadow]
                 Text: *move:Asset.Scry
                 Outcomes:
                   Strong Hit:
@@ -1647,9 +1673,9 @@ Asset Types:
               - Name: Shadow-Walk
                 Trigger:
                   Text: When you cloak yourself with the gossamer veil of the shadow realms...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Shadow]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Shadow]
                 Text: *move:Asset.Shadow-Walk
                 Outcomes:
                   Strong Hit:
@@ -1673,9 +1699,9 @@ Asset Types:
               - Name: Sway
                 Trigger:
                   Text: When you speak a person’s name three times to the wind...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Sway
                 Outcomes:
                   Strong Hit:
@@ -1700,9 +1726,9 @@ Asset Types:
               - Name: Talisman
                 Trigger:
                   Text: When you fashion a charm that protects against a specific person or creature...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Talisman
                 Outcomes:
                   Strong Hit:
@@ -1725,9 +1751,9 @@ Asset Types:
               - Name: Tether
                 Trigger:
                   Text: When you commune with the spirits of a place
-                Options:
-                  - Roll type: Action roll
-                    Using: [Heart]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Heart]
                 Text: *move:Asset.Tether
                 Outcomes:
                   Strong Hit:
@@ -1751,9 +1777,9 @@ Asset Types:
               - Name: Totem
                 Trigger:
                   Text: When you hold a totem of your animal or beast companion and focus on it...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Heart]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Heart]
                 Text: *move:Asset.Totem
                 Outcomes:
                   Strong Hit:
@@ -1777,9 +1803,9 @@ Asset Types:
               - Name: Visage
                 Trigger:
                   Text: When you paint yourself in blood and ash...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Visage
                 Outcomes:
                   Strong Hit:
@@ -1807,9 +1833,9 @@ Asset Types:
               - Name: Ward
                 Trigger:
                   Text: When you walk a wide circle, sprinkling the ground with salt...
-                Options:
-                  - Roll type: Action roll
-                    Using: [Wits]
+                  Options:
+                    - Roll type: Action roll
+                      Using: [Wits]
                 Text: *move:Asset.Ward
                 Outcomes:
                   Strong Hit:

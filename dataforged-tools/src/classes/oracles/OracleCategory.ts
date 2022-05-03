@@ -1,7 +1,6 @@
 
 import { Oracle , OracleCategoryDisplay , OracleUsage , SourceInheritor } from "@classes/index.js";
-import type { Gamespace } from "@json_out/index.js";
-import type { IOracleCategory } from "@json_out/index.js";
+import type { Gamespace , IOracleCategory } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
@@ -26,7 +25,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
     json: IOracleCategoryYaml,
     gamespace: Gamespace,
     category?: IOracleCategory["$id"] | undefined,
-    ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]
+    ...ancestorsJson: (IOracleCategoryYaml)[]
   ) {
     // if (!is<IOracleCategoryData>(json)) {
     //   buildLog(this.constructor, "Json does not conform to type!");

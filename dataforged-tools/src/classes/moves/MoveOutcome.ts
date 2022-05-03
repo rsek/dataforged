@@ -1,4 +1,5 @@
 import type { IMoveReroll , IOutcomeInfo } from "@json_out/index.js";
+import type { IOutcomeInfoYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
@@ -9,7 +10,7 @@ export class OutcomeInfo implements IOutcomeInfo {
   Reroll?: IMoveReroll | undefined;
   "With a Match"?: OutcomeInfo | undefined;
   "In Control"?: boolean | undefined;
-  constructor(json: Omit<IOutcomeInfo, "$id">, id: IOutcomeInfo["$id"]) {
+  constructor(json: IOutcomeInfoYaml, id: IOutcomeInfo["$id"]) {
     this.$id = id;
     this.Text = json.Text;
     this.Reroll = json.Reroll;
