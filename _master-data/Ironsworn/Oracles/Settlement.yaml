@@ -9,132 +9,111 @@ Oracles:
     Aliases: ["7", "Oracle 7", "Settlement Name"]
     Source:
       Page: 178
+    Oracles:
+      - Name: Landscape Feature
+        Description: &Landscape_Feature |-
+          "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
+        Table:
+          - [1, 10, Highmount]
+          - [11, 20, Brackwater]
+          - [21, 30, Frostwood]
+          - [31, 40, Redcrest]
+          - [41, 50, Grimtree]
+          - [51, 60, Stoneford]
+          - [61, 70, Deepwater]
+          - [71, 80, Whitefall]
+          - [81, 90, Graycliff]
+          - [91, 100, Three Rivers]
+      - Name: Manmade Edifice
+        Description: &Manmade_Edifice |-
+          **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
+        Table:
+          - [1, 10, Whitebridge]
+          - [11, 20, Lonefort]
+          - [21, 30, Highcairn]
+          - [31, 40, Redhall]
+          - [41, 50, Darkwell]
+          - [51, 60, Timberwall]
+          - [61, 70, Stonetower]
+          - [71, 80, Thornhall]
+          - [81, 90, Cinderhome]
+          - [91, 100, Fallowfield]
+      - Name: Creature
+        Description: &Creature |-
+          **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
+        Table:
+          - [1, 10, Ravencliff]
+          - [11, 20, Bearmark]
+          - [21, 30, Wolfcrag]
+          - [31, 40, Eaglespire]
+          - [41, 50, Wyvern's Rest]
+          - [51, 60, Boarwood]
+          - [61, 70, Foxhollow]
+          - [71, 80, Elderwatch]
+          - [81, 90, Elkfield]
+          - [91, 100, Dragonshadow]
+      - Name: Historical Event
+        Description: &Historical_Event |-
+          **A historical event.** What happened here? What place or practice commemorates this event?
+        Table:
+          - [1, 10, Swordbreak]
+          - [11, 20, Fool's Fall]
+          - [21, 30, Firstmeet]
+          - [31, 40, Brokenhelm]
+          - [41, 50, Mournhaunt]
+          - [51, 60, Olgar's Stand]
+          - [61, 70, Lostwater]
+          - [71, 80, Rojirra's Lament]
+          - [81, 90, Lastmarch]
+          - [91, 100, Rockfall]
+      - Name: Old World Language
+        Description: &Old_World_Language |-
+          **A word in an Old World language.** What culture is represented by this word? What does it translate to?
+        Table:
+          - [1, 10, Abon]
+          - [11, 20, Daveza]
+          - [21, 30, Damula]
+          - [31, 40, Essus]
+          - [41, 50, Sina]
+          - [51, 60, Kazeera]
+          - [61, 70, Khazu]
+          - [71, 80, Sova]
+          - [81, 90, Nabuma]
+          - [91, 100, Tiza]
+      - Name: Environmental Aspect
+        Description: &Environmental_Aspect |-
+          **A season or environmental aspect.** What influence does the weather have on this settlement?
+        Table:
+          - [1, 10, Winterhome]
+          - [11, 20, Windhaven]
+          - [21, 30, Stormrest]
+          - [31, 40, Bleakfrost]
+          - [41, 50, Springtide]
+          - [51, 60, Duskmoor]
+          - [61, 70, Frostcrag]
+          - [71, 80, Springbrook]
+          - [81, 90, Icebreak]
+          - [91, 100, Summersong]
+      - Name: Something Else
+        Table:
+          - [1, 10, A trade good (Ironhome)]
+          - [11, 20, An Old World city (New Arkesh)]
+          - [21, 30, A founder or famous settler (Kei's Hall)]
+          - [31, 40, A god (Elisora)]
+          - [41, 50, A historical item (Blackhelm)]
+          - [51, 60, A firstborn race (Elfbrook)]
+          - [61, 70, An elvish word or name (Nessana)]
+          - [71, 80, A mythic belief or event (Ghostwalk)]
+          - [81, 90, A positive term (Hope)]
+          - [91, 100, A negative term (Forsaken)]
     Table:
-      - [
-          1,
-          15,
-          "A feature of the landscape.",
-          "Envision what it is. What makes it unusual or distinctive?",
-          Subtable: [
-            [1, 10, Highmount],
-            [11, 20, Brackwater],
-            [21, 30, Frostwood],
-            [31, 40, Redcrest],
-            [41, 50, Grimtree],
-            [51, 60, Stoneford],
-            [61, 70, Deepwater],
-            [71, 80, Whitefall],
-            [81, 90, Graycliff],
-            [91, 100, Three Rivers],
-          ],
-        ]
-      - [
-          16,
-          30,
-          "A manmade edifice.",
-          "What is it? Why is it important to this settlement’s history?",
-          Subtable: [
-            [1, 10, Whitebridge],
-            [11, 20, Lonefort],
-            [21, 30, Highcairn],
-            [31, 40, Redhall],
-            [41, 50, Darkwell],
-            [51, 60, Timberwall],
-            [61, 70, Stonetower],
-            [71, 80, Thornhall],
-            [81, 90, Cinderhome],
-            [91, 100, Fallowfield],
-          ],
-        ]
-      - [
-          31,
-          45,
-          "A creature.",
-          "Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
-          Subtable: [
-            [1, 10, Ravencliff],
-            [11, 20, Bearmark],
-            [21, 30, Wolfcrag],
-            [31, 40, Eaglespire],
-            [41, 50, Wyvern's Rest],
-            [51, 60, Boarwood],
-            [61, 70, Foxhollow],
-            [71, 80, Elderwatch],
-            [81, 90, Elkfield],
-            [91, 100, Dragonshadow],
-          ],
-        ]
-      - [
-          46,
-          60,
-          "A historical event.",
-          "What happened here? What place or practice commemorates this event?",
-          Subtable: [
-            [1, 10, Swordbreak],
-            [11, 20, Fool's Fall],
-            [21, 30, Firstmeet],
-            [31, 40, Brokenhelm],
-            [41, 50, Mournhaunt],
-            [51, 60, Olgar's Stand],
-            [61, 70, Lostwater],
-            [71, 80, Rojirra's Lament],
-            [81, 90, Lastmarch],
-            [91, 100, Rockfall],
-          ],
-        ]
-      - [
-          61,
-          75,
-          "A word in an Old World language.",
-          "What culture is represented by this word? What does it translate to?",
-          Subtable: [
-            [1, 10, Abon],
-            [11, 20, Daveza],
-            [21, 30, Damula],
-            [31, 40, Essus],
-            [41, 50, Sina],
-            [51, 60, Kazeera],
-            [61, 70, Khazu],
-            [71, 80, Sova],
-            [81, 90, Nabuma],
-            [91, 100, Tiza],
-          ],
-        ]
-      - [
-          76,
-          90,
-          "A season or environmental aspect.",
-          "What influence does the weather have on this settlement?",
-          Subtable: [
-            [1, 10, Winterhome],
-            [11, 20, Windhaven],
-            [21, 30, Stormrest],
-            [31, 40, Bleakfrost],
-            [41, 50, Springtide],
-            [51, 60, Duskmoor],
-            [61, 70, Frostcrag],
-            [71, 80, Springbrook],
-            [81, 90, Icebreak],
-            [91, 100, Summersong],
-          ],
-        ]
-      - [
-          91,
-          100,
-          "Something Else...",
-          Subtable: [
-            [1, 10, A trade good (Ironhome)],
-            [11, 20, An Old World city (New Arkesh)],
-            [21, 30, A founder or famous settler (Kei's Hall)],
-            [31, 40, A god (Elisora)],
-            [41, 50, A historical item (Blackhelm)],
-            [51, 60, A firstborn race (Elfbrook)],
-            [61, 70, An elvish word or name (Nessana)],
-            [71, 80, A mythic belief or event (Ghostwalk)],
-            [81, 90, A positive term (Hope)],
-            [91, 100, A negative term (Forsaken)],
-          ],
-        ]
+      - [ 1, 15, *Landscape_Feature, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Landscape_Feature] ]
+      - [ 16, 30, *Manmade_Edifice, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Manmade_Edifice] ]
+      - [ 31, 45, *Creature, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Creature] ]
+      - [ 46, 60, *Historical_Event, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Historical_Event] ]
+      - [ 61, 75, *Old_World_Language, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Old_World_Language] ]
+      - [ 76, 90, *Environmental_Aspect, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Environmental_Aspect] ]
+      - [ 91, 100, "Something Else...", Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Something_Else]]
   - Name: Quick Name
     Display:
       Title: "Oracle 8: Quick Settlement Name Generator"

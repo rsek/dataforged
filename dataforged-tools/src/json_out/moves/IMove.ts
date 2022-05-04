@@ -1,10 +1,10 @@
-import type { IAsset , IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes  , IMoveTrigger , IOracle } from "@json_out/index.js";
+import type { IAsset , IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasOptional, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes  , IMoveTrigger , IOracle } from "@json_out/index.js";
 
 /**
  * Interface representing a Starforged move.
  * @public
  */
-export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
+export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, IHasOptional, Partial<IHasSuggestions> {
   /**
    * @example "Starforged/Moves/Adventure/Face_Danger"
    * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$

@@ -6,7 +6,7 @@ import type { IHasName, IOracle, IOracleBase } from "@json_out/index.js";
  * The distinction between this and {@link IOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).
  * @public
  */
-export interface IOracleCategory extends IOracleBase, IHasName {
+export interface IOracleCategory extends IOracleBase {
   /**
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
    */

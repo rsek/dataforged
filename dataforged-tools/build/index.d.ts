@@ -5,6 +5,14 @@ export * from "./classes/index.js";
 export * from "./constants/index.js";
 export * from "./game_objects/index.js";
 export * from "./utils/index.js";
-export { starforged } from "./starforged.js";
-export { ironsworn } from "./ironsworn.js";
+import type { Ironsworn, Starforged } from "./json_out/GameData.js";
+/**
+ * @public
+ */
+declare const starforged: Starforged;
+/**
+ * @public
+ */
+declare const ironsworn: Ironsworn;
+export { starforged, ironsworn };
 //# sourceMappingURL=index.d.ts.map

@@ -74,47 +74,44 @@ Oracles:
       - [95, 98, "You encounter a denizen who might support you."]
       - [99, 100, "You encounter a denizen in need of help."]
   - Name: Reveal a Danger
-    # Move: Ironsworn/Moves/Delve/Reveal_a_Danger
     Source:
       Page: 34
     Table:
       - [1, 30, "Check the theme card."]
       - [31, 45, "Check the domain card."]
-      - [46, 57, "You encounter a hostile denizen."]
-      - [58, 68, "You face an environmental or architectural hazard."]
-      - [69, 76, "A discovery undermines or complicates your quest."]
-      - [77, 79, "You confront a harrowing situation or sensation."]
-      - [80, 82, "You face the consequences of an earlier choice or approach."]
-      - [83, 85, "Your way is blocked or trapped."]
-      - [86, 88, "A resource is diminished, broken, or lost."]
-      - [89, 91, "You face a perplexing mystery or tough choice."]
-      - [92, 94, "You lose your way or are delayed."]
+      - [46, 57, &Reveal_a_Danger_1 "You encounter a hostile denizen."]
+      - [58, 68, &Reveal_a_Danger_2 "You face an environmental or architectural hazard."]
+      - [69, 76, &Reveal_a_Danger_3 "A discovery undermines or complicates your quest."]
+      - [77, 79, &Reveal_a_Danger_4 "You confront a harrowing situation or sensation."]
+      - [80, 82, &Reveal_a_Danger_5 "You face the consequences of an earlier choice or approach."]
+      - [83, 85, &Reveal_a_Danger_6 "Your way is blocked or trapped."]
+      - [86, 88, &Reveal_a_Danger_7 "A resource is diminished, broken, or lost."]
+      - [89, 91, &Reveal_a_Danger_8 "You face a perplexing mystery or tough choice."]
+      - [92, 94, &Reveal_a_Danger_9 "You lose your way or are delayed."]
       - [
           95,
           100,
-          "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+          &Reveal_a_Danger_10 "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
           *result:RollTwice.MakeItWorse
         ]
   - Name: Reveal a Danger
-    $id: Ironsworn/Oracles/Moves/Reveal_a_Danger_alt
-    # Move: Ironsworn/Moves/Delve/Reveal_a_Danger_alt
+    _idFragment: Reveal a Danger alt
     Display:
       Title: Reveal a Danger (alternate version)
     Source:
       Page: 68
     Table:
-      - [1, 22, "You encounter a hostile denizen."]
-      - [23, 42, "You face an environmental or architectural hazard."]
-      - [43, 58, "A discovery undermines or complicates your quest."]
-      - [59, 64, "You confront a harrowing situation or sensation."]
-      - [65, 70, "You face the consequences of an earlier choice or approach."]
-      - [71, 76, "The path is blocked or trapped."]
-      - [77, 82, "A resource is diminished, broken, or lost."]
-      - [83, 88, "You face a perplexing mystery or tough choice."]
-      - [89, 94, "You lose your way or are delayed."]
-      - [95, 100, "Roll twice more on this table. Both results occur. If they are the same result, make it worse.", *result:RollTwice.MakeItWorse]
+      - [1, 22, *Reveal_a_Danger_1]
+      - [23, 42, *Reveal_a_Danger_2]
+      - [43, 58, *Reveal_a_Danger_3]
+      - [59, 64, *Reveal_a_Danger_4]
+      - [65, 70, *Reveal_a_Danger_5]
+      - [71, 76, *Reveal_a_Danger_6]
+      - [77, 82, *Reveal_a_Danger_7]
+      - [83, 88, *Reveal_a_Danger_8]
+      - [89, 94, *Reveal_a_Danger_9]
+      - [95, 100, *Reveal_a_Danger_10, *result:RollTwice.MakeItWorse]
   - Name: Advance a Threat
-    # Move: Ironsworn/Moves/Threat/Advance_a_Threat
     Source:
       Page: 155
     Table:

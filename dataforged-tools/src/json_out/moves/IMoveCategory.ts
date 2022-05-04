@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle , IHasDescription , IHasDisplay , IHasId , IHasName, IHasSource , IMove } from "@json_out/index.js";
+import type { IDisplayWithTitle , IHasDescription , IHasDisplay , IHasId , IHasName, IHasOptional, IHasSource , IMove } from "@json_out/index.js";
 
 /**
  * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.
@@ -22,7 +22,7 @@ export enum MoveCategoryName {
  * Represents a category of moves such as "Session Moves" or "Combat Moves", and serves as a container for moves within that category.
  * @public
  */
-export interface IMoveCategory extends IHasId, IHasName, IHasSource, IHasDescription, IHasDisplay {
+export interface IMoveCategory extends IHasId, IHasName, IHasSource, IHasDescription, IHasDisplay, IHasOptional {
   /**
    * @example "Starforged/Moves/Adventure"
    * @pattern ^(Starforged|Ironsworn)/Moves/[A-z_-]+$

@@ -56,7 +56,8 @@
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
           "title": "Description"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -208,7 +209,8 @@
           "description": "Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)",
           "$ref": "#/definitions/IAlterMomentum",
           "title": "Alter Momentum"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -282,7 +284,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Alters"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -316,7 +319,8 @@
           "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
           "$ref": "#/definitions/IMoveTriggerBy",
           "title": "By"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -355,7 +359,8 @@
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
           "$ref": "#/definitions/ICustomStat",
           "title": "Custom stat"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -479,7 +484,8 @@
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
           "$ref": "#/definitions/ICustomStat",
           "title": "Custom stat"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -806,6 +812,12 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
+        "Optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean",
+          "title": "Optional"
+        },
         "Suggestions": {
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
@@ -842,7 +854,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Tags"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -877,7 +890,8 @@
           "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
           "$ref": "#/definitions/IMoveTriggerBy",
           "title": "By"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -916,7 +930,8 @@
           "$ref": "#/definitions/RollType.Action_1",
           "description": "Whether this option is an action roll or progress roll.",
           "title": "Roll type"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -928,7 +943,29 @@
         "Options": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/YamlStub<ICustomStatOption,\"\",\"\">"
+            "description": "A stub where keys `$id`, `Display`, `Source`, `Optional`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "Name": {
+                "description": "The name/label for this specific value of the custom stat.",
+                "type": "string",
+                "title": "Name"
+              },
+              "$id": {
+                "description": "The item's unique string ID.",
+                "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
+                "type": "string",
+                "title": "$id"
+              },
+              "Value": {
+                "description": "The numeric value to be used as +stat when making an Action Roll.",
+                "type": "integer",
+                "title": "Value"
+              },
+              "_idFragment": { "type": "string", "title": "_idFragment" }
+            },
+            "required": ["Name", "Value"]
           },
           "title": "Options"
         },
@@ -942,37 +979,12 @@
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Name", "Options"]
-    },
-    "YamlStub<ICustomStatOption,\"\",\"\">": {
-      "description": "A stub where keys `$id`, `Display`, `Source` and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
-      "title": "YamlStub<ICustomStatOption,\"\",\"\">",
-      "type": "object",
-      "properties": {
-        "Name": {
-          "description": "The name/label for this specific value of the custom stat.",
-          "type": "string",
-          "title": "Name"
-        },
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Value": {
-          "description": "The numeric value to be used as +stat when making an Action Roll.",
-          "type": "integer",
-          "title": "Value"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Name", "Value"]
     },
     "RollType.Action_1": {
       "title": "RollType.Action_1",
@@ -1029,7 +1041,8 @@
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
           "$ref": "#/definitions/ICustomStat",
           "title": "Custom stat"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -1057,7 +1070,8 @@
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1097,7 +1111,8 @@
           "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
           "title": "In Control"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1255,7 +1270,8 @@
           "description": "An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.",
           "type": "integer",
           "title": "Filled"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1304,7 +1320,8 @@
           "$ref": "#/definitions/InputType.Number",
           "title": "Input Type"
         },
-        "Step": { "enum": [1], "type": "number", "title": "Step" }
+        "Step": { "enum": [1], "type": "number", "title": "Step" },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1338,7 +1355,8 @@
         "Input Type": {
           "$ref": "#/definitions/InputType.Text",
           "title": "Input Type"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1910,6 +1928,12 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
+        "Optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean",
+          "title": "Optional"
+        },
         "Suggestions": {
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
@@ -1923,6 +1947,7 @@
         "Category",
         "Display",
         "Name",
+        "Optional",
         "Source",
         "Text",
         "Trigger"
@@ -2627,7 +2652,8 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IInputSelectAttributeDefinition" },
           "title": "Sets"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2652,7 +2678,8 @@
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2673,7 +2700,8 @@
         "Type": {
           "$ref": "#/definitions/InputSelectOptionType",
           "title": "Type"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2734,7 +2762,8 @@
           "description": "The maximum value of the meter.",
           "type": "integer",
           "title": "Max"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2768,7 +2797,8 @@
           "description": "Whether or not this state is permanent.",
           "type": "boolean",
           "title": "Permanent"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,

@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasRollTemplate, IHasSource, IOracle, IOracleCategory , IOracleUsage } from "@json_out/index.js";
+import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IOracle, IOracleCategory , IOracleUsage } from "@json_out/index.js";
 
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
@@ -9,7 +9,7 @@ export interface IOracleBase extends Partial<
     IHasDescription &
     IHasOracleContent
   >, IHasId, IHasDisplay,
-  IHasSource  {
+  IHasSource, IHasName  {
   /**
    * The ID of the most recent OracleCategory ancestor of this item, if any.
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$

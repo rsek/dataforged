@@ -1,7 +1,7 @@
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import { Asset, SourceInheritor } from "@classes/index.js";
 import type { Gamespace , IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "@json_out/index.js";
-import { toIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IAssetTypeYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
@@ -18,7 +18,7 @@ export class AssetType extends SourceInheritor implements IAssetType {
   Usage: IAssetUsage;
   constructor(json: IAssetTypeYaml, gamespace: Gamespace, rootSource: ISource) {
     super(json.Source ?? {}, rootSource);
-    this.$id = `${gamespace}/Assets/${toIdFragment(json.Name)}`;
+    this.$id = `${gamespace}/Assets/${formatIdFragment(json.Name)}`;
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Description = json.Description;

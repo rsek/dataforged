@@ -1,17 +1,17 @@
 {
   "type": "object",
   "properties": {
-    "Categories": {
+    "Move Categories": {
       "type": "array",
       "items": { "$ref": "#/definitions/IMoveCategoryYaml" },
-      "title": "Categories"
+      "title": "Move Categories"
     },
     "Name": { "type": "string", "title": "Name" },
     "Source": { "$ref": "#/definitions/ISource_1", "title": "Source" }
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Categories", "Name", "Source"],
+  "required": ["Move Categories", "Name", "Source"],
   "definitions": {
     "IMoveCategoryYaml": {
       "title": "IMoveCategoryYaml",
@@ -42,12 +42,19 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
+        "Optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean",
+          "title": "Optional"
+        },
         "$id": {
           "description": "The item's unique string ID.",
           "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -90,6 +97,12 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
+        "Optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean",
+          "title": "Optional"
+        },
         "Suggestions": {
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
@@ -126,7 +139,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Tags"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -161,7 +175,8 @@
           "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
           "$ref": "#/definitions/IMoveTriggerBy",
           "title": "By"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -200,7 +215,8 @@
           "$ref": "#/definitions/RollType.Action",
           "description": "Whether this option is an action roll or progress roll.",
           "title": "Roll type"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -212,7 +228,29 @@
         "Options": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/YamlStub<ICustomStatOption,\"\",\"\">"
+            "description": "A stub where keys `$id`, `Display`, `Source`, `Optional`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "Name": {
+                "description": "The name/label for this specific value of the custom stat.",
+                "type": "string",
+                "title": "Name"
+              },
+              "$id": {
+                "description": "The item's unique string ID.",
+                "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
+                "type": "string",
+                "title": "$id"
+              },
+              "Value": {
+                "description": "The numeric value to be used as +stat when making an Action Roll.",
+                "type": "integer",
+                "title": "Value"
+              },
+              "_idFragment": { "type": "string", "title": "_idFragment" }
+            },
+            "required": ["Name", "Value"]
           },
           "title": "Options"
         },
@@ -226,37 +264,12 @@
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Name", "Options"]
-    },
-    "YamlStub<ICustomStatOption,\"\",\"\">": {
-      "description": "A stub where keys `$id`, `Display`, `Source` and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
-      "title": "YamlStub<ICustomStatOption,\"\",\"\">",
-      "type": "object",
-      "properties": {
-        "Name": {
-          "description": "The name/label for this specific value of the custom stat.",
-          "type": "string",
-          "title": "Name"
-        },
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Value": {
-          "description": "The numeric value to be used as +stat when making an Action Roll.",
-          "type": "integer",
-          "title": "Value"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Name", "Value"]
     },
     "RollMethod": {
       "description": "The stat(s) or progress track(s) that may be rolled with the parent move trigger option.",
@@ -327,7 +340,8 @@
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
           "$ref": "#/definitions/ICustomStat",
           "title": "Custom stat"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -424,7 +438,8 @@
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -464,7 +479,8 @@
           "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
           "title": "In Control"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,

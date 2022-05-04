@@ -1,17 +1,17 @@
 {
   "type": "object",
   "properties": {
-    "Truths": {
+    "Setting Truths": {
       "type": "array",
       "items": { "$ref": "#/definitions/ISettingTruthYaml" },
-      "title": "Truths"
+      "title": "Setting Truths"
     },
     "Name": { "type": "string", "title": "Name" },
     "Source": { "$ref": "#/definitions/ISource_1", "title": "Source" }
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Name", "Source", "Truths"],
+  "required": ["Name", "Setting Truths", "Source"],
   "definitions": {
     "ISettingTruthYaml": {
       "title": "ISettingTruthYaml",
@@ -52,7 +52,8 @@
           "description": "A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.",
           "type": "string",
           "title": "Character"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -4862,7 +4863,8 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IAttribute" },
           "title": "Attributes"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -4960,7 +4962,8 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IAttribute" },
           "title": "Attributes"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,

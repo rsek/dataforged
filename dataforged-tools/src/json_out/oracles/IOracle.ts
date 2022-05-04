@@ -1,4 +1,4 @@
-import type { IDisplayOracle , IHasName, IOracleBase, IOracleCategory , IRow } from "@json_out/index.js";
+import type { IDisplayOracle , IOracleBase, IOracleCategory , IRow } from "@json_out/index.js";
 
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
@@ -6,7 +6,7 @@ import type { IDisplayOracle , IHasName, IOracleBase, IOracleCategory , IRow } f
  * The distinction between {@link IOracleCategory} and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).
  * @public
  */
-export interface IOracle extends IOracleBase, IHasName {
+export interface IOracle extends IOracleBase {
   /**
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
    */

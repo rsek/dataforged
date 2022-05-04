@@ -1,6 +1,6 @@
 import type { EncounterNatureInfo, EncounterStarforged, Oracle, Row } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
-import type { IEncounterNatureInfo, IEncounterStarforged, IOracleCategory , Ironsworn , Starforged } from "@json_out/index.js";
+import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged , IOracleCategory , Ironsworn , Starforged } from "@json_out/index.js";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 
@@ -8,7 +8,7 @@ import _ from "lodash-es";
  * Extracts statistics on Ironsworn game data.
  * @param param0
  */
-export function dataforgedStats<G extends Gamespace>(gamespace: G, { assets, encounters, moves, oracles, truths }: Ironsworn|Starforged) {
+export function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }: GameDataRoot) {
   const assetCount = _.sum(assets.map(item => item.Assets.length));
   const moveCount = _.sum(moves.map(item => item.Moves.length));
   return `${assetCount} assets comprising ${assets.length} types,
@@ -34,7 +34,7 @@ export function oracleStats(oracles: IOracleCategory[]) {
  * @param gamespace
  * @param json
  */
-export function encounterStats<G extends Gamespace>(gamespace: G, json: EncounterStarforged[] | EncounterNatureInfo[]) {
+export function encounterStats<G extends Gamespace>(gamespace: G, json: IEncounterStarforged[] | IEncounterNatureInfo[]) {
   let text: string;
   switch (gamespace) {
     case Gamespace.Starforged: {

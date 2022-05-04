@@ -50,12 +50,12 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
 
   {
     typeName: "Starforged",
-    outFiles: ["../dist/starforged/schema.json"],
+    outFiles: [ "../dist/starforged/schema.json", "../src/starforged/schema.json", "./src/json/starforged/schema.json" ],
     declarations: jsonDeclarations
   },
   {
     typeName: "Ironsworn",
-    outFiles: ["../dist/ironsworn/schema.json"],
+    outFiles: [ "../dist/ironsworn/schema.json", "../src/ironsworn/schema.json", "./src/json/ironsworn/schema.json" ],
     declarations: jsonDeclarations
   }
 ];

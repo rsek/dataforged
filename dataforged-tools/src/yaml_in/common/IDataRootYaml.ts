@@ -27,14 +27,14 @@ export interface IEncounterRootYaml extends IDataRootYaml {
  * @internal
  */
 export interface IMoveRootYaml extends IDataRootYaml {
-  Categories: IMoveCategoryYaml[];
+  "Move Categories": IMoveCategoryYaml[];
 }
 
 /**
  * @internal
  */
 export interface ITruthRootYaml extends IDataRootYaml {
-  Truths: ISettingTruthYaml[];
+  "Setting Truths": ISettingTruthYaml[];
 }
 
 /**

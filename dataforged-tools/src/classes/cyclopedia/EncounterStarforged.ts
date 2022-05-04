@@ -3,7 +3,7 @@ import type { EncounterDisplay } from "@classes/index.js";
 import { EncounterVariant , Source } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterStarforged, ISource, } from "@json_out/index.js";
-import { toIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
 /**
@@ -27,7 +27,7 @@ export class EncounterStarforged implements IEncounterStarforged {
   Source: Source;
   constructor(json: IEncounterStarforgedYaml, ...ancestorSourceJson: ISource[]) {
     const gamespace = Gamespace.Starforged;
-    this.$id = `${gamespace}/Encounters/${toIdFragment(json.Name)}`;
+    this.$id = `${gamespace}/Encounters/${formatIdFragment(json.Name)}`;
     this.Name = json.Name;
     this.Nature = json.Nature;
     this.Summary = json.Summary;

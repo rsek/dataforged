@@ -5,7 +5,7 @@ import _ from "lodash-es";
  * Extracts statistics on Ironsworn game data.
  * @param param0
  */
-export function dataforgedStats(gamespace, { assets, encounters, moves, oracles, truths }) {
+export function dataforgedStats(gamespace, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }) {
     var _a;
     const assetCount = _.sum(assets.map(item => item.Assets.length));
     const moveCount = _.sum(moves.map(item => item.Moves.length));

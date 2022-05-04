@@ -1,14 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.findOracleWithIntermediateNodes = void 0;
 /**
  * Walks the oracle data tree to find a specific ID, then returns that item and its ancestors.
  * @param {string} id - the id of the oracle you want to find
  * @param {IOracleCategory[]} oracleDataRoot - The root of the oracle data tree.
  * @returns An array of IOracleCategory and IOracle objects.
  */
-// TODO: refactor for
-function findOracleWithIntermediateNodes(id, oracleDataRoot) {
+export function findOracleWithIntermediateNodes(id, oracleDataRoot) {
     const result = [];
     function walkCategory(cat) {
         var _a, _b;
@@ -43,4 +39,3 @@ function findOracleWithIntermediateNodes(id, oracleDataRoot) {
     }
     return result;
 }
-exports.findOracleWithIntermediateNodes = findOracleWithIntermediateNodes;

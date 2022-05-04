@@ -1,6 +1,6 @@
 import { DisplayWithTitle } from "../common/Display.js";
 import { Asset, SourceInheritor } from "../index.js";
-import { toIdFragment } from "../../utils/toIdFragment.js";
+import { formatIdFragment } from "../../utils/toIdFragment.js";
 import _ from "lodash-es";
 /**
  * @internal
@@ -9,7 +9,7 @@ export class AssetType extends SourceInheritor {
     constructor(json, gamespace, rootSource) {
         var _a, _b, _c, _d, _e;
         super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, rootSource);
-        this.$id = `${gamespace}/Assets/${toIdFragment(json.Name)}`;
+        this.$id = `${gamespace}/Assets/${formatIdFragment(json.Name)}`;
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Description = json.Description;

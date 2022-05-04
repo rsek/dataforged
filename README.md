@@ -56,12 +56,12 @@ If you need JSON in the old format, it can be found in the `legacy` directory. T
 
 ## Current Version/Sources
 
-  * ***Ironsworn: Starforged Rulebook* - 040122**
+  * ***Ironsworn: Starforged Rulebook* - 043022**
     * moves
     * oracles
     * setting truths
     * encounters
-  * ***Ironsworn: Starforged* Assets - 033122**
+  * ***Ironsworn: Starforged* Assets - 043022**
     * assets
 
 ## Credits

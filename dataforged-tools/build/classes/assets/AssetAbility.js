@@ -3,7 +3,7 @@ import { AlterMove, Move } from "../index.js";
 import { Replacement } from "../../json_out/index.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "../../utils/object_transform/replaceInAllStrings.js";
-import { toIdFragment } from "../../utils/toIdFragment.js";
+import { formatIdFragment } from "../../utils/toIdFragment.js";
 import _ from "lodash-es";
 /**
  * @internal
@@ -39,7 +39,7 @@ export class AssetAbility {
                 var _a;
                 const moveDataClone = _.cloneDeep(moveJson);
                 moveDataClone.Asset = parent.$id;
-                moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${toIdFragment(moveDataClone.Name)}`;
+                moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${formatIdFragment(moveDataClone.Name)}`;
                 moveDataClone.Category = `${gamespace}/Moves/Assets`;
                 if (moveDataClone.Trigger.Options && ((_a = parent["Condition Meter"]) === null || _a === void 0 ? void 0 : _a.$id)) {
                     moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);

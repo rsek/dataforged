@@ -13,7 +13,7 @@ export interface IMoveCategoryYaml extends YamlStub<IMoveCategory, "Display" | "
 /**
  * @internal
  */
-export interface IMoveYaml extends YamlStub<IMove, "Category" | "Source" | "Display", "Trigger" | "Outcomes"> {
+export interface IMoveYaml extends YamlStub<IMove, "Category", "Trigger" | "Outcomes"> {
     Trigger: IMoveTriggerYaml;
     Outcomes?: IMoveOutcomesYaml | undefined;
 }

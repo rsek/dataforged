@@ -55,7 +55,7 @@ export interface IHasSource {
 export interface IHasId {
   /**
    * The item's unique string ID.
-   * @pattern ^(Starforged|Ironsworn)/[A-z_/-]+$
+   * @pattern ^(Starforged|Ironsworn)/[0-9A-z_/-]+$
    */
   $id: string;
 }
@@ -150,6 +150,7 @@ export interface IHasTable {
 
 /**
  * Interface for items that have a subtable-like object.
+ * @deprecated Currently only used by setting truths. If you need to denote a subtable, use the `Oracle rolls` property to point to an `IOracle` in the `Oracles` property of this table's parent.
  * @public
  */
 export interface IHasSubtable {
@@ -181,5 +182,19 @@ export interface IHasQuestStarter {
  * @public
  */
 export interface IHasTags {
+  /**
+   * Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.
+   */
   Tags: string[];
+}
+
+/**
+ * @public
+ */
+export interface IHasOptional {
+  /**
+   * Whether or not the source material presents this rules item as optional.
+   * @default false
+   */
+  Optional: boolean;
 }

@@ -44,6 +44,7 @@
           "title": "$id"
         },
         "Tags": {
+          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
           "type": "array",
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
@@ -87,7 +88,8 @@
           "items": { "type": "string" },
           "title": "Tactics"
         },
-        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" }
+        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -130,6 +132,7 @@
           "title": "Nature"
         },
         "Tags": {
+          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
           "type": "array",
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
@@ -178,7 +181,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Tactics"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,

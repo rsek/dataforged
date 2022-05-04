@@ -4,7 +4,7 @@ import { MoveOutcomes , MoveTrigger , SourceInheritor } from "@classes/index.js"
 import type { Gamespace , IAssetAbility, IDisplayWithTitle , IMove , IMoveCategory, IOracle, ISource, } from "@json_out/index.js";
 
 import { buildLog } from "@utils/logging/buildLog.js";
-import { toIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IMoveYaml } from "@yaml_in/moves/IMoveYaml";
 
 /**
@@ -14,6 +14,7 @@ import type { IMoveYaml } from "@yaml_in/moves/IMoveYaml";
 export class Move extends SourceInheritor implements IMove {
   $id: IMove["$id"];
   Name: string;
+  Optional: boolean;
   Category: MoveCategory["$id"];
   Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? Asset["$id"] : undefined;
   "Progress Move"?: boolean | undefined;
@@ -28,9 +29,10 @@ export class Move extends SourceInheritor implements IMove {
   constructor(json: IMoveYaml, parent: IMoveCategory|IAssetAbility, gamespace: Gamespace,...sourceAncestors: ISource[]) {
     super(json.Source ?? {}, ...sourceAncestors);
     this.Category = json.Category ?? `${gamespace}/Moves/Assets`;
-    this.$id = json.$id ?? `${this.Category}/${toIdFragment(json.Name)}`;
+    this.$id = json.$id ?? `${this.Category}/${formatIdFragment(json.Name)}`;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
+    this.Optional = json.Optional ?? false;
     if (this.Category === ("Starforged/Moves/Assets"||"Ironsworn/Moves/Assets")) {
       if (!json.Asset) {
         throw new Error("Expected an asset ID");

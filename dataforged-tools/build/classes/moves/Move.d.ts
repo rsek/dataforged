@@ -9,6 +9,7 @@ import type { IMoveYaml } from "../../yaml_in/moves/IMoveYaml";
 export declare class Move extends SourceInheritor implements IMove {
     $id: IMove["$id"];
     Name: string;
+    Optional: boolean;
     Category: MoveCategory["$id"];
     Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? Asset["$id"] : undefined;
     "Progress Move"?: boolean | undefined;

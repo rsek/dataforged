@@ -15458,7 +15458,8 @@
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "type": "string",
           "title": "Member of"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -15484,7 +15485,7 @@
         },
         "Embed in": {
           "description": "This table is displayed as embedded in a row of another table.",
-          "type": "string",
+          "type": ["null", "string"],
           "title": "Embed in"
         },
         "Icon": {
@@ -15505,7 +15506,8 @@
           "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
           "type": "string",
           "title": "Color"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -15517,57 +15519,50 @@
         "Result columns": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/YamlStub<ITextColumn,\"Key\"|\"Usecontentfrom\"|\"Label\",\"\">"
+            "description": "A stub where keys `$id`, `Display`, `Source`, `Optional`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "Key": {
+                "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
+                "enum": ["Result", "Summary"],
+                "type": "string",
+                "title": "Key"
+              },
+              "Use content from": {
+                "description": "The ID of the oracle with a `Table` key.",
+                "type": "string",
+                "title": "Use content from"
+              },
+              "Label": {
+                "description": "The label or header text to use for this column.",
+                "type": "string",
+                "title": "Label"
+              },
+              "_idFragment": { "type": "string", "title": "_idFragment" }
+            }
           },
           "title": "Result columns"
         },
         "Roll columns": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/YamlStub<ITableColumnBase,\"Usecontentfrom\"|\"Label\",\"\">"
+            "description": "A stub where keys `$id`, `Display`, `Source`, `Optional`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "Use content from": {
+                "description": "The ID of the oracle table to use.",
+                "type": "string",
+                "title": "Use content from"
+              },
+              "Label": { "type": "string", "title": "Label" },
+              "_idFragment": { "type": "string", "title": "_idFragment" }
+            }
           },
           "title": "Roll columns"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "YamlStub<ITextColumn,\"Key\"|\"Usecontentfrom\"|\"Label\",\"\">": {
-      "description": "A stub where keys `$id`, `Display`, `Source` and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
-      "title": "YamlStub<ITextColumn,\"Key\"|\"Usecontentfrom\"|\"Label\",\"\">",
-      "type": "object",
-      "properties": {
-        "Key": {
-          "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
-          "enum": ["Result", "Summary"],
-          "type": "string",
-          "title": "Key"
         },
-        "Use content from": {
-          "description": "The ID of the oracle with a `Table` key.",
-          "type": "string",
-          "title": "Use content from"
-        },
-        "Label": {
-          "description": "The label or header text to use for this column.",
-          "type": "string",
-          "title": "Label"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "YamlStub<ITableColumnBase,\"Usecontentfrom\"|\"Label\",\"\">": {
-      "description": "A stub where keys `$id`, `Display`, `Source` and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
-      "title": "YamlStub<ITableColumnBase,\"Usecontentfrom\"|\"Label\",\"\">",
-      "type": "object",
-      "properties": {
-        "Use content from": {
-          "description": "The ID of the oracle table to use.",
-          "type": "string",
-          "title": "Use content from"
-        },
-        "Label": { "type": "string", "title": "Label" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -16002,7 +15997,8 @@
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "type": "string",
           "title": "Member of"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -16276,7 +16272,8 @@
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "Member of"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -16368,7 +16365,8 @@
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "Member of"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false

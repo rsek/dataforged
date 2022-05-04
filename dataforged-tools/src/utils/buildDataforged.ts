@@ -26,22 +26,22 @@ export function buildDataforged(gamespace: Gamespace = Gamespace.Starforged) {
   switch (gamespace) {
     case Gamespace.Starforged: {
       data = {
-        $schema: "./schema.json",
-        assets,
-        encounters: encounters as EncounterStarforged[],
-        moves,
-        oracles,
-        truths
+        // $schema: "./schema.json",
+        "Asset Types": assets,
+        Encounters: encounters as EncounterStarforged[],
+        "Move Categories": moves,
+        "Oracle Categories": oracles,
+        "Setting Truths": truths
       } as Starforged;
       break;}
     case Gamespace.Ironsworn:{
       data = {
-        $schema: "./schema.json",
-        assets,
-        encounters: encounters as EncounterNatureInfo[],
-        moves,
-        oracles,
-        truths
+        // $schema: "./schema.json",
+        "Asset Types": assets,
+        Encounters: encounters as EncounterNatureInfo[],
+        "Move Categories": moves,
+        "Oracle Categories": oracles,
+        "Setting Truths": truths
       } as Ironsworn;
       break;
     }

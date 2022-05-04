@@ -5,7 +5,7 @@ import type { Gamespace , IAlterMomentum, IAsset, IAssetAbility,  IAssetState } 
 import { Replacement } from "@json_out/index.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import { toIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IAssetAbilityYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
@@ -50,7 +50,7 @@ export class AssetAbility implements IAssetAbility {
       this.Moves = json.Moves.map(moveJson => {
         const moveDataClone = _.cloneDeep(moveJson);
         moveDataClone.Asset = parent.$id;
-        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${toIdFragment(moveDataClone.Name)}`;
+        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${formatIdFragment(moveDataClone.Name)}`;
         moveDataClone.Category = `${gamespace}/Moves/Assets`;
         if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
           moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);

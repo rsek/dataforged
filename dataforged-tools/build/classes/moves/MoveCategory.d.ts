@@ -12,6 +12,7 @@ export declare class MoveCategory implements IMoveCategory {
     Description: string;
     Moves: Move[];
     Display: MoveCategoryDisplay;
+    Optional: boolean;
     constructor(json: IMoveCategoryYaml, gamespace: Gamespace, ...ancestorSourceJson: ISource[]);
 }
 //# sourceMappingURL=MoveCategory.d.ts.map

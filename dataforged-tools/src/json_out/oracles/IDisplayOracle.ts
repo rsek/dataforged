@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IOracle , ITableDisplayInfo } from "@json_out/index.js";
+import type { IDisplayWithTitle, IOracle , IRow, ITableDisplayInfo } from "@json_out/index.js";
 
 /**
  * Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
@@ -23,5 +23,5 @@ export interface IDisplayOracle extends IDisplayWithTitle {
   /**
    * This table is displayed as embedded in a row of another table.
    */
-  "Embed in"?: IOracle["$id"] | undefined;
+  "Embed in"?: IRow["$id"] | undefined;
 }

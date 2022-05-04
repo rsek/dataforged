@@ -11,6 +11,5 @@ export * from "./moves/index.js";
 export * from "./assets/index.js";
 export * from "./cyclopedia/index.js";
 export * from "./delve_site/index.js";
-export * from "./Starforged.js";
-export * from "./Ironsworn.js";
+export * from "./GameData.js";
 //# sourceMappingURL=index.d.ts.map

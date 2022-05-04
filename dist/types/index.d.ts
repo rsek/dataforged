@@ -167,6 +167,19 @@ export declare enum EncounterTags {
 }
 
 /**
+ * Base interface for *Ironsworn* and *Ironsworn: Starforged* game data.
+ * @public
+ */
+export declare interface GameDataRoot {
+    $schema?: string | undefined;
+    "Asset Types": IAssetType[];
+    "Encounters": IEncounterStarforged[] | IEncounterNatureInfo[];
+    "Move Categories": IMoveCategory[];
+    "Oracle Categories": IOracleCategory[];
+    "Setting Truths"?: ISettingTruth[];
+}
+
+/**
  * @public
  */
 export declare enum GameObjectType {
@@ -237,7 +250,7 @@ export declare interface IAlterMomentumReset {
  * Describes alterations applied to moves by asset abilities.
  * @public
  */
-export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "Category" | "Display" | "Source" | "Outcomes">, IHasId {
+export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "Category" | "Display" | "Source" | "Outcomes" | "Optional"> {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
      */
@@ -674,7 +687,7 @@ export declare interface IDisplayOracle extends IDisplayWithTitle {
     /**
      * This table is displayed as embedded in a row of another table.
      */
-    "Embed in"?: IOracle["$id"] | undefined;
+    "Embed in"?: IRow["$id"] | undefined;
 }
 
 /**
@@ -863,7 +876,7 @@ export declare interface IHasGameObjects {
 export declare interface IHasId {
     /**
      * The item's unique string ID.
-     * @pattern ^(Starforged|Ironsworn)/[A-z_/-]+$
+     * @pattern ^(Starforged|Ironsworn)/[0-9A-z_/-]+$
      */
     $id: string;
 }
@@ -879,6 +892,17 @@ export declare interface IHasName {
      * If the item has Display.Title, that should be preferred for most user-facing labels.
      */
     Name: string;
+}
+
+/**
+ * @public
+ */
+export declare interface IHasOptional {
+    /**
+     * Whether or not the source material presents this rules item as optional.
+     * @default false
+     */
+    Optional: boolean;
 }
 
 /**
@@ -938,6 +962,7 @@ export declare interface IHasSource {
 
 /**
  * Interface for items that have a subtable-like object.
+ * @deprecated Currently only used by setting truths. If you need to denote a subtable, use the `Oracle rolls` property to point to an `IOracle` in the `Oracles` property of this table's parent.
  * @public
  */
 export declare interface IHasSubtable {
@@ -980,6 +1005,9 @@ export declare interface IHasTable {
  * @public
  */
 export declare interface IHasTags {
+    /**
+     * Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.
+     */
     Tags: string[];
 }
 
@@ -1210,7 +1238,7 @@ export declare interface IMeterBase extends IHasId, IHasName {
  * Interface representing a Starforged move.
  * @public
  */
-export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, Partial<IHasSuggestions> {
+export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, IHasOptional, Partial<IHasSuggestions> {
     /**
      * @example "Starforged/Moves/Adventure/Face_Danger"
      * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$
@@ -1257,7 +1285,7 @@ export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, 
  * Represents a category of moves such as "Session Moves" or "Combat Moves", and serves as a container for moves within that category.
  * @public
  */
-export declare interface IMoveCategory extends IHasId, IHasName, IHasSource, IHasDescription, IHasDisplay {
+export declare interface IMoveCategory extends IHasId, IHasName, IHasSource, IHasDescription, IHasDisplay, IHasOptional {
     /**
      * @example "Starforged/Moves/Adventure"
      * @pattern ^(Starforged|Ironsworn)/Moves/[A-z_-]+$
@@ -1467,7 +1495,7 @@ export declare enum InputType {
  * The distinction between {@link IOracleCategory} and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).
  * @public
  */
-export declare interface IOracle extends IOracleBase, IHasName {
+export declare interface IOracle extends IOracleBase {
     /**
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
      */
@@ -1482,7 +1510,7 @@ export declare interface IOracle extends IOracleBase, IHasName {
  * Interface with elements common to various Oracle-related interfaces and classes.
  * @public
  */
-export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource {
+export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasName {
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
@@ -1510,7 +1538,7 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
  * The distinction between this and {@link IOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).
  * @public
  */
-export declare interface IOracleCategory extends IOracleBase, IHasName {
+export declare interface IOracleCategory extends IOracleBase {
     /**
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
      */
@@ -1647,16 +1675,12 @@ export declare interface IRollTemplate {
 }
 
 /**
- * Root object for *Ironsworn* data.
+ * Root object for *Ironsworn* game data.
  * @public
  */
-export declare interface Ironsworn {
-    $schema?: string | undefined;
-    assets: IAssetType[];
-    encounters: IEncounterNatureInfo[];
-    moves: IMoveCategory[];
-    oracles: IOracleCategory[];
-    truths?: ISettingTruth[];
+export declare interface Ironsworn extends GameDataRoot {
+    "Encounters": IEncounterNatureInfo[];
+    "Setting Truths"?: ISettingTruth[];
 }
 
 /**
@@ -2250,28 +2274,18 @@ export declare enum SourceUrl {
 }
 
 /**
- * Root object for *Ironsworn: Starforged* data.
+ * Root object for *Ironsworn: Starforged* game data.
  * @public
  */
-export declare interface Starforged {
-    $schema?: string | undefined;
-    assets: IAssetType[];
-    encounters: IEncounterStarforged[];
-    moves: IMoveCategory[];
-    oracles: IOracleCategory[];
-    truths: ISettingTruth[];
+export declare interface Starforged extends GameDataRoot {
+    "Encounters": IEncounterStarforged[];
+    "Setting Truths": ISettingTruth[];
 }
 
 /**
  * @public
  */
-export declare const starforged: {
-    assets: IAssetType[];
-    encounters: IEncounterStarforged[];
-    moves: IMoveCategory[];
-    oracles: IOracleCategory[];
-    truths: ISettingTruth[];
-};
+export declare const starforged: Starforged;
 
 /**
  * Enumerates player character stats.
