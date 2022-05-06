@@ -21,7 +21,7 @@ export function buildMoves(gamespace = Gamespace.Starforged) {
     // merges categories that are spread across multiple files
     // e.g. Moves + Moves-Delve
     moveRoots.forEach(root => {
-        root.Categories
+        root["Move Categories"]
             .forEach((moveCatData) => {
             const moveCat = new MoveCategory(moveCatData, gamespace, root.Source);
             const targetIndex = json.findIndex(item => item.Name === moveCat.Name);

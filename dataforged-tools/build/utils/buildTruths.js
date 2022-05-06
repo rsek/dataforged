@@ -21,7 +21,7 @@ export function buildTruths(gamespace) {
             return [];
         case Gamespace.Starforged: {
             const truthsRoot = concatWithYamlRefs(undefined, filePath);
-            const truths = truthsRoot.Truths.map(item => new SettingTruth(item, truthsRoot.Source, gamespace));
+            const truths = truthsRoot["Setting Truths"].map(item => new SettingTruth(item, truthsRoot.Source, gamespace));
             buildLog(buildTruths, `Finished building ${truths.length} setting truth categories.`);
             return truths;
         }

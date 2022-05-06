@@ -1692,7 +1692,7 @@ export declare const ironsworn: Ironsworn;
  * Interface representing a single row in an oracle table.
  * @public
  */
-export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects & IHasDisplay> {
+export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasGameObjects & IHasDisplay> {
     /**
      * The ID of this row.
      * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$

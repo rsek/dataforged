@@ -1,9 +1,9 @@
-import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle } from "../index.js";
+import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle } from "../index.js";
 /**
  * Interface representing a single row in an oracle table.
  * @public
  */
-export interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasSubtable & IHasGameObjects & IHasDisplay> {
+export interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasGameObjects & IHasDisplay> {
     /**
      * The ID of this row.
      * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$

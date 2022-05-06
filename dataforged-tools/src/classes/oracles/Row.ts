@@ -1,6 +1,6 @@
-import { AttributeSetter , GameObject , MultipleRolls , OracleContent , Suggestions } from "@classes/index.js";
+import { AttributeSetter, GameObject , MultipleRolls, OracleContent, Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IDisplay, IHasSubtable, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, Raster, Vector } from "@json_out/index.js";
+import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, Raster, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";

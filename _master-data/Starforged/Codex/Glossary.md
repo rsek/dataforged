@@ -1,3 +1,5 @@
+<!-- from reference guide -->
+
 # Glossary
 
 ## “Add +X”

@@ -1,4 +1,4 @@
-import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSubtable, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
+import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
 
 /**
  * Interface representing a single row in an oracle table.
@@ -9,7 +9,6 @@ export interface IRow extends Partial<
   IHasRollTemplate &
   IHasSuggestions &
   IHasOracleContent &
-  IHasSubtable &
   IHasGameObjects &
   IHasDisplay
 >  {

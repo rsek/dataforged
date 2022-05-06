@@ -5,16 +5,11 @@ import type { ISource } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
 import { sortIronsworn } from "@utils/sortIronsworn.js";
-import type { IMoveCategoryYaml ,IYamlWithRef } from "@yaml_in/index.js";
+import type { IMoveCategoryYaml ,IMoveRootYaml,IYamlWithRef } from "@yaml_in/index.js";
 import fg from "fast-glob";
 import _ from "lodash-es";
 
-interface IMovesRoot extends IYamlWithRef {
-  Name: string;
-  Source: ISource;
-  Categories: IMoveCategoryYaml[]
-  // Moves: IMove[];
-}
+
 /**
  * It takes the data from the YAML files, and then it iterates over the categories, and then it
  * iterates over the moves in each category, and then it creates a MoveCategory object for each
@@ -29,14 +24,14 @@ export function buildMoves(gamespace: Gamespace = Gamespace.Starforged) {
   const moveRoots = moveFiles
     .map(moveFile => concatWithYamlRefs(
       REFS_PATH,
-      moveFile) as IMovesRoot);
+      moveFile) as IMoveRootYaml);
 
   const json: MoveCategory[] = [];
 
   // merges categories that are spread across multiple files
   // e.g. Moves + Moves-Delve
   moveRoots.forEach(root => {
-    root.Categories
+    root["Move Categories"]
       .forEach((moveCatData) => {
         const moveCat = new MoveCategory(moveCatData, gamespace, root.Source);
         const targetIndex = json.findIndex(item => item.Name === moveCat.Name);

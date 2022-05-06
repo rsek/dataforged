@@ -4905,12 +4905,6 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
           "type": "array",
@@ -4951,6 +4945,12 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
+        },
+        "Subtable": {
+          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IRow" },
+          "title": "Subtable"
         },
         "Multiple rolls": {
           "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
