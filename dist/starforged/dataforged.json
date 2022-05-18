@@ -9456,6 +9456,162 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "Source": { "Title": "Sundered Isles Preview", "Date": "051722" },
+                    "Asset Type": "Starforged/Assets/Path",
+                    "$id": "Starforged/Assets/Path/Crew_Commander",
+                    "Name": "Crew Commander",
+                    "Display": { "Title": "Crew Commander", "Color": "#3f7faa" },
+                    "Usage": { "Shared": false },
+                    "Condition Meter": {
+                        "Min": 0,
+                        "Value": 2,
+                        "$id": "Starforged/Assets/Path/Crew_Commander/Condition_Meter",
+                        "Name": "Command",
+                        "Max": 4,
+                        "Conditions": []
+                    },
+                    "Abilities": [
+                        {
+                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1",
+                            "Text": "You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost as -1 command. If you [Face Danger](Starforged/Moves/Adventure/Face_Danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.",
+                            "Enabled": true,
+                            "Alter Moves": [
+                                {
+                                    "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/1",
+                                    "Moves": null,
+                                    "Trigger": {
+                                        "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/1/Trigger",
+                                        "By": { "Player": true, "Ally": false },
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                                                "Text": "Leading or aided by your crew",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": []
+                                            }
+                                        ]
+                                    },
+                                    "Text": "You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.",
+                                    "Outcomes": {
+                                        "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/1/Outcomes",
+                                        "Weak Hit": {
+                                            "Text": "You may (after rolling) suffer -1 command and improve a weak hit to a strong hit.",
+                                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                                        },
+                                        "Miss": {
+                                            "Text": "You may (after rolling) suffer -1 command and improve a miss to a weak hit.",
+                                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/1/Outcomes/Miss"
+                                        }
+                                    }
+                                },
+                                {
+                                    "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/2",
+                                    "Moves": ["Starforged/Moves/Adventure/Face_Danger"],
+                                    "Trigger": {
+                                        "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/2/Trigger",
+                                        "By": { "Player": true, "Ally": false },
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/1/Alter_Moves/2/Trigger/Options/1",
+                                                "Text": "As a test of your leadership",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": [
+                                                    "Starforged/Assets/Path/Crew_Commander/Condition_Meter"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "Moves": [
+                                {
+                                    "Source": {
+                                        "Title": "Sundered Isles Preview",
+                                        "Date": "051722"
+                                    },
+                                    "Category": "Starforged/Moves/Assets",
+                                    "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew",
+                                    "Name": "Bolster Crew",
+                                    "Optional": false,
+                                    "Asset": "Starforged/Assets/Path/Crew_Commander",
+                                    "Display": { "Title": "Bolster Crew" },
+                                    "Trigger": {
+                                        "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Trigger",
+                                        "Text": "When you bolster your crew...",
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Trigger/Options/1",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": ["Heart"]
+                                            }
+                                        ]
+                                    },
+                                    "Text": "To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.",
+                                    "Outcomes": {
+                                        "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Outcomes",
+                                        "Strong Hit": {
+                                            "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Outcomes/Strong_Hit",
+                                            "Text": "Take +4 command."
+                                        },
+                                        "Weak Hit": {
+                                            "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Outcomes/Weak_Hit",
+                                            "Text": "Take +2 command."
+                                        },
+                                        "Miss": {
+                                            "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Outcomes/Miss",
+                                            "Text": "Take +2 command but envision a threat to your crew or leadership."
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/2",
+                            "Text": "Take +2 command; your max is now 6.",
+                            "Enabled": false,
+                            "Alter Properties": { "Condition Meter": { "Max": 6 } }
+                        },
+                        {
+                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3",
+                            "Text": "When your command is 0 and the situation desperate, you may [Compel](Starforged/Moves/Adventure/Compel) your crew to action; if you do, take +2 command on a hit.",
+                            "Enabled": false,
+                            "Alter Moves": [
+                                {
+                                    "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3/Alter_Moves/1",
+                                    "Moves": ["Starforged/Moves/Adventure/Compel"],
+                                    "Trigger": {
+                                        "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3/Alter_Moves/1/Trigger",
+                                        "By": { "Player": true, "Ally": false },
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                                                "Text": "[Compel](Starforged/Moves/Adventure/Compel) your crew to action when when your command is 0 and the situation desperate",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": []
+                                            }
+                                        ]
+                                    },
+                                    "Outcomes": {
+                                        "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3/Alter_Moves/1/Outcomes",
+                                        "Strong Hit": {
+                                            "Text": "Take +2 command.",
+                                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                                        },
+                                        "Weak Hit": {
+                                            "Text": "Take +2 command.",
+                                            "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -11955,6 +12111,222 @@
                                         "Weak Hit": {
                                             "Text": "Take +1 momentum.",
                                             "$id": "Starforged/Assets/Deed/Vanguard/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Source": {
+                        "Title": "Ironsworn: Starforged Assets",
+                        "Date": "050622"
+                    },
+                    "Asset Type": "Starforged/Assets/Deed",
+                    "$id": "Starforged/Assets/Deed/Cohort",
+                    "Name": "Cohort",
+                    "Display": { "Title": "Cohort", "Color": "#40834f" },
+                    "Usage": { "Shared": false },
+                    "Requirement": "Once you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) and take them on as a crewmate...",
+                    "Abilities": [
+                        {
+                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/1",
+                            "Text": "You gain a specialist. The specialist is part of your crew, but is managed as a connection and provides benefits to you and your allies per their role. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, or if you [Pay_the_Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.",
+                            "Enabled": true,
+                            "Alter Moves": [
+                                {
+                                    "$id": "Starforged/Assets/Deed/Cohort/Abilities/1/Alter_Moves/1",
+                                    "Moves": ["Starforged/Moves/Suffer/Withstand_Damage"],
+                                    "Outcomes": {
+                                        "$id": "Starforged/Assets/Deed/Cohort/Abilities/1/Alter_Moves/1/Outcomes",
+                                        "Miss": {
+                                            "Text": "You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.",
+                                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/1/Alter_Moves/1/Outcomes/Miss"
+                                        }
+                                    }
+                                },
+                                {
+                                    "$id": "Starforged/Assets/Deed/Cohort/Abilities/1/Alter_Moves/2",
+                                    "Moves": ["Starforged/Moves/Fate/Pay_the_Price"],
+                                    "Text": "You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute."
+                                }
+                            ]
+                        },
+                        {
+                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/2",
+                            "Text": "You may gain additional specialists by spending 1 experience to add a connection to your crew as a specialist. Specialist bonuses may not be stacked for a single action.",
+                            "Enabled": false
+                        },
+                        {
+                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/3",
+                            "Text": "When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by gathering your specialists to strategize or problem-solve, you may reroll one die for each participating specialist.",
+                            "Enabled": false,
+                            "Alter Moves": [
+                                {
+                                    "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1",
+                                    "Moves": ["Starforged/Moves/Adventure/Secure_an_Advantage"],
+                                    "Trigger": {
+                                        "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1/Trigger",
+                                        "By": { "Player": true, "Ally": false },
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                                                "Text": "By gathering your specialists to strategize or problem-solve",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": []
+                                            }
+                                        ]
+                                    },
+                                    "Outcomes": {
+                                        "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1/Outcomes",
+                                        "Strong Hit": {
+                                            "Reroll": {
+                                                "Dice": "Any",
+                                                "Text": "You may reroll one die for each participating specialist."
+                                            },
+                                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1/Outcomes/Miss"
+                                        },
+                                        "Weak Hit": {
+                                            "Reroll": {
+                                                "Dice": "Any",
+                                                "Text": "You may reroll one die for each participating specialist."
+                                            },
+                                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1/Outcomes/Miss"
+                                        },
+                                        "Miss": {
+                                            "Reroll": {
+                                                "Dice": "Any",
+                                                "Text": "You may reroll one die for each participating specialist."
+                                            },
+                                            "$id": "Starforged/Assets/Deed/Cohort/Abilities/3/Alter_Moves/1/Outcomes/Miss"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Source": {
+                        "Title": "Ironsworn: Starforged Assets",
+                        "Date": "050622"
+                    },
+                    "Asset Type": "Starforged/Assets/Deed",
+                    "$id": "Starforged/Assets/Deed/Fleet_Commander",
+                    "Name": "Fleet Commander",
+                    "Display": { "Title": "Fleet Commander", "Color": "#40834f" },
+                    "Usage": { "Shared": false },
+                    "Requirement": "Once you fill 12 legacy track boxes and take command of a mighty fleet...",
+                    "Condition Meter": {
+                        "Min": 0,
+                        "Value": 4,
+                        "$id": "Starforged/Assets/Deed/Fleet_Commander/Condition_Meter",
+                        "Name": "Power",
+                        "Max": 4,
+                        "Conditions": ["Wrecked"]
+                    },
+                    "Abilities": [
+                        {
+                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1",
+                            "Text": "Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](Starforged/Moves/Recover/Sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.",
+                            "Enabled": true,
+                            "Alter Moves": [
+                                {
+                                    "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/1",
+                                    "Moves": null,
+                                    "Trigger": {
+                                        "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/1/Trigger",
+                                        "By": { "Player": true, "Ally": false },
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                                                "Text": "As a fleetwide action to get in position, avoid a hazard, or fight",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": ["${{ASSET}}/Condition_Meter"]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/2",
+                                    "Moves": ["Starforged/Moves/Fate/Pay_the_Price"],
+                                    "Text": "If your fleet bears the cost, suffer -1 power."
+                                },
+                                {
+                                    "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/3",
+                                    "Moves": ["Starforged/Moves/Recover/Sojourn"],
+                                    "Outcomes": {
+                                        "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/3/Outcomes",
+                                        "Strong Hit": {
+                                            "Text": "You may forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.",
+                                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/3/Outcomes/Miss"
+                                        },
+                                        "Weak Hit": {
+                                            "Text": "You may forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.",
+                                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/3/Outcomes/Miss"
+                                        },
+                                        "Miss": {
+                                            "Text": "You may forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.",
+                                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/1/Alter_Moves/3/Outcomes/Miss"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/2",
+                            "Text": "Take +2 power and set your max power to 5.",
+                            "Enabled": false,
+                            "Alter Properties": { "Condition Meter": { "Max": 5 } }
+                        },
+                        {
+                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3",
+                            "Text": "When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), you may reroll your action die if its value is less than your fleet’s power.",
+                            "Enabled": false,
+                            "Alter Moves": [
+                                {
+                                    "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1",
+                                    "Moves": [
+                                        "Starforged/Moves/Exploration/Undertake_an_Expedition"
+                                    ],
+                                    "Trigger": {
+                                        "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1/Trigger",
+                                        "By": { "Player": true, "Ally": false },
+                                        "Options": [
+                                            {
+                                                "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                                                "Text": "With your fleet",
+                                                "Roll type": "Action roll",
+                                                "Method": "Any",
+                                                "Using": []
+                                            }
+                                        ]
+                                    },
+                                    "Outcomes": {
+                                        "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1/Outcomes",
+                                        "Strong Hit": {
+                                            "Reroll": {
+                                                "Text": "You may reroll your action die if its value is less than your fleet’s power.",
+                                                "Dice": "Action die"
+                                            },
+                                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1/Outcomes/Miss"
+                                        },
+                                        "Weak Hit": {
+                                            "Reroll": {
+                                                "Text": "You may reroll your action die if its value is less than your fleet’s power.",
+                                                "Dice": "Action die"
+                                            },
+                                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1/Outcomes/Miss"
+                                        },
+                                        "Miss": {
+                                            "Reroll": {
+                                                "Text": "You may reroll your action die if its value is less than your fleet’s power.",
+                                                "Dice": "Action die"
+                                            },
+                                            "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3/Alter_Moves/1/Outcomes/Miss"
                                         }
                                     }
                                 }

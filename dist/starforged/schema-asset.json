@@ -1,198 +1,102 @@
 {
-  "description": "Root object for *Ironsworn* game data.",
+  "description": "An interface representing an *Ironsworn: Starforged* asset card.",
   "type": "object",
   "properties": {
-    "Encounters": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/IEncounterNatureInfo" },
-      "title": "Encounters"
+    "$id": {
+      "description": "The item's unique string ID.",
+      "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
+      "type": "string",
+      "title": "$id"
     },
-    "Setting Truths": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/ISettingTruth" },
-      "title": "Setting Truths"
+    "Name": {
+      "description": "The asset's name - the title printed on the card.",
+      "type": "string",
+      "title": "Name"
     },
-    "$schema": { "type": "string", "title": "$schema" },
-    "Asset Types": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/IAssetType" },
-      "title": "Asset Types"
+    "Display": {
+      "$ref": "#/definitions/IDisplayWithTitle",
+      "description": "Data relevant to this item's display/rendering.",
+      "title": "Display"
     },
-    "Move Categories": {
+    "States": {
+      "description": "Describes any states that the asset might have, such as \"Broken\". Some states may disable the asset entirely.",
       "type": "array",
-      "items": { "$ref": "#/definitions/IMoveCategory" },
-      "title": "Move Categories"
+      "items": { "$ref": "#/definitions/IAssetState" },
+      "title": "States"
     },
-    "Oracle Categories": {
+    "Asset Type": {
+      "description": "The ID of the asset's parent AssetType",
+      "type": "string",
+      "title": "Asset Type"
+    },
+    "Usage": {
+      "$ref": "#/definitions/IAssetUsage",
+      "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
+      "title": "Usage"
+    },
+    "Attachments": {
+      "description": "Details on what attachments (other assets) are accepted by this asset.",
+      "$ref": "#/definitions/IAssetAttachment",
+      "title": "Attachments"
+    },
+    "Inputs": {
+      "description": "Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.",
       "type": "array",
-      "items": { "$ref": "#/definitions/IOracleCategory" },
-      "title": "Oracle Categories"
+      "items": {
+        "anyOf": [
+          { "$ref": "#/definitions/IInputSelect" },
+          { "$ref": "#/definitions/IInputText" }
+        ]
+      },
+      "title": "Inputs"
+    },
+    "Requirement": {
+      "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
+      "type": "string",
+      "title": "Requirement"
+    },
+    "Abilities": {
+      "description": "The asset's abilities.",
+      "type": "array",
+      "items": [
+        { "$ref": "#/definitions/IAssetAbility" },
+        { "$ref": "#/definitions/IAssetAbility" },
+        { "$ref": "#/definitions/IAssetAbility" }
+      ],
+      "minItems": 3,
+      "maxItems": 3,
+      "title": "Abilities"
+    },
+    "Condition Meter": {
+      "description": "Information on this asset's condition meter, if any.",
+      "$ref": "#/definitions/IConditionMeter",
+      "title": "Condition Meter"
+    },
+    "Tags": { "type": "array", "items": { "type": "string" }, "title": "Tags" },
+    "Source": {
+      "$ref": "#/definitions/ISource",
+      "description": "Information on this item's source.",
+      "title": "Source"
+    },
+    "Aliases": {
+      "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
+      "type": "array",
+      "items": { "type": "string" },
+      "title": "Aliases"
     }
   },
   "defaultProperties": [],
   "additionalProperties": false,
   "required": [
-    "Asset Types",
-    "Encounters",
-    "Move Categories",
-    "Oracle Categories"
+    "$id",
+    "Abilities",
+    "Asset Type",
+    "Display",
+    "Name",
+    "Source",
+    "Usage"
   ],
   "definitions": {
-    "IEncounterNatureInfo": {
-      "description": "Represents the metadata describing an *Ironsworn* encounter's nature; used as a category to contain all Encounters of that type.",
-      "title": "IEncounterNatureInfo",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^Ironsworn/Encounters/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Name": {
-          "$ref": "#/definitions/EncounterNatureIronsworn",
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "title": "Name"
-        },
-        "Encounters": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/IEncounterIronsworn" },
-          "title": "Encounters"
-        },
-        "Summary": {
-          "description": "A user-facing markdown summary of the item.",
-          "type": "string",
-          "title": "Summary"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Description",
-        "Display",
-        "Encounters",
-        "Name",
-        "Source",
-        "Summary"
-      ]
-    },
-    "EncounterNatureIronsworn": {
-      "title": "EncounterNatureIronsworn",
-      "enum": [
-        "Animal",
-        "Anomaly",
-        "Beast",
-        "Firstborn",
-        "Horror",
-        "Ironlander"
-      ],
-      "type": "string"
-    },
-    "IEncounterIronsworn": {
-      "description": "Represents an *Ironsworn* Encounter entry.",
-      "title": "IEncounterIronsworn",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Encounters/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Nature": {
-          "$ref": "#/definitions/EncounterNatureIronsworn",
-          "title": "Nature"
-        },
-        "Your Truth": {
-          "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
-          "type": "string",
-          "title": "Your Truth"
-        },
-        "Summary": {
-          "description": "A user-facing markdown summary of the item.",
-          "type": "string",
-          "title": "Summary"
-        },
-        "Features": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Features"
-        },
-        "Drives": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Drives"
-        },
-        "Tactics": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Tactics"
-        },
-        "Quest Starter": {
-          "description": "A markdown string describing the quest starter associated with this item.",
-          "type": "string",
-          "title": "Quest Starter"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Tags": {
-          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
-          "type": "array",
-          "items": { "type": "string", "enum": ["vehicle"] },
-          "title": "Tags"
-        },
-        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Description",
-        "Display",
-        "Drives",
-        "Features",
-        "Name",
-        "Nature",
-        "Quest Starter",
-        "Rank",
-        "Source",
-        "Tactics"
-      ]
-    },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",
       "type": "object",
@@ -225,867 +129,6 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Title"]
-    },
-    "ChallengeRank": {
-      "description": "Enumerates challenge ranks.",
-      "title": "ChallengeRank",
-      "enum": [1, 2, 3, 4, 5],
-      "type": "number"
-    },
-    "ISource": {
-      "description": "Interface representing data on the game's source.",
-      "title": "ISource",
-      "type": "object",
-      "properties": {
-        "Title": {
-          "$ref": "#/definitions/SourceTitle",
-          "description": "The title of the source.",
-          "title": "Title"
-        },
-        "Date": {
-          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
-          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
-          "type": "string",
-          "title": "Date"
-        },
-        "Page": {
-          "description": "The page on which the item appears most prominently.",
-          "type": "integer",
-          "title": "Page"
-        },
-        "Url": {
-          "description": "The URL where the source is available.",
-          "pattern": "^https?://.*$",
-          "type": "string",
-          "title": "Url"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Title"]
-    },
-    "SourceTitle": {
-      "description": "Enumerates valid sourcebook titles.",
-      "title": "SourceTitle",
-      "enum": [
-        "Custom",
-        "Ironsworn Assets",
-        "Ironsworn Bonus Assets (July 2020)",
-        "Ironsworn Rulebook",
-        "Ironsworn: Delve",
-        "Ironsworn: Starforged Assets",
-        "Ironsworn: Starforged Rulebook",
-        "Sundered Isles Preview"
-      ],
-      "type": "string"
-    },
-    "ISettingTruth": {
-      "description": "Interface for Setting Truth categories such as \"Exodus\" and \"Cataclysm\". See page XX of Starforged for further information.",
-      "title": "ISettingTruth",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Table": {
-          "description": "The 'canonical' options for this setting truth category.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/ISettingTruthOption" },
-          "title": "Table"
-        },
-        "Character": {
-          "description": "A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.",
-          "type": "string",
-          "title": "Character"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Character", "Display", "Name", "Source", "Table"]
-    },
-    "ISettingTruthOption": {
-      "description": "Interface for 'canonical' options within a SettingTruth category.",
-      "title": "ISettingTruthOption",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Roll template": {
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "$ref": "#/definitions/IRollTemplate",
-          "title": "Roll template"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/ISettingTruthOptionSubtableRow" },
-          "title": "Subtable"
-        },
-        "Floor": {
-          "anyOf": [
-            {
-              "description": "The low end of the dice range for this row.",
-              "minimum": 1,
-              "maximum": 100,
-              "type": ["null", "integer"]
-            },
-            { "type": "null" }
-          ],
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "anyOf": [
-            {
-              "description": "The high end of the dice range for this row.",
-              "minimum": 1,
-              "maximum": 100,
-              "type": ["null", "integer"]
-            },
-            { "type": "null" }
-          ],
-          "title": "Ceiling"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Quest Starter": {
-          "description": "A markdown string describing the quest starter associated with this item.",
-          "type": "string",
-          "title": "Quest Starter"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Ceiling",
-        "Description",
-        "Floor",
-        "Quest Starter",
-        "Result"
-      ]
-    },
-    "IRollTemplate": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate",
-      "type": "object",
-      "properties": {
-        "Result": {
-          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Description"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "ISettingTruthOptionSubtableRow": {
-      "title": "ISettingTruthOptionSubtableRow",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Floor": {
-          "anyOf": [
-            {
-              "description": "The low end of the dice range for this row.",
-              "minimum": 1,
-              "maximum": 100,
-              "type": ["null", "integer"]
-            },
-            { "type": "null" }
-          ],
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "anyOf": [
-            {
-              "description": "The high end of the dice range for this row.",
-              "minimum": 1,
-              "maximum": 100,
-              "type": ["null", "integer"]
-            },
-            { "type": "null" }
-          ],
-          "title": "Ceiling"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate_1",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Ceiling", "Floor", "Result"]
-    },
-    "IRow": {
-      "description": "Interface representing a single row in an oracle table.",
-      "title": "IRow",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Floor": {
-          "anyOf": [
-            {
-              "description": "The low end of the dice range for this row.",
-              "minimum": 1,
-              "maximum": 100,
-              "type": ["null", "integer"]
-            },
-            { "type": "null" }
-          ],
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "anyOf": [
-            {
-              "description": "The high end of the dice range for this row.",
-              "minimum": 1,
-              "maximum": 100,
-              "type": ["null", "integer"]
-            },
-            { "type": "null" }
-          ],
-          "title": "Ceiling"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate_1",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IMultipleRolls": {
-      "description": "Describes{@linkIRow}results that call for multiple rolls, most commonly \"Roll twice\" results.",
-      "title": "IMultipleRolls",
-      "type": "object",
-      "properties": {
-        "Amount": {
-          "description": "The number of rolls to make on the parent oracle table.",
-          "type": "integer",
-          "title": "Amount"
-        },
-        "Allow duplicates": {
-          "description": "Whether to allow duplicate results when generating multiple rolls.\n\nImplicitly required by `Make it worse`.",
-          "type": "boolean",
-          "title": "Allow duplicates"
-        },
-        "Make it worse": {
-          "description": "Whether duplicate rolls should be compounded in an Ironsworn-style \"Make it worse\" results.\n\nTypically this is accompanied by `IRow.Result` text like \"Roll twice more on this table. Both results occur. If they are the same result, make it worse.\"\n\nCan safely be ignored in Starforged-only implementations. Implicitly requires `Allow duplicates`.",
-          "type": "boolean",
-          "title": "Make it worse"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Allow duplicates", "Amount", "Make it worse"]
-    },
-    "IAttribute": {
-      "description": "Describes an attribute key/value pair, set by an oracle row. The key-value pair should be set on any game object for which that row is generated.\n\nAttributes exist to describe prerequisites that might be fulfilled by more than one table, that don't exist on tables at all, or that a generated game object might want to 'force' as one of it's roll results.\n\nSee documentation for a list of available values.",
-      "title": "IAttribute",
-      "type": "object",
-      "properties": {
-        "Key": { "$ref": "#/definitions/AttributeKey", "title": "Key" },
-        "Value": { "type": "string", "title": "Value" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Key"]
-    },
-    "AttributeKey": {
-      "title": "AttributeKey",
-      "enum": [
-        "Atmosphere",
-        "Authority",
-        "Creature Scale",
-        "Derelict Type",
-        "Disposition",
-        "Dominion",
-        "Encountered Behavior",
-        "Environment",
-        "Faction Type",
-        "Fringe Group",
-        "Guild",
-        "Influence",
-        "Initial Contact",
-        "Leadership",
-        "Life",
-        "Location",
-        "Location Theme",
-        "Planetary Class",
-        "Population",
-        "Region",
-        "Role",
-        "Zone"
-      ],
-      "type": "string"
-    },
-    "IRollTemplate_1": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate_1",
-      "$ref": "#/definitions/IRollTemplate"
-    },
-    "ISuggestions": {
-      "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
-      "title": "ISuggestions",
-      "$ref": "#/definitions/ISuggestions_1"
-    },
-    "ISuggestions_1": {
-      "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
-      "title": "ISuggestions_1",
-      "type": "object",
-      "properties": {
-        "Game objects": {
-          "description": "Suggested game objects and their parameters.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Oracle rolls": {
-          "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Moves": {
-          "description": "Suggested move IDs.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Moves"
-        },
-        "Assets": {
-          "description": "Suggested asset IDs.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Assets"
-        },
-        "Encounters": {
-          "description": "Suggested encounter IDs.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Encounters"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "IGameObject": {
-      "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
-      "title": "IGameObject",
-      "type": "object",
-      "properties": {
-        "Object type": {
-          "$ref": "#/definitions/GameObjectType",
-          "title": "Object type"
-        },
-        "Requires": {
-          "$ref": "#/definitions/IRequirements",
-          "title": "Requires"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Object type"]
-    },
-    "GameObjectType": {
-      "title": "GameObjectType",
-      "enum": [
-        "Character",
-        "Creature",
-        "Derelict",
-        "Derelict Zone",
-        "Faction",
-        "Planet",
-        "Precursor Vault",
-        "Settlement",
-        "Starship"
-      ],
-      "type": "string"
-    },
-    "IRequirements": {
-      "description": "Data describing an item's requirements.",
-      "title": "IRequirements",
-      "type": "object",
-      "properties": {
-        "Attributes": {
-          "description": "A list of attribute keys, and values of those keys that satisfy the requirements.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttributeChoices" },
-          "title": "Attributes"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Attributes"]
-    },
-    "IAttributeChoices": {
-      "title": "IAttributeChoices",
-      "type": "object",
-      "properties": {
-        "Key": { "$ref": "#/definitions/AttributeKey", "title": "Key" },
-        "Values": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Values"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Key"]
-    },
-    "IOracleContent": {
-      "description": "Interface for metadata that describes an oracle's semantic or lexical content.",
-      "title": "IOracleContent",
-      "$ref": "#/definitions/IOracleContent_1"
-    },
-    "IOracleContent_1": {
-      "description": "Interface for metadata that describes an oracle's semantic or lexical content.",
-      "title": "IOracleContent_1",
-      "type": "object",
-      "properties": {
-        "Part of speech": {
-          "description": "The part of speech of this oracle.",
-          "type": "array",
-          "items": {
-            "enum": [
-              "adjective",
-              "common noun",
-              "compound noun",
-              "fragment",
-              "name",
-              "noun",
-              "plural",
-              "possessive case",
-              "proper noun",
-              "proper noun fragment",
-              "sentences",
-              "verb"
-            ],
-            "type": "string"
-          },
-          "title": "Part of speech"
-        },
-        "Tags": {
-          "description": "Any arbitrary string tags associated with this oracle.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Tags"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "IDisplay": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/IDisplay_1"
-    },
-    "IDisplay_1": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay_1",
-      "type": "object",
-      "properties": {
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "IAssetType": {
-      "description": "Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.",
-      "title": "IAssetType",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Assets": {
-          "description": "The assets that belong to this asset type.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAsset" },
-          "title": "Assets"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Usage": { "$ref": "#/definitions/IAssetUsage", "title": "Usage" },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        },
-        "Aliases": {
-          "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Aliases"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Assets",
-        "Description",
-        "Display",
-        "Name",
-        "Source",
-        "Usage"
-      ]
-    },
-    "IAsset": {
-      "description": "An interface representing an *Ironsworn: Starforged* asset card.",
-      "title": "IAsset",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Name": {
-          "description": "The asset's name - the title printed on the card.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "States": {
-          "description": "Describes any states that the asset might have, such as \"Broken\". Some states may disable the asset entirely.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAssetState" },
-          "title": "States"
-        },
-        "Asset Type": {
-          "description": "The ID of the asset's parent AssetType",
-          "type": "string",
-          "title": "Asset Type"
-        },
-        "Usage": {
-          "$ref": "#/definitions/IAssetUsage",
-          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
-          "title": "Usage"
-        },
-        "Attachments": {
-          "description": "Details on what attachments (other assets) are accepted by this asset.",
-          "$ref": "#/definitions/IAssetAttachment",
-          "title": "Attachments"
-        },
-        "Inputs": {
-          "description": "Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.",
-          "type": "array",
-          "items": {
-            "anyOf": [
-              { "$ref": "#/definitions/IInputSelect" },
-              { "$ref": "#/definitions/IInputText" }
-            ]
-          },
-          "title": "Inputs"
-        },
-        "Requirement": {
-          "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
-          "type": "string",
-          "title": "Requirement"
-        },
-        "Abilities": {
-          "description": "The asset's abilities.",
-          "type": "array",
-          "items": [
-            { "$ref": "#/definitions/IAssetAbility" },
-            { "$ref": "#/definitions/IAssetAbility" },
-            { "$ref": "#/definitions/IAssetAbility" }
-          ],
-          "minItems": 3,
-          "maxItems": 3,
-          "title": "Abilities"
-        },
-        "Condition Meter": {
-          "description": "Information on this asset's condition meter, if any.",
-          "$ref": "#/definitions/IConditionMeter",
-          "title": "Condition Meter"
-        },
-        "Tags": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Tags"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        },
-        "Aliases": {
-          "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Aliases"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Abilities",
-        "Asset Type",
-        "Display",
-        "Name",
-        "Source",
-        "Usage"
-      ]
     },
     "IAssetState": {
       "description": "Describes a possible state for an asset, like the \"Broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
@@ -1900,6 +943,189 @@
       "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
       "type": "string"
     },
+    "ISource": {
+      "description": "Interface representing data on the game's source.",
+      "title": "ISource",
+      "type": "object",
+      "properties": {
+        "Title": {
+          "$ref": "#/definitions/SourceTitle",
+          "description": "The title of the source.",
+          "title": "Title"
+        },
+        "Date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "Date"
+        },
+        "Page": {
+          "description": "The page on which the item appears most prominently.",
+          "type": "integer",
+          "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Title"]
+    },
+    "SourceTitle": {
+      "description": "Enumerates valid sourcebook titles.",
+      "title": "SourceTitle",
+      "enum": [
+        "Custom",
+        "Ironsworn Assets",
+        "Ironsworn Bonus Assets (July 2020)",
+        "Ironsworn Rulebook",
+        "Ironsworn: Delve",
+        "Ironsworn: Starforged Assets",
+        "Ironsworn: Starforged Rulebook",
+        "Sundered Isles Preview"
+      ],
+      "type": "string"
+    },
+    "ISuggestions": {
+      "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
+      "title": "ISuggestions",
+      "$ref": "#/definitions/ISuggestions_1"
+    },
+    "ISuggestions_1": {
+      "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
+      "title": "ISuggestions_1",
+      "type": "object",
+      "properties": {
+        "Game objects": {
+          "description": "Suggested game objects and their parameters.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IGameObject" },
+          "title": "Game objects"
+        },
+        "Oracle rolls": {
+          "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Oracle rolls"
+        },
+        "Moves": {
+          "description": "Suggested move IDs.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Moves"
+        },
+        "Assets": {
+          "description": "Suggested asset IDs.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Assets"
+        },
+        "Encounters": {
+          "description": "Suggested encounter IDs.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Encounters"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "IGameObject": {
+      "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
+      "title": "IGameObject",
+      "type": "object",
+      "properties": {
+        "Object type": {
+          "$ref": "#/definitions/GameObjectType",
+          "title": "Object type"
+        },
+        "Requires": {
+          "$ref": "#/definitions/IRequirements",
+          "title": "Requires"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Object type"]
+    },
+    "GameObjectType": {
+      "title": "GameObjectType",
+      "enum": [
+        "Character",
+        "Creature",
+        "Derelict",
+        "Derelict Zone",
+        "Faction",
+        "Planet",
+        "Precursor Vault",
+        "Settlement",
+        "Starship"
+      ],
+      "type": "string"
+    },
+    "IRequirements": {
+      "description": "Data describing an item's requirements.",
+      "title": "IRequirements",
+      "type": "object",
+      "properties": {
+        "Attributes": {
+          "description": "A list of attribute keys, and values of those keys that satisfy the requirements.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAttributeChoices" },
+          "title": "Attributes"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Attributes"]
+    },
+    "IAttributeChoices": {
+      "title": "IAttributeChoices",
+      "type": "object",
+      "properties": {
+        "Key": { "$ref": "#/definitions/AttributeKey", "title": "Key" },
+        "Values": {
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Values"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Key"]
+    },
+    "AttributeKey": {
+      "title": "AttributeKey",
+      "enum": [
+        "Atmosphere",
+        "Authority",
+        "Creature Scale",
+        "Derelict Type",
+        "Disposition",
+        "Dominion",
+        "Encountered Behavior",
+        "Environment",
+        "Faction Type",
+        "Fringe Group",
+        "Guild",
+        "Influence",
+        "Initial Contact",
+        "Leadership",
+        "Life",
+        "Location",
+        "Location Theme",
+        "Planetary Class",
+        "Population",
+        "Region",
+        "Role",
+        "Zone"
+      ],
+      "type": "string"
+    },
     "IInputClock": {
       "description": "An input representing an *Ironsworn: Starforged* clock.",
       "title": "IInputClock",
@@ -2632,381 +1858,6 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["$id", "Conditions", "Max", "Min", "Name", "Value"]
-    },
-    "IMoveCategory": {
-      "description": "Represents a category of moves such as \"Session Moves\" or \"Combat Moves\", and serves as a container for moves within that category.",
-      "title": "IMoveCategory",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Moves": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/IMove" },
-          "title": "Moves"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Optional": {
-          "description": "Whether or not the source material presents this rules item as optional.",
-          "default": false,
-          "type": "boolean",
-          "title": "Optional"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Description",
-        "Display",
-        "Moves",
-        "Name",
-        "Optional",
-        "Source"
-      ]
-    },
-    "IOracleCategory": {
-      "description": "Represents an oracle category: a grouping that can contain both Oracles and other Oracle categories, but doesn't have its own `Table` key.\n\nThe distinction between this and{@linkIOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).",
-      "title": "IOracleCategory",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Category": {
-          "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
-          "type": "string",
-          "title": "Category"
-        },
-        "Categories": {
-          "description": "Subcategories contained by this oracle category.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IOracleCategory" },
-          "title": "Categories"
-        },
-        "Sample Names": {
-          "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Sample Names"
-        },
-        "Oracles": {
-          "description": "Oracle objects contained by this object.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IOracle" },
-          "title": "Oracles"
-        },
-        "Member of": {
-          "description": "The ID of the most recent Oracle ancestor of this item, if any.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "Member of"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Usage": {
-          "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
-          "$ref": "#/definitions/IOracleUsage",
-          "title": "Usage"
-        },
-        "Aliases": {
-          "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Aliases"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Display", "Name", "Source"]
-    },
-    "IOracle": {
-      "description": "Represents an oracle, which may have a Table or multiple child Oracles.\n\nThe distinction between{@linkIOracleCategory}and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).",
-      "title": "IOracle",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayOracle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Category": {
-          "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
-          "type": "string",
-          "title": "Category"
-        },
-        "Member of": {
-          "description": "The ID of the most recent Oracle ancestor of this item, if any.",
-          "type": "string",
-          "title": "Member of"
-        },
-        "Table": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Table"
-        },
-        "Oracles": {
-          "description": "Oracle objects contained by this object.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IOracle" },
-          "title": "Oracles"
-        },
-        "Usage": {
-          "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
-          "$ref": "#/definitions/IOracleUsage",
-          "title": "Usage"
-        },
-        "Aliases": {
-          "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Aliases"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Category", "Display", "Name", "Source"]
-    },
-    "IDisplayOracle": {
-      "description": "Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
-      "title": "IDisplayOracle",
-      "type": "object",
-      "properties": {
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
-        "Column of": {
-          "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
-          "type": "string",
-          "title": "Column of"
-        },
-        "Table": {
-          "$ref": "#/definitions/ITableDisplayInfo",
-          "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
-          "title": "Table"
-        },
-        "Embed in": {
-          "description": "This table is displayed as embedded in a row of another table.",
-          "type": ["null", "string"],
-          "title": "Embed in"
-        },
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Table", "Title"]
-    },
-    "ITableDisplayInfo": {
-      "description": "Provides information on how a specific oracle table is rendered in the source text.",
-      "title": "ITableDisplayInfo",
-      "type": "object",
-      "properties": {
-        "Result columns": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/ITextColumn" },
-          "title": "Result columns"
-        },
-        "Roll columns": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/ITableColumnBase" },
-          "title": "Roll columns"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Result columns", "Roll columns"]
-    },
-    "ITextColumn": {
-      "description": "Describes the rendering of a table column that displays textual content (as opposed to{@linkIRollColumn}, which displays numerical ranges).",
-      "title": "ITextColumn",
-      "type": "object",
-      "properties": {
-        "Label": {
-          "description": "The label or header text to use for this column.",
-          "type": "string",
-          "title": "Label"
-        },
-        "Use content from": {
-          "description": "The ID of the oracle with a `Table` key.",
-          "type": "string",
-          "title": "Use content from"
-        },
-        "Key": {
-          "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
-          "enum": ["Result", "Summary"],
-          "type": "string",
-          "title": "Key"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Key", "Label", "Use content from"]
-    },
-    "ITableColumnBase": {
-      "description": "Interface with elements common to{@linkIRollColumn}and{@linkITextColumn}.",
-      "title": "ITableColumnBase",
-      "type": "object",
-      "properties": {
-        "Label": { "type": "string", "title": "Label" },
-        "Use content from": {
-          "description": "The ID of the oracle table to use.",
-          "type": "string",
-          "title": "Use content from"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Label", "Use content from"]
-    },
-    "IOracleUsage": {
-      "description": "Describes the recommended usage of this item.",
-      "title": "IOracleUsage",
-      "type": "object",
-      "properties": {
-        "Initial": {
-          "description": "Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.\n\nThat said, the game itself recommends **against** rolling all possible results at once (see \"Peeling the Onion\", p. 293, *Starforged*). If your goal is to implement the game 'as-written', consider how you might include some means of \"progressive disclosure\" of oracle results.\n\nMay be deprecated in the future in favour of dedicated object template information.",
-          "type": "boolean",
-          "title": "Initial"
-        },
-        "Suggestions": {
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "$ref": "#/definitions/ISuggestions_1",
-          "title": "Suggestions"
-        },
-        "Requires": {
-          "description": "Prerequisites for this item.",
-          "$ref": "#/definitions/IRequirements",
-          "title": "Requires"
-        },
-        "Min rolls": {
-          "description": "The minimum number of rolls when using this oracle to create a game object, *if* this oracle is rolled. Assume it's 1 if not specified.",
-          "type": "integer",
-          "title": "Min rolls"
-        },
-        "Max rolls": {
-          "description": "The maximum number of rolls when using this oracle to create a game object. Assume it's 1 if not specified.",
-          "type": "integer",
-          "title": "Max rolls"
-        },
-        "Repeatable": {
-          "description": "Whether the table's standard use is iterative.  Common examples are Feature, Opportunity, and Peril tables, which are most often used repeatedly to describe different areas of/events in a place, rather than being assigned as a description of the place as a whole.\n\nMutually exclusive with `Max rolls`. If undefined, assume `false`.",
-          "type": "boolean",
-          "title": "Repeatable"
-        },
-        "Allow duplicates": {
-          "description": "Whether multiple rolls (as in object generation, or with{@linkIMultipleRolls}) .",
-          "type": "boolean",
-          "title": "Allow duplicates"
-        },
-        "Sets": {
-          "description": "Hints which attributes are set by this table.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttributeChoices" },
-          "title": "Sets"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate_1",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

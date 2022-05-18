@@ -47,7 +47,13 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     outFiles: ["../_master-data/schema/delve_site.json"],
     declarations: yamlDeclarations
   },
-
+  {
+    typeName: "IAsset",
+    outFiles: [
+      "../dist/starforged/schema-asset.json"
+    ],
+    declarations: jsonDeclarations
+  },
   {
     typeName: "Starforged",
     outFiles: [ "../dist/starforged/schema.json", "../src/starforged/schema.json", "./src/json/starforged/schema.json" ],

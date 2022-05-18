@@ -17,6 +17,8 @@ export declare enum MeterCondition {
      * When your companion’s health is at 0 and you score a miss, they are out of action. You cannot leverage their support until they gain at least +1 health. Envision what this means in the fiction of your scene.
      * @page 204
      */
-    OutOfAction = "Out of Action"
+    OutOfAction = "Out of Action",
+    /** Used by "Fleet Commander" asset */
+    Wrecked = "Wrecked"
 }
 //# sourceMappingURL=MeterCondition.d.ts.map

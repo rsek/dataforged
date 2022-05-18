@@ -19,5 +19,7 @@ export var MeterCondition;
      * @page 204
      */
     MeterCondition["OutOfAction"] = "Out of Action";
+    /** Used by "Fleet Commander" asset */
+    MeterCondition["Wrecked"] = "Wrecked";
 })(MeterCondition || (MeterCondition = {}));
 //# sourceMappingURL=MeterCondition.js.map

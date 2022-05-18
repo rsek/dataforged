@@ -5,10 +5,12 @@
 export declare enum SourceTitle {
     Starforged = "Ironsworn: Starforged Rulebook",
     StarforgedAssets = "Ironsworn: Starforged Assets",
+    SunderedIslesPreview = "Sundered Isles Preview",
     Ironsworn = "Ironsworn Rulebook",
     IronswornAssets = "Ironsworn Assets",
     IronswornDelve = "Ironsworn: Delve",
-    IronswornBonusAssets = "Ironsworn Bonus Assets (July 2020)"
+    IronswornBonusAssets = "Ironsworn Bonus Assets (July 2020)",
+    Custom = "Custom"
 }
 /**
  * Enumerates valid source URLs.

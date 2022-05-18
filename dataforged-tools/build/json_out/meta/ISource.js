@@ -6,10 +6,12 @@ export var SourceTitle;
 (function (SourceTitle) {
     SourceTitle["Starforged"] = "Ironsworn: Starforged Rulebook";
     SourceTitle["StarforgedAssets"] = "Ironsworn: Starforged Assets";
+    SourceTitle["SunderedIslesPreview"] = "Sundered Isles Preview";
     SourceTitle["Ironsworn"] = "Ironsworn Rulebook";
     SourceTitle["IronswornAssets"] = "Ironsworn Assets";
     SourceTitle["IronswornDelve"] = "Ironsworn: Delve";
     SourceTitle["IronswornBonusAssets"] = "Ironsworn Bonus Assets (July 2020)";
+    SourceTitle["Custom"] = "Custom";
 })(SourceTitle || (SourceTitle = {}));
 /**
  * Enumerates valid source URLs.

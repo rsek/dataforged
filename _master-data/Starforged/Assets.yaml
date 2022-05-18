@@ -3771,6 +3771,70 @@ Asset Types:
                       Using:
                         - Supply
                 Outcomes: *outcomes:+2_momentum.HIT
+      - Name: Crew Commander
+        Source: &Sundered_Isles_Preview
+          Title: Sundered Isles Preview
+          Date: "051722"
+        Abilities:
+          - Text: You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost as -1 command. If you [Face Danger](Starforged/Moves/Adventure/Face_Danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
+          # TODO figure out how to denote individual abilities/triggers invocable by any party member
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: Leading or aided by your crew
+                      Roll type: Action roll
+                Text: You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.
+                Outcomes:
+                  Miss:
+                    Text: You may (after rolling) suffer -1 command and improve a miss to a weak hit.
+                  Weak Hit:
+                    Text: You may (after rolling) suffer -1 command and improve a weak hit to a strong hit.
+              - Moves:
+                  - Starforged/Moves/Adventure/Face_Danger
+                Trigger:
+                  Options:
+                    - Text: As a test of your leadership
+                      Roll type: Action roll
+                      Using:
+                        - ${{@ASSET}}/Condition_Meter
+            Moves:
+              - Name: Bolster Crew
+                Trigger:
+                  Text: When you bolster your crew...
+                  Options:
+                    - Roll type: Action roll
+                      Using:
+                        - Heart
+                Text: To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
+                Outcomes:
+                  Strong Hit:
+                    Text: Take +4 command.
+                  Weak Hit:
+                    Text: Take +2 command.
+                  Miss:
+                    Text: Take +2 command but envision a threat to your crew or leadership.
+            Enabled: true
+          - Text: Take +2 command; your max is now 6.
+            Alter Properties:
+              Condition Meter:
+                Max: 6
+          - Text: When your command is 0 and the situation desperate, you may [Compel](Starforged/Moves/Adventure/Compel) your crew to action; if you do, take +2 command on a hit.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Compel
+                Trigger:
+                  Options:
+                    - Text: "[Compel](Starforged/Moves/Adventure/Compel) your crew to action when when your command is 0 and the situation desperate"
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit: &Crew_Commander.3
+                    Text: Take +2 command.
+                  Weak Hit: *Crew_Commander.3
+        Condition Meter:
+          Name: Command
+          Max: 4
+          Value: 2
   - Name: Companion
     Display:
       Color: "#3d8b8a"
@@ -4745,3 +4809,85 @@ Asset Types:
                       Using:
                         - Wits
                 Outcomes: *outcomes:+1_momentum.HIT
+      - Name: Cohort
+        Requirement: Once you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) and take them on as a crewmate...
+        Abilities:
+          - Text: You gain a specialist. The specialist is part of your crew, but is managed as a connection and provides benefits to you and your allies per their role. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, or if you [Pay_the_Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
+            Enabled: true
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Suffer/Withstand_Damage
+                Outcomes:
+                  Miss:
+                    Text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
+              - Moves:
+                  - Starforged/Moves/Fate/Pay_the_Price
+                Text: *Cohort.1
+          - Text: You may gain additional specialists by spending 1 experience to add a connection to your crew as a specialist. Specialist bonuses may not be stacked for a single action.
+          # TODO: alternate experience use
+          - Text: When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by gathering your specialists to strategize or problem-solve, you may reroll one die for each participating specialist.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Adventure/Secure_an_Advantage
+                Trigger:
+                  Options:
+                    - Text: By gathering your specialists to strategize or problem-solve
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit: &Cohort.3
+                    Reroll:
+                      Dice: Any
+                      Text: You may reroll one die for each participating specialist.
+                  Weak Hit: *Cohort.3
+                  Miss: *Cohort.3
+      - Name: Fleet Commander
+        Requirement: Once you fill 12 legacy track boxes and take command of a mighty fleet...
+        # TODO
+        Abilities:
+          - Text: Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](Starforged/Moves/Recover/Sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
+            Enabled: true
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: As a fleetwide action to get in position, avoid a hazard, or fight
+                      Roll type: Action roll
+                      Using:
+                        - ${{ASSET}}/Condition_Meter
+              - Moves:
+                  - Starforged/Moves/Fate/Pay_the_Price
+                Text: If your fleet bears the cost, suffer -1 power.
+              - Moves:
+                  - Starforged/Moves/Recover/Sojourn
+                Outcomes:
+                  Strong Hit: &Fleet_Commander.1
+                    Text: You may forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
+                  Weak Hit: *Fleet_Commander.1
+                  Miss: *Fleet_Commander.1
+          - Text: Take +2 power and set your max power to 5.
+            Alter Properties:
+              Condition Meter:
+                Max: 5
+          - Text: When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), you may reroll your action die if its value is less than your fleet’s power.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Exploration/Undertake_an_Expedition
+                Trigger:
+                  Options:
+                    - Text: With your fleet
+                      Roll type: Action roll
+                Outcomes:
+                  Strong Hit: &Fleet_Commander.3
+                    Reroll:
+                      Text: You may reroll your action die if its value is less than your fleet’s power.
+                      Dice: Action die
+                  Weak Hit: *Fleet_Commander.3
+                  Miss: *Fleet_Commander.3
+        Condition Meter:
+          Name: Power
+          Max: 4
+          Value: 4
+          Conditions:
+            - Wrecked
+
+
