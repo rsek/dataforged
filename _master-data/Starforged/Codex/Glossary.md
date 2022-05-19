@@ -65,7 +65,7 @@ Select a suffer move appropriate to the
 situation, and reduce the related condition
 meter by the listed amount.
 
-## “Mark [Reward] on Your Quests/Bonds/Discoveries Legacy Track”
+## “Mark \[Reward\] on Your Quests/Bonds/Discoveries Legacy Track”
 
 Moves and asset abilities may prompt you to mark ticks or fill boxes in one or more of your legacy tracks. This is called a legacy reward. For example, if you Make a Discovery, you and your allies mark two ticks on your discoveries legacy track.
 
