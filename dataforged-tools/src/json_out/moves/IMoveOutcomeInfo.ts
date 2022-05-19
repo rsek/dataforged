@@ -3,9 +3,9 @@ import type { IHasId, IHasText , IMoveReroll } from "@json_out/index.js";
  * @public
  */
 export enum MoveOutcome {
-  Miss="Miss",
-  Weak_Hit = "Weak Hit",
-  Strong_Hit = "Strong Hit"
+  "Miss"= 0,
+  "Weak Hit" = 1,
+  "Strong Hit" = 2
 };
 
 /**
@@ -23,7 +23,7 @@ export interface IOutcomeInfo extends IHasId, IHasText {
   /**
    * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
    */
-  "Count as"?: MoveOutcome | undefined;
+  "Count as"?: keyof typeof MoveOutcome | undefined;
   /**
    * Information on rerolls offered by this move.
    */

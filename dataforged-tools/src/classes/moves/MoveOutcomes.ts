@@ -1,6 +1,5 @@
 import { OutcomeInfo } from "@classes/index.js";
-import type { IAlterMoveOutcomes, IMoveOutcomes, IOutcomeInfo } from "@json_out/index.js";
-import { MoveOutcome } from "@json_out/index.js";
+import type { IAlterMoveOutcomes, IMoveOutcomes, IOutcomeInfo , MoveOutcome } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IAlterMoveOutcomesYaml, IMoveOutcomesYaml } from "@yaml_in/index.js";
 
@@ -30,7 +29,7 @@ export class AlterMoveOutcomes implements IAlterMoveOutcomes {
   "Miss"?: IOutcomeInfo | undefined;
   constructor(json: IAlterMoveOutcomesYaml, id: IMoveOutcomes["$id"]) {
     this.$id = id;
-    const keys = [ MoveOutcome.Strong_Hit, MoveOutcome.Weak_Hit, MoveOutcome.Miss ];
+    const keys = [ "Strong Hit", "Weak Hit", "Miss" ] as (keyof typeof MoveOutcome)[];
     keys.forEach(outcome => {
       if (json[outcome]) {
         this[outcome] = json[outcome] as IOutcomeInfo & {"With a Match": IOutcomeInfo};

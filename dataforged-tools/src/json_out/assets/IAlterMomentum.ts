@@ -25,7 +25,7 @@ export interface IAlterMomentumBurn {
    * The effect altering the PC's momentum burn.
    */
   Effect: IHasText;
-  Outcomes?: (MoveOutcome.Strong_Hit|MoveOutcome.Weak_Hit)[] | undefined;
+  Outcomes?: ("Strong Hit" | "Weak Hit")[] | undefined;
 }
 /**
  * @public

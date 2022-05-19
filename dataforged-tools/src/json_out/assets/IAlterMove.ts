@@ -36,10 +36,10 @@ export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "Name"|"Cate
 /**
  * @public
  */
-export interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, MoveOutcome.Strong_Hit|MoveOutcome.Weak_Hit|MoveOutcome.Miss> {
-  [MoveOutcome.Strong_Hit]?: IAlterOutcomeInfo | undefined;
-  [MoveOutcome.Weak_Hit]?: IAlterOutcomeInfo | undefined;
-  [MoveOutcome.Miss]?: IAlterOutcomeInfo | undefined;
+export interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, keyof typeof MoveOutcome> {
+  "Strong Hit"?: IAlterOutcomeInfo | undefined;
+  "Weak Hit"?: IAlterOutcomeInfo | undefined;
+  Miss?: IAlterOutcomeInfo | undefined;
 }
 
 /**
