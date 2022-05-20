@@ -1,22 +1,42 @@
 import { ChallengeRank , ClockSegments , MoveOutcome } from "@json_out/index.js";
-import { SceneChallenge } from "@utils/simulation/SceneChallenge.js";
+import { MoveSelectionStrategy , SceneChallenge } from "@utils/simulation/SceneChallenge.js";
 import Table from "cli-table";
 import _ from "lodash-es";
 import "colors";
+import { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
+import type { IOutcomesNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
+import { faceDangerNew, faceDangerOld, SaAnew, SaAOld } from "@utils/simulation/moveData.js";
+
+
+export interface SimSceneChallengeOptions {
+  description: string,
+  iterations?: number,
+  rank?: ChallengeRank,
+  segments?: ClockSegments,
+  statFD?: number,
+  statSAA?: number,
+  add?: number,
+  pc?: PlayerCharacter,
+  SaAResultsData?: IOutcomesNumbers,
+  FDResultsData?: IOutcomesNumbers
+  strategy: MoveSelectionStrategy
+}
 
 /**
  *
  */
 export function simulateSceneChallenges(
-  { iterations= 20000, rank = ChallengeRank.Formidable, segments=ClockSegments.Six, stat=2, add=0 }:
-  {iterations?: number, rank?: ChallengeRank, segments?: ClockSegments, stat?: number, add?: number}
+  { description: description, iterations= 20000, rank = ChallengeRank.Formidable, segments=ClockSegments.Six, statFD=2, statSAA=statFD+1, add=0, pc=new PlayerCharacter(), SaAResultsData=SaAnew, FDResultsData=faceDangerNew, strategy }:
+  SimSceneChallengeOptions
 
 ) {
   const result = {
+    description,
     iterations,
     rank,
     segments,
-    stat,
+    statFD,
+    statSAA,
     add,
     actionRolls: 0,
     "Strong Hit": 0,
@@ -24,8 +44,15 @@ export function simulateSceneChallenges(
     Miss: 0,
   };
   for (let i = 0; i < iterations; i++) {
-    const sim = new SceneChallenge(rank,0,0,segments).simulate({
-      stat,add,log:false
+    const sim = new SceneChallenge(rank,0,0,segments).run({
+      pc,
+      strategy,
+      FDResultsData,
+      SaAResultsData,
+      statFD,
+      statSAA,
+      add,
+      log:false
     });
     const outcome = MoveOutcome[sim.outcome] as keyof typeof result;
     result.actionRolls += sim.actionRolls;
@@ -48,12 +75,13 @@ function formatAsPercent(decimalToFormat: number, places: number=2) {
  * @param data
  */
 export function renderSceneChallenges(data: ReturnType<typeof simulateSceneChallenges>[]) {
-  const tbl = new Table({ colors:true, head: [ "Rank".grey, "Clock".grey, "Bonus".grey, "Action rolls".grey, "Strong Hit".blue, "Weak Hit".magenta, "Miss".red, "Total".white ] });
+  const tbl = new Table({ colors:true, head: [ "Description".grey, "Rank".grey, "Clock".grey, "Bonus".grey, "Action rolls".grey, "Strong Hit".blue, "Weak Hit".magenta, "Miss".red, "Total".white ] });
   data.forEach(row => {
     tbl.push([
+      row.description,
       ChallengeRank[row.rank],
       row.segments,
-      `+${row.add+row.stat}`,
+      `+${row.add+row.statFD}/+${row.add+row.statSAA}`,
       `${row.actionRolls} / avg ~${(row.actionRolls/row.iterations).toFixed(2)}`,
       `${row["Strong Hit"]} / ${formatAsPercent(row["Strong Hit"]/row.iterations)}`,
       `${row["Weak Hit"]} / ${formatAsPercent(row["Weak Hit"]/row.iterations)}`,
@@ -65,12 +93,42 @@ export function renderSceneChallenges(data: ReturnType<typeof simulateSceneChall
 }
 
 const data = [
-  simulateSceneChallenges({ rank: ChallengeRank.Formidable, segments: ClockSegments.Eight }),
-  simulateSceneChallenges({ rank: ChallengeRank.Formidable, segments: ClockSegments.Six }),
-  simulateSceneChallenges({ rank: ChallengeRank.Formidable, segments: ClockSegments.Four }),
-  simulateSceneChallenges({ rank: ChallengeRank.Dangerous, segments: ClockSegments.Eight }),
-  simulateSceneChallenges({ rank: ChallengeRank.Dangerous, segments: ClockSegments.Six }),
-  simulateSceneChallenges({ rank: ChallengeRank.Dangerous, segments: ClockSegments.Four }),
+  simulateSceneChallenges({
+    description: "Old (FD+2 only)",
+    strategy: MoveSelectionStrategy.Simple,
+    FDResultsData: faceDangerOld,
+    SaAResultsData: SaAOld,
+  }),
+  simulateSceneChallenges({
+    description: "Old (FD+2/SAA+3)",
+    strategy: MoveSelectionStrategy.Alternate,
+    statFD: 2,
+    FDResultsData: faceDangerOld,
+    SaAResultsData: SaAOld
+  }),
+  simulateSceneChallenges({
+    description: "New (FD+2 only)",
+    strategy: MoveSelectionStrategy.Simple,
+    statFD: 2,
+  }),
+  simulateSceneChallenges({
+    description: "New (FD+2/SAA+3)",
+    strategy: MoveSelectionStrategy.Alternate,
+    statFD: 2
+  }),
+
+  simulateSceneChallenges({
+    description: "New (FD+2 only)",
+    strategy: MoveSelectionStrategy.Simple,
+    statFD: 2,
+    segments: 4,
+  }),
+  simulateSceneChallenges({
+    description: "New (FD+2/SAA+3)",
+    strategy: MoveSelectionStrategy.Alternate,
+    statFD: 2,
+    segments: 4,
+  }),
 ];
 
 renderSceneChallenges(data);

@@ -1,6 +1,8 @@
 import { ChallengeRank } from "@json_out/index.js";
+import type { IClock } from "@utils/simulation/Clock.js";
 import { Die } from "@utils/simulation/Die.js";
 import { ProgressRoll } from "@utils/simulation/IronswornRoll.js";
+import type { IOutcomesNumbers, IOutcomeWithNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
 import _ from "lodash-es";
 
 
@@ -46,6 +48,8 @@ function renderProgress(track: ITrack) {
 export interface ITrack {
   ticks: number;
   score: number;
+  clock?: IClock | undefined;
+  applyResult(data: IOutcomeWithNumbers): void;
 }
 
 export interface IProgressTrack extends ITrack {
@@ -64,6 +68,7 @@ export enum ProgressUnit {
 
 
 export abstract class Track implements ITrack {
+  abstract applyResult(data: IOutcomeWithNumbers): void;
   toString() {
     return `${renderProgress(this)} ${this.score}/${BOXES_PER_TRACK}`;
   }
@@ -77,8 +82,10 @@ export abstract class Track implements ITrack {
   public set ticks(value: number) {
     this._ticks = _.clamp(value, 0, TICKS_PER_BOX * BOXES_PER_TRACK);
   }
-  roll(challengeDie1?: number, challengeDie2?: number) {
-    return new ProgressRoll(this.score,challengeDie1, challengeDie2);
+  roll(resultsData?: IOutcomesNumbers,challengeDie1?: number, challengeDie2?: number) {
+    return new ProgressRoll({
+      score: this.score, challengeDie1, challengeDie2, resultsData
+    });
   }
   constructor(ticks: number = 0) {
     this._ticks = ticks;
@@ -86,6 +93,9 @@ export abstract class Track implements ITrack {
 }
 
 export class ProgressTrack extends Track implements IProgressTrack {
+  applyResult(data: IOutcomeWithNumbers): void {
+    this.mark(data.markProgress);
+  }
   private _rank: ChallengeRank;
   public get rank(): ChallengeRank {
     return this._rank;
@@ -109,15 +119,15 @@ export class ProgressTrack extends Track implements IProgressTrack {
   /**
    * Mark one unit of progress per this track's challenge rank.
    */
-  mark(): this {
-    this.ticks += this.progressUnit;
+  mark(times: number = 1): this {
+    this.ticks += (this.progressUnit)*times;
     return this;
   }
   /**
    * Erase one unit of progress per this track's challenge rank.
    */
-  erase(): this {
-    this.ticks -= this.progressUnit;
+  erase(times: number = 1): this {
+    this.ticks -= (this.progressUnit)*times;
     return this;
   }
   /**
