@@ -93,40 +93,79 @@ export function renderSceneChallenges(data: ReturnType<typeof simulateSceneChall
 }
 
 const data = [
-  simulateSceneChallenges({
-    description: "Old (FD+2 only)",
-    strategy: MoveSelectionStrategy.Simple,
-    FDResultsData: faceDangerOld,
-    SaAResultsData: SaAOld,
-  }),
-  simulateSceneChallenges({
-    description: "Old (FD+2/SAA+3)",
-    strategy: MoveSelectionStrategy.Alternate,
-    statFD: 2,
-    FDResultsData: faceDangerOld,
-    SaAResultsData: SaAOld
-  }),
+  // simulateSceneChallenges({
+  //   description: "Old (FD+2 only)",
+  //   strategy: MoveSelectionStrategy.Simple,
+  //   FDResultsData: faceDangerOld,
+  //   SaAResultsData: SaAOld,
+  // }),
+  // simulateSceneChallenges({
+  //   description: "Old (FD+2/SAA+3)",
+  //   strategy: MoveSelectionStrategy.Alternate,
+  //   statFD: 2,
+  //   FDResultsData: faceDangerOld,
+  //   SaAResultsData: SaAOld
+  // }),
+  // simulateSceneChallenges({
+  //   description: "New (FD+2 only)",
+  //   strategy: MoveSelectionStrategy.Simple,
+  //   statFD: 2,
+  // }),
+  // simulateSceneChallenges({
+  //   description: "New (FD+2/SAA+3)",
+  //   strategy: MoveSelectionStrategy.Alternate,
+  //   statFD: 2
+  // }),
+  // simulateSceneChallenges({
+  //   description: "New (FD+2 only)",
+  //   strategy: MoveSelectionStrategy.Simple,
+  //   statFD: 2,
+  //   segments: 4,
+  // }),
+  // simulateSceneChallenges({
+  //   description: "New (FD+2/SAA+3)",
+  //   strategy: MoveSelectionStrategy.Alternate,
+  //   statFD: 2,
+  //   segments: 4,
+  // }),
   simulateSceneChallenges({
     description: "New (FD+2 only)",
     strategy: MoveSelectionStrategy.Simple,
     statFD: 2,
+    rank: ChallengeRank.Epic,
+    segments: 8,
   }),
   simulateSceneChallenges({
     description: "New (FD+2/SAA+3)",
     strategy: MoveSelectionStrategy.Alternate,
-    statFD: 2
+    statFD: 2,
+    rank: ChallengeRank.Epic,
+    segments: 8,
   }),
-
   simulateSceneChallenges({
     description: "New (FD+2 only)",
     strategy: MoveSelectionStrategy.Simple,
     statFD: 2,
+    rank: ChallengeRank.Epic,
+  }),
+  simulateSceneChallenges({
+    description: "New (FD+2/SAA+3)",
+    strategy: MoveSelectionStrategy.Alternate,
+    statFD: 2,
+    rank: ChallengeRank.Epic,
+  }),
+  simulateSceneChallenges({
+    description: "New (FD+2 only)",
+    strategy: MoveSelectionStrategy.Simple,
+    statFD: 2,
+    rank: ChallengeRank.Epic,
     segments: 4,
   }),
   simulateSceneChallenges({
     description: "New (FD+2/SAA+3)",
     strategy: MoveSelectionStrategy.Alternate,
     statFD: 2,
+    rank: ChallengeRank.Epic,
     segments: 4,
   }),
 ];

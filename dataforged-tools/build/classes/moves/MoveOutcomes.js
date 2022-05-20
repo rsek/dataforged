@@ -1,5 +1,4 @@
 import { OutcomeInfo } from "../index.js";
-import { MoveOutcome } from "../../json_out/index.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";
 /**
  * @internal
@@ -18,7 +17,7 @@ export class MoveOutcomes {
 export class AlterMoveOutcomes {
     constructor(json, id) {
         this.$id = id;
-        const keys = [MoveOutcome.Strong_Hit, MoveOutcome.Weak_Hit, MoveOutcome.Miss];
+        const keys = ["Strong Hit", "Weak Hit", "Miss"];
         keys.forEach(outcome => {
             var _a;
             if (json[outcome]) {

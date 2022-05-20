@@ -229,7 +229,7 @@ export declare interface IAlterMomentumBurn {
      * The effect altering the PC's momentum burn.
      */
     Effect: IHasText;
-    Outcomes?: (MoveOutcome.Strong_Hit | MoveOutcome.Weak_Hit)[] | undefined;
+    Outcomes?: ("Strong Hit" | "Weak Hit")[] | undefined;
 }
 
 /**
@@ -281,10 +281,10 @@ export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "N
 /**
  * @public
  */
-export declare interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, MoveOutcome.Strong_Hit | MoveOutcome.Weak_Hit | MoveOutcome.Miss> {
-    [MoveOutcome.Strong_Hit]?: IAlterOutcomeInfo | undefined;
-    [MoveOutcome.Weak_Hit]?: IAlterOutcomeInfo | undefined;
-    [MoveOutcome.Miss]?: IAlterOutcomeInfo | undefined;
+export declare interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, keyof typeof MoveOutcome> {
+    "Strong Hit"?: IAlterOutcomeInfo | undefined;
+    "Weak Hit"?: IAlterOutcomeInfo | undefined;
+    Miss?: IAlterOutcomeInfo | undefined;
 }
 
 /**
@@ -1307,9 +1307,9 @@ export declare interface IMoveOutcomes extends IHasId {
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$
      */
     $id: string;
-    [MoveOutcome.Strong_Hit]: IOutcomeInfo;
-    [MoveOutcome.Weak_Hit]: IOutcomeInfo;
-    [MoveOutcome.Miss]: IOutcomeInfo;
+    "Strong Hit": IOutcomeInfo;
+    "Weak Hit": IOutcomeInfo;
+    "Miss": IOutcomeInfo;
 }
 
 /**
@@ -1627,7 +1627,7 @@ export declare interface IOutcomeInfo extends IHasId, IHasText {
     /**
      * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
      */
-    "Count as"?: MoveOutcome | undefined;
+    "Count as"?: keyof typeof MoveOutcome | undefined;
     /**
      * Information on rerolls offered by this move.
      */
@@ -1988,9 +1988,9 @@ export declare enum MoveCategoryName {
  * @public
  */
 export declare enum MoveOutcome {
-    Miss = "Miss",
-    Weak_Hit = "Weak Hit",
-    Strong_Hit = "Strong Hit"
+    "Miss" = 0,
+    "Weak Hit" = 1,
+    "Strong Hit" = 2
 }
 
 /**

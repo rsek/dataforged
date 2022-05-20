@@ -20,10 +20,10 @@ export interface IMoveYaml extends YamlStub<IMove, "Category", "Trigger" | "Outc
 /**
  * @internal
  */
-export interface IMoveOutcomesYaml extends YamlStub<IMoveOutcomes, "", MoveOutcome.Strong_Hit | MoveOutcome.Weak_Hit | MoveOutcome.Miss> {
-    [MoveOutcome.Strong_Hit]: IOutcomeInfoYaml;
-    [MoveOutcome.Weak_Hit]: IOutcomeInfoYaml;
-    [MoveOutcome.Miss]: IOutcomeInfoYaml;
+export interface IMoveOutcomesYaml extends YamlStub<IMoveOutcomes, "", keyof typeof MoveOutcome> {
+    "Strong Hit": IOutcomeInfoYaml;
+    "Weak Hit": IOutcomeInfoYaml;
+    "Miss": IOutcomeInfoYaml;
 }
 /**
  * @internal
