@@ -1,5 +1,5 @@
 import { ChallengeRank } from "@json_out/index.js";
-import type { IOutcomeWithNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
+import type { NumericOutcome } from "@utils/simulation/NumericOutcomes.js";
 import type { ITrack } from "@utils/simulation/Track.js";
 import { TICKS_PER_BOX , Track } from "@utils/simulation/Track.js";
 
@@ -33,7 +33,7 @@ export enum AdjustLegacyReward {
 
 export class LegacyTrack extends Track implements ILegacyTrack {
   readonly legacy: LegacyType;
-  override applyResult(data: IOutcomeWithNumbers) {
+  override applyResult(data: NumericOutcome) {
     throw new Error("NYI");
   }
   mark(rewardRank: ChallengeRank, adjust: AdjustLegacyReward = AdjustLegacyReward.None): this {

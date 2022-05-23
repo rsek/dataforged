@@ -2,7 +2,7 @@ import { ChallengeRank } from "@json_out/index.js";
 import type { IClock } from "@utils/simulation/Clock.js";
 import { Die } from "@utils/simulation/Die.js";
 import { ProgressRoll } from "@utils/simulation/IronswornRoll.js";
-import type { IOutcomesNumbers, IOutcomeWithNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
+import type { INumericOutcomes, NumericOutcome } from "@utils/simulation/NumericOutcomes.js";
 import _ from "lodash-es";
 
 
@@ -31,6 +31,24 @@ export enum ProgressChars {
   "🌕" = 4
 }
 
+export interface ITrackData {
+  ticks: number;
+  score: number;
+  rank?: ChallengeRank | undefined;
+  clock?: IClock | undefined;
+}
+
+export interface ITrack extends ITrackData {
+  applyResult(data: NumericOutcome): void;
+  mark(times: number): this;
+}
+
+export interface IProgressTrack extends ITrack {
+  rank: ChallengeRank;
+  recommit(): void;
+  erase(times: number): this;
+}
+
 /**
  * Render a track as an ascii progress bar.
  * @param track The track to be rendered
@@ -44,17 +62,6 @@ function renderProgress(track: ITrack) {
   return bar;
 }
 
-
-export interface ITrack {
-  ticks: number;
-  score: number;
-  clock?: IClock | undefined;
-  applyResult(data: IOutcomeWithNumbers): void;
-}
-
-export interface IProgressTrack extends ITrack {
-  rank: ChallengeRank;
-}
 /**
  * Enumerates the number of ticks in one unit of progress for a progress track of a given challenge rank.
  */
@@ -66,9 +73,9 @@ export enum ProgressUnit {
   Epic = 1
 }
 
-
 export abstract class Track implements ITrack {
-  abstract applyResult(data: IOutcomeWithNumbers): void;
+  abstract applyResult(data: NumericOutcome): void;
+  abstract mark(times: number): this;
   toString() {
     return `${renderProgress(this)} ${this.score}/${BOXES_PER_TRACK}`;
   }
@@ -82,7 +89,7 @@ export abstract class Track implements ITrack {
   public set ticks(value: number) {
     this._ticks = _.clamp(value, 0, TICKS_PER_BOX * BOXES_PER_TRACK);
   }
-  roll(resultsData?: IOutcomesNumbers,challengeDie1?: number, challengeDie2?: number) {
+  roll(resultsData?: INumericOutcomes,challengeDie1?: number, challengeDie2?: number) {
     return new ProgressRoll({
       score: this.score, challengeDie1, challengeDie2, resultsData
     });
@@ -93,7 +100,7 @@ export abstract class Track implements ITrack {
 }
 
 export class ProgressTrack extends Track implements IProgressTrack {
-  applyResult(data: IOutcomeWithNumbers): void {
+  applyResult(data: NumericOutcome): void {
     this.mark(data.markProgress);
   }
   private _rank: ChallengeRank;

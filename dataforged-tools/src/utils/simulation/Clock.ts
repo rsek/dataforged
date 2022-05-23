@@ -1,6 +1,6 @@
 import type { ClockSegments } from "@json_out/index.js";
 import { ClockType } from "@json_out/index.js";
-import type { IOutcomeWithNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
+import type { NumericOutcome } from "@utils/simulation/NumericOutcomes.js";
 import _ from "lodash-es";
 
 
@@ -8,11 +8,11 @@ export interface IClock {
   type: ClockType;
   segments: ClockSegments;
   filled: number;
-  applyResult(data: IOutcomeWithNumbers): void;
+  applyResult(data: NumericOutcome): void;
 }
 
 export abstract class Clock implements IClock {
-  applyResult(data: IOutcomeWithNumbers): void {
+  applyResult(data: NumericOutcome): void {
     this.filled += data.clock;
   }
   readonly segments: ClockSegments;

@@ -1,21 +1,22 @@
-import type { IOutcomesNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
+import { MoveOutcome } from "@json_out/index.js";
+import { NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 
-
-export const SaAOld: IOutcomesNumbers = {
+export const SaA_may20 = new NumericOutcomes("Secure an Advantage", {
   "Strong Hit": {
-    momentum: 2,
-    add: 1,
-    markProgress: 0,
-    clock: 0,
-    match: {
-      markProgress: 1
-    }
+    outcome: MoveOutcome["Strong Hit"],
+    chooseOnMatch: {
+      amount: 1,
+      from: [{
+        markProgress: 1, momentum: 2, add: 1,
+      }]
+    },
+    choose: {
+      amount: 1,
+      from: [{ momentum: 2, add: 1, }]
+    },
   },
   "Weak Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 0,
+    outcome: MoveOutcome["Weak Hit"],
     choose: {
       amount: 1,
       from: [
@@ -25,104 +26,99 @@ export const SaAOld: IOutcomesNumbers = {
     }
   },
   Miss: {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 1,
-    match: {
-      clock: 2
+    outcome: MoveOutcome.Miss,
+    choose: {
+      amount: 1,
+      from: [{ tickClock: 1 }]
+    },
+    chooseOnMatch: {
+      amount: 1,
+      from: [{ tickClock: 2 }]
     }
   }
-};
+})
+;
 
-
-export const faceDangerOld: IOutcomesNumbers = {
+export const FD_may20 = new NumericOutcomes("Face Danger",{
   "Strong Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 1,
-    clock: 0,
-    match: {
-      markProgress: 2
-    }
+    outcome: MoveOutcome["Strong Hit"],
+    chooseOnMatch: {
+      amount: 1,
+      from: [{ markProgress: 2 }]
+    },
+    choose: {
+      amount: 1,
+      from: [{ markProgress: 1 }]
+    },
   },
   "Weak Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 1,
-    clock: 1,
+    outcome: MoveOutcome["Weak Hit"],
+    choose: {
+      amount: 1,
+      from: [{ markProgress: 1, tickClock: 1 }]
+    }
   },
   Miss: {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 1,
-    match: {
-      clock: 2
+    outcome: MoveOutcome.Miss,
+    choose: {
+      amount: 1,
+      from: [{ tickClock: 1 }]
+    },
+    chooseOnMatch: {
+      amount: 1,
+      from: [{ tickClock: 2 }]
     }
   }
-};
+});
 
-export const SaAnew: IOutcomesNumbers = {
+
+export const SaA_ironsworn = new NumericOutcomes("Secure an Advantage", {
   "Strong Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 0,
-    choose: {
-      amount: 2,
-      from: [
-        { momentum: 2 },
-        { add: 1 },
-        { markProgress: 1 }
-      ]
-    }
-  },
-  "Weak Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 0,
+    outcome: MoveOutcome["Strong Hit"],
     choose: {
       amount: 1,
       from: [
         { momentum: 2 },
-        { add: 1 },
-        { markProgress: 1 }
+        { add: 1 }
       ]
-    }
-  },
-  Miss: {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 1,
-    match: {
-      clock: 2
-    }
-  }
-};
-
-export const faceDangerNew: IOutcomesNumbers = {
-  "Strong Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 2,
-    clock: 0,
+    },
   },
   "Weak Hit": {
-    momentum: 0,
-    add: 0,
-    markProgress: 2,
-    clock: 1,
+    outcome: MoveOutcome["Weak Hit"],
+    choose: {
+      amount: 1,
+      from: [{ momentum: 1 }]
+    }
   },
   Miss: {
-    momentum: 0,
-    add: 0,
-    markProgress: 0,
-    clock: 1,
-    match: {
-      clock: 2
+    outcome: MoveOutcome.Miss,
+    choose: {
+      amount: 1,
+      from: [{ tickClock: 1 }]
     }
   }
-};
+});
+
+export const FD_ironsworn = new NumericOutcomes("Face Danger", {
+  "Strong Hit": {
+    outcome: MoveOutcome["Strong Hit"],
+    choose: {
+      amount: 1,
+      from: [{ markProgress: 1 }]
+    },
+  },
+  "Weak Hit": {
+    outcome: MoveOutcome["Weak Hit"],
+    choose: {
+      amount: 1,
+      from: [{ markProgress: 1, tickClock: 1 }]
+    }
+  },
+  Miss: {
+    outcome: MoveOutcome.Miss,
+    choose: {
+      amount: 1,
+      from: [{ tickClock: 1 }]
+    }
+  }
+});

@@ -1,43 +1,48 @@
-import { ChallengeRank , ClockSegments , MoveOutcome } from "@json_out/index.js";
-import { MoveSelectionStrategy , SceneChallenge } from "@utils/simulation/SceneChallenge.js";
-import Table from "cli-table";
-import _ from "lodash-es";
-import "colors";
+import type { ClockSegments } from "@json_out/index.js";
+import { ChallengeRank  , MoveOutcome } from "@json_out/index.js";
+import { FD_ironsworn, FD_may20, SaA_ironsworn, SaA_may20 } from "@utils/simulation/moveData.js";
+import type { INumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
+import { OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
 import { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
-import type { IOutcomesNumbers } from "@utils/simulation/OutcomeWithNumbers.js";
-import { faceDangerNew, faceDangerOld, SaAnew, SaAOld } from "@utils/simulation/moveData.js";
-
+import { ProgressStrategy } from "@utils/simulation/ProgressStrategy";
+import { SceneChallenge } from "@utils/simulation/SceneChallenge.js";
+import type { PartialBy } from "@utils/types/PartialBy.js";
+import Table from "cli-table";
+import pkg from "colors";
+const { white, blue, bold, dim, grey, magenta, red } = pkg;
+import _ from "lodash-es";
 
 export interface SimSceneChallengeOptions {
-  description: string,
-  iterations?: number,
-  rank?: ChallengeRank,
-  segments?: ClockSegments,
+  id: string,
+  rank: ChallengeRank,
+  segments: ClockSegments,
+  SaAResultsData: INumericOutcomes,
+  FDResultsData: INumericOutcomes
+  strategy: ProgressStrategy
   statFD?: number,
   statSAA?: number,
   add?: number,
+  iterations?: number,
   pc?: PlayerCharacter,
-  SaAResultsData?: IOutcomesNumbers,
-  FDResultsData?: IOutcomesNumbers
-  strategy: MoveSelectionStrategy
 }
 
 /**
  *
  */
 export function simulateSceneChallenges(
-  { description: description, iterations= 20000, rank = ChallengeRank.Formidable, segments=ClockSegments.Six, statFD=2, statSAA=statFD+1, add=0, pc=new PlayerCharacter(), SaAResultsData=SaAnew, FDResultsData=faceDangerNew, strategy }:
+  { id, iterations= 20000, rank, segments, statFD=2, statSAA=statFD+1, add=0, strategy, pc=new PlayerCharacter({ strategy: strategy === ProgressStrategy.Momentum ? [ OutcomeEffectType.markProgress, OutcomeEffectType.momentum, OutcomeEffectType.add ] : [ OutcomeEffectType.markProgress, OutcomeEffectType.add, OutcomeEffectType.momentum ] }), SaAResultsData, FDResultsData }:
   SimSceneChallengeOptions
 
 ) {
   const result = {
-    description,
+    id,
     iterations,
     rank,
     segments,
     statFD,
     statSAA,
     add,
+    strategy,
     actionRolls: 0,
     "Strong Hit": 0,
     "Weak Hit": 0,
@@ -50,7 +55,7 @@ export function simulateSceneChallenges(
       FDResultsData,
       SaAResultsData,
       statFD,
-      statSAA,
+      statSaA: statSAA,
       add,
       log:false
     });
@@ -71,104 +76,119 @@ function formatAsPercent(decimalToFormat: number, places: number=2) {
 }
 
 /**
- * Renders scene challenge monte carlo simulations as
+ * Renders scene challenge monte carlo simulations
  * @param data
  */
 export function renderSceneChallenges(data: ReturnType<typeof simulateSceneChallenges>[]) {
-  const tbl = new Table({ colors:true, head: [ "Description".grey, "Rank".grey, "Clock".grey, "Bonus".grey, "Action rolls".grey, "Strong Hit".blue, "Weak Hit".magenta, "Miss".red, "Total".white ] });
+  const tbl = new Table({
+    colors:true,
+    head: [
+      ...[
+        "Description",
+        "Rank",
+        "🕙",
+        "Strategy",
+        "FD",
+        "SaA",
+      ].map(header => grey(header)),
+      white("Action rolls (avg)"),
+      blue("SH"),
+      blue("SH %"),
+      magenta("WH"),
+      magenta("WH %"),
+      red("Miss"),
+      red("Miss %"),
+    ].map(hdr => bold(hdr))
+  });
   data.forEach(row => {
+    const FDBonus = `+${row.add+row.statFD}`;
+    let SaABonus = `+${row.add+row.statSAA}`;
+    if (row.strategy === ProgressStrategy.Progress) {
+      grey(SaABonus = dim("n/a"));
+    }
     tbl.push([
-      row.description,
+      row.id,
       ChallengeRank[row.rank],
       row.segments,
-      `+${row.add+row.statFD}/+${row.add+row.statSAA}`,
-      `${row.actionRolls} / avg ~${(row.actionRolls/row.iterations).toFixed(2)}`,
-      `${row["Strong Hit"]} / ${formatAsPercent(row["Strong Hit"]/row.iterations)}`,
-      `${row["Weak Hit"]} / ${formatAsPercent(row["Weak Hit"]/row.iterations)}`,
-      `${row.Miss} / ${formatAsPercent(row.Miss/row.iterations)}`,
-      row.iterations
+      ProgressStrategy[row.strategy],
+      FDBonus,
+      SaABonus,
+      // Action roll count
+      `${row.actionRolls} (~${(row.actionRolls/row.iterations).toFixed(2)})`,
+      // strong hits
+      blue(`${row["Strong Hit"]}`),
+      blue(`${formatAsPercent(row["Strong Hit"]/row.iterations)}`).padStart(6),
+      // weak hits
+      magenta(`${row["Weak Hit"]}`),
+      magenta(`${formatAsPercent(row["Weak Hit"]/row.iterations)}`).padStart(6),
+      // misses
+
+      red(`${row["Miss"]}`),
+      red(`${formatAsPercent(row["Miss"]/row.iterations)}`).padStart(6),
     ]);
   } );
   console.log(tbl.toString());
 }
 
-const data = [
-  // simulateSceneChallenges({
-  //   description: "Old (FD+2 only)",
-  //   strategy: MoveSelectionStrategy.Simple,
-  //   FDResultsData: faceDangerOld,
-  //   SaAResultsData: SaAOld,
-  // }),
-  // simulateSceneChallenges({
-  //   description: "Old (FD+2/SAA+3)",
-  //   strategy: MoveSelectionStrategy.Alternate,
-  //   statFD: 2,
-  //   FDResultsData: faceDangerOld,
-  //   SaAResultsData: SaAOld
-  // }),
-  // simulateSceneChallenges({
-  //   description: "New (FD+2 only)",
-  //   strategy: MoveSelectionStrategy.Simple,
-  //   statFD: 2,
-  // }),
-  // simulateSceneChallenges({
-  //   description: "New (FD+2/SAA+3)",
-  //   strategy: MoveSelectionStrategy.Alternate,
-  //   statFD: 2
-  // }),
-  // simulateSceneChallenges({
-  //   description: "New (FD+2 only)",
-  //   strategy: MoveSelectionStrategy.Simple,
-  //   statFD: 2,
-  //   segments: 4,
-  // }),
-  // simulateSceneChallenges({
-  //   description: "New (FD+2/SAA+3)",
-  //   strategy: MoveSelectionStrategy.Alternate,
-  //   statFD: 2,
-  //   segments: 4,
-  // }),
-  simulateSceneChallenges({
-    description: "New (FD+2 only)",
-    strategy: MoveSelectionStrategy.Simple,
-    statFD: 2,
-    rank: ChallengeRank.Epic,
-    segments: 8,
-  }),
-  simulateSceneChallenges({
-    description: "New (FD+2/SAA+3)",
-    strategy: MoveSelectionStrategy.Alternate,
-    statFD: 2,
-    rank: ChallengeRank.Epic,
-    segments: 8,
-  }),
-  simulateSceneChallenges({
-    description: "New (FD+2 only)",
-    strategy: MoveSelectionStrategy.Simple,
-    statFD: 2,
-    rank: ChallengeRank.Epic,
-  }),
-  simulateSceneChallenges({
-    description: "New (FD+2/SAA+3)",
-    strategy: MoveSelectionStrategy.Alternate,
-    statFD: 2,
-    rank: ChallengeRank.Epic,
-  }),
-  simulateSceneChallenges({
-    description: "New (FD+2 only)",
-    strategy: MoveSelectionStrategy.Simple,
-    statFD: 2,
-    rank: ChallengeRank.Epic,
-    segments: 4,
-  }),
-  simulateSceneChallenges({
-    description: "New (FD+2/SAA+3)",
-    strategy: MoveSelectionStrategy.Alternate,
-    statFD: 2,
-    rank: ChallengeRank.Epic,
-    segments: 4,
-  }),
-];
+/**
+ * Generates simulation parameters for every combination of the provided ranks, segmentRanges, and strategies.
+ */
+function generateSimParams({ ranks, segmentRange, strategies, id, iterations, SaAResultsData, FDResultsData }: { ranks: ChallengeRank[]; segmentRange: ClockSegments[]; strategies: ProgressStrategy[]; id: string; iterations: number; SaAResultsData: INumericOutcomes; FDResultsData: INumericOutcomes; }): SimSceneChallengeOptions[] {
+  const paramStub: PartialBy<SimSceneChallengeOptions, "rank"|"segments"|"strategy"> = {
+    id,
+    iterations,
+    SaAResultsData,
+    FDResultsData,
+  };
+  const byRank = ranks.map(rank => {
+    const newStub = _.clone(paramStub);
+    newStub.rank = rank;
+    return newStub;
+  });
+  const bySegments = segmentRange.map(segments => {
+    return byRank.map(item => {
+      const newStub = _.clone(item);
+      newStub.segments = segments;
+      return newStub;
+    });
+  }).flat(2);
+  const byStrategy = strategies.map(strategy => {
+    return bySegments.map(item => {
+      const newStub = _.clone(item);
+      newStub.strategy = strategy;
+      return newStub;
+    });
+  }).flat(2)  as SimSceneChallengeOptions[];
+  return byStrategy.sort((a,b) => a.rank - b.rank);
+};
 
-renderSceneChallenges(data);
+const iterations = 20000;
+
+const may20simParams: SimSceneChallengeOptions[] = generateSimParams({
+  ranks: [ ChallengeRank.Troublesome, ChallengeRank.Dangerous,ChallengeRank.Formidable ],
+  segmentRange: [4],
+  strategies: [ ProgressStrategy.Progress, ProgressStrategy.Adds,ProgressStrategy.Momentum ],
+  id: "May 20",
+  SaAResultsData: SaA_may20,
+  FDResultsData: FD_may20,
+  iterations
+});
+
+const ironswornSimParams: SimSceneChallengeOptions[] = generateSimParams({
+  ranks: [ ChallengeRank.Troublesome, ChallengeRank.Dangerous,ChallengeRank.Formidable ],
+  segmentRange: [4],
+  strategies: [ ProgressStrategy.Progress, ProgressStrategy.Adds,ProgressStrategy.Momentum ],
+  id: "Ironsworn",
+  SaAResultsData: SaA_ironsworn,
+  FDResultsData: FD_ironsworn,
+  iterations
+});
+
+const simsToRun = [ ironswornSimParams,may20simParams ];
+
+simsToRun.forEach(item => {
+  console.log(`Running simulations (${iterations} iterations each)...`);
+  const simResult = item.map(data => simulateSceneChallenges(data));
+  renderSceneChallenges(simResult);
+});
 

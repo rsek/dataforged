@@ -3,7 +3,7 @@ import type { IHasId, IHasText , IMoveReroll } from "@json_out/index.js";
  * @public
  */
 export enum MoveOutcome {
-  "Miss"= 0,
+  Miss = 0,
   "Weak Hit" = 1,
   "Strong Hit" = 2
 };
