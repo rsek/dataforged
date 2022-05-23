@@ -7998,7 +7998,7 @@
     "Display": { "Title": "Moves" },
     "Oracles": [
       {
-        "Source": { "Title": "Ironsworn Rulebook" },
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 91 },
         "$id": "Ironsworn/Oracles/Moves/Endure_Harm",
         "Name": "Endure Harm",
         "Category": "Ironsworn/Oracles/Moves",
@@ -8054,7 +8054,7 @@
         ]
       },
       {
-        "Source": { "Title": "Ironsworn Rulebook" },
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 93 },
         "$id": "Ironsworn/Oracles/Moves/Endure_Stress",
         "Name": "Endure Stress",
         "Category": "Ironsworn/Oracles/Moves",
@@ -8104,7 +8104,7 @@
         ]
       },
       {
-        "Source": { "Title": "Ironsworn Rulebook" },
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 105 },
         "$id": "Ironsworn/Oracles/Moves/Pay_the_Price",
         "Name": "Pay the Price",
         "Category": "Ironsworn/Oracles/Moves",
@@ -8229,6 +8229,234 @@
             }
           }
         ]
+      },
+      {
+        "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+        "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+        "Name": "Ask the Oracle",
+        "Aliases": ["Ask"],
+        "Category": "Ironsworn/Oracles/Moves",
+        "Display": {
+          "Title": "Ask the Oracle",
+          "Table": {
+            "Result columns": [
+              {
+                "Label": "Result",
+                "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+                "Key": "Result"
+              }
+            ],
+            "Roll columns": [
+              {
+                "Label": "Roll",
+                "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle"
+              }
+            ]
+          }
+        },
+        "Oracles": [
+          {
+            "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+            "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain",
+            "Name": "Almost Certain",
+            "Aliases": ["90"],
+            "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+            "Category": "Ironsworn/Oracles/Moves",
+            "Display": {
+              "Title": "Ask the Oracle: Almost Certain",
+              "Table": {
+                "Result columns": [
+                  {
+                    "Label": "Result",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain",
+                    "Key": "Result"
+                  }
+                ],
+                "Roll columns": [
+                  {
+                    "Label": "Roll",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain"
+                  }
+                ]
+              }
+            },
+            "Table": [
+              {
+                "Floor": 1,
+                "Ceiling": 10,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain/1-10",
+                "Result": "No"
+              },
+              {
+                "Floor": 11,
+                "Ceiling": 100,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain/11-100",
+                "Result": "Yes"
+              }
+            ]
+          },
+          {
+            "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+            "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely",
+            "Name": "Likely",
+            "Aliases": ["75"],
+            "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+            "Category": "Ironsworn/Oracles/Moves",
+            "Display": {
+              "Title": "Ask the Oracle: Likely",
+              "Table": {
+                "Result columns": [
+                  {
+                    "Label": "Result",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely",
+                    "Key": "Result"
+                  }
+                ],
+                "Roll columns": [
+                  {
+                    "Label": "Roll",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely"
+                  }
+                ]
+              }
+            },
+            "Table": [
+              {
+                "Floor": 1,
+                "Ceiling": 25,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely/1-25",
+                "Result": "No"
+              },
+              {
+                "Floor": 26,
+                "Ceiling": 100,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely/26-100",
+                "Result": "Yes"
+              }
+            ]
+          },
+          {
+            "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+            "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Fifty-fifty",
+            "Name": "Fifty-fifty",
+            "Aliases": ["50", "5050", "Fifty-fifty", "50/50", "50-50"],
+            "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+            "Category": "Ironsworn/Oracles/Moves",
+            "Display": {
+              "Title": "Ask the Oracle: 50/50",
+              "Table": {
+                "Result columns": [
+                  {
+                    "Label": "Result",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Fifty-fifty",
+                    "Key": "Result"
+                  }
+                ],
+                "Roll columns": [
+                  {
+                    "Label": "Roll",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Fifty-fifty"
+                  }
+                ]
+              }
+            },
+            "Table": [
+              {
+                "Floor": 1,
+                "Ceiling": 50,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Fifty-fifty/1-50",
+                "Result": "No"
+              },
+              {
+                "Floor": 51,
+                "Ceiling": 100,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Fifty-fifty/51-100",
+                "Result": "Yes"
+              }
+            ]
+          },
+          {
+            "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+            "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely",
+            "Name": "Unlikely",
+            "Aliases": ["25"],
+            "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+            "Category": "Ironsworn/Oracles/Moves",
+            "Display": {
+              "Title": "Ask the Oracle: Unlikely",
+              "Table": {
+                "Result columns": [
+                  {
+                    "Label": "Result",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely",
+                    "Key": "Result"
+                  }
+                ],
+                "Roll columns": [
+                  {
+                    "Label": "Roll",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely"
+                  }
+                ]
+              }
+            },
+            "Table": [
+              {
+                "Floor": 1,
+                "Ceiling": 75,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely/1-75",
+                "Result": "No"
+              },
+              {
+                "Floor": 76,
+                "Ceiling": 100,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely/76-100",
+                "Result": "Yes"
+              }
+            ]
+          },
+          {
+            "Source": { "Title": "Ironsworn Rulebook", "Page": 107 },
+            "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance",
+            "Name": "Small Chance",
+            "Aliases": ["10"],
+            "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+            "Category": "Ironsworn/Oracles/Moves",
+            "Display": {
+              "Title": "Ask the Oracle: Small Chance",
+              "Table": {
+                "Result columns": [
+                  {
+                    "Label": "Result",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance",
+                    "Key": "Result"
+                  }
+                ],
+                "Roll columns": [
+                  {
+                    "Label": "Roll",
+                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance"
+                  }
+                ]
+              }
+            },
+            "Table": [
+              {
+                "Floor": 1,
+                "Ceiling": 90,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance/1-90",
+                "Result": "No"
+              },
+              {
+                "Floor": 91,
+                "Ceiling": 100,
+                "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance/91-100",
+                "Result": "Yes"
+              }
+            ]
+          }
+        ],
+        "Usage": {}
       },
       {
         "Source": { "Title": "Ironsworn: Delve", "Page": 21 },
