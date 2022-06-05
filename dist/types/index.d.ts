@@ -1988,7 +1988,7 @@ export declare enum MoveCategoryName {
  * @public
  */
 export declare enum MoveOutcome {
-    "Miss" = 0,
+    Miss = 0,
     "Weak Hit" = 1,
     "Strong Hit" = 2
 }

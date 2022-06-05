@@ -9,7 +9,7 @@ export class MoveCategoryDisplay {
         if (color && !validateColor(color)) {
             throw badJsonError(this.constructor, color, "Not a valid color.");
         }
-        this.Color = color !== null && color !== void 0 ? color : undefined;
+        this.Color = color ?? undefined;
     }
 }
 //# sourceMappingURL=MoveCategoryDisplay.js.map

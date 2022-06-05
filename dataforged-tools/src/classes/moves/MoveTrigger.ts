@@ -15,8 +15,8 @@ export class MoveTrigger implements IMoveTrigger {
   "Options"?: (MoveTriggerOptionAction|MoveTriggerOptionProgress)[] | undefined;
   Text?: string | undefined;
   By?: IMoveTriggerBy | undefined;
-  constructor(json: IMoveTriggerYaml|IAlterMoveTriggerYaml, id: IMoveTrigger["$id"], parent: IAlterMove|IMove) {
-    this.$id = id;
+  constructor(json: IMoveTriggerYaml|IAlterMoveTriggerYaml,parent: IAlterMove|IMove) {
+    this.$id = parent.$id + "/Trigger";
     this.Text = json.Text;
     if (this.$id.includes("Alter_Moves")) {
       this.By = json.By ?? { Player: true, Ally: false };

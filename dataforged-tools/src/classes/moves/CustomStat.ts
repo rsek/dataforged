@@ -14,6 +14,6 @@ export class CustomStat implements ICustomStat {
   constructor(json: ICustomStatYaml, id: ICustomStat["$id"]) {
     this.$id = id;
     this.Name = json.Name;
-    this.Options = json.Options?.map(option => new CustomStatOption(option, `${id}/${formatIdFragment(option.Name)}`));
+    this.Options = json.Options?.map(option => new CustomStatOption(option, `${id}/${formatIdFragment(json._idFragment??json.Name)}`));
   }
 }

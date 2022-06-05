@@ -6,14 +6,13 @@ import _ from "lodash-es";
  * @param param0
  */
 export function dataforgedStats(gamespace, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }) {
-    var _a;
     const assetCount = _.sum(assets.map(item => item.Assets.length));
     const moveCount = _.sum(moves.map(item => item.Moves.length));
     return `${assetCount} assets comprising ${assets.length} types,
     ${encounterStats(gamespace, encounters)},
     ${moveCount} moves in ${moves.length} categories,
     ${oracleStats(oracles)},
-    and ${(_a = truths === null || truths === void 0 ? void 0 : truths.length) !== null && _a !== void 0 ? _a : 0} setting truth categories.`;
+    and ${truths?.length ?? 0} setting truth categories.`;
 }
 /**
  * Creates a string of oracle stats for use in build messages.
@@ -30,13 +29,12 @@ export function oracleStats(oracles) {
  * @param json
  */
 export function encounterStats(gamespace, json) {
-    var _a;
     let text;
     switch (gamespace) {
         case Gamespace.Starforged:
             {
                 const encounterCount = json.length;
-                const variantCount = (_a = _.sum(json.map(enc => { var _a; return (_a = enc.Variants) === null || _a === void 0 ? void 0 : _a.length; }))) !== null && _a !== void 0 ? _a : 0;
+                const variantCount = _.sum(json.map(enc => enc.Variants?.length)) ?? 0;
                 text = `${encounterCount} encounters (plus ${variantCount} encounter variants)`;
             }
             break;

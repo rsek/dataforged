@@ -27,7 +27,7 @@ export class EncounterStarforged implements IEncounterStarforged {
   Source: Source;
   constructor(json: IEncounterStarforgedYaml, ...ancestorSourceJson: ISource[]) {
     const gamespace = Gamespace.Starforged;
-    this.$id = `${gamespace}/Encounters/${formatIdFragment(json.Name)}`;
+    this.$id = `${gamespace}/Encounters/${formatIdFragment(json._idFragment??json.Name)}`;
     this.Name = json.Name;
     this.Nature = json.Nature;
     this.Summary = json.Summary;

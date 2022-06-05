@@ -1,7 +1,8 @@
 import { ChallengeRank } from "@json_out/index.js";
-import type { NumericOutcome } from "@utils/simulation/NumericOutcomes.js";
+import type { NumericOutcome, OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
+import { TICKS_PER_BOX } from "@utils/simulation/progressConstants.js";
 import type { ITrack } from "@utils/simulation/Track.js";
-import { TICKS_PER_BOX , Track } from "@utils/simulation/Track.js";
+import { Track } from "@utils/simulation/Track.js";
 
 /**
  * Enumerates the number of ticks given as a legacy reward for completing some tracks.
@@ -33,7 +34,7 @@ export enum AdjustLegacyReward {
 
 export class LegacyTrack extends Track implements ILegacyTrack {
   readonly legacy: LegacyType;
-  override applyResult(data: NumericOutcome) {
+  override applyResult(data: OutcomeEffectHash) {
     throw new Error("NYI");
   }
   mark(rewardRank: ChallengeRank, adjust: AdjustLegacyReward = AdjustLegacyReward.None): this {

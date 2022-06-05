@@ -7,12 +7,11 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  */
 export class InputSelect extends Input {
     constructor(json, parent) {
-        var _a;
         super(json, parent);
         if (json["Input Type"] !== InputType.Select) {
             throw badJsonError(this.constructor, json["Input Type"], "Expected InputType.Select!");
         }
-        this.Adjustable = (_a = json.Adjustable) !== null && _a !== void 0 ? _a : false;
+        this.Adjustable = json.Adjustable ?? false;
         this.Sets = json.Sets;
         this.Options = json.Options.map(optionJson => new InputSelectOption(optionJson, this));
         // TODO: typecheck "Sets" vs the options - via a method that can be invoked?

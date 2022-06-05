@@ -29,7 +29,7 @@ export class Move extends SourceInheritor implements IMove {
   constructor(json: IMoveYaml, parent: IMoveCategory|IAssetAbility, gamespace: Gamespace,...sourceAncestors: ISource[]) {
     super(json.Source ?? {}, ...sourceAncestors);
     this.Category = json.Category ?? `${gamespace}/Moves/Assets`;
-    this.$id = json.$id ?? `${this.Category}/${formatIdFragment(json.Name)}`;
+    this.$id = json.$id ?? `${this.Category}/${formatIdFragment(json._idFragment??json.Name)}`;
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = json.Name;
     this.Optional = json.Optional ?? false;
@@ -48,7 +48,7 @@ export class Move extends SourceInheritor implements IMove {
       Color: json.Display?.Color ?? (parent as IMoveCategory).Display?.Color
     });
 
-    this.Trigger = new MoveTrigger(json.Trigger, `${this.$id}/Trigger`, this);
+    this.Trigger = new MoveTrigger(json.Trigger,  this);
     this.Text = json.Text;
     this.Oracles = json.Oracles;
 

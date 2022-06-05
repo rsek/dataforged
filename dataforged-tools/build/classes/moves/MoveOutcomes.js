@@ -19,11 +19,10 @@ export class AlterMoveOutcomes {
         this.$id = id;
         const keys = ["Strong Hit", "Weak Hit", "Miss"];
         keys.forEach(outcome => {
-            var _a;
             if (json[outcome]) {
                 this[outcome] = json[outcome];
                 this[outcome].$id = `${this.$id}/${formatIdFragment(outcome)}`;
-                if ((_a = this[outcome]) === null || _a === void 0 ? void 0 : _a["With a Match"]) {
+                if (this[outcome]?.["With a Match"]) {
                     this[outcome]["With a Match"].$id = this[outcome].$id + "/With_a_Match";
                 }
             }

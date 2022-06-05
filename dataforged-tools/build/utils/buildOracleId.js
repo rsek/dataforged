@@ -5,7 +5,7 @@ import { formatIdFragment } from "./toIdFragment.js";
  * @returns
  */
 export function buildOracleId(gamespace, ...ancestors) {
-    const idParts = ancestors.reverse().map((item) => { var _a; return formatIdFragment((_a = item._idFragment) !== null && _a !== void 0 ? _a : item.Name); });
+    const idParts = ancestors.reverse().map((item) => formatIdFragment(item._idFragment ?? item.Name));
     const id = [gamespace, "Oracles", ...idParts].join("/");
     return id;
 }

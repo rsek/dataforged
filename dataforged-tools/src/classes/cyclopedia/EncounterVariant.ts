@@ -20,7 +20,7 @@ export class EncounterVariant implements IEncounterVariant {
   "Variant of": IEncounterStarforged["$id"];
   Tags?: EncounterTags[] | undefined;
   constructor(json: IEncounterVariantYaml, parent: EncounterStarforged) {
-    this.$id = (`${parent.$id}/${formatIdFragment(json.Name)}`);
+    this.$id = (`${parent.$id}/${formatIdFragment(json._idFragment??json.Name)}`);
     this.Source = new Source(parent.Source);
     this.Name = json.Name;
     this.Rank = json.Rank;

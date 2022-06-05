@@ -16,13 +16,12 @@ export class Input {
  */
 export class InputNumber extends Input {
     constructor(json, parent) {
-        var _a, _b, _c, _d;
         super(json, parent);
         this.Step = 1;
-        this.Min = (_a = json.Min) !== null && _a !== void 0 ? _a : 0;
-        this.Max = (_b = json.Max) !== null && _b !== void 0 ? _b : null;
-        this.Value = (_c = json.Value) !== null && _c !== void 0 ? _c : 0;
-        this.Adjustable = (_d = json.Adjustable) !== null && _d !== void 0 ? _d : true;
+        this.Min = json.Min ?? 0;
+        this.Max = json.Max ?? null;
+        this.Value = json.Value ?? 0;
+        this.Adjustable = json.Adjustable ?? true;
     }
 }
 /**
@@ -30,13 +29,12 @@ export class InputNumber extends Input {
  */
 export class InputClock extends Input {
     constructor(json, parent) {
-        var _a, _b;
         super(json, parent);
         this["Clock Type"] = ClockType.Tension;
         this.Segments = json.Segments;
-        this.Filled = (_a = json.Filled) !== null && _a !== void 0 ? _a : 0;
+        this.Filled = json.Filled ?? 0;
         // TODO: validate number range - maybe with decorators?
-        this.Adjustable = (_b = json.Adjustable) !== null && _b !== void 0 ? _b : true;
+        this.Adjustable = json.Adjustable ?? true;
     }
 }
 /**
@@ -44,9 +42,8 @@ export class InputClock extends Input {
  */
 export class InputText extends Input {
     constructor(json, parent) {
-        var _a;
         super(json, parent);
-        this.Adjustable = (_a = json.Adjustable) !== null && _a !== void 0 ? _a : false;
+        this.Adjustable = json.Adjustable ?? false;
     }
 }
 //# sourceMappingURL=Input.js.map

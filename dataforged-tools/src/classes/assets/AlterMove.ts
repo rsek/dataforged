@@ -20,7 +20,7 @@ export class AlterMove implements IAlterMove {
     this.Moves = json.Moves;
     if (json.Trigger) {
       const triggerClone = _.cloneDeep(json.Trigger);
-      this.Trigger = new MoveTrigger(triggerClone, `${this.$id}/Trigger`, this);
+      this.Trigger = new MoveTrigger(triggerClone,  this);
     }
     this.Text = json.Text;
     if (json.Outcomes) {

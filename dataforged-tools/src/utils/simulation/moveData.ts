@@ -1,6 +1,21 @@
 import { MoveOutcome } from "@json_out/index.js";
 import { NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 
+export const finishTheScene = new NumericOutcomes("Finish the Scene", {
+  "Strong Hit": {
+    outcome: MoveOutcome["Strong Hit"],
+    choose: { from: [{}] }
+  },
+  "Weak Hit": {
+    outcome: MoveOutcome["Weak Hit"],
+    choose: { from: [{}] }
+  },
+  Miss: {
+    outcome: MoveOutcome["Miss"],
+    choose: { from: [{}] }
+  }
+});
+
 export const SaA_may20 = new NumericOutcomes("Secure an Advantage", {
   "Strong Hit": {
     outcome: MoveOutcome["Strong Hit"],
