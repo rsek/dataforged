@@ -4,6 +4,7 @@ import type { IDisplayOracle as IDisplayOracle, IOracle } from "../../json_out/i
  * @internal
  */
 export declare class DisplayOracle implements IDisplayOracle {
+    $id: string;
     Title: string;
     "Column of"?: IOracle["$id"] | undefined;
     Table: TableDisplayInfo;

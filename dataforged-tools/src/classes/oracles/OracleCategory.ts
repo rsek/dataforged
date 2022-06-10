@@ -38,7 +38,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
     this.Name = json.Name;
     this.Aliases = json.Aliases;
     this.Description = json.Description;
-    this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);
+    this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name, this.$id);
     this.Category = category ?? undefined;
     this["Sample Names"] = json["Sample Names"];
     if (json.Usage) {

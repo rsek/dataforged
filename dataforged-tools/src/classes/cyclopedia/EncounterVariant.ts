@@ -26,6 +26,7 @@ export class EncounterVariant implements IEncounterVariant {
     this.Rank = json.Rank;
     this.Display = new DisplayWithTitle(
       {
+        parentId: this.$id,
         Title: json.Display?.Title ?? this.Name,
         Icon: json.Display?.Icon,
         Images: json.Display?.Images,

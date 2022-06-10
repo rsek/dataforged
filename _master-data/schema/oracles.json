@@ -15568,6 +15568,11 @@
           "$ref": "#/definitions/ITableDisplayInfoYaml",
           "title": "Table"
         },
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
@@ -15971,6 +15976,12 @@
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
           "title": "Title"
+        },
+        "$id": {
+          "description": "The item's unique string ID.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
@@ -16390,6 +16401,11 @@
       "title": "Partial<IDisplayWithTitle>",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",

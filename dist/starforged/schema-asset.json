@@ -101,6 +101,11 @@
       "title": "IDisplayWithTitle",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
@@ -128,7 +133,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Title"]
+      "required": ["$id", "Title"]
     },
     "IAssetState": {
       "description": "Describes a possible state for an asset, like the \"Broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
@@ -1545,6 +1550,11 @@
       "title": "Partial<IDisplayWithTitle>",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",

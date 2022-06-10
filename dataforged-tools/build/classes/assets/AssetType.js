@@ -13,6 +13,7 @@ export class AssetType extends SourceInheritor {
         this.Aliases = json.Aliases;
         this.Description = json.Description;
         this.Display = new DisplayWithTitle({
+            parentId: this.$id,
             Title: json.Display?.Title ?? json.Name + "s",
             Color: json.Display?.Color
         });

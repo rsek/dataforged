@@ -1,8 +1,9 @@
+import type { IHasId } from "./IHas.js";
 /**
  * Interface for data relevant to an item's display/rendering.
  * @public
  */
-export interface IDisplay {
+export interface IDisplay extends Partial<IHasId> {
     /**
      * A URL pointing to a single SVG icon.
      * @pattern ^\.\./\.\./img/vector/[A-z-_0-9/]+\.svg$
@@ -27,6 +28,10 @@ export interface IDisplay {
  * @public
  */
 export interface IDisplayWithTitle extends IDisplay {
+    /**
+     * An identifier to make the title string localizable.
+     */
+    $id: string;
     Title: string;
 }
 //# sourceMappingURL=IDisplay.d.ts.map

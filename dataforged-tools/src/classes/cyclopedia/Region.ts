@@ -23,7 +23,8 @@ export class IronswornRegion implements IIronswornRegion {
     this.$id = `Ironsworn/Regions/${json.Name}`;
     this.Name = json.Name;
     this.Summary = json.Summary;
-    this.Display = new DisplayWithTitle({ Title: json.Name });
+    this.Display = new DisplayWithTitle({
+      parentId: this.$id,Title: json.Name });
     this.Source = json.Source;
     this.Features = json.Features;
     this.Description = json.Description;

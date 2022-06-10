@@ -24,6 +24,7 @@ export class Move extends SourceInheritor {
         this["Progress Move"] = json["Progress Move"];
         this["Variant of"] = json["Variant of"];
         this.Display = new DisplayWithTitle({
+            parentId: this.$id,
             Title: json.Display?.Title ?? this.Name,
             Color: json.Display?.Color ?? parent.Display?.Color
         });

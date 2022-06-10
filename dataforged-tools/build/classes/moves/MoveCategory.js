@@ -10,7 +10,7 @@ export class MoveCategory {
         this.Name = json.Name;
         this.Description = json.Description;
         this.Source = new Source(json.Source, ...ancestorSourceJson);
-        this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, json.Display?.Color ?? undefined);
+        this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, this.$id, json.Display?.Color ?? undefined);
         this.Optional = json.Optional ?? false;
         this.Moves = json.Moves.map(move => {
             move.Category = this.$id;

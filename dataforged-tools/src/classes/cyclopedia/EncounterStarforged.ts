@@ -33,7 +33,8 @@ export class EncounterStarforged implements IEncounterStarforged {
     this.Summary = json.Summary;
     this.Tags = json.Tags;
     this.Rank = json.Rank;
-    this.Display = new DisplayWithTitle({ Title: json.Display?.Title?? this.Name });
+    this.Display = new DisplayWithTitle({
+      parentId: this.$id, Title: json.Display?.Title?? this.Name });
     this.Features = json.Features;
     this.Drives = json.Drives;
     this.Tactics = json.Tactics;

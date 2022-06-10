@@ -22,6 +22,7 @@ export class EncounterNatureInfo implements IEncounterNatureInfo {
     this.Source = new Source(json.Source ?? {}, parentSource);
 
     this.Display = new DisplayWithTitle({
+      parentId: this.$id,
       Title: json.Display?.Title ?? this.Name
     });
     this.Summary = json.Summary;

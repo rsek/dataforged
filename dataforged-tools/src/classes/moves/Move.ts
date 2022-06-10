@@ -44,6 +44,7 @@ export class Move extends SourceInheritor implements IMove {
     this["Variant of"] = json["Variant of"];
 
     this.Display = new DisplayWithTitle({
+      parentId: this.$id,
       Title: json.Display?.Title ?? this.Name,
       Color: json.Display?.Color ?? (parent as IMoveCategory).Display?.Color
     });

@@ -23,6 +23,7 @@ export class Asset extends SourceInheritor {
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Display = new DisplayWithTitle({
+            parentId: this.$id,
             Title: json.Display?.Title ?? this.Name,
             Icon: json.Display?.Icon,
             Color: json.Display?.Color ?? parent.Display.Color

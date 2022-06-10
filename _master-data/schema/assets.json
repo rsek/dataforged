@@ -1156,6 +1156,11 @@
       "title": "Partial<IDisplayWithTitle>",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
@@ -2172,6 +2177,11 @@
       "title": "IDisplayWithTitle_1",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
@@ -2199,7 +2209,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Title"]
+      "required": ["$id", "Title"]
     },
     "ISource_1": {
       "description": "Interface representing data on the game's source.",
@@ -2883,6 +2893,12 @@
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
           "title": "Title"
+        },
+        "$id": {
+          "description": "The item's unique string ID.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],

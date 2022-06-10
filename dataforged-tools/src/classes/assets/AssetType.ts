@@ -24,6 +24,7 @@ export class AssetType extends SourceInheritor implements IAssetType {
     this.Description = json.Description;
 
     this.Display = new DisplayWithTitle({
+      parentId: this.$id,
       Title: json.Display?.Title ?? json.Name + "s",
       Color: json.Display?.Color
     });

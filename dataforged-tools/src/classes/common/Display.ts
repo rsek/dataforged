@@ -18,13 +18,15 @@ export class Display implements IDisplay {
  * @internal
  */
 export class DisplayWithTitle extends Display implements IDisplayWithTitle {
+  $id: string;
   Title!: string;
   Icon?: string | undefined;
   Images?: string[] | undefined;
   Color?: string | undefined;
-  constructor({ Title, Icon, Images, Color }: IDisplayWithTitle) {
+  constructor({ parentId, Title, Icon, Images, Color }: Omit<IDisplayWithTitle, "$id"> & {parentId: string}) {
     super({
       Title, Icon, Images, Color
     });
+    this.$id = parentId + "/Display";
   }
 }

@@ -4,6 +4,7 @@ import { TableDisplayInfo } from "../index.js";
  */
 export class DisplayOracle {
     constructor(json, parentName, parentId) {
+        this.$id = parentId + "/Display";
         this.Title = json.Title ?? parentName;
         this.Images = json.Images;
         this.Icon = json.Icon;

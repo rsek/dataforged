@@ -21,6 +21,7 @@ export class EncounterIronsworn extends Encounter implements IEncounterIronsworn
     this.$id = `${parent.$id}/${formatIdFragment(this.Name)}`;
     this.Nature = parent.Name;
     this.Display = new DisplayWithTitle({
+      parentId: this.$id,
       Title: json.Display?.Title ?? this.Name
     });
     this.Source = new Source(json.Source ?? {}, parent.Source);

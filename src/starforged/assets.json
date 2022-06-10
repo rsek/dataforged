@@ -4,7 +4,11 @@
     "$id": "Starforged/Assets/Command_Vehicle",
     "Name": "Command Vehicle",
     "Description": "The **command vehicle** is your interstellar STARSHIP. It is a default asset for your character, taken when you begin your campaign. If you are playing with others, this is a shared asset; each of you may use the STARSHIP's abilities while aboard the craft.\n\nThe command vehicle has an integrity meter and starts at 5 integrity. When your STARSHIP takes a hit, make the [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) move to see what happens.",
-    "Display": { "Title": "Command Vehicles", "Color": "#9aa3ad" },
+    "Display": {
+      "Title": "Command Vehicles",
+      "Color": "#9aa3ad",
+      "$id": "Starforged/Assets/Command_Vehicle/Display"
+    },
     "Usage": { "Shared": true },
     "Assets": [
       {
@@ -12,7 +16,11 @@
         "Asset Type": "Starforged/Assets/Command_Vehicle",
         "$id": "Starforged/Assets/Command_Vehicle/Starship",
         "Name": "Starship",
-        "Display": { "Title": "Starship", "Color": "#9aa3ad" },
+        "Display": {
+          "Title": "Starship",
+          "Color": "#9aa3ad",
+          "$id": "Starforged/Assets/Command_Vehicle/Starship/Display"
+        },
         "Usage": { "Shared": true },
         "Attachments": {
           "Asset Types": ["Starforged/Assets/Module"],
@@ -131,7 +139,11 @@
     "$id": "Starforged/Assets/Module",
     "Name": "Module",
     "Description": "**Modules** are linked to your STARSHIP and offer additional options and advantages when aboard that vehicle.\n\nThese assets are earned and managed by a single character. They can be shared with allies, but only if it's practical for them to make use of it (not everyone may know how to use a RESEARCH LAB).\n\nWhen you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](Starforged/Moves/Recover/Repair) it.",
-    "Display": { "Title": "Modules", "Color": "#7f5a90" },
+    "Display": {
+      "Title": "Modules",
+      "Color": "#7f5a90",
+      "$id": "Starforged/Assets/Module/Display"
+    },
     "Usage": { "Shared": true },
     "Assets": [
       {
@@ -139,7 +151,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Engine_Upgrade",
         "Name": "Engine Upgrade",
-        "Display": { "Title": "Engine Upgrade", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Engine Upgrade",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Engine_Upgrade/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -290,7 +306,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Expanded_Hold",
         "Name": "Expanded Hold",
-        "Display": { "Title": "Expanded Hold", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Expanded Hold",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Expanded_Hold/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -399,7 +419,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Grappler",
         "Name": "Grappler",
-        "Display": { "Title": "Grappler", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Grappler",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Grappler/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -426,7 +450,10 @@
                 "Name": "Ready Grappler",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Module/Grappler",
-                "Display": { "Title": "Ready Grappler" },
+                "Display": {
+                  "Title": "Ready Grappler",
+                  "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger",
                   "Text": "When you take a minute or so to ready the grappler...",
@@ -528,7 +555,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Heavy_Cannons",
         "Name": "Heavy Cannons",
-        "Display": { "Title": "Heavy Cannons", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Heavy Cannons",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Heavy_Cannons/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -653,7 +684,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Internal_Refit",
         "Name": "Internal Refit",
-        "Display": { "Title": "Internal Refit", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Internal Refit",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Internal_Refit/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -717,7 +752,10 @@
                 "Name": "Draw Reserves",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Module/Internal_Refit",
-                "Display": { "Title": "Draw Reserves" },
+                "Display": {
+                  "Title": "Draw Reserves",
+                  "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger",
                   "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...",
@@ -800,7 +838,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Medbay",
         "Name": "Medbay",
-        "Display": { "Title": "Medbay", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Medbay",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Medbay/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -976,7 +1018,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Missile_Array",
         "Name": "Missile Array",
-        "Display": { "Title": "Missile Array", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Missile Array",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Missile_Array/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -1131,7 +1177,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Overseer",
         "Name": "Overseer",
-        "Display": { "Title": "Overseer", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Overseer",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Overseer/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -1257,7 +1307,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Reinforced_Hull",
         "Name": "Reinforced Hull",
-        "Display": { "Title": "Reinforced Hull", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Reinforced Hull",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Reinforced_Hull/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -1383,7 +1437,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Research_Lab",
         "Name": "Research Lab",
-        "Display": { "Title": "Research Lab", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Research Lab",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Research_Lab/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -1588,7 +1646,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Sensor_Array",
         "Name": "Sensor Array",
-        "Display": { "Title": "Sensor Array", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Sensor Array",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Sensor_Array/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -1803,7 +1865,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Shields",
         "Name": "Shields",
-        "Display": { "Title": "Shields", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Shields",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Shields/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -1838,7 +1904,10 @@
                 "Name": "Raise Shields",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Module/Shields",
-                "Display": { "Title": "Raise Shields" },
+                "Display": {
+                  "Title": "Raise Shields",
+                  "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger",
                   "Text": "When you raise your shields...",
@@ -1945,7 +2014,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Stealth_Tech",
         "Name": "Stealth Tech",
-        "Display": { "Title": "Stealth Tech", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Stealth Tech",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Stealth_Tech/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -2130,7 +2203,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Vehicle_Bay",
         "Name": "Vehicle Bay",
-        "Display": { "Title": "Vehicle Bay", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Vehicle Bay",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Vehicle_Bay/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -2247,7 +2324,11 @@
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Workshop",
         "Name": "Workshop",
-        "Display": { "Title": "Workshop", "Color": "#7f5a90" },
+        "Display": {
+          "Title": "Workshop",
+          "Color": "#7f5a90",
+          "$id": "Starforged/Assets/Module/Workshop/Display"
+        },
         "Usage": { "Shared": true },
         "States": [
           {
@@ -2447,7 +2528,11 @@
     "$id": "Starforged/Assets/Support_Vehicle",
     "Name": "Support Vehicle",
     "Description": "**Support vehicles** complement your command vehicle for planetside or short-range operations. If you are playing with others, one of you might serve as the pilot or owner of a support vehicle, but anyone on board can use its abilities as appropriate to the situation.\n\nAs with the command vehicle, your support vehicles have integrity meters. The maximum integrity varies based on the type of vehicle. When a support vehicle faces a damaging situation or environment, you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) to see how it fares.",
-    "Display": { "Title": "Support Vehicles", "Color": "#495790" },
+    "Display": {
+      "Title": "Support Vehicles",
+      "Color": "#495790",
+      "$id": "Starforged/Assets/Support_Vehicle/Display"
+    },
     "Usage": { "Shared": true },
     "Assets": [
       {
@@ -2455,7 +2540,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Exosuit",
         "Name": "Exosuit",
-        "Display": { "Title": "Exosuit", "Color": "#495790" },
+        "Display": {
+          "Title": "Exosuit",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -2611,7 +2700,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Hoverbike",
         "Name": "Hoverbike",
-        "Display": { "Title": "Hoverbike", "Color": "#495790" },
+        "Display": {
+          "Title": "Hoverbike",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -2732,7 +2825,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Rover",
         "Name": "Rover",
-        "Display": { "Title": "Rover", "Color": "#495790" },
+        "Display": {
+          "Title": "Rover",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Rover/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -2880,7 +2977,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Service_Pod",
         "Name": "Service Pod",
-        "Display": { "Title": "Service Pod", "Color": "#495790" },
+        "Display": {
+          "Title": "Service Pod",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -3000,7 +3101,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Shuttle",
         "Name": "Shuttle",
-        "Display": { "Title": "Shuttle", "Color": "#495790" },
+        "Display": {
+          "Title": "Shuttle",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -3097,7 +3202,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Skiff",
         "Name": "Skiff",
-        "Display": { "Title": "Skiff", "Color": "#495790" },
+        "Display": {
+          "Title": "Skiff",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Skiff/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -3213,7 +3322,11 @@
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter",
         "Name": "Snub Fighter",
-        "Display": { "Title": "Snub Fighter", "Color": "#495790" },
+        "Display": {
+          "Title": "Snub Fighter",
+          "Color": "#495790",
+          "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Display"
+        },
         "Usage": { "Shared": true },
         "Inputs": [
           {
@@ -3334,7 +3447,11 @@
     "$id": "Starforged/Assets/Path",
     "Name": "Path",
     "Description": "**Paths** are your background, interests, training, skills, powers, and key equipment. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. When you create your character in the next chapter, you'll select at least two paths to get started.\n\nSome paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.",
-    "Display": { "Title": "Paths", "Color": "#3f7faa" },
+    "Display": {
+      "Title": "Paths",
+      "Color": "#3f7faa",
+      "$id": "Starforged/Assets/Path/Display"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -3342,7 +3459,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Ace",
         "Name": "Ace",
-        "Display": { "Title": "Ace", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Ace",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Ace/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3455,7 +3576,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Archer",
         "Name": "Archer",
-        "Display": { "Title": "Archer", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Archer",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Archer/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a power bow...",
         "Condition Meter": {
@@ -3482,7 +3607,10 @@
                 "Name": "Craft Projectiles",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Archer",
-                "Display": { "Title": "Craft Projectiles" },
+                "Display": {
+                  "Title": "Craft Projectiles",
+                  "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger",
                   "Text": "When you replenish your ammo by crafting projectiles...",
@@ -3596,7 +3724,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Armored",
         "Name": "Armored",
-        "Display": { "Title": "Armored", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Armored",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Armored/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you wear your finely crafted set of personal armor...",
         "Abilities": [
@@ -3696,7 +3828,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Artist",
         "Name": "Artist",
-        "Display": { "Title": "Artist", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Artist",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Artist/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3792,7 +3928,10 @@
                 "Name": "Commemorate",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Artist",
-                "Display": { "Title": "Commemorate" },
+                "Display": {
+                  "Title": "Commemorate",
+                  "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger",
                   "Text": "When you create or perform a significant artistic work as a public memorial or tribute...",
@@ -3832,7 +3971,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Augmented",
         "Name": "Augmented",
-        "Display": { "Title": "Augmented", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Augmented",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Augmented/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -3938,7 +4081,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Bannersworn",
         "Name": "Bannersworn",
-        "Display": { "Title": "Bannersworn", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Bannersworn",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Bannersworn/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -4098,7 +4245,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Blademaster",
         "Name": "Blademaster",
-        "Display": { "Title": "Blademaster", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Blademaster",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Blademaster/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a bladed weapon...",
         "Abilities": [
@@ -4253,7 +4404,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Bounty_Hunter",
         "Name": "Bounty Hunter",
-        "Display": { "Title": "Bounty Hunter", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Bounty Hunter",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Bounty_Hunter/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4413,7 +4568,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Brawler",
         "Name": "Brawler",
-        "Display": { "Title": "Brawler", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Brawler",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Brawler/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you fight unarmed or with a close quarters weapon...",
         "Abilities": [
@@ -4556,7 +4715,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Courier",
         "Name": "Courier",
-        "Display": { "Title": "Courier", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Courier",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Courier/Display"
+        },
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
@@ -4694,7 +4857,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Demolitionist",
         "Name": "Demolitionist",
-        "Display": { "Title": "Demolitionist", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Demolitionist",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Demolitionist/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4813,7 +4980,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Devotant",
         "Name": "Devotant",
-        "Display": { "Title": "Devotant", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Devotant",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Devotant/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -5037,7 +5208,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Diplomat",
         "Name": "Diplomat",
-        "Display": { "Title": "Diplomat", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Diplomat",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Diplomat/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5171,7 +5346,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Empath",
         "Name": "Empath",
-        "Display": { "Title": "Empath", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Empath",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Empath/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5189,7 +5368,10 @@
                 "Name": "Read Heart",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Empath",
-                "Display": { "Title": "Read Heart" },
+                "Display": {
+                  "Title": "Read Heart",
+                  "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger",
                   "Text": "When you read the intent, emotions, or memories of a nearby being...",
@@ -5290,7 +5472,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Explorer",
         "Name": "Explorer",
-        "Display": { "Title": "Explorer", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Explorer",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Explorer/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5385,7 +5571,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Fated",
         "Name": "Fated",
-        "Display": { "Title": "Fated", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Fated",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Fated/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5497,7 +5687,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Firebrand",
         "Name": "Firebrand",
-        "Display": { "Title": "Firebrand", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Firebrand",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Firebrand/Display"
+        },
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
@@ -5523,7 +5717,10 @@
                 "Name": "Gather Energy",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Firebrand",
-                "Display": { "Title": "Gather Energy" },
+                "Display": {
+                  "Title": "Gather Energy",
+                  "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger",
                   "Text": "When you rest and meditate to gather fiery energy...",
@@ -5611,7 +5808,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Fugitive",
         "Name": "Fugitive",
-        "Display": { "Title": "Fugitive", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Fugitive",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Fugitive/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5678,7 +5879,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Gearhead",
         "Name": "Gearhead",
-        "Display": { "Title": "Gearhead", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Gearhead",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Gearhead/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5809,7 +6014,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Gunner",
         "Name": "Gunner",
-        "Display": { "Title": "Gunner", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Gunner",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Gunner/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a heavy ranged personal weapon...",
         "Abilities": [
@@ -6000,7 +6209,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Gunslinger",
         "Name": "Gunslinger",
-        "Display": { "Title": "Gunslinger", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Gunslinger",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Gunslinger/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a pistol...",
         "Abilities": [
@@ -6132,7 +6345,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Haunted",
         "Name": "Haunted",
-        "Display": { "Title": "Haunted", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Haunted",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Haunted/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6238,7 +6455,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Healer",
         "Name": "Healer",
-        "Display": { "Title": "Healer", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Healer",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Healer/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6348,7 +6569,11 @@
         "$id": "Starforged/Assets/Path/Infiltrator",
         "Name": "Infiltrator",
         "Aliases": ["Agent"],
-        "Display": { "Title": "Infiltrator", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Infiltrator",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Infiltrator/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6475,7 +6700,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Kinetic",
         "Name": "Kinetic",
-        "Display": { "Title": "Kinetic", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Kinetic",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Kinetic/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6541,7 +6770,11 @@
         "$id": "Starforged/Assets/Path/Leader",
         "Name": "Leader",
         "Aliases": ["Commander"],
-        "Display": { "Title": "Leader", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Leader",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Leader/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6664,7 +6897,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Looper",
         "Name": "Looper",
-        "Display": { "Title": "Looper", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Looper",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Looper/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6705,7 +6942,10 @@
                 "Name": "Loop Back",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Looper",
-                "Display": { "Title": "Loop Back" },
+                "Display": {
+                  "Title": "Loop Back",
+                  "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger",
                   "Options": [
@@ -6773,7 +7013,11 @@
         "$id": "Starforged/Assets/Path/Lore_Hunter",
         "Name": "Lore Hunter",
         "Aliases": ["Archivist", "Lore-Hunter"],
-        "Display": { "Title": "Lore Hunter", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Lore Hunter",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Lore_Hunter/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6942,7 +7186,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Loyalist",
         "Name": "Loyalist",
-        "Display": { "Title": "Loyalist", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Loyalist",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Loyalist/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7037,7 +7285,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Mercenary",
         "Name": "Mercenary",
-        "Display": { "Title": "Mercenary", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Mercenary",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Mercenary/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7197,7 +7449,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Naturalist",
         "Name": "Naturalist",
-        "Display": { "Title": "Naturalist", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Naturalist",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Naturalist/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7366,7 +7622,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Navigator",
         "Name": "Navigator",
-        "Display": { "Title": "Navigator", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Navigator",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Navigator/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7526,7 +7786,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Outcast",
         "Name": "Outcast",
-        "Display": { "Title": "Outcast", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Outcast",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Outcast/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7584,7 +7848,10 @@
                 "Name": "Scrape By",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Outcast",
-                "Display": { "Title": "Scrape By" },
+                "Display": {
+                  "Title": "Scrape By",
+                  "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger",
                   "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...",
@@ -7648,7 +7915,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Scavenger",
         "Name": "Scavenger",
-        "Display": { "Title": "Scavenger", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Scavenger",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Scavenger/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7771,7 +8042,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Scoundrel",
         "Name": "Scoundrel",
-        "Display": { "Title": "Scoundrel", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Scoundrel",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Scoundrel/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7874,7 +8149,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Seer",
         "Name": "Seer",
-        "Display": { "Title": "Seer", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Seer",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Seer/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7992,7 +8271,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Shade",
         "Name": "Shade",
-        "Display": { "Title": "Shade", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Shade",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Shade/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8067,7 +8350,10 @@
                 "Name": "Shroud in Darkness",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Shade",
-                "Display": { "Title": "Shroud in Darkness" },
+                "Display": {
+                  "Title": "Shroud in Darkness",
+                  "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger",
                   "Text": "When you expand your veil to immerse your surroundings in darkness...",
@@ -8111,7 +8397,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Slayer",
         "Name": "Slayer",
-        "Display": { "Title": "Slayer", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Slayer",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Slayer/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8263,7 +8553,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Sleuth",
         "Name": "Sleuth",
-        "Display": { "Title": "Sleuth", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Sleuth",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Sleuth/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8358,7 +8652,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Sniper",
         "Name": "Sniper",
-        "Display": { "Title": "Sniper", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Sniper",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Sniper/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a rifle...",
         "Abilities": [
@@ -8377,7 +8675,10 @@
                 "Name": "Snipe Minor Foe",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Sniper",
-                "Display": { "Title": "Snipe Minor Foe" },
+                "Display": {
+                  "Title": "Snipe Minor Foe",
+                  "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger",
                   "Text": "When you target a minor foe from a distance (outside of a fight)...",
@@ -8507,7 +8808,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Tech",
         "Name": "Tech",
-        "Display": { "Title": "Tech", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Tech",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Tech/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8612,7 +8917,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Trader",
         "Name": "Trader",
-        "Display": { "Title": "Trader", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Trader",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Trader/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8755,7 +9064,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Vestige",
         "Name": "Vestige",
-        "Display": { "Title": "Vestige", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Vestige",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Vestige/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -8894,7 +9207,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Veteran",
         "Name": "Veteran",
-        "Display": { "Title": "Veteran", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Veteran",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Veteran/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8989,7 +9306,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Voidborn",
         "Name": "Voidborn",
-        "Display": { "Title": "Voidborn", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Voidborn",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Voidborn/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -9102,7 +9423,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Weapon_Master",
         "Name": "Weapon Master",
-        "Display": { "Title": "Weapon Master", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Weapon Master",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Weapon_Master/Display"
+        },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -9243,7 +9568,11 @@
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Crew_Commander",
         "Name": "Crew Commander",
-        "Display": { "Title": "Crew Commander", "Color": "#3f7faa" },
+        "Display": {
+          "Title": "Crew Commander",
+          "Color": "#3f7faa",
+          "$id": "Starforged/Assets/Path/Crew_Commander/Display"
+        },
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
@@ -9319,7 +9648,10 @@
                 "Name": "Bolster Crew",
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Crew_Commander",
-                "Display": { "Title": "Bolster Crew" },
+                "Display": {
+                  "Title": "Bolster Crew",
+                  "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Trigger",
                   "Text": "When you bolster your crew...",
@@ -9401,7 +9733,11 @@
     "$id": "Starforged/Assets/Companion",
     "Name": "Companion",
     "Description": "**Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.\n\nCompanions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move. When their health is at 0, they are in danger of being killed or destroyed.",
-    "Display": { "Title": "Companions", "Color": "#3d8b8a" },
+    "Display": {
+      "Title": "Companions",
+      "Color": "#3d8b8a",
+      "$id": "Starforged/Assets/Companion/Display"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -9409,7 +9745,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Banshee",
         "Name": "Banshee",
-        "Display": { "Title": "Banshee", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Banshee",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Banshee/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -9560,7 +9900,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Combat_Bot",
         "Name": "Combat Bot",
-        "Display": { "Title": "Combat Bot", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Combat Bot",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Combat_Bot/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -9722,7 +10066,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Glowcat",
         "Name": "Glowcat",
-        "Display": { "Title": "Glowcat", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Glowcat",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Glowcat/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -9860,7 +10208,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Protocol_Bot",
         "Name": "Protocol Bot",
-        "Display": { "Title": "Protocol Bot", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Protocol Bot",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Protocol_Bot/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -9975,7 +10327,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Rockhorn",
         "Name": "Rockhorn",
-        "Display": { "Title": "Rockhorn", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Rockhorn",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Rockhorn/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10090,7 +10446,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Sidekick",
         "Name": "Sidekick",
-        "Display": { "Title": "Sidekick", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Sidekick",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Sidekick/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10265,7 +10625,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Sprite",
         "Name": "Sprite",
-        "Display": { "Title": "Sprite", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Sprite",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Sprite/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10351,7 +10715,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Survey_Bot",
         "Name": "Survey Bot",
-        "Display": { "Title": "Survey Bot", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Survey Bot",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Survey_Bot/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10519,7 +10887,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Symbiote",
         "Name": "Symbiote",
-        "Display": { "Title": "Symbiote", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Symbiote",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Symbiote/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10612,7 +10984,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Utility_Bot",
         "Name": "Utility Bot",
-        "Display": { "Title": "Utility Bot", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Utility Bot",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Utility_Bot/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10752,7 +11128,11 @@
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Voidglider",
         "Name": "Voidglider",
-        "Display": { "Title": "Voidglider", "Color": "#3d8b8a" },
+        "Display": {
+          "Title": "Voidglider",
+          "Color": "#3d8b8a",
+          "$id": "Starforged/Assets/Companion/Voidglider/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -10871,7 +11251,11 @@
     "$id": "Starforged/Assets/Deed",
     "Name": "Deed",
     "Description": "**Deeds** represent the notable achievement and situations of your story, and how those events change your character.\n\nDeeds have a requirement listed at the top of the card, phrased as “Once you \\[blank\\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.",
-    "Display": { "Title": "Deeds", "Color": "#40834f" },
+    "Display": {
+      "Title": "Deeds",
+      "Color": "#40834f",
+      "$id": "Starforged/Assets/Deed/Display"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -10879,7 +11263,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Bonded",
         "Name": "Bonded",
-        "Display": { "Title": "Bonded", "Color": "#40834f" },
+        "Display": {
+          "Title": "Bonded",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Bonded/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -11061,7 +11449,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Homesteader",
         "Name": "Homesteader",
-        "Display": { "Title": "Homesteader", "Color": "#40834f" },
+        "Display": {
+          "Title": "Homesteader",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Homesteader/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -11252,7 +11644,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Marked",
         "Name": "Marked",
-        "Display": { "Title": "Marked", "Color": "#40834f" },
+        "Display": {
+          "Title": "Marked",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Marked/Display"
+        },
         "Usage": { "Shared": false },
         "Inputs": [
           {
@@ -11380,7 +11776,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Oathbreaker",
         "Name": "Oathbreaker",
-        "Display": { "Title": "Oathbreaker", "Color": "#40834f" },
+        "Display": {
+          "Title": "Oathbreaker",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Oathbreaker/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow)...",
         "Abilities": [
@@ -11500,7 +11900,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Revenant",
         "Name": "Revenant",
-        "Display": { "Title": "Revenant", "Color": "#40834f" },
+        "Display": {
+          "Title": "Revenant",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Revenant/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Face Death](Starforged/Moves/Threshold/Face_Death)...",
         "Abilities": [
@@ -11641,7 +12045,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Survivor",
         "Name": "Survivor",
-        "Display": { "Title": "Survivor", "Color": "#40834f" },
+        "Display": {
+          "Title": "Survivor",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Survivor/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "Once you mark traumatized or permanently harmed...",
         "Abilities": [
@@ -11724,7 +12132,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Vanguard",
         "Name": "Vanguard",
-        "Display": { "Title": "Vanguard", "Color": "#40834f" },
+        "Display": {
+          "Title": "Vanguard",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Vanguard/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "Once you fill 6 boxes on your discoveries legacy track...",
         "Abilities": [
@@ -11744,7 +12156,10 @@
                 "Optional": false,
                 "Asset": "Starforged/Assets/Deed/Vanguard",
                 "Progress Move": true,
-                "Display": { "Title": "Seek Safe Haven" },
+                "Display": {
+                  "Title": "Seek Safe Haven",
+                  "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Display"
+                },
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger",
                   "Text": "When you seek a safe location in a remote environment...",
@@ -11850,7 +12265,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Cohort",
         "Name": "Cohort",
-        "Display": { "Title": "Cohort", "Color": "#40834f" },
+        "Display": {
+          "Title": "Cohort",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Cohort/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) and take them on as a crewmate...",
         "Abilities": [
@@ -11937,7 +12356,11 @@
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Fleet_Commander",
         "Name": "Fleet Commander",
-        "Display": { "Title": "Fleet Commander", "Color": "#40834f" },
+        "Display": {
+          "Title": "Fleet Commander",
+          "Color": "#40834f",
+          "$id": "Starforged/Assets/Deed/Fleet_Commander/Display"
+        },
         "Usage": { "Shared": false },
         "Requirement": "Once you fill 12 legacy track boxes and take command of a mighty fleet...",
         "Condition Meter": {

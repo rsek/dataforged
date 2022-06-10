@@ -201,6 +201,11 @@
       "title": "IDisplayWithTitle",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
@@ -228,7 +233,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Title"]
+      "required": ["$id", "Title"]
     },
     "ISource": {
       "description": "Interface representing data on the game's source.",
@@ -925,6 +930,12 @@
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
           "title": "Title"
+        },
+        "$id": {
+          "description": "The item's unique string ID.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
@@ -2323,6 +2334,11 @@
       "title": "Partial<IDisplayWithTitle>",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Title": {
           "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
           "type": "string",
@@ -2871,6 +2887,11 @@
           "type": ["null", "string"],
           "title": "Embed in"
         },
+        "$id": {
+          "description": "An identifier to make the title string localizable.",
+          "type": "string",
+          "title": "$id"
+        },
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
           "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
@@ -2893,7 +2914,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Table", "Title"]
+      "required": ["$id", "Table", "Title"]
     },
     "ITableDisplayInfo": {
       "description": "Provides information on how a specific oracle table is rendered in the source text.",

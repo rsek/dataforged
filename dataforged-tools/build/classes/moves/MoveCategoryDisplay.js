@@ -4,7 +4,8 @@ import { validateColor } from "../../utils/validateColor.js";
  * @internal
  */
 export class MoveCategoryDisplay {
-    constructor(title, color) {
+    constructor(title, parentId, color) {
+        this.$id = parentId + "/Display";
         this.Title = title;
         if (color && !validateColor(color)) {
             throw badJsonError(this.constructor, color, "Not a valid color.");

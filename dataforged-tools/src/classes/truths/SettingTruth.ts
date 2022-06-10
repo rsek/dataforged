@@ -21,6 +21,7 @@ export class SettingTruth implements ISettingTruth {
     this.Name = json.Name;
     this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));
     this.Display = new DisplayWithTitle({
+      parentId: this.$id,
       Title: json.Display?.Title ?? this.Name,
       Icon: json.Display?.Icon
     });

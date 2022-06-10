@@ -642,7 +642,7 @@ export declare interface IDelveTheme extends IDelve {
  * Interface for data relevant to an item's display/rendering.
  * @public
  */
-export declare interface IDisplay {
+export declare interface IDisplay extends Partial<IHasId> {
     /**
      * A URL pointing to a single SVG icon.
      * @pattern ^\.\./\.\./img/vector/[A-z-_0-9/]+\.svg$
@@ -694,6 +694,10 @@ export declare interface IDisplayOracle extends IDisplayWithTitle {
  * @public
  */
 export declare interface IDisplayWithTitle extends IDisplay {
+    /**
+     * An identifier to make the title string localizable.
+     */
+    $id: string;
     Title: string;
 }
 
