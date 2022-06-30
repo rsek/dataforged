@@ -16,6 +16,6 @@ export interface IOracle extends IOracleBase {
   Category: IOracleCategory["$id"];
   "Member of"?: IOracle["$id"] | undefined;
   "Table"?: IRow[] | undefined;
-  Categories: never;
+  Categories?: never;
 }
 

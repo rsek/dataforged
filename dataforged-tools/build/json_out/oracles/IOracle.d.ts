@@ -2,7 +2,8 @@ import type { IDisplayOracle, IOracleBase, IOracleCategory, IRow } from "../inde
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
  *
- * The distinction between {@link IOracleCategory} and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).
+ * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ *
  * @public
  */
 export interface IOracle extends IOracleBase {
@@ -14,5 +15,6 @@ export interface IOracle extends IOracleBase {
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: IRow[] | undefined;
+    Categories?: never;
 }
 //# sourceMappingURL=IOracle.d.ts.map

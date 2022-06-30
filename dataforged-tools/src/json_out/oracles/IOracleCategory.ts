@@ -20,5 +20,5 @@ export interface IOracleCategory extends IOracleBase {
    * A list of sample names for this category (only used by Planetary Class subcategories).
    */
   "Sample Names"?: string[] | undefined;
-  Table: never;
+  Table?: never;
 }

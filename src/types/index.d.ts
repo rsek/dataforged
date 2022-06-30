@@ -1492,7 +1492,8 @@ export declare enum InputType {
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
  *
- * The distinction between {@link IOracleCategory} and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).
+ * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ *
  * @public
  */
 export declare interface IOracle extends IOracleBase {
@@ -1504,10 +1505,15 @@ export declare interface IOracle extends IOracleBase {
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: IRow[] | undefined;
+    Categories?: never;
 }
 
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
+ *
+ * If you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.
+ *
+ * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
 export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasName {
@@ -1516,10 +1522,6 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
      */
     Category?: IOracleCategory["$id"] | undefined;
-    /**
-     * Oracle objects contained by this object.
-     */
-    Oracles?: IOracle[] | undefined;
     /**
      * The ID of the most recent Oracle ancestor of this item, if any.
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
@@ -1530,12 +1532,31 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
      * Information on the usage of this oracle: recommended number of rolls, etc.
      */
     Usage?: IOracleUsage | undefined;
+    /**
+     * Represents a single oracle table, where 'table' is defined as being something with a single roll range.
+     *
+     * This key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all) {@link IOracle} objects.
+     */
+    Table?: IRow[] | undefined;
+    /**
+     * Oracle objects contained by this object.
+     *
+     * This key appears only on 'branch' nodes of the oracle hierarchy 'tree': {@link IOracleCategory}, and {@link IOracle} (when it contains multiple closely-related tables).
+     */
+    Oracles?: IOracle[] | undefined;
+    /**
+     * Subcategories contained by this oracle category.
+     *
+     * This key appears only on {@link IOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.
+     */
+    Categories?: IOracleCategory[] | undefined;
 }
 
 /**
- * Represents an oracle category: a grouping that can contain both Oracles and other Oracle categories, but doesn't have its own `Table` key.
+ * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.
  *
- * The distinction between this and {@link IOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).
+ * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ *
  * @public
  */
 export declare interface IOracleCategory extends IOracleBase {
@@ -1548,13 +1569,10 @@ export declare interface IOracleCategory extends IOracleBase {
      */
     Category?: IOracleCategory["$id"] | undefined;
     /**
-     * Subcategories contained by this oracle category.
-     */
-    Categories?: IOracleCategory[] | undefined;
-    /**
      * A list of sample names for this category (only used by Planetary Class subcategories).
      */
     "Sample Names"?: string[] | undefined;
+    Table?: never;
 }
 
 /**
