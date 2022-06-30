@@ -35,7 +35,11 @@ _.forEach(data, (value, key) => {
       default:
         throw new Error(`Unknown key in game data root object: ${key}`);
     }
-    JSON_PATHS.forEach(path => writeJson(path + `/ironsworn/${fileName}.json`, value));
+    JSON_PATHS.forEach(path => {
+      const newPath = path + `/ironsworn/${fileName}.json`;
+      console.log(`[StartIronsworn] Writing json to ${newPath}`);
+      writeJson(newPath, value);
+    });
   }
 });
 

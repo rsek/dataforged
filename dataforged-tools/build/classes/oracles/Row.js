@@ -85,9 +85,11 @@ export class Row {
                                     throw new Error("Row ID is null, but it has a Subtable.");
                                 }
                                 if (Array.isArray(value) && Array.isArray(value[0])) {
+                                    console.log("Subtable found, building...");
                                     this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else if (Array.isArray(value) && typeof value[0] === "object") {
+                                    console.log("Prebuilt subtable found, generating IDs...");
                                     this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else {

@@ -18,12 +18,12 @@
     "build": "yarn compile && yarn schema",
     "compile": "yarn flush && npx ttsc --project ./tsconfig.json",
     "schema": "yarn dts && node ./build/utils/writeSchema.js",
+    "render-json": "yarn render-json-sf && yarn render-json-is",
     "flush": "rm -R ./build && mkdir ./build",
     "flush-image": "rm -R ./img && mkdir ./img",
     "dts": "api-extractor run -c ./api-extractor.json && cp ../src/types/index.d.ts ../dist/types/index.d.ts",
     "render-json-sf": "node ./build/start-starforged.js --enable-source-maps",
     "render-json-is": "node ./build/start-ironsworn.js --enable-source-maps",
-    "render-json": "yarn render-json-sf && yarn render-json-is",
     "render-md-sf": "node ./build/start-md.js",
     "docs": "rm -R ../docs && mkdir ../docs && npx typedoc"
   },

@@ -37,7 +37,11 @@ _.forEach(data, (value, key) => {
       default:
         throw new Error(`Unknown key in game data root object: ${key}`);
     }
-    JSON_PATHS.forEach(path => writeJson(path + `/starforged/${fileName}.json`, value));
+    JSON_PATHS.forEach(path => {
+      const newPath = path + `/starforged/${fileName}.json`;
+      console.log(`[StartStarforged] Writing json to ${newPath}`);
+      writeJson(newPath, value);
+    });
   }
 });
 

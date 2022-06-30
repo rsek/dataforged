@@ -1505,7 +1505,7 @@ export declare interface IOracle extends IOracleBase {
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: IRow[] | undefined;
-    Categories?: never;
+
 }
 
 /**
@@ -1572,7 +1572,7 @@ export declare interface IOracleCategory extends IOracleBase {
      * A list of sample names for this category (only used by Planetary Class subcategories).
      */
     "Sample Names"?: string[] | undefined;
-    Table?: never;
+
 }
 
 /**
@@ -1798,7 +1798,7 @@ export declare interface ISettingTruthOption extends IRow, IHasQuestStarter, IHa
      */
     $id: string;
     "Roll template"?: IRollTemplate | undefined;
-    Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
+    Subtable?: IRow[] | undefined;
 }
 
 /**

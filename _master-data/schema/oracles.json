@@ -84,6 +84,11 @@
           "items": { "type": "string" },
           "title": "Sample Names"
         },
+        "Table": {
+          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
+          "type": "undefined",
+          "title": "Table"
+        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
@@ -15549,6 +15554,11 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
+        "Categories": {
+          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
+          "type": "undefined",
+          "title": "Categories"
+        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "type": "string",
@@ -16088,6 +16098,11 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
+        "Categories": {
+          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
+          "type": "undefined",
+          "title": "Categories"
+        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "type": "string",
@@ -16365,6 +16380,11 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Sample Names"
+        },
+        "Table": {
+          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
+          "type": "undefined",
+          "title": "Table"
         },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
