@@ -23,7 +23,7 @@ const { starforged } = require('dataforged')
 ```
 
 ### Other Languages
-Packages for other languages and packages are a work in progress. For now, you can use the contents of [dist/starforged]. `dataforged.json` contains all game data in a single object; `schema.json` describes its JSON schema.
+Packages for other languages and packages are a work in progress. For now, you can use the contents of [dist/starforged](dist/starforged). `dataforged.json` contains all game data in a single object; `schema.json` describes its JSON schema.
 
 
 ## Current Content Version/Sources
