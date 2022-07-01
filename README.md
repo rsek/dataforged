@@ -4,21 +4,27 @@ Official *Ironsworn: Starforged* rules data in JSON, for use in community tools.
 
 ## Usage
 
-Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the [documentation site](https://rsek.github.io/dataforged/).
+### Javascript/Typescript
+
+Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the [API documentation site](https://rsek.github.io/dataforged/).
 
 If you just want the data as-is, import the `starforged` object to use the pre-loaded, typed JSON.
 
-### ESM
+#### ESM
 
 ```javascript
 import { starforged } from 'dataforged'
 ```
 
-### CommonJS
+#### CommonJS
 
 ```javascript
 const { starforged } = require('dataforged')
 ```
+
+### Other Languages
+Packages for other languages and packages are a work in progress. For now, you can use the contents of [dist/starforged]. `dataforged.json` contains all game data in a single object; `schema.json` describes its JSON schema.
+
 
 ## Current Content Version/Sources
 
