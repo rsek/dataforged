@@ -21,12 +21,12 @@
 
 ## Projects that use Dataforged
 
-* [Stargazer](https://nboughton.uk/apps/stargazer/), the official PWA for playing *Starforged* solo
-* The official [Roll20 sheet for *Starforged*](https://github.com/aureyia/roll20-character-sheets)
-* The [*Ironsworn*/*Starforged* sheet for Foundry VTT](https://github.com/ben/foundry-ironsworn)
-* [TheOracle](https://github.com/XenotropicDev/TheOracle), a general-purpose discord bot for playing *Ironsworn*/*Starforged*
-* [Starforged-Sectors](https://github.com/Ferretsroq/Starforged-Sectors), a discord bot for generating *Starforged* sectors
-* [*Ironsworn*/*Starforged* templates for Obsidian](https://github.com/grimborg/obsidian-ironsworn)
+* [Stargazer](https://nboughton.uk/apps/stargazer/), the official PWA for playing *Ironsworn: Starforged* solo
+* The official [Roll20 sheet for *Ironsworn: Starforged*](https://github.com/aureyia/roll20-character-sheets)
+* The [*Ironsworn* and *Ironsworn: Starforged* sheet for Foundry VTT](https://github.com/ben/foundry-ironsworn)
+* [TheOracle](https://github.com/XenotropicDev/TheOracle), a general-purpose discord bot for playing *Ironsworn* and *Ironsworn: Starforged*
+* [Starforged-Sectors](https://github.com/Ferretsroq/Starforged-Sectors), a discord bot for generating *Ironsworn: Starforged* sectors
+* [*Ironsworn* and *Ironsworn: Starforged* templates for Obsidian](https://github.com/grimborg/obsidian-ironsworn)
 * ...and maybe yours? Tell us about it in the [*Ironsworn* discord](https://discordapp.com/invite/6QMvmJb)!
 
 
