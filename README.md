@@ -1,7 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#dataforged-v-pkgversion-)
-
-# Dataforged v1.2.3
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">Dataforged v1.2.3</h1>
 <!-- TODO: add logo template -->
 
 <p align="center">
@@ -86,7 +83,7 @@ Packages for other languages/package managers are a work in progress. For now, y
 
 ## Licensing
 
-Items in this package (and its GitHub source) various fall under the CC BY 4.0, CC BY-NC 4.0, or MIT licenses. See [LICENSE.md](LICENSE.md) for details.
+Items in this package (and its GitHub source) various fall under the CC BY 4.0, CC BY-NC 4.0, or MIT licenses. See [LICENSE.md] for details.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#contributors)

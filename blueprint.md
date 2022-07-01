@@ -1,4 +1,4 @@
-# Dataforged v{{ pkg.version }}
+<h1 align="center">Dataforged v{{ pkg.version }}</h1>
 <!-- TODO: add logo template -->
 
 {{ template:badges }}

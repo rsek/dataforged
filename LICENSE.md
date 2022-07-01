@@ -4,7 +4,7 @@
 
 ## Data (`*.md`, `*.json`, `*.yaml`): CC BY 4.0
 
-The textual content described by the Markdown, JSON, and YAML files in this repo is originally from *Ironsworn: Starforged*, and used under the used under the [Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/).
+The textual content described by the Markdown, JSON, and YAML files in this repo is originally from the *Ironsworn: Starforged Reference Guide*, and used under the used under the [Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/).
 
 ## Vector icons (`*.svg`): CC BY 4.0
 
