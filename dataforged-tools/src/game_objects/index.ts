@@ -1,3 +1,4 @@
+//License: MIT
 export * from "@game_objects/enum/index.js";
 
 export * from "@game_objects/GameObjectRecord.js";

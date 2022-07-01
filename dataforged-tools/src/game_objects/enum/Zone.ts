@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export enum Zone {
   Access = "Access",
   Community = "Community",

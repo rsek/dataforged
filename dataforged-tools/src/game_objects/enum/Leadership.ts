@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Leadership
- * @alpha
- */
+//License: MIT
 enum Leadership {
   Anarchist = "Anarchist",
   DisputedLeadership = "Disputed leadership",

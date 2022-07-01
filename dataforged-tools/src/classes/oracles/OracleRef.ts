@@ -1,3 +1,4 @@
+//License: MIT
 import type { Oracle } from "@classes/index.js";
 
 /**

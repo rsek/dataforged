@@ -1,3 +1,4 @@
+//License: MIT
 import type { HasName } from "@utils/logging/HasName.js";
 import type { HasString } from "@utils/logging/HasString.js";
 import type { EnumLike } from "@utils/types/EnumLike.js";

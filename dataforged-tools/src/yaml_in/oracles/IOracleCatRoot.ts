@@ -1,3 +1,4 @@
+//License: MIT
 import type { IOracleCategoryYaml, IYamlWithRef } from "@yaml_in/index.js";
 
 /**

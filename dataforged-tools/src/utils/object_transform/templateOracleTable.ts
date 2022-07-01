@@ -1,4 +1,14 @@
 
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import { extractRowContent } from "@utils/object_transform/extractRowContent.js";
 import { extractRowRolls } from "@utils/object_transform/extractRowRolls.js";
 import type { IRowYaml, ITemplateTable } from "@yaml_in/index.js";

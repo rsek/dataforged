@@ -3,6 +3,16 @@
  * Set by "Oracles / Planets / Class"
  * @public
  */
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 export enum PlanetaryClass {
   Desert = "Desert",
   Furnace = "Furnace",

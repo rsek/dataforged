@@ -1,7 +1,4 @@
-/**
- * Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.
- * @public
- */
+//License: MIT
 export enum MeterCondition {
   /**
    * Battered may be marked when your vehicle is at 0 integrity and you fail to Withstand Damage. The vehicle is barely holding together.

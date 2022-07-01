@@ -1,3 +1,4 @@
+//License: MIT
 import type { IHasId, IHasText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "@json_out/index.js";
 
 /**

@@ -1,3 +1,4 @@
+//License: MIT
 import type { GameObjectType, IGameObjectRecordBase } from "@game_objects/index.js";
 import type { AttributeKey } from "@json_out/index.js";
 

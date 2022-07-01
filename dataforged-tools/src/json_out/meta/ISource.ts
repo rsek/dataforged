@@ -1,7 +1,4 @@
-/**
- * Enumerates valid sourcebook titles.
- * @public
- */
+//License: MIT
 export enum SourceTitle {
   Starforged = "Ironsworn: Starforged Rulebook",
   StarforgedAssets = "Ironsworn: Starforged Assets",

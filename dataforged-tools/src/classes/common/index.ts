@@ -1,3 +1,4 @@
+//License: MIT
 export * from "@classes/common/AttributeRequirements.js";
 export * from "@classes/common/ConditionMeter.js";
 export * from "@classes/common/CustomStatOption.js";

@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / ** / Location
- * @alpha
- */
+//License: MIT
 export enum Location {
   Planetside = "Planetside",
   Orbital = "Orbital",

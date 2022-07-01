@@ -1,3 +1,4 @@
+//License: MIT
 import type { IDisplayWithTitle } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { validateColor } from "@utils/validateColor.js";

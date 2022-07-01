@@ -1,3 +1,4 @@
+//License: MIT
 import type { IAsset, IEncounterStarforged , IGameObject, IMove , IOracle } from "@json_out/index.js";
 
 /**

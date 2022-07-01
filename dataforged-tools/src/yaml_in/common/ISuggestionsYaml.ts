@@ -1,3 +1,4 @@
+//License: MIT
 import type { GameObjectRecord } from "@game_objects/index.js";
 import type { ISuggestions } from "@json_out/index.js";
 

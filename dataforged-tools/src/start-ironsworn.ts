@@ -1,3 +1,4 @@
+//License: MIT
 import "source-map-support/register.js";
 import { JSON_PATHS } from "@constants/index.js";
 import { Gamespace } from "@json_out/index.js";

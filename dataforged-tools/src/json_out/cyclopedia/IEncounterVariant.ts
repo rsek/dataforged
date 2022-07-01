@@ -1,3 +1,4 @@
+//License: MIT
 import type { IEncounterStarforged } from "@json_out/index.js";
 import type { StubBy } from "@utils/types/Stub.js";
 

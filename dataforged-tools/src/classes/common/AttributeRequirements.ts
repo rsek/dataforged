@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import _ from "lodash-es";
+//License: MIT
 import type { AttributeKey, AttributeValue, IAttributeChoices } from "@json_out/index.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
+import _ from "lodash-es";
 
 
 /**

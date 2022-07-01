@@ -1,3 +1,4 @@
+//License: MIT
 import type { IConditionMeter , ICustomStat , PlayerConditionMeter, Stat } from "@json_out/index.js";
 
 /**

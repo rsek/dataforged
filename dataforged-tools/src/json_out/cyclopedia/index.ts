@@ -1,7 +1,4 @@
-/**
- * Types describing "cyclopedia"-style entries, such as Regions (in *Ironsworn*) and Encounters.
- * @module Json.Cyclopedia
- */
+//License: MIT
 
 export * from "@json_out/cyclopedia/EncounterNature.js";
 export * from "@json_out/cyclopedia/EncounterTags.js";

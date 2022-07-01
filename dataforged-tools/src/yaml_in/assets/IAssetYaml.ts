@@ -1,4 +1,14 @@
 
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage , IConditionMeter, IDisplay , IInput , IInputClock, IInputNumber, IInputSelect, IInputSelectOption , IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "@json_out/index.js";
 import type { PartialDeep } from "@utils/index.js";
 import type { StubBy , StubExcept } from "@utils/types/Stub.js";

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IHasName } from "@json_out/index.js";
 
 /**

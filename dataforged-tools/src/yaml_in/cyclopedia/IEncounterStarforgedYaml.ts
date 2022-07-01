@@ -1,3 +1,4 @@
+//License: MIT
 import type { IEncounterStarforged } from "@json_out/index.js";
 import type { IEncounterVariantYaml, YamlStub } from "@yaml_in/index.js";
 

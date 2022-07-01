@@ -1,7 +1,4 @@
-/**
- * Standard replacement strings, used by constructors when processing the master YAML data.
- * @public
- */
+//License: MIT
 export enum Replacement {
   /**
    * Replace with the ID of the nearest ancestor asset.

@@ -1,6 +1,4 @@
-/**
- * @module Json
- */
+//License: MIT
 
 export * from "@json_out/meta/index.js";
 export * from "@json_out/common/index.js";

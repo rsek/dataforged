@@ -1,7 +1,4 @@
-/**
- * The stat(s) or progress track(s) that may be rolled with the parent move trigger option.
- * @public
- */
+//License: MIT
 export enum RollMethod {
   /**
    * When rolling with this move trigger option, *every* stat or progress track of the `Using` key is rolled.

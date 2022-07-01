@@ -1,4 +1,14 @@
 
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import type { ISource , SourceTitle } from "@json_out/index.js";
 import _ from "lodash-es";
 

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IHasDescription, IHasName, IHasSource, IHasSummary , IRow } from "@json_out/index.js";
 /**
  * @public

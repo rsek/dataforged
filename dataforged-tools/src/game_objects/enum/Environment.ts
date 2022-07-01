@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Creatures / Environment
- * @alpha
- */
+//License: MIT
 export enum Environment {
   Space = "Space",
   Interior = "Interior",

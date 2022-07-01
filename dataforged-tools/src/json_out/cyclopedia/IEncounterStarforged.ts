@@ -1,3 +1,4 @@
+//License: MIT
 import type { EncounterNatureStarforged , IEncounter , IEncounterVariant } from "@json_out/index.js";
 
 /**

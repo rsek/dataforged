@@ -1,7 +1,4 @@
-/**
- * NYI.
- * @alpha
- */
+//License: MIT
 enum Biome {
 }
 // TODO

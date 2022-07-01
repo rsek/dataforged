@@ -1,3 +1,4 @@
+//License: MIT
 import { DisplayWithTitle , EncounterIronsworn , Source } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { EncounterNatureIronsworn , IDisplayWithTitle  , IEncounterNatureInfo , ISource } from "@json_out/index.js";

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IAsset , IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasOptional, IHasSource, IHasSuggestions , IHasText, IMoveCategory , IMoveOutcomes  , IMoveTrigger , IOracle } from "@json_out/index.js";
 
 /**

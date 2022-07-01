@@ -1,3 +1,4 @@
+//License: MIT
 import type { EnumLike } from "@utils/types/EnumLike.js";
 
 /**

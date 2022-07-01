@@ -1,8 +1,4 @@
-// import type { OracleCategory } from "@classes/index.js";
-// import type { IOracleCategory } from "@json_out/index.js";
-// import { buildLog } from "@utils/logging/buildLog.js";
-// import { renderOracle } from "@utils/md/renderOracle.js";
-// import _ from "lodash-es";
+//License: MIT
 
 // /**
 //  * It takes an OracleCategory and returns a markdown string

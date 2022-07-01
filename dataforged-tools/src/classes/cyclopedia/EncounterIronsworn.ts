@@ -1,3 +1,4 @@
+//License: MIT
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import { Source } from "@classes/common/Source.js";
 import { Encounter } from "@classes/cyclopedia/Encounter.js";

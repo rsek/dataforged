@@ -1,6 +1,4 @@
-/**
- * @alpha
- */
+//License: MIT
 export enum SettlementInitialContact {
   AskingForHelp = "Asking for help",
   Captured = "Captured",

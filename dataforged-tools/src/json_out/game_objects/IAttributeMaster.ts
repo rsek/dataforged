@@ -1,3 +1,4 @@
+//License: MIT
 import type { Authority } from "@game_objects/enum/Authority.js";
 import type { Atmosphere, Behavior, CreatureScale, DerelictType, Disposition, Dominion, Environment, FactionType, FringeGroup, Guild, Influence, Leadership, Life, Location, LocationTheme, PlanetaryClass, Population, Region, Role, SettlementInitialContact, StarshipInitialContact, Zone } from "@game_objects/index.js";
 import type { AttributeKey } from "@json_out/index.js";

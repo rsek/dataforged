@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Characters / Disposition
- * @alpha
- */
+//License: MIT
 
 enum Disposition {
   Cooperative = "Cooperative",

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IMoveReroll , IOutcomeInfo } from "@json_out/index.js";
 import type { IOutcomeInfoYaml } from "@yaml_in/index.js";
 

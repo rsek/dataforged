@@ -1,6 +1,15 @@
 
-import type { IInputSelectOption } from "@json_out/index.js";
-import type { IInput, InputType } from "@json_out/index.js";
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+import type { IInput , IInputSelectOption, InputType } from "@json_out/index.js";
 /**
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.

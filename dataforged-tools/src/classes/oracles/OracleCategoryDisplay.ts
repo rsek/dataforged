@@ -1,3 +1,4 @@
+//License: MIT
 import type { IDisplayWithTitle, ImageUrl, Raster, Vector } from "@json_out/index.js";
 
 /**

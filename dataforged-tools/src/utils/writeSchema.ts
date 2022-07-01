@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+//License: MIT
 import { writeJson } from "@utils/io/writeJSON.js";
 import * as TJS from "typescript-json-schema";
 import { resolve } from "path";

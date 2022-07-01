@@ -1,3 +1,4 @@
+//License: MIT
 import { TableDisplayInfo } from "@classes/index.js";
 import type { IDisplayOracle as IDisplayOracle, IOracle, ITableDisplayInfo } from "@json_out/index.js";
 

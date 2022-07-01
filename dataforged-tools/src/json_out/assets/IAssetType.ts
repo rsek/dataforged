@@ -1,3 +1,4 @@
+//License: MIT
 import type { IAssetUsage } from "@json_out/assets/IAssetUsage.js";
 import type {  IAsset , IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName , IHasSource } from "@json_out/index.js";
 

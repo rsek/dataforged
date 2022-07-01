@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Settlements / Population
- * @alpha
- */
+//License: MIT
 export enum Population {
   Few="Few",
   Dozens="Dozens",

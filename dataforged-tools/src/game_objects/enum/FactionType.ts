@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Type
- * @alpha
- */
+//License: MIT
 enum FactionType {
   FringeGroup = "Fringe Group",
   Dominion = "Dominion",

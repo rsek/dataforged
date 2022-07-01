@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Creatures / Scale/**
- * @alpha
- */
+//License: MIT
 export enum CreatureScale {
   Minuscule = "Minuscule",
   Tiny = "Tiny",

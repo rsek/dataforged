@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Influence
- * @alpha
- */
+//License: MIT
 enum Influence {
   Forsaken = "Forsaken",
   Isolated = "Isolated",

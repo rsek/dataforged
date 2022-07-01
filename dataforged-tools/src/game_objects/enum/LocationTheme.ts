@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Location Themes / Theme Type
- * @public
- */
+//License: MIT
 export enum LocationTheme {
   Chaotic = "Chaotic",
   Fortified = "Fortified",

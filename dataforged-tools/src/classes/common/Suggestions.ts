@@ -1,3 +1,4 @@
+//License: MIT
 import { GameObject } from "@classes/index.js";
 import type { IAsset , IEncounterStarforged , IMove, IOracle, ISuggestions } from "@json_out/index.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";

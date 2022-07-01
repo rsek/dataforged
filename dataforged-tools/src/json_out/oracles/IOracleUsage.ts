@@ -1,3 +1,4 @@
+//License: MIT
 import type { IAttributeChoices, IHasRequirements , IHasRollTemplate, IHasSuggestions , IRequirements , ISuggestions } from "@json_out/index.js";
 
 /**

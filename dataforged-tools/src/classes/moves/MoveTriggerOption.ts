@@ -1,3 +1,4 @@
+//License: MIT
 import { CustomStat } from "@classes/moves/CustomStat.js";
 import type { ICustomStat, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionBase, IMoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat } from "@json_out/index.js";
 import { Replacement , RollMethod , RollType } from "@json_out/index.js";

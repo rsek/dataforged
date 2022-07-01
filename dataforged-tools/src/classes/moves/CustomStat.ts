@@ -1,3 +1,4 @@
+//License: MIT
 import { CustomStatOption } from "@classes/index.js";
 import type { ICustomStat } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";

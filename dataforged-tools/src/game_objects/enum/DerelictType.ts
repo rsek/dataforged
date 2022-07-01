@@ -1,7 +1,4 @@
-/**
- * Set by oracle: Oracles / Derelicts / Type
- * @alpha
- */
+//License: MIT
 enum DerelictType {
   Starship = "Starship",
   Settlement = "Settlement"

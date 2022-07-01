@@ -1,3 +1,4 @@
+//License: MIT
 import type { IOracleYaml, ITemplateYamlBase } from "@yaml_in/index.js";
 
 

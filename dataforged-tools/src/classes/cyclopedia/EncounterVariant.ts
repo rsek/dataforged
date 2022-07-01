@@ -1,3 +1,4 @@
+//License: MIT
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import { Source } from "@classes/index.js";
 import type { EncounterStarforged  } from "@classes/index.js";

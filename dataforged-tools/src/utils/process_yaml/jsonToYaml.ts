@@ -1,4 +1,4 @@
-// import yaml from "js-yaml";
+//License: MIT
 import fs from "fs-extra";
 import yaml from "yaml";
 

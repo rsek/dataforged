@@ -1,3 +1,4 @@
+//License: MIT
 export * from "@yaml_in/oracles/IOracleCategoryYaml.js";
 export * from "@yaml_in/oracles/IOracleCatRoot.js";
 export * from "@yaml_in/oracles/IOracleParentCategoryData.js";

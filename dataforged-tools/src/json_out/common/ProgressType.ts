@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export enum ProgressTypeStarforged {
     Combat = "Combat",
     Vow = "Vow",

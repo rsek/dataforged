@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export enum EncounterNatureStarforged {
   Creature = "Creature",
   Horror = "Horror",

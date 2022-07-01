@@ -1,3 +1,4 @@
+//License: MIT
 import type { EncounterNatureIronsworn , IEncounter } from "@json_out/index.js";
 
 /**

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IDelveDomain, IDelveTheme , ISource } from "@json_out/index.js";
 import type { IAssetTypeYaml , IEncounterStarforgedYaml , IIronswornRegionYaml , IMoveCategoryYaml , IOracleCategoryYaml, ISettingTruthYaml } from "@yaml_in/index.js";
 

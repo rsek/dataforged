@@ -1,3 +1,4 @@
+//License: MIT
 import { Requirements } from "@classes/index.js";
 import type { GameObjectType } from "@game_objects/enum/GameObjectType.js";
 import type { GameObjectRecord } from "@game_objects/index.js";

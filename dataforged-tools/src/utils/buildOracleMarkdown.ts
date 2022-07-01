@@ -1,9 +1,4 @@
-// import type { OracleCategory } from "@classes/index.js";
-// import type { IOracleCategory } from "@json_out/index.js";
-// import { renderOracleCategory } from "@utils/md/renderOracleCategory.js";
-// import { transformMoveLinks, transformOracleLinks } from "@utils/md/transformHyperlink.js";
-// import _ from "lodash-es";
-// import { writeFileSync } from "fs";
+//License: MIT
 
 // /**
 //  * It takes a list of oracle categories and writes them to markdown files.

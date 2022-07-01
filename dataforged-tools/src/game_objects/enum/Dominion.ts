@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Dominion
- * @alpha
- */
+//License: MIT
 enum Dominion {
   Agriculture = "Agriculture",
   Artistry = "Artistry",

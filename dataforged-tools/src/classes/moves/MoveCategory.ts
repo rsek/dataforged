@@ -1,3 +1,4 @@
+//License: MIT
 import { Move , Source } from "@classes/index.js";
 import { MoveCategoryDisplay } from "@classes/moves/MoveCategoryDisplay.js";
 import type { Gamespace , IMoveCategory, ISource } from "@json_out/index.js";

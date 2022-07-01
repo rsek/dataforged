@@ -1,3 +1,4 @@
+//License: MIT
 import type { IAsset } from "@json_out/index.js";
 import type { PartialDeep } from "@utils/index.js";
 

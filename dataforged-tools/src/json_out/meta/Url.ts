@@ -3,6 +3,16 @@
  * @internal
  * @asType string
  */
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 export type Url = `${Protocol}://${string}`;
 /**
  * @internal

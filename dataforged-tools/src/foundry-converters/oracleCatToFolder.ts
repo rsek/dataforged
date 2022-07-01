@@ -1,3 +1,4 @@
+//License: MIT
 import type { IOracleCategory } from "@json_out/index.js";
 import FolderData from "@league-of-foundry-developers/foundry-vtt-types";
 import type { FolderDataConstructorData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/folderData";

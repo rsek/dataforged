@@ -1,3 +1,4 @@
+//License: MIT
 import type { IHasText } from "@json_out/index.js";
 
 

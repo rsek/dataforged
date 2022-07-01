@@ -1,3 +1,4 @@
+//License: MIT
 import { EncounterNatureInfo } from "@classes/cyclopedia/EncounterNatureInfo.js";
 import { EncounterStarforged } from "@classes/index.js";
 import { MASTER_DATA_PATH } from "@constants/index.js";

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IHasDescription, IHasQuestStarter , IRollTemplate , IRow } from "@json_out/index.js";
 
 /**

@@ -1,3 +1,4 @@
+//License: MIT
 import type { IOracle, IRollColumn , ITextColumn } from "@json_out/index.js";
 
 /**

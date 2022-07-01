@@ -1,3 +1,4 @@
+//License: MIT
 import type { PartialDeep } from "@utils/index.js";
 
 /**

@@ -1,7 +1,4 @@
-/**
- * See clocks (p. 234) for more information.
- * @public
- */
+//License: MIT
 export enum ClockType {
   Tension = "Tension",
   Campaign = "Campaign"

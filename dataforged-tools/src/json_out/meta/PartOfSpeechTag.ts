@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export enum PartOfSpeechTag {
     Noun = "noun",
     CommonNoun = "common noun",

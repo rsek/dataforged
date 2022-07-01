@@ -1,8 +1,4 @@
-/**
- * Set by Oracles / Settlements / Authority
- *
- * @alpha
- */
+//License: MIT
 export enum Authority {
   NoneLawless = "None / lawless",
   Ineffectual = "Ineffectual",

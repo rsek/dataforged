@@ -1,3 +1,4 @@
+//License: MIT
 import type { IDisplayOracle, IDisplayWithTitle, IOracle , IOracleCategory, IRow } from "@json_out/index.js";
 import type { IRequirementsYaml } from "@yaml_in/common/IRequirementsYaml.js";
 import type { ITableDisplayInfoYaml, YamlStub } from "@yaml_in/index.js";

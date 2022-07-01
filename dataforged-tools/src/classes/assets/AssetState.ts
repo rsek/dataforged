@@ -1,3 +1,4 @@
+//License: MIT
 import type { IAssetState } from "@json_out/index.js";
 import type { IAssetStateYaml } from "@yaml_in/index.js";
 

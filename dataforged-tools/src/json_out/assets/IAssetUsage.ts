@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export interface IAssetUsage {
   /**
    * Whether the asset's abilities are shared with Allies.

@@ -1,6 +1,5 @@
-import type { Replacement } from "@json_out/index.js";
-import type { ICustomStatOption, IHasName } from "@json_out/index.js";
-import type { IHasId } from "@json_out/index.js";
+//License: MIT
+import type { ICustomStatOption , IHasId, IHasName , Replacement } from "@json_out/index.js";
 
 /**
  * @public

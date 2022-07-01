@@ -1,3 +1,4 @@
+//License: MIT
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 

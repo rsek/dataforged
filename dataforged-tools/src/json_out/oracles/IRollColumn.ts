@@ -1,3 +1,4 @@
+//License: MIT
 import type { ITableColumnBase } from "@json_out/index.js";
 
 /**

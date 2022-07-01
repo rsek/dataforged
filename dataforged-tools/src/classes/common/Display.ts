@@ -1,3 +1,4 @@
+//License: MIT
 import type { IDisplay, IDisplayWithTitle } from "@json_out/index.js";
 /**
  * @internal

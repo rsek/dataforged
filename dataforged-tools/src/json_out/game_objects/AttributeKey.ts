@@ -1,3 +1,4 @@
+//License: MIT
 import { StarshipInitialContact } from "@game_objects/index.js";
 
 /**

@@ -1,6 +1,4 @@
-// import type { IOracle } from "@json_out/index.js";
-// import { badJsonError } from "@utils/logging/badJsonError.js";
-// import { getTableByOracleId } from "@utils/md/getTableByOracleId.js";
+//License: MIT
 
 // /**
 //  * Extracts table contents from an oracle and returns it as a 2D array.

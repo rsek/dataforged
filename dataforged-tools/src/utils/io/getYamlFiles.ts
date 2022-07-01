@@ -1,3 +1,4 @@
+//License: MIT
 import fs from "fs";
 
 /**

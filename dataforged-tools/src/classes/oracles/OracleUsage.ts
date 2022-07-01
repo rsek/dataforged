@@ -1,3 +1,4 @@
+//License: MIT
 import { Requirements , Suggestions } from "@classes/index.js";
 import type { IAttributeChoices, IOracleUsage } from "@json_out/index.js";
 import type { IOracleUsageYaml } from "@yaml_in/oracles/IOracleUsageYaml.js";

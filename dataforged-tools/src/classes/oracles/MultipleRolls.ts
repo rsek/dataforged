@@ -1,3 +1,4 @@
+//License: MIT
 import type { IMultipleRolls } from "@json_out/index.js";
 
 

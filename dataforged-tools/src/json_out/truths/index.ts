@@ -1,5 +1,3 @@
-/**
- * @module Json.SettingTruths
- */
+//License: MIT
 export * from "@json_out/truths/ISettingTruth.js";
 export * from "@json_out/truths/ISettingTruthOption.js";

@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export enum GameObjectType {
   Derelict = "Derelict",
   DerelictZone = "Derelict Zone",

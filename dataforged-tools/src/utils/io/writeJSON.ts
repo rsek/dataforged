@@ -1,5 +1,15 @@
 
 
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import prettier from "prettier";
 import fs from "fs";
 

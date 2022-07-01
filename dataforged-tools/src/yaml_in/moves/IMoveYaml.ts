@@ -1,3 +1,4 @@
+//License: MIT
 import type { ICustomStat, ICustomStatOption, IDisplay, IMove, IMoveCategory, IMoveOutcomes, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeInfo, ISource, MoveOutcome } from "@json_out/index.js";
 import type { YamlStub } from "@yaml_in/index.js";
 /**

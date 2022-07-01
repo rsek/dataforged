@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Planets / * / Atmosphere
- * @alpha
- */
+//License: MIT
 enum Atmosphere {
   NoneThin = "None / Thin",
   Toxic = "Toxic",

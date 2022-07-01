@@ -1,3 +1,4 @@
+//License: MIT
 import type { AttributeKey, AttributeValue, IAttribute } from "@json_out/index.js";
 /**
  * @public

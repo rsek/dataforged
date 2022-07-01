@@ -1,5 +1,5 @@
-import type { AttributeKey } from "@json_out/index.js";
-import type { IAttributeMaster } from "@json_out/index.js";
+//License: MIT
+import type { AttributeKey , IAttributeMaster } from "@json_out/index.js";
 /**
  * @alpha
  */

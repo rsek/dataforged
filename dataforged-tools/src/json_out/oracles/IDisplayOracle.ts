@@ -1,3 +1,4 @@
+//License: MIT
 import type { IDisplayWithTitle, IOracle , IRow, ITableDisplayInfo } from "@json_out/index.js";
 
 /**

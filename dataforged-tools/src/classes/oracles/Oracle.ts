@@ -1,4 +1,14 @@
 
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import { DisplayOracle , OracleContent , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
 import type { AttributeKey , Gamespace, IAttribute, IAttributeChoices, IDisplayOracle, IOracle, IOracleCategory } from "@json_out/index.js";
 

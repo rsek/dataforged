@@ -1,3 +1,4 @@
+//License: MIT
 import type { IMeterBase } from "@json_out/index.js";
 import type { YamlStub } from "@yaml_in/index.js";
 

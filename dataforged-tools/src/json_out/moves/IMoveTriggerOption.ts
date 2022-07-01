@@ -1,3 +1,4 @@
+//License: MIT
 import type { ProgressTypeIronsworn } from "@json_out/common/ProgressType.js";
 import type { ICustomStat , IHasId , IHasText , ProgressTypeStarforged, RollableStat , RollMethod, RollType } from "@json_out/index.js";
 
