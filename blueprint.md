@@ -50,7 +50,7 @@ Packages for other languages/package managers are a work in progress. For now, y
 
 ## Current Content Version/Sources
 
-* ***Ironsworn: Starforged Rulebook* - 050622**
+* ***Ironsworn: Starforged Reference Guide* - 050622**
   * moves
   * oracles
   * setting truths
@@ -60,7 +60,7 @@ Packages for other languages/package managers are a work in progress. For now, y
 
 ## Licensing
 
-Items in this package (and its GitHub source) various fall under the CC BY 4.0, CC BY-NC 4.0, or MIT licenses. See [LICENSE.md] for details.
+Items in this package (and its GitHub source) various fall under the CC BY 4.0, CC BY-NC 4.0, or MIT licenses. See [LICENSE.md](LICENSE.md) for details.
 
 ## Contributors
 
