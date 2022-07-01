@@ -1,77 +1,59 @@
-<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Dataforged</title><meta name="description" content="Documentation for Dataforged"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">Dataforged</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> Dataforged </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Dataforged</title><meta name="description" content="Documentation for Dataforged"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><link rel="stylesheet" href="assets/custom.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">Dataforged</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> Dataforged </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
 <a href="#dataforged" id="dataforged" style="color: inherit; text-decoration: none;">
   <h1>Dataforged</h1>
 </a>
 <p>Official <em>Ironsworn: Starforged</em> rules data in JSON, for use in community tools.</p>
 
-<a href="#intent" id="intent" style="color: inherit; text-decoration: none;">
-  <h2>Intent</h2>
-</a>
-<p>This repository is intended to give <a href="https://www.kickstarter.com/projects/shawntomkin/ironsworn-starforged"><em>Starforged</em>&#39;s Kickstarter</a> backers access to game data to incorporate into their own <em>Starforged</em> tools; it has been left public in the interest of keeping it easily accessible (and, frankly, will be of limited use without the complete text of the Backer Preview).</p>
-
 <a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
   <h2>Usage</h2>
 </a>
-<p>Best consumed as a Node package: <code>npm i dataforged</code> or <code>yarn add dataforged</code>. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the <a href="https://rsek.github.io/dataforged/">documentation site</a>.</p>
-<p>If you just want the data as-is, import its <code>starforged</code> object to use the pre-loaded, typed JSON.</p>
+
+<a href="#javascripttypescript" id="javascripttypescript" style="color: inherit; text-decoration: none;">
+  <h3>Javascript/Typescript</h3>
+</a>
+<p>Best consumed as a Node package: <code>npm i dataforged</code> or <code>yarn add dataforged</code>. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the <a href="https://rsek.github.io/dataforged/">API documentation site</a>.</p>
+<p>If you just want the data as-is, import the <code>starforged</code> object to use the pre-loaded, typed JSON.</p>
 
 <a href="#esm" id="esm" style="color: inherit; text-decoration: none;">
-  <h3>ESM</h3>
+  <h4>ESM</h4>
 </a>
 <pre><code class="language-javascript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">starforged</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;dataforged&#39;</span>
 </code></pre>
 
 <a href="#commonjs" id="commonjs" style="color: inherit; text-decoration: none;">
-  <h3>CommonJS</h3>
+  <h4>CommonJS</h4>
 </a>
-<p>CommonJS support is still experimental.</p>
 <pre><code class="language-javascript"><span class="hl-4">const</span><span class="hl-1"> { </span><span class="hl-5">starforged</span><span class="hl-1"> } = </span><span class="hl-6">require</span><span class="hl-1">(</span><span class="hl-3">&#39;dataforged&#39;</span><span class="hl-1">)</span>
 </code></pre>
 
-<a href="#licensing" id="licensing" style="color: inherit; text-decoration: none;">
-  <h2>Licensing</h2>
+<a href="#other-languages" id="other-languages" style="color: inherit; text-decoration: none;">
+  <h3>Other Languages</h3>
 </a>
-<p><em>Starforged</em> is currently under development, and this content is not yet licensed for non-personal use without explicit permission of <a href="https://www.ironswornrpg.com/">Shawn Tomkin</a>. Once <em>Starforged</em>&#39;s development is complete and it is released, a permissive Creative Commons license for non-commercial and commercial projects will be attached to this content.</p>
-<p>In other words: for the moment, treat it like you would excerpts from a copyrighted work; please include attribution (e.g. &quot;Copyright ©2021 Shawn Tomkin and Absolute Tabletop, LLC&quot;) and a link back to the repository in your project... and drop a link in the <a href="https://discordapp.com/invite/6QMvmJb">Ironsworn discord</a>, because we&#39;re excited to see what you make with it!</p>
-<!--
-### Legacy Format
-Dataforged is migrating to a new format that is incompatible with the original format; the format had accumulated an awful lot of cruft, as it was carried over from Datasworn and wasn't designed with Starforged in mind. Features of the new format:
+<p>Packages for other languages and packages are a work in progress. For now, you can use the contents of <a href="dist/starforged">dist/starforged</a>. <code>dataforged.json</code> contains all game data in a single object; <code>schema.json</code> describes its JSON schema.</p>
 
-  * pre-generated `$id` keys for most important objects
-  * wherever practical, it uses the game's terminology to name keys. For instance, the old table row key `Description` is now `Result`, while `Details` has been renamed `Summary`.
-  * explicitly defines many values that were previously left to be inferred (for instance, the bottom end of a roll's range is now included)
-  * detailed information on how to render tables (for instance, whether it should be displayed as a column of another table)
-  * the typescript interfaces I use for internal typechecking can be found in the `src` directory; they aren't quite 'drop-in' at the moment, but might save you some time if you're writing in typescript (and can be converted to C# with little difficulty)
-
-The migration will also make it much easier for me to add some future features:
-  * every CC-licensable icon in the game
-  * 'drop-in' interfaces for Typescript and C# (and possibly other languages)
-  * making Dataforged available as a cross-referenced SQlite DB
-  * making all of Dataforged available in markdown files
-  * Dataforged-compatible Ironsworn data
-  * eventually, a `dataforged-community-content` repo, to make it easy for developers to include such content in their projects
-
-I **strongly** recommend migrating existing projects to the new format, especially if you want prompt content updates.
-
-If you need JSON in the old format, it can be found in the `legacy` directory. The legacy folder will eventually be updated to reflect the game at release, but for the time being will lag behind content updates as I focus on refining the new format; feedback on that front is appreciated. -->
-
-
-<a href="#current-versionsources" id="current-versionsources" style="color: inherit; text-decoration: none;">
-  <h2>Current Version/Sources</h2>
+<a href="#current-content-versionsources" id="current-content-versionsources" style="color: inherit; text-decoration: none;">
+  <h2>Current Content Version/Sources</h2>
 </a>
 <ul>
-<li><strong><em>Ironsworn: Starforged Rulebook</em> - 043022</strong><ul>
+<li><strong><em>Ironsworn: Starforged Rulebook</em> - 050622</strong><ul>
 <li>moves</li>
 <li>oracles</li>
 <li>setting truths</li>
 <li>encounters</li>
 </ul>
 </li>
-<li><strong><em>Ironsworn: Starforged</em> Assets - 043022</strong><ul>
+<li><strong><em>Ironsworn: Starforged</em> Assets - 050622</strong><ul>
 <li>assets</li>
 </ul>
 </li>
 </ul>
+
+<a href="#licensing" id="licensing" style="color: inherit; text-decoration: none;">
+  <h2>Licensing</h2>
+</a>
+<p>The content of the JSON/YAML files from <em>Starforged</em> is used under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0 License</a>.</p>
+<p>The code (typings, and build utilities that live in this repo but not the NPM package) is under the MIT license.</p>
+<p>If you use this package, please drop a link to your project in the <a href="https://discordapp.com/invite/6QMvmJb">Ironsworn discord</a>, because we&#39;re excited to see what you make with it!</p>
 
 <a href="#credits" id="credits" style="color: inherit; text-decoration: none;">
   <h2>Credits</h2>
