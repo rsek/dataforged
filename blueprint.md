@@ -1,26 +1,9 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#dataforged-v-pkgversion-)
-
-# Dataforged v1.2.3
+# Dataforged v{{ pkg.version }}
 <!-- TODO: add logo template -->
 
-<p align="center">
-		<a href="https://www.npmjs.com/package/dataforged"><img alt="undefined" src="https://img.shields.io/npm/v/dataforged?logo=npm" height="20"/></a>
-<a href="https://www.npmjs.com/package/dataforged"><img alt="undefined" src="https://img.shields.io/npm/dm/dataforged?logo=npm" height="20"/></a>
-<a href="https://discordapp.com/invite/6QMvmJb"><img alt="undefined" src="https://img.shields.io/discord/437120373436186625?color=%235865F2&label=Ironsworn%20Discord&logo=discord&logoColor=white" height="20"/></a>
-	</p>
+{{ template:badges }}
 
-
-<p align="center">
-  <b>Official rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools.</b></br>
-  <sub>Also includes the relevant JSON schemas and a Javascript/Typescript API.<sub>
-</p>
-
-<br />
-
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#projects-that-use-dataforged)
+{{ template:description }}
 
 ## Projects that use Dataforged
 
@@ -31,9 +14,6 @@
 * [Starforged-Sectors](https://github.com/Ferretsroq/Starforged-Sectors), a discord bot for generating *Starforged* sectors
 * [*Ironsworn*/*Starforged* templates for Obsidian](https://github.com/grimborg/obsidian-ironsworn)
 * ...and maybe yours? Tell us about it in the [*Ironsworn* discord](https://discordapp.com/invite/6QMvmJb)!
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#usage)
 
 ## Usage
 
@@ -68,9 +48,6 @@ const { starforged } = require('dataforged')
 ### Other Languages
 Packages for other languages/package managers are a work in progress. For now, you can use the JSON files in  [`dist/starforged`](dist/starforged). `dataforged.json` contains all game data in a single object; `schema.json` describes its JSON schema.
 
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#current-content-versionsources)
-
 ## Current Content Version/Sources
 
 * ***Ironsworn: Starforged Rulebook* - 050622**
@@ -81,15 +58,9 @@ Packages for other languages/package managers are a work in progress. For now, y
 * ***Ironsworn: Starforged* Assets - 050622**
   * assets
 
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#licensing)
-
 ## Licensing
 
-Items in this package (and its GitHub source) various fall under the CC BY 4.0, CC BY-NC 4.0, or MIT licenses. See [LICENSE.md](LICENSE.md) for details.
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#contributors)
+Items in this package (and its GitHub source) various fall under the CC BY 4.0, CC BY-NC 4.0, or MIT licenses. See [LICENSE.md] for details.
 
 ## Contributors
 

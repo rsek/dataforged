@@ -25,7 +25,7 @@
     "render-json-sf": "node ./build/start-starforged.js --enable-source-maps",
     "render-json-is": "node ./build/start-ironsworn.js --enable-source-maps",
     "render-md-sf": "node ./build/start-md.js",
-    "docs": "rm -R ../docs && mkdir ../docs && npx typedoc --out ../docs --customCss ./src/theme/docs.css"
+    "docs": "npx typedoc --out ../docs --customCss ./src/theme/docs.css"
   },
   "repository": {
     "type": "git",
@@ -62,6 +62,7 @@
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-lodash": "^7.3.0",
