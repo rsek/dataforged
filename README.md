@@ -38,9 +38,9 @@ Packages for other languages and packages are a work in progress. For now, you c
 
 ## Licensing
 
-The game content originating in the JSON/YAML files is licensed under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+The content of the JSON/YAML files from *Starforged* is used under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
-The code (typings, and build utilities that live in this repo but not the NPM package) is licensed uner the MIT license.
+The code (typings, and build utilities that live in this repo but not the NPM package) is under the MIT license.
 
 If you use this package, please drop a link to your project in the [Ironsworn discord](https://discordapp.com/invite/6QMvmJb), because we're excited to see what you make with it!
 
