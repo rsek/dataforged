@@ -6,7 +6,7 @@ Official *Ironsworn: Starforged* rules data in JSON, for use in community tools.
 
 Best consumed as a Node package: `npm i dataforged` or `yarn add dataforged`. Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the [documentation site](https://rsek.github.io/dataforged/).
 
-If you just want the data as-is, import its `starforged` object to use the pre-loaded, typed JSON.
+If you just want the data as-is, import the `starforged` object to use the pre-loaded, typed JSON.
 
 ### ESM
 
@@ -34,7 +34,7 @@ const { starforged } = require('dataforged')
 
 The game content originating in the JSON/YAML files is licensed under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
-The code (typings, and build utilities that live in this repo but not the NPM package) is licensed uner the MIT license. 
+The code (typings, and build utilities that live in this repo but not the NPM package) is licensed uner the MIT license.
 
 If you use this package, please drop a link to your project in the [Ironsworn discord](https://discordapp.com/invite/6QMvmJb), because we're excited to see what you make with it!
 
