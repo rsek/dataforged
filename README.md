@@ -1,4 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">Dataforged v1.2.3</h1>
+<!-- ⚠️ This README has been generated from the file(s) "./src/templates/blueprint.md" ⚠️--><h1 align="center">Dataforged v1.2.3</h1>
 <p align="center">
 		<a href="https://www.npmjs.com/package/dataforged"><img alt="undefined" src="https://img.shields.io/npm/v/dataforged?logo=npm" height="20"/></a>
 <a href="https://www.npmjs.com/package/dataforged"><img alt="undefined" src="https://img.shields.io/npm/dm/dataforged?logo=npm" height="20"/></a>
@@ -7,7 +7,7 @@
 	</p>
 
 <p align="center">
-  <b>Official rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. Also includes the relevant JSON schemas and a Javascript/Typescript API.</b></br>
+  <b>Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. Also includes the relevant JSON schemas and a Javascript/Typescript API.</b></br>
   <sub><sub>
 </p>
 

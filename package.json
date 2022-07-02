@@ -1,7 +1,7 @@
 {
   "name": "dataforged",
   "version": "1.2.3",
-  "description": "Official rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. Also includes the relevant JSON schemas and a Javascript/Typescript API.",
+  "description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. Also includes the relevant JSON schemas and a Javascript/Typescript API.",
   "type": "commonjs",
   "exports": {
     "import": "./dist/index-esm.mjs",
@@ -11,7 +11,9 @@
   "scripts": {
     "build-cjs": "tsc --project tsconfig-cjs.json",
     "build-esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
-    "build": "yarn build-cjs && yarn build-esm"
+    "build": "yarn build-cjs && yarn build-esm",
+    "readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json",
+    "postversion": "yarn readme",
   },
   "files": [
     "dist",
