@@ -55,10 +55,10 @@ Consult the [API Documentation for further information](https://rsek.github.io/d
 
 ### NodeJS
 If you're working in Javascript or Typescript, Dataforged is best consumed as a NodeJS package:
-```shell-script
+```bash
 npm i dataforged
 ```
-```shell-script
+```bash
 yarn add dataforged
 ```
 Typescript typings are included; use of VSCode or an IDE to expose the type annotations in your workspace is highly recommended. See also the [API documentation site](https://rsek.github.io/dataforged).
