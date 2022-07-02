@@ -7,8 +7,8 @@
 	</p>
 
 <p align="center">
-  <b>Official rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools.</b></br>
-  <sub>Also includes the relevant JSON schemas and a Javascript/Typescript API.<sub>
+  <b>Official rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. Also includes the relevant JSON schemas and a Javascript/Typescript API.</b></br>
+  <sub><sub>
 </p>
 
 <br />
