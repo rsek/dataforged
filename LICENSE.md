@@ -2,6 +2,8 @@
 
 *Ironsworn: Starforged* is copyright ©2022 [Shawn Tomkin](https://www.ironswornrpg.com/) and [Absolute Tabletop, LLC](https://absolutetabletop.com/).
 
+For more information about what you can do with the license, see the [*Ironsworn* website](https://www.ironswornrpg.com/licensing).
+
 ## Data (`*.md`, `*.json`, `*.yaml`): CC BY 4.0
 
 The textual content described by the Markdown, JSON, and YAML files in this repo is originally from the *Ironsworn: Starforged Reference Guide*, and used under the used under the [Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/).
