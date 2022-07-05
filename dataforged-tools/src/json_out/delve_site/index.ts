@@ -1,5 +1,5 @@
 //License: MIT
-import type { IHasDescription, IHasName, IHasSource, IHasSummary , IRow } from "@json_out/index.js";
+import type { IHasDescription, IHasName, IHasSource, IHasSummary, IRow } from "@json_out/index.js";
 /**
  * @public
  */
@@ -62,7 +62,7 @@ export interface IDelveTheme extends IDelve {
     IDelveRow<19, 20>,
     IDelveRow<21, 22>,
     IDelveRow<23, 24>,
-    IDelveRow<35, 26>,
+    IDelveRow<25, 26>,
     IDelveRow<27, 28>,
     IDelveRow<29, 30>,
   ]
