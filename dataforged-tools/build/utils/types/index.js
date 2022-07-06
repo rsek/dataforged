@@ -1,4 +1,4 @@
-// export * from "@utils/types/ArrayElement.js";
+//License: MIT
 export * from "./AttributeHash.js";
 // export * from "@utils/types/EnumLike.js";
 export * from "./KeysMatching.js";

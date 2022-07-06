@@ -1,7 +1,4 @@
-/**
- * The stat(s) or progress track(s) that may be rolled with the parent move trigger option.
- * @public
- */
+//License: MIT
 export var RollMethod;
 (function (RollMethod) {
     /**

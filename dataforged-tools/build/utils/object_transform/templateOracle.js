@@ -1,3 +1,4 @@
+//License: MIT
 import { buildLog } from "../logging/buildLog.js";
 import { replaceInAllStrings } from "./replaceInAllStrings.js";
 import _ from "lodash-es";

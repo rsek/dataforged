@@ -1,3 +1,13 @@
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import { REFS_PATH } from "../../constants/index.js";
 import { concatWithYamlRefs } from "./concatWithYamlRefs.js";
 import deepFreezeStrict from "deep-freeze-strict";

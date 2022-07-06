@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export var PartOfSpeechTag;
 (function (PartOfSpeechTag) {
     PartOfSpeechTag["Noun"] = "noun";

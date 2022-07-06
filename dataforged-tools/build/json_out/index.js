@@ -1,6 +1,4 @@
-/**
- * @module Json
- */
+//License: MIT
 export * from "./meta/index.js";
 export * from "./common/index.js";
 export * from "./game_objects/index.js";

@@ -1,6 +1,3 @@
-/**
- * @module Json.Oracles
- */
 export * from "./ITableDisplayInfo.js";
 export * from "./IMultipleRolls.js";
 export * from "./IOracle.js";

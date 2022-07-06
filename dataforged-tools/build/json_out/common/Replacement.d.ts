@@ -1,7 +1,3 @@
-/**
- * Standard replacement strings, used by constructors when processing the master YAML data.
- * @public
- */
 export declare enum Replacement {
     /**
      * Replace with the ID of the nearest ancestor asset.

@@ -1,7 +1,4 @@
-/**
- * Enumerates valid sourcebook titles.
- * @public
- */
+//License: MIT
 export var SourceTitle;
 (function (SourceTitle) {
     SourceTitle["Starforged"] = "Ironsworn: Starforged Rulebook";
@@ -19,7 +16,9 @@ export var SourceTitle;
  */
 export var SourceUrl;
 (function (SourceUrl) {
-    SourceUrl["IronswornRulebook"] = "https://shawn-tomkin.itch.io/ironsworn";
+    SourceUrl["Starforged"] = "https://getstarforged.com";
+    SourceUrl["StarforgedAssets"] = "https://getstarforged.com";
+    SourceUrl["Ironsworn"] = "https://shawn-tomkin.itch.io/ironsworn";
     SourceUrl["IronswornAssets"] = "https://shawn-tomkin.itch.io/ironsworn";
     SourceUrl["IronswornDelve"] = "https://shawn-tomkin.itch.io/ironsworn-delve";
     SourceUrl["IronswornBonusAssets"] = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view";

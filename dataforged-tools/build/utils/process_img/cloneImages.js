@@ -1,3 +1,4 @@
+//License: MIT
 import pkg from "fs-extra";
 const { copySync } = pkg;
 /**

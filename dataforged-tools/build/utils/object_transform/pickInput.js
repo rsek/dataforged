@@ -1,3 +1,4 @@
+//License: MIT
 import { InputClock, InputNumber, InputText } from "../../classes/common/index.js";
 import { InputSelect } from "../../classes/common/InputSelect.js";
 import { InputType } from "../../json_out/index.js";

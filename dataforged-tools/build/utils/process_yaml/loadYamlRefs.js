@@ -1,3 +1,4 @@
+//License: MIT
 import { REFS_PATH } from "../../constants/index.js";
 import FastGlob from "fast-glob";
 import fs from "fs";
