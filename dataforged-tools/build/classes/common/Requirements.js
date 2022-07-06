@@ -1,3 +1,4 @@
+//License: MIT
 import { AttributeRequirements } from "../index.js";
 /**
  * @internal

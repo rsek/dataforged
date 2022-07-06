@@ -1,3 +1,4 @@
+//License: MIT
 import { Source } from "./index.js";
 /**
  * @internal

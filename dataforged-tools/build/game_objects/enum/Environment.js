@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Creatures / Environment
- * @alpha
- */
+//License: MIT
 export var Environment;
 (function (Environment) {
     Environment["Space"] = "Space";

@@ -1,7 +1,3 @@
-/**
- * Set by Oracles / Planets / * / Atmosphere
- * @alpha
- */
 declare enum Atmosphere {
     NoneThin = "None / Thin",
     Toxic = "Toxic",

@@ -1,6 +1,3 @@
-/**
- * @alpha
- */
 export declare enum SettlementInitialContact {
     AskingForHelp = "Asking for help",
     Captured = "Captured",

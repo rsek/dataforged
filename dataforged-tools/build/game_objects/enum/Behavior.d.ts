@@ -1,8 +1,3 @@
-/**
- * Set by Oracles / Creatures / Encountered Behavior
- *
- * @alpha
- */
 declare enum Behavior {
     Ambusher = "Ambusher",
     Hibernator = "Hibernator",

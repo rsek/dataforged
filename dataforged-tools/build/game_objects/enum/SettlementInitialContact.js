@@ -1,6 +1,4 @@
-/**
- * @alpha
- */
+//License: MIT
 export var SettlementInitialContact;
 (function (SettlementInitialContact) {
     SettlementInitialContact["AskingForHelp"] = "Asking for help";

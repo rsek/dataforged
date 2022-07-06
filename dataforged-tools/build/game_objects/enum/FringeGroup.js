@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Fringe Group
- * @alpha
- */
+//License: MIT
 var FringeGroup;
 (function (FringeGroup) {
     FringeGroup["Cultists"] = "Cultists";

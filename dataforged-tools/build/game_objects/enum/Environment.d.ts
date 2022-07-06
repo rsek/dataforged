@@ -1,7 +1,3 @@
-/**
- * Set by Oracles / Creatures / Environment
- * @alpha
- */
 export declare enum Environment {
     Space = "Space",
     Interior = "Interior",

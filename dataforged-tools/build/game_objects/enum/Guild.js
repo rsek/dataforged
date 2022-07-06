@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Guild
- * @alpha
- */
+//License: MIT
 var Guild;
 (function (Guild) {
     Guild["Assassins"] = "Assassins";

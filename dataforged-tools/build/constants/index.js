@@ -1,6 +1,16 @@
 /**
  * @internal
  */
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 export const MASTER_DATA_PATH = "../_master-data";
 /**
  * @internal

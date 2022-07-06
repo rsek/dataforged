@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export var VaultZone;
 (function (VaultZone) {
     VaultZone["Interior"] = "Interior";

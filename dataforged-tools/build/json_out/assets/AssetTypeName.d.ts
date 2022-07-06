@@ -1,6 +1,3 @@
-/**
- * @public
- */
 export declare enum AssetTypeName {
     CommandVehicle = "Command Vehicle",
     Companion = "Companion",

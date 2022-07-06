@@ -1,3 +1,4 @@
+//License: MIT
 import { RollColumn, TextColumn } from "../index.js";
 import { getNameFromId } from "../../utils/getNameFromId.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";

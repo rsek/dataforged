@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Character / Role
- * @alpha
- */
+//License: MIT
 var Role;
 (function (Role) {
     Role["Agent"] = "Agent";

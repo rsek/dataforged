@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Settlements / Population
- * @alpha
- */
+//License: MIT
 export var Population;
 (function (Population) {
     Population["Few"] = "Few";

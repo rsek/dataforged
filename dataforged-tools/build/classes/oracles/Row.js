@@ -1,3 +1,4 @@
+//License: MIT
 import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";

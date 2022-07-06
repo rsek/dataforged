@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Type
- * @alpha
- */
+//License: MIT
 var FactionType;
 (function (FactionType) {
     FactionType["FringeGroup"] = "Fringe Group";

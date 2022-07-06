@@ -1,3 +1,4 @@
+//License: MIT
 export * from "./Atmosphere.js";
 export * from "./Authority.js";
 export * from "./Behavior.js";

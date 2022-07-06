@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export var ProgressTypeStarforged;
 (function (ProgressTypeStarforged) {
     ProgressTypeStarforged["Combat"] = "Combat";

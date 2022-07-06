@@ -1,3 +1,13 @@
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 import { DisplayOracle, OracleContent, OracleUsage, Row, SourceInheritor } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { inferSetsAttributes } from "../../utils/object_transform/inferSetsAttributes.js";

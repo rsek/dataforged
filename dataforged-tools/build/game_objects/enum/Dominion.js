@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Factions / Dominion
- * @alpha
- */
+//License: MIT
 var Dominion;
 (function (Dominion) {
     Dominion["Agriculture"] = "Agriculture";

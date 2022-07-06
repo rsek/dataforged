@@ -1,3 +1,4 @@
+//License: MIT
 import { MoveTrigger } from "../index.js";
 import { AlterMoveOutcomes } from "../moves/MoveOutcomes.js";
 import _ from "lodash-es";

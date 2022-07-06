@@ -1,3 +1,4 @@
+//License: MIT
 import { AssetState } from "./AssetState.js";
 import { AlterMove, Move } from "../index.js";
 import { Replacement } from "../../json_out/index.js";

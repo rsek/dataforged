@@ -1,3 +1,4 @@
+//License: MIT
 import { CustomStat } from "./CustomStat.js";
 import { Replacement, RollMethod, RollType } from "../../json_out/index.js";
 /**

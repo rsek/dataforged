@@ -1,6 +1,3 @@
-/**
- * @public
- */
 export declare enum GameObjectType {
     Derelict = "Derelict",
     DerelictZone = "Derelict Zone",

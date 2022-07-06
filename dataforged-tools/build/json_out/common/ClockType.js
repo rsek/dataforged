@@ -1,7 +1,4 @@
-/**
- * See clocks (p. 234) for more information.
- * @public
- */
+//License: MIT
 export var ClockType;
 (function (ClockType) {
     ClockType["Tension"] = "Tension";

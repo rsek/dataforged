@@ -1,3 +1,4 @@
+//License: MIT
 import { Requirements, Suggestions } from "../index.js";
 /**
  * @internal

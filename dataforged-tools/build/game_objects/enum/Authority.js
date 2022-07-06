@@ -1,8 +1,4 @@
-/**
- * Set by Oracles / Settlements / Authority
- *
- * @alpha
- */
+//License: MIT
 export var Authority;
 (function (Authority) {
     Authority["NoneLawless"] = "None / lawless";

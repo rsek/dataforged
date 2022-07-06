@@ -1,7 +1,4 @@
-/**
- * Set by Oracles / Planets / * / Atmosphere
- * @alpha
- */
+//License: MIT
 var Atmosphere;
 (function (Atmosphere) {
     Atmosphere["NoneThin"] = "None / Thin";

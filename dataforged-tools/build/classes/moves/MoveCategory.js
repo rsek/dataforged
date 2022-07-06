@@ -1,3 +1,4 @@
+//License: MIT
 import { Move, Source } from "../index.js";
 import { MoveCategoryDisplay } from "./MoveCategoryDisplay.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";

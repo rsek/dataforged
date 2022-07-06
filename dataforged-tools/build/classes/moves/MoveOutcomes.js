@@ -1,3 +1,4 @@
+//License: MIT
 import { OutcomeInfo } from "../index.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";
 /**

@@ -1,3 +1,4 @@
+//License: MIT
 import { DisplayWithTitle } from "../common/Display.js";
 import { MoveOutcomes, MoveTrigger, SourceInheritor } from "../index.js";
 import { buildLog } from "../../utils/logging/buildLog.js";

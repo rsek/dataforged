@@ -2,6 +2,16 @@
  * Set by "Oracles / Planets / Class"
  * @public
  */
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
+//License: MIT
 export var PlanetaryClass;
 (function (PlanetaryClass) {
     PlanetaryClass["Desert"] = "Desert";

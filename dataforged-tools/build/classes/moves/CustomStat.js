@@ -1,3 +1,4 @@
+//License: MIT
 import { CustomStatOption } from "../index.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";
 /**

@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export var Zone;
 (function (Zone) {
     Zone["Access"] = "Access";

@@ -1,7 +1,3 @@
-/**
- * Set by Oracles / Planets / * / Life
- * @alpha
- */
 declare enum Life {
     None = "None",
     Extinct = "Extinct",

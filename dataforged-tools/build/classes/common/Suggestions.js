@@ -1,3 +1,4 @@
+//License: MIT
 import { GameObject } from "../index.js";
 /**
  * @internal

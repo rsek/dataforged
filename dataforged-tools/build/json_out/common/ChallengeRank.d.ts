@@ -1,8 +1,3 @@
-/**
- * Enumerates challenge ranks.
- * @page 39
- * @public
- */
 declare enum ChallengeRank {
     Troublesome = 1,
     Dangerous = 2,

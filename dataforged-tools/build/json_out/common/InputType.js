@@ -1,6 +1,4 @@
-/**
- * @public
- */
+//License: MIT
 export var InputType;
 (function (InputType) {
     /**
