@@ -1,5 +1,6 @@
 //License: MIT
-import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter, ISource } from "@json_out/index.js";
+import type { Source } from "@classes/common/Source.js";
+import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter } from "@json_out/index.js";
 import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
 /**
@@ -17,7 +18,7 @@ export abstract class Encounter implements IEncounter {
   Rank: ChallengeRank;
   abstract Display: IDisplayWithTitle;
   Description: string;
-  abstract Source: ISource;
+  abstract Source: Source;
   "Quest Starter": string;
   constructor(json: IEncounterIronswornYaml|IEncounterStarforgedYaml) {
     this.Name = json.Name;
