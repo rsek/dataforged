@@ -1,4 +1,3 @@
-//License: MIT
 import yaml from "js-yaml";
 import fs from "fs";
 

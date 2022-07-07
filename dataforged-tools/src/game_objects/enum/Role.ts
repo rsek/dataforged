@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Character / Role
+ * @alpha
+ */
 enum Role {
   Agent = "Agent",
   AI = "AI",

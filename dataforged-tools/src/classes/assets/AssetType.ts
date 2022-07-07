@@ -1,4 +1,3 @@
-//License: MIT
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import { Asset, SourceInheritor } from "@classes/index.js";
 import type { Gamespace , IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "@json_out/index.js";

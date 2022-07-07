@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @module Json.Oracles
+ */
 
 export * from "@json_out/oracles/ITableDisplayInfo.js";
 export * from "@json_out/oracles/IMultipleRolls.js";

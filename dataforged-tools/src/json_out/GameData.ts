@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAssetType, IEncounterNatureInfo, IEncounterStarforged , IMoveCategory, IOracleCategory, ISettingTruth } from "@json_out/index.js";
 
 /**

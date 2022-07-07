@@ -1,4 +1,3 @@
-//License: MIT
 import { RollColumn, TextColumn } from "@classes/index.js";
 import type { IOracle, ITableDisplayInfo as ITableDisplayInfo } from "@json_out/index.js";
 import { getNameFromId } from "@utils/getNameFromId.js";

@@ -1,4 +1,3 @@
-//License: MIT
 import type { IRowContentItemYaml, IRowRollYaml, IRowYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 

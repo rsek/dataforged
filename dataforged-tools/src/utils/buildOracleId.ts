@@ -1,4 +1,3 @@
-//License: MIT
 import type { Gamespace , IOracleBase } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IOracleCategoryYaml, IOracleYaml, YamlStub } from "@yaml_in/index.js";

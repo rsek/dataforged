@@ -1,4 +1,3 @@
-//License: MIT
 import type { IMeterBase, MeterAlias, MeterCondition } from "@json_out/index.js";
 
 /**

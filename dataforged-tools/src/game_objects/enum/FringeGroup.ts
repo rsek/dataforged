@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Factions / Fringe Group
+ * @alpha
+ */
 enum FringeGroup {
   Cultists = "Cultists",
   Exiles = "Exiles",

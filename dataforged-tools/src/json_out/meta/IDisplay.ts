@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Interface for data relevant to an item's display/rendering.
+ * @public
+ */
 export interface IDisplay {
   /**
    * A URL pointing to a single SVG icon.

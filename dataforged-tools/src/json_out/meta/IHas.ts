@@ -1,4 +1,3 @@
-//License: MIT
 import type { IDisplay , IGameObject, IOracleContent, IRequirements, IRollTemplate , IRow , ISource  , ISuggestions } from "@json_out/index.js";
 
 /**

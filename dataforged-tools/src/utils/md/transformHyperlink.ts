@@ -1,4 +1,3 @@
-//License: MIT
 import type { Oracle , OracleCategory } from "@classes/index.js";
 import type { IOracleCategory } from "@json_out/index.js";
 import { findById } from "@utils/md/findById.js";

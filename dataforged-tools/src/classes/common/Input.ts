@@ -1,4 +1,3 @@
-//License: MIT
 import type { Asset } from "@classes/assets/Asset.js";
 import type { AssetAbility } from "@classes/assets/AssetAbility.js";
 import { ClockType } from "@json_out/index.js";

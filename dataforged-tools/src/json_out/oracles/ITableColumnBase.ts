@@ -1,4 +1,3 @@
-//License: MIT
 import type { IOracle } from "@json_out/index.js";
 
 /**

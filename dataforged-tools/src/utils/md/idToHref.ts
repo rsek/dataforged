@@ -1,4 +1,5 @@
-//License: MIT
+// import type { IDisplayWithTitle } from "@json_out/index.js";
+// import { findById } from "@utils/md/findById.js";
 
 // /**
 //  * Converts an game item's ID string into a hyperlink-friendly relative URL.

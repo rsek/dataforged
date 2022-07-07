@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @module Json.GameObjects
+ */
 
 export * from "@json_out/game_objects/AttributeKey.js";
 export * from "@json_out/game_objects/AttributeValue.js";

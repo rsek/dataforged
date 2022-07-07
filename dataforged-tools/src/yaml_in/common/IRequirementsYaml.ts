@@ -1,4 +1,3 @@
-//License: MIT
 import type { AttributeKey } from "@json_out/index.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 

@@ -1,14 +1,4 @@
 
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import type { IEncounterBase } from "@json_out/index.js";
 
 

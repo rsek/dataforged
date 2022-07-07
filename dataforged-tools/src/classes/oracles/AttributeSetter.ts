@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAttribute } from "@json_out/index.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";

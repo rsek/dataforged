@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAssetAbility , IAssetAttachment , IAssetState , IAssetType , IAssetUsage,IConditionMeter, IDisplayWithTitle, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource, IInputSelect , IInputText } from "@json_out/index.js";
 
 /**

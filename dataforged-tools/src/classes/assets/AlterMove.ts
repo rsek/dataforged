@@ -1,4 +1,3 @@
-//License: MIT
 import { MoveTrigger } from "@classes/index.js";
 import { AlterMoveOutcomes } from "@classes/moves/MoveOutcomes.js";
 import type { IAlterMove, IAssetAbility , IMove } from "@json_out/index.js";

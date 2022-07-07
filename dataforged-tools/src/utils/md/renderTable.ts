@@ -1,4 +1,3 @@
-//License: MIT
 import { lengthOfLongest } from "@utils/md/longestLength.js";
 import { transpose2dArray } from "@utils/md/transpose2dArray.js";
 import _ from "lodash-es";

@@ -1,4 +1,3 @@
-//License: MIT
 import type { ICyclopediaEntry } from "@json_out/cyclopedia/ICyclopediaEntry.js";
 import type { ISource } from "@json_out/meta/ISource.js";
 

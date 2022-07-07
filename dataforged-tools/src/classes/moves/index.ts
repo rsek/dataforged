@@ -1,4 +1,3 @@
-//License: MIT
 export * from "@classes/moves/CustomStat.js";
 export * from "@classes/moves/Move.js";
 export * from "@classes/moves/MoveCategory.js";

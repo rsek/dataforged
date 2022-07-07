@@ -1,4 +1,3 @@
-//License: MIT
 import type { Atmosphere,
   Authority,
   Behavior,

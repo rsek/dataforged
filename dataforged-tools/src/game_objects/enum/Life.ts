@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Planets / * / Life
+ * @alpha
+ */
 enum Life {
   None = "None",
   Extinct = "Extinct",

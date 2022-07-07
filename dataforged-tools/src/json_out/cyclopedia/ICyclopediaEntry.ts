@@ -1,4 +1,3 @@
-//License: MIT
 import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasQuestStarter, IHasSource, IHasSummary, IHasTags } from "@json_out/meta/IHas.js";
 
 /**

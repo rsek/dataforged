@@ -1,4 +1,3 @@
-//License: MIT
 import { Source } from "@classes/common/index.js";
 import type { IHasSource, ISource } from "@json_out/index.js";
 

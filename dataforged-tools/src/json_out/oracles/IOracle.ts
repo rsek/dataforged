@@ -1,4 +1,3 @@
-//License: MIT
 import type { IDisplayOracle , IOracleBase, IOracleCategory , IRow } from "@json_out/index.js";
 
 /**

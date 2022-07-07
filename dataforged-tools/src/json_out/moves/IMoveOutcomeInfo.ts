@@ -1,4 +1,3 @@
-//License: MIT
 import type { IHasId, IHasText , IMoveReroll } from "@json_out/index.js";
 /**
  * @public

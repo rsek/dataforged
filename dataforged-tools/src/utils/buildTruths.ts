@@ -1,4 +1,3 @@
-//License: MIT
 import { SettingTruth } from "@classes/index.js";
 import { MASTER_DATA_PATH } from "@constants/index.js";
 import { Gamespace } from "@json_out/index.js";

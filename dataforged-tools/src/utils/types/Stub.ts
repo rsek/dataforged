@@ -1,4 +1,4 @@
-//License: MIT
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { PartialBy } from "@utils/types/PartialBy.js";
 import type { PartialExcept } from "@utils/types/PartialExcept.js";
 

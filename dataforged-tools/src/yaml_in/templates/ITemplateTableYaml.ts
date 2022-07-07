@@ -1,4 +1,3 @@
-//License: MIT
 import type { IRowContentYaml, IRowRollYaml } from "@yaml_in/index.js";
 import type { IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 

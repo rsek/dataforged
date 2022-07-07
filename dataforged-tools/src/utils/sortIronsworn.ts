@@ -1,4 +1,3 @@
-//License: MIT
 import type { Source } from "@classes/index.js";
 import { SourceTitle } from "@json_out/index.js";
 

@@ -1,4 +1,8 @@
-//License: MIT
+/**
+ * Enumerates challenge ranks.
+ * @page 39
+ * @public
+ */
 enum ChallengeRank {
   Troublesome = 1,
   Dangerous = 2,

@@ -1,4 +1,3 @@
-//License: MIT
 import { buildLog } from "@utils/logging/buildLog.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import type { ITemplateYamlBase } from "@yaml_in/index.js";

@@ -1,4 +1,3 @@
-//License: MIT
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import type { Asset, MoveCategory, Suggestions } from "@classes/index.js";
 import { MoveOutcomes , MoveTrigger , SourceInheritor } from "@classes/index.js";

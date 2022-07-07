@@ -1,4 +1,3 @@
-//License: MIT
 export * from "@game_objects/enum/Atmosphere.js";
 export * from "@game_objects/enum/Authority.js";
 export * from "@game_objects/enum/Behavior.js";

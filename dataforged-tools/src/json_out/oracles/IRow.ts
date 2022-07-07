@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
 import { Nullable } from "@utils/types/Nullable.js";
 

@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAlterMomentum , IAlterMove , IAssetAlterProperties, IHasId, IHasText, IInputClock, IInputNumber, IInputText, IMove } from "@json_out/index.js";
 
 /**

@@ -1,4 +1,3 @@
-//License: MIT
 import type { AssetType } from "@classes/assets/AssetType.js";
 import { MeterBase } from "@classes/common/MeterBase.js";
 import { MeterAlias } from "@json_out/index.js";

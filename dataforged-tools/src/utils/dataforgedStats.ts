@@ -1,4 +1,3 @@
-//License: MIT
 import type { EncounterNatureInfo, EncounterStarforged, Oracle, Row } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged , IOracleCategory , Ironsworn , Starforged } from "@json_out/index.js";

@@ -1,4 +1,3 @@
-//License: MIT
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import type { IOracleYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";

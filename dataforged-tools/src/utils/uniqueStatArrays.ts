@@ -1,4 +1,3 @@
-//License: MIT
 const stats = [ "Edge", "Iron", "Heart", "Shadow", "Wits" ];
 
 /**

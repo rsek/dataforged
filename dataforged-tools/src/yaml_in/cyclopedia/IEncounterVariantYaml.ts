@@ -1,4 +1,3 @@
-//License: MIT
 import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterVariant } from "@json_out/index.js";
 import type { IEncounterStarforgedYaml } from "@yaml_in/index.js";
 

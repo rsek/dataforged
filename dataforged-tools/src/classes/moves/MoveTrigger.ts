@@ -1,4 +1,3 @@
-//License: MIT
 import { MoveTriggerOptionAction , MoveTriggerOptionProgress } from "@classes/moves/MoveTriggerOption.js";
 import type { IAlterMove, IMove, IMoveTrigger, IMoveTriggerBy } from "@json_out/index.js";
 import { RollType } from "@json_out/index.js";

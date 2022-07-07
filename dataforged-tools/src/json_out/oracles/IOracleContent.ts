@@ -1,4 +1,3 @@
-//License: MIT
 import type { PartOfSpeechTag } from "@json_out/index.js";
 
 /**

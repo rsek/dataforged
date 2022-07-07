@@ -1,4 +1,3 @@
-//License: MIT
 import type { ITableColumnBase, ITableDisplayInfo, ITextColumn } from "@json_out/index.js";
 import type { YamlStub } from "@yaml_in/index.js";
 

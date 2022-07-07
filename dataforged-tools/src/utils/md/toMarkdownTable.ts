@@ -90,13 +90,4 @@
 // const files = fs.readdirSync("./").filter(dir => dir.match(/^ironsworn_oracles/))
 //   .map(file => "./" + file);
 // const text = buildMdOracles(...files);
-// fs.writeFileSync("./oracles.md", text);//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
+// fs.writeFileSync("./oracles.md", text);

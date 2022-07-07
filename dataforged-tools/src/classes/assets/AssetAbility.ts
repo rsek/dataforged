@@ -1,4 +1,3 @@
-//License: MIT
 import { AssetState } from "@classes/assets/AssetState.js";
 import type { InputClock, InputNumber, InputText } from "@classes/common/Input.js";
 import { AlterMove , Move } from "@classes/index.js";

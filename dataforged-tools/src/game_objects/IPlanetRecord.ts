@@ -1,4 +1,3 @@
-//License: MIT
 import type { IPlaceRecord } from "@game_objects/IPlaceRecord.js";
 import type { AttributeKey, GameObjectType } from "@json_out/index.js";
 

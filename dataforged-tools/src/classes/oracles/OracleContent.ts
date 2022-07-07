@@ -1,4 +1,3 @@
-//License: MIT
 import type { IOracleContent, PartOfSpeechTag } from "@json_out/index.js";
 // import { badJsonError } from "@utils/logging/badJsonError.js";
 

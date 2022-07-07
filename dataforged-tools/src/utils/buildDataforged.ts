@@ -1,4 +1,3 @@
-//License: MIT
 import type { EncounterNatureInfo } from "@classes/cyclopedia/EncounterNatureInfo.js";
 import type { EncounterStarforged } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";

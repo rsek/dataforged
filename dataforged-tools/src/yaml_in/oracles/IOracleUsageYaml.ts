@@ -1,4 +1,3 @@
-//License: MIT
 import type { IOracleUsage } from "@json_out/index.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/index.js";
 import type { IRequirementsYaml } from "@yaml_in/common/IRequirementsYaml.js";

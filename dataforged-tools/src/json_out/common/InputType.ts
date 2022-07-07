@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @public
+ */
 export enum InputType {
   /**
    * @see {@link IInputText}

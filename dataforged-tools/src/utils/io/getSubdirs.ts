@@ -1,4 +1,3 @@
-//License: MIT
 import fs from "fs";
 
 const basePath = "./src/data";

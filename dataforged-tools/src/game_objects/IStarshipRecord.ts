@@ -1,4 +1,3 @@
-//License: MIT
 import type { GameObjectType, IPlaceRecord, StarshipInitialContact } from "@game_objects/index.js";
 import type { AttributeKey } from "@json_out/index.js";
 /**

@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAttributeChoices } from "@json_out/index.js";
 
 /**

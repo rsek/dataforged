@@ -1,4 +1,3 @@
-//License: MIT
 import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IOracle, IOracleCategory , IOracleUsage, IRow } from "@json_out/index.js";
 
 /**

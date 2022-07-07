@@ -1,4 +1,3 @@
-//License: MIT
 import type { IPlaceRecord, ISettlementRecord, SettlementInitialContact, StarshipInitialContact } from "@game_objects/index.js";
 import type { IStarshipRecord } from "@game_objects/IStarshipRecord.js";
 import type { AttributeKey, DerelictType, GameObjectType } from "@json_out/index.js";

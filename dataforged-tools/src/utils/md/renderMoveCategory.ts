@@ -1,4 +1,3 @@
-//License: MIT
 import type { IMoveCategory } from "@json_out/index.js";
 import { renderMove } from "@utils/md/renderMove.js";
 import _ from "lodash-es";

@@ -1,4 +1,3 @@
-//License: MIT
 import { AttributeSetter, GameObject , MultipleRolls, OracleContent, Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
 import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, Raster, Vector } from "@json_out/index.js";

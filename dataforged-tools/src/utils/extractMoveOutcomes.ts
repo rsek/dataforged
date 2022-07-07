@@ -61,13 +61,3 @@
 // const newObj = _.keyBy(moves.map(move => extractMoveOutcome(move)), "$id");
 
 // writeJson("./moveOutcomes.json", newObj);
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT

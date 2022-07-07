@@ -1,4 +1,3 @@
-//License: MIT
 import { DisplayWithTitle, SettingTruthOption , Source , Suggestions } from "@classes/index.js";
 import type { Gamespace , ISettingTruth, ISource } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";

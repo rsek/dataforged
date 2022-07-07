@@ -1,4 +1,3 @@
-//License: MIT
 import type { IHasId , IHasName, InputSelectOptionType, PlayerConditionMeter, Stat } from "@json_out/index.js";
 
 /**

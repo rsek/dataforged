@@ -1,4 +1,4 @@
-//License: MIT
+// export * from "@utils/types/ArrayElement.js";
 export * from "@utils/types/AttributeHash.js";
 // export * from "@utils/types/EnumLike.js";
 export * from "@utils/types/KeysMatching.js";

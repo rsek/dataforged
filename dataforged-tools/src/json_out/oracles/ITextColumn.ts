@@ -1,4 +1,3 @@
-//License: MIT
 import type { IOracle, IRow , ITableColumnBase } from "@json_out/index.js";
 import type { KeysWithValuesOfType } from "@utils/types/KeysWithValuesOfType.js";
 

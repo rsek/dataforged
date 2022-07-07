@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @internal
+ */
 export type IRowRollYaml = [number | null, number | null];
 /**
  * @internal

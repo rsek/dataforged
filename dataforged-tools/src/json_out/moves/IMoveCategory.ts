@@ -1,4 +1,3 @@
-//License: MIT
 import type { IDisplayWithTitle , IHasDescription , IHasDisplay , IHasId , IHasName, IHasOptional, IHasSource , IMove } from "@json_out/index.js";
 
 /**

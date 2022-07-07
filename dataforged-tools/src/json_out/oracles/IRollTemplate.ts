@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.
+ * @public
+ */
 export interface IRollTemplate {
   /**
    * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.

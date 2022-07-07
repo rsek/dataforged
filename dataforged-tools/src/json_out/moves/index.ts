@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Types describing moves in *Ironsworn: Starforged*.
+ * @module Json.Moves
+ */
 
 export * from "@json_out/moves/IMove.js";
 export * from "@json_out/moves/IMoveCategory.js";

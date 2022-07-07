@@ -1,4 +1,3 @@
-//License: MIT
 import type { IRowContentYaml, IRowYaml } from "@yaml_in/index.js";
 
 /**

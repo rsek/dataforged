@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Factions / Guild
+ * @alpha
+ */
 enum Guild {
   Assassins = "Assassins",
   BountyHunters = "Bounty Hunters",

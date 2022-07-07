@@ -1,4 +1,3 @@
-//License: MIT
 import type { IAssetType } from "@json_out/index.js";
 
 /**

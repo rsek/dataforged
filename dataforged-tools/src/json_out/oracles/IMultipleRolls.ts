@@ -3,16 +3,6 @@
  * Describes {@link IRow} results that call for multiple rolls, most commonly "Roll twice" results.
  * @public
  */
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 export interface IMultipleRolls {
   /**
    * The number of rolls to make on the parent oracle table.

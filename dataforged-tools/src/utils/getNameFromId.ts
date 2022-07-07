@@ -1,16 +1,6 @@
 
 // TODO: generate fallback names for when it's unspecified
 
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import type { IOracle } from "@json_out/index.js";
 
 

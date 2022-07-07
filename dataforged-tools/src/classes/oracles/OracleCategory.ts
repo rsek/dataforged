@@ -1,14 +1,4 @@
 
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import { Oracle , OracleCategoryDisplay , OracleUsage , SourceInheritor } from "@classes/index.js";
 import type { Gamespace , IOracleCategory } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";

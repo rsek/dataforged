@@ -1,4 +1,4 @@
-//License: MIT
+/* eslint-disable @typescript-eslint/ban-types */
 
 /**
  * Logs a standardized build message to console.

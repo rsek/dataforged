@@ -1,4 +1,3 @@
-//License: MIT
 import type { ChallengeRank , EncounterNatureIronsworn , EncounterNatureStarforged , EncounterTags, ICyclopediaEntry, IDisplayWithTitle } from "@json_out/index.js";
 
 /**

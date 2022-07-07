@@ -1,4 +1,3 @@
-//License: MIT
 import { DisplayWithTitle, Source } from "@classes/index.js";
 import type { IIronswornRegion as IIronswornRegion } from "@json_out/index.js";
 import type { IDisplay } from "@json_out/meta/IDisplay.js";

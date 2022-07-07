@@ -1,4 +1,3 @@
-//License: MIT
 import type { IActorRecord } from "@game_objects/IActorRecord.js";
 import type { FactionType, GameObjectType } from "@game_objects/index.js";
 import type { AttributeKey } from "@json_out/index.js";

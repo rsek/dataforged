@@ -1,4 +1,3 @@
-//License: MIT
 import type { IMove } from "@json_out/index.js";
 import _ from "lodash-es";
 

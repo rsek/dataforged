@@ -1,4 +1,3 @@
-//License: MIT
 export * from "@classes/assets/index.js";
 export * from "@classes/common/index.js";
 export * from "@classes/cyclopedia/index.js";

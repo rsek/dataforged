@@ -1,4 +1,3 @@
-//License: MIT
 import type { RequireKey } from "@utils/types/RequireKey.js";
 
 /**

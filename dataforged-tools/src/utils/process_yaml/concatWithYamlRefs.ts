@@ -1,4 +1,3 @@
-//License: MIT
 import { REFS_PATH } from "@constants/index.js";
 import { loadYamlRefs } from "@utils/process_yaml/loadYamlRefs.js";
 import { loadYamlTemplates } from "@utils/process_yaml/loadYamlTemplates.js";

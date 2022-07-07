@@ -1,4 +1,3 @@
-//License: MIT
 import type { IOracleCategory, ISource } from "@json_out/index.js";
 import type { IOracleUsageYaml, IOracleYaml, IRequirementsYaml, ITemplateOracleCategoryYaml, ITemplateYamlBase, YamlStub } from "@yaml_in/index.js";
 

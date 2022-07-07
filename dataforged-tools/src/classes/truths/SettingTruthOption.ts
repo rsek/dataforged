@@ -1,4 +1,3 @@
-//License: MIT
 import { Row } from "@classes/index.js";
 import type { IRow, ISettingTruthOption, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
 import type { ISettingTruthOptionYaml } from "@yaml_in/index.js";

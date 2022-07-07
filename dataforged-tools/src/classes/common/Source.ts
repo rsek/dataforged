@@ -1,4 +1,3 @@
-//License: MIT
 
 import type { ISource } from "@json_out/index.js";
 import _ from "lodash-es";

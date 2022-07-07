@@ -1,4 +1,3 @@
-//License: MIT
 import type { ICustomStatOption } from "@json_out/index.js";
 
 /**

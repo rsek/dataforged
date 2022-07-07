@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @public
+ */
 export enum AssetTypeName {
     CommandVehicle = "Command Vehicle",
     Companion = "Companion",

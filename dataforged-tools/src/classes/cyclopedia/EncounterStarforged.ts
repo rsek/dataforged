@@ -1,4 +1,3 @@
-//License: MIT
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import type { EncounterDisplay } from "@classes/index.js";
 import { EncounterVariant , Source } from "@classes/index.js";

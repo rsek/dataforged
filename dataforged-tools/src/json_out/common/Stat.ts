@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Enumerates player character stats.
+ * @public
+ */
 export enum Stat {
     Edge = "Edge",
     Heart = "Heart",

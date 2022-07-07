@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Planets / Vital / Diversity
+ * @alpha
+ */
 enum Diversity {
   Simple = 2,
   Diverse = 3,

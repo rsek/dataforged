@@ -1,4 +1,3 @@
-//License: MIT
 export * from "@classes/oracles/AttributeSetter.js";
 export * from "@classes/oracles/DisplayTable.js";
 export * from "@classes/oracles/GameObject.js";

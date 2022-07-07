@@ -1,4 +1,8 @@
-//License: MIT
+/**
+ * Set by Oracles / Creatures / Encountered Behavior
+ *
+ * @alpha
+ */
 enum Behavior {
   Ambusher = "Ambusher",
   Hibernator = "Hibernator",

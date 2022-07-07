@@ -1,4 +1,3 @@
-//License: MIT
 import type { MoveCategory } from "@classes/index.js";
 import type { IMoveCategory } from "@json_out/index.js";
 import { renderMoveCategory } from "@utils/md/renderMoveCategory.js";

@@ -1,14 +1,4 @@
 
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import { REFS_PATH } from "@constants/index.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
 import type { IOracleCategoryYaml } from "@yaml_in/index.js";

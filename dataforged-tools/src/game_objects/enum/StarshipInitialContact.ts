@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @alpha
+ */
 export enum StarshipInitialContact {
   AskingForHelp = "Asking for help",
   Derelict = "Derelict",
