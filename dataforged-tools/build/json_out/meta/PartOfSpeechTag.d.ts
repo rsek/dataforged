@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export declare enum PartOfSpeechTag {
     Noun = "noun",
     CommonNoun = "common noun",

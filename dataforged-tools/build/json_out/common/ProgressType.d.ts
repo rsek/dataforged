@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export declare enum ProgressTypeStarforged {
     Combat = "Combat",
     Vow = "Vow",

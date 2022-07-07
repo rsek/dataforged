@@ -1,3 +1,7 @@
+/**
+ * NYI.
+ * @alpha
+ */
 declare enum Biome {
 }
 export { Biome };

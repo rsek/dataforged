@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.
+ * @public
+ */
 export var MeterCondition;
 (function (MeterCondition) {
     /**

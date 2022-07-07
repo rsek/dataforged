@@ -1,5 +1,8 @@
 import type { IHasDescription, IHasDisplay, IHasName, IHasSource, IHasSummary, IRow } from "@json_out/index.js";
 
+/**
+ * @public
+ */
 export type DelveCardType = "Theme" | "Domain";
 
 /**

@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Factions / Leadership
+ * @alpha
+ */
 var Leadership;
 (function (Leadership) {
     Leadership["Anarchist"] = "Anarchist";

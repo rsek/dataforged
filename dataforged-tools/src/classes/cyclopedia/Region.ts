@@ -1,13 +1,11 @@
 import { DisplayWithTitle, Source } from "@classes/index.js";
 import type { IIronswornRegion as IIronswornRegion } from "@json_out/index.js";
 import type { IDisplay } from "@json_out/meta/IDisplay.js";
-import type { ISource } from "@json_out/meta/ISource.js";
 import type { IIronswornRegionYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-
 export class IronswornRegion implements IIronswornRegion {
   $id: string;
   Name: string;

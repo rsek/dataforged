@@ -1,4 +1,5 @@
-import type { IHasName, IOracle, IOracleBase } from "@json_out/index.js";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { IOracle, IOracleBase } from "@json_out/index.js";
 
 /**
  * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.

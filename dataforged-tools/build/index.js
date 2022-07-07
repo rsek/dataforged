@@ -1,4 +1,4 @@
-//License: MIT
+/* eslint-disable no-restricted-imports */
 export * from "./utils/index.js";
 export * from "./json_out/index.js";
 export * from "./yaml_in/index.js";

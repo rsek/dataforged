@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @alpha
+ */
 export var Region;
 (function (Region) {
     Region["Terminus"] = "Terminus";

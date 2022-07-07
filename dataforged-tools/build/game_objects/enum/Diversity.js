@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Planets / Vital / Diversity
+ * @alpha
+ */
 var Diversity;
 (function (Diversity) {
     Diversity[Diversity["Simple"] = 2] = "Simple";

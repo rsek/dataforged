@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Enumerates valid sourcebook titles.
+ * @public
+ */
 export var SourceTitle;
 (function (SourceTitle) {
     SourceTitle["Starforged"] = "Ironsworn: Starforged Rulebook";

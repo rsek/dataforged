@@ -1,4 +1,3 @@
-//License: MIT
 import { cloneImages } from "./process_img/cloneImages.js";
 import { convertRasterImages } from "./process_img/convertRasterImages.js";
 /**

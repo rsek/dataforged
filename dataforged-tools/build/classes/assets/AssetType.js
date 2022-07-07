@@ -1,4 +1,3 @@
-//License: MIT
 import { DisplayWithTitle } from "../common/Display.js";
 import { Asset, SourceInheritor } from "../index.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";

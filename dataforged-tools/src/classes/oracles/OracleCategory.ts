@@ -4,7 +4,7 @@ import type { Gamespace , IOracleCategory } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
-import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
+import type { IOracleCategoryYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 /**

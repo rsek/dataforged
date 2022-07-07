@@ -1,4 +1,3 @@
-import { StarshipInitialContact } from "@game_objects/index.js";
 
 /**
  * @public

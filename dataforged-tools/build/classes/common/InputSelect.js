@@ -1,13 +1,3 @@
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import { Input } from "./Input.js";
 import { InputType } from "../../json_out/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";

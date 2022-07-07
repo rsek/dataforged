@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export declare enum InputType {
     /**
      * @see {@link IInputText}

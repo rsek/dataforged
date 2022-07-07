@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export declare enum ClockSegments {
     Four = 4,
     Six = 6,

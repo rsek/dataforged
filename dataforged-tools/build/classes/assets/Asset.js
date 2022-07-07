@@ -1,4 +1,3 @@
-//License: MIT
 import { AssetAbility } from "./AssetAbility.js";
 import { AssetState } from "./AssetState.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";

@@ -1,4 +1,8 @@
-//License: MIT
+/**
+ * Enumerates challenge ranks.
+ * @page 39
+ * @public
+ */
 var ChallengeRank;
 (function (ChallengeRank) {
     ChallengeRank[ChallengeRank["Troublesome"] = 1] = "Troublesome";

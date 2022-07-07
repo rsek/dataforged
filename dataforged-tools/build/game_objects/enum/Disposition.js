@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Characters / Disposition
+ * @alpha
+ */
 var Disposition;
 (function (Disposition) {
     Disposition["Cooperative"] = "Cooperative";

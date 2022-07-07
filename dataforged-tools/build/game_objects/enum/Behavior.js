@@ -1,4 +1,8 @@
-//License: MIT
+/**
+ * Set by Oracles / Creatures / Encountered Behavior
+ *
+ * @alpha
+ */
 var Behavior;
 (function (Behavior) {
     Behavior["Ambusher"] = "Ambusher";

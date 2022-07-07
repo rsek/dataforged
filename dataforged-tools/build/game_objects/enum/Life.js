@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Planets / * / Life
+ * @alpha
+ */
 var Life;
 (function (Life) {
     Life["None"] = "None";

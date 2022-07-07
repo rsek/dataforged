@@ -1,3 +1,7 @@
+/**
+ * Enumerates player character stats.
+ * @public
+ */
 export declare enum Stat {
     Edge = "Edge",
     Heart = "Heart",

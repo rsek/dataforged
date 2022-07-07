@@ -1,13 +1,3 @@
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import { Oracle, OracleCategoryDisplay, OracleUsage, SourceInheritor } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { buildLog } from "../../utils/logging/buildLog.js";

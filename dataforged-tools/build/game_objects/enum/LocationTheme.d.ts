@@ -1,3 +1,7 @@
+/**
+ * Set by Oracles / Location Themes / Theme Type
+ * @public
+ */
 export declare enum LocationTheme {
     Chaotic = "Chaotic",
     Fortified = "Fortified",

@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * NYI.
+ * @alpha
+ */
 var Biome;
 (function (Biome) {
 })(Biome || (Biome = {}));

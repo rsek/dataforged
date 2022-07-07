@@ -1,13 +1,3 @@
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 import { extractRowContent } from "./extractRowContent.js";
 import { extractRowRolls } from "./extractRowRolls.js";
 import _ from "lodash-es";

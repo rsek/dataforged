@@ -1,4 +1,3 @@
-//License: MIT
 export * from "./ITemplateOracleCategoryYaml.js";
 export * from "./ITemplateOracleYaml.js";
 export * from "./ITemplateTableYaml.js";

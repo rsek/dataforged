@@ -1,4 +1,4 @@
-//License: MIT
+/* eslint-disable @typescript-eslint/ban-types */
 /**
  * Logs a standardized build message to console.
  * @param fn - the function to tag the message with

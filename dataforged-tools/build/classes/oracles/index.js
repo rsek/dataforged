@@ -1,4 +1,3 @@
-//License: MIT
 export * from "./AttributeSetter.js";
 export * from "./DisplayTable.js";
 export * from "./GameObject.js";

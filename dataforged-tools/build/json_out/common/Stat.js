@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Enumerates player character stats.
+ * @public
+ */
 export var Stat;
 (function (Stat) {
     Stat["Edge"] = "Edge";

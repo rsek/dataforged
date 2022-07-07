@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export declare enum AssetTypeName {
     CommandVehicle = "Command Vehicle",
     Companion = "Companion",
@@ -5,15 +8,6 @@ export declare enum AssetTypeName {
     Module = "Module",
     Path = "Path",
     SupportVehicle = "Support Vehicle"
-}
-
-export declare enum Atmosphere {
-    NoneThin = "None / Thin",
-    Toxic = "Toxic",
-    Corrosive = "Corrosive",
-    Marginal = "Marginal",
-    Breathable = "Breathable",
-    Ideal = "Ideal"
 }
 
 /**
@@ -110,42 +104,11 @@ export declare enum AttributeKey {
     Zone = "Zone"
 }
 
-export declare enum Authority {
-    NoneLawless = "None / lawless",
-    Ineffectual = "Ineffectual",
-    Tolerant = "Tolerant",
-    Fair = "Fair",
-    Unyielding = "Unyielding",
-    Corrupt = "Corrupt",
-    Oppressive = "Oppressive"
-}
-
-export declare enum Behavior {
-    Ambusher = "Ambusher",
-    Hibernator = "Hibernator",
-    PackHunter = "Pack hunter",
-    ApexPredator = "Apex predator",
-    Hoarder = "Hoarder",
-    Prey = "Prey",
-    Builder = "Builder",
-    Hunter = "Hunter",
-    Protector = "Protector",
-    Camouflager = "Camouflager",
-    Lurer = "Lurer",
-    Scavenger = "Scavenger",
-    Forager = "Forager",
-    Migratory = "Migratory",
-    Tracker = "Tracker",
-    Grazer = "Grazer",
-    Mimic = "Mimic",
-    Trapper = "Trapper",
-    Herder = "Herder",
-    Nester = "Nester"
-}
-
-export declare enum Biome {
-}
-
+/**
+ * Enumerates challenge ranks.
+ * @page 39
+ * @public
+ */
 export declare enum ChallengeRank {
     Troublesome = 1,
     Dangerous = 2,
@@ -154,6 +117,9 @@ export declare enum ChallengeRank {
     Epic = 5
 }
 
+/**
+ * @public
+ */
 export declare enum ClockSegments {
     Four = 4,
     Six = 6,
@@ -161,78 +127,19 @@ export declare enum ClockSegments {
     Ten = 10
 }
 
+/**
+ * See clocks (p. 234) for more information.
+ * @public
+ */
 export declare enum ClockType {
     Tension = "Tension",
     Campaign = "Campaign"
 }
 
-export declare enum CreatureScale {
-    Minuscule = "Minuscule",
-    Tiny = "Tiny",
-    Small = "Small",
-    Medium = "Medium",
-    Large = "Large",
-    Huge = "Huge",
-    Titanic = "Titanic",
-    Colossal = "Colossal",
-    Vast = "Vast"
-}
-
+/**
+ * @public
+ */
 export declare type DelveCardType = "Theme" | "Domain";
-
-export declare enum DerelictType {
-    Starship = "Starship",
-    Settlement = "Settlement"
-}
-
-export declare enum Disposition {
-    Cooperative = "Cooperative",
-    Curious = "Curious",
-    Demanding = "Demanding",
-    Desperate = "Desperate",
-    Friendly = "Friendly",
-    Helpful = "Helpful",
-    Hostile = "Hostile",
-    Indifferent = "Indifferent",
-    Suspicious = "Suspicious",
-    Threatening = "Threatening",
-    Unfriendly = "Unfriendly",
-    Wanting = "Wanting"
-}
-
-export declare enum Diversity {
-    Simple = 2,
-    Diverse = 3,
-    Complex = 4,
-    GardenWorld = 5
-}
-
-export declare enum Dominion {
-    Agriculture = "Agriculture",
-    Artistry = "Artistry",
-    Commerce = "Commerce",
-    Conquest = "Conquest",
-    Construction = "Construction",
-    Diplomacy = "Diplomacy",
-    Education = "Education",
-    Environmentalism = "Environmentalism",
-    Exploration = "Exploration",
-    Faith = "Faith",
-    History = "History",
-    Honor = "Honor",
-    Industry = "Industry",
-    Isolationism = "Isolationism",
-    Law = "Law",
-    Mysticism = "Mysticism",
-    Pacifism = "Pacifism",
-    Prophecy = "Prophecy",
-    Science = "Science",
-    Secrecy = "Secrecy",
-    Technology = "Technology",
-    Treachery = "Treachery",
-    Warfare = "Warfare",
-    Wealth = "Wealth"
-}
 
 /**
  * @public
@@ -246,6 +153,9 @@ export declare enum EncounterNatureIronsworn {
     Anomaly = "Anomaly"
 }
 
+/**
+ * @public
+ */
 export declare enum EncounterNatureStarforged {
     Creature = "Creature",
     Horror = "Horror",
@@ -254,36 +164,11 @@ export declare enum EncounterNatureStarforged {
     Monster = "Monster"
 }
 
+/**
+ * @public
+ */
 export declare enum EncounterTags {
     Vehicle = "vehicle"
-}
-
-export declare enum Environment {
-    Space = "Space",
-    Interior = "Interior",
-    Land = "Land",
-    Liquid = "Liquid",
-    Air = "Air"
-}
-
-export declare enum FactionType {
-    FringeGroup = "Fringe Group",
-    Dominion = "Dominion",
-    Guild = "Guild"
-}
-
-export declare enum FringeGroup {
-    Cultists = "Cultists",
-    Exiles = "Exiles",
-    Gangsters = "Gangsters",
-    Hackers = "Hackers",
-    MonsterHunters = "Monster hunters",
-    Pirates = "Pirates",
-    Raiders = "Raiders",
-    Rebels = "Rebels",
-    RogueAI = "Rogue AI",
-    Scavengers = "Scavengers",
-    Smugglers = "Smugglers"
 }
 
 /**
@@ -299,6 +184,9 @@ export declare interface GameDataRoot {
     "Setting Truths"?: ISettingTruth[];
 }
 
+/**
+ * @public
+ */
 export declare enum GameObjectType {
     Derelict = "Derelict",
     DerelictZone = "Derelict Zone",
@@ -311,26 +199,13 @@ export declare enum GameObjectType {
     Faction = "Faction"
 }
 
+/**
+ * Some might say that "Gamespace" is a terrible pun. To them, I reply: you'll never take me alive.
+ * @public
+ */
 export declare enum Gamespace {
     Starforged = "Starforged",
     Ironsworn = "Ironsworn"
-}
-
-export declare enum Guild {
-    Assassins = "Assassins",
-    BountyHunters = "Bounty Hunters",
-    Couriers = "Couriers",
-    Courtesans = "Courtesans",
-    Engineers = "Engineers",
-    Healers = "Healers",
-    Industrialists = "Industrialists",
-    Mercenaries = "Mercenaries",
-    Merchants = "Merchants",
-    Mystics = "Mystics",
-    Navigators = "Navigators",
-    Peacekeepers = "Peacekeepers",
-    Researchers = "Researchers",
-    Spies = "Spies"
 }
 
 /**
@@ -601,6 +476,9 @@ export declare interface IAssetType extends IHasName, IHasId, IHasDescription, I
     Usage: IAssetUsage;
 }
 
+/**
+ * @public
+ */
 export declare interface IAssetUsage {
     /**
      * Whether the asset's abilities are shared with Allies.
@@ -897,6 +775,10 @@ export declare interface IDelveTheme extends IDelveCard {
     ];
 }
 
+/**
+ * Interface for data relevant to an item's display/rendering.
+ * @public
+ */
 export declare interface IDisplay {
     /**
      * A URL pointing to a single SVG icon.
@@ -1696,16 +1578,6 @@ export declare interface IMultipleRolls {
     "Make it worse": boolean;
 }
 
-export declare enum Influence {
-    Forsaken = "Forsaken",
-    Isolated = "Isolated",
-    Localized = "Localized",
-    Established = "Established",
-    Notable = "Notable",
-    Dominant = "Dominant",
-    Inescapable = "Inescapable"
-}
-
 /**
  * The type of an attribute set by a Select Input.
  * @public
@@ -1731,6 +1603,9 @@ export declare enum InputSelectOptionType {
     Number = "Number"
 }
 
+/**
+ * @public
+ */
 export declare enum InputType {
     /**
      * @see {@link IInputText}
@@ -1934,6 +1809,10 @@ export declare interface IRequirements {
 export declare interface IRollColumn extends ITableColumnBase {
 }
 
+/**
+ * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.
+ * @public
+ */
 export declare interface IRollTemplate {
     /**
      * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.
@@ -2022,8 +1901,6 @@ export declare interface IRow extends Partial<Nullable<IHasSummary> & IHasRollTe
      */
     Attributes?: IAttribute[] | undefined;
 }
-
-export declare type IRowRollYaml = [number | null, number | null];
 
 /**
  * Interface for Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
@@ -2179,42 +2056,24 @@ export declare interface ITextColumn extends ITableColumnBase {
     Key: "Result" | "Summary";
 }
 
+/**
+ * @public
+ */
 export declare type KeysMatching<T, V> = {
     [K in keyof T]-?: T[K] extends V ? K : never;
 }[keyof T];
 
+/**
+ * @public
+ */
 export declare type KeysWithValuesOfType<T, V> = keyof {
     [P in keyof Required<T> as Required<T>[P] extends V ? P : never]: P;
 };
 
-export declare enum Leadership {
-    Anarchist = "Anarchist",
-    DisputedLeadership = "Disputed leadership",
-    AuthoritarianDictatorship = "Authoritarian dictatorship",
-    OligarchicalElite = "Oligarchical elite",
-    DynasticLineage = "Dynastic lineage",
-    FatedOrProphesiedLeader = "Fated or prophesied leader",
-    ClanChiefsOrElders = "Clan chiefs or elders",
-    ElectedRepresentatives = "Elected representatives",
-    MachineIntelligence = "Machine intelligence",
-    VariedDecentralized = "Varied / decentralized"
-}
-
-export declare enum Life {
-    None = "None",
-    Extinct = "Extinct",
-    Scarce = "Scarce",
-    Diverse = "Diverse",
-    Bountiful = "Bountiful",
-    Overrun = "Overrun"
-}
-
-export declare enum Location {
-    Planetside = "Planetside",
-    Orbital = "Orbital",
-    DeepSpace = "Deep Space"
-}
-
+/**
+ * Set by Oracles / Location Themes / Theme Type
+ * @public
+ */
 export declare enum LocationTheme {
     Chaotic = "Chaotic",
     Fortified = "Fortified",
@@ -2226,6 +2085,11 @@ export declare enum LocationTheme {
     Sacred = "Sacred"
 }
 
+/**
+ * Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.
+ * If an asset condition meter can be used in this manner, the alias is included in its Aliases array.
+ * @public
+ */
 export declare enum MeterAlias {
     CompanionHealth = "Companion Health",
     VehicleIntegrity = "Vehicle Integrity",
@@ -2234,6 +2098,10 @@ export declare enum MeterAlias {
     IncidentalVehicleIntegrity = "Incidental Vehicle Integrity"
 }
 
+/**
+ * Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.
+ * @public
+ */
 export declare enum MeterCondition {
     /**
      * Battered may be marked when your vehicle is at 0 integrity and you fail to Withstand Damage. The vehicle is barely holding together.
@@ -2292,10 +2160,23 @@ export declare enum MoveOutcome {
     "Strong Hit" = 2
 }
 
-declare type Nullable<T> = {
+/**
+ * @public
+ */
+export declare type Nullable<T> = {
     [P in keyof T]: T[P] | null;
 };
 
+/**
+ * @public
+ */
+export declare type NullableKey<T, K> = {
+    [P in keyof T]: P extends K ? T[P] | null : T[P];
+};
+
+/**
+ * @public
+ */
 export declare type OmitNever<T> = {
     [K in keyof T as T[K] extends never ? never : K]: T[K];
 };
@@ -2307,8 +2188,16 @@ export declare type OptionalKeys<T> = {
     [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? K : never;
 }[keyof T];
 
+/**
+ * Makes a type where K is nullable.
+ * @public
+ */
 export declare type PartialBy<T, K extends keyof any = ""> = Omit<T, K> & Partial<Pick<T, K extends keyof T ? K : never>>;
 
+/**
+ * Only recurses a couple times so it doesn't cause an infinite loop during schema generation.
+ * @public
+ */
 export declare type PartialDeep<T> = Partial<{
     [P in keyof T]: T[P] extends Array<unknown> ? (T[P] | undefined) : Partial<T[P]>;
 }>;
@@ -2327,6 +2216,9 @@ export declare type PartialExcept<T, K extends keyof any = ""> = RequireKey<{
     [P in keyof T]?: T[P];
 }, K>;
 
+/**
+ * @public
+ */
 export declare enum PartOfSpeechTag {
     Noun = "noun",
     CommonNoun = "common noun",
@@ -2370,14 +2262,6 @@ export declare enum PlayerConditionMeter {
     Supply = "Supply"
 }
 
-export declare enum Population {
-    Few = "Few",
-    Dozens = "Dozens",
-    Hundreds = "Hundreds",
-    Thousands = "Thousands",
-    TensOfThousands = "Tens of thousands"
-}
-
 /**
  * @public
  */
@@ -2390,6 +2274,9 @@ export declare enum ProgressTypeIronsworn {
     Bonds = "Bonds"
 }
 
+/**
+ * @public
+ */
 export declare enum ProgressTypeStarforged {
     Combat = "Combat",
     Vow = "Vow",
@@ -2401,12 +2288,10 @@ export declare enum ProgressTypeStarforged {
     Discoveries = "Discoveries Legacy"
 }
 
-export declare enum Region {
-    Terminus = "Terminus",
-    Outlands = "Outlands",
-    Expanse = "Expanse"
-}
-
+/**
+ * Standard replacement strings, used by constructors when processing the master YAML data.
+ * @public
+ */
 export declare enum Replacement {
     /**
      * Replace with the ID of the nearest ancestor asset.
@@ -2430,10 +2315,17 @@ export declare enum Replacement {
     AssetSelectMeter = "${{@ASSET_SELECT_METER}}"
 }
 
+/**
+ * @public
+ */
 export declare type RequiredKeys<T> = {
     [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? never : K;
 }[keyof T];
 
+/**
+ * Generic type: require specific keys to be NonNullable.
+ * @public
+ */
 export declare type RequireKey<T, K extends keyof any = ""> = T & {
     [P in K]-?: NonNullable<T[P extends keyof T ? P : never]>;
 };
@@ -2465,61 +2357,16 @@ export declare enum RerollType {
     All = "All"
 }
 
-export declare enum Role {
-    Agent = "Agent",
-    AI = "AI",
-    Artisan = "Artisan",
-    Assassin = "Assassin",
-    BountyHunter = "Hunter",
-    Courier = "Courier",
-    Crew = "Crew",
-    Criminal = "Criminal",
-    Cultist = "Cultist",
-    Diplomat = "Diplomat",
-    Engineer = "Engineer",
-    Entertainer = "Entertainer",
-    Explorer = "Explorer",
-    Farmer = "Farmer",
-    Fugitive = "Fugitive",
-    Guard = "Guard",
-    Guide = "Guide",
-    Healer = "Healer",
-    Historian = "Historian",
-    Hunter = "Hunter",
-    Investigator = "Investigator",
-    Laborer = "Laborer",
-    Lawkeeper = "Lawkeeper",
-    Leader = "Leader",
-    Mercenary = "Mercenary",
-    Merchant = "Merchant",
-    Miner = "Miner",
-    Mystic = "Mystic",
-    Navigator = "Navigator",
-    Outcast = "Outcast",
-    Pilgrim = "Pilgrim",
-    Pilot = "Pilot",
-    Pirate = "Pirate",
-    Preacher = "Preacher",
-    Prophet = "Prophet",
-    Raider = "Raider",
-    Researcher = "Researcher",
-    Scavenger = "Scavenger",
-    Scholar = "Scholar",
-    Scout = "Scout",
-    Shipwright = "Shipwright",
-    Smuggler = "Smuggler",
-    Soldier = "Soldier",
-    Spacer = "Spacer",
-    Technician = "Technician",
-    Thief = "Thief"
-}
-
 /**
  * Standard player character stats or condition meters that can be used as +stat in an action roll.
  * @public
  */
 export declare type RollableStat = Stat | ICustomStat["$id"] | PlayerConditionMeter | IConditionMeter["$id"];
 
+/**
+ * The stat(s) or progress track(s) that may be rolled with the parent move trigger option.
+ * @public
+ */
 export declare enum RollMethod {
     /**
      * When rolling with this move trigger option, *every* stat or progress track of the `Using` key is rolled.
@@ -2585,20 +2432,10 @@ export declare enum SettingTruthName {
     Horrors = "Horrors"
 }
 
-export declare enum SettlementInitialContact {
-    AskingForHelp = "Asking for help",
-    Captured = "Captured",
-    Derelict = "Derelict",
-    Destroyed = "Destroyed",
-    Hostile = "Hostile",
-    InBattle = "In battle",
-    NeutralAutomated = "Neutral / automated",
-    Uncooperative = "Uncooperative",
-    Unresponsive = "Unresponsive",
-    Wary = "Wary",
-    Welcoming = "Welcoming"
-}
-
+/**
+ * Enumerates valid sourcebook titles.
+ * @public
+ */
 export declare enum SourceTitle {
     Starforged = "Ironsworn: Starforged Rulebook",
     StarforgedAssets = "Ironsworn: Starforged Assets",
@@ -2637,21 +2474,10 @@ export declare interface Starforged extends GameDataRoot {
  */
 export declare const starforged: Starforged;
 
-export declare enum StarshipInitialContact {
-    AskingForHelp = "Asking for help",
-    Derelict = "Derelict",
-    Destroyed = "Destroyed",
-    Dismissive = "Dismissive",
-    Familiar = "Familiar",
-    Friendly = "Friendly",
-    Hostile = "Hostile",
-    InBattle = "In battle",
-    NeutralAutomated = "Neutral / automated",
-    Uncooperative = "Uncooperative",
-    Unresponsive = "Unresponsive",
-    Wary = "Wary"
-}
-
+/**
+ * Enumerates player character stats.
+ * @public
+ */
 export declare enum Stat {
     Edge = "Edge",
     Heart = "Heart",
@@ -2673,15 +2499,25 @@ export declare type StubBy<T, PartialKey extends keyof any = "", OmitKey extends
  */
 export declare type StubExcept<T, ReqKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
 
+/**
+ * Represents a tuple: a typed array with a fixed length.
+ * @public
+ */
 export declare type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & {
     length: TLength;
 };
 
+/**
+ * @public
+ */
 export declare enum VaultZone {
     Interior = "Interior",
     Sanctum = "Sanctum"
 }
 
+/**
+ * @public
+ */
 export declare enum Zone {
     Access = "Access",
     Community = "Community",

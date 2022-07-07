@@ -1,4 +1,3 @@
-//License: MIT
 import { TableDisplayInfo } from "../index.js";
 /**
  * @internal

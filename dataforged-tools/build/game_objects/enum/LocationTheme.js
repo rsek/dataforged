@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Location Themes / Theme Type
+ * @public
+ */
 export var LocationTheme;
 (function (LocationTheme) {
     LocationTheme["Chaotic"] = "Chaotic";

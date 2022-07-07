@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Types describing metadata common to many items in Dataforged.
+ * @module Json.Meta
+ */
 export * from "./IDisplay.js";
 export * from "./IHas.js";
 export * from "./IRequirements.js";

@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Creatures / Scale/**
+ * @alpha
+ */
 export var CreatureScale;
 (function (CreatureScale) {
     CreatureScale["Minuscule"] = "Minuscule";

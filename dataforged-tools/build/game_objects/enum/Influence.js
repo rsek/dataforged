@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / Factions / Influence
+ * @alpha
+ */
 var Influence;
 (function (Influence) {
     Influence["Forsaken"] = "Forsaken";

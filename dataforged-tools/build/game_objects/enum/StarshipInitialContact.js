@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @alpha
+ */
 export var StarshipInitialContact;
 (function (StarshipInitialContact) {
     StarshipInitialContact["AskingForHelp"] = "Asking for help";

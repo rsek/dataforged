@@ -1,4 +1,4 @@
-import type { IDisplayOracle, IDisplayWithTitle, IOracle , IOracleCategory, IRow } from "@json_out/index.js";
+import type { IDisplayOracle, IOracle , IOracleCategory, IRow } from "@json_out/index.js";
 import type { IRequirementsYaml } from "@yaml_in/common/IRequirementsYaml.js";
 import type { ITableDisplayInfoYaml, YamlStub } from "@yaml_in/index.js";
 import type { IOracleUsageYaml } from "@yaml_in/oracles/IOracleUsageYaml.js";

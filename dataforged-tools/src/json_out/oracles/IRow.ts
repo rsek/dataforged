@@ -1,5 +1,5 @@
 import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
-import { Nullable } from "@utils/types/Nullable.js";
+import type { Nullable } from "@utils/types/Nullable.js";
 
 /**
  * Interface representing a single row in an oracle table.

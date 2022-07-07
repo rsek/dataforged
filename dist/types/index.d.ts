@@ -139,6 +139,11 @@ export declare enum ClockType {
 /**
  * @public
  */
+export declare type DelveCardType = "Theme" | "Domain";
+
+/**
+ * @public
+ */
 export declare enum EncounterNatureIronsworn {
     Ironlander = "Ironlander",
     Firstborn = "Firstborn",
@@ -569,72 +574,204 @@ export declare interface ICyclopediaEntry extends IHasName, IHasId, IHasDisplay,
 }
 
 /**
+ * Shared interface describing site Themes and site Domains from *Ironsworn: Delve*.
  * @public
  */
-export declare interface IDelve extends IHasName, IHasSource, IHasSummary, IHasDescription {
+export declare interface IDelveCard extends IHasName, IHasSource, IHasSummary, Partial<IHasDisplay>, Partial<IHasDescription> {
+    /**
+     * Indicates whether this is a site Theme or a site Domain.
+     */
+    Type: DelveCardType;
+    /**
+     * The summary that appears on the card.
+     * @markdown
+     */
+    Summary: string;
+    /**
+     * An optional extended description for this card that doesn't appear on the card itself.
+     * @markdown
+     */
+    Description: string;
+    /**
+     * The Features that this card contributes. Effectively a 'partial' oracle table; combine with the features of another card to complete it.
+     */
     Features: IRow[];
+    /**
+     * The Dangers that this card contributes. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.
+     */
     Dangers: IRow[];
 }
 
 /**
  * @public
  */
-export declare interface IDelveDomain extends IDelve {
+export declare interface IDelveDomain extends IDelveCard {
+    Type: "Domain";
+    /**
+     * The Features that this Domain card contributes. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
+     */
     Features: [
-    IDelveRow<21, 43>,
-    IDelveRow<44, 56>,
-    IDelveRow<57, 64>,
-    IDelveRow<65, 68>,
-    IDelveRow<69, 72>,
-    IDelveRow<73, 76>,
-    IDelveRow<77, 80>,
-    IDelveRow<81, 84>,
-    IDelveRow<85, 88>,
-    IDelveRow<89, 98>,
-    IDelveRow<99, 99>,
-    IDelveRow<100, 100>
+    IRow & {
+        Floor: 21;
+        Ceiling: 43;
+    },
+    IRow & {
+        Floor: 44;
+        Ceiling: 56;
+    },
+    IRow & {
+        Floor: 57;
+        Ceiling: 64;
+    },
+    IRow & {
+        Floor: 65;
+        Ceiling: 68;
+    },
+    IRow & {
+        Floor: 69;
+        Ceiling: 72;
+    },
+    IRow & {
+        Floor: 73;
+        Ceiling: 76;
+    },
+    IRow & {
+        Floor: 77;
+        Ceiling: 80;
+    },
+    IRow & {
+        Floor: 81;
+        Ceiling: 84;
+    },
+    IRow & {
+        Floor: 85;
+        Ceiling: 88;
+    },
+    IRow & {
+        Floor: 89;
+        Ceiling: 98;
+        Result: "Something unusual or unexpected";
+    },
+    IRow & {
+        Floor: 99;
+        Ceiling: 99;
+        Result: "You transition into a new theme";
+    },
+    IRow & {
+        Floor: 100;
+        Ceiling: 100;
+        Result: "You transition into a new domain";
+    }
     ];
+    /**
+     * The Dangers that this Domain contributes. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.
+     */
     Dangers: [
-    IDelveRow<31, 33>,
-    IDelveRow<34, 36>,
-    IDelveRow<37, 39>,
-    IDelveRow<40, 42>,
-    IDelveRow<43, 45>
+    IRow & {
+        Floor: 31;
+        Ceiling: 33;
+    },
+    IRow & {
+        Floor: 34;
+        Ceiling: 36;
+    },
+    IRow & {
+        Floor: 37;
+        Ceiling: 39;
+    },
+    IRow & {
+        Floor: 40;
+        Ceiling: 42;
+    },
+    IRow & {
+        Floor: 43;
+        Ceiling: 45;
+    }
     ];
 }
 
 /**
  * @public
  */
-export declare interface IDelveRow<F extends number, C extends number> extends IRow {
-    Floor: F;
-    Ceiling: C;
-}
-
-/**
- * @public
- */
-export declare interface IDelveTheme extends IDelve {
+export declare interface IDelveTheme extends IDelveCard {
+    Type: "Theme";
+    /**
+     * The Features that this Theme card contributes. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
+     */
     Features: [
-    IDelveRow<1, 4>,
-    IDelveRow<5, 8>,
-    IDelveRow<9, 12>,
-    IDelveRow<13, 16>,
-    IDelveRow<17, 20>
+    IRow & {
+        Floor: 1;
+        Ceiling: 4;
+    },
+    IRow & {
+        Floor: 5;
+        Ceiling: 8;
+    },
+    IRow & {
+        Floor: 9;
+        Ceiling: 12;
+    },
+    IRow & {
+        Floor: 13;
+        Ceiling: 16;
+    },
+    IRow & {
+        Floor: 17;
+        Ceiling: 20;
+    }
     ];
+    /**
+     * The Dangers that this Theme contributes. Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.
+     */
     Dangers: [
-    IDelveRow<1, 5>,
-    IDelveRow<6, 10>,
-    IDelveRow<11, 12>,
-    IDelveRow<13, 14>,
-    IDelveRow<15, 16>,
-    IDelveRow<17, 18>,
-    IDelveRow<19, 20>,
-    IDelveRow<21, 22>,
-    IDelveRow<23, 24>,
-    IDelveRow<35, 26>,
-    IDelveRow<27, 28>,
-    IDelveRow<29, 30>
+    IRow & {
+        Floor: 1;
+        Ceiling: 5;
+    },
+    IRow & {
+        Floor: 6;
+        Ceiling: 10;
+    },
+    IRow & {
+        Floor: 11;
+        Ceiling: 12;
+    },
+    IRow & {
+        Floor: 13;
+        Ceiling: 14;
+    },
+    IRow & {
+        Floor: 15;
+        Ceiling: 16;
+    },
+    IRow & {
+        Floor: 17;
+        Ceiling: 18;
+    },
+    IRow & {
+        Floor: 19;
+        Ceiling: 20;
+    },
+    IRow & {
+        Floor: 21;
+        Ceiling: 22;
+    },
+    IRow & {
+        Floor: 23;
+        Ceiling: 24;
+    },
+    IRow & {
+        Floor: 25;
+        Ceiling: 26;
+    },
+    IRow & {
+        Floor: 27;
+        Ceiling: 28;
+    },
+    IRow & {
+        Floor: 29;
+        Ceiling: 30;
+    }
     ];
 }
 
@@ -986,11 +1123,10 @@ export declare interface IHasSuggestions {
  */
 export declare interface IHasSummary {
     /**
-     * A user-facing markdown summary of the item.
+     * A user-facing markdown summary of the item. `Summary` is shorter than {@link IHasDescription | Description}.
      * @markdown
-     * @nullable
      */
-    Summary: string | null;
+    Summary: string;
 }
 
 /**
@@ -1710,7 +1846,7 @@ export declare const ironsworn: Ironsworn;
  * Interface representing a single row in an oracle table.
  * @public
  */
-export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasGameObjects & IHasDisplay> {
+export declare interface IRow extends Partial<Nullable<IHasSummary> & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasGameObjects & IHasDisplay> {
     /**
      * The ID of this row.
      * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
@@ -1740,7 +1876,9 @@ export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & I
     /**
      * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
      *
-     * Some tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.
+     * Generally, `Summary` is longer than `Result`.
+     *
+     * Some tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.
      *
      * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
      * @nullable
@@ -1812,25 +1950,36 @@ export declare interface ISettingTruthOptionSubtableRow extends IRow {
 }
 
 /**
- * Interface representing data on the game's source.
+ * Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.
  * @public
  */
 export declare interface ISource {
     /**
      * The title of the source.
+     *
+     * For 'canonical' content, use one of the enumerated `SourceTitle` strings.
+     *
+     * For 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. "Steelforged", "Ironsmith").
+     *
+     * If the source has no particular title (for instance, it's a single custom element in a VTT implementation), use "Custom".
      */
-    Title: SourceTitle;
+    Title: SourceTitle | string;
+    /**
+     * The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.
+     * @default ["Shawn Tomkin"]
+     */
+    Authors: string[];
     /**
      * The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.
      * @pattern ^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$
      */
     Date?: string | undefined;
     /**
-     * The page on which the item appears most prominently.
+     * The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).
      */
     Page?: number | undefined;
     /**
-     * The URL where the source is available.
+     * The URL where the source material is available.
      * @pattern ^https?://.*$
      */
     Url?: string | undefined;
@@ -2010,6 +2159,20 @@ export declare enum MoveOutcome {
     "Weak Hit" = 1,
     "Strong Hit" = 2
 }
+
+/**
+ * @public
+ */
+export declare type Nullable<T> = {
+    [P in keyof T]: T[P] | null;
+};
+
+/**
+ * @public
+ */
+export declare type NullableKey<T, K> = {
+    [P in keyof T]: P extends K ? T[P] | null : T[P];
+};
 
 /**
  * @public
@@ -2289,7 +2452,9 @@ export declare enum SourceTitle {
  * @public
  */
 export declare enum SourceUrl {
-    IronswornRulebook = "https://shawn-tomkin.itch.io/ironsworn",
+    Starforged = "https://getstarforged.com",
+    StarforgedAssets = "https://getstarforged.com",
+    Ironsworn = "https://shawn-tomkin.itch.io/ironsworn",
     IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
     IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
     IronswornBonusAssets = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view"

@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @public
+ */
 export var AssetTypeName;
 (function (AssetTypeName) {
     AssetTypeName["CommandVehicle"] = "Command Vehicle";

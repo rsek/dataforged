@@ -1,4 +1,3 @@
-//License: MIT
 import { Requirements } from "../index.js";
 import _ from "lodash-es";
 /**

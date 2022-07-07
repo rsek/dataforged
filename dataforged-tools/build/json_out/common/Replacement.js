@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Standard replacement strings, used by constructors when processing the master YAML data.
+ * @public
+ */
 export var Replacement;
 (function (Replacement) {
     /**

@@ -1,3 +1,7 @@
+/**
+ * Types describing asset cards in *Ironsworn* and *Ironsworn: Starforged*.
+ * @module Json.Assets
+ */
 export * from "./AssetTypeName.js";
 export * from "./IAlterMove.js";
 export * from "./IAsset.js";

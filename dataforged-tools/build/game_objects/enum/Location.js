@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by Oracles / ** / Location
+ * @alpha
+ */
 export var Location;
 (function (Location) {
     Location["Planetside"] = "Planetside";

@@ -1,4 +1,7 @@
-//License: MIT
+/**
+ * Set by oracle: Oracles / Derelicts / Type
+ * @alpha
+ */
 var DerelictType;
 (function (DerelictType) {
     DerelictType["Starship"] = "Starship";

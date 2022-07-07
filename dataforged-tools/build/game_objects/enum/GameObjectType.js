@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @public
+ */
 export var GameObjectType;
 (function (GameObjectType) {
     GameObjectType["Derelict"] = "Derelict";

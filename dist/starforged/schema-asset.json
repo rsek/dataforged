@@ -944,14 +944,21 @@
       "type": "string"
     },
     "ISource": {
-      "description": "Interface representing data on the game's source.",
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource",
       "type": "object",
       "properties": {
         "Title": {
-          "$ref": "#/definitions/SourceTitle",
-          "description": "The title of the source.",
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
           "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
@@ -960,12 +967,12 @@
           "title": "Date"
         },
         "Page": {
-          "description": "The page on which the item appears most prominently.",
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
           "type": "integer",
           "title": "Page"
         },
         "Url": {
-          "description": "The URL where the source is available.",
+          "description": "The URL where the source material is available.",
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
@@ -973,22 +980,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Title"]
-    },
-    "SourceTitle": {
-      "description": "Enumerates valid sourcebook titles.",
-      "title": "SourceTitle",
-      "enum": [
-        "Custom",
-        "Ironsworn Assets",
-        "Ironsworn Bonus Assets (July 2020)",
-        "Ironsworn Rulebook",
-        "Ironsworn: Delve",
-        "Ironsworn: Starforged Assets",
-        "Ironsworn: Starforged Rulebook",
-        "Sundered Isles Preview"
-      ],
-      "type": "string"
+      "required": ["Authors", "Title"]
     },
     "ISuggestions": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
@@ -1670,7 +1662,7 @@
       "additionalProperties": false
     },
     "ISource_1": {
-      "description": "Interface representing data on the game's source.",
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource_1",
       "$ref": "#/definitions/Partial<ISource>"
     },
@@ -1679,9 +1671,16 @@
       "type": "object",
       "properties": {
         "Title": {
-          "$ref": "#/definitions/SourceTitle_1",
-          "description": "The title of the source.",
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
           "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
@@ -1690,12 +1689,12 @@
           "title": "Date"
         },
         "Page": {
-          "description": "The page on which the item appears most prominently.",
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
           "type": "integer",
           "title": "Page"
         },
         "Url": {
-          "description": "The URL where the source is available.",
+          "description": "The URL where the source material is available.",
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
@@ -1703,21 +1702,6 @@
       },
       "defaultProperties": [],
       "additionalProperties": false
-    },
-    "SourceTitle_1": {
-      "description": "Enumerates valid sourcebook titles.",
-      "title": "SourceTitle_1",
-      "enum": [
-        "Custom",
-        "Ironsworn Assets",
-        "Ironsworn Bonus Assets (July 2020)",
-        "Ironsworn Rulebook",
-        "Ironsworn: Delve",
-        "Ironsworn: Starforged Assets",
-        "Ironsworn: Starforged Rulebook",
-        "Sundered Isles Preview"
-      ],
-      "type": "string"
     },
     "IAlterMomentum": {
       "title": "IAlterMomentum",

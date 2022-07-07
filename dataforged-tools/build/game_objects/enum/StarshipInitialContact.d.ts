@@ -1,3 +1,6 @@
+/**
+ * @alpha
+ */
 export declare enum StarshipInitialContact {
     AskingForHelp = "Asking for help",
     Derelict = "Derelict",

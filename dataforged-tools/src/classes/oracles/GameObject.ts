@@ -2,9 +2,7 @@ import { Requirements } from "@classes/index.js";
 import type { GameObjectType } from "@game_objects/enum/GameObjectType.js";
 import type { GameObjectRecord } from "@game_objects/index.js";
 import type { IGameObject } from "@json_out/index.js";
-import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
-import { enumHas } from "@utils/validation/enumHas.js";
 import type { IRequirementsYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 

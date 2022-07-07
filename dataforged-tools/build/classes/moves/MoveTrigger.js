@@ -1,4 +1,3 @@
-//License: MIT
 import { MoveTriggerOptionAction, MoveTriggerOptionProgress } from "./MoveTriggerOption.js";
 import { RollType } from "../../json_out/index.js";
 // TODO: add ironsworn moves, or have the constructor use move data to figure it out

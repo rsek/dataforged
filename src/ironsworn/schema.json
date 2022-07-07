@@ -60,7 +60,7 @@
           "title": "Encounters"
         },
         "Summary": {
-          "description": "A user-facing markdown summary of the item.",
+          "description": "A user-facing markdown summary of the item. `Summary` is shorter than{@linkIHasDescription| Description}.",
           "type": "string",
           "title": "Summary"
         },
@@ -125,7 +125,7 @@
           "title": "Your Truth"
         },
         "Summary": {
-          "description": "A user-facing markdown summary of the item.",
+          "description": "A user-facing markdown summary of the item. `Summary` is shorter than{@linkIHasDescription| Description}.",
           "type": "string",
           "title": "Summary"
         },
@@ -233,14 +233,21 @@
       "type": "number"
     },
     "ISource": {
-      "description": "Interface representing data on the game's source.",
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource",
       "type": "object",
       "properties": {
         "Title": {
-          "$ref": "#/definitions/SourceTitle",
-          "description": "The title of the source.",
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
           "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
@@ -249,12 +256,12 @@
           "title": "Date"
         },
         "Page": {
-          "description": "The page on which the item appears most prominently.",
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
           "type": "integer",
           "title": "Page"
         },
         "Url": {
-          "description": "The URL where the source is available.",
+          "description": "The URL where the source material is available.",
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
@@ -262,22 +269,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Title"]
-    },
-    "SourceTitle": {
-      "description": "Enumerates valid sourcebook titles.",
-      "title": "SourceTitle",
-      "enum": [
-        "Custom",
-        "Ironsworn Assets",
-        "Ironsworn Bonus Assets (July 2020)",
-        "Ironsworn Rulebook",
-        "Ironsworn: Delve",
-        "Ironsworn: Starforged Assets",
-        "Ironsworn: Starforged Rulebook",
-        "Sundered Isles Preview"
-      ],
-      "type": "string"
+      "required": ["Authors", "Title"]
     },
     "ISettingTruth": {
       "description": "Interface for Setting Truth categories such as \"Exodus\" and \"Cataclysm\". See page XX of Starforged for further information.",
@@ -378,7 +370,7 @@
           "title": "Result"
         },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
@@ -512,7 +504,7 @@
           "title": "Result"
         },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
@@ -2346,7 +2338,7 @@
       "additionalProperties": false
     },
     "ISource_1": {
-      "description": "Interface representing data on the game's source.",
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource_1",
       "$ref": "#/definitions/Partial<ISource>"
     },
@@ -2355,9 +2347,16 @@
       "type": "object",
       "properties": {
         "Title": {
-          "$ref": "#/definitions/SourceTitle_1",
-          "description": "The title of the source.",
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
           "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
@@ -2366,12 +2365,12 @@
           "title": "Date"
         },
         "Page": {
-          "description": "The page on which the item appears most prominently.",
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
           "type": "integer",
           "title": "Page"
         },
         "Url": {
-          "description": "The URL where the source is available.",
+          "description": "The URL where the source material is available.",
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
@@ -2379,21 +2378,6 @@
       },
       "defaultProperties": [],
       "additionalProperties": false
-    },
-    "SourceTitle_1": {
-      "description": "Enumerates valid sourcebook titles.",
-      "title": "SourceTitle_1",
-      "enum": [
-        "Custom",
-        "Ironsworn Assets",
-        "Ironsworn Bonus Assets (July 2020)",
-        "Ironsworn Rulebook",
-        "Ironsworn: Delve",
-        "Ironsworn: Starforged Assets",
-        "Ironsworn: Starforged Rulebook",
-        "Sundered Isles Preview"
-      ],
-      "type": "string"
     },
     "IAlterMomentum": {
       "title": "IAlterMomentum",

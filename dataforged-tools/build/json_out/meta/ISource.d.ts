@@ -1,3 +1,7 @@
+/**
+ * Enumerates valid sourcebook titles.
+ * @public
+ */
 export declare enum SourceTitle {
     Starforged = "Ironsworn: Starforged Rulebook",
     StarforgedAssets = "Ironsworn: Starforged Assets",

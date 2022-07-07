@@ -3,16 +3,6 @@
  * @param str - The string to be validated.
  * @returns A boolean value.
  */
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
-//License: MIT
 export function validateColor(str) {
     return RegExp(/#?[0-9A-Fa-f]{6}/g).test(str);
 }

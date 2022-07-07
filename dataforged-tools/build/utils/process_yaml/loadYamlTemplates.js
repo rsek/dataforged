@@ -1,4 +1,3 @@
-//License: MIT
 import { REFS_PATH } from "../../constants/index.js";
 import fs from "fs";
 /**

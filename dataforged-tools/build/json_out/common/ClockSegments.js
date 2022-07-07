@@ -1,4 +1,6 @@
-//License: MIT
+/**
+ * @public
+ */
 export var ClockSegments;
 (function (ClockSegments) {
     ClockSegments[ClockSegments["Four"] = 4] = "Four";

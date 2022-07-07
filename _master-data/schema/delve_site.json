@@ -19,38 +19,248 @@
       "title": "IDelveTheme",
       "type": "object",
       "properties": {
+        "Type": {
+          "description": "Indicates whether this is a site Theme or a site Domain.",
+          "type": "string",
+          "enum": ["Theme"],
+          "title": "Type"
+        },
         "Features": {
+          "description": "The Features that this Theme card contributes. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.",
           "type": "array",
           "items": [
-            { "$ref": "#/definitions/IDelveRow<1,4>" },
-            { "$ref": "#/definitions/IDelveRow<5,8>" },
-            { "$ref": "#/definitions/IDelveRow<9,12>" },
-            { "$ref": "#/definitions/IDelveRow<13,16>" },
-            { "$ref": "#/definitions/IDelveRow<17,20>" }
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [1], "title": "Floor" },
+                "Ceiling": { "type": "number", "enum": [4], "title": "Ceiling" }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [5], "title": "Floor" },
+                "Ceiling": { "type": "number", "enum": [8], "title": "Ceiling" }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [9], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [12],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [13], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [16],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [17], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [20],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            }
           ],
           "minItems": 5,
           "maxItems": 5,
           "title": "Features"
         },
         "Dangers": {
+          "description": "The Dangers that this Theme contributes. Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.",
           "type": "array",
           "items": [
-            { "$ref": "#/definitions/IDelveRow<1,5>" },
-            { "$ref": "#/definitions/IDelveRow<6,10>" },
-            { "$ref": "#/definitions/IDelveRow<11,12>" },
-            { "$ref": "#/definitions/IDelveRow<13,14>" },
-            { "$ref": "#/definitions/IDelveRow<15,16>" },
-            { "$ref": "#/definitions/IDelveRow<17,18>" },
-            { "$ref": "#/definitions/IDelveRow<19,20>" },
-            { "$ref": "#/definitions/IDelveRow<21,22>" },
-            { "$ref": "#/definitions/IDelveRow<23,24>" },
-            { "$ref": "#/definitions/IDelveRow<35,26>" },
-            { "$ref": "#/definitions/IDelveRow<27,28>" },
-            { "$ref": "#/definitions/IDelveRow<29,30>" }
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [1], "title": "Floor" },
+                "Ceiling": { "type": "number", "enum": [5], "title": "Ceiling" }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [6], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [10],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [11], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [12],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [13], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [14],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [15], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [16],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [17], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [18],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [19], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [20],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [21], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [22],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [23], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [24],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [25], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [26],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [27], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [28],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [29], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [30],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            }
           ],
           "minItems": 12,
           "maxItems": 12,
           "title": "Dangers"
+        },
+        "Summary": {
+          "description": "The summary that appears on the card.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "Description": {
+          "description": "An optional extended description for this card that doesn't appear on the card itself.",
+          "type": "string",
+          "title": "Description"
         },
         "Name": {
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
@@ -62,15 +272,10 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Summary": {
-          "description": "A user-facing markdown summary of the item.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         }
       },
       "defaultProperties": [],
@@ -81,100 +286,10 @@
         "Features",
         "Name",
         "Source",
-        "Summary"
+        "Summary",
+        "Type"
       ]
     },
-    "IDelveRow<1,4>": {
-      "title": "IDelveRow<1,4>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F": { "title": "IDelveRow.F", "type": "number", "enum": [1] },
-    "IDelveRow.C": { "title": "IDelveRow.C", "type": "number", "enum": [4] },
     "IRow": {
       "description": "Interface representing a single row in an oracle table.",
       "title": "IRow",
@@ -221,7 +336,7 @@
           "title": "Result"
         },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
@@ -561,1569 +676,22 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IDelveRow<5,8>": {
-      "title": "IDelveRow<5,8>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_1",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_1",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_1": {
-      "title": "IDelveRow.F_1",
-      "type": "number",
-      "enum": [5]
-    },
-    "IDelveRow.C_1": {
-      "title": "IDelveRow.C_1",
-      "type": "number",
-      "enum": [8]
-    },
-    "IDelveRow<9,12>": {
-      "title": "IDelveRow<9,12>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_2",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_2",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_2": {
-      "title": "IDelveRow.F_2",
-      "type": "number",
-      "enum": [9]
-    },
-    "IDelveRow.C_2": {
-      "title": "IDelveRow.C_2",
-      "type": "number",
-      "enum": [12]
-    },
-    "IDelveRow<13,16>": {
-      "title": "IDelveRow<13,16>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_3",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_3",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_3": {
-      "title": "IDelveRow.F_3",
-      "type": "number",
-      "enum": [13]
-    },
-    "IDelveRow.C_3": {
-      "title": "IDelveRow.C_3",
-      "type": "number",
-      "enum": [16]
-    },
-    "IDelveRow<17,20>": {
-      "title": "IDelveRow<17,20>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_4",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_4",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_4": {
-      "title": "IDelveRow.F_4",
-      "type": "number",
-      "enum": [17]
-    },
-    "IDelveRow.C_4": {
-      "title": "IDelveRow.C_4",
-      "type": "number",
-      "enum": [20]
-    },
-    "IDelveRow<1,5>": {
-      "title": "IDelveRow<1,5>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_5",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.C_5": {
-      "title": "IDelveRow.C_5",
-      "type": "number",
-      "enum": [5]
-    },
-    "IDelveRow<6,10>": {
-      "title": "IDelveRow<6,10>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_5",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_6",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_5": {
-      "title": "IDelveRow.F_5",
-      "type": "number",
-      "enum": [6]
-    },
-    "IDelveRow.C_6": {
-      "title": "IDelveRow.C_6",
-      "type": "number",
-      "enum": [10]
-    },
-    "IDelveRow<11,12>": {
-      "title": "IDelveRow<11,12>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_6",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_2",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_6": {
-      "title": "IDelveRow.F_6",
-      "type": "number",
-      "enum": [11]
-    },
-    "IDelveRow<13,14>": {
-      "title": "IDelveRow<13,14>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_3",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_7",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.C_7": {
-      "title": "IDelveRow.C_7",
-      "type": "number",
-      "enum": [14]
-    },
-    "IDelveRow<15,16>": {
-      "title": "IDelveRow<15,16>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_7",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_3",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_7": {
-      "title": "IDelveRow.F_7",
-      "type": "number",
-      "enum": [15]
-    },
-    "IDelveRow<17,18>": {
-      "title": "IDelveRow<17,18>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_4",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_8",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.C_8": {
-      "title": "IDelveRow.C_8",
-      "type": "number",
-      "enum": [18]
-    },
-    "IDelveRow<19,20>": {
-      "title": "IDelveRow<19,20>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_8",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_4",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_8": {
-      "title": "IDelveRow.F_8",
-      "type": "number",
-      "enum": [19]
-    },
-    "IDelveRow<21,22>": {
-      "title": "IDelveRow<21,22>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_9",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_9",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_9": {
-      "title": "IDelveRow.F_9",
-      "type": "number",
-      "enum": [21]
-    },
-    "IDelveRow.C_9": {
-      "title": "IDelveRow.C_9",
-      "type": "number",
-      "enum": [22]
-    },
-    "IDelveRow<23,24>": {
-      "title": "IDelveRow<23,24>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_10",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_10",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_10": {
-      "title": "IDelveRow.F_10",
-      "type": "number",
-      "enum": [23]
-    },
-    "IDelveRow.C_10": {
-      "title": "IDelveRow.C_10",
-      "type": "number",
-      "enum": [24]
-    },
-    "IDelveRow<35,26>": {
-      "title": "IDelveRow<35,26>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_11",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_11",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_11": {
-      "title": "IDelveRow.F_11",
-      "type": "number",
-      "enum": [35]
-    },
-    "IDelveRow.C_11": {
-      "title": "IDelveRow.C_11",
-      "type": "number",
-      "enum": [26]
-    },
-    "IDelveRow<27,28>": {
-      "title": "IDelveRow<27,28>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_12",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_12",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_12": {
-      "title": "IDelveRow.F_12",
-      "type": "number",
-      "enum": [27]
-    },
-    "IDelveRow.C_12": {
-      "title": "IDelveRow.C_12",
-      "type": "number",
-      "enum": [28]
-    },
-    "IDelveRow<29,30>": {
-      "title": "IDelveRow<29,30>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_13",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_13",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_13": {
-      "title": "IDelveRow.F_13",
-      "type": "number",
-      "enum": [29]
-    },
-    "IDelveRow.C_13": {
-      "title": "IDelveRow.C_13",
-      "type": "number",
-      "enum": [30]
-    },
     "ISource": {
-      "description": "Interface representing data on the game's source.",
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource",
       "type": "object",
       "properties": {
         "Title": {
-          "$ref": "#/definitions/SourceTitle",
-          "description": "The title of the source.",
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
           "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
         },
         "Date": {
           "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
@@ -2132,12 +700,12 @@
           "title": "Date"
         },
         "Page": {
-          "description": "The page on which the item appears most prominently.",
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
           "type": "integer",
           "title": "Page"
         },
         "Url": {
-          "description": "The URL where the source is available.",
+          "description": "The URL where the source material is available.",
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
@@ -2145,59 +713,281 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Title"]
-    },
-    "SourceTitle": {
-      "description": "Enumerates valid sourcebook titles.",
-      "title": "SourceTitle",
-      "enum": [
-        "Custom",
-        "Ironsworn Assets",
-        "Ironsworn Bonus Assets (July 2020)",
-        "Ironsworn Rulebook",
-        "Ironsworn: Delve",
-        "Ironsworn: Starforged Assets",
-        "Ironsworn: Starforged Rulebook",
-        "Sundered Isles Preview"
-      ],
-      "type": "string"
+      "required": ["Authors", "Title"]
     },
     "IDelveDomain": {
       "title": "IDelveDomain",
       "type": "object",
       "properties": {
+        "Type": {
+          "description": "Indicates whether this is a site Theme or a site Domain.",
+          "type": "string",
+          "enum": ["Domain"],
+          "title": "Type"
+        },
         "Features": {
+          "description": "The Features that this Domain card contributes. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.",
           "type": "array",
           "items": [
-            { "$ref": "#/definitions/IDelveRow<21,43>" },
-            { "$ref": "#/definitions/IDelveRow<44,56>" },
-            { "$ref": "#/definitions/IDelveRow<57,64>" },
-            { "$ref": "#/definitions/IDelveRow<65,68>" },
-            { "$ref": "#/definitions/IDelveRow<69,72>" },
-            { "$ref": "#/definitions/IDelveRow<73,76>" },
-            { "$ref": "#/definitions/IDelveRow<77,80>" },
-            { "$ref": "#/definitions/IDelveRow<81,84>" },
-            { "$ref": "#/definitions/IDelveRow<85,88>" },
-            { "$ref": "#/definitions/IDelveRow<89,98>" },
-            { "$ref": "#/definitions/IDelveRow<99,99>" },
-            { "$ref": "#/definitions/IDelveRow<100,100>" }
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [21], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [43],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [44], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [56],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [57], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [64],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [65], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [68],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [69], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [72],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [73], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [76],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [77], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [80],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [81], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [84],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [85], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [88],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [89], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [98],
+                  "title": "Ceiling"
+                },
+                "Result": {
+                  "type": "string",
+                  "enum": ["Something unusual or unexpected"],
+                  "title": "Result"
+                }
+              },
+              "required": ["Ceiling", "Floor", "Result"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [99], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [99],
+                  "title": "Ceiling"
+                },
+                "Result": {
+                  "type": "string",
+                  "enum": ["You transition into a new theme"],
+                  "title": "Result"
+                }
+              },
+              "required": ["Ceiling", "Floor", "Result"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [100], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [100],
+                  "title": "Ceiling"
+                },
+                "Result": {
+                  "type": "string",
+                  "enum": ["You transition into a new domain"],
+                  "title": "Result"
+                }
+              },
+              "required": ["Ceiling", "Floor", "Result"]
+            }
           ],
           "minItems": 12,
           "maxItems": 12,
           "title": "Features"
         },
         "Dangers": {
+          "description": "The Dangers that this Domain contributes. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.",
           "type": "array",
           "items": [
-            { "$ref": "#/definitions/IDelveRow<31,33>" },
-            { "$ref": "#/definitions/IDelveRow<34,36>" },
-            { "$ref": "#/definitions/IDelveRow<37,39>" },
-            { "$ref": "#/definitions/IDelveRow<40,42>" },
-            { "$ref": "#/definitions/IDelveRow<43,45>" }
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [31], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [33],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [34], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [36],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [37], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [39],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [40], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [42],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            },
+            {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "Floor": { "type": "number", "enum": [43], "title": "Floor" },
+                "Ceiling": {
+                  "type": "number",
+                  "enum": [45],
+                  "title": "Ceiling"
+                }
+              },
+              "required": ["Ceiling", "Floor"]
+            }
           ],
           "minItems": 5,
           "maxItems": 5,
           "title": "Dangers"
+        },
+        "Summary": {
+          "description": "The summary that appears on the card.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "Description": {
+          "description": "An optional extended description for this card that doesn't appear on the card itself.",
+          "type": "string",
+          "title": "Description"
         },
         "Name": {
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
@@ -2209,15 +999,10 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Summary": {
-          "description": "A user-facing markdown summary of the item.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         }
       },
       "defaultProperties": [],
@@ -2228,1686 +1013,9 @@
         "Features",
         "Name",
         "Source",
-        "Summary"
+        "Summary",
+        "Type"
       ]
-    },
-    "IDelveRow<21,43>": {
-      "title": "IDelveRow<21,43>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_9",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_14",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.C_14": {
-      "title": "IDelveRow.C_14",
-      "type": "number",
-      "enum": [43]
-    },
-    "IDelveRow<44,56>": {
-      "title": "IDelveRow<44,56>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_14",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_15",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_14": {
-      "title": "IDelveRow.F_14",
-      "type": "number",
-      "enum": [44]
-    },
-    "IDelveRow.C_15": {
-      "title": "IDelveRow.C_15",
-      "type": "number",
-      "enum": [56]
-    },
-    "IDelveRow<57,64>": {
-      "title": "IDelveRow<57,64>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_15",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_16",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_15": {
-      "title": "IDelveRow.F_15",
-      "type": "number",
-      "enum": [57]
-    },
-    "IDelveRow.C_16": {
-      "title": "IDelveRow.C_16",
-      "type": "number",
-      "enum": [64]
-    },
-    "IDelveRow<65,68>": {
-      "title": "IDelveRow<65,68>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_16",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_17",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_16": {
-      "title": "IDelveRow.F_16",
-      "type": "number",
-      "enum": [65]
-    },
-    "IDelveRow.C_17": {
-      "title": "IDelveRow.C_17",
-      "type": "number",
-      "enum": [68]
-    },
-    "IDelveRow<69,72>": {
-      "title": "IDelveRow<69,72>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_17",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_18",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_17": {
-      "title": "IDelveRow.F_17",
-      "type": "number",
-      "enum": [69]
-    },
-    "IDelveRow.C_18": {
-      "title": "IDelveRow.C_18",
-      "type": "number",
-      "enum": [72]
-    },
-    "IDelveRow<73,76>": {
-      "title": "IDelveRow<73,76>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_18",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_19",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_18": {
-      "title": "IDelveRow.F_18",
-      "type": "number",
-      "enum": [73]
-    },
-    "IDelveRow.C_19": {
-      "title": "IDelveRow.C_19",
-      "type": "number",
-      "enum": [76]
-    },
-    "IDelveRow<77,80>": {
-      "title": "IDelveRow<77,80>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_19",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_20",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_19": {
-      "title": "IDelveRow.F_19",
-      "type": "number",
-      "enum": [77]
-    },
-    "IDelveRow.C_20": {
-      "title": "IDelveRow.C_20",
-      "type": "number",
-      "enum": [80]
-    },
-    "IDelveRow<81,84>": {
-      "title": "IDelveRow<81,84>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_20",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_21",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_20": {
-      "title": "IDelveRow.F_20",
-      "type": "number",
-      "enum": [81]
-    },
-    "IDelveRow.C_21": {
-      "title": "IDelveRow.C_21",
-      "type": "number",
-      "enum": [84]
-    },
-    "IDelveRow<85,88>": {
-      "title": "IDelveRow<85,88>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_21",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_22",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_21": {
-      "title": "IDelveRow.F_21",
-      "type": "number",
-      "enum": [85]
-    },
-    "IDelveRow.C_22": {
-      "title": "IDelveRow.C_22",
-      "type": "number",
-      "enum": [88]
-    },
-    "IDelveRow<89,98>": {
-      "title": "IDelveRow<89,98>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_22",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_23",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_22": {
-      "title": "IDelveRow.F_22",
-      "type": "number",
-      "enum": [89]
-    },
-    "IDelveRow.C_23": {
-      "title": "IDelveRow.C_23",
-      "type": "number",
-      "enum": [98]
-    },
-    "IDelveRow<99,99>": {
-      "title": "IDelveRow<99,99>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_23",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_24",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_23": {
-      "title": "IDelveRow.F_23",
-      "type": "number",
-      "enum": [99]
-    },
-    "IDelveRow.C_24": {
-      "title": "IDelveRow.C_24",
-      "type": "number",
-      "enum": [99]
-    },
-    "IDelveRow<100,100>": {
-      "title": "IDelveRow<100,100>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_24",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_25",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_24": {
-      "title": "IDelveRow.F_24",
-      "type": "number",
-      "enum": [100]
-    },
-    "IDelveRow.C_25": {
-      "title": "IDelveRow.C_25",
-      "type": "number",
-      "enum": [100]
-    },
-    "IDelveRow<31,33>": {
-      "title": "IDelveRow<31,33>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_25",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_26",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_25": {
-      "title": "IDelveRow.F_25",
-      "type": "number",
-      "enum": [31]
-    },
-    "IDelveRow.C_26": {
-      "title": "IDelveRow.C_26",
-      "type": "number",
-      "enum": [33]
-    },
-    "IDelveRow<34,36>": {
-      "title": "IDelveRow<34,36>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_26",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_27",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_26": {
-      "title": "IDelveRow.F_26",
-      "type": "number",
-      "enum": [34]
-    },
-    "IDelveRow.C_27": {
-      "title": "IDelveRow.C_27",
-      "type": "number",
-      "enum": [36]
-    },
-    "IDelveRow<37,39>": {
-      "title": "IDelveRow<37,39>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_27",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_28",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_27": {
-      "title": "IDelveRow.F_27",
-      "type": "number",
-      "enum": [37]
-    },
-    "IDelveRow.C_28": {
-      "title": "IDelveRow.C_28",
-      "type": "number",
-      "enum": [39]
-    },
-    "IDelveRow<40,42>": {
-      "title": "IDelveRow<40,42>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_28",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_29",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_28": {
-      "title": "IDelveRow.F_28",
-      "type": "number",
-      "enum": [40]
-    },
-    "IDelveRow.C_29": {
-      "title": "IDelveRow.C_29",
-      "type": "number",
-      "enum": [42]
-    },
-    "IDelveRow<43,45>": {
-      "title": "IDelveRow<43,45>",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "$ref": "#/definitions/IDelveRow.F_29",
-          "description": "The low end of the dice range for this row.",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "$ref": "#/definitions/IDelveRow.C_30",
-          "description": "The high end of the dice range for this row.",
-          "title": "Ceiling"
-        },
-        "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
-          "title": "$id"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nSome tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
-    },
-    "IDelveRow.F_29": {
-      "title": "IDelveRow.F_29",
-      "type": "number",
-      "enum": [43]
-    },
-    "IDelveRow.C_30": {
-      "title": "IDelveRow.C_30",
-      "type": "number",
-      "enum": [45]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

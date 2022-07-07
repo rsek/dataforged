@@ -1,4 +1,3 @@
-//License: MIT
 import _ from "lodash-es";
 /**
  * @internal
