@@ -6,6 +6,6 @@ export declare class CustomStatOption implements ICustomStatOption {
     $id: ICustomStatOption["$id"];
     Name: string;
     Value: number;
-    constructor(json: Omit<ICustomStatOption, "$id">, id: ICustomStatOption["$id"]);
+    constructor(json: Omit<ICustomStatOption, "$id">, parentId: ICustomStatOption["$id"]);
 }
 //# sourceMappingURL=CustomStatOption.d.ts.map

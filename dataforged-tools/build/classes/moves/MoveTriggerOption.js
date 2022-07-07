@@ -11,7 +11,7 @@ export class MoveTriggerOption {
         this.Method = json.Method ?? RollMethod.Any;
         this.Using = json.Using ?? [];
         if (json["Custom stat"]) {
-            this["Custom stat"] = new CustomStat(json["Custom stat"], `${this.$id}/Custom_stat`);
+            this["Custom stat"] = new CustomStat(json["Custom stat"], this.$id);
             if (this.Using && this["Custom stat"]) {
                 this.Using = this.Using.map(item => (item) === Replacement.CustomStat ? this["Custom stat"]?.$id : item);
             }
