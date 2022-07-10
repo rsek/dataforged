@@ -1,4 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "./src/templates/blueprint.md" ⚠️--><h1 align="center">Dataforged v1.3.2</h1>
+<!-- ⚠️ This README has been generated from the file(s) "./src/templates/blueprint.md" ⚠️--><h1 align="center">Dataforged v1.4.2</h1>
 <p align="center">
 		<a href="https://www.npmjs.com/package/dataforged"><img alt="undefined" src="https://img.shields.io/npm/v/dataforged?logo=npm" height="20"/></a>
 <a href="https://www.npmjs.com/package/dataforged"><img alt="undefined" src="https://img.shields.io/npm/dm/dataforged?logo=npm" height="20"/></a>
@@ -69,6 +69,12 @@ If you just want the data as-is, import the `starforged` object to use the pre-l
 
 ```javascript
 import { starforged } from 'dataforged'
+```
+
+If your project depends on something that doesn't support import assertions, you can instead use:
+
+```javascript
+import { starforged } from 'dataforged/esm-no-assert'
 ```
 
 #### CommonJS
