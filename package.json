@@ -4,8 +4,10 @@
   "description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. 🚀 Includes JSON schemas and a Javascript/Typescript API.",
   "type": "commonjs",
   "exports": {
-    "import": "./dist/index-esm.mjs",
-    "require": "./dist/index.js"
+    ".": {
+      "import": "./dist/index-esm.mjs",
+      "require": "./dist/index.js"
+    }
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
@@ -44,7 +46,6 @@
   },
   "homepage": "https://rsek.github.io/dataforged",
   "readme": "https://rsek.github.io/dataforged",
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "^18.0.3",
     "ts-node": "^10.8.2",
