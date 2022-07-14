@@ -14,4 +14,5 @@ export * from "./IRollTemplate.js";
 export * from "./IRow.js";
 export * from "./ITableColumnBase.js";
 export * from "./ITextColumn.js";
+export * from "./RollableOracles.js";
 //# sourceMappingURL=index.d.ts.map
