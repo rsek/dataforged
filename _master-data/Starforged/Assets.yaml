@@ -1,6 +1,8 @@
 Name: Assets
 Source:
   Title: "Ironsworn: Starforged Assets"
+  Authors:
+    - Shawn Tomkin
   Date: "050622"
 Asset Types:
   - Name: Command Vehicle
@@ -190,6 +192,7 @@ Asset Types:
         Abilities:
           - Text: &move:Asset.Grappler |-
               Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+            Enabled: true
             Moves:
               - Name: Ready Grappler
                 Trigger:
@@ -3775,6 +3778,8 @@ Asset Types:
         Source: &Sundered_Isles_Preview
           Title: Sundered Isles Preview
           Date: "051722"
+          Authors:
+            - Shawn Tomkin
         Abilities:
           - Text: You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost as -1 command. If you [Face Danger](Starforged/Moves/Adventure/Face_Danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
           # TODO figure out how to denote individual abilities/triggers invocable by any party member
@@ -4810,6 +4815,7 @@ Asset Types:
                         - Wits
                 Outcomes: *outcomes:+1_momentum.HIT
       - Name: Cohort
+        Source: *Sundered_Isles_Preview
         Requirement: Once you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) and take them on as a crewmate...
         Abilities:
           - Text: You gain a specialist. The specialist is part of your crew, but is managed as a connection and provides benefits to you and your allies per their role. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, or if you [Pay_the_Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
@@ -4841,8 +4847,8 @@ Asset Types:
                   Weak Hit: *Cohort.3
                   Miss: *Cohort.3
       - Name: Fleet Commander
+        Source: *Sundered_Isles_Preview
         Requirement: Once you fill 12 legacy track boxes and take command of a mighty fleet...
-        # TODO
         Abilities:
           - Text: Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](Starforged/Moves/Recover/Sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
             Enabled: true

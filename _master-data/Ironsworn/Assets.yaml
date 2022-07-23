@@ -536,6 +536,43 @@ Asset Types:
               When you completely fill a box on your bonds progress track, envision what your relationships have taught you. Then, take 1 experience and +2 momentum.
           - Text: |-
               When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-kin for courage or encouragement. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or corrupted. If both debilities are already marked, [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).
+      - Name: Commander
+        # https://game-icons.net/1x1/lorc/rally-the-troops.html
+        Abilities:
+          - Text: |-
+              You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](Ironsworn/Moves/Adventure/Face_Danger), [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Compel](Ironsworn/Moves/Relationship/Compel), or [Battle](Ironsworn/Moves/Combat/Battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) or [Sojourn](Ironsworn/Moves/Relationship/Sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.
+            Enabled: true
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Face_Danger]
+                Trigger: &alter:Asset.Commander
+                  Options:
+                    - Text: By commanding your warband
+                      Roll type: Action roll
+                      Using:
+                        - ${{@ASSET_METER}}
+              - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
+                Trigger: *alter:Asset.Commander
+              - Moves: [Ironsworn/Moves/Relationship/Compel]
+                Trigger: *alter:Asset.Commander
+              - Moves: [Ironsworn/Moves/Combat/Battle]
+                Trigger: *alter:Asset.Commander
+          - Text: |-
+              You may dispatch scouts from your warband to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) or [Resupply](Ironsworn/Moves/Adventure/Resupply); if you do, roll +strength.
+            Alter Moves:
+              - Moves: [Ironsworn/Moves/Adventure/Gather_Information]
+                Trigger: &alter:Asset.Commander_2
+                  Options:
+                    - Text: By dispatching scouts from your warband
+                      Roll type: Action roll
+                      Using:
+                        - ${{@ASSET_METER}}
+              - Moves: [Ironsworn/Moves/Adventure/Resupply]
+                Trigger: *alter:Asset.Commander_2
+          - Text: |-
+              Once you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
+        Condition Meter:
+          Name: Strength
+          Max: 4
       - Name: Dancer
         Abilities:
           - Text: |-
@@ -633,6 +670,16 @@ Asset Types:
               When you exert your title or lineage to [Compel](Ironsworn/Moves/Relationship/Compel), add +1 and take +1 momentum on a hit.
           - Text: |-
               When you forgo your title or lineage and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) as an equal, or when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to serve someone of a lower station, add +1 and take +1 momentum or +1 spirit on a hit.
+      - Name: Fated
+        # https://game-icons.net/1x1/lorc/journey.html
+        Abilities:
+          - Text: |-
+              When you [Face Death](Ironsworn/Moves/Suffer/Face_Death) or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) while your epic background vow is unfulfilled, it is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as a debility (and you no longer have this protection) until you next [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone) on the background vow.
+            Enabled: true
+          - Text: |-
+              When you [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone) on your background vow, take +2 momentum or +1 spirit.
+          - Text: |-
+              For every two boxes filled on your background vow progress track, take 1 experience. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow), your fate is at hand. Envision your final sacrifice and reroll any dice.
       - Name: Fortune Hunter
         # https://game-icons.net/1x1/delapouite/receive-money.html
         Abilities:
@@ -714,6 +761,16 @@ Asset Types:
                     - Roll type: Action roll
                       Using: [Shadow]
                       Text: Within an enemy area by scavenging or looting
+      - Name: Lorekeeper
+        # https://game-icons.net/1x1/lorc/book-aura.html
+        Abilities:
+          - Text: |-
+              You are the bearer of a mystical archive. When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using lore recalled from your studies, add +1. If you have a few hours to search the archive, add +2. On a hit, envision the obscure but helpful knowledge you put to use ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.
+            Enabled: true
+          - Text: |-
+              When you learn of a site or object holding lost knowledge, and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to recover it for the archive, reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.
+          - Text: |-
+              One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) (ignoring momentum).
       - Name: Loyalist
         # https://game-icons.net/1x1/delapouite/shaking-hands.html
         Abilities:
@@ -1063,63 +1120,6 @@ Asset Types:
               As above, and you may suffer -1 supply (after rolling) to add an additional +1.
           - Text: |-
               When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you [Compel](Ironsworn/Moves/Relationship/Compel), [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), or [Test Your Bond](Ironsworn/Moves/Relationship/Test_Your_Bond).
-      - Name: Commander
-        # https://game-icons.net/1x1/lorc/rally-the-troops.html
-        Abilities:
-          - Text: |-
-              You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](Ironsworn/Moves/Adventure/Face_Danger), [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Compel](Ironsworn/Moves/Relationship/Compel), or [Battle](Ironsworn/Moves/Combat/Battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) or [Sojourn](Ironsworn/Moves/Relationship/Sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.
-            Enabled: true
-            Alter Moves:
-              - Moves: [Ironsworn/Moves/Adventure/Face_Danger]
-                Trigger: &alter:Asset.Commander
-                  Options:
-                    - Text: By commanding your warband
-                      Roll type: Action roll
-                      Using:
-                        - ${{@ASSET_METER}}
-              - Moves: [Ironsworn/Moves/Adventure/Secure_an_Advantage]
-                Trigger: *alter:Asset.Commander
-              - Moves: [Ironsworn/Moves/Relationship/Compel]
-                Trigger: *alter:Asset.Commander
-              - Moves: [Ironsworn/Moves/Combat/Battle]
-                Trigger: *alter:Asset.Commander
-          - Text: |-
-              You may dispatch scouts from your warband to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) or [Resupply](Ironsworn/Moves/Adventure/Resupply); if you do, roll +strength.
-            Alter Moves:
-              - Moves: [Ironsworn/Moves/Adventure/Gather_Information]
-                Trigger: &alter:Asset.Commander_2
-                  Options:
-                    - Text: By dispatching scouts from your warband
-                      Roll type: Action roll
-                      Using:
-                        - ${{@ASSET_METER}}
-              - Moves: [Ironsworn/Moves/Adventure/Resupply]
-                Trigger: *alter:Asset.Commander_2
-          - Text: |-
-              Once you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
-        Condition Meter:
-          Name: Strength
-          Max: 4
-      - Name: Fated
-        # https://game-icons.net/1x1/lorc/journey.html
-        Abilities:
-          - Text: |-
-              When you [Face Death](Ironsworn/Moves/Suffer/Face_Death) or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) while your epic background vow is unfulfilled, it is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as a debility (and you no longer have this protection) until you next [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone) on the background vow.
-            Enabled: true
-          - Text: |-
-              When you [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone) on your background vow, take +2 momentum or +1 spirit.
-          - Text: |-
-              For every two boxes filled on your background vow progress track, take 1 experience. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow), your fate is at hand. Envision your final sacrifice and reroll any dice.
-      - Name: Lorekeeper
-        # https://game-icons.net/1x1/lorc/book-aura.html
-        Abilities:
-          - Text: |-
-              You are the bearer of a mystical archive. When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using lore recalled from your studies, add +1. If you have a few hours to search the archive, add +2. On a hit, envision the obscure but helpful knowledge you put to use ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.
-            Enabled: true
-          - Text: |-
-              When you learn of a site or object holding lost knowledge, and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to recover it for the archive, reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.
-          - Text: |-
-              One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) (ignoring momentum).
   - Name: Combat Talent
     Source:
       Page: 40
