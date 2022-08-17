@@ -44,6 +44,7 @@ Now, go forth and make something cool! 🚀 And be sure to tell us about it on t
 * [TheOracle](https://github.com/XenotropicDev/TheOracle), a general-purpose discord bot for playing *Ironsworn* and *Ironsworn: Starforged*
 * [Starforged-Sectors](https://github.com/Ferretsroq/Starforged-Sectors), a discord bot for generating *Ironsworn: Starforged* sectors
 * [*Ironsworn* and *Ironsworn: Starforged* templates for Obsidian](https://github.com/grimborg/obsidian-ironsworn)
+* [Rolo Ludo](https://code.tupale.co/Offray/RoloLudo),  a set of tools to connect JSON oracles with the [502Lab wiki](https://mutabit.com/repos.fossil/502Lab/uv/wiki/502Lab.html) to facilitate translations
 * ...and maybe yours? Tell us about it in the [*Ironsworn* discord](https://discordapp.com/invite/6QMvmJb)!
 
 
