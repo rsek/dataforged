@@ -15,6 +15,7 @@ export declare class Oracle extends SourceInheritor implements IOracle {
     Display: DisplayOracle;
     Usage?: OracleUsage | undefined;
     Content?: OracleContent | undefined;
+    "On a Match"?: IOracle["On a Match"] | undefined;
     Table?: Row[] | undefined;
     Oracles?: Oracle[] | undefined;
     constructor(json: IOracleYaml, gamespace: Gamespace, category: IOracleCategory["$id"], memberOf?: IOracle["$id"], ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]);

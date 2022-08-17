@@ -67,6 +67,23 @@ Move Categories:
           66-75 | 66-90  | 56-80 | Choose one: Mark progress or [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).
           76-80 | 91-99  | 81-99 | Take both: Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).
           81-00 | 00     | 00    | Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).
+        Outcomes:
+          Strong Hit:
+            Text: You delve deeper. Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).
+          Weak Hit:
+            Text: |-
+              Roll on the following table according to your stat.
+
+              Edge  | Shadow | Wits  | Weak Hit Result
+              ------|--------|-------|--------------------------------------------------
+              1-45  | 1-30   | 1-40  | Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).
+              46-65 | 31-65  | 41-55 | Mark progress.
+              66-75 | 66-90  | 56-80 | Choose one: Mark progress or [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).
+              76-80 | 91-99  | 81-99 | Take both: Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).
+              81-00 | 00     | 00    | Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).
+          Miss:
+            Text: |-
+              [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).
       - Name: Find an Opportunity
         Source:
           Title: "Ironsworn: Delve"
@@ -135,6 +152,13 @@ Move Categories:
           On a **weak hit**, you have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.
 
           On a **miss**, you don’t have it and the situation grows more perilous. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: You have it. Take +1 momentum.
+          Weak Hit:
+            Text: You have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.
+          Miss:
+            Text: You don’t have it and the situation grows more perilous. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Locate Your Objective
         Source:
           Title: "Ironsworn: Delve"
@@ -157,6 +181,17 @@ Move Categories:
           On a **weak hit**, you locate your objective but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
 
           On a **miss**, your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You locate your objective and the situation favors you. Choose one.
+
+                * Make another move now (not a progress move), and add +1.
+                * Take +1 momentum.
+          Weak Hit:
+            Text: You locate your objective but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
+          Miss:
+            Text: Your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic).
       - Name: Escape the Depths
         Trigger:
           Text: When you flee or withdraw from a site...
@@ -200,6 +235,23 @@ Move Categories:
             * A denizen plots their revenge.
 
           On a **miss**, a dire threat or imposing obstacle stands in your way. [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger). If you survive, you may make your escape.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You make your way safely out of the site. Take +1 momentum.
+          Weak Hit:
+            Text: |-
+              You find your way out, but this place exacts its price. Choose one.
+
+                * You are weary or wounded: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm).
+                * The experience leaves you shaken: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress).
+                * You are delayed, and it costs you.
+                * You leave behind something important.
+                * You face a new complication as you emerge from the depths.
+                * A denizen plots their revenge.
+          Miss:
+            Text: |-
+              A dire threat or imposing obstacle stands in your way. [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger). If you survive, you may make your escape.
       - Name: Reveal a Danger
         _idFragment: Reveal a Danger alt
         Oracles:
@@ -262,6 +314,20 @@ Move Categories:
           On a **weak hit**, you learn from your mistakes. Take 2 experience and clear all progress.
 
           On a **miss**, you’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You commit to making a dramatic change. Take 3 experience and clear all progress. Then, choose one.
+
+                * Adjust your approach: Discard a single asset, and take 2 experience for each marked ability.
+                * Make an oath: [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), and reroll any dice.
+                * Ready your next steps: Take +3 momentum.
+          Weak Hit:
+            Text: |-
+              You learn from your mistakes. Take 2 experience and clear all progress.
+          Miss:
+            Text: |-
+              You’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path.
   - Name: Threat
     Optional: true
     Source:

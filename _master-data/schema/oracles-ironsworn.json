@@ -15399,6 +15399,7 @@
           ],
           "title": "Table"
         },
+        "On a Match": { "$ref": "#/definitions/Omit", "title": "On a Match" },
         "_templateInfo": {
           "$ref": "#/definitions/ITemplateOracleYaml",
           "title": "_templateInfo"
@@ -15886,6 +15887,24 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
+    "Omit": {
+      "title": "Omit",
+      "$ref": "#/definitions/Omit<IOracleMatch,\"$id\">"
+    },
+    "Omit<IOracleMatch,\"$id\">": {
+      "title": "Omit<IOracleMatch,\"$id\">",
+      "type": "object",
+      "properties": {
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
     "ITemplateOracleYaml": {
       "title": "ITemplateOracleYaml",
       "type": "object",
@@ -15943,6 +15962,7 @@
           ],
           "title": "Table"
         },
+        "On a Match": { "$ref": "#/definitions/Omit", "title": "On a Match" },
         "_templateInfo": {
           "$ref": "#/definitions/ITemplateOracleYaml",
           "title": "_templateInfo"
@@ -16276,6 +16296,11 @@
           "type": "string",
           "title": "Member of"
         },
+        "On a Match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracle}s that have a `Table`.",
+          "$ref": "#/definitions/IOracleMatch",
+          "title": "On a Match"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
@@ -16374,6 +16399,11 @@
           "type": "string",
           "title": "Member of"
         },
+        "On a Match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracle}s that have a `Table`.",
+          "$ref": "#/definitions/IOracleMatch",
+          "title": "On a Match"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
@@ -16419,6 +16449,26 @@
       },
       "defaultProperties": [],
       "additionalProperties": false
+    },
+    "IOracleMatch": {
+      "title": "IOracleMatch",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

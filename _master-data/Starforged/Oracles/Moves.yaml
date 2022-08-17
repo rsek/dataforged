@@ -131,6 +131,8 @@ Moves:
       Aliases: [Ask]
       Oracles:
         - Name: Almost Certain
+          On a Match: &AtO.Match
+            Text: On a match, envision an extreme result or twist.
           Display:
             Title: "Ask the Oracle: Almost Certain"
           Aliases: ["90"]
@@ -138,6 +140,7 @@ Moves:
             - [1, 90, "Yes"]
             - [91, 100, "No"]
         - Name: Likely
+          On a Match: *AtO.Match
           Display:
             Title: "Ask the Oracle: Likely"
           Aliases: ["75"]
@@ -145,6 +148,7 @@ Moves:
             - [1, 75, "Yes"]
             - [76, 100, "No"]
         - Name: Fifty-fifty
+          On a Match: *AtO.Match
           Display:
             Title: "Ask the Oracle: 50/50"
           Aliases: ["50", "5050", "Fifty-fifty", "50/50", "50-50"]
@@ -152,6 +156,7 @@ Moves:
             - [1, 50, "Yes"]
             - [51, 100, "No"]
         - Name: Unlikely
+          On a Match: *AtO.Match
           Display:
             Title: "Ask the Oracle: Unlikely"
           Aliases: ["25"]
@@ -159,6 +164,7 @@ Moves:
             - [1, 25, "Yes"]
             - [26, 100, "No"]
         - Name: Small Chance
+          On a Match: *AtO.Match
           Display:
             Title: "Ask the Oracle: Small Chance"
           Aliases: ["10"]

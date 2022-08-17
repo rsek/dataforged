@@ -1,4 +1,4 @@
-import type { IDisplayOracle , IOracleBase, IOracleCategory , IRow } from "@json_out/index.js";
+import type { IDisplayOracle , IOracleBase, IOracleCategory , IOracleMatch, IRow } from "@json_out/index.js";
 
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
@@ -20,5 +20,9 @@ export interface IOracle extends IOracleBase {
    * @internal
    */
   Categories?: never;
+  /**
+   * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+   */
+  "On a Match"?: IOracleMatch | undefined
 }
 

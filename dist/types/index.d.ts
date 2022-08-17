@@ -574,41 +574,64 @@ export declare interface ICyclopediaEntry extends IHasName, IHasId, IHasDisplay,
 }
 
 /**
- * Shared interface describing site Themes and site Domains from *Ironsworn: Delve*.
+ * Interface describing common characteristics of themes and domains from *Ironsworn: Delve*.
+ *
+ * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
+ *
+ * @see IDelveTheme
+ * @see IDelveDomain
  * @public
  */
-export declare interface IDelveCard extends IHasName, IHasSource, IHasSummary, Partial<IHasDisplay>, Partial<IHasDescription> {
+export declare interface IDelveCard extends IHasName, IHasSource, IHasSummary, IHasDescription, IHasDisplay, IHasId {
+    /**
+     * @pattern ^Ironsworn/(Themes|Domains)/[A-z_-]+$
+     */
+    $id: string;
     /**
      * Indicates whether this is a site Theme or a site Domain.
      */
     Type: DelveCardType;
     /**
-     * The summary that appears on the card.
+     * The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.
      * @markdown
      */
     Summary: string;
     /**
-     * An optional extended description for this card that doesn't appear on the card itself.
+     * An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.
+     *
+     * Most are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.
+     *
      * @markdown
      */
     Description: string;
     /**
-     * The Features that this card contributes. Effectively a 'partial' oracle table; combine with the features of another card to complete it.
+     * The Features contributed by this card. Effectively a 'partial' oracle table; combine with the features of another card to complete it.
      */
     Features: IRow[];
     /**
-     * The Dangers that this card contributes. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.
+     * The Dangers contributed by this card. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.
      */
     Dangers: IRow[];
 }
 
 /**
+ * Interface describing a delve site domain.
+ *
+ * The **domain** represents the physical characteristics of the site—the terrain or architecture you must traverse.
+ *
+ * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
+ *
+ * @see IDelveTheme
  * @public
  */
 export declare interface IDelveDomain extends IDelveCard {
+    /**
+     * @pattern ^Ironsworn/Domains/[A-z_-]+$
+     */
+    $id: string;
     Type: "Domain";
     /**
-     * The Features that this Domain card contributes. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
+     * The Features contributed by this Domain card. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
      */
     Features: [
     IRow & {
@@ -664,7 +687,7 @@ export declare interface IDelveDomain extends IDelveCard {
     }
     ];
     /**
-     * The Dangers that this Domain contributes. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.
+     * The Dangers contributed by this Domain card. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.
      */
     Dangers: [
     IRow & {
@@ -691,12 +714,23 @@ export declare interface IDelveDomain extends IDelveCard {
 }
 
 /**
+ * Interface describing a delve site theme.
+ *
+ * The **theme** represents the condition or state of the site, and indicates the kinds of denizens and threats you might find there.
+ *
+ * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
+ *
+ * @see IDelveDomain
  * @public
  */
 export declare interface IDelveTheme extends IDelveCard {
+    /**
+     * @pattern ^Ironsworn/Themes/[A-z_-]+$
+     */
+    $id: string;
     Type: "Theme";
     /**
-     * The Features that this Theme card contributes. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
+     * The Features contributed by this Theme card. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
      */
     Features: [
     IRow & {
@@ -721,7 +755,7 @@ export declare interface IDelveTheme extends IDelveCard {
     }
     ];
     /**
-     * The Dangers that this Theme contributes. Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.
+     * The Dangers contributed by this Theme card.  Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.
      */
     Dangers: [
     IRow & {
@@ -1642,6 +1676,10 @@ export declare interface IOracle extends IOracleBase {
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: IRow[] | undefined;
 
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     */
+    "On a Match"?: IOracleMatch | undefined;
 }
 
 /**
@@ -1686,6 +1724,12 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
      * This key appears only on {@link IOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.
      */
     Categories?: IOracleCategory[] | undefined;
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     *
+     * This key appears only on {@link IOracle}s that have a `Table`.
+     */
+    "On a Match"?: IOracleMatch | undefined;
 }
 
 /**
@@ -1724,6 +1768,16 @@ export declare interface IOracleContent {
      * Any arbitrary string tags associated with this oracle.
      */
     "Tags"?: string[] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOracleMatch extends IHasId, IHasText {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
+     */
+    $id: string;
 }
 
 /**

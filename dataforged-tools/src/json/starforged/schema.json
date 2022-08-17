@@ -173,16 +173,16 @@
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
         },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
         "Nature": {
           "$ref": "#/definitions/EncounterNatureStarforged",
           "title": "Nature"
         },
-        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" }
+        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "Description"
+        }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2639,6 +2639,11 @@
           "items": { "$ref": "#/definitions/IOracleCategory" },
           "title": "Categories"
         },
+        "On a Match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracle}s that have a `Table`.",
+          "$ref": "#/definitions/IOracleMatch",
+          "title": "On a Match"
+        },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
           "type": "array",
@@ -2751,6 +2756,11 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IRow" },
           "title": "Table"
+        },
+        "On a Match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.",
+          "$ref": "#/definitions/IOracleMatch",
+          "title": "On a Match"
         },
         "Usage": {
           "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
@@ -2910,6 +2920,26 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Label", "Use content from"]
+    },
+    "IOracleMatch": {
+      "title": "IOracleMatch",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

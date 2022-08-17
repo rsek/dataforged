@@ -64,6 +64,11 @@
           "type": "string",
           "title": "Quest Starter"
         },
+        "Features": {
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Features"
+        },
         "Nature": {
           "$ref": "#/definitions/EncounterNatureStarforged",
           "title": "Nature"
@@ -72,11 +77,6 @@
           "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
           "type": "string",
           "title": "Your Truth"
-        },
-        "Features": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Features"
         },
         "Drives": {
           "type": "array",
@@ -162,15 +162,15 @@
           "type": "string",
           "title": "Quest Starter"
         },
-        "Your Truth": {
-          "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
-          "type": "string",
-          "title": "Your Truth"
-        },
         "Features": {
           "type": "array",
           "items": { "type": "string" },
           "title": "Features"
+        },
+        "Your Truth": {
+          "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
+          "type": "string",
+          "title": "Your Truth"
         },
         "Drives": {
           "type": "array",

@@ -88,6 +88,8 @@ Oracles:
         Display:
           Title: "Ask the Oracle: Almost Certain"
         Aliases: ["90"]
+        On a Match: &AtO.Match
+          Text: On a match, an extreme result or twist has occurred.
         Table:
           - [1, 10, "No"]
           - [11, 100, "Yes"]
@@ -95,6 +97,7 @@ Oracles:
         Display:
           Title: "Ask the Oracle: Likely"
         Aliases: ["75"]
+        On a Match: *AtO.Match
         Table:
           - [1, 25, "No"]
           - [26, 100, "Yes"]
@@ -102,6 +105,7 @@ Oracles:
         Display:
           Title: "Ask the Oracle: 50/50"
         Aliases: ["50", "5050", "Fifty-fifty", "50/50", "50-50"]
+        On a Match: *AtO.Match
         Table:
           - [1, 50, "No"]
           - [51, 100, "Yes"]
@@ -109,6 +113,7 @@ Oracles:
         Display:
           Title: "Ask the Oracle: Unlikely"
         Aliases: ["25"]
+        On a Match: *AtO.Match
         Table:
           - [1, 75, "No"]
           - [76, 100, "Yes"]
@@ -116,6 +121,7 @@ Oracles:
         Display:
           Title: "Ask the Oracle: Small Chance"
         Aliases: ["10"]
+        On a Match: *AtO.Match
         Table:
           - [1, 90, "No"]
           - [91, 100, "Yes"]

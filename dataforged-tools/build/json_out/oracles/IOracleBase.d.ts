@@ -1,4 +1,13 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IOracle, IOracleCategory, IOracleUsage, IRow } from "../index.js";
+import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IHasText, IOracle, IOracleCategory, IOracleUsage, IRow } from "../index.js";
+/**
+ * @public
+ */
+export interface IOracleMatch extends IHasId, IHasText {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
+     */
+    $id: string;
+}
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
  *
@@ -41,5 +50,11 @@ export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHa
      * This key appears only on {@link IOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.
      */
     Categories?: IOracleCategory[] | undefined;
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     *
+     * This key appears only on {@link IOracle}s that have a `Table`.
+     */
+    "On a Match"?: IOracleMatch | undefined;
 }
 //# sourceMappingURL=IOracleBase.d.ts.map

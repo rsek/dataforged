@@ -7,6 +7,7 @@ import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
 import { templateOracleTable } from "@utils/object_transform/templateOracleTable.js";
+import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IOracleYaml, IRowYaml } from "@yaml_in/index.js";
 import type { IOracleCategoryYaml } from "@yaml_in/oracles/IOracleCategoryYaml.js";
 import _ from "lodash-es";
@@ -24,6 +25,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   Display: DisplayOracle;
   Usage?: OracleUsage | undefined;
   Content?: OracleContent | undefined;
+  "On a Match"?: IOracle["On a Match"] | undefined;
   Table?: Row[] | undefined;
   Oracles?: Oracle[] | undefined;
   constructor(
@@ -60,6 +62,10 @@ export class Oracle extends SourceInheritor implements IOracle  {
     }
     if (jsonClone.Content) {
       this.Content = new OracleContent(jsonClone.Content);
+    }
+    if (jsonClone["On a Match"]) {
+      this["On a Match"] = { $id: this.$id+"/"+formatIdFragment("On a Match"),...jsonClone["On a Match"] };
+      ;
     }
     let tableData;
     if (jsonClone._templateTable) {
