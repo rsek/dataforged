@@ -1,15 +1,16 @@
 import type { IDelveCard, IDelveDomain, IDelveTheme } from "@json_out/index.js";
-import type { PartialBy } from "@utils/index.js";
+import type { YamlStubTitle } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export interface IDelveCardYaml extends PartialBy<Omit<IDelveCard, "$id">, "Display"|"Source"> { }
+export interface IDelveCardYaml extends YamlStubTitle<IDelveCard> { }
 
 /**
  * @internal
  */
-export interface IDelveDomainYaml extends IDelveCardYaml {
+export interface IDelveDomainYaml extends IDelveCardYaml, YamlStubTitle<IDelveDomain, "", "Features"> {
+  Type: "Domain";
   /**
    * {@inheritDoc IDelveDomain.Features}
    */
@@ -30,7 +31,8 @@ export interface IDelveDomainYaml extends IDelveCardYaml {
 /**
  * @internal
  */
-export interface IDelveThemeYaml extends IDelveCardYaml {
+export interface IDelveThemeYaml extends IDelveCardYaml, YamlStubTitle<IDelveTheme> {
+  Type: "Theme";
   Features: IDelveTheme["Features"]
   Dangers: IDelveTheme["Dangers"]
 }

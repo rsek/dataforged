@@ -4,3 +4,4 @@ export * from "@classes/cyclopedia/index.js";
 export * from "@classes/moves/index.js";
 export * from "@classes/oracles/index.js";
 export * from "@classes/truths/index.js";
+export * from "@classes/rarities/index.js";

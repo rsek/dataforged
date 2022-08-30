@@ -20,11 +20,14 @@ export interface IDisplay {
     Color?: string | undefined;
     /**
      * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
+     * @localize
+     * @deprecated Use `Title` on the parent object, instead.
      */
     Title?: string | undefined;
 }
 /**
  * @public
+ * @deprecated Use {@link IHasTitle} on the parent object instead.
  */
 export interface IDisplayWithTitle extends IDisplay {
     Title: string;

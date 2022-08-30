@@ -26,6 +26,7 @@ export interface IDelveCard extends IHasName, IHasSource, IHasSummary, IHasDescr
   /**
    * The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.
    * @markdown
+   * @localize
    */
   Summary: string;
   /**
@@ -34,6 +35,7 @@ export interface IDelveCard extends IHasName, IHasSource, IHasSummary, IHasDescr
    * Most are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.
    *
    * @markdown
+   * @localize
    */
   Description: string;
   /**

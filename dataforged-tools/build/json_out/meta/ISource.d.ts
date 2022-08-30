@@ -58,5 +58,17 @@ export interface ISource {
      * @pattern ^https?://.*$
      */
     Url?: string | undefined;
+    /**
+     * The URL pointing to the license which this content falls under.
+     */
+    License: License;
+}
+/**
+ * @public
+ */
+export declare enum License {
+    CC_BY_NC_SA = "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    CC_BY_SA = "https://creativecommons.org/licenses/by-sa/4.0/",
+    None = "None"
 }
 //# sourceMappingURL=ISource.d.ts.map

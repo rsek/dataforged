@@ -1,4 +1,4 @@
-import { Oracle, OracleCategoryDisplay, OracleUsage, SourceInheritor } from "../index.js";
+import { Oracle, OracleCategoryDisplay, OracleUsage, SourceInheritor, Title } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { propagateToChildren } from "../../utils/object_transform/propagateToChildren.js";
@@ -16,6 +16,7 @@ export class OracleCategory extends SourceInheritor {
         this.$id = buildOracleId(gamespace, json, ...ancestorsJson);
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
+        this.Title = new Title(json.Title, this.$id);
         this.Aliases = json.Aliases;
         this.Description = json.Description;
         this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);

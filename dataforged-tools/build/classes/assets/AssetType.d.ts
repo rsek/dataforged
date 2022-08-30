@@ -1,4 +1,4 @@
-import { Asset, SourceInheritor } from "../index.js";
+import { Asset, SourceInheritor, Title } from "../index.js";
 import type { Gamespace, IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "../../json_out/index.js";
 import type { IAssetTypeYaml } from "../../yaml_in/index.js";
 /**
@@ -6,7 +6,8 @@ import type { IAssetTypeYaml } from "../../yaml_in/index.js";
  */
 export declare class AssetType extends SourceInheritor implements IAssetType {
     $id: IAssetType["$id"];
-    Name: string;
+    Name?: string | undefined;
+    Title: Title;
     Aliases?: string[] | undefined;
     Description: string;
     Assets: Asset[];

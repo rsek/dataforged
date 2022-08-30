@@ -1,18 +1,25 @@
-import type { IAsset, IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasOptional, IHasSource, IHasSuggestions, IHasText, IMoveCategory, IMoveOutcomes, IMoveTrigger, IOracle } from "../index.js";
+import type { IAsset, IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasOptional, IHasSource, IHasSuggestions, IHasText, IHasTitle, IMoveCategory, IMoveOutcomes, IMoveTrigger, IOracle, ITitle } from "../index.js";
 /**
  * Interface representing a Starforged move.
  * @public
  */
-export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, IHasOptional, Partial<IHasSuggestions> {
+export interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, IHasOptional, IHasTitle, Partial<IHasSuggestions> {
     /**
      * @example "Starforged/Moves/Adventure/Face_Danger"
      * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$
      */
     $id: string;
     /**
-     * @example "Face Danger"
+     * @deprecated Use {@link IMove.Title} instead.
      */
     Name: string;
+    /**
+     * @example
+     * ```typescript
+     * {Canonical: "Face Danger"}
+     * ```
+     */
+    Title: ITitle;
     /**
      * The ID of the parent Asset of the move, if any.
      */

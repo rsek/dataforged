@@ -1,5 +1,5 @@
 import type { ITableColumnBase, ITableDisplayInfo, ITextColumn } from "@json_out/index.js";
-import type { YamlStub } from "@yaml_in/index.js";
+import type { YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 
 /**
  * @internal

@@ -1,4 +1,4 @@
-import { DisplayWithTitle, SettingTruthOption , Source , Suggestions } from "@classes/index.js";
+import { DisplayWithTitle , SettingTruthOption, Source , Suggestions , Title  } from "@classes/index.js";
 import type { Gamespace , ISettingTruth, ISource } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
@@ -10,6 +10,7 @@ import type { ISettingTruthYaml } from "@yaml_in/truths/ISettingTruthYaml.js";
 export class SettingTruth implements ISettingTruth {
   $id: ISettingTruth["$id"];
   Name: string;
+  Title: Title;
   Table: SettingTruthOption[];
   Character: string;
   Suggestions?: Suggestions | undefined;
@@ -19,6 +20,7 @@ export class SettingTruth implements ISettingTruth {
     this.$id = `${gamespace}/Setting_Truths/${formatIdFragment(json._idFragment??json.Name)}`;
     buildLog(this.constructor,`Building: ${this.$id}`);
     this.Name = json.Name;
+    this.Title = new Title(json.Title, this.$id);
     this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));
     this.Display = new DisplayWithTitle({
       Title: json.Display?.Title ?? this.Name,

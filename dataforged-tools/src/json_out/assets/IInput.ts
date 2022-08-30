@@ -1,11 +1,11 @@
-import type { ClockSegments , ClockType, IHasId , IHasName, InputType } from "@json_out/index.js";
+import type { ClockSegments , ClockType, IHasId , IHasLabel, IHasName, InputType } from "@json_out/index.js";
 
 /**
  * A stub interface representing an input widget of any type.
  * @see {@link IInputNumber}, {@link IInputClock}, {@link IInputText}, {@link IInputSelect}
  * @public
  */
-export interface IInput extends IHasId, IHasName {
+export interface IInput extends IHasId, Partial<IHasName>, IHasLabel {
   /**
    * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$
    */
@@ -17,6 +17,11 @@ export interface IInput extends IHasId, IHasName {
    * It's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality "front and center" or as a secondary interaction (via long press, right click, etc);
    */
   Adjustable: boolean;
+  /**
+   * @deprecated Use {@link IInput.Label} instead.
+   */
+  Name?: string | undefined;
+  Label: string;
 }
 
 
@@ -34,7 +39,7 @@ export interface IInputNumber extends IInput {
    */
   Max: number | null;
   Step: 1;
-  "Value": number;
+  Value: number;
 }
 
 /**

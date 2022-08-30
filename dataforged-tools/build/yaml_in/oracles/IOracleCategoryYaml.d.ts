@@ -1,9 +1,9 @@
 import type { IOracleCategory, ISource } from "../../json_out/index.js";
-import type { IOracleUsageYaml, IOracleYaml, IRequirementsYaml, ITemplateOracleCategoryYaml, ITemplateYamlBase, YamlStub } from "../index.js";
+import type { IOracleUsageYaml, IOracleYaml, IRequirementsYaml, ITemplateOracleCategoryYaml, ITemplateYamlBase, YamlStubTitle } from "../index.js";
 /**
  * @internal
  */
-export interface IOracleCategoryYaml extends ITemplateYamlBase, YamlStub<IOracleCategory, "", "Requires" | "Usage" | "Oracles" | "Categories"> {
+export interface IOracleCategoryYaml extends ITemplateYamlBase, YamlStubTitle<IOracleCategory, "", "Requires" | "Usage" | "Oracles" | "Categories"> {
     Requires?: IRequirementsYaml | undefined;
     Usage?: IOracleUsageYaml | undefined;
     Oracles?: IOracleYaml[] | undefined;

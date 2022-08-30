@@ -38,7 +38,7 @@ export class Row {
             switch (typeof item) {
                 case "string": {
                     const str = item;
-                    if (str.match(/http.*\.webp/)) {
+                    if (str.match(/.*\.webp/)) {
                         if (!this.Display) {
                             this.Display = {};
                         }
@@ -47,7 +47,7 @@ export class Row {
                         }
                         this.Display.Images.push(str);
                     }
-                    else if (str.match(/http.*\.png/)) {
+                    else if (str.match(/.*\.png/)) {
                         if (!this.Display) {
                             this.Display = {};
                         }
@@ -94,7 +94,7 @@ export class Row {
                                     this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else {
-                                    throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
+                                    throw badJsonError(this.constructor, value, "expected IRow[]");
                                 }
                                 break;
                             }
@@ -183,6 +183,17 @@ export class Row {
         if (!this.Result || this.Result.length === 0) {
             throw badJsonError(this.constructor, this, "Row doesn't have a result string");
         }
+    }
+}
+/**
+ * @internal
+ */
+export class RowNullStub {
+    constructor({ Result, Summary }) {
+        this.Floor = null;
+        this.Ceiling = null;
+        this.Result = Result;
+        this.Summary = Summary;
     }
 }
 //# sourceMappingURL=Row.js.map

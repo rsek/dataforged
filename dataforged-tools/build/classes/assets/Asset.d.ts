@@ -4,6 +4,7 @@ import { ConditionMeter } from "../common/ConditionMeter.js";
 import type { InputText } from "../common/Input.js";
 import type { InputSelect } from "../common/InputSelect.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
+import { Title } from "../common/Title.js";
 import type { Gamespace, IAsset, IAssetAttachment, IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "../../json_out/index.js";
 import type { IAssetYaml } from "../../yaml_in/index.js";
 /**
@@ -12,6 +13,7 @@ import type { IAssetYaml } from "../../yaml_in/index.js";
 export declare class Asset extends SourceInheritor implements IAsset {
     $id: IAsset["$id"];
     Name: string;
+    Title: Title;
     States?: AssetState[] | undefined;
     Aliases?: string[] | undefined;
     "Asset Type": IAssetType["$id"];

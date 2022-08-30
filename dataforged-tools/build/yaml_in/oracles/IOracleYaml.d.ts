@@ -1,6 +1,6 @@
 import type { IDisplayOracle, IOracle, IOracleCategory, IOracleMatch, IRow } from "../../json_out/index.js";
 import type { IRequirementsYaml } from "../common/IRequirementsYaml.js";
-import type { ITableDisplayInfoYaml, YamlStub } from "../index.js";
+import type { ITableDisplayInfoYaml, YamlStub, YamlStubTitle } from "../index.js";
 import type { IOracleUsageYaml } from "./IOracleUsageYaml.js";
 import type { IRowRollYaml, IRowYaml } from "./IRowYaml.js";
 import type { ITemplateOracleYaml } from "../templates/ITemplateOracleYaml.js";
@@ -9,7 +9,7 @@ import type { ITemplateYamlBase } from "../templates/ITemplateYamlBase.js";
 /**
  * @internal
  */
-export interface IOracleYaml extends ITemplateYamlBase, YamlStub<IOracle, "Category", "Oracles" | "Table" | "Usage" | "Display" | "On a Match"> {
+export interface IOracleYaml extends ITemplateYamlBase, YamlStubTitle<IOracle, "Category", "Oracles" | "Table" | "Usage" | "Display" | "On a Match"> {
     Usage?: IOracleUsageYaml | undefined;
     Oracles?: IOracleYaml[] | undefined;
     Requires?: IRequirementsYaml | undefined;

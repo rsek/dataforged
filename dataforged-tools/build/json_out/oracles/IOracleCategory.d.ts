@@ -2,7 +2,7 @@ import type { IOracleBase } from "../index.js";
 /**
  * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.
  *
- * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ * @see {@link IOracleBase} if you need to type both {@link IOracle} and {@link IOracleCategory} to crawl the oracle hierarchy in search of a specific `$id`.
  *
  * @public
  */

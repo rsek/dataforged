@@ -12,6 +12,7 @@ export class AssetAbility {
     constructor(json, id, gamespace, parent) {
         this.$id = id;
         this.Name = json.Name;
+        this.Label = json.Label;
         this.Text = json.Text;
         if (json.Inputs) {
             this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this));
@@ -30,7 +31,7 @@ export class AssetAbility {
         }) : json["Alter Moves"];
         this["Alter Properties"] = json["Alter Properties"];
         if (this["Alter Properties"]?.States) {
-            this["Alter Properties"].States = this["Alter Properties"].States.map(state => new AssetState(state));
+            this["Alter Properties"].States = this["Alter Properties"].States.map(state => new AssetState(state, this));
         }
         if (json.Moves) {
             this.Moves = json.Moves.map(moveJson => {

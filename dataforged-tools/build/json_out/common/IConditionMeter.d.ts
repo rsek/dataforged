@@ -1,4 +1,4 @@
-import type { IMeterBase, MeterAlias, MeterCondition } from "../index.js";
+import type { IMeter, MeterAlias, MeterCondition } from "../index.js";
 /**
  * Standard player character condition meters.
  * @public
@@ -12,7 +12,7 @@ export declare enum PlayerConditionMeter {
  * Interface representing a condition meter such as Health, Spirit, Supply, or Integrity.
  * @public
  */
-export interface IConditionMeter extends IMeterBase {
+export interface IConditionMeter extends IMeter {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$
      */

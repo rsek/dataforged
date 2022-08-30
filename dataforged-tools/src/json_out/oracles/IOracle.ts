@@ -1,9 +1,9 @@
-import type { IDisplayOracle , IOracleBase, IOracleCategory , IOracleMatch, IRow } from "@json_out/index.js";
+import type { IDisplayOracle , IOracleBase, IOracleCategory , IOracleMatch, IRow, IRowNullStub, ITitle } from "@json_out/index.js";
 
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
  *
- * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ * @see {@link IOracleBase} if you need to type both {@link IOracle} and {@link IOracleCategory} to crawl the oracle hierarchy in search of a specific `$id`.
  *
  * @public
  */
@@ -12,10 +12,27 @@ export interface IOracle extends IOracleBase {
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
    */
   $id: string;
+  /**
+   * @example
+   * ```typescript
+   * {
+   *  Canonical: "Character Revealed Aspect",
+   *  Short: "Revealed Aspect"
+   * }
+   * ```
+   * @example
+   * ```typescript
+   * {
+   *  Canonical: "Spaceborne Peril",
+   *  Short: "Peril"
+   * }
+   * ```
+   */
+  Title: ITitle;
   Display: IDisplayOracle;
   Category: IOracleCategory["$id"];
   "Member of"?: IOracle["$id"] | undefined;
-  "Table"?: IRow[] | undefined;
+  "Table"?: (IRow| IRowNullStub)[] | undefined;
   /**
    * @internal
    */

@@ -13,3 +13,4 @@ export * from "@json_out/assets/index.js";
 export * from "@json_out/cyclopedia/index.js";
 export * from "@json_out/delve_site/index.js";
 export * from "@json_out/GameData.js";
+export * from "@json_out/rarities/index.js";

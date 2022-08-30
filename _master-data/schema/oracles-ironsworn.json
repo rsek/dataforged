@@ -10529,6 +10529,12 @@
           "$ref": "#/definitions/IRequirementsYaml<AttributeKey>",
           "title": "Requires"
         },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        },
         "Sets": {
           "description": "Hints which attributes are set by this table.",
           "type": "array",
@@ -10574,6 +10580,7 @@
       "type": "object",
       "properties": {
         "Game objects": {
+          "description": "Suggested game objects and their parameters.",
           "type": "array",
           "items": {
             "anyOf": [
@@ -15191,7 +15198,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -15434,7 +15442,7 @@
           "title": "Source"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
@@ -15465,11 +15473,12 @@
           "type": "string",
           "title": "Member of"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Title": { "$ref": "#/definitions/ITitleYaml_1", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Name"]
+      "required": ["Name", "Title"]
     },
     "IOracleDisplayYaml": {
       "title": "IOracleDisplayYaml",
@@ -15491,7 +15500,7 @@
         },
         "Embed in": {
           "description": "This table is displayed as embedded in a row of another table.",
-          "type": ["null", "string"],
+          "type": "string",
           "title": "Embed in"
         },
         "Icon": {
@@ -15525,10 +15534,14 @@
         "Result columns": {
           "type": "array",
           "items": {
-            "description": "A stub where keys `$id`, `Display`, `Source`, `Optional`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
             "additionalProperties": false,
             "type": "object",
             "properties": {
+              "Label": {
+                "description": "The label or header text to use for this column.",
+                "type": "string",
+                "title": "Label"
+              },
               "Key": {
                 "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
                 "enum": ["Result", "Summary"],
@@ -15540,11 +15553,6 @@
                 "type": "string",
                 "title": "Use content from"
               },
-              "Label": {
-                "description": "The label or header text to use for this column.",
-                "type": "string",
-                "title": "Label"
-              },
               "_idFragment": { "type": "string", "title": "_idFragment" }
             }
           },
@@ -15553,16 +15561,15 @@
         "Roll columns": {
           "type": "array",
           "items": {
-            "description": "A stub where keys `$id`, `Display`, `Source`, `Optional`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.",
             "additionalProperties": false,
             "type": "object",
             "properties": {
+              "Label": { "type": "string", "title": "Label" },
               "Use content from": {
                 "description": "The ID of the oracle table to use.",
                 "type": "string",
                 "title": "Use content from"
               },
-              "Label": { "type": "string", "title": "Label" },
               "_idFragment": { "type": "string", "title": "_idFragment" }
             }
           },
@@ -15579,14 +15586,9 @@
       "type": "object",
       "properties": {
         "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
+          "description": "The ID of this row.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
+          "type": "string",
           "title": "$id"
         },
         "Floor": {
@@ -15631,8 +15633,15 @@
         },
         "Subtable": {
           "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
+          "anyOf": [
+            { "type": "array", "items": { "$ref": "#/definitions/IRow" } },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+              }
+            }
+          ],
           "title": "Subtable"
         },
         "Multiple rolls": {
@@ -15675,7 +15684,112 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
+      "required": ["$id", "Ceiling", "Floor", "Result"]
+    },
+    "ISettingTruthOptionSubtableRow": {
+      "title": "ISettingTruthOptionSubtableRow",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The ID of this row.",
+          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Floor": {
+          "anyOf": [
+            {
+              "description": "The low end of the dice range for this row.",
+              "minimum": 1,
+              "maximum": 100,
+              "type": ["null", "integer"]
+            },
+            { "type": "null" }
+          ],
+          "title": "Floor"
+        },
+        "Ceiling": {
+          "anyOf": [
+            {
+              "description": "The high end of the dice range for this row.",
+              "minimum": 1,
+              "maximum": 100,
+              "type": ["null", "integer"]
+            },
+            { "type": "null" }
+          ],
+          "title": "Ceiling"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "type": ["null", "string"],
+          "title": "Summary"
+        },
+        "Oracle rolls": {
+          "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Oracle rolls"
+        },
+        "Subtable": {
+          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+          "anyOf": [
+            { "type": "array", "items": { "$ref": "#/definitions/IRow" } },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+              }
+            }
+          ],
+          "title": "Subtable"
+        },
+        "Multiple rolls": {
+          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+          "$ref": "#/definitions/IMultipleRolls",
+          "title": "Multiple rolls"
+        },
+        "Attributes": {
+          "description": "The attributes set by this row.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAttribute" },
+          "title": "Attributes"
+        },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
+        },
+        "Suggestions": {
+          "$ref": "#/definitions/ISuggestions",
+          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+          "title": "Suggestions"
+        },
+        "Content": {
+          "$ref": "#/definitions/IOracleContent",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "title": "Content"
+        },
+        "Game objects": {
+          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IGameObject" },
+          "title": "Game objects"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Ceiling", "Floor", "Result"]
     },
     "IMultipleRolls": {
       "description": "Describes{@linkIRow}results that call for multiple rolls, most commonly \"Roll twice\" results.",
@@ -15997,7 +16111,7 @@
           "title": "Source"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
@@ -16028,7 +16142,8 @@
           "type": "string",
           "title": "Member of"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -16160,10 +16275,48 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
+    },
+    "ITitleYaml": {
+      "title": "ITitleYaml",
+      "$ref": "#/definitions/ITitleYaml_1"
+    },
+    "ITitleYaml_1": {
+      "title": "ITitleYaml_1",
+      "type": "object",
+      "properties": {
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Canonical"]
     },
     "ISource_1": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
@@ -16198,11 +16351,25 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License_1",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Authors", "Title"]
+      "required": ["Authors", "License", "Title"]
+    },
+    "License_1": {
+      "title": "License_1",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
     },
     "IOracleCategoryYaml": {
       "title": "IOracleCategoryYaml",
@@ -16258,7 +16425,7 @@
           "title": "Display"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
           "type": "string",
           "title": "$id"
@@ -16301,11 +16468,12 @@
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Title": { "$ref": "#/definitions/ITitleYaml_1", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Name", "Source"]
+      "required": ["Name", "Source", "Title"]
     },
     "ITemplateOracleCategoryYaml": {
       "title": "ITemplateOracleCategoryYaml",
@@ -16361,7 +16529,7 @@
           "title": "Display"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
           "type": "string",
           "title": "$id"
@@ -16404,7 +16572,8 @@
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -16455,7 +16624,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$",
           "type": "string",
           "title": "$id"

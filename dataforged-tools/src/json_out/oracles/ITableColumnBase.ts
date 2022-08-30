@@ -5,6 +5,9 @@ import type { IOracle } from "@json_out/index.js";
  * @public
  */
 export interface ITableColumnBase {
+  /**
+   * @localize
+   */
   Label: string;
   /**
    * The ID of the oracle table to use.

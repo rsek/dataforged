@@ -1,4 +1,4 @@
-import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
+import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
 import type { Nullable } from "@utils/types/Nullable.js";
 
 /**
@@ -16,9 +16,8 @@ export interface IRow extends Partial<
   /**
    * The ID of this row.
    * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
-   * @nullable
    */
-  $id?: string | null;
+  $id: string;
   /**
    * The low end of the dice range for this row.
    * @minimum 1
@@ -37,6 +36,8 @@ export interface IRow extends Partial<
    * The primary result text for the row, annotated in Markdown.
    * In the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.
    * Some tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.
+   * @markdown
+   * @localize
    */
   Result: string;
   /**
@@ -48,6 +49,8 @@ export interface IRow extends Partial<
    *
    * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
    * @nullable
+   * @markdown
+   * @localize
    */
   Summary?: string | null | undefined;
   /**
@@ -57,7 +60,7 @@ export interface IRow extends Partial<
   /**
    * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
    */
-  Subtable?: IRow[] | undefined;
+  Subtable?: IRow[] | ISettingTruthOptionSubtableRow[] | undefined;
   /**
    * Data for rows that call for multiple rolls, e.g. on `Roll twice` results.
    */
@@ -66,4 +69,15 @@ export interface IRow extends Partial<
   * The attributes set by this row.
    */
   Attributes?: IAttribute[] | undefined;
+}
+
+/**
+ * A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as "--" in the book.
+ * @public
+ */
+export interface IRowNullStub extends Omit<Partial<IRow>, "$id"> {
+  Floor: null;
+  Ceiling: null;
+  Result: string;
+  Summary?: string | undefined | null;
 }

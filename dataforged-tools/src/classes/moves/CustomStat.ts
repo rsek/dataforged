@@ -9,6 +9,7 @@ import type { ICustomStatYaml } from "@yaml_in/index.js";
  */
 export class CustomStat implements ICustomStat {
   $id: ICustomStat["$id"];
+
   Name: string;
   Options: CustomStatOption[];
   constructor(json: ICustomStatYaml, parentId: IMoveTriggerOptionBase["$id"]) {

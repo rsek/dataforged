@@ -8,7 +8,7 @@ export * from "@json_out/common/ClockSegments.js";
 export * from "@json_out/common/ClockType.js";
 export * from "@json_out/common/Gamespace.js";
 export * from "@json_out/common/IConditionMeter.js";
-export * from "@json_out/common/ICounter.js";
+export * from "@json_out/common/IMeter.js";
 export * from "@json_out/common/ICustomStat.js";
 export * from "@json_out/common/InputType.js";
 export * from "@json_out/common/MeterAlias.js";

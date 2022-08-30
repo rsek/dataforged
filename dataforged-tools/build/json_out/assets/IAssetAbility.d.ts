@@ -1,17 +1,22 @@
-import type { IAlterMomentum, IAlterMove, IAssetAlterProperties, IHasId, IHasText, IInputClock, IInputNumber, IInputText, IMove } from "../index.js";
+import type { IAlterMomentum, IAlterMove, IAssetAlterProperties, IHasId, IHasLabel, IHasName, IHasText, IInputClock, IInputNumber, IInputText, IMove } from "../index.js";
 /**
  * Represents one of an asset's three abilities.
  * @public
  */
-export interface IAssetAbility extends IHasId, IHasText {
+export interface IAssetAbility extends IHasId, IHasText, Partial<IHasLabel>, Partial<IHasName> {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$
      */
     $id: string;
     /**
      * Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.
+     * @deprecated Use {@link IAssetAbility.Label} instead
      */
     Name?: string | undefined;
+    /**
+     * Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.
+     */
+    Label?: string | undefined;
     /**
      * New moves added by this asset ability.
      */

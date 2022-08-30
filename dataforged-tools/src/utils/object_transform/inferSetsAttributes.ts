@@ -1,11 +1,11 @@
-import type { AttributeKey, IAttribute, IRow } from "@json_out/index.js";
+import type { AttributeKey, IAttribute, IRow, IRowNullStub } from "@json_out/index.js";
 
 /**
  * Infers a SetsAttributes object for an Oracle from its table rows.
  * @param table - The table of data to infer attributes from.
  * @returns An array of objects with a single property called Key.
  */
-export function inferSetsAttributes(table: IRow[]): IAttribute[] {
+export function inferSetsAttributes(table: (IRow|IRowNullStub)[]): IAttribute[] {
   const uniqueAttributes = new Set<AttributeKey>();
   table.forEach(row => {
     if (row.Attributes) {

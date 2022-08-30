@@ -7,7 +7,7 @@ export * from "./ClockSegments.js";
 export * from "./ClockType.js";
 export * from "./Gamespace.js";
 export * from "./IConditionMeter.js";
-export * from "./ICounter.js";
+export * from "./IMeter.js";
 export * from "./ICustomStat.js";
 export * from "./InputType.js";
 export * from "./MeterAlias.js";

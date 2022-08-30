@@ -15,6 +15,7 @@ export interface IMoveTrigger extends IHasId, Partial<IHasText> {
    * Secondary triggers (for specific stats or uses of an asset ability) are described in `Options`.
    *
    * @markdown
+   * @localize
    * @example "When you attempt something risky or react to an imminent threat..."
    */
   Text?: string | undefined;

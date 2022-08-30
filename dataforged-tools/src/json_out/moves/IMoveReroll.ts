@@ -9,6 +9,7 @@ export interface IMoveReroll extends Partial<IHasText> {
   /**
    * The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.
    * @markdown
+   * @localize
    */
   Text: string;
   /**

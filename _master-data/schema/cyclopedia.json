@@ -30,7 +30,7 @@
           "title": "Display"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Ironsworn/Regions/[A-z_-]$",
           "type": "string",
           "title": "$id"
@@ -61,7 +61,8 @@
           "items": { "type": "string" },
           "title": "Features"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -71,7 +72,8 @@
         "Name",
         "Quest Starter",
         "Source",
-        "Summary"
+        "Summary",
+        "Title"
       ]
     },
     "ISource": {
@@ -107,11 +109,25 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Authors", "Title"]
+      "required": ["Authors", "License", "Title"]
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
     },
     "IDisplay": {
       "description": "Interface for data relevant to an item's display/rendering.",
@@ -149,6 +165,26 @@
       },
       "defaultProperties": [],
       "additionalProperties": false
+    },
+    "ITitleYaml": {
+      "title": "ITitleYaml",
+      "type": "object",
+      "properties": {
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Canonical"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

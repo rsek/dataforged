@@ -13,30 +13,36 @@ export interface IEncounterBase extends ICyclopediaEntry {
   $id: string;
   /**
    * @example "Chiton"
+   * @localize
    */
   Name: string;
   /**
    * @example "Monster"
+   * @localize
    */
   Nature: EncounterNatureStarforged | EncounterNatureIronsworn;
   Display: IDisplayWithTitle;
   /**
    * @example "Insectoid horde"
    * @markdown
+   * @localize
    */
   Summary?: string | undefined;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
   /**
    * @markdown
+   * @localize
    */
   Features?: string[] | undefined;
   /**
    * @markdown
+   * @localize
    */
   Drives?: string[] | undefined;
   /**
    * @markdown
+   * @localize
    */
   Tactics?: string[] | undefined;
   /**
@@ -44,6 +50,7 @@ export interface IEncounterBase extends ICyclopediaEntry {
    *
    * Only present in Ironsworn encounters.
    * @markdown
+   * @localize
    */
   "Your Truth"?: string | undefined;
 }

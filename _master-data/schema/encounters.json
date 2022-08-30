@@ -7,7 +7,7 @@
       "title": "Encounters"
     },
     "Name": { "type": "string", "title": "Name" },
-    "Source": { "$ref": "#/definitions/ISource_1", "title": "Source" }
+    "Source": { "$ref": "#/definitions/ISource_2", "title": "Source" }
   },
   "defaultProperties": [],
   "additionalProperties": false,
@@ -28,17 +28,17 @@
           "title": "Name"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplayWithTitle_1",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
         "Source": {
-          "$ref": "#/definitions/ISource",
+          "$ref": "#/definitions/ISource_1",
           "description": "Information on this item's source.",
           "title": "Source"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Starforged/Encounters/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -74,7 +74,7 @@
           "title": "Nature"
         },
         "Your Truth": {
-          "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
+          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
           "type": "string",
           "title": "Your Truth"
         },
@@ -89,7 +89,8 @@
           "title": "Tactics"
         },
         "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -103,6 +104,7 @@
         "Rank",
         "Summary",
         "Tactics",
+        "Title",
         "Variants"
       ]
     },
@@ -111,7 +113,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "type": "string",
           "title": "$id"
         },
@@ -137,11 +139,6 @@
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
         },
-        "Variants": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/IEncounterVariantYaml" },
-          "title": "Variants"
-        },
         "Display": {
           "$ref": "#/definitions/IDisplayWithTitle",
           "description": "Data relevant to this item's display/rendering.",
@@ -152,6 +149,7 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
         "Summary": {
           "description": "A user-facing markdown summary of the item. `Summary` is shorter than{@linkIHasDescription| Description}.",
           "type": "string",
@@ -168,7 +166,7 @@
           "title": "Features"
         },
         "Your Truth": {
-          "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
+          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
           "type": "string",
           "title": "Your Truth"
         },
@@ -182,11 +180,27 @@
           "items": { "type": "string" },
           "title": "Tactics"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
+        "Variants": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/IEncounterVariantYaml" },
+          "title": "Variants"
+        },
+        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Description", "Name", "Rank"]
+      "required": [
+        "Description",
+        "Drives",
+        "Features",
+        "Name",
+        "Quest Starter",
+        "Rank",
+        "Summary",
+        "Tactics",
+        "Title",
+        "Variants"
+      ]
     },
     "ChallengeRank": {
       "description": "Enumerates challenge ranks.",
@@ -196,6 +210,118 @@
     },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",
+      "$ref": "#/definitions/Partial<Partial<IDisplayWithTitle>>"
+    },
+    "Partial<Partial<IDisplayWithTitle>>": {
+      "title": "Partial<Partial<IDisplayWithTitle>>",
+      "type": "object",
+      "properties": {
+        "Title": {
+          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+          "type": "string",
+          "title": "Title"
+        },
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "ISource": {
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
+      "title": "ISource",
+      "$ref": "#/definitions/Partial<Partial<ISource>>"
+    },
+    "Partial<Partial<ISource>>": {
+      "title": "Partial<Partial<ISource>>",
+      "type": "object",
+      "properties": {
+        "Title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
+          "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
+        },
+        "Date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "Date"
+        },
+        "Page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source material is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
+    },
+    "ITitleYaml": {
+      "title": "ITitleYaml",
+      "type": "object",
+      "properties": {
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Canonical"]
+    },
+    "IDisplayWithTitle_1": {
+      "title": "IDisplayWithTitle_1",
       "$ref": "#/definitions/Partial<IDisplayWithTitle>"
     },
     "Partial<IDisplayWithTitle>": {
@@ -230,9 +356,9 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ISource": {
+    "ISource_1": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource",
+      "title": "ISource_1",
       "$ref": "#/definitions/Partial<ISource>"
     },
     "Partial<ISource>": {
@@ -267,6 +393,11 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
         }
       },
       "defaultProperties": [],
@@ -277,9 +408,9 @@
       "enum": ["Creature", "Horror", "Human", "Machine", "Monster"],
       "type": "string"
     },
-    "ISource_1": {
+    "ISource_2": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource_1",
+      "title": "ISource_2",
       "type": "object",
       "properties": {
         "Title": {
@@ -310,11 +441,25 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License_1",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Authors", "Title"]
+      "required": ["Authors", "License", "Title"]
+    },
+    "License_1": {
+      "title": "License_1",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

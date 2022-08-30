@@ -6,7 +6,7 @@ import type { PartialDeep, StubBy } from "@utils/index.js";
  * Describes alterations applied to moves by asset abilities.
  * @public
  */
-export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "Name"|"Category"|"Display"|"Source"|"Outcomes"|"Optional"> {
+export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "Name"|"Title"|"Category"|"Display"|"Source"|"Outcomes"|"Optional"> {
   /**
    * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
    */
@@ -26,6 +26,7 @@ export interface IAlterMove extends StubBy<IMove, "Trigger"|"Text", "Name"|"Cate
   Trigger?: IMoveTrigger | undefined;
   /**
    * Markdown rules text describing added effects which apply *before* the move is rolled, such as adds.
+   * @localize
    */
   Text?: string | undefined;
   /**

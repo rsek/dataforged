@@ -1,15 +1,15 @@
 import type { IEncounterIronsworn , IEncounterNatureInfo } from "@json_out/index.js";
-import type { YamlStub } from "@yaml_in/index.js";
+import type { YamlStubTitle } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export interface IEncounterIronswornYaml extends YamlStub<IEncounterIronsworn, "Display"|"Summary", "Nature"> {
+export interface IEncounterIronswornYaml extends YamlStubTitle<IEncounterIronsworn, "Display"|"Summary", "Nature"> {
 }
 
 /**
  * @internal
  */
-export interface IEncounterNatureInfoYaml extends YamlStub<IEncounterNatureInfo, "Display",  "Encounters"> {
+export interface IEncounterNatureInfoYaml extends YamlStubTitle<IEncounterNatureInfo, "Display",  "Encounters"> {
   Encounters: IEncounterIronswornYaml[];
 }

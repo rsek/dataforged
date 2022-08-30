@@ -1,3 +1,4 @@
+import { License, SourceTitle } from "../../json_out/index.js";
 import _ from "lodash-es";
 /**
  * @internal
@@ -16,6 +17,29 @@ export class Source {
         this.Date = merged.Date;
         this.Page = merged.Page;
         this.Url = merged.Url;
+        if (json.License) {
+            this.License = json.License;
+        }
+        else {
+            let newLicense;
+            switch (this.Title) {
+                case SourceTitle.Ironsworn || SourceTitle.IronswornAssets:
+                    newLicense = License.CC_BY_SA;
+                    break;
+                case SourceTitle.IronswornDelve:
+                    newLicense = License.CC_BY_NC_SA;
+                    break;
+                case SourceTitle.Starforged || SourceTitle.StarforgedAssets:
+                    newLicense = License.CC_BY_SA;
+                    break;
+                case SourceTitle.SunderedIslesPreview:
+                    newLicense = License.None;
+                    break;
+                default:
+                    throw new Error("Could not infer a valid license!");
+            }
+            this.License = newLicense;
+        }
     }
 }
 //# sourceMappingURL=Source.js.map

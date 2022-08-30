@@ -1,6 +1,6 @@
 import { DisplayWithTitle } from "@classes/common/Display.js";
 import type { EncounterDisplay } from "@classes/index.js";
-import { EncounterVariant , Source } from "@classes/index.js";
+import { EncounterVariant , Source , Title } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterStarforged, ISource, } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
@@ -13,6 +13,7 @@ import type { IEncounterStarforgedYaml } from "@yaml_in/index.js";
 export class EncounterStarforged implements IEncounterStarforged {
   $id: IEncounterStarforged["$id"];
   Name: string;
+  Title: Title;
   Nature: EncounterNatureStarforged;
   Summary: string;
   Tags?: EncounterTags[] | undefined;
@@ -29,6 +30,7 @@ export class EncounterStarforged implements IEncounterStarforged {
     const gamespace = Gamespace.Starforged;
     this.$id = `${gamespace}/Encounters/${formatIdFragment(json._idFragment??json.Name)}`;
     this.Name = json.Name;
+    this.Title = new Title(json.Title, this.$id);
     this.Nature = json.Nature;
     this.Summary = json.Summary;
     this.Tags = json.Tags;

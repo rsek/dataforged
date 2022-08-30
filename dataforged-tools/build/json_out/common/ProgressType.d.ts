@@ -7,9 +7,9 @@ export declare enum ProgressTypeStarforged {
     Expedition = "Expedition",
     Connection = "Connection",
     SceneChallenge = "Scene Challenge",
-    Quests = "Quests Legacy",
-    Bonds = "Bonds Legacy",
-    Discoveries = "Discoveries Legacy"
+    QuestsLegacy = "Quests Legacy",
+    BondsLegacy = "Bonds Legacy",
+    DiscoveriesLegacy = "Discoveries Legacy"
 }
 /**
  * @public

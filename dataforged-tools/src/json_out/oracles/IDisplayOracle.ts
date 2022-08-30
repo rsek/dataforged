@@ -5,7 +5,6 @@ import type { IDisplayWithTitle, IOracle , IRow, ITableDisplayInfo } from "@json
  * @public
  */
 export interface IDisplayOracle extends IDisplayWithTitle {
-  Title: string;
   /**
    * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
    *

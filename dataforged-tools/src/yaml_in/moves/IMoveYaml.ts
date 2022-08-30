@@ -1,9 +1,9 @@
 import type { ICustomStat, ICustomStatOption, IDisplay, IMove, IMoveCategory, IMoveOutcomes, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeInfo, ISource, MoveOutcome } from "@json_out/index.js";
-import type { YamlStub } from "@yaml_in/index.js";
+import type { YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 /**
  * @internal
  */
-export interface IMoveCategoryYaml extends YamlStub<IMoveCategory, "Display"|"Source", "Moves"> {
+export interface IMoveCategoryYaml extends YamlStubTitle<IMoveCategory, "Display"|"Source", "Moves"> {
   Name: string;
   Description: string;
   Moves: IMoveYaml[];
@@ -15,7 +15,7 @@ export interface IMoveCategoryYaml extends YamlStub<IMoveCategory, "Display"|"So
 /**
  * @internal
  */
-export interface IMoveYaml extends YamlStub<IMove, "Category", "Trigger"|"Outcomes"> {
+export interface IMoveYaml extends YamlStubTitle<IMove, "Category", "Trigger"|"Outcomes"> {
   Trigger: IMoveTriggerYaml;
   Outcomes?: IMoveOutcomesYaml | undefined;
 };

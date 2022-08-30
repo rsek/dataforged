@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, ISettingTruthOption } from "../index.js";
+import type { IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, IHasTitle, ISettingTruthOption } from "../index.js";
 /**
  * @public
  */
@@ -23,12 +23,11 @@ export declare enum SettingTruthName {
  * @see ISettingTruthOption
  * @public
  */
-export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable {
+export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable, IHasTitle {
     /**
      * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$
      */
     $id: string;
-    Name: string;
     /**
      * The 'canonical' options for this setting truth category.
      */
@@ -36,6 +35,7 @@ export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay
     /**
      * A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.
      * @markdown
+     * @localize
      */
     Character: string;
     Display: IDisplayWithTitle;

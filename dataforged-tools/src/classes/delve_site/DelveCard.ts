@@ -2,9 +2,10 @@ import type { DelveCardType, IDelveCard, IDelveDomain, IDelveTheme, IDisplay, IR
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IDelveCardYaml, IDelveDomainYaml, IDelveThemeYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
+import type { PartialBy } from "src/index.js";
 import { DisplayWithTitle, Row, Source } from "src/index.js";
 
-const domainFeaturesStatic: IRow[] = [
+const domainFeaturesStatic: PartialBy<IRow, "$id">[] = [
   {
     Floor: 89,
     Ceiling: 98,
@@ -41,7 +42,7 @@ abstract class DelveCard implements IDelveCard {
   Description: string;
   Features: Row[];
   Dangers: Row[];
-  constructor(json: IDelveCardYaml, parentSource: ISource, domainFeaturesStaticRows: IRow[] = domainFeaturesStatic) {
+  constructor(json: IDelveCardYaml, parentSource: ISource, domainFeaturesStaticRows: PartialBy<IRow, "$id">[] = domainFeaturesStatic) {
     this.$id = `Ironsworn/${json.Type}s/${formatIdFragment(json.Name)}`;
     this.Name = json.Name;
     this.Type = json.Type;
@@ -52,7 +53,7 @@ abstract class DelveCard implements IDelveCard {
     this.Summary = json.Summary;
     this.Description = json.Description;
     this.Features = json.Features.map(row => new Row(this.$id+"/Features", row));
-    let newDangers = json.Dangers;
+    let newDangers = json.Dangers as PartialBy<IRow, "$id">[];
     if (this.Type === "Domain") {
       newDangers = _.cloneDeep(json.Dangers);
       newDangers.push(..._.cloneDeep(domainFeaturesStaticRows));

@@ -6,8 +6,9 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
 export class Input {
     constructor(json, parent) {
         this["Input Type"] = json["Input Type"];
-        this.$id = `${parent.$id}/Inputs/${formatIdFragment(json.Name)}`;
+        this.$id = `${parent.$id}/Inputs/${formatIdFragment(json.Label)}`;
         this.Name = json.Name;
+        this.Label = json.Label;
         this["Input Type"] = json["Input Type"];
     }
 }

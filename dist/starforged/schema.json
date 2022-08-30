@@ -45,7 +45,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Starforged/Encounters/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -85,7 +85,7 @@
           "title": "Quest Starter"
         },
         "Your Truth": {
-          "description": "A markdown string representing the text of the \"Your Truth\" callout box included with some *Ironsworn* encounters.",
+          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
           "type": "string",
           "title": "Your Truth"
         },
@@ -115,7 +115,8 @@
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
           "title": "Source"
-        }
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -132,6 +133,7 @@
         "Source",
         "Summary",
         "Tactics",
+        "Title",
         "Variants"
       ]
     },
@@ -146,7 +148,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Starforged/Encounters/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -157,6 +159,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
           "$ref": "#/definitions/IDisplayWithTitle",
           "description": "Data relevant to this item's display/rendering.",
@@ -194,8 +197,34 @@
         "Nature",
         "Rank",
         "Source",
+        "Title",
         "Variant of"
       ]
+    },
+    "ITitle": {
+      "title": "ITitle",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Canonical", "Short"]
     },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",
@@ -263,11 +292,25 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Authors", "Title"]
+      "required": ["Authors", "License", "Title"]
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
     },
     "ChallengeRank": {
       "description": "Enumerates challenge ranks.",
@@ -281,15 +324,10 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$",
           "type": "string",
           "title": "$id"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         },
         "Table": {
           "description": "The 'canonical' options for this setting truth category.",
@@ -307,6 +345,11 @@
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
+        "Name": {
+          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+          "type": "string",
+          "title": "Name"
+        },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
@@ -316,11 +359,20 @@
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
-        }
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Character", "Display", "Name", "Source", "Table"]
+      "required": [
+        "$id",
+        "Character",
+        "Display",
+        "Name",
+        "Source",
+        "Table",
+        "Title"
+      ]
     },
     "ISettingTruthOption": {
       "description": "Interface for 'canonical' options within a SettingTruth category.",
@@ -341,7 +393,7 @@
         "Subtable": {
           "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
+          "items": { "$ref": "#/definitions/ISettingTruthOptionSubtableRow" },
           "title": "Subtable"
         },
         "Floor": {
@@ -462,20 +514,14 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IRow": {
-      "description": "Interface representing a single row in an oracle table.",
-      "title": "IRow",
+    "ISettingTruthOptionSubtableRow": {
+      "title": "ISettingTruthOptionSubtableRow",
       "type": "object",
       "properties": {
         "$id": {
-          "anyOf": [
-            {
-              "description": "The ID of this row.",
-              "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
-              "type": ["null", "string"]
-            },
-            { "type": "null" }
-          ],
+          "description": "The ID of this row.",
+          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+          "type": "string",
           "title": "$id"
         },
         "Floor": {
@@ -520,8 +566,15 @@
         },
         "Subtable": {
           "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+              }
+            },
+            { "type": "array", "items": { "$ref": "#/definitions/IRow" } }
+          ],
           "title": "Subtable"
         },
         "Multiple rolls": {
@@ -564,7 +617,113 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
+      "required": ["$id", "Ceiling", "Floor", "Result"]
+    },
+    "IRow": {
+      "description": "Interface representing a single row in an oracle table.",
+      "title": "IRow",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The ID of this row.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Floor": {
+          "anyOf": [
+            {
+              "description": "The low end of the dice range for this row.",
+              "minimum": 1,
+              "maximum": 100,
+              "type": ["null", "integer"]
+            },
+            { "type": "null" }
+          ],
+          "title": "Floor"
+        },
+        "Ceiling": {
+          "anyOf": [
+            {
+              "description": "The high end of the dice range for this row.",
+              "minimum": 1,
+              "maximum": 100,
+              "type": ["null", "integer"]
+            },
+            { "type": "null" }
+          ],
+          "title": "Ceiling"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "type": ["null", "string"],
+          "title": "Summary"
+        },
+        "Oracle rolls": {
+          "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Oracle rolls"
+        },
+        "Subtable": {
+          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+              }
+            },
+            { "type": "array", "items": { "$ref": "#/definitions/IRow" } }
+          ],
+          "title": "Subtable"
+        },
+        "Multiple rolls": {
+          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+          "$ref": "#/definitions/IMultipleRolls",
+          "title": "Multiple rolls"
+        },
+        "Attributes": {
+          "description": "The attributes set by this row.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAttribute" },
+          "title": "Attributes"
+        },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate_1",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
+        },
+        "Suggestions": {
+          "$ref": "#/definitions/ISuggestions",
+          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+          "title": "Suggestions"
+        },
+        "Content": {
+          "$ref": "#/definitions/IOracleContent",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "title": "Content"
+        },
+        "Game objects": {
+          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IGameObject" },
+          "title": "Game objects"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Ceiling", "Floor", "Result"]
     },
     "IMultipleRolls": {
       "description": "Describes{@linkIRow}results that call for multiple rolls, most commonly \"Roll twice\" results.",
@@ -830,7 +989,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -841,6 +1000,7 @@
           "items": { "$ref": "#/definitions/IAsset" },
           "title": "Assets"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Name": {
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
@@ -876,8 +1036,8 @@
         "Assets",
         "Description",
         "Display",
-        "Name",
         "Source",
+        "Title",
         "Usage"
       ]
     },
@@ -887,7 +1047,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -971,7 +1131,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
-        }
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -982,6 +1143,7 @@
         "Display",
         "Name",
         "Source",
+        "Title",
         "Usage"
       ]
     },
@@ -991,9 +1153,14 @@
       "type": "object",
       "properties": {
         "Name": {
-          "description": "A string label name or label for the state.",
+          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "A string label for the state.",
+          "type": "string",
+          "title": "Label"
         },
         "Enabled": {
           "description": "Whether this state is currently enabled.",
@@ -1014,11 +1181,25 @@
           "description": "Whether or not this state is permanent.",
           "type": "boolean",
           "title": "Permanent"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Disables asset", "Enabled", "Impact", "Name", "Permanent"]
+      "required": [
+        "$id",
+        "Disables asset",
+        "Enabled",
+        "Impact",
+        "Label",
+        "Name",
+        "Permanent"
+      ]
     },
     "IAssetUsage": {
       "title": "IAssetUsage",
@@ -1076,7 +1257,7 @@
           "title": "Options"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1090,11 +1271,23 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Adjustable", "Input Type", "Name", "Options", "Sets"]
+      "required": [
+        "$id",
+        "Adjustable",
+        "Input Type",
+        "Label",
+        "Options",
+        "Sets"
+      ]
     },
     "InputType.Select": {
       "title": "InputType.Select",
@@ -1128,7 +1321,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1170,7 +1363,7 @@
           "title": "Value"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1204,7 +1397,7 @@
         },
         "Value": { "type": "integer", "title": "Value" },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1232,7 +1425,7 @@
         },
         "Value": { "$ref": "#/definitions/Stat", "title": "Value" },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1266,7 +1459,7 @@
         },
         "Value": { "type": "string", "title": "Value" },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1293,7 +1486,7 @@
           "title": "Input Type"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1307,11 +1500,16 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Adjustable", "Input Type", "Name"]
+      "required": ["$id", "Adjustable", "Input Type", "Label"]
     },
     "InputType.Text": {
       "title": "InputType.Text",
@@ -1324,7 +1522,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$",
           "type": "string",
           "title": "$id"
@@ -1333,6 +1531,11 @@
           "description": "Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
+          "type": "string",
+          "title": "Label"
         },
         "Moves": {
           "description": "New moves added by this asset ability.",
@@ -1389,7 +1592,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1399,6 +1602,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Asset": {
           "description": "The ID of the parent Asset of the move, if any.",
           "type": "string",
@@ -1477,6 +1681,7 @@
         "Optional",
         "Source",
         "Text",
+        "Title",
         "Trigger"
       ]
     },
@@ -1486,7 +1691,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger$",
           "type": "string",
           "title": "$id"
@@ -1552,7 +1757,7 @@
           "title": "Using"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
           "type": "string",
           "title": "$id"
@@ -1601,7 +1806,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
           "type": "string",
           "title": "$id"
@@ -1626,7 +1831,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1640,11 +1845,16 @@
           "description": "The numeric value to be used as +stat when making an Action Roll.",
           "type": "integer",
           "title": "Value"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Name", "Value"]
+      "required": ["$id", "Label", "Name", "Value"]
     },
     "IMoveTriggerOptionProgress": {
       "title": "IMoveTriggerOptionProgress",
@@ -1677,7 +1887,7 @@
           "title": "Using"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
           "type": "string",
           "title": "$id"
@@ -1712,7 +1922,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
           "type": "string",
           "title": "$id"
@@ -1736,7 +1946,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
           "type": "string",
           "title": "$id"
@@ -1786,6 +1996,12 @@
           "$ref": "#/definitions/RerollType",
           "description": "The dice to be rerolled.",
           "title": "Dice"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
@@ -1823,7 +2039,7 @@
           "title": "Filled"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1837,6 +2053,11 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
@@ -1847,7 +2068,7 @@
         "Clock Type",
         "Filled",
         "Input Type",
-        "Name",
+        "Label",
         "Segments"
       ]
     },
@@ -1881,7 +2102,7 @@
         "Step": { "type": "number", "enum": [1], "title": "Step" },
         "Value": { "type": "integer", "title": "Value" },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -1895,6 +2116,11 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
@@ -1903,9 +2129,9 @@
         "$id",
         "Adjustable",
         "Input Type",
+        "Label",
         "Max",
         "Min",
-        "Name",
         "Step",
         "Value"
       ]
@@ -1921,7 +2147,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$",
           "type": "string",
           "title": "$id"
@@ -2006,7 +2232,7 @@
         },
         "Miss": { "$ref": "#/definitions/IAlterOutcomeInfo", "title": "Miss" },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
           "type": "string",
           "title": "$id"
@@ -2030,7 +2256,7 @@
           "title": "Text"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
           "type": "string",
           "title": "$id"
@@ -2065,7 +2291,7 @@
           "title": "Text"
         },
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
           "type": "string",
           "title": "$id"
@@ -2103,6 +2329,12 @@
           "$ref": "#/definitions/RerollType_1",
           "description": "The dice to be rerolled.",
           "title": "Dice"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
@@ -2120,7 +2352,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -2204,7 +2436,8 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
-        }
+        },
+        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -2286,7 +2519,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$",
           "type": "string",
           "title": "$id"
@@ -2332,10 +2565,20 @@
           "type": "integer",
           "title": "Value"
         },
+        "Rollable": {
+          "description": "Whether the meter value can be used in place of a stat in an action roll.",
+          "type": "boolean",
+          "title": "Rollable"
+        },
         "Name": {
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
@@ -2378,6 +2621,48 @@
           "pattern": "^https?://.*$",
           "type": "string",
           "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License_1",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "License_1": {
+      "title": "License_1",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
+    },
+    "ITitle_1": {
+      "title": "ITitle_1",
+      "$ref": "#/definitions/Partial<ITitle>"
+    },
+    "Partial<ITitle>": {
+      "title": "Partial<ITitle>",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
         }
       },
       "defaultProperties": [],
@@ -2436,11 +2721,17 @@
           "description": "The item's rules text as a markdown string.",
           "type": "string",
           "title": "Text"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Text"]
+      "required": ["$id", "Text"]
     },
     "IAlterMomentumReset": {
       "title": "IAlterMomentumReset",
@@ -2467,7 +2758,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$",
           "type": "string",
           "title": "$id"
@@ -2513,15 +2804,33 @@
           "type": "integer",
           "title": "Value"
         },
+        "Rollable": {
+          "description": "Whether the meter value can be used in place of a stat in an action roll.",
+          "type": "boolean",
+          "title": "Rollable"
+        },
         "Name": {
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Conditions", "Max", "Min", "Name", "Value"]
+      "required": [
+        "$id",
+        "Conditions",
+        "Label",
+        "Max",
+        "Min",
+        "Rollable",
+        "Value"
+      ]
     },
     "IMoveCategory": {
       "description": "Represents a category of moves such as \"Session Moves\" or \"Combat Moves\", and serves as a container for moves within that category.",
@@ -2529,7 +2838,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
           "type": "string",
           "title": "$id"
@@ -2564,7 +2873,8 @@
           "default": false,
           "type": "boolean",
           "title": "Optional"
-        }
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2575,16 +2885,17 @@
         "Moves",
         "Name",
         "Optional",
-        "Source"
+        "Source",
+        "Title"
       ]
     },
     "IOracleCategory": {
-      "description": "Represents an oracle category: a grouping that can contain both{@linkIOracle}s and other instances of{@linkIOracleCategory}, but doesn't have its own `Table` key.\n\nIf you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see{@linkIOracleBase}.",
+      "description": "Represents an oracle category: a grouping that can contain both{@linkIOracle}s and other instances of{@linkIOracleCategory}, but doesn't have its own `Table` key.",
       "title": "IOracleCategory",
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
           "type": "string",
           "title": "$id"
@@ -2624,7 +2935,12 @@
         "Table": {
           "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/IRow" },
+              { "$ref": "#/definitions/IRowNullStub" }
+            ]
+          },
           "title": "Table"
         },
         "Oracles": {
@@ -2664,11 +2980,12 @@
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
           "title": "Source"
-        }
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Display", "Name", "Source"]
+      "required": ["$id", "Display", "Name", "Source", "Title"]
     },
     "IOracleUsage": {
       "description": "Describes the recommended usage of this item.",
@@ -2720,22 +3037,115 @@
           "$ref": "#/definitions/IRollTemplate_1",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
           "title": "Roll template"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
+    "IRowNullStub": {
+      "description": "A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as \"--\" in the book.",
+      "title": "IRowNullStub",
+      "type": "object",
+      "properties": {
+        "Floor": {
+          "description": "The low end of the dice range for this row.",
+          "type": "null",
+          "title": "Floor"
+        },
+        "Ceiling": {
+          "description": "The high end of the dice range for this row.",
+          "type": "null",
+          "title": "Ceiling"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "type": ["null", "string"],
+          "title": "Summary"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
+        "Suggestions": {
+          "$ref": "#/definitions/ISuggestions",
+          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+          "title": "Suggestions"
+        },
+        "Content": {
+          "$ref": "#/definitions/IOracleContent",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "title": "Content"
+        },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate_1",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
+        },
+        "Game objects": {
+          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IGameObject" },
+          "title": "Game objects"
+        },
+        "Oracle rolls": {
+          "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Oracle rolls"
+        },
+        "Subtable": {
+          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+              }
+            },
+            { "type": "array", "items": { "$ref": "#/definitions/IRow" } }
+          ],
+          "title": "Subtable"
+        },
+        "Multiple rolls": {
+          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+          "$ref": "#/definitions/IMultipleRolls",
+          "title": "Multiple rolls"
+        },
+        "Attributes": {
+          "description": "The attributes set by this row.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAttribute" },
+          "title": "Attributes"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Ceiling", "Floor", "Result"]
+    },
     "IOracle": {
-      "description": "Represents an oracle, which may have a Table or multiple child Oracles.\n\nIf you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see{@linkIOracleBase}.",
+      "description": "Represents an oracle, which may have a Table or multiple child Oracles.",
       "title": "IOracle",
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
           "$ref": "#/definitions/IDisplayOracle",
           "description": "Data relevant to this item's display/rendering.",
@@ -2754,7 +3164,12 @@
         "Table": {
           "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IRow" },
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/IRow" },
+              { "$ref": "#/definitions/IRowNullStub" }
+            ]
+          },
           "title": "Table"
         },
         "On a Match": {
@@ -2808,18 +3223,13 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Category", "Display", "Name", "Source"]
+      "required": ["$id", "Category", "Display", "Name", "Source", "Title"]
     },
     "IDisplayOracle": {
       "description": "Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
       "title": "IDisplayOracle",
       "type": "object",
       "properties": {
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
         "Column of": {
           "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
           "type": "string",
@@ -2832,8 +3242,13 @@
         },
         "Embed in": {
           "description": "This table is displayed as embedded in a row of another table.",
-          "type": ["null", "string"],
+          "type": "string",
           "title": "Embed in"
+        },
+        "Title": {
+          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+          "type": "string",
+          "title": "Title"
         },
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
@@ -2926,7 +3341,7 @@
       "type": "object",
       "properties": {
         "$id": {
-          "description": "The item's unique string ID.",
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$",
           "type": "string",
           "title": "$id"

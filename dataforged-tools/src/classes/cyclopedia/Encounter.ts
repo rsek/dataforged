@@ -1,4 +1,5 @@
 import type { Source } from "@classes/common/Source.js";
+import type { Title } from "@classes/common/Title.js";
 import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter } from "@json_out/index.js";
 import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
@@ -8,6 +9,7 @@ import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in
 export abstract class Encounter implements IEncounter {
   abstract $id: string;
   Name: string;
+  abstract Title: Title;
   Features: string[];
   Drives: string[];
   Tactics: string[];

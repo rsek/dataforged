@@ -3,11 +3,13 @@ import { AssetState } from "./AssetState.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";
 import { DisplayWithTitle } from "../common/Display.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
+import { Title } from "../common/Title.js";
 import { InputSelectOptionType, InputType, Replacement } from "../../json_out/index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "../../utils/object_transform/replaceInAllStrings.js";
+import { formatIdFragment } from "../../utils/toIdFragment.js";
 import _ from "lodash-es";
 /**
  * @internal
@@ -18,9 +20,10 @@ export class Asset extends SourceInheritor {
         super(json.Source ?? {}, rootSource);
         // console.log(this.Source);
         this["Asset Type"] = parent.$id;
-        this.$id = `${this["Asset Type"]}/${json.Name}`.replaceAll(" ", "_");
+        this.$id = `${formatIdFragment(this["Asset Type"])}/${formatIdFragment(json.Title.Short ?? json.Title.Canonical)}`;
         buildLog(this.constructor, `Building: ${this.$id}`);
-        this.Name = json.Name;
+        this.Name = json.Title.Short ?? json.Title.Canonical;
+        this.Title = new Title(json.Title, this.$id);
         this.Aliases = json.Aliases;
         this.Display = new DisplayWithTitle({
             Title: json.Display?.Title ?? this.Name,
@@ -28,7 +31,7 @@ export class Asset extends SourceInheritor {
             Color: json.Display?.Color ?? parent.Display.Color
         });
         this.Usage = {
-            Shared: ["Command Vehicle", "Support Vehicle", "Module"].includes(parent.Name) ? true : false
+            Shared: ["Command Vehicle", "Support Vehicle", "Module"].includes(parent.Name ?? parent.Title.Short ?? parent.Title.Canonical) ? true : false
         };
         this.Attachments = json.Attachments;
         if (json.Inputs) {
@@ -59,7 +62,7 @@ export class Asset extends SourceInheritor {
             });
         }
         if (json.States) {
-            this.States = json.States.map(state => new AssetState(state)) ?? undefined;
+            this.States = json.States.map(state => new AssetState(state, this)) ?? undefined;
         }
         this.Requirement = json.Requirement;
         this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;

@@ -1,4 +1,4 @@
-import { DisplayOracle, OracleContent, OracleUsage, Row, SourceInheritor } from "../index.js";
+import { DisplayOracle, OracleContent, OracleUsage, Row, RowNullStub, SourceInheritor, Title } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { inferSetsAttributes } from "../../utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "../../utils/object_transform/propagateToChildren.js";
@@ -24,6 +24,7 @@ export class Oracle extends SourceInheritor {
         this.$id = buildOracleId(gamespace, jsonClone, ...ancestorsJson);
         // buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = jsonClone.Name;
+        this.Title = new Title(json.Title, this.$id);
         this.Aliases = jsonClone.Aliases;
         this["Member of"] = memberOf ?? undefined;
         this.Category = category;
@@ -47,9 +48,29 @@ export class Oracle extends SourceInheritor {
             tableData = jsonClone.Table;
         }
         if (tableData) {
-            this.Table = tableData.map(row => {
+            this.Table = tableData.map((row, index) => {
                 // TODO: propagate attributes to row objects
-                const newRow = new Row(this.$id, row);
+                let newRow;
+                if (Array.isArray(row)) {
+                    if (row[0] === null && row[1] === null) {
+                        const filteredRow = row.filter(item => typeof item === "string");
+                        newRow = new RowNullStub({ Result: filteredRow[0], Summary: filteredRow[1] });
+                    }
+                    else {
+                        newRow = new Row(this.$id, row);
+                    }
+                }
+                else if (typeof row === "object") {
+                    if (row.Floor === null && row.Ceiling === null) {
+                        newRow = new RowNullStub(row);
+                    }
+                    else {
+                        newRow = new Row(this.$id, row);
+                    }
+                }
+                else {
+                    throw new Error(`Unable to infer row type from row at index ${index} of ${this.$id}`);
+                }
                 return newRow;
             });
         }

@@ -16,6 +16,7 @@ export class Display implements IDisplay {
 }
 /**
  * @internal
+ * @deprecated Use
  */
 export class DisplayWithTitle extends Display implements IDisplayWithTitle {
   Title!: string;

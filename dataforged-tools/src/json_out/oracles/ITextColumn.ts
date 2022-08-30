@@ -8,6 +8,7 @@ import type { KeysWithValuesOfType } from "@utils/types/KeysWithValuesOfType.js"
 export interface ITextColumn extends ITableColumnBase {
   /**
    * The label or header text to use for this column.
+   * @localize
    */
   Label: string;
   /**

@@ -26,4 +26,13 @@ export var SourceUrl;
     SourceUrl["IronswornDelve"] = "https://shawn-tomkin.itch.io/ironsworn-delve";
     SourceUrl["IronswornBonusAssets"] = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view";
 })(SourceUrl || (SourceUrl = {}));
+/**
+ * @public
+ */
+export var License;
+(function (License) {
+    License["CC_BY_NC_SA"] = "https://creativecommons.org/licenses/by-nc-sa/4.0/";
+    License["CC_BY_SA"] = "https://creativecommons.org/licenses/by-sa/4.0/";
+    License["None"] = "None";
+})(License || (License = {}));
 //# sourceMappingURL=ISource.js.map

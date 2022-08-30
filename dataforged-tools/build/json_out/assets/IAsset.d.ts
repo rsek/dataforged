@@ -1,9 +1,9 @@
-import type { IAssetAbility, IAssetAttachment, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplayWithTitle, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource, IInputSelect, IInputText } from "../index.js";
+import type { IAssetAbility, IAssetAttachment, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplayWithTitle, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource, IHasTitle, IInputSelect, IInputText } from "../index.js";
 /**
  * An interface representing an *Ironsworn: Starforged* asset card.
  * @public
  */
-export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases> {
+export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases>, IHasTitle {
     /**
      * @example "Starforged/Assets/Path/Bounty_Hunter"
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$
@@ -12,6 +12,7 @@ export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Parti
     /**
      * The asset's name - the title printed on the card.
      * @example "Bounty Hunter"
+     * @localize
      */
     Name: string;
     Display: IDisplayWithTitle;
@@ -39,6 +40,7 @@ export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Parti
     /**
      * An optional markdown string representing the requirement text that appears at the top of some asset cards.
      * @markdown
+     * @localize
      * @example "If you wear your finely crafted set of personal armor..."
      */
     Requirement?: string | undefined;

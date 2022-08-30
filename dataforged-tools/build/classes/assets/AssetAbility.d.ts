@@ -8,6 +8,7 @@ import type { IAssetAbilityYaml } from "../../yaml_in/index.js";
 export declare class AssetAbility implements IAssetAbility {
     $id: IAssetAbility["$id"];
     Name?: string | undefined;
+    Label?: string | undefined;
     Text: string;
     Moves?: Move[] | undefined;
     Inputs?: (InputNumber | InputClock | InputText)[] | undefined;

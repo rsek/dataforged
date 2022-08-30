@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import { AttributeSetter, GameObject , MultipleRolls, OracleContent, Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, Raster, Vector } from "@json_out/index.js";
+import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, IRowNullStub, ISettingTruthOptionSubtableRow, Raster, Vector } from "@json_out/index.js";
+import type { PartialBy } from "@utils/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";
+import type { ISettingTruthOptionSubtableRowYaml, ISettingTruthOptionYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 import type { IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 import _ from "lodash-es";
 
@@ -13,43 +15,24 @@ import _ from "lodash-es";
  * @internal
  */
 export class Row implements IRow {
-  $id!: string | null;
+  $id!: string;
   Floor: number|null;
   Ceiling: number|null;
-  /**
-   */
   Result!: string;
-  /**
-   */
   Summary?: string | null | undefined;
-  /**
-   */
   "Oracle rolls"?: IOracle["$id"][] | undefined;
-  /**
-   */
   "Game objects"?: GameObject[] | undefined;
-  /**
-   */
   "Multiple rolls"?: MultipleRolls | undefined;
-  /**
-   */
   Suggestions?: Suggestions | undefined;
-  /**
-   */
   Attributes?: AttributeSetter | undefined;
-  /**
-   */
   "Roll template"?: IRollTemplate | undefined;
-  /**
-   */
   Display?: IDisplay | undefined;
-  /**
-   */
   Content?: OracleContent;
+  Subtable?: Row[] | undefined;
   /**
    * Creates an instance of Row.
    */
-  constructor(parentId: string, json: IRowYaml | IRow) {
+  constructor(parentId: string, json: IRowYaml | YamlStub<IRow> | ISettingTruthOptionYaml) {
     let rowData = _.clone(json);
     if (Array.isArray(rowData) &&(rowData as Array<unknown>).some(item => Array.isArray(item))) {
       rowData = (rowData as Array<unknown|Array<unknown>>).flat(2) as IRowYaml;
@@ -79,7 +62,7 @@ export class Row implements IRow {
       switch (typeof item) {
         case "string": {
           const str = item;
-          if (str.match(/http.*\.webp/)) {
+          if (str.match(/.*\.webp/)) {
             if (!this.Display) {
               this.Display = { };
             }
@@ -87,7 +70,7 @@ export class Row implements IRow {
               this.Display.Images = [];
             }
             this.Display.Images.push(str as ImageUrl<Raster>);
-          } else if (str.match(/http.*\.png/)) {
+          } else if (str.match(/.*\.png/)) {
             if (!this.Display) {
               this.Display = { };
             }
@@ -124,12 +107,12 @@ export class Row implements IRow {
                 }
                 if (Array.isArray(value) && Array.isArray(value[0])) {
                   console.log("Subtable found, building...");
-                  this.Subtable = (value as IRowYaml[]).map(rowData => new Row(`${this.$id as string}/Subtable`, rowData));
+                  this.Subtable = (value as IRowYaml[]).map(rowData => new Row(`${this.$id }/Subtable`, rowData));
                 } else if (Array.isArray(value) && typeof value[0] === "object") {
                   console.log("Prebuilt subtable found, generating IDs...");
-                  this.Subtable = (value as IRow[]).map(rowData => new Row(`${this.$id as string}/Subtable`, rowData));
+                  this.Subtable = (value as IRow[]).map(rowData => new Row(`${this.$id }/Subtable`, rowData));
                 } else {
-                  throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");
+                  throw badJsonError(this.constructor, value, "expected IRow[]");
                 }
                 break;
               }
@@ -215,9 +198,23 @@ export class Row implements IRow {
       throw badJsonError(this.constructor, this, "Row doesn't have a result string");
     }
   }
-  [x: number]: string | undefined;
-  Subtable?: Row[] | undefined;
-  length?: number | undefined;
+  // [x: number]: string | undefined;
+  // length?: number | undefined;
   // this has to happen after derived class inheritance, rather than during the class constructor, so that class inheritance works properly. it gets done when the Oracle class builds the rows.
   // FIXME: alternately, i could write an abstract class or something, oof.
+}
+
+
+/**
+ * @internal
+ */
+export class RowNullStub implements IRowNullStub {
+  Floor: null = null;
+  Ceiling: null = null;
+  Result: string;
+  Summary?: string | undefined | null;
+  constructor({ Result, Summary }: Omit<IRowNullStub, "Floor"|"Ceiling">) {
+    this.Result = Result;
+    this.Summary = Summary;
+  }
 }

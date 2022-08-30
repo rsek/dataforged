@@ -1,6 +1,6 @@
 import { DisplayWithTitle } from "@classes/common/Display.js";
-import { Source } from "@classes/index.js";
 import type { EncounterStarforged  } from "@classes/index.js";
+import { Source , Title } from "@classes/index.js";
 import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterStarforged, IEncounterVariant } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IEncounterVariantYaml } from "@yaml_in/index.js";
@@ -13,6 +13,7 @@ export class EncounterVariant implements IEncounterVariant {
   $id: IEncounterVariant["$id"];
   Source: Source;
   Name: string;
+  Title: Title;
   Rank: ChallengeRank;
   Display: DisplayWithTitle;
   Description: string;
@@ -23,6 +24,7 @@ export class EncounterVariant implements IEncounterVariant {
     this.$id = (`${parent.$id}/${formatIdFragment(json._idFragment??json.Name)}`);
     this.Source = new Source(parent.Source);
     this.Name = json.Name;
+    this.Title = new Title(json.Title, this.$id);
     this.Rank = json.Rank;
     this.Display = new DisplayWithTitle(
       {

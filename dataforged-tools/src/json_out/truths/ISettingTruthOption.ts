@@ -11,7 +11,7 @@ export interface ISettingTruthOption extends IRow, IHasQuestStarter, IHasDescrip
    */
   $id: string;
   "Roll template"?: IRollTemplate | undefined;
-  Subtable?: IRow[] | undefined;
+  Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
 }
 
 /**

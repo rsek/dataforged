@@ -1,14 +1,15 @@
-import { MeterBase } from "./MeterBase.js";
+import { Meter } from "./Meter.js";
 import { MeterAlias } from "../../json_out/index.js";
 /**
  * @internal
  */
-export class ConditionMeter extends MeterBase {
+export class ConditionMeter extends Meter {
     constructor(json, id, assetType) {
         super(json, id);
         this.Min = 0;
         this.Conditions = [];
-        this["Value"] = json["Value"] ?? json.Max;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        this.Value = json.Value ?? json.Max;
         if (json.Conditions) {
             this.Conditions = json.Conditions;
         }

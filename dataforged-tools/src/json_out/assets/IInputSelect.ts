@@ -4,9 +4,9 @@ import type { IInput , IInputSelectOption, InputType } from "@json_out/index.js"
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.
  * @example
- * ```
+ * ```typescript
  * {
- *   "Name": "Material",
+ *   "Label": "Material",
  *   "Input Type": "Select",
  *   "Attributes": [
  *     { "Key": "Stat", "Type": "Stat" },
@@ -14,7 +14,7 @@ import type { IInput , IInputSelectOption, InputType } from "@json_out/index.js"
  *    ],
  *    "Options": [
  *      {
- *       "Name": "Thunderwood",
+ *       "Label": "Thunderwood",
  *       "Sets": [
  *         { "Key": "Stat", "Value": "Edge" },
  *         { "Key": "Condition Meter", "Value": "Health" }

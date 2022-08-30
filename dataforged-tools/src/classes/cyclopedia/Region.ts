@@ -1,4 +1,4 @@
-import { DisplayWithTitle, Source } from "@classes/index.js";
+import { DisplayWithTitle, Source , Title } from "@classes/index.js";
 import type { IIronswornRegion as IIronswornRegion } from "@json_out/index.js";
 import type { IDisplay } from "@json_out/meta/IDisplay.js";
 import type { IIronswornRegionYaml } from "@yaml_in/index.js";
@@ -9,6 +9,7 @@ import type { IIronswornRegionYaml } from "@yaml_in/index.js";
 export class IronswornRegion implements IIronswornRegion {
   $id: string;
   Name: string;
+  Title: Title;
   Summary: string;
   Display: IDisplay;
   Source: Source;
@@ -20,11 +21,11 @@ export class IronswornRegion implements IIronswornRegion {
   constructor(json: IIronswornRegionYaml) {
     this.$id = `Ironsworn/Regions/${json.Name}`;
     this.Name = json.Name;
-    this.Summary = json.Summary;
+    this.Title = new Title(json.Title,this.$id);
     this.Display = new DisplayWithTitle({ Title: json.Name });
     this.Source = new Source(json.Source);
     this.Features = json.Features;
-    this.Description = json.Description;
+    this.Summary = json.Summary;
     this.Description = json.Description;
   }
 }

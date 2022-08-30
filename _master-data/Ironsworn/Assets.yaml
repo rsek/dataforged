@@ -1,12 +1,15 @@
 Name: Assets
 Source:
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
   Authors:
     - Shawn Tomkin
   Title: Ironsworn Assets
   Date: "060122"
   Url: https://shawn-tomkin.itch.io/ironsworn
 Asset Types:
-  - Name: Companion
+  - Title:
+      Canonical: Companion Assets
+      Short: Companion
     Source:
       Title: Ironsworn Rulebook
       Page: 39
@@ -15,16 +18,17 @@ Asset Types:
 
       Companions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move (page 94) to determine the outcome. See page 43 to learn more.
     Assets:
-      - Name: Cave Lion
+      - Title:
+          Canonical: Cave Lion
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/saber-toothed-cat-head.html
         Tags: [animal companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your cat takes down its prey.
         Abilities:
-          - Name: Eager
+          - Label: Eager
             Text: |-
               When your cat chases down big game, you may [Resupply](Ironsworn/Moves/Adventure/Resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.
             Alter Moves:
@@ -38,7 +42,7 @@ Asset Types:
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 supply or +1 momentum.
-          - Name: Inescapable
+          - Label: Inescapable
             Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Strike](Ironsworn/Moves/Combat/Strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.
             Alter Moves:
@@ -55,7 +59,7 @@ Asset Types:
                     Text: Take +2 momentum.
                   Weak Hit: *outcome:+2_momentum
 
-          - Name: Protective
+          - Label: Protective
             Text: |-
               When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
             Alter Moves:
@@ -66,18 +70,20 @@ Asset Types:
                     Text: If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
                   Weak Hit: *Cave_Lion.3
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 4
-      - Name: Giant Spider
+      - Title:
+          Canonical: Giant Spider
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/carl-olsen/spider-alt.html
         Tags: [beast companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your spider uncovers secrets.
         Abilities:
-          - Name: Discreet
+          - Label: Discreet
             Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.
             Alter Moves:
@@ -93,7 +99,7 @@ Asset Types:
                   Strong Hit: &outcome:+1_momentum
                     Text: Take +1 momentum.
                   Weak Hit: *outcome:+1_momentum
-          - Name: Soul-Piercing
+          - Label: Soul-Piercing
             Text: |-
               You may [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.
             Alter Moves:
@@ -110,7 +116,7 @@ Asset Types:
                   Weak Hit: *Giant_Spider.2
                   # TODO: gather info for reroll?
                   # Or: add move key to outcomes?
-          - Name: Ensnaring
+          - Label: Ensnaring
             Text: |-
               When your spider sets a trap, add +1 as you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +shadow. On a strong hit, also inflict 2 harm.
             Alter Moves:
@@ -125,18 +131,20 @@ Asset Types:
                   Strong Hit:
                     Text: Also inflict 2 harm.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 4
-      - Name: Hawk
+      - Title:
+          Canonical: Hawk
         # icon not on game-icons
         # sub https://game-icons.net/1x1/lorc/hawk-emblem.html ?
         Tags: [animal companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your hawk can aid you while it is aloft.
         Abilities:
-          - Name: Far-seeing
+          - Label: Far-seeing
             Text: |-
               When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), or when you [Resupply](Ironsworn/Moves/Adventure/Resupply) by hunting for small game, add +1.
             Alter Moves:
@@ -149,7 +157,7 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
                 Text: Add +1.
-          - Name: Fierce
+          - Label: Fierce
             Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.
             Alter Moves:
@@ -162,7 +170,7 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-          - Name: Vigilant
+          - Label: Vigilant
             Text: |-
               When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +wits to detect an approaching threat, or when you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush, add +2.
             Alter Moves:
@@ -182,17 +190,19 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +2.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 3
-      - Name: Horse
+      - Title:
+          Canonical: Horse
         # icon not on game-icons
         Tags: [animal companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: You and your horse ride as one.
         Abilities:
-          - Name: Swift
+          - Label: Swift
             Text: |-
               When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), add +1.
             Alter Moves:
@@ -206,7 +216,7 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
                 Text: Add +1.
-          - Name: Fearless
+          - Label: Fearless
             Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.
             Alter Moves:
@@ -221,7 +231,7 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-          - Name: Mighty
+          - Label: Mighty
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) at close range while mounted, add +1 and inflict +1 harm on a hit.
             Alter Moves:
@@ -239,18 +249,20 @@ Asset Types:
                     Text: Inflict +1 harm.
                   Weak Hit: *outcome:+1_harm
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 5
-      - Name: Hound
+      - Title:
+          Canonical: Hound
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/hound.html
         Tags: [animal companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your hound is your steadfast companion.
         Abilities:
-          - Name: Sharp
+          - Label: Sharp
             Text: |-
               When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.
             Alter Moves:
@@ -262,7 +274,7 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-          - Name: Ferocious
+          - Label: Ferocious
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.
             Alter Moves:
@@ -278,7 +290,7 @@ Asset Types:
                   Strong Hit: &Hound.3
                     Text: Inflict +1 harm or take +1 momentum.
                   Weak Hit: *Hound.3
-          - Name: Loyal
+          - Label: Loyal
             Text: When you [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) in the company of your hound, add +1.
             Alter Moves:
               - Moves: [Ironsworn/Moves/Suffer/Endure_Stress]
@@ -289,21 +301,23 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +1.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 4
-      - Name: Kindred
+      - Title:
+          Canonical: Kindred
         # icon not on game-icons
         Tags: [Ironlander companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your friend stands by you.
         Abilities:
-          - Name: Skilled
+          - Label: Skilled
             Text: |-
               When you make a move outside of combat aided by your companion’s expertise, add +1.
             Inputs:
-              - Name: Expertise
+              - Label: Expertise
                 Input Type: Text
                 Adjustable: false
             Alter Moves:
@@ -314,7 +328,7 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
                 Text: Add +1.
-          - Name: Shield-Kin
+          - Label: Shield-Kin
             Text: |-
               When you [Clash](Ironsworn/Moves/Combat/Clash) or [Battle](Ironsworn/Moves/Combat/Battle) alongside your companion, or when you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) against an attack by standing together, add +1.
             Alter Moves:
@@ -335,7 +349,7 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
                 Text: Add +1.
-          - Name: Bonded
+          - Label: Bonded
             Text: |-
               Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.
             Alter Moves:
@@ -343,88 +357,96 @@ Asset Types:
               - Moves: [Ironsworn/Moves/Suffer/Face_Desolation]
                 Text: Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 4
-      - Name: Mammoth
+      - Title:
+          Canonical: Mammoth
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/mammoth.html
         Tags: [beast companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your mammoth walks a resolute path.
         Abilities:
-          - Name: Lumbering
+          - Label: Lumbering
             Text: |-
               When your mammoth travels with you as you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), you may add +2 but suffer -1 momentum (decide before rolling).
             # TODO: left off here. enh.
-          - Name: Beast of burden
+          - Label: Beast of burden
             Text: |-
               When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.
             # TODO: alter move prop to target anything with a +supply trigger programmatically?
-          - Name: Overpowering
+          - Label: Overpowering
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 5
-      - Name: Owl
+      - Title:
+          Canonical: Owl
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/caro-asercion/barn-owl.html
         Tags: [animal companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your owl soars through the darkness.
         Abilities:
-          - Name: Nocturnal
+          - Label: Nocturnal
             Text: |-
               If you [Resupply](Ironsworn/Moves/Adventure/Resupply) at night by sending your owl to hunt, take +2 momentum on a hit. When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush in darkness, add +1 and take +1 momentum on a hit.
-          - Name: Sage
+          - Label: Sage
             Text: |-
               When you leverage your owl’s secret knowledge to perform a ritual, add +1 or take +1 momentum on a hit (decide before rolling).
-          - Name: Embodying
+          - Label: Embodying
             Text: |-
               When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), take your owl’s health as +momentum before you roll.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 3
-      - Name: Raven
+      - Title:
+          Canonical: Raven
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/raven.html
         Tags: [animal companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your raven heeds your call.
         Abilities:
-          - Name: Sly
+          - Label: Sly
             Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit.
-          - Name: Knowing
+          - Label: Knowing
             Text: When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), add +2 and take +1 momentum on a hit.
-          - Name: Diligent
+          - Label: Diligent
             Text: |-
               When your raven carries messages for you, you may [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), or [Compel](Ironsworn/Moves/Relationship/Compel) from a distance.
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 2
-      - Name: Young Wyvern
+      - Title:
+          Canonical: Young Wyvern
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/wyvern.html
         Tags: [beast companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Your wyvern won’t devour you. For now.
         Abilities:
-          - Name: Insatiable
+          - Label: Insatiable
             Text: |-
               When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) and score a hit, you may suffer -1 supply in exchange for +2 momentum.
-          - Name: Indomitable
+          - Label: Indomitable
             Text: |-
               When you make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move for your wyvern, add +2 and take +1 momentum on a hit.
-          - Name: Savage
+          - Label: Savage
             Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.
             Alter Moves:
@@ -435,23 +457,28 @@ Asset Types:
                       Roll type: Action roll
                       Using: [Heart]
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 5
-  - Name: Path
+  - Title:
+      Canonical: Path Assets
+      Short: Path
     Source:
       Page: 40
       Title: Ironsworn Rulebook
     Description: |-
       Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.
     Assets:
-      - Name: Alchemist
+      - Title:
+          Canonical: Alchemist
         # https://game-icons.net/1x1/lorc/round-bottom-flask.html
         Abilities:
           - Text: &move:Asset.Alchemist |-
               When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.
             Enabled: true
             Moves:
-              - Name: Create Elixir
+              - Title:
+                  Canonical: Create Elixir
                 Trigger:
                   Text: When you create an elixir...
                   Options:
@@ -487,7 +514,8 @@ Asset Types:
               As above, and you may choose two effects for a single dose, or create two doses of the same effect.
           - Text: |-
               When you prepare an elixir, add +1 and take +1 momentum on a hit.
-      - Name: Animal Kin
+      - Title:
+          Canonical: Animal Kin
         # https://game-icons.net/1x1/lorc/octogonal-eye.html
         Abilities:
           - Text: |-
@@ -500,10 +528,11 @@ Asset Types:
               You may add or upgrade an animal or beast companion asset for 1 fewer experience. Once you mark all their abilities, you may [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with them and take an automatic strong hit. When you do, mark a bond twice and take 1 experience.
           - Text: |-
               Once per fight, when you leverage your animal or beast companion to make a move, reroll any dice. On a hit, take +1 momentum.
-      - Name: Banner-Sworn
+      - Title:
+          Canonical: Banner-Sworn
         # icon not on game-icons
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Once you mark a bond with a leader or faction...
         Abilities:
@@ -514,7 +543,8 @@ Asset Types:
               When you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) or [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) in the company of your banner-kin, add +1 and take +1 momentum on a hit.
           - Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset.
-      - Name: Battle-Scarred
+      - Title:
+          Canonical: Battle-Scarred
         # icon not on game-icons
         Tags: [deed]
         Requirement: Once you become maimed...
@@ -533,10 +563,11 @@ Asset Types:
                     - Text: When you are at 0 health
                       Roll type: Action roll
                       Using: [Wits, Heart]
-      - Name: Blade-Bound
+      - Title:
+          Canonical: Blade-Bound
         # https://game-icons.net/1x1/lorc/rune-sword.html
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: |-
           Once you mark a bond with a kin-blade, a sentient weapon imbued with the spirit of your ancestor...
@@ -547,7 +578,8 @@ Asset Types:
               When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) by listening to the whispers of your kin-blade, add +1 and take +2 momentum on a hit. Then, [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
           - Text: |-
               When you [Strike](Ironsworn/Moves/Combat/Strike) with your kin-blade to inflict savage harm (decide before rolling), add +1 and inflict +2 harm on a hit. Then, [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
-      - Name: Bonded
+      - Title:
+          Canonical: Bonded
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -557,7 +589,8 @@ Asset Types:
               When you completely fill a box on your bonds progress track, envision what your relationships have taught you. Then, take 1 experience and +2 momentum.
           - Text: |-
               When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-kin for courage or encouragement. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or corrupted. If both debilities are already marked, [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).
-      - Name: Commander
+      - Title:
+          Canonical: Commander
         # https://game-icons.net/1x1/lorc/rally-the-troops.html
         Abilities:
           - Text: |-
@@ -592,9 +625,11 @@ Asset Types:
           - Text: |-
               Once you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
         Condition Meter:
-          Name: Strength
+          Label: Strength
+          Rollable: true
           Max: 4
-      - Name: Dancer
+      - Title:
+          Canonical: Dancer
         # unique icon composed from at least one game-icons element?
         # https://game-icons.net/1x1/lorc/ink-swirl.html
         Abilities:
@@ -606,7 +641,7 @@ Asset Types:
           - Text: &move:Asset.Dancer |-
               When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.
             Moves:
-              - Name: Commemorate
+              - Label: Commemorate
                 Trigger:
                   Text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
                   Options:
@@ -621,39 +656,40 @@ Asset Types:
                     Text: |-
                       You take +1 momentum or +1 spirit, but your allies are unmoved.
                   Miss: *move:Generic.Miss
-      - Name: Devotant
+      - Title:
+          Canonical: Devotant
         # https://game-icons.net/1x1/lorc/sundial.html
         Inputs:
-          - Name: God's Name
+          - Label: God's Name
             Input Type: Text
-          - Name: Linked Stat
+          - Label: Linked Stat
             Input Type: Select
             Adjustable: false
             Sets:
               - Key: Stat
                 Type: Stat
             Options:
-              - Name: Edge
+              - Label: Edge
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Edge
-              - Name: Heart
+              - Label: Heart
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Heart
-              - Name: Iron
+              - Label: Iron
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Iron
-              - Name: Shadow
+              - Label: Shadow
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Shadow
-              - Name: Wits
+              - Label: Wits
                 Set:
                   - Key: Stat
                     Type: Stat
@@ -680,10 +716,11 @@ Asset Types:
                     - Text: By sharing the word of your god
                       Roll type: Action roll
                       Using: [Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat]
-      - Name: Empowered
+      - Title:
+          Canonical: Empowered
         # https://game-icons.net/1x1/delapouite/crenel-crown.html
         Inputs:
-          - Name: Title/Lineage
+          - Label: Title/Lineage
             Input Type: Text
         Abilities:
           - Text: |-
@@ -693,7 +730,8 @@ Asset Types:
               When you exert your title or lineage to [Compel](Ironsworn/Moves/Relationship/Compel), add +1 and take +1 momentum on a hit.
           - Text: |-
               When you forgo your title or lineage and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) as an equal, or when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to serve someone of a lower station, add +1 and take +1 momentum or +1 spirit on a hit.
-      - Name: Fated
+      - Title:
+          Canonical: Fated
         # https://game-icons.net/1x1/lorc/journey.html
         Abilities:
           - Text: |-
@@ -703,7 +741,8 @@ Asset Types:
               When you [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone) on your background vow, take +2 momentum or +1 spirit.
           - Text: |-
               For every two boxes filled on your background vow progress track, take 1 experience. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow), your fate is at hand. Envision your final sacrifice and reroll any dice.
-      - Name: Fortune Hunter
+      - Title:
+          Canonical: Fortune Hunter
         # https://game-icons.net/1x1/delapouite/receive-money.html
         Abilities:
           - Text: |-
@@ -714,10 +753,12 @@ Asset Types:
           - Text: |-
               When you [Resupply](Ironsworn/Moves/Adventure/Resupply) by scavenging or looting, and score a strong hit with a match, you may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.
         Condition Meter:
-          Name: Wealth
+          Label: Wealth
+          Rollable: true
           Max: 5
           Value: 0
-      - Name: Herbalist
+      - Title:
+          Canonical: Herbalist
         # icon not on game-icons
         # possible substitute:
         # https://game-icons.net/1x1/lorc/three-leaves.html
@@ -732,7 +773,8 @@ Asset Types:
               When you [Heal](Ironsworn/Moves/Adventure/Heal) a companion, ally, or other character, and score a hit, take +1 spirit or +1 momentum.
           - Text: |-
               When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) and choose the option to partake, you can create a restorative meal. If you do, you and your companions take +1 health. Any allies who choose to partake also take +1 health, and do not suffer -supply.
-      - Name: Honorbound
+      - Title:
+          Canonical: Honorbound
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -742,7 +784,8 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) by telling a hard truth, add +1 and take +1 momentum on a hit. On a weak hit or miss, envision how this truth complicates your current situation.
           - Text: |-
               When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and score a miss, you may reroll one challenge die. If you score a miss again, reduce your maximum spirit by 1. You may recover this lost spirit when you next [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and score a strong hit.
-      - Name: Improviser
+      - Title:
+          Canonical: Improviser
         # https://game-icons.net/1x1/lorc/divergence.html
         Abilities:
           - Text: |-
@@ -758,7 +801,8 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) by cobbling together an ad hoc tool or apparatus, add +1 and take +1 momentum on a hit. After rolling, you may also suffer -1 supply and add +1 more.
           - Text: |-
               When you throw caution to the wind and make an impulsive move in a risky situation, you may add +2. If you do, take +1 momentum on a strong hit, but count a weak hit as a miss.
-      - Name: Infiltrator
+      - Title:
+          Canonical: Infiltrator
         # https://game-icons.net/1x1/lorc/impact-point.html
         Abilities:
           - Text: |-
@@ -788,7 +832,8 @@ Asset Types:
                     - Roll type: Action roll
                       Using: [Shadow]
                       Text: Within an enemy area by scavenging or looting
-      - Name: Lorekeeper
+      - Title:
+          Canonical: Lorekeeper
         # https://game-icons.net/1x1/lorc/book-aura.html
         Abilities:
           - Text: |-
@@ -798,7 +843,8 @@ Asset Types:
               When you learn of a site or object holding lost knowledge, and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to recover it for the archive, reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.
           - Text: |-
               One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) (ignoring momentum).
-      - Name: Loyalist
+      - Title:
+          Canonical: Loyalist
         # https://game-icons.net/1x1/delapouite/shaking-hands.html
         Abilities:
           - Text: |-
@@ -808,11 +854,12 @@ Asset Types:
               When an ally makes the [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) move in your company, they add +1 and you take +1 momentum on a hit.
           - Text: |-
               When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
-      - Name: Masked
+      - Title:
+          Canonical: Masked
         # icon not on game-icons
         Requirement: Once you mark a bond with elves, and are gifted a mask of precious elderwood...
         Inputs:
-          - Name: Material
+          - Label: Material
             Input Type: Select
             Adjustable: false
             Sets:
@@ -821,7 +868,7 @@ Asset Types:
               - Key: Condition Meter
                 Type: Condition Meter
             Options:
-              - Name: Thunderwood
+              - Label: Thunderwood
                 Set:
                   - Key: Stat
                     Type: Stat
@@ -829,7 +876,7 @@ Asset Types:
                   - Key: Condition Meter
                     Type: Condition Meter
                     Value: Health
-              - Name: Bloodwood
+              - Label: Bloodwood
                 Set:
                   - Key: Stat
                     Type: Stat
@@ -837,7 +884,7 @@ Asset Types:
                   - Key: Condition Meter
                     Type: Condition Meter
                     Value: Health
-              - Name: Ghostwood
+              - Label: Ghostwood
                 Set:
                   - Key: Stat
                     Type: Stat
@@ -845,7 +892,7 @@ Asset Types:
                   - Key: Condition Meter
                     Type: Condition Meter
                     Value: Spirit
-              - Name: Whisperwood
+              - Label: Whisperwood
                 Set:
                   - Key: Stat
                     Type: Stat
@@ -876,7 +923,8 @@ Asset Types:
                       Using: ["${{@ASSET}}/Inputs/Material/Stat"]
               - Moves: [Ironsworn/Moves/Suffer/Face_Desolation]
                 Trigger: *alter:Masked
-      - Name: Oathbreaker
+      - Title:
+          Canonical: Oathbreaker
         # https://game-icons.net/1x1/lorc/shattered-sword.html
         Tags: [deed]
         Requirement: Once you [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)...
@@ -888,14 +936,15 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit.
           - Text: |-
               When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) on your marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset.
-      - Name: Outcast
+      - Title:
+          Canonical: Outcast
         # https://game-icons.net/1x1/lorc/orb-direction.html
         Abilities:
           - Text: &move:Asset.Outcast |-
               When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](Ironsworn/Moves/Suffer/Out_of_Supply).
             Enabled: true
             Moves:
-              - Name: Scrape By
+              - Label: Scrape By
                 Category: Ironsworn/Moves/Assets
                 Asset: ${{@ASSET}}
                 Trigger:
@@ -915,7 +964,8 @@ Asset Types:
               When you [Sojourn](Ironsworn/Moves/Relationship/Sojourn), you may reroll any dice. If you do (decide before your first roll), your needs are few, but your isolation sets you apart from others. A strong hit counts as a weak hit.
           - Text: |-
               When you [Reach Your Destination](Ironsworn/Moves/Adventure/Reach_Your_Destination) and score a strong hit, you recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.
-      - Name: Pretender
+      - Title:
+          Canonical: Pretender
         # unique icon, probably derived from
         # https://game-icons.net/1x1/lorc/cowled.html
         Abilities:
@@ -923,7 +973,7 @@ Asset Types:
               When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).
             Enabled: true
             Moves:
-              - Name: Establish False Identity
+              - Label: Establish False Identity
                 Category: Ironsworn/Moves/Assets
                 Asset: ${{@ASSET}}
                 Trigger:
@@ -952,7 +1002,8 @@ Asset Types:
             # TODO: alter move
           - Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by revealing your true identity in a dramatic moment, reroll any dice.
-      - Name: Revenant
+      - Title:
+          Canonical: Revenant
         # https://game-icons.net/1x1/lorc/heartburn.html
         Tags: [deed]
         Requirement: Once you [Face Death](Ironsworn/Moves/Suffer/Face_Death) and return to the world of the living...
@@ -964,7 +1015,8 @@ Asset Types:
               When you make a move to investigate, oppose, or interact with a horror, spirit, or other undead being, add +1.
           - Text: |-
               When you bring death to your foe to [End the Fight](Ironsworn/Moves/Combat/End_the_Fight), you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
-      - Name: Rider
+      - Title:
+          Canonical: Rider
         # icon not on game-icons
         Requirement: If you are with your horse companion...
         Abilities:
@@ -975,7 +1027,8 @@ Asset Types:
               When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), you may push your horse harder and add +1 (after rolling). If you do, make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move (1 harm).
           - Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +wits by sizing up a perilous situation from the saddle, you are one with your horse’s instincts. Add +1 and take +1 momentum on a hit.
-      - Name: Ritualist
+      - Title:
+          Canonical: Ritualist
         # https://game-icons.net/1x1/lorc/divided-spiral.html
         Tags: [deed]
         Requirement: |-
@@ -989,7 +1042,8 @@ Asset Types:
               When you perform a ritual, you may suffer -1 supply and add +1 (decide before rolling).
           - Text: |-
               When you tattoo the essence of a new ritual onto your skin, envision the mark you create. You may then purchase and upgrade that ritual asset for 1 fewer experience.
-      - Name: Shadow-Kin
+      - Title:
+          Canonical: Shadow-Kin
         # icon not on game-icons
         Requirement: Once you become corrupted...
         Abilities:
@@ -1005,7 +1059,8 @@ Asset Types:
                   Options:
                     - Roll type: Action roll
                       Using: [Shadow]
-      - Name: Sighted
+      - Title:
+          Canonical: Sighted
         # https://game-icons.net/1x1/lorc/third-eye.html
         Abilities:
           - Text: |-
@@ -1015,7 +1070,8 @@ Asset Types:
               When you [Compel](Ironsworn/Moves/Relationship/Compel), [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), or [Test Your Bond](Ironsworn/Moves/Relationship/Test_Your_Bond) with a fellow mystic or mystical being, add +1 and take +1 momentum on a hit.
           - Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by studying someone or something in a charged situation, add +1 and take +1 momentum on a hit. When you also pierce the veil to explore deeper truths (decide before rolling), you may reroll any dice. If you do, count a weak hit as a miss.
-      - Name: Slayer
+      - Title:
+          Canonical: Slayer
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -1028,7 +1084,8 @@ Asset Types:
 
                 * Power a ritual: When you or an ally make a ritual move, reroll any dice (one time only).
                 * Prove your worth: When you [Sojourn](Ironsworn/Moves/Relationship/Sojourn), reroll any dice (one time only).
-      - Name: Spirit-Bound
+      - Title:
+          Canonical: Spirit-Bound
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -1041,7 +1098,8 @@ Asset Types:
 
                 * Let them go: Take 2 experience for each marked ability and discard this asset.
                 * Deepen your connection: Add +1 more when you leverage this asset.
-      - Name: Storyweaver
+      - Title:
+          Canonical: Storyweaver
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -1051,7 +1109,8 @@ Asset Types:
               When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) and choose the option to relax, you may share a story with your allies or compose a new story if alone. If you do, envision the story you tell and take +1 spirit or +1 momentum. Any allies who choose to relax in your company may also take +1 spirit or +1 momentum.
           - Text: |-
               When you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) within a community with which you share a bond, add +2 (instead of +1).
-      - Name: Trickster
+      - Title:
+          Canonical: Trickster
         # https://game-icons.net/1x1/lorc/suspicious.html
         Abilities:
           - Text: |-
@@ -1081,7 +1140,8 @@ Asset Types:
                     - Text: Reveal the truth
                       Using: [Heart]
                       Roll type: Action roll
-      - Name: Veteran
+      - Title:
+          Canonical: Veteran
         # https://game-icons.net/1x1/lorc/mailed-fist.html
         Abilities:
           - Text: |-
@@ -1091,7 +1151,8 @@ Asset Types:
               When you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to someone who fought beside you, or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with them, add +2 and take +2 momentum on a hit.
           - Text: |-
               When you [Resupply](Ironsworn/Moves/Adventure/Resupply) by looting the dead on a field of battle, add +1 and take +1 momentum on a hit.
-      - Name: Waterborn
+      - Title:
+          Canonical: Waterborn
         # https://game-icons.net/1x1/lorc/big-wave.html
         Abilities:
           - Text: |-
@@ -1105,7 +1166,8 @@ Asset Types:
                 * Reap the bounty: [Resupply](Ironsworn/Moves/Adventure/Resupply) now and reroll any dice.
           - Text: |-
               When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) aboard a boat or ship, reroll any dice.
-      - Name: Wayfinder
+      - Title:
+          Canonical: Wayfinder
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -1115,7 +1177,8 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) by carefully surveying the landscape or scouting ahead, add +1 and take +1 momentum on a hit.
           - Text: |-
               When you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to safely guide someone on a perilous journey, you may reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.
-      - Name: Weaponmaster
+      - Title:
+          Canonical: Weaponmaster
         # https://game-icons.net/1x1/lorc/all-for-one.html
         Tags: [deed]
         Requirement: Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to a seasoned warrior, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...
@@ -1127,7 +1190,8 @@ Asset Types:
               When you study or train in a new weapon or technique, you may obtain and upgrade that combat talent for 1 fewer experience.
           - Text: |-
               When you [Turn the Tide](Ironsworn/Moves/Combat/Turn_the_Tide) with a sudden change of weapon or technique, and your next move is a [Strike](Ironsworn/Moves/Combat/Strike), add +1 and inflict +2 harm on a strong hit.
-      - Name: Wildblood
+      - Title:
+          Canonical: Wildblood
         # icon not on game-icons
         Abilities:
           - Text: |-
@@ -1144,10 +1208,11 @@ Asset Types:
                     - Text: In the woodlands
                       Using: [Wits]
                       Roll type: Action roll
-      - Name: Wright
+      - Title:
+          Canonical: Wright
         # https://game-icons.net/1x1/delapouite/3d-hammer.html
         Inputs:
-          - Name: Specialty
+          - Label: Specialty
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1166,7 +1231,8 @@ Asset Types:
 
       Combat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.
     Assets:
-      - Name: Archer
+      - Title:
+          Canonical: Archer
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/bow-string.html
         Requirement: If you wield a bow...
@@ -1181,7 +1247,8 @@ Asset Types:
               Once per fight, when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash), you may take extra shots and suffer -1 supply (decide before rolling). When you do, reroll any dice. On a hit, inflict +2 harm and take +1 momentum.
           - Text: |-
               When you [Resupply](Ironsworn/Moves/Adventure/Resupply) by hunting, add +1 and take +1 momentum on a hit.
-      - Name: Berserker
+      - Title:
+          Canonical: Berserker
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/flat-paw-print.html
         # problem is, this loses the association by not being a *bear* paw (berserker = "bear-shirt")
@@ -1197,7 +1264,8 @@ Asset Types:
                 * Lose yourself: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
           - Text: |-
               When you [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) in a fight, and your health is above 0, you may let the pain inflame your wildness (decide before rolling). If you then score a strong hit and choose to embrace the pain, take +momentum equal to your remaining health. A weak hit counts as a miss.
-      - Name: Brawler
+      - Title:
+          Canonical: Brawler
         # https://game-icons.net/1x1/skoll/fist.html
         Requirement: If you are unarmed or fighting with a non-deadly weapon...
         Abilities:
@@ -1208,7 +1276,8 @@ Asset Types:
               When you use an unarmed attack or simple weapon to [Strike](Ironsworn/Moves/Combat/Strike) with deadly intent, add +2 and inflict 2 harm on a hit (instead of 1). On a weak hit or miss, suffer -1 momentum (in addition to any other outcome of the move).
           - Text: |-
               When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) or [Clash](Ironsworn/Moves/Combat/Clash) against a brawling attack, add +1 and take +1 momentum on a hit.
-      - Name: Cutthroat
+      - Title:
+          Canonical: Cutthroat
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/skoll/bowie-knife.html
         Requirement: If you wield a dagger or knife...
@@ -1223,7 +1292,8 @@ Asset Types:
               When you [Compel](Ironsworn/Moves/Relationship/Compel) someone at the point of your blade, or when you rely on your blade to [Face Danger](Ironsworn/Moves/Adventure/Face_Danger), add +1.
           - Text: |-
               Once per fight, when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +shadow by performing a feint or misdirection, reroll any dice and take +1 momentum on a hit.
-      - Name: Duelist
+      - Title:
+          Canonical: Duelist
         # https://game-icons.net/1x1/lorc/crossed-swords.html
         Requirement: If you wield a bladed weapon in each hand...
         Abilities:
@@ -1237,7 +1307,8 @@ Asset Types:
 
                 * Add +2.
                 * Take +2 momentum on a hit.
-      - Name: Fletcher
+      - Title:
+          Canonical: Fletcher
         # derived from:
         # https://game-icons.net/1x1/lorc/arrow-flights.html
         Abilities:
@@ -1252,7 +1323,7 @@ Asset Types:
                 * Seeker: When a shooter uses the arrow to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against this foe, reroll any dice (one time only).
                 * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
             Moves:
-              - Name: Craft Arrow
+              - Label: Craft Arrow
                 Trigger:
                   Text: When you craft a single arrow designated for a specific foe
                   Options:
@@ -1273,23 +1344,24 @@ Asset Types:
                         * Seeker: When a shooter uses the arrow to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against this foe, reroll any dice (one time only).
                         * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
                   Miss: *move:Generic.Miss
-      - Name: Ironclad
+      - Title:
+          Canonical: Ironclad
         # icon not on game-icons
         Requirement: If you wear armor...
         Inputs:
-          - Name: Equipped
+          - Label: Equipped
             Input Type: Select
             Adjustable: true
             Sets:
               - Key: Armor
                 Type: String
             Options:
-              - Name: Lightly armored
+              - Label: Lightly armored
                 Set:
                   - Key: Armor
                     Type: String
                     Value: Lightly armored
-              - Name: Geared for war
+              - Label: Geared for war
                 Set:
                   - Key: Armor
                     Type: String
@@ -1305,7 +1377,8 @@ Asset Types:
               When you [Clash](Ironsworn/Moves/Combat/Clash) while you are geared for war, add +1.
           - Text: |-
               When you [Compel](Ironsworn/Moves/Relationship/Compel) in a situation where strength of arms is a factor, add +2.
-      - Name: Long-Arm
+      - Title:
+          Canonical: Long-Arm
         # https://game-icons.net/1x1/delapouite/bo.html
         Requirement: If you wield a staff...
         Abilities:
@@ -1316,7 +1389,8 @@ Asset Types:
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.
           - Text: |-
               When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.
-      - Name: Shield-Bearer
+      - Title:
+          Canonical: Shield-Bearer
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/viking-shield.html
         Requirement: If you wield a shield...
@@ -1328,7 +1402,8 @@ Asset Types:
               When you paint your shield with a meaningful symbol, envision what you create. Then, if you [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) as you face off against a fearsome foe, add +1 and take +1 momentum on a hit.
           - Text: |-
               When forced to [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) in a fight, you may instead sacrifice your shield and ignore all harm. If you do, the shield is destroyed. Once per fight, you also take initiative when you sacrifice your shield to avoid harm.
-      - Name: Skirmisher
+      - Title:
+          Canonical: Skirmisher
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/spear-feather.html
         Requirement: If you wield a spear...
@@ -1343,7 +1418,8 @@ Asset Types:
               When you [Strike](Ironsworn/Moves/Combat/Strike) in close combat, you may attempt to drive your spear home (decide before rolling). If you do, add +1 and inflict +2 harm on a hit. If you score a hit and the fight continues, [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +iron to recover your spear.
           - Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit.
-      - Name: Slinger
+      - Title:
+          Canonical: Slinger
         # https://game-icons.net/1x1/delapouite/sling.html
         Requirement: If you wield a sling...
         Abilities:
@@ -1357,7 +1433,8 @@ Asset Types:
                 * Hit them hard: Inflict +1 harm on a hit, but suffer -1 momentum.
           - Text: |-
               When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by preparing stones of a special quality or material, add +1. Then, take +1 momentum or +1 supply on a hit.
-      - Name: Sunderer
+      - Title:
+          Canonical: Sunderer
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/battered-axe.html
         Requirement: If you wield an axe...
@@ -1372,7 +1449,7 @@ Asset Types:
           - Text: &move:Asset.Sunderer |-
               When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Moves:
-              - Name: Carve Rune
+              - Label: Carve Rune
                 Trigger:
                   Text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
                   Options:
@@ -1388,7 +1465,8 @@ Asset Types:
 
                       Inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash).
                   Miss: *move:Generic.Miss
-      - Name: Swordmaster
+      - Title:
+          Canonical: Swordmaster
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/spiral-hilt.html
         Requirement: If you wield a sword...
@@ -1400,7 +1478,8 @@ Asset Types:
               When you [Clash](Ironsworn/Moves/Combat/Clash) and score a strong hit, add +1 if you immediately follow with a [Strike](Ironsworn/Moves/Combat/Strike).
           - Text: |-
               When you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) by kneeling and grasping your sword’s blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm) in exchange for an additional +1 momentum on a hit.
-      - Name: Thunder-Bringer
+      - Title:
+          Canonical: Thunder-Bringer
         # https://game-icons.net/1x1/lorc/hammer-drop.html
         Requirement: If you wield a mighty hammer...
         Abilities:
@@ -1420,7 +1499,8 @@ Asset Types:
 
       All rituals utilize a move as their default marked ability. You must make this move and the associated action roll to trigger the effect. Any secondary abilities you gain by upgrading the asset are dependent on performing the ritual described as the default ability.
     Assets:
-      - Name: Augur
+      - Title:
+          Canonical: Augur
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/crow-dive.html
         Abilities:
@@ -1428,7 +1508,7 @@ Asset Types:
               When you summon a flock of crows and ask a single question, roll +wits. On a strong hit, you interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and take +2 momentum. On a weak hit, the crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.
             Enabled: true
             Moves:
-              - Name: Augur
+              - Label: Augur
                 Trigger:
                   Text: When you summon a flock of crows and ask a single question...
                   Options:
@@ -1446,14 +1526,15 @@ Asset Types:
           - &asset:Ritual.Ability.3
             Text: |-
               When you perform this ritual, add +1 and take +1 momentum on a hit.
-      - Name: Awakening
+      - Title:
+          Canonical: Awakening
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Awakening |-
               When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +heart to keep it from turning on you (as a formidable foe).
             Enabled: true
             Moves:
-              - Name: Awakening
+              - Label: Awakening
                 Trigger:
                   Text: When you create a simulacrum...
                   Options:
@@ -1478,17 +1559,19 @@ Asset Types:
             # FIXME: alter move to include new text
           - *asset:Ritual.Ability.3
         Condition Meter:
-          Name: Health
+          Label: Health
+          Rollable: true
           Max: 3
           Value: 3
-      - Name: Bind
+      - Title:
+          Canonical: Bind
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Bind |-
               When you wear an animal pelt and dance in moonlight, roll +wits. On a strong hit, you or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent. On a weak hit, as above, but the wilds call as you dance; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Bind
+              - Label: Bind
                 Trigger:
                   Text: When you wear an animal pelt and dance in moonlight...
                   Options:
@@ -1508,14 +1591,15 @@ Asset Types:
           - Text: |-
               As above, and you may instead perform this ritual wearing the pelt of a beast. If you do, name the related stat and add +2 (instead of +1).
           - *asset:Ritual.Ability.3
-      - Name: Communion
+      - Title:
+          Canonical: Communion
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Communion |-
               When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
             Enabled: true
             Moves:
-              - Name: Communion
+              - Label: Communion
                 Trigger:
                   Text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
                   Options:
@@ -1535,14 +1619,15 @@ Asset Types:
           - Text: |-
               As above, and you may also commune with the long-dead.
           - *asset:Ritual.Ability.3
-      - Name: Divination
+      - Title:
+          Canonical: Divination
         # https://game-icons.net/1x1/lorc/rune-stone.html
         Abilities:
           - Text: &move:Asset.Divination |-
               When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.
             Enabled: true
             Moves:
-              - Name: Divination
+              - Label: Divination
                 Trigger:
                   Text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
                   Options:
@@ -1566,14 +1651,15 @@ Asset Types:
           - Text: |-
               As above, and your divination can also reveal information about the subject’s future.
           - *asset:Ritual.Ability.3
-      - Name: Invoke
+      - Title:
+          Canonical: Invoke
         # https://game-icons.net/1x1/lorc/embrassed-energy.html
         Abilities:
           - Text: &move:Asset.Invoke |-
               When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Invoke
+              - Label: Invoke
                 Trigger:
                   Text: When you consume the mystical essence of your surroundings...
                   Options:
@@ -1597,17 +1683,19 @@ Asset Types:
           - Text: |-
               When you perform this ritual, add +1 and take +1 essence on a hit.
         Condition Meter:
-          Name: Essence
+          Label: Essence
+          Rollable: true
           Max: 6
           Value: 0
-      - Name: Keen
+      - Title:
+          Canonical: Keen
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Keen |-
               When you hold a weapon and sing a keen for those it has killed, roll +heart. On a strong hit, the wielder inflicts +1 harm when they [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent. On a weak hit, as above, but the voices of those who were slain join in your song; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Keen
+              - Label: Keen
                 Trigger:
                   Text: When you hold a weapon and sing a keen for those it has killed...
                   Options:
@@ -1627,14 +1715,15 @@ Asset Types:
           - Text: |-
               As above, and the wielder may also (one time only) add +1 and take +2 momentum on a hit when they [Draw the Circle](Ironsworn/Moves/Relationship/Draw_the_Circle), [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray), or [Battle](Ironsworn/Moves/Combat/Battle).
           - *asset:Ritual.Ability.3
-      - Name: Leech
+      - Title:
+          Canonical: Leech
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Leech |-
               When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.
             Enabled: true
             Moves:
-              - Name: Leech
+              - Label: Leech
                 Trigger:
                   Text: When you mark your hands or weapon with an intricate blood rune...
                   Options:
@@ -1656,14 +1745,15 @@ Asset Types:
           - Text: |-
               As above, and you may also touch an ally or companion and let them take any remaining points as +health or +momentum.
           - *asset:Ritual.Ability.3
-      - Name: Lightbearer
+      - Title:
+          Canonical: Lightbearer
         # https://game-icons.net/1x1/lorc/explosion-rays.html
         Abilities:
           - Text: &move:Asset.Lightbearer |-
               When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.
             Enabled: true
             Moves:
-              - Name: Lightbearer
+              - Label: Lightbearer
                 Trigger:
                   Text: When you focus on a source of light and capture its essence...
                   Options:
@@ -1686,10 +1776,12 @@ Asset Types:
               You may use your light to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against a dark-dwelling foe. Choose the amount of light to unleash, and roll +light (instead of +iron or +edge). Suffer -light equal to that amount. On a hit, your harm is 1+your unleashed light.
           - *asset:Ritual.Ability.3
         Condition Meter:
-          Name: Light
+          Label: Light
+          Rollable: true
           Max: 6
           Value: 0
-      - Name: Scry
+      - Title:
+          Canonical: Scry
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Scry |-
@@ -1700,7 +1792,7 @@ Asset Types:
                 * Provisions: Suffer -2 supply.
             Enabled: true
             Moves:
-              - Name: Scry
+              - Label: Scry
                 Trigger:
                   Text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
                   Options:
@@ -1724,14 +1816,15 @@ Asset Types:
           - Text: |-
               As above, and you may instead study a past event.
           - *asset:Ritual.Ability.3
-      - Name: Shadow-Walk
+      - Title:
+          Canonical: Shadow-Walk
         # https://game-icons.net/1x1/lorc/concentric-crescents.html
         Abilities:
           - Text: &move:Asset.Shadow-Walk |-
               When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) to find your way.
             Enabled: true
             Moves:
-              - Name: Shadow-Walk
+              - Label: Shadow-Walk
                 Trigger:
                   Text: When you cloak yourself with the gossamer veil of the shadow realms...
                   Options:
@@ -1751,14 +1844,15 @@ Asset Types:
           - Text: |-
               As above, and you may also travel along the hidden paths of the shadow realms to [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) using +shadow (instead of +wits). If you do, [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress) and mark progress twice on a strong hit.
           - *asset:Ritual.Ability.3
-      - Name: Sway
+      - Title:
+          Canonical: Sway
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Sway |-
               When you speak a person’s name three times to the wind, roll +wits. On a strong hit, the wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you use this information or fulfill this need when you [Compel](Ironsworn/Moves/Relationship/Compel) them, you may reroll any dice (one time only). On a weak hit, as above, but this person’s need creates a troubling dilemma or complication; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
             Enabled: true
             Moves:
-              - Name: Sway
+              - Label: Sway
                 Trigger:
                   Text: When you speak a person’s name three times to the wind...
                   Options:
@@ -1778,14 +1872,15 @@ Asset Types:
           - Text: |-
               As above, and if you score a strong hit when you [Compel](Ironsworn/Moves/Relationship/Compel), you may also reroll any dice (one time only) when you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) from this person.
           - *asset:Ritual.Ability.3
-      - Name: Talisman
+      - Title:
+          Canonical: Talisman
         # https://game-icons.net/1x1/delapouite/tribal-pendant.html
         Abilities:
           - Text: &move:Asset.Talisman |-
               When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).
             Enabled: true
             Moves:
-              - Name: Talisman
+              - Label: Talisman
                 Trigger:
                   Text: When you fashion a charm that protects against a specific person or creature...
                   Options:
@@ -1803,14 +1898,15 @@ Asset Types:
           - Text: |-
               As above, and you may instead fashion a charm which aids the wearer against all supernatural threats, such as mystic rituals or horrors.
           - *asset:Ritual.Ability.3
-      - Name: Tether
+      - Title:
+          Canonical: Tether
         # derived from https://game-icons.net/1x1/lorc/sonic-lightning.html ?
         Abilities:
           - Text: &move:Asset.Tether |-
               When you commune with the spirits of a place, roll +heart. If you share a bond with someone there, add +1. On a strong hit, you are tethered. When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](Ironsworn/Moves/Adventure/Reach_Your_Destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation). On a weak hit, as above, but the spirits reveal a disturbing aspect of the place; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Tether
+              - Label: Tether
                 Trigger:
                   Text: When you commune with the spirits of a place
                   Options:
@@ -1830,14 +1926,15 @@ Asset Types:
           - Text: |-
               As above, and you may also reroll any dice when you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) in the tethered place.
           - *asset:Ritual.Ability.3
-      - Name: Totem
+      - Title:
+          Canonical: Totem
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Totem |-
               When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
             Enabled: true
             Moves:
-              - Name: Totem
+              - Label: Totem
                 Trigger:
                   Text: When you hold a totem of your animal or beast companion and focus on it...
                   Options:
@@ -1857,7 +1954,8 @@ Asset Types:
           - Text: |-
               As above, and you may also perceive the world through your companion’s senses while you make moves aided by them (even when you are apart).
           - *asset:Ritual.Ability.3
-      - Name: Visage
+      - Title:
+          Canonical: Visage
         # icon not on game-icons
         # possible substitute: https://game-icons.net/1x1/lorc/skull-mask.html
         Abilities:
@@ -1865,7 +1963,7 @@ Asset Types:
               When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).
             Enabled: true
             Moves:
-              - Name: Visage
+              - Label: Visage
                 Trigger:
                   Text: When you paint yourself in blood and ash...
                   Options:
@@ -1885,7 +1983,8 @@ Asset Types:
           - Text: |-
               As above, and you may also add +1 when you [Strike](Ironsworn/Moves/Combat/Strike), [Clash](Ironsworn/Moves/Combat/Clash), or [Battle](Ironsworn/Moves/Combat/Battle).
           - *asset:Ritual.Ability.3
-      - Name: Ward
+      - Title:
+          Canonical: Ward
         # icon not on game-icons
         Abilities:
           - Text: &move:Asset.Ward |-
@@ -1896,7 +1995,7 @@ Asset Types:
                 * Your ward is ‘likely’ ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle)) to trap a foe within the boundary.
             Enabled: true
             Moves:
-              - Name: Ward
+              - Label: Ward
                 Trigger:
                   Text: When you walk a wide circle, sprinkling the ground with salt...
                   Options:

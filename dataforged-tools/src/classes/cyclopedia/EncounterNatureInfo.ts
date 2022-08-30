@@ -1,4 +1,4 @@
-import { DisplayWithTitle , EncounterIronsworn , Source } from "@classes/index.js";
+import { DisplayWithTitle , EncounterIronsworn , Source , Title } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { EncounterNatureIronsworn , IDisplayWithTitle  , IEncounterNatureInfo , ISource } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
@@ -11,6 +11,7 @@ import type { IEncounterNatureInfoYaml } from "@yaml_in/index.js";
 export class EncounterNatureInfo implements IEncounterNatureInfo {
   $id: IEncounterNatureInfo["$id"];
   Name: EncounterNatureIronsworn;
+  Title: Title;
   Source: Source;
   Display: IDisplayWithTitle;
   Summary: string;
@@ -19,6 +20,7 @@ export class EncounterNatureInfo implements IEncounterNatureInfo {
   constructor(json: IEncounterNatureInfoYaml, parentSource: ISource) {
     this.$id = `${Gamespace.Ironsworn}/Encounters/${formatIdFragment(json.Name)}`;
     this.Name = json.Name;
+    this.Title = new Title(json.Title, this.$id);
     this.Source = new Source(json.Source ?? {}, parentSource);
 
     this.Display = new DisplayWithTitle({

@@ -1,14 +1,13 @@
 
-import { DisplayOracle , OracleContent , OracleUsage , Row , SourceInheritor } from "@classes/index.js";
-import type { AttributeKey , Gamespace, IAttribute, IAttributeChoices, IDisplayOracle, IOracle, IOracleCategory } from "@json_out/index.js";
-
+import { DisplayOracle , OracleContent , OracleUsage , Row , RowNullStub, SourceInheritor , Title  } from "@classes/index.js";
+import type { AttributeKey , Gamespace, IAttribute, IAttributeChoices, IDisplayOracle, IOracle, IOracleCategory, IRow } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
 import { templateOracleTable } from "@utils/object_transform/templateOracleTable.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
-import type { IOracleYaml, IRowYaml } from "@yaml_in/index.js";
+import type { IOracleYaml, IRowYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 import type { IOracleCategoryYaml } from "@yaml_in/oracles/IOracleCategoryYaml.js";
 import _ from "lodash-es";
 
@@ -17,7 +16,8 @@ import _ from "lodash-es";
  */
 export class Oracle extends SourceInheritor implements IOracle  {
   $id: IOracle["$id"];
-  "Name": string;
+  Name: string;
+  Title: Title;
   Aliases?: string[] | undefined;
   "Member of"?: IOracle["$id"] | undefined;
   Category: IOracleCategory["$id"];
@@ -26,7 +26,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   Usage?: OracleUsage | undefined;
   Content?: OracleContent | undefined;
   "On a Match"?: IOracle["On a Match"] | undefined;
-  Table?: Row[] | undefined;
+  Table?: (Row|RowNullStub)[] | undefined;
   Oracles?: Oracle[] | undefined;
   constructor(
     json: IOracleYaml,
@@ -51,6 +51,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     this.$id = buildOracleId<IOracle["$id"]>(gamespace, jsonClone, ...ancestorsJson);
     // buildLog(this.constructor, `Building: ${this.$id}`);
     this.Name = jsonClone.Name;
+    this.Title = new Title(json.Title, this.$id);
     this.Aliases = jsonClone.Aliases;
     this["Member of"] = memberOf ?? undefined;
     this.Category = category;
@@ -74,9 +75,23 @@ export class Oracle extends SourceInheritor implements IOracle  {
       tableData = jsonClone.Table as IRowYaml[];
     }
     if (tableData) {
-      this.Table = tableData.map(row => {
+      this.Table = tableData.map((row: IRowYaml|YamlStub<IRow>, index) => {
         // TODO: propagate attributes to row objects
-        const newRow =  new Row(this.$id, row);
+        let newRow: Row | RowNullStub;
+        if (Array.isArray(row)) {
+          if (row[0] === null && row[1] === null) {
+            const filteredRow = row.filter(item => typeof item==="string") as string[];
+            newRow = new RowNullStub({ Result: filteredRow[0],Summary: filteredRow[1] });
+          } else {
+            newRow = new Row(this.$id, row);
+          }
+        } else if (typeof row === "object") {
+          if (row.Floor === null && row.Ceiling === null) {
+            newRow = new RowNullStub(row);
+          } else {
+            newRow = new Row(this.$id, row);
+          }
+        } else { throw new Error(`Unable to infer row type from row at index ${index} of ${this.$id}`);}
         return newRow;
       });
     }

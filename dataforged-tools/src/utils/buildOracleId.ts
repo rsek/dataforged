@@ -1,6 +1,6 @@
 import type { Gamespace , IOracleBase } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
-import type { IOracleCategoryYaml, IOracleYaml, YamlStub } from "@yaml_in/index.js";
+import type { IOracleCategoryYaml, IOracleYaml, YamlStubTitle } from "@yaml_in/index.js";
 
 /**
  * Assembles a path-like oracle ID from a stack of the oracle and its ancestor objects.

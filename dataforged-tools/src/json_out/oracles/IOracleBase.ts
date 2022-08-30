@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IHasText, IOracle, IOracleCategory , IOracleUsage, IRow } from "@json_out/index.js";
+import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory , IOracleUsage, IRow, IRowNullStub } from "@json_out/index.js";
 
 /**
  * @public
@@ -23,7 +23,8 @@ export interface IOracleBase extends Partial<
     IHasDescription &
     IHasOracleContent
   >, IHasId, IHasDisplay,
-  IHasSource, IHasName  {
+  IHasSource, IHasName, IHasTitle  {
+  $id: string;
   /**
    * The ID of the most recent OracleCategory ancestor of this item, if any.
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
@@ -44,7 +45,7 @@ export interface IOracleBase extends Partial<
    *
    * This key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all) {@link IOracle} objects.
    */
-  Table?: IRow[] | undefined;
+  Table?: (IRow| IRowNullStub)[] | undefined;
   /**
    * Oracle objects contained by this object.
    *

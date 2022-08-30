@@ -8,9 +8,9 @@ export var ProgressTypeStarforged;
     ProgressTypeStarforged["Expedition"] = "Expedition";
     ProgressTypeStarforged["Connection"] = "Connection";
     ProgressTypeStarforged["SceneChallenge"] = "Scene Challenge";
-    ProgressTypeStarforged["Quests"] = "Quests Legacy";
-    ProgressTypeStarforged["Bonds"] = "Bonds Legacy";
-    ProgressTypeStarforged["Discoveries"] = "Discoveries Legacy";
+    ProgressTypeStarforged["QuestsLegacy"] = "Quests Legacy";
+    ProgressTypeStarforged["BondsLegacy"] = "Bonds Legacy";
+    ProgressTypeStarforged["DiscoveriesLegacy"] = "Discoveries Legacy";
 })(ProgressTypeStarforged || (ProgressTypeStarforged = {}));
 /**
  * @public

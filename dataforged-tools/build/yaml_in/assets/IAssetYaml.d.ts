@@ -1,11 +1,11 @@
 import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplay, IInput, IInputClock, IInputNumber, IInputSelect, IInputSelectOption, IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "../../json_out/index.js";
-import type { PartialDeep } from "../../utils/index.js";
+import type { PartialBy, PartialDeep } from "../../utils/index.js";
 import type { StubExcept } from "../../utils/types/Stub.js";
-import type { IMoveTriggerYaml, IMoveYaml, YamlStub } from "../index.js";
+import type { IMoveTriggerYaml, IMoveYaml, YamlStub, YamlStubTitle } from "../index.js";
 /**
  * @internal
  */
-export interface IAssetTypeYaml extends YamlStub<IAssetType, "Source", "Assets" | "Display" | "Usage"> {
+export interface IAssetTypeYaml extends YamlStubTitle<IAssetType, "Source", "Assets" | "Display" | "Usage" | "$id"> {
     Assets: IAssetYaml[];
     Display?: Partial<IDisplay> | undefined;
     Usage?: Partial<IAssetUsage> | undefined;
@@ -13,7 +13,7 @@ export interface IAssetTypeYaml extends YamlStub<IAssetType, "Source", "Assets" 
 /**
  * @internal
  */
-export interface IAssetYaml extends StubExcept<IAsset, "Name", "Abilities" | "Inputs" | "Condition Meter" | "States"> {
+export interface IAssetYaml extends YamlStubTitle<StubExcept<IAsset, "", "Abilities" | "Inputs" | "Condition Meter" | "States" | "$id">> {
     Abilities: [IAssetAbilityYaml, IAssetAbilityYaml, IAssetAbilityYaml];
     Inputs?: (IInputTextYaml | IInputSelectYaml)[] | undefined;
     "Condition Meter"?: IConditionMeterYaml | undefined;
@@ -60,7 +60,7 @@ export interface IAlterMoveTriggerOptionProgressYaml extends YamlStub<IMoveTrigg
 /**
  * @internal
  */
-export interface IConditionMeterYaml extends YamlStub<IConditionMeter, "Min" | "Value" | "Conditions"> {
+export interface IConditionMeterYaml extends YamlStub<PartialBy<IConditionMeter>, "Min" | "Value" | "Conditions"> {
 }
 /**
  * @internal

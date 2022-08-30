@@ -11,9 +11,6 @@ export interface IEncounter extends IEncounterBase {
   Drives: string[];
   Tactics: string[];
   "Quest Starter": string;
-  /**
-   * A markdown string representing the text of the "Your Truth" callout box included with some *Ironsworn* encounters.
-   */
   "Your Truth"?: string | undefined;
 }
 

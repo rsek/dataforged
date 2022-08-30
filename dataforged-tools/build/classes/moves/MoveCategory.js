@@ -1,4 +1,4 @@
-import { Move, Source } from "../index.js";
+import { Move, Source, Title } from "../index.js";
 import { MoveCategoryDisplay } from "./MoveCategoryDisplay.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";
 /**
@@ -8,6 +8,7 @@ export class MoveCategory {
     constructor(json, gamespace, ...ancestorSourceJson) {
         this.$id = `${gamespace}/Moves/${formatIdFragment(json._idFragment ?? json.Name)}`;
         this.Name = json.Name;
+        this.Title = new Title(json.Title, this.$id);
         this.Description = json.Description;
         this.Source = new Source(json.Source, ...ancestorSourceJson);
         this.Display = new MoveCategoryDisplay(`${json.Name} Moves`, json.Display?.Color ?? undefined);

@@ -1,5 +1,5 @@
 import type { AssetType } from "@classes/assets/AssetType.js";
-import { MeterBase } from "@classes/common/MeterBase.js";
+import { Meter } from "@classes/common/Meter.js";
 import { MeterAlias } from "@json_out/index.js";
 import type { IConditionMeter, MeterCondition } from "@json_out/index.js";
 import type { IConditionMeterYaml } from "@yaml_in/index.js";
@@ -7,14 +7,15 @@ import type { IConditionMeterYaml } from "@yaml_in/index.js";
 /**
  * @internal
  */
-export class ConditionMeter extends MeterBase implements IConditionMeter {
-  "Value": number;
+export class ConditionMeter extends Meter implements IConditionMeter {
+  Value: number;
   Min: 0 = 0;
   Conditions: MeterCondition[] = [];
   Aliases?: MeterAlias[] | undefined;
   constructor(json: IConditionMeterYaml, id: string, assetType: AssetType["$id"]) {
     super(json, id);
-    this["Value"] = json["Value"] ?? json.Max;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    this.Value = json.Value ?? json.Max;
     if (json.Conditions) {
       this.Conditions = json.Conditions;
     }

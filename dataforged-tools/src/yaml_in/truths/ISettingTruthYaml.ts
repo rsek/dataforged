@@ -1,10 +1,10 @@
 import type { ISettingTruth, ISettingTruthOption, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
-import type { ISuggestionsYaml, YamlStub } from "@yaml_in/index.js";
+import type { ISuggestionsYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
-export interface ISettingTruthYaml extends YamlStub<ISettingTruth, "Display"|"Source", "Table"> {
+export interface ISettingTruthYaml extends YamlStubTitle<ISettingTruth, "Display"|"Source", "Table"> {
   Suggestions?: ISuggestionsYaml | undefined;
   Table: ISettingTruthOptionYaml[];
 }
