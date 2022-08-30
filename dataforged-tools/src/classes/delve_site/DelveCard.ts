@@ -20,12 +20,22 @@ const domainFeaturesStatic: PartialBy<IRow, "$id">[] = [
   {
     Floor: 99,
     Ceiling: 99,
-    Result: "You transition into a new theme"
+    Result: "You transition into a new theme",
+    Suggestions: {
+      "Oracle rolls": [
+        "Ironsworn/Oracles/Site_Nature/Theme"
+      ]
+    }
   },
   {
     Floor: 100,
     Ceiling: 100,
-    Result: "You transition into a new domain"
+    Result: "You transition into a new domain",
+    Suggestions: {
+      "Oracle rolls": [
+        "Ironsworn/Oracles/Site_Nature/Domain"
+      ]
+    }
   }
 ];
 
