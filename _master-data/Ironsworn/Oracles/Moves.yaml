@@ -1,6 +1,7 @@
 Name: Moves
 Source:
   Title: Ironsworn Rulebook
+  License: https://creativecommons.org/licenses/by-sa/4.0/
 Oracles:
   - Name: Endure Harm
     Source:
@@ -85,8 +86,8 @@ Oracles:
       Page: 107
     Oracles:
       - Name: Almost Certain
-        Display:
-          Title: "Ask the Oracle: Almost Certain"
+        Title:
+          Canonical: "Ask the Oracle: Almost Certain"
         Aliases: ["90"]
         On a Match: &AtO.Match
           Text: On a match, an extreme result or twist has occurred.
@@ -94,32 +95,33 @@ Oracles:
           - [1, 10, "No"]
           - [11, 100, "Yes"]
       - Name: Likely
-        Display:
-          Title: "Ask the Oracle: Likely"
+        Title:
+          Canonical: "Ask the Oracle: Likely"
         Aliases: ["75"]
         On a Match: *AtO.Match
         Table:
           - [1, 25, "No"]
           - [26, 100, "Yes"]
       - Name: Fifty-fifty
-        Display:
-          Title: "Ask the Oracle: 50/50"
+        Title:
+          Canonical: "Ask the Oracle: 50/50"
+          Short: 50/50
         Aliases: ["50", "5050", "Fifty-fifty", "50/50", "50-50"]
         On a Match: *AtO.Match
         Table:
           - [1, 50, "No"]
           - [51, 100, "Yes"]
       - Name: Unlikely
-        Display:
-          Title: "Ask the Oracle: Unlikely"
+        Title:
+          Canonical: "Ask the Oracle: Unlikely"
         Aliases: ["25"]
         On a Match: *AtO.Match
         Table:
           - [1, 75, "No"]
           - [76, 100, "Yes"]
       - Name: Small Chance
-        Display:
-          Title: "Ask the Oracle: Small Chance"
+        Title:
+          Canonical: "Ask the Oracle: Small Chance"
         Aliases: ["10"]
         On a Match: *AtO.Match
         Table:

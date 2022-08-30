@@ -11,14 +11,22 @@ _domainFeaturesStatic: &domain_features_static
     Floor: 99
     Ceiling: 99
     Result: You transition into a new theme
+    Suggestions:
+      Oracle rolls:
+        - Ironsworn/Oracles/Site_Nature/Theme
   - &new_domain
     Floor: 100
     Ceiling: 100
     Result: You transition into a new domain
+    Suggestions:
+      Oracle rolls:
+        - Ironsworn/Oracles/Site_Nature/Domain
 Domains:
-  - Name: Barrow
+  - Title:
+      Canonical: Barrow
     # https://game-icons.net/1x1/cathelineau/tumulus.html
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 88
     Summary: The dead are enshrined here.
@@ -62,7 +70,7 @@ Domains:
       - Floor: 34
         Ceiling: 36
         Result: Trap
-        Suggestions:
+        Suggestions: &SuggestTrap
           Oracle rolls:
             - Ironsworn/Oracles/Trap/Event
             - Ironsworn/Oracles/Trap/Component
@@ -75,9 +83,11 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Grave goods with hidden dangers
-  - Name: Cavern
+  - Title:
+      Canonical: Cavern
     # https://game-icons.net/1x1/lorc/stalagtite.html
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 88
     Summary: A place of stone and darkness.
@@ -129,8 +139,10 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Fissure or sinkhole
-  - Name: Frozen Cavern
+  - Title:
+      Canonical: Frozen Cavern
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 89
     Summary: A place of deep caves and enduring cold.
@@ -182,8 +194,10 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Disorienting reflections
-  - Name: Icereach
+  - Title:
+      Canonical: Icereach
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 89
     Summary: A frigid landscape formed of frozen seas.
@@ -235,9 +249,11 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Foul weather
-  - Name: Mine
+  - Title:
+      Canonical: Mine
     # https://game-icons.net/1x1/delapouite/stone-pile.html
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 90
     Summary: Tunnels dug greedily and deep.
@@ -289,8 +305,10 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Weakened terrain
-  - Name: Pass
+  - Title:
+      Canonical: Pass
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 90
     Summary: Treacherous paths over high mountains.
@@ -342,14 +360,16 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Foul weather
-  - Name: Ruin
+  - Title:
+      Canonical: Ruin
     # https://game-icons.net/1x1/delapouite/broken-wall.html
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 91
     Summary: The crumbling legacy of a dead civilization.
     Description: |-
-      These decaying edifices, skeletal and shadowed, mark the remains of once-great communities and civilizations. Some of these sites have been newly adapted by Ironlanders as shelter, temple, or citadel. Others are home only to dangerous creatures and dark forces.
+      These decaying edifices, skeletal and shadowed, mark the remains of once-great communities and civilizations. Some of these sites have been newly adapted by [Ironlanders](Ironsworn/Encounters/Ironlanders) as shelter, temple, or citadel. Others are home only to dangerous creatures and dark forces.
 
       Newly discovered ruins tempt bold explorers with the promise of powerful legacies and forgotten secrets. But most see these places as a portent of our inescapable, grim fate in these lands. Someday, another people may delve into the ruins of what we leave behind.
     Features:
@@ -384,10 +404,7 @@ Domains:
       - Floor: 31
         Ceiling: 33
         Result: Ancient mechanism or trap
-        Suggestions:
-          Oracle rolls:
-            - Ironsworn/Oracles/Trap/Event
-            - Ironsworn/Oracles/Trap/Component
+        Suggestions: *SuggestTrap
       - Floor: 34
         Ceiling: 36
         Result: Collapsing wall or ceiling
@@ -400,8 +417,10 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Ancient secrets best left buried
-  - Name: Sea Cave
+  - Title:
+      Canonical: Sea Cave
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 91
     Summary: Stone passages carved by ocean waves.
@@ -453,8 +472,10 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Claustrophobic squeeze
-  - Name: Shadowfen
+  - Title:
+      Canonical: Shadowfen
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 92
     Summary: A primeval marsh, cloaked in mist.
@@ -506,8 +527,10 @@ Domains:
       - Floor: 43
         Ceiling: 45
         Result: Hidden quagmire
-  - Name: Stronghold
+  - Title:
+      Canonical: Stronghold
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 92
     Summary: A fortress secured against trespassers.
@@ -553,16 +576,15 @@ Domains:
       - Floor: 40
         Ceiling: 42
         Result: Trap
-        Suggestions:
-          Oracle rolls:
-            - Ironsworn/Oracles/Trap/Event
-            - Ironsworn/Oracles/Trap/Component
+        Suggestions: *SuggestTrap
       - Floor: 43
         Ceiling: 45
         Result: Alarm trigger
-  - Name: Tanglewood
+  - Title:
+      Canonical: Tanglewood
     # https://game-icons.net/1x1/lorc/dead-wood.html
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 93
     Summary: A perilous forest of eternal shadow.
@@ -608,25 +630,24 @@ Domains:
       - Floor: 37
         Ceiling: 39
         Result: Trap or snare
-        Suggestions:
-          Oracle rolls:
-            - Ironsworn/Oracles/Trap/Event
-            - Ironsworn/Oracles/Trap/Component
+        Suggestions: *SuggestTrap
       - Floor: 40
         Ceiling: 42
         Result: Path leads you astray
       - Floor: 43
         Ceiling: 45
         Result: Entangling plant life
-  - Name: Underkeep
+  - Title:
+      Canonical: Underkeep
     Source:
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Title: "Ironsworn: Delve"
       Page: 93
     Summary: An age-old subterranean dungeon.
     Description: |-
-      These subterranean structures are a mystery. They are inexplicably ancient, older perhaps than even the Firstborn. Their passages and halls hide dangers within unfathomable darkness.
+      These subterranean structures are a mystery. They are inexplicably ancient, older perhaps than even the [Firstborn](Ironsworn/Encounters/Firstborn). Their passages and halls hide dangers within unfathomable darkness.
 
-      Most Ironlanders stay well clear of these places. But some stumble upon the entrance to an underkeep and delve inside, drawn by its secrets or the alluring promise of forgotten power. Others, desperate for protection from the perils of the surface world, foolishly try to use the depths of an underkeep as a sanctum for their kin or clan. They soon discover that the greatest threats lie beneath.
+      Most [Ironlanders](Ironsworn/Encounters/Ironlanders) stay well clear of these places. But some stumble upon the entrance to an underkeep and delve inside, drawn by its secrets or the alluring promise of forgotten power. Others, desperate for protection from the perils of the surface world, foolishly try to use the depths of an underkeep as a sanctum for their kin or clan. They soon discover that the greatest threats lie beneath.
     Features:
       - Floor: 21
         Ceiling: 43
@@ -659,10 +680,7 @@ Domains:
       - Floor: 31
         Ceiling: 33
         Result: Ancient mechanism or trap
-        Suggestions:
-          Oracle rolls:
-            - Ironsworn/Oracles/Trap/Event
-            - Ironsworn/Oracles/Trap/Component
+        Suggestions: *SuggestTrap
       - Floor: 34
         Ceiling: 36
         Result: Crumbling architecture

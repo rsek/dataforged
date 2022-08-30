@@ -2,15 +2,21 @@ Name: Moves
 Source:
   Authors:
     - Shawn Tomkin
+  License: https://creativecommons.org/licenses/by-sa/4.0/
   Title: Ironsworn Rulebook
 Move Categories:
-  - Name: Adventure
+  - Title:
+      Canonical: Adventure Moves
+      Short: Adventure
+    Name: Adventure
     Source:
       Page: 60
     Description: |-
       Adventure moves are used as you travel the Ironlands, investigate situations, and deal with threats.
     Moves:
       - Name: Face Danger
+        Title:
+          Canonical: Face Danger
         Trigger:
           Text: When you attempt something risky or react to an imminent threat...
           Options:
@@ -64,6 +70,8 @@ Move Categories:
           Miss:
             Text: You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Secure an Advantage
+        Title:
+          Canonical: Secure an Advantage
         Trigger:
           Text: When you assess a situation, make preparations, or attempt to gain leverage...
           Options:
@@ -113,6 +121,8 @@ Move Categories:
           Miss:
             Text: You fail or your assumptions betray you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Gather Information
+        Title:
+          Canonical: Gather Information
         Trigger:
           Text: When you search an area, ask questions, conduct an investigation, or follow a track...
           Options:
@@ -136,6 +146,8 @@ Move Categories:
           Miss:
             Text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Heal
+        Title:
+          Canonical: Heal
         Trigger:
           Text: When you treat an injury or ailment...
           Options:
@@ -165,6 +177,8 @@ Move Categories:
           Miss:
             Text: Your aid is ineffective. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Resupply
+        Title:
+          Canonical: Resupply
         Trigger:
           Text: When you hunt, forage, or scavenge...
           Options:
@@ -188,6 +202,8 @@ Move Categories:
           Miss:
             Text: You find nothing helpful. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Make Camp
+        Title:
+          Canonical: Make Camp
         Trigger:
           Text: When you rest and recover for several hours in the wild...
           Options:
@@ -204,7 +220,7 @@ Move Categories:
             * Partake: Suffer -1 supply and take +1 health for you and any companions.
             * Relax: Take +1 spirit.
             * Focus: Take +1 momentum.
-            * Prepare: When you break camp, add +1 if you Undertake a Journey.
+            * Prepare: When you break camp, add +1 if you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey).
 
           On a **miss**, you take no comfort. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
         Outcomes:
@@ -216,7 +232,7 @@ Move Categories:
                 * Partake: Suffer -1 supply and take +1 health for you and any companions.
                 * Relax: Take +1 spirit.
                 * Focus: Take +1 momentum.
-                * Prepare: When you break camp, add +1 if you Undertake a Journey.
+                * Prepare: When you break camp, add +1 if you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey).
           Weak Hit:
             Text: |-
               You and your allies may each choose one.
@@ -225,10 +241,12 @@ Move Categories:
                 * Partake: Suffer -1 supply and take +1 health for you and any companions.
                 * Relax: Take +1 spirit.
                 * Focus: Take +1 momentum.
-                * Prepare: When you break camp, add +1 if you Undertake a Journey.
+                * Prepare: When you break camp, add +1 if you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey).
           Miss:
             Text: You take no comfort. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Undertake a Journey
+        Title:
+          Canonical: Undertake a Journey
         Trigger:
           Text: When you travel across hazardous or unfamiliar lands...
           Options:
@@ -271,6 +289,8 @@ Move Categories:
           Miss:
             Text: You are waylaid by a perilous event. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Reach Your Destination
+        Title:
+          Canonical: Reach Your Destination
         Trigger:
           Text: When your journey comes to an end...
           Options:
@@ -291,13 +311,18 @@ Move Categories:
           On a **weak hit**, you arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
 
           On a **miss**, you have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic).
-  - Name: Relationship
+  - Title:
+      Canonical: Relationship Moves
+      Short: Relationship
+    Name: Relationship
     Source:
       Page: 69
     Description: |-
       Relationship moves are made as you interact with others in the world, fight duels, form bonds, support your allies, and determine the ultimate fate of your character.
     Moves:
       - Name: Compel
+        Title:
+          Canonical: Compel
         Trigger:
           Text: When you attempt to persuade someone to do something...
           Options:
@@ -327,7 +352,6 @@ Move Categories:
         Outcomes:
           Strong Hit:
             Text: They’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), make that move now and add +1.
-
           Weak Hit:
             Text: |-
               They’ll do what you want or share what they know... but they ask something of you in return. Envision what they want ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
@@ -336,6 +360,8 @@ Move Categories:
           Miss:
             Text: They refuse or make a demand which costs you greatly. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Sojourn
+        Title:
+          Canonical: Sojourn
         Trigger:
           Text: When you spend time in a community seeking assistance...
           Options:
@@ -371,7 +397,7 @@ Move Categories:
             Text: |-
               You and your allies may each choose two from within the categories below.
 
-              you and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.
+              You and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.
 
               **Clear a Condition**
 
@@ -393,7 +419,7 @@ Move Categories:
             Text: |-
               You and your allies may each choose one from within the categories below.
 
-              you and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.
+              You and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.
 
               **Clear a Condition**
 
@@ -414,6 +440,8 @@ Move Categories:
           Miss:
             Text: You find no help here. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Draw the Circle
+        Title:
+          Canonical: Draw the Circle
         Trigger:
           Text: When you challenge someone to a formal duel, or accept a challenge...
           Options:
@@ -464,6 +492,8 @@ Move Categories:
 
               Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
       - Name: Forge a Bond
+        Title:
+          Canonical: Forge a Bond
         Trigger:
           Text: When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...
           Options:
@@ -496,6 +526,8 @@ Move Categories:
             Text: |-
               They reject you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Test Your Bond
+        Title:
+          Canonical: Test Your Bond
         Trigger:
           Text: When your bond is tested through conflict, betrayal, or circumstance...
           Options:
@@ -528,6 +560,8 @@ Move Categories:
             Text: |-
               Clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Aid Your Ally
+        Title:
+          Canonical: Aid Your Ally
         Source:
           Page: 76
         Trigger:
@@ -535,6 +569,8 @@ Move Categories:
         Text: When **you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative.
         # TODO: forward to another move ID?
       - Name: Write Your Epilogue
+        Title:
+          Canonical: Write Your Epilogue
         Source:
           Page: 77
         Trigger:
@@ -559,13 +595,18 @@ Move Categories:
             Text: Your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
           Miss:
             Text: Your fears are realized.
-  - Name: Combat
+  - Title:
+      Canonical: Combat Moves
+      Short: Combat
+    Name: Combat
     Source:
       Page: 78
     Description: |-
       When there are no other options, when the sword slips free of its sheath, when the arrow is nocked, when the shield is brought to bear, make these moves.
     Moves:
       - Name: Enter the Fray
+        Title:
+          Canonical: Enter the Fray
         Trigger:
           Text: When you enter into combat...
           Options:
@@ -615,6 +656,8 @@ Move Categories:
           Miss:
             Text: Combat begins with you at a disadvantage. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
       - Name: Strike
+        Title:
+          Canonical: Strike
         Trigger:
           Text: When you have initiative and attack...
           Options:
@@ -642,6 +685,8 @@ Move Categories:
           Miss:
             Text: Your attack fails and you must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
       - Name: Clash
+        Title:
+          Canonical: Clash
         Trigger:
           Text: "When your foe has initiative and you..."
           Options:
@@ -676,12 +721,16 @@ Move Categories:
           Miss:
             Text: You are outmatched and must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
       - Name: Turn the Tide
+        Title:
+          Canonical: Turn the Tide
         Trigger:
           Text: Once per fight, when you risk it all...
         Source:
           Page: 81
         Text: Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: End the Fight
+        Title:
+          Canonical: End the Fight
         Trigger:
           Text: When you make a move to take decisive action, and score a strong hit...
           Options:
@@ -724,6 +773,8 @@ Move Categories:
           Miss:
             Text: You have lost this fight. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Battle
+        Title:
+          Canonical: Battle
         Trigger:
           Text: When you fight a battle, and it happens in a blur, and you...
           Options:
@@ -765,13 +816,18 @@ Move Categories:
             Text: You achieve your objective, but not without cost. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
           Miss:
             Text: You are defeated and the objective is lost to you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
-  - Name: Suffer
+  - Title:
+      Canonical: Suffer Moves
+      Short: Suffer
+    Name: Suffer
     Source:
       Page: 90
     Description: |-
       These moves are made as a result of a perilous event or bad outcome on other moves. They represent what happens to you, and how you hold up against the trauma.
     Moves:
       - Name: Endure Harm
+        Title:
+          Canonical: Endure Harm
         Oracles:
           - Ironsworn/Oracles/Moves/Endure_Harm
         Trigger:
@@ -825,6 +881,8 @@ Move Categories:
               36-50 | You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).
               51-00 | You are battered but still standing.
       - Name: Face Death
+        Title:
+          Canonical: Face Death
         Trigger:
           Text: When you are brought to the brink of death, and glimpse the world beyond...
           Options:
@@ -855,6 +913,8 @@ Move Categories:
           Miss:
             Text: You are dead.
       - Name: Companion Endure Harm
+        Title:
+          Canonical: Companion Endure Harm
         Trigger:
           Text: When your companion faces physical damage...
           Options:
@@ -886,6 +946,8 @@ Move Categories:
 
               If you roll a miss with a 1 on your action die, and your companion’s health is 0, they are now dead. Take 1 experience for each marked ability on your companion asset, and remove it.
       - Name: Endure Stress
+        Title:
+          Canonical: Endure Stress
         Oracles:
           - Ironsworn/Oracles/Moves/Endure_Stress
         Trigger:
@@ -931,11 +993,13 @@ Move Categories:
 
               Roll  | Result
               ------|------------------------------------------------------------------------------------
-              1-10  | You are overwhelmed.  [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).
+              1-10  | You are overwhelmed. [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).
               11-25 | You give up. [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow) (if possible, one relevant to your current crisis).
               26-50 | You give in to a fear or compulsion, and act against your better instincts.
               51-00 | You persevere.
       - Name: Face Desolation
+        Title:
+          Canonical: Face Desolation
         Trigger:
           Text: When you are brought to the brink of desolation...
           Options:
@@ -966,12 +1030,16 @@ Move Categories:
           Miss:
             Text: You succumb to despair or horror and are lost.
       - Name: Out of Supply
+        Title:
+          Canonical: Out of Supply
         Source:
           Page: 97
         Trigger:
           Text: When your supply is exhausted (reduced to 0)...
         Text: When **your supply is exhausted** (reduced to 0), mark unprepared. If you suffer additional -supply while unprepared, you must exchange each additional -supply for any combination of -health, -spirit or -momentum as appropriate to the circumstances.
       - Name: Face a Setback
+        Title:
+          Canonical: Face a Setback
         Source:
           Page: 97
         Trigger:
@@ -981,13 +1049,18 @@ Move Categories:
 
             * Exchange each additional -momentum for any combination of -health, -spirit, or -supply as appropriate to the circumstances.
             * Envision an event or discovery ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick).
-  - Name: Quest
+  - Title:
+      Canonical: Quest Moves
+      Short: Quest
+    Name: Quest
     Source:
       Page: 98
     Description: |-
       Making and fulfilling vows is central to your character’s motivations. These oaths drive your story and give you the means to gain experience and acquire new abilities. When you embark upon a quest, manage your progress on a quest, seek to complete a quest, or gain the rewards of a quest, make these moves.
     Moves:
       - Name: Swear an Iron Vow
+        Title:
+          Canonical: Swear an Iron Vow
         Trigger:
           Text: When you swear upon iron to complete a quest...
           Options:
@@ -1018,6 +1091,8 @@ Move Categories:
                 * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.
                 * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
       - Name: Reach a Milestone
+        Title:
+          Canonical: Reach a Milestone
         Source:
           Page: 100
         Trigger:
@@ -1031,6 +1106,8 @@ Move Categories:
             * Extreme quest: Mark 2 ticks.
             * Epic quest: Mark 1 tick.
       - Name: Fulfill Your Vow
+        Title:
+          Canonical: Fulfill Your Vow
         Source:
           Page: 101
         Trigger:
@@ -1063,18 +1140,25 @@ Move Categories:
                 * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).
                 * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
       - Name: Forsake Your Vow
+        Title:
+          Canonical: Forsake Your Vow
         Source:
           Page: 102
         Trigger:
           Text: When you renounce your quest, betray your promise, or the goal is lost to you...
         Text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
       - Name: Advance
+        Title:
+          Canonical: Advance
         Source:
           Page: 103
         Trigger:
           Text: When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion...
         Text: When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset.
-  - Name: Fate
+  - Title:
+      Canonical: Fate Moves
+      Short: Fate
+    Name: Fate
     Source:
       Page: 98
     Description: |-
@@ -1088,6 +1172,8 @@ Move Categories:
         * **Inspiration:** You can use creative prompts, such as those included in the oracles chapter (page 165) to guide your story.
     Moves:
       - Name: Pay the Price
+        Title:
+          Canonical: Pay the Price
         Oracles:
           - Ironsworn/Oracles/Moves/Pay_the_Price
         Source:
@@ -1120,6 +1206,8 @@ Move Categories:
           95-98 | A friend, companion, or ally is put in harm’s way (or you are, if alone).
           99-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse.
       - Name: Ask the Oracle
+        Title:
+          Canonical: Ask the Oracle
         Oracles:
           - Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance
           - Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely

@@ -1,6 +1,7 @@
 Name: Moves
 Source:
   Title: "Ironsworn: Delve"
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 Oracles:
   - Name: Delve the Depths
     # Move: Ironsworn/Moves/Delve/Delve_the_Depths
@@ -8,8 +9,8 @@ Oracles:
       Page: 21
     Oracles:
       - Name: Edge
-        Display:
-          Title: Delve the Depths +edge
+        Title:
+          Canonical: Delve the Depths +edge
         Table: &table:Delve_the_Depths
           - [1, 45, "Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger)."]
           - [46, 65, "Mark progress."]
@@ -29,8 +30,8 @@ Oracles:
               "Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
             ]
       - Name: Shadow
-        Display:
-          Title: Delve the Depths +shadow
+        Title:
+          Canonical: Delve the Depths +shadow
         _templateTable:
           content: *table:Delve_the_Depths
           rolls:
@@ -40,8 +41,8 @@ Oracles:
             - [91, 99]
             - [100, 100]
       - Name: Wits
-        Display:
-          Title: Delve the Depths +wits
+        Title:
+          Canonical: Delve the Depths +wits
         _templateTable:
           content: *table:Delve_the_Depths
           rolls:
@@ -96,8 +97,8 @@ Oracles:
         ]
   - Name: Reveal a Danger
     _idFragment: Reveal a Danger alt
-    Display:
-      Title: Reveal a Danger (alternate version)
+    Title:
+      Canonical: Reveal a Danger (alternate version)
     Source:
       Page: 68
     Table:
