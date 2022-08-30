@@ -17,7 +17,7 @@ export declare class InputSelect extends Input implements IInputSelect {
  */
 export declare class InputSelectOption implements IInputSelectOption {
     $id: IInputSelectOption["$id"];
-    Name: string;
+    Label: string;
     Set: (IInputSelectOptionSetterStat | IInputSelectOptionSetterMeter | IInputSelectOptionSetterNumber | IInputSelectOptionSetterString)[];
     constructor(json: IInputSelectOptionYaml, parent: IInputSelect);
 }

@@ -7,7 +7,7 @@ import type { IDisplayOracle , IOracleBase, IOracleCategory , IOracleMatch, IRow
  *
  * @public
  */
-export interface IOracle extends IOracleBase {
+export interface IOracle extends Omit<IOracleBase, "Categories"> {
   /**
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
    */
@@ -33,10 +33,6 @@ export interface IOracle extends IOracleBase {
   Category: IOracleCategory["$id"];
   "Member of"?: IOracle["$id"] | undefined;
   "Table"?: (IRow| IRowNullStub)[] | undefined;
-  /**
-   * @internal
-   */
-  Categories?: never;
   /**
    * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
    */

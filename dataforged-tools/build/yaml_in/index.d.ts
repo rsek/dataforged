@@ -10,7 +10,7 @@ export declare type YamlStub<T, PartialKey extends string = "", OmitKey extends 
  * A stub where keys `$id`, `Display`, `Source`, `Optional`, `Title`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.
  * @internal
  */
-export declare type YamlStubTitle<T, PartialKey extends string = "", OmitKey extends string = ""> = YamlStub<T, PartialKey, OmitKey | "Title"> & {
+export declare type YamlStubTitle<T, PartialKey extends string = "", OmitKey extends string = ""> = YamlStub<T, PartialKey | "Title" | "Source", OmitKey> & {
     Title: ITitleYaml;
 };
 export * from "./assets/index.js";

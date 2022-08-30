@@ -2,6 +2,7 @@
 Title: "Summary: Exploring Planets"
 Source:
   Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
   Date: "022322"
   Page: 307
 ---

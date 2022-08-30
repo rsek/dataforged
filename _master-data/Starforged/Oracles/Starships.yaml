@@ -1,11 +1,17 @@
 Starships:
   Name: Starships
+  Title:
+    Canonical: Starships
   Aliases: [Ship]
   Source:
+    Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
+    License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Oracles:
     - Name: Type
+      Title:
+        Canonical: Type
       Source:
         Page: 326
       Usage:
@@ -45,6 +51,8 @@ Starships:
         - [95, 100, Ships in conflict (roll twice), Summary: null, Oracle rolls: [Starforged/Oracles/Starships/Type], *obj:Starship]
         # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
     - Name: Fleet
+      Title:
+        Canonical: Fleet
       Source:
         Page: 326
       Content:
@@ -62,6 +70,8 @@ Starships:
         - [91, 100, "[⏵Starship Mission](Starforged/Oracles/Starships/Mission)",
             Oracle rolls: [Starforged/Oracles/Starships/Mission]]
     - Name: Initial Contact
+      Title:
+        Canonical: Initial Contact
       Source:
         Page: 327
       Usage:
@@ -83,6 +93,8 @@ Starships:
         - [91, 95, Destroyed]
         - [96, 100, "[⏵Derelict](Starforged/Oracles/Derelicts)", *inherit:Derelict.Starship]
     - Name: First Look
+      Title:
+        Canonical: First Look
       Source:
         Page: 327
       Usage:
@@ -115,10 +127,11 @@ Starships:
         - [91, 94, Towing or linked]
         - [95, 100, *result:Descriptor+Focus]
     - Name: Mission
+      Title:
+        Canonical: Starship Mission
       Source:
         Page: 328
       Display:
-        Title: Starship Mission
         Table:
           Roll columns:
             - Use content from: Starforged/Oracles/Starships/Mission/Terminus
@@ -136,13 +149,15 @@ Starships:
           Attributes:
             Region: null
       Oracles:
-        - Display: &display:Mission
+        - Name: Terminus
+          Title:
+            Canonical: Starship Mission - Terminus
+          Display: &display:Mission
             Column of: Starforged/Oracles/Starships/Mission
             Table:
               Result columns:
                 - Label: Mission
                   Key: Result
-          Name: Terminus
           Usage:
             Requires:
               Attributes:
@@ -183,6 +198,8 @@ Starships:
 
         - Display: *display:Mission
           Name: Outlands
+          Title:
+            Canonical: Starship Mission - Outlands
           Usage:
             Requires:
               Attributes:
@@ -225,6 +242,8 @@ Starships:
 
         - Display: *display:Mission
           Name: Expanse
+          Title:
+            Canonical: Starship Mission - Expanse
           Usage:
             Requires:
               Attributes:
@@ -265,10 +284,10 @@ Starships:
               - [86, 90]
               - [91, 100]
     - Name: Name
-      Source:
-        Page: 329
       Title:
         Canonical: Starship Name
+      Source:
+        Page: 329
       Description: |-
         Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
       Content:

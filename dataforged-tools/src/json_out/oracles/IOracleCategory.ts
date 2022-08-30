@@ -8,21 +8,17 @@ import type { IOracle, IOracleBase } from "@json_out/index.js";
  *
  * @public
  */
-export interface IOracleCategory extends IOracleBase {
+export interface IOracleCategory extends Omit<IOracleBase, "Table"> {
   /**
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
    */
   $id: string,
   Name: string;
-  /**
-   */
   Category?: IOracleCategory["$id"] | undefined;
   /**
    * A list of sample names for this category (only used by Planetary Class subcategories).
    */
   "Sample Names"?: string[] | undefined;
-  /**
-   * @internal
-   */
-  Table?: never;
+  Categories?:  IOracleCategory[] | undefined;
+  Oracles?: IOracle[] | undefined;
 }

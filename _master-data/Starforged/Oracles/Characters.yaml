@@ -1,13 +1,19 @@
 Characters:
   Name: Characters
+  Title:
+    Canonical: Characters
   Aliases: [NPC]
   Source:
+    Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
+    License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Description: |-
     Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as First Look and Initial Disposition. Then envision or generate additional details over time.
   Oracles:
     - Name: First Look
+      Title:
+        Canonical: First Look
       Source:
         Page: 330
       Content:
@@ -302,6 +308,7 @@ Characters:
         Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
       Title:
         Canonical: Character Name
+      Display:
         Table:
           Roll columns:
             - Use content from: Starforged/Oracles/Characters/Name/Given_Name
@@ -313,6 +320,8 @@ Characters:
         Initial: true
       Oracles:
         - Name: Given Name
+          Title:
+            Canonical: Character Name - Given Name
           Description: |-
             Given and family names can be used independently as standalone names. In many cases you can reverse the order.
           Usage:
@@ -427,6 +436,8 @@ Characters:
             - [100, 100, Zoya]
 
         - Name: Callsign
+          Title:
+            Canonical: Character Name - Callsign
           Description: |-
             Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.
           Usage:
@@ -541,6 +552,8 @@ Characters:
             - [100, 100, Zephyr]
 
         - Name: Family Name
+          Title:
+            Canonical: Character Name - Family Name
           Description: |-
             Given and family names can be used independently as standalone names. In many cases you can reverse the order.
           Content:

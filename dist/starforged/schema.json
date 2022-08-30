@@ -1343,11 +1343,16 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Name", "Set"]
+      "required": ["$id", "Label", "Set"]
     },
     "IInputSelectOptionSetterMeter": {
       "description": "A condition meter set by an{@linkIInputSelectOption}.",
@@ -2916,32 +2921,11 @@
           "items": { "type": "string" },
           "title": "Sample Names"
         },
-        "Member of": {
-          "description": "The ID of the most recent Oracle ancestor of this item, if any.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "Member of"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Usage": {
-          "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
-          "$ref": "#/definitions/IOracleUsage",
-          "title": "Usage"
-        },
-        "Table": {
-          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
+        "Categories": {
+          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
           "type": "array",
-          "items": {
-            "anyOf": [
-              { "$ref": "#/definitions/IRow" },
-              { "$ref": "#/definitions/IRowNullStub" }
-            ]
-          },
-          "title": "Table"
+          "items": { "$ref": "#/definitions/IOracleCategory" },
+          "title": "Categories"
         },
         "Oracles": {
           "description": "Oracle objects contained by this object.\n\nThis key appears only on 'branch' nodes of the oracle hierarchy 'tree':{@linkIOracleCategory}, and{@linkIOracle}(when it contains multiple closely-related tables).",
@@ -2949,22 +2933,27 @@
           "items": { "$ref": "#/definitions/IOracle" },
           "title": "Oracles"
         },
-        "Categories": {
-          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IOracleCategory" },
-          "title": "Categories"
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Display": {
+          "$ref": "#/definitions/IDisplayWithTitle",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
-        "On a Match": {
-          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracle}s that have a `Table`.",
-          "$ref": "#/definitions/IOracleMatch",
-          "title": "On a Match"
+        "Source": {
+          "$ref": "#/definitions/ISource",
+          "description": "Information on this item's source.",
+          "title": "Source"
         },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
+        },
+        "Usage": {
+          "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
+          "$ref": "#/definitions/IOracleUsage",
+          "title": "Usage"
         },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
@@ -2976,163 +2965,21 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
+        "Member of": {
+          "description": "The ID of the most recent Oracle ancestor of this item, if any.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
+          "type": "string",
+          "title": "Member of"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" }
+        "On a Match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracle}s that have a `Table`.",
+          "$ref": "#/definitions/IOracleMatch",
+          "title": "On a Match"
+        }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["$id", "Display", "Name", "Source", "Title"]
-    },
-    "IOracleUsage": {
-      "description": "Describes the recommended usage of this item.",
-      "title": "IOracleUsage",
-      "type": "object",
-      "properties": {
-        "Initial": {
-          "description": "Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.\n\nThat said, the game itself recommends **against** rolling all possible results at once (see \"Peeling the Onion\", p. 293, *Starforged*). If your goal is to implement the game 'as-written', consider how you might include some means of \"progressive disclosure\" of oracle results.\n\nMay be deprecated in the future in favour of dedicated object template information.",
-          "type": "boolean",
-          "title": "Initial"
-        },
-        "Suggestions": {
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "$ref": "#/definitions/ISuggestions_1",
-          "title": "Suggestions"
-        },
-        "Requires": {
-          "description": "Prerequisites for this item.",
-          "$ref": "#/definitions/IRequirements",
-          "title": "Requires"
-        },
-        "Min rolls": {
-          "description": "The minimum number of rolls when using this oracle to create a game object, *if* this oracle is rolled. Assume it's 1 if not specified.",
-          "type": "integer",
-          "title": "Min rolls"
-        },
-        "Max rolls": {
-          "description": "The maximum number of rolls when using this oracle to create a game object. Assume it's 1 if not specified.",
-          "type": "integer",
-          "title": "Max rolls"
-        },
-        "Repeatable": {
-          "description": "Whether the table's standard use is iterative.  Common examples are Feature, Opportunity, and Peril tables, which are most often used repeatedly to describe different areas of/events in a place, rather than being assigned as a description of the place as a whole.\n\nMutually exclusive with `Max rolls`. If undefined, assume `false`.",
-          "type": "boolean",
-          "title": "Repeatable"
-        },
-        "Allow duplicates": {
-          "description": "Whether multiple rolls (as in object generation, or with{@linkIMultipleRolls}) .",
-          "type": "boolean",
-          "title": "Allow duplicates"
-        },
-        "Sets": {
-          "description": "Hints which attributes are set by this table.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttributeChoices" },
-          "title": "Sets"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate_1",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
-          "type": "string",
-          "title": "$id"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "IRowNullStub": {
-      "description": "A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as \"--\" in the book.",
-      "title": "IRowNullStub",
-      "type": "object",
-      "properties": {
-        "Floor": {
-          "description": "The low end of the dice range for this row.",
-          "type": "null",
-          "title": "Floor"
-        },
-        "Ceiling": {
-          "description": "The high end of the dice range for this row.",
-          "type": "null",
-          "title": "Ceiling"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
-          "type": ["null", "string"],
-          "title": "Summary"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
-          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "title": "Suggestions"
-        },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate_1",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
-        },
-        "Game objects": {
-          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
-          "title": "Game objects"
-        },
-        "Oracle rolls": {
-          "description": "Additional oracle tables that should be rolled when this row is selected.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
-        },
-        "Subtable": {
-          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
-              }
-            },
-            { "type": "array", "items": { "$ref": "#/definitions/IRow" } }
-          ],
-          "title": "Subtable"
-        },
-        "Multiple rolls": {
-          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
-          "title": "Multiple rolls"
-        },
-        "Attributes": {
-          "description": "The attributes set by this row.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
-          "title": "Attributes"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Ceiling", "Floor", "Result"]
     },
     "IOracle": {
       "description": "Represents an oracle, which may have a Table or multiple child Oracles.",
@@ -3177,10 +3024,15 @@
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         },
-        "Usage": {
-          "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
-          "$ref": "#/definitions/IOracleUsage",
-          "title": "Usage"
+        "Name": {
+          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+          "type": "string",
+          "title": "Name"
+        },
+        "Source": {
+          "$ref": "#/definitions/ISource",
+          "description": "Information on this item's source.",
+          "title": "Source"
         },
         "Oracles": {
           "description": "Oracle objects contained by this object.\n\nThis key appears only on 'branch' nodes of the oracle hierarchy 'tree':{@linkIOracleCategory}, and{@linkIOracle}(when it contains multiple closely-related tables).",
@@ -3188,17 +3040,16 @@
           "items": { "$ref": "#/definitions/IOracle" },
           "title": "Oracles"
         },
-        "Categories": {
-          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IOracleCategory" },
-          "title": "Categories"
-        },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
+        },
+        "Usage": {
+          "description": "Information on the usage of this oracle: recommended number of rolls, etc.",
+          "$ref": "#/definitions/IOracleUsage",
+          "title": "Usage"
         },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
@@ -3209,16 +3060,6 @@
           "$ref": "#/definitions/IOracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
-        },
-        "Source": {
-          "$ref": "#/definitions/ISource",
-          "description": "Information on this item's source.",
-          "title": "Source"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         }
       },
       "defaultProperties": [],
@@ -3336,6 +3177,92 @@
       "additionalProperties": false,
       "required": ["Label", "Use content from"]
     },
+    "IRowNullStub": {
+      "description": "A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as \"--\" in the book.",
+      "title": "IRowNullStub",
+      "type": "object",
+      "properties": {
+        "Floor": {
+          "description": "The low end of the dice range for this row.",
+          "type": "null",
+          "title": "Floor"
+        },
+        "Ceiling": {
+          "description": "The high end of the dice range for this row.",
+          "type": "null",
+          "title": "Ceiling"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "type": ["null", "string"],
+          "title": "Summary"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
+        "Suggestions": {
+          "$ref": "#/definitions/ISuggestions",
+          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+          "title": "Suggestions"
+        },
+        "Content": {
+          "$ref": "#/definitions/IOracleContent",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "title": "Content"
+        },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate_1",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
+        },
+        "Game objects": {
+          "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IGameObject" },
+          "title": "Game objects"
+        },
+        "Oracle rolls": {
+          "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Oracle rolls"
+        },
+        "Subtable": {
+          "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+              }
+            },
+            { "type": "array", "items": { "$ref": "#/definitions/IRow" } }
+          ],
+          "title": "Subtable"
+        },
+        "Multiple rolls": {
+          "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
+          "$ref": "#/definitions/IMultipleRolls",
+          "title": "Multiple rolls"
+        },
+        "Attributes": {
+          "description": "The attributes set by this row.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAttribute" },
+          "title": "Attributes"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Ceiling", "Floor", "Result"]
+    },
     "IOracleMatch": {
       "title": "IOracleMatch",
       "type": "object",
@@ -3355,6 +3282,67 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["$id", "Text"]
+    },
+    "IOracleUsage": {
+      "description": "Describes the recommended usage of this item.",
+      "title": "IOracleUsage",
+      "type": "object",
+      "properties": {
+        "Initial": {
+          "description": "Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.\n\nThat said, the game itself recommends **against** rolling all possible results at once (see \"Peeling the Onion\", p. 293, *Starforged*). If your goal is to implement the game 'as-written', consider how you might include some means of \"progressive disclosure\" of oracle results.\n\nMay be deprecated in the future in favour of dedicated object template information.",
+          "type": "boolean",
+          "title": "Initial"
+        },
+        "Suggestions": {
+          "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
+          "$ref": "#/definitions/ISuggestions_1",
+          "title": "Suggestions"
+        },
+        "Requires": {
+          "description": "Prerequisites for this item.",
+          "$ref": "#/definitions/IRequirements",
+          "title": "Requires"
+        },
+        "Min rolls": {
+          "description": "The minimum number of rolls when using this oracle to create a game object, *if* this oracle is rolled. Assume it's 1 if not specified.",
+          "type": "integer",
+          "title": "Min rolls"
+        },
+        "Max rolls": {
+          "description": "The maximum number of rolls when using this oracle to create a game object. Assume it's 1 if not specified.",
+          "type": "integer",
+          "title": "Max rolls"
+        },
+        "Repeatable": {
+          "description": "Whether the table's standard use is iterative.  Common examples are Feature, Opportunity, and Peril tables, which are most often used repeatedly to describe different areas of/events in a place, rather than being assigned as a description of the place as a whole.\n\nMutually exclusive with `Max rolls`. If undefined, assume `false`.",
+          "type": "boolean",
+          "title": "Repeatable"
+        },
+        "Allow duplicates": {
+          "description": "Whether multiple rolls (as in object generation, or with{@linkIMultipleRolls}) .",
+          "type": "boolean",
+          "title": "Allow duplicates"
+        },
+        "Sets": {
+          "description": "Hints which attributes are set by this table.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAttributeChoices" },
+          "title": "Sets"
+        },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate_1",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -33,11 +33,11 @@ export class InputSelect extends Input implements IInputSelect {
  */
 export class InputSelectOption implements IInputSelectOption {
   $id: IInputSelectOption["$id"];
-  Name: string;
+  Label: string;
   Set: (IInputSelectOptionSetterStat| IInputSelectOptionSetterMeter | IInputSelectOptionSetterNumber| IInputSelectOptionSetterString)[];
   constructor(json: IInputSelectOptionYaml, parent: IInputSelect) {
-    this.$id = `${parent.$id}/Options/${formatIdFragment(json.Name)}`;
-    this.Name = json.Name;
+    this.$id = `${parent.$id}/Options/${formatIdFragment(json.Label)}`;
+    this.Label = json.Label;
     this.Set = json.Set.map(attr => new InputSelectOptionSetter(attr, this)) as this["Set"];
   }
 }

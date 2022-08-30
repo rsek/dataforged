@@ -1363,7 +1363,7 @@ export declare interface IInputSelectAttributeDefinition {
  * Represents an option in an {@link IInputSelect}.
  * @public
  */
-export declare interface IInputSelectOption extends IHasId, IHasName {
+export declare interface IInputSelectOption extends IHasId, Partial<IHasName>, IHasLabel {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$
      */
@@ -1742,7 +1742,7 @@ export declare enum InputType {
  *
  * @public
  */
-export declare interface IOracle extends IOracleBase {
+export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
     /**
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
      */
@@ -1768,7 +1768,6 @@ export declare interface IOracle extends IOracleBase {
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: (IRow | IRowNullStub)[] | undefined;
-
     /**
      * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
      */
@@ -1833,20 +1832,19 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
  *
  * @public
  */
-export declare interface IOracleCategory extends IOracleBase {
+export declare interface IOracleCategory extends Omit<IOracleBase, "Table"> {
     /**
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
      */
     $id: string;
     Name: string;
-    /**
-     */
     Category?: IOracleCategory["$id"] | undefined;
     /**
      * A list of sample names for this category (only used by Planetary Class subcategories).
      */
     "Sample Names"?: string[] | undefined;
-
+    Categories?: IOracleCategory[] | undefined;
+    Oracles?: IOracle[] | undefined;
 }
 
 /**

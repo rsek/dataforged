@@ -27,6 +27,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" },
         "Display": {
           "$ref": "#/definitions/IDisplayWithTitle_1",
           "description": "Data relevant to this item's display/rendering.",
@@ -89,8 +90,7 @@
           "title": "Tactics"
         },
         "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -139,6 +139,7 @@
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
           "$ref": "#/definitions/IDisplayWithTitle",
           "description": "Data relevant to this item's display/rendering.",
@@ -184,8 +185,7 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IEncounterVariantYaml" },
           "title": "Variants"
-        },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -207,6 +207,31 @@
       "title": "ChallengeRank",
       "enum": [1, 2, 3, 4, 5],
       "type": "number"
+    },
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
     },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",
@@ -300,24 +325,29 @@
       ],
       "type": "string"
     },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
+    "ITitle_1": {
+      "title": "ITitle_1",
+      "additionalProperties": false,
       "type": "object",
       "properties": {
-        "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
           "type": "string",
-          "title": "Short"
+          "title": "$id"
         },
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
           "type": "string",
           "title": "Canonical"
         },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
-      "defaultProperties": [],
-      "additionalProperties": false,
       "required": ["Canonical"]
     },
     "IDisplayWithTitle_1": {

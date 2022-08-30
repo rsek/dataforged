@@ -328,11 +328,16 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Name", "Set"]
+      "required": ["$id", "Label", "Set"]
     },
     "IInputSelectOptionSetterMeter": {
       "description": "A condition meter set by an{@linkIInputSelectOption}.",

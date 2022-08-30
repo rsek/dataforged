@@ -11,7 +11,7 @@ export type YamlStub<T, PartialKey extends string="", OmitKey extends string="">
  * A stub where keys `$id`, `Display`, `Source`, `Optional`, `Title`, and PartialKey (*and* their properties) are nullable, and OmitKey is omitted.
  * @internal
  */
-export type YamlStubTitle<T, PartialKey extends string="", OmitKey extends string=""> = YamlStub<T,PartialKey,OmitKey|"Title"> & { Title: ITitleYaml};
+export type YamlStubTitle<T, PartialKey extends string="", OmitKey extends string=""> = YamlStub<T,PartialKey|"Title"|"Source",OmitKey> & { Title: ITitleYaml};
 
 
 

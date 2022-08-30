@@ -15431,6 +15431,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" },
         "Category": {
           "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
           "type": "string",
@@ -15463,18 +15464,12 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Categories": {
-          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
-          "type": "undefined",
-          "title": "Categories"
-        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "type": "string",
           "title": "Member of"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml_1", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -16100,6 +16095,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Category": {
           "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
           "type": "string",
@@ -16132,18 +16128,12 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Categories": {
-          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
-          "type": "undefined",
-          "title": "Categories"
-        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "type": "string",
           "title": "Member of"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -16238,6 +16228,31 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
+    },
     "ISource": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource",
@@ -16294,33 +16309,35 @@
       ],
       "type": "string"
     },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
-      "$ref": "#/definitions/ITitleYaml_1"
-    },
-    "ITitleYaml_1": {
-      "title": "ITitleYaml_1",
+    "ITitle_1": {
+      "title": "ITitle_1",
+      "additionalProperties": false,
       "type": "object",
       "properties": {
-        "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
           "type": "string",
-          "title": "Short"
+          "title": "$id"
         },
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
           "type": "string",
           "title": "Canonical"
         },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
-      "defaultProperties": [],
-      "additionalProperties": false,
       "required": ["Canonical"]
     },
-    "ISource_1": {
-      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource_1",
+    "PartialBy": {
+      "description": "Makes a type where K is nullable.",
+      "title": "PartialBy",
+      "additionalProperties": false,
       "type": "object",
       "properties": {
         "Title": {
@@ -16358,8 +16375,6 @@
           "title": "License"
         }
       },
-      "defaultProperties": [],
-      "additionalProperties": false,
       "required": ["Authors", "License", "Title"]
     },
     "License_1": {
@@ -16386,7 +16401,7 @@
           "title": "Oracles"
         },
         "Source": {
-          "$ref": "#/definitions/ISource_1",
+          "$ref": "#/definitions/PartialBy",
           "description": "Information on this item's source.",
           "title": "Source"
         },
@@ -16414,6 +16429,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" },
         "Category": {
           "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
           "type": "string",
@@ -16446,17 +16462,6 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Sample Names": {
-          "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Sample Names"
-        },
-        "Table": {
-          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
-          "type": "undefined",
-          "title": "Table"
-        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
@@ -16468,8 +16473,13 @@
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml_1", "title": "Title" }
+        "Sample Names": {
+          "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Sample Names"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -16490,7 +16500,7 @@
           "title": "Oracles"
         },
         "Source": {
-          "$ref": "#/definitions/ISource_2",
+          "$ref": "#/definitions/PartialBy_1",
           "description": "Information on this item's source.",
           "title": "Source"
         },
@@ -16518,6 +16528,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Category": {
           "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
           "type": "string",
@@ -16550,17 +16561,6 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Sample Names": {
-          "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Sample Names"
-        },
-        "Table": {
-          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
-          "type": "undefined",
-          "title": "Table"
-        },
         "Member of": {
           "description": "The ID of the most recent Oracle ancestor of this item, if any.",
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
@@ -16572,16 +16572,21 @@
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Sample Names": {
+          "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Sample Names"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ISource_2": {
-      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource_2",
-      "$ref": "#/definitions/ISource_1"
+    "PartialBy_1": {
+      "description": "Makes a type where K is nullable.",
+      "title": "PartialBy_1",
+      "$ref": "#/definitions/PartialBy"
     },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",

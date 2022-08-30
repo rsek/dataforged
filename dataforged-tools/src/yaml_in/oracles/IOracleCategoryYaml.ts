@@ -1,4 +1,5 @@
 import type { IOracleCategory, ISource } from "@json_out/index.js";
+import type { PartialBy } from "@utils/index.js";
 import type { IOracleUsageYaml, IOracleYaml, IRequirementsYaml, ITemplateOracleCategoryYaml, ITemplateYamlBase, YamlStubTitle } from "@yaml_in/index.js";
 
 /**
@@ -8,7 +9,7 @@ export interface IOracleCategoryYaml extends ITemplateYamlBase, YamlStubTitle<IO
   Requires?: IRequirementsYaml | undefined;
   Usage?: IOracleUsageYaml | undefined;
   Oracles?: IOracleYaml[] | undefined;
-  Source: ISource;
+  Source: PartialBy<ISource, "Author">;
   Categories?: IOracleCategoryYaml[] | undefined;
   _templateCategory?: ITemplateOracleCategoryYaml | undefined;
   _childOf?: IOracleCategory["$id"] | undefined;

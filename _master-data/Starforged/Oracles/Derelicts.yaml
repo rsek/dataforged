@@ -1,7 +1,11 @@
 Derelicts:
   Name: Derelicts
+  Title:
+    Canonical: Derelicts
   Source:
+    Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
+    License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   _parentOf:
     - Access
@@ -32,6 +36,7 @@ Derelicts:
         Requires: *attr:Location.Any
       Title:
         Canonical: Type (by Location)
+      Display:
         Table:
           Roll columns:
             - Use content from: Starforged/Oracles/Derelicts/Type/Planetside
@@ -42,6 +47,8 @@ Derelicts:
       Oracles:
         - Display: &derelictTypeDisplay
             Column of: Starforged/Oracles/Derelicts/Type
+          Title:
+            Canonical: Type (by Location) - Planetside
           Name: Planetside
           Usage:
             Requires: *attr:Location.Planetside
@@ -50,6 +57,8 @@ Derelicts:
             - [26, 100, Settlement, *attr:DerelictType.Settlement]
         - Display: *derelictTypeDisplay
           Name: Orbital
+          Title:
+            Canonical: Type (by Location) - Orbital
           Usage:
             Requires: *attr:Location.Orbital
           _templateTable:
@@ -60,6 +69,8 @@ Derelicts:
         - Display:
             Column of: Starforged/Oracles/Derelicts/Type
           Name: Deep Space
+          Title:
+            Canonical: Type (by Location) - Deep Space
           Usage:
             Requires: *attr:Location.DeepSpace
           _templateTable:
@@ -68,6 +79,8 @@ Derelicts:
               - [1, 75]
               - [76, 100]
     - Name: Condition
+      Title:
+        Canonical: Condition
       Source:
         Page: 348
       Usage:
@@ -82,6 +95,8 @@ Derelicts:
         - [91, 98, Heavily damaged]
         - [99, 100, Impending destruction]
     - Name: Outer First Look
+      Title:
+        Canonical: Outer First Look
       Source:
         Page: 349
       Aliases: [First Look]
@@ -101,6 +116,8 @@ Derelicts:
         - [86, 95, Stripped exterior]
         - [96, 100, Time or reality distortions]
     - Name: Inner First Look
+      Title:
+        Canonical: Inner First Look
       Source:
         Page: 349
       Aliases: [First Look]
@@ -146,6 +163,7 @@ Derelicts:
         Page: 351
       Title:
         Canonical: Derelict Zones
+      Display:
         Table:
           Roll columns:
             - Use content from: Starforged/Oracles/Derelicts/Zones/Starship
@@ -159,6 +177,8 @@ Derelicts:
             Derelict Type: null
       Oracles:
         - Name: Starship
+          Title:
+            Canonical: Derelict Zones - Starship
           Display:
             Column of: Starforged/Oracles/Derelicts/Zone
           Usage:
@@ -176,6 +196,8 @@ Derelicts:
             - [91, 100, "[⏵Research](Starforged/Oracles/Derelicts/Research)", *obj:DerelictZone.Research, Icon: "../../img/vector/Derelicts/Research.svg"]
 
         - Name: Settlement
+          Title:
+            Canonical: Derelict Zones - Settlement
           Display:
             Column of: Starforged/Oracles/Derelicts/Zone
           Usage:

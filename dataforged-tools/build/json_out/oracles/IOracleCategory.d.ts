@@ -1,4 +1,4 @@
-import type { IOracleBase } from "../index.js";
+import type { IOracle, IOracleBase } from "../index.js";
 /**
  * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.
  *
@@ -6,22 +6,18 @@ import type { IOracleBase } from "../index.js";
  *
  * @public
  */
-export interface IOracleCategory extends IOracleBase {
+export interface IOracleCategory extends Omit<IOracleBase, "Table"> {
     /**
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
      */
     $id: string;
     Name: string;
-    /**
-     */
     Category?: IOracleCategory["$id"] | undefined;
     /**
      * A list of sample names for this category (only used by Planetary Class subcategories).
      */
     "Sample Names"?: string[] | undefined;
-    /**
-     * @internal
-     */
-    Table?: never;
+    Categories?: IOracleCategory[] | undefined;
+    Oracles?: IOracle[] | undefined;
 }
 //# sourceMappingURL=IOracleCategory.d.ts.map

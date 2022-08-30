@@ -22,8 +22,8 @@ export class InputSelect extends Input {
  */
 export class InputSelectOption {
     constructor(json, parent) {
-        this.$id = `${parent.$id}/Options/${formatIdFragment(json.Name)}`;
-        this.Name = json.Name;
+        this.$id = `${parent.$id}/Options/${formatIdFragment(json.Label)}`;
+        this.Label = json.Label;
         this.Set = json.Set.map(attr => new InputSelectOptionSetter(attr, this));
     }
 }

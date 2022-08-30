@@ -42,6 +42,7 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Optional": {
           "description": "Whether or not the source material presents this rules item as optional.",
           "default": false,
@@ -54,8 +55,7 @@
           "type": "string",
           "title": "$id"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -83,6 +83,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Category": {
           "description": "The ID of the move's category.",
           "type": "string",
@@ -141,8 +142,7 @@
           "items": { "type": "string" },
           "title": "Tags"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -533,6 +533,31 @@
       "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
       "type": "string"
     },
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
+    },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",
       "$ref": "#/definitions/Partial<IDisplayWithTitle>"
@@ -760,26 +785,6 @@
         "Zone"
       ],
       "type": "string"
-    },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
-      "type": "object",
-      "properties": {
-        "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
-          "type": "string",
-          "title": "Short"
-        },
-        "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
-          "type": "string",
-          "title": "Canonical"
-        },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Canonical"]
     },
     "IDisplay": {
       "description": "Interface for data relevant to an item's display/rendering.",

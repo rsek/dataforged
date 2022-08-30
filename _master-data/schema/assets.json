@@ -35,6 +35,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
@@ -51,8 +52,7 @@
           "type": "string",
           "title": "Description"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -97,6 +97,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle_3", "title": "Title" },
         "Display": {
           "$ref": "#/definitions/IDisplayWithTitle_2",
           "description": "Data relevant to this item's display/rendering.",
@@ -138,8 +139,7 @@
           "type": "string",
           "title": "Requirement"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -804,6 +804,7 @@
           "type": "string",
           "title": "Name"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Category": {
           "description": "The ID of the move's category.",
           "type": "string",
@@ -862,8 +863,7 @@
           "items": { "type": "string" },
           "title": "Tags"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1166,6 +1166,31 @@
       "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
       "type": "string"
     },
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
+    },
     "IDisplayWithTitle": {
       "title": "IDisplayWithTitle",
       "$ref": "#/definitions/Partial<IDisplayWithTitle>"
@@ -1257,26 +1282,6 @@
         "https://creativecommons.org/licenses/by-sa/4.0/"
       ],
       "type": "string"
-    },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
-      "type": "object",
-      "properties": {
-        "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
-          "type": "string",
-          "title": "Short"
-        },
-        "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
-          "type": "string",
-          "title": "Canonical"
-        },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Canonical"]
     },
     "IInputClockYaml": {
       "title": "IInputClockYaml",
@@ -1519,7 +1524,7 @@
           "items": { "type": "string" },
           "title": "Aliases"
         },
-        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" }
+        "Title": { "$ref": "#/definitions/ITitle_2", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -1721,11 +1726,16 @@
           "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
           "type": "string",
           "title": "Name"
+        },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Name", "Set"]
+      "required": ["$id", "Label", "Set"]
     },
     "IInputSelectOptionSetterMeter": {
       "description": "A condition meter set by an{@linkIInputSelectOption}.",
@@ -1975,7 +1985,7 @@
           "type": "string",
           "title": "Name"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" },
         "Asset": {
           "description": "The ID of the parent Asset of the move, if any.",
           "type": "string",
@@ -2058,8 +2068,8 @@
         "Trigger"
       ]
     },
-    "ITitle": {
-      "title": "ITitle",
+    "ITitle_1": {
+      "title": "ITitle_1",
       "type": "object",
       "properties": {
         "$id": {
@@ -2782,8 +2792,8 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ITitle_1": {
-      "title": "ITitle_1",
+    "ITitle_2": {
+      "title": "ITitle_2",
       "$ref": "#/definitions/Partial<ITitle>"
     },
     "Partial<ITitle>": {
@@ -2876,11 +2886,16 @@
           "type": "string",
           "title": "$id"
         },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Name", "Set"]
+      "required": ["Label", "Set"]
     },
     "IInputSelectOptionSetterYaml": {
       "title": "IInputSelectOptionSetterYaml",
@@ -3028,6 +3043,31 @@
         "Name",
         "Permanent"
       ]
+    },
+    "ITitle_3": {
+      "title": "ITitle_3",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
     },
     "IDisplayWithTitle_2": {
       "title": "IDisplayWithTitle_2",
