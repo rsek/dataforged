@@ -423,7 +423,7 @@ export declare interface IAssetAttachment {
 }
 
 /**
- * Describes a possible state for an asset, like the "Broken" status for certain assets (mainly Modules in *Starforged*).
+ * Describes a possible state for an asset, like the "broken" status for certain assets (mainly Modules in *Starforged*).
  *
  * States are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.
  * @public
@@ -431,8 +431,9 @@ export declare interface IAssetAttachment {
 export declare interface IAssetState extends IHasLabel {
     /**
      * A string label for the state.
-     * @example "Broken"
+     * @example "broken"
      * @localize
+     * @pattern ^[a-z].+$
      */
     Label: string;
     /**
@@ -518,7 +519,7 @@ export declare interface IAttributeChoices {
 }
 
 /**
- * Interface representing a condition meter such as Health, Spirit, Supply, or Integrity.
+ * Interface representing a condition meter such as health, spirit, supply.
  * @public
  */
 export declare interface IConditionMeter extends IMeter {
@@ -531,6 +532,9 @@ export declare interface IConditionMeter extends IMeter {
      * The conditions that can apply to this meter.
      */
     Conditions: MeterCondition[];
+    /**
+     * Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link IMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.
+     */
     Aliases?: MeterAlias[] | undefined;
 }
 
@@ -1281,15 +1285,15 @@ export declare interface IInputNumber extends IInput {
  *   "Label": "Material",
  *   "Input Type": "Select",
  *   "Attributes": [
- *     { "Key": "Stat", "Type": "Stat" },
- *     { "Key": "Condition Meter", "Type": "Condition Meter" }
+ *     { "Key": "stat", "Type": "Stat" },
+ *     { "Key": "condition_meter", "Type": "Condition Meter" }
  *    ],
  *    "Options": [
  *      {
  *       "Label": "Thunderwood",
  *       "Sets": [
- *         { "Key": "Stat", "Value": "Edge" },
- *         { "Key": "Condition Meter", "Value": "Health" }
+ *         { "Key": "stat", "Value": "edge" },
+ *         { "Key": "condition_meter", "Value": "health" }
  *       ]
  *     }
  *   ]
@@ -1312,6 +1316,9 @@ export declare interface IInputSelect extends IInput {
  * @public
  */
 export declare interface IInputSelectAttributeDefinition {
+    /**
+     * @pattern ^[a-z_]+$
+     */
     Key: string;
     Type: InputSelectOptionType;
 }
@@ -1339,7 +1346,7 @@ export declare interface IInputSelectOptionSetter extends IHasId {
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
-    Key: string;
+    Key: IInputSelectAttributeDefinition["Key"];
     Type: InputSelectOptionType;
     Value: Stat | PlayerConditionMeter | number | string;
 }
@@ -1426,6 +1433,10 @@ export declare interface IMeter extends IHasId, IHasLabel {
      * Whether the meter value can be used in place of a stat in an action roll.
      */
     Rollable: boolean;
+    /**
+     * @pattern ^[a-z].+$
+     */
+    Label: string;
 }
 
 /**
@@ -1439,6 +1450,8 @@ export declare interface IMove extends IHasId, IHasText, IHasDisplay, IHasSource
      */
     $id: string;
     /**
+     * Note the "Canonical" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.
+     * @see IHasTitle
      * @example
      * ```typescript
      * {Canonical: "Face Danger"}
@@ -1643,12 +1656,12 @@ export declare interface IMultipleRolls {
  */
 export declare enum InputSelectOptionType {
     /**
-     * A reference to one of the player character's stats: Edge, Heart, Iron, Shadow, or Wits.
+     * A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.
      * @see {@link Stat}
      */
     Stat = "Stat",
     /**
-     * A reference to one of the player character's condition meters: Health, Spirit, or Supply.
+     * A reference to one of the player character's condition meters (Starforged) or status tracks (Ironsworn): health, spirit, or supply.
      * @see {@link PlayerConditionMeter}
      */
     ConditionMeter = "Condition Meter",
@@ -2289,11 +2302,12 @@ export declare enum LocationTheme {
  * @public
  */
 export declare enum MeterAlias {
-    CompanionHealth = "Companion Health",
-    VehicleIntegrity = "Vehicle Integrity",
-    CommandVehicleIntegrity = "Command Vehicle Integrity",
-    SupportVehicleIntegrity = "Support Vehicle Integrity",
-    IncidentalVehicleIntegrity = "Incidental Vehicle Integrity"
+    Attached_Asset_Meter = "attached asset meter",
+    CompanionHealth = "companion health",
+    VehicleIntegrity = "vehicle integrity",
+    CommandVehicleIntegrity = "command vehicle integrity",
+    SupportVehicleIntegrity = "support vehicle integrity",
+    IncidentalVehicleIntegrity = "incidental vehicle integrity"
 }
 
 /**
@@ -2305,19 +2319,19 @@ export declare enum MeterCondition {
      * Battered may be marked when your vehicle is at 0 integrity and you fail to Withstand Damage. The vehicle is barely holding together.
      * @page 51
      */
-    Battered = "Battered",
+    Battered = "battered",
     /**
      * Cursed may be marked when your command vehicle (STARSHIP asset) is at 0 integrity and you fail to Withstand Damage. This is a permanent impact. Your ship will never be quite right again.
      * @page 51
      */
-    Cursed = "Cursed",
+    Cursed = "cursed",
     /**
      * When your companion’s health is at 0 and you score a miss, they are out of action. You cannot leverage their support until they gain at least +1 health. Envision what this means in the fiction of your scene.
      * @page 204
      */
-    OutOfAction = "Out of Action",
+    OutOfAction = "out of action",
     /** Used by "Fleet Commander" asset */
-    Wrecked = "Wrecked"
+    Wrecked = "wrecked"
 }
 
 /**
@@ -2325,10 +2339,10 @@ export declare enum MeterCondition {
  * @public
  */
 export declare enum MeterType {
-    Health = "Health",
-    Spirit = "Spirit",
-    Supply = "Supply",
-    Momentum = "Momentum"
+    Health = "health",
+    Spirit = "spirit",
+    Supply = "supply",
+    Momentum = "momentum"
 }
 
 /**
@@ -2455,35 +2469,35 @@ export declare enum PlanetaryClass {
  * @public
  */
 export declare enum PlayerConditionMeter {
-    Health = "Health",
-    Spirit = "Spirit",
-    Supply = "Supply"
+    Health = "health",
+    Spirit = "spirit",
+    Supply = "supply"
 }
 
 /**
  * @public
  */
 export declare enum ProgressTypeIronsworn {
-    Combat = "Combat",
-    Vow = "Vow",
-    Journey = "Journey",
-    Delve = "Delve",
-    SceneChallenge = "Scene Challenge",
-    Bonds = "Bonds"
+    Combat = "combat progress",
+    Vow = "vow progress",
+    Journey = "journey progress",
+    Delve = "delve progress",
+    SceneChallenge = "scene challenge progress",
+    BondsTrack = "bonds track"
 }
 
 /**
  * @public
  */
 export declare enum ProgressTypeStarforged {
-    Combat = "Combat",
-    Vow = "Vow",
-    Expedition = "Expedition",
-    Connection = "Connection",
-    SceneChallenge = "Scene Challenge",
-    QuestsLegacy = "Quests Legacy",
-    BondsLegacy = "Bonds Legacy",
-    DiscoveriesLegacy = "Discoveries Legacy"
+    Combat = "combat progress",
+    Vow = "vow progress",
+    Expedition = "expedition progress",
+    Connection = "connection progress",
+    SceneChallenge = "scene challenge progress",
+    QuestsLegacy = "quests legacy",
+    BondsLegacy = "bonds legacy",
+    DiscoveriesLegacy = "discoveries legacy"
 }
 
 /**
@@ -2932,11 +2946,11 @@ export declare const starforged: Starforged;
  * @public
  */
 export declare enum Stat {
-    Edge = "Edge",
-    Heart = "Heart",
-    Iron = "Iron",
-    Shadow = "Shadow",
-    Wits = "Wits"
+    Edge = "edge",
+    Heart = "heart",
+    Iron = "iron",
+    Shadow = "shadow",
+    Wits = "wits"
 }
 
 /**

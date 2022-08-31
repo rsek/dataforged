@@ -1,4 +1,4 @@
-import type { IHasId, IHasLabel, InputSelectOptionType, PlayerConditionMeter, Stat } from "../index.js";
+import type { IHasId, IHasLabel, IInputSelectAttributeDefinition, InputSelectOptionType, PlayerConditionMeter, Stat } from "../index.js";
 /**
  * Represents an option in an {@link IInputSelect}.
  * @public
@@ -21,7 +21,7 @@ export interface IInputSelectOptionSetter extends IHasId {
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
-    Key: string;
+    Key: IInputSelectAttributeDefinition["Key"];
     Type: InputSelectOptionType;
     Value: Stat | PlayerConditionMeter | number | string;
 }

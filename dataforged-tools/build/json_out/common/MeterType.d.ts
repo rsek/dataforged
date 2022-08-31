@@ -3,9 +3,9 @@
  * @public
  */
 export declare enum MeterType {
-    Health = "Health",
-    Spirit = "Spirit",
-    Supply = "Supply",
-    Momentum = "Momentum"
+    Health = "health",
+    Spirit = "spirit",
+    Supply = "supply",
+    Momentum = "momentum"
 }
 //# sourceMappingURL=MeterType.d.ts.map

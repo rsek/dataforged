@@ -9,15 +9,15 @@ import type { IInput , IInputSelectOption, InputType } from "@json_out/index.js"
  *   "Label": "Material",
  *   "Input Type": "Select",
  *   "Attributes": [
- *     { "Key": "Stat", "Type": "Stat" },
- *     { "Key": "Condition Meter", "Type": "Condition Meter" }
+ *     { "Key": "stat", "Type": "Stat" },
+ *     { "Key": "condition_meter", "Type": "Condition Meter" }
  *    ],
  *    "Options": [
  *      {
  *       "Label": "Thunderwood",
  *       "Sets": [
- *         { "Key": "Stat", "Value": "Edge" },
- *         { "Key": "Condition Meter", "Value": "Health" }
+ *         { "Key": "stat", "Value": "edge" },
+ *         { "Key": "condition_meter", "Value": "health" }
  *       ]
  *     }
  *   ]
@@ -40,6 +40,9 @@ export interface IInputSelect extends IInput {
  * @public
  */
 export interface IInputSelectAttributeDefinition {
+  /**
+   * @pattern ^[a-z_]+$
+   */
   Key: string;
   Type: InputSelectOptionType;
 }
@@ -50,12 +53,12 @@ export interface IInputSelectAttributeDefinition {
  */
 export enum InputSelectOptionType {
   /**
-   * A reference to one of the player character's stats: Edge, Heart, Iron, Shadow, or Wits.
+   * A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.
    * @see {@link Stat}
    */
   Stat = "Stat",
   /**
-   * A reference to one of the player character's condition meters: Health, Spirit, or Supply.
+   * A reference to one of the player character's condition meters (Starforged) or status tracks (Ironsworn): health, spirit, or supply.
    * @see {@link PlayerConditionMeter}
    */
   ConditionMeter = "Condition Meter",

@@ -5,12 +5,12 @@
 export var InputSelectOptionType;
 (function (InputSelectOptionType) {
     /**
-     * A reference to one of the player character's stats: Edge, Heart, Iron, Shadow, or Wits.
+     * A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.
      * @see {@link Stat}
      */
     InputSelectOptionType["Stat"] = "Stat";
     /**
-     * A reference to one of the player character's condition meters: Health, Spirit, or Supply.
+     * A reference to one of the player character's condition meters (Starforged) or status tracks (Ironsworn): health, spirit, or supply.
      * @see {@link PlayerConditionMeter}
      */
     InputSelectOptionType["ConditionMeter"] = "Condition Meter";

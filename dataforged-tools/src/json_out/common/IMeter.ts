@@ -5,7 +5,7 @@ import type { IHasId, IHasLabel } from "@json_out/index.js";
  * @see {@link IConditionMeter}
  * @public
  */
-export interface IMeter extends IHasId,  IHasLabel {
+export interface IMeter extends IHasId, IHasLabel {
   /**
    * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
    */
@@ -22,4 +22,8 @@ export interface IMeter extends IHasId,  IHasLabel {
    * Whether the meter value can be used in place of a stat in an action roll.
    */
   Rollable: boolean;
+  /**
+   * @pattern ^[a-z].+$
+   */
+  Label: string;
 }

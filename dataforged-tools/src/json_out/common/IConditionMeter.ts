@@ -5,13 +5,13 @@ import type { IMeter, MeterAlias, MeterCondition } from "@json_out/index.js";
  * @public
  */
 export enum PlayerConditionMeter {
-    Health = "Health",
-    Spirit = "Spirit",
-    Supply = "Supply"
+    Health = "health",
+    Spirit = "spirit",
+    Supply = "supply"
 }
 
 /**
- * Interface representing a condition meter such as Health, Spirit, Supply, or Integrity.
+ * Interface representing a condition meter such as health, spirit, supply.
  * @public
  */
 export interface IConditionMeter extends IMeter {
@@ -24,5 +24,8 @@ export interface IConditionMeter extends IMeter {
    * The conditions that can apply to this meter.
    */
   Conditions: MeterCondition[];
+  /**
+   * Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link IMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.
+   */
   Aliases?: MeterAlias[] | undefined;
 }

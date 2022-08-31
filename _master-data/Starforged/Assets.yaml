@@ -56,16 +56,16 @@ Asset Types:
                   Options:
                     - Text: To your Starship
                       Roll type: Action roll
-                      Using: [Heart]
+                      Using: [heart]
                 Outcomes:
                   Weak Hit: &Starship.3
                     Text: "[Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1)."
                   Miss: *Starship.3
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 5
-          Conditions: [Battered, Cursed]
+          Conditions: [battered, cursed]
   - Title:
       Canonical: Modules
       Standard: Module
@@ -85,7 +85,7 @@ Asset Types:
           Canonical: Engine Upgrade
         States:
           - &Broken
-            Label: Broken
+            Label: broken
             Enabled: false
             Disables asset: true
             Permanent: false
@@ -104,7 +104,7 @@ Asset Types:
                       # e.g. "${{ATTACHED_ASSET_NAME}}"
                       Roll type: Action roll
                       Method: Inherit
-                      Using: [Edge]
+                      Using: [edge]
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum; if you get a 6 on your action die, take +2 momentum instead of +1.
@@ -191,7 +191,7 @@ Asset Types:
                   You may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
                 Outcomes: *outcomes:+2_momentum.HIT
         Condition Meter:
-          Label: Cargo
+          Label: cargo
           Max: 3
           Value: 0
           Rollable: false
@@ -212,7 +212,7 @@ Asset Types:
                   Options:
                     - Method: Highest
                       Roll type: Action roll
-                      Using: [Wits, Attached_Asset_Condition_Meter]
+                      Using: [wits, attached asset meter]
                 Text: *move:Asset.Grappler
                 Outcomes:
                   Strong Hit:
@@ -341,7 +341,7 @@ Asset Types:
                   Text: When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...
                   Options:
                     - Roll type: Action roll
-                      Using: [Attached_Asset_Condition_Meter]
+                      Using: [attached asset meter]
                 Text: *move:Asset.Internal_refit
                 Outcomes:
                   Strong Hit:
@@ -490,7 +490,7 @@ Asset Types:
                       Method: Inherit
                 Text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
         Condition Meter:
-          Label: Ammo
+          Label: ammo
           Max: 5
           Rollable: false
       - Title:
@@ -681,7 +681,7 @@ Asset Types:
                   Options:
                     - Text: In your vehicle
                       Method: Inherit
-                      Using: [Wits]
+                      Using: [wits]
                       Roll type: Action roll
                 Outcomes: &outcomes:reroll_challenge_die_all
                   Strong Hit: &outcome:reroll_challenge_die
@@ -762,7 +762,7 @@ Asset Types:
                   Options:
                     - Method: Any
                       Roll type: Action roll
-                      Using: [Wits, Attached_Asset_Condition_Meter]
+                      Using: [wits, attached asset meter]
                 Text: *move:Asset.Shields
                 Outcomes:
                   Strong Hit:
@@ -790,7 +790,7 @@ Asset Types:
                     - Text: By letting your shields take the blow
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+2_momentum.HIT
           - Text: |-
               When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
@@ -806,7 +806,7 @@ Asset Types:
                   Strong Hit:
                     Text: You may raise your shields to 3 without rolling. If you do, take +1 momentum.
         Condition Meter:
-          Label: Shields
+          Label: shields
           Max: 4
           Rollable: true
           Value: 0
@@ -847,7 +847,7 @@ Asset Types:
                     - Text: When you travel stealthily (in your vehicle)
                       Method: Inherit
                       Roll type: Action roll
-                      Using: [Shadow]
+                      Using: [shadow]
                 Outcomes: &reroll_action_die_all
                   Strong Hit: &outcome:reroll_action_die
                     Reroll:
@@ -868,7 +868,7 @@ Asset Types:
                   Options:
                     - Text: You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding (and choose to strike true)
                       Roll type: Action roll
-                      Using: [Shadow]
+                      Using: [shadow]
                 Outcomes:
                   Strong Hit:
                     Reroll: *reroll:any
@@ -882,7 +882,7 @@ Asset Types:
                   Options:
                     - Text: You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding (and choose to strike hard)
                       Roll type: Action roll
-                      Using: [Shadow]
+                      Using: [shadow]
                 Outcomes:
                   Strong Hit:
                     Text: Mark progress.
@@ -1064,10 +1064,10 @@ Asset Types:
                       Text: To your Exosuit
                 Outcomes: *outcomes:reroll_challenge_die_all
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 6
-          Conditions: [Battered]
+          Conditions: [battered]
       - Title:
           Canonical: Hoverbike
         Inputs:
@@ -1084,7 +1084,7 @@ Asset Types:
                   Options:
                     - Method: Inherit
                       Text: On your hoverbike
-                      Using: [Edge]
+                      Using: [edge]
                       Roll type: Action roll
                 Outcomes:
                   Strong Hit:
@@ -1117,10 +1117,10 @@ Asset Types:
                     Text: Roll your action die. On a 5 or 6, do not reset momentum.
             # FIXME: this is a difficult trigger to describe in relation to moves. it might make more sense to develop a momentum burn trigger instead.
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 3
-          Conditions: [Battered]
+          Conditions: [battered]
       - Title:
           Canonical: Rover
         Inputs:
@@ -1166,13 +1166,13 @@ Asset Types:
                     - Text: By taking a hit or crashing through an obstacle
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 5
-          Conditions: [Battered]
+          Conditions: [battered]
       - Title:
           Canonical: Service Pod
         Inputs:
@@ -1207,7 +1207,7 @@ Asset Types:
                     - Text: By maneuvering your pod through a hazardous or obstructed area
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Text: |-
                   Choose an approach and roll +integrity.
 
@@ -1224,10 +1224,10 @@ Asset Types:
                       Roll type: Action roll
                 Text: You may take an automatic strong hit. If you do, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 4
-          Conditions: [Battered]
+          Conditions: [battered]
       - Title:
           Canonical: Shuttle
         Inputs:
@@ -1263,10 +1263,10 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +1.
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 4
-          Conditions: [Battered]
+          Conditions: [battered]
       - Title:
           Canonical: Skiff
         Inputs:
@@ -1284,7 +1284,7 @@ Asset Types:
                     - Text: Rely on the skiff's simple durability
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
             Enabled: true
           - Text: |-
@@ -1298,7 +1298,7 @@ Asset Types:
                     - Text: By firing the skiff's cannon
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -1308,10 +1308,10 @@ Asset Types:
           - Text: |-
               Your skiff is fully stocked. When you [Check Your Gear](Starforged/Moves/Adventure/Check_Your_Gear), add +1 and take +1 momentum on a hit.
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 4
-          Conditions: [Battered]
+          Conditions: [battered]
       - Title:
           Canonical: Snub Fighter
         Inputs:
@@ -1328,7 +1328,7 @@ Asset Types:
                     - Text: In your snub fighter
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+2_momentum.HIT
             Enabled: true
           - Text: |-
@@ -1357,10 +1357,10 @@ Asset Types:
                 Adjustable: true
                 Max: null
         Condition Meter:
-          Label: Integrity
+          Label: integrity
           Rollable: true
           Max: 4
-          Conditions: [Battered]
+          Conditions: [battered]
   - Title:
       Canonical: Paths
       Standard: Path
@@ -1428,7 +1428,7 @@ Asset Types:
                   Text: When you replenish your ammo by crafting projectiles...
                   Options:
                     - Roll type: Action roll
-                      Using: [Wits]
+                      Using: [wits]
                 Text: *move:Asset.Archer
                 Outcomes:
                   Strong Hit:
@@ -1451,7 +1451,7 @@ Asset Types:
                   Options:
                     - Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                       Text: By unleashing a volley of bow shots
                 Outcomes:
                   Strong Hit: &Archer.2
@@ -1464,7 +1464,7 @@ Asset Types:
             Alter Moves:
               - Moves: null
                 # Cost:
-                #   - Resource: ${{@ASSET}}/Condition_Meter
+                #   - Resource: ${{@ASSET_METER}}
                 #     Value: 1 # TODO: value should probably be an array of valid values
                 Trigger:
                   Options:
@@ -1481,7 +1481,7 @@ Asset Types:
                     Text: Envision the effects of the projectile and take +1 momentum.
                   Weak Hit: *Archer.3
         Condition Meter:
-          Label: Ammo
+          Label: ammo
           Max: 6
           Rollable: true
       - Title:
@@ -1582,7 +1582,7 @@ Asset Types:
                     - Roll type: Action roll
                       Method: Any
                       Text: Roll +the stat which best represents the work’s nature
-                      Using: [Edge, Iron, Heart, Shadow, Wits]
+                      Using: [edge, iron, heart, shadow, wits]
                 Text: *move:Asset.Artist
                 Outcomes:
                   Strong Hit:
@@ -1602,7 +1602,7 @@ Asset Types:
           - Label: Two
             Input Type: Text
         States: # TODO: attach to specific abilities? hmm.
-          - Label: Broken (Augment 1)
+          - Label: broken (augment 1)
             Enabled: false
             Disables asset: false
             Impact: false
@@ -1631,7 +1631,7 @@ Asset Types:
             Alter Properties:
               States:
                 # TODO: adjust/annotate AlterProperties interface to clarify that array items should be concatenated
-                - Label: Broken (Augment 2)
+                - Label: broken (augment 2)
                   Enabled: false
                   Disables asset: false
                   Impact: false
@@ -1744,7 +1744,7 @@ Asset Types:
                     - Text: By moving into close quarters against your foe (and choosing to charge)
                       Method: Inherit
                       Roll type: Action roll
-                      Using: [Heart]
+                      Using: [heart]
                 Outcomes: &outcomes:mark_progress.HIT
                   Strong Hit: *outcome:mark_progress
                   Weak Hit: *outcome:mark_progress
@@ -1755,7 +1755,7 @@ Asset Types:
                     - Text: By moving into close quarters against your foe (and choosing to evade)
                       Method: Inherit
                       Roll type: Action roll
-                      Using: [Edge]
+                      Using: [edge]
                 Outcomes: *outcomes:+1_momentum.HIT
           - Text: |-
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
@@ -1970,12 +1970,12 @@ Asset Types:
                     - Text: During a courier mission
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 safety or +1 momentum.
         Condition Meter:
-          Label: Safety
+          Label: safety
           Max: 5
           Rollable: true
       - Title:
@@ -2024,38 +2024,38 @@ Asset Types:
         Inputs:
           - Label: Name
             Input Type: Text
-          - Label: Linked Stat
+          - Label: Linked stat
             Input Type: Select
             Adjustable: false
             Sets:
-              - Key: Stat
+              - Key: stat
                 Type: Stat
             Options:
               - Label: Edge
                 Set:
-                  - Key: Stat
+                  - Key: stat
                     Type: Stat
-                    Value: Edge
+                    Value: edge
               - Label: Heart
                 Set:
-                  - Key: Stat
+                  - Key: stat
                     Type: Stat
-                    Value: Heart
+                    Value: heart
               - Label: Iron
                 Set:
-                  - Key: Stat
+                  - Key: stat
                     Type: Stat
-                    Value: Iron
+                    Value: iron
               - Label: Shadow
                 Set:
-                  - Key: Stat
+                  - Key: stat
                     Type: Stat
-                    Value: Shadow
+                    Value: shadow
               - Label: Wits
                 Set:
-                  - Key: Stat
+                  - Key: stat
                     Type: Stat
-                    Value: Wits
+                    Value: wits
         Abilities:
           - Text: |-
               You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by calling on it for guidance or aid, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
@@ -2109,7 +2109,7 @@ Asset Types:
                     Text: Mark 2 ticks on your bonds legacy track.
                   Weak Hit: *outcome:bonds_2_ticks
           - Text: |-
-              When you [Hearten](Starforged/Moves/Recover/Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
+              When you [hearten](Starforged/Moves/Recover/Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
             Alter Moves:
               - Moves:
                   - Starforged/Moves/Recover/Hearten
@@ -2190,7 +2190,7 @@ Asset Types:
                   Text: When you read the intent, emotions, or memories of a nearby being...
                   Options:
                     - Roll type: Action roll
-                      Using: [Heart]
+                      Using: [heart]
                 Text: *move:Asset.Empath
                 Outcomes:
                   Strong Hit:
@@ -2246,7 +2246,7 @@ Asset Types:
               When you come across a wondrous sight or phenomenon, such as an extraordinary planet, majestic creature, or dazzling stellar object, choose one:
 
                 * Find inspiration: Take +1 momentum
-                * Soak it all in: [Hearten](Starforged/Moves/Recover/Hearten); add +1, and take +1 momentum on a hit.
+                * Soak it all in: [hearten](Starforged/Moves/Recover/Hearten); add +1, and take +1 momentum on a hit.
             # TODO: non move trigger
           - Text: |-
               When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by studying a newfound place from a safe position, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum and envision an unusual aspect of the site.
@@ -2326,7 +2326,7 @@ Asset Types:
                   Text: When you rest and meditate to gather fiery energy...
                   Options:
                     - Roll type: Action roll
-                      Using: [Spirit]
+                      Using: [spirit]
                 Text: *move:Asset.Firebrand
                 Outcomes:
                   Strong Hit:
@@ -2366,7 +2366,7 @@ Asset Types:
                       Method: Strong Hit
                 Text: Take an automatic strong hit and mark progress. Then, set your fire to 0.
         Condition Meter:
-          Label: Fire
+          Label: fire
           Max: 5
           Rollable: false
           Value: 0
@@ -2540,11 +2540,11 @@ Asset Types:
                     - Text: By facing off against your foe
                       Roll type: Action roll
                       Method: Inherit
-                      Using: [Heart]
+                      Using: [heart]
                     - Text: By preparing to act without tipping off your foe
                       Roll type: Action roll
                       Method: Inherit
-                      Using: [Shadow]
+                      Using: [shadow]
                 Text: Add +1.
                 Outcomes:
                   Strong Hit:
@@ -3180,7 +3180,7 @@ Asset Types:
           Canonical: Outcast
         Abilities:
           - Text: |-
-              When you [Hearten](Starforged/Moves/Recover/Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
+              When you [hearten](Starforged/Moves/Recover/Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
             Enabled: true
             Alter Moves:
               - Moves:
@@ -3205,7 +3205,7 @@ Asset Types:
                   Text: When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...
                   Options:
                     - Roll type: Action roll
-                      Using: [Wits]
+                      Using: [wits]
                 Text: *move:Asset.Outcast
                 Outcomes:
                   Strong Hit:
@@ -3272,7 +3272,7 @@ Asset Types:
                 Trigger:
                   Options:
                     - Method: Highest
-                      Using: [Wits, Supply]
+                      Using: [wits, Supply]
                       Roll type: Action roll
                 Outcomes: *outcomes:+1_momentum.HIT
       - Title:
@@ -3302,7 +3302,7 @@ Asset Types:
                   Options:
                     - Text: To search out a new contact
                       Roll type: Action roll
-                      Using: [Shadow]
+                      Using: [shadow]
                 Outcomes:
                   Strong Hit: &Scoundrel.2.Hit
                     Text: &Scoundrel.2 Envision how your reputation or underworld contacts lead you to a disreputable connection.
@@ -3404,7 +3404,7 @@ Asset Types:
                   Text: When you expand your veil to immerse your surroundings in darkness...
                   Options:
                     - Roll type: Action roll
-                      Using: [Shadow]
+                      Using: [shadow]
                 Text: *move:Asset.Shade
                 Outcomes:
                   Strong Hit:
@@ -3516,7 +3516,7 @@ Asset Types:
                   Text: When you target a minor foe from a distance (outside of a fight)...
                   Options:
                     - Roll type: Action roll
-                      Using: [Wits]
+                      Using: [wits]
                 Text: *move:Asset.Sniper
                 Outcomes:
                   Strong Hit:
@@ -3537,7 +3537,7 @@ Asset Types:
                   Options:
                     - Text: From a distance with time enough to line up your shot
                       Roll type: Action roll
-                      Using: [Wits]
+                      Using: [wits]
                 Outcomes:
                   Strong Hit: *outcome:mark_progress
           - Text: |-
@@ -3789,7 +3789,7 @@ Asset Types:
                     Text: When you are in space (or a spacebound vehicle or station)
                   Value: 1
           - Text: |-
-              When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) within a spacebound community, add +1. If you [Hearten](Starforged/Moves/Recover/Hearten) there and score a strong hit, take +1 spirit or +1 momentum.
+              When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) within a spacebound community, add +1. If you [hearten](Starforged/Moves/Recover/Hearten) there and score a strong hit, take +1 spirit or +1 momentum.
             Alter Moves:
               - Moves:
                   - Starforged/Moves/Recover/Sojourn
@@ -3908,7 +3908,7 @@ Asset Types:
                     - Text: As a test of your leadership
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
             Moves:
               - Title:
                   Canonical: Bolster Crew
@@ -3917,7 +3917,7 @@ Asset Types:
                   Options:
                     - Roll type: Action roll
                       Using:
-                        - Heart
+                        - heart
                 Text: To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
                 Outcomes:
                   Strong Hit:
@@ -3944,7 +3944,7 @@ Asset Types:
                     Text: Take +2 command.
                   Weak Hit: *Crew_Commander.3
         Condition Meter:
-          Label: Command
+          Label: command
           Max: 4
           Rollable: true
           Value: 2
@@ -3977,7 +3977,7 @@ Asset Types:
                     - Text: While riding your banshee
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
             Enabled: true
           - Text: |-
               When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.
@@ -4018,10 +4018,10 @@ Asset Types:
                   Weak Hit: *Banshee.3
                   Miss: *Banshee.3
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 4
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Combat Bot
         Tags: [mechanical companion]
@@ -4060,7 +4060,7 @@ Asset Types:
                     - Text: Using the threat of violence while the bot brings its weapons to bear
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -4077,7 +4077,7 @@ Asset Types:
                     - Text: Once per fight, by using the combat bot to draw fire or create a diversion
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes:
                   Strong Hit: *outcome:mark_progress
                   Weak Hit:
@@ -4085,10 +4085,10 @@ Asset Types:
                     # TODO: add "in control" override property to interface
                     In Control: true
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 5
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Glowcat
         Tags: [biological companion]
@@ -4142,10 +4142,10 @@ Asset Types:
                     With a Match:
                       Text: Take +momentum equal to the glowcat's health.
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 3
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Protocol Bot
         Tags: [mechanical companion]
@@ -4189,10 +4189,10 @@ Asset Types:
                   Weak Hit: *Protocol_Bot.3
                   Miss: *Protocol_Bot.3
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 3
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Rockhorn
         Tags: [biological companion]
@@ -4209,7 +4209,7 @@ Asset Types:
                     - Text: By sending the rockhorn to directly attack a foe or smash an obstacle
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
             Enabled: true
           - Text: |-
               When you make the [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
@@ -4245,10 +4245,10 @@ Asset Types:
                       Dice: Action die
                       Text: You may reroll your action die if its value is less than the rockhorn’s health.
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 5
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Sidekick
         Tags: [biological companion]
@@ -4305,13 +4305,13 @@ Asset Types:
                     - Text: Your sidekick acts to get you out of a tough spot
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 4
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Sprite
         Tags: [biological companion]
@@ -4346,10 +4346,10 @@ Asset Types:
           - Text: |-
               With a moment's rest, the sprite can mend its form and return automatically to max health.
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 2
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Survey Bot
         Tags: [mechanical companion]
@@ -4382,7 +4382,7 @@ Asset Types:
                     - Text: Once per expedition, by sending the survey bot to scout ahead
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes:
                   Strong Hit:
                     Text: Mark progress on the expedition.
@@ -4400,7 +4400,7 @@ Asset Types:
                     - Text: Aided by the survey bot's sensors
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
               - Moves:
                   - Starforged/Moves/Adventure/Face_Danger
@@ -4410,13 +4410,13 @@ Asset Types:
                     - Text: To detect a threat
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 3
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Symbiote
         Tags: [biological companion]
@@ -4453,10 +4453,10 @@ Asset Types:
               Condition Meter:
                 Max: 3
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 2
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Utility Bot
         Tags: [mechanical companion]
@@ -4474,7 +4474,7 @@ Asset Types:
                     - Text: By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -4508,13 +4508,13 @@ Asset Types:
                     - Text: To see if your utility bot has a specific tool or technique available
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 4
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: Voidglider
         Tags: [biological companion]
@@ -4543,7 +4543,7 @@ Asset Types:
                     - Text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
           - Text: |-
               When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
             Alter Moves:
@@ -4553,13 +4553,13 @@ Asset Types:
                     - Text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
                       Roll type: Action roll
                       Using:
-                        - ${{@ASSET}}/Condition_Meter
+                        - ${{@ASSET_METER}}
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Label: Companion health
+          Label: companion health
           Max: 4
           Rollable: true
-          Conditions: [Out of Action]
+          Conditions: [out of action]
       - Title:
           Canonical: The Kraken
         Source:
@@ -4631,7 +4631,7 @@ Asset Types:
         Requirement: One time only, once you [Forge a Bond](Starforged/Moves/Connection/Forge_a_Bond) with a special individual...
         Abilities:
           - Text: |-
-              This person is your bond-mate. When you [Sojourn](Starforged/Moves/Recover/Sojourn) at their home, [Hearten](Starforged/Moves/Recover/Hearten) in their presence, or [Test Your Relationship](Starforged/Moves/Connection/Test_Your_Relationship) or [Develop Your Relationship](Starforged/Moves/Connection/Develop_Your_Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
+              This person is your bond-mate. When you [Sojourn](Starforged/Moves/Recover/Sojourn) at their home, [hearten](Starforged/Moves/Recover/Hearten) in their presence, or [Test Your Relationship](Starforged/Moves/Connection/Test_Your_Relationship) or [Develop Your Relationship](Starforged/Moves/Connection/Develop_Your_Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
             Enabled: true
             Alter Moves:
               - Moves:
@@ -4909,7 +4909,7 @@ Asset Types:
                   Options:
                     - Text: By studying a place where death left its mark
                       Roll type: Action roll
-                      Using: [Heart]
+                      Using: [heart]
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 momentum.
@@ -4968,7 +4968,7 @@ Asset Types:
                   Text: When you seek a safe location in a remote environment...
                   Options:
                     - Roll type: Progress roll
-                      Using: [Discoveries Legacy]
+                      Using: [discoveries legacy]
                 Progress Move: true
                 Text: *move:Asset.Vanguard
                 Outcomes:
@@ -4993,7 +4993,7 @@ Asset Types:
                   Options:
                     - Roll type: Action roll
                       Method: Inherit
-                      Using: [Wits]
+                      Using: [wits]
                 Outcomes:
                   Strong Hit:
                     With a Match:
@@ -5087,11 +5087,11 @@ Asset Types:
                   Weak Hit: *Fleet_Commander.3
                   Miss: *Fleet_Commander.3
         Condition Meter:
-          Label: Power
+          Label: power
           Max: 4
           Rollable: true
           Value: 4
           Conditions:
-            - Wrecked
+            - wrecked
 
 

@@ -3,9 +3,9 @@
  * @public
  */
 export enum Stat {
-    Edge = "Edge",
-    Heart = "Heart",
-    Iron = "Iron",
-    Shadow = "Shadow",
-    Wits = "Wits"
+    Edge = "edge",
+    Heart = "heart",
+    Iron = "iron",
+    Shadow = "shadow",
+    Wits = "wits"
 }

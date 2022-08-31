@@ -3,9 +3,9 @@
  * @public
  */
 export enum MeterType {
-    Health = "Health",
-    Spirit = "Spirit",
-    Supply = "Supply",
-    Momentum = "Momentum"
+    Health = "health",
+    Spirit = "spirit",
+    Supply = "supply",
+    Momentum = "momentum"
   };
 

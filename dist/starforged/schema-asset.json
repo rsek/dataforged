@@ -122,12 +122,13 @@
       "additionalProperties": false
     },
     "IAssetState": {
-      "description": "Describes a possible state for an asset, like the \"Broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
+      "description": "Describes a possible state for an asset, like the \"broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
       "title": "IAssetState",
       "type": "object",
       "properties": {
         "Label": {
           "description": "A string label for the state.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         },
@@ -262,7 +263,7 @@
       "title": "IInputSelectAttributeDefinition",
       "type": "object",
       "properties": {
-        "Key": { "type": "string", "title": "Key" },
+        "Key": { "pattern": "^[a-z_]+$", "type": "string", "title": "Key" },
         "Type": {
           "$ref": "#/definitions/InputSelectOptionType",
           "title": "Type"
@@ -338,7 +339,7 @@
       "required": ["$id", "Key", "Type", "Value"]
     },
     "InputSelectOptionType.ConditionMeter": {
-      "description": "A reference to one of the player character's condition meters: Health, Spirit, or Supply.",
+      "description": "A reference to one of the player character's condition meters (Starforged) or status tracks (Ironsworn): health, spirit, or supply.",
       "title": "InputSelectOptionType.ConditionMeter",
       "type": "string",
       "enum": ["Condition Meter"]
@@ -346,7 +347,7 @@
     "PlayerConditionMeter": {
       "description": "Standard player character condition meters.",
       "title": "PlayerConditionMeter",
-      "enum": ["Health", "Spirit", "Supply"],
+      "enum": ["health", "spirit", "supply"],
       "type": "string"
     },
     "IInputSelectOptionSetterNumber": {
@@ -400,7 +401,7 @@
       "required": ["$id", "Key", "Type", "Value"]
     },
     "InputSelectOptionType.Stat": {
-      "description": "A reference to one of the player character's stats: Edge, Heart, Iron, Shadow, or Wits.",
+      "description": "A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.",
       "title": "InputSelectOptionType.Stat",
       "type": "string",
       "enum": ["Stat"]
@@ -408,7 +409,7 @@
     "Stat": {
       "description": "Enumerates player character stats.",
       "title": "Stat",
-      "enum": ["Edge", "Heart", "Iron", "Shadow", "Wits"],
+      "enum": ["edge", "heart", "iron", "shadow", "wits"],
       "type": "string"
     },
     "IInputSelectOptionSetterString": {
@@ -550,7 +551,11 @@
           "type": "string",
           "title": "$id"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Title": {
+          "$ref": "#/definitions/ITitle",
+          "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
+          "title": "Title"
+        },
         "Asset": {
           "description": "The ID of the parent Asset of the move, if any.",
           "type": "string",
@@ -842,17 +847,17 @@
           "type": "array",
           "items": {
             "enum": [
-              "Bonds",
-              "Bonds Legacy",
-              "Combat",
-              "Connection",
-              "Delve",
-              "Discoveries Legacy",
-              "Expedition",
-              "Journey",
-              "Quests Legacy",
-              "Scene Challenge",
-              "Vow"
+              "bonds legacy",
+              "bonds track",
+              "combat progress",
+              "connection progress",
+              "delve progress",
+              "discoveries legacy",
+              "expedition progress",
+              "journey progress",
+              "quests legacy",
+              "scene challenge progress",
+              "vow progress"
             ],
             "type": "string"
           },
@@ -1677,21 +1682,23 @@
           "type": "array",
           "items": {
             "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
-            "enum": ["Battered", "Cursed", "Out of Action", "Wrecked"],
+            "enum": ["battered", "cursed", "out of action", "wrecked"],
             "type": "string"
           },
           "title": "Conditions"
         },
         "Aliases": {
+          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by{@linkIMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
           "type": "array",
           "items": {
             "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
             "enum": [
-              "Command Vehicle Integrity",
-              "Companion Health",
-              "Incidental Vehicle Integrity",
-              "Support Vehicle Integrity",
-              "Vehicle Integrity"
+              "attached asset meter",
+              "command vehicle integrity",
+              "companion health",
+              "incidental vehicle integrity",
+              "support vehicle integrity",
+              "vehicle integrity"
             ],
             "type": "string"
           },
@@ -1714,6 +1721,7 @@
         },
         "Label": {
           "description": "The user-facing text label of this item.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         }
@@ -1914,7 +1922,7 @@
       "required": ["$id", "Trigger", "Value"]
     },
     "IConditionMeter": {
-      "description": "Interface representing a condition meter such as Health, Spirit, Supply, or Integrity.",
+      "description": "Interface representing a condition meter such as health, spirit, supply.",
       "title": "IConditionMeter",
       "type": "object",
       "properties": {
@@ -1935,21 +1943,23 @@
           "type": "array",
           "items": {
             "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
-            "enum": ["Battered", "Cursed", "Out of Action", "Wrecked"],
+            "enum": ["battered", "cursed", "out of action", "wrecked"],
             "type": "string"
           },
           "title": "Conditions"
         },
         "Aliases": {
+          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by{@linkIMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
           "type": "array",
           "items": {
             "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
             "enum": [
-              "Command Vehicle Integrity",
-              "Companion Health",
-              "Incidental Vehicle Integrity",
-              "Support Vehicle Integrity",
-              "Vehicle Integrity"
+              "attached asset meter",
+              "command vehicle integrity",
+              "companion health",
+              "incidental vehicle integrity",
+              "support vehicle integrity",
+              "vehicle integrity"
             ],
             "type": "string"
           },
@@ -1972,6 +1982,7 @@
         },
         "Label": {
           "description": "The user-facing text label of this item.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         }

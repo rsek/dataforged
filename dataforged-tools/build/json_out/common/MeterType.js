@@ -4,10 +4,10 @@
  */
 export var MeterType;
 (function (MeterType) {
-    MeterType["Health"] = "Health";
-    MeterType["Spirit"] = "Spirit";
-    MeterType["Supply"] = "Supply";
-    MeterType["Momentum"] = "Momentum";
+    MeterType["Health"] = "health";
+    MeterType["Spirit"] = "spirit";
+    MeterType["Supply"] = "supply";
+    MeterType["Momentum"] = "momentum";
 })(MeterType || (MeterType = {}));
 ;
 //# sourceMappingURL=MeterType.js.map

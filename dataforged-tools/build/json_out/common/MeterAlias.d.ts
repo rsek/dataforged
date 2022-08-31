@@ -4,10 +4,11 @@
  * @public
  */
 export declare enum MeterAlias {
-    CompanionHealth = "Companion Health",
-    VehicleIntegrity = "Vehicle Integrity",
-    CommandVehicleIntegrity = "Command Vehicle Integrity",
-    SupportVehicleIntegrity = "Support Vehicle Integrity",
-    IncidentalVehicleIntegrity = "Incidental Vehicle Integrity"
+    Attached_Asset_Meter = "attached asset meter",
+    CompanionHealth = "companion health",
+    VehicleIntegrity = "vehicle integrity",
+    CommandVehicleIntegrity = "command vehicle integrity",
+    SupportVehicleIntegrity = "support vehicle integrity",
+    IncidentalVehicleIntegrity = "incidental vehicle integrity"
 }
 //# sourceMappingURL=MeterAlias.d.ts.map

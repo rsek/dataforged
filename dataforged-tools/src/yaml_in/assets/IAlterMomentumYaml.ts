@@ -14,7 +14,7 @@ export interface IAlterMomentumYaml extends YamlStub<IAlterMomentum, "", "Burn" 
  */
 export interface IAlterMomentumBurnYaml extends YamlStub<IAlterMomentumBurn, "", "Trigger"|"Effect"> {
   Trigger: Omit<IAlterMomentumBurn["Trigger"], "$id">
-  Effect: Omit<IAlterMomentumBurn["Trigger"], "$id">
+  Effect: Omit<IAlterMomentumBurn["Effect"], "$id">
 }
 
 
@@ -22,5 +22,5 @@ export interface IAlterMomentumBurnYaml extends YamlStub<IAlterMomentumBurn, "",
  * @internal
  */
 export interface IAlterMomentumResetYaml extends YamlStub<IAlterMomentumReset,"", "Trigger"> {
-  Trigger: Omit<IAlterMomentumBurn["Trigger"], "$id">
+  Trigger: Omit<IAlterMomentumReset["Trigger"], "$id">
  }

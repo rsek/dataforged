@@ -2,7 +2,7 @@
 import type { IAlterMomentum, IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage , IConditionMeter, IDisplay , IInput , IInputClock, IInputNumber, IInputSelect, IInputSelectOption , IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "@json_out/index.js";
 import type { PartialBy, PartialDeep } from "@utils/index.js";
 import type {  StubExcept } from "@utils/types/Stub.js";
-import type { IMoveTriggerYaml, IMoveYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
+import type { IAlterMomentumYaml, IMoveTriggerYaml, IMoveYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 
 /**
  * @internal
@@ -32,7 +32,7 @@ export interface IAssetAbilityYaml extends YamlStub<IAssetAbility, "Enabled", "A
   "Alter Moves"?: IAlterMoveYaml[] | undefined;
   Moves?: IMoveYaml[]|undefined;
   Inputs?: (IInputTextYaml|IInputClockYaml|IInputNumberYaml)[] | undefined;
-  "Alter Momentum"?: YamlStub<IAlterMomentum>
+  "Alter Momentum"?: IAlterMomentumYaml | undefined
 }
 
 
@@ -79,7 +79,7 @@ export interface IConditionMeterYaml extends YamlStub<PartialBy<IConditionMeter>
 /**
  * @internal
  */
-export interface IAssetStateYaml extends YamlStub<IAssetState> {
+export interface IAssetStateYaml extends YamlStub<IAssetState, "", "$id"> {
 }
 
 

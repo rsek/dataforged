@@ -2,7 +2,7 @@ import type { IMeter } from "@json_out/index.js";
 import type { YamlStub } from "@yaml_in/index.js";
 
 /**
- * Class representing a counter embedded in a Starforged Asset.
+ * Class representing a meter (Starforged) or status track (Ironsworn).
  * @internal
  */
 export abstract class Meter implements IMeter {
@@ -11,7 +11,7 @@ export abstract class Meter implements IMeter {
   Min: number = 0;
   Max: number;
   Value: number = 0;
-  Rollable!: boolean;
+  Rollable: boolean;
   /**
    * @param json - the json object to build the counter from
    * @param id - the id of the Counter
@@ -22,5 +22,6 @@ export abstract class Meter implements IMeter {
     this.Max = json.Max;
     this.Min = json.Min ?? 0;
     this["Value"] = json["Value"] ?? 0;
+    this.Rollable = json.Rollable ?? false;
   }
 }

@@ -10,6 +10,8 @@ export interface IMove extends IHasId, IHasText, IHasDisplay, IHasSource, IHasOp
      */
     $id: string;
     /**
+     * Note the "Canonical" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.
+     * @see IHasTitle
      * @example
      * ```typescript
      * {Canonical: "Face Danger"}

@@ -165,7 +165,7 @@
           "title": "Inputs"
         },
         "Alter Momentum": {
-          "$ref": "#/definitions/YamlStub",
+          "$ref": "#/definitions/IAlterMomentumYaml",
           "title": "Alter Momentum"
         },
         "$id": {
@@ -427,17 +427,17 @@
           "type": "array",
           "items": {
             "enum": [
-              "Bonds",
-              "Bonds Legacy",
-              "Combat",
-              "Connection",
-              "Delve",
-              "Discoveries Legacy",
-              "Expedition",
-              "Journey",
-              "Quests Legacy",
-              "Scene Challenge",
-              "Vow"
+              "bonds legacy",
+              "bonds track",
+              "combat progress",
+              "connection progress",
+              "delve progress",
+              "discoveries legacy",
+              "expedition progress",
+              "journey progress",
+              "quests legacy",
+              "scene challenge progress",
+              "vow progress"
             ],
             "type": "string"
           },
@@ -804,7 +804,11 @@
           "type": "string",
           "title": "Text"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Title": {
+          "$ref": "#/definitions/ITitle",
+          "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
+          "title": "Title"
+        },
         "Category": {
           "description": "The ID of the move's category.",
           "type": "string",
@@ -890,6 +894,35 @@
           "$ref": "#/definitions/ICustomStatYaml",
           "title": "Custom stat"
         },
+        "Using": {
+          "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "${{@ASSET_METER}}",
+              "${{@ASSET_SELECT_METER}}",
+              "${{@ASSET_SELECT_STAT}}",
+              "${{@ASSET}}",
+              "${{@CUSTOM_STAT}}",
+              "attached asset meter",
+              "command vehicle integrity",
+              "companion health",
+              "edge",
+              "health",
+              "heart",
+              "incidental vehicle integrity",
+              "iron",
+              "shadow",
+              "spirit",
+              "supply",
+              "support vehicle integrity",
+              "vehicle integrity",
+              "wits"
+            ],
+            "type": "string"
+          },
+          "title": "Using"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
@@ -906,12 +939,6 @@
           "description": "The method used to choose the stat or track in the `Using` array.",
           "title": "Method"
         },
-        "Using": {
-          "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Using"
-        },
         "Roll type": {
           "$ref": "#/definitions/RollType.Action_1",
           "description": "Whether this option is an action roll or progress roll.",
@@ -920,7 +947,8 @@
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["Using"]
     },
     "ICustomStatYaml": {
       "title": "ICustomStatYaml",
@@ -1001,17 +1029,17 @@
           "type": "array",
           "items": {
             "enum": [
-              "Bonds",
-              "Bonds Legacy",
-              "Combat",
-              "Connection",
-              "Delve",
-              "Discoveries Legacy",
-              "Expedition",
-              "Journey",
-              "Quests Legacy",
-              "Scene Challenge",
-              "Vow"
+              "bonds legacy",
+              "bonds track",
+              "combat progress",
+              "connection progress",
+              "delve progress",
+              "discoveries legacy",
+              "expedition progress",
+              "journey progress",
+              "quests legacy",
+              "scene challenge progress",
+              "vow progress"
             ],
             "type": "string"
           },
@@ -1392,107 +1420,90 @@
       "type": "string",
       "enum": ["Text"]
     },
-    "YamlStub": {
-      "title": "YamlStub",
-      "additionalProperties": false,
+    "IAlterMomentumYaml": {
+      "title": "IAlterMomentumYaml",
       "type": "object",
       "properties": {
+        "Burn": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAlterMomentumBurnYaml" },
+          "title": "Burn"
+        },
+        "Reset": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/IAlterMomentumResetYaml" },
+          "title": "Reset"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
-        "Burn": {
-          "description": "Information on how the player's momentum burn is altered.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAlterMomentumBurn" },
-          "title": "Burn"
-        },
-        "Reset": {
-          "description": "Information on how the player's momentum reset is altered.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IAlterMomentumReset" },
-          "title": "Reset"
-        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
-      }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
     },
-    "IAlterMomentumBurn": {
-      "title": "IAlterMomentumBurn",
+    "IAlterMomentumBurnYaml": {
+      "title": "IAlterMomentumBurnYaml",
       "type": "object",
       "properties": {
-        "Trigger": {
-          "$ref": "#/definitions/IHasText",
-          "description": "The trigger condition for altering the PC's momentum burn.",
-          "title": "Trigger"
-        },
-        "Effect": {
-          "$ref": "#/definitions/IHasText",
-          "description": "The effect altering the PC's momentum burn.",
-          "title": "Effect"
+        "Trigger": { "$ref": "#/definitions/Omit", "title": "Trigger" },
+        "Effect": { "$ref": "#/definitions/Omit", "title": "Effect" },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         },
         "Outcomes": {
           "type": "array",
           "items": { "enum": ["Strong Hit", "Weak Hit"], "type": "string" },
           "title": "Outcomes"
         },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
-          "type": "string",
-          "title": "$id"
-        }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Effect", "Trigger"]
+      "required": ["Effect", "Trigger"]
     },
-    "IHasText": {
-      "description": "Interface for items that reproduce Starforged rules text in markdown.",
-      "title": "IHasText",
+    "__type": {
+      "title": "__type",
       "type": "object",
       "properties": {
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
           "title": "Text"
-        },
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
+    "Omit": { "$ref": "#/definitions/__type" },
+    "IAlterMomentumResetYaml": {
+      "title": "IAlterMomentumResetYaml",
+      "type": "object",
+      "properties": {
+        "Trigger": { "$ref": "#/definitions/Omit", "title": "Trigger" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
           "type": "string",
           "title": "$id"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Text"]
-    },
-    "IAlterMomentumReset": {
-      "title": "IAlterMomentumReset",
-      "type": "object",
-      "properties": {
-        "Trigger": {
-          "$ref": "#/definitions/IHasText",
-          "description": "The trigger condition for altering the PC's momentum reset.",
-          "title": "Trigger"
         },
         "Value": {
           "description": "The amount by which the PC's momentum reset is change.",
           "type": "integer",
           "title": "Value"
         },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
-          "type": "string",
-          "title": "$id"
-        }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Trigger", "Value"]
+      "required": ["Trigger", "Value"]
     },
     "IAssetAlterProperties": {
       "description": "Describes changes that an asset ability makes to its parent asset when active. Any properties with object values should be merged recursively.",
@@ -1586,12 +1597,13 @@
       "additionalProperties": false
     },
     "IAssetState": {
-      "description": "Describes a possible state for an asset, like the \"Broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
+      "description": "Describes a possible state for an asset, like the \"broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
       "title": "IAssetState",
       "type": "object",
       "properties": {
         "Label": {
           "description": "A string label for the state.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         },
@@ -1727,7 +1739,7 @@
       "title": "IInputSelectAttributeDefinition",
       "type": "object",
       "properties": {
-        "Key": { "type": "string", "title": "Key" },
+        "Key": { "pattern": "^[a-z_]+$", "type": "string", "title": "Key" },
         "Type": {
           "$ref": "#/definitions/InputSelectOptionType",
           "title": "Type"
@@ -1803,7 +1815,7 @@
       "required": ["$id", "Key", "Type", "Value"]
     },
     "InputSelectOptionType.ConditionMeter": {
-      "description": "A reference to one of the player character's condition meters: Health, Spirit, or Supply.",
+      "description": "A reference to one of the player character's condition meters (Starforged) or status tracks (Ironsworn): health, spirit, or supply.",
       "title": "InputSelectOptionType.ConditionMeter",
       "type": "string",
       "enum": ["Condition Meter"]
@@ -1811,7 +1823,7 @@
     "PlayerConditionMeter": {
       "description": "Standard player character condition meters.",
       "title": "PlayerConditionMeter",
-      "enum": ["Health", "Spirit", "Supply"],
+      "enum": ["health", "spirit", "supply"],
       "type": "string"
     },
     "IInputSelectOptionSetterNumber": {
@@ -1865,7 +1877,7 @@
       "required": ["$id", "Key", "Type", "Value"]
     },
     "InputSelectOptionType.Stat": {
-      "description": "A reference to one of the player character's stats: Edge, Heart, Iron, Shadow, or Wits.",
+      "description": "A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.",
       "title": "InputSelectOptionType.Stat",
       "type": "string",
       "enum": ["Stat"]
@@ -1873,7 +1885,7 @@
     "Stat": {
       "description": "Enumerates player character stats.",
       "title": "Stat",
-      "enum": ["Edge", "Heart", "Iron", "Shadow", "Wits"],
+      "enum": ["edge", "heart", "iron", "shadow", "wits"],
       "type": "string"
     },
     "IInputSelectOptionSetterString": {
@@ -2010,7 +2022,11 @@
           "type": "string",
           "title": "$id"
         },
-        "Title": { "$ref": "#/definitions/ITitle_1", "title": "Title" },
+        "Title": {
+          "$ref": "#/definitions/ITitle_1",
+          "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
+          "title": "Title"
+        },
         "Asset": {
           "description": "The ID of the parent Asset of the move, if any.",
           "type": "string",
@@ -2228,17 +2244,17 @@
           "type": "array",
           "items": {
             "enum": [
-              "Bonds",
-              "Bonds Legacy",
-              "Combat",
-              "Connection",
-              "Delve",
-              "Discoveries Legacy",
-              "Expedition",
-              "Journey",
-              "Quests Legacy",
-              "Scene Challenge",
-              "Vow"
+              "bonds legacy",
+              "bonds track",
+              "combat progress",
+              "connection progress",
+              "delve progress",
+              "discoveries legacy",
+              "expedition progress",
+              "journey progress",
+              "quests legacy",
+              "scene challenge progress",
+              "vow progress"
             ],
             "type": "string"
           },
@@ -2679,6 +2695,82 @@
       "additionalProperties": false,
       "required": ["$id"]
     },
+    "IAlterMomentumBurn": {
+      "title": "IAlterMomentumBurn",
+      "type": "object",
+      "properties": {
+        "Trigger": {
+          "$ref": "#/definitions/IHasText",
+          "description": "The trigger condition for altering the PC's momentum burn.",
+          "title": "Trigger"
+        },
+        "Effect": {
+          "$ref": "#/definitions/IHasText",
+          "description": "The effect altering the PC's momentum burn.",
+          "title": "Effect"
+        },
+        "Outcomes": {
+          "type": "array",
+          "items": { "enum": ["Strong Hit", "Weak Hit"], "type": "string" },
+          "title": "Outcomes"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Effect", "Trigger"]
+    },
+    "IHasText": {
+      "description": "Interface for items that reproduce Starforged rules text in markdown.",
+      "title": "IHasText",
+      "type": "object",
+      "properties": {
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
+    },
+    "IAlterMomentumReset": {
+      "title": "IAlterMomentumReset",
+      "type": "object",
+      "properties": {
+        "Trigger": {
+          "$ref": "#/definitions/IHasText",
+          "description": "The trigger condition for altering the PC's momentum reset.",
+          "title": "Trigger"
+        },
+        "Value": {
+          "description": "The amount by which the PC's momentum reset is change.",
+          "type": "integer",
+          "title": "Value"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Trigger", "Value"]
+    },
     "Partial<IConditionMeter>": {
       "title": "Partial<IConditionMeter>",
       "type": "object",
@@ -2700,21 +2792,23 @@
           "type": "array",
           "items": {
             "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
-            "enum": ["Battered", "Cursed", "Out of Action", "Wrecked"],
+            "enum": ["battered", "cursed", "out of action", "wrecked"],
             "type": "string"
           },
           "title": "Conditions"
         },
         "Aliases": {
+          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by{@linkIMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
           "type": "array",
           "items": {
             "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
             "enum": [
-              "Command Vehicle Integrity",
-              "Companion Health",
-              "Incidental Vehicle Integrity",
-              "Support Vehicle Integrity",
-              "Vehicle Integrity"
+              "attached asset meter",
+              "command vehicle integrity",
+              "companion health",
+              "incidental vehicle integrity",
+              "support vehicle integrity",
+              "vehicle integrity"
             ],
             "type": "string"
           },
@@ -2737,6 +2831,7 @@
         },
         "Label": {
           "description": "The user-facing text label of this item.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         }
@@ -2882,15 +2977,17 @@
           "title": "Value"
         },
         "Aliases": {
+          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by{@linkIMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
           "type": "array",
           "items": {
             "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
             "enum": [
-              "Command Vehicle Integrity",
-              "Companion Health",
-              "Incidental Vehicle Integrity",
-              "Support Vehicle Integrity",
-              "Vehicle Integrity"
+              "attached asset meter",
+              "command vehicle integrity",
+              "companion health",
+              "incidental vehicle integrity",
+              "support vehicle integrity",
+              "vehicle integrity"
             ],
             "type": "string"
           },
@@ -2898,6 +2995,7 @@
         },
         "Label": {
           "description": "The user-facing text label of this item.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         },
@@ -2912,7 +3010,7 @@
           "type": "array",
           "items": {
             "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
-            "enum": ["Battered", "Cursed", "Out of Action", "Wrecked"],
+            "enum": ["battered", "cursed", "out of action", "wrecked"],
             "type": "string"
           },
           "title": "Conditions"
@@ -2937,14 +3035,9 @@
       "title": "IAssetStateYaml",
       "type": "object",
       "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
-          "type": "string",
-          "title": "$id"
-        },
         "Label": {
           "description": "A string label for the state.",
+          "pattern": "^[a-z].+$",
           "type": "string",
           "title": "Label"
         },

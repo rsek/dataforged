@@ -5,10 +5,11 @@
  */
 export var MeterAlias;
 (function (MeterAlias) {
-    MeterAlias["CompanionHealth"] = "Companion Health";
-    MeterAlias["VehicleIntegrity"] = "Vehicle Integrity";
-    MeterAlias["CommandVehicleIntegrity"] = "Command Vehicle Integrity";
-    MeterAlias["SupportVehicleIntegrity"] = "Support Vehicle Integrity";
-    MeterAlias["IncidentalVehicleIntegrity"] = "Incidental Vehicle Integrity";
+    MeterAlias["Attached_Asset_Meter"] = "attached asset meter";
+    MeterAlias["CompanionHealth"] = "companion health";
+    MeterAlias["VehicleIntegrity"] = "vehicle integrity";
+    MeterAlias["CommandVehicleIntegrity"] = "command vehicle integrity";
+    MeterAlias["SupportVehicleIntegrity"] = "support vehicle integrity";
+    MeterAlias["IncidentalVehicleIntegrity"] = "incidental vehicle integrity";
 })(MeterAlias || (MeterAlias = {}));
 //# sourceMappingURL=MeterAlias.js.map

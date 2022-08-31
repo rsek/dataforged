@@ -51,10 +51,11 @@
             "Min": 0,
             "Value": 5,
             "$id": "Starforged/Assets/Command_Vehicle/Starship/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 5,
-            "Conditions": ["Battered", "Cursed"],
-            "Aliases": ["Command Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered", "cursed"],
+            "Aliases": ["command vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -127,7 +128,7 @@
                         "Text": "To your Starship",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Heart"]
+                        "Using": ["heart"]
                       }
                     ]
                   },
@@ -186,8 +187,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Engine_Upgrade/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Engine_Upgrade/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -214,7 +215,7 @@
                         "Text": "In your vehicle",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Edge"]
+                        "Using": ["edge"]
                       }
                     ]
                   },
@@ -348,8 +349,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Expanded_Hold/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Expanded_Hold/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -360,8 +361,9 @@
             "Min": 0,
             "Value": 0,
             "$id": "Starforged/Assets/Module/Expanded_Hold/Condition_Meter",
-            "Label": "Cargo",
+            "Label": "cargo",
             "Max": 3,
+            "Rollable": false,
             "Conditions": []
           },
           "Abilities": [
@@ -468,8 +470,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Grappler/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Grappler/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -508,7 +510,7 @@
                         "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Highest",
-                        "Using": ["Wits", "Attached_Asset_Condition_Meter"]
+                        "Using": ["wits", "attached asset meter"]
                       }
                     ]
                   },
@@ -615,8 +617,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Heavy_Cannons/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Heavy_Cannons/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -751,8 +753,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Internal_Refit/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Internal_Refit/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -828,7 +830,7 @@
                         "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Attached_Asset_Condition_Meter"]
+                        "Using": ["attached asset meter"]
                       }
                     ]
                   },
@@ -916,8 +918,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Medbay/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Medbay/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1103,8 +1105,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Missile_Array/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Missile_Array/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1115,8 +1117,9 @@
             "Min": 0,
             "Value": 5,
             "$id": "Starforged/Assets/Module/Missile_Array/Condition_Meter",
-            "Label": "Ammo",
+            "Label": "ammo",
             "Max": 5,
+            "Rollable": false,
             "Conditions": []
           },
           "Abilities": [
@@ -1277,8 +1280,8 @@
           ],
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Overseer/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Overseer/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1406,8 +1409,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Reinforced_Hull/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Reinforced_Hull/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1543,8 +1546,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Research_Lab/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Research_Lab/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1759,8 +1762,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Sensor_Array/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Sensor_Array/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1787,7 +1790,7 @@
                         "Text": "In your vehicle",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Wits"]
+                        "Using": ["wits"]
                       }
                     ]
                   },
@@ -1985,8 +1988,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Shields/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Shields/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -1997,8 +2000,9 @@
             "Min": 0,
             "Value": 0,
             "$id": "Starforged/Assets/Module/Shields/Condition_Meter",
-            "Label": "Shields",
+            "Label": "shields",
             "Max": 4,
+            "Rollable": true,
             "Conditions": []
           },
           "Abilities": [
@@ -2033,7 +2037,7 @@
                         "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Wits", "Attached_Asset_Condition_Meter"]
+                        "Using": ["wits", "attached asset meter"]
                       }
                     ]
                   },
@@ -2145,8 +2149,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Stealth_Tech/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Stealth_Tech/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -2223,7 +2227,7 @@
                         "Text": "When you travel stealthily (in your vehicle)",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Shadow"]
+                        "Using": ["shadow"]
                       }
                     ]
                   },
@@ -2262,7 +2266,7 @@
                         "Text": "You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding (and choose to strike true)",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Shadow"]
+                        "Using": ["shadow"]
                       }
                     ]
                   },
@@ -2298,7 +2302,7 @@
                         "Text": "You are poised to [Strike](Starforged/Moves/Combat/Strike) from hiding (and choose to strike hard)",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Shadow"]
+                        "Using": ["shadow"]
                       }
                     ]
                   },
@@ -2341,8 +2345,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Vehicle_Bay/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Vehicle_Bay/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -2469,8 +2473,8 @@
           "Usage": { "Shared": true },
           "States": [
             {
-              "$id": "Starforged/Assets/Module/Workshop/Broken",
-              "Label": "Broken",
+              "$id": "Starforged/Assets/Module/Workshop/broken",
+              "Label": "broken",
               "Enabled": false,
               "Disables asset": true,
               "Impact": false,
@@ -2708,10 +2712,11 @@
             "Min": 0,
             "Value": 6,
             "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 6,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -2874,10 +2879,11 @@
             "Min": 0,
             "Value": 3,
             "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 3,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -2899,7 +2905,7 @@
                         "Text": "On your hoverbike",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Edge"]
+                        "Using": ["edge"]
                       }
                     ]
                   },
@@ -3009,10 +3015,11 @@
             "Min": 0,
             "Value": 5,
             "$id": "Starforged/Assets/Support_Vehicle/Rover/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 5,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -3169,10 +3176,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 4,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -3299,10 +3307,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 4,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -3406,10 +3415,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Support_Vehicle/Skiff/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 4,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -3532,10 +3542,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Condition_Meter",
-            "Label": "Integrity",
+            "Label": "integrity",
             "Max": 4,
-            "Conditions": ["Battered"],
-            "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
+            "Rollable": true,
+            "Conditions": ["battered"],
+            "Aliases": ["support vehicle integrity", "vehicle integrity"]
           },
           "Abilities": [
             {
@@ -3797,8 +3808,9 @@
             "Min": 0,
             "Value": 6,
             "$id": "Starforged/Assets/Path/Archer/Condition_Meter",
-            "Label": "Ammo",
+            "Label": "ammo",
             "Max": 6,
+            "Rollable": true,
             "Conditions": []
           },
           "Abilities": [
@@ -3833,7 +3845,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Wits"]
+                        "Using": ["wits"]
                       }
                     ]
                   },
@@ -4034,8 +4046,8 @@
               "Alter Properties": {
                 "States": [
                   {
-                    "$id": "Starforged/Assets/Path/Armored/Abilities/3/Broken",
-                    "Label": "Broken",
+                    "$id": "Starforged/Assets/Path/Armored/Abilities/3/broken",
+                    "Label": "broken",
                     "Enabled": false,
                     "Disables asset": true,
                     "Impact": false,
@@ -4174,7 +4186,7 @@
                         "Text": "Roll +the stat which best represents the work’s nature",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Edge", "Iron", "Heart", "Shadow", "Wits"]
+                        "Using": ["edge", "iron", "heart", "shadow", "wits"]
                       }
                     ]
                   },
@@ -4232,8 +4244,8 @@
           ],
           "States": [
             {
-              "$id": "Starforged/Assets/Path/Augmented/Broken_Augment_1",
-              "Label": "Broken (Augment 1)",
+              "$id": "Starforged/Assets/Path/Augmented/broken_augment_1",
+              "Label": "broken (augment 1)",
               "Enabled": false,
               "Disables asset": false,
               "Impact": false,
@@ -4290,8 +4302,8 @@
               "Alter Properties": {
                 "States": [
                   {
-                    "$id": "Starforged/Assets/Path/Augmented/Abilities/2/Broken_Augment_2",
-                    "Label": "Broken (Augment 2)",
+                    "$id": "Starforged/Assets/Path/Augmented/Abilities/2/broken_augment_2",
+                    "Label": "broken (augment 2)",
                     "Enabled": false,
                     "Disables asset": false,
                     "Impact": false,
@@ -4560,7 +4572,7 @@
                         "Text": "By moving into close quarters against your foe (and choosing to charge)",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Heart"]
+                        "Using": ["heart"]
                       }
                     ]
                   },
@@ -4588,7 +4600,7 @@
                         "Text": "By moving into close quarters against your foe (and choosing to evade)",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Edge"]
+                        "Using": ["edge"]
                       }
                     ]
                   },
@@ -4996,8 +5008,9 @@
             "Min": 0,
             "Value": 5,
             "$id": "Starforged/Assets/Path/Courier/Condition_Meter",
-            "Label": "Safety",
+            "Label": "safety",
             "Max": 5,
+            "Rollable": true,
             "Conditions": []
           },
           "Abilities": [
@@ -5278,68 +5291,68 @@
             },
             {
               "Input Type": "Select",
-              "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat",
-              "Label": "Linked Stat",
+              "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat",
+              "Label": "Linked stat",
               "Adjustable": false,
-              "Sets": [{ "Key": "Stat", "Type": "Stat" }],
+              "Sets": [{ "Key": "stat", "Type": "Stat" }],
               "Options": [
                 {
-                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge",
+                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Edge",
                   "Label": "Edge",
                   "Set": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge/Stat",
+                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Edge/stat",
                       "Type": "Stat",
-                      "Key": "Stat",
-                      "Value": "Edge"
+                      "Key": "stat",
+                      "Value": "edge"
                     }
                   ]
                 },
                 {
-                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart",
+                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Heart",
                   "Label": "Heart",
                   "Set": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart/Stat",
+                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Heart/stat",
                       "Type": "Stat",
-                      "Key": "Stat",
-                      "Value": "Heart"
+                      "Key": "stat",
+                      "Value": "heart"
                     }
                   ]
                 },
                 {
-                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron",
+                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Iron",
                   "Label": "Iron",
                   "Set": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron/Stat",
+                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Iron/stat",
                       "Type": "Stat",
-                      "Key": "Stat",
-                      "Value": "Iron"
+                      "Key": "stat",
+                      "Value": "iron"
                     }
                   ]
                 },
                 {
-                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow",
+                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Shadow",
                   "Label": "Shadow",
                   "Set": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow/Stat",
+                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Shadow/stat",
                       "Type": "Stat",
-                      "Key": "Stat",
-                      "Value": "Shadow"
+                      "Key": "stat",
+                      "Value": "shadow"
                     }
                   ]
                 },
                 {
-                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits",
+                  "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Wits",
                   "Label": "Wits",
                   "Set": [
                     {
-                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits/Stat",
+                      "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat/Options/Wits/stat",
                       "Type": "Stat",
-                      "Key": "Stat",
-                      "Value": "Wits"
+                      "Key": "stat",
+                      "Value": "wits"
                     }
                   ]
                 }
@@ -5455,7 +5468,7 @@
             },
             {
               "$id": "Starforged/Assets/Path/Devotant/Abilities/3",
-              "Text": "When you [Hearten](Starforged/Moves/Recover/Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.",
+              "Text": "When you [hearten](Starforged/Moves/Recover/Hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.",
               "Enabled": false,
               "Alter Moves": [
                 {
@@ -5679,7 +5692,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Heart"]
+                        "Using": ["heart"]
                       }
                     ]
                   },
@@ -5825,7 +5838,7 @@
             },
             {
               "$id": "Starforged/Assets/Path/Explorer/Abilities/2",
-              "Text": "When you come across a wondrous sight or phenomenon, such as an extraordinary planet, majestic creature, or dazzling stellar object, choose one:\n\n  * Find inspiration: Take +1 momentum\n  * Soak it all in: [Hearten](Starforged/Moves/Recover/Hearten); add +1, and take +1 momentum on a hit.",
+              "Text": "When you come across a wondrous sight or phenomenon, such as an extraordinary planet, majestic creature, or dazzling stellar object, choose one:\n\n  * Find inspiration: Take +1 momentum\n  * Soak it all in: [hearten](Starforged/Moves/Recover/Hearten); add +1, and take +1 momentum on a hit.",
               "Enabled": false
             },
             {
@@ -6016,8 +6029,9 @@
             "Min": 0,
             "Value": 0,
             "$id": "Starforged/Assets/Path/Firebrand/Condition_Meter",
-            "Label": "Fire",
+            "Label": "fire",
             "Max": 5,
+            "Rollable": false,
             "Conditions": []
           },
           "Abilities": [
@@ -6052,7 +6066,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Spirit"]
+                        "Using": ["spirit"]
                       }
                     ]
                   },
@@ -6581,14 +6595,14 @@
                         "Text": "By facing off against your foe",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Heart"]
+                        "Using": ["heart"]
                       },
                       {
                         "$id": "Starforged/Assets/Path/Gunslinger/Abilities/1/Alter_Moves/1/Trigger/Options/2",
                         "Text": "By preparing to act without tipping off your foe",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Shadow"]
+                        "Using": ["shadow"]
                       }
                     ]
                   },
@@ -8224,7 +8238,7 @@
           "Abilities": [
             {
               "$id": "Starforged/Assets/Path/Outcast/Abilities/1",
-              "Text": "When you [Hearten](Starforged/Moves/Recover/Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.",
+              "Text": "When you [hearten](Starforged/Moves/Recover/Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.",
               "Enabled": true,
               "Alter Moves": [
                 {
@@ -8293,7 +8307,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Wits"]
+                        "Using": ["wits"]
                       }
                     ]
                   },
@@ -8456,7 +8470,7 @@
                         "$id": "Starforged/Assets/Path/Scavenger/Abilities/3/Alter_Moves/1/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Highest",
-                        "Using": ["Wits", "Supply"]
+                        "Using": ["wits", "Supply"]
                       }
                     ]
                   },
@@ -8546,7 +8560,7 @@
                         "Text": "To search out a new contact",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Shadow"]
+                        "Using": ["shadow"]
                       }
                     ]
                   },
@@ -8827,7 +8841,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Shadow"]
+                        "Using": ["shadow"]
                       }
                     ]
                   },
@@ -9174,7 +9188,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Wits"]
+                        "Using": ["wits"]
                       }
                     ]
                   },
@@ -9214,7 +9228,7 @@
                         "Text": "From a distance with time enough to line up your shot",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Wits"]
+                        "Using": ["wits"]
                       }
                     ]
                   },
@@ -9865,7 +9879,7 @@
             },
             {
               "$id": "Starforged/Assets/Path/Voidborn/Abilities/2",
-              "Text": "When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) within a spacebound community, add +1. If you [Hearten](Starforged/Moves/Recover/Hearten) there and score a strong hit, take +1 spirit or +1 momentum.",
+              "Text": "When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) within a spacebound community, add +1. If you [hearten](Starforged/Moves/Recover/Hearten) there and score a strong hit, take +1 spirit or +1 momentum.",
               "Enabled": false,
               "Alter Moves": [
                 {
@@ -10125,8 +10139,9 @@
             "Min": 0,
             "Value": 2,
             "$id": "Starforged/Assets/Path/Crew_Commander/Condition_Meter",
-            "Label": "Command",
+            "Label": "command",
             "Max": 4,
+            "Rollable": true,
             "Conditions": []
           },
           "Abilities": [
@@ -10211,7 +10226,7 @@
                         "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Heart"]
+                        "Using": ["heart"]
                       }
                     ]
                   },
@@ -10326,10 +10341,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Companion/Banshee/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 4,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -10487,10 +10503,11 @@
             "Min": 0,
             "Value": 5,
             "$id": "Starforged/Assets/Companion/Combat_Bot/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 5,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -10659,10 +10676,11 @@
             "Min": 0,
             "Value": 3,
             "$id": "Starforged/Assets/Companion/Glowcat/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 3,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -10807,10 +10825,11 @@
             "Min": 0,
             "Value": 3,
             "$id": "Starforged/Assets/Companion/Protocol_Bot/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 3,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -10932,10 +10951,11 @@
             "Min": 0,
             "Value": 5,
             "$id": "Starforged/Assets/Companion/Rockhorn/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 5,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -11063,10 +11083,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Companion/Sidekick/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 4,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -11242,10 +11263,11 @@
             "Min": 0,
             "Value": 2,
             "$id": "Starforged/Assets/Companion/Sprite/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 2,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -11338,10 +11360,11 @@
             "Min": 0,
             "Value": 3,
             "$id": "Starforged/Assets/Companion/Survey_Bot/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 3,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -11516,10 +11539,11 @@
             "Min": 0,
             "Value": 2,
             "$id": "Starforged/Assets/Companion/Symbiote/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 2,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -11619,10 +11643,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Companion/Utility_Bot/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 4,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -11769,10 +11794,11 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Companion/Voidglider/Condition_Meter",
-            "Label": "Companion health",
+            "Label": "companion health",
             "Max": 4,
-            "Conditions": ["Out of Action"],
-            "Aliases": ["Companion Health"]
+            "Rollable": true,
+            "Conditions": ["out of action"],
+            "Aliases": ["companion health"]
           },
           "Abilities": [
             {
@@ -12033,7 +12059,7 @@
           "Abilities": [
             {
               "$id": "Starforged/Assets/Deed/Bonded/Abilities/1",
-              "Text": "This person is your bond-mate. When you [Sojourn](Starforged/Moves/Recover/Sojourn) at their home, [Hearten](Starforged/Moves/Recover/Hearten) in their presence, or [Test Your Relationship](Starforged/Moves/Connection/Test_Your_Relationship) or [Develop Your Relationship](Starforged/Moves/Connection/Develop_Your_Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.",
+              "Text": "This person is your bond-mate. When you [Sojourn](Starforged/Moves/Recover/Sojourn) at their home, [hearten](Starforged/Moves/Recover/Hearten) in their presence, or [Test Your Relationship](Starforged/Moves/Connection/Test_Your_Relationship) or [Develop Your Relationship](Starforged/Moves/Connection/Develop_Your_Relationship) with them, reroll any dice. On a strong hit, take +1 momentum.",
               "Enabled": true,
               "Alter Moves": [
                 {
@@ -12792,7 +12818,7 @@
                         "Text": "By studying a place where death left its mark",
                         "Roll type": "Action roll",
                         "Method": "Any",
-                        "Using": ["Heart"]
+                        "Using": ["heart"]
                       }
                     ]
                   },
@@ -12964,7 +12990,7 @@
                         "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger/Options/1",
                         "Roll type": "Progress roll",
                         "Method": "Any",
-                        "Using": ["Discoveries Legacy"]
+                        "Using": ["discoveries legacy"]
                       }
                     ]
                   },
@@ -13003,7 +13029,7 @@
                         "$id": "Starforged/Assets/Deed/Vanguard/Abilities/2/Alter_Moves/1/Trigger/Options/1",
                         "Roll type": "Action roll",
                         "Method": "Inherit",
-                        "Using": ["Wits"]
+                        "Using": ["wits"]
                       }
                     ]
                   },
@@ -13175,9 +13201,10 @@
             "Min": 0,
             "Value": 4,
             "$id": "Starforged/Assets/Deed/Fleet_Commander/Condition_Meter",
-            "Label": "Power",
+            "Label": "power",
             "Max": 4,
-            "Conditions": ["Wrecked"]
+            "Rollable": true,
+            "Conditions": ["wrecked"]
           },
           "Abilities": [
             {
@@ -14995,35 +15022,35 @@
                 "Text": "With speed, mobility, or agility",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Face_Danger/Trigger/Options/2",
                 "Text": "With resolve, command, or sociability",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Face_Danger/Trigger/Options/3",
                 "Text": "With strength, endurance, or aggression",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Face_Danger/Trigger/Options/4",
                 "Text": "With deception, stealth, or trickery",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Face_Danger/Trigger/Options/5",
                 "Text": "With expertise, focus, or observation",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -15071,35 +15098,35 @@
                 "Text": "With speed, mobility, or agility",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Secure_an_Advantage/Trigger/Options/2",
                 "Text": "With resolve, command, or sociability",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Secure_an_Advantage/Trigger/Options/3",
                 "Text": "With strength, endurance, aggression",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Secure_an_Advantage/Trigger/Options/4",
                 "Text": "With deception, stealth, or trickery",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Secure_an_Advantage/Trigger/Options/5",
                 "Text": "With expertise, focus, or observation",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -15146,7 +15173,7 @@
                 "$id": "Starforged/Moves/Adventure/Gather_Information/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -15195,21 +15222,21 @@
                 "Text": "Charm, pacify, encourage, or barter",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Compel/Trigger/Options/2",
                 "Text": "Threaten or incite",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Adventure/Compel/Trigger/Options/3",
                 "Text": "Lie or swindle",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               }
             ]
           },
@@ -15280,7 +15307,7 @@
                 "$id": "Starforged/Moves/Adventure/Check_Your_Gear/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Supply"]
+                "Using": ["supply"]
               }
             ]
           },
@@ -15348,7 +15375,7 @@
                 "$id": "Starforged/Moves/Quest/Swear_an_Iron_Vow/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -15420,7 +15447,7 @@
                 "$id": "Starforged/Moves/Quest/Fulfill_Your_Vow/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "Any",
-                "Using": ["Vow"]
+                "Using": ["vow progress"]
               }
             ]
           },
@@ -15512,7 +15539,7 @@
                 "$id": "Starforged/Moves/Connection/Make_a_Connection/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -15643,7 +15670,7 @@
                 "$id": "Starforged/Moves/Connection/Test_Your_Relationship/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -15691,7 +15718,7 @@
                 "$id": "Starforged/Moves/Connection/Forge_a_Bond/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "Any",
-                "Using": ["Connection"]
+                "Using": ["connection progress"]
               }
             ]
           },
@@ -15760,21 +15787,21 @@
                 "Text": "Move at speed",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Exploration/Undertake_an_Expedition/Trigger/Options/2",
                 "Text": "Keep under the radar",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Exploration/Undertake_an_Expedition/Trigger/Options/3",
                 "Text": "Stay vigilant",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -15821,7 +15848,7 @@
                 "$id": "Starforged/Moves/Exploration/Explore_a_Waypoint/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -15927,7 +15954,7 @@
                 "$id": "Starforged/Moves/Exploration/Finish_an_Expedition/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "Any",
-                "Using": ["Expedition"]
+                "Using": ["expedition progress"]
               }
             ]
           },
@@ -15974,7 +16001,7 @@
                 "$id": "Starforged/Moves/Exploration/Set_a_Course/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Supply"]
+                "Using": ["supply"]
               }
             ]
           },
@@ -16043,35 +16070,35 @@
                 "Text": "On the move",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Enter_the_Fray/Trigger/Options/2",
                 "Text": "Facing off against your foe",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Enter_the_Fray/Trigger/Options/3",
                 "Text": "In the thick of it at close quarters",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Enter_the_Fray/Trigger/Options/4",
                 "Text": "Preparing to act against an unaware foe",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Enter_the_Fray/Trigger/Options/5",
                 "Text": "Caught in a trap or sizing up the situation",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -16119,35 +16146,35 @@
                 "Text": "In pursuit, fleeing, or maneuvering",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Gain_Ground/Trigger/Options/2",
                 "Text": "By charging boldly into action, coming to the aid of others, negotiating, or commanding",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Gain_Ground/Trigger/Options/3",
                 "Text": "Gaining leverage with force, powering through, or making a threat",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Gain_Ground/Trigger/Options/4",
                 "Text": "Hiding, preparing an ambush, or misdirecting",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Gain_Ground/Trigger/Options/5",
                 "Text": "Coordinating a plan, studying a situation, or cleverly gaining leverage",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -16195,35 +16222,35 @@
                 "Text": "In pursuit, fleeing, dodging, getting back into position, or taking cover",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Combat/React_Under_Fire/Trigger/Options/2",
                 "Text": "Remaining stalwart against fear or temptation",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Combat/React_Under_Fire/Trigger/Options/3",
                 "Text": "Blocking or diverting with force, or taking the hit",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Combat/React_Under_Fire/Trigger/Options/4",
                 "Text": "Moving into hiding or creating a distraction",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Combat/React_Under_Fire/Trigger/Options/5",
                 "Text": "Changing the plan, finding a way out, or cleverly bypassing an obstacle",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -16271,14 +16298,14 @@
                 "Text": "Assault a foe at close quarters",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Strike/Trigger/Options/2",
                 "Text": "Attack at a distance",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               }
             ]
           },
@@ -16326,14 +16353,14 @@
                 "Text": "Fight back against a foe at close quarters",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Clash/Trigger/Options/2",
                 "Text": "Exchange fire at a distance",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               }
             ]
           },
@@ -16381,7 +16408,7 @@
                 "$id": "Starforged/Moves/Combat/Take_Decisive_Action/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "Any",
-                "Using": ["Combat"]
+                "Using": ["combat progress"]
               }
             ]
           },
@@ -16454,35 +16481,35 @@
                 "Text": "At range, or using your speed and the environment to your advantage",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Battle/Trigger/Options/2",
                 "Text": "Depending on your courage, leadership, or companions",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Battle/Trigger/Options/3",
                 "Text": "In close to overpower your foe",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Battle/Trigger/Options/4",
                 "Text": "Using trickery to befuddle your foe",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Combat/Battle/Trigger/Options/5",
                 "Text": "Using careful tactics to outsmart your foe",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -16670,7 +16697,7 @@
                 "$id": "Starforged/Moves/Suffer/Companion_Takes_a_Hit/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Companion Health"]
+                "Using": ["companion health"]
               }
             ]
           },
@@ -16745,7 +16772,7 @@
                 "$id": "Starforged/Moves/Suffer/Withstand_Damage/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Vehicle Integrity"]
+                "Using": ["vehicle integrity"]
               }
             ]
           },
@@ -16814,7 +16841,7 @@
                 "$id": "Starforged/Moves/Recover/Sojourn/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -16862,28 +16889,28 @@
                 "Text": "Receive treatment from someone (not an ally)",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Heal/Trigger/Options/2",
                 "Text": "Mend your own wounds",
                 "Roll type": "Action roll",
                 "Method": "Lowest",
-                "Using": ["Iron", "Wits"]
+                "Using": ["iron", "wits"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Heal/Trigger/Options/3",
                 "Text": "Obtain treatment for a companion",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Heal/Trigger/Options/4",
                 "Text": "Provide care",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -16930,7 +16957,7 @@
                 "$id": "Starforged/Moves/Recover/Hearten/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -16978,28 +17005,28 @@
                 "Text": "Barter or make an appeal",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Resupply/Trigger/Options/2",
                 "Text": "Threaten or seize",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Resupply/Trigger/Options/3",
                 "Text": "Steal or swindle",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Resupply/Trigger/Options/4",
                 "Text": "Scavenge or craft",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -17047,14 +17074,14 @@
                 "Text": "Make your own repairs, or direct a companion to make repairs",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               },
               {
                 "$id": "Starforged/Moves/Recover/Repair/Trigger/Options/2",
                 "Text": "Obtain repairs from someone (not an ally)",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Supply"]
+                "Using": ["supply"]
               }
             ]
           },
@@ -17122,7 +17149,7 @@
                 "$id": "Starforged/Moves/Threshold/Face_Death/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -17169,7 +17196,7 @@
                 "$id": "Starforged/Moves/Threshold/Face_Desolation/Trigger/Options/1",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               }
             ]
           },
@@ -17217,7 +17244,7 @@
                 "$id": "Starforged/Moves/Threshold/Overcome_Destruction/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "Any",
-                "Using": ["Bonds"]
+                "Using": ["bonds legacy"]
               }
             ]
           },
@@ -17334,7 +17361,7 @@
                 "$id": "Starforged/Moves/Legacy/Continue_a_Legacy/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "All",
-                "Using": ["Quests Legacy", "Bonds Legacy", "Discoveries Legacy"]
+                "Using": ["quests legacy", "bonds legacy", "discoveries legacy"]
               }
             ]
           },
@@ -17505,35 +17532,35 @@
                 "Text": "With speed, mobility, or agility",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/2",
                 "Text": "With resolve, command, or sociability",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/3",
                 "Text": "With strength, endurance, or aggression",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/4",
                 "Text": "With deception, stealth, or trickery",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/5",
                 "Text": "With expertise, focus, or observation",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -17590,35 +17617,35 @@
                 "Text": "With speed, mobility, or agility",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Edge"]
+                "Using": ["edge"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/2",
                 "Text": "With resolve, command, or sociability",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Heart"]
+                "Using": ["heart"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/3",
                 "Text": "With strength, endurance, aggression",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Iron"]
+                "Using": ["iron"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/4",
                 "Text": "With deception, stealth, or trickery",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Shadow"]
+                "Using": ["shadow"]
               },
               {
                 "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/5",
                 "Text": "With expertise, focus, or observation",
                 "Roll type": "Action roll",
                 "Method": "Any",
-                "Using": ["Wits"]
+                "Using": ["wits"]
               }
             ]
           },
@@ -17674,7 +17701,7 @@
                 "$id": "Starforged/Moves/Scene_Challenge/Finish_the_Scene/Trigger/Options/1",
                 "Roll type": "Progress roll",
                 "Method": "Any",
-                "Using": ["Scene Challenge"]
+                "Using": ["scene challenge progress"]
               }
             ]
           },

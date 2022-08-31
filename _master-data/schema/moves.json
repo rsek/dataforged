@@ -94,7 +94,11 @@
           "type": "string",
           "title": "Text"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Title": {
+          "$ref": "#/definitions/ITitle",
+          "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
+          "title": "Title"
+        },
         "Category": {
           "description": "The ID of the move's category.",
           "type": "string",
@@ -180,6 +184,35 @@
           "$ref": "#/definitions/ICustomStatYaml",
           "title": "Custom stat"
         },
+        "Using": {
+          "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "${{@ASSET_METER}}",
+              "${{@ASSET_SELECT_METER}}",
+              "${{@ASSET_SELECT_STAT}}",
+              "${{@ASSET}}",
+              "${{@CUSTOM_STAT}}",
+              "attached asset meter",
+              "command vehicle integrity",
+              "companion health",
+              "edge",
+              "health",
+              "heart",
+              "incidental vehicle integrity",
+              "iron",
+              "shadow",
+              "spirit",
+              "supply",
+              "support vehicle integrity",
+              "vehicle integrity",
+              "wits"
+            ],
+            "type": "string"
+          },
+          "title": "Using"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
@@ -196,12 +229,6 @@
           "description": "The method used to choose the stat or track in the `Using` array.",
           "title": "Method"
         },
-        "Using": {
-          "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Using"
-        },
         "Roll type": {
           "$ref": "#/definitions/RollType.Action",
           "description": "Whether this option is an action roll or progress roll.",
@@ -210,7 +237,8 @@
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["Using"]
     },
     "ICustomStatYaml": {
       "title": "ICustomStatYaml",
@@ -305,17 +333,17 @@
           "type": "array",
           "items": {
             "enum": [
-              "Bonds",
-              "Bonds Legacy",
-              "Combat",
-              "Connection",
-              "Delve",
-              "Discoveries Legacy",
-              "Expedition",
-              "Journey",
-              "Quests Legacy",
-              "Scene Challenge",
-              "Vow"
+              "bonds legacy",
+              "bonds track",
+              "combat progress",
+              "connection progress",
+              "delve progress",
+              "discoveries legacy",
+              "expedition progress",
+              "journey progress",
+              "quests legacy",
+              "scene challenge progress",
+              "vow progress"
             ],
             "type": "string"
           },

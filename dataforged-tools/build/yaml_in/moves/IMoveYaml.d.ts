@@ -1,4 +1,4 @@
-import type { ICustomStat, ICustomStatOption, IDisplay, IMove, IMoveCategory, IMoveOutcomes, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeInfo, ISource, MoveOutcome } from "../../json_out/index.js";
+import type { ICustomStat, ICustomStatOption, IDisplay, IMove, IMoveCategory, IMoveOutcomes, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeInfo, ISource, MeterAlias, MoveOutcome, PlayerConditionMeter, Replacement, Stat } from "../../json_out/index.js";
 import type { YamlStub, YamlStubTitle } from "../index.js";
 /**
  * @internal
@@ -39,8 +39,9 @@ export interface IMoveTriggerYaml extends YamlStub<IMoveTrigger, "", "Options"> 
 /**
  * @internal
  */
-export interface IMoveTriggerOptionActionYaml extends YamlStub<IMoveTriggerOptionAction, "Method" | "Using" | "Roll type", "Custom stat"> {
+export interface IMoveTriggerOptionActionYaml extends YamlStub<IMoveTriggerOptionAction, "Method" | "Roll type", "Custom stat"> {
     "Custom stat"?: ICustomStatYaml | undefined;
+    Using: (Stat | Replacement | PlayerConditionMeter | MeterAlias)[];
 }
 /**
  * @internal

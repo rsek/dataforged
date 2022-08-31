@@ -7,7 +7,7 @@ import { propagateToChildren } from "@utils/object_transform/propagateToChildren
 import { templateOracle } from "@utils/object_transform/templateOracle.js";
 import { templateOracleTable } from "@utils/object_transform/templateOracleTable.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
-import type { IOracleYaml, IRowYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
+import type { IOracleYaml, IRowYaml, YamlStub } from "@yaml_in/index.js";
 import type { IOracleCategoryYaml } from "@yaml_in/oracles/IOracleCategoryYaml.js";
 import _ from "lodash-es";
 
