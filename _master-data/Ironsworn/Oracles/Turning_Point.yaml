@@ -1,4 +1,3 @@
-Name: Turning Point
 Title:
   Canonical: Turning Point
 Source:
@@ -8,9 +7,11 @@ Source:
   Page: 188
   License: https://creativecommons.org/licenses/by-sa/4.0/
 Oracles:
-  - Name: Combat Action
-    Title:
+  - Title:
       Canonical: "Oracle 16: Combat Action"
+      Standard: Combat Action
+      Short: Combat Action
+    _idFragment: Combat Action
     Aliases: ["16", "Oracle 16"]
     Description: Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.
     Source:
@@ -34,13 +35,15 @@ Oracles:
       - [79, 89, "Attack with precision."]
       - [90, 99, "Attack with power."]
       - [100, 100, "Take a completely unexpected action."]
-  - Name: Mystic Backlash
+  - Title:
+      Canonical: "Oracle 17: Mystic Backlash"
+      Standard: Mystic Backlash
+      Short: Mystic Backlash
+    _idFragment: Mystic Backlash
+    Aliases: ["17", "Oracle 17"]
     Source:
       License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Page: 189
-    Title:
-      Canonical: "Oracle 17: Mystic Backlash"
-    Aliases: ["17", "Oracle 17"]
     Description: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
     Table:
       - [1, 4, "Your ritual has the opposite affect."]
@@ -105,9 +108,11 @@ Oracles:
           "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
           *result:RollTwice.MakeItWorse
         ]
-  - Name: Major Plot Twist
-    Title:
+  - Title:
       Canonical: "Oracle 18: Major Plot Twist"
+      Standard: Major Plot Twist
+      Short: Plot Twist
+    _idFragment: Major Plot Twist
     Aliases: ["18", "Oracle 18"]
     Description: Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.
     Source:
@@ -142,9 +147,11 @@ Oracles:
           "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic.",
           *result:RollTwice.MakeItWorse
         ]
-  - Name: Challenge Rank
-    Title:
+  - Title:
       Canonical: "Oracle 19: Challenge Rank"
+      Standard: Challenge Rank
+      Short: Rank
+    _idFragment: Challenge Rank
     Display:
       Table:
         Roll columns:
@@ -168,9 +175,8 @@ Oracles:
     Source:
       Page: 190
     Oracles:
-      - Name: Quest
-        Title:
-          Canonical: "Oracle 19: Challenge Rank - Quest"
+      - Title:
+          Canonical: Quest
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
         Table: &challenge_rank_table
@@ -179,9 +185,8 @@ Oracles:
             - [56, 80, Formidable, "A complex quest with many intimidating obstacles"]
             - [81, 93, Extreme, "An overwhelming quest of staggering proportions"]
             - [94, 100, Epic, "A life-defining quest of unknowable scope"]
-      - Name: Journey
-        Title:
-          Canonical: "Oracle 19: Challenge Rank - Journey"
+      - Title:
+          Canonical: Journey
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
         _templateTable:
@@ -192,9 +197,10 @@ Oracles:
             - [Formidable, "Traveling from one region to another, or across especially challenging terrain,"]
             - [Extreme, "Traveling through multiple regions"]
             - [Epic, "Traveling from one end of the Ironlands to another, or to a separate land"]
-      - Name: Foes
-        Title:
-          Canonical: "Oracle 19: Challenge Rank - Foes"
+      - Title:
+          Canonical: Foes
+          Short: Foe
+        _idFragment: Foes
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
         _templateTable:

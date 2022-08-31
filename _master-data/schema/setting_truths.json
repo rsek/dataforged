@@ -6,12 +6,11 @@
       "items": { "$ref": "#/definitions/ISettingTruthYaml" },
       "title": "Setting Truths"
     },
-    "Name": { "type": "string", "title": "Name" },
     "Source": { "$ref": "#/definitions/ISource_1", "title": "Source" }
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Name", "Setting Truths", "Source"],
+  "required": ["Setting Truths", "Source"],
   "definitions": {
     "ISettingTruthYaml": {
       "title": "ISettingTruthYaml",
@@ -27,28 +26,23 @@
           "items": { "$ref": "#/definitions/ISettingTruthOptionYaml" },
           "title": "Table"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^Starforged/Setting_Truths/[A-z_-]+$",
           "type": "string",
-          "title": "Name"
-        },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
+          "title": "$id"
         },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
+        "Display": {
+          "$ref": "#/definitions/IDisplay_3",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Character": {
           "description": "A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.",
           "type": "string",
@@ -58,7 +52,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Character", "Name", "Table", "Title"]
+      "required": ["Character", "Table", "Title"]
     },
     "ISuggestionsYaml": {
       "title": "ISuggestionsYaml",
@@ -4774,6 +4768,12 @@
           },
           "title": "Subtable"
         },
+        "$id": {
+          "description": "The ID of this row.",
+          "pattern": "^Starforged/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100)$",
+          "type": "string",
+          "title": "$id"
+        },
         "Display": {
           "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
@@ -4783,12 +4783,6 @@
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
-        },
-        "$id": {
-          "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$",
-          "type": "string",
-          "title": "$id"
         },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
@@ -4877,6 +4871,12 @@
       "title": "ISettingTruthOptionSubtableRowYaml",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "The ID of this row.",
+          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+          "type": "string",
+          "title": "$id"
+        },
         "Display": {
           "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
@@ -4886,12 +4886,6 @@
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
-        },
-        "$id": {
-          "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
-          "type": "string",
-          "title": "$id"
         },
         "Summary": {
           "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
@@ -4990,13 +4984,13 @@
       "properties": {
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -5006,11 +5000,6 @@
           "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
           "type": "string",
           "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
         }
       },
       "defaultProperties": [],
@@ -5483,79 +5472,13 @@
       "properties": {
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "ITitle": {
-      "title": "ITitle",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
-          "type": "string",
-          "title": "Canonical"
-        },
-        "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
-          "type": "string",
-          "title": "Short"
-        },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
-      },
-      "required": ["Canonical"]
-    },
-    "IDisplayWithTitle": {
-      "title": "IDisplayWithTitle",
-      "$ref": "#/definitions/Partial<IDisplayWithTitle>"
-    },
-    "Partial<IDisplayWithTitle>": {
-      "title": "Partial<IDisplayWithTitle>",
-      "type": "object",
-      "properties": {
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -5625,6 +5548,68 @@
         "https://creativecommons.org/licenses/by-sa/4.0/"
       ],
       "type": "string"
+    },
+    "IDisplay_3": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay_3",
+      "$ref": "#/definitions/Partial<IDisplay>_1"
+    },
+    "Partial<IDisplay>_1": {
+      "title": "Partial<IDisplay>_1",
+      "type": "object",
+      "properties": {
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use{@linkITitle.Standard}instead.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see{@linkITitle.Short}instead.",
+          "type": "string",
+          "title": "Standard"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use{@linkITitle.Standard}instead.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
     },
     "ISource_1": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",

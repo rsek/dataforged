@@ -17,28 +17,28 @@ export class Source {
         this.Date = merged.Date;
         this.Page = merged.Page;
         this.Url = merged.Url;
-        if (json.License) {
-            this.License = json.License;
+        if (merged.License) {
+            this.License = merged.License;
         }
         else {
-            let newLicense;
             switch (this.Title) {
-                case SourceTitle.Ironsworn || SourceTitle.IronswornAssets:
-                    newLicense = License.CC_BY_SA;
+                case SourceTitle.Ironsworn:
+                case SourceTitle.IronswornAssets:
+                    this.License = License.CC_BY_NC_SA;
                     break;
                 case SourceTitle.IronswornDelve:
-                    newLicense = License.CC_BY_NC_SA;
+                    this.License = License.CC_BY_NC_SA;
                     break;
-                case SourceTitle.Starforged || SourceTitle.StarforgedAssets:
-                    newLicense = License.CC_BY_SA;
+                case SourceTitle.Starforged:
+                case SourceTitle.StarforgedAssets:
+                    this.License = License.CC_BY_SA;
                     break;
                 case SourceTitle.SunderedIslesPreview:
-                    newLicense = License.None;
+                    this.License = License.None;
                     break;
                 default:
-                    throw new Error("Could not infer a valid license!");
+                    throw new Error(`Could not infer a valid license!\n${JSON.stringify(this)}`);
             }
-            this.License = newLicense;
         }
     }
 }

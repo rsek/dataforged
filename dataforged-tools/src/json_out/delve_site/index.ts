@@ -1,9 +1,12 @@
-import type { IHasDescription, IHasDisplay, IHasId, IHasName, IHasSource, IHasSummary, IRow } from "@json_out/index.js";
+import type { IHasDescription, IHasId, IHasSource, IHasSummary, IHasTitle, IRow } from "@json_out/index.js";
 
 /**
  * @public
  */
-export type DelveCardType = "Theme" | "Domain";
+export enum DelveCardType {
+  Theme = "Theme",
+  Domain = "Domain"
+};
 
 /**
  * Interface describing common characteristics of themes and domains from *Ironsworn: Delve*.
@@ -14,7 +17,7 @@ export type DelveCardType = "Theme" | "Domain";
  * @see IDelveDomain
  * @public
  */
-export interface IDelveCard extends IHasName, IHasSource, IHasSummary, IHasDescription, IHasDisplay, IHasId {
+export interface IDelveCard extends IHasSource, IHasSummary, IHasDescription, IHasId, IHasTitle {
   /**
    * @pattern ^Ironsworn/(Themes|Domains)/[A-z_-]+$
    */
@@ -63,7 +66,7 @@ export interface IDelveDomain extends IDelveCard {
    * @pattern ^Ironsworn/Domains/[A-z_-]+$
    */
   $id: string
-  Type: "Domain"
+  Type: DelveCardType.Domain
   /**
    * The Features contributed by this Domain card. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
    */
@@ -107,7 +110,7 @@ export interface IDelveTheme extends IDelveCard {
    * @pattern ^Ironsworn/Themes/[A-z_-]+$
    */
   $id: string
-  Type: "Theme"
+  Type: DelveCardType.Theme
   /**
    * The Features contributed by this Theme card. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
    */

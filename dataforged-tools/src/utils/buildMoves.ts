@@ -34,11 +34,11 @@ export function buildMoves(gamespace: Gamespace = Gamespace.Starforged) {
     root["Move Categories"]
       .forEach((moveCatData) => {
         const moveCat = new MoveCategory(moveCatData, gamespace, root.Source);
-        const targetIndex = json.findIndex(item => item.Name === moveCat.Name);
+        const targetIndex = json.findIndex(item => item.Title.Canonical === moveCat.Title.Canonical);
         if (targetIndex === -1) {
           json.push(moveCat);
         } else {
-          buildLog(buildMoves, `A category named "${moveCat.Name}" exists, merging...`);
+          buildLog(buildMoves, `A category named "${moveCat.Title.Canonical}" exists, merging...`);
           json[targetIndex].Moves = json[targetIndex].Moves.concat(...moveCat.Moves).sort((a,b)=> sortIronsworn(a.Source, b.Source));
         }
       });

@@ -23,13 +23,12 @@ export class Oracle extends SourceInheritor {
         // }
         this.$id = buildOracleId(gamespace, jsonClone, ...ancestorsJson);
         // buildLog(this.constructor, `Building: ${this.$id}`);
-        this.Name = jsonClone.Name;
-        this.Title = new Title(json.Title, this.$id);
+        this.Title = new Title(jsonClone.Title, this);
         this.Aliases = jsonClone.Aliases;
         this["Member of"] = memberOf ?? undefined;
         this.Category = category;
         this.Description = jsonClone.Description;
-        this.Display = new DisplayOracle((jsonClone.Display ?? {}), this.Name, this.$id);
+        this.Display = new DisplayOracle((jsonClone.Display ?? {}), this.$id);
         if (jsonClone.Usage) {
             this.Usage = new OracleUsage(jsonClone.Usage);
         }

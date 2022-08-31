@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasDisplay, IHasId, IHasName, IHasSource, IHasSuggestions, IHasTable, IHasTitle, ISettingTruthOption } from "../index.js";
+import type { IDisplay, IHasDisplay, IHasId, IHasSource, IHasSuggestions, IHasTable, IHasTitle, ISettingTruthOption } from "../index.js";
 /**
  * @public
  */
@@ -19,13 +19,13 @@ export declare enum SettingTruthName {
     Horrors = "Horrors"
 }
 /**
- * Interface for Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
+ * Interface for Starforged Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
  * @see ISettingTruthOption
  * @public
  */
-export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable, IHasTitle {
+export interface ISettingTruth extends IHasId, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable, IHasTitle {
     /**
-     * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$
+     * @pattern ^Starforged/Setting_Truths/[A-z_-]+$
      */
     $id: string;
     /**
@@ -38,6 +38,6 @@ export interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay
      * @localize
      */
     Character: string;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
 }
 //# sourceMappingURL=ISettingTruth.d.ts.map

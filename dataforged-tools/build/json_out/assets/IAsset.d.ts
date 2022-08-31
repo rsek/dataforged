@@ -1,21 +1,15 @@
-import type { IAssetAbility, IAssetAttachment, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplayWithTitle, IHasAliases, IHasDisplay, IHasId, IHasName, IHasSource, IHasTitle, IInputSelect, IInputText } from "../index.js";
+import type { IAssetAbility, IAssetAttachment, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplay, IHasAliases, IHasDisplay, IHasId, IHasSource, IHasTitle, IInputSelect, IInputText } from "../index.js";
 /**
  * An interface representing an *Ironsworn: Starforged* asset card.
  * @public
  */
-export interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases>, IHasTitle {
+export interface IAsset extends IHasId, IHasDisplay, IHasSource, Partial<IHasAliases>, IHasTitle {
     /**
      * @example "Starforged/Assets/Path/Bounty_Hunter"
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
-    /**
-     * The asset's name - the title printed on the card.
-     * @example "Bounty Hunter"
-     * @localize
-     */
-    Name: string;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     /**
      * Describes any states that the asset might have, such as "Broken". Some states may disable the asset entirely.
      */

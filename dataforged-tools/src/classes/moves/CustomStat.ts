@@ -9,12 +9,11 @@ import type { ICustomStatYaml } from "@yaml_in/index.js";
  */
 export class CustomStat implements ICustomStat {
   $id: ICustomStat["$id"];
-
-  Name: string;
+  Label: string;
   Options: CustomStatOption[];
   constructor(json: ICustomStatYaml, parentId: IMoveTriggerOptionBase["$id"]) {
     this.$id = `${parentId}/${formatIdFragment("Custom stat")}`;
-    this.Name = json.Name;
+    this.Label = json.Label;
     this.Options = json.Options?.map(option => new CustomStatOption(option, this.$id));
   }
 }

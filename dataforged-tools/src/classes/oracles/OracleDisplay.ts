@@ -5,13 +5,11 @@ import type { IDisplayOracle as IDisplayOracle, IOracle, ITableDisplayInfo } fro
  * @internal
  */
 export class DisplayOracle implements IDisplayOracle {
-  Title: string;
   "Column of"?: IOracle["$id"] | undefined;
   Table: TableDisplayInfo;
   Images?: IDisplayOracle["Images"];
   Icon?: IDisplayOracle["Icon"];
-  constructor(json: Partial<IDisplayOracle>, parentName: string, parentId: IOracle["$id"]) {
-    this.Title = json.Title ?? parentName;
+  constructor(json: Partial<IDisplayOracle>, parentId: IOracle["$id"]) {
     this.Images = json.Images;
     this.Icon = json.Icon;
     this["Column of"] = (json["Column of"]) ?? undefined;

@@ -4,8 +4,7 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  */
 export class CustomStatOption {
     constructor(json, parentId) {
-        this.$id = `${parentId}/${formatIdFragment(json.Name)}`;
-        this.Name = json.Name;
+        this.$id = `${parentId}/${formatIdFragment(json.Label)}`;
         this.Label = json.Label;
         this.Value = json.Value;
     }

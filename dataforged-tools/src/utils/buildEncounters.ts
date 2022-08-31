@@ -15,7 +15,6 @@ type EncountersJson<G extends Gamespace> = G extends Gamespace.Starforged ? Enco
 type EncountersYaml<G extends Gamespace> = G extends Gamespace.Starforged ? IEncounterStarforgedYaml[] : G extends Gamespace.Ironsworn ? IEncounterNatureInfoYaml[] : never;
 
 interface IEncounterRoot<G extends Gamespace> extends IYamlWithRef {
-  Name: string;
   Source: ISource;
   Encounters: EncountersYaml<G>;
 }

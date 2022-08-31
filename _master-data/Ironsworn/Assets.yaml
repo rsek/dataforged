@@ -1,4 +1,3 @@
-Name: Assets
 Source:
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
   Authors:
@@ -9,7 +8,7 @@ Source:
 Asset Types:
   - Title:
       Canonical: Companion Assets
-      Short: Companion
+      Standard: Companion
     Source:
       Title: Ironsworn Rulebook
       Page: 39
@@ -462,7 +461,7 @@ Asset Types:
           Max: 5
   - Title:
       Canonical: Path Assets
-      Short: Path
+      Standard: Path
     Source:
       Page: 40
       Title: Ironsworn Rulebook
@@ -477,8 +476,7 @@ Asset Types:
               When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.
             Enabled: true
             Moves:
-              - Name: Create Elixir
-                Title:
+              - Title:
                   Canonical: Create Elixir
                 Trigger:
                   Text: When you create an elixir...
@@ -642,8 +640,7 @@ Asset Types:
           - Text: &move:Asset.Dancer |-
               When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.
             Moves:
-              - Name: Commemorate
-                Title:
+              - Title:
                   Canonical: Commemorate
                 Trigger:
                   Text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
@@ -947,8 +944,7 @@ Asset Types:
               When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](Ironsworn/Moves/Suffer/Out_of_Supply).
             Enabled: true
             Moves:
-              - Name: Scrape By
-                Title:
+              - Title:
                   Canonical: Scrape By
                 Category: Ironsworn/Moves/Assets
                 Asset: ${{@ASSET}}
@@ -978,8 +974,7 @@ Asset Types:
               When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).
             Enabled: true
             Moves:
-              - Name: Establish False Identity
-                Title:
+              - Title:
                   Canonical: Establish False Identity
                 Category: Ironsworn/Moves/Assets
                 Asset: ${{@ASSET}}
@@ -1230,7 +1225,8 @@ Asset Types:
           - Text: |-
               When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you [Compel](Ironsworn/Moves/Relationship/Compel), [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), or [Test Your Bond](Ironsworn/Moves/Relationship/Test_Your_Bond).
   - Title:
-      Canonical: Combat Talent
+      Canonical: Combat Talent Assets
+      Standard: Combat Talent
     Source:
       Page: 40
       Title: Ironsworn Rulebook
@@ -1331,8 +1327,7 @@ Asset Types:
                 * Seeker: When a shooter uses the arrow to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against this foe, reroll any dice (one time only).
                 * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
             Moves:
-              - Name: Craft Arrow
-                Title:
+              - Title:
                   Canonical: Craft Arrow
                 Trigger:
                   Text: When you craft a single arrow designated for a specific foe
@@ -1459,8 +1454,7 @@ Asset Types:
           - Text: &move:Asset.Sunderer |-
               When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Moves:
-              - Name: Carve Rune
-                Title:
+              - Title:
                   Canonical: Carve Rune
                 Trigger:
                   Text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
@@ -1503,7 +1497,8 @@ Asset Types:
           - Text: |-
               When you [Turn the Tide](Ironsworn/Moves/Combat/Turn_the_Tide), you may [Strike](Ironsworn/Moves/Combat/Strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.
   - Title:
-      Canonical: Ritual
+      Canonical: Ritual Assets
+      Standard: Ritual
     Source:
       Page: 41
       Title: Ironsworn Rulebook
@@ -1521,8 +1516,7 @@ Asset Types:
               When you summon a flock of crows and ask a single question, roll +wits. On a strong hit, you interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and take +2 momentum. On a weak hit, the crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.
             Enabled: true
             Moves:
-              - Name: Augur
-                Title:
+              - Title:
                   Canonical: Augur
                 Trigger:
                   Text: When you summon a flock of crows and ask a single question...
@@ -1549,8 +1543,7 @@ Asset Types:
               When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +heart to keep it from turning on you (as a formidable foe).
             Enabled: true
             Moves:
-              - Name: Awaken Simulacra
-                Title:
+              - Title:
                   Canonical: Awaken Simulacra
                 Trigger:
                   Text: When you create a simulacrum...
@@ -1588,8 +1581,7 @@ Asset Types:
               When you wear an animal pelt and dance in moonlight, roll +wits. On a strong hit, you or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent. On a weak hit, as above, but the wilds call as you dance; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Bind
-                Title:
+              - Title:
                   Canonical: Bind
                 Trigger:
                   Text: When you wear an animal pelt and dance in moonlight...
@@ -1618,8 +1610,7 @@ Asset Types:
               When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
             Enabled: true
             Moves:
-              - Name: Commune
-                Title:
+              - Title:
                   Canonical: Commune
                 Trigger:
                   Text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
@@ -1648,8 +1639,7 @@ Asset Types:
               When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.
             Enabled: true
             Moves:
-              - Name: Cast Runes
-                Title:
+              - Title:
                   Canonical: Cast Runes
                 Trigger:
                   Text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
@@ -1682,8 +1672,7 @@ Asset Types:
               When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Invoke
-                Title:
+              - Title:
                   Canonical: Invoke
                 Trigger:
                   Text: When you consume the mystical essence of your surroundings...
@@ -1720,8 +1709,7 @@ Asset Types:
               When you hold a weapon and sing a keen for those it has killed, roll +heart. On a strong hit, the wielder inflicts +1 harm when they [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent. On a weak hit, as above, but the voices of those who were slain join in your song; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Keen
-                Title:
+              - Title:
                   Canonical: Keen
                 Trigger:
                   Text: When you hold a weapon and sing a keen for those it has killed...
@@ -1750,8 +1738,7 @@ Asset Types:
               When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.
             Enabled: true
             Moves:
-              - Name: Draw Blood Rune
-                Title:
+              - Title:
                   Canonical: Draw Blood Rune
                 Trigger:
                   Text: When you mark your hands or weapon with an intricate blood rune...
@@ -1782,8 +1769,7 @@ Asset Types:
               When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.
             Enabled: true
             Moves:
-              - Name: Capture Light
-                Title:
+              - Title:
                   Canonical: Capture Light
                 Trigger:
                   Text: When you focus on a source of light and capture its essence...
@@ -1823,8 +1809,7 @@ Asset Types:
                 * Provisions: Suffer -2 supply.
             Enabled: true
             Moves:
-              - Name: Scry
-                Title:
+              - Title:
                   Canonical: Scry
                 Trigger:
                   Text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
@@ -1857,8 +1842,7 @@ Asset Types:
               When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) to find your way.
             Enabled: true
             Moves:
-              - Name: Walk in Shadow
-                Title:
+              - Title:
                   Canonical: Walk in Shadow
                 Trigger:
                   Text: When you cloak yourself with the gossamer veil of the shadow realms...
@@ -1887,8 +1871,7 @@ Asset Types:
               When you speak a person’s name three times to the wind, roll +wits. On a strong hit, the wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you use this information or fulfill this need when you [Compel](Ironsworn/Moves/Relationship/Compel) them, you may reroll any dice (one time only). On a weak hit, as above, but this person’s need creates a troubling dilemma or complication; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
             Enabled: true
             Moves:
-              - Name: Sway
-                Title:
+              - Title:
                   Canonical: Sway
                 Trigger:
                   Text: When you speak a person’s name three times to the wind...
@@ -1917,8 +1900,7 @@ Asset Types:
               When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).
             Enabled: true
             Moves:
-              - Name: Fashion Talisman
-                Title:
+              - Title:
                   Canonical: Fashion Talisman
                 Trigger:
                   Text: When you fashion a charm that protects against a specific person or creature...
@@ -1945,8 +1927,7 @@ Asset Types:
               When you commune with the spirits of a place, roll +heart. If you share a bond with someone there, add +1. On a strong hit, you are tethered. When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](Ironsworn/Moves/Adventure/Reach_Your_Destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation). On a weak hit, as above, but the spirits reveal a disturbing aspect of the place; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).
             Enabled: true
             Moves:
-              - Name: Tether
-                Title:
+              - Title:
                   Canonical: Tether
                 Trigger:
                   Text: When you commune with the spirits of a place
@@ -1975,8 +1956,7 @@ Asset Types:
               When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).
             Enabled: true
             Moves:
-              - Name: Bind Beast
-                Title:
+              - Title:
                   Canonical: Bind Beast
                 Trigger:
                   Text: When you hold a totem of your animal or beast companion and focus on it...
@@ -2006,8 +1986,7 @@ Asset Types:
               When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).
             Enabled: true
             Moves:
-              - Name: Paint Visage
-                Title:
+              - Title:
                   Canonical: Paint Visage
                 Trigger:
                   Text: When you paint yourself in blood and ash...
@@ -2040,8 +2019,7 @@ Asset Types:
                 * Your ward is ‘likely’ ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle)) to trap a foe within the boundary.
             Enabled: true
             Moves:
-              - Name: Ward
-                Title:
+              - Title:
                   Canonical: Ward
                 Trigger:
                   Text: When you walk a wide circle, sprinkling the ground with salt...

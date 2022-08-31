@@ -5,12 +5,18 @@
       "Authors": ["Shawn Tomkin"],
       "Date": "060122",
       "Page": 39,
-      "Url": "https://shawn-tomkin.itch.io/ironsworn"
+      "Url": "https://shawn-tomkin.itch.io/ironsworn",
+      "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     },
     "$id": "Ironsworn/Assets/Companion",
-    "Name": "Companion",
-    "Description": "Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.\n\nCompanions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move (page 94) to determine the outcome. See page 43 to learn more.",
-    "Display": { "Title": "Companions" },
+    "Description": "Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.\n\nCompanions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move to determine the outcome. See page 43 to learn more.",
+    "Display": {},
+    "Title": {
+      "$id": "Ironsworn/Assets/Companion/Title",
+      "Canonical": "Companion Assets",
+      "Standard": "Companion",
+      "Short": "Companion"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -18,18 +24,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Cave_Lion",
-        "Name": "Cave Lion",
-        "Display": { "Title": "Cave Lion" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Cave_Lion/Title",
+          "Canonical": "Cave Lion",
+          "Standard": "Cave Lion",
+          "Short": "Cave Lion"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -38,7 +50,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Ironsworn/Assets/Companion/Cave_Lion/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -46,7 +58,7 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1",
-            "Name": "Eager",
+            "Label": "Eager",
             "Text": "When your cat chases down big game, you may [Resupply](Ironsworn/Moves/Adventure/Resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -78,7 +90,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2",
-            "Name": "Inescapable",
+            "Label": "Inescapable",
             "Text": "When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Strike](Ironsworn/Moves/Combat/Strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.",
             "Enabled": false,
             "Alter Moves": [
@@ -117,7 +129,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3",
-            "Name": "Protective",
+            "Label": "Protective",
             "Text": "When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
             "Enabled": false,
             "Alter Moves": [
@@ -146,18 +158,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Giant_Spider",
-        "Name": "Giant Spider",
-        "Display": { "Title": "Giant Spider" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Giant_Spider/Title",
+          "Canonical": "Giant Spider",
+          "Standard": "Giant Spider",
+          "Short": "Giant Spider"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -166,7 +184,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Ironsworn/Assets/Companion/Giant_Spider/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -174,7 +192,7 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1",
-            "Name": "Discreet",
+            "Label": "Discreet",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -211,7 +229,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2",
-            "Name": "Soul-Piercing",
+            "Label": "Soul-Piercing",
             "Text": "You may [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
             "Enabled": false,
             "Alter Moves": [
@@ -247,7 +265,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3",
-            "Name": "Ensnaring",
+            "Label": "Ensnaring",
             "Text": "When your spider sets a trap, add +1 as you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +shadow. On a strong hit, also inflict 2 harm.",
             "Enabled": false,
             "Alter Moves": [
@@ -284,18 +302,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Hawk",
-        "Name": "Hawk",
-        "Display": { "Title": "Hawk" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Hawk/Title",
+          "Canonical": "Hawk",
+          "Standard": "Hawk",
+          "Short": "Hawk"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Hawk/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -304,7 +328,7 @@
           "Min": 0,
           "Value": 3,
           "$id": "Ironsworn/Assets/Companion/Hawk/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 3,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -312,7 +336,7 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1",
-            "Name": "Far-seeing",
+            "Label": "Far-seeing",
             "Text": "When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), or when you [Resupply](Ironsworn/Moves/Adventure/Resupply) by hunting for small game, add +1.",
             "Enabled": false,
             "Alter Moves": [
@@ -343,7 +367,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2",
-            "Name": "Fierce",
+            "Label": "Fierce",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -380,7 +404,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3",
-            "Name": "Vigilant",
+            "Label": "Vigilant",
             "Text": "When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +wits to detect an approaching threat, or when you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush, add +2.",
             "Enabled": false,
             "Alter Moves": [
@@ -428,18 +452,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Horse",
-        "Name": "Horse",
-        "Display": { "Title": "Horse" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Horse/Title",
+          "Canonical": "Horse",
+          "Standard": "Horse",
+          "Short": "Horse"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Horse/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -448,7 +478,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Ironsworn/Assets/Companion/Horse/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 5,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -456,7 +486,7 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1",
-            "Name": "Swift",
+            "Label": "Swift",
             "Text": "When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), add +1.",
             "Enabled": false,
             "Alter Moves": [
@@ -487,7 +517,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2",
-            "Name": "Fearless",
+            "Label": "Fearless",
             "Text": "When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -527,7 +557,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3",
-            "Name": "Mighty",
+            "Label": "Mighty",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) at close range while mounted, add +1 and inflict +1 harm on a hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -572,18 +602,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Hound",
-        "Name": "Hound",
-        "Display": { "Title": "Hound" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Hound/Title",
+          "Canonical": "Hound",
+          "Standard": "Hound",
+          "Short": "Hound"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Hound/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -592,7 +628,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Ironsworn/Assets/Companion/Hound/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -600,7 +636,7 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1",
-            "Name": "Sharp",
+            "Label": "Sharp",
             "Text": "When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -637,7 +673,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2",
-            "Name": "Ferocious",
+            "Label": "Ferocious",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.",
             "Enabled": false,
             "Alter Moves": [
@@ -676,7 +712,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3",
-            "Name": "Loyal",
+            "Label": "Loyal",
             "Text": "When you [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) in the company of your hound, add +1.",
             "Enabled": false,
             "Alter Moves": [
@@ -707,18 +743,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Kindred",
-        "Name": "Kindred",
-        "Display": { "Title": "Kindred" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Kindred/Title",
+          "Canonical": "Kindred",
+          "Standard": "Kindred",
+          "Short": "Kindred"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Kindred/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -727,7 +769,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Ironsworn/Assets/Companion/Kindred/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -735,13 +777,13 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1",
-            "Name": "Skilled",
+            "Label": "Skilled",
             "Text": "When you make a move outside of combat aided by your companion’s expertise, add +1.",
             "Inputs": [
               {
                 "Input Type": "Text",
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Inputs/Expertise",
-                "Name": "Expertise",
+                "Label": "Expertise",
                 "Adjustable": false
               }
             ],
@@ -769,7 +811,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2",
-            "Name": "Shield-Kin",
+            "Label": "Shield-Kin",
             "Text": "When you [Clash](Ironsworn/Moves/Combat/Clash) or [Battle](Ironsworn/Moves/Combat/Battle) alongside your companion, or when you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) against an attack by standing together, add +1.",
             "Enabled": false,
             "Alter Moves": [
@@ -816,7 +858,7 @@
           },
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/3",
-            "Name": "Bonded",
+            "Label": "Bonded",
             "Text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.",
             "Enabled": false,
             "Alter Moves": [
@@ -834,18 +876,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Mammoth",
-        "Name": "Mammoth",
-        "Display": { "Title": "Mammoth" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Mammoth/Title",
+          "Canonical": "Mammoth",
+          "Standard": "Mammoth",
+          "Short": "Mammoth"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Mammoth/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -854,7 +902,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Ironsworn/Assets/Companion/Mammoth/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 5,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -862,19 +910,19 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Mammoth/Abilities/1",
-            "Name": "Lumbering",
+            "Label": "Lumbering",
             "Text": "When your mammoth travels with you as you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), you may add +2 but suffer -1 momentum (decide before rolling).",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Mammoth/Abilities/2",
-            "Name": "Beast of burden",
+            "Label": "Beast of burden",
             "Text": "When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Mammoth/Abilities/3",
-            "Name": "Overpowering",
+            "Label": "Overpowering",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.",
             "Enabled": false
           }
@@ -885,18 +933,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Owl",
-        "Name": "Owl",
-        "Display": { "Title": "Owl" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Owl/Title",
+          "Canonical": "Owl",
+          "Standard": "Owl",
+          "Short": "Owl"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Owl/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -905,7 +959,7 @@
           "Min": 0,
           "Value": 3,
           "$id": "Ironsworn/Assets/Companion/Owl/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 3,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -913,19 +967,19 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Owl/Abilities/1",
-            "Name": "Nocturnal",
+            "Label": "Nocturnal",
             "Text": "If you [Resupply](Ironsworn/Moves/Adventure/Resupply) at night by sending your owl to hunt, take +2 momentum on a hit. When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush in darkness, add +1 and take +1 momentum on a hit.",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Owl/Abilities/2",
-            "Name": "Sage",
+            "Label": "Sage",
             "Text": "When you leverage your owl’s secret knowledge to perform a ritual, add +1 or take +1 momentum on a hit (decide before rolling).",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Owl/Abilities/3",
-            "Name": "Embodying",
+            "Label": "Embodying",
             "Text": "When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), take your owl’s health as +momentum before you roll.",
             "Enabled": false
           }
@@ -936,18 +990,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Raven",
-        "Name": "Raven",
-        "Display": { "Title": "Raven" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Raven/Title",
+          "Canonical": "Raven",
+          "Standard": "Raven",
+          "Short": "Raven"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Raven/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -956,7 +1016,7 @@
           "Min": 0,
           "Value": 2,
           "$id": "Ironsworn/Assets/Companion/Raven/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 2,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -964,19 +1024,19 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Raven/Abilities/1",
-            "Name": "Sly",
+            "Label": "Sly",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit.",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Raven/Abilities/2",
-            "Name": "Knowing",
+            "Label": "Knowing",
             "Text": "When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), add +2 and take +1 momentum on a hit.",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Raven/Abilities/3",
-            "Name": "Diligent",
+            "Label": "Diligent",
             "Text": "When your raven carries messages for you, you may [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), or [Compel](Ironsworn/Moves/Relationship/Compel) from a distance.",
             "Enabled": false
           }
@@ -987,18 +1047,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Young_Wyvern",
-        "Name": "Young Wyvern",
-        "Display": { "Title": "Young Wyvern" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Title",
+          "Canonical": "Young Wyvern",
+          "Standard": "Young Wyvern",
+          "Short": "Young Wyvern"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -1007,7 +1073,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 5,
           "Conditions": [],
           "Aliases": ["Companion Health"]
@@ -1015,19 +1081,19 @@
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/1",
-            "Name": "Insatiable",
+            "Label": "Insatiable",
             "Text": "When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) and score a hit, you may suffer -1 supply in exchange for +2 momentum.",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/2",
-            "Name": "Indomitable",
+            "Label": "Indomitable",
             "Text": "When you make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move for your wyvern, add +2 and take +1 momentum on a hit.",
             "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3",
-            "Name": "Savage",
+            "Label": "Savage",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.",
             "Enabled": false,
             "Alter Moves": [
@@ -1060,12 +1126,18 @@
       "Authors": ["Shawn Tomkin"],
       "Date": "060122",
       "Page": 40,
-      "Url": "https://shawn-tomkin.itch.io/ironsworn"
+      "Url": "https://shawn-tomkin.itch.io/ironsworn",
+      "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     },
     "$id": "Ironsworn/Assets/Path",
-    "Name": "Path",
     "Description": "Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.",
-    "Display": { "Title": "Paths" },
+    "Display": {},
+    "Title": {
+      "$id": "Ironsworn/Assets/Path/Title",
+      "Canonical": "Path Assets",
+      "Standard": "Path",
+      "Short": "Path"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -1073,12 +1145,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Alchemist",
-        "Name": "Alchemist",
-        "Display": { "Title": "Alchemist" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Alchemist/Title",
+          "Canonical": "Alchemist",
+          "Standard": "Alchemist",
+          "Short": "Alchemist"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1091,13 +1169,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir",
-                "Name": "Create Elixir",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir/Title",
+                  "Canonical": "Create Elixir",
+                  "Standard": "Create Elixir",
+                  "Short": "Create Elixir"
+                },
                 "Optional": false,
-                "Display": { "Title": "Create Elixir" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir/Trigger",
                   "Text": "When you create an elixir...",
@@ -1175,12 +1259,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Animal_Kin",
-        "Name": "Animal Kin",
-        "Display": { "Title": "Animal Kin" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Animal_Kin/Title",
+          "Canonical": "Animal Kin",
+          "Standard": "Animal Kin",
+          "Short": "Animal Kin"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1205,18 +1295,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Banner-Sworn",
-        "Name": "Banner-Sworn",
-        "Display": { "Title": "Banner-Sworn" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Banner-Sworn/Title",
+          "Canonical": "Banner-Sworn",
+          "Standard": "Banner-Sworn",
+          "Short": "Banner-Sworn"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Banner-Sworn/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -1244,12 +1340,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Battle-Scarred",
-        "Name": "Battle-Scarred",
-        "Display": { "Title": "Battle-Scarred" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Battle-Scarred/Title",
+          "Canonical": "Battle-Scarred",
+          "Standard": "Battle-Scarred",
+          "Short": "Battle-Scarred"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "Once you become maimed...",
         "Abilities": [
@@ -1294,18 +1396,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Blade-Bound",
-        "Name": "Blade-Bound",
-        "Display": { "Title": "Blade-Bound" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Blade-Bound/Title",
+          "Canonical": "Blade-Bound",
+          "Standard": "Blade-Bound",
+          "Short": "Blade-Bound"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Blade-Bound/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -1333,12 +1441,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Bonded",
-        "Name": "Bonded",
-        "Display": { "Title": "Bonded" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Bonded/Title",
+          "Canonical": "Bonded",
+          "Standard": "Bonded",
+          "Short": "Bonded"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1363,18 +1477,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Commander",
-        "Name": "Commander",
-        "Display": { "Title": "Commander" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Commander/Title",
+          "Canonical": "Commander",
+          "Standard": "Commander",
+          "Short": "Commander"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 4,
           "$id": "Ironsworn/Assets/Path/Commander/Condition_Meter",
-          "Name": "Strength",
+          "Label": "Strength",
           "Max": 4,
           "Conditions": []
         },
@@ -1519,12 +1639,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Dancer",
-        "Name": "Dancer",
-        "Display": { "Title": "Dancer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Dancer/Title",
+          "Canonical": "Dancer",
+          "Standard": "Dancer",
+          "Short": "Dancer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1547,13 +1673,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate",
-                "Name": "Commemorate",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate/Title",
+                  "Canonical": "Commemorate",
+                  "Standard": "Commemorate",
+                  "Short": "Commemorate"
+                },
                 "Optional": false,
-                "Display": { "Title": "Commemorate" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate/Trigger",
                   "Text": "When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...",
@@ -1592,30 +1724,36 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Devotant",
-        "Name": "Devotant",
-        "Display": { "Title": "Devotant" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Devotant/Title",
+          "Canonical": "Devotant",
+          "Standard": "Devotant",
+          "Short": "Devotant"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Gods_Name",
-            "Name": "God's Name",
+            "Label": "God's Name",
             "Adjustable": false
           },
           {
             "Input Type": "Select",
             "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat",
-            "Name": "Linked Stat",
+            "Label": "Linked Stat",
             "Adjustable": false,
             "Sets": [{ "Key": "Stat", "Type": "Stat" }],
             "Options": [
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge",
-                "Name": "Edge",
+                "Label": "Edge",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge/Stat",
@@ -1627,7 +1765,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart",
-                "Name": "Heart",
+                "Label": "Heart",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart/Stat",
@@ -1639,7 +1777,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron",
-                "Name": "Iron",
+                "Label": "Iron",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron/Stat",
@@ -1651,7 +1789,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow",
-                "Name": "Shadow",
+                "Label": "Shadow",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow/Stat",
@@ -1663,7 +1801,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits",
-                "Name": "Wits",
+                "Label": "Wits",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits/Stat",
@@ -1741,18 +1879,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Empowered",
-        "Name": "Empowered",
-        "Display": { "Title": "Empowered" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Empowered/Title",
+          "Canonical": "Empowered",
+          "Standard": "Empowered",
+          "Short": "Empowered"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Empowered/Inputs/Title_Lineage",
-            "Name": "Title/Lineage",
+            "Label": "Title/Lineage",
             "Adjustable": false
           }
         ],
@@ -1779,12 +1923,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Fated",
-        "Name": "Fated",
-        "Display": { "Title": "Fated" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Fated/Title",
+          "Canonical": "Fated",
+          "Standard": "Fated",
+          "Short": "Fated"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1809,18 +1959,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Fortune_Hunter",
-        "Name": "Fortune Hunter",
-        "Display": { "Title": "Fortune Hunter" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Fortune_Hunter/Title",
+          "Canonical": "Fortune Hunter",
+          "Standard": "Fortune Hunter",
+          "Short": "Fortune Hunter"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
           "$id": "Ironsworn/Assets/Path/Fortune_Hunter/Condition_Meter",
-          "Name": "Wealth",
+          "Label": "Wealth",
           "Max": 5,
           "Conditions": []
         },
@@ -1847,12 +2003,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Herbalist",
-        "Name": "Herbalist",
-        "Display": { "Title": "Herbalist" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Herbalist/Title",
+          "Canonical": "Herbalist",
+          "Standard": "Herbalist",
+          "Short": "Herbalist"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1877,12 +2039,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Honorbound",
-        "Name": "Honorbound",
-        "Display": { "Title": "Honorbound" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Honorbound/Title",
+          "Canonical": "Honorbound",
+          "Standard": "Honorbound",
+          "Short": "Honorbound"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1907,12 +2075,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Improviser",
-        "Name": "Improviser",
-        "Display": { "Title": "Improviser" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Improviser/Title",
+          "Canonical": "Improviser",
+          "Standard": "Improviser",
+          "Short": "Improviser"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -1955,12 +2129,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Infiltrator",
-        "Name": "Infiltrator",
-        "Display": { "Title": "Infiltrator" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Infiltrator/Title",
+          "Canonical": "Infiltrator",
+          "Standard": "Infiltrator",
+          "Short": "Infiltrator"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2040,12 +2220,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Lorekeeper",
-        "Name": "Lorekeeper",
-        "Display": { "Title": "Lorekeeper" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Lorekeeper/Title",
+          "Canonical": "Lorekeeper",
+          "Standard": "Lorekeeper",
+          "Short": "Lorekeeper"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2070,12 +2256,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Loyalist",
-        "Name": "Loyalist",
-        "Display": { "Title": "Loyalist" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Loyalist/Title",
+          "Canonical": "Loyalist",
+          "Standard": "Loyalist",
+          "Short": "Loyalist"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2100,18 +2292,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Masked",
-        "Name": "Masked",
-        "Display": { "Title": "Masked" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Masked/Title",
+          "Canonical": "Masked",
+          "Standard": "Masked",
+          "Short": "Masked"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Select",
             "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material",
-            "Name": "Material",
+            "Label": "Material",
             "Adjustable": false,
             "Sets": [
               { "Key": "Stat", "Type": "Stat" },
@@ -2120,7 +2318,7 @@
             "Options": [
               {
                 "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Thunderwood",
-                "Name": "Thunderwood",
+                "Label": "Thunderwood",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Thunderwood/Stat",
@@ -2138,7 +2336,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Bloodwood",
-                "Name": "Bloodwood",
+                "Label": "Bloodwood",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Bloodwood/Stat",
@@ -2156,7 +2354,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Ghostwood",
-                "Name": "Ghostwood",
+                "Label": "Ghostwood",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Ghostwood/Stat",
@@ -2174,7 +2372,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Whisperwood",
-                "Name": "Whisperwood",
+                "Label": "Whisperwood",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Whisperwood/Stat",
@@ -2257,12 +2455,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Oathbreaker",
-        "Name": "Oathbreaker",
-        "Display": { "Title": "Oathbreaker" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Oathbreaker/Title",
+          "Canonical": "Oathbreaker",
+          "Standard": "Oathbreaker",
+          "Short": "Oathbreaker"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "Once you [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)...",
         "Abilities": [
@@ -2288,12 +2492,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Outcast",
-        "Name": "Outcast",
-        "Display": { "Title": "Outcast" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Outcast/Title",
+          "Canonical": "Outcast",
+          "Standard": "Outcast",
+          "Short": "Outcast"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2306,13 +2516,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By",
-                "Name": "Scrape By",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By/Title",
+                  "Canonical": "Scrape By",
+                  "Standard": "Scrape By",
+                  "Short": "Scrape By"
+                },
                 "Optional": false,
-                "Display": { "Title": "Scrape By" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By/Trigger",
                   "Text": "When your supply is reduced to 0...",
@@ -2361,12 +2577,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Pretender",
-        "Name": "Pretender",
-        "Display": { "Title": "Pretender" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Pretender/Title",
+          "Canonical": "Pretender",
+          "Standard": "Pretender",
+          "Short": "Pretender"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2379,13 +2601,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity",
-                "Name": "Establish False Identity",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity/Title",
+                  "Canonical": "Establish False Identity",
+                  "Standard": "Establish False Identity",
+                  "Short": "Establish False Identity"
+                },
                 "Optional": false,
-                "Display": { "Title": "Establish False Identity" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity/Trigger",
                   "Text": "When you establish a false identity...",
@@ -2453,12 +2681,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Revenant",
-        "Name": "Revenant",
-        "Display": { "Title": "Revenant" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Revenant/Title",
+          "Canonical": "Revenant",
+          "Standard": "Revenant",
+          "Short": "Revenant"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "Once you [Face Death](Ironsworn/Moves/Suffer/Face_Death) and return to the world of the living...",
         "Abilities": [
@@ -2484,12 +2718,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Rider",
-        "Name": "Rider",
-        "Display": { "Title": "Rider" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Rider/Title",
+          "Canonical": "Rider",
+          "Standard": "Rider",
+          "Short": "Rider"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you are with your horse companion...",
         "Abilities": [
@@ -2515,12 +2755,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Ritualist",
-        "Name": "Ritualist",
-        "Display": { "Title": "Ritualist" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Ritualist/Title",
+          "Canonical": "Ritualist",
+          "Standard": "Ritualist",
+          "Short": "Ritualist"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to an elder\nmystic, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...",
         "Abilities": [
@@ -2546,12 +2792,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Shadow-Kin",
-        "Name": "Shadow-Kin",
-        "Display": { "Title": "Shadow-Kin" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Shadow-Kin/Title",
+          "Canonical": "Shadow-Kin",
+          "Standard": "Shadow-Kin",
+          "Short": "Shadow-Kin"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "Once you become corrupted...",
         "Abilities": [
@@ -2595,12 +2847,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Sighted",
-        "Name": "Sighted",
-        "Display": { "Title": "Sighted" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Sighted/Title",
+          "Canonical": "Sighted",
+          "Standard": "Sighted",
+          "Short": "Sighted"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2625,12 +2883,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Slayer",
-        "Name": "Slayer",
-        "Display": { "Title": "Slayer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Slayer/Title",
+          "Canonical": "Slayer",
+          "Standard": "Slayer",
+          "Short": "Slayer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2655,12 +2919,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Spirit-Bound",
-        "Name": "Spirit-Bound",
-        "Display": { "Title": "Spirit-Bound" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Spirit-Bound/Title",
+          "Canonical": "Spirit-Bound",
+          "Standard": "Spirit-Bound",
+          "Short": "Spirit-Bound"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2685,12 +2955,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Storyweaver",
-        "Name": "Storyweaver",
-        "Display": { "Title": "Storyweaver" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Storyweaver/Title",
+          "Canonical": "Storyweaver",
+          "Standard": "Storyweaver",
+          "Short": "Storyweaver"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2715,12 +2991,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Trickster",
-        "Name": "Trickster",
-        "Display": { "Title": "Trickster" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Trickster/Title",
+          "Canonical": "Trickster",
+          "Standard": "Trickster",
+          "Short": "Trickster"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2790,12 +3072,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Veteran",
-        "Name": "Veteran",
-        "Display": { "Title": "Veteran" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Veteran/Title",
+          "Canonical": "Veteran",
+          "Standard": "Veteran",
+          "Short": "Veteran"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2820,12 +3108,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Waterborn",
-        "Name": "Waterborn",
-        "Display": { "Title": "Waterborn" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Waterborn/Title",
+          "Canonical": "Waterborn",
+          "Standard": "Waterborn",
+          "Short": "Waterborn"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2850,12 +3144,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Wayfinder",
-        "Name": "Wayfinder",
-        "Display": { "Title": "Wayfinder" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Wayfinder/Title",
+          "Canonical": "Wayfinder",
+          "Standard": "Wayfinder",
+          "Short": "Wayfinder"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2880,12 +3180,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Weaponmaster",
-        "Name": "Weaponmaster",
-        "Display": { "Title": "Weaponmaster" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Weaponmaster/Title",
+          "Canonical": "Weaponmaster",
+          "Standard": "Weaponmaster",
+          "Short": "Weaponmaster"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to a seasoned warrior, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...",
         "Abilities": [
@@ -2911,12 +3217,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Wildblood",
-        "Name": "Wildblood",
-        "Display": { "Title": "Wildblood" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Wildblood/Title",
+          "Canonical": "Wildblood",
+          "Standard": "Wildblood",
+          "Short": "Wildblood"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -2960,18 +3272,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Wright",
-        "Name": "Wright",
-        "Display": { "Title": "Wright" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Path/Wright/Title",
+          "Canonical": "Wright",
+          "Standard": "Wright",
+          "Short": "Wright"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Wright/Inputs/Specialty",
-            "Name": "Specialty",
+            "Label": "Specialty",
             "Adjustable": false
           }
         ],
@@ -3001,12 +3319,18 @@
       "Authors": ["Shawn Tomkin"],
       "Date": "060122",
       "Page": 40,
-      "Url": "https://shawn-tomkin.itch.io/ironsworn"
+      "Url": "https://shawn-tomkin.itch.io/ironsworn",
+      "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     },
     "$id": "Ironsworn/Assets/Combat_Talent",
-    "Name": "Combat Talent",
-    "Description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform combat moves (page 78). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
-    "Display": { "Title": "Combat Talents" },
+    "Description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](Ironsworn/Moves/Combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
+    "Display": {},
+    "Title": {
+      "$id": "Ironsworn/Assets/Combat_Talent/Title",
+      "Canonical": "Combat Talent Assets",
+      "Standard": "Combat Talent",
+      "Short": "Combat Talent"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -3014,12 +3338,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Archer",
-        "Name": "Archer",
-        "Display": { "Title": "Archer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Archer/Title",
+          "Canonical": "Archer",
+          "Standard": "Archer",
+          "Short": "Archer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a bow...",
         "Abilities": [
@@ -3045,12 +3375,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Berserker",
-        "Name": "Berserker",
-        "Display": { "Title": "Berserker" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Berserker/Title",
+          "Canonical": "Berserker",
+          "Standard": "Berserker",
+          "Short": "Berserker"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you are clad only in animal pelts...",
         "Abilities": [
@@ -3076,12 +3412,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Brawler",
-        "Name": "Brawler",
-        "Display": { "Title": "Brawler" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Brawler/Title",
+          "Canonical": "Brawler",
+          "Standard": "Brawler",
+          "Short": "Brawler"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you are unarmed or fighting with a non-deadly weapon...",
         "Abilities": [
@@ -3107,12 +3449,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Cutthroat",
-        "Name": "Cutthroat",
-        "Display": { "Title": "Cutthroat" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Cutthroat/Title",
+          "Canonical": "Cutthroat",
+          "Standard": "Cutthroat",
+          "Short": "Cutthroat"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a dagger or knife...",
         "Abilities": [
@@ -3138,12 +3486,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Duelist",
-        "Name": "Duelist",
-        "Display": { "Title": "Duelist" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Duelist/Title",
+          "Canonical": "Duelist",
+          "Standard": "Duelist",
+          "Short": "Duelist"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a bladed weapon in each hand...",
         "Abilities": [
@@ -3169,12 +3523,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Fletcher",
-        "Name": "Fletcher",
-        "Display": { "Title": "Fletcher" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Fletcher/Title",
+          "Canonical": "Fletcher",
+          "Standard": "Fletcher",
+          "Short": "Fletcher"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3197,13 +3557,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow",
-                "Name": "Craft Arrow",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow/Title",
+                  "Canonical": "Craft Arrow",
+                  "Standard": "Craft Arrow",
+                  "Short": "Craft Arrow"
+                },
                 "Optional": false,
-                "Display": { "Title": "Craft Arrow" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow/Trigger",
                   "Text": "When you craft a single arrow designated for a specific foe",
@@ -3242,24 +3608,30 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Ironclad",
-        "Name": "Ironclad",
-        "Display": { "Title": "Ironclad" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Title",
+          "Canonical": "Ironclad",
+          "Standard": "Ironclad",
+          "Short": "Ironclad"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Select",
             "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped",
-            "Name": "Equipped",
+            "Label": "Equipped",
             "Adjustable": true,
             "Sets": [{ "Key": "Armor", "Type": "String" }],
             "Options": [
               {
                 "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Lightly_armored",
-                "Name": "Lightly armored",
+                "Label": "Lightly armored",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Lightly_armored/Armor",
@@ -3271,7 +3643,7 @@
               },
               {
                 "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for_war",
-                "Name": "Geared for war",
+                "Label": "Geared for war",
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for_war/Armor",
@@ -3308,12 +3680,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Long-Arm",
-        "Name": "Long-Arm",
-        "Display": { "Title": "Long-Arm" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Long-Arm/Title",
+          "Canonical": "Long-Arm",
+          "Standard": "Long-Arm",
+          "Short": "Long-Arm"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a staff...",
         "Abilities": [
@@ -3339,12 +3717,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Shield-Bearer",
-        "Name": "Shield-Bearer",
-        "Display": { "Title": "Shield-Bearer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Shield-Bearer/Title",
+          "Canonical": "Shield-Bearer",
+          "Standard": "Shield-Bearer",
+          "Short": "Shield-Bearer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a shield...",
         "Abilities": [
@@ -3370,12 +3754,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Skirmisher",
-        "Name": "Skirmisher",
-        "Display": { "Title": "Skirmisher" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Skirmisher/Title",
+          "Canonical": "Skirmisher",
+          "Standard": "Skirmisher",
+          "Short": "Skirmisher"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a spear...",
         "Abilities": [
@@ -3401,12 +3791,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Slinger",
-        "Name": "Slinger",
-        "Display": { "Title": "Slinger" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Slinger/Title",
+          "Canonical": "Slinger",
+          "Standard": "Slinger",
+          "Short": "Slinger"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a sling...",
         "Abilities": [
@@ -3432,12 +3828,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Sunderer",
-        "Name": "Sunderer",
-        "Display": { "Title": "Sunderer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Sunderer/Title",
+          "Canonical": "Sunderer",
+          "Standard": "Sunderer",
+          "Short": "Sunderer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield an axe...",
         "Abilities": [
@@ -3461,13 +3863,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune",
-                "Name": "Carve Rune",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Title",
+                  "Canonical": "Carve Rune",
+                  "Standard": "Carve Rune",
+                  "Short": "Carve Rune"
+                },
                 "Optional": false,
-                "Display": { "Title": "Carve Rune" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Trigger",
                   "Text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...",
@@ -3506,12 +3914,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Swordmaster",
-        "Name": "Swordmaster",
-        "Display": { "Title": "Swordmaster" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Swordmaster/Title",
+          "Canonical": "Swordmaster",
+          "Standard": "Swordmaster",
+          "Short": "Swordmaster"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a sword...",
         "Abilities": [
@@ -3537,12 +3951,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Thunder-Bringer",
-        "Name": "Thunder-Bringer",
-        "Display": { "Title": "Thunder-Bringer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Combat_Talent/Thunder-Bringer/Title",
+          "Canonical": "Thunder-Bringer",
+          "Standard": "Thunder-Bringer",
+          "Short": "Thunder-Bringer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Requirement": "If you wield a mighty hammer...",
         "Abilities": [
@@ -3571,12 +3991,18 @@
       "Authors": ["Shawn Tomkin"],
       "Date": "060122",
       "Page": 41,
-      "Url": "https://shawn-tomkin.itch.io/ironsworn"
+      "Url": "https://shawn-tomkin.itch.io/ironsworn",
+      "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     },
     "$id": "Ironsworn/Assets/Ritual",
-    "Name": "Ritual",
     "Description": "Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.\n\nAll rituals utilize a move as their default marked ability. You must make this move and the associated action roll to trigger the effect. Any secondary abilities you gain by upgrading the asset are dependent on performing the ritual described as the default ability.",
-    "Display": { "Title": "Rituals" },
+    "Display": {},
+    "Title": {
+      "$id": "Ironsworn/Assets/Ritual/Title",
+      "Canonical": "Ritual Assets",
+      "Standard": "Ritual",
+      "Short": "Ritual"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
@@ -3584,12 +4010,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Augur",
-        "Name": "Augur",
-        "Display": { "Title": "Augur" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Augur/Title",
+          "Canonical": "Augur",
+          "Standard": "Augur",
+          "Short": "Augur"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3602,13 +4034,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur",
-                "Name": "Augur",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur/Title",
+                  "Canonical": "Augur",
+                  "Standard": "Augur",
+                  "Short": "Augur"
+                },
                 "Optional": false,
-                "Display": { "Title": "Augur" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur/Trigger",
                   "Text": "When you summon a flock of crows and ask a single question...",
@@ -3657,18 +4095,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Awakening",
-        "Name": "Awakening",
-        "Display": { "Title": "Awakening" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Awakening/Title",
+          "Canonical": "Awakening",
+          "Standard": "Awakening",
+          "Short": "Awakening"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 3,
           "$id": "Ironsworn/Assets/Ritual/Awakening/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 3,
           "Conditions": []
         },
@@ -3683,19 +4127,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening",
-                "Name": "Awakening",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Title",
+                  "Canonical": "Awaken Simulacra",
+                  "Standard": "Awaken Simulacra",
+                  "Short": "Awaken Simulacra"
+                },
                 "Optional": false,
-                "Display": { "Title": "Awakening" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Trigger",
                   "Text": "When you create a simulacrum...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Heart"]
@@ -3704,17 +4154,17 @@
                 },
                 "Text": "When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +heart to keep it from turning on you (as a formidable foe).",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Outcomes/Strong_Hit",
                     "Text": "Your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Outcomes/Weak_Hit",
                     "Text": "Your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead.\n\nHowever, if you roll a 1 on your action die when aided by your creation, you must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +heart to keep it from turning on you (as a formidable foe)."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awaken_Simulacra/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -3739,12 +4189,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Bind",
-        "Name": "Bind",
-        "Display": { "Title": "Bind" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Bind/Title",
+          "Canonical": "Bind",
+          "Standard": "Bind",
+          "Short": "Bind"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3757,13 +4213,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind",
-                "Name": "Bind",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind/Title",
+                  "Canonical": "Bind",
+                  "Standard": "Bind",
+                  "Short": "Bind"
+                },
                 "Optional": false,
-                "Display": { "Title": "Bind" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind/Trigger",
                   "Text": "When you wear an animal pelt and dance in moonlight...",
@@ -3812,12 +4274,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Communion",
-        "Name": "Communion",
-        "Display": { "Title": "Communion" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Communion/Title",
+          "Canonical": "Communion",
+          "Standard": "Communion",
+          "Short": "Communion"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3830,19 +4298,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion",
-                "Name": "Communion",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Title",
+                  "Canonical": "Commune",
+                  "Standard": "Commune",
+                  "Short": "Commune"
+                },
                 "Optional": false,
-                "Display": { "Title": "Communion" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Trigger",
                   "Text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Heart"]
@@ -3851,17 +4325,17 @@
                 },
                 "Text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Outcomes/Strong_Hit",
                     "Text": "The spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1)."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Outcomes/Weak_Hit",
                     "Text": "The spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1).\n\nHowever, the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress)."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Commune/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -3885,12 +4359,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Divination",
-        "Name": "Divination",
-        "Display": { "Title": "Divination" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Divination/Title",
+          "Canonical": "Divination",
+          "Standard": "Divination",
+          "Short": "Divination"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3903,19 +4383,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination",
-                "Name": "Divination",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Title",
+                  "Canonical": "Cast Runes",
+                  "Standard": "Cast Runes",
+                  "Short": "Cast Runes"
+                },
                 "Optional": false,
-                "Display": { "Title": "Divination" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Trigger",
                   "Text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Heart"]
@@ -3924,17 +4410,17 @@
                 },
                 "Text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Outcomes/Strong_Hit",
                     "Text": "You may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of.\n\nIf you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Outcomes/Weak_Hit",
                     "Text": "You succeed, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.\n\nYou may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of.\n\nIf you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Cast_Runes/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -3958,18 +4444,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Invoke",
-        "Name": "Invoke",
-        "Display": { "Title": "Invoke" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Invoke/Title",
+          "Canonical": "Invoke",
+          "Standard": "Invoke",
+          "Short": "Invoke"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
           "$id": "Ironsworn/Assets/Ritual/Invoke/Condition_Meter",
-          "Name": "Essence",
+          "Label": "Essence",
           "Max": 6,
           "Conditions": []
         },
@@ -3984,13 +4476,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke",
-                "Name": "Invoke",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke/Title",
+                  "Canonical": "Invoke",
+                  "Standard": "Invoke",
+                  "Short": "Invoke"
+                },
                 "Optional": false,
-                "Display": { "Title": "Invoke" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke/Trigger",
                   "Text": "When you consume the mystical essence of your surroundings...",
@@ -4039,12 +4537,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Keen",
-        "Name": "Keen",
-        "Display": { "Title": "Keen" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Keen/Title",
+          "Canonical": "Keen",
+          "Standard": "Keen",
+          "Short": "Keen"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4057,13 +4561,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen",
-                "Name": "Keen",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen/Title",
+                  "Canonical": "Keen",
+                  "Standard": "Keen",
+                  "Short": "Keen"
+                },
                 "Optional": false,
-                "Display": { "Title": "Keen" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen/Trigger",
                   "Text": "When you hold a weapon and sing a keen for those it has killed...",
@@ -4112,12 +4622,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Leech",
-        "Name": "Leech",
-        "Display": { "Title": "Leech" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Leech/Title",
+          "Canonical": "Leech",
+          "Standard": "Leech",
+          "Short": "Leech"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4130,19 +4646,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech",
-                "Name": "Leech",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Title",
+                  "Canonical": "Draw Blood Rune",
+                  "Standard": "Draw Blood Rune",
+                  "Short": "Draw Blood Rune"
+                },
                 "Optional": false,
-                "Display": { "Title": "Leech" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Trigger",
                   "Text": "When you mark your hands or weapon with an intricate blood rune...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Iron"]
@@ -4151,17 +4673,17 @@
                 },
                 "Text": "When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Outcomes/Strong_Hit",
                     "Text": "The rune thirsts for fresh blood.\n\nOne time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Outcomes/Weak_Hit",
                     "Text": "The rune thirsts for fresh blood, but this asset counts as a debility until the rune’s thirst is quenched.\n\nOne time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Draw_Blood_Rune/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4185,18 +4707,24 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Lightbearer",
-        "Name": "Lightbearer",
-        "Display": { "Title": "Lightbearer" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Lightbearer/Title",
+          "Canonical": "Lightbearer",
+          "Standard": "Lightbearer",
+          "Short": "Lightbearer"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
           "$id": "Ironsworn/Assets/Ritual/Lightbearer/Condition_Meter",
-          "Name": "Light",
+          "Label": "Light",
           "Max": 6,
           "Conditions": []
         },
@@ -4211,19 +4739,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer",
-                "Name": "Lightbearer",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Title",
+                  "Canonical": "Capture Light",
+                  "Standard": "Capture Light",
+                  "Short": "Capture Light"
+                },
                 "Optional": false,
-                "Display": { "Title": "Lightbearer" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Trigger",
                   "Text": "When you focus on a source of light and capture its essence...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
@@ -4232,17 +4766,17 @@
                 },
                 "Text": "When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Outcomes/Strong_Hit",
                     "Text": "Set your light track to +6.\n\nWhen you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Outcomes/Weak_Hit",
                     "Text": "Set your light track to +3.\n\nWhen you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Capture_Light/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4266,12 +4800,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Scry",
-        "Name": "Scry",
-        "Display": { "Title": "Scry" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Scry/Title",
+          "Canonical": "Scry",
+          "Standard": "Scry",
+          "Short": "Scry"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4284,13 +4824,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry",
-                "Name": "Scry",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry/Title",
+                  "Canonical": "Scry",
+                  "Standard": "Scry",
+                  "Short": "Scry"
+                },
                 "Optional": false,
-                "Display": { "Title": "Scry" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry/Trigger",
                   "Text": "When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...",
@@ -4339,12 +4885,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Shadow-Walk",
-        "Name": "Shadow-Walk",
-        "Display": { "Title": "Shadow-Walk" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Shadow-Walk/Title",
+          "Canonical": "Shadow-Walk",
+          "Standard": "Shadow-Walk",
+          "Short": "Shadow-Walk"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4357,19 +4909,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk",
-                "Name": "Shadow-Walk",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Title",
+                  "Canonical": "Walk in Shadow",
+                  "Standard": "Walk in Shadow",
+                  "Short": "Walk in Shadow"
+                },
                 "Optional": false,
-                "Display": { "Title": "Shadow-Walk" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Trigger",
                   "Text": "When you cloak yourself with the gossamer veil of the shadow realms...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Shadow"]
@@ -4378,17 +4936,17 @@
                 },
                 "Text": "When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) to find your way.",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Outcomes/Strong_Hit",
                     "Text": "Take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Outcomes/Weak_Hit",
                     "Text": "You succeed, but the shadows try to lead you astray. You must first [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) to find your way.\n\nTake +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Walk_in_Shadow/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4412,12 +4970,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Sway",
-        "Name": "Sway",
-        "Display": { "Title": "Sway" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Sway/Title",
+          "Canonical": "Sway",
+          "Standard": "Sway",
+          "Short": "Sway"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4430,13 +4994,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway",
-                "Name": "Sway",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway/Title",
+                  "Canonical": "Sway",
+                  "Standard": "Sway",
+                  "Short": "Sway"
+                },
                 "Optional": false,
-                "Display": { "Title": "Sway" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway/Trigger",
                   "Text": "When you speak a person’s name three times to the wind...",
@@ -4485,12 +5055,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Talisman",
-        "Name": "Talisman",
-        "Display": { "Title": "Talisman" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Talisman/Title",
+          "Canonical": "Talisman",
+          "Standard": "Talisman",
+          "Short": "Talisman"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4503,19 +5079,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman",
-                "Name": "Talisman",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Title",
+                  "Canonical": "Fashion Talisman",
+                  "Standard": "Fashion Talisman",
+                  "Short": "Fashion Talisman"
+                },
                 "Optional": false,
-                "Display": { "Title": "Talisman" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Trigger",
                   "Text": "When you fashion a charm that protects against a specific person or creature...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
@@ -4524,17 +5106,17 @@
                 },
                 "Text": "When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Outcomes/Strong_Hit",
                     "Text": "When the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Outcomes/Weak_Hit",
                     "Text": "When the wearer opposes the target through a move, add +1. If a 1 is rolled on the action die while making a move using the charm, the magic is spent."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Fashion_Talisman/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4558,12 +5140,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Tether",
-        "Name": "Tether",
-        "Display": { "Title": "Tether" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Tether/Title",
+          "Canonical": "Tether",
+          "Standard": "Tether",
+          "Short": "Tether"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4576,13 +5164,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether",
-                "Name": "Tether",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether/Title",
+                  "Canonical": "Tether",
+                  "Standard": "Tether",
+                  "Short": "Tether"
+                },
                 "Optional": false,
-                "Display": { "Title": "Tether" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether/Trigger",
                   "Text": "When you commune with the spirits of a place",
@@ -4631,12 +5225,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Totem",
-        "Name": "Totem",
-        "Display": { "Title": "Totem" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Totem/Title",
+          "Canonical": "Totem",
+          "Standard": "Totem",
+          "Short": "Totem"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4649,19 +5249,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem",
-                "Name": "Totem",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Title",
+                  "Canonical": "Bind Beast",
+                  "Standard": "Bind Beast",
+                  "Short": "Bind Beast"
+                },
                 "Optional": false,
-                "Display": { "Title": "Totem" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Trigger",
                   "Text": "When you hold a totem of your animal or beast companion and focus on it...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Heart"]
@@ -4670,17 +5276,17 @@
                 },
                 "Text": "When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Outcomes/Strong_Hit",
                     "Text": "You are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Outcomes/Weak_Hit",
                     "Text": "You succeed, but creating this connection is unsettling; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).\n\nYou are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Bind_Beast/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4704,12 +5310,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Visage",
-        "Name": "Visage",
-        "Display": { "Title": "Visage" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Visage/Title",
+          "Canonical": "Visage",
+          "Standard": "Visage",
+          "Short": "Visage"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4722,19 +5334,25 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
-                "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage",
-                "Name": "Visage",
+                "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Title",
+                  "Canonical": "Paint Visage",
+                  "Standard": "Paint Visage",
+                  "Short": "Paint Visage"
+                },
                 "Optional": false,
-                "Display": { "Title": "Visage" },
+                "Display": {},
                 "Trigger": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Trigger",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Trigger",
                   "Text": "When you paint yourself in blood and ash...",
                   "Options": [
                     {
-                      "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Trigger/Options/1",
+                      "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Trigger/Options/1",
                       "Roll type": "Action roll",
                       "Method": "Any",
                       "Using": ["Wits"]
@@ -4743,17 +5361,17 @@
                 },
                 "Text": "When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).",
                 "Outcomes": {
-                  "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Outcomes",
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Outcomes",
                   "Strong Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Outcomes/Strong_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Outcomes/Strong_Hit",
                     "Text": "You may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent."
                   },
                   "Weak Hit": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Outcomes/Weak_Hit",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Outcomes/Weak_Hit",
                     "Text": "You succeed, but the blood must be your own; [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).\n\nYou may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent."
                   },
                   "Miss": {
-                    "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Outcomes/Miss",
+                    "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Paint_Visage/Outcomes/Miss",
                     "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price)."
                   }
                 }
@@ -4777,12 +5395,18 @@
           "Title": "Ironsworn Assets",
           "Authors": ["Shawn Tomkin"],
           "Date": "060122",
-          "Url": "https://shawn-tomkin.itch.io/ironsworn"
+          "Url": "https://shawn-tomkin.itch.io/ironsworn",
+          "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Ward",
-        "Name": "Ward",
-        "Display": { "Title": "Ward" },
+        "Title": {
+          "$id": "Ironsworn/Assets/Ritual/Ward/Title",
+          "Canonical": "Ward",
+          "Standard": "Ward",
+          "Short": "Ward"
+        },
+        "Display": {},
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4795,13 +5419,19 @@
                   "Title": "Ironsworn Assets",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "060122",
-                  "Url": "https://shawn-tomkin.itch.io/ironsworn"
+                  "Url": "https://shawn-tomkin.itch.io/ironsworn",
+                  "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                 },
                 "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward",
-                "Name": "Ward",
+                "Title": {
+                  "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward/Title",
+                  "Canonical": "Ward",
+                  "Standard": "Ward",
+                  "Short": "Ward"
+                },
                 "Optional": false,
-                "Display": { "Title": "Ward" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward/Trigger",
                   "Text": "When you walk a wide circle, sprinkling the ground with salt...",

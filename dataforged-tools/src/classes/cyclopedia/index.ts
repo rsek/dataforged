@@ -1,5 +1,4 @@
 export * from "@classes/cyclopedia/Encounter.js";
-export * from "@classes/cyclopedia/EncounterDisplay.js";
 export * from "@classes/cyclopedia/EncounterIronsworn.js";
 export * from "@classes/cyclopedia/EncounterNatureInfo.js";
 export * from "@classes/cyclopedia/EncounterStarforged.js";

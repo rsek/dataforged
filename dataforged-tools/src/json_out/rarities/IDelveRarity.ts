@@ -2,7 +2,8 @@ import type { IAsset } from "@json_out/assets/IAsset.js";
 import type { IHasDescription, IHasDisplay, IHasSource, IHasTitle } from "@json_out/meta/IHas.js";
 
 /**
- * @alpha
+ * Represents a Rarity (described in Ironsworn: Delve)
+ * @public
  */
 export interface IDelveRarity extends IHasTitle, IHasDisplay, IHasSource, IHasDescription {
   /**

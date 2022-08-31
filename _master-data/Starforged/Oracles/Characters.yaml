@@ -1,7 +1,7 @@
 Characters:
-  Name: Characters
   Title:
     Canonical: Characters
+    Short: Character
   Aliases: [NPC]
   Source:
     Authors: [Shawn Tomkin]
@@ -11,8 +11,7 @@ Characters:
   Description: |-
     Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as First Look and Initial Disposition. Then envision or generate additional details over time.
   Oracles:
-    - Name: First Look
-      Title:
+    - Title:
         Canonical: First Look
       Source:
         Page: 330
@@ -61,11 +60,12 @@ Characters:
         - [93, 95, Wiry]
         - [96, 97, Wounded]
         - [98, 100, Youthful]
-    - Name: Disposition
+    - Title:
+        Canonical: Initial Disposition
+        Short: Disposition
+      _idFragment: Initial Disposition
       Source:
         Page: 330
-      Title:
-        Canonical: Initial Disposition
       Content:
         Part of speech: [adjective]
       Usage:
@@ -83,11 +83,12 @@ Characters:
         - [79, 86, Unfriendly]
         - [87, 94, Threatening]
         - [95, 100, Hostile]
-    - Name: Role
+    - Title:
+        Canonical: Character Role
+        Short: Role
+      _idFragment: Role
       Source:
         Page: 331
-      Title:
-        Canonical: Character Role
       Content:
         Part of speech: [noun, common noun]
         Tags: [people, actor]
@@ -140,11 +141,12 @@ Characters:
         - [91, 92, Thief]
         - [93, 95, *result:Action+Theme]
         - [96, 100, *result:RollTwice]
-    - Name: Goal
+    - Title:
+        Canonical: Character Goal
+        Short: Goal
+      _idFragment: Goal
       Source:
         Page: 331
-      Title:
-        Canonical: Character Goal
       Content:
         Part of speech: [fragment]
         Tags: [objective]
@@ -189,13 +191,14 @@ Characters:
         - [79, 80, Undermine a relationship, Suggestions: [*obj:Npc]]
         - [81, 90, *result:Action+Theme]
         - [91, 100, *result:RollTwice]
-    - Name: Revealed Aspect
+    - Title:
+        Canonical: Revealed Character Aspect
+        Short: Revealed Aspect
+      _idFragment: Revealed Aspect
       Source:
         Page: 332
       Description: |-
         As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.
-      Title:
-        Canonical: Revealed Character Aspect
       Content:
         Part of speech: [adjective]
       Usage:
@@ -301,13 +304,14 @@ Characters:
         - [98, 98, Weary]
         - [99, 99, Wild]
         - [100, 100, Wise]
-    - Name: Name
+    - Title:
+        Canonical: Character Name
+        Short: Name
+      _idFragment: Name
       Source:
         Page: 333
       Description: |-
         Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
-      Title:
-        Canonical: Character Name
       Display:
         Table:
           Roll columns:
@@ -319,9 +323,8 @@ Characters:
       Usage:
         Initial: true
       Oracles:
-        - Name: Given Name
-          Title:
-            Canonical: Character Name - Given Name
+        - Title:
+            Canonical: Given Name
           Description: |-
             Given and family names can be used independently as standalone names. In many cases you can reverse the order.
           Usage:
@@ -435,9 +438,8 @@ Characters:
             - [99, 99, Zephyr]
             - [100, 100, Zoya]
 
-        - Name: Callsign
-          Title:
-            Canonical: Character Name - Callsign
+        - Title:
+            Canonical: Callsign
           Description: |-
             Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.
           Usage:
@@ -551,9 +553,8 @@ Characters:
             - [99, 99, Wrongway]
             - [100, 100, Zephyr]
 
-        - Name: Family Name
-          Title:
-            Canonical: Character Name - Family Name
+        - Title:
+            Canonical: Family Name
           Description: |-
             Given and family names can be used independently as standalone names. In many cases you can reverse the order.
           Content:

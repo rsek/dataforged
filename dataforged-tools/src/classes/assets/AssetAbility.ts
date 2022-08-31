@@ -1,3 +1,4 @@
+import { AlterMomentum } from "@classes/assets/AlterMomentum.js";
 import { AssetState } from "@classes/assets/AssetState.js";
 import type { InputClock, InputNumber, InputText } from "@classes/common/Input.js";
 import { AlterMove , Move } from "@classes/index.js";
@@ -6,7 +7,7 @@ import { Replacement } from "@json_out/index.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
-import type { IAssetAbilityYaml } from "@yaml_in/index.js";
+import type { IAssetAbilityYaml, IAssetStateYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 /**
@@ -14,18 +15,16 @@ import _ from "lodash-es";
  */
 export class AssetAbility implements IAssetAbility {
   $id: IAssetAbility["$id"];
-  Name?: string | undefined;
   Label?: string | undefined;
   Text: string;
   Moves?: Move[] | undefined;
   Inputs?: (InputNumber|InputClock|InputText)[] | undefined;
   "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: IAssetAbility["Alter Properties"] | undefined;
-  "Alter Momentum"?: IAlterMomentum | undefined;
+  "Alter Momentum"?: AlterMomentum | undefined;
   Enabled: boolean;
   constructor(json: IAssetAbilityYaml, id: IAssetAbility["$id"], gamespace: Gamespace, parent: IAsset) {
     this.$id = id;
-    this.Name = json.Name;
     this.Label = json.Label;
     this.Text = json.Text;
     if (json.Inputs) {
@@ -33,7 +32,9 @@ export class AssetAbility implements IAssetAbility {
     }
 
     this.Enabled = json.Enabled ?? false;
-    this["Alter Momentum"] = json["Alter Momentum"];
+    if (json["Alter Momentum"]) {
+      this["Alter Momentum"] = new AlterMomentum(json["Alter Momentum"], this);
+    }
     this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove, index) => {
       if (parent.Usage.Shared && !alterMove.Trigger?.By) {
         if (!alterMove.Trigger) {
@@ -46,13 +47,13 @@ export class AssetAbility implements IAssetAbility {
     }) : json["Alter Moves"];
     this["Alter Properties"] = json["Alter Properties"];
     if (this["Alter Properties"]?.States) {
-      this["Alter Properties"].States = this["Alter Properties"].States.map(state => new AssetState(state as IAssetState, this));
+      this["Alter Properties"].States = this["Alter Properties"].States.map(state => new AssetState(state as IAssetStateYaml, this));
     }
     if (json.Moves) {
       this.Moves = json.Moves.map(moveJson => {
         const moveDataClone = _.cloneDeep(moveJson);
         moveDataClone.Asset = parent.$id;
-        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${formatIdFragment(moveDataClone.Name)}`;
+        moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${formatIdFragment(moveDataClone._idFragment ?? moveDataClone.Title.Canonical)}`;
         moveDataClone.Category = `${gamespace}/Moves/Assets`;
         if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
           moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);

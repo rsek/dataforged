@@ -1,3 +1,4 @@
+import { AlterMomentum } from "./AlterMomentum.js";
 import { AssetState } from "./AssetState.js";
 import { AlterMove, Move } from "../index.js";
 import { Replacement } from "../../json_out/index.js";
@@ -11,14 +12,15 @@ import _ from "lodash-es";
 export class AssetAbility {
     constructor(json, id, gamespace, parent) {
         this.$id = id;
-        this.Name = json.Name;
         this.Label = json.Label;
         this.Text = json.Text;
         if (json.Inputs) {
             this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this));
         }
         this.Enabled = json.Enabled ?? false;
-        this["Alter Momentum"] = json["Alter Momentum"];
+        if (json["Alter Momentum"]) {
+            this["Alter Momentum"] = new AlterMomentum(json["Alter Momentum"], this);
+        }
         this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove, index) => {
             if (parent.Usage.Shared && !alterMove.Trigger?.By) {
                 if (!alterMove.Trigger) {
@@ -37,7 +39,7 @@ export class AssetAbility {
             this.Moves = json.Moves.map(moveJson => {
                 const moveDataClone = _.cloneDeep(moveJson);
                 moveDataClone.Asset = parent.$id;
-                moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${formatIdFragment(moveDataClone.Name)}`;
+                moveDataClone.$id = `${this.$id.replace("/Assets/", "/Moves/Assets/")}/${formatIdFragment(moveDataClone._idFragment ?? moveDataClone.Title.Canonical)}`;
                 moveDataClone.Category = `${gamespace}/Moves/Assets`;
                 if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
                     moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);

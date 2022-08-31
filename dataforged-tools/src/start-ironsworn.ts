@@ -34,6 +34,18 @@ _.forEach(data, (value, key) => {
         fileName = "truths";
         break;
       }
+      case "Site Domains": {
+        fileName = "delve-site-domains";
+        break;
+      }
+      case "Site Themes": {
+        fileName = "delve-site-themes";
+        break;
+      }
+      case "Regions" : {
+        fileName = "regions";
+        break;
+      }
       default:
         throw new Error(`Unknown key in game data root object: ${key}`);
     }

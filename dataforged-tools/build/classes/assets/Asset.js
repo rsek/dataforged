@@ -1,7 +1,7 @@
 import { AssetAbility } from "./AssetAbility.js";
 import { AssetState } from "./AssetState.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";
-import { DisplayWithTitle } from "../common/Display.js";
+import { Display } from "../common/Display.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
 import { Title } from "../common/Title.js";
 import { InputSelectOptionType, InputType, Replacement } from "../../json_out/index.js";
@@ -20,18 +20,16 @@ export class Asset extends SourceInheritor {
         super(json.Source ?? {}, rootSource);
         // console.log(this.Source);
         this["Asset Type"] = parent.$id;
-        this.$id = `${formatIdFragment(this["Asset Type"])}/${formatIdFragment(json.Title.Short ?? json.Title.Canonical)}`;
+        this.$id = `${this["Asset Type"]}/${formatIdFragment(json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical)}`;
         buildLog(this.constructor, `Building: ${this.$id}`);
-        this.Name = json.Title.Short ?? json.Title.Canonical;
-        this.Title = new Title(json.Title, this.$id);
+        this.Title = new Title(json.Title, this);
         this.Aliases = json.Aliases;
-        this.Display = new DisplayWithTitle({
-            Title: json.Display?.Title ?? this.Name,
+        this.Display = new Display({
             Icon: json.Display?.Icon,
             Color: json.Display?.Color ?? parent.Display.Color
         });
         this.Usage = {
-            Shared: ["Command Vehicle", "Support Vehicle", "Module"].includes(parent.Name ?? parent.Title.Short ?? parent.Title.Canonical) ? true : false
+            Shared: ["Command Vehicle", "Support Vehicle", "Module"].includes(parent.Title.Short ?? parent.Title.Canonical) ? true : false
         };
         this.Attachments = json.Attachments;
         if (json.Inputs) {

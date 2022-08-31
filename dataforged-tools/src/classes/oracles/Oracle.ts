@@ -16,7 +16,6 @@ import _ from "lodash-es";
  */
 export class Oracle extends SourceInheritor implements IOracle  {
   $id: IOracle["$id"];
-  Name: string;
   Title: Title;
   Aliases?: string[] | undefined;
   "Member of"?: IOracle["$id"] | undefined;
@@ -50,14 +49,13 @@ export class Oracle extends SourceInheritor implements IOracle  {
     // }
     this.$id = buildOracleId<IOracle["$id"]>(gamespace, jsonClone, ...ancestorsJson);
     // buildLog(this.constructor, `Building: ${this.$id}`);
-    this.Name = jsonClone.Name;
-    this.Title = new Title(json.Title, this.$id);
+    this.Title = new Title(jsonClone.Title, this);
     this.Aliases = jsonClone.Aliases;
     this["Member of"] = memberOf ?? undefined;
     this.Category = category;
 
     this.Description = jsonClone.Description;
-    this.Display = new DisplayOracle((jsonClone.Display ?? {}) as Partial<IDisplayOracle>, this.Name, this.$id);
+    this.Display = new DisplayOracle((jsonClone.Display ?? {}) as Partial<IDisplayOracle>, this.$id);
     if (jsonClone.Usage) {
       this.Usage = new OracleUsage(jsonClone.Usage);
     }

@@ -6,22 +6,16 @@
       "items": { "$ref": "#/definitions/IMoveCategoryYaml" },
       "title": "Move Categories"
     },
-    "Name": { "type": "string", "title": "Name" },
     "Source": { "$ref": "#/definitions/ISource_1", "title": "Source" }
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Move Categories", "Name", "Source"],
+  "required": ["Move Categories", "Source"],
   "definitions": {
     "IMoveCategoryYaml": {
       "title": "IMoveCategoryYaml",
       "type": "object",
       "properties": {
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
@@ -34,7 +28,7 @@
         },
         "Display": {
           "description": "Data relevant to this item's display/rendering.",
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/IDisplay_1",
           "title": "Display"
         },
         "Source": {
@@ -42,24 +36,24 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
-        "Optional": {
-          "description": "Whether or not the source material presents this rules item as optional.",
-          "default": false,
-          "type": "boolean",
-          "title": "Optional"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
           "type": "string",
           "title": "$id"
         },
+        "Optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean",
+          "title": "Optional"
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Description", "Moves", "Name", "Source", "Title"]
+      "required": ["Description", "Moves", "Source", "Title"]
     },
     "IMoveYaml": {
       "title": "IMoveYaml",
@@ -73,31 +67,21 @@
           "$ref": "#/definitions/IMoveOutcomesYaml",
           "title": "Outcomes"
         },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$",
           "type": "string",
-          "title": "Text"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
-        "Category": {
-          "description": "The ID of the move's category.",
-          "type": "string",
-          "title": "Category"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
+          "title": "$id"
         },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
           "title": "Source"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
         "Optional": {
           "description": "Whether or not the source material presents this rules item as optional.",
@@ -105,16 +89,21 @@
           "type": "boolean",
           "title": "Optional"
         },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Category": {
+          "description": "The ID of the move's category.",
+          "type": "string",
+          "title": "Category"
+        },
         "Suggestions": {
           "$ref": "#/definitions/ISuggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
-        },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
         },
         "Asset": {
           "description": "The ID of the parent Asset of the move, if any.",
@@ -146,7 +135,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Name", "Text", "Title", "Trigger"]
+      "required": ["Text", "Title", "Trigger"]
     },
     "IMoveTriggerYaml": {
       "title": "IMoveTriggerYaml",
@@ -162,16 +151,16 @@
           },
           "title": "Options"
         },
-        "Text": {
-          "description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `Options`.",
-          "type": "string",
-          "title": "Text"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger$",
           "type": "string",
           "title": "$id"
+        },
+        "Text": {
+          "description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `Options`.",
+          "type": "string",
+          "title": "Text"
         },
         "By": {
           "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
@@ -191,16 +180,16 @@
           "$ref": "#/definitions/ICustomStatYaml",
           "title": "Custom stat"
         },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
           "type": "string",
           "title": "$id"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
         },
         "Method": {
           "$ref": "#/definitions/RollMethod",
@@ -233,37 +222,27 @@
             "additionalProperties": false,
             "type": "object",
             "properties": {
-              "Name": {
-                "description": "The name/label for this specific value of the custom stat.",
-                "type": "string",
-                "title": "Name"
-              },
               "$id": {
                 "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
                 "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
                 "type": "string",
                 "title": "$id"
               },
-              "Label": {
-                "description": "The user-facing text label of this item.",
-                "type": "string",
-                "title": "Label"
-              },
               "Value": {
                 "description": "The numeric value to be used as +stat when making an Action Roll.",
                 "type": "integer",
                 "title": "Value"
               },
+              "Label": {
+                "description": "The user-facing text label of this item.",
+                "type": "string",
+                "title": "Label"
+              },
               "_idFragment": { "type": "string", "title": "_idFragment" }
             },
-            "required": ["Label", "Name", "Value"]
+            "required": ["Label", "Value"]
           },
           "title": "Options"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
@@ -271,11 +250,16 @@
           "type": "string",
           "title": "$id"
         },
+        "Label": {
+          "description": "The user-facing text label of this item.",
+          "type": "string",
+          "title": "Label"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Name", "Options"]
+      "required": ["Label", "Options"]
     },
     "RollMethod": {
       "description": "The stat(s) or progress track(s) that may be rolled with the parent move trigger option.",
@@ -300,16 +284,16 @@
       "title": "IMoveTriggerOptionProgressYaml",
       "type": "object",
       "properties": {
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
           "type": "string",
           "title": "$id"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
         },
         "Method": {
           "$ref": "#/definitions/RollMethod",
@@ -372,15 +356,15 @@
           "items": { "$ref": "#/definitions/ICustomStatOption" },
           "title": "Options"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+        "Label": {
+          "description": "The user-facing text label of this item.",
           "type": "string",
-          "title": "Name"
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Name", "Options"]
+      "required": ["$id", "Label", "Options"]
     },
     "ICustomStatOption": {
       "title": "ICustomStatOption",
@@ -391,11 +375,6 @@
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
           "type": "string",
           "title": "$id"
-        },
-        "Name": {
-          "description": "The name/label for this specific value of the custom stat.",
-          "type": "string",
-          "title": "Name"
         },
         "Value": {
           "description": "The numeric value to be used as +stat when making an Action Roll.",
@@ -410,7 +389,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Label", "Name", "Value"]
+      "required": ["$id", "Label", "Value"]
     },
     "IMoveTriggerBy": {
       "title": "IMoveTriggerBy",
@@ -464,16 +443,16 @@
           "$ref": "#/definitions/IOutcomeInfoYaml_1",
           "title": "With a Match"
         },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
           "type": "string",
           "title": "$id"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
@@ -533,67 +512,6 @@
       "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
       "type": "string"
     },
-    "ITitle": {
-      "title": "ITitle",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
-          "type": "string",
-          "title": "Canonical"
-        },
-        "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
-          "type": "string",
-          "title": "Short"
-        },
-        "_idFragment": { "type": "string", "title": "_idFragment" }
-      },
-      "required": ["Canonical"]
-    },
-    "IDisplayWithTitle": {
-      "title": "IDisplayWithTitle",
-      "$ref": "#/definitions/Partial<IDisplayWithTitle>"
-    },
-    "Partial<IDisplayWithTitle>": {
-      "title": "Partial<IDisplayWithTitle>",
-      "type": "object",
-      "properties": {
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
     "ISource": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource",
@@ -649,6 +567,68 @@
         "https://creativecommons.org/licenses/by-sa/4.0/"
       ],
       "type": "string"
+    },
+    "IDisplay": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay",
+      "$ref": "#/definitions/Partial<IDisplay>"
+    },
+    "Partial<IDisplay>": {
+      "title": "Partial<IDisplay>",
+      "type": "object",
+      "properties": {
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use{@linkITitle.Standard}instead.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see{@linkITitle.Short}instead.",
+          "type": "string",
+          "title": "Standard"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use{@linkITitle.Standard}instead.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
     },
     "ISuggestions": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
@@ -786,20 +766,20 @@
       ],
       "type": "string"
     },
-    "IDisplay": {
+    "IDisplay_1": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
+      "title": "IDisplay_1",
       "type": "object",
       "properties": {
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -809,11 +789,6 @@
           "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
           "type": "string",
           "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
         }
       },
       "defaultProperties": [],

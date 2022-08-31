@@ -55,21 +55,6 @@ export interface IHasId {
     $id: string;
 }
 /**
- * Interface for items with a Name key.
- * @public
- * @deprecated {@link IHasLabel} or {@link IHasTitle} should be used instead.
- */
-export interface IHasName {
-    /**
-     * The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.
-     *
-     * If the item has Display.Title, that should be preferred for most user-facing labels.
-     * @localize
-     * @deprecated {@link IHasLabel} or {@link IHasTitle} should be used instead.
-     */
-    Name: string;
-}
-/**
  * Interface for items with rendering information.
  * @public
  */
@@ -213,12 +198,27 @@ export interface ITitle extends IHasId {
     /**
      * The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.
      *
-     * In some cases (e.g. tree displays) this name may be inappropriate; see {@link ITitle.Short} for an alternative.
+     * For items that represent a single table column, this is the label that appears at the top of the column.
+     *
+     * Use this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.
+     *
      * @localize
      */
     Canonical: string;
     /**
-     * A short title to use when the canonical title is too long or otherwise inappropriate.
+     * The recommended title for most implementations.
+     *
+     * This is usually the same as the canonical title, but editorializes a bit by trimming out things like "Oracle 15" in some Ironsworn oracles (because *nobody* remembers it as "Oracle 15").
+     *
+     * If you need the shortest possible name, see {@link ITitle.Short} instead.
+     * @localize
+     */
+    Standard: string;
+    /**
+     * The shortest title for this item that remains distinct amongst its siblings.
+     *
+     * Unless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.
+     *
      * @localize
      */
     Short: string;

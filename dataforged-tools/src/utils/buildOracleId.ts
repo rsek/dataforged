@@ -8,7 +8,7 @@ import type { IOracleCategoryYaml, IOracleYaml, YamlStubTitle } from "@yaml_in/i
  * @returns
  */
 export function buildOracleId<T extends string>(gamespace: Gamespace, ...ancestors: (IOracleYaml|IOracleCategoryYaml)[]): T {
-  const idParts: string[] = ancestors.reverse().map((item) => formatIdFragment(item._idFragment ?? item.Name));
+  const idParts: string[] = ancestors.reverse().map((item) => formatIdFragment(item._idFragment ?? item.Title.Short ?? item.Title.Standard ?? item.Title.Canonical));
   const id = [ gamespace, "Oracles", ...idParts ].join("/");
   return id as T;
 }

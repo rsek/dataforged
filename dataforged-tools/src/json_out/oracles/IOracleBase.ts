@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory , IOracleUsage, IRow, IRowNullStub } from "@json_out/index.js";
+import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory , IOracleUsage, IRow, IRowNullStub } from "@json_out/index.js";
 
 /**
  * @public
@@ -23,7 +23,7 @@ export interface IOracleBase extends Partial<
     IHasDescription &
     IHasOracleContent
   >, IHasId, IHasDisplay,
-  IHasSource, IHasName, IHasTitle  {
+  IHasSource, IHasTitle  {
   $id: string;
   /**
    * The ID of the most recent OracleCategory ancestor of this item, if any.
@@ -35,7 +35,7 @@ export interface IOracleBase extends Partial<
    * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
    */
   "Member of"?: IOracle["$id"] | undefined;
-  Display: IDisplayWithTitle;
+  Display: IDisplay;
   /**
    * Information on the usage of this oracle: recommended number of rolls, etc.
    */

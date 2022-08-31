@@ -7,16 +7,14 @@ import type { IAssetStateYaml } from "@yaml_in/index.js";
  */
 export class AssetState implements IAssetState {
   $id: string;
-  Name: string;
   Label: string;
   Enabled: boolean;
   Permanent: boolean;
   "Disables asset": boolean;
   Impact: boolean;
   constructor(json: IAssetStateYaml, parent: IHasId) {
-    this.$id = parent.$id + "/" + formatIdFragment(json.Name);
-    this.Name = json.Name;
-    this.Label = json.Name ?? json.Label;
+    this.$id = parent.$id + "/" + formatIdFragment(json._idFragment??json.Label);
+    this.Label = json.Label;
     this.Enabled = json.Enabled ?? false;
     this["Disables asset"] = json["Disables asset"] ?? false;
     this.Impact = json.Impact ?? false;

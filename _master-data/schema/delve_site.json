@@ -3,37 +3,29 @@
   "properties": {
     "Themes": {
       "type": "array",
-      "items": { "$ref": "#/definitions/IDelveTheme" },
+      "items": { "$ref": "#/definitions/IDelveThemeYaml" },
       "title": "Themes"
     },
     "Domains": {
       "type": "array",
-      "items": { "$ref": "#/definitions/IDelveDomain" },
+      "items": { "$ref": "#/definitions/IDelveDomainYaml" },
       "title": "Domains"
     }
   },
   "defaultProperties": [],
   "additionalProperties": false,
   "definitions": {
-    "IDelveTheme": {
-      "description": "Interface describing a delve site theme.\n\nThe **theme** represents the condition or state of the site, and indicates the kinds of denizens and threats you might find there.\n\nTogether, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.",
-      "title": "IDelveTheme",
+    "IDelveThemeYaml": {
+      "title": "IDelveThemeYaml",
       "type": "object",
       "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Ironsworn/Themes/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
         "Type": {
+          "$ref": "#/definitions/DelveCardType.Theme",
           "description": "Indicates whether this is a site Theme or a site Domain.",
-          "type": "string",
-          "enum": ["Theme"],
           "title": "Type"
         },
         "Features": {
-          "description": "The Features contributed by this Theme card. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.",
+          "description": "The Features contributed by this card. Effectively a 'partial' oracle table; combine with the features of another card to complete it.",
           "type": "array",
           "items": [
             {
@@ -99,7 +91,7 @@
           "title": "Features"
         },
         "Dangers": {
-          "description": "The Dangers contributed by this Theme card.  Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.",
+          "description": "The Dangers contributed by this card. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.",
           "type": "array",
           "items": [
             {
@@ -259,45 +251,45 @@
           "maxItems": 12,
           "title": "Dangers"
         },
-        "Summary": {
-          "description": "The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.",
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^Ironsworn/(Themes|Domains)/[A-z_-]+$",
           "type": "string",
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.\n\nMost are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
+          "title": "$id"
         },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Display": {
-          "$ref": "#/definitions/IDisplay_1",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Description": {
+          "description": "An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.\n\nMost are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.",
+          "type": "string",
+          "title": "Description"
+        },
+        "Summary": {
+          "description": "The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": [
-        "$id",
         "Dangers",
         "Description",
-        "Display",
         "Features",
-        "Name",
-        "Source",
         "Summary",
+        "Title",
         "Type"
       ]
+    },
+    "DelveCardType.Theme": {
+      "title": "DelveCardType.Theme",
+      "type": "string",
+      "enum": ["Theme"]
     },
     "IRow": {
       "description": "Interface representing a single row in an oracle table.",
@@ -766,13 +758,13 @@
       "properties": {
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -782,11 +774,6 @@
           "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
           "type": "string",
           "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
         }
       },
       "defaultProperties": [],
@@ -795,6 +782,10 @@
     "ISource": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
       "title": "ISource",
+      "$ref": "#/definitions/Partial<ISource>"
+    },
+    "Partial<ISource>": {
+      "title": "Partial<ISource>",
       "type": "object",
       "properties": {
         "Title": {
@@ -833,8 +824,7 @@
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Authors", "License", "Title"]
+      "additionalProperties": false
     },
     "License": {
       "title": "License",
@@ -845,25 +835,47 @@
       ],
       "type": "string"
     },
-    "IDelveDomain": {
-      "description": "Interface describing a delve site domain.\n\nThe **domain** represents the physical characteristics of the site—the terrain or architecture you must traverse.\n\nTogether, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.",
-      "title": "IDelveDomain",
+    "ITitle": {
+      "title": "ITitle",
+      "additionalProperties": false,
       "type": "object",
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Ironsworn/Domains/[A-z_-]+$",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
           "type": "string",
           "title": "$id"
         },
-        "Type": {
-          "description": "Indicates whether this is a site Theme or a site Domain.",
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use{@linkITitle.Standard}instead.",
           "type": "string",
-          "enum": ["Domain"],
+          "title": "Canonical"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see{@linkITitle.Short}instead.",
+          "type": "string",
+          "title": "Standard"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use{@linkITitle.Standard}instead.",
+          "type": "string",
+          "title": "Short"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "required": ["Canonical"]
+    },
+    "IDelveDomainYaml": {
+      "title": "IDelveDomainYaml",
+      "type": "object",
+      "properties": {
+        "Type": {
+          "$ref": "#/definitions/DelveCardType.Domain",
+          "description": "Indicates whether this is a site Theme or a site Domain.",
           "title": "Type"
         },
         "Features": {
-          "description": "The Features contributed by this Domain card. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.",
+          "description": "{@inheritDoc IDelveDomain.Features}",
           "type": "array",
           "items": [
             {
@@ -982,68 +994,14 @@
                 }
               },
               "required": ["Ceiling", "Floor"]
-            },
-            {
-              "additionalProperties": false,
-              "type": "object",
-              "properties": {
-                "Floor": { "type": "number", "enum": [89], "title": "Floor" },
-                "Ceiling": {
-                  "type": "number",
-                  "enum": [98],
-                  "title": "Ceiling"
-                },
-                "Result": {
-                  "type": "string",
-                  "enum": ["Something unusual or unexpected"],
-                  "title": "Result"
-                }
-              },
-              "required": ["Ceiling", "Floor", "Result"]
-            },
-            {
-              "additionalProperties": false,
-              "type": "object",
-              "properties": {
-                "Floor": { "type": "number", "enum": [99], "title": "Floor" },
-                "Ceiling": {
-                  "type": "number",
-                  "enum": [99],
-                  "title": "Ceiling"
-                },
-                "Result": {
-                  "type": "string",
-                  "enum": ["You transition into a new theme"],
-                  "title": "Result"
-                }
-              },
-              "required": ["Ceiling", "Floor", "Result"]
-            },
-            {
-              "additionalProperties": false,
-              "type": "object",
-              "properties": {
-                "Floor": { "type": "number", "enum": [100], "title": "Floor" },
-                "Ceiling": {
-                  "type": "number",
-                  "enum": [100],
-                  "title": "Ceiling"
-                },
-                "Result": {
-                  "type": "string",
-                  "enum": ["You transition into a new domain"],
-                  "title": "Result"
-                }
-              },
-              "required": ["Ceiling", "Floor", "Result"]
             }
           ],
-          "minItems": 12,
-          "maxItems": 12,
+          "minItems": 9,
+          "maxItems": 9,
           "title": "Features"
         },
         "Dangers": {
-          "description": "The Dangers contributed by this Domain card. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.",
+          "description": "The Dangers contributed by this card. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.",
           "type": "array",
           "items": [
             {
@@ -1116,45 +1074,45 @@
           "maxItems": 5,
           "title": "Dangers"
         },
-        "Summary": {
-          "description": "The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.",
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^Ironsworn/(Themes|Domains)/[A-z_-]+$",
           "type": "string",
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.\n\nMost are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
+          "title": "$id"
         },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Display": {
-          "$ref": "#/definitions/IDisplay_1",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        }
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
+        "Description": {
+          "description": "An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.\n\nMost are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.",
+          "type": "string",
+          "title": "Description"
+        },
+        "Summary": {
+          "description": "The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": [
-        "$id",
         "Dangers",
         "Description",
-        "Display",
         "Features",
-        "Name",
-        "Source",
         "Summary",
+        "Title",
         "Type"
       ]
+    },
+    "DelveCardType.Domain": {
+      "title": "DelveCardType.Domain",
+      "type": "string",
+      "enum": ["Domain"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -4,7 +4,6 @@ export * from "./GameObject.js";
 export * from "./MultipleRolls.js";
 export * from "./Oracle.js";
 export * from "./OracleCategory.js";
-export * from "./OracleCategoryDisplay.js";
 export * from "./OracleContent.js";
 export * from "./OracleDisplay.js";
 export * from "./OracleRef.js";

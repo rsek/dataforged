@@ -14,7 +14,7 @@ import SF from "./json/starforged/dataforged.json" assert {type: "json"};
 /**
  * @public
  */
-const starforged = SF as Starforged;
+const starforged = SF as unknown as Starforged;
 /**
  * @public
  */

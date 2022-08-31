@@ -1,4 +1,4 @@
-import type { IHasLabel, IHasName } from "@json_out/index.js";
+import type { IHasLabel } from "@json_out/index.js";
 
 /**
  * Describes a possible state for an asset, like the "Broken" status for certain assets (mainly Modules in *Starforged*).
@@ -6,11 +6,7 @@ import type { IHasLabel, IHasName } from "@json_out/index.js";
  * States are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.
  * @public
  */
-export interface IAssetState extends IHasName, IHasLabel {
-  /**
-   * @deprecated Use {@link IAssetState.Label} instead.
-   */
-  Name: string;
+export interface IAssetState extends  IHasLabel {
   /**
    * A string label for the state.
    * @example "Broken"

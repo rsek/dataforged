@@ -9,7 +9,6 @@ import type { IInputClockYaml, IInputNumberYaml, IInputTextYaml, IInputYaml } fr
 export declare abstract class Input implements IInput {
     $id: string;
     Label: string;
-    Name?: string | undefined;
     abstract Adjustable: boolean;
     "Input Type": InputType;
     constructor(json: IInputYaml, parent: IAssetAbility | IAsset | Asset | AssetAbility);

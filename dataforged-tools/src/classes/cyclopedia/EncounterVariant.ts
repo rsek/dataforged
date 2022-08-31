@@ -1,4 +1,4 @@
-import { DisplayWithTitle } from "@classes/common/Display.js";
+import { Display } from "@classes/common/Display.js";
 import type { EncounterStarforged  } from "@classes/index.js";
 import { Source , Title } from "@classes/index.js";
 import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterStarforged, IEncounterVariant } from "@json_out/index.js";
@@ -12,23 +12,20 @@ import type { IEncounterVariantYaml } from "@yaml_in/index.js";
 export class EncounterVariant implements IEncounterVariant {
   $id: IEncounterVariant["$id"];
   Source: Source;
-  Name: string;
   Title: Title;
   Rank: ChallengeRank;
-  Display: DisplayWithTitle;
+  Display: Display;
   Description: string;
   Nature: EncounterNatureStarforged;
   "Variant of": IEncounterStarforged["$id"];
   Tags?: EncounterTags[] | undefined;
   constructor(json: IEncounterVariantYaml, parent: EncounterStarforged) {
-    this.$id = (`${parent.$id}/${formatIdFragment(json._idFragment??json.Name)}`);
+    this.$id = (`${parent.$id}/${formatIdFragment(json._idFragment??json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical)}`);
     this.Source = new Source(parent.Source);
-    this.Name = json.Name;
-    this.Title = new Title(json.Title, this.$id);
+    this.Title = new Title(json.Title, this);
     this.Rank = json.Rank;
-    this.Display = new DisplayWithTitle(
+    this.Display = new Display(
       {
-        Title: json.Display?.Title ?? this.Name,
         Icon: json.Display?.Icon,
         Images: json.Display?.Images,
         Color: json.Display?.Color

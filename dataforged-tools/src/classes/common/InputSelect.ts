@@ -36,7 +36,7 @@ export class InputSelectOption implements IInputSelectOption {
   Label: string;
   Set: (IInputSelectOptionSetterStat| IInputSelectOptionSetterMeter | IInputSelectOptionSetterNumber| IInputSelectOptionSetterString)[];
   constructor(json: IInputSelectOptionYaml, parent: IInputSelect) {
-    this.$id = `${parent.$id}/Options/${formatIdFragment(json.Label)}`;
+    this.$id = `${parent.$id}/Options/${formatIdFragment(json._idFragment??json.Label)}`;
     this.Label = json.Label;
     this.Set = json.Set.map(attr => new InputSelectOptionSetter(attr, this)) as this["Set"];
   }
@@ -51,7 +51,7 @@ export class InputSelectOptionSetter implements IInputSelectOptionSetter {
   Type: InputSelectOptionType;
   Value: IInputSelectOptionSetter["Value"];
   constructor(json: IInputSelectOptionSetterYaml, parent: InputSelectOption) {
-    this.$id = `${parent.$id}/${formatIdFragment(json.Key)}`;
+    this.$id = `${parent.$id}/${formatIdFragment(json._idFragment??json.Key)}`;
     this.Type = json.Type;
     this.Key = json.Key;
     this.Value = json.Value;

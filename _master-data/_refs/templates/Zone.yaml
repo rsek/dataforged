@@ -8,7 +8,7 @@ Derelict Zone: &template:Zone
     Title:
       Canonical: ${{Zone}}
     Display:
-      Icon: ../../img/vector/Derelicts/${{Zone}}.svg
+      Icon: img/vector/Derelicts/${{Zone}}.svg
     Usage:
       Requires:
         Attributes:
@@ -20,6 +20,8 @@ Derelict Zone: &template:Zone
   Oracles:
     - _templateInfo: &template.info:Zone.Area
         Name: Area
+        Title:
+          Canonical: Area
         Content:
           Part of speech: [fragment]
         Usage:
@@ -42,6 +44,8 @@ Derelict Zone: &template:Zone
           - [86, 100, "New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)", *obj:DerelictZone.Access]
     - _templateInfo: &template.info:Zone.Feature
         Name: Feature
+        Title:
+          Canonical: Feature
         Content:
           Part of speech: [fragment]
         Usage:
@@ -64,6 +68,8 @@ Derelict Zone: &template:Zone
           - [89, 100, *result:Descriptor+Focus]
     - _templateInfo: &template.info:Zone.Peril
         Name: Peril
+        Title:
+          Canonical: Peril
         Content:
           Part of speech: [fragment]
         Usage:
@@ -85,6 +91,8 @@ Derelict Zone: &template:Zone
           - [99, 100, *result:RollTwice]
     - _templateInfo: &template.info:Zone.Opportunity
         Name: Opportunity
+        Title:
+          Canonical: Opportunity
         Content:
           Part of speech: [fragment]
         Usage:

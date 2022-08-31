@@ -3,24 +3,36 @@
     "Source": {
       "Title": "Ironsworn: Starforged Assets",
       "Authors": ["Shawn Tomkin"],
-      "Date": "050622"
+      "Date": "050622",
+      "License": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "$id": "Starforged/Assets/Command_Vehicle",
-    "Name": "Command Vehicle",
     "Description": "The **command vehicle** is your interstellar STARSHIP. It is a default asset for your character, taken when you begin your campaign. If you are playing with others, this is a shared asset; each of you may use the STARSHIP's abilities while aboard the craft.\n\nThe command vehicle has an integrity meter and starts at 5 integrity. When your STARSHIP takes a hit, make the [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) move to see what happens.",
-    "Display": { "Title": "Command Vehicles", "Color": "#9aa3ad" },
+    "Display": { "Color": "#9aa3ad" },
+    "Title": {
+      "$id": "Starforged/Assets/Command_Vehicle/Title",
+      "Canonical": "Command Vehicle",
+      "Standard": "Command Vehicle",
+      "Short": "Command Vehicle"
+    },
     "Usage": { "Shared": true },
     "Assets": [
       {
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Command_Vehicle",
         "$id": "Starforged/Assets/Command_Vehicle/Starship",
-        "Name": "Starship",
-        "Display": { "Title": "Starship", "Color": "#9aa3ad" },
+        "Title": {
+          "$id": "Starforged/Assets/Command_Vehicle/Starship/Title",
+          "Canonical": "Starship",
+          "Standard": "Starship",
+          "Short": "Starship"
+        },
+        "Display": { "Color": "#9aa3ad" },
         "Usage": { "Shared": true },
         "Attachments": {
           "Asset Types": ["Starforged/Assets/Module"],
@@ -30,7 +42,7 @@
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Command_Vehicle/Starship/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -38,7 +50,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Starforged/Assets/Command_Vehicle/Starship/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 5,
           "Conditions": ["Battered", "Cursed"],
           "Aliases": ["Command Vehicle Integrity", "Vehicle Integrity"]
@@ -138,28 +150,41 @@
     "Source": {
       "Title": "Ironsworn: Starforged Assets",
       "Authors": ["Shawn Tomkin"],
-      "Date": "050622"
+      "Date": "050622",
+      "License": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "$id": "Starforged/Assets/Module",
-    "Name": "Module",
     "Description": "**Modules** are linked to your STARSHIP and offer additional options and advantages when aboard that vehicle.\n\nThese assets are earned and managed by a single character. They can be shared with allies, but only if it's practical for them to make use of it (not everyone may know how to use a RESEARCH LAB).\n\nWhen you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](Starforged/Moves/Recover/Repair) it.",
-    "Display": { "Title": "Modules", "Color": "#7f5a90" },
+    "Display": { "Color": "#7f5a90" },
+    "Title": {
+      "$id": "Starforged/Assets/Module/Title",
+      "Canonical": "Modules",
+      "Standard": "Module",
+      "Short": "Module"
+    },
     "Usage": { "Shared": true },
     "Assets": [
       {
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Engine_Upgrade",
-        "Name": "Engine Upgrade",
-        "Display": { "Title": "Engine Upgrade", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Engine_Upgrade/Title",
+          "Canonical": "Engine Upgrade",
+          "Standard": "Engine Upgrade",
+          "Short": "Engine Upgrade"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Engine_Upgrade/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -305,16 +330,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Expanded_Hold",
-        "Name": "Expanded Hold",
-        "Display": { "Title": "Expanded Hold", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Expanded_Hold/Title",
+          "Canonical": "Expanded Hold",
+          "Standard": "Expanded Hold",
+          "Short": "Expanded Hold"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Expanded_Hold/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -325,7 +357,7 @@
           "Min": 0,
           "Value": 0,
           "$id": "Starforged/Assets/Module/Expanded_Hold/Condition_Meter",
-          "Name": "Cargo",
+          "Label": "Cargo",
           "Max": 3,
           "Conditions": []
         },
@@ -418,16 +450,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Grappler",
-        "Name": "Grappler",
-        "Display": { "Title": "Grappler", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Grappler/Title",
+          "Canonical": "Grappler",
+          "Standard": "Grappler",
+          "Short": "Grappler"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Grappler/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -444,14 +483,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler",
-                "Name": "Ready Grappler",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Title",
+                  "Canonical": "Ready Grappler",
+                  "Standard": "Ready Grappler",
+                  "Short": "Ready Grappler"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Module/Grappler",
-                "Display": { "Title": "Ready Grappler" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Module/Grappler/Abilities/1/Ready_Grappler/Trigger",
                   "Text": "When you take a minute or so to ready the grappler...",
@@ -552,16 +597,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Heavy_Cannons",
-        "Name": "Heavy Cannons",
-        "Display": { "Title": "Heavy Cannons", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Heavy_Cannons/Title",
+          "Canonical": "Heavy Cannons",
+          "Standard": "Heavy Cannons",
+          "Short": "Heavy Cannons"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Heavy_Cannons/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -681,16 +733,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Internal_Refit",
-        "Name": "Internal Refit",
-        "Display": { "Title": "Internal Refit", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Internal_Refit/Title",
+          "Canonical": "Internal Refit",
+          "Standard": "Internal Refit",
+          "Short": "Internal Refit"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Internal_Refit/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -744,14 +803,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves",
-                "Name": "Draw Reserves",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Title",
+                  "Canonical": "Draw Reserves",
+                  "Standard": "Draw Reserves",
+                  "Short": "Draw Reserves"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Module/Internal_Refit",
-                "Display": { "Title": "Draw Reserves" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Module/Internal_Refit/Abilities/2/Draw_Reserves/Trigger",
                   "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...",
@@ -833,16 +898,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Medbay",
-        "Name": "Medbay",
-        "Display": { "Title": "Medbay", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Medbay/Title",
+          "Canonical": "Medbay",
+          "Standard": "Medbay",
+          "Short": "Medbay"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Medbay/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1013,16 +1085,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Missile_Array",
-        "Name": "Missile Array",
-        "Display": { "Title": "Missile Array", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Missile_Array/Title",
+          "Canonical": "Missile Array",
+          "Standard": "Missile Array",
+          "Short": "Missile Array"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Missile_Array/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1033,7 +1112,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Starforged/Assets/Module/Missile_Array/Condition_Meter",
-          "Name": "Ammo",
+          "Label": "Ammo",
           "Max": 5,
           "Conditions": []
         },
@@ -1172,24 +1251,31 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Overseer",
-        "Name": "Overseer",
-        "Display": { "Title": "Overseer", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Overseer/Title",
+          "Canonical": "Overseer",
+          "Standard": "Overseer",
+          "Short": "Overseer"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Module/Overseer/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Overseer/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1302,16 +1388,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Reinforced_Hull",
-        "Name": "Reinforced Hull",
-        "Display": { "Title": "Reinforced Hull", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Reinforced_Hull/Title",
+          "Canonical": "Reinforced Hull",
+          "Standard": "Reinforced Hull",
+          "Short": "Reinforced Hull"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Reinforced_Hull/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1432,16 +1525,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Research_Lab",
-        "Name": "Research Lab",
-        "Display": { "Title": "Research Lab", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Research_Lab/Title",
+          "Canonical": "Research Lab",
+          "Standard": "Research Lab",
+          "Short": "Research Lab"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Research_Lab/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1641,16 +1741,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Sensor_Array",
-        "Name": "Sensor Array",
-        "Display": { "Title": "Sensor Array", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Sensor_Array/Title",
+          "Canonical": "Sensor Array",
+          "Standard": "Sensor Array",
+          "Short": "Sensor Array"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Sensor_Array/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1860,16 +1967,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Shields",
-        "Name": "Shields",
-        "Display": { "Title": "Shields", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Shields/Title",
+          "Canonical": "Shields",
+          "Standard": "Shields",
+          "Short": "Shields"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Shields/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -1880,7 +1994,7 @@
           "Min": 0,
           "Value": 0,
           "$id": "Starforged/Assets/Module/Shields/Condition_Meter",
-          "Name": "Shields",
+          "Label": "Shields",
           "Max": 4,
           "Conditions": []
         },
@@ -1894,14 +2008,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields",
-                "Name": "Raise Shields",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Title",
+                  "Canonical": "Raise Shields",
+                  "Standard": "Raise Shields",
+                  "Short": "Raise Shields"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Module/Shields",
-                "Display": { "Title": "Raise Shields" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Module/Shields/Abilities/1/Raise_Shields/Trigger",
                   "Text": "When you raise your shields...",
@@ -2007,16 +2127,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Stealth_Tech",
-        "Name": "Stealth Tech",
-        "Display": { "Title": "Stealth Tech", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Stealth_Tech/Title",
+          "Canonical": "Stealth Tech",
+          "Standard": "Stealth Tech",
+          "Short": "Stealth Tech"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Stealth_Tech/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -2196,16 +2323,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Vehicle_Bay",
-        "Name": "Vehicle Bay",
-        "Display": { "Title": "Vehicle Bay", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Vehicle_Bay/Title",
+          "Canonical": "Vehicle Bay",
+          "Standard": "Vehicle Bay",
+          "Short": "Vehicle Bay"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Vehicle_Bay/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -2317,16 +2451,23 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Module",
         "$id": "Starforged/Assets/Module/Workshop",
-        "Name": "Workshop",
-        "Display": { "Title": "Workshop", "Color": "#7f5a90" },
+        "Title": {
+          "$id": "Starforged/Assets/Module/Workshop/Title",
+          "Canonical": "Workshop",
+          "Standard": "Workshop",
+          "Short": "Workshop"
+        },
+        "Display": { "Color": "#7f5a90" },
         "Usage": { "Shared": true },
         "States": [
           {
-            "Name": "Broken",
+            "$id": "Starforged/Assets/Module/Workshop/Broken",
+            "Label": "Broken",
             "Enabled": false,
             "Disables asset": true,
             "Impact": false,
@@ -2521,30 +2662,42 @@
     "Source": {
       "Title": "Ironsworn: Starforged Assets",
       "Authors": ["Shawn Tomkin"],
-      "Date": "050622"
+      "Date": "050622",
+      "License": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "$id": "Starforged/Assets/Support_Vehicle",
-    "Name": "Support Vehicle",
     "Description": "**Support vehicles** complement your command vehicle for planetside or short-range operations. If you are playing with others, one of you might serve as the pilot or owner of a support vehicle, but anyone on board can use its abilities as appropriate to the situation.\n\nAs with the command vehicle, your support vehicles have integrity meters. The maximum integrity varies based on the type of vehicle. When a support vehicle faces a damaging situation or environment, you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) to see how it fares.",
-    "Display": { "Title": "Support Vehicles", "Color": "#495790" },
+    "Display": { "Color": "#495790" },
+    "Title": {
+      "$id": "Starforged/Assets/Support_Vehicle/Title",
+      "Canonical": "Support Vehicles",
+      "Standard": "Support Vehicle",
+      "Short": "Support Vehicle"
+    },
     "Usage": { "Shared": true },
     "Assets": [
       {
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Exosuit",
-        "Name": "Exosuit",
-        "Display": { "Title": "Exosuit", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Title",
+          "Canonical": "Exosuit",
+          "Standard": "Exosuit",
+          "Short": "Exosuit"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -2552,7 +2705,7 @@
           "Min": 0,
           "Value": 6,
           "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 6,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -2693,18 +2846,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Hoverbike",
-        "Name": "Hoverbike",
-        "Display": { "Title": "Hoverbike", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Title",
+          "Canonical": "Hoverbike",
+          "Standard": "Hoverbike",
+          "Short": "Hoverbike"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -2712,7 +2871,7 @@
           "Min": 0,
           "Value": 3,
           "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 3,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -2800,13 +2959,17 @@
             "Text": "When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.",
             "Enabled": false,
             "Alter Momentum": {
+              "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum",
               "Burn": [
                 {
+                  "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum/Burn",
                   "Trigger": {
-                    "Text": "When you make a move while maneuvering your bike"
+                    "Text": "When you make a move while maneuvering your bike",
+                    "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum/Burn/Trigger"
                   },
                   "Effect": {
-                    "Text": "Roll your action die. On a 5 or 6, do not reset momentum."
+                    "Text": "Roll your action die. On a 5 or 6, do not reset momentum.",
+                    "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum/Burn/Effect"
                   }
                 }
               ]
@@ -2818,18 +2981,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Rover",
-        "Name": "Rover",
-        "Display": { "Title": "Rover", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Rover/Title",
+          "Canonical": "Rover",
+          "Standard": "Rover",
+          "Short": "Rover"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Rover/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -2837,7 +3006,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Starforged/Assets/Support_Vehicle/Rover/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 5,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -2970,18 +3139,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Service_Pod",
-        "Name": "Service Pod",
-        "Display": { "Title": "Service Pod", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Title",
+          "Canonical": "Service Pod",
+          "Standard": "Service Pod",
+          "Short": "Service Pod"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -2989,7 +3164,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 4,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -3094,18 +3269,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Shuttle",
-        "Name": "Shuttle",
-        "Display": { "Title": "Shuttle", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Title",
+          "Canonical": "Shuttle",
+          "Standard": "Shuttle",
+          "Short": "Shuttle"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -3113,7 +3294,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 4,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -3195,18 +3376,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Skiff",
-        "Name": "Skiff",
-        "Display": { "Title": "Skiff", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Skiff/Title",
+          "Canonical": "Skiff",
+          "Standard": "Skiff",
+          "Short": "Skiff"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Skiff/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -3214,7 +3401,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Skiff/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 4,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -3315,18 +3502,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Support_Vehicle",
         "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter",
-        "Name": "Snub Fighter",
-        "Display": { "Title": "Snub Fighter", "Color": "#495790" },
+        "Title": {
+          "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Title",
+          "Canonical": "Snub Fighter",
+          "Standard": "Snub Fighter",
+          "Short": "Snub Fighter"
+        },
+        "Display": { "Color": "#495790" },
         "Usage": { "Shared": true },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -3334,7 +3527,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Condition_Meter",
-          "Name": "Integrity",
+          "Label": "Integrity",
           "Max": 4,
           "Conditions": ["Battered"],
           "Aliases": ["Support Vehicle Integrity", "Vehicle Integrity"]
@@ -3422,7 +3615,7 @@
               {
                 "Input Type": "Number",
                 "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/3/Inputs/Victory_Marks",
-                "Name": "Victory Marks",
+                "Label": "Victory Marks",
                 "Step": 1,
                 "Min": 0,
                 "Max": null,
@@ -3440,24 +3633,36 @@
     "Source": {
       "Title": "Ironsworn: Starforged Assets",
       "Authors": ["Shawn Tomkin"],
-      "Date": "050622"
+      "Date": "050622",
+      "License": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "$id": "Starforged/Assets/Path",
-    "Name": "Path",
     "Description": "**Paths** are your background, interests, training, skills, powers, and key equipment. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. When you create your character in the next chapter, you'll select at least two paths to get started.\n\nSome paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.",
-    "Display": { "Title": "Paths", "Color": "#3f7faa" },
+    "Display": { "Color": "#3f7faa" },
+    "Title": {
+      "$id": "Starforged/Assets/Path/Title",
+      "Canonical": "Paths",
+      "Standard": "Path",
+      "Short": "Path"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Ace",
-        "Name": "Ace",
-        "Display": { "Title": "Ace", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Ace/Title",
+          "Canonical": "Ace",
+          "Standard": "Ace",
+          "Short": "Ace"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3569,19 +3774,25 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Archer",
-        "Name": "Archer",
-        "Display": { "Title": "Archer", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Archer/Title",
+          "Canonical": "Archer",
+          "Standard": "Archer",
+          "Short": "Archer"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a power bow...",
         "Condition Meter": {
           "Min": 0,
           "Value": 6,
           "$id": "Starforged/Assets/Path/Archer/Condition_Meter",
-          "Name": "Ammo",
+          "Label": "Ammo",
           "Max": 6,
           "Conditions": []
         },
@@ -3595,14 +3806,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles",
-                "Name": "Craft Projectiles",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Title",
+                  "Canonical": "Craft Projectiles",
+                  "Standard": "Craft Projectiles",
+                  "Short": "Craft Projectiles"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Archer",
-                "Display": { "Title": "Craft Projectiles" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Archer/Abilities/1/Craft_Projectiles/Trigger",
                   "Text": "When you replenish your ammo by crafting projectiles...",
@@ -3715,12 +3932,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Armored",
-        "Name": "Armored",
-        "Display": { "Title": "Armored", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Armored/Title",
+          "Canonical": "Armored",
+          "Standard": "Armored",
+          "Short": "Armored"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you wear your finely crafted set of personal armor...",
         "Abilities": [
@@ -3804,7 +4027,8 @@
             "Alter Properties": {
               "States": [
                 {
-                  "Name": "Broken",
+                  "$id": "Starforged/Assets/Path/Armored/Abilities/3/Broken",
+                  "Label": "Broken",
                   "Enabled": false,
                   "Disables asset": true,
                   "Impact": false,
@@ -3819,12 +4043,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Artist",
-        "Name": "Artist",
-        "Display": { "Title": "Artist", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Artist/Title",
+          "Canonical": "Artist",
+          "Standard": "Artist",
+          "Short": "Artist"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -3914,14 +4144,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate",
-                "Name": "Commemorate",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Title",
+                  "Canonical": "Commemorate",
+                  "Standard": "Commemorate",
+                  "Short": "Commemorate"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Artist",
-                "Display": { "Title": "Commemorate" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Artist/Abilities/3/Commemorate/Trigger",
                   "Text": "When you create or perform a significant artistic work as a public memorial or tribute...",
@@ -3960,30 +4196,37 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Augmented",
-        "Name": "Augmented",
-        "Display": { "Title": "Augmented", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Augmented/Title",
+          "Canonical": "Augmented",
+          "Standard": "Augmented",
+          "Short": "Augmented"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Augmented/Inputs/One",
-            "Name": "One",
+            "Label": "One",
             "Adjustable": false
           },
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Augmented/Inputs/Two",
-            "Name": "Two",
+            "Label": "Two",
             "Adjustable": false
           }
         ],
         "States": [
           {
-            "Name": "Broken (Augment 1)",
+            "$id": "Starforged/Assets/Path/Augmented/Broken_Augment_1",
+            "Label": "Broken (Augment 1)",
             "Enabled": false,
             "Disables asset": false,
             "Impact": false,
@@ -4040,7 +4283,8 @@
             "Alter Properties": {
               "States": [
                 {
-                  "Name": "Broken (Augment 2)",
+                  "$id": "Starforged/Assets/Path/Augmented/Abilities/2/Broken_Augment_2",
+                  "Label": "Broken (Augment 2)",
                   "Enabled": false,
                   "Disables asset": false,
                   "Impact": false,
@@ -4070,18 +4314,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Bannersworn",
-        "Name": "Bannersworn",
-        "Display": { "Title": "Bannersworn", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Bannersworn/Title",
+          "Canonical": "Bannersworn",
+          "Standard": "Bannersworn",
+          "Short": "Bannersworn"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Bannersworn/Inputs/Ideology",
-            "Name": "Ideology",
+            "Label": "Ideology",
             "Adjustable": false
           }
         ],
@@ -4234,12 +4484,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Blademaster",
-        "Name": "Blademaster",
-        "Display": { "Title": "Blademaster", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Blademaster/Title",
+          "Canonical": "Blademaster",
+          "Standard": "Blademaster",
+          "Short": "Blademaster"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a bladed weapon...",
         "Abilities": [
@@ -4350,7 +4606,7 @@
               {
                 "Input Type": "Text",
                 "$id": "Starforged/Assets/Path/Blademaster/Abilities/3/Inputs/Name",
-                "Name": "Name",
+                "Label": "Name",
                 "Adjustable": false
               }
             ],
@@ -4393,12 +4649,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Bounty_Hunter",
-        "Name": "Bounty Hunter",
-        "Display": { "Title": "Bounty Hunter", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Bounty_Hunter/Title",
+          "Canonical": "Bounty Hunter",
+          "Standard": "Bounty Hunter",
+          "Short": "Bounty Hunter"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4557,12 +4819,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Brawler",
-        "Name": "Brawler",
-        "Display": { "Title": "Brawler", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Brawler/Title",
+          "Canonical": "Brawler",
+          "Standard": "Brawler",
+          "Short": "Brawler"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you fight unarmed or with a close quarters weapon...",
         "Abilities": [
@@ -4704,18 +4972,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Courier",
-        "Name": "Courier",
-        "Display": { "Title": "Courier", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Courier/Title",
+          "Canonical": "Courier",
+          "Standard": "Courier",
+          "Short": "Courier"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 5,
           "$id": "Starforged/Assets/Path/Courier/Condition_Meter",
-          "Name": "Safety",
+          "Label": "Safety",
           "Max": 5,
           "Conditions": []
         },
@@ -4846,12 +5120,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Demolitionist",
-        "Name": "Demolitionist",
-        "Display": { "Title": "Demolitionist", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Demolitionist/Title",
+          "Canonical": "Demolitionist",
+          "Standard": "Demolitionist",
+          "Short": "Demolitionist"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -4969,30 +5249,36 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Devotant",
-        "Name": "Devotant",
-        "Display": { "Title": "Devotant", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Devotant/Title",
+          "Canonical": "Devotant",
+          "Standard": "Devotant",
+          "Short": "Devotant"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Devotant/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           },
           {
             "Input Type": "Select",
             "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat",
-            "Name": "Linked Stat",
+            "Label": "Linked Stat",
             "Adjustable": false,
             "Sets": [{ "Key": "Stat", "Type": "Stat" }],
             "Options": [
               {
                 "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge",
-                "Name": "Edge",
+                "Label": "Edge",
                 "Set": [
                   {
                     "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge/Stat",
@@ -5004,7 +5290,7 @@
               },
               {
                 "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart",
-                "Name": "Heart",
+                "Label": "Heart",
                 "Set": [
                   {
                     "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart/Stat",
@@ -5016,7 +5302,7 @@
               },
               {
                 "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron",
-                "Name": "Iron",
+                "Label": "Iron",
                 "Set": [
                   {
                     "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron/Stat",
@@ -5028,7 +5314,7 @@
               },
               {
                 "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow",
-                "Name": "Shadow",
+                "Label": "Shadow",
                 "Set": [
                   {
                     "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow/Stat",
@@ -5040,7 +5326,7 @@
               },
               {
                 "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits",
-                "Name": "Wits",
+                "Label": "Wits",
                 "Set": [
                   {
                     "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits/Stat",
@@ -5197,12 +5483,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Diplomat",
-        "Name": "Diplomat",
-        "Display": { "Title": "Diplomat", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Diplomat/Title",
+          "Canonical": "Diplomat",
+          "Standard": "Diplomat",
+          "Short": "Diplomat"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5335,12 +5627,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Empath",
-        "Name": "Empath",
-        "Display": { "Title": "Empath", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Empath/Title",
+          "Canonical": "Empath",
+          "Standard": "Empath",
+          "Short": "Empath"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5352,14 +5650,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart",
-                "Name": "Read Heart",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Title",
+                  "Canonical": "Read Heart",
+                  "Standard": "Read Heart",
+                  "Short": "Read Heart"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Empath",
-                "Display": { "Title": "Read Heart" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Empath/Abilities/1/Read_Heart/Trigger",
                   "Text": "When you read the intent, emotions, or memories of a nearby being...",
@@ -5459,12 +5763,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Explorer",
-        "Name": "Explorer",
-        "Display": { "Title": "Explorer", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Explorer/Title",
+          "Canonical": "Explorer",
+          "Standard": "Explorer",
+          "Short": "Explorer"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5558,12 +5868,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Fated",
-        "Name": "Fated",
-        "Display": { "Title": "Fated", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Fated/Title",
+          "Canonical": "Fated",
+          "Standard": "Fated",
+          "Short": "Fated"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5674,18 +5990,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Firebrand",
-        "Name": "Firebrand",
-        "Display": { "Title": "Firebrand", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Firebrand/Title",
+          "Canonical": "Firebrand",
+          "Standard": "Firebrand",
+          "Short": "Firebrand"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 0,
           "$id": "Starforged/Assets/Path/Firebrand/Condition_Meter",
-          "Name": "Fire",
+          "Label": "Fire",
           "Max": 5,
           "Conditions": []
         },
@@ -5699,14 +6021,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy",
-                "Name": "Gather Energy",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Title",
+                  "Canonical": "Gather Energy",
+                  "Standard": "Gather Energy",
+                  "Short": "Gather Energy"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Firebrand",
-                "Display": { "Title": "Gather Energy" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Firebrand/Abilities/1/Gather_Energy/Trigger",
                   "Text": "When you rest and meditate to gather fiery energy...",
@@ -5793,12 +6121,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Fugitive",
-        "Name": "Fugitive",
-        "Display": { "Title": "Fugitive", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Fugitive/Title",
+          "Canonical": "Fugitive",
+          "Standard": "Fugitive",
+          "Short": "Fugitive"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5808,7 +6142,7 @@
               {
                 "Input Type": "Clock",
                 "$id": "Starforged/Assets/Path/Fugitive/Abilities/1/Inputs/Notable_foe_or_force_tracks_you_down",
-                "Name": "Notable foe or force tracks you down",
+                "Label": "Notable foe or force tracks you down",
                 "Clock Type": "Tension",
                 "Segments": 4,
                 "Filled": 0,
@@ -5864,12 +6198,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Gearhead",
-        "Name": "Gearhead",
-        "Display": { "Title": "Gearhead", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Gearhead/Title",
+          "Canonical": "Gearhead",
+          "Standard": "Gearhead",
+          "Short": "Gearhead"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -5999,12 +6339,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Gunner",
-        "Name": "Gunner",
-        "Display": { "Title": "Gunner", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Gunner/Title",
+          "Canonical": "Gunner",
+          "Standard": "Gunner",
+          "Short": "Gunner"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a heavy ranged personal weapon...",
         "Abilities": [
@@ -6130,7 +6476,7 @@
               {
                 "Input Type": "Text",
                 "$id": "Starforged/Assets/Path/Gunner/Abilities/3/Inputs/Name",
-                "Name": "Name",
+                "Label": "Name",
                 "Adjustable": true
               }
             ],
@@ -6194,12 +6540,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Gunslinger",
-        "Name": "Gunslinger",
-        "Display": { "Title": "Gunslinger", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Gunslinger/Title",
+          "Canonical": "Gunslinger",
+          "Standard": "Gunslinger",
+          "Short": "Gunslinger"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a pistol...",
         "Abilities": [
@@ -6330,12 +6682,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Haunted",
-        "Name": "Haunted",
-        "Display": { "Title": "Haunted", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Haunted/Title",
+          "Canonical": "Haunted",
+          "Standard": "Haunted",
+          "Short": "Haunted"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6440,12 +6798,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Healer",
-        "Name": "Healer",
-        "Display": { "Title": "Healer", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Healer/Title",
+          "Canonical": "Healer",
+          "Standard": "Healer",
+          "Short": "Healer"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6553,13 +6917,19 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Infiltrator",
-        "Name": "Infiltrator",
+        "Title": {
+          "$id": "Starforged/Assets/Path/Infiltrator/Title",
+          "Canonical": "Infiltrator",
+          "Standard": "Infiltrator",
+          "Short": "Infiltrator"
+        },
         "Aliases": ["Agent"],
-        "Display": { "Title": "Infiltrator", "Color": "#3f7faa" },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6685,12 +7055,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Kinetic",
-        "Name": "Kinetic",
-        "Display": { "Title": "Kinetic", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Kinetic/Title",
+          "Canonical": "Kinetic",
+          "Standard": "Kinetic",
+          "Short": "Kinetic"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6754,13 +7130,19 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Leader",
-        "Name": "Leader",
+        "Title": {
+          "$id": "Starforged/Assets/Path/Leader/Title",
+          "Canonical": "Leader",
+          "Standard": "Leader",
+          "Short": "Leader"
+        },
         "Aliases": ["Commander"],
-        "Display": { "Title": "Leader", "Color": "#3f7faa" },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6882,12 +7264,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Looper",
-        "Name": "Looper",
-        "Display": { "Title": "Looper", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Looper/Title",
+          "Canonical": "Looper",
+          "Standard": "Looper",
+          "Short": "Looper"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -6922,14 +7310,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back",
-                "Name": "Loop Back",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Title",
+                  "Canonical": "Loop Back",
+                  "Standard": "Loop Back",
+                  "Short": "Loop Back"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Looper",
-                "Display": { "Title": "Loop Back" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger",
                   "Options": [
@@ -6943,21 +7337,21 @@
                       ],
                       "Custom stat": {
                         "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat",
-                        "Name": "Time gap",
+                        "Label": "Time gap",
                         "Options": [
                           {
                             "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat/Minutes",
-                            "Name": "Minutes",
+                            "Label": "Minutes",
                             "Value": 4
                           },
                           {
                             "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat/Hours",
-                            "Name": "Hours",
+                            "Label": "Hours",
                             "Value": 3
                           },
                           {
                             "$id": "Starforged/Moves/Assets/Path/Looper/Abilities/2/Loop_Back/Trigger/Options/1/Custom_stat/Days",
-                            "Name": "Days",
+                            "Label": "Days",
                             "Value": 2
                           }
                         ]
@@ -6995,13 +7389,19 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Lore_Hunter",
-        "Name": "Lore Hunter",
+        "Title": {
+          "$id": "Starforged/Assets/Path/Lore_Hunter/Title",
+          "Canonical": "Lore Hunter",
+          "Standard": "Lore Hunter",
+          "Short": "Lore Hunter"
+        },
         "Aliases": ["Archivist", "Lore-Hunter"],
-        "Display": { "Title": "Lore Hunter", "Color": "#3f7faa" },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7169,12 +7569,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Loyalist",
-        "Name": "Loyalist",
-        "Display": { "Title": "Loyalist", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Loyalist/Title",
+          "Canonical": "Loyalist",
+          "Standard": "Loyalist",
+          "Short": "Loyalist"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7227,12 +7633,18 @@
             "Text": "You may burn momentum on behalf of an ally to improve their result on a move. If you do, your ally takes +1 momentum.",
             "Enabled": false,
             "Alter Momentum": {
+              "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum",
               "Burn": [
                 {
+                  "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum/Burn",
                   "Trigger": {
-                    "Text": "On behalf of an ally to improve their result on a move"
+                    "Text": "On behalf of an ally to improve their result on a move",
+                    "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum/Burn/Trigger"
                   },
-                  "Effect": { "Text": "Your ally takes +1 momentum." }
+                  "Effect": {
+                    "Text": "Your ally takes +1 momentum.",
+                    "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum/Burn/Effect"
+                  }
                 }
               ]
             }
@@ -7268,12 +7680,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Mercenary",
-        "Name": "Mercenary",
-        "Display": { "Title": "Mercenary", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Mercenary/Title",
+          "Canonical": "Mercenary",
+          "Standard": "Mercenary",
+          "Short": "Mercenary"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7432,12 +7850,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Naturalist",
-        "Name": "Naturalist",
-        "Display": { "Title": "Naturalist", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Naturalist/Title",
+          "Canonical": "Naturalist",
+          "Standard": "Naturalist",
+          "Short": "Naturalist"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7605,12 +8029,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Navigator",
-        "Name": "Navigator",
-        "Display": { "Title": "Navigator", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Navigator/Title",
+          "Canonical": "Navigator",
+          "Standard": "Navigator",
+          "Short": "Navigator"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7769,12 +8199,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Outcast",
-        "Name": "Outcast",
-        "Display": { "Title": "Outcast", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Outcast/Title",
+          "Canonical": "Outcast",
+          "Standard": "Outcast",
+          "Short": "Outcast"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -7826,14 +8262,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By",
-                "Name": "Scrape By",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Title",
+                  "Canonical": "Scrape By",
+                  "Standard": "Scrape By",
+                  "Short": "Scrape By"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Outcast",
-                "Display": { "Title": "Scrape By" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Outcast/Abilities/2/Scrape_By/Trigger",
                   "Text": "When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...",
@@ -7896,12 +8338,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Scavenger",
-        "Name": "Scavenger",
-        "Display": { "Title": "Scavenger", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Scavenger/Title",
+          "Canonical": "Scavenger",
+          "Standard": "Scavenger",
+          "Short": "Scavenger"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8023,12 +8471,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Scoundrel",
-        "Name": "Scoundrel",
-        "Display": { "Title": "Scoundrel", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Scoundrel/Title",
+          "Canonical": "Scoundrel",
+          "Standard": "Scoundrel",
+          "Short": "Scoundrel"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8111,15 +8565,19 @@
             "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.",
             "Enabled": false,
             "Alter Momentum": {
+              "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum",
               "Burn": [
                 {
+                  "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum/Burn",
                   "Trigger": {
-                    "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit"
+                    "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit",
+                    "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum/Burn/Trigger"
                   },
-                  "Outcomes": ["Strong Hit"],
                   "Effect": {
-                    "Text": "Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track."
-                  }
+                    "Text": "Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.",
+                    "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum/Burn/Effect"
+                  },
+                  "Outcomes": ["Strong Hit"]
                 }
               ]
             }
@@ -8130,12 +8588,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Seer",
-        "Name": "Seer",
-        "Display": { "Title": "Seer", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Seer/Title",
+          "Canonical": "Seer",
+          "Standard": "Seer",
+          "Short": "Seer"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8252,12 +8716,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Shade",
-        "Name": "Shade",
-        "Display": { "Title": "Shade", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Shade/Title",
+          "Canonical": "Shade",
+          "Standard": "Shade",
+          "Short": "Shade"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8326,14 +8796,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness",
-                "Name": "Shroud in Darkness",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Title",
+                  "Canonical": "Shroud in Darkness",
+                  "Standard": "Shroud in Darkness",
+                  "Short": "Shroud in Darkness"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Shade",
-                "Display": { "Title": "Shroud in Darkness" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Shade/Abilities/2/Shroud_in_Darkness/Trigger",
                   "Text": "When you expand your veil to immerse your surroundings in darkness...",
@@ -8376,12 +8852,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Slayer",
-        "Name": "Slayer",
-        "Display": { "Title": "Slayer", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Slayer/Title",
+          "Canonical": "Slayer",
+          "Standard": "Slayer",
+          "Short": "Slayer"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8532,12 +9014,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Sleuth",
-        "Name": "Sleuth",
-        "Display": { "Title": "Sleuth", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Sleuth/Title",
+          "Canonical": "Sleuth",
+          "Standard": "Sleuth",
+          "Short": "Sleuth"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8631,12 +9119,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Sniper",
-        "Name": "Sniper",
-        "Display": { "Title": "Sniper", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Sniper/Title",
+          "Canonical": "Sniper",
+          "Standard": "Sniper",
+          "Short": "Sniper"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a rifle...",
         "Abilities": [
@@ -8649,14 +9143,20 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe",
-                "Name": "Snipe Minor Foe",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Title",
+                  "Canonical": "Snipe Minor Foe",
+                  "Standard": "Snipe Minor Foe",
+                  "Short": "Snipe Minor Foe"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Sniper",
-                "Display": { "Title": "Snipe Minor Foe" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Sniper/Abilities/1/Snipe_Minor_Foe/Trigger",
                   "Text": "When you target a minor foe from a distance (outside of a fight)...",
@@ -8785,12 +9285,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Tech",
-        "Name": "Tech",
-        "Display": { "Title": "Tech", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Tech/Title",
+          "Canonical": "Tech",
+          "Standard": "Tech",
+          "Short": "Tech"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -8894,12 +9400,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Trader",
-        "Name": "Trader",
-        "Display": { "Title": "Trader", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Trader/Title",
+          "Canonical": "Trader",
+          "Standard": "Trader",
+          "Short": "Trader"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -9041,18 +9553,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Vestige",
-        "Name": "Vestige",
-        "Display": { "Title": "Vestige", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Vestige/Title",
+          "Canonical": "Vestige",
+          "Standard": "Vestige",
+          "Short": "Vestige"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Path/Vestige/Inputs/Last_of",
-            "Name": "Last of",
+            "Label": "Last of",
             "Adjustable": false
           }
         ],
@@ -9146,7 +9664,7 @@
               {
                 "Input Type": "Text",
                 "$id": "Starforged/Assets/Path/Vestige/Abilities/3/Inputs/Relic",
-                "Name": "Relic",
+                "Label": "Relic",
                 "Adjustable": false
               }
             ],
@@ -9184,12 +9702,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Veteran",
-        "Name": "Veteran",
-        "Display": { "Title": "Veteran", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Veteran/Title",
+          "Canonical": "Veteran",
+          "Standard": "Veteran",
+          "Short": "Veteran"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -9197,13 +9721,28 @@
             "Text": "When you are in a fight, increase your momentum reset by 1. Then, if you burn momentum to improve your result, add +1 on your next move.",
             "Enabled": true,
             "Alter Momentum": {
-              "Reset": [
-                { "Trigger": { "Text": "When you are in a fight" }, "Value": 1 }
-              ],
+              "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum",
               "Burn": [
                 {
-                  "Trigger": { "Text": "When you are in a fight" },
-                  "Effect": { "Text": "Add +1 on your next move" }
+                  "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Burn",
+                  "Trigger": {
+                    "Text": "When you are in a fight",
+                    "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Burn/Trigger"
+                  },
+                  "Effect": {
+                    "Text": "Add +1 on your next move",
+                    "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Burn/Effect"
+                  }
+                }
+              ],
+              "Reset": [
+                {
+                  "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Reset",
+                  "Trigger": {
+                    "Text": "When you are in a fight",
+                    "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Reset/Trigger"
+                  },
+                  "Value": 1
                 }
               ]
             }
@@ -9283,12 +9822,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Voidborn",
-        "Name": "Voidborn",
-        "Display": { "Title": "Voidborn", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Voidborn/Title",
+          "Canonical": "Voidborn",
+          "Standard": "Voidborn",
+          "Short": "Voidborn"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -9296,10 +9841,13 @@
             "Text": "You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).",
             "Enabled": true,
             "Alter Momentum": {
+              "$id": "Starforged/Assets/Path/Voidborn/Abilities/1/Alter_Momentum",
               "Reset": [
                 {
+                  "$id": "Starforged/Assets/Path/Voidborn/Abilities/1/Alter_Momentum/Reset",
                   "Trigger": {
-                    "Text": "When you are in space (or a spacebound vehicle or station)"
+                    "Text": "When you are in space (or a spacebound vehicle or station)",
+                    "$id": "Starforged/Assets/Path/Voidborn/Abilities/1/Alter_Momentum/Reset/Trigger"
                   },
                   "Value": 1
                 }
@@ -9400,12 +9948,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Weapon_Master",
-        "Name": "Weapon Master",
-        "Display": { "Title": "Weapon Master", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Weapon_Master/Title",
+          "Canonical": "Weapon Master",
+          "Standard": "Weapon Master",
+          "Short": "Weapon Master"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
@@ -9545,18 +10099,24 @@
         "Source": {
           "Title": "Sundered Isles Preview",
           "Authors": ["Shawn Tomkin"],
-          "Date": "051722"
+          "Date": "051722",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Path",
         "$id": "Starforged/Assets/Path/Crew_Commander",
-        "Name": "Crew Commander",
-        "Display": { "Title": "Crew Commander", "Color": "#3f7faa" },
+        "Title": {
+          "$id": "Starforged/Assets/Path/Crew_Commander/Title",
+          "Canonical": "Crew Commander",
+          "Standard": "Crew Commander",
+          "Short": "Crew Commander"
+        },
+        "Display": { "Color": "#3f7faa" },
         "Usage": { "Shared": false },
         "Condition Meter": {
           "Min": 0,
           "Value": 2,
           "$id": "Starforged/Assets/Path/Crew_Commander/Condition_Meter",
-          "Name": "Command",
+          "Label": "Command",
           "Max": 4,
           "Conditions": []
         },
@@ -9620,14 +10180,20 @@
                 "Source": {
                   "Title": "Sundered Isles Preview",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "051722"
+                  "Date": "051722",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew",
-                "Name": "Bolster Crew",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Title",
+                  "Canonical": "Bolster Crew",
+                  "Standard": "Bolster Crew",
+                  "Short": "Bolster Crew"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Path/Crew_Commander",
-                "Display": { "Title": "Bolster Crew" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Path/Crew_Commander/Abilities/1/Bolster_Crew/Trigger",
                   "Text": "When you bolster your crew...",
@@ -9708,30 +10274,42 @@
     "Source": {
       "Title": "Ironsworn: Starforged Assets",
       "Authors": ["Shawn Tomkin"],
-      "Date": "050622"
+      "Date": "050622",
+      "License": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "$id": "Starforged/Assets/Companion",
-    "Name": "Companion",
     "Description": "**Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.\n\nCompanions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move. When their health is at 0, they are in danger of being killed or destroyed.",
-    "Display": { "Title": "Companions", "Color": "#3d8b8a" },
+    "Display": { "Color": "#3d8b8a" },
+    "Title": {
+      "$id": "Starforged/Assets/Companion/Title",
+      "Canonical": "Companions",
+      "Standard": "Companion",
+      "Short": "Companion"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Banshee",
-        "Name": "Banshee",
-        "Display": { "Title": "Banshee", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Banshee/Title",
+          "Canonical": "Banshee",
+          "Standard": "Banshee",
+          "Short": "Banshee"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Banshee/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -9739,7 +10317,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Companion/Banshee/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -9875,18 +10453,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Combat_Bot",
-        "Name": "Combat Bot",
-        "Display": { "Title": "Combat Bot", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Combat_Bot/Title",
+          "Canonical": "Combat Bot",
+          "Standard": "Combat Bot",
+          "Short": "Combat Bot"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Combat_Bot/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -9894,7 +10478,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Starforged/Assets/Companion/Combat_Bot/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 5,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10041,18 +10625,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Glowcat",
-        "Name": "Glowcat",
-        "Display": { "Title": "Glowcat", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Glowcat/Title",
+          "Canonical": "Glowcat",
+          "Standard": "Glowcat",
+          "Short": "Glowcat"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Glowcat/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10060,7 +10650,7 @@
           "Min": 0,
           "Value": 3,
           "$id": "Starforged/Assets/Companion/Glowcat/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 3,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10183,18 +10773,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Protocol_Bot",
-        "Name": "Protocol Bot",
-        "Display": { "Title": "Protocol Bot", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Protocol_Bot/Title",
+          "Canonical": "Protocol Bot",
+          "Standard": "Protocol Bot",
+          "Short": "Protocol Bot"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Protocol_Bot/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10202,7 +10798,7 @@
           "Min": 0,
           "Value": 3,
           "$id": "Starforged/Assets/Companion/Protocol_Bot/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 3,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10302,18 +10898,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Rockhorn",
-        "Name": "Rockhorn",
-        "Display": { "Title": "Rockhorn", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Rockhorn/Title",
+          "Canonical": "Rockhorn",
+          "Standard": "Rockhorn",
+          "Short": "Rockhorn"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Rockhorn/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10321,7 +10923,7 @@
           "Min": 0,
           "Value": 5,
           "$id": "Starforged/Assets/Companion/Rockhorn/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 5,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10421,24 +11023,30 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Sidekick",
-        "Name": "Sidekick",
-        "Display": { "Title": "Sidekick", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Sidekick/Title",
+          "Canonical": "Sidekick",
+          "Standard": "Sidekick",
+          "Short": "Sidekick"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           },
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Expertise",
-            "Name": "Expertise",
+            "Label": "Expertise",
             "Adjustable": false
           }
         ],
@@ -10446,7 +11054,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Companion/Sidekick/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10600,18 +11208,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Sprite",
-        "Name": "Sprite",
-        "Display": { "Title": "Sprite", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Sprite/Title",
+          "Canonical": "Sprite",
+          "Standard": "Sprite",
+          "Short": "Sprite"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Sprite/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10619,7 +11233,7 @@
           "Min": 0,
           "Value": 2,
           "$id": "Starforged/Assets/Companion/Sprite/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 2,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10690,18 +11304,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Survey_Bot",
-        "Name": "Survey Bot",
-        "Display": { "Title": "Survey Bot", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Survey_Bot/Title",
+          "Canonical": "Survey Bot",
+          "Standard": "Survey Bot",
+          "Short": "Survey Bot"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Survey_Bot/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10709,7 +11329,7 @@
           "Min": 0,
           "Value": 3,
           "$id": "Starforged/Assets/Companion/Survey_Bot/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 3,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10862,18 +11482,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Symbiote",
-        "Name": "Symbiote",
-        "Display": { "Title": "Symbiote", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Symbiote/Title",
+          "Canonical": "Symbiote",
+          "Standard": "Symbiote",
+          "Short": "Symbiote"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Symbiote/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10881,7 +11507,7 @@
           "Min": 0,
           "Value": 2,
           "$id": "Starforged/Assets/Companion/Symbiote/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 2,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -10959,18 +11585,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Utility_Bot",
-        "Name": "Utility Bot",
-        "Display": { "Title": "Utility Bot", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Utility_Bot/Title",
+          "Canonical": "Utility Bot",
+          "Standard": "Utility Bot",
+          "Short": "Utility Bot"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Utility_Bot/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -10978,7 +11610,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Companion/Utility_Bot/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -11103,18 +11735,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Companion",
         "$id": "Starforged/Assets/Companion/Voidglider",
-        "Name": "Voidglider",
-        "Display": { "Title": "Voidglider", "Color": "#3d8b8a" },
+        "Title": {
+          "$id": "Starforged/Assets/Companion/Voidglider/Title",
+          "Canonical": "Voidglider",
+          "Standard": "Voidglider",
+          "Short": "Voidglider"
+        },
+        "Display": { "Color": "#3d8b8a" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Companion/Voidglider/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -11122,7 +11760,7 @@
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Companion/Voidglider/Condition_Meter",
-          "Name": "Health",
+          "Label": "Health",
           "Max": 4,
           "Conditions": ["Out of Action"],
           "Aliases": ["Companion Health"]
@@ -11219,6 +11857,123 @@
             ]
           }
         ]
+      },
+      {
+        "Source": {
+          "Title": "Sundered Isles Preview",
+          "Authors": ["Shawn Tomkin"],
+          "Date": "082922",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
+        },
+        "Asset Type": "Starforged/Assets/Companion",
+        "$id": "Starforged/Assets/Companion/The_Kraken",
+        "Title": {
+          "$id": "Starforged/Assets/Companion/The_Kraken/Title",
+          "Canonical": "The Kraken",
+          "Standard": "The Kraken",
+          "Short": "The Kraken"
+        },
+        "Display": { "Color": "#3d8b8a" },
+        "Usage": { "Shared": false },
+        "Requirement": "While it is your companion, the Kraken cannot be harmed.",
+        "Abilities": [
+          {
+            "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/1",
+            "Text": "When you summon the Kraken, fill one segment of a four-segment clock. The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) with  an automatic strong hit. When the clock is filled, [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.",
+            "Inputs": [
+              {
+                "Input Type": "Clock",
+                "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/1/Inputs/Krakendoom",
+                "Label": "Krakendoom",
+                "Clock Type": "Tension",
+                "Segments": 4,
+                "Filled": 0,
+                "Adjustable": true
+              }
+            ],
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/1/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Combat/Take_Decisive_Action"],
+                "Trigger": {
+                  "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/1/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/1/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "Summon the Kraken (and fill one segment of its clock)",
+                      "Roll type": "Progress roll",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                },
+                "Text": "The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) with an automatic strong hit.\n\nWhen the clock is filled, [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock."
+              }
+            ]
+          },
+          {
+            "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/2",
+            "Text": "When you make a move using a threat to call the Kraken as leverage, add +2.",
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/2/Alter_Moves/1",
+                "Moves": null,
+                "Trigger": {
+                  "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/2/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/2/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "Make a move using a threat to call the Kraken as leverage",
+                      "Roll type": "Action roll",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                },
+                "Text": "Add +2."
+              }
+            ]
+          },
+          {
+            "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3",
+            "Text": "One time only, when you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to the Kraken and score a hit, choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.",
+            "Enabled": false,
+            "Alter Moves": [
+              {
+                "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3/Alter_Moves/1",
+                "Moves": ["Starforged/Moves/Quest/Fulfill_Your_Vow"],
+                "Trigger": {
+                  "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3/Alter_Moves/1/Trigger",
+                  "By": { "Player": true, "Ally": false },
+                  "Options": [
+                    {
+                      "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3/Alter_Moves/1/Trigger/Options/1",
+                      "Text": "In service to the Kraken (formidable or greater, one time only)",
+                      "Roll type": "Progress roll",
+                      "Method": "Inherit",
+                      "Using": []
+                    }
+                  ]
+                },
+                "Outcomes": {
+                  "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3/Alter_Moves/1/Outcomes",
+                  "Strong Hit": {
+                    "Text": "Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.",
+                    "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                  },
+                  "Weak Hit": {
+                    "Text": "Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.",
+                    "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                  }
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -11226,30 +11981,42 @@
     "Source": {
       "Title": "Ironsworn: Starforged Assets",
       "Authors": ["Shawn Tomkin"],
-      "Date": "050622"
+      "Date": "050622",
+      "License": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "$id": "Starforged/Assets/Deed",
-    "Name": "Deed",
     "Description": "**Deeds** represent the notable achievement and situations of your story, and how those events change your character.\n\nDeeds have a requirement listed at the top of the card, phrased as “Once you \\[blank\\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.",
-    "Display": { "Title": "Deeds", "Color": "#40834f" },
+    "Display": { "Color": "#40834f" },
+    "Title": {
+      "$id": "Starforged/Assets/Deed/Title",
+      "Canonical": "Deeds",
+      "Standard": "Deed",
+      "Short": "Deed"
+    },
     "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Bonded",
-        "Name": "Bonded",
-        "Display": { "Title": "Bonded", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Bonded/Title",
+          "Canonical": "Bonded",
+          "Standard": "Bonded",
+          "Short": "Bonded"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Deed/Bonded/Inputs/Bond-mate",
-            "Name": "Bond-mate",
+            "Label": "Bond-mate",
             "Adjustable": false
           }
         ],
@@ -11424,18 +12191,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Homesteader",
-        "Name": "Homesteader",
-        "Display": { "Title": "Homesteader", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Homesteader/Title",
+          "Canonical": "Homesteader",
+          "Standard": "Homesteader",
+          "Short": "Homesteader"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Deed/Homesteader/Inputs/Name",
-            "Name": "Name",
+            "Label": "Name",
             "Adjustable": false
           }
         ],
@@ -11619,18 +12392,24 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Marked",
-        "Name": "Marked",
-        "Display": { "Title": "Marked", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Marked/Title",
+          "Canonical": "Marked",
+          "Standard": "Marked",
+          "Short": "Marked"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
             "Input Type": "Text",
             "$id": "Starforged/Assets/Deed/Marked/Inputs/Identifier",
-            "Name": "Identifier",
+            "Label": "Identifier",
             "Adjustable": false
           }
         ],
@@ -11681,7 +12460,7 @@
               {
                 "Input Type": "Clock",
                 "$id": "Starforged/Assets/Deed/Marked/Abilities/2/Inputs/Stained_reputation",
-                "Name": "Stained reputation",
+                "Label": "Stained reputation",
                 "Clock Type": "Tension",
                 "Segments": 6,
                 "Filled": 0,
@@ -11751,12 +12530,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Oathbreaker",
-        "Name": "Oathbreaker",
-        "Display": { "Title": "Oathbreaker", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Oathbreaker/Title",
+          "Canonical": "Oathbreaker",
+          "Standard": "Oathbreaker",
+          "Short": "Oathbreaker"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow)...",
         "Abilities": [
@@ -11875,12 +12660,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Revenant",
-        "Name": "Revenant",
-        "Display": { "Title": "Revenant", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Revenant/Title",
+          "Canonical": "Revenant",
+          "Standard": "Revenant",
+          "Short": "Revenant"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Face Death](Starforged/Moves/Threshold/Face_Death)...",
         "Abilities": [
@@ -12020,12 +12811,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Survivor",
-        "Name": "Survivor",
-        "Display": { "Title": "Survivor", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Survivor/Title",
+          "Canonical": "Survivor",
+          "Standard": "Survivor",
+          "Short": "Survivor"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Requirement": "Once you mark traumatized or permanently harmed...",
         "Abilities": [
@@ -12084,13 +12881,17 @@
             "Text": "When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.",
             "Enabled": false,
             "Alter Momentum": {
+              "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum",
               "Burn": [
                 {
+                  "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum/Burn",
                   "Trigger": {
-                    "Text": "To improve the result of a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach"
+                    "Text": "To improve the result of a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach",
+                    "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum/Burn/Trigger"
                   },
                   "Effect": {
-                    "Text": "You may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks."
+                    "Text": "You may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.",
+                    "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum/Burn/Effect"
                   }
                 }
               ]
@@ -12107,12 +12908,18 @@
         "Source": {
           "Title": "Ironsworn: Starforged Assets",
           "Authors": ["Shawn Tomkin"],
-          "Date": "050622"
+          "Date": "050622",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Vanguard",
-        "Name": "Vanguard",
-        "Display": { "Title": "Vanguard", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Vanguard/Title",
+          "Canonical": "Vanguard",
+          "Standard": "Vanguard",
+          "Short": "Vanguard"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Requirement": "Once you fill 6 boxes on your discoveries legacy track...",
         "Abilities": [
@@ -12125,15 +12932,21 @@
                 "Source": {
                   "Title": "Ironsworn: Starforged Assets",
                   "Authors": ["Shawn Tomkin"],
-                  "Date": "050622"
+                  "Date": "050622",
+                  "License": "https://creativecommons.org/licenses/by-sa/4.0/"
                 },
                 "Category": "Starforged/Moves/Assets",
                 "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven",
-                "Name": "Seek Safe Haven",
+                "Title": {
+                  "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Title",
+                  "Canonical": "Seek Safe Haven",
+                  "Standard": "Seek Safe Haven",
+                  "Short": "Seek Safe Haven"
+                },
                 "Optional": false,
                 "Asset": "Starforged/Assets/Deed/Vanguard",
                 "Progress Move": true,
-                "Display": { "Title": "Seek Safe Haven" },
+                "Display": {},
                 "Trigger": {
                   "$id": "Starforged/Moves/Assets/Deed/Vanguard/Abilities/1/Seek_Safe_Haven/Trigger",
                   "Text": "When you seek a safe location in a remote environment...",
@@ -12238,12 +13051,18 @@
         "Source": {
           "Title": "Sundered Isles Preview",
           "Authors": ["Shawn Tomkin"],
-          "Date": "051722"
+          "Date": "051722",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Cohort",
-        "Name": "Cohort",
-        "Display": { "Title": "Cohort", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Cohort/Title",
+          "Canonical": "Cohort",
+          "Standard": "Cohort",
+          "Short": "Cohort"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) and take them on as a crewmate...",
         "Abilities": [
@@ -12329,19 +13148,25 @@
         "Source": {
           "Title": "Sundered Isles Preview",
           "Authors": ["Shawn Tomkin"],
-          "Date": "051722"
+          "Date": "051722",
+          "License": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         "Asset Type": "Starforged/Assets/Deed",
         "$id": "Starforged/Assets/Deed/Fleet_Commander",
-        "Name": "Fleet Commander",
-        "Display": { "Title": "Fleet Commander", "Color": "#40834f" },
+        "Title": {
+          "$id": "Starforged/Assets/Deed/Fleet_Commander/Title",
+          "Canonical": "Fleet Commander",
+          "Standard": "Fleet Commander",
+          "Short": "Fleet Commander"
+        },
+        "Display": { "Color": "#40834f" },
         "Usage": { "Shared": false },
         "Requirement": "Once you fill 12 legacy track boxes and take command of a mighty fleet...",
         "Condition Meter": {
           "Min": 0,
           "Value": 4,
           "$id": "Starforged/Assets/Deed/Fleet_Commander/Condition_Meter",
-          "Name": "Power",
+          "Label": "Power",
           "Max": 4,
           "Conditions": ["Wrecked"]
         },

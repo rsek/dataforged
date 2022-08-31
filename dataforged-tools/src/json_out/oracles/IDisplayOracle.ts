@@ -1,10 +1,10 @@
-import type { IDisplayWithTitle, IOracle , IRow, ITableDisplayInfo } from "@json_out/index.js";
+import type { IDisplay, IOracle , IRow, ITableDisplayInfo } from "@json_out/index.js";
 
 /**
  * Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
  * @public
  */
-export interface IDisplayOracle extends IDisplayWithTitle {
+export interface IDisplayOracle extends IDisplay {
   /**
    * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
    *

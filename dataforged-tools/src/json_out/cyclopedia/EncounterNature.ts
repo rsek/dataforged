@@ -13,9 +13,9 @@ export enum EncounterNatureStarforged {
  */
 export enum EncounterNatureIronsworn {
   Ironlander = "Ironlander",
-  Firstborn = "Firstborn",
-  Animal = "Animal",
-  Beast = "Beast",
-  Horror = "Horror",
-  Anomaly = "Anomaly",
+  Firstborn = "firstborn",
+  Animal = "animal",
+  Beast = "beast",
+  Horror = "horror",
+  Anomaly = "anomaly",
 };

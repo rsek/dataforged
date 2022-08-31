@@ -1,4 +1,4 @@
-import { SettingTruth } from "../classes/index.js";
+import { SettingTruth, SettingTruthClassic } from "../classes/index.js";
 import { MASTER_DATA_PATH } from "../constants/index.js";
 import { Gamespace } from "../json_out/index.js";
 import { buildLog } from "./logging/buildLog.js";
@@ -16,9 +16,11 @@ export function buildTruths(gamespace) {
         return [];
     }
     switch (gamespace) {
-        case Gamespace.Ironsworn:
-            buildLog(buildTruths, "Ironsworn truths NYI.");
-            return [];
+        case Gamespace.Ironsworn: {
+            const truthsRoot = concatWithYamlRefs(undefined, filePath);
+            const truths = truthsRoot["Setting Truths"].map(item => new SettingTruthClassic(item));
+            return truths;
+        }
         case Gamespace.Starforged: {
             const truthsRoot = concatWithYamlRefs(undefined, filePath);
             const truths = truthsRoot["Setting Truths"].map(item => new SettingTruth(item, truthsRoot.Source, gamespace));

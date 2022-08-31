@@ -1,7 +1,8 @@
 Creatures:
-  Name: Creatures
   Title:
     Canonical: Creatures
+    Short: Creature
+  _idFragment: Creatures
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
@@ -10,8 +11,7 @@ Creatures:
   Description:
     Roll for a [basic form](Starforged/Oracles/Creatures/Basic_Form), and flesh out the creature’s appearance using this [Creature First Look](Starforged/Oracles/Creatures/First_Look) table. Then, roll on the [Encountered Behavior](Starforged/Oracles/Creatures/Encountered_Behavior) table to envision this creature’s motivation and frame how the encounter begins.
   Oracles:
-    - Name: Environment
-      Title:
+    - Title:
         Canonical: Environment
       Usage:
         Initial: true
@@ -22,13 +22,12 @@ Creatures:
       Description: |-
         Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
       Table:
-        - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Space], Icon: &icon.Space ../../img/vector/Oracles/Creature/Environment/Space.svg]
-        - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Interior], Icon: &icon.Interior ../../img/vector/Oracles/Creature/Environment/Interior.svg]
-        - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Land], Icon: &icon.Land ../../img/vector/Oracles/Creature/Environment/Land.svg]
-        - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Liquid], Icon: &icon.Liquid ../../img/vector/Oracles/Creature/Environment/Liquid.svg]
-        - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Air], Icon: &icon.Air ../../img/vector/Oracles/Creature/Environment/Air.svg]
-    - Name: Scale
-      Title:
+        - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Space], Icon: &icon.Space img/vector/Oracles/Creature/Environment/Space.svg]
+        - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Interior], Icon: &icon.Interior img/vector/Oracles/Creature/Environment/Interior.svg]
+        - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Land], Icon: &icon.Land img/vector/Oracles/Creature/Environment/Land.svg]
+        - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Liquid], Icon: &icon.Liquid img/vector/Oracles/Creature/Environment/Liquid.svg]
+        - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Air], Icon: &icon.Air img/vector/Oracles/Creature/Environment/Air.svg]
+    - Title:
         Canonical: Scale
       Source:
         Page: 336
@@ -44,8 +43,7 @@ Creatures:
         - [61, 90, Large (vehicle-sized), Attributes: {Creature Scale: Large}]
         - [91, 99, Huge (whale-sized), Attributes: {Creature Scale: Huge}]
         - [100, 100, "[⏵Ultra-scale](Starforged/Oracles/Creatures/Ultra-scale)", Oracle rolls: [Starforged/Oracles/Creatures/Ultra-scale]]
-    - Name: Ultra-scale
-      Title:
+    - Title:
         Canonical: Ultra-scale
       Source:
         Page: 336
@@ -57,8 +55,8 @@ Creatures:
         - [1, 89, Titanic (hill-sized), Attributes: {Creature Scale: Titanic}]
         - [90, 99, Colossal (mountain-sized), Attributes: {Creature Scale: Colossal}]
         - [100, 100, Vast (planet-sized), Attributes: {Creature Scale: Vast}]
-    - Name: Basic Form
-      Title:
+    - Title:
+        Short: Basic Form
         Canonical: Creature Basic Form
       Source:
         Page: 337
@@ -82,9 +80,8 @@ Creatures:
       Description: |-
         Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
       Oracles:
-        - Name: Space
-          Title:
-            Canonical: Creature Basic Form - Space
+        - Title:
+            Canonical: Space
           Display:
             Color: "#121b21"
             Icon: *icon.Space
@@ -94,27 +91,26 @@ Creatures:
               Attributes:
                 Environment: Space
           Table: &table:Creatures.BasicForm
-              - [1, 5, Amoeba / pseudopods, Icon: ../../img/vector/Oracles/Creature/Basic_Form/amoeba_pseudopods.svg]
-              - [6, 20, Amorphous / elemental, Icon: ../../img/vector/Oracles/Creature/Basic_Form/amorphous_elemental.svg]
-              - [21, 30, Avian / winged, Icon: ../../img/vector/Oracles/Creature/Basic_Form/avian_winged.svg]
-              - [31, 32, Beast / mammal, Icon: ../../img/vector/Oracles/Creature/Basic_Form/beast_mammal.svg]
-              - [33, 34, Crustacean / shelled, Icon: ../../img/vector/Oracles/Creature/Basic_Form/crustacean_shelled.svg]
-              - [35, 37, Fish / torpedo-shaped, Icon: ../../img/vector/Oracles/Creature/Basic_Form/fish_torpedo_shaped.svg]
-              - [38, 39, Humanoid / bipedal, Icon: ../../img/vector/Oracles/Creature/Basic_Form/humanoid.svg]
-              - [40, 41, Insectoid / exoskeletal, Icon: ../../img/vector/Oracles/Creature/Basic_Form/insectoid_exoskeletal.svg]
-              - [42, 60, Jellyfish / gasbag, Icon: ../../img/vector/Oracles/Creature/Basic_Form/jellyish_gasbag.svg]
-              - [61, 62, Lizard / reptilian, Icon: ../../img/vector/Oracles/Creature/Basic_Form/lizard_reptilian.svg]
-              - [63, 67, Octopoid / tentacled, Icon: ../../img/vector/Oracles/Creature/Basic_Form/octopoid_tentacled.svg]
-              - [68, 72, Plant / fungus, Icon: ../../img/vector/Oracles/Creature/Basic_Form/plant_fungus.svg]
-              - [73, 82, Ray / flat-bodied, Icon: ../../img/vector/Oracles/Creature/Basic_Form/ray_flat_bodied.svg]
-              - [83, 84, Snake / eel, Icon: ../../img/vector/Oracles/Creature/Basic_Form/snake_eel.svg]
-              - [85, 86, Spider / web-weaver, Icon: ../../img/vector/Oracles/Creature/Basic_Form/spider_web_weaver.svg]
-              - [87, 88, Starfish / symmetrical, Icon: ../../img/vector/Oracles/Creature/Basic_Form/starfish_symmetrical.svg]
-              - [89, 90, Worm / slug / larva, Icon: ../../img/vector/Oracles/Creature/Basic_Form/worm_slug_larva.svg]
+              - [1, 5, Amoeba / pseudopods, Icon: img/vector/Oracles/Creature/Basic_Form/amoeba_pseudopods.svg]
+              - [6, 20, Amorphous / elemental, Icon: img/vector/Oracles/Creature/Basic_Form/amorphous_elemental.svg]
+              - [21, 30, Avian / winged, Icon: img/vector/Oracles/Creature/Basic_Form/avian_winged.svg]
+              - [31, 32, Beast / mammal, Icon: img/vector/Oracles/Creature/Basic_Form/beast_mammal.svg]
+              - [33, 34, Crustacean / shelled, Icon: img/vector/Oracles/Creature/Basic_Form/crustacean_shelled.svg]
+              - [35, 37, Fish / torpedo-shaped, Icon: img/vector/Oracles/Creature/Basic_Form/fish_torpedo_shaped.svg]
+              - [38, 39, Humanoid / bipedal, Icon: img/vector/Oracles/Creature/Basic_Form/humanoid.svg]
+              - [40, 41, Insectoid / exoskeletal, Icon: img/vector/Oracles/Creature/Basic_Form/insectoid_exoskeletal.svg]
+              - [42, 60, Jellyfish / gasbag, Icon: img/vector/Oracles/Creature/Basic_Form/jellyish_gasbag.svg]
+              - [61, 62, Lizard / reptilian, Icon: img/vector/Oracles/Creature/Basic_Form/lizard_reptilian.svg]
+              - [63, 67, Octopoid / tentacled, Icon: img/vector/Oracles/Creature/Basic_Form/octopoid_tentacled.svg]
+              - [68, 72, Plant / fungus, Icon: img/vector/Oracles/Creature/Basic_Form/plant_fungus.svg]
+              - [73, 82, Ray / flat-bodied, Icon: img/vector/Oracles/Creature/Basic_Form/ray_flat_bodied.svg]
+              - [83, 84, Snake / eel, Icon: img/vector/Oracles/Creature/Basic_Form/snake_eel.svg]
+              - [85, 86, Spider / web-weaver, Icon: img/vector/Oracles/Creature/Basic_Form/spider_web_weaver.svg]
+              - [87, 88, Starfish / symmetrical, Icon: img/vector/Oracles/Creature/Basic_Form/starfish_symmetrical.svg]
+              - [89, 90, Worm / slug / larva, Icon: img/vector/Oracles/Creature/Basic_Form/worm_slug_larva.svg]
               - [91, 100, *result:RollTwice]
-        - Name: Interior
-          Title:
-            Canonical: Creature Basic Form - Interior
+        - Title:
+            Canonical: Interior
           Display:
             Color: "#707a83"
             Icon: *icon.Interior
@@ -144,9 +140,8 @@ Creatures:
               - [84, 85]
               - [86, 90]
               - [91, 100]
-        - Name: Land
-          Title:
-            Canonical: Creature Basic Form - Land
+        - Title:
+            Canonical: Land
           Display:
             Color: "#ed1a38"
             Icon: *icon.Land
@@ -176,9 +171,8 @@ Creatures:
               - [82, 83]
               - [84, 90]
               - [91, 100]
-        - Name: Liquid
-          Title:
-            Canonical: Creature Basic Form - Liquid
+        - Title:
+            Canonical: Liquid
           Display:
             Color: "#0082bf"
             Icon: *icon.Liquid
@@ -208,9 +202,8 @@ Creatures:
               - [83, 87]
               - [88, 90]
               - [91, 100]
-        - Name: Air
-          Title:
-            Canonical: Creature Basic Form - Air
+        - Title:
+            Canonical: Air
           Display:
             Color: "#90278f"
             Icon: *icon.Air
@@ -240,11 +233,12 @@ Creatures:
               - [87, 88]
               - [89, 90]
               - [91, 100]
-    - Name: First Look
+    - Title:
+        Canonical: Creature First Look
+        Short: First Look
+      _idFragment: First Look
       Source:
         Page: 338
-      Title:
-        Canonical: Creature First Look
       Usage:
         Initial: true
         Max rolls: 2
@@ -304,8 +298,7 @@ Creatures:
         - [95, 96, Tentacles or tendrils]
         - [97, 98, Translucent]
         - [99, 100, Visible symbiote]
-    - Name: Encountered Behavior
-      Title:
+    - Title:
         Canonical: Encountered Behaviour
       Aliases:
         - Encountered Behaviour
@@ -339,11 +332,12 @@ Creatures:
         - [86, 90, Tracker, Attributes: {Encountered Behavior: Tracker}]
         - [91, 95, Trapper, Attributes: {Encountered Behavior: Trapper}]
         - [96, 100, *result:RollTwice]
-    - Name: Revealed Aspect
+    - Title:
+        Canonical: Revealed Creature Aspect
+        Short: Revealed Aspect
+      _idFragment: Revealed Aspect
       Source:
         Page: 339
-      Title:
-        Canonical: Revealed Creature Aspect
       Description: |-
         Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature that you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or envision how this contradiction signals a new understanding or unexpected transformation.
       Content:

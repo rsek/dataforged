@@ -1,6 +1,6 @@
 import type { Source } from "@classes/common/Source.js";
 import type { Title } from "@classes/common/Title.js";
-import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplayWithTitle, IEncounter } from "@json_out/index.js";
+import type { ChallengeRank, EncounterNatureIronsworn, EncounterNatureStarforged, EncounterTags, IDisplay, IEncounter } from "@json_out/index.js";
 import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in/index.js";
 
 /**
@@ -8,7 +8,6 @@ import type { IEncounterIronswornYaml, IEncounterStarforgedYaml } from "@yaml_in
  */
 export abstract class Encounter implements IEncounter {
   abstract $id: string;
-  Name: string;
   abstract Title: Title;
   Features: string[];
   Drives: string[];
@@ -17,12 +16,11 @@ export abstract class Encounter implements IEncounter {
   Summary?: string | undefined;
   Tags?: EncounterTags[] | undefined;
   Rank: ChallengeRank;
-  abstract Display: IDisplayWithTitle;
+  abstract Display: IDisplay;
   Description: string;
   abstract Source: Source;
   "Quest Starter": string;
   constructor(json: IEncounterIronswornYaml|IEncounterStarforgedYaml) {
-    this.Name = json.Name;
     this.Features = json.Features;
     this.Drives = json.Drives;
     this.Tactics = json.Tactics;

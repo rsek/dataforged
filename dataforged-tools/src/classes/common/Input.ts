@@ -11,13 +11,11 @@ import type { IInputClockYaml, IInputNumberYaml, IInputTextYaml, IInputYaml } fr
 export abstract class Input implements IInput {
   $id: string;
   Label: string;
-  Name?: string | undefined;
   abstract Adjustable: boolean;
   "Input Type": InputType;
   constructor(json: IInputYaml, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
     this["Input Type"] = json["Input Type"];
-    this.$id = `${parent.$id}/Inputs/${formatIdFragment(json.Label)}`;
-    this.Name = json.Name;
+    this.$id = `${parent.$id}/Inputs/${formatIdFragment(json._idFragment??json.Label)}`;
     this.Label = json.Label;
     this["Input Type"] = json["Input Type"];
   }

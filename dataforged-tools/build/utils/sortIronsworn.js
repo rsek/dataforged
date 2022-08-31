@@ -5,7 +5,6 @@ const order = [
     SourceTitle.Ironsworn,
     SourceTitle.IronswornAssets,
     SourceTitle.IronswornDelve,
-    SourceTitle.IronswornBonusAssets
 ];
 /**
  * Sort comparison function for Ironsworn source data.

@@ -6,7 +6,7 @@ import type { ICustomStatYaml } from "../../yaml_in/index.js";
  */
 export declare class CustomStat implements ICustomStat {
     $id: ICustomStat["$id"];
-    Name: string;
+    Label: string;
     Options: CustomStatOption[];
     constructor(json: ICustomStatYaml, parentId: IMoveTriggerOptionBase["$id"]);
 }

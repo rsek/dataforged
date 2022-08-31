@@ -1,4 +1,3 @@
-Name: Settlement
 Title:
   Canonical: Settlement
 Source:
@@ -8,17 +7,19 @@ Source:
   Page: 178
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 Oracles:
-  - Name: Name
-    Title:
+  - Title:
       Canonical: "Oracle 7: Settlement Name"
-      Short: Settlement Name
+      Standard: Settlement Name
+      Short: Name
+    _idFragment: Name
     Aliases: ["7", "Oracle 7", "Settlement Name"]
     Source:
       Page: 178
     Oracles:
-      - Name: Landscape Feature
-        Title:
+      - Title:
           Canonical: A feature of the landscape
+          Standard: Landscape Feature
+        _idFragment: Landscape Feature
         Description: &Landscape_Feature |-
           "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
         Table:
@@ -32,9 +33,10 @@ Oracles:
           - [71, 80, Whitefall]
           - [81, 90, Graycliff]
           - [91, 100, Three Rivers]
-      - Name: Manmade Edifice
-        Title:
+      - Title:
           Canonical: A manmade edifice
+          Standard: Manmade Edifice
+        _idFragment: Manmade Edifice
         Description: &Manmade_Edifice |-
           **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
         Table:
@@ -48,9 +50,10 @@ Oracles:
           - [71, 80, Thornhall]
           - [81, 90, Cinderhome]
           - [91, 100, Fallowfield]
-      - Name: Creature
-        Title:
+      - Title:
           Canonical: A creature
+          Standard: Creature
+        _idFragment: Creature
         Description: &Creature |-
           **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
         Table:
@@ -64,9 +67,10 @@ Oracles:
           - [71, 80, Elderwatch]
           - [81, 90, Elkfield]
           - [91, 100, Dragonshadow]
-      - Name: Historical Event
-        Title:
+      - Title:
           Canonical: A historical event
+          Standard: Historical Event
+        _idFragment: Historical Event
         Description: &Historical_Event |-
           **A historical event.** What happened here? What place or practice commemorates this event?
         Table:
@@ -80,9 +84,10 @@ Oracles:
           - [71, 80, Rojirra's Lament]
           - [81, 90, Lastmarch]
           - [91, 100, Rockfall]
-      - Name: Old World Language
-        Title:
+      - Title:
           Canonical: A word in an Old World language
+          Standard: Old World Language
+        _idFragment: Old World Language
         Description: &Old_World_Language |-
           **A word in an Old World language.** What culture is represented by this word? What does it translate to?
         Table:
@@ -96,9 +101,10 @@ Oracles:
           - [71, 80, Sova]
           - [81, 90, Nabuma]
           - [91, 100, Tiza]
-      - Name: Environmental Aspect
-        Title:
+      - Title:
           Canonical: A season or environmental aspect
+          Standard: Environmental Aspect
+        _idFragment: Environmental Aspect
         Description: &Environmental_Aspect |-
           **A season or environmental aspect.** What influence does the weather have on this settlement?
         Table:
@@ -112,8 +118,7 @@ Oracles:
           - [71, 80, Springbrook]
           - [81, 90, Icebreak]
           - [91, 100, Summersong]
-      - Name: Something Else
-        Title:
+      - Title:
           Canonical: Something Else
         Table:
           - [1, 10, A trade good (Ironhome)]
@@ -134,11 +139,12 @@ Oracles:
       - [ 61, 75, *Old_World_Language, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Old_World_Language] ]
       - [ 76, 90, *Environmental_Aspect, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Environmental_Aspect] ]
       - [ 91, 100, "Something Else...", Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Something_Else]]
-  - Name: Quick Name
-    Title:
+  - Title:
       Canonical: "Oracle 8: Quick Settlement Name Generator"
-      Short: Quick Settlement Name Generator
-    Aliases: ["8", "Oracle 8", "Quick Settlement Name Generator"]
+      Standard: Quick Settlement Name Generator
+      Short: Quick Name
+    _idFragment: Quick Name
+    Aliases: ["8", "Oracle 8"]
     Description: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
     Usage:
       Roll template:
@@ -146,9 +152,8 @@ Oracles:
     Source:
       Page: 180
     Oracles:
-      - Name: Prefix
-        Title:
-          Canonical: "Oracle 8: Quick Settlement Name Generator - Prefix"
+      - Title:
+          Canonical: Prefix
         Table:
           # - [1, 4, Bleak-]
           # - [5, 8, Green-]
@@ -200,9 +205,8 @@ Oracles:
           - [89, 92, Frost]
           - [93, 96, Thorn]
           - [97, 100, Long]
-      - Name: Suffix
-        Title:
-          Canonical: "Oracle 8: Quick Settlement Name Generator - Suffix"
+      - Title:
+          Canonical: Suffix
         Table:
           # - [1, 4, -moor]
           # - [5, 8, -ford]
@@ -254,11 +258,12 @@ Oracles:
           - [89, 92, stead]
           - [93, 96, home]
           - [97, 100, wick]
-  - Name: Trouble
-    Title:
+  - Title:
       Canonical: "Oracle 9: Settlement Trouble"
-      Short: Settlement Trouble
-    Aliases: ["9", "Oracle 9", "Settlement Trouble"]
+      Standard: Settlement Trouble
+      Short: Trouble
+    _idFragment: Trouble
+    Aliases: ["9", "Oracle 9"]
     Description: Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.
     Source:
       Page: 181

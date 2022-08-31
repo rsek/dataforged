@@ -16,8 +16,7 @@ import FastGlob from "fast-glob";
 import { JSONPath } from "jsonpath-plus";
 
 interface IOracleSubcategoryData extends IOracleCategoryYaml {
-  Name: string;
-  _childOf: IOracleCategory["Name"];
+  _childOf: IOracleCategory["Title"]["Canonical"];
 }
 interface IOracleSubcatRoot extends IOracleCatRoot {
   Categories: IOracleSubcategoryData[];
@@ -61,18 +60,18 @@ export function buildOracles(gamespace: Gamespace = Gamespace.Starforged): Oracl
   subcategories.forEach(subcat => {
     const parentName = subcat._childOf;
     if (!parentName) {
-      throw badJsonError(buildOracles, undefined, `"${subcat.Name}" is not assigned to a subcategory.`);
+      throw badJsonError(buildOracles, undefined, `"${subcat.Title.Canonical}" is not assigned to a subcategory.`);
     }
-    const parentCat = categories.find(cat => cat.Name === parentName) as IOracleCategoryYaml;
+    const parentCat = categories.find(cat => cat.Title.Canonical === parentName && cat._parentOf.includes(subcat.Title.Canonical)) as IOracleCategoryYaml;
 
     if (parentCat._parentOf) {
-      if (!parentCat._parentOf.includes(subcat.Name)) {
-        throw badJsonError(buildOracles, subcat, `"${subcat.Name}" assigns itself to "${parentCat.Name}", but the category doesn't list this subcategory by name.`);
+      if (!parentCat._parentOf.includes(subcat.Title.Canonical)) {
+        throw badJsonError(buildOracles, subcat, `"${subcat.Title.Canonical}" assigns itself to "${parentCat.Title.Canonical}", but the category doesn't list this subcategory by name.`);
       }
       if (!parentCat.Categories) {
         parentCat.Categories = [];
       }
-      buildLog(buildOracles, `Assigning "${subcat.Name}" as subcategory of ${parentCat.Name}`);
+      buildLog(buildOracles, `Assigning "${subcat.Title.Canonical}" as subcategory of ${parentCat.Title.Canonical}`);
       parentCat.Categories.push(subcat);
     }
   });
@@ -97,11 +96,11 @@ function buildIronswornOracles(): OracleCategory[] {
   // merges categories that are spread across multiple files
   // e.g. Characters + Characters-Delve
   catYaml.forEach(oracleCat => {
-    const targetIndex = categories.findIndex(item => item.Name === oracleCat.Name);
+    const targetIndex = categories.findIndex(item => item.Title.Canonical === oracleCat.Title.Canonical);
     if (targetIndex === -1) {
       categories.push(oracleCat);
     } else {
-      buildLog(buildOracles,`A category named "${oracleCat.Name}" exists, merging...`);
+      buildLog(buildOracles,`A category named "${oracleCat.Title.Canonical}" exists, merging...`);
       categories[targetIndex].Oracles = categories[targetIndex].Oracles.concat(...oracleCat.Oracles).sort((a,b)=> sortIronsworn(a.Source, b.Source));
     }
   });

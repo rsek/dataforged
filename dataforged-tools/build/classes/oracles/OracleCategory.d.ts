@@ -1,4 +1,4 @@
-import { Oracle, OracleCategoryDisplay, OracleUsage, SourceInheritor, Title } from "../index.js";
+import { Display, Oracle, OracleUsage, SourceInheritor, Title } from "../index.js";
 import type { Gamespace, IOracleCategory } from "../../json_out/index.js";
 import type { IOracleCategoryYaml } from "../../yaml_in/index.js";
 /**
@@ -6,12 +6,11 @@ import type { IOracleCategoryYaml } from "../../yaml_in/index.js";
  */
 export declare class OracleCategory extends SourceInheritor implements IOracleCategory {
     $id: IOracleCategory["$id"];
-    Name: string;
     Title: Title;
     Aliases?: string[] | undefined;
     Category?: IOracleCategory["$id"] | undefined;
     Description?: string | undefined;
-    Display: OracleCategoryDisplay;
+    Display: Display;
     Usage?: OracleUsage | undefined;
     Oracles?: Oracle[] | undefined;
     Categories?: OracleCategory[] | undefined;

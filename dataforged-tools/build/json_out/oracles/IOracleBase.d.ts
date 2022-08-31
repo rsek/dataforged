@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory, IOracleUsage, IRow, IRowNullStub } from "../index.js";
+import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory, IOracleUsage, IRow, IRowNullStub } from "../index.js";
 /**
  * @public
  */
@@ -16,7 +16,7 @@ export interface IOracleMatch extends IHasId, IHasText {
  * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
-export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasName, IHasTitle {
+export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
     $id: string;
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.
@@ -28,7 +28,7 @@ export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHa
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
      */
     "Member of"?: IOracle["$id"] | undefined;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     /**
      * Information on the usage of this oracle: recommended number of rolls, etc.
      */

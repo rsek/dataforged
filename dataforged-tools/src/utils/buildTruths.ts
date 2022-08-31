@@ -1,9 +1,9 @@
-import { SettingTruth } from "@classes/index.js";
+import { SettingTruth, SettingTruthClassic } from "@classes/index.js";
 import { MASTER_DATA_PATH } from "@constants/index.js";
 import { Gamespace } from "@json_out/index.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
-import type { ITruthRootYaml } from "@yaml_in/index.js";
+import type { ITruthRootClassicYaml, ITruthRootYaml } from "@yaml_in/index.js";
 import { existsSync } from "fs";
 
 /**
@@ -18,11 +18,12 @@ export function buildTruths<G extends Gamespace>(gamespace: G) {
     buildLog(buildTruths, "No setting truth file found. Returned an empty array.");
     return [] as SettingTruth[];
   }
-
   switch (gamespace) {
-    case Gamespace.Ironsworn:
-      buildLog(buildTruths, "Ironsworn truths NYI.");
-      return [] as SettingTruth[];
+    case Gamespace.Ironsworn: {
+      const truthsRoot = concatWithYamlRefs(undefined, filePath) as ITruthRootClassicYaml;
+      const truths = truthsRoot["Setting Truths"].map(item => new SettingTruthClassic(item));
+      return truths;
+    }
     case Gamespace.Starforged: {
       const truthsRoot = concatWithYamlRefs(undefined, filePath) as ITruthRootYaml;
       const truths = truthsRoot["Setting Truths"].map(item => new SettingTruth(item, truthsRoot.Source, gamespace));

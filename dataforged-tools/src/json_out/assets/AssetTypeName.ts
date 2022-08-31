@@ -7,5 +7,7 @@ export enum AssetTypeName {
     Deed = "Deed",
     Module = "Module",
     Path = "Path",
-    SupportVehicle = "Support Vehicle"
+    SupportVehicle = "Support Vehicle",
+    Ritual = "Ritual",
+    CombatTalent = "Combat Talent"
 }

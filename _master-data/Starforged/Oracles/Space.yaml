@@ -1,16 +1,18 @@
 Space:
-  Name: Space
   Title:
     Canonical: Space Encounters
+    Short: Space
+  _idFragment: Space
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Oracles:
-    - Name: Sighting
+    - _idFragment: Sighting
       Title:
         Canonical: Space Sighting
+        Short: Sighting
       Source:
         Page: 300
       Display:
@@ -33,10 +35,9 @@ Space:
         Repeatable: true
       Oracles:
         - Title:
-            Canonical: Space Sighting - Terminus
+            Canonical: Terminus
           Display:
             Column of: Starforged/Oracles/Space/Sighting
-          Name: Terminus
           Usage:
             Requires:
               Attributes:
@@ -64,10 +65,9 @@ Space:
             - [94, 98, *result:RollTwice.RepeatsOk]
             - [99, 100, *result:RollThreeTimes.RepeatsOk]
         - Title:
-            Canonical: Space Sighting - Outlands
+            Canonical: Outlands
           Display:
             Column of: Starforged/Oracles/Space/Sighting
-          Name: Outlands
           Usage:
             Requires:
               Attributes:
@@ -97,10 +97,9 @@ Space:
               - [94, 98]
               - [99, 100]
         - Title:
-            Canonical: Space Sighting - Expanse
+            Canonical: Expanse
           Display:
             Column of: Starforged/Oracles/Space/Sighting
-          Name: Expanse
           Usage:
             Requires:
               Attributes:
@@ -129,8 +128,7 @@ Space:
               - [86, 93]
               - [94, 98]
               - [99, 100]
-    - Name: Sector Name
-      Title:
+    - Title:
         Canonical: Sector Name
       Source:
         Page: 302
@@ -148,8 +146,7 @@ Space:
         - Display:
             Column of: Starforged/Oracles/Space/Sector_Name
           Title:
-            Canonical: Sector Name - Prefix
-          Name: Prefix
+            Canonical: Prefix
           Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           Usage:
             Initial: true
@@ -213,8 +210,7 @@ Space:
         - Display:
             Column of: Starforged/Oracles/Space/Sector_Name
           Title:
-            Canonical: Sector Name - Suffix
-          Name: Suffix
+            Canonical: Suffix
           Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           Usage:
             Initial: true
@@ -277,7 +273,6 @@ Space:
             - [99, 100, Zenith]
     - Title:
         Canonical: Stellar Object
-      Name: Stellar Object
       Source:
         Page: 303
       Content:
@@ -297,11 +292,12 @@ Space:
         - [91, 98, Hypergiant star generating turbulent solar winds]
         - [99, 99, Artificial star constructed by a long-dead civilization]
         - [100, 100, Unstable star showing signs of impending supernova]
-    - Name: Peril
-      Source:
+    - Source:
         Page: 304
       Title:
         Canonical: Spaceborne Peril
+        Short: Peril
+      _idFragment: Peril
       Usage:
         Repeatable: true
         Requires:
@@ -346,11 +342,12 @@ Space:
         - [94, 96, Unsettling sounds or disturbances]
         - [97, 99, *result:Action+Theme]
         - [100, 100, *result:RollTwice]
-    - Name: Opportunity
-      Source:
+    - Source:
         Page: 305
       Title:
         Canonical: Spaceborne Opportunity
+        Short: Opportunity
+      _idFragment: Opportunity
       Usage:
         Repeatable: true
         Requires:

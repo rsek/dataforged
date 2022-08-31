@@ -19,23 +19,18 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Ironsworn/Regions/[A-z_-]$",
           "type": "string",
           "title": "$id"
         },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Tags": {
           "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
           "type": "array",
@@ -69,7 +64,6 @@
       "required": [
         "Description",
         "Features",
-        "Name",
         "Quest Starter",
         "Source",
         "Summary",
@@ -129,6 +123,38 @@
       ],
       "type": "string"
     },
+    "IDisplay": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay",
+      "$ref": "#/definitions/Partial<IDisplay>"
+    },
+    "Partial<IDisplay>": {
+      "title": "Partial<IDisplay>",
+      "type": "object",
+      "properties": {
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
     "ITitle": {
       "title": "ITitle",
       "additionalProperties": false,
@@ -141,55 +167,23 @@
           "title": "$id"
         },
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use{@linkITitle.Standard}instead.",
           "type": "string",
           "title": "Canonical"
         },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see{@linkITitle.Short}instead.",
+          "type": "string",
+          "title": "Standard"
+        },
         "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use{@linkITitle.Standard}instead.",
           "type": "string",
           "title": "Short"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "required": ["Canonical"]
-    },
-    "IDisplay": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/Partial<IDisplay>"
-    },
-    "Partial<IDisplay>": {
-      "title": "Partial<IDisplay>",
-      "type": "object",
-      "properties": {
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

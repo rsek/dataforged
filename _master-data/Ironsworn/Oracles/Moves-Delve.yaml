@@ -1,4 +1,3 @@
-Name: Moves
 Title:
   Canonical: Moves
 Source:
@@ -7,16 +6,14 @@ Source:
   Title: "Ironsworn: Delve"
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 Oracles:
-  - Name: Delve the Depths
-    Title:
+  - Title:
       Canonical: Delve the Depths
     # Move: Ironsworn/Moves/Delve/Delve_the_Depths
     Source:
       Page: 21
     Oracles:
-      - Name: Edge
-        Title:
-          Canonical: Delve the Depths +edge
+      - Title:
+          Canonical: Edge
         Table: &table:Delve_the_Depths
           - [1, 45, "Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger)."]
           - [46, 65, "Mark progress."]
@@ -35,9 +32,8 @@ Oracles:
               100,
               "Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
             ]
-      - Name: Shadow
-        Title:
-          Canonical: Delve the Depths +shadow
+      - Title:
+          Canonical: Shadow
         _templateTable:
           content: *table:Delve_the_Depths
           rolls:
@@ -46,9 +42,8 @@ Oracles:
             - [66, 90]
             - [91, 99]
             - [100, 100]
-      - Name: Wits
-        Title:
-          Canonical: Delve the Depths +wits
+      - Title:
+          Canonical: Wits
         _templateTable:
           content: *table:Delve_the_Depths
           rolls:
@@ -57,8 +52,7 @@ Oracles:
             - [56, 80]
             - [81, 99]
             - [100, 100]
-  - Name: Find an Opportunity
-    Title:
+  - Title:
       Canonical: Find an Opportunity
     # Move: Ironsworn/Moves/Delve/Find_an_Opportunity
     Source:
@@ -82,8 +76,7 @@ Oracles:
       - [91, 94, "You are alerted to a potential threat."]
       - [95, 98, "You encounter a denizen who might support you."]
       - [99, 100, "You encounter a denizen in need of help."]
-  - Name: Reveal a Danger
-    Title:
+  - Title:
       Canonical: Reveal a Danger
     Source:
       Page: 34
@@ -105,10 +98,10 @@ Oracles:
           &Reveal_a_Danger_10 "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
           *result:RollTwice.MakeItWorse
         ]
-  - Name: Reveal a Danger
-    _idFragment: Reveal a Danger alt
+  - _idFragment: Reveal a Danger alt
     Title:
       Canonical: Reveal a Danger (alternate version)
+      Short: Reveal a Danger
     Source:
       Page: 68
     Table:
@@ -122,8 +115,7 @@ Oracles:
       - [83, 88, *Reveal_a_Danger_8]
       - [89, 94, *Reveal_a_Danger_9]
       - [95, 100, *Reveal_a_Danger_10, *result:RollTwice.MakeItWorse]
-  - Name: Advance a Threat
-    Title:
+  - Title:
       Canonical: Advance a Threat
     On a Match:
       Text: |-

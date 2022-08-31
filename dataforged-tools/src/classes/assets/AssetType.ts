@@ -1,6 +1,6 @@
-import { DisplayWithTitle } from "@classes/common/Display.js";
+import { Display } from "@classes/common/Display.js";
 import { Asset, SourceInheritor, Title } from "@classes/index.js";
-import type { Gamespace , IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "@json_out/index.js";
+import type { Gamespace , IAssetType, IAssetUsage, IDisplay, ISource } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IAssetTypeYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
@@ -10,26 +10,23 @@ import _ from "lodash-es";
  */
 export class AssetType extends SourceInheritor implements IAssetType {
   $id: IAssetType["$id"];
-  Name?: string | undefined;
   Title: Title;
   Aliases?: string[] | undefined;
   Description: string;
   Assets: Asset[];
-  Display: IDisplayWithTitle;
+  Display: IDisplay;
   Usage: IAssetUsage;
   constructor(json: IAssetTypeYaml, gamespace: Gamespace, rootSource: ISource) {
     super(json.Source ?? {}, rootSource);
-    this.$id = `${gamespace}/Assets/${formatIdFragment(json.Title.Short ?? json.Title.Canonical)}`;
-    this.Name = json.Name;
+    this.$id = `${gamespace}/Assets/${formatIdFragment(json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical)}`;
     this.Aliases = json.Aliases;
     this.Description = json.Description;
 
-    this.Display = new DisplayWithTitle({
-      Title: json.Display?.Title ?? json.Title.Canonical,
+    this.Display = new Display({
       Color: json.Display?.Color
     });
 
-    this.Title = new Title(json.Title,this.$id,);
+    this.Title = new Title(json.Title,this);
 
     const usage = _.clone(json.Usage ?? {}) as IAssetUsage;
     if (!usage.Shared) {

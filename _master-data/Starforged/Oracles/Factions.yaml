@@ -1,28 +1,28 @@
 Factions:
-  Name: Factions
   Title:
     Canonical: Factions
+    Short: Faction
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Oracles:
-    - Name: Type
+    - Title:
+        Canonical: Faction Type
+        Short: Type
+      _idFragment: Type
       Source:
         Page: 340
       Usage:
         Initial: true
-      Title:
-        Canonical: Faction Type
       Content:
         Part of speech: [noun]
       Table:
         - [1, 40, "[⏵Dominion](Starforged/Oracles/Factions/Dominion)", "Governing power", Attributes: {Faction Type: Dominion},Oracle rolls: [Starforged/Oracles/Factions/Dominion, Starforged/Oracles/Factions/Leadership]]
         - [41, 70, "[⏵Guild](Starforged/Oracles/Factions/Guild)", "Organization of specialists", Attributes: {Faction Type: Guild}, Oracle rolls: [Starforged/Oracles/Factions/Guild]]
         - [71, 100, "[⏵Fringe Group](Starforged/Oracles/Factions/Fringe_Group)", "Band of outlaws, outcasts, or rogues", Attributes: {Faction Type: Fringe Group}, Oracle rolls: [Starforged/Oracles/Factions/Fringe_Group]]
-    - Name: Influence
-      Title:
+    - Title:
         Canonical: Influence
       Source:
         Page: 340
@@ -36,11 +36,10 @@ Factions:
         - [71, 85, Notable, Dispersed influence across a few sectors, Attributes: {Influence: Notable}]
         - [86, 95, Dominant, Far-reaching influence across many sectors, Attributes: {Influence: Dominant}]
         - [96, 100, Inescapable, Pervasive influence across inhabited space, Attributes: {Influence: Inescapable}]
-    - Name: Dominion
-      Title:
+    - Title:
         Canonical: Dominion
       Display:
-        Icon: ../../img/vector/Oracles/Factions/Dominion.svg
+        Icon: img/vector/Oracles/Factions/Dominion.svg
       Source:
         Page: 341
       Usage:
@@ -77,11 +76,12 @@ Factions:
         - [88, 91, Treachery, Attributes: {Dominion: Treachery}]
         - [92, 96, Warfare, Attributes: {Dominion: Warfare}]
         - [97, 100, Wealth, Attributes: {Dominion: Wealth}]
-    - Name: Leadership
+    - Title:
+        Canonical: "Dominion: Leadership"
+        Short: Leadership
+      _idFragment: Leadership
       Source:
         Page: 341
-      Title:
-        Canonical: "Dominion: Leadership"
       Usage:
         Initial: true
         Requires:
@@ -101,11 +101,10 @@ Factions:
         - [81, 90, Elected representatives, Attributes: {Leadership: Elected representatives}]
         - [91, 95, Machine intelligence, Attributes: {Leadership: Machine intelligence}]
         - [96, 100, Varied / decentralized, Attributes: {Leadership: Varied / decentralized}]
-    - Name: Guild
-      Title:
+    - Title:
         Canonical: Guild
       Display:
-        Icon: ../../img/vector/Oracles/Factions/Guild.svg
+        Icon: img/vector/Oracles/Factions/Guild.svg
       Source:
         Page: 341
       Usage:
@@ -132,11 +131,10 @@ Factions:
         - [81, 85, Researchers, Attributes: {Guild: Researchers}]
         - [86, 90, Spies, Attributes: {Guild: Spies}]
         - [91, 100, *result:RollTwice]
-    - Name: Fringe Group
-      Title:
+    - Title:
         Canonical: Fringe Group
       Display:
-        Icon: ../../img/vector/Oracles/Factions/Fringe_Group.svg
+        Icon: img/vector/Oracles/Factions/Fringe_Group.svg
       Source:
         Page: 341
       Usage:
@@ -159,11 +157,12 @@ Factions:
         - [76, 85, Scavengers, Attributes: {Fringe Group: Scavengers}]
         - [86, 95, Smugglers, Attributes: {Fringe Group: Smugglers}]
         - [96, 100, *result:RollTwice]
-    - Name: Projects
+    - Title:
+        Canonical: Faction Projects
+        Short: Projects
+      _idFragment: Projects
       Source:
         Page: 342
-      Title:
-        Canonical: Faction Projects
       Content:
         Part of speech: [fragment]
         Tags: [objective]
@@ -205,11 +204,12 @@ Factions:
         - [91, 93, Transport a valued asset]
         - [94, 96, Usurp leadership within a rival faction]
         - [97, 100, *result:Action+Theme]
-    - Name: Relationships
+    - Title:
+        Canonical: Faction Relationships
+        Short: Relationships
+      _idFragment: Relationships
       Source:
         Page: 343
-      Title:
-        Canonical: Faction Relationships
       Content:
         Part of speech: [fragment]
       Description: |-
@@ -243,14 +243,15 @@ Factions:
         - [90, 92, Unjustly accused by]
         - [93, 96, Warring with]
         - [97, 100, *result:RollTwice]
-    - Name: Name Template
+    - Title:
+        Canonical: Faction Name Template
+        Short: Name Template
+      _idFragment: Name Template
       Source:
         Page: 344
       Content:
         Part of speech: [name, proper noun]
         Tags: [template]
-      Title:
-        Canonical: Faction Name Template
       Description: |-
         To generate a faction name, first roll or choose the name template. Then, follow the structure of the template to build the name from individual tables. If you’ve already set the faction type, picking from the tables (instead of rolling) will likely provide a more appropriate result. For example, “Silver Jackals” is a fitting name for a criminal organization. The “Empire of the Undying Suns” is a less apt name for that gang—unless their leader is prone to delusions of grandeur. In short, choosing a name will give you more control. Rolling might give you a result that doesn’t square with known aspects, but those contradictions may prove inspiring.
 
@@ -264,8 +265,7 @@ Factions:
           Roll template: {Result: "${{Starforged/Oracles/Factions/Identity}} of the ${{Starforged/Oracles/Factions/Legacy}} ${{Starforged/Oracles/Factions/Affiliation}}"}]
         - [71, 100, "[[⏵Affiliation](Starforged/Oracles/Factions/Affiliation)] *of the* [[⏵Legacy](Starforged/Oracles/Factions/Legacy)] [[⏵Identity](Starforged/Oracles/Factions/Identity)]",
           Roll template: {Result: "${{Starforged/Oracles/Factions/Affiliation}} of the ${{Starforged/Oracles/Factions/Legacy}} ${{Starforged/Oracles/Factions/Identity}}"}]
-    - Name: Legacy
-      Title:
+    - Title:
         Canonical: Legacy
       Content:
         Part of speech: [adjective, proper noun fragment]
@@ -320,8 +320,7 @@ Factions:
         - [95, 96, Universal]
         - [97, 98, Veiled]
         - [99, 100, Wandering]
-    - Name: Affiliation
-      Title:
+    - Title:
         Canonical: Affiliation
       Source:
         Page: 345
@@ -354,8 +353,7 @@ Factions:
         - [89, 92, Sphere]
         - [93, 96, Syndicate]
         - [97, 100, Union]
-    - Name: Identity
-      Title:
+    - Title:
         Canonical: Identity
       Source:
         Page: 345
@@ -412,11 +410,12 @@ Factions:
         - [95, 96, Wraiths]
         - [97, 98, Wreckers]
         - [99, 100, Wrights]
-    - Name: Quirks
-      Source:
+    - Source:
         Page: 346
       Title:
         Canonical: Faction Quirks
+        Short: Quirks
+      _idFragment: Quirks
       Content:
         Part of speech: [fragment]
         Tags: [description]
@@ -458,11 +457,12 @@ Factions:
         - [91, 93, Wields unnatural abilities or strange technologies]
         - [94, 96, Work or environment causes mutations]
         - [97, 100, *result:Action+Theme]
-    - Name: Rumors
+    - Title:
+        Canonical: Faction Rumors
+        Short: Rumors
+      _idFragment: Rumors
       Source:
         Page: 347
-      Title:
-        Canonical: Faction Rumors
       Content:
         Part of speech: [fragment]
         Tags: [event, present]

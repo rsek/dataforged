@@ -19,10 +19,10 @@ export class DelveRarity implements IDelveRarity {
   Source: Source;
   Description: string;
   constructor(json: IDelveRarityYaml) {
-    this.$id = "Ironsworn/Rarities/" + formatIdFragment(json.Title.Canonical);
+    this.$id = "Ironsworn/Rarities/" + formatIdFragment(json._idFragment??json.Title.Canonical);
     this["XP Cost"] = json["XP Cost"];
     this.Asset = json.Asset;
-    this.Title = new Title(json.Title, this.$id,);
+    this.Title = new Title(json.Title, this);
     this.Source = new Source(json.Source ?? {});
     this.Display = new Display({});
     this.Description = json.Description;

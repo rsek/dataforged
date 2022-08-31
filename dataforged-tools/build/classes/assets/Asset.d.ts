@@ -1,23 +1,23 @@
 import { AssetAbility } from "./AssetAbility.js";
 import { AssetState } from "./AssetState.js";
 import { ConditionMeter } from "../common/ConditionMeter.js";
+import { Display } from "../common/Display.js";
 import type { InputText } from "../common/Input.js";
 import type { InputSelect } from "../common/InputSelect.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
 import { Title } from "../common/Title.js";
-import type { Gamespace, IAsset, IAssetAttachment, IAssetType, IAssetUsage, IDisplayWithTitle, ISource } from "../../json_out/index.js";
+import type { Gamespace, IAsset, IAssetAttachment, IAssetType, IAssetUsage, ISource } from "../../json_out/index.js";
 import type { IAssetYaml } from "../../yaml_in/index.js";
 /**
  * @internal
  */
 export declare class Asset extends SourceInheritor implements IAsset {
     $id: IAsset["$id"];
-    Name: string;
     Title: Title;
     States?: AssetState[] | undefined;
     Aliases?: string[] | undefined;
     "Asset Type": IAssetType["$id"];
-    Display: IDisplayWithTitle;
+    Display: Display;
     Usage: IAssetUsage;
     Attachments?: IAssetAttachment | undefined;
     Requirement?: string | undefined;

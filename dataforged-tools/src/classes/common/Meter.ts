@@ -7,7 +7,6 @@ import type { YamlStub } from "@yaml_in/index.js";
  */
 export abstract class Meter implements IMeter {
   $id: string;
-  Name: string;
   Label: string;
   Min: number = 0;
   Max: number;
@@ -19,7 +18,6 @@ export abstract class Meter implements IMeter {
    */
   constructor(json: YamlStub<IMeter, "Min"|"Value">, id: string) {
     this.$id = id;
-    this.Name = json.Name ?? json.Label;
     this.Label = json.Label;
     this.Max = json.Max;
     this.Min = json.Min ?? 0;

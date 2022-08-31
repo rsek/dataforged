@@ -1,4 +1,4 @@
-import type { ChallengeRank , EncounterNatureIronsworn , EncounterNatureStarforged , EncounterTags, ICyclopediaEntry, IDisplayWithTitle } from "@json_out/index.js";
+import type { ChallengeRank , EncounterNatureIronsworn , EncounterNatureStarforged , EncounterTags, ICyclopediaEntry, IDisplay } from "@json_out/index.js";
 
 /**
  * Interface common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*, plus 'stubs' like IEncounterVariant.
@@ -12,16 +12,11 @@ export interface IEncounterBase extends ICyclopediaEntry {
    */
   $id: string;
   /**
-   * @example "Chiton"
-   * @localize
-   */
-  Name: string;
-  /**
    * @example "Monster"
    * @localize
    */
   Nature: EncounterNatureStarforged | EncounterNatureIronsworn;
-  Display: IDisplayWithTitle;
+  Display: IDisplay;
   /**
    * @example "Insectoid horde"
    * @markdown

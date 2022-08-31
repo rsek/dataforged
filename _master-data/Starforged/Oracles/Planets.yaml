@@ -1,29 +1,31 @@
 Planets:
-  Name: Planets
   Title:
     Canonical: Planets
-  Aliases: [World]
+    Short: Planet
+  _idFragment: Planets
+  Aliases: [World, Worlds]
   _parentOf:
-    - Desert
-    - Furnace
-    - Grave
-    - Ice
-    - Jovian
-    - Jungle
-    - Ocean
-    - Rocky
-    - Shattered
-    - Tainted
-    - Vital
+    - Desert World
+    - Furnace World
+    - Grave World
+    - Ice World
+    - Jovian World
+    - Jungle World
+    - Ocean World
+    - Rocky World
+    - Shattered World
+    - Tainted World
+    - Vital World
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Oracles:
-    - Name: Class
-      Title:
+    - Title:
         Canonical: Planetary Class
+        Short: Class
+      _idFragment: Class
       Source:
         Page: 306
       Usage:
@@ -47,9 +49,10 @@ Planets:
         - [93, 98, "[⏵Tainted World](Starforged/Oracles/Planets/Tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
         - [99, 100, "[⏵Vital World](Starforged/Oracles/Planets/Vital)", *obj:Planet.Vital, *images:VitalWorld]
 
-    - Name: Peril
-      Title:
+    - Title:
         Canonical: Planetside Peril
+        Short: Peril
+      _idFragment: Peril
       Source:
         Page: 320
       Display:
@@ -72,9 +75,8 @@ Planets:
       Oracles:
         - Display:
             Column of: Starforged/Oracles/Planets/Peril
-          Name: Lifebearing
           Title:
-            Canonical: Planetside Peril - Lifebearing
+            Canonical: Lifebearing
           Usage:
             Requires: *attr:Life.Lifebearing
           Table: &table:Planets.Peril
@@ -115,9 +117,8 @@ Planets:
             - [100, 100, *result:RollTwice]
         - Display:
             Column of: Starforged/Oracles/Planets/Peril
-          Name: Lifeless
           Title:
-            Canonical: Planetside Peril - Lifeless
+            Canonical: Lifeless
           Usage:
             Requires: *attr:Life.Lifeless
           _templateTable:
@@ -158,9 +159,10 @@ Planets:
               - [96, 99]
               - [100, 100]
 
-    - Name: Opportunity
-      Title:
+    - Title:
         Canonical: Planetside Opportunity
+        Short: Opportunity
+      _idFragment: Opportunity
       Source:
         Page: 321
       Display:
@@ -183,9 +185,8 @@ Planets:
       Oracles:
         - Display:
             Column of: Starforged/Oracles/Planets/Opportunity
-          Name: Lifebearing
           Title:
-            Canonical: Planetside Opportunity - Lifebearing
+            Canonical: Lifebearing
           Usage:
             Requires: *attr:Life.Lifebearing
           Table: &table:Planets.Opportunity
@@ -216,9 +217,8 @@ Planets:
             - [97, 100, Vantage point reveals the lay of the land, Suggestions: [*roll:Object]]
         - Display:
             Column of: Starforged/Oracles/Planets/Opportunity
-          Name: Lifeless
           Title:
-            Canonical: Planetside Opportunity - Lifeless
+            Canonical: Lifeless
           Usage:
             Requires: *attr:Life.Lifeless
           _templateTable:

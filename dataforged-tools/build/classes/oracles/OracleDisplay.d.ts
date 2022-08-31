@@ -4,11 +4,10 @@ import type { IDisplayOracle as IDisplayOracle, IOracle } from "../../json_out/i
  * @internal
  */
 export declare class DisplayOracle implements IDisplayOracle {
-    Title: string;
     "Column of"?: IOracle["$id"] | undefined;
     Table: TableDisplayInfo;
     Images?: IDisplayOracle["Images"];
     Icon?: IDisplayOracle["Icon"];
-    constructor(json: Partial<IDisplayOracle>, parentName: string, parentId: IOracle["$id"]);
+    constructor(json: Partial<IDisplayOracle>, parentId: IOracle["$id"]);
 }
 //# sourceMappingURL=OracleDisplay.d.ts.map

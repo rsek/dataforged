@@ -1,7 +1,8 @@
 Settlements:
-  Name: Settlements
   Title:
     Canonical: Settlements
+    Short: Settlement
+  _idFragment: Settlements
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
@@ -9,6 +10,8 @@ Settlements:
     Date: "050622"
   Oracles:
     - _templateInfo: *template.info:Generic.Location
+      Title:
+        Canonical: Location
       Source:
         Page: 322
       _templateTable:
@@ -17,8 +20,7 @@ Settlements:
           - [1, 40]
           - [41, 75]
           - [76, 100]
-    - Name: Population
-      Title:
+    - Title:
         Canonical: Population
       Source:
         Page: 322
@@ -37,9 +39,8 @@ Settlements:
             - Use content from: Starforged/Oracles/Settlements/Population/Terminus
               Label: Number
       Oracles:
-        - Name: Terminus
-          Title:
-            Canonical: Population - Terminus
+        - Title:
+            Canonical: Terminus
           Display:
             Column of: Starforged/Oracles/Settlements/Population
           Usage:
@@ -52,9 +53,8 @@ Settlements:
             - [26, 55, Hundreds, Attributes: {Population: Hundreds}]
             - [56, 85, Thousands, Attributes: {Population: Thousands}]
             - [86, 100, Tens of thousands, Attributes: {Population: Tens of thousands}]
-        - Name: Outlands
-          Title:
-            Canonical: Population - Outlands
+        - Title:
+            Canonical: Outlands
           Display:
             Column of: Starforged/Oracles/Settlements/Population
           Usage:
@@ -70,9 +70,8 @@ Settlements:
               - [66, 90]
               - [91, 100]
 
-        - Name: Expanse
-          Title:
-            Canonical: Population - Expanse
+        - Title:
+            Canonical: Expanse
           Display:
             Column of: Starforged/Oracles/Settlements/Population
           Usage:
@@ -88,8 +87,7 @@ Settlements:
               - [81, 95]
               - [96, 100]
 
-    - Name: First Look
-      Title:
+    - Title:
         Canonical: First Look
       Source:
         Page: 323
@@ -122,8 +120,7 @@ Settlements:
         - [88, 90, "Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)", *obj:Vault]
         - [91, 100, *result:Descriptor+Focus]
 
-    - Name: Initial Contact
-      Title:
+    - Title:
         Canonical: Initial Contact
       Source:
         Page: 323
@@ -145,8 +142,7 @@ Settlements:
         - [93, 95, Destroyed, Attributes: {Initial Contact: Destroyed}]
         - [96, 100, "[⏵Derelict](Starforged/Oracles/Derelicts)", *inherit:Derelict.Settlement]
 
-    - Name: Authority
-      Title:
+    - Title:
         Canonical: Authority
       Source:
         Page: 323
@@ -163,11 +159,12 @@ Settlements:
         - [71, 85, Corrupt, Attributes: {Authority: Corrupt}]
         - [86, 100, Oppressive, Attributes: {Authority: Oppressive}]
 
-    - Name: Projects
-      Source:
+    - Source:
         Page: 324
       Title:
         Canonical: Settlement Projects
+        Short: Projects
+      _idFragment: Projects
       Content:
         Part of speech: [noun, common noun]
         Tags: [abstract noun]
@@ -210,11 +207,12 @@ Settlements:
         - [93, 95, Warfare]
         - [96, 100, *result:Action+Theme]
 
-    - Name: Trouble
-      Source:
+    - Source:
         Page: 324
       Title:
         Canonical: Settlement Trouble
+        Short: Trouble
+      _idFragment: Trouble
       Usage:
         Max rolls: 2
       Description: |-
@@ -258,11 +256,12 @@ Settlements:
         - [89, 90, Vulnerable lifeforms, Suggestions: [*obj:Creature]]
         - [91, 100, *result:Action+Theme]
 
-    - Name: Name
-      Source:
+    - Source:
         Page: 325
       Title:
         Canonical: Settlement Name
+        Short: Name
+      _idFragment: Name
       Description: |-
         Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
       Usage:

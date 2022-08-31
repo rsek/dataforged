@@ -1,7 +1,8 @@
 Starships:
-  Name: Starships
   Title:
     Canonical: Starships
+    Short: Starship
+  _idFragment: Starships
   Aliases: [Ship]
   Source:
     Authors: [Shawn Tomkin]
@@ -9,8 +10,7 @@ Starships:
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Oracles:
-    - Name: Type
-      Title:
+    - Title:
         Canonical: Type
       Source:
         Page: 326
@@ -50,8 +50,7 @@ Starships:
         - [85, 94, "[⏵Fleet](Starforged/Oracles/Starships/Fleet)", Summary: null, Oracle rolls: [Starforged/Oracles/Starships/Fleet]]
         - [95, 100, Ships in conflict (roll twice), Summary: null, Oracle rolls: [Starforged/Oracles/Starships/Type], *obj:Starship]
         # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
-    - Name: Fleet
-      Title:
+    - Title:
         Canonical: Fleet
       Source:
         Page: 326
@@ -69,8 +68,7 @@ Starships:
         - [71, 90, Transport and escorts]
         - [91, 100, "[⏵Starship Mission](Starforged/Oracles/Starships/Mission)",
             Oracle rolls: [Starforged/Oracles/Starships/Mission]]
-    - Name: Initial Contact
-      Title:
+    - Title:
         Canonical: Initial Contact
       Source:
         Page: 327
@@ -92,8 +90,7 @@ Starships:
         - [86, 90, Unresponsive]
         - [91, 95, Destroyed]
         - [96, 100, "[⏵Derelict](Starforged/Oracles/Derelicts)", *inherit:Derelict.Starship]
-    - Name: First Look
-      Title:
+    - Title:
         Canonical: First Look
       Source:
         Page: 327
@@ -126,9 +123,10 @@ Starships:
         - [86, 90, Built from scrap]
         - [91, 94, Towing or linked]
         - [95, 100, *result:Descriptor+Focus]
-    - Name: Mission
-      Title:
+    - Title:
         Canonical: Starship Mission
+        Short: Mission
+      _idFragment: Mission
       Source:
         Page: 328
       Display:
@@ -149,9 +147,8 @@ Starships:
           Attributes:
             Region: null
       Oracles:
-        - Name: Terminus
-          Title:
-            Canonical: Starship Mission - Terminus
+        - Title:
+            Canonical: Terminus
           Display: &display:Mission
             Column of: Starforged/Oracles/Starships/Mission
             Table:
@@ -197,9 +194,8 @@ Starships:
             - [91, 100, *result:RollTwice]
 
         - Display: *display:Mission
-          Name: Outlands
           Title:
-            Canonical: Starship Mission - Outlands
+            Canonical: Outlands
           Usage:
             Requires:
               Attributes:
@@ -241,9 +237,8 @@ Starships:
               - [91, 100]
 
         - Display: *display:Mission
-          Name: Expanse
           Title:
-            Canonical: Starship Mission - Expanse
+            Canonical: Expanse
           Usage:
             Requires:
               Attributes:
@@ -283,9 +278,10 @@ Starships:
               - [84, 85]
               - [86, 90]
               - [91, 100]
-    - Name: Name
-      Title:
+    - Title:
         Canonical: Starship Name
+        Short: Name
+      _idFragment: Name
       Source:
         Page: 329
       Description: |-

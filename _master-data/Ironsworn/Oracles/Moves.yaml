@@ -1,4 +1,3 @@
-Name: Moves
 Title:
   Canonical: Moves
 Source:
@@ -7,8 +6,7 @@ Source:
   Title: Ironsworn Rulebook
   License: https://creativecommons.org/licenses/by-sa/4.0/
 Oracles:
-  - Name: Endure Harm
-    Title:
+  - Title:
       Canonical: Endure Harm
     Source:
       Page: 91
@@ -31,8 +29,7 @@ Oracles:
           "You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).",
         ]
       - [51, 100, "You are battered but still standing."]
-  - Name: Endure Stress
-    Title:
+  - Title:
       Canonical: Endure Stress
     Source:
       Page: 93
@@ -50,8 +47,7 @@ Oracles:
           "You give in to a fear or compulsion, and act against your better instincts.",
         ]
       - [51, 100, "You persevere."]
-  - Name: Pay the Price
-    Title:
+  - Title:
       Canonical: Pay the Price
     Source:
       Page: 105
@@ -90,50 +86,45 @@ Oracles:
           "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
           *result:RollTwice.MakeItWorse
         ]
-  - Name: Ask the Oracle
-    Title:
+  - Title:
       Canonical: Ask the Oracle
     Aliases: [Ask]
     Source:
       Page: 107
     Oracles:
-      - Name: Almost Certain
-        Title:
-          Canonical: "Ask the Oracle: Almost Certain"
+      - Title:
+          Canonical: Almost Certain
         Aliases: ["90"]
         On a Match: &AtO.Match
           Text: On a match, an extreme result or twist has occurred.
         Table:
           - [1, 10, "No"]
           - [11, 100, "Yes"]
-      - Name: Likely
-        Title:
-          Canonical: "Ask the Oracle: Likely"
+      - Title:
+          Canonical: Likely
         Aliases: ["75"]
         On a Match: *AtO.Match
         Table:
           - [1, 25, "No"]
           - [26, 100, "Yes"]
-      - Name: Fifty-fifty
-        Title:
-          Canonical: "Ask the Oracle: 50/50"
+      - Title:
+          Canonical: 50/50
+          Standard: 50/50
           Short: 50/50
         Aliases: ["50", "5050", "Fifty-fifty", "50/50", "50-50"]
         On a Match: *AtO.Match
         Table:
           - [1, 50, "No"]
           - [51, 100, "Yes"]
-      - Name: Unlikely
-        Title:
-          Canonical: "Ask the Oracle: Unlikely"
+      - Title:
+          Canonical: "Unlikely"
         Aliases: ["25"]
         On a Match: *AtO.Match
         Table:
           - [1, 75, "No"]
           - [76, 100, "Yes"]
-      - Name: Small Chance
-        Title:
-          Canonical: "Ask the Oracle: Small Chance"
+      - Title:
+          Canonical: "Small Chance"
         Aliases: ["10"]
         On a Match: *AtO.Match
         Table:

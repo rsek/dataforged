@@ -1,8 +1,8 @@
 Interior:
-  Name: Interior
+  _idFragment: Interior
   Title:
-    Canonical: Vault Interior
-  _childOf: Vaults
+    Canonical: Interior
+  _childOf: Precursor Vaults
   Description: If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.
   Source:
     Authors: [Shawn Tomkin]
@@ -10,13 +10,14 @@ Interior:
     Date: "050622"
     License: https://creativecommons.org/licenses/by-sa/4.0/
   Display:
-    Icon: ../../img/vector/Vaults/Interior.svg
+    Icon: img/vector/Vaults/Interior.svg
   Oracles:
-    - Name: First Look
+    - _idFragment: First Look
       Source:
         Page: 364
       Title:
         Canonical: Inner First Look
+        Short: First Look
       Usage:
         Initial: true
         Max rolls: 2
@@ -56,9 +57,10 @@ Interior:
         - [88, 90, Well-preserved]
         - [91, 93, Wet or humid]
         - [94, 100, *result:Descriptor+Focus]
-    - Name: Feature
+    - _idFragment: Feature
       Title:
         Canonical: Interior Feature
+        Short: Feature
       Source:
         Page: 366
       Usage:
@@ -103,9 +105,10 @@ Interior:
         - [91, 95, *result:Descriptor+Focus]
         - [96, 100, *result:RollTwice]
 
-    - Name: Peril
+    - _idFragment: Peril
       Title:
         Canonical: Interior Peril
+        Short: Peril
       Source:
         Page: 367
       Usage:
@@ -137,9 +140,10 @@ Interior:
         - [96, 99, *result:Action+Theme]
         - [100, 100, *result:RollTwice]
 
-    - Name: Opportunity
+    - _idFragment: Opportunity
       Title:
         Canonical: Interior Opportunity
+        Short: Opportunity
       Source:
         Page: 367
       Usage:

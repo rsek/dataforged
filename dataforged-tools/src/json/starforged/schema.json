@@ -89,13 +89,8 @@
           "type": "string",
           "title": "Your Truth"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -126,7 +121,6 @@
         "Display",
         "Drives",
         "Features",
-        "Name",
         "Nature",
         "Quest Starter",
         "Rank",
@@ -154,14 +148,9 @@
           "title": "$id"
         },
         "Variant of": { "type": "string", "title": "Variant of" },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -193,7 +182,6 @@
         "$id",
         "Description",
         "Display",
-        "Name",
         "Nature",
         "Rank",
         "Source",
@@ -212,38 +200,39 @@
           "title": "$id"
         },
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use{@linkITitle.Standard}instead.",
           "type": "string",
           "title": "Canonical"
         },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see{@linkITitle.Short}instead.",
+          "type": "string",
+          "title": "Standard"
+        },
         "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use{@linkITitle.Standard}instead.",
           "type": "string",
           "title": "Short"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Canonical", "Short"]
+      "required": ["$id", "Canonical", "Short", "Standard"]
     },
-    "IDisplayWithTitle": {
-      "title": "IDisplayWithTitle",
+    "IDisplay": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay",
       "type": "object",
       "properties": {
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -256,8 +245,7 @@
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Title"]
+      "additionalProperties": false
     },
     "ISource": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
@@ -319,13 +307,13 @@
       "type": "number"
     },
     "ISettingTruth": {
-      "description": "Interface for Setting Truth categories such as \"Exodus\" and \"Cataclysm\". See page XX of Starforged for further information.",
+      "description": "Interface for Starforged Setting Truth categories such as \"Exodus\" and \"Cataclysm\". See page XX of Starforged for further information.",
       "title": "ISettingTruth",
       "type": "object",
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$",
+          "pattern": "^Starforged/Setting_Truths/[A-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -341,14 +329,9 @@
           "title": "Character"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         },
         "Source": {
           "$ref": "#/definitions/ISource",
@@ -364,15 +347,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": [
-        "$id",
-        "Character",
-        "Display",
-        "Name",
-        "Source",
-        "Table",
-        "Title"
-      ]
+      "required": ["$id", "Character", "Display", "Source", "Table", "Title"]
     },
     "ISettingTruthOption": {
       "description": "Interface for 'canonical' options within a SettingTruth category.",
@@ -381,7 +356,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$",
+          "pattern": "^Starforged/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100)$",
           "type": "string",
           "title": "$id"
         },
@@ -464,7 +439,7 @@
           "title": "Game objects"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/IDisplay_1",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -610,7 +585,7 @@
           "title": "Game objects"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/IDisplay_1",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         }
@@ -716,7 +691,7 @@
           "title": "Game objects"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/IDisplay_1",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         }
@@ -945,43 +920,10 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IDisplay": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/IDisplay_1"
-    },
     "IDisplay_1": {
       "description": "Interface for data relevant to an item's display/rendering.",
       "title": "IDisplay_1",
-      "type": "object",
-      "properties": {
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
+      "$ref": "#/definitions/IDisplay"
     },
     "IAssetType": {
       "description": "Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.",
@@ -1001,13 +943,8 @@
           "title": "Assets"
         },
         "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -1052,13 +989,8 @@
           "type": "string",
           "title": "$id"
         },
-        "Name": {
-          "description": "The asset's name - the title printed on the card.",
-          "type": "string",
-          "title": "Name"
-        },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -1141,7 +1073,6 @@
         "Abilities",
         "Asset Type",
         "Display",
-        "Name",
         "Source",
         "Title",
         "Usage"
@@ -1152,11 +1083,6 @@
       "title": "IAssetState",
       "type": "object",
       "properties": {
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Label": {
           "description": "A string label for the state.",
           "type": "string",
@@ -1197,7 +1123,6 @@
         "Enabled",
         "Impact",
         "Label",
-        "Name",
         "Permanent"
       ]
     },
@@ -1267,11 +1192,6 @@
           "type": "boolean",
           "title": "Adjustable"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Label": {
           "description": "The user-facing text label of this item.",
           "type": "string",
@@ -1338,11 +1258,6 @@
             ]
           },
           "title": "Set"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         },
         "Label": {
           "description": "The user-facing text label of this item.",
@@ -1501,11 +1416,6 @@
           "type": "boolean",
           "title": "Adjustable"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Label": {
           "description": "The user-facing text label of this item.",
           "type": "string",
@@ -1531,11 +1441,6 @@
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$",
           "type": "string",
           "title": "$id"
-        },
-        "Name": {
-          "description": "Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.",
-          "type": "string",
-          "title": "Name"
         },
         "Label": {
           "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
@@ -1602,11 +1507,6 @@
           "type": "string",
           "title": "$id"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Asset": {
           "description": "The ID of the parent Asset of the move, if any.",
@@ -1645,7 +1545,7 @@
           "title": "Outcomes"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -1682,7 +1582,6 @@
         "$id",
         "Category",
         "Display",
-        "Name",
         "Optional",
         "Source",
         "Text",
@@ -1821,15 +1720,15 @@
           "items": { "$ref": "#/definitions/ICustomStatOption" },
           "title": "Options"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+        "Label": {
+          "description": "The user-facing text label of this item.",
           "type": "string",
-          "title": "Name"
+          "title": "Label"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Name", "Options"]
+      "required": ["$id", "Label", "Options"]
     },
     "ICustomStatOption": {
       "title": "ICustomStatOption",
@@ -1840,11 +1739,6 @@
           "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
           "type": "string",
           "title": "$id"
-        },
-        "Name": {
-          "description": "The name/label for this specific value of the custom stat.",
-          "type": "string",
-          "title": "Name"
         },
         "Value": {
           "description": "The numeric value to be used as +stat when making an Action Roll.",
@@ -1859,7 +1753,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Label", "Name", "Value"]
+      "required": ["$id", "Label", "Value"]
     },
     "IMoveTriggerOptionProgress": {
       "title": "IMoveTriggerOptionProgress",
@@ -2054,11 +1948,6 @@
           "type": "boolean",
           "title": "Adjustable"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Label": {
           "description": "The user-facing text label of this item.",
           "type": "string",
@@ -2116,11 +2005,6 @@
           "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
           "type": "boolean",
           "title": "Adjustable"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         },
         "Label": {
           "description": "The user-facing text label of this item.",
@@ -2362,13 +2246,8 @@
           "type": "string",
           "title": "$id"
         },
-        "Name": {
-          "description": "The asset's name - the title printed on the card.",
-          "type": "string",
-          "title": "Name"
-        },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle_1",
+          "$ref": "#/definitions/IDisplay_2",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -2447,28 +2326,24 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IDisplayWithTitle_1": {
-      "title": "IDisplayWithTitle_1",
-      "$ref": "#/definitions/Partial<IDisplayWithTitle>"
+    "IDisplay_2": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay_2",
+      "$ref": "#/definitions/Partial<IDisplay>"
     },
-    "Partial<IDisplayWithTitle>": {
-      "title": "Partial<IDisplayWithTitle>",
+    "Partial<IDisplay>": {
+      "title": "Partial<IDisplay>",
       "type": "object",
       "properties": {
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -2575,11 +2450,6 @@
           "type": "boolean",
           "title": "Rollable"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Label": {
           "description": "The user-facing text label of this item.",
           "type": "string",
@@ -2660,12 +2530,17 @@
           "title": "$id"
         },
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nIn some cases (e.g. tree displays) this name may be inappropriate; see{@linkITitle.Short}for an alternative.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use{@linkITitle.Standard}instead.",
           "type": "string",
           "title": "Canonical"
         },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see{@linkITitle.Short}instead.",
+          "type": "string",
+          "title": "Standard"
+        },
         "Short": {
-          "description": "A short title to use when the canonical title is too long or otherwise inappropriate.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use{@linkITitle.Standard}instead.",
           "type": "string",
           "title": "Short"
         }
@@ -2688,10 +2563,17 @@
           "type": "array",
           "items": { "$ref": "#/definitions/IAlterMomentumReset" },
           "title": "Reset"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["$id"]
     },
     "IAlterMomentumBurn": {
       "title": "IAlterMomentumBurn",
@@ -2711,11 +2593,17 @@
           "type": "array",
           "items": { "enum": ["Strong Hit", "Weak Hit"], "type": "string" },
           "title": "Outcomes"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Effect", "Trigger"]
+      "required": ["$id", "Effect", "Trigger"]
     },
     "IHasText": {
       "description": "Interface for items that reproduce Starforged rules text in markdown.",
@@ -2751,11 +2639,17 @@
           "description": "The amount by which the PC's momentum reset is change.",
           "type": "integer",
           "title": "Value"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Trigger", "Value"]
+      "required": ["$id", "Trigger", "Value"]
     },
     "IConditionMeter": {
       "description": "Interface representing a condition meter such as Health, Spirit, Supply, or Integrity.",
@@ -2814,11 +2708,6 @@
           "type": "boolean",
           "title": "Rollable"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Label": {
           "description": "The user-facing text label of this item.",
           "type": "string",
@@ -2848,18 +2737,13 @@
           "type": "string",
           "title": "$id"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Moves": {
           "type": "array",
           "items": { "$ref": "#/definitions/IMove" },
           "title": "Moves"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -2888,7 +2772,6 @@
         "Description",
         "Display",
         "Moves",
-        "Name",
         "Optional",
         "Source",
         "Title"
@@ -2904,11 +2787,6 @@
           "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
           "type": "string",
           "title": "$id"
-        },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
         },
         "Category": {
           "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
@@ -2935,7 +2813,7 @@
         },
         "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
-          "$ref": "#/definitions/IDisplayWithTitle",
+          "$ref": "#/definitions/IDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -2979,7 +2857,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Display", "Name", "Source", "Title"]
+      "required": ["$id", "Display", "Source", "Title"]
     },
     "IOracle": {
       "description": "Represents an oracle, which may have a Table or multiple child Oracles.",
@@ -3024,11 +2902,6 @@
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         },
-        "Name": {
-          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
-          "type": "string",
-          "title": "Name"
-        },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
@@ -3064,7 +2937,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Category", "Display", "Name", "Source", "Title"]
+      "required": ["$id", "Category", "Display", "Source", "Title"]
     },
     "IDisplayOracle": {
       "description": "Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
@@ -3086,20 +2959,15 @@
           "type": "string",
           "title": "Embed in"
         },
-        "Title": {
-          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
-          "type": "string",
-          "title": "Title"
-        },
         "Icon": {
           "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
           "type": "string",
           "title": "Icon"
         },
         "Images": {
           "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Images"
@@ -3113,7 +2981,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Table", "Title"]
+      "required": ["Table"]
     },
     "ITableDisplayInfo": {
       "description": "Provides information on how a specific oracle table is rendered in the source text.",
@@ -3203,7 +3071,7 @@
           "title": "Summary"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/IDisplay_1",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },

@@ -1,4 +1,3 @@
-Name: Name
 Title:
   Canonical: Name
 Source:
@@ -8,19 +7,24 @@ Source:
   Page: 184
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 Oracles:
-  - Name: Ironlander
-    Title:
+  - Title:
       Canonical: "Oracle 13: Ironlander Names"
-    Aliases: ["13", "Oracle 13", "Ironlander Names"]
+      Standard: Ironlander Names
+      Short: Ironlander
+    _idFragment: Ironlander
+    Aliases: ["13", "Oracle 13"]
     Description: Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.
     Source:
       Title: Ironsworn Rulebook
       Page: 184
     Oracles:
-      - Name: A
+      - Source:
+          Page: 184
         Title:
-          Canonical: "Oracle 13: Ironlander Names - A"
-          Short: Table A
+          Canonical: ""
+          Standard: Table A
+          Short: A
+        _idFragment: A
         Table:
           - [1, 1, Solana]
           - [2, 2, Keelan]
@@ -122,10 +126,13 @@ Oracles:
           - [98, 98, Bas]
           - [99, 99, Sabine]
           - [100, 100, Tallus]
-      - Name: B
+      - Source:
+          Page: 185
         Title:
-          Canonical: "Oracle 13: Ironlander Names - B"
-          Short: Table B
+          Canonical: ""
+          Standard: Table B
+          Short: B
+        _idFragment: B
         Table:
           - [1, 1, Segura]
           - [2, 2, Gethin]
@@ -227,11 +234,12 @@ Oracles:
           - [98, 98, Kayu]
           - [99, 99, Bevan]
           - [100, 100, Chandra]
-  - Name: Elf
-    Title:
+  - Title:
       Canonical: "Oracle 14: Elf Names"
-      Short: Elf Names
-    Aliases: ["14", "Oracle 14", "Elf Names"]
+      Standard: Elf Names
+      Short: Elf
+    _idFragment: Elf
+    Aliases: ["14", "Oracle 14"]
     Description: Use this oracle to generate a name for an elf character.
     Source:
       Title: Ironsworn Rulebook
@@ -287,12 +295,13 @@ Oracles:
       - [95, 96, Otani]
       - [97, 98, Ditani]
       - [99, 100, Faraza]
-  - Name: Other
-    Description: Use this oracle to generate names for other firstborn characters.
-    Aliases: ["15", "Oracle 15", "Other Names"]
+  - Description: Use this oracle to generate names for other firstborn characters.
+    Aliases: ["15", "Oracle 15"]
     Title:
       Canonical: "Oracle 15: Other Names"
-      Short: Other Names
+      Standard: Other Names
+      Short: Other
+    _idFragment: Other
     Display:
       Table:
         Roll columns:
@@ -305,9 +314,10 @@ Oracles:
       Title: Ironsworn Rulebook
       Page: 187
     Oracles:
-      - Name: Giants
-        Title:
-          Canonical: "Oracle 15: Other Names - Giants"
+      - Title:
+          Canonical: Giants
+          Short: Giant
+        _idFragment: Giant
         Display:
           Column of: Ironsworn/Oracles/Name/Other
         Table:
@@ -336,9 +346,10 @@ Oracles:
           - [89, 92, Tuban]
           - [93, 96, Qudan]
           - [97, 100, Denua]
-      - Name: Varou
-        Title:
-          Canonical: "Oracle 15: Other Names - Varou"
+      - Title:
+          Canonical: Varou
+          Short: Varou
+        _idFragment: Varou
         Display:
           Column of: Ironsworn/Oracles/Name/Other
         Table:
@@ -367,9 +378,10 @@ Oracles:
           - [89, 92, Dreko]
           - [93, 96, Aleko]
           - [97, 100, Vojan]
-      - Name: Trolls
-        Title:
-          Canonical: "Oracle 15: Other Names - Trolls"
+      - Title:
+          Canonical: Trolls
+          Short: Troll
+        _idFragment: Troll
         Display:
           Column of: Ironsworn/Oracles/Name/Other
         Table:

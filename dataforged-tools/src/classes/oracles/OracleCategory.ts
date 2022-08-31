@@ -1,5 +1,5 @@
 
-import { Oracle , OracleCategoryDisplay , OracleUsage , SourceInheritor , Title  } from "@classes/index.js";
+import { Display, Oracle  , OracleUsage , SourceInheritor , Title  } from "@classes/index.js";
 import type { Gamespace , IOracleCategory } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -12,12 +12,11 @@ import _ from "lodash-es";
  */
 export class OracleCategory extends SourceInheritor implements IOracleCategory {
   $id: IOracleCategory["$id"];
-  Name: string;
   Title: Title;
   Aliases?: string[] | undefined;
   Category?: IOracleCategory["$id"] | undefined;
   Description?: string | undefined;
-  Display: OracleCategoryDisplay;
+  Display: Display;
   Usage?: OracleUsage | undefined;
   Oracles?: Oracle[] | undefined;
   Categories?: OracleCategory[] | undefined;
@@ -36,11 +35,10 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
 
     this.$id = buildOracleId<IOracleCategory["$id"]>(gamespace, json, ...ancestorsJson);
     buildLog(this.constructor, `Building: ${this.$id}`);
-    this.Name = json.Name;
-    this.Title = new Title(json.Title, this.$id);
+    this.Title = new Title(json.Title, this);
     this.Aliases = json.Aliases;
     this.Description = json.Description;
-    this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);
+    this.Display = new Display(json.Display??{});
     this.Category = category ?? undefined;
     this["Sample Names"] = json["Sample Names"];
     if (json.Usage) {

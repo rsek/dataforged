@@ -1,9 +1,9 @@
-import type { IHasText } from "@json_out/index.js";
+import type { IHasId, IHasText } from "@json_out/index.js";
 
 /**
  * @public
  */
-export interface IAlterMomentum {
+export interface IAlterMomentum extends IHasId {
   /**
    * Information on how the player's momentum burn is altered.
    */
@@ -16,7 +16,7 @@ export interface IAlterMomentum {
 /**
  * @public
  */
-export interface IAlterMomentumBurn {
+export interface IAlterMomentumBurn extends IHasId {
   /**
    * The trigger condition for altering the PC's momentum burn.
    */
@@ -30,7 +30,7 @@ export interface IAlterMomentumBurn {
 /**
  * @public
  */
-export interface IAlterMomentumReset {
+export interface IAlterMomentumReset extends IHasId {
   /**
    * The trigger condition for altering the PC's momentum reset.
    */

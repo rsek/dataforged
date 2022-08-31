@@ -1,4 +1,3 @@
-Name: Assets
 Source:
   Title: "Ironsworn: Starforged Assets"
   License: https://creativecommons.org/licenses/by-sa/4.0/
@@ -6,8 +5,7 @@ Source:
     - Shawn Tomkin
   Date: "050622"
 Asset Types:
-  - Name: Command Vehicle
-    Title:
+  - Title:
       Canonical: Command Vehicle
     Display:
       Color: "#9aa3ad"
@@ -19,12 +17,13 @@ Asset Types:
 
       The command vehicle has an integrity meter and starts at 5 integrity. When your STARSHIP takes a hit, make the [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) move to see what happens.
     Assets:
-      - Name: Starship
+      - Title:
+          Canonical: Starship
         Attachments:
           Asset Types: [Starforged/Assets/Module]
           Max: null
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -63,12 +62,13 @@ Asset Types:
                     Text: "[Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1)."
                   Miss: *Starship.3
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 5
           Conditions: [Battered, Cursed]
-  - Name: Module
-    Title:
+  - Title:
       Canonical: Modules
+      Standard: Module
     Display:
       Color: "#7f5a90"
     Usage:
@@ -81,10 +81,11 @@ Asset Types:
 
       When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](Starforged/Moves/Recover/Repair) it.
     Assets:
-      - Name: Engine Upgrade
+      - Title:
+          Canonical: Engine Upgrade
         States:
           - &Broken
-            Name: Broken
+            Label: Broken
             Enabled: false
             Disables asset: true
             Permanent: false
@@ -151,7 +152,8 @@ Asset Types:
                     Text: You may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
                   Weak Hit: *Engine_Upgrade.2
                   Miss: *Engine_Upgrade.2
-      - Name: Expanded Hold
+      - Title:
+          Canonical: Expanded Hold
         States:
           - *Broken
         Abilities:
@@ -189,11 +191,13 @@ Asset Types:
                   You may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
                 Outcomes: *outcomes:+2_momentum.HIT
         Condition Meter:
-          Name: Cargo
+          Label: Cargo
           Max: 3
           Value: 0
+          Rollable: false
           # TODO: key for being interchangeable with supply?
-      - Name: Grappler
+      - Title:
+          Canonical: Grappler
         States:
           - *Broken
         Abilities:
@@ -201,7 +205,8 @@ Asset Types:
               Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, charging fails and you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
             Enabled: true
             Moves:
-              - Name: Ready Grappler
+              - Title:
+                  Canonical: Ready Grappler
                 Trigger:
                   Text: When you take a minute or so to ready the grappler...
                   Options:
@@ -247,7 +252,8 @@ Asset Types:
                     Text: You may reroll one challenge die.
                   Weak Hit: *Grappler.3
                   Miss: *Grappler.3
-      - Name: Heavy Cannons
+      - Title:
+          Canonical: Heavy Cannons
         States:
           - *Broken
         Abilities:
@@ -306,7 +312,8 @@ Asset Types:
                   Strong Hit:
                     Text: Take +1 momentum.
                     With a Match: *outcome:+2_momentum
-      - Name: Internal Refit
+      - Title:
+          Canonical: Internal Refit
         States:
           - *Broken
         Abilities:
@@ -328,7 +335,8 @@ Asset Types:
           - Text: &move:Asset.Internal_refit |-
               Your vessel is stocked with reserves. When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
             Moves:
-              - Name: Draw Reserves
+              - Title:
+                  Canonical: Draw Reserves
                 Trigger:
                   Text: When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...
                   Options:
@@ -362,7 +370,8 @@ Asset Types:
                   Weak Hit: &outcome:reroll_any
                     Reroll: *reroll:any
                   Miss: *outcome:reroll_any
-      - Name: Medbay
+      - Title:
+          Canonical: Medbay
         States:
           - *Broken
         Abilities:
@@ -422,7 +431,8 @@ Asset Types:
                       Roll type: Action roll
                       Method: Inherit
                 Outcomes: *Medbay.3
-      - Name: Missile Array
+      - Title:
+          Canonical: Missile Array
         States:
           - *Broken
         Abilities:
@@ -480,13 +490,15 @@ Asset Types:
                       Method: Inherit
                 Text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
         Condition Meter:
-          Name: Ammo
+          Label: Ammo
           Max: 5
-      - Name: Overseer
+          Rollable: false
+      - Title:
+          Canonical: Overseer
         States:
           - *Broken
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -523,7 +535,8 @@ Asset Types:
                       Roll type: Action roll
                       Using: [Attached_Asset_Condition_Meter]
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Reinforced Hull
+      - Title:
+          Canonical: Reinforced Hull
         States:
           - *Broken
         Abilities:
@@ -578,7 +591,8 @@ Asset Types:
                   Weak Hit: *outcome:+1_momentum
                   Miss:
                     Text: "[Pay the Price](Starforged/Moves/Fate/Pay_the_Price) by marking this component as broken."
-      - Name: Research Lab
+      - Title:
+          Canonical: Research Lab
         States:
           - *Broken
         Abilities:
@@ -652,7 +666,8 @@ Asset Types:
                   Strong Hit: &outcome:mark_discoveries_box
                     Text: Mark one extra box on your discoveries legacy track.
                   Weak Hit: *outcome:mark_discoveries_box
-      - Name: Sensor Array
+      - Title:
+          Canonical: Sensor Array
         States:
           - *Broken
         Abilities:
@@ -731,7 +746,8 @@ Asset Types:
                       Roll type: Action roll
                       Using: [Attached_Asset_Condition_Meter]
                 Outcomes: *Sensor_Array.3
-      - Name: Shields
+      - Title:
+          Canonical: Shields
         States:
           - *Broken
         Abilities:
@@ -739,7 +755,8 @@ Asset Types:
               When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). Then, if you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
             Enabled: true
             Moves:
-              - Name: Raise Shields
+              - Title:
+                  Canonical: Raise Shields
                 Trigger:
                   Text: When you raise your shields...
                   Options:
@@ -789,10 +806,12 @@ Asset Types:
                   Strong Hit:
                     Text: You may raise your shields to 3 without rolling. If you do, take +1 momentum.
         Condition Meter:
-          Name: Shields
+          Label: Shields
           Max: 4
+          Rollable: true
           Value: 0
-      - Name: Stealth Tech
+      - Title:
+          Canonical: Stealth Tech
         States:
           - *Broken
         Abilities:
@@ -870,7 +889,8 @@ Asset Types:
                     With a Match:
                       Text: Mark progress. You also remain totally undetected; take +2 momentum and add +1 on your next [Strike](Starforged/Moves/Combat/Strike).
                   Weak Hit: *outcome:mark_progress
-      - Name: Vehicle Bay
+      - Title:
+          Canonical: Vehicle Bay
         States:
           - *Broken
         Abilities:
@@ -912,7 +932,8 @@ Asset Types:
                     Reroll: *reroll:any
                   Weak Hit: *Vehicle_Bay.3.Hit
                   Miss: *outcome:reroll_any
-      - Name: Workshop
+      - Title:
+          Canonical: Workshop
         States:
           - *Broken
         Abilities:
@@ -982,9 +1003,9 @@ Asset Types:
                   Strong Hit: &Workshop.3.FYV
                     Text: Mark one extra box on your quests legacy track.
                   Weak Hit: *Workshop.3.FYV
-  - Name: Support Vehicle
-    Title:
-      Canonical: Support Vehicle
+  - Title:
+      Canonical: Support Vehicles
+      Standard: Support Vehicle
     Display:
       Color: "#495790"
     Usage:
@@ -995,9 +1016,10 @@ Asset Types:
 
       As with the command vehicle, your support vehicles have integrity meters. The maximum integrity varies based on the type of vehicle. When a support vehicle faces a damaging situation or environment, you must [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) to see how it fares.
     Assets:
-      - Name: Exosuit
+      - Title:
+          Canonical: Exosuit
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1042,12 +1064,14 @@ Asset Types:
                       Text: To your Exosuit
                 Outcomes: *outcomes:reroll_challenge_die_all
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 6
           Conditions: [Battered]
-      - Name: Hoverbike
+      - Title:
+          Canonical: Hoverbike
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1093,12 +1117,14 @@ Asset Types:
                     Text: Roll your action die. On a 5 or 6, do not reset momentum.
             # FIXME: this is a difficult trigger to describe in relation to moves. it might make more sense to develop a momentum burn trigger instead.
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 3
           Conditions: [Battered]
-      - Name: Rover
+      - Title:
+          Canonical: Rover
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1143,12 +1169,14 @@ Asset Types:
                         - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 5
           Conditions: [Battered]
-      - Name: Service Pod
+      - Title:
+          Canonical: Service Pod
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1196,12 +1224,14 @@ Asset Types:
                       Roll type: Action roll
                 Text: You may take an automatic strong hit. If you do, [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) (-2).
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 4
           Conditions: [Battered]
-      - Name: Shuttle
+      - Title:
+          Canonical: Shuttle
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1233,12 +1263,14 @@ Asset Types:
                       Roll type: Action roll
                 Text: Add +1.
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 4
           Conditions: [Battered]
-      - Name: Skiff
+      - Title:
+          Canonical: Skiff
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1276,12 +1308,14 @@ Asset Types:
           - Text: |-
               Your skiff is fully stocked. When you [Check Your Gear](Starforged/Moves/Adventure/Check_Your_Gear), add +1 and take +1 momentum on a hit.
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 4
           Conditions: [Battered]
-      - Name: Snub Fighter
+      - Title:
+          Canonical: Snub Fighter
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1316,19 +1350,20 @@ Asset Types:
               When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.
             # FIXME: describe this as an object?
             Inputs:
-              - Name: Victory Marks
+              - Label: Victory Marks
                 Input Type: Number
                 Min: 0
                 Value: 0
                 Adjustable: true
                 Max: null
         Condition Meter:
-          Name: Integrity
+          Label: Integrity
+          Rollable: true
           Max: 4
           Conditions: [Battered]
-  - Name: Path
-    Title:
+  - Title:
       Canonical: Paths
+      Standard: Path
     Display:
       Color: "#3f7faa"
     # Summary: Background aspects, careers, interests, training, and skills.
@@ -1337,7 +1372,8 @@ Asset Types:
 
       Some paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.
     Assets:
-      - Name: Ace
+      - Title:
+          Canonical: Ace
         Abilities:
           - Text: |-
               When you [Face Danger](Starforged/Moves/Adventure/Face_Danger) or [React Under Fire](Starforged/Moves/Combat/React_Under_Fire) by guiding your vehicle through a hazard or out of harm’s way, add +1 and take +1 momentum on a hit.
@@ -1379,13 +1415,15 @@ Asset Types:
                       Using: [Vehicle Integrity]
                 Outcomes:
                   Strong Hit: *outcome:+1_momentum
-      - Name: Archer
+      - Title:
+          Canonical: Archer
         Requirement: If you wield a power bow...
         Abilities:
           - Text: &move:Asset.Archer |-
               You carry 6 ammo. When you [Strike](Starforged/Moves/Combat/Strike) or [Clash](Starforged/Moves/Combat/Clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1). On a miss, [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1).
             Moves:
-              - Name: Craft Projectiles
+              - Title:
+                  Canonical: Craft Projectiles
                 Trigger:
                   Text: When you replenish your ammo by crafting projectiles...
                   Options:
@@ -1443,9 +1481,11 @@ Asset Types:
                     Text: Envision the effects of the projectile and take +1 momentum.
                   Weak Hit: *Archer.3
         Condition Meter:
-          Name: Ammo
+          Label: Ammo
           Max: 6
-      - Name: Armored
+          Rollable: true
+      - Title:
+          Canonical: Armored
         Requirement: If you wear your finely crafted set of personal armor...
         Abilities:
           - Text: |-
@@ -1495,7 +1535,8 @@ Asset Types:
                       Method: Inherit
                       Roll type: Action roll
               # TODO: something to handle arbitrary rolls like this
-      - Name: Artist
+      - Title:
+          Canonical: Artist
         Abilities:
           - Text: |-
               When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location, you may reroll your action die if its value is less than your spirit. On a strong hit, take +1 momentum or +1 spirit.
@@ -1533,7 +1574,8 @@ Asset Types:
           - Text: &move:Asset.Artist |-
               When you create or perform a significant artistic work as a public memorial or tribute, roll +the stat which best represents the work’s nature. On a strong hit, the work will stand the test of time; mark 2 ticks on your bonds legacy track. On a weak hit, its impact is short-lived; mark 1 tick instead of 2. On a miss, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Moves:
-              - Name: Commemorate
+              - Title:
+                  Canonical: Commemorate
                 Trigger:
                   Text: When you create or perform a significant artistic work as a public memorial or tribute...
                   Options:
@@ -1552,14 +1594,15 @@ Asset Types:
                   Miss:
                     Text: |-
                       The work is ignored, misunderstood, or co-opted, and you must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
-      - Name: Augmented
+      - Title:
+          Canonical: Augmented
         Inputs:
-          - Name: One
+          - Label: One
             Input Type: Text
-          - Name: Two
+          - Label: Two
             Input Type: Text
         States: # TODO: attach to specific abilities? hmm.
-          - Name: Broken (Augment 1)
+          - Label: Broken (Augment 1)
             Enabled: false
             Disables asset: false
             Impact: false
@@ -1588,7 +1631,7 @@ Asset Types:
             Alter Properties:
               States:
                 # TODO: adjust/annotate AlterProperties interface to clarify that array items should be concatenated
-                - Name: Broken (Augment 2)
+                - Label: Broken (Augment 2)
                   Enabled: false
                   Disables asset: false
                   Impact: false
@@ -1600,9 +1643,10 @@ Asset Types:
                   - Starforged/Moves/Suffer/Endure_Harm
                   - Starforged/Moves/Threshold/Face_Death
                 Text: You may instead mark an augment as broken. [Repair](Starforged/Moves/Recover/Repair) it as detailed in the AUGMENTED asset.
-      - Name: Bannersworn
+      - Title:
+          Canonical: Bannersworn
         Inputs:
-          - Name: Ideology
+          - Label: Ideology
             Input Type: Text
         Abilities:
           - Text: |-
@@ -1667,7 +1711,8 @@ Asset Types:
                   Weak Hit: &outcome:reroll_challenge_die
                     Reroll: *reroll:challenge_die
                   Miss: *outcome:reroll_challenge_die
-      - Name: Blademaster
+      - Title:
+          Canonical: Blademaster
         Requirement: If you wield a bladed weapon...
         Abilities:
           - Text: |-
@@ -1715,7 +1760,7 @@ Asset Types:
           - Text: |-
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
             Inputs:
-              - Name: Name
+              - Label: Name
                 Input Type: Text
                 Adjustable: false
             # TODO: box input???
@@ -1731,7 +1776,8 @@ Asset Types:
                   Strong Hit: &Blademaster.3
                     Text: Fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
                   Weak Hit: *Blademaster.3
-      - Name: Bounty Hunter
+      - Title:
+          Canonical: Bounty Hunter
         Abilities:
           - Text: |-
               When you take a bounty contract and [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to see it done, add +1. On a strong hit, you’ve got a solid lead and may mark progress on the quest. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) on a hunt, make the legacy reward one rank higher (1 extra box if already epic).
@@ -1800,7 +1846,8 @@ Asset Types:
                       Roll type: Progress roll
                       Method: Inherit
                 Outcomes: *outcomes:reroll_challenge_die_all
-      - Name: Brawler
+      - Title:
+          Canonical: Brawler
         Requirement: If you fight unarmed or with a close quarters weapon...
         Abilities:
           - Text: |-
@@ -1864,7 +1911,8 @@ Asset Types:
                     With a Match:
                       Text: Your initial assault leaves them stunned; mark progress and take +2 momentum.
                   Weak Hit: *outcome:mark_progress
-      - Name: Courier
+      - Title:
+          Canonical: Courier
         Abilities:
           - Text: |-
               When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
@@ -1927,9 +1975,11 @@ Asset Types:
                   Strong Hit:
                     Text: Take +1 safety or +1 momentum.
         Condition Meter:
-          Name: Safety
+          Label: Safety
           Max: 5
-      - Name: Demolitionist
+          Rollable: true
+      - Title:
+          Canonical: Demolitionist
         Abilities:
           - Text: |-
               When you make a move to attack, destroy, or sabotage by deploying or triggering an explosive device, choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss.
@@ -1969,38 +2019,39 @@ Asset Types:
                       Text: Reroll any challenge dice.
                   Weak Hit: *outcome:reroll_challenge_dice
                   Miss: *outcome:reroll_challenge_dice
-      - Name: Devotant
+      - Title:
+          Canonical: Devotant
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
-          - Name: Linked Stat
+          - Label: Linked Stat
             Input Type: Select
             Adjustable: false
             Sets:
               - Key: Stat
                 Type: Stat
             Options:
-              - Name: Edge
+              - Label: Edge
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Edge
-              - Name: Heart
+              - Label: Heart
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Heart
-              - Name: Iron
+              - Label: Iron
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Iron
-              - Name: Shadow
+              - Label: Shadow
                 Set:
                   - Key: Stat
                     Type: Stat
                     Value: Shadow
-              - Name: Wits
+              - Label: Wits
                 Set:
                   - Key: Stat
                     Type: Stat
@@ -2071,7 +2122,8 @@ Asset Types:
                 Outcomes:
                   Strong Hit:
                     Text: Take +1 spirit or +1 momentum.
-      - Name: Diplomat
+      - Title:
+          Canonical: Diplomat
         Abilities:
           - Text: |-
               When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to resolve a dispute, negotiate an agreement, or gather support, add +1. On a strong hit, mark progress on the quest. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
@@ -2125,13 +2177,15 @@ Asset Types:
                   Strong Hit:
                     With a Match:
                       Text: You are shown great kindness or respect; take +2 momentum or make an extra recover move with an automatic strong hit.
-      - Name: Empath
+      - Title:
+          Canonical: Empath
         Abilities:
           - Text: &move:Asset.Empath |-
               When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Enabled: true
             Moves:
-              - Name: Read Heart
+              - Title:
+                  Canonical: Read Heart
                 Trigger:
                   Text: When you read the intent, emotions, or memories of a nearby being...
                   Options:
@@ -2172,7 +2226,8 @@ Asset Types:
                   Strong Hit: &Empath.3
                     Text: Take +1 momentum. If they are an ally, also give them +2 spirit.
                   Weak Hit: *Empath.3
-      - Name: Explorer
+      - Title:
+          Canonical: Explorer
         Abilities:
           - Text: |-
               When you [Explore a Waypoint](Starforged/Moves/Exploration/Explore_a_Waypoint), take +1 momentum on a hit. When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) and score a hit, mark 1 extra tick on your discoveries legacy track.
@@ -2211,7 +2266,8 @@ Asset Types:
                     With a Match:
                       Text: Take +2 momentum and envision an unusual aspect of the site.
                   Weak Hit: *outcome:+1_momentum
-      - Name: Fated
+      - Title:
+          Canonical: Fated
         Abilities:
           - Text: |-
               When you fill a box on your background vow progress track, also mark 1 tick on your quests legacy track. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) on the background vow, your fate is at hand; take an automatic strong hit and envision the final sacrifice that brings your story to an end.
@@ -2257,13 +2313,15 @@ Asset Types:
                   Weak Hit: &outcome:reroll_challenge_die_10
                     Reroll: *reroll:challenge_die_10
                   Miss: *outcome:reroll_challenge_die_10
-      - Name: Firebrand
+      - Title:
+          Canonical: Firebrand
         Abilities:
           - Text: &move:Asset.Firebrand |-
               You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](Starforged/Moves/Suffer/Endure_Harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
             Enabled: true
             Moves:
-              - Name: Gather Energy
+              - Title:
+                  Canonical: Gather Energy
                 Trigger:
                   Text: When you rest and meditate to gather fiery energy...
                   Options:
@@ -2308,15 +2366,17 @@ Asset Types:
                       Method: Strong Hit
                 Text: Take an automatic strong hit and mark progress. Then, set your fire to 0.
         Condition Meter:
-          Name: Fire
+          Label: Fire
           Max: 5
+          Rollable: false
           Value: 0
-      - Name: Fugitive
+      - Title:
+          Canonical: Fugitive
         Abilities:
           - Text: |-
               You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.
             Inputs:
-              - Name: Notable foe or force tracks you down
+              - Label: Notable foe or force tracks you down
                 Input Type: Clock
                 Clock Type: Tension
                 Segments: 4
@@ -2347,7 +2407,8 @@ Asset Types:
             #           Roll type: Progress roll
             #           Method: Inherit
 
-      - Name: Gearhead
+      - Title:
+          Canonical: Gearhead
         Abilities:
           - Text: |-
               When you make a move to craft, repair, repurpose, or modify equipment or technology, add +1 and take +1 momentum on a hit.
@@ -2394,7 +2455,8 @@ Asset Types:
                     Text: The device is ready for use. One time only, when you or an ally make a move aided by the device, take an automatic strong hit. If you are in a fight, also mark progress.
                   Weak Hit: *Gearhead.3
               # separate alter moves for device use? ugh
-      - Name: Gunner
+      - Title:
+          Canonical: Gunner
         Requirement: If you wield a heavy ranged personal weapon...
         Abilities:
           - Text: |-
@@ -2441,7 +2503,7 @@ Asset Types:
           - Text: |-
               Give your favorite gun a name. When you [Clash](Starforged/Moves/Combat/Clash) with it, add +1. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) or [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while wielding it, add +1 and take +1 momentum on a hit.
             Inputs:
-              - Name: Name
+              - Label: Name
                 Input Type: Text
                 Adjustable: true
             Alter Moves:
@@ -2463,7 +2525,8 @@ Asset Types:
                       Method: Inherit
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Gunslinger
+      - Title:
+          Canonical: Gunslinger
         Requirement: If you wield a pistol...
         Abilities:
           - Text: |-
@@ -2517,7 +2580,8 @@ Asset Types:
                       Method: Inherit
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Haunted
+      - Title:
+          Canonical: Haunted
         Abilities:
           - Text: |-
               You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-1). On a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -2563,7 +2627,8 @@ Asset Types:
                 Outcomes:
                   *outcomes:+1_momentum.HIT
                   # TODO: should there be a way to indicate whether this should override or append the original text?
-      - Name: Healer
+      - Title:
+          Canonical: Healer
         Abilities:
           - Text: |-
               When you give medical care to [Heal](Starforged/Moves/Recover/Heal) yourself or another character, add +1. If you are treating someone other than yourself, take +1 spirit or +1 momentum on a hit.
@@ -2609,7 +2674,8 @@ Asset Types:
           - Text: |-
               Once every day or so, when you are in a safe place with plenty of time on your hands, you may [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1) and provide basic medical care for yourself, companions, or allies without risk. If you do, roll only your action die. On a 1-4, automatically give +1 health to everyone whose health is greater than 0. On a 5-6, make it +2.
             # TODO: style as move?
-      - Name: Infiltrator
+      - Title:
+          Canonical: Infiltrator
         Aliases: [Agent]
         Abilities:
           - Text: |-
@@ -2665,7 +2731,8 @@ Asset Types:
                   Strong Hit: &Infiltrator.3
                     Text: Reroll any dice the first time you make a move aided by the device.
                   Weak Hit: *Infiltrator.3
-      - Name: Kinetic
+      - Title:
+          Canonical: Kinetic
         Abilities:
           - Text: |-
               You wield kinetic powers. By focusing, you may remotely push, pull, lift, or constrict objects and beings that are about your size or smaller. When you are in a risky situation and draw on your powers to make a move, add +2 and [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2).
@@ -2692,7 +2759,8 @@ Asset Types:
                       Roll type: Action roll
                       Method: Strong Hit
                 Text: Reset momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
-      - Name: Leader
+      - Title:
+          Canonical: Leader
         Aliases:
           - Commander
         Abilities:
@@ -2747,7 +2815,8 @@ Asset Types:
                     With a Match:
                       Text: Your command galvanizes them into unexpected action. Take +2 momentum, and mark 1 tick on your bonds legacy track.
                   Weak Hit: *outcome:+1_momentum
-      - Name: Looper
+      - Title:
+          Canonical: Looper
         Abilities:
           - Text: |-
               When you score a miss on a suffer move (not [Endure Stress](Starforged/Moves/Suffer/Endure_Stress)), you may loop back a second or two. If you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
@@ -2766,7 +2835,8 @@ Asset Types:
           - Text: &move:Asset.Looper |-
               When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Moves:
-              - Name: Loop Back
+              - Title:
+                  Canonical: Loop Back
                 # Burn momentum: false #TODO: add to IMove? Move usage?
                 Trigger:
                   Options:
@@ -2774,13 +2844,13 @@ Asset Types:
                       Roll type: Action roll
                       Using: ["${{@CUSTOM_STAT}}"]
                       Custom stat:
-                        Name: Time gap
+                        Label: Time gap
                         Options:
-                          - Name: Minutes
+                          - Label: Minutes
                             Value: 4
-                          - Name: Hours
+                          - Label: Hours
                             Value: 3
-                          - Name: Days
+                          - Label: Days
                             Value: 2
                 Text: *move:Asset.Looper
                 Outcomes:
@@ -2801,7 +2871,8 @@ Asset Types:
               When you make a reroll granted by any asset ability on an action roll, also add +1.
             # TODO: this is a weird one! is there a non-silly way to apply this to every action die reroll from an asset ability?
             # what about "Alters: null"? is there a way to make it explicit that it's only supposed to be added to those?
-      - Name: Lore Hunter
+      - Title:
+          Canonical: Lore Hunter
         Aliases: [Archivist, Lore-Hunter]
         Abilities:
           - Text: |-
@@ -2868,7 +2939,8 @@ Asset Types:
                   Strong Hit: &Lore_Hunter.2
                     Text: Envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
                   Weak Hit: *Lore_Hunter.2
-      - Name: Loyalist
+      - Title:
+          Canonical: Loyalist
         Abilities:
           - Text: |-
               When you [Aid Your Ally](Starforged/Moves/Adventure/Aid_Your_Ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally. On a strong hit with a match, envision how this moment marks a breakthrough or milestone in your relationship; both of you may mark 1 tick on your bonds legacy track.
@@ -2909,7 +2981,8 @@ Asset Types:
                       Roll type: Progress roll
                       Method: Inherit
                 Text: Envision how you support your ally. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
-      - Name: Mercenary
+      - Title:
+          Canonical: Mercenary
         Abilities:
           - Text: |-
               When you agree to wage war or defend others from war in exchange for payment or promises, you may [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to see the mission done. If you do, reroll any dice. When you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow), make the legacy reward one rank higher (1 extra box if already epic).
@@ -2970,7 +3043,8 @@ Asset Types:
                       Roll type: Action roll
                       Method: Inherit
                 Text: Add +2.
-      - Name: Naturalist
+      - Title:
+          Canonical: Naturalist
         Abilities:
           - Text: |-
               When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gather Information](Starforged/Moves/Adventure/Gather_Information) using your knowledge of lifeforms or planetside ecosystems, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.
@@ -3032,7 +3106,8 @@ Asset Types:
                       Method: Inherit
                 Text: Add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Navigator
+      - Title:
+          Canonical: Navigator
         Abilities:
           - Text: |-
               When you [Set a Course](Starforged/Moves/Exploration/Set_a_Course), choose one.
@@ -3101,7 +3176,8 @@ Asset Types:
                     Text: *Navigator.3
                   Miss:
                     Text: *Navigator.3
-      - Name: Outcast
+      - Title:
+          Canonical: Outcast
         Abilities:
           - Text: |-
               When you [Hearten](Starforged/Moves/Recover/Hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
@@ -3123,7 +3199,8 @@ Asset Types:
           - Text: &move:Asset.Outcast |-
               When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1) in exchange for +1 supply. On a miss, your supply remains at 0 and you [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
             Moves:
-              - Name: Scrape By
+              - Title:
+                  Canonical: Scrape By
                 Trigger:
                   Text: When you [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) and your supply is reduced to 0...
                   Options:
@@ -3150,7 +3227,8 @@ Asset Types:
                   Strong Hit:
                     With a Match:
                       Text: You may envision encountering someone who knows or understands you. If you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
-      - Name: Scavenger
+      - Title:
+          Canonical: Scavenger
         Abilities:
           - Text: |-
               When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) or [Resupply](Starforged/Moves/Recover/Resupply) by scavenging a wreck, ruin, or abandoned site, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also find something of unique value, significance, or function; envision the nature of this discovery, take +2 momentum, and mark 2 ticks on your discoveries legacy track.
@@ -3197,7 +3275,8 @@ Asset Types:
                       Using: [Wits, Supply]
                       Roll type: Action roll
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Scoundrel
+      - Title:
+          Canonical: Scoundrel
         Abilities:
           - Text: |-
               When you make a move by lying, bluffing, stealing, or cheating, add +2. On a strong hit with a match, your deception creates an unexpected opportunity; take the value of your shadow as +momentum.
@@ -3242,7 +3321,8 @@ Asset Types:
                     Text: Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.
 
             # TODO: momentum burn trigger
-      - Name: Seer
+      - Title:
+          Canonical: Seer
         Abilities:
           - Text: |-
               When you envision experiencing a prophetic dream, you may [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) for details using an interpretive oracle such as Action/Theme or Descriptor/Focus. If you record the answer, and later face a situation which gives truth to the vision, take an automatic strong hit (one time only) when making a move to act on your foresight. Then, clear the prophecy. Only one prophecy can be active at a time.
@@ -3284,7 +3364,8 @@ Asset Types:
                     Player: true
                     Ally: true
                 Outcomes: *Seer.3
-      - Name: Shade
+      - Title:
+          Canonical: Shade
         Abilities:
           - Text: |-
               Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, you may preset your action die to 5. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.
@@ -3317,7 +3398,8 @@ Asset Types:
           - Text: &move:Asset.Shade |-
               When you expand your veil to immerse your surroundings in darkness, roll +shadow. On a strong hit, the darkness extends to all adjacent spaces. On a weak hit, only your immediate surroundings are made dark. On a miss, you fail and draw unwanted attention.
             Moves:
-              - Name: Shroud in Darkness
+              - Title:
+                  Canonical: Shroud in Darkness
                 Trigger:
                   Text: When you expand your veil to immerse your surroundings in darkness...
                   Options:
@@ -3334,7 +3416,8 @@ Asset Types:
           - Text: |-
               When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.
             # TODO: non move trigger?
-      - Name: Slayer
+      - Title:
+          Canonical: Slayer
         Abilities:
           - Text: |-
               When you make a move to investigate, track, or stalk an inhuman foe, add +1 and take +1 momentum on a hit.
@@ -3382,7 +3465,8 @@ Asset Types:
                     Text: Take +2 momentum. If you choose to face the creature on its own terms as you begin the fight, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track.
                   Weak Hit: *Slayer.3.text
                   Miss: *Slayer.3.text
-      - Name: Sleuth
+      - Title:
+          Canonical: Sleuth
         Abilities:
           - Text: &Sleuth.1 |-
               When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) to solve a murder, disappearance, theft, or other mystery, make the rank of the quest no greater than formidable. Then, when you [Gather Information](Starforged/Moves/Adventure/Gather_Information) in the course of the investigation, roll three challenge dice and choose two. If any challenge dice match, you must use those values. On a miss with a match, envision what you learn of a deepening conspiracy or betrayal, make the rank of your quest one higher (no greater than epic), and use the new rank when marking future progress.
@@ -3418,14 +3502,16 @@ Asset Types:
                     - Text: With a potential informant
                       Roll type: Action roll
                       Method: Weak Hit
-      - Name: Sniper
+      - Title:
+          Canonical: Sniper
         Requirement: If you wield a rifle...
         Abilities:
           - Text: &move:Asset.Sniper |-
               When you target a minor foe from a distance (outside of a fight), roll +wits. On a strong hit, they are out of action. If other foes remain and you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) against them, mark progress. On a weak hit, as above, but you sacrifice time or position; [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1). On a miss, you draw attention or face a reprisal; [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
             Enabled: true
             Moves:
-              - Name: Snipe Minor Foe
+              - Title:
+                  Canonical: Snipe Minor Foe
                 Trigger:
                   Text: When you target a minor foe from a distance (outside of a fight)...
                   Options:
@@ -3477,7 +3563,8 @@ Asset Types:
                       Method: Inherit
                 Text: *Sniper.3
                 Outcomes: *Sniper.3.Outcomes
-      - Name: Tech
+      - Title:
+          Canonical: Tech
         Abilities:
           - Text: |-
               When you make a move to configure, optimize, hack, or disrupt an electronic system, add +1. On a weak hit, you can choose to press your luck. If you do, reroll all dice and add +2 (instead of +1).
@@ -3522,7 +3609,8 @@ Asset Types:
                   Strong Hit: &Tech.3
                     Text: Take +1 momentum. One time only, when you trigger the program to fulfill its purpose, reroll any dice.
                   Weak Hit: *Tech.3
-      - Name: Trader
+      - Title:
+          Canonical: Trader
         Abilities:
           - Text: |-
               When you [Sojourn](Starforged/Moves/Recover/Sojourn) or [Compel](Starforged/Moves/Adventure/Compel), you may roll +supply. If you do, [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-1).
@@ -3581,9 +3669,10 @@ Asset Types:
                   Strong Hit:
                     With a Match:
                       Text: You have a chance to secure a unique item or valuable payload. Envision the nature of the opportunity and the obstacle you must overcome to acquire it. If you are successful, mark 2 ticks on your quests legacy track. One time only, you may use this acquisition to gain an automatic strong hit on any move where your resources are a factor.
-      - Name: Vestige
+      - Title:
+          Canonical: Vestige
         Inputs:
-          - Name: Last of
+          - Label: Last of
             Input Type: Text
         Abilities:
           - Text: |-
@@ -3620,7 +3709,7 @@ Asset Types:
           - Text: |-
               You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.
             Inputs:
-              - Name: Relic
+              - Label: Relic
                 Input Type: Text
                 Adjustable: false
             Alter Moves:
@@ -3635,7 +3724,8 @@ Asset Types:
                     Reroll:
                       Dice: Action die
                       # default text: "You may reroll your action die."
-      - Name: Veteran
+      - Title:
+          Canonical: Veteran
         Abilities:
           - Text: |-
               When you are in a fight, increase your momentum reset by 1. Then, if you burn momentum to improve your result, add +1 on your next move.
@@ -3681,7 +3771,8 @@ Asset Types:
                       Method: Inherit
                 Text: Envision the memory and add +1.
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Voidborn
+      - Title:
+          Canonical: Voidborn
         Abilities:
           - Text: |-
               You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
@@ -3734,7 +3825,8 @@ Asset Types:
                     Text: Take +1 momentum.
                     With a Match:
                       Text: You build speed or put yourself in perfect position; take +2 momentum.
-      - Name: Weapon Master
+      - Title:
+          Canonical: Weapon Master
         Abilities:
           - Text: |-
               You are a walking armory, with a weapon for every occasion. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) in personal combat, add +1 and take +1 momentum on a hit. Once per fight, when you [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by switching weapons or changing tactics, take an automatic strong hit.
@@ -3787,8 +3879,9 @@ Asset Types:
                       Using:
                         - Supply
                 Outcomes: *outcomes:+2_momentum.HIT
-      - Name: Crew Commander
-        Source: &Sundered_Isles_Preview
+      - Title:
+          Canonical: Crew Commander
+        Source: &Sundered_Isles_Preview_1
           Title: Sundered Isles Preview
           Date: "051722"
           Authors:
@@ -3817,7 +3910,8 @@ Asset Types:
                       Using:
                         - ${{@ASSET}}/Condition_Meter
             Moves:
-              - Name: Bolster Crew
+              - Title:
+                  Canonical: Bolster Crew
                 Trigger:
                   Text: When you bolster your crew...
                   Options:
@@ -3850,12 +3944,13 @@ Asset Types:
                     Text: Take +2 command.
                   Weak Hit: *Crew_Commander.3
         Condition Meter:
-          Name: Command
+          Label: Command
           Max: 4
+          Rollable: true
           Value: 2
-  - Name: Companion
-    Title:
+  - Title:
       Canonical: Companions
+      Standard: Companion
     Display:
       Color: "#3d8b8a"
     # Summary: NPC helpers, including alien creatures and robots.
@@ -3864,10 +3959,11 @@ Asset Types:
 
       Companions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move. When their health is at 0, they are in danger of being killed or destroyed.
     Assets:
-      - Name: Banshee
+      - Title:
+          Canonical: Banshee
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -3922,13 +4018,15 @@ Asset Types:
                   Weak Hit: *Banshee.3
                   Miss: *Banshee.3
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 4
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Combat Bot
+      - Title:
+          Canonical: Combat Bot
         Tags: [mechanical companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -3987,13 +4085,15 @@ Asset Types:
                     # TODO: add "in control" override property to interface
                     In Control: true
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 5
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Glowcat
+      - Title:
+          Canonical: Glowcat
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4042,13 +4142,15 @@ Asset Types:
                     With a Match:
                       Text: Take +momentum equal to the glowcat's health.
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 3
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Protocol Bot
+      - Title:
+          Canonical: Protocol Bot
         Tags: [mechanical companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4087,13 +4189,15 @@ Asset Types:
                   Weak Hit: *Protocol_Bot.3
                   Miss: *Protocol_Bot.3
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 3
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Rockhorn
+      - Title:
+          Canonical: Rockhorn
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4141,15 +4245,17 @@ Asset Types:
                       Dice: Action die
                       Text: You may reroll your action die if its value is less than the rockhorn’s health.
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 5
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Sidekick
+      - Title:
+          Canonical: Sidekick
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
-          - Name: Expertise
+          - Label: Expertise
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4202,13 +4308,15 @@ Asset Types:
                         - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 4
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Sprite
+      - Title:
+          Canonical: Sprite
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4238,13 +4346,15 @@ Asset Types:
           - Text: |-
               With a moment's rest, the sprite can mend its form and return automatically to max health.
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 2
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Survey Bot
+      - Title:
+          Canonical: Survey Bot
         Tags: [mechanical companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4303,13 +4413,15 @@ Asset Types:
                         - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 3
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Symbiote
+      - Title:
+          Canonical: Symbiote
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4341,13 +4453,15 @@ Asset Types:
               Condition Meter:
                 Max: 3
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 2
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Utility Bot
+      - Title:
+          Canonical: Utility Bot
         Tags: [mechanical companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4397,13 +4511,15 @@ Asset Types:
                         - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 4
+          Rollable: true
           Conditions: [Out of Action]
-      - Name: Voidglider
+      - Title:
+          Canonical: Voidglider
         Tags: [biological companion]
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Abilities:
           - Text: |-
@@ -4440,12 +4556,65 @@ Asset Types:
                         - ${{@ASSET}}/Condition_Meter
                 Outcomes: *outcomes:+1_momentum.HIT
         Condition Meter:
-          Name: Health
+          Label: Health
           Max: 4
+          Rollable: true
           Conditions: [Out of Action]
-  - Name: Deed
-    Title:
+      - Title:
+          Canonical: The Kraken
+        Source:
+          Title: Sundered Isles Preview
+          Date: "082922"
+          Authors:
+            - Shawn Tomkin
+        Requirement: While it is your companion, the Kraken cannot be harmed.
+        Abilities:
+          - Text: |-
+              When you summon the Kraken, fill one segment of a four-segment clock. The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) with  an automatic strong hit. When the clock is filled, [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Combat/Take_Decisive_Action
+                Trigger:
+                  Options:
+                    - Text: Summon the Kraken (and fill one segment of its clock)
+                      Roll type: Progress roll
+                      Method: Inherit
+                Text: |-
+                  The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) with an automatic strong hit.
+
+                  When the clock is filled, [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
+            Inputs:
+              - Label: Krakendoom
+                Input Type: Clock
+                Clock Type: Tension
+                Segments: 4
+                Filled: 0
+                Adjustable: true
+          - Text: When you make a move using a threat to call the Kraken as leverage, add +2.
+            Alter Moves:
+              - Moves: null
+                Trigger:
+                  Options:
+                    - Text: Make a move using a threat to call the Kraken as leverage
+                      Roll type: Action roll
+                      Method: Inherit
+                Text: Add +2.
+          - Text: "One time only, when you [Fulfill Your Vow](Starforged/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to the Kraken and score a hit, choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track."
+            Alter Moves:
+              - Moves:
+                  - Starforged/Moves/Quest/Fulfill_Your_Vow
+                Trigger:
+                  Options:
+                    - Text: In service to the Kraken (formidable or greater, one time only)
+                      Roll type: Progress roll
+                      Method: Inherit
+                Outcomes:
+                  Strong Hit: &Kraken.3
+                    Text: "Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track."
+                  Weak Hit: *Kraken.3
+  - Title:
       Canonical: Deeds
+      Standard: Deed
     Display:
       Color: "#40834f"
     # Summary: Represent the notable achievement and situations of your story, and how those events change your character.
@@ -4454,9 +4623,10 @@ Asset Types:
 
       Deeds have a requirement listed at the top of the card, phrased as “Once you \[blank\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.
     Assets:
-      - Name: Bonded
+      - Title:
+          Canonical: Bonded
         Inputs:
-          - Name: Bond-mate
+          - Label: Bond-mate
             Input Type: Text
         Requirement: One time only, once you [Forge a Bond](Starforged/Moves/Connection/Forge_a_Bond) with a special individual...
         Abilities:
@@ -4517,9 +4687,10 @@ Asset Types:
                   Miss:
                     Text: You may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](Starforged/Moves/Threshold/Face_Desolation).
                     Reroll: *reroll:any
-      - Name: Homesteader
+      - Title:
+          Canonical: Homesteader
         Inputs:
-          - Name: Name
+          - Label: Name
             Input Type: Text
         Requirement: Once you fill 4 boxes on your bonds legacy track...
         Abilities:
@@ -4587,9 +4758,10 @@ Asset Types:
                     Reroll: *reroll:action_die<spirit
                   Weak Hit: *Homesteader.3
                   Miss: *Homesteader.3
-      - Name: Marked
+      - Title:
+          Canonical: Marked
         Inputs:
-          - Name: Identifier
+          - Label: Identifier
             Input Type: Text
         Requirement: Once you fill 5 boxes on your quests legacy track...
         Abilities:
@@ -4619,7 +4791,7 @@ Asset Types:
                     Text: When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.
                     Reroll: *reroll:any
             Inputs:
-              - Name: Stained reputation
+              - Label: Stained reputation
                 Input Type: Clock
                 Clock Type: Tension
                 Segments: 6
@@ -4641,7 +4813,8 @@ Asset Types:
                     Reroll: *reroll:any
                   Weak Hit: *Marked.3
                   Miss: *outcome:reroll_any
-      - Name: Oathbreaker
+      - Title:
+          Canonical: Oathbreaker
         Requirement: Once you [Forsake Your Vow](Starforged/Moves/Quest/Forsake_Your_Vow)...
         # Impact: true # TODO: add asset details for this
         Abilities:
@@ -4690,7 +4863,8 @@ Asset Types:
                   Weak Hit: *Oathbreaker.3
                   Miss: # this is intentional, so that relevant reminder text is passed to the PC on a miss
                     Text: *Oathbreaker.1
-      - Name: Revenant
+      - Title:
+          Canonical: Revenant
         Requirement: Once you [Face Death](Starforged/Moves/Threshold/Face_Death)...
         Abilities:
           - Text: |-
@@ -4742,7 +4916,8 @@ Asset Types:
                     With a Match:
                       Text: You experience a detailed vision or insightful revelation of what occurred here. Take +2 momentum.
                   Weak Hit: *outcome:+1_momentum
-      - Name: Survivor
+      - Title:
+          Canonical: Survivor
         Requirement: Once you mark traumatized or permanently harmed...
         Abilities:
           - Text: |-
@@ -4767,7 +4942,6 @@ Asset Types:
                     Reroll: *Survivor.1
                   Miss:
                     Reroll: *Survivor.1
-
           - Text: |-
               When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.
             # TODO: implement interface for alter momentum burn
@@ -4780,14 +4954,16 @@ Asset Types:
           - Text: |-
               You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset.
             # TODO: modify impacts interface?
-      - Name: Vanguard
+      - Title:
+          Canonical: Vanguard
         Requirement: Once you fill 6 boxes on your discoveries legacy track...
         Abilities:
           - Text: &move:Asset.Vanguard |-
               When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](Starforged/Moves/Fate/Pay_the_Price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.
             Enabled: true
             Moves:
-              - Name: Seek Safe Haven
+              - Title:
+                  Canonical: Seek Safe Haven
                 Trigger:
                   Text: When you seek a safe location in a remote environment...
                   Options:
@@ -4833,8 +5009,9 @@ Asset Types:
                       Using:
                         - Wits
                 Outcomes: *outcomes:+1_momentum.HIT
-      - Name: Cohort
-        Source: *Sundered_Isles_Preview
+      - Title:
+          Canonical: Cohort
+        Source: *Sundered_Isles_Preview_1
         Requirement: Once you [Make a Connection](Starforged/Moves/Connection/Make_a_Connection) and take them on as a crewmate...
         Abilities:
           - Text: You gain a specialist. The specialist is part of your crew, but is managed as a connection and provides benefits to you and your allies per their role. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage) and score a miss, or if you [Pay_the_Price](Starforged/Moves/Fate/Pay_the_Price), you may suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
@@ -4865,8 +5042,9 @@ Asset Types:
                       Text: You may reroll one die for each participating specialist.
                   Weak Hit: *Cohort.3
                   Miss: *Cohort.3
-      - Name: Fleet Commander
-        Source: *Sundered_Isles_Preview
+      - Title:
+          Canonical: Fleet Commander
+        Source: *Sundered_Isles_Preview_1
         Requirement: Once you fill 12 legacy track boxes and take command of a mighty fleet...
         Abilities:
           - Text: Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](Starforged/Moves/Fate/Pay_the_Price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](Starforged/Moves/Recover/Sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
@@ -4909,8 +5087,9 @@ Asset Types:
                   Weak Hit: *Fleet_Commander.3
                   Miss: *Fleet_Commander.3
         Condition Meter:
-          Name: Power
+          Label: Power
           Max: 4
+          Rollable: true
           Value: 4
           Conditions:
             - Wrecked

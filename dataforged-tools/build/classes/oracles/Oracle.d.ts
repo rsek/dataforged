@@ -7,7 +7,6 @@ import type { IOracleCategoryYaml } from "../../yaml_in/oracles/IOracleCategoryY
  */
 export declare class Oracle extends SourceInheritor implements IOracle {
     $id: IOracle["$id"];
-    Name: string;
     Title: Title;
     Aliases?: string[] | undefined;
     "Member of"?: IOracle["$id"] | undefined;

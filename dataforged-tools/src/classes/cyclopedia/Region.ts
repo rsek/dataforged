@@ -1,6 +1,7 @@
-import { DisplayWithTitle, Source , Title } from "@classes/index.js";
+import { Display, Source , Title } from "@classes/index.js";
 import type { IIronswornRegion as IIronswornRegion } from "@json_out/index.js";
 import type { IDisplay } from "@json_out/meta/IDisplay.js";
+import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IIronswornRegionYaml } from "@yaml_in/index.js";
 
 /**
@@ -8,7 +9,6 @@ import type { IIronswornRegionYaml } from "@yaml_in/index.js";
  */
 export class IronswornRegion implements IIronswornRegion {
   $id: string;
-  Name: string;
   Title: Title;
   Summary: string;
   Display: IDisplay;
@@ -19,10 +19,9 @@ export class IronswornRegion implements IIronswornRegion {
   "Quest Starter": string;
 
   constructor(json: IIronswornRegionYaml) {
-    this.$id = `Ironsworn/Regions/${json.Name}`;
-    this.Name = json.Name;
-    this.Title = new Title(json.Title,this.$id);
-    this.Display = new DisplayWithTitle({ Title: json.Name });
+    this.$id = `Ironsworn/Regions/${formatIdFragment(json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical)}`;
+    this.Title = new Title(json.Title,this);
+    this.Display = new Display({  });
     this.Source = new Source(json.Source);
     this.Features = json.Features;
     this.Summary = json.Summary;

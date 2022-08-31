@@ -1,9 +1,9 @@
-import type { IHasId, IHasLabel, IHasName, InputSelectOptionType, PlayerConditionMeter, Stat } from "../index.js";
+import type { IHasId, IHasLabel, InputSelectOptionType, PlayerConditionMeter, Stat } from "../index.js";
 /**
  * Represents an option in an {@link IInputSelect}.
  * @public
  */
-export interface IInputSelectOption extends IHasId, Partial<IHasName>, IHasLabel {
+export interface IInputSelectOption extends IHasId, IHasLabel {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$
      */

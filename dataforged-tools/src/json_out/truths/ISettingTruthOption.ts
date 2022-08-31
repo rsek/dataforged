@@ -7,7 +7,7 @@ import type { IHasDescription, IHasQuestStarter , IRollTemplate , IRow } from "@
  */
 export interface ISettingTruthOption extends IRow, IHasQuestStarter, IHasDescription {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$
+   * @pattern ^Starforged/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100)$
    */
   $id: string;
   "Roll template"?: IRollTemplate | undefined;

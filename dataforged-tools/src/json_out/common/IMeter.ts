@@ -1,11 +1,11 @@
-import type { IHasId, IHasLabel, IHasName } from "@json_out/index.js";
+import type { IHasId, IHasLabel } from "@json_out/index.js";
 
 /**
  * Base interface for properties common to all resource meters.
  * @see {@link IConditionMeter}
  * @public
  */
-export interface IMeter extends IHasId, Partial<IHasName>, IHasLabel {
+export interface IMeter extends IHasId,  IHasLabel {
   /**
    * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
    */

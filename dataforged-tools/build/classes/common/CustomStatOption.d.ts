@@ -4,7 +4,6 @@ import type { ICustomStatOption } from "../../json_out/index.js";
  */
 export declare class CustomStatOption implements ICustomStatOption {
     $id: ICustomStatOption["$id"];
-    Name: string;
     Label: string;
     Value: number;
     constructor(json: Omit<ICustomStatOption, "$id">, parentId: ICustomStatOption["$id"]);
