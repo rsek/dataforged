@@ -1,4 +1,4 @@
-import type { IDelveCard, IDelveDomain, IDelveTheme } from "@json_out/index.js";
+import type { DelveCardType, IDelveCard, IDelveDomain, IDelveTheme } from "@json_out/index.js";
 import type { YamlStubTitle } from "@yaml_in/index.js";
 
 /**
@@ -10,7 +10,7 @@ export interface IDelveCardYaml extends YamlStubTitle<IDelveCard> { }
  * @internal
  */
 export interface IDelveDomainYaml extends IDelveCardYaml, YamlStubTitle<IDelveDomain, "", "Features"> {
-  Type: "Domain";
+  Type: DelveCardType.Domain;
   /**
    * {@inheritDoc IDelveDomain.Features}
    */
@@ -32,7 +32,7 @@ export interface IDelveDomainYaml extends IDelveCardYaml, YamlStubTitle<IDelveDo
  * @internal
  */
 export interface IDelveThemeYaml extends IDelveCardYaml, YamlStubTitle<IDelveTheme> {
-  Type: "Theme";
+  Type: DelveCardType.Theme;
   Features: IDelveTheme["Features"]
   Dangers: IDelveTheme["Dangers"]
 }

@@ -7,7 +7,9 @@ export declare enum AssetTypeName {
     Deed = "Deed",
     Module = "Module",
     Path = "Path",
-    SupportVehicle = "Support Vehicle"
+    SupportVehicle = "Support Vehicle",
+    Ritual = "Ritual",
+    CombatTalent = "Combat Talent"
 }
 
 /**
@@ -139,18 +141,21 @@ export declare enum ClockType {
 /**
  * @public
  */
-export declare type DelveCardType = "Theme" | "Domain";
+export declare enum DelveCardType {
+    Theme = "Theme",
+    Domain = "Domain"
+}
 
 /**
  * @public
  */
 export declare enum EncounterNatureIronsworn {
     Ironlander = "Ironlander",
-    Firstborn = "Firstborn",
-    Animal = "Animal",
-    Beast = "Beast",
-    Horror = "Horror",
-    Anomaly = "Anomaly"
+    Firstborn = "firstborn",
+    Animal = "animal",
+    Beast = "beast",
+    Horror = "horror",
+    Anomaly = "anomaly"
 }
 
 /**
@@ -181,7 +186,7 @@ export declare interface GameDataRoot {
     "Encounters": IEncounterStarforged[] | IEncounterNatureInfo[];
     "Move Categories": IMoveCategory[];
     "Oracle Categories": IOracleCategory[];
-    "Setting Truths"?: ISettingTruth[];
+    "Setting Truths"?: ISettingTruth[] | ISettingTruthClassic[];
 }
 
 /**
@@ -211,7 +216,7 @@ export declare enum Gamespace {
 /**
  * @public
  */
-export declare interface IAlterMomentum {
+export declare interface IAlterMomentum extends IHasId {
     /**
      * Information on how the player's momentum burn is altered.
      */
@@ -225,7 +230,7 @@ export declare interface IAlterMomentum {
 /**
  * @public
  */
-export declare interface IAlterMomentumBurn {
+export declare interface IAlterMomentumBurn extends IHasId {
     /**
      * The trigger condition for altering the PC's momentum burn.
      */
@@ -240,7 +245,7 @@ export declare interface IAlterMomentumBurn {
 /**
  * @public
  */
-export declare interface IAlterMomentumReset {
+export declare interface IAlterMomentumReset extends IHasId {
     /**
      * The trigger condition for altering the PC's momentum reset.
      */
@@ -304,19 +309,13 @@ export declare interface IAlterOutcomeInfo extends Omit<PartialDeep<IOutcomeInfo
  * An interface representing an *Ironsworn: Starforged* asset card.
  * @public
  */
-export declare interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSource, Partial<IHasAliases>, IHasTitle {
+export declare interface IAsset extends IHasId, IHasDisplay, IHasSource, Partial<IHasAliases>, IHasTitle {
     /**
      * @example "Starforged/Assets/Path/Bounty_Hunter"
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$
      */
     $id: string;
-    /**
-     * The asset's name - the title printed on the card.
-     * @example "Bounty Hunter"
-     * @localize
-     */
-    Name: string;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     /**
      * Describes any states that the asset might have, such as "Broken". Some states may disable the asset entirely.
      */
@@ -360,16 +359,11 @@ export declare interface IAsset extends IHasId, IHasName, IHasDisplay, IHasSourc
  * Represents one of an asset's three abilities.
  * @public
  */
-export declare interface IAssetAbility extends IHasId, IHasText, Partial<IHasLabel>, Partial<IHasName> {
+export declare interface IAssetAbility extends IHasId, IHasText, Partial<IHasLabel> {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$
      */
     $id: string;
-    /**
-     * Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.
-     * @deprecated Use {@link IAssetAbility.Label} instead
-     */
-    Name?: string | undefined;
     /**
      * Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.
      */
@@ -434,11 +428,7 @@ export declare interface IAssetAttachment {
  * States are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.
  * @public
  */
-export declare interface IAssetState extends IHasName, IHasLabel {
-    /**
-     * @deprecated Use {@link IAssetState.Label} instead.
-     */
-    Name: string;
+export declare interface IAssetState extends IHasLabel {
     /**
      * A string label for the state.
      * @example "Broken"
@@ -469,7 +459,7 @@ export declare interface IAssetState extends IHasName, IHasLabel {
  * Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.
  * @public
  */
-export declare interface IAssetType extends Partial<IHasName>, IHasId, IHasDescription, IHasDisplay, IHasSource, IHasTitle, Partial<IHasAliases> {
+export declare interface IAssetType extends IHasId, IHasDescription, IHasDisplay, IHasSource, IHasTitle, Partial<IHasAliases> {
     /**
      * @example "Ironsworn/Assets/Ritual"
      * @example "Starforged/Assets/Command_Vehicle"
@@ -486,11 +476,7 @@ export declare interface IAssetType extends Partial<IHasName>, IHasId, IHasDescr
      * @localize
      */
     Title: ITitle;
-    /**
-     * @deprecated Use {@link IAssetType.Title} instead
-     */
-    Name?: string | undefined;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     Usage: IAssetUsage;
 }
 
@@ -551,7 +537,7 @@ export declare interface IConditionMeter extends IMeter {
 /**
  * @public
  */
-export declare interface ICustomStat extends IHasId, IHasName {
+export declare interface ICustomStat extends IHasId, IHasLabel {
     /**
      * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$
      */
@@ -562,17 +548,11 @@ export declare interface ICustomStat extends IHasId, IHasName {
 /**
  * @public
  */
-export declare interface ICustomStatOption extends IHasId, IHasName, IHasLabel {
+export declare interface ICustomStatOption extends IHasId, IHasLabel {
     /**
      * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$
      */
     $id: string;
-    /**
-     * The name/label for this specific value of the custom stat.
-     * @localize
-     * @deprecated Use {@link ICustomStatOption.Label} instead.
-     */
-    Name: string;
     /**
      * The numeric value to be used as +stat when making an Action Roll.
      */
@@ -584,14 +564,14 @@ export declare interface ICustomStatOption extends IHasId, IHasName, IHasLabel {
  * Basic interface for elements common to "cyclopedia" style pages, such as Regions (*Ironsworn*) and Encounters *(Ironsworn* and *Starforged*)
  * @public
  */
-export declare interface ICyclopediaEntry extends IHasName, IHasId, IHasDisplay, IHasDescription, IHasSource, Partial<IHasSummary & IHasQuestStarter & IHasTags>, IHasTitle {
+export declare interface ICyclopediaEntry extends IHasId, IHasDisplay, IHasDescription, IHasSource, Partial<IHasSummary & IHasQuestStarter & IHasTags>, IHasTitle {
     /**
      * @pattern ^(Starforged|Ironsworn)/([A-z_-]+/)+$
      */
     $id: string;
-    Name: string;
     Tags?: string[] | undefined;
     /**
+     * @markdown
      * @localize
      */
     Features?: string[] | undefined;
@@ -606,7 +586,7 @@ export declare interface ICyclopediaEntry extends IHasName, IHasId, IHasDisplay,
  * @see IDelveDomain
  * @public
  */
-export declare interface IDelveCard extends IHasName, IHasSource, IHasSummary, IHasDescription, IHasDisplay, IHasId {
+export declare interface IDelveCard extends IHasSource, IHasSummary, IHasDescription, IHasId, IHasTitle {
     /**
      * @pattern ^Ironsworn/(Themes|Domains)/[A-z_-]+$
      */
@@ -655,7 +635,7 @@ export declare interface IDelveDomain extends IDelveCard {
      * @pattern ^Ironsworn/Domains/[A-z_-]+$
      */
     $id: string;
-    Type: "Domain";
+    Type: DelveCardType.Domain;
     /**
      * The Features contributed by this Domain card. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
      */
@@ -740,6 +720,23 @@ export declare interface IDelveDomain extends IDelveCard {
 }
 
 /**
+ * Represents a Rarity (described in Ironsworn: Delve)
+ * @public
+ */
+export declare interface IDelveRarity extends IHasTitle, IHasDisplay, IHasSource, IHasDescription {
+    /**
+     * @minimum 3
+     * @maximum 5
+     */
+    "XP Cost": number;
+    /**
+     * The ID of the asset, to which this rarity applies its effects.
+     * @see {@link IAsset.$id}
+     */
+    Asset: IAsset["$id"];
+}
+
+/**
  * Interface describing a delve site theme.
  *
  * The **theme** represents the condition or state of the site, and indicates the kinds of denizens and threats you might find there.
@@ -754,7 +751,7 @@ export declare interface IDelveTheme extends IDelveCard {
      * @pattern ^Ironsworn/Themes/[A-z_-]+$
      */
     $id: string;
-    Type: "Theme";
+    Type: DelveCardType.Theme;
     /**
      * The Features contributed by this Theme card. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
      */
@@ -842,12 +839,12 @@ export declare interface IDelveTheme extends IDelveCard {
 export declare interface IDisplay {
     /**
      * A URL pointing to a single SVG icon.
-     * @pattern ^\.\./\.\./img/vector/[A-z-_0-9/]+\.svg$
+     * @pattern ^img/vector/[A-z-_0-9/]+\.svg$
      */
     Icon?: string | undefined;
     /**
      * An array of URLs pointing to one or more WEBP images.
-     * @pattern ^\.\./\.\./img/raster/[A-z-_0-9/]+\.webp$
+     * @pattern ^img/raster/[A-z-_0-9/]+\.webp$
      */
     Images?: string[] | undefined;
     /**
@@ -855,19 +852,13 @@ export declare interface IDisplay {
      * @pattern ^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$
      */
     Color?: string | undefined;
-    /**
-     * The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.
-     * @localize
-     * @deprecated Use `Title` on the parent object, instead.
-     */
-    Title?: string | undefined;
 }
 
 /**
  * Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
  * @public
  */
-export declare interface IDisplayOracle extends IDisplayWithTitle {
+export declare interface IDisplayOracle extends IDisplay {
     /**
      * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
      *
@@ -886,14 +877,6 @@ export declare interface IDisplayOracle extends IDisplayWithTitle {
      * This table is displayed as embedded in a row of another table.
      */
     "Embed in"?: IRow["$id"] | undefined;
-}
-
-/**
- * @public
- * @deprecated Use {@link IHasTitle} on the parent object instead.
- */
-export declare interface IDisplayWithTitle extends IDisplay {
-    Title: string;
 }
 
 /**
@@ -920,16 +903,11 @@ export declare interface IEncounterBase extends ICyclopediaEntry {
      */
     $id: string;
     /**
-     * @example "Chiton"
-     * @localize
-     */
-    Name: string;
-    /**
      * @example "Monster"
      * @localize
      */
     Nature: EncounterNatureStarforged | EncounterNatureIronsworn;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     /**
      * @example "Insectoid horde"
      * @markdown
@@ -981,15 +959,14 @@ export declare interface IEncounterIronsworn extends IEncounter {
  * Represents the metadata describing an *Ironsworn* encounter's nature; used as a category to contain all Encounters of that type.
  * @public
  */
-export declare interface IEncounterNatureInfo extends IHasDescription, IHasSource, IHasName, IHasId, IHasDisplay, IHasSummary, IHasTitle {
+export declare interface IEncounterNatureInfo extends IHasDescription, IHasSource, IHasId, IHasDisplay, IHasSummary, IHasTitle {
     /**
      * @pattern ^Ironsworn/Encounters/[A-z_-]+$
      */
     $id: string;
-    Name: EncounterNatureIronsworn;
     Encounters: IEncounterIronsworn[];
     Summary: string;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
 }
 
 /**
@@ -1094,22 +1071,6 @@ export declare interface IHasLabel extends IHasId {
      * @localize
      */
     Label: string;
-}
-
-/**
- * Interface for items with a Name key.
- * @public
- * @deprecated {@link IHasLabel} or {@link IHasTitle} should be used instead.
- */
-export declare interface IHasName {
-    /**
-     * The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.
-     *
-     * If the item has Display.Title, that should be preferred for most user-facing labels.
-     * @localize
-     * @deprecated {@link IHasLabel} or {@link IHasTitle} should be used instead.
-     */
-    Name: string;
 }
 
 /**
@@ -1255,7 +1216,7 @@ export declare interface IHasTitle extends IHasId {
  * @see {@link IInputNumber}, {@link IInputClock}, {@link IInputText}, {@link IInputSelect}
  * @public
  */
-export declare interface IInput extends IHasId, Partial<IHasName>, IHasLabel {
+export declare interface IInput extends IHasId, IHasLabel {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$
      */
@@ -1267,10 +1228,6 @@ export declare interface IInput extends IHasId, Partial<IHasName>, IHasLabel {
      * It's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality "front and center" or as a secondary interaction (via long press, right click, etc);
      */
     Adjustable: boolean;
-    /**
-     * @deprecated Use {@link IInput.Label} instead.
-     */
-    Name?: string | undefined;
     Label: string;
 }
 
@@ -1363,7 +1320,7 @@ export declare interface IInputSelectAttributeDefinition {
  * Represents an option in an {@link IInputSelect}.
  * @public
  */
-export declare interface IInputSelectOption extends IHasId, Partial<IHasName>, IHasLabel {
+export declare interface IInputSelectOption extends IHasId, IHasLabel {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$
      */
@@ -1452,7 +1409,7 @@ export declare interface IIronswornRegion extends ICyclopediaEntry {
  * @see {@link IConditionMeter}
  * @public
  */
-export declare interface IMeter extends IHasId, Partial<IHasName>, IHasLabel {
+export declare interface IMeter extends IHasId, IHasLabel {
     /**
      * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
      */
@@ -1475,16 +1432,12 @@ export declare interface IMeter extends IHasId, Partial<IHasName>, IHasLabel {
  * Interface representing a Starforged move.
  * @public
  */
-export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, IHasSource, IHasOptional, IHasTitle, Partial<IHasSuggestions> {
+export declare interface IMove extends IHasId, IHasText, IHasDisplay, IHasSource, IHasOptional, IHasTitle, Partial<IHasSuggestions> {
     /**
      * @example "Starforged/Moves/Adventure/Face_Danger"
      * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$
      */
     $id: string;
-    /**
-     * @deprecated Use {@link IMove.Title} instead.
-     */
-    Name: string;
     /**
      * @example
      * ```typescript
@@ -1521,7 +1474,7 @@ export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, 
      * Outcome information for the move.
      */
     Outcomes?: IMoveOutcomes | undefined;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     Tags?: string[] | undefined;
 }
 
@@ -1529,18 +1482,14 @@ export declare interface IMove extends IHasId, IHasName, IHasText, IHasDisplay, 
  * Represents a category of moves such as "Session Moves" or "Combat Moves", and serves as a container for moves within that category.
  * @public
  */
-export declare interface IMoveCategory extends IHasId, IHasName, IHasSource, IHasDescription, IHasDisplay, IHasOptional, IHasTitle {
+export declare interface IMoveCategory extends IHasId, IHasSource, IHasDescription, IHasDisplay, IHasOptional, IHasTitle {
     /**
      * @example "Starforged/Moves/Adventure"
      * @pattern ^(Starforged|Ironsworn)/Moves/[A-z_-]+$
      */
     $id: string;
-    /**
-     * @example "Adventure"
-     */
-    Name: string;
     Moves: IMove[];
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
 }
 
 /**
@@ -1782,7 +1731,7 @@ export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
  * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
-export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasName, IHasTitle {
+export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
     $id: string;
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.
@@ -1794,7 +1743,7 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
      */
     "Member of"?: IOracle["$id"] | undefined;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
     /**
      * Information on the usage of this oracle: recommended number of rolls, etc.
      */
@@ -1837,7 +1786,6 @@ export declare interface IOracleCategory extends Omit<IOracleBase, "Table"> {
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
      */
     $id: string;
-    Name: string;
     Category?: IOracleCategory["$id"] | undefined;
     /**
      * A list of sample names for this category (only used by Planetary Class subcategories).
@@ -1991,7 +1939,11 @@ export declare interface IRollTemplate {
  */
 export declare interface Ironsworn extends GameDataRoot {
     "Encounters": IEncounterNatureInfo[];
-    "Setting Truths"?: ISettingTruth[];
+    "Setting Truths": ISettingTruthClassic[];
+    "Site Domains": IDelveDomain[];
+    "Site Themes": IDelveTheme[];
+    Regions?: IIronswornRegion[];
+    Rarities?: IDelveRarity[];
 }
 
 /**
@@ -2074,13 +2026,13 @@ export declare interface IRowNullStub extends Omit<Partial<IRow>, "$id"> {
 }
 
 /**
- * Interface for Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
+ * Interface for Starforged Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
  * @see ISettingTruthOption
  * @public
  */
-export declare interface ISettingTruth extends IHasId, IHasName, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable, IHasTitle {
+export declare interface ISettingTruth extends IHasId, IHasSource, IHasDisplay, Partial<IHasSuggestions>, IHasTable, IHasTitle {
     /**
-     * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+$
+     * @pattern ^Starforged/Setting_Truths/[A-z_-]+$
      */
     $id: string;
     /**
@@ -2093,7 +2045,18 @@ export declare interface ISettingTruth extends IHasId, IHasName, IHasSource, IHa
      * @localize
      */
     Character: string;
-    Display: IDisplayWithTitle;
+    Display: IDisplay;
+}
+
+/**
+ * @public
+ */
+export declare interface ISettingTruthClassic extends IHasTitle, IHasSource {
+    /**
+     * @pattern ^Ironsworn/Setting_Truths/[A-z_-]+$
+     */
+    $id: string;
+    Options: ISettingTruthOptionClassic[];
 }
 
 /**
@@ -2103,11 +2066,21 @@ export declare interface ISettingTruth extends IHasId, IHasName, IHasSource, IHa
  */
 export declare interface ISettingTruthOption extends IRow, IHasQuestStarter, IHasDescription {
     /**
-     * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])$
+     * @pattern ^Starforged/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100)$
      */
     $id: string;
     "Roll template"?: IRollTemplate | undefined;
     Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface ISettingTruthOptionClassic extends IHasDescription, IHasQuestStarter {
+    /**
+     * @pattern ^Ironsworn/Setting_Truths/[A-z_-]+/[1-3]$
+     */
+    $id: string;
 }
 
 /**
@@ -2246,12 +2219,27 @@ export declare interface ITitle extends IHasId {
     /**
      * The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.
      *
-     * In some cases (e.g. tree displays) this name may be inappropriate; see {@link ITitle.Short} for an alternative.
+     * For items that represent a single table column, this is the label that appears at the top of the column.
+     *
+     * Use this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.
+     *
      * @localize
      */
     Canonical: string;
     /**
-     * A short title to use when the canonical title is too long or otherwise inappropriate.
+     * The recommended title for most implementations.
+     *
+     * This is usually the same as the canonical title, but editorializes a bit by trimming out things like "Oracle 15" in some Ironsworn oracles (because *nobody* remembers it as "Oracle 15").
+     *
+     * If you need the shortest possible name, see {@link ITitle.Short} instead.
+     * @localize
+     */
+    Standard: string;
+    /**
+     * The shortest title for this item that remains distinct amongst its siblings.
+     *
+     * Unless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.
+     *
      * @localize
      */
     Short: string;
@@ -2910,7 +2898,6 @@ export declare enum SourceTitle {
     Ironsworn = "Ironsworn Rulebook",
     IronswornAssets = "Ironsworn Assets",
     IronswornDelve = "Ironsworn: Delve",
-    IronswornBonusAssets = "Ironsworn Bonus Assets (July 2020)",
     Custom = "Custom"
 }
 
@@ -2923,8 +2910,7 @@ export declare enum SourceUrl {
     StarforgedAssets = "https://getstarforged.com",
     Ironsworn = "https://shawn-tomkin.itch.io/ironsworn",
     IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
-    IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
-    IronswornBonusAssets = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view"
+    IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve"
 }
 
 /**

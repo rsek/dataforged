@@ -5,6 +5,5 @@ import type { IOracleCategoryYaml } from "@yaml_in/index.js";
  * @internal
  */
 export interface IOracleParentCategoryData extends IOracleCategoryYaml {
-  Name: string;
-  _parentOf: IOracleCategory["Name"][];
+  _parentOf: IOracleCategory["Title"]["Canonical"][];
 }

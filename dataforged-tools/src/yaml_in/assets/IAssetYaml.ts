@@ -1,5 +1,5 @@
 
-import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage , IConditionMeter, IDisplay , IInput , IInputClock, IInputNumber, IInputSelect, IInputSelectOption , IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "@json_out/index.js";
+import type { IAlterMomentum, IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage , IConditionMeter, IDisplay , IInput , IInputClock, IInputNumber, IInputSelect, IInputSelectOption , IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "@json_out/index.js";
 import type { PartialBy, PartialDeep } from "@utils/index.js";
 import type {  StubExcept } from "@utils/types/Stub.js";
 import type { IMoveTriggerYaml, IMoveYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
@@ -7,10 +7,11 @@ import type { IMoveTriggerYaml, IMoveYaml, YamlStub, YamlStubTitle } from "@yaml
 /**
  * @internal
  */
-export interface IAssetTypeYaml extends YamlStubTitle<IAssetType, "Source", "Assets"|"Display"|"Usage"|"$id"> {
+export interface IAssetTypeYaml extends YamlStubTitle<IAssetType, "Source", "Assets"|"Display"|"Usage"|"$id"|"States"> {
   Assets: IAssetYaml[];
   Display?: Partial<IDisplay> | undefined;
   Usage?: Partial<IAssetUsage> | undefined;
+  States?: IAssetStateYaml[] | undefined;
  }
 
 /**
@@ -27,10 +28,11 @@ export interface IAssetYaml extends YamlStubTitle<StubExcept<IAsset,"","Abilitie
 /**
  * @internal
  */
-export interface IAssetAbilityYaml extends YamlStub<IAssetAbility, "Enabled", "Alter Moves"|"Moves"|"Inputs"> {
+export interface IAssetAbilityYaml extends YamlStub<IAssetAbility, "Enabled", "Alter Moves"|"Moves"|"Inputs"|"Alter Momentum"> {
   "Alter Moves"?: IAlterMoveYaml[] | undefined;
   Moves?: IMoveYaml[]|undefined;
   Inputs?: (IInputTextYaml|IInputClockYaml|IInputNumberYaml)[] | undefined;
+  "Alter Momentum"?: YamlStub<IAlterMomentum>
 }
 
 
@@ -78,7 +80,6 @@ export interface IConditionMeterYaml extends YamlStub<PartialBy<IConditionMeter>
  * @internal
  */
 export interface IAssetStateYaml extends YamlStub<IAssetState> {
-  Name: string;
 }
 
 

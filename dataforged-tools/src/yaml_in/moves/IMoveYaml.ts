@@ -4,7 +4,6 @@ import type { YamlStub, YamlStubTitle } from "@yaml_in/index.js";
  * @internal
  */
 export interface IMoveCategoryYaml extends YamlStubTitle<IMoveCategory, "Display"|"Source", "Moves"> {
-  Name: string;
   Description: string;
   Moves: IMoveYaml[];
   Display?: IDisplay | undefined;

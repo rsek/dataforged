@@ -10,7 +10,7 @@ import _ from "lodash-es";
  * @returns The template oracle.
  */
 export function templateOracle<T extends ITemplateYamlBase>(json: T, template: ITemplateYamlBase): T {
-  // buildLog(templateOracle, "Building oracle from template...");
+  buildLog(templateOracle, "Building oracle from template...");
   let jsonClone = _.cloneDeep(json);
   const templateClone = _.cloneDeep(template);
   jsonClone = _.merge(templateClone, jsonClone);

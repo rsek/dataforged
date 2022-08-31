@@ -1,11 +1,10 @@
 import type { IDelveDomain, IDelveTheme , ISource } from "@json_out/index.js";
-import type { IAssetTypeYaml , IEncounterStarforgedYaml , IIronswornRegionYaml , IMoveCategoryYaml , IOracleCategoryYaml, ISettingTruthYaml } from "@yaml_in/index.js";
+import type { IAssetTypeYaml , IDelveDomainYaml, IDelveThemeYaml, IEncounterStarforgedYaml , IIronswornRegionYaml , IMoveCategoryYaml , IOracleCategoryYaml, ISettingTruthClassicYaml, ISettingTruthYaml } from "@yaml_in/index.js";
 
 /**
  * @internal
  */
 export interface IDataRootYaml {
-  Name: string;
   Source: ISource;
 }
 
@@ -40,6 +39,13 @@ export interface ITruthRootYaml extends IDataRootYaml {
 /**
  * @internal
  */
+export interface ITruthRootClassicYaml {
+  "Setting Truths": ISettingTruthClassicYaml[]
+ }
+
+/**
+ * @internal
+ */
 export interface IOracleCatRootYaml {
   [key: string]: IOracleCategoryYaml
 };
@@ -55,6 +61,6 @@ export interface ICyclopediaRootYaml {
  * @internal
 */
 export interface IDelveSiteRootYaml {
-  Themes?: IDelveTheme[] | undefined;
-  Domains?: IDelveDomain[] | undefined;
+  Themes?: IDelveThemeYaml[] | undefined;
+  Domains?: IDelveDomainYaml[] | undefined;
 }

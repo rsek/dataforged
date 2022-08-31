@@ -11,7 +11,7 @@ import _ from "lodash-es";
  * @returns A string.
  */
 export function renderMoveCategory(moveCat: IMoveCategory, headerLevel: number = 2, localLinksOnly = true): string {
-  const header = `${_.repeat("#", headerLevel)} ${moveCat.Display.Title}`;
+  const header = `${_.repeat("#", headerLevel)} ${moveCat.Title.Canonical}`;
   const items = [ header, moveCat.Description ];
 
   const categories = _.uniq(moveCat.Moves.map(move => move.Category));
@@ -25,10 +25,10 @@ export function renderMoveCategory(moveCat: IMoveCategory, headerLevel: number =
 
   let result =  items.join("\n\n");
 
-  if (moveCat.Name !== "Suffer") {
+  if (moveCat.Title.Canonical !== "Suffer Moves") {
     result = result.replaceAll(/(suffer moves?)/g, "[$1](#Suffer-Moves)");
   }
-  if (moveCat.Name !== "Recover") {
+  if (moveCat.Title.Canonical !== "Recover Moves") {
     result = result.replaceAll(/(recover moves?)/g, "[$1](#Recover-Moves)");
   }
 

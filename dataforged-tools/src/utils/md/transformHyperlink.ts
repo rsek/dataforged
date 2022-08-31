@@ -41,7 +41,7 @@ export function transformOracleLinks(data: IOracleCategory[], md: string, curren
     if (currentFile === targetFile || currentFile === "oracles.md") {
       targetFile = "";
     }
-    const result = `(${targetFile}#${linkedOracle.Display.Title.replaceAll(" ", "-")})`;
+    const result = `(${targetFile}#${linkedOracle.Title.Canonical.replaceAll(" ", "-")})`;
 
     return result.replaceAll("_", "-");
   });
@@ -56,7 +56,7 @@ export function transformOracleLinks(data: IOracleCategory[], md: string, curren
     }
     let targetFile: string = "";
     if (currentFile === "oracles.md") {
-      targetFile = `#${linkedOracle.Display.Title}`.replaceAll(" ", "-");
+      targetFile = `#${linkedOracle.Title.Canonical}`.replaceAll(" ", "-");
     } else {
       targetFile = `${_.kebabCase(p1)}.md`;
     }

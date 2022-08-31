@@ -28,7 +28,7 @@ export enum BurnStrategy {
 }
 
 export interface IStat {
-  Name: string;
+  Label: string;
   Value: number;
 }
 

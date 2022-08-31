@@ -9,6 +9,7 @@ import _ from "lodash-es";
  */
 export function templateOracleInfo(json: IOracleYaml): IOracleYaml {
   // cloning so that the original object isn't mutated
+  console.log("templateOracleInfo");
   let jsonClone = _.cloneDeep(json);
   if (jsonClone._templateInfo) {
     jsonClone = _.merge(jsonClone._templateInfo, jsonClone);
