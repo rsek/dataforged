@@ -3489,7 +3489,7 @@
         },
         "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
-          "$ref": "#/definitions/IDisplayOracle",
+          "$ref": "#/definitions/IOracleDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
@@ -3556,9 +3556,9 @@
       "additionalProperties": false,
       "required": ["$id", "Category", "Display", "Source", "Title"]
     },
-    "IDisplayOracle": {
-      "description": "Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
-      "title": "IDisplayOracle",
+    "IOracleDisplay": {
+      "description": "Information on displaying Oracles, including information on how their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
+      "title": "IOracleDisplay",
       "type": "object",
       "properties": {
         "Column of": {
@@ -3566,10 +3566,16 @@
           "type": "string",
           "title": "Column of"
         },
-        "Table": {
-          "$ref": "#/definitions/ITableDisplayInfo",
+        "Columns": {
           "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
-          "title": "Table"
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/ITableColumnRoll" },
+              { "$ref": "#/definitions/ITableColumnText" }
+            ]
+          },
+          "title": "Columns"
         },
         "Embed in": {
           "description": "This table is displayed as embedded in a row of another table.",
@@ -3594,73 +3600,99 @@
           "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
           "type": "string",
           "title": "Color"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Table"]
-    },
-    "ITableDisplayInfo": {
-      "description": "Provides information on how a specific oracle table is rendered in the source text.",
-      "title": "ITableDisplayInfo",
-      "type": "object",
-      "properties": {
-        "Result columns": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/ITextColumn" },
-          "title": "Result columns"
         },
-        "Roll columns": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/ITableColumnBase" },
-          "title": "Roll columns"
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Result columns", "Roll columns"]
+      "required": ["$id", "Columns"]
     },
-    "ITextColumn": {
-      "description": "Describes the rendering of a table column that displays textual content (as opposed to{@linkIRollColumn}, which displays numerical ranges).",
-      "title": "ITextColumn",
+    "ITableColumnRoll": {
+      "title": "ITableColumnRoll",
       "type": "object",
       "properties": {
         "Label": {
           "description": "The label or header text to use for this column.",
+          "default": "Roll",
           "type": "string",
           "title": "Label"
         },
+        "Type": {
+          "$ref": "#/definitions/TableColumnType.Range",
+          "title": "Type"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        },
         "Use content from": {
-          "description": "The ID of the oracle with a `Table` key.",
+          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
+          "type": "string",
+          "title": "Use content from"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Label", "Type", "Use content from"]
+    },
+    "TableColumnType.Range": {
+      "title": "TableColumnType.Range",
+      "type": "string",
+      "enum": ["dice range"]
+    },
+    "ITableColumnText": {
+      "description": "Describes the rendering of a table column that displays textual content (as opposed to{@linkITableColumnRoll}, which displays numerical ranges).",
+      "title": "ITableColumnText",
+      "type": "object",
+      "properties": {
+        "Type": {
+          "$ref": "#/definitions/TableColumnType.String",
+          "title": "Type"
+        },
+        "Label": {
+          "description": "The label or header text to use for this column.",
+          "default": "Result",
+          "type": "string",
+          "title": "Label"
+        },
+        "Key": {
+          "$ref": "#/definitions/KeysWithValuesOfType",
+          "description": "The key of each{@linkIRow}in the{@linkIOracle.Table}, whose string value is displayed in the rendered table.",
+          "default": "Result",
+          "title": "Key"
+        },
+        "Use content from": {
+          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
           "type": "string",
           "title": "Use content from"
         },
-        "Key": {
-          "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
-          "enum": ["Result", "Summary"],
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
           "type": "string",
-          "title": "Key"
+          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Key", "Label", "Use content from"]
+      "required": ["$id", "Key", "Label", "Type", "Use content from"]
     },
-    "ITableColumnBase": {
-      "description": "Interface with elements common to{@linkIRollColumn}and{@linkITextColumn}.",
-      "title": "ITableColumnBase",
-      "type": "object",
-      "properties": {
-        "Label": { "type": "string", "title": "Label" },
-        "Use content from": {
-          "description": "The ID of the oracle table to use.",
-          "type": "string",
-          "title": "Use content from"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Label", "Use content from"]
+    "TableColumnType.String": {
+      "title": "TableColumnType.String",
+      "type": "string",
+      "enum": ["string"]
+    },
+    "KeysWithValuesOfType": {
+      "title": "KeysWithValuesOfType",
+      "enum": ["$id", "Result"],
+      "type": "string"
     },
     "IRowNullStub": {
       "description": "A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as \"--\" in the book.",

@@ -1,13 +1,17 @@
-import type { IOracle, IRollColumn , ITextColumn } from "@json_out/index.js";
+import { TableColumnType } from "@json_out/index.js";
+import type { IOracle, ITableColumnRoll , ITableColumnText } from "@json_out/index.js";
 
 /**
  * @internal
  */
-export class TextColumn implements ITextColumn {
-  Label: ITextColumn["Label"];
-  ["Use content from"]: ITextColumn["Use content from"];
-  Key: ITextColumn["Key"];
-  constructor(content: IOracle["$id"], label: string = "Result", key: ITextColumn["Key"] = "Result") {
+export class TableColumnText implements ITableColumnText {
+  readonly Type = TableColumnType.String;
+  $id: string;
+  Label: ITableColumnText["Label"];
+  ["Use content from"]: ITableColumnText["Use content from"];
+  Key: ITableColumnText["Key"];
+  constructor(parentID: string, content: IOracle["$id"], index: number, label: string = "Result", key: ITableColumnText["Key"] = "Result") {
+    this.$id = `${parentID}/Columns/${index+1}`;
     this.Label = label;
     this["Use content from"] = content;
     this.Key = key;
@@ -17,10 +21,13 @@ export class TextColumn implements ITextColumn {
 /**
  * @internal
  */
-export class RollColumn implements IRollColumn {
-  Label: string = "Roll";
-  ["Use content from"]: IOracle["$id"];
-  constructor(content: IOracle["$id"], label: string = "Roll") {
+export class TableColumnRoll implements ITableColumnRoll {
+  readonly Type = TableColumnType.Range;
+  $id: string;
+  Label: string;
+  ["Use content from"]: ITableColumnRoll["Use content from"];
+  constructor(parentID: string, content: IOracle["$id"], index: number, label: string = "Roll") {
+    this.$id = `${parentID}/Columns/${index+1}`;
     this.Label = label;
     this["Use content from"] = content;
   }

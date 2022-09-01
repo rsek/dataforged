@@ -1,5 +1,4 @@
 export * from "@classes/oracles/AttributeSetter.js";
-export * from "@classes/oracles/DisplayTable.js";
 export * from "@classes/oracles/GameObject.js";
 export * from "@classes/oracles/MultipleRolls.js";
 export * from "@classes/oracles/Oracle.js";

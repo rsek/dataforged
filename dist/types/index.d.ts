@@ -859,31 +859,6 @@ export declare interface IDisplay {
 }
 
 /**
- * Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
- * @public
- */
-export declare interface IDisplayOracle extends IDisplay {
-    /**
-     * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
-     *
-     * If `undefined`, this table is rendered as a standalone table.
-     *
-     * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
-     */
-    "Column of"?: IOracle["$id"] | undefined;
-    /**
-     * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
-     *
-     * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
-     */
-    Table: ITableDisplayInfo;
-    /**
-     * This table is displayed as embedded in a row of another table.
-     */
-    "Embed in"?: IRow["$id"] | undefined;
-}
-
-/**
  * Represents a full (i.e. not a stub/variant) encounter entry in *Ironsworn* or *Ironsworn: Starforged*.
  * @public
  */
@@ -1726,7 +1701,7 @@ export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
      * ```
      */
     Title: ITitle;
-    Display: IDisplayOracle;
+    Display: IOracleDisplay;
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: (IRow | IRowNullStub)[] | undefined;
@@ -1824,6 +1799,31 @@ export declare interface IOracleContent {
 }
 
 /**
+ * Information on displaying Oracles, including information on how their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
+ * @public
+ */
+export declare interface IOracleDisplay extends IDisplay, IHasId {
+    /**
+     * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
+     *
+     * If `undefined`, this table is rendered as a standalone table.
+     *
+     * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
+     */
+    "Column of"?: IOracle["$id"] | undefined;
+    /**
+     * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
+     *
+     * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
+     */
+    "Columns": (ITableColumnRoll | ITableColumnText)[];
+    /**
+     * This table is displayed as embedded in a row of another table.
+     */
+    "Embed in"?: IRow["$id"] | undefined;
+}
+
+/**
  * @public
  */
 export declare interface IOracleMatch extends IHasId, IHasText {
@@ -1908,12 +1908,6 @@ export declare interface IRequirements {
      * A list of attribute keys, and values of those keys that satisfy the requirements.
      */
     Attributes: IAttributeChoices[];
-}
-
-/**
- * @public
- */
-export declare interface IRollColumn extends ITableColumnBase {
 }
 
 /**
@@ -2178,47 +2172,53 @@ export declare interface ISuggestions {
 }
 
 /**
- * Interface with elements common to {@link IRollColumn} and {@link ITextColumn}.
+ * Interface with elements common to {@link ITableColumnRoll} and {@link ITableColumnText}.
  * @public
  */
-export declare interface ITableColumnBase {
-    /**
-     * @localize
-     */
-    Label: string;
-    /**
-     * The ID of the oracle table to use.
-     */
-    "Use content from": IOracle["$id"];
-}
-
-/**
- * Provides information on how a specific oracle table is rendered in the source text.
- * @public
- */
-export declare interface ITableDisplayInfo {
-    "Result columns": ITextColumn[];
-    "Roll columns": ITableColumnBase[];
-}
-
-/**
- * Describes the rendering of a table column that displays textual content (as opposed to {@link IRollColumn}, which displays numerical ranges).
- * @public
- */
-export declare interface ITextColumn extends ITableColumnBase {
+export declare interface ITableColumnBase extends IHasLabel {
     /**
      * The label or header text to use for this column.
      * @localize
      */
     Label: string;
     /**
-     * The ID of the oracle with a `Table` key.
+     * The ID of the {@link IOracle} whose {@link IOracle.Table} content will be displayed in the table.
      */
     "Use content from": IOracle["$id"];
+    Type: TableColumnType;
     /**
-     * The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.
+     * The key of each {@link IRow} in the {@link IOracle.Table}, whose string value is displayed in the rendered table.
      */
-    Key: "Result" | "Summary";
+    Key?: KeysWithValuesOfType<IRow, string> | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface ITableColumnRoll extends Omit<ITableColumnBase, "Key"> {
+    /**
+     * @default "Roll"
+     * @localize
+     */
+    Label: string;
+    Type: TableColumnType.Range;
+}
+
+/**
+ * Describes the rendering of a table column that displays textual content (as opposed to {@link ITableColumnRoll}, which displays numerical ranges).
+ * @public
+ */
+export declare interface ITableColumnText extends ITableColumnBase {
+    Type: TableColumnType.String;
+    /**
+     * @default "Result"
+     * @localize
+     */
+    Label: string;
+    /**
+     * @default "Result"
+     */
+    Key: KeysWithValuesOfType<IRow, string>;
 }
 
 /**
@@ -2965,6 +2965,15 @@ export declare type StubBy<T, PartialKey extends keyof any = "", OmitKey extends
  * @public
  */
 export declare type StubExcept<T, ReqKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
+
+/**
+ * Enumerates the type of content shown: a dice range, or a string.
+ * @public
+ */
+export declare enum TableColumnType {
+    Range = "dice range",
+    String = "string"
+}
 
 /**
  * Represents a tuple: a typed array with a fixed length.

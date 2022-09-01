@@ -33,21 +33,22 @@
         "Category": "Ironsworn/Oracles/Action_and_Theme",
         "Description": "Use this table to inspire a discovery, event, character goal, or situation. A roll on this table can be combined with a Theme to provide an action and a subject. Then, interpret the result based on the context of the question and your current situation.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Action_and_Theme/Action",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Action_and_Theme/Action"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Action_and_Theme/Action/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Action_and_Theme/Action/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Action_and_Theme/Action"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Action_and_Theme/Action/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Action_and_Theme/Action",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -676,21 +677,22 @@
         "Category": "Ironsworn/Oracles/Action_and_Theme",
         "Description": "As with the Action oracle, this is an interpretative table which you can use to answer questions or generate new situations. Combined, the Action and Theme tables provide creative prompts suitable for most situations and questions. In fact, with some creative interpretations, it’s entirely possible to play with only these two tables.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Action_and_Theme/Theme",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Action_and_Theme/Theme"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Action_and_Theme/Theme/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Action_and_Theme/Theme/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Action_and_Theme/Theme"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Action_and_Theme/Theme/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Action_and_Theme/Theme",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -1337,21 +1339,22 @@
         "Category": "Ironsworn/Oracles/Place",
         "Description": "Use this oracle when you want to randomly select a region with the Ironlands.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Place/Region",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Place/Region"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Place/Region/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Place/Region/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Place/Region"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Place/Region/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Place/Region",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -1434,21 +1437,22 @@
         "Category": "Ironsworn/Oracles/Place",
         "Description": "Use this oracle when traveling to generate a point-of-interest or to answer a question about a place where someone or something can be found.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Place/Location",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Place/Location"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Place/Location/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Place/Location/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Place/Location"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Place/Location/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Place/Location",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -1777,21 +1781,22 @@
         "Category": "Ironsworn/Oracles/Place",
         "Description": "Use this oracle to identify a point-of-interest or destination when you are traveling by ship or boat.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Place/Coastal_Waters_Location",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Place/Coastal_Waters_Location"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Place/Coastal_Waters_Location/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Place/Coastal_Waters_Location/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Place/Coastal_Waters_Location"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Place/Coastal_Waters_Location/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Place/Coastal_Waters_Location",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -1916,21 +1921,22 @@
         "Category": "Ironsworn/Oracles/Place",
         "Description": "Use this oracle to add detail to the Location or Coastal Waters Location oracles, or by itself to generate a description of a location. Roll more than once for extra detail.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Place/Descriptor",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Place/Descriptor"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Place/Descriptor/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Place/Descriptor/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Place/Descriptor"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Place/Descriptor/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Place/Descriptor",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -2270,21 +2276,22 @@
         "Aliases": ["7", "Oracle 7", "Settlement Name"],
         "Category": "Ironsworn/Oracles/Settlement",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Settlement/Name",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Settlement/Name"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Settlement/Name/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Settlement/Name/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Settlement/Name"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Settlement/Name/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Settlement/Name",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -2366,21 +2373,22 @@
             "Category": "Ironsworn/Oracles/Settlement",
             "Description": "\"**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?\",",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Landscape_Feature",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -2463,21 +2471,22 @@
             "Category": "Ironsworn/Oracles/Settlement",
             "Description": "**A manmade edifice.** What is it? Why is it important to this settlement’s history?,",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Manmade_Edifice",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -2560,21 +2569,22 @@
             "Category": "Ironsworn/Oracles/Settlement",
             "Description": "**A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Creature",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Creature"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Creature/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Creature/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Creature"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Creature/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Creature",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -2657,21 +2667,22 @@
             "Category": "Ironsworn/Oracles/Settlement",
             "Description": "**A historical event.** What happened here? What place or practice commemorates this event?",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Historical_Event",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Historical_Event"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Historical_Event/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Historical_Event/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Historical_Event"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Historical_Event/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Historical_Event",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -2754,21 +2765,22 @@
             "Category": "Ironsworn/Oracles/Settlement",
             "Description": "**A word in an Old World language.** What culture is represented by this word? What does it translate to?",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Old_World_Language",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Old_World_Language"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Old_World_Language/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Old_World_Language/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Old_World_Language"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Old_World_Language/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Old_World_Language",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -2851,21 +2863,22 @@
             "Category": "Ironsworn/Oracles/Settlement",
             "Description": "**A season or environmental aspect.** What influence does the weather have on this settlement?",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Environmental_Aspect",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -2947,21 +2960,22 @@
             "Member of": "Ironsworn/Oracles/Settlement/Name",
             "Category": "Ironsworn/Oracles/Settlement",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Something_Else",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Name/Something_Else"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Name/Something_Else/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Something_Else/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Something_Else"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Name/Something_Else/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Name/Something_Else",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -3047,21 +3061,22 @@
         "Category": "Ironsworn/Oracles/Settlement",
         "Description": "Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": { "Allow duplicates": false },
         "Oracles": [
@@ -3082,21 +3097,22 @@
             "Member of": "Ironsworn/Oracles/Settlement/Quick_Name",
             "Category": "Ironsworn/Oracles/Settlement",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Prefix",
+                  "Key": "Result"
+                }
+              ]
             },
             "Usage": { "Allow duplicates": false },
             "Table": [
@@ -3269,21 +3285,22 @@
             "Member of": "Ironsworn/Oracles/Settlement/Quick_Name",
             "Category": "Ironsworn/Oracles/Settlement",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Settlement/Quick_Name/Suffix",
+                  "Key": "Result"
+                }
+              ]
             },
             "Usage": { "Allow duplicates": false },
             "Table": [
@@ -3459,21 +3476,22 @@
         "Category": "Ironsworn/Oracles/Settlement",
         "Description": "Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Settlement/Trouble",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Settlement/Trouble"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Settlement/Trouble/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Settlement/Trouble/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Settlement/Trouble"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Settlement/Trouble/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Settlement/Trouble",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -3795,21 +3813,22 @@
         "Category": "Ironsworn/Oracles/Character",
         "Description": "Use this oracle to define the background for a character, or to generate a random encounter.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Character/Role",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Character/Role"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Character/Role/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Character/Role/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Character/Role"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Character/Role/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Character/Role",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -4018,21 +4037,22 @@
         "Category": "Ironsworn/Oracles/Character",
         "Description": "Use this oracle to define the primary motivation of an NPC or a faction. It can also be used to kick-off a personal quest for your own character.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Character/Goal",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Character/Goal"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Character/Goal/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Character/Goal/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Character/Goal"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Character/Goal/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Character/Goal",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -4258,21 +4278,22 @@
         "Category": "Ironsworn/Oracles/Character",
         "Description": "Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Character/Descriptor",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Character/Descriptor"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Character/Descriptor/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Character/Descriptor/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Character/Descriptor"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Character/Descriptor/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Character/Descriptor",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": { "Max rolls": 3, "Allow duplicates": false },
         "Table": [
@@ -4895,21 +4916,22 @@
         "Category": "Ironsworn/Oracles/Character",
         "Description": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the Focus oracle or Theme oracle.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Character/Activity",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Character/Activity"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Character/Activity/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Character/Activity/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Character/Activity"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Character/Activity/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Character/Activity",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -5240,21 +5262,22 @@
         "Category": "Ironsworn/Oracles/Character",
         "Description": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Character/Disposition",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Character/Disposition"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Character/Disposition/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Character/Disposition/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Character/Disposition"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Character/Disposition/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Character/Disposition",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -5367,21 +5390,22 @@
         "Category": "Ironsworn/Oracles/Name",
         "Description": "Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Name/Ironlander",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Name/Ironlander"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Name/Ironlander/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Name/Ironlander/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Name/Ironlander"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Name/Ironlander/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Name/Ironlander",
+              "Key": "Result"
+            }
+          ]
         },
         "Oracles": [
           {
@@ -5401,21 +5425,22 @@
             "Member of": "Ironsworn/Oracles/Name/Ironlander",
             "Category": "Ironsworn/Oracles/Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Name/Ironlander/A",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Name/Ironlander/A"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Name/Ironlander/A/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Name/Ironlander/A/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Name/Ironlander/A"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Name/Ironlander/A/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Name/Ironlander/A",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -6037,21 +6062,22 @@
             "Member of": "Ironsworn/Oracles/Name/Ironlander",
             "Category": "Ironsworn/Oracles/Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Name/Ironlander/B",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Name/Ironlander/B"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Name/Ironlander/B/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Name/Ironlander/B/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Name/Ironlander/B"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Name/Ironlander/B/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Name/Ironlander/B",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -6677,21 +6703,22 @@
         "Category": "Ironsworn/Oracles/Name",
         "Description": "Use this oracle to generate a name for an elf character.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Name/Elf",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Name/Elf"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Name/Elf/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Name/Elf/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Name/Elf"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Name/Elf/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Name/Elf",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -7014,31 +7041,22 @@
         "Category": "Ironsworn/Oracles/Name",
         "Description": "Use this oracle to generate names for other firstborn characters.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Giants",
-                "Use content from": "Ironsworn/Oracles/Name/Other/Giants",
-                "Key": "Result"
-              },
-              {
-                "Label": "Varou",
-                "Use content from": "Ironsworn/Oracles/Name/Other/Varou",
-                "Key": "Result"
-              },
-              {
-                "Label": "Trolls",
-                "Use content from": "Ironsworn/Oracles/Name/Other/Trolls",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Name/Other/Giants"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Name/Other/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Name/Other/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Name/Other"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Name/Other/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Name/Other",
+              "Key": "Result"
+            }
+          ]
         },
         "Oracles": [
           {
@@ -7058,22 +7076,23 @@
             "Member of": "Ironsworn/Oracles/Name/Other",
             "Category": "Ironsworn/Oracles/Name",
             "Display": {
+              "$id": "Ironsworn/Oracles/Name/Other/Giant/Display",
               "Column of": "Ironsworn/Oracles/Name/Other",
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Name/Other/Giant",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Name/Other/Giant"
-                  }
-                ]
-              }
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Name/Other/Giant/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Name/Other/Giant"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Name/Other/Giant/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Name/Other/Giant",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -7245,22 +7264,23 @@
             "Member of": "Ironsworn/Oracles/Name/Other",
             "Category": "Ironsworn/Oracles/Name",
             "Display": {
+              "$id": "Ironsworn/Oracles/Name/Other/Varou/Display",
               "Column of": "Ironsworn/Oracles/Name/Other",
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Name/Other/Varou",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Name/Other/Varou"
-                  }
-                ]
-              }
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Name/Other/Varou/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Name/Other/Varou"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Name/Other/Varou/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Name/Other/Varou",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -7432,22 +7452,23 @@
             "Member of": "Ironsworn/Oracles/Name/Other",
             "Category": "Ironsworn/Oracles/Name",
             "Display": {
+              "$id": "Ironsworn/Oracles/Name/Other/Troll/Display",
               "Column of": "Ironsworn/Oracles/Name/Other",
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Name/Other/Troll",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Name/Other/Troll"
-                  }
-                ]
-              }
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Name/Other/Troll/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Name/Other/Troll"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Name/Other/Troll/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Name/Other/Troll",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -7641,21 +7662,22 @@
         "Category": "Ironsworn/Oracles/Turning_Point",
         "Description": "Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Combat_Action",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Combat_Action"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Turning_Point/Combat_Action/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Turning_Point/Combat_Action/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Combat_Action"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Turning_Point/Combat_Action/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Combat_Action",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -7786,21 +7808,22 @@
         "Category": "Ironsworn/Oracles/Turning_Point",
         "Description": "Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Mystic_Backlash",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -7978,21 +8001,22 @@
         "Category": "Ironsworn/Oracles/Turning_Point",
         "Description": "Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Major_Plot_Twist",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -8140,36 +8164,22 @@
         "Category": "Ironsworn/Oracles/Turning_Point",
         "Description": "Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Rank",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest",
-                "Key": "Result"
-              },
-              {
-                "Label": "Quest",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest",
-                "Key": "Summary"
-              },
-              {
-                "Label": "Journey",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey",
-                "Key": "Summary"
-              },
-              {
-                "Label": "Foes",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes",
-                "Key": "Summary"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
+              "Key": "Result"
+            }
+          ]
         },
         "Oracles": [
           {
@@ -8189,22 +8199,23 @@
             "Member of": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
             "Category": "Ironsworn/Oracles/Turning_Point",
             "Display": {
+              "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest/Display",
               "Column of": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest"
-                  }
-                ]
-              }
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -8261,22 +8272,23 @@
             "Member of": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
             "Category": "Ironsworn/Oracles/Turning_Point",
             "Display": {
+              "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey/Display",
               "Column of": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey"
-                  }
-                ]
-              }
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -8333,22 +8345,23 @@
             "Member of": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
             "Category": "Ironsworn/Oracles/Turning_Point",
             "Display": {
+              "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes/Display",
               "Column of": "Ironsworn/Oracles/Turning_Point/Challenge_Rank",
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes"
-                  }
-                ]
-              }
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -8424,21 +8437,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Endure_Harm",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Endure_Harm"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Endure_Harm/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Endure_Harm/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Endure_Harm"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Endure_Harm/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Endure_Harm",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -8489,21 +8503,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Endure_Stress",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Endure_Stress"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Endure_Stress/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Endure_Stress/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Endure_Stress"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Endure_Stress/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Endure_Stress",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -8548,21 +8563,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Pay_the_Price",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Pay_the_Price"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Pay_the_Price/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Pay_the_Price/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Pay_the_Price"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Pay_the_Price/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Pay_the_Price",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -8685,21 +8701,22 @@
         "Aliases": ["Ask"],
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
+              "Key": "Result"
+            }
+          ]
         },
         "Oracles": [
           {
@@ -8720,21 +8737,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain",
+                  "Key": "Result"
+                }
+              ]
             },
             "On a Match": {
               "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Almost_Certain/On_a_Match",
@@ -8773,21 +8791,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely",
+                  "Key": "Result"
+                }
+              ]
             },
             "On a Match": {
               "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Likely/On_a_Match",
@@ -8826,21 +8845,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50",
+                  "Key": "Result"
+                }
+              ]
             },
             "On a Match": {
               "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/50_50/On_a_Match",
@@ -8879,21 +8899,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely",
+                  "Key": "Result"
+                }
+              ]
             },
             "On a Match": {
               "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Unlikely/On_a_Match",
@@ -8932,21 +8953,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Ask_the_Oracle",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance",
+                  "Key": "Result"
+                }
+              ]
             },
             "On a Match": {
               "$id": "Ironsworn/Oracles/Moves/Ask_the_Oracle/Small_Chance/On_a_Match",
@@ -8986,21 +9008,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths",
+              "Key": "Result"
+            }
+          ]
         },
         "Oracles": [
           {
@@ -9020,21 +9043,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Delve_the_Depths",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Edge",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -9086,21 +9110,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Delve_the_Depths",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Shadow",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -9152,21 +9177,22 @@
             "Member of": "Ironsworn/Oracles/Moves/Delve_the_Depths",
             "Category": "Ironsworn/Oracles/Moves",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Moves/Delve_the_Depths/Wits",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -9220,21 +9246,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Find_an_Opportunity",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Find_an_Opportunity"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Find_an_Opportunity/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Find_an_Opportunity/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Find_an_Opportunity"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Find_an_Opportunity/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Find_an_Opportunity",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -9315,21 +9342,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Reveal_a_Danger/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Reveal_a_Danger/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Reveal_a_Danger/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -9427,21 +9455,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Reveal_a_Danger_alt",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -9527,21 +9556,22 @@
         },
         "Category": "Ironsworn/Oracles/Moves",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Moves/Advance_a_Threat",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Moves/Advance_a_Threat"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Moves/Advance_a_Threat/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Moves/Advance_a_Threat/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Moves/Advance_a_Threat"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Moves/Advance_a_Threat/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Moves/Advance_a_Threat",
+              "Key": "Result"
+            }
+          ]
         },
         "On a Match": {
           "$id": "Ironsworn/Oracles/Moves/Advance_a_Threat/On_a_Match",
@@ -9603,21 +9633,22 @@
         },
         "Category": "Ironsworn/Oracles/Feature",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Feature/Aspect",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Feature/Aspect"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Feature/Aspect/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Feature/Aspect/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Feature/Aspect"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Feature/Aspect/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Feature/Aspect",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -9942,21 +9973,22 @@
         },
         "Category": "Ironsworn/Oracles/Feature",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Feature/Focus",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Feature/Focus"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Feature/Focus/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Feature/Focus/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Feature/Focus"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Feature/Focus/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Feature/Focus",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -10303,21 +10335,22 @@
         "Category": "Ironsworn/Oracles/Site_Name",
         "Description": "To generate a name for a site, first roll on the Format table above. Then, fill in the blanks by using the [Description](Ironsworn/Oracles/Site_Name/Description), [Detail](Ironsworn/Oracles/Site_Name/Detail), [Namesake](Ironsworn/Oracles/Site_Name/Namesake), and [Place](Ironsworn/Oracles/Site_Name/Place) oracles.\n\nIf the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.\n\nIf you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the Place oracle to roll for a domain, and let the Description and Detail oracles inform your selection of a theme.\n\nThe site’s name might be known in your world, or it could just be an evocative label you use to understand its history and nature.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Format",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Format"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Name/Format/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Name/Format/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Format"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Name/Format/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Format",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -10402,21 +10435,22 @@
         "Category": "Ironsworn/Oracles/Site_Name",
         "Description": "Even without giving a site a name, you can use the Description and Detail oracles to help flesh out the theme and nature of that place.\n\nFor example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You Ask the Oracle, using the Description and Detail tables. The oracle responds, “Bloodied Banishment.”\n\nInterpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Description",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Description"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Name/Description/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Name/Description/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Description"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Name/Description/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Description",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -10737,21 +10771,22 @@
         },
         "Category": "Ironsworn/Oracles/Site_Name",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Detail",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Detail"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Name/Detail/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Name/Detail/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Detail"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Name/Detail/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Detail",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -11073,21 +11108,22 @@
         "Category": "Ironsworn/Oracles/Site_Name",
         "Description": "You may also use your preferred name randomizer to generate a Namesake for your site.\n\nIf you want to add details for the Namesake, use the [Character oracles](Ironsworn/Oracles/Character) in Ironsworn Core. This may help inspire a deeper understanding of the history of the site.",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Namesake",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Namesake"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Name/Namesake/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Name/Namesake/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Namesake"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Name/Namesake/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Namesake",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -11408,21 +11444,22 @@
         },
         "Category": "Ironsworn/Oracles/Site_Name",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Place",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Name/Place"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Name/Place/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Place"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Name/Place",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -11528,21 +11565,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Barrow",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Barrow"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Barrow/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Barrow/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Barrow"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Barrow/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Barrow",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -11600,21 +11638,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Cavern",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Cavern"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Cavern/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Cavern/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Cavern"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Cavern/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Cavern",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -11696,21 +11735,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Frozen_Cavern",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -11792,21 +11832,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Icereach",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Icereach"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Icereach/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Icereach/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Icereach"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Icereach/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Icereach",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -11864,21 +11905,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Mine",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Mine"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Mine/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Mine/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Mine"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Mine/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Mine",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -11936,21 +11978,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Pass",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Pass"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Pass/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Pass/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Pass"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Pass/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Pass",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12032,21 +12075,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Ruin",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Ruin"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Ruin/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Ruin/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Ruin"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Ruin/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Ruin",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12128,21 +12172,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Sea_Cave",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12200,21 +12245,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Shadowfen",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Shadowfen"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Shadowfen/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Shadowfen/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Shadowfen"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Shadowfen/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Shadowfen",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12296,21 +12342,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Stronghold",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Stronghold"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Stronghold/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Stronghold/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Stronghold"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Stronghold/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Stronghold",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12392,21 +12439,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Tanglewood",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Tanglewood"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Tanglewood/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Tanglewood/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Tanglewood"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Tanglewood/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Tanglewood",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12476,21 +12524,22 @@
             "Member of": "Ironsworn/Oracles/Site_Name/Place",
             "Category": "Ironsworn/Oracles/Site_Name",
             "Display": {
-              "Table": {
-                "Result columns": [
-                  {
-                    "Label": "Result",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Underkeep",
-                    "Key": "Result"
-                  }
-                ],
-                "Roll columns": [
-                  {
-                    "Label": "Roll",
-                    "Use content from": "Ironsworn/Oracles/Site_Name/Place/Underkeep"
-                  }
-                ]
-              }
+              "$id": "Ironsworn/Oracles/Site_Name/Place/Underkeep/Display",
+              "Columns": [
+                {
+                  "Type": "dice range",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Underkeep/Display/Columns/1",
+                  "Label": "Roll",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Underkeep"
+                },
+                {
+                  "Type": "string",
+                  "$id": "Ironsworn/Oracles/Site_Name/Place/Underkeep/Display/Columns/2",
+                  "Label": "Result",
+                  "Use content from": "Ironsworn/Oracles/Site_Name/Place/Underkeep",
+                  "Key": "Result"
+                }
+              ]
             },
             "Table": [
               {
@@ -12593,21 +12642,22 @@
         },
         "Category": "Ironsworn/Oracles/Site_Nature",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Nature/Theme",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Nature/Theme"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Nature/Theme/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Nature/Theme/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Nature/Theme"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Nature/Theme/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Nature/Theme",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -12676,21 +12726,22 @@
         },
         "Category": "Ironsworn/Oracles/Site_Nature",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Site_Nature/Domain",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Site_Nature/Domain"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Site_Nature/Domain/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Site_Nature/Domain/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Site_Nature/Domain"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Site_Nature/Domain/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Site_Nature/Domain",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -12802,21 +12853,22 @@
         },
         "Category": "Ironsworn/Oracles/Monstrosity",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Size",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Size"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Monstrosity/Size/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Monstrosity/Size/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Size"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Monstrosity/Size/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Size",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -12873,21 +12925,22 @@
         },
         "Category": "Ironsworn/Oracles/Monstrosity",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Primary_Form",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Primary_Form"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Monstrosity/Primary_Form/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Monstrosity/Primary_Form/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Primary_Form"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Monstrosity/Primary_Form/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Primary_Form",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -13021,21 +13074,22 @@
         },
         "Category": "Ironsworn/Oracles/Monstrosity",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Characteristics",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Characteristics"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Monstrosity/Characteristics/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Monstrosity/Characteristics/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Characteristics"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Monstrosity/Characteristics/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Characteristics",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -13224,21 +13278,22 @@
         },
         "Category": "Ironsworn/Oracles/Monstrosity",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Abilities",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Monstrosity/Abilities"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Monstrosity/Abilities/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Monstrosity/Abilities/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Abilities"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Monstrosity/Abilities/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Monstrosity/Abilities",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -13518,21 +13573,22 @@
         },
         "Category": "Ironsworn/Oracles/Trap",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Trap/Event",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Trap/Event"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Trap/Event/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Trap/Event/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Trap/Event"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Trap/Event/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Trap/Event",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -13709,21 +13765,22 @@
         },
         "Category": "Ironsworn/Oracles/Trap",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Trap/Component",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Trap/Component"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Trap/Component/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Trap/Component/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Trap/Component"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Trap/Component/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Trap/Component",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -13917,21 +13974,22 @@
         },
         "Category": "Ironsworn/Oracles/Combat_Event",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Combat_Event/Method",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Combat_Event/Method"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Combat_Event/Method/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Combat_Event/Method/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Combat_Event/Method"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Combat_Event/Method/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Combat_Event/Method",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -14258,21 +14316,22 @@
         },
         "Category": "Ironsworn/Oracles/Combat_Event",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Combat_Event/Target",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Combat_Event/Target"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Combat_Event/Target/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Combat_Event/Target/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Combat_Event/Target"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Combat_Event/Target/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Combat_Event/Target",
+              "Key": "Result"
+            }
+          ]
         },
         "Usage": {
           "Allow duplicates": false,
@@ -14618,21 +14677,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Category",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Category"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Category/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Category/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Category"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Category/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Category",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -14727,21 +14787,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Burgeoning_Conflict",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Burgeoning_Conflict"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Burgeoning_Conflict/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Burgeoning_Conflict/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Burgeoning_Conflict"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Burgeoning_Conflict/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Burgeoning_Conflict",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -14822,21 +14883,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Cursed_Site",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Cursed_Site"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Cursed_Site/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Cursed_Site/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Cursed_Site"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Cursed_Site/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Cursed_Site",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -14917,21 +14979,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Environmental_Calamity",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Environmental_Calamity"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Environmental_Calamity/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Environmental_Calamity/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Environmental_Calamity"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Environmental_Calamity/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Environmental_Calamity",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -15012,21 +15075,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Malignant_Plague",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Malignant_Plague"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Malignant_Plague/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Malignant_Plague/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Malignant_Plague"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Malignant_Plague/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Malignant_Plague",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -15107,21 +15171,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Rampaging_Creature",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Rampaging_Creature"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Rampaging_Creature/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Rampaging_Creature/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Rampaging_Creature"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Rampaging_Creature/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Rampaging_Creature",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -15202,21 +15267,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Ravaging_Horde",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Ravaging_Horde"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Ravaging_Horde/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Ravaging_Horde/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Ravaging_Horde"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Ravaging_Horde/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Ravaging_Horde",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -15297,21 +15363,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Scheming_Leader",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Scheming_Leader"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Scheming_Leader/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Scheming_Leader/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Scheming_Leader"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Scheming_Leader/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Scheming_Leader",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -15392,21 +15459,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Power-Hungry_Mystic",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {
@@ -15487,21 +15555,22 @@
         },
         "Category": "Ironsworn/Oracles/Threat",
         "Display": {
-          "Table": {
-            "Result columns": [
-              {
-                "Label": "Result",
-                "Use content from": "Ironsworn/Oracles/Threat/Zealous_Cult",
-                "Key": "Result"
-              }
-            ],
-            "Roll columns": [
-              {
-                "Label": "Roll",
-                "Use content from": "Ironsworn/Oracles/Threat/Zealous_Cult"
-              }
-            ]
-          }
+          "$id": "Ironsworn/Oracles/Threat/Zealous_Cult/Display",
+          "Columns": [
+            {
+              "Type": "dice range",
+              "$id": "Ironsworn/Oracles/Threat/Zealous_Cult/Display/Columns/1",
+              "Label": "Roll",
+              "Use content from": "Ironsworn/Oracles/Threat/Zealous_Cult"
+            },
+            {
+              "Type": "string",
+              "$id": "Ironsworn/Oracles/Threat/Zealous_Cult/Display/Columns/2",
+              "Label": "Result",
+              "Use content from": "Ironsworn/Oracles/Threat/Zealous_Cult",
+              "Key": "Result"
+            }
+          ]
         },
         "Table": [
           {

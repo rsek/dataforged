@@ -1,10 +1,10 @@
-import type { IDisplay, IOracle , IRow, ITableDisplayInfo } from "@json_out/index.js";
+import type { IDisplay, IHasId, IOracle , IRow, ITableColumnRoll, ITableColumnText } from "@json_out/index.js";
 
 /**
- * Information on displaying Oracles, including their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
+ * Information on displaying Oracles, including information on how their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
  * @public
  */
-export interface IDisplayOracle extends IDisplay {
+export interface IOracleDisplay extends IDisplay, IHasId {
   /**
    * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
    *
@@ -18,7 +18,7 @@ export interface IDisplayOracle extends IDisplay {
    *
    * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
    */
-  Table: ITableDisplayInfo;
+  "Columns": (ITableColumnRoll| ITableColumnText)[];
   /**
    * This table is displayed as embedded in a row of another table.
    */

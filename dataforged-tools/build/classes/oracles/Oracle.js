@@ -1,4 +1,4 @@
-import { DisplayOracle, OracleContent, OracleUsage, Row, RowNullStub, SourceInheritor, Title } from "../index.js";
+import { OracleContent, OracleDisplay, OracleUsage, Row, RowNullStub, SourceInheritor, Title } from "../index.js";
 import { buildOracleId } from "../../utils/buildOracleId.js";
 import { inferSetsAttributes } from "../../utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "../../utils/object_transform/propagateToChildren.js";
@@ -28,7 +28,7 @@ export class Oracle extends SourceInheritor {
         this["Member of"] = memberOf ?? undefined;
         this.Category = category;
         this.Description = jsonClone.Description;
-        this.Display = new DisplayOracle((jsonClone.Display ?? {}), this.$id);
+        this.Display = new OracleDisplay((jsonClone.Display ?? {}), this);
         if (jsonClone.Usage) {
             this.Usage = new OracleUsage(jsonClone.Usage);
         }

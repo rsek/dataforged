@@ -15474,9 +15474,21 @@
       "title": "IOracleDisplayYaml",
       "type": "object",
       "properties": {
-        "Table": {
-          "$ref": "#/definitions/ITableDisplayInfoYaml",
-          "title": "Table"
+        "Columns": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/ITableColumnRollYaml" },
+              { "$ref": "#/definitions/ITableColumnTextYaml" }
+            ]
+          },
+          "title": "Columns"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         },
         "Column of": {
           "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
@@ -15512,58 +15524,88 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ITableDisplayInfoYaml": {
-      "title": "ITableDisplayInfoYaml",
+    "ITableColumnRollYaml": {
+      "title": "ITableColumnRollYaml",
       "type": "object",
       "properties": {
-        "Result columns": {
-          "type": "array",
-          "items": {
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-              "Label": {
-                "description": "The label or header text to use for this column.",
-                "type": "string",
-                "title": "Label"
-              },
-              "Key": {
-                "description": "The key of each `Row` in the `Table`, whose string value is displayed in the rendered table.",
-                "enum": ["Result", "Summary"],
-                "type": "string",
-                "title": "Key"
-              },
-              "Use content from": {
-                "description": "The ID of the oracle with a `Table` key.",
-                "type": "string",
-                "title": "Use content from"
-              },
-              "_idFragment": { "type": "string", "title": "_idFragment" }
-            }
-          },
-          "title": "Result columns"
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
         },
-        "Roll columns": {
-          "type": "array",
-          "items": {
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-              "Label": { "type": "string", "title": "Label" },
-              "Use content from": {
-                "description": "The ID of the oracle table to use.",
-                "type": "string",
-                "title": "Use content from"
-              },
-              "_idFragment": { "type": "string", "title": "_idFragment" }
-            }
-          },
-          "title": "Roll columns"
+        "Label": {
+          "description": "The label or header text to use for this column.",
+          "default": "Roll",
+          "type": "string",
+          "title": "Label"
+        },
+        "Type": {
+          "$ref": "#/definitions/TableColumnType.Range",
+          "title": "Type"
+        },
+        "Use content from": {
+          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
+          "type": "string",
+          "title": "Use content from"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["Type"]
+    },
+    "TableColumnType.Range": {
+      "title": "TableColumnType.Range",
+      "type": "string",
+      "enum": ["dice range"]
+    },
+    "ITableColumnTextYaml": {
+      "title": "ITableColumnTextYaml",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Label": {
+          "description": "The label or header text to use for this column.",
+          "default": "Result",
+          "type": "string",
+          "title": "Label"
+        },
+        "Type": {
+          "$ref": "#/definitions/TableColumnType.String",
+          "title": "Type"
+        },
+        "Key": {
+          "$ref": "#/definitions/KeysWithValuesOfType",
+          "description": "The key of each{@linkIRow}in the{@linkIOracle.Table}, whose string value is displayed in the rendered table.",
+          "default": "Result",
+          "title": "Key"
+        },
+        "Use content from": {
+          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
+          "type": "string",
+          "title": "Use content from"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Type"]
+    },
+    "TableColumnType.String": {
+      "title": "TableColumnType.String",
+      "type": "string",
+      "enum": ["string"]
+    },
+    "KeysWithValuesOfType": {
+      "title": "KeysWithValuesOfType",
+      "enum": ["$id", "Result"],
+      "type": "string"
     },
     "IRow": {
       "description": "Interface representing a single row in an oracle table.",

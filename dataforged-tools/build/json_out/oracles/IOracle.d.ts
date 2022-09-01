@@ -1,4 +1,4 @@
-import type { IDisplayOracle, IOracleBase, IOracleCategory, IOracleMatch, IRow, IRowNullStub, ITitle } from "../index.js";
+import type { IOracleDisplay, IOracleBase, IOracleCategory, IOracleMatch, IRow, IRowNullStub, ITitle } from "../index.js";
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
  *
@@ -28,7 +28,7 @@ export interface IOracle extends Omit<IOracleBase, "Categories"> {
      * ```
      */
     Title: ITitle;
-    Display: IDisplayOracle;
+    Display: IOracleDisplay;
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: (IRow | IRowNullStub)[] | undefined;

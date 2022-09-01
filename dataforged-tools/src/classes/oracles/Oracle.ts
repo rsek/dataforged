@@ -1,6 +1,6 @@
 
-import { DisplayOracle , OracleContent , OracleUsage , Row , RowNullStub, SourceInheritor , Title  } from "@classes/index.js";
-import type { AttributeKey , Gamespace, IAttribute, IAttributeChoices, IDisplayOracle, IOracle, IOracleCategory, IRow } from "@json_out/index.js";
+import { OracleContent , OracleDisplay , OracleUsage , Row , RowNullStub, SourceInheritor , Title  } from "@classes/index.js";
+import type { AttributeKey , Gamespace, IAttribute, IAttributeChoices, IOracle, IOracleCategory, IOracleDisplay, IRow } from "@json_out/index.js";
 import { buildOracleId } from "@utils/buildOracleId.js";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
@@ -21,7 +21,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   "Member of"?: IOracle["$id"] | undefined;
   Category: IOracleCategory["$id"];
   Description?: string | undefined;
-  Display: DisplayOracle;
+  Display: OracleDisplay;
   Usage?: OracleUsage | undefined;
   Content?: OracleContent | undefined;
   "On a Match"?: IOracle["On a Match"] | undefined;
@@ -55,7 +55,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     this.Category = category;
 
     this.Description = jsonClone.Description;
-    this.Display = new DisplayOracle((jsonClone.Display ?? {}) as Partial<IDisplayOracle>, this.$id);
+    this.Display = new OracleDisplay((jsonClone.Display ?? {}) as Partial<IOracleDisplay>, this);
     if (jsonClone.Usage) {
       this.Usage = new OracleUsage(jsonClone.Usage);
     }

@@ -12,11 +12,13 @@
     * "Shadow" is now "shadow" (enum: `Stat`)
     * "Health" is now "health" (enum: `PlayerConditionMeter`)
 * provided titles for Ironsworn ritual moves (so their IDs may have changed)
+* the URIs `Image` and `Icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;)
+    * old: `../../img/vector/Oracles/Creature/Environment/Space.svg`
+    * new: `img/vector/Oracles/Creature/Environment/Space.svg`
 
 ### Other changes
 * `Source` now includes a `License` property, containing a URL pointing to the relevant license.
 * everything that has a localizable string descendent (direct or otherwise) now has an `$id`
-
 
 ### New content
 #### Starforged

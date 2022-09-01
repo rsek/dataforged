@@ -1,6 +1,7 @@
-import type { IDisplayOracle, IOracle , IOracleCategory, IOracleMatch, IRow } from "@json_out/index.js";
+import type { IOracle, IOracleCategory , IOracleMatch, IRow } from "@json_out/index.js";
 import type { IRequirementsYaml } from "@yaml_in/common/IRequirementsYaml.js";
-import type { ITableDisplayInfoYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
+import type { YamlStubTitle } from "@yaml_in/index.js";
+import type { IOracleDisplayYaml } from "@yaml_in/oracles/IOracleDisplayYaml.js";
 import type { IOracleUsageYaml } from "@yaml_in/oracles/IOracleUsageYaml.js";
 import type { IRowRollYaml, IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 import type { ITemplateOracleYaml } from "@yaml_in/templates/ITemplateOracleYaml.js";
@@ -21,11 +22,4 @@ export interface IOracleYaml extends ITemplateYamlBase, YamlStubTitle<IOracle, "
   _templateTable?: ITemplateTable | undefined;
   _childOf?: IOracleCategory["$id"] | undefined;
   _parentOf?: string[] | undefined;
-}
-
-/**
- * @internal
- */
-export interface IOracleDisplayYaml extends YamlStub<IDisplayOracle, "Title", "Table"> {
-  Table?: ITableDisplayInfoYaml | undefined;
 }
