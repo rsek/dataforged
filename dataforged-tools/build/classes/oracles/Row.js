@@ -168,6 +168,7 @@ export class Row {
                             }
                             case "Roll template": {
                                 this["Roll template"] = item["Roll template"];
+                                this["Roll template"].$id = `${this.$id}/Roll_template`;
                                 break;
                             }
                             default:

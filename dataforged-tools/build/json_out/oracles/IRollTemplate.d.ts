@@ -1,8 +1,13 @@
+import type { IHasDescription, IHasId, IHasSummary } from "../meta/IHas.js";
 /**
  * Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.
  * @public
  */
-export interface IRollTemplate {
+export interface IRollTemplate extends IHasId, Partial<IHasSummary & IHasDescription> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$
+     */
+    $id: string;
     /**
      * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.
      * @localize

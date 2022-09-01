@@ -15349,6 +15349,12 @@
       "title": "IRollTemplate_1",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "type": "string",
+          "title": "$id"
+        },
         "Result": {
           "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
           "type": "string",
@@ -15366,7 +15372,8 @@
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["$id"]
     },
     "IOracleYaml": {
       "title": "IOracleYaml",

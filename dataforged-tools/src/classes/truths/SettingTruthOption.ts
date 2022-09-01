@@ -31,6 +31,9 @@ export class SettingTruthOption extends Row implements ISettingTruthOption {
     this.Result = json.Result;
     this["Description"] = json["Description"];
     this["Quest Starter"] = json["Quest Starter"];
+    if (json["Roll template"]){
+      this["Roll template"] = { ...json["Roll template"], $id: `${this.$id}/Roll_template` };
+    }
     // if (this.Subtable) {
     //   // what is happening here?
     //   this.Subtable = this.Subtable.map(row => new Row((`${this.$id ?? "--"}/Subtable`.replaceAll(" ", "_")), row) as ISettingTruthOptionSubtableRow);

@@ -1,12 +1,7 @@
 /* eslint-disable no-restricted-imports */
-import type { IHasId, IOracleBase } from "@json_out/index.js";
-import { Gamespace } from "@json_out/index.js";
-import { writeYaml } from "@utils/io/writeYaml.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
-import { EnumLike } from "@utils/types/EnumLike.js";
+import type { IHasId } from "@json_out/index.js";
 import yaml from "js-yaml";
 import { JSONPath } from "jsonpath-plus";
-import JsonPointer from "jsonpointer";
 import _ from "lodash-es";
 import fs from "fs";
 
@@ -103,5 +98,5 @@ const parentPattern = new RegExp(/^(.*?)#.*$/, "");
       }
     }
   });
-  fs.writeFileSync(item.filename+".yaml", yamlData);
+  fs.writeFileSync("../i18n/"+item.filename+".yaml", yamlData);
 });
