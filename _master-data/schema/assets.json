@@ -603,6 +603,11 @@
       "title": "Partial<IMoveReroll>",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "type": "string",
+          "title": "$id"
+        },
         "Text": {
           "description": "The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.",
           "type": "string",
@@ -612,12 +617,6 @@
           "$ref": "#/definitions/RerollType",
           "description": "The dice to be rerolled.",
           "title": "Dice"
-        },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
-          "type": "string",
-          "title": "$id"
         }
       },
       "defaultProperties": [],
@@ -1158,6 +1157,11 @@
       "title": "IMoveReroll",
       "type": "object",
       "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "type": "string",
+          "title": "$id"
+        },
         "Text": {
           "description": "The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.",
           "type": "string",
@@ -1167,17 +1171,11 @@
           "$ref": "#/definitions/RerollType_1",
           "description": "The dice to be rerolled.",
           "title": "Dice"
-        },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
-          "type": "string",
-          "title": "$id"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Dice", "Text"]
+      "required": ["$id", "Dice", "Text"]
     },
     "RerollType_1": {
       "description": "Enumerates which dice are to be rerolled.",

@@ -13,7 +13,6 @@
       "Standard": "Character Creation",
       "Short": "Character Creation"
     },
-    "Aliases": ["Creation"],
     "Display": {},
     "Oracles": [
       {
@@ -1215,7 +1214,7 @@
       "Short": "Character"
     },
     "Aliases": ["NPC"],
-    "Description": "Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as First Look and Initial Disposition. Then envision or generate additional details over time.",
+    "Description": "Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](Starforged/Oracles/Characters/First_Look) and [Initial Disposition](Starforged/Oracles/Characters/Initial_Disposition). Then envision or generate additional details over time.",
     "Display": {},
     "Oracles": [
       {
@@ -1253,7 +1252,7 @@
           ]
         },
         "Usage": { "Initial": true, "Max rolls": 2, "Allow duplicates": false },
-        "Content": { "Part of speech": ["adjective"] },
+        "Content": { "Part of speech": ["adjective"], "Tags": ["first look"] },
         "Table": [
           {
             "Floor": 1,
@@ -7870,7 +7869,7 @@
           "Short": "Basic Form"
         },
         "Category": "Starforged/Oracles/Creatures",
-        "Description": "Roll for a basic form, and flesh out the creature’s appearance using the First Look table.",
+        "Description": "Roll for a basic form, and flesh out the creature’s appearance using the [First Look](Starforged/Oracles/Creatures/First_Look) table.",
         "Display": {
           "$id": "Starforged/Oracles/Creatures/Basic_Form/Display",
           "Columns": [
@@ -8768,7 +8767,10 @@
           ]
         },
         "Usage": { "Initial": true, "Max rolls": 2, "Allow duplicates": false },
-        "Content": { "Part of speech": ["fragment"], "Tags": ["description"] },
+        "Content": {
+          "Part of speech": ["fragment"],
+          "Tags": ["description", "first look"]
+        },
         "Table": [
           {
             "Floor": 1,
@@ -9087,7 +9089,6 @@
           "Standard": "Encountered Behaviour",
           "Short": "Encountered Behaviour"
         },
-        "Aliases": ["Encountered Behaviour"],
         "Category": "Starforged/Oracles/Creatures",
         "Description": "Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.",
         "Display": {
@@ -10051,7 +10052,6 @@
           "Standard": "Outer First Look",
           "Short": "Outer First Look"
         },
-        "Aliases": ["First Look"],
         "Category": "Starforged/Oracles/Derelicts",
         "Display": {
           "$id": "Starforged/Oracles/Derelicts/Outer_First_Look/Display",
@@ -10072,7 +10072,7 @@
           ]
         },
         "Usage": { "Initial": true, "Allow duplicates": false },
-        "Content": { "Part of speech": ["fragment"] },
+        "Content": { "Part of speech": ["fragment"], "Tags": ["first look"] },
         "Table": [
           {
             "Floor": 1,
@@ -10151,7 +10151,6 @@
           "Standard": "Inner First Look",
           "Short": "Inner First Look"
         },
-        "Aliases": ["First Look"],
         "Category": "Starforged/Oracles/Derelicts",
         "Display": {
           "$id": "Starforged/Oracles/Derelicts/Inner_First_Look/Display",
@@ -10172,7 +10171,7 @@
           ]
         },
         "Usage": { "Max rolls": 2, "Allow duplicates": false },
-        "Content": { "Part of speech": ["fragment"] },
+        "Content": { "Part of speech": ["fragment"], "Tags": ["first look"] },
         "Table": [
           {
             "Floor": 1,
@@ -20327,7 +20326,6 @@
           "Standard": "Story Complication",
           "Short": "Story Complication"
         },
-        "Aliases": ["Complication"],
         "Category": "Starforged/Oracles/Misc",
         "Description": "This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the [Pay the Price](Starforged/Moves/Fate/Pay_the_Price) table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.",
         "Display": {
@@ -20585,7 +20583,6 @@
           "Standard": "Story Clue",
           "Short": "Story Clue"
         },
-        "Aliases": ["Clue"],
         "Category": "Starforged/Oracles/Misc",
         "Description": "When you [Gather Information](Starforged/Moves/Adventure/Gather_Information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](Starforged/Moves/Adventure/Gather_Information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.",
         "Display": {
@@ -20815,7 +20812,6 @@
           "Standard": "Anomaly Effect",
           "Short": "Anomaly Effect"
         },
-        "Aliases": ["Anomaly"],
         "Category": "Starforged/Oracles/Misc",
         "Description": "Meddling with alien artifacts or forbidden magic may put you at the mercy of chaos. Use this table to resolve the effects of ancient tech, rituals, or other strange forces. Results on this table may have devastating implications, so use it only in rare and dramatic moments.",
         "Display": {
@@ -22200,7 +22196,6 @@
           "Standard": "Ask the Oracle",
           "Short": "Ask the Oracle"
         },
-        "Aliases": ["Ask"],
         "Category": "Starforged/Oracles/Moves",
         "Display": {
           "$id": "Starforged/Oracles/Moves/Ask_the_Oracle/Display",
@@ -22346,7 +22341,7 @@
               "Standard": "50/50",
               "Short": "50/50"
             },
-            "Aliases": ["50", "5050", "Fifty-fifty", "50/50", "50-50"],
+            "Aliases": ["50"],
             "Member of": "Starforged/Oracles/Moves/Ask_the_Oracle",
             "Category": "Starforged/Oracles/Moves",
             "Display": {
@@ -22678,7 +22673,6 @@
       "Standard": "Planets",
       "Short": "Planet"
     },
-    "Aliases": ["World", "Worlds"],
     "Display": {},
     "Oracles": [
       {
@@ -24190,7 +24184,6 @@
           "Standard": "Desert World",
           "Short": "Desert World"
         },
-        "Aliases": ["Desert Planet"],
         "Description": "A pitiless planet of searing heat, blowing sand, and sunbaked rock.",
         "Display": {
           "Images": [
@@ -25155,7 +25148,6 @@
           "Standard": "Furnace World",
           "Short": "Furnace World"
         },
-        "Aliases": ["Furnace Planet"],
         "Description": "A planet with relentless volcanic activity, wreathed in fire and ash.",
         "Display": {
           "Images": [
@@ -26114,7 +26106,6 @@
           "Standard": "Grave World",
           "Short": "Grave World"
         },
-        "Aliases": ["Grave Planet"],
         "Description": "A once-thriving world—now a grim monument to a fallen civilization.",
         "Display": {
           "Images": [
@@ -27005,7 +26996,6 @@
           "Standard": "Ice World",
           "Short": "Ice World"
         },
-        "Aliases": ["Ice Planet"],
         "Description": "A rugged, frozen world—locked in an unending winter.",
         "Display": {
           "Images": [
@@ -27962,7 +27952,6 @@
           "Standard": "Jovian World",
           "Short": "Jovian World"
         },
-        "Aliases": ["Jovian Planet"],
         "Description": "A massive planet with vast layers of dense gases surrounding a rocky core.",
         "Display": {
           "Images": [
@@ -28915,7 +28904,6 @@
           "Standard": "Jungle World",
           "Short": "Jungle World"
         },
-        "Aliases": ["Jungle Planet"],
         "Description": "A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.",
         "Display": {
           "Images": [
@@ -29912,7 +29900,6 @@
           "Standard": "Ocean World",
           "Short": "Ocean World"
         },
-        "Aliases": ["Ocean Planet"],
         "Description": "A planet completely or almost entirely covered by a boundless ocean.",
         "Display": {
           "Images": [
@@ -30927,7 +30914,6 @@
           "Standard": "Rocky World",
           "Short": "Rocky World"
         },
-        "Aliases": ["Rocky Planet"],
         "Description": "A rugged planet scarred by eons of destructive asteroid impacts.",
         "Display": {
           "Images": [
@@ -31880,7 +31866,6 @@
           "Standard": "Shattered World",
           "Short": "Shattered World"
         },
-        "Aliases": ["Shattered Planet"],
         "Description": "A planet sundered by cataclysmic destruction.",
         "Display": {
           "Images": [
@@ -32798,7 +32783,6 @@
           "Standard": "Tainted World",
           "Short": "Tainted World"
         },
-        "Aliases": ["Tainted Planet"],
         "Description": "A foul planet wracked by a poisonous climate and virulent growths.",
         "Display": {
           "Images": [
@@ -33689,7 +33673,6 @@
           "Standard": "Vital World",
           "Short": "Vital World"
         },
-        "Aliases": ["Vital Planet"],
         "Description": "This diverse, life-bearing planet might provide some small measure of hope.",
         "Display": {
           "Images": [
@@ -39058,7 +39041,6 @@
       "Standard": "Starships",
       "Short": "Starship"
     },
-    "Aliases": ["Ship"],
     "Display": {},
     "Oracles": [
       {
@@ -41771,7 +41753,6 @@
           "Standard": "Outer First Look",
           "Short": "Outer First Look"
         },
-        "Aliases": ["First Look"],
         "Category": "Starforged/Oracles/Vaults",
         "Display": {
           "$id": "Starforged/Oracles/Vaults/Outer_First_Look/Display",
@@ -41792,7 +41773,7 @@
           ]
         },
         "Usage": { "Initial": true, "Max rolls": 2, "Allow duplicates": false },
-        "Content": { "Part of speech": ["fragment"] },
+        "Content": { "Part of speech": ["fragment"], "Tags": ["first look"] },
         "Table": [
           {
             "Floor": 1,
@@ -41997,7 +41978,7 @@
           "Standard": "Interior",
           "Short": "Interior"
         },
-        "Description": "If you enter the site, check the Inner First Look table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.",
+        "Description": "If you enter the site, check the [Inner First Look](Starforged/Oracles/Vaults/Interior/First_Look) table for initial impressions of what lies within. If you explore further, use the Interior Feature table to define what you find or encounter. If you Undertake an Expedition within a vault, check this table if you want help setting the scene for a waypoint.",
         "Display": { "Icon": "img/vector/Vaults/Interior.svg" },
         "Category": "Starforged/Oracles/Vaults",
         "Oracles": [
@@ -42041,7 +42022,10 @@
               "Max rolls": 2,
               "Allow duplicates": false
             },
-            "Content": { "Part of speech": ["fragment"] },
+            "Content": {
+              "Part of speech": ["fragment"],
+              "Tags": ["first look"]
+            },
             "Table": [
               {
                 "Floor": 1,

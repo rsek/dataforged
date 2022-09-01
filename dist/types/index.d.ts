@@ -1497,7 +1497,11 @@ export declare interface IMoveOutcomes extends IHasId {
  * Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.
  * @public
  */
-export declare interface IMoveReroll extends Partial<IHasText> {
+export declare interface IMoveReroll extends IHasId, Partial<IHasText> {
+    /**
+     *
+     */
+    $id: string;
     /**
      * The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.
      * @markdown
