@@ -15,6 +15,7 @@
 * the URIs `Image` and `Icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;)
     * old: `../../img/vector/Oracles/Creature/Environment/Space.svg`
     * new: `img/vector/Oracles/Creature/Environment/Space.svg`
+* complete overhaul of oracle table display data -- see `IOracle.Display.Columns`
 
 ### Other changes
 * `Source` now includes a `License` property, containing a URL pointing to the relevant license.

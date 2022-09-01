@@ -153,23 +153,25 @@ Oracles:
       Short: Rank
     _idFragment: Challenge Rank
     Display:
-      Table:
-        Roll columns:
-          - Label: Roll
-            Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
-        Result columns:
-          - Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
-            Label: Rank
-            Key: Result
-          - Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
-            Label: Quest
-            Key: Summary
-          - Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey
-            Label: Journey
-            Key: Summary
-          - Use content from: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes
-            Label: Foes
-            Key: Summary
+      Columns:
+        - Type: dice range
+          Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
+        - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
+          Label: Rank
+          Type: string
+          Key: Result
+        - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
+          Label: Quest
+          Type: string
+          Key: Summary
+        - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey
+          Label: Journey
+          Type: string
+          Key: Summary
+        - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes
+          Label: Foes
+          Type: string
+          Key: Summary
     Aliases: ["19", "Oracle 19"]
     Description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
     Source:

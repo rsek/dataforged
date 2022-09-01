@@ -22,7 +22,7 @@ export interface ITableColumnBase extends IHasLabel{
   /**
    * The ID of the {@link IOracle} whose {@link IOracle.Table} content will be displayed in the table.
    */
-  "Use content from": IOracle["$id"];
+  "Content": IOracle["$id"];
   Type: TableColumnType
   /**
    * The key of each {@link IRow} in the {@link IOracle.Table}, whose string value is displayed in the rendered table.

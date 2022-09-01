@@ -19,12 +19,15 @@ Starships:
       Content:
         Part of speech: [common noun, fragment]
       Display:
-        Table:
-          Result columns:
-            - Label: Class
-              Key: Result
-            - Label: Typical Role
-              Key: Summary
+        Columns:
+          - Label: Roll
+            Type: dice range
+          - Label: Class
+            Type: string
+            Key: Result
+          - Label: Typical Role
+            Type: string
+            Key: Summary
       Table:
         - [1, 2, Carrier, Launches fighters]
         - [3, 6, Corvette, Light attack ship]
@@ -130,13 +133,20 @@ Starships:
       Source:
         Page: 328
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Starships/Mission/Terminus
-            - Use content from: Starforged/Oracles/Starships/Mission/Outlands
-            - Use content from: Starforged/Oracles/Starships/Mission/Expanse
-          Result columns:
-            - Use content from: Starforged/Oracles/Starships/Mission/Terminus
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Starships/Mission/Terminus
+            Label: Terminus
+          - Type: dice range
+            Content: Starforged/Oracles/Starships/Mission/Outlands
+            Label: Outlands
+          - Type: dice range
+            Content: Starforged/Oracles/Starships/Mission/Expanse
+            Label: Expanse
+          - Type: string
+            Content: Starforged/Oracles/Starships/Mission/Terminus
+            Label: Mission
+
       Content:
         Part of speech: [fragment]
         Tags: [objective]
@@ -151,10 +161,11 @@ Starships:
             Canonical: Terminus
           Display: &display:Mission
             Column of: Starforged/Oracles/Starships/Mission
-            Table:
-              Result columns:
-                - Label: Mission
-                  Key: Result
+            Columns:
+              - Type: dice range
+              - Label: Mission
+                Key: Result
+                Type: string
           Usage:
             Requires:
               Attributes:

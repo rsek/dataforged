@@ -15199,6 +15199,24 @@
           "items": { "type": "string" },
           "title": "Oracle rolls"
         },
+        "Themes": {
+          "description": "Suggested delve site themes.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Themes"
+        },
+        "Domains": {
+          "description": "Suggested delve site domains.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Domains"
+        },
+        "Regions": {
+          "description": "Suggested Ironlands regions.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Regions"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
@@ -15544,10 +15562,10 @@
           "$ref": "#/definitions/TableColumnType.Range",
           "title": "Type"
         },
-        "Use content from": {
+        "Content": {
           "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
           "type": "string",
-          "title": "Use content from"
+          "title": "Content"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
@@ -15586,10 +15604,10 @@
           "default": "Result",
           "title": "Key"
         },
-        "Use content from": {
+        "Content": {
           "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
           "type": "string",
-          "title": "Use content from"
+          "title": "Content"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
@@ -15604,7 +15622,22 @@
     },
     "KeysWithValuesOfType": {
       "title": "KeysWithValuesOfType",
-      "enum": ["$id", "Result"],
+      "enum": [
+        "$id",
+        "Attributes",
+        "Ceiling",
+        "Content",
+        "Display",
+        "Floor",
+        "Game objects",
+        "Multiple rolls",
+        "Oracle rolls",
+        "Result",
+        "Roll template",
+        "Subtable",
+        "Suggestions",
+        "Summary"
+      ],
       "type": "string"
     },
     "IRow": {
@@ -15894,6 +15927,24 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
+        },
+        "Themes": {
+          "description": "Suggested delve site themes.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Themes"
+        },
+        "Domains": {
+          "description": "Suggested delve site domains.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Domains"
+        },
+        "Regions": {
+          "description": "Suggested Ironlands regions.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Regions"
         }
       },
       "defaultProperties": [],

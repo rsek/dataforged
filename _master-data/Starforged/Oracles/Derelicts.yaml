@@ -40,13 +40,18 @@ Derelicts:
         Initial: true
         Requires: *attr:Location.Any
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Derelicts/Type/Planetside
-            - Use content from: Starforged/Oracles/Derelicts/Type/Orbital
-            - Use content from: Starforged/Oracles/Derelicts/Type/Deep_Space
-          Result columns:
-            - Use content from: Starforged/Oracles/Derelicts/Type/Planetside
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Type/Planetside
+            Label: Planetside
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Type/Orbital
+            Label: Orbital
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Type/Deep_Space
+            Label: Deep Space
+          - Type: string
+            Content: Starforged/Oracles/Derelicts/Type/Planetside
       Oracles:
         - Display: &derelictTypeDisplay
             Column of: Starforged/Oracles/Derelicts/Type
@@ -162,12 +167,15 @@ Derelicts:
         Short: Zones
       _idFragment: Zones
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Derelicts/Zones/Starship
-            - Use content from: Starforged/Oracles/Derelicts/Zones/Settlement
-          Result columns:
-            - Use content from: Starforged/Oracles/Derelicts/Zones/Starship
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Zones/Starship
+            Label: Starship
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Zones/Settlement
+            Label: Settlement
+          - Type: string
+            Content: Starforged/Oracles/Derelicts/Zones/Starship
       Usage:
         Repeatable: true
         Requires:

@@ -12,7 +12,7 @@ Oracles:
       Standard: Settlement Name
       Short: Name
     _idFragment: Name
-    Aliases: ["7", "Oracle 7", "Settlement Name"]
+    Aliases: ["7", "Oracle 7"]
     Source:
       Page: 178
     Oracles:
@@ -146,6 +146,16 @@ Oracles:
     _idFragment: Quick Name
     Aliases: ["8", "Oracle 8"]
     Description: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
+    Display:
+      Columns:
+        - Type: dice range
+          Content: Ironsworn/Oracles/Settlement/Quick_Name/Prefix
+        - Type: string
+          Content: Ironsworn/Oracles/Settlement/Quick_Name/Prefix
+          Label: Prefix
+        - Type: string
+          Content: Ironsworn/Oracles/Settlement/Quick_Name/Suffix
+          Label: Suffix
     Usage:
       Roll template:
         Result: "${{Ironsworn/Oracles/Settlement/Quick_Name/Prefix}}${{Ironsworn/Oracles/Settlement/Quick_Name/Suffix}}"
@@ -154,6 +164,8 @@ Oracles:
     Oracles:
       - Title:
           Canonical: Prefix
+        Display:
+          Column of: Ironsworn/Oracles/Settlement/Quick_Name
         Table:
           # - [1, 4, Bleak-]
           # - [5, 8, Green-]
@@ -207,6 +219,8 @@ Oracles:
           - [97, 100, Long]
       - Title:
           Canonical: Suffix
+        Display:
+          Column of: Ironsworn/Oracles/Settlement/Quick_Name
         Table:
           # - [1, 4, -moor]
           # - [5, 8, -ford]

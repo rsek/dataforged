@@ -5,12 +5,12 @@ import type { YamlStub } from "@yaml_in/index.js";
 /**
  * @internal
  */
-export interface ITableColumnTextYaml extends YamlStub<ITableColumnText, "Label" | "Key"|"Use content from"> { }
+export interface ITableColumnTextYaml extends YamlStub<ITableColumnText, "Label" | "Key"|"Content"> { }
 
 /**
  * @internal
  */
-export interface ITableColumnRollYaml extends YamlStub<ITableColumnRoll, "Label"|"Use content from"> { }
+export interface ITableColumnRollYaml extends YamlStub<ITableColumnRoll, "Label"|"Content"> { }
 
 /**
  * @internal

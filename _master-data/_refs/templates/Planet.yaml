@@ -42,13 +42,18 @@ Planet: &template:Planet
           Initial: true
           Requires: *attr:Region.Any
         Display:
-          Table:
-            Roll columns:
-              - Use content from: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
-              - Use content from: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Outlands
-              - Use content from: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Expanse
-            Result columns:
-              - Use content from: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+          Columns:
+            - Type: dice range
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+              Label: Terminus
+            - Type: dice range
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Outlands
+              Label: Outlands
+            - Type: dice range
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Expanse
+              Label: Expanse
+            - Type: string
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
       Oracles:
         - _templateInfo: &template.info:Planet.Settlements.Terminus
             Name: Terminus

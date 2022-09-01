@@ -1,4 +1,4 @@
-import type { IAsset, IEncounterStarforged , IGameObject, IMove , IOracle } from "@json_out/index.js";
+import type { IAsset, IDelveDomain, IDelveTheme, IEncounterIronsworn, IEncounterStarforged , IGameObject, IIronswornRegion, IMove , IOracle } from "@json_out/index.js";
 
 /**
  * Describes "non-canonical" suggestions for game content related to the parent item.
@@ -28,5 +28,17 @@ export interface ISuggestions  {
   /**
    * Suggested encounter IDs.
    */
-  "Encounters"?: IEncounterStarforged["$id"][] | undefined;
+  "Encounters"?: IEncounterStarforged["$id"][] | IEncounterIronsworn["$id"][] | undefined;
+  /**
+   * Suggested delve site themes.
+   */
+  "Themes"?: IDelveTheme["$id"][] | undefined
+  /**
+   * Suggested delve site domains.
+   */
+  "Domains"?: IDelveDomain["$id"][] | undefined
+  /**
+   * Suggested Ironlands regions.
+   */
+  "Regions"?: IIronswornRegion["$id"][] | undefined
 }

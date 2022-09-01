@@ -7,7 +7,7 @@ import type { IOracleDisplayYaml } from "../../yaml_in/oracles/IOracleDisplayYam
 export declare class OracleDisplay extends Display implements IOracleDisplay {
     $id: string;
     "Column of"?: IOracle["$id"] | undefined;
-    Columns: (TableColumnText | TableColumnRoll)[];
+    Columns: [TableColumnRoll, ...(TableColumnRoll | TableColumnText)[]];
     constructor(json: IOracleDisplayYaml, parent: IOracle);
 }
 //# sourceMappingURL=OracleDisplay.d.ts.map

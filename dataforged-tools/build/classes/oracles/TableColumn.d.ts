@@ -7,7 +7,7 @@ export declare class TableColumnText implements ITableColumnText {
     readonly Type = TableColumnType.String;
     $id: string;
     Label: ITableColumnText["Label"];
-    ["Use content from"]: ITableColumnText["Use content from"];
+    ["Content"]: ITableColumnText["Content"];
     Key: ITableColumnText["Key"];
     constructor(parentID: string, content: IOracle["$id"], index: number, label?: string, key?: ITableColumnText["Key"]);
 }
@@ -18,7 +18,7 @@ export declare class TableColumnRoll implements ITableColumnRoll {
     readonly Type = TableColumnType.Range;
     $id: string;
     Label: string;
-    ["Use content from"]: ITableColumnRoll["Use content from"];
+    ["Content"]: ITableColumnRoll["Content"];
     constructor(parentID: string, content: IOracle["$id"], index: number, label?: string);
 }
 //# sourceMappingURL=TableColumn.d.ts.map

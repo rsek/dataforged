@@ -7,7 +7,7 @@ export class TableColumnText {
         this.Type = TableColumnType.String;
         this.$id = `${parentID}/Columns/${index + 1}`;
         this.Label = label;
-        this["Use content from"] = content;
+        this["Content"] = content;
         this.Key = key;
     }
 }
@@ -19,7 +19,7 @@ export class TableColumnRoll {
         this.Type = TableColumnType.Range;
         this.$id = `${parentID}/Columns/${index + 1}`;
         this.Label = label;
-        this["Use content from"] = content;
+        this["Content"] = content;
     }
 }
 //# sourceMappingURL=TableColumn.js.map

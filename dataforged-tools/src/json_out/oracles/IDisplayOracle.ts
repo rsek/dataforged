@@ -18,7 +18,7 @@ export interface IOracleDisplay extends IDisplay, IHasId {
    *
    * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
    */
-  "Columns": (ITableColumnRoll| ITableColumnText)[];
+  "Columns": [ITableColumnRoll, ...(ITableColumnRoll | ITableColumnText)[]];
   /**
    * This table is displayed as embedded in a row of another table.
    */

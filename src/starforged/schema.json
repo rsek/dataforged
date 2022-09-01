@@ -809,6 +809,24 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
+        },
+        "Themes": {
+          "description": "Suggested delve site themes.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Themes"
+        },
+        "Domains": {
+          "description": "Suggested delve site domains.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Domains"
+        },
+        "Regions": {
+          "description": "Suggested Ironlands regions.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Regions"
         }
       },
       "defaultProperties": [],
@@ -2963,7 +2981,9 @@
         "Columns": {
           "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
           "type": "array",
-          "items": {
+          "items": [{ "$ref": "#/definitions/ITableColumnRoll" }],
+          "minItems": 1,
+          "additionalItems": {
             "anyOf": [
               { "$ref": "#/definitions/ITableColumnRoll" },
               { "$ref": "#/definitions/ITableColumnText" }
@@ -3026,15 +3046,15 @@
           "type": "string",
           "title": "$id"
         },
-        "Use content from": {
+        "Content": {
           "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
           "type": "string",
-          "title": "Use content from"
+          "title": "Content"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Label", "Type", "Use content from"]
+      "required": ["$id", "Content", "Label", "Type"]
     },
     "TableColumnType.Range": {
       "title": "TableColumnType.Range",
@@ -3062,10 +3082,10 @@
           "default": "Result",
           "title": "Key"
         },
-        "Use content from": {
+        "Content": {
           "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
           "type": "string",
-          "title": "Use content from"
+          "title": "Content"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
@@ -3076,7 +3096,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Key", "Label", "Type", "Use content from"]
+      "required": ["$id", "Content", "Key", "Label", "Type"]
     },
     "TableColumnType.String": {
       "title": "TableColumnType.String",
@@ -3085,7 +3105,22 @@
     },
     "KeysWithValuesOfType": {
       "title": "KeysWithValuesOfType",
-      "enum": ["$id", "Result"],
+      "enum": [
+        "$id",
+        "Attributes",
+        "Ceiling",
+        "Content",
+        "Display",
+        "Floor",
+        "Game objects",
+        "Multiple rolls",
+        "Oracle rolls",
+        "Result",
+        "Roll template",
+        "Subtable",
+        "Suggestions",
+        "Summary"
+      ],
       "type": "string"
     },
     "IRowNullStub": {

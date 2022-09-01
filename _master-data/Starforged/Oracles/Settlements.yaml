@@ -30,14 +30,20 @@ Settlements:
           Attributes:
              Region: null
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Settlements/Population/Terminus
-            - Use content from: Starforged/Oracles/Settlements/Population/Outlands
-            - Use content from: Starforged/Oracles/Settlements/Population/Expanse
-          Result columns:
-            - Use content from: Starforged/Oracles/Settlements/Population/Terminus
-              Label: Number
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Settlements/Population/Terminus
+            Label: Terminus
+          - Type: dice range
+            Content: Starforged/Oracles/Settlements/Population/Outlands
+            Label: Outlands
+          - Type: dice range
+            Content: Starforged/Oracles/Settlements/Population/Expanse
+            Label: Expanse
+          - Type: string
+            Content: Starforged/Oracles/Settlements/Population/Terminus
+            Label: Number
+            Key: Result
       Oracles:
         - Title:
             Canonical: Terminus

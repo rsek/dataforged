@@ -16,13 +16,18 @@ Space:
       Source:
         Page: 300
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Space/Sighting/Terminus
-            - Use content from: Starforged/Oracles/Space/Sighting/Outlands
-            - Use content from: Starforged/Oracles/Space/Sighting/Expanse
-          Result columns:
-            - Use content from: Starforged/Oracles/Space/Sighting/Terminus
+        Columns:
+          - Content: Starforged/Oracles/Space/Sighting/Terminus
+            Type: dice range
+            Label: Terminus
+          - Content: Starforged/Oracles/Space/Sighting/Outlands
+            Label: Outlands
+            Type: dice range
+          - Content: Starforged/Oracles/Space/Sighting/Expanse
+            Label: Expanse
+            Type: dice range
+          - Content: Starforged/Oracles/Space/Sighting/Terminus
+            Type: string
       Content:
         Part of speech: [fragment]
       Description: |-
@@ -133,12 +138,17 @@ Space:
       Source:
         Page: 302
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Space/Sector_Name/Prefix
-          Result columns:
-            - Use content from: Starforged/Oracles/Space/Sector_Name/Prefix
-            - Use content from: Starforged/Oracles/Space/Sector_Name/Suffix
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Space/Sector_Name/Prefix
+          - Type: string
+            Key: Result
+            Content: Starforged/Oracles/Space/Sector_Name/Prefix
+            Label: Prefix
+          - Type: string
+            Key: Result
+            Content: Starforged/Oracles/Space/Sector_Name/Suffix
+            Label: Suffix
       Usage:
         Roll template:
           Result: "${{Starforged/Oracles/Space/Sector_Name/Prefix}} ${{Starforged/Oracles/Space/Sector_Name/Suffix}}"

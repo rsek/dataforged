@@ -68,15 +68,25 @@ Creatures:
       Content:
         Part of speech: [fragment]
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Creatures/Basic_Form/Space
-            - Use content from: Starforged/Oracles/Creatures/Basic_Form/Interior
-            - Use content from: Starforged/Oracles/Creatures/Basic_Form/Land
-            - Use content from: Starforged/Oracles/Creatures/Basic_Form/Liquid
-            - Use content from: Starforged/Oracles/Creatures/Basic_Form/Air
-          Result columns:
-            - Use content from: Starforged/Oracles/Creatures/Basic_Form/Space
+        Columns:
+            - Type: dice range
+              Content: Starforged/Oracles/Creatures/Basic_Form/Space
+              Label: Space
+            - Type: dice range
+              Content: Starforged/Oracles/Creatures/Basic_Form/Interior
+              Label: Interior
+            - Type: dice range
+              Content: Starforged/Oracles/Creatures/Basic_Form/Land
+              Label: Land
+            - Type: dice range
+              Content: Starforged/Oracles/Creatures/Basic_Form/Liquid
+              Label: Liquid
+            - Type: dice range
+              Content: Starforged/Oracles/Creatures/Basic_Form/Air
+              Label: Air
+            - Type: string
+              Content: Starforged/Oracles/Creatures/Basic_Form/Space
+              Key: Result
       Description: |-
         Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
       Oracles:

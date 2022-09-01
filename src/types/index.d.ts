@@ -1816,7 +1816,7 @@ export declare interface IOracleDisplay extends IDisplay, IHasId {
      *
      * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
      */
-    "Columns": (ITableColumnRoll | ITableColumnText)[];
+    "Columns": [ITableColumnRoll, ...(ITableColumnRoll | ITableColumnText)[]];
     /**
      * This table is displayed as embedded in a row of another table.
      */
@@ -2168,7 +2168,19 @@ export declare interface ISuggestions {
     /**
      * Suggested encounter IDs.
      */
-    "Encounters"?: IEncounterStarforged["$id"][] | undefined;
+    "Encounters"?: IEncounterStarforged["$id"][] | IEncounterIronsworn["$id"][] | undefined;
+    /**
+     * Suggested delve site themes.
+     */
+    "Themes"?: IDelveTheme["$id"][] | undefined;
+    /**
+     * Suggested delve site domains.
+     */
+    "Domains"?: IDelveDomain["$id"][] | undefined;
+    /**
+     * Suggested Ironlands regions.
+     */
+    "Regions"?: IIronswornRegion["$id"][] | undefined;
 }
 
 /**
@@ -2184,7 +2196,7 @@ export declare interface ITableColumnBase extends IHasLabel {
     /**
      * The ID of the {@link IOracle} whose {@link IOracle.Table} content will be displayed in the table.
      */
-    "Use content from": IOracle["$id"];
+    "Content": IOracle["$id"];
     Type: TableColumnType;
     /**
      * The key of each {@link IRow} in the {@link IOracle.Table}, whose string value is displayed in the rendered table.
@@ -2269,7 +2281,7 @@ export declare type KeysMatching<T, V> = {
  * @public
  */
 export declare type KeysWithValuesOfType<T, V> = keyof {
-    [P in keyof Required<T> as Required<T>[P] extends V ? P : never]: P;
+    [P in keyof T]: T[P] extends V | undefined ? V : never;
 };
 
 /**

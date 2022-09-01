@@ -303,13 +303,18 @@ Oracles:
       Short: Other
     _idFragment: Other
     Display:
-      Table:
-        Roll columns:
-          - Use content from: Ironsworn/Oracles/Name/Other/Giants
-        Result columns:
-          - Use content from: Ironsworn/Oracles/Name/Other/Giants
-          - Use content from: Ironsworn/Oracles/Name/Other/Varou
-          - Use content from: Ironsworn/Oracles/Name/Other/Trolls
+      Columns:
+        - Type: dice range
+          Content: Ironsworn/Oracles/Name/Other/Giants
+        - Type: string
+          Content: Ironsworn/Oracles/Name/Other/Giants
+          Label: Giants
+        - Type: string
+          Content: Ironsworn/Oracles/Name/Other/Varou
+          Label: Varou
+        - Type: string
+          Content: Ironsworn/Oracles/Name/Other/Trolls
+          Label: Trolls
     Source:
       Title: Ironsworn Rulebook
       Page: 187

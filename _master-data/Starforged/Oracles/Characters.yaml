@@ -313,13 +313,18 @@ Characters:
       Description: |-
         Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
       Display:
-        Table:
-          Roll columns:
-            - Use content from: Starforged/Oracles/Characters/Name/Given_Name
-          Result columns:
-            - Use content from: Starforged/Oracles/Characters/Name/Given_Name
-            - Use content from: Starforged/Oracles/Characters/Name/Family_Name
-            - Use content from: Starforged/Oracles/Characters/Name/Callsign
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Characters/Name/Given_Name
+          - Type: string
+            Content: Starforged/Oracles/Characters/Name/Given_Name
+            Label: Given Name
+          - Type: string
+            Content: Starforged/Oracles/Characters/Name/Family_Name
+            Label: Family Name
+          - Type: string
+            Content: Starforged/Oracles/Characters/Name/Callsign
+            Label: Callsign
       Usage:
         Initial: true
       Oracles:
