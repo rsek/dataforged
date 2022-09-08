@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
+import { AttributeSetter, GameObject, MultipleRolls, OracleContent, RollTemplate, Suggestions } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
 /**
@@ -167,8 +167,7 @@ export class Row {
                                 break;
                             }
                             case "Roll template": {
-                                this["Roll template"] = item["Roll template"];
-                                this["Roll template"].$id = `${this.$id}/Roll_template`;
+                                this["Roll template"] = new RollTemplate(item["Roll template"], this);
                                 break;
                             }
                             default:

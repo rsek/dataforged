@@ -1,6 +1,4 @@
 import type { ChallengeRank, IEncounterIronsworn, IHasDescription, IHasId, IHasSource, IHasSummary, IHasTitle , IRow } from "@json_out/index.js";
-import { ISource } from "@json_out/index.js";
-import type { YamlStub } from "@yaml_in/index.js";
 
 /**
  * @public
@@ -142,6 +140,9 @@ export interface IDelveTheme extends IDelveCard {
   ]
 }
 
+/**
+ * @alpha
+ */
 export enum DelveDenizenRarities {
   "Very common"=27,
   "Common"=14,
@@ -149,12 +150,16 @@ export enum DelveDenizenRarities {
   "Rare"=2,
   "Unforeseen"=1
 }
-
+/**
+ * @alpha
+ */
 export interface IDelveMatrixRow extends IRow {
   Rarity: keyof typeof DelveDenizenRarities
   Encounter: IEncounterIronsworn["$id"]
 }
-
+/**
+ * @alpha
+ */
 export interface IDelveSite extends IHasSource, IHasDescription {
   Name: string
   Rank: ChallengeRank;
@@ -175,5 +180,3 @@ export interface IDelveSite extends IHasSource, IHasDescription {
     IDelveMatrixRow & {Floor: 100, Ceiling: 100, Rarity: "Unforeseen", Summary: string},
   ]
 }
-
-export interface IDelveSiteYaml extends YamlStub<IDelveSite, "", "Denizens"> {}

@@ -4817,21 +4817,26 @@
           "type": "string",
           "title": "Quest Starter"
         },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
         "Roll template": {
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
           "$ref": "#/definitions/IRollTemplate_1",
           "title": "Roll template"
+        },
+        "Content": {
+          "$ref": "#/definitions/IOracleContent",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "title": "Content"
         },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
           "type": "array",
           "items": { "$ref": "#/definitions/IGameObject" },
           "title": "Game objects"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
         },
         "Floor": {
           "anyOf": [
@@ -4856,11 +4861,6 @@
             { "type": "null" }
           ],
           "title": "Ceiling"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
@@ -4910,21 +4910,26 @@
           "type": ["null", "string"],
           "title": "Summary"
         },
-        "Content": {
-          "$ref": "#/definitions/IOracleContent",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "title": "Content"
-        },
         "Roll template": {
           "$ref": "#/definitions/IRollTemplate",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
           "title": "Roll template"
+        },
+        "Content": {
+          "$ref": "#/definitions/IOracleContent",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "title": "Content"
         },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
           "type": "array",
           "items": { "$ref": "#/definitions/IGameObject" },
           "title": "Game objects"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
         },
         "Floor": {
           "anyOf": [
@@ -4949,11 +4954,6 @@
             { "type": "null" }
           ],
           "title": "Ceiling"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
@@ -5177,6 +5177,42 @@
       ],
       "type": "string"
     },
+    "IRollTemplate": {
+      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+      "title": "IRollTemplate",
+      "$ref": "#/definitions/IRollTemplate_1"
+    },
+    "IRollTemplate_1": {
+      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+      "title": "IRollTemplate_1",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Result": {
+          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "Description": {
+          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Description"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id"]
+    },
     "IOracleContent": {
       "description": "Interface for metadata that describes an oracle's semantic or lexical content.",
       "title": "IOracleContent",
@@ -5218,42 +5254,6 @@
       },
       "defaultProperties": [],
       "additionalProperties": false
-    },
-    "IRollTemplate": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate",
-      "$ref": "#/definitions/IRollTemplate_1"
-    },
-    "IRollTemplate_1": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate_1",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Result": {
-          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Description"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id"]
     },
     "IRow": {
       "description": "Interface representing a single row in an oracle table.",

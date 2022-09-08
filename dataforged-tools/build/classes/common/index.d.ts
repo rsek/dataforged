@@ -10,4 +10,5 @@ export * from "./Source.js";
 export * from "./SourceInheritor.js";
 export * from "./Suggestions.js";
 export * from "./Title.js";
+export * from "./RollTemplate.js";
 //# sourceMappingURL=index.d.ts.map

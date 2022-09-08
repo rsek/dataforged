@@ -10631,16 +10631,16 @@
           "type": "string",
           "title": "$id"
         },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplate",
+          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
+          "title": "Roll template"
+        },
         "Sets": {
           "description": "Hints which attributes are set by this table.",
           "type": "array",
           "items": { "$ref": "#/definitions/IAttributeChoices" },
           "title": "Sets"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
         },
         "Initial": {
           "description": "Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.\n\nThat said, the game itself recommends **against** rolling all possible results at once (see \"Peeling the Onion\", p. 293, *Starforged*). If your goal is to implement the game 'as-written', consider how you might include some means of \"progressive disclosure\" of oracle results.\n\nMay be deprecated in the future in favour of dedicated object template information.",
@@ -15392,6 +15392,42 @@
       "enum": ["Starship"]
     },
     "T_8": { "$ref": "#/definitions/GameObjectType.Starship" },
+    "IRollTemplate": {
+      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+      "title": "IRollTemplate",
+      "$ref": "#/definitions/IRollTemplate_1"
+    },
+    "IRollTemplate_1": {
+      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+      "title": "IRollTemplate_1",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Result": {
+          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "Description": {
+          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Description"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id"]
+    },
     "IAttributeChoices": {
       "title": "IAttributeChoices",
       "type": "object",
@@ -15434,42 +15470,6 @@
         "Zone"
       ],
       "type": "string"
-    },
-    "IRollTemplate": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate",
-      "$ref": "#/definitions/IRollTemplate_1"
-    },
-    "IRollTemplate_1": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate_1",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Result": {
-          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Result"
-        },
-        "Summary": {
-          "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Summary"
-        },
-        "Description": {
-          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Description"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id"]
     },
     "IOracleYaml": {
       "title": "IOracleYaml",
@@ -15701,16 +15701,16 @@
           "$ref": "#/definitions/TableColumnType.String",
           "title": "Type"
         },
+        "Content": {
+          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
+          "type": "string",
+          "title": "Content"
+        },
         "Key": {
           "$ref": "#/definitions/KeysWithValuesOfType",
           "description": "The key of each{@linkIRow}in the{@linkIOracle.Table}, whose string value is displayed in the rendered table.",
           "default": "Result",
           "title": "Key"
-        },
-        "Content": {
-          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
-          "type": "string",
-          "title": "Content"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
