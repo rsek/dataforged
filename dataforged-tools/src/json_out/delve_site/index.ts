@@ -1,4 +1,6 @@
-import type { IHasDescription, IHasId, IHasSource, IHasSummary, IHasTitle, IRow } from "@json_out/index.js";
+import type { ChallengeRank, IEncounterIronsworn, IHasDescription, IHasId, IHasSource, IHasSummary, IHasTitle , IRow } from "@json_out/index.js";
+import { ISource } from "@json_out/index.js";
+import type { YamlStub } from "@yaml_in/index.js";
 
 /**
  * @public
@@ -139,3 +141,39 @@ export interface IDelveTheme extends IDelveCard {
     IRow & {Floor: 29, Ceiling: 30},
   ]
 }
+
+export enum DelveDenizenRarities {
+  "Very common"=27,
+  "Common"=14,
+  "Uncommon"=5,
+  "Rare"=2,
+  "Unforeseen"=1
+}
+
+export interface IDelveMatrixRow extends IRow {
+  Rarity: keyof typeof DelveDenizenRarities
+  Encounter: IEncounterIronsworn["$id"]
+}
+
+export interface IDelveSite extends IHasSource, IHasDescription {
+  Name: string
+  Rank: ChallengeRank;
+  Theme: [IDelveTheme["$id"]] | [IDelveTheme["$id"],IDelveTheme["$id"]];
+  Domain: [IDelveDomain["$id"]] | [IDelveDomain["$id"],IDelveDomain["$id"]];
+  Denizens: [
+    IDelveMatrixRow & {Floor: 1, Ceiling: 27, Rarity: "Very common", Summary: string},
+    IDelveMatrixRow & {Floor: 28, Ceiling: 41, Rarity: "Common", Summary: string},
+    IDelveMatrixRow & {Floor: 42, Ceiling: 55, Rarity: "Common", Summary: string},
+    IDelveMatrixRow & {Floor: 56, Ceiling: 69, Rarity: "Common", Summary: string},
+    IDelveMatrixRow & {Floor: 70, Ceiling: 75, Rarity: "Uncommon", Summary: string},
+    IDelveMatrixRow & {Floor: 76, Ceiling: 81, Rarity: "Uncommon", Summary: string},
+    IDelveMatrixRow & {Floor: 82, Ceiling: 87, Rarity: "Uncommon", Summary: string},
+    IDelveMatrixRow & {Floor: 88, Ceiling: 93, Rarity: "Uncommon", Summary: string},
+    IDelveMatrixRow & {Floor: 94, Ceiling: 95, Rarity: "Rare", Summary: string},
+    IDelveMatrixRow & {Floor: 96, Ceiling: 97, Rarity: "Rare", Summary: string},
+    IDelveMatrixRow & {Floor: 98, Ceiling: 99, Rarity: "Rare", Summary: string},
+    IDelveMatrixRow & {Floor: 100, Ceiling: 100, Rarity: "Unforeseen", Summary: string},
+  ]
+}
+
+export interface IDelveSiteYaml extends YamlStub<IDelveSite, "", "Denizens"> {}

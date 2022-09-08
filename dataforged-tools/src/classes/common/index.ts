@@ -10,3 +10,4 @@ export * from "@classes/common/Source.js";
 export * from "@classes/common/SourceInheritor.js";
 export * from "@classes/common/Suggestions.js";
 export * from "@classes/common/Title.js";
+export * from "@classes/common/RollTemplate.js";

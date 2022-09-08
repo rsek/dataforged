@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
-import { AttributeSetter, GameObject , MultipleRolls, OracleContent, Suggestions } from "@classes/index.js";
+import { AttributeSetter, GameObject , MultipleRolls, OracleContent, RollTemplate, Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, IRowNullStub, ISettingTruthOptionSubtableRow, Raster, Vector } from "@json_out/index.js";
-import type { PartialBy } from "@utils/index.js";
+import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, IRowNullStub, Raster, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";
-import type { ISettingTruthOptionSubtableRowYaml, ISettingTruthOptionYaml, YamlStub, YamlStubTitle } from "@yaml_in/index.js";
+import type { ISettingTruthOptionYaml, YamlStub } from "@yaml_in/index.js";
 import type { IRowYaml } from "@yaml_in/oracles/IRowYaml.js";
 import _ from "lodash-es";
 
@@ -25,7 +24,7 @@ export class Row implements IRow {
   "Multiple rolls"?: MultipleRolls | undefined;
   Suggestions?: Suggestions | undefined;
   Attributes?: AttributeSetter | undefined;
-  "Roll template"?: IRollTemplate | undefined;
+  "Roll template"?: RollTemplate | undefined;
   Display?: IDisplay | undefined;
   Content?: OracleContent;
   Subtable?: Row[] | undefined;
@@ -34,7 +33,7 @@ export class Row implements IRow {
    */
   constructor(parentId: string, json: IRowYaml | YamlStub<IRow> | ISettingTruthOptionYaml) {
     let rowData = _.clone(json);
-    if (Array.isArray(rowData) &&(rowData as Array<unknown>).some(item => Array.isArray(item))) {
+    if (Array.isArray(rowData) && (rowData as Array<unknown>).some(item => Array.isArray(item))) {
       rowData = (rowData as Array<unknown|Array<unknown>>).flat(2) as IRowYaml;
     }
     this.Floor = Array.isArray(rowData) ? rowData[0] : rowData.Floor;
@@ -181,8 +180,7 @@ export class Row implements IRow {
                 break;
               }
               case "Roll template": {
-                this["Roll template"] = (item as {["Roll template"]: IRollTemplate})["Roll template"] as NonNullable<typeof this["Roll template"]>;
-                this["Roll template"].$id = `${this.$id}/Roll_template`;
+                this["Roll template"] = new RollTemplate((item as {["Roll template"]: IRollTemplate})["Roll template"] as NonNullable<typeof this["Roll template"]>, this);
                 break;
               }
               default:
