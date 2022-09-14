@@ -1,7 +1,7 @@
 import { Display , EncounterIronsworn , Source , Title } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { EncounterNatureIronsworn , IDisplay  , IEncounterNatureInfo , ISource } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IEncounterNatureInfoYaml } from "@yaml_in/index.js";
 
 /**

@@ -4,9 +4,9 @@ import type { InputClock, InputNumber, InputText } from "@classes/common/Input.j
 import { AlterMove , Move } from "@classes/index.js";
 import type { Gamespace , IAlterMomentum, IAsset, IAssetAbility,  IAssetState } from "@json_out/index.js";
 import { Replacement } from "@json_out/index.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IAssetAbilityYaml, IAssetStateYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 

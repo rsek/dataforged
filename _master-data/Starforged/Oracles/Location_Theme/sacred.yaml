@@ -1,5 +1,5 @@
 Sacred:
-  _templateCategory: *template.category:LocationTheme
+  _templateOracleSet: *template.category:LocationTheme
   _templateVars:
     Location Theme: Sacred
   Title:
@@ -7,9 +7,9 @@ Sacred:
   Description: *description:Sacred
   Source:
     Page: 379
-  Oracles:
-    - _templateInfo: *template.info:LocationTheme.Feature
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:LocationTheme.Feature
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Feature
         content:
           - Adherents performing worship or enacting rituals
@@ -25,8 +25,8 @@ Sacred:
           - Subtle manifestations of mystical power or visions
           - Tokens or motifs representing the faith's domain
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:LocationTheme.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Peril
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Peril
         content:
           - An aspect of the faith beguiles you or lures you into danger
@@ -41,8 +41,8 @@ Sacred:
           - Zealots enact a ceremony to unlock forbidden powers
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:LocationTheme.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Opportunity
         content:
           - Access to a hidden or sealed area

@@ -1,7 +1,7 @@
 import { Display , Move , Source , Title } from "@classes/index.js";
 import { MoveCategoryDisplay } from "@classes/moves/MoveCategoryDisplay.js";
 import type { Gamespace , IMoveCategory, ISource } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IMoveCategoryYaml } from "@yaml_in/index.js";
 
 /**

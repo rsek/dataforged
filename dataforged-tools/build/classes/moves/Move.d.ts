@@ -1,7 +1,7 @@
 import { Display } from "../common/Display.js";
 import type { Asset, MoveCategory, Suggestions } from "../index.js";
 import { MoveOutcomes, MoveTrigger, SourceInheritor, Title } from "../index.js";
-import type { Gamespace, IAssetAbility, IMove, IMoveCategory, IOracle, ISource } from "../../json_out/index.js";
+import type { Gamespace, IAssetAbility, IMove, IMoveCategory, IOracleTable, ISource } from "../../json_out/index.js";
 import type { IMoveYaml } from "../../yaml_in/moves/IMoveYaml";
 /**
  * Object representing a Starforged move.
@@ -19,7 +19,7 @@ export declare class Move extends SourceInheritor implements IMove {
     Trigger: MoveTrigger;
     Text: string;
     Tags?: string[] | undefined;
-    Oracles?: IOracle["$id"][] | undefined;
+    Oracles?: IOracleTable["$id"][] | undefined;
     Suggestions?: Suggestions | undefined;
     Outcomes?: MoveOutcomes | undefined;
     constructor(json: IMoveYaml, parent: IMoveCategory | IAssetAbility, gamespace: Gamespace, ...sourceAncestors: ISource[]);

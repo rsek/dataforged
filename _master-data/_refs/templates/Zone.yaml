@@ -1,10 +1,9 @@
 Derelict Zone: &template:Zone
   _isTemplate: true
-  _templateCategory: &template.category:Zone
+  _templateOracleSet: &template.category:Zone
     _templateVars:
       Zone: ${{Zone}}
     _childOf: Derelicts
-    Name: ${{Zone}}
     Title:
       Canonical: ${{Zone}}
     Display:
@@ -17,9 +16,8 @@ Derelict Zone: &template:Zone
       Title: "Ironsworn: Starforged Rulebook"
       License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Date: "050622"
-  Oracles:
-    - _templateInfo: &template.info:Zone.Area
-        Name: Area
+  Tables:
+    - _templateOracleTable: &template.info:Zone.Area
         Title:
           Canonical: Area
         Content:
@@ -28,7 +26,7 @@ Derelict Zone: &template:Zone
           Repeatable: true
         Description: |-
           Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), an area can serve as a waypoint in your survey of the derelict.
-      _templateTable:
+      _templateTableRows:
         rolls: &template.rolls:Zone.Area
           - [1, 8]
           - [9, 16]
@@ -42,8 +40,7 @@ Derelict Zone: &template:Zone
           - [73, 80]
           - [81, 85, New zone, *obj:DerelictZone]
           - [86, 100, "New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)", *obj:DerelictZone.Access]
-    - _templateInfo: &template.info:Zone.Feature
-        Name: Feature
+    - _templateOracleTable: &template.info:Zone.Feature
         Title:
           Canonical: Feature
         Content:
@@ -52,7 +49,7 @@ Derelict Zone: &template:Zone
           Repeatable: true
         Description: |-
           Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
-      _templateTable:
+      _templateTableRows:
         rolls: &template.rolls:Zone.Feature
           - [1, 8]
           - [9, 16]
@@ -66,8 +63,7 @@ Derelict Zone: &template:Zone
           - [73, 80]
           - [81, 88]
           - [89, 100, *result:Descriptor+Focus]
-    - _templateInfo: &template.info:Zone.Peril
-        Name: Peril
+    - _templateOracleTable: &template.info:Zone.Peril
         Title:
           Canonical: Peril
         Content:
@@ -76,7 +72,7 @@ Derelict Zone: &template:Zone
           Repeatable: true
         Description: |-
           Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
-      _templateTable:
+      _templateTableRows:
         rolls: &template.rolls:Zone.Peril
           - [1, 10]
           - [11, 20]
@@ -89,8 +85,7 @@ Derelict Zone: &template:Zone
           - [81, 90]
           - [91, 98, *result:Action+Theme]
           - [99, 100, *result:RollTwice]
-    - _templateInfo: &template.info:Zone.Opportunity
-        Name: Opportunity
+    - _templateOracleTable: &template.info:Zone.Opportunity
         Title:
           Canonical: Opportunity
         Content:

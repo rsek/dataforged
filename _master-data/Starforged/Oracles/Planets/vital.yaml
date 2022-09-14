@@ -1,5 +1,5 @@
 Vital World:
-  _templateCategory: *template.category:Planet
+  _templateOracleSet: *template.category:Planet
   _templateVars:
     Planetary Class: Vital
   Title:
@@ -8,7 +8,7 @@ Vital World:
     Images: *images:VitalWorld
   Source:
     Page: 318
-  Description: This diverse, life-bearing planet might provide some small measure of hope.
+  Summary: This diverse, life-bearing planet might provide some small measure of hope.
   Sample Names:
     - Chiron
     - Demeter
@@ -30,9 +30,39 @@ Vital World:
     - Solstice
     - Vale
     - Valinor
-  Oracles: #TODO: standardize templateInfo in, like, everything
-    - _templateInfo: *template.info:Planet.Atmosphere
-      _templateTable:
+  Sets:
+    - _templateOracleSet: *template.info:Planet.Settlements
+      Tables:
+        - _templateOracleSet: *template.info:Planet.Settlements.Terminus
+          _templateTableRows:
+            content: *template.content:Planet.Settlements
+            rolls:
+              - [1, 20] # None
+              - [21, 30] # Orbital settlement
+              - [31, 70] # Planetside settlement
+              - [71, 90] # Multiple settlements
+              - [91, 100] # Settlements in conflict
+        - _templateOracleSet: *template.info:Planet.Settlements.Outlands
+          _templateTableRows:
+            content: *template.content:Planet.Settlements
+            rolls:
+              - [1, 50] # None
+              - [51, 55] # Orbital settlement
+              - [56, 85] # Planetside settlement
+              - [86, 95] # Multiple settlements
+              - [96, 100] # Settlements in conflict
+        - _templateOracleSet: *template.info:Planet.Settlements.Expanse
+          _templateTableRows:
+            content: *template.content:Planet.Settlements
+            rolls:
+              - [1, 80] # None
+              - [81, 83] # Orbital settlement
+              - [84, 93] # Planetside settlement
+              - [94, 98] # Multiple settlements
+              - [99, 100] # Settlements in conflict
+  Tables:
+    - _templateOracleTable: *template.info:Planet.Atmosphere
+      _templateTableRows:
         content: *template.content:Planet.Atmosphere
         rolls:
           - [null, null] # None / thin
@@ -41,37 +71,8 @@ Vital World:
           - [1, 20] # Marginal
           - [21, 50] # Breathable
           - [51, 100] # Ideal
-    - _templateInfo: *template.info:Planet.Settlements
-      Oracles:
-        - _templateInfo: *template.info:Planet.Settlements.Terminus
-          _templateTable:
-            content: *template.content:Planet.Settlements
-            rolls:
-              - [1, 20] # None
-              - [21, 30] # Orbital settlement
-              - [31, 70] # Planetside settlement
-              - [71, 90] # Multiple settlements
-              - [91, 100] # Settlements in conflict
-        - _templateInfo: *template.info:Planet.Settlements.Outlands
-          _templateTable:
-            content: *template.content:Planet.Settlements
-            rolls:
-              - [1, 50] # None
-              - [51, 55] # Orbital settlement
-              - [56, 85] # Planetside settlement
-              - [86, 95] # Multiple settlements
-              - [96, 100] # Settlements in conflict
-        - _templateInfo: *template.info:Planet.Settlements.Expanse
-          _templateTable:
-            content: *template.content:Planet.Settlements
-            rolls:
-              - [1, 80] # None
-              - [81, 83] # Orbital settlement
-              - [84, 93] # Planetside settlement
-              - [94, 98] # Multiple settlements
-              - [99, 100] # Settlements in conflict
-    - _templateInfo: *template.info:Planet.ObservedFromSpace
-      _templateTable:
+    - _templateOracleTable: *template.info:Planet.ObservedFromSpace
+      _templateTableRows:
         rolls: *template.rolls:Planet.ObservedFromSpace
         content:
           - Complex ring system
@@ -84,8 +85,7 @@ Vital World:
           - Narrow livable band
           - *result:Descriptor+Focus
           - *result:PrecursorVault.Orbital
-    - Name: Diversity
-      Title:
+    - Title:
         Canonical: Diversity
       Description: &description:Vital.Diversity |-
         To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
@@ -114,8 +114,7 @@ Vital World:
               *biome,
               *biome,
               *biome ]]
-    - Name: Biomes
-      Title:
+    - Title:
         Canonical: Biomes
       Description: *description:Vital.Diversity
       Usage:
@@ -143,8 +142,8 @@ Vital World:
         - [86, 90, Volcanic]
         - [91, 95, Waterways]
         - [96, 100, Wetland]
-    - _templateInfo: *template.info:Planet.PlanetsideFeature
-      _templateTable:
+    - _templateOracleTable: *template.info:Planet.PlanetsideFeature
+      _templateTableRows:
         rolls: *template.rolls:Planet.PlanetsideFeature
         content:
           - Background radiation
@@ -162,8 +161,8 @@ Vital World:
           - Towering geological formations
           - *result:Descriptor+Focus
           - *result:PrecursorVault.Planetside
-    - _templateInfo: *template.info:Planet.Life
-      _templateTable:
+    - _templateOracleTable: *template.info:Planet.Life
+      _templateTableRows:
         content: *template.content:Planet.Life
         rolls:
           - [null, null] # None
@@ -172,4 +171,3 @@ Vital World:
           - [11, 45] # Diverse
           - [46, 85] # Bountiful
           - [86, 100] # Overrun
-

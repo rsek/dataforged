@@ -2,7 +2,7 @@ import type { Asset } from "@classes/assets/Asset.js";
 import type { AssetAbility } from "@classes/assets/AssetAbility.js";
 import { ClockType } from "@json_out/index.js";
 import type { ClockSegments, IAsset, IAssetAbility, IInput, IInputClock, IInputNumber , IInputText , InputType } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IInputClockYaml, IInputNumberYaml, IInputTextYaml, IInputYaml } from "@yaml_in/index.js";
 
 /**

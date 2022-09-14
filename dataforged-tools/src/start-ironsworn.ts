@@ -22,7 +22,7 @@ _.forEach(data, (value, key) => {
         fileName = "encounters";
         break;
       }
-      case "Oracle Categories": {
+      case "Oracle Sets": {
         fileName = "oracles";
         break;
       }

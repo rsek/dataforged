@@ -1,6 +1,5 @@
 import { REFS_PATH } from "../../constants/index.js";
 import { concatWithYamlRefs } from "./concatWithYamlRefs.js";
-import deepFreezeStrict from "deep-freeze-strict";
 import _ from "lodash-es";
 /**
  * Loads the oracle YAML data from the files and merges them into a single object.
@@ -11,9 +10,9 @@ import _ from "lodash-es";
 export function loadOracleData(referencePath = REFS_PATH, ...filePaths) {
     const builtData = concatWithYamlRefs(referencePath, ...filePaths);
     const result = {
-        _refs: deepFreezeStrict(builtData._refs),
-        _templates: deepFreezeStrict(builtData._templates),
-        Categories: Object.values(_.omitBy(builtData, (_, key) => key.startsWith("_"))),
+        _refs: (builtData._refs),
+        _templates: (builtData._templates),
+        Sets: Object.values(_.omitBy(builtData, (_, key) => key.startsWith("_"))),
     };
     return result;
 }

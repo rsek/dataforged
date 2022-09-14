@@ -1,5 +1,5 @@
 Haunted:
-  _templateCategory: *template.category:LocationTheme
+  _templateOracleSet: *template.category:LocationTheme
   _templateVars:
     Location Theme: Haunted
   Title:
@@ -7,9 +7,9 @@ Haunted:
   Description: *description:Haunted
   Source:
     Page: 374
-  Oracles:
-    - _templateInfo: *template.info:LocationTheme.Feature
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:LocationTheme.Feature
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Feature
         content:
           - Disembodied voices
@@ -25,8 +25,8 @@ Haunted:
           - "Unnatural blight, decay, or ruin"
           - Unnatural mists or darkness
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:LocationTheme.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Peril
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Peril
         content:
           - Assailed by an angry or vengeful being
@@ -41,8 +41,8 @@ Haunted:
           - Visions reveal a horrifying aspect of this place
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:LocationTheme.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Opportunity
         content:
           - Encounter with a benign spirit or being

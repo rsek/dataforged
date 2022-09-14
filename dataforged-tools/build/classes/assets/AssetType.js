@@ -1,6 +1,6 @@
 import { Display } from "../common/Display.js";
 import { Asset, SourceInheritor, Title } from "../index.js";
-import { formatIdFragment } from "../../utils/toIdFragment.js";
+import { formatIdFragment } from "../../utils/formatIdFragment.js";
 import _ from "lodash-es";
 /**
  * @internal

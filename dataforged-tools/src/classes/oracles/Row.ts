@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { AttributeSetter, GameObject , MultipleRolls, OracleContent, RollTemplate, Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, IRowNullStub, Raster, Vector } from "@json_out/index.js";
+import type { IDisplay, ImageUrl, IMultipleRolls, IOracleTable, IRollTemplate, IRow, IRowNullStub, Raster, Vector } from "@json_out/index.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import type { ISuggestionsYaml } from "@yaml_in/common/ISuggestionsYaml.js";
@@ -19,7 +19,7 @@ export class Row implements IRow {
   Ceiling: number|null;
   Result!: string;
   Summary?: string | null | undefined;
-  "Oracle rolls"?: IOracle["$id"][] | undefined;
+  "Oracle rolls"?: IOracleTable["$id"][] | undefined;
   "Game objects"?: GameObject[] | undefined;
   "Multiple rolls"?: MultipleRolls | undefined;
   Suggestions?: Suggestions | undefined;

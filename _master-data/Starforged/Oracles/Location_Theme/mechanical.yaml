@@ -1,5 +1,5 @@
 Mechanical:
-  _templateCategory: *template.category:LocationTheme
+  _templateOracleSet: *template.category:LocationTheme
   _templateVars:
     Location Theme: Mechanical
   Title:
@@ -7,9 +7,9 @@ Mechanical:
   Description: *description:Mechanical
   Source:
     Page: 377
-  Oracles:
-    - _templateInfo: *template.info:LocationTheme.Feature
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:LocationTheme.Feature
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Feature
         content:
           - Control station or terminal
@@ -25,8 +25,8 @@ Mechanical:
           - Mechanical wreckage or destruction
           - Power source for the machines
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:LocationTheme.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Peril
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Peril
         content:
           - Alarm or warning is triggered
@@ -41,8 +41,8 @@ Mechanical:
           - Volatile technology
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:LocationTheme.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Opportunity
         content:
           - Helpful device

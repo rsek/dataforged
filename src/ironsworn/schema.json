@@ -43,10 +43,10 @@
       "items": { "$ref": "#/definitions/IMoveCategory" },
       "title": "Move Categories"
     },
-    "Oracle Categories": {
+    "Oracle Sets": {
       "type": "array",
-      "items": { "$ref": "#/definitions/IOracleCategory" },
-      "title": "Oracle Categories"
+      "items": { "$ref": "#/definitions/IOracleSet" },
+      "title": "Oracle Sets"
     }
   },
   "defaultProperties": [],
@@ -55,7 +55,7 @@
     "Asset Types",
     "Encounters",
     "Move Categories",
-    "Oracle Categories",
+    "Oracle Sets",
     "Setting Truths",
     "Site Domains",
     "Site Themes"
@@ -3697,9 +3697,9 @@
         "Title"
       ]
     },
-    "IOracleCategory": {
-      "description": "Represents an oracle category: a grouping that can contain both{@linkIOracle}s and other instances of{@linkIOracleCategory}, but doesn't have its own `Table` key.",
-      "title": "IOracleCategory",
+    "IOracleSet": {
+      "description": "Represents an oracle set: a grouping that can contain both{@linkIOracleTable}s and other instances of{@linkIOracleSet}, but doesn't have its own `Table` key.",
+      "title": "IOracleSet",
       "type": "object",
       "properties": {
         "$id": {
@@ -3708,35 +3708,30 @@
           "type": "string",
           "title": "$id"
         },
-        "Category": {
-          "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
-          "type": "string",
-          "title": "Category"
-        },
         "Sample Names": {
-          "description": "A list of sample names for this category (only used by Planetary Class subcategories).",
+          "description": "A list of sample names for this category. Only used by Planetary Class{@linkIOracleSet}s.",
           "type": "array",
           "items": { "type": "string" },
           "title": "Sample Names"
         },
-        "Categories": {
-          "description": "Subcategories contained by this oracle category.\n\nThis key appears only on{@linkIOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.",
+        "Sets": {
+          "description": "Oracle sets contained by this set.\n\nThis key appears only on{@linkIOracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IOracleCategory" },
-          "title": "Categories"
+          "items": { "$ref": "#/definitions/IOracleSet" },
+          "title": "Sets"
         },
-        "Oracles": {
-          "description": "Oracle objects contained by this object.\n\nThis key appears only on 'branch' nodes of the oracle hierarchy 'tree':{@linkIOracleCategory}, and{@linkIOracle}(when it contains multiple closely-related tables).",
+        "Tables": {
+          "description": "Oracle tables contained by this set.\n\nThis key appears only on{@linkIOracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IOracle" },
-          "title": "Oracles"
+          "items": { "$ref": "#/definitions/IOracleTable" },
+          "title": "Tables"
         },
-        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/IOracleSetDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
+        "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
@@ -3768,25 +3763,26 @@
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
-        "Member of": {
-          "description": "The ID of the most recent Oracle ancestor of this item, if any.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "Member of"
+        "Ancestors": {
+          "description": "An array containing the ID of every{@linkIOracleSet}ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Ancestors"
         },
         "On a Match": {
-          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracle}s that have a `Table`.",
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on{@linkIOracleTable}s that have a `Table`.",
           "$ref": "#/definitions/IOracleMatch",
           "title": "On a Match"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Display", "Source", "Title"]
+      "required": ["$id", "Ancestors", "Display", "Source", "Title"]
     },
-    "IOracle": {
-      "description": "Represents an oracle, which may have a Table or multiple child Oracles.",
-      "title": "IOracle",
+    "IOracleTable": {
+      "description": "Represents an oracle that has a `Table` composed of{@linkIRow}objects. Appears only as a 'leaf' note on the oracle hierarchy 'tree'.",
+      "title": "IOracleTable",
       "type": "object",
       "properties": {
         "$id": {
@@ -3797,22 +3793,12 @@
         },
         "Title": { "$ref": "#/definitions/ITitle", "title": "Title" },
         "Display": {
-          "$ref": "#/definitions/IOracleDisplay",
+          "$ref": "#/definitions/IOracleTableDisplay",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
-        "Category": {
-          "description": "The ID of the most recent OracleCategory ancestor of this item, if any.",
-          "type": "string",
-          "title": "Category"
-        },
-        "Member of": {
-          "description": "The ID of the most recent Oracle ancestor of this item, if any.",
-          "type": "string",
-          "title": "Member of"
-        },
         "Table": {
-          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all){@linkIOracle}objects.",
+          "description": "Represents a single oracle table, where 'table' is defined as being something with a single roll range.\n\nThis key appears only on{@linkIOracleSet}, and thus only on 'leaf' nodes of the oracle hierarchy 'tree'.",
           "type": "array",
           "items": {
             "anyOf": [
@@ -3832,12 +3818,6 @@
           "description": "Information on this item's source.",
           "title": "Source"
         },
-        "Oracles": {
-          "description": "Oracle objects contained by this object.\n\nThis key appears only on 'branch' nodes of the oracle hierarchy 'tree':{@linkIOracleCategory}, and{@linkIOracle}(when it contains multiple closely-related tables).",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IOracle" },
-          "title": "Oracles"
-        },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
           "type": "array",
@@ -3863,22 +3843,24 @@
           "$ref": "#/definitions/IOracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
+        },
+        "Ancestors": {
+          "description": "An array containing the ID of every{@linkIOracleSet}ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
+          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Ancestors"
         }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Category", "Display", "Source", "Title"]
+      "required": ["$id", "Ancestors", "Display", "Source", "Table", "Title"]
     },
-    "IOracleDisplay": {
-      "description": "Information on displaying Oracles, including information on how their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.",
-      "title": "IOracleDisplay",
+    "IOracleTableDisplay": {
+      "description": "Information on displaying{@linkIOracleTable}, including information on its rendering in the original text.",
+      "title": "IOracleTableDisplay",
       "type": "object",
       "properties": {
-        "Column of": {
-          "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
-          "type": "string",
-          "title": "Column of"
-        },
         "Columns": {
           "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
           "type": "array",
@@ -3891,6 +3873,11 @@
             ]
           },
           "title": "Columns"
+        },
+        "Column of": {
+          "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
+          "type": "string",
+          "title": "Column of"
         },
         "Embed in": {
           "description": "This table is displayed as embedded in a row of another table.",
@@ -3948,7 +3935,7 @@
           "title": "$id"
         },
         "Content": {
-          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
+          "description": "The ID of the{@linkIOracleTable}whose{@linkIOracleTable.Table}content will be displayed in the table.",
           "type": "string",
           "title": "Content"
         }
@@ -3979,12 +3966,12 @@
         },
         "Key": {
           "$ref": "#/definitions/KeysWithValuesOfType",
-          "description": "The key of each{@linkIRow}in the{@linkIOracle.Table}, whose string value is displayed in the rendered table.",
+          "description": "The key of each{@linkIRow}in the{@linkIOracleTable.Table}, whose string value is displayed in the rendered table.",
           "default": "Result",
           "title": "Key"
         },
         "Content": {
-          "description": "The ID of the{@linkIOracle}whose{@linkIOracle.Table}content will be displayed in the table.",
+          "description": "The ID of the{@linkIOracleTable}whose{@linkIOracleTable.Table}content will be displayed in the table.",
           "type": "string",
           "title": "Content"
         },
@@ -4190,6 +4177,54 @@
       },
       "defaultProperties": [],
       "additionalProperties": false
+    },
+    "IOracleSetDisplay": {
+      "description": "Information on displaying{@linkIOracleSet}, including information on its rendering in the original text.\n\nIf an{@linkIOracleSet}has `Columns`, it represents a \"supertable\" composed of multiple roll or string columns.",
+      "title": "IOracleSetDisplay",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Columns": {
+          "description": "Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).\n\nIf close correspondence to the text's table rendering is desired, `Display[\"Column of\"]` should be preferred (when present).",
+          "type": "array",
+          "items": [{ "$ref": "#/definitions/ITableColumnRoll" }],
+          "minItems": 1,
+          "additionalItems": {
+            "anyOf": [
+              { "$ref": "#/definitions/ITableColumnRoll" },
+              { "$ref": "#/definitions/ITableColumnText" }
+            ]
+          },
+          "title": "Columns"
+        },
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

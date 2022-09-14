@@ -5,7 +5,55 @@ Source:
     - Shawn Tomkin
   Title: Ironsworn Rulebook
   License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracles:
+Sets:
+  - Title:
+      Canonical: Ask the Oracle
+    Source:
+      Page: 107
+      Authors:
+        - Shawn Tomkin
+      Title: Ironsworn Rulebook
+      License: https://creativecommons.org/licenses/by-sa/4.0/
+    Tables:
+      - Title:
+          Canonical: Almost Certain
+        Aliases: ["90"]
+        On a Match: &AtO.Match
+          Text: On a match, an extreme result or twist has occurred.
+        Table:
+          - [1, 10, "No"]
+          - [11, 100, "Yes"]
+      - Title:
+          Canonical: Likely
+        Aliases: ["75"]
+        On a Match: *AtO.Match
+        Table:
+          - [1, 25, "No"]
+          - [26, 100, "Yes"]
+      - Title:
+          Canonical: 50/50
+          Standard: 50/50
+          Short: 50/50
+        Aliases: ["50"]
+        On a Match: *AtO.Match
+        Table:
+          - [1, 50, "No"]
+          - [51, 100, "Yes"]
+      - Title:
+          Canonical: "Unlikely"
+        Aliases: ["25"]
+        On a Match: *AtO.Match
+        Table:
+          - [1, 75, "No"]
+          - [76, 100, "Yes"]
+      - Title:
+          Canonical: "Small Chance"
+        Aliases: ["10"]
+        On a Match: *AtO.Match
+        Table:
+          - [1, 90, "No"]
+          - [91, 100, "Yes"]
+Tables:
   - Title:
       Canonical: Endure Harm
     Source:
@@ -86,46 +134,3 @@ Oracles:
           "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
           *result:RollTwice.MakeItWorse
         ]
-  - Title:
-      Canonical: Ask the Oracle
-    Source:
-      Page: 107
-    Oracles:
-      - Title:
-          Canonical: Almost Certain
-        Aliases: ["90"]
-        On a Match: &AtO.Match
-          Text: On a match, an extreme result or twist has occurred.
-        Table:
-          - [1, 10, "No"]
-          - [11, 100, "Yes"]
-      - Title:
-          Canonical: Likely
-        Aliases: ["75"]
-        On a Match: *AtO.Match
-        Table:
-          - [1, 25, "No"]
-          - [26, 100, "Yes"]
-      - Title:
-          Canonical: 50/50
-          Standard: 50/50
-          Short: 50/50
-        Aliases: ["50"]
-        On a Match: *AtO.Match
-        Table:
-          - [1, 50, "No"]
-          - [51, 100, "Yes"]
-      - Title:
-          Canonical: "Unlikely"
-        Aliases: ["25"]
-        On a Match: *AtO.Match
-        Table:
-          - [1, 75, "No"]
-          - [76, 100, "Yes"]
-      - Title:
-          Canonical: "Small Chance"
-        Aliases: ["10"]
-        On a Match: *AtO.Match
-        Table:
-          - [1, 90, "No"]
-          - [91, 100, "Yes"]

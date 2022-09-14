@@ -1,7 +1,7 @@
 import { Input } from "./Input.js";
 import { InputType } from "../../json_out/index.js";
+import { formatIdFragment } from "../../utils/formatIdFragment.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
-import { formatIdFragment } from "../../utils/toIdFragment.js";
 /**
  * @internal
  */

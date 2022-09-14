@@ -3,7 +3,7 @@ import { Source } from "@classes/common/Source.js";
 import { Title } from "@classes/common/Title.js";
 import type { IAsset } from "@json_out/index.js";
 import type { IDelveRarity } from "@json_out/rarities/IDelveRarity.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import { ITitleYaml } from "@yaml_in/index.js";
 import type { IDelveRarityYaml } from "@yaml_in/rarities";
 

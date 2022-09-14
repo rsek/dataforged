@@ -1,10 +1,9 @@
 Location Theme: &template:LocationTheme
   _isTemplate: true
-  _templateCategory: &template.category:LocationTheme
+  _templateOracleSet: &template.category:LocationTheme
     _templateVars:
       Location Theme: ${{Location Theme}}
     _childOf: Location Themes
-    Name: ${{Location Theme}}
     Title:
       Canonical: ${{Location Theme}}
     Display:
@@ -17,17 +16,16 @@ Location Theme: &template:LocationTheme
       Title: "Ironsworn: Starforged Rulebook"
       License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Date: "050622"
-  Oracles:
-    - _templateInfo: &template.info:LocationTheme.Feature
-        Name: Feature
+  Table:
+    - _templateOracleTable: &template.info:LocationTheme.Feature
         Title:
           Canonical: Feature
         Content:
           Part of speech: [fragment]
         Usage:
           Repeatable: true
-        Description: Use this table to reveal a new aspect of the location.
-      _templateTable:
+        Summary: Use this table to reveal a new aspect of the location.
+      _templateTableRows:
         rolls: &template.rolls:LocationTheme.Feature
           - [1, 8]
           - [9, 16]
@@ -42,16 +40,15 @@ Location Theme: &template:LocationTheme
           - [81, 88]
           - [89, 96]
           - [97, 100, *result:Descriptor+Focus]
-    - _templateInfo: &template.info:LocationTheme.Peril
-        Name: Peril
+    - _templateOracleTable: &template.info:LocationTheme.Peril
         Title:
           Canonical: Peril
         Content:
           Part of speech: [fragment]
         Usage:
           Repeatable: true
-        Description: Use this table to help envision a complication or hazard.
-      _templateTable:
+        Summary: Use this table to help envision a complication or hazard.
+      _templateTableRows:
         rolls: &template.rolls:LocationTheme.Peril
           - [1, 9]
           - [10, 18]
@@ -65,16 +62,15 @@ Location Theme: &template:LocationTheme
           - [82, 90]
           - [91, 98, *result:Action+Theme]
           - [99, 100, *result:RollTwice]
-    - _templateInfo: &template.info:LocationTheme.Opportunity
-        Name: Opportunity
+    - _templateOracleTable: &template.info:LocationTheme.Opportunity
         Title:
           Canonical: Opportunity
         Content:
           Part of speech: [fragment]
         Usage:
           Repeatable: true
-        Description: "Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location."
-      _templateTable:
+        Summary: "Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location."
+      _templateTableRows:
         rolls: &template.rolls:LocationTheme.Opportunity
           - [1, 20]
           - [21, 40]

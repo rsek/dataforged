@@ -5,13 +5,17 @@ Source:
     - Shawn Tomkin
   Title: "Ironsworn: Delve"
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracles:
+Sets:
   - Title:
       Canonical: Delve the Depths
     # Move: Ironsworn/Moves/Delve/Delve_the_Depths
     Source:
       Page: 21
-    Oracles:
+      Authors:
+        - Shawn Tomkin
+      Title: "Ironsworn: Delve"
+      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    Tables:
       - Title:
           Canonical: Edge
         Table: &table:Delve_the_Depths
@@ -34,7 +38,7 @@ Oracles:
             ]
       - Title:
           Canonical: Shadow
-        _templateTable:
+        _templateTableRows:
           content: *table:Delve_the_Depths
           rolls:
             - [1, 30]
@@ -44,7 +48,7 @@ Oracles:
             - [100, 100]
       - Title:
           Canonical: Wits
-        _templateTable:
+        _templateTableRows:
           content: *table:Delve_the_Depths
           rolls:
             - [1, 40]
@@ -52,6 +56,7 @@ Oracles:
             - [56, 80]
             - [81, 99]
             - [100, 100]
+Tables:
   - Title:
       Canonical: Find an Opportunity
     # Move: Ironsworn/Moves/Delve/Find_an_Opportunity
@@ -98,10 +103,10 @@ Oracles:
           &Reveal_a_Danger_10 "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
           *result:RollTwice.MakeItWorse
         ]
-  - _idFragment: Reveal a Danger alt
-    Title:
+  - Title:
       Canonical: Reveal a Danger (alternate version)
       Short: Reveal a Danger
+    _idFragment: Reveal a Danger alt
     Source:
       Page: 68
     Table:

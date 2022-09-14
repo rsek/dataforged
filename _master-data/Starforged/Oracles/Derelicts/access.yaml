@@ -1,13 +1,13 @@
 Access:
-  _templateCategory: *template.category:Zone
+  _templateOracleSet: *template.category:Zone
   _templateVars:
     Zone: Access
   Title:
     Canonical: Access
   Source:
     Page: 352
-  Oracles:
-    - _templateInfo: *template.info:Zone.Area
+  Tables:
+    - _templateOracleTable: *template.info:Zone.Area
       Table:
         - [1, 50, Corridor]
         - [51, 60, Stairs]
@@ -17,7 +17,7 @@ Access:
         - [86, 90, Hub or intersection]
         - [91, 95, Crawl space or duct]
         - [96, 100, Airlock or external]
-    - _templateInfo: *template.info:Zone.Feature
+    - _templateOracleTable: *template.info:Zone.Feature
       Table:
         - [1, 5, Abandoned gear]
         - [6, 10, Blood trail]
@@ -39,8 +39,8 @@ Access:
         - [86, 90, Windows or viewports]
         - [91, 95, Wrecked passage or debris]
         - [96, 100, *result:Descriptor+Focus]
-    - _templateInfo: *template.info:Zone.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Peril
+      _templateTableRows:
         rolls: *template.rolls:Zone.Peril
         content:
           - Alarm or failsafe is triggered
@@ -54,8 +54,8 @@ Access:
           - Unsettling sound or disturbance
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:Zone.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:Zone.Opportunity
         content:
           - Directions, shortcut, or alternate path

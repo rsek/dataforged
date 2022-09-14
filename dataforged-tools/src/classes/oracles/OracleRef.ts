@@ -1,15 +1,15 @@
-import type { Oracle } from "@classes/index.js";
+import type { OracleTable } from "@classes/index.js";
 
 /**
  * @internal
  */
 export class OracleTableRef {
-  private $id: Oracle["$id"];
-  constructor(tableId: Oracle["$id"]) {
+  private $id: OracleTable["$id"];
+  constructor(tableId: OracleTable["$id"]) {
     this.$id = tableId;
     this.getTable = this.getTable.bind(this);
   }
-  getTable(keyedTables: Record<Oracle["$id"], Oracle>) {
+  getTable(keyedTables: Record<OracleTable["$id"], OracleTable>) {
     return keyedTables[this.$id];
   }
   toString() { return this.$id; }

@@ -1,7 +1,7 @@
 import { Display , SettingTruthOption, Source , Suggestions , Title  } from "@classes/index.js";
 import type { Gamespace , ISettingTruth, ISource } from "@json_out/index.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import { buildLog } from "@utils/logging/buildLog.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { ISettingTruthYaml } from "@yaml_in/truths/ISettingTruthYaml.js";
 
 /**

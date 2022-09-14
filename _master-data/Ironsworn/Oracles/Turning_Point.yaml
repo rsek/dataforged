@@ -6,7 +6,7 @@ Source:
   Title: Ironsworn Rulebook
   Page: 188
   License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracles:
+Tables:
   - Title:
       Canonical: "Oracle 16: Combat Action"
       Standard: Combat Action
@@ -144,6 +144,7 @@ Oracles:
           "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic.",
           *result:RollTwice.MakeItWorse
         ]
+Sets:
   - Title:
       Canonical: "Oracle 19: Challenge Rank"
       Standard: Challenge Rank
@@ -172,7 +173,7 @@ Oracles:
     Description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
     Source:
       Page: 190
-    Oracles:
+    Tables:
       - Title:
           Canonical: Quest
         Display:
@@ -187,7 +188,7 @@ Oracles:
           Canonical: Journey
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
-        _templateTable:
+        _templateTableRows:
           rolls: *challenge_rank_table
           content:
             - [Troublesome, "Traveling a moderate distance within a single region"]
@@ -201,7 +202,7 @@ Oracles:
         _idFragment: Foes
         Display:
           Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
-        _templateTable:
+        _templateTableRows:
           rolls: *challenge_rank_table
           content:
             - [Troublesome, "Common enemies"]

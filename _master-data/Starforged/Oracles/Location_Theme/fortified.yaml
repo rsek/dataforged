@@ -1,5 +1,5 @@
 Fortified:
-  _templateCategory: *template.category:LocationTheme
+  _templateOracleSet: *template.category:LocationTheme
   _templateVars:
     Location Theme: Fortified
   Title:
@@ -7,9 +7,9 @@ Fortified:
   Description: *description:Fortified
   Source:
     Page: 373
-  Oracles:
-    - _templateInfo: *template.info:LocationTheme.Feature
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:LocationTheme.Feature
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Feature
         content:
           - Captives or prisoners
@@ -25,8 +25,8 @@ Fortified:
           - Robotic assistant or watchful AI
           - Support personnel at work
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:LocationTheme.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Peril
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Peril
         content:
           - Alarm is triggered
@@ -41,8 +41,8 @@ Fortified:
           - Your plan is undone by an unexpected complication
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:LocationTheme.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Opportunity
         content:
           - Insight into the plans or methods of the enemy force

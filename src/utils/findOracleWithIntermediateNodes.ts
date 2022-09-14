@@ -1,45 +1,39 @@
-import {IOracle, IOracleCategory} from "../types";
+import { IOracleTable, IOracleSet} from "../types";
 
 /**
  * Walks the oracle data tree to find a specific ID, then returns that item and its ancestors.
  * @param {string} id - the id of the oracle you want to find
- * @param {IOracleCategory[]} oracleDataRoot - The root of the oracle data tree.
- * @returns An array of IOracleCategory and IOracle objects.
+ * @param {IOracleSet[]} oracleDataRoot - The root of the oracle data tree.
+ * @returns An array of IOracleSet and IOracleTable objects.
  */
 
 
-export function findOracleWithIntermediateNodes(id: string, oracleDataRoot: IOracleCategory[]): (IOracle | IOracleCategory)[] {
-  const result: (IOracle | IOracleCategory)[] = []
+export function findOracleWithIntermediateNodes(id: string, oracleDataRoot: IOracleSet[]): (IOracleTable | IOracleSet)[] {
+  const result: (IOracleTable | IOracleSet)[] = []
 
-  function walkCategory(cat:IOracleCategory): boolean {
+  function walkSet(cat: IOracleSet): boolean {
     result.push(cat)
 
     if (cat.$id === id) return true
-    for (const oracle of cat.Oracles ?? []) {
+    for (const oracle of cat.Tables ?? []) {
       if (walkOracle(oracle)) return true
     }
-    for (const childCat of cat.Categories ?? []) {
-      if (walkCategory(childCat)) return true
+    for (const childCat of cat.Sets ?? []) {
+      if (walkSet(childCat)) return true
     }
 
     result.pop()
     return false
   }
 
-  function walkOracle(oracle:IOracle): boolean {
+  function walkOracle(oracle:IOracleTable): boolean {
     result.push(oracle)
-
     if (oracle.$id === id) return true
-    for (const childOracle of oracle.Oracles ?? []) {
-      if (walkOracle(childOracle)) return true
-    }
-
     result.pop()
     return false
   }
-
-  for (const cat of oracleDataRoot) {
-    walkCategory(cat)
+  for (const oracleSet of oracleDataRoot) {
+    walkSet(oracleSet)
   }
   return result
 }

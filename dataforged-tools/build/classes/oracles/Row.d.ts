@@ -1,5 +1,5 @@
 import { AttributeSetter, GameObject, MultipleRolls, OracleContent, RollTemplate, Suggestions } from "../index.js";
-import type { IDisplay, IOracle, IRow, IRowNullStub } from "../../json_out/index.js";
+import type { IDisplay, IOracleTable, IRow, IRowNullStub } from "../../json_out/index.js";
 import type { ISettingTruthOptionYaml, YamlStub } from "../../yaml_in/index.js";
 import type { IRowYaml } from "../../yaml_in/oracles/IRowYaml.js";
 /**
@@ -12,7 +12,7 @@ export declare class Row implements IRow {
     Ceiling: number | null;
     Result: string;
     Summary?: string | null | undefined;
-    "Oracle rolls"?: IOracle["$id"][] | undefined;
+    "Oracle rolls"?: IOracleTable["$id"][] | undefined;
     "Game objects"?: GameObject[] | undefined;
     "Multiple rolls"?: MultipleRolls | undefined;
     Suggestions?: Suggestions | undefined;

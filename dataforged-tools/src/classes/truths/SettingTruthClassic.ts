@@ -1,7 +1,7 @@
 import { Title } from "@classes/common/Title.js";
 import { SettingTruthOptionClassic, Source } from "@classes/index.js";
 import type { ISettingTruthClassic } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { ISettingTruthClassicYaml } from "@yaml_in/index.js";
 
 /**

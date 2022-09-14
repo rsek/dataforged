@@ -1,9 +1,9 @@
-export * from "./IOracleCategoryYaml.js";
-export * from "./IOracleCatRoot.js";
-export * from "./IOracleParentCategoryData.js";
-export * from "./IOracleParentCatRootYaml.js";
+export * from "./IOracleSetYaml.js";
+export * from "./IOracleRoot.js";
+export * from "./IOracleParentSetData.js";
+export * from "./IOracleParentSetRootYaml.js";
 export * from "./IOracleUsageYaml.js";
 export * from "./IOracleDisplayYaml.js";
-export * from "./IOracleYaml.js";
+export * from "./IOracleTableYaml.js";
 export * from "./IRowYaml.js";
 //# sourceMappingURL=index.d.ts.map

@@ -1,7 +1,7 @@
 import { Display } from "../common/Display.js";
 import { MoveOutcomes, MoveTrigger, SourceInheritor, Title } from "../index.js";
+import { formatIdFragment } from "../../utils/formatIdFragment.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
-import { formatIdFragment } from "../../utils/toIdFragment.js";
 /**
  * Object representing a Starforged move.
  * @internal

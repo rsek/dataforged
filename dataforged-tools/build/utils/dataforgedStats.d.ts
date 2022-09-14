@@ -1,15 +1,15 @@
 import { Gamespace } from "../json_out/index.js";
-import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged, IOracleCategory } from "../json_out/index.js";
+import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged, IOracleSet } from "../json_out/index.js";
 /**
  * Extracts statistics on Ironsworn game data.
  * @param param0
  */
-export declare function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }: GameDataRoot): string;
+export declare function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot): string;
 /**
  * Creates a string of oracle stats for use in build messages.
  * @param oracles
  */
-export declare function oracleStats(oracles: IOracleCategory[]): string;
+export declare function oracleStats(oracles: IOracleSet[]): string;
 /**
  * Creates a string of encounter stats for use in build messages.
  * @param gamespace

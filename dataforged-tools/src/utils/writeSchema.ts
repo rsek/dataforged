@@ -28,12 +28,12 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     declarations: yamlDeclarations
   },
   {
-    typeName: "IOracleCatRootYaml",
+    typeName: "IOracleSetRootYaml",
     outFiles: ["../_master-data/schema/oracles.json"],
     declarations: yamlDeclarations
   },
   {
-    typeName: "IOracleCategoryYaml",
+    typeName: "IOracleSetYaml",
     outFiles: ["../_master-data/schema/oracles-ironsworn.json"],
     declarations: yamlDeclarations
   },

@@ -1,7 +1,7 @@
 import { Display } from "@classes/common/Display.js";
 import { Asset, SourceInheritor, Title } from "@classes/index.js";
 import type { Gamespace , IAssetType, IAssetUsage, IDisplay, ISource } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IAssetTypeYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 

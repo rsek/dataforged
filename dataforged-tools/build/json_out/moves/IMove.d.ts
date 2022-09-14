@@ -1,4 +1,4 @@
-import type { IAsset, IDisplay, IHasDisplay, IHasId, IHasOptional, IHasSource, IHasSuggestions, IHasText, IHasTitle, IMoveCategory, IMoveOutcomes, IMoveTrigger, IOracle, ITitle } from "../index.js";
+import type { IAsset, IDisplay, IHasDisplay, IHasId, IHasOptional, IHasSource, IHasSuggestions, IHasText, IHasTitle, IMoveCategory, IMoveOutcomes, IMoveTrigger, IOracleTable, ITitle } from "../index.js";
 /**
  * Interface representing a Starforged move.
  * @public
@@ -42,7 +42,7 @@ export interface IMove extends IHasId, IHasText, IHasDisplay, IHasSource, IHasOp
     /**
      * The IDs of any oracles directly referenced by the move, or vice versa.
      */
-    Oracles?: IOracle["$id"][] | undefined;
+    Oracles?: IOracleTable["$id"][] | undefined;
     /**
      * Outcome information for the move.
      */

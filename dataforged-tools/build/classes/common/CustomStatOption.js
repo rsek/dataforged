@@ -1,4 +1,4 @@
-import { formatIdFragment } from "../../utils/toIdFragment.js";
+import { formatIdFragment } from "../../utils/formatIdFragment.js";
 /**
  * @internal
  */

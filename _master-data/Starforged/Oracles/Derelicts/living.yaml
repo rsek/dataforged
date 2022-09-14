@@ -1,14 +1,14 @@
 Living:
-  _templateCategory: *template.category:Zone
+  _templateOracleSet: *template.category:Zone
   _templateVars:
     Zone: Living
   Title:
     Canonical: Living
   Source:
     Page: 355
-  Oracles:
-    - _templateInfo: *template.info:Zone.Area
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:Zone.Area
+      _templateTableRows:
         rolls: *template.rolls:Zone.Area
         content:
           - Food storage
@@ -23,8 +23,8 @@ Living:
           - Sleeping pods
           - *result:NewZone
           - *result:NewZoneViaAccess
-    - _templateInfo: *template.info:Zone.Feature
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Feature
+      _templateTableRows:
         rolls: *template.rolls:Zone.Feature
         content:
           - Abandoned pet
@@ -39,8 +39,8 @@ Living:
           - Shrine or altar
           - Unusual art
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:Zone.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Peril
+      _templateTableRows:
         rolls: *template.rolls:Zone.Peril
         content:
           - Booby trap
@@ -54,8 +54,8 @@ Living:
           - Unsettling sound or disturbance
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:Zone.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:Zone.Opportunity
         content:
           - Culturally significant object or artifact

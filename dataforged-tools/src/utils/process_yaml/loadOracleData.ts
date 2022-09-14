@@ -1,8 +1,8 @@
 
 import { REFS_PATH } from "@constants/index.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
-import type { IOracleCategoryYaml } from "@yaml_in/index.js";
-import type { IOracleCatRoot } from "@yaml_in/oracles/IOracleCatRoot.js";
+import type { IOracleSetYaml } from "@yaml_in/index.js";
+import type { IOracleRoot } from "@yaml_in/oracles/IOracleRoot.js";
 import deepFreezeStrict from "deep-freeze-strict";
 import _ from "lodash-es";
 
@@ -13,11 +13,11 @@ import _ from "lodash-es";
  * @returns A JSON object with the following structure:
  */
 export function loadOracleData(referencePath: string = REFS_PATH, ...filePaths: string[]) {
-  const builtData = concatWithYamlRefs<Record<string, IOracleCategoryYaml>>(referencePath, ...filePaths);
-  const result: IOracleCatRoot = {
-    _refs: deepFreezeStrict(builtData._refs),
-    _templates: deepFreezeStrict(builtData._templates),
-    Categories: Object.values(_.omitBy(builtData, (_, key) => key.startsWith("_"))),
+  const builtData = concatWithYamlRefs<Record<string, IOracleSetYaml>>(referencePath, ...filePaths);
+  const result: IOracleRoot = {
+    _refs: (builtData._refs),
+    _templates: (builtData._templates),
+    Sets: Object.values(_.omitBy(builtData, (_, key) => key.startsWith("_"))),
   };
   return result;
 }

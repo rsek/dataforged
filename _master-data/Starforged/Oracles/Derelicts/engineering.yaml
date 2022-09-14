@@ -1,14 +1,14 @@
 Engineering:
-  _templateCategory: *template.category:Zone
+  _templateOracleSet: *template.category:Zone
   _templateVars:
     Zone: Engineering
   Title:
     Canonical: Engineering
   Source:
     Page: 354
-  Oracles:
-    - _templateInfo: *template.info:Zone.Area
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:Zone.Area
+      _templateTableRows:
         rolls: *template.rolls:Zone.Area
         content:
           - Control room
@@ -23,8 +23,8 @@ Engineering:
           - Workshop
           - *result:NewZone
           - *result:NewZoneViaAccess
-    - _templateInfo: *template.info:Zone.Feature
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Feature
+      _templateTableRows:
         rolls: *template.rolls:Zone.Feature
         content:
           - Cluttered workbench
@@ -39,8 +39,8 @@ Engineering:
           - Unfinished project
           - Utility bots
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:Zone.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Peril
+      _templateTableRows:
         rolls: *template.rolls:Zone.Peril
         content:
           - Corrosive leak
@@ -54,8 +54,8 @@ Engineering:
           - Unstable or failing power core
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:Zone.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:Zone.Opportunity
         content:
           - Advanced or experimental equipment

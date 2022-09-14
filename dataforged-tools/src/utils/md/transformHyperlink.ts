@@ -1,5 +1,5 @@
-import type { Oracle , OracleCategory } from "@classes/index.js";
-import type { IOracleCategory } from "@json_out/index.js";
+import type { OracleTable , OracleSet } from "@classes/index.js";
+import type { IOracleSet } from "@json_out/index.js";
 import { findById } from "@utils/md/findById.js";
 import _ from "lodash-es";
 
@@ -27,13 +27,13 @@ export function transformMoveLinks(md: string, localLinks: boolean = false, path
  * @param md - The markdown string to be transformed.
  * @returns The original string with the links transformed.
  */
-export function transformOracleLinks(data: IOracleCategory[], md: string, currentFile: `${string}.md`) {
+export function transformOracleLinks(data: IOracleSet[], md: string, currentFile: `${string}.md`) {
   md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match:string, p1:string, p2: string) => {
     // console.log("matched:", match);
     const oracleId = match
       .replaceAll("(", "")
       .replaceAll(")", "");
-    const linkedOracle = findById<OracleCategory | Oracle>(data, oracleId);
+    const linkedOracle = findById<OracleSet | OracleTable>(data, oracleId);
     if (!linkedOracle) {
       throw new Error(`Unable to find linked oracle: ${oracleId}`);
     }
@@ -50,7 +50,7 @@ export function transformOracleLinks(data: IOracleCategory[], md: string, curren
     const oracleId = match.replaceAll("/", "/").replaceAll("(", "")
       .replaceAll(")", "")
       .replaceAll("_", " ");
-    const linkedOracle = findById<OracleCategory | Oracle>(data, oracleId);
+    const linkedOracle = findById<OracleSet | OracleTable>(data, oracleId);
     if (!linkedOracle) {
       throw new Error(`Unable to find linked oracle: ${oracleId}`);
     }

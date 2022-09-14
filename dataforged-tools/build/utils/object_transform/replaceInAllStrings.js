@@ -1,3 +1,4 @@
+import { buildLog } from "../logging/buildLog.js";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 /**
@@ -17,7 +18,8 @@ export function replaceInAllStrings(object, searchValue, replaceValue) {
         callback: ({ value, parent, parentProperty, path, pointer }) => {
             // console.log("found string:",value);
             // if (value.includes(searchValue)) {
-            parent[parentProperty] = value.replaceAll(searchValue, replaceValue);
+            buildLog(replaceInAllStrings, `Replacing in value at ${path}`);
+            parent[parentProperty] = value?.replaceAll(searchValue, replaceValue);
             // console.log("new string:", parent[parentProperty]);
             // }
         }

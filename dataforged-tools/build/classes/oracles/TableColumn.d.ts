@@ -1,5 +1,5 @@
 import { TableColumnType } from "../../json_out/index.js";
-import type { IOracle, ITableColumnRoll, ITableColumnText } from "../../json_out/index.js";
+import type { IOracleTable, ITableColumnRoll, ITableColumnText } from "../../json_out/index.js";
 /**
  * @internal
  */
@@ -9,7 +9,7 @@ export declare class TableColumnText implements ITableColumnText {
     Label: ITableColumnText["Label"];
     ["Content"]: ITableColumnText["Content"];
     Key: ITableColumnText["Key"];
-    constructor(parentID: string, content: IOracle["$id"], index: number, label?: string, key?: ITableColumnText["Key"]);
+    constructor(parentID: string, content: IOracleTable["$id"], index: number, label?: string, key?: ITableColumnText["Key"]);
 }
 /**
  * @internal
@@ -19,6 +19,6 @@ export declare class TableColumnRoll implements ITableColumnRoll {
     $id: string;
     Label: string;
     ["Content"]: ITableColumnRoll["Content"];
-    constructor(parentID: string, content: IOracle["$id"], index: number, label?: string);
+    constructor(parentID: string, content: IOracleTable["$id"], index: number, label?: string);
 }
 //# sourceMappingURL=TableColumn.d.ts.map

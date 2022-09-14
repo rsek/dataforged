@@ -1,14 +1,14 @@
 Medical:
-  _templateCategory: *template.category:Zone
+  _templateOracleSet: *template.category:Zone
   _templateVars:
     Zone: Medical
   Title:
     Canonical: Medical
   Source:
     Page: 356
-  Oracles:
-    - _templateInfo: *template.info:Zone.Area
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:Zone.Area
+      _templateTableRows:
         rolls: *template.rolls:Zone.Area
         content:
           - Crematorium
@@ -23,8 +23,8 @@ Medical:
           - Ward or clinic
           - *result:NewZone
           - *result:NewZoneViaAccess
-    - _templateInfo: *template.info:Zone.Feature
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Feature
+      _templateTableRows:
         rolls: *template.rolls:Zone.Feature
         content:
           - Autopsied corpse
@@ -39,8 +39,8 @@ Medical:
           - Medical records or scans
           - Stacks of body bags
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:Zone.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Peril
+      _templateTableRows:
         rolls: *template.rolls:Zone.Peril
         content:
           - Disgusting sight / smell
@@ -54,8 +54,8 @@ Medical:
           - Signs of broken quarantine
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:Zone.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:Zone.Opportunity
         content:
           - Cache of medicine

@@ -5,11 +5,11 @@ import { Display } from "../common/Display.js";
 import { SourceInheritor } from "../common/SourceInheritor.js";
 import { Title } from "../common/Title.js";
 import { InputSelectOptionType, InputType, Replacement } from "../../json_out/index.js";
+import { formatIdFragment } from "../../utils/formatIdFragment.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import { buildLog } from "../../utils/logging/buildLog.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "../../utils/object_transform/replaceInAllStrings.js";
-import { formatIdFragment } from "../../utils/toIdFragment.js";
 import _ from "lodash-es";
 /**
  * @internal

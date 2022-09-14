@@ -2,7 +2,7 @@ import { Display } from "@classes/common/Display.js";
 import type { EncounterStarforged  } from "@classes/index.js";
 import { Source , Title } from "@classes/index.js";
 import type { ChallengeRank, EncounterNatureStarforged, EncounterTags, IEncounterStarforged, IEncounterVariant } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IEncounterVariantYaml } from "@yaml_in/index.js";
 
 

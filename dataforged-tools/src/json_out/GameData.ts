@@ -1,4 +1,4 @@
-import type { IAssetType, IDelveDomain, IDelveRarity, IDelveTheme, IEncounterNatureInfo, IEncounterStarforged , IIronswornRegion, IMoveCategory, IOracleCategory, ISettingTruth, ISettingTruthClassic } from "@json_out/index.js";
+import type { IAssetType, IDelveDomain, IDelveRarity, IDelveTheme, IEncounterNatureInfo, IEncounterStarforged , IIronswornRegion, IMoveCategory, IOracleSet, ISettingTruth, ISettingTruthClassic } from "@json_out/index.js";
 
 /**
  * Base interface for *Ironsworn* and *Ironsworn: Starforged* game data.
@@ -9,7 +9,7 @@ export interface GameDataRoot {
   "Asset Types": IAssetType[];
   "Encounters": IEncounterStarforged[]|IEncounterNatureInfo[];
   "Move Categories": IMoveCategory[];
-  "Oracle Categories": IOracleCategory[];
+  "Oracle Sets": IOracleSet[];
   "Setting Truths"?: ISettingTruth[] | ISettingTruthClassic[];
 }
 

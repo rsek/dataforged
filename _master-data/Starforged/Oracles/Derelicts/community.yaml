@@ -1,14 +1,14 @@
 Community:
-  _templateCategory: *template.category:Zone
+  _templateOracleSet: *template.category:Zone
   _templateVars:
     Zone: Community
   Title:
     Canonical: Community
   Source:
     Page: 353
-  Oracles:
-    - _templateInfo: *template.info:Zone.Area
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:Zone.Area
+      _templateTableRows:
         rolls: *template.rolls:Zone.Area
         content:
           - Bar or club
@@ -23,8 +23,8 @@ Community:
           - Temple or chapel
           - *result:NewZone
           - *result:NewZoneViaAccess
-    - _templateInfo: *template.info:Zone.Feature
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Feature
+      _templateTableRows:
         rolls: *template.rolls:Zone.Feature
         content:
           - Ad-hoc memorials
@@ -39,8 +39,8 @@ Community:
           - Panoramic viewport
           - Rubble or debris
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:Zone.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Peril
+      _templateTableRows:
         rolls: *template.rolls:Zone.Peril
         content:
           - Biological infestation
@@ -54,8 +54,8 @@ Community:
           - Heartbreaking memento of lost lives
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:Zone.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:Zone.Opportunity
         content:
           - Culturally significant object or artifact

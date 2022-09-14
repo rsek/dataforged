@@ -19,6 +19,13 @@
 * roll templates (see `IRowTemplate`) now demarcate strings to be replaced with `{{Oracle_Id}}` rather than `${{Oracle_Id}}`. Admittedly, this is a bit arbitrary, and is mainly so that internal JSON template replacement when Dataforged builds from YAML uses a replacement demarcation distinct from roll templates. example:
   * old: `"${{Starforged/Oracles/Factions/Affiliation}} of the ${{Starforged/Oracles/Factions/Legacy}} ${{Starforged/Oracles/Factions/Identity}}"`
   * new: `"{{Starforged/Oracles/Factions/Affiliation}} of the {{Starforged/Oracles/Factions/Legacy}} {{Starforged/Oracles/Factions/Identity}}"`
+* restructure of IOracle + IOracleCategory into `IOracleTable` and `IOracleSet`
+  * "leaf" nodes (ones with a "Table") key are now always `IOracleTable`
+  * "branch" nodes (ones that previously had "Oracles" or "Categories") are now `IOracleSet`
+    * `IOracleSet.Sets` is an array of any `IOracleSet` children belonging to that set.
+    * `IOracleSet.Tables` is an array of any `IOracleTable` children belonging to that oracle set.
+  * to make this new scheme consistent, some oracle objects have been re-organized, and may have new IDs
+* for `IOracleSet` and `IOracleTable`, `Category` and `Member of` are now replaced by a single array called `Ancestors`, which contains the string IDs of every `IOracleSet` from which the item descends
 
 ### Other API changes
 * `Source` now includes a `License` property, containing a URI pointing to the relevant license.

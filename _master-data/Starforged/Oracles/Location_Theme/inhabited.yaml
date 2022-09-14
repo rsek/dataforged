@@ -1,5 +1,5 @@
 Inhabited:
-  _templateCategory: *template.category:LocationTheme
+  _templateOracleSet: *template.category:LocationTheme
   _templateVars:
     Location Theme: Inhabited
   Title:
@@ -7,9 +7,9 @@ Inhabited:
   Description: *description:Inhabited
   Source:
     Page: 376
-  Oracles:
-    - _templateInfo: *template.info:LocationTheme.Feature
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:LocationTheme.Feature
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Feature
         content:
           - Conspicuous patrols or surveillance
@@ -25,8 +25,8 @@ Inhabited:
           - Unusually empty or quiet area
           - Vendor or merchant hawking their wares
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:LocationTheme.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Peril
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Peril
         content:
           - Announcement or notification brings harrowing news
@@ -41,8 +41,8 @@ Inhabited:
           - Unwanted attention from authority or enemies
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:LocationTheme.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Opportunity
         content:
           - Intriguing offer from an unexpected source

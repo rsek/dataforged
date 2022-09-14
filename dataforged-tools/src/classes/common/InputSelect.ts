@@ -2,8 +2,8 @@
 import { Input } from "@classes/common/Input.js";
 import { InputType } from "@json_out/index.js";
 import type { IAsset, IAssetAbility, IInputSelect, IInputSelectAttributeDefinition, IInputSelectOption, IInputSelectOptionSetter , IInputSelectOptionSetterMeter, IInputSelectOptionSetterNumber, IInputSelectOptionSetterStat, IInputSelectOptionSetterString, InputSelectOptionType } from "@json_out/index.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IInputSelectOptionSetterYaml, IInputSelectOptionYaml, IInputSelectYaml } from "@yaml_in/index.js";
 
 /**

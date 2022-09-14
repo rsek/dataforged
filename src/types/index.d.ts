@@ -185,7 +185,7 @@ export declare interface GameDataRoot {
     "Asset Types": IAssetType[];
     "Encounters": IEncounterStarforged[] | IEncounterNatureInfo[];
     "Move Categories": IMoveCategory[];
-    "Oracle Categories": IOracleCategory[];
+    "Oracle Sets": IOracleSet[];
     "Setting Truths"?: ISettingTruth[] | ISettingTruthClassic[];
 }
 
@@ -1468,7 +1468,7 @@ export declare interface IMove extends IHasId, IHasText, IHasDisplay, IHasSource
     /**
      * The IDs of any oracles directly referenced by the move, or vice versa.
      */
-    Oracles?: IOracle["$id"][] | undefined;
+    Oracles?: IOracleTable["$id"][] | undefined;
     /**
      * Outcome information for the move.
      */
@@ -1688,13 +1688,139 @@ export declare enum InputType {
 }
 
 /**
- * Represents an oracle, which may have a Table or multiple child Oracles.
+ * Interface with elements common to various Oracle-related interfaces and classes.
  *
- * @see {@link IOracleBase} if you need to type both {@link IOracle} and {@link IOracleCategory} to crawl the oracle hierarchy in search of a specific `$id`.
+ * If you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.
+ *
+ * But if for some reason you can't, you can use this interface to type both {@link IOracleTable} and {@link IOracleSet} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
+ * @public
+ */
+export declare interface IOracleBase extends Partial<IHasAliases & IHasSummary & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
+    $id: string;
+    /**
+     * An array containing the ID of every {@link IOracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
+     */
+    Ancestors: IOracleSet["$id"][];
+    Display: IOracleDisplayBase;
+    /**
+     * Information on the usage of this oracle: recommended number of rolls, etc.
+     */
+    Usage?: IOracleUsage | undefined;
+    /**
+     * Represents a single oracle table, where 'table' is defined as being something with a single roll range.
+     *
+     * This key appears only on {@link IOracleSet}, and thus only on 'leaf' nodes of the oracle hierarchy 'tree'.
+     */
+    Table?: (IRow | IRowNullStub)[] | undefined;
+    /**
+     * Oracle tables contained by this set.
+     *
+     * This key appears only on {@link IOracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
+     */
+    Tables?: IOracleTable[] | undefined;
+    /**
+     * Oracle sets contained by this set.
+     *
+     * This key appears only on {@link IOracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
+     */
+    Sets?: IOracleSet[] | undefined;
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     *
+     * This key appears only on {@link IOracleTable}s that have a `Table`.
+     */
+    "On a Match"?: IOracleMatch | undefined;
+}
+
+/**
+ * Interface for metadata that describes an oracle's semantic or lexical content.
+ * @public
+ */
+export declare interface IOracleContent {
+    /**
+     * The part of speech of this oracle.
+     */
+    "Part of speech"?: PartOfSpeechTag[] | undefined;
+    /**
+     * Any arbitrary string tags associated with this oracle.
+     */
+    "Tags"?: string[] | undefined;
+}
+
+/**
+ * Base interface inherited by {@link IOracleSetDisplay} and {@link IOracleTableDisplay}.
+ * @public
+ */
+export declare interface IOracleDisplayBase extends IDisplay, IHasId {
+    /**
+     * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
+     *
+     * If `undefined`, this table is rendered as a standalone table.
+     *
+     * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
+     */
+    "Column of"?: IOracleTable["$id"] | undefined;
+    /**
+     * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
+     *
+     * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
+     */
+    "Columns"?: [ITableColumnRoll, ...(ITableColumnRoll | ITableColumnText)[]] | undefined;
+    /**
+     * This table is displayed as embedded in a row of another table.
+     */
+    "Embed in"?: IRow["$id"] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOracleMatch extends IHasId, IHasText {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
+     */
+    $id: string;
+}
+
+/**
+ * Represents an oracle set: a grouping that can contain both {@link IOracleTable}s and other instances of {@link IOracleSet}, but doesn't have its own `Table` key.
+ *
+ * @see {@link IOracleBase} if you need to type both {@link IOracleTable} and {@link IOracleSet} to crawl the oracle hierarchy in search of a specific `$id`.
  *
  * @public
  */
-export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
+export declare interface IOracleSet extends Omit<IOracleBase, "Table"> {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
+     */
+    $id: string;
+    /**
+     * A list of sample names for this category. Only used by Planetary Class {@link IOracleSet}s.
+     */
+    "Sample Names"?: string[] | undefined;
+    Sets?: IOracleSet[] | undefined;
+    Tables?: IOracleTable[] | undefined;
+    Display: IOracleSetDisplay;
+}
+
+/**
+ * Information on displaying {@link IOracleSet}, including information on its rendering in the original text.
+ *
+ * If an {@link IOracleSet} has `Columns`, it represents a "supertable" composed of multiple roll or string columns.
+ * @public
+ */
+export declare interface IOracleSetDisplay extends Omit<IOracleDisplayBase, "Column of" | "Embed in"> {
+}
+
+/**
+ * Represents an oracle that has a `Table` composed of {@link IRow} objects. Appears only as a 'leaf' note on the oracle hierarchy 'tree'.
+ *
+ * @see {@link IOracleBase} if you need to type both {@link IOracleTable} and {@link IOracleSet} to crawl the oracle hierarchy in search of a specific `$id`.
+ *
+ * @public
+ */
+export declare interface IOracleTable extends Omit<IOracleBase, "Sets" | "Tables"> {
     /**
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
      */
@@ -1716,10 +1842,8 @@ export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
      * ```
      */
     Title: ITitle;
-    Display: IOracleDisplay;
-    Category: IOracleCategory["$id"];
-    "Member of"?: IOracle["$id"] | undefined;
-    "Table"?: (IRow | IRowNullStub)[] | undefined;
+    Display: IOracleTableDisplay;
+    "Table": (IRow | IRowNullStub)[];
     /**
      * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
      */
@@ -1727,125 +1851,11 @@ export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
 }
 
 /**
- * Interface with elements common to various Oracle-related interfaces and classes.
- *
- * If you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.
- *
- * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
+ * Information on displaying {@link IOracleTable}, including information on its rendering in the original text.
  * @public
  */
-export declare interface IOracleBase extends Partial<IHasAliases & IHasSummary & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
-    $id: string;
-    /**
-     * The ID of the most recent OracleCategory ancestor of this item, if any.
-     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
-     */
-    Category?: IOracleCategory["$id"] | undefined;
-    /**
-     * The ID of the most recent Oracle ancestor of this item, if any.
-     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
-     */
-    "Member of"?: IOracle["$id"] | undefined;
-    Display: IDisplay;
-    /**
-     * Information on the usage of this oracle: recommended number of rolls, etc.
-     */
-    Usage?: IOracleUsage | undefined;
-    /**
-     * Represents a single oracle table, where 'table' is defined as being something with a single roll range.
-     *
-     * This key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all) {@link IOracle} objects.
-     */
-    Table?: (IRow | IRowNullStub)[] | undefined;
-    /**
-     * Oracle objects contained by this object.
-     *
-     * This key appears only on 'branch' nodes of the oracle hierarchy 'tree': {@link IOracleCategory}, and {@link IOracle} (when it contains multiple closely-related tables).
-     */
-    Oracles?: IOracle[] | undefined;
-    /**
-     * Subcategories contained by this oracle category.
-     *
-     * This key appears only on {@link IOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.
-     */
-    Categories?: IOracleCategory[] | undefined;
-    /**
-     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
-     *
-     * This key appears only on {@link IOracle}s that have a `Table`.
-     */
-    "On a Match"?: IOracleMatch | undefined;
-}
-
-/**
- * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.
- *
- * @see {@link IOracleBase} if you need to type both {@link IOracle} and {@link IOracleCategory} to crawl the oracle hierarchy in search of a specific `$id`.
- *
- * @public
- */
-export declare interface IOracleCategory extends Omit<IOracleBase, "Table"> {
-    /**
-     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
-     */
-    $id: string;
-    Category?: IOracleCategory["$id"] | undefined;
-    /**
-     * A list of sample names for this category (only used by Planetary Class subcategories).
-     */
-    "Sample Names"?: string[] | undefined;
-    Categories?: IOracleCategory[] | undefined;
-    Oracles?: IOracle[] | undefined;
-}
-
-/**
- * Interface for metadata that describes an oracle's semantic or lexical content.
- * @public
- */
-export declare interface IOracleContent {
-    /**
-     * The part of speech of this oracle.
-     */
-    "Part of speech"?: PartOfSpeechTag[] | undefined;
-    /**
-     * Any arbitrary string tags associated with this oracle.
-     */
-    "Tags"?: string[] | undefined;
-}
-
-/**
- * Information on displaying Oracles, including information on how their table(s) are rendered in the original text. Useful if you want your project's rendering of the tables to correspond with the book.
- * @public
- */
-export declare interface IOracleDisplay extends IDisplay, IHasId {
-    /**
-     * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
-     *
-     * If `undefined`, this table is rendered as a standalone table.
-     *
-     * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
-     */
-    "Column of"?: IOracle["$id"] | undefined;
-    /**
-     * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
-     *
-     * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
-     */
+export declare interface IOracleTableDisplay extends IOracleDisplayBase {
     "Columns": [ITableColumnRoll, ...(ITableColumnRoll | ITableColumnText)[]];
-    /**
-     * This table is displayed as embedded in a row of another table.
-     */
-    "Embed in"?: IRow["$id"] | undefined;
-}
-
-/**
- * @public
- */
-export declare interface IOracleMatch extends IHasId, IHasText {
-    /**
-     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
-     */
-    $id: string;
 }
 
 /**
@@ -2098,7 +2108,7 @@ export declare interface IRow extends Partial<Nullable<IHasSummary> & IHasRollTe
     /**
      * Additional oracle tables that should be rolled when this row is selected.
      */
-    "Oracle rolls"?: IOracle["$id"][] | undefined;
+    "Oracle rolls"?: IOracleTable["$id"][] | undefined;
     /**
      * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
      */
@@ -2248,7 +2258,7 @@ export declare interface ISuggestions {
     /**
      * Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.
      */
-    "Oracle rolls"?: IOracle["$id"][] | undefined;
+    "Oracle rolls"?: IOracleTable["$id"][] | undefined;
     /**
      * Suggested move IDs.
      */
@@ -2286,12 +2296,12 @@ export declare interface ITableColumnBase extends IHasLabel {
      */
     Label: string;
     /**
-     * The ID of the {@link IOracle} whose {@link IOracle.Table} content will be displayed in the table.
+     * The ID of the {@link IOracleTable} whose {@link IOracleTable.Table} content will be displayed in the table.
      */
-    "Content": IOracle["$id"];
+    "Content": IOracleTable["$id"];
     Type: TableColumnType;
     /**
-     * The key of each {@link IRow} in the {@link IOracle.Table}, whose string value is displayed in the rendered table.
+     * The key of each {@link IRow} in the {@link IOracleTable.Table}, whose string value is displayed in the rendered table.
      */
     Key?: KeysWithValuesOfType<IRow, string> | undefined;
 }

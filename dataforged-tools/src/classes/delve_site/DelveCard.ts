@@ -2,7 +2,7 @@ import { Row, Source, Title } from "@classes/index.js";
 import { DelveCardType } from "@json_out/index.js";
 import type { IDelveCard, IDelveDomain , IDelveTheme, IRow, ISource } from "@json_out/index.js";
 import type { PartialBy } from "@utils/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IDelveCardYaml, IDelveDomainYaml, IDelveThemeYaml } from "@yaml_in/index.js";
 import _ from "lodash-es";
 

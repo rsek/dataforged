@@ -1,10 +1,10 @@
 import { Display } from "@classes/common/Display.js";
 import type { Asset, MoveCategory, Suggestions } from "@classes/index.js";
 import { MoveOutcomes , MoveTrigger , SourceInheritor , Title } from "@classes/index.js";
-import type { Gamespace , IAssetAbility , IMove , IMoveCategory, IOracle, ISource, } from "@json_out/index.js";
+import type { Gamespace , IAssetAbility , IMove , IMoveCategory, IOracleTable, ISource, } from "@json_out/index.js";
 
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import { buildLog } from "@utils/logging/buildLog.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IMoveYaml } from "@yaml_in/moves/IMoveYaml";
 
 /**
@@ -23,7 +23,7 @@ export class Move extends SourceInheritor implements IMove {
   Trigger: MoveTrigger;
   Text: string;
   Tags?: string[] | undefined;
-  Oracles?: IOracle["$id"][] | undefined;
+  Oracles?: IOracleTable["$id"][] | undefined;
   Suggestions?: Suggestions | undefined;
   Outcomes?: MoveOutcomes | undefined;
   constructor(json: IMoveYaml, parent: IMoveCategory|IAssetAbility, gamespace: Gamespace,...sourceAncestors: ISource[]) {

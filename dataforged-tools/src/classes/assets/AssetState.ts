@@ -1,5 +1,5 @@
 import type { IAssetState, IHasId } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IAssetStateYaml } from "@yaml_in/index.js";
 
 /**

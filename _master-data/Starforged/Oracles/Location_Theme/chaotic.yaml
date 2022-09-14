@@ -1,5 +1,5 @@
 Chaotic:
-  _templateCategory: *template.category:LocationTheme
+  _templateOracleSet: *template.category:LocationTheme
   _templateVars:
     Location Theme: Chaotic
   Title:
@@ -7,9 +7,9 @@ Chaotic:
   Description: *description:Chaotic
   Source:
     Page: 372
-  Oracles:
-    - _templateInfo: *template.info:LocationTheme.Feature
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:LocationTheme.Feature
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Feature
         content:
           - Alterations in the flow of time
@@ -25,8 +25,8 @@ Chaotic:
           - Lifeforms spawned from chaos
           - Visions of your past or future
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:LocationTheme.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Peril
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Peril
         content:
           - Chaos makes its mark upon you
@@ -41,8 +41,8 @@ Chaotic:
           - Lifeforms made hostile by chaos
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:LocationTheme.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:LocationTheme.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:LocationTheme.Opportunity
         content:
           - Chaos ebbs or withdraws for a time

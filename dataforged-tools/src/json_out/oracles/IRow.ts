@@ -1,4 +1,4 @@
-import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls, IOracle, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
+import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls, IOracleTable, ISettingTruthOptionSubtableRow } from "@json_out/index.js";
 import type { Nullable } from "@utils/types/Nullable.js";
 
 /**
@@ -56,7 +56,7 @@ export interface IRow extends Partial<
   /**
    * Additional oracle tables that should be rolled when this row is selected.
    */
-  "Oracle rolls"?: IOracle["$id"][] | undefined;
+  "Oracle rolls"?: IOracleTable["$id"][] | undefined;
   /**
    * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
    */

@@ -20,7 +20,7 @@ Planets:
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
-  Oracles:
+  Tables:
     - Title:
         Canonical: Planetary Class
         Short: Class
@@ -47,7 +47,7 @@ Planets:
         - [91, 92, "[⏵Shattered World](Starforged/Oracles/Planets/Shattered)", *obj:Planet.Shattered, *images:ShatteredWorld]
         - [93, 98, "[⏵Tainted World](Starforged/Oracles/Planets/Tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
         - [99, 100, "[⏵Vital World](Starforged/Oracles/Planets/Vital)", *obj:Planet.Vital, *images:VitalWorld]
-
+  Sets:
     - Title:
         Canonical: Planetside Peril
         Short: Peril
@@ -74,11 +74,11 @@ Planets:
         Tags: [peril, event, present]
       Description: |-
         Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
-      Oracles:
-        - Display:
-            Column of: Starforged/Oracles/Planets/Peril
-          Title:
+      Tables:
+        - Title:
             Canonical: Lifebearing
+          Display:
+            Column of: Starforged/Oracles/Planets/Peril
           Usage:
             Requires: *attr:Life.Lifebearing
           Table: &table:Planets.Peril
@@ -123,7 +123,7 @@ Planets:
             Canonical: Lifeless
           Usage:
             Requires: *attr:Life.Lifeless
-          _templateTable:
+          _templateTableRows:
             content: *table:Planets.Peril
             rolls:
               - [null, null]
@@ -187,7 +187,7 @@ Planets:
             Life: null
       Description: |-
         Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
-      Oracles:
+      Tables:
         - Display:
             Column of: Starforged/Oracles/Planets/Opportunity
           Title:
@@ -226,7 +226,7 @@ Planets:
             Canonical: Lifeless
           Usage:
             Requires: *attr:Life.Lifeless
-          _templateTable:
+          _templateTableRows:
             content: *table:Planets.Opportunity
             rolls:
               - [null, null]

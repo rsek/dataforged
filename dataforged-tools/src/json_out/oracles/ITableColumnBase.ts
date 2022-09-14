@@ -1,4 +1,4 @@
-import type { IHasLabel, IOracle, IRow, KeysWithValuesOfType } from "@json_out/index.js";
+import type { IHasLabel, IOracleTable, IRow, KeysWithValuesOfType } from "@json_out/index.js";
 
 /**
  * Enumerates the type of content shown: a dice range, or a string.
@@ -20,12 +20,12 @@ export interface ITableColumnBase extends IHasLabel{
    */
   Label: string;
   /**
-   * The ID of the {@link IOracle} whose {@link IOracle.Table} content will be displayed in the table.
+   * The ID of the {@link IOracleTable} whose {@link IOracleTable.Table} content will be displayed in the table.
    */
-  "Content": IOracle["$id"];
+  "Content": IOracleTable["$id"];
   Type: TableColumnType
   /**
-   * The key of each {@link IRow} in the {@link IOracle.Table}, whose string value is displayed in the rendered table.
+   * The key of each {@link IRow} in the {@link IOracleTable.Table}, whose string value is displayed in the rendered table.
    */
   Key?: KeysWithValuesOfType<IRow, string> | undefined
 }

@@ -8,18 +8,7 @@ Settlements:
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
-  Oracles:
-    - _templateInfo: *template.info:Generic.Location
-      Title:
-        Canonical: Location
-      Source:
-        Page: 322
-      _templateTable:
-        content: *template.content:Generic.Location
-        rolls:
-          - [1, 40]
-          - [41, 75]
-          - [76, 100]
+  Sets:
     - Title:
         Canonical: Population
       Source:
@@ -44,7 +33,7 @@ Settlements:
             Content: Starforged/Oracles/Settlements/Population/Terminus
             Label: Number
             Key: Result
-      Oracles:
+      Tables:
         - Title:
             Canonical: Terminus
           Display:
@@ -67,7 +56,7 @@ Settlements:
             Requires:
               Attributes:
                 Region: Outlands
-          _templateTable:
+          _templateTableRows:
             content: *table:Population
             rolls:
               - [1, 15]
@@ -84,7 +73,7 @@ Settlements:
             Requires:
               Attributes:
                 Region: Expanse
-          _templateTable:
+          _templateTableRows:
             content: *table:Population
             rolls:
               - [1, 20]
@@ -93,6 +82,18 @@ Settlements:
               - [81, 95]
               - [96, 100]
 
+  Tables:
+    - _templateOracleTable: *template.info:Generic.Location
+      Title:
+        Canonical: Location
+      Source:
+        Page: 322
+      _templateTableRows:
+        content: *template.content:Generic.Location
+        rolls:
+          - [1, 40]
+          - [41, 75]
+          - [76, 100]
     - Title:
         Canonical: First Look
       Source:

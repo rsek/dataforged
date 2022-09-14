@@ -3,7 +3,7 @@ import type { ITitleYaml } from "./index.js";
 /**
  * @internal
  */
-export declare type YamlStub<T, PartialKey extends string = "", OmitKey extends string = ""> = Omit<PartialDeepBy<T, "$id" | "Source" | "Display" | "Optional" | PartialKey>, OmitKey> & {
+export declare type YamlStub<T, PartialKey extends string = "", OmitKey extends string = ""> = Omit<PartialDeepBy<T, "$id" | "Source" | "Display" | "Optional" | PartialKey>, OmitKey | "Ancestors"> & {
     _idFragment?: string | undefined;
 };
 /**

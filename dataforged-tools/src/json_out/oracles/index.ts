@@ -3,11 +3,11 @@
  */
 
 export * from "@json_out/oracles/IMultipleRolls.js";
-export * from "@json_out/oracles/IOracle.js";
+export * from "@json_out/oracles/IOracleTable.js";
 export * from "@json_out/oracles/IOracleBase.js";
-export * from "@json_out/oracles/IOracleCategory.js";
+export * from "@json_out/oracles/IOracleSet.js";
 export * from "@json_out/oracles/IOracleContent.js";
-export * from "@json_out/oracles/IDisplayOracle.js";
+export * from "@json_out/oracles/IOracleDisplay.js";
 export * from "@json_out/oracles/IOracleUsage.js";
 export * from "@json_out/oracles/ITableColumnRoll.js";
 export * from "@json_out/oracles/IRollTemplate.js";

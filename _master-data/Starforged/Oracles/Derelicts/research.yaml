@@ -1,14 +1,14 @@
 Research:
-  _templateCategory: *template.category:Zone
+  _templateOracleSet: *template.category:Zone
   _templateVars:
     Zone: Research
   Title:
     Canonical: Research
   Source:
     Page: 359
-  Oracles:
-    - _templateInfo: *template.info:Zone.Area
-      _templateTable:
+  Tables:
+    - _templateOracleTable: *template.info:Zone.Area
+      _templateTableRows:
         rolls: *template.rolls:Zone.Area
         content:
           - Clean room
@@ -23,8 +23,8 @@ Research:
           - Secure vault
           - *result:NewZone
           - *result:NewZoneViaAccess
-    - _templateInfo: *template.info:Zone.Feature
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Feature
+      _templateTableRows:
         rolls: *template.rolls:Zone.Feature
         content:
           - Aquarium or tank
@@ -39,8 +39,8 @@ Research:
           - Recorded research log
           - Spilled chemicals
           - *result:Descriptor+Focus
-    - _templateInfo: *template.info:Zone.Peril
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Peril
+      _templateTableRows:
         rolls: *template.rolls:Zone.Peril
         content:
           - Automated containment protocols are activated
@@ -54,8 +54,8 @@ Research:
           - Unstable technology
           - *result:Action+Theme
           - *result:RollTwice
-    - _templateInfo: *template.info:Zone.Opportunity
-      _templateTable:
+    - _templateOracleTable: *template.info:Zone.Opportunity
+      _templateTableRows:
         rolls: *template.rolls:Zone.Opportunity
         content:
           - Helpful research data

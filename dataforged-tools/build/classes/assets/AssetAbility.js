@@ -2,9 +2,9 @@ import { AlterMomentum } from "./AlterMomentum.js";
 import { AssetState } from "./AssetState.js";
 import { AlterMove, Move } from "../index.js";
 import { Replacement } from "../../json_out/index.js";
+import { formatIdFragment } from "../../utils/formatIdFragment.js";
 import { pickInput } from "../../utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "../../utils/object_transform/replaceInAllStrings.js";
-import { formatIdFragment } from "../../utils/toIdFragment.js";
 import _ from "lodash-es";
 /**
  * @internal

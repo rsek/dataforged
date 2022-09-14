@@ -1,4 +1,4 @@
-import type { IAsset, IDelveDomain, IDelveTheme, IEncounterIronsworn, IEncounterStarforged, IGameObject, IIronswornRegion, IMove, IOracle } from "../index.js";
+import type { IAsset, IDelveDomain, IDelveTheme, IEncounterIronsworn, IEncounterStarforged, IGameObject, IIronswornRegion, IMove, IOracleTable } from "../index.js";
 /**
  * Describes "non-canonical" suggestions for game content related to the parent item.
  *
@@ -15,7 +15,7 @@ export interface ISuggestions {
     /**
      * Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.
      */
-    "Oracle rolls"?: IOracle["$id"][] | undefined;
+    "Oracle rolls"?: IOracleTable["$id"][] | undefined;
     /**
      * Suggested move IDs.
      */

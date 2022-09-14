@@ -22,7 +22,7 @@ export function buildDataforged(gamespace = Gamespace.Starforged) {
                 "Asset Types": buildAssets(gamespace),
                 Encounters: buildEncounters(gamespace),
                 "Move Categories": buildMoves(gamespace),
-                "Oracle Categories": buildOracles(gamespace),
+                "Oracle Sets": buildOracles(gamespace),
                 "Setting Truths": buildTruths(gamespace)
             };
             break;
@@ -33,7 +33,7 @@ export function buildDataforged(gamespace = Gamespace.Starforged) {
                 "Asset Types": buildAssets(gamespace),
                 Encounters: buildEncounters(gamespace),
                 "Move Categories": buildMoves(gamespace),
-                "Oracle Categories": buildOracles(gamespace),
+                "Oracle Sets": buildOracles(gamespace),
                 "Setting Truths": buildTruths(gamespace),
                 "Site Themes": buildDelveSiteCards(DelveCardType.Theme),
                 "Site Domains": buildDelveSiteCards(DelveCardType.Domain),

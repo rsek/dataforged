@@ -9,7 +9,50 @@ Moves:
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
-  Oracles:
+  Sets:
+    - Title:
+        Canonical: Ask the Oracle
+      Source:
+        Page: 229
+      Tables:
+        - Title:
+            Canonical: Almost Certain
+          On a Match: &AtO.Match
+            Text: On a match, envision an extreme result or twist.
+          Aliases: ["90"]
+          Table:
+            - [1, 90, "Yes"]
+            - [91, 100, "No"]
+        - Title:
+            Canonical: Likely
+          On a Match: *AtO.Match
+          Aliases: ["75"]
+          Table:
+            - [1, 75, "Yes"]
+            - [76, 100, "No"]
+        - Title:
+            Canonical: 50/50
+          _idFragment: Fifty-fifty
+          On a Match: *AtO.Match
+          Aliases: ["50"]
+          Table:
+            - [1, 50, "Yes"]
+            - [51, 100, "No"]
+        - On a Match: *AtO.Match
+          Title:
+            Canonical: Unlikely
+          Aliases: ["25"]
+          Table:
+            - [1, 25, "Yes"]
+            - [26, 100, "No"]
+        - On a Match: *AtO.Match
+          Title:
+            Canonical: Small Chance
+          Aliases: ["10"]
+          Table:
+            - [1, 10, "Yes"]
+            - [11, 100, "No"]
+  Tables:
     - Title:
         Canonical: Begin a Session
       Source:
@@ -138,48 +181,6 @@ Moves:
         - [71, 85, "It's a rough ride. All aboard must make the [Endure Harm](Starforged/Moves/Suffer/Endure_Harm), [Endure Stress](Starforged/Moves/Suffer/Endure_Stress), or [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move, suffering a serious (-2) cost."]
         - [86, 95, "You’ve lost fuel, energy, or cargo. [Sacrifice Resources](Starforged/Moves/Suffer/Sacrifice_Resources) (-2)."]
         - [96, 100, "Against all odds, the vehicle holds together."]
-    - Title:
-        Canonical: Ask the Oracle
-      Source:
-        Page: 229
-      Oracles:
-        - Title:
-            Canonical: Almost Certain
-          On a Match: &AtO.Match
-            Text: On a match, envision an extreme result or twist.
-          Aliases: ["90"]
-          Table:
-            - [1, 90, "Yes"]
-            - [91, 100, "No"]
-        - Title:
-            Canonical: Likely
-          On a Match: *AtO.Match
-          Aliases: ["75"]
-          Table:
-            - [1, 75, "Yes"]
-            - [76, 100, "No"]
-        - Title:
-            Canonical: 50/50
-          _idFragment: Fifty-fifty
-          On a Match: *AtO.Match
-          Aliases: ["50"]
-          Table:
-            - [1, 50, "Yes"]
-            - [51, 100, "No"]
-        - On a Match: *AtO.Match
-          Title:
-            Canonical: Unlikely
-          Aliases: ["25"]
-          Table:
-            - [1, 25, "Yes"]
-            - [26, 100, "No"]
-        - On a Match: *AtO.Match
-          Title:
-            Canonical: Small Chance
-          Aliases: ["10"]
-          Table:
-            - [1, 10, "Yes"]
-            - [11, 100, "No"]
     - Title:
         Canonical: Pay the Price
       Source:

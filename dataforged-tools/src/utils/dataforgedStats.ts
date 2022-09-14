@@ -1,6 +1,6 @@
-import type { EncounterNatureInfo, EncounterStarforged, Oracle, Row } from "@classes/index.js";
+import type { EncounterNatureInfo, EncounterStarforged, OracleTable, Row } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
-import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged , IOracleCategory , Ironsworn , Starforged } from "@json_out/index.js";
+import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged , IOracleSet , Ironsworn , Starforged } from "@json_out/index.js";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 
@@ -8,7 +8,7 @@ import _ from "lodash-es";
  * Extracts statistics on Ironsworn game data.
  * @param param0
  */
-export function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }: GameDataRoot) {
+export function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot) {
   const assetCount = _.sum(assets.map(item => item.Assets.length));
   const moveCount = _.sum(moves.map(item => item.Moves.length));
   return `${assetCount} assets comprising ${assets.length} types,
@@ -22,10 +22,10 @@ export function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Type
  * Creates a string of oracle stats for use in build messages.
  * @param oracles
  */
-export function oracleStats(oracles: IOracleCategory[]) {
-  const oracleTables = JSONPath<Oracle[]>({ path: "$..Oracles[*][Table]", json: oracles });
+export function oracleStats(oracles: IOracleSet[]) {
+  const oracleTables = JSONPath<OracleTable[]>({ path: "$..Oracles[*][Table]", json: oracles });
   const oracleSubtables = JSONPath<Row[]>({ json: oracleTables, path: "$..Subtable" });
-  return `${oracleTables.length + oracleSubtables.length} oracle tables in ${oracles.length} categories`;
+  return `${oracleTables.length + oracleSubtables.length} oracle tables in ${oracles.length} sets`;
 }
 
 

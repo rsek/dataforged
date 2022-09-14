@@ -19,18 +19,7 @@ Derelicts:
     - Research
   Description: |-
     Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
-  Oracles:
-    - _templateInfo: *template.info:Generic.Location
-      Title:
-        Canonical: Location
-      Source:
-        Page: 348
-      _templateTable:
-        content: *template.content:Generic.Location
-        rolls:
-          - [1, 40]
-          - [41, 60]
-          - [61, 100]
+  Sets:
     - Title:
         Canonical: Type (by Location)
         Short: Type
@@ -52,7 +41,7 @@ Derelicts:
             Label: Deep Space
           - Type: string
             Content: Starforged/Oracles/Derelicts/Type/Planetside
-      Oracles:
+      Tables:
         - Display: &derelictTypeDisplay
             Column of: Starforged/Oracles/Derelicts/Type
           Title:
@@ -67,7 +56,7 @@ Derelicts:
             Canonical: Orbital
           Usage:
             Requires: *attr:Location.Orbital
-          _templateTable:
+          _templateTableRows:
             content: *derelictTypeTable
             rolls:
               - [1, 40]
@@ -78,11 +67,82 @@ Derelicts:
             Canonical: Deep Space
           Usage:
             Requires: *attr:Location.DeepSpace
-          _templateTable:
+          _templateTableRows:
             content: *derelictTypeTable
             rolls:
               - [1, 75]
               - [76, 100]
+    - Title:
+        Canonical: Derelict Zones
+        Short: Zones
+      _idFragment: Zones
+      Source:
+        Page: 351
+      Display:
+        Columns:
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Zones/Starship
+            Label: Starship
+          - Type: dice range
+            Content: Starforged/Oracles/Derelicts/Zones/Settlement
+            Label: Settlement
+          - Type: string
+            Content: Starforged/Oracles/Derelicts/Zones/Starship
+      Usage:
+        Repeatable: true
+        Requires:
+          Attributes:
+            Derelict Type: null
+      Tables:
+        - Title:
+            Canonical: Starship
+          Display:
+            Column of: Starforged/Oracles/Derelicts/Zone
+          Usage:
+            Requires:
+              Attributes:
+                Derelict Type: Starship
+          Table: &derelictZoneTable
+            - [null, null, "[⏵Access](Starforged/Oracles/Derelicts/Access)", *obj:DerelictZone.Community, Icon: "img/vector/Derelicts/Community.svg"]
+            - [1, 5, "[⏵Community](Starforged/Oracles/Derelicts/Community)", *obj:DerelictZone.Community, Icon: "img/vector/Derelicts/Community.svg"]
+            - [6, 30, "[⏵Engineering](Starforged/Oracles/Derelicts/Engineering)", *obj:DerelictZone.Engineering, Icon: "img/vector/Derelicts/Engineering.svg"]
+            - [31, 55, "[⏵Living](Starforged/Oracles/Derelicts/Living)", *obj:DerelictZone.Living, Icon: "img/vector/Derelicts/Living.svg"]
+            - [56, 65, "[⏵Medical](Starforged/Oracles/Derelicts/Medical)", *obj:DerelictZone.Medical, Icon: "img/vector/Derelicts/Medical.svg"]
+            - [66, 85, "[⏵Operations](Starforged/Oracles/Derelicts/Operations)", *obj:DerelictZone.Operations, Icon: "img/vector/Derelicts/Operations.svg"]
+            - [86, 90, "[⏵Production](Starforged/Oracles/Derelicts/Production)", *obj:DerelictZone.Production, Icon: "img/vector/Derelicts/Production.svg"]
+            - [91, 100, "[⏵Research](Starforged/Oracles/Derelicts/Research)", *obj:DerelictZone.Research, Icon: "img/vector/Derelicts/Research.svg"]
+
+        - Title:
+            Canonical: Settlement
+          Display:
+            Column of: Starforged/Oracles/Derelicts/Zone
+          Usage:
+            Requires:
+              Attributes:
+                Derelict Type: Settlement
+          _templateTableRows:
+            content: *derelictZoneTable
+            rolls:
+              - [null, null]
+              - [1, 20]
+              - [21, 30]
+              - [31, 50]
+              - [51, 60]
+              - [61, 70]
+              - [71, 90]
+              - [91, 100]
+  Tables:
+    - _templateOracleTable: *template.info:Generic.Location
+      Title:
+        Canonical: Location
+      Source:
+        Page: 348
+      _templateTableRows:
+        content: *template.content:Generic.Location
+        rolls:
+          - [1, 40]
+          - [41, 60]
+          - [61, 100]
     - Title:
         Canonical: Condition
       Source:
@@ -160,62 +220,3 @@ Derelicts:
         - [88, 90, Unstable energy surges]
         - [91, 93, Watchful AI]
         - [94, 100, *result:Descriptor+Focus]
-    - Source:
-        Page: 351
-      Title:
-        Canonical: Derelict Zones
-        Short: Zones
-      _idFragment: Zones
-      Display:
-        Columns:
-          - Type: dice range
-            Content: Starforged/Oracles/Derelicts/Zones/Starship
-            Label: Starship
-          - Type: dice range
-            Content: Starforged/Oracles/Derelicts/Zones/Settlement
-            Label: Settlement
-          - Type: string
-            Content: Starforged/Oracles/Derelicts/Zones/Starship
-      Usage:
-        Repeatable: true
-        Requires:
-          Attributes:
-            Derelict Type: null
-      Oracles:
-        - Title:
-            Canonical: Starship
-          Display:
-            Column of: Starforged/Oracles/Derelicts/Zone
-          Usage:
-            Requires:
-              Attributes:
-                Derelict Type: Starship
-          Table: &derelictZoneTable
-            - [null, null, "[⏵Access](Starforged/Oracles/Derelicts/Access)", *obj:DerelictZone.Community, Icon: "img/vector/Derelicts/Community.svg"]
-            - [1, 5, "[⏵Community](Starforged/Oracles/Derelicts/Community)", *obj:DerelictZone.Community, Icon: "img/vector/Derelicts/Community.svg"]
-            - [6, 30, "[⏵Engineering](Starforged/Oracles/Derelicts/Engineering)", *obj:DerelictZone.Engineering, Icon: "img/vector/Derelicts/Engineering.svg"]
-            - [31, 55, "[⏵Living](Starforged/Oracles/Derelicts/Living)", *obj:DerelictZone.Living, Icon: "img/vector/Derelicts/Living.svg"]
-            - [56, 65, "[⏵Medical](Starforged/Oracles/Derelicts/Medical)", *obj:DerelictZone.Medical, Icon: "img/vector/Derelicts/Medical.svg"]
-            - [66, 85, "[⏵Operations](Starforged/Oracles/Derelicts/Operations)", *obj:DerelictZone.Operations, Icon: "img/vector/Derelicts/Operations.svg"]
-            - [86, 90, "[⏵Production](Starforged/Oracles/Derelicts/Production)", *obj:DerelictZone.Production, Icon: "img/vector/Derelicts/Production.svg"]
-            - [91, 100, "[⏵Research](Starforged/Oracles/Derelicts/Research)", *obj:DerelictZone.Research, Icon: "img/vector/Derelicts/Research.svg"]
-
-        - Title:
-            Canonical: Settlement
-          Display:
-            Column of: Starforged/Oracles/Derelicts/Zone
-          Usage:
-            Requires:
-              Attributes:
-                Derelict Type: Settlement
-          _templateTable:
-            content: *derelictZoneTable
-            rolls:
-              - [null, null]
-              - [1, 20]
-              - [21, 30]
-              - [31, 50]
-              - [51, 60]
-              - [61, 70]
-              - [71, 90]
-              - [91, 100]

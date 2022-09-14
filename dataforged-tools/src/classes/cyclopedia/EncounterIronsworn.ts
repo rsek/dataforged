@@ -5,7 +5,7 @@ import { Encounter } from "@classes/cyclopedia/Encounter.js";
 import type { EncounterNatureInfo } from "@classes/cyclopedia/EncounterNatureInfo.js";
 import type { IDisplay, IEncounterIronsworn } from "@json_out/index.js";
 import { EncounterNatureIronsworn } from "@json_out/index.js";
-import { formatIdFragment } from "@utils/toIdFragment.js";
+import { formatIdFragment } from "@utils/formatIdFragment.js";
 import type { IEncounterIronswornYaml } from "@yaml_in/index.js";
 
 

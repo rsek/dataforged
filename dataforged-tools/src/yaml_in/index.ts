@@ -4,7 +4,7 @@ import type { ITitleYaml } from "@yaml_in/index.js";
 /**
  * @internal
  */
-export type YamlStub<T, PartialKey extends string="", OmitKey extends string=""> = Omit<PartialDeepBy<T, "$id"|"Source"|"Display"|"Optional"|PartialKey>, OmitKey> & {_idFragment?: string|undefined };
+export type YamlStub<T, PartialKey extends string="", OmitKey extends string=""> = Omit<PartialDeepBy<T, "$id"|"Source"|"Display"|"Optional"|PartialKey>, OmitKey|"Ancestors"> & {_idFragment?: string|undefined };
 
 
 /**
@@ -12,8 +12,6 @@ export type YamlStub<T, PartialKey extends string="", OmitKey extends string="">
  * @internal
  */
 export type YamlStubTitle<T, PartialKey extends string="", OmitKey extends string=""> = YamlStub<T,PartialKey|"Title"|"Source",OmitKey> & { Title: ITitleYaml};
-
-
 
 export * from "@yaml_in/assets/index.js";
 export * from "@yaml_in/common/index.js";
