@@ -69,6 +69,11 @@
           "type": "string",
           "title": "Description"
         },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item. Summary is shorter than{@linkIHasDescription| Description}, when they're both present.",
+          "type": "string",
+          "title": "Summary"
+        },
         "Content": {
           "$ref": "#/definitions/IOracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
@@ -10625,16 +10630,15 @@
           "$ref": "#/definitions/IRequirementsYaml<AttributeKey>",
           "title": "Requires"
         },
+        "Roll template": {
+          "$ref": "#/definitions/IRollTemplateYaml",
+          "title": "Roll template"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
           "type": "string",
           "title": "$id"
-        },
-        "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
-          "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
-          "title": "Roll template"
         },
         "Sets": {
           "description": "Hints which attributes are set by this table.",
@@ -10666,7 +10670,8 @@
           "description": "Whether multiple rolls (as in object generation, or with{@linkIMultipleRolls}) .",
           "type": "boolean",
           "title": "Allow duplicates"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -15392,41 +15397,28 @@
       "enum": ["Starship"]
     },
     "T_8": { "$ref": "#/definitions/GameObjectType.Starship" },
-    "IRollTemplate": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate",
-      "$ref": "#/definitions/IRollTemplate_1"
-    },
-    "IRollTemplate_1": {
-      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate_1",
+    "IRollTemplateYaml": {
+      "title": "IRollTemplateYaml",
       "type": "object",
       "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+        "Description": {
+          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
           "type": "string",
-          "title": "$id"
-        },
-        "Result": {
-          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Result"
+          "title": "Description"
         },
         "Summary": {
           "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
           "type": "string",
           "title": "Summary"
         },
-        "Description": {
-          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
+        "Result": {
+          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
           "type": "string",
-          "title": "Description"
+          "title": "Result"
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id"]
+      "additionalProperties": false
     },
     "IAttributeChoices": {
       "title": "IAttributeChoices",
@@ -15574,6 +15566,11 @@
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
           "title": "Description"
+        },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item. Summary is shorter than{@linkIHasDescription| Description}, when they're both present.",
+          "type": "string",
+          "title": "Summary"
         },
         "Content": {
           "$ref": "#/definitions/IOracleContent",
@@ -15991,6 +15988,42 @@
       "additionalProperties": false,
       "required": ["Key"]
     },
+    "IRollTemplate": {
+      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+      "title": "IRollTemplate",
+      "$ref": "#/definitions/IRollTemplate_1"
+    },
+    "IRollTemplate_1": {
+      "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
+      "title": "IRollTemplate_1",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Result": {
+          "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Result"
+        },
+        "Summary": {
+          "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "Description": {
+          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Description"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id"]
+    },
     "ISuggestions": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
       "title": "ISuggestions",
@@ -16298,6 +16331,11 @@
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
           "title": "Description"
+        },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item. Summary is shorter than{@linkIHasDescription| Description}, when they're both present.",
+          "type": "string",
+          "title": "Summary"
         },
         "Content": {
           "$ref": "#/definitions/IOracleContent",
@@ -16637,6 +16675,11 @@
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
           "title": "Description"
+        },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item. Summary is shorter than{@linkIHasDescription| Description}, when they're both present.",
+          "type": "string",
+          "title": "Summary"
         },
         "Content": {
           "$ref": "#/definitions/IOracleContent",

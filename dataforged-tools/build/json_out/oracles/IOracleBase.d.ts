@@ -1,4 +1,4 @@
-import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory, IOracleUsage, IRow, IRowNullStub } from "../index.js";
+import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IHasSummary, IHasText, IHasTitle, IOracle, IOracleCategory, IOracleUsage, IRow, IRowNullStub } from "../index.js";
 /**
  * @public
  */
@@ -16,7 +16,7 @@ export interface IOracleMatch extends IHasId, IHasText {
  * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
-export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
+export interface IOracleBase extends Partial<IHasAliases & IHasSummary & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
     $id: string;
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.

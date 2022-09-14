@@ -21,6 +21,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
   Oracles?: Oracle[] | undefined;
   Categories?: OracleCategory[] | undefined;
   "Sample Names"?: string[];
+  Summary?: string | undefined;
   constructor(
     json: IOracleCategoryYaml,
     gamespace: Gamespace,
@@ -37,6 +38,7 @@ export class OracleCategory extends SourceInheritor implements IOracleCategory {
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Title = new Title(json.Title, this);
     this.Aliases = json.Aliases;
+    this.Summary = json.Summary;
     this.Description = json.Description;
     this.Display = new Display(json.Display??{});
     this.Category = category ?? undefined;

@@ -1,5 +1,5 @@
 import type { IMove, IMoveOutcomes, IMoveTrigger } from "../index.js";
-import type { IOutcomeInfo, MoveOutcome } from "../moves/IMoveOutcomeInfo.js";
+import type { IOutcomeMiss, IOutcomeStrongHit, IOutcomeWeakHit, MoveOutcome } from "../moves/IMoveOutcomeInfo.js";
 import type { PartialDeep, StubBy } from "../../utils/index.js";
 /**
  * Describes alterations applied to moves by asset abilities.
@@ -37,14 +37,23 @@ export interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "
  * @public
  */
 export interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, keyof typeof MoveOutcome> {
-    "Strong Hit"?: IAlterOutcomeInfo | undefined;
-    "Weak Hit"?: IAlterOutcomeInfo | undefined;
-    Miss?: IAlterOutcomeInfo | undefined;
+    "Strong Hit"?: IAlterStrongHit | undefined;
+    "Weak Hit"?: IAlterWeakHit | undefined;
+    Miss?: IAlterMiss | undefined;
 }
 /**
  * @public
  */
-export interface IAlterOutcomeInfo extends Omit<PartialDeep<IOutcomeInfo>, "With a Match"> {
-    "With a Match"?: Omit<IAlterOutcomeInfo, "With a Match"> | undefined;
+export interface IAlterStrongHit extends PartialDeep<IOutcomeStrongHit> {
+}
+/**
+ * @public
+ */
+export interface IAlterWeakHit extends PartialDeep<IOutcomeWeakHit> {
+}
+/**
+ * @public
+ */
+export interface IAlterMiss extends PartialDeep<IOutcomeMiss> {
 }
 //# sourceMappingURL=IAlterMove.d.ts.map

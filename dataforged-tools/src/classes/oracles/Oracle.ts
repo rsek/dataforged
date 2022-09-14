@@ -27,6 +27,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
   "On a Match"?: IOracle["On a Match"] | undefined;
   Table?: (Row|RowNullStub)[] | undefined;
   Oracles?: Oracle[] | undefined;
+  Summary?: string | undefined;
   constructor(
     json: IOracleYaml,
     gamespace: Gamespace,
@@ -54,6 +55,7 @@ export class Oracle extends SourceInheritor implements IOracle  {
     this["Member of"] = memberOf ?? undefined;
     this.Category = category;
 
+    this.Summary = jsonClone.Summary;
     this.Description = jsonClone.Description;
     this.Display = new OracleDisplay((jsonClone.Display ?? {}) as Partial<IOracleDisplay>, this);
     if (jsonClone.Usage) {

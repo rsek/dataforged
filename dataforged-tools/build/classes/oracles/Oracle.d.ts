@@ -18,6 +18,7 @@ export declare class Oracle extends SourceInheritor implements IOracle {
     "On a Match"?: IOracle["On a Match"] | undefined;
     Table?: (Row | RowNullStub)[] | undefined;
     Oracles?: Oracle[] | undefined;
+    Summary?: string | undefined;
     constructor(json: IOracleYaml, gamespace: Gamespace, category: IOracleCategory["$id"], memberOf?: IOracle["$id"], ...ancestorsJson: (IOracleYaml | IOracleCategoryYaml)[]);
 }
 //# sourceMappingURL=Oracle.d.ts.map

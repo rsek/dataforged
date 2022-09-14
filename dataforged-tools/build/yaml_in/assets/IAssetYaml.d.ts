@@ -1,5 +1,5 @@
-import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplay, IInput, IInputClock, IInputNumber, IInputSelect, IInputSelectOption, IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress } from "../../json_out/index.js";
-import type { PartialBy, PartialDeep } from "../../utils/index.js";
+import type { IAlterMove, IAlterMoveOutcomes, IAsset, IAssetAbility, IAssetState, IAssetType, IAssetUsage, IConditionMeter, IDisplay, IInput, IInputClock, IInputNumber, IInputSelect, IInputSelectOption, IInputSelectOptionSetter, IInputText, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeMiss, IOutcomeStrongHit, IOutcomeWeakHit } from "../../json_out/index.js";
+import type { PartialBy } from "../../utils/index.js";
 import type { StubExcept } from "../../utils/types/Stub.js";
 import type { IAlterMomentumYaml, IMoveTriggerYaml, IMoveYaml, YamlStub, YamlStubTitle } from "../index.js";
 /**
@@ -39,7 +39,10 @@ export interface IAlterMoveYaml extends YamlStub<IAlterMove, "", "Trigger" | "Ou
 /**
  * @internal
  */
-export interface IAlterMoveOutcomesYaml extends PartialDeep<IAlterMoveOutcomes> {
+export interface IAlterMoveOutcomesYaml extends YamlStub<IAlterMoveOutcomes> {
+    "Strong Hit": YamlStub<IOutcomeStrongHit> | undefined;
+    "Weak Hit": YamlStub<IOutcomeWeakHit> | undefined;
+    "Miss": YamlStub<IOutcomeMiss> | undefined;
 }
 /**
  * @internal

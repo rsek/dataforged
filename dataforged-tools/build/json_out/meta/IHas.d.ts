@@ -5,7 +5,7 @@ import type { IDisplay, IGameObject, IOracleContent, IRequirements, IRollTemplat
  */
 export interface IHasSummary extends IHasId {
     /**
-     * A user-facing markdown summary of the item. `Summary` is shorter than {@link IHasDescription | Description}.
+     * A user-facing markdown summary of the item. Summary is shorter than {@link IHasDescription | Description}, when they're both present.
      * @markdown
      * @localize
      */

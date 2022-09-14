@@ -19,7 +19,7 @@ Oracles:
           Canonical: A feature of the landscape
           Standard: Landscape Feature
         _idFragment: Landscape Feature
-        Description: &Landscape_Feature |-
+        Summary: &Landscape_Feature |-
           "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
         Table:
           - [1, 10, Highmount]
@@ -36,7 +36,7 @@ Oracles:
           Canonical: A manmade edifice
           Standard: Manmade Edifice
         _idFragment: Manmade Edifice
-        Description: &Manmade_Edifice |-
+        Summary: &Manmade_Edifice |-
           **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
         Table:
           - [1, 10, Whitebridge]
@@ -53,7 +53,7 @@ Oracles:
           Canonical: A creature
           Standard: Creature
         _idFragment: Creature
-        Description: &Creature |-
+        Summary: &Creature |-
           **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
         Table:
           - [1, 10, Ravencliff]
@@ -70,7 +70,7 @@ Oracles:
           Canonical: A historical event
           Standard: Historical Event
         _idFragment: Historical Event
-        Description: &Historical_Event |-
+        Summary: &Historical_Event |-
           **A historical event.** What happened here? What place or practice commemorates this event?
         Table:
           - [1, 10, Swordbreak]
@@ -87,7 +87,7 @@ Oracles:
           Canonical: A word in an Old World language
           Standard: Old World Language
         _idFragment: Old World Language
-        Description: &Old_World_Language |-
+        Summary: &Old_World_Language |-
           **A word in an Old World language.** What culture is represented by this word? What does it translate to?
         Table:
           - [1, 10, Abon]
@@ -104,7 +104,7 @@ Oracles:
           Canonical: A season or environmental aspect
           Standard: Environmental Aspect
         _idFragment: Environmental Aspect
-        Description: &Environmental_Aspect |-
+        Summary: &Environmental_Aspect |-
           **A season or environmental aspect.** What influence does the weather have on this settlement?
         Table:
           - [1, 10, Winterhome]
@@ -137,13 +137,13 @@ Oracles:
       - [ 46, 60, *Historical_Event, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Historical_Event] ]
       - [ 61, 75, *Old_World_Language, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Old_World_Language] ]
       - [ 76, 90, *Environmental_Aspect, Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Environmental_Aspect] ]
-      - [ 91, 100, "Something Else...", Oracle rolls: [Ironsworn/Oracles/Settlement/Name/Something_Else]]
+      - [ 91, 100, "Something Else..."]
   - Title:
       Canonical: "Oracle 8: Quick Settlement Name Generator"
       Standard: Quick Settlement Name Generator
       Short: Quick Name
     _idFragment: Quick Name
-    Description: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
+    Summary: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
     Display:
       Columns:
         - Type: dice range
@@ -156,7 +156,7 @@ Oracles:
           Label: Suffix
     Usage:
       Roll template:
-        Result: "${{Ironsworn/Oracles/Settlement/Quick_Name/Prefix}}${{Ironsworn/Oracles/Settlement/Quick_Name/Suffix}}"
+        Result: "{{Ironsworn/Oracles/Settlement/Quick_Name/Prefix}}{{Ironsworn/Oracles/Settlement/Quick_Name/Suffix}}"
     Source:
       Page: 180
     Oracles:
@@ -275,7 +275,7 @@ Oracles:
       Standard: Settlement Trouble
       Short: Trouble
     _idFragment: Trouble
-    Description: Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.
+    Summary: Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.
     Source:
       Page: 181
     Table:

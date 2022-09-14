@@ -15,6 +15,7 @@ export declare class OracleCategory extends SourceInheritor implements IOracleCa
     Oracles?: Oracle[] | undefined;
     Categories?: OracleCategory[] | undefined;
     "Sample Names"?: string[];
+    Summary?: string | undefined;
     constructor(json: IOracleCategoryYaml, gamespace: Gamespace, category?: IOracleCategory["$id"] | undefined, ...ancestorsJson: (IOracleCategoryYaml)[]);
 }
 //# sourceMappingURL=OracleCategory.d.ts.map

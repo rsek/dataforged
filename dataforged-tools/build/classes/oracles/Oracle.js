@@ -27,6 +27,7 @@ export class Oracle extends SourceInheritor {
         this.Aliases = jsonClone.Aliases;
         this["Member of"] = memberOf ?? undefined;
         this.Category = category;
+        this.Summary = jsonClone.Summary;
         this.Description = jsonClone.Description;
         this.Display = new OracleDisplay((jsonClone.Display ?? {}), this);
         if (jsonClone.Usage) {

@@ -504,15 +504,129 @@
       "type": "object",
       "properties": {
         "Strong Hit": {
-          "$ref": "#/definitions/Partial<IAlterOutcomeInfo>",
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "$id": {
+              "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+              "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$",
+              "type": "string",
+              "title": "$id"
+            },
+            "With a Match": {
+              "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+              "$ref": "#/definitions/IOutcomeStrongHitMatch",
+              "title": "With a Match"
+            },
+            "In Control": {
+              "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+              "default": true,
+              "type": "boolean",
+              "title": "In Control"
+            },
+            "Count as": {
+              "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+              "enum": ["Miss", "Strong Hit", "Weak Hit"],
+              "type": "string",
+              "title": "Count as"
+            },
+            "Reroll": {
+              "description": "Information on rerolls offered by this move.",
+              "$ref": "#/definitions/IMoveReroll",
+              "title": "Reroll"
+            },
+            "Text": {
+              "description": "The item's rules text as a markdown string.",
+              "type": "string",
+              "title": "Text"
+            },
+            "_idFragment": { "type": "string", "title": "_idFragment" }
+          },
+          "required": ["Text"],
           "title": "Strong Hit"
         },
         "Weak Hit": {
-          "$ref": "#/definitions/Partial<IAlterOutcomeInfo>",
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "$id": {
+              "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+              "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$",
+              "type": "string",
+              "title": "$id"
+            },
+            "With a Match": {
+              "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+              "type": "undefined",
+              "title": "With a Match"
+            },
+            "In Control": {
+              "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+              "default": false,
+              "type": "boolean",
+              "title": "In Control"
+            },
+            "Count as": {
+              "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+              "enum": ["Miss", "Strong Hit", "Weak Hit"],
+              "type": "string",
+              "title": "Count as"
+            },
+            "Reroll": {
+              "description": "Information on rerolls offered by this move.",
+              "$ref": "#/definitions/IMoveReroll",
+              "title": "Reroll"
+            },
+            "Text": {
+              "description": "The item's rules text as a markdown string.",
+              "type": "string",
+              "title": "Text"
+            },
+            "_idFragment": { "type": "string", "title": "_idFragment" }
+          },
+          "required": ["Text"],
           "title": "Weak Hit"
         },
         "Miss": {
-          "$ref": "#/definitions/Partial<IAlterOutcomeInfo>",
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "$id": {
+              "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+              "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$",
+              "type": "string",
+              "title": "$id"
+            },
+            "With a Match": {
+              "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+              "$ref": "#/definitions/IOutcomeMissMatch",
+              "title": "With a Match"
+            },
+            "In Control": {
+              "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+              "default": false,
+              "type": "boolean",
+              "title": "In Control"
+            },
+            "Count as": {
+              "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+              "enum": ["Miss", "Strong Hit", "Weak Hit"],
+              "type": "string",
+              "title": "Count as"
+            },
+            "Reroll": {
+              "description": "Information on rerolls offered by this move.",
+              "$ref": "#/definitions/IMoveReroll",
+              "title": "Reroll"
+            },
+            "Text": {
+              "description": "The item's rules text as a markdown string.",
+              "type": "string",
+              "title": "Text"
+            },
+            "_idFragment": { "type": "string", "title": "_idFragment" }
+          },
+          "required": ["Text"],
           "title": "Miss"
         },
         "$id": {
@@ -520,29 +634,27 @@
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
           "type": "string",
           "title": "$id"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "Partial<IAlterOutcomeInfo>": {
-      "title": "Partial<IAlterOutcomeInfo>",
+    "IOutcomeStrongHitMatch": {
+      "title": "IOutcomeStrongHitMatch",
       "type": "object",
       "properties": {
-        "With a Match": {
-          "$ref": "#/definitions/Omit<IAlterOutcomeInfo,\"WithaMatch\">",
-          "title": "With a Match"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit/With_a_Match$",
           "type": "string",
           "title": "$id"
         },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": true,
+          "type": "boolean",
+          "title": "In Control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
@@ -552,55 +664,22 @@
         },
         "Reroll": {
           "description": "Information on rerolls offered by this move.",
-          "$ref": "#/definitions/Partial<IMoveReroll>",
+          "$ref": "#/definitions/IMoveReroll",
           "title": "Reroll"
-        },
-        "In Control": {
-          "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
-          "type": "boolean",
-          "title": "In Control"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "Omit<IAlterOutcomeInfo,\"WithaMatch\">": {
-      "title": "Omit<IAlterOutcomeInfo,\"WithaMatch\">",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
-          "type": "string",
-          "title": "$id"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
           "title": "Text"
-        },
-        "Count as": {
-          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
-          "type": "string",
-          "title": "Count as"
-        },
-        "Reroll": {
-          "description": "Information on rerolls offered by this move.",
-          "$ref": "#/definitions/Partial<IMoveReroll>",
-          "title": "Reroll"
-        },
-        "In Control": {
-          "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
-          "type": "boolean",
-          "title": "In Control"
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
     },
-    "Partial<IMoveReroll>": {
-      "title": "Partial<IMoveReroll>",
+    "IMoveReroll": {
+      "description": "Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.",
+      "title": "IMoveReroll",
       "type": "object",
       "properties": {
         "$id": {
@@ -620,13 +699,51 @@
         }
       },
       "defaultProperties": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": ["$id", "Dice", "Text"]
     },
     "RerollType": {
       "description": "Enumerates which dice are to be rerolled.",
       "title": "RerollType",
       "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
       "type": "string"
+    },
+    "IOutcomeMissMatch": {
+      "title": "IOutcomeMissMatch",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss/With_a_Match$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": false,
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
     },
     "ISuggestions": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
@@ -800,6 +917,11 @@
           "type": "string",
           "title": "$id"
         },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
         "Source": {
           "$ref": "#/definitions/ISource",
           "description": "Information on this item's source.",
@@ -815,11 +937,6 @@
           "default": false,
           "type": "boolean",
           "title": "Optional"
-        },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
         },
         "Title": {
           "$ref": "#/definitions/ITitle",
@@ -1087,14 +1204,14 @@
       "type": "object",
       "properties": {
         "Strong Hit": {
-          "$ref": "#/definitions/IOutcomeInfoYaml",
+          "$ref": "#/definitions/IOutcomeStrongHitYaml",
           "title": "Strong Hit"
         },
         "Weak Hit": {
-          "$ref": "#/definitions/IOutcomeInfoYaml",
+          "$ref": "#/definitions/IOutcomeWeakHitYaml",
           "title": "Weak Hit"
         },
-        "Miss": { "$ref": "#/definitions/IOutcomeInfoYaml", "title": "Miss" },
+        "Miss": { "$ref": "#/definitions/IOutcomeMissYaml", "title": "Miss" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
@@ -1107,12 +1224,12 @@
       "additionalProperties": false,
       "required": ["Miss", "Strong Hit", "Weak Hit"]
     },
-    "IOutcomeInfoYaml": {
-      "title": "IOutcomeInfoYaml",
+    "IOutcomeStrongHitYaml": {
+      "title": "IOutcomeStrongHitYaml",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoYaml_1",
+          "$ref": "#/definitions/IOutcomeStrongHitMatchYaml",
           "title": "With a Match"
         },
         "$id": {
@@ -1121,10 +1238,10 @@
           "type": "string",
           "title": "$id"
         },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
@@ -1137,10 +1254,10 @@
           "$ref": "#/definitions/IMoveReroll",
           "title": "Reroll"
         },
-        "In Control": {
-          "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
-          "type": "boolean",
-          "title": "In Control"
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
@@ -1148,40 +1265,292 @@
       "additionalProperties": false,
       "required": ["Text"]
     },
-    "IOutcomeInfoYaml_1": {
-      "title": "IOutcomeInfoYaml_1",
-      "$ref": "#/definitions/IOutcomeInfoYaml"
-    },
-    "IMoveReroll": {
-      "description": "Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.",
-      "title": "IMoveReroll",
+    "IOutcomeStrongHitMatchYaml": {
+      "title": "IOutcomeStrongHitMatchYaml",
       "type": "object",
       "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeInfoBaseYaml<2>",
+          "title": "With a Match"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
           "type": "string",
           "title": "$id"
         },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
         "Text": {
-          "description": "The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.",
+          "description": "The item's rules text as a markdown string.",
           "type": "string",
           "title": "Text"
         },
-        "Dice": {
-          "$ref": "#/definitions/RerollType_1",
-          "description": "The dice to be rerolled.",
-          "title": "Dice"
-        }
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Dice", "Text"]
+      "required": ["Text"]
     },
-    "RerollType_1": {
-      "description": "Enumerates which dice are to be rerolled.",
-      "title": "RerollType_1",
-      "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
-      "type": "string"
+    "IOutcomeInfoBaseYaml<2>": {
+      "title": "IOutcomeInfoBaseYaml<2>",
+      "type": "object",
+      "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeInfoBaseYaml<2>",
+          "title": "With a Match"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
+    "IOutcomeWeakHitYaml": {
+      "title": "IOutcomeWeakHitYaml",
+      "type": "object",
+      "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeInfoBaseYaml<1>",
+          "title": "With a Match"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
+    "IOutcomeInfoBaseYaml<1>": {
+      "title": "IOutcomeInfoBaseYaml<1>",
+      "type": "object",
+      "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeInfoBaseYaml<1>",
+          "title": "With a Match"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
+    "IOutcomeMissYaml": {
+      "title": "IOutcomeMissYaml",
+      "type": "object",
+      "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeMissMatchYaml",
+          "title": "With a Match"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
+    "IOutcomeMissMatchYaml": {
+      "title": "IOutcomeMissMatchYaml",
+      "type": "object",
+      "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeInfoBaseYaml<0>",
+          "title": "With a Match"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
+    },
+    "IOutcomeInfoBaseYaml<0>": {
+      "title": "IOutcomeInfoBaseYaml<0>",
+      "type": "object",
+      "properties": {
+        "With a Match": {
+          "$ref": "#/definitions/IOutcomeInfoBaseYaml<0>",
+          "title": "With a Match"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Text"]
     },
     "ISource": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
@@ -2313,33 +2682,39 @@
           "title": "$id"
         },
         "Strong Hit": {
-          "$ref": "#/definitions/IOutcomeInfo",
+          "$ref": "#/definitions/IOutcomeStrongHit",
           "title": "Strong Hit"
         },
         "Weak Hit": {
-          "$ref": "#/definitions/IOutcomeInfo",
+          "$ref": "#/definitions/IOutcomeWeakHit",
           "title": "Weak Hit"
         },
-        "Miss": { "$ref": "#/definitions/IOutcomeInfo", "title": "Miss" }
+        "Miss": { "$ref": "#/definitions/IOutcomeMiss", "title": "Miss" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["$id", "Miss", "Strong Hit", "Weak Hit"]
     },
-    "IOutcomeInfo": {
-      "title": "IOutcomeInfo",
+    "IOutcomeStrongHit": {
+      "title": "IOutcomeStrongHit",
       "type": "object",
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$",
           "type": "string",
           "title": "$id"
         },
         "With a Match": {
           "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
-          "$ref": "#/definitions/IOutcomeInfo",
+          "$ref": "#/definitions/IOutcomeStrongHitMatch",
           "title": "With a Match"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": true,
+          "type": "boolean",
+          "title": "In Control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
@@ -2352,10 +2727,89 @@
           "$ref": "#/definitions/IMoveReroll",
           "title": "Reroll"
         },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
+    },
+    "IOutcomeWeakHit": {
+      "title": "IOutcomeWeakHit",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$",
+          "type": "string",
+          "title": "$id"
+        },
+        "With a Match": {
+          "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+          "type": "undefined",
+          "title": "With a Match"
+        },
         "In Control": {
-          "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": false,
           "type": "boolean",
           "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
+    },
+    "IOutcomeMiss": {
+      "title": "IOutcomeMiss",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$",
+          "type": "string",
+          "title": "$id"
+        },
+        "With a Match": {
+          "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+          "$ref": "#/definitions/IOutcomeMissMatch",
+          "title": "With a Match"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": false,
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -2626,14 +3080,14 @@
       "type": "object",
       "properties": {
         "Strong Hit": {
-          "$ref": "#/definitions/IAlterOutcomeInfo",
+          "$ref": "#/definitions/IAlterStrongHit",
           "title": "Strong Hit"
         },
         "Weak Hit": {
-          "$ref": "#/definitions/IAlterOutcomeInfo",
+          "$ref": "#/definitions/IAlterWeakHit",
           "title": "Weak Hit"
         },
-        "Miss": { "$ref": "#/definitions/IAlterOutcomeInfo", "title": "Miss" },
+        "Miss": { "$ref": "#/definitions/IAlterMiss", "title": "Miss" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
@@ -2645,24 +3099,26 @@
       "additionalProperties": false,
       "required": ["$id"]
     },
-    "IAlterOutcomeInfo": {
-      "title": "IAlterOutcomeInfo",
+    "IAlterStrongHit": {
+      "title": "IAlterStrongHit",
       "type": "object",
       "properties": {
-        "With a Match": {
-          "$ref": "#/definitions/Omit<IAlterOutcomeInfo,\"WithaMatch\">",
-          "title": "With a Match"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$",
           "type": "string",
           "title": "$id"
         },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
+        "With a Match": {
+          "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+          "$ref": "#/definitions/Partial<IOutcomeStrongHitMatch>",
+          "title": "With a Match"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": true,
+          "type": "boolean",
+          "title": "In Control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
@@ -2675,10 +3131,193 @@
           "$ref": "#/definitions/Partial<IMoveReroll>",
           "title": "Reroll"
         },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "Partial<IOutcomeStrongHitMatch>": {
+      "title": "Partial<IOutcomeStrongHitMatch>",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit/With_a_Match$",
+          "type": "string",
+          "title": "$id"
+        },
         "In Control": {
-          "description": "Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": true,
           "type": "boolean",
           "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "Partial<IMoveReroll>": {
+      "title": "Partial<IMoveReroll>",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "type": "string",
+          "title": "$id"
+        },
+        "Text": {
+          "description": "The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.",
+          "type": "string",
+          "title": "Text"
+        },
+        "Dice": {
+          "$ref": "#/definitions/RerollType_1",
+          "description": "The dice to be rerolled.",
+          "title": "Dice"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "RerollType_1": {
+      "description": "Enumerates which dice are to be rerolled.",
+      "title": "RerollType_1",
+      "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
+      "type": "string"
+    },
+    "IAlterWeakHit": {
+      "title": "IAlterWeakHit",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$",
+          "type": "string",
+          "title": "$id"
+        },
+        "With a Match": {
+          "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+          "type": "undefined",
+          "title": "With a Match"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": false,
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/Partial<IMoveReroll>",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "IAlterMiss": {
+      "title": "IAlterMiss",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$",
+          "type": "string",
+          "title": "$id"
+        },
+        "With a Match": {
+          "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
+          "$ref": "#/definitions/Partial<IOutcomeMissMatch>",
+          "title": "With a Match"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": false,
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/Partial<IMoveReroll>",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "Partial<IOutcomeMissMatch>": {
+      "title": "Partial<IOutcomeMissMatch>",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss/With_a_Match$",
+          "type": "string",
+          "title": "$id"
+        },
+        "In Control": {
+          "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
+          "default": false,
+          "type": "boolean",
+          "title": "In Control"
+        },
+        "Count as": {
+          "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
+          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "type": "string",
+          "title": "Count as"
+        },
+        "Reroll": {
+          "description": "Information on rerolls offered by this move.",
+          "$ref": "#/definitions/IMoveReroll",
+          "title": "Reroll"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
         }
       },
       "defaultProperties": [],

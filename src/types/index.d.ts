@@ -216,6 +216,12 @@ export declare enum Gamespace {
 /**
  * @public
  */
+export declare interface IAlterMiss extends PartialDeep<IOutcomeMiss> {
+}
+
+/**
+ * @public
+ */
 export declare interface IAlterMomentum extends IHasId {
     /**
      * Information on how the player's momentum burn is altered.
@@ -293,16 +299,21 @@ export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "N
  * @public
  */
 export declare interface IAlterMoveOutcomes extends Omit<IMoveOutcomes, keyof typeof MoveOutcome> {
-    "Strong Hit"?: IAlterOutcomeInfo | undefined;
-    "Weak Hit"?: IAlterOutcomeInfo | undefined;
-    Miss?: IAlterOutcomeInfo | undefined;
+    "Strong Hit"?: IAlterStrongHit | undefined;
+    "Weak Hit"?: IAlterWeakHit | undefined;
+    Miss?: IAlterMiss | undefined;
 }
 
 /**
  * @public
  */
-export declare interface IAlterOutcomeInfo extends Omit<PartialDeep<IOutcomeInfo>, "With a Match"> {
-    "With a Match"?: Omit<IAlterOutcomeInfo, "With a Match"> | undefined;
+export declare interface IAlterStrongHit extends PartialDeep<IOutcomeStrongHit> {
+}
+
+/**
+ * @public
+ */
+export declare interface IAlterWeakHit extends PartialDeep<IOutcomeWeakHit> {
 }
 
 /**
@@ -1145,7 +1156,7 @@ export declare interface IHasSuggestions {
  */
 export declare interface IHasSummary extends IHasId {
     /**
-     * A user-facing markdown summary of the item. `Summary` is shorter than {@link IHasDescription | Description}.
+     * A user-facing markdown summary of the item. Summary is shorter than {@link IHasDescription | Description}, when they're both present.
      * @markdown
      * @localize
      */
@@ -1488,9 +1499,9 @@ export declare interface IMoveOutcomes extends IHasId {
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$
      */
     $id: string;
-    "Strong Hit": IOutcomeInfo;
-    "Weak Hit": IOutcomeInfo;
-    "Miss": IOutcomeInfo;
+    "Strong Hit": IOutcomeStrongHit;
+    "Weak Hit": IOutcomeWeakHit;
+    "Miss": IOutcomeMiss;
 }
 
 /**
@@ -1723,7 +1734,7 @@ export declare interface IOracle extends Omit<IOracleBase, "Categories"> {
  * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
-export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
+export declare interface IOracleBase extends Partial<IHasAliases & IHasSummary & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasTitle {
     $id: string;
     /**
      * The ID of the most recent OracleCategory ancestor of this item, if any.
@@ -1880,7 +1891,7 @@ export declare interface IOracleUsage extends Partial<IHasRequirements & IHasSug
 /**
  * @public
  */
-export declare interface IOutcomeInfo extends IHasId, IHasText {
+export declare interface IOutcomeInfoBase<O extends MoveOutcome> extends IHasId, IHasText {
     /**
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$
      */
@@ -1888,7 +1899,7 @@ export declare interface IOutcomeInfo extends IHasId, IHasText {
     /**
      * Defines a different outcome for this result with a match. Its text should replace the text of this object.
      */
-    "With a Match"?: IOutcomeInfo | undefined;
+    "With a Match"?: IOutcomeInfoBase<O> | undefined;
     /**
      * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
      */
@@ -1898,7 +1909,80 @@ export declare interface IOutcomeInfo extends IHasId, IHasText {
      */
     Reroll?: IMoveReroll | undefined;
     /**
-     * Whether this outcome leaves the player character in control or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.
+     * Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.
+     */
+    "In Control"?: boolean | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOutcomeMiss extends IOutcomeInfoBase<MoveOutcome.Miss> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$
+     */
+    $id: string;
+    "With a Match"?: IOutcomeMissMatch | undefined;
+    /**
+     * @default false
+     */
+    "In Control"?: boolean | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOutcomeMissMatch extends Omit<IOutcomeMiss, "With a Match"> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss/With_a_Match$
+     */
+    $id: string;
+    /**
+     * @default false
+     */
+    "In Control"?: boolean | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOutcomeStrongHit extends IOutcomeInfoBase<typeof MoveOutcome["Strong Hit"]> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$
+     */
+    $id: string;
+    "With a Match"?: IOutcomeStrongHitMatch | undefined;
+    /**
+     * @default true
+     */
+    "In Control"?: boolean | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOutcomeStrongHitMatch extends Omit<IOutcomeStrongHit, "With a Match"> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit/With_a_Match$
+     */
+    $id: string;
+    /**
+     * @default true
+     */
+    "In Control"?: boolean | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOutcomeWeakHit extends IOutcomeInfoBase<typeof MoveOutcome["Weak Hit"]> {
+    /**
+     * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$
+     */
+    $id: string;
+    "With a Match"?: undefined;
+    /**
+     * @default false
      */
     "In Control"?: boolean | undefined;
 }
@@ -1928,7 +2012,7 @@ export declare interface IRollTemplate extends IHasId, Partial<IHasSummary & IHa
      * @localize
      * @example
      * ```
-     * "${{Starforged/Oracles/Factions/Affiliation}} of the ${{Starforged/Oracles/Factions/Legacy}} ${{Starforged/Oracles/Factions/Identity}}"
+     * "{{Starforged/Oracles/Factions/Affiliation}} of the {{Starforged/Oracles/Factions/Legacy}} {{Starforged/Oracles/Factions/Identity}}"
      * ```
      */
     Result?: string | undefined;
@@ -1942,7 +2026,7 @@ export declare interface IRollTemplate extends IHasId, Partial<IHasSummary & IHa
      * @localize
      * @example
      * ```
-     * "Our computers are limited to simple digital systems and the most basic machine intelligence. This is because: ${{Starforged/Setting_Truths/Artificial_Intelligence/1-33/Subtable}}.\n\nThe Adepts serve in place of those advanced systems. They utilize mind-altering drugs to see the universe as a dazzling lattice of data, identifying trends and predicting outcomes with uncanny accuracy. But to gain this insight they sacrifice much of themselves."
+     * "Our computers are limited to simple digital systems and the most basic machine intelligence. This is because: {{Starforged/Setting_Truths/Artificial_Intelligence/1-33/Subtable}}.\n\nThe Adepts serve in place of those advanced systems. They utilize mind-altering drugs to see the universe as a dazzling lattice of data, identifying trends and predicting outcomes with uncanny accuracy. But to gain this insight they sacrifice much of themselves."
      * ```
      */
     Description?: string | undefined;

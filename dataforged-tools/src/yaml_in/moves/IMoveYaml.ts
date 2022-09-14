@@ -1,4 +1,4 @@
-import type { ICustomStat, ICustomStatOption, IDisplay, IMove, IMoveCategory, IMoveOutcomes, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeInfo, ISource, MeterAlias, MoveOutcome, PlayerConditionMeter, Replacement, Stat } from "@json_out/index.js";
+import type { ICustomStat, ICustomStatOption, IDisplay, IMove, IMoveCategory, IMoveOutcomes, IMoveTrigger, IMoveTriggerOptionAction, IMoveTriggerOptionProgress, IOutcomeInfoBase, IOutcomeMiss, IOutcomeMissMatch, IOutcomeStrongHit, IOutcomeStrongHitMatch, IOutcomeWeakHit, ISource, MeterAlias, MoveOutcome, PlayerConditionMeter, Replacement, Stat } from "@json_out/index.js";
 import type { YamlStub, YamlStubTitle } from "@yaml_in/index.js";
 /**
  * @internal
@@ -23,17 +23,46 @@ export interface IMoveYaml extends YamlStubTitle<IMove, "Category", "Trigger"|"O
  * @internal
  */
 export interface IMoveOutcomesYaml extends YamlStub<IMoveOutcomes, "", keyof typeof MoveOutcome> {
-  "Strong Hit": IOutcomeInfoYaml;
-  "Weak Hit": IOutcomeInfoYaml;
-  "Miss": IOutcomeInfoYaml;
+  "Strong Hit": IOutcomeStrongHitYaml;
+  "Weak Hit": IOutcomeWeakHitYaml;
+  "Miss": IOutcomeMissYaml;
 }
 
 /**
  * @internal
  */
-export interface IOutcomeInfoYaml extends YamlStub<IOutcomeInfo,"", "With a Match"> {
-  "With a Match"?: IOutcomeInfoYaml;
+export interface IOutcomeInfoBaseYaml<O extends MoveOutcome> extends YamlStub<IOutcomeInfoBase<O>,"", "With a Match"> {
+  "With a Match"?: IOutcomeInfoBaseYaml<O> | undefined;
  }
+
+/**
+ * @internal
+ */
+export interface IOutcomeMissYaml extends IOutcomeInfoBaseYaml<0>, YamlStub<IOutcomeMiss,"", "With a Match"> {
+  "With a Match"? : IOutcomeMissMatchYaml | undefined;
+}
+/**
+ * @internal
+ */
+export interface IOutcomeMissMatchYaml extends IOutcomeInfoBaseYaml<0>, YamlStub<IOutcomeMissMatch> { }
+
+/**
+ * @internal
+ */
+export interface IOutcomeStrongHitYaml extends IOutcomeInfoBaseYaml<2>, YamlStub<IOutcomeStrongHit,"", "With a Match"> {
+  "With a Match"? : IOutcomeStrongHitMatchYaml | undefined;
+}
+/**
+ * @internal
+ */
+export interface IOutcomeStrongHitMatchYaml extends IOutcomeInfoBaseYaml<2>, YamlStub<IOutcomeStrongHitMatch> { }
+
+
+/**
+ * @internal
+ */
+export interface IOutcomeWeakHitYaml extends IOutcomeInfoBaseYaml<1>, YamlStub<IOutcomeWeakHit,"", "With a Match"> {
+}
 
 /**
  * @internal

@@ -1,4 +1,4 @@
-import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IHasText, IHasTitle, IOracle, IOracleCategory , IOracleUsage, IRow, IRowNullStub } from "@json_out/index.js";
+import type { IDisplay, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasOracleContent, IHasSource, IHasSummary, IHasText, IHasTitle, IOracle, IOracleCategory , IOracleUsage, IRow, IRowNullStub } from "@json_out/index.js";
 
 /**
  * @public
@@ -20,6 +20,7 @@ export interface IOracleMatch extends IHasId, IHasText {
  */
 export interface IOracleBase extends Partial<
     IHasAliases &
+    IHasSummary &
     IHasDescription &
     IHasOracleContent
   >, IHasId, IHasDisplay,
