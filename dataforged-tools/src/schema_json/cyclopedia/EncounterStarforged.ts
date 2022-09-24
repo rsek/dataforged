@@ -11,5 +11,6 @@ export interface EncounterStarforged extends Encounter {
   $id: string;
   Nature: EncounterNatureStarforged;
   Summary: string;
+  // TODO should be a keyed object
   Variants?: EncounterVariant[] | undefined;
 }
