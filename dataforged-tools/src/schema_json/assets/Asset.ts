@@ -1,4 +1,4 @@
-import type { AssetAbility , AssetAttachment , AssetState , AssetType , AssetUsage,ConditionMeter, Display, HasAliases, HasDisplay, HasId, HasSource, HasTitle, Input, InputClock, InputNumber, InputSelect , InputText } from "@schema_json";
+import type { AssetAbility , AssetAttachment , AssetState , AssetType , AssetUsage,ConditionMeter, Display, HasAliases, HasDisplay, HasId, HasSource, HasTitle, InputClock, InputNumber, InputSelect , InputText } from "@schema_json";
 
 /**
  * An interface representing an *Ironsworn: Starforged* asset card.
