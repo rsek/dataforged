@@ -31,6 +31,6 @@ export interface Ironsworn extends GameDataRoot {
   "Setting Truths": {[key:string]:SettingTruthClassic};
   "Site Domains": {[key:string]:DelveDomain};
   "Site Themes": {[key:string]:DelveTheme};
-  Regions?: {[key:string]:IronlandsRegion};
+  Regions: {[key:string]:IronlandsRegion};
   Rarities?: {[key:string]:DelveRarity};
 }
