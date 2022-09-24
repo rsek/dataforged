@@ -4,6 +4,11 @@
 
 ### Breaking changes
 
+* major restructuring of internal and external interface/class names and their organization
+  * public interfaces (the bulk of dataforged's API) are no longer prefixed with "I". example: `IEncounter` is now `Encounter`
+  * internal builder classes are now suffixed with "Builder"
+  * internal interfaces for generating YAML schemas are now prefixed with "YAML"
+* many arrays of named objects (including oracles, moves, assets, etc) are now instead represented with keyed objects
 * `Name` key removed (as it was trying to do too many jobs). in its place is `Title`, an object which provides a `Canonical`, `Standard`, and `Short` version of the item's title. items which can't rightly be said to have a title of their own, like asset inputs receive `Label` (a string) instead.
 * "Health" on companion assets is now labelled "companion health"
 * "Integrity" on vehicle cards is now labelled "vehicle integrity"
