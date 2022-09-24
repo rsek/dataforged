@@ -1,17 +1,17 @@
-import { IOracleTable, IOracleSet} from "../types";
+import { OracleTable, OracleSet} from "../types";
 
 /**
  * Walks the oracle data tree to find a specific ID, then returns that item and its ancestors.
  * @param {string} id - the id of the oracle you want to find
- * @param {IOracleSet[]} oracleDataRoot - The root of the oracle data tree.
+ * @param {OracleSet[]} oracleDataRoot - The root of the oracle data tree.{OracleSet[]}{OracleSet[]}
  * @returns An array of IOracleSet and IOracleTable objects.
  */
 
 
-export function findOracleWithIntermediateNodes(id: string, oracleDataRoot: IOracleSet[]): (IOracleTable | IOracleSet)[] {
+export function findOracleWithIntermediateNodes(id: string, oracleDataRoot: OracleSet[]): (OracleTable | OracleSet)[] { OracleSet[]) OracleSet[])
   const result: (IOracleTable | IOracleSet)[] = []
 
-  function walkSet(cat: IOracleSet): boolean {
+  function walkSet(cat: OracleSet): boolean {
     result.push(cat)
 
     if (cat.$id === id) return true
@@ -26,7 +26,7 @@ export function findOracleWithIntermediateNodes(id: string, oracleDataRoot: IOra
     return false
   }
 
-  function walkOracle(oracle:IOracleTable): boolean {
+  function walkOracle(oracle:OracleTable): boolean {
     result.push(oracle)
     if (oracle.$id === id) return true
     result.pop()

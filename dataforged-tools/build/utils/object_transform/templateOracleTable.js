@@ -6,7 +6,7 @@ import _ from "lodash-es";
  * @param template - The template object.
  * @returns A table of rows, where each row is a list of rolls and content.
  */
-export function templateOracleTable(template) {
+export function templateTableRows(template) {
     if (template.rolls.length !== template.content.length) {
         throw new Error("[buildTemplateTable] Arrays for template content and rolls have different lengths. Use [null, null] to represent a null roll range.");
     }

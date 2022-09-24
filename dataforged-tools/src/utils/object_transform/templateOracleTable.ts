@@ -1,7 +1,7 @@
 
+import { YamlOracleTable, YamlSimpleTableRow, YamlTemplateTable } from "@schema_yaml";
 import { extractRowContent } from "@utils/object_transform/extractRowContent.js";
 import { extractRowRolls } from "@utils/object_transform/extractRowRolls.js";
-import type { IRowYaml, ITemplateTable } from "@yaml_in/index.js";
 import _ from "lodash-es";
 
 /**
@@ -9,7 +9,7 @@ import _ from "lodash-es";
  * @param template - The template object.
  * @returns A table of rows, where each row is a list of rolls and content.
  */
-export function templateOracleTable(template: ITemplateTable): IRowYaml[] {
+export function templateTableRows(template: YamlTemplateTable): YamlSimpleTableRow[] {
   if (template.rolls.length !== template.content.length) {
     throw new Error("[buildTemplateTable] Arrays for template content and rolls have different lengths. Use [null, null] to represent a null roll range.");
   }
@@ -22,7 +22,7 @@ export function templateOracleTable(template: ITemplateTable): IRowYaml[] {
     return [row];
   });
   const newTable = rolls.map((currentRoll, index) => {
-    const newRow: IRowYaml = [ ...currentRoll, ...content[index] ] as IRowYaml;
+    const newRow = [ ...currentRoll, ...content[index] ] as YamlSimpleTableRow;
     return newRow;
   });
   return newTable;

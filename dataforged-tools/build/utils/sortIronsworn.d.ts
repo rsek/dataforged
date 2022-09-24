@@ -1,4 +1,4 @@
-import type { Source } from "../classes/index.js";
+import { Source } from "../schema_json";
 /**
  * Sort comparison function for Ironsworn source data.
  * @param source1 - The first source to compare.

@@ -1,26 +1,26 @@
-import { InputClock,InputNumber, InputText } from "@classes/common/index.js";
-import { InputSelect } from "@classes/common/InputSelect.js";
-import type { IAsset, IAssetAbility } from "@json_out/index.js";
-import { InputType } from "@json_out/index.js";
-import type { IInputClockYaml, IInputNumberYaml, IInputSelectYaml, IInputTextYaml, IInputYaml } from "@yaml_in/index.js";
+
+import { InputClockBuilder, InputNumberBuilder, InputSelectBuilder, InputTextBuilder } from "@builders";
+import type { Asset, AssetAbility } from "@schema_json";
+import { InputType } from "@schema_json";
+import type { YamlInputClock, YamlInputNumber, YamlInputSelect, YamlInputText, YamlInput } from "@schema_yaml";
 
 /**
- * Infers the correct class for an IInputYaml object and constructs it.
+ * Infers the correct class for an YamlInput object and constructs it.
  * @param inputJson - The data to pick a class for.
  */
-export function pickInput<T extends InputType>(inputJson: IInputYaml & {"Input Type": T}, parent: IAsset|IAssetAbility) {
+export function pickInput<T extends InputType>(inputJson: YamlInput & {"Input Type": T}, parent: Asset|AssetAbility) {
   switch (inputJson["Input Type"]) {
     case InputType.Clock: {
-      return new InputClock(inputJson as unknown as IInputClockYaml, parent);
+      return new InputClockBuilder(inputJson as unknown as YamlInputClock, parent);
     }
     case InputType.Number: {
-      return new InputNumber(inputJson as unknown as IInputNumberYaml, parent);
+      return new InputNumberBuilder(inputJson as unknown as YamlInputNumber, parent);
     }
     case InputType.Select: {
-      return new InputSelect(inputJson as unknown as IInputSelectYaml, parent);
+      return new InputSelectBuilder(inputJson as unknown as YamlInputSelect, parent);
     }
     case InputType.Text: {
-      return new InputText(inputJson as IInputTextYaml, parent);
+      return new InputTextBuilder(inputJson as YamlInputText, parent);
     }
     default: {
       throw new Error("Unable to assign input data to a type - make sure it's correct.");

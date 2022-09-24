@@ -1,7 +1,7 @@
-import type { ClockSegments } from "@json_out/index.js";
-import { ChallengeRank  , MoveOutcome } from "@json_out/index.js";
+import type { ClockSegments } from "@json_out";
+import { ChallengeRank  , MoveOutcome } from "@json_out";
 import { FD_ironsworn, FD_may20, SaA_ironsworn, SaA_may20 } from "@utils/simulation/moveData.js";
-import type { INumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
+import type { NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import { OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
 import { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
 import { ProgressStrategy } from "@utils/simulation/ProgressStrategy";
@@ -16,8 +16,7 @@ export interface SimSceneChallengeOptions {
   id: string,
   rank: ChallengeRank,
   segments: ClockSegments,
-  SaAResultsData: INumericOutcomes,
-  FDResultsData: INumericOutcomes
+  SaAResultsData: NumericOutcomes, NumericOutcomes,  FDResultsData: INumericOutcomes
   strategy: ProgressStrategy
   statFD?: number,
   statSAA?: number,
@@ -133,7 +132,7 @@ export function renderSceneChallenges(data: ReturnType<typeof simulateSceneChall
 /**
  * Generates simulation parameters for every combination of the provided ranks, segmentRanges, and strategies.
  */
-function generateSimParams({ ranks, segmentRange, strategies, id, iterations, SaAResultsData, FDResultsData }: { ranks: ChallengeRank[]; segmentRange: ClockSegments[]; strategies: ProgressStrategy[]; id: string; iterations: number; SaAResultsData: INumericOutcomes; FDResultsData: INumericOutcomes; }): SimSceneChallengeOptions[] {
+function generateSimParams({ ranks, segmentRange, strategies, id, iterations, SaAResultsData, FDResultsData }: { ranks: ChallengeRank[]; segmentRange: ClockSegments[]; strategies: ProgressStrategy[]; id: string; iterations: number; SaAResultsData: NumericOutcomes; FDResultsData: NumericOutcomes; }): SimSceneChallengeOptions[] {
   const paramStub: PartialBy<SimSceneChallengeOptions, "rank"|"segments"|"strategy"> = {
     id,
     iterations,

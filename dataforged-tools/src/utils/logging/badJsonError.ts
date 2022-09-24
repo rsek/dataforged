@@ -10,7 +10,7 @@ import type { HasString } from "@utils/logging/HasString.js";
  * @param message - The message to display.
  * @returns An Error object.
  */
-export function badJsonError(source: (HasName | HasString), obj?: unknown, message: string = "JSON does not conform to interface"): Error {
+export function badJsonError(source: (HasName | HasString), obj?: unknown, message: string = "JSON does not conform to schema"): Error {
   let srcId: string;
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

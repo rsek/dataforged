@@ -9,7 +9,8 @@ Space:
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Sets:
-    - Title:
+    Sighting:
+      Title:
         Canonical: Space Sighting
         Short: Sighting
       _idFragment: Sighting
@@ -39,7 +40,8 @@ Space:
             Region: null
         Repeatable: true
       Tables:
-        - Title:
+        Terminus:
+          Title:
             Canonical: Terminus
           Display:
             Column of: Starforged/Oracles/Space/Sighting
@@ -69,7 +71,8 @@ Space:
             - [86, 93, Dense nebula cloud]
             - [94, 98, *result:RollTwice.RepeatsOk]
             - [99, 100, *result:RollThreeTimes.RepeatsOk]
-        - Title:
+        Outlands:
+          Title:
             Canonical: Outlands
           Display:
             Column of: Starforged/Oracles/Space/Sighting
@@ -101,7 +104,8 @@ Space:
               - [86, 93]
               - [94, 98]
               - [99, 100]
-        - Title:
+        Expanse:
+          Title:
             Canonical: Expanse
           Display:
             Column of: Starforged/Oracles/Space/Sighting
@@ -133,7 +137,8 @@ Space:
               - [86, 93]
               - [94, 98]
               - [99, 100]
-    - Title:
+    Sector Name:
+      Title:
         Canonical: Sector Name
       Source:
         Page: 302
@@ -153,10 +158,11 @@ Space:
         Roll template:
           Result: "${{Starforged/Oracles/Space/Sector_Name/Prefix}} {{Starforged/Oracles/Space/Sector_Name/Suffix}}"
       Tables:
-        - Display:
-            Column of: Starforged/Oracles/Space/Sector_Name
+        Prefix:
           Title:
             Canonical: Prefix
+          Display:
+            Column of: Starforged/Oracles/Space/Sector_Name
           Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           Usage:
             Initial: true
@@ -217,10 +223,11 @@ Space:
             - [95, 96, Vanguard]
             - [97, 98, Veiled]
             - [99, 100, Wasted]
-        - Display:
-            Column of: Starforged/Oracles/Space/Sector_Name
+        Suffix:
           Title:
             Canonical: Suffix
+          Display:
+            Column of: Starforged/Oracles/Space/Sector_Name
           Description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           Usage:
             Initial: true
@@ -282,7 +289,8 @@ Space:
             - [97, 98, Web]
             - [99, 100, Zenith]
   Tables:
-    - Title:
+    Stellar Object:
+      Title:
         Canonical: Stellar Object
       Source:
         Page: 303
@@ -303,7 +311,8 @@ Space:
         - [91, 98, Hypergiant star generating turbulent solar winds]
         - [99, 99, Artificial star constructed by a long-dead civilization]
         - [100, 100, Unstable star showing signs of impending supernova]
-    - Source:
+    Peril:
+      Source:
         Page: 304
       Title:
         Canonical: Spaceborne Peril
@@ -353,7 +362,8 @@ Space:
         - [94, 96, Unsettling sounds or disturbances]
         - [97, 99, *result:Action+Theme]
         - [100, 100, *result:RollTwice]
-    - Source:
+    Opportunity:
+      Source:
         Page: 305
       Title:
         Canonical: Spaceborne Opportunity

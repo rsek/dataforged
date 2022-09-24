@@ -1,4 +1,4 @@
-import { MoveOutcome } from "@json_out/index.js";
+import { MoveOutcome } from "@json_out";
 import { NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 
 export const finishTheScene = new NumericOutcomes("Finish the Scene", {

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-imports */
-import type { IHasId } from "@json_out/index.js";
+import type { HasId } from "@schema_json";
 import yaml from "js-yaml";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
@@ -34,7 +34,7 @@ export function extractLocalizableStrings<T extends Record<string,unknown>>(json
     path: `$..*[${localizableKeys.join(",")}]`,
     resultType: "all" ,
     flatten: true ,
-    callback: ( payload: {parentProperty: string, value: string|string[], parent: IHasId}) => {
+    callback: ( payload: {parentProperty: string, value: string|string[], parent: HasId}) => {
       const baseId = `${payload.parent.$id}#${payload.parentProperty}`;
       if (Array.isArray(payload.value)) {
         if (typeof payload.value[0] === "string") {

@@ -1,10 +1,12 @@
+$schema: ./schema/moves.json
 Source:
   Authors:
     - Shawn Tomkin
   Title: "Ironsworn: Delve"
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 Move Categories:
-  - Title:
+  Delve:
+    Title:
       Canonical: Delve Moves
       Short: Delve
     _idFragment: Delve
@@ -14,7 +16,8 @@ Move Categories:
     Description: |-
       As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.
     Moves:
-      - Title:
+      Discover a Site:
+        Title:
           Canonical: Discover a Site
         Source:
           Title: "Ironsworn: Delve"
@@ -33,7 +36,8 @@ Move Categories:
           If you are returning to a previously explored site, roll both challenge dice, take the lowest value, and clear that number of progress boxes.
 
           Then, [Delve the Depths](Ironsworn/Moves/Delve/Delve_the_Depths) to explore this place.
-      - Title:
+      Delve the Depths:
+        Title:
           Canonical: Delve the Depths
         Trigger:
           Text: When you traverse an area within a perilous site...
@@ -89,7 +93,8 @@ Move Categories:
           Miss:
             Text: |-
               [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).
-      - Title:
+      Find an Opportunity:
+        Title:
           Canonical: Find an Opportunity
         Source:
           Title: "Ironsworn: Delve"
@@ -116,7 +121,8 @@ Move Categories:
           91-94 | You are alerted to a potential threat.
           95-98 | You encounter a denizen who might support you.
           99-00 | You encounter a denizen in need of help.
-      - Title:
+      Reveal a Danger:
+        Title:
           Canonical: Reveal a Danger
         Source:
           Title: "Ironsworn: Delve"
@@ -142,7 +148,8 @@ Move Categories:
           89-91 | You face a perplexing mystery or tough choice.
           92-94 | You lose your way or are delayed.
           95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse.
-      - Title:
+      Check Your Gear:
+        Title:
           Canonical: Check Your Gear
         Trigger:
           Text: When you check to see if you have a specific helpful item, and you have at least +1 supply...
@@ -167,7 +174,8 @@ Move Categories:
             Text: You have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.
           Miss:
             Text: You don’t have it and the situation grows more perilous. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
-      - Title:
+      Locate Your Objective:
+        Title:
           Canonical: Locate Your Objective
         Source:
           Title: "Ironsworn: Delve"
@@ -201,7 +209,8 @@ Move Categories:
             Text: You locate your objective but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
           Miss:
             Text: Your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic).
-      - Title:
+      Escape the Depths:
+        Title:
           Canonical: Escape the Depths
         Trigger:
           Text: When you flee or withdraw from a site...
@@ -262,7 +271,8 @@ Move Categories:
           Miss:
             Text: |-
               A dire threat or imposing obstacle stands in your way. [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger). If you survive, you may make your escape.
-      - Title:
+      Reveal a Danger alt:
+        Title:
           Canonical: Reveal a Danger (alternate version)
           Short: Reveal a Danger
         _idFragment: Reveal a Danger alt
@@ -289,7 +299,8 @@ Move Categories:
           83-88 | You face a perplexing mystery or tough choice.
           89-94 | You lose your way or are delayed.
           95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse.
-  - Title:
+  Failure:
+    Title:
       Canonical: Failure Moves
       Short: Failure
     _idFragment: Failure
@@ -299,7 +310,8 @@ Move Categories:
       Title: "Ironsworn: Delve"
       Page: 58
     Moves:
-      - Title:
+      Mark Your Failure:
+        Title:
           Canonical: Mark Your Failure
         Optional: true
         Source:
@@ -308,7 +320,8 @@ Move Categories:
         Trigger:
           Text: When you make a move and score a miss...
         Text: When **you make a move and score a miss**, mark a tick on your failure track. If **you score a miss when making a progress move**, mark two ticks.
-      - Title:
+      Learn From Your Failures:
+        Title:
           Canonical: Learn From Your Failures
         Optional: true
         Source:
@@ -343,7 +356,8 @@ Move Categories:
           Miss:
             Text: |-
               You’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path.
-  - Title:
+  Threat:
+    Title:
       Canonical: Threat Moves
       Short: Threat
     _idFragment: Threat
@@ -356,7 +370,8 @@ Move Categories:
 
       **Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.
     Moves:
-      - Title:
+      Advance a Threat:
+        Title:
           Canonical: Advance a Threat
         Optional: true
         Source:
@@ -376,7 +391,8 @@ Move Categories:
           On a match, this development also exposes a surprising aspect of the threat’s plan or nature.
 
           If **you mark the last box on the threat’s menace track**, the threat achieves its goal, or the final dire outcome occurs. You must [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
-      - Title:
+      Take a Hiatus:
+        Title:
           Canonical: Take a Hiatus
         Optional: true
         Source:
@@ -392,7 +408,8 @@ Move Categories:
             * Set your momentum to its reset value.
 
           Then, for each active threat, [Advance a Threat](Ironsworn/Moves/Legacy/Advance_a_Threat).
-  - Title:
+  Rarity:
+    Title:
       Canonical: Rarity Moves
       Short: Rarity
     _idFragment: Rarity
@@ -404,7 +421,8 @@ Move Categories:
       In **Ironsworn**, these items are called *rarities*. They may be handed down through generations, lost or hidden away in the depths of perilous sites, coveted by powerful forces, or forgotten and discarded. When you obtain a rarity through the course of your story, you gain a subtle but lasting impact on your character and their abilities.
     Optional: true
     Moves:
-      - Title:
+      Wield a Rarity:
+        Title:
           Canonical: Wield a Rarity
         Optional: true
         Source:

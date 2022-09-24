@@ -1,4 +1,4 @@
-// import type { IDisplay } from "@json_out/index.js";
+// import type { Display } from "@json_out";
 // import { findById } from "@utils/md/findById.js";
 
 // /**
@@ -8,7 +8,7 @@
 //  * @returns A string that can be used as a URL.
 //  */
 // export function idToHref(id: string, data: unknown) {
-//   const item = findById<{ Display?: IDisplay; }>(data, id);
+//   const item = findById<{ Display?: Display; }>(data, id);
 //   if (!item) {
 //     throw new Error(`Unable to find id: ${id}`);
 //   }

@@ -1,5 +1,5 @@
-import type { ClockSegments } from "@json_out/index.js";
-import { ChallengeRank, MoveOutcome } from "@json_out/index.js";
+import type { ClockSegments } from "@json_out";
+import { ChallengeRank, MoveOutcome } from "@json_out";
 import { TensionClock } from "@utils/simulation/Clock.js";
 import { MAX_SCORE } from "@utils/simulation/IronswornRoll.js";
 import { FD_may20, finishTheScene, SaA_may20 } from "@utils/simulation/moveData.js";

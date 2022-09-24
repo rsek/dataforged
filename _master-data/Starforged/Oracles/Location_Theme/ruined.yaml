@@ -1,52 +1,54 @@
-Ruined:
-  _templateOracleSet: *template.category:LocationTheme
-  _templateVars:
-    Location Theme: Ruined
-  Title:
-    Canonical: Ruined
-  Description: *description:Ruined
-  Source:
-    Page: 378
-  Tables:
-    - _templateOracleTable: *template.info:LocationTheme.Feature
-      _templateTableRows:
-        rolls: *template.rolls:LocationTheme.Feature
-        content:
-          - Collapsed or broken structures or terrain
-          - Device or artifact with residual power or function
-          - Focal point or nexus of the destruction
-          - Graves or corpses
-          - Innermost or hidden spaces laid bare by the destruction
-          - Message or recording from before the fall
-          - Overgrown or entombed spaces
-          - Rubble-strewn paths
-          - Sad memento of a lost life
-          - Sights or sounds of structural instability
-          - Signs of looting or scavenging
-          - Survivors or guardians dwell among the ruins
-          - *result:Descriptor+Focus
-    - _templateOracleTable: *template.info:LocationTheme.Peril
-      _templateTableRows:
-        rolls: *template.rolls:LocationTheme.Peril
-        content:
-          - Dreadful atmosphere of loss and destruction weighs upon you
-          - Evidence of a horrible fate for others who passed this way
-          - Hazardous atmosphere or environment
-          - Hostile creature has staked out their territory
-          - Imminent collapse or destruction
-          - Lured into a trap or targeted by automated defenses
-          - Source of the destruction persists or returns anew
-          - Unearthed secrets best left buried
-          - Unstable or broken path
-          - Volatile device or artifact
-          - *result:Action+Theme
-          - *result:RollTwice
-    - _templateOracleTable: *template.info:LocationTheme.Opportunity
-      _templateTableRows:
-        rolls: *template.rolls:LocationTheme.Opportunity
-        content:
-          - Access to an untouched or preserved area
-          - Insight into what brought this place to ruin
-          - Interesting or useful device or artifact
-          - Salvageable equipment or resources
-          - Shortcut or passage through the destruction
+Location Themes:
+  Sets:
+    Ruined:
+      _templateOracleSet: *template.category:LocationTheme
+      _templateVars:
+        Location Theme: Ruined
+      Title:
+        Canonical: Ruined
+      Description: *description:Ruined
+      Source:
+        Page: 378
+      Tables:
+        - _templateOracleTable: *template.info:LocationTheme.Feature
+          _templateTableRows:
+            rolls: *template.rolls:LocationTheme.Feature
+            content:
+              - Collapsed or broken structures or terrain
+              - Device or artifact with residual power or function
+              - Focal point or nexus of the destruction
+              - Graves or corpses
+              - Innermost or hidden spaces laid bare by the destruction
+              - Message or recording from before the fall
+              - Overgrown or entombed spaces
+              - Rubble-strewn paths
+              - Sad memento of a lost life
+              - Sights or sounds of structural instability
+              - Signs of looting or scavenging
+              - Survivors or guardians dwell among the ruins
+              - *result:Descriptor+Focus
+        - _templateOracleTable: *template.info:LocationTheme.Peril
+          _templateTableRows:
+            rolls: *template.rolls:LocationTheme.Peril
+            content:
+              - Dreadful atmosphere of loss and destruction weighs upon you
+              - Evidence of a horrible fate for others who passed this way
+              - Hazardous atmosphere or environment
+              - Hostile creature has staked out their territory
+              - Imminent collapse or destruction
+              - Lured into a trap or targeted by automated defenses
+              - Source of the destruction persists or returns anew
+              - Unearthed secrets best left buried
+              - Unstable or broken path
+              - Volatile device or artifact
+              - *result:Action+Theme
+              - *result:RollTwice
+        - _templateOracleTable: *template.info:LocationTheme.Opportunity
+          _templateTableRows:
+            rolls: *template.rolls:LocationTheme.Opportunity
+            content:
+              - Access to an untouched or preserved area
+              - Insight into what brought this place to ruin
+              - Interesting or useful device or artifact
+              - Salvageable equipment or resources
+              - Shortcut or passage through the destruction

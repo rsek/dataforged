@@ -1,7 +1,6 @@
-import type { EncounterNatureInfo } from "@classes/cyclopedia/EncounterNatureInfo.js";
-import type { EncounterStarforged } from "@classes/index.js";
-import { DelveCardType, Gamespace } from "@json_out/index.js";
-import type { Ironsworn , Starforged } from "@json_out/index.js";
+
+import { DelveCardType, Gamespace } from "@schema_json";
+import type { Ironsworn , Starforged } from "@schema_json";
 import { buildAssets } from "@utils/buildAssets.js";
 import { buildEncounters } from "@utils/buildEncounters.js";
 import { buildMoves } from "@utils/buildMoves.js";
@@ -10,7 +9,7 @@ import { buildTruths } from "@utils/buildTruths.js";
 import { dataforgedStats } from "@utils/dataforgedStats.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { buildDelveSiteCards } from "@utils/buildDelveSiteCards.js";
-import { buildIronswornRegions } from "@utils/buildIronswornRegions.js";
+import { buildIronlandsRegions } from "@utils/buildIronswornRegions.js";
 
 /**
  * Builds all data for Dataforged.
@@ -40,9 +39,9 @@ export function buildDataforged(gamespace: Gamespace = Gamespace.Starforged) {
         "Setting Truths": buildTruths(gamespace),
         "Site Themes": buildDelveSiteCards(DelveCardType.Theme),
         "Site Domains": buildDelveSiteCards(DelveCardType.Domain),
-        Regions: buildIronswornRegions(),
+        Regions: buildIronlandsRegions(),
         // Rarities
-        // Delve Sites (the sample ones from Delve!)
+        // Delve Sites (the sample ones from Delve)
       } as Ironsworn;
       break;
     }

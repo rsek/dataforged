@@ -1,4 +1,4 @@
-// import type { IOracle } from "@json_out/index.js";
+// import type { Oracle } from "@json_out";
 // import { badJsonError } from "@utils/logging/badJsonError.js";
 // import { getTableByOracleId } from "@utils/md/getTableByOracleId.js";
 
@@ -7,7 +7,7 @@
 //  * @param oracle - The oracle to extract data from.
 //  * @internal
 //  */
-// export function extractColumnData(oracle: IOracle) {
+// export function extractColumnData(oracle: Oracle) {
 //   const newTableRows: Record<string, string>[] = [];
 
 //   const rollCols = oracle.Display.Table["Roll columns"];

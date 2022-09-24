@@ -1,4 +1,4 @@
-import type { IRow } from "@json_out/index.js";
+import type { OracleTableRow } from "@schema_json";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 
 /**
@@ -7,7 +7,7 @@ import { badJsonError } from "@utils/logging/badJsonError.js";
  * @param requireAllD100 - If true, the sum of all the dice ranges must be 100.
  * @returns A boolean indicating whether the table is valid.
  */
-export function validateTable(table: IRow[], requireUniqueResults = true, requireAllD100 = true,): boolean {
+export function validateTable(table: OracleTableRow[], requireUniqueResults = true, requireAllD100 = true,): boolean {
   if (!Array.isArray(table)) {
     throw badJsonError(validateTable, table, "Table is not an array.");
   }

@@ -1,4 +1,4 @@
-import { DelveCardType, Gamespace } from "../json_out/index.js";
+import { DelveCardType, Gamespace } from "../schema_json";
 import { buildAssets } from "./buildAssets.js";
 import { buildEncounters } from "./buildEncounters.js";
 import { buildMoves } from "./buildMoves.js";
@@ -7,7 +7,7 @@ import { buildTruths } from "./buildTruths.js";
 import { dataforgedStats } from "./dataforgedStats.js";
 import { buildLog } from "./logging/buildLog.js";
 import { buildDelveSiteCards } from "./buildDelveSiteCards.js";
-import { buildIronswornRegions } from "./buildIronswornRegions.js";
+import { buildIronlandsRegions } from "./buildIronswornRegions.js";
 /**
  * Builds all data for Dataforged.
  * @returns An object keyed with the game data.
@@ -37,9 +37,9 @@ export function buildDataforged(gamespace = Gamespace.Starforged) {
                 "Setting Truths": buildTruths(gamespace),
                 "Site Themes": buildDelveSiteCards(DelveCardType.Theme),
                 "Site Domains": buildDelveSiteCards(DelveCardType.Domain),
-                Regions: buildIronswornRegions(),
+                Regions: buildIronlandsRegions(),
                 // Rarities
-                // Delve Sites (the sample ones from Delve!)
+                // Delve Sites (the sample ones from Delve)
             };
             break;
         }

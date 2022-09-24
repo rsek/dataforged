@@ -1,10 +1,6 @@
-import { MoveCategory } from "../classes/index.js";
-import { Gamespace } from "../json_out/index.js";
+import { GameDataRoot, Gamespace } from "../schema_json";
 /**
- * It takes the data from the YAML files, and then it iterates over the categories, and then it
- * iterates over the moves in each category, and then it creates a MoveCategory object for each
- * category, and then it returns an array of all of those MoveCategory objects
- * @returns An array of MoveCategory objects.
+ * Build datasworn JSON moves from YAML shorthand.
  */
-export declare function buildMoves(gamespace?: Gamespace): MoveCategory[];
+export declare function buildMoves(gamespace?: Gamespace): GameDataRoot["Move Categories"];
 //# sourceMappingURL=buildMoves.d.ts.map

@@ -1,8 +1,8 @@
-import type { AttributeKey, IAttributeMaster } from "../../json_out/index.js";
+import type { AttributeKey, AttributeMaster } from "../../schema_json";
 /**
  * @alpha
  */
 export declare type AttributeHash<K extends AttributeKey = AttributeKey> = {
-    [key in K]?: IAttributeMaster[K] | IAttributeMaster[K][] | undefined | null;
+    [key in K]?: AttributeMaster[K] | AttributeMaster[K][] | undefined | null;
 };
 //# sourceMappingURL=AttributeHash.d.ts.map

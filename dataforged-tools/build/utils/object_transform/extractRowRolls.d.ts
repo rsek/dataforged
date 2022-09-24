@@ -1,8 +1,8 @@
-import type { IRowRollYaml, IRowYaml } from "../../yaml_in/index.js";
+import { YamlRowRoll, YamlSimpleTableRow } from "../../schema_yaml";
 /**
  * Extracts the first two elements (floor and ceiling) of a raw row array.
- * @param row - IRowYaml | IRowRollYaml
+ * @param row - YamlRow | YamlRowRoll
  * @returns The first two elements of the array.
  */
-export declare function extractRowRolls(row: IRowYaml | IRowRollYaml): IRowRollYaml;
+export declare function extractRowRolls(row: YamlSimpleTableRow | YamlRowRoll): YamlRowRoll;
 //# sourceMappingURL=extractRowRolls.d.ts.map

@@ -1,5 +1,5 @@
-import { Gamespace } from "../json_out/index.js";
-import type { Ironsworn, Starforged } from "../json_out/index.js";
+import { Gamespace } from "../schema_json";
+import type { Ironsworn, Starforged } from "../schema_json";
 /**
  * Builds all data for Dataforged.
  * @returns An object keyed with the game data.

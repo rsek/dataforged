@@ -1,10 +1,10 @@
-import type { ChallengeRank } from "@json_out/index.js";
+import type { ChallengeRank } from "@json_out";
 import type { NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import type { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
 import { ProgressTrackType } from "@utils/simulation/progressConstants.js";
 import { ProgressTrack } from "@utils/simulation/ProgressTrack.js";
 
-export interface ICombat {
+export interface Combat {
   objectives: CombatObjective[];
   players: PlayerCharacter[];
 }

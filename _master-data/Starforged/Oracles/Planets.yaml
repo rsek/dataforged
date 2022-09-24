@@ -3,25 +3,14 @@ Planets:
     Canonical: Planets
     Short: Planet
   _idFragment: Planets
-  _parentOf:
-    - Desert World
-    - Furnace World
-    - Grave World
-    - Ice World
-    - Jovian World
-    - Jungle World
-    - Ocean World
-    - Rocky World
-    - Shattered World
-    - Tainted World
-    - Vital World
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Tables:
-    - Title:
+    Class:
+      Title:
         Canonical: Planetary Class
         Short: Class
       _idFragment: Class
@@ -48,7 +37,8 @@ Planets:
         - [93, 98, "[⏵Tainted World](Starforged/Oracles/Planets/Tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
         - [99, 100, "[⏵Vital World](Starforged/Oracles/Planets/Vital)", *obj:Planet.Vital, *images:VitalWorld]
   Sets:
-    - Title:
+    Peril:
+      Title:
         Canonical: Planetside Peril
         Short: Peril
       _idFragment: Peril
@@ -75,7 +65,8 @@ Planets:
       Description: |-
         Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
       Tables:
-        - Title:
+        Lifebearing:
+          Title:
             Canonical: Lifebearing
           Display:
             Column of: Starforged/Oracles/Planets/Peril
@@ -117,10 +108,11 @@ Planets:
             - [94, 96, Wreckage or ruins portend a new threat]
             - [97, 99, *result:Action+Theme]
             - [100, 100, *result:RollTwice]
-        - Display:
-            Column of: Starforged/Oracles/Planets/Peril
+        Lifeless:
           Title:
             Canonical: Lifeless
+          Display:
+            Column of: Starforged/Oracles/Planets/Peril
           Usage:
             Requires: *attr:Life.Lifeless
           _templateTableRows:
@@ -160,8 +152,8 @@ Planets:
               - [92, 95]
               - [96, 99]
               - [100, 100]
-
-    - Title:
+    Opportunity:
+      Title:
         Canonical: Planetside Opportunity
         Short: Opportunity
       _idFragment: Opportunity
@@ -188,7 +180,8 @@ Planets:
       Description: |-
         Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
       Tables:
-        - Display:
+        Lifebearing:
+          Display:
             Column of: Starforged/Oracles/Planets/Opportunity
           Title:
             Canonical: Lifebearing
@@ -220,7 +213,8 @@ Planets:
             - [89, 92, Plea for help from a potential benefactor, Suggestions: [*obj:Npc]]
             - [93, 96, "Refuge offers a place to hide, plan, or recover", Suggestions: [*roll:Object]]
             - [97, 100, Vantage point reveals the lay of the land, Suggestions: [*roll:Object]]
-        - Display:
+        Lifeless:
+          Display:
             Column of: Starforged/Oracles/Planets/Opportunity
           Title:
             Canonical: Lifeless

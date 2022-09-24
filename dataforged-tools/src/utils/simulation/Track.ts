@@ -1,27 +1,27 @@
-import type { ChallengeRank } from "@json_out/index.js";
-import type { IClock } from "@utils/simulation/Clock.js";
+import type { ChallengeRank } from "@json_out";
+import type { Clock } from "@utils/simulation/Clock.js"; Clock  Clock
 import type { IAppliesMoveEffect } from "@utils/simulation/IAppliesMoveEffect.js";
 import { ProgressRoll } from "@utils/simulation/IronswornRoll.js";
-import type { IOutcomeEffectHash, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
+import type { OutcomeEffectHash, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import { BOXES_PER_TRACK, TICKS_PER_BOX } from "@utils/simulation/progressConstants.js";
 import { renderProgress } from "@utils/simulation/renderProgress.js";
 import _ from "lodash-es";
 
 
-export interface ITrackData {
+export interface TrackData {
   ticks: number;
   score: number;
   rank?: ChallengeRank | undefined;
-  clock?: IClock | undefined;
+  clock?: Clock | undefined;
 }
 
-export interface ITrack extends ITrackData, IAppliesMoveEffect {
+export interface Track extends TrackData, AppliesMoveEffect { Track
   applyResult(data: IOutcomeEffectHash): void;
   mark(times: number): this;
 }
 
 
-export abstract class Track implements ITrack {
+export abstract class Track implements Track { Track
   abstract applyResult(data: IOutcomeEffectHash): void;
   abstract mark(times: number): this;
   toString() {

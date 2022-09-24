@@ -1,52 +1,54 @@
-Mechanical:
-  _templateOracleSet: *template.category:LocationTheme
-  _templateVars:
-    Location Theme: Mechanical
-  Title:
-    Canonical: Mechanical
-  Description: *description:Mechanical
-  Source:
-    Page: 377
-  Tables:
-    - _templateOracleTable: *template.info:LocationTheme.Feature
-      _templateTableRows:
-        rolls: *template.rolls:LocationTheme.Feature
-        content:
-          - Control station or terminal
-          - Device or technology with a mysterious function
-          - Disassembled machinery or parts
-          - Heavy machinery at work
-          - Machine fabrication or repair
-          - Machines emulating or fusing with biological life
-          - Machines in stasis or powered down
-          - Machines single-mindedly executing a function or program
-          - Major project under construction
-          - Mechanical environment in motion or transforming
-          - Mechanical wreckage or destruction
-          - Power source for the machines
-          - *result:Descriptor+Focus
-    - _templateOracleTable: *template.info:LocationTheme.Peril
-      _templateTableRows:
-        rolls: *template.rolls:LocationTheme.Peril
-        content:
-          - Alarm or warning is triggered
-          - Automated weapon or trap is activated
-          - Environment made unsuitable for life
-          - Hostile machines on patrol
-          - Machines transform to reveal new capabilities
-          - Machines with corrupted or hacked programming
-          - Malfunctioning machines or technology
-          - Moving machinery creates a danger or obstacle
-          - Under surveillance by a central machine intelligence
-          - Volatile technology
-          - *result:Action+Theme
-          - *result:RollTwice
-    - _templateOracleTable: *template.info:LocationTheme.Opportunity
-      _templateTableRows:
-        rolls: *template.rolls:LocationTheme.Opportunity
-        content:
-          - Helpful device
-          - Insight into the workings or purpose of the machines
-          - Intelligent machine offers aid
-          - Salvageable resource
-          - Wondrous technology
+Location Themes:
+  Sets:
+    Mechanical:
+      _templateOracleSet: *template.category:LocationTheme
+      _templateVars:
+        Location Theme: Mechanical
+      Title:
+        Canonical: Mechanical
+      Description: *description:Mechanical
+      Source:
+        Page: 377
+      Tables:
+        - _templateOracleTable: *template.info:LocationTheme.Feature
+          _templateTableRows:
+            rolls: *template.rolls:LocationTheme.Feature
+            content:
+              - Control station or terminal
+              - Device or technology with a mysterious function
+              - Disassembled machinery or parts
+              - Heavy machinery at work
+              - Machine fabrication or repair
+              - Machines emulating or fusing with biological life
+              - Machines in stasis or powered down
+              - Machines single-mindedly executing a function or program
+              - Major project under construction
+              - Mechanical environment in motion or transforming
+              - Mechanical wreckage or destruction
+              - Power source for the machines
+              - *result:Descriptor+Focus
+        - _templateOracleTable: *template.info:LocationTheme.Peril
+          _templateTableRows:
+            rolls: *template.rolls:LocationTheme.Peril
+            content:
+              - Alarm or warning is triggered
+              - Automated weapon or trap is activated
+              - Environment made unsuitable for life
+              - Hostile machines on patrol
+              - Machines transform to reveal new capabilities
+              - Machines with corrupted or hacked programming
+              - Malfunctioning machines or technology
+              - Moving machinery creates a danger or obstacle
+              - Under surveillance by a central machine intelligence
+              - Volatile technology
+              - *result:Action+Theme
+              - *result:RollTwice
+        - _templateOracleTable: *template.info:LocationTheme.Opportunity
+          _templateTableRows:
+            rolls: *template.rolls:LocationTheme.Opportunity
+            content:
+              - Helpful device
+              - Insight into the workings or purpose of the machines
+              - Intelligent machine offers aid
+              - Salvageable resource
+              - Wondrous technology

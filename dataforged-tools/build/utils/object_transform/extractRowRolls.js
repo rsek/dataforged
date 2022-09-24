@@ -1,7 +1,7 @@
 import _ from "lodash-es";
 /**
  * Extracts the first two elements (floor and ceiling) of a raw row array.
- * @param row - IRowYaml | IRowRollYaml
+ * @param row - YamlRow | YamlRowRoll
  * @returns The first two elements of the array.
  */
 export function extractRowRolls(row) {

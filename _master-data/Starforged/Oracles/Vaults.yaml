@@ -12,7 +12,8 @@ Vaults:
   Description: |-
     When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.
   Tables:
-    - _templateOracleTable: *template.info:Generic.Location
+    Location:
+      _templateOracleTable: *template.info:Generic.Location
       Source:
         Page: 360
       _templateTableRows:
@@ -21,7 +22,8 @@ Vaults:
           - [1, 50]
           - [51, 75]
           - [76, 100]
-    - Title:
+    Scale:
+      Title:
         Canonical: Scale
       Source:
         Page: 360
@@ -35,7 +37,8 @@ Vaults:
         - [66, 90, "Large, elaborate site"]
         - [91, 99, Vast site of unfathomable complexity]
         - [100, 100, World-spanning site or megastructure]
-    - Title:
+    Form:
+      Title:
         Canonical: Form
       Source:
         Page: 360
@@ -49,8 +52,8 @@ Vaults:
         - [61, 80, Monument]
         - [81, 95, Machine]
         - [96, 100, Incomprehensible, Part of speech: [adjective]]
-
-    - Title:
+    Shape:
+      Title:
         Canonical: Shape
       Source:
         Page: 361
@@ -76,7 +79,8 @@ Vaults:
         - [80, 85, Transforming]
         - [86, 100, *result:RollTwice]
 
-    - Title:
+    Material:
+      Title:
         Canonical: Material
       Source:
         Page: 361
@@ -96,7 +100,8 @@ Vaults:
         - [89, 90, Liquid]
         - [91, 100, *result:RollTwice]
 
-    - Title:
+    Outer First Look:
+      Title:
         Canonical: Outer First Look
       Source:
         Page: 361
@@ -138,7 +143,8 @@ Vaults:
         - [93, 95, Surrounded by destruction] # is
         - [96, 100, *result:Descriptor+Focus]
   Sets:
-    - Title:
+    Interior:
+      Title:
         Canonical: Interior
       _idFragment: Interior
       Description: If you enter the site, check the [Inner First Look](Starforged/Oracles/Vaults/Interior/First_Look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](Starforged/Oracles/Vaults/Interior/Feature) table to define what you find or encounter. If you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) within a vault, check this table if you want help setting the scene for a waypoint.
@@ -150,7 +156,8 @@ Vaults:
       Display:
         Icon: img/vector/Vaults/Interior.svg
       Tables:
-        - _idFragment: First Look
+        First Look:
+          _idFragment: First Look
           Source:
             Page: 364
           Title:
@@ -196,7 +203,8 @@ Vaults:
             - [88, 90, Well-preserved]
             - [91, 93, Wet or humid]
             - [94, 100, *result:Descriptor+Focus]
-        - _idFragment: Feature
+        Feature:
+          _idFragment: Feature
           Title:
             Canonical: Interior Feature
             Short: Feature
@@ -242,7 +250,8 @@ Vaults:
             - [86, 90, "Transition into the [⏵Sanctum](Starforged/Oracles/Vaults/Sanctum)", Suggestions: {Oracles: [Starforged/Oracles/Vaults/Sanctum]}]
             - [91, 95, *result:Descriptor+Focus]
             - [96, 100, *result:RollTwice]
-        - _idFragment: Peril
+        Peril:
+          _idFragment: Peril
           Title:
             Canonical: Interior Peril
             Short: Peril
@@ -276,8 +285,8 @@ Vaults:
             - [91, 95, Unnerving sound or sensation]
             - [96, 99, *result:Action+Theme]
             - [100, 100, *result:RollTwice]
-
-        - _idFragment: Opportunity
+        Opportunity:
+          _idFragment: Opportunity
           Title:
             Canonical: Interior Opportunity
             Short: Opportunity
@@ -300,7 +309,8 @@ Vaults:
             - [71, 80, Salvageable resource]
             - [81, 90, Secure area offers a moment of peace]
             - [91, 100, Shortcut or less perilous path speeds your way]
-    - Title:
+    Sanctum:
+      Title:
         Canonical: Sanctum
       _idFragment: Sanctum
       Description: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
@@ -312,7 +322,8 @@ Vaults:
         Title: "Ironsworn: Starforged Rulebook"
         Date: "050622"
       Tables:
-        - _idFragment: Purpose
+        Purpose:
+          _idFragment: Purpose
           Source:
             Page: 365
           Title:
@@ -352,7 +363,8 @@ Vaults:
             - [88, 90, Worship of a god or being]
             - [91, 95, *result:Action+Theme]
             - [96, 100, *result:RollTwice]
-        - _idFragment: Feature
+        Feature:
+          _idFragment: Feature
           Source:
             Page: 368
           Title:
@@ -398,7 +410,8 @@ Vaults:
             - [89, 90, Whispering voices speak to you]
             - [91, 95, *result:Descriptor+Focus]
             - [96, 100, *result:RollTwice]
-        - _idFragment: Peril
+        Peril:
+          _idFragment: Peril
           Source:
             Page: 369
           Title:
@@ -431,7 +444,8 @@ Vaults:
             - [91, 95, You are marked by physical corruption or mutation]
             - [96, 99, *result:Action+Theme]
             - [100, 100, *result:RollTwice]
-        - _idFragment: Opportunity
+        Opportunity:
+          _idFragment: Opportunity
           Title:
             Canonical: Sanctum Opportunity
             Short: Opportunity

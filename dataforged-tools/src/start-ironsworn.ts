@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 
 import "source-map-support/register.js";
-import { JSON_PATHS } from "@constants/index.js";
-import { Gamespace } from "@json_out/index.js";
-import type { Ironsworn } from "@json_out/index.js";
+import { JSON_PATHS } from "@constants";
+import { Gamespace } from "@schema_json";
+import type { Ironsworn } from "@schema_json";
 import { buildDataforged } from "@utils/buildDataforged.js";
 import { writeJson } from "@utils/io/writeJSON.js";
 import _ from "lodash-es";

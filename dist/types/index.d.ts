@@ -107,6 +107,11 @@ export declare enum AttributeKey {
 }
 
 /**
+ * @public
+ */
+export declare type BlacklistPartial = "Label";
+
+/**
  * Enumerates challenge ranks.
  * @page 39
  * @public
@@ -182,11 +187,25 @@ export declare enum EncounterTags {
  */
 export declare interface GameDataRoot {
     $schema?: string | undefined;
-    "Asset Types": IAssetType[];
-    "Encounters": IEncounterStarforged[] | IEncounterNatureInfo[];
-    "Move Categories": IMoveCategory[];
-    "Oracle Sets": IOracleSet[];
-    "Setting Truths"?: ISettingTruth[] | ISettingTruthClassic[];
+    "Asset Types": {
+        [key: string]: IAssetType;
+    };
+    "Encounters": {
+        [key: string]: IEncounterStarforged;
+    } | {
+        [key: string]: IEncounterNatureInfo;
+    };
+    "Move Categories": {
+        [key: string]: IMoveCategory;
+    };
+    "Oracle Sets": {
+        [key: string]: IOracleSet;
+    };
+    "Setting Truths": {
+        [key: string]: ISettingTruth;
+    } | {
+        [key: string]: ISettingTruthClassic;
+    };
 }
 
 /**
@@ -266,7 +285,7 @@ export declare interface IAlterMomentumReset extends IHasId {
  * Describes alterations applied to moves by asset abilities.
  * @public
  */
-export declare interface IAlterMove extends StubBy<IMove, "Trigger" | "Text", "Name" | "Title" | "Category" | "Display" | "Source" | "Outcomes" | "Optional"> {
+export declare interface IAlterMove extends StubExcept<IMove, "$id", "Outcomes"> {
     /**
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
      */
@@ -409,12 +428,35 @@ export declare interface IAssetAbility extends IHasId, IHasText, Partial<IHasLab
  * Describes changes that an asset ability makes to its parent asset when active. Any properties with object values should be merged recursively.
  *
  * @example An `IAssetAlterProperties` that would set `IAsset["Condition Meter"].Max` to 3, and leave its other properties unchanged:
- * ```javascript
- * { "Condition Meter": { Max: 3 } }
+ * ```json
+ * { "Condition Meter": { "Max": 3 } }
  * ```
  * @public
  */
-export declare interface IAssetAlterProperties extends PartialDeep<IAsset> {
+export declare interface IAssetAlterProperties extends Omit<PartialDeep<OmitMetadataDeep<IAsset>>, "Abilities" | "Attachments" | "Condition Meter" | "$id">, IHasId {
+    $id: string;
+    Abilities?: IAssetAlterPropertiesAbility[] | undefined;
+    Attachments?: IAssetAlterPropertiesAttachment | undefined;
+    "Condition Meter"?: IAssetAlterPropertiesConditionMeter | undefined;
+    States?: IAssetState[] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IAssetAlterPropertiesAbility extends Partial<IAssetAbility> {
+}
+
+/**
+ * @public
+ */
+export declare interface IAssetAlterPropertiesAttachment extends Partial<IAssetAttachment> {
+}
+
+/**
+ * @public
+ */
+export declare interface IAssetAlterPropertiesConditionMeter extends Partial<IConditionMeter> {
 }
 
 /**
@@ -538,7 +580,10 @@ export declare interface IConditionMeter extends IMeter {
      * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$
      */
     $id: string;
-    Min: 0;
+    /**
+     * @default 0
+     */
+    Min: number;
     /**
      * The conditions that can apply to this meter.
      */
@@ -970,7 +1015,7 @@ export declare interface IEncounterStarforged extends IEncounter {
     $id: string;
     Nature: EncounterNatureStarforged;
     Summary: string;
-    Variants: IEncounterVariant[];
+    Variants?: IEncounterVariant[] | undefined;
 }
 
 /**
@@ -1266,7 +1311,7 @@ export declare interface IInputNumber extends IInput {
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.
  * @example
- * ```typescript
+ * ```json
  * {
  *   "Label": "Material",
  *   "Input Type": "Select",
@@ -1439,8 +1484,8 @@ export declare interface IMove extends IHasId, IHasText, IHasDisplay, IHasSource
      * Note the "Canonical" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.
      * @see IHasTitle
      * @example
-     * ```typescript
-     * {Canonical: "Face Danger"}
+     * ```json
+     * {"Canonical": "Face Danger"}
      * ```
      */
     Title: ITitle;
@@ -1487,7 +1532,9 @@ export declare interface IMoveCategory extends IHasId, IHasSource, IHasDescripti
      * @pattern ^(Starforged|Ironsworn)/Moves/[A-z_-]+$
      */
     $id: string;
-    Moves: IMove[];
+    Moves: {
+        [key: string]: IMove;
+    };
     Display: IDisplay;
 }
 
@@ -1518,7 +1565,7 @@ export declare interface IMoveReroll extends IHasId, Partial<IHasText> {
      * @markdown
      * @localize
      */
-    Text: string;
+    Text?: string | undefined;
     /**
      * The dice to be rerolled.
      */
@@ -1718,13 +1765,17 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasSummary &
      *
      * This key appears only on {@link IOracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
      */
-    Tables?: IOracleTable[] | undefined;
+    Tables?: {
+        [key: string]: IOracleTable;
+    } | undefined;
     /**
      * Oracle sets contained by this set.
      *
      * This key appears only on {@link IOracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
      */
-    Sets?: IOracleSet[] | undefined;
+    Sets?: {
+        [key: string]: IOracleSet;
+    } | undefined;
     /**
      * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
      *
@@ -1799,8 +1850,12 @@ export declare interface IOracleSet extends Omit<IOracleBase, "Table"> {
      * A list of sample names for this category. Only used by Planetary Class {@link IOracleSet}s.
      */
     "Sample Names"?: string[] | undefined;
-    Sets?: IOracleSet[] | undefined;
-    Tables?: IOracleTable[] | undefined;
+    Sets?: {
+        [key: string]: IOracleSet;
+    } | undefined;
+    Tables?: {
+        [key: string]: IOracleTable;
+    } | undefined;
     Display: IOracleSetDisplay;
 }
 
@@ -1827,17 +1882,17 @@ export declare interface IOracleTable extends Omit<IOracleBase, "Sets" | "Tables
     $id: string;
     /**
      * @example
-     * ```typescript
+     * ```json
      * {
-     *  Canonical: "Character Revealed Aspect",
-     *  Short: "Revealed Aspect"
+     *  "Canonical": "Character Revealed Aspect",
+     *  "Short": "Revealed Aspect"
      * }
      * ```
      * @example
-     * ```typescript
+     * ```json
      * {
-     *  Canonical: "Spaceborne Peril",
-     *  Short: "Peril"
+     *  "Canonical": "Spaceborne Peril",
+     *  "Short": "Peril"
      * }
      * ```
      */
@@ -1901,7 +1956,7 @@ export declare interface IOracleUsage extends Partial<IHasRequirements & IHasSug
 /**
  * @public
  */
-export declare interface IOutcomeInfoBase<O extends MoveOutcome> extends IHasId, IHasText {
+export declare interface IOutcomeInfoBase<O extends MoveOutcome, RequireText extends boolean = false> extends IHasId, Partial<IHasText> {
     /**
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$
      */
@@ -1922,12 +1977,13 @@ export declare interface IOutcomeInfoBase<O extends MoveOutcome> extends IHasId,
      * Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.
      */
     "In Control"?: boolean | undefined;
+    Text?: RequireText extends true ? string : (string | undefined);
 }
 
 /**
  * @public
  */
-export declare interface IOutcomeMiss extends IOutcomeInfoBase<MoveOutcome.Miss> {
+export declare interface IOutcomeMiss extends IHasId, IOutcomeInfoBase<MoveOutcome.Miss, true> {
     /**
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$
      */
@@ -1956,7 +2012,7 @@ export declare interface IOutcomeMissMatch extends Omit<IOutcomeMiss, "With a Ma
 /**
  * @public
  */
-export declare interface IOutcomeStrongHit extends IOutcomeInfoBase<typeof MoveOutcome["Strong Hit"]> {
+export declare interface IOutcomeStrongHit extends IHasId, IOutcomeInfoBase<typeof MoveOutcome["Strong Hit"], true> {
     /**
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$
      */
@@ -1985,12 +2041,11 @@ export declare interface IOutcomeStrongHitMatch extends Omit<IOutcomeStrongHit, 
 /**
  * @public
  */
-export declare interface IOutcomeWeakHit extends IOutcomeInfoBase<typeof MoveOutcome["Weak Hit"]> {
+export declare interface IOutcomeWeakHit extends Omit<IOutcomeInfoBase<typeof MoveOutcome["Weak Hit"], true>, "With a Match"> {
     /**
      * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$
      */
     $id: string;
-    "With a Match"?: undefined;
     /**
      * @default false
      */
@@ -2021,7 +2076,7 @@ export declare interface IRollTemplate extends IHasId, Partial<IHasSummary & IHa
      * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.
      * @localize
      * @example
-     * ```
+     * ```json
      * "{{Starforged/Oracles/Factions/Affiliation}} of the {{Starforged/Oracles/Factions/Legacy}} {{Starforged/Oracles/Factions/Identity}}"
      * ```
      */
@@ -2035,7 +2090,7 @@ export declare interface IRollTemplate extends IHasId, Partial<IHasSummary & IHa
      * A template string for the parent's `Description` property, to be filled with an oracle table roll Result.
      * @localize
      * @example
-     * ```
+     * ```json
      * "Our computers are limited to simple digital systems and the most basic machine intelligence. This is because: {{Starforged/Setting_Truths/Artificial_Intelligence/1-33/Subtable}}.\n\nThe Adepts serve in place of those advanced systems. They utilize mind-altering drugs to see the universe as a dazzling lattice of data, identifying trends and predicting outcomes with uncanny accuracy. But to gain this insight they sacrifice much of themselves."
      * ```
      */
@@ -2047,12 +2102,24 @@ export declare interface IRollTemplate extends IHasId, Partial<IHasSummary & IHa
  * @public
  */
 export declare interface Ironsworn extends GameDataRoot {
-    "Encounters": IEncounterNatureInfo[];
-    "Setting Truths": ISettingTruthClassic[];
-    "Site Domains": IDelveDomain[];
-    "Site Themes": IDelveTheme[];
-    Regions?: IIronswornRegion[];
-    Rarities?: IDelveRarity[];
+    "Encounters": {
+        [key: string]: IEncounterNatureInfo;
+    };
+    "Setting Truths": {
+        [key: string]: ISettingTruthClassic;
+    };
+    "Site Domains": {
+        [key: string]: IDelveDomain;
+    };
+    "Site Themes": {
+        [key: string]: IDelveTheme;
+    };
+    Regions?: {
+        [key: string]: IIronswornRegion;
+    };
+    Rarities?: {
+        [key: string]: IDelveRarity;
+    };
 }
 
 /**
@@ -2243,6 +2310,12 @@ export declare interface ISource {
 }
 
 /**
+ * @public
+ */
+export declare interface ISourceYaml extends Partial<ISource> {
+}
+
+/**
  * Describes "non-canonical" suggestions for game content related to the parent item.
  *
  * These are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.
@@ -2411,6 +2484,11 @@ export declare enum LocationTheme {
 }
 
 /**
+ * @public
+ */
+export declare type MetadataKey = "$id" | "Title" | "Asset Type" | "Display" | "Source" | "Tags" | "Usage" | "Aliases";
+
+/**
  * Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.
  * If an asset condition meter can be used in this manner, the alias is included in its Aliases array.
  * @public
@@ -2501,6 +2579,23 @@ export declare type NullableKey<T, K> = {
 };
 
 /**
+ * Similar to "Omit", but recurses through any keyed object children to omit K from them, too.
+ * @public
+ */
+export declare type OmitDeep<T, K extends string> = {
+    [P in keyof T]: P extends K ? never : T[P] extends Record<string, unknown> ? OmitDeep<T[P], K> : T[P];
+};
+
+/**
+ * A stub that omits common metadata recursively. Use it to create things like e.g. AssetAlterProperties.
+ *
+ * Additional keys to omit (non-recursively) may optionally be provided with K.
+ * @public
+ */
+export declare type OmitMetadataDeep<T, K extends string = ""> = OmitDeep<Omit<T, K>, MetadataKey>;
+
+/**
+ * Omits "never" types.
  * @public
  */
 export declare type OmitNever<T> = {
@@ -2518,29 +2613,36 @@ export declare type OptionalKeys<T> = {
  * Makes a type where K is nullable.
  * @public
  */
-export declare type PartialBy<T, K extends keyof any = ""> = Omit<T, K> & Partial<Pick<T, K extends keyof T ? K : never>>;
+export declare type PartialBy<T, K extends string> = Omit<T, K> & Partial<Pick<T, K extends keyof T ? K : never>>;
 
 /**
- * Only recurses a couple times so it doesn't cause an infinite loop during schema generation.
+ * Similar to 'Partial', but recurses through all properties and their children, too. Use with care, as it can sometimes cause compiler segfaults. It's recommended to combine this with Omit if there's properties that you're sure you won't need (make {@link PartialDeep} the outermost generic type, in this case).
+ *
  * @public
  */
 export declare type PartialDeep<T> = Partial<{
-    [P in keyof T]: T[P] extends Array<unknown> ? (T[P] | undefined) : Partial<T[P]>;
+    [P in keyof T]?: (T[P] extends Record<string, unknown> ? PartialDeep<T[P]> : T[P]) | undefined;
 }>;
 
 /**
  * Makes a type where K and its properties are nullable.
  * @public
  */
-export declare type PartialDeepBy<T, K extends keyof any = ""> = Omit<T, K> & PartialDeep<Pick<T, K extends keyof T ? K : never>>;
+export declare type PartialDeepBy<T, K extends string> = Omit<T, K> & PartialDeep<Pick<T, K extends keyof T ? K : never>>;
 
 /**
  * Make all properties of T nullable except for K, which is required.
  * @public
  */
-export declare type PartialExcept<T, K extends keyof any = ""> = RequireKey<{
+export declare type PartialExcept<T, K extends string> = RequireKey<{
     [P in keyof T]?: T[P];
 }, K>;
+
+/**
+ * A stub that with recursively optional metadata. Additional keys to make partial may optionally be provided with K.
+ * @public
+ */
+export declare type PartialMetadataDeep<T, K extends string = ""> = PartialDeepBy<T, K | MetadataKey>;
 
 /**
  * @public
@@ -2652,7 +2754,7 @@ export declare type RequiredKeys<T> = {
  * Generic type: require specific keys to be NonNullable.
  * @public
  */
-export declare type RequireKey<T, K extends keyof any = ""> = T & {
+export declare type RequireKey<T, K extends string> = T & {
     [P in K]-?: NonNullable<T[P extends keyof T ? P : never]>;
 };
 
@@ -2682,6 +2784,13 @@ export declare enum RerollType {
      */
     All = "All"
 }
+
+/**
+ * @public
+ */
+export declare type RetainBlacklist<T> = {
+    [P in keyof T as T[P] extends BlacklistPartial ? P : never]: T[P];
+};
 
 /**
  * Enumerates the ID of every 'canonical' Starforged oracle that can be rolled directly. Provided to make it easy to type-check e.g. functions that accept an oracle ID as an argument.
@@ -3046,8 +3155,12 @@ export declare enum SourceUrl {
  * @public
  */
 export declare interface Starforged extends GameDataRoot {
-    "Encounters": IEncounterStarforged[];
-    "Setting Truths": ISettingTruth[];
+    "Encounters": {
+        [key: string]: IEncounterStarforged;
+    };
+    "Setting Truths": {
+        [key: string]: ISettingTruth;
+    };
 }
 
 /**
@@ -3072,13 +3185,13 @@ export declare enum Stat {
  *
  * @public
  */
-export declare type StubBy<T, PartialKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialBy<T, PartialKey>, OmitKey>;
+export declare type StubBy<T, PartialKey extends string = "", OmitKey extends string = ""> = Omit<PartialBy<T, PartialKey>, OmitKey>;
 
 /**
  * Make a stub of T where ReqK is required, OmitK is omitted, and all other keys are optional.
  * @public
  */
-export declare type StubExcept<T, ReqKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
+export declare type StubExcept<T, ReqKey extends string = "", OmitKey extends string = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
 
 /**
  * Enumerates the type of content shown: a dice range, or a string.

@@ -9,7 +9,8 @@ Settlements:
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
   Sets:
-    - Title:
+    Population:
+      Title:
         Canonical: Population
       Source:
         Page: 322
@@ -34,7 +35,8 @@ Settlements:
             Label: Number
             Key: Result
       Tables:
-        - Title:
+        Terminus:
+          Title:
             Canonical: Terminus
           Display:
             Column of: Starforged/Oracles/Settlements/Population
@@ -48,7 +50,8 @@ Settlements:
             - [26, 55, Hundreds, Attributes: {Population: Hundreds}]
             - [56, 85, Thousands, Attributes: {Population: Thousands}]
             - [86, 100, Tens of thousands, Attributes: {Population: Tens of thousands}]
-        - Title:
+        Outlands:
+          Title:
             Canonical: Outlands
           Display:
             Column of: Starforged/Oracles/Settlements/Population
@@ -65,7 +68,8 @@ Settlements:
               - [66, 90]
               - [91, 100]
 
-        - Title:
+        Expanse:
+          Title:
             Canonical: Expanse
           Display:
             Column of: Starforged/Oracles/Settlements/Population
@@ -83,9 +87,10 @@ Settlements:
               - [96, 100]
 
   Tables:
-    - _templateOracleTable: *template.info:Generic.Location
+    Location:
       Title:
         Canonical: Location
+      _templateOracleTable: *template.info:Generic.Location
       Source:
         Page: 322
       _templateTableRows:
@@ -94,7 +99,8 @@ Settlements:
           - [1, 40]
           - [41, 75]
           - [76, 100]
-    - Title:
+    First Look:
+      Title:
         Canonical: First Look
       Source:
         Page: 323
@@ -127,7 +133,8 @@ Settlements:
         - [88, 90, "Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)", *obj:Vault]
         - [91, 100, *result:Descriptor+Focus]
 
-    - Title:
+    Initial Contact:
+      Title:
         Canonical: Initial Contact
       Source:
         Page: 323
@@ -149,7 +156,8 @@ Settlements:
         - [93, 95, Destroyed, Attributes: {Initial Contact: Destroyed}]
         - [96, 100, "[⏵Derelict](Starforged/Oracles/Derelicts)", *inherit:Derelict.Settlement]
 
-    - Title:
+    Authority:
+      Title:
         Canonical: Authority
       Source:
         Page: 323
@@ -165,13 +173,13 @@ Settlements:
         - [56, 70, Unyielding, Attributes: {Authority: Unyielding}]
         - [71, 85, Corrupt, Attributes: {Authority: Corrupt}]
         - [86, 100, Oppressive, Attributes: {Authority: Oppressive}]
-
-    - Source:
-        Page: 324
+    Projects:
       Title:
         Canonical: Settlement Projects
         Short: Projects
       _idFragment: Projects
+      Source:
+        Page: 324
       Content:
         Part of speech: [noun, common noun]
         Tags: [abstract noun]
@@ -213,13 +221,13 @@ Settlements:
         - [89, 92, Trade]
         - [93, 95, Warfare]
         - [96, 100, *result:Action+Theme]
-
-    - Source:
-        Page: 324
+    Trouble:
       Title:
         Canonical: Settlement Trouble
         Short: Trouble
       _idFragment: Trouble
+      Source:
+        Page: 324
       Usage:
         Max rolls: 2
       Description: |-
@@ -262,13 +270,13 @@ Settlements:
         - [87, 88, Volatile energy source, Suggestions: [*roll:Object]]
         - [89, 90, Vulnerable lifeforms, Suggestions: [*obj:Creature]]
         - [91, 100, *result:Action+Theme]
-
-    - Source:
-        Page: 325
+    Name:
       Title:
         Canonical: Settlement Name
         Short: Name
       _idFragment: Name
+      Source:
+        Page: 325
       Description: |-
         Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
       Usage:

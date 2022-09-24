@@ -1,133 +1,142 @@
-Title:
-  Canonical: Moves
-Source:
-  Authors:
-    - Shawn Tomkin
-  Title: "Ironsworn: Delve"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Sets:
-  - Title:
-      Canonical: Delve the Depths
-    # Move: Ironsworn/Moves/Delve/Delve_the_Depths
-    Source:
-      Page: 21
-      Authors:
-        - Shawn Tomkin
-      Title: "Ironsworn: Delve"
-      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-    Tables:
-      - Title:
-          Canonical: Edge
-        Table: &table:Delve_the_Depths
-          - [1, 45, "Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger)."]
-          - [46, 65, "Mark progress."]
-          - [
-              66,
-              75,
-              "Choose one: Mark progress or [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).",
-            ]
-          - [
-              76,
-              80,
-              "Take both: Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).",
-            ]
-          - [
-              81,
-              100,
-              "Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
-            ]
-      - Title:
-          Canonical: Shadow
-        _templateTableRows:
-          content: *table:Delve_the_Depths
-          rolls:
-            - [1, 30]
-            - [31, 65]
-            - [66, 90]
-            - [91, 99]
-            - [100, 100]
-      - Title:
-          Canonical: Wits
-        _templateTableRows:
-          content: *table:Delve_the_Depths
-          rolls:
-            - [1, 40]
-            - [41, 55]
-            - [56, 80]
-            - [81, 99]
-            - [100, 100]
-Tables:
-  - Title:
-      Canonical: Find an Opportunity
-    # Move: Ironsworn/Moves/Delve/Find_an_Opportunity
-    Source:
-      Page: 30
-    Table:
-      - [1, 25, "The terrain favors you, or you find a hidden path."]
-      - [
-          26,
-          45,
-          "An aspect of the history or nature of this place is revealed.",
-        ]
-      - [46, 57, "You locate a secure area."]
-      - [58, 68, "A clue offers insight or direction."]
-      - [69, 78, "You get the drop on a denizen."]
-      - [
-          79,
-          86,
-          "This area provides an opportunity to scavenge, forage, or hunt.",
-        ]
-      - [87, 90, "You locate an interesting or helpful object."]
-      - [91, 94, "You are alerted to a potential threat."]
-      - [95, 98, "You encounter a denizen who might support you."]
-      - [99, 100, "You encounter a denizen in need of help."]
-  - Title:
-      Canonical: Reveal a Danger
-    Source:
-      Page: 34
-    Table:
-      - [1, 30, "Check the theme card."]
-      - [31, 45, "Check the domain card."]
-      - [46, 57, &Reveal_a_Danger_1 "You encounter a hostile denizen."]
-      - [58, 68, &Reveal_a_Danger_2 "You face an environmental or architectural hazard."]
-      - [69, 76, &Reveal_a_Danger_3 "A discovery undermines or complicates your quest."]
-      - [77, 79, &Reveal_a_Danger_4 "You confront a harrowing situation or sensation."]
-      - [80, 82, &Reveal_a_Danger_5 "You face the consequences of an earlier choice or approach."]
-      - [83, 85, &Reveal_a_Danger_6 "Your way is blocked or trapped."]
-      - [86, 88, &Reveal_a_Danger_7 "A resource is diminished, broken, or lost."]
-      - [89, 91, &Reveal_a_Danger_8 "You face a perplexing mystery or tough choice."]
-      - [92, 94, &Reveal_a_Danger_9 "You lose your way or are delayed."]
-      - [
-          95,
-          100,
-          &Reveal_a_Danger_10 "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-          *result:RollTwice.MakeItWorse
-        ]
-  - Title:
-      Canonical: Reveal a Danger (alternate version)
-      Short: Reveal a Danger
-    _idFragment: Reveal a Danger alt
-    Source:
-      Page: 68
-    Table:
-      - [1, 22, *Reveal_a_Danger_1]
-      - [23, 42, *Reveal_a_Danger_2]
-      - [43, 58, *Reveal_a_Danger_3]
-      - [59, 64, *Reveal_a_Danger_4]
-      - [65, 70, *Reveal_a_Danger_5]
-      - [71, 76, *Reveal_a_Danger_6]
-      - [77, 82, *Reveal_a_Danger_7]
-      - [83, 88, *Reveal_a_Danger_8]
-      - [89, 94, *Reveal_a_Danger_9]
-      - [95, 100, *Reveal_a_Danger_10, *result:RollTwice.MakeItWorse]
-  - Title:
-      Canonical: Advance a Threat
-    On a Match:
-      Text: |-
-        On a match, this development also exposes a surprising aspect of the threat’s plan or nature.
-    Source:
-      Page: 155
-    Table:
-      - [1, 30, "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone). Otherwise, mark menace."]
-      - [31, 70, "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."]
-      - [71, 100, "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."]
+Moves:
+  Title:
+    Canonical: Moves
+  Source:
+    Authors:
+      - Shawn Tomkin
+    Title: "Ironsworn: Delve"
+    License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Sets:
+    Delve the Depths:
+      Title:
+        Canonical: Delve the Depths
+      # Move: Ironsworn/Moves/Delve/Delve_the_Depths
+      Source:
+        Page: 21
+        Authors:
+          - Shawn Tomkin
+        Title: "Ironsworn: Delve"
+        License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+      Tables:
+        Edge:
+          Title:
+            Canonical: Edge
+          Table: &table:Delve_the_Depths
+            - [1, 45, "Mark progress and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger)."]
+            - [46, 65, "Mark progress."]
+            - [
+                66,
+                75,
+                "Choose one: Mark progress or [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).",
+              ]
+            - [
+                76,
+                80,
+                "Take both: Mark progress and [Find an Opportunity](Ironsworn/Moves/Delve/Find_an_Opportunity).",
+              ]
+            - [
+                81,
+                100,
+                "Mark progress twice and [Reveal a Danger](Ironsworn/Moves/Delve/Reveal_a_Danger).",
+              ]
+        Shadow:
+          Title:
+            Canonical: Shadow
+          _templateTableRows:
+            content: *table:Delve_the_Depths
+            rolls:
+              - [1, 30]
+              - [31, 65]
+              - [66, 90]
+              - [91, 99]
+              - [100, 100]
+        Wits:
+          Title:
+            Canonical: Wits
+          _templateTableRows:
+            content: *table:Delve_the_Depths
+            rolls:
+              - [1, 40]
+              - [41, 55]
+              - [56, 80]
+              - [81, 99]
+              - [100, 100]
+  Tables:
+    Find an Opportunity:
+      Title:
+        Canonical: Find an Opportunity
+      # Move: Ironsworn/Moves/Delve/Find_an_Opportunity
+      Source:
+        Page: 30
+      Table:
+        - [1, 25, "The terrain favors you, or you find a hidden path."]
+        - [
+            26,
+            45,
+            "An aspect of the history or nature of this place is revealed.",
+          ]
+        - [46, 57, "You locate a secure area."]
+        - [58, 68, "A clue offers insight or direction."]
+        - [69, 78, "You get the drop on a denizen."]
+        - [
+            79,
+            86,
+            "This area provides an opportunity to scavenge, forage, or hunt.",
+          ]
+        - [87, 90, "You locate an interesting or helpful object."]
+        - [91, 94, "You are alerted to a potential threat."]
+        - [95, 98, "You encounter a denizen who might support you."]
+        - [99, 100, "You encounter a denizen in need of help."]
+    Reveal a Danger:
+      Title:
+        Canonical: Reveal a Danger
+      Source:
+        Page: 34
+      Table:
+        - [1, 30, "Check the theme card."]
+        - [31, 45, "Check the domain card."]
+        - [46, 57, &Reveal_a_Danger_1 "You encounter a hostile denizen."]
+        - [58, 68, &Reveal_a_Danger_2 "You face an environmental or architectural hazard."]
+        - [69, 76, &Reveal_a_Danger_3 "A discovery undermines or complicates your quest."]
+        - [77, 79, &Reveal_a_Danger_4 "You confront a harrowing situation or sensation."]
+        - [80, 82, &Reveal_a_Danger_5 "You face the consequences of an earlier choice or approach."]
+        - [83, 85, &Reveal_a_Danger_6 "Your way is blocked or trapped."]
+        - [86, 88, &Reveal_a_Danger_7 "A resource is diminished, broken, or lost."]
+        - [89, 91, &Reveal_a_Danger_8 "You face a perplexing mystery or tough choice."]
+        - [92, 94, &Reveal_a_Danger_9 "You lose your way or are delayed."]
+        - [
+            95,
+            100,
+            &Reveal_a_Danger_10 "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+            *result:RollTwice.MakeItWorse
+          ]
+    Reveal a Danger alt:
+      Title:
+        Canonical: Reveal a Danger (alternate version)
+        Short: Reveal a Danger
+      _idFragment: Reveal a Danger alt
+      Source:
+        Page: 68
+      Table:
+        - [1, 22, *Reveal_a_Danger_1]
+        - [23, 42, *Reveal_a_Danger_2]
+        - [43, 58, *Reveal_a_Danger_3]
+        - [59, 64, *Reveal_a_Danger_4]
+        - [65, 70, *Reveal_a_Danger_5]
+        - [71, 76, *Reveal_a_Danger_6]
+        - [77, 82, *Reveal_a_Danger_7]
+        - [83, 88, *Reveal_a_Danger_8]
+        - [89, 94, *Reveal_a_Danger_9]
+        - [95, 100, *Reveal_a_Danger_10, *result:RollTwice.MakeItWorse]
+    Advance a Threat:
+      Title:
+        Canonical: Advance a Threat
+      On a Match:
+        Text: |-
+          On a match, this development also exposes a surprising aspect of the threat’s plan or nature.
+      Source:
+        Page: 155
+      Table:
+        - [1, 30, "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](Ironsworn/Moves/Quest/Reach_a_Milestone). Otherwise, mark menace."]
+        - [31, 70, "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."]
+        - [71, 100, "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."]

@@ -1,9 +1,10 @@
-import { REFS_PATH } from "@constants/index.js";
+import { REFS_PATH } from "@constants";
 import { loadYamlRefs } from "@utils/process_yaml/loadYamlRefs.js";
 import { loadYamlTemplates } from "@utils/process_yaml/loadYamlTemplates.js";
-import type { IYamlWithRef } from "@yaml_in/index.js";
+import type { YamlWithRef } from "@schema_yaml";
 import yaml from "js-yaml";
 import fs from "fs";
+import _ from "lodash";
 
 /**
  * Concatenates YAML with reference objects.
@@ -15,8 +16,8 @@ export function concatWithYamlRefs<T>(referencePath: string = REFS_PATH, ...file
   const refString = loadYamlRefs(referencePath);
   const templateString = loadYamlTemplates(referencePath + "/templates/");
   const fileStrings: string[] = filePaths.map(path => fs.readFileSync(path, { encoding: "utf-8" }));
-  const dataStrings: string[] = [ refString, templateString, ...fileStrings ];
-  const dataObject = yaml.load(dataStrings.join("\n\n")) as T & IYamlWithRef;
-  return dataObject;
+  const refsString = refString + "\n\n" + templateString;
+  const dataObject = fileStrings.map(yamlString => yaml.load(refsString + "\n\n" + yamlString)).reduce((prev,current) => _.merge(prev,current), {})
+  return dataObject as T & YamlWithRef;
 }
 

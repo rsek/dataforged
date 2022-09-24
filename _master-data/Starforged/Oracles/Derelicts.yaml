@@ -3,24 +3,17 @@ Derelicts:
     Canonical: Derelicts
     Short: Derelict
   _idFragment: Derelicts
+  Ancestors: []
   Source:
     Authors: [Shawn Tomkin]
     Title: "Ironsworn: Starforged Rulebook"
     License: https://creativecommons.org/licenses/by-sa/4.0/
     Date: "050622"
-  _parentOf:
-    - Access
-    - Community
-    - Engineering
-    - Living
-    - Medical
-    - Operations
-    - Production
-    - Research
   Description: |-
     Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
   Sets:
-    - Title:
+    Type:
+      Title:
         Canonical: Type (by Location)
         Short: Type
       Source:
@@ -42,18 +35,20 @@ Derelicts:
           - Type: string
             Content: Starforged/Oracles/Derelicts/Type/Planetside
       Tables:
-        - Display: &derelictTypeDisplay
-            Column of: Starforged/Oracles/Derelicts/Type
+        Planetside:
           Title:
             Canonical: Planetside
+          Display: &derelictTypeDisplay
+            Column of: Starforged/Oracles/Derelicts/Type
           Usage:
             Requires: *attr:Location.Planetside
           Table: &derelictTypeTable
             - [1, 25, Starship, *attr:DerelictType.Starship]
             - [26, 100, Settlement, *attr:DerelictType.Settlement]
-        - Display: *derelictTypeDisplay
+        Orbital:
           Title:
             Canonical: Orbital
+          Display: *derelictTypeDisplay
           Usage:
             Requires: *attr:Location.Orbital
           _templateTableRows:
@@ -61,10 +56,11 @@ Derelicts:
             rolls:
               - [1, 40]
               - [41, 100]
-        - Display:
-            Column of: Starforged/Oracles/Derelicts/Type
+        Deep Space:
           Title:
             Canonical: Deep Space
+          Display:
+            Column of: Starforged/Oracles/Derelicts/Type
           Usage:
             Requires: *attr:Location.DeepSpace
           _templateTableRows:
@@ -72,7 +68,8 @@ Derelicts:
             rolls:
               - [1, 75]
               - [76, 100]
-    - Title:
+    Zones:
+      Title:
         Canonical: Derelict Zones
         Short: Zones
       _idFragment: Zones
@@ -94,7 +91,8 @@ Derelicts:
           Attributes:
             Derelict Type: null
       Tables:
-        - Title:
+        Starship:
+          Title:
             Canonical: Starship
           Display:
             Column of: Starforged/Oracles/Derelicts/Zone
@@ -111,8 +109,8 @@ Derelicts:
             - [66, 85, "[⏵Operations](Starforged/Oracles/Derelicts/Operations)", *obj:DerelictZone.Operations, Icon: "img/vector/Derelicts/Operations.svg"]
             - [86, 90, "[⏵Production](Starforged/Oracles/Derelicts/Production)", *obj:DerelictZone.Production, Icon: "img/vector/Derelicts/Production.svg"]
             - [91, 100, "[⏵Research](Starforged/Oracles/Derelicts/Research)", *obj:DerelictZone.Research, Icon: "img/vector/Derelicts/Research.svg"]
-
-        - Title:
+        Settlement:
+          Title:
             Canonical: Settlement
           Display:
             Column of: Starforged/Oracles/Derelicts/Zone
@@ -132,9 +130,11 @@ Derelicts:
               - [71, 90]
               - [91, 100]
   Tables:
-    - _templateOracleTable: *template.info:Generic.Location
+    Canonical:
       Title:
         Canonical: Location
+      _templateOracleTable: *template.info:Generic.Location
+
       Source:
         Page: 348
       _templateTableRows:
@@ -143,7 +143,8 @@ Derelicts:
           - [1, 40]
           - [41, 60]
           - [61, 100]
-    - Title:
+    Condition:
+      Title:
         Canonical: Condition
       Source:
         Page: 348
@@ -158,7 +159,8 @@ Derelicts:
         - [61, 90, Damaged or breached]
         - [91, 98, Heavily damaged]
         - [99, 100, Impending destruction]
-    - Title:
+    Outer First Look:
+      Title:
         Canonical: Outer First Look
       Source:
         Page: 349
@@ -178,7 +180,8 @@ Derelicts:
         - [81, 85, Signs that others are here]
         - [86, 95, Stripped exterior]
         - [96, 100, Time or reality distortions]
-    - Title:
+    Inner First Look:
+      Title:
         Canonical: Inner First Look
       Source:
         Page: 349

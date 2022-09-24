@@ -1,4 +1,4 @@
-import type { IMoveCategory } from "@json_out/index.js";
+import type { MoveCategory } from "@schema_json";
 import { renderMove } from "@utils/md/renderMove.js";
 import _ from "lodash-es";
 
@@ -10,16 +10,16 @@ import _ from "lodash-es";
  * @param localLinksOnly - FIXME: NYI. If true, only links to moves in the same category will be generated.
  * @returns A string.
  */
-export function renderMoveCategory(moveCat: IMoveCategory, headerLevel: number = 2, localLinksOnly = true): string {
+export function renderMoveCategory(moveCat: MoveCategory, headerLevel: number = 2, localLinksOnly = true): string {
   const header = `${_.repeat("#", headerLevel)} ${moveCat.Title.Canonical}`;
   const items = [ header, moveCat.Description ];
 
-  const categories = _.uniq(moveCat.Moves.map(move => move.Category));
+  const categories = _.mapValues(moveCat.Moves, move => move.Category);
 
-  const moveCategoryText = categories.map(category => {
-    const moveText = moveCat.Moves.filter(move => move.Category === category).map(move => renderMove(move, headerLevel + 1));
+  const moveCategoryText = _.flatMap(categories,category => {
+    const moveText = _.filter(moveCat.Moves,move => move.Category === category).map(move => renderMove(move, headerLevel + 1));
     return moveText;
-  }).flat(2);
+  })
 
   items.push(...moveCategoryText);
 

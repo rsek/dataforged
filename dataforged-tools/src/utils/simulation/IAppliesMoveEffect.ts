@@ -1,5 +1,5 @@
-import type { IOutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
+import type { OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
 
-export interface IAppliesMoveEffect {
+export interface AppliesMoveEffect { AppliesMoveEffect
   applyResult(data: IOutcomeEffectHash): void;
 }

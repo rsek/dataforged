@@ -1,6 +1,7 @@
+import { YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTemplateBase } from "@schema_yaml";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import type { ITemplateYamlBase } from "@yaml_in/index.js";
+
 import _ from "lodash-es";
 
 /**
@@ -9,7 +10,8 @@ import _ from "lodash-es";
  * @param template - The template to use.
  * @returns The template oracle.
  */
-export function templateOracle<T extends ITemplateYamlBase>(json: T, template: ITemplateYamlBase): T {
+export function templateOracle<T extends YamlOracleSet|
+YamlOracleTable>(json: Partial<T>&YamlTemplateBase, template: Partial<T>): T {
   buildLog(templateOracle, "Building oracle from template...");
 
   // buildLog(templateOracle, "Cloning objects...");
@@ -24,5 +26,5 @@ export function templateOracle<T extends ITemplateYamlBase>(json: T, template: I
       jsonClone = replaceInAllStrings(jsonClone, searchValue, replaceValue);
     });
   }
-  return jsonClone;
+  return jsonClone as T;
 }

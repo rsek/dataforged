@@ -1,13 +1,12 @@
-import { InputClock, InputNumber, InputText } from "../../classes/common/index.js";
-import { InputSelect } from "../../classes/common/InputSelect.js";
-import type { IAsset, IAssetAbility } from "../../json_out/index.js";
-import { InputType } from "../../json_out/index.js";
-import type { IInputYaml } from "../../yaml_in/index.js";
+import { InputClockBuilder, InputNumberBuilder, InputSelectBuilder, InputTextBuilder } from "../../builders";
+import type { Asset, AssetAbility } from "../../schema_json";
+import { InputType } from "../../schema_json";
+import type { YamlInput } from "../../schema_yaml";
 /**
- * Infers the correct class for an IInputYaml object and constructs it.
+ * Infers the correct class for an YamlInput object and constructs it.
  * @param inputJson - The data to pick a class for.
  */
-export declare function pickInput<T extends InputType>(inputJson: IInputYaml & {
+export declare function pickInput<T extends InputType>(inputJson: YamlInput & {
     "Input Type": T;
-}, parent: IAsset | IAssetAbility): InputNumber | InputClock | InputText | InputSelect;
+}, parent: Asset | AssetAbility): InputClockBuilder | InputNumberBuilder | InputSelectBuilder | InputTextBuilder;
 //# sourceMappingURL=pickInput.d.ts.map

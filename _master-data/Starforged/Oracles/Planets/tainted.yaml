@@ -1,116 +1,118 @@
-Tainted World:
-  _templateOracleSet: *template.category:Planet
-  _templateVars:
-    Planetary Class: Tainted
-  Title:
-    Canonical: Tainted World
-  Display:
-    Images: *images:TaintedWorld
-  Source:
-    Page: 317
-  Summary: A foul planet wracked by a poisonous climate and virulent growths.
-  Sample Names:
-    - Achlys
-    - Animus
-    - Bane
-    - Blight
-    - Carrion
-    - Chitin
-    - Datura
-    - Dreck
-    - Erra
-    - Febris
-    - Malacia
-    - Miasma
-    - Morbus
-    - Pathosis
-    - Pestis
-    - Scourge
-    - Telium
-    - Timoris
-    - Verus
-    - Xanthous
+Planets:
   Sets:
-    - _templateOracleSet: *template.info:Planet.Settlements
+    Tainted:
+      _templateOracleSet: *template.category:Planet
+      _templateVars:
+        Planetary Class: Tainted
+      Title:
+        Canonical: Tainted World
+      Display:
+        Images: *images:TaintedWorld
+      Source:
+        Page: 317
+      Summary: A foul planet wracked by a poisonous climate and virulent growths.
+      Sample Names:
+        - Achlys
+        - Animus
+        - Bane
+        - Blight
+        - Carrion
+        - Chitin
+        - Datura
+        - Dreck
+        - Erra
+        - Febris
+        - Malacia
+        - Miasma
+        - Morbus
+        - Pathosis
+        - Pestis
+        - Scourge
+        - Telium
+        - Timoris
+        - Verus
+        - Xanthous
+      Sets:
+        - _templateOracleSet: *template.info:Planet.Settlements
+          Tables:
+            - _templateOracleSet: *template.info:Planet.Settlements.Terminus
+              _templateTableRows:
+                content: *template.content:Planet.Settlements
+                rolls:
+                  - [1, 80] # None
+                  - [81, 90] # Orbital settlement
+                  - [91, 95] # Planetside settlement
+                  - [96, 98] # Multiple settlements
+                  - [99, 100] # Settlements in conflict
+            - _templateOracleSet: *template.info:Planet.Settlements.Outlands
+              _templateTableRows:
+                content: *template.content:Planet.Settlements
+                rolls:
+                  - [1, 90] # None
+                  - [91, 97] # Orbital settlement
+                  - [98, 100] # Planetside settlement
+                  - [null, null] # Multiple settlements
+                  - [null, null] # Settlements in conflict
+            - _templateOracleSet: *template.info:Planet.Settlements.Expanse
+              _templateTableRows:
+                content: *template.content:Planet.Settlements
+                rolls:
+                  - [1, 95] # None
+                  - [96, 98] # Orbital settlement
+                  - [99, 100] # Planetside settlement
+                  - [null, null] # Multiple settlements
+                  - [null, null] # Settlements in conflict
       Tables:
-        - _templateOracleSet: *template.info:Planet.Settlements.Terminus
+        - _templateOracleTable: *template.info:Planet.Atmosphere
           _templateTableRows:
-            content: *template.content:Planet.Settlements
+            content: *template.content:Planet.Atmosphere
             rolls:
-              - [1, 80] # None
-              - [81, 90] # Orbital settlement
-              - [91, 95] # Planetside settlement
-              - [96, 98] # Multiple settlements
-              - [99, 100] # Settlements in conflict
-        - _templateOracleSet: *template.info:Planet.Settlements.Outlands
+              - [null, null] # None / thin
+              - [1, 65] # Toxic
+              - [66, 85] # Corrosive
+              - [86, 95] # Marginal
+              - [96, 100] # Breathable
+              - [null, null] # Ideal
+        - _templateOracleTable: *template.info:Planet.ObservedFromSpace
           _templateTableRows:
-            content: *template.content:Planet.Settlements
-            rolls:
-              - [1, 90] # None
-              - [91, 97] # Orbital settlement
-              - [98, 100] # Planetside settlement
-              - [null, null] # Multiple settlements
-              - [null, null] # Settlements in conflict
-        - _templateOracleSet: *template.info:Planet.Settlements.Expanse
+            rolls: *template.rolls:Planet.ObservedFromSpace
+            content:
+              - Expansive fungal plains
+              - Stagnant cloud cover
+              - Fungal forests
+              - ["Thick, murky atmosphere"]
+              - ["Scabrous, infected terrain"]
+              - Toxic seas
+              - Sky-breaching fungus
+              - Sludge-filled river networks
+              - *result:Descriptor+Focus
+              - *result:PrecursorVault.Orbital
+        - _templateOracleTable: *template.info:Planet.PlanetsideFeature
           _templateTableRows:
-            content: *template.content:Planet.Settlements
+            rolls: *template.rolls:Planet.PlanetsideFeature
+            content:
+              - Caustic gas storms
+              - ["Corrosive, low-lying fog"]
+              - Fungus-encrusted caves
+              - Gelatinous ponds
+              - Hallucinogenic toxins
+              - Layers of fast-growing lichen
+              - Moldering bones
+              - Mutated flora
+              - Poisonous gas vents
+              - Spore clouds
+              - Terrain marred by fleshy pustules
+              - Toxic rain
+              - Virulent fungal infestations
+              - *result:Descriptor+Focus
+              - *result:PrecursorVault.Planetside
+        - _templateOracleTable: *template.info:Planet.Life
+          _templateTableRows:
+            content: *template.content:Planet.Life
             rolls:
-              - [1, 95] # None
-              - [96, 98] # Orbital settlement
-              - [99, 100] # Planetside settlement
-              - [null, null] # Multiple settlements
-              - [null, null] # Settlements in conflict
-  Tables:
-    - _templateOracleTable: *template.info:Planet.Atmosphere
-      _templateTableRows:
-        content: *template.content:Planet.Atmosphere
-        rolls:
-          - [null, null] # None / thin
-          - [1, 65] # Toxic
-          - [66, 85] # Corrosive
-          - [86, 95] # Marginal
-          - [96, 100] # Breathable
-          - [null, null] # Ideal
-    - _templateOracleTable: *template.info:Planet.ObservedFromSpace
-      _templateTableRows:
-        rolls: *template.rolls:Planet.ObservedFromSpace
-        content:
-          - Expansive fungal plains
-          - Stagnant cloud cover
-          - Fungal forests
-          - ["Thick, murky atmosphere"]
-          - ["Scabrous, infected terrain"]
-          - Toxic seas
-          - Sky-breaching fungus
-          - Sludge-filled river networks
-          - *result:Descriptor+Focus
-          - *result:PrecursorVault.Orbital
-    - _templateOracleTable: *template.info:Planet.PlanetsideFeature
-      _templateTableRows:
-        rolls: *template.rolls:Planet.PlanetsideFeature
-        content:
-          - Caustic gas storms
-          - ["Corrosive, low-lying fog"]
-          - Fungus-encrusted caves
-          - Gelatinous ponds
-          - Hallucinogenic toxins
-          - Layers of fast-growing lichen
-          - Moldering bones
-          - Mutated flora
-          - Poisonous gas vents
-          - Spore clouds
-          - Terrain marred by fleshy pustules
-          - Toxic rain
-          - Virulent fungal infestations
-          - *result:Descriptor+Focus
-          - *result:PrecursorVault.Planetside
-    - _templateOracleTable: *template.info:Planet.Life
-      _templateTableRows:
-        content: *template.content:Planet.Life
-        rolls:
-          - [null, null] # None
-          - [null, null] # Extinct
-          - [1, 10] # Scarce
-          - [11, 35] # Diverse
-          - [36, 65] # Bountiful
-          - [66, 100] # Overrun
+              - [null, null] # None
+              - [null, null] # Extinct
+              - [1, 10] # Scarce
+              - [11, 35] # Diverse
+              - [36, 65] # Bountiful
+              - [66, 100] # Overrun

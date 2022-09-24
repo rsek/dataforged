@@ -7,7 +7,7 @@
  * @param message - The message to display.
  * @returns An Error object.
  */
-export function badJsonError(source, obj, message = "JSON does not conform to interface") {
+export function badJsonError(source, obj, message = "JSON does not conform to schema") {
     let srcId;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

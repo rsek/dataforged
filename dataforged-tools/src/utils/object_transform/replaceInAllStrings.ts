@@ -1,5 +1,5 @@
 import { buildLog } from "@utils/logging/buildLog.js";
-import { JSONPath } from "jsonpath-plus";
+import { JSONPath, JSONPathOptions } from "jsonpath-plus";
 import _ from "lodash-es";
 
 interface JpResult<T> {
@@ -17,7 +17,7 @@ interface JpResult<T> {
  * @param replaceValue - The value to replace.
  * @returns A copy of the original JSON object with all strings replaced.
  */
-export function replaceInAllStrings<T extends object>(object: T, searchValue: string, replaceValue: string): T {
+export function replaceInAllStrings<T extends JSONPathOptions['json']> (object: T, searchValue: string, replaceValue: string): T {
   // console.log("args", arguments);
   const jsonClone = _.cloneDeep(object);
   JSONPath({

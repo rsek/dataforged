@@ -1,11 +1,11 @@
-import type { IHasId } from "@json_out/index.js";
+import type { HasId } from "@schema_json";
 import {inRange} from "lodash-es"
 
 /**
  * Infers the ancestor IDs of a Dataforged ID.
  * @param id - The ID to extract ancestor IDs from.
  */
-export function extractAncestors(id: IHasId["$id"]): IHasId["$id"][] {
+export function extractAncestors(id: HasId["$id"]): HasId["$id"][] {
   const fragments = id.split("/");
   const ancestors: string[] = [];
 

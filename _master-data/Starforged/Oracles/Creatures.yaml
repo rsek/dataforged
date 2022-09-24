@@ -11,7 +11,8 @@ Creatures:
   Description:
     Roll for a [basic form](Starforged/Oracles/Creatures/Basic_Form), and flesh out the creature’s appearance using this [Creature First Look](Starforged/Oracles/Creatures/First_Look) table. Then, roll on the [Encountered Behavior](Starforged/Oracles/Creatures/Encountered_Behavior) table to envision this creature’s motivation and frame how the encounter begins.
   Tables:
-    - Title:
+    Environment:
+      Title:
         Canonical: Environment
       Usage:
         Initial: true
@@ -27,7 +28,8 @@ Creatures:
         - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Land], Icon: &icon.Land img/vector/Oracles/Creature/Environment/Land.svg]
         - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Liquid], Icon: &icon.Liquid img/vector/Oracles/Creature/Environment/Liquid.svg]
         - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Air], Icon: &icon.Air img/vector/Oracles/Creature/Environment/Air.svg]
-    - Title:
+    Scale:
+      Title:
         Canonical: Scale
       Source:
         Page: 336
@@ -43,7 +45,8 @@ Creatures:
         - [61, 90, Large (vehicle-sized), Attributes: {Creature Scale: Large}]
         - [91, 99, Huge (whale-sized), Attributes: {Creature Scale: Huge}]
         - [100, 100, "[⏵Ultra-scale](Starforged/Oracles/Creatures/Ultra-scale)", Oracle rolls: [Starforged/Oracles/Creatures/Ultra-scale]]
-    - Title:
+    Ultra-scale:
+      Title:
         Canonical: Ultra-scale
       Source:
         Page: 336
@@ -55,7 +58,8 @@ Creatures:
         - [1, 89, Titanic (hill-sized), Attributes: {Creature Scale: Titanic}]
         - [90, 99, Colossal (mountain-sized), Attributes: {Creature Scale: Colossal}]
         - [100, 100, Vast (planet-sized), Attributes: {Creature Scale: Vast}]
-    - Title:
+    Creature First Look:
+      Title:
         Canonical: Creature First Look
         Short: First Look
       _idFragment: First Look
@@ -120,7 +124,8 @@ Creatures:
         - [95, 96, Tentacles or tendrils]
         - [97, 98, Translucent]
         - [99, 100, Visible symbiote]
-    - Title:
+    Encountered Behavior:
+      Title:
         Canonical: Encountered Behavior
       Source:
         Page: 338
@@ -152,7 +157,8 @@ Creatures:
         - [86, 90, Tracker, Attributes: {Encountered Behavior: Tracker}]
         - [91, 95, Trapper, Attributes: {Encountered Behavior: Trapper}]
         - [96, 100, *result:RollTwice]
-    - Title:
+    Revealed Creature Aspect:
+      Title:
         Canonical: Revealed Creature Aspect
         Short: Revealed Aspect
       _idFragment: Revealed Aspect
@@ -216,7 +222,8 @@ Creatures:
         - [97, 98, Territorial]
         - [99, 100, Toxic spew]
   Sets:
-    - Title:
+    Basic Form:
+      Title:
         Short: Basic Form
         Canonical: Creature Basic Form
       Source:
@@ -251,7 +258,8 @@ Creatures:
       Summary: |-
         Roll for a basic form, and flesh out the creature’s appearance using the [First Look](Starforged/Oracles/Creatures/First_Look) table.
       Tables:
-        - Title:
+        Space:
+          Title:
             Canonical: Space
           Display:
             Color: "#121b21"
@@ -280,7 +288,8 @@ Creatures:
               - [87, 88, Starfish / symmetrical, Icon: img/vector/Oracles/Creature/Basic_Form/starfish_symmetrical.svg]
               - [89, 90, Worm / slug / larva, Icon: img/vector/Oracles/Creature/Basic_Form/worm_slug_larva.svg]
               - [91, 100, *result:RollTwice]
-        - Title:
+        Interior:
+          Title:
             Canonical: Interior
           Display:
             Color: "#707a83"
@@ -311,7 +320,8 @@ Creatures:
               - [84, 85]
               - [86, 90]
               - [91, 100]
-        - Title:
+        Land:
+          Title:
             Canonical: Land
           Display:
             Color: "#ed1a38"
@@ -342,7 +352,8 @@ Creatures:
               - [82, 83]
               - [84, 90]
               - [91, 100]
-        - Title:
+        Liquid:
+          Title:
             Canonical: Liquid
           Display:
             Color: "#0082bf"
@@ -373,7 +384,8 @@ Creatures:
               - [83, 87]
               - [88, 90]
               - [91, 100]
-        - Title:
+        Air:
+          Title:
             Canonical: Air
           Display:
             Color: "#90278f"

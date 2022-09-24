@@ -1,5 +1,4 @@
-import type { Source } from "@classes/index.js";
-import { SourceTitle } from "@json_out/index.js";
+import { Source, SourceTitle } from "@schema_json";
 
 const order: SourceTitle[] = [
   SourceTitle.Starforged,

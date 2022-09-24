@@ -3,7 +3,6 @@ Location Theme: &template:LocationTheme
   _templateOracleSet: &template.category:LocationTheme
     _templateVars:
       Location Theme: ${{Location Theme}}
-    _childOf: Location Themes
     Title:
       Canonical: ${{Location Theme}}
     Display:
@@ -16,8 +15,9 @@ Location Theme: &template:LocationTheme
       Title: "Ironsworn: Starforged Rulebook"
       License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Date: "050622"
-  Table:
-    - _templateOracleTable: &template.info:LocationTheme.Feature
+  Oracles:
+    Feature:
+      _templateOracleTable: &template.info:LocationTheme.Feature
         Title:
           Canonical: Feature
         Content:
@@ -40,7 +40,8 @@ Location Theme: &template:LocationTheme
           - [81, 88]
           - [89, 96]
           - [97, 100, *result:Descriptor+Focus]
-    - _templateOracleTable: &template.info:LocationTheme.Peril
+    Peril:
+      _templateOracleTable: &template.info:LocationTheme.Peril
         Title:
           Canonical: Peril
         Content:
@@ -62,7 +63,8 @@ Location Theme: &template:LocationTheme
           - [82, 90]
           - [91, 98, *result:Action+Theme]
           - [99, 100, *result:RollTwice]
-    - _templateOracleTable: &template.info:LocationTheme.Opportunity
+    Opportunity:
+      _templateOracleTable: &template.info:LocationTheme.Opportunity
         Title:
           Canonical: Opportunity
         Content:

@@ -1,23 +1,22 @@
-import { InputClock, InputNumber, InputText } from "../../classes/common/index.js";
-import { InputSelect } from "../../classes/common/InputSelect.js";
-import { InputType } from "../../json_out/index.js";
+import { InputClockBuilder, InputNumberBuilder, InputSelectBuilder, InputTextBuilder } from "../../builders";
+import { InputType } from "../../schema_json";
 /**
- * Infers the correct class for an IInputYaml object and constructs it.
+ * Infers the correct class for an YamlInput object and constructs it.
  * @param inputJson - The data to pick a class for.
  */
 export function pickInput(inputJson, parent) {
     switch (inputJson["Input Type"]) {
         case InputType.Clock: {
-            return new InputClock(inputJson, parent);
+            return new InputClockBuilder(inputJson, parent);
         }
         case InputType.Number: {
-            return new InputNumber(inputJson, parent);
+            return new InputNumberBuilder(inputJson, parent);
         }
         case InputType.Select: {
-            return new InputSelect(inputJson, parent);
+            return new InputSelectBuilder(inputJson, parent);
         }
         case InputType.Text: {
-            return new InputText(inputJson, parent);
+            return new InputTextBuilder(inputJson, parent);
         }
         default: {
             throw new Error("Unable to assign input data to a type - make sure it's correct.");

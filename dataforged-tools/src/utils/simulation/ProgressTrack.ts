@@ -1,22 +1,22 @@
-import { ChallengeRank } from "@json_out/index.js";
-import type { IClock } from "@utils/simulation/Clock.js";
+import { ChallengeRank } from "@json_out";
+import type { Clock } from "@utils/simulation/Clock.js";
 import { Die } from "@utils/simulation/Die.js";
-import type { INumericOutcomes, NumericOutcomes, OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
+import type { NumericOutcomes, NumericOutcomes, OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
 import type { ProgressTrackType } from "@utils/simulation/progressConstants.js";
 import { ProgressUnit, TICKS_PER_BOX } from "@utils/simulation/progressConstants.js";
-import type { ITrack } from "@utils/simulation/Track.js";
+import type { Track } from "@utils/simulation/Track.js";
 import { Track } from "@utils/simulation/Track.js";
 import _ from "lodash-es";
 
-export interface IProgressTrack extends ITrack {
+export interface ProgressTrack extends Track {
   rank: ChallengeRank;
   type: ProgressTrackType;
-  progressMoveOutcomes: INumericOutcomes;
+  progressMoveOutcomes: NumericOutcomes;
   recommit(): void;
   erase(times: number): this;
 }
 
-export class ProgressTrack extends Track implements IProgressTrack {
+export class ProgressTrack extends Track implements ProgressTrack {
   applyResult(data: OutcomeEffectHash): void {
     this.mark(data.markProgress);
   }
@@ -41,7 +41,7 @@ export class ProgressTrack extends Track implements IProgressTrack {
   public get progressMoveOutcomes(): NumericOutcomes {
     return this._progressMoveOutcomes;
   }
-  clock?: IClock | undefined;
+  clock?: Clock | undefined;
   /**
    * Returns the number of ticks in a single unit of progress. In other words, this is the number of ticks marked for every "mark progress" on this track.
    */

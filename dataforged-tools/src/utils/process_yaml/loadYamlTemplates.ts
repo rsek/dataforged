@@ -1,4 +1,4 @@
-import { REFS_PATH } from "@constants/index.js";
+import { REFS_PATH } from "@constants";
 import fs from "fs";
 
 /**

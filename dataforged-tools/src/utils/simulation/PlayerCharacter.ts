@@ -1,13 +1,13 @@
-import type { PlayerConditionMeter , Stat } from "@json_out/index.js";
-import { MoveOutcome , RollType } from "@json_out/index.js";
-import type { IAppliesMoveEffect } from "@utils/simulation/IAppliesMoveEffect.js";
+import type { PlayerConditionMeter , Stat } from "@json_out";
+import { MoveOutcome , RollType } from "@json_out";
+import type { AppliesMoveEffect } from "@utils/simulation/AppliesMoveEffect.js"; AppliesMoveEffect
 import type { IIronswornRoll, IronswornRoll } from "@utils/simulation/IronswornRoll.js";
 import { ActionRoll , resolveIronswornRoll } from "@utils/simulation/IronswornRoll.js";
-import type { IOutcomeEffectHash, NumericOutcome, NumericOutcomeChoice, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
+import type { OutcomeEffectHash, NumericOutcome, NumericOutcomeChoice, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import { OutcomeEffectHash , OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
 import { ProgressTrackType } from "@utils/simulation/progressConstants.js";
 import type { ProgressStrategy } from "@utils/simulation/ProgressStrategy.js";
-import type { IProgressTrack } from "@utils/simulation/ProgressTrack.js";
+import type { ProgressTrack } from "@utils/simulation/ProgressTrack.js";
 import { randomizeStats } from "@utils/simulation/randomizeStats.js";
 import { sceneChallengePriorities } from "@utils/simulation/SceneChallenge.js";
 import pkg from "colors";
@@ -27,12 +27,12 @@ export enum BurnStrategy {
   MaximizeProgress
 }
 
-export interface IStat {
+export interface Stat {
   Label: string;
   Value: number;
 }
 
-export interface IStatusEffects {
+export interface StatusEffects {
   /**
    * A bonus to be added to the next roll.
    */
@@ -44,13 +44,13 @@ export interface IStatusEffects {
 }
 
 
-export interface IPlayerCharacter {
+export interface PlayerCharacter {
   name: string;
   momentum: number;
   impacts: string[];
   stats: Record<Stat,number>;
   meters: Record<PlayerConditionMeter,number>
-  status: IStatusEffects
+  status: StatusEffects
   strategy: ProgressStrategy
 }
 
@@ -62,7 +62,7 @@ export interface IPlayerCharacter {
 // preset die
 // types/IDs of move to fire on?
 
-export class PlayerCharacter implements IPlayerCharacter, IAppliesMoveEffect {
+export class PlayerCharacter implements PlayerCharacter, AppliesMoveEffect {
   name: string;
   private _momentum: number;
   strategy: ProgressStrategy;
@@ -112,7 +112,7 @@ export class PlayerCharacter implements IPlayerCharacter, IAppliesMoveEffect {
     this._momentum = momentum;
     this.strategy = strategy;
   }
-  status: IStatusEffects = { add: 0, inControl: false };
+  status: StatusEffects = { add: 0, inControl: false };
   pickMoveChoice(outcomeEffect: NumericOutcome<MoveOutcome>, isMatch: boolean, progressTrackType: ProgressTrackType): OutcomeEffectHash {
     const options = isMatch && outcomeEffect.chooseOnMatch ? outcomeEffect.chooseOnMatch : outcomeEffect.choose;
     let results: NumericOutcomeChoice[];
@@ -151,7 +151,7 @@ export class PlayerCharacter implements IPlayerCharacter, IAppliesMoveEffect {
     }
     return new OutcomeEffectHash(...results);
   }
-  canBurnMomentumOn(roll: IIronswornRoll) {
+  canBurnMomentumOn(roll: IronswornRoll) {
     console.log("Checking momentum burn availability");
     if (roll.type !== RollType.Action) {
       return false;
@@ -164,7 +164,7 @@ export class PlayerCharacter implements IPlayerCharacter, IAppliesMoveEffect {
   resetMomentum() {
     this._momentum = this.momentumReset;
   }
-  applyResult(data: IOutcomeEffectHash) {
+  applyResult(data: OutcomeEffectHash) {
     // const toApply=this.selectMoveChoice(roll.outcomeEffect,roll.isMatch,progressTrackType);
     _.forEach(data, (value,key) => {
       switch (key as OutcomeEffectType) {
@@ -182,7 +182,7 @@ export class PlayerCharacter implements IPlayerCharacter, IAppliesMoveEffect {
       }
     });
   }
-  decideMomentum(roll: IronswornRoll, alwaysBurnAt: number = this.momentumMax, progressTrack: IProgressTrack, log: boolean = false) {
+  decideMomentum(roll: IronswornRoll, alwaysBurnAt: number = this.momentumMax, progressTrack: ProgressTrack, log: boolean = false) {
     log && console.log("Checking whether momentum can be burnt.");
     let useMomentumFlag = false;
     if (this.canBurnMomentumOn(roll)) {
@@ -215,7 +215,7 @@ export class PlayerCharacter implements IPlayerCharacter, IAppliesMoveEffect {
     }
     return useMomentumFlag;
   }
-  evaluateActionRoll({ outcomesData, stat, progressTrack, log = false, name = "Move" }: { outcomesData: NumericOutcomes; stat: number; progressTrack: IProgressTrack; log?: boolean; name?: string }) {
+  evaluateActionRoll({ outcomesData, stat, progressTrack, log = false, name = "Move" }: { outcomesData: NumericOutcomes; stat: number; progressTrack: ProgressTrack; log?: boolean; name?: string }) {
     const roll = new ActionRoll({
       stat, add: this.status.add.valueOf(), outcomesData
     });
