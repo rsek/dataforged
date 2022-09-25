@@ -1,17 +1,17 @@
 import { SourceBuilder , TitleBuilder, TruthOptionClassicBuilder } from "@builders";
-import type { SettingTruthClassic } from "@schema_json";
+import type { Source, Title, TruthClassic, TruthOptionClassic } from "@schema_json";
+import type { YamlTruthClassic } from "@schema_yaml";
 import { formatId } from "@utils";
-import type { YamlSettingTruthClassic } from "@schema_yaml";
 
 /**
  * @internal
  */
-export class TruthClassicBuilder implements SettingTruthClassic {
+export class TruthClassicBuilder implements TruthClassic {
   $id: string;
-  Title: TitleBuilder;
-  Source: SourceBuilder;
-  Options: TruthOptionClassicBuilder[];
-  constructor(json: YamlSettingTruthClassic) {
+  Title: Title;
+  Source: Source;
+  Options: TruthOptionClassic[];
+  constructor(json: YamlTruthClassic) {
     const fragment = json._idFragment ?? json.Title.Canonical;
     this.$id = formatId(fragment, "Ironsworn",
       "Setting_Truths");

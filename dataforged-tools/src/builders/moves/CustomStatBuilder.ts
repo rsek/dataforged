@@ -1,8 +1,7 @@
 import { CustomStatOptionBuilder } from "@builders";
-import type { CustomStat, MoveTriggerOptionBase } from "@schema_json";
-import { formatId } from "@utils";
+import type { CustomStat, CustomStatOption, MoveTriggerOptionBase } from "@schema_json";
 import type { YamlCustomStat } from "@schema_yaml";
-
+import { formatId } from "@utils";
 
 /**
  * @internal
@@ -10,7 +9,7 @@ import type { YamlCustomStat } from "@schema_yaml";
 export class CustomStatBuilder implements CustomStat {
   $id: CustomStat["$id"];
   Label: string;
-  Options: CustomStatOptionBuilder[];
+  Options: CustomStatOption[];
   constructor(json: YamlCustomStat, parentId: MoveTriggerOptionBase["$id"]) {
     this.$id = formatId("Custom stat", parentId);
     this.Label = json.Label;

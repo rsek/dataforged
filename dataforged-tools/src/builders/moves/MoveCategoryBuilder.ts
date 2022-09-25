@@ -1,7 +1,7 @@
 import { DisplayBuilder , MoveBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import type { Gamespace , MoveCategory, Source } from "@schema_json";
-import { formatId } from "@utils";
+import type { Display, Gamespace , Move, MoveCategory, Source, Title } from "@schema_json";
 import type { YamlMoveCategory } from "@schema_yaml";
+import { formatId } from "@utils";
 import _ from "lodash-es";
 
 /**
@@ -9,11 +9,11 @@ import _ from "lodash-es";
  */
 export class MoveCategoryBuilder implements MoveCategory {
   $id: MoveCategory["$id"];
-  Title: TitleBuilder;
-  Source: SourceBuilder;
+  Title: Title;
+  Source: Source;
   Description: string;
-  Moves: {[key: string]:MoveBuilder};
-  Display: DisplayBuilder;
+  Moves: {[key: string]:Move};
+  Display: Display;
   Optional: boolean;
   constructor(json: YamlMoveCategory, gamespace: Gamespace, ...ancestorSourceJson: Source[]) {
     if (!json.Title.Canonical) {

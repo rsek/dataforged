@@ -1,4 +1,4 @@
-import type { AssetType, DelveDomain, DelveRarity, DelveTheme, EncounterNatureClassicInfo, EncounterStarforged , IronlandsRegion, MoveCategory, OracleSet, SettingTruthClassic, Truth } from "@schema_json";
+import type { AssetType, DelveDomain, DelveRarity, DelveTheme, EncounterNatureClassicInfo, EncounterStarforged , IronlandsRegion, MoveCategory, OracleSet, TruthClassic, Truth } from "@schema_json";
 
 /**
  * Base interface for *Ironsworn* and *Ironsworn: Starforged* game data.
@@ -10,7 +10,7 @@ export interface GameDataRoot {
   "Encounters": {[key:string]:EncounterStarforged}|{[key:string]:EncounterNatureClassicInfo};
   "Move Categories": {[key:string]:MoveCategory};
   "Oracle Sets": {[key:string]:OracleSet};
-  "Setting Truths": {[key:string]:Truth} | {[key:string]:SettingTruthClassic};
+  "Setting Truths": {[key:string]:Truth} | {[key:string]:TruthClassic};
 }
 
 /**
@@ -28,7 +28,7 @@ export interface Starforged extends GameDataRoot {
  */
 export interface Ironsworn extends GameDataRoot {
   "Encounters": {[key:string]:EncounterNatureClassicInfo};
-  "Setting Truths": {[key:string]:SettingTruthClassic};
+  "Setting Truths": {[key:string]:TruthClassic};
   "Site Domains": {[key:string]:DelveDomain};
   "Site Themes": {[key:string]:DelveTheme};
   Regions: {[key:string]:IronlandsRegion};

@@ -1,9 +1,9 @@
 import { RequirementsBuilder } from "@builders";
 import type { GameObjectRecord } from "@game_objects";
 import type { GameObjectType } from "@game_objects/enum/GameObjectType.js";
-import type { GameObject } from "@schema_json";
-import type { AttributeHash } from "@utils/types/AttributeHash.js";
+import type { GameObject, Requirements } from "@schema_json";
 import type { YamlRequirements } from "@schema_yaml";
+import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 
 /**
@@ -11,7 +11,7 @@ import _ from "lodash-es";
  */
 export class GameObjectBuilder implements GameObject {
   "Object type": GameObjectType;
-  Requires?: RequirementsBuilder | undefined;
+  Requires?: Requirements | undefined;
   "Inherit rolls"?: boolean | undefined;
   constructor(json: GameObjectRecord) {
     // TODO: typechecking without recourse to making more goddamn enums

@@ -1,4 +1,4 @@
-import type { Asset , Display, HasDisplay, HasId, HasOptional, HasSource, HasSuggestions , HasText, HasTitle, MoveCategory , MoveOutcomes  , MoveTrigger , OracleTable, Title } from "@schema_json";
+import type { Asset , Display, HasDisplay, HasId, HasOptional, HasSource, HasSuggestions , HasText, HasTitle, MoveCategory , Outcomes  , MoveTrigger , OracleTable, Title } from "@schema_json";
 
 /**
  * Interface representing a Starforged move.
@@ -47,6 +47,6 @@ export interface Move extends HasId,  HasText, HasDisplay, HasSource, HasOptiona
   /**
    * Outcome information for the move.
    */
-  Outcomes?: MoveOutcomes | undefined;
+  Outcomes?: Outcomes | undefined;
   Tags?: string[] | undefined;
 }

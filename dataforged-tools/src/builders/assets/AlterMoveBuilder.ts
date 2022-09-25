@@ -1,7 +1,7 @@
 import { AlterMoveOutcomesBuilder , MoveTriggerBuilder } from "@builders";
-import type { AlterMove, AssetAbility , Move } from "@schema_json";
-import { formatId } from "@utils";
+import type { AlterMove, AlterMoveOutcomes, AssetAbility , Move, MoveTrigger } from "@schema_json";
 import type { YamlAlterMove } from "@schema_yaml";
+import { formatId } from "@utils";
 import _ from "lodash-es";
 
 /**
@@ -11,9 +11,9 @@ export class AlterMoveBuilder implements AlterMove {
   $id: AlterMove["$id"];
   Moves?: Move["$id"][] | null | undefined;
   Alters?: AlterMove["$id"][] | undefined;
-  Trigger?: MoveTriggerBuilder | undefined;
+  Trigger?: MoveTrigger | undefined;
   Text?: string | undefined;
-  Outcomes?: AlterMoveOutcomesBuilder | undefined;
+  Outcomes?: AlterMoveOutcomes | undefined;
   constructor(json: YamlAlterMove, parent: AssetAbility, index: number) {
     this.$id = formatId((index+1).toString(),parent.$id,"Alter_Moves");
     this.Alters = json.Alters;

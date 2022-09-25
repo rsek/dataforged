@@ -1,6 +1,6 @@
-import type { AttributeChoices, OracleUsage } from "@schema_json";
-import type { YamlOracleUsage } from "@schema_yaml";
 import { RequirementsBuilder , SuggestionsBuilder } from "@builders";
+import type { AttributeChoices, OracleUsage, Requirements, Suggestions } from "@schema_json";
+import type { YamlOracleUsage } from "@schema_yaml";
 
 /**
  * @internal
@@ -9,8 +9,8 @@ export class OracleUsageBuilder implements OracleUsage {
   Initial?: boolean | undefined;
   "Max rolls"?: number | undefined;
   Repeatable?: boolean | undefined;
-  Suggestions?: SuggestionsBuilder | undefined;
-  Requires?: RequirementsBuilder | undefined;
+  Suggestions?: Suggestions | undefined;
+  Requires?: Requirements | undefined;
   "Allow duplicates"?: boolean | undefined;
   "Sets"?: AttributeChoices[] | undefined;
   constructor(json: YamlOracleUsage) {

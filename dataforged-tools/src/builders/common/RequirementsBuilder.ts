@@ -1,6 +1,6 @@
 import { AttributeRequirementsBuilder } from "@builders";
-import type { YamlRequirements } from "@schema_yaml";
 import type { Requirements } from "@schema_json";
+import type { YamlRequirements } from "@schema_yaml";
 
 /**
  * @internal

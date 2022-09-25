@@ -1,7 +1,7 @@
 import { AssetBuilder , DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
-import type { AssetType , AssetUsage, Display, Gamespace, Source } from "@schema_json";
-import { formatId } from "@utils";
+import type { Asset, AssetType , AssetUsage, Display, Gamespace, Source, Title } from "@schema_json";
 import type { YamlAssetType } from "@schema_yaml";
+import { formatId } from "@utils";
 import _ from "lodash-es";
 
 /**
@@ -9,10 +9,10 @@ import _ from "lodash-es";
  */
 export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetType {
   $id: AssetType["$id"];
-  Title: TitleBuilder;
+  Title: Title;
   Aliases?: string[] | undefined;
   Description: string;
-  Assets: AssetBuilder[];
+  Assets: Asset[];
   Display: Display;
   Usage: AssetUsage;
   constructor(json: YamlAssetType, gamespace: Gamespace, rootSource: Source) {

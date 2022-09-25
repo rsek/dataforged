@@ -1,5 +1,5 @@
 import type { Display, Move, MoveCategory } from "@schema_json";
-import type { YamlMoveOutcomes, YamlMoveTrigger, YamlStubNode } from "@schema_yaml";
+import type { YamlOutcomes, YamlMoveTrigger, YamlStubNode } from "@schema_yaml";
 /**
  * @internal
  */
@@ -15,6 +15,6 @@ export interface YamlMoveCategory extends YamlStubNode<MoveCategory, "Optional",
  */
 export interface YamlMove extends YamlStubNode<Move, "Category"|"Optional", "Trigger"|"Outcomes"> {
   Trigger: YamlMoveTrigger;
-  Outcomes?: YamlMoveOutcomes | undefined;
+  Outcomes?: YamlOutcomes | undefined;
 };
 

@@ -1,8 +1,8 @@
 import type { AssetAbilityBuilder , AssetBuilder } from "@builders";
 import { ClockType } from "@schema_json";
 import type { Asset, AssetAbility, ClockSegments, Input, InputClock, InputNumber , InputText , InputType } from "@schema_json";
-import { formatId } from "@utils";
 import type { YamlInput, YamlInputClock, YamlInputNumber, YamlInputText } from "@schema_yaml";
+import { formatId } from "@utils";
 
 /**
  * @internal
@@ -12,7 +12,7 @@ export abstract class InputBuilder implements Input {
   Label: string;
   abstract Adjustable: boolean;
   "Input Type": InputType;
-  constructor(json: YamlInput, parent: AssetAbility|Asset|AssetBuilder|AssetAbilityBuilder) {
+  constructor(json: YamlInput, parent: AssetAbility|Asset) {
     this["Input Type"] = json["Input Type"];
     this.$id = formatId(json._idFragment??json.Label,parent.$id, "Inputs");
     this.Label = json.Label;
@@ -30,7 +30,7 @@ export class InputNumberBuilder extends InputBuilder implements InputNumber {
   readonly Step = 1;
   Value: number;
   Adjustable: boolean;
-  constructor(json: YamlInputNumber & {"Input Type": InputType.Number}, parent: AssetAbility|Asset|AssetBuilder|AssetAbilityBuilder) {
+  constructor(json: YamlInputNumber & {"Input Type": InputType.Number}, parent: AssetAbility|Asset) {
     super(json, parent);
     this.Min = json.Min ?? 0;
     this.Max = json.Max ?? null;
@@ -48,7 +48,7 @@ export class InputClockBuilder extends InputBuilder implements InputClock {
   Segments: ClockSegments;
   Filled: number;
   Adjustable: boolean;
-  constructor(json: YamlInputClock, parent: AssetAbility|Asset|AssetBuilder|AssetAbilityBuilder) {
+  constructor(json: YamlInputClock, parent: AssetAbility|Asset) {
     super(json, parent);
     this.Segments = json.Segments;
     this.Filled = json.Filled ?? 0;
@@ -63,7 +63,7 @@ export class InputClockBuilder extends InputBuilder implements InputClock {
 export class InputTextBuilder extends InputBuilder implements InputText {
   "Input Type": InputType.Text;
   Adjustable: boolean;
-  constructor(json: YamlInputText, parent: AssetAbility|Asset|AssetBuilder|AssetAbilityBuilder) {
+  constructor(json: YamlInputText, parent: AssetAbility|Asset) {
     super(json, parent);
     this.Adjustable = json.Adjustable ?? false;
   }

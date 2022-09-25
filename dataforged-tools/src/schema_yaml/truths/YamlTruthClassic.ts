@@ -1,16 +1,16 @@
-import type { SettingTruthClassic , SettingTruthOptionClassic } from "@schema_json";
+import type { TruthClassic , TruthOptionClassic } from "@schema_json";
 import type { YamlStub , YamlStubNode } from "@schema_yaml";
 
 
 /**
  * @internal
  */
-export interface YamlSettingTruthClassic extends YamlStubNode<SettingTruthClassic, "", "Options"> {
-  Options: YamlSettingTruthOptionClassic[];
+export interface YamlTruthClassic extends YamlStubNode<TruthClassic, "", "Options"> {
+  Options: YamlTruthOptionClassic[];
 }
 
 
 /**
  * @internal
  */
-export interface YamlSettingTruthOptionClassic extends YamlStub<SettingTruthOptionClassic> { }
+export interface YamlTruthOptionClassic extends YamlStub<TruthOptionClassic> { }

@@ -1,4 +1,4 @@
-import type { HasId, HasText , MoveReroll } from "@schema_json";
+import type { HasId, HasText, MoveReroll } from "@schema_json";
 /**
  * @public
  */
@@ -11,7 +11,7 @@ export enum MoveOutcome {
 /**
  * @public
  */
-export interface OutcomeInfoBase<O extends MoveOutcome, RequireText extends boolean = false> extends HasId, Partial<HasText> {
+export interface OutcomeBase<O extends MoveOutcome, RequireText extends boolean = false> extends HasId, Partial<HasText> {
   /**
    * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$
    */
@@ -19,7 +19,7 @@ export interface OutcomeInfoBase<O extends MoveOutcome, RequireText extends bool
   /**
    * Defines a different outcome for this result with a match. Its text should replace the text of this object.
    */
-  "With a Match"?: OutcomeInfoBase<O> | undefined;
+  "With a Match"?: OutcomeBase<O> | undefined;
   /**
    * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
    */
@@ -38,7 +38,7 @@ export interface OutcomeInfoBase<O extends MoveOutcome, RequireText extends bool
 /**
  * @public
  */
-export interface OutcomeMiss extends HasId, OutcomeInfoBase<MoveOutcome.Miss,true> {
+export interface OutcomeMiss extends HasId, OutcomeBase<MoveOutcome.Miss, true> {
   /**
    * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$
    */
@@ -52,7 +52,7 @@ export interface OutcomeMiss extends HasId, OutcomeInfoBase<MoveOutcome.Miss,tru
 /**
  * @public
  */
-export interface OutcomeWeakHit extends Omit<OutcomeInfoBase<typeof MoveOutcome["Weak Hit"],true>,"With a Match"> {
+export interface OutcomeWeakHit extends Omit<OutcomeBase<typeof MoveOutcome["Weak Hit"],true>,"With a Match"> {
   /**
    * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$
    */
@@ -65,7 +65,7 @@ export interface OutcomeWeakHit extends Omit<OutcomeInfoBase<typeof MoveOutcome[
 /**
  * @public
  */
-export interface OutcomeStrongHit extends HasId, OutcomeInfoBase<typeof MoveOutcome["Strong Hit"],true> {
+export interface OutcomeStrongHit extends HasId, OutcomeBase<typeof MoveOutcome["Strong Hit"],true> {
   /**
    * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$
    */

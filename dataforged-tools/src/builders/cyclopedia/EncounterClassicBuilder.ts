@@ -1,7 +1,6 @@
 import { DisplayBuilder , EncounterBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import type { EncounterNatureClassicInfoBuilder } from "@builders";
 import { EncounterNatureClassic } from "@schema_json";
-import type { Display, EncounterClassic } from "@schema_json";
+import type { Display, EncounterClassic , EncounterNatureClassicInfo, Source , Title } from "@schema_json";
 import type { YamlEncounterClassic } from "@schema_yaml";
 import { formatId } from "@utils";
 
@@ -11,12 +10,12 @@ import { formatId } from "@utils";
  */
 export class EncounterClassicBuilder extends EncounterBuilder implements EncounterClassic {
   $id: EncounterClassic["$id"];
-  Title: TitleBuilder;
+  Title: Title;
   Nature: EncounterNatureClassic;
   Display: Display;
-  Source: SourceBuilder;
+  Source: Source;
   "Your Truth"?: string | undefined;
-  constructor(json: YamlEncounterClassic, parent: EncounterNatureClassicInfoBuilder) {
+  constructor(json: YamlEncounterClassic, parent: EncounterNatureClassicInfo) {
     super(json);
     const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
     this.$id = formatId(fragment,parent.$id);

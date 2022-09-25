@@ -1,7 +1,7 @@
 /**
  * @module Json.SettingTruths
  */
-export * from "@schema_json/truths/SettingTruth.js";
-export * from "@schema_json/truths/SettingTruthOption.js";
-export * from "@schema_json/truths/SettingTruthClassic.js";
-export * from "@schema_json/truths/SettingTruthOptionClassic.js";
+export * from "@schema_json/truths/Truth.js";
+export * from "@schema_json/truths/TruthOption.js";
+export * from "@schema_json/truths/TruthClassic.js";
+export * from "@schema_json/truths/TruthOptionClassic.js";

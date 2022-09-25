@@ -2,9 +2,9 @@
 import { InputBuilder } from "@builders";
 import { InputType } from "@schema_json";
 import type { Asset, AssetAbility, InputSelect, InputSelectAttributeDefinition, InputSelectOption, InputSelectOptionSetter , InputSelectOptionSetterMeter, InputSelectOptionSetterNumber, InputSelectOptionSetterStat, InputSelectOptionSetterString, InputSelectOptionType } from "@schema_json";
+import type { YamlInputSelect, YamlInputSelectOption, YamlInputSelectOptionSetter } from "@schema_yaml";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
-import type { YamlInputSelect, YamlInputSelectOption, YamlInputSelectOptionSetter } from "@schema_yaml";
 
 /**
  * @internal
@@ -51,7 +51,7 @@ export class InputSelectOptionSetterBuilder implements InputSelectOptionSetter {
   Key: string;
   Type: InputSelectOptionType;
   Value: InputSelectOptionSetter["Value"];
-  constructor(json: YamlInputSelectOptionSetter, parent: InputSelectOptionBuilder) {
+  constructor(json: YamlInputSelectOptionSetter, parent: InputSelectOption) {
     const fragment = json._idFragment??json.Key;
     this.$id = formatId(fragment, parent.$id);
     this.Type = json.Type;

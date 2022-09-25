@@ -1,5 +1,4 @@
-import type { SourceBuilder , TitleBuilder } from "@builders";
-import type { ChallengeRank, Display, Encounter, EncounterNatureClassic, EncounterNatureStarforged, EncounterTags } from "@schema_json";
+import type { ChallengeRank, Display, Encounter, EncounterNatureClassic, EncounterNatureStarforged, EncounterTags, Source, Title } from "@schema_json";
 import type { YamlEncounterClassic, YamlEncounterStarforged } from "@schema_yaml";
 
 /**
@@ -7,7 +6,7 @@ import type { YamlEncounterClassic, YamlEncounterStarforged } from "@schema_yaml
  */
 export abstract class EncounterBuilder implements Encounter {
   abstract $id: string;
-  abstract Title: TitleBuilder;
+  abstract Title: Title;
   Features: string[];
   Drives: string[];
   Tactics: string[];
@@ -17,7 +16,7 @@ export abstract class EncounterBuilder implements Encounter {
   Rank: ChallengeRank;
   abstract Display: Display;
   Description: string;
-  abstract Source: SourceBuilder;
+  abstract Source: Source;
   "Quest Starter": string;
   constructor(json: YamlEncounterClassic|YamlEncounterStarforged) {
     this.Features = json.Features;

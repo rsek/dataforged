@@ -1,5 +1,5 @@
 import { DisplayBuilder , SourceBuilder, SuggestionsBuilder , TitleBuilder , TruthOptionBuilder } from "@builders";
-import type { Gamespace , Source, Truth } from "@schema_json";
+import type { Display, Gamespace , Source, Suggestions, Title, Truth, TruthOption } from "@schema_json";
 import type { YamlTruth } from "@schema_yaml";
 import { formatId } from "@utils";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -9,12 +9,12 @@ import { buildLog } from "@utils/logging/buildLog.js";
  */
 export class TruthBuilder implements Truth {
   $id: Truth["$id"];
-  Title: TitleBuilder;
-  Table: TruthOptionBuilder[];
+  Title: Title;
+  Table: TruthOption[];
   Character: string;
-  Suggestions?: SuggestionsBuilder | undefined;
-  Display: DisplayBuilder;
-  Source: SourceBuilder;
+  Suggestions?: Suggestions | undefined;
+  Display: Display;
+  Source: Source;
   constructor(json: YamlTruth, sourceJson: Source, gamespace: Gamespace) {
     const fragment = json._idFragment ?? json.Title.Canonical;
     this.$id = formatId(fragment, gamespace, "Setting_Truths");

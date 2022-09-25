@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { AttributeSetterBuilder, GameObjectBuilder , MultipleRollsBuilder, OracleContentBuilder, RollTemplateBuilder, SuggestionsBuilder } from "@builders";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { Display, ImageUrl, MultipleRolls, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Vector } from "@schema_json";
+import type { Display, GameObject, ImageUrl, MultipleRolls, OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Suggestions, Vector } from "@schema_json";
 import type { YamlSimpleTableRow, YamlStub, YamlSuggestions, YamlTruthOption } from "@schema_yaml";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
@@ -18,13 +18,13 @@ export class OracleTableRowBuilder implements OracleTableRow {
   Result!: string;
   Summary?: string | null | undefined;
   "Oracle rolls"?: OracleTable["$id"][] | undefined;
-  "Game objects"?: GameObjectBuilder[] | undefined;
-  "Multiple rolls"?: MultipleRollsBuilder | undefined;
-  Suggestions?: SuggestionsBuilder | undefined;
+  "Game objects"?: GameObject[] | undefined;
+  "Multiple rolls"?: MultipleRolls | undefined;
+  Suggestions?: Suggestions | undefined;
   Attributes?: AttributeSetterBuilder | undefined;
-  "Roll template"?: RollTemplateBuilder | undefined;
+  "Roll template"?: RollTemplate | undefined;
   Display?: Display | undefined;
-  Content?: OracleContentBuilder;
+  Content?: OracleContent;
   Subtable?: OracleTableRow[] | undefined;
   /**
    * Creates an instance of Row.

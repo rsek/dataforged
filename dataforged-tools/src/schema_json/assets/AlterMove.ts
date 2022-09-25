@@ -1,4 +1,4 @@
-import type { Move , MoveOutcome , MoveOutcomes , MoveTrigger, OutcomeMiss, OutcomeStrongHit, OutcomeWeakHit } from "@schema_json";
+import type { Move , MoveOutcome , Outcomes , MoveTrigger, OutcomeMiss, OutcomeStrongHit, OutcomeWeakHit } from "@schema_json";
 import type { PartialDeep, StubExcept } from "@utils";
 
 /**
@@ -37,7 +37,7 @@ export interface AlterMove extends StubExcept<Move, "$id", "Outcomes"> {
 /**
  * @public
  */
-export interface AlterMoveOutcomes extends Omit<MoveOutcomes, keyof typeof MoveOutcome> {
+export interface AlterMoveOutcomes extends Omit<Outcomes, keyof typeof MoveOutcome> {
   "Strong Hit"?: AlterStrongHit | undefined;
   "Weak Hit"?: AlterWeakHit | undefined;
   Miss?: AlterMiss | undefined;

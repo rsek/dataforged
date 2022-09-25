@@ -1,9 +1,8 @@
-import { DisplayBuilder , MoveOutcomesBuilder , MoveTriggerBuilder , SourceInheritorBuilder , TitleBuilder } from "@builders";
-import type { AssetBuilder, MoveCategoryBuilder, SuggestionsBuilder } from "@builders";
-import type { AssetAbility , Gamespace , Move , MoveCategory, OracleTable, Source, } from "@schema_json";
+import { DisplayBuilder , MoveTriggerBuilder , OutcomesBuilder , SourceInheritorBuilder , TitleBuilder } from "@builders";
+import type { Asset, AssetAbility , Display, Gamespace , Move , MoveCategory, MoveTrigger, OracleTable, Outcomes, Source, Suggestions, Title, } from "@schema_json";
+import type { YamlMove } from "@schema_yaml";
 import { formatId } from "@utils";
 import { buildLog } from "@utils/logging/buildLog.js";
-import type { YamlMove } from "@schema_yaml";
 
 /**
  * Object representing a Starforged move.
@@ -11,19 +10,19 @@ import type { YamlMove } from "@schema_yaml";
  */
 export class MoveBuilder extends SourceInheritorBuilder implements Move {
   $id: Move["$id"];
-  Title: TitleBuilder;
+  Title: Title;
   Optional: boolean;
-  Category: MoveCategoryBuilder["$id"];
-  Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? AssetBuilder["$id"] : undefined;
+  Category: MoveCategory["$id"];
+  Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? Asset["$id"] : undefined;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: Move["$id"] | undefined;
-  Display: DisplayBuilder;
-  Trigger: MoveTriggerBuilder;
+  Display: Display;
+  Trigger: MoveTrigger;
   Text: string;
   Tags?: string[] | undefined;
   Oracles?: OracleTable["$id"][] | undefined;
-  Suggestions?: SuggestionsBuilder | undefined;
-  Outcomes?: MoveOutcomesBuilder | undefined;
+  Suggestions?: Suggestions | undefined;
+  Outcomes?: Outcomes | undefined;
   constructor(json: YamlMove, parent: MoveCategory|AssetAbility, gamespace: Gamespace,...sourceAncestors: Source[]) {
     super(json.Source ?? {}, ...sourceAncestors);
     this.Category = json.Category ?? `${gamespace}/Moves/Assets`;
@@ -51,7 +50,7 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
     this.Oracles = json.Oracles;
 
 
-    this.Outcomes = json.Outcomes ? new MoveOutcomesBuilder(json.Outcomes, `${this.$id}/Outcomes`) : undefined;
+    this.Outcomes = json.Outcomes ? new OutcomesBuilder(json.Outcomes, `${this.$id}/Outcomes`) : undefined;
   }
 }
 

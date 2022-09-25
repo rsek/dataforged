@@ -1,7 +1,6 @@
-import type { AssetTypeBuilder } from "@builders";
 import { MeterBuilder } from "@builders";
 import { MeterAlias } from "@schema_json";
-import type { ConditionMeter, MeterCondition } from "@schema_json";
+import type { AssetType, ConditionMeter , MeterCondition } from "@schema_json";
 import type { YamlConditionMeter } from "@schema_yaml";
 
 /**
@@ -12,7 +11,7 @@ export class ConditionMeterBuilder extends MeterBuilder implements ConditionMete
   Min: number = 0;
   Conditions: MeterCondition[] = [];
   Aliases?: MeterAlias[] | undefined;
-  constructor(json: YamlConditionMeter, id: string, assetType: AssetTypeBuilder["$id"]) {
+  constructor(json: YamlConditionMeter, id: string, assetType: AssetType["$id"]) {
     super(json, id);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     this.Value = json.Value ?? json.Max;

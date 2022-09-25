@@ -1,5 +1,5 @@
 import type { HasSource } from "@schema_json";
-import type { YamlAssetType , YamlDelveDomain, YamlDelveTheme, YamlEncounterNatureInfo, YamlEncounterStarforged , YamlIronswornRegion , YamlMoveCategory , YamlOracleSet, YamlOracleTable, YamlTruth, YamlSettingTruthClassic, YamlWithRef } from "@schema_yaml";
+import type { YamlAssetType , YamlDelveDomain, YamlDelveTheme, YamlEncounterNatureInfo, YamlEncounterStarforged , YamlIronswornRegion , YamlMoveCategory , YamlOracleSet, YamlOracleTable, YamlTruth, YamlTruthClassic, YamlWithRef } from "@schema_yaml";
 
 /**
  * @internal
@@ -55,7 +55,7 @@ export interface YamlTruthRoot extends YamlDataRoot {
  * @internal
  */
 export interface YamlTruthRootClassic extends YamlDataRoot {
-  "Setting Truths": {[key:string]:YamlSettingTruthClassic}
+  "Setting Truths": {[key:string]:YamlTruthClassic}
  }
 
 

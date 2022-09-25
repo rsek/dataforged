@@ -1,7 +1,7 @@
 import { DisplayBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import type { Asset , DelveRarity } from "@schema_json";
-import { formatId } from "@utils";
+import type { Asset , DelveRarity, Display, Source, Title } from "@schema_json";
 import type { YamlDelveRarity } from "@schema_yaml";
+import { formatId } from "@utils";
 
 /**
  * @internal
@@ -10,9 +10,9 @@ export class DelveRarityBuilder implements DelveRarity {
   $id: string;
   "XP Cost": number;
   Asset: Asset["$id"];
-  Title: TitleBuilder;
-  Display: DisplayBuilder;
-  Source: SourceBuilder;
+  Title: Title;
+  Display: Display;
+  Source: Source;
   Description: string;
   constructor(json: YamlDelveRarity) {
     const fragment = json._idFragment ?? json.Title.Canonical;

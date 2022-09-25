@@ -1,5 +1,5 @@
 import { MoveTriggerOptionActionBuilder , MoveTriggerOptionProgressBuilder } from "@builders";
-import type { AlterMove, Move, MoveTrigger, MoveTriggerBy } from "@schema_json";
+import type { AlterMove, Move, MoveTrigger, MoveTriggerBy, MoveTriggerOptionAction, MoveTriggerOptionProgress } from "@schema_json";
 import { RollType } from "@schema_json";
 import type { YamlAlterMoveTrigger , YamlMoveTrigger, YamlMoveTriggerOptionAction, YamlMoveTriggerOptionProgress } from "@schema_yaml";
 
@@ -12,7 +12,7 @@ const progressMoves = [ "Fulfill_Your_Vow", "Forge_a_Bond", "Finish_an_Expeditio
  */
 export class MoveTriggerBuilder implements MoveTrigger {
   $id: MoveTrigger["$id"];
-  "Options"?: (MoveTriggerOptionActionBuilder|MoveTriggerOptionProgressBuilder)[] | undefined;
+  "Options"?: (MoveTriggerOptionAction|MoveTriggerOptionProgress)[] | undefined;
   Text?: string | undefined;
   By?: MoveTriggerBy | undefined;
   constructor(json: YamlMoveTrigger|YamlAlterMoveTrigger,parent: AlterMove|Move) {

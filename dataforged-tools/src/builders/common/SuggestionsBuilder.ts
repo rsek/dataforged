@@ -1,12 +1,12 @@
 import { GameObjectBuilder } from "@builders";
-import type { Asset , EncounterStarforged , Move, OracleTable, Suggestions } from "@schema_json";
+import type { Asset , EncounterStarforged , GameObject, Move, OracleTable, Suggestions } from "@schema_json";
 import type { YamlSuggestions } from "@schema_yaml";
 
 /**
  * @internal
  */
 export class SuggestionsBuilder implements Suggestions {
-  "Game objects"?: GameObjectBuilder[] | undefined;
+  "Game objects"?: GameObject[] | undefined;
   "Oracle rolls"?: OracleTable["$id"][] | undefined;
   "Assets"?: Asset["$id"][] | undefined;
   "Moves"?: Move["$id"][] | undefined;

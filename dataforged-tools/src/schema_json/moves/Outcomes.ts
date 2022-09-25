@@ -3,7 +3,7 @@ import type { HasId , OutcomeMiss, OutcomeStrongHit, OutcomeWeakHit } from "@sch
 /**
  * @public
  */
-export interface MoveOutcomes extends HasId {
+export interface Outcomes extends HasId {
   /**
    * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$
    */

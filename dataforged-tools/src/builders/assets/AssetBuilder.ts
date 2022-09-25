@@ -1,6 +1,5 @@
-import type { InputClockBuilder, InputNumberBuilder, InputSelectBuilder , InputTextBuilder } from "@builders";
 import { AssetAbilityBuilder , AssetStateBuilder , ConditionMeterBuilder , DisplayBuilder , SourceInheritorBuilder , TitleBuilder } from "@builders";
-import type { Asset , AssetAttachment , AssetType, AssetUsage, Gamespace, Source } from "@schema_json";
+import type { Asset , AssetAbility, AssetAttachment , AssetState, AssetType, AssetUsage, ConditionMeter, Display, Gamespace, InputClock, InputNumber, InputSelect, InputText, Source, Title } from "@schema_json";
 import { InputSelectOptionType , InputType , Replacement } from "@schema_json";
 import type { YamlAsset } from "@schema_yaml";
 import { formatId } from "@utils";
@@ -15,17 +14,17 @@ import _ from "lodash-es";
  */
 export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   $id: Asset["$id"];
-  Title: TitleBuilder;
-  States?: AssetStateBuilder[]|undefined;
+  Title: Title;
+  States?: AssetState[]|undefined;
   Aliases?: string[] | undefined;
   "Asset Type": AssetType["$id"];
-  Display: DisplayBuilder;
+  Display: Display;
   Usage: AssetUsage;
   Attachments?: AssetAttachment | undefined;
   Requirement?: string | undefined;
-  Inputs?: (InputTextBuilder|InputSelectBuilder|InputClockBuilder|InputNumberBuilder)[] |undefined;
-  Abilities: [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
-  "Condition Meter"?: ConditionMeterBuilder | undefined;
+  Inputs?: (InputText|InputSelect|InputClock|InputNumber)[] |undefined;
+  Abilities: [AssetAbility, AssetAbility, AssetAbility];
+  "Condition Meter"?: ConditionMeter | undefined;
   constructor(json: YamlAsset, gamespace: Gamespace, parent: AssetType, rootSource: Source) {
     // uses RootSource as a starting point because category info has page numbers in the rulebook, rather than the asset pdf
     super(json.Source ?? {}, rootSource);

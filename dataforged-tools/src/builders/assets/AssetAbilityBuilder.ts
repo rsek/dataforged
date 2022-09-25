@@ -1,12 +1,11 @@
-import type { InputClockBuilder, InputNumberBuilder, InputSelectBuilder, InputTextBuilder } from "@builders";
 import { AlterMomentumBuilder , AlterMoveBuilder , MoveBuilder } from "@builders";
 import { AssetAlterPropertiesBuilder } from "@builders/assets/AssetAlterPropertiesBuilder.js";
-import type { Asset , AssetAbility, Gamespace } from "@schema_json";
+import type { AlterMomentum, AlterMove, Asset , AssetAbility, Gamespace, InputClock, InputNumber, InputSelect, InputText, Move } from "@schema_json";
 import { Replacement } from "@schema_json";
+import type { YamlAssetAbility } from "@schema_yaml";
 import { formatId } from "@utils";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import type { YamlAssetAbility } from "@schema_yaml";
 import _ from "lodash-es";
 
 /**
@@ -16,11 +15,11 @@ export class AssetAbilityBuilder implements AssetAbility {
   $id: AssetAbility["$id"];
   Label?: string | undefined;
   Text: string;
-  Moves?: MoveBuilder[] | undefined;
-  Inputs?: (InputNumberBuilder | InputClockBuilder | InputTextBuilder | InputSelectBuilder)[] | undefined;
-  "Alter Moves"?: AlterMoveBuilder[] | undefined;
+  Moves?: Move[] | undefined;
+  Inputs?: (InputNumber | InputClock | InputText | InputSelect)[] | undefined;
+  "Alter Moves"?: AlterMove[] | undefined;
   "Alter Properties"?: AssetAbility["Alter Properties"] | undefined;
-  "Alter Momentum"?: AlterMomentumBuilder | undefined;
+  "Alter Momentum"?: AlterMomentum | undefined;
   Enabled: boolean;
   constructor(json: YamlAssetAbility, id: AssetAbility["$id"], gamespace: Gamespace, parent: Asset) {
     this.$id = id;

@@ -1,6 +1,6 @@
 import { DisplayBuilder, SourceBuilder , TitleBuilder } from "@builders";
 import { Gamespace } from "@schema_json";
-import type { Display, IronlandsRegion as IronlandsRegion , Source } from "@schema_json";
+import type { Display, IronlandsRegion as IronlandsRegion , Source , Title } from "@schema_json";
 import type { YamlIronswornRegion } from "@schema_yaml";
 import { formatId } from "@utils";
 
@@ -9,10 +9,10 @@ import { formatId } from "@utils";
  */
 export class IronlandsRegionBuilder implements IronlandsRegion {
   $id: string;
-  Title: TitleBuilder;
+  Title: Title;
   Summary: string;
   Display: Display;
-  Source: SourceBuilder;
+  Source: Source;
   Features: string[];
   Tags?: string[] | undefined;
   Description: string;
