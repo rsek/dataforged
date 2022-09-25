@@ -1,0 +1,16 @@
+import type { Encounter, EncounterNatureStarforged, EncounterVariant } from "@schema";
+
+/**
+ * Represents an *Ironsworn: Starforged* Encounter entry.
+ * @public
+ */
+export interface EncounterStarforged extends Encounter {
+  /**
+   * @pattern ^Starforged/Encounters/[A-z_-]+$
+   */
+  $id: string;
+  Nature: EncounterNatureStarforged;
+  Summary: string;
+  // TODO should be a keyed object
+  Variants?: EncounterVariant[] | undefined;
+}

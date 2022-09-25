@@ -1,14 +1,12 @@
-/* eslint-disable no-console */
-
 import "source-map-support/register.js";
 import { JSON_PATHS } from "@constants";
-import { Gamespace } from "@schema_json";
-import type { Ironsworn } from "@schema_json";
-import { buildDataforged } from "@utils/buildDataforged.js";
+import { Game } from "@schema";
+import type { Ironsworn } from "@schema";
+import { buildDataforged } from "@utils/builders/buildDataforged.js";
 import { writeJson } from "@utils/io/writeJSON.js";
 import _ from "lodash-es";
 
-const data = buildDataforged(Gamespace.Ironsworn)  as Ironsworn;
+const data = buildDataforged(Game.Ironsworn)  as Ironsworn;
 
 _.forEach(data, (value, key) => {
   if (typeof value !== "string" && typeof value !== "undefined") {
@@ -51,6 +49,7 @@ _.forEach(data, (value, key) => {
     }
     JSON_PATHS.forEach(path => {
       const newPath = path + `/ironsworn/${fileName}.json`;
+      // eslint-disable-next-line no-console
       console.log(`[StartIronsworn] Writing json to ${newPath}`);
       writeJson(newPath, value);
     });

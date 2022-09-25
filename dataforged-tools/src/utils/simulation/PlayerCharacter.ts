@@ -1,10 +1,10 @@
-import type { PlayerConditionMeter , Stat } from "@json_out";
-import { MoveOutcome , RollType } from "@json_out";
+import type { PlayerConditionMeter, Stat } from "@json_out";
+import { MoveOutcome, RollType } from "@json_out";
 import type { AppliesMoveEffect } from "@utils/simulation/AppliesMoveEffect.js"; AppliesMoveEffect
 import type { IIronswornRoll, IronswornRoll } from "@utils/simulation/IronswornRoll.js";
-import { ActionRoll , resolveIronswornRoll } from "@utils/simulation/IronswornRoll.js";
+import { ActionRoll, resolveIronswornRoll } from "@utils/simulation/IronswornRoll.js";
 import type { OutcomeEffectHash, NumericOutcome, NumericOutcomeChoice, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
-import { OutcomeEffectHash , OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
+import { OutcomeEffectHash, OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
 import { ProgressTrackType } from "@utils/simulation/progressConstants.js";
 import type { ProgressStrategy } from "@utils/simulation/ProgressStrategy.js";
 import type { ProgressTrack } from "@utils/simulation/ProgressTrack.js";

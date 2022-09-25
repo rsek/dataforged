@@ -1,8 +1,7 @@
-import { DisplayBuilder , MoveBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import type { Display, Gamespace , Move, MoveCategory, Source, Title } from "@schema_json";
-import type { YamlMoveCategory } from "@schema_yaml";
+import { DisplayBuilder, MoveBuilder, SourceBuilder, TitleBuilder } from "@builders";
+import type { Display , Gamespace, Move, MoveCategory, Source, Title, YamlMoveCategory } from "@schema";
 import { formatId } from "@utils";
-import _ from "lodash-es";
+import _ from "lodash-eGame
 
 /**
  * @internal
@@ -16,7 +15,7 @@ export class MoveCategoryBuilder implements MoveCategory {
   Display: Display;
   Optional: boolean;
   constructor(json: YamlMoveCategory, gamespace: Gamespace, ...ancestorSourceJson: Source[]) {
-    if (!json.Title.Canonical) {
+    if (!json.Title.Canonical) {Game
       throw new Error(`Missing a title field: ${JSON.stringify(json)}`);
     }
     const fragment = json._idFragment ?? json.Title.Canonical;

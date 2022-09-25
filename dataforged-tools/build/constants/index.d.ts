@@ -9,6 +9,10 @@ export declare const REFS_PATH: string;
 /**
  * @internal
  */
+export declare const TEMPLATES_PATH: string;
+/**
+ * @internal
+ */
 export declare const IS_PATH: string;
 /**
  * @internal

@@ -1,12 +1,11 @@
-import { AlterMomentumBuilder , AlterMoveBuilder , MoveBuilder } from "@builders";
+import { AlterMomentumBuilder, AlterMoveBuilder, MoveBuilder } from "@builders";
 import { AssetAlterPropertiesBuilder } from "@builders/assets/AssetAlterPropertiesBuilder.js";
-import type { AlterMomentum, AlterMove, Asset , AssetAbility, Gamespace, InputClock, InputNumber, InputSelect, InputText, Move } from "@schema_json";
-import { Replacement } from "@schema_json";
-import type { YamlAssetAbility } from "@schema_yaml";
+import { Replacement } from "@schema";
+import type { AlterMomentum , AlterMove, Asset, AssetAbility, Gamespace, InputClock, InputNumber, InputSelect, InputText, Move, YamlAssetAbility } from "@schema";
 import { formatId } from "@utils";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import _ from "lodash-es";
+import _ from "lodash-es";Game
 
 /**
  * @internal
@@ -22,7 +21,7 @@ export class AssetAbilityBuilder implements AssetAbility {
   "Alter Momentum"?: AlterMomentum | undefined;
   Enabled: boolean;
   constructor(json: YamlAssetAbility, id: AssetAbility["$id"], gamespace: Gamespace, parent: Asset) {
-    this.$id = id;
+    this.$id = id;Game
     this.Label = json.Label;
     this.Text = json.Text;
     if (json.Inputs) {

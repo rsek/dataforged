@@ -1,8 +1,7 @@
 
 import { InputBuilder } from "@builders";
-import { InputType } from "@schema_json";
-import type { Asset, AssetAbility, InputSelect, InputSelectAttributeDefinition, InputSelectOption, InputSelectOptionSetter , InputSelectOptionSetterMeter, InputSelectOptionSetterNumber, InputSelectOptionSetterStat, InputSelectOptionSetterString, InputSelectOptionType } from "@schema_json";
-import type { YamlInputSelect, YamlInputSelectOption, YamlInputSelectOptionSetter } from "@schema_yaml";
+import type { Asset, AssetAbility, InputSelect , InputSelectAttributeDefinition, InputSelectOption, InputSelectOptionSetter, InputSelectOptionSetterMeter, InputSelectOptionSetterNumber, InputSelectOptionSetterStat, InputSelectOptionSetterString, InputSelectOptionType, YamlInputSelect, YamlInputSelectOption, YamlInputSelectOptionSetter } from "@schema";
+import { InputType } from "@schema";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 

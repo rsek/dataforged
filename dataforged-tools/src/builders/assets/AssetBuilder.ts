@@ -1,13 +1,12 @@
-import { AssetAbilityBuilder , AssetStateBuilder , ConditionMeterBuilder , DisplayBuilder , SourceInheritorBuilder , TitleBuilder } from "@builders";
-import type { Asset , AssetAbility, AssetAttachment , AssetState, AssetType, AssetUsage, ConditionMeter, Display, Gamespace, InputClock, InputNumber, InputSelect, InputText, Source, Title } from "@schema_json";
-import { InputSelectOptionType , InputType , Replacement } from "@schema_json";
-import type { YamlAsset } from "@schema_yaml";
+import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
+import { InputSelectOptionType, InputType, Replacement } from "@schema";
+import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Gamespace, InputClock, InputNumber, InputSelect, InputText, Source, Title, YamlAsset } from "@schema";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import _ from "lodash-es";
+import _ from "lodash-es";Game
 
 /**
  * @internal
@@ -26,7 +25,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   Abilities: [AssetAbility, AssetAbility, AssetAbility];
   "Condition Meter"?: ConditionMeter | undefined;
   constructor(json: YamlAsset, gamespace: Gamespace, parent: AssetType, rootSource: Source) {
-    // uses RootSource as a starting point because category info has page numbers in the rulebook, rather than the asset pdf
+    // uses RootSource as a starting pointGamecategory info has page numbers in the rulebook, rather than the asset pdf
     super(json.Source ?? {}, rootSource);
     // console.log(this.Source);
     this["Asset Type"] = parent.$id;

@@ -1,4 +1,4 @@
-import { YamlRowRoll, YamlSimpleTableRow } from "../../schema_yaml";
+import { YamlRowRoll, YamlSimpleTableRow } from "../../schema";
 /**
  * Extracts the first two elements (floor and ceiling) of a raw row array.
  * @param row - YamlRow | YamlRowRoll

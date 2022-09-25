@@ -1,4 +1,4 @@
-import type { AttributeKey, AttributeMaster } from "@schema_json";
+import type { AttributeKey, AttributeMaster } from "@schema";
 /**
  * @alpha
  */

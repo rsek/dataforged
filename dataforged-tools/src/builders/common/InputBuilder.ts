@@ -1,7 +1,5 @@
-import type { AssetAbilityBuilder , AssetBuilder } from "@builders";
-import { ClockType } from "@schema_json";
-import type { Asset, AssetAbility, ClockSegments, Input, InputClock, InputNumber , InputText , InputType } from "@schema_json";
-import type { YamlInput, YamlInputClock, YamlInputNumber, YamlInputText } from "@schema_yaml";
+import { ClockType } from "@schema";
+import type { Asset, AssetAbility, ClockSegments, Input , InputClock, InputNumber, InputText, InputType, YamlInput, YamlInputClock, YamlInputNumber, YamlInputText } from "@schema";
 import { formatId } from "@utils";
 
 /**

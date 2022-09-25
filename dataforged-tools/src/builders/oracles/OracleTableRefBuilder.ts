@@ -1,5 +1,5 @@
 import type { OracleTableBuilder } from "@builders";
-import type { OracleTable } from "@schema_json";
+import type { OracleTable } from "@schema";
 
 /**
  * @internal

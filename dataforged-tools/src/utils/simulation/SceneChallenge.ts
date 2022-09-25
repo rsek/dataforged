@@ -4,7 +4,7 @@ import { TensionClock } from "@utils/simulation/Clock.js";
 import { MAX_SCORE } from "@utils/simulation/IronswornRoll.js";
 import { FD_may20, finishTheScene, SaA_may20 } from "@utils/simulation/moveData.js";
 import { OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
-import type {  NumericOutcomes , OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
+import type {  NumericOutcomes, OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
 import { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
 import { ProgressTrackType } from "@utils/simulation/progressConstants.js";
 import { ProgressStrategy } from "@utils/simulation/ProgressStrategy.js";

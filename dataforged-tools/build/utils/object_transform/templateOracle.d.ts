@@ -1,4 +1,4 @@
-import { YamlOracleSet, YamlOracleTable, YamlTemplateBase } from "../../schema_yaml";
+import { YamlOracleSet, YamlOracleTable, YamlTemplateBase } from "../../schema";
 /**
  * It takes an oracle metadata template and builds it out with variables from a json object.
  * @param json - The JSON object that you want to replace the template variables in.

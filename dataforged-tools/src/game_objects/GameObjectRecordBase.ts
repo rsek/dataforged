@@ -1,5 +1,5 @@
+import type {  AttributeKey, GameObjectType } from "@schema";
 import type { AttributeHash } from "@utils";
-import type { AttributeKey, GameObjectType } from "@schema_json";
 
 /**
  * @internal

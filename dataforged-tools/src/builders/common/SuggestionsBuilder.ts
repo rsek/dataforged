@@ -1,6 +1,5 @@
 import { GameObjectBuilder } from "@builders";
-import type { Asset , EncounterStarforged , GameObject, Move, OracleTable, Suggestions } from "@schema_json";
-import type { YamlSuggestions } from "@schema_yaml";
+import type { Asset , EncounterStarforged, GameObject, Move, OracleTable, Suggestions, YamlSuggestions } from "@schema";
 
 /**
  * @internal

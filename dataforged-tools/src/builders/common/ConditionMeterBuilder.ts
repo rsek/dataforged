@@ -1,7 +1,6 @@
 import { MeterBuilder } from "@builders";
-import { MeterAlias } from "@schema_json";
-import type { AssetType, ConditionMeter , MeterCondition } from "@schema_json";
-import type { YamlConditionMeter } from "@schema_yaml";
+import { MeterAlias } from "@schema";
+import type { AssetType , ConditionMeter, MeterCondition, YamlConditionMeter } from "@schema";
 
 /**
  * @internal

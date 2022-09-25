@@ -1,5 +1,5 @@
 import type { PlaceRecord } from "@game_objects";
-import type { GameObjectType } from "@schema_json";
+import type { GameObjectType } from "@schema";
 /**
  * @internal
  */

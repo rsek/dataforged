@@ -1,5 +1,4 @@
-import type { YamlRollTemplate } from "@schema_yaml";
-import type { HasId, RollTemplate } from "@schema_json";
+import type { HasId, RollTemplate, YamlRollTemplate } from "@schema";
 
 /**
  * @internal

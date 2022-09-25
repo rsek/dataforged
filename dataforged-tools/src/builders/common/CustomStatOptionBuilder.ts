@@ -1,5 +1,5 @@
+import type { CustomStatOption } from "@schema";
 import { formatId } from "@utils";
-import type { CustomStatOption } from "@schema_json";
 
 /**
  * @internal

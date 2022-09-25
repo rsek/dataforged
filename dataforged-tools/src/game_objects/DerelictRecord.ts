@@ -1,6 +1,6 @@
 import type { PlaceRecord, SettlementInitialContact, SettlementRecord, StarshipInitialContact } from "@game_objects";
 import type { StarshipRecord } from "@game_objects/StarshipRecord.js";
-import type { AttributeKey, DerelictType, GameObjectType } from "@schema_json";
+import type { AttributeKey, DerelictType, GameObjectType } from "@schema";
 
 /**
  * @internal

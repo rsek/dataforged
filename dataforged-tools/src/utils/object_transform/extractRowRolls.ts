@@ -1,4 +1,4 @@
-import { YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from "@schema_yaml";
+import { YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from "@schema";
 import _ from "lodash-es";
 
 /**

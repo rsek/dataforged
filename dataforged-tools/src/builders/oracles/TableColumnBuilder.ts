@@ -1,5 +1,5 @@
-import { TableColumnType } from "@schema_json";
-import type { OracleTable, TableColumnRoll, TableColumnText } from "@schema_json";
+import { TableColumnType } from "@schema";
+import type { OracleTable, TableColumnRoll, TableColumnText } from "@schema";
 
 /**
  * @internal

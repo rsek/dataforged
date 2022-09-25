@@ -1,5 +1,5 @@
 
-import { YamlOracleTable, YamlSimpleTableRow, YamlTemplateTable } from "@schema_yaml";
+import { YamlOracleTable, YamlSimpleTableRow, YamlTemplateTable } from "@schema";
 import { extractRowContent } from "@utils/object_transform/extractRowContent.js";
 import { extractRowRolls } from "@utils/object_transform/extractRowRolls.js";
 import _ from "lodash-es";

@@ -1,13 +1,13 @@
 import type { OracleTableBuilder } from "@builders";
-import { Gamespace } from "@schema_json";
-import type { GameDataRoot, Ironsworn , Starforged } from "@schema_json";
+import { Game } from "@schema";
+import type { GameDataRoot, Ironsworn, Starforged } from "@schema";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 
 /**
  * Extracts statistics on Ironsworn game data.
  */
-export function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot) {
+export function dataforgedStats<G extends Game>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot) {
   return [
     assetStats(assets),
     encounterStats(gamespace, encounters),
@@ -48,17 +48,17 @@ export function oracleStats(oracles: GameDataRoot["Oracle Sets"]) {
  * @param gamespace
  * @param json
  */
-export function encounterStats<G extends Gamespace>(gamespace: G, json: GameDataRoot["Encounters"]) {
+export function encounterStats<G extends Game>(gamespace: G, json: GameDataRoot["Encounters"]) {
   let text: string;
   switch (gamespace) {
-    case Gamespace.Starforged: {
+    case Game.Starforged: {
       let encounterJson = json as Starforged['Encounters'];
       const encounters = Object.keys(encounterJson);
       const variants = _.flatMap(encounterJson, (enc) => enc.Variants)
       text = `${encounters.length} encounters (plus ${variants.length} encounter variants)`;
     }
       break;
-    case Gamespace.Ironsworn: {
+    case Game.Ironsworn: {
       let encounterJson = json as Ironsworn['Encounters'];
 
       const natures = Object.keys(encounterJson);

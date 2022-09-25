@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-imports */
-import type { HasId } from "@schema_json";
+import type { HasId } from "@schema";
 import yaml from "js-yaml";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";

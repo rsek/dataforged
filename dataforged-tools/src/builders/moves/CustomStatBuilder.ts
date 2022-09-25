@@ -1,6 +1,5 @@
 import { CustomStatOptionBuilder } from "@builders";
-import type { CustomStat, CustomStatOption, MoveTriggerOptionBase } from "@schema_json";
-import type { YamlCustomStat } from "@schema_yaml";
+import type { CustomStat , CustomStatOption, MoveTriggerOptionBase, YamlCustomStat } from "@schema";
 import { formatId } from "@utils";
 
 /**

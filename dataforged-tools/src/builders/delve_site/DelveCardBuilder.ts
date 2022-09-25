@@ -1,8 +1,6 @@
 import { OracleTableRowBuilder, SourceBuilder, TitleBuilder } from "@builders";
-import { DelveCardType, Gamespace } from "@schema_json";
-import type { DelveCard, DelveDomain , DelveTheme, OracleTableRow, Source , Title } from "@schema_json";
-
-import type { YamlDelveCard, YamlDelveDomain, YamlDelveTheme } from "@schema_yaml";
+import { DelveCardType, Gamespace } from "@schema";
+import type { DelveCard,Gameain, DelveTheme, OracleTableRow, Source, Title , YamlDelveCard, YamlDelveDomain, YamlDelveTheme } from "@schema";
 import type { PartialBy } from "@utils";
 import { formatId } from "@utils";
 import _ from "lodash-es";
@@ -57,7 +55,7 @@ abstract class DelveCardBuilder implements DelveCard {
   constructor(type: DelveCardType, json: YamlDelveCard, parentSource?: Source | undefined, domainFeaturesStaticRows: PartialBy<OracleTableRow, "$id">[] = domainFeaturesStatic) {
     const fragment = json._idFragment??json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
     this.$id = formatId(fragment, Gamespace.Ironsworn, type);
-    this.Type = type;
+    this.Type = type;Game
     this.Title = new TitleBuilder(json.Title, this);
     this.Source = new SourceBuilder(json.Source ?? {}, parentSource ?? {});
     this.Summary = json.Summary;

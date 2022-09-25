@@ -1,9 +1,9 @@
-import { Gamespace } from "../schema_json";
-import type { GameDataRoot } from "../schema_json";
+import { Game } from "../schema";
+import type { GameDataRoot } from "../schema";
 /**
  * Extracts statistics on Ironsworn game data.
  */
-export declare function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot): string;
+export declare function dataforgedStats<G extends Game>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot): string;
 export declare function assetStats(assetTypes: GameDataRoot["Asset Types"]): string;
 export declare function truthStats(truthCategories: GameDataRoot["Setting Truths"]): string;
 export declare function moveStats(moveCategories: GameDataRoot["Move Categories"]): string;
@@ -17,5 +17,5 @@ export declare function oracleStats(oracles: GameDataRoot["Oracle Sets"]): strin
  * @param gamespace
  * @param json
  */
-export declare function encounterStats<G extends Gamespace>(gamespace: G, json: GameDataRoot["Encounters"]): string;
+export declare function encounterStats<G extends Game>(gamespace: G, json: GameDataRoot["Encounters"]): string;
 //# sourceMappingURL=dataforgedStats.d.ts.map

@@ -1,5 +1,4 @@
-import type { ChallengeRank, Display, Encounter, EncounterNatureClassic, EncounterNatureStarforged, EncounterTags, Source, Title } from "@schema_json";
-import type { YamlEncounterClassic, YamlEncounterStarforged } from "@schema_yaml";
+import type { ChallengeRank, Display , Encounter, EncounterNatureClassic, EncounterNatureStarforged, EncounterTags, Source, Title, YamlEncounterClassic, YamlEncounterStarforged } from "@schema";
 
 /**
  * @internal

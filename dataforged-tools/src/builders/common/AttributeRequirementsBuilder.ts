@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { AttributeChoices, AttributeKey, AttributeValue } from "@schema_json";
+import type { AttributeChoices, AttributeKey, AttributeValue } from "@schema";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 

@@ -1,5 +1,4 @@
-import type { AlterMomentum, AlterMomentumBurn , AlterMomentumReset, AssetAbility, HasText } from "@schema_json";
-import type { YamlAlterMomentum, YamlAlterMomentumBurn, YamlAlterMomentumReset } from "@schema_yaml";
+import type { AlterMomentum, AlterMomentumBurn, AlterMomentumReset , AssetAbility, HasText, YamlAlterMomentum, YamlAlterMomentumBurn, YamlAlterMomentumReset } from "@schema";
 import { formatId } from "@utils";
 
 /**

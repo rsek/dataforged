@@ -1,4 +1,4 @@
-import { Gamespace } from "../schema_json";
+import { Game } from "../schema";
 import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 /**
@@ -42,7 +42,7 @@ export function oracleStats(oracles) {
 export function encounterStats(gamespace, json) {
     let text;
     switch (gamespace) {
-        case Gamespace.Starforged:
+        case Game.Starforged:
             {
                 let encounterJson = json;
                 const encounters = Object.keys(encounterJson);
@@ -50,7 +50,7 @@ export function encounterStats(gamespace, json) {
                 text = `${encounters.length} encounters (plus ${variants.length} encounter variants)`;
             }
             break;
-        case Gamespace.Ironsworn:
+        case Game.Ironsworn:
             {
                 let encounterJson = json;
                 const natures = Object.keys(encounterJson);

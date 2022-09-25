@@ -1,5 +1,5 @@
-import type { OracleTableBuilder , OracleSetBuilder } from "@builders";
-import type { OracleSet } from "@schema_json";
+import type { OracleTableBuilder, OracleSetBuilder } from "@builders";
+import type { OracleSet } from "@schema";
 import { findById } from "@utils/md/findById.js";
 import _ from "lodash-es";
 

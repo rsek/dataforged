@@ -1,4 +1,4 @@
-import { Source } from "../schema_json";
+import { Source } from "../schema";
 /**
  * Sort comparison function for Ironsworn source data.
  * @param source1 - The first source to compare.

@@ -1,8 +1,7 @@
 import { RequirementsBuilder } from "@builders";
 import type { GameObjectRecord } from "@game_objects";
 import type { GameObjectType } from "@game_objects/enum/GameObjectType.js";
-import type { GameObject, Requirements } from "@schema_json";
-import type { YamlRequirements } from "@schema_yaml";
+import type { GameObject, Requirements , YamlRequirements } from "@schema";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 

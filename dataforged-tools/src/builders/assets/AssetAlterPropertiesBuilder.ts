@@ -1,7 +1,6 @@
 import { AssetStateBuilder } from "@builders";
-import type { AssetAlterProperties } from "@schema_json";
+import type { AssetAlterProperties , YamlAssetAlterProperties } from "@schema";
 import { formatId } from "@utils";
-import type { YamlAssetAlterProperties } from "@schema_yaml";
 
 export class AssetAlterPropertiesBuilder implements AssetAlterProperties {
   $id: string;

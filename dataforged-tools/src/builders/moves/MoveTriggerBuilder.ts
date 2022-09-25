@@ -1,7 +1,6 @@
-import { MoveTriggerOptionActionBuilder , MoveTriggerOptionProgressBuilder } from "@builders";
-import type { AlterMove, Move, MoveTrigger, MoveTriggerBy, MoveTriggerOptionAction, MoveTriggerOptionProgress } from "@schema_json";
-import { RollType } from "@schema_json";
-import type { YamlAlterMoveTrigger , YamlMoveTrigger, YamlMoveTriggerOptionAction, YamlMoveTriggerOptionProgress } from "@schema_yaml";
+import { MoveTriggerOptionActionBuilder, MoveTriggerOptionProgressBuilder } from "@builders";
+import type { AlterMove, Move, MoveTrigger, MoveTriggerBy , MoveTriggerOptionAction, MoveTriggerOptionProgress, YamlAlterMoveTrigger, YamlMoveTrigger, YamlMoveTriggerOptionAction, YamlMoveTriggerOptionProgress } from "@schema";
+import { RollType } from "@schema";
 
 // TODO: add ironsworn moves, or have the constructor use move data to figure it out
 

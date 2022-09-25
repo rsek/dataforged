@@ -1,4 +1,4 @@
-import { YamlOracleTable, YamlOracleTableTemplate } from "@schema_yaml";
+import { YamlOracleTable, YamlOracleTableTemplate } from "@schema";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 import _ from "lodash-es";
 

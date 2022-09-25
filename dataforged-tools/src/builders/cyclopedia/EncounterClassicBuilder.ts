@@ -1,7 +1,6 @@
-import { DisplayBuilder , EncounterBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import { EncounterNatureClassic } from "@schema_json";
-import type { Display, EncounterClassic , EncounterNatureClassicInfo, Source , Title } from "@schema_json";
-import type { YamlEncounterClassic } from "@schema_yaml";
+import { DisplayBuilder, EncounterBuilder, SourceBuilder, TitleBuilder } from "@builders";
+import { EncounterNatureClassic } from "@schema";
+import type { Display , EncounterClassic, EncounterNatureClassicInfo, Source, Title, YamlEncounterClassic } from "@schema";
 import { formatId } from "@utils";
 
 

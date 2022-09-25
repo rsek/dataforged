@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
-import { AttributeSetterBuilder, GameObjectBuilder , MultipleRollsBuilder, OracleContentBuilder, RollTemplateBuilder, SuggestionsBuilder } from "@builders";
+import { AttributeSetterBuilder, GameObjectBuilder, MultipleRollsBuilder, OracleContentBuilder, RollTemplateBuilder, SuggestionsBuilder } from "@builders";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { Display, GameObject, ImageUrl, MultipleRolls, OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Suggestions, Vector } from "@schema_json";
-import type { YamlSimpleTableRow, YamlStub, YamlSuggestions, YamlTruthOption } from "@schema_yaml";
+import type { Display, GameObject, ImageUrl, MultipleRolls , OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Suggestions, Vector, YamlSimpleTableRow, YamlStub, YamlSuggestions, YamlTruthOption } from "@schema";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";

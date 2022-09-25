@@ -1,7 +1,6 @@
 import { DisplayBuilder, TableColumnRollBuilder, TableColumnTextBuilder  } from "@builders";
-import { TableColumnType } from "@schema_json";
-import type { OracleDisplayBase, OracleSet, OracleSetDisplay, OracleTable , OracleTableDisplay as OracleTableDisplay, OracleTableRow , TableColumnRoll, TableColumnText } from "@schema_json";
-import type { YamlOracleDisplayBase, YamlOracleSetDisplay, YamlOracleTableDisplay, YamlTableColumnRoll, YamlTableColumnText } from "@schema_yaml";
+import { TableColumnType } from "@schema";
+import type { OracleDisplayBase, OracleSet, OracleSetDisplay, OracleTable, OracleTableDisplay, OracleTableRow, TableColumnRoll, TableColumnText , YamlOracleDisplayBase, YamlOracleSetDisplay, YamlOracleTableDisplay, YamlTableColumnRoll, YamlTableColumnText } from "@schema";
 import { cloneDeep } from "lodash-es";
 
 /**

@@ -25,8 +25,8 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     declarations: yamlDeclarations
   },
   {
-    typeName: "YamlOracleSetFile",
-    outFiles: [ "../_master-data/schema/oracles.json","../_master-data/schema/oracles-ironsworn.json" ],
+    typeName: "YamlOracleSetRoot",
+    outFiles: ["../_master-data/schema/oracles.json"],
     declarations: yamlDeclarations
   },
   {
@@ -38,13 +38,6 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     typeName: "YamlDelveSiteRoot",
     outFiles: ["../_master-data/schema/delve_site.json"],
     declarations: yamlDeclarations
-  },
-  {
-    typeName: "Asset",
-    outFiles: [
-      "../dist/starforged/schema-asset.json"
-    ],
-    declarations: jsonDeclarations
   },
   {
     typeName: "Starforged",

@@ -1,6 +1,5 @@
-import type { HasId, Title } from "@schema_json";
+import type { HasId , Title, YamlTitle } from "@schema";
 import { formatId } from "@utils/formatId.js";
-import type { YamlTitle } from "@schema_yaml";
 
 /**
  * @internal
@@ -10,7 +9,7 @@ export class TitleBuilder implements Title {
   Canonical: string;
   Standard: string;
   Short: string;
-  constructor(json: YamlTitle, parent: HasId ) {
+  constructor(json: YamlTitle, parent: HasId) {
     if (!json ?? !json.Canonical) {
       throw new Error(`Missing canonical title for ${parent.$id}:\n${JSON.stringify(parent)}`);
     }

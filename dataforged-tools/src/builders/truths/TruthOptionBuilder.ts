@@ -1,6 +1,5 @@
 import { OracleTableRowBuilder } from "@builders";
-import type { TruthOption, TruthOptionSubtableRow } from "@schema_json";
-import type { YamlTruthOption } from "@schema_yaml";
+import type { TruthOption , TruthOptionSubtableRow, YamlTruthOption } from "@schema";
 
 /**
  * @internal

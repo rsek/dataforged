@@ -1,5 +1,5 @@
 import { SourceBuilder } from "@builders";
-import type { HasSource, Source } from "@schema_json";
+import type { HasSource, Source } from "@schema";
 
 /**
  * @internal

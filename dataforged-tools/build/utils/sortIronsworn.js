@@ -1,4 +1,4 @@
-import { SourceTitle } from "../schema_json";
+import { SourceTitle } from "../schema";
 const order = [
     SourceTitle.Starforged,
     SourceTitle.StarforgedAssets,

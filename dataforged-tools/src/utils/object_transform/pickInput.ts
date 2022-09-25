@@ -1,8 +1,7 @@
-
 import { InputClockBuilder, InputNumberBuilder, InputSelectBuilder, InputTextBuilder } from "@builders";
-import type { Asset, AssetAbility } from "@schema_json";
-import { InputType } from "@schema_json";
-import type { YamlInputClock, YamlInputNumber, YamlInputSelect, YamlInputText, YamlInput } from "@schema_yaml";
+import type { Asset, AssetAbility } from "@schema";
+import { InputType } from "@schema";
+import type { YamlInputClock, YamlInputNumber, YamlInputSelect, YamlInputText, YamlInput } from "@schema";
 
 /**
  * Infers the correct class for an YamlInput object and constructs it.

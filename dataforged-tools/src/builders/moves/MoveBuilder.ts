@@ -1,9 +1,7 @@
-import { DisplayBuilder , MoveTriggerBuilder , OutcomesBuilder , SourceInheritorBuilder , TitleBuilder } from "@builders";
-import type { Asset, AssetAbility , Display, Gamespace , Move , MoveCategory, MoveTrigger, OracleTable, Outcomes, Source, Suggestions, Title, } from "@schema_json";
-import type { YamlMove } from "@schema_yaml";
+import { DisplayBuilder, MoveTriggerBuilder, OutcomesBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
+import type { Asset , AssetAbility, Display, Game, Move, MoveCategory, MoveTrigger, OracleTable, Outcomes, Source, Suggestions, Title, YamlMove, } from "@schema";
 import { formatId } from "@utils";
 import { buildLog } from "@utils/logging/buildLog.js";
-
 /**
  * Object representing a Starforged move.
  * @internal
@@ -13,7 +11,7 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
   Title: Title;
   Optional: boolean;
   Category: MoveCategory["$id"];
-  Asset?: this["Category"] extends `${Gamespace}/Moves/Assets` ? Asset["$id"] : undefined;
+  Asset?: this["Category"] extends `${Game}/Moves/Assets` ? Asset["$id"] : undefined;
   "Progress Move"?: boolean | undefined;
   "Variant of"?: Move["$id"] | undefined;
   Display: Display;
@@ -23,9 +21,9 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
   Oracles?: OracleTable["$id"][] | undefined;
   Suggestions?: Suggestions | undefined;
   Outcomes?: Outcomes | undefined;
-  constructor(json: YamlMove, parent: MoveCategory|AssetAbility, gamespace: Gamespace,...sourceAncestors: Source[]) {
+  constructor(json: YamlMove, parent: MoveCategory|AssetAbility, game: Game,...sourceAncestors: Source[]) {
     super(json.Source ?? {}, ...sourceAncestors);
-    this.Category = json.Category ?? `${gamespace}/Moves/Assets`;
+    this.Category = json.Category ?? `${game}/Moves/Assets`;
     const fragment = json._idFragment??json.Title.Canonical;
     this.$id = json.$id ?? formatId(fragment, this.Category);
     buildLog(this.constructor, `Building: ${this.$id}`);

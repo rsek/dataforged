@@ -12,6 +12,11 @@ export const REFS_PATH = MASTER_DATA_PATH + "/_refs";
 /**
  * @internal
  */
+export const TEMPLATES_PATH = MASTER_DATA_PATH + "/_refs/templates";
+
+/**
+ * @internal
+ */
 export const IS_PATH = MASTER_DATA_PATH + "/Ironsworn";
 /**
  * @internal

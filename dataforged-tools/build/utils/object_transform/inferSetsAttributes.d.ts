@@ -1,4 +1,4 @@
-import type { Attribute, OracleTableRow, RowNullStub } from "../../schema_json";
+import type { Attribute, OracleTableRow, RowNullStub } from "../../schema";
 /**
  * Infers a SetsAttributes object for an Oracle from its table rows.
  * @param table - The table of data to infer attributes from.

@@ -1,5 +1,4 @@
-import type { Meter } from "@schema_json";
-import type { YamlMeter } from "@schema_yaml";
+import type { Meter , YamlMeter } from "@schema";
 
 /**
  * Class representing a meter (Starforged) or status track (Ironsworn).

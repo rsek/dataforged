@@ -1,5 +1,5 @@
 import { InputClockBuilder, InputNumberBuilder, InputSelectBuilder, InputTextBuilder } from "../../builders";
-import { InputType } from "../../schema_json";
+import { InputType } from "../../schema";
 /**
  * Infers the correct class for an YamlInput object and constructs it.
  * @param inputJson - The data to pick a class for.

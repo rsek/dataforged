@@ -1,4 +1,4 @@
-import type { MoveCategory } from "@schema_json";
+import type { MoveCategory } from "@schema";
 import { renderMove } from "@utils/md/renderMove.js";
 import _ from "lodash-es";
 

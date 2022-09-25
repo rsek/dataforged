@@ -1,5 +1,5 @@
-import type { ActorRecord, FactionType , GameObjectType } from "@game_objects";
-import type { AttributeKey } from "@schema_json";
+import type { ActorRecord, FactionType, GameObjectType } from "@game_objects";
+import type { AttributeKey } from "@schema";
 /**
  * @internal
  */

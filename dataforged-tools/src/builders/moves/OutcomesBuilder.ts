@@ -1,6 +1,5 @@
 import { OutcomeMissBuilder, OutcomeStrongHitBuilder, OutcomeWeakHitBuilder } from "@builders";
-import type { AlterMoveOutcomes, Outcomes } from "@schema_json";
-import type { YamlAlterMoveOutcomes, YamlOutcomes } from "@schema_yaml";
+import type { AlterMoveOutcomes, Outcomes , YamlAlterMoveOutcomes, YamlOutcomes } from "@schema";
 import { formatId } from "@utils/formatId.js";
 
 /**

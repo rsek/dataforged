@@ -1,5 +1,5 @@
 import type { GameObjectType, PlaceRecord } from "@game_objects";
-import type { AttributeKey, SettlementInitialContact } from "@schema_json";
+import type { AttributeKey, SettlementInitialContact } from "@schema";
 
 /**
  * @internal

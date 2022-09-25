@@ -1,5 +1,5 @@
 import type { GameObjectType, PlaceRecord, StarshipInitialContact } from "@game_objects";
-import type { AttributeKey } from "@schema_json";
+import type { AttributeKey } from "@schema";
 /**
  * @internal
  */

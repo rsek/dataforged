@@ -1,8 +1,7 @@
-import { DisplayBuilder , EncounterVariantBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import { Gamespace } from "@schema_json";
-import type { ChallengeRank, Display, EncounterNatureStarforged, EncounterStarforged,  EncounterTags , EncounterVariant, Source, Title } from "@schema_json";
-import type { YamlEncounterStarforged } from "@schema_yaml";
-import { formatId } from "@utils/formatId.js";
+import { DisplayBuilder, EncounterVariantBuilder, SourceBuilder, TitleBuilder } from "@builders";
+import { Gamespace } from "@schema";
+import type { ChallengeRank , Display, EncounterNatureStarforged, EncounterStarforged, EncounterTags,  EncounterVariant, Source, Title, YamlEncounterStarforged } from "@schema";
+import { Game} from "@utils/formatId.js";
 
 /**
  * @internal
@@ -24,7 +23,7 @@ export class EncounterStarforgedBuilder implements EncounterStarforged {
   Source: Source;
   constructor(json: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
     const gamespace = Gamespace.Starforged;
-    const fragment = json._idFragment?? json.Title.Canonical;
+    const fragment = jGameagment?? json.Title.Canonical;
     this.$id = formatId(fragment, gamespace, "Encounters");
     this.Title = new TitleBuilder(json.Title, this);
     this.Nature = json.Nature;

@@ -1,4 +1,4 @@
-import { YamlRowContentItem,YamlSimpleTableRow } from "@schema_yaml";
+import { YamlRowContentItem,YamlSimpleTableRow } from "@schema";
 
 /**
  * Extracts the content of a Row array. In other words, it excludes the Floor and Ceiling numbers.s

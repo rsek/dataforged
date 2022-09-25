@@ -1,5 +1,4 @@
-import type { TruthClassic, TruthOptionClassic } from "@schema_json";
-import type { YamlTruthOptionClassic } from "@schema_yaml";
+import type { TruthClassic, TruthOptionClassic , YamlTruthOptionClassic } from "@schema";
 
 /**
  * @internal

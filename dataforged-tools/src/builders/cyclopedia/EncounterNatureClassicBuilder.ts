@@ -1,7 +1,7 @@
-import { DisplayBuilder , EncounterClassicBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import { Gamespace } from "@schema_json";
-import type { Display  , EncounterClassic , EncounterNatureClassicInfo , Source } from "@schema_json";
-import type { YamlEncounterNatureInfo } from "@schema_yaml/cyclopedia/YamlEncounterIronsworn.js";
+import { DisplayBuilder, EncounterClassicBuilder, SourceBuilder, TitleBuilder } from "@builders";
+import { Gamespace } from "@schema";
+import type { Display , EncounterClassic, EncounterNatureClassicInfo, Source } from "@schema";
+import tyGameEncounterNatureInfo } from "@schema/yaml/cyclopedia/YamlEncounterIronsworn.js";
 import { formatId } from "@utils";
 import _ from "lodash-es";
 
@@ -19,7 +19,7 @@ export class EncounterNatureClassicInfoBuilder implements EncounterNatureClassic
   Encounters: {[key: string]: EncounterClassic};
   constructor(json: YamlEncounterNatureInfo, parentSource: Source) {
     const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
-    this.$id =  formatId(fragment, Gamespace.Ironsworn, "Encounters");
+    this.$id =  formatId(fragment, Game.Ironsworn, "Encounters");
     this.Title = new TitleBuilder(json.Title, this) as EncounterNatureClassicInfo["Title"];
     this.Source = new SourceBuilder(json.Source ?? {}, parentSource);
 

@@ -1,6 +1,6 @@
-import type { Display } from "@schema_json";
+import type { Display } from "@schema";
 import { badJsonError } from "@utils/logging/badJsonError.js";
-import { validateColor } from "@utils/validateColor.js";
+import { validateColor } from "@utils/validation/validateColor.js";
 
 /**
  * @internal

@@ -1,4 +1,4 @@
-import type { Display } from "@schema_json";
+import type { Display } from "@schema";
 /**
  * @internal
  */

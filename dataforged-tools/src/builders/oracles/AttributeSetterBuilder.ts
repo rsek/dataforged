@@ -1,4 +1,4 @@
-import type { Attribute } from "@schema_json";
+import type { Attribute } from "@schema";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
 

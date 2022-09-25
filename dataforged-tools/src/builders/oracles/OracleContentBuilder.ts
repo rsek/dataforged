@@ -1,4 +1,4 @@
-import type { OracleContent, PartOfSpeechTag } from "@schema_json";
+import type { OracleContent, PartOfSpeechTag } from "@schema";
 // import { badJsonError } from "@utils/logging/badJsonError.js";
 
 /**

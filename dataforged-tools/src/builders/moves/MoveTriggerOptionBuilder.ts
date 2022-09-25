@@ -1,7 +1,6 @@
 import { CustomStatBuilder } from "@builders";
-import type { CustomStat, MoveTrigger, MoveTriggerOptionAction, MoveTriggerOptionBase, MoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat } from "@schema_json";
-import { Replacement , RollMethod , RollType } from "@schema_json";
-import type { YamlMoveTriggerOptionAction, YamlMoveTriggerOptionProgress } from "@schema_yaml";
+import type { CustomStat, MoveTrigger , MoveTriggerOptionAction, MoveTriggerOptionBase, MoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat, YamlMoveTriggerOptionAction, YamlMoveTriggerOptionProgress } from "@schema";
+import { Replacement, RollMethod, RollType } from "@schema";
 
 /**
  * @internal

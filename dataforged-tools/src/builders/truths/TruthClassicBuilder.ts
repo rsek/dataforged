@@ -1,6 +1,5 @@
-import { SourceBuilder , TitleBuilder, TruthOptionClassicBuilder } from "@builders";
-import type { Source, Title, TruthClassic, TruthOptionClassic } from "@schema_json";
-import type { YamlTruthClassic } from "@schema_yaml";
+import { SourceBuilder, TitleBuilder, TruthOptionClassicBuilder } from "@builders";
+import type { Source , Title, TruthClassic, TruthOptionClassic, YamlTruthClassic } from "@schema";
 import { formatId } from "@utils";
 
 /**

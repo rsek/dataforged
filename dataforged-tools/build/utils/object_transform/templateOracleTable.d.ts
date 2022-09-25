@@ -1,4 +1,4 @@
-import { YamlSimpleTableRow, YamlTemplateTable } from "../../schema_yaml";
+import { YamlSimpleTableRow, YamlTemplateTable } from "../../schema";
 /**
  * Given a table template object, extract the rolls and content into separate arrays and combine them into a single table.
  * @param template - The template object.

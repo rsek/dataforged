@@ -1,6 +1,5 @@
-import { DisplayBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import type { Asset , DelveRarity, Display, Source, Title } from "@schema_json";
-import type { YamlDelveRarity } from "@schema_yaml";
+import { DisplayBuilder, SourceBuilder, TitleBuilder } from "@builders";
+import type { Asset , DelveRarity, Display, Source, Title, YamlDelveRarity } from "@schema";
 import { formatId } from "@utils";
 
 /**

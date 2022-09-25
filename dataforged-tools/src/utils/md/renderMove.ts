@@ -1,4 +1,4 @@
-import type { Move } from "@schema_json";
+import type { Move } from "@schema";
 import _ from "lodash-es";
 
 /**

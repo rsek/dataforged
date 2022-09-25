@@ -1,4 +1,4 @@
-import type { MultipleRolls } from "@schema_json";
+import type { MultipleRolls } from "@schema";
 
 
 /**

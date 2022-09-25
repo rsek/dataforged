@@ -1,6 +1,5 @@
-import { RequirementsBuilder , SuggestionsBuilder } from "@builders";
-import type { AttributeChoices, OracleUsage, Requirements, Suggestions } from "@schema_json";
-import type { YamlOracleUsage } from "@schema_yaml";
+import { RequirementsBuilder, SuggestionsBuilder } from "@builders";
+import type { AttributeChoices , OracleUsage, Requirements, Suggestions, YamlOracleUsage } from "@schema";
 
 /**
  * @internal

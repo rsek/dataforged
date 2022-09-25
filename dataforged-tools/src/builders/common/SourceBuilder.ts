@@ -1,7 +1,6 @@
 
-import type { Source } from "@schema_json";
-import { License, SourceTitle } from "@schema_json";
-import type { YamlSource } from "@schema_yaml";
+import type { Source , YamlSource } from "@schema";
+import { Game , License, SourceTitle } from "@schema";
 import _ from "lodash-es";
 
 /**
@@ -14,6 +13,23 @@ export class SourceBuilder implements Source {
   Page?: number | undefined;
   Url?: string | undefined;
   License: License;
+  static default(game: Game) {
+    return new SourceBuilder({ Title: game === Game.Ironsworn ? SourceTitle.Ironsworn : SourceTitle.Starforged, Authors: ["Shawn Tomkin"] });
+  }
+  static getDefaultLicense(sourceTitle: SourceTitle|string) {
+    switch (sourceTitle as SourceTitle) {
+      case SourceTitle.Ironsworn:
+      case SourceTitle.IronswornAssets:
+        return License.CC_BY_NC_SA;
+      case SourceTitle.IronswornDelve:
+        return License.CC_BY_NC_SA;
+      case SourceTitle.Starforged:
+      case SourceTitle.StarforgedAssets:
+        return License.CC_BY_SA;
+      case SourceTitle.SunderedIslesPreview:
+        return License.None;
+    }
+  }
   constructor(json: YamlSource, ...ancestorSourceJson: YamlSource[]) {
     const sourceStack = _.cloneDeep([ ..._.compact(
       ancestorSourceJson)
@@ -29,28 +45,12 @@ export class SourceBuilder implements Source {
     this.Date = merged.Date;
     this.Page = merged.Page;
     this.Url = merged.Url;
-    if (merged.License) {
-      this.License = merged.License;
-    } else{
-      switch (this.Title as SourceTitle) {
-        case SourceTitle.Ironsworn:
-        case SourceTitle.IronswornAssets:
-          this.License = License.CC_BY_NC_SA;
-          break;
-        case SourceTitle.IronswornDelve:
-          this.License = License.CC_BY_NC_SA;
-          break;
-        case SourceTitle.Starforged:
-        case SourceTitle.StarforgedAssets:
-          this.License = License.CC_BY_SA;
-          break;
-        case SourceTitle.SunderedIslesPreview:
-          this.License = License.None;
-          break;
-        default:
-          throw new Error(`Could not infer a valid license!\n${JSON.stringify(this)}`);
-      }
+    const license: undefined|License = merged.License ?? SourceBuilder.getDefaultLicense(merged.Title);
+    if (!license) {
+      throw new Error(`Could not infer a valid license!\n${JSON.stringify(merged)}`);
     }
+    this.License = license;
   }
 }
+
 

@@ -5,7 +5,7 @@
 //       : Partial<T[P]>
 // }>;
 
-import { RequireKey } from "@schema_json";
+import { RequireKey } from "@schema";
 
 /**
  * @public

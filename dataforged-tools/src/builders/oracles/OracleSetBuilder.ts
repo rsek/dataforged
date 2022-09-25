@@ -1,7 +1,6 @@
 
-import { OracleBuilder, OracleSetDisplayBuilder  , OracleTableBuilder } from "@builders";
-import type { OracleBase, OracleSet, OracleSetDisplay, OracleTable } from "@schema_json";
-import type { YamlOracleSet, YamlOracleTable } from "@schema_yaml";
+import { OracleBuilder, OracleSetDisplayBuilder , OracleTableBuilder } from "@builders";
+import type { OracleBase, OracleSet , OracleSetDisplay, OracleTable, YamlOracleSet, YamlOracleTable } from "@schema";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
 import _ from "lodash-es";
 

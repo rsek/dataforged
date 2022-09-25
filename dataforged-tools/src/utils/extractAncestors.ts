@@ -1,4 +1,4 @@
-import type { HasId } from "@schema_json";
+import type { HasId } from "@schema";
 import {inRange} from "lodash-es"
 
 /**

@@ -1,6 +1,5 @@
-import type { MoveReroll, OutcomeBase, OutcomeMiss, OutcomeMissMatch, OutcomeStrongHit, OutcomeStrongHitMatch, OutcomeWeakHit } from "@schema_json";
-import { MoveOutcome } from "@schema_json";
-import type { YamlOutcome, YamlOutcomeMiss, YamlOutcomeStrongHit, YamlOutcomeStrongHitMatch, YamlOutcomeWeakHit } from "@schema_yaml";
+import type { MoveReroll, OutcomeBase, OutcomeMiss, OutcomeMissMatch, OutcomeStrongHit , OutcomeStrongHitMatch, OutcomeWeakHit, YamlOutcome, YamlOutcomeMiss, YamlOutcomeStrongHit, YamlOutcomeStrongHitMatch, YamlOutcomeWeakHit } from "@schema";
+import { MoveOutcome } from "@schema";
 import { formatId } from "@utils/formatId";
 
 /**

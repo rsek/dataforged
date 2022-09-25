@@ -1,10 +1,8 @@
 
-import { OracleBuilder , OracleContentBuilder  , OracleTableDisplayBuilder , OracleTableRowBuilder  , RowNullStubBuilder } from "@builders";
-import type { OracleContent, OracleSet, OracleTable, OracleTableDisplay, OracleTableRow, RowNullStub } from "@schema_json";
-import type { YamlOracleSet, YamlOracleTable, YamlSimpleTableRow , YamlStub } from "@schema_yaml";
+import { OracleBuilder, OracleContentBuilder , OracleTableDisplayBuilder, OracleTableRowBuilder , RowNullStubBuilder } from "@builders";
+import type { OracleContent, OracleSet, OracleTable, OracleTableDisplay , OracleTableRow, RowNullStub, YamlOracleSet, YamlOracleTable, YamlSimpleTableRow, YamlStub } from "@schema";
 import { formatId } from "@utils";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
-import _ from "lodash-es";
 
 /**
  * @internal

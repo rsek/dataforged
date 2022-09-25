@@ -1,6 +1,5 @@
-import { DisplayBuilder , SourceBuilder , TitleBuilder } from "@builders";
-import type { ChallengeRank, Display, EncounterNatureStarforged, EncounterStarforged, EncounterTags, EncounterVariant, Source, Title } from "@schema_json";
-import type { YamlEncounterVariant } from "@schema_yaml";
+import { DisplayBuilder, SourceBuilder, TitleBuilder } from "@builders";
+import type { ChallengeRank , Display, EncounterNatureStarforged, EncounterStarforged, EncounterTags, EncounterVariant, Source, Title, YamlEncounterVariant } from "@schema";
 import { formatId } from "@utils";
 
 

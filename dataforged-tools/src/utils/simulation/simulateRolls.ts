@@ -1,5 +1,5 @@
 import type { ClockSegments } from "@json_out";
-import { ChallengeRank  , MoveOutcome } from "@json_out";
+import { ChallengeRank , MoveOutcome } from "@json_out";
 import { FD_ironsworn, FD_may20, SaA_ironsworn, SaA_may20 } from "@utils/simulation/moveData.js";
 import type { NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import { OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";

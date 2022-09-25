@@ -1,6 +1,5 @@
-import type { AssetState, HasId } from "@schema_json";
+import type { AssetState , HasId, YamlAssetState } from "@schema";
 import { formatId } from "@utils";
-import type { YamlAssetState } from "@schema_yaml";
 
 /**
  * @internal

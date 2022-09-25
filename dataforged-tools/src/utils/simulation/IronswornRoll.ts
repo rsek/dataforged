@@ -1,4 +1,4 @@
-import { MoveOutcome , RollType } from "@json_out";
+import { MoveOutcome, RollType } from "@json_out";
 import { Die } from "@utils/simulation/Die.js";
 import type { NumericOutcome, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import { MOMENTUM_MAX } from "@utils/simulation/PlayerCharacter.js";

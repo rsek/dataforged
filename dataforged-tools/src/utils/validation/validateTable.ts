@@ -1,4 +1,4 @@
-import type { OracleTableRow } from "@schema_json";
+import type { OracleTableRow } from "@schema";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 
 /**

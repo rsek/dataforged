@@ -1,4 +1,4 @@
-import { YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTemplateBase } from "@schema_yaml";
+import { YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTemplateBase } from "@schema";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
 

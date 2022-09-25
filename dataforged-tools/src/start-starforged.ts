@@ -1,14 +1,12 @@
-/* eslint-disable no-console */
-
 import "source-map-support/register.js";
 import { JSON_PATHS } from "@constants";
-import { Gamespace } from "@schema_json";
-import type { Starforged } from "@schema_json";
-import { buildDataforged } from "@utils/buildDataforged.js";
+import { Game } from "@schema";
+import type { Starforged } from "@schema";
+import { buildDataforged } from "@utils/builders/buildDataforged.js";
 import { writeJson } from "@utils/io/writeJSON.js";
 import _ from "lodash-es";
 
-const data = buildDataforged(Gamespace.Starforged) as Starforged;
+const data = buildDataforged(Game.Starforged) as Starforged;
 export { data };
 
 _.forEach(data, (value, key) => {
@@ -40,6 +38,7 @@ _.forEach(data, (value, key) => {
     }
     JSON_PATHS.forEach(path => {
       const newPath = path + `/starforged/${fileName}.json`;
+      // eslint-disable-next-line no-console
       console.log(`[StartStarforged] Writing json to ${newPath}`);
       writeJson(newPath, value);
     });
@@ -47,11 +46,4 @@ _.forEach(data, (value, key) => {
 });
 
 JSON_PATHS.forEach(path => writeJson( path+ "/starforged/dataforged.json", data));
-
-// const outRoot = "../img";
-// const outWebP = "../img/raster/webp";
-
-// buildImages(IMG_PATH , outRoot, MASTER_PNG_PATH , outWebP);
-
-
 
