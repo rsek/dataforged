@@ -1,118 +1,136 @@
-Planets:
-  Sets:
-    Jovian:
-      _templateOracleSet: *template.category:Planet
-      _templateVars:
-        Planetary Class: Jovian
-      Title:
-        Canonical: Jovian World
-      Display:
-        Images: *images:JovianWorld
-      Source:
-        Page: 312
-      Summary: A massive planet with vast layers of dense gases surrounding a rocky core.
-      Sample Names:
-        - Aether
-        - Arrokoth
-        - Esen
-        - Hanish
-        - Magnus
-        - Magonia
-        - Mistral
-        - Nephele
-        - Nimbus
-        - Nuada
-        - Nubium
-        - Serein
-        - Stratus
-        - Taranis
-        - Tempest
-        - Tenzin
-        - Tyr
-        - Veil
-        - Velum
-        - Zephyr
-      Sets:
-        - _templateOracleSet: *template.info:Planet.Settlements
-          Tables:
-            - _templateOracleSet: *template.info:Planet.Settlements.Terminus
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1,50] # None
-                  - [51,70] # Orbital settlement
-                  - [71,85] # Planetside settlement
-                  - [86,95] # Multiple settlements
-                  - [96,100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Outlands
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1,75] # None
-                  - [76,87] # Orbital settlement
-                  - [88,95] # Planetside settlement
-                  - [96,98] # Multiple settlements
-                  - [99,100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Expanse
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1,90] # None
-                  - [91,96] # Orbital settlement
-                  - [97,100] # Planetside settlement
-                  - [null,null] # Multiple settlements
-                  - [null,null] # Settlements in conflict
-      Tables:
-        - _templateOracleTable: *template.info:Planet.Atmosphere
-          _templateTableRows:
-            content: *template.content:Planet.Atmosphere
-            rolls:
-              - [null, null] # None / thin
-              - [1, 50] # Toxic
-              - [51, 65] # Corrosive
-              - [66, 85] # Marginal
-              - [86, 100] # Breathable
-              - [null, null] # Ideal
-        - _templateOracleTable: *template.info:Planet.ObservedFromSpace
-          _templateTableRows:
-            rolls: *template.rolls:Planet.ObservedFromSpace
-            content:
-              - Complex ring system
-              - Intense gravity well
-              - Numerous moons
-              - Perpetual superstorm
-              - Powerful magnetic field
-              - Severe electrical storms
-              - Superheated atmosphere
-              - Unusual atmospheric colors
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Orbital
-        - _templateOracleTable: *template.info:Planet.PlanetsideFeature
-          _templateTableRows:
-            rolls: *template.rolls:Planet.PlanetsideFeature
-            content:
-              - Clouds of metal particles
-              - Crystalline rains
-              - Floating glaciers
-              - Floating islands
-              - Layer of suspended liquid
-              - Pockets of explosive gases
-              - Powerful vortexes
-              - Radiation fields
-              - Storm-swept rocky debris
-              - Torrential rain
-              - Towering thunderheads
-              - Violent turbulence
-              - Zones of localized atmosphere
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Planetside
-        - _templateOracleTable: *template.info:Planet.Life
-          _templateTableRows:
-            content: *template.content:Planet.Life
-            rolls:
-              - [1, 35] # None
-              - [36, 60] # Extinct
-              - [61, 85] # Scarce
-              - [86, 95] # Diverse
-              - [96, 98] # Bountiful
-              - [99, 100] # Overrun
+Source:
+  Authors:
+    - Shawn Tomkin
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Oracle Sets:
+  Planets:
+    Title:
+      Canonical: Planets
+    Source:
+      Date: "050622"
+    Sets:
+      Jovian:
+        _templateOracleSet: *template.category:Planet
+        _templateVars:
+          Planetary Class: Jovian
+        Title:
+          Canonical: Jovian World
+        Display:
+          Images: *images:JovianWorld
+        Source:
+          Page: 312
+        Summary: A massive planet with vast layers of dense gases surrounding a rocky core.
+        Sample Names:
+          - Aether
+          - Arrokoth
+          - Esen
+          - Hanish
+          - Magnus
+          - Magonia
+          - Mistral
+          - Nephele
+          - Nimbus
+          - Nuada
+          - Nubium
+          - Serein
+          - Stratus
+          - Taranis
+          - Tempest
+          - Tenzin
+          - Tyr
+          - Veil
+          - Velum
+          - Zephyr
+        Sets:
+          Settlements:
+            _templateOracleSet: *template.info:Planet.Settlements
+            Tables:
+              Terminus:
+                _templateOracleTable: *template.info:Planet.Settlements.Terminus
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1,50] # None
+                    - [51,70] # Orbital settlement
+                    - [71,85] # Planetside settlement
+                    - [86,95] # Multiple settlements
+                    - [96,100] # Settlements in conflict
+              Outlands:
+                _templateOracleTable: *template.info:Planet.Settlements.Outlands
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1,75] # None
+                    - [76,87] # Orbital settlement
+                    - [88,95] # Planetside settlement
+                    - [96,98] # Multiple settlements
+                    - [99,100] # Settlements in conflict
+              Expanse:
+                _templateOracleTable: *template.info:Planet.Settlements.Expanse
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1,90] # None
+                    - [91,96] # Orbital settlement
+                    - [97,100] # Planetside settlement
+                    - [null,null] # Multiple settlements
+                    - [null,null] # Settlements in conflict
+        Tables:
+          Atmosphere:
+            _templateOracleTable: *template.info:Planet.Atmosphere
+            _templateTableRows:
+              content: *template.content:Planet.Atmosphere
+              rolls:
+                - [null, null] # None / thin
+                - [1, 50] # Toxic
+                - [51, 65] # Corrosive
+                - [66, 85] # Marginal
+                - [86, 100] # Breathable
+                - [null, null] # Ideal
+          Observed From Space:
+            _templateOracleTable: *template.info:Planet.ObservedFromSpace
+            _templateTableRows:
+              rolls: *template.rolls:Planet.ObservedFromSpace
+              content:
+                - Complex ring system
+                - Intense gravity well
+                - Numerous moons
+                - Perpetual superstorm
+                - Powerful magnetic field
+                - Severe electrical storms
+                - Superheated atmosphere
+                - Unusual atmospheric colors
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Orbital
+          Planetside Feature:
+            _templateOracleTable: *template.info:Planet.PlanetsideFeature
+            _templateTableRows:
+              rolls: *template.rolls:Planet.PlanetsideFeature
+              content:
+                - Clouds of metal particles
+                - Crystalline rains
+                - Floating glaciers
+                - Floating islands
+                - Layer of suspended liquid
+                - Pockets of explosive gases
+                - Powerful vortexes
+                - Radiation fields
+                - Storm-swept rocky debris
+                - Torrential rain
+                - Towering thunderheads
+                - Violent turbulence
+                - Zones of localized atmosphere
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Planetside
+          Life:
+            _templateOracleTable: *template.info:Planet.Life
+            _templateTableRows:
+              content: *template.content:Planet.Life
+              rolls:
+                - [1, 35] # None
+                - [36, 60] # Extinct
+                - [61, 85] # Scarce
+                - [86, 95] # Diverse
+                - [96, 98] # Bountiful
+                - [99, 100] # Overrun

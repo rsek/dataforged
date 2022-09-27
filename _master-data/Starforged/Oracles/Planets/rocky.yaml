@@ -1,119 +1,137 @@
-Planets:
-  Sets:
-    Rocky:
-      _templateOracleSet: *template.category:Planet
-      _templateVars:
-        Planetary Class: Rocky
-      Title:
-        Canonical: Rocky World
-      Display:
-        Images: *images:RockyWorld
-      Source:
-        Page: 315
-      Summary: A rugged planet scarred by eons of destructive asteroid impacts.
-      Sample Names:
-        - Aphelion
-        - Artemis
-        - Capella
-        - Cobalt
-        - Crag
-        - Dusk
-        - Eos
-        - Hecate
-        - Imbrium
-        - Latona
-        - Losna
-        - Orpheus
-        - Ory
-        - Quietus
-        - Selene
-        - Silas
-        - Silex
-        - Slate
-        - Themis
-        - Umbra
-      Sets:
-        - _templateOracleSet: *template.info:Planet.Settlements
-          Tables:
-            - _templateOracleSet: *template.info:Planet.Settlements.Terminus
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 50] # None
-                  - [51, 70] # Orbital settlement
-                  - [71, 85] # Planetside settlement
-                  - [86, 95] # Multiple settlements
-                  - [96, 100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Outlands
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 75] # None
-                  - [76, 87] # Orbital settlement
-                  - [88, 95] # Planetside settlement
-                  - [96, 98] # Multiple settlements
-                  - [99, 100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Expanse
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 90] # None
-                  - [91, 96] # Orbital settlement
-                  - [97, 100] # Planetside settlement
-                  - [null, null] # Multiple settlements
-                  - [null, null] # Settlements in conflict
-      Tables:
-        - _templateOracleTable: *template.info:Planet.Atmosphere
-          _templateTableRows:
-            content: *template.content:Planet.Atmosphere
-            rolls:
-              - [1, 65] # None / thin
-              - [66, 85] # Toxic
-              - [86, 90] # Corrosive
-              - [91, 100] # Marginal
-              - [null, null] # Breathable
-              - [null, null] # Ideal
+Source:
+  Authors:
+    - Shawn Tomkin
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Oracle Sets:
+  Planets:
+    Title:
+      Canonical: Planets
+    Source:
+      Date: "050622"
+    Sets:
+      Rocky:
+        _templateOracleSet: *template.category:Planet
+        _templateVars:
+          Planetary Class: Rocky
+        Title:
+          Canonical: Rocky World
+        Display:
+          Images: *images:RockyWorld
+        Source:
+          Page: 315
+        Summary: A rugged planet scarred by eons of destructive asteroid impacts.
+        Sample Names:
+          - Aphelion
+          - Artemis
+          - Capella
+          - Cobalt
+          - Crag
+          - Dusk
+          - Eos
+          - Hecate
+          - Imbrium
+          - Latona
+          - Losna
+          - Orpheus
+          - Ory
+          - Quietus
+          - Selene
+          - Silas
+          - Silex
+          - Slate
+          - Themis
+          - Umbra
+        Sets:
+          Settlements:
+            _templateOracleSet: *template.info:Planet.Settlements
+            Tables:
+              Terminus:
+                _templateOracleTable: *template.info:Planet.Settlements.Terminus
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 50] # None
+                    - [51, 70] # Orbital settlement
+                    - [71, 85] # Planetside settlement
+                    - [86, 95] # Multiple settlements
+                    - [96, 100] # Settlements in conflict
+              Outlands:
+                _templateOracleTable: *template.info:Planet.Settlements.Outlands
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 75] # None
+                    - [76, 87] # Orbital settlement
+                    - [88, 95] # Planetside settlement
+                    - [96, 98] # Multiple settlements
+                    - [99, 100] # Settlements in conflict
+              Expanse:
+                _templateOracleTable: *template.info:Planet.Settlements.Expanse
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 90] # None
+                    - [91, 96] # Orbital settlement
+                    - [97, 100] # Planetside settlement
+                    - [null, null] # Multiple settlements
+                    - [null, null] # Settlements in conflict
+        Tables:
+          Atmosphere:
+            _templateOracleTable: *template.info:Planet.Atmosphere
+            _templateTableRows:
+              content: *template.content:Planet.Atmosphere
+              rolls:
+                - [1, 65] # None / thin
+                - [66, 85] # Toxic
+                - [86, 90] # Corrosive
+                - [91, 100] # Marginal
+                - [null, null] # Breathable
+                - [null, null] # Ideal
 
-        - _templateOracleTable: *template.info:Planet.ObservedFromSpace
-          _templateTableRows:
-            rolls: *template.rolls:Planet.ObservedFromSpace
-            content:
-              - Barren plains
-              - Constant asteroid strikes
-              - Dense ring system
-              - Jagged mountains
-              - Massive impact crater
-              - Misshapen form (low gravity)
-              - Perpetual night
-              - Towering plateaus
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Orbital
-        - _templateOracleTable: *template.info:Planet.PlanetsideFeature
-          _templateTableRows:
-            rolls: *template.rolls:Planet.PlanetsideFeature
-            content:
-              - Crystalline formations
-              - Crystalline caves
-              - Exposed mineral deposits
-              - Geometric terrain features
-              - Geothermal vents
-              - Glassy impact craters
-              - Massive dust dunes
-              - Powerful magnetic fields
-              - Rubble-strewn lava fields
-              - Steam-heated caves
-              - Subsurface magma flows
-              - Swirling low-lying gases
-              - Towering rocky spires
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Planetside
-        - _templateOracleTable: *template.info:Planet.Life
-          _templateTableRows:
-            content: *template.content:Planet.Life
-            rolls:
-              - [1, 65] # None
-              - [66, 80] # Extinct
-              - [81, 90] # Scarce
-              - [91, 95] # Diverse
-              - [96, 98] # Bountiful
-              - [99, 100] # Overrun
+          Observed From Space:
+            _templateOracleTable: *template.info:Planet.ObservedFromSpace
+            _templateTableRows:
+              rolls: *template.rolls:Planet.ObservedFromSpace
+              content:
+                - Barren plains
+                - Constant asteroid strikes
+                - Dense ring system
+                - Jagged mountains
+                - Massive impact crater
+                - Misshapen form (low gravity)
+                - Perpetual night
+                - Towering plateaus
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Orbital
+          Planetside Feature:
+            _templateOracleTable: *template.info:Planet.PlanetsideFeature
+            _templateTableRows:
+              rolls: *template.rolls:Planet.PlanetsideFeature
+              content:
+                - Crystalline formations
+                - Crystalline caves
+                - Exposed mineral deposits
+                - Geometric terrain features
+                - Geothermal vents
+                - Glassy impact craters
+                - Massive dust dunes
+                - Powerful magnetic fields
+                - Rubble-strewn lava fields
+                - Steam-heated caves
+                - Subsurface magma flows
+                - Swirling low-lying gases
+                - Towering rocky spires
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Planetside
+          Life:
+            _templateOracleTable: *template.info:Planet.Life
+            _templateTableRows:
+              content: *template.content:Planet.Life
+              rolls:
+                - [1, 65] # None
+                - [66, 80] # Extinct
+                - [81, 90] # Scarce
+                - [91, 95] # Diverse
+                - [96, 98] # Bountiful
+                - [99, 100] # Overrun

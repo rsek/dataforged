@@ -1,175 +1,195 @@
-Planets:
-  Sets:
-    Vital:
-      _templateOracleSet: *template.category:Planet
-      _templateVars:
-        Planetary Class: Vital
-      Title:
-        Canonical: Vital World
-      Display:
-        Images: *images:VitalWorld
-      Source:
-        Page: 318
-      Summary: This diverse, life-bearing planet might provide some small measure of hope.
-      Sample Names:
-        - Chiron
-        - Demeter
-        - Erebos
-        - Erembour
-        - Feronia
-        - Fortuna
-        - Gaia
-        - Harbinger
-        - Haven
-        - Hope
-        - Morpheus
-        - Nemus
-        - Sapphire
-        - Serenity
-        - Sif
-        - Silva
-        - Sirona
-        - Solstice
-        - Vale
-        - Valinor
-      Sets:
-        - _templateOracleSet: *template.info:Planet.Settlements
-          Tables:
-            - _templateOracleSet: *template.info:Planet.Settlements.Terminus
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 20] # None
-                  - [21, 30] # Orbital settlement
-                  - [31, 70] # Planetside settlement
-                  - [71, 90] # Multiple settlements
-                  - [91, 100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Outlands
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 50] # None
-                  - [51, 55] # Orbital settlement
-                  - [56, 85] # Planetside settlement
-                  - [86, 95] # Multiple settlements
-                  - [96, 100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Expanse
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 80] # None
-                  - [81, 83] # Orbital settlement
-                  - [84, 93] # Planetside settlement
-                  - [94, 98] # Multiple settlements
-                  - [99, 100] # Settlements in conflict
-      Tables:
-        - _templateOracleTable: *template.info:Planet.Atmosphere
-          _templateTableRows:
-            content: *template.content:Planet.Atmosphere
-            rolls:
-              - [null, null] # None / thin
-              - [null, null] # Toxic
-              - [null, null] # Corrosive
-              - [1, 20] # Marginal
-              - [21, 50] # Breathable
-              - [51, 100] # Ideal
-        - _templateOracleTable: *template.info:Planet.ObservedFromSpace
-          _templateTableRows:
-            rolls: *template.rolls:Planet.ObservedFromSpace
-            content:
-              - Complex ring system
-              - Numerous small moons
-              - Dramatic seasonal variation
-              - Unusual day or night cycle
-              - High gravity
-              - Vibrantly colored landscapes
-              - Large moon
-              - Narrow livable band
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Orbital
-        - Title:
-            Canonical: Diversity
-          Description: &description:Vital.Diversity |-
-            To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
-          Content:
-            Part of speech: [adjective]
-          Table:
-            - [1, 20, "Simple (two biomes)",
-                Oracle rolls: [
-                  &biome Starforged/Oracles/Planets/Vital/Biomes,
-                  *biome ]]
-            - [21, 70, "Diverse (three biomes)",
-                Oracle rolls: [
-                  *biome,
-                  *biome,
-                  *biome ]]
-            - [71, 90, "Complex (four biomes)",
-                Oracle rolls: [
-                  *biome,
-                  *biome,
-                  *biome,
-                  *biome ]]
-            - [91, 100, "Garden world (five or more biomes)",
-                Oracle rolls: [
-                  *biome,
-                  *biome,
-                  *biome,
-                  *biome,
-                  *biome ]]
-        - Title:
-            Canonical: Biomes
-          Description: *description:Vital.Diversity
-          Usage:
-            Allow duplicates: true
-          Content:
-            Part of speech: [noun, common noun]
-          Table:
-            - [1, 5, Caves]
-            - [6, 10, Cold forest]
-            - [11, 15, Fungal]
-            - [16, 20, Glacial or snow]
-            - [21, 25, Grassland]
-            - [26, 30, Islands]
-            - [31, 35, Jungle]
-            - [36, 40, Mountainous]
-            - [41, 45, Ocean]
-            - [46, 50, Rocky desert]
-            - [51, 55, Sandy desert]
-            - [56, 60, Savanna]
-            - [61, 65, Shallow seas]
-            - [66, 70, Shrubland]
-            - [71, 75, Temperate rainforest]
-            - [76, 80, Temperate forest]
-            - [81, 85, Tundra]
-            - [86, 90, Volcanic]
-            - [91, 95, Waterways]
-            - [96, 100, Wetland]
-        - _templateOracleTable: *template.info:Planet.PlanetsideFeature
-          _templateTableRows:
-            rolls: *template.rolls:Planet.PlanetsideFeature
-            content:
-              - Background radiation
-              - Chaotically juxtaposed biomes
-              - Creature boneyards
-              - Creature lairs or watering holes
-              - Crystalline formations
-              - Fierce electrical storms
-              - Floating terrain
-              - Frequent seismic activity
-              - Magnetic disturbances
-              - Scarred or excavated terrain
-              - Signs of an engineered biosphere
-              - Sudden weather fluctuations
-              - Towering geological formations
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Planetside
-        - _templateOracleTable: *template.info:Planet.Life
-          _templateTableRows:
-            content: *template.content:Planet.Life
-            rolls:
-              - [null, null] # None
-              - [null, null] # Extinct
-              - [1, 10] # Scarce
-              - [11, 45] # Diverse
-              - [46, 85] # Bountiful
-              - [86, 100] # Overrun
+Source:
+  Authors:
+    - Shawn Tomkin
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Oracle Sets:
+  Planets:
+    Title:
+      Canonical: Planets
+    Source:
+      Date: "050622"
+    Sets:
+      Vital:
+        _templateOracleSet: *template.category:Planet
+        _templateVars:
+          Planetary Class: Vital
+        Title:
+          Canonical: Vital World
+        Display:
+          Images: *images:VitalWorld
+        Source:
+          Page: 318
+        Summary: This diverse, life-bearing planet might provide some small measure of hope.
+        Sample Names:
+          - Chiron
+          - Demeter
+          - Erebos
+          - Erembour
+          - Feronia
+          - Fortuna
+          - Gaia
+          - Harbinger
+          - Haven
+          - Hope
+          - Morpheus
+          - Nemus
+          - Sapphire
+          - Serenity
+          - Sif
+          - Silva
+          - Sirona
+          - Solstice
+          - Vale
+          - Valinor
+        Sets:
+          Settlements:
+            _templateOracleSet: *template.info:Planet.Settlements
+            Tables:
+              Terminus:
+                _templateOracleTable: *template.info:Planet.Settlements.Terminus
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 20] # None
+                    - [21, 30] # Orbital settlement
+                    - [31, 70] # Planetside settlement
+                    - [71, 90] # Multiple settlements
+                    - [91, 100] # Settlements in conflict
+              Outlands:
+                _templateOracleTable: *template.info:Planet.Settlements.Outlands
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 50] # None
+                    - [51, 55] # Orbital settlement
+                    - [56, 85] # Planetside settlement
+                    - [86, 95] # Multiple settlements
+                    - [96, 100] # Settlements in conflict
+              Expanse:
+                _templateOracleTable: *template.info:Planet.Settlements.Expanse
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 80] # None
+                    - [81, 83] # Orbital settlement
+                    - [84, 93] # Planetside settlement
+                    - [94, 98] # Multiple settlements
+                    - [99, 100] # Settlements in conflict
+        Tables:
+          Atmosphere:
+            _templateOracleTable: *template.info:Planet.Atmosphere
+            _templateTableRows:
+              content: *template.content:Planet.Atmosphere
+              rolls:
+                - [null, null] # None / thin
+                - [null, null] # Toxic
+                - [null, null] # Corrosive
+                - [1, 20] # Marginal
+                - [21, 50] # Breathable
+                - [51, 100] # Ideal
+          Observed From Space:
+            _templateOracleTable: *template.info:Planet.ObservedFromSpace
+            _templateTableRows:
+              rolls: *template.rolls:Planet.ObservedFromSpace
+              content:
+                - Complex ring system
+                - Numerous small moons
+                - Dramatic seasonal variation
+                - Unusual day or night cycle
+                - High gravity
+                - Vibrantly colored landscapes
+                - Large moon
+                - Narrow livable band
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Orbital
+          Diversity:
+            Title:
+              Canonical: Diversity
+            Description: &description:Vital.Diversity |-
+              To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
+            Content:
+              Part of speech: [adjective]
+            Table:
+              - [1, 20, "Simple (two biomes)",
+                  Oracle rolls: [
+                    &biome Starforged/Oracles/Planets/Vital/Biomes,
+                    *biome ]]
+              - [21, 70, "Diverse (three biomes)",
+                  Oracle rolls: [
+                    *biome,
+                    *biome,
+                    *biome ]]
+              - [71, 90, "Complex (four biomes)",
+                  Oracle rolls: [
+                    *biome,
+                    *biome,
+                    *biome,
+                    *biome ]]
+              - [91, 100, "Garden world (five or more biomes)",
+                  Oracle rolls: [
+                    *biome,
+                    *biome,
+                    *biome,
+                    *biome,
+                    *biome ]]
+          Biomes:
+            Title:
+              Canonical: Biomes
+            Description: *description:Vital.Diversity
+            Usage:
+              Allow duplicates: true
+            Content:
+              Part of speech: [noun, common noun]
+            Table:
+              - [1, 5, Caves]
+              - [6, 10, Cold forest]
+              - [11, 15, Fungal]
+              - [16, 20, Glacial or snow]
+              - [21, 25, Grassland]
+              - [26, 30, Islands]
+              - [31, 35, Jungle]
+              - [36, 40, Mountainous]
+              - [41, 45, Ocean]
+              - [46, 50, Rocky desert]
+              - [51, 55, Sandy desert]
+              - [56, 60, Savanna]
+              - [61, 65, Shallow seas]
+              - [66, 70, Shrubland]
+              - [71, 75, Temperate rainforest]
+              - [76, 80, Temperate forest]
+              - [81, 85, Tundra]
+              - [86, 90, Volcanic]
+              - [91, 95, Waterways]
+              - [96, 100, Wetland]
+          Planetside Feature:
+            _templateOracleTable: *template.info:Planet.PlanetsideFeature
+            _templateTableRows:
+              rolls: *template.rolls:Planet.PlanetsideFeature
+              content:
+                - Background radiation
+                - Chaotically juxtaposed biomes
+                - Creature boneyards
+                - Creature lairs or watering holes
+                - Crystalline formations
+                - Fierce electrical storms
+                - Floating terrain
+                - Frequent seismic activity
+                - Magnetic disturbances
+                - Scarred or excavated terrain
+                - Signs of an engineered biosphere
+                - Sudden weather fluctuations
+                - Towering geological formations
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Planetside
+          Life:
+            _templateOracleTable: *template.info:Planet.Life
+            _templateTableRows:
+              content: *template.content:Planet.Life
+              rolls:
+                - [null, null] # None
+                - [null, null] # Extinct
+                - [1, 10] # Scarce
+                - [11, 45] # Diverse
+                - [46, 85] # Bountiful
+                - [86, 100] # Overrun

@@ -1,118 +1,136 @@
-Planets:
-  Sets:
-    Desert:
-      _templateOracleSet: *template.category:Planet
-      _templateVars:
-        Planetary Class: Desert
-      Title:
-        Canonical: Desert World
-      Display:
-        Images: *images:DesertWorld
-      Source:
-        Page: 308
-      Summary: A pitiless planet of searing heat, blowing sand, and sunbaked rock.
-      Sample Names:
-        - Abalos
-        - Audun
-        - Bishop
-        - Desolation
-        - Dykuma
-        - Fallow
-        - Helios
-        - Mirage
-        - Morricone
-        - Nux
-        - Ordos
-        - Petra
-        - Pyla
-        - Sabulo
-        - Saffron
-        - Sirocco
-        - Sulis
-        - Torrid
-        - Umber
-        - Vermillion
-      Sets:
-        - _templateOracleSet: *template.info:Planet.Settlements
-          Tables:
-            - _templateOracleSet: *template.info:Planet.Settlements.Terminus
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 50] # None
-                  - [51, 60] # Orbital settlement
-                  - [61, 80] # Planetside settlement
-                  - [81, 92] # Multiple settlements
-                  - [93, 100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Outlands
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 75] # None
-                  - [76, 83] # Orbital settlement
-                  - [84, 95] # Planetside settlement
-                  - [96, 98] # Multiple settlements
-                  - [99, 100] # Settlements in conflict
-            - _templateOracleSet: *template.info:Planet.Settlements.Expanse
-              _templateTableRows:
-                content: *template.content:Planet.Settlements
-                rolls:
-                  - [1, 90] # None
-                  - [91, 96] # Orbital settlement
-                  - [97, 100] # Planetside settlement
-                  - [null, null] # Multiple settlements
-                  - [null, null] # Settlements in conflict
-      Tables:
-        - _templateOracleTable: *template.info:Planet.Atmosphere
-          _templateTableRows:
-            content: *template.content:Planet.Atmosphere
-            rolls:
-              - [1, 10] # None / thin
-              - [11, 25] # Toxic
-              - [26, 40] # Corrosive
-              - [41, 70] # Marginal
-              - [71, 95] # Breathable
-              - [96, 100] # Ideal
-        - _templateOracleTable: *template.info:Planet.ObservedFromSpace
-          _templateTableRows:
-            rolls: *template.rolls:Planet.ObservedFromSpace
-            content:
-              - Dry seabeds
-              - Expansive dune seas
-              - Massive canyons
-              - Perpetual daylight
-              - Rugged mountains
-              - Sprawling salt flats
-              - Vast plateaus
-              - Vibrant terrain colors
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Orbital
-        - _templateOracleTable: *template.info:Planet.PlanetsideFeature
-          _templateTableRows:
-            rolls: *template.rolls:Planet.PlanetsideFeature
-            content:
-              - Cavernous sinkholes
-              - Engulfing sandstorms
-              - Fleeting rainstorms and flash floods
-              - Flooded grottos
-              - Petrified forest
-              - Rampaging whirlwinds
-              - Scorched glass plains
-              - Severe temperature fluctuations
-              - Sunbaked bones of titanic creatures
-              - Timeworn cliffside caves
-              - Towering rock formations
-              - Violent electrical storms
-              - Windborne metallic sand
-              - *result:Descriptor+Focus
-              - *result:PrecursorVault.Planetside
-        - _templateOracleTable: *template.info:Planet.Life
-          _templateTableRows:
-            content: *template.content:Planet.Life
-            rolls:
-              - [1, 20] # None
-              - [21, 40] # Extinct
-              - [41, 70] # Scarce
-              - [71, 90] # Diverse
-              - [91, 97] # Bountiful
-              - [98, 100] # Overrun
+Source:
+  Authors:
+    - Shawn Tomkin
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Oracle Sets:
+  Planets:
+    Title:
+      Canonical: Planets
+    Source:
+      Date: "050622"
+    Sets:
+      Desert:
+        _templateOracleSet: *template.category:Planet
+        _templateVars:
+          Planetary Class: Desert
+        Title:
+          Canonical: Desert World
+        Display:
+          Images: *images:DesertWorld
+        Source:
+          Page: 308
+        Summary: A pitiless planet of searing heat, blowing sand, and sunbaked rock.
+        Sample Names:
+          - Abalos
+          - Audun
+          - Bishop
+          - Desolation
+          - Dykuma
+          - Fallow
+          - Helios
+          - Mirage
+          - Morricone
+          - Nux
+          - Ordos
+          - Petra
+          - Pyla
+          - Sabulo
+          - Saffron
+          - Sirocco
+          - Sulis
+          - Torrid
+          - Umber
+          - Vermillion
+        Sets:
+          Settlements:
+            _templateOracleSet: *template.info:Planet.Settlements
+            Tables:
+              Terminus:
+                _templateOracleTable: *template.info:Planet.Settlements.Terminus
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 50] # None
+                    - [51, 60] # Orbital settlement
+                    - [61, 80] # Planetside settlement
+                    - [81, 92] # Multiple settlements
+                    - [93, 100] # Settlements in conflict
+              Outlands:
+                _templateOracleTable: *template.info:Planet.Settlements.Outlands
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 75] # None
+                    - [76, 83] # Orbital settlement
+                    - [84, 95] # Planetside settlement
+                    - [96, 98] # Multiple settlements
+                    - [99, 100] # Settlements in conflict
+              Expanse:
+                _templateOracleTable: *template.info:Planet.Settlements.Expanse
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 90] # None
+                    - [91, 96] # Orbital settlement
+                    - [97, 100] # Planetside settlement
+                    - [null, null] # Multiple settlements
+                    - [null, null] # Settlements in conflict
+        Tables:
+          Atmosphere:
+            _templateOracleTable: *template.info:Planet.Atmosphere
+            _templateTableRows:
+              content: *template.content:Planet.Atmosphere
+              rolls:
+                - [1, 10] # None / thin
+                - [11, 25] # Toxic
+                - [26, 40] # Corrosive
+                - [41, 70] # Marginal
+                - [71, 95] # Breathable
+                - [96, 100] # Ideal
+          Observed From Space:
+            _templateOracleTable: *template.info:Planet.ObservedFromSpace
+            _templateTableRows:
+              rolls: *template.rolls:Planet.ObservedFromSpace
+              content:
+                - Dry seabeds
+                - Expansive dune seas
+                - Massive canyons
+                - Perpetual daylight
+                - Rugged mountains
+                - Sprawling salt flats
+                - Vast plateaus
+                - Vibrant terrain colors
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Orbital
+          Planetside Feature:
+            _templateOracleTable: *template.info:Planet.PlanetsideFeature
+            _templateTableRows:
+              rolls: *template.rolls:Planet.PlanetsideFeature
+              content:
+                - Cavernous sinkholes
+                - Engulfing sandstorms
+                - Fleeting rainstorms and flash floods
+                - Flooded grottos
+                - Petrified forest
+                - Rampaging whirlwinds
+                - Scorched glass plains
+                - Severe temperature fluctuations
+                - Sunbaked bones of titanic creatures
+                - Timeworn cliffside caves
+                - Towering rock formations
+                - Violent electrical storms
+                - Windborne metallic sand
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Planetside
+          Life:
+            _templateOracleTable: *template.info:Planet.Life
+            _templateTableRows:
+              content: *template.content:Planet.Life
+              rolls:
+                - [1, 20] # None
+                - [21, 40] # Extinct
+                - [41, 70] # Scarce
+                - [71, 90] # Diverse
+                - [91, 97] # Bountiful
+                - [98, 100] # Overrun

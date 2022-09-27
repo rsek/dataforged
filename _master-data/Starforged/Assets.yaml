@@ -26,7 +26,7 @@ Asset Types:
           Max: null
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your armed, multipurpose starship is suited for interstellar and atmospheric flight. It can comfortably transport several people, has space for cargo, and can carry and launch support vehicles. When you [Advance](Starforged/Moves/Legacy/Advance), you may spend experience to equip this vehicle with module assets.
@@ -510,7 +510,7 @@ Asset Types:
           - *Broken
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
@@ -1040,7 +1040,7 @@ Asset Types:
           Canonical: Exosuit
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).
@@ -1093,7 +1093,7 @@ Asset Types:
           Canonical: Hoverbike
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
@@ -1147,7 +1147,7 @@ Asset Types:
           Canonical: Rover
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), add +1. When you [Finish an Expedition](Starforged/Moves/Exploration/Finish_an_Expedition) in your rover, you may reroll one challenge die.
@@ -1200,7 +1200,7 @@ Asset Types:
           Canonical: Service Pod
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
@@ -1256,7 +1256,7 @@ Asset Types:
           Canonical: Shuttle
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
@@ -1296,7 +1296,7 @@ Asset Types:
           Canonical: Skiff
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
@@ -1342,7 +1342,7 @@ Asset Types:
           Canonical: Snub Fighter
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray), you may roll +integrity; if you do, take +2 momentum on a hit.
@@ -1377,7 +1377,7 @@ Asset Types:
             # FIXME: describe this as an object?
             Inputs:
               - Label: Victory Marks
-                Input Type: Number
+                Input Type: number
                 Min: 0
                 Value: 0
                 Adjustable: true
@@ -1630,9 +1630,9 @@ Asset Types:
           Canonical: Augmented
         Inputs:
           - Label: One
-            Input Type: Text
+            Input Type: text
           - Label: Two
-            Input Type: Text
+            Input Type: text
         States: # TODO: attach to specific abilities? hmm.
           - Label: broken (augment 1)
             Enabled: false
@@ -1680,7 +1680,7 @@ Asset Types:
           Canonical: Bannersworn
         Inputs:
           - Label: Ideology
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               You are bound to a clan, faction, or creed. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) in service to this ideology, reroll any dice. On a hit, mark 1 tick on your bonds legacy track.
@@ -1795,7 +1795,7 @@ Asset Types:
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
             Inputs:
               - Label: Name
-                Input Type: Text
+                Input Type: text
                 Adjustable: false
             # TODO: box input???
             Alter Moves:
@@ -2062,9 +2062,9 @@ Asset Types:
           Canonical: Devotant
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
           - Label: Linked stat
-            Input Type: Select
+            Input Type: select
             Adjustable: false
             Sets:
               - Key: stat
@@ -2422,7 +2422,7 @@ Asset Types:
               You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.
             Inputs:
               - Label: Notable foe or force tracks you down
-                Input Type: Clock
+                Input Type: clock
                 Clock Type: Tension
                 Segments: 4
                 Filled: 0
@@ -2551,7 +2551,7 @@ Asset Types:
               Give your favorite gun a name. When you [Clash](Starforged/Moves/Combat/Clash) with it, add +1. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) or [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while wielding it, add +1 and take +1 momentum on a hit.
             Inputs:
               - Label: Name
-                Input Type: Text
+                Input Type: text
                 Adjustable: true
             Alter Moves:
               - Moves:
@@ -3739,7 +3739,7 @@ Asset Types:
           Canonical: Vestige
         Inputs:
           - Label: Last of
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               You are all that remains of a people, culture, or tradition. When you [Face Death](Starforged/Moves/Threshold/Face_Death) or [Face Desolation](Starforged/Moves/Threshold/Face_Desolation), visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice. On a strong hit with a match, a surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
@@ -3776,7 +3776,7 @@ Asset Types:
               You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.
             Inputs:
               - Label: Relic
-                Input Type: Text
+                Input Type: text
                 Adjustable: false
             Alter Moves:
               - Moves: null
@@ -4036,7 +4036,7 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) or [Set a Course](Starforged/Moves/Exploration/Set_a_Course), you may roll +its health.
@@ -4100,7 +4100,7 @@ Asset Types:
         Tags: [mechanical companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your combat bot companion fights at your side. When you [Strike](Starforged/Moves/Combat/Strike) aided by the bot, add +1; if you [Clash](Starforged/Moves/Combat/Clash), take +1 momentum on a hit.
@@ -4168,7 +4168,7 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.
@@ -4226,7 +4226,7 @@ Asset Types:
         Tags: [mechanical companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
@@ -4274,7 +4274,7 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
@@ -4331,9 +4331,9 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
           - Label: Expertise
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -4395,7 +4395,7 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
@@ -4434,7 +4434,7 @@ Asset Types:
         Tags: [mechanical companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your survey bot companion scans the path ahead. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition) (+wits) overland or within a site, add +1.
@@ -4502,7 +4502,7 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               You are physically bound to a being with 2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the [Endure Harm](Starforged/Moves/Suffer/Endure_Harm) or [Companion Takes a Hit](Starforged/Moves/Suffer/Companion_Takes_a_Hit) move. To restore the symbiote's health, you must [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.
@@ -4543,7 +4543,7 @@ Asset Types:
         Tags: [mechanical companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
@@ -4602,7 +4602,7 @@ Asset Types:
         Tags: [biological companion]
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Abilities:
           - Text: |-
               Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](Starforged/Moves/Exploration/Undertake_an_Expedition), add +1.
@@ -4668,7 +4668,7 @@ Asset Types:
                   When the clock is filled, [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
             Inputs:
               - Label: Krakendoom
-                Input Type: Clock
+                Input Type: clock
                 Clock Type: Tension
                 Segments: 4
                 Filled: 0
@@ -4712,7 +4712,7 @@ Asset Types:
           Canonical: Bonded
         Inputs:
           - Label: Bond-mate
-            Input Type: Text
+            Input Type: text
         Requirement: One time only, once you [Forge a Bond](Starforged/Moves/Connection/Forge_a_Bond) with a special individual...
         Abilities:
           - Text: |-
@@ -4777,7 +4777,7 @@ Asset Types:
           Canonical: Homesteader
         Inputs:
           - Label: Name
-            Input Type: Text
+            Input Type: text
         Requirement: Once you fill 4 boxes on your bonds legacy track...
         Abilities:
           - Text: |-
@@ -4849,7 +4849,7 @@ Asset Types:
           Canonical: Marked
         Inputs:
           - Label: Identifier
-            Input Type: Text
+            Input Type: text
         Requirement: Once you fill 5 boxes on your quests legacy track...
         Abilities:
           - Text: |-
@@ -4879,7 +4879,7 @@ Asset Types:
                     Reroll: *reroll:any
             Inputs:
               - Label: Stained reputation
-                Input Type: Clock
+                Input Type: clock
                 Clock Type: Tension
                 Segments: 6
                 Filled: 0

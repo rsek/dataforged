@@ -1,67 +1,80 @@
-Derelicts:
-  Sets:
-    Operations:
-      _templateOracleSet: *template.category:Zone
-      _templateVars:
-        Zone: Operations
-      Title:
-        Canonical: Operations
-      Source:
-        Page: 357
-      Tables:
-        - _templateOracleTable: *template.info:Zone.Area
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Area
-            content:
-              - Admin or command offices
-              - Armory
-              - Bridge or command center
-              - Brig or cells
-              - Comms center
-              - Computer core
-              - Conference or briefing room
-              - Landing bay or hangar
-              - Lounge
-              - Security
-              - *result:NewZone
-              - *result:NewZoneViaAccess
-        - _templateOracleTable: *template.info:Zone.Feature
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Feature
-            content:
-              - Automated warning
-              - Buckled blast doors
-              - Control terminal
-              - Emergency lighting
-              - EV suit storage
-              - Hissing comms channel
-              - Intricate control panels
-              - Map of the site
-              - Recorded message
-              - Video surveillance monitors
-              - Written logs
-              - *result:Descriptor+Focus
-        - _templateOracleTable: *template.info:Zone.Peril
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Peril
-            content:
-              - Automated defenses target you
-              - Broken equipment limits control
-              - Coded message or puzzling security device
-              - Discouraging evidence of failed plans or defenses
-              - Displays reveal a new threat elsewhere in this site
-              - Failing power
-              - Hostile AI
-              - Sealed blast doors block access
-              - Sensors indicate the arrival of an external threat
-              - *result:Action+Theme
-              - *result:RollTwice
-        - _templateOracleTable: *template.info:Zone.Opportunity
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Opportunity
-            content:
-              - Cache of weapons or ammo
-              - Helpful AI
-              - Keycard or access code
-              - Log offers insight into this site's downfall
-              - Secure area offers a moment of peace
+Source:
+  Authors: [Shawn Tomkin]
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-sa/4.0/
+Oracle Sets:
+  Derelicts:
+    Title:
+      Canonical: Derelicts
+    Source:
+      Date: "050622"
+    Sets:
+      Operations:
+        _templateOracleSet: *template.category:Zone
+        _templateVars:
+          Zone: Operations
+        Title:
+          Canonical: Operations
+        Source:
+          Page: 357
+        Tables:
+          Area:
+            _templateOracleTable: *template.info:Zone.Area
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Area
+              content:
+                - Admin or command offices
+                - Armory
+                - Bridge or command center
+                - Brig or cells
+                - Comms center
+                - Computer core
+                - Conference or briefing room
+                - Landing bay or hangar
+                - Lounge
+                - Security
+                - *result:NewZone
+                - *result:NewZoneViaAccess
+          Feature:
+            _templateOracleTable: *template.info:Zone.Feature
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Feature
+              content:
+                - Automated warning
+                - Buckled blast doors
+                - Control terminal
+                - Emergency lighting
+                - EV suit storage
+                - Hissing comms channel
+                - Intricate control panels
+                - Map of the site
+                - Recorded message
+                - Video surveillance monitors
+                - Written logs
+                - *result:Descriptor+Focus
+          Peril:
+            _templateOracleTable: *template.info:Zone.Peril
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Peril
+              content:
+                - Automated defenses target you
+                - Broken equipment limits control
+                - Coded message or puzzling security device
+                - Discouraging evidence of failed plans or defenses
+                - Displays reveal a new threat elsewhere in this site
+                - Failing power
+                - Hostile AI
+                - Sealed blast doors block access
+                - Sensors indicate the arrival of an external threat
+                - *result:Action+Theme
+                - *result:RollTwice
+          Opportunity:
+            _templateOracleTable: *template.info:Zone.Opportunity
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Opportunity
+              content:
+                - Cache of weapons or ammo
+                - Helpful AI
+                - Keycard or access code
+                - Log offers insight into this site's downfall
+                - Secure area offers a moment of peace

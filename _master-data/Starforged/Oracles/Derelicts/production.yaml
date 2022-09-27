@@ -1,67 +1,80 @@
-Derelicts:
-  Sets:
-    Production:
-      _templateOracleSet: *template.category:Zone
-      _templateVars:
-        Zone: Production
-      Title:
-        Canonical: Production
-      Source:
-        Page: 358
-      Tables:
-        - _templateOracleTable: *template.info:Zone.Area
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Area
-            content:
-              - Airlock or staging area
-              - Assembly or processing
-              - Cargo bay
-              - Equipment storage
-              - Exosuit bay
-              - Harvesting or mining platform
-              - Monitoring or control room
-              - Processed goods storage
-              - Raw materials storage
-              - Scrapyard
-              - *result:NewZone
-              - *result:NewZoneViaAccess
-        - _templateOracleTable: *template.info:Zone.Feature
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Feature
-            content:
-              - Cargo lifts
-              - Control panels
-              - Disassembled machinery
-              - Elevated walkways
-              - Environment suits
-              - Ill-fated workers
-              - Immense machinery
-              - Sealed or locked containers
-              - Tools
-              - Vats of chemicals or gas
-              - Written manifest
-              - *result:Descriptor+Focus
-        - _templateOracleTable: *template.info:Zone.Peril
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Peril
-            content:
-              - Claustrophobic spaces
-              - Dangerous machinery
-              - Disturbing evidence of exploited labor
-              - Extreme temperatures
-              - Hazardous materials
-              - Impending industrial disaster
-              - Malfunctioning automation
-              - Rivals seek to secure these resources
-              - Signs of an unearthed or manufactured threat
-              - *result:Action+Theme
-              - *result:RollTwice
-        - _templateOracleTable: *template.info:Zone.Opportunity
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Opportunity
-            content:
-              - Helpful vehicle or transport
-              - Rare or valuable resource
-              - Salvageable materials
-              - Useful equipment
-              - Valuable cargo
+Source:
+  Authors: [Shawn Tomkin]
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-sa/4.0/
+Oracle Sets:
+  Derelicts:
+    Title:
+      Canonical: Derelicts
+    Source:
+      Date: "050622"
+    Sets:
+      Production:
+        _templateOracleSet: *template.category:Zone
+        _templateVars:
+          Zone: Production
+        Title:
+          Canonical: Production
+        Source:
+          Page: 358
+        Tables:
+          Area:
+            _templateOracleTable: *template.info:Zone.Area
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Area
+              content:
+                - Airlock or staging area
+                - Assembly or processing
+                - Cargo bay
+                - Equipment storage
+                - Exosuit bay
+                - Harvesting or mining platform
+                - Monitoring or control room
+                - Processed goods storage
+                - Raw materials storage
+                - Scrapyard
+                - *result:NewZone
+                - *result:NewZoneViaAccess
+          Feature:
+            _templateOracleTable: *template.info:Zone.Feature
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Feature
+              content:
+                - Cargo lifts
+                - Control panels
+                - Disassembled machinery
+                - Elevated walkways
+                - Environment suits
+                - Ill-fated workers
+                - Immense machinery
+                - Sealed or locked containers
+                - Tools
+                - Vats of chemicals or gas
+                - Written manifest
+                - *result:Descriptor+Focus
+          Peril:
+            _templateOracleTable: *template.info:Zone.Peril
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Peril
+              content:
+                - Claustrophobic spaces
+                - Dangerous machinery
+                - Disturbing evidence of exploited labor
+                - Extreme temperatures
+                - Hazardous materials
+                - Impending industrial disaster
+                - Malfunctioning automation
+                - Rivals seek to secure these resources
+                - Signs of an unearthed or manufactured threat
+                - *result:Action+Theme
+                - *result:RollTwice
+          Opportunity:
+            _templateOracleTable: *template.info:Zone.Opportunity
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Opportunity
+              content:
+                - Helpful vehicle or transport
+                - Rare or valuable resource
+                - Salvageable materials
+                - Useful equipment
+                - Valuable cargo

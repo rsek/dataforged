@@ -16,27 +16,29 @@ Planet: &template:Planet
       License: https://creativecommons.org/licenses/by-nc-sa/4.0/
       Date: "050622"
   Sets:
-    - _templateOracleSet: &template.info:Planet.Settlements
+    Settlements:
+      _templateOracleSet: &template.info:Planet.Settlements
         Title:
           Canonical: Settlements
         Usage:
           Initial: true
           Requires: *attr:Region.Any
         Display:
-            Columns:
-              - Type: dice range
-                Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
-                Label: Terminus
-              - Type: dice range
-                Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Outlands
-                Label: Outlands
-              - Type: dice range
-                Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Expanse
-                Label: Expanse
-              - Type: string
-                Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+          Columns:
+            - Type: dice range
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+              Label: Terminus
+            - Type: dice range
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Outlands
+              Label: Outlands
+            - Type: dice range
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Expanse
+              Label: Expanse
+            - Type: string
+              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
         Tables:
-          - _templateOracleTable: &template.info:Planet.Settlements.Terminus
+          Terminus:
+            _templateOracleTable: &template.info:Planet.Settlements.Terminus
               Title:
                 Canonical: Terminus
               Display: &template.display:Planet.Settlements
@@ -56,7 +58,8 @@ Planet: &template:Planet
                   *obj:Settlement.PlanetAny,
                   *obj:Settlement.PlanetAny
                   ]
-          - _templateOracleTable: &template.info:Planet.Settlements.Outlands
+          Outlands:
+            _templateOracleTable: &template.info:Planet.Settlements.Outlands
               Title:
                 Canonical: Outlands
               Display: *template.display:Planet.Settlements
@@ -64,7 +67,8 @@ Planet: &template:Planet
                 Requires: *attr:Region.Outlands
             _templateTableRows:
               content: *template.content:Planet.Settlements
-          - _templateOracleTable: &template.info:Planet.Settlements.Expanse
+          Expanse:
+            _templateOracleTable: &template.info:Planet.Settlements.Expanse
               Title:
                 Canonical: Expanse
               Display: *template.display:Planet.Settlements
@@ -73,7 +77,8 @@ Planet: &template:Planet
             _templateTableRows:
               content: *template.content:Planet.Settlements
   Tables:
-    - _templateOracleTable: &template.info:Planet.Atmosphere
+    Atmosphere:
+      _templateOracleTable: &template.info:Planet.Atmosphere
         Title:
           Canonical: Atmosphere
         Content:
@@ -82,13 +87,14 @@ Planet: &template:Planet
           Initial: true
       _templateTableRows:
         content: &template.content:Planet.Atmosphere
-          - [None/thin, *attr:Atmosphere.NoneThin]
-          - [Toxic, *attr:Atmosphere.Toxic]
-          - [Corrosive, *attr:Atmosphere.Corrosive]
-          - [Marginal, *attr:Atmosphere.Marginal]
-          - [Breathable, *attr:Atmosphere.Breathable]
-          - [Ideal, *attr:Atmosphere.Ideal]
-    - _templateOracleTable: &template.info:Planet.ObservedFromSpace
+          - [None/thin, Attributes: {Atmosphere: None/thin}, Description: "This planet is airless, or it's atmosphere is so thin as to be useless for humans."]
+          - [Toxic, Attributes: {Atmosphere: Toxic}, Description: "This planet's atmosphere is not compatible with human life. Exploring this place will require a sealed environment or breathing apparatus. Otherwise, survival is measured in minutes."]
+          - [Corrosive, Attributes: {Atmosphere: Corrosive}, Description: "This planet's atmosphere is deadly to humans. As a bonus, it can damage exposed skin, materials, plastics, and metals over time."]
+          - [Marginal, Attributes: {Atmosphere: Marginal}, Description: "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."]
+          - [Breathable, Attributes: {Atmosphere: Breathable}, Description: "This atmosphere is not perfect, but it's good enough to sustain human life."]
+          - [Ideal, Attributes: {Atmosphere: Ideal}, Description: "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air."]
+    Observed from space:
+      _templateOracleTable: &template.info:Planet.ObservedFromSpace
         Title:
           Canonical: Observed From Space
         Content:
@@ -107,7 +113,8 @@ Planet: &template:Planet
           - [78, 88]
           - [89, 98] # Descriptor + Focus
           - [99, 100] # Precursor Vault (orbital)
-    - _templateOracleTable: &template.info:Planet.PlanetsideFeature
+    Feature:
+      _templateOracleTable: &template.info:Planet.PlanetsideFeature
         Title:
           Canonical: Planetside Feature
           Short: Feature
@@ -132,7 +139,8 @@ Planet: &template:Planet
           - [85, 91]
           - [92, 98] # Descriptor + Focus
           - [99, 100] # Precursor Vault (planetside)
-    - _templateOracleTable: &template.info:Planet.Life
+    Life:
+      _templateOracleTable: &template.info:Planet.Life
         Title:
           Canonical: Life
         Usage:
@@ -140,9 +148,9 @@ Planet: &template:Planet
           Part of speech: [adjective]
       _templateTableRows:
         content: &template.content:Planet.Life
-          - [None, *attr:Life.None]
-          - [Extinct, *attr:Life.Extinct]
-          - [Scarce, *attr:Life.Scarce]
-          - [Diverse, *attr:Life.Diverse, Suggestions: *obj:Creature]
-          - [Bountiful, *attr:Life.Bountiful, Suggestions: *obj:Creature]
-          - [Overrun, *attr:Life.Overrun, Suggestions: *obj:Creature]
+          - [None, Attributes: {Life: None}]
+          - [Extinct, Attributes: {Life: Extinct}]
+          - [Scarce, Attributes: {Life: Scarce}]
+          - [Diverse, Attributes: {Life: Diverse}, Suggestions: *obj:Creature]
+          - [Bountiful, Attributes: {Life: Bountiful}, Suggestions: *obj:Creature]
+          - [Overrun, Attributes: {Life: Overrun}, Suggestions: *obj:Creature]

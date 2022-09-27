@@ -1,68 +1,81 @@
-Derelicts:
-  Sets:
-    Research:
-      _templateOracleSet: *template.category:Zone
-      _templateVars:
-        Zone: Research
-      Title:
-        Canonical: Research
-      Source:
-        Page: 359
-      Tables:
-        - _templateOracleTable: *template.info:Zone.Area
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Area
-            content:
-              - Clean room
-              - Cold storage
-              - Creature or animal pens
-              - Decontamination room
-              - Hazardous material storage
-              - Hydroponics or agriculture
-              - Isolation or containment
-              - Lab
-              - Library or records
-              - Secure vault
-              - *result:NewZone
-              - *result:NewZoneViaAccess
-        - _templateOracleTable: *template.info:Zone.Feature
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Feature
-            content:
-              - Aquarium or tank
-              - Biological specimens
-              - Bones or fossils
-              - Broken equipment
-              - Cryptic research notes
-              - Hastily destroyed data
-              - Hazmat suits
-              - Inscrutable artifact
-              - Invasive plant growth
-              - Recorded research log
-              - Spilled chemicals
-              - *result:Descriptor+Focus
-        - _templateOracleTable: *template.info:Zone.Peril
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Peril
-            content:
-              - Automated containment protocols are activated
-              - Biological infestation
-              - Dangerous specimen
-              - Disturbing outcome of a failed experiment
-              - Evidence of sinister experiments
-              - Fragile vault holds a dire threat
-              - Signs of broken containment
-              - Toxic environment
-              - Unstable technology
-              - *result:Action+Theme
-              - *result:RollTwice
-        - _templateOracleTable: *template.info:Zone.Opportunity
-          _templateTableRows:
-            rolls: *template.rolls:Zone.Opportunity
-            content:
-              - Helpful research data
-              - Records of a notable discovery
-              - Specialized research tools
-              - Unique prototype
-              - Useful navigational data
+Source:
+  Authors: [Shawn Tomkin]
+  Title: "Ironsworn: Starforged Rulebook"
+  License: https://creativecommons.org/licenses/by-sa/4.0/
+Oracle Sets:
+  Derelicts:
+    Title:
+      Canonical: Derelicts
+    Source:
+      Date: "050622"
+    Sets:
+      Research:
+        _templateOracleSet: *template.category:Zone
+        _templateVars:
+          Zone: Research
+        Title:
+          Canonical: Research
+        Source:
+          Page: 359
+        Tables:
+          Area:
+            _templateOracleTable: *template.info:Zone.Area
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Area
+              content:
+                - Clean room
+                - Cold storage
+                - Creature or animal pens
+                - Decontamination room
+                - Hazardous material storage
+                - Hydroponics or agriculture
+                - Isolation or containment
+                - Lab
+                - Library or records
+                - Secure vault
+                - *result:NewZone
+                - *result:NewZoneViaAccess
+          Feature:
+            _templateOracleTable: *template.info:Zone.Feature
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Feature
+              content:
+                - Aquarium or tank
+                - Biological specimens
+                - Bones or fossils
+                - Broken equipment
+                - Cryptic research notes
+                - Hastily destroyed data
+                - Hazmat suits
+                - Inscrutable artifact
+                - Invasive plant growth
+                - Recorded research log
+                - Spilled chemicals
+                - *result:Descriptor+Focus
+          Peril:
+            _templateOracleTable: *template.info:Zone.Peril
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Peril
+              content:
+                - Automated containment protocols are activated
+                - Biological infestation
+                - Dangerous specimen
+                - Disturbing outcome of a failed experiment
+                - Evidence of sinister experiments
+                - Fragile vault holds a dire threat
+                - Signs of broken containment
+                - Toxic environment
+                - Unstable technology
+                - *result:Action+Theme
+                - *result:RollTwice
+          Opportunity:
+            _templateOracleTable: *template.info:Zone.Opportunity
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Opportunity
+              content:
+                - Helpful research data
+                - Records of a notable discovery
+                - Specialized research tools
+                - Unique prototype
+                - Useful navigational data
 
