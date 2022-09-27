@@ -2,6 +2,7 @@
 import { AttributeSetterBuilder, GameObjectBuilder, MultipleRollsBuilder, OracleContentBuilder, RollTemplateBuilder, SuggestionsBuilder } from "@builders";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
 import type { Display, GameObject, ImageUrl, MultipleRolls , OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Suggestions, Vector, YamlSimpleTableRow, YamlStub, YamlSuggestions, YamlTruthOptionStarforged } from "@schema";
+import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
@@ -103,10 +104,10 @@ export class OracleTableRowBuilder implements OracleTableRow {
                 }
                 if (Array.isArray(value) && Array.isArray(value[0])) {
                   console.log("Subtable found, building...");
-                  this.Subtable = (value as YamlSimpleTableRow[]).map(rowData => new OracleTableRowBuilder(`${this.$id }/Subtable`, rowData));
+                  this.Subtable = (value as YamlSimpleTableRow[]).map(rowData => new OracleTableRowBuilder(formatId("Subtable", this.$id), rowData));
                 } else if (Array.isArray(value) && typeof value[0] === "object") {
                   console.log("Prebuilt subtable found, generating IDs...");
-                  this.Subtable = (value as OracleTableRow[]).map(rowData => new OracleTableRowBuilder(`${this.$id }/Subtable`, rowData));
+                  this.Subtable = (value as OracleTableRow[]).map(rowData => new OracleTableRowBuilder(formatId("Subtable", this.$id), rowData));
                 } else {
                   throw badJsonError(this.constructor, value, "expected Row[]");
                 }

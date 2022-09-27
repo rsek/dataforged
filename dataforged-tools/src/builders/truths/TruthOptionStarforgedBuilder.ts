@@ -1,5 +1,6 @@
 import { OracleTableRowBuilder } from "@builders";
 import type { TruthOptionStarforged , TruthOptionSubtableRowStarforged, YamlTruthOptionStarforged } from "@schema";
+import { formatId } from "@utils";
 
 /**
  * @internal
@@ -31,7 +32,7 @@ export class TruthOptionStarforgedBuilder extends OracleTableRowBuilder implemen
     this["Description"] = yaml["Description"];
     this["Quest starter"] = yaml["Quest starter"];
     if (yaml["Roll template"]){
-      this["Roll template"] = { ...yaml["Roll template"], $id: `${this.$id}/Roll_template` };
+      this["Roll template"] = { ...yaml["Roll template"], $id: formatId("Roll template",this.$id) };
     }
     // if (this.Subtable) {
     //   // what is happening here?
