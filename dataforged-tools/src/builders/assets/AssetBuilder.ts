@@ -23,7 +23,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   Requirement?: string | undefined;
   Inputs?: Asset["Inputs"];
   Abilities: [AssetAbility, AssetAbility, AssetAbility];
-  "Meter"?: ConditionMeter | undefined;
+  "Condition meter"?: ConditionMeter | undefined;
   constructor(yaml: YamlAsset, game: Game, parent: AssetType, rootSource: Source) {
     super(yaml.Source ?? {}, rootSource);
     this["Asset type"] = parent.$id;
@@ -71,7 +71,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
       this.States = yaml.States.map(state => new AssetStateBuilder(state, this)) ?? undefined;
     }
     this.Requirement = yaml.Requirement;
-    this["Meter"] = yaml["Condition meter"] ? new ConditionMeterBuilder(yaml["Condition meter"], formatId("Condition meter",this.$id), this["Asset type"]) : undefined;
+    this["Condition meter"] = yaml["Condition meter"] ? new ConditionMeterBuilder(yaml["Condition meter"], formatId("Condition meter",this.$id), this["Asset type"]) : undefined;
     if (yaml.Abilities.length !== 3) {
       throw badJsonError(this.constructor, yaml.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
     } else {
@@ -80,8 +80,8 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
 
     _.merge(this, replaceInAllStrings(this, Replacement.Asset, this.$id));
 
-    if (this["Meter"]) {
-      _.merge(this, replaceInAllStrings(this, Replacement.AssetMeter, this["Meter"].$id));
+    if (this["Condition meter"]) {
+      _.merge(this, replaceInAllStrings(this, Replacement.AssetMeter, this["Condition meter"].$id));
     }
   }
 }

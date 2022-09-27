@@ -156,7 +156,7 @@ export declare interface Asset extends HasId, HasDisplay, HasSource, Partial<Has
     /**
      * Information on this asset's condition meter, if any.
      */
-    "Meter"?: ConditionMeter | undefined;
+    "Condition meter"?: ConditionMeter | undefined;
     Tags?: string[] | undefined;
 }
 

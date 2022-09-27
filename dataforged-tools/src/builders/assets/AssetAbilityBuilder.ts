@@ -52,8 +52,8 @@ export class AssetAbilityBuilder implements AssetAbility {
         const fragment = moveDataClone._idFragment ?? moveDataClone.Title.Canonical;
         moveDataClone.$id = formatId(fragment,this.$id).replace("/Assets/", "/Moves/Assets/");
         moveDataClone.Category = `${game}/Moves/Assets`;
-        if (moveDataClone.Trigger.Options && parent["Meter"]?.$id) {
-          moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Meter"].$id);
+        if (moveDataClone.Trigger.Options && parent["Condition meter"]?.$id) {
+          moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition meter"].$id);
           // console.log("asset ability move data", moveDataClone);
         }
         return new MoveBuilder(moveDataClone, this, game, parent.Source);

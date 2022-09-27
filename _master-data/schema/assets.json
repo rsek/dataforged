@@ -133,11 +133,6 @@
           "type": "string",
           "title": "Requirement"
         },
-        "Meter": {
-          "description": "Information on this asset's condition meter, if any.",
-          "$ref": "#/definitions/ConditionMeter",
-          "title": "Meter"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
@@ -2083,11 +2078,6 @@
           "type": "string",
           "title": "Asset type"
         },
-        "Meter": {
-          "description": "Information on this asset's condition meter, if any.",
-          "$ref": "#/definitions/ConditionMeter",
-          "title": "Meter"
-        },
         "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
@@ -2308,85 +2298,6 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Disables asset", "Enabled", "Impact", "Label", "Permanent"]
-    },
-    "ConditionMeter": {
-      "description": "Interface representing a condition meter such as health, spirit, supply.",
-      "title": "ConditionMeter",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/condition_meter$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Min": {
-          "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
-          "default": 0,
-          "type": "integer",
-          "title": "Min"
-        },
-        "Max": {
-          "description": "The maximum value of the meter.",
-          "default": 5,
-          "type": "integer",
-          "title": "Max"
-        },
-        "Conditions": {
-          "description": "The conditions that can apply to this meter.",
-          "type": "array",
-          "items": {
-            "description": "Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.",
-            "enum": ["battered", "cursed", "out of action", "wrecked"],
-            "type": "string"
-          },
-          "title": "Conditions"
-        },
-        "Aliases": {
-          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
-          "type": "array",
-          "items": {
-            "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
-            "enum": [
-              "attached asset meter",
-              "command vehicle integrity",
-              "companion health",
-              "incidental vehicle integrity",
-              "support vehicle integrity",
-              "vehicle integrity"
-            ],
-            "type": "string"
-          },
-          "title": "Aliases"
-        },
-        "Value": {
-          "description": "The initial value of the meter.",
-          "type": "integer",
-          "title": "Value"
-        },
-        "Rollable": {
-          "description": "Whether the meter value can be used in place of a stat in an action roll.",
-          "type": "boolean",
-          "title": "Rollable"
-        },
-        "Label": {
-          "description": "The user-facing text label of this item.",
-          "pattern": "^[a-z].+$",
-          "type": "string",
-          "title": "Label"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "$id",
-        "Conditions",
-        "Label",
-        "Max",
-        "Min",
-        "Rollable",
-        "Value"
-      ]
     },
     "YamlConditionMeter": {
       "title": "YamlConditionMeter",
