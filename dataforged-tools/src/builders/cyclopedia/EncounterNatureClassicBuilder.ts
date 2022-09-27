@@ -1,7 +1,6 @@
 import { DisplayBuilder, EncounterClassicBuilder, SourceBuilder, TitleBuilder } from "@builders";
-import { Gamespace } from "@schema";
-import type { Display , EncounterClassic, EncounterNatureClassicInfo, Source } from "@schema";
-import tyGameEncounterNatureInfo } from "@schema/yaml/cyclopedia/YamlEncounterIronsworn.js";
+import type { Display , EncounterClassic, EncounterNatureClassicInfo, Source, YamlEncounterNatureInfo } from "@schema";
+import {  Game } from "@schema";
 import { formatId } from "@utils";
 import _ from "lodash-es";
 

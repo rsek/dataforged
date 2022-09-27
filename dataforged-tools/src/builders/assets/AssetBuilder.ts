@@ -1,12 +1,12 @@
 import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
 import { InputSelectOptionType, InputType, Replacement } from "@schema";
-import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Gamespace, InputClock, InputNumber, InputSelect, InputText, Source, Title, YamlAsset } from "@schema";
+import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Game, InputClock, InputNumber, InputSelect, InputText, Source, Title, YamlAsset } from "@schema";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import _ from "lodash-es";Game
+import _ from "lodash-es";
 
 /**
  * @internal
@@ -24,7 +24,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   Inputs?: (InputText|InputSelect|InputClock|InputNumber)[] |undefined;
   Abilities: [AssetAbility, AssetAbility, AssetAbility];
   "Condition Meter"?: ConditionMeter | undefined;
-  constructor(json: YamlAsset, gamespace: Gamespace, parent: AssetType, rootSource: Source) {
+  constructor(json: YamlAsset, game: Game, parent: AssetType, rootSource: Source) {
     // uses RootSource as a starting pointGamecategory info has page numbers in the rulebook, rather than the asset pdf
     super(json.Source ?? {}, rootSource);
     // console.log(this.Source);
@@ -77,7 +77,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
     if (json.Abilities.length !== 3) {
       throw badJsonError(this.constructor, json.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
     } else {
-      this.Abilities = json.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, `${this.$id}/Abilities/${index + 1}`, gamespace, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
+      this.Abilities = json.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, `${this.$id}/Abilities/${index + 1}`, game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
     }
 
     _.merge(this, replaceInAllStrings(this, Replacement.Asset, this.$id));

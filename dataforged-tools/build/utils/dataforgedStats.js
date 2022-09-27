@@ -4,10 +4,10 @@ import _ from "lodash-es";
 /**
  * Extracts statistics on Ironsworn game data.
  */
-export function dataforgedStats(gamespace, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }) {
+export function dataforgedStats(game, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }) {
     return [
         assetStats(assets),
-        encounterStats(gamespace, encounters),
+        encounterStats(game, encounters),
         moveStats(moves),
         truthStats(truths),
         oracleStats(oracles)
@@ -36,12 +36,12 @@ export function oracleStats(oracles) {
 }
 /**
  * Creates a string of encounter stats for use in build messages.
- * @param gamespace
+ * @param game
  * @param json
  */
-export function encounterStats(gamespace, json) {
+export function encounterStats(game, json) {
     let text;
-    switch (gamespace) {
+    switch (game) {
         case Game.Starforged:
             {
                 let encounterJson = json;

@@ -1,6 +1,6 @@
 import { DisplayBuilder, SourceBuilder, TitleBuilder } from "@builders";
 import { Game } from "@schema";
-import type { Display, IronlandsRegion, Source, Title , YamlIronswornRegion } from "@schema";
+import type { Display, IronlandsRegion, Source, Title , YamlIronlandsRegion } from "@schema";
 import { formatId } from "@utils";
 
 /**
@@ -17,7 +17,7 @@ export class IronlandsRegionBuilder implements IronlandsRegion {
   Description: string;
   "Quest Starter": string;
 
-  constructor(json: YamlIronswornRegion, rootSource: Source) {
+  constructor(json: YamlIronlandsRegion, rootSource: Source) {
     const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
     this.$id = formatId(fragment, Game.Ironsworn, "Regions");
     this.Title = new TitleBuilder(json.Title,this);

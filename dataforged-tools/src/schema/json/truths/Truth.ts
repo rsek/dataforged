@@ -1,4 +1,4 @@
-import type { Display, HasDisplay, HasId, HasSource, HasSuggestions, HasTable, HasTitle, TruthOption } from "@schema";
+import type { Display, HasDisplay, HasId, HasSource, HasSuggestions, HasTable, HasTitle, TruthOptionStarforged as TruthOptionStarforged } from "@schema";
 
 /**
  * @public
@@ -22,10 +22,10 @@ export enum SettingTruthName {
 
 /**
  * Interface for Starforged Setting Truth categories such as "Exodus" and "Cataclysm". See page XX of Starforged for further information.
- * @see TruthOption
+ * @see TruthOptionStarforged
  * @public
  */
-export interface Truth extends HasId, HasSource, HasDisplay, Partial<HasSuggestions>, HasTable, HasTitle {
+export interface TruthStarforged extends HasId, HasSource, HasDisplay, Partial<HasSuggestions>, HasTable, HasTitle {
   /**
    * @pattern ^Starforged/Setting_Truths/[A-z_-]+$
    */
@@ -33,7 +33,7 @@ export interface Truth extends HasId, HasSource, HasDisplay, Partial<HasSuggesti
   /**
    * The 'canonical' options for this setting truth category.
    */
-  Table: TruthOption[];
+  Table: TruthOptionStarforged[];
   /**
    * A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.
    * @markdown

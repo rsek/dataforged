@@ -1,6 +1,6 @@
 
 /**
- * Describes {@link Row} results that call for multiple rolls, most commonly "Roll twice" results.
+ * Describes {@link OracleTableRow} results that call for multiple rolls, most commonly "Roll twice" results.
  * @public
  */
 export interface MultipleRolls {

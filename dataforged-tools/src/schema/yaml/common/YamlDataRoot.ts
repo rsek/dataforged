@@ -1,4 +1,4 @@
-import type { HasSource, YamlAssetType, YamlDelveDomain, YamlDelveTheme, YamlEncounterNatureInfo, YamlEncounterStarforged, YamlIronswornRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruth, YamlTruthClassic , YamlWithRef } from "@schema";
+import type { HasSource, YamlAssetType, YamlDelveDomain, YamlDelveTheme, YamlEncounterNatureInfo, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruthClassic, YamlTruthStarforged , YamlWithRef } from "@schema";
 
 /**
  * @internal
@@ -25,14 +25,14 @@ export interface YamlEncounterRoot extends YamlDataRoot {
 /**
  * @internal
  */
-export interface YamlEncounterRootStarforged extends YamlEncounterRoot {
+export interface YamlEncounterStarforgedRoot extends YamlEncounterRoot {
   Encounters: {[key:string]: YamlEncounterStarforged }
 }
 
 /**
  * @internal
  */
-export interface YamlEncounterRootClassic extends YamlEncounterRoot {
+export interface YamlEncounterClassicRoot extends YamlEncounterRoot {
   Encounters: {[key:string]: YamlEncounterNatureInfo;}
 }
 
@@ -47,40 +47,47 @@ export interface YamlMoveRoot extends YamlDataRoot {
  * @internal
  */
 export interface YamlTruthRoot extends YamlDataRoot {
-  "Setting Truths": {[key:string]:YamlTruth};
+  "Setting Truths": {
+    [key:string]:YamlTruthStarforged|YamlTruthClassic
+  };
 }
 
 /**
  * @internal
  */
-export interface YamlTruthRootClassic extends YamlDataRoot {
+export interface YamlTruthRootStarforged extends YamlTruthRoot {
+  "Setting Truths": {[key:string]:YamlTruthStarforged};
+}
+
+/**
+ * @internal
+ */
+export interface YamlTruthRootClassic extends YamlTruthRoot {
   "Setting Truths": {[key:string]:YamlTruthClassic}
  }
 
 
 /**
- * @internal
- */
-export interface YamlOracleSetsRoot extends YamlWithRef {
-  "Oracle Sets": { [key:string]: YamlOracleSetsItems };
-}
-
-/**
  * Schema for files that contain one or more oracle sets.
  * @internal
  */
-export interface YamlOracleSetsItems {
-  [key: string]: YamlOracleSet | {
-    Sets?: {[key: string]: Partial<YamlOracleSet> & {_templateOracleSet: Partial<YamlOracleSet>}} | undefined
-    Tables?: {[key: string]: Partial<YamlOracleTable> & {_templateOracleTable: Partial<YamlOracleTable>}} | undefined
-  }
+export interface YamlOracleRoot extends YamlDataRoot {
+  "Oracle Sets": {
+    [key: string]: YamlOracleSet | {
+      Sets?: {
+        [key: string]: Partial<YamlOracleSet> & {_templateOracleSet: Partial<YamlOracleSet>}
+      } | undefined
+      Tables?: {
+        [key: string]: Partial<YamlOracleTable> & {_templateOracleTable: Partial<YamlOracleTable>}
+      } | undefined
+  } };
 }
 
 /**
  * @internal
  */
 export interface YamlIronlandsRegionRoot extends YamlDataRoot {
-  Regions: { [key:string]: YamlIronswornRegion };
+  Regions: { [key:string]: YamlIronlandsRegion };
 }
 
 /**

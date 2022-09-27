@@ -1,7 +1,7 @@
 import type { GameObjectType, PlaceRecord, StarshipInitialContact } from "@game_objects";
 import type { AttributeKey } from "@schema";
 /**
- * @internal
+ * @public
  */
 export type StarshipRecord<K extends AttributeKey|never = never> = PlaceRecord<
 GameObjectType.Starship,

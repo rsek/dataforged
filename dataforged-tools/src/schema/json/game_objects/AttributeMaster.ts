@@ -2,7 +2,7 @@ import type { Atmosphere, Behavior, CreatureScale, DerelictType, Disposition, Do
 import type { Authority } from "@game_objects/enum/Authority.js";
 import type { AttributeKey } from "@schema";
 /**
- * @alpha
+ * @public
  */
 export interface AttributeMaster {
   [AttributeKey.Atmosphere]: Atmosphere;

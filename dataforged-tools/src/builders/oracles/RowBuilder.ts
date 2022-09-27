@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { AttributeSetterBuilder, GameObjectBuilder, MultipleRollsBuilder, OracleContentBuilder, RollTemplateBuilder, SuggestionsBuilder } from "@builders";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
-import type { Display, GameObject, ImageUrl, MultipleRolls , OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Suggestions, Vector, YamlSimpleTableRow, YamlStub, YamlSuggestions, YamlTruthOption } from "@schema";
+import type { Display, GameObject, ImageUrl, MultipleRolls , OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, RowNullStub, Suggestions, Vector, YamlSimpleTableRow, YamlStub, YamlSuggestions, YamlTruthOptionStarforged } from "@schema";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import type { AttributeHash } from "@utils/types/AttributeHash.js";
 import _ from "lodash-es";
@@ -28,7 +28,7 @@ export class OracleTableRowBuilder implements OracleTableRow {
   /**
    * Creates an instance of Row.
    */
-  constructor(parentId: string, json: YamlSimpleTableRow | YamlStub<OracleTableRow> | YamlTruthOption) {
+  constructor(parentId: string, json: YamlSimpleTableRow | YamlStub<OracleTableRow> | YamlTruthOptionStarforged) {
     let rowData = _.clone(json);
     if (Array.isArray(rowData) && (rowData as Array<unknown>).some(item => Array.isArray(item))) {
       rowData = (rowData as Array<unknown|Array<unknown>>).flat(2) as YamlSimpleTableRow;

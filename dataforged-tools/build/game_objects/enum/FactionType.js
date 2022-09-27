@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Type
- * @alpha
+ * @public
  */
 var FactionType;
 (function (FactionType) {

@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Influence
- * @alpha
+ * @public
  */
 enum Influence {
   Forsaken = "Forsaken",

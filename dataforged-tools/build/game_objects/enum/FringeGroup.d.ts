@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Fringe Group
- * @alpha
+ * @public
  */
 declare enum FringeGroup {
     Cultists = "Cultists",

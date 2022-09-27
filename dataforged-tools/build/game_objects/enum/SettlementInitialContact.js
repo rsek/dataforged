@@ -1,5 +1,5 @@
 /**
- * @alpha
+ * @public
  */
 export var SettlementInitialContact;
 (function (SettlementInitialContact) {

@@ -9,7 +9,6 @@ import { buildTruths } from "@utils/builders/buildTruths.js";
 import { dataforgedStats } from "@utils/dataforgedStats.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { buildDelveSiteCards } from "@utils/builders/buildDelveSiteCards.js";
-import { buildIronlandsRegions } from "@utils/builders/buildIronswornRegions.js";
 import { IronlandsBuilder } from "@builders/IronlandsBuilder.js";
 import { SourceBuilder } from "@builders";
 
@@ -17,26 +16,26 @@ import { SourceBuilder } from "@builders";
  * Builds all data for Dataforged.
  * @returns An object keyed with the game data.
 */
-export function buildDataforged(gamespace: Game = Game.Starforged) {
-  buildLog(buildDataforged, `Building Dataforged for ${gamespace}...`);
+export function buildDataforged(game: Game = Game.Starforged) {
+  buildLog(buildDataforged, `Building Dataforged for ${game}...`);
   let data: Ironsworn|Starforged;
-  switch (gamespace) {
+  switch (game) {
     case Game.Starforged: {
       data = {
-        "Asset Types": buildAssets(gamespace),
-        Encounters: buildEncounters(gamespace),
-        "Move Categories": buildMoves(gamespace),
-        "Oracle Sets": buildOracles(gamespace),
-        "Setting Truths": buildTruths(gamespace)
+        "Asset Types": buildAssets(game),
+        Encounters: buildEncounters(game),
+        "Move Categories": buildMoves(game),
+        "Oracle Sets": buildOracles(game),
+        "Setting Truths": buildTruths(game)
       } as Starforged;
       break;}
     case Game.Ironsworn: {
       data = {
-        "Asset Types": buildAssets(gamespace),
-        Encounters: buildEncounters(gamespace),
-        "Move Categories": buildMoves(gamespace),
-        "Oracle Sets": buildOracles(gamespace),
-        "Setting Truths": buildTruths(gamespace),
+        "Asset Types": buildAssets(game),
+        Encounters: buildEncounters(game),
+        "Move Categories": buildMoves(game),
+        "Oracle Sets": buildOracles(game),
+        "Setting Truths": buildTruths(game),
         "Site Themes": buildDelveSiteCards(DelveCardType.Theme),
         "Site Domains": buildDelveSiteCards(DelveCardType.Domain),
         Regions: new IronlandsBuilder(SourceBuilder.default(Game.Ironsworn)).toJson(),
@@ -49,7 +48,7 @@ export function buildDataforged(gamespace: Game = Game.Starforged) {
       throw new Error();
   }
 
-  buildLog(buildDataforged, `Finished building JSON for ${gamespace}:
-    ${dataforgedStats(gamespace, data)}`);
+  buildLog(buildDataforged, `Finished building JSON for ${game}:
+    ${dataforgedStats(game, data)}`);
   return data;
 }

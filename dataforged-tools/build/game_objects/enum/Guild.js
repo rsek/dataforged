@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Guild
- * @alpha
+ * @public
  */
 var Guild;
 (function (Guild) {

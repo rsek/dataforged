@@ -1,5 +1,5 @@
 import type { AttributeKey, AttributeMaster } from "@schema";
 /**
- * @alpha
+ * @public
  */
 export type AttributeValue<K extends AttributeKey> = AttributeMaster[K];

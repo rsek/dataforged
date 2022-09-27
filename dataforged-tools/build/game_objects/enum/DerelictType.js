@@ -1,6 +1,6 @@
 /**
  * Set by oracle: Oracles / Derelicts / Type
- * @alpha
+ * @public
  */
 var DerelictType;
 (function (DerelictType) {

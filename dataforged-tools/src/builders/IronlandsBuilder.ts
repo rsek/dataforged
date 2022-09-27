@@ -1,14 +1,14 @@
 import { IronlandsRegionBuilder } from "@builders";
 import { CollectionBuilder } from "@builders/CollectionBuilder.js";
 import { Game } from "@schema";
-import type { IronlandsRegion,Source, YamlIronlandsRegionRoot , YamlIronswornRegion } from "@schema";
+import type { IronlandsRegion,Source, YamlIronlandsRegion , YamlIronlandsRegionRoot } from "@schema";
 
 
 /**
  * @internal
  */
-export class IronlandsBuilder extends CollectionBuilder<Game.Ironsworn, YamlIronlandsRegionRoot, YamlIronswornRegion, IronlandsRegion, typeof IronlandsRegionBuilder> {
-  buildItem(item: YamlIronswornRegion): IronlandsRegion {
+export class IronlandsBuilder extends CollectionBuilder<Game.Ironsworn, YamlIronlandsRegionRoot, YamlIronlandsRegion, IronlandsRegion, typeof IronlandsRegionBuilder> {
+  buildItem(item: YamlIronlandsRegion): IronlandsRegion {
     return new this.ItemBuilder(item, this.Source);
   }
   processSourceFile(sourceDataItem: Partial<YamlIronlandsRegionRoot>): YamlIronlandsRegionRoot {

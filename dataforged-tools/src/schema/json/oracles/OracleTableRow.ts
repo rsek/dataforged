@@ -1,4 +1,4 @@
-import type { Attribute, HasDisplay, HasGameObjects, HasOracleContent, HasRollTemplate, HasSuggestions, HasSummary, MultipleRolls, OracleTable, TruthOptionSubtableRow } from "@schema";
+import type { Attribute, HasDisplay, HasGameObjects, HasOracleContent, HasRollTemplate, HasSuggestions, HasSummary, MultipleRolls, OracleTable, TruthOptionSubtableRowStarforged } from "@schema";
 import type { Nullable } from "@utils/types/Nullable.js";
 
 /**
@@ -59,7 +59,7 @@ export interface OracleTableRow extends Partial< Nullable<HasSummary &
   /**
    * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
    */
-  Subtable?: OracleTableRow[] | TruthOptionSubtableRow[] | undefined;
+  Subtable?: OracleTableRow[] | TruthOptionSubtableRowStarforged[] | undefined;
   /**
    * Data for rows that call for multiple rolls, e.g. on `Roll twice` results.
    */

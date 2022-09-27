@@ -1,5 +1,5 @@
 /**
- * @alpha
+ * @public
  */
 export var Region;
 (function (Region) {

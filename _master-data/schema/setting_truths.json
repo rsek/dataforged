@@ -3,7 +3,12 @@
   "properties": {
     "Setting Truths": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/definitions/ISettingTruthYaml" },
+      "additionalProperties": {
+        "anyOf": [
+          { "$ref": "#/definitions/YamlTruthClassic" },
+          { "$ref": "#/definitions/YamlTruthStarforged" }
+        ]
+      },
       "defaultProperties": [],
       "title": "Setting Truths"
     },
@@ -29,7 +34,7 @@
       "title": "_templates"
     },
     "Source": {
-      "$ref": "#/definitions/ISource",
+      "$ref": "#/definitions/Source",
       "description": "Information on this item's source.",
       "title": "Source"
     }
@@ -38,18 +43,146 @@
   "additionalProperties": false,
   "required": ["Setting Truths", "Source"],
   "definitions": {
-    "ISettingTruthYaml": {
-      "title": "ISettingTruthYaml",
+    "YamlTruthClassic": {
+      "title": "YamlTruthClassic",
+      "type": "object",
+      "properties": {
+        "Options": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/YamlTruthOptionClassic" },
+          "title": "Options"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^Ironsworn/Setting_Truths/[A-z_-]+$",
+          "type": "string",
+          "title": "$id"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Options", "Title"]
+    },
+    "YamlTruthOptionClassic": {
+      "title": "YamlTruthOptionClassic",
+      "type": "object",
+      "properties": {
+        "Quest Starter": {
+          "description": "A markdown string describing the quest starter associated with this item.",
+          "type": "string",
+          "title": "Quest Starter"
+        },
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "Description"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^Ironsworn/Setting_Truths/[A-z_-]+/[1-3]$",
+          "type": "string",
+          "title": "$id"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Description", "Quest Starter"]
+    },
+    "YamlSource": {
+      "title": "YamlSource",
+      "type": "object",
+      "properties": {
+        "Title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
+          "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
+        },
+        "Date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "Date"
+        },
+        "Page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source material is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
+    },
+    "YamlTitle": {
+      "title": "YamlTitle",
+      "type": "object",
+      "properties": {
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "type": "string",
+          "title": "Short"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "type": "string",
+          "title": "Standard"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "$id": { "type": "string", "title": "$id" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Canonical"]
+    },
+    "YamlTruthStarforged": {
+      "title": "YamlTruthStarforged",
       "type": "object",
       "properties": {
         "Suggestions": {
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-          "$ref": "#/definitions/ISuggestionsYaml",
+          "$ref": "#/definitions/YamlSuggestions",
           "title": "Suggestions"
         },
         "Table": {
           "type": "array",
-          "items": { "$ref": "#/definitions/ISettingTruthOptionYaml" },
+          "items": { "$ref": "#/definitions/YamlTruthOptionStarforged" },
           "title": "Table"
         },
         "Character": {
@@ -64,20 +197,20 @@
           "title": "$id"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display_2",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Character", "Table", "Title"]
     },
-    "ISuggestionsYaml": {
-      "title": "ISuggestionsYaml",
+    "YamlSuggestions": {
+      "title": "YamlSuggestions",
       "type": "object",
       "properties": {
         "Game objects": {
@@ -85,20 +218,20 @@
           "type": "array",
           "items": {
             "anyOf": [
-              { "$ref": "#/definitions/ICharacterRecord" },
-              { "$ref": "#/definitions/ICreatureRecord" },
-              { "$ref": "#/definitions/IDerelictRecord" },
-              { "$ref": "#/definitions/IDerelictStarshipRecord" },
-              { "$ref": "#/definitions/IDerelictSettlementRecord" },
-              { "$ref": "#/definitions/IDerelictZoneRecord" },
-              { "$ref": "#/definitions/IFactionRecord" },
-              { "$ref": "#/definitions/IFactionGuildRecord" },
-              { "$ref": "#/definitions/IFactionFringeGroupRecord" },
-              { "$ref": "#/definitions/IFactionDominionRecord" },
-              { "$ref": "#/definitions/IPlanetRecord" },
-              { "$ref": "#/definitions/IPrecursorVaultRecord" },
-              { "$ref": "#/definitions/ISettlementRecord" },
-              { "$ref": "#/definitions/IStarshipRecord" }
+              { "$ref": "#/definitions/CharacterRecord" },
+              { "$ref": "#/definitions/CreatureRecord" },
+              { "$ref": "#/definitions/DerelictRecord" },
+              { "$ref": "#/definitions/DerelictSettlementRecord" },
+              { "$ref": "#/definitions/DerelictStarshipRecord" },
+              { "$ref": "#/definitions/DerelictZoneRecord" },
+              { "$ref": "#/definitions/FactionDominionRecord" },
+              { "$ref": "#/definitions/FactionFringeGroupRecord" },
+              { "$ref": "#/definitions/FactionGuildRecord" },
+              { "$ref": "#/definitions/FactionRecord" },
+              { "$ref": "#/definitions/PlanetRecord" },
+              { "$ref": "#/definitions/PrecursorVaultRecord" },
+              { "$ref": "#/definitions/SettlementRecord" },
+              { "$ref": "#/definitions/StarshipRecord" }
             ]
           },
           "title": "Game objects"
@@ -108,6 +241,12 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Moves"
+        },
+        "Oracle rolls": {
+          "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Oracle rolls"
         },
         "Assets": {
           "description": "Suggested asset IDs.",
@@ -120,12 +259,6 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
-        },
-        "Oracle rolls": {
-          "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Oracle rolls"
         },
         "Themes": {
           "description": "Suggested delve site themes.",
@@ -146,14 +279,14 @@
           "title": "Regions"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "$id": { "type": "string", "title": "$id" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ICharacterRecord": {
-      "title": "ICharacterRecord",
+    "CharacterRecord": {
+      "title": "CharacterRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -434,8 +567,8 @@
       "enum": ["Character"]
     },
     "T": { "$ref": "#/definitions/GameObjectType.Character" },
-    "ICreatureRecord": {
-      "title": "ICreatureRecord",
+    "CreatureRecord": {
+      "title": "CreatureRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -711,8 +844,8 @@
       "enum": ["Creature"]
     },
     "T_1": { "$ref": "#/definitions/GameObjectType.Creature" },
-    "IDerelictRecord": {
-      "title": "IDerelictRecord",
+    "DerelictRecord": {
+      "title": "DerelictRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -1122,276 +1255,8 @@
       "enum": ["Derelict"]
     },
     "T_2": { "$ref": "#/definitions/GameObjectType.Derelict" },
-    "IDerelictStarshipRecord": {
-      "title": "IDerelictStarshipRecord",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "Derelict Type": {
-          "$ref": "#/definitions/DerelictType.Starship",
-          "title": "Derelict Type"
-        },
-        "Initial Contact": {
-          "$ref": "#/definitions/StarshipInitialContact.Derelict",
-          "title": "Initial Contact"
-        },
-        "Location": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Asking for help",
-                  "Captured",
-                  "Chaotic",
-                  "Deep Space",
-                  "Derelict",
-                  "Destroyed",
-                  "Dismissive",
-                  "Expanse",
-                  "Familiar",
-                  "Fortified",
-                  "Friendly",
-                  "Haunted",
-                  "Hostile",
-                  "In battle",
-                  "Infested",
-                  "Inhabited",
-                  "Mechanical",
-                  "Neutral / automated",
-                  "Orbital",
-                  "Outlands",
-                  "Planetside",
-                  "Ruined",
-                  "Sacred",
-                  "Settlement",
-                  "Starship",
-                  "Terminus",
-                  "Uncooperative",
-                  "Unresponsive",
-                  "Wary",
-                  "Welcoming"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Asking for help",
-                "Captured",
-                "Chaotic",
-                "Deep Space",
-                "Derelict",
-                "Destroyed",
-                "Dismissive",
-                "Expanse",
-                "Familiar",
-                "Fortified",
-                "Friendly",
-                "Haunted",
-                "Hostile",
-                "In battle",
-                "Infested",
-                "Inhabited",
-                "Mechanical",
-                "Neutral / automated",
-                "Orbital",
-                "Outlands",
-                "Planetside",
-                "Ruined",
-                "Sacred",
-                "Settlement",
-                "Starship",
-                "Terminus",
-                "Uncooperative",
-                "Unresponsive",
-                "Wary",
-                "Welcoming"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Location"
-        },
-        "Location Theme": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Asking for help",
-                  "Captured",
-                  "Chaotic",
-                  "Deep Space",
-                  "Derelict",
-                  "Destroyed",
-                  "Dismissive",
-                  "Expanse",
-                  "Familiar",
-                  "Fortified",
-                  "Friendly",
-                  "Haunted",
-                  "Hostile",
-                  "In battle",
-                  "Infested",
-                  "Inhabited",
-                  "Mechanical",
-                  "Neutral / automated",
-                  "Orbital",
-                  "Outlands",
-                  "Planetside",
-                  "Ruined",
-                  "Sacred",
-                  "Settlement",
-                  "Starship",
-                  "Terminus",
-                  "Uncooperative",
-                  "Unresponsive",
-                  "Wary",
-                  "Welcoming"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Asking for help",
-                "Captured",
-                "Chaotic",
-                "Deep Space",
-                "Derelict",
-                "Destroyed",
-                "Dismissive",
-                "Expanse",
-                "Familiar",
-                "Fortified",
-                "Friendly",
-                "Haunted",
-                "Hostile",
-                "In battle",
-                "Infested",
-                "Inhabited",
-                "Mechanical",
-                "Neutral / automated",
-                "Orbital",
-                "Outlands",
-                "Planetside",
-                "Ruined",
-                "Sacred",
-                "Settlement",
-                "Starship",
-                "Terminus",
-                "Uncooperative",
-                "Unresponsive",
-                "Wary",
-                "Welcoming"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Location Theme"
-        },
-        "Region": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Asking for help",
-                  "Captured",
-                  "Chaotic",
-                  "Deep Space",
-                  "Derelict",
-                  "Destroyed",
-                  "Dismissive",
-                  "Expanse",
-                  "Familiar",
-                  "Fortified",
-                  "Friendly",
-                  "Haunted",
-                  "Hostile",
-                  "In battle",
-                  "Infested",
-                  "Inhabited",
-                  "Mechanical",
-                  "Neutral / automated",
-                  "Orbital",
-                  "Outlands",
-                  "Planetside",
-                  "Ruined",
-                  "Sacred",
-                  "Settlement",
-                  "Starship",
-                  "Terminus",
-                  "Uncooperative",
-                  "Unresponsive",
-                  "Wary",
-                  "Welcoming"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Asking for help",
-                "Captured",
-                "Chaotic",
-                "Deep Space",
-                "Derelict",
-                "Destroyed",
-                "Dismissive",
-                "Expanse",
-                "Familiar",
-                "Fortified",
-                "Friendly",
-                "Haunted",
-                "Hostile",
-                "In battle",
-                "Infested",
-                "Inhabited",
-                "Mechanical",
-                "Neutral / automated",
-                "Orbital",
-                "Outlands",
-                "Planetside",
-                "Ruined",
-                "Sacred",
-                "Settlement",
-                "Starship",
-                "Terminus",
-                "Uncooperative",
-                "Unresponsive",
-                "Wary",
-                "Welcoming"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Region"
-        },
-        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Object type": {
-          "$ref": "#/definitions/GameObjectType.Derelict",
-          "title": "Object type"
-        }
-      },
-      "required": ["Derelict Type", "Initial Contact", "Object type"]
-    },
-    "DerelictType.Starship": {
-      "title": "DerelictType.Starship",
-      "type": "string",
-      "enum": ["Starship"]
-    },
-    "StarshipInitialContact.Derelict": {
-      "title": "StarshipInitialContact.Derelict",
-      "type": "string",
-      "enum": ["Derelict"]
-    },
-    "IDerelictSettlementRecord": {
-      "title": "IDerelictSettlementRecord",
+    "DerelictSettlementRecord": {
+      "title": "DerelictSettlementRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -1936,8 +1801,276 @@
       "type": "string",
       "enum": ["Derelict"]
     },
-    "IDerelictZoneRecord": {
-      "title": "IDerelictZoneRecord",
+    "DerelictStarshipRecord": {
+      "title": "DerelictStarshipRecord",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "Derelict Type": {
+          "$ref": "#/definitions/DerelictType.Starship",
+          "title": "Derelict Type"
+        },
+        "Initial Contact": {
+          "$ref": "#/definitions/StarshipInitialContact.Derelict",
+          "title": "Initial Contact"
+        },
+        "Location": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Asking for help",
+                  "Captured",
+                  "Chaotic",
+                  "Deep Space",
+                  "Derelict",
+                  "Destroyed",
+                  "Dismissive",
+                  "Expanse",
+                  "Familiar",
+                  "Fortified",
+                  "Friendly",
+                  "Haunted",
+                  "Hostile",
+                  "In battle",
+                  "Infested",
+                  "Inhabited",
+                  "Mechanical",
+                  "Neutral / automated",
+                  "Orbital",
+                  "Outlands",
+                  "Planetside",
+                  "Ruined",
+                  "Sacred",
+                  "Settlement",
+                  "Starship",
+                  "Terminus",
+                  "Uncooperative",
+                  "Unresponsive",
+                  "Wary",
+                  "Welcoming"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Asking for help",
+                "Captured",
+                "Chaotic",
+                "Deep Space",
+                "Derelict",
+                "Destroyed",
+                "Dismissive",
+                "Expanse",
+                "Familiar",
+                "Fortified",
+                "Friendly",
+                "Haunted",
+                "Hostile",
+                "In battle",
+                "Infested",
+                "Inhabited",
+                "Mechanical",
+                "Neutral / automated",
+                "Orbital",
+                "Outlands",
+                "Planetside",
+                "Ruined",
+                "Sacred",
+                "Settlement",
+                "Starship",
+                "Terminus",
+                "Uncooperative",
+                "Unresponsive",
+                "Wary",
+                "Welcoming"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Location"
+        },
+        "Location Theme": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Asking for help",
+                  "Captured",
+                  "Chaotic",
+                  "Deep Space",
+                  "Derelict",
+                  "Destroyed",
+                  "Dismissive",
+                  "Expanse",
+                  "Familiar",
+                  "Fortified",
+                  "Friendly",
+                  "Haunted",
+                  "Hostile",
+                  "In battle",
+                  "Infested",
+                  "Inhabited",
+                  "Mechanical",
+                  "Neutral / automated",
+                  "Orbital",
+                  "Outlands",
+                  "Planetside",
+                  "Ruined",
+                  "Sacred",
+                  "Settlement",
+                  "Starship",
+                  "Terminus",
+                  "Uncooperative",
+                  "Unresponsive",
+                  "Wary",
+                  "Welcoming"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Asking for help",
+                "Captured",
+                "Chaotic",
+                "Deep Space",
+                "Derelict",
+                "Destroyed",
+                "Dismissive",
+                "Expanse",
+                "Familiar",
+                "Fortified",
+                "Friendly",
+                "Haunted",
+                "Hostile",
+                "In battle",
+                "Infested",
+                "Inhabited",
+                "Mechanical",
+                "Neutral / automated",
+                "Orbital",
+                "Outlands",
+                "Planetside",
+                "Ruined",
+                "Sacred",
+                "Settlement",
+                "Starship",
+                "Terminus",
+                "Uncooperative",
+                "Unresponsive",
+                "Wary",
+                "Welcoming"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Location Theme"
+        },
+        "Region": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Asking for help",
+                  "Captured",
+                  "Chaotic",
+                  "Deep Space",
+                  "Derelict",
+                  "Destroyed",
+                  "Dismissive",
+                  "Expanse",
+                  "Familiar",
+                  "Fortified",
+                  "Friendly",
+                  "Haunted",
+                  "Hostile",
+                  "In battle",
+                  "Infested",
+                  "Inhabited",
+                  "Mechanical",
+                  "Neutral / automated",
+                  "Orbital",
+                  "Outlands",
+                  "Planetside",
+                  "Ruined",
+                  "Sacred",
+                  "Settlement",
+                  "Starship",
+                  "Terminus",
+                  "Uncooperative",
+                  "Unresponsive",
+                  "Wary",
+                  "Welcoming"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Asking for help",
+                "Captured",
+                "Chaotic",
+                "Deep Space",
+                "Derelict",
+                "Destroyed",
+                "Dismissive",
+                "Expanse",
+                "Familiar",
+                "Fortified",
+                "Friendly",
+                "Haunted",
+                "Hostile",
+                "In battle",
+                "Infested",
+                "Inhabited",
+                "Mechanical",
+                "Neutral / automated",
+                "Orbital",
+                "Outlands",
+                "Planetside",
+                "Ruined",
+                "Sacred",
+                "Settlement",
+                "Starship",
+                "Terminus",
+                "Uncooperative",
+                "Unresponsive",
+                "Wary",
+                "Welcoming"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Region"
+        },
+        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
+        "Object type": {
+          "$ref": "#/definitions/GameObjectType.Derelict",
+          "title": "Object type"
+        }
+      },
+      "required": ["Derelict Type", "Initial Contact", "Object type"]
+    },
+    "DerelictType.Starship": {
+      "title": "DerelictType.Starship",
+      "type": "string",
+      "enum": ["Starship"]
+    },
+    "StarshipInitialContact.Derelict": {
+      "title": "StarshipInitialContact.Derelict",
+      "type": "string",
+      "enum": ["Derelict"]
+    },
+    "DerelictZoneRecord": {
+      "title": "DerelictZoneRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -2156,506 +2289,8 @@
       "enum": ["Derelict Zone"]
     },
     "T_3": { "$ref": "#/definitions/GameObjectType.DerelictZone" },
-    "IFactionRecord": {
-      "title": "IFactionRecord",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
-        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Faction Type": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Dominant",
-                  "Dominion",
-                  "Established",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Guild",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Notable"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Dominant",
-                "Dominion",
-                "Established",
-                "Forsaken",
-                "Fringe Group",
-                "Guild",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Notable"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Faction Type"
-        },
-        "Influence": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Dominant",
-                  "Dominion",
-                  "Established",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Guild",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Notable"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Dominant",
-                "Dominion",
-                "Established",
-                "Forsaken",
-                "Fringe Group",
-                "Guild",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Notable"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Influence"
-        }
-      },
-      "required": ["Object type"]
-    },
-    "GameObjectType.Faction": {
-      "title": "GameObjectType.Faction",
-      "type": "string",
-      "enum": ["Faction"]
-    },
-    "T_4": { "$ref": "#/definitions/GameObjectType.Faction" },
-    "IFactionGuildRecord": {
-      "title": "IFactionGuildRecord",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
-        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Faction Type": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Assassins",
-                  "Bounty Hunters",
-                  "Couriers",
-                  "Courtesans",
-                  "Dominant",
-                  "Dominion",
-                  "Engineers",
-                  "Established",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Guild",
-                  "Healers",
-                  "Industrialists",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Mercenaries",
-                  "Merchants",
-                  "Mystics",
-                  "Navigators",
-                  "Notable",
-                  "Peacekeepers",
-                  "Researchers",
-                  "Spies"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Assassins",
-                "Bounty Hunters",
-                "Couriers",
-                "Courtesans",
-                "Dominant",
-                "Dominion",
-                "Engineers",
-                "Established",
-                "Forsaken",
-                "Fringe Group",
-                "Guild",
-                "Healers",
-                "Industrialists",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Mercenaries",
-                "Merchants",
-                "Mystics",
-                "Navigators",
-                "Notable",
-                "Peacekeepers",
-                "Researchers",
-                "Spies"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Faction Type"
-        },
-        "Guild": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Assassins",
-                  "Bounty Hunters",
-                  "Couriers",
-                  "Courtesans",
-                  "Dominant",
-                  "Dominion",
-                  "Engineers",
-                  "Established",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Guild",
-                  "Healers",
-                  "Industrialists",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Mercenaries",
-                  "Merchants",
-                  "Mystics",
-                  "Navigators",
-                  "Notable",
-                  "Peacekeepers",
-                  "Researchers",
-                  "Spies"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Assassins",
-                "Bounty Hunters",
-                "Couriers",
-                "Courtesans",
-                "Dominant",
-                "Dominion",
-                "Engineers",
-                "Established",
-                "Forsaken",
-                "Fringe Group",
-                "Guild",
-                "Healers",
-                "Industrialists",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Mercenaries",
-                "Merchants",
-                "Mystics",
-                "Navigators",
-                "Notable",
-                "Peacekeepers",
-                "Researchers",
-                "Spies"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Guild"
-        },
-        "Influence": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Assassins",
-                  "Bounty Hunters",
-                  "Couriers",
-                  "Courtesans",
-                  "Dominant",
-                  "Dominion",
-                  "Engineers",
-                  "Established",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Guild",
-                  "Healers",
-                  "Industrialists",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Mercenaries",
-                  "Merchants",
-                  "Mystics",
-                  "Navigators",
-                  "Notable",
-                  "Peacekeepers",
-                  "Researchers",
-                  "Spies"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Assassins",
-                "Bounty Hunters",
-                "Couriers",
-                "Courtesans",
-                "Dominant",
-                "Dominion",
-                "Engineers",
-                "Established",
-                "Forsaken",
-                "Fringe Group",
-                "Guild",
-                "Healers",
-                "Industrialists",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Mercenaries",
-                "Merchants",
-                "Mystics",
-                "Navigators",
-                "Notable",
-                "Peacekeepers",
-                "Researchers",
-                "Spies"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Influence"
-        }
-      },
-      "required": ["Object type"]
-    },
-    "IFactionFringeGroupRecord": {
-      "title": "IFactionFringeGroupRecord",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
-        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Faction Type": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Cultists",
-                  "Dominant",
-                  "Dominion",
-                  "Established",
-                  "Exiles",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Gangsters",
-                  "Guild",
-                  "Hackers",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Monster hunters",
-                  "Notable",
-                  "Pirates",
-                  "Raiders",
-                  "Rebels",
-                  "Rogue AI",
-                  "Scavengers",
-                  "Smugglers"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Cultists",
-                "Dominant",
-                "Dominion",
-                "Established",
-                "Exiles",
-                "Forsaken",
-                "Fringe Group",
-                "Gangsters",
-                "Guild",
-                "Hackers",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Monster hunters",
-                "Notable",
-                "Pirates",
-                "Raiders",
-                "Rebels",
-                "Rogue AI",
-                "Scavengers",
-                "Smugglers"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Faction Type"
-        },
-        "Fringe Group": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Cultists",
-                  "Dominant",
-                  "Dominion",
-                  "Established",
-                  "Exiles",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Gangsters",
-                  "Guild",
-                  "Hackers",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Monster hunters",
-                  "Notable",
-                  "Pirates",
-                  "Raiders",
-                  "Rebels",
-                  "Rogue AI",
-                  "Scavengers",
-                  "Smugglers"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Cultists",
-                "Dominant",
-                "Dominion",
-                "Established",
-                "Exiles",
-                "Forsaken",
-                "Fringe Group",
-                "Gangsters",
-                "Guild",
-                "Hackers",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Monster hunters",
-                "Notable",
-                "Pirates",
-                "Raiders",
-                "Rebels",
-                "Rogue AI",
-                "Scavengers",
-                "Smugglers"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Fringe Group"
-        },
-        "Influence": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Cultists",
-                  "Dominant",
-                  "Dominion",
-                  "Established",
-                  "Exiles",
-                  "Forsaken",
-                  "Fringe Group",
-                  "Gangsters",
-                  "Guild",
-                  "Hackers",
-                  "Inescapable",
-                  "Isolated",
-                  "Localized",
-                  "Monster hunters",
-                  "Notable",
-                  "Pirates",
-                  "Raiders",
-                  "Rebels",
-                  "Rogue AI",
-                  "Scavengers",
-                  "Smugglers"
-                ],
-                "type": "string"
-              }
-            },
-            {
-              "enum": [
-                "Cultists",
-                "Dominant",
-                "Dominion",
-                "Established",
-                "Exiles",
-                "Forsaken",
-                "Fringe Group",
-                "Gangsters",
-                "Guild",
-                "Hackers",
-                "Inescapable",
-                "Isolated",
-                "Localized",
-                "Monster hunters",
-                "Notable",
-                "Pirates",
-                "Raiders",
-                "Rebels",
-                "Rogue AI",
-                "Scavengers",
-                "Smugglers"
-              ],
-              "type": "string"
-            },
-            { "type": "null" }
-          ],
-          "title": "Influence"
-        }
-      },
-      "required": ["Object type"]
-    },
-    "IFactionDominionRecord": {
-      "title": "IFactionDominionRecord",
+    "FactionDominionRecord": {
+      "title": "FactionDominionRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -3092,8 +2727,506 @@
       },
       "required": ["Object type"]
     },
-    "IPlanetRecord": {
-      "title": "IPlanetRecord",
+    "GameObjectType.Faction": {
+      "title": "GameObjectType.Faction",
+      "type": "string",
+      "enum": ["Faction"]
+    },
+    "T_4": { "$ref": "#/definitions/GameObjectType.Faction" },
+    "FactionFringeGroupRecord": {
+      "title": "FactionFringeGroupRecord",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
+        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
+        "Faction Type": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Cultists",
+                  "Dominant",
+                  "Dominion",
+                  "Established",
+                  "Exiles",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Gangsters",
+                  "Guild",
+                  "Hackers",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Monster hunters",
+                  "Notable",
+                  "Pirates",
+                  "Raiders",
+                  "Rebels",
+                  "Rogue AI",
+                  "Scavengers",
+                  "Smugglers"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Cultists",
+                "Dominant",
+                "Dominion",
+                "Established",
+                "Exiles",
+                "Forsaken",
+                "Fringe Group",
+                "Gangsters",
+                "Guild",
+                "Hackers",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Monster hunters",
+                "Notable",
+                "Pirates",
+                "Raiders",
+                "Rebels",
+                "Rogue AI",
+                "Scavengers",
+                "Smugglers"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Faction Type"
+        },
+        "Fringe Group": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Cultists",
+                  "Dominant",
+                  "Dominion",
+                  "Established",
+                  "Exiles",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Gangsters",
+                  "Guild",
+                  "Hackers",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Monster hunters",
+                  "Notable",
+                  "Pirates",
+                  "Raiders",
+                  "Rebels",
+                  "Rogue AI",
+                  "Scavengers",
+                  "Smugglers"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Cultists",
+                "Dominant",
+                "Dominion",
+                "Established",
+                "Exiles",
+                "Forsaken",
+                "Fringe Group",
+                "Gangsters",
+                "Guild",
+                "Hackers",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Monster hunters",
+                "Notable",
+                "Pirates",
+                "Raiders",
+                "Rebels",
+                "Rogue AI",
+                "Scavengers",
+                "Smugglers"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Fringe Group"
+        },
+        "Influence": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Cultists",
+                  "Dominant",
+                  "Dominion",
+                  "Established",
+                  "Exiles",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Gangsters",
+                  "Guild",
+                  "Hackers",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Monster hunters",
+                  "Notable",
+                  "Pirates",
+                  "Raiders",
+                  "Rebels",
+                  "Rogue AI",
+                  "Scavengers",
+                  "Smugglers"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Cultists",
+                "Dominant",
+                "Dominion",
+                "Established",
+                "Exiles",
+                "Forsaken",
+                "Fringe Group",
+                "Gangsters",
+                "Guild",
+                "Hackers",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Monster hunters",
+                "Notable",
+                "Pirates",
+                "Raiders",
+                "Rebels",
+                "Rogue AI",
+                "Scavengers",
+                "Smugglers"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Influence"
+        }
+      },
+      "required": ["Object type"]
+    },
+    "FactionGuildRecord": {
+      "title": "FactionGuildRecord",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
+        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
+        "Faction Type": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Assassins",
+                  "Bounty Hunters",
+                  "Couriers",
+                  "Courtesans",
+                  "Dominant",
+                  "Dominion",
+                  "Engineers",
+                  "Established",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Guild",
+                  "Healers",
+                  "Industrialists",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Mercenaries",
+                  "Merchants",
+                  "Mystics",
+                  "Navigators",
+                  "Notable",
+                  "Peacekeepers",
+                  "Researchers",
+                  "Spies"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Assassins",
+                "Bounty Hunters",
+                "Couriers",
+                "Courtesans",
+                "Dominant",
+                "Dominion",
+                "Engineers",
+                "Established",
+                "Forsaken",
+                "Fringe Group",
+                "Guild",
+                "Healers",
+                "Industrialists",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Mercenaries",
+                "Merchants",
+                "Mystics",
+                "Navigators",
+                "Notable",
+                "Peacekeepers",
+                "Researchers",
+                "Spies"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Faction Type"
+        },
+        "Guild": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Assassins",
+                  "Bounty Hunters",
+                  "Couriers",
+                  "Courtesans",
+                  "Dominant",
+                  "Dominion",
+                  "Engineers",
+                  "Established",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Guild",
+                  "Healers",
+                  "Industrialists",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Mercenaries",
+                  "Merchants",
+                  "Mystics",
+                  "Navigators",
+                  "Notable",
+                  "Peacekeepers",
+                  "Researchers",
+                  "Spies"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Assassins",
+                "Bounty Hunters",
+                "Couriers",
+                "Courtesans",
+                "Dominant",
+                "Dominion",
+                "Engineers",
+                "Established",
+                "Forsaken",
+                "Fringe Group",
+                "Guild",
+                "Healers",
+                "Industrialists",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Mercenaries",
+                "Merchants",
+                "Mystics",
+                "Navigators",
+                "Notable",
+                "Peacekeepers",
+                "Researchers",
+                "Spies"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Guild"
+        },
+        "Influence": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Assassins",
+                  "Bounty Hunters",
+                  "Couriers",
+                  "Courtesans",
+                  "Dominant",
+                  "Dominion",
+                  "Engineers",
+                  "Established",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Guild",
+                  "Healers",
+                  "Industrialists",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Mercenaries",
+                  "Merchants",
+                  "Mystics",
+                  "Navigators",
+                  "Notable",
+                  "Peacekeepers",
+                  "Researchers",
+                  "Spies"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Assassins",
+                "Bounty Hunters",
+                "Couriers",
+                "Courtesans",
+                "Dominant",
+                "Dominion",
+                "Engineers",
+                "Established",
+                "Forsaken",
+                "Fringe Group",
+                "Guild",
+                "Healers",
+                "Industrialists",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Mercenaries",
+                "Merchants",
+                "Mystics",
+                "Navigators",
+                "Notable",
+                "Peacekeepers",
+                "Researchers",
+                "Spies"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Influence"
+        }
+      },
+      "required": ["Object type"]
+    },
+    "FactionRecord": {
+      "title": "FactionRecord",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
+        "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
+        "Faction Type": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Dominant",
+                  "Dominion",
+                  "Established",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Guild",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Notable"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Dominant",
+                "Dominion",
+                "Established",
+                "Forsaken",
+                "Fringe Group",
+                "Guild",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Notable"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Faction Type"
+        },
+        "Influence": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Dominant",
+                  "Dominion",
+                  "Established",
+                  "Forsaken",
+                  "Fringe Group",
+                  "Guild",
+                  "Inescapable",
+                  "Isolated",
+                  "Localized",
+                  "Notable"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "enum": [
+                "Dominant",
+                "Dominion",
+                "Established",
+                "Forsaken",
+                "Fringe Group",
+                "Guild",
+                "Inescapable",
+                "Isolated",
+                "Localized",
+                "Notable"
+              ],
+              "type": "string"
+            },
+            { "type": "null" }
+          ],
+          "title": "Influence"
+        }
+      },
+      "required": ["Object type"]
+    },
+    "PlanetRecord": {
+      "title": "PlanetRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -3666,8 +3799,8 @@
       "enum": ["Planet"]
     },
     "T_5": { "$ref": "#/definitions/GameObjectType.Planet" },
-    "IPrecursorVaultRecord": {
-      "title": "IPrecursorVaultRecord",
+    "PrecursorVaultRecord": {
+      "title": "PrecursorVaultRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -3823,8 +3956,8 @@
       "enum": ["Precursor Vault"]
     },
     "T_6": { "$ref": "#/definitions/GameObjectType.PrecursorVault" },
-    "ISettlementRecord": {
-      "title": "ISettlementRecord",
+    "SettlementRecord": {
+      "title": "SettlementRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -4433,8 +4566,8 @@
       "enum": ["Settlement"]
     },
     "T_7": { "$ref": "#/definitions/GameObjectType.Settlement" },
-    "IStarshipRecord": {
-      "title": "IStarshipRecord",
+    "StarshipRecord": {
+      "title": "StarshipRecord",
       "additionalProperties": false,
       "type": "object",
       "properties": {
@@ -4749,84 +4882,28 @@
       "enum": ["Starship"]
     },
     "T_8": { "$ref": "#/definitions/GameObjectType.Starship" },
-    "ISourceYaml": {
-      "title": "ISourceYaml",
-      "type": "object",
-      "properties": {
-        "Title": {
-          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
-          "type": "string",
-          "title": "Title"
-        },
-        "Authors": {
-          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
-          "default": ["Shawn Tomkin"],
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Authors"
-        },
-        "Date": {
-          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
-          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
-          "type": "string",
-          "title": "Date"
-        },
-        "Page": {
-          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
-          "type": "integer",
-          "title": "Page"
-        },
-        "Url": {
-          "description": "The URL where the source material is available.",
-          "pattern": "^https?://.*$",
-          "type": "string",
-          "title": "Url"
-        },
-        "License": {
-          "$ref": "#/definitions/License",
-          "description": "The URL pointing to the license which this content falls under.",
-          "title": "License"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "License": {
-      "title": "License",
-      "enum": [
-        "None",
-        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-        "https://creativecommons.org/licenses/by-sa/4.0/"
-      ],
-      "type": "string"
-    },
-    "ISettingTruthOptionYaml": {
-      "title": "ISettingTruthOptionYaml",
+    "YamlTruthOptionStarforged": {
+      "title": "YamlTruthOptionStarforged",
       "type": "object",
       "properties": {
         "Subtable": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ISettingTruthOptionSubtableRowYaml"
+            "$ref": "#/definitions/YamlTruthOptionStarforgedSubtableRow"
           },
           "title": "Subtable"
         },
         "Roll template": {
-          "$ref": "#/definitions/IRollTemplateYaml",
+          "$ref": "#/definitions/YamlRollTemplate",
           "title": "Roll template"
         },
         "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
+          "$ref": "#/definitions/Suggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
         },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
@@ -4836,20 +4913,25 @@
           "title": "Quest Starter"
         },
         "Content": {
-          "$ref": "#/definitions/IOracleContent",
+          "$ref": "#/definitions/OracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
+          "anyOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/GameObject" }
+            },
+            { "type": "null" }
+          ],
           "title": "Game objects"
         },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
-          "title": "Result"
+          "title": "Description"
         },
         "Floor": {
           "anyOf": [
@@ -4874,6 +4956,11 @@
             { "type": "null" }
           ],
           "title": "Ceiling"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
@@ -4883,13 +4970,13 @@
         },
         "Multiple rolls": {
           "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
+          "$ref": "#/definitions/MultipleRolls",
           "title": "Multiple rolls"
         },
         "Attributes": {
           "description": "The attributes set by this row.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
+          "items": { "$ref": "#/definitions/Attribute" },
           "title": "Attributes"
         },
         "$id": {
@@ -4899,51 +4986,51 @@
           "title": "$id"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Ceiling", "Description", "Floor", "Quest Starter", "Result"]
     },
-    "ISettingTruthOptionSubtableRowYaml": {
-      "title": "ISettingTruthOptionSubtableRowYaml",
+    "YamlTruthOptionStarforgedSubtableRow": {
+      "title": "YamlTruthOptionStarforgedSubtableRow",
       "type": "object",
       "properties": {
         "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
+          "$ref": "#/definitions/Suggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
         },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
         "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
+          "$ref": "#/definitions/RollTemplate",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
           "title": "Roll template"
         },
         "Content": {
-          "$ref": "#/definitions/IOracleContent",
+          "$ref": "#/definitions/OracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
+          "anyOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/GameObject" }
+            },
+            { "type": "null" }
+          ],
           "title": "Game objects"
-        },
-        "Result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
-          "type": "string",
-          "title": "Result"
         },
         "Floor": {
           "anyOf": [
@@ -4968,6 +5055,11 @@
             { "type": "null" }
           ],
           "title": "Ceiling"
+        },
+        "Result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "type": "string",
+          "title": "Result"
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
@@ -4978,11 +5070,14 @@
         "Subtable": {
           "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
           "anyOf": [
-            { "type": "array", "items": { "$ref": "#/definitions/IRow" } },
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/OracleTableRow" }
+            },
             {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+                "$ref": "#/definitions/TruthOptionSubtableRowStarforged"
               }
             }
           ],
@@ -4990,13 +5085,13 @@
         },
         "Multiple rolls": {
           "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
+          "$ref": "#/definitions/MultipleRolls",
           "title": "Multiple rolls"
         },
         "Attributes": {
           "description": "The attributes set by this row.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
+          "items": { "$ref": "#/definitions/Attribute" },
           "title": "Attributes"
         },
         "$id": {
@@ -5006,31 +5101,31 @@
           "title": "$id"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Ceiling", "Floor", "Result"]
     },
-    "ISuggestions": {
+    "Suggestions": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
-      "title": "ISuggestions",
-      "$ref": "#/definitions/ISuggestions_1"
+      "title": "Suggestions",
+      "anyOf": [{ "$ref": "#/definitions/Suggestions_1" }, { "type": "null" }]
     },
-    "ISuggestions_1": {
+    "Suggestions_1": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
-      "title": "ISuggestions_1",
+      "title": "Suggestions_1",
       "type": "object",
       "properties": {
         "Game objects": {
           "description": "Suggested game objects and their parameters.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
+          "items": { "$ref": "#/definitions/GameObject" },
           "title": "Game objects"
         },
         "Oracle rolls": {
@@ -5079,9 +5174,9 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IGameObject": {
+    "GameObject": {
       "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
-      "title": "IGameObject",
+      "title": "GameObject",
       "type": "object",
       "properties": {
         "Object type": {
@@ -5089,7 +5184,7 @@
           "title": "Object type"
         },
         "Requires": {
-          "$ref": "#/definitions/IRequirements",
+          "$ref": "#/definitions/Requirements",
           "title": "Requires"
         }
       },
@@ -5112,15 +5207,15 @@
       ],
       "type": "string"
     },
-    "IRequirements": {
+    "Requirements": {
       "description": "Data describing an item's requirements.",
-      "title": "IRequirements",
+      "title": "Requirements",
       "type": "object",
       "properties": {
         "Attributes": {
           "description": "A list of attribute keys, and values of those keys that satisfy the requirements.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IAttributeChoices" },
+          "items": { "$ref": "#/definitions/AttributeChoices" },
           "title": "Attributes"
         }
       },
@@ -5128,8 +5223,8 @@
       "additionalProperties": false,
       "required": ["Attributes"]
     },
-    "IAttributeChoices": {
-      "title": "IAttributeChoices",
+    "AttributeChoices": {
+      "title": "AttributeChoices",
       "type": "object",
       "properties": {
         "Key": { "$ref": "#/definitions/AttributeKey", "title": "Key" },
@@ -5171,14 +5266,14 @@
       ],
       "type": "string"
     },
-    "IRollTemplate": {
+    "RollTemplate": {
       "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate",
-      "$ref": "#/definitions/IRollTemplate_1"
+      "title": "RollTemplate",
+      "anyOf": [{ "$ref": "#/definitions/RollTemplate_1" }, { "type": "null" }]
     },
-    "IRollTemplate_1": {
+    "RollTemplate_1": {
       "description": "Describes the string keys of this item that should be replaced with template strings and filled with the results of one or more oracles.",
-      "title": "IRollTemplate_1",
+      "title": "RollTemplate_1",
       "type": "object",
       "properties": {
         "$id": {
@@ -5207,14 +5302,14 @@
       "additionalProperties": false,
       "required": ["$id"]
     },
-    "IOracleContent": {
+    "OracleContent": {
       "description": "Interface for metadata that describes an oracle's semantic or lexical content.",
-      "title": "IOracleContent",
-      "$ref": "#/definitions/IOracleContent_1"
+      "title": "OracleContent",
+      "anyOf": [{ "$ref": "#/definitions/OracleContent_1" }, { "type": "null" }]
     },
-    "IOracleContent_1": {
+    "OracleContent_1": {
       "description": "Interface for metadata that describes an oracle's semantic or lexical content.",
-      "title": "IOracleContent_1",
+      "title": "OracleContent_1",
       "type": "object",
       "properties": {
         "Part of speech": {
@@ -5249,9 +5344,9 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IRow": {
+    "OracleTableRow": {
       "description": "Interface representing a single row in an oracle table.",
-      "title": "IRow",
+      "title": "OracleTableRow",
       "type": "object",
       "properties": {
         "$id": {
@@ -5290,7 +5385,7 @@
           "title": "Result"
         },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
@@ -5303,11 +5398,14 @@
         "Subtable": {
           "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
           "anyOf": [
-            { "type": "array", "items": { "$ref": "#/definitions/IRow" } },
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/OracleTableRow" }
+            },
             {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+                "$ref": "#/definitions/TruthOptionSubtableRowStarforged"
               }
             }
           ],
@@ -5315,38 +5413,43 @@
         },
         "Multiple rolls": {
           "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
+          "$ref": "#/definitions/MultipleRolls",
           "title": "Multiple rolls"
         },
         "Attributes": {
           "description": "The attributes set by this row.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
+          "items": { "$ref": "#/definitions/Attribute" },
           "title": "Attributes"
         },
         "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
+          "$ref": "#/definitions/RollTemplate",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
           "title": "Roll template"
         },
         "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
+          "$ref": "#/definitions/Suggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
         },
         "Content": {
-          "$ref": "#/definitions/IOracleContent",
+          "$ref": "#/definitions/OracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
+          "anyOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/GameObject" }
+            },
+            { "type": "null" }
+          ],
           "title": "Game objects"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         }
@@ -5355,8 +5458,8 @@
       "additionalProperties": false,
       "required": ["$id", "Ceiling", "Floor", "Result"]
     },
-    "ISettingTruthOptionSubtableRow": {
-      "title": "ISettingTruthOptionSubtableRow",
+    "TruthOptionSubtableRowStarforged": {
+      "title": "TruthOptionSubtableRowStarforged",
       "type": "object",
       "properties": {
         "$id": {
@@ -5395,7 +5498,7 @@
           "title": "Result"
         },
         "Summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.",
           "type": ["null", "string"],
           "title": "Summary"
         },
@@ -5408,11 +5511,14 @@
         "Subtable": {
           "description": "A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.",
           "anyOf": [
-            { "type": "array", "items": { "$ref": "#/definitions/IRow" } },
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/OracleTableRow" }
+            },
             {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ISettingTruthOptionSubtableRow"
+                "$ref": "#/definitions/TruthOptionSubtableRowStarforged"
               }
             }
           ],
@@ -5420,38 +5526,43 @@
         },
         "Multiple rolls": {
           "description": "Data for rows that call for multiple rolls, e.g. on `Roll twice` results.",
-          "$ref": "#/definitions/IMultipleRolls",
+          "$ref": "#/definitions/MultipleRolls",
           "title": "Multiple rolls"
         },
         "Attributes": {
           "description": "The attributes set by this row.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IAttribute" },
+          "items": { "$ref": "#/definitions/Attribute" },
           "title": "Attributes"
         },
         "Roll template": {
-          "$ref": "#/definitions/IRollTemplate",
+          "$ref": "#/definitions/RollTemplate",
           "description": "Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.",
           "title": "Roll template"
         },
         "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
+          "$ref": "#/definitions/Suggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
         },
         "Content": {
-          "$ref": "#/definitions/IOracleContent",
+          "$ref": "#/definitions/OracleContent",
           "description": "Metadata that describes an oracle's semantic or lexical content.",
           "title": "Content"
         },
         "Game objects": {
           "description": "Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see \"Peeling the Onion\", p. 293.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
+          "anyOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/GameObject" }
+            },
+            { "type": "null" }
+          ],
           "title": "Game objects"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         }
@@ -5460,9 +5571,9 @@
       "additionalProperties": false,
       "required": ["$id", "Ceiling", "Floor", "Result"]
     },
-    "IMultipleRolls": {
-      "description": "Describes {@link IRow} results that call for multiple rolls, most commonly \"Roll twice\" results.",
-      "title": "IMultipleRolls",
+    "MultipleRolls": {
+      "description": "Describes {@link OracleTableRow} results that call for multiple rolls, most commonly \"Roll twice\" results.",
+      "title": "MultipleRolls",
       "type": "object",
       "properties": {
         "Amount": {
@@ -5476,7 +5587,7 @@
           "title": "Allow duplicates"
         },
         "Make it worse": {
-          "description": "Whether duplicate rolls should be compounded in an Ironsworn-style \"Make it worse\" results.\n\nTypically this is accompanied by `IRow.Result` text like \"Roll twice more on this table. Both results occur. If they are the same result, make it worse.\"\n\nCan safely be ignored in Starforged-only implementations. Implicitly requires `Allow duplicates`.",
+          "description": "Whether duplicate rolls should be compounded in an Ironsworn-style \"Make it worse\" results.\n\nTypically this is accompanied by `Row.Result` text like \"Roll twice more on this table. Both results occur. If they are the same result, make it worse.\"\n\nCan safely be ignored in Starforged-only implementations. Implicitly requires `Allow duplicates`.",
           "type": "boolean",
           "title": "Make it worse"
         }
@@ -5485,9 +5596,9 @@
       "additionalProperties": false,
       "required": ["Allow duplicates", "Amount", "Make it worse"]
     },
-    "IAttribute": {
+    "Attribute": {
       "description": "Describes an attribute key/value pair, set by an oracle row. The key-value pair should be set on any game object for which that row is generated.\n\nAttributes exist to describe prerequisites that might be fulfilled by more than one table, that don't exist on tables at all, or that a generated game object might want to 'force' as one of it's roll results.\n\nSee documentation for a list of available values.",
-      "title": "IAttribute",
+      "title": "Attribute",
       "type": "object",
       "properties": {
         "Key": { "$ref": "#/definitions/AttributeKey", "title": "Key" },
@@ -5497,14 +5608,14 @@
       "additionalProperties": false,
       "required": ["Key"]
     },
-    "IDisplay": {
+    "Display": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/IDisplay_1"
+      "title": "Display",
+      "anyOf": [{ "$ref": "#/definitions/Display_1" }, { "type": "null" }]
     },
-    "IDisplay_1": {
+    "Display_1": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay_1",
+      "title": "Display_1",
       "type": "object",
       "properties": {
         "Icon": {
@@ -5530,19 +5641,19 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IRollTemplateYaml": {
-      "title": "IRollTemplateYaml",
+    "YamlRollTemplate": {
+      "title": "YamlRollTemplate",
       "type": "object",
       "properties": {
-        "Description": {
-          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
-          "type": "string",
-          "title": "Description"
-        },
         "Summary": {
           "description": "A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.",
           "type": "string",
           "title": "Summary"
+        },
+        "Description": {
+          "description": "A template string for the parent's `Description` property, to be filled with an oracle table roll Result.",
+          "type": "string",
+          "title": "Description"
         },
         "Result": {
           "description": "A template string for the parent's `Result` property, to be filled with an oracle table roll Result.",
@@ -5556,41 +5667,19 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
-      "type": "object",
-      "properties": {
-        "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.",
-          "type": "string",
-          "title": "Canonical"
-        },
-        "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.",
-          "type": "string",
-          "title": "Short"
-        },
-        "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link ITitle.Short} instead.",
-          "type": "string",
-          "title": "Standard"
-        },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "$id": { "type": "string", "title": "$id" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["Canonical"]
+    "Display_2": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "Display_2",
+      "$ref": "#/definitions/Display_1"
     },
-    "ISource": {
+    "Source": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource",
+      "title": "Source",
       "type": "object",
       "properties": {
         "Title": {

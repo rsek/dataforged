@@ -3,7 +3,7 @@
   "properties": {
     "Regions": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/definitions/IIronswornRegionYaml" },
+      "additionalProperties": { "$ref": "#/definitions/YamlIronswornRegion" },
       "defaultProperties": [],
       "title": "Regions"
     },
@@ -29,7 +29,7 @@
       "title": "_templates"
     },
     "Source": {
-      "$ref": "#/definitions/ISource",
+      "$ref": "#/definitions/Source",
       "description": "Information on this item's source.",
       "title": "Source"
     }
@@ -38,17 +38,12 @@
   "additionalProperties": false,
   "required": ["Regions", "Source"],
   "definitions": {
-    "IIronswornRegionYaml": {
-      "title": "IIronswornRegionYaml",
+    "YamlIronswornRegion": {
+      "title": "YamlIronswornRegion",
       "type": "object",
       "properties": {
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
         "Summary": {
-          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link IHasDescription| Description}, when they're both present.",
+          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
           "type": "string",
           "title": "Summary"
         },
@@ -62,16 +57,16 @@
           "items": { "type": "string" },
           "title": "Features"
         },
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "Description"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Ironsworn/Regions/[A-z_-]$",
           "type": "string",
           "title": "$id"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
         },
         "Tags": {
           "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
@@ -79,9 +74,14 @@
           "items": { "type": "string" },
           "title": "Tags"
         },
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -93,14 +93,14 @@
         "Title"
       ]
     },
-    "IDisplay": {
+    "Display": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/IDisplay_1"
+      "title": "Display",
+      "$ref": "#/definitions/Display_1"
     },
-    "IDisplay_1": {
+    "Display_1": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay_1",
+      "title": "Display_1",
       "type": "object",
       "properties": {
         "Icon": {
@@ -126,8 +126,8 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ISourceYaml": {
-      "title": "ISourceYaml",
+    "YamlSource": {
+      "title": "YamlSource",
       "type": "object",
       "properties": {
         "Title": {
@@ -177,36 +177,36 @@
       ],
       "type": "string"
     },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
+    "YamlTitle": {
+      "title": "YamlTitle",
       "type": "object",
       "properties": {
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link ITitle.Short} instead.",
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
           "type": "string",
           "title": "Standard"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "$id": { "type": "string", "title": "$id" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Canonical"]
     },
-    "ISource": {
+    "Source": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource",
+      "title": "Source",
       "type": "object",
       "properties": {
         "Title": {

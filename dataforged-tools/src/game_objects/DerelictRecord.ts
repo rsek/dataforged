@@ -3,14 +3,14 @@ import type { StarshipRecord } from "@game_objects/StarshipRecord.js";
 import type { AttributeKey, DerelictType, GameObjectType } from "@schema";
 
 /**
- * @internal
+ * @public
  */
 export type DerelictRecord = PlaceRecord<GameObjectType.Derelict, AttributeKey.DerelictType|AttributeKey.InitialContact> & {
   [AttributeKey.InitialContact]: StarshipInitialContact.Derelict|SettlementInitialContact.Derelict;
 };
 
 /**
- * @internal
+ * @public
  */
 export type DerelictStarshipRecord = Omit<StarshipRecord<AttributeKey.DerelictType>, "Object type"> & {
   "Object type": GameObjectType.Derelict;
@@ -18,7 +18,7 @@ export type DerelictStarshipRecord = Omit<StarshipRecord<AttributeKey.DerelictTy
   [AttributeKey.InitialContact]: StarshipInitialContact.Derelict;
 };
 /**
- * @internal
+ * @public
  */
 export type DerelictSettlementRecord = Omit<SettlementRecord<AttributeKey.DerelictType>, "Object type"> & {
   "Object type": GameObjectType.Derelict;

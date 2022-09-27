@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Settlements / Population
- * @alpha
+ * @public
  */
 export var Population;
 (function (Population) {

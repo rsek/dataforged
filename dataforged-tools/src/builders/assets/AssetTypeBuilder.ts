@@ -1,7 +1,7 @@
 import { AssetBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
-import type { Asset , AssetType, AssetUsage, Display, Gamespace, Source, Title, YamlAssetType } from "@schema";
+import type { Asset , AssetType, AssetUsage, Display, Game, Source, Title, YamlAssetType } from "@schema";
 import { formatId } from "@utils";
-import _ from "lodash-es";Game
+import _ from "lodash-es";
 
 /**
  * @internal
@@ -14,10 +14,10 @@ export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetTyp
   Assets: Asset[];
   Display: Display;
   Usage: AssetUsage;
-  constructor(json: YamlAssetType, gamespace: Gamespace, rootSource: Source) {
-    super(json.Source ?? {}, rootSource);Game
+  constructor(json: YamlAssetType, game: Game, rootSource: Source) {
+    super(json.Source ?? {}, rootSource);
     const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
-    this.$id = formatId(fragment,gamespace,"Assets");
+    this.$id = formatId(fragment,game,"Assets");
     this.Aliases = json.Aliases;
     this.Description = json.Description;
 
@@ -32,7 +32,7 @@ export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetTyp
       usage.Shared = false;
     }
     this.Usage = usage;
-    this.Assets = _.map(json.Assets,asset => new AssetBuilder(asset, gamespace, this, rootSource));
+    this.Assets = _.map(json.Assets,asset => new AssetBuilder(asset, game, this, rootSource));
   }
 }
 

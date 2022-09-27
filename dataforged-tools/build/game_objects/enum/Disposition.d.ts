@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Characters / Disposition
- * @alpha
+ * @public
  */
 declare enum Disposition {
     Cooperative = "Cooperative",

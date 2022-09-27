@@ -1,5 +1,5 @@
 /**
- * @alpha
+ * @public
  */
 export enum StarshipInitialContact {
   AskingForHelp = "Asking for help",

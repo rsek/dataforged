@@ -1,4 +1,5 @@
-import { writeSchema } from "@utils";
+// eslint-disable-next-line no-restricted-imports
+import { writeSchema } from "./index.js";
 
 const yamlDeclarations = "./build/dataforged-tools.d.ts";
 const jsonDeclarations = "../dist/types/index.d.ts";
@@ -25,13 +26,13 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     declarations: yamlDeclarations
   },
   {
-    typeName: "YamlOracleSetRoot",
+    typeName: "YamlOracleRoot",
     outFiles: ["../_master-data/schema/oracles.json"],
     declarations: yamlDeclarations
   },
   {
-    typeName: "YamlCyclopediaRoot",
-    outFiles: ["../_master-data/schema/cyclopedia.json"],
+    typeName: "YamlIronlandsRegionRoot",
+    outFiles: ["../_master-data/schema/ironlands_regions.json"],
     declarations: yamlDeclarations
   },
   {

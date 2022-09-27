@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Character / Role
- * @alpha
+ * @public
  */
 enum Role {
   Agent = "Agent",

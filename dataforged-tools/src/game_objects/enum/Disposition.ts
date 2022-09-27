@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Characters / Disposition
- * @alpha
+ * @public
  */
 
 enum Disposition {

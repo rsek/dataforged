@@ -3,7 +3,7 @@
   "properties": {
     "Asset Types": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/definitions/IAssetTypeYaml" },
+      "additionalProperties": { "$ref": "#/definitions/YamlAssetType" },
       "defaultProperties": [],
       "title": "Asset Types"
     },
@@ -29,7 +29,7 @@
       "title": "_templates"
     },
     "Source": {
-      "$ref": "#/definitions/ISource",
+      "$ref": "#/definitions/Source",
       "description": "Information on this item's source.",
       "title": "Source"
     }
@@ -38,13 +38,13 @@
   "additionalProperties": false,
   "required": ["Asset Types", "Source"],
   "definitions": {
-    "IAssetTypeYaml": {
-      "title": "IAssetTypeYaml",
+    "YamlAssetType": {
+      "title": "YamlAssetType",
       "type": "object",
       "properties": {
         "Assets": {
           "type": "object",
-          "additionalProperties": { "$ref": "#/definitions/IAssetYaml" },
+          "additionalProperties": { "$ref": "#/definitions/YamlAsset" },
           "defaultProperties": [],
           "title": "Assets"
         },
@@ -60,35 +60,35 @@
           "title": "$id"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
-        "Usage": { "$ref": "#/definitions/IAssetUsage", "title": "Usage" },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
         },
+        "Usage": { "$ref": "#/definitions/AssetUsage", "title": "Usage" },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Assets", "Description", "Title"]
     },
-    "IAssetYaml": {
-      "title": "IAssetYaml",
+    "YamlAsset": {
+      "title": "YamlAsset",
       "type": "object",
       "properties": {
         "Abilities": {
           "type": "array",
           "items": [
-            { "$ref": "#/definitions/IAssetAbilityYaml" },
-            { "$ref": "#/definitions/IAssetAbilityYaml" },
-            { "$ref": "#/definitions/IAssetAbilityYaml" }
+            { "$ref": "#/definitions/YamlAssetAbility" },
+            { "$ref": "#/definitions/YamlAssetAbility" },
+            { "$ref": "#/definitions/YamlAssetAbility" }
           ],
           "minItems": 3,
           "maxItems": 3,
@@ -98,24 +98,24 @@
           "type": "array",
           "items": {
             "anyOf": [
-              { "$ref": "#/definitions/IInputSelectYaml" },
-              { "$ref": "#/definitions/IInputTextYaml" }
+              { "$ref": "#/definitions/YamlInputSelect" },
+              { "$ref": "#/definitions/YamlInputText" }
             ]
           },
           "title": "Inputs"
         },
         "Condition Meter": {
-          "$ref": "#/definitions/IConditionMeterYaml",
+          "$ref": "#/definitions/YamlConditionMeter",
           "title": "Condition Meter"
         },
         "States": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IAssetStateYaml" },
+          "items": { "$ref": "#/definitions/YamlAssetState" },
           "title": "States"
         },
         "Attachments": {
           "description": "Details on what attachments (other assets) are accepted by this asset.",
-          "$ref": "#/definitions/IAssetAttachment",
+          "$ref": "#/definitions/AssetAttachment",
           "title": "Attachments"
         },
         "Requirement": {
@@ -129,25 +129,15 @@
           "type": "string",
           "title": "$id"
         },
-        "Asset Type": {
-          "description": "The ID of the asset's parent AssetType",
-          "type": "string",
-          "title": "Asset Type"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
         "Tags": {
           "type": "array",
           "items": { "type": "string" },
           "title": "Tags"
         },
-        "Usage": {
-          "$ref": "#/definitions/IAssetUsage",
-          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
-          "title": "Usage"
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
@@ -155,56 +145,66 @@
           "items": { "type": "string" },
           "title": "Aliases"
         },
+        "Asset Type": {
+          "description": "The ID of the asset's parent AssetType",
+          "type": "string",
+          "title": "Asset Type"
+        },
+        "Usage": {
+          "$ref": "#/definitions/AssetUsage",
+          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
+          "title": "Usage"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Abilities", "Title"]
     },
-    "IAssetAbilityYaml": {
-      "title": "IAssetAbilityYaml",
+    "YamlAssetAbility": {
+      "title": "YamlAssetAbility",
       "type": "object",
       "properties": {
         "Alter Moves": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IAlterMoveYaml" },
+          "items": { "$ref": "#/definitions/YamlAlterMove" },
           "title": "Alter Moves"
         },
         "Moves": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IMoveYaml" },
+          "items": { "$ref": "#/definitions/YamlMove" },
           "title": "Moves"
         },
         "Inputs": {
           "type": "array",
           "items": {
             "anyOf": [
-              { "$ref": "#/definitions/IInputClockYaml" },
-              { "$ref": "#/definitions/IInputNumberYaml" },
-              { "$ref": "#/definitions/IInputTextYaml" }
+              { "$ref": "#/definitions/YamlInputClock" },
+              { "$ref": "#/definitions/YamlInputNumber" },
+              { "$ref": "#/definitions/YamlInputText" }
             ]
           },
           "title": "Inputs"
         },
         "Alter Momentum": {
-          "$ref": "#/definitions/IAlterMomentumYaml",
+          "$ref": "#/definitions/YamlAlterMomentum",
           "title": "Alter Momentum"
         },
         "Alter Properties": {
-          "$ref": "#/definitions/IAssetAlterPropertiesYaml",
+          "$ref": "#/definitions/YamlAssetAlterProperties",
           "title": "Alter Properties"
-        },
-        "Label": {
-          "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
-          "type": "string",
-          "title": "Label"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
           "title": "Text"
+        },
+        "Label": {
+          "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
+          "type": "string",
+          "title": "Label"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
@@ -218,22 +218,22 @@
           "title": "Enabled"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Text"]
     },
-    "IAlterMoveYaml": {
-      "title": "IAlterMoveYaml",
+    "YamlAlterMove": {
+      "title": "YamlAlterMove",
       "type": "object",
       "properties": {
         "Trigger": {
-          "$ref": "#/definitions/IAlterMoveTriggerYaml",
+          "$ref": "#/definitions/YamlAlterMoveTrigger",
           "title": "Trigger"
         },
         "Outcomes": {
-          "$ref": "#/definitions/IAlterMoveOutcomesYaml",
+          "$ref": "#/definitions/YamlAlterMoveOutcomes",
           "title": "Outcomes"
         },
         "Text": {
@@ -242,7 +242,7 @@
           "title": "Text"
         },
         "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
+          "$ref": "#/definitions/Suggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
         },
@@ -300,36 +300,36 @@
           "title": "$id"
         },
         "Title": {
-          "$ref": "#/definitions/ITitle",
+          "$ref": "#/definitions/Title",
           "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
           "title": "Title"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
         },
         "Tags": {
           "type": "array",
           "items": { "type": "string" },
           "title": "Tags"
         },
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAlterMoveTriggerYaml": {
-      "title": "IAlterMoveTriggerYaml",
+    "YamlAlterMoveTrigger": {
+      "title": "YamlAlterMoveTrigger",
       "type": "object",
       "properties": {
         "Options": {
           "type": "array",
           "items": {
             "anyOf": [
-              { "$ref": "#/definitions/IAlterMoveTriggerOptionActionYaml" },
-              { "$ref": "#/definitions/IAlterMoveTriggerOptionProgressYaml" }
+              { "$ref": "#/definitions/YamlAlterMoveTriggerOptionAction" },
+              { "$ref": "#/definitions/YamlAlterMoveTriggerOptionProgress" }
             ]
           },
           "title": "Options"
@@ -342,7 +342,7 @@
         "_idFragment": { "type": "string", "title": "_idFragment" },
         "By": {
           "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
-          "$ref": "#/definitions/IMoveTriggerBy",
+          "$ref": "#/definitions/MoveTriggerBy",
           "title": "By"
         },
         "$id": {
@@ -351,13 +351,13 @@
           "type": "string",
           "title": "$id"
         },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAlterMoveTriggerOptionActionYaml": {
-      "title": "IAlterMoveTriggerOptionActionYaml",
+    "YamlAlterMoveTriggerOptionAction": {
+      "title": "YamlAlterMoveTriggerOptionAction",
       "type": "object",
       "properties": {
         "Using": {
@@ -377,7 +377,7 @@
         },
         "Custom stat": {
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
-          "$ref": "#/definitions/ICustomStat",
+          "$ref": "#/definitions/CustomStat",
           "title": "Custom stat"
         },
         "$id": {
@@ -392,7 +392,7 @@
           "title": "Method"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -403,8 +403,8 @@
       "type": "string",
       "enum": ["Action roll"]
     },
-    "ICustomStat": {
-      "title": "ICustomStat",
+    "CustomStat": {
+      "title": "CustomStat",
       "type": "object",
       "properties": {
         "$id": {
@@ -415,7 +415,7 @@
         },
         "Options": {
           "type": "array",
-          "items": { "$ref": "#/definitions/ICustomStatOption" },
+          "items": { "$ref": "#/definitions/CustomStatOption" },
           "title": "Options"
         },
         "Label": {
@@ -428,8 +428,8 @@
       "additionalProperties": false,
       "required": ["$id", "Label", "Options"]
     },
-    "ICustomStatOption": {
-      "title": "ICustomStatOption",
+    "CustomStatOption": {
+      "title": "CustomStatOption",
       "type": "object",
       "properties": {
         "$id": {
@@ -467,8 +467,8 @@
       ],
       "type": "string"
     },
-    "ISourceYaml": {
-      "title": "ISourceYaml",
+    "YamlSource": {
+      "title": "YamlSource",
       "type": "object",
       "properties": {
         "Title": {
@@ -518,8 +518,8 @@
       ],
       "type": "string"
     },
-    "IAlterMoveTriggerOptionProgressYaml": {
-      "title": "IAlterMoveTriggerOptionProgressYaml",
+    "YamlAlterMoveTriggerOptionProgress": {
+      "title": "YamlAlterMoveTriggerOptionProgress",
       "type": "object",
       "properties": {
         "Using": {
@@ -554,7 +554,7 @@
         },
         "Custom stat": {
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
-          "$ref": "#/definitions/ICustomStat",
+          "$ref": "#/definitions/CustomStat",
           "title": "Custom stat"
         },
         "$id": {
@@ -569,7 +569,7 @@
           "title": "Method"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -580,8 +580,8 @@
       "type": "string",
       "enum": ["Progress roll"]
     },
-    "IMoveTriggerBy": {
-      "title": "IMoveTriggerBy",
+    "MoveTriggerBy": {
+      "title": "MoveTriggerBy",
       "type": "object",
       "properties": {
         "Player": {
@@ -599,20 +599,20 @@
       "additionalProperties": false,
       "required": ["Ally", "Player"]
     },
-    "IAlterMoveOutcomesYaml": {
-      "title": "IAlterMoveOutcomesYaml",
+    "YamlAlterMoveOutcomes": {
+      "title": "YamlAlterMoveOutcomes",
       "type": "object",
       "properties": {
         "Strong Hit": {
-          "$ref": "#/definitions/IAlterMoveOutcomeStrongHitYaml",
+          "$ref": "#/definitions/YamlAlterMoveOutcomeStrongHit",
           "title": "Strong Hit"
         },
         "Weak Hit": {
-          "$ref": "#/definitions/IAlterMoveOutcomeWeakHitYaml",
+          "$ref": "#/definitions/YamlAlterMoveOutcomeWeakHit",
           "title": "Weak Hit"
         },
         "Miss": {
-          "$ref": "#/definitions/IAlterMoveOutcomeMissYaml",
+          "$ref": "#/definitions/YamlAlterMoveOutcomeMiss",
           "title": "Miss"
         },
         "$id": {
@@ -622,13 +622,13 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAlterMoveOutcomeStrongHitYaml": {
-      "title": "IAlterMoveOutcomeStrongHitYaml",
+    "YamlAlterMoveOutcomeStrongHit": {
+      "title": "YamlAlterMoveOutcomeStrongHit",
       "type": "object",
       "properties": {
         "$id": {
@@ -638,7 +638,7 @@
           "title": "$id"
         },
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeStrongHitMatchYaml",
+          "$ref": "#/definitions/YamlOutcomeStrongHitMatch",
           "title": "With a Match"
         },
         "In Control": {
@@ -652,11 +652,8 @@
           "type": "string",
           "title": "Count as"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "_idFragment": { "type": "string", "title": "_idFragment" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -667,18 +664,15 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeStrongHitMatchYaml": {
-      "title": "IOutcomeStrongHitMatchYaml",
+    "YamlOutcomeStrongHitMatch": {
+      "title": "YamlOutcomeStrongHitMatch",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<2>",
+          "$ref": "#/definitions/YamlOutcome<2>",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -702,23 +696,20 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeInfoBaseYaml<2>": {
-      "title": "IOutcomeInfoBaseYaml<2>",
+    "YamlOutcome<2>": {
+      "title": "YamlOutcome<2>",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<2>",
+          "$ref": "#/definitions/YamlOutcome<2>",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -742,13 +733,13 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IMoveRerollYaml": {
-      "title": "IMoveRerollYaml",
+    "YamlMoveReroll": {
+      "title": "YamlMoveReroll",
       "type": "object",
       "properties": {
         "Text": {
@@ -767,7 +758,7 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -779,8 +770,8 @@
       "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
       "type": "string"
     },
-    "IAlterMoveOutcomeWeakHitYaml": {
-      "title": "IAlterMoveOutcomeWeakHitYaml",
+    "YamlAlterMoveOutcomeWeakHit": {
+      "title": "YamlAlterMoveOutcomeWeakHit",
       "type": "object",
       "properties": {
         "$id": {
@@ -790,7 +781,7 @@
           "title": "$id"
         },
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<1>",
+          "$ref": "#/definitions/YamlOutcome<1>",
           "title": "With a Match"
         },
         "In Control": {
@@ -804,11 +795,8 @@
           "type": "string",
           "title": "Count as"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "_idFragment": { "type": "string", "title": "_idFragment" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -819,18 +807,15 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeInfoBaseYaml<1>": {
-      "title": "IOutcomeInfoBaseYaml<1>",
+    "YamlOutcome<1>": {
+      "title": "YamlOutcome<1>",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<1>",
+          "$ref": "#/definitions/YamlOutcome<1>",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -854,13 +839,13 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAlterMoveOutcomeMissYaml": {
-      "title": "IAlterMoveOutcomeMissYaml",
+    "YamlAlterMoveOutcomeMiss": {
+      "title": "YamlAlterMoveOutcomeMiss",
       "type": "object",
       "properties": {
         "$id": {
@@ -870,7 +855,7 @@
           "title": "$id"
         },
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeMissMatchYaml",
+          "$ref": "#/definitions/YamlOutcomeMissMatch",
           "title": "With a Match"
         },
         "In Control": {
@@ -884,11 +869,8 @@
           "type": "string",
           "title": "Count as"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "_idFragment": { "type": "string", "title": "_idFragment" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -899,18 +881,15 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeMissMatchYaml": {
-      "title": "IOutcomeMissMatchYaml",
+    "YamlOutcomeMissMatch": {
+      "title": "YamlOutcomeMissMatch",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<0>",
+          "$ref": "#/definitions/YamlOutcome<0>",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -934,23 +913,20 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeInfoBaseYaml<0>": {
-      "title": "IOutcomeInfoBaseYaml<0>",
+    "YamlOutcome<0>": {
+      "title": "YamlOutcome<0>",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<0>",
+          "$ref": "#/definitions/YamlOutcome<0>",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -974,25 +950,25 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ISuggestions": {
+    "Suggestions": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
-      "title": "ISuggestions",
-      "$ref": "#/definitions/ISuggestions_1"
+      "title": "Suggestions",
+      "$ref": "#/definitions/Suggestions_1"
     },
-    "ISuggestions_1": {
+    "Suggestions_1": {
       "description": "Describes \"non-canonical\" suggestions for game content related to the parent item.\n\nThese are intended be offered as convenient shortcuts for the user (for instance, including a menu dropdown for rolling on suggested tables); having them roll automatically is **not recommended** for most projects.\n\nThese can be safely ignored if that functionality is not desired.",
-      "title": "ISuggestions_1",
+      "title": "Suggestions_1",
       "type": "object",
       "properties": {
         "Game objects": {
           "description": "Suggested game objects and their parameters.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IGameObject" },
+          "items": { "$ref": "#/definitions/GameObject" },
           "title": "Game objects"
         },
         "Oracle rolls": {
@@ -1041,9 +1017,9 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IGameObject": {
+    "GameObject": {
       "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
-      "title": "IGameObject",
+      "title": "GameObject",
       "type": "object",
       "properties": {
         "Object type": {
@@ -1051,7 +1027,7 @@
           "title": "Object type"
         },
         "Requires": {
-          "$ref": "#/definitions/IRequirements",
+          "$ref": "#/definitions/Requirements",
           "title": "Requires"
         }
       },
@@ -1074,15 +1050,15 @@
       ],
       "type": "string"
     },
-    "IRequirements": {
+    "Requirements": {
       "description": "Data describing an item's requirements.",
-      "title": "IRequirements",
+      "title": "Requirements",
       "type": "object",
       "properties": {
         "Attributes": {
           "description": "A list of attribute keys, and values of those keys that satisfy the requirements.",
           "type": "array",
-          "items": { "$ref": "#/definitions/IAttributeChoices" },
+          "items": { "$ref": "#/definitions/AttributeChoices" },
           "title": "Attributes"
         }
       },
@@ -1090,8 +1066,8 @@
       "additionalProperties": false,
       "required": ["Attributes"]
     },
-    "IAttributeChoices": {
-      "title": "IAttributeChoices",
+    "AttributeChoices": {
+      "title": "AttributeChoices",
       "type": "object",
       "properties": {
         "Key": { "$ref": "#/definitions/AttributeKey", "title": "Key" },
@@ -1133,9 +1109,9 @@
       ],
       "type": "string"
     },
-    "ITitle": { "title": "ITitle", "$ref": "#/definitions/ITitle_1" },
-    "ITitle_1": {
-      "title": "ITitle_1",
+    "Title": { "title": "Title", "$ref": "#/definitions/Title_1" },
+    "Title_1": {
+      "title": "Title_1",
       "type": "object",
       "properties": {
         "$id": {
@@ -1145,17 +1121,17 @@
           "title": "$id"
         },
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Canonical"
         },
         "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link ITitle.Short} instead.",
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
           "type": "string",
           "title": "Standard"
         },
         "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Short"
         }
@@ -1164,14 +1140,14 @@
       "additionalProperties": false,
       "required": ["$id", "Canonical", "Short", "Standard"]
     },
-    "IDisplay": {
+    "Display": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/IDisplay_1"
+      "title": "Display",
+      "$ref": "#/definitions/Display_1"
     },
-    "IDisplay_1": {
+    "Display_1": {
       "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay_1",
+      "title": "Display_1",
       "type": "object",
       "properties": {
         "Icon": {
@@ -1197,16 +1173,16 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IMoveYaml": {
-      "title": "IMoveYaml",
+    "YamlMove": {
+      "title": "YamlMove",
       "type": "object",
       "properties": {
         "Trigger": {
-          "$ref": "#/definitions/IMoveTriggerYaml",
+          "$ref": "#/definitions/YamlMoveTrigger",
           "title": "Trigger"
         },
         "Outcomes": {
-          "$ref": "#/definitions/IMoveOutcomesYaml",
+          "$ref": "#/definitions/YamlOutcomes",
           "title": "Outcomes"
         },
         "Text": {
@@ -1215,7 +1191,7 @@
           "title": "Text"
         },
         "Suggestions": {
-          "$ref": "#/definitions/ISuggestions",
+          "$ref": "#/definitions/Suggestions",
           "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
           "title": "Suggestions"
         },
@@ -1246,20 +1222,20 @@
           "type": "string",
           "title": "$id"
         },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
+        "Category": {
+          "description": "The ID of the move's category.",
+          "type": "string",
+          "title": "Category"
         },
         "Tags": {
           "type": "array",
           "items": { "type": "string" },
           "title": "Tags"
         },
-        "Category": {
-          "description": "The ID of the move's category.",
-          "type": "string",
-          "title": "Category"
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
         "Optional": {
           "description": "Whether or not the source material presents this rules item as optional.",
@@ -1268,23 +1244,23 @@
           "title": "Optional"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Text", "Title", "Trigger"]
     },
-    "IMoveTriggerYaml": {
-      "title": "IMoveTriggerYaml",
+    "YamlMoveTrigger": {
+      "title": "YamlMoveTrigger",
       "type": "object",
       "properties": {
         "Options": {
           "type": "array",
           "items": {
             "anyOf": [
-              { "$ref": "#/definitions/IMoveTriggerOptionActionYaml" },
-              { "$ref": "#/definitions/IMoveTriggerOptionProgressYaml" }
+              { "$ref": "#/definitions/YamlMoveTriggerOptionAction" },
+              { "$ref": "#/definitions/YamlMoveTriggerOptionProgress" }
             ]
           },
           "title": "Options"
@@ -1296,7 +1272,7 @@
         },
         "By": {
           "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
-          "$ref": "#/definitions/IMoveTriggerBy",
+          "$ref": "#/definitions/MoveTriggerBy",
           "title": "By"
         },
         "$id": {
@@ -1306,17 +1282,17 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IMoveTriggerOptionActionYaml": {
-      "title": "IMoveTriggerOptionActionYaml",
+    "YamlMoveTriggerOptionAction": {
+      "title": "YamlMoveTriggerOptionAction",
       "type": "object",
       "properties": {
         "Custom stat": {
-          "$ref": "#/definitions/ICustomStatYaml",
+          "$ref": "#/definitions/YamlCustomStat",
           "title": "Custom stat"
         },
         "Using": {
@@ -1370,19 +1346,19 @@
           "title": "Roll type"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Using"]
     },
-    "ICustomStatYaml": {
-      "title": "ICustomStatYaml",
+    "YamlCustomStat": {
+      "title": "YamlCustomStat",
       "type": "object",
       "properties": {
         "Options": {
           "type": "array",
-          "items": { "$ref": "#/definitions/ICustomStatOptionYaml" },
+          "items": { "$ref": "#/definitions/YamlCustomStatOption" },
           "title": "Options"
         },
         "Label": {
@@ -1397,14 +1373,14 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Label", "Options"]
     },
-    "ICustomStatOptionYaml": {
-      "title": "ICustomStatOptionYaml",
+    "YamlCustomStatOption": {
+      "title": "YamlCustomStatOption",
       "type": "object",
       "properties": {
         "Label": {
@@ -1424,7 +1400,7 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1435,8 +1411,8 @@
       "enum": ["Action roll"],
       "type": "string"
     },
-    "IMoveTriggerOptionProgressYaml": {
-      "title": "IMoveTriggerOptionProgressYaml",
+    "YamlMoveTriggerOptionProgress": {
+      "title": "YamlMoveTriggerOptionProgress",
       "type": "object",
       "properties": {
         "Text": {
@@ -1446,7 +1422,7 @@
         },
         "Custom stat": {
           "description": "Defines a custom stat, if one is included in this object's `With` array.",
-          "$ref": "#/definitions/ICustomStat",
+          "$ref": "#/definitions/CustomStat",
           "title": "Custom stat"
         },
         "$id": {
@@ -1487,7 +1463,7 @@
           "title": "Roll type"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
@@ -1497,19 +1473,19 @@
       "enum": ["Progress roll"],
       "type": "string"
     },
-    "IMoveOutcomesYaml": {
-      "title": "IMoveOutcomesYaml",
+    "YamlOutcomes": {
+      "title": "YamlOutcomes",
       "type": "object",
       "properties": {
         "Strong Hit": {
-          "$ref": "#/definitions/IOutcomeStrongHitYaml",
+          "$ref": "#/definitions/YamlOutcomeStrongHit",
           "title": "Strong Hit"
         },
         "Weak Hit": {
-          "$ref": "#/definitions/IOutcomeWeakHitYaml",
+          "$ref": "#/definitions/YamlOutcomeWeakHit",
           "title": "Weak Hit"
         },
-        "Miss": { "$ref": "#/definitions/IOutcomeMissYaml", "title": "Miss" },
+        "Miss": { "$ref": "#/definitions/YamlOutcomeMiss", "title": "Miss" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
@@ -1517,24 +1493,21 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Miss", "Strong Hit", "Weak Hit"]
     },
-    "IOutcomeStrongHitYaml": {
-      "title": "IOutcomeStrongHitYaml",
+    "YamlOutcomeStrongHit": {
+      "title": "YamlOutcomeStrongHit",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeStrongHitMatchYaml",
+          "$ref": "#/definitions/YamlOutcomeStrongHitMatch",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -1558,23 +1531,20 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeWeakHitYaml": {
-      "title": "IOutcomeWeakHitYaml",
+    "YamlOutcomeWeakHit": {
+      "title": "YamlOutcomeWeakHit",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeInfoBaseYaml<1>",
+          "$ref": "#/definitions/YamlOutcome<1>",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -1598,23 +1568,20 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IOutcomeMissYaml": {
-      "title": "IOutcomeMissYaml",
+    "YamlOutcomeMiss": {
+      "title": "YamlOutcomeMiss",
       "type": "object",
       "properties": {
         "With a Match": {
-          "$ref": "#/definitions/IOutcomeMissMatchYaml",
+          "$ref": "#/definitions/YamlOutcomeMissMatch",
           "title": "With a Match"
         },
-        "Reroll": {
-          "$ref": "#/definitions/IMoveRerollYaml",
-          "title": "Reroll"
-        },
+        "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -1638,40 +1605,40 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
+    "YamlTitle": {
+      "title": "YamlTitle",
       "type": "object",
       "properties": {
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link ITitle.Short} instead.",
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
           "type": "string",
           "title": "Standard"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "$id": { "type": "string", "title": "$id" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Canonical"]
     },
-    "IInputClockYaml": {
-      "title": "IInputClockYaml",
+    "YamlInputClock": {
+      "title": "YamlInputClock",
       "type": "object",
       "properties": {
         "Label": {
@@ -1710,7 +1677,7 @@
           "title": "Adjustable"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1719,7 +1686,7 @@
     "InputType.Clock": {
       "title": "InputType.Clock",
       "type": "string",
-      "enum": ["Clock"]
+      "enum": ["clock"]
     },
     "ClockType": {
       "description": "See clocks (p. 234) for more information.",
@@ -1732,8 +1699,8 @@
       "enum": [10, 4, 6, 8],
       "type": "number"
     },
-    "IInputNumberYaml": {
-      "title": "IInputNumberYaml",
+    "YamlInputNumber": {
+      "title": "YamlInputNumber",
       "type": "object",
       "properties": {
         "Label": {
@@ -1741,9 +1708,9 @@
           "type": "string",
           "title": "Label"
         },
-        "Value": { "type": "integer", "title": "Value" },
         "Max": { "type": ["null", "integer"], "title": "Max" },
         "Min": { "type": "integer", "title": "Min" },
+        "Value": { "type": "integer", "title": "Value" },
         "Input Type": {
           "$ref": "#/definitions/InputType.Number",
           "title": "Input Type"
@@ -1761,7 +1728,7 @@
         },
         "Step": { "enum": [1], "type": "number", "title": "Step" },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1770,10 +1737,10 @@
     "InputType.Number": {
       "title": "InputType.Number",
       "type": "string",
-      "enum": ["Number"]
+      "enum": ["number"]
     },
-    "IInputTextYaml": {
-      "title": "IInputTextYaml",
+    "YamlInputText": {
+      "title": "YamlInputText",
       "type": "object",
       "properties": {
         "Label": {
@@ -1797,7 +1764,7 @@
           "title": "Adjustable"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1806,20 +1773,20 @@
     "InputType.Text": {
       "title": "InputType.Text",
       "type": "string",
-      "enum": ["Text"]
+      "enum": ["text"]
     },
-    "IAlterMomentumYaml": {
-      "title": "IAlterMomentumYaml",
+    "YamlAlterMomentum": {
+      "title": "YamlAlterMomentum",
       "type": "object",
       "properties": {
         "Burn": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IAlterMomentumBurnYaml" },
+          "items": { "$ref": "#/definitions/YamlAlterMomentumBurn" },
           "title": "Burn"
         },
         "Reset": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IAlterMomentumResetYaml" },
+          "items": { "$ref": "#/definitions/YamlAlterMomentumReset" },
           "title": "Reset"
         },
         "$id": {
@@ -1829,13 +1796,13 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAlterMomentumBurnYaml": {
-      "title": "IAlterMomentumBurnYaml",
+    "YamlAlterMomentumBurn": {
+      "title": "YamlAlterMomentumBurn",
       "type": "object",
       "properties": {
         "Trigger": { "$ref": "#/definitions/Omit", "title": "Trigger" },
@@ -1852,7 +1819,7 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1873,8 +1840,8 @@
       "required": ["Text"]
     },
     "Omit": { "$ref": "#/definitions/__type" },
-    "IAlterMomentumResetYaml": {
-      "title": "IAlterMomentumResetYaml",
+    "YamlAlterMomentumReset": {
+      "title": "YamlAlterMomentumReset",
       "type": "object",
       "properties": {
         "Trigger": { "$ref": "#/definitions/Omit", "title": "Trigger" },
@@ -1890,27 +1857,27 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Trigger", "Value"]
     },
-    "IAssetAlterPropertiesYaml": {
-      "title": "IAssetAlterPropertiesYaml",
+    "YamlAssetAlterProperties": {
+      "title": "YamlAssetAlterProperties",
       "type": "object",
       "properties": {
         "Abilities": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IAssetAlterPropertiesAbilityYaml" },
+          "items": { "$ref": "#/definitions/YamlAssetAlterPropertiesAbility" },
           "title": "Abilities"
         },
         "Condition Meter": {
-          "$ref": "#/definitions/IAssetAlterPropertiesConditionMeterYaml",
+          "$ref": "#/definitions/YamlAssetAlterPropertiesConditionMeter",
           "title": "Condition Meter"
         },
         "Attachments": {
-          "$ref": "#/definitions/IAssetAlterPropertiesAttachmentsYaml",
+          "$ref": "#/definitions/YamlAssetAlterPropertiesAttachments",
           "title": "Attachments"
         },
         "$id": {
@@ -1919,53 +1886,48 @@
           "type": "string",
           "title": "$id"
         },
-        "Title": { "$ref": "#/definitions/ITitleYaml_1", "title": "Title" },
-        "Asset Type": {
-          "description": "The ID of the asset's parent AssetType",
-          "type": "string",
-          "title": "Asset Type"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle_1", "title": "Title" },
         "Tags": {
           "type": "array",
           "items": { "type": "string" },
           "title": "Tags"
         },
-        "Usage": {
-          "$ref": "#/definitions/IAssetUsage",
-          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
-          "title": "Usage"
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
         },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "Aliases": {
           "description": "Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.",
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
         },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Asset Type": {
+          "description": "The ID of the asset's parent AssetType",
+          "type": "string",
+          "title": "Asset Type"
+        },
+        "Usage": {
+          "$ref": "#/definitions/AssetUsage",
+          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
+          "title": "Usage"
+        },
         "States": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IAssetStateYaml" },
+          "items": { "$ref": "#/definitions/YamlAssetState" },
           "title": "States"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAssetAlterPropertiesAbilityYaml": {
-      "title": "IAssetAlterPropertiesAbilityYaml",
+    "YamlAssetAlterPropertiesAbility": {
+      "title": "YamlAssetAlterPropertiesAbility",
       "type": "object",
       "properties": {
-        "Label": {
-          "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
-          "type": "string",
-          "title": "Label"
-        },
         "Text": {
           "description": "The item's rules text as a markdown string.",
           "type": "string",
@@ -1977,19 +1939,24 @@
           "type": "string",
           "title": "$id"
         },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Label": {
+          "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
+          "type": "string",
+          "title": "Label"
+        },
         "Enabled": {
           "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
           "type": "boolean",
           "title": "Enabled"
-        }
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAssetAlterPropertiesConditionMeterYaml": {
-      "title": "IAssetAlterPropertiesConditionMeterYaml",
+    "YamlAssetAlterPropertiesConditionMeter": {
+      "title": "YamlAssetAlterPropertiesConditionMeter",
       "type": "object",
       "properties": {
         "Label": {
@@ -2000,6 +1967,7 @@
         },
         "Max": {
           "description": "The maximum value of the meter.",
+          "default": 5,
           "type": "integer",
           "title": "Max"
         },
@@ -2015,7 +1983,7 @@
           "title": "$id"
         },
         "Aliases": {
-          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link IMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
+          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
           "type": "array",
           "items": {
             "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
@@ -2030,11 +1998,6 @@
             "type": "string"
           },
           "title": "Aliases"
-        },
-        "Value": {
-          "description": "The initial value of the meter.",
-          "type": "integer",
-          "title": "Value"
         },
         "Min": {
           "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
@@ -2052,14 +2015,19 @@
           },
           "title": "Conditions"
         },
+        "Value": {
+          "description": "The initial value of the meter.",
+          "type": "integer",
+          "title": "Value"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "IAssetAlterPropertiesAttachmentsYaml": {
-      "title": "IAssetAlterPropertiesAttachmentsYaml",
+    "YamlAssetAlterPropertiesAttachments": {
+      "title": "YamlAssetAlterPropertiesAttachments",
       "type": "object",
       "properties": {
         "Asset Types": {
@@ -2077,43 +2045,40 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "ITitleYaml_1": {
-      "title": "ITitleYaml_1",
-      "$ref": "#/definitions/Partial"
-    },
+    "YamlTitle_1": { "title": "YamlTitle_1", "$ref": "#/definitions/Partial" },
     "__type_1": {
       "title": "__type_1",
       "type": "object",
       "properties": {
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link ITitle.Short} instead.",
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
           "type": "string",
           "title": "Standard"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "$id": { "type": "string", "title": "$id" }
       },
       "defaultProperties": [],
       "additionalProperties": false
     },
     "Partial": { "$ref": "#/definitions/__type_1" },
-    "IAssetUsage": {
-      "title": "IAssetUsage",
-      "$ref": "#/definitions/IAssetUsage_1"
+    "AssetUsage": {
+      "title": "AssetUsage",
+      "$ref": "#/definitions/AssetUsage_1"
     },
-    "IAssetUsage_1": {
-      "title": "IAssetUsage_1",
+    "AssetUsage_1": {
+      "title": "AssetUsage_1",
       "type": "object",
       "properties": {
         "Shared": {
@@ -2126,8 +2091,8 @@
       "additionalProperties": false,
       "required": ["Shared"]
     },
-    "IAssetStateYaml": {
-      "title": "IAssetStateYaml",
+    "YamlAssetState": {
+      "title": "YamlAssetState",
       "type": "object",
       "properties": {
         "Label": {
@@ -2142,7 +2107,7 @@
           "title": "Enabled"
         },
         "Disables asset": {
-          "description": "Whether this state should disable the entire asset when `IAssetState.Enabled === true`",
+          "description": "Whether this state should disable the entire asset when `AssetState.Enabled === true`",
           "type": "boolean",
           "title": "Disables asset"
         },
@@ -2163,25 +2128,31 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Disables asset", "Enabled", "Impact", "Label", "Permanent"]
     },
-    "IInputSelectYaml": {
-      "title": "IInputSelectYaml",
+    "YamlInputSelect": {
+      "title": "YamlInputSelect",
       "type": "object",
       "properties": {
         "Options": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IInputSelectOptionYaml" },
+          "items": { "$ref": "#/definitions/YamlInputSelectOption" },
           "title": "Options"
         },
         "Label": {
           "description": "The user-facing text label of this item.",
           "type": "string",
           "title": "Label"
+        },
+        "Sets": {
+          "description": "Hints which attribute(s) set by this dropdown's options.",
+          "type": "array",
+          "items": { "$ref": "#/definitions/InputSelectAttributeDefinition" },
+          "title": "Sets"
         },
         "Adjustable": {
           "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
@@ -2192,12 +2163,6 @@
           "$ref": "#/definitions/InputType.Select",
           "title": "Input Type"
         },
-        "Sets": {
-          "description": "Hints which attribute(s) set by this dropdown's options.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/IInputSelectAttributeDefinition" },
-          "title": "Sets"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
@@ -2205,19 +2170,19 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Adjustable", "Input Type", "Label", "Options", "Sets"]
     },
-    "IInputSelectOptionYaml": {
-      "title": "IInputSelectOptionYaml",
+    "YamlInputSelectOption": {
+      "title": "YamlInputSelectOption",
       "type": "object",
       "properties": {
         "Set": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IInputSelectOptionSetterYaml" },
+          "items": { "$ref": "#/definitions/YamlInputSelectOptionSetter" },
           "title": "Set"
         },
         "Label": {
@@ -2232,22 +2197,22 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Label", "Set"]
     },
-    "IInputSelectOptionSetterYaml": {
-      "title": "IInputSelectOptionSetterYaml",
+    "YamlInputSelectOptionSetter": {
+      "title": "YamlInputSelectOptionSetter",
       "type": "object",
       "properties": {
         "Value": { "type": ["string", "integer"], "title": "Value" },
+        "Key": { "type": "string", "title": "Key" },
         "Type": {
           "$ref": "#/definitions/InputSelectOptionType",
           "title": "Type"
         },
-        "Key": { "type": "string", "title": "Key" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
@@ -2255,7 +2220,7 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -2267,14 +2232,9 @@
       "enum": ["Condition Meter", "Number", "Stat", "String"],
       "type": "string"
     },
-    "InputType.Select": {
-      "title": "InputType.Select",
-      "type": "string",
-      "enum": ["Select"]
-    },
-    "IInputSelectAttributeDefinition": {
-      "description": "Provides hints for the keys and typing of an {@link IInputSelect}'s child {@link IInputSelectOption}s.",
-      "title": "IInputSelectAttributeDefinition",
+    "InputSelectAttributeDefinition": {
+      "description": "Provides hints for the keys and typing of an {@link InputSelect}'s child {@link InputSelectOption}s.",
+      "title": "InputSelectAttributeDefinition",
       "type": "object",
       "properties": {
         "Key": { "pattern": "^[a-z_]+$", "type": "string", "title": "Key" },
@@ -2287,8 +2247,13 @@
       "additionalProperties": false,
       "required": ["Key", "Type"]
     },
-    "IConditionMeterYaml": {
-      "title": "IConditionMeterYaml",
+    "InputType.Select": {
+      "title": "InputType.Select",
+      "type": "string",
+      "enum": ["select"]
+    },
+    "YamlConditionMeter": {
+      "title": "YamlConditionMeter",
       "type": "object",
       "properties": {
         "Label": {
@@ -2299,6 +2264,7 @@
         },
         "Max": {
           "description": "The maximum value of the meter.",
+          "default": 5,
           "type": "integer",
           "title": "Max"
         },
@@ -2314,7 +2280,7 @@
           "title": "$id"
         },
         "Aliases": {
-          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link IMoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
+          "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.",
           "type": "array",
           "items": {
             "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
@@ -2329,11 +2295,6 @@
             "type": "string"
           },
           "title": "Aliases"
-        },
-        "Value": {
-          "description": "The initial value of the meter.",
-          "type": "integer",
-          "title": "Value"
         },
         "Min": {
           "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
@@ -2351,16 +2312,21 @@
           },
           "title": "Conditions"
         },
+        "Value": {
+          "description": "The initial value of the meter.",
+          "type": "integer",
+          "title": "Value"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Label", "Max", "Rollable"]
     },
-    "IAssetAttachment": {
+    "AssetAttachment": {
       "description": "Details which assets are valid attachments. The most prominent example in *Ironsworn: Starforged* is the STARSHIP asset (`Starship/Assets/Command_Vehicle/Starship`); Rover (`Starship/Assets/Support_Vehicle/Rover`) also has an elective ability that adds this property.",
-      "title": "IAssetAttachment",
+      "title": "AssetAttachment",
       "type": "object",
       "properties": {
         "Asset Types": {
@@ -2379,9 +2345,9 @@
       "additionalProperties": false,
       "required": ["Asset Types", "Max"]
     },
-    "ISource": {
+    "Source": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource",
+      "title": "Source",
       "type": "object",
       "properties": {
         "Title": {

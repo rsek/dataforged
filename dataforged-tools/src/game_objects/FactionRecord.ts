@@ -1,14 +1,14 @@
 import type { ActorRecord, FactionType, GameObjectType } from "@game_objects";
 import type { AttributeKey } from "@schema";
 /**
- * @internal
+ * @public
  */
 export type FactionRecord = ActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|
   AttributeKey.Influence
 >;
 /**
- * @internal
+ * @public
  */
 export type FactionGuildRecord = ActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|
@@ -18,7 +18,7 @@ export type FactionGuildRecord = ActorRecord<GameObjectType.Faction,
   [AttributeKey.FactionType]: FactionType.Guild
 };
 /**
- * @internal
+ * @public
  */
 export type FactionFringeGroupRecord = ActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|
@@ -28,7 +28,7 @@ export type FactionFringeGroupRecord = ActorRecord<GameObjectType.Faction,
   [AttributeKey.FactionType]: FactionType.FringeGroup
 };
 /**
- * @internal
+ * @public
  */
 export type FactionDominionRecord = ActorRecord<GameObjectType.Faction,
   AttributeKey.FactionType|

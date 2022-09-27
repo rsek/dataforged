@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / Vital / Diversity
- * @alpha
+ * @public
  */
 enum Diversity {
   Simple = 2,

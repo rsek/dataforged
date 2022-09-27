@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Influence
- * @alpha
+ * @public
  */
 var Influence;
 (function (Influence) {

@@ -1,11 +1,11 @@
 import { AlterMomentumBuilder, AlterMoveBuilder, MoveBuilder } from "@builders";
 import { AssetAlterPropertiesBuilder } from "@builders/assets/AssetAlterPropertiesBuilder.js";
-import { Replacement } from "@schema";
-import type { AlterMomentum , AlterMove, Asset, AssetAbility, Gamespace, InputClock, InputNumber, InputSelect, InputText, Move, YamlAssetAbility } from "@schema";
+import { Game , Replacement } from "@schema";
+import type { AlterMomentum , AlterMove, Asset, AssetAbility, InputClock, InputNumber, InputSelect, InputText, Move, YamlAssetAbility } from "@schema";
 import { formatId } from "@utils";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
-import _ from "lodash-es";Game
+import _ from "lodash-es";
 
 /**
  * @internal
@@ -20,8 +20,8 @@ export class AssetAbilityBuilder implements AssetAbility {
   "Alter Properties"?: AssetAbility["Alter Properties"] | undefined;
   "Alter Momentum"?: AlterMomentum | undefined;
   Enabled: boolean;
-  constructor(json: YamlAssetAbility, id: AssetAbility["$id"], gamespace: Gamespace, parent: Asset) {
-    this.$id = id;Game
+  constructor(json: YamlAssetAbility, id: AssetAbility["$id"], game: Game, parent: Asset) {
+    this.$id = id; Game;
     this.Label = json.Label;
     this.Text = json.Text;
     if (json.Inputs) {
@@ -51,12 +51,12 @@ export class AssetAbilityBuilder implements AssetAbility {
         moveDataClone.Asset = parent.$id;
         const fragment = moveDataClone._idFragment ?? moveDataClone.Title.Canonical;
         moveDataClone.$id = formatId(fragment,this.$id).replace("/Assets/", "/Moves/Assets/");
-        moveDataClone.Category = `${gamespace}/Moves/Assets`;
+        moveDataClone.Category = `${game}/Moves/Assets`;
         if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
           moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);
           // console.log("asset ability move data", moveDataClone);
         }
-        return new MoveBuilder(moveDataClone, this, gamespace, parent.Source);
+        return new MoveBuilder(moveDataClone, this, game, parent.Source);
       });
     }
   }

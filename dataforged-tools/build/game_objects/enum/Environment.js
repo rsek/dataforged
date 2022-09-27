@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Creatures / Environment
- * @alpha
+ * @public
  */
 export var Environment;
 (function (Environment) {

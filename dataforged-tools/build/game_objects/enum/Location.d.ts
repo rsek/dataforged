@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / ** / Location
- * @alpha
+ * @public
  */
 export declare enum Location {
     Planetside = "Planetside",

@@ -1,18 +1,18 @@
 import { OracleTableRowBuilder } from "@builders";
-import type { TruthOption , TruthOptionSubtableRow, YamlTruthOption } from "@schema";
+import type { TruthOptionStarforged , TruthOptionSubtableRowStarforged, YamlTruthOptionStarforged } from "@schema";
 
 /**
  * @internal
  */
-export class TruthOptionBuilder extends OracleTableRowBuilder implements TruthOption {
-  $id: TruthOption["$id"];
-  Floor!: TruthOption["Floor"];
-  Ceiling!: TruthOption["Ceiling"];
+export class TruthOptionBuilder extends OracleTableRowBuilder implements TruthOptionStarforged {
+  $id: TruthOptionStarforged["$id"];
+  Floor!: TruthOptionStarforged["Floor"];
+  Ceiling!: TruthOptionStarforged["Ceiling"];
   Result: string;
   Description: string;
   "Quest Starter": string;
-  Subtable?: TruthOptionSubtableRow[] | undefined;
-  constructor(parentId: string, json: YamlTruthOption) {
+  Subtable?: TruthOptionSubtableRowStarforged[] | undefined;
+  constructor(parentId: string, json: YamlTruthOptionStarforged) {
     super(parentId, json);
 
     let rangeString: string;

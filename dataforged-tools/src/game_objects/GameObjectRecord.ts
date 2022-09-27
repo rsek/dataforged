@@ -1,7 +1,7 @@
 import type { CharacterRecord, CreatureRecord, DerelictRecord, DerelictSettlementRecord, DerelictStarshipRecord, DerelictZoneRecord, FactionDominionRecord, FactionFringeGroupRecord, FactionGuildRecord, FactionRecord, PlanetRecord, PrecursorVaultRecord, SettlementRecord, StarshipRecord } from "@game_objects";
 
 /**
- * @internal
+ * @public
  */
 export type GameObjectRecord =
   CharacterRecord |

@@ -5,8 +5,8 @@
       "type": "object",
       "additionalProperties": {
         "anyOf": [
-          { "$ref": "#/definitions/IEncounterNatureInfoYaml" },
-          { "$ref": "#/definitions/IEncounterStarforgedYaml" }
+          { "$ref": "#/definitions/YamlEncounterNatureInfo" },
+          { "$ref": "#/definitions/YamlEncounterStarforged" }
         ]
       },
       "defaultProperties": [],
@@ -34,7 +34,7 @@
       "title": "_templates"
     },
     "Source": {
-      "$ref": "#/definitions/ISource",
+      "$ref": "#/definitions/Source",
       "description": "Information on this item's source.",
       "title": "Source"
     }
@@ -43,24 +43,49 @@
   "additionalProperties": false,
   "required": ["Encounters", "Source"],
   "definitions": {
-    "IEncounterNatureInfoYaml": {
-      "title": "IEncounterNatureInfoYaml",
+    "YamlEncounterNatureInfo": {
+      "title": "YamlEncounterNatureInfo",
       "type": "object",
       "properties": {
+        "Title": {
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "Canonical": {
+              "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+              "type": "string",
+              "title": "Canonical"
+            },
+            "Short": { "$ref": "#/definitions/NatureKey", "title": "Short" },
+            "Standard": {
+              "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+              "type": "string",
+              "title": "Standard"
+            },
+            "_idFragment": { "type": "string", "title": "_idFragment" },
+            "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+            "$id": { "type": "string", "title": "$id" }
+          },
+          "required": ["Canonical", "Short"],
+          "title": "Title"
+        },
         "Encounters": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/IEncounterIronswornYaml" },
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/YamlEncounterClassic"
+          },
+          "defaultProperties": [],
           "title": "Encounters"
+        },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
+          "type": "string",
+          "title": "Summary"
         },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
           "title": "Description"
-        },
-        "Summary": {
-          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link IHasDescription| Description}, when they're both present.",
-          "type": "string",
-          "title": "Summary"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
@@ -69,132 +94,19 @@
           "title": "$id"
         },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Description", "Encounters", "Summary", "Title"]
     },
-    "IEncounterIronswornYaml": {
-      "title": "IEncounterIronswornYaml",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
-        "Quest Starter": {
-          "description": "A markdown string describing the quest starter associated with this item.",
-          "type": "string",
-          "title": "Quest Starter"
-        },
-        "Features": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Features"
-        },
-        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
-        "Your Truth": {
-          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
-          "type": "string",
-          "title": "Your Truth"
-        },
-        "Drives": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Drives"
-        },
-        "Tactics": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Tactics"
-        },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Encounters/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
-        },
-        "Tags": {
-          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
-          "type": "array",
-          "items": { "type": "string", "enum": ["vehicle"] },
-          "title": "Tags"
-        },
-        "Summary": {
-          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link IHasDescription| Description}, when they're both present.",
-          "type": "string",
-          "title": "Summary"
-        },
-        "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": [
-        "Description",
-        "Drives",
-        "Features",
-        "Quest Starter",
-        "Rank",
-        "Tactics",
-        "Title"
-      ]
-    },
-    "ChallengeRank": {
-      "description": "Enumerates challenge ranks.",
-      "title": "ChallengeRank",
-      "enum": [1, 2, 3, 4, 5],
-      "type": "number"
-    },
-    "IDisplay": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay",
-      "$ref": "#/definitions/IDisplay_1"
-    },
-    "IDisplay_1": {
-      "description": "Interface for data relevant to an item's display/rendering.",
-      "title": "IDisplay_1",
-      "type": "object",
-      "properties": {
-        "Icon": {
-          "description": "A URL pointing to a single SVG icon.",
-          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
-          "type": "string",
-          "title": "Icon"
-        },
-        "Images": {
-          "description": "An array of URLs pointing to one or more WEBP images.",
-          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Images"
-        },
-        "Color": {
-          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
-          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
-          "type": "string",
-          "title": "Color"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "ISourceYaml": {
-      "title": "ISourceYaml",
+    "YamlSource": {
+      "title": "YamlSource",
       "type": "object",
       "properties": {
         "Title": {
@@ -244,49 +156,168 @@
       ],
       "type": "string"
     },
-    "ITitleYaml": {
-      "title": "ITitleYaml",
+    "NatureKey": {
+      "title": "NatureKey",
+      "enum": [
+        "Animal",
+        "Anomaly",
+        "Beast",
+        "Firstborn",
+        "Horror",
+        "Ironlander"
+      ],
+      "type": "string"
+    },
+    "YamlEncounterClassic": {
+      "title": "YamlEncounterClassic",
+      "type": "object",
+      "properties": {
+        "Quest Starter": {
+          "description": "A markdown string describing the quest starter associated with this item.",
+          "type": "string",
+          "title": "Quest Starter"
+        },
+        "Features": {
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Features"
+        },
+        "Drives": {
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Drives"
+        },
+        "Tactics": {
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Tactics"
+        },
+        "Your Truth": {
+          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
+          "type": "string",
+          "title": "Your Truth"
+        },
+        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "Description"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(Starforged|Ironsworn)/Encounters/[A-z_-]+/[A-z_-]+$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Tags": {
+          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
+          "type": "array",
+          "items": { "type": "string", "enum": ["vehicle"] },
+          "title": "Tags"
+        },
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": [
+        "Description",
+        "Drives",
+        "Features",
+        "Quest Starter",
+        "Rank",
+        "Tactics",
+        "Title"
+      ]
+    },
+    "ChallengeRank": {
+      "description": "Enumerates challenge ranks.",
+      "title": "ChallengeRank",
+      "enum": [1, 2, 3, 4, 5],
+      "type": "number"
+    },
+    "Display": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "Display",
+      "$ref": "#/definitions/Display_1"
+    },
+    "Display_1": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "Display_1",
+      "type": "object",
+      "properties": {
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "YamlTitle": {
+      "title": "YamlTitle",
       "type": "object",
       "properties": {
         "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link ITitle.Standard} instead.",
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link ITitle.Standard} instead.",
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link ITitle.Short} instead.",
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
           "type": "string",
           "title": "Standard"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
         "$id": { "type": "string", "title": "$id" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Canonical"]
     },
-    "IEncounterStarforgedYaml": {
-      "title": "IEncounterStarforgedYaml",
+    "YamlEncounterStarforged": {
+      "title": "YamlEncounterStarforged",
       "type": "object",
       "properties": {
         "Variants": {
           "type": "array",
-          "items": { "$ref": "#/definitions/IEncounterVariantYaml" },
+          "items": { "$ref": "#/definitions/YamlEncounterVariant" },
           "title": "Variants"
         },
-        "Description": {
-          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
-          "type": "string",
-          "title": "Description"
-        },
         "Summary": {
-          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link IHasDescription| Description}, when they're both present.",
+          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
           "type": "string",
           "title": "Summary"
         },
@@ -300,16 +331,6 @@
           "items": { "type": "string" },
           "title": "Features"
         },
-        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
-        "Nature": {
-          "$ref": "#/definitions/EncounterNatureStarforged",
-          "title": "Nature"
-        },
-        "Your Truth": {
-          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
-          "type": "string",
-          "title": "Your Truth"
-        },
         "Drives": {
           "type": "array",
           "items": { "type": "string" },
@@ -320,16 +341,26 @@
           "items": { "type": "string" },
           "title": "Tactics"
         },
+        "Your Truth": {
+          "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
+          "type": "string",
+          "title": "Your Truth"
+        },
+        "Nature": {
+          "$ref": "#/definitions/EncounterNatureStarforged",
+          "title": "Nature"
+        },
+        "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "Description"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^Starforged/Encounters/[A-z_-]+$",
           "type": "string",
           "title": "$id"
-        },
-        "Display": {
-          "$ref": "#/definitions/IDisplay",
-          "description": "Data relevant to this item's display/rendering.",
-          "title": "Display"
         },
         "Tags": {
           "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
@@ -337,9 +368,14 @@
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
         },
+        "Display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -355,8 +391,8 @@
         "Title"
       ]
     },
-    "IEncounterVariantYaml": {
-      "title": "IEncounterVariantYaml",
+    "YamlEncounterVariant": {
+      "title": "YamlEncounterVariant",
       "type": "object",
       "properties": {
         "$id": {
@@ -371,7 +407,7 @@
           "title": "Description"
         },
         "Nature": {
-          "enum": ["Creature", "Horror", "Human", "Machine", "Monster"],
+          "enum": ["creature", "horror", "human", "machine", "monster"],
           "type": "string",
           "title": "Nature"
         },
@@ -381,15 +417,15 @@
           "items": { "type": "string", "enum": ["vehicle"] },
           "title": "Tags"
         },
+        "Variant of": { "type": "string", "title": "Variant of" },
         "Display": {
-          "$ref": "#/definitions/IDisplay",
+          "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
-        "Variant of": { "type": "string", "title": "Variant of" },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/ISourceYaml", "title": "Source" },
-        "Title": { "$ref": "#/definitions/ITitleYaml", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -397,12 +433,12 @@
     },
     "EncounterNatureStarforged": {
       "title": "EncounterNatureStarforged",
-      "enum": ["Creature", "Horror", "Human", "Machine", "Monster"],
+      "enum": ["creature", "horror", "human", "machine", "monster"],
       "type": "string"
     },
-    "ISource": {
+    "Source": {
       "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
-      "title": "ISource",
+      "title": "Source",
       "type": "object",
       "properties": {
         "Title": {

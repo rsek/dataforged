@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / Vital / Diversity
- * @alpha
+ * @public
  */
 var Diversity;
 (function (Diversity) {

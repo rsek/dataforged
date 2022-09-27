@@ -2,7 +2,7 @@ import type { GameObjectRecordBase, GameObjectType } from "@game_objects";
 import type { AttributeKey } from "@schema";
 
 /**
- * @internal
+ * @public
  */
 export type PlaceRecord<T extends GameObjectType.Derelict|
 GameObjectType.DerelictZone|

@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / * / Atmosphere
- * @alpha
+ * @public
  */
 var Atmosphere;
 (function (Atmosphere) {

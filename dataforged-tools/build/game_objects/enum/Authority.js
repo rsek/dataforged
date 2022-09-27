@@ -1,7 +1,7 @@
 /**
  * Set by Oracles / Settlements / Authority
  *
- * @alpha
+ * @public
  */
 export var Authority;
 (function (Authority) {

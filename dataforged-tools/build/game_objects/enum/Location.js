@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / ** / Location
- * @alpha
+ * @public
  */
 export var Location;
 (function (Location) {

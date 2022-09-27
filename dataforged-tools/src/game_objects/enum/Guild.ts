@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Factions / Guild
- * @alpha
+ * @public
  */
 enum Guild {
   Assassins = "Assassins",

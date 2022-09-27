@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Creatures / Environment
- * @alpha
+ * @public
  */
 export declare enum Environment {
     Space = "Space",

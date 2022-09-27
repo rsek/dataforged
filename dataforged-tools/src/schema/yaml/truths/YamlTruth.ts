@@ -1,22 +1,22 @@
-import type { Truth, TruthOption, TruthOptionSubtableRow, YamlRollTemplate , YamlStub, YamlStubNode, YamlSuggestions } from "@schema";
+import type { TruthOptionStarforged, TruthOptionSubtableRowStarforged, TruthStarforged, YamlRollTemplate , YamlStub, YamlStubNode, YamlSuggestions } from "@schema";
 
 /**
  * @internal
  */
-export interface YamlTruth extends YamlStubNode<Truth, "", "Table"> {
+export interface YamlTruthStarforged extends YamlStubNode<TruthStarforged, "", "Table"> {
   Suggestions?: YamlSuggestions | undefined;
-  Table: YamlTruthOption[];
+  Table: YamlTruthOptionStarforged[];
 }
 
 /**
  * @internal
  */
-export interface YamlTruthOption extends YamlStub<TruthOption, "", "Subtable"|"Roll template"> {
-  Subtable?: YamlTruthOptionSubtableRow[] | undefined;
+export interface YamlTruthOptionStarforged extends YamlStub<TruthOptionStarforged, "", "Subtable"|"Roll template"> {
+  Subtable?: YamlTruthOptionStarforgedSubtableRow[] | undefined;
   "Roll template"?: YamlRollTemplate | undefined;
 }
 
 /**
  * @internal
  */
-export interface YamlTruthOptionSubtableRow extends YamlStub<TruthOptionSubtableRow> {}
+export interface YamlTruthOptionStarforgedSubtableRow extends YamlStub<TruthOptionSubtableRowStarforged> {}
