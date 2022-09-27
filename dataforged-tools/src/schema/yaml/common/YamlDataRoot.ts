@@ -1,4 +1,4 @@
-import type { HasSource, YamlAssetType, YamlDelveDomain, YamlDelveTheme, YamlEncounterNatureInfo, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruthClassic, YamlTruthStarforged , YamlWithRef } from "@schema";
+import type { HasSource, YamlAssetType, YamlDelveDomain, YamlDelveRarity, YamlDelveTheme, YamlEncounterNatureInfo, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruthClassic, YamlTruthStarforged , YamlWithRef } from "@schema";
 
 /**
  * @internal
@@ -92,8 +92,21 @@ export interface YamlIronlandsRegionRoot extends YamlDataRoot {
 
 /**
  * @internal
-*/
-export interface YamlDelveSiteRoot extends YamlDataRoot {
-  Themes?: {[key:string]:YamlDelveTheme} | undefined;
-  Domains?: {[key:string]:YamlDelveDomain} | undefined;
+ */
+export interface YamlDelveSiteThemeRoot extends YamlDataRoot {
+  Themes: {[key:string]:YamlDelveTheme} ;
+}
+
+/**
+ * @internal
+ */
+export interface YamlDelveSiteDomainRoot extends YamlDataRoot {
+  Domains: {[key:string]:YamlDelveDomain};
+}
+
+/**
+ * @internal
+ */
+export interface YamlDelveRarityRoot extends YamlDataRoot {
+  Rarities: {[key: string]: YamlDelveRarity}
 }

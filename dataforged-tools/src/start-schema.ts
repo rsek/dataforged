@@ -36,8 +36,18 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     declarations: yamlDeclarations
   },
   {
-    typeName: "YamlDelveSiteRoot",
-    outFiles: ["../_master-data/schema/delve_site.json"],
+    typeName: "YamlDelveSiteThemeRoot",
+    outFiles: ["../_master-data/schema/delve_site_themes.json"],
+    declarations: yamlDeclarations
+  },
+  {
+    typeName: "YamlDelveSiteDomainRoot",
+    outFiles: ["../_master-data/schema/delve_site_domains.json"],
+    declarations: yamlDeclarations
+  },
+  {
+    typeName: "YamlDelveRarityRoot",
+    outFiles: ["../_master-data/schema/delve_rarities.json"],
     declarations: yamlDeclarations
   },
   {

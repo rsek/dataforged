@@ -1,11 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "Regions": {
+    "Rarities": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/definitions/YamlIronlandsRegion" },
+      "additionalProperties": { "$ref": "#/definitions/YamlDelveRarity" },
       "defaultProperties": [],
-      "title": "Regions"
+      "title": "Rarities"
     },
     "$schema": { "type": "string", "title": "$schema" },
     "_refs": {
@@ -36,43 +36,33 @@
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Regions", "Source"],
+  "required": ["Rarities", "Source"],
   "definitions": {
-    "YamlIronlandsRegion": {
-      "title": "YamlIronlandsRegion",
+    "YamlDelveRarity": {
+      "title": "YamlDelveRarity",
       "type": "object",
       "properties": {
-        "Summary": {
-          "description": "A user-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
+        "Asset": {
+          "description": "The ID of the asset, to which this rarity applies its effects.",
           "type": "string",
-          "title": "Summary"
-        },
-        "Quest Starter": {
-          "description": "A markdown string describing the quest starter associated with this item.",
-          "type": "string",
-          "title": "Quest Starter"
-        },
-        "Features": {
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Features"
+          "title": "Asset"
         },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
           "type": "string",
           "title": "Description"
         },
+        "XP Cost": {
+          "minimum": 3,
+          "maximum": 5,
+          "type": "integer",
+          "title": "XP Cost"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Ironsworn/Regions/[A-z_-]$",
+          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
           "type": "string",
           "title": "$id"
-        },
-        "Tags": {
-          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Tags"
         },
         "Display": {
           "$ref": "#/definitions/Display",
@@ -85,13 +75,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": [
-        "Description",
-        "Features",
-        "Quest Starter",
-        "Summary",
-        "Title"
-      ]
+      "required": ["Asset", "Description", "Title", "XP Cost"]
     },
     "Display": {
       "description": "Interface for data relevant to an item's display/rendering.",
