@@ -1,10 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.findOracleWithIntermediateNodes = void 0;
 /**
  * Walks the oracle data tree to find a specific ID, then returns that item and its ancestors.
  * @param {string} id - the id of the oracle you want to find
- * @param {IOracleSet[]} oracleDataRoot - The root of the oracle data tree.
+ * @param {OracleSet[]} oracleDataRoot - The root of the oracle data tree.{OracleSet[]}{OracleSet[]}
  * @returns An array of IOracleSet and IOracleTable objects.
  */
-export function findOracleWithIntermediateNodes(id, oracleDataRoot) {
+function findOracleWithIntermediateNodes(id, oracleDataRoot) {
+    OracleSet[];
+    OracleSet[];
     const result = [];
     function walkSet(cat) {
         var _a, _b;
@@ -34,3 +39,4 @@ export function findOracleWithIntermediateNodes(id, oracleDataRoot) {
     }
     return result;
 }
+exports.findOracleWithIntermediateNodes = findOracleWithIntermediateNodes;
