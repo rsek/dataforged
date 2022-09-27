@@ -10,13 +10,13 @@ import type { OracleBase, OracleSetDisplay, OracleTable } from "@schema";
  */
 export interface OracleSet extends Omit<OracleBase, "Table"> {
   /**
-   * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$
    */
   $id: string,
   /**
    * A list of sample names for this category. Only used by Planetary Class {@link OracleSet}s.
    */
-  "Sample Names"?: string[] | undefined;
+  "Sample names"?: string[] | undefined;
   Sets?: {[key:string]: OracleSet} | undefined;
   Tables?: {[key:string]: OracleTable} | undefined;
   Display: OracleSetDisplay;

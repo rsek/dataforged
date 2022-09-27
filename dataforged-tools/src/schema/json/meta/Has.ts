@@ -10,7 +10,7 @@ export interface HasSummary extends HasId {
    * @markdown
    * @localize
    */
-    Summary: string;
+  Summary: string;
 }
 
 /**
@@ -56,7 +56,7 @@ export interface HasSource {
 export interface HasId {
   /**
    * The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.
-   * @pattern ^(Starforged|Ironsworn)/[0-9A-z_/-]+$
+   * @pattern ^(starforged|ironsworn)/[0-9a-z_/-]+$
    */
   $id: string;
 }
@@ -163,7 +163,7 @@ export interface HasQuestStarter extends HasId {
    * @markdown
    * @localize
    */
-  "Quest Starter": string;
+  "Quest starter": string;
 }
 
 /**
@@ -209,7 +209,7 @@ export interface HasTitle extends HasId {    Title: Title
  */
 export interface Title extends HasId {
   /**
-   * @pattern ^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$
+   * @pattern ^(starforged|ironsworn)/[0-9a-z_/-]+/title$
    */
   $id: string
   /**
@@ -219,6 +219,7 @@ export interface Title extends HasId {
    *
    * Use this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.
    *
+   * @pattern ^[A-Z][a-z’ \(\)-]+$
    * @localize
    */
   Canonical: string
@@ -228,6 +229,7 @@ export interface Title extends HasId {
    * This is usually the same as the canonical title, but editorializes a bit by trimming out things like "Oracle 15" in some Ironsworn oracles (because *nobody* remembers it as "Oracle 15").
    *
    * If you need the shortest possible name, see {@link Title.Short} instead.
+   * @pattern ^[A-Z][a-z’ -]+$
    * @localize
    */
   Standard: string
@@ -236,7 +238,27 @@ export interface Title extends HasId {
    *
    * Unless you're very pressed for space, most UX should use {@link Title.Standard} instead.
    *
+   * @pattern ^[A-Z][a-z -]+$
    * @localize
    */
   Short: string
+}
+
+/**
+ * @public
+ */
+export interface TitleCaseTitle extends Title {
+  /**
+   * @pattern ^[A-Z][A-z \(\)-’]+$
+   */
+  Canonical: string
+  /**
+   * @pattern ^[A-Z][A-z \(\)-’]+$
+   */
+  Standard: string
+  /**
+   * @pattern ^[A-Z][A-z -’]+$
+   */
+  Short: string
+
 }

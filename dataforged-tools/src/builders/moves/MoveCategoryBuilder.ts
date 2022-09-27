@@ -14,18 +14,18 @@ export class MoveCategoryBuilder implements MoveCategory {
   Moves: {[key: string]:Move};
   Display: Display;
   Optional: boolean;
-  constructor(json: YamlMoveCategory, game: Game, ...ancestorSourceJson: Source[]) {
-    if (!json.Title.Canonical) {
-      throw new Error(`Missing a title field: ${JSON.stringify(json)}`);
+  constructor(yaml: YamlMoveCategory, game: Game, ...ancestorSourceJson: Source[]) {
+    if (!yaml.Title.Canonical) {
+      throw new Error(`Missing a title field: ${JSON.stringify(yaml)}`);
     }
-    const fragment = json._idFragment ?? json.Title.Canonical;
+    const fragment = yaml._idFragment ?? yaml.Title.Canonical;
     this.$id = formatId(fragment, game, "Moves");
-    this.Title = new TitleBuilder(json.Title, this);
-    this.Description = json.Description;
-    this.Source = new SourceBuilder(json.Source ?? {}, ...ancestorSourceJson);
-    this.Display = new DisplayBuilder(json.Display ?? {});
-    this.Optional = json.Optional ?? false;
-    this.Moves = _.mapValues(json.Moves,move => {
+    this.Title = new TitleBuilder(yaml.Title, this);
+    this.Description = yaml.Description;
+    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(game), ...ancestorSourceJson);
+    this.Display = new DisplayBuilder(yaml.Display ?? {});
+    this.Optional = yaml.Optional ?? false;
+    this.Moves = _.mapValues(yaml.Moves,move => {
       move.Category = this.$id;
       return new MoveBuilder(move, this, game,this.Source, ...ancestorSourceJson);
     });

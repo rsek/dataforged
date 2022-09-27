@@ -2,12 +2,12 @@
  * @public
  */
 export enum AssetTypeName {
-    CommandVehicle = "Command Vehicle",
+    CommandVehicle = "Command vehicle",
     Companion = "Companion",
     Deed = "Deed",
     Module = "Module",
     Path = "Path",
-    SupportVehicle = "Support Vehicle",
+    SupportVehicle = "Support vehicle",
     Ritual = "Ritual",
-    CombatTalent = "Combat Talent"
+    CombatTalent = "Combat talent"
 }

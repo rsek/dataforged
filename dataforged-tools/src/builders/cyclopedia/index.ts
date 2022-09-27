@@ -4,3 +4,4 @@ export * from "@builders/cyclopedia/EncounterNatureClassicBuilder.js";
 export * from "@builders/cyclopedia/EncounterStarforgedBuilder.js";
 export * from "@builders/cyclopedia/EncounterVariantBuilder.js";
 export * from "@builders/cyclopedia/IronlandsRegionBuilder.js";
+export * from "@builders/cyclopedia/IronlandsRegionCollection.js";

@@ -53,12 +53,14 @@
           "properties": {
             "Canonical": {
               "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+              "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
               "type": "string",
               "title": "Canonical"
             },
             "Short": { "$ref": "#/definitions/NatureKey", "title": "Short" },
             "Standard": {
               "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+              "pattern": "^[A-Z][a-z’ -]+$",
               "type": "string",
               "title": "Standard"
             },
@@ -89,7 +91,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Ironsworn/Encounters/[A-z_-]+$",
+          "pattern": "^ironsworn/encounters/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -172,10 +174,10 @@
       "title": "YamlEncounterClassic",
       "type": "object",
       "properties": {
-        "Quest Starter": {
+        "Quest starter": {
           "description": "A markdown string describing the quest starter associated with this item.",
           "type": "string",
-          "title": "Quest Starter"
+          "title": "Quest starter"
         },
         "Features": {
           "type": "array",
@@ -192,10 +194,10 @@
           "items": { "type": "string" },
           "title": "Tactics"
         },
-        "Your Truth": {
+        "Your truth": {
           "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
           "type": "string",
-          "title": "Your Truth"
+          "title": "Your truth"
         },
         "Rank": { "$ref": "#/definitions/ChallengeRank", "title": "Rank" },
         "Description": {
@@ -205,7 +207,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Encounters/[A-z_-]+/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/encounters/[a-z_-]+/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -235,7 +237,7 @@
         "Description",
         "Drives",
         "Features",
-        "Quest Starter",
+        "Quest starter",
         "Rank",
         "Tactics",
         "Title"
@@ -286,16 +288,19 @@
       "properties": {
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z -]+$",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][a-z’ -]+$",
           "type": "string",
           "title": "Standard"
         },
@@ -312,8 +317,11 @@
       "type": "object",
       "properties": {
         "Variants": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/YamlEncounterVariant" },
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/YamlEncounterVariant"
+          },
+          "defaultProperties": [],
           "title": "Variants"
         },
         "Summary": {
@@ -321,10 +329,10 @@
           "type": "string",
           "title": "Summary"
         },
-        "Quest Starter": {
+        "Quest starter": {
           "description": "A markdown string describing the quest starter associated with this item.",
           "type": "string",
-          "title": "Quest Starter"
+          "title": "Quest starter"
         },
         "Features": {
           "type": "array",
@@ -341,10 +349,10 @@
           "items": { "type": "string" },
           "title": "Tactics"
         },
-        "Your Truth": {
+        "Your truth": {
           "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
           "type": "string",
-          "title": "Your Truth"
+          "title": "Your truth"
         },
         "Nature": {
           "$ref": "#/definitions/EncounterNatureStarforged",
@@ -358,7 +366,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Starforged/Encounters/[A-z_-]+$",
+          "pattern": "^starforged/encounters/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -384,7 +392,7 @@
         "Drives",
         "Features",
         "Nature",
-        "Quest Starter",
+        "Quest starter",
         "Rank",
         "Summary",
         "Tactics",

@@ -1,4 +1,4 @@
-import { DisplayBuilder, MoveTriggerBuilder, OutcomesBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
+import { DisplayBuilder, MoveTriggerBuilder, OutcomesBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
 import type { Asset , AssetAbility, Display, Game, Move, MoveCategory, MoveTrigger, OracleTable, Outcomes, Source, Suggestions, Title, YamlMove, } from "@schema";
 import { formatId } from "@utils";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -12,7 +12,7 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
   Optional: boolean;
   Category: MoveCategory["$id"];
   Asset?: this["Category"] extends `${Game}/Moves/Assets` ? Asset["$id"] : undefined;
-  "Progress Move"?: boolean | undefined;
+  "Progress move"?: boolean | undefined;
   "Variant of"?: Move["$id"] | undefined;
   Display: Display;
   Trigger: MoveTrigger;
@@ -21,34 +21,34 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
   Oracles?: OracleTable["$id"][] | undefined;
   Suggestions?: Suggestions | undefined;
   Outcomes?: Outcomes | undefined;
-  constructor(json: YamlMove, parent: MoveCategory|AssetAbility, game: Game,...sourceAncestors: Source[]) {
-    super(json.Source ?? {}, ...sourceAncestors);
-    this.Category = json.Category ?? `${game}/Moves/Assets`;
-    const fragment = json._idFragment??json.Title.Canonical;
-    this.$id = json.$id ?? formatId(fragment, this.Category);
+  constructor(yaml: YamlMove, parent: MoveCategory|AssetAbility, game: Game,...sourceAncestors: Source[]) {
+    super(yaml.Source ?? SourceBuilder.default(game), ...sourceAncestors);
+    this.Category = yaml.Category ?? `${game}/Moves/Assets`;
+    const fragment = yaml._idFragment??yaml.Title.Canonical;
+    this.$id = yaml.$id ?? formatId(fragment, this.Category);
     buildLog(this.constructor, `Building: ${this.$id}`);
-    this.Title = new TitleBuilder(json.Title, this);
-    this.Optional = json.Optional ?? false;
+    this.Title = new TitleBuilder(yaml.Title, this);
+    this.Optional = yaml.Optional ?? false;
     if (this.Category === ("Starforged/Moves/Assets"||"Ironsworn/Moves/Assets")) {
-      if (!json.Asset) {
+      if (!yaml.Asset) {
         throw new Error("Expected an asset ID");
       }
-      this.Asset = json.Asset as typeof this.Asset;
+      this.Asset = yaml.Asset as typeof this.Asset;
     }
-    this.Tags = json.Tags;
-    this["Progress Move"] = json["Progress Move"];
-    this["Variant of"] = json["Variant of"];
+    this.Tags = yaml.Tags;
+    this["Progress move"] = yaml["Progress move"];
+    this["Variant of"] = yaml["Variant of"];
 
     this.Display = new DisplayBuilder({
-      Color: json.Display?.Color ?? (parent as MoveCategory).Display?.Color
+      Color: yaml.Display?.Color ?? (parent as MoveCategory).Display?.Color
     });
 
-    this.Trigger = new MoveTriggerBuilder(json.Trigger,  this);
-    this.Text = json.Text;
-    this.Oracles = json.Oracles;
+    this.Trigger = new MoveTriggerBuilder(yaml.Trigger,  this);
+    this.Text = yaml.Text;
+    this.Oracles = yaml.Oracles;
 
 
-    this.Outcomes = json.Outcomes ? new OutcomesBuilder(json.Outcomes, `${this.$id}/Outcomes`) : undefined;
+    this.Outcomes = yaml.Outcomes ? new OutcomesBuilder(yaml.Outcomes, `${this.$id}/Outcomes`) : undefined;
   }
 }
 

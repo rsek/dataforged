@@ -2,7 +2,7 @@ Source:
   Authors: [Shawn Tomkin]
   Title: "Ironsworn: Starforged Rulebook"
   License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle Sets:
+Oracle sets:
   Planets:
     Title:
       Canonical: Planets
@@ -22,22 +22,22 @@ Oracle Sets:
           Initial: true
           Suggestions:
             Oracle rolls:
-              - Starforged/Oracles/Core/Descriptor
+              - starforged/oracles/core/descriptor
         Content:
           Part of speech: [noun]
         Description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
         Table:
-          - [1, 15, "[⏵Desert World](Starforged/Oracles/Planets/Desert)", *obj:Planet.Desert, *images:DesertWorld]
-          - [16, 30, "[⏵Furnace World](Starforged/Oracles/Planets/Furnace)", *obj:Planet.Furnace, *images:FurnaceWorld]
-          - [31, 35, "[⏵Grave World](Starforged/Oracles/Planets/Grave)", *obj:Planet.Grave, *images:GraveWorld]
-          - [36, 50, "[⏵Ice World](Starforged/Oracles/Planets/Ice)", *obj:Planet.Ice, *images:IceWorld]
-          - [51, 65, "[⏵Jovian World](Starforged/Oracles/Planets/Jovian)", *obj:Planet.Jovian, *images:JovianWorld]
-          - [66, 70, "[⏵Jungle World](Starforged/Oracles/Planets/Jungle)", *obj:Planet.Jungle, *images:JungleWorld]
-          - [71, 75, "[⏵Ocean World](Starforged/Oracles/Planets/Ocean)", *obj:Planet.Ocean, *images:OceanWorld]
-          - [76, 90, "[⏵Rocky World](Starforged/Oracles/Planets/Rocky)", *obj:Planet.Rocky, *images:RockyWorld]
-          - [91, 92, "[⏵Shattered World](Starforged/Oracles/Planets/Shattered)", *obj:Planet.Shattered, *images:ShatteredWorld]
-          - [93, 98, "[⏵Tainted World](Starforged/Oracles/Planets/Tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
-          - [99, 100, "[⏵Vital World](Starforged/Oracles/Planets/Vital)", *obj:Planet.Vital, *images:VitalWorld]
+          - [1, 15, "[⏵Desert World](starforged/oracles/planets/desert)", *obj:Planet.Desert, *images:DesertWorld]
+          - [16, 30, "[⏵Furnace World](starforged/oracles/planets/furnace)", *obj:Planet.Furnace, *images:FurnaceWorld]
+          - [31, 35, "[⏵Grave World](starforged/oracles/planets/grave)", *obj:Planet.Grave, *images:GraveWorld]
+          - [36, 50, "[⏵Ice World](starforged/oracles/planets/ice)", *obj:Planet.Ice, *images:IceWorld]
+          - [51, 65, "[⏵Jovian World](starforged/oracles/planets/jovian)", *obj:Planet.Jovian, *images:JovianWorld]
+          - [66, 70, "[⏵Jungle World](starforged/oracles/planets/jungle)", *obj:Planet.Jungle, *images:JungleWorld]
+          - [71, 75, "[⏵Ocean World](starforged/oracles/planets/ocean)", *obj:Planet.Ocean, *images:OceanWorld]
+          - [76, 90, "[⏵Rocky World](starforged/oracles/planets/rocky)", *obj:Planet.Rocky, *images:RockyWorld]
+          - [91, 92, "[⏵Shattered World](starforged/oracles/planets/shattered)", *obj:Planet.Shattered, *images:ShatteredWorld]
+          - [93, 98, "[⏵Tainted World](starforged/oracles/planets/tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
+          - [99, 100, "[⏵Vital World](starforged/oracles/planets/vital)", *obj:Planet.Vital, *images:VitalWorld]
     Sets:
       Peril:
         Title:
@@ -49,13 +49,13 @@ Oracle Sets:
         Display:
           Columns:
             - Type: dice range
-              Content: Starforged/Oracles/Planets/Peril/Lifebearing
+              Content: starforged/oracles/planets/peril/lifebearing
               Label: Lifebearing
             - Type: dice range
-              Content: Starforged/Oracles/Planets/Peril/Lifeless
+              Content: starforged/oracles/planets/peril/lifeless
               Label: Lifeless
             - Type: string
-              Content: Starforged/Oracles/Planets/Peril/Lifebearing
+              Content: starforged/oracles/planets/peril/lifebearing
         Usage:
           Repeatable: true
           Requires:
@@ -71,7 +71,7 @@ Oracle Sets:
             Title:
               Canonical: Lifebearing
             Display:
-              Column of: Starforged/Oracles/Planets/Peril
+              Column of: starforged/oracles/planets/peril
             Usage:
               Requires: &attr:Life.Lifebearing
                 Attributes:
@@ -116,7 +116,7 @@ Oracle Sets:
             Title:
               Canonical: Lifeless
             Display:
-              Column of: Starforged/Oracles/Planets/Peril
+              Column of: starforged/oracles/planets/peril
             Usage:
               Requires: &attr:Life.Lifeless
                 Attributes:
@@ -168,13 +168,13 @@ Oracle Sets:
         Display:
           Columns:
             - Type: dice range
-              Content: Starforged/Oracles/Planets/Opportunity/Lifebearing
+              Content: starforged/oracles/planets/opportunity/lifebearing
               Label: Lifebearing
             - Type: dice range
-              Content: Starforged/Oracles/Planets/Opportunity/Lifeless
+              Content: starforged/oracles/planets/opportunity/lifeless
               Label: Lifeless
             - Type: string
-              Content: Starforged/Oracles/Planets/Opportunity/Lifebearing
+              Content: starforged/oracles/planets/opportunity/lifebearing
         Content:
           Part of speech: [fragment]
           Tags: [opportunity]
@@ -188,7 +188,7 @@ Oracle Sets:
         Tables:
           Lifebearing:
             Display:
-              Column of: Starforged/Oracles/Planets/Opportunity
+              Column of: starforged/oracles/planets/opportunity
             Title:
               Canonical: Lifebearing
             Usage:
@@ -221,7 +221,7 @@ Oracle Sets:
               - [97, 100, Vantage point reveals the lay of the land, Suggestions: [*roll:Object]]
           Lifeless:
             Display:
-              Column of: Starforged/Oracles/Planets/Opportunity
+              Column of: starforged/oracles/planets/opportunity
             Title:
               Canonical: Lifeless
             Usage:

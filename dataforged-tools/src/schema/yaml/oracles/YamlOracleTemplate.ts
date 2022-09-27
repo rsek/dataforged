@@ -15,9 +15,15 @@ export interface YamlTemplateBase {
 export interface YamlOracleSetTemplate extends Partial<Omit<YamlOracleSet,"Tables"|"Sets">>, YamlTemplateBase {
   _templateOracleSet?: Partial<YamlOracleSet>|undefined
   Tables?: {
+  /**
+   * @patternProperties ^[A-Z][a-z '-]+$
+   */
     [key: string]: YamlOracleTableTemplate
   } | undefined
   Sets?: {
+  /**
+   * @patternProperties ^[A-Z][a-z '-]+$
+   */
     [key:string]: YamlOracleSetTemplate
   } | undefined
 }

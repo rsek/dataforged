@@ -6,7 +6,7 @@ import type { HasSource, Source } from "@schema";
  */
 export abstract class SourceInheritorBuilder implements HasSource {
   Source: Source;
-  constructor(json: Partial<Source>, ...sourceAncestors: Partial<Source>[]) {
-    this.Source = new SourceBuilder(json, ...sourceAncestors);
+  constructor(yaml: Partial<Source>, ...sourceAncestors: Partial<Source>[]) {
+    this.Source = new SourceBuilder(yaml, ...sourceAncestors);
   }
 }

@@ -16,22 +16,22 @@ export class EncounterVariantBuilder implements EncounterVariant {
   Nature: EncounterNatureStarforged;
   "Variant of": EncounterStarforged["$id"];
   Tags?: EncounterTags[] | undefined;
-  constructor(json: YamlEncounterVariant, parent: EncounterStarforged) {
-    const fragment = json._idFragment??json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
+  constructor(yaml: YamlEncounterVariant, parent: EncounterStarforged) {
+    const fragment = yaml._idFragment??yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical;
     this.$id = formatId(fragment, parent.$id);
     this.Source = new SourceBuilder(parent.Source);
-    this.Title = new TitleBuilder(json.Title, this);
-    this.Rank = json.Rank;
+    this.Title = new TitleBuilder(yaml.Title, this);
+    this.Rank = yaml.Rank;
     this.Display = new DisplayBuilder(
       {
-        Icon: json.Display?.Icon,
-        Images: json.Display?.Images,
-        Color: json.Display?.Color
+        Icon: yaml.Display?.Icon,
+        Images: yaml.Display?.Images,
+        Color: yaml.Display?.Color
       }
     );
-    this.Description = json.Description;
-    this.Nature = json.Nature ?? parent.Nature;
+    this.Description = yaml.Description;
+    this.Nature = yaml.Nature ?? parent.Nature;
     this["Variant of"] = parent.$id;
-    this.Tags = json.Tags;
+    this.Tags = yaml.Tags;
   }
 }

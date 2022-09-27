@@ -25,8 +25,11 @@ export enum MoveCategoryName {
 export interface MoveCategory extends HasId, HasSource, HasDescription, HasDisplay, HasOptional, HasTitle {
   /**
    * @example "Starforged/Moves/Adventure"
-   * @pattern ^(Starforged|Ironsworn)/Moves/[A-z_-]+$
+   * @pattern ^(starforged|ironsworn)/moves/[a-z_-]+$
    */
   $id: string;
+  /**
+   * @patternProperties ^[A-Z][a-z '-]+$
+   */
   Moves: {[key:string]: Move};
 }

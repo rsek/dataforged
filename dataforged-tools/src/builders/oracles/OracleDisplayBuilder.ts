@@ -1,6 +1,7 @@
 import { DisplayBuilder, TableColumnRollBuilder, TableColumnTextBuilder  } from "@builders";
 import { TableColumnType } from "@schema";
 import type { OracleDisplayBase, OracleSet, OracleSetDisplay, OracleTable, OracleTableDisplay, OracleTableRow, TableColumnRoll, TableColumnText , YamlOracleDisplayBase, YamlOracleSetDisplay, YamlOracleTableDisplay, YamlTableColumnRoll, YamlTableColumnText } from "@schema";
+import { formatId } from "@utils";
 import { cloneDeep } from "lodash-es";
 
 /**
@@ -29,11 +30,11 @@ export abstract class OracleDisplayBuilder extends DisplayBuilder implements Ora
     }
     return columns as [TableColumnRoll, ...(TableColumnRoll | TableColumnText)[]];
   }
-  constructor(json: YamlOracleDisplayBase, parent: OracleTable|OracleSet) {
-    super(json);
-    this.$id = parent.$id + "/Display";
-    this["Column of"] = json["Column of"];
-    this["Embed in"] = json["Embed in"];
+  constructor(yaml: YamlOracleDisplayBase, parent: OracleTable|OracleSet) {
+    super(yaml);
+    this.$id = formatId("Display",parent.$id);
+    this["Column of"] = yaml["Column of"];
+    this["Embed in"] = yaml["Embed in"];
   }
 }
 
@@ -43,9 +44,9 @@ export abstract class OracleDisplayBuilder extends DisplayBuilder implements Ora
 export class OracleTableDisplayBuilder extends OracleDisplayBuilder implements OracleTableDisplay {
   "Column of"?: OracleTable["$id"] | undefined;
   Columns: [TableColumnRoll, ...(TableColumnRoll | TableColumnText)[]];
-  constructor(json: YamlOracleTableDisplay, parent: OracleTable) {
-    super(json, parent);
-    this.Columns = this.buildColumns(json, parent);
+  constructor(yaml: YamlOracleTableDisplay, parent: OracleTable) {
+    super(yaml, parent);
+    this.Columns = this.buildColumns(yaml, parent);
   }
 }
 
@@ -53,10 +54,10 @@ export class OracleTableDisplayBuilder extends OracleDisplayBuilder implements O
  * @internal
  */
 export class OracleSetDisplayBuilder extends OracleDisplayBuilder implements OracleSetDisplay {
-  constructor(json: YamlOracleSetDisplay, parent: OracleSet) {
-    super(json, parent);
-    if (json.Columns) {
-      this.Columns = this.buildColumns(json, parent);
+  constructor(yaml: YamlOracleSetDisplay, parent: OracleSet) {
+    super(yaml, parent);
+    if (yaml.Columns) {
+      this.Columns = this.buildColumns(yaml, parent);
     }
   }
 }

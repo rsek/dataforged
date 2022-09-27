@@ -6,7 +6,7 @@ import type { HasDescription, HasQuestStarter } from "@schema";
  */
 export interface TruthOptionClassic extends HasDescription, HasQuestStarter {
   /**
-   * @pattern ^Ironsworn/Setting_Truths/[A-z_-]+/[1-3]$
+   * @pattern ^ironsworn/setting_truths/[a-z_-]+/[1-3]$
    */
   $id: string
 }

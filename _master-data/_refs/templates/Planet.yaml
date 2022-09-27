@@ -5,7 +5,7 @@ Planet: &template:Planet
       Planetary Class: ${{Planetary Class}}
     _childOf: Planets
     Title:
-      Canonical: ${{Planetary Class}} World
+      Canonical: ${{Planetary Class}} world
       Short: ${{Planetary Class}}
     Usage:
       Requires:
@@ -26,23 +26,23 @@ Planet: &template:Planet
         Display:
           Columns:
             - Type: dice range
-              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Terminus
               Label: Terminus
             - Type: dice range
-              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Outlands
+              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Outlands
               Label: Outlands
             - Type: dice range
-              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Expanse
+              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Expanse
               Label: Expanse
             - Type: string
-              Content: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements/Terminus
+              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Terminus
         Tables:
           Terminus:
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
               Title:
                 Canonical: Terminus
               Display: &template.display:Planet.Settlements
-                Column of: Starforged/Oracles/Planets/${{Planetary Class}}/Settlements
+                Column of: starforged/oracles/planets/${{Planetary Class}}/Settlements
               Usage:
                 Requires: *attr:Region.Terminus
             _templateTableRows:

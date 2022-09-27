@@ -9,12 +9,12 @@ export abstract class InputBuilder implements Input {
   $id: string;
   Label: string;
   abstract Adjustable: boolean;
-  "Input Type": InputType;
-  constructor(json: YamlInput, parent: AssetAbility|Asset) {
-    this["Input Type"] = json["Input Type"];
-    this.$id = formatId(json._idFragment??json.Label,parent.$id, "Inputs");
-    this.Label = json.Label;
-    this["Input Type"] = json["Input Type"];
+  "Input type": InputType;
+  constructor(yaml: YamlInput, parent: AssetAbility|Asset) {
+    this["Input type"] = yaml["Input type"];
+    this.$id = formatId(yaml._idFragment??yaml.Label,parent.$id, "Inputs");
+    this.Label = yaml.Label;
+    this["Input type"] = yaml["Input type"];
   }
 }
 
@@ -22,18 +22,18 @@ export abstract class InputBuilder implements Input {
  * @internal
  */
 export class InputNumberBuilder extends InputBuilder implements InputNumber {
-  "Input Type": InputType.Number;
+  "Input type": InputType.Number;
   Min: number;
   Max: number | null;
   readonly Step = 1;
   Value: number;
   Adjustable: boolean;
-  constructor(json: YamlInputNumber & {"Input Type": InputType.Number}, parent: AssetAbility|Asset) {
-    super(json, parent);
-    this.Min = json.Min ?? 0;
-    this.Max = json.Max ?? null;
-    this.Value = json.Value ?? 0;
-    this.Adjustable = json.Adjustable ?? true;
+  constructor(yaml: YamlInputNumber & {"Input type": InputType.Number}, parent: AssetAbility|Asset) {
+    super(yaml, parent);
+    this.Min = yaml.Min ?? 0;
+    this.Max = yaml.Max ?? null;
+    this.Value = yaml.Value ?? 0;
+    this.Adjustable = yaml.Adjustable ?? true;
   }
 }
 
@@ -41,17 +41,17 @@ export class InputNumberBuilder extends InputBuilder implements InputNumber {
  * @internal
  */
 export class InputClockBuilder extends InputBuilder implements InputClock {
-  "Clock Type": ClockType = ClockType.Tension;
-  "Input Type": InputType.Clock;
+  "Clock type": ClockType = ClockType.Tension;
+  "Input type": InputType.Clock;
   Segments: ClockSegments;
   Filled: number;
   Adjustable: boolean;
-  constructor(json: YamlInputClock, parent: AssetAbility|Asset) {
-    super(json, parent);
-    this.Segments = json.Segments;
-    this.Filled = json.Filled ?? 0;
+  constructor(yaml: YamlInputClock, parent: AssetAbility|Asset) {
+    super(yaml, parent);
+    this.Segments = yaml.Segments;
+    this.Filled = yaml.Filled ?? 0;
     // TODO: validate number range - maybe with decorators?
-    this.Adjustable = json.Adjustable ?? true;
+    this.Adjustable = yaml.Adjustable ?? true;
   }
 }
 
@@ -59,11 +59,11 @@ export class InputClockBuilder extends InputBuilder implements InputClock {
  * @internal
  */
 export class InputTextBuilder extends InputBuilder implements InputText {
-  "Input Type": InputType.Text;
+  "Input type": InputType.Text;
   Adjustable: boolean;
-  constructor(json: YamlInputText, parent: AssetAbility|Asset) {
-    super(json, parent);
-    this.Adjustable = json.Adjustable ?? false;
+  constructor(yaml: YamlInputText, parent: AssetAbility|Asset) {
+    super(yaml, parent);
+    this.Adjustable = yaml.Adjustable ?? false;
   }
 }
 

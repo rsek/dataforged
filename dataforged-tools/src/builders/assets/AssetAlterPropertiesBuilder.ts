@@ -6,15 +6,15 @@ export class AssetAlterPropertiesBuilder implements AssetAlterProperties {
   $id: string;
   Abilities?: AssetAlterProperties["Abilities"];
   Attachments?: AssetAlterProperties["Attachments"];
-  "Condition Meter"?: AssetAlterProperties["Condition Meter"];
+  "Condition meter"?: AssetAlterProperties["Condition meter"];
   States?: AssetAlterProperties["States"];
-  constructor(json: YamlAssetAlterProperties, parentId: string) {
+  constructor(yaml: YamlAssetAlterProperties, parentId: string) {
     this.$id = formatId("Alter Properties", parentId);
-    this.Abilities = json.Abilities;
-    this.Attachments = json.Attachments;
-    this["Condition Meter"] = json["Condition Meter"];
-    if (json.States) {
-      this.States = json.States.map(state => new AssetStateBuilder(state, this));
+    this.Abilities = yaml.Abilities;
+    this.Attachments = yaml.Attachments;
+    this["Condition meter"] = yaml["Condition meter"];
+    if (yaml.States) {
+      this.States = yaml.States.map(state => new AssetStateBuilder(state, this));
     }
   }
 }

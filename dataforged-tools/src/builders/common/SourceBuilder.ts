@@ -1,6 +1,7 @@
 
 import type { Source , YamlSource } from "@schema";
 import { Game , License, SourceTitle } from "@schema";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 import _ from "lodash-es";
 
 /**
@@ -30,15 +31,15 @@ export class SourceBuilder implements Source {
         return License.None;
     }
   }
-  constructor(json: YamlSource, ...ancestorSourceJson: YamlSource[]) {
+  constructor(yaml: YamlSource, ...ancestorSourceJson: YamlSource[]) {
     const sourceStack = _.cloneDeep([ ..._.compact(
       ancestorSourceJson)
       .reverse()
     ,
-      json as Source ]);
-    const merged = sourceStack.reduce((a,b) => _.merge(a,b)) as Source;
+      yaml as Source ]);
+    const merged = _.merge(...sourceStack as [YamlSource,YamlSource]);
     if (!merged.Title) {
-      throw Error("Unable to find title in source or ancestor source objects.");
+      throw badJsonError("Unable to find title in source or ancestor source objects.",[ yaml, ...ancestorSourceJson ]);
     }
     this.Title = merged.Title;
     this.Authors = merged.Authors ?? ["Shawn Tomkin"];

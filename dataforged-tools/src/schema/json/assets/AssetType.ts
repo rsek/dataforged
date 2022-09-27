@@ -8,9 +8,9 @@ export * from "@utils/types/RequireKey.js";
  */
 export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource, HasTitle, Partial<HasAliases>{
   /**
-   * @example "Ironsworn/Assets/Ritual"
-   * @example "Starforged/Assets/Command_Vehicle"
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+$
+   * @example "ironsworn/assets/ritual"
+   * @example "starforged/assets/command_vehicle"
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+$
    */
   $id: string;
   /**

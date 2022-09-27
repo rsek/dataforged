@@ -1,4 +1,4 @@
-import type { HasId, HasLabel, InputSelectAttributeDefinition, InputSelectOptionType, PlayerConditionMeter, Stat } from "@schema";
+import type { HasId, HasLabel, InputSelect, InputSelectOptionType, PlayerConditionMeter, Stat } from "@schema";
 
 /**
  * Represents an option in an {@link InputSelect}.
@@ -6,13 +6,15 @@ import type { HasId, HasLabel, InputSelectAttributeDefinition, InputSelectOption
  */
 export interface InputSelectOption extends HasId, HasLabel {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+$
    */
   $id: string;
   /**
-   * A array describing what attribute keys should be set to when this option is active. *All* items in the array should be set in this manner.
+   * A keyed object describing what attribute keys should be set to when this option is active. *All* items in the object should be set in this manner.
    */
-  Set: (InputSelectOptionSetterStat| InputSelectOptionSetterMeter| InputSelectOptionSetterNumber| InputSelectOptionSetterString)[];
+  "Set attributes": {
+    [key: keyof InputSelect["Sets attributes"]]: InputSelectOptionSetter
+  }
 }
 
 /**
@@ -20,10 +22,9 @@ export interface InputSelectOption extends HasId, HasLabel {
  */
 export interface InputSelectOptionSetter extends HasId {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+/[a-z_-]+$
    */
   $id: string;
-  Key: InputSelectAttributeDefinition["Key"];
   Type: InputSelectOptionType;
   Value: Stat | PlayerConditionMeter | number | string;
 }

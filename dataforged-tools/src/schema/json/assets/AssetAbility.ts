@@ -6,7 +6,7 @@ import type { AlterMomentum, AlterMove, AssetAlterProperties, HasId, HasLabel, H
  */
 export interface AssetAbility extends HasId, HasText, Partial<HasLabel> {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$
    */
   $id: string;
   /**
@@ -19,20 +19,21 @@ export interface AssetAbility extends HasId, HasText, Partial<HasLabel> {
   Moves?: Move[] | undefined;
   /**
    * User inputs (text, clocks, etc) associated with this asset ability.
+   * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Inputs?: (InputNumber|InputClock|InputText|InputSelect)[] | undefined;
+  Inputs?: {[key:string]:(InputNumber|InputClock|InputText|InputSelect)} | undefined;
   /**
    * Information on how this ability alters moves when enabled.
    */
-  "Alter Moves"?: AlterMove[] | undefined;
+  "Alter moves"?: AlterMove[] | undefined;
   /**
    * Information on how this ability alters its parent asset when enabled.
    */
-  "Alter Properties"?: AssetAlterProperties | undefined;
+  "Alter properties"?: AssetAlterProperties | undefined;
   /**
    * Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)
    */
-  "Alter Momentum"?: AlterMomentum | undefined;
+  "Alter momentum"?: AlterMomentum | undefined;
   /**
    * Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.
    */

@@ -1,5 +1,6 @@
 import { DisplayBuilder, SourceBuilder, TitleBuilder } from "@builders";
 import type { Asset , DelveRarity, Display, Source, Title, YamlDelveRarity } from "@schema";
+import { Game } from "@schema";
 import { formatId } from "@utils";
 
 /**
@@ -7,20 +8,19 @@ import { formatId } from "@utils";
  */
 export class DelveRarityBuilder implements DelveRarity {
   $id: string;
-  "XP Cost": number;
+  "XP cost": number;
   Asset: Asset["$id"];
   Title: Title;
   Display: Display;
   Source: Source;
   Description: string;
-  constructor(json: YamlDelveRarity) {
-    const fragment = json._idFragment ?? json.Title.Canonical;
+  constructor(yaml: YamlDelveRarity, fragment: string) {
     this.$id = formatId(fragment,"Ironsworn", "Rarities");
-    this["XP Cost"] = json["XP Cost"];
-    this.Asset = json.Asset;
-    this.Title = new TitleBuilder(json.Title, this);
-    this.Source = new SourceBuilder(json.Source ?? {});
+    this["XP cost"] = yaml["XP cost"];
+    this.Asset = yaml.Asset;
+    this.Title = new TitleBuilder(yaml.Title, this);
+    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn));
     this.Display = new DisplayBuilder({});
-    this.Description = json.Description;
+    this.Description = yaml.Description;
   }
 }

@@ -3,8 +3,8 @@
  * @public
  */
 export enum ClockType {
-  Tension = "Tension",
-  Campaign = "Campaign"
+  Tension = "tension",
+  Campaign = "campaign"
 }
 
 

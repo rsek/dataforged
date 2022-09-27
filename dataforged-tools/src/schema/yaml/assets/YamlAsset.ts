@@ -1,5 +1,5 @@
 
-import type { AlterMove, AlterMoveOutcomes, Asset, AssetAbility, AssetAttachment, AssetState, AssetType, ConditionMeter , Input, InputClock, InputNumber, InputSelect, InputSelectOption, InputSelectOptionSetter, InputText, MoveTriggerOptionAction, MoveTriggerOptionProgress, YamlAlterMomentum, YamlMove, YamlMoveTrigger, YamlOutcomeMiss, YamlOutcomeStrongHit, YamlOutcomeWeakHit, YamlStub, YamlStubNode } from "@schema";
+import type { AlterMove, AlterMoveOutcomes, Asset, AssetAbility, AssetAttachment, AssetState, AssetType, ConditionMeter , Input, InputClock, InputNumber, InputSelect, InputSelectOption, InputSelectOptionSetter, InputText, MoveTriggerOptionAction, MoveTriggerOptionProgress, YamlAlterMomentum, YamlMove, YamlMoveTrigger, YamlOutcomeMiss, YamlOutcomeStrongHit, YamlOutcomeWeakHit, YamlStub, YamlStubNode, YamlTitleCaseTitle } from "@schema";
 import type { PartialBy, PartialDeep } from "@utils";
 import type { StubExcept } from "@utils/types/Stub.js";
 
@@ -13,10 +13,11 @@ export interface YamlAssetType extends YamlStubNode<AssetType, "", "Assets"> {
 /**
  * @internal
  */
-export interface YamlAsset extends YamlStubNode<StubExcept<Asset,"","Abilities"|"Inputs"|"Condition Meter"|"States">> {
+export interface YamlAsset extends YamlStubNode<StubExcept<Asset,"","Abilities"|"Inputs"|"Condition meter"|"States">> {
+  Title: YamlTitleCaseTitle;
   Abilities: [YamlAssetAbility,YamlAssetAbility,YamlAssetAbility];
-  Inputs?: (YamlInputText|YamlInputSelect)[]| undefined;
-  "Condition Meter"?: YamlConditionMeter | undefined;
+  Inputs?: {[key:string]: (YamlInputText|YamlInputSelect)}| undefined;
+  "Condition meter"?: YamlConditionMeter | undefined;
   States?: YamlAssetState[] | undefined;
 }
 
@@ -24,20 +25,20 @@ export interface YamlAsset extends YamlStubNode<StubExcept<Asset,"","Abilities"|
 /**
  * @internal
  */
-export interface YamlAssetAbility extends YamlStub<AssetAbility, "Enabled", "Alter Moves"|"Moves"|"Inputs"|"Alter Momentum"|"Alter Properties"> {
-  "Alter Moves"?: YamlAlterMove[] | undefined;
+export interface YamlAssetAbility extends YamlStub<AssetAbility, "Enabled", "Alter moves"|"Moves"|"Inputs"|"Alter momentum"|"Alter properties"> {
+  "Alter moves"?: YamlAlterMove[] | undefined;
   Moves?: YamlMove[]|undefined;
-  Inputs?: (YamlInputText|YamlInputClock|YamlInputNumber)[] | undefined;
-  "Alter Momentum"?: YamlAlterMomentum | undefined
-  "Alter Properties"?: YamlAssetAlterProperties | undefined
+  Inputs?: {[key:string]: (YamlInputText|YamlInputSelect|YamlInputClock|YamlInputNumber)}| undefined;
+  "Alter momentum"?: YamlAlterMomentum | undefined
+  "Alter properties"?: YamlAssetAlterProperties | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlAssetAlterProperties extends PartialDeep<Omit<YamlAsset, "Abilities"|"Inputs"|"Condition Meter"|"Requirement"|"Attachments">> {
+export interface YamlAssetAlterProperties extends PartialDeep<Omit<YamlAsset, "Abilities"|"Inputs"|"Condition meter"|"Requirement"|"Attachments">> {
   Abilities?: YamlAssetAlterPropertiesAbility[] | undefined;
-  "Condition Meter"?: YamlAssetAlterPropertiesConditionMeter | undefined
+  "Condition meter"?: YamlAssetAlterPropertiesConditionMeter | undefined
   Attachments?: YamlAssetAlterPropertiesAttachments | undefined
 }
 
@@ -54,7 +55,7 @@ export interface YamlAssetAlterPropertiesConditionMeter extends Partial<YamlCond
 /**
  * @internal
  */
-export interface YamlAssetAlterPropertiesAbility extends Partial<Omit<YamlAssetAbility,"Alter Properties"|"Moves"|"Inputs"|"Alter Moves"|"Alter Momentum">> { }
+export interface YamlAssetAlterPropertiesAbility extends Partial<Omit<YamlAssetAbility,"Alter properties"|"Moves"|"Inputs"|"Alter moves"|"Alter momentum">> { }
 
 /**
  * @internal
@@ -67,9 +68,9 @@ export interface YamlAlterMove extends YamlStub<AlterMove, "", "Trigger"|"Outcom
 /**
  * @internal
  */
-export interface YamlAlterMoveOutcomes extends YamlStub<AlterMoveOutcomes, "", "Strong Hit"|"Weak Hit"|"Miss"> {
-  "Strong Hit": YamlAlterMoveOutcomeStrongHit| undefined;
-  "Weak Hit": YamlAlterMoveOutcomeWeakHit | undefined;
+export interface YamlAlterMoveOutcomes extends YamlStub<AlterMoveOutcomes, "", "Strong hit"|"Weak hit"|"Miss"> {
+  "Strong hit": YamlAlterMoveOutcomeStrongHit| undefined;
+  "Weak hit": YamlAlterMoveOutcomeWeakHit | undefined;
   "Miss": YamlAlterMoveOutcomeMiss | undefined;
 }
 
@@ -122,14 +123,14 @@ export interface YamlAssetState extends YamlStub<AssetState> {
  * @internal
  */
 export interface YamlInputSelect extends YamlStub<InputSelect, "", "Options"> {
-  Options: YamlInputSelectOption[]
+  Options: {[key:string]: YamlInputSelectOption}
  }
 
 /**
  * @internal
  */
-export interface YamlInputSelectOption extends YamlStub<InputSelectOption,"","Set"> {
-  Set: YamlInputSelectOptionSetter[];
+export interface YamlInputSelectOption extends YamlStub<InputSelectOption,"","Set attributes"> {
+  "Set attributes": {[key:string]: YamlInputSelectOptionSetter};
 }
 
 /**

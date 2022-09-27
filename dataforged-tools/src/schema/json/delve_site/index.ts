@@ -4,8 +4,8 @@ import type { ChallengeRank, EncounterClassic, HasDescription, HasId, HasSource,
  * @public
  */
 export enum DelveCardType {
-  Theme = "Theme",
-  Domain = "Domain"
+  Theme = "theme",
+  Domain = "domain"
 };
 
 /**
@@ -13,13 +13,13 @@ export enum DelveCardType {
  *
  * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
  *
- * @see DelveTheme
- * @see DelveDomain
+ * @see DelveSiteTheme
+ * @see DelveSiteDomain
  * @public
  */
 export interface DelveCard extends HasSource, HasSummary, HasDescription, HasId, HasTitle {
   /**
-   * @pattern ^Ironsworn/(Themes|Domains)/[A-z_-]+$
+   * @pattern ^ironsworn/(themes|domains)/[a-z_-]+$
    */
   $id: string
   /**
@@ -58,12 +58,12 @@ export interface DelveCard extends HasSource, HasSummary, HasDescription, HasId,
  *
  * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
  *
- * @see DelveTheme
+ * @see DelveSiteTheme
  * @public
  */
-export interface DelveDomain extends DelveCard {
+export interface DelveSiteDomain extends DelveCard {
   /**
-   * @pattern ^Ironsworn/Domains/[A-z_-]+$
+   * @pattern ^ironsworn/domains/[a-z_-]+$
    */
   $id: string
   Type: DelveCardType.Domain
@@ -102,12 +102,12 @@ export interface DelveDomain extends DelveCard {
  *
  * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
  *
- * @see DelveDomain
+ * @see DelveSiteDomain
  * @public
  */
-export interface DelveTheme extends DelveCard {
+export interface DelveSiteTheme extends DelveCard {
   /**
-   * @pattern ^Ironsworn/Themes/[A-z_-]+$
+   * @pattern ^ironsworn/themes/[a-z_-]+$
    */
   $id: string
   Type: DelveCardType.Theme
@@ -162,8 +162,8 @@ export interface DelveMatrixCell extends OracleTableRow {
  */
 export interface DelveSite extends HasSource, HasDescription, HasTitle {
   Rank: ChallengeRank;
-  Theme: [DelveTheme["$id"]] | [DelveTheme["$id"],DelveTheme["$id"]];
-  Domain: [DelveDomain["$id"]] | [DelveDomain["$id"],DelveDomain["$id"]];
+  Theme: [DelveSiteTheme["$id"]] | [DelveSiteTheme["$id"],DelveSiteTheme["$id"]];
+  Domain: [DelveSiteDomain["$id"]] | [DelveSiteDomain["$id"],DelveSiteDomain["$id"]];
   Denizens: [
     DelveMatrixCell & {Floor: 1, Ceiling: 27, Rarity: "Very common", Summary: string},
     DelveMatrixCell & {Floor: 28, Ceiling: 41, Rarity: "Common", Summary: string},

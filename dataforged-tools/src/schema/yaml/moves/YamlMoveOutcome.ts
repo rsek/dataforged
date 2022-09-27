@@ -4,16 +4,16 @@ import type { MoveOutcome , MoveReroll, OutcomeBase, OutcomeMiss, OutcomeMissMat
  * @internal
  */
 export interface YamlOutcomes extends YamlStub<Outcomes, "", keyof typeof MoveOutcome> {
-  "Strong Hit": YamlOutcomeStrongHit;
-  "Weak Hit": YamlOutcomeWeakHit;
+  "Strong hit": YamlOutcomeStrongHit;
+  "Weak hit": YamlOutcomeWeakHit;
   "Miss": YamlOutcomeMiss;
 }
 
 /**
  * @internal
  */
-export interface YamlOutcome<O extends MoveOutcome> extends YamlStub<OutcomeBase<O>, "","With a Match"|"Reroll"> {
-  "With a Match"?: YamlOutcome<O> | undefined;
+export interface YamlOutcome<O extends MoveOutcome> extends YamlStub<OutcomeBase<O>, "","With a match"|"Reroll"> {
+  "With a match"?: YamlOutcome<O> | undefined;
   Reroll?: YamlMoveReroll | undefined
 
  }
@@ -26,8 +26,8 @@ export interface YamlMoveReroll extends YamlStub<MoveReroll> {}
 /**
  * @internal
  */
-export interface YamlOutcomeMiss extends YamlOutcome<0>, YamlStub<OutcomeMiss,"", "With a Match"|"Reroll"> {
-  "With a Match"? : YamlOutcomeMissMatch | undefined;
+export interface YamlOutcomeMiss extends YamlOutcome<0>, YamlStub<OutcomeMiss,"", "With a match"|"Reroll"> {
+  "With a match"? : YamlOutcomeMissMatch | undefined;
 }
 /**
  * @internal
@@ -37,8 +37,8 @@ export interface YamlOutcomeMissMatch extends YamlOutcome<0>, YamlStub<OutcomeMi
 /**
  * @internal
  */
-export interface YamlOutcomeStrongHit extends YamlOutcome<2>, YamlStub<OutcomeStrongHit,"", "With a Match"|"Reroll"> {
-  "With a Match"? : YamlOutcomeStrongHitMatch | undefined;
+export interface YamlOutcomeStrongHit extends YamlOutcome<2>, YamlStub<OutcomeStrongHit,"", "With a match"|"Reroll"> {
+  "With a match"? : YamlOutcomeStrongHitMatch | undefined;
 }
 /**
  * @internal
@@ -49,5 +49,5 @@ export interface YamlOutcomeStrongHitMatch extends YamlOutcome<2>, YamlStub<Outc
 /**
  * @internal
  */
-export interface YamlOutcomeWeakHit extends YamlOutcome<1>, YamlStub<OutcomeWeakHit,"", "With a Match"|"Reroll"> {
+export interface YamlOutcomeWeakHit extends YamlOutcome<1>, YamlStub<OutcomeWeakHit,"", "With a match"|"Reroll"> {
 }

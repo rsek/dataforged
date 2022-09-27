@@ -6,7 +6,7 @@ import type { HasDescription, HasQuestStarter, OracleTableRow, RollTemplate } fr
  */
 export interface TruthOptionStarforged extends OracleTableRow, HasQuestStarter, HasDescription {
   /**
-   * @pattern ^Starforged/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100)$
+   * @pattern ^starforged/setting_truths/[a-z_-]+/(1-33|34-67|68-100)$
    */
   $id: string;
   "Roll template"?: RollTemplate | undefined;
@@ -19,7 +19,7 @@ export interface TruthOptionStarforged extends OracleTableRow, HasQuestStarter, 
  */
 export interface TruthOptionSubtableRowStarforged extends OracleTableRow {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
+   * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
    */
   $id: string;
 }

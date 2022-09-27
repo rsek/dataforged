@@ -11,12 +11,12 @@ export class AssetStateBuilder implements AssetState {
   Permanent: boolean;
   "Disables asset": boolean;
   Impact: boolean;
-  constructor(json: YamlAssetState, parent: HasId) {
-    this.$id = formatId(json._idFragment??json.Label, parent.$id);
-    this.Label = json.Label;
-    this.Enabled = json.Enabled ?? false;
-    this["Disables asset"] = json["Disables asset"] ?? false;
-    this.Impact = json.Impact ?? false;
-    this.Permanent = json.Permanent ?? false;
+  constructor(yaml: YamlAssetState, parent: HasId) {
+    this.$id = formatId(yaml._idFragment??yaml.Label, parent.$id);
+    this.Label = yaml.Label;
+    this.Enabled = yaml.Enabled ?? false;
+    this["Disables asset"] = yaml["Disables asset"] ?? false;
+    this.Impact = yaml.Impact ?? false;
+    this.Permanent = yaml.Permanent ?? false;
   }
 }

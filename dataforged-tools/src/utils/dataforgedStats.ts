@@ -7,7 +7,7 @@ import _ from "lodash-es";
 /**
  * Extracts statistics on Ironsworn game data.
  */
-export function dataforgedStats<G extends Game>(game: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }: GameDataRoot) {
+export function dataforgedStats<G extends Game>(game: G, { "Asset types": assets, Encounters: encounters, "Move categories": moves, "Oracle sets": oracles, "Setting truths": truths }: GameDataRoot) {
   return [
     assetStats(assets),
     encounterStats(game, encounters),
@@ -17,17 +17,17 @@ export function dataforgedStats<G extends Game>(game: G, { "Asset Types": assets
   ].join(",\n")
 }
 
-export function assetStats(assetTypes: GameDataRoot["Asset Types"]) {
+export function assetStats(assetTypes: GameDataRoot["Asset types"]) {
   let types = Object.keys(assetTypes)
   let assets =  _.flatMap(assetTypes, (type) => Object.keys(type.Assets))
   return `${assets.length} assets comprising ${types.length} types`
 }
 
-export function truthStats(truthCategories: GameDataRoot["Setting Truths"]) {
+export function truthStats(truthCategories: GameDataRoot["Setting truths"]) {
   return `${Object.keys(truthCategories).length ?? 0} setting truth categories`
 }
 
-export function moveStats(moveCategories: GameDataRoot["Move Categories"]) {
+export function moveStats(moveCategories: GameDataRoot["Move categories"]) {
   const categories = Object.keys(moveCategories);
   const moves = _.flatMap(moveCategories, (category) => Object.keys(category.Moves))
   return `${categories.length} move categories containing ${moves.length} moves`;
@@ -37,9 +37,12 @@ export function moveStats(moveCategories: GameDataRoot["Move Categories"]) {
  * Creates a string of oracle stats for use in build messages.
  * @param oracles
  */
-export function oracleStats(oracles: GameDataRoot["Oracle Sets"]) {
-  const oracleTables = JSONPath<OracleTableBuilder[]>({ path: "$..Oracles[*][Table]", json: oracles });
-  return `${oracleTables.length} oracle tables in ${Object.keys(oracles["Oracle Sets"]).length} sets`;
+export function oracleStats(oracles: GameDataRoot["Oracle sets"]) {
+
+  let tables = 0;
+  let sets = 0;
+
+  return `${tables} oracle tables in ${sets} sets`;
 }
 
 

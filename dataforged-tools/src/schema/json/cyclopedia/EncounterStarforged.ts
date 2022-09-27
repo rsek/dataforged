@@ -6,11 +6,13 @@ import type { Encounter, EncounterNatureStarforged, EncounterVariant } from "@sc
  */
 export interface EncounterStarforged extends Encounter {
   /**
-   * @pattern ^Starforged/Encounters/[A-z_-]+$
+   * @pattern ^starforged/encounters/[a-z_-]+$
    */
   $id: string;
   Nature: EncounterNatureStarforged;
   Summary: string;
-  // TODO should be a keyed object
-  Variants?: EncounterVariant[] | undefined;
+  /**
+   * @patternProperties ^[A-Z][a-z '-]+$
+   */
+  Variants?: {[key:string]: EncounterVariant} | undefined;
 }

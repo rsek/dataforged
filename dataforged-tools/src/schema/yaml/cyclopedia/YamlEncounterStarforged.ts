@@ -4,5 +4,5 @@ import type { EncounterStarforged, YamlEncounterVariant , YamlStubNode } from "@
  * @internal
  */
 export interface YamlEncounterStarforged extends YamlStubNode<EncounterStarforged, "", "Variants"> {
-  Variants?: YamlEncounterVariant[] | undefined;
+  Variants?: {[key:string]:YamlEncounterVariant} | undefined;
 }

@@ -8,9 +8,9 @@ import _ from "lodash-es";
  * @internal
  */
 export class AttributeRequirementsBuilder extends Array<AttributeChoices> {
-  constructor(json: AttributeHash) {
+  constructor(yaml: AttributeHash) {
     super();
-    _.forEach<AttributeHash<AttributeKey>>(json, (value, key) => {
+    _.forEach<AttributeHash<AttributeKey>>(yaml, (value, key) => {
       let values;
       if (Array.isArray(value)) {
         values = value;

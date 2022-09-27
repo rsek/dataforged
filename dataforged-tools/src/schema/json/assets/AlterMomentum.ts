@@ -1,4 +1,4 @@
-import type { HasId, HasText } from "@schema";
+import type { HasId, HasText, MoveOutcome } from "@schema";
 
 /**
  * @public
@@ -25,7 +25,7 @@ export interface AlterMomentumBurn extends HasId {
    * The effect altering the PC's momentum burn.
    */
   Effect: HasText;
-  Outcomes?: ("Strong Hit" | "Weak Hit")[] | undefined;
+  Outcomes?: (typeof MoveOutcome[1] | typeof MoveOutcome[2])[] | undefined;
 }
 /**
  * @public

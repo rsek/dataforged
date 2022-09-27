@@ -9,14 +9,14 @@ export class TitleBuilder implements Title {
   Canonical: string;
   Standard: string;
   Short: string;
-  constructor(json: YamlTitle, parent: HasId) {
-    if (!json ?? !json.Canonical) {
+  constructor(yaml: YamlTitle, parent: HasId) {
+    if (!yaml ?? !yaml.Canonical) {
       throw new Error(`Missing canonical title for ${parent.$id}:\n${JSON.stringify(parent)}`);
     }
     this.$id = formatId("Title", parent.$id);
-    this.Canonical = json.Canonical;
-    this.Standard = json.Standard ?? json.Canonical;
-    this.Short = json.Short ?? json.Standard ?? this.Canonical;
+    this.Canonical = yaml.Canonical;
+    this.Standard = yaml.Standard ?? yaml.Canonical;
+    this.Short = yaml.Short ?? yaml.Standard ?? this.Canonical;
   }
 }
 

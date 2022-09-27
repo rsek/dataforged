@@ -1,5 +1,5 @@
-[
-  {
+{
+  "Session": {
     "$id": "Starforged/Moves/Session",
     "Title": {
       "$id": "Starforged/Moves/Session/Title",
@@ -17,8 +17,8 @@
     },
     "Display": { "Color": "#00B3C8" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Begin a Session": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -43,7 +43,7 @@
         "Text": "**When you begin a significant session or chapter of play**, do all of the following.\n\n  * Identify or adjust flagged content and [Set a Flag](Starforged/Moves/Session/Set_a_Flag).\n  * Review or recap what happened last session.\n  * Set the scene by envisioning your character’s current situation and intent.\n\nIn addition, you may spotlight a new danger, opportunity, or insight. This can include a scene hidden from your character’s perspective. If you do, envision a brief vignette (you may roll or choose on the table below for inspiration). Then, all players take +1 momentum as you return to play from the viewpoint of your characters.\n\nRoll   | Result\n-------|-----------------------------------------------------------------------\n1-10   | Flashback reveals an aspect of your background or nature\n11-20  | Flashback reveals an aspect of another character, place, or faction\n21-30  | Influential character or faction is introduced or given new detail\n31-40  | Seemingly unrelated situations are shown to be connected\n41-50  | External factors create new danger, urgency, or importance for a quest\n51-60  | Important character is put in danger or suffers a misadventure\n61-70  | Key location is made unsafe or becomes mired in conflict\n71-80  | Unexpected return of an enemy or threat\n81-90  | Peril lies ahead or lurks just out of view\n91-100 | Unforeseen aid is on the way or within reach",
         "Oracles": ["Starforged/Oracles/Moves/Begin_a_Session"]
       },
-      {
+      "Set a Flag": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -67,7 +67,7 @@
         },
         "Text": "**When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching**, that content is now flagged.\n\nWhen you encounter content flagged as something to approach mindfully, pause to consider or discuss its role in your story. When you come across flagged content that you would rather adjust or omit, [Change Your Fate](Starforged/Moves/Session/Change_Your_Fate)."
       },
-      {
+      "Change Your Fate": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -91,7 +91,7 @@
         },
         "Text": "**When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment**, pause and identify what needs to be changed. Choose as many options as appropriate.\n\n  * **Reframe:** This didn’t happen the way you first thought. Envision the moment from another perspective in a way that diminishes or changes the content.\n  * **Refocus:** This is not the most important thing happening right now. Envision how the spotlight shifts to change the focus.\n  * **Replace:** This happens but with a small adjustment. Switch out an element and envision how this new detail changes the scenario.\n  * **Redirect:** Adjust the trajectory to involve a helping hand. Envision how another person or party becomes involved.\n  * **Reshape:** The situation changes completely. Envision what happened instead."
       },
-      {
+      "Take a Break": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -115,7 +115,7 @@
         },
         "Text": "**When you resolve a progress move or complete an intense scenario**, take a few deep breaths and take some time to attend to the needs of your body. Reflect on what just happened and how it made you feel. Then, choose one.\n\n  * Move on: Continue the session. You or an ally may add +1 on the next move (not a progress move), bolstered by your reflection and past experiences.\n  * Stop for now: [End a Session](Starforged/Moves/Session/End_a_Session)."
       },
-      {
+      "End a Session": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -139,9 +139,9 @@
         },
         "Text": "**When you end a significant session or chapter of play**, reflect on the events of the game and identify any missed opportunities to mark progress.\n\n  * If you strengthened your ties to a connection, [Develop Your Relationship](Starforged/Moves/Connection/Develop_Your_Relationship).\n  * If you moved forward on a quest, [Reach a Milestone](Starforged/Moves/Quest/Reach_a_Milestone).\n\nIf there is a quest, connection, or other situation you would like to give focus in your next session, make note of it and take +1 momentum."
       }
-    ]
+    }
   },
-  {
+  "Adventure": {
     "$id": "Starforged/Moves/Adventure",
     "Title": {
       "$id": "Starforged/Moves/Adventure/Title",
@@ -159,8 +159,8 @@
     },
     "Display": { "Color": "#3C70A4" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Face Danger": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -236,7 +236,7 @@
           }
         }
       },
-      {
+      "Secure an Advantage": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -312,7 +312,7 @@
           }
         }
       },
-      {
+      "Gather Information": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -360,7 +360,7 @@
           }
         }
       },
-      {
+      "Compel": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -422,7 +422,7 @@
           }
         }
       },
-      {
+      "Aid Your Ally": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -446,7 +446,7 @@
         },
         "Text": "**When you act in direct support of an ally**, envision how you aid them. Then, [Secure an Advantage](Starforged/Moves/Adventure/Secure_an_Advantage) or [Gain Ground](Starforged/Moves/Combat/Gain_Ground) to take action. If you score a hit, they (instead of you) take the benefits of the move.\n\nIf you [Gain Ground](Starforged/Moves/Combat/Gain_Ground) and score a strong hit, you are both in control. On a **weak hit**, your ally is in control but you are in a bad spot."
       },
-      {
+      "Check Your Gear": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -493,9 +493,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Quest": {
     "$id": "Starforged/Moves/Quest",
     "Title": {
       "$id": "Starforged/Moves/Quest/Title",
@@ -513,8 +513,8 @@
     },
     "Display": { "Color": "#2F9236" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Swear an Iron Vow": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -561,7 +561,7 @@
           }
         }
       },
-      {
+      "Reach a Milestone": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -585,7 +585,7 @@
         },
         "Text": "**When you make headway in your quest** by doing any of the following...\n\n  * overcoming a critical obstacle\n  * gaining meaningful insight\n  * completing a perilous expedition\n  * acquiring a crucial item or resource\n  * earning vital support\n  * defeating a notable foe\n\n...you may mark progress per the rank of the vow."
       },
-      {
+      "Fulfill Your Vow": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -633,7 +633,7 @@
           }
         }
       },
-      {
+      "Forsake Your Vow": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -657,9 +657,9 @@
         },
         "Text": "**When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.\n\nThen, envision the impact of this failure and choose one or more as appropriate to the nature of the vow. Any allies who shared this vow may also envision a cost.\n\n  * You are demoralized or dispirited: [Endure Stress](Starforged/Moves/Suffer/Endure_Stress).\n  * A connection loses faith: [Test Your Relationship](Starforged/Moves/Connection/Test_Your_Relationship) when you next interact.\n  * You must abandon a path or resource: Discard an asset.\n  * Someone else pays a price: Envision how a person, being, or community bears the cost of the failure.\n  * Someone else takes advantage: Envision how an enemy gains power.\n  * Your reputation suffers: Envision how this failure marks you."
       }
-    ]
+    }
   },
-  {
+  "Connection": {
     "$id": "Starforged/Moves/Connection",
     "Title": {
       "$id": "Starforged/Moves/Connection/Title",
@@ -677,8 +677,8 @@
     },
     "Display": { "Color": "#4053C9" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Make a Connection": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -725,7 +725,7 @@
           }
         }
       },
-      {
+      "Develop Your Relationship": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -809,7 +809,7 @@
           }
         }
       },
-      {
+      "Test Your Relationship": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -856,7 +856,7 @@
           }
         }
       },
-      {
+      "Forge a Bond": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -904,9 +904,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Exploration": {
     "$id": "Starforged/Moves/Exploration",
     "Title": {
       "$id": "Starforged/Moves/Exploration/Title",
@@ -924,8 +924,8 @@
     },
     "Display": { "Color": "#7438B8" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Undertake an Expedition": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -987,7 +987,7 @@
           }
         }
       },
-      {
+      "Explore a Waypoint": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1042,7 +1042,7 @@
           }
         }
       },
-      {
+      "Make a Discovery": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1067,7 +1067,7 @@
         "Text": "**When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.\n\nRoll   | Result\n-------|---------------------------------------------------------------\n1-4    | Advanced technology waiting to be harnessed or salvaged\n5-8    | Ancient archive or message\n9-10   | Artificial consciousness evolved to a higher state\n11-12  | Clues to a crucial resource or uncharted domain\n13-14  | Envoy from another time or reality\n15-22  | Extraordinary natural phenomenon\n23-24  | First contact with intelligent life\n25-26  | Gateway to another time or alternate reality\n27-28  | Key to unlocking a language or method of communication\n29-34  | Lost or hidden people\n35-42  | Majestic or unusual lifeforms\n43-46  | Marvel of ancient engineering\n47-50  | Miraculously preserved artifact or specimen\n51-56  | Monumental architecture or artistry of an ancient civilization\n57-62  | Mysterious device or artifact of potential value\n63-66  | New understanding of an enduring mystery\n67-68  | Pathway or means of travel to a distant location\n69-70  | Person or lifeform with phenomenal abilities\n71-78  | Place of awe-inspiring beauty\n79-86  | Rare and valuable resource\n87-88  | Safeguarded or idyllic location\n89-90  | Visions or prophesies of the future\n91-100 | Roll twice",
         "Oracles": ["Starforged/Oracles/Moves/Make_a_Discovery"]
       },
-      {
+      "Confront Chaos": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1092,7 +1092,7 @@
         "Text": "**When your exploration of a waypoint uncovers something dreadful**, decide the number of aspects: one, two, or three. Roll that number of times or choose that number of aspects on the table below. Then, envision how the encounter begins.\n\nFor each result, when you first confront that aspect within the scope of the encounter, you and your allies may mark one tick on your discoveries legacy track.\n\nRoll   | Result\n-------|---------------------------------------------\n1-4    | Baneful weapon of mass destruction\n5-9    | Cataclysmic environmental effects\n10-12  | Dead given unnatural life\n13-17  | Destructive lifeform of monstrous proportion\n18-20  | Dread hallucinations or illusions\n21-24  | Harbingers of an imminent invasion\n25-27  | Horde of insatiable hunger or fury\n28-32  | Horrific lifeforms of inscrutable purpose\n33-36  | Impostors in human form\n37-41  | Machines made enemy\n42-45  | Malignant contagion or parasite\n46-50  | Messenger or signal with a dire warning\n51-53  | Passage to a grim alternate reality\n54-58  | People corrupted by chaos\n59-63  | Powerful distortions of time or space\n64-68  | Signs of an impending catastrophe\n69-72  | Site of a baffling disappearance\n73-77  | Site of a horrible disaster\n78-82  | Site of terrible carnage\n83-87  | Technology nullified or made unstable\n88-92  | Technology warped for dark purpose\n93-96  | Vault of dread technology or power\n97-100 | Worshipers of great and malevolent powers",
         "Oracles": ["Starforged/Oracles/Moves/Confront_Chaos"]
       },
-      {
+      "Finish an Expedition": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1140,7 +1140,7 @@
           }
         }
       },
-      {
+      "Set a Course": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1187,9 +1187,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Combat": {
     "$id": "Starforged/Moves/Combat",
     "Title": {
       "$id": "Starforged/Moves/Combat/Title",
@@ -1207,8 +1207,8 @@
     },
     "Display": { "Color": "#D68F00" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Enter the Fray": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1284,7 +1284,7 @@
           }
         }
       },
-      {
+      "Gain Ground": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1360,7 +1360,7 @@
           }
         }
       },
-      {
+      "React Under Fire": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1436,7 +1436,7 @@
           }
         }
       },
-      {
+      "Strike": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1491,7 +1491,7 @@
           }
         }
       },
-      {
+      "Clash": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1546,7 +1546,7 @@
           }
         }
       },
-      {
+      "Take Decisive Action": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1595,7 +1595,7 @@
           }
         }
       },
-      {
+      "Face Defeat": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1619,7 +1619,7 @@
         },
         "Text": "**When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).\n\nIf the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot."
       },
-      {
+      "Battle": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1695,9 +1695,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Suffer": {
     "$id": "Starforged/Moves/Suffer",
     "Title": {
       "$id": "Starforged/Moves/Suffer/Title",
@@ -1715,8 +1715,8 @@
     },
     "Display": { "Color": "#C50000" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Lose Momentum": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1740,7 +1740,7 @@
         },
         "Text": "**When you are delayed or disadvantaged**, suffer -1 momentum for a minor setback, -2 for a serious setback, or -3 for a major setback.\n\nWhen your momentum is at its minimum (-6) and you must suffer -momentum, choose one.\n\n  * Envision how the price is paid and apply the cost to a different suffer move.\n  * Envision how this undermines your progress on a vow, expedition, connection, or combat. Then, clear 1 unit of progress on that track per its rank: troublesome=3 boxes; dangerous=2 boxes; formidable=1 box; extreme=2 ticks; epic=1 tick."
       },
-      {
+      "Endure Harm": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1766,7 +1766,7 @@
               "$id": "Starforged/Moves/Suffer/Endure_Harm/Trigger/Options/1",
               "Roll type": "Action roll",
               "Method": "Highest",
-              "Using": ["Iron", "Health"]
+              "Using": ["iron", "health"]
             }
           ]
         },
@@ -1788,7 +1788,7 @@
           }
         }
       },
-      {
+      "Endure Stress": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1814,7 +1814,7 @@
               "$id": "Starforged/Moves/Suffer/Endure_Stress/Trigger/Options/1",
               "Roll type": "Action roll",
               "Method": "Highest",
-              "Using": ["Heart", "Spirit"]
+              "Using": ["heart", "spirit"]
             }
           ]
         },
@@ -1836,7 +1836,7 @@
           }
         }
       },
-      {
+      "Companion Takes a Hit": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1887,7 +1887,7 @@
           }
         }
       },
-      {
+      "Sacrifice Resources": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1911,7 +1911,7 @@
         },
         "Text": "**When you lose or consume resources**, suffer -1 supply for a minor loss, -2 for a serious loss, or -3 for a major loss.\n\nIf your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move."
       },
-      {
+      "Withstand Damage": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -1959,9 +1959,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Recover": {
     "$id": "Starforged/Moves/Recover",
     "Title": {
       "$id": "Starforged/Moves/Recover/Title",
@@ -1979,8 +1979,8 @@
     },
     "Display": { "Color": "#179F0E" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Sojourn": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2027,7 +2027,7 @@
           }
         }
       },
-      {
+      "Heal": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2096,7 +2096,7 @@
           }
         }
       },
-      {
+      "Hearten": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2143,7 +2143,7 @@
           }
         }
       },
-      {
+      "Resupply": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2212,7 +2212,7 @@
           }
         }
       },
-      {
+      "Repair": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2267,9 +2267,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Threshold": {
     "$id": "Starforged/Moves/Threshold",
     "Title": {
       "$id": "Starforged/Moves/Threshold/Title",
@@ -2287,8 +2287,8 @@
     },
     "Display": { "Color": "#676767" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Face Death": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2335,7 +2335,7 @@
           }
         }
       },
-      {
+      "Face Desolation": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2382,7 +2382,7 @@
           }
         }
       },
-      {
+      "Overcome Destruction": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2430,9 +2430,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Legacy": {
     "$id": "Starforged/Moves/Legacy",
     "Title": {
       "$id": "Starforged/Moves/Legacy/Title",
@@ -2450,8 +2450,8 @@
     },
     "Display": { "Color": "#4D5769" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Earn Experience": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2475,7 +2475,7 @@
         },
         "Text": "**When you fill a box (four ticks) on any legacy track**, take 2 experience. This experience may be spent when you [Advance](Starforged/Moves/Legacy/Advance).\n\nOnce you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress."
       },
-      {
+      "Advance": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2499,7 +2499,7 @@
         },
         "Text": "**When you develop your abilities, improve your resources, gain a reward, or boost your influence**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset. Choose from the following categories as appropriate to your focus and opportunities.\n\n  * Module: Upgrade your command vehicle\n  * Support Vehicle: Acquire or improve a secondary vehicle\n  * Path: Bolster your personal capabilities or follow a new calling\n  * Companion: Gain or improve a trusted helper\n  * Deed: Learn from your experiences or build a legacy"
       },
-      {
+      "Continue a Legacy": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2547,9 +2547,9 @@
           }
         }
       }
-    ]
+    }
   },
-  {
+  "Fate": {
     "$id": "Starforged/Moves/Fate",
     "Title": {
       "$id": "Starforged/Moves/Fate/Title",
@@ -2567,8 +2567,8 @@
     },
     "Display": { "Color": "#6B52EC" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Ask the Oracle": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2599,7 +2599,7 @@
           "Starforged/Oracles/Moves/Ask_the_Oracle/Almost_Certain"
         ]
       },
-      {
+      "Pay the Price": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2624,9 +2624,9 @@
         "Text": "**When you suffer the outcome of an action**, choose one.\n\n  * Make the most obvious negative outcome happen.\n  * [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) for inspiration. Interpret the answer as a hardship or complication appropriate to the situation.\n  * Roll on the table below. If the result doesn’t fit the situation, roll again.\n\nRoll   | Result\n-------|---------------------------------------------------------------------\n1-2    | A trusted individual or community acts against you\n3-4    | An individual or community you care about is exposed to danger\n5-7    | You encounter signs of a looming threat\n8-10   | You create an opportunity for an enemy\n11-14  | You face a tough choice\n15-18  | You face the consequences of an earlier choice\n19-22  | A surprising development complicates your quest\n23-26  | You are separated from something or someone\n27-32  | Your action causes collateral damage or has an unintended effect\n33-38  | Something of value is lost or destroyed\n39-44  | The environment or terrain introduces a new hazard\n45-50  | A new enemy is revealed\n51-56  | A friend, companion, or ally is in harm's way (or you are, if alone)\n57-62  | Your equipment or vehicle malfunctions\n63-68  | Your vehicle suffers damage\n69-74  | You waste resources\n75-81  | You are harmed\n82-88  | You are stressed\n89-95  | You are delayed or put at a disadvantage\n96-100 | Roll twice",
         "Oracles": ["Starforged/Oracles/Moves/Pay_the_Price"]
       }
-    ]
+    }
   },
-  {
+  "Scene Challenge": {
     "$id": "Starforged/Moves/Scene_Challenge",
     "Title": {
       "$id": "Starforged/Moves/Scene_Challenge/Title",
@@ -2644,8 +2644,8 @@
     },
     "Display": { "Color": "#3C70A4" },
     "Optional": false,
-    "Moves": [
-      {
+    "Moves": {
+      "Begin the Scene": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2669,7 +2669,7 @@
         },
         "Text": "**When you face an extended or complex challenge**, name your objective and choose a rank as appropriate to the situation.\n\n  * You have a clear advantage: Troublesome\n  * You are ready to act: Dangerous\n  * You are unprepared or outmatched: Formidable\n\nThen, activate a 4-segment tension clock and [Face Danger](Starforged/Moves/Scene_Challenge/Face_Danger) or [Secure an Advantage](Starforged/Moves/Scene_Challenge/Secure_an_Advantage) to take action."
       },
-      {
+      "Face Danger": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2678,50 +2678,50 @@
           "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Category": "Starforged/Moves/Scene_Challenge",
-        "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge",
+        "$id": "Starforged/Moves/Scene_Challenge/Face_Danger",
         "Title": {
-          "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Title",
+          "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Title",
           "Canonical": "Face Danger (Scene Challenge)",
           "Standard": "Face Danger (Scene Challenge)",
-          "Short": "Face Danger (Scene Challenge)"
+          "Short": "Face Danger"
         },
         "Optional": false,
         "Variant of": "Starforged/Moves/Adventure/Face_Danger",
         "Display": { "Color": "#3C70A4" },
         "Trigger": {
-          "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger",
+          "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Trigger",
           "Text": "When you attempt something risky or react to an imminent threat within a scene challenge...",
           "Options": [
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/1",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Trigger/Options/1",
               "Text": "With speed, mobility, or agility",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["edge"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/2",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Trigger/Options/2",
               "Text": "With resolve, command, or sociability",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["heart"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/3",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Trigger/Options/3",
               "Text": "With strength, endurance, or aggression",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["iron"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/4",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Trigger/Options/4",
               "Text": "With deception, stealth, or trickery",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["shadow"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Trigger/Options/5",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Trigger/Options/5",
               "Text": "With expertise, focus, or observation",
               "Roll type": "Action roll",
               "Method": "Any",
@@ -2731,30 +2731,30 @@
         },
         "Text": "**When you attempt something risky or react to an imminent threat within a scene challenge**, envision your action and roll. If you act...\n\n  * With speed, mobility, or agility: Roll +edge\n  * With resolve, command, or sociability: Roll +heart\n  * With strength, endurance, or aggression: Roll +iron\n  * With deception, stealth, or trickery: Roll +shadow\n  * With expertise, focus, or observation: Roll +wits\n\nOn a **strong hit**, you are successful and mark progress. On a **strong hit with a match**, mark progress twice.\n\nOn a **weak hit**, you are successful and mark progress, but also encounter a complication or setback. Envision what occurs and fill a clock segment.\n\nOn a **miss**, you fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price). On a **miss with a match**, fill two segments and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
         "Outcomes": {
-          "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Outcomes",
+          "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Outcomes",
           "Strong Hit": {
-            "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Outcomes/Strong_Hit",
+            "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Outcomes/Strong_Hit",
             "Text": "You are successful. Mark progress.",
             "With a Match": {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Outcomes/Strong_Hit/Strong_Hit/With_a_match",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Outcomes/Strong_Hit/Strong_Hit/With_a_match",
               "Text": "You are successful. Mark progress twice."
             }
           },
           "Weak Hit": {
-            "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Outcomes/Weak_Hit",
+            "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Outcomes/Weak_Hit",
             "Text": "You are successful and mark progress, but also encounter a complication or setback. Envision what occurs and fill a clock segment."
           },
           "Miss": {
-            "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Outcomes/Miss",
+            "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Outcomes/Miss",
             "Text": "You fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
             "With a Match": {
-              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger_Scene_Challenge/Outcomes/Miss/Miss/With_a_match",
+              "$id": "Starforged/Moves/Scene_Challenge/Face_Danger/Outcomes/Miss/Miss/With_a_match",
               "Text": "You fail, or a momentary success is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
             }
           }
         }
       },
-      {
+      "Secure an Advantage": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2763,50 +2763,50 @@
           "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
         },
         "Category": "Starforged/Moves/Scene_Challenge",
-        "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge",
+        "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage",
         "Title": {
-          "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Title",
+          "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Title",
           "Canonical": "Secure an Advantage (Scene Challenge)",
           "Standard": "Secure an Advantage (Scene Challenge)",
-          "Short": "Secure an Advantage (Scene Challenge)"
+          "Short": "Secure an Advantage"
         },
         "Optional": false,
         "Variant of": "Starforged/Moves/Adventure/Secure_an_Advantage",
         "Display": { "Color": "#3C70A4" },
         "Trigger": {
-          "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger",
+          "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Trigger",
           "Text": "When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...",
           "Options": [
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/1",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/1",
               "Text": "With speed, mobility, or agility",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["edge"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/2",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/2",
               "Text": "With resolve, command, or sociability",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["heart"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/3",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/3",
               "Text": "With strength, endurance, aggression",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["iron"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/4",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/4",
               "Text": "With deception, stealth, or trickery",
               "Roll type": "Action roll",
               "Method": "Any",
               "Using": ["shadow"]
             },
             {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Trigger/Options/5",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Trigger/Options/5",
               "Text": "With expertise, focus, or observation",
               "Roll type": "Action roll",
               "Method": "Any",
@@ -2816,30 +2816,30 @@
         },
         "Text": "**When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge**, envision your action and roll. If you act...\n\n  * With speed, mobility, or agility: Roll +edge\n  * With resolve, command, or sociability: Roll +heart\n  * With strength, endurance, aggression: Roll +iron\n  * With deception, stealth, or trickery: Roll +shadow\n  * With expertise, focus, or observation: Roll +wits\n\nOn a **hit**, you are successful. On a **strong hit**, take both. On a **strong hit with a match**, take both and mark progress. On a **weak hit**, choose one.\n\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)\n\nOn a **miss**, you fail or your assumptions betray you. Fill a clock segment and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price). On a **miss with a match**, fill two segments and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
         "Outcomes": {
-          "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Outcomes",
+          "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Outcomes",
           "Strong Hit": {
-            "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Outcomes/Strong_Hit",
+            "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Strong_Hit",
             "Text": "You are successful. Take +2 momentum and add +1 on your next move (not a progress move).",
             "With a Match": {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Outcomes/Strong_Hit/Strong_Hit/With_a_match",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Strong_Hit/Strong_Hit/With_a_match",
               "Text": "You are successful. Mark progress, take +2 momentum, and add +1 on your next move (not a progress move)."
             }
           },
           "Weak Hit": {
-            "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Outcomes/Weak_Hit",
+            "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Weak_Hit",
             "Text": "You are successful. Choose one.\n\n  * Take +2 momentum\n  * Add +1 on your next move (not a progress move)"
           },
           "Miss": {
-            "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Outcomes/Miss",
+            "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Miss",
             "Text": "You fail or your assumptions betray you. Fill a clock segment and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).",
             "With a Match": {
-              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage_Scene_Challenge/Outcomes/Miss/Miss/With_a_match",
+              "$id": "Starforged/Moves/Scene_Challenge/Secure_an_Advantage/Outcomes/Miss/Miss/With_a_match",
               "Text": "You fail or your assumptions betray you. Fill two clock segments and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price)."
             }
           }
         }
       },
-      {
+      "Finish the Scene": {
         "Source": {
           "Title": "Ironsworn: Starforged Rulebook",
           "Authors": ["Shawn Tomkin"],
@@ -2887,6 +2887,6 @@
           }
         }
       }
-    ]
+    }
   }
-]
+}

@@ -2,7 +2,7 @@ Source:
   Authors: [Shawn Tomkin]
   Title: "Ironsworn: Starforged Rulebook"
   License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle Sets:
+Oracle sets:
   Creatures:
     Title:
       Canonical: Creatures
@@ -11,7 +11,7 @@ Oracle Sets:
     Source:
       Date: "050622"
     Description:
-      Roll for a [basic form](Starforged/Oracles/Creatures/Basic_Form), and flesh out the creature’s appearance using this [Creature First Look](Starforged/Oracles/Creatures/First_Look) table. Then, roll on the [Encountered Behavior](Starforged/Oracles/Creatures/Encountered_Behavior) table to envision this creature’s motivation and frame how the encounter begins.
+      Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
     Tables:
       Environment:
         Title:
@@ -25,11 +25,11 @@ Oracle Sets:
         Summary: |-
           Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
         Table:
-          - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Space], Icon: &icon.Space img/vector/Oracles/Creature/Environment/Space.svg]
-          - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Interior], Icon: &icon.Interior img/vector/Oracles/Creature/Environment/Interior.svg]
-          - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Land], Icon: &icon.Land img/vector/Oracles/Creature/Environment/Land.svg]
-          - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Liquid], Icon: &icon.Liquid img/vector/Oracles/Creature/Environment/Liquid.svg]
-          - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [Starforged/Oracles/Creatures/Basic_Form/Air], Icon: &icon.Air img/vector/Oracles/Creature/Environment/Air.svg]
+          - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [starforged/oracles/creatures/basic_form/space], Icon: &icon.Space img/vector/Oracles/Creature/Environment/Space.svg]
+          - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [starforged/oracles/creatures/basic_form/interior], Icon: &icon.Interior img/vector/Oracles/Creature/Environment/Interior.svg]
+          - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [starforged/oracles/creatures/basic_form/land], Icon: &icon.Land img/vector/Oracles/Creature/Environment/Land.svg]
+          - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [starforged/oracles/creatures/basic_form/liquid], Icon: &icon.Liquid img/vector/Oracles/Creature/Environment/Liquid.svg]
+          - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [starforged/oracles/creatures/basic_form/air], Icon: &icon.Air img/vector/Oracles/Creature/Environment/Air.svg]
       Scale:
         Title:
           Canonical: Scale
@@ -46,7 +46,7 @@ Oracle Sets:
           - [26, 60, Medium (person-sized), Attributes: {Creature Scale: Medium}]
           - [61, 90, Large (vehicle-sized), Attributes: {Creature Scale: Large}]
           - [91, 99, Huge (whale-sized), Attributes: {Creature Scale: Huge}]
-          - [100, 100, "[⏵Ultra-scale](Starforged/Oracles/Creatures/Ultra-scale)", Oracle rolls: [Starforged/Oracles/Creatures/Ultra-scale]]
+          - [100, 100, "[⏵Ultra-scale](starforged/oracles/creatures/ultra-scale)", Oracle rolls: [starforged/oracles/creatures/ultra-scale]]
       Ultra-scale:
         Title:
           Canonical: Ultra-scale
@@ -240,25 +240,25 @@ Oracle Sets:
         Display:
           Columns:
               - Type: dice range
-                Content: Starforged/Oracles/Creatures/Basic_Form/Space
+                Content: starforged/oracles/creatures/basic_form/space
                 Label: Space
               - Type: dice range
-                Content: Starforged/Oracles/Creatures/Basic_Form/Interior
+                Content: starforged/oracles/creatures/basic_form/interior
                 Label: Interior
               - Type: dice range
-                Content: Starforged/Oracles/Creatures/Basic_Form/Land
+                Content: starforged/oracles/creatures/basic_form/land
                 Label: Land
               - Type: dice range
-                Content: Starforged/Oracles/Creatures/Basic_Form/Liquid
+                Content: starforged/oracles/creatures/basic_form/liquid
                 Label: Liquid
               - Type: dice range
-                Content: Starforged/Oracles/Creatures/Basic_Form/Air
+                Content: starforged/oracles/creatures/basic_form/air
                 Label: Air
               - Type: string
-                Content: Starforged/Oracles/Creatures/Basic_Form/Space
+                Content: starforged/oracles/creatures/basic_form/space
                 Key: Result
         Summary: |-
-          Roll for a basic form, and flesh out the creature’s appearance using the [First Look](Starforged/Oracles/Creatures/First_Look) table.
+          Roll for a basic form, and flesh out the creature’s appearance using the [First Look](starforged/oracles/creatures/first_look) table.
         Tables:
           Space:
             Title:
@@ -266,7 +266,7 @@ Oracle Sets:
             Display:
               Color: "#121b21"
               Icon: *icon.Space
-              Column of: Starforged/Oracles/Creatures/Basic_Form
+              Column of: starforged/oracles/creatures/basic_form
             Usage:
               Requires:
                 Attributes:
@@ -296,7 +296,7 @@ Oracle Sets:
             Display:
               Color: "#707a83"
               Icon: *icon.Interior
-              Column of: Starforged/Oracles/Creatures/Basic_Form
+              Column of: starforged/oracles/creatures/basic_form
             Usage:
               Requires:
                 Attributes:
@@ -328,7 +328,7 @@ Oracle Sets:
             Display:
               Color: "#ed1a38"
               Icon: *icon.Land
-              Column of: Starforged/Oracles/Creatures/Basic_Form
+              Column of: starforged/oracles/creatures/basic_form
             Usage:
               Requires:
                 Attributes:
@@ -360,7 +360,7 @@ Oracle Sets:
             Display:
               Color: "#0082bf"
               Icon: *icon.Liquid
-              Column of: Starforged/Oracles/Creatures/Basic_Form
+              Column of: starforged/oracles/creatures/basic_form
             Usage:
               Requires:
                 Attributes:
@@ -392,7 +392,7 @@ Oracle Sets:
             Display:
               Color: "#90278f"
               Icon: *icon.Air
-              Column of: Starforged/Oracles/Creatures/Basic_Form
+              Column of: starforged/oracles/creatures/basic_form
             Usage:
               Requires:
                 Attributes:

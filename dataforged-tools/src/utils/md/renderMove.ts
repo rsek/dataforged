@@ -10,7 +10,7 @@ import _ from "lodash-es";
 export function renderMove(move: Move, headerLevel: number = 3): string {
   const header = _.repeat("#", headerLevel) + " " + move.Title.Canonical;
   const items = [header];
-  if (move["Progress Move"]) {
+  if (move["Progress move"]) {
     items.push("*Progress Move*");
   }
   items.push(move.Text);

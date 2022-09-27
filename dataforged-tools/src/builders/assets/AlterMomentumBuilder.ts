@@ -8,13 +8,13 @@ export class AlterMomentumBuilder implements AlterMomentum {
   Burn?: AlterMomentumBurn[] | undefined;
   Reset?: AlterMomentumReset[] | undefined;
   $id: string;
-  constructor(json: YamlAlterMomentum, parent: AssetAbility) {
-    this.$id = formatId(parent.$id,"Alter_Momentum");
-    if (json.Burn) {
-      this.Burn = json.Burn.map(burnData => new AlterMomentumBurnBuilder(burnData, this));
+  constructor(yaml: YamlAlterMomentum, parent: AssetAbility) {
+    this.$id = formatId("Alter_momentum",parent.$id);
+    if (yaml.Burn) {
+      this.Burn = yaml.Burn.map(burnData => new AlterMomentumBurnBuilder(burnData, this));
     }
-    if (json.Reset) {
-      this.Reset = json.Reset.map(resetData => new AlterMomentumResetBuilder(resetData, this));
+    if (yaml.Reset) {
+      this.Reset = yaml.Reset.map(resetData => new AlterMomentumResetBuilder(resetData, this));
     }
   }
 }
@@ -24,13 +24,13 @@ export class AlterMomentumBuilder implements AlterMomentum {
 export class AlterMomentumBurnBuilder implements AlterMomentumBurn {
   Trigger: HasText;
   Effect: HasText;
-  Outcomes?: ("Weak Hit" | "Strong Hit")[] | undefined;
+  Outcomes?: AlterMomentumBurn["Outcomes"] | undefined;
   $id: string;
-  constructor(json: YamlAlterMomentumBurn, parent: AlterMomentum) {
-    this.$id = parent.$id + "/Burn";
-    this.Trigger = { ...json.Trigger,$id: this.$id + "/Trigger" };
-    this.Effect = { ...json.Effect,$id: this.$id + "/Effect" };
-    this.Outcomes = json.Outcomes;
+  constructor(yaml: YamlAlterMomentumBurn, parent: AlterMomentum) {
+    this.$id = formatId("Burn",parent.$id);
+    this.Trigger = { ...yaml.Trigger,$id: formatId("Trigger", this.$id ) };
+    this.Effect = { ...yaml.Effect,$id: formatId("Effect",this.$id ) };
+    this.Outcomes = yaml.Outcomes;
   }
 }
 /**
@@ -40,9 +40,9 @@ export class AlterMomentumResetBuilder implements AlterMomentumReset {
   Trigger: HasText;
   Value: number;
   $id: string;
-  constructor(json: YamlAlterMomentumReset, parent: AlterMomentum) {
-    this.$id = parent.$id + "/Reset";
-    this.Trigger = { ...json.Trigger,$id: this.$id + "/Trigger" };
-    this.Value = json.Value;
+  constructor(yaml: YamlAlterMomentumReset, parent: AlterMomentum) {
+    this.$id = formatId("Reset", parent.$id);
+    this.Trigger = { ...yaml.Trigger,$id: formatId("Trigger", this.$id) };
+    this.Value = yaml.Value;
   }
 }

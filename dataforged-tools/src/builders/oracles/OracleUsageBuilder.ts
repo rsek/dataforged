@@ -12,19 +12,19 @@ export class OracleUsageBuilder implements OracleUsage {
   Requires?: Requirements | undefined;
   "Allow duplicates"?: boolean | undefined;
   "Sets"?: AttributeChoices[] | undefined;
-  constructor(json: YamlOracleUsage) {
+  constructor(yaml: YamlOracleUsage) {
     // if (!is<OracleUsageData>(json)) {
     //   throw new Error();
     // }
-    this.Initial = json.Initial;
-    this["Max rolls"] = json["Max rolls"];
-    this.Repeatable = json.Repeatable;
-    this["Allow duplicates"] = json["Allow duplicates"] ?? false;
-    if (json.Suggestions) {
-      this.Suggestions = new SuggestionsBuilder(json.Suggestions);
+    this.Initial = yaml.Initial;
+    this["Max rolls"] = yaml["Max rolls"];
+    this.Repeatable = yaml.Repeatable;
+    this["Allow duplicates"] = yaml["Allow duplicates"] ?? false;
+    if (yaml.Suggestions) {
+      this.Suggestions = new SuggestionsBuilder(yaml.Suggestions);
     }
-    if (json.Requires) {
-      this.Requires = new RequirementsBuilder(json.Requires);
+    if (yaml.Requires) {
+      this.Requires = new RequirementsBuilder(yaml.Requires);
     }
     // this["Sets attributes"] = json["Sets attributes"];
   }

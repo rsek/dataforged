@@ -4,24 +4,25 @@ import type { Asset, AssetAbility, InputSelect , InputSelectAttributeDefinition,
 import { InputType } from "@schema";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
+import _ from "lodash-es";
 
 /**
  * @internal
  */
 export class InputSelectBuilder extends InputBuilder implements InputSelect {
-  "Input Type": InputType.Select;
-  Sets: InputSelectAttributeDefinition[];
-  Options: InputSelectOption[];
+  "Input type": InputType.Select;
+  "Sets attributes": {[key:string]:InputSelectAttributeDefinition};
+  Options: {[key:string]:InputSelectOption};
   Adjustable: boolean;
-  constructor(json: YamlInputSelect, parent: AssetAbility|Asset) {
-    super(json, parent);
-    if (json["Input Type"] !== InputType.Select) {
-      throw badJsonError(this.constructor, json["Input Type"], "Expected InputType.Select!");
+  constructor(yaml: YamlInputSelect, parent: AssetAbility|Asset) {
+    super(yaml, parent);
+    if (yaml["Input type"] !== InputType.Select) {
+      throw badJsonError(this.constructor, yaml["Input type"], "Expected InputType.Select!");
     }
-    this.Adjustable = json.Adjustable ?? false;
-    this.Sets = json.Sets;
+    this.Adjustable = yaml.Adjustable ?? false;
+    this["Sets attributes"] = yaml["Sets attributes"];
 
-    this.Options = json.Options.map(optionJson => new InputSelectOptionBuilder(optionJson, this));
+    this.Options = _.mapValues(yaml.Options,(optionJson,key) => new InputSelectOptionBuilder(optionJson, key,this));
 
     // TODO: typecheck "Sets" vs the options - via a method that can be invoked?
   }
@@ -33,12 +34,11 @@ export class InputSelectBuilder extends InputBuilder implements InputSelect {
 export class InputSelectOptionBuilder implements InputSelectOption {
   $id: InputSelectOption["$id"];
   Label: string;
-  Set: (InputSelectOptionSetterStat| InputSelectOptionSetterMeter | InputSelectOptionSetterNumber| InputSelectOptionSetterString)[];
-  constructor(json: YamlInputSelectOption, parent: InputSelect) {
-    const fragment = json._idFragment??json.Label;
+  "Set attributes": {[key: string]:(InputSelectOptionSetterStat| InputSelectOptionSetterMeter | InputSelectOptionSetterNumber| InputSelectOptionSetterString)};
+  constructor(yaml: YamlInputSelectOption, fragment:string, parent: InputSelect) {
     this.$id = formatId(fragment,parent.$id, "Options");
-    this.Label = json.Label;
-    this.Set = json.Set.map(attr => new InputSelectOptionSetterBuilder(attr, this)) as this["Set"];
+    this.Label = yaml.Label;
+    this["Set attributes"] = _.mapValues((yaml["Set attributes"]),(attr,key) => new InputSelectOptionSetterBuilder(attr,key, this)) as this["Set attributes"];
   }
 }
 
@@ -47,14 +47,11 @@ export class InputSelectOptionBuilder implements InputSelectOption {
  */
 export class InputSelectOptionSetterBuilder implements InputSelectOptionSetter {
   $id: string;
-  Key: string;
   Type: InputSelectOptionType;
   Value: InputSelectOptionSetter["Value"];
-  constructor(json: YamlInputSelectOptionSetter, parent: InputSelectOption) {
-    const fragment = json._idFragment??json.Key;
+  constructor(yaml: YamlInputSelectOptionSetter, fragment: string, parent: InputSelectOption) {
     this.$id = formatId(fragment, parent.$id);
-    this.Type = json.Type;
-    this.Key = json.Key;
-    this.Value = json.Value;
+    this.Type = yaml.Type;
+    this.Value = yaml.Value;
   }
 }

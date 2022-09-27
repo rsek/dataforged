@@ -5,7 +5,7 @@ import type { HasDescription, HasDisplay, HasId, HasOracleContent, HasSource, Ha
  */
 export interface OracleMatch extends HasId, HasText {
   /**
-   * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?/on_a_match$
    */
   $id: string
 }
@@ -22,7 +22,7 @@ export interface OracleBase extends Partial< HasSummary & HasDescription & HasOr
   $id: string;
   /**
    * An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.
-   * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-/]+$
    */
   Ancestors: OracleSet["$id"][];
   Display: OracleDisplayBase;
@@ -40,12 +40,14 @@ export interface OracleBase extends Partial< HasSummary & HasDescription & HasOr
    * Oracle tables contained by this set.
    *
    * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
+   * @patternProperties ^[A-Z][a-z '-]+$
    */
   Tables?: {[key:string]: OracleTable} | undefined;
   /**
    * Oracle sets contained by this set.
    *
    * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
+   * @patternProperties ^[A-Z][a-z '-]+$
    */
   Sets?: {[key:string]: OracleSet} | undefined;
   /**
@@ -53,5 +55,5 @@ export interface OracleBase extends Partial< HasSummary & HasDescription & HasOr
    *
    * This key appears only on {@link OracleTable}s that have a `Table`.
    */
-  "On a Match"?: OracleMatch | undefined
+  "On a match"?: OracleMatch | undefined
 }

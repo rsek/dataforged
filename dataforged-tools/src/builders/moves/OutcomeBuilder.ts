@@ -10,20 +10,20 @@ export abstract class OutcomeBuilder<O extends MoveOutcome, RequireText extends 
   Text?: RequireText extends true ? string : (string| undefined);
   "Count as"?: OutcomeBase<O>["Count as"];
   Reroll?: MoveReroll | undefined;
-  "With a Match"?: OutcomeBuilder<O> | undefined;
-  "In Control"?: boolean | undefined;
-  constructor(json: YamlOutcome<O>, outcome: O, parentId: OutcomeBase<O>["$id"]) {
+  "With a match"?: OutcomeBuilder<O> | undefined;
+  "In control"?: boolean | undefined;
+  constructor(yaml: YamlOutcome<O>, outcome: O, parentId: OutcomeBase<O>["$id"]) {
     this.$id = formatId(MoveOutcome[outcome],parentId);
-    this.Text = json.Text;
-    if (json.Reroll) {
+    this.Text = yaml.Text;
+    if (yaml.Reroll) {
       // console.log("has reroll data", json.Reroll);
       this.Reroll = {
-        ...json.Reroll,
+        ...yaml.Reroll,
         $id: formatId("Reroll",this.$id ),
       };
     }
-    this["Count as"] = json["Count as"];
-    this["In Control"] = json["In Control"];
+    this["Count as"] = yaml["Count as"];
+    this["In control"] = yaml["In control"];
   }
 }
 
@@ -31,11 +31,11 @@ export abstract class OutcomeBuilder<O extends MoveOutcome, RequireText extends 
  * @internal
  */
 export class OutcomeMissBuilder<RequireText extends boolean = false> extends OutcomeBuilder<0,RequireText> implements OutcomeMiss {
-  "With a Match"?: undefined | OutcomeMissMatchBuilder;
-  constructor(json: YamlOutcomeMiss, parentId: string) {
-    super(json, MoveOutcome.Miss, parentId);
-    if (json["With a Match"]) {
-      this["With a Match"] = new OutcomeMissMatchBuilder(json["With a Match"], this.$id);
+  "With a match"?: undefined | OutcomeMissMatchBuilder;
+  constructor(yaml: YamlOutcomeMiss, parentId: string) {
+    super(yaml, MoveOutcome.Miss, parentId);
+    if (yaml["With a match"]) {
+      this["With a match"] = new OutcomeMissMatchBuilder(yaml["With a match"], this.$id);
     }
   }
 }
@@ -53,9 +53,9 @@ export class OutcomeMissMatchBuilder<RequireText extends boolean = false> extend
  * @internal
  */
 export class OutcomeWeakHitBuilder<RequireText extends boolean = false> extends OutcomeBuilder<1,RequireText> implements OutcomeWeakHit {
-  "With a Match"?: undefined;
-  constructor(json: YamlOutcomeWeakHit, parentId: string) {
-    super(json, MoveOutcome["Weak Hit"], parentId );
+  "With a match"?: undefined;
+  constructor(yaml: YamlOutcomeWeakHit, parentId: string) {
+    super(yaml, MoveOutcome["Weak hit"], parentId );
   }
 }
 
@@ -63,11 +63,11 @@ export class OutcomeWeakHitBuilder<RequireText extends boolean = false> extends 
  * @internal
  */
 export class OutcomeStrongHitBuilder<RequireText extends boolean = false> extends OutcomeBuilder<2,RequireText> implements OutcomeStrongHit {
-  "With a Match"?: undefined | OutcomeStrongHitMatchBuilder;
-  constructor(json: YamlOutcomeStrongHit, parentId: string) {
-    super(json, MoveOutcome["Strong Hit"],parentId);
-    if (json["With a Match"]) {
-      this["With a Match"] = new OutcomeStrongHitMatchBuilder(json["With a Match"], this.$id);
+  "With a match"?: undefined | OutcomeStrongHitMatchBuilder;
+  constructor(yaml: YamlOutcomeStrongHit, parentId: string) {
+    super(yaml, MoveOutcome["Strong hit"],parentId);
+    if (yaml["With a match"]) {
+      this["With a match"] = new OutcomeStrongHitMatchBuilder(yaml["With a match"], this.$id);
     }
   }
 }

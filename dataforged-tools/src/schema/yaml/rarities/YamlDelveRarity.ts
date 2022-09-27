@@ -1,7 +1,9 @@
-import type { DelveRarity , YamlStubNode } from "@schema";
+import type { DelveRarity , YamlStubNode, YamlTitleCaseTitle } from "@schema";
 
 /**
  * @internal
  */
-export interface YamlDelveRarity extends YamlStubNode<DelveRarity> {}
+export interface YamlDelveRarity extends YamlStubNode<DelveRarity> {
+  Title: YamlTitleCaseTitle
+}
 

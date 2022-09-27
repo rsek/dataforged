@@ -16,7 +16,7 @@ export enum PlayerConditionMeter {
  */
 export interface ConditionMeter extends Meter {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/condition_meter$
    */
   $id: string;
   /**

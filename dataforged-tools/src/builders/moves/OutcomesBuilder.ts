@@ -7,14 +7,14 @@ import { formatId } from "@utils/formatId.js";
  */
 export class OutcomesBuilder implements Outcomes {
   $id: Outcomes["$id"];
-  "Strong Hit": OutcomeStrongHitBuilder<true>;
-  "Weak Hit": OutcomeWeakHitBuilder<true>;
+  "Strong hit": OutcomeStrongHitBuilder<true>;
+  "Weak hit": OutcomeWeakHitBuilder<true>;
   "Miss": OutcomeMissBuilder<true>;
-  constructor(json: YamlOutcomes, id: Outcomes["$id"]) {
+  constructor(yaml: YamlOutcomes, id: Outcomes["$id"]) {
     this.$id = id;
-    this["Strong Hit"] = new OutcomeStrongHitBuilder<true>(json["Strong Hit"], this.$id);
-    this["Weak Hit"] = new OutcomeWeakHitBuilder<true>(json["Weak Hit"], this.$id);
-    this["Miss"] = new OutcomeMissBuilder<true>(json["Miss"], this.$id);
+    this["Strong hit"] = new OutcomeStrongHitBuilder<true>(yaml["Strong hit"], this.$id);
+    this["Weak hit"] = new OutcomeWeakHitBuilder<true>(yaml["Weak hit"], this.$id);
+    this["Miss"] = new OutcomeMissBuilder<true>(yaml["Miss"], this.$id);
   }
 }
 
@@ -23,20 +23,20 @@ export class OutcomesBuilder implements Outcomes {
  */
 export class AlterMoveOutcomesBuilder implements AlterMoveOutcomes {
   $id: Outcomes["$id"];
-  "Strong Hit"?: OutcomeStrongHitBuilder<false> | undefined;
-  "Weak Hit"?: OutcomeWeakHitBuilder<false> | undefined;
+  "Strong hit"?: OutcomeStrongHitBuilder<false> | undefined;
+  "Weak hit"?: OutcomeWeakHitBuilder<false> | undefined;
   "Miss"?: OutcomeMissBuilder<false> | undefined;
-  constructor(json: YamlAlterMoveOutcomes, parentId: string) {
+  constructor(yaml: YamlAlterMoveOutcomes, parentId: string) {
     this.$id = formatId("Outcomes",parentId);
 
-    if (json["Strong Hit"]) {
-      this["Strong Hit"] = new OutcomeStrongHitBuilder<false>(json["Strong Hit"], this.$id);
+    if (yaml["Strong hit"]) {
+      this["Strong hit"] = new OutcomeStrongHitBuilder<false>(yaml["Strong hit"], this.$id);
     }
-    if (json["Weak Hit"]) {
-      this["Weak Hit"] = new OutcomeWeakHitBuilder<false>(json["Weak Hit"], this.$id);
+    if (yaml["Weak hit"]) {
+      this["Weak hit"] = new OutcomeWeakHitBuilder<false>(yaml["Weak hit"], this.$id);
     }
-    if (json["Miss"]) {
-      this["Miss"] = new OutcomeMissBuilder<false>(json["Miss"], this.$id);
+    if (yaml["Miss"]) {
+      this["Miss"] = new OutcomeMissBuilder<false>(yaml["Miss"], this.$id);
     }
   }
 }

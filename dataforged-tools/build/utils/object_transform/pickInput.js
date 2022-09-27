@@ -5,7 +5,7 @@ import { InputType } from "../../schema";
  * @param inputJson - The data to pick a class for.
  */
 export function pickInput(inputJson, parent) {
-    switch (inputJson["Input Type"]) {
+    switch (inputJson["Input type"]) {
         case InputType.Clock: {
             return new InputClockBuilder(inputJson, parent);
         }

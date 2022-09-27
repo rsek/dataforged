@@ -15,16 +15,16 @@ export class IronlandsRegionBuilder implements IronlandsRegion {
   Features: string[];
   Tags?: string[] | undefined;
   Description: string;
-  "Quest Starter": string;
+  "Quest starter": string;
 
-  constructor(json: YamlIronlandsRegion, rootSource: Source) {
-    const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
+  constructor(yaml: YamlIronlandsRegion, rootSource: Source) {
+    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical;
     this.$id = formatId(fragment, Game.Ironsworn, "Regions");
-    this.Title = new TitleBuilder(json.Title,this);
+    this.Title = new TitleBuilder(yaml.Title,this);
     this.Display = new DisplayBuilder({  });
-    this.Source = new SourceBuilder(json.Source ?? {}, rootSource);
-    this.Features = json.Features;
-    this.Summary = json.Summary;
-    this.Description = json.Description;
+    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), rootSource);
+    this.Features = yaml.Features;
+    this.Summary = yaml.Summary;
+    this.Description = yaml.Description;
   }
 }

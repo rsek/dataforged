@@ -1,4 +1,4 @@
-import { TruthBuilder, TruthClassicBuilder } from "@builders";
+import { TruthStarforgedBuilder, TruthClassicBuilder } from "@builders";
 import { MASTER_DATA_PATH } from "@constants";
 import { Game } from "@schema";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -22,12 +22,12 @@ export function buildTruths<G extends Game>(game: G) {
   switch (game) {
     case Game.Ironsworn: {
       const truthsRoot = concatWithYamlRefs(undefined, filePath) as YamlTruthRootClassic;
-      const truths = _.mapValues(truthsRoot["Setting Truths"],item => new TruthClassicBuilder(item));
+      const truths = _.mapValues(truthsRoot["Setting truths"],item => new TruthClassicBuilder(item, truthsRoot.Source));
       return truths;
     }
     case Game.Starforged: {
       const truthsRoot = concatWithYamlRefs(undefined, filePath) as YamlTruthRootStarforged;
-      const truths = _.mapValues(truthsRoot["Setting Truths"],item => new TruthBuilder(item, truthsRoot.Source, game));
+      const truths = _.mapValues(truthsRoot["Setting truths"],item => new TruthStarforgedBuilder(item, truthsRoot.Source));
       buildLog(buildTruths, `Finished building ${truths.length} setting truth categories.`);
       return truths;
     }

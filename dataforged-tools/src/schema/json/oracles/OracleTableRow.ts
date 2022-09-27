@@ -14,7 +14,7 @@ export interface OracleTableRow extends Partial< Nullable<HasSummary &
 >>  {
   /**
    * The ID of this row.
-   * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
+   * @pattern ^(ironsworn|starforged)/oracles(/[a-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
    */
   $id: string;
   /**
@@ -54,6 +54,7 @@ export interface OracleTableRow extends Partial< Nullable<HasSummary &
   Summary?: string | null | undefined;
   /**
    * Additional oracle tables that should be rolled when this row is selected.
+   * @pattern ^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$
    */
   "Oracle rolls"?: OracleTable["$id"][] | undefined;
   /**

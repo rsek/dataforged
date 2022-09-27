@@ -2,7 +2,7 @@
   "description": "Schema for files that contain one or more oracle sets.",
   "type": "object",
   "properties": {
-    "Oracle Sets": {
+    "Oracle sets": {
       "type": "object",
       "additionalProperties": {
         "anyOf": [
@@ -49,7 +49,7 @@
         ]
       },
       "defaultProperties": [],
-      "title": "Oracle Sets"
+      "title": "Oracle sets"
     },
     "$schema": { "type": "string", "title": "$schema" },
     "_refs": {
@@ -80,7 +80,7 @@
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Oracle Sets", "Source"],
+  "required": ["Oracle sets", "Source"],
   "definitions": {
     "YamlOracleSet": {
       "title": "YamlOracleSet",
@@ -126,26 +126,26 @@
           "type": "string",
           "title": "Description"
         },
-        "On a Match": {
+        "On a match": {
           "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on {@link OracleTable}s that have a `Table`.",
           "$ref": "#/definitions/OracleMatch",
-          "title": "On a Match"
+          "title": "On a match"
         },
-        "Sample Names": {
+        "Sample names": {
           "description": "A list of sample names for this category. Only used by Planetary Class {@link OracleSet}s.",
           "type": "array",
           "items": { "type": "string" },
-          "title": "Sample Names"
+          "title": "Sample names"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$",
           "type": "string",
           "title": "$id"
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
@@ -1128,7 +1128,7 @@
           ],
           "title": "Authority"
         },
-        "Encountered Behavior": {
+        "Encountered behavior": {
           "anyOf": [
             {
               "type": "array",
@@ -1603,9 +1603,9 @@
             },
             { "type": "null" }
           ],
-          "title": "Encountered Behavior"
+          "title": "Encountered behavior"
         },
-        "Derelict Type": {
+        "Derelict type": {
           "anyOf": [
             {
               "type": "array",
@@ -2080,7 +2080,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Derelict Type"
+          "title": "Derelict type"
         },
         "Disposition": {
           "anyOf": [
@@ -3513,7 +3513,7 @@
           ],
           "title": "Environment"
         },
-        "Faction Type": {
+        "Faction type": {
           "anyOf": [
             {
               "type": "array",
@@ -3988,9 +3988,9 @@
             },
             { "type": "null" }
           ],
-          "title": "Faction Type"
+          "title": "Faction type"
         },
-        "Fringe Group": {
+        "Fringe group": {
           "anyOf": [
             {
               "type": "array",
@@ -4465,7 +4465,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Fringe Group"
+          "title": "Fringe group"
         },
         "Guild": {
           "anyOf": [
@@ -5421,7 +5421,7 @@
           ],
           "title": "Influence"
         },
-        "Initial Contact": {
+        "Initial contact": {
           "anyOf": [
             {
               "type": "array",
@@ -5896,7 +5896,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Initial Contact"
+          "title": "Initial contact"
         },
         "Leadership": {
           "anyOf": [
@@ -7329,7 +7329,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -7804,9 +7804,9 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
-        "Planetary Class": {
+        "Planetary class": {
           "anyOf": [
             {
               "type": "array",
@@ -8281,7 +8281,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Planetary Class"
+          "title": "Planetary class"
         },
         "Population": {
           "anyOf": [
@@ -9714,7 +9714,7 @@
           ],
           "title": "Role"
         },
-        "Creature Scale": {
+        "Creature scale": {
           "anyOf": [
             {
               "type": "array",
@@ -10189,7 +10189,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Creature Scale"
+          "title": "Creature scale"
         },
         "Zone": {
           "anyOf": [
@@ -10679,7 +10679,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -10779,7 +10779,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -10816,7 +10816,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -10918,7 +10918,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -10957,42 +10957,49 @@
         },
         "Moves": {
           "description": "Suggested move IDs.",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Moves"
         },
         "Oracle rolls": {
           "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
         },
         "Assets": {
           "description": "Suggested asset IDs.",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Assets"
         },
         "Encounters": {
           "description": "Suggested encounter IDs.",
+          "pattern": "^(starforged/encounters|ironsworn/encounters/[a-z_-]+)/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
         },
         "Themes": {
           "description": "Suggested delve site themes.",
+          "pattern": "^ironsworn/themes/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Themes"
         },
         "Domains": {
           "description": "Suggested delve site domains.",
+          "pattern": "^ironsworn/domains/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Domains"
         },
         "Regions": {
           "description": "Suggested Ironlands regions.",
+          "pattern": "^ironsworn/regions/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Regions"
@@ -11293,7 +11300,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_1", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Encountered Behavior": {
+        "Encountered behavior": {
           "anyOf": [
             {
               "type": "array",
@@ -11378,7 +11385,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Encountered Behavior"
+          "title": "Encountered behavior"
         },
         "Environment": {
           "anyOf": [
@@ -11467,7 +11474,7 @@
           ],
           "title": "Environment"
         },
-        "Creature Scale": {
+        "Creature scale": {
           "anyOf": [
             {
               "type": "array",
@@ -11552,7 +11559,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Creature Scale"
+          "title": "Creature scale"
         }
       },
       "required": ["Object type"]
@@ -11570,7 +11577,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_2", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Derelict Type": {
+        "Derelict type": {
           "anyOf": [
             {
               "type": "array",
@@ -11647,9 +11654,9 @@
             },
             { "type": "null" }
           ],
-          "title": "Derelict Type"
+          "title": "Derelict type"
         },
-        "Initial Contact": {
+        "Initial contact": {
           "anyOf": [
             {
               "type": "array",
@@ -11726,7 +11733,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Initial Contact"
+          "title": "Initial contact"
         },
         "Location": {
           "anyOf": [
@@ -11807,7 +11814,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -11884,7 +11891,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Region": {
           "anyOf": [
@@ -12082,13 +12089,13 @@
           ],
           "title": "Authority"
         },
-        "Derelict Type": {
+        "Derelict type": {
           "$ref": "#/definitions/DerelictType.Settlement",
-          "title": "Derelict Type"
+          "title": "Derelict type"
         },
-        "Initial Contact": {
+        "Initial contact": {
           "$ref": "#/definitions/SettlementInitialContact.Derelict",
-          "title": "Initial Contact"
+          "title": "Initial contact"
         },
         "Location": {
           "anyOf": [
@@ -12193,7 +12200,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -12294,7 +12301,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Population": {
           "anyOf": [
@@ -12508,7 +12515,7 @@
           "title": "Object type"
         }
       },
-      "required": ["Derelict Type", "Initial Contact", "Object type"]
+      "required": ["Derelict type", "Initial contact", "Object type"]
     },
     "DerelictType.Settlement": {
       "title": "DerelictType.Settlement",
@@ -12525,13 +12532,13 @@
       "additionalProperties": false,
       "type": "object",
       "properties": {
-        "Derelict Type": {
+        "Derelict type": {
           "$ref": "#/definitions/DerelictType.Starship",
-          "title": "Derelict Type"
+          "title": "Derelict type"
         },
-        "Initial Contact": {
+        "Initial contact": {
           "$ref": "#/definitions/StarshipInitialContact.Derelict",
-          "title": "Initial Contact"
+          "title": "Initial contact"
         },
         "Location": {
           "anyOf": [
@@ -12612,7 +12619,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -12689,7 +12696,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Region": {
           "anyOf": [
@@ -12776,7 +12783,7 @@
           "title": "Object type"
         }
       },
-      "required": ["Derelict Type", "Initial Contact", "Object type"]
+      "required": ["Derelict type", "Initial contact", "Object type"]
     },
     "DerelictType.Starship": {
       "title": "DerelictType.Starship",
@@ -12795,7 +12802,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_3", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Derelict Type": {
+        "Derelict type": {
           "anyOf": [
             {
               "type": "array",
@@ -12844,7 +12851,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Derelict Type"
+          "title": "Derelict type"
         },
         "Location": {
           "anyOf": [
@@ -12897,7 +12904,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -12946,7 +12953,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Region": {
           "anyOf": [
@@ -13122,7 +13129,7 @@
           ],
           "title": "Dominion"
         },
-        "Faction Type": {
+        "Faction type": {
           "anyOf": [
             {
               "type": "array",
@@ -13227,7 +13234,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Faction Type"
+          "title": "Faction type"
         },
         "Influence": {
           "anyOf": [
@@ -13459,7 +13466,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Faction Type": {
+        "Faction type": {
           "anyOf": [
             {
               "type": "array",
@@ -13518,9 +13525,9 @@
             },
             { "type": "null" }
           ],
-          "title": "Faction Type"
+          "title": "Faction type"
         },
-        "Fringe Group": {
+        "Fringe group": {
           "anyOf": [
             {
               "type": "array",
@@ -13579,7 +13586,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Fringe Group"
+          "title": "Fringe group"
         },
         "Influence": {
           "anyOf": [
@@ -13652,7 +13659,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Faction Type": {
+        "Faction type": {
           "anyOf": [
             {
               "type": "array",
@@ -13717,7 +13724,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Faction Type"
+          "title": "Faction type"
         },
         "Guild": {
           "anyOf": [
@@ -13863,7 +13870,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_4", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Faction Type": {
+        "Faction type": {
           "anyOf": [
             {
               "type": "array",
@@ -13900,7 +13907,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Faction Type"
+          "title": "Faction type"
         },
         "Influence": {
           "anyOf": [
@@ -14230,7 +14237,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -14321,9 +14328,9 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
-        "Planetary Class": {
+        "Planetary class": {
           "anyOf": [
             {
               "type": "array",
@@ -14414,7 +14421,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Planetary Class"
+          "title": "Planetary class"
         },
         "Region": {
           "anyOf": [
@@ -14572,7 +14579,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -14617,7 +14624,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Region": {
           "anyOf": [
@@ -14781,7 +14788,7 @@
           ],
           "title": "Authority"
         },
-        "Initial Contact": {
+        "Initial contact": {
           "anyOf": [
             {
               "type": "array",
@@ -14878,7 +14885,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Initial Contact"
+          "title": "Initial contact"
         },
         "Location": {
           "anyOf": [
@@ -14979,7 +14986,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -15076,7 +15083,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Population": {
           "anyOf": [
@@ -15292,7 +15299,7 @@
       "properties": {
         "Object type": { "$ref": "#/definitions/T_8", "title": "Object type" },
         "Inherit rolls": { "type": "boolean", "title": "Inherit rolls" },
-        "Initial Contact": {
+        "Initial contact": {
           "anyOf": [
             {
               "type": "array",
@@ -15365,7 +15372,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Initial Contact"
+          "title": "Initial contact"
         },
         "Location": {
           "anyOf": [
@@ -15442,7 +15449,7 @@
           ],
           "title": "Location"
         },
-        "Location Theme": {
+        "Location theme": {
           "anyOf": [
             {
               "type": "array",
@@ -15515,7 +15522,7 @@
             },
             { "type": "null" }
           ],
-          "title": "Location Theme"
+          "title": "Location theme"
         },
         "Region": {
           "anyOf": [
@@ -15622,7 +15629,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "pattern": "^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$",
           "type": "string",
           "title": "$id"
         },
@@ -15652,22 +15659,22 @@
       "enum": [
         "Atmosphere",
         "Authority",
-        "Creature Scale",
-        "Derelict Type",
+        "Creature scale",
+        "Derelict type",
         "Disposition",
         "Dominion",
-        "Encountered Behavior",
+        "Encountered behavior",
         "Environment",
-        "Faction Type",
-        "Fringe Group",
+        "Faction type",
+        "Fringe group",
         "Guild",
         "Influence",
-        "Initial Contact",
+        "Initial contact",
         "Leadership",
         "Life",
         "Location",
-        "Location Theme",
-        "Planetary Class",
+        "Location theme",
+        "Planetary class",
         "Population",
         "Region",
         "Role",
@@ -15701,7 +15708,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$",
           "type": "string",
           "title": "$id"
         },
@@ -15729,26 +15736,26 @@
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
         },
-        "On a Match": {
+        "On a match": {
           "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on {@link OracleTable}s that have a `Table`.",
           "$ref": "#/definitions/OracleMatch",
-          "title": "On a Match"
+          "title": "On a match"
         },
         "Requires": {
           "$ref": "#/definitions/YamlRequirements<AttributeKey>",
           "title": "Requires"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Sample Names": {
+        "Sample names": {
           "description": "A list of sample names for this category. Only used by Planetary Class {@link OracleSet}s.",
           "type": "array",
           "items": { "type": "string" },
-          "title": "Sample Names"
+          "title": "Sample names"
         },
         "_templateVars": {
           "type": "object",
@@ -15804,26 +15811,26 @@
           "type": "string",
           "title": "Description"
         },
-        "On a Match": {
+        "On a match": {
           "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on {@link OracleTable}s that have a `Table`.",
           "$ref": "#/definitions/OracleMatch",
-          "title": "On a Match"
+          "title": "On a match"
         },
-        "Sample Names": {
+        "Sample names": {
           "description": "A list of sample names for this category. Only used by Planetary Class {@link OracleSet}s.",
           "type": "array",
           "items": { "type": "string" },
-          "title": "Sample Names"
+          "title": "Sample names"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$",
           "type": "string",
           "title": "$id"
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
@@ -15920,15 +15927,20 @@
           "type": "string",
           "title": "Description"
         },
+        "On a match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.",
+          "$ref": "#/definitions/OracleMatch",
+          "title": "On a match"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
@@ -15986,7 +15998,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -16003,7 +16015,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
+          "pattern": "^(ironsworn|starforged)/oracles(/[a-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
           "type": "string",
           "title": "$id"
         },
@@ -16043,6 +16055,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -16116,7 +16129,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+          "pattern": "^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
           "type": "string",
           "title": "$id"
         },
@@ -16156,6 +16169,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -16272,7 +16286,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "pattern": "^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$",
           "type": "string",
           "title": "$id"
         },
@@ -16314,42 +16328,49 @@
         },
         "Oracle rolls": {
           "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
         },
         "Moves": {
           "description": "Suggested move IDs.",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Moves"
         },
         "Assets": {
           "description": "Suggested asset IDs.",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Assets"
         },
         "Encounters": {
           "description": "Suggested encounter IDs.",
+          "pattern": "^(starforged/encounters|ironsworn/encounters/[a-z_-]+)/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
         },
         "Themes": {
           "description": "Suggested delve site themes.",
+          "pattern": "^ironsworn/themes/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Themes"
         },
         "Domains": {
           "description": "Suggested delve site domains.",
+          "pattern": "^ironsworn/domains/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Domains"
         },
         "Regions": {
           "description": "Suggested Ironlands regions.",
+          "pattern": "^ironsworn/regions/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Regions"
@@ -16503,22 +16524,45 @@
       "title": "OracleContent_2",
       "$ref": "#/definitions/OracleContent_1"
     },
+    "OracleMatch": {
+      "title": "OracleMatch",
+      "type": "object",
+      "properties": {
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?/on_a_match$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Text": {
+          "description": "The item's rules text as a markdown string.",
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Text"]
+    },
     "YamlTitle": {
       "title": "YamlTitle",
       "type": "object",
       "properties": {
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z -]+$",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][a-z’ -]+$",
           "type": "string",
           "title": "Standard"
         },
@@ -16601,15 +16645,20 @@
           "type": "string",
           "title": "Description"
         },
+        "On a match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.",
+          "$ref": "#/definitions/OracleMatch",
+          "title": "On a match"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
@@ -16698,15 +16747,20 @@
           "type": "string",
           "title": "Description"
         },
+        "On a match": {
+          "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.",
+          "$ref": "#/definitions/OracleMatch",
+          "title": "On a match"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
@@ -16808,26 +16862,6 @@
       ],
       "minItems": 2,
       "maxItems": 2
-    },
-    "OracleMatch": {
-      "title": "OracleMatch",
-      "type": "object",
-      "properties": {
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Text": {
-          "description": "The item's rules text as a markdown string.",
-          "type": "string",
-          "title": "Text"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Text"]
     },
     "Partial": { "$ref": "#/definitions/__type_1" },
     "Source": {

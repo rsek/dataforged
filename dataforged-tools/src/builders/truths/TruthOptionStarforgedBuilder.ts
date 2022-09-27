@@ -4,16 +4,16 @@ import type { TruthOptionStarforged , TruthOptionSubtableRowStarforged, YamlTrut
 /**
  * @internal
  */
-export class TruthOptionBuilder extends OracleTableRowBuilder implements TruthOptionStarforged {
+export class TruthOptionStarforgedBuilder extends OracleTableRowBuilder implements TruthOptionStarforged {
   $id: TruthOptionStarforged["$id"];
   Floor!: TruthOptionStarforged["Floor"];
   Ceiling!: TruthOptionStarforged["Ceiling"];
   Result: string;
   Description: string;
-  "Quest Starter": string;
+  "Quest starter": string;
   Subtable?: TruthOptionSubtableRowStarforged[] | undefined;
-  constructor(parentId: string, json: YamlTruthOptionStarforged) {
-    super(parentId, json);
+  constructor(parentId: string, yaml: YamlTruthOptionStarforged) {
+    super(parentId, yaml);
 
     let rangeString: string;
     if (this.Floor === null && this.Ceiling === null) {
@@ -27,11 +27,11 @@ export class TruthOptionBuilder extends OracleTableRowBuilder implements TruthOp
       // @ts-ignore
       this.$id = `${parentId}/${rangeString}`;
     }
-    this.Result = json.Result;
-    this["Description"] = json["Description"];
-    this["Quest Starter"] = json["Quest Starter"];
-    if (json["Roll template"]){
-      this["Roll template"] = { ...json["Roll template"], $id: `${this.$id}/Roll_template` };
+    this.Result = yaml.Result;
+    this["Description"] = yaml["Description"];
+    this["Quest starter"] = yaml["Quest starter"];
+    if (yaml["Roll template"]){
+      this["Roll template"] = { ...yaml["Roll template"], $id: `${this.$id}/Roll_template` };
     }
     // if (this.Subtable) {
     //   // what is happening here?

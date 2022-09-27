@@ -7,8 +7,8 @@ import type { YamlInputClock, YamlInputNumber, YamlInputSelect, YamlInputText, Y
  * Infers the correct class for an YamlInput object and constructs it.
  * @param inputJson - The data to pick a class for.
  */
-export function pickInput<T extends InputType>(inputJson: YamlInput & {"Input Type": T}, parent: Asset|AssetAbility) {
-  switch (inputJson["Input Type"]) {
+export function pickInput<T extends InputType>(inputJson: YamlInput & {"Input type": T}, parent: Asset|AssetAbility) {
+  switch (inputJson["Input type"]) {
     case InputType.Clock: {
       return new InputClockBuilder(inputJson as unknown as YamlInputClock, parent);
     }

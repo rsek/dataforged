@@ -1,6 +1,7 @@
 import { MoveTriggerOptionActionBuilder, MoveTriggerOptionProgressBuilder } from "@builders";
 import type { AlterMove, Move, MoveTrigger, MoveTriggerBy , MoveTriggerOptionAction, MoveTriggerOptionProgress, YamlAlterMoveTrigger, YamlMoveTrigger, YamlMoveTriggerOptionAction, YamlMoveTriggerOptionProgress } from "@schema";
 import { RollType } from "@schema";
+import { formatId } from "@utils";
 
 // TODO: add ironsworn moves, or have the constructor use move data to figure it out
 
@@ -14,18 +15,18 @@ export class MoveTriggerBuilder implements MoveTrigger {
   "Options"?: (MoveTriggerOptionAction|MoveTriggerOptionProgress)[] | undefined;
   Text?: string | undefined;
   By?: MoveTriggerBy | undefined;
-  constructor(json: YamlMoveTrigger|YamlAlterMoveTrigger,parent: AlterMove|Move) {
-    this.$id = parent.$id + "/Trigger";
-    this.Text = json.Text;
-    if (this.$id.includes("Alter_Moves")) {
-      this.By = json.By ?? { Player: true, Ally: false };
+  constructor(yaml: YamlMoveTrigger|YamlAlterMoveTrigger,parent: AlterMove|Move) {
+    this.$id = formatId("Trigger", parent.$id);
+    this.Text = yaml.Text;
+    if (this.$id.includes("alter_moves")) {
+      this.By = yaml.By ?? { Player: true, Ally: false };
     }
-    if (json.Options) {
+    if (yaml.Options) {
       let progressMove = false;
-      if (parent["Progress Move"] ?? (parent as AlterMove).Moves?.some(item => progressMoves.includes(item))) {
+      if (parent["Progress move"] ?? (parent as AlterMove).Moves?.some(item => progressMoves.includes(item))) {
         progressMove = true;
       }
-      this["Options"] = json.Options.map((option, index) => {
+      this["Options"] = yaml.Options.map((option, index) => {
         if (!option["Roll type"]) {
           option["Roll type"] = progressMove ? RollType.Progress : RollType.Action;
         }

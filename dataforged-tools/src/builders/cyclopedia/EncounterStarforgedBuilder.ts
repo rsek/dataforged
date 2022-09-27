@@ -2,6 +2,7 @@ import { DisplayBuilder, EncounterVariantBuilder, SourceBuilder, TitleBuilder } 
 import { Game } from "@schema";
 import type { ChallengeRank , Display, EncounterNatureStarforged, EncounterStarforged, EncounterTags,  EncounterVariant, Source, Title, YamlEncounterStarforged  } from "@schema";
 import { formatId } from "@utils";
+import _ from "lodash-es";
 
 /**
  * @internal
@@ -17,29 +18,29 @@ export class EncounterStarforgedBuilder implements EncounterStarforged {
   Features: string[];
   Drives: string[];
   Tactics: string[];
-  Variants?: EncounterVariant[] | undefined;
+  Variants?: {[key:string]: EncounterVariant} | undefined;
   Description: string;
-  "Quest Starter": string;
+  "Quest starter": string;
   Source: Source;
-  constructor(json: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
+  constructor(yaml: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
     const game = Game.Starforged;
-    const fragment = json._idFragment?? json.Title.Canonical;
+    const fragment = yaml._idFragment?? yaml.Title.Canonical;
     this.$id = formatId(fragment, game, "Encounters");
-    this.Title = new TitleBuilder(json.Title, this);
-    this.Nature = json.Nature;
-    this.Summary = json.Summary;
-    this.Tags = json.Tags;
-    this.Rank = json.Rank;
+    this.Title = new TitleBuilder(yaml.Title, this);
+    this.Nature = yaml.Nature;
+    this.Summary = yaml.Summary;
+    this.Tags = yaml.Tags;
+    this.Rank = yaml.Rank;
     this.Display = new DisplayBuilder({ });
-    this.Features = json.Features;
-    this.Drives = json.Drives;
-    this.Tactics = json.Tactics;
-    const newSource = new SourceBuilder(json.Source ?? {}, ...ancestorSourceJson);
-    this.Description = json.Description;
-    this["Quest Starter"] = json["Quest Starter"];
+    this.Features = yaml.Features;
+    this.Drives = yaml.Drives;
+    this.Tactics = yaml.Tactics;
+    const newSource = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Starforged), ...ancestorSourceJson);
+    this.Description = yaml.Description;
+    this["Quest starter"] = yaml["Quest starter"];
     this.Source = newSource;
-    if (json.Variants){
-      this.Variants = json.Variants.map(variant => new EncounterVariantBuilder(variant, this));
+    if (yaml.Variants){
+      this.Variants = _.mapValues(yaml.Variants,variant => new EncounterVariantBuilder(variant, this));
     }
   }
 }

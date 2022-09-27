@@ -1,11 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "Regions": {
+    "Ironlands regions": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/YamlIronlandsRegion" },
       "defaultProperties": [],
-      "title": "Regions"
+      "title": "Ironlands regions"
     },
     "$schema": { "type": "string", "title": "$schema" },
     "_refs": {
@@ -36,7 +36,7 @@
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Regions", "Source"],
+  "required": ["Ironlands regions", "Source"],
   "definitions": {
     "YamlIronlandsRegion": {
       "title": "YamlIronlandsRegion",
@@ -47,10 +47,10 @@
           "type": "string",
           "title": "Summary"
         },
-        "Quest Starter": {
+        "Quest starter": {
           "description": "A markdown string describing the quest starter associated with this item.",
           "type": "string",
-          "title": "Quest Starter"
+          "title": "Quest starter"
         },
         "Features": {
           "type": "array",
@@ -64,7 +64,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Ironsworn/Regions/[A-z_-]$",
+          "pattern": "^ironsworn/regions/[a-z_-]$",
           "type": "string",
           "title": "$id"
         },
@@ -88,7 +88,7 @@
       "required": [
         "Description",
         "Features",
-        "Quest Starter",
+        "Quest starter",
         "Summary",
         "Title"
       ]
@@ -183,16 +183,19 @@
       "properties": {
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z -]+$",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][a-z’ -]+$",
           "type": "string",
           "title": "Standard"
         },

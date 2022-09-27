@@ -5,10 +5,10 @@ import type { HasId, OutcomeMiss, OutcomeStrongHit, OutcomeWeakHit } from "@sche
  */
 export interface Outcomes extends HasId {
   /**
-   * @pattern ^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$
    */
   $id: string;
-  "Strong Hit": OutcomeStrongHit;
-  "Weak Hit": OutcomeWeakHit;
+  "Strong hit": OutcomeStrongHit;
+  "Weak hit": OutcomeWeakHit;
   "Miss": OutcomeMiss;
 }

@@ -1,4 +1,4 @@
-import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
+import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
 import { InputSelectOptionType, InputType, Replacement } from "@schema";
 import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Game, InputClock, InputNumber, InputSelect, InputText, Source, Title, YamlAsset } from "@schema";
 import { formatId } from "@utils";
@@ -16,37 +16,35 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   Title: Title;
   States?: AssetState[]|undefined;
   Aliases?: string[] | undefined;
-  "Asset Type": AssetType["$id"];
+  "Asset type": AssetType["$id"];
   Display: Display;
   Usage: AssetUsage;
   Attachments?: AssetAttachment | undefined;
   Requirement?: string | undefined;
-  Inputs?: (InputText|InputSelect|InputClock|InputNumber)[] |undefined;
+  Inputs?: Asset["Inputs"];
   Abilities: [AssetAbility, AssetAbility, AssetAbility];
-  "Condition Meter"?: ConditionMeter | undefined;
-  constructor(json: YamlAsset, game: Game, parent: AssetType, rootSource: Source) {
-    // uses RootSource as a starting pointGamecategory info has page numbers in the rulebook, rather than the asset pdf
-    super(json.Source ?? {}, rootSource);
-    // console.log(this.Source);
-    this["Asset Type"] = parent.$id;
-    const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
-    this.$id = formatId(fragment,this["Asset Type"]);
+  "Meter"?: ConditionMeter | undefined;
+  constructor(yaml: YamlAsset, game: Game, parent: AssetType, rootSource: Source) {
+    super(yaml.Source ?? {}, rootSource);
+    this["Asset type"] = parent.$id;
+    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical;
+    this.$id = formatId(fragment,this["Asset type"]);
     buildLog(this.constructor, `Building: ${this.$id}`);
-    this.Title = new TitleBuilder(json.Title,this);
-    this.Aliases = json.Aliases;
+    this.Title = new TitleBuilder(yaml.Title,this);
+    this.Aliases = yaml.Aliases;
     this.Display = new DisplayBuilder({
-      Icon: json.Display?.Icon,
-      Color: json.Display?.Color ?? parent.Display.Color
+      Icon: yaml.Display?.Icon,
+      Color: yaml.Display?.Color ?? parent.Display.Color
     });
     this.Usage = {
-      Shared: [ "Command Vehicle", "Support Vehicle", "Module" ].includes(parent.Title.Short ?? parent.Title.Canonical) ? true : false
+      Shared: [ "command vehicle", "support vehicle", "module" ].includes(parent.Title.Short?.toLowerCase() ?? parent.Title.Canonical.toLowerCase()) ? true : false
     };
-    this.Attachments = json.Attachments;
-    if (json.Inputs) {
-      this.Inputs = json.Inputs.map(inputJson => {
+    this.Attachments = yaml.Attachments;
+    if (yaml.Inputs) {
+      this.Inputs = _.mapValues(yaml.Inputs,inputJson => {
         const result = pickInput<InputType.Select|InputType.Text>(inputJson, this);
-        if (result["Input Type"] === InputType.Select) {
-          result.Sets.forEach(hint => {
+        if (result["Input type"] === InputType.Select) {
+          _.forEach(result["Sets attributes"],hint => {
             let searchValue: Replacement|undefined = undefined;
             let replaceValue: string = this.$id;
             switch (hint.Type) {
@@ -62,28 +60,28 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
                 break;
             }
             if (searchValue) {
-              json.Abilities = replaceInAllStrings(json.Abilities, searchValue, replaceValue);
+              yaml.Abilities = replaceInAllStrings(yaml.Abilities, searchValue, replaceValue);
             }
           });
         }
         return result;
       });
     }
-    if (json.States) {
-      this.States = json.States.map(state => new AssetStateBuilder(state, this)) ?? undefined;
+    if (yaml.States) {
+      this.States = yaml.States.map(state => new AssetStateBuilder(state, this)) ?? undefined;
     }
-    this.Requirement = json.Requirement;
-    this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeterBuilder(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;
-    if (json.Abilities.length !== 3) {
-      throw badJsonError(this.constructor, json.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
+    this.Requirement = yaml.Requirement;
+    this["Meter"] = yaml["Condition meter"] ? new ConditionMeterBuilder(yaml["Condition meter"], formatId("Condition meter",this.$id), this["Asset type"]) : undefined;
+    if (yaml.Abilities.length !== 3) {
+      throw badJsonError(this.constructor, yaml.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
     } else {
-      this.Abilities = json.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, `${this.$id}/Abilities/${index + 1}`, game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
+      this.Abilities = yaml.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, `${this.$id}/Abilities/${index + 1}`, game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
     }
 
     _.merge(this, replaceInAllStrings(this, Replacement.Asset, this.$id));
 
-    if (this["Condition Meter"]) {
-      _.merge(this, replaceInAllStrings(this, Replacement.AssetMeter, this["Condition Meter"].$id));
+    if (this["Meter"]) {
+      _.merge(this, replaceInAllStrings(this, Replacement.AssetMeter, this["Meter"].$id));
     }
   }
 }

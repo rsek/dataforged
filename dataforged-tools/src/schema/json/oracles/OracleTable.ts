@@ -10,7 +10,7 @@ import type { OracleBase, OracleMatch, OracleSet, OracleTableDisplay, OracleTabl
  */
 export interface OracleTable extends Omit<OracleBase, "Sets"|"Tables"> {
   /**
-   * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$
    */
   $id: string;
   /**
@@ -35,6 +35,6 @@ export interface OracleTable extends Omit<OracleBase, "Sets"|"Tables"> {
   /**
    * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
    */
-  "On a Match"?: OracleMatch | undefined
+  "On a match"?: OracleMatch | undefined
 }
 

@@ -10,12 +10,12 @@ export class ConditionMeterBuilder extends MeterBuilder implements ConditionMete
   Min: number = 0;
   Conditions: MeterCondition[] = [];
   Aliases?: MeterAlias[] | undefined;
-  constructor(json: YamlConditionMeter, id: string, assetType: AssetType["$id"]) {
-    super(json, id);
+  constructor(yaml: YamlConditionMeter, id: string, assetType: AssetType["$id"]) {
+    super(yaml, id);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    this.Value = json.Value ?? json.Max;
-    if (json.Conditions) {
-      this.Conditions = json.Conditions;
+    this.Value = yaml.Value ?? yaml.Max;
+    if (yaml.Conditions) {
+      this.Conditions = yaml.Conditions;
     }
     if (assetType === "Starforged/Assets/Companion" || assetType === "Ironsworn/Assets/Companion" ) {
       this.Aliases = [MeterAlias.CompanionHealth];

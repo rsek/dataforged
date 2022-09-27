@@ -27,7 +27,7 @@ export enum SettingTruthName {
  */
 export interface TruthStarforged extends HasId, HasSource, HasDisplay, Partial<HasSuggestions>, HasTable, HasTitle {
   /**
-   * @pattern ^Starforged/Setting_Truths/[A-z_-]+$
+   * @pattern ^starforged/truths/[a-z_-]+$
    */
   $id: string;
   /**

@@ -15,24 +15,24 @@ export class AssetAbilityBuilder implements AssetAbility {
   Label?: string | undefined;
   Text: string;
   Moves?: Move[] | undefined;
-  Inputs?: (InputNumber | InputClock | InputText | InputSelect)[] | undefined;
-  "Alter Moves"?: AlterMove[] | undefined;
-  "Alter Properties"?: AssetAbility["Alter Properties"] | undefined;
-  "Alter Momentum"?: AlterMomentum | undefined;
+  Inputs?: {[key:string]:(InputNumber | InputClock | InputText | InputSelect)} | undefined;
+  "Alter moves"?: AlterMove[] | undefined;
+  "Alter properties"?: AssetAbility["Alter properties"] | undefined;
+  "Alter momentum"?: AlterMomentum | undefined;
   Enabled: boolean;
-  constructor(json: YamlAssetAbility, id: AssetAbility["$id"], game: Game, parent: Asset) {
+  constructor(yaml: YamlAssetAbility, id: AssetAbility["$id"], game: Game, parent: Asset) {
     this.$id = id; Game;
-    this.Label = json.Label;
-    this.Text = json.Text;
-    if (json.Inputs) {
-      this.Inputs = json.Inputs.map(inputJson => pickInput(inputJson, this));
+    this.Label = yaml.Label;
+    this.Text = yaml.Text;
+    if (yaml.Inputs) {
+      this.Inputs = _.mapValues(yaml.Inputs,inputJson => pickInput(inputJson, this));
     }
 
-    this.Enabled = json.Enabled ?? false;
-    if (json["Alter Momentum"]) {
-      this["Alter Momentum"] = new AlterMomentumBuilder(json["Alter Momentum"], this);
+    this.Enabled = yaml.Enabled ?? false;
+    if (yaml["Alter momentum"]) {
+      this["Alter momentum"] = new AlterMomentumBuilder(yaml["Alter momentum"], this);
     }
-    this["Alter Moves"] = json["Alter Moves"] ? json["Alter Moves"].map((alterMove, index) => {
+    this["Alter moves"] = yaml["Alter moves"] ? yaml["Alter moves"].map((alterMove, index) => {
       if (parent.Usage.Shared && !alterMove.Trigger?.By) {
         if (!alterMove.Trigger) {
           alterMove.Trigger = {};
@@ -41,19 +41,19 @@ export class AssetAbilityBuilder implements AssetAbility {
       }
       const newData = new AlterMoveBuilder(alterMove, this, index);
       return newData;
-    }) : json["Alter Moves"];
-    if (json["Alter Properties"]){
-      this["Alter Properties"] = new AssetAlterPropertiesBuilder(json["Alter Properties"], this.$id);
+    }) : yaml["Alter moves"];
+    if (yaml["Alter properties"]){
+      this["Alter properties"] = new AssetAlterPropertiesBuilder(yaml["Alter properties"], this.$id);
     }
-    if (json.Moves) {
-      this.Moves = json.Moves.map(moveJson => {
+    if (yaml.Moves) {
+      this.Moves = yaml.Moves.map(moveJson => {
         const moveDataClone = _.cloneDeep(moveJson);
         moveDataClone.Asset = parent.$id;
         const fragment = moveDataClone._idFragment ?? moveDataClone.Title.Canonical;
         moveDataClone.$id = formatId(fragment,this.$id).replace("/Assets/", "/Moves/Assets/");
         moveDataClone.Category = `${game}/Moves/Assets`;
-        if (moveDataClone.Trigger.Options && parent["Condition Meter"]?.$id) {
-          moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Condition Meter"].$id);
+        if (moveDataClone.Trigger.Options && parent["Meter"]?.$id) {
+          moveDataClone.Trigger.Options = replaceInAllStrings(moveDataClone.Trigger.Options, Replacement.AssetMeter, parent["Meter"].$id);
           // console.log("asset ability move data", moveDataClone);
         }
         return new MoveBuilder(moveDataClone, this, game, parent.Source);

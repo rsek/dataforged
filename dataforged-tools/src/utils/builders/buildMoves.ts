@@ -16,7 +16,7 @@ const SCHEMA_YAML = fs.readJsonSync("../_master-data/schema/moves.json")
 /**
  * Build datasworn JSON moves from YAML shorthand.
  */
-export function buildMoves(game: Game = Game.Starforged): GameDataRoot["Move Categories"] {
+export function buildMoves(game: Game = Game.Starforged): GameDataRoot["Move categories"] {
   buildLog(buildMoves, "Building moves...");
 
   const filePaths = fg.sync(`${MASTER_DATA_PATH as string}/${game}/Moves*.(yml|yaml)`, { onlyFiles: true });
@@ -26,8 +26,8 @@ export function buildMoves(game: Game = Game.Starforged): GameDataRoot["Move Cat
     throw badJsonError(buildMoves, moveCatsYaml)
   }
 
-  const builtCats = moveCatsYaml.map(mvRoot => _.mapValues(mvRoot["Move Categories"], (mvCat) => new MoveCategoryBuilder(mvCat, game, mvRoot.Source)))
+  const builtCats = moveCatsYaml.map(mvRoot => _.mapValues(mvRoot["Move categories"], (mvCat) => new MoveCategoryBuilder(mvCat, game, mvRoot.Source)))
   const json = builtCats.reduce((prev, cur) => _.merge(prev,cur));
   buildLog(buildMoves, `Finished building ${moveStats(json)}`)
-  return json as GameDataRoot["Move Categories"];
+  return json as GameDataRoot["Move categories"];
 }

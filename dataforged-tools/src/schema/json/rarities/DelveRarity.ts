@@ -1,4 +1,4 @@
-import type { Asset, HasDescription, HasDisplay, HasSource, HasTitle } from "@schema";
+import type { Asset, HasDescription, HasDisplay, HasSource, HasTitle, TitleCaseTitle } from "@schema";
 
 /**
  * Represents a Rarity (described in Ironsworn: Delve)
@@ -9,10 +9,11 @@ export interface DelveRarity extends HasTitle, HasDisplay, HasSource, HasDescrip
    * @minimum 3
    * @maximum 5
    */
-  "XP Cost": number
+  "XP cost": number
   /**
    * The ID of the asset, to which this rarity applies its effects.
    * @see {@link Asset.$id}
    */
   Asset: Asset["$id"]
+  Title: TitleCaseTitle
 }

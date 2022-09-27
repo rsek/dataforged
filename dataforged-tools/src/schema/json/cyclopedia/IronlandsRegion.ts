@@ -5,11 +5,11 @@ import type { CyclopediaEntry, HasQuestStarter, HasSummary } from "@schema";
  */
 export interface IronlandsRegion extends CyclopediaEntry, HasSummary, HasQuestStarter {
   /**
-   * @pattern ^Ironsworn/Regions/[A-z_-]$
+   * @pattern ^ironsworn/regions/[a-z_-]$
    */
   $id: string;
   Features: string[];
-  "Quest Starter": string;
+  "Quest starter": string;
   Summary: string;
 }
 

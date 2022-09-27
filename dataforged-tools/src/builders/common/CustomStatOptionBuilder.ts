@@ -8,9 +8,9 @@ export class CustomStatOptionBuilder implements CustomStatOption {
   $id: CustomStatOption["$id"];
   Label: string;
   Value: number;
-  constructor(json: Omit<CustomStatOption, "$id">, parentId: CustomStatOption["$id"]) {
-    this.$id = formatId(json.Label, parentId);
-    this.Label = json.Label;
-    this.Value = json.Value;
+  constructor(yaml: Omit<CustomStatOption, "$id">, parentId: CustomStatOption["$id"]) {
+    this.$id = formatId(yaml.Label, parentId);
+    this.Label = yaml.Label;
+    this.Value = yaml.Value;
   }
 }

@@ -30,21 +30,21 @@ export enum RerollType {
   /**
    * The player can pick and choose which dice to reroll.
    */
-  Any = "Any",
+  Any = "any",
   /**
-   * The player can pick and choose which challenge dice to reroll.
+   * The player can pick and choose which challenge dice to reroll (none, one, or both).
    */
-  ChallengeDice = "Challenge dice",
+  ChallengeDice = "challenge dice",
   /**
    * The action die is rerolled.
    */
-  ActionDie = "Action die",
+  ActionDie = "action die",
   /**
-   * The player can choose one challenge die to reroll.
+   * The player can choose **one** challenge die to reroll.
    */
-  ChallengeDie = "Challenge die",
+  ChallengeDie = "challenge die",
   /**
    * Reroll *all* dice
    */
-  All = "All"
+  All = "all"
 }

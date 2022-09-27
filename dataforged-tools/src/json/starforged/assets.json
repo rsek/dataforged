@@ -1,7 +1,7 @@
-[
-  {
+{
+  "Command Vehicle": {
     "Source": {
-      "Title": "Ironsworn: Starforged Assets",
+      "Title": "Ironsworn: Starforged Rulebook",
       "Authors": ["Shawn Tomkin"],
       "Date": "050622",
       "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -40,7 +40,7 @@
         },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Command_Vehicle/Starship/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -147,9 +147,9 @@
       }
     ]
   },
-  {
+  "Module": {
     "Source": {
-      "Title": "Ironsworn: Starforged Assets",
+      "Title": "Ironsworn: Starforged Rulebook",
       "Authors": ["Shawn Tomkin"],
       "Date": "050622",
       "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -485,7 +485,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -805,7 +805,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -1310,7 +1310,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Module/Overseer/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -2102,7 +2102,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -2802,9 +2802,9 @@
       }
     ]
   },
-  {
+  "Support Vehicle": {
     "Source": {
-      "Title": "Ironsworn: Starforged Assets",
+      "Title": "Ironsworn: Starforged Rulebook",
       "Authors": ["Shawn Tomkin"],
       "Date": "050622",
       "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -2839,7 +2839,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Exosuit/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3021,7 +3021,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3120,17 +3120,17 @@
             "Text": "When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.",
             "Enabled": false,
             "Alter Momentum": {
-              "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum",
+              "$id": "Alter_Momentum/Starforged_Assets_Support_Vehicle_Hoverbike_Abilities_3",
               "Burn": [
                 {
-                  "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum/Burn",
+                  "$id": "Alter_Momentum/Starforged_Assets_Support_Vehicle_Hoverbike_Abilities_3/Burn",
                   "Trigger": {
                     "Text": "When you make a move while maneuvering your bike",
-                    "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum/Burn/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Support_Vehicle_Hoverbike_Abilities_3/Burn/Trigger"
                   },
                   "Effect": {
                     "Text": "Roll your action die. On a 5 or 6, do not reset momentum.",
-                    "$id": "Starforged/Assets/Support_Vehicle/Hoverbike/Abilities/3/Alter_Momentum/Burn/Effect"
+                    "$id": "Alter_Momentum/Starforged_Assets_Support_Vehicle_Hoverbike_Abilities_3/Burn/Effect"
                   }
                 }
               ]
@@ -3157,7 +3157,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Rover/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3251,6 +3251,7 @@
             "Text": "You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](Starforged/Moves/Suffer/Withstand_Damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.",
             "Enabled": false,
             "Alter Properties": {
+              "$id": "Starforged/Assets/Support_Vehicle/Rover/Abilities/2/Alter_Properties",
               "Attachments": {
                 "Asset Types": ["Starforged/Assets/Module"],
                 "Max": 1
@@ -3319,7 +3320,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Service_Pod/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3450,7 +3451,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Shuttle/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3558,7 +3559,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Skiff/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3685,7 +3686,7 @@
         "Usage": { "Shared": true },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -3782,7 +3783,7 @@
             "Text": "When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.",
             "Inputs": [
               {
-                "Input Type": "Number",
+                "Input Type": "number",
                 "$id": "Starforged/Assets/Support_Vehicle/Snub_Fighter/Abilities/3/Inputs/Victory_Marks",
                 "Label": "Victory Marks",
                 "Step": 1,
@@ -3798,9 +3799,9 @@
       }
     ]
   },
-  {
+  "Path": {
     "Source": {
-      "Title": "Ironsworn: Starforged Assets",
+      "Title": "Ironsworn: Starforged Rulebook",
       "Authors": ["Shawn Tomkin"],
       "Date": "050622",
       "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -3974,7 +3975,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -4195,9 +4196,10 @@
               }
             ],
             "Alter Properties": {
+              "$id": "Starforged/Assets/Path/Armored/Abilities/3/Alter_Properties",
               "States": [
                 {
-                  "$id": "Starforged/Assets/Path/Armored/Abilities/3/broken",
+                  "$id": "Starforged/Assets/Path/Armored/Abilities/3/Alter_Properties/broken",
                   "Label": "broken",
                   "Enabled": false,
                   "Disables asset": true,
@@ -4315,7 +4317,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -4384,13 +4386,13 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Path/Augmented/Inputs/One",
             "Label": "One",
             "Adjustable": false
           },
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Path/Augmented/Inputs/Two",
             "Label": "Two",
             "Adjustable": false
@@ -4454,9 +4456,10 @@
             "Text": "You are equipped with a second augment. It functions as above, but the benefits of the two augments do not stack.",
             "Enabled": false,
             "Alter Properties": {
+              "$id": "Starforged/Assets/Path/Augmented/Abilities/2/Alter_Properties",
               "States": [
                 {
-                  "$id": "Starforged/Assets/Path/Augmented/Abilities/2/broken_augment_2",
+                  "$id": "Starforged/Assets/Path/Augmented/Abilities/2/Alter_Properties/broken_augment_2",
                   "Label": "broken (augment 2)",
                   "Enabled": false,
                   "Disables asset": false,
@@ -4502,7 +4505,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Path/Bannersworn/Inputs/Ideology",
             "Label": "Ideology",
             "Adjustable": false
@@ -4792,7 +4795,7 @@
             "Text": "You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](Starforged/Moves/Quest/Swear_an_Iron_Vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.",
             "Inputs": [
               {
-                "Input Type": "Text",
+                "Input Type": "text",
                 "$id": "Starforged/Assets/Path/Blademaster/Abilities/3/Inputs/Name",
                 "Label": "Name",
                 "Adjustable": false
@@ -5459,13 +5462,13 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Path/Devotant/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
           },
           {
-            "Input Type": "Select",
+            "Input Type": "select",
             "$id": "Starforged/Assets/Path/Devotant/Inputs/Linked_stat",
             "Label": "Linked stat",
             "Adjustable": false,
@@ -5844,7 +5847,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -6219,7 +6222,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -6340,7 +6343,7 @@
             "Text": "You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.",
             "Inputs": [
               {
-                "Input Type": "Clock",
+                "Input Type": "clock",
                 "$id": "Starforged/Assets/Path/Fugitive/Abilities/1/Inputs/Notable_foe_or_force_tracks_you_down",
                 "Label": "Notable foe or force tracks you down",
                 "Clock Type": "Tension",
@@ -6689,7 +6692,7 @@
             "Text": "Give your favorite gun a name. When you [Clash](Starforged/Moves/Combat/Clash) with it, add +1. When you [Enter the Fray](Starforged/Moves/Combat/Enter_the_Fray) or [Endure Stress](Starforged/Moves/Suffer/Endure_Stress) while wielding it, add +1 and take +1 momentum on a hit.",
             "Inputs": [
               {
-                "Input Type": "Text",
+                "Input Type": "text",
                 "$id": "Starforged/Assets/Path/Gunner/Abilities/3/Inputs/Name",
                 "Label": "Name",
                 "Adjustable": true
@@ -7525,7 +7528,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -7863,17 +7866,17 @@
             "Text": "You may burn momentum on behalf of an ally to improve their result on a move. If you do, your ally takes +1 momentum.",
             "Enabled": false,
             "Alter Momentum": {
-              "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum",
+              "$id": "Alter_Momentum/Starforged_Assets_Path_Loyalist_Abilities_2",
               "Burn": [
                 {
-                  "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum/Burn",
+                  "$id": "Alter_Momentum/Starforged_Assets_Path_Loyalist_Abilities_2/Burn",
                   "Trigger": {
                     "Text": "On behalf of an ally to improve their result on a move",
-                    "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum/Burn/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Loyalist_Abilities_2/Burn/Trigger"
                   },
                   "Effect": {
                     "Text": "Your ally takes +1 momentum.",
-                    "$id": "Starforged/Assets/Path/Loyalist/Abilities/2/Alter_Momentum/Burn/Effect"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Loyalist_Abilities_2/Burn/Effect"
                   }
                 }
               ]
@@ -8517,7 +8520,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -8826,17 +8829,17 @@
             "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.",
             "Enabled": false,
             "Alter Momentum": {
-              "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum",
+              "$id": "Alter_Momentum/Starforged_Assets_Path_Scoundrel_Abilities_3",
               "Burn": [
                 {
-                  "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum/Burn",
+                  "$id": "Alter_Momentum/Starforged_Assets_Path_Scoundrel_Abilities_3/Burn",
                   "Trigger": {
                     "Text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit",
-                    "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum/Burn/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Scoundrel_Abilities_3/Burn/Trigger"
                   },
                   "Effect": {
                     "Text": "Take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.",
-                    "$id": "Starforged/Assets/Path/Scoundrel/Abilities/3/Alter_Momentum/Burn/Effect"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Scoundrel_Abilities_3/Burn/Effect"
                   },
                   "Outcomes": ["Strong Hit"]
                 }
@@ -9055,7 +9058,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -9414,7 +9417,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -9846,7 +9849,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Path/Vestige/Inputs/Last_of",
             "Label": "Last of",
             "Adjustable": false
@@ -9943,7 +9946,7 @@
             "Text": "You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.",
             "Inputs": [
               {
-                "Input Type": "Text",
+                "Input Type": "text",
                 "$id": "Starforged/Assets/Path/Vestige/Abilities/3/Inputs/Relic",
                 "Label": "Relic",
                 "Adjustable": false
@@ -10005,26 +10008,26 @@
             "Text": "When you are in a fight, increase your momentum reset by 1. Then, if you burn momentum to improve your result, add +1 on your next move.",
             "Enabled": true,
             "Alter Momentum": {
-              "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum",
+              "$id": "Alter_Momentum/Starforged_Assets_Path_Veteran_Abilities_1",
               "Burn": [
                 {
-                  "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Burn",
+                  "$id": "Alter_Momentum/Starforged_Assets_Path_Veteran_Abilities_1/Burn",
                   "Trigger": {
                     "Text": "When you are in a fight",
-                    "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Burn/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Veteran_Abilities_1/Burn/Trigger"
                   },
                   "Effect": {
                     "Text": "Add +1 on your next move",
-                    "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Burn/Effect"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Veteran_Abilities_1/Burn/Effect"
                   }
                 }
               ],
               "Reset": [
                 {
-                  "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Reset",
+                  "$id": "Alter_Momentum/Starforged_Assets_Path_Veteran_Abilities_1/Reset",
                   "Trigger": {
                     "Text": "When you are in a fight",
-                    "$id": "Starforged/Assets/Path/Veteran/Abilities/1/Alter_Momentum/Reset/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Veteran_Abilities_1/Reset/Trigger"
                   },
                   "Value": 1
                 }
@@ -10125,13 +10128,13 @@
             "Text": "You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](Starforged/Moves/Suffer/Lose_Momentum) (-1).",
             "Enabled": true,
             "Alter Momentum": {
-              "$id": "Starforged/Assets/Path/Voidborn/Abilities/1/Alter_Momentum",
+              "$id": "Alter_Momentum/Starforged_Assets_Path_Voidborn_Abilities_1",
               "Reset": [
                 {
-                  "$id": "Starforged/Assets/Path/Voidborn/Abilities/1/Alter_Momentum/Reset",
+                  "$id": "Alter_Momentum/Starforged_Assets_Path_Voidborn_Abilities_1/Reset",
                   "Trigger": {
                     "Text": "When you are in space (or a spacebound vehicle or station)",
-                    "$id": "Starforged/Assets/Path/Voidborn/Abilities/1/Alter_Momentum/Reset/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Path_Voidborn_Abilities_1/Reset/Trigger"
                   },
                   "Value": 1
                 }
@@ -10463,7 +10466,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Sundered Isles Preview",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "051722",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -10514,7 +10517,10 @@
             "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/2",
             "Text": "Take +2 command; your max is now 6.",
             "Enabled": false,
-            "Alter Properties": { "Condition Meter": { "Max": 6 } }
+            "Alter Properties": {
+              "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/2/Alter_Properties",
+              "Condition Meter": { "Max": 6 }
+            }
           },
           {
             "$id": "Starforged/Assets/Path/Crew_Commander/Abilities/3",
@@ -10555,9 +10561,9 @@
       }
     ]
   },
-  {
+  "Companion": {
     "Source": {
-      "Title": "Ironsworn: Starforged Assets",
+      "Title": "Ironsworn: Starforged Rulebook",
       "Authors": ["Shawn Tomkin"],
       "Date": "050622",
       "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -10592,7 +10598,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Banshee/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -10757,7 +10763,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Combat_Bot/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -10930,7 +10936,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Glowcat/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -11082,7 +11088,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Protocol_Bot/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -11211,7 +11217,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Rockhorn/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -11338,13 +11344,13 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
           },
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Sidekick/Inputs/Expertise",
             "Label": "Expertise",
             "Adjustable": false
@@ -11527,7 +11533,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Sprite/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -11624,7 +11630,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Survey_Bot/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -11803,7 +11809,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Symbiote/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -11887,7 +11893,10 @@
             "$id": "Starforged/Assets/Companion/Symbiote/Abilities/3",
             "Text": "The symbiote gains power and has 3 health.",
             "Enabled": false,
-            "Alter Properties": { "Condition Meter": { "Max": 3 } }
+            "Alter Properties": {
+              "$id": "Starforged/Assets/Companion/Symbiote/Abilities/3/Alter_Properties",
+              "Condition Meter": { "Max": 3 }
+            }
           }
         ]
       },
@@ -11910,7 +11919,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Utility_Bot/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -12062,7 +12071,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Companion/Voidglider/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -12195,7 +12204,7 @@
             "Text": "When you summon the Kraken, fill one segment of a four-segment clock. The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](Starforged/Moves/Combat/Take_Decisive_Action) with  an automatic strong hit. When the clock is filled, [Ask the Oracle](Starforged/Moves/Fate/Ask_the_Oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.",
             "Inputs": [
               {
-                "Input Type": "Clock",
+                "Input Type": "clock",
                 "$id": "Starforged/Assets/Companion/The_Kraken/Abilities/1/Inputs/Krakendoom",
                 "Label": "Krakendoom",
                 "Clock Type": "Tension",
@@ -12290,9 +12299,9 @@
       }
     ]
   },
-  {
+  "Deed": {
     "Source": {
-      "Title": "Ironsworn: Starforged Assets",
+      "Title": "Ironsworn: Starforged Rulebook",
       "Authors": ["Shawn Tomkin"],
       "Date": "050622",
       "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -12327,7 +12336,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Deed/Bonded/Inputs/Bond-mate",
             "Label": "Bond-mate",
             "Adjustable": false
@@ -12559,7 +12568,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Deed/Homesteader/Inputs/Name",
             "Label": "Name",
             "Adjustable": false
@@ -12775,7 +12784,7 @@
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
+            "Input Type": "text",
             "$id": "Starforged/Assets/Deed/Marked/Inputs/Identifier",
             "Label": "Identifier",
             "Adjustable": false
@@ -12826,7 +12835,7 @@
             "Text": "When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.",
             "Inputs": [
               {
-                "Input Type": "Clock",
+                "Input Type": "clock",
                 "$id": "Starforged/Assets/Deed/Marked/Abilities/2/Inputs/Stained_reputation",
                 "Label": "Stained reputation",
                 "Clock Type": "Tension",
@@ -13271,17 +13280,17 @@
             "Text": "When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.",
             "Enabled": false,
             "Alter Momentum": {
-              "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum",
+              "$id": "Alter_Momentum/Starforged_Assets_Deed_Survivor_Abilities_2",
               "Burn": [
                 {
-                  "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum/Burn",
+                  "$id": "Alter_Momentum/Starforged_Assets_Deed_Survivor_Abilities_2/Burn",
                   "Trigger": {
                     "Text": "To improve the result of a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach",
-                    "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum/Burn/Trigger"
+                    "$id": "Alter_Momentum/Starforged_Assets_Deed_Survivor_Abilities_2/Burn/Trigger"
                   },
                   "Effect": {
                     "Text": "You may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.",
-                    "$id": "Starforged/Assets/Deed/Survivor/Abilities/2/Alter_Momentum/Burn/Effect"
+                    "$id": "Alter_Momentum/Starforged_Assets_Deed_Survivor_Abilities_2/Burn/Effect"
                   }
                 }
               ]
@@ -13320,7 +13329,7 @@
             "Moves": [
               {
                 "Source": {
-                  "Title": "Ironsworn: Starforged Assets",
+                  "Title": "Ironsworn: Starforged Rulebook",
                   "Authors": ["Shawn Tomkin"],
                   "Date": "050622",
                   "License": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -13617,7 +13626,10 @@
             "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/2",
             "Text": "Take +2 power and set your max power to 5.",
             "Enabled": false,
-            "Alter Properties": { "Condition Meter": { "Max": 5 } }
+            "Alter Properties": {
+              "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/2/Alter_Properties",
+              "Condition Meter": { "Max": 5 }
+            }
           },
           {
             "$id": "Starforged/Assets/Deed/Fleet_Commander/Abilities/3",
@@ -13676,4 +13688,4 @@
       }
     ]
   }
-]
+}

@@ -1,5 +1,5 @@
-import { OracleUsageBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
-import type { OracleBase, OracleDisplayBase, OracleSet, OracleTable, OracleTableRow, OracleUsage, RowNullStub, Title , YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTitle } from "@schema";
+import { OracleUsageBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
+import type { OracleBase, OracleDisplayBase, OracleSet, OracleTable, OracleTableRow, OracleUsage, RowNullStub, Source, Title , YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTitle } from "@schema";
 import { formatId } from "@utils";
 import { extractAncestors } from "@utils/extractAncestors.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -33,8 +33,9 @@ export abstract class OracleBuilder extends SourceInheritorBuilder implements Or
   }
   constructor(
     json: (YamlOracleSet|YamlOracleSetTemplate|YamlOracleTable|YamlOracleTableTemplate) & {Table?: YamlOracleTable["Table"] | undefined},
+    fragment: string,
     parentId: OracleBase["$id"],
-    ...ancestorsJson: (YamlOracleSet)[]
+    parentSource: Source
   ) {
     let jsonClone = _.cloneDeep(json);
     const jsonOracleSet = jsonClone as Required<YamlOracleSetTemplate>;
@@ -45,18 +46,12 @@ export abstract class OracleBuilder extends SourceInheritorBuilder implements Or
     if (jsonOracleTable._templateOracleTable) {
       jsonClone = templateOracle<YamlOracleTable>(jsonOracleTable, jsonOracleTable._templateOracleTable);
     }
-    if (jsonOracleTable._templateTableRows && jsonClone.Table) {
+    if (jsonOracleTable._templateTableRows) {
       jsonClone.Table = templateTableRows(jsonOracleTable._templateTableRows) as typeof jsonClone.Table;
     }
-    super(
-      jsonClone.Source ?? {},
-      ..._.compact(ancestorsJson.map(item => item.Source))
-    );
 
-    const fragment = jsonClone._idFragment ?? jsonClone.Title?.Short ?? jsonClone.Title?.Standard ?? jsonClone.Title?.Canonical;
-    if (!fragment) {
-      throw new Error();
-    }
+    super( jsonClone.Source ?? {}, parentSource);
+
     this.$id = formatId(fragment,parentId);
     buildLog(this.constructor, `Building: ${this.$id}`);
     this.Title = new TitleBuilder(jsonClone.Title as YamlTitle, this);

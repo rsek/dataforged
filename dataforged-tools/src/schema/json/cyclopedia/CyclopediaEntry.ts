@@ -6,7 +6,7 @@ import type { HasDescription, HasDisplay, HasId, HasQuestStarter, HasSource, Has
  */
 export interface CyclopediaEntry extends HasId, HasDisplay, HasDescription, HasSource, Partial<HasSummary & HasQuestStarter & HasTags>,HasTitle {
   /**
-   * @pattern ^(Starforged|Ironsworn)/([A-z_-]+/)+$
+   * @pattern ^(starforged|ironsworn)/([a-z_-]+/)+$
    */
   $id: string;
   Tags?: string[] | undefined;

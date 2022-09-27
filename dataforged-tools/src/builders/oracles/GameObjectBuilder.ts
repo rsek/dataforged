@@ -12,14 +12,14 @@ export class GameObjectBuilder implements GameObject {
   "Object type": GameObjectType;
   Requires?: Requirements | undefined;
   "Inherit rolls"?: boolean | undefined;
-  constructor(json: GameObjectRecord) {
+  constructor(yaml: GameObjectRecord) {
     // TODO: typechecking without recourse to making more goddamn enums
     // if (!(enumHas(ActorType, json["Object type"]) || enumHas(PlaceType, json["Object type"]))) {
     //   throw badJsonError(this.constructor, json, "Invalid object type");
     // }
-    this["Object type"] = json["Object type"];
+    this["Object type"] = yaml["Object type"];
     // this["Inherit rolls"] = json["Inherit rolls"] ?? false;
-    const requiredAttributes = _.omit(json, [ "Object type", "Inherit rolls" ]) as AttributeHash;
+    const requiredAttributes = _.omit(yaml, [ "Object type", "Inherit rolls" ]) as AttributeHash;
     if (Object.keys(requiredAttributes).length) {
       const requirements = { Attributes: requiredAttributes } as YamlRequirements;
       this.Requires = new RequirementsBuilder(requirements);

@@ -7,7 +7,7 @@ import type { PartialDeep, StubExcept } from "@utils";
  */
 export interface AlterMove extends StubExcept<Move, "$id", "Outcomes"> {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[1-9][0-9]*$
    */
   $id: string;
   /**
@@ -38,8 +38,8 @@ export interface AlterMove extends StubExcept<Move, "$id", "Outcomes"> {
  * @public
  */
 export interface AlterMoveOutcomes extends Omit<Outcomes, keyof typeof MoveOutcome> {
-  "Strong Hit"?: AlterStrongHit | undefined;
-  "Weak Hit"?: AlterWeakHit | undefined;
+  "Strong hit"?: AlterStrongHit | undefined;
+  "Weak hit"?: AlterWeakHit | undefined;
   Miss?: AlterMiss | undefined;
 }
 

@@ -6,11 +6,11 @@ import type { TruthClassic, TruthOptionClassic , YamlTruthOptionClassic } from "
 export class TruthOptionClassicBuilder implements TruthOptionClassic {
   $id: string;
   Description: string;
-  "Quest Starter": string;
-  constructor(json: YamlTruthOptionClassic, parent: TruthClassic, index: number) {
+  "Quest starter": string;
+  constructor(yaml: YamlTruthOptionClassic, parent: TruthClassic, index: number) {
     this.$id = parent.$id + `/${index+1}`;
-    this.Description = json.Description;
-    this["Quest Starter"] = json["Quest Starter"];
+    this.Description = yaml.Description;
+    this["Quest starter"] = yaml["Quest starter"];
   }
 }
 

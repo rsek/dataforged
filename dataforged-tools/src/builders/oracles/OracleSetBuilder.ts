@@ -1,6 +1,6 @@
 
 import { OracleBuilder, OracleSetDisplayBuilder , OracleTableBuilder } from "@builders";
-import type { OracleBase, OracleSet , OracleSetDisplay, OracleTable, YamlOracleSet, YamlOracleTable } from "@schema";
+import type { OracleBase, OracleSet , OracleSetDisplay, OracleTable, Source, YamlOracleSet, YamlOracleTable } from "@schema";
 import { propagateToChildren } from "@utils/object_transform/propagateToChildren.js";
 import _ from "lodash-es";
 
@@ -13,34 +13,35 @@ export class OracleSetBuilder extends OracleBuilder implements OracleSet {
   Sets?: {[key:string]: OracleSet} | undefined;
   constructor(
     json: YamlOracleSet,
+    fragment: string,
     parentId: OracleBase["$id"],
-    ...ancestorsJson: (YamlOracleSet)[]
+    parentSource: Source
   ) {
-    super(json, parentId, ...ancestorsJson);
+    super(json, fragment, parentId,parentSource);
     const yamlData = this.yamlData as YamlOracleSet;
     this.Display = new OracleSetDisplayBuilder(this.yamlData.Display ?? {}, this);
-    this["Sample Names"] = yamlData["Sample Names"];
+    this["Sample Names"] = yamlData["Sample names"];
     if (yamlData.Tables) {
-      this.Tables = _.mapValues(yamlData.Tables,oracleInfo => {
+      this.Tables = _.mapValues(yamlData.Tables,(oracleTable, tableFragment) => {
         if (yamlData.Usage) {
-          propagateToChildren(yamlData.Usage, "Usage", oracleInfo);
+          propagateToChildren(yamlData.Usage, "Usage", oracleTable);
         }
         if (yamlData.Requires) {
-          propagateToChildren(yamlData.Requires, "Requires", oracleInfo);
+          propagateToChildren(yamlData.Requires, "Requires", oracleTable);
         }
-        return new OracleTableBuilder(oracleInfo as YamlOracleTable,this.$id, yamlData, ...ancestorsJson);
+        return new OracleTableBuilder(oracleTable as YamlOracleTable,tableFragment, this.$id, parentSource);
       });
     }
     if (yamlData.Sets) {
       this.Sets = _.mapValues(yamlData.Sets,
-        oracleSet => {
+        (oracleSet, setFragment) => {
           if (yamlData.Usage) {
             propagateToChildren(yamlData.Usage, "Usage", oracleSet);
           }
           if (yamlData.Requires) {
             propagateToChildren(yamlData.Requires, "Requires", oracleSet);
           }
-          return new OracleSetBuilder(oracleSet as YamlOracleSet, this.$id, yamlData, ...ancestorsJson);
+          return new OracleSetBuilder(oracleSet as YamlOracleSet, setFragment,this.$id, parentSource);
         }
       );
     }

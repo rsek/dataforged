@@ -1,1 +1,1 @@
-export * from "@schema/json/rarities/IDelveRarity.js";
+export * from "@schema/json/rarities/DelveRarity.js";

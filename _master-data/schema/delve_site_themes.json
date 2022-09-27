@@ -1,11 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "Themes": {
+    "Delve site themes": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/definitions/YamlDelveTheme" },
+      "additionalProperties": { "$ref": "#/definitions/YamlDelveSiteTheme" },
       "defaultProperties": [],
-      "title": "Themes"
+      "title": "Delve site themes"
     },
     "$schema": { "type": "string", "title": "$schema" },
     "_refs": {
@@ -36,10 +36,10 @@
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Source", "Themes"],
+  "required": ["Delve site themes", "Source"],
   "definitions": {
-    "YamlDelveTheme": {
-      "title": "YamlDelveTheme",
+    "YamlDelveSiteTheme": {
+      "title": "YamlDelveSiteTheme",
       "type": "object",
       "properties": {
         "Type": {
@@ -61,7 +61,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Ironsworn/(Themes|Domains)/[A-z_-]+$",
+          "pattern": "^ironsworn/(themes|domains)/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -83,7 +83,7 @@
     "DelveCardType.Theme": {
       "title": "DelveCardType.Theme",
       "type": "string",
-      "enum": ["Theme"]
+      "enum": ["theme"]
     },
     "StubTable": {
       "title": "StubTable",
@@ -158,6 +158,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -269,6 +270,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -380,6 +382,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -491,6 +494,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -602,6 +606,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -666,42 +671,49 @@
         },
         "Oracle rolls": {
           "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
         },
         "Moves": {
           "description": "Suggested move IDs.",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Moves"
         },
         "Assets": {
           "description": "Suggested asset IDs.",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Assets"
         },
         "Encounters": {
           "description": "Suggested encounter IDs.",
+          "pattern": "^(starforged/encounters|ironsworn/encounters/[a-z_-]+)/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
         },
         "Themes": {
           "description": "Suggested delve site themes.",
+          "pattern": "^ironsworn/themes/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Themes"
         },
         "Domains": {
           "description": "Suggested delve site domains.",
+          "pattern": "^ironsworn/domains/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Domains"
         },
         "Regions": {
           "description": "Suggested Ironlands regions.",
+          "pattern": "^ironsworn/regions/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Regions"
@@ -779,22 +791,22 @@
       "enum": [
         "Atmosphere",
         "Authority",
-        "Creature Scale",
-        "Derelict Type",
+        "Creature scale",
+        "Derelict type",
         "Disposition",
         "Dominion",
-        "Encountered Behavior",
+        "Encountered behavior",
         "Environment",
-        "Faction Type",
-        "Fringe Group",
+        "Faction type",
+        "Fringe group",
         "Guild",
         "Influence",
-        "Initial Contact",
+        "Initial contact",
         "Leadership",
         "Life",
         "Location",
-        "Location Theme",
-        "Planetary Class",
+        "Location theme",
+        "Planetary class",
         "Population",
         "Region",
         "Role",
@@ -814,7 +826,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "pattern": "^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$",
           "type": "string",
           "title": "$id"
         },
@@ -887,7 +899,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
+          "pattern": "^(ironsworn|starforged)/oracles(/[a-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
           "type": "string",
           "title": "$id"
         },
@@ -927,6 +939,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -1000,7 +1013,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+          "pattern": "^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
           "type": "string",
           "title": "$id"
         },
@@ -1040,6 +1053,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -1301,6 +1315,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -1412,6 +1427,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -1523,6 +1539,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -1634,6 +1651,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -1745,6 +1763,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -1856,6 +1875,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -1967,6 +1987,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -2078,6 +2099,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -2189,6 +2211,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -2300,6 +2323,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -2411,6 +2435,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -2522,6 +2547,7 @@
             },
             "Oracle rolls": {
               "description": "Additional oracle tables that should be rolled when this row is selected.",
+              "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
               "type": "array",
               "items": { "type": "string" },
               "title": "Oracle rolls"
@@ -2574,16 +2600,19 @@
       "properties": {
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z -]+$",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][a-z’ -]+$",
           "type": "string",
           "title": "Standard"
         },

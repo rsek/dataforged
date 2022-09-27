@@ -8,10 +8,10 @@ export class RollTemplateBuilder implements RollTemplate {
   Result?: string | undefined;
   Summary?: string | undefined;
   Description?: string | undefined;
-  constructor(json: YamlRollTemplate, parent: HasId) {
+  constructor(yaml: YamlRollTemplate, parent: HasId) {
     this.$id = `${parent.$id}/Roll_template`;
-    this.Result = json.Result;
-    this.Summary = json.Summary;
-    this.Description = json.Description;
+    this.Result = yaml.Result;
+    this.Summary = yaml.Summary;
+    this.Description = yaml.Description;
   }
 }

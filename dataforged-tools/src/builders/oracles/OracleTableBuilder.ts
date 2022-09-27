@@ -1,6 +1,6 @@
 
 import { OracleBuilder, OracleContentBuilder , OracleTableDisplayBuilder, OracleTableRowBuilder , RowNullStubBuilder } from "@builders";
-import type { OracleContent, OracleSet, OracleTable, OracleTableDisplay , OracleTableRow, RowNullStub, YamlOracleSet, YamlOracleTable, YamlSimpleTableRow, YamlStub } from "@schema";
+import type { OracleContent, OracleSet, OracleTable, OracleTableDisplay , OracleTableRow, RowNullStub, Source, YamlOracleSet, YamlOracleTable, YamlSimpleTableRow, YamlStub } from "@schema";
 import { formatId } from "@utils";
 import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes.js";
 
@@ -10,23 +10,24 @@ import { inferSetsAttributes } from "@utils/object_transform/inferSetsAttributes
 export class OracleTableBuilder extends OracleBuilder implements OracleTable  {
   Display: OracleTableDisplay;
   Content? : OracleContent | undefined;
-  "On a Match"?: OracleTable["On a Match"] | undefined;
+  "On a match"?: OracleTable["On a match"] | undefined;
   Table: (OracleTableRow|RowNullStub)[];
   constructor(
     json: YamlOracleTable,
+    fragment: string,
     parentId: OracleSet["$id"],
-    ...ancestorsJson: YamlOracleSet[]
+    parentSource: Source
     // ancestors should be in ascending order
   ) {
     super(
-      json, parentId,
-      ...ancestorsJson);
+      json, fragment, parentId,
+      parentSource);
     this.Display = new OracleTableDisplayBuilder(json.Display ?? {}, this);
     if (json.Content) {
       this.Content = new OracleContentBuilder(json.Content);
     }
     if (json["On a Match"]) {
-      this["On a Match"] = { $id: formatId( "On a Match",this.$id),...json["On a Match"] };
+      this["On a match"] = { $id: formatId( "On a Match",this.$id),...json["On a Match"] };
       ;
     }
     const tableData = (this.yamlData as YamlOracleTable)?.Table ?? json.Table as YamlSimpleTableRow[];

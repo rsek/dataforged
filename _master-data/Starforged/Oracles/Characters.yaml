@@ -2,7 +2,7 @@ Source:
   Authors: [Shawn Tomkin]
   Title: "Ironsworn: Starforged Rulebook"
   License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle Sets:
+Oracle sets:
   Characters:
     Title:
       Canonical: Characters
@@ -11,11 +11,11 @@ Oracle Sets:
     Source:
       Date: "050622"
     Description: |-
-      Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](Starforged/Oracles/Characters/First_Look) and [Initial Disposition](Starforged/Oracles/Characters/Initial_Disposition). Then envision or generate additional details over time.
+      Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](starforged/oracles/characters/first_look) and [Initial Disposition](starforged/oracles/characters/initial_disposition). Then envision or generate additional details over time.
     Sets:
       Names:
         Title:
-          Canonical: Character Name
+          Canonical: Character name
           Short: Name
         _idFragment: Name
         Source:
@@ -25,31 +25,31 @@ Oracle Sets:
         Display:
           Columns:
             - Type: dice range
-              Content: Starforged/Oracles/Characters/Name/Given_Name
+              Content: starforged/oracles/characters/name/given_name
             - Type: string
-              Content: Starforged/Oracles/Characters/Name/Given_Name
+              Content: starforged/oracles/characters/name/given_name
               Label: Given Name
             - Type: string
-              Content: Starforged/Oracles/Characters/Name/Family_Name
+              Content: starforged/oracles/characters/name/family_name
               Label: Family Name
             - Type: string
-              Content: Starforged/Oracles/Characters/Name/Callsign
+              Content: starforged/oracles/characters/name/callsign
               Label: Callsign
         Usage:
           Initial: true
         Tables:
           Given:
             Title:
-              Canonical: Given Name
+              Canonical: Given name
             Description: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
             Usage:
               Suggestions:
                 Oracle rolls:
-                  - Starforged/Oracles/Characters/Name/Callsign
-                  - Starforged/Oracles/Characters/Name/Family_Name
+                  - starforged/oracles/characters/name/callsign
+                  - starforged/oracles/characters/name/family_name
             Display:
-              Column of: Starforged/Oracles/Characters/Name
+              Column of: starforged/oracles/characters/name
             Content:
               Part of speech: [proper noun]
             Table:
@@ -162,10 +162,10 @@ Oracle Sets:
             Usage:
               Suggestions:
                 Oracle rolls:
-                  - Starforged/Oracles/Characters/Name/Given_Name
-                  - Starforged/Oracles/Characters/Name/Family_Name
+                  - starforged/oracles/characters/name/given_name
+                  - starforged/oracles/characters/name/family_name
             Display:
-              Column of: Starforged/Oracles/Characters/Name
+              Column of: starforged/oracles/characters/name
             Content:
               Part of speech: [proper noun]
             Table:
@@ -270,9 +270,9 @@ Oracle Sets:
               - [99, 99, Wrongway]
               - [100, 100, Zephyr]
 
-          Family Name:
+          Family name:
             Title:
-              Canonical: Family Name
+              Canonical: Family name
             Description: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
             Content:
@@ -280,10 +280,10 @@ Oracle Sets:
             Usage:
               Suggestions:
                 Oracle rolls:
-                  - Starforged/Oracles/Characters/Name/Given_Name
-                  - Starforged/Oracles/Characters/Name/Callsign
+                  - starforged/oracles/characters/name/given_name
+                  - starforged/oracles/characters/name/callsign
             Display:
-              Column of: Starforged/Oracles/Characters/Name
+              Column of: starforged/oracles/characters/name
             Table:
               - [1, 1, Kuzmin]
               - [2, 2, Durant]
@@ -386,9 +386,9 @@ Oracle Sets:
               - [99, 99, Pearson]
               - [100, 100, Volkov]
     Tables:
-      First Look:
+      First look:
         Title:
-          Canonical: First Look
+          Canonical: First look
         Source:
           Page: 330
         Content:
@@ -437,11 +437,11 @@ Oracle Sets:
           - [93, 95, Wiry]
           - [96, 97, Wounded]
           - [98, 100, Youthful]
-      Initial Disposition:
+      Initial disposition:
         Title:
-          Canonical: Initial Disposition
+          Canonical: Initial disposition
           Short: Disposition
-        _idFragment: Initial Disposition
+        _idFragment: Initial disposition
         Source:
           Page: 330
         Content:
@@ -463,7 +463,7 @@ Oracle Sets:
           - [95, 100, Hostile]
       Role:
         Title:
-          Canonical: Character Role
+          Canonical: Character role
           Short: Role
         _idFragment: Role
         Source:
@@ -522,7 +522,7 @@ Oracle Sets:
           - [96, 100, *result:RollTwice]
       Goal:
         Title:
-          Canonical: Character Goal
+          Canonical: Character goal
           Short: Goal
         _idFragment: Goal
         Source:
@@ -571,10 +571,10 @@ Oracle Sets:
           - [79, 80, Undermine a relationship, Suggestions: [*obj:Npc]]
           - [81, 90, *result:Action+Theme]
           - [91, 100, *result:RollTwice]
-      Revealed Aspect:
+      Revealed aspect:
         Title:
-          Canonical: Revealed Character Aspect
-          Short: Revealed Aspect
+          Canonical: Revealed character aspect
+          Short: Revealed aspect
         _idFragment: Revealed Aspect
         Source:
           Page: 332

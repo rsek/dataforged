@@ -1,10 +1,9 @@
 import { Game } from "../schema";
-import { JSONPath } from "jsonpath-plus";
 import _ from "lodash-es";
 /**
  * Extracts statistics on Ironsworn game data.
  */
-export function dataforgedStats(game, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Sets": oracles, "Setting Truths": truths }) {
+export function dataforgedStats(game, { "Asset types": assets, Encounters: encounters, "Move categories": moves, "Oracle sets": oracles, "Setting truths": truths }) {
     return [
         assetStats(assets),
         encounterStats(game, encounters),
@@ -31,8 +30,9 @@ export function moveStats(moveCategories) {
  * @param oracles
  */
 export function oracleStats(oracles) {
-    const oracleTables = JSONPath({ path: "$..Oracles[*][Table]", json: oracles });
-    return `${oracleTables.length} oracle tables in ${Object.keys(oracles["Oracle Sets"]).length} sets`;
+    let tables = 0;
+    let sets = 0;
+    return `${tables} oracle tables in ${sets} sets`;
 }
 /**
  * Creates a string of encounter stats for use in build messages.

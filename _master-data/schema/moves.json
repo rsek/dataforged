@@ -1,11 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "Move Categories": {
+    "Move categories": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/YamlMoveCategory" },
       "defaultProperties": [],
-      "title": "Move Categories"
+      "title": "Move categories"
     },
     "$schema": { "type": "string", "title": "$schema" },
     "_refs": {
@@ -36,7 +36,7 @@
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["Move Categories", "Source"],
+  "required": ["Move categories", "Source"],
   "definitions": {
     "YamlMoveCategory": {
       "title": "YamlMoveCategory",
@@ -60,7 +60,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -82,6 +82,10 @@
       "title": "YamlMove",
       "type": "object",
       "properties": {
+        "Title": {
+          "$ref": "#/definitions/YamlTitleCaseTitle",
+          "title": "Title"
+        },
         "Trigger": {
           "$ref": "#/definitions/YamlMoveTrigger",
           "title": "Trigger"
@@ -105,10 +109,10 @@
           "type": "string",
           "title": "Asset"
         },
-        "Progress Move": {
+        "Progress move": {
           "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
           "type": "boolean",
-          "title": "Progress Move"
+          "title": "Progress move"
         },
         "Variant of": {
           "description": "The ID of the move that this move is a variant of, if any.",
@@ -123,7 +127,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3])/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -149,12 +153,92 @@
           "title": "Optional"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
-        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["Text", "Title", "Trigger"]
+    },
+    "YamlTitleCaseTitle": {
+      "title": "YamlTitleCaseTitle",
+      "type": "object",
+      "properties": {
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][A-z -’]+$",
+          "type": "string",
+          "title": "Short"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
+          "type": "string",
+          "title": "Standard"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
+        "$id": { "type": "string", "title": "$id" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Canonical"]
+    },
+    "YamlSource": {
+      "title": "YamlSource",
+      "type": "object",
+      "properties": {
+        "Title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
+          "title": "Title"
+        },
+        "Authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": ["Shawn Tomkin"],
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Authors"
+        },
+        "Date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "Date"
+        },
+        "Page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source material is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
+        },
+        "License": {
+          "$ref": "#/definitions/License",
+          "description": "The URL pointing to the license which this content falls under.",
+          "title": "License"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
     },
     "YamlMoveTrigger": {
       "title": "YamlMoveTrigger",
@@ -182,7 +266,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger$",
           "type": "string",
           "title": "$id"
         },
@@ -236,7 +320,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
           "type": "string",
           "title": "$id"
         },
@@ -273,7 +357,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$",
           "type": "string",
           "title": "$id"
         },
@@ -300,7 +384,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -311,74 +395,23 @@
       "additionalProperties": false,
       "required": ["Label", "Value"]
     },
-    "YamlSource": {
-      "title": "YamlSource",
-      "type": "object",
-      "properties": {
-        "Title": {
-          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
-          "type": "string",
-          "title": "Title"
-        },
-        "Authors": {
-          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
-          "default": ["Shawn Tomkin"],
-          "type": "array",
-          "items": { "type": "string" },
-          "title": "Authors"
-        },
-        "Date": {
-          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
-          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
-          "type": "string",
-          "title": "Date"
-        },
-        "Page": {
-          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
-          "type": "integer",
-          "title": "Page"
-        },
-        "Url": {
-          "description": "The URL where the source material is available.",
-          "pattern": "^https?://.*$",
-          "type": "string",
-          "title": "Url"
-        },
-        "License": {
-          "$ref": "#/definitions/License",
-          "description": "The URL pointing to the license which this content falls under.",
-          "title": "License"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false
-    },
-    "License": {
-      "title": "License",
-      "enum": [
-        "None",
-        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-        "https://creativecommons.org/licenses/by-sa/4.0/"
-      ],
-      "type": "string"
-    },
     "RollMethod": {
       "description": "The stat(s) or progress track(s) that may be rolled with the parent move trigger option.",
       "title": "RollMethod",
       "enum": [
-        "All",
-        "Any",
-        "Highest",
-        "Inherit",
-        "Lowest",
-        "Strong Hit",
-        "Weak Hit"
+        "all",
+        "any",
+        "highest",
+        "inherit",
+        "lowest",
+        "strong hit",
+        "weak hit"
       ],
       "type": "string"
     },
     "RollType.Action": {
       "title": "RollType.Action",
-      "enum": ["Action roll"],
+      "enum": ["action roll"],
       "type": "string"
     },
     "YamlMoveTriggerOptionProgress": {
@@ -397,7 +430,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
           "type": "string",
           "title": "$id"
         },
@@ -444,7 +477,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$",
           "type": "string",
           "title": "$id"
         },
@@ -469,7 +502,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -490,7 +523,7 @@
     },
     "RollType.Progress": {
       "title": "RollType.Progress",
-      "enum": ["Progress roll"],
+      "enum": ["progress roll"],
       "type": "string"
     },
     "MoveTriggerBy": {
@@ -516,18 +549,18 @@
       "title": "YamlOutcomes",
       "type": "object",
       "properties": {
-        "Strong Hit": {
+        "Strong hit": {
           "$ref": "#/definitions/YamlOutcomeStrongHit",
-          "title": "Strong Hit"
+          "title": "Strong hit"
         },
-        "Weak Hit": {
+        "Weak hit": {
           "$ref": "#/definitions/YamlOutcomeWeakHit",
-          "title": "Weak Hit"
+          "title": "Weak hit"
         },
         "Miss": { "$ref": "#/definitions/YamlOutcomeMiss", "title": "Miss" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$",
           "type": "string",
           "title": "$id"
         },
@@ -536,15 +569,15 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Miss", "Strong Hit", "Weak Hit"]
+      "required": ["Miss", "Strong hit", "Weak hit"]
     },
     "YamlOutcomeStrongHit": {
       "title": "YamlOutcomeStrongHit",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcomeStrongHitMatch",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -552,20 +585,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -579,9 +612,9 @@
       "title": "YamlOutcomeStrongHitMatch",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcome<2>",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -589,20 +622,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -616,9 +649,9 @@
       "title": "YamlOutcome<2>",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcome<2>",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -626,20 +659,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -678,16 +711,16 @@
     "RerollType": {
       "description": "Enumerates which dice are to be rerolled.",
       "title": "RerollType",
-      "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
+      "enum": ["action die", "all", "any", "challenge dice", "challenge die"],
       "type": "string"
     },
     "YamlOutcomeWeakHit": {
       "title": "YamlOutcomeWeakHit",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcome<1>",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -695,20 +728,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -722,9 +755,9 @@
       "title": "YamlOutcome<1>",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcome<1>",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -732,20 +765,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -759,9 +792,9 @@
       "title": "YamlOutcomeMiss",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcomeMissMatch",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -769,20 +802,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -796,9 +829,9 @@
       "title": "YamlOutcomeMissMatch",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcome<0>",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -806,20 +839,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -833,9 +866,9 @@
       "title": "YamlOutcome<0>",
       "type": "object",
       "properties": {
-        "With a Match": {
+        "With a match": {
           "$ref": "#/definitions/YamlOutcome<0>",
-          "title": "With a Match"
+          "title": "With a match"
         },
         "Reroll": { "$ref": "#/definitions/YamlMoveReroll", "title": "Reroll" },
         "Text": {
@@ -843,20 +876,20 @@
           "type": "string",
           "title": "Text"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/((Miss|Strong_Hit)(/With_a_Match)?|Weak_Hit)$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$",
           "type": "string",
           "title": "$id"
         },
@@ -884,42 +917,49 @@
         },
         "Oracle rolls": {
           "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
         },
         "Moves": {
           "description": "Suggested move IDs.",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Moves"
         },
         "Assets": {
           "description": "Suggested asset IDs.",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Assets"
         },
         "Encounters": {
           "description": "Suggested encounter IDs.",
+          "pattern": "^(starforged/encounters|ironsworn/encounters/[a-z_-]+)/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
         },
         "Themes": {
           "description": "Suggested delve site themes.",
+          "pattern": "^ironsworn/themes/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Themes"
         },
         "Domains": {
           "description": "Suggested delve site domains.",
+          "pattern": "^ironsworn/domains/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Domains"
         },
         "Regions": {
           "description": "Suggested Ironlands regions.",
+          "pattern": "^ironsworn/regions/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Regions"
@@ -997,22 +1037,22 @@
       "enum": [
         "Atmosphere",
         "Authority",
-        "Creature Scale",
-        "Derelict Type",
+        "Creature scale",
+        "Derelict type",
         "Disposition",
         "Dominion",
-        "Encountered Behavior",
+        "Encountered behavior",
         "Environment",
-        "Faction Type",
-        "Fringe Group",
+        "Faction type",
+        "Fringe group",
         "Guild",
         "Influence",
-        "Initial Contact",
+        "Initial contact",
         "Leadership",
         "Life",
         "Location",
-        "Location Theme",
-        "Planetary Class",
+        "Location theme",
+        "Planetary class",
         "Population",
         "Region",
         "Role",
@@ -1059,16 +1099,19 @@
       "properties": {
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z -]+$",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][a-z’ -]+$",
           "type": "string",
           "title": "Standard"
         },

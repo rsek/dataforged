@@ -9,9 +9,9 @@ export class CustomStatBuilder implements CustomStat {
   $id: CustomStat["$id"];
   Label: string;
   Options: CustomStatOption[];
-  constructor(json: YamlCustomStat, parentId: MoveTriggerOptionBase["$id"]) {
+  constructor(yaml: YamlCustomStat, parentId: MoveTriggerOptionBase["$id"]) {
     this.$id = formatId("Custom stat", parentId);
-    this.Label = json.Label;
-    this.Options = json.Options?.map(option => new CustomStatOptionBuilder(option, this.$id));
+    this.Label = yaml.Label;
+    this.Options = yaml.Options?.map(option => new CustomStatOptionBuilder(option, this.$id));
   }
 }

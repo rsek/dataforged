@@ -6,11 +6,11 @@ import type { Encounter, EncounterNatureClassic } from "@schema";
  */
 export interface EncounterClassic extends Encounter {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-]+/[A-z_-]+$
+   * @pattern ^(starforged|ironsworn)/encounters/[a-z_-]+/[a-z_-]+$
    */
   $id: string;
   Nature: EncounterNatureClassic;
-  "Your Truth"?: string | undefined;
+  "Your truth"?: string | undefined;
   Summary?: string | undefined;
 }
 

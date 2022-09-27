@@ -8,6 +8,6 @@ export interface Encounter extends EncounterBase {
   Features: string[];
   Drives: string[];
   Tactics: string[];
-  "Quest Starter": string;
-  "Your Truth"?: string | undefined;
+  "Quest starter": string;
+  "Your truth"?: string | undefined;
 }

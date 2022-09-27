@@ -11,7 +11,7 @@ export type NatureKey = keyof typeof EncounterNatureClassic;
  */
 export interface EncounterNatureClassicInfo extends HasDescription, HasSource, HasId, HasDisplay, HasSummary, HasTitle {
   /**
-   * @pattern ^Ironsworn/Encounters/[A-z_-]+$
+   * @pattern ^ironsworn/encounters/[a-z_-]+$
    */
   $id: string;
   Encounters: {[key: string]: EncounterClassic};

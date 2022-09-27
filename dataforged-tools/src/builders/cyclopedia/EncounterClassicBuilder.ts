@@ -1,5 +1,5 @@
 import { DisplayBuilder, EncounterBuilder, SourceBuilder, TitleBuilder } from "@builders";
-import { EncounterNatureClassic } from "@schema";
+import { EncounterNatureClassic, Game } from "@schema";
 import type { Display , EncounterClassic, EncounterNatureClassicInfo, Source, Title, YamlEncounterClassic } from "@schema";
 import { formatId } from "@utils";
 
@@ -13,15 +13,15 @@ export class EncounterClassicBuilder extends EncounterBuilder implements Encount
   Nature: EncounterNatureClassic;
   Display: Display;
   Source: Source;
-  "Your Truth"?: string | undefined;
-  constructor(json: YamlEncounterClassic, parent: EncounterNatureClassicInfo) {
-    super(json);
-    const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
+  "Your truth"?: string | undefined;
+  constructor(yaml: YamlEncounterClassic, parent: EncounterNatureClassicInfo) {
+    super(yaml);
+    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical;
     this.$id = formatId(fragment,parent.$id);
-    this.Title = new TitleBuilder(json.Title, this);
+    this.Title = new TitleBuilder(yaml.Title, this);
     this.Nature = EncounterNatureClassic[parent.Title.Short];
     this.Display = new DisplayBuilder({});
-    this.Source = new SourceBuilder(json.Source ?? {}, parent.Source);
-    this["Your Truth"] = json["Your Truth"];
+    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), parent.Source);
+    this["Your truth"] = yaml["Your truth"];
   }
 }

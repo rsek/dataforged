@@ -9,7 +9,7 @@ import { buildTruths } from "@utils/builders/buildTruths.js";
 import { dataforgedStats } from "@utils/dataforgedStats.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { buildDelveSiteCards } from "@utils/builders/buildDelveSiteCards.js";
-import { IronlandsBuilder } from "@builders/IronlandsBuilder.js";
+import { IronlandsRegionCollection } from "@builders/cyclopedia/IronlandsRegionCollection.js";
 import { SourceBuilder } from "@builders";
 
 /**
@@ -22,23 +22,23 @@ export function buildDataforged(game: Game = Game.Starforged) {
   switch (game) {
     case Game.Starforged: {
       data = {
-        "Asset Types": buildAssets(game),
+        "Asset types": buildAssets(game),
         Encounters: buildEncounters(game),
-        "Move Categories": buildMoves(game),
-        "Oracle Sets": buildOracles(game),
-        "Setting Truths": buildTruths(game)
+        "Move categories": buildMoves(game),
+        "Oracle sets": buildOracles(game),
+        "Setting truths": buildTruths(game)
       } as Starforged;
       break;}
     case Game.Ironsworn: {
       data = {
-        "Asset Types": buildAssets(game),
+        "Asset types": buildAssets(game),
         Encounters: buildEncounters(game),
-        "Move Categories": buildMoves(game),
-        "Oracle Sets": buildOracles(game),
-        "Setting Truths": buildTruths(game),
-        "Site Themes": buildDelveSiteCards(DelveCardType.Theme),
-        "Site Domains": buildDelveSiteCards(DelveCardType.Domain),
-        Regions: new IronlandsBuilder(SourceBuilder.default(Game.Ironsworn)).toJson(),
+        "Move categories": buildMoves(game),
+        "Oracle sets": buildOracles(game),
+        "Setting truths": buildTruths(game),
+        "Site themes": buildDelveSiteCards(DelveCardType.Theme),
+        "Site domains": buildDelveSiteCards(DelveCardType.Domain),
+        Regions: new IronlandsRegionCollection(SourceBuilder.default(Game.Ironsworn)).toJson(),
         // Rarities
         // Delve Sites (the sample ones from Delve)
       } as Ironsworn;

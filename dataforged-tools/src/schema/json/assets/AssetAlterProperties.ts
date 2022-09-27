@@ -6,16 +6,16 @@ import type { PartialDeep } from "@utils";
  *
  * @example An `AssetAlterProperties` that would set `Asset["Condition Meter"].Max` to 3, and leave its other properties unchanged:
  * ```json
- * { "Condition Meter": { "Max": 3 } }
+ * { "Condition meter": { "Max": 3 } }
  * ```
  * @public
  */
 export interface AssetAlterProperties extends Omit<PartialDeep<OmitMetadataDeep<Asset>>,"Abilities"|
-"Attachments"|"Condition Meter"|"$id">, HasId {
+"Attachments"|"Condition meter"|"$id">, HasId {
   $id: string;
   Abilities?: AssetAlterPropertiesAbility[] | undefined;
   Attachments?: AssetAlterPropertiesAttachment | undefined;
-  "Condition Meter"?: AssetAlterPropertiesConditionMeter | undefined;
+  "Condition meter"?: AssetAlterPropertiesConditionMeter | undefined;
   States?: AssetState[] | undefined;
 }
 /**

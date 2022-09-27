@@ -14,11 +14,11 @@ export enum AttributeKey {
   /**
    * {@link Behavior}
    */
-  Behavior="Encountered Behavior",
+  Behavior="Encountered behavior",
   /**
    * {@link DerelictType}
    */
-  DerelictType="Derelict Type",
+  DerelictType="Derelict type",
   /**
    * {@link Disposition}
    */
@@ -34,11 +34,11 @@ export enum AttributeKey {
   /**
    * {@link FactionType}
    */
-  FactionType="Faction Type",
+  FactionType="Faction type",
   /**
    * {@link FringeGroup}
    */
-  FringeGroup="Fringe Group",
+  FringeGroup="Fringe group",
   /**
    * {@link Guild}
    */
@@ -50,7 +50,7 @@ export enum AttributeKey {
   /**
    * {@link StarshipInitialContact} {@link SettlementInitialContact}
    */
-  InitialContact="Initial Contact",
+  InitialContact="Initial contact",
   /**
    * {@link Leadership}
    */
@@ -66,11 +66,11 @@ export enum AttributeKey {
   /**
    * {@link LocationTheme}
    */
-  LocationTheme="Location Theme",
+  LocationTheme="Location theme",
   /**
    * {@link PlanetaryClass}
    */
-  PlanetaryClass="Planetary Class",
+  PlanetaryClass="Planetary class",
   /**
    * {@link Population}
    */
@@ -86,7 +86,7 @@ export enum AttributeKey {
   /**
    * {@link CreatureScale}
    */
-  CreatureScale="Creature Scale",
+  CreatureScale="Creature scale",
   /**
    * {@link Zone}
    */

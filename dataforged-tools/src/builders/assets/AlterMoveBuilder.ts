@@ -13,17 +13,17 @@ export class AlterMoveBuilder implements AlterMove {
   Trigger?: MoveTrigger | undefined;
   Text?: string | undefined;
   Outcomes?: AlterMoveOutcomes | undefined;
-  constructor(json: YamlAlterMove, parent: AssetAbility, index: number) {
+  constructor(yaml: YamlAlterMove, parent: AssetAbility, index: number) {
     this.$id = formatId((index+1).toString(),parent.$id,"Alter_Moves");
-    this.Alters = json.Alters;
-    this.Moves = json.Moves;
-    if (json.Trigger) {
-      const triggerClone = _.cloneDeep(json.Trigger);
+    this.Alters = yaml.Alters;
+    this.Moves = yaml.Moves;
+    if (yaml.Trigger) {
+      const triggerClone = _.cloneDeep(yaml.Trigger);
       this.Trigger = new MoveTriggerBuilder(triggerClone,  this);
     }
-    this.Text = json.Text;
-    if (json.Outcomes) {
-      this.Outcomes = new AlterMoveOutcomesBuilder(json.Outcomes, this.$id);
+    this.Text = yaml.Text;
+    if (yaml.Outcomes) {
+      this.Outcomes = new AlterMoveOutcomesBuilder(yaml.Outcomes, this.$id);
     }
   }
 }

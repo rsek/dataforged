@@ -8,40 +8,40 @@
       "defaultProperties": [],
       "title": "Encounters"
     },
-    "Setting Truths": {
+    "Setting truths": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/TruthStarforged" },
       "defaultProperties": [],
-      "title": "Setting Truths"
+      "title": "Setting truths"
     },
     "$schema": { "type": "string", "title": "$schema" },
-    "Asset Types": {
+    "Asset types": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/AssetType" },
       "defaultProperties": [],
-      "title": "Asset Types"
+      "title": "Asset types"
     },
-    "Move Categories": {
+    "Move categories": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/MoveCategory" },
       "defaultProperties": [],
-      "title": "Move Categories"
+      "title": "Move categories"
     },
-    "Oracle Sets": {
+    "Oracle sets": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/OracleSet" },
       "defaultProperties": [],
-      "title": "Oracle Sets"
+      "title": "Oracle sets"
     }
   },
   "defaultProperties": [],
   "additionalProperties": false,
   "required": [
-    "Asset Types",
+    "Asset types",
     "Encounters",
-    "Move Categories",
-    "Oracle Sets",
-    "Setting Truths"
+    "Move categories",
+    "Oracle sets",
+    "Setting truths"
   ],
   "definitions": {
     "EncounterStarforged": {
@@ -51,7 +51,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Starforged/Encounters/[A-z_-]+$",
+          "pattern": "^starforged/encounters/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -65,8 +65,9 @@
           "title": "Summary"
         },
         "Variants": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/EncounterVariant" },
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/EncounterVariant" },
+          "defaultProperties": [],
           "title": "Variants"
         },
         "Features": {
@@ -84,15 +85,15 @@
           "items": { "type": "string" },
           "title": "Tactics"
         },
-        "Quest Starter": {
+        "Quest starter": {
           "description": "A markdown string describing the quest starter associated with this item.",
           "type": "string",
-          "title": "Quest Starter"
+          "title": "Quest starter"
         },
-        "Your Truth": {
+        "Your truth": {
           "description": "Ironsworn, p. 135: \"Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe.\"\n\nOnly present in Ironsworn encounters.",
           "type": "string",
-          "title": "Your Truth"
+          "title": "Your truth"
         },
         "Display": {
           "$ref": "#/definitions/Display",
@@ -127,7 +128,7 @@
         "Drives",
         "Features",
         "Nature",
-        "Quest Starter",
+        "Quest starter",
         "Rank",
         "Source",
         "Summary",
@@ -147,7 +148,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Starforged/Encounters/[A-z_-]+/[A-z_-]+$",
+          "pattern": "^starforged/encounters/[a-z_-]+/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -199,22 +200,25 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+/Title$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+/title$",
           "type": "string",
           "title": "$id"
         },
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][a-z’ -]+$",
           "type": "string",
           "title": "Standard"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][a-z -]+$",
           "type": "string",
           "title": "Short"
         }
@@ -317,7 +321,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^Starforged/Setting_Truths/[A-z_-]+$",
+          "pattern": "^starforged/truths/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -360,7 +364,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^Starforged/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100)$",
+          "pattern": "^starforged/setting_truths/[a-z_-]+/(1-33|34-67|68-100)$",
           "type": "string",
           "title": "$id"
         },
@@ -411,6 +415,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -452,10 +457,10 @@
           "description": "Data relevant to this item's display/rendering.",
           "title": "Display"
         },
-        "Quest Starter": {
+        "Quest starter": {
           "description": "A markdown string describing the quest starter associated with this item.",
           "type": "string",
-          "title": "Quest Starter"
+          "title": "Quest starter"
         },
         "Description": {
           "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
@@ -470,7 +475,7 @@
         "Ceiling",
         "Description",
         "Floor",
-        "Quest Starter",
+        "Quest starter",
         "Result"
       ]
     },
@@ -481,7 +486,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$",
+          "pattern": "^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$",
           "type": "string",
           "title": "$id"
         },
@@ -511,7 +516,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Starforged|Ironsworn)/Setting_Truths/[A-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
+          "pattern": "^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$",
           "type": "string",
           "title": "$id"
         },
@@ -551,6 +556,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -625,7 +631,7 @@
       "properties": {
         "$id": {
           "description": "The ID of this row.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
+          "pattern": "^(ironsworn|starforged)/oracles(/[a-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$",
           "type": "string",
           "title": "$id"
         },
@@ -665,6 +671,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -774,22 +781,22 @@
       "enum": [
         "Atmosphere",
         "Authority",
-        "Creature Scale",
-        "Derelict Type",
+        "Creature scale",
+        "Derelict type",
         "Disposition",
         "Dominion",
-        "Encountered Behavior",
+        "Encountered behavior",
         "Environment",
-        "Faction Type",
-        "Fringe Group",
+        "Faction type",
+        "Fringe group",
         "Guild",
         "Influence",
-        "Initial Contact",
+        "Initial contact",
         "Leadership",
         "Life",
         "Location",
-        "Location Theme",
-        "Planetary Class",
+        "Location theme",
+        "Planetary class",
         "Population",
         "Region",
         "Role",
@@ -820,42 +827,49 @@
         },
         "Oracle rolls": {
           "description": "Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
         },
         "Moves": {
           "description": "Suggested move IDs.",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Moves"
         },
         "Assets": {
           "description": "Suggested asset IDs.",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Assets"
         },
         "Encounters": {
           "description": "Suggested encounter IDs.",
+          "pattern": "^(starforged/encounters|ironsworn/encounters/[a-z_-]+)/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Encounters"
         },
         "Themes": {
           "description": "Suggested delve site themes.",
+          "pattern": "^ironsworn/themes/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Themes"
         },
         "Domains": {
           "description": "Suggested delve site domains.",
+          "pattern": "^ironsworn/domains/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Domains"
         },
         "Regions": {
           "description": "Suggested Ironlands regions.",
+          "pattern": "^ironsworn/regions/[a-z_-]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Regions"
@@ -987,7 +1001,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1040,10 +1054,11 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
+        "Title": { "$ref": "#/definitions/TitleCaseTitle", "title": "Title" },
         "Display": {
           "$ref": "#/definitions/Display",
           "description": "Data relevant to this item's display/rendering.",
@@ -1055,10 +1070,10 @@
           "items": { "$ref": "#/definitions/AssetState" },
           "title": "States"
         },
-        "Asset Type": {
+        "Asset type": {
           "description": "The ID of the asset's parent AssetType",
           "type": "string",
-          "title": "Asset Type"
+          "title": "Asset type"
         },
         "Usage": {
           "$ref": "#/definitions/AssetUsage",
@@ -1072,8 +1087,8 @@
         },
         "Inputs": {
           "description": "Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.",
-          "type": "array",
-          "items": {
+          "type": "object",
+          "additionalProperties": {
             "anyOf": [
               { "$ref": "#/definitions/InputClock" },
               { "$ref": "#/definitions/InputNumber" },
@@ -1081,6 +1096,7 @@
               { "$ref": "#/definitions/InputText" }
             ]
           },
+          "defaultProperties": [],
           "title": "Inputs"
         },
         "Requirement": {
@@ -1100,10 +1116,10 @@
           "maxItems": 3,
           "title": "Abilities"
         },
-        "Condition Meter": {
+        "Meter": {
           "description": "Information on this asset's condition meter, if any.",
           "$ref": "#/definitions/ConditionMeter",
-          "title": "Condition Meter"
+          "title": "Meter"
         },
         "Tags": {
           "type": "array",
@@ -1120,20 +1136,52 @@
           "type": "array",
           "items": { "type": "string" },
           "title": "Aliases"
-        },
-        "Title": { "$ref": "#/definitions/Title", "title": "Title" }
+        }
       },
       "defaultProperties": [],
       "additionalProperties": false,
       "required": [
         "$id",
         "Abilities",
-        "Asset Type",
+        "Asset type",
         "Display",
         "Source",
         "Title",
         "Usage"
       ]
+    },
+    "TitleCaseTitle": {
+      "title": "TitleCaseTitle",
+      "type": "object",
+      "properties": {
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
+          "type": "string",
+          "title": "Standard"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][A-z -’]+$",
+          "type": "string",
+          "title": "Short"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+/title$",
+          "type": "string",
+          "title": "$id"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Canonical", "Short", "Standard"]
     },
     "AssetState": {
       "description": "Describes a possible state for an asset, like the \"broken\" status for certain assets (mainly Modules in *Starforged*).\n\nStates are frequently toggled on and off by players; for real-world gameplay, this is generally represented by flipping the card over. A checkbox or other on/off toggle might serve the same function in a digital implementation.",
@@ -1168,7 +1216,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -1199,15 +1247,15 @@
       "required": ["Shared"]
     },
     "AssetAttachment": {
-      "description": "Details which assets are valid attachments. The most prominent example in *Ironsworn: Starforged* is the STARSHIP asset (`Starship/Assets/Command_Vehicle/Starship`); Rover (`Starship/Assets/Support_Vehicle/Rover`) also has an elective ability that adds this property.",
+      "description": "Details which assets are valid attachments. The most prominent example in *Ironsworn: Starforged* is the STARSHIP asset (`Starship/Assets/Command_vehicle/Starship`); Rover (`Starship/Assets/Support_vehicle/Rover`) also has an elective ability that adds this property.",
       "title": "AssetAttachment",
       "type": "object",
       "properties": {
-        "Asset Types": {
+        "Asset types": {
           "description": "The type of asset that this asset accepts as attachments.",
           "type": "array",
           "items": { "type": "string" },
-          "title": "Asset Types"
+          "title": "Asset types"
         },
         "Max": {
           "description": "The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.",
@@ -1217,21 +1265,21 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Asset Types", "Max"]
+      "required": ["Asset types", "Max"]
     },
     "InputClock": {
       "description": "An input representing an *Ironsworn: Starforged* clock.",
       "title": "InputClock",
       "type": "object",
       "properties": {
-        "Input Type": {
+        "Input type": {
           "$ref": "#/definitions/InputType.Clock",
-          "title": "Input Type"
+          "title": "Input type"
         },
-        "Clock Type": {
+        "Clock type": {
           "$ref": "#/definitions/ClockType",
           "description": "Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.",
-          "title": "Clock Type"
+          "title": "Clock type"
         },
         "Segments": {
           "$ref": "#/definitions/ClockSegments",
@@ -1245,7 +1293,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1265,9 +1313,9 @@
       "required": [
         "$id",
         "Adjustable",
-        "Clock Type",
+        "Clock type",
         "Filled",
-        "Input Type",
+        "Input type",
         "Label",
         "Segments"
       ]
@@ -1280,7 +1328,7 @@
     "ClockType": {
       "description": "See clocks (p. 234) for more information.",
       "title": "ClockType",
-      "enum": ["Campaign", "Tension"],
+      "enum": ["campaign", "tension"],
       "type": "string"
     },
     "ClockSegments": {
@@ -1293,9 +1341,9 @@
       "title": "InputNumber",
       "type": "object",
       "properties": {
-        "Input Type": {
+        "Input type": {
           "$ref": "#/definitions/InputType.Number",
-          "title": "Input Type"
+          "title": "Input type"
         },
         "Min": { "type": "integer", "title": "Min" },
         "Max": { "type": ["null", "integer"], "title": "Max" },
@@ -1303,7 +1351,7 @@
         "Value": { "type": "integer", "title": "Value" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1323,7 +1371,7 @@
       "required": [
         "$id",
         "Adjustable",
-        "Input Type",
+        "Input type",
         "Label",
         "Max",
         "Min",
@@ -1341,24 +1389,28 @@
       "title": "InputSelect",
       "type": "object",
       "properties": {
-        "Input Type": {
+        "Input type": {
           "$ref": "#/definitions/InputType.Select",
-          "title": "Input Type"
+          "title": "Input type"
         },
-        "Sets": {
-          "description": "Hints which attribute(s) set by this dropdown's options.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/InputSelectAttributeDefinition" },
-          "title": "Sets"
+        "Sets attributes": {
+          "description": "Hints which attribute(s) are set by this dropdown's options.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/InputSelectAttributeDefinition"
+          },
+          "defaultProperties": [],
+          "title": "Sets attributes"
         },
         "Options": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/InputSelectOption" },
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/InputSelectOption" },
+          "defaultProperties": [],
           "title": "Options"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1378,10 +1430,10 @@
       "required": [
         "$id",
         "Adjustable",
-        "Input Type",
+        "Input type",
         "Label",
         "Options",
-        "Sets"
+        "Sets attributes"
       ]
     },
     "InputType.Select": {
@@ -1394,7 +1446,6 @@
       "title": "InputSelectAttributeDefinition",
       "type": "object",
       "properties": {
-        "Key": { "pattern": "^[a-z_]+$", "type": "string", "title": "Key" },
         "Type": {
           "$ref": "#/definitions/InputSelectOptionType",
           "title": "Type"
@@ -1402,12 +1453,12 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["Key", "Type"]
+      "required": ["Type"]
     },
     "InputSelectOptionType": {
       "description": "The type of an attribute set by a Select Input.",
       "title": "InputSelectOptionType",
-      "enum": ["Condition Meter", "Number", "Stat", "String"],
+      "enum": ["condition meter", "number", "stat", "string"],
       "type": "string"
     },
     "InputSelectOption": {
@@ -1417,22 +1468,18 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
-        "Set": {
-          "description": "A array describing what attribute keys should be set to when this option is active. *All* items in the array should be set in this manner.",
-          "type": "array",
-          "items": {
-            "anyOf": [
-              { "$ref": "#/definitions/InputSelectOptionSetterMeter" },
-              { "$ref": "#/definitions/InputSelectOptionSetterNumber" },
-              { "$ref": "#/definitions/InputSelectOptionSetterStat" },
-              { "$ref": "#/definitions/InputSelectOptionSetterString" }
-            ]
+        "Set attributes": {
+          "description": "A keyed object describing what attribute keys should be set to when this option is active. *All* items in the object should be set in this manner.",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": { "$ref": "#/definitions/InputSelectOptionSetter" }
           },
-          "title": "Set"
+          "title": "Set attributes"
         },
         "Label": {
           "description": "The user-facing text label of this item.",
@@ -1442,147 +1489,40 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Label", "Set"]
+      "required": ["$id", "Label", "Set attributes"]
     },
-    "InputSelectOptionSetterMeter": {
-      "description": "A condition meter set by an {@link InputSelectOption}.",
-      "title": "InputSelectOptionSetterMeter",
+    "InputSelectOptionSetter": {
+      "title": "InputSelectOptionSetter",
       "type": "object",
       "properties": {
-        "Type": {
-          "$ref": "#/definitions/InputSelectOptionType.ConditionMeter",
-          "title": "Type"
-        },
-        "Value": {
-          "$ref": "#/definitions/PlayerConditionMeter",
-          "title": "Value"
-        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
-        "Key": { "type": "string", "title": "Key" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Key", "Type", "Value"]
-    },
-    "InputSelectOptionType.ConditionMeter": {
-      "description": "A reference to one of the player character's condition meters (Starforged) or status tracks (Ironsworn): health, spirit, or supply.",
-      "title": "InputSelectOptionType.ConditionMeter",
-      "type": "string",
-      "enum": ["Condition Meter"]
-    },
-    "PlayerConditionMeter": {
-      "description": "Standard player character condition meters.",
-      "title": "PlayerConditionMeter",
-      "enum": ["health", "spirit", "supply"],
-      "type": "string"
-    },
-    "InputSelectOptionSetterNumber": {
-      "description": "An integer value set by an {@link InputSelectOption}.",
-      "title": "InputSelectOptionSetterNumber",
-      "type": "object",
-      "properties": {
         "Type": {
-          "$ref": "#/definitions/InputSelectOptionType.Number",
+          "$ref": "#/definitions/InputSelectOptionType",
           "title": "Type"
         },
-        "Value": { "type": "integer", "title": "Value" },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Key": { "type": "string", "title": "Key" }
+        "Value": { "type": ["string", "integer"], "title": "Value" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Key", "Type", "Value"]
-    },
-    "InputSelectOptionType.Number": {
-      "description": "A arbitrary pre-set number value.",
-      "title": "InputSelectOptionType.Number",
-      "type": "string",
-      "enum": ["Number"]
-    },
-    "InputSelectOptionSetterStat": {
-      "description": "A stat set by an {@link InputSelectOption}.",
-      "title": "InputSelectOptionSetterStat",
-      "type": "object",
-      "properties": {
-        "Type": {
-          "$ref": "#/definitions/InputSelectOptionType.Stat",
-          "title": "Type"
-        },
-        "Value": { "$ref": "#/definitions/Stat", "title": "Value" },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Key": { "type": "string", "title": "Key" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Key", "Type", "Value"]
-    },
-    "InputSelectOptionType.Stat": {
-      "description": "A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.",
-      "title": "InputSelectOptionType.Stat",
-      "type": "string",
-      "enum": ["Stat"]
-    },
-    "Stat": {
-      "description": "Enumerates player character stats.",
-      "title": "Stat",
-      "enum": ["edge", "heart", "iron", "shadow", "wits"],
-      "type": "string"
-    },
-    "InputSelectOptionSetterString": {
-      "description": "An arbitrary string value set by an {@link InputSelectOption}.",
-      "title": "InputSelectOptionSetterString",
-      "type": "object",
-      "properties": {
-        "Type": {
-          "$ref": "#/definitions/InputSelectOptionType.String",
-          "title": "Type"
-        },
-        "Value": { "type": "string", "title": "Value" },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Inputs/[A-z_-]+/Options/[A-z_-]+/[A-z_-]+$",
-          "type": "string",
-          "title": "$id"
-        },
-        "Key": { "type": "string", "title": "Key" }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Key", "Type", "Value"]
-    },
-    "InputSelectOptionType.String": {
-      "description": "An arbitrary pre-set string value.",
-      "title": "InputSelectOptionType.String",
-      "type": "string",
-      "enum": ["String"]
+      "required": ["$id", "Type", "Value"]
     },
     "InputText": {
       "description": "A text input.\nSuggested rendering: a single-line text input, similar to `<input type='text'>` in HTML.",
       "title": "InputText",
       "type": "object",
       "properties": {
-        "Input Type": {
+        "Input type": {
           "$ref": "#/definitions/InputType.Text",
-          "title": "Input Type"
+          "title": "Input type"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1599,7 +1539,7 @@
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Adjustable", "Input Type", "Label"]
+      "required": ["$id", "Adjustable", "Input type", "Label"]
     },
     "InputType.Text": {
       "title": "InputType.Text",
@@ -1613,7 +1553,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$",
           "type": "string",
           "title": "$id"
         },
@@ -1630,8 +1570,8 @@
         },
         "Inputs": {
           "description": "User inputs (text, clocks, etc) associated with this asset ability.",
-          "type": "array",
-          "items": {
+          "type": "object",
+          "additionalProperties": {
             "anyOf": [
               { "$ref": "#/definitions/InputClock" },
               { "$ref": "#/definitions/InputNumber" },
@@ -1639,23 +1579,24 @@
               { "$ref": "#/definitions/InputText" }
             ]
           },
+          "defaultProperties": [],
           "title": "Inputs"
         },
-        "Alter Moves": {
+        "Alter moves": {
           "description": "Information on how this ability alters moves when enabled.",
           "type": "array",
           "items": { "$ref": "#/definitions/AlterMove" },
-          "title": "Alter Moves"
+          "title": "Alter moves"
         },
-        "Alter Properties": {
+        "Alter properties": {
           "description": "Information on how this ability alters its parent asset when enabled.",
           "$ref": "#/definitions/AssetAlterProperties",
-          "title": "Alter Properties"
+          "title": "Alter properties"
         },
-        "Alter Momentum": {
+        "Alter momentum": {
           "description": "Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)",
           "$ref": "#/definitions/AlterMomentum",
-          "title": "Alter Momentum"
+          "title": "Alter momentum"
         },
         "Enabled": {
           "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
@@ -1679,12 +1620,12 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3])/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
         "Title": {
-          "$ref": "#/definitions/Title",
+          "$ref": "#/definitions/TitleCaseTitle",
           "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
           "title": "Title"
         },
@@ -1698,10 +1639,10 @@
           "type": "string",
           "title": "Category"
         },
-        "Progress Move": {
+        "Progress move": {
           "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
           "type": "boolean",
-          "title": "Progress Move"
+          "title": "Progress move"
         },
         "Variant of": {
           "description": "The ID of the move that this move is a variant of, if any.",
@@ -1776,7 +1717,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger$",
           "type": "string",
           "title": "$id"
         },
@@ -1842,7 +1783,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1869,19 +1810,19 @@
     "RollType.Action": {
       "title": "RollType.Action",
       "type": "string",
-      "enum": ["Action roll"]
+      "enum": ["action roll"]
     },
     "RollMethod": {
       "description": "The stat(s) or progress track(s) that may be rolled with the parent move trigger option.",
       "title": "RollMethod",
       "enum": [
-        "All",
-        "Any",
-        "Highest",
-        "Inherit",
-        "Lowest",
-        "Strong Hit",
-        "Weak Hit"
+        "all",
+        "any",
+        "highest",
+        "inherit",
+        "lowest",
+        "strong hit",
+        "weak hit"
       ],
       "type": "string"
     },
@@ -1891,7 +1832,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$",
           "type": "string",
           "title": "$id"
         },
@@ -1916,7 +1857,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[0-9]+)/[A-z_-]+/Trigger/Options/[0-9]+/Custom_stat/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1967,7 +1908,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Trigger/Options/[0-9]+$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1994,7 +1935,7 @@
     "RollType.Progress": {
       "title": "RollType.Progress",
       "type": "string",
-      "enum": ["Progress roll"]
+      "enum": ["progress roll"]
     },
     "Outcomes": {
       "title": "Outcomes",
@@ -2002,23 +1943,23 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$",
           "type": "string",
           "title": "$id"
         },
-        "Strong Hit": {
+        "Strong hit": {
           "$ref": "#/definitions/OutcomeStrongHit",
-          "title": "Strong Hit"
+          "title": "Strong hit"
         },
-        "Weak Hit": {
+        "Weak hit": {
           "$ref": "#/definitions/OutcomeWeakHit",
-          "title": "Weak Hit"
+          "title": "Weak hit"
         },
         "Miss": { "$ref": "#/definitions/OutcomeMiss", "title": "Miss" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
-      "required": ["$id", "Miss", "Strong Hit", "Weak Hit"]
+      "required": ["$id", "Miss", "Strong hit", "Weak hit"]
     },
     "OutcomeStrongHit": {
       "title": "OutcomeStrongHit",
@@ -2026,24 +1967,24 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit$",
           "type": "string",
           "title": "$id"
         },
-        "With a Match": {
+        "With a match": {
           "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
           "$ref": "#/definitions/OutcomeStrongHitMatch",
-          "title": "With a Match"
+          "title": "With a match"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": true,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2068,15 +2009,15 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit/With_a_Match$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$",
           "type": "string",
           "title": "$id"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": true,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -2085,7 +2026,7 @@
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2127,7 +2068,7 @@
     "RerollType": {
       "description": "Enumerates which dice are to be rerolled.",
       "title": "RerollType",
-      "enum": ["Action die", "All", "Any", "Challenge dice", "Challenge die"],
+      "enum": ["action die", "all", "any", "challenge dice", "challenge die"],
       "type": "string"
     },
     "OutcomeWeakHit": {
@@ -2136,15 +2077,15 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/weak_hit$",
           "type": "string",
           "title": "$id"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": false,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -2153,7 +2094,7 @@
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2173,24 +2114,24 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss$",
           "type": "string",
           "title": "$id"
         },
-        "With a Match": {
+        "With a match": {
           "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
           "$ref": "#/definitions/OutcomeMissMatch",
-          "title": "With a Match"
+          "title": "With a match"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": false,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2215,15 +2156,15 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss/With_a_Match$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$",
           "type": "string",
           "title": "$id"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": false,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -2232,7 +2173,7 @@
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2253,7 +2194,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[1-9][0-9]*$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[1-9][0-9]*$",
           "type": "string",
           "title": "$id"
         },
@@ -2293,7 +2234,7 @@
           "title": "Suggestions"
         },
         "Title": {
-          "$ref": "#/definitions/Title_1",
+          "$ref": "#/definitions/TitleCaseTitle_1",
           "description": "Note the \"Canonical\" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.",
           "title": "Title"
         },
@@ -2307,10 +2248,10 @@
           "type": "string",
           "title": "Category"
         },
-        "Progress Move": {
+        "Progress move": {
           "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
           "type": "boolean",
-          "title": "Progress Move"
+          "title": "Progress move"
         },
         "Variant of": {
           "description": "The ID of the move that this move is a variant of, if any.",
@@ -2353,18 +2294,18 @@
       "title": "AlterMoveOutcomes",
       "type": "object",
       "properties": {
-        "Strong Hit": {
+        "Strong hit": {
           "$ref": "#/definitions/AlterStrongHit",
-          "title": "Strong Hit"
+          "title": "Strong hit"
         },
-        "Weak Hit": {
+        "Weak hit": {
           "$ref": "#/definitions/AlterWeakHit",
-          "title": "Weak Hit"
+          "title": "Weak hit"
         },
         "Miss": { "$ref": "#/definitions/AlterMiss", "title": "Miss" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$",
           "type": "string",
           "title": "$id"
         }
@@ -2379,24 +2320,24 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Strong_Hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit$",
           "type": "string",
           "title": "$id"
         },
-        "With a Match": {
+        "With a match": {
           "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
           "$ref": "#/definitions/OutcomeStrongHitMatch",
-          "title": "With a Match"
+          "title": "With a match"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": true,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2420,15 +2361,15 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Weak_Hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/weak_hit$",
           "type": "string",
           "title": "$id"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": false,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Text": {
           "description": "The item's rules text as a markdown string.",
@@ -2437,7 +2378,7 @@
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2456,24 +2397,24 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/(Moves/[A-z_-]+/[A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/Alter_Moves/[0-9]+|Moves/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]/[A-z_-]+)/Outcomes/Miss$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss$",
           "type": "string",
           "title": "$id"
         },
-        "With a Match": {
+        "With a match": {
           "description": "Defines a different outcome for this result with a match. Its text should replace the text of this object.",
           "$ref": "#/definitions/OutcomeMissMatch",
-          "title": "With a Match"
+          "title": "With a match"
         },
-        "In Control": {
+        "In control": {
           "description": "Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.",
           "default": false,
           "type": "boolean",
-          "title": "In Control"
+          "title": "In control"
         },
         "Count as": {
           "description": "Count this roll as another roll outcome, e.g. \"Count a weak hit as a miss\"",
-          "enum": ["Miss", "Strong Hit", "Weak Hit"],
+          "enum": ["Miss", "Strong hit", "Weak hit"],
           "type": "string",
           "title": "Count as"
         },
@@ -2491,7 +2432,10 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "Title_1": { "title": "Title_1", "$ref": "#/definitions/Title" },
+    "TitleCaseTitle_1": {
+      "title": "TitleCaseTitle_1",
+      "$ref": "#/definitions/TitleCaseTitle"
+    },
     "Display_2": {
       "description": "Interface for data relevant to an item's display/rendering.",
       "title": "Display_2",
@@ -2521,9 +2465,9 @@
           "$ref": "#/definitions/AssetAlterPropertiesAttachment",
           "title": "Attachments"
         },
-        "Condition Meter": {
+        "Condition meter": {
           "$ref": "#/definitions/AssetAlterPropertiesConditionMeter",
-          "title": "Condition Meter"
+          "title": "Condition meter"
         },
         "States": {
           "description": "Describes any states that the asset might have, such as \"Broken\". Some states may disable the asset entirely.",
@@ -2531,7 +2475,7 @@
           "items": { "$ref": "#/definitions/AssetState" },
           "title": "States"
         },
-        "Title": { "$ref": "#/definitions/Title_2", "title": "Title" },
+        "Title": { "$ref": "#/definitions/TitleCaseTitle_2", "title": "Title" },
         "Tags": { "type": "undefined", "title": "Tags" },
         "Display": {
           "$ref": "#/definitions/Display_3",
@@ -2548,20 +2492,20 @@
           "type": "undefined",
           "title": "Aliases"
         },
-        "Asset Type": {
-          "description": "The ID of the asset's parent AssetType",
-          "type": "undefined",
-          "title": "Asset Type"
-        },
         "Usage": {
           "$ref": "#/definitions/AssetUsage_1",
           "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters.",
           "title": "Usage"
         },
+        "Asset type": {
+          "description": "The ID of the asset's parent AssetType",
+          "type": "string",
+          "title": "Asset type"
+        },
         "Inputs": {
           "description": "Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.",
-          "type": "array",
-          "items": {
+          "type": "object",
+          "additionalProperties": {
             "anyOf": [
               { "$ref": "#/definitions/InputClock" },
               { "$ref": "#/definitions/InputNumber" },
@@ -2569,12 +2513,18 @@
               { "$ref": "#/definitions/InputText" }
             ]
           },
+          "defaultProperties": [],
           "title": "Inputs"
         },
         "Requirement": {
           "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
           "type": "string",
           "title": "Requirement"
+        },
+        "Meter": {
+          "description": "Information on this asset's condition meter, if any.",
+          "$ref": "#/definitions/ConditionMeter",
+          "title": "Meter"
         }
       },
       "defaultProperties": [],
@@ -2587,7 +2537,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3]$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$",
           "type": "string",
           "title": "$id"
         },
@@ -2604,8 +2554,8 @@
         },
         "Inputs": {
           "description": "User inputs (text, clocks, etc) associated with this asset ability.",
-          "type": "array",
-          "items": {
+          "type": "object",
+          "additionalProperties": {
             "anyOf": [
               { "$ref": "#/definitions/InputClock" },
               { "$ref": "#/definitions/InputNumber" },
@@ -2613,23 +2563,24 @@
               { "$ref": "#/definitions/InputText" }
             ]
           },
+          "defaultProperties": [],
           "title": "Inputs"
         },
-        "Alter Moves": {
+        "Alter moves": {
           "description": "Information on how this ability alters moves when enabled.",
           "type": "array",
           "items": { "$ref": "#/definitions/AlterMove" },
-          "title": "Alter Moves"
+          "title": "Alter moves"
         },
-        "Alter Properties": {
+        "Alter properties": {
           "description": "Information on how this ability alters its parent asset when enabled.",
           "$ref": "#/definitions/AssetAlterProperties",
-          "title": "Alter Properties"
+          "title": "Alter properties"
         },
-        "Alter Momentum": {
+        "Alter momentum": {
           "description": "Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)",
           "$ref": "#/definitions/AlterMomentum",
-          "title": "Alter Momentum"
+          "title": "Alter momentum"
         },
         "Enabled": {
           "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
@@ -2663,7 +2614,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -2688,12 +2639,12 @@
         },
         "Outcomes": {
           "type": "array",
-          "items": { "enum": ["Strong Hit", "Weak Hit"], "type": "string" },
+          "items": { "type": "string" },
           "title": "Outcomes"
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -2714,7 +2665,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -2739,7 +2690,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -2752,11 +2703,11 @@
       "title": "AssetAlterPropertiesAttachment",
       "type": "object",
       "properties": {
-        "Asset Types": {
+        "Asset types": {
           "description": "The type of asset that this asset accepts as attachments.",
           "type": "array",
           "items": { "type": "string" },
-          "title": "Asset Types"
+          "title": "Asset types"
         },
         "Max": {
           "description": "The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.",
@@ -2773,7 +2724,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/condition_meter$",
           "type": "string",
           "title": "$id"
         },
@@ -2836,7 +2787,7 @@
       "defaultProperties": [],
       "additionalProperties": false
     },
-    "Title_2": { "title": "Title_2", "type": "undefined" },
+    "TitleCaseTitle_2": { "title": "TitleCaseTitle_2", "type": "undefined" },
     "Display_3": {
       "description": "Interface for data relevant to an item's display/rendering.",
       "title": "Display_3",
@@ -2855,7 +2806,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+/Condition_Meter$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/condition_meter$",
           "type": "string",
           "title": "$id"
         },
@@ -2934,7 +2885,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/Moves/[A-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2986,15 +2937,15 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+(/[A-z_-]+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$",
           "type": "string",
           "title": "$id"
         },
-        "Sample Names": {
+        "Sample names": {
           "description": "A list of sample names for this category. Only used by Planetary Class {@link OracleSet}s.",
           "type": "array",
           "items": { "type": "string" },
-          "title": "Sample Names"
+          "title": "Sample names"
         },
         "Sets": {
           "description": "Oracle sets contained by this set.\n\nThis key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.",
@@ -3043,15 +2994,15 @@
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
         },
-        "On a Match": {
+        "On a match": {
           "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.\n\nThis key appears only on {@link OracleTable}s that have a `Table`.",
           "$ref": "#/definitions/OracleMatch",
-          "title": "On a Match"
+          "title": "On a match"
         }
       },
       "defaultProperties": [],
@@ -3065,7 +3016,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$",
           "type": "string",
           "title": "$id"
         },
@@ -3086,10 +3037,10 @@
           },
           "title": "Table"
         },
-        "On a Match": {
+        "On a match": {
           "description": "Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.",
           "$ref": "#/definitions/OracleMatch",
-          "title": "On a Match"
+          "title": "On a match"
         },
         "Source": {
           "$ref": "#/definitions/Source",
@@ -3118,7 +3069,7 @@
         },
         "Ancestors": {
           "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Ancestors"
@@ -3177,7 +3128,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -3202,7 +3153,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -3249,7 +3200,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -3341,6 +3292,7 @@
         },
         "Oracle rolls": {
           "description": "Additional oracle tables that should be rolled when this row is selected.",
+          "pattern": "^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$",
           "type": "array",
           "items": { "type": "string" },
           "title": "Oracle rolls"
@@ -3383,7 +3335,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$",
+          "pattern": "^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?/on_a_match$",
           "type": "string",
           "title": "$id"
         },
@@ -3450,7 +3402,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         }
@@ -3475,7 +3427,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(Starforged|Ironsworn)/[0-9A-z_/-]+$",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
           "type": "string",
           "title": "$id"
         },

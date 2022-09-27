@@ -9,9 +9,9 @@ export class MultipleRollsBuilder implements MultipleRolls {
   Amount: number;
   "Allow duplicates": boolean;
   "Make it worse": boolean;
-  constructor(json: Partial<MultipleRolls>) {
-    this.Amount = json.Amount ?? 2;
-    this["Allow duplicates"] = json["Allow duplicates"] ?? false;
-    this["Make it worse"] = json["Make it worse"] ?? false;
+  constructor(yaml: Partial<MultipleRolls>) {
+    this.Amount = yaml.Amount ?? 2;
+    this["Allow duplicates"] = yaml["Allow duplicates"] ?? false;
+    this["Make it worse"] = yaml["Make it worse"] ?? false;
   }
 }

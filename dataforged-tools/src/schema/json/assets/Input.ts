@@ -7,10 +7,10 @@ import type { ClockSegments, ClockType, HasId, HasLabel, InputType } from "@sche
  */
 export interface Input extends HasId,  HasLabel {
   /**
-   * @pattern ^(Starforged|Ironsworn)/Assets/[A-z_-]+/[A-z_-]+(/Abilities/[1-3])?/Inputs/[A-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$
    */
   $id: string;
-  "Input Type": InputType;
+  "Input type": InputType;
   /**
    * Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.
    *
@@ -28,7 +28,7 @@ export interface Input extends HasId,  HasLabel {
  * @public
  */
 export interface InputNumber extends Input {
-  "Input Type": InputType.Number;
+  "Input type": InputType.Number;
   Min: number;
   /**
    * @nullable
@@ -45,11 +45,11 @@ export interface InputNumber extends Input {
  * @public
  */
 export interface InputClock extends Input {
-  "Input Type": InputType.Clock;
+  "Input type": InputType.Clock;
   /**
    * Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.
    */
-  "Clock Type": ClockType;
+  "Clock type": ClockType;
   /**
    * An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.
    *
@@ -68,7 +68,7 @@ export interface InputClock extends Input {
  * @public
  */
 export interface InputText extends Input {
-  "Input Type": InputType.Text
+  "Input type": InputType.Text
  }
 
 

@@ -1,4 +1,4 @@
-import type { Asset, HasDisplay, HasId, HasOptional, HasSource, HasSuggestions, HasText, HasTitle, MoveCategory, MoveTrigger, OracleTable, Outcomes, Title } from "@schema";
+import type { Asset, HasDisplay, HasId, HasOptional, HasSource, HasSuggestions, HasText, HasTitle, MoveCategory, MoveTrigger, OracleTable, Outcomes, TitleCaseTitle } from "@schema";
 
 /**
  * Interface representing a Starforged move.
@@ -7,7 +7,7 @@ import type { Asset, HasDisplay, HasId, HasOptional, HasSource, HasSuggestions, 
 export interface Move extends HasId, HasText, HasDisplay, HasSource, HasOptional, HasTitle,Partial<HasSuggestions> {
   /**
    * @example "Starforged/Moves/Adventure/Face_Danger"
-   * @pattern ^(Starforged|Ironsworn)/Moves/([A-z_-]+|Assets/[A-z_-]+/[A-z_-]+/Abilities/[1-3])/[A-z_-]+$
+   * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3])/[a-z_-]+$
    */
   $id: string;
   /**
@@ -18,7 +18,7 @@ export interface Move extends HasId, HasText, HasDisplay, HasSource, HasOptional
    * {"Canonical": "Face Danger"}
    * ```
    */
-  Title: Title;
+  Title: TitleCaseTitle
   /**
    * The ID of the parent Asset of the move, if any.
    */
@@ -31,7 +31,7 @@ export interface Move extends HasId, HasText, HasDisplay, HasSource, HasOptional
   /**
    * Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.
    */
-  "Progress Move"?: boolean | undefined;
+  "Progress move"?: boolean | undefined;
   /**
    * The ID of the move that this move is a variant of, if any.
    */

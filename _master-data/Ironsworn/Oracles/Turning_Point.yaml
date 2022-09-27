@@ -3,7 +3,7 @@ Source:
     - Shawn Tomkin
   Title: Ironsworn Rulebook
   License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle Sets:
+Oracle sets:
   Turning Point:
     Title:
       Canonical: Turning Point
@@ -51,7 +51,7 @@ Oracle Sets:
         Source:
           License: https://creativecommons.org/licenses/by-nc-sa/4.0/
           Page: 189
-        Description: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
+        Description: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](ironsworn/moves/fate/pay_the_price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
         Table:
           - [1, 4, "Your ritual has the opposite affect."]
           - [5, 8, "You are sapped of strength."]
@@ -164,20 +164,20 @@ Oracle Sets:
         Display:
           Columns:
             - Type: dice range
-              Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
-            - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
+              Content: ironsworn/oracles/turning_point/challenge_rank/quest
+            - Content: ironsworn/oracles/turning_point/challenge_rank/quest
               Label: Rank
               Type: string
               Key: Result
-            - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Quest
+            - Content: ironsworn/oracles/turning_point/challenge_rank/quest
               Label: Quest
               Type: string
               Key: Summary
-            - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Journey
+            - Content: ironsworn/oracles/turning_point/challenge_rank/journey
               Label: Journey
               Type: string
               Key: Summary
-            - Content: Ironsworn/Oracles/Turning_Point/Challenge_Rank/Foes
+            - Content: ironsworn/oracles/turning_point/challenge_rank/foes
               Label: Foes
               Type: string
               Key: Summary
@@ -189,7 +189,7 @@ Oracle Sets:
             Title:
               Canonical: Quest
             Display:
-              Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
+              Column of: ironsworn/oracles/turning_point/challenge_rank
             Table: &challenge_rank_table
                 - [1, 20, Troublesome, "A challenging quest with a small number of obstacles"]
                 - [21, 55, Dangerous, "An involved quest with several tough obstacles"]
@@ -200,7 +200,7 @@ Oracle Sets:
             Title:
               Canonical: Journey
             Display:
-              Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
+              Column of: ironsworn/oracles/turning_point/challenge_rank
             _templateTableRows:
               rolls: *challenge_rank_table
               content:
@@ -215,7 +215,7 @@ Oracle Sets:
               Short: Foe
             _idFragment: Foes
             Display:
-              Column of: Ironsworn/Oracles/Turning_Point/Challenge_Rank
+              Column of: ironsworn/oracles/turning_point/challenge_rank
             _templateTableRows:
               rolls: *challenge_rank_table
               content:

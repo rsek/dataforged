@@ -1,14 +1,13 @@
 import type { ChallengeRank, CyclopediaEntry, Display, EncounterNatureClassic, EncounterNatureStarforged, EncounterTags } from "@schema";
 
 /**
- * Interface common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*, plus 'stubs' like EncounterVariant. EncounterVariant. EncounterVariant.
- * @see {@link Encounter}, {@link EncounterVariant}
+ * Interface common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.
  * @public
  */
 export interface EncounterBase extends CyclopediaEntry {
   /**
-   * @example "Starforged/Encounters/Chiton"
-   * @pattern ^(Starforged|Ironsworn)/Encounters/[A-z_-]+$
+   * @example "starforged/encounters/chiton"
+   * @pattern ^(starforged|ironsworn)/encounters/[a-z_-]+$
    */
   $id: string;
   /**
@@ -47,5 +46,5 @@ export interface EncounterBase extends CyclopediaEntry {
    * @markdown
    * @localize
    */
-  "Your Truth"?: string | undefined;
+  "Your truth"?: string | undefined;
 }

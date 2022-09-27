@@ -16,13 +16,13 @@ export abstract class EncounterBuilder implements Encounter {
   abstract Display: Display;
   Description: string;
   abstract Source: Source;
-  "Quest Starter": string;
-  constructor(json: YamlEncounterClassic|YamlEncounterStarforged) {
-    this.Features = json.Features;
-    this.Drives = json.Drives;
-    this.Tactics = json.Tactics;
-    this.Rank = json.Rank;
-    this.Description = json.Description;
-    this["Quest Starter"] = json["Quest Starter"];
+  "Quest starter": string;
+  constructor(yaml: YamlEncounterClassic|YamlEncounterStarforged) {
+    this.Features = yaml.Features;
+    this.Drives = yaml.Drives;
+    this.Tactics = yaml.Tactics;
+    this.Rank = yaml.Rank;
+    this.Description = yaml.Description;
+    this["Quest starter"] = yaml["Quest starter"];
   }
 }

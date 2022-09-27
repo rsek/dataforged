@@ -25,5 +25,5 @@ export const ID_JOINER = "/"
  */
 export function formatId(currentFragment: string, ...ancestorFragments: string[]): string {
 
-  return [...ancestorFragments, formatIdFragment(currentFragment)].join(ID_JOINER)
+  return [...ancestorFragments, formatIdFragment(currentFragment)].join(ID_JOINER).toLowerCase()
 }

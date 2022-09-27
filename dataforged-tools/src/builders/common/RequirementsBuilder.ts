@@ -6,7 +6,7 @@ import type { Requirements , YamlRequirements } from "@schema";
  */
 export class RequirementsBuilder implements Requirements {
   Attributes: AttributeRequirementsBuilder;
-  constructor(json: YamlRequirements) {
-    this.Attributes = new AttributeRequirementsBuilder(json.Attributes);
+  constructor(yaml: YamlRequirements) {
+    this.Attributes = new AttributeRequirementsBuilder(yaml.Attributes);
   }
 };

@@ -7,6 +7,6 @@ import type { YamlInput } from "../../schema";
  * @param inputJson - The data to pick a class for.
  */
 export declare function pickInput<T extends InputType>(inputJson: YamlInput & {
-    "Input Type": T;
-}, parent: Asset | AssetAbility): InputClockBuilder | InputNumberBuilder | InputSelectBuilder | InputTextBuilder;
+    "Input type": T;
+}, parent: Asset | AssetAbility): InputNumberBuilder | InputClockBuilder | InputTextBuilder | InputSelectBuilder;
 //# sourceMappingURL=pickInput.d.ts.map

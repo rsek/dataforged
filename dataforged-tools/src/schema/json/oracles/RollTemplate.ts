@@ -6,7 +6,7 @@ import type { HasDescription, HasId, HasSummary } from "@schema";
  */
 export interface RollTemplate extends HasId, Partial<HasSummary & HasDescription> {
   /**
-   * @pattern ^(Starforged|Ironsworn)/[A-z_-]+/.+/Roll_template$
+   * @pattern ^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$
    */
   $id: string;
   /**

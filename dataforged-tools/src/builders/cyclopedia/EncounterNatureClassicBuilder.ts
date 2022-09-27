@@ -16,17 +16,17 @@ export class EncounterNatureClassicInfoBuilder implements EncounterNatureClassic
   Summary: string;
   Description: string;
   Encounters: {[key: string]: EncounterClassic};
-  constructor(json: YamlEncounterNatureInfo, parentSource: Source) {
-    const fragment = json._idFragment ?? json.Title.Short ?? json.Title.Standard ?? json.Title.Canonical;
+  constructor(yaml: YamlEncounterNatureInfo, parentSource: Source) {
+    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical;
     this.$id =  formatId(fragment, Game.Ironsworn, "Encounters");
-    this.Title = new TitleBuilder(json.Title, this) as EncounterNatureClassicInfo["Title"];
-    this.Source = new SourceBuilder(json.Source ?? {}, parentSource);
+    this.Title = new TitleBuilder(yaml.Title, this) as EncounterNatureClassicInfo["Title"];
+    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), parentSource);
 
     this.Display = new DisplayBuilder({
     });
-    this.Summary = json.Summary;
-    this.Description = json.Description;
-    this.Encounters = _.mapValues(json.Encounters,enc => new EncounterClassicBuilder(enc, this));
+    this.Summary = yaml.Summary;
+    this.Description = yaml.Description;
+    this.Encounters = _.mapValues(yaml.Encounters,enc => new EncounterClassicBuilder(enc, this));
   }
 }
 

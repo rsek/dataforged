@@ -11,5 +11,13 @@ export interface YamlEncounterClassic extends YamlStubNode<EncounterClassic, "Su
  */
 export interface YamlEncounterNatureInfo extends YamlStubNode<EncounterNatureClassicInfo, "", "Encounters"> {
   Title: YamlTitle & {Short: NatureKey}
-  Encounters: {[key:string]: YamlEncounterClassic};
+
+  /**
+   * @patternProperties ^[A-Z][a-z '-]+$
+   */
+  Encounters: {
+  /**
+   * @patternProperties ^[A-Z][a-z '-]+$
+   */
+    [key:string]: YamlEncounterClassic};
 }
