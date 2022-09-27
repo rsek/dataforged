@@ -48,7 +48,7 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
     this.Oracles = yaml.Oracles;
 
 
-    this.Outcomes = yaml.Outcomes ? new OutcomesBuilder(yaml.Outcomes, `${this.$id}/Outcomes`) : undefined;
+    this.Outcomes = yaml.Outcomes ? new OutcomesBuilder(yaml.Outcomes, formatId("Outcomes",this.$id)) : undefined;
   }
 }
 

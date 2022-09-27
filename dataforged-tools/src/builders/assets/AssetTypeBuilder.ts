@@ -11,7 +11,7 @@ export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetTyp
   Title: Title;
   Aliases?: string[] | undefined;
   Description: string;
-  Assets: Asset[];
+  Assets: {[key:string]: Asset};
   Display: Display;
   Usage: AssetUsage;
   constructor(yaml: YamlAssetType, fragment: string, game: Game, rootSource: Source) {
@@ -31,7 +31,7 @@ export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetTyp
       usage.Shared = false;
     }
     this.Usage = usage;
-    this.Assets = _.map(yaml.Assets,asset => new AssetBuilder(asset, game, this, rootSource));
+    this.Assets = _.mapValues(yaml.Assets,asset => new AssetBuilder(asset, game, this, rootSource));
   }
 }
 

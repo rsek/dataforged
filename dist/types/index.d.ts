@@ -301,7 +301,9 @@ export declare interface AssetType extends HasId, HasDescription, HasDisplay, Ha
     /**
      * The assets that belong to this asset type.
      */
-    Assets: Asset[];
+    Assets: {
+        [key: string]: Asset;
+    };
     /**
      * @example "Ritual"
      * @example "Command Vehicle"

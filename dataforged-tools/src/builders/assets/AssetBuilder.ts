@@ -75,7 +75,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
     if (yaml.Abilities.length !== 3) {
       throw badJsonError(this.constructor, yaml.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
     } else {
-      this.Abilities = yaml.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, `${this.$id}/Abilities/${index + 1}`, game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
+      this.Abilities = yaml.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, formatId((index + 1).toString(),this.$id, "Abilities"), game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
     }
 
     _.merge(this, replaceInAllStrings(this, Replacement.Asset, this.$id));

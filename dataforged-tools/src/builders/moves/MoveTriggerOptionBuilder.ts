@@ -1,6 +1,7 @@
 import { CustomStatBuilder } from "@builders";
 import type { CustomStat, MoveTrigger , MoveTriggerOptionAction, MoveTriggerOptionBase, MoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat, YamlMoveTriggerOptionAction as yaml, YamlMoveTriggerOptionProgress } from "@schema";
 import { Replacement, RollMethod, RollType } from "@schema";
+import { formatId } from "@utils";
 
 /**
  * @internal
@@ -13,7 +14,7 @@ export abstract class MoveTriggerOptionBuilder implements MoveTriggerOptionBase 
   Using: (RollableStat | ProgressTypeStarforged|ProgressTypeIronsworn)[];
   "Custom stat"?: CustomStat | undefined;
   constructor(yaml: yaml|YamlMoveTriggerOptionProgress, parent: MoveTrigger, index: number) {
-    this.$id = `${parent.$id}/Options/${index+1}`;
+    this.$id = formatId( (index+1).toString(), parent.$id, "Options");
     this.Text = yaml.Text;
     this["Roll type"] = yaml["Roll type"] ?? RollType.Action;
     this.Method = yaml.Method ?? RollMethod.Any;

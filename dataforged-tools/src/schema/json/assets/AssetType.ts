@@ -16,7 +16,7 @@ export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource,
   /**
    * The assets that belong to this asset type.
    */
-  Assets: Asset[];
+  Assets: {[key:string]: Asset};
 
   /**
    * @example "Ritual"
