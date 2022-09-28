@@ -19,3 +19,6 @@ export * from "@schema/json/common/Replacement.js";
 export * from "@schema/json/common/RollableStat.js";
 export * from "@schema/json/common/Stat.js";
 export * from "@schema/json/common/CustomStatOption.js";
+export * from "@schema/json/common/Input.js";
+export * from "@schema/json/common/InputSelect.js";
+export * from "@schema/json/common/InputToggle.js";

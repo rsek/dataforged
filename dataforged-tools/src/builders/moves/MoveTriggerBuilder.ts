@@ -18,7 +18,7 @@ export class MoveTriggerBuilder implements MoveTrigger {
   constructor(yaml: YamlMoveTrigger|YamlAlterMoveTrigger,parent: AlterMove|Move) {
     this.$id = formatId("Trigger", parent.$id);
     this.Text = yaml.Text;
-    if (this.$id.includes("alter_moves")) {
+    if (this.$id.includes("alter/moves")) {
       this.By = yaml.By ?? { Player: true, Ally: false };
     }
     if (yaml.Options) {

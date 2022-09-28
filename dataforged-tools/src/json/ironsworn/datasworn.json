@@ -2306,21 +2306,21 @@
               "Label": "Material",
               "Adjustable": false,
               "Sets attributes": {
-                "stat": { "Type": "stat" },
-                "condition_meter": { "Type": "condition meter" }
+                "Mask stat": { "Type": "stat" },
+                "Mask meter": { "Type": "condition meter" }
               },
               "Options": {
                 "Thunderwood": {
                   "$id": "ironsworn/assets/path/masked/inputs/material/options/thunderwood",
                   "Label": "Thunderwood",
                   "Set attributes": {
-                    "stat": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/thunderwood/stat",
+                    "Mask stat": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/thunderwood/mask_stat",
                       "Type": "stat",
                       "Value": "edge"
                     },
-                    "condition_meter": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/thunderwood/condition_meter",
+                    "Mask meter": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/thunderwood/mask_meter",
                       "Type": "condition meter",
                       "Value": "health"
                     }
@@ -2330,13 +2330,13 @@
                   "$id": "ironsworn/assets/path/masked/inputs/material/options/bloodwood",
                   "Label": "Bloodwood",
                   "Set attributes": {
-                    "stat": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/bloodwood/stat",
+                    "Mask stat": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/bloodwood/mask_stat",
                       "Type": "stat",
                       "Value": "iron"
                     },
-                    "condition_meter": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/bloodwood/condition_meter",
+                    "Mask meter": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/bloodwood/mask_meter",
                       "Type": "condition meter",
                       "Value": "health"
                     }
@@ -2346,13 +2346,13 @@
                   "$id": "ironsworn/assets/path/masked/inputs/material/options/ghostwood",
                   "Label": "Ghostwood",
                   "Set attributes": {
-                    "stat": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/ghostwood/stat",
+                    "Mask stat": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/ghostwood/mask_stat",
                       "Type": "stat",
                       "Value": "shadow"
                     },
-                    "condition_meter": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/ghostwood/condition_meter",
+                    "Mask meter": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/ghostwood/mask_meter",
                       "Type": "condition meter",
                       "Value": "spirit"
                     }
@@ -2362,13 +2362,13 @@
                   "$id": "ironsworn/assets/path/masked/inputs/material/options/whisperwood",
                   "Label": "Whisperwood",
                   "Set attributes": {
-                    "stat": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/whisperwood/stat",
+                    "Mask stat": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/whisperwood/mask_stat",
                       "Type": "stat",
                       "Value": "wits"
                     },
-                    "condition_meter": {
-                      "$id": "ironsworn/assets/path/masked/inputs/material/options/whisperwood/condition_meter",
+                    "Mask meter": {
+                      "$id": "ironsworn/assets/path/masked/inputs/material/options/whisperwood/mask_meter",
                       "Type": "condition meter",
                       "Value": "spirit"
                     }
@@ -3609,14 +3609,14 @@
               "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped",
               "Label": "Equipped",
               "Adjustable": true,
-              "Sets attributes": { "armor": { "Type": "string" } },
+              "Sets attributes": { "Equipment": { "Type": "string" } },
               "Options": {
                 "Lightly armored": {
                   "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped/options/lightly_armored",
                   "Label": "Lightly armored",
                   "Set attributes": {
-                    "armor": {
-                      "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped/options/lightly_armored/armor",
+                    "Equipment": {
+                      "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped/options/lightly_armored/equipment",
                       "Type": "string",
                       "Value": "Lightly armored"
                     }
@@ -3626,8 +3626,8 @@
                   "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped/options/geared_for_war",
                   "Label": "Geared for war",
                   "Set attributes": {
-                    "armor": {
-                      "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped/options/geared_for_war/armor",
+                    "Equipment": {
+                      "$id": "ironsworn/assets/combat_talent/ironclad/inputs/equipped/options/geared_for_war/equipment",
                       "Type": "string",
                       "Value": "Geared for war"
                     }
@@ -4465,21 +4465,21 @@
                     "License": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
                   },
                   "Category": "Ironsworn/Moves/Assets",
-                  "$id": "ironsworn/assets/ritual/invoke/1/invoke",
+                  "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence",
                   "Title": {
-                    "$id": "ironsworn/assets/ritual/invoke/1/invoke/title",
-                    "Canonical": "Invoke",
-                    "Standard": "Invoke",
-                    "Short": "Invoke"
+                    "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/title",
+                    "Canonical": "Invoke Essence",
+                    "Standard": "Invoke Essence",
+                    "Short": "Invoke Essence"
                   },
                   "Optional": false,
                   "Display": {},
                   "Trigger": {
-                    "$id": "ironsworn/assets/ritual/invoke/1/invoke/trigger",
+                    "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/trigger",
                     "Text": "When you consume the mystical essence of your surroundings...",
                     "Options": [
                       {
-                        "$id": "ironsworn/assets/ritual/invoke/1/invoke/trigger/options/1",
+                        "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/trigger/options/1",
                         "Roll type": "action roll",
                         "Method": "any",
                         "Using": ["wits"]
@@ -4488,17 +4488,17 @@
                   },
                   "Text": "When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) or [Face Danger](ironsworn/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](ironsworn/moves/suffer/endure_stress) (2 stress).",
                   "Outcomes": {
-                    "$id": "ironsworn/assets/ritual/invoke/1/invoke/outcomes",
+                    "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/outcomes",
                     "Strong hit": {
-                      "$id": "ironsworn/assets/ritual/invoke/1/invoke/outcomes/strong_hit",
+                      "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/outcomes/strong_hit",
                       "Text": "Add the value of your action die to your essence track (max 6).\n\nYou may then [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) or [Face Danger](ironsworn/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit."
                     },
                     "Weak hit": {
-                      "$id": "ironsworn/assets/ritual/invoke/1/invoke/outcomes/weak_hit",
+                      "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/outcomes/weak_hit",
                       "Text": "Add the value of your action die to your essence track (max 6). However, capturing these energies is harrowing; [Endure Stress](ironsworn/moves/suffer/endure_stress) (2 stress).\n\nYou may then [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) or [Face Danger](ironsworn/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit."
                     },
                     "Miss": {
-                      "$id": "ironsworn/assets/ritual/invoke/1/invoke/outcomes/miss",
+                      "$id": "ironsworn/assets/ritual/invoke/1/invoke_essence/outcomes/miss",
                       "Text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](ironsworn/moves/fate/pay_the_price)."
                     }
                   }

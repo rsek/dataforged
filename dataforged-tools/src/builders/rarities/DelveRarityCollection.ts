@@ -8,6 +8,6 @@ export class DelveRarityCollection extends RootCollectionBuilder<Game.Ironsworn,
     return new DelveRarityBuilder(yaml, "Rarities");
   }
   constructor(source: Source) {
-    super(Game.Ironsworn,"Rarities",source,"../_master-data/Ironsworn/Rarities.(yml|yaml)", "Rarities");
+    super(Game.Ironsworn,"Rarities",source,"../_master-data/Ironsworn/Delve-Rarities.(yml|yaml)", "Rarities");
   }
 }

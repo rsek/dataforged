@@ -1,7 +1,7 @@
 import { AlterMomentumBuilder, AlterMoveBuilder, MoveBuilder } from "@builders";
-import { AssetAlterPropertiesBuilder } from "@builders/assets/AssetAlterPropertiesBuilder.js";
+import { AlterAssetBuilder } from "@builders/assets/AssetAlterPropertiesBuilder.js";
 import { Replacement } from "@schema";
-import type { AlterMomentum , AlterMove, Asset, AssetAbility, Game, InputClock, InputNumber, InputSelect, InputText, Move , YamlAssetAbility } from "@schema";
+import type { AlterMomentum , AlterMove, Asset, AssetAbility, AssetAbilityAlter, Game, InputClock, InputNumber, InputSelect, InputText , Move , YamlAssetAbility } from "@schema";
 import { formatId } from "@utils";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
@@ -16,9 +16,7 @@ export class AssetAbilityBuilder implements AssetAbility {
   Text: string;
   Moves?: Move[] | undefined;
   Inputs?: {[key:string]:(InputNumber | InputClock | InputText | InputSelect)} | undefined;
-  "Alter moves"?: AlterMove[] | undefined;
-  "Alter properties"?: AssetAbility["Alter properties"] | undefined;
-  "Alter momentum"?: AlterMomentum | undefined;
+  Alter?: AssetAbilityAlter | undefined;
   Enabled: boolean;
   constructor(yaml: YamlAssetAbility, id: AssetAbility["$id"], game: Game, parent: Asset) {
     this.$id = id;
@@ -43,7 +41,7 @@ export class AssetAbilityBuilder implements AssetAbility {
       return newData;
     }) : yaml["Alter moves"];
     if (yaml["Alter properties"]){
-      this["Alter properties"] = new AssetAlterPropertiesBuilder(yaml["Alter properties"], this.$id);
+      this["Alter properties"] = new AlterAssetBuilder(yaml["Alter properties"], this.$id);
     }
     if (yaml.Moves) {
       this.Moves = yaml.Moves.map(moveJson => {

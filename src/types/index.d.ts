@@ -1942,12 +1942,6 @@ export declare enum Leadership {
 }
 
 /**
- * Old (v1.x) asset and move IDs, keyed by their v2 ID.
- * @public
- */
-export declare const LEGACY_ID_MAP: Record<string, string>;
-
-/**
  * @public
  */
 export declare enum License {

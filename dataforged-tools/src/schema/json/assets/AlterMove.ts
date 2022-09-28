@@ -7,7 +7,7 @@ import type { PartialDeep, StubExcept } from "@utils";
  */
 export interface AlterMove extends StubExcept<Move, "$id", "Outcomes"> {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[1-9][0-9]*$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[1-9][0-9]*$
    */
   $id: string;
   /**

@@ -1,14 +1,14 @@
 import { AssetStateBuilder } from "@builders";
-import type { AssetAlterProperties , YamlAssetAlterProperties } from "@schema";
+import type { AlterAsset , YamlAlterAsset } from "@schema";
 import { formatId } from "@utils";
 
-export class AssetAlterPropertiesBuilder implements AssetAlterProperties {
+export class AlterAssetBuilder implements AlterAsset {
   $id: string;
-  Abilities?: AssetAlterProperties["Abilities"];
-  Attachments?: AssetAlterProperties["Attachments"];
-  "Condition meter"?: AssetAlterProperties["Condition meter"];
-  States?: AssetAlterProperties["States"];
-  constructor(yaml: YamlAssetAlterProperties, parentId: string) {
+  Abilities?: AlterAsset["Abilities"];
+  Attachments?: AlterAsset["Attachments"];
+  "Condition meter"?: AlterAsset["Condition meter"];
+  States?: AlterAsset["States"];
+  constructor(yaml: YamlAlterAsset, parentId: string) {
     this.$id = formatId("Alter Properties", parentId);
     this.Abilities = yaml.Abilities;
     this.Attachments = yaml.Attachments;

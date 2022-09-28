@@ -702,37 +702,37 @@ Asset types:
             Input type: select
             Adjustable: false
             Sets attributes:
-              stat:
+              Stat:
                 Type: stat
             Options:
               Edge:
                 Label: Edge
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: edge
               Heart:
                 Label: Heart
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: heart
               Iron:
                 Label: Iron
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: iron
               Shadow:
                 Label: Shadow
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: shadow
               Wits:
                 Label: Wits
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: wits
         Abilities:
@@ -916,45 +916,45 @@ Asset types:
             Input type: select
             Adjustable: false
             Sets attributes:
-              stat:
+              Stat:
                 Type: stat
-              condition_meter:
+              Meter:
                 Type: condition meter
             Options:
               Thunderwood:
                 Label: Thunderwood
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: edge
-                  condition_meter:
+                  Meter:
                     Type: condition meter
                     Value: health
               Bloodwood:
                 Label: Bloodwood
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: iron
-                  condition_meter:
+                  Meter:
                     Type: condition meter
                     Value: health
               Ghostwood:
                 Label: Ghostwood
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: shadow
-                  condition_meter:
+                  Meter:
                     Type: condition meter
                     Value: spirit
               Whisperwood:
                 Label: Whisperwood
                 Set attributes:
-                  stat:
+                  Stat:
                     Type: stat
                     Value: wits
-                  condition_meter:
+                  Meter:
                     Type: condition meter
                     Value: spirit
         Abilities:
@@ -1111,6 +1111,7 @@ Asset types:
         Title:
           Canonical: Shadow-Kin
         # icon not on game-icons
+        Tags: [deed]
         Requirement: Once you become corrupted...
         Abilities:
           - Text: |-
@@ -1443,19 +1444,19 @@ Asset types:
             Input type: select
             Adjustable: true
             Sets attributes:
-              armor:
+              Equipment:
                 Type: string
             Options:
               Lightly armored:
                 Label: Lightly armored
                 Set attributes:
-                  armor:
+                  Equipment:
                     Type: string
                     Value: Lightly armored
               Geared for war:
                 Label: Geared for war
                 Set attributes:
-                  armor:
+                  Equipment:
                     Type: string
                     Value: Geared for war
         Abilities:
@@ -1774,7 +1775,7 @@ Asset types:
             Enabled: true
             Moves:
               - Title:
-                  Canonical: Invoke
+                  Canonical: Invoke Essence
                 Trigger:
                   Text: When you consume the mystical essence of your surroundings...
                   Options:

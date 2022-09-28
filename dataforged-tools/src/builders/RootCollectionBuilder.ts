@@ -2,6 +2,7 @@ import type { BuilderFromGlob, CollectionFileGlob } from "@builders";
 import { CollectionBuilder } from "@builders";
 import { REFS_PATH, TEMPLATES_PATH } from "@constants";
 import type { Game, HasSource, Source, YamlDataRoot } from "@schema";
+import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import fg from "fast-glob";
 import fs from "fs-extra";
@@ -62,6 +63,9 @@ export abstract class RootCollectionBuilder<
    */
   public composeSourceData() {
     // TODO: this should attempt to validate the data individually, too
+    if (!this.rawSourceFileData.length) {
+      throw badJsonError(this.constructor, "No files found!");
+    }
     const yamlRefs = RootCollectionBuilder.loadYamlRefs();
     const parsed = this.rawSourceFileData.map(yamlStr => {
       const composedYaml = yamlRefs + "\n\n" + fs.readFileSync(yamlStr,{ encoding: "utf-8" });

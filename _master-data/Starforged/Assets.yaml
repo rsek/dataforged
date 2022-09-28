@@ -105,8 +105,6 @@ Asset types:
                 Trigger:
                   Options:
                     - Text: In your vehicle
-                      # TODO: object to describe string template?
-                      # e.g. "${{ATTACHED_ASSET_NAME}}"
                       Roll type: action roll
                       Method: inherit
                       Using: [edge]
@@ -2082,37 +2080,37 @@ Asset types:
             Input type: select
             Adjustable: false
             Sets attributes:
-              Linked stat:
+              Stat:
                 Type: stat
             Options:
               Edge:
                 Label: Edge
                 Set attributes:
-                  Linked stat:
+                  Stat:
                     Type: stat
                     Value: edge
               Heart:
                 Label: Heart
                 Set attributes:
-                  Linked stat:
+                  Stat:
                     Type: stat
                     Value: heart
               Iron:
                 Label: Iron
                 Set attributes:
-                  Linked stat:
+                  Stat:
                     Type: stat
                     Value: iron
               Shadow:
                 Label: Shadow
                 Set attributes:
-                  Linked stat:
+                  Stat:
                     Type: stat
                     Value: shadow
               Wits:
                 Label: Wits
                 Set attributes:
-                  Linked stat:
+                  Stat:
                     Type: stat
                     Value: wits
         Abilities:
@@ -2168,7 +2166,7 @@ Asset types:
                     Text: Mark 2 ticks on your bonds legacy track.
                   Weak hit: *outcome:bonds_2_ticks
           - Text: |-
-              When you [hearten](starforged/moves/recover/hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
+              When you [Hearten](starforged/moves/recover/hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.
             Alter moves:
               - Moves:
                   - starforged/moves/recover/hearten
@@ -2308,7 +2306,7 @@ Asset types:
               When you come across a wondrous sight or phenomenon, such as an extraordinary planet, majestic creature, or dazzling stellar object, choose one:
 
                 * Find inspiration: Take +1 momentum
-                * Soak it all in: [hearten](starforged/moves/recover/hearten); add +1, and take +1 momentum on a hit.
+                * Soak it all in: [Hearten](starforged/moves/recover/hearten); add +1, and take +1 momentum on a hit.
             # TODO: non move trigger
           - Text: |-
               When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by studying a newfound place from a safe position, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum and envision an unusual aspect of the site.
@@ -3258,7 +3256,7 @@ Asset types:
           Canonical: Outcast
         Abilities:
           - Text: |-
-              When you [hearten](starforged/moves/recover/hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
+              When you [Hearten](starforged/moves/recover/hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
             Enabled: true
             Alter moves:
               - Moves:
@@ -3351,7 +3349,7 @@ Asset types:
                 Trigger:
                   Options:
                     - Method: highest
-                      Using: [wits, Supply]
+                      Using: [wits, supply]
                       Roll type: action roll
                 Outcomes: *outcomes:+1_momentum.HIT
       Scoundrel:
@@ -3881,7 +3879,7 @@ Asset types:
                     Text: When you are in space (or a spacebound vehicle or station)
                   Value: 1
           - Text: |-
-              When you [Sojourn](starforged/moves/recover/sojourn) or [Make a Connection](starforged/moves/connection/make_a_connection) within a spacebound community, add +1. If you [hearten](starforged/moves/recover/hearten) there and score a strong hit, take +1 spirit or +1 momentum.
+              When you [Sojourn](starforged/moves/recover/sojourn) or [Make a Connection](starforged/moves/connection/make_a_connection) within a spacebound community, add +1. If you [Hearten](starforged/moves/recover/hearten) there and score a strong hit, take +1 spirit or +1 momentum.
             Alter moves:
               - Moves:
                   - starforged/moves/recover/sojourn
@@ -4754,7 +4752,7 @@ Asset types:
         Requirement: One time only, once you [Forge a Bond](starforged/moves/connection/forge_a_bond) with a special individual...
         Abilities:
           - Text: |-
-              This person is your bond-mate. When you [Sojourn](starforged/moves/recover/sojourn) at their home, [hearten](starforged/moves/recover/hearten) in their presence, or [Test Your Relationship](starforged/moves/connection/test_your_relationship) or [Develop Your Relationship](starforged/moves/connection/develop_your_relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
+              This person is your bond-mate. When you [Sojourn](starforged/moves/recover/sojourn) at their home, [Hearten](starforged/moves/recover/hearten) in their presence, or [Test Your Relationship](starforged/moves/connection/test_your_relationship) or [Develop Your Relationship](starforged/moves/connection/develop_your_relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
             Enabled: true
             Alter moves:
               - Moves:

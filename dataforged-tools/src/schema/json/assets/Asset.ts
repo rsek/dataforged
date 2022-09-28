@@ -1,4 +1,4 @@
-import type { AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage,ConditionMeter, Display, HasAliases, HasDisplay, HasId, HasSource, HasTitle, InputClock, InputNumber, InputSelect, InputText, TitleCaseTitle } from "@schema";
+import type { AssetAbility, AssetAttachment, InputToggle, AssetType, AssetUsage,ConditionMeter, Display, HasAliases, HasDisplay, HasId, HasSource, HasTitle, InputClock, InputNumber, InputSelect, InputText, TitleCaseTitle } from "@schema";
 
 /**
  * An interface representing an *Ironsworn: Starforged* asset card.
@@ -15,7 +15,7 @@ export interface Asset extends HasId, HasDisplay, HasSource, Partial<HasAliases>
   /**
    * Describes any states that the asset might have, such as "Broken". Some states may disable the asset entirely.
    */
-  States?: AssetState[] | undefined;
+  States?: InputToggle[] | undefined;
   /**
    * The ID of the asset's parent AssetType
    * @example "starforged/assets/path"

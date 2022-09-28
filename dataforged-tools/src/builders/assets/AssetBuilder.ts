@@ -1,6 +1,6 @@
 import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
 import { InputSelectOptionType, InputType, Replacement } from "@schema";
-import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Game, Source, Title, YamlAsset } from "@schema";
+import type { Asset , AssetAbility, AssetAttachment, InputToggle, AssetType, AssetUsage, ConditionMeter, Display, Game, Source, Title, YamlAsset } from "@schema";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -14,7 +14,7 @@ import _ from "lodash-es";
 export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   $id: Asset["$id"];
   Title: Title;
-  States?: AssetState[]|undefined;
+  States?: InputToggle[]|undefined;
   Aliases?: string[] | undefined;
   "Asset type": AssetType["$id"];
   Display: Display;
@@ -43,7 +43,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
     if (yaml.Inputs) {
       this.Inputs = _.mapValues(yaml.Inputs,inputJson => {
         const result = pickInput<InputType.Select|InputType.Text>(inputJson, this);
-        if (result["Input type"] === InputType.Select) {
+        if (result["Type"] === InputType.Select) {
           _.forEach(result["Sets attributes"],hint => {
             let searchValue: Replacement|undefined = undefined;
             let replaceValue: string = this.$id;

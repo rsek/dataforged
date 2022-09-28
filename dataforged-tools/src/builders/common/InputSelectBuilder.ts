@@ -10,16 +10,16 @@ import _ from "lodash-es";
  * @internal
  */
 export class InputSelectBuilder extends InputBuilder implements InputSelect {
-  "Input type": InputType.Select;
+  "Type": InputType.Select;
   "Sets attributes": {[key:string]:InputSelectAttributeDefinition};
   Options: {[key:string]:InputSelectOption};
-  Adjustable: boolean;
+  Permanent: boolean;
   constructor(yaml: YamlInputSelect, parent: AssetAbility|Asset) {
     super(yaml, parent);
-    if (yaml["Input type"] !== InputType.Select) {
-      throw badJsonError(this.constructor, yaml["Input type"], "Expected InputType.Select!");
+    if (yaml["Type"] !== InputType.Select) {
+      throw badJsonError(this.constructor, yaml["Type"], "Expected InputType.Select!");
     }
-    this.Adjustable = yaml.Adjustable ?? false;
+    this.Permanent = yaml.Permanent ?? false;
     this["Sets attributes"] = yaml["Sets attributes"];
 
     this.Options = _.mapValues(yaml.Options,(optionJson,key) => new InputSelectOptionBuilder(optionJson, key,this));
