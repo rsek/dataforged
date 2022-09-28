@@ -1,5 +1,5 @@
-import { cloneImages } from "@utils/process_img/cloneImages.js";
-import { convertRasterImages } from "@utils/process_img/convertRasterImages.js";
+import { cloneImages } from '@utils/process_img/cloneImages.js'
+import { convertRasterImages } from '@utils/process_img/convertRasterImages.js'
 
 /**
  * Clones raster images and converts them to webp.
@@ -9,7 +9,7 @@ import { convertRasterImages } from "@utils/process_img/convertRasterImages.js";
  * @param srcPng - the directory of png files
  * @param outWebP - The destination filepath for webp images.
  */
-export function buildImages(srcRoot: string, outPng: string, srcPng: string, outWebP: string) {
-  cloneImages(srcRoot, outPng);
-  convertRasterImages(srcPng, outWebP);
+export function buildImages (srcRoot: string, outPng: string, srcPng: string, outWebP: string) {
+  cloneImages(srcRoot, outPng)
+  convertRasterImages(srcPng, outWebP)
 }

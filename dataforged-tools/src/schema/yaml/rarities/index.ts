@@ -1,1 +1,1 @@
-export * from "@schema/yaml/rarities/YamlDelveRarity.js";
+export * from '@schema/yaml/rarities/YamlDelveRarity.js'

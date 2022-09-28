@@ -1,7 +1,7 @@
-import type { AttributeKey, AttributeMaster } from "@schema";
+import type { AttributeKey, AttributeMaster } from '@schema'
 /**
  * @public
  */
 export type AttributeHash<K extends AttributeKey = AttributeKey> = {
-  [key in K]?: AttributeMaster[K] | AttributeMaster[K][] | undefined | null
-};
+  [key in K]?: AttributeMaster[K] | Array<AttributeMaster[K]> | undefined | null
+}

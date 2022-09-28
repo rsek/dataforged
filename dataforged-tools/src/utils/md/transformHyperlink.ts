@@ -1,7 +1,7 @@
-import type { OracleTableBuilder, OracleSetBuilder } from "@builders";
-import type { OracleSet } from "@schema";
-import { findById } from "@utils/md/findById.js";
-import _ from "lodash-es";
+import type { OracleTableBuilder, OracleSetBuilder } from '@builders'
+import type { OracleSet } from '@schema'
+import { findById } from '@utils/md/findById.js'
+import _ from 'lodash-es'
 
 /**
  * It replaces all the links to the moves.md file with the correct link.
@@ -9,17 +9,17 @@ import _ from "lodash-es";
  * @param localLinks - If true, the links will be relative to the current file.
  * @returns The original string with the links replaced.
  */
-export function transformMoveLinks(md: string, localLinks: boolean = false, pathPrefix: string = "") {
+export function transformMoveLinks (md: string, localLinks: boolean = false, pathPrefix: string = '') {
   md = md.replaceAll(/\(Moves\/([^ ]+?)\/([^ ]+?)\)/g, (match: string, p1: string, p2: string) => {
-    let result = match;
+    let result = match
     if (localLinks) {
-      result = `(#${p2})`;
+      result = `(#${p2})`
     } else {
-      result = `(${pathPrefix}moves.md#${p2})`;
+      result = `(${pathPrefix}moves.md#${p2})`
     }
-    return result.replaceAll("_", "-");
-  });
-  return md;
+    return result.replaceAll('_', '-')
+  })
+  return md
 }
 
 /**
@@ -27,43 +27,42 @@ export function transformMoveLinks(md: string, localLinks: boolean = false, path
  * @param md - The markdown string to be transformed.
  * @returns The original string with the links transformed.
  */
-export function transformOracleLinks(data: OracleSet[], md: string, currentFile: `${string}.md`) {
-  md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match:string, p1:string, p2: string) => {
+export function transformOracleLinks (data: OracleSet[], md: string, currentFile: `${string}.md`) {
+  md = md.replaceAll(/\(Oracles\/([^ ]+?)\/([^ ]+?)\)/g, (match: string, p1: string, p2: string) => {
     // console.log("matched:", match);
     const oracleId = match
-      .replaceAll("(", "")
-      .replaceAll(")", "");
-    const linkedOracle = findById<OracleSetBuilder | OracleTableBuilder>(data, oracleId);
+      .replaceAll('(', '')
+      .replaceAll(')', '')
+    const linkedOracle = findById<OracleSetBuilder | OracleTableBuilder>(data, oracleId)
     if (!linkedOracle) {
-      throw new Error(`Unable to find linked oracle: ${oracleId}`);
+      throw new Error(`Unable to find linked oracle: ${oracleId}`)
     }
-    let targetFile = `${_.kebabCase(p1)}.md`;
-    if (currentFile === targetFile || currentFile === "oracles.md") {
-      targetFile = "";
+    let targetFile = `${_.kebabCase(p1)}.md`
+    if (currentFile === targetFile || currentFile === 'oracles.md') {
+      targetFile = ''
     }
-    const result = `(${targetFile}#${linkedOracle.Title.Canonical.replaceAll(" ", "-")})`;
+    const result = `(${targetFile}#${linkedOracle.Title.Canonical.replaceAll(' ', '-')})`
 
-    return result.replaceAll("_", "-");
-  });
-  md = md.replaceAll(/\(Oracles\/([^ ]+?)\)/g, (match:string, p1:string) => {
+    return result.replaceAll('_', '-')
+  })
+  md = md.replaceAll(/\(Oracles\/([^ ]+?)\)/g, (match: string, p1: string) => {
     // console.log("matched:", match);
-    const oracleId = match.replaceAll("/", "/").replaceAll("(", "")
-      .replaceAll(")", "")
-      .replaceAll("_", " ");
-    const linkedOracle = findById<OracleSetBuilder | OracleTableBuilder>(data, oracleId);
+    const oracleId = match.replaceAll('/', '/').replaceAll('(', '')
+      .replaceAll(')', '')
+      .replaceAll('_', ' ')
+    const linkedOracle = findById<OracleSetBuilder | OracleTableBuilder>(data, oracleId)
     if (!linkedOracle) {
-      throw new Error(`Unable to find linked oracle: ${oracleId}`);
+      throw new Error(`Unable to find linked oracle: ${oracleId}`)
     }
-    let targetFile: string = "";
-    if (currentFile === "oracles.md") {
-      targetFile = `#${linkedOracle.Title.Canonical}`.replaceAll(" ", "-");
+    let targetFile: string = ''
+    if (currentFile === 'oracles.md') {
+      targetFile = `#${linkedOracle.Title.Canonical}`.replaceAll(' ', '-')
     } else {
-      targetFile = `${_.kebabCase(p1)}.md`;
+      targetFile = `${_.kebabCase(p1)}.md`
     }
-    const result = `(${targetFile})`.replaceAll("_", "-");
-    return result;
-  });
+    const result = `(${targetFile})`.replaceAll('_', '-')
+    return result
+  })
 
-  return md;
+  return md
 }
-
