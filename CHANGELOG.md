@@ -4,6 +4,13 @@
 
 ### Breaking changes
 
+* where feasible, object properties that contain multiple words have been standardized to an initial capital letter with the rest lower case
+* significant change to composition of IDs.
+  * IDs ar now *lower case* with underscores, to make them friendly to as many environments as possible
+  * asset abilities follow he same principle as e.g. oracle tables, and don't bother to note their most important child element's prop name (abilities for assets, table rows for oracle tables)
+    * example: `starforged/assets/companion/sidekick/abilities/1` has become `starforged/assets/companion/sidekick/1`
+* a new constant, `LEGACY_ID_MAP`, is now exported for use with Dataforged. it's a plain object, where the keys are the current ID and the values are the corresponding legacy ID.
+  * currently, this is a quick-and-dirty implementation, but my plan is to include most or all IDs at release to make conversion as painless as possible
 * major restructuring of internal and external interface/class names and their organization
   * public interfaces (the bulk of dataforged's API) are no longer prefixed with "I". example: `IEncounter` is now `Encounter`
   * internal builder classes are now suffixed with "Builder"
