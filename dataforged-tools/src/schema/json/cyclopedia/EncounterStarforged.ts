@@ -1,4 +1,4 @@
-import type { Encounter, EncounterNatureStarforged, EncounterVariant } from "@schema";
+import type { Encounter, EncounterNatureTypeStarforged, EncounterVariant } from '@schema'
 
 /**
  * Represents an *Ironsworn: Starforged* Encounter entry.
@@ -8,11 +8,11 @@ export interface EncounterStarforged extends Encounter {
   /**
    * @pattern ^starforged/encounters/[a-z_-]+$
    */
-  $id: string;
-  Nature: EncounterNatureStarforged;
-  Summary: string;
+  $id: string
+  Nature: EncounterNatureTypeStarforged
+  Summary: string
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Variants?: {[key:string]: EncounterVariant} | undefined;
+  Variants?: {[key: string]: EncounterVariant} | undefined
 }

@@ -1,7 +1,7 @@
-import type { AssetAbilityAlter } from "@schema";
+import type { Alter } from '@schema'
 
-export class AssetAbilityAlterBuilder implements AssetAbilityAlter {
-  Moves?: AssetAbilityAlter["Moves"];
-  Properties?: AssetAbilityAlter["Properties"];
-  Momentum?: AssetAbilityAlter["Momentum"];
+export class AssetAbilityAlterBuilder implements Alter {
+  Moves?: Alter['Moves']
+  Properties?: Alter['Properties']
+  Momentum?: Alter['Momentum']
 }

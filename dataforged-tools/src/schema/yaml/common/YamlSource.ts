@@ -1,4 +1,4 @@
-import type { Source } from "@schema";
+import type { Source } from '@schema'
 
 /**
  * @public

@@ -1,4 +1,4 @@
-import type { CharacterRecord, CreatureRecord, DerelictRecord, DerelictSettlementRecord, DerelictStarshipRecord, DerelictZoneRecord, FactionDominionRecord, FactionFringeGroupRecord, FactionGuildRecord, FactionRecord, PlanetRecord, PrecursorVaultRecord, SettlementRecord, StarshipRecord } from "@game_objects";
+import type { CharacterRecord, CreatureRecord, DerelictRecord, DerelictSettlementRecord, DerelictStarshipRecord, DerelictZoneRecord, FactionDominionRecord, FactionFringeGroupRecord, FactionGuildRecord, FactionRecord, PlanetRecord, PrecursorVaultRecord, SettlementRecord, StarshipRecord } from '@game_objects'
 
 /**
  * @public
@@ -17,4 +17,4 @@ export type GameObjectRecord =
   PlanetRecord |
   PrecursorVaultRecord |
   SettlementRecord |
-  StarshipRecord;
+  StarshipRecord

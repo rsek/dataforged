@@ -1,5 +1,4 @@
-import type { HasDescription, HasQuestStarter } from "@schema";
-
+import type { HasDescription, HasQuestStarter } from '@schema'
 
 /**
  * @public

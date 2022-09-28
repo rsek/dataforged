@@ -1,13 +1,13 @@
-import type { HasLabel, OracleTable, OracleTableRow } from "@schema";
-import type { KeysWithValuesOfType } from "@utils";
+import type { HasLabel, OracleTable, OracleTableRow } from '@schema'
+import type { KeysWithValuesOfType } from '@utils'
 
 /**
  * Enumerates the type of content shown: a dice range, or a string.
  * @public
  */
 export enum TableColumnType {
-  Range="dice range",
-  String="string"
+  Range = 'dice range',
+  String = 'string'
 }
 
 /**
@@ -19,30 +19,29 @@ export interface TableColumnBase extends HasLabel {
    * The label or header text to use for this column.
    * @localize
    */
-  Label: string;
+  Label: string
   /**
    * The ID of the {@link OracleTable} whose {@link OracleTable.Table} content will be displayed in the table.
    */
-  "Content": OracleTable["$id"];
-  Type: TableColumnType
+  'Content': OracleTable['$id']
+  'Column type': TableColumnType
   /**
    * The key of each {@link OracleTableRow} in the {@link OracleTable.Table}, whose string value is displayed in the rendered table.
    */
   Key?: KeysWithValuesOfType<OracleTableRow, string> | undefined
 }
 
-
 /**
  * Describes the rendering of a table column that displays textual content (as opposed to {@link TableColumnRoll}, which displays numerical ranges).
  * @public
  */
 export interface TableColumnText extends TableColumnBase {
-  Type: TableColumnType.String
+  'Column type': TableColumnType.String
   /**
    * @default "Result"
    * @localize
    */
-  Label: string;
+  Label: string
   /**
    * @default "Result"
    */
@@ -52,11 +51,11 @@ export interface TableColumnText extends TableColumnBase {
 /**
  * @public
  */
-export interface TableColumnRoll extends Omit<TableColumnBase, "Key"> {
+export interface TableColumnRoll extends Omit<TableColumnBase, 'Key'> {
   /**
    * @default "Roll"
    * @localize
    */
-  Label: string;
-  Type: TableColumnType.Range
+  Label: string
+  'Column type': TableColumnType.Range
 }

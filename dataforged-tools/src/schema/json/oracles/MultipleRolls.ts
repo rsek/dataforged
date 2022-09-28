@@ -7,13 +7,13 @@ export interface MultipleRolls {
   /**
    * The number of rolls to make on the parent oracle table.
    */
-  Amount: number;
+  Amount: number
   /**
    * Whether to allow duplicate results when generating multiple rolls.
    *
    * Implicitly required by `Make it worse`.
    */
-  "Allow duplicates": boolean;
+  'Allow duplicates': boolean
   /**
    * Whether duplicate rolls should be compounded in an Ironsworn-style "Make it worse" results.
    *
@@ -21,5 +21,5 @@ export interface MultipleRolls {
    *
    * Can safely be ignored in Starforged-only implementations. Implicitly requires `Allow duplicates`.
    */
-  "Make it worse": boolean;
+  'Make it worse': boolean
 }

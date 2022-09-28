@@ -1,4 +1,4 @@
-import type { HasDescription, HasQuestStarter, OracleTableRow, RollTemplate } from "@schema";
+import type { HasDescription, HasQuestStarter, OracleTableRow, RollTemplate } from '@schema'
 
 /**
  * Interface for 'canonical' options within a {@link TruthStarforged} category.
@@ -8,9 +8,9 @@ export interface TruthOptionStarforged extends OracleTableRow, HasQuestStarter, 
   /**
    * @pattern ^starforged/setting_truths/[a-z_-]+/(1-33|34-67|68-100)$
    */
-  $id: string;
-  "Roll template"?: RollTemplate | undefined;
-  Subtable?: TruthOptionSubtableRowStarforged[] | undefined;
+  $id: string
+  'Roll template'?: RollTemplate | undefined
+  Subtable?: TruthOptionSubtableRowStarforged[] | undefined
 }
 
 /**
@@ -21,5 +21,5 @@ export interface TruthOptionSubtableRowStarforged extends OracleTableRow {
   /**
    * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
    */
-  $id: string;
+  $id: string
 }

@@ -2,6 +2,6 @@
  * @public
  */
 export enum Game {
-    Starforged = "Starforged",
-    Ironsworn = "Ironsworn"
+  Starforged = 'Starforged',
+  Ironsworn = 'Ironsworn'
 }

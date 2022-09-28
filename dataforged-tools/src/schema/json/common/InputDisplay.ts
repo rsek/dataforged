@@ -1,4 +1,4 @@
-import type { Display } from "@schema/json/meta/Display.js";
+import type { Display } from '@schema/json/meta/Display.js'
 
 export enum InputDisplayPosition {
   /**
@@ -6,7 +6,7 @@ export enum InputDisplayPosition {
    *
    * @example Starship (*Starforged*)
    */
-  ConditionMeter = "condition meter",
+  ConditionMeter = 'condition meter',
   /**
    * The input appears at the top of the parent element.
    *
@@ -14,7 +14,7 @@ export enum InputDisplayPosition {
    *
    * Typically, text inputs with an {@link Asset} parent are displayed this way.
    */
-  Top = "top",
+  Top = 'top',
   /**
    * The input is rendered at the bottom of the parent element.
    *
@@ -23,7 +23,7 @@ export enum InputDisplayPosition {
    * @example Ironclad (*Ironsworn*)
    * @example Blademaster (*Starforged*)
    */
-  Bottom = "bottom",
+  Bottom = 'bottom',
   /**
    * The input is rendered to the right of the parent element.
    *
@@ -32,7 +32,7 @@ export enum InputDisplayPosition {
    * @example Fugitive (*Starforged*)
    * @example Snub Fighter (*Starforged*)
    */
-  Right = "right",
+  Right = 'right',
   /**
    * Indicates that (in analog play) this state is presumed active when the card is flipped face-down.
    *
@@ -40,7 +40,7 @@ export enum InputDisplayPosition {
    *
    * Canonically, this is only used by *Starforged* modules for "broken" -- see page 55 for more information.
    */
-  Back = "back"
+  Back = 'back'
 }
 
 export interface InputDisplay extends Display {

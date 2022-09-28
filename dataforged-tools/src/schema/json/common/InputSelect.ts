@@ -1,5 +1,5 @@
 
-import type { HasId, HasLabel , Input, InputType, PlayerConditionMeter, Stat } from "@schema";
+import type { HasId, HasLabel, Input, InputType, PcConditionMeterType, Stat } from '@schema'
 
 /**
  * An input where the user selects a single option from a list of pre-set options.
@@ -7,17 +7,17 @@ import type { HasId, HasLabel , Input, InputType, PlayerConditionMeter, Stat } f
  * @public
  */
 export interface InputSelect extends Input {
-  "Type": InputType.Select;
+  'Input type': InputType.Select
   /**
    * Hints which attribute(s) are set by this dropdown's options.
    * @patternProperties ^[A-z][a-z ]+$
    */
-  "Sets attributes": {
+  'Sets attributes': {
     [key: string]: InputSelectAttributeDefinition
-  };
+  }
   Options: {
     [key: string]: InputSelectOption
-  };
+  }
 }
 
 /**
@@ -25,7 +25,7 @@ export interface InputSelect extends Input {
  * @public
  */
 export interface InputSelectAttributeDefinition {
-  Type: InputSelectOptionType;
+  'Input type': InputSelectOptionType
 }
 
 /**
@@ -37,20 +37,20 @@ export enum InputSelectOptionType {
    * A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.
    * @see {@link Stat}
    */
-  Stat = "stat",
+  Stat = 'stat',
   /**
    * A reference to one of the player character's condition meters (*Starforged*) or status tracks (*Ironsworn*): health, spirit, or supply.
-   * @see {@link PlayerConditionMeter}
+   * @see {@link PcConditionMeterType}
    */
-  ConditionMeter = "condition meter",
+  ConditionMeter = 'condition meter',
   /**
    * An arbitrary pre-set string value.
    */
-  String = "string",
+  String = 'string',
   /**
    * A arbitrary pre-set number value.
    */
-  Number = "number"
+  Number = 'number'
 }
 
 /**
@@ -61,12 +61,12 @@ export interface InputSelectOption extends HasId, HasLabel {
   /**
    * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+$
    */
-  $id: string;
+  $id: string
   /**
    * A keyed object describing what attribute keys should be set to when this option is active. *All* items in the object should be set in this manner.
    */
-  "Set attributes": {
-    [key: keyof InputSelect["Sets attributes"]]: InputSelectOptionSetter
+  'Set attributes': {
+    [key: keyof InputSelect['Sets attributes']]: InputSelectOptionSetter
   }
 }
 
@@ -77,9 +77,9 @@ export interface InputSelectOptionSetter extends HasId {
   /**
    * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+/[a-z_-]+$
    */
-  $id: string;
-  Type: InputSelectOptionType;
-  Value: Stat | PlayerConditionMeter | number | string;
+  $id: string
+  'Input type': InputSelectOptionType
+  Value: Stat | PcConditionMeterType | number | string
 }
 
 /**
@@ -87,7 +87,7 @@ export interface InputSelectOptionSetter extends HasId {
  * @public
  */
 export interface InputSelectOptionSetterStat extends InputSelectOptionSetter {
-  Type: InputSelectOptionType.Stat;
+  'Input type': InputSelectOptionType.Stat
   Value: Stat
 }
 /**
@@ -95,15 +95,15 @@ export interface InputSelectOptionSetterStat extends InputSelectOptionSetter {
  * @public
  */
 export interface InputSelectOptionSetterMeter extends InputSelectOptionSetter {
-  Type: InputSelectOptionType.ConditionMeter;
-  Value: PlayerConditionMeter
+  'Input type': InputSelectOptionType.ConditionMeter
+  Value: PcConditionMeterType
 }
 /**
  * An integer value set by an {@link InputSelectOption}.
  * @public
  */
 export interface InputSelectOptionSetterNumber extends InputSelectOptionSetter {
-  Type: InputSelectOptionType.Number;
+  'Input type': InputSelectOptionType.Number
   Value: number
 }
 /**
@@ -111,6 +111,6 @@ export interface InputSelectOptionSetterNumber extends InputSelectOptionSetter {
  * @public
  */
 export interface InputSelectOptionSetterString extends InputSelectOptionSetter {
-  Type: InputSelectOptionType.String;
+  'Input type': InputSelectOptionType.String
   Value: string
 }

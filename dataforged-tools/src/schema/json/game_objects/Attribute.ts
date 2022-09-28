@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Atmosphere,
+import type {
+  Atmosphere,
   Authority,
   Behavior,
   CreatureScale,
@@ -12,7 +13,7 @@ import type { Atmosphere,
   Guild,
   Influence,
   Leadership,
-  Life ,
+  Life,
   Location,
   LocationTheme,
   PlanetaryClass,
@@ -21,8 +22,9 @@ import type { Atmosphere,
   Role,
   SettlementInitialContact,
   StarshipInitialContact,
-  Zone } from "@game_objects";
-import type { AttributeKey } from "@schema";
+  Zone
+} from '@game_objects'
+import type { AttributeKey } from '@schema'
 /**
  * Describes an attribute key/value pair, set by an oracle row. The key-value pair should be set on any game object for which that row is generated.
  *
@@ -34,7 +36,6 @@ import type { AttributeKey } from "@schema";
 
  */
 export interface Attribute {
-  Key: AttributeKey;
-  Value?: string | undefined;
+  Key: AttributeKey
+  Value?: string | undefined
 }
-

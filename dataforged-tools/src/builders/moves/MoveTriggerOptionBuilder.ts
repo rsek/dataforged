@@ -1,28 +1,28 @@
-import { CustomStatBuilder } from "@builders";
-import type { CustomStat, MoveTrigger , MoveTriggerOptionAction, MoveTriggerOptionBase, MoveTriggerOptionProgress, ProgressTypeIronsworn, ProgressTypeStarforged, RollableStat, YamlMoveTriggerOptionAction as yaml, YamlMoveTriggerOptionProgress } from "@schema";
-import { Replacement, RollMethod, RollType } from "@schema";
-import { formatId } from "@utils";
+import { CustomStatBuilder } from '@builders'
+import type { CustomStat, MoveTrigger, MoveTriggerOptionAction, MoveTriggerOptionBase, MoveTriggerOptionProgress, ProgressTypeClassic, ProgressTypeStarforged, RollableStat, YamlMoveTriggerOptionAction as yaml, YamlMoveTriggerOptionProgress } from '@schema'
+import { Replacement, RollMethod, RollType } from '@schema'
+import { formatId } from '@utils'
 
 /**
  * @internal
  */
 export abstract class MoveTriggerOptionBuilder implements MoveTriggerOptionBase {
-  $id: MoveTriggerOptionBase["$id"];
-  Text?: string | undefined;
-  "Roll type": RollType;
-  Method: RollMethod;
-  Using: (RollableStat | ProgressTypeStarforged|ProgressTypeIronsworn)[];
-  "Custom stat"?: CustomStat | undefined;
-  constructor(yaml: yaml|YamlMoveTriggerOptionProgress, parent: MoveTrigger, index: number) {
-    this.$id = formatId( (index+1).toString(), parent.$id, "Options");
-    this.Text = yaml.Text;
-    this["Roll type"] = yaml["Roll type"] ?? RollType.Action;
-    this.Method = yaml.Method ?? RollMethod.Any;
-    this.Using = (yaml.Using as typeof this["Using"]) ?? [];
-    if (yaml["Custom stat"]) {
-      this["Custom stat"] = new CustomStatBuilder(yaml["Custom stat"], this.$id);
-      if (this.Using && this["Custom stat"]) {
-        this.Using = this.Using.map(item => (item ) === Replacement.CustomStat ? this["Custom stat"]?.$id : item) as typeof this["Using"];
+  $id: MoveTriggerOptionBase['$id']
+  Text?: string | undefined
+  'Roll type': RollType
+  Method: RollMethod
+  Using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic>
+  'Custom stat'?: CustomStat | undefined
+  constructor(yaml: yaml | YamlMoveTriggerOptionProgress, parent: MoveTrigger, index: number) {
+    this.$id = formatId((index + 1).toString(), parent.$id, 'Options')
+    this.Text = yaml.Text
+    this['Roll type'] = yaml['Roll type'] ?? RollType.Action
+    this.Method = yaml.Method ?? RollMethod.Any
+    this.Using = (yaml.Using as typeof this['Using']) ?? []
+    if (yaml['Custom stat'] != null) {
+      this['Custom stat'] = new CustomStatBuilder(yaml['Custom stat'], this.$id)
+      if (this.Using && this['Custom stat']) {
+        this.Using = this.Using.map(item => (item) === Replacement.CustomStat ? this['Custom stat']?.$id : item) as typeof this['Using']
       }
     }
   }
@@ -32,10 +32,10 @@ export abstract class MoveTriggerOptionBuilder implements MoveTriggerOptionBase 
  * @internal
  */
 export class MoveTriggerOptionActionBuilder extends MoveTriggerOptionBuilder implements MoveTriggerOptionAction {
-  "Roll type": RollType.Action;
-  Using!: RollableStat[];
+  'Roll type': RollType.Action
+  Using!: RollableStat[]
   constructor(yaml: yaml, parent: MoveTrigger, index: number) {
-    super(yaml, parent, index);
+    super(yaml, parent, index)
   }
 }
 
@@ -43,9 +43,9 @@ export class MoveTriggerOptionActionBuilder extends MoveTriggerOptionBuilder imp
  * @internal
  */
 export class MoveTriggerOptionProgressBuilder extends MoveTriggerOptionBuilder implements MoveTriggerOptionProgress {
-  "Roll type": RollType.Progress;
-  Using!: (ProgressTypeStarforged|ProgressTypeIronsworn)[];
+  'Roll type': RollType.Progress
+  Using!: Array<ProgressTypeStarforged | ProgressTypeClassic>
   constructor(yaml: YamlMoveTriggerOptionProgress, parent: MoveTrigger, index: number) {
-    super(yaml, parent, index);
+    super(yaml, parent, index)
   }
 }

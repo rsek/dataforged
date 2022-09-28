@@ -2,5 +2,5 @@
  * @public
  */
 export enum EncounterTags {
-  Vehicle = "vehicle"
+  Vehicle = 'vehicle'
 }

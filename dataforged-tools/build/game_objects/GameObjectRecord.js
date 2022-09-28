@@ -1,2 +1,2 @@
-export {};
-//# sourceMappingURL=GameObjectRecord.js.map
+export {}
+// # sourceMappingURL=GameObjectRecord.js.map

@@ -3,9 +3,9 @@
  * @public
  */
 enum FactionType {
-  FringeGroup = "Fringe Group",
-  Dominion = "Dominion",
-  Guild = "Guild"
+  FringeGroup = 'Fringe Group',
+  Dominion = 'Dominion',
+  Guild = 'Guild'
 };
 
-export { FactionType };
+export { FactionType }

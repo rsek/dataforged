@@ -3,11 +3,11 @@
  * @public
  */
 enum Life {
-  None = "None",
-  Extinct = "Extinct",
-  Scarce = "Scarce",
-  Diverse = "Diverse",
-  Bountiful = "Bountiful",
-  Overrun = "Overrun"
+  None = 'None',
+  Extinct = 'Extinct',
+  Scarce = 'Scarce',
+  Diverse = 'Diverse',
+  Bountiful = 'Bountiful',
+  Overrun = 'Overrun'
 }
-export { Life };
+export { Life }

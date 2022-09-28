@@ -1,15 +1,15 @@
-import type { EncounterClassic, EncounterNatureClassicInfo , NatureKey, YamlStubNode, YamlTitle } from "@schema";
+import type { EncounterClassic, EncounterNatureClassic, NatureKey, YamlStubNode, YamlTitle } from '@schema'
 
 /**
  * @internal
  */
-export interface YamlEncounterClassic extends YamlStubNode<EncounterClassic, "Summary", "Nature"> {
+export interface YamlEncounterClassic extends YamlStubNode<EncounterClassic, 'Summary', 'Nature'> {
 }
 
 /**
  * @internal
  */
-export interface YamlEncounterNatureInfo extends YamlStubNode<EncounterNatureClassicInfo, "", "Encounters"> {
+export interface YamlEncounterNature extends YamlStubNode<EncounterNatureClassic, '', 'Encounters'> {
   Title: YamlTitle & {Short: NatureKey}
 
   /**
@@ -19,5 +19,5 @@ export interface YamlEncounterNatureInfo extends YamlStubNode<EncounterNatureCla
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-    [key:string]: YamlEncounterClassic};
+    [key: string]: YamlEncounterClassic}
 }

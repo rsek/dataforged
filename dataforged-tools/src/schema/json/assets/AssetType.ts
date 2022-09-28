@@ -1,6 +1,6 @@
-import type { Asset,  AssetUsage, Display, HasAliases, HasDescription, HasDisplay, HasId, HasSource, HasTitle, Title } from "@schema";
+import type { Asset, AssetUsage, Display, HasAliases, HasDescription, HasDisplay, HasId, HasSource, HasTitle, Title } from '@schema'
 
-export * from "@utils/types/RequireKey.js";
+export * from '@utils/types/RequireKey.js'
 
 /**
  * Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.
@@ -12,19 +12,18 @@ export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource,
    * @example "starforged/assets/command_vehicle"
    * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+$
    */
-  $id: string;
+  $id: string
   /**
    * The assets that belong to this asset type.
    */
-  Assets: {[key:string]: Asset};
+  Assets: {[key: string]: Asset}
 
   /**
    * @example "Ritual"
    * @example "Command vehicle"
    * @localize
    */
-  Title: Title;
-  Display: Display;
-  Usage: AssetUsage;
+  Title: Title
+  Display: Display
+  Usage: AssetUsage
 }
-

@@ -1,4 +1,4 @@
-import type { CyclopediaEntry, HasQuestStarter, HasSummary, TitleCaseTitle } from "@schema";
+import type { CyclopediaEntry, HasQuestStarter, HasSummary, TitleCaseTitle } from '@schema'
 
 /**
  * @public
@@ -7,10 +7,9 @@ export interface IronlandsRegion extends CyclopediaEntry, HasSummary, HasQuestSt
   /**
    * @pattern ^ironsworn/regions/[a-z_-]$
    */
-  $id: string;
-  Features: string[];
-  "Quest starter": string;
-  Summary: string;
-  Title: TitleCaseTitle;
+  $id: string
+  Features: string[]
+  'Quest starter': string
+  Summary: string
+  Title: TitleCaseTitle
 }
-

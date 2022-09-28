@@ -4,7 +4,7 @@
  * @param str - The string to search for.
  * @returns True if the value is included. False if not.
  */
-export function enumHas(enumeration, str) {
-    return Object.values(enumeration).includes(str);
+export function enumHas (enumeration, str) {
+  return Object.values(enumeration).includes(str)
 }
-//# sourceMappingURL=enumHas.js.map
+// # sourceMappingURL=enumHas.js.map

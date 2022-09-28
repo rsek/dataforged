@@ -1,4 +1,4 @@
-import type { IronlandsRegion , YamlStubNode, YamlTitleCaseTitle } from "@schema";
+import type { IronlandsRegion, YamlStubNode, YamlTitleCaseTitle } from '@schema'
 
 /**
  * @internal

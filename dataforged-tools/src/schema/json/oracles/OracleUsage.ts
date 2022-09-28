@@ -1,4 +1,4 @@
-import type { AttributeChoices, HasRequirements, HasRollTemplate, HasSuggestions, Requirements, Suggestions } from "@schema";
+import type { AttributeChoices, HasRequirements, HasRollTemplate, HasSuggestions, Requirements, Suggestions } from '@schema'
 
 /**
  * Describes the recommended usage of this item.
@@ -12,30 +12,30 @@ export interface OracleUsage extends Partial<HasRequirements & HasSuggestions & 
    *
    * May be deprecated in the future in favour of dedicated object template information.
    */
-  Initial?: boolean | undefined;
-  Suggestions?: Suggestions | undefined;
-  Requires?: Requirements | undefined;
+  Initial?: boolean | undefined
+  Suggestions?: Suggestions | undefined
+  Requires?: Requirements | undefined
   /**
    * The minimum number of rolls when using this oracle to create a game object, *if* this oracle is rolled. Assume it's 1 if not specified.
    * @deprecated Previous versions of the Starforged Backer Preview had tables that made use of this key, but none do at present. Given the "peeling the onion" philosophy, this key is of limited utility, and will probably be removed in future versions.
    */
-  "Min rolls"?: number | undefined;
+  'Min rolls'?: number | undefined
   /**
    * The maximum number of rolls when using this oracle to create a game object. Assume it's 1 if not specified.
    */
-  "Max rolls"?: number | undefined;
+  'Max rolls'?: number | undefined
   /**
    * Whether the table's standard use is iterative.  Common examples are Feature, Opportunity, and Peril tables, which are most often used repeatedly to describe different areas of/events in a place, rather than being assigned as a description of the place as a whole.
    *
    * Mutually exclusive with `Max rolls`. If undefined, assume `false`.
    */
-  Repeatable?: boolean | undefined;
+  Repeatable?: boolean | undefined
   /**
    * Whether multiple rolls (as in object generation, or with {@link MultipleRolls}) .
    */
-  "Allow duplicates"?: boolean | undefined;
+  'Allow duplicates'?: boolean | undefined
   /**
    * Hints which attributes are set by this table.
    */
-  "Sets"?: AttributeChoices[] | undefined;
+  'Sets'?: AttributeChoices[] | undefined
 }

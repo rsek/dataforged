@@ -1,2 +1,2 @@
-export * from "@schema/json";
-export * from "@schema/yaml";
+export * from '@schema/json'
+export * from '@schema/yaml'

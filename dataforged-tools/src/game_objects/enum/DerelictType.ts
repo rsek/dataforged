@@ -3,7 +3,7 @@
  * @public
  */
 enum DerelictType {
-  Starship = "Starship",
-  Settlement = "Settlement"
+  Starship = 'Starship',
+  Settlement = 'Settlement'
 }
-export { DerelictType };
+export { DerelictType }

@@ -1,4 +1,4 @@
-import type { Display, GameObject, OracleContent, OracleTableRow, Requirements, RollTemplate, Source , Suggestions } from "@schema";
+import type { Display, GameObject, OracleContent, OracleTableRow, Requirements, RollTemplate, Source, Suggestions } from '@schema'
 
 /**
  * Interface for items with a user-facing markdown summary.
@@ -10,7 +10,7 @@ export interface HasSummary extends HasId {
    * @markdown
    * @localize
    */
-  Summary: string;
+  Summary: string
 }
 
 /**
@@ -23,7 +23,7 @@ export interface HasDescription extends HasId {
    * @markdown
    * @localize
    */
-  Description: string;
+  Description: string
 }
 
 /**
@@ -34,7 +34,7 @@ export interface HasAliases {
   /**
    * Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.
    */
-  Aliases: string[];
+  Aliases: string[]
 }
 
 /**
@@ -46,7 +46,7 @@ export interface HasSource {
   /**
    * Information on this item's source.
    */
-  Source: Source;
+  Source: Source
 }
 
 /**
@@ -58,7 +58,7 @@ export interface HasId {
    * The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.
    * @pattern ^(starforged|ironsworn)/[0-9a-z_/-]+$
    */
-  $id: string;
+  $id: string
 }
 
 /**
@@ -69,7 +69,7 @@ export interface HasDisplay {
   /**
    * Data relevant to this item's display/rendering.
    */
-  Display: Display;
+  Display: Display
 }
 
 /**
@@ -82,7 +82,7 @@ export interface HasText extends HasId {
    * @markdown
    * @localize
    */
-  Text: string;
+  Text: string
 }
 
 /**
@@ -93,7 +93,7 @@ export interface HasSuggestions {
   /**
    * "Non-canonical" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.
    */
-  Suggestions: Suggestions;
+  Suggestions: Suggestions
 }
 
 /**
@@ -104,7 +104,7 @@ export interface HasRollTemplate extends HasId {
   /**
    * Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.
    */
-  "Roll template": RollTemplate
+  'Roll template': RollTemplate
 }
 
 /**
@@ -115,7 +115,7 @@ export interface HasOracleContent {
   /**
    * Metadata that describes an oracle's semantic or lexical content.
    */
-  Content: OracleContent;
+  Content: OracleContent
 }
 
 /**
@@ -126,14 +126,15 @@ export interface HasRequirements {
   /**
    * Prerequisites for this item.
    */
-  Requires: Requirements;
+  Requires: Requirements
 }
 
 /**
  * Interface for items that have a table-like object.
  * @public
  */
-export interface HasTable extends HasId {  Table: OracleTableRow[]
+export interface HasTable extends HasId {
+  Table: OracleTableRow[]
 }
 
 /**
@@ -141,7 +142,8 @@ export interface HasTable extends HasId {  Table: OracleTableRow[]
  * @deprecated Currently only used by setting truths. If you need to denote a subtable, use the `Oracle rolls` property to point to an `Oracle` in the `Oracles` property of this table's parent.
  * @public
  */
-export interface HasSubtable {  Subtable: OracleTableRow[]
+export interface HasSubtable {
+  Subtable: OracleTableRow[]
 }
 
 /**
@@ -152,7 +154,7 @@ export interface HasGameObjects {
   /**
    * Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see "Peeling the Onion", p. 293.
    */
-  "Game objects": GameObject[]
+  'Game objects': GameObject[]
 }
 /**
  * @public
@@ -163,7 +165,7 @@ export interface HasQuestStarter extends HasId {
    * @markdown
    * @localize
    */
-  "Quest starter": string;
+  'Quest starter': string
 }
 
 /**
@@ -173,7 +175,7 @@ export interface HasTags {
   /**
    * Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.
    */
-  Tags: string[];
+  Tags: string[]
 }
 
 /**
@@ -184,7 +186,7 @@ export interface HasOptional {
    * Whether or not the source material presents this rules item as optional.
    * @default false
    */
-  Optional: boolean;
+  Optional: boolean
 }
 
 /**
@@ -201,7 +203,8 @@ export interface HasLabel extends HasId {
 /**
  * @public
  */
-export interface HasTitle extends HasId {    Title: Title
+export interface HasTitle extends HasId {
+  Title: Title
 }
 
 /**

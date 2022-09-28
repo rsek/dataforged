@@ -3,13 +3,13 @@
  * @public
  */
 export enum SourceTitle {
-  Starforged = "Ironsworn: Starforged Rulebook",
-  StarforgedAssets = "Ironsworn: Starforged Assets",
-  SunderedIslesPreview = "Sundered Isles Preview",
-  Ironsworn = "Ironsworn Rulebook",
-  IronswornAssets = "Ironsworn Assets",
-  IronswornDelve = "Ironsworn: Delve",
-  Custom = "Custom"
+  Starforged = 'Ironsworn: Starforged Rulebook',
+  StarforgedAssets = 'Ironsworn: Starforged Assets',
+  SunderedIslesPreview = 'Sundered Isles Preview',
+  Ironsworn = 'Ironsworn Rulebook',
+  IronswornAssets = 'Ironsworn Assets',
+  IronswornDelve = 'Ironsworn: Delve',
+  Custom = 'Custom'
 }
 
 /**
@@ -17,11 +17,11 @@ export enum SourceTitle {
  * @public
  */
 export enum SourceUrl {
-  Starforged = "https://getstarforged.com",
-  StarforgedAssets = "https://getstarforged.com",
-  Ironsworn = "https://shawn-tomkin.itch.io/ironsworn",
-  IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
-  IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
+  Starforged = 'https://getstarforged.com',
+  StarforgedAssets = 'https://getstarforged.com',
+  Ironsworn = 'https://shawn-tomkin.itch.io/ironsworn',
+  IronswornAssets = 'https://shawn-tomkin.itch.io/ironsworn',
+  IronswornDelve = 'https://shawn-tomkin.itch.io/ironsworn-delve',
 }
 
 /**
@@ -38,26 +38,26 @@ export interface Source {
    *
    * If the source has no particular title (for instance, it's a single custom element in a VTT implementation), use "Custom".
    */
-  Title: SourceTitle | string;
+  Title: SourceTitle | string
   /**
    * The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.
    * @default ["Shawn Tomkin"]
   */
-  Authors: string[];
+  Authors: string[]
   /**
    * The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.
    * @pattern ^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$
    */
-  Date?: string | undefined;
+  Date?: string | undefined
   /**
    * The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).
    */
-  Page?: number | undefined;
+  Page?: number | undefined
   /**
    * The URL where the source material is available.
    * @pattern ^https?://.*$
    */
-  Url?: string | undefined;
+  Url?: string | undefined
   /**
    * The URL pointing to the license which this content falls under.
    */
@@ -68,7 +68,7 @@ export interface Source {
  * @public
  */
 export enum License {
-  CC_BY_NC_SA = "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-  CC_BY_SA = "https://creativecommons.org/licenses/by-sa/4.0/",
-  None = "None"
+  CC_BY_NC_SA = 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+  CC_BY_SA = 'https://creativecommons.org/licenses/by-sa/4.0/',
+  None = 'None'
 }

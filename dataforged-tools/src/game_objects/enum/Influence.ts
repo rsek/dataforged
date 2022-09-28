@@ -3,12 +3,12 @@
  * @public
  */
 enum Influence {
-  Forsaken = "Forsaken",
-  Isolated = "Isolated",
-  Localized = "Localized",
-  Established = "Established",
-  Notable = "Notable",
-  Dominant = "Dominant",
-  Inescapable = "Inescapable",
+  Forsaken = 'Forsaken',
+  Isolated = 'Isolated',
+  Localized = 'Localized',
+  Established = 'Established',
+  Notable = 'Notable',
+  Dominant = 'Dominant',
+  Inescapable = 'Inescapable',
 }
-export { Influence };
+export { Influence }

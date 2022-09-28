@@ -31,10 +31,7 @@
     "es6": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier"
+    "standard-with-typescript"
   ],
   "rules": {
     "tsdoc/syntax": "warn",
@@ -84,20 +81,9 @@
     "prefer-rest-params": [
       0
     ],
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
     "linebreak-style": [
       "error",
       "unix"
-    ],
-    "quotes": [
-      "error",
-      "double"
     ],
     "lodash/prefer-lodash-method": [
       0
@@ -230,10 +216,6 @@
       "as-needed"
     ],
     "require-jsdoc": "warn",
-    "semi": "off",
-    "@typescript-eslint/semi": [
-      "error"
-    ],
     "semi-spacing": [
       "warn",
       {

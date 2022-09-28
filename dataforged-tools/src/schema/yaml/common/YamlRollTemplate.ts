@@ -1,4 +1,4 @@
-import type { RollTemplate , YamlStub } from "@schema";
+import type { RollTemplate, YamlStub } from '@schema'
 
 /**
  * @internal

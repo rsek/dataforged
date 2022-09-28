@@ -1,4 +1,4 @@
-import type { Display, HasId, OracleTable, OracleTableRow, TableColumnRoll, TableColumnText } from "@schema";
+import type { Display, HasId, OracleTable, OracleTableRow, TableColumnRoll, TableColumnText } from '@schema'
 
 /**
  * Base interface inherited by {@link OracleSetDisplay} and {@link OracleTableDisplay}.
@@ -12,17 +12,17 @@ export interface OracleDisplayBase extends Display, HasId {
    *
    * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
    */
-  "Column of"?: OracleTable["$id"] | undefined;
+  'Column of'?: OracleTable['$id'] | undefined
   /**
    * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
    *
    * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
    */
-  "Columns"?: [TableColumnRoll, ...(TableColumnRoll | TableColumnText)[]] | undefined;
+  'Columns'?: [TableColumnRoll, ...Array<TableColumnRoll | TableColumnText>] | undefined
   /**
    * This table is displayed as embedded in a row of another table.
    */
-  "Embed in"?: OracleTableRow["$id"] | undefined;
+  'Embed in'?: OracleTableRow['$id'] | undefined
 }
 
 /**
@@ -31,12 +31,12 @@ export interface OracleDisplayBase extends Display, HasId {
  * If an {@link OracleSet} has `Columns`, it represents a "supertable" composed of multiple roll or string columns.
  * @public
  */
-export interface OracleSetDisplay extends Omit<OracleDisplayBase, "Column of"|"Embed in"> { }
+export interface OracleSetDisplay extends Omit<OracleDisplayBase, 'Column of'|'Embed in'> { }
 
 /**
  * Information on displaying {@link OracleTable}, including information on its rendering in the original text.
  * @public
  */
 export interface OracleTableDisplay extends OracleDisplayBase {
-  "Columns": [TableColumnRoll, ...(TableColumnRoll | TableColumnText)[]];
+  'Columns': [TableColumnRoll, ...Array<TableColumnRoll | TableColumnText>]
 }

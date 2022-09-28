@@ -8,4 +8,4 @@ enum Diversity {
   Complex = 4,
   GardenWorld = 5
 }
-export { Diversity };
+export { Diversity }

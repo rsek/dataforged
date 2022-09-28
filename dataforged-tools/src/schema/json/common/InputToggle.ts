@@ -1,4 +1,4 @@
-import type { HasText, Input, InputType } from "@schema";
+import type { HasText, Input, InputType } from '@schema'
 
 /**
  * Describes a state that can be toggled "on" and "off".
@@ -9,25 +9,25 @@ import type { HasText, Input, InputType } from "@schema";
  * @public
  */
 export interface InputToggle extends Input, HasText {
-  Type: InputType.Toggle;
+  "Input type": InputType.Toggle
   /**
    * Whether this state is currently active.
    */
-  Enabled: boolean;
+  Enabled: boolean
   /**
    * Whether this state should disable the entire asset when {@link InputToggle.Enabled} is set to `true`.
    */
-  "Disables asset": boolean;
+  'Disables asset': boolean
   /**
    * Whether this state counts as a Debility (*Ironsworn*) or Impact (*Starforged*) for the asset's owner when {@link InputToggle.Enabled} is set to `true`.
    *
    * Note that for vehicles, this shouldn't be applied automatically unless your implementation has some way of telling which vehicle the PC is currently using.
    */
-  Impact: boolean;
+  Impact: boolean
   /**
    * Rules text that applies when {@link InputToggle.Enabled} is set to `true`.
    * @markdown
    * @localize
    */
-  Text: string;
+  Text: string
 }

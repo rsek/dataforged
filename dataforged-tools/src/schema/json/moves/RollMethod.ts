@@ -6,21 +6,21 @@ export enum RollMethod {
   /**
    * When rolling with this move trigger option, *every* stat or progress track of the `Using` key is rolled.
    */
-    All = "all",
+  All = 'all',
   /**
    * When rolling with this move trigger option, use the highest/best option from the `Using` key.
    */
-    Highest = "highest",
+  Highest = 'highest',
   /**
    * When rolling with this move trigger option, use the lowest/worst option from the `Using` key.
    */
-  Lowest = "lowest",
+  Lowest = 'lowest',
   /**
    * When rolling with this move trigger option, the user picks which stat to use.
    *
    * This is the default option for triggers that offer a single stat.
    */
-  Any = "any",
+  Any = 'any',
   /**
    * This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option.
    *
@@ -28,21 +28,20 @@ export enum RollMethod {
    *
    * Typically appears on children of `AlterMove`.
    */
-  Inherit = "inherit",
+  Inherit = 'inherit',
   /**
    * The move trigger option results in an automatic strong hit - no roll required.
    */
-  StrongHit = "strong hit",
+  StrongHit = 'strong hit',
   /**
    * The move trigger option results in an automatic weak hit - no roll required.
    */
-  WeakHit = "weak hit"
+  WeakHit = 'weak hit'
 }
 /**
  * @public
  */
 export enum RollType {
-    Action = "action roll",
-    Progress = "progress roll"
+  Action = 'action roll',
+  Progress = 'progress roll'
 }
-
