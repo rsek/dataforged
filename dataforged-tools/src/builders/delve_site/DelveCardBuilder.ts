@@ -53,14 +53,14 @@ export abstract class DelveCardBuilder implements DelveCard {
   Dangers: OracleTableRow[]
   constructor(type: DelveCardType, yaml: YamlDelveCard, fragment: string, parentSource?: Source | undefined, domainFeaturesStaticRows: Array<PartialBy<OracleTableRow, '$id'>> = domainFeaturesStatic) {
     this.$id = formatId(fragment, Game.Ironsworn, type)
-    this.'Card type' = type
+    this['Card type'] = type
     this.Title = new TitleBuilder(yaml.Title, this)
     this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), parentSource ?? {})
     this.Summary = yaml.Summary
     this.Description = yaml.Description
     this.Features = yaml.Features.map(row => new OracleTableRowBuilder(this.$id + '/Features', row))
     let newDangers = yaml.Dangers as Array<PartialBy<OracleTableRow, '$id'>>
-    if (this.'Card type' === DelveCardType.Domain) {
+    if (this['Card type'] === DelveCardType.Domain) {
       newDangers = _.cloneDeep(yaml.Dangers)
       newDangers.push(..._.cloneDeep(domainFeaturesStaticRows))
     }

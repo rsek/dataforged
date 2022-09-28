@@ -94,6 +94,7 @@ export enum LegacyRewardStarforged {
 }
 
 /**
+ * Enumerates the standard types of ranked progress track in *Starforged*.
  * @public
  */
 export enum ProgressTypeStarforged {
@@ -104,6 +105,10 @@ export enum ProgressTypeStarforged {
   SceneChallenge = 'scene challenge progress',
 }
 
+/**
+ * Enumerates the types of un-ranked Legacy tracks in *Starforged*.
+ * @public
+ */
 export enum LegacyTypeStarforged {
   QuestsLegacy = 'quests legacy',
   BondsLegacy = 'bonds legacy',
@@ -111,6 +116,7 @@ export enum LegacyTypeStarforged {
 }
 
 /**
+ * Enumerates the standard types of ranked progress track in classic *Ironsworn*.
  * @public
  */
 export enum ProgressTypeClassic {
@@ -122,6 +128,7 @@ export enum ProgressTypeClassic {
 }
 
 /**
+ * Enumerates the types of classic *Ironsworn* tracks that are un-ranked and share some behaviour with *Starforged* legacy tracks.
  * @public
  */
 export enum LegacyTypeClassic {
@@ -154,6 +161,7 @@ export interface ProgressTrack extends TrackBase {
    * @max 40
    */
   Ticks: number;
+  Rank: ChallengeRank;
 }
 
 /**

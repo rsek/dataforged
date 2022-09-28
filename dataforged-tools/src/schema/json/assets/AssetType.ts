@@ -3,10 +3,25 @@ import type { Asset, AssetUsage, Display, HasAliases, HasDescription, HasDisplay
 export * from '@utils/types/RequireKey.js'
 
 /**
+ * @public
+ */
+export enum AssetTypeName {
+  CommandVehicle = 'Command vehicle',
+  Companion = 'Companion',
+  Deed = 'Deed',
+  Module = 'Module',
+  Path = 'Path',
+  SupportVehicle = 'Support vehicle',
+  Ritual = 'Ritual',
+  CombatTalent = 'Combat talent'
+}
+
+
+/**
  * Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.
  * @public
  */
-export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource, HasTitle, Partial<HasAliases>{
+export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource, HasTitle, Partial<HasAliases> {
   /**
    * @example "ironsworn/assets/ritual"
    * @example "starforged/assets/command_vehicle"
@@ -16,7 +31,7 @@ export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource,
   /**
    * The assets that belong to this asset type.
    */
-  Assets: {[key: string]: Asset}
+  Assets: { [key: string]: Asset }
 
   /**
    * @example "Ritual"
