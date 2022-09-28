@@ -22,9 +22,7 @@ export function buildMoves(game: Game = Game.Starforged): GameDataRoot["Move cat
   const filePaths = fg.sync(`${MASTER_DATA_PATH as string}/${game}/Moves*.(yml|yaml)`, { onlyFiles: true });
   const moveCatsYaml = filePaths.map(path => yaml.load(fs.readFileSync(path, { encoding: "utf-8" }))) as YamlMoveRoot[];
 
-  if (moveCatsYaml.some(mvCat => !validate(mvCat, SCHEMA_YAML).valid)) {
-    throw badJsonError(buildMoves, moveCatsYaml)
-  }
+  // TODO: validation
 
   const builtCats = moveCatsYaml.map(mvRoot => _.mapValues(mvRoot["Move categories"], (mvCat) => new MoveCategoryBuilder(mvCat, game, mvRoot.Source)))
   const json = builtCats.reduce((prev, cur) => _.merge(prev,cur));

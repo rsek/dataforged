@@ -1,4 +1,4 @@
-import { CollectionBuilder, DelveSiteDomainBuilder , DelveSiteThemeBuilder } from "@builders";
+import { DelveSiteDomainBuilder , DelveSiteThemeBuilder, RootCollectionBuilder } from "@builders";
 import type { DelveCard, DelveSiteDomain, DelveSiteTheme, Source, YamlDelveCard, YamlDelveSiteDomain, YamlDelveSiteDomainRoot , YamlDelveSiteTheme, YamlDelveSiteThemeRoot } from "@schema";
 import { DelveCardType , Game } from "@schema";
 
@@ -6,7 +6,7 @@ export abstract class DelveCardsCollection<
     TMapItem extends DelveCard,
     TYamlItem extends YamlDelveCard,
     TYamlRoot extends YamlDelveSiteDomainRoot|YamlDelveSiteThemeRoot
-  > extends CollectionBuilder<
+  > extends RootCollectionBuilder<
     Game.Ironsworn,
     TMapItem,
     TYamlItem,
@@ -15,10 +15,11 @@ export abstract class DelveCardsCollection<
   constructor(type: DelveCardType, fragment: string, source: Source) {
     super(
       Game.Ironsworn,
-      `../_master-data/Ironsworn/delve-site-${type}s.(yml|yaml)`,
       fragment,
+      source,
+      `../_master-data/Ironsworn/delve-site-${type}s.(yml|yaml)`,
       `Delve site ${type}s` as keyof TYamlRoot,
-      source);
+    );
   }
 }
 export class DelveSiteThemesCollection extends DelveCardsCollection<

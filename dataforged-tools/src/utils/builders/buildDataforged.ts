@@ -11,6 +11,7 @@ import { buildLog } from "@utils/logging/buildLog.js";
 import { buildDelveSiteCards } from "@utils/builders/buildDelveSiteCards.js";
 import { IronlandsRegionCollection } from "@builders/cyclopedia/IronlandsRegionCollection.js";
 import { SourceBuilder } from "@builders";
+import { DelveRarityCollection } from "@builders/rarities/DelveRarityCollection.js";
 
 /**
  * Builds all data for Dataforged.
@@ -36,9 +37,10 @@ export function buildDataforged(game: Game = Game.Starforged) {
         "Move categories": buildMoves(game),
         "Oracle sets": buildOracles(game),
         "Setting truths": buildTruths(game),
-        "Site themes": buildDelveSiteCards(DelveCardType.Theme),
-        "Site domains": buildDelveSiteCards(DelveCardType.Domain),
-        Regions: new IronlandsRegionCollection(SourceBuilder.default(Game.Ironsworn)).toJson(),
+        "Delve site themes": buildDelveSiteCards(DelveCardType.Theme),
+        "Delve site domains": buildDelveSiteCards(DelveCardType.Domain),
+        "Ironlands regions": new IronlandsRegionCollection(SourceBuilder.default(Game.Ironsworn)).toJson(),
+        // "Rarities": new DelveRarityCollection(game).toJson()
         // Rarities
         // Delve Sites (the sample ones from Delve)
       } as Ironsworn;

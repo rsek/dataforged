@@ -53,15 +53,15 @@ export interface Ironsworn extends GameDataRoot {
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  "Site domains": {[key:string]:DelveSiteDomain};
+  "Delve site domains": {[key:string]:DelveSiteDomain};
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  "Site themes": {[key:string]:DelveSiteTheme};
+  "Delve site themes": {[key:string]:DelveSiteTheme};
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Regions: {[key:string]:IronlandsRegion};
+  "Ironlands regions": {[key:string]:IronlandsRegion};
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */

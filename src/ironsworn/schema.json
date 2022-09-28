@@ -16,23 +16,23 @@
       "defaultProperties": [],
       "title": "Setting truths"
     },
-    "Site domains": {
+    "Delve site domains": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/DelveSiteDomain" },
       "defaultProperties": [],
-      "title": "Site domains"
+      "title": "Delve site domains"
     },
-    "Site themes": {
+    "Delve site themes": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/DelveSiteTheme" },
       "defaultProperties": [],
-      "title": "Site themes"
+      "title": "Delve site themes"
     },
-    "Regions": {
+    "Ironlands regions": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/IronlandsRegion" },
       "defaultProperties": [],
-      "title": "Regions"
+      "title": "Ironlands regions"
     },
     "Rarities": {
       "type": "object",
@@ -64,14 +64,14 @@
   "additionalProperties": false,
   "required": [
     "Asset types",
+    "Delve site domains",
+    "Delve site themes",
     "Encounters",
+    "Ironlands regions",
     "Move categories",
     "Oracle sets",
     "Rarities",
-    "Regions",
-    "Setting truths",
-    "Site domains",
-    "Site themes"
+    "Setting truths"
   ],
   "definitions": {
     "EncounterNatureClassicInfo": {
@@ -377,7 +377,7 @@
           "items": { "$ref": "#/definitions/TruthOptionClassic" },
           "title": "Options"
         },
-        "Title": { "$ref": "#/definitions/Title", "title": "Title" },
+        "Title": { "$ref": "#/definitions/TitleCaseTitle", "title": "Title" },
         "Source": {
           "$ref": "#/definitions/Source",
           "description": "Information on this item's source.",
@@ -412,6 +412,39 @@
       "defaultProperties": [],
       "additionalProperties": false,
       "required": ["$id", "Description", "Quest starter"]
+    },
+    "TitleCaseTitle": {
+      "title": "TitleCaseTitle",
+      "type": "object",
+      "properties": {
+        "Canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
+          "type": "string",
+          "title": "Canonical"
+        },
+        "Standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
+          "type": "string",
+          "title": "Standard"
+        },
+        "Short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
+          "pattern": "^[A-Z][A-z -’]+$",
+          "type": "string",
+          "title": "Short"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+/title$",
+          "type": "string",
+          "title": "$id"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["$id", "Canonical", "Short", "Standard"]
     },
     "DelveSiteDomain": {
       "description": "Interface describing a delve site domain.\n\nThe **domain** represents the physical characteristics of the site—the terrain or architecture you must traverse.\n\nTogether, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.",
@@ -1531,6 +1564,7 @@
           "type": "string",
           "title": "Summary"
         },
+        "Title": { "$ref": "#/definitions/TitleCaseTitle", "title": "Title" },
         "Tags": {
           "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
           "type": "array",
@@ -1551,8 +1585,7 @@
           "$ref": "#/definitions/Source",
           "description": "Information on this item's source.",
           "title": "Source"
-        },
-        "Title": { "$ref": "#/definitions/Title", "title": "Title" }
+        }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -1618,39 +1651,6 @@
         "XP cost"
       ]
     },
-    "TitleCaseTitle": {
-      "title": "TitleCaseTitle",
-      "type": "object",
-      "properties": {
-        "Canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
-          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
-          "type": "string",
-          "title": "Canonical"
-        },
-        "Standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
-          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
-          "type": "string",
-          "title": "Standard"
-        },
-        "Short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
-          "pattern": "^[A-Z][A-z -’]+$",
-          "type": "string",
-          "title": "Short"
-        },
-        "$id": {
-          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+/title$",
-          "type": "string",
-          "title": "$id"
-        }
-      },
-      "defaultProperties": [],
-      "additionalProperties": false,
-      "required": ["$id", "Canonical", "Short", "Standard"]
-    },
     "AssetType": {
       "description": "Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.",
       "title": "AssetType",
@@ -1664,8 +1664,9 @@
         },
         "Assets": {
           "description": "The assets that belong to this asset type.",
-          "type": "array",
-          "items": { "$ref": "#/definitions/Asset" },
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/Asset" },
+          "defaultProperties": [],
           "title": "Assets"
         },
         "Title": { "$ref": "#/definitions/Title", "title": "Title" },
@@ -1917,7 +1918,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -1975,7 +1976,7 @@
         "Value": { "type": "integer", "title": "Value" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2034,7 +2035,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2146,7 +2147,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/[1-3])?/inputs/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2177,7 +2178,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]$",
           "type": "string",
           "title": "$id"
         },
@@ -2244,7 +2245,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3])/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3])/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2341,7 +2342,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger$",
           "type": "string",
           "title": "$id"
         },
@@ -2407,7 +2408,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2456,7 +2457,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$",
           "type": "string",
           "title": "$id"
         },
@@ -2481,7 +2482,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2532,7 +2533,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$",
           "type": "string",
           "title": "$id"
         },
@@ -2567,7 +2568,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes$",
           "type": "string",
           "title": "$id"
         },
@@ -2591,7 +2592,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit$",
           "type": "string",
           "title": "$id"
         },
@@ -2633,7 +2634,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$",
           "type": "string",
           "title": "$id"
         },
@@ -2701,7 +2702,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/weak_hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/weak_hit$",
           "type": "string",
           "title": "$id"
         },
@@ -2738,7 +2739,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss$",
           "type": "string",
           "title": "$id"
         },
@@ -2780,7 +2781,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$",
           "type": "string",
           "title": "$id"
         },
@@ -2823,7 +2824,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[1-9][0-9]*$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[1-9][0-9]*$",
           "type": "string",
           "title": "$id"
         },
@@ -2934,7 +2935,7 @@
         "Miss": { "$ref": "#/definitions/AlterMiss", "title": "Miss" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes$",
           "type": "string",
           "title": "$id"
         }
@@ -2949,7 +2950,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit$",
           "type": "string",
           "title": "$id"
         },
@@ -2990,7 +2991,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/weak_hit$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/weak_hit$",
           "type": "string",
           "title": "$id"
         },
@@ -3026,7 +3027,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss$",
+          "pattern": "^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss$",
           "type": "string",
           "title": "$id"
         },
@@ -3161,7 +3162,7 @@
       "properties": {
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]$",
           "type": "string",
           "title": "$id"
         },

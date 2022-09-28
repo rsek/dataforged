@@ -1,7 +1,7 @@
 import { AlterMomentumBuilder, AlterMoveBuilder, MoveBuilder } from "@builders";
 import { AssetAlterPropertiesBuilder } from "@builders/assets/AssetAlterPropertiesBuilder.js";
-import { Game , Replacement } from "@schema";
-import type { AlterMomentum , AlterMove, Asset, AssetAbility, InputClock, InputNumber, InputSelect, InputText, Move, YamlAssetAbility } from "@schema";
+import { Replacement } from "@schema";
+import type { AlterMomentum , AlterMove, Asset, AssetAbility, Game, InputClock, InputNumber, InputSelect, InputText, Move , YamlAssetAbility } from "@schema";
 import { formatId } from "@utils";
 import { pickInput } from "@utils/object_transform/pickInput.js";
 import { replaceInAllStrings } from "@utils/object_transform/replaceInAllStrings.js";
@@ -21,7 +21,7 @@ export class AssetAbilityBuilder implements AssetAbility {
   "Alter momentum"?: AlterMomentum | undefined;
   Enabled: boolean;
   constructor(yaml: YamlAssetAbility, id: AssetAbility["$id"], game: Game, parent: Asset) {
-    this.$id = id; Game;
+    this.$id = id;
     this.Label = yaml.Label;
     this.Text = yaml.Text;
     if (yaml.Inputs) {

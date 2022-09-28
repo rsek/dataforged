@@ -32,15 +32,15 @@ _.forEach(data, (value, key) => {
         fileName = "truths";
         break;
       }
-      case "Site domains": {
+      case "Delve site domains": {
         fileName = "delve-site-domains";
         break;
       }
-      case "Site themes": {
+      case "Delve site themes": {
         fileName = "delve-site-themes";
         break;
       }
-      case "Regions" : {
+      case "Ironlands regions" : {
         fileName = "regions";
         break;
       }

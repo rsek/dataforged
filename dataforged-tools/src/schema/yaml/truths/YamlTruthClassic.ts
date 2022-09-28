@@ -1,4 +1,4 @@
-import type { TruthClassic, TruthOptionClassic , YamlStub, YamlStubNode } from "@schema";
+import type { TruthClassic, TruthOptionClassic , YamlStub, YamlStubNode, YamlTitleCaseTitle } from "@schema";
 
 
 /**
@@ -6,6 +6,7 @@ import type { TruthClassic, TruthOptionClassic , YamlStub, YamlStubNode } from "
  */
 export interface YamlTruthClassic extends YamlStubNode<TruthClassic, "", "Options"> {
   Options: YamlTruthOptionClassic[];
+  Title: YamlTitleCaseTitle
 }
 
 

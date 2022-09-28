@@ -1,13 +1,12 @@
-$schema: ./schema/moves.json
 Source:
   Authors:
     - Shawn Tomkin
   Title: "Ironsworn: Delve"
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Move Categories:
+Move categories:
   Delve:
     Title:
-      Canonical: Delve Moves
+      Canonical: Delve moves
       Short: Delve
     _idFragment: Delve
     Source:
@@ -43,13 +42,13 @@ Move Categories:
           Text: When you traverse an area within a perilous site...
           Options:
             - Text: With haste
-              Roll type: Action roll
+              Roll type: action roll
               Using: [edge]
             - Text: With stealth or trickery
-              Roll type: Action roll
+              Roll type: action roll
               Using: [shadow]
             - Text: With observation, intuition, or expertise
-              Roll type: Action roll
+              Roll type: action roll
               Using: [wits]
         Source:
           Title: "Ironsworn: Delve"
@@ -77,9 +76,9 @@ Move Categories:
           76-80 | 91-99  | 81-99 | Take both: Mark progress and [Find an Opportunity](ironsworn/moves/delve/find_an_opportunity).
           81-00 | 00     | 00    | Mark progress twice and [Reveal a Danger](ironsworn/moves/delve/reveal_a_danger).
         Outcomes:
-          Strong Hit:
+          Strong hit:
             Text: You delve deeper. Mark progress and [Find an Opportunity](ironsworn/moves/delve/find_an_opportunity).
-          Weak Hit:
+          Weak hit:
             Text: |-
               Roll on the following table according to your stat.
 
@@ -154,7 +153,7 @@ Move Categories:
         Trigger:
           Text: When you check to see if you have a specific helpful item, and you have at least +1 supply...
           Options:
-            - Roll type: Action roll
+            - Roll type: action roll
               Using: [supply]
         Source:
           Title: "Ironsworn: Delve"
@@ -168,9 +167,9 @@ Move Categories:
 
           On a **miss**, you don’t have it and the situation grows more perilous. [Pay the Price](ironsworn/moves/fate/pay_the_price).
         Outcomes:
-          Strong Hit:
+          Strong hit:
             Text: You have it. Take +1 momentum.
-          Weak Hit:
+          Weak hit:
             Text: You have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.
           Miss:
             Text: You don’t have it and the situation grows more perilous. [Pay the Price](ironsworn/moves/fate/pay_the_price).
@@ -183,10 +182,10 @@ Move Categories:
         Trigger:
           Text: When your exploration of a site comes to an end...
           Options:
-            - Roll type: Progress roll
+            - Roll type: progress roll
               Using:
                 - delve progress
-        Progress Move: true
+        Progress move: true
         Text: |-
           When **your exploration of a site comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
 
@@ -199,13 +198,13 @@ Move Categories:
 
           On a **miss**, your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic).
         Outcomes:
-          Strong Hit:
+          Strong hit:
             Text: |-
               You locate your objective and the situation favors you. Choose one.
 
                 * Make another move now (not a progress move), and add +1.
                 * Take +1 momentum.
-          Weak Hit:
+          Weak hit:
             Text: You locate your objective but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](ironsworn/moves/fate/ask_the_oracle) if unsure).
           Miss:
             Text: Your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic).
@@ -216,19 +215,19 @@ Move Categories:
           Text: When you flee or withdraw from a site...
           Options:
             - Text: Find the fastest way out
-              Roll type: Action roll
+              Roll type: action roll
               Using: [edge]
             - Text: Steel yourself against the horrors of this place
-              Roll type: Action roll
+              Roll type: action roll
               Using: [heart]
             - Text: Fight your way out
-              Roll type: Action roll
+              Roll type: action roll
               Using: [iron]
             - Text: Keep out of sight
-              Roll type: Action roll
+              Roll type: action roll
               Using: [shadow]
             - Text: Retrace your steps or locate an alternate path
-              Roll type: Action roll
+              Roll type: action roll
               Using: [wits]
         Source:
           Title: "Ironsworn: Delve"
@@ -255,10 +254,10 @@ Move Categories:
 
           On a **miss**, a dire threat or imposing obstacle stands in your way. [Reveal a Danger](ironsworn/moves/delve/reveal_a_danger). If you survive, you may make your escape.
         Outcomes:
-          Strong Hit:
+          Strong hit:
             Text: |-
               You make your way safely out of the site. Take +1 momentum.
-          Weak Hit:
+          Weak hit:
             Text: |-
               You find your way out, but this place exacts its price. Choose one.
 
@@ -301,7 +300,7 @@ Move Categories:
           95-00 | Roll twice more on this table. Both results occur. If they are the same result, make it worse.
   Failure:
     Title:
-      Canonical: Failure Moves
+      Canonical: Failure moves
       Short: Failure
     _idFragment: Failure
     Optional: true
@@ -329,7 +328,7 @@ Move Categories:
           Page: 59
         Trigger:
           Text: When you spend time reflecting on your hardships and missteps...
-        Progress Move: true
+        Progress move: true
         Text: |-
           When **you spend time reflecting on your hardships and missteps**, and your failure track is +6 or greater, roll your challenge dice and compare to your progress. Momentum is ignored on this roll.
 
@@ -343,14 +342,14 @@ Move Categories:
 
           On a **miss**, you’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path.
         Outcomes:
-          Strong Hit:
+          Strong hit:
             Text: |-
               You commit to making a dramatic change. Take 3 experience and clear all progress. Then, choose one.
 
                 * Adjust your approach: Discard a single asset, and take 2 experience for each marked ability.
                 * Make an oath: [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow), and reroll any dice.
                 * Ready your next steps: Take +3 momentum.
-          Weak Hit:
+          Weak hit:
             Text: |-
               You learn from your mistakes. Take 2 experience and clear all progress.
           Miss:
@@ -358,7 +357,7 @@ Move Categories:
               You’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path.
   Threat:
     Title:
-      Canonical: Threat Moves
+      Canonical: Threat moves
       Short: Threat
     _idFragment: Threat
     Optional: true
@@ -410,7 +409,7 @@ Move Categories:
           Then, for each active threat, [Advance a Threat](ironsworn/moves/legacy/advance_a_threat).
   Rarity:
     Title:
-      Canonical: Rarity Moves
+      Canonical: Rarity moves
       Short: Rarity
     _idFragment: Rarity
     Source:

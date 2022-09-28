@@ -1,4 +1,4 @@
-import type { TruthOptionStarforged, TruthOptionSubtableRowStarforged, TruthStarforged, YamlRollTemplate , YamlStub, YamlStubNode, YamlSuggestions } from "@schema";
+import type { TruthOptionStarforged, TruthOptionSubtableRowStarforged, TruthStarforged, YamlRollTemplate , YamlStub, YamlStubNode, YamlSuggestions, YamlTitleCaseTitle } from "@schema";
 
 /**
  * @internal
@@ -6,6 +6,7 @@ import type { TruthOptionStarforged, TruthOptionSubtableRowStarforged, TruthStar
 export interface YamlTruthStarforged extends YamlStubNode<TruthStarforged, "", "Table"> {
   Suggestions?: YamlSuggestions | undefined;
   Table: YamlTruthOptionStarforged[];
+  Title: YamlTitleCaseTitle
 }
 
 /**

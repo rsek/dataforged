@@ -1,6 +1,6 @@
-import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
+import { AssetAbilityBuilder, AssetStateBuilder, ConditionMeterBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder } from "@builders";
 import { InputSelectOptionType, InputType, Replacement } from "@schema";
-import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Game, InputClock, InputNumber, InputSelect, InputText, Source, Title, YamlAsset } from "@schema";
+import type { Asset , AssetAbility, AssetAttachment, AssetState, AssetType, AssetUsage, ConditionMeter, Display, Game, Source, Title, YamlAsset } from "@schema";
 import { formatId } from "@utils";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
@@ -75,7 +75,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
     if (yaml.Abilities.length !== 3) {
       throw badJsonError(this.constructor, yaml.Abilities, `Asset ${this.$id} doesn't have 3 abilities!`);
     } else {
-      this.Abilities = yaml.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, formatId((index + 1).toString(),this.$id, "Abilities"), game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
+      this.Abilities = yaml.Abilities.map((abilityJson, index) => new AssetAbilityBuilder(abilityJson, formatId((index + 1).toString(),this.$id), game, this)) as [AssetAbilityBuilder, AssetAbilityBuilder, AssetAbilityBuilder];
     }
 
     _.merge(this, replaceInAllStrings(this, Replacement.Asset, this.$id));

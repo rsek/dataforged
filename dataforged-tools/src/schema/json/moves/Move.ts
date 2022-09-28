@@ -6,8 +6,8 @@ import type { Asset, HasDisplay, HasId, HasOptional, HasSource, HasSuggestions, 
  */
 export interface Move extends HasId, HasText, HasDisplay, HasSource, HasOptional, HasTitle,Partial<HasSuggestions> {
   /**
-   * @example "Starforged/Moves/Adventure/Face_Danger"
-   * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3])/[a-z_-]+$
+   * @example "starforged/moves/adventure/face_danger"
+   * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3])/[a-z_-]+$
    */
   $id: string;
   /**
@@ -25,7 +25,7 @@ export interface Move extends HasId, HasText, HasDisplay, HasSource, HasOptional
   Asset?: Asset["$id"] | undefined;
   /**
    * The ID of the move's category.
-   * @example "Starforged/Moves/Adventure"
+   * @example "starforged/moves/adventure"
    */
   Category: MoveCategory["$id"];
   /**

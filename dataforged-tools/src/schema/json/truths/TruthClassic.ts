@@ -1,4 +1,4 @@
-import type { HasSource, HasTitle, TruthOptionClassic } from "@schema";
+import type { HasSource, HasTitle, TitleCaseTitle, TruthOptionClassic } from "@schema";
 
 
 /**
@@ -10,4 +10,5 @@ export interface TruthClassic extends HasTitle, HasSource {
    */
   $id: string;
   Options: TruthOptionClassic[];
+  Title: TitleCaseTitle;
 }

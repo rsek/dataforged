@@ -20,7 +20,7 @@ export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource,
 
   /**
    * @example "Ritual"
-   * @example "Command Vehicle"
+   * @example "Command vehicle"
    * @localize
    */
   Title: Title;

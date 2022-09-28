@@ -1,4 +1,5 @@
 export * from "@builders/CollectionBuilder.js";
+export * from "@builders/RootCollectionBuilder.js";
 export * from "@builders/common/index";
 export * from "@builders/moves/index";
 export * from "@builders/assets/index";

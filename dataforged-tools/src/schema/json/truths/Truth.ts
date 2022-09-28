@@ -1,4 +1,4 @@
-import type { Display, HasDisplay, HasId, HasSource, HasSuggestions, HasTable, HasTitle, TruthOptionStarforged as TruthOptionStarforged } from "@schema";
+import type { Display, HasDisplay, HasId, HasSource, HasSuggestions, HasTable, HasTitle, TitleCaseTitle, TruthOptionStarforged as TruthOptionStarforged } from "@schema";
 
 /**
  * @public
@@ -41,4 +41,5 @@ export interface TruthStarforged extends HasId, HasSource, HasDisplay, Partial<H
    */
   Character: string;
   Display: Display;
+  Title: TitleCaseTitle;
 }

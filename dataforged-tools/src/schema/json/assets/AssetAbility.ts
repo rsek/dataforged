@@ -6,7 +6,7 @@ import type { AlterMomentum, AlterMove, AssetAlterProperties, HasId, HasLabel, H
  */
 export interface AssetAbility extends HasId, HasText, Partial<HasLabel> {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]$
    */
   $id: string;
   /**

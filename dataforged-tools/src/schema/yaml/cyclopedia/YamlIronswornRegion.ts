@@ -1,7 +1,9 @@
-import type { IronlandsRegion , YamlStubNode } from "@schema";
+import type { IronlandsRegion , YamlStubNode, YamlTitleCaseTitle } from "@schema";
 
 /**
  * @internal
  */
 
-export interface YamlIronlandsRegion extends YamlStubNode<IronlandsRegion> { }
+export interface YamlIronlandsRegion extends YamlStubNode<IronlandsRegion> {
+  Title: YamlTitleCaseTitle
+}

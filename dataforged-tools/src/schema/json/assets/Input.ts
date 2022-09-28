@@ -7,7 +7,7 @@ import type { ClockSegments, ClockType, HasId, HasLabel, InputType } from "@sche
  */
 export interface Input extends HasId,  HasLabel {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/[1-3])?/inputs/[a-z_-]+$
    */
   $id: string;
   "Input type": InputType;

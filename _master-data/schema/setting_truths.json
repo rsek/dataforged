@@ -52,6 +52,10 @@
           "items": { "$ref": "#/definitions/YamlTruthOptionClassic" },
           "title": "Options"
         },
+        "Title": {
+          "$ref": "#/definitions/YamlTitleCaseTitle",
+          "title": "Title"
+        },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
           "pattern": "^ironsworn/setting_truths/[a-z_-]+$",
@@ -59,8 +63,7 @@
           "title": "$id"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
-        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,
@@ -144,25 +147,25 @@
       ],
       "type": "string"
     },
-    "YamlTitle": {
-      "title": "YamlTitle",
+    "YamlTitleCaseTitle": {
+      "title": "YamlTitleCaseTitle",
       "type": "object",
       "properties": {
         "Canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.Standard} instead.",
-          "pattern": "^[A-Z][a-z’ \\(\\)-]+$",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
           "type": "string",
           "title": "Canonical"
         },
         "Short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\nUnless you're very pressed for space, most UX should use {@link Title.Standard} instead.",
-          "pattern": "^[A-Z][a-z -]+$",
+          "pattern": "^[A-Z][A-z -’]+$",
           "type": "string",
           "title": "Short"
         },
         "Standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").\n\nIf you need the shortest possible name, see {@link Title.Short} instead.",
-          "pattern": "^[A-Z][a-z’ -]+$",
+          "pattern": "^[A-Z][A-z \\(\\)-’]+$",
           "type": "string",
           "title": "Standard"
         },
@@ -188,6 +191,10 @@
           "items": { "$ref": "#/definitions/YamlTruthOptionStarforged" },
           "title": "Table"
         },
+        "Title": {
+          "$ref": "#/definitions/YamlTitleCaseTitle",
+          "title": "Title"
+        },
         "Character": {
           "description": "A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.",
           "type": "string",
@@ -205,8 +212,7 @@
           "title": "Display"
         },
         "_idFragment": { "type": "string", "title": "_idFragment" },
-        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" },
-        "Title": { "$ref": "#/definitions/YamlTitle", "title": "Title" }
+        "Source": { "$ref": "#/definitions/YamlSource", "title": "Source" }
       },
       "defaultProperties": [],
       "additionalProperties": false,

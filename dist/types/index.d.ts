@@ -58,7 +58,7 @@ export declare interface AlterMomentumReset extends HasId {
  */
 export declare interface AlterMove extends StubExcept<Move, "$id", "Outcomes"> {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[1-9][0-9]*$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[1-9][0-9]*$
      */
     $id: string;
     /**
@@ -166,7 +166,7 @@ export declare interface Asset extends HasId, HasDisplay, HasSource, Partial<Has
  */
 export declare interface AssetAbility extends HasId, HasText, Partial<HasLabel> {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]$
      */
     $id: string;
     /**
@@ -306,7 +306,7 @@ export declare interface AssetType extends HasId, HasDescription, HasDisplay, Ha
     };
     /**
      * @example "Ritual"
-     * @example "Command Vehicle"
+     * @example "Command vehicle"
      * @localize
      */
     Title: Title;
@@ -672,7 +672,7 @@ export declare enum CreatureScale {
  */
 export declare interface CustomStat extends HasId, HasLabel {
     /**
-     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$
+     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$
      */
     $id: string;
     Options: CustomStatOption[];
@@ -683,7 +683,7 @@ export declare interface CustomStat extends HasId, HasLabel {
  */
 export declare interface CustomStatOption extends HasId, HasLabel {
     /**
-     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$
      */
     $id: string;
     /**
@@ -1651,7 +1651,7 @@ export declare enum Influence {
  */
 export declare interface Input extends HasId, HasLabel {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/abilities/[1-3])?/inputs/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+(/[1-3])?/inputs/[a-z_-]+$
      */
     $id: string;
     "Input type": InputType;
@@ -1865,6 +1865,7 @@ export declare interface IronlandsRegion extends CyclopediaEntry, HasSummary, Ha
     Features: string[];
     "Quest starter": string;
     Summary: string;
+    Title: TitleCaseTitle;
 }
 
 /**
@@ -1881,19 +1882,19 @@ export declare interface Ironsworn extends GameDataRoot {
     /**
      * @patternProperties ^[A-Z][a-z '-]+$
      */
-    "Site domains": {
+    "Delve site domains": {
         [key: string]: DelveSiteDomain;
     };
     /**
      * @patternProperties ^[A-Z][a-z '-]+$
      */
-    "Site themes": {
+    "Delve site themes": {
         [key: string]: DelveSiteTheme;
     };
     /**
      * @patternProperties ^[A-Z][a-z '-]+$
      */
-    Regions: {
+    "Ironlands regions": {
         [key: string]: IronlandsRegion;
     };
     /**
@@ -2075,8 +2076,8 @@ export declare enum MeterType {
  */
 export declare interface Move extends HasId, HasText, HasDisplay, HasSource, HasOptional, HasTitle, Partial<HasSuggestions> {
     /**
-     * @example "Starforged/Moves/Adventure/Face_Danger"
-     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3])/[a-z_-]+$
+     * @example "starforged/moves/adventure/face_danger"
+     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3])/[a-z_-]+$
      */
     $id: string;
     /**
@@ -2094,7 +2095,7 @@ export declare interface Move extends HasId, HasText, HasDisplay, HasSource, Has
     Asset?: Asset["$id"] | undefined;
     /**
      * The ID of the move's category.
-     * @example "Starforged/Moves/Adventure"
+     * @example "starforged/moves/adventure"
      */
     Category: MoveCategory["$id"];
     /**
@@ -2126,7 +2127,7 @@ export declare interface Move extends HasId, HasText, HasDisplay, HasSource, Has
  */
 export declare interface MoveCategory extends HasId, HasSource, HasDescription, HasDisplay, HasOptional, HasTitle {
     /**
-     * @example "Starforged/Moves/Adventure"
+     * @example "starforged/moves/adventure"
      * @pattern ^(starforged|ironsworn)/moves/[a-z_-]+$
      */
     $id: string;
@@ -2192,7 +2193,7 @@ export declare interface MoveReroll extends HasId, Partial<HasText> {
  */
 export declare interface MoveTrigger extends HasId, Partial<HasText> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger$
      */
     $id: string;
     /**
@@ -2247,7 +2248,7 @@ export declare interface MoveTriggerOptionAction extends MoveTriggerOptionBase {
  */
 export declare interface MoveTriggerOptionBase extends HasId, Partial<HasText> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$
      */
     $id: string;
     /**
@@ -2641,7 +2642,7 @@ export declare interface OracleUsage extends Partial<HasRequirements & HasSugges
  */
 export declare interface OutcomeBase<O extends MoveOutcome, RequireText extends boolean = false> extends HasId, Partial<HasText> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
      */
     $id: string;
     /**
@@ -2668,7 +2669,7 @@ export declare interface OutcomeBase<O extends MoveOutcome, RequireText extends 
  */
 export declare interface OutcomeMiss extends HasId, OutcomeBase<MoveOutcome.Miss, true> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss$
      */
     $id: string;
     "With a match"?: OutcomeMissMatch | undefined;
@@ -2683,7 +2684,7 @@ export declare interface OutcomeMiss extends HasId, OutcomeBase<MoveOutcome.Miss
  */
 export declare interface OutcomeMissMatch extends Omit<OutcomeMiss, "With a match"> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$
      */
     $id: string;
     /**
@@ -2697,7 +2698,7 @@ export declare interface OutcomeMissMatch extends Omit<OutcomeMiss, "With a matc
  */
 export declare interface Outcomes extends HasId {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes$
      */
     $id: string;
     "Strong hit": OutcomeStrongHit;
@@ -2710,7 +2711,7 @@ export declare interface Outcomes extends HasId {
  */
 export declare interface OutcomeStrongHit extends HasId, OutcomeBase<typeof MoveOutcome["Strong hit"], true> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit$
      */
     $id: string;
     "With a match"?: OutcomeStrongHitMatch | undefined;
@@ -2725,7 +2726,7 @@ export declare interface OutcomeStrongHit extends HasId, OutcomeBase<typeof Move
  */
 export declare interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, "With a match"> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$
      */
     $id: string;
     /**
@@ -2739,7 +2740,7 @@ export declare interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, "W
  */
 export declare interface OutcomeWeakHit extends Omit<OutcomeBase<typeof MoveOutcome["Weak hit"], true>, "With a match"> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/abilities/[1-3]/[a-z_-]+)/outcomes/weak_hit$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter_moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/weak_hit$
      */
     $id: string;
     /**
@@ -3748,6 +3749,7 @@ export declare interface TruthClassic extends HasTitle, HasSource {
      */
     $id: string;
     Options: TruthOptionClassic[];
+    Title: TitleCaseTitle;
 }
 
 /**
@@ -3805,6 +3807,7 @@ export declare interface TruthStarforged extends HasId, HasSource, HasDisplay, P
      */
     Character: string;
     Display: Display;
+    Title: TitleCaseTitle;
 }
 
 /**
