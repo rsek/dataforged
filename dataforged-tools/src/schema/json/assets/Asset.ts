@@ -9,6 +9,8 @@ export enum AssetTag {
   BeastCompanion = 'beast_companion',
   IronlanderCompanion = 'ironlander_companion',
   Deed = 'deed',
+  BiologicalCompanion = 'biological_companion',
+  MechanicalCompanion = 'mechanical_companion'
 }
 
 /**

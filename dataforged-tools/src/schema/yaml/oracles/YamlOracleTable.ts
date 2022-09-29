@@ -19,7 +19,7 @@ export type YamlRowRoll<Floor extends number | null = number | null, Ceiling ext
 /**
  * @internal
  */
-export type YamlRowContentItem = object | string
+export type YamlRowContentItem = Partial<YamlOracleTableRow> | string
 
 /**
  * @internal

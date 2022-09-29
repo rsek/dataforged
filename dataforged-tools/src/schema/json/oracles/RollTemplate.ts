@@ -14,17 +14,17 @@ export interface RollTemplate extends MixinId, Partial<MixinSummary & MixinDescr
    * @localize
    * @example
    * ```json
-   * "{{Starforged/Oracles/Factions/Affiliation}} of the {{Starforged/Oracles/Factions/Legacy}} {{Starforged/Oracles/Factions/Identity}}"
+   * "{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"
    * ```
    */
   result?: string | undefined
   /**
-   * A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.
+   * A template string for the parent's `summary` property, to be filled with an oracle table roll Result.
    * @localize
    */
   summary?: string | undefined
   /**
-   * A template string for the parent's `Description` property, to be filled with an oracle table roll Result.
+   * A template string for the parent's `description` property, to be filled with an oracle table roll Result.
    * @localize
    * @example
    * ```json

@@ -245,7 +245,9 @@ export declare enum AssetTag {
     AnimalCompanion = "animal_companion",
     BeastCompanion = "beast_companion",
     IronlanderCompanion = "ironlander_companion",
-    Deed = "deed"
+    Deed = "deed",
+    BiologicalCompanion = "biological_companion",
+    MechanicalCompanion = "mechanical_companion"
 }
 
 /**
@@ -532,7 +534,7 @@ export declare type BlacklistPartial = 'Label';
  * @public
  */
 export declare interface BondsTrackClassic extends TrackBase {
-    'track_type': LegacyTypeClassic.BondsTrack;
+    track_type: LegacyTypeClassic.BondsTrack;
     /**
      * @minimum 0
      * @maximum 40
@@ -870,8 +872,8 @@ export declare type DerelictRecord = PlaceRecord<GameObjectType.Derelict, Attrib
 /**
  * @public
  */
-export declare type DerelictSettlementRecord = Omit<SettlementRecord<AttributeKey.DerelictType>, 'Object type'> & {
-    'Object type': GameObjectType.Derelict;
+export declare type DerelictSettlementRecord = Omit<SettlementRecord<AttributeKey.DerelictType>, 'object_type'> & {
+    object_type: GameObjectType.Derelict;
     [AttributeKey.DerelictType]: DerelictType.Settlement;
     [AttributeKey.InitialContact]: SettlementInitialContact.Derelict;
 };
@@ -879,8 +881,8 @@ export declare type DerelictSettlementRecord = Omit<SettlementRecord<AttributeKe
 /**
  * @public
  */
-export declare type DerelictStarshipRecord = Omit<StarshipRecord<AttributeKey.DerelictType>, 'Object type'> & {
-    'Object type': GameObjectType.Derelict;
+export declare type DerelictStarshipRecord = Omit<StarshipRecord<AttributeKey.DerelictType>, 'object_type'> & {
+    object_type: GameObjectType.Derelict;
     [AttributeKey.DerelictType]: DerelictType.Starship;
     [AttributeKey.InitialContact]: StarshipInitialContact.Derelict;
 };
@@ -1251,10 +1253,11 @@ export declare type GameObjectRecord = CharacterRecord | CreatureRecord | Dereli
 /**
  * @public
  */
-export declare type GameObjectRecordBase<T extends GameObjectType, K extends AttributeKey> = {
-    'object_type': T;
-    'inherit_rolls'?: boolean | undefined;
-} & AttributeMap<K>;
+export declare type GameObjectRecordBase<T extends GameObjectType, K extends AttributeKey | undefined> = {
+    object_type: T;
+    inherit_rolls?: boolean | undefined;
+    requirements?: K extends AttributeKey ? AttributeMap<K> : undefined;
+};
 
 /**
  * @public
@@ -1724,7 +1727,7 @@ export declare enum LegacyRewardStarforged {
  * @public
  */
 export declare interface LegacyTrackStarforged extends TrackBase {
-    'track_type': LegacyTypeStarforged;
+    track_type: LegacyTypeStarforged;
 }
 
 /**
@@ -1732,7 +1735,7 @@ export declare interface LegacyTrackStarforged extends TrackBase {
  * @public
  */
 export declare enum LegacyTypeClassic {
-    BondsTrack = "bonds track"
+    BondsTrack = "bonds_track"
 }
 
 /**
@@ -1740,9 +1743,9 @@ export declare enum LegacyTypeClassic {
  * @public
  */
 export declare enum LegacyTypeStarforged {
-    QuestsLegacy = "quests legacy",
-    BondsLegacy = "bonds legacy",
-    DiscoveriesLegacy = "discoveries legacy"
+    QuestsLegacy = "quests_legacy",
+    BondsLegacy = "bonds_legacy",
+    DiscoveriesLegacy = "discoveries_legacy"
 }
 
 /**
@@ -2626,7 +2629,7 @@ export declare interface OracleTableRow<Floor extends number | null = number | n
     /**
      * The attributes set by this row.
      */
-    sets_attributes?: AttributeMap | undefined;
+    set_attributes?: AttributeMap | undefined;
 }
 
 /**
@@ -2933,7 +2936,7 @@ export declare type PrecursorVaultRecord = PlaceRecord<GameObjectType.PrecursorV
  * @public
  */
 export declare interface ProgressTrack extends TrackBase {
-    'track_type': ProgressTypeStarforged | ProgressTypeClassic;
+    track_type: ProgressTypeStarforged | ProgressTypeClassic;
     /**
      * @minimum 0
      * @maximum 40
@@ -2947,11 +2950,11 @@ export declare interface ProgressTrack extends TrackBase {
  * @public
  */
 export declare enum ProgressTypeClassic {
-    Combat = "combat progress",
-    Vow = "vow progress",
-    Journey = "journey progress",
-    Delve = "delve progress",
-    SceneChallenge = "scene challenge progress"
+    Combat = "combat_progress",
+    Vow = "vow_progress",
+    Journey = "journey_progress",
+    Delve = "delve_progress",
+    SceneChallenge = "scene_challenge_progress"
 }
 
 /**
@@ -2959,11 +2962,11 @@ export declare enum ProgressTypeClassic {
  * @public
  */
 export declare enum ProgressTypeStarforged {
-    Combat = "combat progress",
-    Vow = "vow progress",
-    Expedition = "expedition progress",
-    Connection = "connection progress",
-    SceneChallenge = "scene challenge progress"
+    Combat = "combat_progress",
+    Vow = "vow_progress",
+    Expedition = "expedition_progress",
+    Connection = "connection_progress",
+    SceneChallenge = "scene_challenge_progress"
 }
 
 /**
@@ -3198,17 +3201,17 @@ export declare interface RollTemplate extends MixinId, Partial<MixinSummary & Mi
      * @localize
      * @example
      * ```json
-     * "{{Starforged/Oracles/Factions/Affiliation}} of the {{Starforged/Oracles/Factions/Legacy}} {{Starforged/Oracles/Factions/Identity}}"
+     * "{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"
      * ```
      */
     result?: string | undefined;
     /**
-     * A template string for the parent's `Summary` property, to be filled with an oracle table roll Result.
+     * A template string for the parent's `summary` property, to be filled with an oracle table roll Result.
      * @localize
      */
     summary?: string | undefined;
     /**
-     * A template string for the parent's `Description` property, to be filled with an oracle table roll Result.
+     * A template string for the parent's `description` property, to be filled with an oracle table roll Result.
      * @localize
      * @example
      * ```json
@@ -3375,15 +3378,15 @@ export declare const starforged: Starforged;
  * @public
  */
 export declare enum StarshipInitialContact {
-    AskingForHelp = "asking for help",
+    AskingForHelp = "asking_for_help",
     Derelict = "derelict",
     Destroyed = "destroyed",
     Dismissive = "dismissive",
     Familiar = "familiar",
     Friendly = "friendly",
     Hostile = "hostile",
-    InBattle = "in battle",
-    NeutralAutomated = "neutral / automated",
+    InBattle = "in_battle",
+    NeutralAutomated = "neutral_automated",
     Uncooperative = "uncooperative",
     Unresponsive = "unresponsive",
     Wary = "wary"
@@ -3613,7 +3616,7 @@ export declare const TRACK_MAX_TICKS: number;
  * @public
  */
 export declare interface TrackBase {
-    'track_type': ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic;
+    track_type: ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic;
     /**
      * @minimum 0
      */

@@ -12,7 +12,7 @@ export class OracleTableBuilder extends OracleBuilder<YamlOracleTable, OracleTab
   content?: OracleContent | undefined
   on_a_match?: OracleTable['on_a_match'] | undefined
   table: Array<OracleTableRow | RowNullStub>
-  constructor (
+  constructor(
     yaml: YamlOracleTable,
     fragment: string,
     parent: OracleSet
@@ -65,8 +65,8 @@ export class OracleTableBuilder extends OracleBuilder<YamlOracleTable, OracleTab
    * @param table - The table of data to infer attributes from.
    * @returns An array of objects with a single property called Key.
    */
-  static inferSetsAttributes (table: Array<OracleTableRow | RowNullStub>) {
-    const mapped = _(table).map(row => row.sets_attributes).toArray().compact().value()
+  static inferSetsAttributes(table: Array<OracleTableRow | RowNullStub>) {
+    const mapped = _(table).map(row => row.set_attributes).toArray().compact().value()
     return _.merge(...mapped as [AttributeMap, AttributeMap])
   }
 }

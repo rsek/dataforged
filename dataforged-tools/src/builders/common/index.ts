@@ -1,4 +1,3 @@
-export * from '@builders/common/AttributeRequirementsBuilder.js'
 export * from '@builders/common/MeterBuilder.js'
 export * from '@builders/common/ConditionMeterBuilder.js'
 export * from '@builders/common/CustomStatOptionBuilder.js'

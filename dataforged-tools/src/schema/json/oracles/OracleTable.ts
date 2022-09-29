@@ -96,7 +96,7 @@ export interface OracleTableRow<Floor extends number | null = number | null, Cei
   /**
   * The attributes set by this row.
    */
-  sets_attributes?: AttributeMap | undefined
+  set_attributes?: AttributeMap | undefined
 }
 
 /**

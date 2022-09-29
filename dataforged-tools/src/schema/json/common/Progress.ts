@@ -100,11 +100,11 @@ export enum LegacyRewardStarforged {
  * @public
  */
 export enum ProgressTypeStarforged {
-  Combat = 'combat progress',
-  Vow = 'vow progress',
-  Expedition = 'expedition progress',
-  Connection = 'connection progress',
-  SceneChallenge = 'scene challenge progress',
+  Combat = 'combat_progress',
+  Vow = 'vow_progress',
+  Expedition = 'expedition_progress',
+  Connection = 'connection_progress',
+  SceneChallenge = 'scene_challenge_progress',
 }
 
 /**
@@ -112,9 +112,9 @@ export enum ProgressTypeStarforged {
  * @public
  */
 export enum LegacyTypeStarforged {
-  QuestsLegacy = 'quests legacy',
-  BondsLegacy = 'bonds legacy',
-  DiscoveriesLegacy = 'discoveries legacy'
+  QuestsLegacy = 'quests_legacy',
+  BondsLegacy = 'bonds_legacy',
+  DiscoveriesLegacy = 'discoveries_legacy'
 }
 
 /**
@@ -122,11 +122,11 @@ export enum LegacyTypeStarforged {
  * @public
  */
 export enum ProgressTypeClassic {
-  Combat = 'combat progress',
-  Vow = 'vow progress',
-  Journey = 'journey progress',
-  Delve = 'delve progress',
-  SceneChallenge = 'scene challenge progress',
+  Combat = 'combat_progress',
+  Vow = 'vow_progress',
+  Journey = 'journey_progress',
+  Delve = 'delve_progress',
+  SceneChallenge = 'scene_challenge_progress',
 }
 
 /**
@@ -134,7 +134,7 @@ export enum ProgressTypeClassic {
  * @public
  */
 export enum LegacyTypeClassic {
-  BondsTrack = 'bonds track',
+  BondsTrack = 'bonds_track',
 }
 
 /**
@@ -142,7 +142,7 @@ export enum LegacyTypeClassic {
  * @public
  */
 export interface TrackBase {
-  'track_type': ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic
+  track_type: ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic
   /**
    * @minimum 0
    */
@@ -157,7 +157,7 @@ export interface TrackBase {
  * @public
  */
 export interface ProgressTrack extends TrackBase {
-  'track_type': ProgressTypeStarforged | ProgressTypeClassic
+  track_type: ProgressTypeStarforged | ProgressTypeClassic
   /**
    * @minimum 0
    * @maximum 40
@@ -170,13 +170,13 @@ export interface ProgressTrack extends TrackBase {
  * @public
  */
 export interface LegacyTrackStarforged extends TrackBase {
-  'track_type': LegacyTypeStarforged
+  track_type: LegacyTypeStarforged
 }
 /**
  * @public
  */
 export interface BondsTrackClassic extends TrackBase {
-  'track_type': LegacyTypeClassic.BondsTrack
+  track_type: LegacyTypeClassic.BondsTrack
   /**
    * @minimum 0
    * @maximum 40
