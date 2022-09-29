@@ -4,10 +4,10 @@ import type { PartialBy, PartialDeep } from '@utils'
 /**
  * @internal
  */
-export interface YamlAlterAsset extends PartialDeep<Omit<YamlAsset, 'Abilities' | 'Inputs' | 'Condition meter' | 'Requirement' | 'Attachments'>> {
-  Abilities?: YamlAlterAssetAbility[] | undefined
-  'Condition meter'?: YamlAlterAssetConditionMeter | undefined
-  Attachments?: YamlAssetAssetAttachments | undefined
+export interface YamlAlterAsset extends PartialDeep<Omit<YamlAsset, 'abilities' | 'inputs' | 'condition_meter' | 'requirement' | 'attachments'>> {
+  abilities?: YamlAlterAssetAbility[] | undefined
+  'condition_meter'?: YamlAlterAssetConditionMeter | undefined
+  attachments?: YamlAssetAssetAttachments | undefined
 }
 
 /**
@@ -23,57 +23,57 @@ export interface YamlAlterAssetConditionMeter extends Partial<YamlConditionMeter
 /**
  * @internal
  */
-export interface YamlAlterAssetAbility extends Partial<Omit<YamlAssetAbility, 'Moves' | 'Inputs' | 'Alter'>> { }
+export interface YamlAlterAssetAbility extends Partial<Omit<YamlAssetAbility, 'moves' | 'inputs' | 'alter'>> { }
 
 /**
  * @internal
  */
-export interface YamlAlterMove extends YamlStub<AlterMove, '', 'Trigger' | 'Outcomes'> {
-  Trigger?: YamlAlterMoveTrigger | undefined
-  Outcomes?: YamlAlterMoveOutcomes | undefined
+export interface YamlAlterMove extends YamlStub<AlterMove, '', 'trigger' | 'outcomes'> {
+  trigger?: YamlAlterMoveTrigger | undefined
+  outcomes?: YamlAlterMoveOutcomes | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveOutcomes extends YamlStub<AlterMoveOutcomes, '', 'Strong hit' | 'Weak hit' | 'Miss'> {
-  'Strong hit': YamlAlterMoveOutcomeStrongHit | undefined
-  'Weak hit': YamlAlterMoveOutcomeWeakHit | undefined
-  'Miss': YamlAlterMoveOutcomeMiss | undefined
+export interface YamlAlterMoveOutcomes extends YamlStub<AlterMoveOutcomes, '', 'strong_hit' | 'weak_hit' | 'miss'> {
+  'strong_hit': YamlAlterMoveOutcomeStrongHit | undefined
+  'weak_hit': YamlAlterMoveOutcomeWeakHit | undefined
+  'miss': YamlAlterMoveOutcomeMiss | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveOutcomeStrongHit extends PartialBy<YamlOutcomeStrongHit, 'Text'> { }
+export interface YamlAlterMoveOutcomeStrongHit extends PartialBy<YamlOutcomeStrongHit, 'text'> { }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveOutcomeWeakHit extends PartialBy<YamlOutcomeWeakHit, 'Text'> { }
+export interface YamlAlterMoveOutcomeWeakHit extends PartialBy<YamlOutcomeWeakHit, 'text'> { }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveOutcomeMiss extends PartialBy<YamlOutcomeMiss, 'Text'> { }
+export interface YamlAlterMoveOutcomeMiss extends PartialBy<YamlOutcomeMiss, 'text'> { }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveTrigger extends YamlStub<YamlMoveTrigger, '', 'Options'> {
-  Options?: Array<YamlAlterMoveTriggerOptionAction | YamlAlterMoveTriggerOptionProgress> | undefined
+export interface YamlAlterMoveTrigger extends YamlStub<YamlMoveTrigger, '', 'options'> {
+  options?: Array<YamlAlterMoveTriggerOptionAction | YamlAlterMoveTriggerOptionProgress> | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveTriggerOptionAction extends YamlStub<MoveTriggerOptionAction, 'Method', 'Using'> {
-  Using?: MoveTriggerOptionAction['Using'] | undefined
+export interface YamlAlterMoveTriggerOptionAction extends YamlStub<MoveTriggerOptionAction, 'method', 'using'> {
+  using?: MoveTriggerOptionAction['using'] | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlAlterMoveTriggerOptionProgress extends YamlStub<MoveTriggerOptionProgress, 'Method', 'Using'> {
-  Using?: MoveTriggerOptionProgress['Using'] | undefined
+export interface YamlAlterMoveTriggerOptionProgress extends YamlStub<MoveTriggerOptionProgress, 'method', 'using'> {
+  using?: MoveTriggerOptionProgress['using'] | undefined
 }

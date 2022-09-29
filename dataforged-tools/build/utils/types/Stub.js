@@ -1,2 +1,2 @@
-export {}
-// # sourceMappingURL=Stub.js.map
+export {};
+//# sourceMappingURL=Stub.js.map

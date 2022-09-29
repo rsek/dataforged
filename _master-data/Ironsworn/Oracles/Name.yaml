@@ -1,39 +1,36 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: Ironsworn Rulebook
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Name:
-    Title:
-      Canonical: Name
-    Source:
-      Authors:
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  name:
+    title:
+      canonical: Name
+    source:
+      authors:
         - Shawn Tomkin
-      Title: "Ironsworn Rulebook"
-      Page: 184
-      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-    Sets:
-      Ironlander:
-        Title:
-          Canonical: "Oracle 13: Ironlander Names"
-          Standard: Ironlander Names
-          Short: Ironlander
-        _idFragment: Ironlander
-        Description: Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.
-        Source:
-          Title: Ironsworn Rulebook
-          Page: 184
-        Tables:
-          A:
-            Source:
-              Page: 184
-            Title:
-              Canonical: ""
-              Standard: Table A
-              Short: A
-            _idFragment: A
-            Table:
+      title: "Ironsworn Rulebook"
+      page: 184
+      license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    sets:
+      ironlander:
+        title:
+          canonical: "Oracle 13: Ironlander Names"
+          standard: Ironlander Names
+          short: Ironlander
+        description: Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.
+        source:
+          title: Ironsworn Rulebook
+          page: 184
+        tables:
+          table_a:
+            source:
+              page: 184
+            title:
+              canonical: Ironlander Names
+              standard: Table A
+            table:
               - [1, 1, Solana]
               - [2, 2, Keelan]
               - [3, 3, Cadigan]
@@ -134,15 +131,13 @@ Oracle sets:
               - [98, 98, Bas]
               - [99, 99, Sabine]
               - [100, 100, Tallus]
-          B:
-            Source:
-              Page: 185
-            Title:
-              Canonical: ""
-              Standard: Table B
-              Short: B
-            _idFragment: B
-            Table:
+          table_b:
+            source:
+              page: 185
+            title:
+              canonical: Ironlander Names
+              standard: Table B
+            table:
               - [1, 1, Segura]
               - [2, 2, Gethin]
               - [3, 3, Bataar]
@@ -243,38 +238,44 @@ Oracle sets:
               - [98, 98, Kayu]
               - [99, 99, Bevan]
               - [100, 100, Chandra]
-      Other:
-        Title:
-          Canonical: "Oracle 15: Other Names"
-          Standard: Other Names
-          Short: Other
-        _idFragment: Other
-        Description: Use this oracle to generate names for other firstborn characters.
-        Display:
-          Columns:
-            - Type: dice range
-              Content: ironsworn/oracles/name/other/giants
-            - Type: string
-              Content: ironsworn/oracles/name/other/giants
-              Label: Giants
-            - Type: string
-              Content: ironsworn/oracles/name/other/varou
-              Label: Varou
-            - Type: string
-              Content: ironsworn/oracles/name/other/trolls
-              Label: Trolls
-        Source:
-          Title: Ironsworn Rulebook
-          Page: 187
-        Tables:
-          Giant:
-            Title:
-              Canonical: Giants
-              Short: Giant
-            _idFragment: Giant
-            Display:
-              Column of: ironsworn/oracles/name/other
-            Table:
+      other:
+        title:
+          canonical: "Oracle 15: Other Names"
+          standard: Other Names
+          short: Other
+        description: Use this oracle to generate names for other firstborn characters.
+        display:
+          columns:
+            roll:
+              column_type: dice_range
+              content: ironsworn/oracles/name/other/giants
+              _tableKey: giants
+            giant:
+              column_type: string
+              content: ironsworn/oracles/name/other/giant
+              label: Giants
+              _tableKey: giants
+            varou:
+              column_type: string
+              content: ironsworn/oracles/name/other/varou
+              label: Varou
+              _tableKey: varou
+            troll:
+              column_type: string
+              content: ironsworn/oracles/name/other/troll
+              label: Trolls
+              _tableKey: trolls
+        source:
+          title: Ironsworn Rulebook
+          page: 187
+        tables:
+          giant:
+            title:
+              canonical: Giants
+              short: Giant
+            display:
+              column_of: ironsworn/oracles/name/other
+            table:
               - [1, 4, Chony]
               - [5, 8, Banda]
               - [9, 12, Jochu]
@@ -300,14 +301,13 @@ Oracle sets:
               - [89, 92, Tuban]
               - [93, 96, Qudan]
               - [97, 100, Denua]
-          Varou:
-            Title:
-              Canonical: Varou
-              Short: Varou
-            _idFragment: Varou
-            Display:
-              Column of: ironsworn/oracles/name/other
-            Table:
+          varou:
+            title:
+              canonical: Varou
+              short: Varou
+            display:
+              column_of: ironsworn/oracles/name/other
+            table:
               - [1, 4, Vata]
               - [5, 8, Zora]
               - [9, 12, Jasna]
@@ -333,14 +333,13 @@ Oracle sets:
               - [89, 92, Dreko]
               - [93, 96, Aleko]
               - [97, 100, Vojan]
-          Troll:
-            Title:
-              Canonical: Trolls
-              Short: Troll
-            _idFragment: Troll
-            Display:
-              Column of: ironsworn/oracles/name/other
-            Table:
+          troll:
+            title:
+              canonical: Trolls
+              short: Troll
+            display:
+              column_of: ironsworn/oracles/name/other
+            table:
               - [1, 4, Rattle]
               - [5, 8, Scratch]
               - [9, 12, Wallow]
@@ -366,18 +365,17 @@ Oracle sets:
               - [89, 92, Snuffle]
               - [93, 96, Leech]
               - [97, 100, Herk]
-    Tables:
-      Elf:
-        Title:
-          Canonical: "Oracle 14: Elf Names"
-          Standard: Elf Names
-          Short: Elf
-        _idFragment: Elf
-        Description: Use this oracle to generate a name for an elf character.
-        Source:
-          Title: Ironsworn Rulebook
-          Page: 186
-        Table:
+    tables:
+      elf:
+        title:
+          canonical: "Oracle 14: Elf Names"
+          standard: Elf Names
+          short: Elf
+        description: Use this oracle to generate a name for an elf character.
+        source:
+          title: Ironsworn Rulebook
+          page: 186
+        table:
           - [1, 2, Arsula]
           - [3, 4, Naidita]
           - [5, 6, Belesunna]

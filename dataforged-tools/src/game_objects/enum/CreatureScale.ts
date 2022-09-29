@@ -3,13 +3,13 @@
  * @public
  */
 export enum CreatureScale {
-  Minuscule = 'Minuscule',
-  Tiny = 'Tiny',
-  Small = 'Small',
-  Medium = 'Medium',
-  Large = 'Large',
-  Huge = 'Huge',
-  Titanic = 'Titanic',
-  Colossal = 'Colossal',
-  Vast = 'Vast',
+  Minuscule = 'minuscule',
+  Tiny = 'tiny',
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
+  Huge = 'huge',
+  Titanic = 'titanic',
+  Colossal = 'colossal',
+  Vast = 'vast',
 }

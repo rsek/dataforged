@@ -1,5 +1,6 @@
 import { AssetBuilder, DisplayBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from '@builders'
-import type { Asset, AssetType, AssetUsage, Display, Game, Source, Title, YamlAssetType } from '@schema'
+import { Asset, AssetType, AssetUsage, Display, Game, Source, SourceTitle, Title, YamlAssetType } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
 
@@ -8,29 +9,28 @@ import _ from 'lodash-es'
  */
 export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetType {
   $id: AssetType['$id']
-  Title: Title
-  Aliases?: string[] | undefined
-  Description: string
-  Assets: {[key: string]: Asset}
-  Display: Display
-  Usage: AssetUsage
-  constructor (yaml: YamlAssetType, fragment: string, game: Game, rootSource: Source) {
-    super(yaml.Source ?? SourceBuilder.default(game), rootSource)
+  title: Title
+  aliases?: string[] | undefined
+  description: string
+  assets: { [key: SnakeCaseString]: Asset }
+  display: Display
+  usage: AssetUsage
+  constructor(yaml: YamlAssetType, fragment: string, game: Game, rootSource: Source) {
+    super(yaml.source ?? SourceBuilder.defaultByTitle(game === 'Ironsworn' ? SourceTitle.IronswornAssets : SourceTitle.StarforgedAssets), rootSource)
     this.$id = formatId(fragment, game, 'Assets')
-    this.Aliases = yaml.Aliases
-    this.Description = yaml.Description
+    this.description = yaml.description
 
-    this.Display = new DisplayBuilder({
-      Color: yaml.Display?.Color
+    this.display = new DisplayBuilder({
+      color: yaml.display?.color
     })
 
-    this.Title = new TitleBuilder(yaml.Title, this)
+    this.title = new TitleBuilder(yaml.title, this)
 
-    const usage = _.clone(yaml.Usage ?? {}) as AssetUsage
-    if (!usage.Shared) {
-      usage.Shared = false
+    const usage = _.clone(yaml.usage ?? {}) as AssetUsage
+    if (!usage.shared) {
+      usage.shared = false
     }
-    this.Usage = usage
-    this.Assets = _.mapValues(yaml.Assets, asset => new AssetBuilder(asset, game, this, rootSource))
+    this.usage = usage
+    this.assets = _.mapValues(yaml.assets, asset => new AssetBuilder(asset, game, this, rootSource))
   }
 }

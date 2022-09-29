@@ -1,18 +1,19 @@
 import type { Display, Move, MoveCategory, YamlMoveTrigger, YamlOutcomes, YamlStubNode, YamlTitleCaseTitle } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 /**
  * @internal
  */
-export interface YamlMoveCategory extends YamlStubNode<MoveCategory, 'Optional', 'Moves'> {
-  Description: string
-  Moves: {[key: string]: YamlMove}
-  Display?: Display | undefined
+export interface YamlMoveCategory extends YamlStubNode<MoveCategory, 'optional', 'moves'> {
+  description: string
+  moves: { [key: SnakeCaseString]: YamlMove }
+  display?: Display | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlMove extends YamlStubNode<Move, 'Category'|'Optional', 'Trigger'|'Outcomes'> {
-  Title: YamlTitleCaseTitle
-  Trigger: YamlMoveTrigger
-  Outcomes?: YamlOutcomes | undefined
+export interface YamlMove extends YamlStubNode<Move, 'category' | 'optional', 'trigger' | 'outcomes'> {
+  title: YamlTitleCaseTitle
+  trigger: YamlMoveTrigger
+  outcomes?: YamlOutcomes | undefined
 };

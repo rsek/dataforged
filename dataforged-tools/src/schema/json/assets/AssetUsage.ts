@@ -9,5 +9,5 @@ export interface AssetUsage {
    *
    * Defaults to `true` for Command Vehicle, Support Vehicle, and Module assets.
    */
-  Shared: boolean
+  shared: boolean
 }

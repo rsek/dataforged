@@ -1,4 +1,4 @@
-import type { Display, HasDisplay, HasId, HasSource, HasSuggestions, HasTable, HasTitle, TitleCaseTitle, TruthOptionStarforged } from '@schema'
+import type { Display, MixinDisplay, MixinId, MixinSource, MixinSuggestions, MixinTable, MixinTitle, TitleCaseTitle, TruthOptionStarforged } from '@schema'
 
 /**
  * @public
@@ -11,9 +11,9 @@ export enum SettingTruthName {
   Laws = 'Laws',
   Religion = 'Religion',
   Magic = 'Magic',
-  CommunicationAndData = 'Communication and Data',
+  CommunicationAndData = 'Communication and data',
   Medicine = 'Medicine',
-  ArtificialIntelligence = 'Artificial Intelligence',
+  ArtificialIntelligence = 'Artificial intelligence',
   War = 'War',
   Lifeforms = 'Lifeforms',
   Precursors = 'Precursors',
@@ -25,7 +25,7 @@ export enum SettingTruthName {
  * @see TruthOptionStarforged
  * @public
  */
-export interface TruthStarforged extends HasId, HasSource, HasDisplay, Partial<HasSuggestions>, HasTable, HasTitle {
+export interface TruthStarforged extends MixinId, MixinSource, MixinDisplay, Partial<MixinSuggestions>, MixinTable, MixinTitle {
   /**
    * @pattern ^starforged/truths/[a-z_-]+$
    */
@@ -33,13 +33,13 @@ export interface TruthStarforged extends HasId, HasSource, HasDisplay, Partial<H
   /**
    * The 'canonical' options for this setting truth category.
    */
-  Table: TruthOptionStarforged[]
+  table: TruthOptionStarforged[]
   /**
    * A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.
    * @markdown
    * @localize
    */
-  Character: string
-  Display: Display
-  Title: TitleCaseTitle
+  character: string
+  display: Display
+  title: TitleCaseTitle
 }

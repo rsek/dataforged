@@ -1,24 +1,24 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Derelicts:
-    Title:
-      Canonical: Derelicts
-    Source:
-      Date: "050622"
-    Sets:
-      Living:
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      living:
         _templateOracleSet: *template.category:Zone
         _templateVars:
-          Zone: Living
-        Title:
-          Canonical: Living
-        Source:
-          Page: 355
-        Tables:
-          Area:
+          zone: Living
+        title:
+          canonical: Living
+        source:
+          page: 355
+        tables:
+          area:
             _templateOracleTable: *template.info:Zone.Area
             _templateTableRows:
               rolls: *template.rolls:Zone.Area
@@ -35,7 +35,7 @@ Oracle sets:
                 - Sleeping pods
                 - *result:NewZone
                 - *result:NewZoneViaAccess
-          Feature:
+          feature:
             _templateOracleTable: *template.info:Zone.Feature
             _templateTableRows:
               rolls: *template.rolls:Zone.Feature
@@ -52,7 +52,7 @@ Oracle sets:
                 - Shrine or altar
                 - Unusual art
                 - *result:Descriptor+Focus
-          Peril:
+          peril:
             _templateOracleTable: *template.info:Zone.Peril
             _templateTableRows:
               rolls: *template.rolls:Zone.Peril
@@ -68,7 +68,7 @@ Oracle sets:
                 - Unsettling sound or disturbance
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:Zone.Opportunity
             _templateTableRows:
               rolls: *template.rolls:Zone.Opportunity

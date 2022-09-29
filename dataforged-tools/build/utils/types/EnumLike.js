@@ -1,2 +1,2 @@
-export {}
-// # sourceMappingURL=EnumLike.js.map
+export {};
+//# sourceMappingURL=EnumLike.js.map

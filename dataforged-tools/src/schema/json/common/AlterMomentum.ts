@@ -1,42 +1,42 @@
-import type { HasId, HasText, MoveOutcome } from '@schema'
+import type { MixinId, MixinText, MoveOutcome } from '@schema'
 
 /**
  * @public
  */
-export interface AlterMomentum extends HasId {
+export interface AlterMomentum extends MixinId {
   /**
    * Information on how the player's momentum burn is altered.
    */
-  Burn?: AlterMomentumBurn[] | undefined
+  burn?: AlterMomentumBurn[] | undefined
   /**
    * Information on how the player's momentum reset is altered.
    */
-  Reset?: AlterMomentumReset[] | undefined
+  reset?: AlterMomentumReset[] | undefined
 }
 /**
  * @public
  */
-export interface AlterMomentumBurn extends HasId {
+export interface AlterMomentumBurn extends MixinId {
   /**
    * The trigger condition for altering the PC's momentum burn.
    */
-  Trigger: HasText
+  trigger: MixinText
   /**
    * The effect altering the PC's momentum burn.
    */
-  Effect: HasText
-  Outcomes?: Array<typeof MoveOutcome[1] | typeof MoveOutcome[2]> | undefined
+  effect: MixinText
+  outcomes?: Array<typeof MoveOutcome[1] | typeof MoveOutcome[2]> | undefined
 }
 /**
  * @public
  */
-export interface AlterMomentumReset extends HasId {
+export interface AlterMomentumReset extends MixinId {
   /**
    * The trigger condition for altering the PC's momentum reset.
    */
-  Trigger: HasText
+  trigger: MixinText
   /**
    * The amount by which the PC's momentum reset is change.
    */
-  Value: number
+  value: number
 }

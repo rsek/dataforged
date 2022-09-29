@@ -1,12 +1,12 @@
 import { SourceBuilder } from '@builders'
-import type { HasSource, Source } from '@schema'
+import type { MixinSource, Source } from '@schema'
 
 /**
  * @internal
  */
-export abstract class SourceInheritorBuilder implements HasSource {
-  Source: Source
+export abstract class SourceInheritorBuilder implements MixinSource {
+  source: Source
   constructor (yaml: Partial<Source>, ...sourceAncestors: Array<Partial<Source>>) {
-    this.Source = new SourceBuilder(yaml, ...sourceAncestors)
+    this.source = new SourceBuilder(yaml, ...sourceAncestors)
   }
 }

@@ -1,5 +1,5 @@
 import type {
-  CustomStat, HasId, HasText, ProgressTypeClassic, ProgressTypeStarforged, RollMethod, RollType, Stat, PcConditionMeterType, ConditionMeter, LegacyTypeStarforged,
+  CustomStat, MixinId, MixinText, ProgressTypeClassic, ProgressTypeStarforged, RollMethod, RollType, Stat, PcConditionMeterType, ConditionMeter, LegacyTypeStarforged,
   LegacyTypeClassic
 } from '@schema'
 
@@ -12,7 +12,7 @@ export type RollableStat = Stat | CustomStat['$id'] | PcConditionMeterType | Con
 /**
  * @public
  */
-export interface MoveTriggerOptionBase extends HasId, Partial<HasText> {
+export interface MoveTriggerOptionBase extends MixinId, Partial<MixinText> {
   /**
    * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$
    */
@@ -20,33 +20,33 @@ export interface MoveTriggerOptionBase extends HasId, Partial<HasText> {
   /**
    * Whether this option is an action roll or progress roll.
    */
-  'Roll type': RollType
+  roll_type: RollType
   /**
    * The method used to choose the stat or track in the `Using` array.
    */
-  Method: RollMethod
+  method: RollMethod
   /**
    * The stat(s) or progress track(s) that may be rolled with this move trigger option.
    */
-  Using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic>
+  using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic>
   /**
    * Defines a custom stat, if one is included in this object's `With` array.
    */
-  'Custom stat'?: CustomStat | undefined
+  custom_stat?: CustomStat | undefined
 }
 
 /**
  * @public
  */
 export interface MoveTriggerOptionAction extends MoveTriggerOptionBase {
-  'Roll type': RollType.Action
-  Using: RollableStat[]
+  roll_type: RollType.Action
+  using: RollableStat[]
 }
 
 /**
  * @public
  */
 export interface MoveTriggerOptionProgress extends MoveTriggerOptionBase {
-  'Roll type': RollType.Progress
-  Using: Array<ProgressTypeStarforged | ProgressTypeClassic>
+  roll_type: RollType.Progress
+  using: Array<ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged>
 }

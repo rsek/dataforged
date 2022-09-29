@@ -1,72 +1,72 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Vaults:
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  vaults:
     _idFragment: Vaults
-    Title:
-      Canonical: Precursor vaults
-      Short: Vault
-    Source:
-      Authors: [Shawn Tomkin]
-      Title: "Ironsworn: Starforged Rulebook"
-      License: https://creativecommons.org/licenses/by-sa/4.0/
-      Date: "050622"
-      Page: 360
-    Description: |-
+    title:
+      canonical: Precursor Vaults
+      short: Vault
+    source:
+      authors: [Shawn Tomkin]
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      date: "050622"
+      page: 360
+    description: |-
       When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.
-    Tables:
-      Location:
+    tables:
+      location:
         _templateOracleTable: *template.info:Generic.Location
-        Source:
-          Page: 360
+        source:
+          page: 360
         _templateTableRows:
           content: *template.content:Generic.Location
           rolls:
             - [1, 50]
             - [51, 75]
             - [76, 100]
-      Scale:
-        Title:
-          Canonical: Scale
-        Source:
-          Page: 360
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [fragment]
-        Table:
+      scale:
+        title:
+          canonical: Scale
+        source:
+          page: 360
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+        table:
           - [1, 30, "Minor, confined site"]
           - [31, 65, Typical site of limited scope]
           - [66, 90, "Large, elaborate site"]
           - [91, 99, Vast site of unfathomable complexity]
           - [100, 100, World-spanning site or megastructure]
-      Form:
-        Title:
-          Canonical: Form
-        Source:
-          Page: 360
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [noun, common noun]
-        Table:
+      form:
+        title:
+          canonical: Form
+        source:
+          page: 360
+        usage:
+          initial: true
+        content:
+          part_of_speech: [noun, common noun]
+        table:
           - [1, 35, Structure]
           - [36, 60, Vessel]
           - [61, 80, Monument]
           - [81, 95, Machine]
           - [96, 100, Incomprehensible, Part of speech: [adjective]]
-      Shape:
-        Title:
-          Canonical: Shape
-        Source:
-          Page: 361
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [adjective]
-        Table:
+      shape:
+        title:
+          canonical: Shape
+        source:
+          page: 361
+        usage:
+          initial: true
+        content:
+          part_of_speech: [adjective]
+        table:
           - [1, 15, Practical or functional]
           - [16, 20, Geometric (complex shape)]
           - [21, 25, Geometric (cube)]
@@ -84,16 +84,16 @@ Oracle sets:
           - [80, 85, Transforming]
           - [86, 100, *result:RollTwice]
 
-      Material:
-        Title:
-          Canonical: Material
-        Source:
-          Page: 361
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [adjective]
-        Table:
+      material:
+        title:
+          canonical: Material
+        source:
+          page: 361
+        usage:
+          initial: true
+        content:
+          part_of_speech: [adjective]
+        table:
           - [1, 30, Metallic (industrial)]
           - [31, 60, Metallic (smooth)]
           - [61, 70, Rocky or stone-like]
@@ -104,18 +104,18 @@ Oracle sets:
           - [87, 88, Energy, Part of speech: [common noun]]
           - [89, 90, Liquid]
           - [91, 100, *result:RollTwice]
-      Outer first look:
-        Title:
-          Canonical: Outer first look
-        Source:
-          Page: 361
-        Content:
-          Part of speech: [fragment]
-          Tags: [first look]
-        Usage:
-          Initial: true
-          Max rolls: 2
-        Table:
+      outer_first_look:
+        title:
+          canonical: Outer First Look
+        source:
+          page: 361
+        content:
+          part_of_speech: [fragment]
+          tags: [first look]
+        usage:
+          initial: true
+          max_rolls: 2
+        table:
           - [1, 3, Corrupting its environment] # is
           - [4, 7, Automated defenses] # has
           - [8, 10, Breached exterior] # has
@@ -146,35 +146,35 @@ Oracle sets:
           - [90, 92, Strong gravity well] # has
           - [93, 95, Surrounded by destruction] # is
           - [96, 100, *result:Descriptor+Focus]
-    Sets:
-      Interior:
-        Title:
-          Canonical: Interior
+    sets:
+      interior:
+        title:
+          canonical: Interior
         _idFragment: Interior
-        Description: If you enter the site, check the [Inner First Look](starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.
-        Source:
-          Authors: [Shawn Tomkin]
-          Title: "Ironsworn: Starforged Rulebook"
-          Date: "050622"
-          License: https://creativecommons.org/licenses/by-sa/4.0/
-        Display:
-          Icon: img/vector/Vaults/Interior.svg
-        Tables:
-          First Look:
+        description: If you enter the site, check the [Inner First Look](starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.
+        source:
+          authors: [Shawn Tomkin]
+          title: "Ironsworn: Starforged Rulebook"
+          date: "050622"
+          license: https://creativecommons.org/licenses/by-sa/4.0/
+        display:
+          icon: img/vector/Vaults/Interior.svg
+        tables:
+          first_look:
             _idFragment: First Look
-            Source:
-              Page: 364
-            Title:
-              Canonical: Inner first look
-              Short: First look
-            Usage:
-              Initial: true
-              Max rolls: 2
-            Content:
-              Part of speech: [fragment]
-              Tags: [first look]
-            Description: Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
-            Table:
+            source:
+              page: 364
+            title:
+              canonical: Inner First Look
+              short: First Look
+            usage:
+              initial: true
+              max_rolls: 2
+            content:
+              part_of_speech: [fragment]
+              tags: [first look]
+            description: Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
+            table:
               - [1, 3, Abnormal gravity]
               - [4, 6, Automated defenses]
               - [7, 9, Biological infestation]
@@ -207,18 +207,18 @@ Oracle sets:
               - [88, 90, Well-preserved]
               - [91, 93, Wet or humid]
               - [94, 100, *result:Descriptor+Focus]
-          Feature:
+          feature:
             _idFragment: Feature
-            Title:
-              Canonical: Interior feature
-              Short: Feature
-            Source:
-              Page: 366
-            Usage:
-              Repeatable: true
-            Content:
-              Part of speech: [fragment]
-            Table:
+            title:
+              canonical: Interior Feature
+              short: Feature
+            source:
+              page: 366
+            usage:
+              repeatable: true
+            content:
+              part_of_speech: [fragment]
+            table:
               - [1, 3, Ascending or descending path]
               - [4, 6, Biological growths]
               - [7, 8, Blood trail]
@@ -254,20 +254,20 @@ Oracle sets:
               - [86, 90, "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)", Suggestions: {Oracles: [starforged/oracles/vaults/sanctum]}]
               - [91, 95, *result:Descriptor+Focus]
               - [96, 100, *result:RollTwice]
-          Peril:
+          peril:
             _idFragment: Peril
-            Title:
-              Canonical: Interior peril
-              Short: Peril
-            Source:
-              Page: 367
-            Usage:
-              Repeatable: true
-            Description: Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision a peril.
-            Content:
-              Part of speech: [fragment]
-              Tags: [peril, event, present]
-            Table:
+            title:
+              canonical: Interior Peril
+              short: Peril
+            source:
+              page: 367
+            usage:
+              repeatable: true
+            description: Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision a peril.
+            content:
+              part_of_speech: [fragment]
+              tags: [peril, event, present]
+            table:
               - [1, 5, Broken path]
               - [6, 10, Change in atmosphere or environment]
               - [11, 15, Corrosive environment]
@@ -289,20 +289,20 @@ Oracle sets:
               - [91, 95, Unnerving sound or sensation]
               - [96, 99, *result:Action+Theme]
               - [100, 100, *result:RollTwice]
-          Opportunity:
+          opportunity:
             _idFragment: Opportunity
-            Title:
-              Canonical: Interior opportunity
-              Short: Opportunity
-            Source:
-              Page: 367
-            Usage:
-              Repeatable: true
-            Description: Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision an opportunity.
-            Content:
-              Part of speech: [fragment]
-              Tags: [opportunity]
-            Table:
+            title:
+              canonical: Interior Opportunity
+              short: Opportunity
+            source:
+              page: 367
+            usage:
+              repeatable: true
+            description: Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision an opportunity.
+            content:
+              part_of_speech: [fragment]
+              tags: [opportunity]
+            table:
               - [1, 10, Clue points the way to your destination or target]
               - [11, 20, Clue to a lifeform's nature or vulnerabilities]
               - [21, 30, Helpful gear left by another explorer]
@@ -313,31 +313,31 @@ Oracle sets:
               - [71, 80, Salvageable resource]
               - [81, 90, Secure area offers a moment of peace]
               - [91, 100, Shortcut or less perilous path speeds your way]
-      Sanctum:
-        Title:
-          Canonical: Sanctum
+      sanctum:
+        title:
+          canonical: Sanctum
         _idFragment: Sanctum
-        Description: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
-        Display:
-          Icon: img/vector/Vaults/Sanctum.svg
-        Source:
-          License: https://creativecommons.org/licenses/by-sa/4.0/
-          Authors: [Shawn Tomkin]
-          Title: "Ironsworn: Starforged Rulebook"
-          Date: "050622"
-        Tables:
-          Purpose:
+        description: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
+        display:
+          icon: img/vector/Vaults/Sanctum.svg
+        source:
+          license: https://creativecommons.org/licenses/by-sa/4.0/
+          authors: [Shawn Tomkin]
+          title: "Ironsworn: Starforged Rulebook"
+          date: "050622"
+        tables:
+          purpose:
             _idFragment: Purpose
-            Source:
-              Page: 365
-            Title:
-              Canonical: Vault purpose
-              Short: Purpose
-            Content:
-              Part of speech: [fragment]
-            Description: |-
+            source:
+              page: 365
+            title:
+              canonical: Vault Purpose
+              short: Purpose
+            content:
+              part_of_speech: [fragment]
+            description: |-
               Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.
-            Table:
+            table:
               - [1, 3, Capture or control of other beings]
               - [4, 6, Command or communication relay]
               - [7, 9, Commemoration of an event]
@@ -367,18 +367,18 @@ Oracle sets:
               - [88, 90, Worship of a god or being]
               - [91, 95, *result:Action+Theme]
               - [96, 100, *result:RollTwice]
-          Feature:
+          feature:
             _idFragment: Feature
-            Source:
-              Page: 368
-            Title:
-              Canonical: Sanctum feature
-              Short: Feature
-            Usage:
-              Repeatable: true
-            Content:
-              Part of speech: [fragment]
-            Table:
+            source:
+              page: 368
+            title:
+              canonical: Sanctum Feature
+              short: Feature
+            usage:
+              repeatable: true
+            content:
+              part_of_speech: [fragment]
+            table:
               - [1, 2, Abyssal pit or chasm]
               - [3, 5, Altered gravity]
               - [6, 7, Area filled with strange liquid]
@@ -414,19 +414,19 @@ Oracle sets:
               - [89, 90, Whispering voices speak to you]
               - [91, 95, *result:Descriptor+Focus]
               - [96, 100, *result:RollTwice]
-          Peril:
+          peril:
             _idFragment: Peril
-            Source:
-              Page: 369
-            Title:
-              Canonical: Sanctum peril
-              Short: Peril
-            Usage:
-              Repeatable: true
-            Content:
-              Part of speech: [fragment]
-              Tags: [peril, event, present]
-            Table:
+            source:
+              page: 369
+            title:
+              canonical: Sanctum Peril
+              short: Peril
+            usage:
+              repeatable: true
+            content:
+              part_of_speech: [fragment]
+              tags: [peril, event, present]
+            table:
               - [1, 5, Camouflaged or transforming foe reveals itself]
               - [6, 10, Confounding distortions of the timestream]
               - [11, 15, Destructive environmental disturbance]
@@ -448,19 +448,19 @@ Oracle sets:
               - [91, 95, You are marked by physical corruption or mutation]
               - [96, 99, *result:Action+Theme]
               - [100, 100, *result:RollTwice]
-          Opportunity:
+          opportunity:
             _idFragment: Opportunity
-            Title:
-              Canonical: Sanctum opportunity
-              Short: Opportunity
-            Source:
-              Page: 369
-            Usage:
-              Repeatable: true
-            Content:
-              Part of speech: [fragment]
-              Tags: [opportunity]
-            Table:
+            title:
+              canonical: Sanctum Opportunity
+              short: Opportunity
+            source:
+              page: 369
+            usage:
+              repeatable: true
+            content:
+              part_of_speech: [fragment]
+              tags: [opportunity]
+            table:
               - [1, 10, Access to a secret or protected area]
               - [11, 20, Clue points the way to your destination or target]
               - [21, 30, Comforting illusion or vision]

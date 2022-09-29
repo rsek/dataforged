@@ -1,26 +1,26 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Location Themes:
-    Title:
-      Canonical: Location Themes
-    Source:
-      Page: 370
-    Sets:
-      Ruined:
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  location_themes:
+    title:
+      canonical: Location Themes
+    source:
+      page: 370
+    sets:
+      ruined:
         _templateOracleSet: *template.category:LocationTheme
         _templateVars:
-          Location Theme: Ruined
-        Title:
-          Canonical: Ruined
-        Description: *description:Ruined
-        Source:
-          Page: 378
-        Tables:
-          Feature:
+          location_theme: Ruined
+        title:
+          canonical: Ruined
+        description: *description:Ruined
+        source:
+          page: 378
+        tables:
+          feature:
             _templateOracleTable: *template.info:LocationTheme.Feature
             _templateTableRows:
               rolls: *template.rolls:LocationTheme.Feature
@@ -38,7 +38,7 @@ Oracle sets:
                 - Signs of looting or scavenging
                 - Survivors or guardians dwell among the ruins
                 - *result:Descriptor+Focus
-          Peril:
+          peril:
             _templateOracleTable: *template.info:LocationTheme.Peril
             _templateTableRows:
               rolls: *template.rolls:LocationTheme.Peril
@@ -55,7 +55,7 @@ Oracle sets:
                 - Volatile device or artifact
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:LocationTheme.Opportunity
             _templateTableRows:
               rolls: *template.rolls:LocationTheme.Opportunity

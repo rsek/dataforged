@@ -3,10 +3,10 @@ import type { ChallengeRank, EncounterNatureTypeStarforged, EncounterTags, Encou
 /**
  * @internal
  */
-export interface YamlEncounterVariant extends YamlStubNode<EncounterVariant, 'Nature'|'Variant of'> {
+export interface YamlEncounterVariant extends YamlStubNode<EncounterVariant, 'nature' | 'variant_of'> {
   $id?: EncounterVariant['$id']
-  Rank: ChallengeRank
-  Description: string
-  Nature?: EncounterNatureTypeStarforged | undefined
-  Tags?: EncounterTags[] | undefined
+  rank: ChallengeRank
+  description: string
+  nature?: EncounterNatureTypeStarforged | undefined
+  tags?: EncounterTags[] | undefined
 }

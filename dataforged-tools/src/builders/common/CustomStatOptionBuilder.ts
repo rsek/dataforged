@@ -6,11 +6,11 @@ import { formatId } from '@utils'
  */
 export class CustomStatOptionBuilder implements CustomStatOption {
   $id: CustomStatOption['$id']
-  Label: string
-  Value: number
+  label: string
+  value: number
   constructor (yaml: Omit<CustomStatOption, '$id'>, parentId: CustomStatOption['$id']) {
-    this.$id = formatId(yaml.Label, parentId)
-    this.Label = yaml.Label
-    this.Value = yaml.Value
+    this.$id = formatId(yaml.label, parentId)
+    this.label = yaml.label
+    this.value = yaml.value
   }
 }

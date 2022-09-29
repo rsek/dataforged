@@ -1,6 +1,7 @@
 import { DisplayBuilder, EncounterClassicBuilder, SourceBuilder, TitleBuilder } from '@builders'
-import type { Display, EncounterClassic, EncounterNatureClassic, Source, YamlEncounterNature } from '@schema'
+import type { Display, EncounterClassic, EncounterNatureClassic, Source, YamlEncounterNatureClassic } from '@schema'
 import { Game } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
 
@@ -10,22 +11,22 @@ import _ from 'lodash-es'
  */
 export class EncounterNatureClassicInfoBuilder implements EncounterNatureClassic {
   $id: EncounterNatureClassic['$id']
-  Title: EncounterNatureClassic['Title']
-  Source: Source
-  Display: Display
-  Summary: string
-  Description: string
-  Encounters: {[key: string]: EncounterClassic}
-  constructor (yaml: YamlEncounterNature, parentSource: Source) {
-    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical
+  title: EncounterNatureClassic['title']
+  source: Source
+  display: Display
+  summary: string
+  description: string
+  encounters: { [key: SnakeCaseString]: EncounterClassic }
+  constructor(yaml: YamlEncounterNatureClassic, parentSource: Source) {
+    const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, Game.Ironsworn, 'Encounters')
-    this.Title = new TitleBuilder(yaml.Title, this) as EncounterNatureClassic['Title']
-    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), parentSource)
+    this.title = new TitleBuilder(yaml.title, this) as EncounterNatureClassic['title']
+    this.source = new SourceBuilder(yaml.source ?? SourceBuilder.defaultByGame(Game.Ironsworn), parentSource)
 
-    this.Display = new DisplayBuilder({
+    this.display = new DisplayBuilder({
     })
-    this.Summary = yaml.Summary
-    this.Description = yaml.Description
-    this.Encounters = _.mapValues(yaml.Encounters, enc => new EncounterClassicBuilder(enc, this))
+    this.summary = yaml.summary
+    this.description = yaml.description
+    this.encounters = _.mapValues(yaml.encounters, enc => new EncounterClassicBuilder(enc, this))
   }
 }

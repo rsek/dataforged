@@ -1,10 +1,11 @@
-import type { Display, HasId, OracleTable, OracleTableRow, TableColumnRoll, TableColumnText } from '@schema'
+import type { Display, MixinId, OracleTable, OracleTableRow, TableColumnRoll, TableColumnText } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * Base interface inherited by {@link OracleSetDisplay} and {@link OracleTableDisplay}.
  * @public
  */
-export interface OracleDisplayBase extends Display, HasId {
+export interface OracleDisplayBase extends Display, MixinId {
   /**
    * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
    *
@@ -12,17 +13,19 @@ export interface OracleDisplayBase extends Display, HasId {
    *
    * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
    */
-  'Column of'?: OracleTable['$id'] | undefined
+  column_of?: OracleTable['$id'] | undefined
   /**
    * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
    *
    * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
    */
-  'Columns'?: [TableColumnRoll, ...Array<TableColumnRoll | TableColumnText>] | undefined
+  columns?: {
+    [key: SnakeCaseString]: TableColumnRoll | TableColumnText
+  } | undefined
   /**
    * This table is displayed as embedded in a row of another table.
    */
-  'Embed in'?: OracleTableRow['$id'] | undefined
+  embed_in?: OracleTableRow['$id'] | undefined
 }
 
 /**
@@ -31,12 +34,12 @@ export interface OracleDisplayBase extends Display, HasId {
  * If an {@link OracleSet} has `Columns`, it represents a "supertable" composed of multiple roll or string columns.
  * @public
  */
-export interface OracleSetDisplay extends Omit<OracleDisplayBase, 'Column of'|'Embed in'> { }
+export interface OracleSetDisplay extends Omit<OracleDisplayBase, 'column_of' | 'embed_in'> { }
 
 /**
  * Information on displaying {@link OracleTable}, including information on its rendering in the original text.
  * @public
  */
 export interface OracleTableDisplay extends OracleDisplayBase {
-  'Columns': [TableColumnRoll, ...Array<TableColumnRoll | TableColumnText>]
+  columns: { [key: SnakeCaseString]: TableColumnRoll | TableColumnText }
 }

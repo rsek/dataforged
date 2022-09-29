@@ -2,13 +2,13 @@
  * @public
  */
 export enum GameObjectType {
-  Derelict = 'Derelict',
-  DerelictZone = 'Derelict Zone',
-  Starship = 'Starship',
-  Settlement = 'Settlement',
-  Planet = 'Planet',
-  PrecursorVault = 'Precursor Vault',
-  Character = 'Character',
-  Creature = 'Creature',
-  Faction = 'Faction'
+  Derelict = 'derelict',
+  DerelictZone = 'derelict_zone',
+  Starship = 'starship',
+  Settlement = 'settlement',
+  Planet = 'planet',
+  PrecursorVault = 'precursor_vault',
+  Character = 'character',
+  Creature = 'creature',
+  Faction = 'faction'
 }

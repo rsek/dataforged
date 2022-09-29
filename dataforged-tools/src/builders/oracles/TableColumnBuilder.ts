@@ -1,35 +1,35 @@
-import { TableColumnType } from '@schema'
+import { OracleTableDisplay, TableColumnType, YamlTableColumnRoll, YamlTableColumnText } from '@schema'
 import type { OracleTable, TableColumnRoll, TableColumnText } from '@schema'
 import { formatId } from '@utils'
+import { NodeBuilder } from '@builders/NodeBuilder.js'
 
 /**
  * @internal
  */
-export class TableColumnTextBuilder implements TableColumnText {
-  readonly 'Column type' = TableColumnType.String
-  $id: string
-  Label: TableColumnText['Label'];
-  ['Content']: TableColumnText['Content']
-  Key: TableColumnText['Key']
-  constructor(parentID: string, content: OracleTable['$id'], index: number, label: string = 'Result', key: TableColumnText['Key'] = 'Result') {
-    this.$id = formatId((index + 1).toString(), parentID, 'columns')
-    this.Label = label
-    this.Content = content
-    this.Key = key
+export class TableColumnTextBuilder extends NodeBuilder<YamlTableColumnText, TableColumnText, OracleTableDisplay> implements TableColumnText {
+  readonly column_type = TableColumnType.String
+  label: TableColumnText['label']
+  content: TableColumnText['content']
+  key: TableColumnText['key']
+  constructor (yaml: YamlTableColumnText, key: string, parent: OracleTableDisplay) {
+    super(yaml, `columns/${key}`, parent)
+    this.label = yaml.label ?? 'result'
+    this.content = yaml.content ?? parent.$id
+    this.key = yaml.key ?? 'result'
   }
 }
 
 /**
  * @internal
  */
-export class TableColumnRollBuilder implements TableColumnRoll {
-  readonly 'Column type' = TableColumnType.Range
-  $id: string
-  Label: string;
-  ['Content']: TableColumnRoll['Content']
-  constructor(parentID: string, content: OracleTable['$id'], index: number, label: string = 'Roll') {
-    this.$id = formatId((index + 1).toString(), parentID, 'columns')
-    this.Label = label
-    this.Content = content
+export class TableColumnRollBuilder extends NodeBuilder<YamlTableColumnRoll, TableColumnRoll, OracleTableDisplay> implements TableColumnRoll {
+  readonly column_type = TableColumnType.DiceRange
+  label: string
+  content: TableColumnRoll['content']
+  constructor (yaml: YamlTableColumnRoll, key: string, parent: OracleTableDisplay) {
+    let str
+    super(yaml, `columns/${key}`, parent)
+    this.label = yaml.label ?? 'roll'
+    this.content = yaml.content ?? 'FIXME'
   }
 }

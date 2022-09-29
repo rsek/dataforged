@@ -1,4 +1,5 @@
-import type { Asset, AssetUsage, Display, HasAliases, HasDescription, HasDisplay, HasId, HasSource, HasTitle, Title } from '@schema'
+import type { Asset, AssetUsage, Display, MixinAliases, MixinDescription, MixinDisplay, MixinId, MixinSource, MixinTitle, Title } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
 export * from '@utils/types/RequireKey.js'
 
@@ -16,12 +17,11 @@ export enum AssetTypeName {
   CombatTalent = 'Combat talent'
 }
 
-
 /**
  * Represents an Asset Type such as Command Vehicle, Companion, or Path, and serves as a container for all assets of that type.
  * @public
  */
-export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource, HasTitle, Partial<HasAliases> {
+export interface AssetType extends MixinId, MixinDescription, MixinDisplay, MixinSource, MixinTitle, Partial<MixinAliases> {
   /**
    * @example "ironsworn/assets/ritual"
    * @example "starforged/assets/command_vehicle"
@@ -31,14 +31,14 @@ export interface AssetType extends HasId, HasDescription, HasDisplay, HasSource,
   /**
    * The assets that belong to this asset type.
    */
-  Assets: { [key: string]: Asset }
+  assets: { [key: SnakeCaseString]: Asset }
 
   /**
    * @example "Ritual"
    * @example "Command vehicle"
    * @localize
    */
-  Title: Title
-  Display: Display
-  Usage: AssetUsage
+  title: Title
+  display: Display
+  usage: AssetUsage
 }

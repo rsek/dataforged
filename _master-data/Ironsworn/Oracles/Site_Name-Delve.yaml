@@ -1,14 +1,14 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Delve"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Site Name:
-    Title:
-      Canonical: Site Name
-    Summary: Give a site a name or learn more about its characteristics and history.
-    Description: |-
+  title: "Ironsworn: Delve"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  site_name:
+    title:
+      canonical: Site Name
+    summary: Give a site a name or learn more about its characteristics and history.
+    description: |-
       To generate a name for a site, first roll on the [Format](ironsworn/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](ironsworn/oracles/site_name/description), [Detail](ironsworn/oracles/site_name/detail), [Namesake](ironsworn/oracles/site_name/namesake), and [Place](ironsworn/oracles/site_name/place) oracles.
 
       If the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.
@@ -22,69 +22,69 @@ Oracle sets:
       For example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](ironsworn/moves/fate/ask_the_oracle), using the [Description](ironsworn/oracles/site_name/description) and [Detail](ironsworn/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”
 
       Interpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.
-    Source:
-      Authors:
+    source:
+      authors:
         - Shawn Tomkin
-      Title: "Ironsworn: Delve"
-      Page: 206
-      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-    Tables:
-      Format:
-        Title:
-          Canonical: "Site Name: Format"
-          Short: Format
+      title: "Ironsworn: Delve"
+      page: 206
+      license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    tables:
+      format:
+        title:
+          canonical: "Site Name: Format"
+          short: Format
         _idFragment: Format
-        Table:
+        table:
           - [
               1,
               25,
               "[Description] [Place]",
-              Roll template: { Result: "{{ironsworn/oracles/site_name/description}} {{ironsworn/oracles/site_name/place/place_by_domain}}", },
+              roll_template: { Result: "{{ironsworn/oracles/site_name/description}} {{ironsworn/oracles/site_name/place/place_by_domain}}", },
             ]
           - [
               26,
               50,
               "[Place] of [Detail]",
-              Roll template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/detail}}", },
+              roll_template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/detail}}", },
             ]
           - [
               51,
               70,
               "[Place] of [Description] [Detail]",
-              Roll template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/description}} {{ironsworn/oracles/site_name/detail}}", },
+              roll_template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/description}} {{ironsworn/oracles/site_name/detail}}", },
             ]
           - [
               71,
               80,
               "[Place] of [Namesake's] [Detail]",
-              Roll template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/namesake}}'s {{ironsworn/oracles/site_name/detail}}", },
+              roll_template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/namesake}}'s {{ironsworn/oracles/site_name/detail}}", },
             ]
           - [
               81,
               85,
               "[Namesake's] [Place]",
-              Roll template: { Result: "{{ironsworn/oracles/site_name/namesake}}'s {{ironsworn/oracles/site_name/place/place_by_domain}}", },
+              roll_template: { Result: "{{ironsworn/oracles/site_name/namesake}}'s {{ironsworn/oracles/site_name/place/place_by_domain}}", },
             ]
           - [
               86,
               95,
               "[Description] [Place] of [Namesake]",
-                Roll template: { Result: "{{ironsworn/oracles/site_name/description}} {{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/namesake}}", },
+                roll_template: { Result: "{{ironsworn/oracles/site_name/description}} {{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/namesake}}", },
             ]
           - [
               96,
               100,
               "[Place] of [Namesake]",
-              Roll template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/namesake}}", },
+              roll_template: { Result: "{{ironsworn/oracles/site_name/place/place_by_domain}} of {{ironsworn/oracles/site_name/namesake}}", },
             ]
-      Description:
-        Title:
-          Canonical: "Site Name: Description"
-          Short: Description
+      description:
+        title:
+          canonical: "Site Name: Description"
+          short: Description
         _idFragment: Description
-        Source:
-          Page: 207
-        Table:
+        source:
+          page: 207
+        table:
           - [1, 2, Deep]
           - [3, 4, Tainted]
           - [5, 6, Grey]
@@ -135,14 +135,14 @@ Oracle sets:
           - [95, 96, Sacred]
           - [97, 98, Fallen]
           - [99, 100, Ruined]
-      Detail:
-        Title:
-          Canonical: "Site Name: Detail"
-          Short: Detail
+      detail:
+        title:
+          canonical: "Site Name: Detail"
+          short: Detail
         _idFragment: Detail
-        Source:
-          Page: 208
-        Table:
+        source:
+          page: 208
+        table:
           - [1, 2, Blight]
           - [3, 4, Strife]
           - [5, 6, Nightfall]
@@ -193,18 +193,18 @@ Oracle sets:
           - [95, 96, Dread]
           - [97, 98, Light]
           - [99, 100, Wrath]
-      Namesake:
-        Title:
-          Canonical: "Site Name: Namesake"
-          Short: Namesake
+      namesake:
+        title:
+          canonical: "Site Name: Namesake"
+          short: Namesake
         _idFragment: Namesake
-        Description: |-
+        description: |-
           You may also use your preferred name randomizer to generate a Namesake for your site.
 
           If you want to add details for the Namesake, use the [Character oracles](ironsworn/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
-        Source:
-          Page: 209
-        Table:
+        source:
+          page: 209
+        table:
           - [1, 2, Breckon]
           - [3, 4, Issara]
           - [5, 6, Milenna]
@@ -255,134 +255,134 @@ Oracle sets:
           - [95, 96, Arnorr]
           - [97, 98, Thyri]
           - [99, 100, Erisia]
-    Sets:
-      Place:
-        Title:
-          Canonical: "Site Name: Place"
-          Short: Place
+    sets:
+      place:
+        title:
+          canonical: "Site Name: Place"
+          short: Place
         _idFragment: Place
-        Source:
-          Page: 210
-          Title: "Ironsworn: Delve"
-          Authors:
+        source:
+          page: 210
+          title: "Ironsworn: Delve"
+          authors:
             - Shawn Tomkin
-          License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-        Tables:
-          Domain:
-            Title:
-              Canonical: "Site Name: Place"
-              Standard: Place
-              Short: Place
+          license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+        tables:
+          domain:
+            title:
+              canonical: "Site Name: Place"
+              standard: Place
+              short: Place
             _idFragment: Domain
-            Source:
-              Page: 210
-            Table:
+            source:
+              page: 210
+            table:
               - [
                   1, 6,
                   Barrow,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/barrow"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/barrow"]},
-                  Embed table: "ironsworn/oracles/site_name/place/barrow",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/barrow"],
+                  suggestions: {Site Domains: ["ironsworn/domains/barrow"]},
+                  embed_table: "ironsworn/oracles/site_name/place/barrow",
                 ]
               - [
                   7, 18,
                   Cavern,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/cavern"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/cavern"]},
-                  Embed table: "ironsworn/oracles/site_name/place/cavern",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/cavern"],
+                  suggestions: {Site Domains: ["ironsworn/domains/cavern"]},
+                  embed_table: "ironsworn/oracles/site_name/place/cavern",
                 ]
               - [
                   19, 28,
                   Frozen Cavern,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/frozen_cavern"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/frozen_cavern"]},
-                  Embed table: "ironsworn/oracles/site_name/place/frozen_cavern",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/frozen_cavern"],
+                  suggestions: {Site Domains: ["ironsworn/domains/frozen_cavern"]},
+                  embed_table: "ironsworn/oracles/site_name/place/frozen_cavern",
                 ]
               - [
                   29, 32,
                   Icereach,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/icereach"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/icereach"]},
-                  Embed table: "ironsworn/oracles/site_name/place/icereach",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/icereach"],
+                  suggestions: {Site Domains: ["ironsworn/domains/icereach"]},
+                  embed_table: "ironsworn/oracles/site_name/place/icereach",
                 ]
               - [
                   33, 38,
                   Mine,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/mine"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/mine"]},
-                  Embed table: "ironsworn/oracles/site_name/place/mine",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/mine"],
+                  suggestions: {Site Domains: ["ironsworn/domains/mine"]},
+                  embed_table: "ironsworn/oracles/site_name/place/mine",
                 ]
               - [
                   39, 48,
                   Pass,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/pass"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/pass"]},
-                  Embed table: "ironsworn/oracles/site_name/place/pass",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/pass"],
+                  suggestions: {Site Domains: ["ironsworn/domains/pass"]},
+                  embed_table: "ironsworn/oracles/site_name/place/pass",
                 ]
               - [
                   49, 58,
                   Ruin,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/ruin"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/ruin"]},
-                  Embed table: "ironsworn/oracles/site_name/place/ruin",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/ruin"],
+                  suggestions: {Site Domains: ["ironsworn/domains/ruin"]},
+                  embed_table: "ironsworn/oracles/site_name/place/ruin",
                 ]
               - [
                   59, 68,
                   Sea Cave,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/sea_cave"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/sea_cave"]},
-                  Embed table: "ironsworn/oracles/site_name/place/sea_cave",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/sea_cave"],
+                  suggestions: {Site Domains: ["ironsworn/domains/sea_cave"]},
+                  embed_table: "ironsworn/oracles/site_name/place/sea_cave",
                 ]
               - [
                   69, 78,
                   Shadowfen,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/shadowfen"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/shadowfen"]},
-                  Embed table: "ironsworn/oracles/site_name/place/shadowfen",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/shadowfen"],
+                  suggestions: {Site Domains: ["ironsworn/domains/shadowfen"]},
+                  embed_table: "ironsworn/oracles/site_name/place/shadowfen",
                 ]
               - [
                   79, 83,
                   Stronghold,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/stronghold"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/stronghold"]},
-                  Embed table: "ironsworn/oracles/site_name/place/stronghold",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/stronghold"],
+                  suggestions: {Site Domains: ["ironsworn/domains/stronghold"]},
+                  embed_table: "ironsworn/oracles/site_name/place/stronghold",
                 ]
               - [
                   84, 95,
                   Tanglewood,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/tanglewood"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/tanglewood"]},
-                  Embed table: "ironsworn/oracles/site_name/place/tanglewood",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/tanglewood"],
+                  suggestions: {Site Domains: ["ironsworn/domains/tanglewood"]},
+                  embed_table: "ironsworn/oracles/site_name/place/tanglewood",
                 ]
               - [
                   96, 100,
                   Underkeep,
-                  Oracle rolls: ["ironsworn/oracles/site_name/place/underkeep"],
-                  Suggestions: {Site Domains: ["ironsworn/domains/underkeep"]},
-                  Embed table: "ironsworn/oracles/site_name/place/underkeep",
+                  oracle_rolls: ["ironsworn/oracles/site_name/place/underkeep"],
+                  suggestions: {Site Domains: ["ironsworn/domains/underkeep"]},
+                  embed_table: "ironsworn/oracles/site_name/place/underkeep",
                 ]
-          Barrow:
-            Title:
-              Canonical: Barrow
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/1-6
-            Source:
-              Page: 210
-            Table:
+          barrow:
+            title:
+              canonical: Barrow
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/1-6
+            source:
+              page: 210
+            table:
               - [1, 16, Sepulcher]
               - [50, 66, Mound]
               - [17, 32, Grave]
               - [67, 83, Tomb]
               - [33, 49, Crypt]
               - [84, 100, Barrow]
-          Cavern:
-            Title:
-              Canonical: Cavern
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/7-18
-            Source:
-              Page: 210
-            Table:
+          cavern:
+            title:
+              canonical: Cavern
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/7-18
+            source:
+              page: 210
+            table:
               - [1, 10, Abyss]
               - [11, 20, Caverns]
               - [21, 30, Caves]
@@ -393,14 +393,14 @@ Oracle sets:
               - [71, 80, Rift]
               - [81, 90, Tunnels]
               - [91, 100, Warren]
-          Frozen Cavern:
-            Title:
-              Canonical: Frozen Cavern
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/19-28
-            Source:
-              Page: 210
-            Table:
+          frozen_cavern:
+            title:
+              canonical: Frozen Cavern
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/19-28
+            source:
+              page: 210
+            table:
               - [1, 10, Abyss]
               - [11, 20, Caverns]
               - [21, 30, Caves]
@@ -411,42 +411,42 @@ Oracle sets:
               - [71, 80, Rift]
               - [81, 90, Tunnels]
               - [91, 100, Warren]
-          Icereach:
-            Title:
-              Canonical: Icereach
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/29-32
-            Source:
-              Page: 210
-            Table:
+          icereach:
+            title:
+              canonical: Icereach
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/29-32
+            source:
+              page: 210
+            table:
               - [1, 16, Icemark]
               - [17, 32, Wintertide]
               - [33, 49, Reach]
               - [50, 66, Waste]
               - [67, 83, Expanse]
               - [84, 100, Barrens]
-          Mine:
-            Title:
-              Canonical: Mine
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/33-38
-            Source:
-              Page: 210
-            Table:
+          mine:
+            title:
+              canonical: Mine
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/33-38
+            source:
+              page: 210
+            table:
               - [1, 16, Lode]
               - [17, 32, Dig]
               - [33, 49, Forge]
               - [50, 66, Mine]
               - [67, 83, Tunnels]
               - [84, 100, Cut]
-          Pass:
-            Title:
-              Canonical: Pass
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/39-48
-            Source:
-              Page: 210
-            Table:
+          pass:
+            title:
+              canonical: Pass
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/39-48
+            source:
+              page: 210
+            table:
               - [1, 10, Cliffs]
               - [11, 20, Crag]
               - [21, 30, Cut]
@@ -457,14 +457,14 @@ Oracle sets:
               - [71, 80, Pass]
               - [81, 90, Reach]
               - [91, 100, Ridge]
-          Ruin:
-            Title:
-              Canonical: Ruin
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/49-58
-            Source:
-              Page: 211
-            Table:
+          ruin:
+            title:
+              canonical: Ruin
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/49-58
+            source:
+              page: 211
+            table:
               - [1, 10, Citadel]
               - [11, 20, Enclave]
               - [21, 30, Fortress]
@@ -475,28 +475,28 @@ Oracle sets:
               - [71, 80, Spire]
               - [81, 90, Temple]
               - [91, 100, Tower]
-          Sea Cave:
-            Title:
-              Canonical: Sea Cave
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/59-68
-            Source:
-              Page: 211
-            Table:
+          sea_cave:
+            title:
+              canonical: Sea Cave
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/59-68
+            source:
+              page: 211
+            table:
               - [1, 16, Caves]
               - [17, 32, Channel]
               - [33, 49, Cove]
               - [50, 66, Hollow]
               - [67, 83, Pools]
               - [84, 100, Gouge]
-          Shadowfen:
-            Title:
-              Canonical: Shadowfen
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/69-78
-            Source:
-              Page: 211
-            Table:
+          shadowfen:
+            title:
+              canonical: Shadowfen
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/69-78
+            source:
+              page: 211
+            table:
               - [1, 10, Bog]
               - [11, 20, Fen]
               - [21, 30, Lowland]
@@ -507,14 +507,14 @@ Oracle sets:
               - [71, 80, Floodlands]
               - [81, 90, Slough]
               - [91, 100, Wetlands]
-          Stronghold:
-            Title:
-              Canonical: Stronghold
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/79-83
-            Source:
-              Page: 211
-            Table:
+          stronghold:
+            title:
+              canonical: Stronghold
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/79-83
+            source:
+              page: 211
+            table:
               - [1, 10, Bastion]
               - [11, 20, Citadel]
               - [21, 30, Fortress]
@@ -525,14 +525,14 @@ Oracle sets:
               - [71, 80, Refuge]
               - [81, 90, Sanctuary]
               - [91, 100, Watch]
-          Tanglewood:
-            Title:
-              Canonical: Tanglewood
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/84-95
-            Source:
-              Page: 211
-            Table:
+          tanglewood:
+            title:
+              canonical: Tanglewood
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/84-95
+            source:
+              page: 211
+            table:
               - [1, 11, Weald]
               - [12, 23, Tangle]
               - [24, 35, Bramble]
@@ -541,14 +541,14 @@ Oracle sets:
               - [62, 74, Forest]
               - [75, 87, Wilds]
               - [88, 100, Wood]
-          Underkeep:
-            Title:
-              Canonical: Underkeep
-            Display:
-              Embed in: ironsworn/oracles/site_name/place/place_by_domain/96-100
-            Source:
-              Page: 211
-            Table:
+          underkeep:
+            title:
+              canonical: Underkeep
+            display:
+              embed_in: ironsworn/oracles/site_name/place/place_by_domain/96-100
+            source:
+              page: 211
+            table:
               - [1, 10, Catacomb]
               - [11, 20, Chambers]
               - [21, 30, Den]

@@ -1,27 +1,27 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Planets:
-    Title:
-      Canonical: Planets
-    Source:
-      Date: "050622"
-    Sets:
-      Vital:
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  planets:
+    title:
+      canonical: Planets
+    source:
+      date: "050622"
+    sets:
+      vital:
         _templateOracleSet: *template.category:Planet
         _templateVars:
-          Planetary Class: Vital
-        Title:
-          Canonical: Vital world
-        Display:
-          Images: *images:VitalWorld
-        Source:
-          Page: 318
-        Summary: This diverse, life-bearing planet might provide some small measure of hope.
-        Sample names:
+          planetary_class: Vital
+        title:
+          canonical: Vital world
+        display:
+          images: *images:VitalWorld
+        source:
+          page: 318
+        summary: This diverse, life-bearing planet might provide some small measure of hope.
+        sample_names:
           - Chiron
           - Demeter
           - Erebos
@@ -42,11 +42,11 @@ Oracle sets:
           - Solstice
           - Vale
           - Valinor
-        Sets:
-          Settlements:
+        sets:
+          settlements:
             _templateOracleSet: *template.info:Planet.Settlements
-            Tables:
-              Terminus:
+            tables:
+              terminus:
                 _templateOracleTable: *template.info:Planet.Settlements.Terminus
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -56,7 +56,7 @@ Oracle sets:
                     - [31, 70] # Planetside settlement
                     - [71, 90] # Multiple settlements
                     - [91, 100] # Settlements in conflict
-              Outlands:
+              outlands:
                 _templateOracleTable: *template.info:Planet.Settlements.Outlands
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -66,7 +66,7 @@ Oracle sets:
                     - [56, 85] # Planetside settlement
                     - [86, 95] # Multiple settlements
                     - [96, 100] # Settlements in conflict
-              Expanse:
+              expanse:
                 _templateOracleTable: *template.info:Planet.Settlements.Expanse
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -76,8 +76,8 @@ Oracle sets:
                     - [84, 93] # Planetside settlement
                     - [94, 98] # Multiple settlements
                     - [99, 100] # Settlements in conflict
-        Tables:
-          Atmosphere:
+        tables:
+          atmosphere:
             _templateOracleTable: *template.info:Planet.Atmosphere
             _templateTableRows:
               content: *template.content:Planet.Atmosphere
@@ -88,7 +88,7 @@ Oracle sets:
                 - [1, 20] # Marginal
                 - [21, 50] # Breathable
                 - [51, 100] # Ideal
-          Observed From Space:
+          observed_from_space:
             _templateOracleTable: *template.info:Planet.ObservedFromSpace
             _templateTableRows:
               rolls: *template.rolls:Planet.ObservedFromSpace
@@ -103,45 +103,45 @@ Oracle sets:
                 - Narrow livable band
                 - *result:Descriptor+Focus
                 - *result:PrecursorVault.Orbital
-          Diversity:
-            Title:
-              Canonical: Diversity
-            Description: &description:Vital.Diversity |-
+          diversity:
+            title:
+              canonical: Diversity
+            description: &description:Vital.Diversity |-
               To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
-            Content:
-              Part of speech: [adjective]
-            Table:
+            content:
+              part_of_speech: [adjective]
+            table:
               - [1, 20, "Simple (two biomes)",
-                  Oracle rolls: [
+                  oracle_rolls: [
                     &biome starforged/oracles/planets/vital/biomes,
                     *biome ]]
               - [21, 70, "Diverse (three biomes)",
-                  Oracle rolls: [
+                  oracle_rolls: [
                     *biome,
                     *biome,
                     *biome ]]
               - [71, 90, "Complex (four biomes)",
-                  Oracle rolls: [
+                  oracle_rolls: [
                     *biome,
                     *biome,
                     *biome,
                     *biome ]]
               - [91, 100, "Garden world (five or more biomes)",
-                  Oracle rolls: [
+                  oracle_rolls: [
                     *biome,
                     *biome,
                     *biome,
                     *biome,
                     *biome ]]
-          Biomes:
-            Title:
-              Canonical: Biomes
-            Description: *description:Vital.Diversity
-            Usage:
-              Allow duplicates: true
-            Content:
-              Part of speech: [noun, common noun]
-            Table:
+          biomes:
+            title:
+              canonical: Biomes
+            description: *description:Vital.Diversity
+            usage:
+              allow_duplicates: true
+            content:
+              part_of_speech: [noun, common noun]
+            table:
               - [1, 5, Caves]
               - [6, 10, Cold forest]
               - [11, 15, Fungal]
@@ -162,7 +162,7 @@ Oracle sets:
               - [86, 90, Volcanic]
               - [91, 95, Waterways]
               - [96, 100, Wetland]
-          Planetside Feature:
+          planetside_feature:
             _templateOracleTable: *template.info:Planet.PlanetsideFeature
             _templateTableRows:
               rolls: *template.rolls:Planet.PlanetsideFeature
@@ -182,7 +182,7 @@ Oracle sets:
                 - Towering geological formations
                 - *result:Descriptor+Focus
                 - *result:PrecursorVault.Planetside
-          Life:
+          life:
             _templateOracleTable: *template.info:Planet.Life
             _templateTableRows:
               content: *template.content:Planet.Life

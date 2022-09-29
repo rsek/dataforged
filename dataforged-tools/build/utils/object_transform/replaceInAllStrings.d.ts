@@ -1,4 +1,4 @@
-import { JSONPathOptions } from "jsonpath-plus";
+import { JSONPathOptions } from 'jsonpath-plus';
 /**
  * Recurses over an object and replaces a substring with another string.
  * @param object - The object to be searched and replaced. This function creates a copy and so does **not** mutate `obj`;

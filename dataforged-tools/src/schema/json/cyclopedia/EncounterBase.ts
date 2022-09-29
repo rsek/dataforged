@@ -14,31 +14,31 @@ export interface EncounterBase extends CyclopediaEntry {
    * @example "Monster"
    * @localize
    */
-  Nature: EncounterNatureTypeStarforged | EncounterNatureTypeClassic
-  Display: Display
+  nature: EncounterNatureTypeStarforged | EncounterNatureTypeClassic
+  display: Display
   /**
    * @example "Insectoid horde"
    * @markdown
    * @localize
    */
-  Summary?: string | undefined
-  Tags?: EncounterTags[] | undefined
-  Rank: ChallengeRank
+  summary?: string | undefined
+  tags?: EncounterTags[] | undefined
+  rank: ChallengeRank
   /**
    * @markdown
    * @localize
    */
-  Features?: string[] | undefined
+  features?: string[] | undefined
   /**
    * @markdown
    * @localize
    */
-  Drives?: string[] | undefined
+  drives?: string[] | undefined
   /**
    * @markdown
    * @localize
    */
-  Tactics?: string[] | undefined
+  tactics?: string[] | undefined
   /**
    * Ironsworn, p. 135: "Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe."
    *
@@ -46,5 +46,5 @@ export interface EncounterBase extends CyclopediaEntry {
    * @markdown
    * @localize
    */
-  'Your truth'?: string | undefined
+  your_truth?: string | undefined
 }

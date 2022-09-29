@@ -8,17 +8,20 @@ import _ from 'lodash-es'
  * @internal
  */
 export class SourceBuilder implements Source {
-  Title: Source['Title']
-  Authors: string[]
-  Date?: string | undefined
-  Page?: number | undefined
-  Url?: string | undefined
-  License: License
-  static default (game: Game) {
-    return new SourceBuilder({ Title: game === Game.Ironsworn ? SourceTitle.Ironsworn : SourceTitle.Starforged, Authors: ['Shawn Tomkin'] })
+  title: Source['title']
+  authors: string[]
+  date?: string | undefined
+  page?: number | undefined
+  uri?: string | undefined
+  license: License
+  static defaultByTitle(sourceTitle: SourceTitle) {
+    return new SourceBuilder({ title: sourceTitle, authors: ['Shawn Tomkin'] })
+  }
+  static defaultByGame(game: Game) {
+    return new SourceBuilder({ title: SourceTitle[game], authors: ['Shawn Tomkin'] })
   }
 
-  static getDefaultLicense (sourceTitle: SourceTitle|string) {
+  static getDefaultLicense(sourceTitle: SourceTitle | string) {
     switch (sourceTitle as SourceTitle) {
       case SourceTitle.Ironsworn:
       case SourceTitle.IronswornAssets:
@@ -33,24 +36,24 @@ export class SourceBuilder implements Source {
     }
   }
 
-  constructor (yaml: YamlSource, ...ancestorSourceJson: YamlSource[]) {
+  constructor(yaml: YamlSource, ...ancestorSourceJson: YamlSource[]) {
     const sourceStack = _.cloneDeep([..._.compact(
       ancestorSourceJson)
       .reverse(),
     yaml as Source])
     const merged = _.merge(...sourceStack as [YamlSource, YamlSource])
-    if (!merged.Title) {
+    if (!merged.title) {
       throw badJsonError('Unable to find title in source or ancestor source objects.', [yaml, ...ancestorSourceJson])
     }
-    this.Title = merged.Title
-    this.Authors = merged.Authors ?? ['Shawn Tomkin']
-    this.Date = merged.Date
-    this.Page = merged.Page
-    this.Url = merged.Url
-    const license: undefined|License = merged.License ?? SourceBuilder.getDefaultLicense(merged.Title)
+    this.title = merged.title
+    this.authors = merged.authors ?? ['Shawn Tomkin']
+    this.date = merged.date
+    this.page = merged.page
+    this.uri = merged.uri
+    const license: undefined | License = merged.license ?? SourceBuilder.getDefaultLicense(merged.title)
     if (!license) {
       throw new Error(`Could not infer a valid license!\n${JSON.stringify(merged)}`)
     }
-    this.License = license
+    this.license = license
   }
 }

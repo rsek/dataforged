@@ -1,33 +1,33 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Delve"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Moves:
-    Title:
-      Canonical: Moves
-    Source:
-      Authors:
+  title: "Ironsworn: Delve"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  moves:
+    title:
+      canonical: Moves
+    source:
+      authors:
         - Shawn Tomkin
-      Title: "Ironsworn: Delve"
-      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-    Sets:
-      Delve the Depths:
-        Title:
-          Canonical: Delve the Depths
+      title: "Ironsworn: Delve"
+      license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    sets:
+      delve_the_depths:
+        title:
+          canonical: Delve the Depths
         # Move: ironsworn/moves/delve/delve_the_depths
-        Source:
-          Page: 21
-          Authors:
+        source:
+          page: 21
+          authors:
             - Shawn Tomkin
-          Title: "Ironsworn: Delve"
-          License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-        Tables:
-          Edge:
-            Title:
-              Canonical: Edge
-            Table: &table:Delve_the_Depths
+          title: "Ironsworn: Delve"
+          license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+        tables:
+          edge:
+            title:
+              canonical: Edge
+            table: &table:Delve_the_Depths
               - [1, 45, "Mark progress and [Reveal a Danger](ironsworn/moves/delve/reveal_a_danger)."]
               - [46, 65, "Mark progress."]
               - [
@@ -45,9 +45,9 @@ Oracle sets:
                   100,
                   "Mark progress twice and [Reveal a Danger](ironsworn/moves/delve/reveal_a_danger).",
                 ]
-          Shadow:
-            Title:
-              Canonical: Shadow
+          shadow:
+            title:
+              canonical: Shadow
             _templateTableRows:
               content: *table:Delve_the_Depths
               rolls:
@@ -56,9 +56,9 @@ Oracle sets:
                 - [66, 90]
                 - [91, 99]
                 - [100, 100]
-          Wits:
-            Title:
-              Canonical: Wits
+          wits:
+            title:
+              canonical: Wits
             _templateTableRows:
               content: *table:Delve_the_Depths
               rolls:
@@ -67,14 +67,14 @@ Oracle sets:
                 - [56, 80]
                 - [81, 99]
                 - [100, 100]
-    Tables:
-      Find an Opportunity:
-        Title:
-          Canonical: Find an Opportunity
+    tables:
+      find_an_opportunity:
+        title:
+          canonical: Find an Opportunity
         # Move: ironsworn/moves/delve/find_an_opportunity
-        Source:
-          Page: 30
-        Table:
+        source:
+          page: 30
+        table:
           - [1, 25, "The terrain favors you, or you find a hidden path."]
           - [
               26,
@@ -93,12 +93,12 @@ Oracle sets:
           - [91, 94, "You are alerted to a potential threat."]
           - [95, 98, "You encounter a denizen who might support you."]
           - [99, 100, "You encounter a denizen in need of help."]
-      Reveal a Danger:
-        Title:
-          Canonical: Reveal a Danger
-        Source:
-          Page: 34
-        Table:
+      reveal_a_danger:
+        title:
+          canonical: Reveal a Danger
+        source:
+          page: 34
+        table:
           - [1, 30, "Check the theme card."]
           - [31, 45, "Check the domain card."]
           - [46, 57, &Reveal_a_Danger_1 "You encounter a hostile denizen."]
@@ -116,14 +116,14 @@ Oracle sets:
               &Reveal_a_Danger_10 "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
               *result:RollTwice.MakeItWorse
             ]
-      Reveal a Danger alt:
-        Title:
-          Canonical: Reveal a Danger (alternate version)
-          Short: Reveal a Danger
+      reveal_a_danger_alt:
+        title:
+          canonical: Reveal a Danger (alternate version)
+          short: Reveal a Danger
         _idFragment: Reveal a Danger alt
-        Source:
-          Page: 68
-        Table:
+        source:
+          page: 68
+        table:
           - [1, 22, *Reveal_a_Danger_1]
           - [23, 42, *Reveal_a_Danger_2]
           - [43, 58, *Reveal_a_Danger_3]
@@ -134,15 +134,15 @@ Oracle sets:
           - [83, 88, *Reveal_a_Danger_8]
           - [89, 94, *Reveal_a_Danger_9]
           - [95, 100, *Reveal_a_Danger_10, *result:RollTwice.MakeItWorse]
-      Advance a Threat:
-        Title:
-          Canonical: Advance a Threat
-        On a Match:
-          Text: |-
+      advance_a_threat:
+        title:
+          canonical: Advance a Threat
+        on_a_match:
+          text: |-
             On a match, this development also exposes a surprising aspect of the threat’s plan or nature.
-        Source:
-          Page: 155
-        Table:
+        source:
+          page: 155
+        table:
           - [1, 30, "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](ironsworn/moves/quest/reach_a_milestone). Otherwise, mark menace."]
           - [31, 70, "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."]
           - [71, 100, "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."]

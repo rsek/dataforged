@@ -7,14 +7,14 @@ import { formatId } from '@utils/formatId.js'
  */
 export class OutcomesBuilder implements Outcomes {
   $id: Outcomes['$id']
-  'Strong hit': OutcomeStrongHitBuilder<true>
-  'Weak hit': OutcomeWeakHitBuilder<true>
-  'Miss': OutcomeMissBuilder<true>
+  'strong_hit': OutcomeStrongHitBuilder<true>
+  'weak_hit': OutcomeWeakHitBuilder<true>
+  'miss': OutcomeMissBuilder<true>
   constructor (yaml: YamlOutcomes, id: Outcomes['$id']) {
     this.$id = id
-    this['Strong hit'] = new OutcomeStrongHitBuilder<true>(yaml['Strong hit'], this.$id)
-    this['Weak hit'] = new OutcomeWeakHitBuilder<true>(yaml['Weak hit'], this.$id)
-    this.Miss = new OutcomeMissBuilder<true>(yaml.Miss, this.$id)
+    this.strong_hit = new OutcomeStrongHitBuilder<true>(yaml.strong_hit, this.$id)
+    this.weak_hit = new OutcomeWeakHitBuilder<true>(yaml.weak_hit, this.$id)
+    this.miss = new OutcomeMissBuilder<true>(yaml.miss, this.$id)
   }
 }
 
@@ -23,20 +23,20 @@ export class OutcomesBuilder implements Outcomes {
  */
 export class AlterMoveOutcomesBuilder implements AlterMoveOutcomes {
   $id: Outcomes['$id']
-  'Strong hit'?: OutcomeStrongHitBuilder<false> | undefined
-  'Weak hit'?: OutcomeWeakHitBuilder<false> | undefined
-  'Miss'?: OutcomeMissBuilder<false> | undefined
+  'strong_hit'?: OutcomeStrongHitBuilder<false> | undefined
+  'weak_hit'?: OutcomeWeakHitBuilder<false> | undefined
+  'miss'?: OutcomeMissBuilder<false> | undefined
   constructor (yaml: YamlAlterMoveOutcomes, parentId: string) {
     this.$id = formatId('Outcomes', parentId)
 
-    if (yaml['Strong hit'] != null) {
-      this['Strong hit'] = new OutcomeStrongHitBuilder<false>(yaml['Strong hit'], this.$id)
+    if (yaml.strong_hit != null) {
+      this.strong_hit = new OutcomeStrongHitBuilder<false>(yaml.strong_hit, this.$id)
     }
-    if (yaml['Weak hit'] != null) {
-      this['Weak hit'] = new OutcomeWeakHitBuilder<false>(yaml['Weak hit'], this.$id)
+    if (yaml.weak_hit != null) {
+      this.weak_hit = new OutcomeWeakHitBuilder<false>(yaml.weak_hit, this.$id)
     }
-    if (yaml.Miss != null) {
-      this.Miss = new OutcomeMissBuilder<false>(yaml.Miss, this.$id)
+    if (yaml.miss != null) {
+      this.miss = new OutcomeMissBuilder<false>(yaml.miss, this.$id)
     }
   }
 }

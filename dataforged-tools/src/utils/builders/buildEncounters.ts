@@ -1,6 +1,7 @@
 import { EncounterNatureClassicInfoBuilder, EncounterStarforgedBuilder } from '@builders'
 import { MASTER_DATA_PATH } from '@constants'
 import { Game, Starforged, YamlEncounterStarforgedRoot, YamlEncounterClassicRoot } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 import { encounterStats } from '@utils/dataforgedStats.js'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 import { buildLog } from '@utils/logging/buildLog.js'
@@ -12,7 +13,7 @@ import _ from 'lodash'
  * Assembles encounter data from YAML shorthand into JSON.
  * @returns
  */
-export function buildEncounters<G extends Game> (game: G) {
+export function buildEncounters<G extends Game>(game: G) {
   type EncounterRootJson = G extends Starforged ? EncounterStarforgedBuilder : EncounterNatureClassicInfoBuilder
   type EncounterRootYaml = G extends Starforged ? YamlEncounterStarforgedRoot : YamlEncounterClassicRoot
   buildLog(buildEncounters, 'Building encounters...')
@@ -23,12 +24,13 @@ export function buildEncounters<G extends Game> (game: G) {
 
   switch (game) {
     case Game.Starforged: {
-      result = _.mapValues((encounterRootYaml as YamlEncounterStarforgedRoot).Encounters, enc => new EncounterStarforgedBuilder(enc, encounterRootYaml.Source)) as {
-        [key: string]: EncounterStarforgedBuilder}
+      result = _.mapValues((encounterRootYaml as YamlEncounterStarforgedRoot).encounters, enc => new EncounterStarforgedBuilder(enc, encounterRootYaml.source)) as {
+        [key: SnakeCaseString]: EncounterStarforgedBuilder
+      }
       break
     }
     case Game.Ironsworn: {
-      result = _.mapValues((encounterRootYaml as YamlEncounterClassicRoot).Encounters, enc => new EncounterNatureClassicInfoBuilder(enc, encounterRootYaml.Source))
+      result = _.mapValues((encounterRootYaml as YamlEncounterClassicRoot).encounters, enc => new EncounterNatureClassicInfoBuilder(enc, encounterRootYaml.source))
       break
     }
     default:
@@ -37,9 +39,9 @@ export function buildEncounters<G extends Game> (game: G) {
   buildLog(buildEncounters, `Finished building ${encounterStats(game, result)}`)
   switch (game) {
     case Game.Starforged:
-      return result as {[key: string]: EncounterStarforgedBuilder}
+      return result as { [key: SnakeCaseString]: EncounterStarforgedBuilder }
     case Game.Ironsworn:
-      return result as {[key: string]: EncounterNatureClassicInfoBuilder}
+      return result as { [key: SnakeCaseString]: EncounterNatureClassicInfoBuilder }
     default:
       throw badJsonError(buildEncounters)
   }

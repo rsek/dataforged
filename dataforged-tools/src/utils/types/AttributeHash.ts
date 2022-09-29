@@ -2,6 +2,6 @@ import type { AttributeKey, AttributeMaster } from '@schema'
 /**
  * @public
  */
-export type AttributeHash<K extends AttributeKey = AttributeKey> = {
-  [key in K]?: AttributeMaster[K] | Array<AttributeMaster[K]> | undefined | null
+export type AttributeMap<K extends AttributeKey = AttributeKey> = {
+  [key in K]?: Array<AttributeMaster[K]> | undefined | null
 }

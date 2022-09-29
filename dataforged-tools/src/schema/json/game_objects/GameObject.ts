@@ -1,10 +1,10 @@
 import type { GameObjectType } from '@game_objects'
-import type { Requirements } from '@schema'
+import { AttributeMap } from '@utils'
 /**
  * Describes a game object, with optional required parameters (for example, a specific Location result).
  * @public
  */
 export interface GameObject {
-  'Object type': GameObjectType
-  Requires?: Requirements | undefined
+  object_type: GameObjectType
+  requires?: AttributeMap | undefined
 }

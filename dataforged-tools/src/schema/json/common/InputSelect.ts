@@ -1,5 +1,6 @@
 
-import type { HasId, HasLabel, Input, InputType, PcConditionMeterType, Stat } from '@schema'
+import type { MixinId, MixinLabel, Input, InputType, PcConditionMeterType, Stat } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * An input where the user selects a single option from a list of pre-set options.
@@ -7,16 +8,16 @@ import type { HasId, HasLabel, Input, InputType, PcConditionMeterType, Stat } fr
  * @public
  */
 export interface InputSelect extends Input {
-  'Input type': InputType.Select
+  input_type: InputType.Select
   /**
    * Hints which attribute(s) are set by this dropdown's options.
    * @patternProperties ^[A-z][a-z ]+$
    */
-  'Sets attributes': {
-    [key: string]: InputSelectAttributeDefinition
+  sets_attributes: {
+    [key: SnakeCaseString]: InputSelectAttributeDefinition
   }
-  Options: {
-    [key: string]: InputSelectOption
+  options: {
+    [key: SnakeCaseString]: InputSelectOption
   }
 }
 
@@ -25,7 +26,7 @@ export interface InputSelect extends Input {
  * @public
  */
 export interface InputSelectAttributeDefinition {
-  'Input type': InputSelectOptionType
+  attribute_type: InputSelectOptionType
 }
 
 /**
@@ -42,7 +43,7 @@ export enum InputSelectOptionType {
    * A reference to one of the player character's condition meters (*Starforged*) or status tracks (*Ironsworn*): health, spirit, or supply.
    * @see {@link PcConditionMeterType}
    */
-  ConditionMeter = 'condition meter',
+  ConditionMeter = 'condition_meter',
   /**
    * An arbitrary pre-set string value.
    */
@@ -57,7 +58,7 @@ export enum InputSelectOptionType {
  * Represents an option in an {@link InputSelect}.
  * @public
  */
-export interface InputSelectOption extends HasId, HasLabel {
+export interface InputSelectOption extends MixinId, MixinLabel {
   /**
    * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+$
    */
@@ -65,21 +66,21 @@ export interface InputSelectOption extends HasId, HasLabel {
   /**
    * A keyed object describing what attribute keys should be set to when this option is active. *All* items in the object should be set in this manner.
    */
-  'Set attributes': {
-    [key: keyof InputSelect['Sets attributes']]: InputSelectOptionSetter
+  set_attributes: {
+    [key: keyof InputSelect['sets_attributes']]: InputSelectOptionSetter
   }
 }
 
 /**
  * @public
  */
-export interface InputSelectOptionSetter extends HasId {
+export interface InputSelectOptionSetter extends MixinId {
   /**
    * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+/[a-z_-]+$
    */
   $id: string
-  'Input type': InputSelectOptionType
-  Value: Stat | PcConditionMeterType | number | string
+  attribute_type: InputSelectOptionType
+  value: Stat | PcConditionMeterType | number | string
 }
 
 /**
@@ -87,30 +88,30 @@ export interface InputSelectOptionSetter extends HasId {
  * @public
  */
 export interface InputSelectOptionSetterStat extends InputSelectOptionSetter {
-  'Input type': InputSelectOptionType.Stat
-  Value: Stat
+  attribute_type: InputSelectOptionType.Stat
+  value: Stat
 }
 /**
  * A condition meter set by an {@link InputSelectOption}.
  * @public
  */
 export interface InputSelectOptionSetterMeter extends InputSelectOptionSetter {
-  'Input type': InputSelectOptionType.ConditionMeter
-  Value: PcConditionMeterType
+  attribute_type: InputSelectOptionType.ConditionMeter
+  value: PcConditionMeterType
 }
 /**
  * An integer value set by an {@link InputSelectOption}.
  * @public
  */
 export interface InputSelectOptionSetterNumber extends InputSelectOptionSetter {
-  'Input type': InputSelectOptionType.Number
-  Value: number
+  attribute_type: InputSelectOptionType.Number
+  value: number
 }
 /**
  * An arbitrary string value set by an {@link InputSelectOption}.
  * @public
  */
 export interface InputSelectOptionSetterString extends InputSelectOptionSetter {
-  'Input type': InputSelectOptionType.String
-  Value: string
+  attribute_type: InputSelectOptionType.String
+  value: string
 }

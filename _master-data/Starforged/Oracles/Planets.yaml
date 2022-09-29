@@ -1,32 +1,32 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Planets:
-    Title:
-      Canonical: Planets
-      Short: Planet
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  planets:
+    title:
+      canonical: Planets
+      short: Planet
     _idFragment: Planets
-    Source:
-      Date: "050622"
-    Tables:
-      Class:
-        Title:
-          Canonical: Planetary Class
-          Short: Class
+    source:
+      date: "050622"
+    tables:
+      class:
+        title:
+          canonical: Planetary Class
+          short: Class
         _idFragment: Class
-        Source:
-          Page: 306
-        Usage:
-          Initial: true
-          Suggestions:
-            Oracle rolls:
+        source:
+          page: 306
+        usage:
+          initial: true
+          suggestions:
+            oracle_rolls:
               - starforged/oracles/core/descriptor
-        Content:
-          Part of speech: [noun]
-        Description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
-        Table:
+        content:
+          part_of_speech: [noun]
+        description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
+        table:
           - [1, 15, "[⏵Desert World](starforged/oracles/planets/desert)", *obj:Planet.Desert, *images:DesertWorld]
           - [16, 30, "[⏵Furnace World](starforged/oracles/planets/furnace)", *obj:Planet.Furnace, *images:FurnaceWorld]
           - [31, 35, "[⏵Grave World](starforged/oracles/planets/grave)", *obj:Planet.Grave, *images:GraveWorld]
@@ -38,45 +38,48 @@ Oracle sets:
           - [91, 92, "[⏵Shattered World](starforged/oracles/planets/shattered)", *obj:Planet.Shattered, *images:ShatteredWorld]
           - [93, 98, "[⏵Tainted World](starforged/oracles/planets/tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
           - [99, 100, "[⏵Vital World](starforged/oracles/planets/vital)", *obj:Planet.Vital, *images:VitalWorld]
-    Sets:
-      Peril:
-        Title:
-          Canonical: Planetside Peril
-          Short: Peril
+    sets:
+      peril:
+        title:
+          canonical: Planetside Peril
+          short: Peril
         _idFragment: Peril
-        Source:
-          Page: 320
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/planets/peril/lifebearing
-              Label: Lifebearing
-            - Type: dice range
-              Content: starforged/oracles/planets/peril/lifeless
-              Label: Lifeless
-            - Type: string
-              Content: starforged/oracles/planets/peril/lifebearing
-        Usage:
-          Repeatable: true
-          Requires:
-            Attributes:
-              Life: null
-        Content:
-          Part of speech: [fragment]
-          Tags: [peril, event, present]
-        Description: |-
+        source:
+          page: 320
+        display:
+          columns:
+            lifebearing:
+              label: Lifebearing
+              column_type: dice_range
+              content: starforged/oracles/planets/peril/lifebearing
+            lifeless:
+              label: Lifeless
+              column_type: dice_range
+              content: starforged/oracles/planets/peril/lifeless
+            result:
+              column_type: string
+              content: starforged/oracles/planets/peril/lifebearing
+        usage:
+          repeatable: true
+          requires:
+            attributes:
+              life: null
+        content:
+          part_of_speech: [fragment]
+          tags: [peril, event, present]
+        description: |-
           Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
-        Tables:
-          Lifebearing:
-            Title:
-              Canonical: Lifebearing
-            Display:
-              Column of: starforged/oracles/planets/peril
-            Usage:
-              Requires: &attr:Life.Lifebearing
-                Attributes:
-                  Life: [None, Extinct]
-            Table: &table:Planets.Peril
+        tables:
+          lifebearing:
+            title:
+              canonical: Lifebearing
+            display:
+              column_of: starforged/oracles/planets/peril
+            usage:
+              requires: &attr:Life.Lifebearing
+                attributes:
+                  life: [none, extinct]
+            table: &table:Planets.Peril
               - [1, 3, Corrupted or mutated lifeform, Suggestions: [*obj:Creature]]
               # TODO: suggest chaotic theme?
               - [4, 6, Signs of a lifeform's power or cunning, Suggestions: [*obj:Creature]]
@@ -112,15 +115,15 @@ Oracle sets:
               - [94, 96, Wreckage or ruins portend a new threat]
               - [97, 99, *result:Action+Theme]
               - [100, 100, *result:RollTwice]
-          Lifeless:
-            Title:
-              Canonical: Lifeless
-            Display:
-              Column of: starforged/oracles/planets/peril
-            Usage:
-              Requires: &attr:Life.Lifeless
-                Attributes:
-                  Life: [None, Extinct]
+          lifeless:
+            title:
+              canonical: Lifeless
+            display:
+              column_of: starforged/oracles/planets/peril
+            usage:
+              requires: &attr:Life.Lifeless
+                attributes:
+                  life: [none, extinct]
             _templateTableRows:
               content: *table:Planets.Peril
               rolls:
@@ -158,42 +161,45 @@ Oracle sets:
                 - [92, 95]
                 - [96, 99]
                 - [100, 100]
-      Opportunity:
-        Title:
-          Canonical: Planetside Opportunity
-          Short: Opportunity
+      opportunity:
+        title:
+          canonical: Planetside Opportunity
+          short: Opportunity
         _idFragment: Opportunity
-        Source:
-          Page: 321
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/planets/opportunity/lifebearing
-              Label: Lifebearing
-            - Type: dice range
-              Content: starforged/oracles/planets/opportunity/lifeless
-              Label: Lifeless
-            - Type: string
-              Content: starforged/oracles/planets/opportunity/lifebearing
-        Content:
-          Part of speech: [fragment]
-          Tags: [opportunity]
-        Usage:
-          Repeatable: true
-          Requires:
-            Attributes:
-              Life: null
-        Description: |-
+        source:
+          page: 321
+        display:
+          columns:
+            lifebearing:
+              column_type: dice_range
+              content: starforged/oracles/planets/opportunity/lifebearing
+              label: Lifebearing
+            lifeless:
+              column_type: dice_range
+              content: starforged/oracles/planets/opportunity/lifeless
+              label: Lifeless
+            result:
+              column_type: string
+              content: starforged/oracles/planets/opportunity/lifebearing
+        content:
+          part_of_speech: [fragment]
+          tags: [opportunity]
+        usage:
+          repeatable: true
+          requires:
+            attributes:
+              life: null
+        description: |-
           Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
-        Tables:
-          Lifebearing:
-            Display:
-              Column of: starforged/oracles/planets/opportunity
-            Title:
-              Canonical: Lifebearing
-            Usage:
-              Requires: *attr:Life.Lifebearing
-            Table: &table:Planets.Opportunity
+        tables:
+          lifebearing:
+            display:
+              column_of: starforged/oracles/planets/opportunity
+            title:
+              canonical: Lifebearing
+            usage:
+              requires: *attr:Life.Lifebearing
+            table: &table:Planets.Opportunity
               - [1, 4, Clue to a lifeform's nature or vulnerabilities, Suggestions: [*obj:Creature]]
               - [5, 8, Friendly interaction with a benign lifeform, Suggestions: [*obj:Creature]]
               - [9, 12, Hunting or foraging opportunities are plentiful]
@@ -219,13 +225,13 @@ Oracle sets:
               - [89, 92, Plea for help from a potential benefactor, Suggestions: [*obj:Npc]]
               - [93, 96, "Refuge offers a place to hide, plan, or recover", Suggestions: [*roll:Object]]
               - [97, 100, Vantage point reveals the lay of the land, Suggestions: [*roll:Object]]
-          Lifeless:
-            Display:
-              Column of: starforged/oracles/planets/opportunity
-            Title:
-              Canonical: Lifeless
-            Usage:
-              Requires: *attr:Life.Lifeless
+          lifeless:
+            display:
+              column_of: starforged/oracles/planets/opportunity
+            title:
+              canonical: Lifeless
+            usage:
+              requires: *attr:Life.Lifeless
             _templateTableRows:
               content: *table:Planets.Opportunity
               rolls:

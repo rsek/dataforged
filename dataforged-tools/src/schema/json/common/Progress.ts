@@ -2,17 +2,17 @@
  * The number of ticks in a single progress box.
  * @public
  */
-export const TICKS_PER_BOX = 4;
+export const TICKS_PER_BOX = 4
 /**
  * The number of boxes in a progress track.
  * @public
  */
-export const TRACK_MAX_BOXES = 10;
+export const TRACK_MAX_BOXES = 10
 /**
  * The number of ticks in a progress track.
  * @public
  */
-export const TRACK_MAX_TICKS = TICKS_PER_BOX * TRACK_MAX_BOXES;
+export const TRACK_MAX_TICKS = TICKS_PER_BOX * TRACK_MAX_BOXES
 
 /**
  * Enumerates *Ironsworn* challenge ranks.
@@ -43,6 +43,7 @@ export enum ChallengeRank {
 
 /**
  * Enumerates the amount of progress marked for a track of a given {@link ChallengeRank}, in ticks.
+ * @public
  */
 export enum ProgressUnit {
   /**
@@ -69,6 +70,7 @@ export enum ProgressUnit {
 
 /**
  * Enumerates the amount of {@link LegacyTypeStarforged|legacy} marked for a reward of the given {@link ChallengeRank}, in ticks.
+ * @public
  */
 export enum LegacyRewardStarforged {
   /**
@@ -140,42 +142,44 @@ export enum LegacyTypeClassic {
  * @public
  */
 export interface TrackBase {
-  'Progress type': ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic
+  'track_type': ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic
   /**
-   * @min 0
+   * @minimum 0
    */
-  Ticks: number;
+  ticks: number
   /**
-   * @min 0
-   * @max 10
+   * @minimum 0
+   * @maximum 10
    */
-  Score: number;
+  score: number
 }
 /**
  * @public
  */
 export interface ProgressTrack extends TrackBase {
-  'Progress type': ProgressTypeStarforged | ProgressTypeClassic
+  'track_type': ProgressTypeStarforged | ProgressTypeClassic
   /**
-   * @min 0
-   * @max 40
+   * @minimum 0
+   * @maximum 40
    */
-  Ticks: number;
-  Rank: ChallengeRank;
+  ticks: number
+  rank: ChallengeRank
 }
 
 /**
  * @public
  */
 export interface LegacyTrackStarforged extends TrackBase {
-  'Progress type': LegacyTypeStarforged;
+  'track_type': LegacyTypeStarforged
 }
-
+/**
+ * @public
+ */
 export interface BondsTrackClassic extends TrackBase {
-  'Progress type': LegacyTypeClassic.BondsTrack
+  'track_type': LegacyTypeClassic.BondsTrack
   /**
-   * @min 0
-   * @max 40
+   * @minimum 0
+   * @maximum 40
    */
-  Ticks: number;
+  ticks: number
 }

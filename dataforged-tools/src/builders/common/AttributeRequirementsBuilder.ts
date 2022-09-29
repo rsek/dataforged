@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import type { AttributeChoices, AttributeKey, AttributeValue } from '@schema'
-import type { AttributeHash } from '@utils/types/AttributeHash.js'
+import type { AttributeMap } from '@utils/types/AttributeHash.js'
 import _ from 'lodash-es'
 
 /**
  * @internal
  */
 export class AttributeRequirementsBuilder extends Array<AttributeChoices> {
-  constructor (yaml: AttributeHash) {
+  constructor (yaml: AttributeMap) {
     super()
-    _.forEach<AttributeHash<AttributeKey>>(yaml, (value, key) => {
+    _.forEach<AttributeMap<AttributeKey>>(yaml, (value, key) => {
       let values
       if (Array.isArray(value)) {
         values = value
@@ -18,7 +18,7 @@ export class AttributeRequirementsBuilder extends Array<AttributeChoices> {
       }
       const Key = key as AttributeKey
       const Values = values as Array<AttributeValue<typeof Key>>
-      this.push({ Key, Values })
+      this.push({ key: Key, value: Values })
     })
   }
 }

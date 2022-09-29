@@ -1,2 +1,2 @@
-export {}
-// # sourceMappingURL=HasName.js.map
+export {};
+//# sourceMappingURL=HasName.js.map

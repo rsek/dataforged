@@ -3,7 +3,7 @@
  */
 export var VaultZone;
 (function (VaultZone) {
-  VaultZone.Interior = 'Interior'
-  VaultZone.Sanctum = 'Sanctum'
-})(VaultZone || (VaultZone = {}))
-// # sourceMappingURL=VaultZone.js.map
+    VaultZone["Interior"] = "interior";
+    VaultZone["Sanctum"] = "sanctum";
+})(VaultZone || (VaultZone = {}));
+//# sourceMappingURL=VaultZone.js.map

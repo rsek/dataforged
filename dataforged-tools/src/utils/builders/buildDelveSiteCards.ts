@@ -12,15 +12,15 @@ export function buildDelveSiteCards<T extends DelveCardType> (
   buildLog(buildDelveSiteCards, `Building delve site ${type.toLowerCase()}s...`)
   const assetPath = `${MASTER_DATA_PATH as string}/${Game.Ironsworn}/Delve-Site-${type === DelveCardType.Domain ? 'Domains' : 'Themes'}.yaml`
   const data = fs.readFileSync(assetPath, { encoding: 'utf-8' })
-  const json = yaml.load(data) as YamlDelveSiteDomainRoot|YamlDelveSiteThemeRoot
+  const json = yaml.load(data) as YamlDelveSiteDomainRoot | YamlDelveSiteThemeRoot
   switch (type) {
     case DelveCardType.Domain: {
-      const cards = (json as YamlDelveSiteDomainRoot)['Delve site domains']
-      return _.mapValues(cards, (card, key) => new DelveSiteDomainBuilder(card, key, json.Source))
+      const cards = (json as YamlDelveSiteDomainRoot).delve_site_domains
+      return _.mapValues(cards, (card, key) => new DelveSiteDomainBuilder(card, key, json.source))
     }
     case DelveCardType.Theme: {
-      const cards = (json as YamlDelveSiteThemeRoot)['Delve site themes']
-      return _.mapValues(cards, (card, key) => new DelveSiteThemeBuilder(card, key, json.Source))
+      const cards = (json as YamlDelveSiteThemeRoot).delve_site_themes
+      return _.mapValues(cards, (card, key) => new DelveSiteThemeBuilder(card, key, json.source))
     }
     default:
       throw Error()

@@ -3,21 +3,21 @@ import type { TruthOptionStarforged, TruthOptionSubtableRowStarforged, TruthStar
 /**
  * @internal
  */
-export interface YamlTruthStarforged extends YamlStubNode<TruthStarforged, '', 'Table'> {
-  Suggestions?: YamlSuggestions | undefined
-  Table: YamlTruthOptionStarforged[]
-  Title: YamlTitleCaseTitle
+export interface YamlTruthStarforged extends YamlStubNode<TruthStarforged, '', 'table'> {
+  suggestions?: YamlSuggestions | undefined
+  table: YamlTruthOptionStarforged[]
+  title: YamlTitleCaseTitle
 }
 
 /**
  * @internal
  */
-export interface YamlTruthOptionStarforged extends YamlStub<TruthOptionStarforged, '', 'Subtable'|'Roll template'> {
-  Subtable?: YamlTruthOptionStarforgedSubtableRow[] | undefined
-  'Roll template'?: YamlRollTemplate | undefined
+export interface YamlTruthOptionStarforged<C extends number | null = number | null, F extends number | null = number | null> extends YamlStub<TruthOptionStarforged<C, F>, '', 'subtable' | 'roll_template'> {
+  subtable?: YamlTruthOptionStarforgedSubtableRow[] | undefined
+  roll_template?: YamlRollTemplate | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlTruthOptionStarforgedSubtableRow extends YamlStub<TruthOptionSubtableRowStarforged> {}
+export interface YamlTruthOptionStarforgedSubtableRow<C extends number | null = number | null, F extends number | null = number | null> extends YamlStub<TruthOptionSubtableRowStarforged<C, F>> { }

@@ -1,4 +1,15 @@
-import type { Encounter, EncounterNatureTypeStarforged, EncounterVariant } from '@schema'
+import type { Encounter, EncounterVariant } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
+/**
+ * @public
+ */
+export enum EncounterNatureTypeStarforged {
+  Creature = 'creature',
+  Horror = 'horror',
+  Human = 'human',
+  Machine = 'machine',
+  Monster = 'monster'
+}
 
 /**
  * Represents an *Ironsworn: Starforged* Encounter entry.
@@ -9,10 +20,10 @@ export interface EncounterStarforged extends Encounter {
    * @pattern ^starforged/encounters/[a-z_-]+$
    */
   $id: string
-  Nature: EncounterNatureTypeStarforged
-  Summary: string
+  nature: EncounterNatureTypeStarforged
+  summary: string
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Variants?: {[key: string]: EncounterVariant} | undefined
+  variants?: { [key: SnakeCaseString]: EncounterVariant } | undefined
 }

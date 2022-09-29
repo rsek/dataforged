@@ -1,5 +1,5 @@
 
-import { DelveCardType, Game } from '@schema'
+import { DelveCardType, Game, SourceTitle } from '@schema'
 import type { Ironsworn, Starforged } from '@schema'
 import { buildAssets } from '@utils/builders/buildAssets.js'
 import { buildEncounters } from '@utils/builders/buildEncounters.js'
@@ -17,29 +17,31 @@ import { DelveRarityCollection } from '@builders/rarities/DelveRarityCollection.
  * Builds all data for Dataforged.
  * @returns An object keyed with the game data.
 */
-export function buildDataforged (game: Game = Game.Starforged) {
+export function buildDataforged(game: Game = Game.Starforged) {
   buildLog(buildDataforged, `Building Dataforged for ${game}...`)
-  let data: Ironsworn|Starforged
+  let data: Ironsworn | Starforged
   switch (game) {
     case Game.Starforged: {
       data = {
-        'Asset types': buildAssets(game),
-        Encounters: buildEncounters(game),
-        'Move categories': buildMoves(game),
-        'Oracle sets': buildOracles(game),
-        'Setting truths': buildTruths(game)
+        asset_types: buildAssets(game),
+        encounters: buildEncounters(game),
+        move_categories: buildMoves(game),
+        oracle_sets: buildOracles(game),
+        setting_truths: buildTruths(game)
       } as Starforged
-      break }
+      break
+    }
     case Game.Ironsworn: {
       data = {
-        'Asset types': buildAssets(game),
-        Encounters: buildEncounters(game),
-        'Move categories': buildMoves(game),
-        'Oracle sets': buildOracles(game),
-        'Setting truths': buildTruths(game),
-        'Delve site themes': buildDelveSiteCards(DelveCardType.Theme),
-        'Delve site domains': buildDelveSiteCards(DelveCardType.Domain),
-        'Ironlands regions': new IronlandsRegionCollection(SourceBuilder.default(Game.Ironsworn)).toJson()
+        asset_types: buildAssets(game),
+        encounters: buildEncounters(game),
+        move_categories: buildMoves(game),
+        oracle_sets: buildOracles(game),
+        setting_truths: buildTruths(game),
+        rarities: new DelveRarityCollection(SourceBuilder.defaultByTitle(SourceTitle.IronswornDelve)).toJson(),
+        delve_site_themes: buildDelveSiteCards(DelveCardType.Theme),
+        delve_site_domains: buildDelveSiteCards(DelveCardType.Domain),
+        ironlands_regions: new IronlandsRegionCollection(SourceBuilder.defaultByTitle(SourceTitle.Ironsworn)).toJson()
         // "Rarities": new DelveRarityCollection(game).toJson()
         // Rarities
         // Delve Sites (the sample ones from Delve)

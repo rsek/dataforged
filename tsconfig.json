@@ -1,14 +1,17 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "include": [
-    "./src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    "./src/**/*.d.ts",
-    "./src/index-esm.ts",
-    "./dataforged-tools"
+    "src/**/*.d.ts",
+    "src/index-esm.ts",
+    "dataforged-tools",
+    "dist"
   ],
   "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
     "lib": [
       "es2020",
       "es2021",
@@ -18,8 +21,6 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "preserveConstEnums": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "removeComments": false,
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,

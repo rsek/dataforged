@@ -1,24 +1,24 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Derelicts:
-    Title:
-      Canonical: Derelicts
-    Source:
-      Date: "050622"
-    Sets:
-      Medical:
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      medical:
         _templateOracleSet: *template.category:Zone
         _templateVars:
-          Zone: Medical
-        Title:
-          Canonical: Medical
-        Source:
-          Page: 356
-        Tables:
-          Area:
+          zone: Medical
+        title:
+          canonical: Medical
+        source:
+          page: 356
+        tables:
+          area:
             _templateOracleTable: *template.info:Zone.Area
             _templateTableRows:
               rolls: *template.rolls:Zone.Area
@@ -35,7 +35,7 @@ Oracle sets:
                 - Ward or clinic
                 - *result:NewZone
                 - *result:NewZoneViaAccess
-          Feature:
+          feature:
             _templateOracleTable: *template.info:Zone.Feature
             _templateTableRows:
               rolls: *template.rolls:Zone.Feature
@@ -52,7 +52,7 @@ Oracle sets:
                 - Medical records or scans
                 - Stacks of body bags
                 - *result:Descriptor+Focus
-          Peril:
+          peril:
             _templateOracleTable: *template.info:Zone.Peril
             _templateTableRows:
               rolls: *template.rolls:Zone.Peril
@@ -68,7 +68,7 @@ Oracle sets:
                 - Signs of broken quarantine
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:Zone.Opportunity
             _templateTableRows:
               rolls: *template.rolls:Zone.Opportunity

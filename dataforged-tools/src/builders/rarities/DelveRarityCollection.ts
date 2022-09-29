@@ -4,11 +4,11 @@ import type { DelveRarity, Source, YamlDelveRarity, YamlDelveRarityRoot } from '
 import { Game } from '@schema'
 
 export class DelveRarityCollection extends RootCollectionBuilder<Game.Ironsworn, DelveRarity, YamlDelveRarity, YamlDelveRarityRoot> {
-  buildItem (yaml: YamlDelveRarity): DelveRarity {
-    return new DelveRarityBuilder(yaml, 'Rarities')
+  buildItem(yaml: YamlDelveRarity): DelveRarity {
+    return new DelveRarityBuilder(yaml, 'rarities')
   }
 
-  constructor (source: Source) {
-    super(Game.Ironsworn, 'Rarities', source, '../_master-data/Ironsworn/Delve-Rarities.(yml|yaml)', 'Rarities')
+  constructor(source: Source) {
+    super(Game.Ironsworn, 'rarities', source, '../_master-data/Ironsworn/Delve-Rarities.(yml|yaml)', 'rarities')
   }
 }

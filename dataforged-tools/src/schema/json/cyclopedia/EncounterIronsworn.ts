@@ -9,7 +9,7 @@ export interface EncounterClassic extends Encounter {
    * @pattern ^(starforged|ironsworn)/encounters/[a-z_-]+/[a-z_-]+$
    */
   $id: string
-  Nature: EncounterNatureTypeClassic
-  'Your truth'?: string | undefined
-  Summary?: string | undefined
+  nature: EncounterNatureTypeClassic
+  your_truth?: string | undefined
+  summary?: string | undefined
 }

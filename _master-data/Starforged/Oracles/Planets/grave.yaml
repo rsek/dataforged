@@ -1,27 +1,27 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Planets:
-    Title:
-      Canonical: Planets
-    Source:
-      Date: "050622"
-    Sets:
-      Grave:
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  planets:
+    title:
+      canonical: Planets
+    source:
+      date: "050622"
+    sets:
+      grave:
         _templateOracleSet: *template.category:Planet
         _templateVars:
-          Planetary Class: Grave
-        Title:
-          Canonical: Grave world
-        Display:
-          Images: *images:GraveWorld
-        Source:
-          Page: 310
-        Summary: A once-thriving world—now a grim monument to a fallen civilization.
-        Sample names:
+          planetary_class: Grave
+        title:
+          canonical: Grave world
+        display:
+          images: *images:GraveWorld
+        source:
+          page: 310
+        summary: A once-thriving world—now a grim monument to a fallen civilization.
+        sample_names:
           - Anubis
           - Banshee
           - Barrow
@@ -42,11 +42,11 @@ Oracle sets:
           - Stygia
           - Tartarus
           - Thrace
-        Sets:
-          Settlements:
+        sets:
+          settlements:
             _templateOracleSet: *template.info:Planet.Settlements
-            Tables:
-              Terminus:
+            tables:
+              terminus:
                 _templateOracleTable: *template.info:Planet.Settlements.Terminus
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -57,7 +57,7 @@ Oracle sets:
                     - [96, 98] # Multiple settlements
                     - [99, 100] # Settlements in conflict
 
-              Outlands:
+              outlands:
                 _templateOracleTable: *template.info:Planet.Settlements.Outlands
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -68,7 +68,7 @@ Oracle sets:
                     - [null, null] # Multiple settlements
                     - [null, null] # Settlements in conflict
 
-              Expanse:
+              expanse:
                 _templateOracleTable: *template.info:Planet.Settlements.Expanse
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -78,8 +78,8 @@ Oracle sets:
                     - [99, 100] # Planetside settlement
                     - [null, null] # Multiple settlements
                     - [null, null] # Settlements in conflict
-        Tables:
-          Atmosphere:
+        tables:
+          atmosphere:
             _templateOracleTable: *template.info:Planet.Atmosphere
             _templateTableRows:
               content: *template.content:Planet.Atmosphere
@@ -91,7 +91,7 @@ Oracle sets:
                 - [91, 100] # Breathable
                 - [null, null] # Ideal
 
-          Observed From Space:
+          observed_from_space:
             _templateOracleTable: *template.info:Planet.ObservedFromSpace
             _templateTableRows:
               rolls: *template.rolls:Planet.ObservedFromSpace
@@ -106,7 +106,7 @@ Oracle sets:
                 - Orbiting ship graveyard
                 - *result:Descriptor+Focus
                 - *result:PrecursorVault.Orbital
-          Planetside Feature:
+          planetside_feature:
             _templateOracleTable: *template.info:Planet.PlanetsideFeature
             _templateTableRows:
               rolls: *template.rolls:Planet.PlanetsideFeature
@@ -126,7 +126,7 @@ Oracle sets:
                 - Whispers of the dead
                 - *result:Descriptor+Focus
                 - *result:PrecursorVault.Planetside
-          Life:
+          life:
             _templateOracleTable: *template.info:Planet.Life
             _templateTableRows:
               content: *template.content:Planet.Life

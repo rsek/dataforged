@@ -3,8 +3,6 @@
  * @module Json.Cyclopedia
  */
 
-export * from '@schema/json/cyclopedia/EncounterNature.js'
-export * from '@schema/json/cyclopedia/EncounterTags.js'
 export * from '@schema/json/cyclopedia/Encounter.js'
 export * from '@schema/json/cyclopedia/EncounterBase.js'
 export * from '@schema/json/cyclopedia/EncounterIronsworn.js'

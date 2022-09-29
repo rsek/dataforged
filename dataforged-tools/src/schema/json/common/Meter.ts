@@ -1,31 +1,31 @@
-import type { HasId, HasLabel } from '@schema'
+import type { MixinId, MixinLabel } from '@schema'
 
 /**
  * Base interface for properties common to all resource meters.
  * @see {@link ConditionMeter}
  * @public
  */
-export interface Meter extends HasId, HasLabel {
+export interface Meter extends MixinId, MixinLabel {
   /**
    * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
    */
-  Min: number
+  min: number
   /**
    * The maximum value of the meter.
    */
-  Max: number
+  max: number
   /**
    * The initial value of the meter.
    */
-  Value: number
+  value: number
   /**
    * Whether the meter value can be used in place of a stat in an action roll.
    */
-  Rollable: boolean
+  rollable: boolean
   /**
    * @pattern ^[a-z].+$
    */
-  Label: string
+  label: string
 }
 
 /**
@@ -34,29 +34,18 @@ export interface Meter extends HasId, HasLabel {
  * @public
  */
 export enum MeterAlias {
-  Attached_Asset_Meter = 'attached asset meter',
-  CompanionHealth = 'companion health',
-  VehicleIntegrity = 'vehicle integrity',
-  CommandVehicleIntegrity = 'command vehicle integrity',
-  SupportVehicleIntegrity = 'support vehicle integrity',
-  IncidentalVehicleIntegrity = 'incidental vehicle integrity'
+  Attached_Asset_Meter = 'attached_asset_meter',
+  CompanionHealth = 'companion_health',
+  VehicleIntegrity = 'vehicle_integrity',
+  CommandVehicleIntegrity = 'command_vehicle_integrity',
+  SupportVehicleIntegrity = 'support_vehicle_integrity',
+  IncidentalVehicleIntegrity = 'incidental_vehicle_integrity'
 }
-
-/**
- * Enumerates player character resource meters.
- * @public
- */
-export enum MeterType {
-  Health = 'health',
-  Spirit = 'spirit',
-  Supply = 'supply',
-  Momentum = 'momentum'
-};
 
 /**
  * Conditions (such as impacts) that can apply to asset cards with condition meters. These are typically presented as tick boxes on the asset card.
  * @public
- * @deprecated
+ * @deprecated replaced by {@link InputToggle}
  */
 export enum MeterCondition {
   /**
@@ -73,11 +62,10 @@ export enum MeterCondition {
    * When your companion’s health is at 0 and you score a miss, they are out of action. You cannot leverage their support until they gain at least +1 health. Envision what this means in the fiction of your scene.
    * @page 204
    */
-  OutOfAction = 'out of action',
+  OutOfAction = 'out_of_action',
   /** Used by "Fleet Commander" asset */
   Wrecked = 'wrecked'
 }
-
 
 /**
  * Interface representing a condition meter such as health, spirit, supply.
@@ -91,13 +79,13 @@ export interface ConditionMeter extends Meter {
   /**
    * @default 0
    */
-  Min: number
+  min: number
   /**
    * @default 5
    */
-  Max: number
+  max: number
   /**
-   * Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.Using}. The array will include an appropriate alias if that is the case.
+   * Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.using}. The array will include an appropriate alias if that is the case.
    */
-  Aliases?: MeterAlias[] | undefined
+  aliases?: MeterAlias[] | undefined
 }

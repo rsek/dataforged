@@ -36,6 +36,6 @@ import type { AttributeKey } from '@schema'
 
  */
 export interface Attribute {
-  Key: AttributeKey
-  Value?: string | undefined
+  key: AttributeKey
+  value?: string | undefined
 }

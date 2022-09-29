@@ -1,11 +1,13 @@
-import type { AlterAsset, AlterAssetAbility, AlterAssetAttachment, AlterAssetConditionMeter, InputClock, InputNumber, InputSelect, InputText, InputToggle } from '@schema'
+import { NodeBuilder } from '@builders/NodeBuilder.js'
+import type { AlterAsset, AlterAssetAbility, AlterAssetAttachment, AlterAssetConditionMeter, InputClock, InputNumber, InputSelect, InputText, InputToggle, MixinAlter, YamlAlterAsset } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
-export class AlterAssetBuilder implements AlterAsset {
-  $id: string
-  Abilities?: AlterAssetAbility[] | undefined
-  Attachments?: AlterAssetAttachment | undefined
-  'Condition meter'?: AlterAssetConditionMeter | undefined
-  States?: InputToggle[] | undefined
-  Inputs?: { [key: string]: InputNumber | InputClock | InputText | InputSelect } | undefined
-  Requirement?: string | undefined
+export class AlterAssetBuilder extends NodeBuilder<YamlAlterAsset, AlterAsset, MixinAlter> implements AlterAsset {
+  abilities?: AlterAssetAbility[] | undefined
+  attachments?: AlterAssetAttachment | undefined
+  condition_meter?: AlterAssetConditionMeter | undefined
+  states?: InputToggle[] | undefined
+  inputs?: { [key: SnakeCaseString]: InputNumber | InputClock | InputText | InputSelect } | undefined
+  requirement?: string | undefined
+  // FIXME
 }

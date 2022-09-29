@@ -1,24 +1,24 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Derelicts:
-    Title:
-      Canonical: Derelicts
-    Source:
-      Date: "050622"
-    Sets:
-      Research:
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      research:
         _templateOracleSet: *template.category:Zone
         _templateVars:
-          Zone: Research
-        Title:
-          Canonical: Research
-        Source:
-          Page: 359
-        Tables:
-          Area:
+          zone: Research
+        title:
+          canonical: Research
+        source:
+          page: 359
+        tables:
+          area:
             _templateOracleTable: *template.info:Zone.Area
             _templateTableRows:
               rolls: *template.rolls:Zone.Area
@@ -35,7 +35,7 @@ Oracle sets:
                 - Secure vault
                 - *result:NewZone
                 - *result:NewZoneViaAccess
-          Feature:
+          feature:
             _templateOracleTable: *template.info:Zone.Feature
             _templateTableRows:
               rolls: *template.rolls:Zone.Feature
@@ -52,7 +52,7 @@ Oracle sets:
                 - Recorded research log
                 - Spilled chemicals
                 - *result:Descriptor+Focus
-          Peril:
+          peril:
             _templateOracleTable: *template.info:Zone.Peril
             _templateTableRows:
               rolls: *template.rolls:Zone.Peril
@@ -68,7 +68,7 @@ Oracle sets:
                 - Unstable technology
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:Zone.Opportunity
             _templateTableRows:
               rolls: *template.rolls:Zone.Opportunity

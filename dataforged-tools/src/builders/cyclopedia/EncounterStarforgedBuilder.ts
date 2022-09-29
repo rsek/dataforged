@@ -3,44 +3,45 @@ import { Game } from '@schema'
 import type { ChallengeRank, Display, EncounterNatureTypeStarforged, EncounterStarforged, EncounterTags, EncounterVariant, Source, Title, YamlEncounterStarforged } from '@schema'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * @internal
  */
 export class EncounterStarforgedBuilder implements EncounterStarforged {
   $id: EncounterStarforged['$id']
-  Title: Title
-  Nature: EncounterNatureTypeStarforged
-  Summary: string
-  Tags?: EncounterTags[] | undefined
-  Rank: ChallengeRank
-  Display: Display
-  Features: string[]
-  Drives: string[]
-  Tactics: string[]
-  Variants?: {[key: string]: EncounterVariant} | undefined
-  Description: string
-  'Quest starter': string
-  Source: Source
-  constructor (yaml: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
+  title: Title
+  nature: EncounterNatureTypeStarforged
+  summary: string
+  tags?: EncounterTags[] | undefined
+  rank: ChallengeRank
+  display: Display
+  features: string[]
+  drives: string[]
+  tactics: string[]
+  variants?: { [key: SnakeCaseString]: EncounterVariant } | undefined
+  description: string
+  quest_starter: string
+  source: Source
+  constructor(yaml: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
     const game = Game.Starforged
-    const fragment = yaml._idFragment ?? yaml.Title.Canonical
-    this.$id = formatId(fragment, game, 'Encounters')
-    this.Title = new TitleBuilder(yaml.Title, this)
-    this.Nature = yaml.Nature
-    this.Summary = yaml.Summary
-    this.Tags = yaml.Tags
-    this.Rank = yaml.Rank
-    this.Display = new DisplayBuilder({ })
-    this.Features = yaml.Features
-    this.Drives = yaml.Drives
-    this.Tactics = yaml.Tactics
-    const newSource = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Starforged), ...ancestorSourceJson)
-    this.Description = yaml.Description
-    this['Quest starter'] = yaml['Quest starter']
-    this.Source = newSource
-    if (yaml.Variants != null) {
-      this.Variants = _.mapValues(yaml.Variants, variant => new EncounterVariantBuilder(variant, this))
+    const fragment = yaml._idFragment ?? yaml.title.canonical
+    this.$id = formatId(fragment, game, 'encounters')
+    this.title = new TitleBuilder(yaml.title, this)
+    this.nature = yaml.nature
+    this.summary = yaml.summary
+    this.tags = yaml.tags
+    this.rank = yaml.rank
+    this.display = new DisplayBuilder({})
+    this.features = yaml.features
+    this.drives = yaml.drives
+    this.tactics = yaml.tactics
+    const newSource = new SourceBuilder(yaml.source ?? SourceBuilder.defaultByGame(Game.Starforged), ...ancestorSourceJson)
+    this.description = yaml.description
+    this.quest_starter = yaml.quest_starter
+    this.source = newSource
+    if (yaml.variants) {
+      this.variants = _.mapValues(yaml.variants, variant => new EncounterVariantBuilder(variant, this))
     }
   }
 }

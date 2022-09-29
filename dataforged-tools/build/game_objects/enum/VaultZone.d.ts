@@ -2,7 +2,7 @@
  * @public
  */
 export declare enum VaultZone {
-    Interior = "Interior",
-    Sanctum = "Sanctum"
+    Interior = "interior",
+    Sanctum = "sanctum"
 }
 //# sourceMappingURL=VaultZone.d.ts.map

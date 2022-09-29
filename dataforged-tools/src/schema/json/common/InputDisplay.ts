@@ -1,16 +1,19 @@
 import type { Display } from '@schema/json/meta/Display.js'
 
+/**
+ * @public
+ */
 export enum InputDisplayPosition {
   /**
    * Display as attached to the asset condition meter.
    *
    * @example Starship (*Starforged*)
    */
-  ConditionMeter = 'condition meter',
+  ConditionMeter = 'condition_meter',
   /**
    * The input appears at the top of the parent element.
    *
-   * For inputs whose parent is an {@link Asset}, this means immediately below the asset title, before any {@link Asset.Requirement} text.
+   * For inputs whose parent is an {@link Asset}, this means immediately below the asset title, before any {@link Asset.requirement} text.
    *
    * Typically, text inputs with an {@link Asset} parent are displayed this way.
    */
@@ -42,7 +45,9 @@ export enum InputDisplayPosition {
    */
   Back = 'back'
 }
-
+/**
+ * @public
+ */
 export interface InputDisplay extends Display {
-  Position: InputDisplayPosition
+  position: InputDisplayPosition
 }

@@ -8,9 +8,9 @@ export interface OracleContent {
   /**
    * The part of speech of this oracle.
    */
-  'Part of speech'?: PartOfSpeechTag[] | undefined
+  part_of_speech?: PartOfSpeechTag[] | undefined
   /**
    * Any arbitrary string tags associated with this oracle.
    */
-  'Tags'?: string[] | undefined
+  tags?: string[] | undefined
 }

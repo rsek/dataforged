@@ -1,24 +1,24 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Derelicts:
-    Title:
-      Canonical: Derelicts
-    Source:
-      Date: "050622"
-    Sets:
-      Operations:
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      operations:
         _templateOracleSet: *template.category:Zone
         _templateVars:
-          Zone: Operations
-        Title:
-          Canonical: Operations
-        Source:
-          Page: 357
-        Tables:
-          Area:
+          zone: Operations
+        title:
+          canonical: Operations
+        source:
+          page: 357
+        tables:
+          area:
             _templateOracleTable: *template.info:Zone.Area
             _templateTableRows:
               rolls: *template.rolls:Zone.Area
@@ -35,7 +35,7 @@ Oracle sets:
                 - Security
                 - *result:NewZone
                 - *result:NewZoneViaAccess
-          Feature:
+          feature:
             _templateOracleTable: *template.info:Zone.Feature
             _templateTableRows:
               rolls: *template.rolls:Zone.Feature
@@ -52,7 +52,7 @@ Oracle sets:
                 - Video surveillance monitors
                 - Written logs
                 - *result:Descriptor+Focus
-          Peril:
+          peril:
             _templateOracleTable: *template.info:Zone.Peril
             _templateTableRows:
               rolls: *template.rolls:Zone.Peril
@@ -68,7 +68,7 @@ Oracle sets:
                 - Sensors indicate the arrival of an external threat
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:Zone.Opportunity
             _templateTableRows:
               rolls: *template.rolls:Zone.Opportunity

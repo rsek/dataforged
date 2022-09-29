@@ -8,19 +8,19 @@ import { formatId } from '@utils'
  */
 export class EncounterClassicBuilder extends EncounterBuilder implements EncounterClassic {
   $id: EncounterClassic['$id']
-  Title: Title
-  Nature: EncounterNatureTypeClassic
-  Display: Display
-  Source: Source
-  'Your truth'?: string | undefined
-  constructor (yaml: YamlEncounterClassic, parent: EncounterNatureClassic) {
+  title: Title
+  nature: EncounterNatureTypeClassic
+  display: Display
+  source: Source
+  your_truth?: string | undefined
+  constructor(yaml: YamlEncounterClassic, parent: EncounterNatureClassic) {
     super(yaml)
-    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical
+    const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, parent.$id)
-    this.Title = new TitleBuilder(yaml.Title, this)
-    this.Nature = EncounterNatureTypeClassic[parent.Title.Short]
-    this.Display = new DisplayBuilder({})
-    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), parent.Source)
-    this['Your truth'] = yaml['Your truth']
+    this.title = new TitleBuilder(yaml.title, this)
+    this.nature = EncounterNatureTypeClassic[parent.title.short]
+    this.display = new DisplayBuilder({})
+    this.source = new SourceBuilder(yaml.source ?? SourceBuilder.defaultByGame(Game.Ironsworn), parent.source)
+    this.your_truth = yaml.your_truth
   }
 }

@@ -7,4 +7,4 @@ export type KeysWithValuesOfType<T, V> = keyof {
 /**
  * @public
  */
-export type KeysMatching<T, V> = {[K in keyof T]-?: T[K] extends V ? K : never}[keyof T]
+export type KeysMatching<T, V> = { [K in keyof T]-?: T[K] extends V ? K : never }[keyof T]

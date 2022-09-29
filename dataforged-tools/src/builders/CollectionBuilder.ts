@@ -1,10 +1,10 @@
 import type { MASTER_DATA_PATH } from '@constants'
-import type { Game, HasId, HasSource, Source, YamlDataRoot } from '@schema'
+import type { Game, MixinId, MixinSource, Source, YamlDataRoot } from '@schema'
 import { buildLog } from '@utils/logging/buildLog.js'
 import _ from 'lodash-es'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ConstructorOf<T> = new(...args: any[]) => T
+export type ConstructorOf<T> = new (...args: any[]) => T
 
 export interface HashBuilderRoot<
   TMapItem,
@@ -73,10 +73,10 @@ export type CollectionFileGlob<G extends Game> = `${typeof MASTER_DATA_PATH}/${G
  */
 export abstract class CollectionBuilder<
   G extends Game,
-  TMapItem extends HasSource,
+  TMapItem extends MixinSource,
   TYamlItem,
-// SchemaIn extends Schema, SchemaOut extends Schema
-> extends Map<string, TMapItem> implements HashBuilder<TMapItem, TYamlItem> {
+  // SchemaIn extends Schema, SchemaOut extends Schema
+  > extends Map<string, TMapItem> implements HashBuilder<TMapItem, TYamlItem> {
   abstract buildItem (yaml: TYamlItem, key: string): TMapItem
   private readonly _fragment: string
   public get fragment (): string {
@@ -115,8 +115,8 @@ export abstract class CollectionBuilder<
     return this._game
   }
 
-  private readonly _parent: HasId|undefined
-  public get parent (): HasId|undefined {
+  private readonly _parent: MixinId | undefined
+  public get parent (): MixinId | undefined {
     return this._parent
   }
 
@@ -125,7 +125,7 @@ export abstract class CollectionBuilder<
     game: G,
     fragment: string,
     source: Source,
-    parent?: HasId | undefined
+    parent?: MixinId | undefined
   ) {
     super()
     this._yaml = yaml

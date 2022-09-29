@@ -1,15 +1,15 @@
+import { NodeBuilder } from '@builders/NodeBuilder.js'
 import type { TruthClassic, TruthOptionClassic, YamlTruthOptionClassic } from '@schema'
 
 /**
  * @internal
  */
-export class TruthOptionClassicBuilder implements TruthOptionClassic {
-  $id: string
-  Description: string
-  'Quest starter': string
+export class TruthOptionClassicBuilder extends NodeBuilder<YamlTruthOptionClassic, TruthOptionClassic, TruthClassic> implements TruthOptionClassic {
+  description: string
+  quest_starter: string
   constructor (yaml: YamlTruthOptionClassic, parent: TruthClassic, index: number) {
-    this.$id = parent.$id + `/${index + 1}`
-    this.Description = yaml.Description
-    this['Quest starter'] = yaml['Quest starter']
+    super(yaml, index, parent)
+    this.description = yaml.description
+    this.quest_starter = yaml.quest_starter
   }
 }

@@ -4,22 +4,22 @@ import type { AssetType, Game, Source, YamlAssetRoot, YamlAssetType } from '@sch
 import _ from 'lodash-es'
 
 export class AssetTypeCollection<G extends Game> extends RootCollectionBuilder<G, AssetType, YamlAssetType, YamlAssetRoot> {
-  buildItem (item: YamlAssetType, key: string): AssetType {
+  buildItem(item: YamlAssetType, key: string): AssetType {
     return new AssetTypeBuilder(item, key, this.game, this.Source)
   }
 
-  override get buildStatsMessage (): string {
-    const assets = _.flatMap(this, (item: AssetType) => Object.entries(item.Assets))
+  override get buildStatsMessage(): string {
+    const assets = _.flatMap(this, (item: AssetType) => Object.entries(item.assets))
     return `${assets.length} assets across ${this.size} asset types`
   }
 
-  constructor (game: G, source: Source) {
+  constructor(game: G, source: Source) {
     super(
       game,
-      'Asset types',
+      'asset_types',
       source,
       `../_master-data/${game}/Assets*.(yml|yaml)`,
-      'Asset types'
+      'asset_types'
     )
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-imports */
-import type { HasId } from '@schema'
+import { LocalizableKey, MixinId, MixinLocalizable } from '@schema'
 import yaml from 'js-yaml'
 import { JSONPath } from 'jsonpath-plus'
 import _ from 'lodash-es'
@@ -8,36 +8,18 @@ import fs from 'fs'
 import datasworn from '../json/ironsworn/datasworn.json' assert {type: "json"}
 import dataforged from '../json/starforged/dataforged.json' assert {type: "json"}
 
-export const localizableKeys = [
-  'Canonical',
-  'Short',
-  'Standard',
-  'Label',
-  'Aliases',
-  'Result',
-  'Summary',
-  'Description',
-  'Requirement',
-  'Text',
-  'Features',
-  'Drives',
-  'Tactics',
-  'Your Truth',
-  'Character'
-]
-
 /**
  * Crawls a json object for localizable strings an
  * @param json - The json object to be crawled.
  */
 export function extractLocalizableStrings<T extends Record<string, unknown>> (json: T) {
   const stringHash: Record<string, string> = {}
-  JSONPath<Record<typeof localizableKeys[number], string|string[]>>({
+  JSONPath<Partial<MixinLocalizable>>({
     json,
-    path: `$..*[${localizableKeys.join(',')}]`,
+    path: `$..*[${Object.values(LocalizableKey).join(',')}]`,
     resultType: 'all',
     flatten: true,
-    callback: (payload: {parentProperty: string, value: string|string[], parent: HasId}) => {
+    callback: (payload: { parentProperty: string, value: string | string[], parent: MixinId }) => {
       const baseId = `${payload.parent.$id}#${payload.parentProperty}`
       if (Array.isArray(payload.value)) {
         if (typeof payload.value[0] === 'string') {

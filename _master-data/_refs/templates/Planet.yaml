@@ -35,14 +35,14 @@ Planet: &template:Planet
               Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Expanse
               Label: Expanse
             - Type: string
-              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Terminus
+              Content: starforged/oracles/planets/${{Planetary Class}}/settlements/terminus
         Tables:
           Terminus:
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
               Title:
                 Canonical: Terminus
               Display: &template.display:Planet.Settlements
-                Column of: starforged/oracles/planets/${{Planetary Class}}/Settlements
+                Column of: starforged/oracles/planets/${{Planetary Class}}/settlements
               Usage:
                 Requires: *attr:Region.Terminus
             _templateTableRows:

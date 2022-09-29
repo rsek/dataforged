@@ -3,28 +3,29 @@ import type { CustomStat, CustomStatOption, MeterAlias, MoveTrigger, MoveTrigger
 /**
  * @internal
  */
-export interface YamlMoveTrigger extends YamlStub<MoveTrigger, '', 'Options'> {
-  Options?: Array<YamlMoveTriggerOptionAction | YamlMoveTriggerOptionProgress> | undefined
+export interface YamlMoveTrigger extends YamlStub<MoveTrigger, '', 'options'> {
+  options?: Array<YamlMoveTriggerOptionAction | YamlMoveTriggerOptionProgress> | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlMoveTriggerOptionAction extends YamlStub<MoveTriggerOptionAction, 'Method' | 'Roll type', 'Custom stat'> {
-  'Custom stat'?: YamlCustomStat | undefined
-  Using: Array<Stat | Replacement | PcConditionMeterType | MeterAlias>
+export interface YamlMoveTriggerOptionAction extends YamlStub<MoveTriggerOptionAction, 'method' | 'roll_type', 'custom_stat'> {
+  'custom_stat'?: YamlCustomStat | undefined
+  using: Array<Stat | Replacement | PcConditionMeterType | MeterAlias>
 }
 
 /**
  * @internal
  */
-export interface YamlMoveTriggerOptionProgress extends YamlStub<MoveTriggerOptionProgress, 'Method' | 'Using' | 'Roll type'> { }
+export interface YamlMoveTriggerOptionProgress extends YamlStub<MoveTriggerOptionProgress, 'method' | 'using' | 'roll_type'> {
+}
 
 /**
  * @internal
  */
-export interface YamlCustomStat extends YamlStub<CustomStat, '', 'Options'> {
-  Options: YamlCustomStatOption[]
+export interface YamlCustomStat extends YamlStub<CustomStat, '', 'options'> {
+  options: YamlCustomStatOption[]
 }
 
 /**

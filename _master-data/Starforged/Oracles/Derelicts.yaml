@@ -1,110 +1,118 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Derelicts:
-    Title:
-      Canonical: Derelicts
-      Short: Derelict
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+      short: Derelict
     _idFragment: Derelicts
-    Source:
-      Authors: [Shawn Tomkin]
-      Title: "Ironsworn: Starforged Rulebook"
-      License: https://creativecommons.org/licenses/by-sa/4.0/
-      Date: "050622"
-    Description: |-
+    source:
+      authors: [Shawn Tomkin]
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      date: "050622"
+    description: |-
       Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
-    Sets:
-      Type:
-        Title:
-          Canonical: Type (by location)
-          Short: Type
-        Source:
-          Page: 348
-        Usage:
-          Initial: true
-          Requires: *attr:Location.Any
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/derelicts/type/planetside
-              Label: Planetside
-            - Type: dice range
-              Content: starforged/oracles/derelicts/type/orbital
-              Label: Orbital
-            - Type: dice range
-              Content: starforged/oracles/derelicts/type/deep_space
-              Label: Deep Space
-            - Type: string
-              Content: starforged/oracles/derelicts/type/planetside
-        Tables:
-          Planetside:
-            Title:
-              Canonical: Planetside
-            Display: &derelictTypeDisplay
-              Column of: starforged/oracles/derelicts/type
-            Usage:
-              Requires: *attr:Location.Planetside
-            Table: &derelictTypeTable
+    sets:
+      type:
+        title:
+          canonical: Type (by location)
+          standard: Derelict Type (by location)
+          short: Type
+        source:
+          page: 348
+        usage:
+          initial: true
+          requires: *attr:Location.Any
+        display:
+          columns:
+            planetside:
+              column_type: dice_range
+              content: starforged/oracles/derelicts/type/planetside
+              label: Planetside
+            orbital:
+              column_type: dice_range
+              content: starforged/oracles/derelicts/type/orbital
+              label: Orbital
+            deep_space:
+              column_type: dice_range
+              content: starforged/oracles/derelicts/type/deep_space
+              label: Deep Space
+            result:
+              column_type: string
+              content: starforged/oracles/derelicts/type/planetside
+        tables:
+          planetside:
+            title:
+              canonical: Planetside
+            display: &derelictTypeDisplay
+              column_of: starforged/oracles/derelicts/type
+            usage:
+              requires: *attr:Location.Planetside
+            table: &derelictTypeTable
               - [1, 25, Starship, *attr:DerelictType.Starship]
               - [26, 100, Settlement, *attr:DerelictType.Settlement]
-          Orbital:
-            Title:
-              Canonical: Orbital
-            Display: *derelictTypeDisplay
-            Usage:
-              Requires: *attr:Location.Orbital
+          orbital:
+            title:
+              canonical: Orbital
+            display: *derelictTypeDisplay
+            usage:
+              requires: *attr:Location.Orbital
             _templateTableRows:
               content: *derelictTypeTable
               rolls:
                 - [1, 40]
                 - [41, 100]
-          Deep space:
-            Title:
-              Canonical: Deep space
-            Display:
-              Column of: starforged/oracles/derelicts/type
-            Usage:
-              Requires: *attr:Location.DeepSpace
+          deep_space:
+            title:
+              canonical: Deep Space
+            display:
+              column_of: starforged/oracles/derelicts/type
+            usage:
+              requires: *attr:Location.DeepSpace
             _templateTableRows:
               content: *derelictTypeTable
               rolls:
                 - [1, 75]
                 - [76, 100]
-      Zones:
-        Title:
-          Canonical: Derelict zones
-          Short: Zones
+      zones:
+        title:
+          canonical: Derelict Zones
+          short: Zones
         _idFragment: Zones
-        Source:
-          Page: 351
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/derelicts/zones/starship
-              Label: Starship
-            - Type: dice range
-              Content: starforged/oracles/derelicts/zones/settlement
-              Label: Settlement
-            - Type: string
-              Content: starforged/oracles/derelicts/zones/starship
-        Usage:
-          Repeatable: true
-          Requires:
-            Attributes:
-              Derelict type: null
-        Tables:
-          Starship:
-            Title:
-              Canonical: Starship
-            Display:
-              Column of: starforged/oracles/derelicts/zone
-            Usage:
-              Requires:
-                Attributes:
-                  Derelict type: Starship
-            Table: &derelictZoneTable
+        source:
+          page: 351
+        display:
+          columns:
+            starship:
+              column_type: dice_range
+              content: starforged/oracles/derelicts/zones/starship
+              label: Starship
+            settlement:
+              column_type: dice_range
+              content: starforged/oracles/derelicts/zones/settlement
+              label: Settlement
+            result:
+              column_type: string
+              content: starforged/oracles/derelicts/zones/starship
+        usage:
+          repeatable: true
+          requires:
+            attributes:
+              derelict_type: null
+        tables:
+          starship:
+            title:
+              canonical: Starship
+            display:
+              column_of: starforged/oracles/derelicts/zone
+            usage:
+              requires:
+                attributes:
+                  derelict_type: [starship]
+            table: &derelictZoneTable
               - [null, null, "[⏵Access](starforged/oracles/derelicts/access)", *obj:DerelictZone.Community, Icon: "img/vector/Derelicts/Community.svg"]
               - [1, 5, "[⏵Community](starforged/oracles/derelicts/community)", *obj:DerelictZone.Community, Icon: "img/vector/Derelicts/Community.svg"]
               - [6, 30, "[⏵Engineering](starforged/oracles/derelicts/engineering)", *obj:DerelictZone.Engineering, Icon: "img/vector/Derelicts/Engineering.svg"]
@@ -113,15 +121,15 @@ Oracle sets:
               - [66, 85, "[⏵Operations](starforged/oracles/derelicts/operations)", *obj:DerelictZone.Operations, Icon: "img/vector/Derelicts/Operations.svg"]
               - [86, 90, "[⏵Production](starforged/oracles/derelicts/production)", *obj:DerelictZone.Production, Icon: "img/vector/Derelicts/Production.svg"]
               - [91, 100, "[⏵Research](starforged/oracles/derelicts/research)", *obj:DerelictZone.Research, Icon: "img/vector/Derelicts/Research.svg"]
-          Settlement:
-            Title:
-              Canonical: Settlement
-            Display:
-              Column of: starforged/oracles/derelicts/zone
-            Usage:
-              Requires:
-                Attributes:
-                  Derelict type: Settlement
+          settlement:
+            title:
+              canonical: Settlement
+            display:
+              column_of: starforged/oracles/derelicts/zone
+            usage:
+              requires:
+                attributes:
+                  derelict_type: [settlement]
             _templateTableRows:
               content: *derelictZoneTable
               rolls:
@@ -133,46 +141,46 @@ Oracle sets:
                 - [61, 70]
                 - [71, 90]
                 - [91, 100]
-    Tables:
-      Canonical:
-        Title:
-          Canonical: Location
+    tables:
+      canonical:
+        title:
+          canonical: Location
         _templateOracleTable: *template.info:Generic.Location
-        Source:
-          Page: 348
+        source:
+          page: 348
         _templateTableRows:
           content: *template.content:Generic.Location
           rolls:
             - [1, 40]
             - [41, 60]
             - [61, 100]
-      Condition:
-        Title:
-          Canonical: Condition
-        Source:
-          Page: 348
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [fragment]
-        Table:
+      condition:
+        title:
+          canonical: Condition
+        source:
+          page: 348
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+        table:
           - [1, 10, Functional]
           - [11, 30, Limited power]
           - [31, 60, Cold and dark]
           - [61, 90, Damaged or breached]
           - [91, 98, Heavily damaged]
           - [99, 100, Impending destruction]
-      Outer first look:
-        Title:
-          Canonical: Outer first look
-        Source:
-          Page: 349
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [fragment]
-          Tags: [first look]
-        Table:
+      outer_first_look:
+        title:
+          canonical: Outer First Look
+        source:
+          page: 349
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [first look]
+        table:
           - [1, 15, Blocked access]
           - [16, 30, Corpses]
           - [31, 45, Hazardous readings]
@@ -183,17 +191,17 @@ Oracle sets:
           - [81, 85, Signs that others are here]
           - [86, 95, Stripped exterior]
           - [96, 100, Time or reality distortions]
-      Inner first look:
-        Title:
-          Canonical: Inner first look
-        Source:
-          Page: 349
-        Content:
-          Part of speech: [fragment]
-          Tags: [first look]
-        Usage:
-          Max rolls: 2
-        Table:
+      inner_first_look:
+        title:
+          canonical: Inner First Look
+        source:
+          page: 349
+        content:
+          part_of_speech: [fragment]
+          tags: [first look]
+        usage:
+          max_rolls: 2
+        table:
           - [1, 3, Abnormal gravity]
           - [4, 6, Active bots]
           - [7, 9, Archaic equipment]

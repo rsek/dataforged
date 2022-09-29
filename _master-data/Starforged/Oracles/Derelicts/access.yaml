@@ -1,26 +1,26 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Derelicts:
-    Title:
-      Canonical: Derelicts
-    Source:
-      Date: "050622"
-    Sets:
-      Access:
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      access:
         _templateOracleSet: *template.category:Zone
         _templateVars:
-          Zone: Access
-        Title:
-          Canonical: Access
-        Source:
-          Page: 352
-        Tables:
-          Area:
+          zone: Access
+        title:
+          canonical: Access
+        source:
+          page: 352
+        tables:
+          area:
             _templateOracleTable: *template.info:Zone.Area
-            Table:
+            table:
               - [1, 50, Corridor]
               - [51, 60, Stairs]
               - [61, 70, Lift or elevator]
@@ -29,9 +29,9 @@ Oracle sets:
               - [86, 90, Hub or intersection]
               - [91, 95, Crawl space or duct]
               - [96, 100, Airlock or external]
-          Feature:
+          feature:
             _templateOracleTable: *template.info:Zone.Feature
-            Table:
+            table:
               - [1, 5, Abandoned gear]
               - [6, 10, Blood trail]
               - [11, 15, Breached door or hatch]
@@ -52,7 +52,7 @@ Oracle sets:
               - [86, 90, Windows or viewports]
               - [91, 95, Wrecked passage or debris]
               - [96, 100, *result:Descriptor+Focus]
-          Peril:
+          peril:
             _templateOracleTable: *template.info:Zone.Peril
             _templateTableRows:
               rolls: *template.rolls:Zone.Peril
@@ -68,7 +68,7 @@ Oracle sets:
                 - Unsettling sound or disturbance
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:Zone.Opportunity
             _templateTableRows:
               rolls: *template.rolls:Zone.Opportunity

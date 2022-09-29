@@ -13,23 +13,23 @@ _.forEach(data, (value, key) => {
   if (typeof value !== 'string' && typeof value !== 'undefined') {
     let fileName = ''
     switch (key as keyof Starforged) {
-      case 'Asset types': {
+      case 'asset_types': {
         fileName = 'assets'
         break
       }
-      case 'Encounters': {
+      case 'encounters': {
         fileName = 'encounters'
         break
       }
-      case 'Oracle sets': {
+      case 'oracle_sets': {
         fileName = 'oracles'
         break
       }
-      case 'Move categories': {
+      case 'move_categories': {
         fileName = 'moves'
         break
       }
-      case 'Setting truths': {
+      case 'setting_truths': {
         fileName = 'truths'
         break
       }

@@ -1,58 +1,62 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Characters:
-    Title:
-      Canonical: Characters
-      Short: Character
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  characters:
+    title:
+      canonical: Characters
+      short: Character
     # Aliases: [NPC]
-    Source:
-      Date: "050622"
-    Description: |-
+    source:
+      date: "050622"
+    description: |-
       Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](starforged/oracles/characters/first_look) and [Initial Disposition](starforged/oracles/characters/initial_disposition). Then envision or generate additional details over time.
-    Sets:
-      Names:
-        Title:
-          Canonical: Character name
-          Short: Name
+    sets:
+      names:
+        title:
+          canonical: Character Name
+          short: Name
         _idFragment: Name
-        Source:
-          Page: 333
-        Description: |-
+        source:
+          page: 333
+        description: |-
           Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/characters/name/given_name
-            - Type: string
-              Content: starforged/oracles/characters/name/given_name
-              Label: Given Name
-            - Type: string
-              Content: starforged/oracles/characters/name/family_name
-              Label: Family Name
-            - Type: string
-              Content: starforged/oracles/characters/name/callsign
-              Label: Callsign
-        Usage:
-          Initial: true
-        Tables:
-          Given:
-            Title:
-              Canonical: Given name
-            Description: |-
+        display:
+          columns:
+            roll:
+              column_type: dice_range
+              content: starforged/oracles/characters/name/given_name
+            given_name:
+              column_type: string
+              content: starforged/oracles/characters/name/given_name
+              label: Given Name
+            family_name:
+              column_type: string
+              content: starforged/oracles/characters/name/family_name
+              label: Family Name
+            callsign:
+              column_type: string
+              content: starforged/oracles/characters/name/callsign
+              label: Callsign
+        usage:
+          initial: true
+        tables:
+          given:
+            title:
+              canonical: Given Name
+            description: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
-            Usage:
-              Suggestions:
-                Oracle rolls:
+            usage:
+              suggestions:
+                oracle_rolls:
                   - starforged/oracles/characters/name/callsign
                   - starforged/oracles/characters/name/family_name
-            Display:
-              Column of: starforged/oracles/characters/name
-            Content:
-              Part of speech: [proper noun]
-            Table:
+            display:
+              column_of: starforged/oracles/characters/name
+            content:
+              part_of_speech: [proper noun]
+            table:
               - [1, 1, Akim]
               - [2, 2, Alex]
               - [3, 3, Alexis]
@@ -154,21 +158,21 @@ Oracle sets:
               - [99, 99, Zephyr]
               - [100, 100, Zoya]
 
-          Callsign:
-            Title:
-              Canonical: Callsign
-            Description: |-
+          callsign:
+            title:
+              canonical: Callsign
+            description: |-
               Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.
-            Usage:
-              Suggestions:
-                Oracle rolls:
+            usage:
+              suggestions:
+                oracle_rolls:
                   - starforged/oracles/characters/name/given_name
                   - starforged/oracles/characters/name/family_name
-            Display:
-              Column of: starforged/oracles/characters/name
-            Content:
-              Part of speech: [proper noun]
-            Table:
+            display:
+              column_of: starforged/oracles/characters/name
+            content:
+              part_of_speech: [proper noun]
+            table:
               - [1, 1, Albatross]
               - [2, 2, Angler]
               - [3, 3, Anvil]
@@ -270,21 +274,21 @@ Oracle sets:
               - [99, 99, Wrongway]
               - [100, 100, Zephyr]
 
-          Family name:
-            Title:
-              Canonical: Family name
-            Description: |-
+          family_name:
+            title:
+              canonical: Family Name
+            description: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
-            Content:
-              Part of speech: [proper noun]
-            Usage:
-              Suggestions:
-                Oracle rolls:
+            content:
+              part_of_speech: [proper noun]
+            usage:
+              suggestions:
+                oracle_rolls:
                   - starforged/oracles/characters/name/given_name
                   - starforged/oracles/characters/name/callsign
-            Display:
-              Column of: starforged/oracles/characters/name
-            Table:
+            display:
+              column_of: starforged/oracles/characters/name
+            table:
               - [1, 1, Kuzmin]
               - [2, 2, Durant]
               - [3, 3, Jefferies]
@@ -385,19 +389,19 @@ Oracle sets:
               - [98, 98, Darwin]
               - [99, 99, Pearson]
               - [100, 100, Volkov]
-    Tables:
-      First look:
-        Title:
-          Canonical: First look
-        Source:
-          Page: 330
-        Content:
-          Part of speech: [adjective]
-          Tags: [first look]
-        Usage:
-          Initial: true
-          Max rolls: 2
-        Table:
+    tables:
+      first_look:
+        title:
+          canonical: First Look
+        source:
+          page: 330
+        content:
+          part_of_speech: [adjective]
+          tags: [first look]
+        usage:
+          initial: true
+          max_rolls: 2
+        table:
           - [1, 3, Accented]
           - [4, 6, Accompanied]
           - [7, 8, Adorned]
@@ -437,18 +441,18 @@ Oracle sets:
           - [93, 95, Wiry]
           - [96, 97, Wounded]
           - [98, 100, Youthful]
-      Initial disposition:
-        Title:
-          Canonical: Initial disposition
-          Short: Disposition
+      initial_disposition:
+        title:
+          canonical: Initial Disposition
+          short: Disposition
         _idFragment: Initial disposition
-        Source:
-          Page: 330
-        Content:
-          Part of speech: [adjective]
-        Usage:
-          Initial: true
-        Table:
+        source:
+          page: 330
+        content:
+          part_of_speech: [adjective]
+        usage:
+          initial: true
+        table:
           - [1, 6, Helpful]
           - [7, 14, Friendly]
           - [15, 22, Cooperative]
@@ -461,17 +465,17 @@ Oracle sets:
           - [79, 86, Unfriendly]
           - [87, 94, Threatening]
           - [95, 100, Hostile]
-      Role:
-        Title:
-          Canonical: Character role
-          Short: Role
+      role:
+        title:
+          canonical: Character Role
+          short: Role
         _idFragment: Role
-        Source:
-          Page: 331
-        Content:
-          Part of speech: [noun, common noun]
-          Tags: [people, actor]
-        Table:
+        source:
+          page: 331
+        content:
+          part_of_speech: [noun, common noun]
+          tags: [people, actor]
+        table:
           - [1, 2, Agent]
           - [3, 4, AI]
           - [5, 6, Artisan]
@@ -520,17 +524,17 @@ Oracle sets:
           - [91, 92, Thief]
           - [93, 95, *result:Action+Theme]
           - [96, 100, *result:RollTwice]
-      Goal:
-        Title:
-          Canonical: Character goal
-          Short: Goal
+      goal:
+        title:
+          canonical: Character Goal
+          short: Goal
         _idFragment: Goal
-        Source:
-          Page: 331
-        Content:
-          Part of speech: [fragment]
-          Tags: [objective]
-        Table:
+        source:
+          page: 331
+        content:
+          part_of_speech: [fragment]
+          tags: [objective]
+        table:
           - [1, 2, Avenge a wrong, Suggestions: [*roll:Event]]
           - [3, 4, Build a home]
           - [5, 7, Build a relationship, Suggestions: [*obj:Npc]]
@@ -571,20 +575,20 @@ Oracle sets:
           - [79, 80, Undermine a relationship, Suggestions: [*obj:Npc]]
           - [81, 90, *result:Action+Theme]
           - [91, 100, *result:RollTwice]
-      Revealed aspect:
-        Title:
-          Canonical: Revealed character aspect
-          Short: Revealed aspect
+      revealed_aspect:
+        title:
+          canonical: Revealed Character Aspect
+          short: Revealed Aspect
         _idFragment: Revealed Aspect
-        Source:
-          Page: 332
-        Description: |-
+        source:
+          page: 332
+        description: |-
           As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.
-        Content:
-          Part of speech: [adjective]
-        Usage:
-          Max rolls: 3
-        Table:
+        content:
+          part_of_speech: [adjective]
+        usage:
+          max_rolls: 3
+        table:
           - [1, 1, Addicted]
           - [2, 2, Adventurous]
           - [3, 3, Afflicted]

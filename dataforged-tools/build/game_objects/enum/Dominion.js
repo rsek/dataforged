@@ -2,32 +2,32 @@
  * Set by Oracles / Factions / Dominion
  * @public
  */
-let Dominion;
+var Dominion;
 (function (Dominion) {
-  Dominion.Agriculture = 'Agriculture'
-  Dominion.Artistry = 'Artistry'
-  Dominion.Commerce = 'Commerce'
-  Dominion.Conquest = 'Conquest'
-  Dominion.Construction = 'Construction'
-  Dominion.Diplomacy = 'Diplomacy'
-  Dominion.Education = 'Education'
-  Dominion.Environmentalism = 'Environmentalism'
-  Dominion.Exploration = 'Exploration'
-  Dominion.Faith = 'Faith'
-  Dominion.History = 'History'
-  Dominion.Honor = 'Honor'
-  Dominion.Industry = 'Industry'
-  Dominion.Isolationism = 'Isolationism'
-  Dominion.Law = 'Law'
-  Dominion.Mysticism = 'Mysticism'
-  Dominion.Pacifism = 'Pacifism'
-  Dominion.Prophecy = 'Prophecy'
-  Dominion.Science = 'Science'
-  Dominion.Secrecy = 'Secrecy'
-  Dominion.Technology = 'Technology'
-  Dominion.Treachery = 'Treachery'
-  Dominion.Warfare = 'Warfare'
-  Dominion.Wealth = 'Wealth'
-})(Dominion || (Dominion = {}))
-export { Dominion }
-// # sourceMappingURL=Dominion.js.map
+    Dominion["Agriculture"] = "agriculture";
+    Dominion["Artistry"] = "artistry";
+    Dominion["Commerce"] = "commerce";
+    Dominion["Conquest"] = "conquest";
+    Dominion["Construction"] = "construction";
+    Dominion["Diplomacy"] = "diplomacy";
+    Dominion["Education"] = "education";
+    Dominion["Environmentalism"] = "environmentalism";
+    Dominion["Exploration"] = "exploration";
+    Dominion["Faith"] = "faith";
+    Dominion["History"] = "history";
+    Dominion["Honor"] = "honor";
+    Dominion["Industry"] = "industry";
+    Dominion["Isolationism"] = "isolationism";
+    Dominion["Law"] = "law";
+    Dominion["Mysticism"] = "mysticism";
+    Dominion["Pacifism"] = "pacifism";
+    Dominion["Prophecy"] = "prophecy";
+    Dominion["Science"] = "science";
+    Dominion["Secrecy"] = "secrecy";
+    Dominion["Technology"] = "technology";
+    Dominion["Treachery"] = "treachery";
+    Dominion["Warfare"] = "warfare";
+    Dominion["Wealth"] = "wealth";
+})(Dominion || (Dominion = {}));
+export { Dominion };
+//# sourceMappingURL=Dominion.js.map

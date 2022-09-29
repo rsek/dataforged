@@ -1,27 +1,27 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Planets:
-    Title:
-      Canonical: Planets
-    Source:
-      Date: "050622"
-    Sets:
-      Jungle:
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  planets:
+    title:
+      canonical: Planets
+    source:
+      date: "050622"
+    sets:
+      jungle:
         _templateOracleSet: *template.category:Planet
         _templateVars:
-          Planetary Class: Jungle
-        Title:
-          Canonical: Jungle world
-        Display:
-          Images: *images:JungleWorld
-        Source:
-          Page: 313
-        Summary: A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.
-        Sample names:
+          planetary_class: Jungle
+        title:
+          canonical: Jungle world
+        display:
+          images: *images:JungleWorld
+        source:
+          page: 313
+        summary: A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.
+        sample_names:
           - Acacia
           - Aster
           - Beryl
@@ -42,11 +42,11 @@ Oracle sets:
           - Verdure
           - Veris
           - Viridian
-        Sets:
-          Settlements:
+        sets:
+          settlements:
             _templateOracleSet: *template.info:Planet.Settlements
-            Tables:
-              Terminus:
+            tables:
+              terminus:
                 _templateOracleTable: *template.info:Planet.Settlements.Terminus
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -56,7 +56,7 @@ Oracle sets:
                     - [56, 80] # Planetside settlement
                     - [81, 92] # Multiple settlements
                     - [93, 100] # Settlements in conflict
-              Outlands:
+              outlands:
                 _templateOracleTable: *template.info:Planet.Settlements.Outlands
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -66,7 +66,7 @@ Oracle sets:
                     - [76, 92] # Planetside settlement
                     - [93, 97] # Multiple settlements
                     - [98, 100] # Settlements in conflict
-              Expanse:
+              expanse:
                 _templateOracleTable: *template.info:Planet.Settlements.Expanse
                 _templateTableRows:
                   content: *template.content:Planet.Settlements
@@ -76,8 +76,8 @@ Oracle sets:
                     - [91, 97] # Planetside settlement
                     - [98, 99] # Multiple settlements
                     - [100, 100] # Settlements in conflict
-        Tables:
-          Atmosphere:
+        tables:
+          atmosphere:
             _templateOracleTable: *template.info:Planet.Atmosphere
             _templateTableRows:
               content: *template.content:Planet.Atmosphere
@@ -89,7 +89,7 @@ Oracle sets:
                 - [61, 90] # Breathable
                 - [91, 100] # Ideal
 
-          Observed From Space:
+          observed_from_space:
             _templateOracleTable: *template.info:Planet.ObservedFromSpace
             _templateTableRows:
               rolls: *template.rolls:Planet.ObservedFromSpace
@@ -104,7 +104,7 @@ Oracle sets:
                 - Persistent cloud cover
                 - *result:Descriptor+Focus
                 - *result:PrecursorVault.Orbital
-          Planetside Feature:
+          planetside_feature:
             _templateOracleTable: *template.info:Planet.PlanetsideFeature
             _templateTableRows:
               rolls: *template.rolls:Planet.PlanetsideFeature
@@ -124,7 +124,7 @@ Oracle sets:
                 - Waterlogged caves
                 - *result:Descriptor+Focus
                 - *result:PrecursorVault.Planetside
-          Life:
+          life:
             _templateOracleTable: *template.info:Planet.Life
             _templateTableRows:
               content: *template.content:Planet.Life

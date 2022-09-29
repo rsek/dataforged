@@ -4,7 +4,7 @@
  */
 
 export * from '@schema/json/meta/Display.js'
-export * from '@schema/json/meta/Has.js'
+export * from '@schema/json/common/Mixin.js'
 export * from '@schema/json/meta/Requirements.js'
 export * from '@schema/json/meta/Source.js'
 export * from '@schema/json/meta/Suggestions.js'

@@ -1,4 +1,5 @@
-import type { HasDescription, HasDisplay, HasId, HasOptional, HasSource, HasTitle, Move } from '@schema'
+import type { MixinDescription, MixinDisplay, MixinId, MixinOptional, MixinSource, MixinTitle, Move } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.
@@ -22,7 +23,7 @@ export enum MoveCategoryName {
  * Represents a category of moves such as "Session Moves" or "Combat Moves", and serves as a container for moves within that category.
  * @public
  */
-export interface MoveCategory extends HasId, HasSource, HasDescription, HasDisplay, HasOptional, HasTitle {
+export interface MoveCategory extends MixinId, MixinSource, MixinDescription, MixinDisplay, MixinOptional, MixinTitle {
   /**
    * @example "starforged/moves/adventure"
    * @pattern ^(starforged|ironsworn)/moves/[a-z_-]+$
@@ -31,5 +32,5 @@ export interface MoveCategory extends HasId, HasSource, HasDescription, HasDispl
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Moves: {[key: string]: Move}
+  moves: { [key: SnakeCaseString]: Move }
 }

@@ -11,7 +11,7 @@ import _ from 'lodash-es'
  * It takes the YAML files that contain the setting truths, and builds a list of SettingTruth objects
  * @returns An array of SettingTruth objects.
  */
-export function buildTruths<G extends Game> (game: G) {
+export function buildTruths<G extends Game>(game: G) {
   buildLog(buildTruths, 'Building setting truths...')
 
   const filePath = `${MASTER_DATA_PATH as string}/${game}/Truths.yaml`
@@ -22,12 +22,12 @@ export function buildTruths<G extends Game> (game: G) {
   switch (game) {
     case Game.Ironsworn: {
       const truthsRoot = concatWithYamlRefs(undefined, filePath) as YamlTruthRootClassic
-      const truths = _.mapValues(truthsRoot['Setting truths'], item => new TruthClassicBuilder(item, truthsRoot.Source))
+      const truths = _.mapValues(truthsRoot.setting_truths, (item, key) => new TruthClassicBuilder(item, key, { ...truthsRoot, $id: `${game}/setting_truths` }))
       return truths
     }
     case Game.Starforged: {
       const truthsRoot = concatWithYamlRefs(undefined, filePath) as YamlTruthRootStarforged
-      const truths = _.mapValues(truthsRoot['Setting truths'], item => new TruthStarforgedBuilder(item, truthsRoot.Source))
+      const truths = _.mapValues(truthsRoot.setting_truths, item => new TruthStarforgedBuilder(item, truthsRoot.source))
       buildLog(buildTruths, `Finished building ${truths.length} setting truth categories.`)
       return truths
     }

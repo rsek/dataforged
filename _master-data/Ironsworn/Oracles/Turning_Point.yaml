@@ -1,29 +1,29 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: Ironsworn Rulebook
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Turning Point:
-    Title:
-      Canonical: Turning Point
-    Source:
-      Authors:
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  turning_point:
+    title:
+      canonical: Turning Point
+    source:
+      authors:
         - Shawn Tomkin
-      Title: Ironsworn Rulebook
-      Page: 188
-      License: https://creativecommons.org/licenses/by-sa/4.0/
-    Tables:
-      Combat Action:
-        Title:
-          Canonical: "Oracle 16: Combat Action"
-          Standard: Combat Action
-          Short: Combat Action
+      title: Ironsworn Rulebook
+      page: 188
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+    tables:
+      combat_action:
+        title:
+          canonical: "Oracle 16: Combat Action"
+          standard: Combat Action
+          short: Combat Action
         _idFragment: Combat Action
-        Description: Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.
-        Source:
-          Page: 188
-        Table:
+        description: Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.
+        source:
+          page: 188
+        table:
           - [1, 3, "Compel a surrender."]
           - [4, 6, "Coordinate with allies."]
           - [7, 9, "Gather reinforcements."]
@@ -42,17 +42,17 @@ Oracle sets:
           - [79, 89, "Attack with precision."]
           - [90, 99, "Attack with power."]
           - [100, 100, "Take a completely unexpected action."]
-      Mystic Backlash:
-        Title:
-          Canonical: "Oracle 17: Mystic Backlash"
-          Standard: Mystic Backlash
-          Short: Mystic Backlash
+      mystic_backlash:
+        title:
+          canonical: "Oracle 17: Mystic Backlash"
+          standard: Mystic Backlash
+          short: Mystic Backlash
         _idFragment: Mystic Backlash
-        Source:
-          License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-          Page: 189
-        Description: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](ironsworn/moves/fate/pay_the_price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
-        Table:
+        source:
+          license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+          page: 189
+        description: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](ironsworn/moves/fate/pay_the_price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
+        table:
           - [1, 4, "Your ritual has the opposite affect."]
           - [5, 8, "You are sapped of strength."]
           - [9, 12, "Your friend, ally, or companion is adversely affected."]
@@ -115,16 +115,16 @@ Oracle sets:
               "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
               *result:RollTwice.MakeItWorse
             ]
-      Major Plot Twist:
-        Title:
-          Canonical: "Oracle 18: Major Plot Twist"
-          Standard: Major Plot Twist
-          Short: Plot Twist
+      major_plot_twist:
+        title:
+          canonical: "Oracle 18: Major Plot Twist"
+          standard: Major Plot Twist
+          short: Plot Twist
         _idFragment: Major Plot Twist
-        Description: Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.
-        Source:
-          Page: 190
-        Table:
+        description: Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.
+        source:
+          page: 190
+        table:
           - [1, 5, "It was all a diversion."]
           - [6, 10, "A dark secret is revealed."]
           - [11, 15, "A trap is sprung."]
@@ -154,53 +154,64 @@ Oracle sets:
               "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic.",
               *result:RollTwice.MakeItWorse
             ]
-    Sets:
-      Challenge Rank:
-        Title:
-          Canonical: "Oracle 19: Challenge Rank"
-          Standard: Challenge Rank
-          Short: Rank
+    sets:
+      challenge_rank:
+        title:
+          canonical: "Oracle 19: Challenge Rank"
+          standard: Challenge Rank
+          short: Rank
         _idFragment: Challenge Rank
-        Display:
-          Columns:
-            - Type: dice range
-              Content: ironsworn/oracles/turning_point/challenge_rank/quest
-            - Content: ironsworn/oracles/turning_point/challenge_rank/quest
-              Label: Rank
-              Type: string
-              Key: Result
-            - Content: ironsworn/oracles/turning_point/challenge_rank/quest
-              Label: Quest
-              Type: string
-              Key: Summary
-            - Content: ironsworn/oracles/turning_point/challenge_rank/journey
-              Label: Journey
-              Type: string
-              Key: Summary
-            - Content: ironsworn/oracles/turning_point/challenge_rank/foes
-              Label: Foes
-              Type: string
-              Key: Summary
-        Description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
-        Source:
-          Page: 190
-        Tables:
-          Quest:
-            Title:
-              Canonical: Quest
-            Display:
-              Column of: ironsworn/oracles/turning_point/challenge_rank
-            Table: &challenge_rank_table
+        display:
+          columns:
+            roll:
+              label: Roll
+              column_type: dice_range
+              content: ironsworn/oracles/turning_point/challenge_rank/quest
+              _tableKey: quest
+            rank:
+              label: Rank
+              content: ironsworn/oracles/turning_point/challenge_rank/quest
+              _tableKey: quest
+              column_type: string
+              key: result
+            quest:
+              label: Quest
+              content: ironsworn/oracles/turning_point/challenge_rank/quest
+              _tableKey: quest
+              column_type: string
+              key: summary
+            journey:
+              label: Journey
+              content: ironsworn/oracles/turning_point/challenge_rank/journey
+              _tableKey: journey
+              column_type: string
+              key: summary
+            foes:
+              label: Foes
+              content: ironsworn/oracles/turning_point/challenge_rank/foes
+              _tableKey: foes
+              column_type: string
+              key: summary
+        description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
+        source:
+          page: 190
+        tables:
+          quest:
+            title:
+              canonical: Quest
+            display:
+              column_of: ironsworn/oracles/turning_point/challenge_rank
+            table: &challenge_rank_table
                 - [1, 20, Troublesome, "A challenging quest with a small number of obstacles"]
                 - [21, 55, Dangerous, "An involved quest with several tough obstacles"]
                 - [56, 80, Formidable, "A complex quest with many intimidating obstacles"]
                 - [81, 93, Extreme, "An overwhelming quest of staggering proportions"]
                 - [94, 100, Epic, "A life-defining quest of unknowable scope"]
-          Journey:
-            Title:
-              Canonical: Journey
-            Display:
-              Column of: ironsworn/oracles/turning_point/challenge_rank
+          journey:
+            title:
+              canonical: Journey
+            display:
+              column_of: ironsworn/oracles/turning_point/challenge_rank
             _templateTableRows:
               rolls: *challenge_rank_table
               content:
@@ -209,13 +220,13 @@ Oracle sets:
                 - [Formidable, "Traveling from one region to another, or across especially challenging terrain,"]
                 - [Extreme, "Traveling through multiple regions"]
                 - [Epic, "Traveling from one end of the Ironlands to another, or to a separate land"]
-          Foe:
-            Title:
-              Canonical: Foes
-              Short: Foe
+          foe:
+            title:
+              canonical: Foes
+              short: Foe
             _idFragment: Foes
-            Display:
-              Column of: ironsworn/oracles/turning_point/challenge_rank
+            display:
+              column_of: ironsworn/oracles/turning_point/challenge_rank
             _templateTableRows:
               rolls: *challenge_rank_table
               content:

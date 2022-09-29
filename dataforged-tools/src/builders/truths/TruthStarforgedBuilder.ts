@@ -9,24 +9,24 @@ import { buildLog } from '@utils/logging/buildLog.js'
  */
 export class TruthStarforgedBuilder implements TruthStarforged {
   $id: TruthStarforged['$id']
-  Title: Title
-  Table: TruthOptionStarforged[]
-  Character: string
-  Suggestions?: Suggestions | undefined
-  Display: Display
-  Source: Source
-  constructor (yaml: YamlTruthStarforged, parentSource: Source) {
+  title: Title
+  table: TruthOptionStarforged[]
+  character: string
+  suggestions?: Suggestions | undefined
+  display: Display
+  source: Source
+  constructor(yaml: YamlTruthStarforged, parentSource: Source) {
     const game = Game.Starforged
-    const fragment = yaml._idFragment ?? yaml.Title.Canonical
+    const fragment = yaml._idFragment ?? yaml.title.canonical
     this.$id = formatId(fragment, game, 'Setting_truths')
     buildLog(this.constructor, `Building: ${this.$id}`)
-    this.Title = new TitleBuilder(yaml.Title, this)
-    this.Table = yaml.Table.map(row => new TruthOptionStarforgedBuilder(this.$id, row))
-    this.Display = new DisplayBuilder({
-      Icon: yaml.Display?.Icon
+    this.title = new TitleBuilder(yaml.title, this)
+    this.table = yaml.table.map((row, index) => new TruthOptionStarforgedBuilder(row, index, this))
+    this.display = new DisplayBuilder({
+      icon: yaml.display?.icon
     })
-    this.Character = yaml.Character
-    this.Suggestions = (yaml.Suggestions != null) ? new SuggestionsBuilder(yaml.Suggestions) : undefined
-    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(game), parentSource)
+    this.character = yaml.character
+    this.suggestions = (yaml.suggestions != null) ? new SuggestionsBuilder(yaml.suggestions) : undefined
+    this.source = new SourceBuilder(yaml.source ?? SourceBuilder.defaultByGame(game), parentSource)
   }
 }

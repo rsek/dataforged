@@ -1,15 +1,15 @@
-import type { OracleBase, OracleMatch, OracleSet, OracleTableDisplay, Title, Attribute, HasDisplay, HasGameObjects, HasOracleContent, HasRollTemplate, HasSuggestions, HasSummary, MultipleRolls, TruthOptionSubtableRowStarforged } from '@schema'
+import type { Oracle, OracleMatch, OracleSet, OracleTableDisplay, Title, Attribute, MixinDisplay, MixinGameObjects, MixinOracleContent, MixinRollTemplate, MixinSuggestions, MixinSummary, MultipleRolls, TruthOptionSubtableRowStarforged } from '@schema'
+import { AttributeMap } from '@utils'
 import type { Nullable } from '@utils/types/Nullable.js'
-
 
 /**
  * Represents an oracle that has a `Table` composed of {@link OracleTableRow} objects. Appears only as a 'leaf' note on the oracle hierarchy 'tree'.
  *
- * @see {@link OracleBase} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `$id`.
+ * @see {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `$id`.
  *
  * @public
  */
-export interface OracleTable extends Omit<OracleBase, 'Sets' | 'Tables'> {
+export interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
   /**
    * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$
    */
@@ -18,37 +18,31 @@ export interface OracleTable extends Omit<OracleBase, 'Sets' | 'Tables'> {
    * @example
    * ```json
    * {
-   *  "Canonical": "Character Revealed Aspect",
-   *  "Short": "Revealed Aspect"
-   * }
-   * ```
-   * @example
-   * ```json
-   * {
-   *  "Canonical": "Spaceborne Peril",
-   *  "Short": "Peril"
+   *  "canonical": "Spaceborne peril",
+   *  "standard": "Spaceborne peril",
+   *  "short": "Peril"
    * }
    * ```
    */
-  Title: Title
-  Display: OracleTableDisplay
-  'Table': Array<OracleTableRow | RowNullStub>
+  title: Title
+  display: OracleTableDisplay
+  table: Array<OracleTableRow | RowNullStub>
   /**
    * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
    */
-  'On a match'?: OracleMatch | undefined
+  on_a_match?: OracleMatch | undefined
 }
 
 /**
  * Interface representing a single row in an oracle table.
  * @public
  */
-export interface OracleTableRow extends Partial<Nullable<HasSummary &
-  HasRollTemplate &
-  HasSuggestions &
-  HasOracleContent &
-  HasGameObjects &
-  HasDisplay
+export interface OracleTableRow<Floor extends number | null = number | null, Ceiling extends number | null = number | null> extends Partial<Nullable<MixinSummary &
+  MixinRollTemplate &
+  MixinSuggestions &
+  MixinOracleContent &
+  MixinGameObjects &
+  MixinDisplay
 >> {
   /**
    * The ID of this row.
@@ -61,14 +55,14 @@ export interface OracleTableRow extends Partial<Nullable<HasSummary &
    * @maximum 100
    * @nullable
    */
-  Floor: number | null
+  floor: Floor
   /**
    * The high end of the dice range for this row.
    * @minimum 1
    * @maximum 100
    * @nullable
    */
-  Ceiling: number | null
+  ceiling: Ceiling
   /**
    * The primary result text for the row, annotated in Markdown.
    * In the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.
@@ -76,7 +70,7 @@ export interface OracleTableRow extends Partial<Nullable<HasSummary &
    * @markdown
    * @localize
    */
-  Result: string
+  result: string
   /**
    * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
    *
@@ -89,24 +83,20 @@ export interface OracleTableRow extends Partial<Nullable<HasSummary &
    * @markdown
    * @localize
    */
-  Summary?: string | null | undefined
+  summary?: string | null | undefined
   /**
    * Additional oracle tables that should be rolled when this row is selected.
    * @pattern ^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$
    */
-  'Oracle rolls'?: Array<OracleTable['$id']> | undefined
-  /**
-   * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
-   */
-  Subtable?: OracleTableRow[] | TruthOptionSubtableRowStarforged[] | undefined
+  oracle_rolls?: Array<OracleTable['$id']> | undefined
   /**
    * Data for rows that call for multiple rolls, e.g. on `Roll twice` results.
    */
-  'Multiple rolls'?: MultipleRolls | undefined
+  multiple_rolls?: MultipleRolls | undefined
   /**
   * The attributes set by this row.
    */
-  Attributes?: Attribute[] | undefined
+  sets_attributes?: AttributeMap | undefined
 }
 
 /**
@@ -114,8 +104,8 @@ export interface OracleTableRow extends Partial<Nullable<HasSummary &
  * @public
  */
 export interface RowNullStub extends Omit<Partial<OracleTableRow>, '$id'> {
-  Floor: null
-  Ceiling: null
-  Result: string
-  Summary?: string | undefined | null
+  floor: null
+  ceiling: null
+  result: string
+  summary?: string | undefined | null
 }

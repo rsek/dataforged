@@ -8,39 +8,39 @@ import _ from 'lodash-es'
 
 const data = buildDataforged(Game.Ironsworn) as Ironsworn
 
-_.forEach(data, (value, key) => {
+_.forEach(data, (value, key: keyof Ironsworn) => {
   if (typeof value !== 'string' && typeof value !== 'undefined') {
     let fileName = ''
-    switch (key as keyof Ironsworn) {
-      case 'Asset types': {
+    switch (key) {
+      case 'asset_types': {
         fileName = 'assets'
         break
       }
-      case 'Encounters': {
+      case 'encounters': {
         fileName = 'encounters'
         break
       }
-      case 'Oracle sets': {
+      case 'oracle_sets': {
         fileName = 'oracles'
         break
       }
-      case 'Move categories': {
+      case 'move_categories': {
         fileName = 'moves'
         break
       }
-      case 'Setting truths': {
+      case 'setting_truths': {
         fileName = 'truths'
         break
       }
-      case 'Delve site domains': {
+      case 'delve_site_domains': {
         fileName = 'delve-site-domains'
         break
       }
-      case 'Delve site themes': {
+      case 'delve_site_themes': {
         fileName = 'delve-site-themes'
         break
       }
-      case 'Ironlands regions' : {
+      case 'ironlands_regions': {
         fileName = 'regions'
         break
       }

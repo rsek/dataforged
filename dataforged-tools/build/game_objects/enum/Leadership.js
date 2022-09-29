@@ -2,18 +2,18 @@
  * Set by Oracles / Factions / Leadership
  * @public
  */
-let Leadership;
+var Leadership;
 (function (Leadership) {
-  Leadership.Anarchist = 'Anarchist'
-  Leadership.DisputedLeadership = 'Disputed leadership'
-  Leadership.AuthoritarianDictatorship = 'Authoritarian dictatorship'
-  Leadership.OligarchicalElite = 'Oligarchical elite'
-  Leadership.DynasticLineage = 'Dynastic lineage'
-  Leadership.FatedOrProphesiedLeader = 'Fated or prophesied leader'
-  Leadership.ClanChiefsOrElders = 'Clan chiefs or elders'
-  Leadership.ElectedRepresentatives = 'Elected representatives'
-  Leadership.MachineIntelligence = 'Machine intelligence'
-  Leadership.VariedDecentralized = 'Varied / decentralized'
-})(Leadership || (Leadership = {}))
-export { Leadership }
-// # sourceMappingURL=Leadership.js.map
+    Leadership["Anarchist"] = "anarchist";
+    Leadership["DisputedLeadership"] = "disputed_leadership";
+    Leadership["AuthoritarianDictatorship"] = "authoritarian_dictatorship";
+    Leadership["OligarchicalElite"] = "oligarchical_elite";
+    Leadership["DynasticLineage"] = "dynastic_lineage";
+    Leadership["FatedOrProphesiedLeader"] = "fated_or_prophesied_leader";
+    Leadership["ClanChiefsOrElders"] = "clan_chiefs_or_elders";
+    Leadership["ElectedRepresentatives"] = "elected_representatives";
+    Leadership["MachineIntelligence"] = "machine_intelligence";
+    Leadership["VariedDecentralized"] = "varied_decentralized";
+})(Leadership || (Leadership = {}));
+export { Leadership };
+//# sourceMappingURL=Leadership.js.map

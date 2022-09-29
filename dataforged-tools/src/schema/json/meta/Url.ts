@@ -3,12 +3,8 @@
  * @internal
  * @asType string
  */
-export type Url = `${Protocol}://${string}`
-/**
- * @internal
- * @asType string
- */
-export type Protocol = 'http' | 'https'
+export type Url = `https://${string}`
+
 /**
  * @internal
  * @asType string

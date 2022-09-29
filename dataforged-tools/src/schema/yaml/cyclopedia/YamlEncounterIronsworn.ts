@@ -1,23 +1,18 @@
-import type { EncounterClassic, EncounterNatureClassic, NatureKey, YamlStubNode, YamlTitle } from '@schema'
+import type { EncounterClassic, EncounterNatureClassic, EncounterNatureTypeClassic, YamlStubNode, YamlTitle } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * @internal
  */
-export interface YamlEncounterClassic extends YamlStubNode<EncounterClassic, 'Summary', 'Nature'> {
+export interface YamlEncounterClassic extends YamlStubNode<EncounterClassic, 'summary', 'nature'> {
 }
 
 /**
  * @internal
  */
-export interface YamlEncounterNature extends YamlStubNode<EncounterNatureClassic, '', 'Encounters'> {
-  Title: YamlTitle & {Short: NatureKey}
-
-  /**
-   * @patternProperties ^[A-Z][a-z '-]+$
-   */
-  Encounters: {
-  /**
-   * @patternProperties ^[A-Z][a-z '-]+$
-   */
-    [key: string]: YamlEncounterClassic}
+export interface YamlEncounterNatureClassic extends YamlStubNode<EncounterNatureClassic, '', 'encounters'> {
+  title: YamlTitle & { short: keyof typeof EncounterNatureTypeClassic }
+  encounters: {
+    [key: SnakeCaseString]: YamlEncounterClassic
+  }
 }

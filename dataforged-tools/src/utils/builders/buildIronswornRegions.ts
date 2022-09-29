@@ -15,7 +15,7 @@ export function buildIronlandsRegions () {
   const regionFiles = fg.sync(`${MASTER_DATA_PATH as string}/${Game.Ironsworn}/Regions*.(yml|yaml)`, { onlyFiles: true })
   console.log(regionFiles)
   const regionRoot = concatWithYamlRefs(undefined, ...regionFiles) as YamlIronlandsRegionRoot
-  const json = _.mapValues(regionRoot['Ironlands regions'], region => new IronlandsRegionBuilder(region, regionRoot.Source))
+  const json = _.mapValues(regionRoot.ironlands_regions, region => new IronlandsRegionBuilder(region, regionRoot.source))
   buildLog(buildIronlandsRegions, `Finished building ${json.length} regions`)
   return json
 }

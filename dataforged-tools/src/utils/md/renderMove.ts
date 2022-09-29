@@ -8,11 +8,11 @@ import _ from 'lodash-es'
  * @returns A string.
  */
 export function renderMove (move: Move, headerLevel: number = 3): string {
-  const header = _.repeat('#', headerLevel) + ' ' + move.Title.Canonical
+  const header = _.repeat('#', headerLevel) + ' ' + move.title.canonical
   const items = [header]
-  if (move['Progress move']) {
+  if (move.progress_move) {
     items.push('*Progress Move*')
   }
-  items.push(move.Text)
+  items.push(move.text)
   return items.join('\n\n')
 }

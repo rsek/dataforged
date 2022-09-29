@@ -4,7 +4,7 @@
 
 export * from '@schema/json/oracles/MultipleRolls.js'
 export * from '@schema/json/oracles/OracleTable.js'
-export * from '@schema/json/oracles/OracleBase.js'
+export * from '@schema/json/oracles/Oracle.js'
 export * from '@schema/json/oracles/OracleSet.js'
 export * from '@schema/json/oracles/OracleContent.js'
 export * from '@schema/json/oracles/OracleDisplay.js'

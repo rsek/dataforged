@@ -4,6 +4,6 @@ import type { Suggestions, YamlStub } from '@schema'
 /**
  * @internal
  */
-export interface YamlSuggestions extends YamlStub<Suggestions, 'Game objects'> {
-  'Game objects'?: GameObjectRecord[] | undefined
+export interface YamlSuggestions extends YamlStub<Suggestions, 'game_objects'> {
+  game_objects?: GameObjectRecord[] | undefined
 }

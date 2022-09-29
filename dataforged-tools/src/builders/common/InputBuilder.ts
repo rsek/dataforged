@@ -1,21 +1,42 @@
-import { ClockType } from '@schema'
-import { Asset, AssetAbility, ClockSegments, Input, InputClock, InputNumber, InputText, InputType, YamlInput, YamlInputClock, YamlInputNumber, YamlInputText } from '@schema'
-import { formatId } from '@utils'
-import { InputDisplay } from "@schema/json/common/InputDisplay.js"
+import { ClockType, Asset, AssetAbility, ClockSegments, Input, InputClock, InputNumber, InputText, InputType, YamlInput, YamlInputClock, YamlInputNumber, YamlInputText, YamlInputSelect, InputToggle, YamlStub, YamlInputToggle } from '@schema'
+import { InputDisplay } from '@schema/json/common/InputDisplay.js'
+import { NodeBuilder } from '@builders/NodeBuilder.js'
+import { InputSelectBuilder, InputToggleBuilder } from '@builders'
 
 /**
  * @internal
  */
-export abstract class InputBuilder implements Input {
-  $id: string
-  Label: string
-  "Input type": InputType
-  Display!: InputDisplay
-  abstract Permanent: boolean
-  constructor(yaml: YamlInput, parent: AssetAbility | Asset) {
-    this.$id = formatId(yaml._idFragment ?? yaml.Label, parent.$id, 'Inputs')
-    this.Label = yaml.Label
-    this["Input type"] = yaml["Input type"]
+export abstract class InputBuilder extends NodeBuilder<YamlInput, Input, AssetAbility | Asset> implements Input {
+  label: string
+  input_type: InputType
+  display!: InputDisplay
+  abstract permanent: boolean
+  constructor(yaml: YamlInput, key: string, parent: AssetAbility | Asset) {
+    super(yaml, 'inputs/' + key, parent)
+    this.label = yaml.label
+    this.input_type = yaml.input_type
+  }
+  static pickTypedInput<T extends InputType>(yaml: YamlInput & { input_type: T }, key: string, parent: AssetAbility | Asset) {
+    switch (yaml.input_type) {
+      case InputType.Clock: {
+        return new InputClockBuilder(yaml as unknown as YamlInputClock, key, parent)
+      }
+      case InputType.Number: {
+        return new InputNumberBuilder(yaml as unknown as YamlInputNumber, key, parent)
+      }
+      case InputType.Select: {
+        return new InputSelectBuilder(yaml as unknown as YamlInputSelect, key, parent)
+      }
+      case InputType.Text: {
+        return new InputTextBuilder(yaml as YamlInputText, key, parent)
+      }
+      case InputType.Toggle: {
+        return new InputToggleBuilder(yaml as unknown as YamlInputToggle, key, parent)
+      }
+      default: {
+        throw new Error("Unable to assign input data to a type - make sure it's correct.")
+      }
+    }
   }
 }
 
@@ -23,19 +44,18 @@ export abstract class InputBuilder implements Input {
  * @internal
  */
 export class InputNumberBuilder extends InputBuilder implements InputNumber {
-  Display: InputDisplay
-  readonly "Input type" = InputType.Number
-  Min: number
-  Max: number | null
-  readonly Step = 1
-  Value: number
-  readonly Permanent = false
-  constructor(yaml: YamlInputNumber & { 'Input type': InputType.Number }, parent: AssetAbility | Asset) {
-    super(yaml, parent)
-    this.Min = yaml.Min ?? 0
-    this.Max = yaml.Max ?? null
-    this.Value = yaml.Value ?? 0
-    this.Permanent = yaml.Permanent ?? true
+  display!: InputDisplay
+  readonly input_type = InputType.Number
+  min: number
+  max: number | null
+  readonly step = 1
+  value: number
+  readonly permanent = false
+  constructor(yaml: YamlInputNumber, key: string, parent: AssetAbility | Asset) {
+    super(yaml, key, parent)
+    this.min = yaml.min ?? 0
+    this.max = yaml.max ?? null
+    this.value = yaml.value ?? 0
   }
 }
 
@@ -43,17 +63,16 @@ export class InputNumberBuilder extends InputBuilder implements InputNumber {
  * @internal
  */
 export class InputClockBuilder extends InputBuilder implements InputClock {
-  'Clock type': ClockType = ClockType.Tension
-  Display: InputDisplay
-  Segments: ClockSegments
-  readonly "Input type" = InputType.Clock
-  readonly Filled = 0;
-  readonly Permanent = false
-  constructor(yaml: YamlInputClock, parent: AssetAbility | Asset) {
-    super(yaml, parent)
-    this.Segments = yaml.Segments
+  readonly clock_type: ClockType = ClockType.Tension
+  display!: InputDisplay
+  segments: ClockSegments
+  readonly input_type = InputType.Clock
+  readonly filled = 0
+  readonly permanent = false
+  constructor(yaml: YamlInputClock, key: string, parent: AssetAbility | Asset) {
+    super(yaml, key, parent)
+    this.segments = yaml.segments
     // TODO: validate number range - maybe with decorators?
-    this.Permanent = yaml.Permanent ?? true
   }
 }
 
@@ -61,10 +80,10 @@ export class InputClockBuilder extends InputBuilder implements InputClock {
  * @internal
  */
 export class InputTextBuilder extends InputBuilder implements InputText {
-  readonly "Input type" = InputType.Text
-  Display: InputDisplay
-  readonly Permanent = true
-  constructor(yaml: YamlInputText, parent: AssetAbility | Asset) {
-    super(yaml, parent)
+  readonly input_type = InputType.Text
+  display!: InputDisplay
+  readonly permanent = true
+  constructor(yaml: YamlInputText, key: string, parent: AssetAbility | Asset) {
+    super(yaml, key, parent)
   }
 }

@@ -3,9 +3,9 @@ import type { DelveCard, DelveCardType, DelveSiteDomain, DelveSiteTheme, YamlStu
 /**
  * @internal
  */
-export interface YamlDelveCard extends YamlStubNode<DelveCard, '', 'Features' | 'Dangers'> {
-  Features: StubTable<DelveCard['Features']>
-  Dangers: StubTable<DelveCard['Dangers']>
+export interface YamlDelveCard extends YamlStubNode<DelveCard, '', 'features' | 'dangers'> {
+  features: StubTable<DelveCard['features']>
+  dangers: StubTable<DelveCard['dangers']>
 }
 
 /**
@@ -19,29 +19,29 @@ export type StubTable<T extends unknown[]> = {
  * @internal
  */
 export interface YamlDelveSiteDomain extends YamlDelveCard {
-  'Card type': DelveCardType.Domain
+  card_type: DelveCardType.Domain
   /**
-   * {@inheritDoc DelveSiteDomain.Features}
+   * {@inheritDoc DelveSiteDomain.features}
    */
-  Features: StubTable<[
-    DelveSiteDomain['Features'][0],
-    DelveSiteDomain['Features'][1],
-    DelveSiteDomain['Features'][2],
-    DelveSiteDomain['Features'][3],
-    DelveSiteDomain['Features'][4],
-    DelveSiteDomain['Features'][5],
-    DelveSiteDomain['Features'][6],
-    DelveSiteDomain['Features'][7],
-    DelveSiteDomain['Features'][8],
+  features: StubTable<[
+    DelveSiteDomain['features'][0],
+    DelveSiteDomain['features'][1],
+    DelveSiteDomain['features'][2],
+    DelveSiteDomain['features'][3],
+    DelveSiteDomain['features'][4],
+    DelveSiteDomain['features'][5],
+    DelveSiteDomain['features'][6],
+    DelveSiteDomain['features'][7],
+    DelveSiteDomain['features'][8],
   ]>
-  Dangers: StubTable<DelveSiteDomain['Dangers']>
+  dangers: StubTable<DelveSiteDomain['dangers']>
 }
 
 /**
  * @internal
  */
 export interface YamlDelveSiteTheme extends YamlDelveCard {
-  'Card type': DelveCardType.Theme
-  Features: StubTable<DelveSiteTheme['Features']>
-  Dangers: StubTable<DelveSiteTheme['Dangers']>
+  card_type: DelveCardType.Theme
+  features: StubTable<DelveSiteTheme['features']>
+  dangers: StubTable<DelveSiteTheme['dangers']>
 }

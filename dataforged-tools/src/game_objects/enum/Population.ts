@@ -3,9 +3,9 @@
  * @public
  */
 export enum Population {
-  Few='Few',
-  Dozens='Dozens',
-  Hundreds='Hundreds',
-  Thousands='Thousands',
-  TensOfThousands='Tens of thousands'
+  Few = 'few',
+  Dozens = 'dozens',
+  Hundreds = 'hundreds',
+  Thousands = 'thousands',
+  TensOfThousands = 'tens_of_thousands'
 }

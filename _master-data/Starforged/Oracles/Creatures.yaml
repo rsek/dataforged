@@ -1,45 +1,45 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Creatures:
-    Title:
-      Canonical: Creatures
-      Short: Creature
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  creatures:
+    title:
+      canonical: Creatures
+      short: Creature
     _idFragment: Creatures
-    Source:
-      Date: "050622"
-    Description:
+    source:
+      date: "050622"
+    description:
       Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
-    Tables:
-      Environment:
-        Title:
-          Canonical: Environment
-        Usage:
-          Initial: true
-        Source:
-          Page: 336
-        Content:
-          Part of speech: [noun]
-        Summary: |-
+    tables:
+      environment:
+        title:
+          canonical: Environment
+        usage:
+          initial: true
+        source:
+          page: 336
+        content:
+          part_of_speech: [noun]
+        summary: |-
           Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
-        Table:
+        table:
           - [1, 5, Space, Attributes: {Environment: Space}, Oracle rolls: [starforged/oracles/creatures/basic_form/space], Icon: &icon.Space img/vector/Oracles/Creature/Environment/Space.svg]
           - [6, 15, Interior, Attributes: {Environment: Interior}, Oracle rolls: [starforged/oracles/creatures/basic_form/interior], Icon: &icon.Interior img/vector/Oracles/Creature/Environment/Interior.svg]
           - [16, 55, Land, Attributes: {Environment: Land}, Oracle rolls: [starforged/oracles/creatures/basic_form/land], Icon: &icon.Land img/vector/Oracles/Creature/Environment/Land.svg]
           - [56, 80, Liquid, Attributes: {Environment: Liquid}, Oracle rolls: [starforged/oracles/creatures/basic_form/liquid], Icon: &icon.Liquid img/vector/Oracles/Creature/Environment/Liquid.svg]
           - [81, 100, Air, Attributes: {Environment: Air}, Oracle rolls: [starforged/oracles/creatures/basic_form/air], Icon: &icon.Air img/vector/Oracles/Creature/Environment/Air.svg]
-      Scale:
-        Title:
-          Canonical: Scale
-        Source:
-          Page: 336
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [adjective]
-        Table:
+      scale:
+        title:
+          canonical: Scale
+        source:
+          page: 336
+        usage:
+          initial: true
+        content:
+          part_of_speech: [adjective]
+        table:
           - [1, 3, Minuscule (bug-sized), Attributes: {Creature Scale: Minuscule}]
           - [4, 10, Tiny (rodent-sized), Attributes: {Creature Scale: Tiny}]
           - [11, 25, Small (dog-sized), Attributes: {Creature Scale: Small}]
@@ -48,34 +48,34 @@ Oracle sets:
           - [91, 99, Huge (whale-sized), Attributes: {Creature Scale: Huge}]
           - [100, 100, "[⏵Ultra-scale](starforged/oracles/creatures/ultra-scale)", Oracle rolls: [starforged/oracles/creatures/ultra-scale]]
       Ultra-scale:
-        Title:
-          Canonical: Ultra-scale
-        Source:
-          Page: 336
-        Content:
-          Part of speech: [adjective]
-        Usage:
-          Initial: true
-        Table:
+        title:
+          canonical: Ultra-scale
+        source:
+          page: 336
+        content:
+          part_of_speech: [adjective]
+        usage:
+          initial: true
+        table:
           - [1, 89, Titanic (hill-sized), Attributes: {Creature Scale: Titanic}]
           - [90, 99, Colossal (mountain-sized), Attributes: {Creature Scale: Colossal}]
           - [100, 100, Vast (planet-sized), Attributes: {Creature Scale: Vast}]
-      Creature First Look:
-        Title:
-          Canonical: Creature First Look
-          Short: First Look
+      creature_first_look:
+        title:
+          canonical: Creature First Look
+          short: First Look
         _idFragment: First Look
-        Source:
-          Page: 338
-        Usage:
-          Initial: true
-          Max rolls: 2
-        Summary: |-
+        source:
+          page: 338
+        usage:
+          initial: true
+          max_rolls: 2
+        summary: |-
           Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
-        Content:
-          Part of speech: [fragment]
-          Tags: [description, first look]
-        Table:
+        content:
+          part_of_speech: [fragment]
+          tags: [description, first look]
+        table:
           - [1, 2, Antennae or sensory organs]
           - [3, 4, Armored]
           - [5, 6, Beautiful]
@@ -126,18 +126,18 @@ Oracle sets:
           - [95, 96, Tentacles or tendrils]
           - [97, 98, Translucent]
           - [99, 100, Visible symbiote]
-      Encountered Behavior:
-        Title:
-          Canonical: Encountered Behavior
-        Source:
-          Page: 338
-        Summary: |-
+      encountered_behavior:
+        title:
+          canonical: Encountered Behavior
+        source:
+          page: 338
+        summary: |-
           Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
-        Content:
-          Part of speech: [noun, common noun]
-        Usage:
-          Initial: true
-        Table:
+        content:
+          part_of_speech: [noun, common noun]
+        usage:
+          initial: true
+        table:
           - [1, 5, Ambusher, Attributes: {Encountered Behavior: Ambusher}]
           - [6, 10, Apex predator, Attributes: {Encountered Behavior: Apex predator}]
           - [11, 14, Builder, Attributes: {Encountered Behavior: Builder}]
@@ -159,20 +159,20 @@ Oracle sets:
           - [86, 90, Tracker, Attributes: {Encountered Behavior: Tracker}]
           - [91, 95, Trapper, Attributes: {Encountered Behavior: Trapper}]
           - [96, 100, *result:RollTwice]
-      Revealed Creature Aspect:
-        Title:
-          Canonical: Revealed Creature Aspect
-          Short: Revealed Aspect
+      revealed_creature_aspect:
+        title:
+          canonical: Revealed Creature Aspect
+          short: Revealed Aspect
         _idFragment: Revealed Aspect
-        Source:
-          Page: 339
-        Description: |-
+        source:
+          page: 339
+        description: |-
           Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature that you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or envision how this contradiction signals a new understanding or unexpected transformation.
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Max rolls: 2
-        Table:
+        content:
+          part_of_speech: [fragment]
+        usage:
+          max_rolls: 2
+        table:
           - [1, 2, Alternative environment]
           - [3, 4, Alternative movement]
           - [5, 6, Alternative senses]
@@ -223,55 +223,61 @@ Oracle sets:
           - [95, 96, Teleportation]
           - [97, 98, Territorial]
           - [99, 100, Toxic spew]
-    Sets:
-      Basic Form:
-        Title:
-          Short: Basic Form
-          Canonical: Creature Basic Form
-        Source:
-          Page: 337
-        Usage:
-          Initial: true
-          Requires:
-            Attributes:
-              Environment: null
-        Content:
-          Part of speech: [fragment]
-        Display:
-          Columns:
-              - Type: dice range
-                Content: starforged/oracles/creatures/basic_form/space
-                Label: Space
-              - Type: dice range
-                Content: starforged/oracles/creatures/basic_form/interior
-                Label: Interior
-              - Type: dice range
-                Content: starforged/oracles/creatures/basic_form/land
-                Label: Land
-              - Type: dice range
-                Content: starforged/oracles/creatures/basic_form/liquid
-                Label: Liquid
-              - Type: dice range
-                Content: starforged/oracles/creatures/basic_form/air
-                Label: Air
-              - Type: string
-                Content: starforged/oracles/creatures/basic_form/space
-                Key: Result
-        Summary: |-
+    sets:
+      basic_form:
+        title:
+          short: Basic Form
+          canonical: Creature Basic Form
+        source:
+          page: 337
+        usage:
+          initial: true
+          requires:
+            attributes:
+              environment: null
+        content:
+          part_of_speech: [fragment]
+        display:
+          columns:
+              space:
+                column_type: dice_range
+                content: starforged/oracles/creatures/basic_form/space
+                label: Space
+              interior:
+                column_type: dice_range
+                content: starforged/oracles/creatures/basic_form/interior
+                label: Interior
+              land:
+                column_type: dice_range
+                content: starforged/oracles/creatures/basic_form/land
+                label: Land
+              liquid:
+                column_type: dice_range
+                content: starforged/oracles/creatures/basic_form/liquid
+                label: Liquid
+              air:
+                column_type: dice_range
+                content: starforged/oracles/creatures/basic_form/air
+                label: Air
+              result:
+                column_type: string
+                content: starforged/oracles/creatures/basic_form/space
+                key: result
+        summary: |-
           Roll for a basic form, and flesh out the creature’s appearance using the [First Look](starforged/oracles/creatures/first_look) table.
-        Tables:
-          Space:
-            Title:
-              Canonical: Space
-            Display:
-              Color: "#121b21"
-              Icon: *icon.Space
-              Column of: starforged/oracles/creatures/basic_form
-            Usage:
-              Requires:
-                Attributes:
-                  Environment: Space
-            Table: &table:Creatures.BasicForm
+        tables:
+          space:
+            title:
+              canonical: Space
+            display:
+              color: "#121b21"
+              icon: *icon.Space
+              column_of: starforged/oracles/creatures/basic_form
+            usage:
+              requires:
+                attributes:
+                  environment: [space]
+            table: &table:Creatures.BasicForm
                 - [1, 5, Amoeba / pseudopods, Icon: img/vector/Oracles/Creature/Basic_Form/amoeba_pseudopods.svg]
                 - [6, 20, Amorphous / elemental, Icon: img/vector/Oracles/Creature/Basic_Form/amorphous_elemental.svg]
                 - [21, 30, Avian / winged, Icon: img/vector/Oracles/Creature/Basic_Form/avian_winged.svg]
@@ -290,17 +296,17 @@ Oracle sets:
                 - [87, 88, Starfish / symmetrical, Icon: img/vector/Oracles/Creature/Basic_Form/starfish_symmetrical.svg]
                 - [89, 90, Worm / slug / larva, Icon: img/vector/Oracles/Creature/Basic_Form/worm_slug_larva.svg]
                 - [91, 100, *result:RollTwice]
-          Interior:
-            Title:
-              Canonical: Interior
-            Display:
-              Color: "#707a83"
-              Icon: *icon.Interior
-              Column of: starforged/oracles/creatures/basic_form
-            Usage:
-              Requires:
-                Attributes:
-                  Environment: Interior
+          interior:
+            title:
+              canonical: Interior
+            display:
+              color: "#707a83"
+              icon: *icon.Interior
+              column_of: starforged/oracles/creatures/basic_form
+            usage:
+              requires:
+                attributes:
+                  environment: [interior]
             _templateTableRows:
               content: *table:Creatures.BasicForm
               rolls:
@@ -322,17 +328,17 @@ Oracle sets:
                 - [84, 85]
                 - [86, 90]
                 - [91, 100]
-          Land:
-            Title:
-              Canonical: Land
-            Display:
-              Color: "#ed1a38"
-              Icon: *icon.Land
-              Column of: starforged/oracles/creatures/basic_form
-            Usage:
-              Requires:
-                Attributes:
-                  Environment: Land
+          land:
+            title:
+              canonical: Land
+            display:
+              color: "#ed1a38"
+              icon: *icon.Land
+              column_of: starforged/oracles/creatures/basic_form
+            usage:
+              requires:
+                attributes:
+                  environment: [land]
             _templateTableRows:
               content: *table:Creatures.BasicForm
               rolls:
@@ -354,17 +360,17 @@ Oracle sets:
                 - [82, 83]
                 - [84, 90]
                 - [91, 100]
-          Liquid:
-            Title:
-              Canonical: Liquid
-            Display:
-              Color: "#0082bf"
-              Icon: *icon.Liquid
-              Column of: starforged/oracles/creatures/basic_form
-            Usage:
-              Requires:
-                Attributes:
-                  Environment: Liquid
+          liquid:
+            title:
+              canonical: Liquid
+            display:
+              color: "#0082bf"
+              icon: *icon.Liquid
+              column_of: starforged/oracles/creatures/basic_form
+            usage:
+              requires:
+                attributes:
+                  environment: [liquid]
             _templateTableRows:
               content: *table:Creatures.BasicForm
               rolls:
@@ -386,17 +392,17 @@ Oracle sets:
                 - [83, 87]
                 - [88, 90]
                 - [91, 100]
-          Air:
-            Title:
-              Canonical: Air
-            Display:
-              Color: "#90278f"
-              Icon: *icon.Air
-              Column of: starforged/oracles/creatures/basic_form
-            Usage:
-              Requires:
-                Attributes:
-                  Environment: Air
+          air:
+            title:
+              canonical: Air
+            display:
+              color: "#90278f"
+              icon: *icon.Air
+              column_of: starforged/oracles/creatures/basic_form
+            usage:
+              requires:
+                attributes:
+                  environment: [air]
             _templateTableRows:
               content: *table:Creatures.BasicForm
               rolls:

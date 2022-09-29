@@ -2,13 +2,13 @@
  * @public
  */
 export declare enum Zone {
-    Access = "Access",
-    Community = "Community",
-    Engineering = "Engineering",
-    Living = "Living",
-    Medical = "Medical",
-    Operations = "Operations",
-    Production = "Production",
-    Research = "Research"
+    Access = "access",
+    Community = "community",
+    Engineering = "engineering",
+    Living = "living",
+    Medical = "medical",
+    Operations = "operations",
+    Production = "production",
+    Research = "research"
 }
 //# sourceMappingURL=Zone.d.ts.map

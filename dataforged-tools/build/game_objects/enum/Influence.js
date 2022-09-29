@@ -2,15 +2,15 @@
  * Set by Oracles / Factions / Influence
  * @public
  */
-let Influence;
+var Influence;
 (function (Influence) {
-  Influence.Forsaken = 'Forsaken'
-  Influence.Isolated = 'Isolated'
-  Influence.Localized = 'Localized'
-  Influence.Established = 'Established'
-  Influence.Notable = 'Notable'
-  Influence.Dominant = 'Dominant'
-  Influence.Inescapable = 'Inescapable'
-})(Influence || (Influence = {}))
-export { Influence }
-// # sourceMappingURL=Influence.js.map
+    Influence["Forsaken"] = "forsaken";
+    Influence["Isolated"] = "isolated";
+    Influence["Localized"] = "localized";
+    Influence["Established"] = "established";
+    Influence["Notable"] = "notable";
+    Influence["Dominant"] = "dominant";
+    Influence["Inescapable"] = "inescapable";
+})(Influence || (Influence = {}));
+export { Influence };
+//# sourceMappingURL=Influence.js.map

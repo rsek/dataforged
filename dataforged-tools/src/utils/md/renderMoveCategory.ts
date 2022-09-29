@@ -11,13 +11,13 @@ import _ from 'lodash-es'
  * @returns A string.
  */
 export function renderMoveCategory (moveCat: MoveCategory, headerLevel: number = 2, localLinksOnly = true): string {
-  const header = `${_.repeat('#', headerLevel)} ${moveCat.Title.Canonical}`
-  const items = [header, moveCat.Description]
+  const header = `${_.repeat('#', headerLevel)} ${moveCat.title.canonical}`
+  const items = [header, moveCat.description]
 
-  const categories = _.mapValues(moveCat.Moves, move => move.Category)
+  const categories = _.mapValues(moveCat.moves, move => move.category)
 
   const moveCategoryText = _.flatMap(categories, category => {
-    const moveText = _.filter(moveCat.Moves, move => move.Category === category).map(move => renderMove(move, headerLevel + 1))
+    const moveText = _.filter(moveCat.moves, move => move.category === category).map(move => renderMove(move, headerLevel + 1))
     return moveText
   })
 
@@ -25,10 +25,10 @@ export function renderMoveCategory (moveCat: MoveCategory, headerLevel: number =
 
   let result = items.join('\n\n')
 
-  if (moveCat.Title.Canonical !== 'Suffer Moves') {
+  if (moveCat.title.canonical !== 'Suffer Moves') {
     result = result.replaceAll(/(suffer moves?)/g, '[$1](#Suffer-Moves)')
   }
-  if (moveCat.Title.Canonical !== 'Recover Moves') {
+  if (moveCat.title.canonical !== 'Recover Moves') {
     result = result.replaceAll(/(recover moves?)/g, '[$1](#Recover-Moves)')
   }
 

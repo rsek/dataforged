@@ -7,33 +7,33 @@ import _ from 'lodash-es'
 
 const domainFeaturesStatic: Array<PartialBy<OracleTableRow, '$id'>> = [
   {
-    Floor: 89,
-    Ceiling: 98,
-    Result: 'Something unusual or unexpected',
-    Suggestions: {
-      'Oracle rolls': [
-        'Ironsworn/Oracles/Feature/Aspect',
-        'Ironsworn/Oracles/Feature/Focus'
+    floor: 89,
+    ceiling: 98,
+    result: 'Something unusual or unexpected',
+    suggestions: {
+      oracle_rolls: [
+        'ironsworn/oracles/feature/aspect',
+        'ironsworn/oracles/feature/focus'
       ]
     }
   },
   {
-    Floor: 99,
-    Ceiling: 99,
-    Result: 'You transition into a new theme',
-    Suggestions: {
-      'Oracle rolls': [
-        'Ironsworn/Oracles/Site_nature/Theme'
+    floor: 99,
+    ceiling: 99,
+    result: 'You transition into a new theme',
+    suggestions: {
+      oracle_rolls: [
+        'ironsworn/oracles/site_nature/theme'
       ]
     }
   },
   {
-    Floor: 100,
-    Ceiling: 100,
-    Result: 'You transition into a new domain',
-    Suggestions: {
-      'Oracle rolls': [
-        'Ironsworn/Oracles/Site_nature/Domain'
+    floor: 100,
+    ceiling: 100,
+    result: 'You transition into a new domain',
+    suggestions: {
+      oracle_rolls: [
+        'ironsworn/oracles/site_nature/domain'
       ]
     }
   }
@@ -44,27 +44,27 @@ const domainFeaturesStatic: Array<PartialBy<OracleTableRow, '$id'>> = [
  */
 export abstract class DelveCardBuilder implements DelveCard {
   $id: string
-  'Card type': DelveCardType
-  Title: Title
-  Source: Source
-  Summary: string
-  Description: string
-  Features: OracleTableRow[]
-  Dangers: OracleTableRow[]
+  card_type: DelveCardType
+  title: Title
+  source: Source
+  summary: string
+  description: string
+  features: OracleTableRow[]
+  dangers: OracleTableRow[]
   constructor(type: DelveCardType, yaml: YamlDelveCard, fragment: string, parentSource?: Source | undefined, domainFeaturesStaticRows: Array<PartialBy<OracleTableRow, '$id'>> = domainFeaturesStatic) {
     this.$id = formatId(fragment, Game.Ironsworn, type)
-    this['Card type'] = type
-    this.Title = new TitleBuilder(yaml.Title, this)
-    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), parentSource ?? {})
-    this.Summary = yaml.Summary
-    this.Description = yaml.Description
-    this.Features = yaml.Features.map(row => new OracleTableRowBuilder(this.$id + '/Features', row))
-    let newDangers = yaml.Dangers as Array<PartialBy<OracleTableRow, '$id'>>
-    if (this['Card type'] === DelveCardType.Domain) {
-      newDangers = _.cloneDeep(yaml.Dangers)
+    this.card_type = type
+    this.title = new TitleBuilder(yaml.title, this)
+    this.source = new SourceBuilder(yaml.source ?? SourceBuilder.defaultByGame(Game.Ironsworn), parentSource ?? {})
+    this.summary = yaml.summary
+    this.description = yaml.description
+    this.features = yaml.features.map((row, index) => new OracleTableRowBuilder(row, index, this))
+    let newDangers = yaml.dangers as Array<PartialBy<OracleTableRow, '$id'>>
+    if (this.card_type === DelveCardType.Domain) {
+      newDangers = _.cloneDeep(yaml.dangers)
       newDangers.push(..._.cloneDeep(domainFeaturesStaticRows))
     }
-    this.Dangers = newDangers.map(row => new OracleTableRowBuilder(this.$id + '/Dangers', row))
+    this.dangers = newDangers.map((row, index) => new OracleTableRowBuilder(row, index, this))
   }
 }
 
@@ -72,9 +72,9 @@ export abstract class DelveCardBuilder implements DelveCard {
  * @internal
  */
 export class DelveSiteThemeBuilder extends DelveCardBuilder implements DelveSiteTheme {
-  'Card type'!: DelveCardType.Theme
-  Features!: DelveSiteTheme['Features'] & OracleTableRow[]
-  Dangers!: DelveSiteTheme['Dangers'] & OracleTableRow[]
+  card_type!: DelveCardType.Theme
+  features!: DelveSiteTheme['features'] & OracleTableRow[]
+  dangers!: DelveSiteTheme['dangers'] & OracleTableRow[]
   constructor(yaml: YamlDelveSiteTheme, fragment: string, parentSource: Source) {
     super(DelveCardType.Theme, yaml, fragment, parentSource)
   }
@@ -84,9 +84,9 @@ export class DelveSiteThemeBuilder extends DelveCardBuilder implements DelveSite
  * @internal
  */
 export class DelveSiteDomainBuilder extends DelveCardBuilder implements DelveSiteDomain {
-  'Card type'!: DelveCardType.Domain
-  Features!: DelveSiteDomain['Features'] & OracleTableRow[]
-  Dangers!: DelveSiteDomain['Dangers'] & OracleTableRow[]
+  card_type!: DelveCardType.Domain
+  features!: DelveSiteDomain['features'] & OracleTableRow[]
+  dangers!: DelveSiteDomain['dangers'] & OracleTableRow[]
   constructor(yaml: YamlDelveSiteDomain, fragment: string, parentSource: Source) {
     super(DelveCardType.Domain, yaml, fragment, parentSource)
   }

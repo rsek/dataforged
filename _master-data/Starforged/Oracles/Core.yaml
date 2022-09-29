@@ -1,30 +1,30 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Core:
-    Title:
-      Canonical: Core oracles
-      Short: Core
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  core:
+    title:
+      canonical: Core Oracles
+      short: Core
     _idFragment: Core
-    Source:
-      Date: "050622"
-    Tables:
-      Action:
-        Title:
-          Canonical: Action
-        Source:
-          Page: 296
-        Usage:
-          Suggestions:
-            Oracle rolls:
+    source:
+      date: "050622"
+    tables:
+      action:
+        title:
+          canonical: Action
+        source:
+          page: 296
+        usage:
+          suggestions:
+            oracle_rolls:
               - starforged/oracles/core/theme
-        Content:
-          Part of speech: [verb]
-        Description: &action_theme_desc |-
+        content:
+          part_of_speech: [verb]
+        description: &action_theme_desc |-
           When you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) about a goal, situation, or event, roll for an [Action](starforged/oracles/core/action) and [Theme](starforged/oracles/core/theme). Together, these provide an interpretative verb/noun prompt.
-        Table:
+        table:
           - [1, 1, Abandon]
           - [2, 2, Acquire]
           - [3, 3, Advance]
@@ -125,20 +125,20 @@ Oracle sets:
           - [98, 98, Uphold]
           - [99, 99, Weaken]
           - [100, 100, Withdraw]
-      Theme:
-        Title:
-          Canonical: Theme
-        Source:
-          Page: 297
-        Usage:
-          Suggestions:
-            Oracle rolls:
+      theme:
+        title:
+          canonical: Theme
+        source:
+          page: 297
+        usage:
+          suggestions:
+            oracle_rolls:
               - starforged/oracles/core/action
-        Content:
-          Part of speech: [noun, common noun]
-          Tags: [abstract noun]
-        Description: *action_theme_desc
-        Table:
+        content:
+          part_of_speech: [noun, common noun]
+          tags: [abstract noun]
+        description: *action_theme_desc
+        table:
           - [1, 1, Ability]
           - [2, 2, Advantage]
           - [3, 3, Alliance]
@@ -239,20 +239,20 @@ Oracle sets:
           - [98, 98, Wealth]
           - [99, 99, Weapon]
           - [100, 100, World]
-      Descriptor:
-        Title:
-          Canonical: Descriptor
-        Source:
-          Page: 298
-        Usage:
-          Suggestions:
-            Oracle rolls:
+      descriptor:
+        title:
+          canonical: Descriptor
+        source:
+          page: 298
+        usage:
+          suggestions:
+            oracle_rolls:
               - starforged/oracles/core/focus
-        Content:
-          Part of speech: [adjective]
-        Description: &descriptor_focus_desc |-
+        content:
+          part_of_speech: [adjective]
+        description: &descriptor_focus_desc |-
           When you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to help define the nature of a location, discovery, or encounter, roll for a [Descriptor](starforged/oracles/core/descriptor) and a [Focus](starforged/oracles/core/focus) for an adjective/noun prompt.
-        Table:
+        table:
           - [1, 1, Abandoned]
           - [2, 2, Abundant]
           - [3, 3, Active]
@@ -353,20 +353,20 @@ Oracle sets:
           - [98, 98, Untamed]
           - [99, 99, Valuable]
           - [100, 100, Violent]
-      Focus:
-        Title:
-          Canonical: Focus
-        Source:
-          Page: 299
-        Usage:
-          Suggestions:
-            Oracle rolls:
+      focus:
+        title:
+          canonical: Focus
+        source:
+          page: 299
+        usage:
+          suggestions:
+            oracle_rolls:
               - starforged/oracles/core/descriptor
-        Content:
-          Part of speech: [noun, common noun]
-          Tags: [concrete noun]
-        Description: *descriptor_focus_desc
-        Table:
+        content:
+          part_of_speech: [noun, common noun]
+          tags: [concrete noun]
+        description: *descriptor_focus_desc
+        table:
           - [1, 1, Alarm]
           - [2, 2, Anomaly]
           - [3, 3, Apparition]

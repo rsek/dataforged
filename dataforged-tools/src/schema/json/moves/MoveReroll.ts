@@ -1,10 +1,10 @@
-import type { HasId, HasText } from '@schema'
+import type { MixinId, MixinText } from '@schema'
 
 /**
  * Describes a reroll offered by a move outcome. The vast majority of rerolls in *Ironsworn* are elective, so automatic rerolling isn't recommended.
  * @public
  */
-export interface MoveReroll extends HasId, Partial<HasText> {
+export interface MoveReroll extends MixinId, Partial<MixinText> {
   /**
    *
    */
@@ -14,11 +14,11 @@ export interface MoveReroll extends HasId, Partial<HasText> {
    * @markdown
    * @localize
    */
-  Text?: string | undefined
+  text?: string | undefined
   /**
    * The dice to be rerolled.
    */
-  Dice: RerollType
+  dice: RerollType
 }
 
 /**
@@ -33,15 +33,15 @@ export enum RerollType {
   /**
    * The player can pick and choose which challenge dice to reroll (none, one, or both).
    */
-  ChallengeDice = 'challenge dice',
+  ChallengeDice = 'challenge_dice',
   /**
    * The action die is rerolled.
    */
-  ActionDie = 'action die',
+  ActionDie = 'action_die',
   /**
    * The player can choose **one** challenge die to reroll.
    */
-  ChallengeDie = 'challenge die',
+  ChallengeDie = 'challenge_die',
   /**
    * Reroll *all* dice
    */

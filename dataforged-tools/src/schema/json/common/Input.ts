@@ -1,4 +1,4 @@
-import type { Clock, ClockSegments, ClockType, HasDisplay, HasLabel } from '@schema'
+import type { Clock, ClockSegments, ClockType, MixinDisplay, MixinLabel } from '@schema'
 import type { InputDisplay } from '@schema/json/common/InputDisplay.js'
 
 /**
@@ -32,29 +32,28 @@ export enum InputType {
   Toggle = 'toggle'
 }
 
-
 /**
  * A stub interface representing an input widget of any type.
  * @see {@link InputNumber}, {@link InputClock}, {@link InputText}, {@link InputSelect}, {@link InputToggle}
  * @public
  */
-export interface Input extends HasLabel, HasDisplay {
+export interface Input extends MixinLabel, MixinDisplay {
   /**
    * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/([1-3]/)?inputs/[a-z_-]+$
    */
   $id: string
-  Label: string
+  label: string
   /**
    * The type of input represented by this object.
    */
-  "Input type": InputType
+  input_type: InputType
   /**
    * Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.
    *
    * It's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality "front and center" or as a secondary interaction (via long press, right click, etc);
    */
-  Permanent: boolean
-  Display: InputDisplay
+  permanent: boolean
+  display: InputDisplay
 }
 
 /**
@@ -64,15 +63,16 @@ export interface Input extends HasLabel, HasDisplay {
  * @public
  */
 export interface InputNumber extends Input {
-  "Input type": InputType.Number
-  Min: number
+  input_type: InputType.Number
+  min: number
   /**
+   * The maximum value for this number input. If it's "null", it has no maximum.
    * @nullable
    */
-  Max: number | null
-  Step: 1
-  Value: number
-  Permanent: false
+  max: number | null
+  step: 1
+  value: number
+  permanent: false
 }
 
 /**
@@ -82,22 +82,22 @@ export interface InputNumber extends Input {
  * @public
  */
 export interface InputClock extends Input, Clock {
-  "Input type": InputType.Clock
+  input_type: InputType.Clock
   /**
    * Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.
    */
-  'Clock type': ClockType
+  clock_type: ClockType
   /**
    * An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.
    *
    * `Filled` should not exceed this number.
    */
-  Segments: ClockSegments
+  segments: ClockSegments
   /**
    * An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.
    */
-  Filled: number
-  Permanent: false
+  filled: number
+  permanent: false
 }
 /**
  * A text input.
@@ -107,6 +107,6 @@ export interface InputClock extends Input, Clock {
  * @public
  */
 export interface InputText extends Input {
-  'Input type': InputType.Text
-  Permanent: true
+  input_type: InputType.Text
+  permanent: true
 }

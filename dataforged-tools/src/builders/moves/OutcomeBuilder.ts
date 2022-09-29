@@ -7,23 +7,23 @@ import { formatId } from '@utils/formatId'
  */
 export abstract class OutcomeBuilder<O extends MoveOutcome, RequireText extends boolean = false> implements OutcomeBase<O, RequireText> {
   $id: OutcomeBase<O>['$id']
-  Text?: RequireText extends true ? string : (string| undefined)
-  'Count as'?: OutcomeBase<O>['Count as']
-  Reroll?: MoveReroll | undefined
-  'With a match'?: OutcomeBuilder<O> | undefined
-  'In control'?: boolean | undefined
+  text?: RequireText extends true ? string : (string | undefined)
+  'count_as'?: OutcomeBase<O>['count_as']
+  reroll?: MoveReroll | undefined
+  'with_a_match'?: OutcomeBuilder<O> | undefined
+  'in_control'?: boolean | undefined
   constructor (yaml: YamlOutcome<O>, outcome: O, parentId: OutcomeBase<O>['$id']) {
     this.$id = formatId(MoveOutcome[outcome], parentId)
-    this.Text = yaml.Text
-    if (yaml.Reroll != null) {
+    this.text = yaml.text
+    if (yaml.reroll != null) {
       // console.log("has reroll data", json.Reroll);
-      this.Reroll = {
-        ...yaml.Reroll,
+      this.reroll = {
+        ...yaml.reroll,
         $id: formatId('Reroll', this.$id)
       }
     }
-    this['Count as'] = yaml['Count as']
-    this['In control'] = yaml['In control']
+    this.count_as = yaml.count_as
+    this.in_control = yaml.in_control
   }
 }
 
@@ -31,11 +31,11 @@ export abstract class OutcomeBuilder<O extends MoveOutcome, RequireText extends 
  * @internal
  */
 export class OutcomeMissBuilder<RequireText extends boolean = false> extends OutcomeBuilder<0, RequireText> implements OutcomeMiss {
-  'With a match'?: undefined | OutcomeMissMatchBuilder
+  'with_a_match'?: undefined | OutcomeMissMatchBuilder
   constructor (yaml: YamlOutcomeMiss, parentId: string) {
-    super(yaml, MoveOutcome.Miss, parentId)
-    if (yaml['With a match'] != null) {
-      this['With a match'] = new OutcomeMissMatchBuilder(yaml['With a match'], this.$id)
+    super(yaml, MoveOutcome.miss, parentId)
+    if (yaml.with_a_match != null) {
+      this.with_a_match = new OutcomeMissMatchBuilder(yaml.with_a_match, this.$id)
     }
   }
 }
@@ -53,9 +53,9 @@ export class OutcomeMissMatchBuilder<RequireText extends boolean = false> extend
  * @internal
  */
 export class OutcomeWeakHitBuilder<RequireText extends boolean = false> extends OutcomeBuilder<1, RequireText> implements OutcomeWeakHit {
-  'With a match'?: undefined
+  'with_a_match'?: undefined
   constructor (yaml: YamlOutcomeWeakHit, parentId: string) {
-    super(yaml, MoveOutcome['Weak hit'], parentId)
+    super(yaml, MoveOutcome.weak_hit, parentId)
   }
 }
 
@@ -63,11 +63,11 @@ export class OutcomeWeakHitBuilder<RequireText extends boolean = false> extends 
  * @internal
  */
 export class OutcomeStrongHitBuilder<RequireText extends boolean = false> extends OutcomeBuilder<2, RequireText> implements OutcomeStrongHit {
-  'With a match'?: undefined | OutcomeStrongHitMatchBuilder
+  'with_a_match'?: undefined | OutcomeStrongHitMatchBuilder
   constructor (yaml: YamlOutcomeStrongHit, parentId: string) {
-    super(yaml, MoveOutcome['Strong hit'], parentId)
-    if (yaml['With a match'] != null) {
-      this['With a match'] = new OutcomeStrongHitMatchBuilder(yaml['With a match'], this.$id)
+    super(yaml, MoveOutcome.strong_hit, parentId)
+    if (yaml.with_a_match != null) {
+      this.with_a_match = new OutcomeStrongHitMatchBuilder(yaml.with_a_match, this.$id)
     }
   }
 }

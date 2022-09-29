@@ -4,12 +4,12 @@
  * @public
  */
 export declare enum Authority {
-    NoneLawless = "None / lawless",
-    Ineffectual = "Ineffectual",
-    Tolerant = "Tolerant",
-    Fair = "Fair",
-    Unyielding = "Unyielding",
-    Corrupt = "Corrupt",
-    Oppressive = "Oppressive"
+    NoneLawless = "none_lawless",
+    Ineffectual = "ineffectual",
+    Tolerant = "tolerant",
+    Fair = "fair",
+    Unyielding = "unyielding",
+    Corrupt = "corrupt",
+    Oppressive = "oppressive"
 }
 //# sourceMappingURL=Authority.d.ts.map

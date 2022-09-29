@@ -1,37 +1,39 @@
-import { ConditionMeter, Meter } from "@schema";
-import { Asset } from "@schema/json/assets/Asset.js";
+import { ConditionMeter, Meter } from '@schema'
+import { Asset } from '@schema/json/assets/Asset.js'
 
 /**
  * Describes an *Ironsworn* player character.
  * @public
  */
 export interface Pc {
-  Stats: PcStats;
-  Assets: Asset[];
-  Meters: PcMeters;
+  stats: PcStats
+  assets: Asset[]
+  meters: PcMeters
+  impacts: Record<string, boolean>
 }
 
 /**
  * Describes the stats of an *Ironsworn* player character.
+ * @public
  */
 export interface PcStats extends Record<Stat, number> {
-  [Stat.Edge]: number;
-  [Stat.Heart]: number;
-  [Stat.Iron]: number;
-  [Stat.Shadow]: number;
-  [Stat.Wits]: number;
+  [Stat.Edge]: number
+  [Stat.Heart]: number
+  [Stat.Iron]: number
+  [Stat.Shadow]: number
+  [Stat.Wits]: number
 }
 
 /**
  * Describes the resource meters of an *Ironsworn* player character.
+ * @public
  */
 export interface PcMeters extends Record<PcMeterType, Meter> {
-  [PcMeterType.Health]: ConditionMeter;
-  [PcMeterType.Spirit]: ConditionMeter;
-  [PcMeterType.Supply]: ConditionMeter;
-  [PcMeterType.Momentum]: Meter;
+  [PcMeterType.Health]: ConditionMeter
+  [PcMeterType.Spirit]: ConditionMeter
+  [PcMeterType.Supply]: ConditionMeter
+  [PcMeterType.Momentum]: Meter
 }
-
 
 /**
  * Enumerates player character stats.
@@ -64,4 +66,3 @@ export enum PcMeterType {
   Supply = 'supply',
   Momentum = 'momentum'
 }
-

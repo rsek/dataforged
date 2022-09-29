@@ -3,12 +3,12 @@ import type { Display } from '@schema'
  * @internal
  */
 export class DisplayBuilder implements Display {
-  Icon?: string | undefined
-  Images?: string[] | undefined
-  Color?: string | undefined
-  constructor ({ Icon, Images, Color }: Display) {
-    this.Icon = Icon
-    this.Images = Images
-    this.Color = Color
+  icon?: string | undefined
+  images?: string[] | undefined
+  color?: string | undefined
+  constructor ({ icon: Icon, images: Images, color: Color }: Display) {
+    this.icon = Icon
+    this.images = Images
+    this.color = Color
   }
 }

@@ -8,23 +8,23 @@ import { formatId } from '@utils'
  */
 export class IronlandsRegionBuilder implements IronlandsRegion {
   $id: string
-  Title: Title
-  Summary: string
-  Display: Display
-  Source: Source
-  Features: string[]
-  Tags?: string[] | undefined
-  Description: string
-  'Quest starter': string
+  title: Title
+  summary: string
+  display: Display
+  source: Source
+  features: string[]
+  tags?: string[] | undefined
+  description: string
+  'quest_starter': string
 
-  constructor (yaml: YamlIronlandsRegion, rootSource: Source) {
-    const fragment = yaml._idFragment ?? yaml.Title.Short ?? yaml.Title.Standard ?? yaml.Title.Canonical
+  constructor(yaml: YamlIronlandsRegion, rootSource: Source) {
+    const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, Game.Ironsworn, 'Regions')
-    this.Title = new TitleBuilder(yaml.Title, this)
-    this.Display = new DisplayBuilder({ })
-    this.Source = new SourceBuilder(yaml.Source ?? SourceBuilder.default(Game.Ironsworn), rootSource)
-    this.Features = yaml.Features
-    this.Summary = yaml.Summary
-    this.Description = yaml.Description
+    this.title = new TitleBuilder(yaml.title, this)
+    this.display = new DisplayBuilder({})
+    this.source = new SourceBuilder(yaml.source ?? SourceBuilder.defaultByGame(Game.Ironsworn), rootSource)
+    this.features = yaml.features
+    this.summary = yaml.summary
+    this.description = yaml.description
   }
 }

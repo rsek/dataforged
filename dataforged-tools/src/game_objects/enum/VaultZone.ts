@@ -2,6 +2,6 @@
  * @public
  */
 export enum VaultZone {
-  Interior = 'Interior',
-  Sanctum = 'Sanctum'
+  Interior = 'interior',
+  Sanctum = 'sanctum'
 }

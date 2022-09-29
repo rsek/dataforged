@@ -1,4 +1,4 @@
-import type { HasLabel, OracleTable, OracleTableRow } from '@schema'
+import type { MixinLabel, OracleTable, OracleTableRow } from '@schema'
 import type { KeysWithValuesOfType } from '@utils'
 
 /**
@@ -6,7 +6,7 @@ import type { KeysWithValuesOfType } from '@utils'
  * @public
  */
 export enum TableColumnType {
-  Range = 'dice range',
+  DiceRange = 'dice_range',
   String = 'string'
 }
 
@@ -14,21 +14,21 @@ export enum TableColumnType {
  * Interface with elements common to {@link TableColumnRoll} and {@link TableColumnText}.
  * @public
  */
-export interface TableColumnBase extends HasLabel {
+export interface TableColumnBase extends MixinLabel {
   /**
    * The label or header text to use for this column.
    * @localize
    */
-  Label: string
+  label: string
   /**
-   * The ID of the {@link OracleTable} whose {@link OracleTable.Table} content will be displayed in the table.
+   * The ID of the {@link OracleTable} whose {@link OracleTable.table} content will be displayed in the table.
    */
-  'Content': OracleTable['$id']
-  'Column type': TableColumnType
+  content: OracleTable['$id']
+  column_type: TableColumnType
   /**
-   * The key of each {@link OracleTableRow} in the {@link OracleTable.Table}, whose string value is displayed in the rendered table.
+   * The key of each {@link OracleTableRow} in the {@link OracleTable.table}, whose string value is displayed in the rendered table.
    */
-  Key?: KeysWithValuesOfType<OracleTableRow, string> | undefined
+  key?: KeysWithValuesOfType<OracleTableRow, string> | undefined
 }
 
 /**
@@ -36,26 +36,22 @@ export interface TableColumnBase extends HasLabel {
  * @public
  */
 export interface TableColumnText extends TableColumnBase {
-  'Column type': TableColumnType.String
+  column_type: TableColumnType.String
   /**
    * @default "Result"
    * @localize
    */
-  Label: string
-  /**
-   * @default "Result"
-   */
-  Key: KeysWithValuesOfType<OracleTableRow, string>
+  label: string
 }
 
 /**
  * @public
  */
-export interface TableColumnRoll extends Omit<TableColumnBase, 'Key'> {
+export interface TableColumnRoll extends Omit<TableColumnBase, 'key'> {
   /**
    * @default "Roll"
    * @localize
    */
-  Label: string
-  'Column type': TableColumnType.Range
+  label: string
+  column_type: TableColumnType.DiceRange
 }

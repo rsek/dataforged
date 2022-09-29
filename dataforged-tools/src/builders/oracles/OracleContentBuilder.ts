@@ -6,13 +6,13 @@ import type { OracleContent, PartOfSpeechTag } from '@schema'
  * @internal
  */
 export class OracleContentBuilder implements OracleContent {
-  'Part of speech'?: PartOfSpeechTag[] | undefined
-  'Tags'?: string[] | undefined
+  'part_of_speech'?: PartOfSpeechTag[] | undefined
+  'tags'?: string[] | undefined
   constructor (yaml: OracleContent) {
     // if (!(json["Part of speech"]||json["Tags"])) {
     //   throw badJsonError(this.constructor, json, "Expected OracleContent");
     // }
-    this['Part of speech'] = yaml['Part of speech'] ?? undefined
-    this.Tags = yaml.Tags ?? undefined
+    this.part_of_speech = yaml.part_of_speech ?? undefined
+    this.tags = yaml.tags ?? undefined
   }
 }

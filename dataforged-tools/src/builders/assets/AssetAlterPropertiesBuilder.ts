@@ -1,20 +1,16 @@
-import { AssetStateBuilder } from '@builders'
+import { InputToggleBuilder } from '@builders'
 import type { AlterAsset, YamlAlterAsset } from '@schema'
 import { formatId } from '@utils'
 
 export class AlterAssetBuilder implements AlterAsset {
   $id: string
-  Abilities?: AlterAsset['Abilities']
-  Attachments?: AlterAsset['Attachments']
-  'Condition meter'?: AlterAsset['Condition meter']
-  States?: AlterAsset['States']
+  abilities?: AlterAsset['abilities']
+  attachments?: AlterAsset['attachments']
+  'condition_meter'?: AlterAsset['condition_meter']
   constructor (yaml: YamlAlterAsset, parentId: string) {
     this.$id = formatId('Alter Properties', parentId)
-    this.Abilities = yaml.Abilities
-    this.Attachments = yaml.Attachments
-    this['Condition meter'] = yaml['Condition meter']
-    if (yaml.States !== null) {
-      this.States = yaml.States.map(state => new AssetStateBuilder(state, this))
-    }
+    this.abilities = yaml.abilities
+    this.attachments = yaml.attachments
+    this.condition_meter = yaml.condition_meter
   }
 }

@@ -1,66 +1,70 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Starships:
-    Title:
-      Canonical: Starships
-      Short: Starship
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  starships:
+    title:
+      canonical: Starships
+      short: Starship
     _idFragment: Starships
-    Source:
-      Authors: [Shawn Tomkin]
-      Title: "Ironsworn: Starforged Rulebook"
-      License: https://creativecommons.org/licenses/by-sa/4.0/
-      Date: "050622"
-    Sets:
-      Mission:
-        Title:
-          Canonical: Starship Mission
-          Short: Mission
-        _idFragment: Mission
-        Source:
-          Page: 328
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/starships/mission/terminus
-              Label: Terminus
-            - Type: dice range
-              Content: starforged/oracles/starships/mission/outlands
-              Label: Outlands
-            - Type: dice range
-              Content: starforged/oracles/starships/mission/expanse
-              Label: Expanse
-            - Type: string
-              Content: starforged/oracles/starships/mission/terminus
-              Label: Mission
-
-        Content:
-          Part of speech: [fragment]
-          Tags: [objective]
-        Description: |-
+    source:
+      authors: [Shawn Tomkin]
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      date: "050622"
+    sets:
+      mission:
+        title:
+          canonical: Starship Mission
+          short: Mission
+        source:
+          page: 328
+        display:
+          columns:
+            terminus:
+              column_type: dice_range
+              content: starforged/oracles/starships/mission/terminus
+              label: Terminus
+            outlands:
+              column_type: dice_range
+              content: starforged/oracles/starships/mission/outlands
+              label: Outlands
+            expanse:
+              column_type: dice_range
+              content: starforged/oracles/starships/mission/expanse
+              label: Expanse
+            mission:
+              column_type: string
+              content: starforged/oracles/starships/mission/terminus
+              label: Mission
+        content:
+          part_of_speech: [fragment]
+          tags: [objective]
+        summary: |-
           Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
-        Usage:
-          Requires:
-            Attributes:
-              Region: null
-        Tables:
-          Terminus:
-            Title:
-              Canonical: Terminus
-            Display: &display:Mission
-              Column of: starforged/oracles/starships/mission
-              Columns:
-                - Type: dice range
-                - Label: Mission
-                  Key: Result
-                  Type: string
-            Usage:
-              Requires:
-                Attributes:
-                  Region: Terminus
-            Table: &table:Mission
+        usage:
+          requires:
+            attributes:
+              region: null
+        tables:
+          terminus:
+            title:
+              canonical: Terminus
+            display: &display:Mission
+              column_of: starforged/oracles/starships/mission
+              columns:
+                roll:
+                  column_type: dice_range
+                mission:
+                  label: Mission
+                  key: result
+                  column_type: string
+            usage:
+              requires:
+                attributes:
+                  region: [terminus]
+            table: &table:Mission
               - [1, 3, Blockade a location, Suggestions: [*roll:Place]]
               - [4, 6, Break a blockade]
               - [7, 9, Collect a resource, Suggestions: [*roll:Object]]
@@ -75,32 +79,32 @@ Oracle sets:
               - [33, 35, Evacuate a location, Suggestions: [*obj:Settlement]]
               - [36, 37, Explore a region]
               - [38, 39, Hold prisoners]
-              - [40, 42, Hunt down another ship, Suggestions: [*obj:Starship]]
+              - [40, 42, Hunt down another ship, suggestions: [*obj:Starship]]
               - [43, 45, Launch an attack]
               - [46, 48, Patrol an area]
               - [49, 51, Provide medical aid]
               - [52, 54, Provide repairs]
               - [55, 57, Provide shelter]
-              - [58, 59, Quarantine a danger, Suggestions: [*roll:Event]]
-              - [60, 62, Raid a settlement,Suggestions: [*obj:Settlement]]
-              - [63, 65, Resupply a settlement,Suggestions: [*obj:Settlement]]
+              - [58, 59, Quarantine a danger, suggestions: [*roll:Event]]
+              - [60, 62, Raid a settlement,suggestions: [*obj:Settlement]]
+              - [63, 65, Resupply a settlement,suggestions: [*obj:Settlement]]
               - [66, 68, Retrieve salvage]
               - [69, 71, Search and rescue]
-              - [72, 74, Smuggle cargo, Suggestions: [*roll:Object]]
-              - [75, 77, Survey a site, Suggestions: [*roll:Place]]
-              - [78, 79, Test a technology, Suggestions: [*roll:Object]]
-              - [80, 82, Transport cargo, Suggestions: [*roll:Object]]
-              - [83, 85, Transport passengers, Suggestions: [*obj:Npc]]
+              - [72, 74, Smuggle cargo, suggestions: [*roll:Object]]
+              - [75, 77, Survey a site, suggestions: [*roll:Place]]
+              - [78, 79, Test a technology, suggestions: [*roll:Object]]
+              - [80, 82, Transport cargo, suggestions: [*roll:Object]]
+              - [83, 85, Transport passengers, suggestions: [*obj:Npc]]
               - [86, 90, *result:Action+Theme]
               - [91, 100, *result:RollTwice]
-          Outlands:
-            Title:
-              Canonical: Outlands
-            Display: *display:Mission
-            Usage:
-              Requires:
-                Attributes:
-                  Region: Outlands
+          outlands:
+            title:
+              canonical: Outlands
+            display: *display:Mission
+            usage:
+              requires:
+                attributes:
+                  region: [outlands]
             _templateTableRows:
               content: *table:Mission
               rolls:
@@ -137,14 +141,14 @@ Oracle sets:
                 - [86, 90]
                 - [91, 100]
 
-          Expanse:
-            Title:
-              Canonical: Expanse
-            Display: *display:Mission
-            Usage:
-              Requires:
-                Attributes:
-                  Region: Expanse
+          expanse:
+            title:
+              canonical: Expanse
+            display: *display:Mission
+            usage:
+              requires:
+                attributes:
+                  region: [expanse]
             _templateTableRows:
               content: *table:Mission
               rolls:
@@ -180,27 +184,30 @@ Oracle sets:
                 - [84, 85]
                 - [86, 90]
                 - [91, 100]
-    Tables:
-      Type:
-        Title:
-          Canonical: Type
-        Source:
-          Page: 326
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [common noun, fragment]
-        Display:
-          Columns:
-            - Label: Roll
-              Type: dice range
-            - Label: Class
-              Type: string
-              Key: Result
-            - Label: Typical Role
-              Type: string
-              Key: Summary
-        Table:
+    tables:
+      type:
+        title:
+          canonical: Type
+        source:
+          page: 326
+        usage:
+          initial: true
+        content:
+          part_of_speech: [common noun, fragment]
+        display:
+          columns:
+            roll:
+              label: Roll
+              column_type: dice_range
+            class:
+              label: Class
+              column_type: string
+              key: result
+            typical_role:
+              label: Typical Role
+              column_type: string
+              key: summary
+        table:
           - [1, 2, Carrier, Launches fighters]
           - [3, 6, Corvette, Light attack ship]
           - [7, 11, Courier, Fast transport]
@@ -220,21 +227,21 @@ Oracle sets:
           - [62, 64, Shuttle, Short-range transport]
           - [65, 67, Snub fighter, Small attack craft]
           - [68, 82, Multipurpose, "[⏵Starship Mission](starforged/oracles/starships/mission)",
-              Oracle rolls: [starforged/oracles/starships/mission]]
+              oracle_rolls: [starforged/oracles/starships/mission]]
           - [83, 84, Unusual or unknown, Summary: null]
           - [85, 94, "[⏵Fleet](starforged/oracles/starships/fleet)", Summary: null, Oracle rolls: [starforged/oracles/starships/fleet]]
           - [95, 100, Ships in conflict (roll twice), Summary: null, Oracle rolls: [starforged/oracles/starships/type], *obj:Starship]
           # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
-      Fleet:
-        Title:
-          Canonical: Fleet
-        Source:
-          Page: 326
-        Content:
-          Part of speech: [noun, common noun]
-        Usage:
-          Initial: true
-        Table:
+      fleet:
+        title:
+          canonical: Fleet
+        source:
+          page: 326
+        content:
+          part_of_speech: [noun, common noun]
+        usage:
+          initial: true
+        table:
           - [1, 10, Battle fleet]
           - [11, 25, Pirate wing]
           - [26, 35, Raider horde]
@@ -243,18 +250,18 @@ Oracle sets:
           - [61, 70, Trade caravan]
           - [71, 90, Transport and escorts]
           - [91, 100, "[⏵Starship Mission](starforged/oracles/starships/mission)",
-              Oracle rolls: [starforged/oracles/starships/mission]]
-      Initial Contact:
-        Title:
-          Canonical: Initial Contact
-        Source:
-          Page: 327
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [fragment]
-          Tags: [relationship]
-        Table:
+              oracle_rolls: [starforged/oracles/starships/mission]]
+      initial_contact:
+        title:
+          canonical: Initial Contact
+        source:
+          page: 327
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [relationship]
+        table:
           - [1, 3, Familiar]
           - [4, 15, Friendly]
           - [16, 25, Neutral / automated]
@@ -267,18 +274,18 @@ Oracle sets:
           - [86, 90, Unresponsive]
           - [91, 95, Destroyed]
           - [96, 100, "[⏵Derelict](starforged/oracles/derelicts)", *inherit:Derelict.Starship]
-      First Look:
-        Title:
-          Canonical: First Look
-        Source:
-          Page: 327
-        Usage:
-          Initial: true
-          Max rolls: 2
-        Content:
-          Part of speech: [fragment]
-          Tags: [description]
-        Table:
+      first_look:
+        title:
+          canonical: First Look
+        source:
+          page: 327
+        usage:
+          initial: true
+          max_rolls: 2
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        table:
           - [1, 4, Abnormal sensor readings]
           - [5, 8, Brightly painted]
           - [9, 13, Bristling with weapons]
@@ -301,19 +308,18 @@ Oracle sets:
           - [86, 90, Built from scrap]
           - [91, 94, Towing or linked]
           - [95, 100, *result:Descriptor+Focus]
-      Starship Name:
-        Title:
-          Canonical: Starship Name
-          Short: Name
-        _idFragment: Name
-        Source:
-          Page: 329
-        Description: |-
+      starship_name:
+        title:
+          canonical: Starship Name
+          short: Name
+        source:
+          page: 329
+        description: |-
           Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
-        Content:
-          Part of speech: [noun, proper noun]
-          Tags: [name]
-        Table:
+        content:
+          part_of_speech: [noun, proper noun]
+          tags: [name]
+        table:
         # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
           - [1, 1, Arclight, Part of speech: [compound noun]]
           - [2, 2, Argent Arrow]

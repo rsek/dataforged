@@ -1,47 +1,52 @@
 
 import { OracleBuilder, OracleSetDisplayBuilder, OracleTableBuilder } from '@builders'
-import type { OracleBase, OracleSet, OracleSetDisplay, OracleTable, Source, YamlOracleSet, YamlOracleTable } from '@schema'
+import type { MixinId, MixinSource, Oracle, OracleSet, OracleSetDisplay, OracleTable, Source, YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 import { propagateToChildren } from '@utils/object_transform/propagateToChildren.js'
 import _ from 'lodash-es'
 
 /**
  * @internal
  */
-export class OracleSetBuilder extends OracleBuilder implements OracleSet {
-  Display: OracleSetDisplay
-  Tables?: {[key: string]: OracleTable} | undefined
-  Sets?: {[key: string]: OracleSet} | undefined
-  constructor (
-    json: YamlOracleSet,
+export class OracleSetBuilder<TYamlIn extends YamlOracleSet | YamlOracleSetTemplate = YamlOracleSet | YamlOracleSetTemplate,
+  TParent extends MixinId & MixinSource = MixinId & MixinSource> extends OracleBuilder<
+  TYamlIn,
+  OracleSet,
+  TParent> implements OracleSet {
+  display: OracleSetDisplay
+  tables?: { [key: SnakeCaseString]: OracleTable } | undefined
+  sets?: { [key: SnakeCaseString]: OracleSet } | undefined
+  sample_names?: string[] | []
+  constructor(
+    yaml: TYamlIn,
     fragment: string,
-    parentId: OracleBase['$id'],
-    parentSource: Source
+    parent: TParent
   ) {
-    super(json, fragment, parentId, parentSource)
-    const yamlData = this.yamlData as YamlOracleSet
-    this.Display = new OracleSetDisplayBuilder(this.yamlData.Display ?? {}, this)
-    this['Sample Names'] = yamlData['Sample names']
-    if (yamlData.Tables != null) {
-      this.Tables = _.mapValues(yamlData.Tables, (oracleTable, tableFragment) => {
-        if (yamlData.Usage != null) {
-          propagateToChildren(yamlData.Usage, 'Usage', oracleTable)
+    super(yaml, fragment, parent)
+    const yamlData = this._rawData as YamlOracleSet
+    this.display = new OracleSetDisplayBuilder(this._rawData.display ?? {}, this)
+    this.sample_names = yamlData.sample_names
+    if (yamlData.tables != null) {
+      this.tables = _.mapValues(yamlData.tables, (oracleTable, tableFragment) => {
+        if (yamlData.usage != null) {
+          propagateToChildren(yamlData.usage, 'usage', oracleTable)
         }
-        if (yamlData.Requires != null) {
-          propagateToChildren(yamlData.Requires, 'Requires', oracleTable)
+        if (yamlData.requires != null) {
+          propagateToChildren(yamlData.requires, 'requires', oracleTable)
         }
-        return new OracleTableBuilder(oracleTable as YamlOracleTable, tableFragment, this.$id, parentSource)
+        return new OracleTableBuilder(oracleTable as YamlOracleTable, tableFragment, this)
       })
     }
-    if (yamlData.Sets != null) {
-      this.Sets = _.mapValues(yamlData.Sets,
+    if (yamlData.sets != null) {
+      this.sets = _.mapValues(yamlData.sets,
         (oracleSet, setFragment) => {
-          if (yamlData.Usage != null) {
-            propagateToChildren(yamlData.Usage, 'Usage', oracleSet)
+          if (yamlData.usage != null) {
+            propagateToChildren(yamlData.usage, 'usage', oracleSet)
           }
-          if (yamlData.Requires != null) {
-            propagateToChildren(yamlData.Requires, 'Requires', oracleSet)
+          if (yamlData.requires != null) {
+            propagateToChildren(yamlData.requires, 'requires', oracleSet)
           }
-          return new OracleSetBuilder(oracleSet as YamlOracleSet, setFragment, this.$id, parentSource)
+          return new OracleSetBuilder<YamlOracleSet, OracleSet>(oracleSet as YamlOracleSet, setFragment, this)
         }
       )
     }

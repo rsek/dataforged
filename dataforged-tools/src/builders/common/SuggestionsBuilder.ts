@@ -5,27 +5,27 @@ import type { Asset, EncounterStarforged, GameObject, Move, OracleTable, Suggest
  * @internal
  */
 export class SuggestionsBuilder implements Suggestions {
-  'Game objects'?: GameObject[] | undefined
-  'Oracle rolls'?: Array<OracleTable['$id']> | undefined
-  'Assets'?: Array<Asset['$id']> | undefined
-  'Moves'?: Array<Move['$id']> | undefined
-  'Encounters'?: Array<EncounterStarforged['$id']> | undefined
-  constructor (data: YamlSuggestions) {
-    if (data['Game objects'] != null) {
+  game_objects?: GameObject[] | undefined
+  oracle_rolls?: Array<OracleTable['$id']> | undefined
+  assets?: Array<Asset['$id']> | undefined
+  moves?: Array<Move['$id']> | undefined
+  encounters?: Array<EncounterStarforged['$id']> | undefined
+  constructor(data: YamlSuggestions) {
+    if (data['game_objects'] != null) {
       // console.info("[Suggestions] Game objects", JSON.stringify(data["Game objects"]));
-      this['Game objects'] = data['Game objects'].map(gameObjData => new GameObjectBuilder(gameObjData))
+      this.game_objects = data['game_objects'].map(gameObjData => new GameObjectBuilder(gameObjData))
     }
-    if (data['Oracle rolls'] != null) {
+    if (data.oracle_rolls != null) {
       // TODO type check against string
-      this['Oracle rolls'] = data['Oracle rolls']
+      this.oracle_rolls = data.oracle_rolls
     }
-    if (data.Moves != null) {
+    if (data.moves != null) {
       // TODO type check against string
-      this.Moves = data.Moves
+      this.moves = data.moves
     }
-    if (data.Assets != null) {
+    if (data.assets != null) {
       // TODO type check against string
-      this.Assets = data.Assets
+      this.assets = data.assets
     }
   }
 }

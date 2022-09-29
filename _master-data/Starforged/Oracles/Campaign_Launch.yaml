@@ -1,35 +1,38 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Campaign:
-    Title:
-      Canonical: Campaign launch
-      Short: Campaign
-    Source:
-      Date: "050622"
-    Tables:
-      Background assets:
-        Title:
-          Canonical: Background assets
-        Source:
-          Page: 105
-        Description: |-
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  campaign:
+    title:
+      canonical: Campaign Launch
+      short: Campaign
+    source:
+      date: "050622"
+    tables:
+      background_assets:
+        title:
+          canonical: Background Assets
+        source:
+          page: 105
+        description: |-
           If you want some direction for your starting paths, roll or pick from the table below and take the two paths associated with your selected background.
-        Display:
-          Columns:
-            - Type: dice range
-            - Type: string
-              Label: Background
-              Key: Result
-            - Type: string
-              Label: Assets
-              Key: Summary
-        Content:
-          Part of speech: [noun, common noun]
-          Tags: [actor]
-        Table:
+        display:
+          columns:
+            roll:
+              column_type: dice_range
+            background:
+              column_type: string
+              label: Background
+              key: result
+            assets:
+              column_type: string
+              label: Assets
+              key: summary
+        content:
+          part_of_speech: [noun, common noun]
+          tags: [actor]
+        table:
           - [1, 5, Battlefield Medic, "[Healer](starforged/assets/path/healer); [Veteran](starforged/assets/path/veteran)", Suggestions: {Assets: [starforged/assets/path/healer, starforged/assets/path/veteran]}]
           - [6, 10, Delegate, "[Bannersworn](starforged/assets/path/bannersworn); [Diplomat](starforged/assets/path/diplomat)", Suggestions: {Assets: [starforged/assets/path/bannersworn, starforged/assets/path/diplomat]}]
           - [11, 15, Exobiologist, "[Lore Hunter](starforged/assets/path/hunter); [Naturalist](starforged/assets/path/naturalist)", Suggestions: {Assets: [starforged/assets/path/lore Hunter, starforged/assets/path/naturalist]}]
@@ -50,17 +53,17 @@ Oracle sets:
           - [86, 90, Starship Engineer, "[Gearhead](starforged/assets/path/gearhead); [Tech](starforged/assets/path/tech)", Suggestions: {Assets: [starforged/assets/path/gearhead, starforged/assets/path/tech]}]
           - [91, 95, Supersoldier, "[Augmented](starforged/assets/path/augmented); [Mercenary](starforged/assets/path/mercenary)", Suggestions: {Assets: [starforged/assets/path/augmented, starforged/assets/path/mercenary]}]
           - [96, 100, Tomb Raider, "[Scavenger](starforged/assets/path/scavenger); [Scoundrel](starforged/assets/path/scoundrel)", Suggestions: {Assets: [starforged/assets/path/scavenger, starforged/assets/path/scoundrel]}]
-      Backstory prompts:
-        Title:
-          Canonical: Backstory prompts
-        Source:
-          Page: 106
-        Description: |-
+      backstory_prompts:
+        title:
+          canonical: Backstory Prompts
+        source:
+          page: 106
+        description: |-
           For some backstory inspiration, roll or pick from the table below. Then, take a moment to elaborate on the suggestion. Or just leave it a bit vague and mysterious for now; you can flesh it out in play.
-        Content:
-          Part of speech: [fragment]
-          Tags: [event, past]
-        Table:
+        content:
+          part_of_speech: [fragment]
+          tags: [event, past]
+        table:
           - [1, 7, "You abandoned your kin after learning a troubling truth"]
           - [8, 13, "You are guided by a vision or prophecy"]
           - [14, 20, "You are haunted by past actions or failures"]
@@ -76,17 +79,17 @@ Oracle sets:
           - [82, 87, "You were taken or lured away by someone"]
           - [88, 94, "Your ambitions outgrew your humble origins"]
           - [95, 100, "Your wanderlust carried you far away"]
-      Starship history:
-        Title:
-          Canonical: Starship history
-        Source:
-          Page: 108
-        Description: |-
+      starship_history:
+        title:
+          canonical: Starship History
+        source:
+          page: 108
+        description: |-
           Envision how you obtained or earned this ship. You can come up with your own origin, or roll or pick from the table below. If you use a result from the table, take a moment to consider and elaborate on the suggestion.
-        Content:
-          Part of speech: [fragment]
-          Tags: [event, past]
-        Table:
+        content:
+          part_of_speech: [fragment]
+          tags: [event, past]
+        table:
           - [1, 8, "Acquired in trade for a precious family heirloom"]
           - [9, 17, "Built out of repurposed scrap"]
           - [18, 25, "Claimed as spoils of war"]
@@ -99,19 +102,19 @@ Oracle sets:
           - [76, 84, "Stolen from a notorious crime boss or criminal organization"]
           - [85, 92, "Taken while fleeing an attack or disaster"]
           - [93, 100, "Won in a bet"]
-      Starship quirks:
-        Title:
-          Canonical: Starship quirks
-        Source:
-          Page: 109
-        Description: |-
+      starship_quirks:
+        title:
+          canonical: Starship Quirks
+        source:
+          page: 109
+        description: |-
           Your ship is an important aspect of your character—and a character in its own right. What does it look like? What makes it interesting or uniquely yours? Does it have any particular quirks? If nothing occurs to you now, you can flesh it out in play, or roll once or twice on the table below.
-        Content:
-          Part of speech: [fragment]
-          Tags: [description]
-        Usage:
-          Max rolls: 2
-        Table:
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        usage:
+          max_rolls: 2
+        table:
           - [1, 5, "Engine room is scorched with old burn marks"]
           - [6, 10, "Exterior is marred by rust and grime"]
           - [11, 15, "Faint, phantom music sometimes echoes through the corridors"]
@@ -132,15 +135,15 @@ Oracle sets:
           - [86, 90, "Strange symbols are scrawled on the deck and bulkheads in the main corridor"]
           - [91, 95, "Things tend to go missing for no logical reason"]
           - [96, 100, "Timers and clocks are always just a bit off"]
-      Sector trouble:
-        Title:
-          Canonical: Sector trouble
-        Source:
-          Page: 126
-        Content:
-          Part of speech: [fragment]
-          Tags: [peril, event, present]
-        Table:
+      sector_trouble:
+        title:
+          canonical: Sector Trouble
+        source:
+          page: 126
+        content:
+          part_of_speech: [fragment]
+          tags: [peril, event, present]
+        table:
           - [1, 5, "Blockade prevents trade with other sectors"]
           - [6, 10, "Bounty hunters search for an infamous fugitive", Suggestions: [*obj:Npc]]
           # todo: some kind of faction? hmm
@@ -163,15 +166,15 @@ Oracle sets:
           - [86, 90, "Sickness spreads among ships and settlements", Suggestions: [*obj:Starship, *obj:Settlement]]
           - [91, 95, "Supernova is imminent"]
           - [96, 100, "Titanic spaceborne lifeform stalks the spaceways", Suggestions: [*obj:Creature]]
-      Inciting incident:
-        Title:
-          Canonical: Inciting incident
-        Source:
-          Page: 130
-        Content:
-          Part of speech: [fragment]
-          Tags: [objective]
-        Table:
+      inciting_incident:
+        title:
+          canonical: Inciting Incident
+        source:
+          page: 130
+        content:
+          part_of_speech: [fragment]
+          tags: [objective]
+        table:
           - [1, 5, "Aid a starship caught in a spacetime fracture", Suggestions: [*obj:Starship]]
           - [6, 10, "Broker peace between two feuding settlements", Suggestions: [*obj:Settlement]]
           - [11, 15, "Chart a new passage between isolated settlements", Suggestions: [*obj:Settlement]]

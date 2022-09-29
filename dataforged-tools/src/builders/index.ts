@@ -1,3 +1,4 @@
+export * from '@builders/NodeBuilder'
 export * from '@builders/CollectionBuilder.js'
 export * from '@builders/RootCollectionBuilder.js'
 export * from '@builders/common/index'

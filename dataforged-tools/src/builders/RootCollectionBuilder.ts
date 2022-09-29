@@ -1,7 +1,7 @@
 import type { BuilderFromGlob, CollectionFileGlob } from '@builders'
 import { CollectionBuilder } from '@builders'
 import { REFS_PATH, TEMPLATES_PATH } from '@constants'
-import type { Game, HasSource, Source, YamlDataRoot } from '@schema'
+import type { Game, MixinSource, Source, YamlDataRoot } from '@schema'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 import { buildLog } from '@utils/logging/buildLog.js'
 import fg from 'fast-glob'
@@ -11,9 +11,9 @@ import _ from 'lodash-es'
 
 export abstract class RootCollectionBuilder<
   G extends Game,
-  TMapItem extends HasSource,
+  TMapItem extends MixinSource,
   TYamlItem,
-  TYamlRoot extends YamlDataRoot | HasSource
+  TYamlRoot extends YamlDataRoot | MixinSource
   > extends CollectionBuilder<G, TMapItem, TYamlItem> implements BuilderFromGlob {
   /**
    * Loads the `_refs` and `_templates` files, and returns them as a string

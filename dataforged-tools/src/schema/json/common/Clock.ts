@@ -1,17 +1,18 @@
-
-
+/**
+ * @public
+ */
 export interface Clock {
-  'Clock type': ClockType
+  clock_type: ClockType
   /**
    * An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.
    *
    * `Filled` should not exceed this number.
    */
-  Segments: ClockSegments
+  segments: ClockSegments
   /**
    * An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.
    */
-  Filled: number
+  filled: number
 }
 
 /**

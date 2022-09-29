@@ -1,4 +1,7 @@
-import type { YamlOracleSet, YamlOracleTable, YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from '@schema'
+import type { OracleTableRow, YamlOracleSet, YamlOracleTable, YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
+import { KeysWithValuesOfType } from '@utils'
+
 
 /**
  * @internal
@@ -12,19 +15,13 @@ export interface YamlTemplateBase {
 /**
  * @internal
  */
-export interface YamlOracleSetTemplate extends Partial<Omit<YamlOracleSet, 'Tables'|'Sets'>>, YamlTemplateBase {
-  _templateOracleSet?: Partial<YamlOracleSet>|undefined
-  Tables?: {
-  /**
-   * @patternProperties ^[A-Z][a-z '-]+$
-   */
-    [key: string]: YamlOracleTableTemplate
+export interface YamlOracleSetTemplate extends Partial<Omit<YamlOracleSet, 'tables' | 'sets'>>, YamlTemplateBase {
+  _templateOracleSet?: Partial<YamlOracleSet> | undefined
+  tables?: {
+    [key: SnakeCaseString]: YamlOracleTableTemplate
   } | undefined
-  Sets?: {
-  /**
-   * @patternProperties ^[A-Z][a-z '-]+$
-   */
-    [key: string]: YamlOracleSetTemplate
+  sets?: {
+    [key: SnakeCaseString]: YamlOracleSetTemplate
   } | undefined
 }
 

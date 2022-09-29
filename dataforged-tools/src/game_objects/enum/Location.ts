@@ -3,7 +3,7 @@
  * @public
  */
 export enum Location {
-  Planetside = 'Planetside',
-  Orbital = 'Orbital',
-  DeepSpace = 'Deep Space'
+  Planetside = 'planetside',
+  Orbital = 'orbital',
+  DeepSpace = 'deep_space'
 }

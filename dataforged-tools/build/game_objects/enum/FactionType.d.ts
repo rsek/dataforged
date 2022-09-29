@@ -3,9 +3,9 @@
  * @public
  */
 declare enum FactionType {
-    FringeGroup = "Fringe Group",
-    Dominion = "Dominion",
-    Guild = "Guild"
+    FringeGroup = "fringe_group",
+    Dominion = "dominion",
+    Guild = "guild"
 }
 export { FactionType };
 //# sourceMappingURL=FactionType.d.ts.map

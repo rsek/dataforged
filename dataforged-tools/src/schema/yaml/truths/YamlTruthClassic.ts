@@ -3,9 +3,9 @@ import type { TruthClassic, TruthOptionClassic, YamlStub, YamlStubNode, YamlTitl
 /**
  * @internal
  */
-export interface YamlTruthClassic extends YamlStubNode<TruthClassic, '', 'Options'> {
-  Options: YamlTruthOptionClassic[]
-  Title: YamlTitleCaseTitle
+export interface YamlTruthClassic extends YamlStubNode<TruthClassic, '', 'options'> {
+  options: YamlTruthOptionClassic[]
+  title: YamlTitleCaseTitle
 }
 
 /**

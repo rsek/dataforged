@@ -1,52 +1,53 @@
-import type { HasSource, YamlAssetType, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNature, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruthClassic, YamlTruthStarforged, YamlWithRef } from '@schema'
-import { DataRootBase } from "../DataRootBase"
+import type { MixinSource, YamlAssetType, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNatureClassic, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruthClassic, YamlTruthStarforged, YamlWithRef } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
+import { DataRootBase } from '../DataRootBase'
 
 /**
  * @internal
  */
-export interface YamlDataRoot extends YamlWithRef, HasSource { }
+export interface YamlDataRoot extends YamlWithRef, MixinSource { }
 
 /**
  * @internal
  */
-export interface YamlAssetRoot extends YamlDataRoot, Pick<DataRootBase, "Asset types"> {
-  'Asset types': {[key: string]: YamlAssetType}
+export interface YamlAssetRoot extends YamlDataRoot, Pick<DataRootBase, 'asset_types'> {
+  'asset_types': { [key: SnakeCaseString]: YamlAssetType }
 }
 
 /**
  * @internal
  */
-export interface YamlEncounterRoot extends YamlDataRoot, Pick<DataRootBase, "Encounters"> {
-  Encounters: { [key: string]: YamlEncounterStarforged |YamlEncounterNature}
+export interface YamlEncounterRoot extends YamlDataRoot, Pick<DataRootBase, 'Encounters'> {
+  encounters: { [key: SnakeCaseString]: YamlEncounterStarforged | YamlEncounterNatureClassic }
 }
 
 /**
  * @internal
  */
 export interface YamlEncounterStarforgedRoot extends YamlEncounterRoot {
-  Encounters: { [key: string]: YamlEncounterStarforged }
+  encounters: { [key: SnakeCaseString]: YamlEncounterStarforged }
 }
 
 /**
  * @internal
  */
 export interface YamlEncounterClassicRoot extends YamlEncounterRoot {
-  Encounters: { [key: string]: YamlEncounterNature}
+  encounters: { [key: SnakeCaseString]: YamlEncounterNatureClassic }
 }
 
 /**
  * @internal
  */
-export interface YamlMoveRoot extends YamlDataRoot, Pick<DataRootBase, "Move categories"> {
-  'Move categories': { [key: string]: YamlMoveCategory}
+export interface YamlMoveRoot extends YamlDataRoot, Pick<DataRootBase, 'Move categories'> {
+  'move_categories': { [key: SnakeCaseString]: YamlMoveCategory }
 }
 
 /**
  * @internal
  */
-export interface YamlTruthRoot extends YamlDataRoot, Pick<DataRootBase, "Setting truths"> {
-  'Setting truths': {
-    [key: string]: YamlTruthStarforged|YamlTruthClassic
+export interface YamlTruthRoot extends YamlDataRoot, Pick<DataRootBase, 'Setting truths'> {
+  'setting_truths': {
+    [key: SnakeCaseString]: YamlTruthStarforged | YamlTruthClassic
   }
 }
 
@@ -54,14 +55,14 @@ export interface YamlTruthRoot extends YamlDataRoot, Pick<DataRootBase, "Setting
  * @internal
  */
 export interface YamlTruthRootStarforged extends YamlTruthRoot {
-  'Setting truths': {[key: string]: YamlTruthStarforged}
+  'setting_truths': { [key: SnakeCaseString]: YamlTruthStarforged }
 }
 
 /**
  * @internal
  */
 export interface YamlTruthRootClassic extends YamlTruthRoot {
-  'Setting truths': { [key: string]: YamlTruthClassic}
+  'setting_truths': { [key: SnakeCaseString]: YamlTruthClassic }
 }
 
 /**
@@ -69,27 +70,27 @@ export interface YamlTruthRootClassic extends YamlTruthRoot {
  * @internal
  */
 export interface YamlOracleRoot extends YamlDataRoot, Pick<DataRootBase, 'Oracle sets'> {
-  'Oracle sets': YamlOracleSets
+  'oracle_sets': YamlOracleSets
 }
 
 /**
  * @internal
  */
-export interface YamlOracleSets  {
-  [key: string]: YamlOracleSet | {
+export interface YamlOracleSets {
+  [key: SnakeCaseString]: YamlOracleSet | {
     /**
      * @patternProperties ^[A-Z][a-z '-]+$
      */
-    Sets?: {
-      [key: string]: Partial<YamlOracleSet> & {
+    sets?: {
+      [key: SnakeCaseString]: Partial<YamlOracleSet> & {
         _templateOracleSet: Partial<YamlOracleSet>
       }
     } | undefined
     /**
      * @patternProperties ^[A-Z][a-z '-]+$
      */
-    Tables?: {
-      [key: string]: Partial<YamlOracleTable> & {
+    tables?: {
+      [key: SnakeCaseString]: Partial<YamlOracleTable> & {
         _templateOracleTable: Partial<YamlOracleTable>
       }
     } | undefined
@@ -99,27 +100,27 @@ export interface YamlOracleSets  {
 /**
  * @internal
  */
-export interface YamlIronlandsRegionRoot extends YamlDataRoot, Pick<DataRootBase, "Ironlands regions"> {
-  'Ironlands regions': { [key: string]: YamlIronlandsRegion }
+export interface YamlIronlandsRegionRoot extends YamlDataRoot, Pick<DataRootBase, 'Ironlands regions'> {
+  ironlands_regions: { [key: SnakeCaseString]: YamlIronlandsRegion }
 }
 
 /**
  * @internal
  */
-export interface YamlDelveSiteThemeRoot extends YamlDataRoot, Pick<DataRootBase,'Delve site themes'> {
-  'Delve site themes': { [key: string]: YamlDelveSiteTheme}
+export interface YamlDelveSiteThemeRoot extends YamlDataRoot, Pick<DataRootBase, 'Delve site themes'> {
+  delve_site_themes: { [key: SnakeCaseString]: YamlDelveSiteTheme }
 }
 
 /**
  * @internal
  */
 export interface YamlDelveSiteDomainRoot extends YamlDataRoot, Pick<DataRootBase, 'Delve site domains'> {
-  'Delve site domains': { [key: string]: YamlDelveSiteDomain}
+  delve_site_domains: { [key: SnakeCaseString]: YamlDelveSiteDomain }
 }
 
 /**
  * @internal
  */
-export interface YamlDelveRarityRoot extends YamlDataRoot, Pick<DataRootBase,'Rarities'> {
-  Rarities: { [key: string]: YamlDelveRarity}
+export interface YamlDelveRarityRoot extends YamlDataRoot, Pick<DataRootBase, 'Rarities'> {
+  rarities: { [key: SnakeCaseString]: YamlDelveRarity }
 }

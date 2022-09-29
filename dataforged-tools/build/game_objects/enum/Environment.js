@@ -4,10 +4,10 @@
  */
 export var Environment;
 (function (Environment) {
-  Environment.Space = 'Space'
-  Environment.Interior = 'Interior'
-  Environment.Land = 'Land'
-  Environment.Liquid = 'Liquid'
-  Environment.Air = 'Air'
-})(Environment || (Environment = {}))
-// # sourceMappingURL=Environment.js.map
+    Environment["Space"] = "space";
+    Environment["Interior"] = "interior";
+    Environment["Land"] = "land";
+    Environment["Liquid"] = "liquid";
+    Environment["Air"] = "air";
+})(Environment || (Environment = {}));
+//# sourceMappingURL=Environment.js.map

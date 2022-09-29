@@ -5,24 +5,24 @@ import type { ChallengeRank, Display, Encounter, EncounterNatureTypeClassic, Enc
  */
 export abstract class EncounterBuilder implements Encounter {
   abstract $id: string
-  abstract Title: Title
-  Features: string[]
-  Drives: string[]
-  Tactics: string[]
-  abstract Nature: EncounterNatureTypeClassic | EncounterNatureTypeStarforged
-  Summary?: string | undefined
-  Tags?: EncounterTags[] | undefined
-  Rank: ChallengeRank
-  abstract Display: Display
-  Description: string
-  abstract Source: Source
-  'Quest starter': string
-  constructor (yaml: YamlEncounterClassic|YamlEncounterStarforged) {
-    this.Features = yaml.Features
-    this.Drives = yaml.Drives
-    this.Tactics = yaml.Tactics
-    this.Rank = yaml.Rank
-    this.Description = yaml.Description
-    this['Quest starter'] = yaml['Quest starter']
+  abstract title: Title
+  features: string[]
+  drives: string[]
+  tactics: string[]
+  abstract nature: EncounterNatureTypeClassic | EncounterNatureTypeStarforged
+  summary?: string | undefined
+  tags?: EncounterTags[] | undefined
+  rank: ChallengeRank
+  abstract display: Display
+  description: string
+  abstract source: Source
+  'quest_starter': string
+  constructor (yaml: YamlEncounterClassic | YamlEncounterStarforged) {
+    this.features = yaml.features
+    this.drives = yaml.drives
+    this.tactics = yaml.tactics
+    this.rank = yaml.rank
+    this.description = yaml.description
+    this.quest_starter = yaml.quest_starter
   }
 }

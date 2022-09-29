@@ -6,89 +6,89 @@ export enum AttributeKey {
   /**
    * {@link Atmosphere}
    */
-  Atmosphere='Atmosphere',
+  Atmosphere = 'atmosphere',
   /**
    * {@link Authority}
    */
-  Authority='Authority',
+  Authority = 'authority',
   /**
    * {@link Behavior}
    */
-  Behavior='Encountered behavior',
+  Behavior = 'encountered_behavior',
   /**
    * {@link DerelictType}
    */
-  DerelictType='Derelict type',
+  DerelictType = 'derelict_type',
   /**
    * {@link Disposition}
    */
-  Disposition='Disposition',
+  Disposition = 'disposition',
   /**
    * {@link Dominion}
    */
-  Dominion='Dominion',
+  Dominion = 'dominion',
   /**
    * {@link Environment}
    */
-  Environment='Environment',
+  Environment = 'environment',
   /**
    * {@link FactionType}
    */
-  FactionType='Faction type',
+  FactionType = 'faction_type',
   /**
    * {@link FringeGroup}
    */
-  FringeGroup='Fringe group',
+  FringeGroup = 'fringe_group',
   /**
    * {@link Guild}
    */
-  Guild='Guild',
+  Guild = 'guild',
   /**
    * {@link Influence}
    */
-  Influence='Influence',
+  Influence = 'influence',
   /**
    * {@link StarshipInitialContact} {@link SettlementInitialContact}
    */
-  InitialContact='Initial contact',
+  InitialContact = 'initial_contact',
   /**
    * {@link Leadership}
    */
-  Leadership='Leadership',
+  Leadership = 'leadership',
   /**
    * {@link Life}
    */
-  Life='Life',
+  Life = 'life',
   /**
    * {@link Location}
    */
-  Location='Location',
+  Location = 'location',
   /**
    * {@link LocationTheme}
    */
-  LocationTheme='Location theme',
+  LocationTheme = 'location_theme',
   /**
    * {@link PlanetaryClass}
    */
-  PlanetaryClass='Planetary class',
+  PlanetaryClass = 'planetary_class',
   /**
    * {@link Population}
    */
-  Population='Population',
+  Population = 'population',
   /**
    * {@link Region}
    */
-  Region='Region',
+  Region = 'region',
   /**
    * {@link Role}
    */
-  Role='Role',
+  Role = 'role',
   /**
    * {@link CreatureScale}
    */
-  CreatureScale='Creature scale',
+  CreatureScale = 'creature_scale',
   /**
    * {@link Zone}
    */
-  Zone='Zone',
+  Zone = 'zone',
 }

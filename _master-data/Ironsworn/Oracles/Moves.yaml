@@ -1,79 +1,73 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: Ironsworn Rulebook
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Moves:
-    Title:
-      Canonical: Moves
-    Source:
-      Authors:
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  moves:
+    title:
+      canonical: Moves
+    source:
+      authors:
         - Shawn Tomkin
-      Title: Ironsworn Rulebook
-      License: https://creativecommons.org/licenses/by-sa/4.0/
-    Sets:
-      Ask the Oracle:
-        Title:
-          Canonical: Ask the Oracle
-        Source:
-          Page: 107
-          Authors:
+      title: Ironsworn Rulebook
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+    sets:
+      ask_the_oracle:
+        title:
+          canonical: Ask the Oracle
+        source:
+          page: 107
+          authors:
             - Shawn Tomkin
-          Title: Ironsworn Rulebook
-          License: https://creativecommons.org/licenses/by-sa/4.0/
-        Tables:
-          Almost Certain:
-            Title:
-              Canonical: Almost Certain
-            # Aliases: ["90"]
-            On a Match: &AtO.Match
-              Text: On a match, an extreme result or twist has occurred.
-            Table:
+          title: Ironsworn Rulebook
+          license: https://creativecommons.org/licenses/by-sa/4.0/
+        tables:
+          almost_certain:
+            title:
+              canonical: Almost Certain
+            on_a_match: &AtO.Match
+              text: On a match, an extreme result or twist has occurred.
+            table:
               - [1, 10, "No"]
               - [11, 100, "Yes"]
-          Likely:
-            Title:
-              Canonical: Likely
-            # Aliases: ["75"]
-            On a Match: *AtO.Match
-            Table:
+          likely:
+            title:
+              canonical: Likely
+            on_a_match: *AtO.Match
+            table:
               - [1, 25, "No"]
               - [26, 100, "Yes"]
-          50/50:
-            Title:
-              Canonical: 50/50
-              Standard: 50/50
-              Short: 50/50
-            # Aliases: ["50"]
-            On a Match: *AtO.Match
-            Table:
+          fifty_fifty:
+            title:
+              canonical: 50/50
+              standard: 50/50
+              short: 50/50
+            on_a_match: *AtO.Match
+            table:
               - [1, 50, "No"]
               - [51, 100, "Yes"]
-          "Unlikely":
-            Title:
-              Canonical: "Unlikely"
-            # Aliases: ["25"]
-            On a Match: *AtO.Match
-            Table:
+          unlikely:
+            title:
+              canonical: Unlikely
+            on_a_match: *AtO.Match
+            table:
               - [1, 75, "No"]
               - [76, 100, "Yes"]
-          "Small Chance":
-            Title:
-              Canonical: "Small Chance"
-            # Aliases: ["10"]
-            On a Match: *AtO.Match
-            Table:
+          small_chance:
+            title:
+              canonical: Small Chance
+            on_a_match: *AtO.Match
+            table:
               - [1, 90, "No"]
               - [91, 100, "Yes"]
-    Tables:
-      Endure Harm:
-        Title:
-          Canonical: Endure Harm
-        Source:
-          Page: 91
-        # Move: ironsworn/moves/suffer/endure_harm
-        Table:
+    tables:
+      endure_harm:
+        title:
+          canonical: Endure Harm
+        source:
+          page: 91
+        table:
           - [1, 10, "The harm is mortal. [Face Death](ironsworn/moves/suffer/face_death)."]
           - [
               11,
@@ -91,13 +85,12 @@ Oracle sets:
               "You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).",
             ]
           - [51, 100, "You are battered but still standing."]
-      Endure Stress:
-        Title:
-          Canonical: Endure Stress
-        Source:
-          Page: 93
-        # Move: ironsworn/moves/suffer/endure_stress
-        Table:
+      endure_stress:
+        title:
+          canonical: Endure Stress
+        source:
+          page: 93
+        table:
           - [1, 10, "You are overwhelmed. [Face Desolation](ironsworn/moves/suffer/face_desolation)."]
           - [
               11,
@@ -110,13 +103,12 @@ Oracle sets:
               "You give in to a fear or compulsion, and act against your better instincts.",
             ]
           - [51, 100, "You persevere."]
-      Pay the Price:
-        Title:
-          Canonical: Pay the Price
-        Source:
-          Page: 105
-        # Move: ironsworn/moves/fate/pay_the_price
-        Table:
+      pay_the_price:
+        title:
+          canonical: Pay the Price
+        source:
+          page: 105
+        table:
           - [
               1,
               2,

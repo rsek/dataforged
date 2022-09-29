@@ -1,59 +1,67 @@
 
-import type { Asset, AssetAbility, InputToggle, AssetType, ConditionMeter, Input, InputClock, InputNumber, InputSelect, InputSelectOption, InputSelectOptionSetter, InputText, YamlAlterAsset, YamlAlterMomentum, YamlAlterMove, YamlMove, YamlStub, YamlStubNode, YamlTitleCaseTitle } from '@schema'
+import type { Asset, AssetAbility, InputToggle, AssetType, ConditionMeter, Input, InputClock, InputNumber, InputSelect, InputSelectOption, InputSelectOptionSetter, InputText, YamlAlterAsset, YamlAlterMomentum, YamlAlterMove, YamlMove, YamlStub, YamlStubNode, YamlTitleCaseTitle, MixinAlter } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 import type { StubExcept } from '@utils/types/Stub.js'
 
 /**
  * @internal
  */
-export interface YamlAssetType extends YamlStubNode<AssetType, '', 'Assets'> {
-  Assets: {[key: string]: YamlAsset}
+export interface YamlAssetType extends YamlStubNode<AssetType, '', 'assets'> {
+  assets: { [key: SnakeCaseString]: YamlAsset }
 }
 
 /**
  * @internal
  */
-export interface YamlAsset extends YamlStubNode<StubExcept<Asset, '', 'Abilities'|'Inputs'|'Condition meter'|'States'>> {
-  Title: YamlTitleCaseTitle
-  Abilities: [YamlAssetAbility, YamlAssetAbility, YamlAssetAbility]
-  Inputs?: {[key: string]: (YamlInputText|YamlInputSelect)}| undefined
-  'Condition meter'?: YamlConditionMeter | undefined
-  States?: YamlAssetState[] | undefined
+export interface YamlAsset extends YamlStubNode<Asset, '', 'title' | 'abilities' | 'inputs' | 'condition_meter' | 'asset_type'> {
+  title: YamlTitleCaseTitle
+  abilities: [YamlAssetAbility, YamlAssetAbility, YamlAssetAbility]
+  inputs?: { [key: SnakeCaseString]: (YamlInputText | YamlInputSelect | YamlInputNumber | YamlInputClock | YamlInputClock) }
+  | undefined
+  condition_meter?: YamlConditionMeter | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlAssetAbility extends YamlStub<AssetAbility, 'Enabled', 'Alter moves'|'Moves'|'Inputs'|'Alter momentum'|'Alter properties'> {
-  'Alter moves'?: YamlAlterMove[] | undefined
-  Moves?: YamlMove[]|undefined
-  Inputs?: {[key: string]: (YamlInputText|YamlInputSelect|YamlInputClock|YamlInputNumber)}| undefined
-  'Alter momentum'?: YamlAlterMomentum | undefined
-  'Alter properties'?: YamlAlterAsset | undefined
+export interface YamlAssetAbility extends YamlStub<AssetAbility, 'enabled', 'alter' | 'moves' | 'inputs'> {
+  moves?: YamlMove[] | undefined
+  inputs?: { [key: SnakeCaseString]: (YamlInputText | YamlInputSelect | YamlInputNumber | YamlInputClock | YamlInputClock) } | undefined
+  alter?: YamlAlter
 }
 
 /**
  * @internal
  */
-export interface YamlConditionMeter extends YamlStub<ConditionMeter, 'Min'|'Value'|'Conditions'> {}
-
-/**
- * @internal
- */
-export interface YamlAssetState extends YamlStub<InputToggle> {
+export interface YamlAlter extends YamlStub<MixinAlter, "", "moves" | 'properties' | 'momentum'> {
+  moves?: YamlAlterMove[] | undefined
+  properties?: YamlAlterAsset | undefined
+  momentum?: YamlAlterMomentum | undefined
 }
 
 /**
  * @internal
  */
-export interface YamlInputSelect extends YamlStub<InputSelect, '', 'Options'> {
-  Options: {[key: string]: YamlInputSelectOption}
+export interface YamlConditionMeter extends YamlStub<ConditionMeter, 'min' | 'value'> { }
+
+/**
+ * @internal
+ */
+export interface YamlInputToggle extends YamlStub<InputToggle> {
 }
 
 /**
  * @internal
  */
-export interface YamlInputSelectOption extends YamlStub<InputSelectOption, '', 'Set attributes'> {
-  'Set attributes': {[key: string]: YamlInputSelectOptionSetter}
+export interface YamlInputSelect extends YamlStub<InputSelect, '', 'options'> {
+  options: { [key: SnakeCaseString]: YamlInputSelectOption }
+}
+
+/**
+ * @internal
+ */
+export interface YamlInputSelectOption extends YamlStub<InputSelectOption, '', 'set_attributes'> {
+  set_attributes: { [key: SnakeCaseString]: YamlInputSelectOptionSetter }
 }
 
 /**
@@ -64,19 +72,19 @@ export interface YamlInputSelectOptionSetter extends YamlStub<InputSelectOptionS
 /**
  * @internal
  */
-export interface YamlInput extends YamlStub<Input, 'Adjustable'> {};
+export interface YamlInput extends YamlStub<Input> { };
 
 /**
  * @internal
  */
-export interface YamlInputClock extends YamlStub<InputClock, 'Adjustable'> {}
+export interface YamlInputClock extends YamlStub<InputClock> { }
 
 /**
  * @internal
  */
-export interface YamlInputText extends YamlStub<InputText, 'Adjustable'> {}
+export interface YamlInputText extends YamlStub<InputText> { }
 
 /**
  * @internal
  */
-export interface YamlInputNumber extends YamlStub<InputNumber, 'Adjustable'|'Step'> {}
+export interface YamlInputNumber extends YamlStub<InputNumber> { }

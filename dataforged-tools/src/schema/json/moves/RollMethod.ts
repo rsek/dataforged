@@ -32,16 +32,16 @@ export enum RollMethod {
   /**
    * The move trigger option results in an automatic strong hit - no roll required.
    */
-  StrongHit = 'strong hit',
+  StrongHit = 'strong_hit',
   /**
    * The move trigger option results in an automatic weak hit - no roll required.
    */
-  WeakHit = 'weak hit'
+  WeakHit = 'weak_hit'
 }
 /**
  * @public
  */
 export enum RollType {
-  Action = 'action roll',
-  Progress = 'progress roll'
+  Action = 'action_roll',
+  Progress = 'progress_roll'
 }

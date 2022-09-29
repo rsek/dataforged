@@ -2,10 +2,10 @@
  * Set by oracle: Oracles / Derelicts / Type
  * @public
  */
-let DerelictType;
+var DerelictType;
 (function (DerelictType) {
-  DerelictType.Starship = 'Starship'
-  DerelictType.Settlement = 'Settlement'
-})(DerelictType || (DerelictType = {}))
-export { DerelictType }
-// # sourceMappingURL=DerelictType.js.map
+    DerelictType["Starship"] = "starship";
+    DerelictType["Settlement"] = "settlement";
+})(DerelictType || (DerelictType = {}));
+export { DerelictType };
+//# sourceMappingURL=DerelictType.js.map

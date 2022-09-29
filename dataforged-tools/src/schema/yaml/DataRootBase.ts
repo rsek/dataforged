@@ -1,39 +1,44 @@
-import { DelveRarity, DelveSiteDomain, DelveSiteTheme, EncounterNatureClassic, IronlandsRegion, MoveCategory, OracleSet, TruthClassic, TruthStarforged, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNature, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlTruthClassic, YamlTruthStarforged } from '@schema';
-import { YamlOracleSets } from './common/YamlDataRoot';
-
-
-
-export interface DataRootBase extends Record<string, { [key: string]: unknown; } | undefined> {
+import { AssetType, DelveRarity, DelveSiteDomain, DelveSiteTheme, EncounterNatureClassic, EncounterStarforged, IronlandsRegion, MoveCategory, OracleSet, TruthClassic, TruthStarforged, YamlAssetType, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNatureClassic, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlTruthClassic, YamlTruthStarforged } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
+import { YamlOracleSets } from './common/YamlDataRoot'
+/**
+ * @internal
+ */
+export interface DataRootBase extends Record<string, { [key: SnakeCaseString]: unknown } | undefined> {
+  asset_types: { [key: SnakeCaseString]: YamlAssetType } | { [key: SnakeCaseString]: AssetType }
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Encounters: { [key: string]: YamlEncounterStarforged | EncounterNatureClassic; } | { [key: string]: YamlEncounterStarforged | YamlEncounterNature; };
+  encounters: { [key: SnakeCaseString]: EncounterStarforged }
+  | { [key: SnakeCaseString]: EncounterNatureClassic }
+  | { [key: SnakeCaseString]: YamlEncounterStarforged }
+  | { [key: SnakeCaseString]: YamlEncounterNatureClassic }
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  'Move categories': { [key: string]: MoveCategory; } | { [key: string]: YamlMoveCategory; };
+  'move_categories': { [key: SnakeCaseString]: MoveCategory } | { [key: SnakeCaseString]: YamlMoveCategory }
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  'Setting truths': { [key: string]: TruthStarforged | TruthClassic; } | { [key: string]: YamlTruthStarforged | YamlTruthClassic; };
+  'setting_truths': { [key: SnakeCaseString]: TruthStarforged | TruthClassic } | { [key: SnakeCaseString]: YamlTruthStarforged | YamlTruthClassic }
   /**
    * @patternProperties ^[A-Z][A-z '-]+$
    */
-  'Ironlands regions'?: { [key: string]: IronlandsRegion; } | { [key: string]: YamlIronlandsRegion; } | undefined;
+  'ironlands_regions'?: { [key: SnakeCaseString]: IronlandsRegion } | { [key: SnakeCaseString]: YamlIronlandsRegion } | undefined
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  'Delve site themes'?: { [key: string]: DelveSiteTheme; } | { [key: string]: YamlDelveSiteTheme; } | undefined;
+  'delve_site_themes'?: { [key: SnakeCaseString]: DelveSiteTheme } | { [key: SnakeCaseString]: YamlDelveSiteTheme } | undefined
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  'Delve site domains'?: { [key: string]: DelveSiteDomain; } | { [key: string]: YamlDelveSiteDomain; } | undefined;
+  'delve_site_domains'?: { [key: SnakeCaseString]: DelveSiteDomain } | { [key: SnakeCaseString]: YamlDelveSiteDomain } | undefined
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  Rarities?: { [key: string]: DelveRarity; } | { [key: string]: YamlDelveRarity; } | undefined;
+  rarities?: { [key: SnakeCaseString]: DelveRarity } | { [key: SnakeCaseString]: YamlDelveRarity } | undefined
   /**
    * @patternProperties ^[A-Z][a-z '-]+$
    */
-  'Oracle sets': { [key: string]: OracleSet; } | YamlOracleSets;
+  'oracle_sets': { [key: SnakeCaseString]: OracleSet } | YamlOracleSets
 }

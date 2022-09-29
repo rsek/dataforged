@@ -5,5 +5,5 @@ import type { IronlandsRegion, YamlStubNode, YamlTitleCaseTitle } from '@schema'
  */
 
 export interface YamlIronlandsRegion extends YamlStubNode<IronlandsRegion> {
-  Title: YamlTitleCaseTitle
+  title: YamlTitleCaseTitle
 }

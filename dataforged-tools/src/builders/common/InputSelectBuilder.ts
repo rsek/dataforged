@@ -2,6 +2,7 @@
 import { InputBuilder } from '@builders'
 import type { Asset, AssetAbility, InputSelect, InputSelectAttributeDefinition, InputSelectOption, InputSelectOptionSetter, InputSelectOptionSetterMeter, InputSelectOptionSetterNumber, InputSelectOptionSetterStat, InputSelectOptionSetterString, InputSelectOptionType, YamlInputSelect, YamlInputSelectOption, YamlInputSelectOptionSetter } from '@schema'
 import { InputType } from '@schema'
+import { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 import _ from 'lodash-es'
@@ -10,19 +11,19 @@ import _ from 'lodash-es'
  * @internal
  */
 export class InputSelectBuilder extends InputBuilder implements InputSelect {
-  'Input type': InputType.Select
-  'Sets attributes': { [key: string]: InputSelectAttributeDefinition }
-  Options: { [key: string]: InputSelectOption }
-  Permanent: boolean
-  constructor(yaml: YamlInputSelect, parent: AssetAbility | Asset) {
-    super(yaml, parent)
-    if (yaml["Input type"] !== InputType.Select) {
-      throw badJsonError(this.constructor, yaml["Input type"], 'Expected InputType.Select!')
+  readonly input_type = InputType.Select
+  sets_attributes: { [key: SnakeCaseString]: InputSelectAttributeDefinition }
+  options: { [key: SnakeCaseString]: InputSelectOption }
+  permanent: boolean
+  constructor(yaml: YamlInputSelect, key: SnakeCaseString, parent: AssetAbility | Asset) {
+    super(yaml, key, parent)
+    if (yaml["input_type"] !== InputType.Select) {
+      throw badJsonError(this.constructor, yaml["input_type"], 'Expected InputType.Select!')
     }
-    this.Permanent = yaml.Permanent ?? false
-    this['Sets attributes'] = yaml['Sets attributes']
+    this.permanent = yaml.permanent ?? false
+    this['sets_attributes'] = yaml['sets_attributes']
 
-    this.Options = _.mapValues(yaml.Options, (optionJson, key) => new InputSelectOptionBuilder(optionJson, key, this))
+    this.options = _.mapValues(yaml.options, (optionJson, key) => new InputSelectOptionBuilder(optionJson, key, this))
 
     // TODO: typecheck "Sets" vs the options - via a method that can be invoked?
   }
@@ -33,12 +34,12 @@ export class InputSelectBuilder extends InputBuilder implements InputSelect {
  */
 export class InputSelectOptionBuilder implements InputSelectOption {
   $id: InputSelectOption['$id']
-  Label: string
-  'Set attributes': { [key: string]: (InputSelectOptionSetterStat | InputSelectOptionSetterMeter | InputSelectOptionSetterNumber | InputSelectOptionSetterString) }
+  label: string
+  set_attributes: { [key: SnakeCaseString]: (InputSelectOptionSetterStat | InputSelectOptionSetterMeter | InputSelectOptionSetterNumber | InputSelectOptionSetterString) }
   constructor(yaml: YamlInputSelectOption, fragment: string, parent: InputSelect) {
     this.$id = formatId(fragment, parent.$id, 'Options')
-    this.Label = yaml.Label
-    this['Set attributes'] = _.mapValues((yaml['Set attributes']), (attr, key) => new InputSelectOptionSetterBuilder(attr, key, this)) as this['Set attributes']
+    this.label = yaml.label
+    this.set_attributes = _.mapValues((yaml.set_attributes), (attr, key) => new InputSelectOptionSetterBuilder(attr, key, this)) as this['set_attributes']
   }
 }
 
@@ -47,11 +48,11 @@ export class InputSelectOptionBuilder implements InputSelectOption {
  */
 export class InputSelectOptionSetterBuilder implements InputSelectOptionSetter {
   $id: string
-  'Input type': InputSelectOptionType
-  Value: InputSelectOptionSetter['Value']
+  attribute_type: InputSelectOptionType
+  value: InputSelectOptionSetter['value']
   constructor(yaml: YamlInputSelectOptionSetter, fragment: string, parent: InputSelectOption) {
     this.$id = formatId(fragment, parent.$id)
-    this.'Input type' = yaml.'Input type'
-    this.Value = yaml.Value
+    this.attribute_type = yaml.attribute_type
+    this.value = yaml.value
   }
 }

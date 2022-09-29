@@ -1,10 +1,10 @@
 import type { AttributeKey, GameObjectType } from '@schema'
-import type { AttributeHash } from '@utils'
+import type { AttributeMap } from '@utils'
 
 /**
  * @public
  */
 export type GameObjectRecordBase<T extends GameObjectType, K extends AttributeKey> = {
-  'Object type': T
-  'Inherit rolls'?: boolean | undefined
-} & AttributeHash<K>
+  'object_type': T
+  'inherit_rolls'?: boolean | undefined
+} & AttributeMap<K>

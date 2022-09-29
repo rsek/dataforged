@@ -2,9 +2,9 @@
  * NYI.
  * @public
  */
-let Biome;
+var Biome;
 (function (Biome) {
-})(Biome || (Biome = {}))
+})(Biome || (Biome = {}));
 // TODO
-export { Biome }
-// # sourceMappingURL=Biome.js.map
+export { Biome };
+//# sourceMappingURL=Biome.js.map

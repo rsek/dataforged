@@ -1,7 +1,8 @@
-import type { Alter } from '@schema'
+import { NodeBuilder } from '@builders/NodeBuilder.js'
+import type { AlterAsset, AssetAbility, MixinAlter } from '@schema'
 
-export class AssetAbilityAlterBuilder implements Alter {
-  Moves?: Alter['Moves']
-  Properties?: Alter['Properties']
-  Momentum?: Alter['Momentum']
+export class AssetAbilityAlterBuilder extends NodeBuilder<MixinAlter, AlterAsset, AssetAbility> implements MixinAlter, AlterAsset {
+  moves?: MixinAlter['moves']
+  properties?: MixinAlter['properties']
+  momentum?: MixinAlter['momentum']
 }

@@ -4,49 +4,49 @@ import type { MoveOutcome, MoveReroll, OutcomeBase, OutcomeMiss, OutcomeMissMatc
  * @internal
  */
 export interface YamlOutcomes extends YamlStub<Outcomes, '', keyof typeof MoveOutcome> {
-  'Strong hit': YamlOutcomeStrongHit
-  'Weak hit': YamlOutcomeWeakHit
-  'Miss': YamlOutcomeMiss
+  'strong_hit': YamlOutcomeStrongHit
+  'weak_hit': YamlOutcomeWeakHit
+  'miss': YamlOutcomeMiss
 }
 
 /**
  * @internal
  */
-export interface YamlOutcome<O extends MoveOutcome> extends YamlStub<OutcomeBase<O>, '', 'With a match'|'Reroll'> {
-  'With a match'?: YamlOutcome<O> | undefined
-  Reroll?: YamlMoveReroll | undefined
+export interface YamlOutcome<O extends MoveOutcome> extends YamlStub<OutcomeBase<O>, '', 'with_a_match' | 'reroll'> {
+  'with_a_match'?: YamlOutcome<O> | undefined
+  reroll?: YamlMoveReroll | undefined
 
 }
 
 /**
  * @internal
  */
-export interface YamlMoveReroll extends YamlStub<MoveReroll> {}
+export interface YamlMoveReroll extends YamlStub<MoveReroll> { }
 
 /**
  * @internal
  */
-export interface YamlOutcomeMiss extends YamlOutcome<0>, YamlStub<OutcomeMiss, '', 'With a match'|'Reroll'> {
-  'With a match'?: YamlOutcomeMissMatch | undefined
+export interface YamlOutcomeMiss extends YamlOutcome<0>, YamlStub<OutcomeMiss, '', 'with_a_match' | 'reroll'> {
+  'with_a_match'?: YamlOutcomeMissMatch | undefined
 }
 /**
  * @internal
  */
-export interface YamlOutcomeMissMatch extends YamlOutcome<0>, YamlStub<OutcomeMissMatch, '', 'Reroll'> { }
+export interface YamlOutcomeMissMatch extends YamlOutcome<0>, YamlStub<OutcomeMissMatch, '', 'reroll'> { }
 
 /**
  * @internal
  */
-export interface YamlOutcomeStrongHit extends YamlOutcome<2>, YamlStub<OutcomeStrongHit, '', 'With a match'|'Reroll'> {
-  'With a match'?: YamlOutcomeStrongHitMatch | undefined
+export interface YamlOutcomeStrongHit extends YamlOutcome<2>, YamlStub<OutcomeStrongHit, '', 'with_a_match' | 'reroll'> {
+  'with_a_match'?: YamlOutcomeStrongHitMatch | undefined
 }
 /**
  * @internal
  */
-export interface YamlOutcomeStrongHitMatch extends YamlOutcome<2>, YamlStub<OutcomeStrongHitMatch, '', 'Reroll'> { }
+export interface YamlOutcomeStrongHitMatch extends YamlOutcome<2>, YamlStub<OutcomeStrongHitMatch, '', 'reroll'> { }
 
 /**
  * @internal
  */
-export interface YamlOutcomeWeakHit extends YamlOutcome<1>, YamlStub<OutcomeWeakHit, '', 'With a match'|'Reroll'> {
+export interface YamlOutcomeWeakHit extends YamlOutcome<1>, YamlStub<OutcomeWeakHit, '', 'reroll'> {
 }

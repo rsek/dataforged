@@ -7,11 +7,11 @@ import { formatId } from '@utils'
  */
 export class CustomStatBuilder implements CustomStat {
   $id: CustomStat['$id']
-  Label: string
-  Options: CustomStatOption[]
+  label: string
+  options: CustomStatOption[]
   constructor (yaml: YamlCustomStat, parentId: MoveTriggerOptionBase['$id']) {
     this.$id = formatId('Custom stat', parentId)
-    this.Label = yaml.Label
-    this.Options = yaml.Options?.map(option => new CustomStatOptionBuilder(option, this.$id))
+    this.label = yaml.label
+    this.options = yaml.options?.map(option => new CustomStatOptionBuilder(option, this.$id))
   }
 }

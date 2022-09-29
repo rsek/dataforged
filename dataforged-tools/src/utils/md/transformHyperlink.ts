@@ -41,7 +41,7 @@ export function transformOracleLinks (data: OracleSet[], md: string, currentFile
     if (currentFile === targetFile || currentFile === 'oracles.md') {
       targetFile = ''
     }
-    const result = `(${targetFile}#${linkedOracle.Title.Canonical.replaceAll(' ', '-')})`
+    const result = `(${targetFile}#${linkedOracle.title.canonical.replaceAll(' ', '-')})`
 
     return result.replaceAll('_', '-')
   })
@@ -56,7 +56,7 @@ export function transformOracleLinks (data: OracleSet[], md: string, currentFile
     }
     let targetFile: string = ''
     if (currentFile === 'oracles.md') {
-      targetFile = `#${linkedOracle.Title.Canonical}`.replaceAll(' ', '-')
+      targetFile = `#${linkedOracle.title.canonical}`.replaceAll(' ', '-')
     } else {
       targetFile = `${_.kebabCase(p1)}.md`
     }

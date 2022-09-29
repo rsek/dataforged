@@ -1,74 +1,74 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Moves:
-    Title:
-      Canonical: Move Oracles
-      Standard: Moves
-      Short: Move
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  moves:
+    title:
+      canonical: Move Oracles
+      standard: Moves
+      short: Move
     _idFragment: Moves
-    Source:
-      Date: "050622"
-    Sets:
-      Ask the Oracle:
-        Title:
-          Canonical: Ask the Oracle
-        Source:
-          Page: 229
-        Tables:
-          Almost Certain:
-            Title:
-              Canonical: Almost Certain
-            On a Match: &AtO.Match
-              Text: On a match, envision an extreme result or twist.
+    source:
+      date: "050622"
+    sets:
+      ask_the_oracle:
+        title:
+          canonical: Ask the Oracle
+        source:
+          page: 229
+        tables:
+          almost_certain:
+            title:
+              canonical: Almost Certain
+            on_a_match: &AtO.Match
+              text: On a match, envision an extreme result or twist.
             # Aliases: ["90"]
-            Table:
+            table:
               - [1, 90, "Yes"]
               - [91, 100, "No"]
-          Likely:
-            Title:
-              Canonical: Likely
-            On a Match: *AtO.Match
+          likely:
+            title:
+              canonical: Likely
+            on_a_match: *AtO.Match
             # Aliases: ["75"]
-            Table:
+            table:
               - [1, 75, "Yes"]
               - [76, 100, "No"]
           Fifty-fifty:
-            Title:
-              Canonical: 50/50
+            title:
+              canonical: 50/50
             _idFragment: Fifty-fifty
-            On a Match: *AtO.Match
+            on_a_match: *AtO.Match
             # Aliases: ["50"]
-            Table:
+            table:
               - [1, 50, "Yes"]
               - [51, 100, "No"]
-          Unlikely:
-            On a Match: *AtO.Match
-            Title:
-              Canonical: Unlikely
+          unlikely:
+            on_a_match: *AtO.Match
+            title:
+              canonical: Unlikely
             # Aliases: ["25"]
-            Table:
+            table:
               - [1, 25, "Yes"]
               - [26, 100, "No"]
-          Small Chance:
-            On a Match: *AtO.Match
-            Title:
-              Canonical: Small Chance
+          small_chance:
+            on_a_match: *AtO.Match
+            title:
+              canonical: Small Chance
             # Aliases: ["10"]
-            Table:
+            table:
               - [1, 10, "Yes"]
               - [11, 100, "No"]
-    Tables:
-      Begin a Session:
-        Title:
-          Canonical: Begin a Session
-        Source:
-          Page: 141
-        Content:
-          Part of speech: [fragment]
-        Table:
+    tables:
+      begin_a_session:
+        title:
+          canonical: Begin a Session
+        source:
+          page: 141
+        content:
+          part_of_speech: [fragment]
+        table:
           - [1, 10, "Flashback reveals an aspect of your background or nature", Suggestions: [*roll:Event]]
           - [11, 20, "Flashback reveals an aspect of another character, place, or faction", Suggestions: [*roll:Event, *obj:Faction]]
           - [21, 30, "Influential character or faction is introduced or given new detail", Suggestions: [*obj:Npc, *obj:Faction]]
@@ -79,14 +79,14 @@ Oracle sets:
           - [71, 80, "Unexpected return of an enemy or threat"]
           - [81, 90, "Peril lies ahead or lurks just out of view"]
           - [91, 100, "Unforeseen aid is on the way or within reach"]
-      Make a Discovery:
-        Title:
-          Canonical: Make a Discovery
-        Source:
-          Page: 176
-        Content:
-          Part of speech: [fragment]
-        Table:
+      make_a_discovery:
+        title:
+          canonical: Make a Discovery
+        source:
+          page: 176
+        content:
+          part_of_speech: [fragment]
+        table:
           - [1, 4, Advanced technology waiting to be harnessed or salvaged, Suggestions: [*roll:Object]]
           - [5, 8, Ancient archive or message, Suggestions: [*roll:Event]]
           - [9, 10, Artificial consciousness evolved to a higher state]
@@ -110,14 +110,14 @@ Oracle sets:
           - [87, 88, Safeguarded or idyllic location]
           - [89, 90, Visions or prophesies of the future, Suggestions: [*roll:Event]]
           - [91, 100, *result:RollTwice]
-      Confront Chaos:
-        Title:
-          Canonical: Confront Chaos
-        Source:
-          Page: 177
-        Content:
-          Part of speech: [fragment]
-        Table:
+      confront_chaos:
+        title:
+          canonical: Confront Chaos
+        source:
+          page: 177
+        content:
+          part_of_speech: [fragment]
+        table:
           - [1, 4, Baneful weapon of mass destruction, Suggestions: [*roll:Object]]
           - [5, 9, Cataclysmic environmental effects]
           - [10, 12, Dead given unnatural life]
@@ -141,53 +141,53 @@ Oracle sets:
           - [88, 92, Technology warped for dark purpose]
           - [93, 96, Vault of dread technology or power, Suggestions: [*obj:Vault]]
           - [97, 100, Worshipers of great and malevolent powers]
-      Take Decisive Action:
-        Title:
-          Canonical: Take Decisive Action
-        Source:
-          Page: 194
-        Content:
-          Part of speech: [sentences]
-        Table:
+      take_decisive_action:
+        title:
+          canonical: Take Decisive Action
+        source:
+          page: 194
+        content:
+          part_of_speech: [sentences]
+        table:
           - [1, 40, "It’s worse than you thought: Make a suffer move (-2)"]
           - [41, 52, "Victory is short-lived: A new peril or foe appears"]
           - [53, 64, "You face collateral damage: Something is lost, damaged, or broken"]
           - [65, 76, "Others pay the price: Someone else suffers the cost"]
           - [77, 88, "Others won’t forget: You are marked for vengeance"]
           - [89, 100, "It gets complicated: The true nature of a foe or objective is revealed"]
-      Endure Harm:
-        Title:
-          Canonical: Endure Harm
-        Source:
-          Page: 200
-        Content:
-          Part of speech: [sentences]
-        Table:
+      endure_harm:
+        title:
+          canonical: Endure Harm
+        source:
+          page: 200
+        content:
+          part_of_speech: [sentences]
+        table:
           - [1, 10, "You suffer mortal harm. [Face Death](starforged/moves/threshold/face_death)."]
           - [11, 20, "You are dying. Within an hour or two, you must [Heal](starforged/moves/recover/heal) and raise your health above 0, or [Face Death](starforged/moves/threshold/face_death)."]
           - [21, 35, "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](starforged/moves/threshold/face_death)."]
           - [36, 50, "You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move)."]
           - [51, 100, You are still standing.]
-      Endure Stress:
-        Title:
-          Canonical: Endure Stress
-        Source:
-          Page: 202
-        Content:
-          Part of speech: [sentences]
-        Table:
+      endure_stress:
+        title:
+          canonical: Endure Stress
+        source:
+          page: 202
+        content:
+          part_of_speech: [sentences]
+        table:
           - [1, 10, "You are overwhelmed. [Face Desolation](starforged/moves/threshold/face_desolation)."]
           - [11, 25, "You give up. [Forsake Your Vow](starforged/moves/quest/forsake_your_vow)."]
           - [26, 50, "You give in to fear or compulsion, and act against your better instincts."]
           - [51, 100, You persevere.]
-      Withstand Damage:
-        Title:
-          Canonical: Withstand Damage
-        Source:
-          Page: 206
-        Content:
-          Part of speech: [sentences]
-        Table:
+      withstand_damage:
+        title:
+          canonical: Withstand Damage
+        source:
+          page: 206
+        content:
+          part_of_speech: [sentences]
+        table:
           - [1, 10, "Immediate catastrophic destruction. All aboard must [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death), as appropriate."]
           - [11, 25, "Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death) as appropriate."]
           - [26, 40, "Destruction is imminent, but can be averted if you [Repair](starforged/moves/recover/repair) your vehicle and raise its integrity above 0. If you fail, see 11-25."]
@@ -196,14 +196,14 @@ Oracle sets:
           - [71, 85, "It's a rough ride. All aboard must make the [Endure Harm](starforged/moves/suffer/endure_harm), [Endure Stress](starforged/moves/suffer/endure_stress), or [Companion Takes a Hit](starforged/moves/suffer/companion_takes_a_hit) move, suffering a serious (-2) cost."]
           - [86, 95, "You’ve lost fuel, energy, or cargo. [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-2)."]
           - [96, 100, "Against all odds, the vehicle holds together."]
-      Pay the Price:
-        Title:
-          Canonical: Pay the Price
-        Source:
-          Page: 232
-        Content:
-          Part of speech: [fragment]
-        Table:
+      pay_the_price:
+        title:
+          canonical: Pay the Price
+        source:
+          page: 232
+        content:
+          part_of_speech: [fragment]
+        table:
           - [1, 2, A trusted individual or community acts against you]
           - [3, 4, An individual or community you care about is exposed to danger]
           - [5, 7, You encounter signs of a looming threat]

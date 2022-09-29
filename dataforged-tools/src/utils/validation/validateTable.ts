@@ -17,10 +17,10 @@ export function validateTable (table: OracleTableRow[], requireUniqueResults = t
   let totalRange = 0
   const resultStrings: Set<string> = new Set()
   for (let i = 0; i < table.length; i++) {
-    const floor = table[i].Floor
-    const ceiling = table[i].Ceiling
+    const floor = table[i].floor
+    const ceiling = table[i].ceiling
     if (typeof floor === 'number' && typeof ceiling === 'number') {
-      const lastCeiling = i > 0 ? table[i - 1].Ceiling : 1
+      const lastCeiling = i > 0 ? table[i - 1].ceiling : 1
 
       const errPrefix = `[validateTable] Invalid row at index ${i}:`
       // if (requireUniqueResults) { resultStrings.add(currentRow.Result); }
@@ -45,7 +45,7 @@ export function validateTable (table: OracleTableRow[], requireUniqueResults = t
     throw new Error('Invalid table - dice ranges do not sum to 100.')
   }
   if (requireUniqueResults && resultStrings.size !== table.length) {
-    const duplicatedStrings = table.map(row => row.Result)
+    const duplicatedStrings = table.map(row => row.result)
     const uniqueStrings = Array.from(resultStrings)
 
     uniqueStrings.forEach(row => {

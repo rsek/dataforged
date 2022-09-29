@@ -1,26 +1,26 @@
-Source:
-  Authors:
+source:
+  authors:
     - Shawn Tomkin
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-Oracle sets:
-  Location Themes:
-    Title:
-      Canonical: Location Themes
-    Source:
-      Page: 370
-    Sets:
-      Fortified:
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  location_themes:
+    title:
+      canonical: Location Themes
+    source:
+      page: 370
+    sets:
+      fortified:
         _templateOracleSet: *template.category:LocationTheme
         _templateVars:
-          Location Theme: Fortified
-        Title:
-          Canonical: Fortified
-        Description: *description:Fortified
-        Source:
-          Page: 373
-        Tables:
-          Feature:
+          location_theme: Fortified
+        title:
+          canonical: Fortified
+        description: *description:Fortified
+        source:
+          page: 373
+        tables:
+          feature:
             _templateOracleTable: *template.info:LocationTheme.Feature
             _templateTableRows:
               rolls: *template.rolls:LocationTheme.Feature
@@ -38,7 +38,7 @@ Oracle sets:
                 - Robotic assistant or watchful AI
                 - Support personnel at work
                 - *result:Descriptor+Focus
-          Peril:
+          peril:
             _templateOracleTable: *template.info:LocationTheme.Peril
             _templateTableRows:
               rolls: *template.rolls:LocationTheme.Peril
@@ -55,7 +55,7 @@ Oracle sets:
                 - Your plan is undone by an unexpected complication
                 - *result:Action+Theme
                 - *result:RollTwice
-          Opportunity:
+          opportunity:
             _templateOracleTable: *template.info:LocationTheme.Opportunity
             _templateTableRows:
               rolls: *template.rolls:LocationTheme.Opportunity

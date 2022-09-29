@@ -1,37 +1,37 @@
 /**
  * @internal
  */
-export const MASTER_DATA_PATH = '../_master-data'
+export const MASTER_DATA_PATH = '../_master-data';
 /**
  * @internal
  */
-export const REFS_PATH = MASTER_DATA_PATH + '/_refs'
+export const REFS_PATH = MASTER_DATA_PATH + '/_refs';
 /**
  * @internal
  */
-export const TEMPLATES_PATH = MASTER_DATA_PATH + '/_refs/templates'
+export const TEMPLATES_PATH = MASTER_DATA_PATH + '/_refs/templates';
 /**
  * @internal
  */
-export const IS_PATH = MASTER_DATA_PATH + '/Ironsworn'
+export const IS_PATH = MASTER_DATA_PATH + '/Ironsworn';
 /**
  * @internal
  */
-export const SF_PATH = MASTER_DATA_PATH + '/Starforged'
+export const SF_PATH = MASTER_DATA_PATH + '/Starforged';
 /**
  * @internal
  */
-export const JSON_PATHS = ['../dist', '../src', './src/json', './build/json']
+export const JSON_PATHS = ['../dist', '../src', './src/json', './build/json'];
 /**
  * @internal
  */
-export const MD_PATH = '../markdown'
+export const MD_PATH = '../markdown';
 /**
  * @internal
  */
-export const MASTER_PNG_PATH = MASTER_DATA_PATH + '/Starforged/img/raster/png'
+export const MASTER_PNG_PATH = MASTER_DATA_PATH + '/Starforged/img/raster/png';
 /**
  * @internal
  */
-export const IMG_PATH = MASTER_DATA_PATH + '/Starforged/img'
-// # sourceMappingURL=index.js.map
+export const IMG_PATH = MASTER_DATA_PATH + '/Starforged/img';
+//# sourceMappingURL=index.js.map

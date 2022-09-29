@@ -1,69 +1,73 @@
-Source:
-  Authors: [Shawn Tomkin]
-  Title: "Ironsworn: Starforged Rulebook"
-  License: https://creativecommons.org/licenses/by-sa/4.0/
-Oracle sets:
-  Settlements:
-    Title:
-      Canonical: Settlements
-      Short: Settlement
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  settlements:
+    title:
+      canonical: Settlements
+      short: Settlement
     _idFragment: Settlements
-    Source:
-      Authors: [Shawn Tomkin]
-      Title: "Ironsworn: Starforged Rulebook"
-      License: https://creativecommons.org/licenses/by-sa/4.0/
-      Date: "050622"
-    Sets:
-      Population:
-        Title:
-          Canonical: Population
-        Source:
-          Page: 322
-        Usage:
-          Initial: true
-          Requires:
-            Attributes:
-              Region: null
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/settlements/population/terminus
-              Label: Terminus
-            - Type: dice range
-              Content: starforged/oracles/settlements/population/outlands
-              Label: Outlands
-            - Type: dice range
-              Content: starforged/oracles/settlements/population/expanse
-              Label: Expanse
-            - Type: string
-              Content: starforged/oracles/settlements/population/terminus
-              Label: Number
-              Key: Result
-        Tables:
-          Terminus:
-            Title:
-              Canonical: Terminus
-            Display:
-              Column of: starforged/oracles/settlements/population
-            Usage:
-              Requires:
-                Attributes:
-                  Region: Terminus
-            Table: &table:Population
+    source:
+      authors: [Shawn Tomkin]
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      date: "050622"
+    sets:
+      population:
+        title:
+          canonical: Population
+        source:
+          page: 322
+        usage:
+          initial: true
+          requires:
+            attributes:
+              region: null
+        display:
+          columns:
+            terminus:
+              column_type: dice_range
+              content: starforged/oracles/settlements/population/terminus
+              label: Terminus
+            outlands:
+              column_type: dice_range
+              content: starforged/oracles/settlements/population/outlands
+              label: Outlands
+            expanse:
+              column_type: dice_range
+              content: starforged/oracles/settlements/population/expanse
+              label: Expanse
+            number:
+              column_type: string
+              content: starforged/oracles/settlements/population/terminus
+              label: Number
+              key: result
+        tables:
+          terminus:
+            title:
+              canonical: Terminus
+            display:
+              column_of: starforged/oracles/settlements/population
+            usage:
+              requires:
+                attributes:
+                  region: [terminus]
+            table: &table:Population
               - [1, 10, Few, Attributes: {Population: Few}]
               - [11, 25, Dozens, Attributes: {Population: Dozens}]
               - [26, 55, Hundreds, Attributes: {Population: Hundreds}]
               - [56, 85, Thousands, Attributes: {Population: Thousands}]
               - [86, 100, Tens of thousands, Attributes: {Population: Tens of thousands}]
-          Outlands:
-            Title:
-              Canonical: Outlands
-            Display:
-              Column of: starforged/oracles/settlements/population
-            Usage:
-              Requires:
-                Attributes:
-                  Region: Outlands
+          outlands:
+            title:
+              canonical: Outlands
+            display:
+              column_of: starforged/oracles/settlements/population
+            usage:
+              requires:
+                attributes:
+                  region: [outlands]
             _templateTableRows:
               content: *table:Population
               rolls:
@@ -73,15 +77,15 @@ Oracle sets:
                 - [66, 90]
                 - [91, 100]
 
-          Expanse:
-            Title:
-              Canonical: Expanse
-            Display:
-              Column of: starforged/oracles/settlements/population
-            Usage:
-              Requires:
-                Attributes:
-                  Region: Expanse
+          expanse:
+            title:
+              canonical: Expanse
+            display:
+              column_of: starforged/oracles/settlements/population
+            usage:
+              requires:
+                attributes:
+                  region: [expanse]
             _templateTableRows:
               content: *table:Population
               rolls:
@@ -91,31 +95,31 @@ Oracle sets:
                 - [81, 95]
                 - [96, 100]
 
-    Tables:
-      Location:
-        Title:
-          Canonical: Location
+    tables:
+      location:
+        title:
+          canonical: Location
         _templateOracleTable: *template.info:Generic.Location
-        Source:
-          Page: 322
+        source:
+          page: 322
         _templateTableRows:
           content: *template.content:Generic.Location
           rolls:
             - [1, 40]
             - [41, 75]
             - [76, 100]
-      First look:
-        Title:
-          Canonical: First look
-        Source:
-          Page: 323
-        Usage:
-          Max rolls: 2
-          Initial: true
-        Content:
-          Part of speech: [fragment]
-          Tags: [description]
-        Table:
+      first_look:
+        title:
+          canonical: First Look
+        source:
+          page: 323
+        usage:
+          max_rolls: 2
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        table:
           - [1, 3, Beautiful architecture]
           - [4, 9, Built from organic materials]
           - [10, 15, Built from random scrap]
@@ -138,17 +142,17 @@ Oracle sets:
           - [88, 90, "Within or near [⏵Precursor Vault](starforged/oracles/vaults)", *obj:Vault]
           - [91, 100, *result:Descriptor+Focus]
 
-      Initial contact:
-        Title:
-          Canonical: Initial contact
-        Source:
-          Page: 323
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [fragment]
-          Tags: [description]
-        Table:
+      initial_contact:
+        title:
+          canonical: Initial Contact
+        source:
+          page: 323
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        table:
           - [1, 20, Welcoming, Attributes: {Initial Contact: Welcoming}]
           - [21, 30, Neutral / automated, Attributes: {Initial Contact: Neutral / automated}]
           - [31, 50, Wary, Attributes: {Initial Contact: Wary}]
@@ -161,16 +165,16 @@ Oracle sets:
           - [93, 95, Destroyed, Attributes: {Initial Contact: Destroyed}]
           - [96, 100, "[⏵Derelict](starforged/oracles/derelicts)", *inherit:Derelict.Settlement]
 
-      Authority:
-        Title:
-          Canonical: Authority
-        Source:
-          Page: 323
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [adjective]
-        Table:
+      authority:
+        title:
+          canonical: Authority
+        source:
+          page: 323
+        usage:
+          initial: true
+        content:
+          part_of_speech: [adjective]
+        table:
           - [1, 15, None / lawless, Attributes: {Authority: None / lawless}]
           - [16, 30, Ineffectual, Attributes: {Authority: Ineffectual}]
           - [31, 45, Tolerant, Attributes: {Authority: Tolerant}]
@@ -178,21 +182,21 @@ Oracle sets:
           - [56, 70, Unyielding, Attributes: {Authority: Unyielding}]
           - [71, 85, Corrupt, Attributes: {Authority: Corrupt}]
           - [86, 100, Oppressive, Attributes: {Authority: Oppressive}]
-      Projects:
-        Title:
-          Canonical: Settlement projects
-          Short: Projects
+      projects:
+        title:
+          canonical: Settlement Projects
+          short: Projects
         _idFragment: Projects
-        Source:
-          Page: 324
-        Content:
-          Part of speech: [noun, common noun]
-          Tags: [abstract noun]
-        Usage:
-          Max rolls: 2
-        Description: |-
+        source:
+          page: 324
+        content:
+          part_of_speech: [noun, common noun]
+          tags: [abstract noun]
+        usage:
+          max_rolls: 2
+        description: |-
           Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
-        Table:
+        table:
           - [1, 5, Agriculture]
           - [6, 7, Archeology]
           - [8, 9, Automation]
@@ -226,21 +230,21 @@ Oracle sets:
           - [89, 92, Trade]
           - [93, 95, Warfare]
           - [96, 100, *result:Action+Theme]
-      Trouble:
-        Title:
-          Canonical: Settlement trouble
-          Short: Trouble
+      trouble:
+        title:
+          canonical: Settlement Trouble
+          short: Trouble
         _idFragment: Trouble
-        Source:
-          Page: 324
-        Usage:
-          Max rolls: 2
-        Description: |-
+        source:
+          page: 324
+        usage:
+          max_rolls: 2
+        description: |-
           Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.
-        Content:
-          Part of speech: [fragment]
-          Tags: [peril, event, present]
-        Table:
+        content:
+          part_of_speech: [fragment]
+          tags: [peril, event, present]
+        table:
           - [1, 3, Battle for leadership, Suggestions: [*obj:Faction]]
           - [4, 6, Betrayal from within]
           - [7, 8, Caught in the crossfire]
@@ -275,21 +279,21 @@ Oracle sets:
           - [87, 88, Volatile energy source, Suggestions: [*roll:Object]]
           - [89, 90, Vulnerable lifeforms, Suggestions: [*obj:Creature]]
           - [91, 100, *result:Action+Theme]
-      Name:
-        Title:
-          Canonical: Settlement name
-          Short: Name
+      name:
+        title:
+          canonical: Settlement Name
+          short: Name
         _idFragment: Name
-        Source:
-          Page: 325
-        Description: |-
+        source:
+          page: 325
+        description: |-
           Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
-        Usage:
-          Initial: true
-        Content:
-          Part of speech: [proper noun]
-          Tags: [name]
-        Table:
+        usage:
+          initial: true
+        content:
+          part_of_speech: [proper noun]
+          tags: [name]
+        table:
         # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
           - [1, 1, Aegis]
           - [2, 2, Altair, Part of speech: [proper noun]]
