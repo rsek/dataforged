@@ -2,14 +2,22 @@
   "type": "object",
   "properties": {
     "encounters": {
-      "type": "object",
-      "additionalProperties": {
-        "anyOf": [
-          { "$ref": "#/definitions/YamlEncounterNatureClassic" },
-          { "$ref": "#/definitions/YamlEncounterStarforged" }
-        ]
-      },
-      "defaultProperties": [],
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/YamlEncounterNatureClassic"
+          },
+          "defaultProperties": []
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/YamlEncounterStarforged"
+          },
+          "defaultProperties": []
+        }
+      ],
       "title": "encounters"
     },
     "_refs": {
@@ -36,12 +44,6 @@
       "$ref": "#/definitions/Source",
       "description": "Information on this item's source.",
       "title": "source"
-    },
-    "Encounters": {
-      "type": "object",
-      "additionalProperties": {},
-      "defaultProperties": [],
-      "title": "Encounters"
     }
   },
   "defaultProperties": [],
@@ -112,7 +114,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^ironsworn/encounters/[a-z_-]+$",
+          "pattern": "^ironsworn/encounters/[a-z_]+$",
           "type": "string",
           "title": "$id"
         },
@@ -221,7 +223,7 @@
         },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^(starforged|ironsworn)/encounters/[a-z_-]+/[a-z_-]+$",
+          "pattern": "^(starforged|ironsworn)/encounters/[a-z_]+/[a-z_]+$",
           "type": "string",
           "title": "$id"
         },
@@ -380,7 +382,7 @@
         "rank": { "$ref": "#/definitions/ChallengeRank", "title": "rank" },
         "$id": {
           "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
-          "pattern": "^starforged/encounters/[a-z_-]+$",
+          "pattern": "^starforged/encounters/[a-z_]+$",
           "type": "string",
           "title": "$id"
         },

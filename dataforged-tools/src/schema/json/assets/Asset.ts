@@ -18,7 +18,7 @@ export enum AssetTag {
 export interface Asset extends MixinId, MixinDisplay, MixinSource, Partial<MixinAliases>, MixinTitle {
   /**
    * @example "starforged/assets/path/bounty_hunter"
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+$
    */
   $id: string
   title: TitleCaseTitle
@@ -37,7 +37,6 @@ export interface Asset extends MixinId, MixinDisplay, MixinSource, Partial<Mixin
   attachments?: AssetAttachment | undefined
   /**
    * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
-   * @patternProperties ^[A-Z][a-z '-]+$
    */
   inputs?: { [key: SnakeCaseString]: (InputNumber | InputClock | InputText | InputSelect | InputToggle) } | undefined
   /**

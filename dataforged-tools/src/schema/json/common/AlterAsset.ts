@@ -14,7 +14,7 @@ export interface AlterAsset extends Omit<PartialDeep<OmitMetadataDeep<Asset>>, '
   'attachments' | 'condition_meter' | '$id'>, MixinId {
   // TODO: some way of handling stuff that applies to a whole-ass category, like Ritualist and Owl
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/assets/[1-9][0-9]*$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]/alter/assets/[1-9][0-9]*$
    */
   $id: string
   abilities?: AlterAssetAbility[] | undefined

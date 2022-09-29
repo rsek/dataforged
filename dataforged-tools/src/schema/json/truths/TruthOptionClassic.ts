@@ -5,7 +5,7 @@ import type { MixinDescription, MixinQuestStarter } from '@schema'
  */
 export interface TruthOptionClassic extends MixinDescription, MixinQuestStarter {
   /**
-   * @pattern ^ironsworn/setting_truths/[a-z_-]+/[1-3]$
+   * @pattern ^ironsworn/setting_truths/[a-z_]+/[1-3]$
    */
   $id: string
 }

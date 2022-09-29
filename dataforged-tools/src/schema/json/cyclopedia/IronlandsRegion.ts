@@ -5,7 +5,7 @@ import type { CyclopediaEntry, MixinQuestStarter, MixinSummary, TitleCaseTitle }
  */
 export interface IronlandsRegion extends CyclopediaEntry, MixinSummary, MixinQuestStarter {
   /**
-   * @pattern ^ironsworn/regions/[a-z_-]$
+   * @pattern ^ironsworn/regions/[a-z_]$
    */
   $id: string
   features: string[]

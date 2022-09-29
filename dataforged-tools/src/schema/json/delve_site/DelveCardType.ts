@@ -21,7 +21,7 @@ export enum DelveCardType {
 
 export interface DelveCard extends MixinSource, MixinSummary, MixinDescription, MixinId, MixinTitle {
   /**
-   * @pattern ^ironsworn/(themes|domains)/[a-z_-]+$
+   * @pattern ^ironsworn/(themes|domains)/[a-z_]+$
    */
   $id: string
   /**
@@ -65,7 +65,7 @@ export interface DelveCard extends MixinSource, MixinSummary, MixinDescription, 
 
 export interface DelveSiteDomain extends DelveCard {
   /**
-   * @pattern ^ironsworn/domains/[a-z_-]+$
+   * @pattern ^ironsworn/domains/[a-z_]+$
    */
   $id: string
   'card_type': DelveCardType.Domain
@@ -109,7 +109,7 @@ export interface DelveSiteDomain extends DelveCard {
  */
 export interface DelveSiteTheme extends DelveCard {
   /**
-   * @pattern ^ironsworn/themes/[a-z_-]+$
+   * @pattern ^ironsworn/themes/[a-z_]+$
    */
   $id: string
   'card_type': DelveCardType.Theme

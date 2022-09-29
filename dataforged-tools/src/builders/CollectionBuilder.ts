@@ -65,7 +65,7 @@ export interface BuilderFromGlob {
   rawSourceFileData: string[]
 }
 
-export type CollectionFileGlob<G extends Game> = `${typeof MASTER_DATA_PATH}/${G}/${string}.(yml|yaml)`
+export type CollectionFileGlob<G extends Game> = `${typeof MASTER_DATA_PATH}/${Lowercase<G>}/${Lowercase<string>}.(yml|yaml)`
 
 /**
  * Base class for constructing collections of Dataforged JSON objects from YAML shorthand data. When serialized to JSON, it becomes a simple keyed JSON object.
@@ -77,17 +77,17 @@ export abstract class CollectionBuilder<
   TYamlItem,
   // SchemaIn extends Schema, SchemaOut extends Schema
   > extends Map<string, TMapItem> implements HashBuilder<TMapItem, TYamlItem> {
-  abstract buildItem (yaml: TYamlItem, key: string): TMapItem
+  abstract buildItem(yaml: TYamlItem, key: string): TMapItem
   private readonly _fragment: string
-  public get fragment (): string {
+  public get fragment(): string {
     return this._fragment
   }
 
-  public get label (): string {
+  public get label(): string {
     return this._fragment
   }
 
-  collect () {
+  collect() {
     buildLog(this.constructor, `Building ${this.label}...`)
     _.forEach(
       this.yaml,
@@ -97,31 +97,31 @@ export abstract class CollectionBuilder<
     return this
   }
 
-  toJson () {
+  toJson() {
     return Object.fromEntries(this.entries())
   }
 
-  get buildStatsMessage (): string {
+  get buildStatsMessage(): string {
     return `${this.size} ${this.label}`
   }
 
   private readonly _yaml: Record<string, TYamlItem>
-  public get yaml () {
+  public get yaml() {
     return this._yaml
   }
 
   private readonly _game: G
-  public get game (): G {
+  public get game(): G {
     return this._game
   }
 
   private readonly _parent: MixinId | undefined
-  public get parent (): MixinId | undefined {
+  public get parent(): MixinId | undefined {
     return this._parent
   }
 
   Source: Source
-  constructor (yaml: Record<string, TYamlItem>,
+  constructor(yaml: Record<string, TYamlItem>,
     game: G,
     fragment: string,
     source: Source,

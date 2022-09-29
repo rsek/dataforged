@@ -11,7 +11,7 @@ import { SnakeCaseString } from '@schema/json/common/String.js'
  */
 export interface OracleSet extends Omit<Oracle, 'table'> {
   /**
-   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+(/[a-z_]+)?$
    */
   $id: string
   /**

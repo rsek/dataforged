@@ -14,7 +14,7 @@ export declare type ActorRecord<T extends GameObjectType.Character | GameObjectT
  */
 export declare interface AlterAsset extends Omit<PartialDeep<OmitMetadataDeep<Asset>>, 'abilities' | 'asset_type' | 'attachments' | 'condition_meter' | '$id'>, MixinId {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/assets/[1-9][0-9]*$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]/alter/assets/[1-9][0-9]*$
      */
     $id: string;
     abilities?: AlterAssetAbility[] | undefined;
@@ -96,7 +96,7 @@ export declare interface AlterMomentumReset extends MixinId {
  */
 export declare interface AlterMove extends StubExcept<Move, '$id', 'outcomes'> {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[1-9][0-9]*$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[1-9][0-9]*$
      */
     $id: string;
     /**
@@ -151,7 +151,7 @@ export declare interface AlterWeakHit extends PartialDeep<OutcomeWeakHit> {
 export declare interface Asset extends MixinId, MixinDisplay, MixinSource, Partial<MixinAliases>, MixinTitle {
     /**
      * @example "starforged/assets/path/bounty_hunter"
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+$
      */
     $id: string;
     title: TitleCaseTitle;
@@ -170,7 +170,6 @@ export declare interface Asset extends MixinId, MixinDisplay, MixinSource, Parti
     attachments?: AssetAttachment | undefined;
     /**
      * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
-     * @patternProperties ^[A-Z][a-z '-]+$
      */
     inputs?: {
         [key: SnakeCaseString]: (InputNumber | InputClock | InputText | InputSelect | InputToggle);
@@ -199,7 +198,7 @@ export declare interface Asset extends MixinId, MixinDisplay, MixinSource, Parti
  */
 export declare interface AssetAbility extends MixinId, MixinText, Partial<MixinLabel> {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]$
      */
     $id: string;
     /**
@@ -212,7 +211,6 @@ export declare interface AssetAbility extends MixinId, MixinText, Partial<MixinL
     moves?: Move[] | undefined;
     /**
      * User inputs (text, clocks, etc) associated with this asset ability.
-     * @patternProperties ^[A-Z].+$
      */
     inputs?: {
         [key: SnakeCaseString]: (InputText | InputNumber | InputToggle | InputClock | InputSelect);
@@ -258,7 +256,7 @@ export declare interface AssetType extends MixinId, MixinDescription, MixinDispl
     /**
      * @example "ironsworn/assets/ritual"
      * @example "starforged/assets/command_vehicle"
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+$
      */
     $id: string;
     /**
@@ -616,7 +614,7 @@ export declare enum ClockType {
  */
 export declare interface ConditionMeter extends Meter {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/condition_meter$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/condition_meter$
      */
     $id: string;
     /**
@@ -659,7 +657,7 @@ export declare enum CreatureScale {
  */
 export declare interface CustomStat extends MixinId, MixinLabel {
     /**
-     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat$
+     * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[0-9]+)/[a-z_]+/trigger/options/[0-9]+/custom_stat$
      */
     $id: string;
     options: CustomStatOption[];
@@ -670,7 +668,7 @@ export declare interface CustomStat extends MixinId, MixinLabel {
  */
 export declare interface CustomStatOption extends MixinId, MixinLabel {
     /**
-     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[0-9]+)/[a-z_-]+/trigger/options/[0-9]+/custom_stat/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[0-9]+)/[a-z_]+/trigger/options/[0-9]+/custom_stat/[a-z_]+$
      */
     $id: string;
     /**
@@ -686,7 +684,7 @@ export declare interface CustomStatOption extends MixinId, MixinLabel {
  */
 export declare interface CyclopediaEntry extends MixinId, MixinDisplay, MixinDescription, MixinSource, Partial<MixinSummary & MixinQuestStarter & MixinTags>, MixinTitle {
     /**
-     * @pattern ^(starforged|ironsworn)/([a-z_-]+/)+$
+     * @pattern ^(starforged|ironsworn)/([a-z_]+/)+$
      */
     $id: string;
     tags?: string[] | undefined;
@@ -708,7 +706,7 @@ export declare interface CyclopediaEntry extends MixinId, MixinDisplay, MixinDes
  */
 export declare interface DelveCard extends MixinSource, MixinSummary, MixinDescription, MixinId, MixinTitle {
     /**
-     * @pattern ^ironsworn/(themes|domains)/[a-z_-]+$
+     * @pattern ^ironsworn/(themes|domains)/[a-z_]+$
      */
     $id: string;
     /**
@@ -778,7 +776,7 @@ export declare interface DelveRarity extends MixinTitle, MixinDisplay, MixinSour
  */
 export declare interface DelveSiteDomain extends DelveCard {
     /**
-     * @pattern ^ironsworn/domains/[a-z_-]+$
+     * @pattern ^ironsworn/domains/[a-z_]+$
      */
     $id: string;
     'card_type': DelveCardType.Domain;
@@ -829,7 +827,7 @@ export declare interface DelveSiteDomain extends DelveCard {
  */
 export declare interface DelveSiteTheme extends DelveCard {
     /**
-     * @pattern ^ironsworn/themes/[a-z_-]+$
+     * @pattern ^ironsworn/themes/[a-z_]+$
      */
     $id: string;
     'card_type': DelveCardType.Theme;
@@ -1003,7 +1001,7 @@ export declare interface Encounter extends EncounterBase {
 export declare interface EncounterBase extends CyclopediaEntry {
     /**
      * @example "starforged/encounters/chiton"
-     * @pattern ^(starforged|ironsworn)/encounters/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/encounters/[a-z_]+$
      */
     $id: string;
     /**
@@ -1051,7 +1049,7 @@ export declare interface EncounterBase extends CyclopediaEntry {
  */
 export declare interface EncounterClassic extends Encounter {
     /**
-     * @pattern ^(starforged|ironsworn)/encounters/[a-z_-]+/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/encounters/[a-z_]+/[a-z_]+$
      */
     $id: string;
     nature: EncounterNatureTypeClassic;
@@ -1065,7 +1063,7 @@ export declare interface EncounterClassic extends Encounter {
  */
 export declare interface EncounterNatureClassic extends MixinDescription, MixinSource, MixinId, MixinDisplay, MixinSummary, MixinTitle {
     /**
-     * @pattern ^ironsworn/encounters/[a-z_-]+$
+     * @pattern ^ironsworn/encounters/[a-z_]+$
      */
     $id: string;
     encounters: {
@@ -1105,13 +1103,12 @@ export declare enum EncounterNatureTypeStarforged {
  */
 export declare interface EncounterStarforged extends Encounter {
     /**
-     * @pattern ^starforged/encounters/[a-z_-]+$
+     * @pattern ^starforged/encounters/[a-z_]+$
      */
     $id: string;
     nature: EncounterNatureTypeStarforged;
     summary: string;
     /**
-     * @patternProperties ^[A-Z][a-z '-]+$
      */
     variants?: {
         [key: SnakeCaseString]: EncounterVariant;
@@ -1131,7 +1128,7 @@ export declare enum EncounterTags {
  */
 export declare interface EncounterVariant extends StubBy<EncounterStarforged, never, 'features' | 'drives' | 'tactics' | 'variants' | 'summary' | 'your_truth' | 'quest_starter'> {
     /**
-     * @pattern ^starforged/encounters/[a-z_-]+/[a-z_-]+$
+     * @pattern ^starforged/encounters/[a-z_]+/[a-z_]+$
      */
     $id: string;
     variant_of: EncounterStarforged['$id'];
@@ -1316,7 +1313,7 @@ export declare enum Influence {
  */
 export declare interface Input extends MixinLabel, MixinDisplay {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/([1-3]/)?inputs/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/([1-3]/)?inputs/[a-z_]+$
      */
     $id: string;
     label: string;
@@ -1439,7 +1436,6 @@ export declare interface InputSelect extends Input {
     input_type: InputType.Select;
     /**
      * Hints which attribute(s) are set by this dropdown's options.
-     * @patternProperties ^[A-z][a-z ]+$
      */
     sets_attributes: {
         [key: SnakeCaseString]: InputSelectAttributeDefinition;
@@ -1463,7 +1459,7 @@ export declare interface InputSelectAttributeDefinition {
  */
 export declare interface InputSelectOption extends MixinId, MixinLabel {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/inputs/[a-z_]+/options/[a-z_]+$
      */
     $id: string;
     /**
@@ -1479,7 +1475,7 @@ export declare interface InputSelectOption extends MixinId, MixinLabel {
  */
 export declare interface InputSelectOptionSetter extends MixinId {
     /**
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/inputs/[a-z_]+/options/[a-z_]+/[a-z_]+$
      */
     $id: string;
     attribute_type: InputSelectOptionType;
@@ -1627,7 +1623,7 @@ export declare enum InputType {
  */
 export declare interface IronlandsRegion extends CyclopediaEntry, MixinSummary, MixinQuestStarter {
     /**
-     * @pattern ^ironsworn/regions/[a-z_-]$
+     * @pattern ^ironsworn/regions/[a-z_]$
      */
     $id: string;
     features: string[];
@@ -1656,7 +1652,7 @@ export declare interface Ironsworn extends GameDataRoot {
     ironlands_regions: {
         [key: SnakeCaseString]: IronlandsRegion;
     };
-    rarities: {
+    delve_rarities: {
         [key: SnakeCaseString]: DelveRarity;
     };
 }
@@ -2125,7 +2121,7 @@ export declare interface MixinTitle extends MixinId {
 export declare interface Move extends MixinId, MixinText, MixinDisplay, MixinSource, MixinOptional, MixinTitle, Partial<MixinSuggestions & MixinTags> {
     /**
      * @example "starforged/moves/adventure/face_danger"
-     * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3])/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3])/[a-z_]+$
      */
     $id: string;
     /**
@@ -2175,11 +2171,10 @@ export declare interface Move extends MixinId, MixinText, MixinDisplay, MixinSou
 export declare interface MoveCategory extends MixinId, MixinSource, MixinDescription, MixinDisplay, MixinOptional, MixinTitle {
     /**
      * @example "starforged/moves/adventure"
-     * @pattern ^(starforged|ironsworn)/moves/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/moves/[a-z_]+$
      */
     $id: string;
     /**
-     * @patternProperties ^[A-Z][a-z '-]+$
      */
     moves: {
         [key: SnakeCaseString]: Move;
@@ -2240,7 +2235,7 @@ export declare interface MoveReroll extends MixinId, Partial<MixinText> {
  */
 export declare interface MoveTrigger extends MixinId, Partial<MixinText> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger$
      */
     $id: string;
     /**
@@ -2295,7 +2290,7 @@ export declare interface MoveTriggerOptionAction extends MoveTriggerOptionBase {
  */
 export declare interface MoveTriggerOptionBase extends MixinId, Partial<MixinText> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger/options/[0-9]+$
      */
     $id: string;
     /**
@@ -2426,7 +2421,6 @@ export declare interface Oracle extends Partial<MixinSummary & MixinDescription 
      * Oracle tables contained by this set.
      *
      * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
-     * @patternProperties ^[A-Z][a-z '-]+$
      */
     tables?: {
         [key: SnakeCaseString]: OracleTable;
@@ -2435,7 +2429,6 @@ export declare interface Oracle extends Partial<MixinSummary & MixinDescription 
      * Oracle sets contained by this set.
      *
      * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
-     * @patternProperties ^[A-Z][a-z '-]+$
      */
     sets?: {
         [key: SnakeCaseString]: OracleSet;
@@ -2496,7 +2489,7 @@ export declare interface OracleDisplayBase extends Display, MixinId {
  */
 export declare interface OracleMatch extends MixinId, MixinText {
     /**
-     * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?/on_a_match$
+     * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?/on_a_match$
      */
     $id: string;
 }
@@ -2510,7 +2503,7 @@ export declare interface OracleMatch extends MixinId, MixinText {
  */
 export declare interface OracleSet extends Omit<Oracle, 'table'> {
     /**
-     * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+(/[a-z_-]+)?$
+     * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+(/[a-z_]+)?$
      */
     $id: string;
     /**
@@ -2544,7 +2537,7 @@ export declare interface OracleSetDisplay extends Omit<OracleDisplayBase, 'colum
  */
 export declare interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
     /**
-     * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$
+     * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?$
      */
     $id: string;
     /**
@@ -2583,7 +2576,7 @@ export declare interface OracleTableDisplay extends OracleDisplayBase {
 export declare interface OracleTableRow<Floor extends number | null = number | null, Ceiling extends number | null = number | null> extends Partial<Nullable<MixinSummary & MixinRollTemplate & MixinSuggestions & MixinOracleContent & MixinGameObjects & MixinDisplay>> {
     /**
      * The ID of this row.
-     * @pattern ^(ironsworn|starforged)/oracles(/[a-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
+     * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
      */
     $id: string;
     /**
@@ -2623,7 +2616,7 @@ export declare interface OracleTableRow<Floor extends number | null = number | n
     summary?: string | null | undefined;
     /**
      * Additional oracle tables that should be rolled when this row is selected.
-     * @pattern ^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$
+     * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
     oracle_rolls?: Array<OracleTable['$id']> | undefined;
     /**
@@ -2676,7 +2669,7 @@ export declare interface OracleUsage extends Partial<MixinRequirements & MixinSu
  */
 export declare interface OutcomeBase<O extends MoveOutcome, RequireText extends boolean = false> extends MixinId, Partial<MixinText> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
      */
     $id: string;
     /**
@@ -2703,7 +2696,7 @@ export declare interface OutcomeBase<O extends MoveOutcome, RequireText extends 
  */
 export declare interface OutcomeMiss extends MixinId, OutcomeBase<MoveOutcome.miss, true> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/miss$
      */
     $id: string;
     with_a_match?: OutcomeMissMatch | undefined;
@@ -2718,7 +2711,7 @@ export declare interface OutcomeMiss extends MixinId, OutcomeBase<MoveOutcome.mi
  */
 export declare interface OutcomeMissMatch extends Omit<OutcomeMiss, 'with_a_match'> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/miss/with_a_match$
      */
     $id: string;
     /**
@@ -2732,7 +2725,7 @@ export declare interface OutcomeMissMatch extends Omit<OutcomeMiss, 'with_a_matc
  */
 export declare interface Outcomes extends MixinId {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes$
      */
     $id: string;
     strong_hit: OutcomeStrongHit;
@@ -2745,7 +2738,7 @@ export declare interface Outcomes extends MixinId {
  */
 export declare interface OutcomeStrongHit extends MixinId, OutcomeBase<typeof MoveOutcome['strong_hit'], true> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/strong_hit$
      */
     $id: string;
     with_a_match?: OutcomeStrongHitMatch | undefined;
@@ -2760,7 +2753,7 @@ export declare interface OutcomeStrongHit extends MixinId, OutcomeBase<typeof Mo
  */
 export declare interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, 'with_a_match'> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/strong_hit/with_a_match$
      */
     $id: string;
     /**
@@ -2774,7 +2767,7 @@ export declare interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, 'w
  */
 export declare interface OutcomeWeakHit extends Omit<OutcomeBase<typeof MoveOutcome['weak_hit'], true>, 'with_a_match'> {
     /**
-     * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/weak_hit$
+     * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/weak_hit$
      */
     $id: string;
     /**
@@ -3197,7 +3190,7 @@ export declare enum RollMethod {
  */
 export declare interface RollTemplate extends MixinId, Partial<MixinSummary & MixinDescription> {
     /**
-     * @pattern ^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$
+     * @pattern ^(starforged|ironsworn)/[a-z_]+/.+/roll_template$
      */
     $id: string;
     /**
@@ -3443,37 +3436,37 @@ export declare interface Suggestions {
     game_objects?: GameObject[] | undefined;
     /**
      * Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.
-     * @pattern ^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$
+     * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
     oracle_rolls?: Array<OracleTable['$id']> | undefined;
     /**
      * Suggested move IDs.
-     * @pattern ^(starforged|ironsworn)/moves/[a-z_-]+/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/moves/[a-z_]+/[a-z_]+$
      */
     moves?: Array<Move['$id']> | undefined;
     /**
      * Suggested asset IDs.
-     * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+$
+     * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+$
      */
     assets?: Array<Asset['$id']> | undefined;
     /**
      * Suggested encounter IDs.
-     * @pattern ^(starforged/encounters|ironsworn/encounters/[a-z_-]+)/[a-z_-]+$
+     * @pattern ^(starforged/encounters|ironsworn/encounters/[a-z_]+)/[a-z_]+$
      */
     encounters?: Array<EncounterStarforged['$id']> | Array<EncounterClassic['$id']> | undefined;
     /**
      * Suggested delve site themes.
-     * @pattern ^ironsworn/themes/[a-z_-]+$
+     * @pattern ^ironsworn/themes/[a-z_]+$
      */
     themes?: Array<DelveSiteTheme['$id']> | undefined;
     /**
      * Suggested delve site domains.
-     * @pattern ^ironsworn/domains/[a-z_-]+$
+     * @pattern ^ironsworn/domains/[a-z_]+$
      */
     domains?: Array<DelveSiteDomain['$id']> | undefined;
     /**
      * Suggested Ironlands regions.
-     * @pattern ^ironsworn/regions/[a-z_-]+$
+     * @pattern ^ironsworn/regions/[a-z_]+$
      */
     regions?: Array<IronlandsRegion['$id']> | undefined;
 }
@@ -3637,7 +3630,7 @@ export declare interface TrackBase {
  */
 export declare interface TruthClassic extends MixinTitle, MixinSource {
     /**
-     * @pattern ^ironsworn/setting_truths/[a-z_-]+$
+     * @pattern ^ironsworn/setting_truths/[a-z_]+$
      */
     $id: string;
     options: TruthOptionClassic[];
@@ -3649,7 +3642,7 @@ export declare interface TruthClassic extends MixinTitle, MixinSource {
  */
 export declare interface TruthOptionClassic extends MixinDescription, MixinQuestStarter {
     /**
-     * @pattern ^ironsworn/setting_truths/[a-z_-]+/[1-3]$
+     * @pattern ^ironsworn/setting_truths/[a-z_]+/[1-3]$
      */
     $id: string;
 }
@@ -3660,7 +3653,7 @@ export declare interface TruthOptionClassic extends MixinDescription, MixinQuest
  */
 export declare interface TruthOptionStarforged<C extends number | null = number | null, F extends number | null = number | null> extends OracleTableRow<C, F>, MixinQuestStarter, MixinDescription {
     /**
-     * @pattern ^starforged/setting_truths/[a-z_-]+/(1-33|34-67|68-100)$
+     * @pattern ^starforged/setting_truths/[a-z_]+/(1-33|34-67|68-100)$
      */
     $id: string;
     roll_template?: RollTemplate | undefined;
@@ -3676,7 +3669,7 @@ export declare interface TruthOptionStarforged<C extends number | null = number 
  */
 export declare interface TruthOptionSubtableRowStarforged<C extends number | null = number | null, F extends number | null = number | null> extends OracleTableRow<C, F> {
     /**
-     * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
+     * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
      */
     $id: string;
 }
@@ -3688,7 +3681,7 @@ export declare interface TruthOptionSubtableRowStarforged<C extends number | nul
  */
 export declare interface TruthStarforged extends MixinId, MixinSource, MixinDisplay, Partial<MixinSuggestions>, MixinTable, MixinTitle {
     /**
-     * @pattern ^starforged/truths/[a-z_-]+$
+     * @pattern ^starforged/truths/[a-z_]+$
      */
     $id: string;
     /**

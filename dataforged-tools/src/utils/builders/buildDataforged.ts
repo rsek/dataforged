@@ -38,7 +38,7 @@ export function buildDataforged(game: Game = Game.Starforged) {
         move_categories: buildMoves(game),
         oracle_sets: buildOracles(game),
         setting_truths: buildTruths(game),
-        rarities: new DelveRarityCollection(SourceBuilder.defaultByTitle(SourceTitle.IronswornDelve)).toJson(),
+        delve_rarities: new DelveRarityCollection(SourceBuilder.defaultByTitle(SourceTitle.IronswornDelve)).toJson(),
         delve_site_themes: buildDelveSiteCards(DelveCardType.Theme),
         delve_site_domains: buildDelveSiteCards(DelveCardType.Domain),
         ironlands_regions: new IronlandsRegionCollection(SourceBuilder.defaultByTitle(SourceTitle.Ironsworn)).toJson()

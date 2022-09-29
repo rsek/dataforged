@@ -32,5 +32,5 @@ export interface Ironsworn extends GameDataRoot {
   delve_site_domains: { [key: SnakeCaseString]: DelveSiteDomain }
   delve_site_themes: { [key: SnakeCaseString]: DelveSiteTheme }
   ironlands_regions: { [key: SnakeCaseString]: IronlandsRegion }
-  rarities: { [key: SnakeCaseString]: DelveRarity }
+  delve_rarities: { [key: SnakeCaseString]: DelveRarity }
 }

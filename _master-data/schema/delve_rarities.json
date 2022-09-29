@@ -1,11 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "rarities": {
+    "delve_rarities": {
       "type": "object",
       "additionalProperties": { "$ref": "#/definitions/YamlDelveRarity" },
       "defaultProperties": [],
-      "title": "rarities"
+      "title": "delve_rarities"
     },
     "_refs": {
       "type": "object",
@@ -31,17 +31,11 @@
       "$ref": "#/definitions/Source",
       "description": "Information on this item's source.",
       "title": "source"
-    },
-    "Rarities": {
-      "type": "object",
-      "additionalProperties": {},
-      "defaultProperties": [],
-      "title": "Rarities"
     }
   },
   "defaultProperties": [],
   "additionalProperties": false,
-  "required": ["rarities", "source"],
+  "required": ["delve_rarities", "source"],
   "definitions": {
     "YamlDelveRarity": {
       "title": "YamlDelveRarity",

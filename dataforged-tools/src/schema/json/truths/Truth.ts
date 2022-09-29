@@ -27,7 +27,7 @@ export enum SettingTruthName {
  */
 export interface TruthStarforged extends MixinId, MixinSource, MixinDisplay, Partial<MixinSuggestions>, MixinTable, MixinTitle {
   /**
-   * @pattern ^starforged/truths/[a-z_-]+$
+   * @pattern ^starforged/truths/[a-z_]+$
    */
   $id: string
   /**

@@ -13,7 +13,7 @@ export enum MoveOutcome {
  */
 export interface OutcomeBase<O extends MoveOutcome, RequireText extends boolean = false> extends MixinId, Partial<MixinText> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
    */
   $id: string
   /**
@@ -40,7 +40,7 @@ export interface OutcomeBase<O extends MoveOutcome, RequireText extends boolean 
  */
 export interface OutcomeMiss extends MixinId, OutcomeBase<MoveOutcome.miss, true> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/miss$
    */
   $id: string
   with_a_match?: OutcomeMissMatch | undefined
@@ -54,7 +54,7 @@ export interface OutcomeMiss extends MixinId, OutcomeBase<MoveOutcome.miss, true
  */
 export interface OutcomeWeakHit extends Omit<OutcomeBase<typeof MoveOutcome['weak_hit'], true>, 'with_a_match'> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/weak_hit$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/weak_hit$
    */
   $id: string
   /**
@@ -67,7 +67,7 @@ export interface OutcomeWeakHit extends Omit<OutcomeBase<typeof MoveOutcome['wea
  */
 export interface OutcomeStrongHit extends MixinId, OutcomeBase<typeof MoveOutcome['strong_hit'], true> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/strong_hit$
    */
   $id: string
   with_a_match?: OutcomeStrongHitMatch | undefined
@@ -82,7 +82,7 @@ export interface OutcomeStrongHit extends MixinId, OutcomeBase<typeof MoveOutcom
  */
 export interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, 'with_a_match'> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/strong_hit/with_a_match$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/strong_hit/with_a_match$
    */
   $id: string
   /**
@@ -95,7 +95,7 @@ export interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, 'with_a_ma
  */
 export interface OutcomeMissMatch extends Omit<OutcomeMiss, 'with_a_match'> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/outcomes/miss/with_a_match$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/miss/with_a_match$
    */
   $id: string
   /**

@@ -7,7 +7,7 @@ import type { StubBy } from '@utils/types/Stub.js'
  */
 export interface EncounterVariant extends StubBy<EncounterStarforged, never, 'features' | 'drives' | 'tactics' | 'variants' | 'summary' | 'your_truth' | 'quest_starter'> {
   /**
-   * @pattern ^starforged/encounters/[a-z_-]+/[a-z_-]+$
+   * @pattern ^starforged/encounters/[a-z_]+/[a-z_]+$
    */
   $id: string
   variant_of: EncounterStarforged['$id']

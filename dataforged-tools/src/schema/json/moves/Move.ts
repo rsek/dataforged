@@ -7,7 +7,7 @@ import type { Asset, MixinDisplay, MixinId, MixinOptional, MixinSource, MixinSug
 export interface Move extends MixinId, MixinText, MixinDisplay, MixinSource, MixinOptional, MixinTitle, Partial<MixinSuggestions & MixinTags> {
   /**
    * @example "starforged/moves/adventure/face_danger"
-   * @pattern ^(starforged|ironsworn)/moves/([a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3])/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3])/[a-z_]+$
    */
   $id: string
   /**

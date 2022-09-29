@@ -39,7 +39,7 @@ export enum InputType {
  */
 export interface Input extends MixinLabel, MixinDisplay {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/([1-3]/)?inputs/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/([1-3]/)?inputs/[a-z_]+$
    */
   $id: string
   label: string

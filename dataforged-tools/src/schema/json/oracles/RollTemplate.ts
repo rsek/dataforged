@@ -6,7 +6,7 @@ import type { MixinDescription, MixinId, MixinSummary } from '@schema'
  */
 export interface RollTemplate extends MixinId, Partial<MixinSummary & MixinDescription> {
   /**
-   * @pattern ^(starforged|ironsworn)/[a-z_-]+/.+/roll_template$
+   * @pattern ^(starforged|ironsworn)/[a-z_]+/.+/roll_template$
    */
   $id: string
   /**

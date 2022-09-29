@@ -6,7 +6,7 @@ import type { MixinDescription, MixinQuestStarter, OracleTableRow, RollTemplate 
  */
 export interface TruthOptionStarforged<C extends number | null = number | null, F extends number | null = number | null> extends OracleTableRow<C, F>, MixinQuestStarter, MixinDescription {
   /**
-   * @pattern ^starforged/setting_truths/[a-z_-]+/(1-33|34-67|68-100)$
+   * @pattern ^starforged/setting_truths/[a-z_]+/(1-33|34-67|68-100)$
    */
   $id: string
   roll_template?: RollTemplate | undefined
@@ -22,7 +22,7 @@ export interface TruthOptionStarforged<C extends number | null = number | null, 
  */
 export interface TruthOptionSubtableRowStarforged<C extends number | null = number | null, F extends number | null = number | null> extends OracleTableRow<C, F> {
   /**
-   * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_-]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
+   * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
    */
   $id: string
 }

@@ -73,7 +73,7 @@ export enum MeterCondition {
  */
 export interface ConditionMeter extends Meter {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/condition_meter$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/condition_meter$
    */
   $id: string
   /**

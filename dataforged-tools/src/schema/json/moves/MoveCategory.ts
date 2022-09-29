@@ -26,11 +26,10 @@ export enum MoveCategoryName {
 export interface MoveCategory extends MixinId, MixinSource, MixinDescription, MixinDisplay, MixinOptional, MixinTitle {
   /**
    * @example "starforged/moves/adventure"
-   * @pattern ^(starforged|ironsworn)/moves/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/moves/[a-z_]+$
    */
   $id: string
   /**
-   * @patternProperties ^[A-Z][a-z '-]+$
    */
   moves: { [key: SnakeCaseString]: Move }
 }

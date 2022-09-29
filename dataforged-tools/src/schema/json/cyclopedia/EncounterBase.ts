@@ -7,7 +7,7 @@ import type { ChallengeRank, CyclopediaEntry, Display, EncounterNatureTypeClassi
 export interface EncounterBase extends CyclopediaEntry {
   /**
    * @example "starforged/encounters/chiton"
-   * @pattern ^(starforged|ironsworn)/encounters/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/encounters/[a-z_]+$
    */
   $id: string
   /**

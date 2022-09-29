@@ -11,7 +11,7 @@ import type { Nullable } from '@utils/types/Nullable.js'
  */
 export interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
   /**
-   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?$
    */
   $id: string
   /**
@@ -46,7 +46,7 @@ export interface OracleTableRow<Floor extends number | null = number | null, Cei
 >> {
   /**
    * The ID of this row.
-   * @pattern ^(ironsworn|starforged)/oracles(/[a-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
+   * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
    */
   $id: string
   /**
@@ -86,7 +86,7 @@ export interface OracleTableRow<Floor extends number | null = number | null, Cei
   summary?: string | null | undefined
   /**
    * Additional oracle tables that should be rolled when this row is selected.
-   * @pattern ^(starforged|ironsworn)/oracles/[a-z_-]+/[a-z_-/]+$
+   * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
    */
   oracle_rolls?: Array<OracleTable['$id']> | undefined
   /**

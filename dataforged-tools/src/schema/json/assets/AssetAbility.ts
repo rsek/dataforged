@@ -7,7 +7,7 @@ import { SnakeCaseString } from '@schema/json/common/String.js'
  */
 export interface AssetAbility extends MixinId, MixinText, Partial<MixinLabel> {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/[1-3]$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]$
    */
   $id: string
   /**
@@ -20,7 +20,6 @@ export interface AssetAbility extends MixinId, MixinText, Partial<MixinLabel> {
   moves?: Move[] | undefined
   /**
    * User inputs (text, clocks, etc) associated with this asset ability.
-   * @patternProperties ^[A-Z].+$
    */
   inputs?: { [key: SnakeCaseString]: (InputText | InputNumber | InputToggle | InputClock | InputSelect) } | undefined
   /**

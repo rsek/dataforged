@@ -6,7 +6,7 @@ import type { MixinId, MixinText, MoveTriggerOptionAction, MoveTriggerOptionProg
  */
 export interface MoveTrigger extends MixinId, Partial<MixinText> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger$
    */
   $id: string
   /**

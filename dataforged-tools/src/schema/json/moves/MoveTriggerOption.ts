@@ -14,7 +14,7 @@ export type RollableStat = Stat | CustomStat['$id'] | PcConditionMeterType | Con
  */
 export interface MoveTriggerOptionBase extends MixinId, Partial<MixinText> {
   /**
-   * @pattern ^(starforged|ironsworn)/(moves/[a-z_-]+/[a-z_-]+|assets/[a-z_-]+/[a-z_-]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_-]+/[a-z_-]+/[1-3]/[a-z_-]+)/trigger/options/[0-9]+$
+   * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger/options/[0-9]+$
    */
   $id: string
   /**

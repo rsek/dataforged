@@ -25,7 +25,7 @@ export interface AssetType extends MixinId, MixinDescription, MixinDisplay, Mixi
   /**
    * @example "ironsworn/assets/ritual"
    * @example "starforged/assets/command_vehicle"
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+$
    */
   $id: string
   /**

@@ -17,13 +17,12 @@ export enum EncounterNatureTypeStarforged {
  */
 export interface EncounterStarforged extends Encounter {
   /**
-   * @pattern ^starforged/encounters/[a-z_-]+$
+   * @pattern ^starforged/encounters/[a-z_]+$
    */
   $id: string
   nature: EncounterNatureTypeStarforged
   summary: string
   /**
-   * @patternProperties ^[A-Z][a-z '-]+$
    */
   variants?: { [key: SnakeCaseString]: EncounterVariant } | undefined
 }

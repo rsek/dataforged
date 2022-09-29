@@ -32,14 +32,12 @@ export interface Oracle extends Partial<MixinSummary & MixinDescription & MixinO
    * Oracle tables contained by this set.
    *
    * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
-   * @patternProperties ^[A-Z][a-z '-]+$
    */
   tables?: { [key: SnakeCaseString]: OracleTable } | undefined
   /**
    * Oracle sets contained by this set.
    *
    * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
-   * @patternProperties ^[A-Z][a-z '-]+$
    */
   sets?: { [key: SnakeCaseString]: OracleSet } | undefined
   /**
@@ -57,7 +55,7 @@ export interface Oracle extends Partial<MixinSummary & MixinDescription & MixinO
  */
 export interface OracleMatch extends MixinId, MixinText {
   /**
-   * @pattern ^(ironsworn|starforged)/oracles/[a-z_-]+((/[a-z_-]+)+)?/on_a_match$
+   * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?/on_a_match$
    */
   $id: string
 }

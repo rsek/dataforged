@@ -6,7 +6,7 @@ import type { MixinDescription, MixinDisplay, MixinId, MixinQuestStarter, MixinS
  */
 export interface CyclopediaEntry extends MixinId, MixinDisplay, MixinDescription, MixinSource, Partial<MixinSummary & MixinQuestStarter & MixinTags>, MixinTitle {
   /**
-   * @pattern ^(starforged|ironsworn)/([a-z_-]+/)+$
+   * @pattern ^(starforged|ironsworn)/([a-z_]+/)+$
    */
   $id: string
   tags?: string[] | undefined

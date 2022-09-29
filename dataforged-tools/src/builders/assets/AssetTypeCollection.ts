@@ -16,9 +16,9 @@ export class AssetTypeCollection<G extends Game> extends RootCollectionBuilder<G
   constructor(game: G, source: Source) {
     super(
       game,
-      'asset_types',
+      'assets',
       source,
-      `../_master-data/${game}/Assets*.(yml|yaml)`,
+      `../_master-data/${game.toLowerCase() as Lowercase<G>}/assets*.(yml|yaml)`,
       'asset_types'
     )
   }

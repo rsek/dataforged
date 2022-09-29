@@ -11,7 +11,6 @@ export interface InputSelect extends Input {
   input_type: InputType.Select
   /**
    * Hints which attribute(s) are set by this dropdown's options.
-   * @patternProperties ^[A-z][a-z ]+$
    */
   sets_attributes: {
     [key: SnakeCaseString]: InputSelectAttributeDefinition
@@ -60,7 +59,7 @@ export enum InputSelectOptionType {
  */
 export interface InputSelectOption extends MixinId, MixinLabel {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/inputs/[a-z_]+/options/[a-z_]+$
    */
   $id: string
   /**
@@ -76,7 +75,7 @@ export interface InputSelectOption extends MixinId, MixinLabel {
  */
 export interface InputSelectOptionSetter extends MixinId {
   /**
-   * @pattern ^(starforged|ironsworn)/assets/[a-z_-]+/[a-z_-]+/inputs/[a-z_-]+/options/[a-z_-]+/[a-z_-]+$
+   * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/inputs/[a-z_]+/options/[a-z_]+/[a-z_]+$
    */
   $id: string
   attribute_type: InputSelectOptionType

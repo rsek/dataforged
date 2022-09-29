@@ -18,7 +18,7 @@ export enum EncounterNatureTypeClassic {
  */
 export interface EncounterNatureClassic extends MixinDescription, MixinSource, MixinId, MixinDisplay, MixinSummary, MixinTitle {
   /**
-   * @pattern ^ironsworn/encounters/[a-z_-]+$
+   * @pattern ^ironsworn/encounters/[a-z_]+$
    */
   $id: string
   encounters: { [key: SnakeCaseString]: EncounterClassic }
