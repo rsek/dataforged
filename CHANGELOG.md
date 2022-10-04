@@ -6,7 +6,7 @@
 
 * object properties are now `snake_case` (lower cased separated by underscores) rather than inconsistently applied title case with spaces
   * **important:** this is very serious breaking change. in fact it will break pretty much **everything**!
-  * **also note:**" ID maps (e.g. hash objects) and/or functions will be provided to make the conversion easier
+  * **also note:** ID maps (e.g. hash objects) and/or functions will be provided to make the conversion easier
   * 1.5.0 will remain available, of course, so you can make the migration in your own time (or never, if you decide it's not worth it)
   * **but why do this at all?**
     * prose labels were nice for readability, but at this point it's more useful if it fits more neatly with one of the *de facto* standards for JSON schema (the other option being `camelCase`). in other words - many languages expect data in this shape anyways
