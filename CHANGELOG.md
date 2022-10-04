@@ -47,9 +47,9 @@
 * roll templates (type `RowTemplate`) now demarcate strings to be replaced with `{{oracle_id}}` rather than `${{Oracle_Id}}`. Admittedly, this is a bit arbitrary, and is mainly so that internal JSON template replacement when Dataforged builds from YAML uses a replacement demarcation distinct from roll templates. example:
   * old: `"${{Starforged/Oracles/Factions/Affiliation}} of the ${{Starforged/Oracles/Factions/Legacy}} ${{Starforged/Oracles/Factions/Identity}}"`
   * new: `"{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"`
-* restructure of IOracle + IOracleCategory into `OracleTable` and `OracleSet`
+* restructure of `IOracle` + `IOracleCategory` into `OracleTable` and `OracleSet`
   * "leaf" nodes (ones with a `table` property) key are now **always** `OracleTable`
-  * "branch" nodes (ones that previously had "Oracles" or "Categories") are now `OracleSet`
+  * "branch" nodes (ones that previously had `Oracles` or `Categories`) are now `OracleSet`
     * `OracleSet.sets` is a keyed object of any `OracleSet` children belonging to that set.
     * `OracleSet.tables` is a keyed object of any `OracleTable` children belonging to that oracle set.
   * to make this new scheme consistent, some oracle objects have been re-organized, and may have new IDs
