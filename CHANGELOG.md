@@ -4,9 +4,16 @@
 
 ### Breaking changes
 
-* where feasible, object properties that contain multiple words have been standardized to an initial capital letter with the rest lower case
-* significant change to composition of IDs.
-  * IDs ar now *lower case* with underscores, to make them friendly to as many environments as possible
+* object properties are now `snake_case` (lower cased separated by underscores) rather than inconsistently applied title case with spaces
+  * **important:** this is very serious breaking change. in fact it will break pretty much **everything**!
+  * **also note:**" ID maps (e.g. hash objects) and/or functions will be provided to make the conversion easier
+  * 1.5.0 will remain available, of course, so you can make the migration in your own time (or never, if you decide it's not worth it)
+  * **but why do this at all?**
+    * prose labels were nice for readability, but at this point it's more useful if it fits more neatly with one of the *de facto* standards for JSON schema (the other option being `camelCase`). in other words - many languages expect data in this shape anyways
+    * `snake_case` also has the advantage of lining up with the changes to IDs, below
+    * coinciding with other breaking changes means folks only have to make the migration once. so while it'll be something of a chore now, i reckon this is the **least** crappy time to do it
+* significant changes to composition of `$id`s
+  * IDs are now *lower case* with underscores, to make them friendly to as many environments as possible
   * asset abilities follow he same principle as e.g. oracle tables, and don't bother to note their most important child element's prop name (abilities for assets, table rows for oracle tables)
     * example: `starforged/assets/companion/sidekick/abilities/1` has become `starforged/assets/companion/sidekick/1`
 * a new constant, `LEGACY_ID_MAP`, is now exported for use with Dataforged. it's a plain object, where the keys are the current ID and the values are the corresponding legacy ID.
