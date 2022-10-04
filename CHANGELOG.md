@@ -4,6 +4,8 @@
 
 ### Breaking changes
 
+#### General
+
 * object properties are now `snake_case` (lower cased separated by underscores) rather than inconsistently applied title case with spaces
   * **important:** this is very serious breaking change. in fact it will break pretty much **everything**!
   * **also note:** ID maps (e.g. hash objects) and/or functions will be provided to make the conversion easier
@@ -21,39 +23,45 @@
 * major restructuring of internal and external interface/class names and their organization
   * public interfaces (the bulk of dataforged's API) are no longer prefixed with "I". example: `IEncounter` is now `Encounter`
   * internal builder classes are now suffixed with "Builder"
-  * internal interfaces for generating YAML schemas are now prefixed with "YAML"
+  * internal interfaces for generating YAML schemas are now prefixed with `Yaml`
 * many arrays of named objects (including oracles, moves, assets, etc) are now instead represented with keyed objects
-* `Name` key removed (as it was trying to do too many jobs). in its place is `Title`, an object which provides a `Canonical`, `Standard`, and `Short` version of the item's title. items which can't rightly be said to have a title of their own, like asset inputs receive `Label` (a string) instead.
+* `Name` key removed (as it was trying to do too many jobs). in its place is `title`, an object which provides the proeprties `canonical`, `standard`, and `short` version of the item's title. items which can't rightly be said to have a title of their own, like asset inputs, receive `label` (a string) instead.
+
+#### Assets and Moves
+
 * "Health" on companion assets is now labelled "companion health"
 * "Integrity" on vehicle cards is now labelled "vehicle integrity"
-* internal references to stats (as opposed to localizable user-facing labels) and the like are now `snake_case` rather than title case. all of these are reflected in enums, so if you're already using those, you should be set!
+* internal references to stats (as opposed to localizable user-facing labels) and the like are now `snake_case` rather than title case. all of these are reflected in the relevant enums, so if you're already using those, the changeover should be relatively painless
   * examples:
     * `Shadow` is now `shadow` (enum: `Stat`)
     * `Health` is now `health` (enum: `PlayerConditionMeter`)
     * `Journey Progress` is now `journey_progress`
-* provided titles for Ironsworn ritual moves (so their IDs may have changed)
-* the URIs `Image` and `Icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;)
+* names are now provided for Ironsworn ritual moves (so their IDs may have changed)
+* the URIs provided by `image` and `icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;) they're also lower cased, both to match with the new `$id`s and to be a little more predictable for use on the web
     * old: `../../img/vector/Oracles/Creature/Environment/Space.svg`
-    * new: `img/vector/Oracles/Creature/Environment/Space.svg`
-* complete overhaul of oracle table display data -- see `IOracle.Display.Columns`
-* roll templates (see `IRowTemplate`) now demarcate strings to be replaced with `{{Oracle_Id}}` rather than `${{Oracle_Id}}`. Admittedly, this is a bit arbitrary, and is mainly so that internal JSON template replacement when Dataforged builds from YAML uses a replacement demarcation distinct from roll templates. example:
+    * new: `img/vector/oracles/creature/environment/space.svg`
+
+#### Oracles
+
+* complete overhaul of oracle table display data -- see `OracleSet.display.columns` and `OracleTable.display.columns`
+* roll templates (type `RowTemplate`) now demarcate strings to be replaced with `{{oracle_id}}` rather than `${{Oracle_Id}}`. Admittedly, this is a bit arbitrary, and is mainly so that internal JSON template replacement when Dataforged builds from YAML uses a replacement demarcation distinct from roll templates. example:
   * old: `"${{Starforged/Oracles/Factions/Affiliation}} of the ${{Starforged/Oracles/Factions/Legacy}} ${{Starforged/Oracles/Factions/Identity}}"`
-  * new: `"{{Starforged/Oracles/Factions/Affiliation}} of the {{Starforged/Oracles/Factions/Legacy}} {{Starforged/Oracles/Factions/Identity}}"`
-* restructure of IOracle + IOracleCategory into `IOracleTable` and `IOracleSet`
-  * "leaf" nodes (ones with a "Table") key are now always `IOracleTable`
-  * "branch" nodes (ones that previously had "Oracles" or "Categories") are now `IOracleSet`
-    * `IOracleSet.Sets` is an array of any `IOracleSet` children belonging to that set.
-    * `IOracleSet.Tables` is an array of any `IOracleTable` children belonging to that oracle set.
+  * new: `"{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"`
+* restructure of IOracle + IOracleCategory into `OracleTable` and `OracleSet`
+  * "leaf" nodes (ones with a `table` property) key are now **always** `OracleTable`
+  * "branch" nodes (ones that previously had "Oracles" or "Categories") are now `OracleSet`
+    * `OracleSet.sets` is a keyed object of any `OracleSet` children belonging to that set.
+    * `OracleSet.tables` is a keyed object of any `OracleTable` children belonging to that oracle set.
   * to make this new scheme consistent, some oracle objects have been re-organized, and may have new IDs
-* for `IOracleSet` and `IOracleTable`, `Category` and `Member of` are now replaced by a single array called `Ancestors`, which contains the string IDs of every `IOracleSet` from which the item descends
+* for `OracleSet` and `OracleTable`, `Category` and `Member of` are now replaced by a single array called `ancestors`, which contains the string IDs of every `OracleSet` from which the item descends
 
 ### Other API changes
-* `Source` now includes a `License` property, containing a URI pointing to the relevant license.
-* everything that has a localizable string descendent (direct or otherwise) now has an `$id`
-* `IOracleBase` (and its descendants, `IOracle` and `IOracleCategory`) may now have `Summary` in addition to `Description`. `Summary` is for providing a brief summary of the article (a couple sentences tops), while `Description` includes more detailed information (often multiple paragraphs).
+* `Source` now includes a `license` property, containing a URI pointing to the relevant license.
+* everything that has a localizable string descendent (direct or otherwise) now has an `$id`, putting us one step closer to extracting complete localization data
+* `OracleBase` (and its descendants, `OracleSet` and `OracleTable`) may now have `summary` in addition to `description`, consistent with some other objects in dataforgeds. `summary` is for providing a brief summary of the article (a couple sentences tops), while `description` includes more detailed information (often multiple paragraphs).
 
 ### Fixes
-* Fixed incorrect data in many `IMoveOutcomes` (and asset `IAlterMoveOutcomes`) due to a janky build script
+* Fixed incorrect data in many `MoveOutcomes` (and asset `AlterMoveOutcomes`) due to a janky build script
 
 ### New content
 #### Starforged
