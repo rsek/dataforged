@@ -9,7 +9,7 @@
   * **also note:** ID maps (e.g. hash objects) and/or functions will be provided to make the conversion easier
   * 1.5.0 will remain available, of course, so you can make the migration in your own time (or never, if you decide it's not worth it)
   * **but why do this at all?**
-    * prose labels were nice for readability, but at this point it's more useful if it fits more neatly with one of the *de facto* standards for JSON schema (the other option being `camelCase`). in other words - many languages expect data in this shape anyways
+    * prose labels were nice for readability, but at this point it's more useful if it fits more neatly with one of the *de facto* standards for JSON schema (the other option being `camelCase`). in other words - many languages expect JSON data in this shape anyways, so they're generally equipped to handle `snake_case` keys (or someone has written a handy library to do so)
     * `snake_case` also has the advantage of lining up with the changes to IDs, below
     * coinciding with other breaking changes means folks only have to make the migration once. so while it'll be something of a chore now, i reckon this is the **least** crappy time to do it
 * significant changes to composition of `$id`s
@@ -26,10 +26,11 @@
 * `Name` key removed (as it was trying to do too many jobs). in its place is `Title`, an object which provides a `Canonical`, `Standard`, and `Short` version of the item's title. items which can't rightly be said to have a title of their own, like asset inputs receive `Label` (a string) instead.
 * "Health" on companion assets is now labelled "companion health"
 * "Integrity" on vehicle cards is now labelled "vehicle integrity"
-* internal references to stats are now lowercase rather than title case. all of these are reflected in enums, so if you're already using those, you should be set!
+* internal references to stats (as opposed to localizable user-facing labels) and the like are now `snake_case` rather than title case. all of these are reflected in enums, so if you're already using those, you should be set!
   * examples:
-    * "Shadow" is now "shadow" (enum: `Stat`)
-    * "Health" is now "health" (enum: `PlayerConditionMeter`)
+    * `Shadow` is now `shadow` (enum: `Stat`)
+    * `Health` is now `health` (enum: `PlayerConditionMeter`)
+    * `Journey Progress` is now `journey_progress`
 * provided titles for Ironsworn ritual moves (so their IDs may have changed)
 * the URIs `Image` and `Icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;)
     * old: `../../img/vector/Oracles/Creature/Environment/Space.svg`
