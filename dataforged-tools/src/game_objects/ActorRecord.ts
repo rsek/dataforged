@@ -3,4 +3,5 @@ import type { AttributeKey, GameObjectType } from '@schema'
 /**
  * @public
  */
-export type ActorRecord<T extends GameObjectType.Character|GameObjectType.Creature|GameObjectType.Faction, K extends AttributeKey> = GameObjectRecordBase<T, K>
+// @ts-expect-error
+export type ActorRecord<T extends GameObjectType.Character | GameObjectType.Creature | GameObjectType.Faction, K extends AttributeKey> = GameObjectRecordBase<T, K>

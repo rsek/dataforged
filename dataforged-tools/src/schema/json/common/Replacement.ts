@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 /**
  * Standard replacement strings, used by constructors when processing the master YAML data.
  * @public

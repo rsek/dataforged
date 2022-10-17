@@ -61,7 +61,7 @@ export interface YamlAlterMoveOutcomeMiss extends PartialBy<YamlOutcomeMiss, 'te
  * @internal
  */
 export interface YamlAlterMoveTrigger extends YamlStub<YamlMoveTrigger, '', 'options'> {
-  options?: Array<YamlAlterMoveTriggerOptionAction | YamlAlterMoveTriggerOptionProgress> | undefined
+  options?: (YamlAlterMoveTriggerOptionAction | YamlAlterMoveTriggerOptionProgress)[] | undefined
 }
 
 /**

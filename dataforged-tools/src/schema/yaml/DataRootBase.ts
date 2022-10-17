@@ -1,6 +1,6 @@
-import { AssetType, DelveRarity, DelveSiteDomain, DelveSiteTheme, EncounterNatureClassic, EncounterStarforged, IronlandsRegion, MoveCategory, OracleSet, TruthClassic, TruthStarforged, YamlAssetType, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNatureClassic, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlTruthClassic, YamlTruthStarforged } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
-import { YamlOracleSets } from './common/YamlDataRoot'
+import type { AssetType, DelveRarity, DelveSiteDomain, DelveSiteTheme, EncounterNatureClassic, EncounterStarforged, IronlandsRegion, MoveCategory, OracleSet, TruthClassic, TruthStarforged, YamlAssetType, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNatureClassic, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlTruthClassic, YamlTruthStarforged } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
+import type { YamlOracleSets } from './common/YamlDataRoot'
 /**
  * @internal
  */

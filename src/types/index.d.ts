@@ -73,7 +73,7 @@ export declare interface AlterMomentumBurn extends MixinId {
      * The effect altering the PC's momentum burn.
      */
     effect: MixinText;
-    outcomes?: Array<typeof MoveOutcome[1] | typeof MoveOutcome[2]> | undefined;
+    outcomes?: (typeof MoveOutcome[1] | typeof MoveOutcome[2])[] | undefined;
 }
 
 /**
@@ -103,11 +103,11 @@ export declare interface AlterMove extends StubExcept<Move, '$id', 'outcomes'> {
      * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply. If it's `undefined`, see `Extends` instead.
      * @nullable
      */
-    moves?: Array<Move['$id']> | null | undefined;
+    moves?: Move['$id'][] | null | undefined;
     /**
      * Some asset abilities alter/extend other asset abilities, specified as an array of IDs. Only changed properties are specified; other properties are the same.
      */
-    alters?: Array<AlterMove['$id']> | undefined;
+    alters?: AlterMove['$id'][] | undefined;
     /**
      * The trigger required by the asset ability. If `undefined`, the move alteration applies to all uses of the specified moves, so long as they also meet any implicit asset requirements (fictional framing, `Asset.Requirement`, not being Broken or Out of Action, etc).
      */
@@ -230,7 +230,7 @@ export declare interface AssetAttachment {
     /**
      * The type of asset that this asset accepts as attachments.
      */
-    'asset_types': Array<AssetType['$id']>;
+    'asset_types': AssetType['$id'][];
     /**
      * The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.
      * @nullable
@@ -432,14 +432,16 @@ export declare enum AttributeKey {
     /**
      * {@link Zone}
      */
-    Zone = "zone"
+    Zone = "zone",
+    StarshipType = "starship_type",
+    FleetType = "fleet_type"
 }
 
 /**
  * @public
  */
-export declare type AttributeMap<K extends AttributeKey = AttributeKey> = {
-    [key in K]?: Array<AttributeMaster[K]> | undefined | null;
+export declare type AttributeMap = {
+    [key: SnakeCaseString]: SnakeCaseString;
 };
 
 /**
@@ -468,6 +470,8 @@ export declare interface AttributeMaster {
     [AttributeKey.Role]: Role;
     [AttributeKey.CreatureScale]: CreatureScale;
     [AttributeKey.Zone]: Zone;
+    [AttributeKey.FleetType]: FleetType;
+    [AttributeKey.StarshipType]: StarshipType;
 }
 
 /**
@@ -1185,6 +1189,26 @@ export declare enum FactionType {
 }
 
 /**
+ * @public
+ */
+export declare type FleetRecord<K extends AttributeKey | never = never> = PlaceRecord<GameObjectType.Starship, K | AttributeKey.InitialContact | AttributeKey.FleetType> & {
+    [AttributeKey.InitialContact]?: StarshipInitialContact | undefined;
+};
+
+/**
+ * @public
+ */
+export declare enum FleetType {
+    BattleFleet = "battle_fleet",
+    PirateWing = "pirate_wing",
+    RaiderHorde = "raider_horde",
+    SalvagerHive = "salvager_hive",
+    SettlerCaravan = "settler_caravan",
+    TradeCaravan = "trade_caravan",
+    TransportAndEscorts = "transport_and_escorts"
+}
+
+/**
  * Set by Oracles / Factions / Fringe Group
  * @public
  */
@@ -1248,16 +1272,16 @@ export declare interface GameObject {
 /**
  * @public
  */
-export declare type GameObjectRecord = CharacterRecord | CreatureRecord | DerelictRecord | DerelictStarshipRecord | DerelictSettlementRecord | DerelictZoneRecord | FactionRecord | FactionGuildRecord | FactionFringeGroupRecord | FactionDominionRecord | PlanetRecord | PrecursorVaultRecord | SettlementRecord | StarshipRecord;
+export declare type GameObjectRecord = CharacterRecord | CreatureRecord | DerelictRecord | DerelictStarshipRecord | DerelictSettlementRecord | DerelictZoneRecord | FactionRecord | FactionGuildRecord | FactionFringeGroupRecord | FactionDominionRecord | PlanetRecord | PrecursorVaultRecord | SettlementRecord | StarshipRecord | FleetRecord;
 
 /**
  * @public
  */
-export declare type GameObjectRecordBase<T extends GameObjectType, K extends AttributeKey | undefined> = {
+export declare interface GameObjectRecordBase<T extends GameObjectType> {
     object_type: T;
     inherit_rolls?: boolean | undefined;
-    requirements?: K extends AttributeKey ? AttributeMap<K> : undefined;
-};
+    requirements?: AttributeMap | undefined;
+}
 
 /**
  * @public
@@ -2160,7 +2184,7 @@ export declare interface Move extends MixinId, MixinText, MixinDisplay, MixinSou
     /**
      * The IDs of any oracles directly referenced by the move, or vice versa.
      */
-    oracles?: Array<OracleTable['$id']> | undefined;
+    oracles?: OracleTable['$id'][] | undefined;
     /**
      * Outcome information for the move.
      */
@@ -2262,7 +2286,7 @@ export declare interface MoveTrigger extends MixinId, Partial<MixinText> {
      *
      * If there's no action rolls or progress rolls attached to this move, this is `undefined`.
      */
-    options?: Array<MoveTriggerOptionAction | MoveTriggerOptionProgress> | undefined;
+    options?: (MoveTriggerOptionAction | MoveTriggerOptionProgress)[] | undefined;
 }
 
 /**
@@ -2307,7 +2331,7 @@ export declare interface MoveTriggerOptionBase extends MixinId, Partial<MixinTex
     /**
      * The stat(s) or progress track(s) that may be rolled with this move trigger option.
      */
-    using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic>;
+    using: (RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic)[];
     /**
      * Defines a custom stat, if one is included in this object's `With` array.
      */
@@ -2319,7 +2343,7 @@ export declare interface MoveTriggerOptionBase extends MixinId, Partial<MixinTex
  */
 export declare interface MoveTriggerOptionProgress extends MoveTriggerOptionBase {
     roll_type: RollType.Progress;
-    using: Array<ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged>;
+    using: (ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged)[];
 }
 
 /**
@@ -2408,7 +2432,7 @@ export declare interface Oracle extends Partial<MixinSummary & MixinDescription 
      * An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.
      * @pattern ^(ironsworn|starforged)/oracles/[a-z_-/]+$
      */
-    ancestors: Array<OracleSet['$id']>;
+    ancestors: OracleSet['$id'][];
     display: OracleDisplayBase;
     /**
      * Information on the usage of this oracle: recommended number of rolls, etc.
@@ -2419,7 +2443,7 @@ export declare interface Oracle extends Partial<MixinSummary & MixinDescription 
      *
      * This key appears only on {@link OracleSet}, and thus only on 'leaf' nodes of the oracle hierarchy 'tree'.
      */
-    table?: Array<OracleTableRow | RowNullStub> | undefined;
+    table?: (OracleTableRow)[] | undefined;
     /**
      * Oracle tables contained by this set.
      *
@@ -2506,7 +2530,7 @@ export declare interface OracleMatch extends MixinId, MixinText {
  */
 export declare interface OracleSet extends Omit<Oracle, 'table'> {
     /**
-     * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+(/[a-z_]+)?$
+     * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+){1,}
      */
     $id: string;
     /**
@@ -2540,22 +2564,22 @@ export declare interface OracleSetDisplay extends Omit<OracleDisplayBase, 'colum
  */
 export declare interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
     /**
-     * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?$
+     * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+){2,}$
      */
     $id: string;
     /**
      * @example
      * ```json
      * {
-     *  "canonical": "Spaceborne peril",
-     *  "standard": "Spaceborne peril",
+     *  "canonical": "Spaceborne Peril",
+     *  "standard": "Spaceborne Peril",
      *  "short": "Peril"
      * }
      * ```
      */
     title: Title;
     display: OracleTableDisplay;
-    table: Array<OracleTableRow | RowNullStub>;
+    table: (OracleTableRow)[];
     /**
      * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
      */
@@ -2621,7 +2645,7 @@ export declare interface OracleTableRow<Floor extends number | null = number | n
      * Additional oracle tables that should be rolled when this row is selected.
      * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
-    oracle_rolls?: Array<OracleTable['$id']> | undefined;
+    roll_oracles?: OracleTable['$id'][] | undefined;
     /**
      * Data for rows that call for multiple rolls, e.g. on `Roll twice` results.
      */
@@ -3051,7 +3075,7 @@ export declare type RequireKey<T, K extends string> = T & {
  * Data describing an item's requirements: attribute keys, and values of those keys that satisfy the requirements.
  * @public
  */
-export declare type Requirements<TK extends AttributeKey = AttributeKey> = Record<TK, Array<AttributeMaster[TK]>>;
+export declare type Requirements<TK extends AttributeKey = AttributeKey> = Record<TK, AttributeMaster[TK][]>;
 
 /**
  * Enumerates which dice are to be rerolled.
@@ -3230,17 +3254,6 @@ export declare enum RollType {
 }
 
 /**
- * A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as "--" in the book.
- * @public
- */
-export declare interface RowNullStub extends Omit<Partial<OracleTableRow>, '$id'> {
-    floor: null;
-    ceiling: null;
-    result: string;
-    summary?: string | undefined | null;
-}
-
-/**
  * @public
  */
 export declare enum SettingTruthName {
@@ -3285,7 +3298,7 @@ export declare type SettlementRecord<K extends AttributeKey | never = never> = P
 };
 
 /**
- * @pattern ^[a-z_]+$
+ * @pattern ^[a-z][a-z_]+$
  * @public
  */
 export declare type SnakeCaseString = string;
@@ -3395,9 +3408,35 @@ export declare enum StarshipInitialContact {
 /**
  * @public
  */
-export declare type StarshipRecord<K extends AttributeKey | never = never> = PlaceRecord<GameObjectType.Starship, K | AttributeKey.InitialContact> & {
+export declare type StarshipRecord<K extends AttributeKey | never = never> = PlaceRecord<GameObjectType.Starship, K | AttributeKey.InitialContact | AttributeKey.StarshipType> & {
     [AttributeKey.InitialContact]?: StarshipInitialContact | undefined;
 };
+
+/**
+ * @public
+ */
+export declare enum StarshipType {
+    Carrier = "carrier",
+    Corvette = "corvette",
+    Courier = "courier",
+    Cruiser = "cruiser",
+    Dreadnought = "dreadnought",
+    Escape = "escape",
+    Foundry = "foundry",
+    Harvester = "harvester",
+    Hauler = "hauler",
+    Hunter = "hunter",
+    Ironhome = "ironhome",
+    Mender = "mender",
+    Outbounder = "outbounder",
+    Pennant = "pennant",
+    Prospector = "prospector",
+    Reclaimer = "reclaimer",
+    Shuttle = "shuttle",
+    SnubFighter = "snub_fighter",
+    UnusualOrUnknown = "unusual_or_unknown",
+    Multipurpose = "multipurpose"
+}
 
 /**
  * Enumerates player character stats.
@@ -3436,42 +3475,47 @@ export declare interface Suggestions {
     /**
      * Suggested game objects and their parameters.
      */
-    game_objects?: GameObject[] | undefined;
+    game_objects?: GameObjectRecord[] | undefined;
     /**
      * Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.
      * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
-    oracle_rolls?: Array<OracleTable['$id']> | undefined;
+    oracle_tables?: OracleTable['$id'][] | undefined;
+    /**
+     * Suggested oracle sets, by ID.
+     * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
+     */
+    oracle_sets?: OracleSet['$id'][] | undefined;
     /**
      * Suggested move IDs.
      * @pattern ^(starforged|ironsworn)/moves/[a-z_]+/[a-z_]+$
      */
-    moves?: Array<Move['$id']> | undefined;
+    moves?: Move['$id'][] | undefined;
     /**
      * Suggested asset IDs.
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+$
      */
-    assets?: Array<Asset['$id']> | undefined;
+    assets?: Asset['$id'][] | undefined;
     /**
      * Suggested encounter IDs.
      * @pattern ^(starforged/encounters|ironsworn/encounters/[a-z_]+)/[a-z_]+$
      */
-    encounters?: Array<EncounterStarforged['$id']> | Array<EncounterClassic['$id']> | undefined;
+    encounters?: EncounterStarforged['$id'][] | EncounterClassic['$id'][] | undefined;
     /**
      * Suggested delve site themes.
      * @pattern ^ironsworn/themes/[a-z_]+$
      */
-    themes?: Array<DelveSiteTheme['$id']> | undefined;
+    themes?: DelveSiteTheme['$id'][] | undefined;
     /**
      * Suggested delve site domains.
      * @pattern ^ironsworn/domains/[a-z_]+$
      */
-    domains?: Array<DelveSiteDomain['$id']> | undefined;
+    domains?: DelveSiteDomain['$id'][] | undefined;
     /**
      * Suggested Ironlands regions.
      * @pattern ^ironsworn/regions/[a-z_]+$
      */
-    regions?: Array<IronlandsRegion['$id']> | undefined;
+    regions?: IronlandsRegion['$id'][] | undefined;
 }
 
 /**

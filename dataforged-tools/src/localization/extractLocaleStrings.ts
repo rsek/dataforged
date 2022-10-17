@@ -1,18 +1,19 @@
 /* eslint-disable no-restricted-imports */
-import { LocalizableKey, MixinId, MixinLocalizable } from '@schema'
+import type { MixinId, MixinLocalizable } from '@schema'
+import { LocalizableKey } from '@schema'
 import yaml from 'js-yaml'
 import { JSONPath } from 'jsonpath-plus'
 import _ from 'lodash-es'
 import fs from 'fs'
 
-import datasworn from '../json/ironsworn/datasworn.json' assert {type: "json"}
-import dataforged from '../json/starforged/dataforged.json' assert {type: "json"}
+import datasworn from '../json/ironsworn/datasworn.json' assert {type: 'json'}
+import dataforged from '../json/starforged/dataforged.json' assert {type: 'json'}
 
 /**
  * Crawls a json object for localizable strings an
  * @param json - The json object to be crawled.
  */
-export function extractLocalizableStrings<T extends Record<string, unknown>> (json: T) {
+export function extractLocalizableStrings<T extends Record<string, unknown>> (json: T): Record<string, string> {
   const stringHash: Record<string, string> = {}
   JSONPath<Partial<MixinLocalizable>>({
     json,
@@ -38,8 +39,8 @@ export function extractLocalizableStrings<T extends Record<string, unknown>> (js
 const dataswornItems = _.map(datasworn, (value, key) => ({ data: value, filename: 'datasworn-i18n-' + _.kebabCase(key) }))
 const dataforgedItems = _.map(dataforged, (value, key) => ({ data: value, filename: 'dataforged-i18n-' + _.kebabCase(key) }))
 
-const tableRowPattern = new RegExp(/^(.*?)\/([0-9]{1,3})(-[0-9]{1,3})?#[A-z_-]+$/, '')
-const parentPattern = new RegExp(/^(.*?)#.*$/, '');
+const tableRowPattern = /^(.*?)\/([0-9]{1,3})(-[0-9]{1,3})?#[A-z_-]+$/
+const parentPattern = /^(.*?)#.*$/;
 
 [...dataswornItems, ...dataforgedItems].forEach(item => {
   const yamlData = yaml.dump(extractLocalizableStrings(item.data as unknown as Record<string, unknown>), {
@@ -65,10 +66,10 @@ const parentPattern = new RegExp(/^(.*?)#.*$/, '');
         // 0: no change.
         return numbersA[0] - numbersB[0]
       } else if (typeof numbersB[0] === 'number') {
-        if ((parentB != null) && parentA?.[1].startsWith(parentB?.[1])) { return -1 }
+        if ((parentB != null) && parentA?.[1].startsWith(parentB?.[1] as string)) { return -1 }
         return 1
       } else if (typeof numbersA[0] === 'number') {
-        if ((parentA != null) && parentB?.[1].startsWith(parentA?.[1])) { return 1 }
+        if ((parentA != null) && parentB?.[1].startsWith(parentA?.[1] as string)) { return 1 }
         return -1
       } else if
       (typeof parentA?.[1] === 'string' && typeof parentB?.[1] === 'string' && parentA[1].startsWith(parentB[1])) {

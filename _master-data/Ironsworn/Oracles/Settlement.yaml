@@ -19,7 +19,6 @@ oracle_sets:
           canonical: "Oracle 9: Settlement Trouble"
           standard: Settlement Trouble
           short: Trouble
-        _idFragment: Trouble
         summary: Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.
         source:
           page: 181
@@ -76,7 +75,6 @@ oracle_sets:
           canonical: "Oracle 7: Settlement Name"
           standard: Settlement Name
           short: Name
-        _idFragment: Name
         source:
           page: 178
         tables:
@@ -84,7 +82,6 @@ oracle_sets:
             title:
               canonical: A feature of the landscape
               standard: Landscape Feature
-            _idFragment: Landscape Feature
             summary: &Landscape_Feature |-
               "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
             table:
@@ -102,7 +99,6 @@ oracle_sets:
             title:
               canonical: A manmade edifice
               standard: Manmade Edifice
-            _idFragment: Manmade Edifice
             summary: &Manmade_Edifice |-
               **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
             table:
@@ -120,7 +116,6 @@ oracle_sets:
             title:
               canonical: A creature
               standard: Creature
-            _idFragment: Creature
             summary: &Creature |-
               **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
             table:
@@ -138,7 +133,6 @@ oracle_sets:
             title:
               canonical: A historical event
               standard: Historical Event
-            _idFragment: Historical Event
             summary: &Historical_Event |-
               **A historical event.** What happened here? What place or practice commemorates this event?
             table:
@@ -156,7 +150,6 @@ oracle_sets:
             title:
               canonical: A word in an Old World language
               standard: Old World Language
-            _idFragment: Old World Language
             summary: &Old_World_Language |-
               **A word in an Old World language.** What culture is represented by this word? What does it translate to?
             table:
@@ -174,7 +167,6 @@ oracle_sets:
             title:
               canonical: A season or environmental aspect
               standard: Environmental Aspect
-            _idFragment: Environmental Aspect
             summary: &Environmental_Aspect |-
               **A season or environmental aspect.** What influence does the weather have on this settlement?
             table:
@@ -348,7 +340,6 @@ oracle_sets:
               canonical: Settlement Name
               standard: Name Theme
               short: Theme
-            _idFragment: Theme
             table:
               - [ 1, 15, *Landscape_Feature, oracle_rolls: [ironsworn/oracles/settlement/name/landscape_feature] ]
               - [ 16, 30, *Manmade_Edifice, oracle_rolls: [ironsworn/oracles/settlement/name/manmade_edifice] ]
@@ -356,4 +347,4 @@ oracle_sets:
               - [ 46, 60, *Historical_Event, oracle_rolls: [ironsworn/oracles/settlement/name/historical_event] ]
               - [ 61, 75, *Old_World_Language, oracle_rolls: [ironsworn/oracles/settlement/name/old_world_language] ]
               - [ 76, 90, *Environmental_Aspect, oracle_rolls: [ironsworn/oracles/settlement/name/environmental_aspect] ]
-              - [ 91, 100, "Something Else...",oracle_rolls: [ironsworn/oracles/settlement/name/something_else]]
+              - [ 91, 100, "Something Else...", oracle_rolls: [ironsworn/oracles/settlement/name/something_else]]

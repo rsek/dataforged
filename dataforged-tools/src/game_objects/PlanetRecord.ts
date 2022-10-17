@@ -6,7 +6,7 @@ import type { AttributeKey, GameObjectType } from '@schema'
  */
 export type PlanetRecord = PlaceRecord<
 GameObjectType.Planet,
-AttributeKey.Atmosphere|
-AttributeKey.Life|
+AttributeKey.Atmosphere |
+AttributeKey.Life |
 AttributeKey.PlanetaryClass
 >

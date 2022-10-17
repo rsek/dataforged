@@ -1,6 +1,6 @@
 
-import type { MixinId, MixinLabel, Input, InputType, PcConditionMeterType, Stat } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { Input, InputType, MixinId, MixinLabel, PcConditionMeterType, Stat } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * An input where the user selects a single option from a list of pre-set options.

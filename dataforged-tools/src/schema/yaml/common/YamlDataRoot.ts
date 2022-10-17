@@ -1,6 +1,6 @@
 import type { MixinSource, YamlAssetType, YamlDelveRarity, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlEncounterNatureClassic, YamlEncounterStarforged, YamlIronlandsRegion, YamlMoveCategory, YamlOracleSet, YamlOracleTable, YamlTruthClassic, YamlTruthStarforged, YamlWithRef } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
-import { DataRootBase } from '../DataRootBase'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
+import type { DataRootBase } from '../DataRootBase'
 
 /**
  * @internal

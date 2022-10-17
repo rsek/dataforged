@@ -1,6 +1,7 @@
 import { AssetBuilder, DisplayBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from '@builders'
-import { Asset, AssetType, AssetUsage, Display, Game, Source, SourceTitle, Title, YamlAssetType } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { Asset, AssetType, AssetUsage, Display, Game, Source, Title, YamlAssetType } from '@schema'
+import { SourceTitle } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
 
@@ -15,7 +16,7 @@ export class AssetTypeBuilder extends SourceInheritorBuilder implements AssetTyp
   assets: { [key: SnakeCaseString]: Asset }
   display: Display
   usage: AssetUsage
-  constructor(yaml: YamlAssetType, fragment: string, game: Game, rootSource: Source) {
+  constructor (yaml: YamlAssetType, fragment: string, game: Game, rootSource: Source) {
     super(yaml.source ?? SourceBuilder.defaultByTitle(game === 'Ironsworn' ? SourceTitle.IronswornAssets : SourceTitle.StarforgedAssets), rootSource)
     this.$id = formatId(fragment, game, 'Assets')
     this.description = yaml.description

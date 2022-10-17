@@ -1,5 +1,5 @@
 import type { Asset, AssetUsage, Display, MixinAliases, MixinDescription, MixinDisplay, MixinId, MixinSource, MixinTitle, Title } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 export * from '@utils/types/RequireKey.js'
 

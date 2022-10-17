@@ -1,5 +1,5 @@
 import type { Display, MixinId, OracleTable, OracleTableRow, TableColumnRoll, TableColumnText } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * Base interface inherited by {@link OracleSetDisplay} and {@link OracleTableDisplay}.

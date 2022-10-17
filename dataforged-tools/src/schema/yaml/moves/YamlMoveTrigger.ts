@@ -4,7 +4,7 @@ import type { CustomStat, CustomStatOption, MeterAlias, MoveTrigger, MoveTrigger
  * @internal
  */
 export interface YamlMoveTrigger extends YamlStub<MoveTrigger, '', 'options'> {
-  options?: Array<YamlMoveTriggerOptionAction | YamlMoveTriggerOptionProgress> | undefined
+  options?: (YamlMoveTriggerOptionAction | YamlMoveTriggerOptionProgress)[] | undefined
 }
 
 /**
@@ -12,7 +12,7 @@ export interface YamlMoveTrigger extends YamlStub<MoveTrigger, '', 'options'> {
  */
 export interface YamlMoveTriggerOptionAction extends YamlStub<MoveTriggerOptionAction, 'method' | 'roll_type', 'custom_stat'> {
   'custom_stat'?: YamlCustomStat | undefined
-  using: Array<Stat | Replacement | PcConditionMeterType | MeterAlias>
+  using: (Stat | Replacement | PcConditionMeterType | MeterAlias)[]
 }
 
 /**

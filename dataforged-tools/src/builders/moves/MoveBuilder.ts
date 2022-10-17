@@ -18,10 +18,10 @@ export class MoveBuilder extends SourceInheritorBuilder implements Move {
   trigger: MoveTrigger
   text: string
   tags?: string[] | undefined
-  oracles?: Array<OracleTable['$id']> | undefined
+  oracles?: OracleTable['$id'][] | undefined
   suggestions?: Suggestions | undefined
   outcomes?: Outcomes | undefined
-  constructor(yaml: YamlMove, parent: MoveCategory | AssetAbility, game: Game, ...sourceAncestors: Source[]) {
+  constructor (yaml: YamlMove, parent: MoveCategory | AssetAbility, game: Game, ...sourceAncestors: Source[]) {
     super(yaml.source ?? SourceBuilder.defaultByGame(game), ...sourceAncestors)
     this.category = yaml.category ?? `${game}/Moves/Assets`
     const fragment = yaml._idFragment ?? yaml.title.canonical

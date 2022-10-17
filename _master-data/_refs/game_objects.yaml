@@ -1,193 +1,193 @@
-Game objects:
+game_objects:
   - &obj:Npc
-    Game objects:
-      - Object type: Character
+    game_objects:
+      - object_type: character
   - &obj:Creature
-    Game objects:
-      - Object type: Creature
+    game_objects:
+      - object_type: creature
   - &obj:LocationTheme.Fortified
-    oracle_rolls:
+    oracle_tables:
       - starforged/oracles/location_themes/fortified/peril
       - starforged/oracles/location_themes/fortified/opportunity
       - starforged/oracles/location_themes/fortified/feature
   - &obj:LocationTheme.Haunted
-    oracle_rolls:
+    oracle_tables:
       - starforged/oracles/location_themes/haunted/peril
       - starforged/oracles/location_themes/haunted/opportunity
       - starforged/oracles/location_themes/haunted/feature
   - &obj:LocationTheme.Chaotic
-    oracle_rolls:
+    oracle_tables:
       - starforged/oracles/location_themes/chaotic/peril
       - starforged/oracles/location_themes/chaotic/opportunity
       - starforged/oracles/location_themes/chaotic/feature
   - &obj:Planet
-    Game objects:
-      - Object type: Planet
+    game_objects:
+      - object_type: planet
   # region-sensitive
   - &obj:Planet.Terminus
-    Game objects:
-      - Object type: Planet
-    Region: Terminus
+    game_objects:
+      - object_type: planet
+    region: terminus
   - &obj:Planet.Outlands
-    Game objects:
-      - Object type: Planet
-        Region: Outlands
+    game_objects:
+      - object_type: planet
+        region: outlands
   - &obj:Planet.Expanse
-    Game objects:
-      - Object type: Planet
-        Region: Expanse
+    game_objects:
+      - object_type: planet
+        region: expanse
   # by planetary class
   - &obj:Planet.Desert
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Desert
+    game_objects:
+      - object_type: planet
+        planetary_class: desert
   - &obj:Planet.Furnace
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Furnace
+    game_objects:
+      - object_type: planet
+        planetary_class: furnace
   - &obj:Planet.Grave
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Grave
+    game_objects:
+      - object_type: planet
+        planetary_class: grave
   - &obj:Planet.Ice
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Ice
+    game_objects:
+      - object_type: planet
+        planetary_class: ice
   - &obj:Planet.Jovian
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Jovian
+    game_objects:
+      - object_type: planet
+        planetary_class: jovian
   - &obj:Planet.Jungle
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Jungle
+    game_objects:
+      - object_type: planet
+        planetary_class: jungle
   - &obj:Planet.Ocean
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Ocean
+    game_objects:
+      - object_type: planet
+        planetary_class: ocean
   - &obj:Planet.Rocky
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Rocky
+    game_objects:
+      - object_type: planet
+        planetary_class: rocky
   - &obj:Planet.Shattered
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Shattered
+    game_objects:
+      - object_type: planet
+        planetary_class: shattered
   - &obj:Planet.Tainted
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Tainted
+    game_objects:
+      - object_type: planet
+        planetary_class: tainted
   - &obj:Planet.Vital
-    Game objects:
-      - Object type: Planet
-        Planetary Class: Vital
+    game_objects:
+      - object_type: planet
+        planetary_class: vital
   - &obj:Vault
-    Game objects:
-      - Object type: Precursor Vault
+    game_objects:
+      - object_type: precursor_vault
   # Location-sensitive
   - &obj:Vault.Planetside
-    Game objects:
-      - Object type: Precursor Vault
-        Location: Planetside
+    game_objects:
+      - object_type: precursor_vault
+        location: planetside
   - &obj:Vault.Orbital
-    Game objects:
-      - Object type: Precursor Vault
-        Location: Orbital
+    game_objects:
+      - object_type: precursor_vault
+        location: orbital
   - &obj:Vault.DeepSpace
-    Game objects:
-      - Object type: Precursor Vault
-        Location: Deep Space
+    game_objects:
+      - object_type: precursor_vault
+        location: deep_space
   - &obj:Derelict
-    Game objects:
-      - Object type: Derelict
-        Initial Contact: Derelict
+    game_objects:
+      - object_type: derelict
+        initial_contact: derelict
   - &obj:Derelict.Starship
-    Game objects:
-      - Object type: Derelict
-        Derelict Type: Starship
-        Initial Contact: Derelict
+    game_objects:
+      - object_type: derelict
+        derelict_type: starship
+        initial_contact: derelict
   - &inherit:Derelict.Starship
-    Game objects:
-      - Object type: Derelict
-        Derelict Type: Starship
-        Initial Contact: Derelict
-        Inherit rolls: true
+    game_objects:
+      - object_type: derelict
+        derelict_type: starship
+        initial_contact: derelict
+        inherit_rolls: true
   - &obj:Derelict.Settlement
-    Game objects:
-      - Object type: Derelict
-        Derelict Type: Settlement
-        Initial Contact: Derelict
+    game_objects:
+      - object_type: derelict
+        derelict_type: settlement
+        initial_contact: derelict
   - &inherit:Derelict.Settlement
-    Game objects:
-      - Object type: Derelict
-        Derelict Type: Settlement
-        Initial Contact: Derelict
-        Inherit rolls: true
+    game_objects:
+      - object_type: derelict
+        derelict_type: settlement
+        initial_contact: derelict
+        inherit_rolls: true
   - &obj:Starship
-    Game objects:
-      - Object type: Starship
+    game_objects:
+      - object_type: starship
   - &obj:Settlement
-    Game objects:
-      - Object type: Settlement
+    game_objects:
+      - object_type: settlement
   - &obj:Settlement.PlanetAny
-    Game objects:
-      - Object type: Settlement
-        Location: [Planetside, Orbital]
+    game_objects:
+      - object_type: settlement
+        location: planetside_orbital
   - &obj:Settlement.Planetside
-    Game objects:
-      - Object type: Settlement
-        Location: Planetside
+    game_objects:
+      - object_type: settlement
+        location: planetside
   - &obj:Settlement.Orbital
-    Game objects:
-      - Object type: Settlement
-        Location: Orbital
+    game_objects:
+      - object_type: settlement
+        location: orbital
   - &obj:DerelictZone
-    Game objects:
-      - Object type: Derelict Zone
+    game_objects:
+      - object_type: derelict_zone
   - &obj:DerelictZone.Access
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Access
+    game_objects:
+      - object_type: derelict_zone
+        zone: access
   - &obj:DerelictZone.Community
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Community
+    game_objects:
+      - object_type: derelict_zone
+        zone: community
   - &obj:DerelictZone.Engineering
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Engineering
+    game_objects:
+      - object_type: derelict_zone
+        zone: engineering
   - &obj:DerelictZone.Living
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Living
+    game_objects:
+      - object_type: derelict_zone
+        zone: living
   - &obj:DerelictZone.Medical
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Medical
+    game_objects:
+      - object_type: derelict_zone
+        zone: medical
   - &obj:DerelictZone.Operations
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Operations
+    game_objects:
+      - object_type: derelict_zone
+        zone: operations
   - &obj:DerelictZone.Production
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Production
+    game_objects:
+      - object_type: derelict_zone
+        zone: production
   - &obj:DerelictZone.Research
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Research
+    game_objects:
+      - object_type: derelict_zone
+        zone: research
   - &obj:Faction
-    Game objects:
-      - Object type: Faction
+    game_objects:
+      - object_type: faction
   - &obj:Faction.Dominion
-    Game objects:
-      - Object type: Faction
-        Faction Type: Dominion
+    game_objects:
+      - object_type: faction
+        faction_type: dominion
   - &obj:Faction.Guild
-    Game objects:
-      - Object type: Faction
-        Faction Type: Guild
+    game_objects:
+      - object_type: faction
+        faction_type: guild
   - &obj:Faction.FringeGroup
-    Game objects:
-      - Object type: Faction
-        Faction Type: Fringe Group
+    game_objects:
+      - object_type: faction
+        faction_type: fringe_group

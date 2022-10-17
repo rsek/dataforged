@@ -7,10 +7,9 @@ oracle_sets:
     title:
       canonical: Creatures
       short: Creature
-    _idFragment: Creatures
     source:
       date: "050622"
-    description:
+    summary: |-
       Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
     tables:
       environment:
@@ -25,11 +24,11 @@ oracle_sets:
         summary: |-
           Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
         table:
-          - [1, 5, Space, set_attributes: {environment: [space]}, oracle_rolls: [starforged/oracles/creatures/basic_form/space], display: {icon: &icon.Space img/vector/Oracles/Creature/Environment/Space.svg}]
-          - [6, 15, Interior, set_attributes: {environment: [interior]}, oracle_rolls: [starforged/oracles/creatures/basic_form/interior], display: {icon: &icon.Interior img/vector/Oracles/Creature/Environment/Interior.svg}]
-          - [16, 55, Land, set_attributes: {environment: [land]}, oracle_rolls: [starforged/oracles/creatures/basic_form/land], display: {icon: &icon.Land img/vector/Oracles/Creature/Environment/Land.svg}]
-          - [56, 80, Liquid, set_attributes: {environment: [liquid]}, oracle_rolls: [starforged/oracles/creatures/basic_form/liquid], display: {icon: &icon.Liquid img/vector/Oracles/Creature/Environment/Liquid.svg}]
-          - [81, 100, Air, set_attributes: {environment: [air]}, oracle_rolls: [starforged/oracles/creatures/basic_form/air], display: {icon: &icon.Air img/vector/Oracles/Creature/Environment/Air.svg}]
+          - [1, 5, Space, set_attributes: {environment: [space]}, oracle_rolls: [starforged/oracles/creatures/basic_form/space], display: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}]
+          - [6, 15, Interior, set_attributes: {environment: [interior]}, oracle_rolls: [starforged/oracles/creatures/basic_form/interior], display: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}]
+          - [16, 55, Land, set_attributes: {environment: [land]}, oracle_rolls: [starforged/oracles/creatures/basic_form/land], display: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}]
+          - [56, 80, Liquid, set_attributes: {environment: [liquid]}, oracle_rolls: [starforged/oracles/creatures/basic_form/liquid], display: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}]
+          - [81, 100, Air, set_attributes: {environment: [air]}, oracle_rolls: [starforged/oracles/creatures/basic_form/air], display: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}]
       scale:
         title:
           canonical: Scale
@@ -64,7 +63,6 @@ oracle_sets:
         title:
           canonical: Creature First Look
           short: First Look
-        _idFragment: First Look
         source:
           page: 338
         usage:
@@ -163,7 +161,6 @@ oracle_sets:
         title:
           canonical: Revealed Creature Aspect
           short: Revealed Aspect
-        _idFragment: Revealed Aspect
         source:
           page: 339
         description: |-
@@ -278,23 +275,23 @@ oracle_sets:
                 attributes:
                   environment: [space]
             table: &table:Creatures.BasicForm
-                - [1, 5, Amoeba / pseudopods, display: {icon: img/vector/Oracles/Creature/Basic_Form/amoeba_pseudopods.svg}]
-                - [6, 20, Amorphous / elemental, display: {icon: img/vector/Oracles/Creature/Basic_Form/amorphous_elemental.svg}]
-                - [21, 30, Avian / winged, display: {icon: img/vector/Oracles/Creature/Basic_Form/avian_winged.svg}]
-                - [31, 32, Beast / mammal, display: {icon: img/vector/Oracles/Creature/Basic_Form/beast_mammal.svg}]
-                - [33, 34, Crustacean / shelled, display: {icon: img/vector/Oracles/Creature/Basic_Form/crustacean_shelled.svg}]
-                - [35, 37, Fish / torpedo-shaped, display: {icon: img/vector/Oracles/Creature/Basic_Form/fish_torpedo_shaped.svg}]
-                - [38, 39, Humanoid / bipedal, display: {icon: img/vector/Oracles/Creature/Basic_Form/humanoid.svg}]
-                - [40, 41, Insectoid / exoskeletal, display: {icon: img/vector/Oracles/Creature/Basic_Form/insectoid_exoskeletal.svg}]
-                - [42, 60, Jellyfish / gasbag, display: {icon: img/vector/Oracles/Creature/Basic_Form/jellyish_gasbag.svg}]
-                - [61, 62, Lizard / reptilian, display: {icon: img/vector/Oracles/Creature/Basic_Form/lizard_reptilian.svg}]
-                - [63, 67, Octopoid / tentacled, display: {icon: img/vector/Oracles/Creature/Basic_Form/octopoid_tentacled.svg}]
-                - [68, 72, Plant / fungus, display: {icon: img/vector/Oracles/Creature/Basic_Form/plant_fungus.svg}]
-                - [73, 82, Ray / flat-bodied, display: {icon: img/vector/Oracles/Creature/Basic_Form/ray_flat_bodied.svg}]
-                - [83, 84, Snake / eel, display: {icon: img/vector/Oracles/Creature/Basic_Form/snake_eel.svg}]
-                - [85, 86, Spider / web-weaver, display: {icon: img/vector/Oracles/Creature/Basic_Form/spider_web_weaver.svg}]
-                - [87, 88, Starfish / symmetrical, display: {icon: img/vector/Oracles/Creature/Basic_Form/starfish_symmetrical.svg}]
-                - [89, 90, Worm / slug / larva, display: {icon: img/vector/Oracles/Creature/Basic_Form/worm_slug_larva.svg}]
+                - [1, 5, Amoeba / pseudopods, display: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}]
+                - [6, 20, Amorphous / elemental, display: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}]
+                - [21, 30, Avian / winged, display: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}]
+                - [31, 32, Beast / mammal, display: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}]
+                - [33, 34, Crustacean / shelled, display: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}]
+                - [35, 37, Fish / torpedo-shaped, display: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}]
+                - [38, 39, Humanoid / bipedal, display: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}]
+                - [40, 41, Insectoid / exoskeletal, display: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}]
+                - [42, 60, Jellyfish / gasbag, display: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}]
+                - [61, 62, Lizard / reptilian, display: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}]
+                - [63, 67, Octopoid / tentacled, display: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}]
+                - [68, 72, Plant / fungus, display: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}]
+                - [73, 82, Ray / flat-bodied, display: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}]
+                - [83, 84, Snake / eel, display: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}]
+                - [85, 86, Spider / web-weaver, display: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}]
+                - [87, 88, Starfish / symmetrical, display: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}]
+                - [89, 90, Worm / slug / larva, display: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}]
                 - [91, 100, *result:RollTwice]
           interior:
             title:

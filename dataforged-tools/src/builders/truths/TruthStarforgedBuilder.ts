@@ -15,12 +15,13 @@ export class TruthStarforgedBuilder implements TruthStarforged {
   suggestions?: Suggestions | undefined
   display: Display
   source: Source
-  constructor(yaml: YamlTruthStarforged, parentSource: Source) {
+  constructor (yaml: YamlTruthStarforged, parentSource: Source) {
     const game = Game.Starforged
     const fragment = yaml._idFragment ?? yaml.title.canonical
     this.$id = formatId(fragment, game, 'Setting_truths')
     buildLog(this.constructor, `Building: ${this.$id}`)
     this.title = new TitleBuilder(yaml.title, this)
+    // @ts-expect-error
     this.table = yaml.table.map((row, index) => new TruthOptionStarforgedBuilder(row, index, this))
     this.display = new DisplayBuilder({
       icon: yaml.display?.icon

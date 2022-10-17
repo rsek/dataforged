@@ -43,7 +43,7 @@ export interface Move extends MixinId, MixinText, MixinDisplay, MixinSource, Mix
   /**
    * The IDs of any oracles directly referenced by the move, or vice versa.
    */
-  oracles?: Array<OracleTable['$id']> | undefined
+  oracles?: OracleTable['$id'][] | undefined
   /**
    * Outcome information for the move.
    */

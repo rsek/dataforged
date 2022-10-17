@@ -1,5 +1,5 @@
 // export * from "@utils/types/ArrayElement.js";
-export * from "./AttributeHash.js";
+export * from "./AttributeMap.js";
 // export * from "@utils/types/EnumLike.js";
 export * from "./Keys.js";
 export * from "./Omit.js";

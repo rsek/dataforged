@@ -1,5 +1,5 @@
-import type { AssetAbility, AssetAttachment, InputToggle, AssetType, AssetUsage, ConditionMeter, Display, MixinAliases, MixinDisplay, MixinId, MixinSource, MixinTitle, InputClock, InputNumber, InputSelect, InputText, TitleCaseTitle } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { AssetAbility, AssetAttachment, AssetType, AssetUsage, ConditionMeter, Display, InputClock, InputNumber, InputSelect, InputText, InputToggle, MixinAliases, MixinDisplay, MixinId, MixinSource, MixinTitle, TitleCaseTitle } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * @public

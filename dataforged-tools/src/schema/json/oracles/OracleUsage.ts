@@ -1,5 +1,5 @@
-import type { AttributeChoices, MixinRequirements, MixinRollTemplate, MixinSuggestions, Requirements, Suggestions } from '@schema'
-import { AttributeMap } from '@utils'
+import type { MixinRequirements, MixinRollTemplate, MixinSuggestions, Requirements, Suggestions } from '@schema'
+import type { AttributeMap } from '@utils'
 
 /**
  * Describes the recommended usage of this item.

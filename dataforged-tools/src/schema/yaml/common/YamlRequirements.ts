@@ -1,9 +1,8 @@
-import type { AttributeKey } from '@schema'
-import type { AttributeMap } from '@utils/types/AttributeHash.js'
+import type { AttributeMap } from '@utils/types/AttributeMap.js'
 
 /**
  * @internal
  */
-export interface YamlRequirements<K extends AttributeKey = AttributeKey> {
-  attributes: AttributeMap<K>
+export interface YamlRequirements {
+  attributes: AttributeMap
 }

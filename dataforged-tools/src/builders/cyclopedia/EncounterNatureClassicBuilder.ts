@@ -1,7 +1,7 @@
 import { DisplayBuilder, EncounterClassicBuilder, SourceBuilder, TitleBuilder } from '@builders'
 import type { Display, EncounterClassic, EncounterNatureClassic, Source, YamlEncounterNatureClassic } from '@schema'
 import { Game } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
 
@@ -17,7 +17,7 @@ export class EncounterNatureClassicInfoBuilder implements EncounterNatureClassic
   summary: string
   description: string
   encounters: { [key: SnakeCaseString]: EncounterClassic }
-  constructor(yaml: YamlEncounterNatureClassic, parentSource: Source) {
+  constructor (yaml: YamlEncounterNatureClassic, parentSource: Source) {
     const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, Game.Ironsworn, 'Encounters')
     this.title = new TitleBuilder(yaml.title, this) as EncounterNatureClassic['title']

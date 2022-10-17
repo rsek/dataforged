@@ -91,4 +91,6 @@ export enum AttributeKey {
    * {@link Zone}
    */
   Zone = 'zone',
+  StarshipType = 'starship_type',
+  FleetType = 'fleet_type'
 }

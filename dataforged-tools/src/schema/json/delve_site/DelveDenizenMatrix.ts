@@ -1,4 +1,4 @@
-import { ChallengeRank, DelveSiteDomain, DelveSiteTheme, EncounterClassic, MixinDescription, MixinSource, MixinTitle, OracleTableRow } from '@schema'
+import type { ChallengeRank, DelveSiteDomain, DelveSiteTheme, EncounterClassic, MixinDescription, MixinSource, MixinTitle, OracleTableRow } from '@schema'
 
 /**
  * @alpha

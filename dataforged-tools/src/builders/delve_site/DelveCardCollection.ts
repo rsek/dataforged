@@ -12,7 +12,7 @@ export abstract class DelveCardsCollection<
   TYamlItem,
   TYamlRoot
   > {
-  constructor(type: DelveCardType, fragment: string, source: Source) {
+  constructor (type: DelveCardType, fragment: string, source: Source) {
     super(
       Game.Ironsworn,
       fragment,
@@ -23,29 +23,29 @@ export abstract class DelveCardsCollection<
   }
 }
 export class DelveSiteThemesCollection extends DelveCardsCollection<
-  DelveSiteTheme,
-  YamlDelveSiteTheme,
-  YamlDelveSiteThemeRoot
+DelveSiteTheme,
+YamlDelveSiteTheme,
+YamlDelveSiteThemeRoot
 > {
-  override buildItem(yaml: YamlDelveSiteTheme, key: string): DelveSiteTheme {
-    return new DelveSiteThemeBuilder(yaml, key, this.Source)
+  override buildItem (yaml: YamlDelveSiteTheme, key: string): DelveSiteTheme {
+    return new DelveSiteThemeBuilder(yaml, key, this.source)
   }
 
-  constructor(source: Source) {
+  constructor (source: Source) {
     super(DelveCardType.Theme, 'themes', source)
   }
 }
 
 export class DelveSiteDomainsCollection extends DelveCardsCollection<
-  DelveSiteDomain,
-  YamlDelveSiteDomain,
-  YamlDelveSiteDomainRoot
+DelveSiteDomain,
+YamlDelveSiteDomain,
+YamlDelveSiteDomainRoot
 > {
-  override buildItem(yaml: YamlDelveSiteDomain, key: string): DelveSiteDomain {
-    return new DelveSiteDomainBuilder(yaml, key, this.Source)
+  override buildItem (yaml: YamlDelveSiteDomain, key: string): DelveSiteDomain {
+    return new DelveSiteDomainBuilder(yaml, key, this.source)
   }
 
-  constructor(source: Source) {
+  constructor (source: Source) {
     super(DelveCardType.Domain, 'domains', source)
   }
 }

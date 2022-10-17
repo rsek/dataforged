@@ -30,7 +30,7 @@ export interface MoveTrigger extends MixinId, Partial<MixinText> {
    *
    * If there's no action rolls or progress rolls attached to this move, this is `undefined`.
    */
-  options?: Array<MoveTriggerOptionAction | MoveTriggerOptionProgress> | undefined
+  options?: (MoveTriggerOptionAction | MoveTriggerOptionProgress)[] | undefined
 }
 
 /**

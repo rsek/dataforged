@@ -1,4 +1,4 @@
-import type { OracleMatch, OracleTable, OracleTableRow, YamlOracleTableDisplay, YamlOracleUsage, YamlRequirements, YamlStub, YamlStubNode, YamlTitleCaseTitle } from '@schema'
+import type { OracleMatch, OracleTable, OracleTableRow, YamlOracleTableDisplay, YamlOracleUsage, YamlRequirements, YamlRollTemplate, YamlStub, YamlStubNode, YamlTitleCaseTitle } from '@schema'
 
 /**
  * @internal
@@ -28,7 +28,9 @@ export type YamlSimpleTableRow<Floor extends number | null = number | null, Ceil
 /**
  * @internal
  */
-export interface YamlOracleTableRow<Floor extends number | null = number | null, Ceiling extends number | null = number | null> extends Omit<YamlStub<OracleTableRow<Floor, Ceiling>>, 'roll_template' | '$id'> { }
+export interface YamlOracleTableRow<Floor extends number | null = number | null, Ceiling extends number | null = number | null> extends Omit<YamlStub<OracleTableRow<Floor, Ceiling>>, '$id' | 'roll_template'> {
+  roll_template?: YamlRollTemplate | undefined
+}
 /**
  * @internal
  */

@@ -1,13 +1,30 @@
-import { LocalizableKey, MixinId, MixinLocalizable, YamlSimpleTableRow } from '@schema'
-import { formatId, Nullable } from '@utils'
-import _ from 'lodash'
+import type { MixinLocalizable, MixinSource, Source } from '@schema'
+import { LocalizableKey } from '@schema'
+import { formatId } from '@utils'
+import _ from 'lodash-es'
 
-export class NodeBuilder<TYamlIn extends Partial<Nullable<MixinLocalizable>> | YamlSimpleTableRow, TJsonOut, TParent extends MixinId & Partial<Nullable<MixinLocalizable>>> implements MixinId {
+export interface NodeLike<TJsonOut> extends MixinSource, Partial <MixinLocalizable > {
+  $id: string
+  source: Source
+  _parentId: string
+  toJson: () => TJsonOut
+}
+
+export abstract class NodeBuilder<TYamlIn extends Record<string, any>, TJsonOut, TParent extends NodeLike<any>> implements NodeLike<TJsonOut> {
   get $id (): string {
-    return formatId(this._fragment, this._parent.$id)
+    return formatId(this._parentId, ...this._fragments)
   }
 
-  readonly _fragment: string
+  get source (): Source {
+    let src = this._parent.source
+    if (!Array.isArray(this._rawData) && ((this._rawData)?.source) != null) {
+      src = _.merge(src, this._rawData.source)
+    }
+    return src
+  }
+
+  get _parentId (): string { return this._parent.$id }
+  readonly _fragments: string[]
   readonly _parent: TParent
   readonly _rawData: TYamlIn
   toJson (): TJsonOut {
@@ -16,15 +33,18 @@ export class NodeBuilder<TYamlIn extends Partial<Nullable<MixinLocalizable>> | Y
 
   /**
    * Constructs a Dataforged node with a string fragment.
-   * @param yaml The raw YAML data to generate the object from.
-   * @param fragmentOrIndex The string fragment or index used to generate this item's ID. Numeric indexes get 1 added to them to provide IDs with 1-based ordering.
-   * @param parent The parent object.
+   * @param yaml - The raw YAML data to generate the object from.
+   * @param parent - The parent object.
+   * @param fragments - The string fragments/indices used to generate this item's ID. Numeric values get 1 added to them to provide IDs with 1-based ordering.
    */
-  constructor (yaml: TYamlIn, fragmentOrIndex: string, parent: TParent)
-  constructor (yaml: TYamlIn, fragmentOrIndex: number, parent: TParent)
-  constructor (yaml: TYamlIn, fragmentOrIndex: number | string, parent: TParent) {
+  constructor (yaml: TYamlIn, parent: TParent, ...fragments: (string | number)[]) {
     this._rawData = yaml
-    this._fragment = typeof fragmentOrIndex === 'number' ? (fragmentOrIndex + 1).toString() : fragmentOrIndex
+    this._fragments = fragments.map(item => {
+      if (typeof item === 'number') {
+        return (item + 1).toString()
+      }
+      return item
+    })
     this._parent = parent
 
     // dumps all localizable string keys, cuz those don't get any processing anyways.
@@ -32,7 +52,7 @@ export class NodeBuilder<TYamlIn extends Partial<Nullable<MixinLocalizable>> | Y
     Object.assign(this, extractedStrings)
   }
 
-  static isStringOrStringArray (value: unknown) {
+  static isStringOrStringArray (value: unknown): boolean {
     if (typeof value === 'string') { return true }
     if (Array.isArray(value) && value.every(maybeStr => typeof maybeStr === 'string')) { return true }
     return false

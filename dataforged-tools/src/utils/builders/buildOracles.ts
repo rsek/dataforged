@@ -27,7 +27,7 @@ export function buildOracles(game: Game = Game.Starforged): GameDataRoot['oracle
   // if (!validation.valid) {
   //   throw badJsonError(buildOracles,validation.errors.map(err => _.omit(err, "instance", "schema")))
   // }
-
+// @ts-expect-error
   const oracleJson = _(oracleSetData.oracle_sets).mapValues((oracleSet, setFragment) => new OracleSetBuilder(oracleSet as YamlOracleSet, setFragment, { ...oracleSetData, $id: `${game}/oracles` })).value()
 
   buildLog(buildOracles, `Finished building ${oracleStats(oracleJson)}`)

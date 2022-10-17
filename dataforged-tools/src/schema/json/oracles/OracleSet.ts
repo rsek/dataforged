@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { Oracle, OracleSetDisplay, OracleTable } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.
@@ -11,7 +11,7 @@ import { SnakeCaseString } from '@schema/json/common/String.js'
  */
 export interface OracleSet extends Omit<Oracle, 'table'> {
   /**
-   * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+(/[a-z_]+)?$
+   * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+){1,}
    */
   $id: string
   /**

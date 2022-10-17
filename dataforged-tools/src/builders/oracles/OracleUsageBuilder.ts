@@ -1,9 +1,10 @@
 import { NodeBuilder, SuggestionsBuilder } from '@builders'
-import type { AttributeChoices, Oracle, OracleUsage, Requirements, Suggestions, YamlOracleUsage } from '@schema'
+import type { Oracle, OracleUsage, Requirements, Suggestions, YamlOracleUsage } from '@schema'
 
 /**
  * @internal
  */
+// @ts-expect-error
 export class OracleUsageBuilder extends NodeBuilder<YamlOracleUsage, OracleUsage, Oracle> implements OracleUsage {
   initial?: boolean | undefined
   max_rolls?: number | undefined
@@ -12,7 +13,8 @@ export class OracleUsageBuilder extends NodeBuilder<YamlOracleUsage, OracleUsage
   requires?: Requirements | undefined
   allow_duplicates?: boolean | undefined
   // sets_attributes?: AttributeChoices[] | undefined
-  constructor(yaml: YamlOracleUsage, parent: Oracle) {
+  constructor (yaml: YamlOracleUsage, parent: Oracle) {
+    // @ts-expect-error
     super(yaml, 'usage', parent)
     this.initial = yaml.initial
     this.max_rolls = yaml.max_rolls

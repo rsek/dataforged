@@ -4,15 +4,15 @@ import type { AttributeKey } from '@schema'
  * @public
  */
 export type FactionRecord = ActorRecord<GameObjectType.Faction,
-AttributeKey.FactionType|
+AttributeKey.FactionType |
 AttributeKey.Influence
 >
 /**
  * @public
  */
 export type FactionGuildRecord = ActorRecord<GameObjectType.Faction,
-AttributeKey.FactionType|
-AttributeKey.Influence|
+AttributeKey.FactionType |
+AttributeKey.Influence |
 AttributeKey.Guild
 > & {
   [AttributeKey.FactionType]: FactionType.Guild
@@ -21,8 +21,8 @@ AttributeKey.Guild
  * @public
  */
 export type FactionFringeGroupRecord = ActorRecord<GameObjectType.Faction,
-AttributeKey.FactionType|
-AttributeKey.Influence|
+AttributeKey.FactionType |
+AttributeKey.Influence |
 AttributeKey.FringeGroup
 > & {
   [AttributeKey.FactionType]: FactionType.FringeGroup
@@ -31,9 +31,9 @@ AttributeKey.FringeGroup
  * @public
  */
 export type FactionDominionRecord = ActorRecord<GameObjectType.Faction,
-AttributeKey.FactionType|
-AttributeKey.Influence|
-AttributeKey.Leadership|
+AttributeKey.FactionType |
+AttributeKey.Influence |
+AttributeKey.Leadership |
 AttributeKey.Dominion
 > & {
   [AttributeKey.FactionType]: FactionType.Dominion

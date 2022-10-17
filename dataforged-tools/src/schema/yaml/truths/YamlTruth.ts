@@ -20,4 +20,6 @@ export interface YamlTruthOptionStarforged<C extends number | null = number | nu
 /**
  * @internal
  */
-export interface YamlTruthOptionStarforgedSubtableRow<C extends number | null = number | null, F extends number | null = number | null> extends YamlStub<TruthOptionSubtableRowStarforged<C, F>> { }
+export interface YamlTruthOptionStarforgedSubtableRow<C extends number | null = number | null, F extends number | null = number | null> extends YamlStub<TruthOptionSubtableRowStarforged<C, F>, '', 'roll_template'> {
+  roll_template?: YamlRollTemplate | undefined
+}

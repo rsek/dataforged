@@ -8,7 +8,6 @@ oracle_sets:
       canonical: Move Oracles
       standard: Moves
       short: Move
-    _idFragment: Moves
     source:
       date: "050622"
     sets:
@@ -38,7 +37,6 @@ oracle_sets:
           Fifty-fifty:
             title:
               canonical: 50/50
-            _idFragment: Fifty-fifty
             on_a_match: *AtO.Match
             # Aliases: ["50"]
             table:
@@ -69,11 +67,11 @@ oracle_sets:
         content:
           part_of_speech: [fragment]
         table:
-          - [1, 10, "Flashback reveals an aspect of your background or nature", Suggestions: [*roll:Event]]
-          - [11, 20, "Flashback reveals an aspect of another character, place, or faction", Suggestions: [*roll:Event, *obj:Faction]]
-          - [21, 30, "Influential character or faction is introduced or given new detail", Suggestions: [*obj:Npc, *obj:Faction]]
+          - [1, 10, "Flashback reveals an aspect of your background or nature", suggestions: [*roll:Event]]
+          - [11, 20, "Flashback reveals an aspect of another character, place, or faction", suggestions: [*roll:Event, *obj:Faction]]
+          - [21, 30, "Influential character or faction is introduced or given new detail", suggestions: [*obj:Npc, *obj:Faction]]
           - [31, 40, "Seemingly unrelated situations are shown to be connected"]
-          - [41, 50, "External factors create new danger, urgency, or importance for a quest", Suggestions: [*roll:Event]]
+          - [41, 50, "External factors create new danger, urgency, or importance for a quest", suggestions: [*roll:Event]]
           - [51, 60, "Important character is put in danger or suffers a misadventure"]
           - [61, 70, "Key location is made unsafe or becomes mired in conflict"]
           - [71, 80, "Unexpected return of an enemy or threat"]
@@ -87,28 +85,28 @@ oracle_sets:
         content:
           part_of_speech: [fragment]
         table:
-          - [1, 4, Advanced technology waiting to be harnessed or salvaged, Suggestions: [*roll:Object]]
-          - [5, 8, Ancient archive or message, Suggestions: [*roll:Event]]
+          - [1, 4, Advanced technology waiting to be harnessed or salvaged, suggestions: [*roll:Object]]
+          - [5, 8, Ancient archive or message, suggestions: [*roll:Event]]
           - [9, 10, Artificial consciousness evolved to a higher state]
-          - [11, 12, Clues to a crucial resource or uncharted domain, Suggestions: [*roll:Object]]
+          - [11, 12, Clues to a crucial resource or uncharted domain, suggestions: [*roll:Object]]
           - [13, 14, Envoy from another time or reality]
           - [15, 22, Extraordinary natural phenomenon]
-          - [23, 24, First contact with intelligent life, Suggestions: [*obj:Creature]]
-          - [25, 26, Gateway to another time or alternate reality, Suggestions: [*roll:Event]]
+          - [23, 24, First contact with intelligent life, suggestions: [*obj:Creature]]
+          - [25, 26, Gateway to another time or alternate reality, suggestions: [*roll:Event]]
           - [27, 28, Key to unlocking a language or method of communication]
           - [29, 34, Lost or hidden people]
-          - [35, 42, Majestic or unusual lifeforms, Suggestions: [*obj:Creature]]
-          - [43, 46, Marvel of ancient engineering, Suggestions: [*roll:Object]]
-          - [47, 50, Miraculously preserved artifact or specimen, Suggestions: [*roll:Object]]
-          - [51, 56, Monumental architecture or artistry of an ancient civilization, Suggestions: [*roll:Object]]
-          - [57, 62, Mysterious device or artifact of potential value, Suggestions: [*roll:Object]]
-          - [63, 66, New understanding of an enduring mystery, Suggestions: [*roll:Event]]
-          - [67, 68, Pathway or means of travel to a distant location, Suggestions: [*roll:Place]]
-          - [69, 70, Person or lifeform with phenomenal abilities, Suggestions: [*obj:Creature, *obj:Npc]]
+          - [35, 42, Majestic or unusual lifeforms, suggestions: [*obj:Creature]]
+          - [43, 46, Marvel of ancient engineering, suggestions: [*roll:Object]]
+          - [47, 50, Miraculously preserved artifact or specimen, suggestions: [*roll:Object]]
+          - [51, 56, Monumental architecture or artistry of an ancient civilization, suggestions: [*roll:Object]]
+          - [57, 62, Mysterious device or artifact of potential value, suggestions: [*roll:Object]]
+          - [63, 66, New understanding of an enduring mystery, suggestions: [*roll:Event]]
+          - [67, 68, Pathway or means of travel to a distant location, suggestions: [*roll:Place]]
+          - [69, 70, Person or lifeform with phenomenal abilities, suggestions: [*obj:Creature, *obj:Npc]]
           - [71, 78, Place of awe-inspiring beauty]
-          - [79, 86, Rare and valuable resource, Suggestions: [*roll:Object]]
+          - [79, 86, Rare and valuable resource, suggestions: [*roll:Object]]
           - [87, 88, Safeguarded or idyllic location]
-          - [89, 90, Visions or prophesies of the future, Suggestions: [*roll:Event]]
+          - [89, 90, Visions or prophesies of the future, suggestions: [*roll:Event]]
           - [91, 100, *result:RollTwice]
       confront_chaos:
         title:
@@ -118,28 +116,28 @@ oracle_sets:
         content:
           part_of_speech: [fragment]
         table:
-          - [1, 4, Baneful weapon of mass destruction, Suggestions: [*roll:Object]]
+          - [1, 4, Baneful weapon of mass destruction, suggestions: [*roll:Object]]
           - [5, 9, Cataclysmic environmental effects]
           - [10, 12, Dead given unnatural life]
-          - [13, 17, Destructive lifeform of monstrous proportion, Suggestions: [*obj:Creature]]
+          - [13, 17, Destructive lifeform of monstrous proportion, suggestions: [*obj:Creature]]
           - [18, 20, Dread hallucinations or illusions]
           - [21, 24, Harbingers of an imminent invasion]
           - [25, 27, Horde of insatiable hunger or fury]
-          - [28, 32, Horrific lifeforms of inscrutable purpose, Suggestions: [*obj:Creature]]
+          - [28, 32, Horrific lifeforms of inscrutable purpose, suggestions: [*obj:Creature]]
           - [33, 36, Impostors in human form]
-          - [37, 41, Machines made enemy, Suggestions: [*roll:Object]]
+          - [37, 41, Machines made enemy, suggestions: [*roll:Object]]
           - [42, 45, Malignant contagion or parasite]
-          - [46, 50, Messenger or signal with a dire warning, Suggestions: [*roll:Event]]
+          - [46, 50, Messenger or signal with a dire warning, suggestions: [*roll:Event]]
           - [51, 53, Passage to a grim alternate reality]
           - [54, 58, People corrupted by chaos]
           - [59, 63, Powerful distortions of time or space]
           - [64, 68, Signs of an impending catastrophe]
           - [69, 72, Site of a baffling disappearance]
-          - [73, 77, Site of a horrible disaster, Suggestions: [*roll:Event]]
+          - [73, 77, Site of a horrible disaster, suggestions: [*roll:Event]]
           - [78, 82, Site of terrible carnage]
-          - [83, 87, Technology nullified or made unstable, Suggestions: [*roll:Object]]
+          - [83, 87, Technology nullified or made unstable, suggestions: [*roll:Object]]
           - [88, 92, Technology warped for dark purpose]
-          - [93, 96, Vault of dread technology or power, Suggestions: [*obj:Vault]]
+          - [93, 96, Vault of dread technology or power, suggestions: [*obj:Vault]]
           - [97, 100, Worshipers of great and malevolent powers]
       take_decisive_action:
         title:

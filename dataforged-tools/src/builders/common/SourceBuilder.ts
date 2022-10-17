@@ -1,6 +1,6 @@
 
-import type { Source, YamlSource } from '@schema'
-import { Game, License, SourceTitle } from '@schema'
+import type { Game, Source, YamlSource } from '@schema'
+import { License, SourceTitle } from '@schema'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 import _ from 'lodash-es'
 
@@ -14,14 +14,15 @@ export class SourceBuilder implements Source {
   page?: number | undefined
   uri?: string | undefined
   license: License
-  static defaultByTitle(sourceTitle: SourceTitle) {
+  static defaultByTitle (sourceTitle: SourceTitle): SourceBuilder {
     return new SourceBuilder({ title: sourceTitle, authors: ['Shawn Tomkin'] })
   }
-  static defaultByGame(game: Game) {
+
+  static defaultByGame (game: Game): SourceBuilder {
     return new SourceBuilder({ title: SourceTitle[game], authors: ['Shawn Tomkin'] })
   }
 
-  static getDefaultLicense(sourceTitle: SourceTitle | string) {
+  static getDefaultLicense (sourceTitle: SourceTitle | string): License {
     switch (sourceTitle as SourceTitle) {
       case SourceTitle.Ironsworn:
       case SourceTitle.IronswornAssets:
@@ -33,16 +34,18 @@ export class SourceBuilder implements Source {
         return License.CC_BY_SA
       case SourceTitle.SunderedIslesPreview:
         return License.None
+      default:
+        return License.None
     }
   }
 
-  constructor(yaml: YamlSource, ...ancestorSourceJson: YamlSource[]) {
+  constructor (yaml: YamlSource, ...ancestorSourceJson: YamlSource[]) {
     const sourceStack = _.cloneDeep([..._.compact(
       ancestorSourceJson)
       .reverse(),
     yaml as Source])
     const merged = _.merge(...sourceStack as [YamlSource, YamlSource])
-    if (!merged.title) {
+    if (merged.title == null) {
       throw badJsonError('Unable to find title in source or ancestor source objects.', [yaml, ...ancestorSourceJson])
     }
     this.title = merged.title

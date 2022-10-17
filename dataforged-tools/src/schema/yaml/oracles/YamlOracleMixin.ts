@@ -1,5 +1,5 @@
-import { LocationTheme, Region } from '@game_objects'
-import { MultipleRolls, OracleTableRow, PartOfSpeechTag, YamlOracleSet, YamlOracleTable, YamlOracleTableRow, YamlRowLike, YamlSimpleTableRow, YamlStub, YamlTableColumnRoll } from '@schema'
+import type { Region } from '@game_objects'
+import type { PartOfSpeechTag, YamlOracleSet, YamlOracleTable, YamlOracleTableRow, YamlRowLike, YamlTableColumnRoll } from '@schema'
 
 /**
  * @internal
@@ -152,6 +152,7 @@ export interface YamlOracleSetSubtablesMixin<TEnum, TAttributeKey> extends YamlO
 /**
  * @internal
  */
+// @ts-expect-error
 export interface YamlRegionalSubtableMixin<TRegion extends RegionName> extends YamlOracleTable {
   title: {
     canonical: TRegion
@@ -167,6 +168,7 @@ export interface YamlRegionalSubtableMixin<TRegion extends RegionName> extends Y
 /**
  * @internal
  */
+// @ts-expect-error
 export interface YamlRegionSetMixin extends YamlOracleSet {
   tables: Record<Region, YamlRegionalSubtableMixin<RegionName>>
   requires: {
@@ -187,7 +189,7 @@ export interface YamlRegionSetMixin extends YamlOracleSet {
  */
 export interface YamlDescriptorFocusMixin extends YamlOracleTableRow {
   result: '[⏵Descriptor + Focus](starforged/oracles/core)'
-  oracle_rolls: [
+  roll_oracles: [
     'starforged/oracles/core/descriptor',
     'starforged/oracles/core/focus'
   ]
@@ -197,7 +199,7 @@ export interface YamlDescriptorFocusMixin extends YamlOracleTableRow {
  */
 export interface YamlActionThemeMixin extends YamlOracleTableRow {
   result: '[⏵Action + Theme](starforged/oracles/core)'
-  oracle_rolls: [
+  roll_oracles: [
     'starforged/oracles/core/action',
     'starforged/oracles/core/theme'
   ]

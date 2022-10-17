@@ -1,6 +1,4 @@
-import type { Display, GameObject, OracleContent, OracleTableRow, Requirements, RollTemplate, Source, Suggestions } from '@schema'
-
-import { AlterAsset, AlterMomentum, AlterMove } from '@schema'
+import type { AlterAsset, AlterMomentum, AlterMove, Display, GameObject, OracleContent, OracleTableRow, Requirements, RollTemplate, Source, Suggestions } from '@schema'
 
 /**
  * For elements with unique string IDs. Any object that contains a localizable user-facing string *must* have an ID, so several interfaces inherit this.

@@ -21,7 +21,6 @@ oracle_sets:
             title:
               canonical: Faction Name Template
               short: Template
-            _idFragment: Template
             source:
               page: 344
             content:
@@ -33,13 +32,13 @@ oracle_sets:
               An alternative approach to generating a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one that idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or pick.
             table:
               - [1, 40, "[[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Affiliation](starforged/oracles/factions/affiliation)]",
-                roll_template: {Result: "{{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/affiliation}}" }]
+                roll_template: {result: "{{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/affiliation}}" }]
               - [41, 55, "[[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Identity](starforged/oracles/factions/identity)]",
-                roll_template: {Result: "{{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"}]
+                roll_template: {result: "{{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"}]
               - [56, 70, "[[⏵Identity](starforged/oracles/factions/identity)] *of the* [[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Affiliation](starforged/oracles/factions/affiliation)]",
-                roll_template: {Result: "{{starforged/oracles/factions/identity}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/affiliation}}"}]
+                roll_template: {result: "{{starforged/oracles/factions/identity}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/affiliation}}"}]
               - [71, 100, "[[⏵Affiliation](starforged/oracles/factions/affiliation)] *of the* [[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Identity](starforged/oracles/factions/identity)]",
-                roll_template: {Result: "{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"}]
+                roll_template: {result: "{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"}]
           legacy:
             title:
               canonical: Legacy
@@ -193,7 +192,6 @@ oracle_sets:
         title:
           canonical: Faction Type
           short: Type
-        _idFragment: Type
         source:
           page: 340
         usage:
@@ -201,9 +199,9 @@ oracle_sets:
         content:
           part_of_speech: [noun]
         table:
-          - [1, 40, "[⏵Dominion](starforged/oracles/factions/dominion)", "Governing power", Attributes: {Faction Type: Dominion},oracle_rolls: [starforged/oracles/factions/dominion, starforged/oracles/factions/leadership]]
-          - [41, 70, "[⏵Guild](starforged/oracles/factions/guild)", "Organization of specialists", Attributes: {Faction Type: Guild}, oracle_rolls: [starforged/oracles/factions/guild]]
-          - [71, 100, "[⏵Fringe Group](starforged/oracles/factions/fringe_group)", "Band of outlaws, outcasts, or rogues", Attributes: {Faction Type: Fringe Group}, oracle_rolls: [starforged/oracles/factions/fringe_group]]
+          - [1, 40, "[⏵Dominion](starforged/oracles/factions/dominion)", "Governing power", set_attributes: {faction_type: [dominion]}, oracle_rolls: [starforged/oracles/factions/dominion, starforged/oracles/factions/leadership]]
+          - [41, 70, "[⏵Guild](starforged/oracles/factions/guild)", "Organization of specialists", set_attributes: {faction_type: [guild]}, oracle_rolls: [starforged/oracles/factions/guild]]
+          - [71, 100, "[⏵Fringe Group](starforged/oracles/factions/fringe_group)", "Band of outlaws, outcasts, or rogues", set_attributes: {faction_type: [fringe_group]}, oracle_rolls: [starforged/oracles/factions/fringe_group]]
       influence:
         title:
           canonical: Influence
@@ -212,18 +210,18 @@ oracle_sets:
         content:
           part_of_speech: [adjective]
         table:
-          - [1, 10, Forsaken, Banished or forgotten, Attributes: {Influence: Forsaken}]
-          - [11, 30, Isolated, Limited influence in a remote location, Attributes: {Influence: Isolated}]
-          - [31, 50, Localized, Marginal influence in a single sector, Attributes: {Influence: Localized}]
-          - [51, 70, Established, Strong influence in a single sector, Attributes: {Influence: Established}]
-          - [71, 85, Notable, Dispersed influence across a few sectors, Attributes: {Influence: Notable}]
-          - [86, 95, Dominant, Far-reaching influence across many sectors, Attributes: {Influence: Dominant}]
-          - [96, 100, Inescapable, Pervasive influence across inhabited space, Attributes: {Influence: Inescapable}]
+          - [1, 10, Forsaken, Banished or forgotten, set_attributes: {influence: [forsaken]}]
+          - [11, 30, Isolated, Limited influence in a remote location, set_attributes: {influence: [isolated]}]
+          - [31, 50, Localized, Marginal influence in a single sector, set_attributes: {influence: [localized]}]
+          - [51, 70, Established, Strong influence in a single sector, set_attributes: {influence: [established]}]
+          - [71, 85, Notable, Dispersed influence across a few sectors, set_attributes: {influence: [notable]}]
+          - [86, 95, Dominant, Far-reaching influence across many sectors, set_attributes: {influence: [dominant]}]
+          - [96, 100, Inescapable, Pervasive influence across inhabited space, set_attributes: {influence: [inescapable]}]
       dominion:
         title:
           canonical: Dominion
         display:
-          icon: img/vector/Oracles/Factions/Dominion.svg
+          icon: img/vector/oracles/factions/dominion.svg
         source:
           page: 341
         usage:
@@ -236,35 +234,34 @@ oracle_sets:
           part_of_speech: [noun]
           tags: [abstract noun]
         table:
-          - [1, 5, Agriculture, attributes: {dominion: agriculture}]
-          - [6, 9, Artistry, attributes: {dominion: artistry}]
-          - [10, 14, Commerce, attributes: {dominion: commerce}]
-          - [15, 18, Conquest, attributes: {dominion: conquest}]
-          - [19, 22, Construction, attributes: {dominion: construction}]
-          - [23, 26, Diplomacy, attributes: {dominion: diplomacy}]
-          - [27, 30, Education, attributes: {dominion: education}]
-          - [31, 34, Environmentalism, attributes: {dominion: environmentalism}]
-          - [35, 38, Exploration, attributes: {dominion: exploration}]
-          - [39, 42, Faith, attributes: {dominion: faith}]
-          - [43, 46, History, attributes: {dominion: history}]
-          - [47, 50, Honor, attributes: {dominion: honor}]
-          - [51, 55, Industry, attributes: {dominion: industry}]
-          - [56, 59, Isolationism, attributes: {dominion: isolationism}]
-          - [60, 63, Law, attributes: {dominion: law}]
-          - [64, 67, Mysticism, attributes: {dominion: mysticism}]
-          - [68, 71, Pacifism, attributes: {dominion: pacifism}]
-          - [72, 75, Prophecy, attributes: {dominion: prophecy}]
-          - [76, 79, Science, attributes: {dominion: science}]
-          - [80, 83, Secrecy, attributes: {dominion: secrecy}]
-          - [84, 87, Technology, attributes: {dominion: technology}]
-          - [88, 91, Treachery, attributes: {dominion: treachery}]
-          - [92, 96, Warfare, attributes: {dominion: warfare}]
-          - [97, 100, Wealth, attributes: {dominion: wealth}]
+          - [1, 5, Agriculture, set_attributes: {dominion: [agriculture]}]
+          - [6, 9, Artistry, set_attributes: {dominion: [artistry]}]
+          - [10, 14, Commerce, set_attributes: {dominion: [commerce]}]
+          - [15, 18, Conquest, set_attributes: {dominion: [conquest]}]
+          - [19, 22, Construction, set_attributes: {dominion: [construction]}]
+          - [23, 26, Diplomacy, set_attributes: {dominion: [diplomacy]}]
+          - [27, 30, Education, set_attributes: {dominion: [education]}]
+          - [31, 34, Environmentalism, set_attributes: {dominion: [environmentalism]}]
+          - [35, 38, Exploration, set_attributes: {dominion: [exploration]}]
+          - [39, 42, Faith, set_attributes: {dominion: [faith]}]
+          - [43, 46, History, set_attributes: {dominion: [history]}]
+          - [47, 50, Honor, set_attributes: {dominion: [honor]}]
+          - [51, 55, Industry, set_attributes: {dominion: [industry]}]
+          - [56, 59, Isolationism, set_attributes: {dominion: [isolationism]}]
+          - [60, 63, Law, set_attributes: {dominion: [law]}]
+          - [64, 67, Mysticism, set_attributes: {dominion: [mysticism]}]
+          - [68, 71, Pacifism, set_attributes: {dominion: [pacifism]}]
+          - [72, 75, Prophecy, set_attributes: {dominion: [prophecy]}]
+          - [76, 79, Science, set_attributes: {dominion: [science]}]
+          - [80, 83, Secrecy, set_attributes: {dominion: [secrecy]}]
+          - [84, 87, Technology, set_attributes: {dominion: [technology]}]
+          - [88, 91, Treachery, set_attributes: {dominion: [treachery]}]
+          - [92, 96, Warfare, set_attributes: {dominion: [warfare]}]
+          - [97, 100, Wealth, set_attributes: {dominion: [wealth]}]
       leadership:
         title:
           canonical: "Dominion: Leadership"
           short: Leadership
-        _idFragment: Leadership
         source:
           page: 341
         usage:
@@ -276,21 +273,21 @@ oracle_sets:
           part_of_speech: [fragment]
           tags: [description]
         table:
-          - [1, 5, Anarchist, attributes: {leadership: anarchist}]
-          - [6, 15, Disputed leadership, attributes: {leadership: disputed_leadership}]
-          - [16, 30, Authoritarian dictatorship, attributes: {leadership: authoritarian_dictatorship}]
-          - [31, 45, Oligarchical elite, attributes: {leadership: oligarchical_elite}]
-          - [46, 60, Dynastic lineage, attributes: {leadership: dynastic_lineage}]
-          - [61, 70, Fated or prophesied leader, attributes: {leadership: fated_or_prophesied_leader}]
-          - [71, 80, Clan chiefs or elders, attributes: {leadership: clan_chiefs_or_elders}]
-          - [81, 90, Elected representatives, attributes: {leadership: elected_representatives}]
-          - [91, 95, Machine intelligence, attributes: {leadership: machine_intelligence}]
-          - [96, 100, Varied / decentralized, attributes: {leadership: varied_decentralized}]
+          - [1, 5, Anarchist, set_attributes: {leadership: [anarchist]}]
+          - [6, 15, Disputed leadership, set_attributes: {leadership: [disputed_leadership]}]
+          - [16, 30, Authoritarian dictatorship, set_attributes: {leadership: [authoritarian_dictatorship]}]
+          - [31, 45, Oligarchical elite, set_attributes: {leadership: [oligarchical_elite]}]
+          - [46, 60, Dynastic lineage, set_attributes: {leadership: [dynastic_lineage]}]
+          - [61, 70, Fated or prophesied leader, set_attributes: {leadership: [fated_or_prophesied_leader]}]
+          - [71, 80, Clan chiefs or elders, set_attributes: {leadership: [clan_chiefs_or_elders]}]
+          - [81, 90, Elected representatives, set_attributes: {leadership: [elected_representatives]}]
+          - [91, 95, Machine intelligence, set_attributes: {leadership: [machine_intelligence]}]
+          - [96, 100, Varied / decentralized, set_attributes: {leadership: [varied_decentralized]}]
       guild:
         title:
           canonical: Guild
         display:
-          icon: img/vector/Oracles/Factions/Guild.svg
+          icon: img/vector/oracles/factions/guild.svg
         source:
           page: 341
         usage:
@@ -302,26 +299,26 @@ oracle_sets:
           part_of_speech: [noun, plural]
           tags: [actor]
         table:
-          - [1, 5, Assassins, Attributes: {Guild: Assassins}]
-          - [6, 10, Bounty Hunters, Attributes: {Guild: Bounty Hunters}]
-          - [11, 15, Couriers, Attributes: {Guild: Couriers}]
-          - [16, 20, Courtesans, Attributes: {Guild: Courtesans}]
-          - [21, 25, Engineers, Attributes: {Guild: Engineers}]
-          - [26, 30, Healers, Attributes: {Guild: Healers}]
-          - [31, 40, Industrialists, Attributes: {Guild: Industrialists}]
-          - [41, 50, Mercenaries, Attributes: {Guild: Mercenaries}]
-          - [51, 60, Merchants, Attributes: {Guild: Merchants}]
-          - [61, 65, Mystics, Attributes: {Guild: Mystics}]
-          - [66, 75, Navigators, Attributes: {Guild: Navigators}]
-          - [76, 80, Peacekeepers, Attributes: {Guild: Peacekeepers}]
-          - [81, 85, Researchers, Attributes: {Guild: Researchers}]
-          - [86, 90, Spies, Attributes: {Guild: Spies}]
+          - [1, 5, Assassins, set_attributes: {guild: [assassins]}]
+          - [6, 10, Bounty Hunters, set_attributes: {guild: [bounty_hunters]}]
+          - [11, 15, Couriers, set_attributes: {guild: [couriers]}]
+          - [16, 20, Courtesans, set_attributes: {guild: [courtesans]}]
+          - [21, 25, Engineers, set_attributes: {guild: [engineers]}]
+          - [26, 30, Healers, set_attributes: {guild: [healers]}]
+          - [31, 40, Industrialists, set_attributes: {guild: [industrialists]}]
+          - [41, 50, Mercenaries, set_attributes: {guild: [mercenaries]}]
+          - [51, 60, Merchants, set_attributes: {guild: [merchants]}]
+          - [61, 65, Mystics, set_attributes: {guild: [mystics]}]
+          - [66, 75, Navigators, set_attributes: {guild: [navigators]}]
+          - [76, 80, Peacekeepers, set_attributes: {guild: [peacekeepers]}]
+          - [81, 85, Researchers, set_attributes: {guild: [researchers]}]
+          - [86, 90, Spies, set_attributes: {guild: [spies]}]
           - [91, 100, *result:RollTwice]
       fringe_group:
         title:
           canonical: Fringe Group
         display:
-          icon: img/vector/Oracles/Factions/Fringe_Group.svg
+          icon: img/vector/oracles/factions/fringe_group.svg
         source:
           page: 341
         usage:
@@ -332,23 +329,22 @@ oracle_sets:
           part_of_speech: [noun, plural]
           tags: [actor]
         table:
-          - [1, 5, Cultists, attributes: {fringe_group: cultists}]
-          - [6, 15, Exiles, attributes: {fringe_group: exiles}]
-          - [16, 25, Gangsters, attributes: {fringe_group: gangsters}]
-          - [26, 35, Hackers, attributes: {fringe_group: hackers}]
-          - [36, 40, Monster hunters, attributes: {fringe_group: monster_hunters}]
-          - [41, 50, Pirates, attributes: {fringe_group: pirates}]
-          - [51, 60, Raiders, attributes: {fringe_group: raiders}]
-          - [61, 70, Rebels, attributes: {fringe_group: rebels}]
-          - [71, 75, Rogue AI, attributes: {fringe_group: rogue_ai}]
-          - [76, 85, Scavengers, attributes: {fringe_group: scavengers}]
-          - [86, 95, Smugglers, attributes: {fringe_group: smugglers}]
+          - [1, 5, Cultists, set_attributes: {fringe_group: [cultists]}]
+          - [6, 15, Exiles, set_attributes: {fringe_group: [exiles]}]
+          - [16, 25, Gangsters, set_attributes: {fringe_group: [gangsters]}]
+          - [26, 35, Hackers, set_attributes: {fringe_group: [hackers]}]
+          - [36, 40, Monster hunters, set_attributes: {fringe_group: [monster_hunters]}]
+          - [41, 50, Pirates, set_attributes: {fringe_group: [pirates]}]
+          - [51, 60, Raiders, set_attributes: {fringe_group: [raiders]}]
+          - [61, 70, Rebels, set_attributes: {fringe_group: [rebels]}]
+          - [71, 75, Rogue AI, set_attributes: {fringe_group: [rogue_ai]}]
+          - [76, 85, Scavengers, set_attributes: {fringe_group: [scavengers]}]
+          - [86, 95, Smugglers, set_attributes: {fringe_group: [smugglers]}]
           - [96, 100, *result:RollTwice]
       projects:
         title:
           canonical: Faction Projects
           short: Projects
-        _idFragment: Projects
         source:
           page: 342
         content:
@@ -396,7 +392,6 @@ oracle_sets:
         title:
           canonical: Faction Relationships
           short: Relationships
-        _idFragment: Relationships
         source:
           page: 343
         content:
@@ -438,7 +433,6 @@ oracle_sets:
           short: Quirks
         source:
           page: 346
-        _idFragment: Quirks
         content:
           part_of_speech: [fragment]
           tags: [description]
@@ -484,7 +478,6 @@ oracle_sets:
         title:
           canonical: Faction Rumors
           short: Rumors
-        _idFragment: Rumors
         source:
           page: 347
         content:

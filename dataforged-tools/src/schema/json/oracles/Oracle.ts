@@ -1,5 +1,5 @@
-import type { MixinAliases, MixinDescription, MixinDisplay, MixinId, MixinOracleContent, MixinSource, MixinSummary, MixinText, MixinTitle, OracleDisplayBase, OracleSet, OracleTable, OracleTableRow, OracleUsage, Requirements, RowNullStub, TitleCaseTitle } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js';
+import type { MixinAliases, MixinDescription, MixinDisplay, MixinId, MixinOracleContent, MixinSource, MixinSummary, MixinText, MixinTitle, OracleDisplayBase, OracleSet, OracleTable, OracleTableRow, OracleUsage, Requirements, TitleCaseTitle } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
@@ -11,12 +11,12 @@ import { SnakeCaseString } from '@schema/json/common/String.js';
  */
 export interface Oracle extends Partial<MixinSummary & MixinDescription & MixinOracleContent & MixinAliases>, MixinId, MixinDisplay, MixinSource, MixinTitle {
   $id: string
-  title: TitleCaseTitle;
+  title: TitleCaseTitle
   /**
    * An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.
    * @pattern ^(ironsworn|starforged)/oracles/[a-z_-/]+$
    */
-  ancestors: Array<OracleSet['$id']>
+  ancestors: OracleSet['$id'][]
   display: OracleDisplayBase
   /**
    * Information on the usage of this oracle: recommended number of rolls, etc.
@@ -27,7 +27,7 @@ export interface Oracle extends Partial<MixinSummary & MixinDescription & MixinO
    *
    * This key appears only on {@link OracleSet}, and thus only on 'leaf' nodes of the oracle hierarchy 'tree'.
    */
-  table?: Array<OracleTableRow | RowNullStub> | undefined
+  table?: (OracleTableRow)[] | undefined
   /**
    * Oracle tables contained by this set.
    *
@@ -48,7 +48,6 @@ export interface Oracle extends Partial<MixinSummary & MixinDescription & MixinO
   on_a_match?: OracleMatch | undefined
   requires?: Requirements | undefined
 }
-
 
 /**
  * @public

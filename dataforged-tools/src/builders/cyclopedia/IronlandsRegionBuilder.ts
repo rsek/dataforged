@@ -17,7 +17,7 @@ export class IronlandsRegionBuilder implements IronlandsRegion {
   description: string
   quest_starter: string
 
-  constructor(yaml: YamlIronlandsRegion, rootSource: Source) {
+  constructor (yaml: YamlIronlandsRegion, rootSource: Source) {
     const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, Game.Ironsworn, 'regions')
     this.title = new TitleBuilder(yaml.title, this)
@@ -26,6 +26,6 @@ export class IronlandsRegionBuilder implements IronlandsRegion {
     this.features = yaml.features
     this.summary = yaml.summary
     this.description = yaml.description
-    this.quest_starter = yaml.quest_starter;
+    this.quest_starter = yaml.quest_starter
   }
 }

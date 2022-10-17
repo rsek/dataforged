@@ -1,4 +1,4 @@
-import type { MixinText, Input, InputType } from '@schema'
+import type { Input, InputType, MixinText } from '@schema'
 
 /**
  * Describes a state that can be toggled "on" and "off".

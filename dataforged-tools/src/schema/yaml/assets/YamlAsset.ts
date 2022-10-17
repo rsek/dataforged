@@ -1,6 +1,6 @@
 
-import type { Asset, AssetAbility, InputToggle, AssetType, ConditionMeter, Input, InputClock, InputNumber, InputSelect, InputSelectOption, InputSelectOptionSetter, InputText, YamlAlterAsset, YamlAlterMomentum, YamlAlterMove, YamlMove, YamlStub, YamlStubNode, YamlTitleCaseTitle, MixinAlter } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { Asset, AssetAbility, AssetType, ConditionMeter, Input, InputClock, InputNumber, InputSelect, InputSelectOption, InputSelectOptionSetter, InputText, InputToggle, MixinAlter, YamlAlterAsset, YamlAlterMomentum, YamlAlterMove, YamlMove, YamlStub, YamlStubNode, YamlTitleCaseTitle } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import type { StubExcept } from '@utils/types/Stub.js'
 
 /**
@@ -33,7 +33,7 @@ export interface YamlAssetAbility extends YamlStub<AssetAbility, 'enabled', 'alt
 /**
  * @internal
  */
-export interface YamlAlter extends YamlStub<MixinAlter, "", "moves" | 'properties' | 'momentum'> {
+export interface YamlAlter extends YamlStub<MixinAlter, '', 'moves' | 'properties' | 'momentum'> {
   moves?: YamlAlterMove[] | undefined
   properties?: YamlAlterAsset | undefined
   momentum?: YamlAlterMomentum | undefined

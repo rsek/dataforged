@@ -1,4 +1,4 @@
-import { MixinDescription, MixinId, MixinSource, MixinSummary, MixinTitle, OracleTableRow } from '@schema/json'
+import type { MixinDescription, MixinId, MixinSource, MixinSummary, MixinTitle, OracleTableRow } from '@schema/json'
 
 /**
  * @public

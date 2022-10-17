@@ -17,7 +17,6 @@ oracle_sets:
         title:
           canonical: Character Name
           short: Name
-        _idFragment: Name
         source:
           page: 333
         description: |-
@@ -49,7 +48,7 @@ oracle_sets:
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
             usage:
               suggestions:
-                oracle_rolls:
+                oracle_tables:
                   - starforged/oracles/characters/name/callsign
                   - starforged/oracles/characters/name/family_name
             display:
@@ -165,7 +164,7 @@ oracle_sets:
               Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.
             usage:
               suggestions:
-                oracle_rolls:
+                oracle_tables:
                   - starforged/oracles/characters/name/given_name
                   - starforged/oracles/characters/name/family_name
             display:
@@ -283,7 +282,7 @@ oracle_sets:
               part_of_speech: [proper noun]
             usage:
               suggestions:
-                oracle_rolls:
+                oracle_tables:
                   - starforged/oracles/characters/name/given_name
                   - starforged/oracles/characters/name/callsign
             display:
@@ -445,7 +444,6 @@ oracle_sets:
         title:
           canonical: Initial Disposition
           short: Disposition
-        _idFragment: Initial disposition
         source:
           page: 330
         content:
@@ -469,7 +467,6 @@ oracle_sets:
         title:
           canonical: Character Role
           short: Role
-        _idFragment: Role
         source:
           page: 331
         content:
@@ -528,58 +525,56 @@ oracle_sets:
         title:
           canonical: Character Goal
           short: Goal
-        _idFragment: Goal
         source:
           page: 331
         content:
           part_of_speech: [fragment]
           tags: [objective]
         table:
-          - [1, 2, Avenge a wrong, Suggestions: [*roll:Event]]
+          - [1, 2, Avenge a wrong, suggestions: [*roll:Event]]
           - [3, 4, Build a home]
-          - [5, 7, Build a relationship, Suggestions: [*obj:Npc]]
-          - [8, 10, Claim a resource, Suggestions: [*roll:Object]]
+          - [5, 7, Build a relationship, suggestions: [*obj:Npc]]
+          - [8, 10, Claim a resource, suggestions: [*roll:Object]]
           - [11, 12, Collect a debt]
-          - [13, 14, Craft an object, Suggestions: [*roll:Object]]
+          - [13, 14, Craft an object, suggestions: [*roll:Object]]
           - [15, 16, Cure an ill]
-          - [17, 18, Defeat a rival, Suggestions: [*obj:Npc]]
-          - [19, 20, Defend a person, Suggestions: [*obj:Npc]]
-          - [21, 23, Defend a place, Suggestions: [*roll:Place]]
-          - [24, 25, Discover a truth, Suggestions: [*roll:Event]]
-          - [26, 27, End a conflict, Suggestions: [*roll:Event]]
+          - [17, 18, Defeat a rival, suggestions: [*obj:Npc]]
+          - [19, 20, Defend a person, suggestions: [*obj:Npc]]
+          - [21, 23, Defend a place, suggestions: [*roll:Place]]
+          - [24, 25, Discover a truth, suggestions: [*roll:Event]]
+          - [26, 27, End a conflict, suggestions: [*roll:Event]]
           - [28, 29, Escape a captor]
           - [30, 31, Fight injustice]
-          - [32, 33, Find a person, Suggestions: [*obj:Npc]]
-          - [34, 35, Forge an alliance, Suggestions: [*obj:Faction]]
-          - [36, 37, Gain knowledge, Suggestions: [*roll:Event]]
+          - [32, 33, Find a person, suggestions: [*obj:Npc]]
+          - [34, 35, Forge an alliance, suggestions: [*obj:Faction]]
+          - [36, 37, Gain knowledge, suggestions: [*roll:Event]]
           - [38, 39, Gain riches]
           - [40, 41, Maintain order]
-          - [42, 43, Make an agreement, Suggestions: [*roll:Event]]
-          - [44, 45, Obtain an object, Suggestions: [*roll:Object]]
+          - [42, 43, Make an agreement, suggestions: [*roll:Event]]
+          - [44, 45, Obtain an object, suggestions: [*roll:Object]]
           - [46, 47, Pay a debt]
-          - [48, 49, Protect a lifeform, Suggestions: [*obj:Creature]]
-          - [50, 51, Protect a secret, Suggestions: [*roll:Event]]
-          - [52, 53, Prove worthiness, Suggestions: [*roll:Event]]
+          - [48, 49, Protect a lifeform, suggestions: [*obj:Creature]]
+          - [50, 51, Protect a secret, suggestions: [*roll:Event]]
+          - [52, 53, Prove worthiness, suggestions: [*roll:Event]]
           - [54, 55, Rebel against power]
           - [56, 57, Refute a falsehood]
-          - [58, 59, Repair a technology, Suggestions: [*roll:Object]]
-          - [60, 61, Resolve a dispute, Suggestions: [*roll:Event]]
-          - [62, 63, Restore a relationship, Suggestions: [*obj:Npc]]
-          - [64, 65, Sabotage a technology, Suggestions: [*roll:Object]]
-          - [66, 68, Secure a resource, Suggestions: [*roll:Object]]
-          - [69, 70, Seek redemption, Suggestions: [*roll:Event]]
-          - [71, 72, Seize power, Suggestions: [*roll:Event]]
-          - [73, 74, Solve a mystery, Suggestions: [*roll:Event]]
+          - [58, 59, Repair a technology, suggestions: [*roll:Object]]
+          - [60, 61, Resolve a dispute, suggestions: [*roll:Event]]
+          - [62, 63, Restore a relationship, suggestions: [*obj:Npc]]
+          - [64, 65, Sabotage a technology, suggestions: [*roll:Object]]
+          - [66, 68, Secure a resource, suggestions: [*roll:Object]]
+          - [69, 70, Seek redemption, suggestions: [*roll:Event]]
+          - [71, 72, Seize power, suggestions: [*roll:Event]]
+          - [73, 74, Solve a mystery, suggestions: [*roll:Event]]
           - [75, 76, Spread faith]
-          - [77, 78, Travel to a place, Suggestions: [*roll:Place]]
-          - [79, 80, Undermine a relationship, Suggestions: [*obj:Npc]]
+          - [77, 78, Travel to a place, suggestions: [*roll:Place]]
+          - [79, 80, Undermine a relationship, suggestions: [*obj:Npc]]
           - [81, 90, *result:Action+Theme]
           - [91, 100, *result:RollTwice]
       revealed_aspect:
         title:
           canonical: Revealed Character Aspect
           short: Revealed Aspect
-        _idFragment: Revealed Aspect
         source:
           page: 332
         description: |-

@@ -19,7 +19,7 @@ export abstract class RootCollectionBuilder<
    * Loads the `_refs` and `_templates` files, and returns them as a string
    * @returns A string that can be parsed as YAML.
    */
-  public static loadYamlRefs () {
+  public static loadYamlRefs (): string {
     const refFiles = fg.sync(RootCollectionBuilder.referencePath + '/*.(yml|yaml)', { onlyFiles: true })
     let refString = refFiles.map(file => fs.readFileSync(file, { encoding: 'utf-8' })).join('\n')
     refString = refString.replaceAll(/^/gim, '  ')
@@ -37,12 +37,12 @@ export abstract class RootCollectionBuilder<
    */
   public static readonly referencePath = REFS_PATH
   public static readonly templatePath = TEMPLATES_PATH
-  public get rawSourceFileData () {
+  public get rawSourceFileData (): string[] {
     return fg.sync(this._sourceFileGlob, { onlyFiles: true })
   }
 
-  private readonly _srcDataFiles: Array<Partial<TYamlRoot>>
-  public get srcYamlFiles (): Array<Partial<TYamlRoot>> {
+  private readonly _srcDataFiles: Partial<TYamlRoot>[]
+  public get srcYamlFiles (): Partial<TYamlRoot>[] {
     return this._srcDataFiles
   }
 
@@ -56,14 +56,14 @@ export abstract class RootCollectionBuilder<
       const processed = this.processSourceFile(item)
       return processed[this.collectionKey]
     })
-    const mergedData = (collections.length === 1 ? collections[0] : _.merge({} as TYamlRoot[typeof this.collectionKey], ...collections)) as TYamlRoot[typeof this.collectionKey]
+    const mergedData = (collections.length === 1 ? collections[0] : _.merge(...collections as [TYamlRoot[keyof TYamlRoot], TYamlRoot[keyof TYamlRoot]]))
     return mergedData as TYamlRoot[typeof this.collectionKey] & Record<string, TYamlItem>
   }
 
   /**
    * Composes the yaml data for each file with references and template data.
    */
-  public composeSourceData () {
+  public composeSourceData (): Partial<TYamlRoot>[] {
     // TODO: this should attempt to validate the data individually, too
     if (this.rawSourceFileData.length === 0) {
       throw badJsonError(this.constructor, 'No files found!')
@@ -82,7 +82,7 @@ export abstract class RootCollectionBuilder<
     return sourceDataItem as TYamlRoot
   }
 
-  override get label () {
+  override get label (): string {
     return this.collectionKey.toString()
   }
 
@@ -91,7 +91,7 @@ export abstract class RootCollectionBuilder<
     return this._collectionKey
   }
 
-  override collect () {
+  override collect (): this {
     buildLog(this.constructor, `Building ${this.label} from ${this.rawSourceFileData.length} files...`)
     _.forEach(
       this.mergedData,
@@ -102,7 +102,7 @@ export abstract class RootCollectionBuilder<
   }
 
   constructor (game: G, fragment: string, source: Source, sourceFileGlob: CollectionFileGlob<G>, collectionKey: keyof TYamlRoot) {
-    super({} as Record<string, TYamlItem>, game, fragment, source)
+    super(Object.create({}) as Record<string, TYamlItem>, game, fragment, source)
     this._sourceFileGlob = sourceFileGlob
     this._collectionKey = collectionKey
     this._srcDataFiles = this.composeSourceData()

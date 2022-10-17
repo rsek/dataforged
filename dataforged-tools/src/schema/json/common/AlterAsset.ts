@@ -1,4 +1,4 @@
-import type { Asset, AssetAbility, AssetAttachment, ConditionMeter, MixinId, InputToggle, OmitMetadataDeep } from '@schema'
+import type { Asset, AssetAbility, AssetAttachment, ConditionMeter, InputToggle, MixinId, OmitMetadataDeep } from '@schema'
 import type { PartialDeep } from '@utils'
 
 /**
@@ -11,7 +11,7 @@ import type { PartialDeep } from '@utils'
  * @public
  */
 export interface AlterAsset extends Omit<PartialDeep<OmitMetadataDeep<Asset>>, 'abilities' | 'asset_type' |
-  'attachments' | 'condition_meter' | '$id'>, MixinId {
+'attachments' | 'condition_meter' | '$id'>, MixinId {
   // TODO: some way of handling stuff that applies to a whole-ass category, like Ritualist and Owl
   /**
    * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]/alter/assets/[1-9][0-9]*$

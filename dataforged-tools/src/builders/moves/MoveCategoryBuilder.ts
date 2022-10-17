@@ -1,6 +1,6 @@
 import { DisplayBuilder, MoveBuilder, SourceBuilder, TitleBuilder } from '@builders'
 import type { Display, Game, Move, MoveCategory, Source, Title, YamlMoveCategory } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
 
@@ -15,7 +15,7 @@ export class MoveCategoryBuilder implements MoveCategory {
   moves: { [key: SnakeCaseString]: Move }
   display: Display
   optional: boolean
-  constructor(yaml: YamlMoveCategory, game: Game, ...ancestorSourceJson: Source[]) {
+  constructor (yaml: YamlMoveCategory, game: Game, ...ancestorSourceJson: Source[]) {
     if (!yaml.title.canonical) {
       throw new Error(`Missing a title field: ${JSON.stringify(yaml)}`)
     }

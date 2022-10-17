@@ -1,6 +1,7 @@
-import { LocationTheme, YamlFeatureMixin, YamlOpportunityMixin, YamlOracleSet, YamlPerilMixin, YamlRowLike, YamlTableByTwenty, YamlTableStubByEight, YamlTableStubByNine } from '@schema'
+import type { LocationTheme, YamlFeatureMixin, YamlOpportunityMixin, YamlOracleSet, YamlPerilMixin, YamlRowLike, YamlTableByTwenty, YamlTableStubByEight, YamlTableStubByNine } from '@schema'
 
 export type LocationThemeName = keyof typeof LocationTheme
+// @ts-expect-error
 
 export interface YamlOracleSetLocationTheme<TTheme extends LocationThemeName> extends YamlOracleSet {
   title: {

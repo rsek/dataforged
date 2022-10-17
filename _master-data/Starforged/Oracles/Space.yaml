@@ -7,7 +7,6 @@ oracle_sets:
     title:
       canonical: Space Encounters
       short: Space
-    _idFragment: Space
     source:
       authors: [Shawn Tomkin]
       title: "Ironsworn: Starforged Rulebook"
@@ -18,7 +17,6 @@ oracle_sets:
         title:
           canonical: Space Sighting
           short: Sighting
-        _idFragment: Sighting
         source:
           page: 300
         display:
@@ -179,7 +177,7 @@ oracle_sets:
             usage:
               initial: true
               suggestions:
-                oracle_rolls:
+                oracle_tables:
                   - starforged/oracles/space/sector_name/suffix
             content:
               part_of_speech: [adjective, proper noun fragment]
@@ -187,51 +185,51 @@ oracle_sets:
             table:
               - [1, 2, Accursed]
               - [3, 4, Ashen]
-              - [5, 6, Asteria, Part of speech: [proper noun]]
+              - [5, 6, Asteria, content: {part_of_speech: [proper noun]}]
               - [7, 8, Bitter]
               - [9, 10, Blighted]
               - [11, 12, Bloodied]
               - [13, 14, Boundless]
               - [15, 16, Burning]
-              - [17, 18, Cortana, Part of speech: [proper noun]]
-              - [19, 20, Corvus, Part of speech: [proper noun]]
+              - [17, 18, Cortana, content: {part_of_speech: [proper noun]}]
+              - [19, 20, Corvus, content: {part_of_speech: [proper noun]}]
               - [21, 22, Crimson]
-              - [23, 24, Cygnus, Part of speech: [proper noun]]
-              - [25, 26, Delphi, Part of speech: [proper noun]]
-              - [27, 28, Delphian, Part of speech: [proper noun]]
-              - [29, 30, Devil's, Part of speech: [proper noun, possessive case]]
+              - [23, 24, Cygnus, content: {part_of_speech: [proper noun]}]
+              - [25, 26, Delphi, content: {part_of_speech: [proper noun]}]
+              - [27, 28, Delphian, content: {part_of_speech: [proper noun]}]
+              - [29, 30, Devil's, content: {part_of_speech: [proper noun, possessive case]}]
               - [31, 32, Ebon]
-              - [33, 34, Essus, Part of speech: [proper noun]]
+              - [33, 34, Essus, content: {part_of_speech: [proper noun]}]
               - [35, 36, Fallen]
               - [37, 38, Ferrous]
-              - [39, 40, Fool's, Part of speech: [proper noun, possessive case]]
+              - [39, 40, Fool's, content: {part_of_speech: [proper noun, possessive case]}]
               - [41, 42, Forgotten]
               - [43, 44, Haunted]
               - [45, 46, Hidden]
               - [47, 48, Hollow]
               - [49, 50, Igneous]
               - [51, 52, Infernal]
-              - [53, 54, Invidia, Part of speech: [proper noun]]
+              - [53, 54, Invidia, content: {part_of_speech: [proper noun]}]
               - [55, 56, Iron]
-              - [57, 58, Kalidas, Part of speech: [proper noun]]
-              - [59, 60, Kronos, Part of speech: [proper noun]]
-              - [61, 62, Lacuna, Part of speech: [proper noun]]
-              - [63, 64, Lumen, Part of speech: [proper noun]]
-              - [65, 66, Mobius, Part of speech: [proper noun]]
-              - [67, 68, Morien, Part of speech: [proper noun]]
+              - [57, 58, Kalidas, content: {part_of_speech: [proper noun]}]
+              - [59, 60, Kronos, content: {part_of_speech: [proper noun]}]
+              - [61, 62, Lacuna, content: {part_of_speech: [proper noun]}]
+              - [63, 64, Lumen, content: {part_of_speech: [proper noun]}]
+              - [65, 66, Mobius, content: {part_of_speech: [proper noun]}]
+              - [67, 68, Morien, content: {part_of_speech: [proper noun]}]
               - [69, 70, Onyx]
               - [71, 72, Outer]
-              - [73, 74, Sanguis, Part of speech: [proper noun]]
+              - [73, 74, Sanguis, content: {part_of_speech: [proper noun]}]
               - [75, 76, Scarred]
               - [77, 78, Scorched]
               - [79, 80, Shattered]
               - [81, 82, Shrouded]
-              - [83, 84, Sindri, Part of speech: [proper noun]]
-              - [85, 86, Solana, Part of speech: [proper noun]]
+              - [83, 84, Sindri, content: {part_of_speech: [proper noun]}]
+              - [85, 86, Solana, content: {part_of_speech: [proper noun]}]
               - [87, 88, Stygian]
-              - [89, 90, Sulaco, Part of speech: [proper noun]]
+              - [89, 90, Sulaco, content: {part_of_speech: [proper noun]}]
               - [91, 92, Sundered]
-              - [93, 94, Thunor, Part of speech: [proper noun]]
+              - [93, 94, Thunor, content: {part_of_speech: [proper noun]}]
               - [95, 96, Vanguard]
               - [97, 98, Veiled]
               - [99, 100, Wasted]
@@ -244,7 +242,7 @@ oracle_sets:
             usage:
               initial: true
               suggestions:
-                oracle_rolls:
+                oracle_tables:
                   - starforged/oracles/space/sector_name/prefix
             content:
               part_of_speech: [noun, proper noun fragment]
@@ -329,7 +327,6 @@ oracle_sets:
         title:
           canonical: Spaceborne Peril
           short: Peril
-        _idFragment: Peril
         usage:
           repeatable: true
           requires:
@@ -348,15 +345,15 @@ oracle_sets:
           - [16, 18, Energy storm looms]
           - [19, 21, Familiar foe appears or sends an ominous message]
           - [22, 24, Gravity well or vortex takes hold]
-          - [25, 27, Imperiled ship calls for help, Suggestions: [*obj:Starship]]
+          - [25, 27, Imperiled ship calls for help, suggestions: [*obj:Starship]]
           - [28, 30, Important device fails or malfunctions]
-          - [31, 33, Infestation is revealed, Suggestions: [*obj:Creature]]
+          - [31, 33, Infestation is revealed, suggestions: [*obj:Creature]]
           - [34, 36, Intruder or stowaway creates trouble]
           - [37, 39, Isolation or fear presses in]
           - [40, 42, Life support system malfunctions]
           - [43, 45, Meteoroid storm fills the sky]
-          - [46, 48, Mysterious wreckage portends a new threat, Suggestions: [*obj:Derelict.Starship]]
-          - [49, 51, Nearby settlement calls for help, Suggestions: [*obj:Settlement]]
+          - [46, 48, Mysterious wreckage portends a new threat, suggestions: [*obj:Derelict.Starship]]
+          - [49, 51, Nearby settlement calls for help, suggestions: [*obj:Settlement]]
           - [52, 54, Old repair or patch fails]
           - [55, 57, Onboard dispute or inner turmoil causes a disruption]
           - [58, 60, Others obstruct your path or form a blockade]
@@ -368,7 +365,7 @@ oracle_sets:
           - [76, 78, Shockwave or gravity wave approaches]
           - [79, 81, Someone questions your presence here]
           - [82, 84, Stellar anomaly emits hazardous energies]
-          - [85, 87, Threatening lifeform draws near, Suggestions: [*obj:Creature]]
+          - [85, 87, Threatening lifeform draws near, suggestions: [*obj:Creature]]
           - [88, 90, Troubling visions or apparitions]
           - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
           - [94, 96, Unsettling sounds or disturbances]
@@ -380,7 +377,6 @@ oracle_sets:
         title:
           canonical: Spaceborne Opportunity
           short: Opportunity
-        _idFragment: Opportunity
         usage:
           repeatable: true
           requires:
@@ -393,24 +389,24 @@ oracle_sets:
         table:
           - [1, 4, Advance warning of an environmental threat]
           - [5, 8, Automated signal offers a helpful message or warning]
-          - [9, 12, Cache of cargo or supplies, Suggestions: [*roll:Object]]
+          - [9, 12, Cache of cargo or supplies, suggestions: [*roll:Object]]
           - [13, 16, Chance for fellowship or a moment of inner peace]
           - [17, 20, Clear path through otherwise perilous space]
           - [21, 24, Clue offers insight into a current quest or mystery]
           - [25, 28, Clue to a lifeform's nature or vulnerabilities]
-          - [29, 32, Derelict ripe for the picking, Suggestions: [*obj:Derelict]]
+          - [29, 32, Derelict ripe for the picking, suggestions: [*obj:Derelict]]
           - [33, 36, Foe inadvertently reveals themselves or tips their hand]
-          - [37, 40, Friendly interaction with a benign lifeform, Suggestions: [*obj:Creature]]
-          - [41, 44, Friendly settlement in range, Suggestions: [*obj:Settlement]]
-          - [45, 48, Friendly spacers at work here, Suggestions: [*obj:Npc]]
-          - [49, 52, Friendly starship crosses your path, Suggestions: [*obj:Starship]]
+          - [37, 40, Friendly interaction with a benign lifeform, suggestions: [*obj:Creature]]
+          - [41, 44, Friendly settlement in range, suggestions: [*obj:Settlement]]
+          - [45, 48, Friendly spacers at work here, suggestions: [*obj:Npc]]
+          - [49, 52, Friendly starship crosses your path, suggestions: [*obj:Starship]]
           - [53, 56, Helpful or encouraging message from an acquaintance]
           - [57, 60, Impressive vista offers comfort or inspiration]
           - [61, 64, Interesting site offers opportunities for exploration]
           - [65, 68, Mineral or energy resource detected]
           - [69, 72, Navigational or environmental hazard is left behind]
           - [73, 76, Opening to escape or avoid foes]
-          - [77, 80, Plea for help from a potential benefactor, Suggestions: [*obj:Npc]]
+          - [77, 80, Plea for help from a potential benefactor, suggestions: [*obj:Npc]]
           - [81, 84, Probe or beacon with useful data]
           - [85, 88, "Refuge offers a place to hide, plan, or recover"]
           - [89, 92, Sensors pinpoint a lurking foe]

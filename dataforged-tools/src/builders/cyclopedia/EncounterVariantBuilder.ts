@@ -15,7 +15,7 @@ export class EncounterVariantBuilder implements EncounterVariant {
   nature: EncounterNatureTypeStarforged
   variant_of: EncounterStarforged['$id']
   tags?: EncounterTags[] | undefined
-  constructor(yaml: YamlEncounterVariant, parent: EncounterStarforged) {
+  constructor (yaml: YamlEncounterVariant, parent: EncounterStarforged) {
     const fragment = yaml._idFragment ?? yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, parent.$id)
     this.source = new SourceBuilder(parent.source)

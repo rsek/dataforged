@@ -1,4 +1,5 @@
-import { MixinId, InputToggle, YamlInputToggle, InputDisplay, InputDisplayPosition, InputType } from '@schema'
+import type { InputDisplay, InputToggle, MixinId, YamlInputToggle } from '@schema'
+import { InputDisplayPosition, InputType } from '@schema'
 import { formatId } from '@utils'
 
 /**
@@ -14,7 +15,7 @@ export class InputToggleBuilder implements InputToggle {
   permanent: boolean
   disables_asset: boolean
   is_impact: boolean
-  constructor(yaml: YamlInputToggle, fragment: string, parent: MixinId) {
+  constructor (yaml: YamlInputToggle, fragment: string, parent: MixinId) {
     this.$id = formatId(fragment, parent.$id)
     this.label = yaml.label
     this.enabled = yaml.enabled ?? false

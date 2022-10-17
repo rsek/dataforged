@@ -5,7 +5,7 @@ import type { AttributeKey } from '@schema'
  */
 export type CreatureRecord = ActorRecord<
 GameObjectType.Creature,
-AttributeKey.Environment|
-AttributeKey.CreatureScale|
+AttributeKey.Environment |
+AttributeKey.CreatureScale |
 AttributeKey.Behavior
 >

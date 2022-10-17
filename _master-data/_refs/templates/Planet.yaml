@@ -2,15 +2,15 @@ Planet: &template:Planet
   _isTemplate: true
   _templateSet: &template.category:Planet
     _templateVars:
-      Planetary Class: ${{Planetary Class}}
+      planetary_class: ${{planetary_class}}
     _childOf: Planets
     Title:
-      Canonical: ${{Planetary Class}} world
-      Short: ${{Planetary Class}}
+      Canonical: ${{planetary_class}} world
+      Short: ${{planetary_class}}
     Usage:
       Requires:
         Attributes:
-          Planetary Class: ${{Planetary Class}}
+          Planetary Class: ${{planetary_class}}
     Source:
       Title: "Ironsworn: Starforged Rulebook"
       License: https://creativecommons.org/licenses/by-nc-sa/4.0/
@@ -26,23 +26,23 @@ Planet: &template:Planet
         Display:
           Columns:
             - Type: dice range
-              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Terminus
+              Content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
               Label: Terminus
             - Type: dice range
-              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Outlands
+              Content: starforged/oracles/planets/${{planetary_class}}/settlements/outlands
               Label: Outlands
             - Type: dice range
-              Content: starforged/oracles/planets/${{Planetary Class}}/Settlements/Expanse
+              Content: starforged/oracles/planets/${{planetary_class}}/settlements/expanse
               Label: Expanse
             - Type: string
-              Content: starforged/oracles/planets/${{Planetary Class}}/settlements/terminus
+              Content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
         Tables:
           Terminus:
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
               Title:
                 Canonical: Terminus
               Display: &template.display:Planet.Settlements
-                Column of: starforged/oracles/planets/${{Planetary Class}}/settlements
+                Column of: starforged/oracles/planets/${{planetary_class}}/settlements
               Usage:
                 Requires: *attr:Region.Terminus
             _templateTableRows:

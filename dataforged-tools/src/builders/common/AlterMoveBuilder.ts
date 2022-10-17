@@ -8,8 +8,8 @@ import _ from 'lodash-es'
  */
 export class AlterMoveBuilder implements AlterMove {
   $id: AlterMove['$id']
-  moves?: Array<Move['$id']> | null | undefined
-  alters?: Array<AlterMove['$id']> | undefined
+  moves?: Move['$id'][] | null | undefined
+  alters?: AlterMove['$id'][] | undefined
   trigger?: MoveTrigger | undefined
   text?: string | undefined
   outcomes?: AlterMoveOutcomes | undefined

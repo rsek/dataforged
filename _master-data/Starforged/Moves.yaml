@@ -9,7 +9,6 @@ move_categories:
     title:
       canonical: Session moves
       short: Session
-    _idFragment: Session
     display:
       color: "#00B3C8"
     source:
@@ -105,7 +104,6 @@ move_categories:
     title:
       canonical: Adventure moves
       short: Adventure
-    _idFragment: Adventure
     display:
       color: &color:Adventure_Moves "#3C70A4"
     source:
@@ -316,7 +314,6 @@ move_categories:
     title:
       canonical: Quest moves
       short: Quest
-    _idFragment: Quest
     display:
       color: "#2F9236"
     description: |-
@@ -424,7 +421,6 @@ move_categories:
     title:
       canonical: Connection moves
       short: Connection
-    _idFragment: Connection
     display:
       color: "#4053C9"
     source:
@@ -585,7 +581,6 @@ move_categories:
     title:
       canonical: Exploration moves
       short: Exploration
-    _idFragment: Exploration
     display:
       color: "#7438B8"
     description: |-
@@ -825,7 +820,6 @@ move_categories:
     title:
       canonical: Combat moves
       short: Combat
-    _idFragment: Combat
     display:
       color: "#D68F00"
     source:
@@ -1152,7 +1146,6 @@ move_categories:
     title:
       canonical: Suffer moves
       short: Suffer
-    _idFragment: Suffer
     display:
       color: "#C50000"
     description: |-
@@ -1395,7 +1388,6 @@ move_categories:
     title:
       canonical: Recover moves
       short: Recover
-    _idFragment: Recover
     display:
       color: "#179F0E"
     description: |-
@@ -1649,7 +1641,6 @@ move_categories:
     title:
       canonical: Threshold moves
       short: Threshold
-    _idFragment: Threshold
     display:
       color: "#676767"
     description: |-
@@ -1768,7 +1759,6 @@ move_categories:
     title:
       canonical: Legacy moves
       short: Legacy
-    _idFragment: Legacy
     display:
       color: "#4D5769"
     source:
@@ -1883,7 +1873,6 @@ move_categories:
     title:
       canonical: Fate moves
       short: Fate
-    _idFragment: Fate
     display:
       color: "#6B52EC"
     description: |-
@@ -1929,7 +1918,7 @@ move_categories:
         oracles:
           - starforged/oracles/moves/pay_the_price
         suggestions:
-          oracle_rolls:
+          oracle_tables:
             - starforged/oracles/misc/story_complication
         text: |-
           **When you suffer the outcome of an action**, choose one.
@@ -1966,7 +1955,6 @@ move_categories:
     title:
       canonical: Scene challenge moves
       short: Scene challenge
-    _idFragment: Scene challenge
     # NB: strictly speaking, these aren't a formal category of moves, but given their status as optional rules, grouping them together is practical
     display:
       color: *color:Adventure_Moves # these don't have an accent color in the rules guide, but since they overlap with the Adventure category this is a reasonable stopgap.
@@ -1997,7 +1985,6 @@ move_categories:
           canonical: Face Danger (Scene Challenge)
           standard: Face Danger (Scene Challenge)
           short: Face Danger
-        _idFragment: Face Danger
         variant_of: starforged/moves/adventure/face_danger
         trigger:
           text: When you attempt something risky or react to an imminent threat within a scene challenge...
@@ -2049,7 +2036,6 @@ move_categories:
           canonical: Secure an Advantage (Scene Challenge)
           standard: Secure an Advantage (Scene Challenge)
           short: Secure an Advantage
-        _idFragment: Secure an Advantage
         variant_of: starforged/moves/adventure/secure_an_advantage
         trigger:
           text: When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...

@@ -1,5 +1,5 @@
-import type { MixinId, MixinLabel, MixinText, InputClock, InputNumber, InputSelect, InputText, Move, MixinAlter, InputToggle } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { InputClock, InputNumber, InputSelect, InputText, InputToggle, MixinAlter, MixinId, MixinLabel, MixinText, Move } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * Represents one of an asset's three abilities.

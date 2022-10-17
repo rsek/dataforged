@@ -1,4 +1,4 @@
-export * from "./AttributeHash.js";
+export * from "./AttributeMap.js";
 export * from "./Keys.js";
 export * from "./Omit.js";
 export * from "./RequireKey.js";

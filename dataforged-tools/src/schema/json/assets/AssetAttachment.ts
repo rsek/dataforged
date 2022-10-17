@@ -8,7 +8,7 @@ export interface AssetAttachment {
   /**
    * The type of asset that this asset accepts as attachments.
    */
-  'asset_types': Array<AssetType['$id']>
+  'asset_types': AssetType['$id'][]
   /**
    * The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.
    * @nullable

@@ -1,11 +1,8 @@
-import { AlterMomentumBuilder, AlterMoveBuilder, InputBuilder, MoveBuilder } from '@builders'
-import { AlterAssetBuilder } from '@builders/assets/AssetAlterPropertiesBuilder.js'
-import { InputToggle, Replacement } from '@schema'
-import type { AlterMomentum, AlterMove, Asset, AssetAbility, Game, InputClock, InputNumber, InputSelect, InputText, Move, YamlAssetAbility } from '@schema'
+import { InputBuilder, MoveBuilder } from '@builders'
+import type { Asset, AssetAbility, Game, InputClock, InputNumber, InputSelect, InputText, InputToggle, Move, YamlAssetAbility } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
-import { replaceInAllStrings } from '@utils/object_transform/replaceInAllStrings.js'
 import _ from 'lodash-es'
-import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * @internal
@@ -18,7 +15,7 @@ export class AssetAbilityBuilder implements AssetAbility {
   inputs?: { [key: SnakeCaseString]: (InputNumber | InputClock | InputText | InputSelect | InputToggle) } | undefined
   // alter?: Alter | undefined
   enabled: boolean
-  constructor(yaml: YamlAssetAbility, id: AssetAbility['$id'], game: Game, parent: Asset) {
+  constructor (yaml: YamlAssetAbility, id: AssetAbility['$id'], game: Game, parent: Asset) {
     this.$id = id
     this.label = yaml.label
     this.text = yaml.text

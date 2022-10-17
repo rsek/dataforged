@@ -1,18 +1,19 @@
-import { OracleTableDisplay, TableColumnType, YamlTableColumnRoll, YamlTableColumnText } from '@schema'
-import type { OracleTable, TableColumnRoll, TableColumnText } from '@schema'
-import { formatId } from '@utils'
 import { NodeBuilder } from '@builders/NodeBuilder.js'
+import { TableColumnType } from '@schema'
+import type { OracleTableDisplay, TableColumnRoll, TableColumnText, YamlTableColumnRoll, YamlTableColumnText } from '@schema'
 
 /**
  * @internal
  */
+// @ts-expect-error
 export class TableColumnTextBuilder extends NodeBuilder<YamlTableColumnText, TableColumnText, OracleTableDisplay> implements TableColumnText {
   readonly column_type = TableColumnType.String
   label: TableColumnText['label']
   content: TableColumnText['content']
   key: TableColumnText['key']
   constructor (yaml: YamlTableColumnText, key: string, parent: OracleTableDisplay) {
-    super(yaml, `columns/${key}`, parent)
+    // @ts-expect-error
+    super(yaml, ['columns', key], parent)
     this.label = yaml.label ?? 'result'
     this.content = yaml.content ?? parent.$id
     this.key = yaml.key ?? 'result'
@@ -22,12 +23,13 @@ export class TableColumnTextBuilder extends NodeBuilder<YamlTableColumnText, Tab
 /**
  * @internal
  */
+// @ts-expect-error
 export class TableColumnRollBuilder extends NodeBuilder<YamlTableColumnRoll, TableColumnRoll, OracleTableDisplay> implements TableColumnRoll {
   readonly column_type = TableColumnType.DiceRange
   label: string
   content: TableColumnRoll['content']
   constructor (yaml: YamlTableColumnRoll, key: string, parent: OracleTableDisplay) {
-    let str
+    // @ts-expect-error
     super(yaml, `columns/${key}`, parent)
     this.label = yaml.label ?? 'roll'
     this.content = yaml.content ?? 'FIXME'

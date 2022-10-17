@@ -1,5 +1,5 @@
-import type { Oracle, OracleMatch, OracleSet, OracleTableDisplay, Title, Attribute, MixinDisplay, MixinGameObjects, MixinOracleContent, MixinRollTemplate, MixinSuggestions, MixinSummary, MultipleRolls, TruthOptionSubtableRowStarforged } from '@schema'
-import { AttributeMap } from '@utils'
+import type { MixinDisplay, MixinGameObjects, MixinOracleContent, MixinRollTemplate, MixinSuggestions, MixinSummary, MultipleRolls, Oracle, OracleMatch, OracleTableDisplay, Title } from '@schema'
+import type { AttributeMap } from '@utils'
 import type { Nullable } from '@utils/types/Nullable.js'
 
 /**
@@ -11,22 +11,22 @@ import type { Nullable } from '@utils/types/Nullable.js'
  */
 export interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
   /**
-   * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?$
+   * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+){2,}$
    */
   $id: string
   /**
    * @example
    * ```json
    * {
-   *  "canonical": "Spaceborne peril",
-   *  "standard": "Spaceborne peril",
+   *  "canonical": "Spaceborne Peril",
+   *  "standard": "Spaceborne Peril",
    *  "short": "Peril"
    * }
    * ```
    */
   title: Title
   display: OracleTableDisplay
-  table: Array<OracleTableRow | RowNullStub>
+  table: (OracleTableRow)[]
   /**
    * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
    */
@@ -38,11 +38,11 @@ export interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
  * @public
  */
 export interface OracleTableRow<Floor extends number | null = number | null, Ceiling extends number | null = number | null> extends Partial<Nullable<MixinSummary &
-  MixinRollTemplate &
-  MixinSuggestions &
-  MixinOracleContent &
-  MixinGameObjects &
-  MixinDisplay
+MixinRollTemplate &
+MixinSuggestions &
+MixinOracleContent &
+MixinGameObjects &
+MixinDisplay
 >> {
   /**
    * The ID of this row.
@@ -88,7 +88,7 @@ export interface OracleTableRow<Floor extends number | null = number | null, Cei
    * Additional oracle tables that should be rolled when this row is selected.
    * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
    */
-  oracle_rolls?: Array<OracleTable['$id']> | undefined
+  roll_oracles?: OracleTable['$id'][] | undefined
   /**
    * Data for rows that call for multiple rolls, e.g. on `Roll twice` results.
    */
@@ -97,15 +97,4 @@ export interface OracleTableRow<Floor extends number | null = number | null, Cei
   * The attributes set by this row.
    */
   set_attributes?: AttributeMap | undefined
-}
-
-/**
- * A row stub that has no dice range assigned to it, but still contains user-facing strings that are relevant to rendering the table. Typically, their dice range appears as "--" in the book.
- * @public
- */
-export interface RowNullStub extends Omit<Partial<OracleTableRow>, '$id'> {
-  floor: null
-  ceiling: null
-  result: string
-  summary?: string | undefined | null
 }

@@ -1,7 +1,8 @@
-import { Location, PlanetaryClass, Region } from '@game_objects'
-import { YamlOracleSet, YamlOracleTable, YamlOracleTableRow, YamlRegionSetMixin, YamlRowLike, YamlTableBySeven, YamlTableColumnRoll, YamlTableColumnText, YamlTableStubByEleven } from '@schema'
+import type { PlanetaryClass } from '@game_objects'
+import type { YamlOracleSet, YamlOracleTable, YamlOracleTableRow, YamlRegionSetMixin, YamlRowLike, YamlTableBySeven, YamlTableStubByEleven } from '@schema'
 
 type PlanetaryClassName = keyof typeof PlanetaryClass
+// @ts-expect-error
 
 export interface YamlOracleSetPlanet extends YamlOracleSet {
   title: {

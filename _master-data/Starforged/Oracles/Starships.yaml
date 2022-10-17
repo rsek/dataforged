@@ -7,7 +7,6 @@ oracle_sets:
     title:
       canonical: Starships
       short: Starship
-    _idFragment: Starships
     source:
       authors: [Shawn Tomkin]
       title: "Ironsworn: Starforged Rulebook"
@@ -65,9 +64,9 @@ oracle_sets:
                 attributes:
                   region: [terminus]
             table: &table:Mission
-              - [1, 3, Blockade a location, Suggestions: [*roll:Place]]
+              - [1, 3, Blockade a location, suggestions: [*roll:Place]]
               - [4, 6, Break a blockade]
-              - [7, 9, Collect a resource, Suggestions: [*roll:Object]]
+              - [7, 9, Collect a resource, suggestions: [*roll:Object]]
               - [10, 11, Command others]
               - [12, 14, Conduct diplomacy]
               - [15, 17, Conduct espionage]
@@ -76,7 +75,7 @@ oracle_sets:
               - [24, 26, Defend against an attack]
               - [27, 29, Deliver messages or data]
               - [30, 32, Establish a settlement]
-              - [33, 35, Evacuate a location, Suggestions: [*obj:Settlement]]
+              - [33, 35, Evacuate a location, suggestions: [*obj:Settlement]]
               - [36, 37, Explore a region]
               - [38, 39, Hold prisoners]
               - [40, 42, Hunt down another ship, suggestions: [*obj:Starship]]
@@ -188,6 +187,7 @@ oracle_sets:
       type:
         title:
           canonical: Type
+          standard: Starship Type
         source:
           page: 326
         usage:
@@ -208,29 +208,29 @@ oracle_sets:
               column_type: string
               key: summary
         table:
-          - [1, 2, Carrier, Launches fighters]
-          - [3, 6, Corvette, Light attack ship]
-          - [7, 11, Courier, Fast transport]
-          - [12, 14, Cruiser, Medium attack ship]
-          - [15, 16, Dreadnought, Heavy attack ship]
-          - [17, 19, Escape pod, Survival craft]
-          - [20, 22, Foundry, Mobile construction platform]
-          - [23, 27, Harvester, Fuel or energy excavator]
-          - [28, 33, Hauler, Heavy transport]
-          - [34, 36, Hunter, Stealthy attack ship]
-          - [37, 38, Ironhome, Habitat]
-          - [39, 42, Mender, Utility or repair]
-          - [43, 47, Outbounder, Remote survey or research]
-          - [48, 50, Pennant, Command ship]
-          - [51, 56, Prospector, Mineral excavator]
-          - [57, 61, Reclaimer, Salvage or rescue]
-          - [62, 64, Shuttle, Short-range transport]
-          - [65, 67, Snub fighter, Small attack craft]
+          - [1, 2, Carrier, Launches fighters, set_attributes: {starship_type: [ carrier]}]
+          - [3, 6, Corvette, Light attack ship, set_attributes: {starship_type: [corvette]}]
+          - [7, 11, Courier, Fast transport, set_attributes: {starship_type: [courier]}]
+          - [12, 14, Cruiser, Medium attack ship, set_attributes: {starship_type: [cruiser]}]
+          - [15, 16, Dreadnought, Heavy attack ship, set_attributes: {starship_type: [dreadnought]}]
+          - [17, 19, Escape pod, Survival craft, set_attributes: {starship_type: [escape]}]
+          - [20, 22, Foundry, Mobile construction platform, set_attributes: {starship_type: [foundry]}]
+          - [23, 27, Harvester, Fuel or energy excavator, set_attributes: {starship_type: [harvester]}]
+          - [28, 33, Hauler, Heavy transport, set_attributes: {starship_type: [hauler]}]
+          - [34, 36, Hunter, Stealthy attack ship, set_attributes: {starship_type: [hunter]}]
+          - [37, 38, Ironhome, Habitat, set_attributes: {starship_type: [ironhome]}]
+          - [39, 42, Mender, Utility or repair, set_attributes: {starship_type: [mender]}]
+          - [43, 47, Outbounder, Remote survey or research, set_attributes: {starship_type: [outbounder]}]
+          - [48, 50, Pennant, Command ship, set_attributes: {starship_type: [pennant]}]
+          - [51, 56, Prospector, Mineral excavator, set_attributes: {starship_type: [prospector]}]
+          - [57, 61, Reclaimer, Salvage or rescue, set_attributes: {starship_type: [reclaimer]}]
+          - [62, 64, Shuttle, Short-range transport, set_attributes: {starship_type: [shuttle]}]
+          - [65, 67, Snub fighter, Small attack craft, set_attributes: {starship_type: [snub_fighter]}]
           - [68, 82, Multipurpose, "[⏵Starship Mission](starforged/oracles/starships/mission)",
-              oracle_rolls: [starforged/oracles/starships/mission]]
-          - [83, 84, Unusual or unknown, Summary: null]
-          - [85, 94, "[⏵Fleet](starforged/oracles/starships/fleet)", Summary: null, oracle_rolls: [starforged/oracles/starships/fleet]]
-          - [95, 100, Ships in conflict (roll twice), Summary: null, oracle_rolls: [starforged/oracles/starships/type], *obj:Starship]
+              oracle_tables: [starforged/oracles/starships/mission], set_attributes: {starship_type: [multipurpose]}]
+          - [83, 84, Unusual or unknown, summary: null]
+          - [85, 94, "[⏵Fleet](starforged/oracles/starships/fleet)", summary: null, oracle_rolls: [starforged/oracles/starships/fleet]]
+          - [95, 100, Ships in conflict (roll twice), summary: null, oracle_rolls: [starforged/oracles/starships/type], *obj:Starship]
           # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
       fleet:
         title:
@@ -250,7 +250,7 @@ oracle_sets:
           - [61, 70, Trade caravan]
           - [71, 90, Transport and escorts]
           - [91, 100, "[⏵Starship Mission](starforged/oracles/starships/mission)",
-              oracle_rolls: [starforged/oracles/starships/mission]]
+              oracle_tables: [starforged/oracles/starships/mission]]
       initial_contact:
         title:
           canonical: Initial Contact
@@ -321,15 +321,15 @@ oracle_sets:
           tags: [name]
         table:
         # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
-          - [1, 1, Arclight, Part of speech: [compound noun]]
+          - [1, 1, Arclight, content: {part_of_speech: [compound noun]}]
           - [2, 2, Argent Arrow]
-          - [3, 3, Artemis, Part of speech: [proper noun]]
+          - [3, 3, Artemis, content: {part_of_speech: [proper noun]}]
           - [4, 4, Astral Explorer]
-          - [5, 5, Atlas, Part of speech: [proper noun]]
+          - [5, 5, Atlas, content: {part_of_speech: [proper noun]}]
           - [6, 6, Aurora]
           - [7, 7, Avari’s Wake]
           - [8, 8, Banshee’s Cry]
-          - [9, 9, Beowulf, Part of speech: [proper noun]]
+          - [9, 9, Beowulf, content: {part_of_speech: [proper noun]}]
           - [10, 10, Bloody Jaw]
           - [11, 11, Broken Sword]
           - [12, 12, Buccaneer]
@@ -342,7 +342,7 @@ oracle_sets:
           - [19, 19, Elara Five]
           - [20, 20, Enchantress]
           - [21, 21, Endurance]
-          - [22, 22, Excalibur, Part of speech: [proper noun]]
+          - [22, 22, Excalibur, content: {part_of_speech: [proper noun]}]
           - [23, 23, Eye of the Void]
           - [24, 24, Fall of Icarus]
           - [25, 25, Fallen Light]
@@ -359,7 +359,7 @@ oracle_sets:
           - [36, 36, Implacable]
           - [37, 37, Implicit]
           - [38, 38, Inferno]
-          - [39, 39, Invictus, Part of speech: [proper noun]]
+          - [39, 39, Invictus, content: {part_of_speech: [proper noun]}]
           - [40, 40, Iron Cairn]
           - [41, 41, Karena’s Reverie]
           - [42, 42, Kraken]
@@ -371,7 +371,7 @@ oracle_sets:
           - [48, 48, Luminous Sorrow]
           - [49, 49, Manta]
           - [50, 50, Mercy]
-          - [51, 51, Mutara, Part of speech: [proper noun]]
+          - [51, 51, Mutara, content: {part_of_speech: [proper noun]}]
           - [52, 52, Nebula Prowler]
           - [53, 53, Newton’s Folly]
           - [54, 54, Nightfall]
@@ -390,7 +390,7 @@ oracle_sets:
           - [67, 67, Reforged Hope]
           - [68, 68, Relentless]
           - [69, 69, Royal Signet]
-          - [70, 70, Rubicon, Part of speech: [proper noun]]
+          - [70, 70, Rubicon, content: {part_of_speech: [proper noun]}]
           - [71, 71, Sareea’s Tribute]
           - [72, 72, Second Chance]
           - [73, 73, Shard of the Sun]
@@ -401,12 +401,12 @@ oracle_sets:
           - [78, 78, Sovereign Skies]
           - [79, 79, Sparrowhawk]
           - [80, 80, Stardust]
-          - [81, 81, Starfall, Part of speech: [compound noun]]
+          - [81, 81, Starfall, content: {part_of_speech: [compound noun]}]
           - [82, 82, Stellar Hawk]
-          - [83, 83, Stormswept, Part of speech: [compound noun]]
+          - [83, 83, Stormswept, content: {part_of_speech: [compound noun]}]
           - [84, 84, Sundered Aegis]
           - [85, 85, Sundown]
-          - [86, 86, Sureshot, Part of speech: [compound noun]]
+          - [86, 86, Sureshot, content: {part_of_speech: [compound noun]}]
           - [87, 87, Terminus Clipper]
           - [88, 88, Terrapin]
           - [89, 89, Timber Wolf]
@@ -419,5 +419,5 @@ oracle_sets:
           - [96, 96, Vengeance]
           - [97, 97, Venture]
           - [98, 98, Vigilant]
-          - [99, 99, Voidtreader, Part of speech: [compound noun]]
+          - [99, 99, Voidtreader, content: {part_of_speech: [compound noun]}]
           - [100, 100, Vulture]

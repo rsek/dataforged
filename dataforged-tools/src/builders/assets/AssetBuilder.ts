@@ -1,6 +1,6 @@
-import { InputToggleBuilder, ConditionMeterBuilder, DisplayBuilder, SourceInheritorBuilder, TitleBuilder, InputBuilder, AssetAbilityBuilder } from '@builders'
+import { AssetAbilityBuilder, ConditionMeterBuilder, DisplayBuilder, InputBuilder, InputToggleBuilder, SourceInheritorBuilder, TitleBuilder } from '@builders'
 import { InputSelectOptionType, InputType, Replacement, YamlInput } from '@schema'
-import type { Asset, AssetAbility, AssetAttachment, InputToggle, AssetType, AssetUsage, ConditionMeter, Display, Game, Source, Title, YamlAsset } from '@schema'
+import type { Asset, AssetAbility, AssetAttachment, AssetType, AssetUsage, ConditionMeter, Display, Game, InputToggle, Source, Title, YamlAsset } from '@schema'
 import { formatId } from '@utils'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 import { buildLog } from '@utils/logging/buildLog.js'
@@ -21,7 +21,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
   inputs?: Asset['inputs']
   abilities: [AssetAbility, AssetAbility, AssetAbility]
   condition_meter?: ConditionMeter | undefined
-  constructor(yaml: YamlAsset, game: Game, parent: AssetType, rootSource: Source) {
+  constructor (yaml: YamlAsset, game: Game, parent: AssetType, rootSource: Source) {
     super(yaml.source ?? {}, rootSource)
     this.asset_type = parent.$id
     const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
@@ -64,7 +64,7 @@ export class AssetBuilder extends SourceInheritorBuilder implements Asset {
       })
     }
     this.requirement = yaml.requirement
-    this.condition_meter = (yaml['condition_meter'] != null) ? new ConditionMeterBuilder(yaml['condition_meter'], formatId('condition_meter', this.$id), this.asset_type) : undefined
+    this.condition_meter = (yaml.condition_meter != null) ? new ConditionMeterBuilder(yaml.condition_meter, formatId('condition_meter', this.$id), this.asset_type) : undefined
     if (yaml.abilities.length !== 3) {
       throw badJsonError(this.constructor, yaml.abilities, `Asset ${this.$id} doesn't have 3 abilities!`)
     } else {

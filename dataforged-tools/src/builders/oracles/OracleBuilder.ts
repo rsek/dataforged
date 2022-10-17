@@ -1,6 +1,7 @@
-import { NodeBuilder, OracleUsageBuilder, SourceBuilder, SourceInheritorBuilder, TitleBuilder } from '@builders'
-import type { Game, MixinId, MixinSource, Oracle, OracleDisplayBase, OracleSet, OracleTable, OracleTableRow, OracleUsage, RowNullStub, Source, Title, YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTitle } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { NodeLike } from '@builders'
+import { NodeBuilder, OracleUsageBuilder, TitleBuilder } from '@builders'
+import type { Oracle, OracleDisplayBase, OracleSet, OracleTable, OracleTableRow, OracleUsage, Title, YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableTemplate, YamlTitle } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import { extractAncestors } from '@utils/extractAncestors.js'
 import { buildLog } from '@utils/logging/buildLog.js'
@@ -12,13 +13,12 @@ import _ from 'lodash-es'
  * @see {@link OracleSet}, {@link OracleTable}
  * @internal
  */
-export abstract class OracleBuilder<TYamlIn extends (YamlOracleSet | YamlOracleSetTemplate | YamlOracleTable | YamlOracleTableTemplate) & { table?: YamlOracleTable['table'] | undefined }, TJsonOut extends Oracle, TParent extends MixinId & MixinSource> extends NodeBuilder<TYamlIn, TJsonOut, TParent> implements Oracle {
-  readonly _fragment!: string
+export abstract class OracleBuilder<TYamlIn extends (YamlOracleSet | YamlOracleSetTemplate | YamlOracleTable | YamlOracleTableTemplate), TJsonOut extends Oracle, TParent extends NodeLike<any>> extends NodeBuilder<TYamlIn, TJsonOut, TParent> implements Oracle {
+  readonly _fragments!: string[]
   readonly _parent!: TParent
   readonly _rawData!: TYamlIn
   title: Title
-  ancestors: Array<OracleSet['$id']>
-  source!: Source
+  ancestors: OracleSet['$id'][]
   aliases?: string[] | undefined
   display: OracleDisplayBase
   summary?: string | undefined
@@ -26,8 +26,8 @@ export abstract class OracleBuilder<TYamlIn extends (YamlOracleSet | YamlOracleS
   usage?: OracleUsage | undefined
   tables?: { [key: SnakeCaseString]: OracleTable } | undefined
   sets?: { [key: SnakeCaseString]: OracleSet } | undefined
-  table?: Array<OracleTableRow | RowNullStub> | undefined
-  constructor(
+  table?: (OracleTableRow)[] | undefined
+  constructor (
     yaml: TYamlIn,
     fragment: string,
     parent: TParent
@@ -35,17 +35,20 @@ export abstract class OracleBuilder<TYamlIn extends (YamlOracleSet | YamlOracleS
     let jsonClone = _.cloneDeep(yaml)
     const jsonOracleSet = jsonClone as Required<YamlOracleSetTemplate>
     const jsonOracleTable = jsonClone as Required<YamlOracleTableTemplate>
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (jsonOracleSet._templateOracleSet) {
       jsonClone = templateOracle<YamlOracleSet>(jsonOracleSet, jsonOracleSet._templateOracleSet) as TYamlIn
     }
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (jsonOracleTable._templateOracleTable) {
       jsonClone = templateOracle<YamlOracleTable>(jsonOracleTable, jsonOracleTable._templateOracleTable) as TYamlIn
     }
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (jsonOracleTable._templateTableRows) {
-      jsonClone.table = templateTableRows(jsonOracleTable._templateTableRows) as typeof jsonClone.table
+      (jsonClone as YamlOracleTableTemplate).table = templateTableRows(jsonOracleTable._templateTableRows)
     }
 
-    super(jsonClone, fragment, parent)
+    super(jsonClone, parent, fragment)
 
     buildLog(this.constructor, `Building: ${this.$id}`)
     this.title = new TitleBuilder(jsonClone.title as YamlTitle, this)

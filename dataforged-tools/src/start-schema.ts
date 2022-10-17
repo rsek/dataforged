@@ -3,10 +3,10 @@ import { writeSchema } from './index.js'
 
 const yamlDeclarations = './build/dataforged-tools.d.ts'
 const jsonDeclarations = '../dist/types/index.d.ts'
-type OutRoot = '../_master-data/schema' | `${'../dist'|'../src'|'./src/json'}/${'starforged'|'ironsworn'}`
+type OutRoot = '../_master-data/schema' | `${'../dist' | '../src' | './src/json'}/${'starforged' | 'ironsworn'}`
 type OutPath = `${OutRoot}/${string}.json`
 
-const schemasToWrite: Array<{typeName: string, filePathsOut: OutPath[], declarations: string}> = [
+const schemasToWrite: { typeName: string, filePathsOut: OutPath[], declarations: string }[] = [
   {
     typeName: 'YamlAssetRoot',
     filePathsOut: ['../_master-data/schema/assets.json'],

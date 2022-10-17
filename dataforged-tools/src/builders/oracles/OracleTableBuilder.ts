@@ -1,21 +1,23 @@
 
-import { OracleBuilder, OracleContentBuilder, OracleTableDisplayBuilder, OracleTableRowBuilder, RowNullStubBuilder } from '@builders'
-import type { AttributeKey, OracleContent, OracleSet, OracleTable, OracleTableDisplay, OracleTableRow, RowNullStub, Source, YamlOracleSet, YamlOracleTable, YamlOracleTableTemplate, YamlRowLike, YamlSimpleTableRow, YamlStub } from '@schema'
-import { AttributeMap, formatId } from '@utils'
-import _ from 'lodash'
+import type { NodeLike, OracleSetBuilder } from '@builders'
+import { OracleBuilder, OracleContentBuilder, OracleTableDisplayBuilder, OracleTableRowBuilder } from '@builders'
+import type { OracleContent, OracleTable, OracleTableDisplay, OracleTableRow, YamlOracleTable, YamlRowLike } from '@schema'
+import type { AttributeMap } from '@utils'
+import { formatId } from '@utils'
+import _ from 'lodash-es'
 
 /**
  * @internal
  */
-export class OracleTableBuilder extends OracleBuilder<YamlOracleTable, OracleTable, OracleSet> implements OracleTable {
+export class OracleTableBuilder<TParent extends NodeLike<any> = OracleSetBuilder> extends OracleBuilder<YamlOracleTable, OracleTable, TParent> implements OracleTable {
   display: OracleTableDisplay
   content?: OracleContent | undefined
   on_a_match?: OracleTable['on_a_match'] | undefined
-  table: Array<OracleTableRow | RowNullStub>
-  constructor(
+  table: (OracleTableRow)[]
+  constructor (
     yaml: YamlOracleTable,
     fragment: string,
-    parent: OracleSet
+    parent: TParent
   ) {
     super(
       yaml, fragment, parent)
@@ -24,29 +26,11 @@ export class OracleTableBuilder extends OracleBuilder<YamlOracleTable, OracleTab
       this.content = new OracleContentBuilder(this._rawData.content)
     }
     if (this._rawData.on_a_match != null) {
-      this.on_a_match = { $id: formatId('on_a_match', this.$id), ...this._rawData.on_a_match }
+      this.on_a_match = { $id: formatId(this.$id, 'on_a_match'), ...this._rawData.on_a_match }
     }
     const tableData = (this._rawData as Required<YamlOracleTable>).table
 
-    this.table = tableData.map((row: YamlRowLike, index) => {
-      // TODO: propagate attributes to row objects
-      let newRow: OracleTableRowBuilder | RowNullStubBuilder
-      if (Array.isArray(row)) {
-        if (row[0] === null && row[1] === null) {
-          const filteredRow = row.filter(item => typeof item === 'string') as string[]
-          newRow = new RowNullStubBuilder({ result: filteredRow[0], summary: filteredRow[1] })
-        } else {
-          newRow = new OracleTableRowBuilder(row, index, this)
-        }
-      } else if (typeof row === 'object') {
-        if (row.floor === null && row.ceiling === null) {
-          newRow = new RowNullStubBuilder(row)
-        } else {
-          newRow = new OracleTableRowBuilder(row, index, this)
-        }
-      } else { throw new Error(`Unable to infer row type from row at index ${index} of ${this.$id}`) }
-      return newRow
-    })
+    this.table = tableData.map((row: YamlRowLike, index) => new OracleTableRowBuilder(row, index, this))
 
     const attrs = OracleTableBuilder.inferSetsAttributes(this.table)
     if (Object.keys(attrs).length > 0) {
@@ -65,8 +49,9 @@ export class OracleTableBuilder extends OracleBuilder<YamlOracleTable, OracleTab
    * @param table - The table of data to infer attributes from.
    * @returns An array of objects with a single property called Key.
    */
-  static inferSetsAttributes(table: Array<OracleTableRow | RowNullStub>) {
-    const mapped = _(table).map(row => row.set_attributes).toArray().compact().value()
+  static inferSetsAttributes (table: (OracleTableRow)[]): AttributeMap {
+    const mapped = _.compact(_.map(table, row => row.set_attributes))
+
     return _.merge(...mapped as [AttributeMap, AttributeMap])
   }
 }

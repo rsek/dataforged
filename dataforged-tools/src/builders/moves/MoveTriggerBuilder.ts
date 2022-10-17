@@ -12,10 +12,10 @@ const progressMoves = ['fulfill_your_vow', 'forge_a_bond', 'finish_an_expedition
  */
 export class MoveTriggerBuilder implements MoveTrigger {
   $id: MoveTrigger['$id']
-  'options'?: Array<MoveTriggerOptionAction | MoveTriggerOptionProgress> | undefined
+  'options'?: (MoveTriggerOptionAction | MoveTriggerOptionProgress)[] | undefined
   text?: string | undefined
   by?: MoveTriggerBy | undefined
-  constructor(yaml: YamlMoveTrigger | YamlAlterMoveTrigger, parent: AlterMove | Move) {
+  constructor (yaml: YamlMoveTrigger | YamlAlterMoveTrigger, parent: AlterMove | Move) {
     this.$id = formatId('Trigger', parent.$id)
     this.text = yaml.text
     if (this.$id.includes('alter/moves')) {

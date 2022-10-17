@@ -25,7 +25,7 @@ export interface AlterMomentumBurn extends MixinId {
    * The effect altering the PC's momentum burn.
    */
   effect: MixinText
-  outcomes?: Array<typeof MoveOutcome[1] | typeof MoveOutcome[2]> | undefined
+  outcomes?: (typeof MoveOutcome[1] | typeof MoveOutcome[2])[] | undefined
 }
 /**
  * @public

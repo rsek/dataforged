@@ -1,7 +1,5 @@
-import type { OracleTableRow, YamlOracleSet, YamlOracleTable, YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
-import { KeysWithValuesOfType } from '@utils'
-
+import type { YamlOracleSet, YamlOracleTable, YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * @internal
@@ -37,6 +35,6 @@ export interface YamlOracleTableTemplate extends Partial<YamlOracleTable>, YamlT
  * @internal
  */
 export interface YamlTemplateTable {
-  rolls: Array<YamlSimpleTableRow | YamlRowRoll>
-  content: Array<YamlSimpleTableRow | YamlRowContentItem[] | string>
+  rolls: (YamlSimpleTableRow | YamlRowRoll)[]
+  content: (YamlSimpleTableRow | YamlRowContentItem[] | string)[]
 }

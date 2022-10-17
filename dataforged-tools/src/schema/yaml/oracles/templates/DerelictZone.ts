@@ -1,8 +1,8 @@
-import { GameObjectType, Zone } from '@game_objects'
-import { YamlFeatureMixin, YamlOpportunityMixin, YamlOracleSet, YamlOracleTable, YamlOracleTableRow, YamlPerilMixin, YamlRepeatableOracleMixin, YamlRowLike, YamlTableStubByEight, YamlTableStubByTen } from '@schema'
+import type { GameObjectType, Zone } from '@game_objects'
+import type { YamlFeatureMixin, YamlOpportunityMixin, YamlOracleSet, YamlOracleTable, YamlOracleTableRow, YamlPerilMixin, YamlRepeatableOracleMixin, YamlRowLike, YamlTableStubByEight, YamlTableStubByTen } from '@schema'
 
 type DerelictZoneName = keyof typeof Zone
-
+// @ts-expect-error
 export interface DerelictZoneSet<TZone extends DerelictZoneName> extends YamlOracleSet {
   title: {
     canonical: TZone
@@ -37,7 +37,7 @@ export interface DerelictZoneSet<TZone extends DerelictZoneName> extends YamlOra
       ]
     }
     peril: YamlPerilMixin & {
-      summary: 'Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.',
+      summary: 'Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.'
       table: [
         ...YamlTableStubByTen,
         YamlRowLike<91, 98>, // action + theme

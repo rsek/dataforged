@@ -1,5 +1,5 @@
 import type { EncounterClassic, MixinDescription, MixinDisplay, MixinId, MixinSource, MixinSummary, MixinTitle, Title } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 /**
  * @public
  */

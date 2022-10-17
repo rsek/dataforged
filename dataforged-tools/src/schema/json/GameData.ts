@@ -1,5 +1,5 @@
 import type { AssetType, DataRootBase, DelveRarity, DelveSiteDomain, DelveSiteTheme, EncounterNatureClassic, EncounterStarforged, IronlandsRegion, MoveCategory, OracleSet, TruthClassic, TruthStarforged } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * Base interface for *Ironsworn* and *Ironsworn: Starforged* game data.

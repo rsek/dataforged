@@ -9,10 +9,10 @@ import { formatId } from '@utils'
 export abstract class MoveTriggerOptionBuilder implements MoveTriggerOptionBase {
   $id: MoveTriggerOptionBase['$id']
   text?: string | undefined
-  'roll_type': RollType
+  roll_type: RollType
   method: RollMethod
-  using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic>
-  'custom_stat'?: CustomStat | undefined
+  using: (RollableStat | ProgressTypeStarforged | ProgressTypeClassic)[]
+  custom_stat?: CustomStat | undefined
   constructor (yaml: YamlMoveTriggerOptionAction | YamlMoveTriggerOptionProgress, parent: MoveTrigger, index: number) {
     this.$id = formatId((index + 1).toString(), parent.$id, 'Options')
     this.text = yaml.text
@@ -21,7 +21,7 @@ export abstract class MoveTriggerOptionBuilder implements MoveTriggerOptionBase 
     this.using = (yaml.using as typeof this['using']) ?? []
     if (yaml.custom_stat != null) {
       this.custom_stat = new CustomStatBuilder(yaml.custom_stat, this.$id)
-      if (this.using && this.custom_stat) {
+      if ((this.using != null) && this.custom_stat) {
         this.using = this.using.map(item => (item) === Replacement.CustomStat ? this.custom_stat?.$id : item) as typeof this['using']
       }
     }
@@ -44,7 +44,7 @@ export class MoveTriggerOptionActionBuilder extends MoveTriggerOptionBuilder imp
  */
 export class MoveTriggerOptionProgressBuilder extends MoveTriggerOptionBuilder implements MoveTriggerOptionProgress {
   'roll_type': RollType.Progress
-  using!: Array<ProgressTypeStarforged | ProgressTypeClassic>
+  using!: (ProgressTypeStarforged | ProgressTypeClassic)[]
   constructor (yaml: YamlMoveTriggerOptionProgress, parent: MoveTrigger, index: number) {
     super(yaml, parent, index)
   }

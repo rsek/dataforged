@@ -1,23 +1,27 @@
 
+import type { NodeBuilder, NodeLike } from '@builders'
 import { OracleBuilder, OracleSetDisplayBuilder, OracleTableBuilder } from '@builders'
-import type { MixinId, MixinSource, Oracle, OracleSet, OracleSetDisplay, OracleTable, Source, YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { OracleSet, OracleSetDisplay, OracleTable, YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { propagateToChildren } from '@utils/object_transform/propagateToChildren.js'
 import _ from 'lodash-es'
 
 /**
  * @internal
  */
-export class OracleSetBuilder<TYamlIn extends YamlOracleSet | YamlOracleSetTemplate = YamlOracleSet | YamlOracleSetTemplate,
-  TParent extends MixinId & MixinSource = MixinId & MixinSource> extends OracleBuilder<
+export class OracleSetBuilder<
+  TYamlIn extends YamlOracleSet | YamlOracleSetTemplate = YamlOracleSet | YamlOracleSetTemplate,
+  TParent extends NodeLike<any> = NodeLike<typeof OracleSetBuilder>
+  > extends OracleBuilder<
   TYamlIn,
   OracleSet,
-  TParent> implements OracleSet {
+  TParent
+  > implements OracleSet, NodeBuilder<TYamlIn, OracleSet, TParent> {
   display: OracleSetDisplay
   tables?: { [key: SnakeCaseString]: OracleTable } | undefined
   sets?: { [key: SnakeCaseString]: OracleSet } | undefined
   sample_names?: string[] | []
-  constructor(
+  constructor (
     yaml: TYamlIn,
     fragment: string,
     parent: TParent
@@ -46,7 +50,7 @@ export class OracleSetBuilder<TYamlIn extends YamlOracleSet | YamlOracleSetTempl
           if (yamlData.requires != null) {
             propagateToChildren(yamlData.requires, 'requires', oracleSet)
           }
-          return new OracleSetBuilder<YamlOracleSet, OracleSet>(oracleSet as YamlOracleSet, setFragment, this)
+          return new OracleSetBuilder<YamlOracleSet, typeof this>(oracleSet as YamlOracleSet, setFragment, this)
         }
       )
     }

@@ -4,10 +4,10 @@ import type { AttributeKey, SettlementInitialContact } from '@schema'
 /**
  * @public
  */
-export type SettlementRecord<K extends AttributeKey|never = never> = PlaceRecord<
+export type SettlementRecord<K extends AttributeKey | never = never> = PlaceRecord<
 GameObjectType.Settlement,
-AttributeKey.Authority|
-AttributeKey.Population|
+AttributeKey.Authority |
+AttributeKey.Population |
 AttributeKey.InitialContact | K
 > &
 {

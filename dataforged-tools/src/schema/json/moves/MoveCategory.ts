@@ -1,5 +1,5 @@
 import type { MixinDescription, MixinDisplay, MixinId, MixinOptional, MixinSource, MixinTitle, Move } from '@schema'
-import { SnakeCaseString } from '@schema/json/common/String.js'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * "Assets" is also valid, technically, but it's only used in IDs, so it's omitted here.

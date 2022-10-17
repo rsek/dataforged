@@ -1,6 +1,6 @@
 import type {
-  CustomStat, MixinId, MixinText, ProgressTypeClassic, ProgressTypeStarforged, RollMethod, RollType, Stat, PcConditionMeterType, ConditionMeter, LegacyTypeStarforged,
-  LegacyTypeClassic
+  ConditionMeter, CustomStat, LegacyTypeClassic, LegacyTypeStarforged, MixinId, MixinText, PcConditionMeterType, ProgressTypeClassic, ProgressTypeStarforged, RollMethod, RollType,
+  Stat
 } from '@schema'
 
 /**
@@ -28,7 +28,7 @@ export interface MoveTriggerOptionBase extends MixinId, Partial<MixinText> {
   /**
    * The stat(s) or progress track(s) that may be rolled with this move trigger option.
    */
-  using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic>
+  using: (RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic)[]
   /**
    * Defines a custom stat, if one is included in this object's `With` array.
    */
@@ -48,5 +48,5 @@ export interface MoveTriggerOptionAction extends MoveTriggerOptionBase {
  */
 export interface MoveTriggerOptionProgress extends MoveTriggerOptionBase {
   roll_type: RollType.Progress
-  using: Array<ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged>
+  using: (ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged)[]
 }

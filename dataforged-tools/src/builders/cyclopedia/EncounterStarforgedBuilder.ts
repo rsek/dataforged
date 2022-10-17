@@ -1,9 +1,9 @@
 import { DisplayBuilder, EncounterVariantBuilder, SourceBuilder, TitleBuilder } from '@builders'
 import { Game } from '@schema'
 import type { ChallengeRank, Display, EncounterNatureTypeStarforged, EncounterStarforged, EncounterTags, EncounterVariant, Source, Title, YamlEncounterStarforged } from '@schema'
+import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import _ from 'lodash-es'
-import { SnakeCaseString } from '@schema/json/common/String.js'
 
 /**
  * @internal
@@ -23,7 +23,7 @@ export class EncounterStarforgedBuilder implements EncounterStarforged {
   description: string
   quest_starter: string
   source: Source
-  constructor(yaml: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
+  constructor (yaml: YamlEncounterStarforged, ...ancestorSourceJson: Source[]) {
     const game = Game.Starforged
     const fragment = yaml._idFragment ?? yaml.title.canonical
     this.$id = formatId(fragment, game, 'encounters')
@@ -40,7 +40,7 @@ export class EncounterStarforgedBuilder implements EncounterStarforged {
     this.description = yaml.description
     this.quest_starter = yaml.quest_starter
     this.source = newSource
-    if (yaml.variants) {
+    if (yaml.variants != null) {
       this.variants = _.mapValues(yaml.variants, variant => new EncounterVariantBuilder(variant, this))
     }
   }

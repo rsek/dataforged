@@ -7,11 +7,11 @@ import type { IronlandsRegion, Source, YamlIronlandsRegion, YamlIronlandsRegionR
  * @internal
  */
 export class IronlandsRegionCollection extends RootCollectionBuilder<Game.Ironsworn, IronlandsRegion, YamlIronlandsRegion, YamlIronlandsRegionRoot> {
-  buildItem(item: YamlIronlandsRegion): IronlandsRegion {
-    return new IronlandsRegionBuilder(item, this.Source)
+  buildItem (item: YamlIronlandsRegion): IronlandsRegion {
+    return new IronlandsRegionBuilder(item, this.source)
   }
 
-  constructor(source: Source) {
+  constructor (source: Source) {
     super(
       Game.Ironsworn,
       'regions',

@@ -1,6 +1,6 @@
 import { DisplayBuilder, SourceBuilder, TitleBuilder } from '@builders'
-import { Asset, DelveRarity, Display, Source, SourceTitle, Title, YamlDelveRarity } from '@schema'
-import { Game } from '@schema'
+import type { Asset, DelveRarity, Display, Source, Title, YamlDelveRarity } from '@schema'
+import { SourceTitle } from '@schema'
 import { formatId } from '@utils'
 
 /**
@@ -14,7 +14,7 @@ export class DelveRarityBuilder implements DelveRarity {
   display: Display
   source: Source
   description: string
-  constructor(yaml: YamlDelveRarity, fragment: string) {
+  constructor (yaml: YamlDelveRarity, fragment: string) {
     this.$id = formatId(fragment, 'Ironsworn', 'Rarities')
     this.xp_cost = yaml.xp_cost
     this.asset = yaml.asset

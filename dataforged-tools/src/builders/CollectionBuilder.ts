@@ -1,5 +1,7 @@
+import type { NodeLike } from '@builders/NodeBuilder.js'
 import type { MASTER_DATA_PATH } from '@constants'
 import type { Game, MixinId, MixinSource, Source, YamlDataRoot } from '@schema'
+import { formatId } from '@utils'
 import { buildLog } from '@utils/logging/buildLog.js'
 import _ from 'lodash-es'
 
@@ -25,15 +27,10 @@ export interface HashBuilderRoot<
   /**
    * The objects parsed from the YAML source data files.
    */
-  srcYamlFiles: Array<Partial<TYamlRoot>>
+  srcYamlFiles: Partial<TYamlRoot>[]
 }
 
 export interface HashBuilderBase<TMapItem> {
-
-  /**
-   * The string used to represent this branch of the JSON tree when generating a human-readable string ID.
-   */
-  fragment: string
   /**
    * Dumps the Map items as a simple keyed object.
    */
@@ -76,18 +73,26 @@ export abstract class CollectionBuilder<
   TMapItem extends MixinSource,
   TYamlItem,
   // SchemaIn extends Schema, SchemaOut extends Schema
-  > extends Map<string, TMapItem> implements HashBuilder<TMapItem, TYamlItem> {
-  abstract buildItem(yaml: TYamlItem, key: string): TMapItem
+  > extends Map<string, TMapItem> implements NodeLike< Record<string, TMapItem>>, HashBuilder<TMapItem, TYamlItem> {
+  abstract buildItem (yaml: TYamlItem, key: string): TMapItem
   private readonly _fragment: string
-  public get fragment(): string {
+  public get _fragments (): string[] {
+    return [this._fragment]
+  }
+
+  get _parentId (): string {
+    return this.game
+  }
+
+  get $id (): string {
+    return formatId(this._parentId, ...this._fragments)
+  }
+
+  public get label (): string {
     return this._fragment
   }
 
-  public get label(): string {
-    return this._fragment
-  }
-
-  collect() {
+  collect (): this {
     buildLog(this.constructor, `Building ${this.label}...`)
     _.forEach(
       this.yaml,
@@ -97,31 +102,31 @@ export abstract class CollectionBuilder<
     return this
   }
 
-  toJson() {
+  toJson (): Record<string, TMapItem> {
     return Object.fromEntries(this.entries())
   }
 
-  get buildStatsMessage(): string {
+  get buildStatsMessage (): string {
     return `${this.size} ${this.label}`
   }
 
   private readonly _yaml: Record<string, TYamlItem>
-  public get yaml() {
+  public get yaml (): Record<string, TYamlItem> {
     return this._yaml
   }
 
   private readonly _game: G
-  public get game(): G {
+  public get game (): G {
     return this._game
   }
 
   private readonly _parent: MixinId | undefined
-  public get parent(): MixinId | undefined {
+  public get parent (): MixinId | undefined {
     return this._parent
   }
 
-  Source: Source
-  constructor(yaml: Record<string, TYamlItem>,
+  source: Source
+  constructor (yaml: Record<string, TYamlItem>,
     game: G,
     fragment: string,
     source: Source,
@@ -132,6 +137,6 @@ export abstract class CollectionBuilder<
     this._game = game
     this._fragment = fragment
     this._parent = parent
-    this.Source = source
+    this.source = source
   }
 }

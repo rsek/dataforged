@@ -4,7 +4,6 @@ source:
   license: https://creativecommons.org/licenses/by-sa/4.0/
 oracle_sets:
   vaults:
-    _idFragment: Vaults
     title:
       canonical: Precursor Vaults
       short: Vault
@@ -56,7 +55,7 @@ oracle_sets:
           - [36, 60, Vessel]
           - [61, 80, Monument]
           - [81, 95, Machine]
-          - [96, 100, Incomprehensible, Part of speech: [adjective]]
+          - [96, 100, Incomprehensible, content: {part_of_speech: [adjective]}]
       shape:
         title:
           canonical: Shape
@@ -75,8 +74,8 @@ oracle_sets:
           - [36, 40, Geometric (ring or torus)]
           - [41, 45, Geometric (sphere)]
           - [46, 55, Organic or curved]
-          - [56, 60, Platform or disc, Part of speech: [common noun]]
-          - [61, 65, Spires or towers, Part of speech: [common noun, plural]]
+          - [56, 60, Platform or disc, content: {part_of_speech: [common noun]}]
+          - [61, 65, Spires or towers, content: {part_of_speech: [common noun, plural]}]
           - [66, 68, Domed]
           - [69, 73, Spiky]
           - [74, 76, Sculptural or effigy]
@@ -101,7 +100,7 @@ oracle_sets:
           - [75, 78, Bone-like]
           - [79, 82, Flesh-like]
           - [83, 86, Plant-like]
-          - [87, 88, Energy, Part of speech: [common noun]]
+          - [87, 88, Energy, content: {part_of_speech: [common noun]}]
           - [89, 90, Liquid]
           - [91, 100, *result:RollTwice]
       outer_first_look:
@@ -150,7 +149,6 @@ oracle_sets:
       interior:
         title:
           canonical: Interior
-        _idFragment: Interior
         description: If you enter the site, check the [Inner First Look](starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.
         source:
           authors: [Shawn Tomkin]
@@ -161,7 +159,6 @@ oracle_sets:
           icon: img/vector/Vaults/Interior.svg
         tables:
           first_look:
-            _idFragment: First Look
             source:
               page: 364
             title:
@@ -208,7 +205,6 @@ oracle_sets:
               - [91, 93, Wet or humid]
               - [94, 100, *result:Descriptor+Focus]
           feature:
-            _idFragment: Feature
             title:
               canonical: Interior Feature
               short: Feature
@@ -251,11 +247,10 @@ oracle_sets:
               - [77, 79, Unintelligible whispers]
               - [80, 82, Vaulted chamber]
               - [83, 85, Vertical shaft]
-              - [86, 90, "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)", Suggestions: {Oracles: [starforged/oracles/vaults/sanctum]}]
+              - [86, 90, "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)", suggestions: {oracle_sets: [starforged/oracles/vaults/sanctum]}]
               - [91, 95, *result:Descriptor+Focus]
               - [96, 100, *result:RollTwice]
           peril:
-            _idFragment: Peril
             title:
               canonical: Interior Peril
               short: Peril
@@ -290,7 +285,6 @@ oracle_sets:
               - [96, 99, *result:Action+Theme]
               - [100, 100, *result:RollTwice]
           opportunity:
-            _idFragment: Opportunity
             title:
               canonical: Interior Opportunity
               short: Opportunity
@@ -316,7 +310,6 @@ oracle_sets:
       sanctum:
         title:
           canonical: Sanctum
-        _idFragment: Sanctum
         description: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
         display:
           icon: img/vector/Vaults/Sanctum.svg
@@ -327,7 +320,6 @@ oracle_sets:
           date: "050622"
         tables:
           purpose:
-            _idFragment: Purpose
             source:
               page: 365
             title:
@@ -368,7 +360,6 @@ oracle_sets:
               - [91, 95, *result:Action+Theme]
               - [96, 100, *result:RollTwice]
           feature:
-            _idFragment: Feature
             source:
               page: 368
             title:
@@ -415,7 +406,6 @@ oracle_sets:
               - [91, 95, *result:Descriptor+Focus]
               - [96, 100, *result:RollTwice]
           peril:
-            _idFragment: Peril
             source:
               page: 369
             title:
@@ -449,7 +439,6 @@ oracle_sets:
               - [96, 99, *result:Action+Theme]
               - [100, 100, *result:RollTwice]
           opportunity:
-            _idFragment: Opportunity
             title:
               canonical: Sanctum Opportunity
               short: Opportunity

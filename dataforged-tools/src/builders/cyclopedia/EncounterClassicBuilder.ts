@@ -13,7 +13,7 @@ export class EncounterClassicBuilder extends EncounterBuilder implements Encount
   display: Display
   source: Source
   your_truth?: string | undefined
-  constructor(yaml: YamlEncounterClassic, parent: EncounterNatureClassic) {
+  constructor (yaml: YamlEncounterClassic, parent: EncounterNatureClassic) {
     super(yaml)
     const fragment = yaml._idFragment ?? yaml.title.short ?? yaml.title.standard ?? yaml.title.canonical
     this.$id = formatId(fragment, parent.$id)
