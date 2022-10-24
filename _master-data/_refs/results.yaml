@@ -1,56 +1,56 @@
 Results:
   # composed results that are commonly used in rows
   Descriptor + Focus: &result:Descriptor+Focus
-    Result: "[⏵Descriptor + Focus](starforged/oracles/core/descriptor)"
-    oracle_tables:
+    result: "[⏵Descriptor + Focus](starforged/oracles/core/descriptor)"
+    oracle_rolls:
       - starforged/oracles/core/descriptor
       - starforged/oracles/core/focus
   Action + Theme: &result:Action+Theme
-    Result: "[⏵Action + Theme](starforged/oracles/core/action)"
-    oracle_tables:
+    result: "[⏵Action + Theme](starforged/oracles/core/action)"
+    oracle_rolls:
       - starforged/oracles/core/action
       - starforged/oracles/core/theme
   Roll twice: &result:RollTwice
-    Result: Roll twice
-    Multiple rolls:
-      Amount: 2
-      Allow duplicates: false
+    result: Roll twice
+    multiple_rolls:
+      amount: 2
+      allow_duplicates: false
   Roll three times: &result:RollThreeTimes
-    Result: Roll three times
-    Multiple rolls:
-      Amount: 3
-      Allow duplicates: false
+    result: Roll three times
+    multiple_rolls:
+      amount: 3
+      allow_duplicates: false
   Roll twice (rep ok): &result:RollTwice.RepeatsOk
-    Result: Roll twice
-    Multiple rolls:
-      Amount: 2
-      Allow duplicates: true
+    result: Roll twice
+    multiple_rolls:
+      amount: 2
+      allow_duplicates: true
   Roll three times (rep ok): &result:RollThreeTimes.RepeatsOk
-    Result: Roll three times
-    Multiple rolls:
-      Amount: 3
-      Allow duplicates: true
+    result: Roll three times
+    multiple_rolls:
+      amount: 3
+      allow_duplicates: true
   Roll twice (make it worse): &result:RollTwice.MakeItWorse
-    Multiple rolls:
-      Amount: 2
-      Allow duplicates: true
-      Make it worse: true
+    multiple_rolls:
+      amount: 2
+      allow_duplicates: true
+      make_it_worse: true
   New zone: &result:NewZone
-    Result: New zone
-    Game objects:
-      - Object type: Derelict Zone
+    result: New zone
+    game_objects:
+      - object_type: derelict_zone
   New zone (via Access): &result:NewZoneViaAccess
-    Result: New zone via [⏵Access](starforged/oracles/derelicts/access)
-    Game objects:
-      - Object type: Derelict Zone
-        Zone: Access
+    result: New zone via [⏵Access](starforged/oracles/derelicts/access)
+    game_objects:
+      - object_type: derelict_zone
+        zone: Access
   Precursor Vault (orbital): &result:PrecursorVault.Orbital
-    Result: "[⏵Precursor Vault (orbital)](starforged/oracles/vaults)"
-    Game objects:
-      - Object type: Precursor Vault
-        Location: Orbital
+    result: "[⏵Precursor Vault (orbital)](starforged/oracles/vaults)"
+    game_objects:
+      - object_type: precursor_vault
+        location: orbital
   Precursor Vault (planetside): &result:PrecursorVault.Planetside
-    Result: "[⏵Precursor Vault (planetside)](starforged/oracles/vaults)"
-    Game objects:
-      - Object type: Precursor Vault
-        Location: Planetside
+    result: "[⏵Precursor Vault (planetside)](starforged/oracles/vaults)"
+    game_objects:
+      - object_type: precursor_vault
+        location: planetside

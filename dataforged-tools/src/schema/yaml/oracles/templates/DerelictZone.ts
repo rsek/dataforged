@@ -8,7 +8,7 @@ export interface DerelictZoneSet<TZone extends DerelictZoneName> extends YamlOra
     canonical: TZone
   }
   display: {
-    icon: `img/vector/Derelicts/${typeof Zone[TZone]}.svg`
+    icon: `img/vector/derelicts/${typeof Zone[TZone]}.svg`
   }
   usage:
   {

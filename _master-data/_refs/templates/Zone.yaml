@@ -4,28 +4,28 @@ Derelict Zone: &template:Zone
     _templateVars:
       zone: ${{zone}}
     _childOf: Derelicts
-    Title:
-      Canonical: ${{zone}}
-    Display:
-      Icon: img/vector/derelicts/${{zone}}.svg
-    Usage:
-      Requires:
-        Attributes:
-          Zone: ${{zone}}
-    Source:
-      Title: "Ironsworn: Starforged Rulebook"
-      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-      Date: "050622"
-  Tables:
-    Area:
+    title:
+      canonical: ${{zone}}
+    display:
+      icon: img/vector/derelicts/${{zone}}.svg
+    usage:
+      requires:
+        attributes:
+          zone: ${{zone}}
+    source:
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+      date: "050622"
+  tables:
+    area:
       _templateOracleTable: &template.info:Zone.Area
-        Title:
-          Canonical: Area
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Repeatable: true
-        Description: |-
+        title:
+          canonical: Area
+        content:
+          part_of_speech: [fragment]
+        usage:
+          repeatable: true
+        description: |-
           Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.
       _templateTableRows:
         rolls: &template.rolls:Zone.Area
@@ -41,15 +41,15 @@ Derelict Zone: &template:Zone
           - [73, 80]
           - [81, 85, New zone, *obj:DerelictZone]
           - [86, 100, "New zone via [⏵Access](starforged/oracles/derelicts/access)", *obj:DerelictZone.Access]
-    Feature:
+    feature:
       _templateOracleTable: &template.info:Zone.Feature
-        Title:
-          Canonical: Feature
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Repeatable: true
-        Summary: |-
+        title:
+          canonical: Feature
+        content:
+          part_of_speech: [fragment]
+        usage:
+          repeatable: true
+        summary: |-
           Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
       _templateTableRows:
         rolls: &template.rolls:Zone.Feature
@@ -65,15 +65,15 @@ Derelict Zone: &template:Zone
           - [73, 80]
           - [81, 88]
           - [89, 100, *result:Descriptor+Focus]
-    Peril:
+    peril:
       _templateOracleTable: &template.info:Zone.Peril
-        Title:
-          Canonical: Peril
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Repeatable: true
-        Summary: |-
+        title:
+          canonical: Peril
+        content:
+          part_of_speech: [fragment]
+        usage:
+          repeatable: true
+        summary: |-
           Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
       _templateTableRows:
         rolls: &template.rolls:Zone.Peril
@@ -88,15 +88,15 @@ Derelict Zone: &template:Zone
           - [81, 90]
           - [91, 98, *result:Action+Theme]
           - [99, 100, *result:RollTwice]
-    Opportunity:
+    opportunity:
       _templateOracleTable: &template.info:Zone.Opportunity
-        Title:
-          Canonical: Opportunity
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Repeatable: true
-        Summary: |-
+        title:
+          canonical: Opportunity
+        content:
+          part_of_speech: [fragment]
+        usage:
+          repeatable: true
+        summary: |-
           Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
         rolls: &template.rolls:Zone.Opportunity
           - [1, 20]

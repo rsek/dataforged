@@ -4,47 +4,47 @@ Planet: &template:Planet
     _templateVars:
       planetary_class: ${{planetary_class}}
     _childOf: Planets
-    Title:
-      Canonical: ${{planetary_class}} world
-      Short: ${{planetary_class}}
-    Usage:
-      Requires:
-        Attributes:
-          Planetary Class: ${{planetary_class}}
-    Source:
-      Title: "Ironsworn: Starforged Rulebook"
-      License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-      Date: "050622"
-  Sets:
-    Settlements:
+    title:
+      canonical: ${{planetary_class}} world
+      short: ${{planetary_class}}
+    usage:
+      requires:
+        attributes:
+          planetary_class: ${{planetary_class}}
+    source:
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+      date: "050622"
+  sets:
+    settlements:
       _templateOracleSet: &template.info:Planet.Settlements
-        Title:
-          Canonical: Settlements
-        Usage:
-          Initial: true
-          Requires: *attr:Region.Any
-        Display:
-          Columns:
-            - Type: dice range
-              Content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
-              Label: Terminus
-            - Type: dice range
-              Content: starforged/oracles/planets/${{planetary_class}}/settlements/outlands
-              Label: Outlands
-            - Type: dice range
-              Content: starforged/oracles/planets/${{planetary_class}}/settlements/expanse
-              Label: Expanse
-            - Type: string
-              Content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
-        Tables:
-          Terminus:
+        title:
+          canonical: Settlements
+        usage:
+          initial: true
+          requires: *attr:Region.Any
+        display:
+          columns:
+            - type: dice range
+              content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
+              label: Terminus
+            - type: dice range
+              content: starforged/oracles/planets/${{planetary_class}}/settlements/outlands
+              label: Outlands
+            - type: dice range
+              content: starforged/oracles/planets/${{planetary_class}}/settlements/expanse
+              label: Expanse
+            - type: string
+              content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
+        tables:
+          terminus:
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
-              Title:
-                Canonical: Terminus
-              Display: &template.display:Planet.Settlements
-                Column of: starforged/oracles/planets/${{planetary_class}}/settlements
-              Usage:
-                Requires: *attr:Region.Terminus
+              title:
+                canonical: Terminus
+              display: &template.display:Planet.Settlements
+                column_of: starforged/oracles/planets/${{planetary_class}}/settlements
+              usage:
+                requires: *attr:Region.Terminus
             _templateTableRows:
               content: &template.content:Planet.Settlements
                 - [None]
@@ -58,33 +58,33 @@ Planet: &template:Planet
                   *obj:Settlement.PlanetAny,
                   *obj:Settlement.PlanetAny
                   ]
-          Outlands:
+          outlands:
             _templateOracleTable: &template.info:Planet.Settlements.Outlands
-              Title:
-                Canonical: Outlands
-              Display: *template.display:Planet.Settlements
-              Usage:
-                Requires: *attr:Region.Outlands
+              title:
+                canonical: Outlands
+              display: *template.display:Planet.Settlements
+              usage:
+                requires: *attr:Region.Outlands
             _templateTableRows:
               content: *template.content:Planet.Settlements
-          Expanse:
+          expanse:
             _templateOracleTable: &template.info:Planet.Settlements.Expanse
-              Title:
-                Canonical: Expanse
-              Display: *template.display:Planet.Settlements
-              Usage:
-                Requires: *attr:Region.Expanse
+              title:
+                canonical: Expanse
+              display: *template.display:Planet.Settlements
+              usage:
+                requires: *attr:Region.Expanse
             _templateTableRows:
               content: *template.content:Planet.Settlements
-  Tables:
-    Atmosphere:
+  tables:
+    atmosphere:
       _templateOracleTable: &template.info:Planet.Atmosphere
-        Title:
-          Canonical: Atmosphere
-        Content:
-          Part of speech: [adjective]
-        Usage:
-          Initial: true
+        title:
+          canonical: Atmosphere
+        content:
+          part_of_speech: [adjective]
+        usage:
+          initial: true
       _templateTableRows:
         content: &template.content:Planet.Atmosphere
           - [None/thin, Attributes: {Atmosphere: None/thin}, Description: "This planet is airless, or it's atmosphere is so thin as to be useless for humans."]
@@ -93,14 +93,14 @@ Planet: &template:Planet
           - [Marginal, Attributes: {Atmosphere: Marginal}, Description: "It's unhealthy to breathe this planet's atmosphere for more than a few hours at a time."]
           - [Breathable, Attributes: {Atmosphere: Breathable}, Description: "This atmosphere is not perfect, but it's good enough to sustain human life."]
           - [Ideal, Attributes: {Atmosphere: Ideal}, Description: "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air."]
-    Observed from space:
+    observed_from_space:
       _templateOracleTable: &template.info:Planet.ObservedFromSpace
-        Title:
-          Canonical: Observed From Space
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Max rolls: 2
+        title:
+          canonical: Observed From Space
+        content:
+          part_of_speech: [fragment]
+        usage:
+          max_rolls: 2
       _templateTableRows:
         rolls: &template.rolls:Planet.ObservedFromSpace
           - [1, 11]
@@ -113,15 +113,15 @@ Planet: &template:Planet
           - [78, 88]
           - [89, 98] # Descriptor + Focus
           - [99, 100] # Precursor Vault (orbital)
-    Feature:
+    feature:
       _templateOracleTable: &template.info:Planet.PlanetsideFeature
-        Title:
-          Canonical: Planetside Feature
-          Short: Feature
-        Content:
-          Part of speech: [fragment]
-        Usage:
-          Max rolls: 2
+        title:
+          canonical: Planetside Feature
+          short: Feature
+        content:
+          part_of_speech: [fragment]
+        usage:
+          max_rolls: 2
       _templateTableRows:
         rolls: &template.rolls:Planet.PlanetsideFeature
           - [1, 7]
@@ -139,13 +139,13 @@ Planet: &template:Planet
           - [85, 91]
           - [92, 98] # Descriptor + Focus
           - [99, 100] # Precursor Vault (planetside)
-    Life:
+    life:
       _templateOracleTable: &template.info:Planet.Life
-        Title:
-          Canonical: Life
-        Usage:
-        Content:
-          Part of speech: [adjective]
+        title:
+          canonical: Life
+        usage:
+        content:
+          part_of_speech: [adjective]
       _templateTableRows:
         content: &template.content:Planet.Life
           - [None, Attributes: {Life: None}]
