@@ -1,0 +1,143 @@
+source:
+  authors:
+    - Shawn Tomkin
+  title: "Ironsworn: Delve"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  feature:
+    title:
+      canonical: Feature
+    source:
+      authors:
+        - Shawn Tomkin
+      title: "Ironsworn: Delve"
+      page: 204
+      license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    summary: Use the [Aspect](ironsworn/oracles/feature/aspect) and [Focus](ironsworn/oracles/feature/focus) oracles to answer questions or provide inspiration for a location or event within a site.
+    description: |-
+      Use the [Aspect](ironsworn/oracles/feature/aspect) and [Focus](ironsworn/oracles/feature/focus) oracles to generate the details of a location or event within a site, or to answer questions about the site’s nature or history.
+
+      The basic function of these oracles is similar to the Action(ironsworn/oracles/action) and Theme(ironsworn/oracles/theme) oracles in Ironsworn Core. They are abstract word prompts you can interpret as appropriate to the current situation and setting. For example, you are traveling through a [Wild](ironsworn/themes/wild) [Tanglewood](ironsworn/domains/tanglewood) and roll “Something unusual or unexpected” on the domain feature table. You then [Ask the Oracle](ironsworn/move/fate/ask_the_oracle) what you discover using the [Aspect](ironsworn/oracles/feature/aspect) and [Focus](ironsworn/oracles/feature/focus) tables. The oracle responds, “Depleted Environment.” Interpreting this answer, you envision coming upon an expanse of cleared forest. All that remains of this once thick woodland is rotted stumps. What happened here? Perhaps the answer lies ahead...
+    tables:
+      aspect:
+        title:
+          canonical: "Feature: Aspect"
+          short: Aspect
+        usage:
+          suggestions:
+            oracle_tables:
+              - ironsworn/oracles/feature/focus
+        source:
+          page: 204
+        table:
+          - [1, 2, Blocked]
+          - [3, 4, Crafted]
+          - [5, 6, Ancient]
+          - [7, 8, Sunken]
+          - [9, 10, Trapped]
+          - [11, 12, Secret]
+          - [13, 14, Toxic]
+          - [15, 16, Ruined]
+          - [17, 18, Defended]
+          - [19, 20, Decaying]
+          - [21, 22, Marked]
+          - [23, 24, Guarded]
+          - [25, 26, Inaccessible]
+          - [27, 28, Foreboding]
+          - [29, 30, Veiled]
+          - [31, 32, Deep]
+          - [33, 34, Depleted]
+          - [35, 36, Foul]
+          - [37, 38, Elevated]
+          - [39, 40, Moving]
+          - [41, 42, Unnatural]
+          - [43, 44, Active]
+          - [45, 46, Confined]
+          - [47, 48, Fortified]
+          - [49, 50, Collapsed]
+          - [51, 52, Isolated]
+          - [53, 54, Destroyed]
+          - [55, 56, Open]
+          - [57, 58, Sacred]
+          - [59, 60, Flooded]
+          - [61, 62, Complex]
+          - [63, 64, Abundant]
+          - [65, 66, Hidden]
+          - [67, 68, Expansive]
+          - [69, 70, Mysterious]
+          - [71, 72, Unstable]
+          - [73, 74, Fragile]
+          - [75, 76, Broken]
+          - [77, 78, Ensnaring]
+          - [79, 80, Pillaged]
+          - [81, 82, Sealed]
+          - [83, 84, Makeshift]
+          - [85, 86, Treacherous]
+          - [87, 88, Natural]
+          - [89, 90, Dead]
+          - [91, 92, Unusual]
+          - [93, 94, Abandoned]
+          - [95, 96, Deadly]
+          - [97, 98, Forgotten]
+          - [99, 100, Mystical]
+      focus:
+        title:
+          canonical: "Feature: Focus"
+          short: Focus
+        usage:
+          suggestions:
+            oracle_tables:
+              - ironsworn/oracles/feature/aspect
+        source:
+          page: 205
+        table:
+          - [1, 2, Attack]
+          - [3, 4, Threshold]
+          - [5, 6, Boundary]
+          - [7, 8, Alarm]
+          - [9, 10, Exit]
+          - [11, 12, Passage]
+          - [13, 14, Crossing]
+          - [15, 16, Trigger]
+          - [17, 18, Trap]
+          - [19, 20, Hideaway]
+          - [21, 22, Nature]
+          - [23, 24, Sign]
+          - [25, 26, Refuge]
+          - [27, 28, Valuables]
+          - [29, 30, Breach]
+          - [31, 32, Route]
+          - [33, 34, Location]
+          - [35, 36, Trail]
+          - [37, 38, Supply]
+          - [39, 40, History]
+          - [41, 42, Prisoner]
+          - [43, 44, Habitation]
+          - [45, 46, Debris]
+          - [47, 48, Creature]
+          - [49, 50, Lair]
+          - [51, 52, Person]
+          - [53, 54, Enclosure]
+          - [55, 56, Remains]
+          - [57, 58, Water]
+          - [59, 60, Message]
+          - [61, 62, Darkness]
+          - [63, 64, Opening]
+          - [65, 66, Weapon]
+          - [67, 68, Entry]
+          - [69, 70, Illumination]
+          - [71, 72, Obstacle]
+          - [73, 74, Craft]
+          - [75, 76, Container]
+          - [77, 78, Information]
+          - [79, 80, Grave]
+          - [81, 82, Equipment]
+          - [83, 84, Shelter]
+          - [85, 86, Denizen]
+          - [87, 88, Environment]
+          - [89, 90, Material]
+          - [91, 92, Resource]
+          - [93, 94, Corruption]
+          - [95, 96, Death]
+          - [97, 98, Function]
+          - [99, 100, Power]
