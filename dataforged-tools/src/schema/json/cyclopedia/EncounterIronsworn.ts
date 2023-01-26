@@ -6,7 +6,7 @@ import type { Encounter, EncounterNatureTypeClassic } from '@schema'
  */
 export interface EncounterClassic extends Encounter {
   /**
-   * @pattern ^(starforged|ironsworn)/encounters/[a-z_]+/[a-z_]+$
+   * @pattern ^ironsworn/encounters/[a-z_]+/[a-z_]+$
    */
   $id: string
   nature: EncounterNatureTypeClassic
