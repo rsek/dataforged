@@ -2,58 +2,104 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Schema definitions used throughout Dataforged.",
   "definitions": {
-    "InputNumericType": {
+    "AttributeID": {
+      "type": "string",
+      "pattern": "^[a-z_]+/assets/[a-z_]+/[a-z_]+/attributes/[a-z_]+$"
+    },
+    "AttributeSetter": {
+      "propertyNames": {
+        "$ref": "#/definitions/AttributeID"
+      },
+      "patternProperties": {
+        "^.*$": {
+          "$ref": "#/definitions/PlayerStatID"
+        }
+      }
+    },
+    "AttributeNumericType": {
       "type": "string",
       "enum": [
         "condition_meter",
         "clock",
-        "number"
+        "counter"
       ]
     },
-    "InputNumeric": {
-      "type": "object",
-      "required": [
-        "_id",
-        "name",
-        "input_type",
-        "min",
-        "max",
-        "value"
-      ],
-      "properties": {
-        "_id": {
-          "type": "string"
+    "AttributeCounter": {
+      "allOf": [
+        {
+          "$ref": "#definitions/AttributeNumericBase"
         },
-        "name": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "input_type": {
-          "$ref": "#/definitions/InputNumericType"
-        },
-        "min": {
-          "type": "integer"
-        },
-        "max": {
-          "type": [
-            "integer",
-            "null"
-          ]
-        },
-        "value": {
-          "type": "integer"
+        {
+          "properties": {
+            "attribute_type": {
+              "const": "counter"
+            },
+            "min": {
+              "type": "integer",
+              "default": 0
+            },
+            "max": {
+              "type": [
+                "null",
+                "integer"
+              ],
+              "default": null
+            },
+            "value": {
+              "type": "integer",
+              "default": 0
+            }
+          }
         }
-      }
+      ]
     },
-    "InputNumericOverride": {
+    "AttributeNumericBase": {
+      "description": "Schema from which other numeric attributes are derived. Shouldn't be used directly.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "min",
+            "max",
+            "value",
+            "attribute_type"
+          ],
+          "properties": {
+            "attribute_type": {
+              "$ref": "#/definitions/AttributeNumericType"
+            },
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "value": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AttributeNumericOverride": {
       "description": "Adjusts an existing numeric input, usually a condition meter",
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "_override"
+        "_extends"
       ],
       "properties": {
-        "_override": {
-          "$ref": "#/definitions/InputID"
+        "_extends": {
+          "$ref": "#/definitions/AttributeID"
         },
         "min": {
           "type": "integer"
@@ -66,31 +112,269 @@
         }
       }
     },
-    "InputType": {
-      "title": "InputType",
-      "description": "The type of input represented by this object.",
-      "oneOf": [
+    "AttributeImpact": {
+      "allOf": [
         {
-          "$ref": "#/definitions/InputNumericType"
+          "$ref": "#/definitions/AttributeBase"
         },
         {
-          "type": "string",
-          "enum": [
-            "text",
-            "select",
-            "toggle"
-          ]
+          "required": [
+            "attribute_type"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "impact"
+            }
+          }
         }
       ]
     },
-    "AttributeValue": {
-      "type": "object"
-    },
-    "AssetAttributes": {
+    "AttributeBase": {
       "type": "object",
-      "patternProperties": {
-        ".*": {}
+      "required": [
+        "attribute_type",
+        "position",
+        "label"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/AttributeID"
+        },
+        "label": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "position": {
+          "$ref": "#/definitions/InputPosition"
+        },
+        "attribute_type": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AttributeNumericType"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "player_stat",
+                "player_condition_meter",
+                "impact",
+                "text"
+              ]
+            }
+          ]
+        }
       }
+    },
+    "PlayerConditionMeterName": {
+      "enum": [
+        "health",
+        "spirit",
+        "supply"
+      ]
+    },
+    "AttributeClock": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeNumericBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "min",
+            "value",
+            "max"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "clock"
+            },
+            "min": {
+              "const": 0
+            },
+            "value": {
+              "default": 0
+            },
+            "max": {
+              "title": "ClockSegments",
+              "enum": [
+                4,
+                6,
+                8,
+                10
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AttributeConditionMeter": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeNumericBase"
+        },
+        {
+          "required": [
+            "label",
+            "position",
+            "attribute_type",
+            "min",
+            "value",
+            "max"
+          ],
+          "properties": {
+            "label": {
+              "$ref": "#/definitions/LocalizedLabel"
+            },
+            "position": {
+              "const": "card-bottom"
+            },
+            "attribute_type": {
+              "const": "condition_meter"
+            },
+            "value": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            },
+            "min": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "AttributePlayerConditionMeter": {
+      "description": "A select element with predefined options to pick a standard player character condition meter.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "value",
+            "options",
+            "position"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "player_condition_meter"
+            },
+            "position": {
+              "default": "card-top"
+            },
+            "value": {
+              "description": "The current value of this attribute. In Dataforged/Datasworn's data, this will almost always be `null`, but other values are provided to ensure that types generated from the schema can be used at run-time or for static typing.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/PlayerConditionMeterID"
+                }
+              ],
+              "default": null
+            },
+            "options": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z][a-z_+]*[a-z]$": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "$ref": "#/definitions/LocalizedLabel"
+                    },
+                    "value": {
+                      "$ref": "#/definitions/PlayerConditionMeterID"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AttributeText": {
+      "description": "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "position",
+            "value"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "text"
+            },
+            "position": {
+              "default": "card-top"
+            },
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "default": null
+            }
+          }
+        }
+      ]
+    },
+    "AttributePlayerStat": {
+      "description": "An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "position",
+            "value",
+            "options"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "player_stat"
+            },
+            "position": {
+              "default": "card-top"
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/PlayerStatID"
+                }
+              ],
+              "default": null
+            },
+            "options": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z][a-z_+]*[a-z]$": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "$ref": "#/definitions/LocalizedLabel"
+                    },
+                    "value": {
+                      "$ref": "#/definitions/PlayerStatID"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "MoveTrigger": {
       "title": "MoveTrigger",
@@ -132,29 +416,53 @@
       },
       "additionalProperties": false
     },
+    "PlayerStatName": {
+      "enum": [
+        "edge",
+        "heart",
+        "iron",
+        "shadow",
+        "wits"
+      ]
+    },
+    "ImpactID": {
+      "type": "string",
+      "pattern": "^[a-z][a-z_+]*[a-z]/impacts/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
+    },
     "PlayerCharacter": {
       "properties": {
         "stats": {
           "type": "object",
           "propertyNames": {
-            "$ref": "#/definitions/PlayerStatType"
+            "$ref": "#/definitions/PlayerStatName"
           },
           "patternProperties": {
             ".*": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 4
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "$ref": "#/definitions/PlayerStatID"
+                },
+                "max": {
+                  "const": 4
+                },
+                "min": {
+                  "const": 0
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                }
+              }
             }
           }
         },
         "condition_meters": {
           "type": "object",
-          "propertyNames": {
-            "$ref": "#/definitions/PlayerConditionMeterType"
-          },
           "patternProperties": {
-            ".*": {
-              "$ref": "#/definitions/InputConditionMeter"
+            "^[a-z][a-z_+]*[a-z]$": {
+              "$ref": "#/definitions/AttributeConditionMeter"
             }
           }
         },
@@ -195,149 +503,27 @@
         "delve"
       ]
     },
-    "InputConditionMeter": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Input"
-        },
-        {
-          "required": [
-            "input_type",
-            "min",
-            "max",
-            "value"
-          ],
-          "properties": {
-            "aliases": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ConditionMeterAlias"
-              }
-            },
-            "input_type": {
-              "const": "condition_meter"
-            },
-            "max": {
-              "type": "integer",
-              "default": 5
-            },
-            "min": {
-              "const": 0
-            },
-            "value": {
-              "type": "integer",
-              "default": 5
-            }
-          }
-        }
-      ]
-    },
-    "InputSelect": {
-      "title": "InputSelect",
-      "description": "An input where one option is selected from a list, similar to `<select>`.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Input"
-        },
-        {
-          "properties": {
-            "input_type": {
-              "const": "select"
-            },
-            "sets_attributes": {
-              "patternProperties": {
-                "^[a-z][a-z_+]*[a-z]$": {
-                  "type": "object",
-                  "properties": {
-                    "attribute_type": {
-                      "enum": [
-                        "stat",
-                        "condition_meter"
-                      ]
-                    }
-                  }
-                }
-              }
-            },
-            "options": {
-              "patternProperties": {
-                "^[a-z][a-z_+]*[a-z]$": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "$ref": "#/definitions/LocalizedLabel"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "InputText": {
-      "description": "A string input, similar to `<input type=\"text\">`;",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Input"
-        },
-        {
-          "required": [
-            "input_type"
-          ],
-          "properties": {
-            "input_type": {
-              "const": "text"
-            },
-            "position": {
-              "default": "card-top"
-            }
-          }
-        }
-      ]
-    },
-    "Inputs": {
-      "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-z][a-z_+]*[a-z]$": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/InputNumeric"
-            },
-            {
-              "$ref": "#/definitions/InputSelect"
-            },
-            {
-              "$ref": "#/definitions/InputText"
-            }
-          ]
-        }
-      }
-    },
     "SnakeCase": {
       "type": "string",
       "pattern": "^[a-z][a-z_0-9]*[a-z0-9]$",
       "description": "A plain text string in snake_case. Usually this is an internal value for programmatic use only, so it shouldn't be localized."
     },
-    "PlayerStatType": {
-      "$ref": "#/definitions/SnakeCase",
+    "PlayerStatID": {
       "description": "A standard player character stat.",
       "enum": [
-        "edge",
-        "heart",
-        "iron",
-        "shadow",
-        "wits"
+        "player/stats/edge",
+        "player/stats/heart",
+        "player/stats/iron",
+        "player/stats/shadow",
+        "player/stats/wits"
       ]
     },
-    "PlayerConditionMeterType": {
-      "$ref": "#/definitions/SnakeCase",
+    "PlayerConditionMeterID": {
       "description": "A standard player character condition meter.",
       "enum": [
-        "health",
-        "spirit",
-        "supply"
+        "player/condition_meters/health",
+        "player/condition_meters/spirit",
+        "player/condition_meters/supply"
       ]
     },
     "ConditionMeterAlias": {
@@ -355,7 +541,7 @@
     "ConditionMeterType": {
       "oneOf": [
         {
-          "$ref": "#/definitions/PlayerConditionMeterType"
+          "$ref": "#/definitions/PlayerConditionMeterID"
         },
         {
           "$ref": "#/definitions/ConditionMeterAlias"
@@ -410,31 +596,46 @@
           "description": "The rules text for this asset ability.",
           "$ref": "#/definitions/LocalizedMarkdown"
         },
-        "inputs": {
-          "type": "object",
-          "additionalProperties": false,
+        "attachments": {
+          "description": "Details on what attachments (other assets) are accepted by this asset.",
+          "$comment": "#/definitions/AssetAttachment"
+        },
+        "attributes": {
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
+            ".*": {
               "oneOf": [
                 {
-                  "$ref": "#/definitions/InputNumericOverride"
+                  "$ref": "#/definitions/AttributeNumericOverride"
                 },
                 {
-                  "$ref": "#/definitions/InputNumeric"
-                },
-                {
-                  "$ref": "#/definitions/InputSelect"
-                },
-                {
-                  "$ref": "#/definitions/InputText"
+                  "$comment": "New condition meters require an ID.",
+                  "allOf": [
+                    {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/AttributeConditionMeter"
+                        },
+                        {
+                          "$ref": "#/definitions/AttributeCounter"
+                        },
+                        {
+                          "$ref": "#/definitions/AttributeText"
+                        },
+                        {
+                          "$ref": "#/definitions/AttributeClock"
+                        }
+                      ]
+                    },
+                    {
+                      "required": [
+                        "_id"
+                      ]
+                    }
+                  ]
                 }
               ]
             }
           }
-        },
-        "attachments": {
-          "description": "Details on what attachments (other assets) are accepted by this asset.",
-          "$comment": "#/definitions/AssetAttachment"
         },
         "moves": {
           "description": "Unique, self-contained moves added by this asset ability.",
@@ -465,6 +666,25 @@
         }
       }
     },
+    "Attribute": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AttributePlayerStat"
+        },
+        {
+          "$ref": "#/definitions/AttributePlayerConditionMeter"
+        },
+        {
+          "$ref": "#/definitions/AttributeText"
+        },
+        {
+          "$ref": "#/definitions/AttributeImpact"
+        },
+        {
+          "$ref": "#/definitions/AttributeConditionMeter"
+        }
+      ]
+    },
     "Asset": {
       "type": "object",
       "properties": {
@@ -472,26 +692,41 @@
           "$ref": "#/definitions/DataforgedID",
           "pattern": "^[a-z_]+/assets/[a-z_]+/[a-z_]+$"
         },
+        "attributes": {
+          "patternProperties": {
+            "^[a-z][a-z_+]*[a-z]$": {
+              "$ref": "#/definitions/Attribute"
+            }
+          }
+        },
         "name": {
           "$ref": "#/definitions/LocalizedLabel"
         },
         "abilities": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AssetAbility"
-          },
-          "minItems": 3,
-          "maxItems": 3
+          "type": "object",
+          "required": [
+            "1",
+            "2",
+            "3"
+          ],
+          "properties": {
+            "1": {
+              "$ref": "#/definitions/AssetAbility"
+            },
+            "2": {
+              "$ref": "#/definitions/AssetAbility"
+            },
+            "3": {
+              "$ref": "#/definitions/AssetAbility"
+            }
+          }
         },
         "requirement": {
-          "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
+          "description": "A markdown string representing the requirement text that appears at the top of some asset cards.",
           "$ref": "#/definitions/LocalizedMarkdown"
         },
         "source": {
           "$ref": "#/definitions/Source"
-        },
-        "inputs": {
-          "$ref": "#/definitions/Inputs"
         },
         "attachments": {
           "description": "Details on what attachments (other assets) are accepted by this asset.",
@@ -523,10 +758,10 @@
       ],
       "not": {
         "required": [
-          "condition_meter"
+          "inputs"
         ],
         "properties": {
-          "condition_meter": {
+          "inputs": {
             "type": "object"
           }
         }
@@ -559,8 +794,7 @@
               ],
               "properties": {
                 "name": {
-                  "description": "The player-facing text label of this item.",
-                  "type": "string"
+                  "$ref": "#/definitions/LocalizedLabel"
                 },
                 "value": {
                   "description": "The numeric value to be used as +stat when making an Action Roll.",
@@ -635,10 +869,10 @@
               "items": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/PlayerStatType"
+                    "$ref": "#/definitions/PlayerStatID"
                   },
                   {
-                    "$ref": "#/definitions/PlayerConditionMeterType"
+                    "$ref": "#/definitions/PlayerConditionMeterID"
                   },
                   {
                     "$ref": "#/definitions/ConditionMeterAlias"
@@ -647,7 +881,7 @@
                     "$ref": "#/definitions/CustomStatID"
                   },
                   {
-                    "$ref": "#/definitions/InputID"
+                    "$ref": "#/definitions/AttributeID"
                   }
                 ]
               }
@@ -1249,44 +1483,20 @@
         }
       }
     },
-    "InputID": {
-      "type": "string",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/assets(/[a-z][a-z_]*[a-z]){2}/inputs/[a-z][a-z_]*[a-z]$"
-    },
-    "Input": {
-      "type": "object",
-      "description": "A player-facing input element of any type.",
-      "required": [
-        "name",
-        "input_type",
-        "_id"
+    "InputPosition": {
+      "title": "InputPosition",
+      "enum": [
+        "card-top",
+        "card-back",
+        "card-bottom",
+        "ability-1-right",
+        "ability-2-right",
+        "ability-3-right",
+        "ability-1-bottom",
+        "ability-2-bottom",
+        "ability-3-bottom"
       ],
-      "properties": {
-        "name": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "_id": {
-          "$ref": "#/definitions/InputID"
-        },
-        "position": {
-          "title": "InputPosition",
-          "enum": [
-            "card-top",
-            "card-back",
-            "card-bottom",
-            "ability-1-right",
-            "ability-2-right",
-            "ability-3-right",
-            "ability-1-bottom",
-            "ability-2-bottom",
-            "ability-3-bottom"
-          ],
-          "type": "string"
-        },
-        "input_type": {
-          "$ref": "#/definitions/InputType"
-        }
-      }
+      "type": "string"
     },
     "Move": {
       "type": "object",
@@ -1295,6 +1505,7 @@
           "$ref": "#/definitions/LocalizedLabel"
         },
         "custom_stats": {
+          "$comment": "TODO: rewrite as attribute?",
           "title": "CustomStats",
           "properties": {
             "_id": {
@@ -1321,7 +1532,7 @@
         },
         "asset": {
           "description": "The ID of the parent Asset of the move, if any.",
-          "type": "string"
+          "$ref": "#/definitions/AssetID"
         },
         "progress_move": {
           "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
@@ -1419,7 +1630,6 @@
                 },
                 "assets": {
                   "type": "object",
-                  "additionalProperties": false,
                   "patternProperties": {
                     "^[a-z][a-z_+]*[a-z]$": {
                       "$ref": "#/definitions/Asset"
