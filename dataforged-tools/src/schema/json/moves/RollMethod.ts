@@ -36,7 +36,11 @@ export enum RollMethod {
   /**
    * The move trigger option results in an automatic weak hit - no roll required.
    */
-  WeakHit = 'weak_hit'
+  WeakHit = 'weak_hit',
+  /**
+   * The move trigger options results in an automatic miss - no roll required.
+   */
+  Miss = 'miss'
 }
 /**
  * @public
