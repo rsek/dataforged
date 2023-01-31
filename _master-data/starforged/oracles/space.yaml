@@ -1,415 +1,412 @@
-source:
-  authors: [Shawn Tomkin]
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-sa/4.0
-oracle_sets:
-  space:
-    title:
-      canonical: Space Encounters
-      short: Space
-    source:
-      authors: [Shawn Tomkin]
-      title: "Ironsworn: Starforged Rulebook"
-      license: https://creativecommons.org/licenses/by-sa/4.0
-      date: "050622"
-    sets:
-      sighting:
-        title:
-          canonical: Space Sighting
-          short: Sighting
-        source:
-          page: 300
-        display:
-          columns:
+starforged:
+  oracle_sets:
+    space:
+      title:
+        canonical: Space Encounters
+        short: Space
+      source:
+        authors: [Shawn Tomkin]
+        title: "Ironsworn: Starforged Rulebook"
+        license: https://creativecommons.org/licenses/by-sa/4.0
+        date: "050622"
+      sets:
+        sighting:
+          title:
+            canonical: Space Sighting
+            short: Sighting
+          source:
+            page: 300
+          display:
+            columns:
+              terminus:
+                content: starforged/oracles/space/sighting/terminus
+                label: Terminus
+                column_type: dice_range
+              outlands:
+                content: starforged/oracles/space/sighting/outlands
+                label: Outlands
+                column_type: dice_range
+              expanse:
+                content: starforged/oracles/space/sighting/expanse
+                label: Expanse
+                column_type: dice_range
+              result:
+                content: starforged/oracles/space/sighting/terminus
+                column_type: string
+          content:
+            part_of_speech: [fragment]
+          description: |-
+            Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
+          usage:
+            allow_duplicates: true
+            requires:
+              attributes:
+                region: null
+            repeatable: true
+          tables:
             terminus:
-              content: starforged/oracles/space/sighting/terminus
-              label: Terminus
-              column_type: dice_range
+              title:
+                canonical: Terminus
+              display:
+                column_of: starforged/oracles/space/sighting
+              usage:
+                requires:
+                  attributes:
+                    region: [terminus]
+              table: &table:SpaceSighting
+                - [1, 15, "[⏵Stellar Object](starforged/oracles/space/stellar_object)", *roll:StellarObject]
+                - [16, 35, "[⏵Planet](starforged/oracles/planets)", *obj:Planet]
+                - [36, 40, "[⏵Settlement](starforged/oracles/settlements)", *obj:Settlement]
+                - [41, 47, "[⏵Starship](starforged/oracles/starships)", *obj:Starship]
+                - [48, 51, "[⏵Derelict](starforged/oracles/derelicts)", *obj:Derelict]
+                - [52, 53, "[⏵Precursor Vault](starforged/oracles/vaults)", *obj:Vault]
+                - [54, 55, "[⏵Creature](starforged/oracles/creatures)", *obj:Creature]
+                - [56, 60, *result:Descriptor+Focus]
+                - [61, 65, "Debris field: Mineral asteroids"]
+                - [66, 68, "Debris field: Frozen asteroids"]
+                - [69, 70, "Debris field: Crystalline asteroids"]
+                - [71, 72, "Debris field: Creature boneyard"]
+                - [73, 74, "Debris field: Metallic wreckage"]
+                - [75, 76, Large rogue asteroid]
+                - [77, 78, Comet with a tail of ionized gas]
+                - [79, 81, Fiery energy storm]
+                - [82, 83, Chaotic meteoroid storm]
+                - [84, 85, Turbulent gravitational wave]
+                - [86, 93, Dense nebula cloud]
+                - [94, 98, *result:RollTwice.RepeatsOk]
+                - [99, 100, *result:RollThreeTimes.RepeatsOk]
             outlands:
-              content: starforged/oracles/space/sighting/outlands
-              label: Outlands
-              column_type: dice_range
+              title:
+                canonical: Outlands
+              display:
+                column_of: starforged/oracles/space/sighting
+              usage:
+                requires:
+                  attributes:
+                    region: [outlands]
+              _templateTableRows:
+                content: *table:SpaceSighting
+                rolls:
+                  - [1, 15]
+                  - [16, 35]
+                  - [36, 38]
+                  - [39, 43]
+                  - [44, 46]
+                  - [47, 49]
+                  - [50, 52]
+                  - [53, 58]
+                  - [59, 63]
+                  - [64, 66]
+                  - [67, 68]
+                  - [69, 70]
+                  - [71, 72]
+                  - [73, 74]
+                  - [75, 76]
+                  - [77, 80]
+                  - [81, 82]
+                  - [83, 85]
+                  - [86, 93]
+                  - [94, 98]
+                  - [99, 100]
             expanse:
-              content: starforged/oracles/space/sighting/expanse
-              label: Expanse
-              column_type: dice_range
-            result:
-              content: starforged/oracles/space/sighting/terminus
-              column_type: string
-        content:
-          part_of_speech: [fragment]
-        description: |-
-          Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
-        usage:
-          allow_duplicates: true
-          requires:
-            attributes:
-              region: null
-          repeatable: true
-        tables:
-          terminus:
-            title:
-              canonical: Terminus
-            display:
-              column_of: starforged/oracles/space/sighting
-            usage:
-              requires:
-                attributes:
-                  region: [terminus]
-            table: &table:SpaceSighting
-              - [1, 15, "[⏵Stellar Object](starforged/oracles/space/stellar_object)", *roll:StellarObject]
-              - [16, 35, "[⏵Planet](starforged/oracles/planets)", *obj:Planet]
-              - [36, 40, "[⏵Settlement](starforged/oracles/settlements)", *obj:Settlement]
-              - [41, 47, "[⏵Starship](starforged/oracles/starships)", *obj:Starship]
-              - [48, 51, "[⏵Derelict](starforged/oracles/derelicts)", *obj:Derelict]
-              - [52, 53, "[⏵Precursor Vault](starforged/oracles/vaults)", *obj:Vault]
-              - [54, 55, "[⏵Creature](starforged/oracles/creatures)", *obj:Creature]
-              - [56, 60, *result:Descriptor+Focus]
-              - [61, 65, "Debris field: Mineral asteroids"]
-              - [66, 68, "Debris field: Frozen asteroids"]
-              - [69, 70, "Debris field: Crystalline asteroids"]
-              - [71, 72, "Debris field: Creature boneyard"]
-              - [73, 74, "Debris field: Metallic wreckage"]
-              - [75, 76, Large rogue asteroid]
-              - [77, 78, Comet with a tail of ionized gas]
-              - [79, 81, Fiery energy storm]
-              - [82, 83, Chaotic meteoroid storm]
-              - [84, 85, Turbulent gravitational wave]
-              - [86, 93, Dense nebula cloud]
-              - [94, 98, *result:RollTwice.RepeatsOk]
-              - [99, 100, *result:RollThreeTimes.RepeatsOk]
-          outlands:
-            title:
-              canonical: Outlands
-            display:
-              column_of: starforged/oracles/space/sighting
-            usage:
-              requires:
-                attributes:
-                  region: [outlands]
-            _templateTableRows:
-              content: *table:SpaceSighting
-              rolls:
-                - [1, 15]
-                - [16, 35]
-                - [36, 38]
-                - [39, 43]
-                - [44, 46]
-                - [47, 49]
-                - [50, 52]
-                - [53, 58]
-                - [59, 63]
-                - [64, 66]
-                - [67, 68]
-                - [69, 70]
-                - [71, 72]
-                - [73, 74]
-                - [75, 76]
-                - [77, 80]
-                - [81, 82]
-                - [83, 85]
-                - [86, 93]
-                - [94, 98]
-                - [99, 100]
-          expanse:
-            title:
-              canonical: Expanse
-            display:
-              column_of: starforged/oracles/space/sighting
-            usage:
-              requires:
-                attributes:
-                  region: [expanse]
-            _templateTableRows:
-              content: *table:SpaceSighting
-              rolls:
-                - [1, 15]
-                - [16, 35]
-                - [36, 37]
-                - [38, 39]
-                - [40, 41]
-                - [42, 45]
-                - [46, 49]
-                - [50, 56]
-                - [57, 61]
-                - [62, 64]
-                - [65, 66]
-                - [67, 68]
-                - [69, 70]
-                - [71, 72]
-                - [73, 74]
-                - [75, 79]
-                - [80, 81]
-                - [82, 85]
-                - [86, 93]
-                - [94, 98]
-                - [99, 100]
-      sector_name:
-        title:
-          canonical: Sector Name
-        source:
-          page: 302
-        display:
-          columns:
-            result:
-              column_type: dice_range
-              content: starforged/oracles/space/sector_name/prefix
+              title:
+                canonical: Expanse
+              display:
+                column_of: starforged/oracles/space/sighting
+              usage:
+                requires:
+                  attributes:
+                    region: [expanse]
+              _templateTableRows:
+                content: *table:SpaceSighting
+                rolls:
+                  - [1, 15]
+                  - [16, 35]
+                  - [36, 37]
+                  - [38, 39]
+                  - [40, 41]
+                  - [42, 45]
+                  - [46, 49]
+                  - [50, 56]
+                  - [57, 61]
+                  - [62, 64]
+                  - [65, 66]
+                  - [67, 68]
+                  - [69, 70]
+                  - [71, 72]
+                  - [73, 74]
+                  - [75, 79]
+                  - [80, 81]
+                  - [82, 85]
+                  - [86, 93]
+                  - [94, 98]
+                  - [99, 100]
+        sector_name:
+          title:
+            canonical: Sector Name
+          source:
+            page: 302
+          display:
+            columns:
+              result:
+                column_type: dice_range
+                content: starforged/oracles/space/sector_name/prefix
+              prefix:
+                column_type: string
+                key: result
+                content: starforged/oracles/space/sector_name/prefix
+                label: Prefix
+              suffix:
+                column_type: string
+                key: result
+                content: starforged/oracles/space/sector_name/suffix
+                label: Suffix
+          usage:
+            roll_template:
+              result: "${{starforged/oracles/space/sector_name/prefix}} {{starforged/oracles/space/sector_name/suffix}}"
+          tables:
             prefix:
-              column_type: string
-              key: result
-              content: starforged/oracles/space/sector_name/prefix
-              label: Prefix
+              title:
+                canonical: Prefix
+              display:
+                column_of: starforged/oracles/space/sector_name
+              description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
+              usage:
+                initial: true
+                suggestions:
+                  oracle_tables:
+                    - starforged/oracles/space/sector_name/suffix
+              content:
+                part_of_speech: [adjective, proper noun fragment]
+                tags: [template fragment]
+              table:
+                - [1, 2, Accursed]
+                - [3, 4, Ashen]
+                - [5, 6, Asteria, content: {part_of_speech: [proper noun]}]
+                - [7, 8, Bitter]
+                - [9, 10, Blighted]
+                - [11, 12, Bloodied]
+                - [13, 14, Boundless]
+                - [15, 16, Burning]
+                - [17, 18, Cortana, content: {part_of_speech: [proper noun]}]
+                - [19, 20, Corvus, content: {part_of_speech: [proper noun]}]
+                - [21, 22, Crimson]
+                - [23, 24, Cygnus, content: {part_of_speech: [proper noun]}]
+                - [25, 26, Delphi, content: {part_of_speech: [proper noun]}]
+                - [27, 28, Delphian, content: {part_of_speech: [proper noun]}]
+                - [29, 30, Devil's, content: {part_of_speech: [proper noun, possessive case]}]
+                - [31, 32, Ebon]
+                - [33, 34, Essus, content: {part_of_speech: [proper noun]}]
+                - [35, 36, Fallen]
+                - [37, 38, Ferrous]
+                - [39, 40, Fool's, content: {part_of_speech: [proper noun, possessive case]}]
+                - [41, 42, Forgotten]
+                - [43, 44, Haunted]
+                - [45, 46, Hidden]
+                - [47, 48, Hollow]
+                - [49, 50, Igneous]
+                - [51, 52, Infernal]
+                - [53, 54, Invidia, content: {part_of_speech: [proper noun]}]
+                - [55, 56, Iron]
+                - [57, 58, Kalidas, content: {part_of_speech: [proper noun]}]
+                - [59, 60, Kronos, content: {part_of_speech: [proper noun]}]
+                - [61, 62, Lacuna, content: {part_of_speech: [proper noun]}]
+                - [63, 64, Lumen, content: {part_of_speech: [proper noun]}]
+                - [65, 66, Mobius, content: {part_of_speech: [proper noun]}]
+                - [67, 68, Morien, content: {part_of_speech: [proper noun]}]
+                - [69, 70, Onyx]
+                - [71, 72, Outer]
+                - [73, 74, Sanguis, content: {part_of_speech: [proper noun]}]
+                - [75, 76, Scarred]
+                - [77, 78, Scorched]
+                - [79, 80, Shattered]
+                - [81, 82, Shrouded]
+                - [83, 84, Sindri, content: {part_of_speech: [proper noun]}]
+                - [85, 86, Solana, content: {part_of_speech: [proper noun]}]
+                - [87, 88, Stygian]
+                - [89, 90, Sulaco, content: {part_of_speech: [proper noun]}]
+                - [91, 92, Sundered]
+                - [93, 94, Thunor, content: {part_of_speech: [proper noun]}]
+                - [95, 96, Vanguard]
+                - [97, 98, Veiled]
+                - [99, 100, Wasted]
             suffix:
-              column_type: string
-              key: result
-              content: starforged/oracles/space/sector_name/suffix
-              label: Suffix
-        usage:
-          roll_template:
-            result: "${{starforged/oracles/space/sector_name/prefix}} {{starforged/oracles/space/sector_name/suffix}}"
-        tables:
-          prefix:
-            title:
-              canonical: Prefix
-            display:
-              column_of: starforged/oracles/space/sector_name
-            description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-            usage:
-              initial: true
-              suggestions:
-                oracle_tables:
-                  - starforged/oracles/space/sector_name/suffix
-            content:
-              part_of_speech: [adjective, proper noun fragment]
-              tags: [template fragment]
-            table:
-              - [1, 2, Accursed]
-              - [3, 4, Ashen]
-              - [5, 6, Asteria, content: {part_of_speech: [proper noun]}]
-              - [7, 8, Bitter]
-              - [9, 10, Blighted]
-              - [11, 12, Bloodied]
-              - [13, 14, Boundless]
-              - [15, 16, Burning]
-              - [17, 18, Cortana, content: {part_of_speech: [proper noun]}]
-              - [19, 20, Corvus, content: {part_of_speech: [proper noun]}]
-              - [21, 22, Crimson]
-              - [23, 24, Cygnus, content: {part_of_speech: [proper noun]}]
-              - [25, 26, Delphi, content: {part_of_speech: [proper noun]}]
-              - [27, 28, Delphian, content: {part_of_speech: [proper noun]}]
-              - [29, 30, Devil's, content: {part_of_speech: [proper noun, possessive case]}]
-              - [31, 32, Ebon]
-              - [33, 34, Essus, content: {part_of_speech: [proper noun]}]
-              - [35, 36, Fallen]
-              - [37, 38, Ferrous]
-              - [39, 40, Fool's, content: {part_of_speech: [proper noun, possessive case]}]
-              - [41, 42, Forgotten]
-              - [43, 44, Haunted]
-              - [45, 46, Hidden]
-              - [47, 48, Hollow]
-              - [49, 50, Igneous]
-              - [51, 52, Infernal]
-              - [53, 54, Invidia, content: {part_of_speech: [proper noun]}]
-              - [55, 56, Iron]
-              - [57, 58, Kalidas, content: {part_of_speech: [proper noun]}]
-              - [59, 60, Kronos, content: {part_of_speech: [proper noun]}]
-              - [61, 62, Lacuna, content: {part_of_speech: [proper noun]}]
-              - [63, 64, Lumen, content: {part_of_speech: [proper noun]}]
-              - [65, 66, Mobius, content: {part_of_speech: [proper noun]}]
-              - [67, 68, Morien, content: {part_of_speech: [proper noun]}]
-              - [69, 70, Onyx]
-              - [71, 72, Outer]
-              - [73, 74, Sanguis, content: {part_of_speech: [proper noun]}]
-              - [75, 76, Scarred]
-              - [77, 78, Scorched]
-              - [79, 80, Shattered]
-              - [81, 82, Shrouded]
-              - [83, 84, Sindri, content: {part_of_speech: [proper noun]}]
-              - [85, 86, Solana, content: {part_of_speech: [proper noun]}]
-              - [87, 88, Stygian]
-              - [89, 90, Sulaco, content: {part_of_speech: [proper noun]}]
-              - [91, 92, Sundered]
-              - [93, 94, Thunor, content: {part_of_speech: [proper noun]}]
-              - [95, 96, Vanguard]
-              - [97, 98, Veiled]
-              - [99, 100, Wasted]
-          suffix:
-            title:
-              canonical: Suffix
-            display:
-              column_of: starforged/oracles/space/sector_name
-            description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-            usage:
-              initial: true
-              suggestions:
-                oracle_tables:
-                  - starforged/oracles/space/sector_name/prefix
-            content:
-              part_of_speech: [noun, proper noun fragment]
-              tags: [template fragment, place]
-            table:
-              - [1, 2, Abyss]
-              - [3, 4, Anvil]
-              - [5, 6, Arch]
-              - [7, 8, Breach]
-              - [9, 10, Chain]
-              - [11, 12, Channel]
-              - [13, 14, Chasm]
-              - [15, 16, Circlet]
-              - [17, 18, Cluster]
-              - [19, 20, Crossing]
-              - [21, 22, Crown]
-              - [23, 24, Currents]
-              - [25, 26, Deep]
-              - [27, 28, Desolation]
-              - [29, 30, Drift]
-              - [31, 32, Flow]
-              - [33, 34, Flux]
-              - [35, 36, Gap]
-              - [37, 38, Gate]
-              - [39, 40, Gyre]
-              - [41, 42, Heart]
-              - [43, 44, Helix]
-              - [45, 46, Juncture]
-              - [47, 48, Limits]
-              - [49, 50, Locus]
-              - [51, 52, Maelstrom]
-              - [53, 54, Margin]
-              - [55, 56, Maw]
-              - [57, 58, Maze]
-              - [59, 60, Nexus]
-              - [61, 62, Oasis]
-              - [63, 64, Pass]
-              - [65, 66, Pit]
-              - [67, 68, Pyre]
-              - [69, 70, Reach]
-              - [71, 72, Rest]
-              - [73, 74, Rift]
-              - [75, 76, Sanctum]
-              - [77, 78, Shallows]
-              - [79, 80, Shoal]
-              - [81, 82, Spine]
-              - [83, 84, Straits]
-              - [85, 86, Threshold]
-              - [87, 88, Tide]
-              - [89, 90, Verge]
-              - [91, 92, Vertex]
-              - [93, 94, Vigil]
-              - [95, 96, Void]
-              - [97, 98, Web]
-              - [99, 100, Zenith]
-    tables:
-      stellar_object:
-        title:
-          canonical: Stellar Object
-        source:
-          page: 303
-        content:
-          part_of_speech: [fragment]
-        description: Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.
-        table:
-          - [1, 15, Smoldering red star]
-          - [16, 30, Glowing orange star]
-          - [31, 45, Burning yellow star]
-          - [46, 50, Blazing blue star]
-          - [51, 60, Young star incubating in a molecular cloud]
-          - [61, 70, White dwarf shining with spectral light]
-          - [71, 75, Corrupted star radiating with unnatural light]
-          - [76, 80, Neutron star surrounded by intense magnetic fields]
-          - [81, 85, Two stars in close orbit connected by fiery tendrils of energy]
-          - [86, 90, Black hole allows nothing to escape—not even light]
-          - [91, 98, Hypergiant star generating turbulent solar winds]
-          - [99, 99, Artificial star constructed by a long-dead civilization]
-          - [100, 100, Unstable star showing signs of impending supernova]
-      peril:
-        source:
-          page: 304
-        title:
-          canonical: Spaceborne Peril
-          short: Peril
-        usage:
-          repeatable: true
-          requires:
-            attributes:
-              location: [orbital, deep_space]
-        content:
-          tags: [peril, event, present]
-          part_of_speech: [fragment]
-        description: Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.
-        table:
-          - [1, 3, Artificial gravity generator malfunctions]
-          - [4, 6, Automated defenses or mines protect this area]
-          - [7, 9, Compartment catches fire or is breached]
-          - [10, 12, Contagion or illness threatens to take hold]
-          - [13, 15, Dust clouds imperil navigation or conceal foes]
-          - [16, 18, Energy storm looms]
-          - [19, 21, Familiar foe appears or sends an ominous message]
-          - [22, 24, Gravity well or vortex takes hold]
-          - [25, 27, Imperiled ship calls for help, suggestions: [*obj:Starship]]
-          - [28, 30, Important device fails or malfunctions]
-          - [31, 33, Infestation is revealed, suggestions: [*obj:Creature]]
-          - [34, 36, Intruder or stowaway creates trouble]
-          - [37, 39, Isolation or fear presses in]
-          - [40, 42, Life support system malfunctions]
-          - [43, 45, Meteoroid storm fills the sky]
-          - [46, 48, Mysterious wreckage portends a new threat, suggestions: [*obj:Derelict.Starship]]
-          - [49, 51, Nearby settlement calls for help, suggestions: [*obj:Settlement]]
-          - [52, 54, Old repair or patch fails]
-          - [55, 57, Onboard dispute or inner turmoil causes a disruption]
-          - [58, 60, Others obstruct your path or form a blockade]
-          - [61, 63, Phantom signals suggest a lurking foe]
-          - [64, 66, Pirates hunt for prey]
-          - [67, 69, Power fails]
-          - [70, 72, Primary drive or generator malfunctions]
-          - [73, 75, Sabotage is revealed]
-          - [76, 78, Shockwave or gravity wave approaches]
-          - [79, 81, Someone questions your presence here]
-          - [82, 84, Stellar anomaly emits hazardous energies]
-          - [85, 87, Threatening lifeform draws near, suggestions: [*obj:Creature]]
-          - [88, 90, Troubling visions or apparitions]
-          - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
-          - [94, 96, Unsettling sounds or disturbances]
-          - [97, 99, *result:Action+Theme]
-          - [100, 100, *result:RollTwice]
-      opportunity:
-        source:
-          page: 305
-        title:
-          canonical: Spaceborne Opportunity
-          short: Opportunity
-        usage:
-          repeatable: true
-          requires:
-            attributes:
-              location: [orbital, deep_space]
-        content:
-          part_of_speech: [fragment]
-          tags: [opportunity]
-        description: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
-        table:
-          - [1, 4, Advance warning of an environmental threat]
-          - [5, 8, Automated signal offers a helpful message or warning]
-          - [9, 12, Cache of cargo or supplies, suggestions: [*roll:Object]]
-          - [13, 16, Chance for fellowship or a moment of inner peace]
-          - [17, 20, Clear path through otherwise perilous space]
-          - [21, 24, Clue offers insight into a current quest or mystery]
-          - [25, 28, Clue to a lifeform's nature or vulnerabilities]
-          - [29, 32, Derelict ripe for the picking, suggestions: [*obj:Derelict]]
-          - [33, 36, Foe inadvertently reveals themselves or tips their hand]
-          - [37, 40, Friendly interaction with a benign lifeform, suggestions: [*obj:Creature]]
-          - [41, 44, Friendly settlement in range, suggestions: [*obj:Settlement]]
-          - [45, 48, Friendly spacers at work here, suggestions: [*obj:Npc]]
-          - [49, 52, Friendly starship crosses your path, suggestions: [*obj:Starship]]
-          - [53, 56, Helpful or encouraging message from an acquaintance]
-          - [57, 60, Impressive vista offers comfort or inspiration]
-          - [61, 64, Interesting site offers opportunities for exploration]
-          - [65, 68, Mineral or energy resource detected]
-          - [69, 72, Navigational or environmental hazard is left behind]
-          - [73, 76, Opening to escape or avoid foes]
-          - [77, 80, Plea for help from a potential benefactor, suggestions: [*obj:Npc]]
-          - [81, 84, Probe or beacon with useful data]
-          - [85, 88, "Refuge offers a place to hide, plan, or recover"]
-          - [89, 92, Sensors pinpoint a lurking foe]
-          - [93, 96, Sensors reveal helpful or interesting environmental data]
-          - [97, 100, Vehicle or equipment performs beyond expectations]
+              title:
+                canonical: Suffix
+              display:
+                column_of: starforged/oracles/space/sector_name
+              description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
+              usage:
+                initial: true
+                suggestions:
+                  oracle_tables:
+                    - starforged/oracles/space/sector_name/prefix
+              content:
+                part_of_speech: [noun, proper noun fragment]
+                tags: [template fragment, place]
+              table:
+                - [1, 2, Abyss]
+                - [3, 4, Anvil]
+                - [5, 6, Arch]
+                - [7, 8, Breach]
+                - [9, 10, Chain]
+                - [11, 12, Channel]
+                - [13, 14, Chasm]
+                - [15, 16, Circlet]
+                - [17, 18, Cluster]
+                - [19, 20, Crossing]
+                - [21, 22, Crown]
+                - [23, 24, Currents]
+                - [25, 26, Deep]
+                - [27, 28, Desolation]
+                - [29, 30, Drift]
+                - [31, 32, Flow]
+                - [33, 34, Flux]
+                - [35, 36, Gap]
+                - [37, 38, Gate]
+                - [39, 40, Gyre]
+                - [41, 42, Heart]
+                - [43, 44, Helix]
+                - [45, 46, Juncture]
+                - [47, 48, Limits]
+                - [49, 50, Locus]
+                - [51, 52, Maelstrom]
+                - [53, 54, Margin]
+                - [55, 56, Maw]
+                - [57, 58, Maze]
+                - [59, 60, Nexus]
+                - [61, 62, Oasis]
+                - [63, 64, Pass]
+                - [65, 66, Pit]
+                - [67, 68, Pyre]
+                - [69, 70, Reach]
+                - [71, 72, Rest]
+                - [73, 74, Rift]
+                - [75, 76, Sanctum]
+                - [77, 78, Shallows]
+                - [79, 80, Shoal]
+                - [81, 82, Spine]
+                - [83, 84, Straits]
+                - [85, 86, Threshold]
+                - [87, 88, Tide]
+                - [89, 90, Verge]
+                - [91, 92, Vertex]
+                - [93, 94, Vigil]
+                - [95, 96, Void]
+                - [97, 98, Web]
+                - [99, 100, Zenith]
+      tables:
+        stellar_object:
+          title:
+            canonical: Stellar Object
+          source:
+            page: 303
+          content:
+            part_of_speech: [fragment]
+          description: Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.
+          table:
+            - [1, 15, Smoldering red star]
+            - [16, 30, Glowing orange star]
+            - [31, 45, Burning yellow star]
+            - [46, 50, Blazing blue star]
+            - [51, 60, Young star incubating in a molecular cloud]
+            - [61, 70, White dwarf shining with spectral light]
+            - [71, 75, Corrupted star radiating with unnatural light]
+            - [76, 80, Neutron star surrounded by intense magnetic fields]
+            - [81, 85, Two stars in close orbit connected by fiery tendrils of energy]
+            - [86, 90, Black hole allows nothing to escape—not even light]
+            - [91, 98, Hypergiant star generating turbulent solar winds]
+            - [99, 99, Artificial star constructed by a long-dead civilization]
+            - [100, 100, Unstable star showing signs of impending supernova]
+        peril:
+          source:
+            page: 304
+          title:
+            canonical: Spaceborne Peril
+            short: Peril
+          usage:
+            repeatable: true
+            requires:
+              attributes:
+                location: [orbital, deep_space]
+          content:
+            tags: [peril, event, present]
+            part_of_speech: [fragment]
+          description: Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.
+          table:
+            - [1, 3, Artificial gravity generator malfunctions]
+            - [4, 6, Automated defenses or mines protect this area]
+            - [7, 9, Compartment catches fire or is breached]
+            - [10, 12, Contagion or illness threatens to take hold]
+            - [13, 15, Dust clouds imperil navigation or conceal foes]
+            - [16, 18, Energy storm looms]
+            - [19, 21, Familiar foe appears or sends an ominous message]
+            - [22, 24, Gravity well or vortex takes hold]
+            - [25, 27, Imperiled ship calls for help, suggestions: [*obj:Starship]]
+            - [28, 30, Important device fails or malfunctions]
+            - [31, 33, Infestation is revealed, suggestions: [*obj:Creature]]
+            - [34, 36, Intruder or stowaway creates trouble]
+            - [37, 39, Isolation or fear presses in]
+            - [40, 42, Life support system malfunctions]
+            - [43, 45, Meteoroid storm fills the sky]
+            - [46, 48, Mysterious wreckage portends a new threat, suggestions: [*obj:Derelict.Starship]]
+            - [49, 51, Nearby settlement calls for help, suggestions: [*obj:Settlement]]
+            - [52, 54, Old repair or patch fails]
+            - [55, 57, Onboard dispute or inner turmoil causes a disruption]
+            - [58, 60, Others obstruct your path or form a blockade]
+            - [61, 63, Phantom signals suggest a lurking foe]
+            - [64, 66, Pirates hunt for prey]
+            - [67, 69, Power fails]
+            - [70, 72, Primary drive or generator malfunctions]
+            - [73, 75, Sabotage is revealed]
+            - [76, 78, Shockwave or gravity wave approaches]
+            - [79, 81, Someone questions your presence here]
+            - [82, 84, Stellar anomaly emits hazardous energies]
+            - [85, 87, Threatening lifeform draws near, suggestions: [*obj:Creature]]
+            - [88, 90, Troubling visions or apparitions]
+            - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
+            - [94, 96, Unsettling sounds or disturbances]
+            - [97, 99, *result:Action+Theme]
+            - [100, 100, *result:RollTwice]
+        opportunity:
+          source:
+            page: 305
+          title:
+            canonical: Spaceborne Opportunity
+            short: Opportunity
+          usage:
+            repeatable: true
+            requires:
+              attributes:
+                location: [orbital, deep_space]
+          content:
+            part_of_speech: [fragment]
+            tags: [opportunity]
+          description: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
+          table:
+            - [1, 4, Advance warning of an environmental threat]
+            - [5, 8, Automated signal offers a helpful message or warning]
+            - [9, 12, Cache of cargo or supplies, suggestions: [*roll:Object]]
+            - [13, 16, Chance for fellowship or a moment of inner peace]
+            - [17, 20, Clear path through otherwise perilous space]
+            - [21, 24, Clue offers insight into a current quest or mystery]
+            - [25, 28, Clue to a lifeform's nature or vulnerabilities]
+            - [29, 32, Derelict ripe for the picking, suggestions: [*obj:Derelict]]
+            - [33, 36, Foe inadvertently reveals themselves or tips their hand]
+            - [37, 40, Friendly interaction with a benign lifeform, suggestions: [*obj:Creature]]
+            - [41, 44, Friendly settlement in range, suggestions: [*obj:Settlement]]
+            - [45, 48, Friendly spacers at work here, suggestions: [*obj:Npc]]
+            - [49, 52, Friendly starship crosses your path, suggestions: [*obj:Starship]]
+            - [53, 56, Helpful or encouraging message from an acquaintance]
+            - [57, 60, Impressive vista offers comfort or inspiration]
+            - [61, 64, Interesting site offers opportunities for exploration]
+            - [65, 68, Mineral or energy resource detected]
+            - [69, 72, Navigational or environmental hazard is left behind]
+            - [73, 76, Opening to escape or avoid foes]
+            - [77, 80, Plea for help from a potential benefactor, suggestions: [*obj:Npc]]
+            - [81, 84, Probe or beacon with useful data]
+            - [85, 88, "Refuge offers a place to hide, plan, or recover"]
+            - [89, 92, Sensors pinpoint a lurking foe]
+            - [93, 96, Sensors reveal helpful or interesting environmental data]
+            - [97, 100, Vehicle or equipment performs beyond expectations]
 

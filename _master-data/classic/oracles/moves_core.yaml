@@ -26,7 +26,7 @@ oracle_sets:
           almost_certain:
             title:
               canonical: Almost Certain
-            on_a_match: &AtO.Match
+            match: &AtO.Match
               text: On a match, an extreme result or twist has occurred.
             table:
               - [1, 10, "No"]
@@ -34,7 +34,7 @@ oracle_sets:
           likely:
             title:
               canonical: Likely
-            on_a_match: *AtO.Match
+            match: *AtO.Match
             table:
               - [1, 25, "No"]
               - [26, 100, "Yes"]
@@ -43,21 +43,21 @@ oracle_sets:
               canonical: 50/50
               standard: 50/50
               short: 50/50
-            on_a_match: *AtO.Match
+            match: *AtO.Match
             table:
               - [1, 50, "No"]
               - [51, 100, "Yes"]
           unlikely:
             title:
               canonical: Unlikely
-            on_a_match: *AtO.Match
+            match: *AtO.Match
             table:
               - [1, 75, "No"]
               - [76, 100, "Yes"]
           small_chance:
             title:
               canonical: Small Chance
-            on_a_match: *AtO.Match
+            match: *AtO.Match
             table:
               - [1, 90, "No"]
               - [91, 100, "Yes"]

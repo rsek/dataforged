@@ -1,423 +1,420 @@
-source:
-  authors: [Shawn Tomkin]
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-sa/4.0
-oracle_sets:
-  creatures:
-    title:
-      canonical: Creatures
-      short: Creature
-    source:
-      date: "050622"
-    summary: |-
-      Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
-    tables:
-      environment:
-        title:
-          canonical: Environment
-        usage:
-          initial: true
-        source:
-          page: 336
-        content:
-          part_of_speech: [noun]
-        summary: |-
-          Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
-        table:
-          - [1, 5, Space, set_attributes: {environment: [space]}, oracle_rolls: [starforged/oracles/creatures/basic_form/space], display: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}]
-          - [6, 15, Interior, set_attributes: {environment: [interior]}, oracle_rolls: [starforged/oracles/creatures/basic_form/interior], display: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}]
-          - [16, 55, Land, set_attributes: {environment: [land]}, oracle_rolls: [starforged/oracles/creatures/basic_form/land], display: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}]
-          - [56, 80, Liquid, set_attributes: {environment: [liquid]}, oracle_rolls: [starforged/oracles/creatures/basic_form/liquid], display: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}]
-          - [81, 100, Air, set_attributes: {environment: [air]}, oracle_rolls: [starforged/oracles/creatures/basic_form/air], display: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}]
-      scale:
-        title:
-          canonical: Scale
-        source:
-          page: 336
-        usage:
-          initial: true
-        content:
-          part_of_speech: [adjective]
-        table:
-          - [1, 3, Minuscule (bug-sized), set_attributes: {creature_scale: [minuscule]}]
-          - [4, 10, Tiny (rodent-sized), set_attributes: {creature_scale: [tiny]}]
-          - [11, 25, Small (dog-sized), set_attributes: {creature_scale: [small]}]
-          - [26, 60, Medium (person-sized), set_attributes: {creature_scale: [medium]}]
-          - [61, 90, Large (vehicle-sized), set_attributes: {creature_scale: [large]}]
-          - [91, 99, Huge (whale-sized), set_attributes: {creature_scale: [huge]}]
-          - [100, 100, "[⏵Ultra-scale](starforged/oracles/creatures/ultra-scale)", oracle_rolls: [starforged/oracles/creatures/ultra-scale]]
-      ultra_scale:
-        title:
-          canonical: Ultra-scale
-        source:
-          page: 336
-        content:
-          part_of_speech: [adjective]
-        usage:
-          initial: true
-        table:
-          - [1, 89, Titanic (hill-sized), set_attributes: {creature_scale: [titanic]}]
-          - [90, 99, Colossal (mountain-sized), set_attributes: {creature_scale: [colossal]}]
-          - [100, 100, Vast (planet-sized), set_attributes: {creature_scale: [vast]}]
-      creature_first_look:
-        title:
-          canonical: Creature First Look
-          short: First Look
-        source:
-          page: 338
-        usage:
-          initial: true
-          max_rolls: 2
-        summary: |-
-          Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
-        content:
-          part_of_speech: [fragment]
-          tags: [description, first look]
-        table:
-          - [1, 2, Antennae or sensory organs]
-          - [3, 4, Armored]
-          - [5, 6, Beautiful]
-          - [7, 8, Biotech]
-          - [9, 10, Bony or gaunt]
-          - [11, 12, Brutish or muscled]
-          - [13, 14, Camouflaged]
-          - [15, 16, Claws or talons]
-          - [17, 18, Compound eyes]
-          - [19, 20, Comprised of many creatures]
-          - [21, 22, Corrupted]
-          - [23, 24, Crystalline]
-          - [25, 26, Dead or undead]
-          - [27, 28, Distinctive markings]
-          - [29, 30, Distinctive smell]
-          - [31, 32, Distinctive sound]
-          - [33, 34, Dripping mucus]
-          - [35, 36, Elongated Neck]
-          - [37, 38, Energy emissions]
-          - [39, 40, Extra limbs]
-          - [41, 42, Faceless or inexpressive]
-          - [43, 44, Fangs or rows of teeth]
-          - [45, 46, Feathered]
-          - [47, 48, Fungal growth]
-          - [49, 50, "Fur, hair, or filaments"]
-          - [51, 52, Graceful]
-          - [53, 54, Hideous]
-          - [55, 56, Hooded or crested]
-          - [57, 58, Immobile or trapped]
-          - [59, 60, Injured or scarred]
-          - [61, 62, Iridescent]
-          - [63, 64, Long-limbed]
-          - [65, 66, Luminescent]
-          - [67, 68, Mandibles or pincers]
-          - [69, 70, Many-eyed]
-          - [71, 72, Mineral or metallic]
-          - [73, 74, Multi-jointed]
-          - [75, 76, Multi-segmented body]
-          - [77, 78, Ornamented or colorful]
-          - [79, 80, Oversized mouth]
-          - [81, 82, Prominent tail]
-          - [83, 84, Prominent wings or fins]
-          - [85, 86, Ridges or plates]
-          - [87, 88, Scaled]
-          - [89, 90, Single eye or oversized eyes]
-          - [91, 92, Spikes or spines]
-          - [93, 94, Stinger or barbs]
-          - [95, 96, Tentacles or tendrils]
-          - [97, 98, Translucent]
-          - [99, 100, Visible symbiote]
-      encountered_behavior:
-        title:
-          canonical: Encountered Behavior
-        source:
-          page: 338
-        summary: |-
-          Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
-        content:
-          part_of_speech: [noun, common noun]
-        usage:
-          initial: true
-        table:
-          - [1, 5, Ambusher, set_attributes: {encountered_behavior: [ambusher]}]
-          - [6, 10, Apex predator, set_attributes: {encountered_behavior: [apex_predator]}]
-          - [11, 14, Builder, set_attributes: {encountered_behavior: [builder]}]
-          - [15, 19, Camouflager, set_attributes: {encountered_behavior: [camouflager]}]
-          - [20, 24, Forager, set_attributes: {encountered_behavior: [forager]}]
-          - [25, 29, Grazer, set_attributes: {encountered_behavior: [grazer]}]
-          - [30, 33, Herder, set_attributes: {encountered_behavior: [herder]}]
-          - [34, 37, Hibernator, set_attributes: {encountered_behavior: [hibernator]}]
-          - [38, 41, Hoarder, set_attributes: {encountered_behavior: [hoarder]}]
-          - [42, 46, Hunter, set_attributes: {encountered_behavior: [hunter]}]
-          - [47, 51, Lurer, set_attributes: {encountered_behavior: [lurer]}]
-          - [52, 55, Migratory, set_attributes: {encountered_behavior: [migratory]}]
-          - [56, 60, Mimic, set_attributes: {encountered_behavior: [mimic]}]
-          - [61, 65, Nester, set_attributes: {encountered_behavior: [nester]}]
-          - [66, 70, Pack hunter, set_attributes: {encountered_behavior: [pack_hunter]}]
-          - [71, 75, Prey, set_attributes: {encountered_behavior: [prey]}]
-          - [76, 80, Protector, set_attributes: {encountered_behavior: [protector]}]
-          - [81, 85, Scavenger, set_attributes: {encountered_behavior: [scavenger]}]
-          - [86, 90, Tracker, set_attributes: {encountered_behavior: [tracker]}]
-          - [91, 95, Trapper, set_attributes: {encountered_behavior: [trapper]}]
-          - [96, 100, *result:RollTwice]
-      revealed_creature_aspect:
-        title:
-          canonical: Revealed Creature Aspect
-          short: Revealed Aspect
-        source:
-          page: 339
-        description: |-
-          Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature that you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or envision how this contradiction signals a new understanding or unexpected transformation.
-        content:
-          part_of_speech: [fragment]
-        usage:
-          max_rolls: 2
-        table:
-          - [1, 2, Alternative environment]
-          - [3, 4, Alternative movement]
-          - [5, 6, Alternative senses]
-          - [7, 8, Burrower]
-          - [9, 10, Chameleon]
-          - [11, 12, Clever]
-          - [13, 14, Consumes energy]
-          - [15, 16, Consumes inorganic matter]
-          - [17, 18, Controlled or puppeteered]
-          - [19, 20, Controls lesser creatures]
-          - [21, 22, Corrosive excretion]
-          - [23, 24, Crusher or constrictor]
-          - [25, 26, Egg sac or carried offspring]
-          - [27, 28, Electric shock]
-          - [29, 30, Electromagnetic pulse]
-          - [31, 32, Energy breath]
-          - [33, 34, Energy manipulation]
-          - [35, 36, Engineered biology]
-          - [37, 38, Enhanced senses]
-          - [39, 40, Enhanced strength]
-          - [41, 42, Entangling secretion]
-          - [43, 44, Extradimensional]
-          - [45, 46, Hallucinogen secretion]
-          - [47, 48, Hidden symbiote]
-          - [49, 50, Hive mind]
-          - [51, 52, Illusionary]
-          - [53, 54, Infectious]
-          - [55, 56, Infested with parasites]
-          - [57, 58, Intimidating threat display]
-          - [59, 60, Limited sense]
-          - [61, 62, Magnetic]
-          - [63, 64, Mental influence or control]
-          - [65, 66, Metamorphic]
-          - [67, 68, Noxious cloud or spores]
-          - [69, 70, Paralytic toxin]
-          - [71, 72, Parasitic]
-          - [73, 74, Pheromones]
-          - [75, 76, Poisonous]
-          - [77, 78, Powerful bite]
-          - [79, 80, Proboscis or inner jaw]
-          - [81, 82, Projectile attack]
-          - [83, 84, Radioactive]
-          - [85, 86, Regeneration]
-          - [87, 88, Replication]
-          - [89, 90, Sacrificial defense]
-          - [91, 92, Shapechanger]
-          - [93, 94, Telekinetic]
-          - [95, 96, Teleportation]
-          - [97, 98, Territorial]
-          - [99, 100, Toxic spew]
-    sets:
-      basic_form:
-        title:
-          short: Basic Form
-          canonical: Creature Basic Form
-        source:
-          page: 337
-        usage:
-          initial: true
-          requires:
-            attributes:
-              environment: null
-        content:
-          part_of_speech: [fragment]
-        display:
-          columns:
-              space:
-                column_type: dice_range
-                content: starforged/oracles/creatures/basic_form/space
-                label: Space
-              interior:
-                column_type: dice_range
-                content: starforged/oracles/creatures/basic_form/interior
-                label: Interior
-              land:
-                column_type: dice_range
-                content: starforged/oracles/creatures/basic_form/land
-                label: Land
-              liquid:
-                column_type: dice_range
-                content: starforged/oracles/creatures/basic_form/liquid
-                label: Liquid
-              air:
-                column_type: dice_range
-                content: starforged/oracles/creatures/basic_form/air
-                label: Air
-              result:
-                column_type: string
-                content: starforged/oracles/creatures/basic_form/space
-                key: result
-        summary: |-
-          Roll for a basic form, and flesh out the creature’s appearance using the [First Look](starforged/oracles/creatures/first_look) table.
-        tables:
-          space:
-            title:
-              canonical: Space
-            display:
-              color: "#121b21"
-              icon: *icon.Space
-              column_of: starforged/oracles/creatures/basic_form
-            usage:
-              requires:
-                attributes:
-                  environment: [space]
-            table: &table:Creatures.BasicForm
-                - [1, 5, Amoeba / pseudopods, display: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}]
-                - [6, 20, Amorphous / elemental, display: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}]
-                - [21, 30, Avian / winged, display: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}]
-                - [31, 32, Beast / mammal, display: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}]
-                - [33, 34, Crustacean / shelled, display: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}]
-                - [35, 37, Fish / torpedo-shaped, display: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}]
-                - [38, 39, Humanoid / bipedal, display: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}]
-                - [40, 41, Insectoid / exoskeletal, display: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}]
-                - [42, 60, Jellyfish / gasbag, display: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}]
-                - [61, 62, Lizard / reptilian, display: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}]
-                - [63, 67, Octopoid / tentacled, display: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}]
-                - [68, 72, Plant / fungus, display: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}]
-                - [73, 82, Ray / flat-bodied, display: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}]
-                - [83, 84, Snake / eel, display: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}]
-                - [85, 86, Spider / web-weaver, display: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}]
-                - [87, 88, Starfish / symmetrical, display: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}]
-                - [89, 90, Worm / slug / larva, display: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}]
-                - [91, 100, *result:RollTwice]
-          interior:
-            title:
-              canonical: Interior
-            display:
-              color: "#707a83"
-              icon: *icon.Interior
-              column_of: starforged/oracles/creatures/basic_form
-            usage:
-              requires:
-                attributes:
-                  environment: [interior]
-            _templateTableRows:
-              content: *table:Creatures.BasicForm
-              rolls:
-                - [1, 3]
-                - [4, 6]
-                - [7, 12]
-                - [13, 19]
-                - [20, 22]
-                - [23, 24]
-                - [25, 37]
-                - [38, 49]
-                - [50, 51]
-                - [52, 56]
-                - [57, 58]
-                - [59, 63]
-                - [64, 65]
-                - [66, 68]
-                - [69, 83]
-                - [84, 85]
-                - [86, 90]
-                - [91, 100]
-          land:
-            title:
-              canonical: Land
-            display:
-              color: "#ed1a38"
-              icon: *icon.Land
-              column_of: starforged/oracles/creatures/basic_form
-            usage:
-              requires:
-                attributes:
-                  environment: [land]
-            _templateTableRows:
-              content: *table:Creatures.BasicForm
-              rolls:
-                - [1, 2]
-                - [3, 5]
-                - [6, 10]
-                - [11, 25]
-                - [26, 32]
-                - [33, 34]
-                - [35, 39]
-                - [40, 49]
-                - [50, 51]
-                - [52, 58]
-                - [59, 60]
-                - [61, 65]
-                - [66, 67]
-                - [68, 74]
-                - [75, 81]
-                - [82, 83]
-                - [84, 90]
-                - [91, 100]
-          liquid:
-            title:
-              canonical: Liquid
-            display:
-              color: "#0082bf"
-              icon: *icon.Liquid
-              column_of: starforged/oracles/creatures/basic_form
-            usage:
-              requires:
-                attributes:
-                  environment: [liquid]
-            _templateTableRows:
-              content: *table:Creatures.BasicForm
-              rolls:
-                - [1, 5]
-                - [6, 8]
-                - [9, 11]
-                - [12, 17]
-                - [18, 24]
-                - [25, 39]
-                - [40, 42]
-                - [43, 45]
-                - [46, 53]
-                - [54, 56]
-                - [57, 63]
-                - [64, 68]
-                - [69, 75]
-                - [76, 80]
-                - [81, 82]
-                - [83, 87]
-                - [88, 90]
-                - [91, 100]
-          air:
-            title:
-              canonical: Air
-            display:
-              color: "#90278f"
-              icon: *icon.Air
-              column_of: starforged/oracles/creatures/basic_form
-            usage:
-              requires:
-                attributes:
-                  environment: [air]
-            _templateTableRows:
-              content: *table:Creatures.BasicForm
-              rolls:
-                - [1, 2]
-                - [3, 12]
-                - [13, 37]
-                - [38, 40]
-                - [41, 42]
-                - [43, 47]
-                - [48, 49]
-                - [50, 51]
-                - [52, 66]
-                - [67, 68]
-                - [69, 70]
-                - [71, 72]
-                - [73, 82]
-                - [83, 84]
-                - [85, 86]
-                - [87, 88]
-                - [89, 90]
-                - [91, 100]
+starforged:
+  oracle_sets:
+    creatures:
+      title:
+        canonical: Creatures
+        short: Creature
+      source:
+        date: "050622"
+      summary: |-
+        Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
+      tables:
+        environment:
+          title:
+            canonical: Environment
+          usage:
+            initial: true
+          source:
+            page: 336
+          content:
+            part_of_speech: [noun]
+          summary: |-
+            Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
+          table:
+            - [1, 5, Space, set_attributes: {environment: [space]}, oracle_rolls: [starforged/oracles/creatures/basic_form/space], display: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}]
+            - [6, 15, Interior, set_attributes: {environment: [interior]}, oracle_rolls: [starforged/oracles/creatures/basic_form/interior], display: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}]
+            - [16, 55, Land, set_attributes: {environment: [land]}, oracle_rolls: [starforged/oracles/creatures/basic_form/land], display: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}]
+            - [56, 80, Liquid, set_attributes: {environment: [liquid]}, oracle_rolls: [starforged/oracles/creatures/basic_form/liquid], display: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}]
+            - [81, 100, Air, set_attributes: {environment: [air]}, oracle_rolls: [starforged/oracles/creatures/basic_form/air], display: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}]
+        scale:
+          title:
+            canonical: Scale
+          source:
+            page: 336
+          usage:
+            initial: true
+          content:
+            part_of_speech: [adjective]
+          table:
+            - [1, 3, Minuscule (bug-sized), set_attributes: {creature_scale: [minuscule]}]
+            - [4, 10, Tiny (rodent-sized), set_attributes: {creature_scale: [tiny]}]
+            - [11, 25, Small (dog-sized), set_attributes: {creature_scale: [small]}]
+            - [26, 60, Medium (person-sized), set_attributes: {creature_scale: [medium]}]
+            - [61, 90, Large (vehicle-sized), set_attributes: {creature_scale: [large]}]
+            - [91, 99, Huge (whale-sized), set_attributes: {creature_scale: [huge]}]
+            - [100, 100, "[⏵Ultra-scale](starforged/oracles/creatures/ultra-scale)", oracle_rolls: [starforged/oracles/creatures/ultra-scale]]
+        ultra_scale:
+          title:
+            canonical: Ultra-scale
+          source:
+            page: 336
+          content:
+            part_of_speech: [adjective]
+          usage:
+            initial: true
+          table:
+            - [1, 89, Titanic (hill-sized), set_attributes: {creature_scale: [titanic]}]
+            - [90, 99, Colossal (mountain-sized), set_attributes: {creature_scale: [colossal]}]
+            - [100, 100, Vast (planet-sized), set_attributes: {creature_scale: [vast]}]
+        creature_first_look:
+          title:
+            canonical: Creature First Look
+            short: First Look
+          source:
+            page: 338
+          usage:
+            initial: true
+            max_rolls: 2
+          summary: |-
+            Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
+          content:
+            part_of_speech: [fragment]
+            tags: [description, first look]
+          table:
+            - [1, 2, Antennae or sensory organs]
+            - [3, 4, Armored]
+            - [5, 6, Beautiful]
+            - [7, 8, Biotech]
+            - [9, 10, Bony or gaunt]
+            - [11, 12, Brutish or muscled]
+            - [13, 14, Camouflaged]
+            - [15, 16, Claws or talons]
+            - [17, 18, Compound eyes]
+            - [19, 20, Comprised of many creatures]
+            - [21, 22, Corrupted]
+            - [23, 24, Crystalline]
+            - [25, 26, Dead or undead]
+            - [27, 28, Distinctive markings]
+            - [29, 30, Distinctive smell]
+            - [31, 32, Distinctive sound]
+            - [33, 34, Dripping mucus]
+            - [35, 36, Elongated Neck]
+            - [37, 38, Energy emissions]
+            - [39, 40, Extra limbs]
+            - [41, 42, Faceless or inexpressive]
+            - [43, 44, Fangs or rows of teeth]
+            - [45, 46, Feathered]
+            - [47, 48, Fungal growth]
+            - [49, 50, "Fur, hair, or filaments"]
+            - [51, 52, Graceful]
+            - [53, 54, Hideous]
+            - [55, 56, Hooded or crested]
+            - [57, 58, Immobile or trapped]
+            - [59, 60, Injured or scarred]
+            - [61, 62, Iridescent]
+            - [63, 64, Long-limbed]
+            - [65, 66, Luminescent]
+            - [67, 68, Mandibles or pincers]
+            - [69, 70, Many-eyed]
+            - [71, 72, Mineral or metallic]
+            - [73, 74, Multi-jointed]
+            - [75, 76, Multi-segmented body]
+            - [77, 78, Ornamented or colorful]
+            - [79, 80, Oversized mouth]
+            - [81, 82, Prominent tail]
+            - [83, 84, Prominent wings or fins]
+            - [85, 86, Ridges or plates]
+            - [87, 88, Scaled]
+            - [89, 90, Single eye or oversized eyes]
+            - [91, 92, Spikes or spines]
+            - [93, 94, Stinger or barbs]
+            - [95, 96, Tentacles or tendrils]
+            - [97, 98, Translucent]
+            - [99, 100, Visible symbiote]
+        encountered_behavior:
+          title:
+            canonical: Encountered Behavior
+          source:
+            page: 338
+          summary: |-
+            Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
+          content:
+            part_of_speech: [noun, common noun]
+          usage:
+            initial: true
+          table:
+            - [1, 5, Ambusher, set_attributes: {encountered_behavior: [ambusher]}]
+            - [6, 10, Apex predator, set_attributes: {encountered_behavior: [apex_predator]}]
+            - [11, 14, Builder, set_attributes: {encountered_behavior: [builder]}]
+            - [15, 19, Camouflager, set_attributes: {encountered_behavior: [camouflager]}]
+            - [20, 24, Forager, set_attributes: {encountered_behavior: [forager]}]
+            - [25, 29, Grazer, set_attributes: {encountered_behavior: [grazer]}]
+            - [30, 33, Herder, set_attributes: {encountered_behavior: [herder]}]
+            - [34, 37, Hibernator, set_attributes: {encountered_behavior: [hibernator]}]
+            - [38, 41, Hoarder, set_attributes: {encountered_behavior: [hoarder]}]
+            - [42, 46, Hunter, set_attributes: {encountered_behavior: [hunter]}]
+            - [47, 51, Lurer, set_attributes: {encountered_behavior: [lurer]}]
+            - [52, 55, Migratory, set_attributes: {encountered_behavior: [migratory]}]
+            - [56, 60, Mimic, set_attributes: {encountered_behavior: [mimic]}]
+            - [61, 65, Nester, set_attributes: {encountered_behavior: [nester]}]
+            - [66, 70, Pack hunter, set_attributes: {encountered_behavior: [pack_hunter]}]
+            - [71, 75, Prey, set_attributes: {encountered_behavior: [prey]}]
+            - [76, 80, Protector, set_attributes: {encountered_behavior: [protector]}]
+            - [81, 85, Scavenger, set_attributes: {encountered_behavior: [scavenger]}]
+            - [86, 90, Tracker, set_attributes: {encountered_behavior: [tracker]}]
+            - [91, 95, Trapper, set_attributes: {encountered_behavior: [trapper]}]
+            - [96, 100, *result:RollTwice]
+        revealed_creature_aspect:
+          title:
+            canonical: Revealed Creature Aspect
+            short: Revealed Aspect
+          source:
+            page: 339
+          description: |-
+            Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature that you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or envision how this contradiction signals a new understanding or unexpected transformation.
+          content:
+            part_of_speech: [fragment]
+          usage:
+            max_rolls: 2
+          table:
+            - [1, 2, Alternative environment]
+            - [3, 4, Alternative movement]
+            - [5, 6, Alternative senses]
+            - [7, 8, Burrower]
+            - [9, 10, Chameleon]
+            - [11, 12, Clever]
+            - [13, 14, Consumes energy]
+            - [15, 16, Consumes inorganic matter]
+            - [17, 18, Controlled or puppeteered]
+            - [19, 20, Controls lesser creatures]
+            - [21, 22, Corrosive excretion]
+            - [23, 24, Crusher or constrictor]
+            - [25, 26, Egg sac or carried offspring]
+            - [27, 28, Electric shock]
+            - [29, 30, Electromagnetic pulse]
+            - [31, 32, Energy breath]
+            - [33, 34, Energy manipulation]
+            - [35, 36, Engineered biology]
+            - [37, 38, Enhanced senses]
+            - [39, 40, Enhanced strength]
+            - [41, 42, Entangling secretion]
+            - [43, 44, Extradimensional]
+            - [45, 46, Hallucinogen secretion]
+            - [47, 48, Hidden symbiote]
+            - [49, 50, Hive mind]
+            - [51, 52, Illusionary]
+            - [53, 54, Infectious]
+            - [55, 56, Infested with parasites]
+            - [57, 58, Intimidating threat display]
+            - [59, 60, Limited sense]
+            - [61, 62, Magnetic]
+            - [63, 64, Mental influence or control]
+            - [65, 66, Metamorphic]
+            - [67, 68, Noxious cloud or spores]
+            - [69, 70, Paralytic toxin]
+            - [71, 72, Parasitic]
+            - [73, 74, Pheromones]
+            - [75, 76, Poisonous]
+            - [77, 78, Powerful bite]
+            - [79, 80, Proboscis or inner jaw]
+            - [81, 82, Projectile attack]
+            - [83, 84, Radioactive]
+            - [85, 86, Regeneration]
+            - [87, 88, Replication]
+            - [89, 90, Sacrificial defense]
+            - [91, 92, Shapechanger]
+            - [93, 94, Telekinetic]
+            - [95, 96, Teleportation]
+            - [97, 98, Territorial]
+            - [99, 100, Toxic spew]
+      sets:
+        basic_form:
+          title:
+            short: Basic Form
+            canonical: Creature Basic Form
+          source:
+            page: 337
+          usage:
+            initial: true
+            requires:
+              attributes:
+                environment: null
+          content:
+            part_of_speech: [fragment]
+          display:
+            columns:
+                space:
+                  column_type: dice_range
+                  content: starforged/oracles/creatures/basic_form/space
+                  label: Space
+                interior:
+                  column_type: dice_range
+                  content: starforged/oracles/creatures/basic_form/interior
+                  label: Interior
+                land:
+                  column_type: dice_range
+                  content: starforged/oracles/creatures/basic_form/land
+                  label: Land
+                liquid:
+                  column_type: dice_range
+                  content: starforged/oracles/creatures/basic_form/liquid
+                  label: Liquid
+                air:
+                  column_type: dice_range
+                  content: starforged/oracles/creatures/basic_form/air
+                  label: Air
+                result:
+                  column_type: string
+                  content: starforged/oracles/creatures/basic_form/space
+                  key: result
+          summary: |-
+            Roll for a basic form, and flesh out the creature’s appearance using the [First Look](starforged/oracles/creatures/first_look) table.
+          tables:
+            space:
+              title:
+                canonical: Space
+              display:
+                color: "#121b21"
+                icon: *icon.Space
+                column_of: starforged/oracles/creatures/basic_form
+              usage:
+                requires:
+                  attributes:
+                    environment: [space]
+              table: &table:Creatures.BasicForm
+                  - [1, 5, Amoeba / pseudopods, display: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}]
+                  - [6, 20, Amorphous / elemental, display: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}]
+                  - [21, 30, Avian / winged, display: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}]
+                  - [31, 32, Beast / mammal, display: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}]
+                  - [33, 34, Crustacean / shelled, display: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}]
+                  - [35, 37, Fish / torpedo-shaped, display: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}]
+                  - [38, 39, Humanoid / bipedal, display: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}]
+                  - [40, 41, Insectoid / exoskeletal, display: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}]
+                  - [42, 60, Jellyfish / gasbag, display: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}]
+                  - [61, 62, Lizard / reptilian, display: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}]
+                  - [63, 67, Octopoid / tentacled, display: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}]
+                  - [68, 72, Plant / fungus, display: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}]
+                  - [73, 82, Ray / flat-bodied, display: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}]
+                  - [83, 84, Snake / eel, display: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}]
+                  - [85, 86, Spider / web-weaver, display: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}]
+                  - [87, 88, Starfish / symmetrical, display: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}]
+                  - [89, 90, Worm / slug / larva, display: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}]
+                  - [91, 100, *result:RollTwice]
+            interior:
+              title:
+                canonical: Interior
+              display:
+                color: "#707a83"
+                icon: *icon.Interior
+                column_of: starforged/oracles/creatures/basic_form
+              usage:
+                requires:
+                  attributes:
+                    environment: [interior]
+              _templateTableRows:
+                content: *table:Creatures.BasicForm
+                rolls:
+                  - [1, 3]
+                  - [4, 6]
+                  - [7, 12]
+                  - [13, 19]
+                  - [20, 22]
+                  - [23, 24]
+                  - [25, 37]
+                  - [38, 49]
+                  - [50, 51]
+                  - [52, 56]
+                  - [57, 58]
+                  - [59, 63]
+                  - [64, 65]
+                  - [66, 68]
+                  - [69, 83]
+                  - [84, 85]
+                  - [86, 90]
+                  - [91, 100]
+            land:
+              title:
+                canonical: Land
+              display:
+                color: "#ed1a38"
+                icon: *icon.Land
+                column_of: starforged/oracles/creatures/basic_form
+              usage:
+                requires:
+                  attributes:
+                    environment: [land]
+              _templateTableRows:
+                content: *table:Creatures.BasicForm
+                rolls:
+                  - [1, 2]
+                  - [3, 5]
+                  - [6, 10]
+                  - [11, 25]
+                  - [26, 32]
+                  - [33, 34]
+                  - [35, 39]
+                  - [40, 49]
+                  - [50, 51]
+                  - [52, 58]
+                  - [59, 60]
+                  - [61, 65]
+                  - [66, 67]
+                  - [68, 74]
+                  - [75, 81]
+                  - [82, 83]
+                  - [84, 90]
+                  - [91, 100]
+            liquid:
+              title:
+                canonical: Liquid
+              display:
+                color: "#0082bf"
+                icon: *icon.Liquid
+                column_of: starforged/oracles/creatures/basic_form
+              usage:
+                requires:
+                  attributes:
+                    environment: [liquid]
+              _templateTableRows:
+                content: *table:Creatures.BasicForm
+                rolls:
+                  - [1, 5]
+                  - [6, 8]
+                  - [9, 11]
+                  - [12, 17]
+                  - [18, 24]
+                  - [25, 39]
+                  - [40, 42]
+                  - [43, 45]
+                  - [46, 53]
+                  - [54, 56]
+                  - [57, 63]
+                  - [64, 68]
+                  - [69, 75]
+                  - [76, 80]
+                  - [81, 82]
+                  - [83, 87]
+                  - [88, 90]
+                  - [91, 100]
+            air:
+              title:
+                canonical: Air
+              display:
+                color: "#90278f"
+                icon: *icon.Air
+                column_of: starforged/oracles/creatures/basic_form
+              usage:
+                requires:
+                  attributes:
+                    environment: [air]
+              _templateTableRows:
+                content: *table:Creatures.BasicForm
+                rolls:
+                  - [1, 2]
+                  - [3, 12]
+                  - [13, 37]
+                  - [38, 40]
+                  - [41, 42]
+                  - [43, 47]
+                  - [48, 49]
+                  - [50, 51]
+                  - [52, 66]
+                  - [67, 68]
+                  - [69, 70]
+                  - [71, 72]
+                  - [73, 82]
+                  - [83, 84]
+                  - [85, 86]
+                  - [87, 88]
+                  - [89, 90]
+                  - [91, 100]

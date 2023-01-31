@@ -1,149 +1,351 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Delve"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-oracle_sets:
-  combat_event:
-    title:
-      canonical: Combat Event
-    summary: Determine the actions of a character, creature, or force during a fight.
-    description: |-
-      Use the Combat Event oracles to answer questions about the actions of a foe or enemy force. You can use these oracles instead of—or in addition to—the [Combat Action](ironsworn/oracles/turning_point/combat_action) oracle.
+ironsworn_delve:
+  oracle_sets:
+    combat_event:
+      title:
+        canonical: Combat Event
+      summary: Determine the actions of a character, creature, or force during a fight.
+      description: |-
+        Use the Combat Event oracles to answer questions about the actions of a foe or enemy force. You can use these oracles instead of—or in addition to—the [Combat Action](ironsworn/oracles/turning_point/combat_action) oracle.
 
-      Roll once each on the [Method](ironsworn/oracles/combat_event/method) oracle and the [Target](ironsworn/oracles/combat_event/target) oracle. Then, interpret the response as appropriate to the current situation and the nature of your foe.
+        Roll once each on the [Method](ironsworn/oracles/combat_event/method) oracle and the [Target](ironsworn/oracles/combat_event/target) oracle. Then, interpret the response as appropriate to the current situation and the nature of your foe.
 
-      For example, you are fighting a rhaskar, a bear-like beast. It has initiative, and you want to know what it does next. You [Ask the Oracle](Ask the Oracle), rolling [Method](ironsworn/oracles/combat_event/method) and [Target](ironsworn/oracles/combat_event/target). The oracle responds, “Await Weakness.” You envision the rhaskar circling you, its keen eyes narrowing as it looks for an opening in your defenses. You must [Face Danger](Face Danger) to avoid being outmaneuvered.
-    usage:
-      suggestions:
-        oracle_tables:
-          - ironsworn/oracles/turning_point/combat_action
-    source:
-      authors:
-        - Shawn Tomkin
-      title: "Ironsworn: Delve"
-      page: 218
-      license: https://creativecommons.org/licenses/by-nc-sa/4.0
-    tables:
-      method:
-        title:
-          canonical: "Combat Event: Method"
-          short: Method
-        usage:
-          suggestions:
-            oracle_tables:
-              - ironsworn/oracles/combat_event/target
-        source:
-          page: 218
-        table:
-          - [1, 2, Defy]
-          - [3, 4, Break]
-          - [5, 6, Trick]
-          - [7, 8, Evade]
-          - [9, 10, Protect]
-          - [11, 12, Overwhelm]
-          - [13, 14, Persevere]
-          - [15, 16, Assist]
-          - [17, 18, Await]
-          - [19, 20, Abort]
-          - [21, 22, Block]
-          - [23, 24, Collide]
-          - [25, 26, Focus]
-          - [27, 28, Advance]
-          - [29, 30, Breach]
-          - [31, 32, Endure]
-          - [33, 34, Assault]
-          - [35, 36, Charge]
-          - [37, 38, Escalate]
-          - [39, 40, Sunder]
-          - [41, 42, Shatter]
-          - [43, 44, Aim]
-          - [45, 46, Stagger]
-          - [47, 48, Counter]
-          - [49, 50, Seize]
-          - [51, 52, Impact]
-          - [53, 54, Entangle]
-          - [55, 56, Hold]
-          - [57, 58, Deflect]
-          - [59, 60, Drop]
-          - [61, 62, Lose]
-          - [63, 64, Sweep]
-          - [65, 66, Secure]
-          - [67, 68, Cover]
-          - [69, 70, Withdraw]
-          - [71, 72, Clash]
-          - [73, 74, Amplify]
-          - [75, 76, Batter]
-          - [77, 78, Feint]
-          - [79, 80, Shove]
-          - [81, 82, Embed]
-          - [83, 84, Affect]
-          - [85, 86, Probe]
-          - [87, 88, Force]
-          - [89, 90, Intensify]
-          - [91, 92, Distract]
-          - [93, 94, Challenge]
-          - [95, 96, Brawl]
-          - [97, 98, Coordinate]
-          - [99, 100, Overrun]
-      target:
-        title:
-          canonical: "Combat Event: Target"
-          short: Target
-        usage:
-          suggestions:
-            oracle_tables:
-              - ironsworn/oracles/combat_event/method
-        source:
-          page: 219
-        table:
-          - [1, 2, Control]
-          - [3, 4, Defense]
-          - [5, 6, Limbs]
-          - [7, 8, Focus]
-          - [9, 10, Advantage]
-          - [11, 12, Range]
-          - [13, 14, Stress]
-          - [15, 16, Sense]
-          - [17, 18, Weakness]
-          - [19, 20, Opening]
-          - [21, 22, Fear]
-          - [23, 24, Instinct]
-          - [25, 26, Footing]
-          - [27, 28, Maneuver]
-          - [29, 30, Reach]
-          - [31, 32, Harm]
-          - [33, 34, Finesse]
-          - [35, 36, Weapon]
-          - [37, 38, Environment]
-          - [39, 40, Technique]
-          - [41, 42, Surprise]
-          - [43, 44, Pride]
-          - [45, 46, Wound]
-          - [47, 48, Precision]
-          - [49, 50, Ally]
-          - [51, 52, Ground]
-          - [53, 54, Courage]
-          - [55, 56, Companion]
-          - [57, 58, Object]
-          - [59, 60, Momentum]
-          - [61, 62, Speed]
-          - [63, 64, Strength]
-          - [65, 66, Supply]
-          - [67, 68, Terrain]
-          - [69, 70, Armor]
-          - [71, 72, Skill]
-          - [73, 74, Body]
-          - [75, 76, Protection]
-          - [77, 78, Resolve]
-          - [79, 80, Ferocity]
-          - [81, 82, Shield]
-          - [83, 84, Ammo]
-          - [85, 86, Anger]
-          - [87, 88, Opportunity]
-          - [89, 90, Balance]
-          - [91, 92, Position]
-          - [93, 94, Barrier]
-          - [95, 96, Strategy]
-          - [97, 98, Grasp]
-          - [99, 100, Power]
+        For example, you are fighting a rhaskar, a bear-like beast. It has initiative, and you want to know what it does next. You [Ask the Oracle](Ask the Oracle), rolling [Method](ironsworn/oracles/combat_event/method) and [Target](ironsworn/oracles/combat_event/target). The oracle responds, “Await Weakness.” You envision the rhaskar circling you, its keen eyes narrowing as it looks for an opening in your defenses. You must [Face Danger](Face Danger) to avoid being outmaneuvered.
+      usage:
+        suggestions:
+          oracle_tables:
+            - ironsworn/oracles/turning_point/combat_action
+      tables:
+        method:
+          title:
+            canonical: "Combat Event: Method"
+            short: Method
+          usage:
+            suggestions:
+              oracle_tables:
+                - ironsworn/oracles/combat_event/target
+          source:
+            page: 218
+            authors:
+              - Shawn Tomkin
+            title: "Ironsworn: Delve"
+            license: https://creativecommons.org/licenses/by/4.0
+            date: 2020-02-13
+            uri: https://ironswornrpg.com
+          table:
+            - floor: 1
+              ceiling: 2
+              result: Defy
+            - floor: 3
+              ceiling: 4
+              result: Break
+            - floor: 5
+              ceiling: 6
+              result: Trick
+            - floor: 7
+              ceiling: 8
+              result: Evade
+            - floor: 9
+              ceiling: 10
+              result: Protect
+            - floor: 11
+              ceiling: 12
+              result: Overwhelm
+            - floor: 13
+              ceiling: 14
+              result: Persevere
+            - floor: 15
+              ceiling: 16
+              result: Assist
+            - floor: 17
+              ceiling: 18
+              result: Await
+            - floor: 19
+              ceiling: 20
+              result: Abort
+            - floor: 21
+              ceiling: 22
+              result: Block
+            - floor: 23
+              ceiling: 24
+              result: Collide
+            - floor: 25
+              ceiling: 26
+              result: Focus
+            - floor: 27
+              ceiling: 28
+              result: Advance
+            - floor: 29
+              ceiling: 30
+              result: Breach
+            - floor: 31
+              ceiling: 32
+              result: Endure
+            - floor: 33
+              ceiling: 34
+              result: Assault
+            - floor: 35
+              ceiling: 36
+              result: Charge
+            - floor: 37
+              ceiling: 38
+              result: Escalate
+            - floor: 39
+              ceiling: 40
+              result: Sunder
+            - floor: 41
+              ceiling: 42
+              result: Shatter
+            - floor: 43
+              ceiling: 44
+              result: Aim
+            - floor: 45
+              ceiling: 46
+              result: Stagger
+            - floor: 47
+              ceiling: 48
+              result: Counter
+            - floor: 49
+              ceiling: 50
+              result: Seize
+            - floor: 51
+              ceiling: 52
+              result: Impact
+            - floor: 53
+              ceiling: 54
+              result: Entangle
+            - floor: 55
+              ceiling: 56
+              result: Hold
+            - floor: 57
+              ceiling: 58
+              result: Deflect
+            - floor: 59
+              ceiling: 60
+              result: Drop
+            - floor: 61
+              ceiling: 62
+              result: Lose
+            - floor: 63
+              ceiling: 64
+              result: Sweep
+            - floor: 65
+              ceiling: 66
+              result: Secure
+            - floor: 67
+              ceiling: 68
+              result: Cover
+            - floor: 69
+              ceiling: 70
+              result: Withdraw
+            - floor: 71
+              ceiling: 72
+              result: Clash
+            - floor: 73
+              ceiling: 74
+              result: Amplify
+            - floor: 75
+              ceiling: 76
+              result: Batter
+            - floor: 77
+              ceiling: 78
+              result: Feint
+            - floor: 79
+              ceiling: 80
+              result: Shove
+            - floor: 81
+              ceiling: 82
+              result: Embed
+            - floor: 83
+              ceiling: 84
+              result: Affect
+            - floor: 85
+              ceiling: 86
+              result: Probe
+            - floor: 87
+              ceiling: 88
+              result: Force
+            - floor: 89
+              ceiling: 90
+              result: Intensify
+            - floor: 91
+              ceiling: 92
+              result: Distract
+            - floor: 93
+              ceiling: 94
+              result: Challenge
+            - floor: 95
+              ceiling: 96
+              result: Brawl
+            - floor: 97
+              ceiling: 98
+              result: Coordinate
+            - floor: 99
+              ceiling: 100
+              result: Overrun
+        target:
+          title:
+            canonical: "Combat Event: Target"
+            standard: Target
+          usage:
+            suggestions:
+              oracle_tables:
+                - ironsworn/oracles/combat_event/method
+          source:
+            page: 219
+            authors:
+              - Shawn Tomkin
+            title: "Ironsworn: Delve"
+            license: https://creativecommons.org/licenses/by/4.0
+            date: 2020-02-13
+            uri: https://ironswornrpg.com
+          table:
+            - floor: 1
+              ceiling: 2
+              result: Control
+            - floor: 3
+              ceiling: 4
+              result: Defense
+            - floor: 5
+              ceiling: 6
+              result: Limbs
+            - floor: 7
+              ceiling: 8
+              result: Focus
+            - floor: 9
+              ceiling: 10
+              result: Advantage
+            - floor: 11
+              ceiling: 12
+              result: Range
+            - floor: 13
+              ceiling: 14
+              result: Stress
+            - floor: 15
+              ceiling: 16
+              result: Sense
+            - floor: 17
+              ceiling: 18
+              result: Weakness
+            - floor: 19
+              ceiling: 20
+              result: Opening
+            - floor: 21
+              ceiling: 22
+              result: Fear
+            - floor: 23
+              ceiling: 24
+              result: Instinct
+            - floor: 25
+              ceiling: 26
+              result: Footing
+            - floor: 27
+              ceiling: 28
+              result: Maneuver
+            - floor: 29
+              ceiling: 30
+              result: Reach
+            - floor: 31
+              ceiling: 32
+              result: Harm
+            - floor: 33
+              ceiling: 34
+              result: Finesse
+            - floor: 35
+              ceiling: 36
+              result: Weapon
+            - floor: 37
+              ceiling: 38
+              result: Environment
+            - floor: 39
+              ceiling: 40
+              result: Technique
+            - floor: 41
+              ceiling: 42
+              result: Surprise
+            - floor: 43
+              ceiling: 44
+              result: Pride
+            - floor: 45
+              ceiling: 46
+              result: Wound
+            - floor: 47
+              ceiling: 48
+              result: Precision
+            - floor: 49
+              ceiling: 50
+              result: Ally
+            - floor: 51
+              ceiling: 52
+              result: Ground
+            - floor: 53
+              ceiling: 54
+              result: Courage
+            - floor: 55
+              ceiling: 56
+              result: Companion
+            - floor: 57
+              ceiling: 58
+              result: Object
+            - floor: 59
+              ceiling: 60
+              result: Momentum
+            - floor: 61
+              ceiling: 62
+              result: Speed
+            - floor: 63
+              ceiling: 64
+              result: Strength
+            - floor: 65
+              ceiling: 66
+              result: Supply
+            - floor: 67
+              ceiling: 68
+              result: Terrain
+            - floor: 69
+              ceiling: 70
+              result: Armor
+            - floor: 71
+              ceiling: 72
+              result: Skill
+            - floor: 73
+              ceiling: 74
+              result: Body
+            - floor: 75
+              ceiling: 76
+              result: Protection
+            - floor: 77
+              ceiling: 78
+              result: Resolve
+            - floor: 79
+              ceiling: 80
+              result: Ferocity
+            - floor: 81
+              ceiling: 82
+              result: Shield
+            - floor: 83
+              ceiling: 84
+              result: Ammo
+            - floor: 85
+              ceiling: 86
+              result: Anger
+            - floor: 87
+              ceiling: 88
+              result: Opportunity
+            - floor: 89
+              ceiling: 90
+              result: Balance
+            - floor: 91
+              ceiling: 92
+              result: Position
+            - floor: 93
+              ceiling: 94
+              result: Barrier
+            - floor: 95
+              ceiling: 96
+              result: Strategy
+            - floor: 97
+              ceiling: 98
+              result: Grasp
+            - floor: 99
+              ceiling: 100
+              result: Power
