@@ -1,0 +1,80 @@
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      medical:
+        _templateOracleSet: *template.category:Zone
+        _templateVars:
+          zone: Medical
+        title:
+          canonical: Medical
+        source:
+          page: 356
+        tables:
+          area:
+            _templateOracleTable: *template.info:Zone.Area
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Area
+              content:
+                - Crematorium
+                - Emergency or triage
+                - Isolation or containment
+                - Medical lab
+                - Medical offices
+                - Morgue
+                - Operating room
+                - Pharmacy or drug locker
+                - Prosthetics workshop
+                - Ward or clinic
+                - *result:NewZone
+                - *result:NewZoneViaAccess
+          feature:
+            _templateOracleTable: *template.info:Zone.Feature
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Feature
+              content:
+                - Autopsied corpse
+                - Biological specimens
+                - Blood spatter or pools
+                - Bloody medical supplies
+                - Broken prosthetics
+                - Corpse of a healer
+                - Dissected specimen
+                - Improvised overflow beds
+                - Medical monitors
+                - Medical records or scans
+                - Stacks of body bags
+                - *result:Descriptor+Focus
+          peril:
+            _templateOracleTable: *template.info:Zone.Peril
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Peril
+              content:
+                - Disgusting sight / smell
+                - Disturbing evidence of medical misconduct
+                - Erratic medical bots
+                - Evidence of a virulent disease
+                - Malfunctioning medical equipment
+                - Repercussions of a medical experiment
+                - Restless dead
+                - Signs of a horrific death
+                - Signs of broken quarantine
+                - *result:Action+Theme
+                - *result:RollTwice
+          opportunity:
+            _templateOracleTable: *template.info:Zone.Opportunity
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Opportunity
+              content:
+                - Cache of medicine
+                - Clues to a medical mystery
+                - Helpful medical bot
+                - Unusual or rare specimen
+                - Useful medical equipment

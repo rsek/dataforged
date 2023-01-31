@@ -1,0 +1,38 @@
+attributes:
+  # Region
+  - &attr:Region.Any
+    attributes:
+      region: null
+  - &attr:Region.Terminus
+    attributes:
+      region: [terminus]
+  - &attr:Region.Outlands
+    attributes:
+      region: [outlands]
+  - &attr:Region.Expanse
+    attributes:
+      region: [expanse]
+  # Location
+  - &attr:Location.Any
+    attributes:
+      location: null
+  - &attr:Location.Planetside
+    attributes:
+      location: [planetside]
+  - &attr:Location.Orbital
+    attributes:
+      location: [orbital]
+  - &attr:Location.DeepSpace
+    attributes:
+      location: [deep_space]
+  - &attr:Location.AnyPlanet
+    attributes:
+      location: [planetside, orbital]
+  # Derelict Type
+  - &attr:DerelictType.Starship
+    attributes:
+      derelict_type: [starship]
+  - &attr:DerelictType.Settlement
+    attributes:
+      derelict_type: [settlement]
+  # Atmosphere

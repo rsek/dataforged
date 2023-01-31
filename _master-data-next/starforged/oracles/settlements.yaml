@@ -1,0 +1,396 @@
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  settlements:
+    title:
+      canonical: Settlements
+      short: Settlement
+    source:
+      authors: [Shawn Tomkin]
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      date: "050622"
+    sets:
+      population:
+        title:
+          canonical: Population
+        source:
+          page: 322
+        usage:
+          initial: true
+          requires:
+            attributes:
+              region: null
+        display:
+          columns:
+            terminus:
+              column_type: dice_range
+              content: starforged/oracles/settlements/population/terminus
+              label: Terminus
+            outlands:
+              column_type: dice_range
+              content: starforged/oracles/settlements/population/outlands
+              label: Outlands
+            expanse:
+              column_type: dice_range
+              content: starforged/oracles/settlements/population/expanse
+              label: Expanse
+            number:
+              column_type: string
+              content: starforged/oracles/settlements/population/terminus
+              label: Number
+              key: result
+        tables:
+          terminus:
+            title:
+              canonical: Terminus
+            display:
+              column_of: starforged/oracles/settlements/population
+            usage:
+              requires:
+                attributes:
+                  region: [terminus]
+            table: &table:Population
+              - [1, 10, Few, set_attributes: {population: [few]}]
+              - [11, 25, Dozens, set_attributes: {population: [dozens]}]
+              - [26, 55, Hundreds, set_attributes: {population: [hundreds]}]
+              - [56, 85, Thousands, set_attributes: {population: [thousands]}]
+              - [86, 100, Tens of thousands, set_attributes: {population: [tens_of_thousands]}]
+          outlands:
+            title:
+              canonical: Outlands
+            display:
+              column_of: starforged/oracles/settlements/population
+            usage:
+              requires:
+                attributes:
+                  region: [outlands]
+            _templateTableRows:
+              content: *table:Population
+              rolls:
+                - [1, 15]
+                - [16, 35]
+                - [36, 65]
+                - [66, 90]
+                - [91, 100]
+
+          expanse:
+            title:
+              canonical: Expanse
+            display:
+              column_of: starforged/oracles/settlements/population
+            usage:
+              requires:
+                attributes:
+                  region: [expanse]
+            _templateTableRows:
+              content: *table:Population
+              rolls:
+                - [1, 20]
+                - [21, 50]
+                - [51, 80]
+                - [81, 95]
+                - [96, 100]
+
+    tables:
+      location:
+        title:
+          canonical: Location
+        _templateOracleTable: *template.info:Generic.Location
+        source:
+          page: 322
+        _templateTableRows:
+          content: *template.content:Generic.Location
+          rolls:
+            - [1, 40]
+            - [41, 75]
+            - [76, 100]
+      first_look:
+        title:
+          canonical: First Look
+        source:
+          page: 323
+        usage:
+          max_rolls: 2
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        table:
+          - [1, 3, Beautiful architecture]
+          - [4, 9, Built from organic materials]
+          - [10, 15, Built from random scrap]
+          - [16, 21, Built within repurposed ship]
+          - [22, 26, Built within terrain or asteroid]
+          - [27, 31, Defensible location]
+          - [32, 35, Elevated or multi-level construction]
+          - [36, 40, Hidden or subsurface location]
+          - [41, 43, High-tech construction]
+          - [44, 49, Industrial architecture]
+          - [50, 53, Intimidating defenses]
+          - [54, 56, Moving or transforming]
+          - [57, 61, Obvious social stratification]
+          - [62, 66, Precarious location]
+          - [67, 72, Rustic architecture]
+          - [73, 76, Significant structural damage]
+          - [77, 80, Sprawling or dispersed structures]
+          - [81, 83, Temporary or seasonal location]
+          - [84, 87, Toxic or polluted habitat]
+          - [88, 90, "Within or near [⏵Precursor Vault](starforged/oracles/vaults)", *obj:Vault]
+          - [91, 100, *result:Descriptor+Focus]
+
+      initial_contact:
+        title:
+          canonical: Initial Contact
+        source:
+          page: 323
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        table:
+          - [1, 20, Welcoming, set_attributes: {initial_contact: [welcoming]}]
+          - [21, 30, Neutral / automated, set_attributes: {initial_contact: [neutral_automated]}]
+          - [31, 50, Wary, set_attributes: {initial_contact: [wary]}]
+          - [51, 60, Uncooperative, set_attributes: {initial_contact: [uncooperative]}]
+          - [61, 70, Hostile, set_attributes: {initial_contact: [hostile]}]
+          - [71, 83, Asking for help, set_attributes: {initial_contact: [asking_for_help]}]
+          - [84, 86, In battle, set_attributes: {initial_contact: [in_battle]}]
+          - [87, 89, Captured, set_attributes: {initial_contact: [captured]}]
+          - [90, 92, Unresponsive, set_attributes: {initial_contact: [unresponsive]}]
+          - [93, 95, Destroyed, set_attributes: {initial_contact: [destroyed]}]
+          - [96, 100, "[⏵Derelict](starforged/oracles/derelicts)", *inherit:Derelict.Settlement]
+
+      authority:
+        title:
+          canonical: Authority
+        source:
+          page: 323
+        usage:
+          initial: true
+        content:
+          part_of_speech: [adjective]
+        table:
+          - [1, 15, None / lawless, set_attributes: {authority: [none_lawless]}]
+          - [16, 30, Ineffectual, set_attributes: {authority: [ineffectual]}]
+          - [31, 45, Tolerant, set_attributes: {authority: [tolerant]}]
+          - [46, 55, Fair, set_attributes: {authority: [fair]}]
+          - [56, 70, Unyielding, set_attributes: {authority: [unyielding]}]
+          - [71, 85, Corrupt, set_attributes: {authority: [corrupt]}]
+          - [86, 100, Oppressive, set_attributes: {authority: [oppressive]}]
+      projects:
+        title:
+          canonical: Settlement Projects
+          short: Projects
+        source:
+          page: 324
+        content:
+          part_of_speech: [noun, common noun]
+          tags: [abstract noun]
+        usage:
+          max_rolls: 2
+        description: |-
+          Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
+        table:
+          - [1, 5, Agriculture]
+          - [6, 7, Archeology]
+          - [8, 9, Automation]
+          - [10, 11, Black market]
+          - [12, 13, Command]
+          - [14, 17, Defense]
+          - [18, 22, Energy]
+          - [23, 25, Engineering]
+          - [26, 27, Entertainment]
+          - [28, 29, Environmentalism]
+          - [30, 31, Evacuation]
+          - [32, 33, Expansion]
+          - [34, 37, Exploration]
+          - [38, 39, Festival]
+          - [40, 41, History]
+          - [42, 43, Hunting]
+          - [44, 46, Manufacturing]
+          - [47, 49, Medical]
+          - [50, 51, Migration]
+          - [52, 57, Mining]
+          - [58, 59, Pacifism]
+          - [60, 62, Raiding]
+          - [63, 65, Research]
+          - [66, 69, Salvage]
+          - [70, 72, Secrecy]
+          - [73, 75, Shipbuilding]
+          - [76, 78, Spirituality]
+          - [79, 84, Subsistence]
+          - [85, 86, Surveillance]
+          - [87, 88, Terraforming]
+          - [89, 92, Trade]
+          - [93, 95, Warfare]
+          - [96, 100, *result:Action+Theme]
+      trouble:
+        title:
+          canonical: Settlement Trouble
+          short: Trouble
+        source:
+          page: 324
+        usage:
+          max_rolls: 2
+        description: |-
+          Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.
+        content:
+          part_of_speech: [fragment]
+          tags: [peril, event, present]
+        table:
+          - [1, 3, Battle for leadership, suggestions: [*obj:Faction]]
+          - [4, 6, Betrayal from within]
+          - [7, 8, Caught in the crossfire]
+          - [9, 11, Changing environment]
+          - [12, 13, Clash of cultures, suggestions: [*roll:Event]]
+          - [14, 17, Dangerous discovery, suggestions: [*roll:Event]]
+          - [18, 21, Depleted supplies, suggestions: [*roll:Object]]
+          - [22, 24, Deprived of a resource, suggestions: [*roll:Object]]
+          - [25, 28, Failing technology, suggestions: [*roll:Object]]
+          - [29, 32, Feuding factions]
+          - [33, 34, Ghostly visitations]
+          - [35, 38, Hazardous environment, suggestions: [*roll:Object]]
+          - [39, 42, Hostile lifeforms, suggestions: [*obj:Creature]]
+          - [43, 45, Impassable route]
+          - [46, 48, Impending attack]
+          - [49, 51, Impending natural disaster, suggestions: [*roll:Event]]
+          - [52, 53, Invasive organisms]
+          - [54, 55, Mounting debt]
+          - [56, 57, Mysterious deaths]
+          - [58, 60, Overdue delivery]
+          - [61, 62, Plagued by sickness]
+          - [63, 65, Preyed upon by raiders]
+          - [66, 67, Revolt against leadership, suggestions: [*obj:Npc]]
+          - [68, 69, Sabotaged technology, suggestions: [*roll:Object]]
+          - [70, 71, Shunned by others]
+          - [72, 74, Social strife, suggestions: [*roll:Event]]
+          - [75, 76, Someone is ill or injured, suggestions: [*obj:Npc]]
+          - [77, 78, Someone is missing, suggestions: [*obj:Npc]]
+          - [79, 80, Stolen technology or object, suggestions: [*roll:Object]]
+          - [81, 83, Strange phenomenon, suggestions: [*roll:Event]]
+          - [84, 86, Toxic waste or pollution, suggestions: [*roll:Object]]
+          - [87, 88, Volatile energy source, suggestions: [*roll:Object]]
+          - [89, 90, Vulnerable lifeforms, suggestions: [*obj:Creature]]
+          - [91, 100, *result:Action+Theme]
+      name:
+        title:
+          canonical: Settlement Name
+          short: Name
+        source:
+          page: 325
+        description: |-
+          Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
+        usage:
+          initial: true
+        content:
+          part_of_speech: [proper noun]
+          tags: [name]
+        table:
+        # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
+          - [1, 1, Aegis]
+          - [2, 2, Altair, content: {part_of_speech: [proper noun]}]
+          - [3, 3, Altura, content: {part_of_speech: [proper noun]}]
+          - [4, 4, Amity]
+          - [5, 5, Apex]
+          - [6, 6, Apogee]
+          - [7, 7, Argosy]
+          - [8, 8, Astra, content: {part_of_speech: [proper noun]}]
+          - [9, 9, Aurora]
+          - [10, 10, Beacon]
+          - [11, 11, Brink]
+          - [12, 12, Bulwark]
+          - [13, 13, Burnell, content: {part_of_speech: [proper noun]}]
+          - [14, 14, Burrow]
+          - [15, 15, Concord]
+          - [16, 16, Crux]
+          - [17, 17, Deadrock, content: {part_of_speech: [compound noun]}]
+          - [18, 18, Deception]
+          - [19, 19, Elysium]
+          - [20, 20, Enigma]
+          - [21, 21, Erebus, content: {part_of_speech: [proper noun]}]
+          - [22, 22, Eris, content: {part_of_speech: [proper noun]}]
+          - [23, 23, Evenfall]
+          - [24, 24, Eventide]
+          - [25, 25, Farpoint, content: {part_of_speech: [compound noun]}]
+          - [26, 26, Felicity]
+          - [27, 27, Florin, content: {part_of_speech: [proper noun]}]
+          - [28, 28, Forlorn]
+          - [29, 29, Forsaken]
+          - [30, 30, Freya, content: {part_of_speech: [proper noun]}]
+          - [31, 31, Glimmer]
+          - [32, 32, Gloam]
+          - [33, 33, Hearth]
+          - [34, 34, Helia, content: {part_of_speech: [proper noun]}]
+          - [35, 35, Hypatia, content: {part_of_speech: [proper noun]}]
+          - [36, 36, Hyperion, content: {part_of_speech: [proper noun]}]
+          - [37, 37, Janus, content: {part_of_speech: [proper noun]}]
+          - [38, 38, Karma]
+          - [39, 39, Kepler, content: {part_of_speech: [proper noun]}]
+          - [40, 40, Koshiba, content: {part_of_speech: [proper noun]}]
+          - [41, 41, Lagrange, content: {part_of_speech: [proper noun]}]
+          - [42, 42, Larissa, content: {part_of_speech: [proper noun]}]
+          - [43, 43, Lasthope, content: {part_of_speech: [compound noun]}]
+          - [44, 44, Lastport, content: {part_of_speech: [compound noun]}]
+          - [45, 45, Legacy]
+          - [46, 46, Lodestar]
+          - [47, 47, Luminus, content: {part_of_speech: [proper noun]}]
+          - [48, 48, Lyra, content: {part_of_speech: [proper noun]}]
+          - [49, 49, Marrow]
+          - [50, 50, Meridian]
+          - [51, 51, Moirai, content: {part_of_speech: [proper noun]}]
+          - [52, 52, Mudd, content: {part_of_speech: [proper noun]}]
+          - [53, 53, Neoma, content: {part_of_speech: [proper noun]}]
+          - [54, 54, Nerio, content: {part_of_speech: [proper noun]}]
+          - [55, 55, Nova]
+          - [56, 56, Nyx, content: {part_of_speech: [proper noun]}]
+          - [57, 57, Osseus, content: {part_of_speech: [proper noun]}]
+          - [58, 58, Paradox]
+          - [59, 59, Paragon]
+          - [60, 60, Paxton, content: {part_of_speech: [proper noun]}]
+          - [61, 61, Perchance]
+          - [62, 62, Pinnacle]
+          - [63, 63, Polaris]
+          - [64, 64, Portent]
+          - [65, 65, Prism]
+          - [66, 66, Providence]
+          - [67, 67, Purgatory]
+          - [68, 68, Rampart]
+          - [69, 69, Ramshackle]
+          - [70, 70, Redemption]
+          - [71, 71, Redhaven, content: {part_of_speech: [compound noun]}]
+          - [72, 72, Relic]
+          - [73, 73, Reprise]
+          - [74, 74, Reverie]
+          - [75, 75, Rhiannon, content: {part_of_speech: [proper noun]}]
+          - [76, 76, Rockhome]
+          - [77, 77, Rust]
+          - [78, 78, Sagan, content: {part_of_speech: [proper noun]}]
+          - [79, 79, Sanctity]
+          - [80, 80, Selena, content: {part_of_speech: [proper noun]}]
+          - [81, 81, Sepulcher]
+          - [82, 82, Sigil]
+          - [83, 83, Silvana, content: {part_of_speech: [proper noun]}]
+          - [84, 84, Sirius, content: {part_of_speech: [proper noun]}]
+          - [85, 85, Sisyphus, content: {part_of_speech: [proper noun]}]
+          - [86, 86, Solitude]
+          - [87, 87, Spire]
+          - [88, 88, Starfall, content: {part_of_speech: [compound noun]}]
+          - [89, 89, Summit]
+          - [90, 90, Tranquility]
+          - [91, 91, Tyson, content: {part_of_speech: [proper noun]}]
+          - [92, 92, Unity]
+          - [93, 93, Utopia]
+          - [94, 94, Vega, content: {part_of_speech: [proper noun]}]
+          - [95, 95, Vesper]
+          - [96, 96, Wayward]
+          - [97, 97, Welkin]
+          - [98, 98, Wellspring]
+          - [99, 99, Weyland, content: {part_of_speech: [proper noun]}]
+          - [100, 100, Wreck]
+
+
+

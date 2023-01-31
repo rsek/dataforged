@@ -1,0 +1,13 @@
+common_tables:
+  - _templateOracleTable: &template.info:Generic.Location
+      title:
+        canonical: Location
+      usage:
+        initial: true
+      content:
+        part_of_speech: [adjective]
+    _templateTableRows:
+      content: &template.content:Generic.Location
+        - [Planetside, *attr:Location.Planetside, display: {icon: img/vector/oracles/location/planetside.svg}]
+        - [Orbital, *attr:Location.Orbital, display: {icon: img/vector/oracles/location/orbital.svg}]
+        - [Deep Space, *attr:Location.DeepSpace, display: {icon: img/vector/oracles/location/deep_space.svg}]

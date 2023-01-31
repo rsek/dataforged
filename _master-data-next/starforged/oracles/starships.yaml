@@ -1,0 +1,423 @@
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  starships:
+    title:
+      canonical: Starships
+      short: Starship
+    source:
+      authors: [Shawn Tomkin]
+      title: "Ironsworn: Starforged Rulebook"
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      date: "050622"
+    sets:
+      mission:
+        title:
+          canonical: Starship Mission
+          short: Mission
+        source:
+          page: 328
+        display:
+          columns:
+            terminus:
+              column_type: dice_range
+              content: starforged/oracles/starships/mission/terminus
+              label: Terminus
+            outlands:
+              column_type: dice_range
+              content: starforged/oracles/starships/mission/outlands
+              label: Outlands
+            expanse:
+              column_type: dice_range
+              content: starforged/oracles/starships/mission/expanse
+              label: Expanse
+            mission:
+              column_type: string
+              content: starforged/oracles/starships/mission/terminus
+              label: Mission
+        content:
+          part_of_speech: [fragment]
+          tags: [objective]
+        summary: |-
+          Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
+        usage:
+          requires:
+            attributes:
+              region: null
+        tables:
+          terminus:
+            title:
+              canonical: Terminus
+            display: &display:Mission
+              column_of: starforged/oracles/starships/mission
+              columns:
+                roll:
+                  column_type: dice_range
+                mission:
+                  label: Mission
+                  key: result
+                  column_type: string
+            usage:
+              requires:
+                attributes:
+                  region: [terminus]
+            table: &table:Mission
+              - [1, 3, Blockade a location, suggestions: [*roll:Place]]
+              - [4, 6, Break a blockade]
+              - [7, 9, Collect a resource, suggestions: [*roll:Object]]
+              - [10, 11, Command others]
+              - [12, 14, Conduct diplomacy]
+              - [15, 17, Conduct espionage]
+              - [18, 20, Conduct piracy]
+              - [21, 23, Conduct research]
+              - [24, 26, Defend against an attack]
+              - [27, 29, Deliver messages or data]
+              - [30, 32, Establish a settlement]
+              - [33, 35, Evacuate a location, suggestions: [*obj:Settlement]]
+              - [36, 37, Explore a region]
+              - [38, 39, Hold prisoners]
+              - [40, 42, Hunt down another ship, suggestions: [*obj:Starship]]
+              - [43, 45, Launch an attack]
+              - [46, 48, Patrol an area]
+              - [49, 51, Provide medical aid]
+              - [52, 54, Provide repairs]
+              - [55, 57, Provide shelter]
+              - [58, 59, Quarantine a danger, suggestions: [*roll:Event]]
+              - [60, 62, Raid a settlement,suggestions: [*obj:Settlement]]
+              - [63, 65, Resupply a settlement,suggestions: [*obj:Settlement]]
+              - [66, 68, Retrieve salvage]
+              - [69, 71, Search and rescue]
+              - [72, 74, Smuggle cargo, suggestions: [*roll:Object]]
+              - [75, 77, Survey a site, suggestions: [*roll:Place]]
+              - [78, 79, Test a technology, suggestions: [*roll:Object]]
+              - [80, 82, Transport cargo, suggestions: [*roll:Object]]
+              - [83, 85, Transport passengers, suggestions: [*obj:Npc]]
+              - [86, 90, *result:Action+Theme]
+              - [91, 100, *result:RollTwice]
+          outlands:
+            title:
+              canonical: Outlands
+            display: *display:Mission
+            usage:
+              requires:
+                attributes:
+                  region: [outlands]
+            _templateTableRows:
+              content: *table:Mission
+              rolls:
+                - [1, 2]
+                - [3, 4]
+                - [5, 7]
+                - [8, 9]
+                - [10, 11]
+                - [12, 13]
+                - [14, 16]
+                - [17, 20]
+                - [21, 24]
+                - [25, 28]
+                - [29, 32]
+                - [33, 36]
+                - [37, 40]
+                - [41, 42]
+                - [43, 45]
+                - [46, 48]
+                - [49, 50]
+                - [51, 53]
+                - [54, 56]
+                - [57, 59]
+                - [60, 61]
+                - [62, 64]
+                - [65, 68]
+                - [69, 71]
+                - [72, 73]
+                - [74, 75]
+                - [76, 78]
+                - [79, 80]
+                - [81, 83]
+                - [84, 85]
+                - [86, 90]
+                - [91, 100]
+
+          expanse:
+            title:
+              canonical: Expanse
+            display: *display:Mission
+            usage:
+              requires:
+                attributes:
+                  region: [expanse]
+            _templateTableRows:
+              content: *table:Mission
+              rolls:
+                - [1, 2]
+                - [3, 4]
+                - [5, 8]
+                - [9, 10]
+                - [11, 12]
+                - [13, 14]
+                - [15, 16]
+                - [17, 22]
+                - [23, 25]
+                - [26, 29]
+                - [30, 35]
+                - [36, 39]
+                - [40, 45]
+                - [46, 47]
+                - [48, 49]
+                - [50, 51]
+                - [52, 53]
+                - [54, 55]
+                - [56, 57]
+                - [58, 61]
+                - [62, 63]
+                - [64, 65]
+                - [66, 69]
+                - [70, 71]
+                - [72, 73]
+                - [74, 75]
+                - [76, 77]
+                - [78, 79]
+                - [80, 83]
+                - [84, 85]
+                - [86, 90]
+                - [91, 100]
+    tables:
+      type:
+        title:
+          canonical: Type
+          standard: Starship Type
+        source:
+          page: 326
+        usage:
+          initial: true
+        content:
+          part_of_speech: [common noun, fragment]
+        display:
+          columns:
+            roll:
+              label: Roll
+              column_type: dice_range
+            class:
+              label: Class
+              column_type: string
+              key: result
+            typical_role:
+              label: Typical Role
+              column_type: string
+              key: summary
+        table:
+          - [1, 2, Carrier, Launches fighters, set_attributes: {starship_type: [ carrier]}]
+          - [3, 6, Corvette, Light attack ship, set_attributes: {starship_type: [corvette]}]
+          - [7, 11, Courier, Fast transport, set_attributes: {starship_type: [courier]}]
+          - [12, 14, Cruiser, Medium attack ship, set_attributes: {starship_type: [cruiser]}]
+          - [15, 16, Dreadnought, Heavy attack ship, set_attributes: {starship_type: [dreadnought]}]
+          - [17, 19, Escape pod, Survival craft, set_attributes: {starship_type: [escape]}]
+          - [20, 22, Foundry, Mobile construction platform, set_attributes: {starship_type: [foundry]}]
+          - [23, 27, Harvester, Fuel or energy excavator, set_attributes: {starship_type: [harvester]}]
+          - [28, 33, Hauler, Heavy transport, set_attributes: {starship_type: [hauler]}]
+          - [34, 36, Hunter, Stealthy attack ship, set_attributes: {starship_type: [hunter]}]
+          - [37, 38, Ironhome, Habitat, set_attributes: {starship_type: [ironhome]}]
+          - [39, 42, Mender, Utility or repair, set_attributes: {starship_type: [mender]}]
+          - [43, 47, Outbounder, Remote survey or research, set_attributes: {starship_type: [outbounder]}]
+          - [48, 50, Pennant, Command ship, set_attributes: {starship_type: [pennant]}]
+          - [51, 56, Prospector, Mineral excavator, set_attributes: {starship_type: [prospector]}]
+          - [57, 61, Reclaimer, Salvage or rescue, set_attributes: {starship_type: [reclaimer]}]
+          - [62, 64, Shuttle, Short-range transport, set_attributes: {starship_type: [shuttle]}]
+          - [65, 67, Snub fighter, Small attack craft, set_attributes: {starship_type: [snub_fighter]}]
+          - [68, 82, Multipurpose, "[⏵Starship Mission](starforged/oracles/starships/mission)",
+              oracle_tables: [starforged/oracles/starships/mission], set_attributes: {starship_type: [multipurpose]}]
+          - [83, 84, Unusual or unknown, summary: null]
+          - [85, 94, "[⏵Fleet](starforged/oracles/starships/fleet)", summary: null, oracle_rolls: [starforged/oracles/starships/fleet]]
+          - [95, 100, Ships in conflict (roll twice), summary: null, oracle_rolls: [starforged/oracles/starships/type], *obj:Starship]
+          # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
+      fleet:
+        title:
+          canonical: Fleet
+        source:
+          page: 326
+        content:
+          part_of_speech: [noun, common noun]
+        usage:
+          initial: true
+        table:
+          - [1, 10, Battle fleet]
+          - [11, 25, Pirate wing]
+          - [26, 35, Raider horde]
+          - [36, 50, Salvager hive]
+          - [51, 60, Settler caravan]
+          - [61, 70, Trade caravan]
+          - [71, 90, Transport and escorts]
+          - [91, 100, "[⏵Starship Mission](starforged/oracles/starships/mission)",
+              oracle_tables: [starforged/oracles/starships/mission]]
+      initial_contact:
+        title:
+          canonical: Initial Contact
+        source:
+          page: 327
+        usage:
+          initial: true
+        content:
+          part_of_speech: [fragment]
+          tags: [relationship]
+        table:
+          - [1, 3, Familiar]
+          - [4, 15, Friendly]
+          - [16, 25, Neutral / automated]
+          - [26, 35, Wary]
+          - [36, 40, Dismissive]
+          - [41, 50, Uncooperative]
+          - [51, 65, Hostile]
+          - [66, 80, Asking for help]
+          - [81, 85, In battle]
+          - [86, 90, Unresponsive]
+          - [91, 95, Destroyed]
+          - [96, 100, "[⏵Derelict](starforged/oracles/derelicts)", *inherit:Derelict.Starship]
+      first_look:
+        title:
+          canonical: First Look
+        source:
+          page: 327
+        usage:
+          initial: true
+          max_rolls: 2
+        content:
+          part_of_speech: [fragment]
+          tags: [description]
+        table:
+          - [1, 4, Abnormal sensor readings]
+          - [5, 8, Brightly painted]
+          - [9, 13, Bristling with weapons]
+          - [14, 18, Dark or stealthy]
+          - [19, 23, Heavy armor]
+          - [24, 28, Immobile]
+          - [29, 33, Intimidating profile]
+          - [34, 37, Large sensor arrays]
+          - [38, 41, Leaking radiation]
+          - [42, 45, Low-profile or disguised]
+          - [46, 49, Modern or advanced design]
+          - [50, 54, Obsolete design]
+          - [55, 59, Obvious damage]
+          - [60, 63, Biological components]
+          - [64, 67, Ornate markings]
+          - [68, 71, Oversized engines]
+          - [72, 75, Prominent guild emblem]
+          - [76, 80, Refitted or repurposed hull]
+          - [81, 85, Scarred hull]
+          - [86, 90, Built from scrap]
+          - [91, 94, Towing or linked]
+          - [95, 100, *result:Descriptor+Focus]
+      starship_name:
+        title:
+          canonical: Starship Name
+          short: Name
+        source:
+          page: 329
+        description: |-
+          Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
+        content:
+          part_of_speech: [noun, proper noun]
+          tags: [name]
+        table:
+        # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
+          - [1, 1, Arclight, content: {part_of_speech: [compound noun]}]
+          - [2, 2, Argent Arrow]
+          - [3, 3, Artemis, content: {part_of_speech: [proper noun]}]
+          - [4, 4, Astral Explorer]
+          - [5, 5, Atlas, content: {part_of_speech: [proper noun]}]
+          - [6, 6, Aurora]
+          - [7, 7, Avari’s Wake]
+          - [8, 8, Banshee’s Cry]
+          - [9, 9, Beowulf, content: {part_of_speech: [proper noun]}]
+          - [10, 10, Bloody Jaw]
+          - [11, 11, Broken Sword]
+          - [12, 12, Buccaneer]
+          - [13, 13, Cerelis Nine]
+          - [14, 14, Clarion Call]
+          - [15, 15, Dawn’s Herald]
+          - [16, 16, Dead Reckoning]
+          - [17, 17, Drift Runner]
+          - [18, 18, Eclipse]
+          - [19, 19, Elara Five]
+          - [20, 20, Enchantress]
+          - [21, 21, Endurance]
+          - [22, 22, Excalibur, content: {part_of_speech: [proper noun]}]
+          - [23, 23, Eye of the Void]
+          - [24, 24, Fall of Icarus]
+          - [25, 25, Fallen Light]
+          - [26, 26, False Hope]
+          - [27, 27, Firebreak]
+          - [28, 28, First Light]
+          - [29, 29, Forge Flier]
+          - [30, 30, Fortune’s Favor]
+          - [31, 31, Freya’s Wrath]
+          - [32, 32, Ghost]
+          - [33, 33, Guiding Star]
+          - [34, 34, Hand of Fate]
+          - [35, 35, Herald of Doom]
+          - [36, 36, Implacable]
+          - [37, 37, Implicit]
+          - [38, 38, Inferno]
+          - [39, 39, Invictus, content: {part_of_speech: [proper noun]}]
+          - [40, 40, Iron Cairn]
+          - [41, 41, Karena’s Reverie]
+          - [42, 42, Kraken]
+          - [43, 43, Kuno’s Hammer]
+          - [44, 44, Lightline]
+          - [45, 45, Lodestar]
+          - [46, 46, Long Haul]
+          - [47, 47, Lost Fortune]
+          - [48, 48, Luminous Sorrow]
+          - [49, 49, Manta]
+          - [50, 50, Mercy]
+          - [51, 51, Mutara, content: {part_of_speech: [proper noun]}]
+          - [52, 52, Nebula Prowler]
+          - [53, 53, Newton’s Folly]
+          - [54, 54, Nightfall]
+          - [55, 55, Nomad]
+          - [56, 56, Obsidian Trident]
+          - [57, 57, Onslaught]
+          - [58, 58, Orca]
+          - [59, 59, Outward Bound]
+          - [60, 60, Phantom]
+          - [61, 61, Photon]
+          - [62, 62, Poltergeist]
+          - [63, 63, Profit Margin]
+          - [64, 64, Raven’s Call]
+          - [65, 65, Raya’s Promise]
+          - [66, 66, Reaper]
+          - [67, 67, Reforged Hope]
+          - [68, 68, Relentless]
+          - [69, 69, Royal Signet]
+          - [70, 70, Rubicon, content: {part_of_speech: [proper noun]}]
+          - [71, 71, Sareea’s Tribute]
+          - [72, 72, Second Chance]
+          - [73, 73, Shard of the Sun]
+          - [74, 74, Shattered Siege]
+          - [75, 75, Shattered Star]
+          - [76, 76, Silver Talon]
+          - [77, 77, Smoldering Flame]
+          - [78, 78, Sovereign Skies]
+          - [79, 79, Sparrowhawk]
+          - [80, 80, Stardust]
+          - [81, 81, Starfall, content: {part_of_speech: [compound noun]}]
+          - [82, 82, Stellar Hawk]
+          - [83, 83, Stormswept, content: {part_of_speech: [compound noun]}]
+          - [84, 84, Sundered Aegis]
+          - [85, 85, Sundown]
+          - [86, 86, Sureshot, content: {part_of_speech: [compound noun]}]
+          - [87, 87, Terminus Clipper]
+          - [88, 88, Terrapin]
+          - [89, 89, Timber Wolf]
+          - [90, 90, Tip of the Spear]
+          - [91, 91, Titan]
+          - [92, 92, Tormentor]
+          - [93, 93, Trithia Six]
+          - [94, 94, Ultraviolet]
+          - [95, 95, Valora’s Comet]
+          - [96, 96, Vengeance]
+          - [97, 97, Venture]
+          - [98, 98, Vigilant]
+          - [99, 99, Voidtreader, content: {part_of_speech: [compound noun]}]
+          - [100, 100, Vulture]
