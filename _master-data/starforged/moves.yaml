@@ -1,9 +1,3 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
-  date: "050622"
 move_categories:
   session:
     title:
@@ -19,8 +13,7 @@ move_categories:
       Unlike most other moves, these session moves function primarily from the perspective of the players instead of your characters. They are a tool to moderate and facilitate safe and enjoyable play.
     moves:
       begin_a_session:
-        title:
-          canonical: Begin a Session
+        name: Begin a Session
         trigger:
           text: When you begin a significant session or chapter of play...
         oracles:
@@ -48,9 +41,13 @@ move_categories:
           91-100 | Unforeseen aid is on the way or within reach
         source:
           page: 141
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       set_a_flag:
-        title:
-          canonical: Set a Flag
+        name: Set a Flag
         trigger:
           text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching...
         text: |-
@@ -59,9 +56,13 @@ move_categories:
           When you encounter content flagged as something to approach mindfully, pause to consider or discuss its role in your story. When you come across flagged content that you would rather adjust or omit, [Change Your Fate](starforged/moves/session/change_your_fate).
         source:
           page: 142
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       change_your_fate:
-        title:
-          canonical: Change Your Fate
+        name: Change Your Fate
         trigger:
           text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment...
         text: |-
@@ -74,9 +75,13 @@ move_categories:
             * **Reshape:** The situation changes completely. Envision what happened instead.
         source:
           page: 143
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       take_a_break:
-        title:
-          canonical: Take a Break
+        name: Take a Break
         trigger:
           text: When you resolve a progress move or complete an intense scenario...
         text: |-
@@ -86,9 +91,13 @@ move_categories:
             * Stop for now: [End a Session](starforged/moves/session/end_a_session).
         source:
           page: 144
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       end_a_session:
-        title:
-          canonical: End a Session
+        name: End a Session
         trigger:
           text: When you end a significant session or chapter of play...
         text: |-
@@ -100,6 +109,11 @@ move_categories:
           If there is a quest, connection, or other situation you would like to give focus in your next session, make note of it and take +1 momentum.
         source:
           page: 145
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   adventure:
     title:
       canonical: Adventure moves
@@ -112,26 +126,25 @@ move_categories:
       The **adventure moves** encompass broadly useful actions to overcome obstacles, reinforce your position, conduct investigations, influence others, and support your fellow protagonists. When you face a peril or try to gain leverage, and another move does not apply, you'll likely find your answer among these moves.
     moves:
       face_danger:
-        title:
-          canonical: Face Danger
+        name: Face Danger
         trigger:
           text: When you attempt something risky or react to an imminent threat...
           options:
             - text: With speed, mobility, or agility
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: With resolve, command, or sociability
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: With strength, endurance, or aggression
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: With deception, stealth, or trickery
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: With expertise, focus, or observation
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
 
@@ -155,27 +168,31 @@ move_categories:
             text: You fail, or a momentary success is undermined by a dire turn of events. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 147
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       secure_an_advantage:
-        title:
-          canonical: Secure an Advantage
+        name: Secure an Advantage
         trigger:
           text: When you assess a situation, make preparations, or attempt to gain leverage...
           options:
             - text: With speed, mobility, or agility
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: With resolve, command, or sociability
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: With strength, endurance, aggression
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: With deception, stealth, or trickery
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: With expertise, focus, or observation
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
 
@@ -204,16 +221,20 @@ move_categories:
             text: You fail or your assumptions betray you. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 148
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       gather_information:
-        title:
-          canonical: Gather Information
+        name: Gather Information
         oracles: # TODO: figure out whether this is best left as an Oracle or a Suggestions item. it's called out in the text of the table, but not the move. still, it seems sensible.
           - starforged/oracles/misc/story_clue
         trigger:
           text: When you search for clues, conduct an investigation, analyze evidence, or do research...
           options:
             - roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.
 
@@ -231,21 +252,25 @@ move_categories:
             text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 149
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       compel:
-        title:
-          canonical: Compel
+        name: Compel
         trigger:
           text: When you try to persuade someone or make them an offer...
           options:
             - text: Charm, pacify, encourage, or barter
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: Threaten or incite
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Lie or swindle
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
         text: |-
           **When you try to persuade someone or make them an offer**, envision your approach. If you...
 
@@ -267,9 +292,13 @@ move_categories:
             text: They refuse or make a demand that costs you greatly. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 150
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       aid_your_ally:
-        title:
-          canonical: Aid Your Ally
+        name: Aid Your Ally
         trigger:
           text: When you act in direct support of an ally...
         text: |-
@@ -278,14 +307,18 @@ move_categories:
           If you [Gain Ground](starforged/moves/combat/gain_ground) and score a strong hit, you are both in control. On a **weak hit**, your ally is in control but you are in a bad spot.
         source:
           page: 152
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       check_your_gear:
-        title:
-          canonical: Check Your Gear
+        name: Check Your Gear
         trigger:
           text: When you check to see if you have a specific helpful item or resource...
           options:
             - roll_type: action_roll
-              using: [supply]
+              using: [player/condition_meters/supply]
         text: |-
           **When you check to see if you have a specific helpful item or resource**, roll +supply.
 
@@ -310,6 +343,11 @@ move_categories:
             text: You don't have it and the situation grows more perilous. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 153
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   quest:
     title:
       canonical: Quest moves
@@ -324,13 +362,12 @@ move_categories:
       page: 154
     moves:
       swear_an_iron_vow:
-        title:
-          canonical: Swear an Iron Vow
+        name: Swear an Iron Vow
         trigger:
           text: When you swear upon iron to complete a quest...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
@@ -348,9 +385,13 @@ move_categories:
             text: You must overcome a significant obstacle before you begin your quest. Envision what stands in your way.
         source:
           page: 156
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       reach_a_milestone:
-        title:
-          canonical: Reach a Milestone
+        name: Reach a Milestone
         trigger:
           text: When you make headway in your quest...
         text: |-
@@ -366,9 +407,13 @@ move_categories:
           ...you may mark progress per the rank of the vow.
         source:
           page: 157
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       fulfill_your_vow:
-        title:
-          canonical: Fulfill Your Vow
+        name: Fulfill Your Vow
         progress_move: true
         trigger:
           text: When you reach the end of your quest...
@@ -399,9 +444,13 @@ move_categories:
                 * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow's rank by one (if not already epic).
         source:
           page: 158
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       forsake_your_vow:
-        title:
-          canonical: Forsake Your Vow
+        name: Forsake Your Vow
         trigger:
           text: When you renounce your quest, betray your promise, or the goal is lost to you...
         text: |-
@@ -417,6 +466,11 @@ move_categories:
             * Your reputation suffers: Envision how this failure marks you.
         source:
           page: 160
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   connection:
     title:
       canonical: Connection moves
@@ -431,13 +485,12 @@ move_categories:
       Make these **connection moves** when you introduce connections and as you build influence or understanding with them.
     moves:
       make_a_connection:
-        title:
-          canonical: Make a Connection
+        name: Make a Connection
         trigger:
           text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
@@ -458,27 +511,38 @@ move_categories:
             text: You don't make a connection and the situation worsens. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 163
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       develop_your_relationship:
-        title:
-          canonical: Develop Your Relationship
+        name: Develop Your Relationship
+        attributes:
+          challenge_rank:
+            label: Challenge rank
+            options:
+              troublesome:
+                label: Troublesome
+                value: 1
+              dangerous:
+                label: Dangerous
+                value: 2
+              formidable:
+                label: Formidable
+                value: 3
+              extreme:
+                label: Extreme
+                value: 4
+              epic:
+                label: Epic
+                value: 5
         trigger:
           text: When you reinforce your relationship with a connection...
           options:
             - roll_type: action_roll
-              using: ["${{@CUSTOM_STAT}}"]
-              custom_stat:
-                label: Challenge rank
-                options:
-                  - label: Troublesome
-                    value: 1
-                  - label: Dangerous
-                    value: 2
-                  - label: Formidable
-                    value: 3
-                  - label: Extreme
-                    value: 4
-                  - label: Epic
-                    value: 5
+              using: [starforged/moves/connection/develop_your_relationship/attributes/challenge_rank]
+
         text: |-
           **When you reinforce your relationship with a connection** by doing any of the following...
 
@@ -496,7 +560,7 @@ move_categories:
         outcomes:
           strong_hit:
             text: Mark 2 ticks on your bonds legacy track.
-            with_a_match:
+            match:
               text: Mark 2 ticks on your bonds legacy track. You may also envision how recent events bolstered your connection’s standing and raise their rank by one (if not already epic).
           weak_hit:
             text: Take +2 momentum.
@@ -504,14 +568,18 @@ move_categories:
             text: Take no lasting benefit.
         source:
           page: 164
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       test_your_relationship:
-        title:
-          canonical: Test Your Relationship
+        name: Test Your Relationship
         trigger:
           text: When your relationship with a connection is tested through conflict, betrayal, or circumstance...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.
 
@@ -538,9 +606,13 @@ move_categories:
                 * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) (formidable or greater) to see it done. Until you complete the quest, take no benefit for the connection. If you refuse or fail the quest, the connection is permanently undone.
         source:
           page: 165
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       forge_a_bond:
-        title:
-          canonical: Forge a Bond
+        name: Forge a Bond
         trigger:
           text: When your relationship with a connection is ready to evolve...
           options:
@@ -577,6 +649,11 @@ move_categories:
             text: They reveal a motivation or background that puts you at odds. If you recommit to this relationship, roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the connection's rank by one (if not already epic).
         source:
           page: 166
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   exploration:
     title:
       canonical: Exploration moves
@@ -591,20 +668,19 @@ move_categories:
       page: 168
     moves:
       undertake_an_expedition:
-        title:
-          canonical: Undertake an Expedition
+        name: Undertake an Expedition
         trigger:
           text: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site...
           options:
             - text: Move at speed
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: Keep under the radar
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: Stay vigilant
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank. Then, for each segment of the expedition, envision your approach. If you...
 
@@ -633,14 +709,18 @@ move_categories:
             text: You are waylaid by a crisis, or arrive at a waypoint to confront an immediate hardship or threat. Do not mark progress, and [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 169
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       explore_a_waypoint:
-        title:
-          canonical: Explore a Waypoint
+        name: Explore a Waypoint
         trigger:
           text: When you divert from an expedition to examine a notable location...
           options:
             - roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you divert from an expedition to examine a notable location**, roll +wits.
 
@@ -659,7 +739,7 @@ move_categories:
 
                 * Find an opportunity: Envision a favorable insight, situation, resource, or encounter. Then, take +2 momentum.
                 * Gain progress: Mark progress on your expedition, per its rank.
-            with_a_match:
+            match:
               text: |-
                 You encounter something wondrous! Choose one.
 
@@ -670,13 +750,17 @@ move_categories:
             text: You uncover something interesting, but it is bound up in a peril or reveals an ominous aspect of this place. Envision what you encounter. Then, take +1 momentum.
           miss:
             text: You encounter an immediate hardship or threat, and must [Pay the Price](starforged/moves/fate/pay_the_price).
-            with_a_match:
+            match:
               text: You encounter something dreadful! [Confront Chaos](starforged/moves/exploration/confront_chaos) or else [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 174
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       make_a_discovery:
-        title:
-          canonical: Make a Discovery
+        name: Make a Discovery
         trigger:
           text: When your exploration of a waypoint uncovers something wondrous
         oracles:
@@ -711,9 +795,13 @@ move_categories:
           91-100 | Roll twice
         source:
           page: 176
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       confront_chaos:
-        title:
-          canonical: Confront Chaos
+        name: Confront Chaos
         trigger:
           text: When your exploration of a waypoint uncovers something dreadful...
         oracles:
@@ -750,9 +838,13 @@ move_categories:
           97-100 | Worshipers of great and malevolent powers
         source:
           page: 177
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       finish_an_expedition:
-        title:
-          canonical: Finish an Expedition
+        name: Finish an Expedition
         trigger:
           text: When your expedition comes to an end...
           options:
@@ -783,14 +875,18 @@ move_categories:
                 * Return to the expedition: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition's rank by one (if not already epic).
         source:
           page: 178
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       set_a_course:
-        title:
-          canonical: Set a Course
+        name: Set a Course
         trigger:
           text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site...
           options:
             - roll_type: action_roll
-              using: [supply]
+              using: [player/condition_meters/supply]
         text: |-
           **When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.
 
@@ -816,6 +912,11 @@ move_categories:
               You are waylaid by a significant threat, and must [Pay the Price](starforged/moves/fate/pay_the_price). If you overcome this obstacle, you may push on safely to your destination.
         source:
           page: 180
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   combat:
     title:
       canonical: Combat moves
@@ -830,26 +931,25 @@ move_categories:
       When you face one or more foes in high-stakes, action-oriented conflict, use the **combat moves**. These moves encompass on-foot action and vehicle sorties—or both as part of the same challenge.
     moves:
       enter_the_fray:
-        title:
-          canonical: Enter the Fray
+        name: Enter the Fray
         trigger:
           text: When you initiate combat or are forced into a fight...
           options:
             - text: On the move
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: Facing off against your foe
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: In the thick of it at close quarters
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Preparing to act against an unaware foe
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: Caught in a trap or sizing up the situation
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you initiate combat or are forced into a fight**, envision your objective and give it a rank. If the combat includes discrete challenges or phases, set an objective with a rank for each.
 
@@ -880,27 +980,31 @@ move_categories:
             text: The fight begins with you in a bad spot.
         source:
           page: 188
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       gain_ground:
-        title:
-          canonical: Gain Ground
+        name: Gain Ground
         trigger:
           text: When you are in control and take action in a fight to reinforce your position or move toward an objective...
           options:
             - text: In pursuit, fleeing, or maneuvering
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: Gaining leverage with force, powering through, or making a threat
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Hiding, preparing an ambush, or misdirecting
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: Coordinating a plan, studying a situation, or cleverly gaining leverage
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...
 
@@ -936,27 +1040,31 @@ move_categories:
             text: Your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 190
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       react_under_fire:
-        title:
-          canonical: React Under Fire
+        name: React Under Fire
         trigger:
           text: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle...
           options:
             - text: In pursuit, fleeing, dodging, getting back into position, or taking cover
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: Remaining stalwart against fear or temptation
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: Blocking or diverting with force, or taking the hit
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Moving into hiding or creating a distraction
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle**, envision your approach and roll. If you are...
 
@@ -980,18 +1088,22 @@ move_categories:
             text: The situation worsens. You stay in a bad spot and must [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 191
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       strike:
-        title:
-          canonical: Strike
+        name: Strike
         trigger:
           text: When you are in control and assault a foe at close quarters, or when you attack at a distance...
           options:
             - text: Assault a foe at close quarters
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Attack at a distance
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
         text: |-
           **When you are in control and assault a foe at close quarters**, roll +iron; **when you attack at a distance**, roll +edge.
 
@@ -1009,18 +1121,22 @@ move_categories:
             text: The fight turns against you. You are in a bad spot and must [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 192
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       clash:
-        title:
-          canonical: Clash
+        name: Clash
         trigger:
           text: When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance...
           options:
             - text: Fight back against a foe at close quarters
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Exchange fire at a distance
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
         text: |-
           **When you are in a bad spot and fight back against a foe at close quarters**, roll +iron; **when you exchange fire at a distance**, roll +edge.
 
@@ -1038,9 +1154,13 @@ move_categories:
             text: Your foe dominates this exchange. You stay in a bad spot and must [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 193
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       take_decisive_action:
-        title:
-          canonical: Take Decisive Action
+        name: Take Decisive Action
         trigger:
           text: When you seize an objective in a fight...
           options:
@@ -1087,9 +1207,13 @@ move_categories:
             text: You are defeated or your objective is lost. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 194
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       face_defeat:
-        title:
-          canonical: Face Defeat
+        name: Face Defeat
         trigger:
           text: When you abandon or are deprived of an objective...
         text: |-
@@ -1098,27 +1222,31 @@ move_categories:
           If the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot.
         source:
           page: 196
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       battle:
-        title:
-          canonical: Battle
+        name: Battle
         trigger:
           text: When you fight a battle and it happens in a blur...
           options:
             - text: At range, or using your speed and the environment to your advantage
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: Depending on your courage, leadership, or companions
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: In close to overpower your foe
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Using trickery to befuddle your foe
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: Using careful tactics to outsmart your foe
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you fight a battle and it happens in a blur**, envision your objective and roll. If you primarily...
 
@@ -1142,6 +1270,11 @@ move_categories:
             text: You are defeated or the objective is lost. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 197
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   suffer:
     title:
       canonical: Suffer moves
@@ -1154,8 +1287,7 @@ move_categories:
       page: 198
     moves:
       lose_momentum:
-        title:
-          canonical: Lose Momentum
+        name: Lose Momentum
         trigger:
           text: When you are delayed or disadvantaged
         text: |-
@@ -1167,17 +1299,21 @@ move_categories:
             * Envision how this undermines your progress on a vow, expedition, connection, or combat. Then, clear 1 unit of progress on that track per its rank: troublesome=3 boxes; dangerous=2 boxes; formidable=1 box; extreme=2 ticks; epic=1 tick.
         source:
           page: 199
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       endure_harm:
-        title:
-          canonical: Endure Harm
+        name: Endure Harm
         trigger:
           text: When you face physical injury, fatigue, or illness...
           options:
             - roll_type: action_roll
               method: highest
               using:
-                - iron
-                - health
+                - player/stats/iron
+                - player/condition_meters/health
         oracles:
           - starforged/oracles/moves/endure_harm
         text: |-
@@ -1223,17 +1359,21 @@ move_categories:
               51-100 | You are still standing.
         source:
           page: 200
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       endure_stress:
-        title:
-          canonical: Endure Stress
+        name: Endure Stress
         trigger:
           text: When you face mental strain, shock, or despair...
           options:
             - roll_type: action_roll
               method: highest
               using:
-                - heart
-                - spirit
+                - player/stats/heart
+                - player/condition_meters/spirit
         oracles:
           - starforged/oracles/moves/endure_stress
         text: |-
@@ -1277,9 +1417,13 @@ move_categories:
               51-100 | You persevere.
         source:
           page: 202
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       companion_takes_a_hit:
-        title:
-          canonical: Companion Takes a Hit
+        name: Companion Takes a Hit
         trigger:
           text: When your companion faces physical hardship...
           options:
@@ -1302,13 +1446,17 @@ move_categories:
             text: If your companion's health is not 0, you may [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1) and give them +1 health. Otherwise, they press on.
           miss:
             text: It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2). If your companion's health is 0, they are out of action until given aid.
-            with_a_match:
+            match:
               text: It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2). If your companion's health is 0, they are dead or destroyed; discard the asset.
         source:
           page: 204
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       sacrifice_resources:
-        title:
-          canonical: Sacrifice Resources
+        name: Sacrifice Resources
         trigger:
           text: When you lose or consume resources...
         text: |-
@@ -1317,9 +1465,13 @@ move_categories:
           If your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move.
         source:
           page: 205
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       withstand_damage:
-        title:
-          canonical: Withstand Damage
+        name: Withstand Damage
         trigger:
           text: When your vehicle faces a damaging situation or environment...
           options:
@@ -1384,6 +1536,11 @@ move_categories:
               96-100 | Against all odds, the vehicle holds together.
         source:
           page: 206
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   recover:
     title:
       canonical: Recover moves
@@ -1398,13 +1555,12 @@ move_categories:
       page: 208
     moves:
       sojourn:
-        title:
-          canonical: Sojourn
+        name: Sojourn
         trigger:
           text: When you spend time recovering within a community...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When you spend time recovering within a community**, roll +heart.
 
@@ -1429,27 +1585,31 @@ move_categories:
                 * You find no relief, and the situation grows worse. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 209
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       heal:
-        title:
-          canonical: Heal
+        name: Heal
         trigger:
           text: When you receive medical care or provide treatment...
           options:
             - text: Receive treatment from someone (not an ally)
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Mend your own wounds
               roll_type: action_roll
               method: lowest
               using:
-                - iron
-                - wits
+                - player/stats/iron
+                - player/stats/wits
             - text: Obtain treatment for a companion
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: Provide care
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you receive medical care or provide treatment**, envision the situation and roll. If you...
 
@@ -1475,14 +1635,18 @@ move_categories:
             text: The aid is ineffective and the situation worsens. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 210
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       hearten:
-        title:
-          canonical: Hearten
+        name: Hearten
         trigger:
           text: When you socialize, share intimacy, or find a moment of peace...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When you socialize, share intimacy, or find a moment of peace**, roll +heart.
 
@@ -1503,24 +1667,28 @@ move_categories:
             text: You take no comfort and the situation worsens. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 211
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       resupply:
-        title:
-          canonical: Resupply
+        name: Resupply
         trigger:
           text: When you attempt to bolster your readiness...
           options:
             - text: Barter or make an appeal
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: Threaten or seize
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: Steal or swindle
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: Scavenge or craft
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you attempt to bolster your readiness**, envision the opportunity and your approach. If you...
 
@@ -1556,18 +1724,22 @@ move_categories:
             text: You encounter an unexpected peril. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 212
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       repair:
-        title:
-          canonical: Repair
+        name: Repair
         trigger:
           text: When you make repairs to your vehicles, modules, mechanical companions, or other devices...
           options:
             - text: Make your own repairs, or direct a companion to make repairs
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
             - text: Obtain repairs from someone (not an ally)
               roll_type: action_roll
-              using: [supply]
+              using: [player/condition_meters/supply]
         text: |-
           **When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...
 
@@ -1637,6 +1809,11 @@ move_categories:
             text: The repairs are not made and the situation worsens. [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 214
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   threshold:
     title:
       canonical: Threshold moves
@@ -1651,13 +1828,12 @@ move_categories:
       page: 216
     moves:
       face_death:
-        title:
-          canonical: Face Death
+        name: Face Death
         trigger:
           text: When you are brought to the brink of death with a chance for recovery or redemption...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
 
@@ -1682,14 +1858,18 @@ move_categories:
             text: You are dead.
         source:
           page: 217
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       face_desolation:
-        title:
-          canonical: Face Desolation
+        name: Face Desolation
         trigger:
           text: When you are brought to the brink of desolation...
           options:
             - roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
         text: |-
           **When you are brought to the brink of desolation**, roll +heart.
 
@@ -1714,9 +1894,13 @@ move_categories:
             text: You succumb to despair or horror and are lost.
         source:
           page: 218
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       overcome_destruction:
-        title:
-          canonical: Overcome Destruction
+        name: Overcome Destruction
         trigger:
           text: When your command vehicle is destroyed or irrevocably lost...
           options:
@@ -1755,6 +1939,11 @@ move_categories:
               If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
         source:
           page: 220
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   legacy:
     title:
       canonical: Legacy moves
@@ -1769,8 +1958,7 @@ move_categories:
       Make these **legacy moves** to gain and spend experience, and when you face a final test to learn how your accomplishments and failures will echo through time.
     moves:
       earn_experience:
-        title:
-          canonical: Earn Experience
+        name: Earn Experience
         trigger:
           text: When you fill a box (four ticks) on any legacy track...
         text: |-
@@ -1779,9 +1967,13 @@ move_categories:
           Once you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress.
         source:
           page: 224
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       advance:
-        title:
-          canonical: Advance
+        name: Advance
         trigger:
           text: When you develop your abilities, improve your resources, gain a reward, or boost your influence...
         text: |-
@@ -1794,9 +1986,13 @@ move_categories:
             * Deed: Learn from your experiences or build a legacy
         source:
           page: 225
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       continue_a_legacy:
-        title:
-          canonical: Continue a Legacy
+        name: Continue a Legacy
         trigger:
           text: When you retire from your life as Ironsworn, or succumb to death or desolation...
           options:
@@ -1869,6 +2065,11 @@ move_categories:
                 * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
         source:
           page: 226
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   fate:
     title:
       canonical: Fate moves
@@ -1881,14 +2082,13 @@ move_categories:
       page: 228
     moves:
       ask_the_oracle:
-        title:
-          canonical: Ask the Oracle
+        name: Ask the Oracle
         trigger:
           text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events...
         oracles:
           - starforged/oracles/moves/ask_the_oracle/small_chance
           - starforged/oracles/moves/ask_the_oracle/unlikely
-          - starforged/oracles/moves/ask_the_oracle/fifty-fifty
+          - starforged/oracles/moves/ask_the_oracle/fifty_fifty
           - starforged/oracles/moves/ask_the_oracle/likely
           - starforged/oracles/moves/ask_the_oracle/almost_certain
         text: |-
@@ -1910,9 +2110,13 @@ move_categories:
           On a match, envision an extreme result or twist.
         source:
           page: 229
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       pay_the_price:
-        title:
-          canonical: Pay the Price
+        name: Pay the Price
         trigger:
           text: When you suffer the outcome of an action...
         oracles:
@@ -1951,6 +2155,11 @@ move_categories:
           96-100 | Roll twice
         source:
           page: 232
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
   scene_challenge:
     title:
       canonical: Scene challenge moves
@@ -1966,8 +2175,7 @@ move_categories:
       page: 239
     moves:
       begin_the_scene:
-        title:
-          canonical: Begin the Scene
+        name: Begin the Scene
         trigger:
           text: When you face an extended or complex challenge...
         text: |-
@@ -1980,30 +2188,32 @@ move_categories:
           Then, activate a 4-segment tension clock and [Face Danger](starforged/moves/scene_challenge/face_danger) or [Secure an Advantage](starforged/moves/scene_challenge/secure_an_advantage) to take action.
         source:
           page: 239
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       face_danger:
-        title:
-          canonical: Face Danger (Scene Challenge)
-          standard: Face Danger (Scene Challenge)
-          short: Face Danger
+        name: Face Danger (Scene Challenge)
         variant_of: starforged/moves/adventure/face_danger
         trigger:
           text: When you attempt something risky or react to an imminent threat within a scene challenge...
           options:
             - text: With speed, mobility, or agility
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: With resolve, command, or sociability
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: With strength, endurance, or aggression
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: With deception, stealth, or trickery
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: With expertise, focus, or observation
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you attempt something risky or react to an imminent threat within a scene challenge**, envision your action and roll. If you act...
 
@@ -2021,40 +2231,42 @@ move_categories:
         outcomes:
           strong_hit:
             text: You are successful. Mark progress.
-            with_a_match:
+            match:
               text: You are successful. Mark progress twice.
           weak_hit:
             text: You are successful and mark progress, but also encounter a complication or setback. Envision what occurs and fill a clock segment.
           miss:
             text: You fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](starforged/moves/fate/pay_the_price).
-            with_a_match:
+            match:
               text: You fail, or a momentary success is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 240
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       secure_an_advantage:
-        title:
-          canonical: Secure an Advantage (Scene Challenge)
-          standard: Secure an Advantage (Scene Challenge)
-          short: Secure an Advantage
+        name: Secure an Advantage (Scene Challenge)
         variant_of: starforged/moves/adventure/secure_an_advantage
         trigger:
           text: When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...
           options:
             - text: With speed, mobility, or agility
               roll_type: action_roll
-              using: [edge]
+              using: [player/stats/edge]
             - text: With resolve, command, or sociability
               roll_type: action_roll
-              using: [heart]
+              using: [player/stats/heart]
             - text: With strength, endurance, aggression
               roll_type: action_roll
-              using: [iron]
+              using: [player/stats/iron]
             - text: With deception, stealth, or trickery
               roll_type: action_roll
-              using: [shadow]
+              using: [player/stats/shadow]
             - text: With expertise, focus, or observation
               roll_type: action_roll
-              using: [wits]
+              using: [player/stats/wits]
         text: |-
           **When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge**, envision your action and roll. If you act...
 
@@ -2073,7 +2285,7 @@ move_categories:
         outcomes:
           strong_hit:
             text: You are successful. Take +2 momentum and add +1 on your next move (not a progress move).
-            with_a_match:
+            match:
               text: You are successful. Mark progress, take +2 momentum, and add +1 on your next move (not a progress move).
           weak_hit:
             text: |-
@@ -2083,13 +2295,17 @@ move_categories:
                 * Add +1 on your next move (not a progress move)
           miss:
             text: You fail or your assumptions betray you. Fill a clock segment and [Pay the Price](starforged/moves/fate/pay_the_price).
-            with_a_match:
+            match:
               text: You fail or your assumptions betray you. Fill two clock segments and [Pay the Price](starforged/moves/fate/pay_the_price).
         source:
           page: 240
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
       finish_the_scene:
-        title:
-          canonical: Finish the Scene
+        name: Finish the Scene
         progress_move: true
         trigger:
           text: When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion...
@@ -2113,3 +2329,8 @@ move_categories:
             text: You fail, or are undermined by a dramatic and costly turn of events. [Pay the Price](starforged/moves/fate/pay_the_price). Make it hurt.
         source:
           page: 241
+          authors:
+            - Shawn Tomkin
+          title: "Ironsworn: Starforged Rulebook"
+          license: https://creativecommons.org/licenses/by/4.0
+          date: "2022-10-01"
