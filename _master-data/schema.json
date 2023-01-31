@@ -1260,38 +1260,54 @@
     "Suggestions": {
       "type": "object",
       "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
-      "$comment": "TODO"
+      "additionalProperties": false,
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetID"
+          }
+        }
+      }
     },
     "CyclopediaEntry": {
       "description": "Schema common to \"cyclopedia\" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*) ",
-      "allOf": [
-        {
-          "$ref": "#/definitions/CategoryMetadata"
+      "required": [
+        "name",
+        "description"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/DataforgedID"
         },
-        {
-          "required": [
-            "description"
-          ],
-          "additionalProperties": false,
-          "properties": {
-            "description": {
-              "$ref": "#/definitions/Description"
-            },
-            "summary": {
-              "$ref": "#/definitions/Summary"
-            },
-            "features": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/LocalizedMarkdown"
-              }
-            },
-            "quest_starter": {
-              "$ref": "#/definitions/QuestStarter"
-            }
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocalizedMarkdown"
           }
+        },
+        "quest_starter": {
+          "$ref": "#/definitions/QuestStarter"
         }
-      ]
+      }
     },
     "Encounter": {
       "description": "Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.",
@@ -1301,16 +1317,15 @@
         },
         {
           "type": "object",
-          "additionalProperties": false,
+          "required": [
+            "rank"
+          ],
           "properties": {
             "nature": {
               "type": "string"
             },
             "summary": {
-              "$ref": "#/definitions/Summary",
-              "examples": [
-                "Insectoid horde"
-              ]
+              "$ref": "#/definitions/Summary"
             },
             "rank": {
               "$ref": "#/definitions/ChallengeRank"
@@ -1672,7 +1687,28 @@
       }
     },
     "SettingTruth": {
-      "$ref": "#/definitions/CategoryMetadata"
+      "type": "object",
+      "required": [
+        "name",
+        "source"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/DataforgedID"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "options": {
+          "$ref": "#/definitions/OracleTableRows"
+        }
+      }
     }
   },
   "additionalProperties": false,
@@ -1850,7 +1886,6 @@
                 "summary",
                 "nature"
               ],
-              "additionalProperties": false,
               "properties": {
                 "summary": {
                   "$ref": "#/definitions/Summary"
@@ -1863,7 +1898,8 @@
                     "horror",
                     "human",
                     "machine",
-                    "monster"
+                    "monster",
+                    "vehicle"
                   ]
                 },
                 "variants": {
