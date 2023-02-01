@@ -1,7 +1,7 @@
 /**
  * @public
  */
-export declare type ActorRecord<T extends GameObjectType.Character | GameObjectType.Creature | GameObjectType.Faction, K extends AttributeKey> = GameObjectRecordBase<T, K>;
+export declare type ActorRecord<T extends GameObjectType.Character | GameObjectType.Creature | GameObjectType.Faction, K extends AttributeKey> = GameObjectRecordBase<T, K>
 
 /**
  * Describes changes that an asset ability makes to its parent asset when active. Any properties with object values should be merged recursively.
@@ -13,14 +13,14 @@ export declare type ActorRecord<T extends GameObjectType.Character | GameObjectT
  * @public
  */
 export declare interface AlterAsset extends Omit<PartialDeep<OmitMetadataDeep<Asset>>, 'abilities' | 'asset_type' | 'attachments' | 'condition_meter' | '$id'>, MixinId {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]/alter/assets/[1-9][0-9]*$
      */
-    $id: string;
-    abilities?: AlterAssetAbility[] | undefined;
-    attachments?: AlterAssetAttachment | undefined;
-    'condition_meter'?: AlterAssetConditionMeter | undefined;
-    states?: InputToggle[] | undefined;
+  $id: string
+  abilities?: AlterAssetAbility[] | undefined
+  attachments?: AlterAssetAttachment | undefined
+  'condition_meter'?: AlterAssetConditionMeter | undefined
+  states?: InputToggle[] | undefined
 }
 
 /**
@@ -51,43 +51,43 @@ export declare interface AlterMiss extends PartialDeep<OutcomeMiss> {
  * @public
  */
 export declare interface AlterMomentum extends MixinId {
-    /**
+  /**
      * Information on how the player's momentum burn is altered.
      */
-    burn?: AlterMomentumBurn[] | undefined;
-    /**
+  burn?: AlterMomentumBurn[] | undefined
+  /**
      * Information on how the player's momentum reset is altered.
      */
-    reset?: AlterMomentumReset[] | undefined;
+  reset?: AlterMomentumReset[] | undefined
 }
 
 /**
  * @public
  */
 export declare interface AlterMomentumBurn extends MixinId {
-    /**
+  /**
      * The trigger condition for altering the PC's momentum burn.
      */
-    trigger: MixinText;
-    /**
+  trigger: MixinText
+  /**
      * The effect altering the PC's momentum burn.
      */
-    effect: MixinText;
-    outcomes?: (typeof MoveOutcome[1] | typeof MoveOutcome[2])[] | undefined;
+  effect: MixinText
+  outcomes?: Array<typeof MoveOutcome[1] | typeof MoveOutcome[2]> | undefined
 }
 
 /**
  * @public
  */
 export declare interface AlterMomentumReset extends MixinId {
-    /**
+  /**
      * The trigger condition for altering the PC's momentum reset.
      */
-    trigger: MixinText;
-    /**
+  trigger: MixinText
+  /**
      * The amount by which the PC's momentum reset is change.
      */
-    value: number;
+  value: number
 }
 
 /**
@@ -95,41 +95,41 @@ export declare interface AlterMomentumReset extends MixinId {
  * @public
  */
 export declare interface AlterMove extends StubExcept<Move, '$id', 'outcomes'> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[1-9][0-9]*$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The `$id`s of the move(s) to be altered. If it's `null`, it can alter *any* move to which its trigger conditions apply. If it's `undefined`, see `Extends` instead.
      * @nullable
      */
-    moves?: Move['$id'][] | null | undefined;
-    /**
+  moves?: Array<Move['$id']> | null | undefined
+  /**
      * Some asset abilities alter/extend other asset abilities, specified as an array of IDs. Only changed properties are specified; other properties are the same.
      */
-    alters?: AlterMove['$id'][] | undefined;
-    /**
+  alters?: Array<AlterMove['$id']> | undefined
+  /**
      * The trigger required by the asset ability. If `undefined`, the move alteration applies to all uses of the specified moves, so long as they also meet any implicit asset requirements (fictional framing, `Asset.Requirement`, not being Broken or Out of Action, etc).
      */
-    trigger?: MoveTrigger | undefined;
-    /**
+  trigger?: MoveTrigger | undefined
+  /**
      * Markdown rules text describing added effects which apply *before* the move is rolled, such as adds.
      * @localize
      */
-    text?: string | undefined;
-    /**
+  text?: string | undefined
+  /**
      * Added rules text that applies on move outcomes.
      */
-    outcomes?: AlterMoveOutcomes | undefined;
+  outcomes?: AlterMoveOutcomes | undefined
 }
 
 /**
  * @public
  */
 export declare interface AlterMoveOutcomes extends Omit<Outcomes, keyof typeof MoveOutcome> {
-    'strong_hit'?: AlterStrongHit | undefined;
-    'weak_hit'?: AlterWeakHit | undefined;
-    miss?: AlterMiss | undefined;
+  'strong_hit'?: AlterStrongHit | undefined
+  'weak_hit'?: AlterWeakHit | undefined
+  miss?: AlterMiss | undefined
 }
 
 /**
@@ -149,47 +149,47 @@ export declare interface AlterWeakHit extends PartialDeep<OutcomeWeakHit> {
  * @public
  */
 export declare interface Asset extends MixinId, MixinDisplay, MixinSource, Partial<MixinAliases>, MixinTitle {
-    /**
+  /**
      * @example "starforged/assets/path/bounty_hunter"
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+$
      */
-    $id: string;
-    title: TitleCaseTitle;
-    display: Display;
-    /**
+  $id: string
+  title: TitleCaseTitle
+  display: Display
+  /**
      * {@inheritDoc AssetType.$id}
      */
-    asset_type: AssetType['$id'];
-    /**
+  asset_type: AssetType['$id']
+  /**
      * Information on the asset's usage, such as whether its abilities are shared amongst the player characters.
      */
-    usage: AssetUsage;
-    /**
+  usage: AssetUsage
+  /**
      * Details on what attachments (other assets) are accepted by this asset.
      */
-    attachments?: AssetAttachment | undefined;
-    /**
+  attachments?: AssetAttachment | undefined
+  /**
      * Data describing the Input controls that should be embedded in the card. Inputs embedded in specific asset abilities appear as keys of the corresponding ability object, instead.
      */
-    inputs?: {
-        [key: SnakeCaseString]: (InputNumber | InputClock | InputText | InputSelect | InputToggle);
-    } | undefined;
-    /**
+  inputs?: {
+    [key: SnakeCaseString]: (InputNumber | InputClock | InputText | InputSelect | InputToggle)
+  } | undefined
+  /**
      * An optional markdown string representing the requirement text that appears at the top of some asset cards.
      * @markdown
      * @localize
      * @example "If you wear your finely crafted set of personal armor..."
      */
-    requirement?: string | undefined;
-    /**
+  requirement?: string | undefined
+  /**
      * The asset's abilities.
      */
-    abilities: [AssetAbility, AssetAbility, AssetAbility];
-    /**
+  abilities: [AssetAbility, AssetAbility, AssetAbility]
+  /**
      * Information on this asset's condition meter, if any.
      */
-    'condition_meter'?: ConditionMeter | undefined;
-    tags?: AssetTag[] | undefined;
+  'condition_meter'?: ConditionMeter | undefined
+  tags?: AssetTag[] | undefined
 }
 
 /**
@@ -197,29 +197,29 @@ export declare interface Asset extends MixinId, MixinDisplay, MixinSource, Parti
  * @public
  */
 export declare interface AssetAbility extends MixinId, MixinText, Partial<MixinLabel> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/[1-3]$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.
      */
-    label?: string | undefined;
-    /**
+  label?: string | undefined
+  /**
      * New moves added by this asset ability.
      */
-    moves?: Move[] | undefined;
-    /**
+  moves?: Move[] | undefined
+  /**
      * User inputs (text, clocks, etc) associated with this asset ability.
      */
-    inputs?: {
-        [key: SnakeCaseString]: (InputText | InputNumber | InputToggle | InputClock | InputSelect);
-    } | undefined;
-    /**
+  inputs?: {
+    [key: SnakeCaseString]: (InputText | InputNumber | InputToggle | InputClock | InputSelect)
+  } | undefined
+  /**
      * Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.
      */
-    enabled: boolean;
-    alter?: MixinAlter | undefined;
+  enabled: boolean
+  alter?: MixinAlter | undefined
 }
 
 /**
@@ -227,27 +227,27 @@ export declare interface AssetAbility extends MixinId, MixinText, Partial<MixinL
  * @public
  */
 export declare interface AssetAttachment {
-    /**
+  /**
      * The type of asset that this asset accepts as attachments.
      */
-    'asset_types': AssetType['$id'][];
-    /**
+  'asset_types': Array<AssetType['$id']>
+  /**
      * The maximum number of attached assets accepted by this asset. If undefined or null, there is no maximum.
      * @nullable
      */
-    'max': number | null;
+  'max': number | null
 }
 
 /**
  * @public
  */
 export declare enum AssetTag {
-    AnimalCompanion = "animal_companion",
-    BeastCompanion = "beast_companion",
-    IronlanderCompanion = "ironlander_companion",
-    Deed = "deed",
-    BiologicalCompanion = "biological_companion",
-    MechanicalCompanion = "mechanical_companion"
+  AnimalCompanion = 'animal_companion',
+  BeastCompanion = 'beast_companion',
+  IronlanderCompanion = 'ironlander_companion',
+  Deed = 'deed',
+  BiologicalCompanion = 'biological_companion',
+  MechanicalCompanion = 'mechanical_companion'
 }
 
 /**
@@ -255,54 +255,54 @@ export declare enum AssetTag {
  * @public
  */
 export declare interface AssetType extends MixinId, MixinDescription, MixinDisplay, MixinSource, MixinTitle, Partial<MixinAliases> {
-    /**
+  /**
      * @example "ironsworn/assets/ritual"
      * @example "starforged/assets/command_vehicle"
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The assets that belong to this asset type.
      */
-    assets: {
-        [key: SnakeCaseString]: Asset;
-    };
-    /**
+  assets: {
+    [key: SnakeCaseString]: Asset
+  }
+  /**
      * @example "Ritual"
      * @example "Command vehicle"
      * @localize
      */
-    title: Title;
-    display: Display;
-    usage: AssetUsage;
+  title: Title
+  display: Display
+  usage: AssetUsage
 }
 
 /**
  * @public
  */
 export declare enum AssetTypeName {
-    CommandVehicle = "Command vehicle",
-    Companion = "Companion",
-    Deed = "Deed",
-    Module = "Module",
-    Path = "Path",
-    SupportVehicle = "Support vehicle",
-    Ritual = "Ritual",
-    CombatTalent = "Combat talent"
+  CommandVehicle = 'Command vehicle',
+  Companion = 'Companion',
+  Deed = 'Deed',
+  Module = 'Module',
+  Path = 'Path',
+  SupportVehicle = 'Support vehicle',
+  Ritual = 'Ritual',
+  CombatTalent = 'Combat talent'
 }
 
 /**
  * @public
  */
 export declare interface AssetUsage {
-    /**
+  /**
      * Whether the asset's abilities are shared with Allies.
      *
      * If set to `true`, the asset's abilities can be invoked by **any** player character; if your app facilitates co-op or guided play, consider how you might expose these abilities to players other than the asset's owner.
      *
      * Defaults to `true` for Command Vehicle, Support Vehicle, and Module assets.
      */
-    shared: boolean;
+  shared: boolean
 }
 
 /**
@@ -310,12 +310,12 @@ export declare interface AssetUsage {
  * @public
  */
 export declare enum Atmosphere {
-    NoneThin = "none_thin",
-    Toxic = "toxic",
-    Corrosive = "corrosive",
-    Marginal = "marginal",
-    Breathable = "breathable",
-    Ideal = "ideal"
+  NoneThin = 'none_thin',
+  Toxic = 'toxic',
+  Corrosive = 'corrosive',
+  Marginal = 'marginal',
+  Breathable = 'breathable',
+  Ideal = 'ideal'
 }
 
 /**
@@ -329,155 +329,155 @@ export declare enum Atmosphere {
 
  */
 export declare interface Attribute {
-    key: AttributeKey;
-    value?: string | undefined;
+  key: AttributeKey
+  value?: string | undefined
 }
 
 /**
  * @public
  */
 export declare interface AttributeChoices {
-    key: AttributeKey;
-    value?: string[] | undefined;
+  key: AttributeKey
+  value?: string[] | undefined
 }
 
 /**
  * @public
  */
 export declare enum AttributeKey {
-    /**
+  /**
      * {@link Atmosphere}
      */
-    Atmosphere = "atmosphere",
-    /**
+  Atmosphere = 'atmosphere',
+  /**
      * {@link Authority}
      */
-    Authority = "authority",
-    /**
+  Authority = 'authority',
+  /**
      * {@link Behavior}
      */
-    Behavior = "encountered_behavior",
-    /**
+  Behavior = 'encountered_behavior',
+  /**
      * {@link DerelictType}
      */
-    DerelictType = "derelict_type",
-    /**
+  DerelictType = 'derelict_type',
+  /**
      * {@link Disposition}
      */
-    Disposition = "disposition",
-    /**
+  Disposition = 'disposition',
+  /**
      * {@link Dominion}
      */
-    Dominion = "dominion",
-    /**
+  Dominion = 'dominion',
+  /**
      * {@link Environment}
      */
-    Environment = "environment",
-    /**
+  Environment = 'environment',
+  /**
      * {@link FactionType}
      */
-    FactionType = "faction_type",
-    /**
+  FactionType = 'faction_type',
+  /**
      * {@link FringeGroup}
      */
-    FringeGroup = "fringe_group",
-    /**
+  FringeGroup = 'fringe_group',
+  /**
      * {@link Guild}
      */
-    Guild = "guild",
-    /**
+  Guild = 'guild',
+  /**
      * {@link Influence}
      */
-    Influence = "influence",
-    /**
+  Influence = 'influence',
+  /**
      * {@link StarshipInitialContact} {@link SettlementInitialContact}
      */
-    InitialContact = "initial_contact",
-    /**
+  InitialContact = 'initial_contact',
+  /**
      * {@link Leadership}
      */
-    Leadership = "leadership",
-    /**
+  Leadership = 'leadership',
+  /**
      * {@link Life}
      */
-    Life = "life",
-    /**
+  Life = 'life',
+  /**
      * {@link Location}
      */
-    Location = "location",
-    /**
+  Location = 'location',
+  /**
      * {@link LocationTheme}
      */
-    LocationTheme = "location_theme",
-    /**
+  LocationTheme = 'location_theme',
+  /**
      * {@link PlanetaryClass}
      */
-    PlanetaryClass = "planetary_class",
-    /**
+  PlanetaryClass = 'planetary_class',
+  /**
      * {@link Population}
      */
-    Population = "population",
-    /**
+  Population = 'population',
+  /**
      * {@link Region}
      */
-    Region = "region",
-    /**
+  Region = 'region',
+  /**
      * {@link Role}
      */
-    Role = "role",
-    /**
+  Role = 'role',
+  /**
      * {@link CreatureScale}
      */
-    CreatureScale = "creature_scale",
-    /**
+  CreatureScale = 'creature_scale',
+  /**
      * {@link Zone}
      */
-    Zone = "zone",
-    StarshipType = "starship_type",
-    FleetType = "fleet_type"
+  Zone = 'zone',
+  StarshipType = 'starship_type',
+  FleetType = 'fleet_type'
 }
 
 /**
  * @public
  */
-export declare type AttributeMap = {
-    [key: SnakeCaseString]: SnakeCaseString;
-};
+export declare interface AttributeMap {
+  [key: SnakeCaseString]: SnakeCaseString
+}
 
 /**
  * @public
  */
 export declare interface AttributeMaster {
-    [AttributeKey.Atmosphere]: Atmosphere;
-    [AttributeKey.Authority]: Authority;
-    [AttributeKey.Behavior]: Behavior;
-    [AttributeKey.DerelictType]: DerelictType;
-    [AttributeKey.Disposition]: Disposition;
-    [AttributeKey.Dominion]: Dominion;
-    [AttributeKey.Environment]: Environment;
-    [AttributeKey.FactionType]: FactionType;
-    [AttributeKey.FringeGroup]: FringeGroup;
-    [AttributeKey.Guild]: Guild;
-    [AttributeKey.Influence]: Influence;
-    [AttributeKey.InitialContact]: StarshipInitialContact | SettlementInitialContact;
-    [AttributeKey.Leadership]: Leadership;
-    [AttributeKey.Life]: Life;
-    [AttributeKey.Location]: Location;
-    [AttributeKey.LocationTheme]: LocationTheme;
-    [AttributeKey.PlanetaryClass]: PlanetaryClass;
-    [AttributeKey.Population]: Population;
-    [AttributeKey.Region]: Region;
-    [AttributeKey.Role]: Role;
-    [AttributeKey.CreatureScale]: CreatureScale;
-    [AttributeKey.Zone]: Zone;
-    [AttributeKey.FleetType]: FleetType;
-    [AttributeKey.StarshipType]: StarshipType;
+  [AttributeKey.Atmosphere]: Atmosphere
+  [AttributeKey.Authority]: Authority
+  [AttributeKey.Behavior]: Behavior
+  [AttributeKey.DerelictType]: DerelictType
+  [AttributeKey.Disposition]: Disposition
+  [AttributeKey.Dominion]: Dominion
+  [AttributeKey.Environment]: Environment
+  [AttributeKey.FactionType]: FactionType
+  [AttributeKey.FringeGroup]: FringeGroup
+  [AttributeKey.Guild]: Guild
+  [AttributeKey.Influence]: Influence
+  [AttributeKey.InitialContact]: StarshipInitialContact | SettlementInitialContact
+  [AttributeKey.Leadership]: Leadership
+  [AttributeKey.Life]: Life
+  [AttributeKey.Location]: Location
+  [AttributeKey.LocationTheme]: LocationTheme
+  [AttributeKey.PlanetaryClass]: PlanetaryClass
+  [AttributeKey.Population]: Population
+  [AttributeKey.Region]: Region
+  [AttributeKey.Role]: Role
+  [AttributeKey.CreatureScale]: CreatureScale
+  [AttributeKey.Zone]: Zone
+  [AttributeKey.FleetType]: FleetType
+  [AttributeKey.StarshipType]: StarshipType
 }
 
 /**
  * @public
  */
-export declare type AttributeValue<K extends AttributeKey> = AttributeMaster[K];
+export declare type AttributeValue<K extends AttributeKey> = AttributeMaster[K]
 
 /**
  * Set by Oracles / Settlements / Authority
@@ -485,13 +485,13 @@ export declare type AttributeValue<K extends AttributeKey> = AttributeMaster[K];
  * @public
  */
 export declare enum Authority {
-    NoneLawless = "none_lawless",
-    Ineffectual = "ineffectual",
-    Tolerant = "tolerant",
-    Fair = "fair",
-    Unyielding = "unyielding",
-    Corrupt = "corrupt",
-    Oppressive = "oppressive"
+  NoneLawless = 'none_lawless',
+  Ineffectual = 'ineffectual',
+  Tolerant = 'tolerant',
+  Fair = 'fair',
+  Unyielding = 'unyielding',
+  Corrupt = 'corrupt',
+  Oppressive = 'oppressive'
 }
 
 /**
@@ -500,26 +500,26 @@ export declare enum Authority {
  * @public
  */
 export declare enum Behavior {
-    Ambusher = "ambusher",
-    Hibernator = "hibernator",
-    PackHunter = "pack_hunter",
-    ApexPredator = "apex_predator",
-    Hoarder = "hoarder",
-    Prey = "prey",
-    Builder = "builder",
-    Hunter = "hunter",
-    Protector = "protector",
-    Camouflager = "camouflager",
-    Lurer = "lurer",
-    Scavenger = "scavenger",
-    Forager = "forager",
-    Migratory = "migratory",
-    Tracker = "tracker",
-    Grazer = "grazer",
-    Mimic = "mimic",
-    Trapper = "trapper",
-    Herder = "herder",
-    Nester = "nester"
+  Ambusher = 'ambusher',
+  Hibernator = 'hibernator',
+  PackHunter = 'pack_hunter',
+  ApexPredator = 'apex_predator',
+  Hoarder = 'hoarder',
+  Prey = 'prey',
+  Builder = 'builder',
+  Hunter = 'hunter',
+  Protector = 'protector',
+  Camouflager = 'camouflager',
+  Lurer = 'lurer',
+  Scavenger = 'scavenger',
+  Forager = 'forager',
+  Migratory = 'migratory',
+  Tracker = 'tracker',
+  Grazer = 'grazer',
+  Mimic = 'mimic',
+  Trapper = 'trapper',
+  Herder = 'herder',
+  Nester = 'nester'
 }
 
 /**
@@ -532,18 +532,18 @@ export declare enum Biome {
 /**
  * @public
  */
-export declare type BlacklistPartial = 'Label';
+export declare type BlacklistPartial = 'Label'
 
 /**
  * @public
  */
 export declare interface BondsTrackClassic extends TrackBase {
-    track_type: LegacyTypeClassic.BondsTrack;
-    /**
+  track_type: LegacyTypeClassic.BondsTrack
+  /**
      * @minimum 0
      * @maximum 40
      */
-    ticks: number;
+  ticks: number
 }
 
 /**
@@ -551,58 +551,58 @@ export declare interface BondsTrackClassic extends TrackBase {
  * @public
  */
 export declare enum ChallengeRank {
-    /**
+  /**
      * Troublesome
      */
-    Troublesome = 1,
-    /**
+  Troublesome = 1,
+  /**
      * Dangerous
      */
-    Dangerous = 2,
-    /**
+  Dangerous = 2,
+  /**
      * Formidable
      */
-    Formidable = 3,
-    /**
+  Formidable = 3,
+  /**
      * Extreme
      */
-    Extreme = 4,
-    /**
+  Extreme = 4,
+  /**
      * Epic
      */
-    Epic = 5
+  Epic = 5
 }
 
 /**
  * @public
  */
-export declare type CharacterRecord = ActorRecord<GameObjectType.Character, AttributeKey.Disposition | AttributeKey.Role>;
+export declare type CharacterRecord = ActorRecord<GameObjectType.Character, AttributeKey.Disposition | AttributeKey.Role>
 
 /**
  * @public
  */
 export declare interface Clock {
-    clock_type: ClockType;
-    /**
+  clock_type: ClockType
+  /**
      * An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.
      *
      * `Filled` should not exceed this number.
      */
-    segments: ClockSegments;
-    /**
+  segments: ClockSegments
+  /**
      * An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.
      */
-    filled: number;
+  filled: number
 }
 
 /**
  * @public
  */
 export declare enum ClockSegments {
-    Four = 4,
-    Six = 6,
-    Eight = 8,
-    Ten = 10
+  Four = 4,
+  Six = 6,
+  Eight = 8,
+  Ten = 10
 }
 
 /**
@@ -610,8 +610,8 @@ export declare enum ClockSegments {
  * @public
  */
 export declare enum ClockType {
-    Tension = "tension",
-    Campaign = "campaign"
+  Tension = 'tension',
+  Campaign = 'campaign'
 }
 
 /**
@@ -619,69 +619,69 @@ export declare enum ClockType {
  * @public
  */
 export declare interface ConditionMeter extends Meter {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/condition_meter$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * @default 0
      */
-    min: number;
-    /**
+  min: number
+  /**
      * @default 5
      */
-    max: number;
-    /**
+  max: number
+  /**
      * Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.using}. The array will include an appropriate alias if that is the case.
      */
-    aliases?: MeterAlias[] | undefined;
+  aliases?: MeterAlias[] | undefined
 }
 
 /**
  * @public
  */
-export declare type CreatureRecord = ActorRecord<GameObjectType.Creature, AttributeKey.Environment | AttributeKey.CreatureScale | AttributeKey.Behavior>;
+export declare type CreatureRecord = ActorRecord<GameObjectType.Creature, AttributeKey.Environment | AttributeKey.CreatureScale | AttributeKey.Behavior>
 
 /**
  * Set by Oracles / Creatures / Scale/**
  * @public
  */
 export declare enum CreatureScale {
-    Minuscule = "minuscule",
-    Tiny = "tiny",
-    Small = "small",
-    Medium = "medium",
-    Large = "large",
-    Huge = "huge",
-    Titanic = "titanic",
-    Colossal = "colossal",
-    Vast = "vast"
+  Minuscule = 'minuscule',
+  Tiny = 'tiny',
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
+  Huge = 'huge',
+  Titanic = 'titanic',
+  Colossal = 'colossal',
+  Vast = 'vast'
 }
 
 /**
  * @public
  */
 export declare interface CustomStat extends MixinId, MixinLabel {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[0-9]+)/[a-z_]+/trigger/options/[0-9]+/custom_stat$
      */
-    $id: string;
-    options: CustomStatOption[];
+  $id: string
+  options: CustomStatOption[]
 }
 
 /**
  * @public
  */
 export declare interface CustomStatOption extends MixinId, MixinLabel {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[0-9]+)/[a-z_]+/trigger/options/[0-9]+/custom_stat/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The numeric value to be used as +stat when making an Action Roll.
      */
-    value: number;
-    label: string;
+  value: number
+  label: string
 }
 
 /**
@@ -689,16 +689,16 @@ export declare interface CustomStatOption extends MixinId, MixinLabel {
  * @public
  */
 export declare interface CyclopediaEntry extends MixinId, MixinDisplay, MixinDescription, MixinSource, Partial<MixinSummary & MixinQuestStarter & MixinTags>, MixinTitle {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/([a-z_]+/)+$
      */
-    $id: string;
-    tags?: string[] | undefined;
-    /**
+  $id: string
+  tags?: string[] | undefined
+  /**
      * @markdown
      * @localize
      */
-    features?: string[] | undefined;
+  features?: string[] | undefined
 }
 
 /**
@@ -711,21 +711,21 @@ export declare interface CyclopediaEntry extends MixinId, MixinDisplay, MixinDes
  * @public
  */
 export declare interface DelveCard extends MixinSource, MixinSummary, MixinDescription, MixinId, MixinTitle {
-    /**
+  /**
      * @pattern ^ironsworn/(themes|domains)/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * Indicates whether this is a site Theme or a site Domain.
      */
-    card_type: DelveCardType;
-    /**
+  card_type: DelveCardType
+  /**
      * The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.
      * @markdown
      * @localize
      */
-    summary: string;
-    /**
+  summary: string
+  /**
      * An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.
      *
      * Most are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.
@@ -733,23 +733,23 @@ export declare interface DelveCard extends MixinSource, MixinSummary, MixinDescr
      * @markdown
      * @localize
      */
-    description: string;
-    /**
+  description: string
+  /**
      * The Features contributed by this card. Effectively a 'partial' oracle table; combine with the features of another card to complete it.
      */
-    features: OracleTableRow[];
-    /**
+  features: OracleTableRow[]
+  /**
      * The Dangers contributed by this card. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.
      */
-    dangers: OracleTableRow[];
+  dangers: OracleTableRow[]
 }
 
 /**
  * @public
  */
 export declare enum DelveCardType {
-    Theme = "theme",
-    Domain = "domain"
+  Theme = 'theme',
+  Domain = 'domain'
 }
 
 /**
@@ -757,17 +757,17 @@ export declare enum DelveCardType {
  * @public
  */
 export declare interface DelveRarity extends MixinTitle, MixinDisplay, MixinSource, MixinDescription {
-    /**
+  /**
      * @minimum 3
      * @maximum 5
      */
-    'xp_cost': number;
-    /**
+  'xp_cost': number
+  /**
      * The ID of the asset, to which this rarity applies its effects.
      * @see {@link Asset.$id}
      */
-    asset: Asset['$id'];
-    title: TitleCaseTitle;
+  asset: Asset['$id']
+  title: TitleCaseTitle
 }
 
 /**
@@ -781,15 +781,15 @@ export declare interface DelveRarity extends MixinTitle, MixinDisplay, MixinSour
  * @public
  */
 export declare interface DelveSiteDomain extends DelveCard {
-    /**
+  /**
      * @pattern ^ironsworn/domains/[a-z_]+$
      */
-    $id: string;
-    'card_type': DelveCardType.Domain;
-    /**
+  $id: string
+  'card_type': DelveCardType.Domain
+  /**
      * The Features contributed by this Domain card. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
      */
-    features: [
+  features: [
     OracleTableRow<21, 43>,
     OracleTableRow<44, 56>,
     OracleTableRow<57, 64>,
@@ -800,25 +800,25 @@ export declare interface DelveSiteDomain extends DelveCard {
     OracleTableRow<81, 84>,
     OracleTableRow<85, 88>,
     OracleTableRow<89, 98> & {
-        result: 'Something unusual or unexpected';
+      result: 'Something unusual or unexpected'
     },
     OracleTableRow<99, 99> & {
-        result: 'You transition into a new theme';
+      result: 'You transition into a new theme'
     },
     OracleTableRow<100, 100> & {
-        result: 'You transition into a new domain';
+      result: 'You transition into a new domain'
     }
-    ];
-    /**
+  ]
+  /**
      * The Dangers contributed by this Domain card. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.
      */
-    dangers: [
+  dangers: [
     OracleTableRow<31, 33>,
     OracleTableRow<34, 36>,
     OracleTableRow<37, 39>,
     OracleTableRow<40, 42>,
     OracleTableRow<43, 45>
-    ];
+  ]
 }
 
 /**
@@ -832,25 +832,25 @@ export declare interface DelveSiteDomain extends DelveCard {
  * @public
  */
 export declare interface DelveSiteTheme extends DelveCard {
-    /**
+  /**
      * @pattern ^ironsworn/themes/[a-z_]+$
      */
-    $id: string;
-    'card_type': DelveCardType.Theme;
-    /**
+  $id: string
+  'card_type': DelveCardType.Theme
+  /**
      * The Features contributed by this Theme card. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
      */
-    features: [
+  features: [
     OracleTableRow<1, 4>,
     OracleTableRow<5, 8>,
     OracleTableRow<9, 12>,
     OracleTableRow<13, 16>,
     OracleTableRow<17, 20>
-    ];
-    /**
+  ]
+  /**
      * The Dangers contributed by this Theme card.  Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.
      */
-    dangers: [
+  dangers: [
     OracleTableRow<1, 5>,
     OracleTableRow<6, 10>,
     OracleTableRow<11, 12>,
@@ -863,68 +863,68 @@ export declare interface DelveSiteTheme extends DelveCard {
     OracleTableRow<25, 26>,
     OracleTableRow<27, 28>,
     OracleTableRow<29, 30>
-    ];
+  ]
 }
 
 /**
  * @public
  */
 export declare type DerelictRecord = PlaceRecord<GameObjectType.Derelict, AttributeKey.DerelictType | AttributeKey.InitialContact> & {
-    [AttributeKey.InitialContact]: StarshipInitialContact.Derelict | SettlementInitialContact.Derelict;
-};
+  [AttributeKey.InitialContact]: StarshipInitialContact.Derelict | SettlementInitialContact.Derelict
+}
 
 /**
  * @public
  */
 export declare type DerelictSettlementRecord = Omit<SettlementRecord<AttributeKey.DerelictType>, 'object_type'> & {
-    object_type: GameObjectType.Derelict;
-    [AttributeKey.DerelictType]: DerelictType.Settlement;
-    [AttributeKey.InitialContact]: SettlementInitialContact.Derelict;
-};
+  object_type: GameObjectType.Derelict
+  [AttributeKey.DerelictType]: DerelictType.Settlement
+  [AttributeKey.InitialContact]: SettlementInitialContact.Derelict
+}
 
 /**
  * @public
  */
 export declare type DerelictStarshipRecord = Omit<StarshipRecord<AttributeKey.DerelictType>, 'object_type'> & {
-    object_type: GameObjectType.Derelict;
-    [AttributeKey.DerelictType]: DerelictType.Starship;
-    [AttributeKey.InitialContact]: StarshipInitialContact.Derelict;
-};
+  object_type: GameObjectType.Derelict
+  [AttributeKey.DerelictType]: DerelictType.Starship
+  [AttributeKey.InitialContact]: StarshipInitialContact.Derelict
+}
 
 /**
  * Set by oracle: Oracles / Derelicts / Type
  * @public
  */
 export declare enum DerelictType {
-    Starship = "starship",
-    Settlement = "settlement"
+  Starship = 'starship',
+  Settlement = 'settlement'
 }
 
 /**
  * @public
  */
-export declare type DerelictZoneRecord = PlaceRecord<GameObjectType.DerelictZone, AttributeKey.DerelictType>;
+export declare type DerelictZoneRecord = PlaceRecord<GameObjectType.DerelictZone, AttributeKey.DerelictType>
 
 /**
  * Interface for data relevant to an item's display/rendering.
  * @public
  */
 export declare interface Display {
-    /**
+  /**
      * A URL pointing to a single SVG icon.
      * @pattern ^img/vector/[A-z-_0-9/]+\.svg$
      */
-    icon?: string | undefined;
-    /**
+  icon?: string | undefined
+  /**
      * An array of URLs pointing to one or more WEBP images.
      * @pattern ^img/raster/[A-z-_0-9/]+\.webp$
      */
-    images?: string[] | undefined;
-    /**
+  images?: string[] | undefined
+  /**
      * A hex color associated with this item, for use as e.g. an accent color in its display.
      * @pattern ^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$
      */
-    color?: string | undefined;
+  color?: string | undefined
 }
 
 /**
@@ -932,18 +932,18 @@ export declare interface Display {
  * @public
  */
 export declare enum Disposition {
-    Cooperative = "cooperative",
-    Curious = "curious",
-    Demanding = "demanding",
-    Desperate = "desperate",
-    Friendly = "friendly",
-    Helpful = "helpful",
-    Hostile = "hostile",
-    Indifferent = "indifferent",
-    Suspicious = "suspicious",
-    Threatening = "threatening",
-    Unfriendly = "unfriendly",
-    Wanting = "wanting"
+  Cooperative = 'cooperative',
+  Curious = 'curious',
+  Demanding = 'demanding',
+  Desperate = 'desperate',
+  Friendly = 'friendly',
+  Helpful = 'helpful',
+  Hostile = 'hostile',
+  Indifferent = 'indifferent',
+  Suspicious = 'suspicious',
+  Threatening = 'threatening',
+  Unfriendly = 'unfriendly',
+  Wanting = 'wanting'
 }
 
 /**
@@ -951,10 +951,10 @@ export declare enum Disposition {
  * @public
  */
 export declare enum Diversity {
-    Simple = 2,
-    Diverse = 3,
-    Complex = 4,
-    GardenWorld = 5
+  Simple = 2,
+  Diverse = 3,
+  Complex = 4,
+  GardenWorld = 5
 }
 
 /**
@@ -962,30 +962,30 @@ export declare enum Diversity {
  * @public
  */
 export declare enum Dominion {
-    Agriculture = "agriculture",
-    Artistry = "artistry",
-    Commerce = "commerce",
-    Conquest = "conquest",
-    Construction = "construction",
-    Diplomacy = "diplomacy",
-    Education = "education",
-    Environmentalism = "environmentalism",
-    Exploration = "exploration",
-    Faith = "faith",
-    History = "history",
-    Honor = "honor",
-    Industry = "industry",
-    Isolationism = "isolationism",
-    Law = "law",
-    Mysticism = "mysticism",
-    Pacifism = "pacifism",
-    Prophecy = "prophecy",
-    Science = "science",
-    Secrecy = "secrecy",
-    Technology = "technology",
-    Treachery = "treachery",
-    Warfare = "warfare",
-    Wealth = "wealth"
+  Agriculture = 'agriculture',
+  Artistry = 'artistry',
+  Commerce = 'commerce',
+  Conquest = 'conquest',
+  Construction = 'construction',
+  Diplomacy = 'diplomacy',
+  Education = 'education',
+  Environmentalism = 'environmentalism',
+  Exploration = 'exploration',
+  Faith = 'faith',
+  History = 'history',
+  Honor = 'honor',
+  Industry = 'industry',
+  Isolationism = 'isolationism',
+  Law = 'law',
+  Mysticism = 'mysticism',
+  Pacifism = 'pacifism',
+  Prophecy = 'prophecy',
+  Science = 'science',
+  Secrecy = 'secrecy',
+  Technology = 'technology',
+  Treachery = 'treachery',
+  Warfare = 'warfare',
+  Wealth = 'wealth'
 }
 
 /**
@@ -993,11 +993,11 @@ export declare enum Dominion {
  * @public
  */
 export declare interface Encounter extends EncounterBase {
-    features: string[];
-    drives: string[];
-    tactics: string[];
-    quest_starter: string;
-    your_truth?: string | undefined;
+  features: string[]
+  drives: string[]
+  tactics: string[]
+  quest_starter: string
+  your_truth?: string | undefined
 }
 
 /**
@@ -1005,48 +1005,48 @@ export declare interface Encounter extends EncounterBase {
  * @public
  */
 export declare interface EncounterBase extends CyclopediaEntry {
-    /**
+  /**
      * @example "starforged/encounters/chiton"
      * @pattern ^(starforged|ironsworn)/encounters/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * @example "Monster"
      * @localize
      */
-    nature: EncounterNatureTypeStarforged | EncounterNatureTypeClassic;
-    display: Display;
-    /**
+  nature: EncounterNatureTypeStarforged | EncounterNatureTypeClassic
+  display: Display
+  /**
      * @example "Insectoid horde"
      * @markdown
      * @localize
      */
-    summary?: string | undefined;
-    tags?: EncounterTags[] | undefined;
-    rank: ChallengeRank;
-    /**
+  summary?: string | undefined
+  tags?: EncounterTags[] | undefined
+  rank: ChallengeRank
+  /**
      * @markdown
      * @localize
      */
-    features?: string[] | undefined;
-    /**
+  features?: string[] | undefined
+  /**
      * @markdown
      * @localize
      */
-    drives?: string[] | undefined;
-    /**
+  drives?: string[] | undefined
+  /**
      * @markdown
      * @localize
      */
-    tactics?: string[] | undefined;
-    /**
+  tactics?: string[] | undefined
+  /**
      * Ironsworn, p. 135: "Some NPCs include a question for you to answer. This is an opportunity to customize the NPC to your vision of the Ironlands. You can do this as you define your world or discover through play. Truths may represent an absolute fact, or merely something the people of your world believe."
      *
      * Only present in Ironsworn encounters.
      * @markdown
      * @localize
      */
-    your_truth?: string | undefined;
+  your_truth?: string | undefined
 }
 
 /**
@@ -1054,13 +1054,13 @@ export declare interface EncounterBase extends CyclopediaEntry {
  * @public
  */
 export declare interface EncounterClassic extends Encounter {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/encounters/[a-z_]+/[a-z_]+$
      */
-    $id: string;
-    nature: EncounterNatureTypeClassic;
-    your_truth?: string | undefined;
-    summary?: string | undefined;
+  $id: string
+  nature: EncounterNatureTypeClassic
+  your_truth?: string | undefined
+  summary?: string | undefined
 }
 
 /**
@@ -1068,39 +1068,39 @@ export declare interface EncounterClassic extends Encounter {
  * @public
  */
 export declare interface EncounterNatureClassic extends MixinDescription, MixinSource, MixinId, MixinDisplay, MixinSummary, MixinTitle {
-    /**
+  /**
      * @pattern ^ironsworn/encounters/[a-z_]+$
      */
-    $id: string;
-    encounters: {
-        [key: SnakeCaseString]: EncounterClassic;
-    };
-    title: Title & {
-        short: keyof typeof EncounterNatureTypeClassic;
-    };
+  $id: string
+  encounters: {
+    [key: SnakeCaseString]: EncounterClassic
+  }
+  title: Title & {
+    short: keyof typeof EncounterNatureTypeClassic
+  }
 }
 
 /**
  * @public
  */
 export declare enum EncounterNatureTypeClassic {
-    Ironlander = "Ironlander",
-    Firstborn = "firstborn",
-    Animal = "animal",
-    Beast = "beast",
-    Horror = "horror",
-    Anomaly = "anomaly"
+  Ironlander = 'Ironlander',
+  Firstborn = 'firstborn',
+  Animal = 'animal',
+  Beast = 'beast',
+  Horror = 'horror',
+  Anomaly = 'anomaly'
 }
 
 /**
  * @public
  */
 export declare enum EncounterNatureTypeStarforged {
-    Creature = "creature",
-    Horror = "horror",
-    Human = "human",
-    Machine = "machine",
-    Monster = "monster"
+  Creature = 'creature',
+  Horror = 'horror',
+  Human = 'human',
+  Machine = 'machine',
+  Monster = 'monster'
 }
 
 /**
@@ -1108,24 +1108,24 @@ export declare enum EncounterNatureTypeStarforged {
  * @public
  */
 export declare interface EncounterStarforged extends Encounter {
-    /**
+  /**
      * @pattern ^starforged/encounters/[a-z_]+$
      */
-    $id: string;
-    nature: EncounterNatureTypeStarforged;
-    summary: string;
-    /**
+  $id: string
+  nature: EncounterNatureTypeStarforged
+  summary: string
+  /**
      */
-    variants?: {
-        [key: SnakeCaseString]: EncounterVariant;
-    } | undefined;
+  variants?: {
+    [key: SnakeCaseString]: EncounterVariant
+  } | undefined
 }
 
 /**
  * @public
  */
 export declare enum EncounterTags {
-    Vehicle = "vehicle"
+  Vehicle = 'vehicle'
 }
 
 /**
@@ -1133,11 +1133,11 @@ export declare enum EncounterTags {
  * @public
  */
 export declare interface EncounterVariant extends StubBy<EncounterStarforged, never, 'features' | 'drives' | 'tactics' | 'variants' | 'summary' | 'your_truth' | 'quest_starter'> {
-    /**
+  /**
      * @pattern ^starforged/encounters/[a-z_]+/[a-z_]+$
      */
-    $id: string;
-    variant_of: EncounterStarforged['$id'];
+  $id: string
+  variant_of: EncounterStarforged['$id']
 }
 
 /**
@@ -1145,67 +1145,67 @@ export declare interface EncounterVariant extends StubBy<EncounterStarforged, ne
  * @public
  */
 export declare enum Environment {
-    Space = "space",
-    Interior = "interior",
-    Land = "land",
-    Liquid = "liquid",
-    Air = "air"
+  Space = 'space',
+  Interior = 'interior',
+  Land = 'land',
+  Liquid = 'liquid',
+  Air = 'air'
 }
 
 /**
  * @public
  */
 export declare type FactionDominionRecord = ActorRecord<GameObjectType.Faction, AttributeKey.FactionType | AttributeKey.Influence | AttributeKey.Leadership | AttributeKey.Dominion> & {
-    [AttributeKey.FactionType]: FactionType.Dominion;
-};
+  [AttributeKey.FactionType]: FactionType.Dominion
+}
 
 /**
  * @public
  */
 export declare type FactionFringeGroupRecord = ActorRecord<GameObjectType.Faction, AttributeKey.FactionType | AttributeKey.Influence | AttributeKey.FringeGroup> & {
-    [AttributeKey.FactionType]: FactionType.FringeGroup;
-};
+  [AttributeKey.FactionType]: FactionType.FringeGroup
+}
 
 /**
  * @public
  */
 export declare type FactionGuildRecord = ActorRecord<GameObjectType.Faction, AttributeKey.FactionType | AttributeKey.Influence | AttributeKey.Guild> & {
-    [AttributeKey.FactionType]: FactionType.Guild;
-};
+  [AttributeKey.FactionType]: FactionType.Guild
+}
 
 /**
  * @public
  */
-export declare type FactionRecord = ActorRecord<GameObjectType.Faction, AttributeKey.FactionType | AttributeKey.Influence>;
+export declare type FactionRecord = ActorRecord<GameObjectType.Faction, AttributeKey.FactionType | AttributeKey.Influence>
 
 /**
  * Set by Oracles / Factions / Type
  * @public
  */
 export declare enum FactionType {
-    FringeGroup = "fringe_group",
-    Dominion = "dominion",
-    Guild = "guild"
+  FringeGroup = 'fringe_group',
+  Dominion = 'dominion',
+  Guild = 'guild'
 }
 
 /**
  * @public
  */
 export declare type FleetRecord<K extends AttributeKey | never = never> = PlaceRecord<GameObjectType.Starship, K | AttributeKey.InitialContact | AttributeKey.FleetType> & {
-    [AttributeKey.InitialContact]?: StarshipInitialContact | undefined;
-};
+  [AttributeKey.InitialContact]?: StarshipInitialContact | undefined
+}
 
 /**
  * @public
  */
 export declare enum FleetType {
-    BattleFleet = "battle_fleet",
-    PirateWing = "pirate_wing",
-    RaiderHorde = "raider_horde",
-    SalvagerHive = "salvager_hive",
-    SettlerCaravan = "settler_caravan",
-    TradeCaravan = "trade_caravan",
-    TransportAndEscorts = "transport_and_escorts"
+  BattleFleet = 'battle_fleet',
+  PirateWing = 'pirate_wing',
+  RaiderHorde = 'raider_horde',
+  SalvagerHive = 'salvager_hive',
+  SettlerCaravan = 'settler_caravan',
+  TradeCaravan = 'trade_caravan',
+  TransportAndEscorts = 'transport_and_escorts'
 }
 
 /**
@@ -1213,25 +1213,25 @@ export declare enum FleetType {
  * @public
  */
 export declare enum FringeGroup {
-    Cultists = "cultists",
-    Exiles = "exiles",
-    Gangsters = "gangsters",
-    Hackers = "hackers",
-    MonsterHunters = "monster_hunters",
-    Pirates = "pirates",
-    Raiders = "raiders",
-    Rebels = "rebels",
-    RogueAI = "rogue_ai",
-    Scavengers = "scavengers",
-    Smugglers = "smugglers"
+  Cultists = 'cultists',
+  Exiles = 'exiles',
+  Gangsters = 'gangsters',
+  Hackers = 'hackers',
+  MonsterHunters = 'monster_hunters',
+  Pirates = 'pirates',
+  Raiders = 'raiders',
+  Rebels = 'rebels',
+  RogueAI = 'rogue_ai',
+  Scavengers = 'scavengers',
+  Smugglers = 'smugglers'
 }
 
 /**
  * @public
  */
 export declare enum Game {
-    Starforged = "Starforged",
-    Ironsworn = "Ironsworn"
+  Starforged = 'Starforged',
+  Ironsworn = 'Ironsworn'
 }
 
 /**
@@ -1239,25 +1239,25 @@ export declare enum Game {
  * @public
  */
 export declare interface GameDataRoot extends DataRootBase {
-    asset_types: {
-        [key: SnakeCaseString]: AssetType;
-    };
-    encounters: {
-        [key: SnakeCaseString]: EncounterStarforged;
-    } | {
-        [key: SnakeCaseString]: EncounterNatureClassic;
-    };
-    move_categories: {
-        [key: SnakeCaseString]: MoveCategory;
-    };
-    oracle_sets: {
-        [key: SnakeCaseString]: OracleSet;
-    };
-    setting_truths: {
-        [key: SnakeCaseString]: TruthStarforged;
-    } | {
-        [key: SnakeCaseString]: TruthClassic;
-    };
+  asset_types: {
+    [key: SnakeCaseString]: AssetType
+  }
+  encounters: {
+    [key: SnakeCaseString]: EncounterStarforged
+  } | {
+    [key: SnakeCaseString]: EncounterNatureClassic
+  }
+  move_categories: {
+    [key: SnakeCaseString]: MoveCategory
+  }
+  oracle_sets: {
+    [key: SnakeCaseString]: OracleSet
+  }
+  setting_truths: {
+    [key: SnakeCaseString]: TruthStarforged
+  } | {
+    [key: SnakeCaseString]: TruthClassic
+  }
 }
 
 /**
@@ -1265,37 +1265,37 @@ export declare interface GameDataRoot extends DataRootBase {
  * @public
  */
 export declare interface GameObject {
-    object_type: GameObjectType;
-    requires?: AttributeMap | undefined;
+  object_type: GameObjectType
+  requires?: AttributeMap | undefined
 }
 
 /**
  * @public
  */
-export declare type GameObjectRecord = CharacterRecord | CreatureRecord | DerelictRecord | DerelictStarshipRecord | DerelictSettlementRecord | DerelictZoneRecord | FactionRecord | FactionGuildRecord | FactionFringeGroupRecord | FactionDominionRecord | PlanetRecord | PrecursorVaultRecord | SettlementRecord | StarshipRecord | FleetRecord;
+export declare type GameObjectRecord = CharacterRecord | CreatureRecord | DerelictRecord | DerelictStarshipRecord | DerelictSettlementRecord | DerelictZoneRecord | FactionRecord | FactionGuildRecord | FactionFringeGroupRecord | FactionDominionRecord | PlanetRecord | PrecursorVaultRecord | SettlementRecord | StarshipRecord | FleetRecord
 
 /**
  * @public
  */
 export declare interface GameObjectRecordBase<T extends GameObjectType> {
-    object_type: T;
-    inherit_rolls?: boolean | undefined;
-    requirements?: AttributeMap | undefined;
+  object_type: T
+  inherit_rolls?: boolean | undefined
+  requirements?: AttributeMap | undefined
 }
 
 /**
  * @public
  */
 export declare enum GameObjectType {
-    Derelict = "derelict",
-    DerelictZone = "derelict_zone",
-    Starship = "starship",
-    Settlement = "settlement",
-    Planet = "planet",
-    PrecursorVault = "precursor_vault",
-    Character = "character",
-    Creature = "creature",
-    Faction = "faction"
+  Derelict = 'derelict',
+  DerelictZone = 'derelict_zone',
+  Starship = 'starship',
+  Settlement = 'settlement',
+  Planet = 'planet',
+  PrecursorVault = 'precursor_vault',
+  Character = 'character',
+  Creature = 'creature',
+  Faction = 'faction'
 }
 
 /**
@@ -1303,20 +1303,20 @@ export declare enum GameObjectType {
  * @public
  */
 export declare enum Guild {
-    Assassins = "assassins",
-    BountyHunters = "bounty_hunters",
-    Couriers = "couriers",
-    Courtesans = "courtesans",
-    Engineers = "engineers",
-    Healers = "healers",
-    Industrialists = "industrialists",
-    Mercenaries = "mercenaries",
-    Merchants = "merchants",
-    Mystics = "mystics",
-    Navigators = "navigators",
-    Peacekeepers = "peacekeepers",
-    Researchers = "researchers",
-    Spies = "spies"
+  Assassins = 'assassins',
+  BountyHunters = 'bounty_hunters',
+  Couriers = 'couriers',
+  Courtesans = 'courtesans',
+  Engineers = 'engineers',
+  Healers = 'healers',
+  Industrialists = 'industrialists',
+  Mercenaries = 'mercenaries',
+  Merchants = 'merchants',
+  Mystics = 'mystics',
+  Navigators = 'navigators',
+  Peacekeepers = 'peacekeepers',
+  Researchers = 'researchers',
+  Spies = 'spies'
 }
 
 /**
@@ -1324,13 +1324,13 @@ export declare enum Guild {
  * @public
  */
 export declare enum Influence {
-    Forsaken = "forsaken",
-    Isolated = "isolated",
-    Localized = "localized",
-    Established = "established",
-    Notable = "notable",
-    Dominant = "dominant",
-    Inescapable = "inescapable"
+  Forsaken = 'forsaken',
+  Isolated = 'isolated',
+  Localized = 'localized',
+  Established = 'established',
+  Notable = 'notable',
+  Dominant = 'dominant',
+  Inescapable = 'inescapable'
 }
 
 /**
@@ -1339,22 +1339,22 @@ export declare enum Influence {
  * @public
  */
 export declare interface Input extends MixinLabel, MixinDisplay {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/([1-3]/)?inputs/[a-z_]+$
      */
-    $id: string;
-    label: string;
-    /**
+  $id: string
+  label: string
+  /**
      * The type of input represented by this object.
      */
-    input_type: InputType;
-    /**
+  input_type: InputType
+  /**
      * Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.
      *
      * It's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality "front and center" or as a secondary interaction (via long press, right click, etc);
      */
-    permanent: boolean;
-    display: InputDisplay;
+  permanent: boolean
+  display: InputDisplay
 }
 
 /**
@@ -1364,50 +1364,50 @@ export declare interface Input extends MixinLabel, MixinDisplay {
  * @public
  */
 export declare interface InputClock extends Input, Clock {
-    input_type: InputType.Clock;
-    /**
+  input_type: InputType.Clock
+  /**
      * Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.
      */
-    clock_type: ClockType;
-    /**
+  clock_type: ClockType
+  /**
      * An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.
      *
      * `Filled` should not exceed this number.
      */
-    segments: ClockSegments;
-    /**
+  segments: ClockSegments
+  /**
      * An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.
      */
-    filled: number;
-    permanent: false;
+  filled: number
+  permanent: false
 }
 
 /**
  * @public
  */
 export declare interface InputDisplay extends Display {
-    position: InputDisplayPosition;
+  position: InputDisplayPosition
 }
 
 /**
  * @public
  */
 export declare enum InputDisplayPosition {
-    /**
+  /**
      * Display as attached to the asset condition meter.
      *
      * @example Starship (*Starforged*)
      */
-    ConditionMeter = "condition_meter",
-    /**
+  ConditionMeter = 'condition_meter',
+  /**
      * The input appears at the top of the parent element.
      *
      * For inputs whose parent is an {@link Asset}, this means immediately below the asset title, before any {@link Asset.requirement} text.
      *
      * Typically, text inputs with an {@link Asset} parent are displayed this way.
      */
-    Top = "top",
-    /**
+  Top = 'top',
+  /**
      * The input is rendered at the bottom of the parent element.
      *
      * Typically, text inputs with a {@link AssetAbility} parent are displayed this way.
@@ -1415,8 +1415,8 @@ export declare enum InputDisplayPosition {
      * @example Ironclad (*Ironsworn*)
      * @example Blademaster (*Starforged*)
      */
-    Bottom = "bottom",
-    /**
+  Bottom = 'bottom',
+  /**
      * The input is rendered to the right of the parent element.
      *
      * Usually this only occurs with things like clocks and counters who have an {@link AssetAbility} parent.
@@ -1424,15 +1424,15 @@ export declare enum InputDisplayPosition {
      * @example Fugitive (*Starforged*)
      * @example Snub Fighter (*Starforged*)
      */
-    Right = "right",
-    /**
+  Right = 'right',
+  /**
      * Indicates that (in analog play) this state is presumed active when the card is flipped face-down.
      *
      * The most practical way to indicate this in a digital format is up for debate.
      *
      * Canonically, this is only used by *Starforged* modules for "broken" -- see page 55 for more information.
      */
-    Back = "back"
+  Back = 'back'
 }
 
 /**
@@ -1442,16 +1442,16 @@ export declare enum InputDisplayPosition {
  * @public
  */
 export declare interface InputNumber extends Input {
-    input_type: InputType.Number;
-    min: number;
-    /**
+  input_type: InputType.Number
+  min: number
+  /**
      * The maximum value for this number input. If it's "null", it has no maximum.
      * @nullable
      */
-    max: number | null;
-    step: 1;
-    value: number;
-    permanent: false;
+  max: number | null
+  step: 1
+  value: number
+  permanent: false
 }
 
 /**
@@ -1460,16 +1460,16 @@ export declare interface InputNumber extends Input {
  * @public
  */
 export declare interface InputSelect extends Input {
-    input_type: InputType.Select;
-    /**
+  input_type: InputType.Select
+  /**
      * Hints which attribute(s) are set by this dropdown's options.
      */
-    sets_attributes: {
-        [key: SnakeCaseString]: InputSelectAttributeDefinition;
-    };
-    options: {
-        [key: SnakeCaseString]: InputSelectOption;
-    };
+  sets_attributes: {
+    [key: SnakeCaseString]: InputSelectAttributeDefinition
+  }
+  options: {
+    [key: SnakeCaseString]: InputSelectOption
+  }
 }
 
 /**
@@ -1477,7 +1477,7 @@ export declare interface InputSelect extends Input {
  * @public
  */
 export declare interface InputSelectAttributeDefinition {
-    attribute_type: InputSelectOptionType;
+  attribute_type: InputSelectOptionType
 }
 
 /**
@@ -1485,28 +1485,28 @@ export declare interface InputSelectAttributeDefinition {
  * @public
  */
 export declare interface InputSelectOption extends MixinId, MixinLabel {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/inputs/[a-z_]+/options/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * A keyed object describing what attribute keys should be set to when this option is active. *All* items in the object should be set in this manner.
      */
-    set_attributes: {
-        [key: keyof InputSelect['sets_attributes']]: InputSelectOptionSetter;
-    };
+  set_attributes: {
+    [key: keyof InputSelect['sets_attributes']]: InputSelectOptionSetter
+  }
 }
 
 /**
  * @public
  */
 export declare interface InputSelectOptionSetter extends MixinId {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/inputs/[a-z_]+/options/[a-z_]+/[a-z_]+$
      */
-    $id: string;
-    attribute_type: InputSelectOptionType;
-    value: Stat | PcConditionMeterType | number | string;
+  $id: string
+  attribute_type: InputSelectOptionType
+  value: Stat | PcConditionMeterType | number | string
 }
 
 /**
@@ -1514,8 +1514,8 @@ export declare interface InputSelectOptionSetter extends MixinId {
  * @public
  */
 export declare interface InputSelectOptionSetterMeter extends InputSelectOptionSetter {
-    attribute_type: InputSelectOptionType.ConditionMeter;
-    value: PcConditionMeterType;
+  attribute_type: InputSelectOptionType.ConditionMeter
+  value: PcConditionMeterType
 }
 
 /**
@@ -1523,8 +1523,8 @@ export declare interface InputSelectOptionSetterMeter extends InputSelectOptionS
  * @public
  */
 export declare interface InputSelectOptionSetterNumber extends InputSelectOptionSetter {
-    attribute_type: InputSelectOptionType.Number;
-    value: number;
+  attribute_type: InputSelectOptionType.Number
+  value: number
 }
 
 /**
@@ -1532,8 +1532,8 @@ export declare interface InputSelectOptionSetterNumber extends InputSelectOption
  * @public
  */
 export declare interface InputSelectOptionSetterStat extends InputSelectOptionSetter {
-    attribute_type: InputSelectOptionType.Stat;
-    value: Stat;
+  attribute_type: InputSelectOptionType.Stat
+  value: Stat
 }
 
 /**
@@ -1541,8 +1541,8 @@ export declare interface InputSelectOptionSetterStat extends InputSelectOptionSe
  * @public
  */
 export declare interface InputSelectOptionSetterString extends InputSelectOptionSetter {
-    attribute_type: InputSelectOptionType.String;
-    value: string;
+  attribute_type: InputSelectOptionType.String
+  value: string
 }
 
 /**
@@ -1550,24 +1550,24 @@ export declare interface InputSelectOptionSetterString extends InputSelectOption
  * @public
  */
 export declare enum InputSelectOptionType {
-    /**
+  /**
      * A reference to one of the player character's stats: edge, heart, iron, shadow, or wits.
      * @see {@link Stat}
      */
-    Stat = "stat",
-    /**
+  Stat = 'stat',
+  /**
      * A reference to one of the player character's condition meters (*Starforged*) or status tracks (*Ironsworn*): health, spirit, or supply.
      * @see {@link PcConditionMeterType}
      */
-    ConditionMeter = "condition_meter",
-    /**
+  ConditionMeter = 'condition_meter',
+  /**
      * An arbitrary pre-set string value.
      */
-    String = "string",
-    /**
+  String = 'string',
+  /**
      * A arbitrary pre-set number value.
      */
-    Number = "number"
+  Number = 'number'
 }
 
 /**
@@ -1578,8 +1578,8 @@ export declare enum InputSelectOptionType {
  * @public
  */
 export declare interface InputText extends Input {
-    input_type: InputType.Text;
-    permanent: true;
+  input_type: InputType.Text
+  permanent: true
 }
 
 /**
@@ -1591,72 +1591,72 @@ export declare interface InputText extends Input {
  * @public
  */
 export declare interface InputToggle extends Input, MixinText {
-    input_type: InputType.Toggle;
-    /**
+  input_type: InputType.Toggle
+  /**
      * Whether this state is currently active.
      */
-    enabled: boolean;
-    /**
+  enabled: boolean
+  /**
      * Whether this state should disable the entire asset when {@link InputToggle.enabled} is set to `true`.
      */
-    disables_asset: boolean;
-    /**
+  disables_asset: boolean
+  /**
      * Whether this state counts as a Debility (*Ironsworn*) or Impact (*Starforged*) for the asset's owner when {@link InputToggle.enabled} is set to `true`.
      *
      * Note that for vehicles, this shouldn't be applied automatically unless your implementation has some way of telling which vehicle the PC is currently using.
      */
-    is_impact: boolean;
-    /**
+  is_impact: boolean
+  /**
      * Rules text that applies when {@link InputToggle.enabled} is set to `true`.
      * @markdown
      * @localize
      */
-    text: string;
+  text: string
 }
 
 /**
  * @public
  */
 export declare enum InputType {
-    /**
+  /**
      * A string input, similar to `<input type="text">`;
      * @see {@link InputText}
      */
-    Text = "text",
-    /**
+  Text = 'text',
+  /**
      * An input where one option is selected from a list, similar to `<select>`.
      * @see {@link InputSelect}
      */
-    Select = "select",
-    /**
+  Select = 'select',
+  /**
      * An input with an integer value, similar to `<input type="number">`;
      * @see {@link InputNumber}
      */
-    Number = "number",
-    /**
+  Number = 'number',
+  /**
      * An input representing a *Starforged*-style clock.
      * @see {@link InputClock}
      */
-    Clock = "clock",
-    /**
+  Clock = 'clock',
+  /**
      * An input representing an option with an an "on" and "off" state, similar to `<input type="checkbox">`.
      * @see {@link InputToggle}
      */
-    Toggle = "toggle"
+  Toggle = 'toggle'
 }
 
 /**
  * @public
  */
 export declare interface IronlandsRegion extends CyclopediaEntry, MixinSummary, MixinQuestStarter {
-    /**
+  /**
      * @pattern ^ironsworn/regions/[a-z_]$
      */
-    $id: string;
-    features: string[];
-    quest_starter: string;
-    summary: string;
-    title: TitleCaseTitle;
+  $id: string
+  features: string[]
+  quest_starter: string
+  summary: string
+  title: TitleCaseTitle
 }
 
 /**
@@ -1664,60 +1664,60 @@ export declare interface IronlandsRegion extends CyclopediaEntry, MixinSummary, 
  * @public
  */
 export declare interface Ironsworn extends GameDataRoot {
-    encounters: {
-        [key: SnakeCaseString]: EncounterNatureClassic;
-    };
-    setting_truths: {
-        [key: SnakeCaseString]: TruthClassic;
-    };
-    delve_site_domains: {
-        [key: SnakeCaseString]: DelveSiteDomain;
-    };
-    delve_site_themes: {
-        [key: SnakeCaseString]: DelveSiteTheme;
-    };
-    ironlands_regions: {
-        [key: SnakeCaseString]: IronlandsRegion;
-    };
-    delve_rarities: {
-        [key: SnakeCaseString]: DelveRarity;
-    };
+  encounters: {
+    [key: SnakeCaseString]: EncounterNatureClassic
+  }
+  setting_truths: {
+    [key: SnakeCaseString]: TruthClassic
+  }
+  delve_site_domains: {
+    [key: SnakeCaseString]: DelveSiteDomain
+  }
+  delve_site_themes: {
+    [key: SnakeCaseString]: DelveSiteTheme
+  }
+  ironlands_regions: {
+    [key: SnakeCaseString]: IronlandsRegion
+  }
+  delve_rarities: {
+    [key: SnakeCaseString]: DelveRarity
+  }
 }
 
 /**
  * @public
  */
-export declare const ironsworn: Ironsworn;
+export declare const ironsworn: Ironsworn
 
 /**
  * @public
  */
 export declare type KeysMatching<T, V> = {
-    [K in keyof T]-?: T[K] extends V ? K : never;
-}[keyof T];
+  [K in keyof T]-?: T[K] extends V ? K : never;
+}[keyof T]
 
 /**
  * @public
  */
 export declare type KeysWithValuesOfType<T, V> = keyof {
-    [P in keyof T]: T[P] extends V | undefined ? V : never;
-};
+  [P in keyof T]: T[P] extends V | undefined ? V : never;
+}
 
 /**
  * Set by Oracles / Factions / Leadership
  * @public
  */
 export declare enum Leadership {
-    Anarchist = "anarchist",
-    DisputedLeadership = "disputed_leadership",
-    AuthoritarianDictatorship = "authoritarian_dictatorship",
-    OligarchicalElite = "oligarchical_elite",
-    DynasticLineage = "dynastic_lineage",
-    FatedOrProphesiedLeader = "fated_or_prophesied_leader",
-    ClanChiefsOrElders = "clan_chiefs_or_elders",
-    ElectedRepresentatives = "elected_representatives",
-    MachineIntelligence = "machine_intelligence",
-    VariedDecentralized = "varied_decentralized"
+  Anarchist = 'anarchist',
+  DisputedLeadership = 'disputed_leadership',
+  AuthoritarianDictatorship = 'authoritarian_dictatorship',
+  OligarchicalElite = 'oligarchical_elite',
+  DynasticLineage = 'dynastic_lineage',
+  FatedOrProphesiedLeader = 'fated_or_prophesied_leader',
+  ClanChiefsOrElders = 'clan_chiefs_or_elders',
+  ElectedRepresentatives = 'elected_representatives',
+  MachineIntelligence = 'machine_intelligence',
+  VariedDecentralized = 'varied_decentralized'
 }
 
 /**
@@ -1725,33 +1725,33 @@ export declare enum Leadership {
  * @public
  */
 export declare enum LegacyRewardStarforged {
-    /**
+  /**
      * 1 tick
      */
-    Troublesome = 1,
-    /**
+  Troublesome = 1,
+  /**
      * 2 ticks
      */
-    Dangerous = 2,
-    /**
+  Dangerous = 2,
+  /**
      * 1 box (4 ticks)
      */
-    Formidable = 4,
-    /**
+  Formidable = 4,
+  /**
      * 2 boxes (8 ticks)
      */
-    Extreme = 8,
-    /**
+  Extreme = 8,
+  /**
      * 3 boxes (12 ticks)
      */
-    Epic = 12
+  Epic = 12
 }
 
 /**
  * @public
  */
 export declare interface LegacyTrackStarforged extends TrackBase {
-    track_type: LegacyTypeStarforged;
+  track_type: LegacyTypeStarforged
 }
 
 /**
@@ -1759,7 +1759,7 @@ export declare interface LegacyTrackStarforged extends TrackBase {
  * @public
  */
 export declare enum LegacyTypeClassic {
-    BondsTrack = "bonds_track"
+  BondsTrack = 'bonds_track'
 }
 
 /**
@@ -1767,18 +1767,18 @@ export declare enum LegacyTypeClassic {
  * @public
  */
 export declare enum LegacyTypeStarforged {
-    QuestsLegacy = "quests_legacy",
-    BondsLegacy = "bonds_legacy",
-    DiscoveriesLegacy = "discoveries_legacy"
+  QuestsLegacy = 'quests_legacy',
+  BondsLegacy = 'bonds_legacy',
+  DiscoveriesLegacy = 'discoveries_legacy'
 }
 
 /**
  * @public
  */
 export declare enum License {
-    CC_BY_NC_SA = "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    CC_BY_SA = "https://creativecommons.org/licenses/by-sa/4.0/",
-    None = "None"
+  CC_BY_NC_SA = 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+  CC_BY_SA = 'https://creativecommons.org/licenses/by-sa/4.0/',
+  None = 'None'
 }
 
 /**
@@ -1786,12 +1786,12 @@ export declare enum License {
  * @public
  */
 export declare enum Life {
-    None = "none",
-    Extinct = "extinct",
-    Scarce = "scarce",
-    Diverse = "diverse",
-    Bountiful = "bountiful",
-    Overrun = "overrun"
+  None = 'none',
+  Extinct = 'extinct',
+  Scarce = 'scarce',
+  Diverse = 'diverse',
+  Bountiful = 'bountiful',
+  Overrun = 'overrun'
 }
 
 /**
@@ -1799,22 +1799,22 @@ export declare enum Life {
  * @public
  */
 export declare enum LocalizableKey {
-    Canonical = "canonical",
-    Short = "short",
-    Standard = "standard",
-    Label = "label",
-    Aliases = "aliases",
-    Requirement = "requirement",
-    Result = "result",
-    Summary = "summary",
-    Description = "description",
-    Text = "text",
-    Features = "features",
-    Drives = "drives",
-    Tactics = "tactics",
-    YourTruth = "your_truth",
-    Character = "character",
-    QuestStarter = "quest_starter"
+  Canonical = 'canonical',
+  Short = 'short',
+  Standard = 'standard',
+  Label = 'label',
+  Aliases = 'aliases',
+  Requirement = 'requirement',
+  Result = 'result',
+  Summary = 'summary',
+  Description = 'description',
+  Text = 'text',
+  Features = 'features',
+  Drives = 'drives',
+  Tactics = 'tactics',
+  YourTruth = 'your_truth',
+  Character = 'character',
+  QuestStarter = 'quest_starter'
 }
 
 /**
@@ -1822,9 +1822,9 @@ export declare enum LocalizableKey {
  * @public
  */
 export declare enum Location {
-    Planetside = "planetside",
-    Orbital = "orbital",
-    DeepSpace = "deep_space"
+  Planetside = 'planetside',
+  Orbital = 'orbital',
+  DeepSpace = 'deep_space'
 }
 
 /**
@@ -1832,20 +1832,20 @@ export declare enum Location {
  * @public
  */
 export declare enum LocationTheme {
-    Chaotic = "chaotic",
-    Fortified = "fortified",
-    Haunted = "haunted",
-    Infested = "infested",
-    Inhabited = "inhabited",
-    Mechanical = "mechanical",
-    Ruined = "ruined",
-    Sacred = "sacred"
+  Chaotic = 'chaotic',
+  Fortified = 'fortified',
+  Haunted = 'haunted',
+  Infested = 'infested',
+  Inhabited = 'inhabited',
+  Mechanical = 'mechanical',
+  Ruined = 'ruined',
+  Sacred = 'sacred'
 }
 
 /**
  * @public
  */
-export declare type MetadataKey = '$id' | 'title' | 'asset_type' | 'display' | 'source' | 'tags' | 'usage' | 'aliases';
+export declare type MetadataKey = '$id' | 'title' | 'asset_type' | 'display' | 'source' | 'tags' | 'usage' | 'aliases'
 
 /**
  * Base interface for properties common to all resource meters.
@@ -1853,26 +1853,26 @@ export declare type MetadataKey = '$id' | 'title' | 'asset_type' | 'display' | '
  * @public
  */
 export declare interface Meter extends MixinId, MixinLabel {
-    /**
+  /**
      * The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.
      */
-    min: number;
-    /**
+  min: number
+  /**
      * The maximum value of the meter.
      */
-    max: number;
-    /**
+  max: number
+  /**
      * The initial value of the meter.
      */
-    value: number;
-    /**
+  value: number
+  /**
      * Whether the meter value can be used in place of a stat in an action roll.
      */
-    rollable: boolean;
-    /**
+  rollable: boolean
+  /**
      * @pattern ^[a-z].+$
      */
-    label: string;
+  label: string
 }
 
 /**
@@ -1881,12 +1881,12 @@ export declare interface Meter extends MixinId, MixinLabel {
  * @public
  */
 export declare enum MeterAlias {
-    Attached_Asset_Meter = "attached_asset_meter",
-    CompanionHealth = "companion_health",
-    VehicleIntegrity = "vehicle_integrity",
-    CommandVehicleIntegrity = "command_vehicle_integrity",
-    SupportVehicleIntegrity = "support_vehicle_integrity",
-    IncidentalVehicleIntegrity = "incidental_vehicle_integrity"
+  Attached_Asset_Meter = 'attached_asset_meter',
+  CompanionHealth = 'companion_health',
+  VehicleIntegrity = 'vehicle_integrity',
+  CommandVehicleIntegrity = 'command_vehicle_integrity',
+  SupportVehicleIntegrity = 'support_vehicle_integrity',
+  IncidentalVehicleIntegrity = 'incidental_vehicle_integrity'
 }
 
 /**
@@ -1895,23 +1895,23 @@ export declare enum MeterAlias {
  * @deprecated replaced by {@link InputToggle}
  */
 export declare enum MeterCondition {
-    /**
+  /**
      * Battered may be marked when your vehicle is at 0 integrity and you fail to Withstand Damage. The vehicle is barely holding together.
      * @page 51
      */
-    Battered = "battered",
-    /**
+  Battered = 'battered',
+  /**
      * Cursed may be marked when your command vehicle (STARSHIP asset) is at 0 integrity and you fail to Withstand Damage. This is a permanent impact. Your ship will never be quite right again.
      * @page 51
      */
-    Cursed = "cursed",
-    /**
+  Cursed = 'cursed',
+  /**
      * When your companion’s health is at 0 and you score a miss, they are out of action. You cannot leverage their support until they gain at least +1 health. Envision what this means in the fiction of your scene.
      * @page 204
      */
-    OutOfAction = "out_of_action",
-    /** Used by "Fleet Commander" asset */
-    Wrecked = "wrecked"
+  OutOfAction = 'out_of_action',
+  /** Used by "Fleet Commander" asset */
+  Wrecked = 'wrecked'
 }
 
 /**
@@ -1919,11 +1919,11 @@ export declare enum MeterCondition {
  * @public
  */
 export declare interface MixinAliases {
-    /**
+  /**
      * Alternate names for this item, including: names it had earlier in development that have since changed, alternate spellings/punctuation, common misspellings, and so on.
      * @localize
      */
-    [LocalizableKey.Aliases]: string[];
+  [LocalizableKey.Aliases]: string[]
 }
 
 /**
@@ -1931,18 +1931,18 @@ export declare interface MixinAliases {
  * @public
  */
 export declare interface MixinAlter extends MixinId {
-    /**
+  /**
      * Information on how this ability alters moves when enabled.
      */
-    moves?: AlterMove[] | undefined;
-    /**
+  moves?: AlterMove[] | undefined
+  /**
      * Information on how this ability alters its parent asset when enabled.
      */
-    properties?: AlterAsset | undefined;
-    /**
+  properties?: AlterAsset | undefined
+  /**
      * Information on how this ability alters its owner's momentum (triggers an effect on burn, on reset, etc)
      */
-    momentum?: AlterMomentum | undefined;
+  momentum?: AlterMomentum | undefined
 }
 
 /**
@@ -1950,12 +1950,12 @@ export declare interface MixinAlter extends MixinId {
  * @public
  */
 export declare interface MixinDescription extends MixinId {
-    /**
+  /**
      * A user-facing markdown description of the item, consisting of one or more paragraphs.
      * @markdown
      * @localize
      */
-    [LocalizableKey.Description]: string;
+  [LocalizableKey.Description]: string
 }
 
 /**
@@ -1963,10 +1963,10 @@ export declare interface MixinDescription extends MixinId {
  * @public
  */
 export declare interface MixinDisplay {
-    /**
+  /**
      * Data relevant to this item's display/rendering.
      */
-    display: Display;
+  display: Display
 }
 
 /**
@@ -1974,10 +1974,10 @@ export declare interface MixinDisplay {
  * @public
  */
 export declare interface MixinGameObjects {
-    /**
+  /**
      * Any game objects that are explicitly pointed to by the original text. For most implementations, it is *not* recommended to generate them automatically - see "Peeling the Onion", p. 293.
      */
-    game_objects: GameObject[];
+  game_objects: GameObject[]
 }
 
 /**
@@ -1985,33 +1985,33 @@ export declare interface MixinGameObjects {
  * @public
  */
 export declare interface MixinId {
-    /**
+  /**
      * The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.
      * @pattern ^(starforged|ironsworn)/[0-9a-z_/-]+$
      */
-    $id: string;
+  $id: string
 }
 
 /**
  * @public
  */
 export declare interface MixinLabel extends MixinId {
-    /**
+  /**
      * The user-facing text label of this item.
      * @localize
      */
-    [LocalizableKey.Label]: string;
+  [LocalizableKey.Label]: string
 }
 
 /**
  * @public
  */
 export declare interface MixinOptional {
-    /**
+  /**
      * Whether or not the source material presents this rules item as optional.
      * @default false
      */
-    optional: boolean;
+  optional: boolean
 }
 
 /**
@@ -2019,22 +2019,22 @@ export declare interface MixinOptional {
  * @public
  */
 export declare interface MixinOracleContent {
-    /**
+  /**
      * Metadata that describes an oracle's semantic or lexical content.
      */
-    content: OracleContent;
+  content: OracleContent
 }
 
 /**
  * @public
  */
 export declare interface MixinQuestStarter extends MixinId {
-    /**
+  /**
      * A markdown string describing the quest starter associated with this item.
      * @markdown
      * @localize
      */
-    [LocalizableKey.QuestStarter]: string;
+  [LocalizableKey.QuestStarter]: string
 }
 
 /**
@@ -2042,10 +2042,10 @@ export declare interface MixinQuestStarter extends MixinId {
  * @public
  */
 export declare interface MixinRequirements {
-    /**
+  /**
      * Prerequisites for this item.
      */
-    requires: Requirements;
+  requires: Requirements
 }
 
 /**
@@ -2053,10 +2053,10 @@ export declare interface MixinRequirements {
  * @public
  */
 export declare interface MixinRollTemplate extends MixinId {
-    /**
+  /**
      * Describes the string values of this item that should be replaced with template strings and filled with the results of one or more oracle rolls.
      */
-    roll_template: RollTemplate;
+  roll_template: RollTemplate
 }
 
 /**
@@ -2064,10 +2064,10 @@ export declare interface MixinRollTemplate extends MixinId {
  * @public
  */
 export declare interface MixinSource {
-    /**
+  /**
      * Information on this item's source.
      */
-    source: Source;
+  source: Source
 }
 
 /**
@@ -2076,7 +2076,7 @@ export declare interface MixinSource {
  * @public
  */
 export declare interface MixinSubtable {
-    subtable: OracleTableRow[];
+  subtable: OracleTableRow[]
 }
 
 /**
@@ -2084,10 +2084,10 @@ export declare interface MixinSubtable {
  * @public
  */
 export declare interface MixinSuggestions {
-    /**
+  /**
      * "Non-canonical" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.
      */
-    suggestions: Suggestions;
+  suggestions: Suggestions
 }
 
 /**
@@ -2095,12 +2095,12 @@ export declare interface MixinSuggestions {
  * @public
  */
 export declare interface MixinSummary extends MixinId {
-    /**
+  /**
      * A user-facing markdown summary of the item. Summary is shorter than {@link MixinDescription | Description}, when they're both present.
      * @markdown
      * @localize
      */
-    [LocalizableKey.Summary]: string;
+  [LocalizableKey.Summary]: string
 }
 
 /**
@@ -2108,17 +2108,17 @@ export declare interface MixinSummary extends MixinId {
  * @public
  */
 export declare interface MixinTable extends MixinId {
-    table: OracleTableRow[];
+  table: OracleTableRow[]
 }
 
 /**
  * @public
  */
 export declare interface MixinTags {
-    /**
+  /**
      * Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.
      */
-    tags: string[];
+  tags: string[]
 }
 
 /**
@@ -2126,19 +2126,19 @@ export declare interface MixinTags {
  * @public
  */
 export declare interface MixinText extends MixinId {
-    /**
+  /**
      * The item's rules text as a markdown string.
      * @markdown
      * @localize
      */
-    [LocalizableKey.Text]: string;
+  [LocalizableKey.Text]: string
 }
 
 /**
  * @public
  */
 export declare interface MixinTitle extends MixinId {
-    title: Title;
+  title: Title
 }
 
 /**
@@ -2146,12 +2146,12 @@ export declare interface MixinTitle extends MixinId {
  * @public
  */
 export declare interface Move extends MixinId, MixinText, MixinDisplay, MixinSource, MixinOptional, MixinTitle, Partial<MixinSuggestions & MixinTags> {
-    /**
+  /**
      * @example "starforged/moves/adventure/face_danger"
      * @pattern ^(starforged|ironsworn)/moves/([a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3])/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * Note the "Canonical" key for asset-specific moves is something of a misnomer, as in the original text doesn't name them. They're provided in the same format for convenience, however.
      * @see MixinTitle
      * @example
@@ -2159,36 +2159,36 @@ export declare interface Move extends MixinId, MixinText, MixinDisplay, MixinSou
      * {"Canonical": "Face Danger"}
      * ```
      */
-    title: TitleCaseTitle;
-    /**
+  title: TitleCaseTitle
+  /**
      * The ID of the parent Asset of the move, if any.
      */
-    asset?: Asset['$id'] | undefined;
-    /**
+  asset?: Asset['$id'] | undefined
+  /**
      * The ID of the move's category.
      * @example "starforged/moves/adventure"
      */
-    category: MoveCategory['$id'];
-    /**
+  category: MoveCategory['$id']
+  /**
      * Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.
      */
-    progress_move?: boolean | undefined;
-    /**
+  progress_move?: boolean | undefined
+  /**
      * The ID of the move that this move is a variant of, if any.
      */
-    variant_of?: Move['$id'] | undefined;
-    /**
+  variant_of?: Move['$id'] | undefined
+  /**
      * The move's trigger data.
      */
-    trigger: MoveTrigger;
-    /**
+  trigger: MoveTrigger
+  /**
      * The IDs of any oracles directly referenced by the move, or vice versa.
      */
-    oracles?: OracleTable['$id'][] | undefined;
-    /**
+  oracles?: Array<OracleTable['$id']> | undefined
+  /**
      * Outcome information for the move.
      */
-    outcomes?: Outcomes | undefined;
+  outcomes?: Outcomes | undefined
 }
 
 /**
@@ -2196,16 +2196,16 @@ export declare interface Move extends MixinId, MixinText, MixinDisplay, MixinSou
  * @public
  */
 export declare interface MoveCategory extends MixinId, MixinSource, MixinDescription, MixinDisplay, MixinOptional, MixinTitle {
-    /**
+  /**
      * @example "starforged/moves/adventure"
      * @pattern ^(starforged|ironsworn)/moves/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      */
-    moves: {
-        [key: SnakeCaseString]: Move;
-    };
+  moves: {
+    [key: SnakeCaseString]: Move
+  }
 }
 
 /**
@@ -2213,26 +2213,26 @@ export declare interface MoveCategory extends MixinId, MixinSource, MixinDescrip
  * @public
  */
 export declare enum MoveCategoryName {
-    Session = "Session",
-    Adventure = "Adventure",
-    Quest = "Quest",
-    Connection = "Connection",
-    Exploration = "Exploration",
-    Combat = "Combat",
-    Suffer = "Suffer",
-    Recover = "Recover",
-    Threshold = "Threshold",
-    Legacy = "Legacy",
-    Fate = "Fate"
+  Session = 'Session',
+  Adventure = 'Adventure',
+  Quest = 'Quest',
+  Connection = 'Connection',
+  Exploration = 'Exploration',
+  Combat = 'Combat',
+  Suffer = 'Suffer',
+  Recover = 'Recover',
+  Threshold = 'Threshold',
+  Legacy = 'Legacy',
+  Fate = 'Fate'
 }
 
 /**
  * @public
  */
 export declare enum MoveOutcome {
-    miss = 0,
-    weak_hit = 1,
-    strong_hit = 2
+  miss = 0,
+  weak_hit = 1,
+  strong_hit = 2
 }
 
 /**
@@ -2240,20 +2240,20 @@ export declare enum MoveOutcome {
  * @public
  */
 export declare interface MoveReroll extends MixinId, Partial<MixinText> {
-    /**
+  /**
      *
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The markdown string describing the conditions of the reroll. It should be presented to the user so that they can decide whether a reroll is appropriate.
      * @markdown
      * @localize
      */
-    text?: string | undefined;
-    /**
+  text?: string | undefined
+  /**
      * The dice to be rerolled.
      */
-    dice: RerollType;
+  dice: RerollType
 }
 
 /**
@@ -2261,11 +2261,11 @@ export declare interface MoveReroll extends MixinId, Partial<MixinText> {
  * @public
  */
 export declare interface MoveTrigger extends MixinId, Partial<MixinText> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * A markdown string containing the primary trigger text for this move.
      *
      * Secondary triggers (for specific stats or uses of an asset ability) are described in `Options`.
@@ -2274,76 +2274,76 @@ export declare interface MoveTrigger extends MixinId, Partial<MixinText> {
      * @localize
      * @example "When you attempt something risky or react to an imminent threat..."
      */
-    text?: string | undefined;
-    /**
+  text?: string | undefined
+  /**
      * Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.
      *
      * If unspecified, assume `Ally` is `false` and `Player` is `true`.
      */
-    by?: MoveTriggerBy | undefined;
-    /**
+  by?: MoveTriggerBy | undefined
+  /**
      * Information on any action rolls or progress rolls that are made when this move is triggered (which may describe a specific subset of the primary trigger in their own `Text` property).
      *
      * If there's no action rolls or progress rolls attached to this move, this is `undefined`.
      */
-    options?: (MoveTriggerOptionAction | MoveTriggerOptionProgress)[] | undefined;
+  options?: Array<MoveTriggerOptionAction | MoveTriggerOptionProgress> | undefined
 }
 
 /**
  * @public
  */
 export declare interface MoveTriggerBy {
-    /**
+  /**
      * Whether the player character who owns this item can trigger it. Unsurprisingly, this is usually true, but there's a few exceptions: see *Starforged's* LOYALIST asset for an example.
      * @public
      */
-    player: boolean;
-    /**
+  player: boolean
+  /**
      * Whether an Ally (a player character other than the owner) can trigger this item. This is usually false, but there's several exceptions among asset abilities.
      */
-    ally: boolean;
+  ally: boolean
 }
 
 /**
  * @public
  */
 export declare interface MoveTriggerOptionAction extends MoveTriggerOptionBase {
-    roll_type: RollType.Action;
-    using: RollableStat[];
+  roll_type: RollType.Action
+  using: RollableStat[]
 }
 
 /**
  * @public
  */
 export declare interface MoveTriggerOptionBase extends MixinId, Partial<MixinText> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger/options/[0-9]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * Whether this option is an action roll or progress roll.
      */
-    roll_type: RollType;
-    /**
+  roll_type: RollType
+  /**
      * The method used to choose the stat or track in the `Using` array.
      */
-    method: RollMethod;
-    /**
+  method: RollMethod
+  /**
      * The stat(s) or progress track(s) that may be rolled with this move trigger option.
      */
-    using: (RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic)[];
-    /**
+  using: Array<RollableStat | ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeStarforged | LegacyTypeClassic>
+  /**
      * Defines a custom stat, if one is included in this object's `With` array.
      */
-    custom_stat?: CustomStat | undefined;
+  custom_stat?: CustomStat | undefined
 }
 
 /**
  * @public
  */
 export declare interface MoveTriggerOptionProgress extends MoveTriggerOptionBase {
-    roll_type: RollType.Progress;
-    using: (ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged)[];
+  roll_type: RollType.Progress
+  using: Array<ProgressTypeStarforged | ProgressTypeClassic | LegacyTypeClassic | LegacyTypeStarforged>
 }
 
 /**
@@ -2351,48 +2351,48 @@ export declare interface MoveTriggerOptionProgress extends MoveTriggerOptionBase
  * @public
  */
 export declare interface MultipleRolls {
-    /**
+  /**
      * An integer representing number of rolls to make on the parent oracle table.
      * @default 2
      */
-    amount: number;
-    /**
+  amount: number
+  /**
      * Whether to allow duplicate results when generating multiple rolls.
      *
      * Implicitly required by {@link MultipleRolls.make_it_worse}
      */
-    allow_duplicates: boolean;
-    /**
+  allow_duplicates: boolean
+  /**
      * Whether duplicate rolls should be compounded in an Ironsworn-style "Make it worse" results.
      *
      * Typically this is accompanied by `Row.Result` text like "Roll twice more on this table. Both results occur. If they are the same result, make it worse."
      *
      * Can safely be ignored in Starforged-only implementations. Implicitly requires `Allow duplicates`.
      */
-    make_it_worse: boolean;
+  make_it_worse: boolean
 }
 
 /**
  * @public
  */
 export declare type Nullable<T> = {
-    [P in keyof T]: T[P] | null;
-};
+  [P in keyof T]: T[P] | null;
+}
 
 /**
  * @public
  */
 export declare type NullableKey<T, K> = {
-    [P in keyof T]: P extends K ? T[P] | null : T[P];
-};
+  [P in keyof T]: P extends K ? T[P] | null : T[P];
+}
 
 /**
  * Similar to "Omit", but recurses through any keyed object children to omit K from them, too.
  * @public
  */
 export declare type OmitDeep<T, K extends string> = {
-    [P in keyof T]: P extends K ? never : T[P] extends Record<string, unknown> ? OmitDeep<T[P], K> : T[P];
-};
+  [P in keyof T]: P extends K ? never : T[P] extends Record<string, unknown> ? OmitDeep<T[P], K> : T[P];
+}
 
 /**
  * A stub that omits common metadata recursively. Use it to create things like e.g. AssetAlterProperties.
@@ -2400,22 +2400,22 @@ export declare type OmitDeep<T, K extends string> = {
  * Additional keys to omit (non-recursively) may optionally be provided with K.
  * @public
  */
-export declare type OmitMetadataDeep<T, K extends string = ''> = OmitDeep<Omit<T, K>, MetadataKey>;
+export declare type OmitMetadataDeep<T, K extends string = ''> = OmitDeep<Omit<T, K>, MetadataKey>
 
 /**
  * Omits "never" types.
  * @public
  */
 export declare type OmitNever<T> = {
-    [K in keyof T as T[K] extends never ? never : K]: T[K];
-};
+  [K in keyof T as T[K] extends never ? never : K]: T[K];
+}
 
 /**
  * @public
  */
 export declare type OptionalKeys<T> = {
-    [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? K : never;
-}[keyof T];
+  [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? K : never;
+}[keyof T]
 
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
@@ -2426,47 +2426,47 @@ export declare type OptionalKeys<T> = {
  * @public
  */
 export declare interface Oracle extends Partial<MixinSummary & MixinDescription & MixinOracleContent & MixinAliases>, MixinId, MixinDisplay, MixinSource, MixinTitle {
-    $id: string;
-    title: TitleCaseTitle;
-    /**
+  $id: string
+  title: TitleCaseTitle
+  /**
      * An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.
      * @pattern ^(ironsworn|starforged)/oracles/[a-z_-/]+$
      */
-    ancestors: OracleSet['$id'][];
-    display: OracleDisplayBase;
-    /**
+  ancestors: Array<OracleSet['$id']>
+  display: OracleDisplayBase
+  /**
      * Information on the usage of this oracle: recommended number of rolls, etc.
      */
-    usage?: OracleUsage | undefined;
-    /**
+  usage?: OracleUsage | undefined
+  /**
      * Represents a single oracle table, where 'table' is defined as being something with a single roll range.
      *
      * This key appears only on {@link OracleSet}, and thus only on 'leaf' nodes of the oracle hierarchy 'tree'.
      */
-    table?: (OracleTableRow)[] | undefined;
-    /**
+  table?: (OracleTableRow)[] | undefined
+  /**
      * Oracle tables contained by this set.
      *
      * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
      */
-    tables?: {
-        [key: SnakeCaseString]: OracleTable;
-    } | undefined;
-    /**
+  tables?: {
+    [key: SnakeCaseString]: OracleTable
+  } | undefined
+  /**
      * Oracle sets contained by this set.
      *
      * This key appears only on {@link OracleSet}, and thus only on 'branch' nodes of the oracle hierarchy 'tree'.
      */
-    sets?: {
-        [key: SnakeCaseString]: OracleSet;
-    } | undefined;
-    /**
+  sets?: {
+    [key: SnakeCaseString]: OracleSet
+  } | undefined
+  /**
      * Describes the match behaviour of this oracle's table, if any, and provides a localizable string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
      *
      * This key appears only on {@link OracleTable}s that have a `Table`.
      */
-    on_a_match?: OracleMatch | undefined;
-    requires?: Requirements | undefined;
+  on_a_match?: OracleMatch | undefined
+  requires?: Requirements | undefined
 }
 
 /**
@@ -2474,14 +2474,14 @@ export declare interface Oracle extends Partial<MixinSummary & MixinDescription 
  * @public
  */
 export declare interface OracleContent {
-    /**
+  /**
      * The part of speech of this oracle.
      */
-    part_of_speech?: PartOfSpeechTag[] | undefined;
-    /**
+  part_of_speech?: PartOfSpeechTag[] | undefined
+  /**
      * Any arbitrary string tags associated with this oracle.
      */
-    tags?: string[] | undefined;
+  tags?: string[] | undefined
 }
 
 /**
@@ -2489,36 +2489,36 @@ export declare interface OracleContent {
  * @public
  */
 export declare interface OracleDisplayBase extends Display, MixinId {
-    /**
+  /**
      * If this oracle's `Table` should be rendered as a column of another table, it's indicated here.
      *
      * If `undefined`, this table is rendered as a standalone table.
      *
      * If this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.
      */
-    column_of?: OracleTable['$id'] | undefined;
-    /**
+  column_of?: OracleTable['$id'] | undefined
+  /**
      * Information on the rendering of this table when it's provided as a standalone table (as opposed to a column of another table).
      *
      * If close correspondence to the text's table rendering is desired, `Display["Column of"]` should be preferred (when present).
      */
-    columns?: {
-        [key: SnakeCaseString]: TableColumnRoll | TableColumnText;
-    } | undefined;
-    /**
+  columns?: {
+    [key: SnakeCaseString]: TableColumnRoll | TableColumnText
+  } | undefined
+  /**
      * This table is displayed as embedded in a row of another table.
      */
-    embed_in?: OracleTableRow['$id'] | undefined;
+  embed_in?: OracleTableRow['$id'] | undefined
 }
 
 /**
  * @public
  */
 export declare interface OracleMatch extends MixinId, MixinText {
-    /**
+  /**
      * @pattern ^(ironsworn|starforged)/oracles/[a-z_]+((/[a-z_]+)+)?/on_a_match$
      */
-    $id: string;
+  $id: string
 }
 
 /**
@@ -2529,21 +2529,21 @@ export declare interface OracleMatch extends MixinId, MixinText {
  * @public
  */
 export declare interface OracleSet extends Omit<Oracle, 'table'> {
-    /**
+  /**
      * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+){1,}
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * A list of sample names for this category. Only used by Planet {@link OracleSet}s.
      */
-    sample_names?: string[] | undefined;
-    sets?: {
-        [key: SnakeCaseString]: OracleSet;
-    } | undefined;
-    tables?: {
-        [key: SnakeCaseString]: OracleTable;
-    } | undefined;
-    display: OracleSetDisplay;
+  sample_names?: string[] | undefined
+  sets?: {
+    [key: SnakeCaseString]: OracleSet
+  } | undefined
+  tables?: {
+    [key: SnakeCaseString]: OracleTable
+  } | undefined
+  display: OracleSetDisplay
 }
 
 /**
@@ -2563,11 +2563,11 @@ export declare interface OracleSetDisplay extends Omit<OracleDisplayBase, 'colum
  * @public
  */
 export declare interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
-    /**
+  /**
      * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+){2,}$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * @example
      * ```json
      * {
@@ -2577,13 +2577,13 @@ export declare interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
      * }
      * ```
      */
-    title: Title;
-    display: OracleTableDisplay;
-    table: (OracleTableRow)[];
-    /**
+  title: Title
+  display: OracleTableDisplay
+  table: (OracleTableRow)[]
+  /**
      * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
      */
-    on_a_match?: OracleMatch | undefined;
+  on_a_match?: OracleMatch | undefined
 }
 
 /**
@@ -2591,9 +2591,9 @@ export declare interface OracleTable extends Omit<Oracle, 'sets' | 'tables'> {
  * @public
  */
 export declare interface OracleTableDisplay extends OracleDisplayBase {
-    columns: {
-        [key: SnakeCaseString]: TableColumnRoll | TableColumnText;
-    };
+  columns: {
+    [key: SnakeCaseString]: TableColumnRoll | TableColumnText
+  }
 }
 
 /**
@@ -2601,34 +2601,34 @@ export declare interface OracleTableDisplay extends OracleDisplayBase {
  * @public
  */
 export declare interface OracleTableRow<Floor extends number | null = number | null, Ceiling extends number | null = number | null> extends Partial<Nullable<MixinSummary & MixinRollTemplate & MixinSuggestions & MixinOracleContent & MixinGameObjects & MixinDisplay>> {
-    /**
+  /**
      * The ID of this row.
      * @pattern ^(ironsworn|starforged)/oracles(/[a-z_]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The low end of the dice range for this row.
      * @minimum 1
      * @maximum 100
      * @nullable
      */
-    floor: Floor;
-    /**
+  floor: Floor
+  /**
      * The high end of the dice range for this row.
      * @minimum 1
      * @maximum 100
      * @nullable
      */
-    ceiling: Ceiling;
-    /**
+  ceiling: Ceiling
+  /**
      * The primary result text for the row, annotated in Markdown.
      * In the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.
      * Some tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.
      * @markdown
      * @localize
      */
-    result: string;
-    /**
+  result: string
+  /**
      * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
      *
      * Generally, `Summary` is longer than `Result`.
@@ -2640,20 +2640,20 @@ export declare interface OracleTableRow<Floor extends number | null = number | n
      * @markdown
      * @localize
      */
-    summary?: string | null | undefined;
-    /**
+  summary?: string | null | undefined
+  /**
      * Additional oracle tables that should be rolled when this row is selected.
      * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
-    roll_oracles?: OracleTable['$id'][] | undefined;
-    /**
+  roll_oracles?: Array<OracleTable['$id']> | undefined
+  /**
      * Data for rows that call for multiple rolls, e.g. on `Roll twice` results.
      */
-    multiple_rolls?: MultipleRolls | undefined;
-    /**
+  multiple_rolls?: MultipleRolls | undefined
+  /**
      * The attributes set by this row.
      */
-    set_attributes?: AttributeMap | undefined;
+  set_attributes?: AttributeMap | undefined
 }
 
 /**
@@ -2661,153 +2661,153 @@ export declare interface OracleTableRow<Floor extends number | null = number | n
  * @public
  */
 export declare interface OracleUsage extends Partial<MixinRequirements & MixinSuggestions & MixinRollTemplate> {
-    /**
+  /**
      * Whether this table should be included in the initial oracle rolls when generating a game object. This is a somewhat arbitrary recommendation, and may not be appropriate for all implementations (or all game situations). Rather it's a reasonable starting point in *most* cases.
      *
      * That said, the game itself recommends **against** rolling all possible results at once (see "Peeling the Onion", p. 293, *Starforged*). If your goal is to implement the game 'as-written', consider how you might include some means of "progressive disclosure" of oracle results.
      *
      * May be deprecated in the future in favour of dedicated object template information.
      */
-    initial?: boolean | undefined;
-    suggestions?: Suggestions | undefined;
-    requires?: Requirements | undefined;
-    /**
+  initial?: boolean | undefined
+  suggestions?: Suggestions | undefined
+  requires?: Requirements | undefined
+  /**
      * The maximum number of rolls when using this oracle to create a game object. Assume it's 1 if not specified.
      */
-    'max_rolls'?: number | undefined;
-    /**
+  'max_rolls'?: number | undefined
+  /**
      * Whether the table's standard use is iterative.  Common examples are Feature, Opportunity, and Peril tables, which are most often used repeatedly to describe different areas of/events in a place, rather than being assigned as a description of the place as a whole.
      *
      * Mutually exclusive with `Max rolls`. If undefined, assume `false`.
      */
-    repeatable?: boolean | undefined;
-    /**
+  repeatable?: boolean | undefined
+  /**
      * Whether multiple rolls (as in object generation, or with {@link MultipleRolls}) are allowed.
      */
-    allow_duplicates?: boolean | undefined;
-    /**
+  allow_duplicates?: boolean | undefined
+  /**
      * Hints which attributes are set by this table.
      */
-    sets_attributes?: AttributeMap | undefined;
+  sets_attributes?: AttributeMap | undefined
 }
 
 /**
  * @public
  */
 export declare interface OutcomeBase<O extends MoveOutcome, RequireText extends boolean = false> extends MixinId, Partial<MixinText> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/((miss|strong_hit)(/with_a_match)?|weak_hit)$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * Defines a different outcome for this result with_a_match. Its text should replace the text of this object.
      */
-    with_a_match?: OutcomeBase<O> | undefined;
-    /**
+  with_a_match?: OutcomeBase<O> | undefined
+  /**
      * Count this roll as another roll outcome, e.g. "Count a weak hit as a miss"
      */
-    count_as?: keyof typeof MoveOutcome | undefined;
-    /**
+  count_as?: keyof typeof MoveOutcome | undefined
+  /**
      * Information on rerolls offered by this move.
      */
-    reroll?: MoveReroll | undefined;
-    /**
+  reroll?: MoveReroll | undefined
+  /**
      * Whether this outcome leaves the player character in control (Starforged) or with initiative (Ironsworn) or not. If unspecified, assume that it's `true` on a Strong Hit, and `false` on a Weak Hit or Miss.
      */
-    in_control?: boolean | undefined;
-    text?: RequireText extends true ? string : (string | undefined);
+  in_control?: boolean | undefined
+  text?: RequireText extends true ? string : (string | undefined)
 }
 
 /**
  * @public
  */
 export declare interface OutcomeMiss extends MixinId, OutcomeBase<MoveOutcome.miss, true> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/miss$
      */
-    $id: string;
-    with_a_match?: OutcomeMissMatch | undefined;
-    /**
+  $id: string
+  with_a_match?: OutcomeMissMatch | undefined
+  /**
      * @default false
      */
-    in_control?: boolean | undefined;
+  in_control?: boolean | undefined
 }
 
 /**
  * @public
  */
 export declare interface OutcomeMissMatch extends Omit<OutcomeMiss, 'with_a_match'> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/miss/with_a_match$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * @default false
      */
-    in_control?: boolean | undefined;
+  in_control?: boolean | undefined
 }
 
 /**
  * @public
  */
 export declare interface Outcomes extends MixinId {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes$
      */
-    $id: string;
-    strong_hit: OutcomeStrongHit;
-    weak_hit: OutcomeWeakHit;
-    miss: OutcomeMiss;
+  $id: string
+  strong_hit: OutcomeStrongHit
+  weak_hit: OutcomeWeakHit
+  miss: OutcomeMiss
 }
 
 /**
  * @public
  */
 export declare interface OutcomeStrongHit extends MixinId, OutcomeBase<typeof MoveOutcome['strong_hit'], true> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/strong_hit$
      */
-    $id: string;
-    with_a_match?: OutcomeStrongHitMatch | undefined;
-    /**
+  $id: string
+  with_a_match?: OutcomeStrongHitMatch | undefined
+  /**
      * @default true
      */
-    in_control?: boolean | undefined;
+  in_control?: boolean | undefined
 }
 
 /**
  * @public
  */
 export declare interface OutcomeStrongHitMatch extends Omit<OutcomeStrongHit, 'with_a_match'> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/strong_hit/with_a_match$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * @default true
      */
-    in_control?: boolean | undefined;
+  in_control?: boolean | undefined
 }
 
 /**
  * @public
  */
 export declare interface OutcomeWeakHit extends Omit<OutcomeBase<typeof MoveOutcome['weak_hit'], true>, 'with_a_match'> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/outcomes/weak_hit$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * @default false
      */
-    in_control?: boolean | undefined;
+  in_control?: boolean | undefined
 }
 
 /**
  * Makes a type where K is nullable.
  * @public
  */
-export declare type PartialBy<T, K extends string> = Omit<T, K> & Partial<Pick<T, K extends keyof T ? K : never>>;
+export declare type PartialBy<T, K extends string> = Omit<T, K> & Partial<Pick<T, K extends keyof T ? K : never>>
 
 /**
  * Similar to 'Partial', but recurses through all properties and their children, too. Use with care, as it can sometimes cause compiler segfaults. It's recommended to combine this with Omit if there's properties that you're sure you won't need (make {@link PartialDeep} the outermost generic type, in this case).
@@ -2815,45 +2815,45 @@ export declare type PartialBy<T, K extends string> = Omit<T, K> & Partial<Pick<T
  * @public
  */
 export declare type PartialDeep<T> = Partial<{
-    [P in keyof T]?: (T[P] extends Record<string, unknown> ? PartialDeep<T[P]> : T[P]) | undefined;
-}>;
+  [P in keyof T]?: (T[P] extends Record<string, unknown> ? PartialDeep<T[P]> : T[P]) | undefined;
+}>
 
 /**
  * Makes a type where K and its properties are nullable.
  * @public
  */
-export declare type PartialDeepBy<T, K extends string> = Omit<T, K> & PartialDeep<Pick<T, K extends keyof T ? K : never>>;
+export declare type PartialDeepBy<T, K extends string> = Omit<T, K> & PartialDeep<Pick<T, K extends keyof T ? K : never>>
 
 /**
  * Make all properties of T nullable except for K, which is required.
  * @public
  */
 export declare type PartialExcept<T, K extends string> = RequireKey<{
-    [P in keyof T]?: T[P];
-}, K>;
+  [P in keyof T]?: T[P];
+}, K>
 
 /**
  * A stub that with recursively optional metadata. Additional keys to make partial may optionally be provided with K.
  * @public
  */
-export declare type PartialMetadataDeep<T, K extends string = ''> = PartialDeepBy<T, K | MetadataKey>;
+export declare type PartialMetadataDeep<T, K extends string = ''> = PartialDeepBy<T, K | MetadataKey>
 
 /**
  * @public
  */
 export declare enum PartOfSpeechTag {
-    Noun = "noun",
-    CommonNoun = "common noun",
-    Fragment = "fragment",
-    Adjective = "adjective",
-    ProperNoun = "proper noun",
-    Verb = "verb",
-    Plural = "plural",
-    Name = "name",
-    ProperNounFragment = "proper noun fragment",
-    Sentences = "sentences",
-    CompoundNoun = "compound noun",
-    PossessiveCase = "possessive case"
+  Noun = 'noun',
+  CommonNoun = 'common noun',
+  Fragment = 'fragment',
+  Adjective = 'adjective',
+  ProperNoun = 'proper noun',
+  Verb = 'verb',
+  Plural = 'plural',
+  Name = 'name',
+  ProperNounFragment = 'proper noun fragment',
+  Sentences = 'sentences',
+  CompoundNoun = 'compound noun',
+  PossessiveCase = 'possessive case'
 }
 
 /**
@@ -2861,10 +2861,10 @@ export declare enum PartOfSpeechTag {
  * @public
  */
 export declare interface Pc {
-    stats: PcStats;
-    assets: Asset[];
-    meters: PcMeters;
-    impacts: Record<string, boolean>;
+  stats: PcStats
+  assets: Asset[]
+  meters: PcMeters
+  impacts: Record<string, boolean>
 }
 
 /**
@@ -2872,9 +2872,9 @@ export declare interface Pc {
  * @public
  */
 export declare enum PcConditionMeterType {
-    Health = "health",
-    Spirit = "spirit",
-    Supply = "supply"
+  Health = 'health',
+  Spirit = 'spirit',
+  Supply = 'supply'
 }
 
 /**
@@ -2882,10 +2882,10 @@ export declare enum PcConditionMeterType {
  * @public
  */
 export declare interface PcMeters extends Record<PcMeterType, Meter> {
-    [PcMeterType.Health]: ConditionMeter;
-    [PcMeterType.Spirit]: ConditionMeter;
-    [PcMeterType.Supply]: ConditionMeter;
-    [PcMeterType.Momentum]: Meter;
+  [PcMeterType.Health]: ConditionMeter
+  [PcMeterType.Spirit]: ConditionMeter
+  [PcMeterType.Supply]: ConditionMeter
+  [PcMeterType.Momentum]: Meter
 }
 
 /**
@@ -2893,10 +2893,10 @@ export declare interface PcMeters extends Record<PcMeterType, Meter> {
  * @public
  */
 export declare enum PcMeterType {
-    Health = "health",
-    Spirit = "spirit",
-    Supply = "supply",
-    Momentum = "momentum"
+  Health = 'health',
+  Spirit = 'spirit',
+  Supply = 'supply',
+  Momentum = 'momentum'
 }
 
 /**
@@ -2904,69 +2904,69 @@ export declare enum PcMeterType {
  * @public
  */
 export declare interface PcStats extends Record<Stat, number> {
-    [Stat.Edge]: number;
-    [Stat.Heart]: number;
-    [Stat.Iron]: number;
-    [Stat.Shadow]: number;
-    [Stat.Wits]: number;
+  [Stat.Edge]: number
+  [Stat.Heart]: number
+  [Stat.Iron]: number
+  [Stat.Shadow]: number
+  [Stat.Wits]: number
 }
 
 /**
  * @public
  */
-export declare type PlaceRecord<T extends GameObjectType.Derelict | GameObjectType.DerelictZone | GameObjectType.Starship | GameObjectType.Settlement | GameObjectType.Planet | GameObjectType.PrecursorVault, K extends AttributeKey | never = never> = GameObjectRecordBase<T, K | AttributeKey.Location | AttributeKey.Region | AttributeKey.LocationTheme>;
+export declare type PlaceRecord<T extends GameObjectType.Derelict | GameObjectType.DerelictZone | GameObjectType.Starship | GameObjectType.Settlement | GameObjectType.Planet | GameObjectType.PrecursorVault, K extends AttributeKey | never = never> = GameObjectRecordBase<T, K | AttributeKey.Location | AttributeKey.Region | AttributeKey.LocationTheme>
 
 /**
  * Set by "Oracles / Planets / Class"
  * @public
  */
 export declare enum PlanetaryClass {
-    Desert = "desert",
-    Furnace = "furnace",
-    Grave = "grave",
-    Ice = "ice",
-    Jovian = "jovian",
-    Jungle = "jungle",
-    Ocean = "ocean",
-    Rocky = "rocky",
-    Shattered = "shattered",
-    Tainted = "tainted",
-    Vital = "vital"
+  Desert = 'desert',
+  Furnace = 'furnace',
+  Grave = 'grave',
+  Ice = 'ice',
+  Jovian = 'jovian',
+  Jungle = 'jungle',
+  Ocean = 'ocean',
+  Rocky = 'rocky',
+  Shattered = 'shattered',
+  Tainted = 'tainted',
+  Vital = 'vital'
 }
 
 /**
  * @public
  */
-export declare type PlanetRecord = PlaceRecord<GameObjectType.Planet, AttributeKey.Atmosphere | AttributeKey.Life | AttributeKey.PlanetaryClass>;
+export declare type PlanetRecord = PlaceRecord<GameObjectType.Planet, AttributeKey.Atmosphere | AttributeKey.Life | AttributeKey.PlanetaryClass>
 
 /**
  * Set by Oracles / Settlements / Population
  * @public
  */
 export declare enum Population {
-    Few = "few",
-    Dozens = "dozens",
-    Hundreds = "hundreds",
-    Thousands = "thousands",
-    TensOfThousands = "tens_of_thousands"
+  Few = 'few',
+  Dozens = 'dozens',
+  Hundreds = 'hundreds',
+  Thousands = 'thousands',
+  TensOfThousands = 'tens_of_thousands'
 }
 
 /**
  * @public
  */
-export declare type PrecursorVaultRecord = PlaceRecord<GameObjectType.PrecursorVault>;
+export declare type PrecursorVaultRecord = PlaceRecord<GameObjectType.PrecursorVault>
 
 /**
  * @public
  */
 export declare interface ProgressTrack extends TrackBase {
-    track_type: ProgressTypeStarforged | ProgressTypeClassic;
-    /**
+  track_type: ProgressTypeStarforged | ProgressTypeClassic
+  /**
      * @minimum 0
      * @maximum 40
      */
-    ticks: number;
-    rank: ChallengeRank;
+  ticks: number
+  rank: ChallengeRank
 }
 
 /**
@@ -2974,11 +2974,11 @@ export declare interface ProgressTrack extends TrackBase {
  * @public
  */
 export declare enum ProgressTypeClassic {
-    Combat = "combat_progress",
-    Vow = "vow_progress",
-    Journey = "journey_progress",
-    Delve = "delve_progress",
-    SceneChallenge = "scene_challenge_progress"
+  Combat = 'combat_progress',
+  Vow = 'vow_progress',
+  Journey = 'journey_progress',
+  Delve = 'delve_progress',
+  SceneChallenge = 'scene_challenge_progress'
 }
 
 /**
@@ -2986,11 +2986,11 @@ export declare enum ProgressTypeClassic {
  * @public
  */
 export declare enum ProgressTypeStarforged {
-    Combat = "combat_progress",
-    Vow = "vow_progress",
-    Expedition = "expedition_progress",
-    Connection = "connection_progress",
-    SceneChallenge = "scene_challenge_progress"
+  Combat = 'combat_progress',
+  Vow = 'vow_progress',
+  Expedition = 'expedition_progress',
+  Connection = 'connection_progress',
+  SceneChallenge = 'scene_challenge_progress'
 }
 
 /**
@@ -2998,35 +2998,35 @@ export declare enum ProgressTypeStarforged {
  * @public
  */
 export declare enum ProgressUnit {
-    /**
+  /**
      * 3 boxes (12 ticks)
      */
-    Troublesome = 12,
-    /**
+  Troublesome = 12,
+  /**
      * 2 boxes (8 ticks)
      */
-    Dangerous = 8,
-    /**
+  Dangerous = 8,
+  /**
      * 1 box (4 ticks)
      */
-    Formidable = 4,
-    /**
+  Formidable = 4,
+  /**
      * 2 ticks
      */
-    Extreme = 2,
-    /**
+  Extreme = 2,
+  /**
      * 1 tick
      */
-    Epic = 1
+  Epic = 1
 }
 
 /**
  * @public
  */
 export declare enum Region {
-    Terminus = "terminus",
-    Outlands = "outlands",
-    Expanse = "expanse"
+  Terminus = 'terminus',
+  Outlands = 'outlands',
+  Expanse = 'expanse'
 }
 
 /**
@@ -3034,181 +3034,181 @@ export declare enum Region {
  * @public
  */
 export declare enum Replacement {
-    /**
+  /**
      * Replace with the ID of the nearest ancestor asset.
      */
-    Asset = "${{@ASSET}}",
-    /**
+  Asset = '${{@ASSET}}',
+  /**
      * Replace with the ID of the nearest ancestor asset's condition meter.
      */
-    AssetMeter = "${{@ASSET_METER}}",
-    /**
+  AssetMeter = '${{@ASSET_METER}}',
+  /**
      * Replace with the ID of the nearest ancestor move trigger's custom stat.
      */
-    CustomStat = "${{@CUSTOM_STAT}}",
-    /**
+  CustomStat = '${{@CUSTOM_STAT}}',
+  /**
      * Replace with the ID of the nearest select option value of the Stat type
      */
-    AssetSelectStat = "${{@ASSET_SELECT_STAT}}",
-    /**
+  AssetSelectStat = '${{@ASSET_SELECT_STAT}}',
+  /**
      * Replace with the ID of the nearest select option value of the ConditionMeter type.
      */
-    AssetSelectMeter = "${{@ASSET_SELECT_METER}}"
+  AssetSelectMeter = '${{@ASSET_SELECT_METER}}'
 }
 
 /**
  * @public
  */
 export declare type RequiredKeys<T> = {
-    [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? never : K;
-}[keyof T];
+  [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? never : K;
+}[keyof T]
 
 /**
  * Generic type: require specific keys to be NonNullable.
  * @public
  */
 export declare type RequireKey<T, K extends string> = T & {
-    [P in K]-?: NonNullable<T[P extends keyof T ? P : never]>;
-};
+  [P in K]-?: NonNullable<T[P extends keyof T ? P : never]>;
+}
 
 /**
  * Data describing an item's requirements: attribute keys, and values of those keys that satisfy the requirements.
  * @public
  */
-export declare type Requirements<TK extends AttributeKey = AttributeKey> = Record<TK, AttributeMaster[TK][]>;
+export declare type Requirements<TK extends AttributeKey = AttributeKey> = Record<TK, Array<AttributeMaster[TK]>>
 
 /**
  * Enumerates which dice are to be rerolled.
  * @public
  */
 export declare enum RerollType {
-    /**
+  /**
      * The player can pick and choose which dice to reroll.
      */
-    Any = "any",
-    /**
+  Any = 'any',
+  /**
      * The player can pick and choose which challenge dice to reroll (none, one, or both).
      */
-    ChallengeDice = "challenge_dice",
-    /**
+  ChallengeDice = 'challenge_dice',
+  /**
      * The action die is rerolled.
      */
-    ActionDie = "action_die",
-    /**
+  ActionDie = 'action_die',
+  /**
      * The player can choose **one** challenge die to reroll.
      */
-    ChallengeDie = "challenge_die",
-    /**
+  ChallengeDie = 'challenge_die',
+  /**
      * Reroll *all* dice
      */
-    All = "all"
+  All = 'all'
 }
 
 /**
  * @public
  */
 export declare type RetainBlacklist<T> = {
-    [P in keyof T as T[P] extends BlacklistPartial ? P : never]: T[P];
-};
+  [P in keyof T as T[P] extends BlacklistPartial ? P : never]: T[P];
+}
 
 /**
  * Set by Oracles / Character / Role
  * @public
  */
 export declare enum Role {
-    Agent = "agent",
-    AI = "ai",
-    Artisan = "artisan",
-    Assassin = "assassin",
-    BountyHunter = "hunter",
-    Courier = "courier",
-    Crew = "crew",
-    Criminal = "criminal",
-    Cultist = "cultist",
-    Diplomat = "diplomat",
-    Engineer = "engineer",
-    Entertainer = "entertainer",
-    Explorer = "explorer",
-    Farmer = "farmer",
-    Fugitive = "fugitive",
-    Guard = "guard",
-    Guide = "guide",
-    Healer = "healer",
-    Historian = "historian",
-    Hunter = "hunter",
-    Investigator = "investigator",
-    Laborer = "laborer",
-    Lawkeeper = "lawkeeper",
-    Leader = "leader",
-    Mercenary = "mercenary",
-    Merchant = "merchant",
-    Miner = "miner",
-    Mystic = "mystic",
-    Navigator = "navigator",
-    Outcast = "outcast",
-    Pilgrim = "pilgrim",
-    Pilot = "pilot",
-    Pirate = "pirate",
-    Preacher = "preacher",
-    Prophet = "prophet",
-    Raider = "raider",
-    Researcher = "researcher",
-    Scavenger = "scavenger",
-    Scholar = "scholar",
-    Scout = "scout",
-    Shipwright = "shipwright",
-    Smuggler = "smuggler",
-    Soldier = "soldier",
-    Spacer = "spacer",
-    Technician = "technician",
-    Thief = "thief"
+  Agent = 'agent',
+  AI = 'ai',
+  Artisan = 'artisan',
+  Assassin = 'assassin',
+  BountyHunter = 'hunter',
+  Courier = 'courier',
+  Crew = 'crew',
+  Criminal = 'criminal',
+  Cultist = 'cultist',
+  Diplomat = 'diplomat',
+  Engineer = 'engineer',
+  Entertainer = 'entertainer',
+  Explorer = 'explorer',
+  Farmer = 'farmer',
+  Fugitive = 'fugitive',
+  Guard = 'guard',
+  Guide = 'guide',
+  Healer = 'healer',
+  Historian = 'historian',
+  Hunter = 'hunter',
+  Investigator = 'investigator',
+  Laborer = 'laborer',
+  Lawkeeper = 'lawkeeper',
+  Leader = 'leader',
+  Mercenary = 'mercenary',
+  Merchant = 'merchant',
+  Miner = 'miner',
+  Mystic = 'mystic',
+  Navigator = 'navigator',
+  Outcast = 'outcast',
+  Pilgrim = 'pilgrim',
+  Pilot = 'pilot',
+  Pirate = 'pirate',
+  Preacher = 'preacher',
+  Prophet = 'prophet',
+  Raider = 'raider',
+  Researcher = 'researcher',
+  Scavenger = 'scavenger',
+  Scholar = 'scholar',
+  Scout = 'scout',
+  Shipwright = 'shipwright',
+  Smuggler = 'smuggler',
+  Soldier = 'soldier',
+  Spacer = 'spacer',
+  Technician = 'technician',
+  Thief = 'thief'
 }
 
 /**
  * Standard player character stats or condition meters that can be used as +stat in an action roll.
  * @public
  */
-export declare type RollableStat = Stat | CustomStat['$id'] | PcConditionMeterType | ConditionMeter['$id'];
+export declare type RollableStat = Stat | CustomStat['$id'] | PcConditionMeterType | ConditionMeter['$id']
 
 /**
  * The stat(s) or progress track(s) that may be rolled with the parent move trigger option.
  * @public
  */
 export declare enum RollMethod {
-    /**
+  /**
      * When rolling with this move trigger option, *every* stat or progress track of the `Using` key is rolled.
      */
-    All = "all",
-    /**
+  All = 'all',
+  /**
      * When rolling with this move trigger option, use the highest/best option from the `Using` key.
      */
-    Highest = "highest",
-    /**
+  Highest = 'highest',
+  /**
      * When rolling with this move trigger option, use the lowest/worst option from the `Using` key.
      */
-    Lowest = "lowest",
-    /**
+  Lowest = 'lowest',
+  /**
      * When rolling with this move trigger option, the user picks which stat to use.
      *
      * This is the default option for triggers that offer a single stat.
      */
-    Any = "any",
-    /**
+  Any = 'any',
+  /**
      * This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option.
      *
      * If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks.
      *
      * Typically appears on children of `AlterMove`.
      */
-    Inherit = "inherit",
-    /**
+  Inherit = 'inherit',
+  /**
      * The move trigger option results in an automatic strong hit - no roll required.
      */
-    StrongHit = "strong_hit",
-    /**
+  StrongHit = 'strong_hit',
+  /**
      * The move trigger option results in an automatic weak hit - no roll required.
      */
-    WeakHit = "weak_hit"
+  WeakHit = 'weak_hit'
 }
 
 /**
@@ -3216,11 +3216,11 @@ export declare enum RollMethod {
  * @public
  */
 export declare interface RollTemplate extends MixinId, Partial<MixinSummary & MixinDescription> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/[a-z_]+/.+/roll_template$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * A template string for the parent's `Result` property, to be filled with an oracle table roll Result.
      * @localize
      * @example
@@ -3228,13 +3228,13 @@ export declare interface RollTemplate extends MixinId, Partial<MixinSummary & Mi
      * "{{starforged/oracles/factions/affiliation}} of the {{starforged/oracles/factions/legacy}} {{starforged/oracles/factions/identity}}"
      * ```
      */
-    result?: string | undefined;
-    /**
+  result?: string | undefined
+  /**
      * A template string for the parent's `summary` property, to be filled with an oracle table roll Result.
      * @localize
      */
-    summary?: string | undefined;
-    /**
+  summary?: string | undefined
+  /**
      * A template string for the parent's `description` property, to be filled with an oracle table roll Result.
      * @localize
      * @example
@@ -3242,73 +3242,73 @@ export declare interface RollTemplate extends MixinId, Partial<MixinSummary & Mi
      * "Our computers are limited to simple digital systems and the most basic machine intelligence. This is because: {{starforged/setting_truths/artificial_intelligence/1-33/subtable}}.\n\nThe Adepts serve in place of those advanced systems. They utilize mind-altering drugs to see the universe as a dazzling lattice of data, identifying trends and predicting outcomes with uncanny accuracy. But to gain this insight they sacrifice much of themselves."
      * ```
      */
-    description?: string | undefined;
+  description?: string | undefined
 }
 
 /**
  * @public
  */
 export declare enum RollType {
-    Action = "action_roll",
-    Progress = "progress_roll"
+  Action = 'action_roll',
+  Progress = 'progress_roll'
 }
 
 /**
  * @public
  */
 export declare enum SettingTruthName {
-    Cataclysm = "Cataclysm",
-    Exodus = "Exodus",
-    Communities = "Communities",
-    Iron = "Iron",
-    Laws = "Laws",
-    Religion = "Religion",
-    Magic = "Magic",
-    CommunicationAndData = "Communication and data",
-    Medicine = "Medicine",
-    ArtificialIntelligence = "Artificial intelligence",
-    War = "War",
-    Lifeforms = "Lifeforms",
-    Precursors = "Precursors",
-    Horrors = "Horrors"
+  Cataclysm = 'Cataclysm',
+  Exodus = 'Exodus',
+  Communities = 'Communities',
+  Iron = 'Iron',
+  Laws = 'Laws',
+  Religion = 'Religion',
+  Magic = 'Magic',
+  CommunicationAndData = 'Communication and data',
+  Medicine = 'Medicine',
+  ArtificialIntelligence = 'Artificial intelligence',
+  War = 'War',
+  Lifeforms = 'Lifeforms',
+  Precursors = 'Precursors',
+  Horrors = 'Horrors'
 }
 
 /**
  * @public
  */
 export declare enum SettlementInitialContact {
-    AskingForHelp = "asking_for_help",
-    Captured = "captured",
-    Derelict = "derelict",
-    Destroyed = "destroyed",
-    Hostile = "hostile",
-    InBattle = "in_battle",
-    NeutralAutomated = "neutral_automated",
-    Uncooperative = "uncooperative",
-    Unresponsive = "unresponsive",
-    Wary = "wary",
-    Welcoming = "welcoming"
+  AskingForHelp = 'asking_for_help',
+  Captured = 'captured',
+  Derelict = 'derelict',
+  Destroyed = 'destroyed',
+  Hostile = 'hostile',
+  InBattle = 'in_battle',
+  NeutralAutomated = 'neutral_automated',
+  Uncooperative = 'uncooperative',
+  Unresponsive = 'unresponsive',
+  Wary = 'wary',
+  Welcoming = 'welcoming'
 }
 
 /**
  * @public
  */
 export declare type SettlementRecord<K extends AttributeKey | never = never> = PlaceRecord<GameObjectType.Settlement, AttributeKey.Authority | AttributeKey.Population | AttributeKey.InitialContact | K> & {
-    [AttributeKey.InitialContact]?: SettlementInitialContact | undefined;
-};
+  [AttributeKey.InitialContact]?: SettlementInitialContact | undefined
+}
 
 /**
  * @pattern ^[a-z][a-z_]+$
  * @public
  */
-export declare type SnakeCaseString = string;
+export declare type SnakeCaseString = string
 
 /**
  * Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.
  * @public
  */
 export declare interface Source {
-    /**
+  /**
      * The title of the source.
      *
      * For 'canonical' content, use one of the enumerated `SourceTitle` strings.
@@ -3317,30 +3317,30 @@ export declare interface Source {
      *
      * If the source has no particular title (for instance, it's a single custom element in a VTT implementation), use "Custom".
      */
-    title: SourceTitle | string;
-    /**
+  title: SourceTitle | string
+  /**
      * The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.
      * @default ['Shawn Tomkin']
      */
-    authors: string[];
-    /**
+  authors: string[]
+  /**
      * The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.
      * @pattern ^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$
      */
-    date?: string | undefined;
-    /**
+  date?: string | undefined
+  /**
      * The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).
      */
-    page?: number | undefined;
-    /**
+  page?: number | undefined
+  /**
      * The URI where the source material is available.
      * @pattern ^https?://.*$
      */
-    uri?: string | undefined;
-    /**
+  uri?: string | undefined
+  /**
      * The URI pointing to the license which this content falls under.
      */
-    license: License;
+  license: License
 }
 
 /**
@@ -3348,13 +3348,13 @@ export declare interface Source {
  * @public
  */
 export declare enum SourceTitle {
-    Starforged = "Ironsworn: Starforged Rulebook",
-    StarforgedAssets = "Ironsworn: Starforged Assets",
-    SunderedIslesPreview = "Sundered Isles Preview",
-    Ironsworn = "Ironsworn Rulebook",
-    IronswornAssets = "Ironsworn Assets",
-    IronswornDelve = "Ironsworn: Delve",
-    Custom = "Custom"
+  Starforged = 'Ironsworn: Starforged Rulebook',
+  StarforgedAssets = 'Ironsworn: Starforged Assets',
+  SunderedIslesPreview = 'Sundered Isles Preview',
+  Ironsworn = 'Ironsworn Rulebook',
+  IronswornAssets = 'Ironsworn Assets',
+  IronswornDelve = 'Ironsworn: Delve',
+  Custom = 'Custom'
 }
 
 /**
@@ -3362,11 +3362,11 @@ export declare enum SourceTitle {
  * @public
  */
 export declare enum SourceUrl {
-    Starforged = "https://getstarforged.com",
-    StarforgedAssets = "https://getstarforged.com",
-    Ironsworn = "https://shawn-tomkin.itch.io/ironsworn",
-    IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
-    IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve"
+  Starforged = 'https://getstarforged.com',
+  StarforgedAssets = 'https://getstarforged.com',
+  Ironsworn = 'https://shawn-tomkin.itch.io/ironsworn',
+  IronswornAssets = 'https://shawn-tomkin.itch.io/ironsworn',
+  IronswornDelve = 'https://shawn-tomkin.itch.io/ironsworn-delve'
 }
 
 /**
@@ -3374,68 +3374,68 @@ export declare enum SourceUrl {
  * @public
  */
 export declare interface Starforged extends GameDataRoot {
-    'encounters': {
-        [key: SnakeCaseString]: EncounterStarforged;
-    };
-    'setting_truths': {
-        [key: SnakeCaseString]: TruthStarforged;
-    };
+  'encounters': {
+    [key: SnakeCaseString]: EncounterStarforged
+  }
+  'setting_truths': {
+    [key: SnakeCaseString]: TruthStarforged
+  }
 }
 
 /**
  * @public
  */
-export declare const starforged: Starforged;
+export declare const starforged: Starforged
 
 /**
  * @public
  */
 export declare enum StarshipInitialContact {
-    AskingForHelp = "asking_for_help",
-    Derelict = "derelict",
-    Destroyed = "destroyed",
-    Dismissive = "dismissive",
-    Familiar = "familiar",
-    Friendly = "friendly",
-    Hostile = "hostile",
-    InBattle = "in_battle",
-    NeutralAutomated = "neutral_automated",
-    Uncooperative = "uncooperative",
-    Unresponsive = "unresponsive",
-    Wary = "wary"
+  AskingForHelp = 'asking_for_help',
+  Derelict = 'derelict',
+  Destroyed = 'destroyed',
+  Dismissive = 'dismissive',
+  Familiar = 'familiar',
+  Friendly = 'friendly',
+  Hostile = 'hostile',
+  InBattle = 'in_battle',
+  NeutralAutomated = 'neutral_automated',
+  Uncooperative = 'uncooperative',
+  Unresponsive = 'unresponsive',
+  Wary = 'wary'
 }
 
 /**
  * @public
  */
 export declare type StarshipRecord<K extends AttributeKey | never = never> = PlaceRecord<GameObjectType.Starship, K | AttributeKey.InitialContact | AttributeKey.StarshipType> & {
-    [AttributeKey.InitialContact]?: StarshipInitialContact | undefined;
-};
+  [AttributeKey.InitialContact]?: StarshipInitialContact | undefined
+}
 
 /**
  * @public
  */
 export declare enum StarshipType {
-    Carrier = "carrier",
-    Corvette = "corvette",
-    Courier = "courier",
-    Cruiser = "cruiser",
-    Dreadnought = "dreadnought",
-    Escape = "escape",
-    Foundry = "foundry",
-    Harvester = "harvester",
-    Hauler = "hauler",
-    Hunter = "hunter",
-    Ironhome = "ironhome",
-    Mender = "mender",
-    Outbounder = "outbounder",
-    Pennant = "pennant",
-    Prospector = "prospector",
-    Reclaimer = "reclaimer",
-    Shuttle = "shuttle",
-    SnubFighter = "snub_fighter",
-    UnusualOrUnknown = "unusual_or_unknown",
-    Multipurpose = "multipurpose"
+  Carrier = 'carrier',
+  Corvette = 'corvette',
+  Courier = 'courier',
+  Cruiser = 'cruiser',
+  Dreadnought = 'dreadnought',
+  Escape = 'escape',
+  Foundry = 'foundry',
+  Harvester = 'harvester',
+  Hauler = 'hauler',
+  Hunter = 'hunter',
+  Ironhome = 'ironhome',
+  Mender = 'mender',
+  Outbounder = 'outbounder',
+  Pennant = 'pennant',
+  Prospector = 'prospector',
+  Reclaimer = 'reclaimer',
+  Shuttle = 'shuttle',
+  SnubFighter = 'snub_fighter',
+  UnusualOrUnknown = 'unusual_or_unknown',
+  Multipurpose = 'multipurpose'
 }
 
 /**
@@ -3443,11 +3443,11 @@ export declare enum StarshipType {
  * @public
  */
 export declare enum Stat {
-    Edge = "edge",
-    Heart = "heart",
-    Iron = "iron",
-    Shadow = "shadow",
-    Wits = "wits"
+  Edge = 'edge',
+  Heart = 'heart',
+  Iron = 'iron',
+  Shadow = 'shadow',
+  Wits = 'wits'
 }
 
 /**
@@ -3455,13 +3455,13 @@ export declare enum Stat {
  *
  * @public
  */
-export declare type StubBy<T, PartialKey extends string = '', OmitKey extends string = ''> = Omit<PartialBy<T, PartialKey>, OmitKey>;
+export declare type StubBy<T, PartialKey extends string = '', OmitKey extends string = ''> = Omit<PartialBy<T, PartialKey>, OmitKey>
 
 /**
  * Make a stub of T where ReqK is required, OmitK is omitted, and all other keys are optional.
  * @public
  */
-export declare type StubExcept<T, ReqKey extends string = '', OmitKey extends string = ''> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
+export declare type StubExcept<T, ReqKey extends string = '', OmitKey extends string = ''> = Omit<PartialExcept<T, ReqKey>, OmitKey>
 
 /**
  * Describes "non-canonical" suggestions for game content related to the parent item.
@@ -3472,50 +3472,50 @@ export declare type StubExcept<T, ReqKey extends string = '', OmitKey extends st
  * @public
  */
 export declare interface Suggestions {
-    /**
+  /**
      * Suggested game objects and their parameters.
      */
-    game_objects?: GameObjectRecord[] | undefined;
-    /**
+  game_objects?: GameObjectRecord[] | undefined
+  /**
      * Suggested oracle rolls, by table ID. Multiples of the same ID can be used to indicate that multiple rolls should be made.
      * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
-    oracle_tables?: OracleTable['$id'][] | undefined;
-    /**
+  oracle_tables?: Array<OracleTable['$id']> | undefined
+  /**
      * Suggested oracle sets, by ID.
      * @pattern ^(starforged|ironsworn)/oracles/[a-z_]+/[a-z_-/]+$
      */
-    oracle_sets?: OracleSet['$id'][] | undefined;
-    /**
+  oracle_sets?: Array<OracleSet['$id']> | undefined
+  /**
      * Suggested move IDs.
      * @pattern ^(starforged|ironsworn)/moves/[a-z_]+/[a-z_]+$
      */
-    moves?: Move['$id'][] | undefined;
-    /**
+  moves?: Array<Move['$id']> | undefined
+  /**
      * Suggested asset IDs.
      * @pattern ^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+$
      */
-    assets?: Asset['$id'][] | undefined;
-    /**
+  assets?: Array<Asset['$id']> | undefined
+  /**
      * Suggested encounter IDs.
      * @pattern ^(starforged/encounters|ironsworn/encounters/[a-z_]+)/[a-z_]+$
      */
-    encounters?: EncounterStarforged['$id'][] | EncounterClassic['$id'][] | undefined;
-    /**
+  encounters?: Array<EncounterStarforged['$id']> | Array<EncounterClassic['$id']> | undefined
+  /**
      * Suggested delve site themes.
      * @pattern ^ironsworn/themes/[a-z_]+$
      */
-    themes?: DelveSiteTheme['$id'][] | undefined;
-    /**
+  themes?: Array<DelveSiteTheme['$id']> | undefined
+  /**
      * Suggested delve site domains.
      * @pattern ^ironsworn/domains/[a-z_]+$
      */
-    domains?: DelveSiteDomain['$id'][] | undefined;
-    /**
+  domains?: Array<DelveSiteDomain['$id']> | undefined
+  /**
      * Suggested Ironlands regions.
      * @pattern ^ironsworn/regions/[a-z_]+$
      */
-    regions?: IronlandsRegion['$id'][] | undefined;
+  regions?: Array<IronlandsRegion['$id']> | undefined
 }
 
 /**
@@ -3523,32 +3523,32 @@ export declare interface Suggestions {
  * @public
  */
 export declare interface TableColumnBase extends MixinLabel {
-    /**
+  /**
      * The label or header text to use for this column.
      * @localize
      */
-    label: string;
-    /**
+  label: string
+  /**
      * The ID of the {@link OracleTable} whose {@link OracleTable.table} content will be displayed in the table.
      */
-    content: OracleTable['$id'];
-    column_type: TableColumnType;
-    /**
+  content: OracleTable['$id']
+  column_type: TableColumnType
+  /**
      * The key of each {@link OracleTableRow} in the {@link OracleTable.table}, whose string value is displayed in the rendered table.
      */
-    key?: KeysWithValuesOfType<OracleTableRow, string> | undefined;
+  key?: KeysWithValuesOfType<OracleTableRow, string> | undefined
 }
 
 /**
  * @public
  */
 export declare interface TableColumnRoll extends Omit<TableColumnBase, 'key'> {
-    /**
+  /**
      * @default "Roll"
      * @localize
      */
-    label: string;
-    column_type: TableColumnType.DiceRange;
+  label: string
+  column_type: TableColumnType.DiceRange
 }
 
 /**
@@ -3556,12 +3556,12 @@ export declare interface TableColumnRoll extends Omit<TableColumnBase, 'key'> {
  * @public
  */
 export declare interface TableColumnText extends TableColumnBase {
-    column_type: TableColumnType.String;
-    /**
+  column_type: TableColumnType.String
+  /**
      * @default "Result"
      * @localize
      */
-    label: string;
+  label: string
 }
 
 /**
@@ -3569,25 +3569,25 @@ export declare interface TableColumnText extends TableColumnBase {
  * @public
  */
 export declare enum TableColumnType {
-    DiceRange = "dice_range",
-    String = "string"
+  DiceRange = 'dice_range',
+  String = 'string'
 }
 
 /**
  * The number of ticks in a single progress box.
  * @public
  */
-export declare const TICKS_PER_BOX = 4;
+export declare const TICKS_PER_BOX = 4
 
 /**
  * @public
  */
 export declare interface Title extends MixinId {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/[0-9a-z_/-]+/title$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The title of this item, which here is defined as the associated header text *exactly* as it appears on the page.
      *
      * For items that represent a single table column, this is the label that appears at the top of the column.
@@ -3597,8 +3597,8 @@ export declare interface Title extends MixinId {
      * @pattern ^[A-Z][a-z’ \(\)-]+$
      * @localize
      */
-    [LocalizableKey.Canonical]: string;
-    /**
+  [LocalizableKey.Canonical]: string
+  /**
      * The recommended title for most implementations.
      *
      * This is usually the same as the canonical title, but editorializes a bit by trimming out things like "Oracle 15" in some Ironsworn oracles (because *nobody* remembers it as "Oracle 15").
@@ -3607,8 +3607,8 @@ export declare interface Title extends MixinId {
      * @pattern ^[A-Z][a-z’ -]+$
      * @localize
      */
-    [LocalizableKey.Standard]: string;
-    /**
+  [LocalizableKey.Standard]: string
+  /**
      * The shortest title for this item that remains distinct amongst its siblings.
      *
      * Unless you're very pressed for space, most UX should use {@link Title.standard} instead.
@@ -3616,82 +3616,82 @@ export declare interface Title extends MixinId {
      * @pattern ^[A-Z][a-z -]+$
      * @localize
      */
-    [LocalizableKey.Short]: string;
+  [LocalizableKey.Short]: string
 }
 
 /**
  * @pattern ^[A-Z0-9][\w\s]+$
  * @public
  */
-export declare type TitleCaseString = string;
+export declare type TitleCaseString = string
 
 /**
  * @public
  */
 export declare interface TitleCaseTitle extends Title {
-    /**
+  /**
      * @pattern ^(?:([A-Z1-9][^\s]*|by|of|in|a|an|and|the|\((alternate version|by location|Scene Challenge)\))\s?)+$
      */
-    [LocalizableKey.Canonical]: string;
-    /**
+  [LocalizableKey.Canonical]: string
+  /**
      * @pattern ^(?:([A-Z1-9][^\s]*|by|of|in|a|an|and|the|\((alternate version|by location|Scene Challenge)\))\s?)+$
      */
-    [LocalizableKey.Standard]: string;
-    /**
+  [LocalizableKey.Standard]: string
+  /**
      * @pattern ^(?:([A-Z1-9][^\s]*|by|of|in|a|an|and|the)\s?)+$
      */
-    [LocalizableKey.Short]: string;
+  [LocalizableKey.Short]: string
 }
 
 /**
  * The number of boxes in a progress track.
  * @public
  */
-export declare const TRACK_MAX_BOXES = 10;
+export declare const TRACK_MAX_BOXES = 10
 
 /**
  * The number of ticks in a progress track.
  * @public
  */
-export declare const TRACK_MAX_TICKS: number;
+export declare const TRACK_MAX_TICKS: number
 
 /**
  * Properties common to all track types.
  * @public
  */
 export declare interface TrackBase {
-    track_type: ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic;
-    /**
+  track_type: ProgressTypeStarforged | LegacyTypeStarforged | ProgressTypeClassic | LegacyTypeClassic
+  /**
      * @minimum 0
      */
-    ticks: number;
-    /**
+  ticks: number
+  /**
      * @minimum 0
      * @maximum 10
      */
-    score: number;
+  score: number
 }
 
 /**
  * @public
  */
 export declare interface TruthClassic extends MixinTitle, MixinSource {
-    /**
+  /**
      * @pattern ^ironsworn/setting_truths/[a-z_]+$
      */
-    $id: string;
-    options: TruthOptionClassic[];
-    title: TitleCaseTitle;
+  $id: string
+  options: TruthOptionClassic[]
+  title: TitleCaseTitle
 }
 
 /**
  * @public
  */
 export declare interface TruthOptionClassic extends MixinDescription, MixinQuestStarter {
-    /**
+  /**
      * @pattern ^ironsworn/setting_truths/[a-z_]+/[1-3]$
      */
-    $id: string;
+  $id: string
 }
 
 /**
@@ -3699,15 +3699,15 @@ export declare interface TruthOptionClassic extends MixinDescription, MixinQuest
  * @public
  */
 export declare interface TruthOptionStarforged<C extends number | null = number | null, F extends number | null = number | null> extends OracleTableRow<C, F>, MixinQuestStarter, MixinDescription {
-    /**
+  /**
      * @pattern ^starforged/setting_truths/[a-z_]+/(1-33|34-67|68-100)$
      */
-    $id: string;
-    roll_template?: RollTemplate | undefined;
-    /**
+  $id: string
+  roll_template?: RollTemplate | undefined
+  /**
      * A table to be rolled when this row is selected. If this row references an external oracle, the `Oracles` property is used instead.
      */
-    subtable?: TruthOptionSubtableRowStarforged[] | undefined;
+  subtable?: TruthOptionSubtableRowStarforged[] | undefined
 }
 
 /**
@@ -3715,10 +3715,10 @@ export declare interface TruthOptionStarforged<C extends number | null = number 
  * @public
  */
 export declare interface TruthOptionSubtableRowStarforged<C extends number | null = number | null, F extends number | null = number | null> extends OracleTableRow<C, F> {
-    /**
+  /**
      * @pattern ^(starforged|ironsworn)/setting_truths/[a-z_]+/(1-33|34-67|68-100|[1-3])/[1-9][0-9]*(-[1-9][0-9]*)?$
      */
-    $id: string;
+  $id: string
 }
 
 /**
@@ -3727,22 +3727,22 @@ export declare interface TruthOptionSubtableRowStarforged<C extends number | nul
  * @public
  */
 export declare interface TruthStarforged extends MixinId, MixinSource, MixinDisplay, Partial<MixinSuggestions>, MixinTable, MixinTitle {
-    /**
+  /**
      * @pattern ^starforged/truths/[a-z_]+$
      */
-    $id: string;
-    /**
+  $id: string
+  /**
      * The 'canonical' options for this setting truth category.
      */
-    table: TruthOptionStarforged[];
-    /**
+  table: TruthOptionStarforged[]
+  /**
      * A Markdown version of the text that appears at the end of each Truth entry; it offers suggestions on the character's assets and background.
      * @markdown
      * @localize
      */
-    character: string;
-    display: Display;
-    title: TitleCaseTitle;
+  character: string
+  display: Display
+  title: TitleCaseTitle
 }
 
 /**
@@ -3750,15 +3750,15 @@ export declare interface TruthStarforged extends MixinId, MixinSource, MixinDisp
  * @public
  */
 export declare type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & {
-    length: TLength;
-};
+  length: TLength
+}
 
 /**
  * @public
  */
 export declare enum VaultZone {
-    Interior = "interior",
-    Sanctum = "sanctum"
+  Interior = 'interior',
+  Sanctum = 'sanctum'
 }
 
 /**
@@ -3771,14 +3771,14 @@ export declare interface YamlSource extends Partial<Source> {
  * @public
  */
 export declare enum Zone {
-    Access = "access",
-    Community = "community",
-    Engineering = "engineering",
-    Living = "living",
-    Medical = "medical",
-    Operations = "operations",
-    Production = "production",
-    Research = "research"
+  Access = 'access',
+  Community = 'community',
+  Engineering = 'engineering',
+  Living = 'living',
+  Medical = 'medical',
+  Operations = 'operations',
+  Production = 'production',
+  Research = 'research'
 }
 
 export { }

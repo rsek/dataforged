@@ -7,7 +7,7 @@ starforged:
       source:
         authors: [Shawn Tomkin]
         title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by-sa/4.0
+        license: https://creativecommons.org/licenses/by/4.0
         date: 2022-05-06
       description: |-
         Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
@@ -48,8 +48,12 @@ starforged:
               usage:
                 requires: *attr:Location.Planetside
               table: &derelictTypeTable
-                - [1, 25, Starship, *attr:DerelictType.Starship]
-                - [26, 100, Settlement, *attr:DerelictType.Settlement]
+                - floor: 1
+                  ceiling: 25
+                  result: Starship, *attr:DerelictType.Starship
+                - floor: 26
+                  ceiling: 100
+                  result: Settlement, *attr:DerelictType.Settlement
             orbital:
               title:
                 canonical: Orbital
@@ -109,14 +113,46 @@ starforged:
                   attributes:
                     derelict_type: [starship]
               table: &derelictZoneTable
-                - [null, null, "[⏵Access](starforged/oracles/derelicts/access)", *obj:DerelictZone.Access, display: {icon: "img/vector/derelicts/access.svg"}]
-                - [1, 5, "[⏵Community](starforged/oracles/derelicts/community)", *obj:DerelictZone.Community, display: {icon: "img/vector/derelicts/community.svg"}]
-                - [6, 30, "[⏵Engineering](starforged/oracles/derelicts/engineering)", *obj:DerelictZone.Engineering, display: {icon: "img/vector/derelicts/engineering.svg"}]
-                - [31, 55, "[⏵Living](starforged/oracles/derelicts/living)", *obj:DerelictZone.Living, display: {icon: "img/vector/derelicts/living.svg"}]
-                - [56, 65, "[⏵Medical](starforged/oracles/derelicts/medical)", *obj:DerelictZone.Medical, display: {icon: "img/vector/derelicts/medical.svg"}]
-                - [66, 85, "[⏵Operations](starforged/oracles/derelicts/operations)", *obj:DerelictZone.Operations, display: {icon: "img/vector/derelicts/operations.svg"}]
-                - [86, 90, "[⏵Production](starforged/oracles/derelicts/production)", *obj:DerelictZone.Production, display: {icon: "img/vector/derelicts/production.svg"}]
-                - [91, 100, "[⏵Research](starforged/oracles/derelicts/research)", *obj:DerelictZone.Research, display: {icon: "img/vector/derelicts/research.svg"}]
+                - floor: null
+                  ceiling: null
+                  result: "[⏵Access](starforged/oracles/derelicts/access)"
+                  display: {icon: "img/vector/derelicts/access.svg"}
+                  # game_objects: *obj:DerelictZone.Access
+                - floor: 1
+                  ceiling: 5
+                  result: "[⏵Community](starforged/oracles/derelicts/community)"
+                  display: {icon: "img/vector/derelicts/community.svg"}
+                  # game_objects: *obj:DerelictZone.Community
+                - floor: 6
+                  ceiling: 30
+                  result: "[⏵Engineering](starforged/oracles/derelicts/engineering)"
+                  display: {icon: "img/vector/derelicts/engineering.svg"}
+                  # game_objects: *obj:DerelictZone.Engineering
+                - floor: 31
+                  ceiling: 55
+                  result: "[⏵Living](starforged/oracles/derelicts/living)"
+                  display: {icon: "img/vector/derelicts/living.svg"}
+                  # game_objects: *obj:DerelictZone.Living
+                - floor: 56
+                  ceiling: 65
+                  result: "[⏵Medical](starforged/oracles/derelicts/medical)"
+                  display: {icon: "img/vector/derelicts/medical.svg"}
+                  # game_objects: *obj:DerelictZone.Medical
+                - floor: 66
+                  ceiling: 85
+                  result: "[⏵Operations](starforged/oracles/derelicts/operations)"
+                  display: {icon: "img/vector/derelicts/operations.svg"}
+                  # game_objects: *obj:DerelictZone.Operations
+                - floor: 86
+                  ceiling: 90
+                  result: "[⏵Production](starforged/oracles/derelicts/production)"
+                  display: {icon: "img/vector/derelicts/production.svg"}
+                  # game_objects: *obj:DerelictZone.Production
+                - floor: 91
+                  ceiling: 100
+                  result: "[⏵Research](starforged/oracles/derelicts/research)"
+                  display: {icon: "img/vector/derelicts/research.svg"}
+                  # game_objects: *obj:DerelictZone.Research
             settlement:
               title:
                 canonical: Settlement
@@ -160,12 +196,24 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - [1, 10, Functional]
-            - [11, 30, Limited power]
-            - [31, 60, Cold and dark]
-            - [61, 90, Damaged or breached]
-            - [91, 98, Heavily damaged]
-            - [99, 100, Impending destruction]
+            - floor: 1
+              ceiling: 10
+              result: Functional
+            - floor: 11
+              ceiling: 30
+              result: Limited power
+            - floor: 31
+              ceiling: 60
+              result: Cold and dark
+            - floor: 61
+              ceiling: 90
+              result: Damaged or breached
+            - floor: 91
+              ceiling: 98
+              result: Heavily damaged
+            - floor: 99
+              ceiling: 100
+              result: Impending destruction
         outer_first_look:
           title:
             canonical: Outer First Look
@@ -177,16 +225,36 @@ starforged:
             part_of_speech: [fragment]
             tags: [first look]
           table:
-            - [1, 15, Blocked access]
-            - [16, 30, Corpses]
-            - [31, 45, Hazardous readings]
-            - [46, 50, Mutated structure]
-            - [51, 60, Odd orientation]
-            - [61, 65, Overgrown or entangled]
-            - [66, 80, Sending a signal or message]
-            - [81, 85, Signs that others are here]
-            - [86, 95, Stripped exterior]
-            - [96, 100, Time or reality distortions]
+            - floor: 1
+              ceiling: 15
+              result: Blocked access
+            - floor: 16
+              ceiling: 30
+              result: Corpses
+            - floor: 31
+              ceiling: 45
+              result: Hazardous readings
+            - floor: 46
+              ceiling: 50
+              result: Mutated structure
+            - floor: 51
+              ceiling: 60
+              result: Odd orientation
+            - floor: 61
+              ceiling: 65
+              result: Overgrown or entangled
+            - floor: 66
+              ceiling: 80
+              result: Sending a signal or message
+            - floor: 81
+              ceiling: 85
+              result: Signs that others are here
+            - floor: 86
+              ceiling: 95
+              result: Stripped exterior
+            - floor: 96
+              ceiling: 100
+              result: Time or reality distortions
         inner_first_look:
           title:
             canonical: Inner First Look
@@ -198,35 +266,99 @@ starforged:
           usage:
             max_rolls: 2
           table:
-            - [1, 3, Abnormal gravity]
-            - [4, 6, Active bots]
-            - [7, 9, Archaic equipment]
-            - [10, 12, Automated announcements]
-            - [13, 15, Biological infestation]
-            - [16, 18, Charred surfaces]
-            - [19, 21, Claw marks]
-            - [22, 24, Cluttered with debris]
-            - [25, 27, Corroded surfaces]
-            - [28, 30, Cramped spaces]
-            - [31, 33, Creaking hull]
-            - [34, 36, Esoteric writing or symbols]
-            - [37, 39, Evidence of new inhabitants]
-            - [40, 42, Exposed wiring or conduits]
-            - [43, 45, Flashing strobe lights]
-            - [46, 48, Fluctuating power]
-            - [49, 51, Haunting visions of the dead]
-            - [52, 54, Hazardous temperature]
-            - [55, 57, Heavy steam or moisture]
-            - [58, 60, Littered with corpses]
-            - [61, 63, Nesting or feeding creatures]
-            - [64, 66, Ornate furnishings]
-            - [67, 69, Scarred by gunfire]
-            - [70, 72, Sealed against intruders]
-            - [73, 75, Signs of looting or scavenging]
-            - [76, 78, Smell of decay]
-            - [79, 81, Splattered with blood]
-            - [82, 84, Temporal distortions]
-            - [85, 87, Thick haze or smoke]
-            - [88, 90, Unstable energy surges]
-            - [91, 93, Watchful AI]
-            - [94, 100, *result:Descriptor+Focus]
+            - floor: 1
+              ceiling: 3
+              result: Abnormal gravity
+            - floor: 4
+              ceiling: 6
+              result: Active bots
+            - floor: 7
+              ceiling: 9
+              result: Archaic equipment
+            - floor: 10
+              ceiling: 12
+              result: Automated announcements
+            - floor: 13
+              ceiling: 15
+              result: Biological infestation
+            - floor: 16
+              ceiling: 18
+              result: Charred surfaces
+            - floor: 19
+              ceiling: 21
+              result: Claw marks
+            - floor: 22
+              ceiling: 24
+              result: Cluttered with debris
+            - floor: 25
+              ceiling: 27
+              result: Corroded surfaces
+            - floor: 28
+              ceiling: 30
+              result: Cramped spaces
+            - floor: 31
+              ceiling: 33
+              result: Creaking hull
+            - floor: 34
+              ceiling: 36
+              result: Esoteric writing or symbols
+            - floor: 37
+              ceiling: 39
+              result: Evidence of new inhabitants
+            - floor: 40
+              ceiling: 42
+              result: Exposed wiring or conduits
+            - floor: 43
+              ceiling: 45
+              result: Flashing strobe lights
+            - floor: 46
+              ceiling: 48
+              result: Fluctuating power
+            - floor: 49
+              ceiling: 51
+              result: Haunting visions of the dead
+            - floor: 52
+              ceiling: 54
+              result: Hazardous temperature
+            - floor: 55
+              ceiling: 57
+              result: Heavy steam or moisture
+            - floor: 58
+              ceiling: 60
+              result: Littered with corpses
+            - floor: 61
+              ceiling: 63
+              result: Nesting or feeding creatures
+            - floor: 64
+              ceiling: 66
+              result: Ornate furnishings
+            - floor: 67
+              ceiling: 69
+              result: Scarred by gunfire
+            - floor: 70
+              ceiling: 72
+              result: Sealed against intruders
+            - floor: 73
+              ceiling: 75
+              result: Signs of looting or scavenging
+            - floor: 76
+              ceiling: 78
+              result: Smell of decay
+            - floor: 79
+              ceiling: 81
+              result: Splattered with blood
+            - floor: 82
+              ceiling: 84
+              result: Temporal distortions
+            - floor: 85
+              ceiling: 87
+              result: Thick haze or smoke
+            - floor: 88
+              ceiling: 90
+              result: Unstable energy surges
+            - floor: 91
+              ceiling: 93
+              result: Watchful AI
+            - floor: 94
+              ceiling: 100
+              result: *result:Descriptor+Focus

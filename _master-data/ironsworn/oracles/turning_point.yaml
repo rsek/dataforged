@@ -1,0 +1,347 @@
+ironsworn:
+  source:
+    authors:
+      - Shawn Tomkin
+    title: Ironsworn Rulebook
+    license: https://creativecommons.org/licenses/by/4.0
+  oracle_sets:
+    turning_point:
+      title:
+        canonical: Turning Point
+      source:
+        authors:
+          - Shawn Tomkin
+        title: Ironsworn Rulebook
+        page: 188
+        license: https://creativecommons.org/licenses/by/4.0
+      tables:
+        combat_action:
+          title:
+            canonical: "Oracle 16: Combat Action"
+            standard: Combat Action
+            short: Combat Action
+          description: Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.
+          source:
+            page: 188
+          table:
+            - floor: 1
+              ceiling: 3
+              result: "Compel a surrender."
+            - floor: 4
+              ceiling: 6
+              result: "Coordinate with allies."
+            - floor: 7
+              ceiling: 9
+              result: "Gather reinforcements."
+            - floor: 10
+              ceiling: 13
+              result: "Seize something or someone."
+            - floor: 14
+              ceiling: 17
+              result: "Provoke a reckless response."
+            - floor: 18
+              ceiling: 21
+              result: "Intimidate or frighten."
+            - floor: 22
+              ceiling: 25
+              result: "Reveal a surprising truth."
+            - floor: 26
+              ceiling: 29
+              result: "Shift focus to someone or something else."
+            - floor: 30
+              ceiling: 33
+              result: "Destroy something, or render it useless."
+            - floor: 34
+              ceiling: 39
+              result: "Take a decisive action."
+            - floor: 40
+              ceiling: 45
+              result: "Reinforce defenses."
+            - floor: 46
+              ceiling: 52
+              result: "Ready an action."
+            - floor: 53
+              ceiling: 60
+              result: "Use the terrain to gain advantage."
+            - floor: 61
+              ceiling: 68
+              result: "Leverage the advantage of a weapon or ability."
+            - floor: 69
+              ceiling: 78
+              result: "Create an opportunity."
+            - floor: 79
+              ceiling: 89
+              result: "Attack with precision."
+            - floor: 90
+              ceiling: 99
+              result: "Attack with power."
+            - floor: 100
+              ceiling: 100
+              result: "Take a completely unexpected action."
+        mystic_backlash:
+          title:
+            canonical: "Oracle 17: Mystic Backlash"
+            standard: Mystic Backlash
+            short: Mystic Backlash
+          source:
+            license: https://creativecommons.org/licenses/by-nc-sa/4.0
+            page: 189
+          description: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](ironsworn/moves/fate/pay_the_price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
+          table:
+            - floor: 1
+              ceiling: 4
+              result: "Your ritual has the opposite affect."
+            - floor: 5
+              ceiling: 8
+              result: "You are sapped of strength."
+            - floor: 9
+              ceiling: 12
+              result: "Your friend, ally, or companion is adversely affected."
+            - floor: 13
+              ceiling: 16
+              result: "You destroy an important object."
+            - floor: 17
+              ceiling: 20
+              result: "You inadvertently summon a horror."
+            - floor: 21
+              ceiling: 24
+              result: "You collapse, and drift into a troubled sleep."
+            - [
+                25,
+                28,
+                "You undergo a physical torment which leaves its mark upon you.",
+              ]
+            - floor: 29
+              ceiling: 32
+              result: "You hear ghostly voices whispering of dark portents."
+            - [
+                33,
+                36,
+                "You are lost in shadow, and find yourself in another place without memory of how you got there.",
+              ]
+            - floor: 37
+              ceiling: 40
+              result: "You alert someone or something to your presence."
+            - [
+                41,
+                44,
+                "You are not yourself, and act against a friend, ally, or companion.",
+              ]
+            - [
+                45,
+                48,
+                "You affect or damage your surroundings, causing a disturbance or potential harm.",
+              ]
+            - floor: 49
+              ceiling: 52
+              result: "You waste resources."
+            - floor: 53
+              ceiling: 56
+              result: "You suffer the loss of a sense for several hours."
+            - [
+                57,
+                60,
+                "You lose your connection to magic for a day or so, and cannot perform rituals.",
+              ]
+            - [
+                61,
+                64,
+                "Your ritual affects the target in an unexpected and problematic way.",
+              ]
+            - floor: 65
+              ceiling: 68
+              result: "Your ritual reveals a surprising and troubling truth."
+            - floor: 69
+              ceiling: 72
+              result: "You are tempted by dark powers."
+            - floor: 73
+              ceiling: 76
+              result: "You see a troubling vision of your future."
+            - [
+                77,
+                80,
+                "You can't perform this ritual again until you acquire an important component.",
+              ]
+            - floor: 81
+              ceiling: 84
+              result: "You develop a strange fear or compulsion."
+            - [
+                85,
+                88,
+                "Your ritual causes creatures to exhibit strange or aggressive behavior.",
+              ]
+            - floor: 89
+              ceiling: 92
+              result: "You are tormented by an apparition from your past."
+            - floor: 93
+              ceiling: 96
+              result: "You are wracked with sudden sickness."
+            - [
+                97,
+                100,
+                "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+                *result:RollTwice.MakeItWorse
+              ]
+        major_plot_twist:
+          title:
+            canonical: "Oracle 18: Major Plot Twist"
+            standard: Major Plot Twist
+            short: Plot Twist
+          description: Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.
+          source:
+            page: 190
+          table:
+            - floor: 1
+              ceiling: 5
+              result: "It was all a diversion."
+            - floor: 6
+              ceiling: 10
+              result: "A dark secret is revealed."
+            - floor: 11
+              ceiling: 15
+              result: "A trap is sprung."
+            - floor: 16
+              ceiling: 20
+              result: "An assumption is revealed to be false."
+            - floor: 21
+              ceiling: 25
+              result: "A secret alliance is revealed."
+            - floor: 26
+              ceiling: 30
+              result: "Your actions benefit an enemy."
+            - floor: 31
+              ceiling: 35
+              result: "Someone returns unexpectedly."
+            - floor: 36
+              ceiling: 40
+              result: "A more dangerous foe is revealed."
+            - floor: 41
+              ceiling: 45
+              result: "You and an enemy share a common goal."
+            - floor: 46
+              ceiling: 50
+              result: "A true identity is revealed."
+            - floor: 51
+              ceiling: 55
+              result: "You are betrayed by someone who was trusted."
+            - floor: 56
+              ceiling: 60
+              result: "You are too late."
+            - floor: 61
+              ceiling: 65
+              result: "The true enemy is revealed."
+            - floor: 66
+              ceiling: 70
+              result: "The enemy gains new allies."
+            - floor: 71
+              ceiling: 75
+              result: "A new danger appears."
+            - floor: 76
+              ceiling: 80
+              result: "Someone or something goes missing."
+            - floor: 81
+              ceiling: 85
+              result: "The truth of a relationship is revealed."
+            - [
+                86,
+                90,
+                "Two seemingly unrelated situations are shown to be connected.",
+              ]
+            - floor: 91
+              ceiling: 95
+              result: "Unexpected powers or abilities are revealed."
+            - [
+                96,
+                100,
+                "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic.",
+                *result:RollTwice.MakeItWorse
+              ]
+      sets:
+        challenge_rank:
+          title:
+            canonical: "Oracle 19: Challenge Rank"
+            standard: Challenge Rank
+            short: Rank
+          display:
+            columns:
+              roll:
+                label: Roll
+                column_type: dice_range
+                content: ironsworn/oracles/turning_point/challenge_rank/quest
+                _tableKey: quest
+              rank:
+                label: Rank
+                content: ironsworn/oracles/turning_point/challenge_rank/quest
+                _tableKey: quest
+                column_type: string
+                key: result
+              quest:
+                label: Quest
+                content: ironsworn/oracles/turning_point/challenge_rank/quest
+                _tableKey: quest
+                column_type: string
+                key: summary
+              journey:
+                label: Journey
+                content: ironsworn/oracles/turning_point/challenge_rank/journey
+                _tableKey: journey
+                column_type: string
+                key: summary
+              foes:
+                label: Foes
+                content: ironsworn/oracles/turning_point/challenge_rank/foes
+                _tableKey: foes
+                column_type: string
+                key: summary
+          description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
+          source:
+            page: 190
+          tables:
+            quest:
+              title:
+                canonical: Quest
+              display:
+                column_of: ironsworn/oracles/turning_point/challenge_rank
+              table: &challenge_rank_table
+                  - floor: 1
+                    ceiling: 20
+                    result: Troublesome, "A challenging quest with a small number of obstacles"
+                  - floor: 21
+                    ceiling: 55
+                    result: Dangerous, "An involved quest with several tough obstacles"
+                  - floor: 56
+                    ceiling: 80
+                    result: Formidable, "A complex quest with many intimidating obstacles"
+                  - floor: 81
+                    ceiling: 93
+                    result: Extreme, "An overwhelming quest of staggering proportions"
+                  - floor: 94
+                    ceiling: 100
+                    result: Epic, "A life-defining quest of unknowable scope"
+            journey:
+              title:
+                canonical: Journey
+              display:
+                column_of: ironsworn/oracles/turning_point/challenge_rank
+              _templateTableRows:
+                rolls: *challenge_rank_table
+                content:
+                  - [Troublesome, "Traveling a moderate distance within a single region"]
+                  - [Dangerous, "Traveling a long distance within a single region, or across rough terrain"]
+                  - [Formidable, "Traveling from one region to another, or across especially challenging terrain,"]
+                  - [Extreme, "Traveling through multiple regions"]
+                  - [Epic, "Traveling from one end of the Ironlands to another, or to a separate land"]
+            foe:
+              title:
+                canonical: Foes
+                short: Foe
+              display:
+                column_of: ironsworn/oracles/turning_point/challenge_rank
+              _templateTableRows:
+                rolls: *challenge_rank_table
+                content:
+                  - [Troublesome, "Common enemies"]
+                  - [Dangerous, "Capable fighters and deadly creatures"]
+                  - [Formidable, "Exceptional fighters and mighty creatures"]
+                  - [Extreme, "Foes of overwhelming skill or power"]
+                  - [Epic, "Legendary foes of mythic power"]

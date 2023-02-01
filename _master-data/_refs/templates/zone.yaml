@@ -39,8 +39,14 @@ Derelict Zone: &template:Zone
           - [57, 64]
           - [65, 72]
           - [73, 80]
-          - [81, 85, New zone, *obj:DerelictZone]
-          - [86, 100, "New zone via [⏵Access](starforged/oracles/derelicts/access)", *obj:DerelictZone.Access]
+          - floor: 81
+            ceiling: 85
+            result: New zone
+            # game_objects: *obj:DerelictZone
+          - floor: 86
+            ceiling: 100
+            result: "New zone via [⏵Access](starforged/oracles/derelicts/access)"
+            # game_objects: *obj:DerelictZone.Access
     feature:
       _templateOracleTable: &template.info:Zone.Feature
         title:
@@ -64,7 +70,9 @@ Derelict Zone: &template:Zone
           - [65, 72]
           - [73, 80]
           - [81, 88]
-          - [89, 100, *result:Descriptor+Focus]
+          - floor: 89
+            ceiling: 100
+            result: *result:Descriptor+Focus
     peril:
       _templateOracleTable: &template.info:Zone.Peril
         title:
@@ -86,8 +94,12 @@ Derelict Zone: &template:Zone
           - [61, 70]
           - [71, 80]
           - [81, 90]
-          - [91, 98, *result:Action+Theme]
-          - [99, 100, *result:RollTwice]
+          - floor: 91
+            ceiling: 98
+            result: *result:Action+Theme
+          - floor: 99
+            ceiling: 100
+            result: *result:RollTwice
     opportunity:
       _templateOracleTable: &template.info:Zone.Opportunity
         title:

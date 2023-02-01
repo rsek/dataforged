@@ -1,0 +1,1141 @@
+ironsworn_delve:
+  oracle_sets:
+    site_name:
+      title:
+        canonical: Site Name
+      summary: Give a site a name or learn more about its characteristics and history.
+      description: |-
+        To generate a name for a site, first roll on the [Format](ironsworn_delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](ironsworn_delve/oracles/site_name/description), [Detail](ironsworn_delve/oracles/site_name/detail), [Namesake](ironsworn_delve/oracles/site_name/namesake), and [Place](ironsworn_delve/oracles/site_name/place) oracles.
+
+        If the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.
+
+        If you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the [Place](ironsworn_delve/oracles/site_name/place) oracle to roll for a domain, and let the [Description](ironsworn_delve/oracles/site_name/description) and [Detail](ironsworn_delve/oracles/site_name/detail) oracles inform your selection of a theme.
+
+        The site’s name might be known in your world, or it could just be an evocative label you use to understand its history and nature.
+
+        Even without giving a site a name, you can use the [Description](ironsworn_delve/oracles/site_name/description) and [Detail](ironsworn_delve/oracles/site_name/detail) oracles to help flesh out the theme and nature of that place.
+
+        For example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](ironsworn/moves/fate/ask_the_oracle), using the [Description](ironsworn_delve/oracles/site_name/description) and [Detail](ironsworn_delve/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”
+
+        Interpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.
+      source:
+        page: 206
+        title: "Ironsworn: Delve"
+        authors:
+          - Shawn Tomkin
+        license: https://creativecommons.org/licenses/by/4.0
+        uri: https://ironswornrpg.com
+        date: 2020-02-13
+      tables:
+        format:
+          title:
+            canonical: "Site Name: Format"
+            short: Format
+          table:
+            - floor: 1
+              ceiling: 25
+              result: "[Description] [Place]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/place/domain}}"}
+            - floor: 26
+              ceiling: 50
+              result: "[Place] of [Detail]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/detail}}"}
+            - floor: 51
+              ceiling: 70
+              result: "[Place] of [Description] [Detail]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/detail}}"}
+            - floor: 71
+              ceiling: 80
+              result: "[Place] of [Namesake's] [Detail]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}'s {{roll:ironsworn_delve/oracles/site_name/detail}}"}
+            - floor: 81
+              ceiling: 85
+              result: "[Namesake's] [Place]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/namesake}}'s {{roll:ironsworn_delve/oracles/site_name/place/domain}}"}
+            - floor: 86
+              ceiling: 95
+              result: "[Description] [Place] of [Namesake]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}"}
+            - floor: 96
+              ceiling: 100
+              result: "[Place] of [Namesake]"
+              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}"}
+        description:
+          title:
+            canonical: "Site Name: Description"
+            short: Description
+          source:
+            page: 207
+            title: "Ironsworn: Delve"
+            authors:
+              - Shawn Tomkin
+            license: https://creativecommons.org/licenses/by/4.0
+            uri: https://ironswornrpg.com
+            date: 2020-02-13
+          table:
+            - floor: 1
+              ceiling: 2
+              result: Deep
+            - floor: 3
+              ceiling: 4
+              result: Tainted
+            - floor: 5
+              ceiling: 6
+              result: Grey
+            - floor: 7
+              ceiling: 8
+              result: Forgotten
+            - floor: 9
+              ceiling: 10
+              result: Flooded
+            - floor: 11
+              ceiling: 12
+              result: Forbidden
+            - floor: 13
+              ceiling: 14
+              result: Barren
+            - floor: 15
+              ceiling: 16
+              result: Lost
+            - floor: 17
+              ceiling: 18
+              result: Cursed
+            - floor: 19
+              ceiling: 20
+              result: Fell
+            - floor: 21
+              ceiling: 22
+              result: Sunken
+            - floor: 23
+              ceiling: 24
+              result: Nightmare
+            - floor: 25
+              ceiling: 26
+              result: Infernal
+            - floor: 27
+              ceiling: 28
+              result: Dark
+            - floor: 29
+              ceiling: 30
+              result: Bloodstained
+            - floor: 31
+              ceiling: 32
+              result: Haunted
+            - floor: 33
+              ceiling: 34
+              result: White
+            - floor: 35
+              ceiling: 36
+              result: Shrouded
+            - floor: 37
+              ceiling: 38
+              result: Wasted
+            - floor: 39
+              ceiling: 40
+              result: Grim
+            - floor: 41
+              ceiling: 42
+              result: Endless
+            - floor: 43
+              ceiling: 44
+              result: Crumbling
+            - floor: 45
+              ceiling: 46
+              result: Undying
+            - floor: 47
+              ceiling: 48
+              result: Bloodied
+            - floor: 49
+              ceiling: 50
+              result: Forsaken
+            - floor: 51
+              ceiling: 52
+              result: Silent
+            - floor: 53
+              ceiling: 54
+              result: Blighted
+            - floor: 55
+              ceiling: 56
+              result: Iron
+            - floor: 57
+              ceiling: 58
+              result: Frozen
+            - floor: 59
+              ceiling: 60
+              result: Abyssal
+            - floor: 61
+              ceiling: 62
+              result: Crimson
+            - floor: 63
+              ceiling: 64
+              result: Silver
+            - floor: 65
+              ceiling: 66
+              result: Desecrated
+            - floor: 67
+              ceiling: 68
+              result: Ashen
+            - floor: 69
+              ceiling: 70
+              result: Elder
+            - floor: 71
+              ceiling: 72
+              result: Scorched
+            - floor: 73
+              ceiling: 74
+              result: Unknown
+            - floor: 75
+              ceiling: 76
+              result: Scarred
+            - floor: 77
+              ceiling: 78
+              result: Broken
+            - floor: 79
+              ceiling: 80
+              result: Chaotic
+            - floor: 81
+              ceiling: 82
+              result: Black
+            - floor: 83
+              ceiling: 84
+              result: Hidden
+            - floor: 85
+              ceiling: 86
+              result: Sundered
+            - floor: 87
+              ceiling: 88
+              result: Shattered
+            - floor: 89
+              ceiling: 90
+              result: Dreaded
+            - floor: 91
+              ceiling: 92
+              result: Secret
+            - floor: 93
+              ceiling: 94
+              result: High
+            - floor: 95
+              ceiling: 96
+              result: Sacred
+            - floor: 97
+              ceiling: 98
+              result: Fallen
+            - floor: 99
+              ceiling: 100
+              result: Ruined
+        detail:
+          title:
+            canonical: "Site Name: Detail"
+            short: Detail
+          source:
+            page: 208
+            title: "Ironsworn: Delve"
+            authors:
+              - Shawn Tomkin
+            license: https://creativecommons.org/licenses/by/4.0
+            uri: https://ironswornrpg.com
+            date: 2020-02-13
+          table:
+            - floor: 1
+              ceiling: 2
+              result: Blight
+            - floor: 3
+              ceiling: 4
+              result: Strife
+            - floor: 5
+              ceiling: 6
+              result: Nightfall
+            - floor: 7
+              ceiling: 8
+              result: Fury
+            - floor: 9
+              ceiling: 10
+              result: Terror
+            - floor: 11
+              ceiling: 12
+              result: Truth
+            - floor: 13
+              ceiling: 14
+              result: Spring
+            - floor: 15
+              ceiling: 16
+              result: Sanctuary
+            - floor: 17
+              ceiling: 18
+              result: Bone
+            - floor: 19
+              ceiling: 20
+              result: Specters
+            - floor: 21
+              ceiling: 22
+              result: Daybreak
+            - floor: 23
+              ceiling: 24
+              result: Doom
+            - floor: 25
+              ceiling: 26
+              result: Treachery
+            - floor: 27
+              ceiling: 28
+              result: Blood
+            - floor: 29
+              ceiling: 30
+              result: War
+            - floor: 31
+              ceiling: 32
+              result: Torment
+            - floor: 33
+              ceiling: 34
+              result: Iron
+            - floor: 35
+              ceiling: 36
+              result: Silence
+            - floor: 37
+              ceiling: 38
+              result: Mist
+            - floor: 39
+              ceiling: 40
+              result: Isolation
+            - floor: 41
+              ceiling: 42
+              result: Runes
+            - floor: 43
+              ceiling: 44
+              result: Rot
+            - floor: 45
+              ceiling: 46
+              result: Corruption
+            - floor: 47
+              ceiling: 48
+              result: Prophecy
+            - floor: 49
+              ceiling: 50
+              result: Fate
+            - floor: 51
+              ceiling: 52
+              result: Twilight
+            - floor: 53
+              ceiling: 54
+              result: Power
+            - floor: 55
+              ceiling: 56
+              result: Darkness
+            - floor: 57
+              ceiling: 58
+              result: Gloom
+            - floor: 59
+              ceiling: 60
+              result: Storms
+            - floor: 61
+              ceiling: 62
+              result: Hope
+            - floor: 63
+              ceiling: 64
+              result: Lament
+            - floor: 65
+              ceiling: 66
+              result: Frost
+            - floor: 67
+              ceiling: 68
+              result: Souls
+            - floor: 69
+              ceiling: 70
+              result: Winter
+            - floor: 71
+              ceiling: 72
+              result: Sadness
+            - floor: 73
+              ceiling: 74
+              result: Desolation
+            - floor: 75
+              ceiling: 76
+              result: Bane
+            - floor: 77
+              ceiling: 78
+              result: Lies
+            - floor: 79
+              ceiling: 80
+              result: Ash
+            - floor: 81
+              ceiling: 82
+              result: Banishment
+            - floor: 83
+              ceiling: 84
+              result: Shadow
+            - floor: 85
+              ceiling: 86
+              result: Madness
+            - floor: 87
+              ceiling: 88
+              result: Stone
+            - floor: 89
+              ceiling: 90
+              result: Secrets
+            - floor: 91
+              ceiling: 92
+              result: Despair
+            - floor: 93
+              ceiling: 94
+              result: Blades
+            - floor: 95
+              ceiling: 96
+              result: Dread
+            - floor: 97
+              ceiling: 98
+              result: Light
+            - floor: 99
+              ceiling: 100
+              result: Wrath
+        namesake:
+          title:
+            canonical: "Site Name: Namesake"
+            short: Namesake
+          description: |-
+            You may also use your preferred name randomizer to generate a Namesake for your site.
+
+            If you want to add details for the Namesake, use the [Character oracles](ironsworn/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
+          source:
+            page: 209
+            title: "Ironsworn: Delve"
+            authors:
+              - Shawn Tomkin
+            license: https://creativecommons.org/licenses/by/4.0
+            uri: https://ironswornrpg.com
+            date: 2020-02-13
+          table:
+            - floor: 1
+              ceiling: 2
+              result: Breckon
+            - floor: 3
+              ceiling: 4
+              result: Issara
+            - floor: 5
+              ceiling: 6
+              result: Milenna
+            - floor: 7
+              ceiling: 8
+              result: Thorval
+            - floor: 9
+              ceiling: 10
+              result: Khulan
+            - floor: 11
+              ceiling: 12
+              result: Aurvang
+            - floor: 13
+              ceiling: 14
+              result: Kalida
+            - floor: 15
+              ceiling: 16
+              result: Keeara
+            - floor: 17
+              ceiling: 18
+              result: Andor
+            - floor: 19
+              ceiling: 20
+              result: Zakaria
+            - floor: 21
+              ceiling: 22
+              result: Willa
+            - floor: 23
+              ceiling: 24
+              result: Etana
+            - floor: 25
+              ceiling: 26
+              result: Valgard
+            - floor: 27
+              ceiling: 28
+              result: Kenrick
+            - floor: 29
+              ceiling: 30
+              result: Wyland
+            - floor: 31
+              ceiling: 32
+              result: Sidura
+            - floor: 33
+              ceiling: 34
+              result: Svala
+            - floor: 35
+              ceiling: 36
+              result: Kajir
+            - floor: 37
+              ceiling: 38
+              result: Saiven
+            - floor: 39
+              ceiling: 40
+              result: Callwen
+            - floor: 41
+              ceiling: 42
+              result: Zhan
+            - floor: 43
+              ceiling: 44
+              result: Solana
+            - floor: 45
+              ceiling: 46
+              result: Ildar
+            - floor: 47
+              ceiling: 48
+              result: Keelan
+            - floor: 49
+              ceiling: 50
+              result: Thrain
+            - floor: 51
+              ceiling: 52
+              result: Kynan
+            - floor: 53
+              ceiling: 54
+              result: Jadina
+            - floor: 55
+              ceiling: 56
+              result: Radek
+            - floor: 57
+              ceiling: 58
+              result: Wulan
+            - floor: 59
+              ceiling: 60
+              result: Garion
+            - floor: 61
+              ceiling: 62
+              result: Eysa
+            - floor: 63
+              ceiling: 64
+              result: Kolor
+            - floor: 65
+              ceiling: 66
+              result: Katarra
+            - floor: 67
+              ceiling: 68
+              result: Dain
+            - floor: 69
+              ceiling: 70
+              result: Farina
+            - floor: 71
+              ceiling: 72
+              result: Yala
+            - floor: 73
+              ceiling: 74
+              result: Kodroth
+            - floor: 75
+              ceiling: 76
+              result: Morien
+            - floor: 77
+              ceiling: 78
+              result: Akida
+            - floor: 79
+              ceiling: 80
+              result: Haldorr
+            - floor: 81
+              ceiling: 82
+              result: Nyrad
+            - floor: 83
+              ceiling: 84
+              result: Edda
+            - floor: 85
+              ceiling: 86
+              result: Jorund
+            - floor: 87
+              ceiling: 88
+              result: Morraine
+            - floor: 89
+              ceiling: 90
+              result: Lindar
+            - floor: 91
+              ceiling: 92
+              result: Sithra
+            - floor: 93
+              ceiling: 94
+              result: Torgan
+            - floor: 95
+              ceiling: 96
+              result: Arnorr
+            - floor: 97
+              ceiling: 98
+              result: Thyri
+            - floor: 99
+              ceiling: 100
+              result: Erisia
+      sets:
+        place:
+          title:
+            canonical: "Site Name: Place"
+            short: Place
+          source:
+            page: 210
+            title: "Ironsworn: Delve"
+            authors:
+              - Shawn Tomkin
+            license: https://creativecommons.org/licenses/by/4.0
+            uri: https://ironswornrpg.com
+            date: 2020-02-13
+          tables:
+            domain:
+              title:
+                canonical: "Site Name: Place"
+                standard: Place
+                short: Place
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 6
+                  result: Barrow
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/barrow"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/barrow"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/barrow"
+                - floor: 7
+                  ceiling: 18
+                  result: Cavern
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/cavern"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/cavern"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/cavern"
+                - floor: 19
+                  ceiling: 28
+                  result: Frozen Cavern
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/frozen_cavern"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/frozen_cavern"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/frozen_cavern"
+                - floor: 29
+                  ceiling: 32
+                  result: Icereach
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/icereach"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/icereach"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/icereach"
+                - floor: 33
+                  ceiling: 38
+                  result: Mine
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/mine"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/mine"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/mine"
+                - floor: 39
+                  ceiling: 48
+                  result: Pass
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/pass"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/pass"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/pass"
+                - floor: 49
+                  ceiling: 58
+                  result: Ruin
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/ruin"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/ruin"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/ruin"
+                - floor: 59
+                  ceiling: 68
+                  result: Sea Cave
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/sea_cave"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/sea_cave"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/sea_cave"
+                - floor: 69
+                  ceiling: 78
+                  result: Shadowfen
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/shadowfen"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/shadowfen"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/shadowfen"
+                - floor: 79
+                  ceiling: 83
+                  result: Stronghold
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/stronghold"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/stronghold"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/stronghold"
+                - floor: 84
+                  ceiling: 95
+                  result: Tanglewood
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/tanglewood"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/tanglewood"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/tanglewood"
+                - floor: 96
+                  ceiling: 100
+                  result: Underkeep
+                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/underkeep"]
+                  suggestions:
+                    site_domains: ["ironsworn_delve/site_domains/underkeep"]
+                  embed_table: "ironsworn_delve/oracles/site_name/place/underkeep"
+            barrow:
+              title:
+                canonical: Barrow
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/1-6
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 16
+                  result: Sepulcher
+                - floor: 50
+                  ceiling: 66
+                  result: Mound
+                - floor: 17
+                  ceiling: 32
+                  result: Grave
+                - floor: 67
+                  ceiling: 83
+                  result: Tomb
+                - floor: 33
+                  ceiling: 49
+                  result: Crypt
+                - floor: 84
+                  ceiling: 100
+                  result: Barrow
+            cavern:
+              title:
+                canonical: Cavern
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/7-18
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Abyss
+                - floor: 11
+                  ceiling: 20
+                  result: Caverns
+                - floor: 21
+                  ceiling: 30
+                  result: Caves
+                - floor: 31
+                  ceiling: 40
+                  result: Chasm
+                - floor: 41
+                  ceiling: 50
+                  result: Depths
+                - floor: 51
+                  ceiling: 60
+                  result: Hollow
+                - floor: 61
+                  ceiling: 70
+                  result: Lair
+                - floor: 71
+                  ceiling: 80
+                  result: Rift
+                - floor: 81
+                  ceiling: 90
+                  result: Tunnels
+                - floor: 91
+                  ceiling: 100
+                  result: Warren
+            frozen_cavern:
+              title:
+                canonical: Frozen Cavern
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/19-28
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Abyss
+                - floor: 11
+                  ceiling: 20
+                  result: Caverns
+                - floor: 21
+                  ceiling: 30
+                  result: Caves
+                - floor: 31
+                  ceiling: 40
+                  result: Chasm
+                - floor: 41
+                  ceiling: 50
+                  result: Depths
+                - floor: 51
+                  ceiling: 60
+                  result: Hollow
+                - floor: 61
+                  ceiling: 70
+                  result: Lair
+                - floor: 71
+                  ceiling: 80
+                  result: Rift
+                - floor: 81
+                  ceiling: 90
+                  result: Tunnels
+                - floor: 91
+                  ceiling: 100
+                  result: Warren
+            icereach:
+              title:
+                canonical: Icereach
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/29-32
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 16
+                  result: Icemark
+                - floor: 17
+                  ceiling: 32
+                  result: Wintertide
+                - floor: 33
+                  ceiling: 49
+                  result: Reach
+                - floor: 50
+                  ceiling: 66
+                  result: Waste
+                - floor: 67
+                  ceiling: 83
+                  result: Expanse
+                - floor: 84
+                  ceiling: 100
+                  result: Barrens
+            mine:
+              title:
+                canonical: Mine
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/33-38
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 16
+                  result: Lode
+                - floor: 17
+                  ceiling: 32
+                  result: Dig
+                - floor: 33
+                  ceiling: 49
+                  result: Forge
+                - floor: 50
+                  ceiling: 66
+                  result: Mine
+                - floor: 67
+                  ceiling: 83
+                  result: Tunnels
+                - floor: 84
+                  ceiling: 100
+                  result: Cut
+            pass:
+              title:
+                canonical: Pass
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/39-48
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 210
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Cliffs
+                - floor: 11
+                  ceiling: 20
+                  result: Crag
+                - floor: 21
+                  ceiling: 30
+                  result: Cut
+                - floor: 31
+                  ceiling: 40
+                  result: Gap
+                - floor: 41
+                  ceiling: 50
+                  result: Gorge
+                - floor: 51
+                  ceiling: 60
+                  result: Heights
+                - floor: 61
+                  ceiling: 70
+                  result: Highlands
+                - floor: 71
+                  ceiling: 80
+                  result: Pass
+                - floor: 81
+                  ceiling: 90
+                  result: Reach
+                - floor: 91
+                  ceiling: 100
+                  result: Ridge
+            ruin:
+              title:
+                canonical: Ruin
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/49-58
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 211
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Citadel
+                - floor: 11
+                  ceiling: 20
+                  result: Enclave
+                - floor: 21
+                  ceiling: 30
+                  result: Fortress
+                - floor: 31
+                  ceiling: 40
+                  result: Hall
+                - floor: 41
+                  ceiling: 50
+                  result: Keep
+                - floor: 51
+                  ceiling: 60
+                  result: Sanctuary
+                - floor: 61
+                  ceiling: 70
+                  result: Sanctum
+                - floor: 71
+                  ceiling: 80
+                  result: Spire
+                - floor: 81
+                  ceiling: 90
+                  result: Temple
+                - floor: 91
+                  ceiling: 100
+                  result: Tower
+            sea_cave:
+              title:
+                canonical: Sea Cave
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/59-68
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 211
+              table:
+                - floor: 1
+                  ceiling: 16
+                  result: Caves
+                - floor: 17
+                  ceiling: 32
+                  result: Channel
+                - floor: 33
+                  ceiling: 49
+                  result: Cove
+                - floor: 50
+                  ceiling: 66
+                  result: Hollow
+                - floor: 67
+                  ceiling: 83
+                  result: Pools
+                - floor: 84
+                  ceiling: 100
+                  result: Gouge
+            shadowfen:
+              title:
+                canonical: Shadowfen
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/69-78
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 211
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Bog
+                - floor: 11
+                  ceiling: 20
+                  result: Fen
+                - floor: 21
+                  ceiling: 30
+                  result: Lowland
+                - floor: 31
+                  ceiling: 40
+                  result: Marsh
+                - floor: 41
+                  ceiling: 50
+                  result: Mire
+                - floor: 51
+                  ceiling: 60
+                  result: Morass
+                - floor: 61
+                  ceiling: 70
+                  result: Quagmire
+                - floor: 71
+                  ceiling: 80
+                  result: Floodlands
+                - floor: 81
+                  ceiling: 90
+                  result: Slough
+                - floor: 91
+                  ceiling: 100
+                  result: Wetlands
+            stronghold:
+              title:
+                canonical: Stronghold
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/79-83
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 211
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Bastion
+                - floor: 11
+                  ceiling: 20
+                  result: Citadel
+                - floor: 21
+                  ceiling: 30
+                  result: Fortress
+                - floor: 31
+                  ceiling: 40
+                  result: Garrison
+                - floor: 41
+                  ceiling: 50
+                  result: Haven
+                - floor: 51
+                  ceiling: 60
+                  result: Keep
+                - floor: 61
+                  ceiling: 70
+                  result: Outpost
+                - floor: 71
+                  ceiling: 80
+                  result: Refuge
+                - floor: 81
+                  ceiling: 90
+                  result: Sanctuary
+                - floor: 91
+                  ceiling: 100
+                  result: Watch
+            tanglewood:
+              title:
+                canonical: Tanglewood
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/84-95
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 211
+              table:
+                - floor: 1
+                  ceiling: 11
+                  result: Weald
+                - floor: 12
+                  ceiling: 23
+                  result: Tangle
+                - floor: 24
+                  ceiling: 35
+                  result: Bramble
+                - floor: 36
+                  ceiling: 48
+                  result: Briar
+                - floor: 49
+                  ceiling: 61
+                  result: Thicket
+                - floor: 62
+                  ceiling: 74
+                  result: Forest
+                - floor: 75
+                  ceiling: 87
+                  result: Wilds
+                - floor: 88
+                  ceiling: 100
+                  result: Wood
+            underkeep:
+              title:
+                canonical: Underkeep
+              display:
+                embed_in: ironsworn_delve/oracles/site_name/place/domain/96-100
+              source:
+                title: "Ironsworn: Delve"
+                authors:
+                  - Shawn Tomkin
+                license: https://creativecommons.org/licenses/by/4.0
+                uri: https://ironswornrpg.com
+                date: 2020-02-13
+                page: 211
+              table:
+                - floor: 1
+                  ceiling: 10
+                  result: Catacomb
+                - floor: 11
+                  ceiling: 20
+                  result: Chambers
+                - floor: 21
+                  ceiling: 30
+                  result: Den
+                - floor: 31
+                  ceiling: 40
+                  result: Hall
+                - floor: 41
+                  ceiling: 50
+                  result: Labyrinth
+                - floor: 51
+                  ceiling: 60
+                  result: Maze
+                - floor: 61
+                  ceiling: 70
+                  result: Pit
+                - floor: 71
+                  ceiling: 80
+                  result: Sanctum
+                - floor: 81
+                  ceiling: 90
+                  result: Underkeep
+                - floor: 91
+                  ceiling: 100
+                  result: Vault

@@ -7,7 +7,7 @@ starforged:
       source:
         authors: [Shawn Tomkin]
         title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by-sa/4.0
+        license: https://creativecommons.org/licenses/by/4.0
         date: 2022-05-06
       sets:
         mission:
@@ -61,38 +61,114 @@ starforged:
                   attributes:
                     region: [terminus]
               table: &table:Mission
-                - [1, 3, Blockade a location, suggestions: [*roll:Place]]
-                - [4, 6, Break a blockade]
-                - [7, 9, Collect a resource, suggestions: [*roll:Object]]
-                - [10, 11, Command others]
-                - [12, 14, Conduct diplomacy]
-                - [15, 17, Conduct espionage]
-                - [18, 20, Conduct piracy]
-                - [21, 23, Conduct research]
-                - [24, 26, Defend against an attack]
-                - [27, 29, Deliver messages or data]
-                - [30, 32, Establish a settlement]
-                - [33, 35, Evacuate a location, suggestions: [*obj:Settlement]]
-                - [36, 37, Explore a region]
-                - [38, 39, Hold prisoners]
-                - [40, 42, Hunt down another ship, suggestions: [*obj:Starship]]
-                - [43, 45, Launch an attack]
-                - [46, 48, Patrol an area]
-                - [49, 51, Provide medical aid]
-                - [52, 54, Provide repairs]
-                - [55, 57, Provide shelter]
-                - [58, 59, Quarantine a danger, suggestions: [*roll:Event]]
-                - [60, 62, Raid a settlement,suggestions: [*obj:Settlement]]
-                - [63, 65, Resupply a settlement,suggestions: [*obj:Settlement]]
-                - [66, 68, Retrieve salvage]
-                - [69, 71, Search and rescue]
-                - [72, 74, Smuggle cargo, suggestions: [*roll:Object]]
-                - [75, 77, Survey a site, suggestions: [*roll:Place]]
-                - [78, 79, Test a technology, suggestions: [*roll:Object]]
-                - [80, 82, Transport cargo, suggestions: [*roll:Object]]
-                - [83, 85, Transport passengers, suggestions: [*obj:Npc]]
-                - [86, 90, *result:Action+Theme]
-                - [91, 100, *result:RollTwice]
+                - floor: 1
+                  ceiling: 3
+                  result: Blockade a location
+                  suggestions: [*roll:Place]
+                - floor: 4
+                  ceiling: 6
+                  result: Break a blockade
+                - floor: 7
+                  ceiling: 9
+                  result: Collect a resource
+                  suggestions: [*roll:Object]
+                - floor: 10
+                  ceiling: 11
+                  result: Command others
+                - floor: 12
+                  ceiling: 14
+                  result: Conduct diplomacy
+                - floor: 15
+                  ceiling: 17
+                  result: Conduct espionage
+                - floor: 18
+                  ceiling: 20
+                  result: Conduct piracy
+                - floor: 21
+                  ceiling: 23
+                  result: Conduct research
+                - floor: 24
+                  ceiling: 26
+                  result: Defend against an attack
+                - floor: 27
+                  ceiling: 29
+                  result: Deliver messages or data
+                - floor: 30
+                  ceiling: 32
+                  result: Establish a settlement
+                - floor: 33
+                  ceiling: 35
+                  result: Evacuate a location
+                  # suggestions: [*obj:Settlement]
+                - floor: 36
+                  ceiling: 37
+                  result: Explore a region
+                - floor: 38
+                  ceiling: 39
+                  result: Hold prisoners
+                - floor: 40
+                  ceiling: 42
+                  result: Hunt down another ship
+                  # suggestions: [*obj:Starship]
+                - floor: 43
+                  ceiling: 45
+                  result: Launch an attack
+                - floor: 46
+                  ceiling: 48
+                  result: Patrol an area
+                - floor: 49
+                  ceiling: 51
+                  result: Provide medical aid
+                - floor: 52
+                  ceiling: 54
+                  result: Provide repairs
+                - floor: 55
+                  ceiling: 57
+                  result: Provide shelter
+                - floor: 58
+                  ceiling: 59
+                  result: Quarantine a danger
+                  # suggestions: [*roll:Event]
+                - floor: 60
+                  ceiling: 62
+                  result: Raid a settlement
+                  # suggestions: [*obj:Settlement]
+                - floor: 63
+                  ceiling: 65
+                  result: Resupply a settlement
+                  # suggestions: [*obj:Settlement]
+                - floor: 66
+                  ceiling: 68
+                  result: Retrieve salvage
+                - floor: 69
+                  ceiling: 71
+                  result: Search and rescue
+                - floor: 72
+                  ceiling: 74
+                  result: Smuggle cargo
+                  # suggestions: [*roll:Object]
+                - floor: 75
+                  ceiling: 77
+                  result: Survey a site
+                  # suggestions: [*roll:Place]
+                - floor: 78
+                  ceiling: 79
+                  result: Test a technology
+                  # suggestions: [*roll:Object]
+                - floor: 80
+                  ceiling: 82
+                  result: Transport cargo
+                  # suggestions: [*roll:Object]
+                - floor: 83
+                  ceiling: 85
+                  result: Transport passengers
+                  # suggestions: [*obj:Npc]
+                - floor: 86
+                  ceiling: 90
+                  result: *result:Action+Theme
+                - floor: 91
+                  ceiling: 100
+                  result: *result:RollTwice
             outlands:
               title:
                 canonical: Outlands
@@ -205,29 +281,117 @@ starforged:
                 column_type: string
                 key: summary
           table:
-            - [1, 2, Carrier, Launches fighters, set_attributes: {starship_type: [ carrier]}]
-            - [3, 6, Corvette, Light attack ship, set_attributes: {starship_type: [corvette]}]
-            - [7, 11, Courier, Fast transport, set_attributes: {starship_type: [courier]}]
-            - [12, 14, Cruiser, Medium attack ship, set_attributes: {starship_type: [cruiser]}]
-            - [15, 16, Dreadnought, Heavy attack ship, set_attributes: {starship_type: [dreadnought]}]
-            - [17, 19, Escape pod, Survival craft, set_attributes: {starship_type: [escape]}]
-            - [20, 22, Foundry, Mobile construction platform, set_attributes: {starship_type: [foundry]}]
-            - [23, 27, Harvester, Fuel or energy excavator, set_attributes: {starship_type: [harvester]}]
-            - [28, 33, Hauler, Heavy transport, set_attributes: {starship_type: [hauler]}]
-            - [34, 36, Hunter, Stealthy attack ship, set_attributes: {starship_type: [hunter]}]
-            - [37, 38, Ironhome, Habitat, set_attributes: {starship_type: [ironhome]}]
-            - [39, 42, Mender, Utility or repair, set_attributes: {starship_type: [mender]}]
-            - [43, 47, Outbounder, Remote survey or research, set_attributes: {starship_type: [outbounder]}]
-            - [48, 50, Pennant, Command ship, set_attributes: {starship_type: [pennant]}]
-            - [51, 56, Prospector, Mineral excavator, set_attributes: {starship_type: [prospector]}]
-            - [57, 61, Reclaimer, Salvage or rescue, set_attributes: {starship_type: [reclaimer]}]
-            - [62, 64, Shuttle, Short-range transport, set_attributes: {starship_type: [shuttle]}]
-            - [65, 67, Snub fighter, Small attack craft, set_attributes: {starship_type: [snub_fighter]}]
-            - [68, 82, Multipurpose, "[⏵Starship Mission](starforged/oracles/starships/mission)",
-                oracle_tables: [starforged/oracles/starships/mission], set_attributes: {starship_type: [multipurpose]}]
-            - [83, 84, Unusual or unknown, summary: null]
-            - [85, 94, "[⏵Fleet](starforged/oracles/starships/fleet)", summary: null, oracle_rolls: [starforged/oracles/starships/fleet]]
-            - [95, 100, Ships in conflict (roll twice), summary: null, oracle_rolls: [starforged/oracles/starships/type], *obj:Starship]
+            - floor: 1
+              ceiling: 2
+              result: Carrier
+              summary: Launches fighters
+              # set_attributes: {starship_type: [ carrier]}
+            - floor: 3
+              ceiling: 6
+              result: Corvette
+              summary: Light attack ship
+              # set_attributes: {starship_type: [corvette]}
+            - floor: 7
+              ceiling: 11
+              result: Courier
+              summary: Fast transport
+              # set_attributes: {starship_type: [courier]}
+            - floor: 12
+              ceiling: 14
+              result: Cruiser
+              summary: Medium attack ship
+              # set_attributes: {starship_type: [cruiser]}
+            - floor: 15
+              ceiling: 16
+              result: Dreadnought
+              summary: Heavy attack ship
+              # set_attributes: {starship_type: [dreadnought]}
+            - floor: 17
+              ceiling: 19
+              result: Escape pod
+              summary: Survival craft
+              # set_attributes: {starship_type: [escape]}
+            - floor: 20
+              ceiling: 22
+              result: Foundry
+              summary: Mobile construction platform
+              # set_attributes: {starship_type: [foundry]}
+            - floor: 23
+              ceiling: 27
+              result: Harvester
+              summary: Fuel or energy excavator
+              # set_attributes: {starship_type: [harvester]}
+            - floor: 28
+              ceiling: 33
+              result: Hauler
+              summary: Heavy transport
+              # set_attributes: {starship_type: [hauler]}
+            - floor: 34
+              ceiling: 36
+              result: Hunter
+              summary: Stealthy attack ship
+              # set_attributes: {starship_type: [hunter]}
+            - floor: 37
+              ceiling: 38
+              result: Ironhome
+              summary: Habitat
+              # set_attributes: {starship_type: [ironhome]}
+            - floor: 39
+              ceiling: 42
+              result: Mender
+              summary: Utility or repair
+              # set_attributes: {starship_type: [mender]}
+            - floor: 43
+              ceiling: 47
+              result: Outbounder
+              summary: Remote survey or research
+              # set_attributes: {starship_type: [outbounder]}
+            - floor: 48
+              ceiling: 50
+              result: Pennant
+              summary: Command ship
+              # set_attributes: {starship_type: [pennant]}
+            - floor: 51
+              ceiling: 56
+              result: Prospector
+              summary: Mineral excavator
+              # set_attributes: {starship_type: [prospector]}
+            - floor: 57
+              ceiling: 61
+              result: Reclaimer
+              summary: Salvage or rescue
+              # set_attributes: {starship_type: [reclaimer]}
+            - floor: 62
+              ceiling: 64
+              result: Shuttle
+              summary: Short-range transport
+              # set_attributes: {starship_type: [shuttle]}
+            - floor: 65
+              ceiling: 67
+              result: Snub fighter
+              summary: Small attack craft
+              # set_attributes: {starship_type: [snub_fighter]}
+            - floor: 68
+              ceiling: 82
+              result: Multipurpose
+              summary: "[⏵Starship Mission(starforged/oracles/starships/mission)"
+              oracle_rolls: [starforged/oracles/starships/mission]
+                # set_attributes: {starship_type: [multipurpose]}]
+            - floor: 83
+              ceiling: 84
+              result: Unusual or unknown
+              summary: null
+            - floor: 85
+              ceiling: 94
+              result: "[⏵Fleet](starforged/oracles/starships/fleet)"
+              summary: null
+              oracle_rolls: [starforged/oracles/starships/fleet]
+            - floor: 95
+              ceiling: 100
+              result: Ships in conflict (roll twice)
+              summary: null
+              oracle_rolls: [starforged/oracles/starships/type]
+              # *obj:Starship
             # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
         fleet:
           title:
@@ -239,15 +403,31 @@ starforged:
           usage:
             initial: true
           table:
-            - [1, 10, Battle fleet]
-            - [11, 25, Pirate wing]
-            - [26, 35, Raider horde]
-            - [36, 50, Salvager hive]
-            - [51, 60, Settler caravan]
-            - [61, 70, Trade caravan]
-            - [71, 90, Transport and escorts]
-            - [91, 100, "[⏵Starship Mission](starforged/oracles/starships/mission)",
-                oracle_tables: [starforged/oracles/starships/mission]]
+            - floor: 1
+              ceiling: 10
+              result: Battle fleet
+            - floor: 11
+              ceiling: 25
+              result: Pirate wing
+            - floor: 26
+              ceiling: 35
+              result: Raider horde
+            - floor: 36
+              ceiling: 50
+              result: Salvager hive
+            - floor: 51
+              ceiling: 60
+              result: Settler caravan
+            - floor: 61
+              ceiling: 70
+              result: Trade caravan
+            - floor: 71
+              ceiling: 90
+              result: Transport and escorts
+            - floor: 91
+              ceiling: 100
+              result: "[⏵Starship Mission(starforged/oracles/starships/mission)"
+              oracle_rolls: [starforged/oracles/starships/mission]
         initial_contact:
           title:
             canonical: Initial Contact
@@ -259,18 +439,43 @@ starforged:
             part_of_speech: [fragment]
             tags: [relationship]
           table:
-            - [1, 3, Familiar]
-            - [4, 15, Friendly]
-            - [16, 25, Neutral / automated]
-            - [26, 35, Wary]
-            - [36, 40, Dismissive]
-            - [41, 50, Uncooperative]
-            - [51, 65, Hostile]
-            - [66, 80, Asking for help]
-            - [81, 85, In battle]
-            - [86, 90, Unresponsive]
-            - [91, 95, Destroyed]
-            - [96, 100, "[⏵Derelict](starforged/oracles/derelicts)", *inherit:Derelict.Starship]
+            - floor: 1
+              ceiling: 3
+              result: Familiar
+            - floor: 4
+              ceiling: 15
+              result: Friendly
+            - floor: 16
+              ceiling: 25
+              result: Neutral / automated
+            - floor: 26
+              ceiling: 35
+              result: Wary
+            - floor: 36
+              ceiling: 40
+              result: Dismissive
+            - floor: 41
+              ceiling: 50
+              result: Uncooperative
+            - floor: 51
+              ceiling: 65
+              result: Hostile
+            - floor: 66
+              ceiling: 80
+              result: Asking for help
+            - floor: 81
+              ceiling: 85
+              result: In battle
+            - floor: 86
+              ceiling: 90
+              result: Unresponsive
+            - floor: 91
+              ceiling: 95
+              result: Destroyed
+            - floor: 96
+              ceiling: 100
+              result: "[⏵Derelict](starforged/oracles/derelicts)"
+              # *inherit:Derelict.Starship
         first_look:
           title:
             canonical: First Look
@@ -283,28 +488,72 @@ starforged:
             part_of_speech: [fragment]
             tags: [description]
           table:
-            - [1, 4, Abnormal sensor readings]
-            - [5, 8, Brightly painted]
-            - [9, 13, Bristling with weapons]
-            - [14, 18, Dark or stealthy]
-            - [19, 23, Heavy armor]
-            - [24, 28, Immobile]
-            - [29, 33, Intimidating profile]
-            - [34, 37, Large sensor arrays]
-            - [38, 41, Leaking radiation]
-            - [42, 45, Low-profile or disguised]
-            - [46, 49, Modern or advanced design]
-            - [50, 54, Obsolete design]
-            - [55, 59, Obvious damage]
-            - [60, 63, Biological components]
-            - [64, 67, Ornate markings]
-            - [68, 71, Oversized engines]
-            - [72, 75, Prominent guild emblem]
-            - [76, 80, Refitted or repurposed hull]
-            - [81, 85, Scarred hull]
-            - [86, 90, Built from scrap]
-            - [91, 94, Towing or linked]
-            - [95, 100, *result:Descriptor+Focus]
+            - floor: 1
+              ceiling: 4
+              result: Abnormal sensor readings
+            - floor: 5
+              ceiling: 8
+              result: Brightly painted
+            - floor: 9
+              ceiling: 13
+              result: Bristling with weapons
+            - floor: 14
+              ceiling: 18
+              result: Dark or stealthy
+            - floor: 19
+              ceiling: 23
+              result: Heavy armor
+            - floor: 24
+              ceiling: 28
+              result: Immobile
+            - floor: 29
+              ceiling: 33
+              result: Intimidating profile
+            - floor: 34
+              ceiling: 37
+              result: Large sensor arrays
+            - floor: 38
+              ceiling: 41
+              result: Leaking radiation
+            - floor: 42
+              ceiling: 45
+              result: Low-profile or disguised
+            - floor: 46
+              ceiling: 49
+              result: Modern or advanced design
+            - floor: 50
+              ceiling: 54
+              result: Obsolete design
+            - floor: 55
+              ceiling: 59
+              result: Obvious damage
+            - floor: 60
+              ceiling: 63
+              result: Biological components
+            - floor: 64
+              ceiling: 67
+              result: Ornate markings
+            - floor: 68
+              ceiling: 71
+              result: Oversized engines
+            - floor: 72
+              ceiling: 75
+              result: Prominent guild emblem
+            - floor: 76
+              ceiling: 80
+              result: Refitted or repurposed hull
+            - floor: 81
+              ceiling: 85
+              result: Scarred hull
+            - floor: 86
+              ceiling: 90
+              result: Built from scrap
+            - floor: 91
+              ceiling: 94
+              result: Towing or linked
+            - floor: 95
+              ceiling: 100
+              result: *result:Descriptor+Focus
         starship_name:
           title:
             canonical: Starship Name
@@ -318,103 +567,315 @@ starforged:
             tags: [name]
           table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
-            - [1, 1, Arclight, content: {part_of_speech: [compound noun]}]
-            - [2, 2, Argent Arrow]
-            - [3, 3, Artemis, content: {part_of_speech: [proper noun]}]
-            - [4, 4, Astral Explorer]
-            - [5, 5, Atlas, content: {part_of_speech: [proper noun]}]
-            - [6, 6, Aurora]
-            - [7, 7, Avari’s Wake]
-            - [8, 8, Banshee’s Cry]
-            - [9, 9, Beowulf, content: {part_of_speech: [proper noun]}]
-            - [10, 10, Bloody Jaw]
-            - [11, 11, Broken Sword]
-            - [12, 12, Buccaneer]
-            - [13, 13, Cerelis Nine]
-            - [14, 14, Clarion Call]
-            - [15, 15, Dawn’s Herald]
-            - [16, 16, Dead Reckoning]
-            - [17, 17, Drift Runner]
-            - [18, 18, Eclipse]
-            - [19, 19, Elara Five]
-            - [20, 20, Enchantress]
-            - [21, 21, Endurance]
-            - [22, 22, Excalibur, content: {part_of_speech: [proper noun]}]
-            - [23, 23, Eye of the Void]
-            - [24, 24, Fall of Icarus]
-            - [25, 25, Fallen Light]
-            - [26, 26, False Hope]
-            - [27, 27, Firebreak]
-            - [28, 28, First Light]
-            - [29, 29, Forge Flier]
-            - [30, 30, Fortune’s Favor]
-            - [31, 31, Freya’s Wrath]
-            - [32, 32, Ghost]
-            - [33, 33, Guiding Star]
-            - [34, 34, Hand of Fate]
-            - [35, 35, Herald of Doom]
-            - [36, 36, Implacable]
-            - [37, 37, Implicit]
-            - [38, 38, Inferno]
-            - [39, 39, Invictus, content: {part_of_speech: [proper noun]}]
-            - [40, 40, Iron Cairn]
-            - [41, 41, Karena’s Reverie]
-            - [42, 42, Kraken]
-            - [43, 43, Kuno’s Hammer]
-            - [44, 44, Lightline]
-            - [45, 45, Lodestar]
-            - [46, 46, Long Haul]
-            - [47, 47, Lost Fortune]
-            - [48, 48, Luminous Sorrow]
-            - [49, 49, Manta]
-            - [50, 50, Mercy]
-            - [51, 51, Mutara, content: {part_of_speech: [proper noun]}]
-            - [52, 52, Nebula Prowler]
-            - [53, 53, Newton’s Folly]
-            - [54, 54, Nightfall]
-            - [55, 55, Nomad]
-            - [56, 56, Obsidian Trident]
-            - [57, 57, Onslaught]
-            - [58, 58, Orca]
-            - [59, 59, Outward Bound]
-            - [60, 60, Phantom]
-            - [61, 61, Photon]
-            - [62, 62, Poltergeist]
-            - [63, 63, Profit Margin]
-            - [64, 64, Raven’s Call]
-            - [65, 65, Raya’s Promise]
-            - [66, 66, Reaper]
-            - [67, 67, Reforged Hope]
-            - [68, 68, Relentless]
-            - [69, 69, Royal Signet]
-            - [70, 70, Rubicon, content: {part_of_speech: [proper noun]}]
-            - [71, 71, Sareea’s Tribute]
-            - [72, 72, Second Chance]
-            - [73, 73, Shard of the Sun]
-            - [74, 74, Shattered Siege]
-            - [75, 75, Shattered Star]
-            - [76, 76, Silver Talon]
-            - [77, 77, Smoldering Flame]
-            - [78, 78, Sovereign Skies]
-            - [79, 79, Sparrowhawk]
-            - [80, 80, Stardust]
-            - [81, 81, Starfall, content: {part_of_speech: [compound noun]}]
-            - [82, 82, Stellar Hawk]
-            - [83, 83, Stormswept, content: {part_of_speech: [compound noun]}]
-            - [84, 84, Sundered Aegis]
-            - [85, 85, Sundown]
-            - [86, 86, Sureshot, content: {part_of_speech: [compound noun]}]
-            - [87, 87, Terminus Clipper]
-            - [88, 88, Terrapin]
-            - [89, 89, Timber Wolf]
-            - [90, 90, Tip of the Spear]
-            - [91, 91, Titan]
-            - [92, 92, Tormentor]
-            - [93, 93, Trithia Six]
-            - [94, 94, Ultraviolet]
-            - [95, 95, Valora’s Comet]
-            - [96, 96, Vengeance]
-            - [97, 97, Venture]
-            - [98, 98, Vigilant]
-            - [99, 99, Voidtreader, content: {part_of_speech: [compound noun]}]
-            - [100, 100, Vulture]
+            - floor: 1
+              ceiling: 1
+              result: Arclight
+              # content: {part_of_speech: [compound noun]}
+            - floor: 2
+              ceiling: 2
+              result: Argent Arrow
+            - floor: 3
+              ceiling: 3
+              result: Artemis
+              # content: {part_of_speech: [proper noun]}
+            - floor: 4
+              ceiling: 4
+              result: Astral Explorer
+            - floor: 5
+              ceiling: 5
+              result: Atlas
+              # content: {part_of_speech: [proper noun]}
+            - floor: 6
+              ceiling: 6
+              result: Aurora
+            - floor: 7
+              ceiling: 7
+              result: Avari’s Wake
+            - floor: 8
+              ceiling: 8
+              result: Banshee’s Cry
+            - floor: 9
+              ceiling: 9
+              result: Beowulf
+              # content: {part_of_speech: [proper noun]}
+            - floor: 10
+              ceiling: 10
+              result: Bloody Jaw
+            - floor: 11
+              ceiling: 11
+              result: Broken Sword
+            - floor: 12
+              ceiling: 12
+              result: Buccaneer
+            - floor: 13
+              ceiling: 13
+              result: Cerelis Nine
+            - floor: 14
+              ceiling: 14
+              result: Clarion Call
+            - floor: 15
+              ceiling: 15
+              result: Dawn’s Herald
+            - floor: 16
+              ceiling: 16
+              result: Dead Reckoning
+            - floor: 17
+              ceiling: 17
+              result: Drift Runner
+            - floor: 18
+              ceiling: 18
+              result: Eclipse
+            - floor: 19
+              ceiling: 19
+              result: Elara Five
+            - floor: 20
+              ceiling: 20
+              result: Enchantress
+            - floor: 21
+              ceiling: 21
+              result: Endurance
+            - floor: 22
+              ceiling: 22
+              result: Excalibur
+              # content: {part_of_speech: [proper noun]}
+            - floor: 23
+              ceiling: 23
+              result: Eye of the Void
+            - floor: 24
+              ceiling: 24
+              result: Fall of Icarus
+            - floor: 25
+              ceiling: 25
+              result: Fallen Light
+            - floor: 26
+              ceiling: 26
+              result: False Hope
+            - floor: 27
+              ceiling: 27
+              result: Firebreak
+            - floor: 28
+              ceiling: 28
+              result: First Light
+            - floor: 29
+              ceiling: 29
+              result: Forge Flier
+            - floor: 30
+              ceiling: 30
+              result: Fortune’s Favor
+            - floor: 31
+              ceiling: 31
+              result: Freya’s Wrath
+            - floor: 32
+              ceiling: 32
+              result: Ghost
+            - floor: 33
+              ceiling: 33
+              result: Guiding Star
+            - floor: 34
+              ceiling: 34
+              result: Hand of Fate
+            - floor: 35
+              ceiling: 35
+              result: Herald of Doom
+            - floor: 36
+              ceiling: 36
+              result: Implacable
+            - floor: 37
+              ceiling: 37
+              result: Implicit
+            - floor: 38
+              ceiling: 38
+              result: Inferno
+            - floor: 39
+              ceiling: 39
+              result: Invictus
+              # content: {part_of_speech: [proper noun]}
+            - floor: 40
+              ceiling: 40
+              result: Iron Cairn
+            - floor: 41
+              ceiling: 41
+              result: Karena’s Reverie
+            - floor: 42
+              ceiling: 42
+              result: Kraken
+            - floor: 43
+              ceiling: 43
+              result: Kuno’s Hammer
+            - floor: 44
+              ceiling: 44
+              result: Lightline
+            - floor: 45
+              ceiling: 45
+              result: Lodestar
+            - floor: 46
+              ceiling: 46
+              result: Long Haul
+            - floor: 47
+              ceiling: 47
+              result: Lost Fortune
+            - floor: 48
+              ceiling: 48
+              result: Luminous Sorrow
+            - floor: 49
+              ceiling: 49
+              result: Manta
+            - floor: 50
+              ceiling: 50
+              result: Mercy
+            - floor: 51
+              ceiling: 51
+              result: Mutara
+              # content: {part_of_speech: [proper noun]}
+            - floor: 52
+              ceiling: 52
+              result: Nebula Prowler
+            - floor: 53
+              ceiling: 53
+              result: Newton’s Folly
+            - floor: 54
+              ceiling: 54
+              result: Nightfall
+            - floor: 55
+              ceiling: 55
+              result: Nomad
+            - floor: 56
+              ceiling: 56
+              result: Obsidian Trident
+            - floor: 57
+              ceiling: 57
+              result: Onslaught
+            - floor: 58
+              ceiling: 58
+              result: Orca
+            - floor: 59
+              ceiling: 59
+              result: Outward Bound
+            - floor: 60
+              ceiling: 60
+              result: Phantom
+            - floor: 61
+              ceiling: 61
+              result: Photon
+            - floor: 62
+              ceiling: 62
+              result: Poltergeist
+            - floor: 63
+              ceiling: 63
+              result: Profit Margin
+            - floor: 64
+              ceiling: 64
+              result: Raven’s Call
+            - floor: 65
+              ceiling: 65
+              result: Raya’s Promise
+            - floor: 66
+              ceiling: 66
+              result: Reaper
+            - floor: 67
+              ceiling: 67
+              result: Reforged Hope
+            - floor: 68
+              ceiling: 68
+              result: Relentless
+            - floor: 69
+              ceiling: 69
+              result: Royal Signet
+            - floor: 70
+              ceiling: 70
+              result: Rubicon
+              # content: {part_of_speech: [proper noun]}
+            - floor: 71
+              ceiling: 71
+              result: Sareea’s Tribute
+            - floor: 72
+              ceiling: 72
+              result: Second Chance
+            - floor: 73
+              ceiling: 73
+              result: Shard of the Sun
+            - floor: 74
+              ceiling: 74
+              result: Shattered Siege
+            - floor: 75
+              ceiling: 75
+              result: Shattered Star
+            - floor: 76
+              ceiling: 76
+              result: Silver Talon
+            - floor: 77
+              ceiling: 77
+              result: Smoldering Flame
+            - floor: 78
+              ceiling: 78
+              result: Sovereign Skies
+            - floor: 79
+              ceiling: 79
+              result: Sparrowhawk
+            - floor: 80
+              ceiling: 80
+              result: Stardust
+            - floor: 81
+              ceiling: 81
+              result: Starfall
+              # content: {part_of_speech: [compound noun]}
+            - floor: 82
+              ceiling: 82
+              result: Stellar Hawk
+            - floor: 83
+              ceiling: 83
+              result: Stormswept
+              # content: {part_of_speech: [compound noun]}
+            - floor: 84
+              ceiling: 84
+              result: Sundered Aegis
+            - floor: 85
+              ceiling: 85
+              result: Sundown
+            - floor: 86
+              ceiling: 86
+              result: Sureshot
+              # content: {part_of_speech: [compound noun]}
+            - floor: 87
+              ceiling: 87
+              result: Terminus Clipper
+            - floor: 88
+              ceiling: 88
+              result: Terrapin
+            - floor: 89
+              ceiling: 89
+              result: Timber Wolf
+            - floor: 90
+              ceiling: 90
+              result: Tip of the Spear
+            - floor: 91
+              ceiling: 91
+              result: Titan
+            - floor: 92
+              ceiling: 92
+              result: Tormentor
+            - floor: 93
+              ceiling: 93
+              result: Trithia Six
+            - floor: 94
+              ceiling: 94
+              result: Ultraviolet
+            - floor: 95
+              ceiling: 95
+              result: Valora’s Comet
+            - floor: 96
+              ceiling: 96
+              result: Vengeance
+            - floor: 97
+              ceiling: 97
+              result: Venture
+            - floor: 98
+              ceiling: 98
+              result: Vigilant
+            - floor: 99
+              ceiling: 99
+              result: Voidtreader
+              # content: {part_of_speech: [compound noun]}
+            - floor: 100
+              ceiling: 100
+              result: Vulture

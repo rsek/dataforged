@@ -1,0 +1,529 @@
+ironsworn:
+  oracle_sets:
+    character:
+      title:
+        canonical: Character
+      source:
+        authors: ["Shawn Tomkin"]
+        title: Ironsworn Rulebook
+        page: 182
+        license: https://creativecommons.org/licenses/by/4.0
+      tables:
+        role:
+          title:
+            canonical: "Oracle 10: Character Role"
+            standard: Character Role
+            short: Role
+          description: Use this oracle to define the background for a character, or to generate a random encounter.
+          source:
+            page: 182
+          table:
+            - floor: 1
+              ceiling: 2
+              result: Criminal
+            - floor: 3
+              ceiling: 4
+              result: Healer
+            - floor: 5
+              ceiling: 6
+              result: Bandit
+            - floor: 7
+              ceiling: 9
+              result: Guide
+            - floor: 10
+              ceiling: 12
+              result: Performer
+            - floor: 13
+              ceiling: 15
+              result: Miner
+            - floor: 16
+              ceiling: 18
+              result: Mercenary
+            - floor: 19
+              ceiling: 21
+              result: Outcast
+            - floor: 22
+              ceiling: 24
+              result: Vagrant
+            - floor: 25
+              ceiling: 27
+              result: Forester
+            - floor: 28
+              ceiling: 30
+              result: Traveler
+            - floor: 31
+              ceiling: 33
+              result: Mystic
+            - floor: 34
+              ceiling: 36
+              result: Priest
+            - floor: 37
+              ceiling: 39
+              result: Sailor
+            - floor: 40
+              ceiling: 42
+              result: Pilgrim
+            - floor: 43
+              ceiling: 45
+              result: Thief
+            - floor: 46
+              ceiling: 48
+              result: Adventurer
+            - floor: 49
+              ceiling: 51
+              result: Forager
+            - floor: 52
+              ceiling: 54
+              result: Leader
+            - floor: 55
+              ceiling: 58
+              result: Guard
+            - floor: 59
+              ceiling: 62
+              result: Artisan
+            - floor: 63
+              ceiling: 66
+              result: Scout
+            - floor: 67
+              ceiling: 70
+              result: Herder
+            - floor: 71
+              ceiling: 74
+              result: Fisher
+            - floor: 75
+              ceiling: 79
+              result: Warrior
+            - floor: 80
+              ceiling: 84
+              result: Hunter
+            - floor: 85
+              ceiling: 89
+              result: Raider
+            - floor: 90
+              ceiling: 94
+              result: Trader
+            - floor: 95
+              ceiling: 99
+              result: Farmer
+            - floor: 100
+              ceiling: 100
+              result: Unusual role, suggestions: {oracle_tables: [ironsworn/oracles/action_and_theme/action, ironsworn/oracles/action_and_theme/theme]}
+        goal:
+          title:
+            short: Goal
+            canonical: "Oracle 11: Character Goal"
+            standard: Character Goal
+          description: Use this oracle to define the primary motivation of an NPC or a faction. It can also be used to kick-off a personal quest for your own character.
+          source:
+            page: 182
+          table:
+            - floor: 1
+              ceiling: 3
+              result: Obtain an object
+            - floor: 4
+              ceiling: 6
+              result: Make an agreement
+            - floor: 7
+              ceiling: 9
+              result: Build a relationship
+            - floor: 10
+              ceiling: 12
+              result: Undermine a relationship
+            - floor: 13
+              ceiling: 15
+              result: Seek a truth
+            - floor: 16
+              ceiling: 18
+              result: Pay a debt
+            - floor: 19
+              ceiling: 21
+              result: Refute a falsehood
+            - floor: 22
+              ceiling: 24
+              result: Harm a rival
+            - floor: 25
+              ceiling: 27
+              result: Cure an ill
+            - floor: 28
+              ceiling: 30
+              result: Find a person
+            - floor: 31
+              ceiling: 33
+              result: Find a home
+            - floor: 34
+              ceiling: 36
+              result: Seize power
+            - floor: 37
+              ceiling: 39
+              result: Restore a relationship
+            - floor: 40
+              ceiling: 42
+              result: Create an item
+            - floor: 43
+              ceiling: 45
+              result: Travel to a place
+            - floor: 46
+              ceiling: 48
+              result: Secure provisions
+            - floor: 49
+              ceiling: 51
+              result: Rebel against power
+            - floor: 52
+              ceiling: 54
+              result: Collect a debt
+            - floor: 55
+              ceiling: 57
+              result: Protect a secret
+            - floor: 58
+              ceiling: 60
+              result: Spread faith
+            - floor: 61
+              ceiling: 63
+              result: Enrich themselves
+            - floor: 64
+              ceiling: 66
+              result: Protect a person
+            - floor: 67
+              ceiling: 69
+              result: Protect the status quo
+            - floor: 70
+              ceiling: 72
+              result: Advance status
+            - floor: 73
+              ceiling: 75
+              result: Defend a place
+            - floor: 76
+              ceiling: 78
+              result: Avenge a wrong
+            - floor: 79
+              ceiling: 81
+              result: Fulfill a duty
+            - floor: 82
+              ceiling: 84
+              result: Gain knowledge
+            - floor: 85
+              ceiling: 87
+              result: Prove worthiness
+            - floor: 88
+              ceiling: 90
+              result: Find redemption
+            - floor: 91
+              ceiling: 92
+              result: Escape from something
+            - floor: 93
+              ceiling: 95
+              result: Resolve a dispute
+            - floor: 96
+              ceiling: 100
+              result: *result:RollTwice
+        descriptor:
+          title:
+            short: Descriptor
+            canonical: "Oracle 12: Character Descriptor"
+            standard: Character Descriptor
+          description: Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.
+          usage:
+            max_rolls: 3 # a bit arbitrary, but reasonable
+          source:
+            page: 183
+          table:
+            - floor: 1
+              ceiling: 1
+              result: Stoic
+            - floor: 2
+              ceiling: 2
+              result: Attractive
+            - floor: 3
+              ceiling: 3
+              result: Passive
+            - floor: 4
+              ceiling: 4
+              result: Aloof
+            - floor: 5
+              ceiling: 5
+              result: Affectionate
+            - floor: 6
+              ceiling: 6
+              result: Generous
+            - floor: 7
+              ceiling: 7
+              result: Smug
+            - floor: 8
+              ceiling: 8
+              result: Armed
+            - floor: 9
+              ceiling: 9
+              result: Clever
+            - floor: 10
+              ceiling: 10
+              result: Brave
+            - floor: 11
+              ceiling: 11
+              result: Ugly
+            - floor: 12
+              ceiling: 12
+              result: Sociable
+            - floor: 13
+              ceiling: 13
+              result: Doomed
+            - floor: 14
+              ceiling: 14
+              result: Connected
+            - floor: 15
+              ceiling: 15
+              result: Bold
+            - floor: 16
+              ceiling: 16
+              result: Jealous
+            - floor: 17
+              ceiling: 17
+              result: Angry
+            - floor: 18
+              ceiling: 18
+              result: Active
+            - floor: 19
+              ceiling: 19
+              result: Suspicious
+            - floor: 20
+              ceiling: 20
+              result: Hostile
+            - floor: 21
+              ceiling: 21
+              result: Hardhearted
+            - floor: 22
+              ceiling: 22
+              result: Successful
+            - floor: 23
+              ceiling: 23
+              result: Talented
+            - floor: 24
+              ceiling: 24
+              result: Experienced
+            - floor: 25
+              ceiling: 25
+              result: Deceitful
+            - floor: 26
+              ceiling: 26
+              result: Ambitious
+            - floor: 27
+              ceiling: 27
+              result: Aggressive
+            - floor: 28
+              ceiling: 28
+              result: Conceited
+            - floor: 29
+              ceiling: 29
+              result: Proud
+            - floor: 30
+              ceiling: 30
+              result: Stern
+            - floor: 31
+              ceiling: 31
+              result: Dependent
+            - floor: 32
+              ceiling: 32
+              result: Wary
+            - floor: 33
+              ceiling: 33
+              result: Strong
+            - floor: 34
+              ceiling: 34
+              result: Insightful
+            - floor: 35
+              ceiling: 35
+              result: Dangerous
+            - floor: 36
+              ceiling: 36
+              result: Quirky
+            - floor: 37
+              ceiling: 37
+              result: Cheery
+            - floor: 38
+              ceiling: 38
+              result: Disfigured
+            - floor: 39
+              ceiling: 39
+              result: Intolerant
+            - floor: 40
+              ceiling: 40
+              result: Skilled
+            - floor: 41
+              ceiling: 41
+              result: Stingy
+            - floor: 42
+              ceiling: 42
+              result: Timid
+            - floor: 43
+              ceiling: 43
+              result: Insensitive
+            - floor: 44
+              ceiling: 44
+              result: Wild
+            - floor: 45
+              ceiling: 45
+              result: Bitter
+            - floor: 46
+              ceiling: 46
+              result: Cunning
+            - floor: 47
+              ceiling: 47
+              result: Remorseful
+            - floor: 48
+              ceiling: 48
+              result: Kind
+            - floor: 49
+              ceiling: 49
+              result: Charming
+            - floor: 50
+              ceiling: 50
+              result: Oblivious
+            - floor: 51
+              ceiling: 51
+              result: Critical
+            - floor: 52
+              ceiling: 52
+              result: Cautious
+            - floor: 53
+              ceiling: 53
+              result: Resourceful
+            - floor: 54
+              ceiling: 54
+              result: Weary
+            - floor: 55
+              ceiling: 55
+              result: Wounded
+            - floor: 56
+              ceiling: 56
+              result: Anxious
+            - floor: 57
+              ceiling: 57
+              result: Powerful
+            - floor: 58
+              ceiling: 58
+              result: Athletic
+            - floor: 59
+              ceiling: 59
+              result: Driven
+            - floor: 60
+              ceiling: 60
+              result: Cruel
+            - floor: 61
+              ceiling: 61
+              result: Quiet
+            - floor: 62
+              ceiling: 62
+              result: Honest
+            - floor: 63
+              ceiling: 63
+              result: Infamous
+            - floor: 64
+              ceiling: 64
+              result: Dying
+            - floor: 65
+              ceiling: 65
+              result: Reclusive
+            - floor: 66
+              ceiling: 66
+              result: Artistic
+            - floor: 67
+              ceiling: 67
+              result: Disabled
+            - floor: 68
+              ceiling: 68
+              result: Confused
+            - floor: 69
+              ceiling: 69
+              result: Manipulative
+            - floor: 70
+              ceiling: 70
+              result: Relaxed
+            - floor: 71
+              ceiling: 71
+              result: Stealthy
+            - floor: 72
+              ceiling: 72
+              result: Confident
+            - floor: 73
+              ceiling: 73
+              result: Weak
+            - floor: 74
+              ceiling: 74
+              result: Friendly
+            - floor: 75
+              ceiling: 75
+              result: Wise
+            - floor: 76
+              ceiling: 76
+              result: Influential
+            - floor: 77
+              ceiling: 77
+              result: Young
+            - floor: 78
+              ceiling: 78
+              result: Adventurous
+            - floor: 79
+              ceiling: 79
+              result: Oppressed
+            - floor: 80
+              ceiling: 80
+              result: Vengeful
+            - floor: 81
+              ceiling: 81
+              result: Cooperative
+            - floor: 82
+              ceiling: 82
+              result: Armored
+            - floor: 83
+              ceiling: 83
+              result: Apathetic
+            - floor: 84
+              ceiling: 84
+              result: Determined
+            - floor: 85
+              ceiling: 85
+              result: Loyal
+            - floor: 86
+              ceiling: 86
+              result: Sick
+            - floor: 87
+              ceiling: 87
+              result: Religious
+            - floor: 88
+              ceiling: 88
+              result: Selfish
+            - floor: 89
+              ceiling: 89
+              result: Old
+            - floor: 90
+              ceiling: 90
+              result: Fervent
+            - floor: 91
+              ceiling: 91
+              result: Violent
+            - floor: 92
+              ceiling: 92
+              result: Agreeable
+            - floor: 93
+              ceiling: 93
+              result: Hot-tempered
+            - floor: 94
+              ceiling: 94
+              result: Stubborn
+            - floor: 95
+              ceiling: 95
+              result: Incompetent
+            - floor: 96
+              ceiling: 96
+              result: Greedy
+            - floor: 97
+              ceiling: 97
+              result: Cowardly
+            - floor: 98
+              ceiling: 98
+              result: Obsessed
+            - floor: 99
+              ceiling: 99
+              result: Careless
+            - floor: 100
+              ceiling: 100
+              result: Ironsworn

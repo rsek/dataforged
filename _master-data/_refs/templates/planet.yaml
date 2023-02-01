@@ -148,9 +148,9 @@ Planet: &template:Planet
           part_of_speech: [adjective]
       _templateTableRows:
         content: &template.content:Planet.Life
-          - [None, Attributes: {Life: None}]
-          - [Extinct, Attributes: {Life: Extinct}]
-          - [Scarce, Attributes: {Life: Scarce}]
-          - [Diverse, Attributes: {Life: Diverse}, Suggestions: *obj:Creature]
-          - [Bountiful, Attributes: {Life: Bountiful}, Suggestions: *obj:Creature]
-          - [Overrun, Attributes: {Life: Overrun}, Suggestions: *obj:Creature]
+          - [None, set_attributes: {Life: None}]
+          - [Extinct, set_attributes: {Life: Extinct}]
+          - [Scarce, set_attributes: {Life: Scarce}]
+          - [Diverse, set_attributes: {Life: Diverse}, suggestions: *obj:Creature]
+          - [Bountiful, set_attributes: {Life: Bountiful}, suggestions: *obj:Creature]
+          - [Overrun, set_attributes: {Life: Overrun}, suggestions: *obj:Creature]

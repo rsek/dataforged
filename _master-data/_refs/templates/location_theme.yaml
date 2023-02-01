@@ -39,7 +39,9 @@ Location Theme: &template:LocationTheme
           - [73, 80]
           - [81, 88]
           - [89, 96]
-          - [97, 100, *result:Descriptor+Focus]
+          - floor: 97
+            ceiling: 100
+            result: *result:Descriptor+Focus
     Peril:
       _templateOracleTable: &template.info:LocationTheme.Peril
         Title:
@@ -61,8 +63,12 @@ Location Theme: &template:LocationTheme
           - [64, 72]
           - [73, 81]
           - [82, 90]
-          - [91, 98, *result:Action+Theme]
-          - [99, 100, *result:RollTwice]
+          - floor: 91
+            ceiling: 98
+            result: *result:Action+Theme
+          - floor: 99
+            ceiling: 100
+            result: *result:RollTwice
     Opportunity:
       _templateOracleTable: &template.info:LocationTheme.Opportunity
         Title:

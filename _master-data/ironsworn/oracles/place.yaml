@@ -1,0 +1,465 @@
+ironsworn:
+  source:
+    authors:
+      - Shawn Tomkin
+    title: Ironsworn Rulebook
+    license: https://creativecommons.org/licenses/by/4.0
+  oracle_sets:
+    place:
+      title:
+        canonical: Place
+      source:
+        authors:
+          - Shawn Tomkin
+        title: Ironsworn Rulebook
+        page: 176
+        license: https://creativecommons.org/licenses/by/4.0
+      tables:
+        region:
+          title:
+            canonical: "Oracle 3: Region"
+            standard: Region
+          summary: Use this oracle when you want to randomly select a region with the Ironlands.
+          source:
+            title: Ironsworn Rulebook
+            page: 176
+          table:
+            - floor: 1
+              ceiling: 12
+              result: "[Barrier Islands](ironsworn/regions/barrier_islands)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/barrier_islands
+            - floor: 13
+              ceiling: 24
+              result: "[Ragged Coast](ironsworn/regions/ragged_coast)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/ragged_coast
+            - floor: 25
+              ceiling: 34
+              result: "[Deep Wilds](ironsworn/regions/deep_wilds)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/deep_wilds
+            - floor: 35
+              ceiling: 46
+              result: "[Flooded Lands](ironsworn/regions/flooded_lands)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/flooded_lands
+            - floor: 47
+              ceiling: 60
+              result: "[Havens](ironsworn/regions/havens)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/havens
+            - floor: 61
+              ceiling: 72
+              result: "[Hinterlands](ironsworn/regions/hinterlands)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/hinterlands
+            - floor: 73
+              ceiling: 84
+              result: "[Tempest Hills](ironsworn/regions/tempest_hills)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/tempest_hills
+            - floor: 85
+              ceiling: 94
+              result: "[Veiled Mountains](ironsworn/regions/veiled_mountains)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/veiled_mountains
+            - floor: 95
+              ceiling: 99
+              result: "[Shattered Wastes](ironsworn/regions/shattered_wastes)"
+              suggestions:
+                regions:
+                  - ironsworn/regions/shattered_wastes
+            - floor: 100
+              ceiling: 100
+              result: Elsewhere
+        location:
+          title:
+            canonical: "Oracle 4: Location"
+            standard: Location
+          summary: Use this oracle when traveling to generate a point-of-interest or to answer a question about a place where someone or something can be found.
+          source:
+            title: Ironsworn Rulebook
+            page: 176
+          table:
+            - floor: 1
+              ceiling: 1
+              result: Hideout
+            - floor: 2
+              ceiling: 2
+              result: Ruin
+            - floor: 3
+              ceiling: 3
+              result: Mine
+            - floor: 4
+              ceiling: 4
+              result: Waste
+            - floor: 5
+              ceiling: 5
+              result: Mystical Site
+            - floor: 6
+              ceiling: 6
+              result: Path
+            - floor: 7
+              ceiling: 7
+              result: Outpost
+            - floor: 8
+              ceiling: 8
+              result: Wall
+            - floor: 9
+              ceiling: 9
+              result: Battlefield
+            - floor: 10
+              ceiling: 10
+              result: Hovel
+            - floor: 11
+              ceiling: 11
+              result: Spring
+            - floor: 12
+              ceiling: 12
+              result: Lair
+            - floor: 13
+              ceiling: 13
+              result: Fort
+            - floor: 14
+              ceiling: 14
+              result: Bridge
+            - floor: 15
+              ceiling: 15
+              result: Camp
+            - floor: 16
+              ceiling: 16
+              result: Cairn/Grave
+            - floor: 17
+              ceiling: 18
+              result: Caravan
+            - floor: 19
+              ceiling: 20
+              result: Waterfall
+            - floor: 21
+              ceiling: 22
+              result: Cave
+            - floor: 23
+              ceiling: 24
+              result: Swamp
+            - floor: 25
+              ceiling: 26
+              result: Fen
+            - floor: 27
+              ceiling: 28
+              result: Ravine
+            - floor: 29
+              ceiling: 30
+              result: Road
+            - floor: 31
+              ceiling: 32
+              result: Tree
+            - floor: 33
+              ceiling: 34
+              result: Pond
+            - floor: 35
+              ceiling: 36
+              result: Fields
+            - floor: 37
+              ceiling: 38
+              result: Marsh
+            - floor: 39
+              ceiling: 40
+              result: Steading
+            - floor: 41
+              ceiling: 42
+              result: Rapids
+            - floor: 43
+              ceiling: 44
+              result: Pass
+            - floor: 45
+              ceiling: 46
+              result: Trail
+            - floor: 47
+              ceiling: 48
+              result: Glade
+            - floor: 49
+              ceiling: 50
+              result: Plain
+            - floor: 51
+              ceiling: 52
+              result: Ridge
+            - floor: 53
+              ceiling: 54
+              result: Cliff
+            - floor: 55
+              ceiling: 56
+              result: Grove
+            - floor: 57
+              ceiling: 58
+              result: Village
+            - floor: 59
+              ceiling: 60
+              result: Moor
+            - floor: 61
+              ceiling: 62
+              result: Thicket
+            - floor: 63
+              ceiling: 64
+              result: River Ford
+            - floor: 65
+              ceiling: 66
+              result: Valley
+            - floor: 67
+              ceiling: 68
+              result: Bay/Fjord
+            - floor: 69
+              ceiling: 70
+              result: Foothills
+            - floor: 71
+              ceiling: 72
+              result: Lake
+            - floor: 73
+              ceiling: 75
+              result: River
+            - floor: 76
+              ceiling: 79
+              result: Forest
+            - floor: 80
+              ceiling: 83
+              result: Coast
+            - floor: 84
+              ceiling: 88
+              result: Hill
+            - floor: 89
+              ceiling: 93
+              result: Mountain
+            - floor: 94
+              ceiling: 99
+              result: Woods
+            - floor: 100
+              ceiling: 100
+              result: Anomaly
+        coastal_waters_location:
+          title:
+            canonical: "Oracle 5: Coastal Waters Location"
+            standard: Coastal Waters Location
+          summary: Use this oracle to identify a point-of-interest or destination when you are traveling by ship or boat.
+          source:
+            title: Ironsworn Rulebook
+            page: 176
+          table:
+            - floor: 1
+              ceiling: 1
+              result: Fleet
+            - floor: 2
+              ceiling: 2
+              result: Sargassum
+            - floor: 3
+              ceiling: 3
+              result: Flotsam
+            - floor: 4
+              ceiling: 4
+              result: Mystical Site
+            - floor: 5
+              ceiling: 5
+              result: Lair
+            - floor: 6
+              ceiling: 10
+              result: Wreck
+            - floor: 11
+              ceiling: 15
+              result: Harbor
+            - floor: 16
+              ceiling: 23
+              result: Ship/Boat
+            - floor: 24
+              ceiling: 30
+              result: Rocks
+            - floor: 31
+              ceiling: 38
+              result: Fjord
+            - floor: 39
+              ceiling: 46
+              result: Estuary
+            - floor: 47
+              ceiling: 54
+              result: Cove
+            - floor: 55
+              ceiling: 62
+              result: Bay
+            - floor: 63
+              ceiling: 70
+              result: Ice
+            - floor: 71
+              ceiling: 85
+              result: Island
+            - floor: 86
+              ceiling: 99
+              result: Open Water
+            - floor: 100
+              ceiling: 100
+              result: Anomaly
+        descriptor:
+          title:
+            canonical: "Oracle 6: Location Descriptor"
+            standard: Location Descriptor
+            short: Descriptor
+          summary: Use this oracle to add detail to the Location or Coastal Waters Location oracles, or by itself to generate a description of a location. Roll more than once for extra detail.
+          source:
+            title: Ironsworn Rulebook
+            page: 177
+          table:
+            - floor: 1
+              ceiling: 2
+              result: High
+            - floor: 3
+              ceiling: 4
+              result: Remote
+            - floor: 5
+              ceiling: 6
+              result: Exposed
+            - floor: 7
+              ceiling: 8
+              result: Small
+            - floor: 9
+              ceiling: 10
+              result: Broken
+            - floor: 11
+              ceiling: 12
+              result: Diverse
+            - floor: 13
+              ceiling: 14
+              result: Rough
+            - floor: 15
+              ceiling: 16
+              result: Dark
+            - floor: 17
+              ceiling: 18
+              result: Shadowy
+            - floor: 19
+              ceiling: 20
+              result: Contested
+            - floor: 21
+              ceiling: 22
+              result: Grim
+            - floor: 23
+              ceiling: 24
+              result: Wild
+            - floor: 25
+              ceiling: 26
+              result: Fertile
+            - floor: 27
+              ceiling: 28
+              result: Blocked
+            - floor: 29
+              ceiling: 30
+              result: Ancient
+            - floor: 31
+              ceiling: 32
+              result: Perilous
+            - floor: 33
+              ceiling: 34
+              result: Hidden
+            - floor: 35
+              ceiling: 36
+              result: Occupied
+            - floor: 37
+              ceiling: 38
+              result: Rich
+            - floor: 39
+              ceiling: 40
+              result: Big
+            - floor: 41
+              ceiling: 42
+              result: Savage
+            - floor: 43
+              ceiling: 44
+              result: Defended
+            - floor: 45
+              ceiling: 46
+              result: Withered
+            - floor: 47
+              ceiling: 48
+              result: Mystical
+            - floor: 49
+              ceiling: 50
+              result: Inaccessible
+            - floor: 51
+              ceiling: 52
+              result: Protected
+            - floor: 53
+              ceiling: 54
+              result: Abandoned
+            - floor: 55
+              ceiling: 56
+              result: Wide
+            - floor: 57
+              ceiling: 58
+              result: Foul
+            - floor: 59
+              ceiling: 60
+              result: Dead
+            - floor: 61
+              ceiling: 62
+              result: Ruined
+            - floor: 63
+              ceiling: 64
+              result: Barren
+            - floor: 65
+              ceiling: 66
+              result: Cold
+            - floor: 67
+              ceiling: 68
+              result: Blighted
+            - floor: 69
+              ceiling: 70
+              result: Low
+            - floor: 71
+              ceiling: 72
+              result: Beautiful
+            - floor: 73
+              ceiling: 74
+              result: Abundant
+            - floor: 75
+              ceiling: 76
+              result: Lush
+            - floor: 77
+              ceiling: 78
+              result: Flooded
+            - floor: 79
+              ceiling: 80
+              result: Empty
+            - floor: 81
+              ceiling: 82
+              result: Strange
+            - floor: 83
+              ceiling: 84
+              result: Corrupted
+            - floor: 85
+              ceiling: 86
+              result: Peaceful
+            - floor: 87
+              ceiling: 88
+              result: Forgotten
+            - floor: 89
+              ceiling: 90
+              result: Expansive
+            - floor: 91
+              ceiling: 92
+              result: Settled
+            - floor: 93
+              ceiling: 94
+              result: Dense
+            - floor: 95
+              ceiling: 96
+              result: Civilized
+            - floor: 97
+              ceiling: 98
+              result: Desolate
+            - floor: 99
+              ceiling: 100
+              result: Isolated

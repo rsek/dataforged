@@ -38,7 +38,8 @@
         },
         {
           "required": [
-            "rarity"
+            "rarity",
+            "encounter"
           ],
           "properties": {
             "name": {
@@ -49,7 +50,15 @@
               "$ref": "#/definitions/DelveSiteDenizenRarity"
             },
             "encounter": {
-              "$ref": "#/definitions/IDEncounterClassic"
+              "default": null,
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/IDEncounterClassic"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           }
         }
@@ -105,17 +114,201 @@
         },
         "denizens": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/DelveSiteDenizen"
-          }
+          "allOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/DelveSiteDenizen"
+              }
+            },
+            {
+              "additionalItems": false,
+              "items": [
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "very_common"
+                    },
+                    "floor": {
+                      "const": 1
+                    },
+                    "ceiling": {
+                      "const": 27
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "common"
+                    },
+                    "floor": {
+                      "const": 28
+                    },
+                    "ceiling": {
+                      "const": 41
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "common"
+                    },
+                    "floor": {
+                      "const": 42
+                    },
+                    "ceiling": {
+                      "const": 55
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "common"
+                    },
+                    "floor": {
+                      "const": 56
+                    },
+                    "ceiling": {
+                      "const": 69
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "uncommon"
+                    },
+                    "floor": {
+                      "const": 70
+                    },
+                    "ceiling": {
+                      "const": 75
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "uncommon"
+                    },
+                    "floor": {
+                      "const": 76
+                    },
+                    "ceiling": {
+                      "const": 81
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "uncommon"
+                    },
+                    "floor": {
+                      "const": 82
+                    },
+                    "ceiling": {
+                      "const": 87
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "uncommon"
+                    },
+                    "floor": {
+                      "const": 88
+                    },
+                    "ceiling": {
+                      "const": 93
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "rare"
+                    },
+                    "floor": {
+                      "const": 94
+                    },
+                    "ceiling": {
+                      "const": 95
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "rare"
+                    },
+                    "floor": {
+                      "const": 96
+                    },
+                    "ceiling": {
+                      "const": 97
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "rare"
+                    },
+                    "floor": {
+                      "const": 98
+                    },
+                    "ceiling": {
+                      "const": 99
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "rarity": {
+                      "const": "unforeseen"
+                    },
+                    "floor": {
+                      "const": 100
+                    },
+                    "ceiling": {
+                      "const": 100
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         }
       }
     },
+    "IDRarity": {
+      "$comment": "{namespace}/{rarities}/{name}",
+      "type": "string",
+      "pattern": "^[a-z][a-z_+]*[a-z]/rarities/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
+    },
     "Rarity": {
       "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "asset",
+        "source",
+        "xp_cost",
+        "description"
+      ],
       "properties": {
+        "_id": {
+          "$ref": "#/definitions/IDRarity"
+        },
         "name": {
           "$ref": "#/definitions/LocalizedLabel"
+        },
+        "icon": {
+          "$ref": "#/definitions/Icon"
         },
         "asset": {
           "$ref": "#/definitions/IDAsset"
@@ -125,8 +318,11 @@
         },
         "xp_cost": {
           "type": "integer",
-          "maximum": 5,
-          "minimum": 3
+          "minimum": 3,
+          "maximum": 5
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
         }
       }
     },
@@ -1224,11 +1420,26 @@
       "description": "A localizable string of plain text used to provide a player-facing label for this element."
     },
     "LocalizedMarkdown": {
-      "description": "A localizable string formatted in markdown. This usually represents a direct excerpt from the source material.",
-      "type": "string"
+      "$ref": "#/definitions/Localizable",
+      "description": "A localizable string formatted in markdown. This usually represents a direct excerpt from the source material."
     },
-    "LocalizedTemplate": {
-      "$comment": "TODO"
+    "LocalizedTemplateStrings": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "#/definitions/LocalizedTemplateString"
+        },
+        "summary": {
+          "$ref": "#/definitions/LocalizedTemplateString"
+        },
+        "description": {
+          "$ref": "#/definitions/LocalizedTemplateString"
+        }
+      }
+    },
+    "LocalizedTemplateString": {
+      "description": "A localizable markdown string template where variables are provided by rolling an oracle table.",
+      "$ref": "#/definitions/LocalizedMarkdown"
     },
     "Title": {
       "required": [
@@ -1253,21 +1464,30 @@
         }
       }
     },
-    "DisplayMetadata": {
+    "Icon": {
+      "description": "A URI of an vector icon in the SVG format.",
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "Image": {
+      "description": "The URI of a raster image in the WEBP format.",
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "Images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Image"
+      }
+    },
+    "RenderMetadata": {
       "description": "Contains data relevant to rendering the item.",
       "properties": {
         "icon": {
-          "description": "A URI pointing to a single SVG icon.",
-          "type": "string",
-          "format": "uri-reference"
+          "$ref": "#/definitions/Icon"
         },
         "images": {
-          "description": "An array of URIs pointing to one or more WEBP images.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "uri-reference"
-          }
+          "$ref": "#/definitions/Images"
         },
         "color": {
           "description": "A CSS color associated with this item, for use as e.g. an accent color when rendering it.",
@@ -1799,6 +2019,20 @@
       "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
       "additionalProperties": false,
       "properties": {
+        "oracle_rolls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IDOracleTable"
+          }
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "title": "IDIronlandsRegion",
+            "type": "string",
+            "pattern": "[a-z_]+/regions/[a-z_]+"
+          }
+        },
         "assets": {
           "type": "array",
           "items": {
@@ -1894,32 +2128,27 @@
     },
     "Oracle": {
       "description": "Interface with elements common to various Oracle-related interfaces and classes.\n\nIf you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.\n\nBut if for some reason you can't, you can use this interface to type both {@link OracleTable} and {@link OracleSet} as you recurse the oracle hierarchy. Objects with `sets` and `tables` are \"branches\", and objects with `table` are \"leaves\".",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DisplayMetadata"
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/Title"
         },
-        {
-          "properties": {
-            "title": {
-              "$ref": "#/definitions/Title"
-            },
-            "summary": {
-              "$ref": "#/definitions/Summary"
-            },
-            "description": {
-              "$ref": "#/definitions/Description"
-            },
-            "ancestors": {
-              "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/IDDataforged"
-              }
-            }
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "ancestors": {
+          "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IDDataforged"
           }
         }
-      ]
+      }
     },
     "OracleSet": {
       "title": "OracleSet",
@@ -1927,6 +2156,12 @@
       "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
       "additionalProperties": false,
       "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
         "title": {
           "$ref": "#/definitions/Title"
         },
@@ -1978,6 +2213,9 @@
       ],
       "additionalProperties": false,
       "properties": {
+        "_id": {
+          "type": "string"
+        },
         "content": {
           "title": "OracleContent",
           "type": "object",
@@ -2026,11 +2264,11 @@
           "type": "object"
         },
         "display": {
-          "title": "OracleTableDisplayMetadata",
+          "title": "OracleTableRenderMetadata",
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/DisplayMetadata"
+              "$ref": "#/definitions/RenderMetadata"
             },
             {
               "additionalProperties": false,
@@ -2084,6 +2322,12 @@
         },
         "source": {
           "$ref": "#/definitions/Source"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
         }
       }
     },
@@ -2137,12 +2381,28 @@
           ]
         },
         "display": {
-          "$ref": "#/definitions/DisplayMetadata"
+          "$ref": "#/definitions/RenderMetadata"
         },
         "suggestions": {
           "$ref": "#/definitions/Suggestions"
+        },
+        "oracle_rolls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IDOracleTable"
+          }
+        },
+        "embed_table": {
+          "$ref": "#/definitions/IDOracleTable"
+        },
+        "roll_template": {
+          "$ref": "#/definitions/LocalizedTemplateStrings"
         }
       }
+    },
+    "IDOracleTable": {
+      "type": "string",
+      "pattern": "^[a-z][a-z_+]*[a-z]/oracles(/[a-z][a-z_+]*[a-z]){2,}$"
     },
     "InputPosition": {
       "title": "InputPosition",
@@ -2257,9 +2517,6 @@
         },
         "source": {
           "$ref": "#/definitions/Source"
-        },
-        "options": {
-          "$ref": "#/definitions/OracleTableRows"
         }
       }
     },
@@ -2450,6 +2707,13 @@
               "allOf": [
                 {
                   "$ref": "#/definitions/SettingTruth"
+                },
+                {
+                  "properties": {
+                    "options": {
+                      "$ref": "#/definitions/OracleTableRows"
+                    }
+                  }
                 }
               ]
             }
@@ -2475,7 +2739,35 @@
           "patternProperties": {
             "^[a-z][a-z_+]*[a-z]$": {
               "title": "SettingTruthClassic",
-              "$ref": "#/definitions/SettingTruth"
+              "allOf": [
+                {
+                  "$ref": "#/definitions/SettingTruth"
+                },
+                {
+                  "properties": {
+                    "options": {
+                      "type": "array",
+                      "maxItems": 3,
+                      "minItems": 3,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "description",
+                          "quest_starter"
+                        ],
+                        "properties": {
+                          "description": {
+                            "$ref": "#/definitions/Description"
+                          },
+                          "quest_starter": {
+                            "$ref": "#/definitions/QuestStarter"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
             }
           }
         },
@@ -2521,7 +2813,7 @@
             }
           }
         },
-        "ironlands_regions": {
+        "regions": {
           "title": "IronlandsRegions",
           "additionalProperties": false,
           "patternProperties": {

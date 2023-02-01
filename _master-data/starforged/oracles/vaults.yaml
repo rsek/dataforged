@@ -7,7 +7,7 @@ starforged:
       source:
         authors: [Shawn Tomkin]
         title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by-sa/4.0
+        license: https://creativecommons.org/licenses/by/4.0
         date: 2022-05-06
         page: 360
       description: |-
@@ -33,11 +33,21 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - [1, 30, "Minor, confined site"]
-            - [31, 65, Typical site of limited scope]
-            - [66, 90, "Large, elaborate site"]
-            - [91, 99, Vast site of unfathomable complexity]
-            - [100, 100, World-spanning site or megastructure]
+            - floor: 1
+              ceiling: 30
+              result: "Minor, confined site"
+            - floor: 31
+              ceiling: 65
+              result: Typical site of limited scope
+            - floor: 66
+              ceiling: 90
+              result: "Large, elaborate site"
+            - floor: 91
+              ceiling: 99
+              result: Vast site of unfathomable complexity
+            - floor: 100
+              ceiling: 100
+              result: World-spanning site or megastructure
         form:
           title:
             canonical: Form
@@ -48,11 +58,21 @@ starforged:
           content:
             part_of_speech: [noun, common noun]
           table:
-            - [1, 35, Structure]
-            - [36, 60, Vessel]
-            - [61, 80, Monument]
-            - [81, 95, Machine]
-            - [96, 100, Incomprehensible, content: {part_of_speech: [adjective]}]
+            - floor: 1
+              ceiling: 35
+              result: Structure
+            - floor: 36
+              ceiling: 60
+              result: Vessel
+            - floor: 61
+              ceiling: 80
+              result: Monument
+            - floor: 81
+              ceiling: 95
+              result: Machine
+            - floor: 96
+              ceiling: 100
+              result: Incomprehensible, content: {part_of_speech: [adjective]}
         shape:
           title:
             canonical: Shape
@@ -63,22 +83,54 @@ starforged:
           content:
             part_of_speech: [adjective]
           table:
-            - [1, 15, Practical or functional]
-            - [16, 20, Geometric (complex shape)]
-            - [21, 25, Geometric (cube)]
-            - [26, 30, Geometric (obelisk)]
-            - [31, 35, Geometric (pyramid)]
-            - [36, 40, Geometric (ring or torus)]
-            - [41, 45, Geometric (sphere)]
-            - [46, 55, Organic or curved]
-            - [56, 60, Platform or disc, content: {part_of_speech: [common noun]}]
-            - [61, 65, Spires or towers, content: {part_of_speech: [common noun, plural]}]
-            - [66, 68, Domed]
-            - [69, 73, Spiky]
-            - [74, 76, Sculptural or effigy]
-            - [77, 79, Amorphous]
-            - [80, 85, Transforming]
-            - [86, 100, *result:RollTwice]
+            - floor: 1
+              ceiling: 15
+              result: Practical or functional
+            - floor: 16
+              ceiling: 20
+              result: Geometric (complex shape)
+            - floor: 21
+              ceiling: 25
+              result: Geometric (cube)
+            - floor: 26
+              ceiling: 30
+              result: Geometric (obelisk)
+            - floor: 31
+              ceiling: 35
+              result: Geometric (pyramid)
+            - floor: 36
+              ceiling: 40
+              result: Geometric (ring or torus)
+            - floor: 41
+              ceiling: 45
+              result: Geometric (sphere)
+            - floor: 46
+              ceiling: 55
+              result: Organic or curved
+            - floor: 56
+              ceiling: 60
+              result: Platform or disc, content: {part_of_speech: [common noun]}
+            - floor: 61
+              ceiling: 65
+              result: Spires or towers, content: {part_of_speech: [common noun, plural]}
+            - floor: 66
+              ceiling: 68
+              result: Domed
+            - floor: 69
+              ceiling: 73
+              result: Spiky
+            - floor: 74
+              ceiling: 76
+              result: Sculptural or effigy
+            - floor: 77
+              ceiling: 79
+              result: Amorphous
+            - floor: 80
+              ceiling: 85
+              result: Transforming
+            - floor: 86
+              ceiling: 100
+              result: *result:RollTwice
 
         material:
           title:
@@ -90,16 +142,36 @@ starforged:
           content:
             part_of_speech: [adjective]
           table:
-            - [1, 30, Metallic (industrial)]
-            - [31, 60, Metallic (smooth)]
-            - [61, 70, Rocky or stone-like]
-            - [71, 74, Crystalline or glass-like]
-            - [75, 78, Bone-like]
-            - [79, 82, Flesh-like]
-            - [83, 86, Plant-like]
-            - [87, 88, Energy, content: {part_of_speech: [common noun]}]
-            - [89, 90, Liquid]
-            - [91, 100, *result:RollTwice]
+            - floor: 1
+              ceiling: 30
+              result: Metallic (industrial)
+            - floor: 31
+              ceiling: 60
+              result: Metallic (smooth)
+            - floor: 61
+              ceiling: 70
+              result: Rocky or stone-like
+            - floor: 71
+              ceiling: 74
+              result: Crystalline or glass-like
+            - floor: 75
+              ceiling: 78
+              result: Bone-like
+            - floor: 79
+              ceiling: 82
+              result: Flesh-like
+            - floor: 83
+              ceiling: 86
+              result: Plant-like
+            - floor: 87
+              ceiling: 88
+              result: Energy, content: {part_of_speech: [common noun]}
+            - floor: 89
+              ceiling: 90
+              result: Liquid
+            - floor: 91
+              ceiling: 100
+              result: *result:RollTwice
         outer_first_look:
           title:
             canonical: Outer First Look
@@ -112,36 +184,96 @@ starforged:
             initial: true
             max_rolls: 2
           table:
-            - [1, 3, Corrupting its environment] # is
-            - [4, 7, Automated defenses] # has
-            - [8, 10, Breached exterior] # has
-            - [11, 14, Broken or fragmented] # is
-            - [15, 17, Camouflaged or hidden] # is
-            - [18, 20, Cavernous opening] # has
-            - [21, 23, Dispersed structures] # has
-            - [24, 26, Dreadful premonitions] # emits
-            - [27, 30, Electromagnetic field] # has? emits?
-            - [31, 33, Embedded within terrain] # is
-            - [34, 36, Encased in an energy field] # is
-            - [37, 40, Energy core or conduit] # has
-            - [41, 43, Fractal patterns] # has
-            - [44, 47, Glyphs or symbols] # has
-            - [48, 51, Hazardous readings] # emits? has?
-            - [52, 54, Levitating or in motion] # is
-            - [55, 58, Lighted or illuminated] # is
-            - [59, 61, No obvious point of entry] # has
-            - [62, 64, Overgrown or entangled] # is
-            - [65, 67, Perfectly preserved] # is
-            - [68, 70, Phasing in and out of reality] # is
-            - [71, 73, Physical barrier] # has
-            - [74, 76, Pitted or scarred] # is
-            - [77, 79, Scaled for outsized beings] # is
-            - [80, 82, Shrouded in mist or haze] # is
-            - [83, 85, Signs of invaders] # has? bearing?
-            - [86, 89, Sound or signal] # emits?
-            - [90, 92, Strong gravity well] # has
-            - [93, 95, Surrounded by destruction] # is
-            - [96, 100, *result:Descriptor+Focus]
+            - floor: 1
+              ceiling: 3
+              result: Corrupting its environment # is
+            - floor: 4
+              ceiling: 7
+              result: Automated defenses # has
+            - floor: 8
+              ceiling: 10
+              result: Breached exterior # has
+            - floor: 11
+              ceiling: 14
+              result: Broken or fragmented # is
+            - floor: 15
+              ceiling: 17
+              result: Camouflaged or hidden # is
+            - floor: 18
+              ceiling: 20
+              result: Cavernous opening # has
+            - floor: 21
+              ceiling: 23
+              result: Dispersed structures # has
+            - floor: 24
+              ceiling: 26
+              result: Dreadful premonitions # emits
+            - floor: 27
+              ceiling: 30
+              result: Electromagnetic field # has? emits?
+            - floor: 31
+              ceiling: 33
+              result: Embedded within terrain # is
+            - floor: 34
+              ceiling: 36
+              result: Encased in an energy field # is
+            - floor: 37
+              ceiling: 40
+              result: Energy core or conduit # has
+            - floor: 41
+              ceiling: 43
+              result: Fractal patterns # has
+            - floor: 44
+              ceiling: 47
+              result: Glyphs or symbols # has
+            - floor: 48
+              ceiling: 51
+              result: Hazardous readings # emits? has?
+            - floor: 52
+              ceiling: 54
+              result: Levitating or in motion # is
+            - floor: 55
+              ceiling: 58
+              result: Lighted or illuminated # is
+            - floor: 59
+              ceiling: 61
+              result: No obvious point of entry # has
+            - floor: 62
+              ceiling: 64
+              result: Overgrown or entangled # is
+            - floor: 65
+              ceiling: 67
+              result: Perfectly preserved # is
+            - floor: 68
+              ceiling: 70
+              result: Phasing in and out of reality # is
+            - floor: 71
+              ceiling: 73
+              result: Physical barrier # has
+            - floor: 74
+              ceiling: 76
+              result: Pitted or scarred # is
+            - floor: 77
+              ceiling: 79
+              result: Scaled for outsized beings # is
+            - floor: 80
+              ceiling: 82
+              result: Shrouded in mist or haze # is
+            - floor: 83
+              ceiling: 85
+              result: Signs of invaders # has? bearing?
+            - floor: 86
+              ceiling: 89
+              result: Sound or signal # emits?
+            - floor: 90
+              ceiling: 92
+              result: Strong gravity well # has
+            - floor: 93
+              ceiling: 95
+              result: Surrounded by destruction # is
+            - floor: 96
+              ceiling: 100
+              result: *result:Descriptor+Focus
       sets:
         interior:
           title:
@@ -151,7 +283,7 @@ starforged:
             authors: [Shawn Tomkin]
             title: "Ironsworn: Starforged Rulebook"
             date: 2022-05-06
-            license: https://creativecommons.org/licenses/by-sa/4.0
+            license: https://creativecommons.org/licenses/by/4.0
           display:
             icon: img/vector/Vaults/Interior.svg
           tables:
@@ -169,38 +301,102 @@ starforged:
                 tags: [first look]
               description: Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
               table:
-                - [1, 3, Abnormal gravity]
-                - [4, 6, Automated defenses]
-                - [7, 9, Biological infestation]
-                - [10, 12, Carried tech is disrupted]
-                - [13, 15, Complex textures or patterns]
-                - [16, 18, Corpses of intruders]
-                - [19, 21, Damage and debris]
-                - [22, 24, Deteriorating spaces]
-                - [25, 27, Dissonant tones or music]
-                - [28, 30, Energy surges]
-                - [31, 33, Environment reacts to your presence]
-                - [34, 36, Evidence of looting or scavenging]
-                - [37, 39, Excessive cold]
-                - [40, 42, Excessive heat]
-                - [43, 45, Faint ambient lighting]
-                - [46, 48, Impenetrable darkness]
-                - [49, 51, Intense smell]
-                - [52, 54, Magnetic surfaces]
-                - [55, 57, Material does not match exterior]
-                - [58, 60, Ornate markings or symbols]
-                - [61, 63, Reactive lighting responds to your presence]
-                - [64, 66, Scale does not match exterior]
-                - [67, 69, Signs of invasive lifeforms]
-                - [70, 72, Surfaces respond to touch]
-                - [73, 75, Thick haze or smoke]
-                - [76, 78, Thick or fluid atmosphere]
-                - [79, 81, Thrumming or droning sound]
-                - [82, 84, Toxic atmosphere]
-                - [85, 87, Toxic residue]
-                - [88, 90, Well-preserved]
-                - [91, 93, Wet or humid]
-                - [94, 100, *result:Descriptor+Focus]
+                - floor: 1
+                  ceiling: 3
+                  result: Abnormal gravity
+                - floor: 4
+                  ceiling: 6
+                  result: Automated defenses
+                - floor: 7
+                  ceiling: 9
+                  result: Biological infestation
+                - floor: 10
+                  ceiling: 12
+                  result: Carried tech is disrupted
+                - floor: 13
+                  ceiling: 15
+                  result: Complex textures or patterns
+                - floor: 16
+                  ceiling: 18
+                  result: Corpses of intruders
+                - floor: 19
+                  ceiling: 21
+                  result: Damage and debris
+                - floor: 22
+                  ceiling: 24
+                  result: Deteriorating spaces
+                - floor: 25
+                  ceiling: 27
+                  result: Dissonant tones or music
+                - floor: 28
+                  ceiling: 30
+                  result: Energy surges
+                - floor: 31
+                  ceiling: 33
+                  result: Environment reacts to your presence
+                - floor: 34
+                  ceiling: 36
+                  result: Evidence of looting or scavenging
+                - floor: 37
+                  ceiling: 39
+                  result: Excessive cold
+                - floor: 40
+                  ceiling: 42
+                  result: Excessive heat
+                - floor: 43
+                  ceiling: 45
+                  result: Faint ambient lighting
+                - floor: 46
+                  ceiling: 48
+                  result: Impenetrable darkness
+                - floor: 49
+                  ceiling: 51
+                  result: Intense smell
+                - floor: 52
+                  ceiling: 54
+                  result: Magnetic surfaces
+                - floor: 55
+                  ceiling: 57
+                  result: Material does not match exterior
+                - floor: 58
+                  ceiling: 60
+                  result: Ornate markings or symbols
+                - floor: 61
+                  ceiling: 63
+                  result: Reactive lighting responds to your presence
+                - floor: 64
+                  ceiling: 66
+                  result: Scale does not match exterior
+                - floor: 67
+                  ceiling: 69
+                  result: Signs of invasive lifeforms
+                - floor: 70
+                  ceiling: 72
+                  result: Surfaces respond to touch
+                - floor: 73
+                  ceiling: 75
+                  result: Thick haze or smoke
+                - floor: 76
+                  ceiling: 78
+                  result: Thick or fluid atmosphere
+                - floor: 79
+                  ceiling: 81
+                  result: Thrumming or droning sound
+                - floor: 82
+                  ceiling: 84
+                  result: Toxic atmosphere
+                - floor: 85
+                  ceiling: 87
+                  result: Toxic residue
+                - floor: 88
+                  ceiling: 90
+                  result: Well-preserved
+                - floor: 91
+                  ceiling: 93
+                  result: Wet or humid
+                - floor: 94
+                  ceiling: 100
+                  result: *result:Descriptor+Focus
             feature:
               title:
                 canonical: Interior Feature
@@ -212,41 +408,111 @@ starforged:
               content:
                 part_of_speech: [fragment]
               table:
-                - [1, 3, Ascending or descending path]
-                - [4, 6, Biological growths]
-                - [7, 8, Blood trail]
-                - [9, 10, Breached or ruptured area]
-                - [11, 13, Broken or inactive machinery]
-                - [14, 15, Clinging mist]
-                - [16, 18, Damage or debris]
-                - [19, 20, Echoing noises]
-                - [21, 22, Elevated path over chasm or shaft]
-                - [23, 25, Energy discharges]
-                - [26, 28, Enigmatic controls or terminal]
-                - [29, 30, Garden or invasive plant life]
-                - [31, 32, Inscrutable object lies dark and silent]
-                - [33, 35, Intersection or hub]
-                - [36, 38, Intricate symbols or pictographs]
-                - [39, 41, Looted or dismantled technology]
-                - [42, 44, Looted or empty containers]
-                - [45, 47, Mazelike passages]
-                - [48, 49, Moving platform or lift]
-                - [50, 52, Mummified or decayed corpses]
-                - [53, 55, Narrowing or widening path]
-                - [56, 58, Pooled liquid]
-                - [59, 61, Remains of intruders]
-                - [62, 63, Scattered bones]
-                - [64, 66, Scrawled markings]
-                - [67, 68, Signs of an attack or battle]
-                - [69, 71, Signs of invasive creatures]
-                - [72, 73, Surfaces honeycombed with openings]
-                - [74, 76, Unintelligible recorded message]
-                - [77, 79, Unintelligible whispers]
-                - [80, 82, Vaulted chamber]
-                - [83, 85, Vertical shaft]
-                - [86, 90, "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)", suggestions: {oracle_sets: [starforged/oracles/vaults/sanctum]}]
-                - [91, 95, *result:Descriptor+Focus]
-                - [96, 100, *result:RollTwice]
+                - floor: 1
+                  ceiling: 3
+                  result: Ascending or descending path
+                - floor: 4
+                  ceiling: 6
+                  result: Biological growths
+                - floor: 7
+                  ceiling: 8
+                  result: Blood trail
+                - floor: 9
+                  ceiling: 10
+                  result: Breached or ruptured area
+                - floor: 11
+                  ceiling: 13
+                  result: Broken or inactive machinery
+                - floor: 14
+                  ceiling: 15
+                  result: Clinging mist
+                - floor: 16
+                  ceiling: 18
+                  result: Damage or debris
+                - floor: 19
+                  ceiling: 20
+                  result: Echoing noises
+                - floor: 21
+                  ceiling: 22
+                  result: Elevated path over chasm or shaft
+                - floor: 23
+                  ceiling: 25
+                  result: Energy discharges
+                - floor: 26
+                  ceiling: 28
+                  result: Enigmatic controls or terminal
+                - floor: 29
+                  ceiling: 30
+                  result: Garden or invasive plant life
+                - floor: 31
+                  ceiling: 32
+                  result: Inscrutable object lies dark and silent
+                - floor: 33
+                  ceiling: 35
+                  result: Intersection or hub
+                - floor: 36
+                  ceiling: 38
+                  result: Intricate symbols or pictographs
+                - floor: 39
+                  ceiling: 41
+                  result: Looted or dismantled technology
+                - floor: 42
+                  ceiling: 44
+                  result: Looted or empty containers
+                - floor: 45
+                  ceiling: 47
+                  result: Mazelike passages
+                - floor: 48
+                  ceiling: 49
+                  result: Moving platform or lift
+                - floor: 50
+                  ceiling: 52
+                  result: Mummified or decayed corpses
+                - floor: 53
+                  ceiling: 55
+                  result: Narrowing or widening path
+                - floor: 56
+                  ceiling: 58
+                  result: Pooled liquid
+                - floor: 59
+                  ceiling: 61
+                  result: Remains of intruders
+                - floor: 62
+                  ceiling: 63
+                  result: Scattered bones
+                - floor: 64
+                  ceiling: 66
+                  result: Scrawled markings
+                - floor: 67
+                  ceiling: 68
+                  result: Signs of an attack or battle
+                - floor: 69
+                  ceiling: 71
+                  result: Signs of invasive creatures
+                - floor: 72
+                  ceiling: 73
+                  result: Surfaces honeycombed with openings
+                - floor: 74
+                  ceiling: 76
+                  result: Unintelligible recorded message
+                - floor: 77
+                  ceiling: 79
+                  result: Unintelligible whispers
+                - floor: 80
+                  ceiling: 82
+                  result: Vaulted chamber
+                - floor: 83
+                  ceiling: 85
+                  result: Vertical shaft
+                - floor: 86
+                  ceiling: 90
+                  result: "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)", suggestions: {oracle_sets: [starforged/oracles/vaults/sanctum]}
+                - floor: 91
+                  ceiling: 95
+                  result: *result:Descriptor+Focus
+                - floor: 96
+                  ceiling: 100
+                  result: *result:RollTwice
             peril:
               title:
                 canonical: Interior Peril
@@ -260,27 +526,69 @@ starforged:
                 part_of_speech: [fragment]
                 tags: [peril, event, present]
               table:
-                - [1, 5, Broken path]
-                - [6, 10, Change in atmosphere or environment]
-                - [11, 15, Corrosive environment]
-                - [16, 20, Dire warning left by other explorers]
-                - [21, 25, Foes close in]
-                - [26, 30, Fragile structural integrity]
-                - [31, 35, Hazardous path designed for traversal by other beings]
-                - [36, 40, Important gear malfunctions]
-                - [41, 45, Isolation or fear presses in]
-                - [46, 50, Mechanical trap]
-                - [51, 55, Mist or darkness conceals dangers]
-                - [56, 60, Puzzling mystery blocks the way]
-                - [61, 65, Radioactive hot spot]
-                - [66, 70, Rivals seek what lay within]
-                - [71, 75, Signs of a contagion]
-                - [76, 80, Signs of a lurking foe]
-                - [81, 85, Tempting location or object holds hidden dangers]
-                - [86, 90, Toxic atmosphere]
-                - [91, 95, Unnerving sound or sensation]
-                - [96, 99, *result:Action+Theme]
-                - [100, 100, *result:RollTwice]
+                - floor: 1
+                  ceiling: 5
+                  result: Broken path
+                - floor: 6
+                  ceiling: 10
+                  result: Change in atmosphere or environment
+                - floor: 11
+                  ceiling: 15
+                  result: Corrosive environment
+                - floor: 16
+                  ceiling: 20
+                  result: Dire warning left by other explorers
+                - floor: 21
+                  ceiling: 25
+                  result: Foes close in
+                - floor: 26
+                  ceiling: 30
+                  result: Fragile structural integrity
+                - floor: 31
+                  ceiling: 35
+                  result: Hazardous path designed for traversal by other beings
+                - floor: 36
+                  ceiling: 40
+                  result: Important gear malfunctions
+                - floor: 41
+                  ceiling: 45
+                  result: Isolation or fear presses in
+                - floor: 46
+                  ceiling: 50
+                  result: Mechanical trap
+                - floor: 51
+                  ceiling: 55
+                  result: Mist or darkness conceals dangers
+                - floor: 56
+                  ceiling: 60
+                  result: Puzzling mystery blocks the way
+                - floor: 61
+                  ceiling: 65
+                  result: Radioactive hot spot
+                - floor: 66
+                  ceiling: 70
+                  result: Rivals seek what lay within
+                - floor: 71
+                  ceiling: 75
+                  result: Signs of a contagion
+                - floor: 76
+                  ceiling: 80
+                  result: Signs of a lurking foe
+                - floor: 81
+                  ceiling: 85
+                  result: Tempting location or object holds hidden dangers
+                - floor: 86
+                  ceiling: 90
+                  result: Toxic atmosphere
+                - floor: 91
+                  ceiling: 95
+                  result: Unnerving sound or sensation
+                - floor: 96
+                  ceiling: 99
+                  result: *result:Action+Theme
+                - floor: 100
+                  ceiling: 100
+                  result: *result:RollTwice
             opportunity:
               title:
                 canonical: Interior Opportunity
@@ -294,16 +602,36 @@ starforged:
                 part_of_speech: [fragment]
                 tags: [opportunity]
               table:
-                - [1, 10, Clue points the way to your destination or target]
-                - [11, 20, Clue to a lifeform's nature or vulnerabilities]
-                - [21, 30, Helpful gear left by another explorer]
-                - [31, 40, Insight into the nature or history of this site]
-                - [41, 50, Intriguing device or artifact]
-                - [51, 60, Opening to get the drop on a foe]
-                - [61, 70, Opening to outmaneuver or escape a threat or foe]
-                - [71, 80, Salvageable resource]
-                - [81, 90, Secure area offers a moment of peace]
-                - [91, 100, Shortcut or less perilous path speeds your way]
+                - floor: 1
+                  ceiling: 10
+                  result: Clue points the way to your destination or target
+                - floor: 11
+                  ceiling: 20
+                  result: Clue to a lifeform's nature or vulnerabilities
+                - floor: 21
+                  ceiling: 30
+                  result: Helpful gear left by another explorer
+                - floor: 31
+                  ceiling: 40
+                  result: Insight into the nature or history of this site
+                - floor: 41
+                  ceiling: 50
+                  result: Intriguing device or artifact
+                - floor: 51
+                  ceiling: 60
+                  result: Opening to get the drop on a foe
+                - floor: 61
+                  ceiling: 70
+                  result: Opening to outmaneuver or escape a threat or foe
+                - floor: 71
+                  ceiling: 80
+                  result: Salvageable resource
+                - floor: 81
+                  ceiling: 90
+                  result: Secure area offers a moment of peace
+                - floor: 91
+                  ceiling: 100
+                  result: Shortcut or less perilous path speeds your way
         sanctum:
           title:
             canonical: Sanctum
@@ -311,7 +639,7 @@ starforged:
           display:
             icon: img/vector/Vaults/Sanctum.svg
           source:
-            license: https://creativecommons.org/licenses/by-sa/4.0
+            license: https://creativecommons.org/licenses/by/4.0
             authors: [Shawn Tomkin]
             title: "Ironsworn: Starforged Rulebook"
             date: 2022-05-06
@@ -327,35 +655,93 @@ starforged:
               description: |-
                 Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.
               table:
-                - [1, 3, Capture or control of other beings]
-                - [4, 6, Command or communication relay]
-                - [7, 9, Commemoration of an event]
-                - [10, 12, Conduit to mystical powers]
-                - [13, 16, Conservation of living specimens]
-                - [17, 20, Containment of a powerful being]
-                - [21, 24, Containment of dangerous creatures]
-                - [25, 27, Containment of weapons]
-                - [28, 31, Control of a destructive weapon]
-                - [32, 34, Generation of defenses or barriers]
-                - [35, 38, Generation or transformation of energy]
-                - [39, 41, Harvesting of resources]
-                - [42, 44, Interment of the dead]
-                - [45, 47, Manipulation of spacetime]
-                - [48, 50, Manufacturing of lifeforms]
-                - [51, 53, Manufacturing of machines or devices]
-                - [54, 56, Passage to another location]
-                - [57, 59, Preservation of an ancient intelligence]
-                - [60, 62, Preservation of maps or navigational data]
-                - [63, 66, Protection of a sacred artifact]
-                - [67, 69, Researching science or technology]
-                - [70, 73, Safekeeping of cultural records or memories]
-                - [74, 77, Shelter for inhabitants]
-                - [78, 80, Stockpiling of resources]
-                - [81, 83, Surveying or monitoring of a location]
-                - [84, 87, Transformation of terrain or environments]
-                - [88, 90, Worship of a god or being]
-                - [91, 95, *result:Action+Theme]
-                - [96, 100, *result:RollTwice]
+                - floor: 1
+                  ceiling: 3
+                  result: Capture or control of other beings
+                - floor: 4
+                  ceiling: 6
+                  result: Command or communication relay
+                - floor: 7
+                  ceiling: 9
+                  result: Commemoration of an event
+                - floor: 10
+                  ceiling: 12
+                  result: Conduit to mystical powers
+                - floor: 13
+                  ceiling: 16
+                  result: Conservation of living specimens
+                - floor: 17
+                  ceiling: 20
+                  result: Containment of a powerful being
+                - floor: 21
+                  ceiling: 24
+                  result: Containment of dangerous creatures
+                - floor: 25
+                  ceiling: 27
+                  result: Containment of weapons
+                - floor: 28
+                  ceiling: 31
+                  result: Control of a destructive weapon
+                - floor: 32
+                  ceiling: 34
+                  result: Generation of defenses or barriers
+                - floor: 35
+                  ceiling: 38
+                  result: Generation or transformation of energy
+                - floor: 39
+                  ceiling: 41
+                  result: Harvesting of resources
+                - floor: 42
+                  ceiling: 44
+                  result: Interment of the dead
+                - floor: 45
+                  ceiling: 47
+                  result: Manipulation of spacetime
+                - floor: 48
+                  ceiling: 50
+                  result: Manufacturing of lifeforms
+                - floor: 51
+                  ceiling: 53
+                  result: Manufacturing of machines or devices
+                - floor: 54
+                  ceiling: 56
+                  result: Passage to another location
+                - floor: 57
+                  ceiling: 59
+                  result: Preservation of an ancient intelligence
+                - floor: 60
+                  ceiling: 62
+                  result: Preservation of maps or navigational data
+                - floor: 63
+                  ceiling: 66
+                  result: Protection of a sacred artifact
+                - floor: 67
+                  ceiling: 69
+                  result: Researching science or technology
+                - floor: 70
+                  ceiling: 73
+                  result: Safekeeping of cultural records or memories
+                - floor: 74
+                  ceiling: 77
+                  result: Shelter for inhabitants
+                - floor: 78
+                  ceiling: 80
+                  result: Stockpiling of resources
+                - floor: 81
+                  ceiling: 83
+                  result: Surveying or monitoring of a location
+                - floor: 84
+                  ceiling: 87
+                  result: Transformation of terrain or environments
+                - floor: 88
+                  ceiling: 90
+                  result: Worship of a god or being
+                - floor: 91
+                  ceiling: 95
+                  result: *result:Action+Theme
+                - floor: 96
+                  ceiling: 100
+                  result: *result:RollTwice
             feature:
               source:
                 page: 368
@@ -367,41 +753,111 @@ starforged:
               content:
                 part_of_speech: [fragment]
               table:
-                - [1, 2, Abyssal pit or chasm]
-                - [3, 5, Altered gravity]
-                - [6, 7, Area filled with strange liquid]
-                - [8, 10, Area humming with aberrant energy]
-                - [11, 13, Blasted or wrecked area]
-                - [14, 16, Central chamber of immense proportions or grandeur]
-                - [17, 19, Colossal machine]
-                - [20, 21, Corrupted plant life]
-                - [22, 24, Enigmatic mechanisms come to life]
-                - [25, 26, Haze of spores or nanomachines]
-                - [27, 28, Incomprehensible architecture or geometry]
-                - [29, 31, Incongruent space contradicts the nature of this site]
-                - [32, 34, Inscrutable object emits sound and energy]
-                - [35, 37, Machinery fused with organic growths]
-                - [38, 40, Moving chamber or passage]
-                - [41, 43, Mutated remains of the dead]
-                - [44, 46, Nest of invasive creatures]
-                - [47, 49, Pockets or layers of altered atmosphere]
-                - [50, 51, Pods or chambers with preserved corpses]
-                - [52, 54, Pools of strange liquid]
-                - [55, 57, Pulsating surfaces]
-                - [58, 60, Rampant biological infestation]
-                - [61, 63, Repository of biological specimens]
-                - [64, 66, Sealed chamber]
-                - [67, 69, Sealed containers of inscrutable purpose]
-                - [70, 72, Simulated or illusionary environment]
-                - [73, 74, Surfaces covered in slime or fungus]
-                - [75, 76, Temporal distortions]
-                - [77, 79, Transforming spaces]
-                - [80, 82, Visions of this place in another time]
-                - [83, 85, Visions or reflections of another reality]
-                - [86, 88, Warped or misshapen spaces]
-                - [89, 90, Whispering voices speak to you]
-                - [91, 95, *result:Descriptor+Focus]
-                - [96, 100, *result:RollTwice]
+                - floor: 1
+                  ceiling: 2
+                  result: Abyssal pit or chasm
+                - floor: 3
+                  ceiling: 5
+                  result: Altered gravity
+                - floor: 6
+                  ceiling: 7
+                  result: Area filled with strange liquid
+                - floor: 8
+                  ceiling: 10
+                  result: Area humming with aberrant energy
+                - floor: 11
+                  ceiling: 13
+                  result: Blasted or wrecked area
+                - floor: 14
+                  ceiling: 16
+                  result: Central chamber of immense proportions or grandeur
+                - floor: 17
+                  ceiling: 19
+                  result: Colossal machine
+                - floor: 20
+                  ceiling: 21
+                  result: Corrupted plant life
+                - floor: 22
+                  ceiling: 24
+                  result: Enigmatic mechanisms come to life
+                - floor: 25
+                  ceiling: 26
+                  result: Haze of spores or nanomachines
+                - floor: 27
+                  ceiling: 28
+                  result: Incomprehensible architecture or geometry
+                - floor: 29
+                  ceiling: 31
+                  result: Incongruent space contradicts the nature of this site
+                - floor: 32
+                  ceiling: 34
+                  result: Inscrutable object emits sound and energy
+                - floor: 35
+                  ceiling: 37
+                  result: Machinery fused with organic growths
+                - floor: 38
+                  ceiling: 40
+                  result: Moving chamber or passage
+                - floor: 41
+                  ceiling: 43
+                  result: Mutated remains of the dead
+                - floor: 44
+                  ceiling: 46
+                  result: Nest of invasive creatures
+                - floor: 47
+                  ceiling: 49
+                  result: Pockets or layers of altered atmosphere
+                - floor: 50
+                  ceiling: 51
+                  result: Pods or chambers with preserved corpses
+                - floor: 52
+                  ceiling: 54
+                  result: Pools of strange liquid
+                - floor: 55
+                  ceiling: 57
+                  result: Pulsating surfaces
+                - floor: 58
+                  ceiling: 60
+                  result: Rampant biological infestation
+                - floor: 61
+                  ceiling: 63
+                  result: Repository of biological specimens
+                - floor: 64
+                  ceiling: 66
+                  result: Sealed chamber
+                - floor: 67
+                  ceiling: 69
+                  result: Sealed containers of inscrutable purpose
+                - floor: 70
+                  ceiling: 72
+                  result: Simulated or illusionary environment
+                - floor: 73
+                  ceiling: 74
+                  result: Surfaces covered in slime or fungus
+                - floor: 75
+                  ceiling: 76
+                  result: Temporal distortions
+                - floor: 77
+                  ceiling: 79
+                  result: Transforming spaces
+                - floor: 80
+                  ceiling: 82
+                  result: Visions of this place in another time
+                - floor: 83
+                  ceiling: 85
+                  result: Visions or reflections of another reality
+                - floor: 86
+                  ceiling: 88
+                  result: Warped or misshapen spaces
+                - floor: 89
+                  ceiling: 90
+                  result: Whispering voices speak to you
+                - floor: 91
+                  ceiling: 95
+                  result: *result:Descriptor+Focus
+                - floor: 96
+                  ceiling: 100
+                  result: *result:RollTwice
             peril:
               source:
                 page: 369
@@ -414,27 +870,69 @@ starforged:
                 part_of_speech: [fragment]
                 tags: [peril, event, present]
               table:
-                - [1, 5, Camouflaged or transforming foe reveals itself]
-                - [6, 10, Confounding distortions of the timestream]
-                - [11, 15, Destructive environmental disturbance]
-                - [16, 20, Horrifying fate for a previous intruder]
-                - [21, 25, Important equipment rendered useless]
-                - [26, 30, Led astray or lured into danger by a manifestation or illusion]
-                - [31, 35, Lost the way or separated from others]
-                - [36, 40, Manifestations prey upon your weaknesses or worries]
-                - [41, 45, Other intruders have been corrupted or mutated by this place]
-                - [46, 50, Paranoia or suspicion takes hold]
-                - [51, 55, Path behind you is sealed]
-                - [56, 60, Powerful foe strikes without warning]
-                - [61, 65, Restless dead awaken]
-                - [66, 70, Scene of hideous violence or death]
-                - [71, 75, Snared in an unnatural trap]
-                - [76, 80, Spawning or swarming foes surround you]
-                - [81, 85, Sudden structural collapse or failure]
-                - [86, 90, Temptations to linger or remain in this site]
-                - [91, 95, You are marked by physical corruption or mutation]
-                - [96, 99, *result:Action+Theme]
-                - [100, 100, *result:RollTwice]
+                - floor: 1
+                  ceiling: 5
+                  result: Camouflaged or transforming foe reveals itself
+                - floor: 6
+                  ceiling: 10
+                  result: Confounding distortions of the timestream
+                - floor: 11
+                  ceiling: 15
+                  result: Destructive environmental disturbance
+                - floor: 16
+                  ceiling: 20
+                  result: Horrifying fate for a previous intruder
+                - floor: 21
+                  ceiling: 25
+                  result: Important equipment rendered useless
+                - floor: 26
+                  ceiling: 30
+                  result: Led astray or lured into danger by a manifestation or illusion
+                - floor: 31
+                  ceiling: 35
+                  result: Lost the way or separated from others
+                - floor: 36
+                  ceiling: 40
+                  result: Manifestations prey upon your weaknesses or worries
+                - floor: 41
+                  ceiling: 45
+                  result: Other intruders have been corrupted or mutated by this place
+                - floor: 46
+                  ceiling: 50
+                  result: Paranoia or suspicion takes hold
+                - floor: 51
+                  ceiling: 55
+                  result: Path behind you is sealed
+                - floor: 56
+                  ceiling: 60
+                  result: Powerful foe strikes without warning
+                - floor: 61
+                  ceiling: 65
+                  result: Restless dead awaken
+                - floor: 66
+                  ceiling: 70
+                  result: Scene of hideous violence or death
+                - floor: 71
+                  ceiling: 75
+                  result: Snared in an unnatural trap
+                - floor: 76
+                  ceiling: 80
+                  result: Spawning or swarming foes surround you
+                - floor: 81
+                  ceiling: 85
+                  result: Sudden structural collapse or failure
+                - floor: 86
+                  ceiling: 90
+                  result: Temptations to linger or remain in this site
+                - floor: 91
+                  ceiling: 95
+                  result: You are marked by physical corruption or mutation
+                - floor: 96
+                  ceiling: 99
+                  result: *result:Action+Theme
+                - floor: 100
+                  ceiling: 100
+                  result: *result:RollTwice
             opportunity:
               title:
                 canonical: Sanctum Opportunity
@@ -447,15 +945,35 @@ starforged:
                 part_of_speech: [fragment]
                 tags: [opportunity]
               table:
-                - [1, 10, Access to a secret or protected area]
-                - [11, 20, Clue points the way to your destination or target]
-                - [21, 30, Comforting illusion or vision]
-                - [31, 40, Control or terminal adjusts to accept your input]
-                - [41, 50, Deeper insight into the history or nature of this site]
-                - [51, 60, Device or artifact reveals its purpose]
-                - [61, 70, Environment adjusts to better suit you]
-                - [71, 80, Foes stand down or give way]
-                - [81, 90, Key offers control of a function or aspect of this site]
-                - [91, 100, Shortcut or less perilous path speeds your way]
+                - floor: 1
+                  ceiling: 10
+                  result: Access to a secret or protected area
+                - floor: 11
+                  ceiling: 20
+                  result: Clue points the way to your destination or target
+                - floor: 21
+                  ceiling: 30
+                  result: Comforting illusion or vision
+                - floor: 31
+                  ceiling: 40
+                  result: Control or terminal adjusts to accept your input
+                - floor: 41
+                  ceiling: 50
+                  result: Deeper insight into the history or nature of this site
+                - floor: 51
+                  ceiling: 60
+                  result: Device or artifact reveals its purpose
+                - floor: 61
+                  ceiling: 70
+                  result: Environment adjusts to better suit you
+                - floor: 71
+                  ceiling: 80
+                  result: Foes stand down or give way
+                - floor: 81
+                  ceiling: 90
+                  result: Key offers control of a function or aspect of this site
+                - floor: 91
+                  ceiling: 100
+                  result: Shortcut or less perilous path speeds your way
 
 

@@ -30,26 +30,166 @@ starforged:
             part_of_speech: [noun, common noun]
             tags: [actor]
           table:
-            - [1, 5, Battlefield Medic, "[Healer](starforged/assets/path/healer); [Veteran](starforged/assets/path/veteran)", suggestions: {assets: [starforged/assets/path/healer, starforged/assets/path/veteran]}]
-            - [6, 10, Delegate, "[Bannersworn](starforged/assets/path/bannersworn); [Diplomat](starforged/assets/path/diplomat)", suggestions: {assets: [starforged/assets/path/bannersworn, starforged/assets/path/diplomat]}]
-            - [11, 15, Exobiologist, "[Lore Hunter](starforged/assets/path/hunter); [Naturalist](starforged/assets/path/naturalist)", suggestions: {assets: [starforged/assets/path/lore Hunter, starforged/assets/path/naturalist]}]
-            - [16, 20, Far Trader, "[Navigator](starforged/assets/path/navigator); [Trader](starforged/assets/path/trader)", suggestions: {assets: [starforged/assets/path/navigator, starforged/assets/path/trader]}]
-            - [21, 25, Fugitive Hunter, "[Armored](starforged/assets/path/armored); [Bounty Hunter](starforged/assets/path/bounty_hunter)", suggestions: {assets: [starforged/assets/path/armored, starforged/assets/path/bounty Hunter]}]
-            - [26, 30, Hacker, "[Infiltrator](starforged/assets/path/infiltrator); [Tech](starforged/assets/path/tech)", suggestions: {assets: [starforged/assets/path/infiltrator, starforged/assets/path/tech]}]
-            - [31, 35, Hotshot Pilot, "[Ace](starforged/assets/path/ace); [Navigator](starforged/assets/path/navigator)", suggestions: {assets: [starforged/assets/path/ace, starforged/assets/path/navigator]}]
-            - [36, 40, Interstellar Scout, "[Explorer](starforged/assets/path/explorer); [Voidborn](starforged/assets/path/voidborn)", suggestions: {assets: [starforged/assets/path/explorer, starforged/assets/path/voidborn]}]
-            - [41, 45, Monster Hunter, "[Gunner](starforged/assets/path/gunner); [Slayer](starforged/assets/path/slayer)", suggestions: {assets: [starforged/assets/path/gunner, starforged/assets/path/slayer]}]
-            - [46, 50, Occultist, "[Outcast](starforged/assets/path/outcast); [Shade](starforged/assets/path/shade)", suggestions: {assets: [starforged/assets/path/outcast, starforged/assets/path/shade]}]
-            - [51, 55, Operative, "[Infiltrator](starforged/assets/path/infiltrator); [Blademaster](starforged/assets/path/blademaster)", suggestions: {assets: [starforged/assets/path/infiltrator, starforged/assets/path/blademaster]}]
-            - [56, 60, Outlaw, "[Fugitive](starforged/assets/path/fugitive); [Gunslinger](starforged/assets/path/gunslinger)", suggestions: {assets: [starforged/assets/path/fugitive, starforged/assets/path/gunslinger]}]
-            - [61, 65, Private Investigator, "[Brawler](starforged/assets/path/brawler); [Sleuth](starforged/assets/path/sleuth)", suggestions: {assets: [starforged/assets/path/brawler, starforged/assets/path/sleuth]}]
-            - [66, 70, Prophet, "[Devotant](starforged/assets/path/devotant); [Seer](starforged/assets/path/seer)", suggestions: {assets: [starforged/assets/path/devotant, starforged/assets/path/seer]}]
-            - [71, 75, Psionicist, "[Kinetic](starforged/assets/path/kinetic); [Vestige](starforged/assets/path/vestige)", suggestions: {assets: [starforged/assets/path/kinetic, starforged/assets/path/vestige]}]
-            - [76, 80, Smuggler, "[Courier](starforged/assets/path/courier); [Scoundrel](starforged/assets/path/scoundrel)", suggestions: {assets: [starforged/assets/path/courier, starforged/assets/path/scoundrel]}]
-            - [81, 85, Spiritualist, "[Haunted](starforged/assets/path/haunted); [Empath](starforged/assets/path/empath)", suggestions: {assets: [starforged/assets/path/haunted, starforged/assets/path/empath]}]
-            - [86, 90, Starship Engineer, "[Gearhead](starforged/assets/path/gearhead); [Tech](starforged/assets/path/tech)", suggestions: {assets: [starforged/assets/path/gearhead, starforged/assets/path/tech]}]
-            - [91, 95, Supersoldier, "[Augmented](starforged/assets/path/augmented); [Mercenary](starforged/assets/path/mercenary)", suggestions: {assets: [starforged/assets/path/augmented, starforged/assets/path/mercenary]}]
-            - [96, 100, Tomb Raider, "[Scavenger](starforged/assets/path/scavenger); [Scoundrel](starforged/assets/path/scoundrel)", suggestions: {assets: [starforged/assets/path/scavenger, starforged/assets/path/scoundrel]}]
+            - floor: 1
+              ceiling: 5
+              result: Battlefield Medic
+              summary: "[Healer](starforged/assets/path/healer); [Veteran](starforged/assets/path/veteran)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/healer
+                  - starforged/assets/path/veteran
+            - floor: 6
+              ceiling: 10
+              result: Delegate
+              summary: "[Bannersworn](starforged/assets/path/bannersworn); [Diplomat](starforged/assets/path/diplomat)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/bannersworn
+                  - starforged/assets/path/diplomat
+            - floor: 11
+              ceiling: 15
+              result: Exobiologist
+              summary: "[Lore Hunter](starforged/assets/path/lore_hunter); [Naturalist](starforged/assets/path/naturalist)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/lore_hunter
+                  - starforged/assets/path/naturalist
+            - floor: 16
+              ceiling: 20
+              result: Far Trader
+              summary: "[Navigator](starforged/assets/path/navigator); [Trader](starforged/assets/path/trader)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/navigator
+                  - starforged/assets/path/trader
+            - floor: 21
+              ceiling: 25
+              result: Fugitive Hunter
+              summary: "[Armored](starforged/assets/path/armored); [Bounty Hunter](starforged/assets/path/bounty_hunter)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/armored
+                  - starforged/assets/path/bounty_hunter
+            - floor: 26
+              ceiling: 30
+              result: Hacker
+              summary: "[Infiltrator](starforged/assets/path/infiltrator); [Tech](starforged/assets/path/tech)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/infiltrator
+                  - starforged/assets/path/tech
+            - floor: 31
+              ceiling: 35
+              result: Hotshot Pilot
+              summary: "[Ace](starforged/assets/path/ace); [Navigator](starforged/assets/path/navigator)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/ace
+                  - starforged/assets/path/navigator
+            - floor: 36
+              ceiling: 40
+              result: Interstellar Scout
+              summary: "[Explorer](starforged/assets/path/explorer); [Voidborn](starforged/assets/path/voidborn)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/explorer
+                  - starforged/assets/path/voidborn
+            - floor: 41
+              ceiling: 45
+              result: Monster Hunter
+              summary: "[Gunner](starforged/assets/path/gunner); [Slayer](starforged/assets/path/slayer)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/gunner
+                  - starforged/assets/path/slayer
+            - floor: 46
+              ceiling: 50
+              result: Occultist
+              summary: "[Outcast](starforged/assets/path/outcast); [Shade](starforged/assets/path/shade)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/outcast
+                  - starforged/assets/path/shade
+            - floor: 51
+              ceiling: 55
+              result: Operative
+              summary: "[Infiltrator](starforged/assets/path/infiltrator); [Blademaster](starforged/assets/path/blademaster)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/infiltrator
+                  - starforged/assets/path/blademaster
+            - floor: 56
+              ceiling: 60
+              result: Outlaw
+              summary: "[Fugitive](starforged/assets/path/fugitive); [Gunslinger](starforged/assets/path/gunslinger)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/fugitive
+                  - starforged/assets/path/gunslinger
+            - floor: 61
+              ceiling: 65
+              result: Private Investigator
+              summary: "[Brawler](starforged/assets/path/brawler); [Sleuth](starforged/assets/path/sleuth)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/brawler
+                  - starforged/assets/path/sleuth
+            - floor: 66
+              ceiling: 70
+              result: Prophet
+              summary: "[Devotant](starforged/assets/path/devotant); [Seer](starforged/assets/path/seer)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/devotant
+                  - starforged/assets/path/seer
+            - floor: 71
+              ceiling: 75
+              result: Psionicist
+              summary: "[Kinetic](starforged/assets/path/kinetic); [Vestige](starforged/assets/path/vestige)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/kinetic
+                  - starforged/assets/path/vestige
+            - floor: 76
+              ceiling: 80
+              result: Smuggler
+              summary: "[Courier](starforged/assets/path/courier); [Scoundrel](starforged/assets/path/scoundrel)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/courier
+                  - starforged/assets/path/scoundrel
+            - floor: 81
+              ceiling: 85
+              result: Spiritualist
+              summary: "[Haunted](starforged/assets/path/haunted); [Empath](starforged/assets/path/empath)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/haunted
+                  - starforged/assets/path/empath
+            - floor: 86
+              ceiling: 90
+              result: Starship Engineer
+              summary: "[Gearhead](starforged/assets/path/gearhead); [Tech](starforged/assets/path/tech)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/gearhead
+                  - starforged/assets/path/tech
+            - floor: 91
+              ceiling: 95
+              result: Supersoldier
+              summary: "[Augmented](starforged/assets/path/augmented); [Mercenary](starforged/assets/path/mercenary)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/augmented
+                  - starforged/assets/path/mercenary
+            - floor: 96
+              ceiling: 100
+              result: Tomb Raider
+              summary: "[Scavenger](starforged/assets/path/scavenger); [Scoundrel](starforged/assets/path/scoundrel)"
+              suggestions:
+                assets:
+                  - starforged/assets/path/scavenger
+                  - starforged/assets/path/scoundrel
         backstory_prompts:
           title:
             canonical: Backstory Prompts
@@ -61,21 +201,51 @@ starforged:
             part_of_speech: [fragment]
             tags: [event, past]
           table:
-            - [1, 7, "You abandoned your kin after learning a troubling truth"]
-            - [8, 13, "You are guided by a vision or prophecy"]
-            - [14, 20, "You are haunted by past actions or failures"]
-            - [21, 27, "You are running from a criminal past"]
-            - [28, 34, "You are the sole survivor of an attack or calamity"]
-            - [35, 40, "You escaped an abusive or unjust situation"]
-            - [41, 46, "You have no memory of your former life"]
-            - [47, 53, "You rejected a duty or destiny"]
-            - [54, 60, "You were banished from your former home"]
-            - [61, 67, "You were denied a birthright"]
-            - [68, 74, "You were on your own for as long as you can remember"]
-            - [75, 81, "You were sent away on a prolonged mission"]
-            - [82, 87, "You were taken or lured away by someone"]
-            - [88, 94, "Your ambitions outgrew your humble origins"]
-            - [95, 100, "Your wanderlust carried you far away"]
+            - floor: 1
+              ceiling: 7
+              result: "You abandoned your kin after learning a troubling truth"
+            - floor: 8
+              ceiling: 13
+              result: "You are guided by a vision or prophecy"
+            - floor: 14
+              ceiling: 20
+              result: "You are haunted by past actions or failures"
+            - floor: 21
+              ceiling: 27
+              result: "You are running from a criminal past"
+            - floor: 28
+              ceiling: 34
+              result: "You are the sole survivor of an attack or calamity"
+            - floor: 35
+              ceiling: 40
+              result: "You escaped an abusive or unjust situation"
+            - floor: 41
+              ceiling: 46
+              result: "You have no memory of your former life"
+            - floor: 47
+              ceiling: 53
+              result: "You rejected a duty or destiny"
+            - floor: 54
+              ceiling: 60
+              result: "You were banished from your former home"
+            - floor: 61
+              ceiling: 67
+              result: "You were denied a birthright"
+            - floor: 68
+              ceiling: 74
+              result: "You were on your own for as long as you can remember"
+            - floor: 75
+              ceiling: 81
+              result: "You were sent away on a prolonged mission"
+            - floor: 82
+              ceiling: 87
+              result: "You were taken or lured away by someone"
+            - floor: 88
+              ceiling: 94
+              result: "Your ambitions outgrew your humble origins"
+            - floor: 95
+              ceiling: 100
+              result: "Your wanderlust carried you far away"
         starship_history:
           title:
             canonical: Starship History
@@ -87,18 +257,42 @@ starforged:
             part_of_speech: [fragment]
             tags: [event, past]
           table:
-            - [1, 8, "Acquired in trade for a precious family heirloom"]
-            - [9, 17, "Built out of repurposed scrap"]
-            - [18, 25, "Claimed as spoils of war"]
-            - [26, 34, "Discovered as a derelict, and patched back together"]
-            - [35, 42, "Earned in exchange for a promise or vow"]
-            - [43, 50, "Found abandoned in perfect condition"]
-            - [51, 58, "Granted by an organization or community"]
-            - [59, 67, "Inherited from a relative or mentor"]
-            - [68, 75, "Purchased at a suspiciously cheap price"]
-            - [76, 84, "Stolen from a notorious crime boss or criminal organization"]
-            - [85, 92, "Taken while fleeing an attack or disaster"]
-            - [93, 100, "Won in a bet"]
+            - floor: 1
+              ceiling: 8
+              result: "Acquired in trade for a precious family heirloom"
+            - floor: 9
+              ceiling: 17
+              result: "Built out of repurposed scrap"
+            - floor: 18
+              ceiling: 25
+              result: "Claimed as spoils of war"
+            - floor: 26
+              ceiling: 34
+              result: "Discovered as a derelict, and patched back together"
+            - floor: 35
+              ceiling: 42
+              result: "Earned in exchange for a promise or vow"
+            - floor: 43
+              ceiling: 50
+              result: "Found abandoned in perfect condition"
+            - floor: 51
+              ceiling: 58
+              result: "Granted by an organization or community"
+            - floor: 59
+              ceiling: 67
+              result: "Inherited from a relative or mentor"
+            - floor: 68
+              ceiling: 75
+              result: "Purchased at a suspiciously cheap price"
+            - floor: 76
+              ceiling: 84
+              result: "Stolen from a notorious crime boss or criminal organization"
+            - floor: 85
+              ceiling: 92
+              result: "Taken while fleeing an attack or disaster"
+            - floor: 93
+              ceiling: 100
+              result: "Won in a bet"
         starship_quirks:
           title:
             canonical: Starship Quirks
@@ -112,26 +306,66 @@ starforged:
           usage:
             max_rolls: 2
           table:
-            - [1, 5, "Engine room is scorched with old burn marks"]
-            - [6, 10, "Exterior is marred by rust and grime"]
-            - [11, 15, "Faint, phantom music sometimes echoes through the corridors"]
-            - [16, 20, "Gravity generator is notoriously fickle"]
-            - [21, 25, "Hull is fused with organic growths"]
-            - [26, 30, "Hull rattles and groans in atmospheric flight"]
-            - [31, 35, "Interior spaces are crowded with exposed cables and conduits"]
-            - [36, 40, "Looks defenseless, but exterior panels open to reveal weapons"]
-            - [41, 45, "Navigation logs contain coordinates to locations that do not—or should not—exist"]
-            - [46, 50, "Old bloodstain in the airlock reappears even when painted over"]
-            - [51, 55, "Once a beautiful ship, now scarred by a devastating battle"]
-            - [56, 60, "Patched hull covers a recent catastrophic breach"]
-            - [61, 65, "Placards and control labels are in an uncommon language"]
-            - [66, 70, "Removable plate decks provide access to hidden storage"]
-            - [71, 75, "Segmented landing gear unfold like gangly spider legs"]
-            - [76, 80, "Ship is powered by an ancient precursor device"]
-            - [81, 85, "Someone marked the hull with graffiti during a recent layover"]
-            - [86, 90, "Strange symbols are scrawled on the deck and bulkheads in the main corridor"]
-            - [91, 95, "Things tend to go missing for no logical reason"]
-            - [96, 100, "Timers and clocks are always just a bit off"]
+            - floor: 1
+              ceiling: 5
+              result: "Engine room is scorched with old burn marks"
+            - floor: 6
+              ceiling: 10
+              result: "Exterior is marred by rust and grime"
+            - floor: 11
+              ceiling: 15
+              result: "Faint, phantom music sometimes echoes through the corridors"
+            - floor: 16
+              ceiling: 20
+              result: "Gravity generator is notoriously fickle"
+            - floor: 21
+              ceiling: 25
+              result: "Hull is fused with organic growths"
+            - floor: 26
+              ceiling: 30
+              result: "Hull rattles and groans in atmospheric flight"
+            - floor: 31
+              ceiling: 35
+              result: "Interior spaces are crowded with exposed cables and conduits"
+            - floor: 36
+              ceiling: 40
+              result: "Looks defenseless, but exterior panels open to reveal weapons"
+            - floor: 41
+              ceiling: 45
+              result: "Navigation logs contain coordinates to locations that do not—or should not—exist"
+            - floor: 46
+              ceiling: 50
+              result: "Old bloodstain in the airlock reappears even when painted over"
+            - floor: 51
+              ceiling: 55
+              result: "Once a beautiful ship, now scarred by a devastating battle"
+            - floor: 56
+              ceiling: 60
+              result: "Patched hull covers a recent catastrophic breach"
+            - floor: 61
+              ceiling: 65
+              result: "Placards and control labels are in an uncommon language"
+            - floor: 66
+              ceiling: 70
+              result: "Removable plate decks provide access to hidden storage"
+            - floor: 71
+              ceiling: 75
+              result: "Segmented landing gear unfold like gangly spider legs"
+            - floor: 76
+              ceiling: 80
+              result: "Ship is powered by an ancient precursor device"
+            - floor: 81
+              ceiling: 85
+              result: "Someone marked the hull with graffiti during a recent layover"
+            - floor: 86
+              ceiling: 90
+              result: "Strange symbols are scrawled on the deck and bulkheads in the main corridor"
+            - floor: 91
+              ceiling: 95
+              result: "Things tend to go missing for no logical reason"
+            - floor: 96
+              ceiling: 100
+              result: "Timers and clocks are always just a bit off"
         sector_trouble:
           title:
             canonical: Sector Trouble
@@ -141,28 +375,82 @@ starforged:
             part_of_speech: [fragment]
             tags: [peril, event, present]
           table:
-            - [1, 5, "Blockade prevents trade with other sectors"]
-            - [6, 10, "Bounty hunters search for an infamous fugitive", suggestions: [*obj:Npc]]
+            - floor: 1
+              ceiling: 5
+              result: "Blockade prevents trade with other sectors"
+            - floor: 6
+              ceiling: 10
+              result: "Bounty hunters search for an infamous fugitive"
+              # suggestions: [*obj:Npc]
             # todo: some kind of faction? hmm
-            - [11, 15, "Chaotic breaches in spacetime spread like wildfire"]
-            - [16, 20, "Criminal faction corrupts local authorities", suggestions: [*obj:Faction.FringeGroup]]
+            - floor: 11
+              ceiling: 15
+              result: "Chaotic breaches in spacetime spread like wildfire"
+            - floor: 16
+              ceiling: 20
+              result: "Criminal faction corrupts local authorities"
+              # suggestions: [*obj:Faction.FringeGroup]
             # faction?
-            - [21, 25, "Devastating superweapon has fallen into the wrong hands", suggestions: [*obj:Faction, *obj:Npc]]
-            - [26, 30, "Energy storms are rampant"]
-            - [31, 35, "Magnetic disturbances disrupt communication"]
-            - [36, 40, "Newly found resource lures greedy fortune hunters to the sector", suggestions: [*roll:Object]]
-            - [41, 45, "Notorious pirate clan preys on starships", suggestions: [*obj:Faction.FringeGroup]]
-            - [46, 50, "Parasitic lifeforms spread like a plague", suggestions: [*obj:Creature]]
-            - [51, 55, "Precursor sites throughout the sector emit strange signals", suggestions: [*obj:Vault]]
-            - [56, 60, "Prophecies foretell an imminent awakening of a dreadful power"]
-            - [61, 65, "Raider clan emerges as a dominant threat under a new leader", suggestions: [*obj:Faction.FringeGroup]]
-            - [66, 70, "Religious zealots overrun the sector", suggestions: [*obj:Faction.FringeGroup]]
-            - [71, 75, "Rogue AI infiltrates systems throughout the sector", suggestions: [*obj:Faction.FringeGroup]]
-            - [76, 80, "Settlements or factions are on the brink of war", suggestions: [*obj:Settlement, *obj:Faction]]
-            - [81, 85, "Ships regularly go missing", suggestions: [*obj:Starship]]
-            - [86, 90, "Sickness spreads among ships and settlements", suggestions: [*obj:Starship, *obj:Settlement]]
-            - [91, 95, "Supernova is imminent"]
-            - [96, 100, "Titanic spaceborne lifeform stalks the spaceways", suggestions: [*obj:Creature]]
+            - floor: 21
+              ceiling: 25
+              result: "Devastating superweapon has fallen into the wrong hands"
+              # suggestions: [*obj:Faction, *obj:Npc]
+            - floor: 26
+              ceiling: 30
+              result: "Energy storms are rampant"
+            - floor: 31
+              ceiling: 35
+              result: "Magnetic disturbances disrupt communication"
+            - floor: 36
+              ceiling: 40
+              result: "Newly found resource lures greedy fortune hunters to the sector"
+              # suggestions: [*roll:Object]
+            - floor: 41
+              ceiling: 45
+              result: "Notorious pirate clan preys on starships"
+              # suggestions: [*obj:Faction.FringeGroup]
+            - floor: 46
+              ceiling: 50
+              result: "Parasitic lifeforms spread like a plague"
+              # suggestions: [*obj:Creature]
+            - floor: 51
+              ceiling: 55
+              result: "Precursor sites throughout the sector emit strange signals"
+              # suggestions: [*obj:Vault]
+            - floor: 56
+              ceiling: 60
+              result: "Prophecies foretell an imminent awakening of a dreadful power"
+            - floor: 61
+              ceiling: 65
+              result: "Raider clan emerges as a dominant threat under a new leader"
+              # suggestions: [*obj:Faction.FringeGroup]
+            - floor: 66
+              ceiling: 70
+              result: "Religious zealots overrun the sector"
+              # suggestions: [*obj:Faction.FringeGroup]
+            - floor: 71
+              ceiling: 75
+              result: "Rogue AI infiltrates systems throughout the sector"
+              # suggestions: [*obj:Faction.FringeGroup]
+            - floor: 76
+              ceiling: 80
+              result: "Settlements or factions are on the brink of war"
+              # suggestions: [*obj:Settlement, *obj:Faction]
+            - floor: 81
+              ceiling: 85
+              result: "Ships regularly go missing"
+              # suggestions: [*obj:Starship]
+            - floor: 86
+              ceiling: 90
+              result: "Sickness spreads among ships and settlements"
+              # suggestions: [*obj:Starship, *obj:Settlement]
+            - floor: 91
+              ceiling: 95
+              result: "Supernova is imminent"
+            - floor: 96
+              ceiling: 100
+              result: "Titanic spaceborne lifeform stalks the spaceways"
+              # suggestions: [*obj:Creature]
         inciting_incident:
           title:
             canonical: Inciting Incident
@@ -172,24 +460,84 @@ starforged:
             part_of_speech: [fragment]
             tags: [objective]
           table:
-            - [1, 5, "Aid a starship caught in a spacetime fracture", suggestions: [*obj:Starship]]
-            - [6, 10, "Broker peace between two feuding settlements", suggestions: [*obj:Settlement]]
-            - [11, 15, "Chart a new passage between isolated settlements", suggestions: [*obj:Settlement]]
-            - [16, 20, "Defend the people of a beleaguered settlement against raiders", suggestions: [*obj:Settlement]]
-            - [21, 25, "Discover who sabotaged a settlement's air processors", suggestions: [*obj:Settlement]]
-            - [26, 30, "Escort a tradeship carrying a prized cargo", suggestions: [*obj:Starship, *roll:Object]]
-            - [31, 35, "Ferry a rescue team to a perilous disaster site", suggestions: [*roll:Place]]
+            - floor: 1
+              ceiling: 5
+              result: "Aid a starship caught in a spacetime fracture"
+              # suggestions: [*obj:Starship]
+            - floor: 6
+              ceiling: 10
+              result: "Broker peace between two feuding settlements"
+              # suggestions: [*obj:Settlement]
+            - floor: 11
+              ceiling: 15
+              result: "Chart a new passage between isolated settlements"
+              # suggestions: [*obj:Settlement]
+            - floor: 16
+              ceiling: 20
+              result: "Defend the people of a beleaguered settlement against raiders"
+              # suggestions: [*obj:Settlement]
+            - floor: 21
+              ceiling: 25
+              result: "Discover who sabotaged a settlement's air processors"
+              # suggestions: [*obj:Settlement]
+            - floor: 26
+              ceiling: 30
+              result: "Escort a tradeship carrying a prized cargo"
+              # suggestions: [*obj:Starship, *roll:Object]
+            - floor: 31
+              ceiling: 35
+              result: "Ferry a rescue team to a perilous disaster site"
+              suggestions: [*roll:Place]
             # fortified location theme
-            - [36, 40, "Infiltrate a fortified base to steal crucial data", suggestions: [*obj:Faction, *obj:LocationTheme.Fortified]]
-            - [41, 45, "Investigate terrifying manifestations at a remote settlement", suggestions: [*obj:Settlement, *roll:Event]]
-            - [46, 50, "Liberate prisoners at a cruel labor camp", suggestions: [*roll:Place]]
-            - [51, 55, "Locate a downed spacer on an uninhabited planet", suggestions: [*obj:Planet]]
-            - [56, 60, "Protect a fugitive from a relentless bounty hunter", suggestions: [*obj:Npc]]
-            - [61, 65, "Recover a cherished pre-exodus artifact from an enemy", suggestions: [*roll:Object], suggestions: [*obj:Npc, *obj:Faction]]
-            - [66, 70, "Rescue a starship crew held captive by mutineers", suggestions: [*obj:Starship]]
-            - [71, 75, "Retrieve a cache of stolen weapons from a pirate ship", suggestions: [*obj:Starship, *obj:Faction]]
-            - [76, 80, "Sabotage an enemy installation", suggestions: [*obj:LocationTheme.Fortified]]
-            - [81, 85, "Search for a missing expedition in the depths of a precursor vault", suggestions: [*obj:Vault]]
-            - [86, 90, "Shield a wondrous lifeform from those who seek to destroy it", suggestions: [*obj:Creature]]
-            - [91, 95, "Track and slay a marauding beast", suggestions: [*obj:Creature]]
-            - [96, 100, "Transport a displaced people to their new home", suggestions: [*obj:Faction, *roll:Place]]
+            - floor: 36
+              ceiling: 40
+              result: "Infiltrate a fortified base to steal crucial data"
+              # suggestions: [*obj:Faction, *obj:LocationTheme.Fortified]
+            - floor: 41
+              ceiling: 45
+              result: "Investigate terrifying manifestations at a remote settlement"
+              # suggestions: [*obj:Settlement, *roll:Event]
+            - floor: 46
+              ceiling: 50
+              result: "Liberate prisoners at a cruel labor camp"
+              # suggestions: [*roll:Place]
+            - floor: 51
+              ceiling: 55
+              result: "Locate a downed spacer on an uninhabited planet"
+              # suggestions: [*obj:Planet]
+            - floor: 56
+              ceiling: 60
+              result: "Protect a fugitive from a relentless bounty hunter"
+              # suggestions: [*obj:Npc]
+            - floor: 61
+              ceiling: 65
+              result: "Recover a cherished pre-exodus artifact from an enemy"
+              # suggestions: [*roll:Object, *obj:Npc, *obj:Faction]
+            - floor: 66
+              ceiling: 70
+              result: "Rescue a starship crew held captive by mutineers"
+              # suggestions: [*obj:Starship]
+            - floor: 71
+              ceiling: 75
+              result: "Retrieve a cache of stolen weapons from a pirate ship"
+              # suggestions: [*obj:Starship, *obj:Faction]
+            - floor: 76
+              ceiling: 80
+              result: "Sabotage an enemy installation"
+              # suggestions: [*obj:LocationTheme.Fortified]
+            - floor: 81
+              ceiling: 85
+              result: "Search for a missing expedition in the depths of a precursor vault"
+              # suggestions: [*obj:Vault]
+            - floor: 86
+              ceiling: 90
+              result: "Shield a wondrous lifeform from those who seek to destroy it"
+              # suggestions: [*obj:Creature]
+            - floor: 91
+              ceiling: 95
+              result: "Track and slay a marauding beast"
+              # suggestions: [*obj:Creature]
+            - floor: 96
+              ceiling: 100
+              result: "Transport a displaced people to their new home"
+              # suggestions: [*obj:Faction, *roll:Place]

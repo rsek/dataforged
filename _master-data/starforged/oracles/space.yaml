@@ -7,7 +7,7 @@ starforged:
       source:
         authors: [Shawn Tomkin]
         title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by-sa/4.0
+        license: https://creativecommons.org/licenses/by/4.0
         date: 2022-05-06
       sets:
         sighting:
@@ -54,27 +54,77 @@ starforged:
                   attributes:
                     region: [terminus]
               table: &table:SpaceSighting
-                - [1, 15, "[⏵Stellar Object](starforged/oracles/space/stellar_object)", *roll:StellarObject]
-                - [16, 35, "[⏵Planet](starforged/oracles/planets)", *obj:Planet]
-                - [36, 40, "[⏵Settlement](starforged/oracles/settlements)", *obj:Settlement]
-                - [41, 47, "[⏵Starship](starforged/oracles/starships)", *obj:Starship]
-                - [48, 51, "[⏵Derelict](starforged/oracles/derelicts)", *obj:Derelict]
-                - [52, 53, "[⏵Precursor Vault](starforged/oracles/vaults)", *obj:Vault]
-                - [54, 55, "[⏵Creature](starforged/oracles/creatures)", *obj:Creature]
-                - [56, 60, *result:Descriptor+Focus]
-                - [61, 65, "Debris field: Mineral asteroids"]
-                - [66, 68, "Debris field: Frozen asteroids"]
-                - [69, 70, "Debris field: Crystalline asteroids"]
-                - [71, 72, "Debris field: Creature boneyard"]
-                - [73, 74, "Debris field: Metallic wreckage"]
-                - [75, 76, Large rogue asteroid]
-                - [77, 78, Comet with a tail of ionized gas]
-                - [79, 81, Fiery energy storm]
-                - [82, 83, Chaotic meteoroid storm]
-                - [84, 85, Turbulent gravitational wave]
-                - [86, 93, Dense nebula cloud]
-                - [94, 98, *result:RollTwice.RepeatsOk]
-                - [99, 100, *result:RollThreeTimes.RepeatsOk]
+                - floor: 1
+                  ceiling: 15
+                  result: "[⏵Stellar Object](starforged/oracles/space/stellar_object)"
+                  oracle_rolls:
+                    - starforged/oracles/space/stellar_object
+                - floor: 16
+                  ceiling: 35
+                  result: "[⏵Planet](starforged/oracles/planets)"
+                  # game_objects: [*obj:Planet]
+                - floor: 36
+                  ceiling: 40
+                  result: "[⏵Settlement](starforged/oracles/settlements)"
+                  # game_objects: [*obj:Settlement]
+                - floor: 41
+                  ceiling: 47
+                  result: "[⏵Starship](starforged/oracles/starships)"
+                  # game_objects: [*obj:Starship]
+                - floor: 48
+                  ceiling: 51
+                  result: "[⏵Derelict](starforged/oracles/derelicts)"
+                  # game_objects: [*obj:Derelict]
+                - floor: 52
+                  ceiling: 53
+                  result: "[⏵Precursor Vault](starforged/oracles/vaults)"
+                  # game_objects: [*obj:Vault]
+                - floor: 54
+                  ceiling: 55
+                  result: "[⏵Creature](starforged/oracles/creatures)"
+                  # game_objects: [*obj:Creature]
+                - floor: 56
+                  ceiling: 60
+                  result: *result:Descriptor+Focus
+                - floor: 61
+                  ceiling: 65
+                  result: "Debris field: Mineral asteroids"
+                - floor: 66
+                  ceiling: 68
+                  result: "Debris field: Frozen asteroids"
+                - floor: 69
+                  ceiling: 70
+                  result: "Debris field: Crystalline asteroids"
+                - floor: 71
+                  ceiling: 72
+                  result: "Debris field: Creature boneyard"
+                - floor: 73
+                  ceiling: 74
+                  result: "Debris field: Metallic wreckage"
+                - floor: 75
+                  ceiling: 76
+                  result: Large rogue asteroid
+                - floor: 77
+                  ceiling: 78
+                  result: Comet with a tail of ionized gas
+                - floor: 79
+                  ceiling: 81
+                  result: Fiery energy storm
+                - floor: 82
+                  ceiling: 83
+                  result: Chaotic meteoroid storm
+                - floor: 84
+                  ceiling: 85
+                  result: Turbulent gravitational wave
+                - floor: 86
+                  ceiling: 93
+                  result: Dense nebula cloud
+                - floor: 94
+                  ceiling: 98
+                  result: *result:RollTwice.RepeatsOk
+                - floor: 99
+                  ceiling: 100
+                  result: *result:RollThreeTimes.RepeatsOk
             outlands:
               title:
                 canonical: Outlands
@@ -163,7 +213,7 @@ starforged:
                 label: Suffix
           usage:
             roll_template:
-              result: "${{starforged/oracles/space/sector_name/prefix}} {{starforged/oracles/space/sector_name/suffix}}"
+              result: "{{roll:starforged/oracles/space/sector_name/prefix}} {{roll:starforged/oracles/space/sector_name/suffix}}"
           tables:
             prefix:
               title:
@@ -180,56 +230,177 @@ starforged:
                 part_of_speech: [adjective, proper noun fragment]
                 tags: [template fragment]
               table:
-                - [1, 2, Accursed]
-                - [3, 4, Ashen]
-                - [5, 6, Asteria, content: {part_of_speech: [proper noun]}]
-                - [7, 8, Bitter]
-                - [9, 10, Blighted]
-                - [11, 12, Bloodied]
-                - [13, 14, Boundless]
-                - [15, 16, Burning]
-                - [17, 18, Cortana, content: {part_of_speech: [proper noun]}]
-                - [19, 20, Corvus, content: {part_of_speech: [proper noun]}]
-                - [21, 22, Crimson]
-                - [23, 24, Cygnus, content: {part_of_speech: [proper noun]}]
-                - [25, 26, Delphi, content: {part_of_speech: [proper noun]}]
-                - [27, 28, Delphian, content: {part_of_speech: [proper noun]}]
-                - [29, 30, Devil's, content: {part_of_speech: [proper noun, possessive case]}]
-                - [31, 32, Ebon]
-                - [33, 34, Essus, content: {part_of_speech: [proper noun]}]
-                - [35, 36, Fallen]
-                - [37, 38, Ferrous]
-                - [39, 40, Fool's, content: {part_of_speech: [proper noun, possessive case]}]
-                - [41, 42, Forgotten]
-                - [43, 44, Haunted]
-                - [45, 46, Hidden]
-                - [47, 48, Hollow]
-                - [49, 50, Igneous]
-                - [51, 52, Infernal]
-                - [53, 54, Invidia, content: {part_of_speech: [proper noun]}]
-                - [55, 56, Iron]
-                - [57, 58, Kalidas, content: {part_of_speech: [proper noun]}]
-                - [59, 60, Kronos, content: {part_of_speech: [proper noun]}]
-                - [61, 62, Lacuna, content: {part_of_speech: [proper noun]}]
-                - [63, 64, Lumen, content: {part_of_speech: [proper noun]}]
-                - [65, 66, Mobius, content: {part_of_speech: [proper noun]}]
-                - [67, 68, Morien, content: {part_of_speech: [proper noun]}]
-                - [69, 70, Onyx]
-                - [71, 72, Outer]
-                - [73, 74, Sanguis, content: {part_of_speech: [proper noun]}]
-                - [75, 76, Scarred]
-                - [77, 78, Scorched]
-                - [79, 80, Shattered]
-                - [81, 82, Shrouded]
-                - [83, 84, Sindri, content: {part_of_speech: [proper noun]}]
-                - [85, 86, Solana, content: {part_of_speech: [proper noun]}]
-                - [87, 88, Stygian]
-                - [89, 90, Sulaco, content: {part_of_speech: [proper noun]}]
-                - [91, 92, Sundered]
-                - [93, 94, Thunor, content: {part_of_speech: [proper noun]}]
-                - [95, 96, Vanguard]
-                - [97, 98, Veiled]
-                - [99, 100, Wasted]
+                - floor: 1
+                  ceiling: 2
+                  result: Accursed
+                - floor: 3
+                  ceiling: 4
+                  result: Ashen
+                - floor: 5
+                  ceiling: 6
+                  result: Asteria
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 7
+                  ceiling: 8
+                  result: Bitter
+                - floor: 9
+                  ceiling: 10
+                  result: Blighted
+                - floor: 11
+                  ceiling: 12
+                  result: Bloodied
+                - floor: 13
+                  ceiling: 14
+                  result: Boundless
+                - floor: 15
+                  ceiling: 16
+                  result: Burning
+                - floor: 17
+                  ceiling: 18
+                  result: Cortana
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 19
+                  ceiling: 20
+                  result: Corvus
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 21
+                  ceiling: 22
+                  result: Crimson
+                - floor: 23
+                  ceiling: 24
+                  result: Cygnus
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 25
+                  ceiling: 26
+                  result: Delphi
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 27
+                  ceiling: 28
+                  result: Delphian
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 29
+                  ceiling: 30
+                  result: Devil's
+                  # content: {part_of_speech: [proper noun, possessive case]}
+                - floor: 31
+                  ceiling: 32
+                  result: Ebon
+                - floor: 33
+                  ceiling: 34
+                  result: Essus
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 35
+                  ceiling: 36
+                  result: Fallen
+                - floor: 37
+                  ceiling: 38
+                  result: Ferrous
+                - floor: 39
+                  ceiling: 40
+                  result: Fool's
+                  # content: {part_of_speech: [proper noun, possessive case]}
+                - floor: 41
+                  ceiling: 42
+                  result: Forgotten
+                - floor: 43
+                  ceiling: 44
+                  result: Haunted
+                - floor: 45
+                  ceiling: 46
+                  result: Hidden
+                - floor: 47
+                  ceiling: 48
+                  result: Hollow
+                - floor: 49
+                  ceiling: 50
+                  result: Igneous
+                - floor: 51
+                  ceiling: 52
+                  result: Infernal
+                - floor: 53
+                  ceiling: 54
+                  result: Invidia
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 55
+                  ceiling: 56
+                  result: Iron
+                - floor: 57
+                  ceiling: 58
+                  result: Kalidas
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 59
+                  ceiling: 60
+                  result: Kronos
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 61
+                  ceiling: 62
+                  result: Lacuna
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 63
+                  ceiling: 64
+                  result: Lumen
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 65
+                  ceiling: 66
+                  result: Mobius
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 67
+                  ceiling: 68
+                  result: Morien
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 69
+                  ceiling: 70
+                  result: Onyx
+                - floor: 71
+                  ceiling: 72
+                  result: Outer
+                - floor: 73
+                  ceiling: 74
+                  result: Sanguis
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 75
+                  ceiling: 76
+                  result: Scarred
+                - floor: 77
+                  ceiling: 78
+                  result: Scorched
+                - floor: 79
+                  ceiling: 80
+                  result: Shattered
+                - floor: 81
+                  ceiling: 82
+                  result: Shrouded
+                - floor: 83
+                  ceiling: 84
+                  result: Sindri
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 85
+                  ceiling: 86
+                  result: Solana
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 87
+                  ceiling: 88
+                  result: Stygian
+                - floor: 89
+                  ceiling: 90
+                  result: Sulaco
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 91
+                  ceiling: 92
+                  result: Sundered
+                - floor: 93
+                  ceiling: 94
+                  result: Thunor
+                  # content: {part_of_speech: [proper noun]}
+                - floor: 95
+                  ceiling: 96
+                  result: Vanguard
+                - floor: 97
+                  ceiling: 98
+                  result: Veiled
+                - floor: 99
+                  ceiling: 100
+                  result: Wasted
             suffix:
               title:
                 canonical: Suffix
@@ -245,56 +416,156 @@ starforged:
                 part_of_speech: [noun, proper noun fragment]
                 tags: [template fragment, place]
               table:
-                - [1, 2, Abyss]
-                - [3, 4, Anvil]
-                - [5, 6, Arch]
-                - [7, 8, Breach]
-                - [9, 10, Chain]
-                - [11, 12, Channel]
-                - [13, 14, Chasm]
-                - [15, 16, Circlet]
-                - [17, 18, Cluster]
-                - [19, 20, Crossing]
-                - [21, 22, Crown]
-                - [23, 24, Currents]
-                - [25, 26, Deep]
-                - [27, 28, Desolation]
-                - [29, 30, Drift]
-                - [31, 32, Flow]
-                - [33, 34, Flux]
-                - [35, 36, Gap]
-                - [37, 38, Gate]
-                - [39, 40, Gyre]
-                - [41, 42, Heart]
-                - [43, 44, Helix]
-                - [45, 46, Juncture]
-                - [47, 48, Limits]
-                - [49, 50, Locus]
-                - [51, 52, Maelstrom]
-                - [53, 54, Margin]
-                - [55, 56, Maw]
-                - [57, 58, Maze]
-                - [59, 60, Nexus]
-                - [61, 62, Oasis]
-                - [63, 64, Pass]
-                - [65, 66, Pit]
-                - [67, 68, Pyre]
-                - [69, 70, Reach]
-                - [71, 72, Rest]
-                - [73, 74, Rift]
-                - [75, 76, Sanctum]
-                - [77, 78, Shallows]
-                - [79, 80, Shoal]
-                - [81, 82, Spine]
-                - [83, 84, Straits]
-                - [85, 86, Threshold]
-                - [87, 88, Tide]
-                - [89, 90, Verge]
-                - [91, 92, Vertex]
-                - [93, 94, Vigil]
-                - [95, 96, Void]
-                - [97, 98, Web]
-                - [99, 100, Zenith]
+                - floor: 1
+                  ceiling: 2
+                  result: Abyss
+                - floor: 3
+                  ceiling: 4
+                  result: Anvil
+                - floor: 5
+                  ceiling: 6
+                  result: Arch
+                - floor: 7
+                  ceiling: 8
+                  result: Breach
+                - floor: 9
+                  ceiling: 10
+                  result: Chain
+                - floor: 11
+                  ceiling: 12
+                  result: Channel
+                - floor: 13
+                  ceiling: 14
+                  result: Chasm
+                - floor: 15
+                  ceiling: 16
+                  result: Circlet
+                - floor: 17
+                  ceiling: 18
+                  result: Cluster
+                - floor: 19
+                  ceiling: 20
+                  result: Crossing
+                - floor: 21
+                  ceiling: 22
+                  result: Crown
+                - floor: 23
+                  ceiling: 24
+                  result: Currents
+                - floor: 25
+                  ceiling: 26
+                  result: Deep
+                - floor: 27
+                  ceiling: 28
+                  result: Desolation
+                - floor: 29
+                  ceiling: 30
+                  result: Drift
+                - floor: 31
+                  ceiling: 32
+                  result: Flow
+                - floor: 33
+                  ceiling: 34
+                  result: Flux
+                - floor: 35
+                  ceiling: 36
+                  result: Gap
+                - floor: 37
+                  ceiling: 38
+                  result: Gate
+                - floor: 39
+                  ceiling: 40
+                  result: Gyre
+                - floor: 41
+                  ceiling: 42
+                  result: Heart
+                - floor: 43
+                  ceiling: 44
+                  result: Helix
+                - floor: 45
+                  ceiling: 46
+                  result: Juncture
+                - floor: 47
+                  ceiling: 48
+                  result: Limits
+                - floor: 49
+                  ceiling: 50
+                  result: Locus
+                - floor: 51
+                  ceiling: 52
+                  result: Maelstrom
+                - floor: 53
+                  ceiling: 54
+                  result: Margin
+                - floor: 55
+                  ceiling: 56
+                  result: Maw
+                - floor: 57
+                  ceiling: 58
+                  result: Maze
+                - floor: 59
+                  ceiling: 60
+                  result: Nexus
+                - floor: 61
+                  ceiling: 62
+                  result: Oasis
+                - floor: 63
+                  ceiling: 64
+                  result: Pass
+                - floor: 65
+                  ceiling: 66
+                  result: Pit
+                - floor: 67
+                  ceiling: 68
+                  result: Pyre
+                - floor: 69
+                  ceiling: 70
+                  result: Reach
+                - floor: 71
+                  ceiling: 72
+                  result: Rest
+                - floor: 73
+                  ceiling: 74
+                  result: Rift
+                - floor: 75
+                  ceiling: 76
+                  result: Sanctum
+                - floor: 77
+                  ceiling: 78
+                  result: Shallows
+                - floor: 79
+                  ceiling: 80
+                  result: Shoal
+                - floor: 81
+                  ceiling: 82
+                  result: Spine
+                - floor: 83
+                  ceiling: 84
+                  result: Straits
+                - floor: 85
+                  ceiling: 86
+                  result: Threshold
+                - floor: 87
+                  ceiling: 88
+                  result: Tide
+                - floor: 89
+                  ceiling: 90
+                  result: Verge
+                - floor: 91
+                  ceiling: 92
+                  result: Vertex
+                - floor: 93
+                  ceiling: 94
+                  result: Vigil
+                - floor: 95
+                  ceiling: 96
+                  result: Void
+                - floor: 97
+                  ceiling: 98
+                  result: Web
+                - floor: 99
+                  ceiling: 100
+                  result: Zenith
       tables:
         stellar_object:
           title:
@@ -305,19 +576,45 @@ starforged:
             part_of_speech: [fragment]
           description: Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.
           table:
-            - [1, 15, Smoldering red star]
-            - [16, 30, Glowing orange star]
-            - [31, 45, Burning yellow star]
-            - [46, 50, Blazing blue star]
-            - [51, 60, Young star incubating in a molecular cloud]
-            - [61, 70, White dwarf shining with spectral light]
-            - [71, 75, Corrupted star radiating with unnatural light]
-            - [76, 80, Neutron star surrounded by intense magnetic fields]
-            - [81, 85, Two stars in close orbit connected by fiery tendrils of energy]
-            - [86, 90, Black hole allows nothing to escape—not even light]
-            - [91, 98, Hypergiant star generating turbulent solar winds]
-            - [99, 99, Artificial star constructed by a long-dead civilization]
-            - [100, 100, Unstable star showing signs of impending supernova]
+            - floor: 1
+              ceiling: 15
+              result: Smoldering red star
+            - floor: 16
+              ceiling: 30
+              result: Glowing orange star
+            - floor: 31
+              ceiling: 45
+              result: Burning yellow star
+            - floor: 46
+              ceiling: 50
+              result: Blazing blue star
+            - floor: 51
+              ceiling: 60
+              result: Young star incubating in a molecular cloud
+            - floor: 61
+              ceiling: 70
+              result: White dwarf shining with spectral light
+            - floor: 71
+              ceiling: 75
+              result: Corrupted star radiating with unnatural light
+            - floor: 76
+              ceiling: 80
+              result: Neutron star surrounded by intense magnetic fields
+            - floor: 81
+              ceiling: 85
+              result: Two stars in close orbit connected by fiery tendrils of energy
+            - floor: 86
+              ceiling: 90
+              result: Black hole allows nothing to escape—not even light
+            - floor: 91
+              ceiling: 98
+              result: Hypergiant star generating turbulent solar winds
+            - floor: 99
+              ceiling: 99
+              result: Artificial star constructed by a long-dead civilization
+            - floor: 100
+              ceiling: 100
+              result: Unstable star showing signs of impending supernova
         peril:
           source:
             page: 304
@@ -334,40 +631,113 @@ starforged:
             part_of_speech: [fragment]
           description: Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.
           table:
-            - [1, 3, Artificial gravity generator malfunctions]
-            - [4, 6, Automated defenses or mines protect this area]
-            - [7, 9, Compartment catches fire or is breached]
-            - [10, 12, Contagion or illness threatens to take hold]
-            - [13, 15, Dust clouds imperil navigation or conceal foes]
-            - [16, 18, Energy storm looms]
-            - [19, 21, Familiar foe appears or sends an ominous message]
-            - [22, 24, Gravity well or vortex takes hold]
-            - [25, 27, Imperiled ship calls for help, suggestions: [*obj:Starship]]
-            - [28, 30, Important device fails or malfunctions]
-            - [31, 33, Infestation is revealed, suggestions: [*obj:Creature]]
-            - [34, 36, Intruder or stowaway creates trouble]
-            - [37, 39, Isolation or fear presses in]
-            - [40, 42, Life support system malfunctions]
-            - [43, 45, Meteoroid storm fills the sky]
-            - [46, 48, Mysterious wreckage portends a new threat, suggestions: [*obj:Derelict.Starship]]
-            - [49, 51, Nearby settlement calls for help, suggestions: [*obj:Settlement]]
-            - [52, 54, Old repair or patch fails]
-            - [55, 57, Onboard dispute or inner turmoil causes a disruption]
-            - [58, 60, Others obstruct your path or form a blockade]
-            - [61, 63, Phantom signals suggest a lurking foe]
-            - [64, 66, Pirates hunt for prey]
-            - [67, 69, Power fails]
-            - [70, 72, Primary drive or generator malfunctions]
-            - [73, 75, Sabotage is revealed]
-            - [76, 78, Shockwave or gravity wave approaches]
-            - [79, 81, Someone questions your presence here]
-            - [82, 84, Stellar anomaly emits hazardous energies]
-            - [85, 87, Threatening lifeform draws near, suggestions: [*obj:Creature]]
-            - [88, 90, Troubling visions or apparitions]
-            - [91, 93, "True nature of a cargo, occupant, or passenger is revealed"]
-            - [94, 96, Unsettling sounds or disturbances]
-            - [97, 99, *result:Action+Theme]
-            - [100, 100, *result:RollTwice]
+            - floor: 1
+              ceiling: 3
+              result: Artificial gravity generator malfunctions
+            - floor: 4
+              ceiling: 6
+              result: Automated defenses or mines protect this area
+            - floor: 7
+              ceiling: 9
+              result: Compartment catches fire or is breached
+            - floor: 10
+              ceiling: 12
+              result: Contagion or illness threatens to take hold
+            - floor: 13
+              ceiling: 15
+              result: Dust clouds imperil navigation or conceal foes
+            - floor: 16
+              ceiling: 18
+              result: Energy storm looms
+            - floor: 19
+              ceiling: 21
+              result: Familiar foe appears or sends an ominous message
+            - floor: 22
+              ceiling: 24
+              result: Gravity well or vortex takes hold
+            - floor: 25
+              ceiling: 27
+              result: Imperiled ship calls for help
+              # suggestions: [*obj:Starship]
+            - floor: 28
+              ceiling: 30
+              result: Important device fails or malfunctions
+            - floor: 31
+              ceiling: 33
+              result: Infestation is revealed
+              # suggestions: [*obj:Creature]
+            - floor: 34
+              ceiling: 36
+              result: Intruder or stowaway creates trouble
+            - floor: 37
+              ceiling: 39
+              result: Isolation or fear presses in
+            - floor: 40
+              ceiling: 42
+              result: Life support system malfunctions
+            - floor: 43
+              ceiling: 45
+              result: Meteoroid storm fills the sky
+            - floor: 46
+              ceiling: 48
+              result: Mysterious wreckage portends a new threat
+              # suggestions: [*obj:Derelict.Starship]
+            - floor: 49
+              ceiling: 51
+              result: Nearby settlement calls for help
+              # suggestions: [*obj:Settlement]
+            - floor: 52
+              ceiling: 54
+              result: Old repair or patch fails
+            - floor: 55
+              ceiling: 57
+              result: Onboard dispute or inner turmoil causes a disruption
+            - floor: 58
+              ceiling: 60
+              result: Others obstruct your path or form a blockade
+            - floor: 61
+              ceiling: 63
+              result: Phantom signals suggest a lurking foe
+            - floor: 64
+              ceiling: 66
+              result: Pirates hunt for prey
+            - floor: 67
+              ceiling: 69
+              result: Power fails
+            - floor: 70
+              ceiling: 72
+              result: Primary drive or generator malfunctions
+            - floor: 73
+              ceiling: 75
+              result: Sabotage is revealed
+            - floor: 76
+              ceiling: 78
+              result: Shockwave or gravity wave approaches
+            - floor: 79
+              ceiling: 81
+              result: Someone questions your presence here
+            - floor: 82
+              ceiling: 84
+              result: Stellar anomaly emits hazardous energies
+            - floor: 85
+              ceiling: 87
+              result: Threatening lifeform draws near
+              # suggestions: [*obj:Creature]
+            - floor: 88
+              ceiling: 90
+              result: Troubling visions or apparitions
+            - floor: 91
+              ceiling: 93
+              result: "True nature of a cargo, occupant, or passenger is revealed"
+            - floor: 94
+              ceiling: 96
+              result: Unsettling sounds or disturbances
+            - floor: 97
+              ceiling: 99
+              result: *result:Action+Theme
+            - floor: 100
+              ceiling: 100
+              result: *result:RollTwice
         opportunity:
           source:
             page: 305
@@ -384,29 +754,86 @@ starforged:
             tags: [opportunity]
           description: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
           table:
-            - [1, 4, Advance warning of an environmental threat]
-            - [5, 8, Automated signal offers a helpful message or warning]
-            - [9, 12, Cache of cargo or supplies, suggestions: [*roll:Object]]
-            - [13, 16, Chance for fellowship or a moment of inner peace]
-            - [17, 20, Clear path through otherwise perilous space]
-            - [21, 24, Clue offers insight into a current quest or mystery]
-            - [25, 28, Clue to a lifeform's nature or vulnerabilities]
-            - [29, 32, Derelict ripe for the picking, suggestions: [*obj:Derelict]]
-            - [33, 36, Foe inadvertently reveals themselves or tips their hand]
-            - [37, 40, Friendly interaction with a benign lifeform, suggestions: [*obj:Creature]]
-            - [41, 44, Friendly settlement in range, suggestions: [*obj:Settlement]]
-            - [45, 48, Friendly spacers at work here, suggestions: [*obj:Npc]]
-            - [49, 52, Friendly starship crosses your path, suggestions: [*obj:Starship]]
-            - [53, 56, Helpful or encouraging message from an acquaintance]
-            - [57, 60, Impressive vista offers comfort or inspiration]
-            - [61, 64, Interesting site offers opportunities for exploration]
-            - [65, 68, Mineral or energy resource detected]
-            - [69, 72, Navigational or environmental hazard is left behind]
-            - [73, 76, Opening to escape or avoid foes]
-            - [77, 80, Plea for help from a potential benefactor, suggestions: [*obj:Npc]]
-            - [81, 84, Probe or beacon with useful data]
-            - [85, 88, "Refuge offers a place to hide, plan, or recover"]
-            - [89, 92, Sensors pinpoint a lurking foe]
-            - [93, 96, Sensors reveal helpful or interesting environmental data]
-            - [97, 100, Vehicle or equipment performs beyond expectations]
+            - floor: 1
+              ceiling: 4
+              result: Advance warning of an environmental threat
+            - floor: 5
+              ceiling: 8
+              result: Automated signal offers a helpful message or warning
+            - floor: 9
+              ceiling: 12
+              result: Cache of cargo or supplies
+              # suggestions: [*roll:Object]
+            - floor: 13
+              ceiling: 16
+              result: Chance for fellowship or a moment of inner peace
+            - floor: 17
+              ceiling: 20
+              result: Clear path through otherwise perilous space
+            - floor: 21
+              ceiling: 24
+              result: Clue offers insight into a current quest or mystery
+            - floor: 25
+              ceiling: 28
+              result: Clue to a lifeform's nature or vulnerabilities
+            - floor: 29
+              ceiling: 32
+              result: Derelict ripe for the picking
+              # suggestions: [*obj:Derelict]
+            - floor: 33
+              ceiling: 36
+              result: Foe inadvertently reveals themselves or tips their hand
+            - floor: 37
+              ceiling: 40
+              result: Friendly interaction with a benign lifeform
+              # suggestions: [*obj:Creature]
+            - floor: 41
+              ceiling: 44
+              result: Friendly settlement in range
+              # suggestions: [*obj:Settlement]
+            - floor: 45
+              ceiling: 48
+              result: Friendly spacers at work here
+              # suggestions: [*obj:Npc]
+            - floor: 49
+              ceiling: 52
+              result: Friendly starship crosses your path
+              # suggestions: [*obj:Starship]
+            - floor: 53
+              ceiling: 56
+              result: Helpful or encouraging message from an acquaintance
+            - floor: 57
+              ceiling: 60
+              result: Impressive vista offers comfort or inspiration
+            - floor: 61
+              ceiling: 64
+              result: Interesting site offers opportunities for exploration
+            - floor: 65
+              ceiling: 68
+              result: Mineral or energy resource detected
+            - floor: 69
+              ceiling: 72
+              result: Navigational or environmental hazard is left behind
+            - floor: 73
+              ceiling: 76
+              result: Opening to escape or avoid foes
+            - floor: 77
+              ceiling: 80
+              result: Plea for help from a potential benefactor
+              # suggestions: [*obj:Npc]
+            - floor: 81
+              ceiling: 84
+              result: Probe or beacon with useful data
+            - floor: 85
+              ceiling: 88
+              result: "Refuge offers a place to hide, plan, or recover"
+            - floor: 89
+              ceiling: 92
+              result: Sensors pinpoint a lurking foe
+            - floor: 93
+              ceiling: 96
+              result: Sensors reveal helpful or interesting environmental data
+            - floor: 97
+              ceiling: 100
+              result: Vehicle or equipment performs beyond expectations
 

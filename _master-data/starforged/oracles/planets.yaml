@@ -22,17 +22,61 @@ starforged:
             part_of_speech: [noun]
           description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
           table:
-            - [1, 15, "[⏵Desert World](starforged/oracles/planets/desert)", *obj:Planet.Desert, *images:DesertWorld]
-            - [16, 30, "[⏵Furnace World](starforged/oracles/planets/furnace)", *obj:Planet.Furnace, *images:FurnaceWorld]
-            - [31, 35, "[⏵Grave World](starforged/oracles/planets/grave)", *obj:Planet.Grave, *images:GraveWorld]
-            - [36, 50, "[⏵Ice World](starforged/oracles/planets/ice)", *obj:Planet.Ice, *images:IceWorld]
-            - [51, 65, "[⏵Jovian World](starforged/oracles/planets/jovian)", *obj:Planet.Jovian, *images:JovianWorld]
-            - [66, 70, "[⏵Jungle World](starforged/oracles/planets/jungle)", *obj:Planet.Jungle, *images:JungleWorld]
-            - [71, 75, "[⏵Ocean World](starforged/oracles/planets/ocean)", *obj:Planet.Ocean, *images:OceanWorld]
-            - [76, 90, "[⏵Rocky World](starforged/oracles/planets/rocky)", *obj:Planet.Rocky, *images:RockyWorld]
-            - [91, 92, "[⏵Shattered World](starforged/oracles/planets/shattered)", *obj:Planet.Shattered, *images:ShatteredWorld]
-            - [93, 98, "[⏵Tainted World](starforged/oracles/planets/tainted)", *obj:Planet.Tainted, *images:TaintedWorld]
-            - [99, 100, "[⏵Vital World](starforged/oracles/planets/vital)", *obj:Planet.Vital, *images:VitalWorld]
+            - floor: 1
+              ceiling: 15
+              result: "[⏵Desert World](starforged/oracles/planets/desert)"
+              # game_objects: *obj:Planet.Desert
+              images: *images:DesertWorld
+            - floor: 16
+              ceiling: 30
+              result: "[⏵Furnace World](starforged/oracles/planets/furnace)"
+              # game_objects: *obj:Planet.Furnace
+              images: *images:FurnaceWorld
+            - floor: 31
+              ceiling: 35
+              result: "[⏵Grave World](starforged/oracles/planets/grave)"
+              # game_objects: *obj:Planet.Grave
+              images: *images:GraveWorld
+            - floor: 36
+              ceiling: 50
+              result: "[⏵Ice World](starforged/oracles/planets/ice)"
+              # game_objects: *obj:Planet.Ice
+              images: *images:IceWorld
+            - floor: 51
+              ceiling: 65
+              result: "[⏵Jovian World](starforged/oracles/planets/jovian)"
+              # game_objects: *obj:Planet.Jovian
+              images: *images:JovianWorld
+            - floor: 66
+              ceiling: 70
+              result: "[⏵Jungle World](starforged/oracles/planets/jungle)"
+              # game_objects: *obj:Planet.Jungle
+              images: *images:JungleWorld
+            - floor: 71
+              ceiling: 75
+              result: "[⏵Ocean World](starforged/oracles/planets/ocean)"
+              # game_objects: *obj:Planet.Ocean
+              images: *images:OceanWorld
+            - floor: 76
+              ceiling: 90
+              result: "[⏵Rocky World](starforged/oracles/planets/rocky)"
+              # game_objects: *obj:Planet.Rocky
+              images: *images:RockyWorld
+            - floor: 91
+              ceiling: 92
+              result: "[⏵Shattered World](starforged/oracles/planets/shattered)"
+              # game_objects: *obj:Planet.Shattered
+              images: *images:ShatteredWorld
+            - floor: 93
+              ceiling: 98
+              result: "[⏵Tainted World](starforged/oracles/planets/tainted)"
+              # game_objects: *obj:Planet.Tainted
+              images: *images:TaintedWorld
+            - floor: 99
+              ceiling: 100
+              result: "[⏵Vital World](starforged/oracles/planets/vital)"
+              # game_objects: *obj:Planet.Vital
+              images: *images:VitalWorld
       sets:
         peril:
           title:
@@ -74,41 +118,121 @@ starforged:
                   attributes:
                     life: [none, extinct]
               table: &table:Planets.Peril
-                - [1, 3, Corrupted or mutated lifeform, suggestions: [*obj:Creature]]
+                - floor: 1
+                  ceiling: 3
+                  result: Corrupted or mutated lifeform
+                  # suggestions: [*obj:Creature]
                 # TODO: suggest chaotic theme?
-                - [4, 6, Signs of a lifeform's power or cunning, suggestions: [*obj:Creature]]
-                - [7, 9, Hazardous plant life or malignant spores]
-                - [10, 12, Lifeform hunts for prey, suggestions: [*obj:Creature]]
-                - [13, 15, Lifeform lairs here, suggestions: [*obj:Creature]]
-                - [16, 18, Lifeforms guided by a greater threat, suggestions: [*obj:Creature]]
-                - [19, 21, Lifeforms spooked or stampeding, suggestions: [*obj:Creature]]
-                - [22, 24, Threatening lifeform draws near, suggestions: [*obj:Creature]]
-                - [25, 27, Life is revealed or takes an unexpected form, suggestions: [*obj:Creature]]
-                - [28, 30, Blocked or impassible path]
-                - [31, 33, Corrosive substance or environment]
-                - [34, 36, Disturbing remains or evidence of death]
-                - [37, 39, Drastic environmental change]
-                - [40, 42, Enemy holds this area, suggestions: [*obj:LocationTheme.Fortified]]
-                - [43, 45, Entangling or engulfing hazard]
-                - [46, 48, Equipment fails or malfunctions]
-                - [49, 51, Guarded or patrolled path, suggestions: [*obj:LocationTheme.Fortified]]
-                - [52, 54, Led astray]
-                - [55, 57, Lost the path]
-                - [58, 60, Meteorites fall from the sky]
-                - [61, 63, Irradiated area or object]
-                - [64, 66, Realization that something was left behind]
-                - [67, 69, Seismic or volcanic upheaval]
-                - [70, 72, Signs of a lurking or trailing foe]
-                - [73, 75, Storm or atmospheric disruption]
-                - [76, 78, Toxic or sickening environment]
-                - [79, 81, Trap or alarm]
-                - [82, 84, Treacherous or arduous path]
-                - [85, 87, Troubling visions or apparitions, suggestions: [*obj:LocationTheme.Haunted]]
-                - [88, 90, Visibility hindered by atmospheric effects]
-                - [91, 93, Worrying arrival of a ship or vehicle, suggestions: [*obj:Starship]]
-                - [94, 96, Wreckage or ruins portend a new threat]
-                - [97, 99, *result:Action+Theme]
-                - [100, 100, *result:RollTwice]
+                - floor: 4
+                  ceiling: 6
+                  result: Signs of a lifeform's power or cunning
+                  # suggestions: [*obj:Creature]
+                - floor: 7
+                  ceiling: 9
+                  result: Hazardous plant life or malignant spores
+                - floor: 10
+                  ceiling: 12
+                  result: Lifeform hunts for prey
+                  # suggestions: [*obj:Creature]
+                - floor: 13
+                  ceiling: 15
+                  result: Lifeform lairs here
+                  # suggestions: [*obj:Creature]
+                - floor: 16
+                  ceiling: 18
+                  result: Lifeforms guided by a greater threat
+                  # suggestions: [*obj:Creature]
+                - floor: 19
+                  ceiling: 21
+                  result: Lifeforms spooked or stampeding
+                  # suggestions: [*obj:Creature]
+                - floor: 22
+                  ceiling: 24
+                  result: Threatening lifeform draws near
+                  # suggestions: [*obj:Creature]
+                - floor: 25
+                  ceiling: 27
+                  result: Life is revealed or takes an unexpected form
+                  # suggestions: [*obj:Creature]
+                - floor: 28
+                  ceiling: 30
+                  result: Blocked or impassible path
+                - floor: 31
+                  ceiling: 33
+                  result: Corrosive substance or environment
+                - floor: 34
+                  ceiling: 36
+                  result: Disturbing remains or evidence of death
+                - floor: 37
+                  ceiling: 39
+                  result: Drastic environmental change
+                - floor: 40
+                  ceiling: 42
+                  result: Enemy holds this area
+                  # suggestions: [*obj:LocationTheme.Fortified]
+                - floor: 43
+                  ceiling: 45
+                  result: Entangling or engulfing hazard
+                - floor: 46
+                  ceiling: 48
+                  result: Equipment fails or malfunctions
+                - floor: 49
+                  ceiling: 51
+                  result: Guarded or patrolled path
+                  # suggestions: [*obj:LocationTheme.Fortified]
+                - floor: 52
+                  ceiling: 54
+                  result: Led astray
+                - floor: 55
+                  ceiling: 57
+                  result: Lost the path
+                - floor: 58
+                  ceiling: 60
+                  result: Meteorites fall from the sky
+                - floor: 61
+                  ceiling: 63
+                  result: Irradiated area or object
+                - floor: 64
+                  ceiling: 66
+                  result: Realization that something was left behind
+                - floor: 67
+                  ceiling: 69
+                  result: Seismic or volcanic upheaval
+                - floor: 70
+                  ceiling: 72
+                  result: Signs of a lurking or trailing foe
+                - floor: 73
+                  ceiling: 75
+                  result: Storm or atmospheric disruption
+                - floor: 76
+                  ceiling: 78
+                  result: Toxic or sickening environment
+                - floor: 79
+                  ceiling: 81
+                  result: Trap or alarm
+                - floor: 82
+                  ceiling: 84
+                  result: Treacherous or arduous path
+                - floor: 85
+                  ceiling: 87
+                  result: Troubling visions or apparitions
+                  # suggestions: [*obj:LocationTheme.Haunted]
+                - floor: 88
+                  ceiling: 90
+                  result: Visibility hindered by atmospheric effects
+                - floor: 91
+                  ceiling: 93
+                  result: Worrying arrival of a ship or vehicle
+                  # suggestions: [*obj:Starship]
+                - floor: 94
+                  ceiling: 96
+                  result: Wreckage or ruins portend a new threat
+                - floor: 97
+                  ceiling: 99
+                  result: *result:Action+Theme
+                - floor: 100
+                  ceiling: 100
+                  result: *result:RollTwice
             lifeless:
               title:
                 canonical: Lifeless
@@ -193,31 +317,92 @@ starforged:
               usage:
                 requires: *attr:Life.Lifebearing
               table: &table:Planets.Opportunity
-                - [1, 4, Clue to a lifeform's nature or vulnerabilities, suggestions: [*obj:Creature]]
-                - [5, 8, Friendly interaction with a benign lifeform, suggestions: [*obj:Creature]]
-                - [9, 12, Hunting or foraging opportunities are plentiful]
-                - [13, 16, Interesting or helpful aspect of benign creatures, suggestions: [*obj:Creature]]
-                - [17, 20, Interesting or helpful aspect of local plant life]
-                - [21, 24, Encounter reveals unexpected benign lifeforms, suggestions: [*obj:Creature]]
-                - [25, 28, Abandoned camp or vehicle, suggestions: [*roll:Object]]
-                - [29, 32, Advance warning of an environmental threat]
-                - [33, 36, Clear path through otherwise perilous terrain]
-                - [37, 40, Clue offers insight into a current quest or mystery]
-                - [41, 44, Clue to the history or nature of this place]
-                - [45, 48, Evidence that others have passed this way]
-                - [49, 52, Foe reveals themselves or tips their hand]
-                - [53, 56, Fortuitous change in the weather or atmosphere]
-                - [57, 60, Friendly traveler crosses your path]
-                - [61, 64, Helpful resource is in ample supply, suggestions: [*roll:Object]]
-                - [65, 68, Impressive vista offers comfort or inspiration]
-                - [69, 72, Interesting artifact or device, suggestions: [*roll:Object]]
-                - [73, 76, Interesting site offers opportunities for exploration, suggestions: [*roll:Object]]
-                - [77, 80, Moment of fellowship or inner peace]
-                - [81, 84, "Opening to distract, escape, or avoid foes"]
-                - [85, 88, Opening to get the drop on a foe]
-                - [89, 92, Plea for help from a potential benefactor, suggestions: [*obj:Npc]]
-                - [93, 96, "Refuge offers a place to hide, plan, or recover", suggestions: [*roll:Object]]
-                - [97, 100, Vantage point reveals the lay of the land, suggestions: [*roll:Object]]
+                - floor: 1
+                  ceiling: 4
+                  result: Clue to a lifeform's nature or vulnerabilities
+                  # suggestions: [*obj:Creature]
+                - floor: 5
+                  ceiling: 8
+                  result: Friendly interaction with a benign lifeform
+                  # suggestions: [*obj:Creature]
+                - floor: 9
+                  ceiling: 12
+                  result: Hunting or foraging opportunities are plentiful
+                - floor: 13
+                  ceiling: 16
+                  result: Interesting or helpful aspect of benign creatures
+                  # suggestions: [*obj:Creature]
+                - floor: 17
+                  ceiling: 20
+                  result: Interesting or helpful aspect of local plant life
+                - floor: 21
+                  ceiling: 24
+                  result: Encounter reveals unexpected benign lifeforms
+                  # suggestions: [*obj:Creature]
+                - floor: 25
+                  ceiling: 28
+                  result: Abandoned camp or vehicle
+                  suggestions: [*roll:Object]
+                - floor: 29
+                  ceiling: 32
+                  result: Advance warning of an environmental threat
+                - floor: 33
+                  ceiling: 36
+                  result: Clear path through otherwise perilous terrain
+                - floor: 37
+                  ceiling: 40
+                  result: Clue offers insight into a current quest or mystery
+                - floor: 41
+                  ceiling: 44
+                  result: Clue to the history or nature of this place
+                - floor: 45
+                  ceiling: 48
+                  result: Evidence that others have passed this way
+                - floor: 49
+                  ceiling: 52
+                  result: Foe reveals themselves or tips their hand
+                - floor: 53
+                  ceiling: 56
+                  result: Fortuitous change in the weather or atmosphere
+                - floor: 57
+                  ceiling: 60
+                  result: Friendly traveler crosses your path
+                - floor: 61
+                  ceiling: 64
+                  result: Helpful resource is in ample supply
+                  suggestions: [*roll:Object]
+                - floor: 65
+                  ceiling: 68
+                  result: Impressive vista offers comfort or inspiration
+                - floor: 69
+                  ceiling: 72
+                  result: Interesting artifact or device
+                  suggestions: [*roll:Object]
+                - floor: 73
+                  ceiling: 76
+                  result: Interesting site offers opportunities for exploration
+                  suggestions: [*roll:Object]
+                - floor: 77
+                  ceiling: 80
+                  result: Moment of fellowship or inner peace
+                - floor: 81
+                  ceiling: 84
+                  result: "Opening to distract, escape, or avoid foes"
+                - floor: 85
+                  ceiling: 88
+                  result: Opening to get the drop on a foe
+                - floor: 89
+                  ceiling: 92
+                  result: Plea for help from a potential benefactor
+                  # suggestions: [*obj:Npc]
+                - floor: 93
+                  ceiling: 96
+                  result: "Refuge offers a place to hide, plan, or recover"
+                  suggestions: [*roll:Object]
+                - floor: 97
+                  ceiling: 100
+                  result: Vantage point reveals the lay of the land
+                  suggestions: [*roll:Object]
             lifeless:
               display:
                 column_of: starforged/oracles/planets/opportunity
